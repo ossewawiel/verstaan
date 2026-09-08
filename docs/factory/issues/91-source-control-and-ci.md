@@ -2,15 +2,15 @@
 issue: 91
 title: "Source control and CI: a GitHub remote that mirrors the issue files"
 milestone: Side
-status: in-progress
+status: done
 depends_on: [1]
 agent: implementer
 agents: [implementer, docs-writer]
 model: sonnet
 effort: medium
 checkpoint: 4
-commit: null
-worktree: .worktrees/side-91-source-control-and-ci
+commit: 84eba27
+worktree: null
 github_issue: 14
 ---
 ## What
