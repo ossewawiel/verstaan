@@ -24,6 +24,10 @@ if printf '%s\n' "$changed" | grep -qE '^(engine|apps|tests)/'; then
   cmake --preset msvc-debug >/dev/null 2>&1 || cmake --preset msvc-debug
   out=$(cmake --build --preset msvc-debug --target verstaan_core 2>&1) || fail build compile-failed "gate-fast: build failed. Fix before stopping.
 $(printf '%s' "$out" | tail -n 30)"
+  # The library alone is not enough: ctest only runs binaries that are already built, it does not
+  # build them. Build everything (the library plus the fast test executables) before ctest runs.
+  out=$(cmake --build --preset msvc-debug 2>&1) || fail build compile-failed "gate-fast: build failed. Fix before stopping.
+$(printf '%s' "$out" | tail -n 30)"
   out=$(ctest --preset msvc-debug -L fast --output-on-failure 2>&1) || fail test fast-tests-red "gate-fast: fast tests failed.
 $(printf '%s' "$out" | tail -n 40)"
 fi
