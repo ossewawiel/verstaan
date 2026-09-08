@@ -14,6 +14,9 @@ case "$input" in *'"stop_hook_active":true'*) exit 0;; esac
 root=$(repo_root); cd "$root" || exit 0
 cap="$root/.claude/hooks/capture-failure.sh"
 
+# The console is a rendering; keep it current on every stop, pass or fail. Never blocks.
+printf "{}" | bash "$root/.claude/hooks/refresh-console.sh"
+
 # Nothing to gate until the build system exists (M0 issue 02 creates it).
 [ -f CMakePresets.json ] || exit 0
 

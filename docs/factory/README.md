@@ -52,8 +52,12 @@ Rules in full at `SPEC.md` §5. What actually runs, proven in issue 01:
 ## The console
 
 `docs/factory/console/index.html` is the game console: open it from `file://`, no server. It is
-rendered from the repository by `node tools/console/src/generate.mjs`, which `/factory-status` runs
-for you. Nothing on it is editable; the files are. Five rooms:
+rendered from the repository by `node tools/console/src/generate.mjs` and is never committed,
+because it shows live git state and a committed copy would be one commit stale. Hooks keep it
+current: at session start, after any edit to a doc, issue, agent, skill or command file, at every
+stop, and after every commit, checkout or merge once you have run
+`bash tools/console/install-git-hooks.sh` once per clone. Keep the tab open; refresh the browser.
+Nothing on it is editable; the files are. Five rooms:
 
 | Room | What it holds |
 |---|---|
