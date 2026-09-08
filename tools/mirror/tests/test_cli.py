@@ -1,3 +1,4 @@
+# SPDX-License-Identifier: MPL-2.0
 """tools.mirror CLI: usage, version, and the credential refusal.
 
 docs/standards/testing.md: prove a gate fails before trusting it. `test_help_and_version_still_ok`

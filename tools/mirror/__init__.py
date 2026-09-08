@@ -1,3 +1,4 @@
+# SPDX-License-Identifier: MPL-2.0
 """Mirror the UNL Archive onto `data/archive/` (SPEC.md §3.1).
 
 This module is the M0 skeleton: `python -m tools.mirror` prints usage and refuses credentials

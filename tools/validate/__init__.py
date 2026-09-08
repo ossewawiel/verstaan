@@ -1,3 +1,4 @@
+# SPDX-License-Identifier: MPL-2.0
 """Validate `data/languages/<iso3>/` against `tagset.yaml` and the store schema (SPEC.md §3.3).
 
 This module is the M0 skeleton. It already does one real thing: it finds which language files

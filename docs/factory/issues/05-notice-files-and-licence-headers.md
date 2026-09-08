@@ -33,5 +33,5 @@ The CLA check on pull requests (Post-M6).
 
 ## Done when
 
-- [ ] Header check is green on the repo and its failing run is in the report.
-- [ ] `/gate` step 1 calls the licence check.
+- [x] Header check is green on the repo and its failing run is in the report.
+- [x] `/gate` step 1 calls the licence check.

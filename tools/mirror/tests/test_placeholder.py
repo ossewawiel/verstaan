@@ -1,3 +1,4 @@
+# SPDX-License-Identifier: MPL-2.0
 from tools.mirror import placeholder_answer
 
 

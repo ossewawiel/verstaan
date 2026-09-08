@@ -1,3 +1,4 @@
+# SPDX-License-Identifier: MPL-2.0
 """Command line entry point for `python -m tools.compiler`."""
 
 from __future__ import annotations

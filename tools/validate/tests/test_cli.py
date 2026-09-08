@@ -1,3 +1,4 @@
+# SPDX-License-Identifier: MPL-2.0
 """tools.validate: --changed and --all are real (find the file list), not stubs.
 
 docs/standards/testing.md: prove a gate fails before trusting it.

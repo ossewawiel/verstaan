@@ -1,3 +1,4 @@
+# SPDX-License-Identifier: MPL-2.0
 """Unit tests for tools.factory.mirror_github. No network calls: `gh` is faked throughout.
 
 docs/standards/testing.md: prove a gate fails before trusting it. `test_check_reports_state_drift`

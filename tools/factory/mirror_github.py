@@ -1,3 +1,4 @@
+# SPDX-License-Identifier: MPL-2.0
 """Mirror `docs/factory/issues/*.md` onto GitHub (SPEC.md §6, issue 91).
 
 GitHub is a rendering of the issue files, never the other way round. This script creates and

@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: MPL-2.0
 #pragma once
 
 // Public API. SPEC.md §3.4. Changing this file needs an ADR (engine/CLAUDE.md).

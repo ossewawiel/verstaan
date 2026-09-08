@@ -1,3 +1,4 @@
+# SPDX-License-Identifier: MPL-2.0
 """tools.compiler CLI: usage and version, the M0 skeleton (SPEC.md §3.5)."""
 
 from __future__ import annotations

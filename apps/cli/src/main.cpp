@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: MPL-2.0
 // verstaan_cli: SPEC.md §3.6. M0 stub — prints the version and exits. The full argument contract
 // (--from, --to, --register, --context, --trace, --tier, exit codes on Status) is not in scope
 // for this issue.

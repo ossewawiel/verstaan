@@ -1,3 +1,4 @@
+# SPDX-License-Identifier: MPL-2.0
 """Command line entry point for `python -m tools.mirror`.
 
 Credentials come from `UNL_USER` and `UNL_PASS` in the environment only (SPEC.md §3.1,

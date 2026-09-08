@@ -1,3 +1,4 @@
+# SPDX-License-Identifier: MPL-2.0
 """Turn `data/archive/` into `data/languages/<iso3>/` YAML (SPEC.md §3.2).
 
 This module is the M0 skeleton: `python -m tools.importer` prints usage. The real parse

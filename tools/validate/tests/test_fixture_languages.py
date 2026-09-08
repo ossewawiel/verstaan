@@ -1,3 +1,4 @@
+# SPDX-License-Identifier: MPL-2.0
 """The xxa/xxb fixture pair against the store shape of SPEC.md §3.3.
 
 Issue 04 says every fixture file "validates against the YAML shape by a pytest in
