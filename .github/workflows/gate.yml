@@ -205,7 +205,12 @@ jobs:
       - name: Report drift between docs/factory/issues/*.md and GitHub
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: python -m tools.factory.mirror_github --check --repo ${{ github.repository }}
+        run: |
+          if [ -f tools/factory/mirror_github.py ]; then
+            python -m tools.factory.mirror_github --check --repo ${{ github.repository }}
+          else
+            echo "tools/factory/mirror_github.py does not exist on this ref yet -- skipping"
+          fi
 
   # A pull request from anyone but the owner must have every commit author's email in
   # CONTRIBUTORS.md (docs: CLA.md, issue 91). Skipped entirely for the owner's own PRs.
