@@ -2,16 +2,16 @@
 issue: 4
 title: "Fixture language pair xxa and xxb for engine tests"
 milestone: M0
-status: in-progress
+status: done
 depends_on: [3]
 agent: rule-author
 agents: [rule-author, test-writer, implementer]
 model: opus
 effort: high
 checkpoint: null
-commit: null
+commit: f859512
 github_issue: 4
-worktree: .worktrees/m0-foundation
+worktree: null
 ---
 ## What
 
