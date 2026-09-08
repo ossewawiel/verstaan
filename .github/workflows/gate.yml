@@ -1,0 +1,261 @@
+name: gate
+
+# docs/factory/issues/91-source-control-and-ci.md: runs the /gate steps that exist today
+# (.claude/commands/gate.md) on every pull request and on push to main. Branch protection
+# requires the job named `gate` (the aggregator at the bottom of this file), because a matrix
+# job's check name carries the matrix values and cannot be named `gate` on its own.
+#
+# The repository's CMakePresets.json hardcodes compiler paths for the maintainer's own machine
+# (see the `clang-release` and `gcc-release` preset descriptions); those presets do not resolve
+# on a GitHub-hosted runner. The `ubuntu-latest` legs configure CMake directly instead of through
+# a preset, choosing clang++ or g++ explicitly. The `windows-latest` leg uses the `msvc-debug`
+# preset, which is portable once `VCPKG_ROOT` points at the runner's pre-installed vcpkg.
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  # /gate step 0 (stubs) and step 1 (format, secrets).
+  lint:
+    name: lint
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Install Python tooling
+        run: pip install ruff pytest pyyaml
+
+      - name: Step 0 -- no stub left outside tests/
+        shell: bash
+        run: |
+          hits=$(grep -rn 'not_implemented\|NotImplementedError' engine/src tools/ \
+            --include=*.cpp --include=*.py 2>/dev/null | grep -v '/tests/' || true)
+          if [ -n "$hits" ]; then
+            echo "$hits"
+            echo "::error::a stub was left outside tests/ -- an issue was closed on a stub"
+            exit 1
+          fi
+
+      - name: Step 1 -- no committed GitHub token
+        shell: bash
+        run: |
+          # Real tokens, not the bare prefixes: a classic PAT is ghp_ + 36 chars, a fine-grained
+          # one is github_pat_ + 22+ chars. This is why prose that only mentions the prefix (this
+          # file, the issue file, CLA docs) never trips the check. No path is excluded: a live
+          # token pasted anywhere, including this file, must still be caught.
+          if git grep -nIE '\bghp_[A-Za-z0-9]{36}\b|\bgithub_pat_[A-Za-z0-9_]{22,}\b' -- .; then
+            echo "::error::a GitHub token pattern was found committed in the repository"
+            exit 1
+          fi
+
+      - name: Step 1 -- clang-format
+        shell: bash
+        run: |
+          files=$(git ls-files 'engine/**/*.cpp' 'engine/**/*.hpp' 'apps/**/*.cpp' 'apps/**/*.hpp')
+          [ -z "$files" ] && exit 0
+          clang-format --dry-run --Werror $files
+
+      - name: Step 1 -- ruff format and lint
+        run: |
+          ruff format --check tools/
+          ruff check tools/
+
+  # /gate step 2 (build every preset that applies) and step 3 (tests, pytest, validate).
+  build:
+    name: build
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: windows-latest
+            compiler: msvc
+          - os: ubuntu-latest
+            compiler: clang
+          - os: ubuntu-latest
+            compiler: gcc
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Install Python tooling
+        run: pip install ruff pytest pyyaml
+
+      - name: Point VCPKG_ROOT at the runner's pre-installed vcpkg (Windows)
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: echo "VCPKG_ROOT=$env:VCPKG_INSTALLATION_ROOT" >> $env:GITHUB_ENV
+
+      - name: Cache vcpkg binaries
+        if: hashFiles('vcpkg.json') != ''
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cache/vcpkg/archives
+            ~\AppData\Local\vcpkg\archives
+          key: vcpkg-${{ matrix.os }}-${{ matrix.compiler }}-${{ hashFiles('vcpkg.json') }}
+
+      - name: Configure and build (MSVC)
+        if: matrix.compiler == 'msvc' && hashFiles('CMakePresets.json') != ''
+        shell: pwsh
+        run: |
+          cmake --preset msvc-debug
+          cmake --build --preset msvc-debug
+
+      - name: Test (MSVC)
+        if: matrix.compiler == 'msvc' && hashFiles('CMakePresets.json') != ''
+        shell: pwsh
+        run: ctest --preset msvc-debug -L fast --output-on-failure
+
+      - name: Install ninja (Linux)
+        if: runner.os == 'Linux' && hashFiles('CMakeLists.txt') != ''
+        run: sudo apt-get update && sudo apt-get install -y ninja-build
+
+      - name: Configure and build (clang/gcc)
+        if: runner.os == 'Linux' && hashFiles('CMakeLists.txt') != ''
+        shell: bash
+        env:
+          CXX_COMPILER: ${{ matrix.compiler == 'clang' && 'clang++' || 'g++' }}
+        run: |
+          cmake -S . -B build/ci -G Ninja \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER="$CXX_COMPILER" \
+            -DCMAKE_TOOLCHAIN_FILE="$VCPKG_INSTALLATION_ROOT/scripts/buildsystems/vcpkg.cmake" \
+            -DVCPKG_TARGET_TRIPLET=x64-linux
+          cmake --build build/ci
+
+      # --no-tests=error mirrors the MSVC preset's "noTestsAction": "error" (CMakePresets.json):
+      # a Linux leg that builds but has zero `fast`-labelled tests must fail loudly, not exit 0.
+      - name: Test (clang/gcc)
+        if: runner.os == 'Linux' && hashFiles('CMakeLists.txt') != ''
+        shell: bash
+        run: ctest --test-dir build/ci -L fast --output-on-failure --no-tests=error
+
+      # CMakePresets.json only gates the MSVC leg (it is the only one that reads presets; the
+      # comment at the top of this file explains why Linux configures CMake directly instead).
+      # CMakeLists.txt is what actually gates whether there is a real CMake project to build at
+      # all, on any OS, so that is the signal both "no build system yet" messages use -- not a
+      # file neither Linux leg touches.
+      - name: No build system yet (MSVC)
+        if: matrix.compiler == 'msvc' && hashFiles('CMakePresets.json') == ''
+        shell: pwsh
+        run: echo "CMakePresets.json does not exist on this ref yet (issue 2) -- skipping build and ctest"
+
+      - name: No build system yet (Linux)
+        if: runner.os == 'Linux' && hashFiles('CMakeLists.txt') == ''
+        shell: bash
+        run: echo "CMakeLists.txt does not exist on this ref yet (issue 2) -- skipping build and ctest"
+
+      - name: pytest
+        shell: bash
+        run: |
+          if git ls-files 'tools/**/test_*.py' 'tools/**/*_test.py' | grep -q .; then
+            python -m pytest tools/ -q
+          else
+            echo "no Python tests exist on this ref yet -- skipping pytest"
+          fi
+
+      - name: Validate changed/all data
+        shell: bash
+        run: |
+          if [ -d tools/validate ]; then
+            python -m tools.validate --all
+          else
+            echo "tools/validate does not exist yet (issue 3) -- skipping"
+          fi
+
+  # docs/factory/issues/91-source-control-and-ci.md: the mirror is the only thing that keeps
+  # GitHub issues in step with docs/factory/issues/*.md; this job is what notices when something
+  # closed a GitHub issue by hand, or a local file's close didn't get mirrored. It reports drift,
+  # it does not fix it (that is `tools/factory/mirror_github.py` without `--check`, run by
+  # `.claude/skills/factory-run/SKILL.md` after every close), and it does not gate the merge --
+  # `GH_TOKEN` here is the read-only, per-run `GITHUB_TOKEN`, which cannot always see a fork's
+  # base repo correctly, so a false positive here must not block a PR.
+  mirror-check:
+    name: mirror-check
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+      issues: read
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Install Python tooling
+        run: pip install pyyaml
+
+      - name: Report drift between docs/factory/issues/*.md and GitHub
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python -m tools.factory.mirror_github --check --repo ${{ github.repository }}
+
+  # A pull request from anyone but the owner must have every commit author's email in
+  # CONTRIBUTORS.md (docs: CLA.md, issue 91). Skipped entirely for the owner's own PRs.
+  cla:
+    name: cla
+    if: >
+      github.event_name == 'pull_request' &&
+      github.event.pull_request.user.login != github.repository_owner
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Every commit author must have signed the CLA
+        shell: bash
+        run: |
+          missing=0
+          emails=$(git log --format='%ae' \
+            "${{ github.event.pull_request.base.sha }}..${{ github.event.pull_request.head.sha }}" \
+            | sort -u)
+          for email in $emails; do
+            if ! grep -qF "$email" CONTRIBUTORS.md; then
+              echo "::error::$email has not signed the CLA. Read CLA.md, then add a line to CONTRIBUTORS.md in this PR."
+              missing=1
+            fi
+          done
+          exit $missing
+
+  # The check branch protection requires. A matrix job's check name carries its matrix values, so
+  # this separate, un-matrixed job is the one that is actually named `gate`.
+  gate:
+    name: gate
+    needs: [lint, build, cla]
+    if: always()
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - name: All required steps passed
+        shell: bash
+        run: |
+          fail=0
+          if [ "${{ needs.lint.result }}" != "success" ]; then
+            echo "::error::lint failed"; fail=1
+          fi
+          if [ "${{ needs.build.result }}" != "success" ]; then
+            echo "::error::build failed"; fail=1
+          fi
+          if [ "${{ needs.cla.result }}" != "success" ] && [ "${{ needs.cla.result }}" != "skipped" ]; then
+            echo "::error::cla failed"; fail=1
+          fi
+          exit $fail
