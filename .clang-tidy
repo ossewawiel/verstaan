@@ -1,0 +1,13 @@
+---
+# docs/standards/cpp.md: modernize, bugprone, performance, readability. Warnings are errors.
+Checks: >
+  -*,
+  modernize-*,
+  bugprone-*,
+  performance-*,
+  readability-*,
+  -modernize-use-trailing-return-type,
+  -readability-identifier-length
+WarningsAsErrors: '*'
+HeaderFilterRegex: '(engine|apps)/(include|src)/.*'
+FormatStyle: file
