@@ -32,25 +32,27 @@
     {
       "name": "clang-release",
       "displayName": "Clang Release",
-      "description": "LLVM clang++ (default install path), Ninja, Release.",
+      "description": "LLVM clang++ (default install path), Release. Generator is Unix Makefiles, not Ninja: CMake's Ninja generator wires every Clang translation unit through a transient '@file.modmap' response file (its C++20 module-dependency machinery, unconditional for Clang regardless of CXX_SCAN_FOR_MODULES) that Ninja generates fresh during a real build but that clang-tidy -p (reading compile_commands.json and invoking the compiler directly, outside Ninja's build graph) can never find, so tidy always failed with 'no such file or directory'. Make-family generators have no such C++20-modules wiring in CMake at all, so the same compile_commands.json works for both building and tidying. Exports compile_commands.json for gate step 4.",
       "inherits": "base",
-      "generator": "Ninja",
+      "generator": "Unix Makefiles",
       "cacheVariables": {
         "CMAKE_BUILD_TYPE": "Release",
-        "CMAKE_MAKE_PROGRAM": "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe",
-        "CMAKE_CXX_COMPILER": "C:/Program Files/LLVM/bin/clang++.exe"
+        "CMAKE_MAKE_PROGRAM": "C:/Program Files (x86)/GnuWin32/bin/make.exe",
+        "CMAKE_CXX_COMPILER": "C:/Program Files/LLVM/bin/clang++.exe",
+        "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
       }
     },
     {
       "name": "gcc-release",
       "displayName": "GCC Release",
-      "description": "g++ on PATH, Ninja, Release. No MinGW/gcc is installed on the reference machine, so this preset fails configure with one clear line naming g++ as the missing compiler; it is here for machines that do have it.",
+      "description": "g++ on PATH, Ninja, Release. No MinGW/gcc is installed on the reference machine, so this preset fails configure with one clear line naming g++ as the missing compiler; it is here for machines that do have it. Uses vcpkg's x64-mingw-dynamic triplet, not base's x64-windows: that triplet builds dependencies (gtest) with MSVC's ABI, which g++-compiled objects cannot link against.",
       "inherits": "base",
       "generator": "Ninja",
       "cacheVariables": {
         "CMAKE_BUILD_TYPE": "Release",
         "CMAKE_MAKE_PROGRAM": "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe",
-        "CMAKE_CXX_COMPILER": "g++"
+        "CMAKE_CXX_COMPILER": "g++",
+        "VCPKG_TARGET_TRIPLET": "x64-mingw-dynamic"
       }
     }
   ],
