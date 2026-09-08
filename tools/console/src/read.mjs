@@ -147,18 +147,52 @@ export function readArtefacts() {
   return list.filter((a) => existsSync(join(REPO, a.path)));
 }
 
+const STATUS_RANK = { open: 0, 'in-progress': 1, done: 2 };
+
+function issueStatusRank(content) {
+  return STATUS_RANK[parseFrontmatter(content)?.status] ?? -1;
+}
+
+/** Every worktree keeps its own on-disk copy of `docs/factory/issues/*.md`. An issue closed on
+ * its own branch, in its own tree (a side quest, say), has not merged anywhere yet — so a console
+ * generated from a different tree would otherwise render it as still open, or "the console is not
+ * updated" as an operator would see it, even though the close commit genuinely exists (issue 91,
+ * checkpoint-4 follow-up). This folds every other tree's copy of each issue file into `local`,
+ * keeping whichever copy's status is furthest along (done > in-progress > open); a tie or an
+ * unparsable file keeps `local`'s own copy untouched, and a file that exists only in another tree
+ * (a new issue proposed on a branch with no local copy yet) is not surfaced — this only advances
+ * the status of files `local` already has. */
+export function mergeIssuesAcrossWorktrees(local, otherFileLists) {
+  const byName = new Map(local.map((f) => [f.name, f]));
+  for (const files of otherFileLists) {
+    for (const f of files) {
+      const existing = byName.get(f.name);
+      if (!existing || issueStatusRank(f.content) > issueStatusRank(existing.content)) {
+        byName.set(f.name, f);
+      }
+    }
+  }
+  return local.map((f) => byName.get(f.name) ?? f);
+}
+
 export function readRepo() {
   const git = readGit();
+  const worktrees = readWorktrees();
+  const rootPath = resolveRootPath();
+  const localIssueFiles = readDir(join(REPO, 'docs', 'factory', 'issues'));
+  const otherIssueFiles = worktrees
+    .filter((w) => resolve(rootPath, w.path) !== resolve(REPO))
+    .map((w) => readDir(join(resolve(rootPath, w.path), 'docs', 'factory', 'issues')));
   const lessonsPath = join(REPO, 'docs', 'factory', 'lessons.jsonl');
   return {
-    issueFiles: readDir(join(REPO, 'docs', 'factory', 'issues')),
+    issueFiles: mergeIssuesAcrossWorktrees(localIssueFiles, otherIssueFiles),
     agentFiles: readDir(join(REPO, '.claude', 'agents')),
     lessonsText: existsSync(lessonsPath) ? readFileSync(lessonsPath, 'utf8') : '',
     library: readLibrary(),
     artefacts: readArtefacts(),
     git,
     stamp: readStamp(git.head),
-    worktrees: readWorktrees(),
+    worktrees,
     generated: new Date().toISOString().replace(/\.\d+Z$/, 'Z'),
   };
 }

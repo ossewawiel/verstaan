@@ -41,6 +41,18 @@ own) and fire the same way for every tree; `tools/console/install-git-hooks.sh` 
 `CLAUDE_PROJECT_DIR` for a session working in a worktree is that worktree's root, so
 `refresh-console.sh` renders that tree's own `docs/factory/console/`.
 
+Closing an issue in its own worktree does not merge anywhere by itself, so the tree's on-disk
+`status: done` exists only in that one checkout until the branch merges. `readRepo()` in
+`tools/console/src/read.mjs` (`mergeIssuesAcrossWorktrees`) reads every worktree's own copy of
+`docs/factory/issues/*.md`, not only the tree the console happens to be generated from, and keeps
+whichever copy's status is furthest along per issue file. This is what makes an unmerged side
+quest's close visible in the root's console the moment it lands, the same promise `worktree:`
+attribution already made for `in-progress`. It is one-directional: a file the current tree does
+not already have (a new issue proposed only on a branch) is not surfaced. `install-git-hooks.sh`'s
+post-commit/checkout/merge hooks already regenerate both the committing tree's console and the
+root's on every git operation in any tree — before this fix that call read stale data; after it,
+no extra step is needed for the root's console to catch up.
+
 ## Commits
 
 - One work commit per issue: `feat(#NN): <title>`, `fix(#NN): <title>`, `data(#NN): <title>`,

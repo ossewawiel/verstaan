@@ -81,7 +81,7 @@ check('docHref', docHref('.claude/agents/implementer.md'), 'docs/.claude--agents
 
 // readWorktrees() is IO (it shells out to git), so it is exercised against this real checkout
 // rather than a fixture: the one invariant every clone has is a root tree, present and marked.
-const { readWorktrees, resolveRootPath, isRootTree, normalizeTreePath, matchInProgressIssue } = await import('../src/read.mjs');
+const { readWorktrees, resolveRootPath, isRootTree, normalizeTreePath, matchInProgressIssue, mergeIssuesAcrossWorktrees } = await import('../src/read.mjs');
 const worktrees = readWorktrees();
 check('readWorktrees finds at least the root tree', worktrees.length >= 1, true);
 const root = worktrees.find((w) => w.isRoot);
@@ -121,6 +121,26 @@ const fakePorcelain = `worktree ${fakeRoot}\nHEAD 111111111111111111111111111111
 const fakeListShFn = (cmd) => (cmd.includes('--git-common-dir') ? fakeCommonDir : cmd.includes('worktree list') ? fakePorcelain : '');
 const fakeRows = readWorktrees({ shFn: fakeListShFn, shInFn: () => '' });
 check('readWorktrees marks the fixture root tree as root, not the side tree', fakeRows.map((r) => [r.path, r.isRoot]), [['.', true], ['.worktrees/side-92-worktrees', false]]);
+
+// mergeIssuesAcrossWorktrees: a status closed in a side quest's own worktree, unmerged anywhere
+// else, must not disappear just because the console happens to be generated from a different
+// tree (the bug reported against issue 91: "the console still shows #91 as open").
+const openLocal = [{ name: '91-x.md', content: '---\nissue: 91\nstatus: open\n---\n## What\nX.\n' }];
+const doneInOtherTree = [[{ name: '91-x.md', content: '---\nissue: 91\nstatus: done\n---\n## What\nX.\n' }]];
+check('mergeIssuesAcrossWorktrees takes the more advanced status from another tree',
+  mergeIssuesAcrossWorktrees(openLocal, doneInOtherTree)[0].content.includes('status: done'), true);
+
+const doneLocal = [{ name: '91-x.md', content: '---\nissue: 91\nstatus: done\n---\n## What\nX.\n' }];
+const openInOtherTree = [[{ name: '91-x.md', content: '---\nissue: 91\nstatus: open\n---\n## What\nX.\n' }]];
+check('mergeIssuesAcrossWorktrees never regresses a status the local tree already has',
+  mergeIssuesAcrossWorktrees(doneLocal, openInOtherTree)[0].content.includes('status: done'), true);
+
+check('mergeIssuesAcrossWorktrees with no other trees returns local unchanged',
+  mergeIssuesAcrossWorktrees(openLocal, [])[0].content, openLocal[0].content);
+
+const unrelatedInOtherTree = [[{ name: '50-a.md', content: '---\nissue: 50\nstatus: done\n---\n## What\nA.\n' }]];
+check('mergeIssuesAcrossWorktrees does not surface a file local does not already have',
+  mergeIssuesAcrossWorktrees(openLocal, unrelatedInOtherTree).map((f) => f.name), ['91-x.md']);
 
 if (failed) { console.log(`${failed} failed`); process.exit(1); }
 console.log('all green');
