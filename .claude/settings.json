@@ -27,7 +27,8 @@
     "Stop": [
       {
         "hooks": [
-          { "type": "command", "command": "bash \"${CLAUDE_PROJECT_DIR}/.claude/hooks/gate-fast.sh\"", "timeout": 120 }
+          { "type": "command", "command": "bash \"${CLAUDE_PROJECT_DIR}/.claude/hooks/gate-fast.sh\"", "timeout": 120 },
+          { "type": "command", "command": "bash \"${CLAUDE_PROJECT_DIR}/.claude/hooks/console-refresh.sh\"", "timeout": 30 }
         ]
       }
     ]
