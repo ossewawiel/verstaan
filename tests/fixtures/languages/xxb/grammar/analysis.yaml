@@ -1,0 +1,34 @@
+# Licence: CC BY-SA 4.0. Source: invented fixture for engine tests, not the UNL Archive.
+# SPEC.md §4 header adapted: these records are original, so no data/archive/manifest.jsonl
+# line exists to point at.
+# Notation. The lhs matches a token sequence, read left to right.
+#   [FEAT:VAL, ...]:n   one token carrying these features, bound to slot n
+#   [*]:n               any one token, bound to slot n
+#   $a                  a variable bound to a feature value when the token matches
+# The rhs builds the UNL graph.
+#   rel(n,m)            a relation from the node in slot n to the node in slot m
+#   attr(n,$a)          put attribute $a on the node in slot n
+#   drop(n)             the token in slot n leaves no node behind
+# Rules apply in file order. grammar/inflection.yaml runs first, read in reverse, so every
+# token reaching these rules is a base form with its attributes already attached.
+- id: xxb-ana-01
+  kind: analysis
+  lhs: "[LEX:N]:1 [LEX:N]:2 [LEX:V]:3"
+  rhs: "agt(3,1); obj(3,2)"
+  conditions: {}
+  comment: "Takes the first of two nouns before the verb as the agent and the second as the object."
+  source: original
+- id: xxb-ana-02
+  kind: analysis
+  lhs: "[LEX:D, ATT:$a]:1 [*]:2"
+  rhs: "attr(2,$a); drop(1)"
+  conditions: {LEX: D}
+  comment: "Moves the attribute off a particle onto the word that follows it, then drops the particle."
+  source: original
+- id: xxb-ana-03
+  kind: analysis
+  lhs: "[LEX:N]:1 [LEX:J]:2"
+  rhs: "mod(1,2)"
+  conditions: {}
+  comment: "Hangs an adjective on the noun in front of it as a modifier."
+  source: original

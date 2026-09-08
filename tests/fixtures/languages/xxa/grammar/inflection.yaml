@@ -1,0 +1,23 @@
+# Licence: CC BY-SA 4.0. Source: invented fixture for engine tests, not the UNL Archive.
+# SPEC.md §4 header adapted: these records are original, so no data/archive/manifest.jsonl
+# line exists to point at.
+# One paradigm, PAR:P1. Notation.
+#   [FEAT:VAL, ...]:1   the base form and the features it must carry
+#   [1]                 the base form itself, with the suffix written after it
+# Generation reads a rule left to right. Analysis reads it right to left: it strips the suffix
+# and hands the attribute in `conditions` to the node. No base form in this fixture ends in a
+# suffix this file writes, so the reverse reading has exactly one result.
+- id: xxa-inf-01
+  kind: inflection
+  lhs: "[LEX:N, PAR:P1]:1"
+  rhs: "[1]ki"
+  conditions: {LEX: N, PAR: P1, NUM: PLR, ATT: "@pl"}
+  comment: "Adds ki to a noun the graph marks plural."
+  source: original
+- id: xxa-inf-02
+  kind: inflection
+  lhs: "[LEX:V, PAR:P1]:1"
+  rhs: "[1]du"
+  conditions: {LEX: V, PAR: P1, TNS: PST, ATT: "@past"}
+  comment: "Adds du to a verb the graph marks past."
+  source: original

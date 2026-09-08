@@ -2,7 +2,7 @@
 issue: 4
 title: "Fixture language pair xxa and xxb for engine tests"
 milestone: M0
-status: open
+status: in-progress
 depends_on: [3]
 agent: rule-author
 agents: [rule-author, test-writer, implementer]
@@ -11,6 +11,7 @@ effort: high
 checkpoint: null
 commit: null
 github_issue: 4
+worktree: .worktrees/m0-foundation
 ---
 ## What
 
@@ -36,6 +37,6 @@ Any engine code beyond stubs. Real languages.
 
 ## Done when
 
-- [ ] Fixture files exist and are loadable by a YAML reader without error.
-- [ ] Test table A exists with at least eight rows.
-- [ ] The rule-author's open decisions are listed as ADR candidates in the report.
+- [x] Fixture files exist and are loadable by a YAML reader without error.
+- [x] Test table A exists with at least eight rows.
+- [x] The rule-author's open decisions are listed as ADR candidates in the report.

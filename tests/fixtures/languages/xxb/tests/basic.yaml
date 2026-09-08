@@ -1,0 +1,71 @@
+# Licence: CC BY-SA 4.0. Source: invented fixture for engine tests, not the UNL Archive.
+# SPEC.md §4 header adapted: these records are original, so no data/archive/manifest.jsonl
+# line exists to point at.
+# Rows of block A in docs/factory/issues/04-test-cases.md, the ones where this language is
+# the source. That file is the source of truth; if the two disagree, it wins.
+# `id` and `status` are additions to the SPEC §3.3 key list, so a test can name its row and
+# assert the Status of SPEC §3.4 without a second lookup.
+- id: A02
+  input: "hundo kinda vidra"
+  expected: "kano zuma sona"
+  direction: xxb->xxa
+  status: ok
+  tier: basic
+  register: neutral
+  source: {origin: invented, issue: 4}
+- id: A04
+  input: "hundon kinda vidra"
+  expected: "ta kano zuma sona"
+  direction: xxb->xxa
+  status: ok
+  tier: basic
+  register: neutral
+  source: {origin: invented, issue: 4}
+- id: A06
+  input: "mo hundo kinda vidra"
+  expected: "kanoki zuma sona"
+  direction: xxb->xxa
+  status: ok
+  tier: basic
+  register: neutral
+  source: {origin: invented, issue: 4}
+- id: A08
+  input: "kinda libru pikko da lektu"
+  expected: "sona rintadu nolu bero"
+  direction: xxb->xxa
+  status: ok
+  tier: basic
+  register: neutral
+  source: {origin: invented, issue: 4}
+- id: A10
+  input: "kinda glimu vidra"
+  expected: "sona zuma ⟦glimu⟧"
+  direction: xxb->xxa
+  status: partial
+  tier: basic
+  register: neutral
+  source: {origin: invented, issue: 4}
+- id: A13
+  input: "hundo"
+  expected: ""
+  direction: xxb->xxa
+  status: no_parse
+  tier: basic
+  register: neutral
+  source: {origin: invented, issue: 4}
+- id: A15
+  input: "mo katsu hundon vidra"
+  expected: "milaki zuma ta kano"
+  direction: xxb->xxa
+  status: ok
+  tier: basic
+  register: neutral
+  source: {origin: invented, issue: 4}
+- id: A17
+  input: "mo kindan mo libru manga"
+  expected: "ta sonaki pelo beroki"
+  direction: xxb->xxa
+  status: ok
+  tier: basic
+  register: neutral
+  source: {origin: invented, issue: 4}
