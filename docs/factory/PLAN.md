@@ -101,8 +101,8 @@ tests/                        engine tests, golden files, equivalence tests
 | Format and lint | clang-format, clang-tidy | The auto-fix gate tier |
 | Tooling | Python 3.13, `uv` or venv, pytest, ruff | Fast to iterate on parsers and the compiler |
 | Data | YAML in git; SQLite index built on demand for the management UI later | Reviewable in pull requests |
-| CI | GitHub Actions matrix (windows, ubuntu, ubuntu-arm) once a remote exists; local hook gates until then | The gate ladder is the CI on day one |
-| Source control | Git, single repository, milestone branches, one commit per issue | The history is a deliverable |
+| CI | Local hook gates from day one; GitHub Actions matrix (windows, ubuntu; arm from M4) running the same gate steps, added by side quest 91 | The gate ladder is the CI on day one, and the remote runs the same ladder |
+| Source control | Git, single repository, milestone branches, one commit per issue; GitHub milestones, labels and pull requests as a mirror of the issue files, never the other way round (side quest 91) | The history is a deliverable; the files stay the only truth |
 
 ## 6. The code factory
 
@@ -221,8 +221,11 @@ criteria that a test can check. Do not start any of them."
   turns up later. Nothing in this plan depends on it.
 - Decide whether to plant bob (`/bob:build-me`, setup-only mode) over this factory once the C++
   gates work, and harvest the result back as bob's first C++ project type.
-- Create the GitHub remote when ready. Until then, gates are local and the "PR" in the workflow is
-  a merge into `main` after `/gate`.
+- Say when to run side quest 92, which gives each quest its own git worktree so two sessions never
+  share a tree. It needs no remote and should run before 91.
+- Say when to run side quest 91, which creates the GitHub remote, mirrors the issue files to
+  milestones and labels, and adds Actions. Until then, gates are local and the "PR" in the
+  workflow is a merge into `main` after `/gate`. Decide then whether the repository is public.
 
 ## 10. How context survives between sessions
 

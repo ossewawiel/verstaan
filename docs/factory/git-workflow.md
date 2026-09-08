@@ -8,6 +8,15 @@
 - A milestone branch is cut from `main` when its first issue starts and merged when `/gate` passes
   and the verifier has read the diff.
 
+## Worktrees
+
+Planned in side quest 92; the rule holds from now. The root checkout stays on `main` and changes
+only by merge. Each branch that is being worked on gets its own tree under `.worktrees/<branch>`
+with `git worktree add`, and a session works there. Two sessions never share a tree; an issue
+marked `in-progress` names the tree that holds it. The gate stamp lives in each tree's own git
+directory, so a gate passed in one tree unlocks nothing in another. A tree is removed when its
+branch has merged.
+
 ## Commits
 
 - One work commit per issue: `feat(#NN): <title>`, `fix(#NN): <title>`, `data(#NN): <title>`,

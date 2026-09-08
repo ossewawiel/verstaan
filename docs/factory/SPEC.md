@@ -134,6 +134,7 @@ model: sonnet
 effort: medium
 checkpoint: null        # 1..4 or null
 commit: null
+github_issue: null      # written only by tools/factory/mirror_github.py (issue 91); drifts from the local number
 ---
 ## What
 ## Acceptance criteria
