@@ -2,14 +2,14 @@
 issue: 5
 title: "NOTICE files, licence headers and a header check"
 milestone: M0
-status: open
+status: done
 depends_on: [2, 3]
 agent: implementer
 agents: [implementer]
 model: sonnet
 effort: low
 checkpoint: null
-commit: null
+commit: 33a9c6c
 github_issue: 5
 ---
 ## What
