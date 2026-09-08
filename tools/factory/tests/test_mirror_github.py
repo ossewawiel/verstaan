@@ -141,6 +141,19 @@ def test_find_remote_issue_none(tmp_path):
     assert mg.find_remote_issue(local, []) is None
 
 
+def test_find_remote_issue_rejects_number_collision(tmp_path):
+    """Two local files sharing one github_issue number must not silently overwrite each other."""
+    path = write_issue(
+        tmp_path, ISSUE_TEXT.replace("worktree: null\n", "worktree: null\ngithub_issue: 41\n")
+    )
+    local = mg.parse_issue_file(path)
+    remote_issues = [
+        {"number": 41, "title": "#12 Some other issue entirely", "state": "open", "labels": []},
+    ]
+    with pytest.raises(mg.MirrorError, match="github_issue"):
+        mg.find_remote_issue(local, remote_issues)
+
+
 def _remote(**overrides):
     base = {
         "number": 42,
@@ -323,6 +336,26 @@ def test_check_reports_state_drift_after_manual_close(tmp_path):
     backend.issues[0]["state"] = "open"
     exit_code = mg.run("ossewawiel/verstaan", tmp_path, check=True, token="x", runner=backend)
     assert exit_code == 0
+
+
+def test_check_reports_orphan_github_issue(tmp_path):
+    """A GitHub issue opened by hand, with no matching local file, must show up as drift too."""
+    write_issue(tmp_path)
+    backend = FakeGhBackend()
+    mg.run("ossewawiel/verstaan", tmp_path, check=False, token="x", runner=backend)
+    backend.issues.append(
+        {
+            "number": 999,
+            "title": "opened straight on GitHub, ignoring propose-work.md",
+            "body": "",
+            "state": "open",
+            "labels": [],
+            "milestone": None,
+        }
+    )
+
+    exit_code = mg.run("ossewawiel/verstaan", tmp_path, check=True, token="x", runner=backend)
+    assert exit_code == 1
 
 
 def test_main_requires_gh_token(monkeypatch, tmp_path):

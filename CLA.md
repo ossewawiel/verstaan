@@ -15,8 +15,8 @@ To sign: open a pull request that adds one line to `CONTRIBUTORS.md` in the form
 Full Name <email> — signed ICLA on YYYY-MM-DD
 ```
 
-The line is the record. A CLA check on pull requests will look for it once outside contributions
-begin (issue tracked in `docs/factory/PLAN.md` §7, Post-M6).
+The line is the record. A CLA check on pull requests (`.github/workflows/gate.yml`, the `cla`
+job) looks for it on every pull request except the owner's own.
 
 Language data you contribute is licensed CC BY-SA 4.0. If it derives from the UNL Archive, keep
 the archive attribution in `data/archive/manifest.jsonl`.

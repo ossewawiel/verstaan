@@ -51,9 +51,9 @@ jobs:
         run: |
           # Real tokens, not the bare prefixes: a classic PAT is ghp_ + 36 chars, a fine-grained
           # one is github_pat_ + 22+ chars. This is why prose that only mentions the prefix (this
-          # file, the issue file, CLA docs) never trips the check.
-          if git grep -nIE '\bghp_[A-Za-z0-9]{36}\b|\bgithub_pat_[A-Za-z0-9_]{22,}\b' -- . \
-              ':!.github/workflows/gate.yml'; then
+          # file, the issue file, CLA docs) never trips the check. No path is excluded: a live
+          # token pasted anywhere, including this file, must still be caught.
+          if git grep -nIE '\bghp_[A-Za-z0-9]{36}\b|\bgithub_pat_[A-Za-z0-9_]{22,}\b' -- .; then
             echo "::error::a GitHub token pattern was found committed in the repository"
             exit 1
           fi
@@ -101,7 +101,7 @@ jobs:
         run: echo "VCPKG_ROOT=$env:VCPKG_INSTALLATION_ROOT" >> $env:GITHUB_ENV
 
       - name: Cache vcpkg binaries
-        if: hashFiles('CMakePresets.json') != ''
+        if: hashFiles('vcpkg.json') != ''
         uses: actions/cache@v4
         with:
           path: |
@@ -122,11 +122,11 @@ jobs:
         run: ctest --preset msvc-debug -L fast --output-on-failure
 
       - name: Install ninja (Linux)
-        if: runner.os == 'Linux' && hashFiles('CMakePresets.json') != ''
+        if: runner.os == 'Linux' && hashFiles('CMakeLists.txt') != ''
         run: sudo apt-get update && sudo apt-get install -y ninja-build
 
       - name: Configure and build (clang/gcc)
-        if: runner.os == 'Linux' && hashFiles('CMakePresets.json') != ''
+        if: runner.os == 'Linux' && hashFiles('CMakeLists.txt') != ''
         shell: bash
         env:
           CXX_COMPILER: ${{ matrix.compiler == 'clang' && 'clang++' || 'g++' }}
@@ -138,15 +138,27 @@ jobs:
             -DVCPKG_TARGET_TRIPLET=x64-linux
           cmake --build build/ci
 
+      # --no-tests=error mirrors the MSVC preset's "noTestsAction": "error" (CMakePresets.json):
+      # a Linux leg that builds but has zero `fast`-labelled tests must fail loudly, not exit 0.
       - name: Test (clang/gcc)
-        if: runner.os == 'Linux' && hashFiles('CMakePresets.json') != ''
+        if: runner.os == 'Linux' && hashFiles('CMakeLists.txt') != ''
         shell: bash
-        run: ctest --test-dir build/ci -L fast --output-on-failure
+        run: ctest --test-dir build/ci -L fast --output-on-failure --no-tests=error
 
-      - name: No build system yet
-        if: hashFiles('CMakePresets.json') == ''
-        shell: bash
+      # CMakePresets.json only gates the MSVC leg (it is the only one that reads presets; the
+      # comment at the top of this file explains why Linux configures CMake directly instead).
+      # CMakeLists.txt is what actually gates whether there is a real CMake project to build at
+      # all, on any OS, so that is the signal both "no build system yet" messages use -- not a
+      # file neither Linux leg touches.
+      - name: No build system yet (MSVC)
+        if: matrix.compiler == 'msvc' && hashFiles('CMakePresets.json') == ''
+        shell: pwsh
         run: echo "CMakePresets.json does not exist on this ref yet (issue 2) -- skipping build and ctest"
+
+      - name: No build system yet (Linux)
+        if: runner.os == 'Linux' && hashFiles('CMakeLists.txt') == ''
+        shell: bash
+        run: echo "CMakeLists.txt does not exist on this ref yet (issue 2) -- skipping build and ctest"
 
       - name: pytest
         shell: bash
@@ -164,6 +176,40 @@ jobs:
             python -m tools.validate --all
           else
             echo "tools/validate does not exist yet (issue 3) -- skipping"
+          fi
+
+  # docs/factory/issues/91-source-control-and-ci.md: the mirror is the only thing that keeps
+  # GitHub issues in step with docs/factory/issues/*.md; this job is what notices when something
+  # closed a GitHub issue by hand, or a local file's close didn't get mirrored. It reports drift,
+  # it does not fix it (that is `tools/factory/mirror_github.py` without `--check`, run by
+  # `.claude/skills/factory-run/SKILL.md` after every close), and it does not gate the merge --
+  # `GH_TOKEN` here is the read-only, per-run `GITHUB_TOKEN`, which cannot always see a fork's
+  # base repo correctly, so a false positive here must not block a PR.
+  mirror-check:
+    name: mirror-check
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+      issues: read
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Install Python tooling
+        run: pip install pyyaml
+
+      - name: Report drift between docs/factory/issues/*.md and GitHub
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if [ -f tools/factory/mirror_github.py ]; then
+            python -m tools.factory.mirror_github --check --repo ${{ github.repository }}
+          else
+            echo "tools/factory/mirror_github.py does not exist on this ref yet -- skipping"
           fi
 
   # A pull request from anyone but the owner must have every commit author's email in
@@ -188,7 +234,7 @@ jobs:
             "${{ github.event.pull_request.base.sha }}..${{ github.event.pull_request.head.sha }}" \
             | sort -u)
           for email in $emails; do
-            if ! grep -qF "$email" CONTRIBUTORS.md; then
+            if ! grep -qF "<$email>" CONTRIBUTORS.md; then
               echo "::error::$email has not signed the CLA. Read CLA.md, then add a line to CONTRIBUTORS.md in this PR."
               missing=1
             fi

@@ -11,10 +11,10 @@ must return nothing outside `tests/`. A hit means an issue was closed on a stub.
 
 Step 1, format and secrets. `clang-format --dry-run --Werror $(git ls-files 'engine/**/*.cpp' 'engine/**/*.hpp' 'apps/**/*.cpp' 'apps/**/*.hpp')`
 and `ruff format --check tools/` and `ruff check tools/`. Then
-`git grep -nIE '\bghp_[A-Za-z0-9]{36}\b|\bgithub_pat_[A-Za-z0-9_]{22,}\b' -- . ':!.github/workflows/gate.yml'`
-must find nothing; a hit means a live-shaped GitHub token was committed (issue 91). The pattern
-requires the token-length suffix, not just the prefix, so this file and the issue files that
-mention the prefixes in prose never trip it.
+`git grep -nIE '\bghp_[A-Za-z0-9]{36}\b|\bgithub_pat_[A-Za-z0-9_]{22,}\b' -- .`
+must find nothing; a hit means a live-shaped GitHub token was committed (issue 91). No path is
+excluded. The pattern requires the token-length suffix, not just the prefix, so this file and the
+issue files that mention the prefixes in prose never trip it.
 
 Step 2, build every preset that exists in `CMakePresets.json`:
 `cmake --preset <p> && cmake --build --preset <p>` for each. The `arm-basic` preset is required

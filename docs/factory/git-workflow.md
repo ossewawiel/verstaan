@@ -47,6 +47,10 @@ own) and fire the same way for every tree; `tools/console/install-git-hooks.sh` 
   `docs(#NN): <title>`, `chore(#NN): <title>`. Scope is the issue number.
 - After the work commit, a `chore(#NN): close` commit flips `status: done` and fills `commit:` in
   the issue file with the work commit's hash.
+- Right after the close commit, `python -m tools.factory.mirror_github` runs (`GH_TOKEN` from the
+  environment) so the GitHub issue closes and its labels update in step with the file. This is
+  what keeps `--check` clean; skipping it is what drift looks like. `.claude/skills/factory-run/SKILL.md`
+  "After the agent hands off" is the one place this is scripted.
 - Commit messages end with the attribution trailer the session provides.
 - Do not amend. Do not force-push. Do not rebase interactively.
 

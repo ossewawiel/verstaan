@@ -34,6 +34,7 @@ LABELS_FILE = REPO_ROOT / ".github" / "labels.yml"
 
 FRONTMATTER_RE = re.compile(r"\A---\n(.*?)\n---\n", re.DOTALL)
 GITHUB_ISSUE_LINE_RE = re.compile(r"^github_issue:.*$", re.MULTILINE)
+NUMBERED_TITLE_RE = re.compile(r"^#(\d+) ")
 
 
 class MirrorError(RuntimeError):
@@ -242,9 +243,25 @@ def infer_repo() -> str:
 
 
 def find_remote_issue(local: LocalIssue, remote_issues: list[dict]) -> dict | None:
+    """Match `local` to the GitHub issue it mirrors, or `None` if there is none yet.
+
+    Trusting a local `github_issue:` field blindly is how two files that share one number by
+    accident (a bad merge-conflict resolution, say) would silently overwrite each other's issue,
+    every run. So a number match is only accepted if the remote title's own `#NN ` prefix -- when
+    it has one -- agrees with `local.number`; a title with no numbered prefix yet (freshly created,
+    or renamed by hand) is not a collision and is accepted as before.
+    """
     if local.github_issue is not None:
         for remote in remote_issues:
             if remote["number"] == local.github_issue:
+                prefix_match = NUMBERED_TITLE_RE.match(remote["title"])
+                if prefix_match and int(prefix_match.group(1)) != local.number:
+                    raise MirrorError(
+                        f"{local.path}: github_issue: {local.github_issue} points at GitHub "
+                        f"issue {remote['title']!r}, which belongs to #{prefix_match.group(1)}, "
+                        f"not #{local.number:02d}. Two local files likely share one github_issue "
+                        "number; fix the field by hand before mirroring."
+                    )
                 return remote
     prefix = f"#{local.number:02d} "
     for remote in remote_issues:
@@ -345,8 +362,11 @@ def run(repo: str, issues_dir: Path, check: bool, token: str, runner=subprocess.
     remote_issues = gh.list_issues()
 
     all_diffs: list[Diff] = list(milestone_diffs)
+    matched_remote_numbers: set[int] = set()
     for local in local_issues:
         remote = find_remote_issue(local, remote_issues)
+        if remote is not None:
+            matched_remote_numbers.add(remote["number"])
         diffs = diff_issue(local, remote, milestone_numbers)
         all_diffs.extend(diffs)
 
@@ -362,6 +382,7 @@ def run(repo: str, issues_dir: Path, check: bool, token: str, runner=subprocess.
         }
         if remote is None:
             created = gh.create_issue(wanted_body)
+            matched_remote_numbers.add(created["number"])
             if local.desired_state == "closed":
                 gh.update_issue(created["number"], {"state": "closed"})
             write_github_issue_field(local, created["number"])
@@ -372,6 +393,21 @@ def run(repo: str, issues_dir: Path, check: bool, token: str, runner=subprocess.
             if not state_drift and remote["state"] != local.desired_state:
                 gh.update_issue(remote["number"], {"state": local.desired_state})
             write_github_issue_field(local, remote["number"])
+
+    # The reverse pass: a GitHub issue with no matching local file is invisible to the loop above,
+    # which only ever asks "does this local file have a GitHub issue". An outside contributor who
+    # opens a GitHub issue by hand instead of a docs/factory/issues/*.md file (propose-work.md asks
+    # them not to, but nothing stops it) would otherwise never show up as drift.
+    for remote in remote_issues:
+        if remote["number"] not in matched_remote_numbers:
+            all_diffs.append(
+                Diff(
+                    remote["number"],
+                    "orphan",
+                    f"GitHub issue {remote['title']!r} has no matching docs/factory/issues/*.md "
+                    "file",
+                )
+            )
 
     for diff in all_diffs:
         stream = sys.stdout if not check else sys.stderr
