@@ -2,14 +2,14 @@
 issue: 90
 title: "The console: a local CIC page rendered from the issue files"
 milestone: Side
-status: open
+status: done
 depends_on: []
 agent: implementer
 agents: [implementer]
 model: sonnet
 effort: medium
 checkpoint: null
-commit: null
+commit: 24ece52
 ---
 ## What
 
