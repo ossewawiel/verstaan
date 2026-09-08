@@ -2,14 +2,14 @@
 issue: 1
 title: "Prove the gate ladder fails before trusting it"
 milestone: M0
-status: open
+status: done
 depends_on: []
 agent: implementer
 agents: [implementer]
 model: sonnet
 effort: medium
 checkpoint: 1
-commit: null
+commit: 9bf3f3a
 ---
 ## What
 
@@ -38,6 +38,6 @@ The real engine, any data. The library target may be an empty `verstaan_core` wi
 
 ## Done when
 
-- [ ] Every criterion above has a recorded failing run and a recorded passing run.
-- [ ] `docs/factory/README.md` gate table matches what actually runs.
-- [ ] The deliberately broken test and the hand-written stamp are removed before the commit.
+- [x] Every criterion above has a recorded failing run and a recorded passing run.
+- [x] `docs/factory/README.md` gate table matches what actually runs.
+- [x] The deliberately broken test and the hand-written stamp are removed before the commit.
