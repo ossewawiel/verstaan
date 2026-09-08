@@ -1,0 +1,40 @@
+# Personal mail export accidentally saved here. Never commit.
+UNL Project Archive Now Available*
+*.eml
+
+# Secrets and local settings
+.env
+.env.*
+.claude/settings.local.json
+secrets/
+
+# Build output
+build/
+out/
+cmake-build-*/
+*.obj
+*.o
+*.pdb
+*.ilk
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+
+# Mirror scratch (the curated mirror under data/archive/ IS committed)
+data/archive/_raw/
+data/archive/_tmp/
+
+# Editors
+.vscode/
+.idea/
+*.swp
+
+# Playwright MCP scratch
+.playwright-mcp/

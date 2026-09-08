@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>gate.md · Verstaan console</title>
+<link rel="stylesheet" href="../theme.css">
+<link rel="stylesheet" href="../console.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="cic-bar">
+  <span class="cic-bar__sigil" aria-hidden="true">◈</span>
+  <div class="cic-bar__id">
+    <span class="cic-bar__proj">Verstaan</span>
+    <span class="cic-bar__sub">library · .claude/commands/gate.md</span>
+  </div>
+  <nav class="cic-bar__nav" aria-label="Rooms">
+    <a href="../index.html">Console</a>
+    <a href="../quests.html">Quests</a>
+    <a href="../playbook.html">Playbook</a>
+    <span class="cic-bar__here">Library</span>
+    <a href="../glossary.html">Glossary</a>
+  </nav>
+</header>
+<main id="main" class="room room--doc">
+  <p class="altitude__band">Library · .claude/commands/gate.md</p>
+  <div class="doc">
+    <article class="prose"><pre class="front" data-lang="frontmatter"><code>description: The full local gate before a pull request or merge — format check, all tier builds, all tests, clang-tidy, equivalence, data validation, tooling tests — run for real, not assumed.</code></pre><p>Run every step. Do not skip a step because &quot;it passed last time&quot;. Do not pipe any gate into <code>head</code>, <code>tail</code> or <code>grep</code> and then read the exit code; a pipeline's exit code is the last command's.</p>
+<p>Step 0, stubs. <code>grep -rn 'not_implemented\|NotImplementedError' engine/src tools/ --include=<em>.cpp --include=</em>.py</code> must return nothing outside <code>tests/</code>. A hit means an issue was closed on a stub.</p>
+<p>Step 1, format. <code>clang-format --dry-run --Werror $(git ls-files 'engine/**/*.cpp' 'engine/**/*.hpp' 'apps/**/*.cpp' 'apps/**/*.hpp')</code> and <code>ruff format --check tools/</code> and <code>ruff check tools/</code>.</p>
+<p>Step 2, build every preset that exists in <code>CMakePresets.json</code>: <code>cmake --preset &lt;p&gt; &amp;&amp; cmake --build --preset &lt;p&gt;</code> for each. The <code>arm-basic</code> preset is required from M4; before that it may be absent, and you say so.</p>
+<p>Step 3, tests. <code>ctest --preset &lt;p&gt; --output-on-failure</code> for each built preset. Then <code>python -m pytest tools/</code>. Then <code>python -m tools.validate --all</code>.</p>
+<p>Step 4, tidy. <code>clang-tidy -p build/&lt;clang preset&gt; $(git ls-files 'engine/**/*.cpp')</code>. Warnings are errors.</p>
+<p>Step 5, equivalence and tiers (M4 onward). <code>ctest --preset clang-release -L equivalence</code> and <code>ctest --preset clang-release -L tier</code>.</p>
+<p>Step 6, regenerate. <code>python -m tools.compiler --all-tiers &amp;&amp; git diff --exit-code engine/generated/</code>. A diff means someone edited generated code by hand or the compiler changed without regenerating.</p>
+<p>Only if every step passed, and <code>git status --porcelain</code> is empty: <code>git rev-parse HEAD &gt; &quot;$(git rev-parse --git-dir)/verstaan-gate-stamp&quot;</code></p>
+<p>A failed gate leaves no stamp, which is what keeps the merge shut. Report each step's command, exit code and time. Then hand over as <a class="code-link" href="../docs/docs--factory--git-workflow.html"><code>docs/factory/git-workflow.md</code></a> &quot;Finishing a milestone&quot; says.</p></article>
+    <aside class="doc__aside"><p class="muted">Source: <code>.claude/commands/gate.md</code>. Edit the file, then regenerate. <a href="../library.html">Back to the library</a>.</p></aside>
+  </div>
+  <footer class="cic-foot"><p class="cic-foot__note">Rendered 2026-09-08T09:48:51Z.</p></footer>
+</main>
+
+
+</body>
+</html>

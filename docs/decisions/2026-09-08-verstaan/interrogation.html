@@ -1,0 +1,663 @@
+<title>Verstaan interrogation</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@400&display=swap">
+<style>
+  :root {
+    --bg: #F7F8FA;
+    --surface: #FFFFFF;
+    --ink: #1B2027;
+    --ink-2: #5B6472;
+    --line: #E1E5EB;
+    --accent: #C2410C;
+    --accent-soft: rgba(194,65,12,.10);
+    --sev-crit: #B3261E;
+    --sev-high: #C2410C;
+    --sev-med: #B58105;
+    --sev-low: #3B6E8F;
+    --good: #2E7D4F;
+    --good-soft: rgba(46,125,79,.10);
+    --code-bg: #EEF1F5;
+    --serif: 'Fraunces', Georgia, serif;
+    --sans: 'Source Sans 3', system-ui, sans-serif;
+    --mono: 'JetBrains Mono', ui-monospace, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #101317;
+      --surface: #171B21;
+      --ink: #E6E9EE;
+      --ink-2: #9AA3B2;
+      --line: #2A313B;
+      --accent: #F0873F;
+      --accent-soft: rgba(240,135,63,.14);
+      --sev-crit: #FF6B62;
+      --sev-high: #F0873F;
+      --sev-med: #E5B73B;
+      --sev-low: #7FB3D5;
+      --good: #5DBE8A;
+      --good-soft: rgba(93,190,138,.14);
+      --code-bg: #1F252D;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #101317;
+    --surface: #171B21;
+    --ink: #E6E9EE;
+    --ink-2: #9AA3B2;
+    --line: #2A313B;
+    --accent: #F0873F;
+    --accent-soft: rgba(240,135,63,.14);
+    --sev-crit: #FF6B62;
+    --sev-high: #F0873F;
+    --sev-med: #E5B73B;
+    --sev-low: #7FB3D5;
+    --good: #5DBE8A;
+    --good-soft: rgba(93,190,138,.14);
+    --code-bg: #1F252D;
+  }
+  body { background: var(--bg); color: var(--ink); font-family: var(--sans); font-size: 16px; line-height: 1.55; margin: 0; }
+  a { color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-soft); }
+  a:hover { border-bottom-color: var(--accent); }
+  code, .mono { font-family: var(--mono); font-size: .92em; }
+  .page { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 48px; max-width: 1120px; margin: 0 auto; padding: 40px 32px 80px; }
+  @media (max-width: 900px) { .page { grid-template-columns: 1fr; gap: 24px; padding: 24px 20px 64px; } .rail { display: none; } }
+  .rail { position: sticky; top: 24px; align-self: start; font-size: 13px; }
+  .rail ol { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; }
+  .rail a { color: var(--ink-2); border-bottom: none; }
+  .rail a:hover { color: var(--accent); }
+  .rail .label { font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2); margin-bottom: 12px; }
+  .eyebrow { font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-2); }
+  h1 { font-family: var(--serif); font-weight: 600; font-size: 40px; line-height: 1.1; margin: 12px 0 16px; text-wrap: balance; letter-spacing: -.01em; }
+  h2 { font-family: var(--serif); font-weight: 600; font-size: 22px; margin: 0 0 12px; letter-spacing: -.005em; }
+  p { margin: 0 0 12px; max-width: 68ch; }
+  .lede { font-size: 18px; max-width: 68ch; }
+  .lede em { font-style: italic; color: var(--ink-2); }
+  section { margin-top: 48px; }
+  .verdict { margin-top: 32px; display: grid; grid-template-columns: minmax(180px, 260px) 1fr; gap: 24px; padding: 24px; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); }
+  .verdict .figure { font-family: var(--serif); font-weight: 600; font-size: 64px; line-height: 1; color: var(--accent); }
+  .verdict .figure small { display: block; font-family: var(--sans); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-2); margin-top: 8px; font-weight: 600; }
+  .tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 12px; }
+  .tile { padding: 12px 14px; border: 1px solid var(--line); border-radius: 6px; font-variant-numeric: tabular-nums; }
+  .tile .k { font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-2); }
+  .tile .v { font-family: var(--serif); font-weight: 600; font-size: 22px; margin-top: 4px; }
+  .assumption { padding: 12px 14px; border-left: 3px solid var(--sev-med); background: var(--surface); border-radius: 0 6px 6px 0; margin: 8px 0; font-size: 14px; }
+  .assumption strong { color: var(--sev-med); font-weight: 600; }
+  .assumption.ok { border-left-color: var(--good); }
+  .assumption.ok strong { color: var(--good); }
+  .assumption.dead { border-left-color: var(--sev-crit); }
+  .assumption.dead strong { color: var(--sev-crit); }
+  .group-h { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-2); margin: 32px 0 10px; font-weight: 600; }
+  .card { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 20px 22px; margin: 12px 0; }
+  .card .top { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-bottom: 12px; }
+  .card .num { font-family: var(--mono); font-size: 12px; color: var(--ink-2); }
+  .card .title { font-family: var(--serif); font-weight: 600; font-size: 18px; flex: 1; line-height: 1.3; }
+  .chip { display: inline-block; font-size: 11px; letter-spacing: .06em; text-transform: uppercase; padding: 3px 10px; border-radius: 999px; font-weight: 600; }
+  .chip.open { background: var(--sev-med); color: #fff; }
+  .chip.answered { background: var(--good); color: #fff; }
+  .chip.alive { background: var(--sev-low); color: #fff; }
+  .chip.eliminated { background: var(--sev-crit); color: #fff; }
+  .row { display: grid; grid-template-columns: 110px 1fr; gap: 10px 16px; margin-top: 8px; font-size: 14px; }
+  .row .k { font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-2); padding-top: 2px; font-weight: 600; }
+  .row .v { color: var(--ink); }
+  .row .v.empty { color: var(--ink-2); font-style: italic; }
+  .row .v.answer { border-left: 2px solid var(--good); padding-left: 12px; white-space: pre-line; }
+  .row .v.read { color: var(--ink-2); }
+  ul.tight { margin: 4px 0 0; padding-left: 18px; }
+  ul.tight li { margin: 3px 0; }
+  .opt-grid { display: grid; grid-template-columns: 1fr; gap: 14px; margin-top: 12px; }
+  .opt .top .size { font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-2); font-family: var(--mono); }
+  .opt.dead { opacity: .55; }
+  .opt.rec { border-color: var(--accent); background: var(--accent-soft); }
+  .chip.rec { background: var(--accent); color: #fff; }
+  .chip.runner { background: transparent; color: var(--ink-2); border: 1px solid var(--line); }
+  .verdict .figure.name { font-size: 40px; line-height: 1.1; }
+  .rec-block { border: 1px solid var(--accent); border-radius: 6px; padding: 20px 22px; background: var(--surface); margin: 12px 0; }
+  .rec-block h3 { margin-top: 16px; }
+  .rec-block h3:first-child { margin-top: 0; }
+  .conf { color: var(--accent); letter-spacing: .1em; font-family: var(--mono); }
+  .strike { margin-top: 12px; padding-top: 10px; border-top: 1px solid var(--line); font-size: 14px; color: var(--sev-crit); }
+  .research h4 { font-family: var(--serif); font-weight: 600; font-size: 16px; margin: 24px 0 6px; color: var(--ink); }
+  .research p { font-size: 14px; color: var(--ink-2); max-width: 72ch; }
+  .research p .cite { color: var(--ink); }
+  .callout { border-left: 3px solid var(--accent); padding: 14px 18px; background: var(--accent-soft); border-radius: 0 6px 6px 0; margin: 24px 0; font-size: 15px; }
+  .footer { margin-top: 64px; padding-top: 24px; border-top: 1px solid var(--line); font-size: 13px; color: var(--ink-2); }
+  .footer .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
+  .footer strong { color: var(--ink); font-weight: 600; }
+  .snippet { font-family: var(--mono); font-size: 13px; background: var(--code-bg); padding: 10px 14px; border-radius: 4px; overflow-x: auto; margin: 8px 0; color: var(--ink); }
+  .lang-note { display: inline-block; margin-top: 4px; font-size: 12px; color: var(--ink-2); font-style: italic; }
+  table { border-collapse: collapse; width: 100%; font-size: 14px; margin: 8px 0 16px; }
+  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-2); font-weight: 600; }
+  td.mono { font-family: var(--mono); font-size: 13px; }
+  .tablewrap { overflow-x: auto; }
+</style>
+
+<div class="page">
+  <nav class="rail">
+    <div class="label">Contents</div>
+    <ol>
+      <li><a href="#framing">1. What is really being asked</a></li>
+      <li><a href="#questions">2. Questions</a></li>
+      <li><a href="#options">3. Candidate options</a></li>
+      <li><a href="#recommendation">4. Recommendation</a></li>
+      <li><a href="#research">5. Primary-source research</a></li>
+      <li><a href="#narrow">6. Closing</a></li>
+      <li><a href="#method">Method</a></li>
+    </ol>
+  </nav>
+
+  <main>
+    <div class="eyebrow">Verstaan · initial specification · 2026-09-08 · Turn 5 · closed</div>
+    <h1>Can a hand-written UNL engine still earn its place next to a 40&nbsp;MB offline NMT model?</h1>
+    <p class="lede">Yes, on the terms you set: as a deterministic engine that is the product, not a means to one. Build the UNL-native engine, mirror the whole archive rather than three languages, and license it as Shared Files: an MPL-2.0 engine, CC&nbsp;BY-SA data, a contributor agreement, and a trademark on the name. <em>The interrogation is closed. The recommendation section says why, what the runner-up is, and what would change the answer.</em></p>
+
+    <div class="verdict">
+      <div class="figure name">
+        Shared Files
+        <small>recommended package &middot; UNL-native engine</small>
+      </div>
+      <div class="tiles">
+        <div class="tile"><div class="k">Open questions</div><div class="v">0</div></div>
+        <div class="tile"><div class="k">Eliminated</div><div class="v">4</div></div>
+        <div class="tile"><div class="k">Answers</div><div class="v">17</div></div>
+        <div class="tile"><div class="k">Sources</div><div class="v">18</div></div>
+      </div>
+    </div>
+
+    <section id="framing">
+      <div class="eyebrow">01</div>
+      <h2>What I think you're really asking</h2>
+      <p>The question is no longer "rules or neural", and it is no longer "rules with or without a fallback". You have chosen rules first, with neural held in reserve until the rules are measured to fall short. The question is now <em>how to structure a repository whose data half is CC&nbsp;BY-SA and whose code half is yours, so that an open initiative can grow on it without you losing the freedom to change the code licence later</em>, and how to bring the archive home so the project does not depend on a volunteer-run site staying up.</p>
+
+      <div class="assumption ok"><strong>Assumption A, verified.</strong> The UNL archive is live at unlarchive.org, publicly crawlable, and its materials are released under CC&nbsp;BY-SA unless an item states otherwise. Login credentials exist and are held by you, not in this document.</div>
+      <div class="assumption"><strong>Assumption B, still unmeasured.</strong> A compiled rule engine is smaller and faster than a quantised neural model on the same device. You have chosen to test this rather than assume it: "lets see how small we can usefully go".</div>
+      <div class="assumption dead"><strong>Assumption C, withdrawn.</strong> Determinism is not a regulatory requirement. It is a chosen principle: "Deterministic and mechanical is fast. The one thing I think we might have over the rest." That is a design value, and it stands.</div>
+      <div class="assumption ok"><strong>Assumption D, measured.</strong> The archive's language table, read while logged in, gives Afrikaans 8,959 base forms, 13,768 word forms, 17 inflectional paradigms and 7 subcategorisation frames, 42 grammar rules in all. English has 209,178 base forms and a grammar at level B1. Dutch has 4,595 base forms and no grammar. The Afrikaans generation grammar has to be written; the English one can be studied as the model. Your own 2012&ndash;2013 uploads are on the Files page and download as plain text.</div>
+      <div class="assumption"><strong>Assumption E, deferred.</strong> Long-term rule maintenance rests on contributors who arrive after the proof of concept. The risk is not gone; it is scheduled.</div>
+    </section>
+
+    <section id="questions">
+      <div class="eyebrow">02</div>
+      <h2>Questions that change the answer</h2>
+
+      <div class="group-h">Existing system</div>
+
+      <div class="card">
+        <div class="top">
+          <span class="num">01</span>
+          <span class="title">Is the UNL Web archive still reachable, and under what licence are its dictionaries and rules?</span>
+          <span class="chip answered">Answered</span>
+        </div>
+        <div class="row"><div class="k">Why it matters</div><div class="v read">The spec's first phase is "harvest the archive". If the archive is gone or unlicensable, every option depending on UNL primary data changes shape.</div></div>
+        <div class="row"><div class="k">Answer</div><div class="v answer">Here is the e-mail and the path. you can scrape it as much you like. if you need a username and password for actual data via the login let me know.</div></div>
+        <div class="row"><div class="k">Read</div><div class="v read">Confirmed against the site. The archive opened in November 2025 after the UNDL Foundation closed in 2024. Terms section 6 releases materials under CC&nbsp;BY-SA, including commercial use, with share-alike on adaptations. See research below. The Gmail export you attached also contains a username and password in its inbox preview; those are not reproduced here.</div></div>
+        <div class="row"><div class="k">Eliminates</div><div class="v">Nothing. Keeps <em>UNL-native</em> and <em>Hybrid</em> fully alive and sizes the harvest as a crawl plus login export, not a rescue.</div></div>
+      </div>
+
+      <div class="card">
+        <div class="top">
+          <span class="num">02</span>
+          <span class="title">How much of the UNL rule material is actually finished, versus paper-only descriptions?</span>
+          <span class="chip answered">Answered</span>
+        </div>
+        <div class="row"><div class="k">Answer</div><div class="v answer">If you log in to get the actual data you will see that there are actually a lot of material to work with to kick it of properly. Also with the help of developers and electronic dictionaries, and LLMs a lot of data can be derived to get to a point where the system can demonstratively work well.</div></div>
+        <div class="row"><div class="k">Read</div><div class="v read">The public UNLarium page confirms the platform held dictionaries, grammars, corpora and knowledge bases for "more than 100 languages", with benchmark tiers from 5,000 to over 100,000 base forms. Afrikaans and Dutch are not named on the public page. The size of those two specifically is still unmeasured and needs a login crawl.</div></div>
+        <div class="row"><div class="k">Eliminates</div><div class="v">Nothing. Sizes Phase 1.</div></div>
+      </div>
+
+      <div class="group-h">Constraints</div>
+
+      <div class="card">
+        <div class="top">
+          <span class="num">03</span>
+          <span class="title">Is offline execution a hard requirement, or a strong preference?</span>
+          <span class="chip answered">Answered</span>
+        </div>
+        <div class="row"><div class="k">Answer</div><div class="v answer">Offline execution is not a hard requirment, bot needed. the idea is that you have a basic vovabulary installed on a small device to work effectively in most cases without having to worry about connection. There are a lot of cases where this will be beneficial. not just touristy stuff. actual, military (UN specific) peace keeping, medical, rescue, crisis etc. So it should be one of the perks. This will become open source with more contributors. maybe even starting up the original idea again, but this time with AI and LLM's to help development. I just want to get to a well rounded working model first.</div></div>
+        <div class="row"><div class="k">Read</div><div class="v read">Offline is a tier, not a wall. A connected tier is allowed to be larger and to reach further. This keeps the <em>Hybrid</em> option alive because a neural or hosted fallback can live in the connected tier without touching the small-device promise.</div></div>
+        <div class="row"><div class="k">Eliminates</div><div class="v">Nothing.</div></div>
+      </div>
+
+      <div class="card">
+        <div class="top">
+          <span class="num">04</span>
+          <span class="title">What is the smallest device the compact engine must run on, in numbers?</span>
+          <span class="chip answered">Answered</span>
+        </div>
+        <div class="row"><div class="k">Answer</div><div class="v answer">Different compiled libraries will be in use. basic comms can be small up to raspberry pi 0 size, for mobile phones a bigger vocabulary and rules engine can be used. also compile for different languages so you can choose which ones for a device that can keep it small. on line connection can give you access to all of it, and still be lightning fast. different scenarious. lets see how small we can usefully go but also be able to be bigger and more far reaching.</div></div>
+        <div class="row"><div class="k">Read</div><div class="v read">Three tiers, selected at compile time by language set and vocabulary size: <em>basic comms</em> at Pi Zero class, <em>phone</em>, and <em>connected</em>. The floor is not fixed; the project will measure it. A Pi Zero 2 W carries 512&nbsp;MB, which a distilled neural model also fits, so the size argument against neural is not automatic at that tier; it must be shown.</div></div>
+        <div class="row"><div class="k">Eliminates</div><div class="v">Nothing on its own. Sets a benchmark obligation for Phase 3.</div></div>
+      </div>
+
+      <div class="card">
+        <div class="top">
+          <span class="num">05</span>
+          <span class="title">What does "immediate" mean in milliseconds, at what sentence length?</span>
+          <span class="chip answered">Answered</span>
+        </div>
+        <div class="row"><div class="k">Answer</div><div class="v answer">It can run from scripting of the actual rules for analyzing and configuring and fine tuning to where stuff are embedded and part of the source code so it can realy be as fast as say c++ can deliver.</div></div>
+        <div class="row"><div class="k">Read</div><div class="v read">No number given; the target is "as fast as C++ can deliver". Two execution modes are now explicit: an interpreted rule runtime for authoring and tuning, and a compiled build for shipping. That confirms segment 4 of the spec, the rule compiler, and adds a requirement the spec did not state: the two modes must produce identical output for the same rule set, or the tuning loop lies.</div></div>
+        <div class="row"><div class="k">Eliminates</div><div class="v">Nothing. Adds an equivalence-test requirement.</div></div>
+      </div>
+
+      <div class="group-h">Scale and load</div>
+
+      <div class="card">
+        <div class="top">
+          <span class="num">06</span>
+          <span class="title">Which language pairs, in which direction, and how many will exist at v1?</span>
+          <span class="chip answered">Answered</span>
+        </div>
+        <div class="row"><div class="k">Answer</div><div class="v answer">Obviously I am Afrikaans with English as very good second language. So it can be tested and fine tuned between Afr -> Eng, Eng -> Afr, Eng -> Eng, Afr -> Afr, for different contexts and registers. I do posses a Dutch grammer rules book and dutch dictionary to help with that rules but will not be necesseraly be able to vouch for correct duct. From Dutch to Afrikaans and English I will be able to judge well. So alot of development and Fine tuning can happen although between germanic languages. But this is the idea. get it working on that and bring other people in on the rest.</div></div>
+        <div class="row"><div class="k">Read</div><div class="v read">Three languages, one West Germanic cluster, and a reviewer who can vouch for two of them. The Eng&rarr;Eng and Afr&rarr;Afr cases are register and context rewriting through the interlingua; that is a genuine UNL strength and a useful early demo. Dutch enters as a language you can judge on input but not fully on output.</div></div>
+        <div class="row"><div class="k">Eliminates</div><div class="v">Nothing. Under the three-pair threshold, so <em>UNL-native</em> is tractable.</div></div>
+      </div>
+
+      <div class="group-h">Success criteria</div>
+
+      <div class="card">
+        <div class="top">
+          <span class="num">07</span>
+          <span class="title">Why does the output need to be deterministic? Name the user and the moment.</span>
+          <span class="chip answered">Answered</span>
+        </div>
+        <div class="row"><div class="k">Answer</div><div class="v answer">Deterministic and mechanical is fast. The one thing I think we might have over the rest. Also to keep the initiative alive. Tecnology evolution should always have variety to see what fits best where. Compitition also makes for better outcomes in general. I want to see how far this approach can take us.</div></div>
+        <div class="row"><div class="k">Read</div><div class="v read">Determinism is a principle and a bet, not a compliance item. That reframes the project: the rule engine is the product, and its job is to find out how far rules go. Any option that replaces rules with a neural core does not serve that job.</div></div>
+        <div class="row"><div class="k">Eliminates</div><div class="v"><em>Offline neural MT</em> as the engine. <em>Apertium port</em>, which drops UNL for shallow transfer. <em>Domain-narrow phrasebook</em>, which gives up the general model you want first.</div></div>
+      </div>
+
+      <div class="card">
+        <div class="top">
+          <span class="num">08</span>
+          <span class="title">Have you tried Argos Translate or a distilled NLLB-200 on your target sentences, as a baseline?</span>
+          <span class="chip answered">Answered</span>
+        </div>
+        <div class="row"><div class="k">Answer</div><div class="v answer">No I have not tried Argos. It is fine. I want something opensource that can go mainstreem with little effort on knowledge to use it. This might end up better.</div></div>
+        <div class="row"><div class="k">Read</div><div class="v read">Argos is out as a path, and that is consistent with Question 07. It stays in as a yardstick: the Phase 3 benchmark should run the same test sentences through Argos on the same Pi so the size and speed claim has a number next to it.</div></div>
+        <div class="row"><div class="k">Eliminates</div><div class="v">Confirms the elimination of <em>Offline neural MT</em>.</div></div>
+      </div>
+
+      <div class="group-h">Team and ops</div>
+
+      <div class="card">
+        <div class="top">
+          <span class="num">09</span>
+          <span class="title">Who writes and reviews the rules over the next five years, and are they linguists or engineers?</span>
+          <span class="chip answered">Answered</span>
+        </div>
+        <div class="row"><div class="k">Answer</div><div class="v answer">More people will come a long once a proper working well rounded implementable POC is available. So I want it to be an open initiative regarding growth and maintenance.</div></div>
+        <div class="row"><div class="k">Read</div><div class="v read">Until the proof of concept lands, the reviewer pool is one person plus coding agents. That makes the time to a convincing demo the single most important schedule number in the project, and it argues for the smallest first slice that still impresses: one register-aware Afr&harr;Eng translation of a short paragraph.</div></div>
+        <div class="row"><div class="k">Eliminates</div><div class="v">Nothing. Sizes Phase 3 downward.</div></div>
+      </div>
+
+      <div class="group-h">Compliance and reversibility</div>
+
+      <div class="card">
+        <div class="top">
+          <span class="num">10</span>
+          <span class="title">Are you content that rule and dictionary data derived from the archive ships under CC&nbsp;BY-SA, and which licence do you want on the engine code?</span>
+          <span class="chip answered">Answered</span>
+        </div>
+        <div class="row"><div class="k">Why it matters</div><div class="v read">CC&nbsp;BY-SA is share-alike: an adapted dictionary or grammar must be redistributed under the same licence. That fixes the data half of the repository. It does not fix the code half, and if the compiled library bakes data into engine source, the boundary blurs.</div></div>
+        <div class="row"><div class="k">Answer</div><div class="v answer">Lets keep the data CC BY-SA. The source code is mine for now with open licence. can change later. what are the pros and cons. this will end up being and open initiative.</div></div>
+        <div class="row"><div class="k">Read</div><div class="v read">Data settled. Code: "mine for now, open licence, can change later" holds exactly as long as you are the only copyright holder. The first merged outside contribution ends that unless a contributor agreement gives you the right to relicense. The pros and cons of each licence family, and of keeping that freedom, are in the research section under "Licensing the code half". Two follow-ups open below: Question 13 picks the licence, Question 14 protects "can change later".</div></div>
+        <div class="row"><div class="k">Eliminates</div><div class="v">None. Fixes one design rule for segment 4: generated C++ from BY-SA data is an adaptation of that data and carries BY-SA, so it must build as a separate library the engine links against, never be pasted into engine source.</div></div>
+      </div>
+
+      <div class="card">
+        <div class="top">
+          <span class="num">11</span>
+          <span class="title">Which archived tools do we build on, and which do we rewrite? EnCo, DeCo, IAN and EUGENE all exist as unmaintained source.</span>
+          <span class="chip answered">Answered</span>
+        </div>
+        <div class="row"><div class="k">Why it matters</div><div class="v read">Their rule formats are the formats the archived grammars are written in. A compiler that reads those formats saves rewriting every grammar. The public page does not surface the GitHub links; the login crawl must.</div></div>
+        <div class="row"><div class="k">Answer</div><div class="v answer">If we can get the source code it will help greatly with the C++ CLI apps and business logic. we can save the sensitive data locally. We do need to find all the data first. see if we can find the source. and alsocompile our own list of agent frinedly documentation on all we can get regarding UNL. to not be dependant on the archive on line.</div></div>
+        <div class="row"><div class="k">Read</div><div class="v read">Build on the archived code where it exists, and mirror everything locally. That makes Phase 1 larger than "harvest": it is a full mirror of the archive plus a rewrite of its documentation into agent-readable Markdown, with the original kept beside it for attribution. The archive is a volunteer's personal site; a mirror is the only guarantee it stays available. Whether the code carries CC&nbsp;BY-SA or its own licence is still unknown and decides whether it can be linked into a permissively licensed engine. Question 15 asks for the login.</div></div>
+        <div class="row"><div class="k">Eliminates</div><div class="v">None. Sizes Phase 1 upward and adds a deliverable: an offline UNL reference corpus.</div></div>
+      </div>
+
+      <div class="card">
+        <div class="top">
+          <span class="num">12</span>
+          <span class="title">May the first open-source proof of concept fall back to a neural model for sentences the rules cannot yet handle?</span>
+          <span class="chip answered">Answered</span>
+        </div>
+        <div class="row"><div class="k">Why it matters</div><div class="v read">The last fork between the two surviving options. A fallback makes the demo usable on any paragraph on day one but muddies the pitch. A UNL-only proof of concept fails visibly on uncovered sentences, which is honest and slower to impress.</div></div>
+        <div class="row"><div class="k">Answer</div><div class="v answer">I think we need to stay pragmatic and incorporate neural where we are lacking but as a last resort. lets first see where we can get without it.</div></div>
+        <div class="row"><div class="k">Read</div><div class="v read">Neither option survives unchanged; they merge in sequence. Option A is the proof of concept. Option D becomes a later layer, switched on only when a measurement says the rules are "lacking", and only in the phone and connected tiers. That needs a definition of "lacking" that a test can evaluate, which is Question 16. Until then, every uncovered sentence is a rule to write, not a route to fall back on.</div></div>
+        <div class="row"><div class="k">Eliminates</div><div class="v">Neither. Converts <em>Hybrid</em> from a competing shape to a deferred layer on <em>UNL-native</em>.</div></div>
+      </div>
+
+      <div class="group-h">New this turn &middot; Compliance, reversibility, existing system</div>
+
+      <div class="card">
+        <div class="top">
+          <span class="num">13</span>
+          <span class="title">Permissive or copyleft for the engine code: MIT, Apache-2.0, GPLv3 or AGPLv3?</span>
+          <span class="chip answered">Answered</span>
+        </div>
+        <div class="row"><div class="k">Why it matters</div><div class="v read">A permissive licence lets a device maker embed the engine in a closed product. Copyleft forces them to publish engine changes. GPLv3 is the one software licence Creative Commons declares CC&nbsp;BY-SA-compatible.</div></div>
+        <div class="row"><div class="k">Answer</div><div class="v answer">I am not well versed with licencing but would like to keep it open source so no one can claim it. come up with ideas.</div></div>
+        <div class="row"><div class="k">Read</div><div class="v read">"No one can claim it" has two halves, and a licence only covers one. Copyright licences stop a closed fork and require attribution; every licence on the page does the second, only copyleft does the first. Neither stops someone naming their product Verstaan; Apache-2.0 section 6 and MPL-2.0 section 2.3 say outright that they grant no trademark rights. The name needs a trademark, or at least a registered domain and a published name policy. Three complete packages are laid out as cards in the options section, each pairing an engine licence with a data licence and a contributor agreement. Question 17 asks which.</div></div>
+        <div class="row"><div class="k">Eliminates</div><div class="v">Reduces four licences to three packages.</div></div>
+      </div>
+
+      <div class="card">
+        <div class="top">
+          <span class="num">14</span>
+          <span class="title">Will outside contributors sign a contributor licence agreement, or only a developer certificate of origin?</span>
+          <span class="chip answered">Answered</span>
+        </div>
+        <div class="row"><div class="k">Why it matters</div><div class="v read">A CLA grants you the right to relicense a contribution. A DCO is a sign-off that grants nothing more. With a DCO only, the first outside merge freezes the licence.</div></div>
+        <div class="row"><div class="k">Answer</div><div class="v answer">I am not well versed with licencing but would like to keep it open source so no one can claim it. come up with ideas.</div></div>
+        <div class="row"><div class="k">Read</div><div class="v read">Folded into the three packages below. Two of them use a CLA so you keep the right to change the licence; one uses a DCO and gives that right up on purpose, because under strong copyleft there is less reason to change later. The CLA in the packages is the Apache individual CLA form, which a contributor signs once.</div></div>
+        <div class="row"><div class="k">Eliminates</div><div class="v">None on its own.</div></div>
+      </div>
+
+      <div class="card">
+        <div class="top">
+          <span class="num">15</span>
+          <span class="title">For the Phase 1 mirror, may I use the November 2025 archive login from your Gmail export, or will you request a fresh one?</span>
+          <span class="chip answered">Answered</span>
+        </div>
+        <div class="row"><div class="k">Why it matters</div><div class="v read">The software page says the source is on GitHub but shows no links, and UNLarium exports were behind accreditation.</div></div>
+        <div class="row"><div class="k">Answer</div><div class="v answer">u: [withheld] p: [withheld]
+https://unlarchive.org/user/index.php?page=login</div></div>
+        <div class="row"><div class="k">Read</div><div class="v read">The login works. What it revealed is in the research section under "Behind the login". The short form: no tool source is reachable, because the page's "Go to GitHub" link sits inside an HTML comment and no GitHub organisation for the archive exists; the UNLarium dictionary and grammar export pages work for Afrikaans and list analysis, generation, inflectional and subcategorisation grammars; the public dictionary export endpoint fails with a missing database table; the archive's Files page lists your 2012&ndash;2013 Afrikaans uploads for download. The session cookie was deleted after the check. The password now sits in this chat transcript and in the Gmail export; change it once the Phase 1 mirror is done.</div></div>
+        <div class="row"><div class="k">Eliminates</div><div class="v">None. Moves Question 11's source-code answer to the archive administrator: the code is not on the site.</div></div>
+      </div>
+
+      <div class="card">
+        <div class="top">
+          <span class="num">16</span>
+          <span class="title">What measurement means the rules are "lacking" enough to switch the neural layer on?</span>
+          <span class="chip answered">Answered</span>
+        </div>
+        <div class="row"><div class="k">Why it matters</div><div class="v read">"Last resort" needs a number or it becomes a habit. Two candidate triggers: per sentence on parse failure, or per release once coverage plateaus.</div></div>
+        <div class="row"><div class="k">Answer</div><div class="v answer">i gues for the online version doing heavy nuanced translations. Not sure either. keep it open.</div></div>
+        <div class="row"><div class="k">Read</div><div class="v read">Left open by your decision, and narrowed by it: the neural layer belongs to the connected tier only, for "heavy nuanced" text. The basic-comms and phone tiers stay rules-only. The trigger itself is a Phase 4 decision and this brief will not ask again.</div></div>
+        <div class="row"><div class="k">Eliminates</div><div class="v">Restricts the deferred <em>Hybrid</em> layer to the connected tier.</div></div>
+      </div>
+
+      <div class="group-h">New this turn &middot; Compliance</div>
+
+      <div class="card">
+        <div class="top">
+          <span class="num">17</span>
+          <span class="title">Which licence package: Open Gate, Locked Commons, or Shared Files?</span>
+          <span class="chip answered">Answered</span>
+        </div>
+        <div class="row"><div class="k">Why it matters</div><div class="v read">Each package answers "no one can claim it" differently. Open Gate relies on attribution and trademark. Locked Commons stops closed forks by law. Shared Files keeps engine files open and lets the app around them be closed.</div></div>
+        <div class="row"><div class="k">Answer</div><div class="v answer">There are other languages in there with better rules set up than dutch. the coding agents can help with that to make sure rules are handled correctly. I am realy not sure about the correct licensing. the one best suited for our purpose. and preventing misuse. go with Shared Files? lets go with the recommendations. and lets get all the data from all the languages we can from UML to make development more true.</div></div>
+        <div class="row"><div class="k">Read</div><div class="v read">Three things in one answer. The licence decision is handed to the recommendation, with Shared Files as your lean; the recommendation section agrees and says why. Phase 1 widens from three languages to the whole archive, which changes the mirror from a few exports to a crawl of every language's dictionary, grammar and corpus exports. And the well-resourced languages, English, French, Spanish, Russian, Arabic and German, become the reference set for how a complete UNL grammar is shaped, so agents can draft Afrikaans and Dutch rules against real examples rather than against the spec alone.</div></div>
+        <div class="row"><div class="k">Eliminates</div><div class="v"><em>Open Gate</em>. <em>Locked Commons</em> becomes the runner-up.</div></div>
+      </div>
+    </section>
+
+    <section id="options">
+      <div class="eyebrow">03</div>
+      <h2>Candidate options</h2>
+      <p>One engine shape and one licence package are marked recommended. The hybrid stays as a deferred layer on the connected tier. Everything struck stays on the page so the reason is visible.</p>
+
+      <div class="group-h">Licence packages &middot; new this turn</div>
+      <div class="opt-grid">
+
+        <div class="card opt dead">
+          <div class="top">
+            <span class="num">L1</span>
+            <span class="title">Open Gate</span>
+            <span class="size">S</span>
+            <span class="chip eliminated">Eliminated</span>
+          </div>
+          <div class="strike">Struck by Question 17: "preventing misuse" needs more than attribution. Under Apache-2.0 a closed fork is legal, and that is the misuse you named.</div>
+          <div class="row"><div class="k">What it is</div><div class="v">Engine under Apache-2.0. Data under CC&nbsp;BY-SA 4.0. Contributors sign the Apache individual CLA once. The name Verstaan is registered as a trademark, or at least carried by a published name policy and the domain.</div></div>
+          <div class="row"><div class="k">Pros</div><div class="v"><ul class="tight"><li>A radio or phone maker can embed the engine in closed firmware, which is how it reaches a peacekeeping unit.</li><li>Every contributor grants a patent licence, so nobody can later sue users over a rule-compilation technique.</li><li>The CLA keeps your right to change the licence later.</li></ul></div></div>
+          <div class="row"><div class="k">Cons</div><div class="v"><ul class="tight"><li>A closed fork is legal. "No one can claim it" is enforced by attribution and the trademark, not by copyleft.</li><li>Apertium's GPL dictionaries can never enter the data store.</li><li>A CLA is a signature some volunteers refuse on principle.</li></ul></div></div>
+          <div class="row"><div class="k">Best when</div><div class="v">Reach onto devices matters more than forcing improvements back.</div></div>
+          <div class="row"><div class="k">Afterwards</div><div class="v">A NOTICE file, a CLA bot on every first pull request, and a trademark line in the README.</div></div>
+        </div>
+
+        <div class="card opt">
+          <div class="top">
+            <span class="num">L2</span>
+            <span class="title">Locked Commons</span>
+            <span class="size">M</span>
+            <span class="chip runner">Runner-up</span>
+          </div>
+          <div class="row"><div class="k">What it is</div><div class="v">Engine under GPLv3. Adapted data relicensed from CC&nbsp;BY-SA 4.0 to GPLv3, which Creative Commons permits one-way, so the whole repository is one licence. Contributors sign off with the DCO. No CLA, and no later relicensing.</div></div>
+          <div class="row"><div class="k">Pros</div><div class="v"><ul class="tight"><li>Nobody can ship a closed fork; every engine change that ships must be published. This is the legal form of "no one can claim it".</li><li>One licence for code and data; Apertium's GPL Afrikaans and Dutch dictionaries can be imported.</li><li>DCO is the lightest possible contributor process.</li></ul></div></div>
+          <div class="row"><div class="k">Cons</div><div class="v"><ul class="tight"><li>Closed firmware cannot embed the engine; the basic-comms tier reaches only devices whose makers accept GPL.</li><li>"Can change later" is gone after the first outside merge.</li><li>Phone app stores and GPLv3 have a history of friction.</li></ul></div></div>
+          <div class="row"><div class="k">Best when</div><div class="v">Keeping the initiative open matters more than reaching closed devices, and the Apertium data is wanted.</div></div>
+          <div class="row"><div class="k">Afterwards</div><div class="v">A single LICENSE file, a sign-off line on every commit, and one import script that pulls Apertium's Afrikaans dictionary.</div></div>
+        </div>
+
+        <div class="card opt rec">
+          <div class="top">
+            <span class="num">L3</span>
+            <span class="title">Shared Files</span>
+            <span class="size">M</span>
+            <span class="chip rec">&#9733; Recommended</span>
+          </div>
+          <div class="row"><div class="k">What it is</div><div class="v">Engine under MPL-2.0, a file-level copyleft: anyone who changes an engine source file must publish that file, but may link the engine into a closed application. Data under CC&nbsp;BY-SA 4.0. Contributors sign the Apache individual CLA.</div></div>
+          <div class="row"><div class="k">Pros</div><div class="v"><ul class="tight"><li>Engine improvements come back; the app around the engine may stay closed, so device makers can still ship it.</li><li>MPL-2.0 is compatible with both GPL and Apache code, so archived tool source under either could be linked.</li><li>The CLA keeps your relicensing right.</li></ul></div></div>
+          <div class="row"><div class="k">Cons</div><div class="v"><ul class="tight"><li>Least known of the three; contributors and lawyers read it more slowly.</li><li>A closed fork that adds new files and changes none is legal.</li><li>Apertium data still cannot enter a CC&nbsp;BY-SA store.</li></ul></div></div>
+          <div class="row"><div class="k">Best when</div><div class="v">You want engine changes shared without blocking closed devices.</div></div>
+          <div class="row"><div class="k">Afterwards</div><div class="v">A licence header on every engine source file, a CLA bot, and a trademark line in the README.</div></div>
+        </div>
+
+      </div>
+
+      <div class="group-h">Engine shape</div>
+      <div class="opt-grid">
+
+        <div class="card opt rec">
+          <div class="top">
+            <span class="num">A</span>
+            <span class="title">UNL-native rule engine, as specified</span>
+            <span class="size">L</span>
+            <span class="chip rec">&#9733; Recommended</span>
+          </div>
+          <div class="row"><div class="k">What it is</div><div class="v">Harvest the archive, capture rules and concept dictionaries in structured text, compile them to C++ enconverter and deconverter libraries. One rule set, three build tiers.</div></div>
+          <div class="row"><div class="k">Pros</div><div class="v"><ul class="tight"><li>Deterministic by construction; every output traces to a rule.</li><li>The smallest binaries; fits the basic-comms tier where nothing neural does.</li><li>The archive data is CC&nbsp;BY-SA, so the data half of the project is unblocked today.</li><li>Eng&rarr;Eng and Afr&rarr;Afr register rewriting is a demo only an interlingua can give.</li></ul></div></div>
+          <div class="row"><div class="k">Cons</div><div class="v"><ul class="tight"><li>Fails visibly on any sentence outside the ruleset until the ruleset grows.</li><li>Time to an impressive demo is set by rule capture speed, with one reviewer.</li><li>Needs the tuning runtime and the compiled build to agree exactly.</li></ul></div></div>
+          <div class="row"><div class="k">Best when</div><div class="v">The proof of concept is allowed to be narrow and honest, and the pitch to contributors is "this is pure rules, help us widen it".</div></div>
+          <div class="row"><div class="k">Afterwards</div><div class="v">A repository whose primary artefact is a dictionary and rule store under CC&nbsp;BY-SA, an engine under a permissive licence, a CI job that compiles data into a C++ library for each tier, and golden-file tests that grow with every merged rule.</div></div>
+        </div>
+
+        <div class="card opt">
+          <div class="top">
+            <span class="num">D</span>
+            <span class="title">Hybrid: rules first, neural fallback</span>
+            <span class="size">L</span>
+            <span class="chip alive">Alive &middot; deferred</span>
+          </div>
+          <div class="row"><div class="k">What it is</div><div class="v">Option A as the primary path. When the rule engine cannot produce a full parse, the application routes the sentence to an offline neural model in the phone and connected tiers, and marks the output as neural. The basic-comms tier ships rules only. Per your Question 12 answer, this layer is not part of the proof of concept; it switches on only when the trigger in Question 16 fires.</div></div>
+          <div class="row"><div class="k">Pros</div><div class="v"><ul class="tight"><li>Usable on any paragraph from the first demo.</li><li>The router's log is a prioritised work list: the sentences that fell through are the rules to write next.</li><li>Keeps the small-device promise, because the fallback is a tier feature.</li></ul></div></div>
+          <div class="row"><div class="k">Cons</div><div class="v"><ul class="tight"><li>Two engines and a router in a project whose whole point is one engine.</li><li>Contributors may read it as a neural product and never learn the rule format.</li><li>Neural output on a rules project breaks the "every output traces to a rule" claim, tier by tier.</li></ul></div></div>
+          <div class="row"><div class="k">Best when</div><div class="v">Time to a usable demo matters more than purity of the demo, and the badge is enough to keep the two paths honest.</div></div>
+          <div class="row"><div class="k">Afterwards</div><div class="v">A translation with a small badge saying <em>rule</em> or <em>neural</em>, a dashboard counting the share of sentences each path handled, and that share as the project's headline progress metric.</div></div>
+        </div>
+
+        <div class="card opt dead">
+          <div class="top">
+            <span class="num">B</span>
+            <span class="title">Apertium port and extension</span>
+            <span class="size">M</span>
+            <span class="chip eliminated">Eliminated</span>
+          </div>
+          <div class="row"><div class="k">What it is</div><div class="v">Use Apertium's shallow-transfer platform as the engine and extend its Afrikaans pairs.</div></div>
+          <div class="strike">Struck by Question 07: Apertium is not an interlingua and drops UNL, and keeping the UNL initiative alive is a stated goal. Its <code>apertium-eng-afr</code> and <code>apertium-afr-nld</code> dictionaries stay useful as GPL data sources, licence permitting.</div>
+        </div>
+
+        <div class="card opt dead">
+          <div class="top">
+            <span class="num">C</span>
+            <span class="title">Offline neural MT, quantised</span>
+            <span class="size">M</span>
+            <span class="chip eliminated">Eliminated</span>
+          </div>
+          <div class="row"><div class="k">What it is</div><div class="v">Ship a distilled NMT model through the planned application shell.</div></div>
+          <div class="strike">Struck by Questions 07 and 08: the rule engine is the product, and "I want to see how far this approach can take us". Argos remains the benchmark yardstick in Phase 3.</div>
+        </div>
+
+        <div class="card opt dead">
+          <div class="top">
+            <span class="num">E</span>
+            <span class="title">Domain-narrow deterministic phrasebook</span>
+            <span class="size">S</span>
+            <span class="chip eliminated">Eliminated</span>
+          </div>
+          <div class="row"><div class="k">What it is</div><div class="v">A closed-vocabulary engine for one profession, dropping general translation.</div></div>
+          <div class="strike">Struck by Questions 03 and 07: you want a well-rounded general model first, with peacekeeping, medical and rescue as use cases of it, not as the whole product. A bounded vocabulary is still the right shape for the first basic-comms tier build.</div>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="recommendation">
+      <div class="eyebrow">04</div>
+      <h2>Recommendation</h2>
+
+      <div class="rec-block">
+        <h3>Best path</h3>
+        <p>Build the UNL-native engine as the product, in three compile-time tiers, with a neural fallback held back for the connected tier until the rules have been measured. License it as <strong>Shared Files</strong>: the engine under MPL-2.0, the data store under CC&nbsp;BY-SA 4.0 with each item's original version recorded, contributors signing the Apache individual CLA once, and the name Verstaan registered as a trademark or covered by a published name policy. Phase 1 mirrors every language in the archive, not three, and rewrites the documentation into an agent-readable corpus with the originals kept beside it for attribution.</p>
+
+        <h3>Why this one</h3>
+        <ul class="tight">
+          <li><strong>It matches the misuse you named.</strong> Under MPL-2.0 anyone who changes an engine file and ships it must publish that file. A company cannot take the engine, improve it in private, and sell the improvement as theirs. That is the claim you want to prevent, and file-level copyleft prevents it.</li>
+          <li><strong>It keeps the device reach.</strong> A radio or phone maker may link the engine into a closed application, so the peacekeeping, medical and rescue cases stay open. GPLv3 would close them for any maker whose firmware is locked.</li>
+          <li><strong>It keeps your freedom to change.</strong> The CLA means you can move to GPLv3 later if closed forks become a real problem, or to Apache-2.0 if reach becomes the problem. Locked Commons gives that up on the first outside merge.</li>
+          <li><strong>The data boundary is already forced.</strong> Generated C++ from BY-SA data is an adaptation of the data and carries BY-SA whatever the engine licence says. Shared Files makes that boundary a build rule: the data library is one artefact, the engine is another, and each carries its own LICENSE.</li>
+          <li><strong>The archive is wide enough on its own.</strong> With the whole archive mirrored, the loss of Apertium's GPL dictionaries costs less than it did when Afrikaans and Dutch were the only sources. English, French, Spanish, Russian, Arabic and German each carry tens of thousands of base forms and a grammar, and those are the reference set for drafting Afrikaans rules.</li>
+        </ul>
+
+        <h3>Runner-up, and when it wins</h3>
+        <p><strong>Locked Commons</strong> wins if either of two things happens. First, a closed fork appears and the trademark and file-level copyleft turn out not to be enough; GPLv3 closes the whole-product loophole that MPL leaves. Second, Apertium's Afrikaans and Dutch dictionaries turn out to be the fastest route to a working demo, because only a GPLv3 store can take them. The CLA makes the move possible; the move is one commit and a notice.</p>
+
+        <h3>Confidence</h3>
+        <p><span class="conf">&#9679;&#9679;&#9675;</span> Two of three. The engine shape and the data boundary are firm. The licence choice rests on a reading of "preventing misuse" as "no closed fork of the engine"; if you meant something else, say so and the package changes.</p>
+
+        <h3>What would change this</h3>
+        <ul class="tight">
+          <li>The archived tool source arrives from the administrator under GPLv2-only. MPL-2.0 can link to it, but the combined work becomes GPL, and the tier story needs re-checking.</li>
+          <li>The CC&nbsp;BY-SA 2.5 Switzerland items turn out to be the bulk of the data. Version 2.5 is not GPLv3-compatible, which removes Locked Commons as a runner-up and makes Shared Files the only workable package.</li>
+          <li>A funded partner requires a specific licence as a condition of funding.</li>
+        </ul>
+
+        <h3>Done when</h3>
+        <ul class="tight">
+          <li>A repository with <code>LICENSE</code> (MPL-2.0) at the root, <code>data/LICENSE</code> (CC&nbsp;BY-SA 4.0), a CLA document and a CLA check on pull requests, and a trademark line in the README.</li>
+          <li>A Phase 1 mirror under <code>data/archive/</code> holding every language's dictionary, grammar and corpus exports, each with its source URL, licence version and retrieval date in a manifest.</li>
+          <li>An agent-readable <code>docs/unl-reference/</code> built from the wiki's UNL2010 specs and the grammar documentation, with the original pages kept.</li>
+          <li>A segment specification for the rule compiler that states the interpreted runtime and the compiled build must produce identical output for the same rule set, tested.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="research">
+      <div class="eyebrow">05</div>
+      <h2>Primary-source research</h2>
+
+      <div class="research">
+        <h4>The archive: status, contents and licence, verified this turn</h4>
+        <p>The UNL Archive announced itself by e-mail on 7 November 2025. The message states the UNDL Foundation ceased activities in 2024 and that the archive is "a personal and voluntary initiative", run by the Foundation's former Language Resources Manager. <span class="cite">E-mail from admin@unlarchive.org, 2025-11-07, in your Gmail export.</span></p>
+        <p>The archive's home page describes six sections: language resources, computational resources, documentation, education, the UNL Programme, and the UNDL Foundation. Materials are "provided as is, with no further development or support". <span class="cite">UNL Archive home, <a href="https://unlarchive.org/">https://unlarchive.org/</a>.</span></p>
+        <p>The terms page, section 6, reads: "You are free to share (copy and redistribute) and adapt (remix, transform, build upon) the Materials for any purpose, including commercial use", and "you must distribute your contributions under the same license (CC BY-SA) or a compatible open license". Section 7 requires attribution to the original author and a statement that the material came from the UNL Archive with a link. Section 8 keeps copyright with the original holders. <span class="cite">UNL Archive terms, <a href="https://unlarchive.org/index.php?unlweb=terms">https://unlarchive.org/index.php?unlweb=terms</a>.</span></p>
+        <p>The language-resources page describes UNLarium, the platform that held dictionaries, grammars, corpora and knowledge bases for "more than 100 languages", with dictionary benchmark tiers from ">5,000" to ">100,000 base forms". Data is stated to be under CC&nbsp;BY-SA. Afrikaans and Dutch are not named on the public page; the original UNLarium "required accreditation through VALERIE". <span class="cite">UNLarium, <a href="https://unlarchive.org/index.php?unlweb=unlarium">https://unlarchive.org/index.php?unlweb=unlarium</a>.</span> Coverage of Afrikaans specifically: no primary source found yet, treat as unknown until the login crawl.</p>
+
+        <h4>Behind the login, verified this turn</h4>
+        <p>The archive keeps the old UNL Web user area at <code>/user/</code>. Your account is level A2, Afrikaans author, UNL trainee. The language table lists every language with its dictionary and grammar counts. The rows that matter: <span class="cite">UNL Archive user area, language list, <a href="https://unlarchive.org/user/index.php?unlweb=language">https://unlarchive.org/user/index.php?unlweb=language</a> (login required).</span></p>
+        <div class="tablewrap">
+        <table>
+          <tr><th>Language</th><th>Base forms</th><th>Word forms</th><th>Paradigms</th><th>Frames</th><th>Dictionary</th><th>Grammar</th></tr>
+          <tr><td>Afrikaans</td><td class="mono">8,959</td><td class="mono">13,768</td><td class="mono">17</td><td class="mono">7</td><td>A1</td><td>A2</td></tr>
+          <tr><td>English</td><td class="mono">209,178</td><td class="mono">408,241</td><td class="mono">28</td><td class="mono">61</td><td>C2</td><td>B1</td></tr>
+          <tr><td>Dutch</td><td class="mono">4,595</td><td class="mono">7,970</td><td class="mono">10</td><td class="mono">0</td><td>A0</td><td>A0</td></tr>
+          <tr><td>German</td><td class="mono">54,243</td><td class="mono">757,109</td><td class="mono">193</td><td class="mono">33</td><td>B1</td><td>A2</td></tr>
+        </table>
+        </div>
+        <p>The Afrikaans grammar statistics page counts 17 inflectional paradigms holding 35 rules and 7 subcategorisation frames holding 7 rules, 42 rules in total. That is a morphology, not a grammar; the analysis and generation transformation grammars for Afrikaans are still to be written. The English transformation grammar is public as a text file and is the model to study. <span class="cite">Afrikaans grammar statistics, <a href="https://unlarchive.org/unlarium/index.php?grammar=statistics">https://unlarchive.org/unlarium/index.php?grammar=statistics</a> (login, Afrikaans selected); English transformation grammar, <a href="https://www.unlarchive.org/grammars/eng_unl_tgrammar.txt">https://www.unlarchive.org/grammars/eng_unl_tgrammar.txt</a>.</span></p>
+        <p>The UNLarium export page for Afrikaans offers four grammar exports: transformation and disambiguation grammars for analysis (for IAN) and transformation, inflectional, subcategorisation and disambiguation grammars for generation (for EUGENE), plus the language-independent default grammars. <span class="cite">UNLarium grammar export, <a href="https://unlarchive.org/unlarium/index.php?grammar=export">https://unlarchive.org/unlarium/index.php?grammar=export</a> (login).</span> The public dictionary export endpoint fails with a missing database table, so the mirror must use the logged-in UNLarium export rather than the public URL. <span class="cite">Public export, <a href="https://unlarchive.org/unlarium/dictionary/export_dic.php?proj=lpp&format=ana&release=1&lang=en">export_dic.php</a>, returns a MySQL "table doesn't exist" error as of 2026-09-08.</span></p>
+        <p>Your Files page lists your own Afrikaans uploads from December 2012 to June 2013, each a plain-text dictionary fragment in UNLarium format, downloadable by id. One entry reads: <span class="mono">[aalbessie]{2357}"107744246"(LEX=N,POS=NOU,LST=MTW,NUM=SNG,PAR=M2,FRA=Y0)&lt;af,0,3&gt;;</span> That is the format the Phase 2 data model must read. <span class="cite">Files page, <a href="https://unlarchive.org/user/index.php?unlweb=files">https://unlarchive.org/user/index.php?unlweb=files</a> (login).</span> The Projects page shows Afrikaans work on Le Petit Prince, MIR, BRUNO, NADIA and Wikipedia corpora, with completion between 4 and 99 percent. <span class="cite">Projects page, <a href="https://unlarchive.org/user/index.php?unlweb=project">https://unlarchive.org/user/index.php?unlweb=project</a> (login).</span></p>
+        <p>Two licence notes from behind the login. The UNLarium page links its data to CC&nbsp;BY-SA 2.5 Switzerland, an older version than the 4.0 named on the terms page. Version 2.5 is not on Creative Commons' GPLv3-compatible list; only 4.0 is. If package L2 is chosen, the mirror must record which version each item carries. <span class="cite">UNLarium licence link, <a href="http://creativecommons.org/licenses/by-sa/2.5/ch/">http://creativecommons.org/licenses/by-sa/2.5/ch/</a>.</span> The tool source: the software page's "Go to GitHub" link is inside an HTML comment, no GitHub organisation named for the archive exists, and no page behind the login links source. Question 11's answer moves to an e-mail to the archive administrator.</p>
+
+        <h4>The archived software</h4>
+        <div class="tablewrap">
+        <table>
+          <tr><th>Tool</th><th>Direction</th><th>What the archive says</th></tr>
+          <tr><td class="mono">EnCo</td><td>Text &rarr; UNL</td><td>"a very basic tool for converting natural language text into UNL"</td></tr>
+          <tr><td class="mono">IAN</td><td>Text &rarr; UNL</td><td>"Semi-automatic UNLization tool. Syntactic analysis is automatic, word sense disambiguation is assisted"</td></tr>
+          <tr><td class="mono">DeCo</td><td>UNL &rarr; Text</td><td>"a very basic tool for converting UNL representations back into natural language text"</td></tr>
+          <tr><td class="mono">EUGENE</td><td>UNL &rarr; Text</td><td>"Fully automatic system generating natural language text from UNL input"</td></tr>
+          <tr><td class="mono">UNL Verifier, NORMA, Word Dictionary Builder</td><td>Utilities</td><td>Source "provided as is, without any support, on GitHub"</td></tr>
+        </table>
+        </div>
+        <p>Programming languages and licences of the code are not stated on the page, and the GitHub links are not surfaced from the index; a GitHub organisation named "unlarchive" does not exist. <span class="cite">UNL Archive software, <a href="https://unlarchive.org/index.php?unlweb=dev">https://unlarchive.org/index.php?unlweb=dev</a>.</span> Whether the code licence is also CC&nbsp;BY-SA or something else: no primary source found, treat as unknown. This matters for Question 11.</p>
+
+        <div class="snippet">agt(book(icl&gt;publication).@def, table(icl&gt;furniture)) &mdash; a UNL graph fragment, one binary relation between two universal words.</div>
+        <span class="lang-note">"Agt" is the agent relation; "icl" restricts a universal word to a class. The relation is language-independent; each language's generation rules turn it into words.</span>
+
+        <h4>Apertium's Afrikaans and Dutch coverage, verified this turn</h4>
+        <p>Apertium lists <code>apertium-afr-nld</code> (Afrikaans &harr; Dutch) in trunk, dated 27 November 2019; <code>apertium-eng-afr</code> (English &harr; Afrikaans) in nursery, dated 10 November 2018; and <code>apertium-afr-deu</code> in incubator. "Trunk" is Apertium's released tier; "nursery" and "incubator" are unfinished. <span class="cite">Apertium language pairs, <a href="https://wiki.apertium.org/wiki/List_of_language_pairs">https://wiki.apertium.org/wiki/List_of_language_pairs</a>.</span> These are the largest open Afrikaans dictionaries on the web, and they are GPL. Reusing them in a CC&nbsp;BY-SA store is a licence question, not a technical one.</p>
+
+        <h4>Offline neural translation, the yardstick</h4>
+        <p>Argos Translate is an offline neural MT library built on OpenNMT, with downloadable models for on-device use. <span class="cite">Argos Open Tech, <a href="https://www.argosopentech.com/">https://www.argosopentech.com/</a>.</span> Marian NMT is the C++ inference engine behind several production translators, optimised for CPU. <span class="cite">Marian NMT, <a href="https://marian-nmt.github.io/">https://marian-nmt.github.io/</a>.</span> NLLB-200 is Meta AI's 200-language model with distilled variants. <span class="cite">Meta AI NLLB, <a href="https://ai.meta.com/research/no-language-left-behind/">https://ai.meta.com/research/no-language-left-behind/</a>.</span> None of these is now a candidate engine. One of them should run on the same Pi as the rule engine in Phase 3, so the speed and size claim has a measured number beside it.</p>
+
+        <h4>Licensing the code half, verified this turn</h4>
+        <p>Creative Commons says of its own licences: "We recommend against using Creative Commons licenses for software", because "CC licenses do not contain specific terms about the distribution of source code". <span class="cite">Creative Commons FAQ, "Can I apply a Creative Commons license to software?", <a href="https://creativecommons.org/faq/">https://creativecommons.org/faq/</a>.</span> So the engine takes a software licence and the data stays CC&nbsp;BY-SA; the two halves are separate works and the boundary between them is a build artefact, not a folder.</p>
+        <p>Creative Commons declares two licences compatible with CC&nbsp;BY-SA 4.0: the Free Art License 1.3 and GPLv3. The GPLv3 compatibility is one-way: "you may license your contributions to adaptations of BY-SA 4.0 materials under GPLv3, but you may not license your contributions to adaptations of GPLv3 projects under BY-SA 4.0." <span class="cite">Creative Commons, compatible licenses, <a href="https://creativecommons.org/share-your-work/licensing-considerations/compatible-licenses/">https://creativecommons.org/share-your-work/licensing-considerations/compatible-licenses/</a>.</span> In practice: archive data can flow into a GPLv3 data store beside Apertium's GPL dictionaries, but Apertium data can never flow into a CC&nbsp;BY-SA store.</p>
+        <div class="tablewrap">
+        <table>
+          <tr><th>Licence</th><th>Pros for Verstaan</th><th>Cons for Verstaan</th></tr>
+          <tr><td class="mono">MIT</td><td>Shortest text; embeds in any closed device firmware; the widest adoption path.</td><td>No patent grant. Improvements by device makers need not come back. Nothing stops a closed fork outrunning the open one.</td></tr>
+          <tr><td class="mono">Apache-2.0</td><td>Explicit patent grant from every contributor; companies accept it readily; compatible with GPLv3 code.</td><td>Same no-obligation-to-share as MIT. Not compatible with GPLv2-only code, if any archived tool turns out to be that.</td></tr>
+          <tr><td class="mono">GPLv3</td><td>Engine changes must be published; the only software licence CC declares BY-SA-compatible, so one store can hold archive and Apertium data.</td><td>Device makers with closed firmware will not embed it; "tivoisation" clause makes locked-down devices a problem. Linking a GPLv3 engine into a phone app is a known friction.</td></tr>
+          <tr><td class="mono">AGPLv3</td><td>Closes the hosted-service gap: the connected tier's operator must publish changes too.</td><td>Least adopted by companies; everything GPLv3 costs, plus network use counts as distribution.</td></tr>
+        </table>
+        </div>
+        <p>On the name: Apache-2.0 section 6 reads "This License does not grant permission to use the trade names, trademarks, service marks, or product names of the Licensor". MPL-2.0 section 2.3 likewise grants no trademark rights. A copyright licence protects the code; only a trademark protects the word Verstaan. <span class="cite">Apache-2.0, <a href="https://www.apache.org/licenses/LICENSE-2.0">https://www.apache.org/licenses/LICENSE-2.0</a>; MPL-2.0, <a href="https://www.mozilla.org/en-US/MPL/2.0/">https://www.mozilla.org/en-US/MPL/2.0/</a>.</span></p>
+        <p>On "can change later": a sole copyright holder can relicense future versions at will; already-released versions stay under their licence forever. Once outside contributions are merged, relicensing needs every contributor's consent unless a contributor licence agreement collected that right at the door. The Developer Certificate of Origin, used by the Linux kernel, is a sign-off that the contributor has the right to submit under the project's current licence; it does not grant relicensing rights. <span class="cite">Developer Certificate of Origin, <a href="https://developercertificate.org/">https://developercertificate.org/</a>.</span> The Apache Software Foundation's individual CLA is the reference example of an agreement that does grant a licence to the project broad enough to relicense. <span class="cite">Apache ICLA, <a href="https://www.apache.org/licenses/icla.pdf">https://www.apache.org/licenses/icla.pdf</a>.</span> GitHub's plain-language comparison of the four licences is the quickest primary reference for the table above. <span class="cite">choosealicense.com, <a href="https://choosealicense.com/licenses/">https://choosealicense.com/licenses/</a>.</span></p>
+
+        <h4>Controlled language, for the basic-comms tier</h4>
+        <p>ASD-STE100 is the aerospace industry's controlled English: a fixed vocabulary and a constrained grammar, maintained for decades. It is the working proof that a bounded language subset can reach full deterministic coverage, and it is the right model for the first basic-comms build even though option E is struck. <span class="cite">ASD-STE100, <a href="https://asd-ste100.org/">https://asd-ste100.org/</a>.</span></p>
+
+        <h4>Where sources agree and disagree</h4>
+        <p>The archive's own framing and your answers agree: rule-based UNL is a second lineage worth keeping alive, and the data is free to build on. The archive and Apertium disagree only on licence family, CC&nbsp;BY-SA versus GPL, and that is a real incompatibility if dictionaries are merged into one store. No source resolves the Afrikaans coverage question; only the login crawl will.</p>
+      </div>
+    </section>
+
+    <section id="narrow">
+      <div class="eyebrow">06</div>
+      <h2>Closing</h2>
+      <div class="callout">
+        The interrogation is closed. Seventeen questions answered, four options struck, one engine shape and one licence package recommended. The next step is outside this command: write the Phase 1 mirror specification and the project <code>CLAUDE.md</code>, then run the mirror.
+      </div>
+      <p>Two housekeeping notes. The Gmail export in the project folder is a full inbox snapshot with bank and insurance previews; move it out before the folder becomes a repository. The archive password is now in that export and in this chat; change it after the Phase 1 mirror runs, and write to admin@unlarchive.org for the tool source, since it is not on the site.</p>
+    </section>
+
+    <div class="footer" id="method">
+      <div class="grid">
+        <div>
+          <strong>Sources</strong><br>
+          UNL Archive home, terms, UNLarium, software &middot; admin@unlarchive.org e-mail 2025-11-07 &middot; Apertium language pairs &middot; Argos Open Tech &middot; Marian NMT &middot; Meta AI NLLB &middot; ASD-STE100 &middot; Creative Commons FAQ and compatible-licences page &middot; Developer Certificate of Origin &middot; Apache ICLA &middot; choosealicense.com &middot; Apache-2.0 text &middot; MPL-2.0 text &middot; UNL Archive user area: language list, files, projects, grammar statistics and export (login) &middot; English transformation grammar file
+        </div>
+        <div>
+          <strong>Project files read</strong><br>
+          <code>verstaan.md</code> &middot; Gmail export of the archive announcement (text extracted, credentials withheld)
+        </div>
+        <div>
+          <strong>Command</strong><br>
+          <code>interrogation-time</code> v2.0.0 (2026-09-07)<br>
+          House style: shared brief, HTML.
+        </div>
+        <div>
+          <strong>Turn history</strong><br>
+          Turn 1 &middot; 2026-09-07 &middot; initial reconnaissance, five options, nine open questions.<br>
+          Turn 2 &middot; 2026-09-08 &middot; nine answers pasted; archive, terms and Apertium coverage verified; options B, C, E struck; three new questions.<br>
+          Turn 3 &middot; 2026-09-08 &middot; three answers pasted; hybrid folded into a deferred layer on UNL-native; licence compatibility verified; four new questions on licence, CLA, login and the fallback trigger.<br>
+          Turn 4 &middot; 2026-09-08 &middot; four answers pasted; logged-in reconnaissance of the archive with coverage numbers for Afrikaans, English and Dutch; tool source found unreachable; three licence packages added; one question left.<br>
+          Turn 5 &middot; 2026-09-08 &middot; recommendation requested; Shared Files and UNL-native marked recommended, Locked Commons runner-up, Open Gate struck; Phase 1 widened to all languages; interrogation closed.
+        </div>
+      </div>
+    </div>
+  </main>
+</div>

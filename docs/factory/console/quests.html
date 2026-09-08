@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quests · Verstaan console</title>
+<link rel="stylesheet" href="theme.css">
+<link rel="stylesheet" href="console.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="cic-bar">
+  <span class="cic-bar__sigil" aria-hidden="true">◈</span>
+  <div class="cic-bar__id">
+    <span class="cic-bar__proj">Verstaan</span>
+    <span class="cic-bar__sub">quest list · docs/factory/issues</span>
+  </div>
+  <nav class="cic-bar__nav" aria-label="Rooms">
+    <a href="index.html">Console</a>
+    <span class="cic-bar__here">Quests</span>
+    <a href="playbook.html">Playbook</a>
+    <a href="library.html">Library</a>
+    <a href="glossary.html">Glossary</a>
+  </nav>
+</header>
+<main id="main" class="room">
+  <p class="altitude__band">Quests · 0 of 13 encounters won</p>
+  <h1 class="headline">Quest list</h1>
+  <p class="lede">Every issue file, whole. The one marked next is open by default. An encounter is won when its work commit and its close commit both exist; the issue file records the hash.</p>
+  <section class="panel quest-panel--main"><h2 class="panel__title">Main quest · M0</h2><details class="quest-card quest-card--next" id="issue-01" open>
+  <summary><span class="enc__glyph">◐</span><span class="enc__n mono">#01</span><span class="quest-card__title">Prove the gate ladder fails before trusting it</span><span class="enc__meta">next · implementer / sonnet / medium · no dependencies · checkpoint 1</span></summary>
+  <div class="prose quest-card__body"><h2 id="what">What</h2>
+<p>The hooks in <code>.claude/hooks/</code> and <code>.claude/settings.json</code> were written before any build system existed. Nothing has shown that they run, that they block, or that they log. This issue makes the ladder real on a minimal repo: a CMake preset with one library target and one fast test, one Python tool package with one pytest, and then breaks each gate on purpose.</p>
+<h2 id="acceptance-criteria">Acceptance criteria</h2>
+<ul>
+<li><strong><code>bash -n</code> passes on every hook script</strong>, and each runs under Git Bash on this machine.</li>
+<li><strong><code>gate-fast.sh</code> blocks.</strong> A deliberately failing <code>fast</code> test makes the Stop hook exit 2 with the test output; restoring it makes the hook exit 0. Both runs recorded in the issue report.</li>
+<li><strong><code>gate-fast.sh</code> logs.</strong> The failing run appends one well-formed JSON line to <code>docs/factory/lessons.jsonl</code> with <code>sig: fast-tests-red</code> and <code>issue: 1</code>.</li>
+<li><strong><code>require-gate.sh</code> blocks.</strong> A <code>git merge</code> command with no stamp is refused; after writing the stamp by hand for HEAD on a clean tree it passes; a dirty tree refuses again. <strong>Prove the guard fails.</strong></li>
+<li><strong><code>fast-format.sh</code> formats</strong> a deliberately mis-indented <code>.cpp</code> and a <code>.py</code> on write, and prints to stderr rather than failing when the formatter is missing.</li>
+<li>The <code>stop_hook_active</code> guard is the first thing <code>gate-fast.sh</code> checks. Shown by feeding it <code>{&quot;stop_hook_active&quot;:true}</code> with a failing test present and getting exit 0.</li>
+</ul>
+<h2 id="not-in-scope">Not in scope</h2>
+<p>The real engine, any data. The library target may be an empty <code>verstaan_core</code> with one function.</p>
+<h2 id="done-when">Done when</h2>
+<ul>
+<li><span class="task task--open">○</span> Every criterion above has a recorded failing run and a recorded passing run.</li>
+<li><span class="task task--open">○</span> <a class="code-link" href="docs/docs--factory--README.html"><code>docs/factory/README.md</code></a> gate table matches what actually runs.</li>
+<li><span class="task task--open">○</span> The deliberately broken test and the hand-written stamp are removed before the commit.</li>
+</ul></div>
+</details>
+<details class="quest-card quest-card--blocked" id="issue-02">
+  <summary><span class="enc__glyph">◇</span><span class="enc__n mono">#02</span><span class="quest-card__title">CMake, vcpkg and preset skeleton for engine, apps and tests</span><span class="enc__meta">blocked · implementer / sonnet / medium · after #01</span></summary>
+  <div class="prose quest-card__body"><h2 id="what">What</h2>
+<p>Turn the M0 issue-01 stub build into the real layout from <a class="code-link" href="docs/docs--standards--cpp.html"><code>docs/standards/cpp.md</code></a>: presets, targets, warnings as errors, GoogleTest through vcpkg manifest mode, CTest labels, <code>.clang-format</code> and <code>.clang-tidy</code>.</p>
+<h2 id="acceptance-criteria">Acceptance criteria</h2>
+<ul>
+<li><code>CMakePresets.json</code> has <code>msvc-debug</code>, <code>msvc-release</code>, <code>clang-release</code>, <code>gcc-release</code>. Each configures on this machine or fails with one clear line naming the missing compiler.</li>
+<li>Targets: <code>verstaan_core</code> (static), <code>verstaan_data_fixture</code> (static, a hand-written stand-in for compiler output, under <code>engine/generated/fixture/</code>), <code>verstaan_tests</code>, <code>verstaan_cli</code> (prints version and exits).</li>
+<li><code>-Wall -Wextra -Werror -Wpedantic</code> / <code>/W4 /WX /permissive-</code> on all targets. A file with an unused variable fails the build. <strong>Prove it fails.</strong></li>
+<li><code>vcpkg.json</code> lists <code>gtest</code> only. <code>verstaan_core</code> has no port dependency.</li>
+<li>CTest labels <code>fast</code>, <code>golden</code>, <code>equivalence</code>, <code>tier</code> exist; <code>ctest -L fast</code> runs one test.</li>
+<li><code>.clang-format</code> (Google base, 100 columns, 2-space) and <code>.clang-tidy</code> (modernize, bugprone, performance, readability; warnings as errors) are present and run clean on the skeleton.</li>
+<li><code>engine/include/verstaan/engine.hpp</code> declares the API in <code>SPEC.md</code> §3.4 with every method returning <code>Status::not_implemented</code>.</li>
+</ul>
+<h2 id="not-in-scope">Not in scope</h2>
+<p>Any translation behaviour. ARM preset (M4).</p>
+<h2 id="done-when">Done when</h2>
+<ul>
+<li><span class="task task--open">○</span> <code>cmake --preset msvc-debug &amp;&amp; cmake --build --preset msvc-debug &amp;&amp; ctest --preset msvc-debug</code> is green.</li>
+<li><span class="task task--open">○</span> The unused-variable failure run is in the report.</li>
+<li><span class="task task--open">○</span> <a class="code-link" href="docs/docs--standards--cpp.html"><code>docs/standards/cpp.md</code></a> build section matches the presets that exist.</li>
+</ul></div>
+</details>
+<details class="quest-card quest-card--blocked" id="issue-03">
+  <summary><span class="enc__glyph">◇</span><span class="enc__n mono">#03</span><span class="quest-card__title">Python tooling skeleton: mirror, importer, compiler, validate packages</span><span class="enc__meta">blocked · implementer / sonnet / low · after #01</span></summary>
+  <div class="prose quest-card__body"><h2 id="what">What</h2>
+<p>Four Python packages under <code>tools/</code>, each runnable as <code>python -m tools.&lt;name&gt;</code>, each with a <code>tests/</code> folder and one passing pytest, sharing one <code>pyproject.toml</code> at <code>tools/</code> with <code>ruff</code> configured. No behaviour yet beyond <code>--help</code> and <code>--version</code>.</p>
+<h2 id="acceptance-criteria">Acceptance criteria</h2>
+<ul>
+<li><code>python -m tools.mirror --help</code>, <code>tools.importer</code>, <code>tools.compiler</code>, <code>tools.validate</code> all print usage and exit 0.</li>
+<li><code>tools.validate --changed</code> and <code>--all</code> exist and exit 0 on an empty <code>data/languages/</code>.</li>
+<li><code>tools.mirror</code> refuses to start if <code>UNL_USER</code> or <code>UNL_PASS</code> is passed as an argument, and reads them from the environment only. A test proves the refusal.</li>
+<li><code>ruff check tools/</code> and <code>ruff format --check tools/</code> are clean.</li>
+<li><code>pytest tools/</code> runs four tests, all green.</li>
+</ul>
+<h2 id="not-in-scope">Not in scope</h2>
+<p>Any network call. Any parsing.</p>
+<h2 id="done-when">Done when</h2>
+<ul>
+<li><span class="task task--open">○</span> All five criteria shown in the report with commands and exit codes.</li>
+<li><span class="task task--open">○</span> <code>gate-fast.sh</code> runs pytest for a changed tool, shown once.</li>
+</ul></div>
+</details>
+<details class="quest-card quest-card--blocked" id="issue-04">
+  <summary><span class="enc__glyph">◇</span><span class="enc__n mono">#04</span><span class="quest-card__title">Fixture language pair xxa and xxb for engine tests</span><span class="enc__meta">blocked · rule-author / opus / high · after #03</span></summary>
+  <div class="prose quest-card__body"><h2 id="what">What</h2>
+<p>A tiny invented pair of languages under <code>tests/fixtures/languages/{xxa,xxb}/</code> in the canonical store layout of <code>SPEC.md</code> §3.3: ten dictionary entries each, one inflection paradigm each, three analysis rules, three generation rules, a tagset, and a corpus of five sentences with their UNL graphs. It exists so that engine mechanics can be tested without real-language ambiguity and without any archive dependency.</p>
+<h2 id="acceptance-criteria">Acceptance criteria</h2>
+<ul>
+<li>Every file validates with <code>tools.validate --all</code> once issue 13 lands; until then, validates against the YAML shape by a pytest in <code>tools/validate/tests/</code>.</li>
+<li>The five corpus sentences cover: a simple subject-verb-object, a definite article, a plural, a past tense, and one word absent from the dictionary (expected <code>partial</code>).</li>
+<li>Each rule has a comment in the writing voice and a <code>source: original</code>.</li>
+<li><code>docs/factory/issues/04-test-cases.md</code> holds the table, block <strong>A</strong>, with <code>review: n/a</code> because the languages are invented.</li>
+</ul>
+<h2 id="not-in-scope">Not in scope</h2>
+<p>Any engine code beyond stubs. Real languages.</p>
+<h2 id="done-when">Done when</h2>
+<ul>
+<li><span class="task task--open">○</span> Fixture files exist and are loadable by a YAML reader without error.</li>
+<li><span class="task task--open">○</span> Test table A exists with at least eight rows.</li>
+<li><span class="task task--open">○</span> The rule-author's open decisions are listed as ADR candidates in the report.</li>
+</ul></div>
+</details>
+<details class="quest-card quest-card--blocked" id="issue-05">
+  <summary><span class="enc__glyph">◇</span><span class="enc__n mono">#05</span><span class="quest-card__title">NOTICE files, licence headers and a header check</span><span class="enc__meta">blocked · implementer / sonnet / low · after #02, #03</span></summary>
+  <div class="prose quest-card__body"><h2 id="what">What</h2>
+<p>Make the licence boundary of ADR 0002 and ADR 0003 visible in files. Every C++ and Python source gets an SPDX header; every store file gets the data header from <code>SPEC.md</code> §4; each app gets a <code>NOTICE</code> naming both licences; a check in <code>tools.validate</code> and in <code>/gate</code> refuses files without one.</p>
+<h2 id="acceptance-criteria">Acceptance criteria</h2>
+<ul>
+<li><code>// SPDX-License-Identifier: MPL-2.0</code> on every <code>.cpp/.hpp</code> under <code>engine/</code> and <code>apps/</code>; <code># SPDX-License-Identifier: MPL-2.0</code> on every <code>.py</code> under <code>tools/</code>.</li>
+<li>Generated files under <code>engine/generated/</code> carry the CC BY-SA header from <code>SPEC.md</code> §3.5.</li>
+<li><code>apps/cli/NOTICE</code> names MPL-2.0 for the engine, CC BY-SA 4.0 for the data, and the UNL Archive.</li>
+<li><code>python -m tools.validate --licences</code> fails on a file without a header. <strong>Prove it fails.</strong></li>
+</ul>
+<h2 id="not-in-scope">Not in scope</h2>
+<p>The CLA check on pull requests (Post-M6).</p>
+<h2 id="done-when">Done when</h2>
+<ul>
+<li><span class="task task--open">○</span> Header check is green on the repo and its failing run is in the report.</li>
+<li><span class="task task--open">○</span> <code>/gate</code> step 1 calls the licence check.</li>
+</ul></div>
+</details>
+<details class="quest-card quest-card--blocked" id="issue-06">
+  <summary><span class="enc__glyph">◇</span><span class="enc__n mono">#06</span><span class="quest-card__title">Architecture overview, sub-tree CLAUDE.md files, and the first gated merge</span><span class="enc__meta">blocked · docs-writer / sonnet / low · after #02, #03, #04, #05 · checkpoint 4</span></summary>
+  <div class="prose quest-card__body"><h2 id="what">What</h2>
+<p>Bring <a class="code-link" href="docs/docs--architecture--overview.html"><code>docs/architecture/overview.md</code></a> and the three sub-tree <a class="code-link" href="docs/CLAUDE.html"><code>CLAUDE.md</code></a> files in line with what M0 actually built, run <code>/factory-retro</code> once, run <code>/gate</code> for real, let the verifier read the whole <code>m0-foundation</code> diff, and merge into <code>main</code>.</p>
+<h2 id="acceptance-criteria">Acceptance criteria</h2>
+<ul>
+<li><a class="code-link" href="docs/docs--architecture--overview.html"><code>docs/architecture/overview.md</code></a> describes the targets, presets and packages that exist, with no forward references that are not marked &quot;planned for M&lt;n&gt;&quot;.</li>
+<li><code>engine/CLAUDE.md</code>, <code>tools/CLAUDE.md</code>, <code>data/CLAUDE.md</code> each under 40 lines and pointing to the standards file, not repeating it.</li>
+<li><code>/gate</code> passes and writes the stamp. Its report lists every step with time.</li>
+<li>The verifier's report is attached to this issue file under <code>## Verifier</code>.</li>
+<li><code>main</code> contains the merge commit; <code>STATE.md</code> shows M1 issue 07 as next.</li>
+</ul>
+<h2 id="not-in-scope">Not in scope</h2>
+<p>Anything in M1.</p>
+<h2 id="done-when">Done when</h2>
+<ul>
+<li><span class="task task--open">○</span> Merge done with <code>--no-ff</code>, stamp verified by <code>require-gate.sh</code> allowing the merge.</li>
+<li><span class="task task--open">○</span> <code>lessons.jsonl</code> reviewed by <code>/factory-retro</code>; proposals recorded even if declined.</li>
+</ul></div>
+</details></section>
+<section class="panel"><h2 class="panel__title">M1</h2><details class="quest-card quest-card--blocked" id="issue-07">
+  <summary><span class="enc__glyph">◇</span><span class="enc__n mono">#07</span><span class="quest-card__title">Mirror the public pages, the wiki and the static grammar files</span><span class="enc__meta">blocked · implementer / sonnet / medium · after #06</span></summary>
+  <div class="prose quest-card__body"><h2 id="what">What</h2>
+<p><code>tools.mirror</code> fetches, without a login, every <code>index.php?unlweb=<em></code> page, every wiki page through the MediaWiki API (wikitext and rendered HTML, plus page metadata), and every file the pages link under <code>/grammars/</code>, <code>/uploads/</code> and <code>/unlarium/</em>/export_*.php</code> that answers without a login. Files land verbatim under <code>data/archive/{pages,wiki,grammars,exports}/</code> with a manifest line each.</p>
+<h2 id="acceptance-criteria">Acceptance criteria</h2>
+<ul>
+<li><code>mirror.toml</code> lists the sources with their licence URL as the page links it. The UNLarium page links CC BY-SA 2.5 CH; the terms page says 4.0; each manifest line records what its page links.</li>
+<li>One request per second, <code>User-Agent: verstaan-mirror (+repo URL)</code>, retries three times with backoff, never follows a link off <code>unlarchive.org</code>.</li>
+<li>Idempotent: a second run downloads only files whose <code>ETag</code> or content hash changed and appends manifest lines only for those.</li>
+<li>The MediaWiki export uses <code>action=query&amp;prop=revisions</code> for wikitext and <code>action=parse</code> for HTML. Every wiki page also lists its <code>categories</code> in the manifest <code>title</code> field's sibling <code>extra</code>.</li>
+<li>The broken public dictionary export (<code>export_dic.php</code> returns a MySQL error as of 2026-09-08) is recorded as a manifest line with <code>status: error</code> and the error body, not skipped silently.</li>
+<li>A pytest with a recorded HTTP fixture proves the parser of <code>index.php?unlweb=dev</code> finds the commented-out GitHub link and records it as <code>note</code>.</li>
+</ul>
+<h2 id="not-in-scope">Not in scope</h2>
+<p>Logged-in exports (issue 08). Any interpretation of content.</p>
+<h2 id="done-when">Done when</h2>
+<ul>
+<li><span class="task task--open">○</span> <code>data/archive/manifest.jsonl</code> has a line for every file present, and <code>sha256</code> matches.</li>
+<li><span class="task task--open">○</span> Wiki page count and static file count are in the report.</li>
+<li><span class="task task--open">○</span> Two consecutive runs; the second downloads nothing new. Shown.</li>
+</ul></div>
+</details>
+<details class="quest-card quest-card--blocked" id="issue-08">
+  <summary><span class="enc__glyph">◇</span><span class="enc__n mono">#08</span><span class="quest-card__title">Mirror the logged-in UNLarium exports for every language</span><span class="enc__meta">blocked · implementer / sonnet / medium · after #07</span></summary>
+  <div class="prose quest-card__body"><h2 id="what">What</h2>
+<p>With <code>UNL_USER</code> and <code>UNL_PASS</code> from the environment, <code>tools.mirror --login</code> signs in at <code>/user/index.php?page=login</code>, reads the language list at <code>/user/index.php?unlweb=language</code>, and for each language with a non-zero dictionary or grammar count fetches the dictionary export, the four grammar exports (<code>type=M|Y</code>, <code>direction=G</code> or analysis), the tagset, and the corpus exports, via the UNLarium <code>index.php?unlarium=dictionary&amp;lang=&lt;code&gt;</code> and <code>?grammar=export</code> pages. It also fetches the owner's Files page uploads. Exit 3 with one line if the credentials are missing.</p>
+<h2 id="acceptance-criteria">Acceptance criteria</h2>
+<ul>
+<li>The language table is saved as <code>data/archive/languages.json</code> with <code>iso1, iso3, name, users, base_forms, word_forms, paradigms, frames, dict_level, grammar_level</code> for all rows.</li>
+<li>For each language: <code>data/archive/exports/&lt;iso3&gt;/</code> holds every export that returned content. An export that says &quot;No grammar available&quot; is recorded in the manifest with <code>status: empty</code>.</li>
+<li>The session cookie is never written to disk. Shown by grep of the repo after a run.</li>
+<li>Credentials on the command line are refused (issue 03's rule) and the test still passes.</li>
+<li>Rate limit and idempotence as issue 07.</li>
+<li>A summary table in the report: languages seen, exports fetched, empties, errors, total bytes.</li>
+</ul>
+<h2 id="not-in-scope">Not in scope</h2>
+<p>Parsing. The statistics, profile, assignments and problems pages. Anything naming a user other than the archive's own author credits inside export files.</p>
+<h2 id="done-when">Done when</h2>
+<ul>
+<li><span class="task task--open">○</span> Afrikaans, English and Dutch exports are present and non-empty where the language table</li>
+<li><span class="task task--open">○</span> The count of languages with a non-empty dictionary export matches the table's non-zero</li>
+</ul></div>
+</details>
+<details class="quest-card quest-card--blocked" id="issue-09">
+  <summary><span class="enc__glyph">◇</span><span class="enc__n mono">#09</span><span class="quest-card__title">Agent-readable UNL reference: the specifications</span><span class="enc__meta">blocked · docs-writer / sonnet / medium · after #07</span></summary>
+  <div class="prose quest-card__body"><h2 id="what">What</h2>
+<p>Rewrite the mirrored wiki specification pages into <code>docs/unl-reference/spec/</code>: one page each for UNL document structure, sentence structure, Universal Words, Universal Relations (a full table), Universal Attributes (a full table), and the UNL2010 changes from earlier versions. Each page is a rewrite in the writing voice, keeps every term as the archive spells it, has an example under every rule, and ends with its source line.</p>
+<h2 id="acceptance-criteria">Acceptance criteria</h2>
+<ul>
+<li>The relations table lists every relation the wiki lists, with label, meaning, one UNL example and one English gloss. Same for attributes.</li>
+<li>Every page's <code>Source:</code> line names the manifest <code>path</code> and <code>url</code> of the wiki page it came from.</li>
+<li>A <code>docs/unl-reference/README.md</code> index with one line per page and a &quot;what is not here yet&quot; list.</li>
+<li>No page describes Verstaan behaviour. These are the UNL specs, nothing more.</li>
+<li>Any place the spec versions contradict each other is listed in <code>docs/unl-reference/open-questions.md</code> for a rule-author to decide.</li>
+</ul>
+<h2 id="not-in-scope">Not in scope</h2>
+<p>Grammar and dictionary format pages (issue 10). The engine.</p>
+<h2 id="done-when">Done when</h2>
+<ul>
+<li><span class="task task--open">○</span> Six spec pages plus the index and open-questions file exist.</li>
+<li><span class="task task--open">○</span> A rule-author can answer &quot;what does <code>agt</code> mean&quot; and &quot;what does <code>@entry</code> do&quot; from the</li>
+</ul></div>
+</details>
+<details class="quest-card quest-card--blocked" id="issue-10">
+  <summary><span class="enc__glyph">◇</span><span class="enc__n mono">#10</span><span class="quest-card__title">Agent-readable UNL reference: dictionary, grammar and tagset formats</span><span class="enc__meta">blocked · docs-writer / sonnet / medium · after #08, #09</span></summary>
+  <div class="prose quest-card__body"><h2 id="what">What</h2>
+<p>Rewrite the wiki's Dictionary, Grammar, Tagset, Inflection, Subcategorisation and Default-grammar pages into <code>docs/unl-reference/formats/</code>, and check each described form against real exported files from issue 08. Where the wiki and the exports disagree, the export wins and the page says so.</p>
+<h2 id="acceptance-criteria">Acceptance criteria</h2>
+<ul>
+<li>The dictionary entry grammar is written as a formal syntax with every field named, and three real lines from the Afrikaans and English exports are parsed by hand beside it.</li>
+<li>The transformation-grammar rule syntax is written the same way, with three real rules from <code>eng_unl_tgrammar.txt</code> explained line by line.</li>
+<li>The tagset page lists every feature and value the exports use, with the wiki's definition, and flags any value the exports use that the wiki does not define.</li>
+<li>Every page ends with its source lines (wiki page and export file manifest paths).</li>
+</ul>
+<h2 id="not-in-scope">Not in scope</h2>
+<p>Writing the importer. Verstaan's own YAML shape.</p>
+<h2 id="done-when">Done when</h2>
+<ul>
+<li><span class="task task--open">○</span> Six format pages exist and are indexed.</li>
+<li><span class="task task--open">○</span> The disagreements list is non-empty or the report says the check was done and found none.</li>
+</ul></div>
+</details>
+<details class="quest-card quest-card--blocked" id="issue-11">
+  <summary><span class="enc__glyph">◇</span><span class="enc__n mono">#11</span><span class="quest-card__title">Archive inventory: what exists, what is usable, what is missing</span><span class="enc__meta">blocked · implementer / sonnet / medium · after #08, #10 · checkpoint 2</span></summary>
+  <div class="prose quest-card__body"><h2 id="what">What</h2>
+<p><code>tools.mirror inventory</code> reads <code>manifest.jsonl</code> and <code>languages.json</code> and writes <code>docs/architecture/archive-inventory.md</code>: per language, the export files present, their sizes, entry and rule counts by a first-pass line count, which grammar kinds are non-empty, and a readiness grade for use as a reference language. The docs-writer adds a prose summary naming the reference set for M2 and M3.</p>
+<h2 id="acceptance-criteria">Acceptance criteria</h2>
+<ul>
+<li>One table row per language with a non-empty export. Sorted by dictionary base forms descending.</li>
+<li>Readiness grade rule written in the page: A = dictionary &gt; 50k and all four grammar exports non-empty; B = dictionary &gt; 10k and generation grammar non-empty; C = anything else non-empty.</li>
+<li>The Afrikaans, English and Dutch rows match what the interrogation recorded on 2026-09-08 or the difference is explained.</li>
+<li>The page names the languages M3 will use (eng, afr) and the reference set for rule drafting.</li>
+</ul>
+<h2 id="not-in-scope">Not in scope</h2>
+<p>Parsing beyond line counts.</p>
+<h2 id="done-when">Done when</h2>
+<ul>
+<li><span class="task task--open">○</span> Inventory page exists and is linked from <a class="code-link" href="docs/docs--architecture--overview.html"><code>docs/architecture/overview.md</code></a>.</li>
+<li><span class="task task--open">○</span> The report states the three counts for <code>afr</code> and <code>eng</code> in the page.</li>
+</ul></div>
+</details>
+<details class="quest-card quest-card--blocked" id="issue-12">
+  <summary><span class="enc__glyph">◇</span><span class="enc__n mono">#12</span><span class="quest-card__title">Write the M2 issue files from the inventory, gate and merge M1</span><span class="enc__meta">blocked · docs-writer / sonnet / low · after #11 · checkpoint 4</span></summary>
+  <div class="prose quest-card__body"><h2 id="what">What</h2>
+<p>Using <code>PLAN.md</code> §7 and the inventory, write issues 13 to 18 for M2 in the shape of these files: the canonical data model as a schema, the dictionary importer, the grammar importer, the tagset and corpus importers, the validator, and the M2 close-out. Then <code>/factory-retro</code>, <code>/gate</code>, the verifier, and merge <code>m1-mirror</code>.</p>
+<h2 id="acceptance-criteria">Acceptance criteria</h2>
+<ul>
+<li>Each M2 issue has acceptance criteria a test can check and names the export files it parses.</li>
+<li>The data-model issue lists every field in <code>SPEC.md</code> §3.2 and §3.3 and marks any the inventory shows the archive does not have.</li>
+<li><code>/gate</code> passes with the stamp; verifier report attached under <code>## Verifier</code>.</li>
+</ul>
+<h2 id="not-in-scope">Not in scope</h2>
+<p>Starting any M2 issue.</p>
+<h2 id="done-when">Done when</h2>
+<ul>
+<li><span class="task task--open">○</span> Six new issue files, <code>STATE.md</code> shows #13 as next.</li>
+<li><span class="task task--open">○</span> <code>main</code> contains the M1 merge.</li>
+</ul></div>
+</details></section>
+<section class="panel"><h2 class="panel__title">Side quests</h2><details class="quest-card quest-card--open" id="issue-90">
+  <summary><span class="enc__glyph">○</span><span class="enc__n mono">#90</span><span class="quest-card__title">The console: a local CIC page rendered from the issue files</span><span class="enc__meta">open · implementer / sonnet / medium · no dependencies</span></summary>
+  <div class="prose quest-card__body"><h2 id="what">What</h2>
+<p>A side quest pulled forward from Post-M6 on 2026-09-08. <code>tools/console</code> is a zero-dependency Node script that reads <code>docs/factory/issues/*.md</code> frontmatter, <code>git</code> state, the gate stamp and <code>lessons.jsonl</code>, and writes <code>docs/factory/console/index.html</code>, openable from <code>file://</code>. It wears bob's Colonial CIC skin. It never invents state: every number on the page traces to a file or a git command. Its top panel is one next move to type and one side task under ten minutes that only the owner can do.</p>
+<h2 id="acceptance-criteria">Acceptance criteria</h2>
+<ul>
+<li><code>node tools/console/src/generate.mjs</code> writes <code>docs/factory/console/index.html</code> and copies <code>theme.css</code>. No <code>npm install</code>, no <code>fetch()</code>, no ES-module <code>import</code> in the page.</li>
+<li>The page shows, from files only: the main quest (current milestone branch and its issues with glyph and label), side quests (open issues whose milestone is <code>Side</code> or <code>Post-M6</code> with dependencies met), the party (each agent's model and effort from its frontmatter), the save point (HEAD, dirty file count, stamp status), and the ledger as an experience bar (lessons by signature, promoted count).</li>
+<li>The next-move rail names one command. Its logic matches <code>/factory-status</code>: lowest open issue whose dependencies are done.</li>
+<li>The side task is chosen from: an issue file with a <code>review: pending</code> row in its test-cases companion, a <code>lessons.jsonl</code> signature at count three or more, an open checkpoint. If none, the panel says so in one line.</li>
+<li>All repo content reaches the DOM through <code>textContent</code>. The data island unicode-escapes <code>&lt;</code>, <code>&gt;</code> and <code>&amp;</code>. A test proves an issue title containing <code>&lt;script&gt;</code> renders as text.</li>
+<li>Status never rides on hue alone: glyph and label on every status.</li>
+<li>Voice: <a class="code-link" href="docs/docs--standards--voice.html"><code>docs/standards/voice.md</code></a>. No cheering, no exclamation marks.</li>
+<li><code>node tools/console/test/run.mjs</code> runs the parsers against fixtures and exits non-zero on a mismatch. <strong>Prove it fails</strong> on a bad fixture.</li>
+</ul>
+<h2 id="not-in-scope">Not in scope</h2>
+<p>Editing anything from the page. Charts beyond the burn-up bar. A server.</p>
+<h2 id="done-when">Done when</h2>
+<ul>
+<li><span class="task task--done">●</span> Generated page opens from <code>file://</code> and shows this issue as a side quest.</li>
+<li><span class="task task--done">●</span> Parser test green, and its failing run is in the report.</li>
+<li><span class="task task--done">●</span> <a class="code-link" href="docs/docs--factory--README.html"><code>docs/factory/README.md</code></a> gains a two-line pointer to the console.</li>
+</ul>
+<h2 id="report-2026-09-08">Report, 2026-09-08</h2>
+<p>Built in the planting session, before the first commit exists, so <code>status</code> stays <code>open</code> and <code>commit</code> stays <code>null</code> until the owner makes the repository's first commit. Then a <code>chore(#90): close</code> commit flips it.</p>
+<ul>
+<li>Tests: <code>node tools/console/test/run.mjs</code> is green, fifteen checks. Failing run proven by flipping fixture <code>90-side.md</code> to <code>status: done</code>: two checks failed, exit 1. Fixture restored.</li>
+<li>One test was wrong on first run: it looked for a bare <code>&lt;script&gt;</code> string that the page never contains. The escaping itself was correct. The assertion was fixed, not the code.</li>
+<li>Look: viewed once over localhost at 1280 px. Five tiles wrapped with one orphan; tile minimum width reduced so five fit at the room width. Playwright blocks <code>file://</code>, so the <code>file://</code> criterion is proven by the page having no <code>fetch()</code> and no module import, as the code shows.</li>
+</ul>
+<p>Extended the same day, at the owner's request, from one page to five rooms: Quests (every issue file whole), Playbook (<a class="code-link" href="docs/docs--factory--playbook.html"><code>docs/factory/playbook.md</code></a>), Library (every project document rendered through a small Markdown renderer in <code>tools/console/src/markdown.mjs</code>, with backtick paths linking across pages), and Glossary (<a class="code-link" href="docs/docs--glossary.html"><code>docs/glossary.md</code></a>, now the one source <code>SPEC.md</code> §2 points to). The renderer escapes everything first and blocks non-http link schemes; both are tested. Two renderer tests were wrong on first run, not the renderer: one expected a newline the output does not emit, one used a URL with parentheses the link pattern does not claim to support.</p></div>
+</details></section>
+  <footer class="cic-foot"><p class="cic-foot__note">Rendered 2026-09-08T09:48:51Z from docs/factory/issues. The files are the truth.</p></footer>
+</main>
+
+
+</body>
+</html>

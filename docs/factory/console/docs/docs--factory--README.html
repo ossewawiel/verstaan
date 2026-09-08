@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How the factory works · Verstaan console</title>
+<link rel="stylesheet" href="../theme.css">
+<link rel="stylesheet" href="../console.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="cic-bar">
+  <span class="cic-bar__sigil" aria-hidden="true">◈</span>
+  <div class="cic-bar__id">
+    <span class="cic-bar__proj">Verstaan</span>
+    <span class="cic-bar__sub">library · docs/factory/README.md</span>
+  </div>
+  <nav class="cic-bar__nav" aria-label="Rooms">
+    <a href="../index.html">Console</a>
+    <a href="../quests.html">Quests</a>
+    <a href="../playbook.html">Playbook</a>
+    <span class="cic-bar__here">Library</span>
+    <a href="../glossary.html">Glossary</a>
+  </nav>
+</header>
+<main id="main" class="room room--doc">
+  <p class="altitude__band">Library · docs/factory/README.md</p>
+  <div class="doc">
+    <article class="prose"><h1 id="how-the-factory-works">How the factory works</h1>
+<p>Verstaan is built by a small code factory: a handful of Claude Code agents, three slash commands, and hooks that enforce the rules the agents would otherwise have to remember. This page is the onboarding narrative. The mechanics are in <code>PLAN.md</code> §6 and the exact rules in <code>SPEC.md</code> §5.</p>
+<h2 id="the-shape">The shape</h2>
+<p>There are two phases. Phase A, interrogation, already happened; it produced <code>PLAN.md</code>, <code>SPEC.md</code>, the ADRs and the first issue files. Phase B is the loop you are in now:</p>
+<pre><code>/factory-status  →  /factory-run  →  (agents work one issue)  →  gates  →  commit  →  repeat
+                                               │
+                                     checkpoint? stop, ask the human</code></pre>
+<p>One issue becomes one commit on the milestone branch. When the milestone's issues are all done, <code>/gate</code> runs the full ladder, the verifier reads the whole diff, and the branch merges.</p>
+<h2 id="the-three-rules-that-make-it-resumable">The three rules that make it resumable</h2>
+<ol>
+<li>The issue files under <code>issues/</code> are the state. <code>STATE.md</code> is a rendering. If they disagree, the files win, and <code>/factory-status</code> fixes the rendering.</li>
+<li>Every rule that can be a gate is a gate. Formatting happens on save. Compile and fast tests run before the session may stop. The full gate stamps the commit, and a hook refuses to open a pull request without the stamp.</li>
+<li>Failures are data. The fast gate logs each failure to <code>lessons.jsonl</code>. When a signature repeats three times, <code>/factory-retro</code> proposes a rule. A human says yes or no.</li>
+</ol>
+<h2 id="a-session-start-to-finish">A session, start to finish</h2>
+<pre><code>/factory-status            # what is done, what is next
+/factory-run               # picks the next open issue, or /factory-run 12
+...                        # agents work; you answer at checkpoints
+/factory-retro             # optional, mid-milestone
+/gate                      # before a PR; must be run for real</code></pre>
+<h2 id="the-console">The console</h2>
+<p><code>docs/factory/console/index.html</code> is the game console: open it from <code>file://</code>, no server. It is rendered from the repository by <code>node tools/console/src/generate.mjs</code>, which <code>/factory-status</code> runs for you. Nothing on it is editable; the files are. Five rooms:</p>
+<div class="tablewrap"><table><thead><tr><th>Room</th><th>What it holds</th></tr></thead><tbody><tr><td>Console</td><td>The main quest, the next move to type, one side task under ten minutes, the save point, the party and its cost, the ledger as an experience bar.</td></tr><tr><td>Quests</td><td>Every issue file, whole, grouped by milestone, the next one open.</td></tr><tr><td>Playbook</td><td><a class="code-link" href="../docs/docs--factory--playbook.html"><code>docs/factory/playbook.md</code></a>: how an encounter, the gate ladder, checkpoints and self-improvement work, with an example.</td></tr><tr><td>Library</td><td>Every project document rendered as a page, grouped: start here, plan and spec, architecture, decisions, standards, UNL reference, licences, the party, skills and commands. Backtick paths link across pages.</td></tr><tr><td>Glossary</td><td><a class="code-link" href="../docs/docs--glossary.html"><code>docs/glossary.md</code></a>: one term, one meaning, and the words we do not use.</td></tr></tbody></table></div>
+<h2 id="what-is-different-from-a-normal-repo">What is different from a normal repo</h2>
+<ul>
+<li><code>engine/generated/</code> is compiler output. Editing it by hand is a bug.</li>
+<li><code>data/</code> is CC BY-SA and the engine is MPL-2.0. They stay separate on purpose.</li>
+<li>The archive mirror is verbatim. Interpretation happens in the importer, never in the mirror.</li>
+<li>There is no CI server yet. The hook ladder is the CI. When a remote exists, the same commands move into a workflow file.</li>
+</ul></article>
+    <aside class="doc__aside"><nav class="toc" aria-label="On this page"><p class="toc__label">On this page</p><ol><li class="toc__l2"><a href="#the-shape">The shape</a></li><li class="toc__l2"><a href="#the-three-rules-that-make-it-resumable">The three rules that make it resumable</a></li><li class="toc__l2"><a href="#a-session-start-to-finish">A session, start to finish</a></li><li class="toc__l2"><a href="#the-console">The console</a></li><li class="toc__l2"><a href="#what-is-different-from-a-normal-repo">What is different from a normal repo</a></li></ol></nav><p class="muted">Source: <code>docs/factory/README.md</code>. Edit the file, then regenerate. <a href="../library.html">Back to the library</a>.</p></aside>
+  </div>
+  <footer class="cic-foot"><p class="cic-foot__note">Rendered 2026-09-08T09:48:51Z.</p></footer>
+</main>
+
+
+</body>
+</html>

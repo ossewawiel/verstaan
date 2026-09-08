@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>0003 — Generated data builds as a separate library · Verstaan console</title>
+<link rel="stylesheet" href="../theme.css">
+<link rel="stylesheet" href="../console.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="cic-bar">
+  <span class="cic-bar__sigil" aria-hidden="true">◈</span>
+  <div class="cic-bar__id">
+    <span class="cic-bar__proj">Verstaan</span>
+    <span class="cic-bar__sub">library · docs/adr/0003-generated-data-builds-as-a-separate-library.md</span>
+  </div>
+  <nav class="cic-bar__nav" aria-label="Rooms">
+    <a href="../index.html">Console</a>
+    <a href="../quests.html">Quests</a>
+    <a href="../playbook.html">Playbook</a>
+    <span class="cic-bar__here">Library</span>
+    <a href="../glossary.html">Glossary</a>
+  </nav>
+</header>
+<main id="main" class="room room--doc">
+  <p class="altitude__band">Library · docs/adr/0003-generated-data-builds-as-a-separate-library.md</p>
+  <div class="doc">
+    <article class="prose"><h1 id="0003-generated-data-builds-as-a-separate-library">0003 — Generated data builds as a separate library</h1>
+<p>Date: 2026-09-08 · Status: Accepted</p>
+<h2 id="context">Context</h2>
+<p>The compiler turns CC BY-SA dictionaries and grammars into C++ tables. Under CC BY-SA, that output is an adaptation of the data and carries the data licence, whatever licence the engine has. If generated code were pasted into engine source, the boundary between MPL-2.0 and CC BY-SA would blur inside one compilation unit.</p>
+<h2 id="decision">Decision</h2>
+<p>The compiler emits one static library per tier, <code>verstaan_data_&lt;tier&gt;</code>, under <code>engine/generated/&lt;tier&gt;/</code>, with a licence header naming CC BY-SA 4.0. The engine links to it through a fixed interface (<code>engine/include/verstaan/tables.hpp</code>) and never includes generated files directly. Generated files are never edited by hand.</p>
+<h2 id="consequences">Consequences</h2>
+<ul>
+<li>The engine builds and its tests run against a tiny fixture data library, so engine work does not wait on the compiler.</li>
+<li>A shipped binary carries two licences, and a <code>NOTICE</code> file in each app names both.</li>
+<li><code>.gitignore</code> does not exclude <code>engine/generated/</code>; committed generated output is how a tier build is reproducible without Python. The compiler's full gate check regenerates and diffs.</li>
+</ul></article>
+    <aside class="doc__aside"><nav class="toc" aria-label="On this page"><p class="toc__label">On this page</p><ol><li class="toc__l2"><a href="#context">Context</a></li><li class="toc__l2"><a href="#decision">Decision</a></li><li class="toc__l2"><a href="#consequences">Consequences</a></li></ol></nav><p class="muted">Source: <code>docs/adr/0003-generated-data-builds-as-a-separate-library.md</code>. Edit the file, then regenerate. <a href="../library.html">Back to the library</a>.</p></aside>
+  </div>
+  <footer class="cic-foot"><p class="cic-foot__note">Rendered 2026-09-08T09:48:51Z.</p></footer>
+</main>
+
+
+</body>
+</html>

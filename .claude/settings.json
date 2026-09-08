@@ -1,0 +1,27 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write|MultiEdit",
+        "hooks": [
+          { "type": "command", "command": "bash \"${CLAUDE_PROJECT_DIR}/.claude/hooks/fast-format.sh\"", "timeout": 30 }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Bash|PowerShell",
+        "hooks": [
+          { "type": "command", "command": "bash \"${CLAUDE_PROJECT_DIR}/.claude/hooks/require-gate.sh\"", "timeout": 15 }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          { "type": "command", "command": "bash \"${CLAUDE_PROJECT_DIR}/.claude/hooks/gate-fast.sh\"", "timeout": 120 }
+        ]
+      }
+    ]
+  }
+}

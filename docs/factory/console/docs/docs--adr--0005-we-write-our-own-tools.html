@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>0005 — We write our own tools from the specs, not from archived source · Verstaan console</title>
+<link rel="stylesheet" href="../theme.css">
+<link rel="stylesheet" href="../console.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="cic-bar">
+  <span class="cic-bar__sigil" aria-hidden="true">◈</span>
+  <div class="cic-bar__id">
+    <span class="cic-bar__proj">Verstaan</span>
+    <span class="cic-bar__sub">library · docs/adr/0005-we-write-our-own-tools.md</span>
+  </div>
+  <nav class="cic-bar__nav" aria-label="Rooms">
+    <a href="../index.html">Console</a>
+    <a href="../quests.html">Quests</a>
+    <a href="../playbook.html">Playbook</a>
+    <span class="cic-bar__here">Library</span>
+    <a href="../glossary.html">Glossary</a>
+  </nav>
+</header>
+<main id="main" class="room room--doc">
+  <p class="altitude__band">Library · docs/adr/0005-we-write-our-own-tools.md</p>
+  <div class="doc">
+    <article class="prose"><h1 id="0005-we-write-our-own-tools-from-the-specs-not-from-archived-source">0005 — We write our own tools from the specs, not from archived source</h1>
+<p>Date: 2026-09-08 · Status: Accepted</p>
+<h2 id="context">Context</h2>
+<p>The archive's software page names EnCo, DeCo, IAN, EUGENE and a dictionary builder and says their source is on GitHub. The link is inside an HTML comment, no GitHub organisation exists, and no page behind the login links source. The owner has decided not to wait.</p>
+<h2 id="decision">Decision</h2>
+<p>The importer, compiler and engine are written from the UNL specifications (UNL2010 and the earlier versions on the wiki), the grammar and dictionary specification pages, and the real exported files. If the archived source turns up later it may be read for behaviour, but its licence is unknown and none of it is linked or copied.</p>
+<h2 id="consequences">Consequences</h2>
+<ul>
+<li>The rule formats we support are the ones the exports actually use. The importer is written against the files, then checked against the wiki's grammar.</li>
+<li>Behaviour that the specs leave ambiguous is decided by the owner, recorded as an ADR, and pinned by a test sentence.</li>
+<li>An e-mail to admin@unlarchive.org asking for the source is worthwhile but on nobody's path.</li>
+</ul></article>
+    <aside class="doc__aside"><nav class="toc" aria-label="On this page"><p class="toc__label">On this page</p><ol><li class="toc__l2"><a href="#context">Context</a></li><li class="toc__l2"><a href="#decision">Decision</a></li><li class="toc__l2"><a href="#consequences">Consequences</a></li></ol></nav><p class="muted">Source: <code>docs/adr/0005-we-write-our-own-tools.md</code>. Edit the file, then regenerate. <a href="../library.html">Back to the library</a>.</p></aside>
+  </div>
+  <footer class="cic-foot"><p class="cic-foot__note">Rendered 2026-09-08T09:48:51Z.</p></footer>
+</main>
+
+
+</body>
+</html>

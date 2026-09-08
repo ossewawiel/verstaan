@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>C++ · Verstaan console</title>
+<link rel="stylesheet" href="../theme.css">
+<link rel="stylesheet" href="../console.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="cic-bar">
+  <span class="cic-bar__sigil" aria-hidden="true">◈</span>
+  <div class="cic-bar__id">
+    <span class="cic-bar__proj">Verstaan</span>
+    <span class="cic-bar__sub">library · docs/standards/cpp.md</span>
+  </div>
+  <nav class="cic-bar__nav" aria-label="Rooms">
+    <a href="../index.html">Console</a>
+    <a href="../quests.html">Quests</a>
+    <a href="../playbook.html">Playbook</a>
+    <span class="cic-bar__here">Library</span>
+    <a href="../glossary.html">Glossary</a>
+  </nav>
+</header>
+<main id="main" class="room room--doc">
+  <p class="altitude__band">Library · docs/standards/cpp.md</p>
+  <div class="doc">
+    <article class="prose"><h1 id="c">C++</h1>
+<p>Applies to <code>engine/</code> and <code>apps/</code>. The house C++ standard at <code>D:\SourceCode\claude-prompts\guides\coding-standards\cpp-coding-standards.md</code> is the baseline; this file records where Verstaan is stricter.</p>
+<h2 id="build">Build</h2>
+<ul>
+<li>C++20. CMake ≥ 3.28 with presets in <code>CMakePresets.json</code>: <code>msvc-debug</code>, <code>msvc-release</code>, <code>clang-release</code>, <code>gcc-release</code>, <code>arm-basic</code>.</li>
+<li><code>-Wall -Wextra -Werror -Wpedantic</code> (MSVC: <code>/W4 /WX /permissive-</code>).</li>
+<li>vcpkg manifest mode. The engine target depends on no port. Tests depend on <code>gtest</code>.</li>
+<li>One library target per component: <code>verstaan_core</code>, <code>verstaan_data_&lt;tier&gt;</code>, <code>verstaan_cli</code>.</li>
+</ul>
+<h2 id="code">Code</h2>
+<ul>
+<li><code>#pragma once</code>. Includes in three groups: own header, project, standard library.</li>
+<li>Namespace <code>verstaan</code>. Files <code>snake_case.hpp/.cpp</code>. Types <code>PascalCase</code>. Functions and variables <code>snake_case</code>. Constants <code>kPascalCase</code>. Enums are <code>enum class</code>.</li>
+<li>No exceptions across the public API. Return <code>Status</code> or <code>std::expected</code>. Exceptions inside the engine are a bug.</li>
+<li>No <code>new</code>/<code>delete</code>. <code>std::unique_ptr</code> where ownership is needed. The <code>basic</code> tier allocates nothing after <code>Engine::load()</code>; a test asserts it with a counting allocator.</li>
+<li>No RTTI, no <code>dynamic_cast</code>. No global mutable state. The engine is <code>const</code> after load and safe to call from many threads.</li>
+<li>Strings are UTF-8 <code>std::string_view</code> in, <code>std::string</code> out. Never assume one byte per character.</li>
+<li><code>engine/generated/</code> is never edited by hand and never included directly (ADR 0003).</li>
+</ul>
+<h2 id="tests">Tests</h2>
+<p>See <code>testing.md</code>. Every public function in <code>engine/include/</code> has a unit test. Every grammar rule has a golden sentence. Every corpus sentence runs through both rule back ends.</p>
+<h2 id="tooling">Tooling</h2>
+<ul>
+<li><code>clang-format</code> with the repo <code>.clang-format</code> runs on save from the auto-fix hook.</li>
+<li><code>clang-tidy</code> runs in <code>/gate</code> with the repo <code>.clang-tidy</code>. Warnings are errors.</li>
+<li>Sanitizers (<code>-fsanitize=address,undefined</code>) on the <code>clang-release</code> preset in <code>/gate</code>.</li>
+</ul></article>
+    <aside class="doc__aside"><nav class="toc" aria-label="On this page"><p class="toc__label">On this page</p><ol><li class="toc__l2"><a href="#build">Build</a></li><li class="toc__l2"><a href="#code">Code</a></li><li class="toc__l2"><a href="#tests">Tests</a></li><li class="toc__l2"><a href="#tooling">Tooling</a></li></ol></nav><p class="muted">Source: <code>docs/standards/cpp.md</code>. Edit the file, then regenerate. <a href="../library.html">Back to the library</a>.</p></aside>
+  </div>
+  <footer class="cic-foot"><p class="cic-foot__note">Rendered 2026-09-08T09:48:51Z.</p></footer>
+</main>
+
+
+</body>
+</html>

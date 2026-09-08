@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>0007 — One engine, two rule back ends, identical output · Verstaan console</title>
+<link rel="stylesheet" href="../theme.css">
+<link rel="stylesheet" href="../console.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="cic-bar">
+  <span class="cic-bar__sigil" aria-hidden="true">◈</span>
+  <div class="cic-bar__id">
+    <span class="cic-bar__proj">Verstaan</span>
+    <span class="cic-bar__sub">library · docs/adr/0007-one-engine-two-rule-back-ends.md</span>
+  </div>
+  <nav class="cic-bar__nav" aria-label="Rooms">
+    <a href="../index.html">Console</a>
+    <a href="../quests.html">Quests</a>
+    <a href="../playbook.html">Playbook</a>
+    <span class="cic-bar__here">Library</span>
+    <a href="../glossary.html">Glossary</a>
+  </nav>
+</header>
+<main id="main" class="room room--doc">
+  <p class="altitude__band">Library · docs/adr/0007-one-engine-two-rule-back-ends.md</p>
+  <div class="doc">
+    <article class="prose"><h1 id="0007-one-engine-two-rule-back-ends-identical-output">0007 — One engine, two rule back ends, identical output</h1>
+<p>Date: 2026-09-08 · Status: Accepted</p>
+<h2 id="context">Context</h2>
+<p>The owner wants rules scripted and tuned live, then &quot;embedded and part of the source code so it can really be as fast as C++ can deliver&quot;. Two separate implementations, an interpreter and a compiled engine, would drift, and the tuning loop would then lie about what ships.</p>
+<h2 id="decision">Decision</h2>
+<p>There is one engine and one rule semantics. Rules reach it two ways: runtime tables built from the YAML store (used for authoring, tests and the management tools), or generated code and tables from the compiler (used for shipping). <code>tests/equivalence/</code> runs every corpus sentence through both and diffs the text, the UNL graph and the rule trace. A difference is a gate failure.</p>
+<h2 id="consequences">Consequences</h2>
+<ul>
+<li>Authoring never waits for a compile. Shipping never depends on a YAML parser.</li>
+<li>The rule interpreter is the reference implementation. The compiler's job is to reproduce it, faster and smaller, never to extend it.</li>
+<li>Checkpoint 3 in <code>PLAN.md</code> §6.3 is the first time generated tables replace runtime tables in a build, because that is where a silent divergence would start.</li>
+</ul></article>
+    <aside class="doc__aside"><nav class="toc" aria-label="On this page"><p class="toc__label">On this page</p><ol><li class="toc__l2"><a href="#context">Context</a></li><li class="toc__l2"><a href="#decision">Decision</a></li><li class="toc__l2"><a href="#consequences">Consequences</a></li></ol></nav><p class="muted">Source: <code>docs/adr/0007-one-engine-two-rule-back-ends.md</code>. Edit the file, then regenerate. <a href="../library.html">Back to the library</a>.</p></aside>
+  </div>
+  <footer class="cic-foot"><p class="cic-foot__note">Rendered 2026-09-08T09:48:51Z.</p></footer>
+</main>
+
+
+</body>
+</html>
