@@ -24,6 +24,8 @@ verifier, and merge `m1-mirror`.
 - The data-model issue lists every field in `SPEC.md` §3.2 and §3.3 and marks any the inventory
   shows the archive does not have.
 - `/gate` passes with the stamp; verifier report attached under `## Verifier`.
+- The merge runs from the `m1-mirror` worktree, and once it lands, that worktree is removed from
+  the root tree: `git worktree remove .worktrees/m1-mirror && git branch -d m1-mirror`.
 
 ## Not in scope
 
@@ -33,3 +35,4 @@ Starting any M2 issue.
 
 - [ ] Six new issue files, `STATE.md` shows #13 as next.
 - [ ] `main` contains the M1 merge.
+- [ ] `.worktrees/m1-mirror` removed and the branch deleted after the merge.

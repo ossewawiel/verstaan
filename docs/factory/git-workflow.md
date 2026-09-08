@@ -10,12 +10,36 @@
 
 ## Worktrees
 
-Planned in side quest 92; the rule holds from now. The root checkout stays on `main` and changes
-only by merge. Each branch that is being worked on gets its own tree under `.worktrees/<branch>`
-with `git worktree add`, and a session works there. Two sessions never share a tree; an issue
-marked `in-progress` names the tree that holds it. The gate stamp lives in each tree's own git
-directory, so a gate passed in one tree unlocks nothing in another. A tree is removed when its
-branch has merged.
+The root checkout stays on `main` and changes only by merge; it is read-mostly, for planning,
+docs and the console. Every branch that is being worked on gets its own tree under
+`.worktrees/<branch>`, created with:
+
+```
+git worktree add .worktrees/<branch> <branch>            # branch already exists
+git worktree add -b <branch> .worktrees/<branch> main     # branch does not exist yet
+```
+
+A session works inside that tree, never in the root. Two sessions never share a tree: an issue
+marked `in-progress` names the tree that holds it in its `worktree:` field, and `/factory-run`
+refuses to start an issue that is already `in-progress` unless given `--resume`, naming the tree
+that holds it (`docs/factory/SPEC.md` §6, `.claude/skills/factory-run/SKILL.md`).
+
+The gate stamp lives in each tree's own git directory (`git rev-parse --git-dir` resolves to
+`.git` in the root and to `.git/worktrees/<branch>` inside a worktree), so a gate passed in one
+tree unlocks nothing in another: `require-gate.sh` and `/gate` read only the current tree's stamp.
+
+A tree is removed once its branch has merged, with:
+
+```
+git worktree remove .worktrees/<branch>
+git branch -d <branch>
+```
+
+`.worktrees/` is gitignored. Hooks live in the one shared directory `git rev-parse
+--git-common-dir` resolves to (not `--git-dir`, which is per-worktree and has no `hooks/` of its
+own) and fire the same way for every tree; `tools/console/install-git-hooks.sh` installs there.
+`CLAUDE_PROJECT_DIR` for a session working in a worktree is that worktree's root, so
+`refresh-console.sh` renders that tree's own `docs/factory/console/`.
 
 ## Commits
 

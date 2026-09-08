@@ -3,7 +3,7 @@
 import { readFileSync, readdirSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { parseFrontmatter, parseIssues, nextIssue, milestones, sideQuests, parseLessons, sideTask, pendingReviews, buildModel } from '../src/parse.mjs';
+import { parseFrontmatter, parseIssues, nextIssue, milestones, sideQuests, parseLessons, sideTask, pendingReviews, buildModel, parseWorktreePorcelain } from '../src/parse.mjs';
 import { escapeIsland, renderConsole as renderPage } from '../src/render.mjs';
 
 const here = dirname(fileURLToPath(import.meta.url));
@@ -39,6 +39,26 @@ check('side task none', sideTask({ issues, lessons: { ripe: [] }, reviews: { cou
 
 const model = buildModel({ issueFiles: files, agentFiles: [{ name: 'x.md', content: '---\nname: x\nmodel: sonnet\neffort: low\ndescription: Does a thing. More.\n---' }], lessonsText: '', git: { head: 'abc', branch: 'main', dirty: 0, remote: 'no remote' }, stamp: { present: false, matches: false }, generated: 't' });
 check('party parsed', model.party, [{ name: 'x', model: 'sonnet', effort: 'low', role: 'Does a thing' }]);
+check('buildModel defaults worktrees to empty', model.worktrees, []);
+
+const withTrees = buildModel({ issueFiles: files, agentFiles: [], lessonsText: '', git: { head: 'abc', branch: 'main', dirty: 0, remote: 'no remote' }, stamp: { present: false, matches: false }, generated: 't', worktrees: [{ path: '.', branch: 'main', head: 'abc', isRoot: true, dirty: 0, stampMatches: false, issue: null }] });
+check('buildModel passes worktrees through', withTrees.worktrees.length, 1);
+
+// issue schema: in-progress status and the worktree field (side quest 92)
+const inProgress = parseIssues([{ name: '99-x.md', content: '---\nissue: 99\ntitle: "X"\nmilestone: Side\nstatus: in-progress\ndepends_on: []\nworktree: .worktrees/side-99-x\n---\n## What\nX.\n' }]);
+check('in-progress status parsed', inProgress[0].status, 'in-progress');
+check('worktree field parsed', inProgress[0].worktree, '.worktrees/side-99-x');
+check('an open issue has a null worktree', issues[0].worktree, null);
+check('nextIssue skips in-progress issues', nextIssue(inProgress), null);
+
+// git worktree list --porcelain
+const porcelain = 'worktree /repo\nHEAD abcdef1234567890\nbranch refs/heads/main\n\nworktree /repo/.worktrees/side-92-worktrees\nHEAD 1234567890abcdef\nbranch refs/heads/side-92-worktrees\n\nworktree /repo/.worktrees/detached-example\nHEAD deadbeef00000000\ndetached\n';
+check('parseWorktreePorcelain', parseWorktreePorcelain(porcelain), [
+  { path: '/repo', head: 'abcdef1', branch: 'main', detached: false },
+  { path: '/repo/.worktrees/side-92-worktrees', head: '1234567', branch: 'side-92-worktrees', detached: false },
+  { path: '/repo/.worktrees/detached-example', head: 'deadbee', branch: null, detached: true },
+]);
+check('parseWorktreePorcelain empty text', parseWorktreePorcelain(''), []);
 
 const page = renderPage(model);
 check('island escapes angle brackets', !page.includes('A <script> title') && page.includes('A \\u003cscript\\u003e title'), true);
@@ -58,6 +78,17 @@ check('md bold and inline code', md('**b** and `c`').html, '<p><strong>b</strong
 check('titleOf', titleOf('---\nx: 1\n---\n# The `Plan`\n', 'f'), 'The Plan');
 check('slug', slug('Gate ladder: 3 tiers'), 'gate-ladder-3-tiers');
 check('docHref', docHref('.claude/agents/implementer.md'), 'docs/.claude--agents--implementer.html');
+
+// readWorktrees() is IO (it shells out to git), so it is exercised against this real checkout
+// rather than a fixture: the one invariant every clone has is a root tree, present and marked.
+const { readWorktrees } = await import('../src/read.mjs');
+const worktrees = readWorktrees();
+check('readWorktrees finds at least the root tree', worktrees.length >= 1, true);
+const root = worktrees.find((w) => w.isRoot);
+check('readWorktrees marks the root tree', !!root, true);
+check('readWorktrees root path is .', root && root.path, '.');
+check('readWorktrees reports a branch for the root tree', typeof (root && root.branch), 'string');
+check('readWorktrees reports a dirty count as a number', typeof (root && root.dirty), 'number');
 
 if (failed) { console.log(`${failed} failed`); process.exit(1); }
 console.log('all green');

@@ -7,6 +7,7 @@
 
   var GLYPH = {
     done: { g: '●', label: 'won' },
+    'in-progress': { g: '◐', label: 'fighting' },
     next: { g: '◐', label: 'next' },
     open: { g: '○', label: 'open' },
     blocked: { g: '◇', label: 'blocked' }
@@ -28,6 +29,7 @@
 
   function state(issue, m) {
     if (issue.status === 'done') return 'done';
+    if (issue.status === 'in-progress') return 'in-progress';
     if (m.next && m.next.n === issue.n) return 'next';
     var done = {};
     m.issues.forEach(function (i) { if (i.status === 'done') done[i.n] = true; });
@@ -42,6 +44,7 @@
     row.appendChild(el('span', 'enc__n mono', '#' + pad(issue.n)));
     var t = el('span', 'enc__title'); var a = el('a', null, issue.title); a.href = 'quests.html#issue-' + pad(issue.n); t.appendChild(a); row.appendChild(t);
     var meta = GLYPH[s].label;
+    if (issue.worktree) meta += ' · in ' + issue.worktree;
     if (issue.agent) meta += ' · ' + issue.agent + (issue.model ? ' / ' + issue.model : '');
     if (issue.checkpoint != null) meta += ' · checkpoint ' + issue.checkpoint;
     if (s === 'done' && issue.commit) meta += ' · ' + issue.commit;
@@ -63,6 +66,16 @@
     q.appendChild(bar);
     ms.issues.forEach(function (i) { q.appendChild(encounter(i, m)); });
     return q;
+  }
+
+  function tree(t) {
+    var r = el('div', 'tree' + (t.isRoot ? ' tree--root' : ''));
+    r.appendChild(el('span', 'tree__path mono', t.path + (t.isRoot ? ' (root)' : '')));
+    r.appendChild(el('span', 'tree__branch mono', t.branch || 'detached'));
+    r.appendChild(el('span', 'tree__dirty' + (t.dirty ? ' tree__dirty--warn' : ''), t.dirty ? t.dirty + ' dirty' : 'clean'));
+    r.appendChild(el('span', 'tree__stamp' + (t.stampMatches ? ' tree__stamp--ok' : ''), t.stampMatches ? 'stamped' : 'no stamp'));
+    r.appendChild(el('span', 'tree__issue', t.issue ? '#' + pad(t.issue.n) + ' ' + t.issue.title : '—'));
+    return r;
   }
 
   function tile(title, metric, blurb, cls) {
@@ -107,6 +120,13 @@
     var side = document.getElementById('side-body');
     if (!m.sideQuests.length) side.appendChild(el('p', 'empty', 'None open.'));
     m.sideQuests.forEach(function (i) { side.appendChild(encounter(i, m)); });
+
+    var trees = document.getElementById('trees-body');
+    if (trees) {
+      var wts = m.worktrees || [];
+      if (!wts.length) trees.appendChild(el('p', 'empty', 'No worktrees. Run `git worktree list` to check.'));
+      wts.forEach(function (t) { trees.appendChild(tree(t)); });
+    }
 
     var party = document.getElementById('party-body');
     m.party.forEach(function (p) {

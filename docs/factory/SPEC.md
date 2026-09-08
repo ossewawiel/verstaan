@@ -126,7 +126,7 @@ Prove a gate fails before trusting it (`docs/standards/testing.md`).
 issue: 7
 title: "Mirror the public pages and the wiki"
 milestone: M1
-status: open            # open | done
+status: open            # open | in-progress | done
 depends_on: [6]
 agent: implementer
 agents: [implementer, docs-writer]
@@ -134,6 +134,7 @@ model: sonnet
 effort: medium
 checkpoint: null        # 1..4 or null
 commit: null
+worktree: null          # .worktrees/<branch>, set while status is in-progress, cleared at close
 github_issue: null      # written only by tools/factory/mirror_github.py (issue 91); drifts from the local number
 ---
 ## What
