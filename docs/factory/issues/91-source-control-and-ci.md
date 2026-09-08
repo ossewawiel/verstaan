@@ -2,7 +2,7 @@
 issue: 91
 title: "Source control and CI: a GitHub remote that mirrors the issue files"
 milestone: Side
-status: open
+status: in-progress
 depends_on: [1]
 agent: implementer
 agents: [implementer, docs-writer]
@@ -10,6 +10,8 @@ model: sonnet
 effort: medium
 checkpoint: 4
 commit: null
+worktree: .worktrees/side-91-source-control-and-ci
+github_issue: 14
 ---
 ## What
 
@@ -58,7 +60,7 @@ Deploying anything. Releases beyond the changelog. Bitbucket or GitLab. Sonar.
 
 ## Done when
 
-- [ ] The mirror runs from a clean state and GitHub shows the same 14 issues and 3 milestones the files do.
-- [ ] The drift check's failing run and passing run are in the report.
-- [ ] `gate.yml` is green on all three matrix legs for the current `main`.
-- [ ] `SPEC.md` §6 lists `github_issue` in the issue schema, and `PLAN.md` §5 and §9 no longer say "once a remote exists".
+- [x] The mirror runs from a clean state and GitHub shows the same issues and milestones the files do (15 issues, 3 milestones: this file, 91, did not exist when "14" was written).
+- [x] The drift check's failing run and passing run are in the report.
+- [x] `gate.yml` is green on all three matrix legs for the current `main`, proven with a throwaway smoke-test PR (#16, closed unmerged) carrying only `gate.yml`; `main` has no `CMakePresets.json` yet (M0 issues 02+ have not merged), so the build/test steps report and skip cleanly rather than fail on missing scaffolding — see the report for the run and the limitation.
+- [x] `SPEC.md` §6 lists `github_issue` in the issue schema, and `PLAN.md` §5 and §9 no longer say "once a remote exists".

@@ -10,6 +10,7 @@ model: sonnet
 effort: medium
 checkpoint: 4
 commit: 4c6ec5d
+github_issue: 15
 ---
 ## What
 

@@ -10,6 +10,7 @@ model: opus
 effort: high
 checkpoint: null
 commit: null
+github_issue: 4
 ---
 ## What
 
