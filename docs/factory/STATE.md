@@ -2,5 +2,5 @@
 
 Last completed:  #91 — Source control and CI: a GitHub remote that mirrors the issue files (Side), commit 5f37278
 Next up:         #03 — Python tooling skeleton: mirror, importer, compiler, validate packages (M0)
-Branch / PR:     side-91-source-control-and-ci, origin git@github.com:ossewawiel/verstaan.git, 0 dirty files, gate not yet stamped
+Branch / PR:     m0-foundation, origin git@github.com:ossewawiel/verstaan.git, 0 dirty files, gate not yet stamped (stamp at c30e01e predates the side-91 merge commit)
 Resume with:     /factory-run 03
