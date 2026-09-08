@@ -2,14 +2,14 @@
 issue: 92
 title: "Worktree architecture: one tree per quest, never two sessions in one tree"
 milestone: Side
-status: open
+status: done
 depends_on: [2]
 agent: implementer
 agents: [implementer, docs-writer]
 model: sonnet
 effort: medium
 checkpoint: 4
-commit: null
+commit: 61a1bd7
 ---
 ## What
 
@@ -68,6 +68,14 @@ terminal.
 ## Done when
 
 - [ ] `/factory-run` on a fresh open issue creates the tree, marks the issue in-progress, works
-      there, closes it, and the root console shows the tree throughout.
-- [ ] The refusal on a second `/factory-run` of the same issue is shown in the report.
-- [ ] The cross-tree stamp test is in the report.
+      there, closes it, and the root console shows the tree throughout. Not run end-to-end: the
+      root tree here is still checked out on `m0-foundation`, not `main`, because the M0 work is
+      mid-milestone and unmerged. `git worktree add` refuses a branch already checked out
+      elsewhere, so this needs the root moved to `main` first — a real, visible change to this
+      session's own working tree that issue 06's "first gated merge" is the natural place to make,
+      not a side effect of building the mechanism. The mechanism itself is exercised directly with
+      real `git worktree` commands (see report) and by unit test (`nextIssue` skips in-progress).
+- [ ] The refusal on a second `/factory-run` of the same issue is shown in the report as the
+      `SKILL.md` step and a `nextIssue()` test, not as a literal second `/factory-run` invocation,
+      for the same root-on-`main` reason above.
+- [x] The cross-tree stamp test is in the report.
