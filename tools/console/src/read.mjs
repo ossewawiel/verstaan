@@ -21,6 +21,44 @@ function shIn(cwd, cmd) {
   try { return execSync(cmd, { cwd, stdio: ['ignore', 'pipe', 'ignore'] }).toString().trim(); } catch { return ''; }
 }
 
+/** The repository's root tree, independent of which tree this code happens to be running from.
+ * `--git-common-dir` is shared by every `git worktree` tree off one repository and resolves to
+ * the root tree's own `.git` directory (this repo's root layout is not bare), so its parent is
+ * the root tree's path. `shFn` is injectable so the derivation can be unit-tested without a real
+ * git checkout (see test/run.mjs). */
+export function resolveRootPath(shFn = sh) {
+  const commonDir = shFn('git rev-parse --path-format=absolute --git-common-dir');
+  return commonDir ? resolve(commonDir, '..') : REPO;
+}
+
+/** Pure: is this tree the root tree? Both paths are resolved so trailing separators or relative
+ * segments don't cause a false negative. */
+export function isRootTree(treeAbsPath, rootAbsPath) {
+  return resolve(treeAbsPath) === resolve(rootAbsPath);
+}
+
+/** Pure: normalise a worktree path for comparison — backslash to forward slash (a PowerShell
+ * session types `git worktree add .worktrees\side-x`), and strip a leading `./`. */
+export function normalizeTreePath(p) {
+  if (p == null) return null;
+  return String(p).replace(/\\/g, '/').replace(/^\.\//, '');
+}
+
+/** Pure: given a tree's own `docs/factory/issues/*.md` files (as `{name, content}`) and that
+ * tree's path relative to the root, find the one issue whose `worktree:` field names this tree.
+ * Never falls back to an unrelated in-progress issue: a session that has not yet written
+ * `worktree:` back simply does not show up here, rather than being attributed to the wrong tree. */
+export function matchInProgressIssue(issueFiles, treeRelPath) {
+  const want = normalizeTreePath(treeRelPath);
+  for (const f of issueFiles) {
+    if (!f.name.endsWith('.md') || /-test-cases\.md$/.test(f.name)) continue;
+    const fm = parseFrontmatter(f.content);
+    if (!fm || fm.status !== 'in-progress') continue;
+    if (normalizeTreePath(fm.worktree) === want) return { n: Number(fm.issue), title: String(fm.title ?? '') };
+  }
+  return null;
+}
+
 export function readGit() {
   const head = sh('git rev-parse --short HEAD') || 'none';
   const branch = sh('git branch --show-current') || 'none';
@@ -39,36 +77,26 @@ export function readStamp(gitHead) {
 }
 
 /** Scan a tree's own checkout of docs/factory/issues for the one issue file that names this tree
- * as its worktree (or, failing that, any file marked in-progress, since a session may not yet have
- * written the `worktree:` field back). Returns {n, title} or null. */
+ * as its worktree. Returns {n, title} or null; see matchInProgressIssue for the matching rule. */
 function inProgressIssueOf(treeAbsPath, treeRelPath) {
   const dir = join(treeAbsPath, 'docs', 'factory', 'issues');
   if (!existsSync(dir)) return null;
-  let fallback = null;
-  for (const name of readdirSync(dir)) {
-    if (!name.endsWith('.md') || /-test-cases\.md$/.test(name)) continue;
-    const fm = parseFrontmatter(readFileSync(join(dir, name), 'utf8'));
-    if (!fm || fm.status !== 'in-progress') continue;
-    const hit = { n: Number(fm.issue), title: String(fm.title ?? '') };
-    if (fm.worktree === treeRelPath || fm.worktree === './' + treeRelPath) return hit;
-    fallback = fallback ?? hit;
-  }
-  return fallback;
+  return matchInProgressIssue(readDir(dir), treeRelPath);
 }
 
 /** `git worktree list --porcelain` plus, per tree, dirty count, gate-stamp match and the
  * in-progress issue found by reading that tree's own files on disk. The root tree (this repo's
  * own checkout) is marked `isRoot`. One row per `git worktree add`; a gate stamp made in one tree
  * never matches another because each tree has its own `.git` (or `.git` pointer) file. */
-export function readWorktrees() {
-  const list = parseWorktreePorcelain(sh('git worktree list --porcelain'));
+export function readWorktrees({ shFn = sh, shInFn = shIn, rootPath = resolveRootPath(shFn) } = {}) {
+  const list = parseWorktreePorcelain(shFn('git worktree list --porcelain'));
   return list.map((w) => {
     const abs = resolve(w.path);
-    const rel = relative(REPO, abs).split(sep).join('/') || '.';
-    const isRoot = abs === REPO;
-    const dirty = shIn(abs, 'git status --porcelain').split('\n').filter(Boolean).length;
-    const gitDir = shIn(abs, 'git rev-parse --git-dir');
-    const full = shIn(abs, 'git rev-parse HEAD');
+    const rel = relative(rootPath, abs).split(sep).join('/') || '.';
+    const isRoot = isRootTree(abs, rootPath);
+    const dirty = shInFn(abs, 'git status --porcelain').split('\n').filter(Boolean).length;
+    const gitDir = shInFn(abs, 'git rev-parse --git-dir');
+    const full = shInFn(abs, 'git rev-parse HEAD');
     let stampMatches = false;
     if (gitDir) {
       const stampPath = resolve(abs, gitDir, 'verstaan-gate-stamp');

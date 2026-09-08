@@ -19,6 +19,15 @@ for h in post-commit post-checkout post-merge; do
 root=$(git rev-parse --show-toplevel 2>/dev/null) || exit 0
 command -v node >/dev/null 2>&1 || exit 0
 (cd "$root" && node tools/console/src/generate.mjs >/dev/null 2>&1) || true
+# The root tree's "Trees" panel is the only place every worktree is visible at once, but under
+# this architecture the root tree rarely commits, checks out or merges itself (side quest 92:
+# work happens in .worktrees/<branch>). So a commit/checkout/merge in any other tree also
+# regenerates the root's console, keeping that panel current. Best-effort: never fails the git op.
+common=$(git rev-parse --path-format=absolute --git-common-dir 2>/dev/null) || exit 0
+rootTree=$(dirname "$common")
+if [ "$rootTree" != "$root" ] && [ -f "$rootTree/tools/console/src/generate.mjs" ]; then
+  (cd "$rootTree" && node tools/console/src/generate.mjs >/dev/null 2>&1) || true
+fi
 exit 0
 EOF
   chmod +x "$dir/hooks/$h"

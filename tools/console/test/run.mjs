@@ -81,7 +81,7 @@ check('docHref', docHref('.claude/agents/implementer.md'), 'docs/.claude--agents
 
 // readWorktrees() is IO (it shells out to git), so it is exercised against this real checkout
 // rather than a fixture: the one invariant every clone has is a root tree, present and marked.
-const { readWorktrees } = await import('../src/read.mjs');
+const { readWorktrees, resolveRootPath, isRootTree, normalizeTreePath, matchInProgressIssue } = await import('../src/read.mjs');
 const worktrees = readWorktrees();
 check('readWorktrees finds at least the root tree', worktrees.length >= 1, true);
 const root = worktrees.find((w) => w.isRoot);
@@ -89,6 +89,38 @@ check('readWorktrees marks the root tree', !!root, true);
 check('readWorktrees root path is .', root && root.path, '.');
 check('readWorktrees reports a branch for the root tree', typeof (root && root.branch), 'string');
 check('readWorktrees reports a dirty count as a number', typeof (root && root.dirty), 'number');
+
+// Regression fixture for checkpoint 4 findings 1 and 2 (issue 92, reopened): isRoot must be
+// decided from the shared `--git-common-dir`, never from wherever this module happens to be
+// running, and the `worktree:` match must survive PowerShell's backslashes and never fall back
+// to an unrelated in-progress issue.
+const fakeRoot = join(fx, '__fake-root__');
+const fakeSideTree = join(fakeRoot, '.worktrees', 'side-92-worktrees');
+const fakeCommonDir = join(fakeRoot, '.git');
+const fakeShFn = (cmd) => (cmd.includes('--git-common-dir') ? fakeCommonDir : '');
+check('resolveRootPath derives the parent of --git-common-dir, not the caller\'s own tree', resolveRootPath(fakeShFn), fakeRoot);
+check('isRootTree marks the true root even when the running tree is a worktree', isRootTree(fakeRoot, resolveRootPath(fakeShFn)), true);
+check('isRootTree does not mark a worktree as root just because code is running from it', isRootTree(fakeSideTree, resolveRootPath(fakeShFn)), false);
+
+check('normalizeTreePath turns PowerShell backslashes into forward slashes', normalizeTreePath('.worktrees\\side-92-worktrees'), '.worktrees/side-92-worktrees');
+check('normalizeTreePath strips a leading ./', normalizeTreePath('./.worktrees/side-x'), '.worktrees/side-x');
+
+const wtIssueFiles = [
+  { name: '50-a.md', content: '---\nissue: 50\ntitle: "A"\nstatus: in-progress\nworktree: .worktrees\\side-50-a\n---\n## What\nA.\n' },
+  { name: '51-b.md', content: '---\nissue: 51\ntitle: "B"\nstatus: in-progress\nworktree: .worktrees/side-51-b\n---\n## What\nB.\n' },
+];
+check('matchInProgressIssue matches a Windows-style worktree field against a forward-slash path', matchInProgressIssue(wtIssueFiles, '.worktrees/side-50-a'), { n: 50, title: 'A' });
+check('matchInProgressIssue never falls back to an unrelated in-progress issue', matchInProgressIssue(wtIssueFiles, '.worktrees/side-52-c'), null);
+
+// Round 2: the fixture functions above are correct in isolation, but readWorktrees() itself is
+// the only caller and had no test pinning that it actually uses them — the round-1 bug (isRoot
+// decided from the module's own REPO constant) can come straight back in this one wiring line
+// without any test failing. Feed it a fully fake `git worktree list --porcelain` for the fixture
+// root so isRoot and path are checked end to end, not just the helpers they are built from.
+const fakePorcelain = `worktree ${fakeRoot}\nHEAD 1111111111111111111111111111111111111111\nbranch refs/heads/main\n\nworktree ${fakeSideTree}\nHEAD 2222222222222222222222222222222222222222\nbranch refs/heads/side-92-worktrees\n`;
+const fakeListShFn = (cmd) => (cmd.includes('--git-common-dir') ? fakeCommonDir : cmd.includes('worktree list') ? fakePorcelain : '');
+const fakeRows = readWorktrees({ shFn: fakeListShFn, shInFn: () => '' });
+check('readWorktrees marks the fixture root tree as root, not the side tree', fakeRows.map((r) => [r.path, r.isRoot]), [['.', true], ['.worktrees/side-92-worktrees', false]]);
 
 if (failed) { console.log(`${failed} failed`); process.exit(1); }
 console.log('all green');
