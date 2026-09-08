@@ -24,11 +24,11 @@
   </nav>
 </header>
 <main id="main" class="room">
-  <p class="altitude__band">Quests · 0 of 13 encounters won</p>
+  <p class="altitude__band">Quests · 1 of 13 encounters won</p>
   <h1 class="headline">Quest list</h1>
   <p class="lede">Every issue file, whole. The one marked next is open by default. An encounter is won when its work commit and its close commit both exist; the issue file records the hash.</p>
-  <section class="panel quest-panel--main"><h2 class="panel__title">Main quest · M0</h2><details class="quest-card quest-card--next" id="issue-01" open>
-  <summary><span class="enc__glyph">◐</span><span class="enc__n mono">#01</span><span class="quest-card__title">Prove the gate ladder fails before trusting it</span><span class="enc__meta">next · implementer / sonnet / medium · no dependencies · checkpoint 1</span></summary>
+  <section class="panel quest-panel--main"><h2 class="panel__title">Main quest · M0</h2><details class="quest-card quest-card--done" id="issue-01">
+  <summary><span class="enc__glyph">●</span><span class="enc__n mono">#01</span><span class="quest-card__title">Prove the gate ladder fails before trusting it</span><span class="enc__meta">won · implementer / sonnet / medium · no dependencies · checkpoint 1 · commit 9bf3f3a</span></summary>
   <div class="prose quest-card__body"><h2 id="what">What</h2>
 <p>The hooks in <code>.claude/hooks/</code> and <code>.claude/settings.json</code> were written before any build system existed. Nothing has shown that they run, that they block, or that they log. This issue makes the ladder real on a minimal repo: a CMake preset with one library target and one fast test, one Python tool package with one pytest, and then breaks each gate on purpose.</p>
 <h2 id="acceptance-criteria">Acceptance criteria</h2>
@@ -44,13 +44,13 @@
 <p>The real engine, any data. The library target may be an empty <code>verstaan_core</code> with one function.</p>
 <h2 id="done-when">Done when</h2>
 <ul>
-<li><span class="task task--open">○</span> Every criterion above has a recorded failing run and a recorded passing run.</li>
-<li><span class="task task--open">○</span> <a class="code-link" href="docs/docs--factory--README.html"><code>docs/factory/README.md</code></a> gate table matches what actually runs.</li>
-<li><span class="task task--open">○</span> The deliberately broken test and the hand-written stamp are removed before the commit.</li>
+<li><span class="task task--done">●</span> Every criterion above has a recorded failing run and a recorded passing run.</li>
+<li><span class="task task--done">●</span> <a class="code-link" href="docs/docs--factory--README.html"><code>docs/factory/README.md</code></a> gate table matches what actually runs.</li>
+<li><span class="task task--done">●</span> The deliberately broken test and the hand-written stamp are removed before the commit.</li>
 </ul></div>
 </details>
-<details class="quest-card quest-card--blocked" id="issue-02">
-  <summary><span class="enc__glyph">◇</span><span class="enc__n mono">#02</span><span class="quest-card__title">CMake, vcpkg and preset skeleton for engine, apps and tests</span><span class="enc__meta">blocked · implementer / sonnet / medium · after #01</span></summary>
+<details class="quest-card quest-card--next" id="issue-02" open>
+  <summary><span class="enc__glyph">◐</span><span class="enc__n mono">#02</span><span class="quest-card__title">CMake, vcpkg and preset skeleton for engine, apps and tests</span><span class="enc__meta">next · implementer / sonnet / medium · after #01</span></summary>
   <div class="prose quest-card__body"><h2 id="what">What</h2>
 <p>Turn the M0 issue-01 stub build into the real layout from <a class="code-link" href="docs/docs--standards--cpp.html"><code>docs/standards/cpp.md</code></a>: presets, targets, warnings as errors, GoogleTest through vcpkg manifest mode, CTest labels, <code>.clang-format</code> and <code>.clang-tidy</code>.</p>
 <h2 id="acceptance-criteria">Acceptance criteria</h2>
@@ -72,8 +72,8 @@
 <li><span class="task task--open">○</span> <a class="code-link" href="docs/docs--standards--cpp.html"><code>docs/standards/cpp.md</code></a> build section matches the presets that exist.</li>
 </ul></div>
 </details>
-<details class="quest-card quest-card--blocked" id="issue-03">
-  <summary><span class="enc__glyph">◇</span><span class="enc__n mono">#03</span><span class="quest-card__title">Python tooling skeleton: mirror, importer, compiler, validate packages</span><span class="enc__meta">blocked · implementer / sonnet / low · after #01</span></summary>
+<details class="quest-card quest-card--open" id="issue-03">
+  <summary><span class="enc__glyph">○</span><span class="enc__n mono">#03</span><span class="quest-card__title">Python tooling skeleton: mirror, importer, compiler, validate packages</span><span class="enc__meta">open · implementer / sonnet / low · after #01</span></summary>
   <div class="prose quest-card__body"><h2 id="what">What</h2>
 <p>Four Python packages under <code>tools/</code>, each runnable as <code>python -m tools.&lt;name&gt;</code>, each with a <code>tests/</code> folder and one passing pytest, sharing one <code>pyproject.toml</code> at <code>tools/</code> with <code>ruff</code> configured. No behaviour yet beyond <code>--help</code> and <code>--version</code>.</p>
 <h2 id="acceptance-criteria">Acceptance criteria</h2>
@@ -302,7 +302,7 @@
 </ul>
 <p>Extended the same day, at the owner's request, from one page to five rooms: Quests (every issue file whole), Playbook (<a class="code-link" href="docs/docs--factory--playbook.html"><code>docs/factory/playbook.md</code></a>), Library (every project document rendered through a small Markdown renderer in <code>tools/console/src/markdown.mjs</code>, with backtick paths linking across pages), and Glossary (<a class="code-link" href="docs/docs--glossary.html"><code>docs/glossary.md</code></a>, now the one source <code>SPEC.md</code> §2 points to). The renderer escapes everything first and blocks non-http link schemes; both are tested. Two renderer tests were wrong on first run, not the renderer: one expected a newline the output does not emit, one used a URL with parentheses the link pattern does not claim to support.</p></div>
 </details></section>
-  <footer class="cic-foot"><p class="cic-foot__note">Rendered 2026-09-08T10:28:42Z from docs/factory/issues. The files are the truth.</p></footer>
+  <footer class="cic-foot"><p class="cic-foot__note">Rendered 2026-09-08T10:29:28Z from docs/factory/issues. The files are the truth.</p></footer>
 </main>
 
 
