@@ -54,8 +54,10 @@ All of this runs inside the issue's worktree, `.worktrees/<branch>`.
 3. `git add -A && git commit` with `<type>(#NN): <title>` and the session's attribution trailer.
 4. Edit the issue file: `status: done`, `commit: <hash>`, `worktree: null`.
 5. `git commit -am "chore(#NN): close"`.
-6. Append nothing to `lessons.jsonl` yourself; the hooks do that.
-7. Run the `/factory-status` steps again. Print STATE.md.
+6. `python -m tools.factory.mirror_github` (needs `GH_TOKEN` in the environment; if it is not set,
+   say so and continue — the `mirror-check` CI job will catch the resulting drift on the next push).
+7. Append nothing to `lessons.jsonl` yourself; the hooks do that.
+8. Run the `/factory-status` steps again. Print STATE.md.
 
 The tree itself is not removed here: it is removed by the milestone's close-out issue once the
 branch has merged into `main` (`docs/factory/git-workflow.md` "Worktrees"), because other issues

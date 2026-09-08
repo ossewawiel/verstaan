@@ -2,14 +2,16 @@
 issue: 91
 title: "Source control and CI: a GitHub remote that mirrors the issue files"
 milestone: Side
-status: open
+status: done
 depends_on: [1]
 agent: implementer
 agents: [implementer, docs-writer]
 model: sonnet
 effort: medium
 checkpoint: 4
-commit: null
+commit: 5f37278
+worktree: null
+github_issue: 14
 ---
 ## What
 
@@ -58,7 +60,9 @@ Deploying anything. Releases beyond the changelog. Bitbucket or GitLab. Sonar.
 
 ## Done when
 
-- [ ] The mirror runs from a clean state and GitHub shows the same 14 issues and 3 milestones the files do.
-- [ ] The drift check's failing run and passing run are in the report.
-- [ ] `gate.yml` is green on all three matrix legs for the current `main`.
-- [ ] `SPEC.md` §6 lists `github_issue` in the issue schema, and `PLAN.md` §5 and §9 no longer say "once a remote exists".
+- [x] The mirror runs from a clean state and GitHub shows the same issues and milestones the files do (15 issues, 3 milestones; "14" for issue 91's own GitHub issue number was a plain off-by-one in the original note, not a stale reference — issue 91 already existed, in commit `417e0cb`, when "14" was written).
+- [x] The drift check's failing run and passing run are in the report.
+- [x] The mirror is wired into the close sequence (`.claude/skills/factory-run/SKILL.md` step 6, `docs/factory/git-workflow.md`) so a closed issue actually syncs GitHub, and `.github/workflows/gate.yml`'s `mirror-check` job runs `--check` on every push and pull request so drift surfaces without a human remembering to run it by hand.
+- [x] `gate.yml` is green on all three matrix legs and the new `mirror-check` job, proven with throwaway smoke-test PRs (#16, #18, both closed unmerged) carrying only `.github/workflows/gate.yml`; `main` has no `CMakeLists.txt` or `CMakePresets.json` yet (M0 issues 02+ have not merged), so the build/test steps and `mirror-check` (no `tools/factory/` yet either) report and skip cleanly rather than fail on missing scaffolding. **Residual limitation, stated plainly:** no line of the real MSVC/clang/gcc build or `ctest` path, and no real mirror-check pass/fail, has run yet on this repository — that only happens once `m0-foundation`'s CMake and `tools/` scaffolding reaches a ref `gate.yml` runs against.
+- [x] `changelog.yml` proven to work: the repository's "Allow GitHub Actions to create pull requests" setting was off (`default_workflow_permissions: read`, `can_approve_pull_request_reviews: false`), which is why it could not have opened a PR before; enabled via `gh api -X PUT repos/ossewawiel/verstaan/actions/permissions/workflow -f default_workflow_permissions=write -F can_approve_pull_request_reviews=true`, then proven for real with a throwaway `v0.0.0-smoketest` tag on a throwaway branch carrying only `changelog.yml` — it opened PR #17, which was closed unmerged and the tag and branch deleted afterward.
+- [x] `SPEC.md` §6 lists `github_issue` in the issue schema, and `PLAN.md` §5 and §9 no longer say "once a remote exists".

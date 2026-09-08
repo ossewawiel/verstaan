@@ -59,15 +59,34 @@ no extra step is needed for the root's console to catch up.
   `docs(#NN): <title>`, `chore(#NN): <title>`. Scope is the issue number.
 - After the work commit, a `chore(#NN): close` commit flips `status: done` and fills `commit:` in
   the issue file with the work commit's hash.
+- Right after the close commit, `python -m tools.factory.mirror_github` runs (`GH_TOKEN` from the
+  environment) so the GitHub issue closes and its labels update in step with the file. This is
+  what keeps `--check` clean; skipping it is what drift looks like. `.claude/skills/factory-run/SKILL.md`
+  "After the agent hands off" is the one place this is scripted.
 - Commit messages end with the attribution trailer the session provides.
 - Do not amend. Do not force-push. Do not rebase interactively.
 
 ## Pull requests
 
-Until a remote exists, "open the PR" means: run `/gate`, let the verifier read the diff, then
-`git merge --no-ff m<N>-<slug>` into `main`. When a GitHub remote exists, the milestone branch
-opens a draft PR at its first commit and `gh pr ready` only after `/gate` has stamped HEAD. The
-`require-gate` hook enforces that.
+`origin` is `ossewawiel/verstaan` on GitHub (issue 91). A milestone branch opens a draft PR at its
+first push, with `.github/PULL_REQUEST_TEMPLATE.md` (Summary, Issues closed, Gate report,
+Verifier report, Checklist):
+
+```
+git push -u origin <branch>
+gh pr create --draft --base main --head <branch>
+```
+
+`main` is protected: no direct pushes, one approving review or the owner's own merge, and the
+`gate` status check (`.github/workflows/gate.yml`) must pass. `gh pr ready` only works after
+`/gate` has stamped HEAD; the `require-gate` hook refuses it otherwise, the same way it refuses
+`git merge`.
+
+`docs/factory/issues/*.md` are mirrored onto GitHub issues and milestones by
+`tools/factory/mirror_github.py` (idempotent; `--check` reports drift and exits non-zero). GitHub
+is a rendering of the issue files, never the other way round: the mirror writes only the
+`github_issue:` field back into a file, and a GitHub issue closed by hand is reported as drift,
+never used to reopen or close a local file.
 
 ## Finishing a milestone
 

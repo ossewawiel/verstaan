@@ -10,6 +10,7 @@ model: sonnet
 effort: medium
 checkpoint: 2
 commit: null
+github_issue: 11
 ---
 ## What
 
