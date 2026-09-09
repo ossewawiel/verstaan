@@ -58,6 +58,12 @@ All of this runs inside the issue's worktree, `.worktrees/<branch>`.
    say so and continue — the `mirror-check` CI job will catch the resulting drift on the next push).
 7. Append nothing to `lessons.jsonl` yourself; the hooks do that.
 8. Run the `/factory-status` steps again. Print STATE.md.
+9. **Check the battlefield, not just the kill.** A closed issue is not a shipped one. Run:
+   `git ls-remote --heads origin <branch>` (does the branch exist on origin at all, and does it
+   match local HEAD) and `git log origin/main..main --oneline` (is `main` itself ahead of
+   `origin/main`, independent of this issue). State plainly, in one line each: committed locally /
+   pushed to origin / PR open / merged to main — whichever is true, not just "done". End every
+   run, checkpoint or not, with the one concrete next command: push, open the PR, or merge.
 
 The tree itself is not removed here: it is removed by the milestone's close-out issue once the
 branch has merged into `main` (`docs/factory/git-workflow.md` "Worktrees"), because other issues
@@ -65,9 +71,10 @@ on the same branch may still need it.
 
 ## Checkpoints
 
-If the issue's `checkpoint:` is set, stop after step 7 and say: what landed, what to look at, and
-what the next command is. Do not start the next issue. Checkpoint 4 means run the `verifier`
-agent on `git diff main...HEAD` first and relay its report before stopping.
+If the issue's `checkpoint:` is set, stop after step 9 and say: what landed, what to look at, and
+what the next command is (still including the push/PR state from step 9 — a checkpoint does not
+excuse skipping it). Do not start the next issue. Checkpoint 4 means run the `verifier` agent on
+`git diff main...HEAD` first and relay its report before stopping.
 
 ## When a gate fails
 
