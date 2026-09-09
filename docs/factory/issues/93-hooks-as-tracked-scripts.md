@@ -2,15 +2,15 @@
 issue: 93
 title: "Hooks as tracked scripts: logic under tools/factory/hooks/, one-line wrappers under .claude/"
 milestone: Side
-status: in-progress
+status: done
 depends_on: [6]
 agent: implementer
 agents: [implementer]
 model: sonnet
 effort: medium
 checkpoint: null
-commit: null
-worktree: .worktrees/side-93-hooks-as-tracked-scripts
+commit: d0e0091
+worktree: null
 github_issue: null
 ---
 ## What
@@ -42,6 +42,6 @@ Changing what any hook does. Same inputs, same exit codes, same messages.
 
 ## Done when
 
-- [ ] `ls .claude/hooks/*.sh | xargs wc -l` shows no file over six lines.
-- [ ] `python -m pytest tools/factory/` green, with a fail-first case per hook.
-- [ ] The developer has applied the wrapper diffs by hand and says so in the close commit.
+- [x] `ls .claude/hooks/*.sh | xargs wc -l` shows no file over six lines.
+- [x] `python -m pytest tools/factory/` green, with a fail-first case per hook.
+- [x] The developer has applied the wrapper diffs by hand and says so in the close commit.
