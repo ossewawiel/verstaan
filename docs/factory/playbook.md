@@ -66,6 +66,11 @@ shut without anyone remembering to check.
 The first thing the factory ever does, issue 01, is break each gate on purpose and watch it
 fail. A gate that cannot fail also passes, and looks the same from outside.
 
+Each hook's logic is a tracked script under `tools/factory/hooks/`, with a pytest module under
+`tools/factory/tests/`. `.claude/hooks/<name>.sh` is a wrapper of at most six lines that `exec`s
+it, and is hand-edited only, never by an agent: a hook is the thing that checks the agent, so the
+agent must not be the one who can rewrite it (`docs/factory/issues/93-hooks-as-tracked-scripts.md`).
+
 ## Checkpoints
 
 The factory stops for a human at four kinds of moment. The issue file says which with its

@@ -32,6 +32,13 @@ store is shared by every worktree. So "commit X passed the gate" is a fact any t
 `tools/factory/hooks/require_gate.sh` (tested in `tools/factory/tests/test_require_gate.py`);
 `.claude/hooks/require-gate.sh` is a one-line wrapper that execs it, and is edited by hand only.
 
+Every Claude Code hook follows this same shape (`docs/factory/issues/93-hooks-as-tracked-scripts.md`):
+the logic is a tracked script under `tools/factory/hooks/` with a pytest module under
+`tools/factory/tests/`; `.claude/hooks/<name>.sh` is a wrapper of at most six lines that `exec`s
+it. The permission classifier refuses agent edits under `.claude/hooks/` by design, since a hook
+is the thing that checks the agent: an agent proposes the wrapper diff, a person applies it by
+hand.
+
 A tree is removed once its branch has merged, with:
 
 ```
@@ -44,6 +51,11 @@ git branch -d <branch>
 own) and fire the same way for every tree; `tools/console/install-git-hooks.sh` installs there.
 `CLAUDE_PROJECT_DIR` for a session working in a worktree is that worktree's root, so
 `refresh-console.sh` renders that tree's own `docs/factory/console/`.
+
+Two hooks refresh the console, and they are not the same file. `refresh-console.sh` fires on
+SessionStart and on a doc/agent/skill/command edit; `console-refresh.sh` fires on Stop, alongside
+`gate-fast.sh`, so the console is current even across intermittent sessions. Both call
+`tools/console/src/generate.mjs` and never block; neither depends on the other.
 
 Closing an issue in its own worktree does not merge anywhere by itself, so the tree's on-disk
 `status: done` exists only in that one checkout until the branch merges. `readRepo()` in
