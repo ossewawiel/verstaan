@@ -19,7 +19,10 @@ const PORT = (portFlag !== -1 ? Number(args[portFlag + 1]) : NaN) || Number(proc
 const HOST = '127.0.0.1';
 
 // A four-line listener the served pages carry: reload when the server says so, reconnect quietly.
-const LIVE = `<script>(function(){try{var s=new EventSource('/events');s.onmessage=function(e){if(e.data==='reload')location.reload();};}catch(e){}})();</script>`;
+// The served pages carry live.js: on a change event it fetches the page again and swaps the content
+// in place, keeping open cards, scroll and focus. A full reload flickered and collapsed every card
+// (docs/factory/issues/98-console-updates-in-place.md).
+const LIVE = `<script src="/live.js"></script>`;
 
 /** Trailing-edge debounce: a call resets the `ms` timer, so a burst inside one `ms` window
  * collapses to a single `fn()`. `maxMs` bounds how long a *continuous* stream of calls can push
@@ -99,7 +102,7 @@ function render(pathname, getModel) {
   const known = new Set(allDocs.map((d) => d.path));
   const find = (p) => allDocs.find((d) => d.path === p);
   let html = null;
-  if (pathname === '/' || pathname === '/index.html') html = renderConsole(model).replace('<meta http-equiv="refresh" content="120">\n', '');
+  if (pathname === '/' || pathname === '/index.html') html = renderConsole(model);
   else if (pathname === '/quests.html') html = renderQuests(model, repo.issueFiles, known);
   else if (pathname === '/library.html') html = renderLibrary(model, repo.library, repo.artefacts);
   else if (pathname === '/playbook.html' && find('docs/factory/playbook.md')) html = renderRoomFromDoc('playbook', find('docs/factory/playbook.md'), model, known, { band: 'Playbook · how the game is played', lede: 'The moving parts as a player meets them: the map, an encounter, the gates, the checkpoints, and how the factory levels up.' });
@@ -166,7 +169,7 @@ export function createConsoleServer({ readRepoFn = readRepo } = {}) {
         req.on('close', () => clients.delete(res));
         return;
       }
-      if (['/theme.css', '/console.css', '/console.js'].includes(p)) {
+      if (['/theme.css', '/console.css', '/console.js', '/live.js'].includes(p)) {
         res.writeHead(200, { 'content-type': MIME[extname(p)], 'cache-control': 'no-cache' });
         return res.end(readFileSync(join(theme, p.slice(1))));
       }
