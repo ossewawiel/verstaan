@@ -22,6 +22,12 @@
 # Matches only at the start of a command segment (after &&, ||, ;, | or a newline), so the words
 # inside a string literal do not trigger it. On 2026-09-08 the first version matched a printf
 # argument containing "git merge" and blocked its own smoke test.
+#
+# The "git merge" case requires a word boundary (exact "git merge", or "git merge " followed by
+# more) so plumbing commands that merely start with the same letters -- git merge-base,
+# git merge-tree, git merge-file -- are never matched. A plain prefix match on "git merge" would
+# catch those too and hard-refuse a read-only diagnostic command with advice about opening a PR,
+# which makes no sense for something that never touches a ref.
 set -u
 input=$(cat)
 # Tolerate `"command": "…"` as well as `"command":"…"`: the old hook matched only the compact
@@ -70,7 +76,7 @@ while IFS= read -r seg; do
   case "$seg" in
     "gh pr create"*"--draft"*) ;;
     "gh pr create"*|"gh pr ready"*|"gh pr merge"*|"git pull"*) require_stamp HEAD ;;
-    "git merge"*)
+    "git merge"|"git merge "*)
       branch=$(git branch --show-current 2>/dev/null)
       if [ "$branch" = "main" ]; then
         echo "require-gate: git merge into main is refused. Open a pull request and use gh pr merge instead." >&2

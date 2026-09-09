@@ -12,9 +12,10 @@ would blur inside one compilation unit.
 ## Decision
 
 The compiler emits one static library per tier, `verstaan_data_<tier>`, under
-`engine/generated/<tier>/`, with a licence header naming CC BY-SA 4.0. The engine links to it
-through a fixed interface (`engine/include/verstaan/tables.hpp`) and never includes generated
-files directly. Generated files are never edited by hand.
+`engine/generated/<tier>/`, with a licence header naming CC BY-SA 4.0. Each tier carries its own
+generated `tables.hpp` (SPEC.md §3.5); there is no single fixed header under `engine/include/` —
+the engine links against whichever tier's library `Engine::generated(Tier)` selects and never
+copies generated content into engine source. Generated files are never edited by hand.
 
 ## Consequences
 

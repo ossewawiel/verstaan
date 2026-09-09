@@ -9,6 +9,12 @@ onboarding narrative. The mechanics are in `PLAN.md` §6 and the exact rules in 
 The GitHub CLI, `gh`, is required: it opens and merges every pull request (`git-workflow.md`
 "Pull requests"). Install it with `winget install --id GitHub.cli` or see https://cli.github.com.
 
+`GH_PAT_CHANGELOG` is a repository secret `.github/workflows/changelog.yml` needs: a personal
+access token (repo scope) that authors the changelog PR as a real actor, since a PR authored with
+the default `GITHUB_TOKEN` never triggers the `gate` check and could never satisfy branch
+protection. Create it once, under the repository's Settings > Secrets and variables > Actions,
+before the first `v*` tag is pushed.
+
 ## The shape
 
 There are two phases. Phase A, interrogation, already happened; it produced `PLAN.md`, `SPEC.md`,

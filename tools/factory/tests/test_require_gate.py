@@ -107,6 +107,18 @@ def test_merge_into_main_is_refused_without_a_stamp_too(repo):
     assert "gh pr merge" in result.stderr
 
 
+# git merge-base/-tree/-file are read-only plumbing commands that happen to start with the same
+# letters as "git merge". A plain prefix match would hard-refuse them on main with advice about
+# opening a PR, which makes no sense for something that never touches a ref.
+@pytest.mark.parametrize(
+    "command",
+    ["git merge-base main HEAD", "git merge-tree main feature", "git merge-file a.txt b.txt c.txt"],
+)
+def test_merge_plumbing_commands_are_not_blocked_on_main(repo, command):
+    result = run_hook(repo["root"], command)
+    assert result.returncode == 0
+
+
 def test_merge_refused_without_stamp(repo):
     git(repo["root"], "checkout", "-q", "-b", "not-main")
     result = run_hook(repo["root"], "git merge --no-ff feature")
