@@ -2,15 +2,15 @@
 issue: 94
 title: "CI parity with /gate, then GitHub becomes the only merge path"
 milestone: Side
-status: in-progress
+status: done
 depends_on: [6, 93]
 agent: implementer
 agents: [implementer, docs-writer]
 model: sonnet
 effort: medium
 checkpoint: 4
-commit: null
-worktree: .worktrees/side-94-ci-parity-github-is-the-merge-path
+commit: 79a34ec
+worktree: null
 github_issue: 21
 ---
 ## What
