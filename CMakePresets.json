@@ -14,18 +14,16 @@
     {
       "name": "msvc-debug",
       "displayName": "MSVC Debug",
-      "description": "Visual Studio 2022 (cl.exe), Debug.",
+      "description": "Newest installed Visual Studio (cl.exe), Debug. No \"generator\" line: CMake picks the newest Visual Studio it finds, so this works whether the machine has VS 2022 or a newer release without either side pinning to the other's version.",
       "inherits": "base",
-      "generator": "Visual Studio 17 2022",
       "architecture": "x64",
       "cacheVariables": { "CMAKE_BUILD_TYPE": "Debug" }
     },
     {
       "name": "msvc-release",
       "displayName": "MSVC Release",
-      "description": "Visual Studio 2022 (cl.exe), Release.",
+      "description": "Newest installed Visual Studio (cl.exe), Release. No \"generator\" line: CMake picks the newest Visual Studio it finds, so this works whether the machine has VS 2022 or a newer release without either side pinning to the other's version.",
       "inherits": "base",
-      "generator": "Visual Studio 17 2022",
       "architecture": "x64",
       "cacheVariables": { "CMAKE_BUILD_TYPE": "Release" }
     },
