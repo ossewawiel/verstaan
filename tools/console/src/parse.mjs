@@ -42,7 +42,8 @@ export function parseIssues(files) {
       file: f.name,
       title: String(fm.title ?? ''),
       milestone: String(fm.milestone ?? ''),
-      status: fm.status === 'done' ? 'done' : 'open',
+      status: fm.status === 'done' ? 'done' : fm.status === 'in-progress' ? 'in-progress' : 'open',
+      worktree: fm.worktree ?? null,
       dependsOn: Array.isArray(fm.depends_on) ? fm.depends_on.map(Number) : [],
       agent: fm.agent ?? null,
       agents: Array.isArray(fm.agents) ? fm.agents : fm.agent ? [fm.agent] : [],
@@ -144,8 +145,27 @@ export function sideTask({ issues, lessons, reviews }) {
 
 export function pad(n) { return String(n).padStart(2, '0'); }
 
+/** `git worktree list --porcelain` text → [{path, head, branch, detached}]. One block per tree,
+ * blocks separated by a blank line. `path` is whatever git printed (absolute). */
+export function parseWorktreePorcelain(text) {
+  return String(text ?? '')
+    .split(/\r?\n\r?\n/)
+    .map((b) => b.trim())
+    .filter(Boolean)
+    .map((block) => {
+      const out = { path: '', head: '', branch: null, detached: false };
+      for (const line of block.split(/\r?\n/)) {
+        if (line.startsWith('worktree ')) out.path = line.slice('worktree '.length).trim();
+        else if (line.startsWith('HEAD ')) out.head = line.slice('HEAD '.length).trim().slice(0, 7);
+        else if (line.startsWith('branch ')) out.branch = line.slice('branch '.length).trim().replace(/^refs\/heads\//, '');
+        else if (line === 'detached') out.detached = true;
+      }
+      return out;
+    });
+}
+
 /** Assemble the whole model. */
-export function buildModel({ issueFiles, agentFiles, lessonsText, git, stamp, generated }) {
+export function buildModel({ issueFiles, agentFiles, lessonsText, git, stamp, generated, worktrees = [] }) {
   const issues = parseIssues(issueFiles);
   const next = nextIssue(issues);
   const lessons = parseLessons(lessonsText);
@@ -156,6 +176,7 @@ export function buildModel({ issueFiles, agentFiles, lessonsText, git, stamp, ge
     generated,
     git,
     stamp,
+    worktrees,
     issues,
     milestones: ms,
     mainQuest: main,

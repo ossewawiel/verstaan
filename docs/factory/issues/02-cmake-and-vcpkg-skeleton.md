@@ -2,14 +2,15 @@
 issue: 2
 title: "CMake, vcpkg and preset skeleton for engine, apps and tests"
 milestone: M0
-status: open
+status: done
 depends_on: [1]
 agent: implementer
 agents: [implementer]
 model: sonnet
 effort: medium
 checkpoint: null
-commit: null
+commit: 820f83d
+github_issue: 2
 ---
 ## What
 
@@ -39,6 +40,6 @@ Any translation behaviour. ARM preset (M4).
 
 ## Done when
 
-- [ ] `cmake --preset msvc-debug && cmake --build --preset msvc-debug && ctest --preset msvc-debug` is green.
-- [ ] The unused-variable failure run is in the report.
-- [ ] `docs/standards/cpp.md` build section matches the presets that exist.
+- [x] `cmake --preset msvc-debug && cmake --build --preset msvc-debug && ctest --preset msvc-debug` is green.
+- [x] The unused-variable failure run is in the report.
+- [x] `docs/standards/cpp.md` build section matches the presets that exist.

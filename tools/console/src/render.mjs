@@ -99,6 +99,12 @@ export function renderConsole(model) {
     ${ROOMS.filter((r) => r.id !== 'index').map((r) => `<a class="tile" href="${r.file}"><span class="tile__corner"></span><h3 class="tile__title">${r.label}</h3><p class="tile__blurb">${r.blurb}</p></a>`).join('\n    ')}
   </section>
 
+  <section id="trees" class="panel" aria-labelledby="trees-title">
+    <h2 class="panel__title" id="trees-title">Trees</h2>
+    <p class="panel__ctx">One working tree per branch, from <code>git worktree list</code>. The root tree stays on <code>main</code>. A stamp names a commit, not a tree: a branch gated in its own tree can be merged from the root.</p>
+    <div id="trees-body"></div>
+  </section>
+
   <section id="party" class="panel" aria-labelledby="party-title">
     <h2 class="panel__title" id="party-title">Party</h2>
     <p class="panel__ctx">Each member is costed to a model and an effort. The routing table in PLAN.md §6.2 decides who takes an encounter. Click a name for the brief.</p>
@@ -116,10 +122,11 @@ export function renderConsole(model) {
   return shell({ roomId: 'index', title: 'Console', main, island, script: true, sub: 'command console · rendered from docs/factory' });
 }
 
-const GLYPH = { done: ['●', 'won'], next: ['◐', 'next'], open: ['○', 'open'], blocked: ['◇', 'blocked'] };
+const GLYPH = { done: ['●', 'won'], 'in-progress': ['◐', 'fighting'], next: ['◐', 'next'], open: ['○', 'open'], blocked: ['◇', 'blocked'] };
 
 function issueState(issue, model) {
   if (issue.status === 'done') return 'done';
+  if (issue.status === 'in-progress') return 'in-progress';
   if (model.next && model.next.n === issue.n) return 'next';
   const done = new Set(model.issues.filter((i) => i.status === 'done').map((i) => i.n));
   return issue.dependsOn.every((d) => done.has(d)) ? 'open' : 'blocked';
@@ -134,7 +141,7 @@ export function renderQuests(model, issueFiles, known = new Set()) {
       const s = issueState(i, model);
       const { body } = splitFrontmatter(byN.get(i.file) ?? '');
       const html = md(body, { codeLink: makeCodeLink(known, '') }).html;
-      const meta = [`${GLYPH[s][1]}`, i.agent ? `${i.agent} / ${i.model} / ${i.effort}` : null, i.dependsOn.length ? `after ${i.dependsOn.map((d) => '#' + String(d).padStart(2, '0')).join(', ')}` : 'no dependencies', i.checkpoint != null ? `checkpoint ${i.checkpoint}` : null, i.commit ? `commit ${i.commit}` : null].filter(Boolean).join(' · ');
+      const meta = [`${GLYPH[s][1]}`, i.worktree ? `in ${i.worktree}` : null, i.agent ? `${i.agent} / ${i.model} / ${i.effort}` : null, i.dependsOn.length ? `after ${i.dependsOn.map((d) => '#' + String(d).padStart(2, '0')).join(', ')}` : 'no dependencies', i.checkpoint != null ? `checkpoint ${i.checkpoint}` : null, i.commit ? `commit ${i.commit}` : null].filter(Boolean).join(' · ');
       return `<details class="quest-card quest-card--${s}" id="issue-${String(i.n).padStart(2, '0')}"${s === 'next' ? ' open' : ''}>
   <summary><span class="enc__glyph">${GLYPH[s][0]}</span><span class="enc__n mono">#${String(i.n).padStart(2, '0')}</span><span class="quest-card__title">${escapeHtml(i.title)}</span><span class="enc__meta">${escapeHtml(meta)}</span></summary>
   <div class="prose quest-card__body">${html}</div>

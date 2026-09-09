@@ -2,14 +2,15 @@
 issue: 90
 title: "The console: a local CIC page rendered from the issue files"
 milestone: Side
-status: open
+status: done
 depends_on: []
 agent: implementer
 agents: [implementer]
 model: sonnet
 effort: medium
 checkpoint: null
-commit: null
+commit: 24ece52
+github_issue: 13
 ---
 ## What
 
@@ -72,3 +73,11 @@ linking across pages), and Glossary (`docs/glossary.md`, now the one source `SPE
 to). The renderer escapes everything first and blocks non-http link schemes; both are tested.
 Two renderer tests were wrong on first run, not the renderer: one expected a newline the output
 does not emit, one used a URL with parentheses the link pattern does not claim to support.
+
+Later the same day the owner found the console stale after a commit. Cause: it was committed
+output showing live git state, so every commit made it one commit old. Fix: `docs/factory/console/`
+is gitignored and untracked, and `.claude/hooks/refresh-console.sh` regenerates it on
+SessionStart, on PostToolUse for doc, issue, agent, skill and command files, and from
+`gate-fast.sh` on every Stop. `tools/console/install-git-hooks.sh` adds post-commit,
+post-checkout and post-merge hooks per clone. The PostToolUse filter was checked: a `.cpp` edit
+is skipped, an issue edit regenerates.

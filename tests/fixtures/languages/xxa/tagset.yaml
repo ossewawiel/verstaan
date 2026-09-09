@@ -1,0 +1,29 @@
+# Licence: CC BY-SA 4.0. Source: invented fixture for engine tests, not the UNL Archive.
+# SPEC.md §4 header adapted: these records are original, so no data/archive/manifest.jsonl
+# line exists to point at.
+# Every feature name and every feature value used in this language's dictionary and grammar
+# resolves here. Nothing outside this file is a legal feature.
+- feature: LEX
+  values: [N, V, J, D]
+  comment: "Sorts a word into the four classes this language builds clauses from: noun, verb, adjective, function word."
+  source: {origin: invented, issue: 4}
+- feature: POS
+  values: [NOU, VER, ADJ, ART, PCL]
+  comment: "Names the part of speech under LEX, so a rule can single out an article or a particle."
+  source: {origin: invented, issue: 4}
+- feature: NUM
+  values: [SNG, PLR]
+  comment: "Counts a noun. A dictionary entry is the singular; the plural is a word form."
+  source: {origin: invented, issue: 4}
+- feature: TNS
+  values: [PRS, PST]
+  comment: "Times a verb. A dictionary entry is the present; the past is a word form."
+  source: {origin: invented, issue: 4}
+- feature: PAR
+  values: [P0, P1]
+  comment: "Picks the inflection paradigm. P1 takes the suffixes in grammar/inflection.yaml; P0 has no word forms."
+  source: {origin: invented, issue: 4}
+- feature: ATT
+  values: ["@def", "@pl", "@past"]
+  comment: "Names the UNL attribute a function word carries, or the one an inflection rule answers to."
+  source: {origin: invented, issue: 4}

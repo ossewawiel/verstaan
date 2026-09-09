@@ -1,0 +1,42 @@
+# Licence: CC BY-SA 4.0. Source: invented fixture for engine tests, not the UNL Archive.
+# SPEC.md §4 header adapted: these records are original, so no data/archive/manifest.jsonl
+# line exists to point at.
+# Five sentences, one reading each. They cover, in order: a plain clause, a definite noun,
+# a plural noun, a past verb with a modifier, and a word no dictionary holds.
+# Where this file and docs/factory/issues/04-test-cases.md disagree, the test-cases file wins.
+- id: xxa-c1
+  sentence: kano zuma sona
+  unl: |
+    agt(see(icl>perceive), dog(icl>animal))
+    obj(see(icl>perceive), child(icl>person))
+  note: A dog sees a child. Subject, verb, object, nothing else.
+  source: {origin: invented, issue: 4}
+- id: xxa-c2
+  sentence: ta kano zuma sona
+  unl: |
+    agt(see(icl>perceive), dog(icl>animal).@def)
+    obj(see(icl>perceive), child(icl>person))
+  note: The definite article ta stands in front of the noun it makes definite.
+  source: {origin: invented, issue: 4}
+- id: xxa-c3
+  sentence: kanoki zuma sona
+  unl: |
+    agt(see(icl>perceive), dog(icl>animal).@pl)
+    obj(see(icl>perceive), child(icl>person))
+  note: The plural rides on the noun as the suffix ki.
+  source: {origin: invented, issue: 4}
+- id: xxa-c4
+  sentence: sona rintadu nolu bero
+  unl: |
+    agt(read(icl>interpret).@past, child(icl>person))
+    obj(read(icl>interpret).@past, book(icl>publication))
+    mod(book(icl>publication), small(icl>size))
+  note: The past rides on the verb as the suffix du. The adjective stands in front of its noun.
+  source: {origin: invented, issue: 4}
+- id: xxa-c5
+  sentence: sona zuma glimu
+  unl: |
+    agt(see(icl>perceive), child(icl>person))
+    obj(see(icl>perceive), "glimu")
+  note: glimu is in no dictionary. Word order still fixes its slot, so it becomes a literal UW.
+  source: {origin: invented, issue: 4}

@@ -2,14 +2,16 @@
 issue: 3
 title: "Python tooling skeleton: mirror, importer, compiler, validate packages"
 milestone: M0
-status: open
+status: done
 depends_on: [1]
 agent: implementer
 agents: [implementer]
 model: sonnet
 effort: low
 checkpoint: null
-commit: null
+commit: 68670aa
+github_issue: 3
+worktree: null
 ---
 ## What
 
@@ -33,5 +35,5 @@ Any network call. Any parsing.
 
 ## Done when
 
-- [ ] All five criteria shown in the report with commands and exit codes.
-- [ ] `gate-fast.sh` runs pytest for a changed tool, shown once.
+- [x] All five criteria shown in the report with commands and exit codes.
+- [x] `gate-fast.sh` runs pytest for a changed tool, shown once.

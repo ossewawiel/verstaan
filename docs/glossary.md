@@ -62,7 +62,7 @@ term here instead, with the file that defines it.
 | Party | The five agents, each costed to a model and an effort. | `.claude/agents/` |
 | Skill | A named procedure the party uses: the TDD sequence, the gates, the retro. | `.claude/skills/` |
 | Gate | A check the build enforces. Three tiers: auto-fix, fast, full. | `SPEC.md` §5 |
-| Stamp | The file `/.git/verstaan-gate-stamp` holding the commit hash the full gate last passed on. | `.claude/commands/gate.md` |
+| Stamp | An empty file `<git-common-dir>/verstaan-gate-stamps/<sha>`, one per commit the full gate passed on. Shared by every worktree. | `.claude/commands/gate.md` |
 | Save point | `STATE.md` plus the stamp: where a cold session resumes. | `CLAUDE.md` |
 | Checkpoint | A point where the factory stops for a human. Four kinds. | `PLAN.md` §6.3 |
 | Boss fight | Checkpoint 4: the verifier reads the whole diff before a merge. | `.claude/agents/verifier.md` |

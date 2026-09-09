@@ -8,21 +8,89 @@
 - A milestone branch is cut from `main` when its first issue starts and merged when `/gate` passes
   and the verifier has read the diff.
 
+## Worktrees
+
+The root checkout stays on `main` and changes only by merge; it is read-mostly, for planning,
+docs and the console. Every branch that is being worked on gets its own tree under
+`.worktrees/<branch>`, created with:
+
+```
+git worktree add .worktrees/<branch> <branch>            # branch already exists
+git worktree add -b <branch> .worktrees/<branch> main     # branch does not exist yet
+```
+
+A session works inside that tree, never in the root. Two sessions never share a tree: an issue
+marked `in-progress` names the tree that holds it in its `worktree:` field, and `/factory-run`
+refuses to start an issue that is already `in-progress` unless given `--resume`, naming the tree
+that holds it (`docs/factory/SPEC.md` §6, `.claude/skills/factory-run/SKILL.md`).
+
+The gate stamp names a commit, not a tree. `/gate` writes an empty file
+`<git-common-dir>/verstaan-gate-stamps/<sha>` when every step passed in a clean tree, and the
+store is shared by every worktree. So "commit X passed the gate" is a fact any tree can check:
+`git merge --no-ff <branch>` from the root asks whether the tip of `<branch>` is stamped;
+`gh pr create`, `gh pr ready`, `gh pr merge` and `git pull` ask whether HEAD is. The logic is
+`tools/factory/hooks/require_gate.sh` (tested in `tools/factory/tests/test_require_gate.py`);
+`.claude/hooks/require-gate.sh` is a one-line wrapper that execs it, and is edited by hand only.
+
+A tree is removed once its branch has merged, with:
+
+```
+git worktree remove .worktrees/<branch>
+git branch -d <branch>
+```
+
+`.worktrees/` is gitignored. Hooks live in the one shared directory `git rev-parse
+--git-common-dir` resolves to (not `--git-dir`, which is per-worktree and has no `hooks/` of its
+own) and fire the same way for every tree; `tools/console/install-git-hooks.sh` installs there.
+`CLAUDE_PROJECT_DIR` for a session working in a worktree is that worktree's root, so
+`refresh-console.sh` renders that tree's own `docs/factory/console/`.
+
+Closing an issue in its own worktree does not merge anywhere by itself, so the tree's on-disk
+`status: done` exists only in that one checkout until the branch merges. `readRepo()` in
+`tools/console/src/read.mjs` (`mergeIssuesAcrossWorktrees`) reads every worktree's own copy of
+`docs/factory/issues/*.md`, not only the tree the console happens to be generated from, and keeps
+whichever copy's status is furthest along per issue file. This is what makes an unmerged side
+quest's close visible in the root's console the moment it lands, the same promise `worktree:`
+attribution already made for `in-progress`. It is one-directional: a file the current tree does
+not already have (a new issue proposed only on a branch) is not surfaced. `install-git-hooks.sh`'s
+post-commit/checkout/merge hooks already regenerate both the committing tree's console and the
+root's on every git operation in any tree — before this fix that call read stale data; after it,
+no extra step is needed for the root's console to catch up.
+
 ## Commits
 
 - One work commit per issue: `feat(#NN): <title>`, `fix(#NN): <title>`, `data(#NN): <title>`,
   `docs(#NN): <title>`, `chore(#NN): <title>`. Scope is the issue number.
 - After the work commit, a `chore(#NN): close` commit flips `status: done` and fills `commit:` in
   the issue file with the work commit's hash.
+- Right after the close commit, `python -m tools.factory.mirror_github` runs (`GH_TOKEN` from the
+  environment) so the GitHub issue closes and its labels update in step with the file. This is
+  what keeps `--check` clean; skipping it is what drift looks like. `.claude/skills/factory-run/SKILL.md`
+  "After the agent hands off" is the one place this is scripted.
 - Commit messages end with the attribution trailer the session provides.
 - Do not amend. Do not force-push. Do not rebase interactively.
 
 ## Pull requests
 
-Until a remote exists, "open the PR" means: run `/gate`, let the verifier read the diff, then
-`git merge --no-ff m<N>-<slug>` into `main`. When a GitHub remote exists, the milestone branch
-opens a draft PR at its first commit and `gh pr ready` only after `/gate` has stamped HEAD. The
-`require-gate` hook enforces that.
+`origin` is `ossewawiel/verstaan` on GitHub (issue 91). A milestone branch opens a draft PR at its
+first push, with `.github/PULL_REQUEST_TEMPLATE.md` (Summary, Issues closed, Gate report,
+Verifier report, Checklist):
+
+```
+git push -u origin <branch>
+gh pr create --draft --base main --head <branch>
+```
+
+`main` is protected: no direct pushes, one approving review or the owner's own merge, and the
+`gate` status check (`.github/workflows/gate.yml`) must pass. `gh pr ready` only works after
+`/gate` has stamped HEAD; the `require-gate` hook refuses it otherwise, the same way it refuses
+`git merge`.
+
+`docs/factory/issues/*.md` are mirrored onto GitHub issues and milestones by
+`tools/factory/mirror_github.py` (idempotent; `--check` reports drift and exits non-zero). GitHub
+is a rendering of the issue files, never the other way round: the mirror writes only the
+`github_issue:` field back into a file, and a GitHub issue closed by hand is reported as drift,
+never used to reopen or close a local file.
 
 ## Finishing a milestone
 

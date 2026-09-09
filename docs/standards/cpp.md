@@ -7,7 +7,8 @@ this file records where Verstaan is stricter.
 ## Build
 
 - C++20. CMake ≥ 3.28 with presets in `CMakePresets.json`: `msvc-debug`, `msvc-release`,
-  `clang-release`, `gcc-release`, `arm-basic`.
+  `clang-release`, `gcc-release`. Each configures on the build machine or fails with one clear
+  line naming the missing compiler. An ARM preset is M4 scope (issue 02).
 - `-Wall -Wextra -Werror -Wpedantic` (MSVC: `/W4 /WX /permissive-`).
 - vcpkg manifest mode. The engine target depends on no port. Tests depend on `gtest`.
 - One library target per component: `verstaan_core`, `verstaan_data_<tier>`, `verstaan_cli`.

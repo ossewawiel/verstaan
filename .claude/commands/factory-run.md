@@ -6,6 +6,10 @@ argument-hint: [issue-number]
 Run the `factory-run` skill. Issue: `$ARGUMENTS` (empty means the next open one).
 
 Guard rails, in order:
-- `git status --porcelain` must be empty. If not, stop and show it.
-- Never work on `main`. Cut or check out the milestone branch named in `docs/factory/PLAN.md` §7.
+- `git status --porcelain` must be empty in the root tree. If not, stop and show it.
+- Never work in the root tree past the brief step. Work happens in that issue's own worktree,
+  `.worktrees/<branch>` (the milestone branch from `docs/factory/PLAN.md` §7, or `side-NN-<slug>`),
+  created with `git worktree add` if it does not exist yet. See `SKILL.md` for the exact steps.
+- Refuse an issue already `status: in-progress` unless `--resume` is given; report which tree
+  holds it instead of proceeding.
 - One issue, one work commit, one `chore(#NN): close` commit. Then stop and print the next command.

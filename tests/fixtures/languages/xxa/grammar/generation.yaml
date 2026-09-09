@@ -1,0 +1,31 @@
+# Licence: CC BY-SA 4.0. Source: invented fixture for engine tests, not the UNL Archive.
+# SPEC.md §4 header adapted: these records are original, so no data/archive/manifest.jsonl
+# line exists to point at.
+# Notation. The lhs matches the UNL graph, the rhs writes tokens left to right.
+#   rel(n,m)            a relation binding slot n and slot m
+#   attr(n,$a)          the node in slot n carries attribute $a
+#   [n]                 write the word for the node in slot n
+#   [FEAT:VAL, ...]     write the dictionary word carrying these features
+# Rules apply in file order: clause order first, then modifiers, then function words.
+# grammar/inflection.yaml runs last and turns each base form into its word form.
+- id: xxa-gen-01
+  kind: generation
+  lhs: "agt(2,1); obj(2,3)"
+  rhs: "[1] [2] [3]"
+  conditions: {}
+  comment: "Writes the agent, then the verb, then the object."
+  source: original
+- id: xxa-gen-02
+  kind: generation
+  lhs: "attr(2,$a)"
+  rhs: "[LEX:D, ATT:$a] [2]"
+  conditions: {LEX: D}
+  comment: "Writes the function word that carries an attribute in front of the word that holds it."
+  source: original
+- id: xxa-gen-03
+  kind: generation
+  lhs: "mod(2,1)"
+  rhs: "[1] [2]"
+  conditions: {}
+  comment: "Writes a modifier in front of the noun it modifies."
+  source: original

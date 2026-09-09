@@ -8,3 +8,5 @@ Python 3.13 packages that build the data and the generated code. MPL-2.0. Not on
 - Credentials from `UNL_USER` and `UNL_PASS` in the environment only. Refuse them on the command line.
 - `mirror` writes only under `data/archive/` and never rewrites content. `importer` writes only
   under `data/languages/`. `compiler` writes only under `engine/generated/` and `tests/golden/`.
+- `factory/` and `console/` are factory infrastructure (GitHub issue mirror, status console), not
+  pipeline packages. Neither reads or writes `data/`.

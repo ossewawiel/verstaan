@@ -28,6 +28,17 @@ One issue becomes one commit on the milestone branch. When the milestone's issue
 3. Failures are data. The fast gate logs each failure to `lessons.jsonl`. When a signature repeats
    three times, `/factory-retro` proposes a rule. A human says yes or no.
 
+## The gate ladder
+
+Rules in full at `SPEC.md` §5. What actually runs, proven in issue 01:
+
+| Tier | Hook | Trigger | Must |
+|---|---|---|---|
+| Auto-fix | `.claude/hooks/fast-format.sh` | `PostToolUse` on `Edit`\|`Write`\|`MultiEdit` | Format the one file just written with `clang-format` or `ruff format`; never block. Prints to stderr, does not fail, when the formatter is missing. |
+| Fast | `.claude/hooks/gate-fast.sh` | `Stop` | Build `verstaan_core`, build the fast test binaries, run `ctest -L fast`, validate changed data, run pytest for changed tools. Exit 2 blocks the stop and shows the failing output. Logs every failure to `lessons.jsonl`. Checks `stop_hook_active` first so a failure can never loop the Stop hook. |
+| Gate stamp | `.claude/hooks/require-gate.sh` | `PreToolUse` on `Bash`\|`PowerShell` | Refuse `git merge`, `gh pr create` (non-draft) and `gh pr ready` unless the gate stamp matches `HEAD` on a clean tree. The stamp is written only by `/gate`. |
+| Full | `/gate` | manual, before a PR | Fast + `ctest` all labels + `clang-tidy` + equivalence + all tiers configure and build + `python -m tools.validate --all` + pytest all. Writes the gate stamp. |
+
 ## A session, start to finish
 
 ```
@@ -41,8 +52,12 @@ One issue becomes one commit on the milestone branch. When the milestone's issue
 ## The console
 
 `docs/factory/console/index.html` is the game console: open it from `file://`, no server. It is
-rendered from the repository by `node tools/console/src/generate.mjs`, which `/factory-status` runs
-for you. Nothing on it is editable; the files are. Five rooms:
+rendered from the repository by `node tools/console/src/generate.mjs` and is never committed,
+because it shows live git state and a committed copy would be one commit stale. Hooks keep it
+current: at session start, after any edit to a doc, issue, agent, skill or command file, at every
+stop, and after every commit, checkout or merge once you have run
+`bash tools/console/install-git-hooks.sh` once per clone. Keep the tab open; refresh the browser.
+Nothing on it is editable; the files are. Five rooms:
 
 | Room | What it holds |
 |---|---|

@@ -6,8 +6,8 @@ description: Regenerate docs/factory/STATE.md from the issue files and report ex
 2. Last completed = the highest-numbered issue with `status: done`, with its `commit`.
 3. Next up = the lowest-numbered `status: open` issue whose `depends_on` are all done.
 4. Branch / PR = `git branch --show-current`, `git status --porcelain | wc -l` dirty files,
-   `git remote -v` (say "no remote" if empty), and whether `$(git rev-parse --git-dir)/verstaan-gate-stamp`
-   equals HEAD.
+   `git remote -v` (say "no remote" if empty), and whether
+   `$(git rev-parse --path-format=absolute --git-common-dir)/verstaan-gate-stamps/$(git rev-parse HEAD)` exists.
 5. Rewrite `docs/factory/STATE.md` in the four-field shape it has now, keeping the first-line comment.
 6. Print STATE.md, then one line: `Resume with: /factory-run NN`.
 6a. Run `node tools/console/src/generate.mjs` so `docs/factory/console/index.html` matches. If node

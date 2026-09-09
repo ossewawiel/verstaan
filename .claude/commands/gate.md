@@ -9,8 +9,14 @@ command's.
 Step 0, stubs. `grep -rn 'not_implemented\|NotImplementedError' engine/src tools/ --include=*.cpp --include=*.py`
 must return nothing outside `tests/`. A hit means an issue was closed on a stub.
 
-Step 1, format. `clang-format --dry-run --Werror $(git ls-files 'engine/**/*.cpp' 'engine/**/*.hpp' 'apps/**/*.cpp' 'apps/**/*.hpp')`
-and `ruff format --check tools/` and `ruff check tools/`.
+Step 1, format, licences and secrets. `clang-format --dry-run --Werror $(git ls-files 'engine/**/*.cpp' 'engine/**/*.hpp' 'apps/**/*.cpp' 'apps/**/*.hpp')`
+and `ruff format --check tools/` and `ruff check tools/`. Then `python -m tools.validate --licences`
+must exit 0; a nonzero exit names the file missing its SPDX or CC BY-SA header, or a broken
+`apps/cli/NOTICE` (issue 5). Then
+`git grep -nIE '\bghp_[A-Za-z0-9]{36}\b|\bgithub_pat_[A-Za-z0-9_]{22,}\b' -- .`
+must find nothing; a hit means a live-shaped GitHub token was committed (issue 91). No path is
+excluded. The pattern requires the token-length suffix, not just the prefix, so this file and the
+issue files that mention the prefixes in prose never trip it.
 
 Step 2, build every preset that exists in `CMakePresets.json`:
 `cmake --preset <p> && cmake --build --preset <p>` for each. The `arm-basic` preset is required
@@ -28,7 +34,9 @@ Step 6, regenerate. `python -m tools.compiler --all-tiers && git diff --exit-cod
 A diff means someone edited generated code by hand or the compiler changed without regenerating.
 
 Only if every step passed, and `git status --porcelain` is empty:
-`git rev-parse HEAD > "$(git rev-parse --git-dir)/verstaan-gate-stamp"`
+`d="$(git rev-parse --path-format=absolute --git-common-dir)/verstaan-gate-stamps" && mkdir -p "$d" && touch "$d/$(git rev-parse HEAD)"`
+The stamp names the commit, not the tree, so a branch gated in its worktree can be merged from
+the root. `tools/factory/hooks/require_gate.sh` is what reads it.
 
 A failed gate leaves no stamp, which is what keeps the merge shut. Report each step's command,
 exit code and time. Then hand over as `docs/factory/git-workflow.md` "Finishing a milestone" says.

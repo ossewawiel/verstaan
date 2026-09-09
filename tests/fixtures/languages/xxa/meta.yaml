@@ -1,0 +1,20 @@
+# Licence: CC BY-SA 4.0. Source: invented fixture for engine tests, not the UNL Archive.
+# SPEC.md §4 header adapted: these records are original, so no data/archive/manifest.jsonl
+# line exists to point at.
+# Invented for engine tests. No ISO 639-1 code exists, so iso1 is null. Never shipped.
+iso1: null
+iso3: xxa
+name: Xxa
+licence: "CC BY-SA 4.0"
+word_order: SVO
+marks_with_a_function_word: ["@def"]
+marks_with_a_suffix: ["@pl", "@past"]
+counts:
+  dictionary_entries: 10
+  analysis_rules: 3
+  generation_rules: 3
+  inflection_rules: 2
+  corpus_sentences: 5
+  test_rows: 9
+last_import: null
+source: {origin: invented, issue: 4}

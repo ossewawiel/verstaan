@@ -1,0 +1,79 @@
+# Licence: CC BY-SA 4.0. Source: invented fixture for engine tests, not the UNL Archive.
+# SPEC.md §4 header adapted: these records are original, so no data/archive/manifest.jsonl
+# line exists to point at.
+# Rows of block A in docs/factory/issues/04-test-cases.md, the ones where this language is
+# the source. That file is the source of truth; if the two disagree, it wins.
+# `id` and `status` are additions to the SPEC §3.3 key list, so a test can name its row and
+# assert the Status of SPEC §3.4 without a second lookup.
+- id: A01
+  input: "kano zuma sona"
+  expected: "hundo kinda vidra"
+  direction: xxa->xxb
+  status: ok
+  tier: basic
+  register: neutral
+  source: {origin: invented, issue: 4}
+- id: A03
+  input: "ta kano zuma sona"
+  expected: "hundon kinda vidra"
+  direction: xxa->xxb
+  status: ok
+  tier: basic
+  register: neutral
+  source: {origin: invented, issue: 4}
+- id: A05
+  input: "kanoki zuma sona"
+  expected: "mo hundo kinda vidra"
+  direction: xxa->xxb
+  status: ok
+  tier: basic
+  register: neutral
+  source: {origin: invented, issue: 4}
+- id: A07
+  input: "sona rintadu nolu bero"
+  expected: "kinda libru pikko da lektu"
+  direction: xxa->xxb
+  status: ok
+  tier: basic
+  register: neutral
+  source: {origin: invented, issue: 4}
+- id: A09
+  input: "sona zuma glimu"
+  expected: "kinda ⟦glimu⟧ vidra"
+  direction: xxa->xxb
+  status: partial
+  tier: basic
+  register: neutral
+  source: {origin: invented, issue: 4}
+- id: A11
+  input: "sona zuma veri"
+  expected: "kinda ⟦veri⟧ vidra"
+  direction: xxa->xxb
+  status: partial
+  tier: basic
+  register: neutral
+  source: {origin: invented, issue: 4}
+- id: A12
+  input: "kano"
+  expected: ""
+  direction: xxa->xxb
+  status: no_parse
+  tier: basic
+  register: neutral
+  source: {origin: invented, issue: 4}
+- id: A14
+  input: "milaki zuma ta kano"
+  expected: "mo katsu hundon vidra"
+  direction: xxa->xxb
+  status: ok
+  tier: basic
+  register: neutral
+  source: {origin: invented, issue: 4}
+- id: A16
+  input: "ta sonaki pelo beroki"
+  expected: "mo kindan mo libru manga"
+  direction: xxa->xxb
+  status: ok
+  tier: basic
+  register: neutral
+  source: {origin: invented, issue: 4}
