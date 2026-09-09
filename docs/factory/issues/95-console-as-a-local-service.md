@@ -2,15 +2,15 @@
 issue: 95
 title: "The console as a local service: one URL, every tree, live"
 milestone: Side
-status: in-progress
+status: done
 depends_on: [92, 93, 94]
 agent: implementer
 agents: [implementer, docs-writer]
 model: sonnet
 effort: medium
 checkpoint: 4
-commit: null
-worktree: .worktrees/side-95-console-service
+commit: 07ac78b
+worktree: null
 github_issue: null
 ---
 ## What
