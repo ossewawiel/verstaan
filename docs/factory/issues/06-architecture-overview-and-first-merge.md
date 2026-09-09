@@ -2,14 +2,14 @@
 issue: 6
 title: "Architecture overview, sub-tree CLAUDE.md files, and the first gated merge"
 milestone: M0
-status: open
+status: done
 depends_on: [2, 3, 4, 5]
 agent: docs-writer
 agents: [docs-writer, verifier]
 model: sonnet
 effort: low
 checkpoint: 4
-commit: null
+commit: c3d04d4
 github_issue: 6
 ---
 ## What
@@ -37,7 +37,8 @@ Anything in M1.
 ## Done when
 
 - [ ] Merge done with `--no-ff`, stamp verified by `require-gate.sh` allowing the merge.
-- [ ] `lessons.jsonl` reviewed by `/factory-retro`; proposals recorded even if declined.
+- [x] `lessons.jsonl` reviewed by `/factory-retro` on 2026-09-08: one entry, one signature, no
+      proposal reached the count-of-three threshold. Nothing to promote or prune.
 - [ ] `.worktrees/m0-foundation` removed and the branch deleted after the merge.
 
 ## Verifier (checkpoint 4)
