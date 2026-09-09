@@ -59,6 +59,22 @@ require-gate: '2>&1' is not a commit I can resolve.
 `2>&1` is not a flag by the `-*` test, so it wins the "last positional" slot. Any command carrying
 a redirection after the ref is refused with a message that names the redirection as a commit.
 
+A third finding, met while opening the pull request for this very issue. The hook matched a
+command inside a heredoc body. The pull request text quoted the failure above, so the payload
+carried this line:
+
+```
+$ cd D:/SourceCode/private/verstaan && git merge --ff-only origin/main
+```
+
+`gh pr create --body-file - <<EOF ... EOF` was refused with "no gate stamp for origin/main". The
+hook splits the command on `&&` and matched the quoted line as a real segment. Its own comment
+says it "matches only at the start of a command segment (after &&, ||, ;, | or a newline), so the
+words inside a string literal do not trigger it", and on 2026-09-08 a printf argument caused the
+same thing. Segment splitting is not shell parsing: a heredoc body, a quoted argument and a real
+command all look alike to it. This is the same root cause as the finding above, which is that the
+hook reasons about command text it has not actually parsed.
+
 One more fact worth recording rather than fixing blind: `main@{upstream}` is unset in this clone,
 so `main_upstream`'s `origin/main`-by-name fallback is what resolves the upstream here. The
 comment in the script predicts this for a repository that was `git init`-ed and later given a
@@ -78,6 +94,10 @@ remote. Any change to the exemption must keep that fallback working.
   is refused.
 - A redirection or any other shell token after the ref does not become the ref. `git merge
   --ff-only origin/main 2>&1` resolves a ref of `origin/main`. The test fails first.
+- A gated command quoted inside a heredoc body or a single-argument string does not fire the hook.
+  A `gh pr create --body-file - <<EOF` whose body contains the line
+  `cd /repo && git merge --ff-only origin/main` is allowed. The test fails first, and the
+  2026-09-08 printf case keeps its own test.
 - The hook still costs no more than it does now on every `PreToolUse`. If reading the target tree
   needs another `git` call, say in a comment why that cost is acceptable.
 - `tools/factory/tests/test_require_gate.py` runs at least one case from a working directory that
@@ -96,4 +116,5 @@ requirement anywhere. Changing what `/gate` stamps.
       fast-forward from `origin/main`, and the tree is level with `origin/main`.
 - [ ] A merge into `main` written as `git -C <root> merge --no-ff <branch>` is refused.
 - [ ] `git merge --ff-only origin/main 2>&1` resolves the ref as `origin/main`.
+- [ ] A gated command quoted inside a heredoc body does not trigger the hook.
 - [ ] Every existing test in `tools/factory/tests/test_require_gate.py` still passes.
