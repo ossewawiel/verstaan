@@ -79,7 +79,7 @@ every rule has at least one test sentence that exercises it (warning at M2, erro
    public:
     static Engine load(const RuleSet&);        // runtime tables
     static Engine generated(Tier);             // compiled tables
-    Result translate(std::string_view, Options) const;
+    [[nodiscard]] Result translate(std::string_view, Options) const;
   };
   ```
 - `Status` ∈ `ok | partial | no_parse | not_implemented`. `partial` means some words fell through

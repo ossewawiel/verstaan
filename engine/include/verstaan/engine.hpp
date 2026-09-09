@@ -7,28 +7,33 @@
 // No translation behaviour lands until later issues make these bodies real.
 
 #include <cstddef>
+#include <cstdint>
 #include <string>
 #include <string_view>
 #include <vector>
 
 namespace verstaan {
 
+// Every public enum fixes its base type at std::uint8_t. These travel inside Options and Result,
+// and a tier build packs them into generated tables, so the width is part of the shape, not an
+// accident of the compiler's default (docs/standards/cpp.md: performance-* warnings are errors).
+
 // Source/target language, by ISO 639-3 code. SPEC.md §1: eng and afr at M3, nld seeded at M6.
-enum class Lang { eng, afr, nld };
+enum class Lang : std::uint8_t { eng, afr, nld };
 
 // Word-choice tag on dictionary entries (docs/glossary.md: Register).
-enum class Register { neutral, formal, informal, technical };
+enum class Register : std::uint8_t { neutral, formal, informal, technical };
 
 // Domain tag on dictionary entries (docs/glossary.md: Context). `none` is the default; the open
 // set of domain values (medical, rescue, ...) is defined by the store, not the engine, so this
 // enum grows as tiers need it.
-enum class Context { none, medical, rescue };
+enum class Context : std::uint8_t { none, medical, rescue };
 
 // Compile-time build profile (ADR 0006).
-enum class Tier { basic, phone, connected };
+enum class Tier : std::uint8_t { basic, phone, connected };
 
 // SPEC.md §3.4. `not_implemented` is the M0 stub value; every real Engine method retires it.
-enum class Status { ok, partial, no_parse, not_implemented };
+enum class Status : std::uint8_t { ok, partial, no_parse, not_implemented };
 
 struct Options {
   Lang from;
@@ -85,7 +90,7 @@ class Engine {
   // Load compiled tables for one tier (engine/generated/<tier>, SPEC.md §3.5).
   static Engine generated(Tier tier);
 
-  Result translate(std::string_view text, Options options) const;
+  [[nodiscard]] Result translate(std::string_view text, Options options) const;
 
  private:
   Engine() = default;
