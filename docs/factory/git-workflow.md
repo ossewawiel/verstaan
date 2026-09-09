@@ -33,6 +33,21 @@ tree, stamped or not; the pull request in "Pull requests" below is the only way 
 `tools/factory/hooks/require_gate.sh` (tested in `tools/factory/tests/test_require_gate.py`);
 `.claude/hooks/require-gate.sh` is a one-line wrapper that execs it, and is edited by hand only.
 
+The root tree catches up with `origin/main` after a PR merges on GitHub with `git merge --ff-only
+origin/main`, or `git pull --ff-only`. Both are exempt from the refusal above: a fast-forward of
+`main` from its own tracked upstream cannot carry unreviewed work, since every commit on it already
+passed the `gate` check on a pull request. `--ff-only` on its own is not the licence — `git merge
+--ff-only some-other-branch` still refuses — only a fast-forward from `main`'s own upstream is.
+`git pull --ff-only` loses the exemption the moment it names an explicit repository or refspec; the
+hook does not parse enough of `git pull` to tell that an explicit target is the tracked upstream and
+nothing more, so it falls back to asking whether HEAD is stamped.
+
+"`main`'s own upstream" means `main@{upstream}` when that is configured, else `origin/main` by
+name if that ref exists. A repo reached by `git clone` gets `branch.main.remote`/`branch.main.merge`
+written for free; this repository's own root checkout was `git init`-ed locally and only later got
+`git remote add origin`, so `main@{upstream}` has never resolved there. The name-based fallback in
+`require_gate.sh` is what makes the exemption fire on that tree at all.
+
 Every Claude Code hook follows this same shape (`docs/factory/issues/93-hooks-as-tracked-scripts.md`):
 the logic is a tracked script under `tools/factory/hooks/` with a pytest module under
 `tools/factory/tests/`; `.claude/hooks/<name>.sh` is a wrapper of at most six lines that `exec`s
