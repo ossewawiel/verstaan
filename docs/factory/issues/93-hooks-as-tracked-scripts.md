@@ -2,16 +2,16 @@
 issue: 93
 title: "Hooks as tracked scripts: logic under tools/factory/hooks/, one-line wrappers under .claude/"
 milestone: Side
-status: in-progress
+status: done
 depends_on: [6]
 agent: implementer
 agents: [implementer]
 model: sonnet
 effort: medium
 checkpoint: null
-commit: d0e0091
-worktree: .worktrees/side-93-hooks-as-tracked-scripts
-github_issue: null
+commit: 64a0080
+worktree: null
+github_issue: 20
 ---
 ## What
 
