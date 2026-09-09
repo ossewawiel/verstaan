@@ -119,9 +119,9 @@ export function renderConsole(model) {
 
   <footer class="cic-foot"><p class="cic-foot__note" id="foot"></p></footer>
 </main>`;
-  // The console reloads itself every two minutes: a file:// page cannot poll, and the hooks and
-  // git hooks rewrite this file whenever any tree changes. The other rooms do not reload.
-  return shell({ roomId: 'index', title: 'Console', main, island, script: true, sub: 'command console · rendered from docs/factory · reloads every 2 min', reloadSeconds: 120 });
+  // The file console does not reload itself: a timed reload flickered and collapsed open cards.
+  // Live updates come from the service (serve.mjs + live.js); a file:// page is refreshed by hand.
+  return shell({ roomId: 'index', title: 'Console', main, island, script: true, sub: 'command console · rendered from docs/factory' });
 }
 
 const GLYPH = { done: ['●', 'won'], 'in-progress': ['◐', 'fighting'], next: ['◐', 'next'], open: ['○', 'open'], blocked: ['◇', 'blocked'] };

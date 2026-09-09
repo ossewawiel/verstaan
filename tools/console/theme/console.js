@@ -87,7 +87,13 @@
     return t;
   }
 
+  var CONTAINERS = ['tiles', 'map-body', 'side-body', 'trees-body', 'party-body', 'ledger-body'];
+  function clear() {
+    CONTAINERS.forEach(function (id) { var n = document.getElementById(id); if (n) while (n.firstChild) n.removeChild(n.firstChild); });
+  }
+
   function render(m) {
+    clear();
     var mq = m.mainQuest;
     set('band', 'Milestone ' + (mq ? mq.name : 'none') + ' · branch ' + m.git.branch);
     set('headline', mq ? 'Main quest: ' + mq.name : 'No open quest');
@@ -157,6 +163,10 @@
 
     set('foot', 'Rendered ' + m.generated + ' from docs/factory/issues, .claude/agents, lessons.jsonl and git. Regenerate with node tools/console/src/generate.mjs. Nothing here is editable; the files are.');
   }
+
+  /* live.js (the service) calls update(model) on every change event instead of reloading the
+   * page: no flicker, and nothing the reader opened or scrolled to is lost. */
+  window.verstaanConsole = { update: render };
 
   var m = island();
   if (m) render(m); else set('lede', 'The data island did not parse. Regenerate the page.');

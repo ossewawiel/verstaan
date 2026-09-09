@@ -139,3 +139,8 @@
 .code-link { text-decoration: none; border-bottom: 0; }
 .code-link code { color: var(--st-in-progress); border-color: rgba(54,198,192,.35); }
 .code-link:hover code { color: var(--amber); }
+
+/* ---- live updates: a quiet pulse on the header, never a flicker ---------- */
+.cic-bar__sub[data-updated]::after { content: ' · updated ' attr(data-updated); color: var(--ink-faint); }
+.cic-bar__sub--pulse { color: var(--st-in-progress); transition: color .2s; }
+@media (prefers-reduced-motion: reduce) { .cic-bar__sub--pulse { transition: none; } }

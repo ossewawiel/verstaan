@@ -332,8 +332,14 @@ function httpGet(port, path, method = 'GET') {
 
   const home = await httpGet(port, '/');
   check('GET / returns 200', home.status, 200);
-  check('GET / carries the EventSource live-reload script', home.body.includes("new EventSource('/events')"), true);
+  check('GET / carries the live.js in-place updater', home.body.includes('<script src="/live.js"></script>'), true);
   check('GET / does not carry a meta refresh', home.body.includes('<meta http-equiv="refresh"'), false);
+  const liveJs = await httpGet(port, '/live.js');
+  check('GET /live.js is served as JavaScript', [liveJs.status, (liveJs.headers['content-type'] || '').startsWith('text/javascript')], [200, true]);
+  check('live.js never navigates', liveJs.body.includes('location.reload'), false);
+  check('live.js swaps in place through DOMParser', liveJs.body.includes('DOMParser') && liveJs.body.includes('verstaanConsole.update'), true);
+  const consoleJs = await httpGet(port, '/console.js');
+  check('console.js exposes verstaanConsole.update', consoleJs.body.includes('window.verstaanConsole = { update: render }'), true);
 
   const quests = await httpGet(port, '/quests.html');
   check('GET /quests.html carries a fixture-only title, proving the injected fixture was read',
