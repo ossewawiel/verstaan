@@ -234,6 +234,21 @@ rmTest(wpBase, { recursive: true, force: true });
   await new Promise((r) => setTimeout(r, 300));
   check('a watcher whose directory disappears stops calling back (no growth once it self-closes)', calls === afterFirstSettle, true);
   check('a watcher whose directory disappears removes itself from the watcher list', watchers.length, 0);
+
+  // Windows does not always fire the change callback when a watched directory is removed; it
+  // raises an `error` event on the watcher (EPERM). An `error` event with no listener is an
+  // uncaught exception, so this path used to kill the whole service. The CI windows-latest runner
+  // died exactly this way on PR #25 while the same code passed on both Linux runners.
+  const wdDir2 = join(fx, '__watch-error__');
+  mkdirTest(wdDir2, { recursive: true });
+  let calls2 = 0;
+  const watchers2 = [];
+  const w2 = watchDirectory(wdDir2, () => { calls2 += 1; }, watchers2);
+  const err = Object.assign(new Error('EPERM: operation not permitted, watch'), { code: 'EPERM', syscall: 'watch' });
+  w2.emit('error', err);
+  check('an error event on a watcher is handled, not thrown as an uncaught exception', calls2 >= 1, true);
+  check('a watcher that errors removes itself from the watcher list', watchers2.length, 0);
+  rmTest(wdDir2, { recursive: true, force: true });
 }
 
 // generate.mjs's chain to the root tree's own generator, pulled out as chainDecision() so it can

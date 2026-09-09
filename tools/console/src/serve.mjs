@@ -64,17 +64,21 @@ export function watchPaths(root, worktrees, commonDir) {
  * watcher, or `null` if the path could not be watched at all. */
 export function watchDirectory(p, onChange, watchers) {
   let w = null;
+  const drop = () => {
+    try { w.close(); } catch { /* already closed */ }
+    const idx = watchers.indexOf(w);
+    if (idx !== -1) watchers.splice(idx, 1);
+  };
   try {
     w = watch(p, { persistent: true }, () => {
-      if (!existsSync(p)) {
-        try { w.close(); } catch { /* already closed */ }
-        const idx = watchers.indexOf(w);
-        if (idx !== -1) watchers.splice(idx, 1);
-        onChange();
-        return;
-      }
+      if (!existsSync(p)) { drop(); onChange(); return; }
       onChange();
     });
+    // Windows raises EPERM on the watcher itself when its directory is removed, rather than firing
+    // the change callback. An `error` event with no listener is an uncaught exception, so without
+    // this the owner running `git worktree remove` kills the whole service. Proven on CI: the
+    // windows-latest runner died with `EPERM: operation not permitted, watch` (PR #25).
+    w.on('error', () => { drop(); onChange(); });
     watchers.push(w);
   } catch { /* a path that cannot be watched at all is skipped */ }
   return w;
