@@ -125,7 +125,14 @@ def parse_issue_file(path: Path) -> LocalIssue:
 
 
 def load_local_issues(issues_dir: Path) -> list[LocalIssue]:
-    issues = [parse_issue_file(p) for p in sorted(issues_dir.glob("*.md"))]
+    # `NN-test-cases.md` is a rule-author's test table, not an issue file: no frontmatter, never
+    # mirrored. `tools/console/src/{parse,read}.mjs` skip the same filename for the same reason.
+    paths = [
+        p
+        for p in sorted(issues_dir.glob("*.md"))
+        if re.match(r"^\d+-.*\.md$", p.name) and not p.name.endswith("-test-cases.md")
+    ]
+    issues = [parse_issue_file(p) for p in paths]
     if not issues:
         raise MirrorError(f"no issue files under {issues_dir}")
     return issues

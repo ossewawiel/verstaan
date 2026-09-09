@@ -67,13 +67,16 @@ export function readGit() {
   return { head, branch, dirty, remote };
 }
 
-export function readStamp(gitHead) {
-  const dir = sh('git rev-parse --git-dir');
-  if (!dir) return { present: false, matches: false };
-  const p = resolve(REPO, dir, 'verstaan-gate-stamp');
-  if (!existsSync(p)) return { present: false, matches: false };
-  const full = sh('git rev-parse HEAD');
-  return { present: true, matches: readFileSync(p, 'utf8').trim() === full && gitHead !== 'none' };
+/** Stamps are tree-independent: `/gate` writes an empty file named after the commit hash under
+ * `<git-common-dir>/verstaan-gate-stamps/`. `present` means at least one commit ever passed;
+ * `matches` means HEAD did. */
+export function readStamp(gitHead, { shFn = sh, cwd = REPO } = {}) {
+  const common = shFn('git rev-parse --path-format=absolute --git-common-dir');
+  if (!common) return { present: false, matches: false };
+  const dir = resolve(cwd, common, 'verstaan-gate-stamps');
+  if (!existsSync(dir)) return { present: false, matches: false };
+  const full = shFn('git rev-parse HEAD');
+  return { present: true, matches: gitHead !== 'none' && !!full && existsSync(join(dir, full)) };
 }
 
 /** Scan a tree's own checkout of docs/factory/issues for the one issue file that names this tree
@@ -86,22 +89,19 @@ function inProgressIssueOf(treeAbsPath, treeRelPath) {
 
 /** `git worktree list --porcelain` plus, per tree, dirty count, gate-stamp match and the
  * in-progress issue found by reading that tree's own files on disk. The root tree (this repo's
- * own checkout) is marked `isRoot`. One row per `git worktree add`; a gate stamp made in one tree
- * never matches another because each tree has its own `.git` (or `.git` pointer) file. */
+ * own checkout) is marked `isRoot`. One row per `git worktree add`. The stamp store is shared
+ * (`<git-common-dir>/verstaan-gate-stamps/<sha>`), so `stampMatches` asks one question per tree:
+ * did this tree's HEAD commit pass the gate, wherever it was gated. */
 export function readWorktrees({ shFn = sh, shInFn = shIn, rootPath = resolveRootPath(shFn) } = {}) {
   const list = parseWorktreePorcelain(shFn('git worktree list --porcelain'));
+  const common = shFn('git rev-parse --path-format=absolute --git-common-dir');
   return list.map((w) => {
     const abs = resolve(w.path);
     const rel = relative(rootPath, abs).split(sep).join('/') || '.';
     const isRoot = isRootTree(abs, rootPath);
     const dirty = shInFn(abs, 'git status --porcelain').split('\n').filter(Boolean).length;
-    const gitDir = shInFn(abs, 'git rev-parse --git-dir');
     const full = shInFn(abs, 'git rev-parse HEAD');
-    let stampMatches = false;
-    if (gitDir) {
-      const stampPath = resolve(abs, gitDir, 'verstaan-gate-stamp');
-      stampMatches = existsSync(stampPath) && full && readFileSync(stampPath, 'utf8').trim() === full;
-    }
+    const stampMatches = !!common && !!full && existsSync(resolve(rootPath, common, 'verstaan-gate-stamps', full));
     return { path: rel, branch: w.branch, head: w.head, isRoot, dirty, stampMatches, issue: inProgressIssueOf(abs, rel) };
   });
 }

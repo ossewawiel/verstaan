@@ -34,7 +34,9 @@ Step 6, regenerate. `python -m tools.compiler --all-tiers && git diff --exit-cod
 A diff means someone edited generated code by hand or the compiler changed without regenerating.
 
 Only if every step passed, and `git status --porcelain` is empty:
-`git rev-parse HEAD > "$(git rev-parse --git-dir)/verstaan-gate-stamp"`
+`d="$(git rev-parse --path-format=absolute --git-common-dir)/verstaan-gate-stamps" && mkdir -p "$d" && touch "$d/$(git rev-parse HEAD)"`
+The stamp names the commit, not the tree, so a branch gated in its worktree can be merged from
+the root. `tools/factory/hooks/require_gate.sh` is what reads it.
 
 A failed gate leaves no stamp, which is what keeps the merge shut. Report each step's command,
 exit code and time. Then hand over as `docs/factory/git-workflow.md` "Finishing a milestone" says.

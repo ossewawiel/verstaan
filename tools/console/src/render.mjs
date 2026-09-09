@@ -101,7 +101,7 @@ export function renderConsole(model) {
 
   <section id="trees" class="panel" aria-labelledby="trees-title">
     <h2 class="panel__title" id="trees-title">Trees</h2>
-    <p class="panel__ctx">One working tree per branch, from <code>git worktree list</code>. The root tree stays on <code>main</code>. A stamp made in one tree unlocks nothing in another.</p>
+    <p class="panel__ctx">One working tree per branch, from <code>git worktree list</code>. The root tree stays on <code>main</code>. A stamp names a commit, not a tree: a branch gated in its own tree can be merged from the root.</p>
     <div id="trees-body"></div>
   </section>
 

@@ -89,6 +89,13 @@ def test_parse_issue_file_missing_field(tmp_path):
         mg.parse_issue_file(path)
 
 
+def test_load_local_issues_skips_test_cases_companion(tmp_path):
+    write_issue(tmp_path)
+    (tmp_path / "07-test-cases.md").write_text("| input | expected |\n", encoding="utf-8")
+    issues = mg.load_local_issues(tmp_path)
+    assert [i.number for i in issues] == [7]
+
+
 def test_write_github_issue_field_inserts_when_absent(tmp_path):
     path = write_issue(tmp_path)
     local = mg.parse_issue_file(path)

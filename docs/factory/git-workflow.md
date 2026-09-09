@@ -24,9 +24,13 @@ marked `in-progress` names the tree that holds it in its `worktree:` field, and 
 refuses to start an issue that is already `in-progress` unless given `--resume`, naming the tree
 that holds it (`docs/factory/SPEC.md` §6, `.claude/skills/factory-run/SKILL.md`).
 
-The gate stamp lives in each tree's own git directory (`git rev-parse --git-dir` resolves to
-`.git` in the root and to `.git/worktrees/<branch>` inside a worktree), so a gate passed in one
-tree unlocks nothing in another: `require-gate.sh` and `/gate` read only the current tree's stamp.
+The gate stamp names a commit, not a tree. `/gate` writes an empty file
+`<git-common-dir>/verstaan-gate-stamps/<sha>` when every step passed in a clean tree, and the
+store is shared by every worktree. So "commit X passed the gate" is a fact any tree can check:
+`git merge --no-ff <branch>` from the root asks whether the tip of `<branch>` is stamped;
+`gh pr create`, `gh pr ready`, `gh pr merge` and `git pull` ask whether HEAD is. The logic is
+`tools/factory/hooks/require_gate.sh` (tested in `tools/factory/tests/test_require_gate.py`);
+`.claude/hooks/require-gate.sh` is a one-line wrapper that execs it, and is edited by hand only.
 
 A tree is removed once its branch has merged, with:
 
