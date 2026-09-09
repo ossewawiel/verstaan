@@ -19,7 +19,25 @@ from pathlib import Path
 import pytest
 
 HOOK = Path(__file__).resolve().parents[1] / "hooks" / "require_gate.sh"
-BASH = shutil.which("bash")
+
+
+def _git_bash() -> str | None:
+    """The bash that ships with git, which is the one Claude Code's hooks run under.
+
+    On Windows `shutil.which("bash")` from PowerShell finds WSL's `System32\\bash.exe`, which cannot
+    open a Windows path and exits 127. Look next to `git.exe` first (`<Git>/bin/bash.exe`), then
+    fall back to PATH for Linux and macOS.
+    """
+    git_exe = shutil.which("git")
+    if git_exe:
+        for candidate in Path(git_exe).resolve().parents:
+            for rel in ("bin/bash.exe", "usr/bin/bash.exe", "bin/bash"):
+                if (candidate / rel).is_file():
+                    return str(candidate / rel)
+    return shutil.which("bash")
+
+
+BASH = _git_bash()
 
 
 def git(cwd: Path, *args: str) -> str:
