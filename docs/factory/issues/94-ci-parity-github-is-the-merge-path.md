@@ -9,7 +9,7 @@ agents: [implementer, docs-writer]
 model: sonnet
 effort: medium
 checkpoint: 4
-commit: 79a34ec
+commit: 0feadce
 worktree: null
 github_issue: 21
 ---
