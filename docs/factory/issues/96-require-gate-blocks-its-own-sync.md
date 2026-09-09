@@ -2,15 +2,15 @@
 issue: 96
 title: "require-gate blocks the root tree from ever catching up with origin/main"
 milestone: Side
-status: in-progress
+status: done
 depends_on: [94]
 agent: implementer
 agents: [implementer]
 model: sonnet
 effort: medium
 checkpoint: null
-commit: null
-worktree: .worktrees/side-96-require-gate-blocks-its-own-sync
+commit: a0e9b58
+worktree: null
 github_issue: null
 ---
 ## What
@@ -56,7 +56,7 @@ any branch other than the `main` fast-forward case above.
 
 ## Done when
 
-- [ ] From the root tree on `main`, `git merge --ff-only origin/main` succeeds and the tree is
+- [x] From the root tree on `main`, `git merge --ff-only origin/main` succeeds and the tree is
       level with `origin/main`.
-- [ ] `git merge --no-ff <branch>` from the root tree still exits 2 naming `gh pr merge`.
-- [ ] `tools/factory/tests/test_require_gate.py` covers both new behaviours and every test passes.
+- [x] `git merge --no-ff <branch>` from the root tree still exits 2 naming `gh pr merge`.
+- [x] `tools/factory/tests/test_require_gate.py` covers both new behaviours and every test passes.
