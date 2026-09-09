@@ -3,9 +3,11 @@
 import { writeFileSync, mkdirSync, copyFileSync, rmSync, existsSync } from 'node:fs';
 import { join, dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { execSync } from 'node:child_process';
 import { readRepo, REPO } from './read.mjs';
 import { buildModel } from './parse.mjs';
 import { renderConsole, renderQuests, renderLibrary, renderDoc, renderRoomFromDoc, docHref } from './render.mjs';
+import { runChain } from './chain.mjs';
 
 const here = dirname(fileURLToPath(import.meta.url));
 const out = join(REPO, 'docs', 'factory', 'console');
@@ -39,3 +41,14 @@ for (const f of ['theme.css', 'console.css', 'console.js']) copyFileSync(resolve
 const next = model.next ? `#${String(model.next.n).padStart(2, '0')} ${model.next.title}` : 'none';
 console.log(`console: wrote ${out} (5 rooms, ${n} library pages)`);
 console.log(`console: ${model.totals.done}/${model.totals.issues} encounters won · next ${next} · side task: ${model.sideTask.kind}`);
+
+// The root tree's console is the one the owner keeps open. Work happens in .worktrees/<branch>,
+// and every trigger there (edit hook, stop hook, git hook) runs this file from that tree. So when
+// this tree is not the root, also regenerate the root's console with the root's own generator,
+// which reads the issue files across every tree (read.mjs, mergeIssuesAcrossWorktrees). One hop
+// only: the env flag stops the root run from chaining back.
+runChain(REPO, sh('git rev-parse --path-format=absolute --git-common-dir'), !!process.env.VERSTAAN_CONSOLE_NO_CHAIN);
+
+function sh(cmd) {
+  try { return execSync(cmd, { cwd: REPO, stdio: ['ignore', 'pipe', 'ignore'] }).toString().trim(); } catch { return ''; }
+}

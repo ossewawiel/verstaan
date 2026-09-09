@@ -132,6 +132,13 @@ jobs:
       - name: Install Python tooling
         run: pip install ruff pytest pyyaml
 
+      # Issue 95's acceptance criteria promise Node 20 or later. The runner image ships some
+      # Node already, but that version is whatever the image happens to carry, not a pin -- so
+      # setup-node here is what actually keeps that promise, on all three matrix legs.
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
       - name: Point VCPKG_ROOT at the runner's pre-installed vcpkg (Windows)
         if: runner.os == 'Windows'
         shell: pwsh
@@ -247,6 +254,15 @@ jobs:
             python -m pytest tools/ -q
           else
             echo "no Python tests exist on this ref yet -- skipping pytest"
+          fi
+
+      - name: Step 3 -- console tests (node, zero dependencies)
+        shell: bash
+        run: |
+          if [ -f tools/console/test/run.mjs ]; then
+            node tools/console/test/run.mjs
+          else
+            echo "tools/console/test/run.mjs does not exist on this ref -- skipping"
           fi
 
       - name: Validate changed/all data

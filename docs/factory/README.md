@@ -62,13 +62,23 @@ Rules in full at `SPEC.md` §5. What actually runs, proven in issue 01:
 
 ## The console
 
-`docs/factory/console/index.html` is the game console: open it from `file://`, no server. It is
-rendered from the repository by `node tools/console/src/generate.mjs` and is never committed,
-because it shows live git state and a committed copy would be one commit stale. Hooks keep it
-current: at session start, after any edit to a doc, issue, agent, skill or command file, at every
-stop, and after every commit, checkout or merge once you have run
-`bash tools/console/install-git-hooks.sh` once per clone. Keep the tab open; refresh the browser.
-Nothing on it is editable; the files are. Five rooms:
+The console is the game: the page that says where the project is. It runs as a small local
+service. A `SessionStart` hook starts it for you at the beginning of a session, from the root
+tree, if nothing already answers on the port. Double-click `console.cmd` (or run `.\console.ps1`)
+in the repository root to start it by hand and open `http://127.0.0.1:7864`; `console.cmd` also
+starts `node tools/console/src/serve.mjs` if it is not running. Start it from the root tree: the
+service reads the tree its own file sits in, so `console.cmd` double-clicked inside a worktree
+binds the Library, Playbook and Glossary rooms to that worktree's docs instead of the root's. Only
+issue status merges across every tree regardless of where the service runs. The page reloads
+itself the moment an issue file or the git state changes in any tree, and it reloads for a doc at
+the top level of `docs/`. The watch on `docs/` is not recursive, so a doc nested a level deeper,
+such as `docs/standards/voice.md`, can change without waking the page. Nothing is written to disk,
+nothing on it is editable, and it listens on the loopback address only.
+
+The file-based copy, `docs/factory/console/index.html`, still exists for a machine with no
+service running: `node tools/console/src/generate.mjs` from any tree writes that tree's console
+and the root's, hooks run it on edits and stops, and the root page reloads itself every two
+minutes. It is never committed. Five rooms either way:
 
 | Room | What it holds |
 |---|---|
