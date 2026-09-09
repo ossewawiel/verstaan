@@ -11,7 +11,7 @@ effort: medium
 checkpoint: null
 commit: a0e9b58
 worktree: null
-github_issue: null
+github_issue: 24
 ---
 ## What
 
