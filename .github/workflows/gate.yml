@@ -10,6 +10,13 @@ name: gate
 # on a GitHub-hosted runner. The `ubuntu-latest` legs configure CMake directly instead of through
 # a preset, choosing clang++ or g++ explicitly. The `windows-latest` leg uses the `msvc-debug`
 # preset, which is portable once `VCPKG_ROOT` points at the runner's pre-installed vcpkg.
+#
+# Every ctest label runs (not just `fast`), on both the MSVC and the Linux legs. clang-tidy runs
+# too, but not via the `clang-release` preset -- it cannot resolve here for the reason above --
+# instead directly against the Linux clang leg's own compile_commands.json. Two /gate steps stay
+# unrunnable pre-M4 and say so where they would run: step 5's `-L equivalence`/`-L tier` via
+# `clang-release` (already exercised without that filter by the full ctest run) and step 6's
+# regenerate-and-diff (`tools.compiler` has no `--all-tiers` flag yet).
 
 on:
   pull_request:
@@ -38,8 +45,12 @@ jobs:
       - name: Step 0 -- no stub left outside tests/
         shell: bash
         run: |
-          hits=$(grep -rn 'not_implemented\|NotImplementedError' engine/src tools/ \
-            --include=*.cpp --include=*.py 2>/dev/null | grep -v '/tests/' || true)
+          # engine/include/verstaan/engine.hpp is excluded: it declares Status::not_implemented as
+          # a permanent enum member, the M0 stub value every real Engine::translate call retires
+          # (SPEC.md §3.4) -- not an unfinished stub to flag.
+          hits=$(grep -rn 'not_implemented\|NotImplementedError' engine/src engine/include tools/ \
+            --include=*.cpp --include=*.hpp --include=*.py 2>/dev/null \
+            | grep -v '/tests/' | grep -v 'engine/include/verstaan/engine.hpp' || true)
           if [ -n "$hits" ]; then
             echo "$hits"
             echo "::error::a stub was left outside tests/ -- an issue was closed on a stub"
@@ -58,6 +69,20 @@ jobs:
             exit 1
           fi
 
+      - name: Step 1 -- no committed UNL_PASS credential
+        shell: bash
+        run: |
+          # A real assignment (UNL_PASS=..., UNL_PASS: "...") not the bare env var name: the
+          # pattern needs a ':' or '=' directly after UNL_PASS, then a value, so
+          # os.environ["UNL_PASS"] and prose mentioning the name never trip it. tests/ is
+          # excluded: tools/mirror/tests/test_cli.py legitimately constructs UNL_PASS=hunter2 to
+          # prove the CLI refuses it as an argument (issue 5); a real leak outside tests/ still
+          # gets caught.
+          if git grep -nIE 'UNL_PASS[[:space:]]*[:=][[:space:]]*[^[:space:]]{4,}' -- . ':(exclude)**/tests/**'; then
+            echo "::error::an UNL_PASS credential value was found committed in the repository"
+            exit 1
+          fi
+
       - name: Step 1 -- clang-format
         shell: bash
         run: |
@@ -69,6 +94,15 @@ jobs:
         run: |
           ruff format --check tools/
           ruff check tools/
+
+      - name: Step 1 -- python -m tools.validate --licences
+        shell: bash
+        run: |
+          if [ -d tools/validate ]; then
+            python -m tools.validate --licences
+          else
+            echo "tools/validate does not exist yet (issue 3) -- skipping"
+          fi
 
   # /gate step 2 (build every preset that applies) and step 3 (tests, pytest, validate).
   build:
@@ -116,15 +150,23 @@ jobs:
           cmake --preset msvc-debug
           cmake --build --preset msvc-debug
 
-      - name: Test (MSVC)
+      # /gate step 3 runs every label, not just `fast`: gate.md's `ctest --preset <p>
+      # --output-on-failure` carries no `-L` filter. This is the one preset that resolves on a
+      # hosted runner (CMakePresets.json's msvc-debug hardcodes nothing machine-specific once
+      # VCPKG_ROOT is set), so it is the leg that runs the golden/equivalence/tier placeholder
+      # tests (tests/CMakeLists.txt) alongside `fast`, not just `fast` alone.
+      - name: Test (MSVC, every ctest label)
         if: matrix.compiler == 'msvc' && hashFiles('CMakePresets.json') != ''
         shell: pwsh
-        run: ctest --preset msvc-debug -L fast --output-on-failure
+        run: ctest --preset msvc-debug --output-on-failure
 
       - name: Install ninja (Linux)
         if: runner.os == 'Linux' && hashFiles('CMakeLists.txt') != ''
         run: sudo apt-get update && sudo apt-get install -y ninja-build
 
+      # CMAKE_EXPORT_COMPILE_COMMANDS is only needed on the clang leg, which is also the one that
+      # runs clang-tidy below (compile_commands.json is what `-p` reads); harmless to export on
+      # both, so the flag stays unconditional to keep the two legs' configure step identical.
       - name: Configure and build (clang/gcc)
         if: runner.os == 'Linux' && hashFiles('CMakeLists.txt') != ''
         shell: bash
@@ -135,15 +177,50 @@ jobs:
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER="$CXX_COMPILER" \
             -DCMAKE_TOOLCHAIN_FILE="$VCPKG_INSTALLATION_ROOT/scripts/buildsystems/vcpkg.cmake" \
-            -DVCPKG_TARGET_TRIPLET=x64-linux
+            -DVCPKG_TARGET_TRIPLET=x64-linux \
+            -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
           cmake --build build/ci
 
       # --no-tests=error mirrors the MSVC preset's "noTestsAction": "error" (CMakePresets.json):
-      # a Linux leg that builds but has zero `fast`-labelled tests must fail loudly, not exit 0.
-      - name: Test (clang/gcc)
+      # a Linux leg that builds but has zero tests must fail loudly, not exit 0. No `-L` filter,
+      # matching /gate step 3: this runs every label, including the golden/equivalence/tier
+      # placeholders (tests/CMakeLists.txt), not just `fast`.
+      - name: Test (clang/gcc, every ctest label)
         if: runner.os == 'Linux' && hashFiles('CMakeLists.txt') != ''
         shell: bash
-        run: ctest --test-dir build/ci -L fast --output-on-failure --no-tests=error
+        run: ctest --test-dir build/ci --output-on-failure --no-tests=error
+
+      # /gate step 4, clang-tidy. The clang-release preset that /gate uses locally hardcodes the
+      # maintainer's own machine (CMakePresets.json's description field: a Windows LLVM path and
+      # a GnuWin32 make.exe path), so it cannot run via that preset on any hosted runner -- the
+      # file header above explains why the Linux legs configure CMake directly instead of through
+      # a preset. That same direct configure is what makes tidy runnable for real here: it already
+      # exports compile_commands.json (CMAKE_EXPORT_COMPILE_COMMANDS above), and ubuntu-latest
+      # ships clang-tidy, so this leg (clang only -- gcc's compile_commands.json would mismatch
+      # clang-tidy's parser) runs it directly against that database instead of a preset.
+      - name: clang-tidy
+        if: runner.os == 'Linux' && matrix.compiler == 'clang' && hashFiles('CMakeLists.txt') != ''
+        shell: bash
+        run: |
+          files=$(git ls-files 'engine/**/*.cpp')
+          [ -z "$files" ] && { echo "no engine/**/*.cpp yet -- skipping"; exit 0; }
+          clang-tidy -p build/ci $files
+
+      # /gate step 5, equivalence and tiers (M4 onward). tests/CMakeLists.txt already registers
+      # `equivalence` and `tier`-labelled placeholder tests, and the label-less ctest run above
+      # already executes them on every leg -- there is no separate `-L equivalence`/`-L tier` run
+      # to add here. The clang-release-specific invocation gate.md names cannot run on a hosted
+      # runner for the same hardcoded-path reason as clang-tidy above; once M4 lands real
+      # equivalence/tier content, it is exercised by this same label-less run, no new step needed.
+
+      # /gate step 6, regenerate. `python -m tools.compiler` has no `--all-tiers` flag yet (M4 has
+      # not landed: tools/compiler/cli.py only takes --version today), so the regenerate-and-diff
+      # check cannot run for real yet. Once M4 adds the flag, add
+      # `python -m tools.compiler --all-tiers && git diff --exit-code engine/generated/` here.
+      - name: Regenerate and diff (M4 onward)
+        if: runner.os == 'Linux' && matrix.compiler == 'clang'
+        shell: bash
+        run: echo "tools.compiler --all-tiers does not exist yet (M4) -- skipping the regenerate-and-diff check"
 
       # CMakePresets.json only gates the MSVC leg (it is the only one that reads presets; the
       # comment at the top of this file explains why Linux configures CMake directly instead).

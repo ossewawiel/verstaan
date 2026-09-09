@@ -86,19 +86,44 @@ def test_ungated_command_passes(repo):
     assert run_hook(repo["root"], "git status").returncode == 0
 
 
+# docs/factory/git-workflow.md "Worktrees": "git merge into main is refused outright, on any
+# tree, stamped or not; the pull request ... is the only way in." The stamp check below this
+# point in the file still applies to every other gated command, and to `git merge` on any branch
+# that is not `main`. The fixture's root tree starts on `main` by design (it is the shape
+# git-workflow.md prescribes), so the stamp-only scenarios below check out a non-main branch
+# first to exercise the code path the main-block would otherwise shadow.
+
+
+def test_merge_into_main_is_refused_even_when_stamped(repo):
+    stamp(repo["wt"], "HEAD")
+    result = run_hook(repo["root"], "git merge --no-ff feature")
+    assert result.returncode == 2
+    assert "gh pr merge" in result.stderr
+
+
+def test_merge_into_main_is_refused_without_a_stamp_too(repo):
+    result = run_hook(repo["root"], "git merge --no-ff feature")
+    assert result.returncode == 2
+    assert "gh pr merge" in result.stderr
+
+
 def test_merge_refused_without_stamp(repo):
+    git(repo["root"], "checkout", "-q", "-b", "not-main")
     result = run_hook(repo["root"], "git merge --no-ff feature")
     assert result.returncode == 2
     assert "no gate stamp for feature" in result.stderr
 
 
-def test_merge_allowed_from_root_when_feature_tip_is_stamped(repo):
-    # The stamp was made in the worktree; the merge runs in the root tree. That is the whole point.
+def test_merge_allowed_on_a_non_main_branch_when_feature_tip_is_stamped(repo):
+    # The stamp was made in the worktree; the merge runs in the root tree, on a branch that is
+    # not `main`. That is the whole point: the stamp still gates merges elsewhere.
+    git(repo["root"], "checkout", "-q", "-b", "not-main")
     stamp(repo["wt"], "HEAD")
     assert run_hook(repo["root"], "git merge --no-ff feature").returncode == 0
 
 
 def test_merge_refused_when_stamp_is_for_an_older_commit(repo):
+    git(repo["root"], "checkout", "-q", "-b", "not-main")
     stamp(repo["wt"], "HEAD")
     (repo["wt"] / "c.txt").write_text("c\n", encoding="utf-8")
     git(repo["wt"], "add", "c.txt")
@@ -107,6 +132,7 @@ def test_merge_refused_when_stamp_is_for_an_older_commit(repo):
 
 
 def test_merge_refused_when_current_tree_is_dirty(repo):
+    git(repo["root"], "checkout", "-q", "-b", "not-main")
     stamp(repo["wt"], "HEAD")
     (repo["root"] / "a.txt").write_text("changed\n", encoding="utf-8")
     result = run_hook(repo["root"], "git merge --no-ff feature")
@@ -115,6 +141,7 @@ def test_merge_refused_when_current_tree_is_dirty(repo):
 
 
 def test_merge_without_ref_is_refused(repo):
+    git(repo["root"], "checkout", "-q", "-b", "not-main")
     result = run_hook(repo["root"], "git merge")
     assert result.returncode == 2
     assert "explicitly" in result.stderr

@@ -82,8 +82,10 @@ every rule has at least one test sentence that exercises it (warning at M2, erro
     Result translate(std::string_view, Options) const;
   };
   ```
-- `Status` ∈ `ok | partial | no_parse`. `partial` means some words fell through untranslated and
-  are marked in `text` with `⟦word⟧`. Never guess.
+- `Status` ∈ `ok | partial | no_parse | not_implemented`. `partial` means some words fell through
+  untranslated and are marked in `text` with `⟦word⟧`. `not_implemented` is the M0 stub value
+  every real `Engine` method retires; never guess. Never confuse this four-member enum with
+  `Result`'s four fields (`text, unl, trace, status`) — the counts match by coincidence.
 - `Trace` lists every rule fired in order. The CLI `--trace` flag prints it. This is the audit trail.
 - Two rule back ends, one semantics (ADR 0007). `tests/equivalence/` runs every corpus sentence
   through both and diffs `text` and `unl`.

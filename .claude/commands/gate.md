@@ -6,8 +6,10 @@ Run every step. Do not skip a step because "it passed last time". Do not pipe an
 `head`, `tail` or `grep` and then read the exit code; a pipeline's exit code is the last
 command's.
 
-Step 0, stubs. `grep -rn 'not_implemented\|NotImplementedError' engine/src tools/ --include=*.cpp --include=*.py`
-must return nothing outside `tests/`. A hit means an issue was closed on a stub.
+Step 0, stubs. `grep -rn 'not_implemented\|NotImplementedError' engine/src engine/include tools/ --include=*.cpp --include=*.hpp --include=*.py | grep -v '/tests/' | grep -v 'engine/include/verstaan/engine.hpp'`
+must return nothing. A hit means an issue was closed on a stub. `engine.hpp` is excluded on
+purpose: it declares `Status::not_implemented` as a permanent enum member, the M0 stub value every
+real `Engine::translate` call retires (`SPEC.md` §3.4) — not an unfinished stub to flag.
 
 Step 1, format, licences and secrets. `clang-format --dry-run --Werror $(git ls-files 'engine/**/*.cpp' 'engine/**/*.hpp' 'apps/**/*.cpp' 'apps/**/*.hpp')`
 and `ruff format --check tools/` and `ruff check tools/`. Then `python -m tools.validate --licences`
@@ -16,7 +18,14 @@ must exit 0; a nonzero exit names the file missing its SPDX or CC BY-SA header, 
 `git grep -nIE '\bghp_[A-Za-z0-9]{36}\b|\bgithub_pat_[A-Za-z0-9_]{22,}\b' -- .`
 must find nothing; a hit means a live-shaped GitHub token was committed (issue 91). No path is
 excluded. The pattern requires the token-length suffix, not just the prefix, so this file and the
-issue files that mention the prefixes in prose never trip it.
+issue files that mention the prefixes in prose never trip it. Then
+`git grep -nIE 'UNL_PASS[[:space:]]*[:=][[:space:]]*[^[:space:]]{4,}' -- . ':(exclude)**/tests/**'`
+must find nothing; a hit means an actual `UNL_PASS` value was assigned in a committed file, not
+just the bare env var name. `os.environ["UNL_PASS"]` and the name in prose never trip this: the
+pattern needs a `:` or `=` directly after the name, then a value, not a quote or backtick.
+`tests/` is excluded because `tools/mirror/tests/test_cli.py` legitimately constructs
+`UNL_PASS=hunter2` to prove the CLI refuses it as an argument (issue 5's credential-refusal test);
+a real leak of the same shape would still be caught outside `tests/`.
 
 Step 2, build every preset that exists in `CMakePresets.json`:
 `cmake --preset <p> && cmake --build --preset <p>` for each. The `arm-basic` preset is required

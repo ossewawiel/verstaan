@@ -4,6 +4,11 @@ Verstaan is built by a small code factory: a handful of Claude Code agents, thre
 and hooks that enforce the rules the agents would otherwise have to remember. This page is the
 onboarding narrative. The mechanics are in `PLAN.md` §6 and the exact rules in `SPEC.md` §5.
 
+## Prerequisites
+
+The GitHub CLI, `gh`, is required: it opens and merges every pull request (`git-workflow.md`
+"Pull requests"). Install it with `winget install --id GitHub.cli` or see https://cli.github.com.
+
 ## The shape
 
 There are two phases. Phase A, interrogation, already happened; it produced `PLAN.md`, `SPEC.md`,

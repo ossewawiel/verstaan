@@ -35,7 +35,8 @@ M0 both entry points exist in `engine/include/verstaan/engine.hpp` and both retu
 `CMakeLists.txt` at the repo root adds three subdirectories: `engine/`, `apps/`, `tests/`.
 `CMakePresets.json` defines four configure/build/test presets: `msvc-debug`, `msvc-release`,
 `clang-release` (exports `compile_commands.json` for `clang-tidy`), and `gcc-release` (present for
-machines with a MinGW g++; the reference machine has none installed). All four inherit a `base`
+machines with a MinGW g++; see the preset's own `description` for why the reference machine cannot
+use it). All four inherit a `base`
 preset that points at `$env{VCPKG_ROOT}` and the `x64-windows` triplet (`gcc-release` overrides
 the triplet to `x64-mingw-dynamic` for ABI reasons — see the preset's own `description`).
 

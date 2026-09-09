@@ -9,7 +9,7 @@ agents: [implementer]
 model: sonnet
 effort: medium
 checkpoint: null
-commit: 24ece52
+commit: 8075e96
 github_issue: 13
 ---
 ## What

@@ -9,6 +9,10 @@
 # Blocks `gh pr create` (non-draft), `gh pr ready`, `gh pr merge`, `git pull` and `git merge`
 # unless the commit they act on carries a gate stamp and the current tree is clean.
 #
+# `git merge` while the current tree is on `main` is refused outright, stamped or not: the pull
+# request is the only way into `main` (docs/factory/git-workflow.md "Worktrees"). The stamp still
+# gates `git merge` on any other branch, and every other listed command everywhere.
+#
 # The stamp is tree-independent: `/gate` writes an empty file named after the commit hash under
 # `$(git rev-parse --git-common-dir)/verstaan-gate-stamps/`, only when every step passed in a
 # clean tree. "Commit X passed the gate" is then a fact any tree can check, which is what lets the
@@ -67,6 +71,11 @@ while IFS= read -r seg; do
     "gh pr create"*"--draft"*) ;;
     "gh pr create"*|"gh pr ready"*|"gh pr merge"*|"git pull"*) require_stamp HEAD ;;
     "git merge"*)
+      branch=$(git branch --show-current 2>/dev/null)
+      if [ "$branch" = "main" ]; then
+        echo "require-gate: git merge into main is refused. Open a pull request and use gh pr merge instead." >&2
+        exit 2
+      fi
       ref=$(merge_ref "$seg")
       if [ -z "$ref" ]; then
         echo "require-gate: name the branch to merge explicitly, e.g. git merge --no-ff m0-foundation." >&2
