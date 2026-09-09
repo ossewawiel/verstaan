@@ -2,15 +2,15 @@
 issue: 98
 title: "The console updates in place: no flicker, open cards and scroll survive"
 milestone: Side
-status: in-progress
+status: done
 depends_on: [95]
 agent: implementer
 agents: [implementer]
 model: sonnet
 effort: low
 checkpoint: null
-commit: null
-worktree: .worktrees/side-98-console-updates-in-place
+commit: cf930a1
+worktree: null
 github_issue: null
 ---
 ## What
@@ -69,5 +69,5 @@ Partial DOM diffing beyond the `<main>` swap. Editing from the page.
 
 ## Done when
 
-- [ ] The browser proof (marker, open card, updated time) is in the report with the steps.
-- [ ] Tests green in `node tools/console/test/run.mjs` and `/gate` step 3.
+- [x] The browser proof (marker, open card, updated time) is in the report with the steps.
+- [x] Tests green in `node tools/console/test/run.mjs` and `/gate` step 3.
