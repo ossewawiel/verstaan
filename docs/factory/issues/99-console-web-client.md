@@ -58,6 +58,15 @@ the translation path.
 
 ## The road it opens, for later quests, not this one
 
+The owner's picture, 2026-09-09: "still have the artifacts and docs to open from it with the
+links and paths but so much more like direct links to testing, stop and start of services,
+syncing info with github etc. full game console." Quest 100 is the first step of that road:
+the console acts. The rest, in the order they earn their place:
+
+0. Actions from the page (quest 100): run the fast gate or the full gate in a tree, run one
+   test label, start and stop the console service and the mirror, sync issues to GitHub, open a
+   document, an artifact, a worktree or a pull request. Every action is a job with streamed
+   output and the same exit code the terminal would give.
 1. Editing from the page: change an issue's status, tick a done-when box, write an acceptance
    line; the server writes the file and commits `docs(#NN)` in the right worktree.
 2. A board view: columns by status, swimlanes by milestone, drag to reorder `depends_on`.
