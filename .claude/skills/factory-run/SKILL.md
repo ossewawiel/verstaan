@@ -61,9 +61,24 @@ All of this runs inside the issue's worktree, `.worktrees/<branch>`.
 9. **Check the battlefield, not just the kill.** A closed issue is not a shipped one. Run:
    `git ls-remote --heads origin <branch>` (does the branch exist on origin at all, and does it
    match local HEAD) and `git log origin/main..main --oneline` (is `main` itself ahead of
-   `origin/main`, independent of this issue). State plainly, in one line each: committed locally /
-   pushed to origin / PR open / merged to main — whichever is true, not just "done". End every
-   run, checkpoint or not, with the one concrete next command: push, open the PR, or merge.
+   `origin/main`, independent of this issue). Know, in one line each: committed locally / pushed
+   to origin / PR open / merged to main — whichever is true, not just "done".
+10. **Hand over as a person, not a spec.** Write for a developer skimming on a phone. Say what
+    changed and why it matters, name anything only a human can do (a repository secret, a
+    credential), and say where the work is sitting, using step 9's facts. No file-by-file
+    inventory, no flag lists, no wall of headings. Then put the shipping options to the developer
+    with `AskUserQuestion`, and carry out the one they pick. Their choice is the sign-off: run the
+    push, the PR and the merge without asking again. The four options:
+
+    | Option | What you run |
+    |---|---|
+    | Gate, PR, merge | `/gate`, push, `gh pr create`, wait for the `gate` check, `gh pr merge` |
+    | Gate and PR, then stop | the same, stopping once the PR is open and its check is green |
+    | Push only | `git push -u origin <branch>`, nothing else |
+    | Hold | nothing reaches GitHub |
+
+    `/gate` is what stamps HEAD, and `require_gate.sh` refuses `gh pr ready` and `gh pr merge`
+    without that stamp, so every option above "push only" runs it first.
 
 The tree itself is not removed here: it is removed by the milestone's close-out issue once the
 branch has merged into `main` (`docs/factory/git-workflow.md` "Worktrees"), because other issues
@@ -71,10 +86,13 @@ on the same branch may still need it.
 
 ## Checkpoints
 
-If the issue's `checkpoint:` is set, stop after step 9 and say: what landed, what to look at, and
-what the next command is (still including the push/PR state from step 9 — a checkpoint does not
-excuse skipping it). Do not start the next issue. Checkpoint 4 means run the `verifier` agent on
-`git diff main...HEAD` first and relay its report before stopping.
+If the issue's `checkpoint:` is set, stop after step 10 and do not start the next issue. Checkpoint
+4 means run the `verifier` agent on `git diff main...HEAD` first, fix what it finds, and relay what
+it found in the hand-off — a reviewer catching a real mistake is worth a sentence, not a section.
+
+A checkpoint changes what happens *after* the hand-off, never the hand-off itself: step 10's
+plain-language report and its four options still run. The developer picking an option there is the
+sign-off; the stop is about not starting the next issue.
 
 ## When a gate fails
 

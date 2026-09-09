@@ -26,9 +26,10 @@ that holds it (`docs/factory/SPEC.md` §6, `.claude/skills/factory-run/SKILL.md`
 
 The gate stamp names a commit, not a tree. `/gate` writes an empty file
 `<git-common-dir>/verstaan-gate-stamps/<sha>` when every step passed in a clean tree, and the
-store is shared by every worktree. So "commit X passed the gate" is a fact any tree can check:
-`git merge --no-ff <branch>` from the root asks whether the tip of `<branch>` is stamped;
-`gh pr create`, `gh pr ready`, `gh pr merge` and `git pull` ask whether HEAD is. The logic is
+store is shared by every worktree. So "commit X passed the gate" is a fact any tree can check
+before `gh pr ready` or `gh pr merge` runs: `git merge` into `main` is refused outright, on any
+tree, stamped or not; the pull request in "Pull requests" below is the only way in. `gh pr create`,
+`gh pr ready`, `gh pr merge` and `git pull` still ask whether HEAD is stamped. The logic is
 `tools/factory/hooks/require_gate.sh` (tested in `tools/factory/tests/test_require_gate.py`);
 `.claude/hooks/require-gate.sh` is a one-line wrapper that execs it, and is edited by hand only.
 
@@ -106,7 +107,8 @@ never used to reopen or close a local file.
 
 ## Finishing a milestone
 
-Tell the developer, in this order:
+The merge procedure is "Pull requests" above; there is no other. Once `gh pr merge` has landed
+the branch, tell the developer, in this order:
 1. Which issues closed, with their commits.
 2. What the gate ran and how long it took.
 3. What the verifier flagged and what was done about it.

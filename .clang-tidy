@@ -9,5 +9,8 @@ Checks: >
   -modernize-use-trailing-return-type,
   -readability-identifier-length
 WarningsAsErrors: '*'
-HeaderFilterRegex: '(engine|apps)/(include|src)/.*'
+# Both separators: clang-tidy matches this against the path as the compilation database spells it,
+# which is backslashed on Windows. With '/' only, every header diagnostic was silently suppressed
+# on Windows and reported on Linux, so /gate passed locally and the same commit failed CI.
+HeaderFilterRegex: '(engine|apps)[/\\](include|src)[/\\].*'
 FormatStyle: file

@@ -4,6 +4,14 @@ name: changelog
 # Runs on every `v*` tag push and regenerates the file from conventional commits. `main` rejects
 # direct pushes (branch protection, issue 91), so this opens a pull request instead of pushing;
 # the owner merges it like any other PR.
+#
+# docs/factory/issues/94-ci-parity-github-is-the-merge-path.md: a PR authored with the default
+# `secrets.GITHUB_TOKEN` never triggers other workflows -- GitHub Actions refuses to chain
+# workflow runs off a GITHUB_TOKEN-authored event, to stop recursive workflow loops. `main`'s
+# branch protection requires the `gate` check, so a GITHUB_TOKEN-authored PR could never satisfy
+# it and could never merge. `secrets.GH_PAT_CHANGELOG` is a personal access token (repo scope,
+# stored as a repository secret) that authors the PR as a real actor instead, so `gate` runs on
+# it like any other PR. Create it once under Settings > Secrets and variables > Actions.
 
 on:
   push:
@@ -34,7 +42,9 @@ jobs:
       - name: Open a pull request with the regenerated changelog
         uses: peter-evans/create-pull-request@c5a7806660adbe173f04e3e038b0ccdcd758773c # v6
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          # GH_PAT_CHANGELOG, not GITHUB_TOKEN: see the file header. A GITHUB_TOKEN-authored PR
+          # never triggers `gate`, and `main` requires `gate` to merge.
+          token: ${{ secrets.GH_PAT_CHANGELOG }}
           commit-message: "docs: regenerate CHANGELOG.md for ${{ github.ref_name }}"
           title: "docs: regenerate CHANGELOG.md for ${{ github.ref_name }}"
           body: |

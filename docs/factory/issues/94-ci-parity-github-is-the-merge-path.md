@@ -2,14 +2,14 @@
 issue: 94
 title: "CI parity with /gate, then GitHub becomes the only merge path"
 milestone: Side
-status: open
+status: done
 depends_on: [6, 93]
 agent: implementer
 agents: [implementer, docs-writer]
 model: sonnet
 effort: medium
 checkpoint: 4
-commit: null
+commit: 0feadce
 worktree: null
 github_issue: 21
 ---
@@ -48,6 +48,11 @@ Removing the local stamp. It stays as the fast pre-check that stops a PR opening
 
 ## Done when
 
-- [ ] A PR with a deliberately failing tidy warning shows `gate` red.
-- [ ] `git merge --no-ff <branch>` from the root tree exits 2 with the `gh pr merge` message.
-- [ ] One milestone branch has landed through `gh pr merge` and nothing else.
+- [ ] A PR with a deliberately failing tidy warning shows `gate` red. Needs a live PR on GitHub;
+      not provable from this worktree. The `clang-tidy` step landed here is real (runs against the
+      Linux clang leg's own `compile_commands.json`), so it is capable of failing — unverified live.
+- [x] `git merge --no-ff <branch>` from the root tree exits 2 with the `gh pr merge` message.
+      Verified for real from the root tree on `main`: `git merge --no-ff side-94-ci-parity-github-is-the-merge-path`
+      exits 2 with "git merge into main is refused. Open a pull request and use gh pr merge instead."
+- [ ] One milestone branch has landed through `gh pr merge` and nothing else. Will be satisfied by
+      this issue's own branch landing through `gh pr merge` — not yet done as of this commit.
