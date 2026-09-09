@@ -10,6 +10,8 @@ from __future__ import annotations
 import os
 import shutil
 import subprocess
+import tempfile
+from collections.abc import Iterable
 from pathlib import Path
 
 HOOKS_DIR = Path(__file__).resolve().parents[1] / "hooks"
@@ -34,27 +36,38 @@ def git_bash() -> str | None:
 BASH = git_bash()
 
 
-def minimal_unix_path(*lead_dirs: Path) -> str:
-    """A PATH of `lead_dirs` (checked first) plus the directories holding the POSIX utilities
-    the hook scripts shell out to directly: `cat`, `sed`, `head`, `dirname`, `git`.
+def hermetic_tool_path(base_dir: Path, tools: Iterable[str], *lead_dirs: Path) -> str:
+    """A PATH built entirely from directories this call controls: `lead_dirs` first (typically a
+    fixture's own stub directory, e.g. one holding a fake `clang-format`), then one throwaway
+    directory under `base_dir` holding a pass-through wrapper for each name in `tools`.
 
-    Inheriting the caller's whole PATH is unreliable for a test that means to prove a hook's
-    fallback when some tool -- clang-format, ruff, node -- is absent: this machine may have a real
-    copy of that tool reachable from a directory that has nothing to do with the ones tests stub,
-    and an inherited PATH exposes it anyway, defeating the isolation the test needs. Build PATH
-    from the resolved locations of the few tools the hooks actually need instead.
+    A directory that happens to hold a POSIX utility a hook needs (`cat`, `sed`, `head`,
+    `dirname`, ...) can just as easily hold the real `clang-format`, `ruff` or `node` a test means
+    to hide: on Windows that directory is `<Git>/usr/bin`, which sits next to nothing in
+    particular; on Linux it is `/usr/bin`, which also holds the system's real `clang-format`
+    (docs/factory/issues/93-hooks-as-tracked-scripts.md). "Which directory is tool X in" is not a
+    question with a stable answer, so it cannot be the basis for isolation. A directory built for
+    nothing but this call, containing nothing but wrappers for names this call named, is.
+
+    Each wrapper is a plain-text `exec "<absolute real path>" "$@"` with no `#!` line at all:
+    bash's fallback for a non-executable-format file (`ENOEXEC`) is to interpret it as a shell
+    script itself, so no interpreter lookup -- no `env`, no `bash` on this constructed PATH -- is
+    needed to run it. Wrappers are not copies (a copied binary can be missing shared-library
+    dependencies the original relied on beside it) and not symlinks (creating one needs elevated
+    privilege on Windows).
     """
-    dirs = [str(d) for d in lead_dirs]
-    seen = set(dirs)
-    for name in ("cat", "sed", "head", "dirname", "git"):
-        found = shutil.which(name)
-        if not found:
-            continue
-        found_dir = str(Path(found).resolve().parent)
-        if found_dir not in seen:
-            seen.add(found_dir)
-            dirs.append(found_dir)
-    return os.pathsep.join(dirs)
+    tool_dir = Path(tempfile.mkdtemp(prefix="hermetic-bin-", dir=base_dir))
+    for name in tools:
+        real = shutil.which(name)
+        if not real:
+            raise RuntimeError(
+                f"{name!r} is not installed on this machine; cannot build a hermetic PATH "
+                "without it. Add it to the machine or drop it from the `tools` this test asks for."
+            )
+        wrapper = tool_dir / name
+        wrapper.write_text(f'exec "{Path(real).resolve()}" "$@"\n', encoding="utf-8")
+        wrapper.chmod(0o755)
+    return os.pathsep.join([str(d) for d in lead_dirs] + [str(tool_dir)])
 
 
 def git(cwd: Path, *args: str) -> str:

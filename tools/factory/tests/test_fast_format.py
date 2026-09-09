@@ -17,17 +17,25 @@ from pathlib import Path
 
 import pytest
 
-from tools.factory.tests.conftest import BASH, HOOKS_DIR, minimal_unix_path
+from tools.factory.tests.conftest import BASH, HOOKS_DIR, hermetic_tool_path
 
 HOOK = HOOKS_DIR / "fast_format.sh"
 
+# The POSIX utilities fast_format.sh (and _env.sh, which it sources) call by name, besides the
+# formatters under test. Anything the hook shells out to that is missing from this list would
+# make every test below fail with "command not found" -- see hermetic_tool_path's docstring.
+FAST_FORMAT_TOOLS = ("cat", "sed", "head", "dirname")
+
 
 def _stub(bin_dir: Path, name: str, marker: Path, exit_code: int = 0) -> None:
-    """A fake `name` on PATH that records it ran by touching `marker`."""
+    """A fake `name` on PATH that records it ran by touching `marker`.
+
+    No `#!` line: see hermetic_tool_path's docstring for why relying on `env` to find an
+    interpreter would defeat the hermetic PATH this stub is placed on.
+    """
     script = bin_dir / name
     script.write_text(
         textwrap.dedent(f"""\
-            #!/usr/bin/env bash
             printf 'ran\\n' >> "{marker.as_posix()}"
             exit {exit_code}
             """),
@@ -44,11 +52,13 @@ def run_hook(cwd: Path, file_path: str, bin_dir: Path) -> subprocess.CompletedPr
         {"tool_name": "Write", "tool_input": {"file_path": file_path}}, separators=(",", ":")
     )
     env = dict(os.environ)
-    # A PATH assembled from just the stub directory plus the resolved locations of the POSIX
-    # utilities the hook needs (see minimal_unix_path): the inherited PATH is not trustworthy
-    # isolation, since a real clang-format or ruff reachable from elsewhere on this machine would
-    # still be found and defeat the "tool is absent" tests below.
-    env["PATH"] = minimal_unix_path(bin_dir)
+    # A PATH built entirely from the stub directory (which may or may not hold a fake formatter,
+    # depending on the test) plus a throwaway directory holding nothing but wrappers for the
+    # POSIX utilities the hook actually needs. The inherited PATH is not trustworthy isolation:
+    # a real clang-format reachable from some unrelated directory on this machine (VS's bundled
+    # Llvm on Windows, /usr/bin on Linux) would still be found and defeat the "tool is absent"
+    # tests below.
+    env["PATH"] = hermetic_tool_path(bin_dir.parent, FAST_FORMAT_TOOLS, bin_dir)
     return subprocess.run(
         [BASH, str(HOOK)],
         cwd=cwd,
