@@ -102,7 +102,9 @@ export function readWorktrees({ shFn = sh, shInFn = shIn, rootPath = resolveRoot
     const dirty = shInFn(abs, 'git status --porcelain').split('\n').filter(Boolean).length;
     const full = shInFn(abs, 'git rev-parse HEAD');
     const stampMatches = !!common && !!full && existsSync(resolve(rootPath, common, 'verstaan-gate-stamps', full));
-    return { path: rel, branch: w.branch, head: w.head, isRoot, dirty, stampMatches, issue: inProgressIssueOf(abs, rel) };
+    // `detached` rides along because `branch` is null on a detached HEAD and null alone does not
+    // say why. CI checks a pull request out detached, so this is the normal case there, not a fault.
+    return { path: rel, branch: w.branch, detached: w.detached, head: w.head, isRoot, dirty, stampMatches, issue: inProgressIssueOf(abs, rel) };
   });
 }
 

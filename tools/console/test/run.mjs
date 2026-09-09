@@ -96,7 +96,11 @@ check('readWorktrees finds at least the root tree', worktrees.length >= 1, true)
 const root = worktrees.find((w) => w.isRoot);
 check('readWorktrees marks the root tree', !!root, true);
 check('readWorktrees root path is .', root && root.path, '.');
-check('readWorktrees reports a branch for the root tree', typeof (root && root.branch), 'string');
+// A branch name, or null on a detached HEAD with `detached` saying so. `actions/checkout` detaches
+// for a pull request, so a bare `typeof === 'string'` here could only ever pass on a developer's
+// machine; it went green locally and failed on all three CI runners.
+check('readWorktrees reports a branch for the root tree, or marks it detached',
+  root && (typeof root.branch === 'string' ? !root.detached : root.branch === null && root.detached === true), true);
 check('readWorktrees reports a dirty count as a number', typeof (root && root.dirty), 'number');
 
 // Regression fixture for checkpoint 4 findings 1 and 2 (issue 92, reopened): isRoot must be
@@ -130,6 +134,13 @@ const fakePorcelain = `worktree ${fakeRoot}\nHEAD 111111111111111111111111111111
 const fakeListShFn = (cmd) => (cmd.includes('--git-common-dir') ? fakeCommonDir : cmd.includes('worktree list') ? fakePorcelain : '');
 const fakeRows = readWorktrees({ shFn: fakeListShFn, shInFn: () => '' });
 check('readWorktrees marks the fixture root tree as root, not the side tree', fakeRows.map((r) => [r.path, r.isRoot]), [['.', true], ['.worktrees/side-92-worktrees', false]]);
+check('readWorktrees carries the branch name through for an attached tree', fakeRows.map((r) => [r.branch, r.detached]), [['main', false], ['side-92-worktrees', false]]);
+
+// A detached root tree, which is exactly what `actions/checkout` produces for a pull request.
+// `branch` is null and `detached` says why, so the console can tell "no branch" from "not read".
+const detachedPorcelain = `worktree ${fakeRoot}\nHEAD 3333333333333333333333333333333333333333\ndetached\n`;
+const detachedRows = readWorktrees({ shFn: (cmd) => (cmd.includes('--git-common-dir') ? fakeCommonDir : cmd.includes('worktree list') ? detachedPorcelain : ''), shInFn: () => '' });
+check('readWorktrees reports a detached root tree as branch null, detached true', detachedRows.map((r) => [r.path, r.branch, r.detached]), [['.', null, true]]);
 
 // mergeIssuesAcrossWorktrees: a status closed in a side quest's own worktree, unmerged anywhere
 // else, must not disappear just because the console happens to be generated from a different
