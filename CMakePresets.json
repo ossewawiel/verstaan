@@ -43,7 +43,7 @@
     {
       "name": "gcc-release",
       "displayName": "GCC Release",
-      "description": "g++ on PATH, Ninja, Release. No MinGW/gcc is installed on the reference machine, so this preset fails configure with one clear line naming g++ as the missing compiler; it is here for machines that do have it. Uses vcpkg's x64-mingw-dynamic triplet, not base's x64-windows: that triplet builds dependencies (gtest) with MSVC's ABI, which g++-compiled objects cannot link against.",
+      "description": "g++ on PATH, Ninja, Release. Needs a MinGW g++; without one, configure fails with one clear line naming g++ as the missing compiler. Uses vcpkg's x64-mingw-dynamic triplet, not base's x64-windows: that triplet builds dependencies (gtest) with MSVC's ABI, which g++-compiled objects cannot link against.",
       "inherits": "base",
       "generator": "Ninja",
       "cacheVariables": {

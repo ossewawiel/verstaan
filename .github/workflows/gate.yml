@@ -72,13 +72,16 @@ jobs:
       - name: Step 1 -- no committed UNL_PASS credential
         shell: bash
         run: |
-          # A real assignment (UNL_PASS=..., UNL_PASS: "...") not the bare env var name: the
-          # pattern needs a ':' or '=' directly after UNL_PASS, then a value, so
-          # os.environ["UNL_PASS"] and prose mentioning the name never trip it. tests/ is
+          # A real assignment, not the bare env var name. The assignment must start the line
+          # (bare or after 'export'), which is what keeps prose out: this file's own comments,
+          # .claude/commands/gate.md and the issue files all mention UNL_PASS= mid-sentence and
+          # none of them trip it. A value beginning with '$' is skipped too, so UNL_PASS=${UNL_PASS}
+          # and UNL_PASS: ${{ secrets.UNL_PASS }} read as references, not leaks. tests/ is
           # excluded: tools/mirror/tests/test_cli.py legitimately constructs UNL_PASS=hunter2 to
           # prove the CLI refuses it as an argument (issue 5); a real leak outside tests/ still
-          # gets caught.
-          if git grep -nIE 'UNL_PASS[[:space:]]*[:=][[:space:]]*[^[:space:]]{4,}' -- . ':(exclude)**/tests/**'; then
+          # gets caught. Known gap: an assignment buried mid-line inside a longer command --
+          # catching that would flag every file that documents this check.
+          if git grep -nIE '^[[:space:]]*(export[[:space:]]+)?UNL_PASS[[:space:]]*[:=][[:space:]]*["'"'"']?[^[:space:]$"'"'"'][^[:space:]]{3,}' -- . ':(exclude)**/tests/**'; then
             echo "::error::an UNL_PASS credential value was found committed in the repository"
             exit 1
           fi

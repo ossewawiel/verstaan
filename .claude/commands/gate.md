@@ -19,13 +19,17 @@ must exit 0; a nonzero exit names the file missing its SPDX or CC BY-SA header, 
 must find nothing; a hit means a live-shaped GitHub token was committed (issue 91). No path is
 excluded. The pattern requires the token-length suffix, not just the prefix, so this file and the
 issue files that mention the prefixes in prose never trip it. Then
-`git grep -nIE 'UNL_PASS[[:space:]]*[:=][[:space:]]*[^[:space:]]{4,}' -- . ':(exclude)**/tests/**'`
+`git grep -nIE '^[[:space:]]*(export[[:space:]]+)?UNL_PASS[[:space:]]*[:=][[:space:]]*["'"'"']?[^[:space:]$"'"'"'][^[:space:]]{3,}' -- . ':(exclude)**/tests/**'`
 must find nothing; a hit means an actual `UNL_PASS` value was assigned in a committed file, not
-just the bare env var name. `os.environ["UNL_PASS"]` and the name in prose never trip this: the
-pattern needs a `:` or `=` directly after the name, then a value, not a quote or backtick.
+just the bare env var name. The assignment must start the line (bare or after `export`), which is
+what keeps prose out: this file, the issue files and the workflow comments all mention
+`UNL_PASS=` mid-sentence and none of them trip it. A value beginning with `$` is skipped too, so
+`UNL_PASS=${UNL_PASS}` and `UNL_PASS: ${{ secrets.UNL_PASS }}` read as references, not leaks.
 `tests/` is excluded because `tools/mirror/tests/test_cli.py` legitimately constructs
 `UNL_PASS=hunter2` to prove the CLI refuses it as an argument (issue 5's credential-refusal test);
-a real leak of the same shape would still be caught outside `tests/`.
+a real leak of the same shape would still be caught outside `tests/`. The known gap is an
+assignment buried mid-line inside a longer command; catching that would flag every file that
+documents this check.
 
 Step 2, build every preset that exists in `CMakePresets.json`:
 `cmake --preset <p> && cmake --build --preset <p>` for each. The `arm-basic` preset is required
