@@ -36,7 +36,8 @@ Step 2, build every preset that exists in `CMakePresets.json`:
 from M4; before that it may be absent, and you say so.
 
 Step 3, tests. `ctest --preset <p> --output-on-failure` for each built preset. Then
-`python -m pytest tools/`. Then `python -m tools.validate --all`.
+`python -m pytest tools/`. Then `node tools/console/test/run.mjs` (the console's parsers,
+renderer and service). Then `python -m tools.validate --all`.
 
 Step 4, tidy. `clang-tidy -p build/<clang preset> $(git ls-files 'engine/**/*.cpp')`. Warnings are errors.
 

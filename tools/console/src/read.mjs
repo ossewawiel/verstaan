@@ -159,9 +159,10 @@ function issueStatusRank(content) {
  * updated" as an operator would see it, even though the close commit genuinely exists (issue 91,
  * checkpoint-4 follow-up). This folds every other tree's copy of each issue file into `local`,
  * keeping whichever copy's status is furthest along (done > in-progress > open); a tie or an
- * unparsable file keeps `local`'s own copy untouched, and a file that exists only in another tree
- * (a new issue proposed on a branch with no local copy yet) is not surfaced — this only advances
- * the status of files `local` already has. */
+ * unparsable file keeps `local`'s own copy untouched. A file that exists only in another tree (a
+ * new quest written on its branch, not merged yet) is appended, so the root console shows every
+ * quest on every tree; until 2026-09-09 such files were hidden, and the owner could not see a
+ * quest until its branch merged. */
 export function mergeIssuesAcrossWorktrees(local, otherFileLists) {
   const byName = new Map(local.map((f) => [f.name, f]));
   for (const files of otherFileLists) {
@@ -172,7 +173,11 @@ export function mergeIssuesAcrossWorktrees(local, otherFileLists) {
       }
     }
   }
-  return local.map((f) => byName.get(f.name) ?? f);
+  // Issues that exist only in a worktree (a new quest written on its branch) are part of the map
+  // too; without them the root console cannot show a quest until its branch merges.
+  const localNames = new Set(local.map((f) => f.name));
+  const onlyElsewhere = [...byName.values()].filter((f) => !localNames.has(f.name));
+  return [...local.map((f) => byName.get(f.name) ?? f), ...onlyElsewhere];
 }
 
 export function readRepo() {

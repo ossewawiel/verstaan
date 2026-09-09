@@ -26,13 +26,13 @@ function nav(roomId, depth = 0) {
   return ROOMS.map((r) => (r.id === roomId ? `<span class="cic-bar__here">${r.label}</span>` : `<a href="${pre}${r.file}">${r.label}</a>`)).join('\n    ');
 }
 
-function shell({ roomId, title, main, depth = 0, island = null, script = false, sub = 'rendered from the files' }) {
+function shell({ roomId, title, main, depth = 0, island = null, script = false, sub = 'rendered from the files', reloadSeconds = 0 }) {
   const pre = depth ? '../'.repeat(depth) : '';
   return `<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">${reloadSeconds ? `\n<meta http-equiv="refresh" content="${reloadSeconds}">` : ''}
 <title>${escapeHtml(title)} · Verstaan console</title>
 <link rel="stylesheet" href="${pre}theme.css">
 <link rel="stylesheet" href="${pre}console.css">
@@ -119,7 +119,9 @@ export function renderConsole(model) {
 
   <footer class="cic-foot"><p class="cic-foot__note" id="foot"></p></footer>
 </main>`;
-  return shell({ roomId: 'index', title: 'Console', main, island, script: true, sub: 'command console · rendered from docs/factory' });
+  // The console reloads itself every two minutes: a file:// page cannot poll, and the hooks and
+  // git hooks rewrite this file whenever any tree changes. The other rooms do not reload.
+  return shell({ roomId: 'index', title: 'Console', main, island, script: true, sub: 'command console · rendered from docs/factory · reloads every 2 min', reloadSeconds: 120 });
 }
 
 const GLYPH = { done: ['●', 'won'], 'in-progress': ['◐', 'fighting'], next: ['◐', 'next'], open: ['○', 'open'], blocked: ['◇', 'blocked'] };

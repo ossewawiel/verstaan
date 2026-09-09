@@ -3,6 +3,7 @@
 import { readFileSync, readdirSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { request } from 'node:http';
 import { parseFrontmatter, parseIssues, nextIssue, milestones, sideQuests, parseLessons, sideTask, pendingReviews, buildModel, parseWorktreePorcelain } from '../src/parse.mjs';
 import { escapeIsland, renderConsole as renderPage } from '../src/render.mjs';
 
@@ -82,6 +83,14 @@ check('docHref', docHref('.claude/agents/implementer.md'), 'docs/.claude--agents
 // readWorktrees() is IO (it shells out to git), so it is exercised against this real checkout
 // rather than a fixture: the one invariant every clone has is a root tree, present and marked.
 const { readWorktrees, resolveRootPath, isRootTree, normalizeTreePath, matchInProgressIssue, mergeIssuesAcrossWorktrees } = await import('../src/read.mjs');
+// issues across worktrees: the most advanced status wins, and a quest that exists only on a
+// worktree branch still reaches the root console
+const mk = (name, status) => ({ name, content: `---\nissue: ${name.slice(0, 2)}\ntitle: "T"\nmilestone: Side\nstatus: ${status}\ndepends_on: []\n---\n## What\nx.\n` });
+const merged = mergeIssuesAcrossWorktrees([mk('01-a.md', 'open'), mk('02-b.md', 'done')], [[mk('01-a.md', 'in-progress')], [mk('95-new.md', 'in-progress')]]);
+check('merge prefers the more advanced status', merged.find((f) => f.name === '01-a.md').content.includes('status: in-progress'), true);
+check('merge never regresses a done issue', merged.find((f) => f.name === '02-b.md').content.includes('status: done'), true);
+check('merge includes worktree-only issues', merged.map((f) => f.name), ['01-a.md', '02-b.md', '95-new.md']);
+
 const worktrees = readWorktrees();
 check('readWorktrees finds at least the root tree', worktrees.length >= 1, true);
 const root = worktrees.find((w) => w.isRoot);
@@ -139,8 +148,232 @@ check('mergeIssuesAcrossWorktrees with no other trees returns local unchanged',
   mergeIssuesAcrossWorktrees(openLocal, [])[0].content, openLocal[0].content);
 
 const unrelatedInOtherTree = [[{ name: '50-a.md', content: '---\nissue: 50\nstatus: done\n---\n## What\nA.\n' }]];
-check('mergeIssuesAcrossWorktrees does not surface a file local does not already have',
-  mergeIssuesAcrossWorktrees(openLocal, unrelatedInOtherTree).map((f) => f.name), ['91-x.md']);
+check('mergeIssuesAcrossWorktrees surfaces a file that exists only in another tree (a quest written on its branch)',
+  mergeIssuesAcrossWorktrees(openLocal, unrelatedInOtherTree).map((f) => f.name), ['91-x.md', '50-a.md']);
+
+// Known cost of the slice-1 change (checkpoint 4, issue 95): the same "surface a worktree-only
+// file" rule that lets a new quest show before its branch merges also resurrects an issue file
+// that was renamed on main but still exists, unmerged, under its old name in a stale worktree.
+// This is not fixed here — a rename-aware merge is outside this quest — the test only pins that
+// the console does this today, honestly, so nobody discovers it by surprise later.
+const renamedAwayLocal = [{ name: '07-mirror-public-pages.md', content: '---\nissue: 7\nstatus: open\n---\n## What\nRenamed.\n' }];
+const staleNameInOldWorktree = [[{ name: '07-mirror.md', content: '---\nissue: 7\nstatus: open\n---\n## What\nThe pre-rename filename, still on a week-old branch.\n' }]];
+check('mergeIssuesAcrossWorktrees resurrects a renamed-away issue file from a stale worktree (known cost, not fixed here)',
+  mergeIssuesAcrossWorktrees(renamedAwayLocal, staleNameInOldWorktree).map((f) => f.name), ['07-mirror-public-pages.md', '07-mirror.md']);
+
+// the service: debounce collapses a burst into one event; watch paths cover every tree and git
+const { debounce, watchPaths, watchDirectory, createConsoleServer } = await import('../src/serve.mjs');
+let fired = 0;
+const d = debounce(() => { fired += 1; }, 20);
+d(); d(); d();
+await new Promise((r) => setTimeout(r, 60));
+check('debounce collapses a burst into one call', fired, 1);
+
+// checkpoint 4: a continuous stream of calls at sub-debounce intervals must still deliver, capped
+// by a maximum wait, instead of pushing the trailing-edge timer back forever.
+let capped = 0;
+const dCapped = debounce(() => { capped += 1; }, 500, 150);
+const streamTimer = setInterval(() => dCapped(), 40); // faster than the 500 ms debounce window
+await new Promise((r) => setTimeout(r, 500));
+clearInterval(streamTimer);
+check('debounce with a maximum wait still delivers during a continuous stream', capped >= 2, true);
+
+// watchPaths: a real directory shape (issue 95 checkpoint 4, gap 3 — the old fixture had no
+// docs/ tree at all, so every positive branch resolved to nothing and the assertion reduced to
+// the one unconditionally-added common-dir entry). This one has a root tree, a worktree and a
+// common git dir, each populated, so every add() in watchPaths is actually exercised.
+const { mkdtempSync, mkdirSync: mkdirTest, rmSync: rmTest } = await import('node:fs');
+const { tmpdir } = await import('node:os');
+const wpBase = mkdtempSync(join(tmpdir(), 'verstaan-watchpaths-'));
+const wpRoot = join(wpBase, 'root');
+const wpWorktree = join(wpBase, 'wt');
+const wpCommon = join(wpBase, 'common');
+for (const dir of [
+  join(wpRoot, 'docs', 'factory', 'issues'),
+  join(wpRoot, '.claude', 'agents'),
+  join(wpWorktree, 'docs', 'factory', 'issues'),
+  join(wpCommon, 'refs'),
+  join(wpCommon, 'worktrees'),
+]) mkdirTest(dir, { recursive: true });
+const wp = watchPaths(wpRoot, [{ path: '.' }, { path: wpWorktree }, { path: 'missing-tree' }], wpCommon);
+check('watchPaths covers the root issues folder, docs tree, agents, every worktree\'s issues folder and the common git dir, deduplicated', wp, [
+  join(wpRoot, 'docs', 'factory', 'issues'),
+  join(wpRoot, 'docs', 'factory'),
+  join(wpRoot, 'docs'),
+  join(wpRoot, '.claude', 'agents'),
+  join(wpWorktree, 'docs', 'factory', 'issues'),
+  wpCommon,
+  join(wpCommon, 'refs'),
+  join(wpCommon, 'worktrees'),
+]);
+rmTest(wpBase, { recursive: true, force: true });
+
+// watchDirectory: checkpoint 4 measured 157,494 tight-loop callbacks in 6 s after a
+// `git worktree remove` on Windows, because the old code only caught fs.watch's own construction
+// throwing, never a directory vanishing out from under an already-open watcher. Once the watched
+// directory is gone, the watcher must close itself and stop calling back.
+{
+  const wdDir = mkdtempSync(join(tmpdir(), 'verstaan-watchdir-'));
+  let calls = 0;
+  const watchers = [];
+  watchDirectory(wdDir, () => { calls += 1; }, watchers);
+  rmTest(wdDir, { recursive: true, force: true });
+  await new Promise((r) => setTimeout(r, 300));
+  const afterFirstSettle = calls;
+  await new Promise((r) => setTimeout(r, 300));
+  check('a watcher whose directory disappears stops calling back (no growth once it self-closes)', calls === afterFirstSettle, true);
+  check('a watcher whose directory disappears removes itself from the watcher list', watchers.length, 0);
+}
+
+// generate.mjs's chain to the root tree's own generator, pulled out as chainDecision() so it can
+// be pinned without shelling out to git or writing any file (issue 95 gap 2).
+const { chainDecision, runChain } = await import('../src/chain.mjs');
+const worktree = join(fx, '.worktrees', 'side-99-x');
+const rootCommonDir = join(fx, '.git');
+check('chainDecision chains from a worktree to the root generator', chainDecision(worktree, rootCommonDir, false, true),
+  { chain: true, rootTree: fx, rootGen: join(fx, 'tools', 'console', 'src', 'generate.mjs') });
+check('chainDecision does not chain from the root tree itself', chainDecision(fx, rootCommonDir, false, true).chain, false);
+check('chainDecision does not chain when VERSTAAN_CONSOLE_NO_CHAIN is set', chainDecision(worktree, rootCommonDir, true, true).chain, false);
+check('chainDecision does not chain when the root generator file is absent', chainDecision(worktree, rootCommonDir, false, false).chain, false);
+
+// runChain: the wiring line itself (checkpoint 4, gap 7). generate.mjs used to build the root
+// generator path twice — once to existsSync-check it, once to spawnSync it — so the two could
+// drift apart. runChain reads chainDecision's one rootGen for both; this pins the caller, not
+// just the pure decision inside it.
+{
+  const existsCalls = [];
+  const spawnCalls = [];
+  const decision = runChain(worktree, rootCommonDir, false, {
+    existsSyncFn: (p) => { existsCalls.push(p); return true; },
+    spawnSyncFn: (cmd, spawnArgs, opts) => { spawnCalls.push({ cmd, spawnArgs, opts }); return { status: 0 }; },
+    env: {},
+    log: () => {},
+    logError: () => {},
+  });
+  check('runChain existsSync-checks chainDecision\'s own rootGen path', existsCalls[0], join(fx, 'tools', 'console', 'src', 'generate.mjs'));
+  check('runChain spawns the same rootGen path it existence-checked', spawnCalls[0]?.spawnArgs?.[0], decision.rootGen);
+  check('runChain passes a 15000 ms timeout to spawnSync so a stuck git cannot hang it', spawnCalls[0]?.opts?.timeout, 15000);
+}
+{
+  const errors = [];
+  runChain(worktree, rootCommonDir, false, {
+    existsSyncFn: () => true,
+    spawnSyncFn: () => ({ error: { code: 'ETIMEDOUT' } }),
+    env: {},
+    log: () => {},
+    logError: (msg) => errors.push(msg),
+  });
+  check('runChain reports a spawnSync timeout instead of a silent hang', errors.some((m) => m.includes('timed out')), true);
+}
+check('runChain does not chain when VERSTAAN_CONSOLE_NO_CHAIN is set (no spawnSync call)',
+  (() => { let called = false; runChain(worktree, rootCommonDir, true, { spawnSyncFn: () => { called = true; return { status: 0 }; }, env: {}, log: () => {}, logError: () => {} }); return called; })(), false);
+
+// the request handler: node:http against a fixture repo, driven end to end (issue 95 gap 1).
+// Titles below ("First", "Side thing") exist only in tools/console/test/fixtures/*.md, not in
+// this checkout's own docs/factory/issues/ — so a response that carries one proves the fixture
+// was actually read, not silently bypassed in favour of the live repo (checkpoint 4, gap 4).
+let fixtureRepoCalls = 0;
+const fixtureRepo = () => {
+  fixtureRepoCalls += 1;
+  return {
+    issueFiles: files,
+    agentFiles: [],
+    lessonsText: '',
+    library: [],
+    artefacts: [],
+    git: { head: 'abc1234', branch: 'main', dirty: 0, remote: 'no remote' },
+    stamp: { present: false, matches: false },
+    worktrees: [],
+    generated: '2026-09-09T00:00:00Z',
+  };
+};
+function httpGet(port, path, method = 'GET') {
+  return new Promise((resolvePromise, rejectPromise) => {
+    request({ host: '127.0.0.1', port, path, method }, (res) => {
+      let body = '';
+      res.on('data', (c) => { body += c; });
+      res.on('end', () => resolvePromise({ status: res.statusCode, headers: res.headers, body }));
+    }).on('error', rejectPromise).end();
+  });
+}
+{
+  const { server, broadcast, onChange } = createConsoleServer({ readRepoFn: fixtureRepo });
+  await new Promise((r) => server.listen(0, '127.0.0.1', r));
+  const port = server.address().port;
+
+  const health = await httpGet(port, '/health');
+  check('GET /health returns 200 ok <pid>', health.status === 200 && health.body.trim() === `ok ${process.pid}`, true);
+
+  const home = await httpGet(port, '/');
+  check('GET / returns 200', home.status, 200);
+  check('GET / carries the EventSource live-reload script', home.body.includes("new EventSource('/events')"), true);
+  check('GET / does not carry a meta refresh', home.body.includes('<meta http-equiv="refresh"'), false);
+
+  const quests = await httpGet(port, '/quests.html');
+  check('GET /quests.html carries a fixture-only title, proving the injected fixture was read',
+    quests.body.includes('First') && quests.body.includes('Side thing'), true);
+
+  const missing = await httpGet(port, '/nope-not-a-route');
+  check('GET an unknown path returns 404', missing.status, 404);
+
+  const posted = await httpGet(port, '/', 'POST');
+  check('POST / is rejected (only GET and HEAD render)', posted.status, 405);
+
+  // fixtureRepo() must run once (the first render), not once per request: getModel() caches the
+  // model until the next onChange() (checkpoint 4, gap 5 — 4.275 s per GET / against the real
+  // repo, unconditionally, before this cache existed).
+  check('the rendered model is cached across requests instead of rebuilt each time', fixtureRepoCalls, 1);
+  onChange();
+  await httpGet(port, '/');
+  check('onChange() invalidates the cache, so the next request rebuilds the model', fixtureRepoCalls, 2);
+
+  const events = await new Promise((resolvePromise, rejectPromise) => {
+    const timeout = setTimeout(() => rejectPromise(new Error('timed out waiting for data: reload')), 3000);
+    const req = request({ host: '127.0.0.1', port, path: '/events', method: 'GET' }, (res) => {
+      let body = '';
+      res.on('data', (c) => {
+        body += c;
+        if (body.includes('data: reload')) {
+          clearTimeout(timeout);
+          req.destroy();
+          resolvePromise({ status: res.statusCode, headers: res.headers, body });
+        }
+      });
+    });
+    req.on('error', () => {});
+    req.end();
+    setTimeout(() => broadcast(), 50);
+  });
+  check('GET /events returns 200 text/event-stream', events.status === 200 && String(events.headers['content-type']).includes('text/event-stream'), true);
+  check('a client connected to /events receives data: reload after broadcast()', events.body.includes('data: reload'), true);
+
+  await new Promise((r) => server.close(r));
+}
+
+// GET //?q=1 (checkpoint 4, gap 2): `new URL(req.url, base)` threw ERR_INVALID_URL one line above
+// the request handler's own try/catch, so the throw escaped the listener and killed the process.
+// A raw socket, not node:http's client, sends the exact request line: http.request normalises a
+// leading "//" before the server ever sees it.
+{
+  const { server } = createConsoleServer({ readRepoFn: fixtureRepo });
+  await new Promise((r) => server.listen(0, '127.0.0.1', r));
+  const port = server.address().port;
+  const net = await import('node:net');
+  const raw = await new Promise((resolvePromise, rejectPromise) => {
+    const sock = net.connect(port, '127.0.0.1', () => {
+      sock.write('GET //?q=1 HTTP/1.1\r\nHost: 127.0.0.1\r\nConnection: close\r\n\r\n');
+    });
+    let data = '';
+    sock.on('data', (c) => { data += c; });
+    sock.on('end', () => resolvePromise(data));
+    sock.on('error', rejectPromise);
+  });
+  check('GET //?q=1 (a URL new URL() rejects) answers 400, not a dropped connection', raw.startsWith('HTTP/1.1 400'), true);
+
+  const health = await httpGet(port, '/health');
+  check('the service is still alive after a malformed request line', health.status, 200);
+  await new Promise((r) => server.close(r));
+}
 
 if (failed) { console.log(`${failed} failed`); process.exit(1); }
 console.log('all green');
