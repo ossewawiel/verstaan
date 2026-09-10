@@ -9,7 +9,7 @@ agents: [implementer]
 model: sonnet
 effort: low
 checkpoint: null
-commit: PLACEHOLDER
+commit: 9fcd36c
 worktree: null
 github_issue: null
 ---
