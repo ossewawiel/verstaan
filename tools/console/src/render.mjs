@@ -120,7 +120,8 @@ export function renderConsole(model) {
   <footer class="cic-foot"><p class="cic-foot__note" id="foot"></p></footer>
 </main>`;
   // The file console does not reload itself: a timed reload flickered and collapsed open cards.
-  // Live updates come from the service (serve.mjs + live.js); a file:// page is refreshed by hand.
+  // A file:// page is refreshed by hand. Live updates now come from apps/console (issue 99), a
+  // separate Node/React app; this generator no longer has a live-serving counterpart.
   return shell({ roomId: 'index', title: 'Console', main, island, script: true, sub: 'command console · rendered from docs/factory' });
 }
 

@@ -36,8 +36,13 @@ Step 2, build every preset that exists in `CMakePresets.json`:
 from M4; before that it may be absent, and you say so.
 
 Step 3, tests. `ctest --preset <p> --output-on-failure` for each built preset. Then
-`python -m pytest tools/`. Then `node tools/console/test/run.mjs` (the console's parsers,
-renderer and service). Then `python -m tools.validate --all`.
+`python -m pytest tools/`. Then `node tools/console/test/run.mjs` (the file console's parsers,
+renderer and generator; zero dependencies). Then, in `apps/console/` (the console app, ADR 0010,
+the one part of the repository allowed dependencies of its own): `npm ci`, then `npm run build`,
+then `npm test` (Vitest against the server's model layer and its routes). Playwright
+(`npm run test:e2e`) is not part of this local step — it runs in CI, on `ubuntu-latest`, with
+its own bundled Chromium — but run it by hand after touching `apps/console/client/` or
+`apps/console/server/`. Then `python -m tools.validate --all`.
 
 Step 4, tidy. `clang-tidy -p build/<clang preset> $(git ls-files 'engine/**/*.cpp')`. Warnings are errors.
 

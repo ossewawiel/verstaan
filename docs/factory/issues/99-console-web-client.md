@@ -2,7 +2,7 @@
 issue: 99
 title: "The console as a web app: a Node service and a React client that grow with the project"
 milestone: Side
-status: open
+status: in-progress
 depends_on: [98]
 agent: implementer
 agents: [implementer, docs-writer, verifier]
@@ -10,7 +10,7 @@ model: sonnet
 effort: high
 checkpoint: 4
 commit: null
-worktree: null
+worktree: .worktrees/side-99-console-web-client
 github_issue: 31
 ---
 ## What
@@ -108,6 +108,7 @@ console. Hosting anywhere but the loopback address.
 
 ## Done when
 
-- [ ] The flicker proof, layout-shift count and transfer size are in the report.
-- [ ] The old room URLs redirect to the new routes and `serve.mjs` is gone.
+- [x] The flicker proof, layout-shift count and transfer size are in the report: 0 DOM nodes
+      added/removed on a status change, 0 `layout-shift` entries, ~101 KB cold transfer.
+- [x] The old room URLs redirect to the new routes and `serve.mjs` is gone.
 - [ ] `/gate` green in the tree; PR merged through the gate check.

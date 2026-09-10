@@ -256,7 +256,7 @@ jobs:
             echo "no Python tests exist on this ref yet -- skipping pytest"
           fi
 
-      - name: Step 3 -- console tests (node, zero dependencies)
+      - name: Step 3 -- file console tests (node, zero dependencies)
         shell: bash
         run: |
           if [ -f tools/console/test/run.mjs ]; then
@@ -264,6 +264,31 @@ jobs:
           else
             echo "tools/console/test/run.mjs does not exist on this ref -- skipping"
           fi
+
+      # /gate step 3, the console app (apps/console, ADR 0010 -- the one part of the repository
+      # allowed dependencies of its own). Runs on every matrix leg: `npm ci`/`build`/`test` cost
+      # little next to the C++ build already happening here, and this is what proves the app
+      # installs and builds with nothing preinstalled but Node, on Windows and Linux both.
+      - name: Step 3 -- apps/console (npm ci, build, unit tests)
+        if: hashFiles('apps/console/package.json') != ''
+        shell: bash
+        working-directory: apps/console
+        run: |
+          npm ci
+          npm run build
+          npm test
+
+      # Playwright only on one leg: its own bundled Chromium is a real download, and three legs
+      # would triple that cost for the same client/server code. ubuntu-latest is the leg chosen,
+      # per issue 99's acceptance criteria ("Playwright runs in CI on ubuntu with the bundled
+      # browser").
+      - name: Step 3 -- apps/console (Playwright, ubuntu only)
+        if: matrix.compiler == 'clang' && hashFiles('apps/console/package.json') != ''
+        shell: bash
+        working-directory: apps/console
+        run: |
+          npx playwright install --with-deps chromium
+          npm run test:e2e
 
       - name: Validate changed/all data
         shell: bash
