@@ -2,15 +2,15 @@
 issue: 105
 title: "The quest giver as a skill: /quest plans one quest with the developer and writes its issue file"
 milestone: Side
-status: in-progress
+status: done
 depends_on: [104]
 agent: docs-writer
 agents: [docs-writer]
 model: sonnet
 effort: low
 checkpoint: null
-commit: null
-worktree: .worktrees/side-105-quest-skill
+commit: 579c3e2
+worktree: null
 github_issue: null
 ---
 ## What
