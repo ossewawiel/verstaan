@@ -2,15 +2,15 @@
 issue: 107
 title: "Playwright as an MCP plugin: a Claude Code session in this repo can drive a real browser"
 milestone: Side
-status: in-progress
+status: done
 depends_on: []
 agent: implementer
 agents: [implementer, docs-writer]
 model: sonnet
 effort: medium
 checkpoint: null
-commit: null
-worktree: .worktrees/side-107-playwright-mcp-plugin
+commit: 13a20f7
+worktree: null
 github_issue: 47
 ---
 ## What
