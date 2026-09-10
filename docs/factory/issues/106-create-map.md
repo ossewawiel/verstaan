@@ -2,14 +2,14 @@
 issue: 106
 title: "The create-map skill: a new map is a new line of main quests, planned through interrogation, ADRs and PLAN §7 before any quest is written"
 milestone: Side
-status: open
+status: done
 depends_on: [105]
 agent: docs-writer
 agents: [docs-writer]
 model: sonnet
 effort: medium
 checkpoint: null
-commit: null
+commit: 79b3cb8
 worktree: null
 github_issue: 44
 ---
@@ -71,8 +71,8 @@ how to install them if not.
 
 ## Done when
 
-- [ ] The skill file is written and loads.
-- [ ] The dependency check on the three global skills works both ways: present and absent.
-- [ ] PLAN.md §6.1, the playbook, the quest skill and both consoles point at it.
-- [ ] The dry run leaves a brief, an ADR and an unapplied §7 row, and its files are removed.
-- [ ] `python -m tools.validate --all` and both consoles' tests pass.
+- [x] The skill file is written and loads.
+- [x] The dependency check on the three global skills works both ways: present and absent.
+- [x] PLAN.md §6.1, the playbook, the quest skill and both consoles point at it.
+- [x] The dry run leaves a brief, an ADR and an unapplied §7 row, and its files are removed.
+- [x] `python -m tools.validate --all` and both consoles' tests pass.
