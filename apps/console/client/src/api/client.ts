@@ -58,7 +58,7 @@ export interface WorktreeSummary {
   isRoot: boolean;
   dirty: number;
   stampMatches: boolean;
-  merged: boolean;
+  finished: boolean;
   issue: { n: number; title: string } | null;
 }
 
