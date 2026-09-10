@@ -16,7 +16,7 @@ Afrikaans and English first, every archived language mirrored. Engine is MPL-2.0
 | `docs/standards/` | How we write C++, data files, tests and prose. |
 | `docs/glossary.md` | One term, one meaning. Use these words and no synonyms. |
 | `docs/factory/playbook.md` | How an encounter, a gate, a checkpoint and a level work. |
-| `console.cmd` | The console: starts the local service and opens `http://127.0.0.1:7864`, live across every tree. |
+| `console.cmd`, `console.sh` | The console: starts the local service and opens `http://127.0.0.1:7864`, live across every tree. |
 | `docs/decisions/` | The interrogation brief that produced this plan. Reference only. |
 | `verstaan.md` | The original vision and initial specification. |
 

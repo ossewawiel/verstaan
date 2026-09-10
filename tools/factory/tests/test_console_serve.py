@@ -23,7 +23,7 @@ import pytest
 from tools.factory.tests.conftest import BASH, HOOKS_DIR, hermetic_tool_path, init_repo
 
 HOOK = HOOKS_DIR / "console_serve.sh"
-NEEDED = ["git", "dirname", "cat", "nohup"]
+NEEDED = ["git", "dirname", "cat", "nohup", "sleep"]
 
 
 @pytest.fixture
@@ -116,3 +116,33 @@ def test_port_comes_from_the_environment(repo, tmp_path):
         repo, path, {"FAKE_LOG": str(log), "FAKE_HEALTH": "1", "VERSTAAN_CONSOLE_PORT": "7900"}
     )
     assert "http://127.0.0.1:7900" in result.stdout
+
+
+def test_hook_exits_while_the_service_it_started_still_runs(repo, tmp_path):
+    """Issue 102. `(cd dir && nohup node ... &)` backgrounds the whole `cd && nohup` list, so a
+    helper subshell that still holds the hook's stdout lives as long as the server does. With
+    stdout on a pipe (every hook, every CI step) the caller then waits for the server to die.
+    The stub server here sleeps; the hook must return long before it wakes up."""
+    add_built_server(repo)
+    stub_dir, log = fake_node(tmp_path)
+    (stub_dir / "node").write_text(
+        'case " $* " in *" -e "*) exit 1;; esac\n'
+        'printf \'%s\\n\' "$*" >> "$FAKE_LOG"\nsleep 5\nexit 0\n',
+        encoding="utf-8",
+    )
+    path = hermetic_tool_path(tmp_path, NEEDED, stub_dir)
+    full = {**os.environ, "FAKE_LOG": str(log), "PATH": path}
+    started = time.monotonic()
+    result = subprocess.run(
+        [BASH, str(HOOK)],
+        cwd=repo,
+        input="{}",
+        capture_output=True,
+        text=True,
+        check=False,
+        env=full,
+        timeout=3,
+    )
+    assert result.returncode == 0
+    assert "started" in result.stdout
+    assert time.monotonic() - started < 3

@@ -69,7 +69,7 @@ allowed dependencies of its own; the engine and the Python tools stay at zero (A
 
 A `SessionStart` hook starts the built server for you at the beginning of a session, from the
 root tree, if nothing already answers on the port; it never builds the app itself, only starts
-what is already built. Double-click `console.cmd` (or run `.\console.ps1`) in the repository root
+what is already built. Double-click `console.cmd` (or run `.\console.ps1`, or `./console.sh` on Linux and macOS) in the repository root
 to start it by hand and open `http://127.0.0.1:7864`: the first run installs dependencies
 (`npm ci`) and builds the app (`npm run build`) inside `apps/console`, and every later run rebuilds
 only when the client or server source is newer than the last build. Start it from the root tree:

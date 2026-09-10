@@ -3,7 +3,8 @@
     "SessionStart": [
       {
         "hooks": [
-          { "type": "command", "command": "bash \"${CLAUDE_PROJECT_DIR}/.claude/hooks/refresh-console.sh\"", "timeout": 30 }
+          { "type": "command", "command": "bash \"${CLAUDE_PROJECT_DIR}/.claude/hooks/refresh-console.sh\"", "timeout": 30 },
+          { "type": "command", "command": "bash \"${CLAUDE_PROJECT_DIR}/.claude/hooks/console-serve.sh\"", "timeout": 15 }
         ]
       }
     ],
