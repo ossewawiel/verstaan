@@ -2,7 +2,7 @@
 issue: 107
 title: "Playwright as an MCP plugin: a Claude Code session in this repo can drive a real browser"
 milestone: Side
-status: open
+status: in-progress
 depends_on: []
 agent: implementer
 agents: [implementer, docs-writer]
@@ -10,7 +10,7 @@ model: sonnet
 effort: medium
 checkpoint: null
 commit: null
-worktree: null
+worktree: .worktrees/side-107-playwright-mcp-plugin
 github_issue: 47
 ---
 ## What
@@ -48,7 +48,7 @@ the console the way it does today; the MCP plugin is a tool for the session, not
 
 ## Done when
 
-- [ ] `.mcp.json` (or the equivalent project-level Claude Code config) declares the Playwright
+- [x] `.mcp.json` (or the equivalent project-level Claude Code config) declares the Playwright
       MCP server.
-- [ ] A fresh session in this repo can list and use at least one Playwright MCP tool.
-- [ ] `CLAUDE.md` or the playbook documents the plugin and distinguishes it from the e2e suite.
+- [x] A fresh session in this repo can list and use at least one Playwright MCP tool.
+- [x] `CLAUDE.md` or the playbook documents the plugin and distinguishes it from the e2e suite.

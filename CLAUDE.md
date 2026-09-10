@@ -19,6 +19,7 @@ Afrikaans and English first, every archived language mirrored. Engine is MPL-2.0
 | `console.cmd`, `console.sh` | The console: starts the local service and opens `http://127.0.0.1:7864`, live across every tree. |
 | `docs/decisions/` | The interrogation brief that produced this plan. Reference only. |
 | `verstaan.md` | The original vision and initial specification. |
+| `.mcp.json` | Gives a Claude Code session a Playwright browser to drive directly, for inspecting a live page. Separate from `apps/console/e2e/`, the console's own test suite, run by `npm run test:e2e` and `gate.yml`. |
 
 When working in a sub-tree, read its `CLAUDE.md` first if one exists: `engine/`, `tools/`, `data/`.
 
