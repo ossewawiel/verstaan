@@ -269,7 +269,12 @@ jobs:
       # allowed dependencies of its own). Runs on every matrix leg: `npm ci`/`build`/`test` cost
       # little next to the C++ build already happening here, and this is what proves the app
       # installs and builds with nothing preinstalled but Node, on Windows and Linux both.
-      - name: Step 3 -- apps/console (npm ci, build, unit tests)
+      # `npm run build` also runs `npm run typecheck` (server and client both), so a client-side
+      # type error fails the gate here too, not just the server half `tsc -p server/tsconfig.json`
+      # already caught via build:server. `npm audit` only covers the dependencies actually shipped
+      # (--omit=dev): Playwright, Vite and friends never reach production, so an advisory in one of
+      # them must not fail a PR this job cannot fix.
+      - name: Step 3 -- apps/console (npm ci, build, typecheck, unit tests, audit)
         if: hashFiles('apps/console/package.json') != ''
         shell: bash
         working-directory: apps/console
@@ -277,6 +282,7 @@ jobs:
           npm ci
           npm run build
           npm test
+          npm audit --omit=dev --audit-level=high
 
       # Playwright only on one leg: its own bundled Chromium is a real download, and three legs
       # would triple that cost for the same client/server code. ubuntu-latest is the leg chosen,

@@ -9,7 +9,7 @@ import { execSync } from 'node:child_process';
 import Fastify from 'fastify';
 import fastifyStatic from '@fastify/static';
 import fastifyCompress from '@fastify/compress';
-import { REPO, readRepo, resolveRootPath, readWorktrees } from './model/read.js';
+import { REPO, readRepo, resolveRootPath, readWorktrees, msSinceLastGitCommand } from './model/read.js';
 import { buildModel } from './model/parse.js';
 import { render, titleOf, splitFrontmatter } from './model/markdown.js';
 
@@ -42,14 +42,24 @@ export function debounce(fn: (section: string) => void, ms: number, maxMs = Infi
 
 /** Each watched path is paired with the API section it invalidates, so `/events` can name what
  * changed (issue 99: "sends `state` with the changed section named"). */
-export function watchPaths(root: string, worktrees: { path: string }[], commonDir: string | null): { path: string; section: string }[] {
-  const set = new Map<string, string>();
-  const add = (p: string | null | undefined, section: string) => {
-    if (p && existsSync(p)) set.set(p, section);
+/** Node's `fs.watch` `recursive` option only works on Windows and macOS; on Linux (and IBM i) it
+ * throws `ERR_FEATURE_UNAVAILABLE_ON_PLATFORM`. Watched recursively where supported, the `docs`
+ * section catches a change to a doc nested below the top level, such as
+ * `docs/standards/voice.md`; elsewhere it falls back to a top-level-only watch, same as before. */
+export const RECURSIVE_WATCH_SUPPORTED = process.platform === 'win32' || process.platform === 'darwin';
+
+export function watchPaths(
+  root: string,
+  worktrees: { path: string }[],
+  commonDir: string | null,
+): { path: string; section: string; recursive?: boolean }[] {
+  const set = new Map<string, { section: string; recursive?: boolean }>();
+  const add = (p: string | null | undefined, section: string, recursive?: boolean) => {
+    if (p && existsSync(p)) set.set(p, { section, recursive });
   };
   add(join(root, 'docs', 'factory', 'issues'), 'issues');
   add(join(root, 'docs', 'factory'), 'state');
-  add(join(root, 'docs'), 'docs');
+  add(join(root, 'docs'), 'docs', true);
   add(join(root, '.claude', 'agents'), 'party');
   for (const w of worktrees) add(join(resolve(root, w.path), 'docs', 'factory', 'issues'), 'issues');
   if (commonDir) {
@@ -57,10 +67,31 @@ export function watchPaths(root: string, worktrees: { path: string }[], commonDi
     add(join(commonDir, 'refs'), 'git');
     add(join(commonDir, 'worktrees'), 'worktrees');
   }
-  return [...set].map(([path, section]) => ({ path, section }));
+  return [...set].map(([path, { section, recursive }]) => ({ path, section, recursive }));
 }
 
-export function watchDirectory(p: string, onChange: (section: string) => void, section: string, watchers: FSWatcher[]): FSWatcher | null {
+/** How long after this process's own `git` command a `git`/`worktrees`-section watch event is
+ * treated as an echo of that command, not a real external change (see `msSinceLastGitCommand`
+ * in model/read.ts). Comfortably longer than a `readRepo()` pass across a handful of worktrees,
+ * short enough that a branch switch or commit made in a terminal a couple of seconds later still
+ * wakes the console promptly. */
+export const GIT_ECHO_QUIET_MS = 1500;
+
+/** True when a watch event on the `git` or `worktrees` section is plausibly just this process
+ * hearing its own `git status`/`git worktree list` calls (issue: self-feeding change stream).
+ * Sections driven by file writes made outside this process (`issues`, `docs`, `state`, `party`)
+ * are never ignored. */
+export function shouldIgnoreGitEcho(section: string, msSinceGitCommand: number, quietMs = GIT_ECHO_QUIET_MS): boolean {
+  return (section === 'git' || section === 'worktrees') && msSinceGitCommand < quietMs;
+}
+
+export function watchDirectory(
+  p: string,
+  onChange: (section: string) => void,
+  section: string,
+  watchers: FSWatcher[],
+  recursive?: boolean,
+): FSWatcher | null {
   let w: FSWatcher | null = null;
   const drop = () => {
     try {
@@ -72,7 +103,7 @@ export function watchDirectory(p: string, onChange: (section: string) => void, s
     if (idx !== -1) watchers.splice(idx, 1);
   };
   try {
-    w = watch(p, { persistent: true }, () => {
+    w = watch(p, { persistent: true, recursive: !!recursive && RECURSIVE_WATCH_SUPPORTED }, () => {
       if (!existsSync(p)) {
         drop();
         onChange(section);
@@ -208,9 +239,16 @@ function startWatching(onChange: (section: string) => void) {
       return null;
     }
   })();
+  // Filter out watch events that are plausibly this process's own `git status` / `git worktree
+  // list` calls landing on `.git/index` and friends, so reading the repo never feeds its own
+  // change stream (see msSinceLastGitCommand in model/read.ts).
+  const filteredOnChange = (section: string) => {
+    if (shouldIgnoreGitEcho(section, msSinceLastGitCommand())) return;
+    onChange(section);
+  };
   const paths = watchPaths(root, readWorktrees(), commonDir);
   const watchers: FSWatcher[] = [];
-  for (const { path, section } of paths) watchDirectory(path, onChange, section, watchers);
+  for (const { path, section, recursive } of paths) watchDirectory(path, filteredOnChange, section, watchers, recursive);
   setInterval(() => {
     for (let i = paths.length - 1; i >= 0; i--) {
       if (!existsSync(paths[i].path)) paths.splice(i, 1);
@@ -219,7 +257,7 @@ function startWatching(onChange: (section: string) => void) {
       const dir = join(resolve(root, w.path), 'docs', 'factory', 'issues');
       if (existsSync(dir) && !paths.some((x) => x.path === dir)) {
         paths.push({ path: dir, section: 'issues' });
-        watchDirectory(dir, onChange, 'issues', watchers);
+        watchDirectory(dir, filteredOnChange, 'issues', watchers);
       }
     }
   }, 30000).unref();

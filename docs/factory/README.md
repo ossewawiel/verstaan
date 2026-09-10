@@ -78,8 +78,11 @@ binds the Library, Playbook and Glossary rooms to that worktree's docs instead o
 issue status merges across every tree regardless of where the server runs. React Router gives
 every room a real path (`/quests/07`, `/library/docs/factory/PLAN.md`); the SSE change stream
 invalidates only the data a room is showing, so an open card, scroll position and focus survive a
-change instead of the page reloading. Nothing is written to disk, nothing on it is editable, and
-it listens on the loopback address only.
+change instead of the page reloading. The watch on `docs/` is recursive on Windows and macOS, so a
+doc nested a level deeper, such as `docs/standards/voice.md`, wakes the page too; Node's recursive
+watch is not reliable on Linux, so there the watch stays top-level-only, same as the old file
+console. Nothing is written to disk, nothing on it is editable, and it listens on the loopback
+address only.
 
 The file-based copy, `docs/factory/console/index.html`, still exists for a machine with no server
 running: `node tools/console/src/generate.mjs` from any tree writes that tree's console and the

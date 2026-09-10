@@ -36,11 +36,26 @@ function readDir(dir: string): DocFile[] {
     .map((name) => ({ name, content: readFileSync(join(dir, name), 'utf8') }));
 }
 
+// The last time this process itself ran a `git` command. `git status` (and friends) write to
+// `.git/index`, `.git/worktrees/<name>/index` and similar files that live directly under the
+// common dir the server watches for real changes (branch switches, new commits). Without this,
+// every `readRepo()` call feeds its own file watcher: fetch state -> shell out to git -> touch
+// `.git/index` -> watcher fires -> broadcast -> client refetches state -> repeat, forever, on an
+// otherwise idle tab. `index.ts` uses this timestamp to tell "the watcher fired because we just
+// ran git" from "the watcher fired because something outside this process changed the repo".
+let lastGitCommandAt = 0;
+
+export function msSinceLastGitCommand(): number {
+  return Date.now() - lastGitCommandAt;
+}
+
 function sh(cmd: string): string {
   try {
     return execSync(cmd, { cwd: REPO, stdio: ['ignore', 'pipe', 'ignore'] }).toString().trim();
   } catch {
     return '';
+  } finally {
+    lastGitCommandAt = Date.now();
   }
 }
 
@@ -49,6 +64,8 @@ function shIn(cwd: string, cmd: string): string {
     return execSync(cmd, { cwd, stdio: ['ignore', 'pipe', 'ignore'] }).toString().trim();
   } catch {
     return '';
+  } finally {
+    lastGitCommandAt = Date.now();
   }
 }
 

@@ -11,15 +11,17 @@ export function QuestsRoom() {
   const navigate = useNavigate();
   const [params, setParams] = useSearchParams();
   const [expanded, setExpanded] = useState<Set<number>>(() => new Set());
-  const didDeepLink = useRef(false);
+  const lastDeepLinked = useRef<number | null>(null);
 
   const deepLinkN = nn ? Number(nn) : null;
 
-  // Expand the deep-linked card once, on arrival; it does not re-collapse or re-scroll on a
-  // later SSE-driven refetch (issue 99's flicker proof needs scroll and focus to stay put).
+  // Expand the deep-linked card once per distinct deep link; it does not re-collapse or
+  // re-scroll on a later SSE-driven refetch (issue 99's flicker proof needs scroll and focus to
+  // stay put), but it does re-trigger when navigating in-app to a *different* deep link (e.g.
+  // browser back/forward between /quests/07 and /quests/08 while this room stays mounted).
   useEffect(() => {
-    if (deepLinkN == null || didDeepLink.current) return;
-    didDeepLink.current = true;
+    if (deepLinkN == null || lastDeepLinked.current === deepLinkN) return;
+    lastDeepLinked.current = deepLinkN;
     setExpanded((prev) => new Set(prev).add(deepLinkN));
     requestAnimationFrame(() => {
       document.getElementById(`quest-summary-${String(deepLinkN).padStart(2, '0')}`)?.scrollIntoView({ block: 'center' });
