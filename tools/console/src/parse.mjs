@@ -72,6 +72,31 @@ export function lastCompleted(issues) {
   return done.length ? done[done.length - 1] : null;
 }
 
+/** Every issue with `status: in-progress`, ordered by number, paired with the tree it runs in
+ * (issue 110). `worktrees` (readWorktrees()'s output) already carries, per tree, the one
+ * in-progress issue whose own `worktree:` field names that tree (see `matchInProgressIssue`) and
+ * whether that tree has already merged into `main` (issue 109). A tree marked `merged` cannot
+ * hold the row open for a stale in-progress file: only a non-merged match sets `tree`. When no
+ * tree at all claims the issue — root's own copy says in-progress, but no separate worktree
+ * exists for it — the quest still appears, with `tree: null`, rather than being dropped. Only an
+ * issue whose *every* claimant is a merged tree is dropped entirely. */
+export function inProgressQuests(issues, worktrees) {
+  const out = [];
+  for (const i of issues) {
+    if (i.status !== 'in-progress') continue;
+    const matches = worktrees.filter((w) => w.issue && w.issue.n === i.n);
+    const live = matches.find((w) => !w.merged);
+    if (!live) {
+      if (matches.length > 0) continue;
+      out.push({ n: i.n, title: i.title, agent: i.agent, model: i.model, effort: i.effort, tree: null });
+      continue;
+    }
+    const tree = live.isRoot ? null : live.branch ?? live.path;
+    out.push({ n: i.n, title: i.title, agent: i.agent, model: i.model, effort: i.effort, tree });
+  }
+  return out;
+}
+
 /** Group main-quest issues by milestone, in first-seen order. */
 export function milestones(issues) {
   const order = [];
@@ -186,6 +211,7 @@ export function buildModel({ issueFiles, agentFiles, lessonsText, git, stamp, ge
     reviews,
     next: next ? { n: next.n, title: next.title, agent: next.agent, model: next.model, effort: next.effort, command: `/factory-run ${pad(next.n)}` } : null,
     last: lastCompleted(issues),
+    inProgress: inProgressQuests(issues, worktrees),
     sideTask: sideTask({ issues, lessons, reviews }),
     totals: { issues: issues.length, done: issues.filter((i) => i.status === 'done').length },
   };

@@ -90,6 +90,23 @@ describe('watchPaths', () => {
     const paths = watchPaths(root, [{ path: 'wt1' }], null);
     expect(paths.some((p) => p.path === join(wtDir, 'docs', 'factory', 'issues') && p.section === 'issues')).toBe(true);
   });
+
+  it('watches the root .worktrees directory itself, labelled issues (issue 110)', () => {
+    mkdirSync(join(root, '.worktrees'), { recursive: true });
+    const paths = watchPaths(root, [], null);
+    const row = paths.find((p) => p.path === join(root, '.worktrees'));
+    expect(row?.section).toBe('issues');
+  });
+
+  it('never labels the root .worktrees directory as worktrees, so the git-echo filter cannot drop it', () => {
+    mkdirSync(join(root, '.worktrees'), { recursive: true });
+    const commonDir = join(root, '.git');
+    mkdirSync(join(commonDir, 'worktrees'), { recursive: true });
+    const paths = watchPaths(root, [], commonDir);
+    const row = paths.find((p) => p.path === join(root, '.worktrees'));
+    expect(row?.section).not.toBe('worktrees');
+    expect(shouldIgnoreGitEcho(row!.section, 0)).toBe(false);
+  });
 });
 
 describe('watchDirectory', () => {

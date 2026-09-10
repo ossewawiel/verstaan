@@ -2,7 +2,7 @@
 issue: 110
 title: "The console's Now row shows the quest in flight, and clears when none is"
 milestone: Side
-status: open
+status: in-progress
 depends_on: [99, 109]
 agent: implementer
 agents: [implementer]
@@ -10,7 +10,7 @@ model: sonnet
 effort: medium
 checkpoint: null
 commit: null
-worktree: null
+worktree: .worktrees/side-110-now-row-shows-work-in-flight
 github_issue: 55
 ---
 
@@ -78,14 +78,14 @@ page refreshes at once instead of waiting for an unrelated event.
 
 ## Done when
 
-- [ ] `inProgress` lists every in-progress quest with its tree, in both model layers.
-- [ ] A quest in-progress only in a merged tree contributes nothing to that list.
-- [ ] The web Now row lists them, lowest number first, each linked and naming its tree.
-- [ ] The web Now row reads "Nothing in progress" when the list is empty.
-- [ ] A "Last" row carries the last completed quest.
-- [ ] `watchPaths()` watches the root `.worktrees` directory, and the echo filter spares it.
-- [ ] Watching a tree's issues directory after startup sends one `issues` change on `/events`.
-- [ ] Tests for `inProgress` in `tools/console/test/` and `apps/console/server/test/` fail first,
+- [x] `inProgress` lists every in-progress quest with its tree, in both model layers.
+- [x] A quest in-progress only in a merged tree contributes nothing to that list.
+- [x] The web Now row lists them, lowest number first, each linked and naming its tree.
+- [x] The web Now row reads "Nothing in progress" when the list is empty.
+- [x] A "Last" row carries the last completed quest.
+- [x] `watchPaths()` watches the root `.worktrees` directory, and the echo filter spares it.
+- [x] Watching a tree's issues directory after startup sends one `issues` change on `/events`.
+- [x] Tests for `inProgress` in `tools/console/test/` and `apps/console/server/test/` fail first,
       then pass.
-- [ ] An e2e spec proves both Now states.
-- [ ] `python -m tools.validate --all` exits 0.
+- [x] An e2e spec proves both Now states.
+- [x] `python -m tools.validate --all` exits 0.

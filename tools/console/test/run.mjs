@@ -3,7 +3,7 @@
 import { readFileSync, readdirSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { parseFrontmatter, parseIssues, nextIssue, milestones, sideQuests, parseLessons, sideTask, pendingReviews, buildModel, parseWorktreePorcelain } from '../src/parse.mjs';
+import { parseFrontmatter, parseIssues, nextIssue, milestones, sideQuests, parseLessons, sideTask, pendingReviews, buildModel, parseWorktreePorcelain, inProgressQuests } from '../src/parse.mjs';
 import { escapeIsland, renderConsole as renderPage } from '../src/render.mjs';
 
 const here = dirname(fileURLToPath(import.meta.url));
@@ -40,6 +40,7 @@ check('side task none', sideTask({ issues, lessons: { ripe: [] }, reviews: { cou
 const model = buildModel({ issueFiles: files, agentFiles: [{ name: 'x.md', content: '---\nname: x\nmodel: sonnet\neffort: low\ndescription: Does a thing. More.\n---' }], lessonsText: '', git: { head: 'abc', branch: 'main', dirty: 0, remote: 'no remote' }, stamp: { present: false, matches: false }, generated: 't' });
 check('party parsed', model.party, [{ name: 'x', model: 'sonnet', effort: 'low', role: 'Does a thing' }]);
 check('buildModel defaults worktrees to empty', model.worktrees, []);
+check('buildModel carries inProgress, empty with no in-progress issue', model.inProgress, []);
 
 const withTrees = buildModel({ issueFiles: files, agentFiles: [], lessonsText: '', git: { head: 'abc', branch: 'main', dirty: 0, remote: 'no remote' }, stamp: { present: false, matches: false }, generated: 't', worktrees: [{ path: '.', branch: 'main', head: 'abc', isRoot: true, dirty: 0, stampMatches: false, issue: null }] });
 check('buildModel passes worktrees through', withTrees.worktrees.length, 1);
@@ -59,6 +60,44 @@ check('parseWorktreePorcelain', parseWorktreePorcelain(porcelain), [
   { path: '/repo/.worktrees/detached-example', head: 'deadbee', branch: null, detached: true },
 ]);
 check('parseWorktreePorcelain empty text', parseWorktreePorcelain(''), []);
+
+// inProgressQuests (issue 110): every in-progress issue, paired with the tree readWorktrees()
+// found it in. mkTree/mkInProgressIssue build the minimal shapes each side needs.
+const mkInProgressIssue = (n, title) => ({
+  n, file: `${n}-x.md`, title, milestone: 'Side', status: 'in-progress', worktree: null, dependsOn: [],
+  agent: null, agents: [], model: null, effort: null, checkpoint: null, commit: null, what: '', doneWhen: { total: 0, ticked: 0 },
+});
+const mkTree = (over) => ({ path: '.', branch: null, detached: false, head: 'abc', isRoot: false, dirty: 0, stampMatches: false, merged: false, issue: null, ...over });
+
+const oneQuest = [mkInProgressIssue(50, 'A')];
+const oneTree = [mkTree({ path: '.worktrees/side-50-a', branch: 'side-50-a', issue: { n: 50, title: 'A' } })];
+check('inProgressQuests reports the tree of a single in-progress quest',
+  inProgressQuests(oneQuest, oneTree), [{ n: 50, title: 'A', agent: null, model: null, effort: null, tree: 'side-50-a' }]);
+
+const twoQuests = [mkInProgressIssue(50, 'A'), mkInProgressIssue(51, 'B')];
+const twoTrees = [
+  mkTree({ path: '.worktrees/side-51-b', branch: 'side-51-b', issue: { n: 51, title: 'B' } }),
+  mkTree({ path: '.worktrees/side-50-a', branch: 'side-50-a', issue: { n: 50, title: 'A' } }),
+];
+check('inProgressQuests reports both quests, lowest number first',
+  inProgressQuests(twoQuests, twoTrees).map((q) => [q.n, q.tree]), [[50, 'side-50-a'], [51, 'side-51-b']]);
+
+const mergedOnlyTree = [mkTree({ path: '.worktrees/side-50-a', branch: 'side-50-a', merged: true, issue: { n: 50, title: 'A' } })];
+check('inProgressQuests drops a quest in-progress only in a merged tree',
+  inProgressQuests(oneQuest, mergedOnlyTree), []);
+
+check('inProgressQuests returns an empty list when no issue is in-progress', inProgressQuests([], []), []);
+
+check('inProgressQuests names a detached tree by its path, not a branch',
+  inProgressQuests(oneQuest, [mkTree({ path: '.worktrees/side-50-a', branch: null, detached: true, issue: { n: 50, title: 'A' } })]),
+  [{ n: 50, title: 'A', agent: null, model: null, effort: null, tree: '.worktrees/side-50-a' }]);
+
+check('inProgressQuests reports tree: null when only the root tree names the quest',
+  inProgressQuests(oneQuest, [mkTree({ path: '.', branch: 'main', isRoot: true, issue: { n: 50, title: 'A' } })]),
+  [{ n: 50, title: 'A', agent: null, model: null, effort: null, tree: null }]);
+
+check('inProgressQuests reports tree: null when no worktree claims the quest at all',
+  inProgressQuests(oneQuest, []), [{ n: 50, title: 'A', agent: null, model: null, effort: null, tree: null }]);
 
 const page = renderPage(model);
 check('island escapes angle brackets', !page.includes('A <script> title') && page.includes('A \\u003cscript\\u003e title'), true);

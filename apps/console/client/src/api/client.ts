@@ -45,6 +45,7 @@ export interface StateModel {
   reviews: { count: number; where: { file: string; count: number }[] };
   next: { n: number; title: string; agent: string | null; model: string | null; effort: string | null; command: string } | null;
   last: Issue | null;
+  inProgress: { n: number; title: string; agent: string | null; model: string | null; effort: string | null; tree: string | null }[];
   sideTask: { kind: string; text: string; command: string | null };
   totals: { issues: number; done: number };
 }
