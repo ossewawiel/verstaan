@@ -1,0 +1,46 @@
+'''Mood''' is one of a set of distinctive verb forms that are used to signal [[modality]].
+
+== Natural language == 
+In the UNLarium, the values for mood are the following:
+
+{{#tree:id=nl_mood|openlevels=0|root=Mood|
+*none (non-finite verb forms) (VBL)
+**gerund (GER)
+**gerundive (GDV)
+**infinitive (INF)
+**participle (PTP)
+**supine (SPN)
+*assumptive (AUM)
+*conditional (CON)
+*declarative (DEC)
+*deductive (DED)
+*deliberative (DLB)
+*dubitative (DUB)
+*hortative (HOR)
+*hypothetical (HYP)
+*imperative (IMP)
+*imprecative (IPC)
+*inferential (INFR)
+*indicative (IND)
+*interrogative (INT)
+*jussive (JUS)
+*obligative (OBM)
+*optative (OPT)
+*permissive (PMS)
+*potential (POT)
+*precative (PCT)
+*prohibitive (PHB)
+*speculative (SPT)
+*subjunctive (SUB)
+}}
+
+
+
+=== Examples ===
+*English
+**Indicative: He is a king.
+**Imperative: Be a king.
+**Subjunctive: If he were a king...
+
+== UNL ==
+Mood is to be represented in UNL by its corresponding semantic value (i.e.,as [[modality]]).

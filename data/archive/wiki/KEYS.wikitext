@@ -1,0 +1,14 @@
+KEYS (Knowledge Extraction sYStem) is a information retrieval and extraction system. It searches for information inside documents represented in UNL, i.e., in semantic hyper-graphs. This allows for retrieval and extraction practices that are language-independent and semantically-oriented. KEYS includes [[SEAN]], [[NORMA]] and [[EDGES]], and is expected to synthesize and normalize the information available on the Web, and to provide summaries extracted out of several different input documents. KEYS has been developed by the Library of Alexandria.
+
+== KEYS Development Plan ==
+
+=== Version 1.0 ===
+#Graphic output (as fancy as possible and with support for touch screen).
+#Localizable interface.
+#Another design for the interface (cleaner and simpler).
+#Mobile (app) version.
+#Integration with EUGENE.
+
+=== Version 1.1 ===
+#Web search
+#Option button smaller and closer to the search box

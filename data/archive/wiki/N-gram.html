@@ -1,0 +1,54 @@
+<div class="mw-content-ltr mw-parser-output" lang="en" dir="ltr"><p>In the scope of the project <a href="/wiki/LACE" title="LACE">LACE</a>, an <b>n-gram</b> is a linear structure of n strings composed entirely of ANY KIND OF LETTER FROM ANY LANGUAGE, i.e., the regex [/p{L}]+, isolated by blank space, punctuation marks, end of sentence, and any other character not comprised in /p{L}, such as [.,;:!?()"&lt;&gt;]. Strings containing digits or any non-alphabetical characters (such as [@_#$%/]) were ignored<sup id="cite_ref-1" class="reference"><a href="#cite_note-1"><span class="cite-bracket">&#91;</span>1<span class="cite-bracket">&#93;</span></a></sup>.
+</p>
+<div class="mw-heading mw-heading2"><h2 id="Continuous_and_Discontinuous_N-grams">Continuous and Discontinuous N-grams</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=N-gram&amp;veaction=edit&amp;section=1" title="Edit section: Continuous and Discontinuous N-grams" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=N-gram&amp;action=edit&amp;section=1" title="Edit section&#39;s source code: Continuous and Discontinuous N-grams">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>In the scope of the project <a href="/wiki/LACE" title="LACE">LACE</a>, n-grams are said to be "continuous" or "discontinuous":
+</p>
+<ul><li>a <b>continuous n-gram</b> is an invariant sequence of n immediately adjacent items, i.e., without any other items in-between;</li>
+<li>a <b>discontinuous n-gram</b>  is an open pattern: it is a continuous n-gram where some items are variable, i.e., a sequence of x and y (x+y=n) items where x items come in the same position and are isolated by the same number of y in-between items. A discontinuous n-gram is valid if, for the same x, there are at least two different y, otherwise we consider it noise. A discontinuous n-gram may have one or more discontinuities, but due to the necessity of defining its external boundaries, we limit the notion of discontinuity to the internal items of an n-gram. In our notation, discontinuities are represented by the place holder "."<sup id="cite_ref-2" class="reference"><a href="#cite_note-2"><span class="cite-bracket">&#91;</span>2<span class="cite-bracket">&#93;</span></a></sup> Given the precondition of external boundaries, discontinuous n-grams should meet the requirement: n&gt;2.</li></ul>
+<div class="mw-heading mw-heading2"><h2 id="Relevance">Relevance</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=N-gram&amp;veaction=edit&amp;section=2" title="Edit section: Relevance" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=N-gram&amp;action=edit&amp;section=2" title="Edit section&#39;s source code: Relevance">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>In the scope of the project <a href="/wiki/LACE" title="LACE">LACE</a>, N-grams are considered to be <b>linguistically-relevant</b> if they are frequent, non-redundant, of a certain length, and may figure as syntactic and semantic units, according to the following criteria:   
+</p>
+<ul><li>Length:
+<dl><dd>In the context of LACE, we treated both continuous and discontinuous n-grams with up to 7 items, i.e., where 1 ≤ n ≤ 7.</dd></dl></li>
+<li>Frequency:
+<dl><dd>In the context of LACE, we considered an n-gram to be frequent in the corpus if its frequency of occurrence is equal or higher than the ratio between tokens and types, where “tokens” is the total number of n-grams in the corpus, and “types” is the number of distinct n-grams in the corpus. For instance: given a corpus with 5,000 occurrences of distinct 1,000 unigrams, a 1-gram is considered relevant if, and only if, it occurs 5 or more times.</dd></dl></li>
+<li>Redundancy:
+<dl><dd>In the context of LACE, we intend an n-gram to be redundant if it is subsumed by any other x-gram, where x ≥ n. In that sense, the 1-gram “a” is considered unique if, and only if, there is at least one context “x a” and at least one context “a y”, where “x a” and “a y” have not been defined as an n-gram according to the criteria above concerning length and frequency. For instance, the items “Sri” and “Lanka” are not considered to be 1-grams because they cannot occur in isolation: they always appear as part of the 2-gram “Sri Lanka” (i.e., there is no context in the corpus in which we have “Sri” but not “Lanka”). The same applies for discontinuous n-grams: the sequence “a . . d” is a 4-gram if it is not subsumed by the 4-gram “a b . d”, i.e., if there is at least one “a x . d” where x ≠ b.=</dd></dl></li>
+<li>Constituency</li></ul>
+<dl><dd>The constituency score is the probability of a given n-gram to function as a syntactic unit (i.e., a “constituent”) in a sentence. For the time being, it is defined as the weighted average of 2 different independent measures: distribution and substitution, as described at <a href="/wiki/Constituency_score" title="Constituency score">constituency score</a>.</dd></dl>
+<div class="mw-heading mw-heading2"><h2 id="Notes">Notes</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=N-gram&amp;veaction=edit&amp;section=3" title="Edit section: Notes" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=N-gram&amp;action=edit&amp;section=3" title="Edit section&#39;s source code: Notes">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<div class="mw-references-wrap"><ol class="references">
+<li id="cite_note-1"><span class="mw-cite-backlink"><a href="#cite_ref-1">↑</a></span> <span class="reference-text">This means that the input string “abc def g-hi jkl m1 234 nop qrs tu_vw” was said to have:
+<ul><li>six 1-grams (“abc”, “def”, “g-hi”, “jkl” “nop”, “qrs”)</li>
+<li>four 2-grams (“abc def”, “def g-hi”, “g-hi jkl”, “nop qrs”)</li>
+<li>two 3-grams (“abc def g-hi”, “def g-hi jkl”)</li>
+<li>one 4-gram (“abc def g-hi jkl”).</li></ul>
+The strings "m1", "234" and "tu_vw" were not considered valid and, therefore, any n-grams including them were excluded from the results.</span>
+</li>
+<li id="cite_note-2"><span class="mw-cite-backlink"><a href="#cite_ref-2">↑</a></span> <span class="reference-text">In the example above, there are two discontinuous 3-grams (“abc . g-hi”, “def . jkl”) and three discontinuous 4-grams (“abc . . jkl”, “abc def . jkl”, “abc . g-hi jkl”).</span>
+</li>
+</ol></div>
+<!-- 
+NewPP limit report
+Cached time: 20260910034924
+Cache expiry: 86400
+Reduced expiry: false
+Complications: []
+CPU time usage: 0.006 seconds
+Real time usage: 0.007 seconds
+Preprocessor visited node count: 40/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/100
+Expensive parser function count: 0/100
+Unstrip recursion depth: 0/20
+Unstrip post‐expand size: 1303/5000000 bytes
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    0.000      1 -total
+-->
+
+<!-- Saved in parser cache with key u965818192_SLvgQ-l8z2_:pcache:760:|#|:idhash:canonical and timestamp 20260910034924 and revision id 15741. Rendering was triggered because: page-view
+ -->
+</div>

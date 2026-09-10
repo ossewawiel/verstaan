@@ -1,0 +1,107 @@
+<div class="mw-content-ltr mw-parser-output" lang="en" dir="ltr"><p>This page is dedicated to the documentation of the technical decisions concerning Persian in the UNLframework.
+</p>
+<div class="mw-heading mw-heading2"><h2 id="Nouns">Nouns</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Persian&amp;veaction=edit&amp;section=1" title="Edit section: Nouns" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Persian&amp;action=edit&amp;section=1" title="Edit section&#39;s source code: Nouns">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>Nouns, in Persian, have the following inflectional schema:
+</p>
+<ul><li>SNG (singular)</li>
+<li>PLR (plural)</li></ul>
+<div class="mw-heading mw-heading3"><h3 id="Examples">Examples</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Persian&amp;veaction=edit&amp;section=2" title="Edit section: Examples" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Persian&amp;action=edit&amp;section=2" title="Edit section&#39;s source code: Examples">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<dl><dt>M2 (PLR</dt>
+<dd>=&gt;"‌ها";)</dd>
+<dd>SNG:=0&gt;"";</dd>
+<dd>PLR:=0&gt;"‌ها";</dd>
+<dd>Examples: کاسه&gt;کاسه‌ها; پسر&gt;پسرها; رادیو&gt;رادیوها;</dd>
+<dt>M3 (PLR</dt>
+<dd>=&gt;"ان";)</dd>
+<dd>SNG:=0&gt;"";</dd>
+<dd>PLR:=0&gt;"ان";</dd>
+<dd>Examples: مرد&gt;مردان; زن&gt;زنان; فرزند&gt;فرزندان;</dd></dl>
+<p><br />
+Most Persian nouns have more than one plural form. 
+</p><p>Example: پسر&gt;پسرها&gt;پسران, معلم&gt;معلمان&gt;معلمین&gt;معلم‌ها, منطقه&gt;منطقه‌ها&gt;مناطق
+</p><p>The most frequent plural form of a noun is considered as an inflectional paradigm and the less frequent, as an inflectional rule. 
+</p><p><b>Ex:</b> پسر
+</p><p>Inflectional paradigm:  M3:PLR:=&gt;"ان";
+</p><p>Inflectional Rules:     PLR&amp;ALT:=&gt;"‌ها";
+</p>
+<div class="mw-heading mw-heading2"><h2 id="Verbs">Verbs</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Persian&amp;veaction=edit&amp;section=3" title="Edit section: Verbs" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Persian&amp;action=edit&amp;section=3" title="Edit section&#39;s source code: Verbs">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>Verbal Paradigms in Persian are derived from two stems: past stem and present stem. So each Persian verb is presented by two entries; "Infinitive Form" as a reference for past tense paradigms and "First Person Singular Present Indicative" for present tense.
+</p><p>Example:
+"to eat": "خوردن" / "خورم"
+</p><p>"to go": "رفتن"/"روم"
+</p><p>Hence, Persian verbs have the following Inflectional Paradigms: 
+</p><p><br />
+<b>Past tense paradigm:</b>
+</p><p><i>INF:=0&gt;"";</i>    <b>Ex:</b> خوردن
+</p><p>PAS&amp;PFV&amp;1PS:="ن"&gt;"م";                                        
+</p><p>PAS&amp;PFV&amp;2PS:="ن"&gt;"ی";....
+</p><p><b>Ex:</b>  خوردم/خوردی/خورد   /خوردیم/خوردید/خوردند
+</p><p>PAS&amp;RES&amp;1PS:="ن"&gt;"ه‌ام";
+</p><p>PAS&amp;RES&amp;2PS:="ن"&gt;"ه‌ای";....
+</p><p><b>Ex:</b> خورده‌ام/ خورده‌ای/خورده‌است    خورده‌ایم/خورده‌اید/خورده‌اند  
+</p><p>NPFV&amp;PAS&amp;1PS:= "می‌"&lt;0,"ن"&gt;"م";
+</p><p>NPFV&amp;PAS&amp;2PS:="می‌"&lt;0,"ن"&gt;"ی";.... 
+</p><p><b>Ex:</b> می‌خوردم/می‌خوردی/می‌خورد    می‌خوردیم/می‌خوردید/ می‌خوردند
+</p><p>PTL:="ن"&gt;"ه‌";   <b>Ex:</b> خورده
+</p><p><br /> 
+</p><p><b>Present tense paradigm:</b>
+</p><p><i>1PS&amp;PRS&amp;IND:=0&gt;"";</i>        <b>Ex:</b> خورم
+</p><p>PRS&amp;CTN&amp;1PS:="می‌"&lt;0;
+</p><p>PRS&amp;CTN&amp;2PS:="می‌"&lt;0,"م"&gt;"ی";... 
+</p><p><b>Ex:</b> می‌خورم/می‌خوری/‌می‌خورد    می‌خوریم/می‌خورید/می‌خورند
+</p><p>PRS&amp;SUB&amp;1PS:="ب"&lt;0;
+</p><p>PRS&amp;SUB&amp;2PS:="ب"&lt;0,"م"&gt;"ی";...
+</p><p><b>Ex:</b> بخورم/بخوری/بخورد     بخوریم/بخورید/بخورند
+</p><p>IMP&amp;2PS:="ب"&lt;0,"م"&gt;"";      Ex:  بخور
+</p><p>IMP&amp;2PP:="ب"&lt;0,"م"&gt;"ید";    Ex:  بخورید
+</p><p>PHB&amp;2PS:="ن"&lt;0,"م"&gt;"";      Ex:  نخور
+</p><p>PHB&amp;2PP:="ن"&lt;0,"م"&gt;"ید";    Ex:  نخورید
+</p><p><br />
+</p>
+<hr />
+<p><b>Present stem of "بودن"</b>
+</p><p>The present stem for Persian verb "بودن" are "استن" and "هستن", which have different Inflectional Paradigms, provided in the Paradigm list. In most Persian complex predicates with adjective as the preverb, like "امیدوار بودن", the present stem "استن" is dominantly in use. 
+</p><p>Ex: Past tense:     "امیدوار بودم"
+       present:      "امیدوارم"     "امیدوارید" ...
+
+</p><p><br />
+"هستن" is mainly used as a copula to convey "existence". "عصر خانه هستم."
+</p><p><br />
+</p><p><br />
+</p>
+<hr />
+<p><b>Compositional rules for compound verbs with complex light verbs </b>
+</p><p>To provide the compositional rules for Persian compound verbs with complex light verb like “پیدا کردن”, consider that we have two separate verb complement: the adjective “پیدا”, which remains from the complex light verb “پیدا کردن” and the preverb which can be of different grammatical categories (n, v, P, adj or adv). We should introduce both complements in the C-rule. 
+</p><p>Example 1: “آرامش پیدا کردن”
+“آرامش”= N
+Base Form: کردن
+VC([پیدا],J,M,IBEF)VC([آرامش],N,M0,BEF);
+</p><p>Example 2: "سر راه بردارم"
+"از"= P
+Base form:دارم 
+VC([بر],P,M,IBEF)VC([از سر راه],P,M0,BEF);
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20260909173900
+Cache expiry: 86400
+Reduced expiry: false
+Complications: []
+CPU time usage: 0.003 seconds
+Real time usage: 0.003 seconds
+Preprocessor visited node count: 12/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/100
+Expensive parser function count: 0/100
+Unstrip recursion depth: 0/20
+Unstrip post‐expand size: 115/5000000 bytes
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    0.000      1 -total
+-->
+
+<!-- Saved in parser cache with key u965818192_SLvgQ-l8z2_:pcache:829:|#|:idhash:canonical and timestamp 20260909173900 and revision id 16157. Rendering was triggered because: diff-page
+ -->
+</div>

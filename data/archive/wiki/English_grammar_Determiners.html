@@ -1,0 +1,130 @@
+<div class="mw-content-ltr mw-parser-output" lang="en" dir="ltr"><p>Articles ("a", "the"), demonstrative determiners ("this", "that", "same" etc.), interrogative determiners ("which", "what") and quantifiers ("all", "any" etc.) are represented in UNL as <a href="/wiki/Attributes" class="mw-redirect" title="Attributes">attributes</a>: "the book" &gt; book.@def, "this book" &gt; book.@proximal, "all books" &gt; book.@all, "which book" &gt; book.@wh. Numbers are represented by the relation "qua": "two books" &gt; qua(book,2), "second book" &gt; qua(book,2.@ordinal). Possessive determiners ("my", "your" etc) and possessive pronouns ("mine", "yours" are represented by the relation "pos" and the personal pro-forms of UNL (00.@1, 00.@2 and 00.@3): "my book" &gt; pos(book,00.@1), "book of mine" &gt; pos(book,00.@1).
+</p>
+<div class="mw-heading mw-heading2"><h2 id="UNLization">UNLization</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=English_grammar/Determiners&amp;veaction=edit&amp;section=1" title="Edit section: UNLization" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=English_grammar/Determiners&amp;action=edit&amp;section=1" title="Edit section&#39;s source code: UNLization">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>There are basically two types of UNLization rules dealing with determiners: attribute rules and relation rules. Attribute rules normally make use of the attribute "att" and its corresponding features assigned in the dictionary. 
+</p>
+<div class="mw-heading mw-heading3"><h3 id="the_book">the book</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=English_grammar/Determiners&amp;veaction=edit&amp;section=2" title="Edit section: the book" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=English_grammar/Determiners&amp;action=edit&amp;section=2" title="Edit section&#39;s source code: the book">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>INPUT (ENG): the book
+OUTPUT (UNL): book.@def
+DICTIONARY:
+</p>
+<ul><li>[the]{}"" (LEX=D,POS=ART,att=@def)&lt;eng,255,0&gt;;</li>
+<li>[book]{}"book" (LEX=N,POS=NOU,NUM=SNG)&lt;eng,0,0&gt;;</li>
+<li>[ ]{}""(BLK)&lt;eng,0,0&gt;;</li></ul>
+<p>T-GRAMMAR:
+</p>
+<ol><li>(BLK):=;</li>
+<li>(D,att,%x)(N,%y):=(%y,+att=%x);</li></ol>
+<p>D-GRAMMAR: not necessary<br />
+TRACE:<br />
+INPUT: the book
+</p>
+<ul><li>STATE#1: [the][ ][book] (tokenization)</li>
+<li>STATE#2: [the][book] (blank space is deleted)</li>
+<li>STATE#3: [book.@def] ("the" is deleted and its attribute is copied to "book"]</li>
+<li>OUTPUT: book.@def</li></ul>
+<p>DESCRIPTION
+The first rule will delete the blank spaces. Next, rule #2 will delete the determiner because its node (%x) is not reproduced in the right side of the rule. In list rules, according to the <a href="/wiki/UNL_Grammar_Specs" class="mw-redirect" title="UNL Grammar Specs">UNL Grammar Specs</a>, nodes that do not appear in the right side are deleted. The feature "+att=%x" creates an attribute "att" and assigns the value of the same attribute in %x in to it. Note that [book] has no "att" in the dictionary, but [the] does. The feature "+att=%x" creates an attribute "att" for [book] and assigns to it the value of the same attribute in [the]. This kind of rule will only work if %x has "att"; if not, the attribute "att" will be created, but without any value. <br />
+In the English grammar, the rule is actually:
+</p>
+<ol><li>(D,att,%x)(NB,%y):=(%y,+att=%x);</li></ol>
+<p>Note that %y has the feature NB instead of N. The reason for this is that, in English, there can be other words between the determiner and the noun: "a beautiful book", for instance. And it's important to assign the value of the determiner to the head of the noun phrase (which is "book", and not "beautiful"). In that case, we first process the noun phrase, generating all its intermediate projections (NB's). Only then we resolve the determiners. <br />
+The single rule (D,att,%x)(NB,%y):=(%y,+att=%x); will apply for all the determiners having the feature "att", i.e., [a], [an], [this], [that], [same], [other] etc.
+</p>
+<div class="mw-heading mw-heading3"><h3 id="two_books">two books</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=English_grammar/Determiners&amp;veaction=edit&amp;section=3" title="Edit section: two books" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=English_grammar/Determiners&amp;action=edit&amp;section=3" title="Edit section&#39;s source code: two books">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>Numbers are not represented as attributes, but as relations. In this case, we cannot avoid some syntactic processing. We present below the trace and the details.
+INPUT: two books
+DICTIONARY:
+</p>
+<ul><li>[two]{}"2" (LEX=U,POS=CDN,DIGIT)&lt;eng,255,0&gt;;</li>
+<li>[books]{}"book" (LEX=N,POS=NOU,NUM=PLR)&lt;eng,0,0&gt;;</li>
+<li>[ ]{}""(BLK)&lt;eng,0,0&gt;;</li></ul>
+<p>T-GRAMMAR:
+</p>
+<ol><li>(BLK):=;</li></ol>
+<ul><li>(N,^head,^XB,^XP):=(+XB=NB);</li>
+<li>(DIGIT,^ORD,%y)(NB,%x):=(XB(%x;%y,+spec,+qua),+LEX=N,+XB=NB,%z); two books &gt; XB(books,two)</li>
+<li>(/X[BS]/(%x;%y,spec),N,%z):=(NS(%x;%y),%z);</li>
+<li>/[ACDIJNPV][ACS]/(%x;%y,qua):=qua(%x;%y);</li></ul>
+<p>D-GRAMMAR: not necessary<br />
+TRACE:<br />
+INPUT: two books
+</p>
+<ul><li>STATE#1: [two][ ][books] (tokenization)</li>
+<li>STATE#2: [two][books] (blank space is deleted)</li>
+<li>STATE#3: [two][books] ([books] will receive the feature NB because of rule #2)</li>
+<li>STATE#4: [XB(books;two)] (rule #3 is applied)</li>
+<li>STATE#5: [NS(books;two)] (rule #4 is applied)</li>
+<li>STATE#6: [qua(books;two)] (rule #5 is applied)</li>
+<li>OUTPUT: qua(book;"2")</li></ul>
+<p>DESCRIPTION:
+The first rule will delete the blank space. The second rule will assigns the feature NB to [books]. The third rule creates a new node with a relation XB inside between the nodes "books" and "two". This relation XB will be replaced by NS, with the same arguments, after rule #4. At last, rule #5 will convert this NS into "qua", which is one of the semantic relations of UNL. Note that [books] will be automatically represented by the UW "book", and [two] by "2", because this is stated in the dictionary. <br />
+The main difficult here is to understand why NB and XB were necessary. Why couldn't we simply write:
+</p>
+<dl><dt>DIGIT,^ORD,%x)(N,%y)</dt>
+<dd>=qua(%y;%x);</dd></dl>
+<p>The simple rule above will work in the case "two books", but we have to be prepared to process more complicated constructions, such as "my two books", "two beautiful books" etc. Consider, for instance, the case of "the two books". The trace would be the following:
+</p>
+<ul><li>STATE0: [my][two][books] (after tokenization and deletion of blank spaces)</li>
+<li>STATE1: [my] qua(books;two) (after the rule above)</li></ul>
+<p>Note that there is no longer any linear relation between [my] and qua(books;two). So, how to link [my] to [books], which is now inside "qua" and out of the list structure? This is the reason for the syntactic processing here. In the English grammar, we have been using the <a href="/wiki/X-bar" class="mw-redirect" title="X-bar">X-bar</a> theory, with some adaptations, but you are free to choose any other approach. In our case, the following is happening:<br />
+The rule:
+</p>
+<dl><dt>(N,^head,^XB,^XP):=(+XB=NB);</dt></dl>
+<p>is part of a set of general parsing rules that projects NB (intermediate projection of the noun phrase) out of a noun (N). According to the <a href="/wiki/X-bar" class="mw-redirect" title="X-bar">X-bar</a> approach, phrases (noun phrases, for instance) are projected out of the corresponding heads (nouns). There can be several different projections (with complements and adjuncts), and all of them constitute intermediate projections, which we represent generally by the attribute XB (from "x-bar") and, more specifically, by the value of the projection ("NB", from "noun-bar", is an XB that has N as its head). At the topmost level, the XB is projected, with the specifier, to form the maximal projection ("XP", from "X phrase"), which is again a general attribute whose value depends on the category of the head ("NP", from "noun phrase", is the maximal projection of a noun). The first intermediate projection of any head is the head itself. This is stated by the rule above.<br />
+After that, we apply the rule:
+</p>
+<dl><dt>(DIGIT,^ORD,%y)(NB,%x):=(XB(%x;%y,+spec,+qua),+LEX=N,+XB=NB,%z); two books &gt; XB(books,two)</dt></dl>
+<p>This rules states that, if there is a digit, which is not ordinal, before a NB, then we should create another intermediate projection XB between the NB and the digit, i.e.:
+two books
+will be analyzed as:
+</p>
+<pre>    XB
+   /  \
+  NB   two
+  |
+books
+</pre>
+<p>Note that we are not only converting a list: [two][books] into a relation: XB(books;two). We are actually creating a hyper-node which contains this relation. Compare:
+</p>
+<ul><li>(%x)(%y):=XB(%y;%x); transforms a list into a relation</li>
+<li>(%x)(%y):=(XB(%y;%x),%z); replaces two nodes (%x and %y) by a third node (%z) and creates an XB relation between %x and %y inside this node.</li></ul>
+<p>Why is this necessary?<br />
+There are at least two reasons for operating this way:
+</p>
+<ol><li>If we simply replace the nodes %x and %y by a relation, we will loose the relations that they could have with other nodes in the sentence. This is the case of [my][two][books] referred to above. If we replace [two][books] by XB(books;two) we will loose the relation between [my] and [books], because nodes inserted in graphs are removed from the list structure, i.e., we will have two isolated data structures: the graph, which contains only XB(books;two), and the list with [my]. In order to preserve this relation, we have to replace [two][books] by a new node [XB(books;two)] so that we could have [my][XB(books;two)]. We willloose the relation between [my] and [two], but this relation is any really relevant.</li>
+<li>It is important to deal with general categories, such as XB, instead of specific categories, such as NB. In the <a href="/wiki/index.php?title=Dearborization&amp;action=edit&amp;redlink=1" class="new" title="Dearborization (page does not exist)">dearborization</a> phase of the grammar, we will transform this tree-like structures into head-driven structures. If we have a general relation such as XB, the number of rules is considerably smaller:</li></ol>
+<ul><li>XB(XB(%x;%y);%z):=XB(%x;%y)XB(%x;%z);</li>
+<li>XP(XB(%x;%y);%z):=XB(%x;%y)XS(%x;%z);</li>
+<li>XP(%x;%y):=XS(%x;%y);</li></ul>
+<p>Note that these rules will transform hyper-relations into simple relations. If we use specific categories (such as NB,VB,PB etc) instead of the general category XB, we will have to repeat this for all different types of relations. However, we do need to preserve the information that this intermediate projection (XB) is a projection of a noun. This is done by assigning the features +LEX=N,+XB=NB to the hyper-node so that, later on, we will be able to convert XB into NB.<br />
+The other rules are easier:
+</p>
+<dl><dt>(/X[BS]/(%x;%y,spec),N,%z):=(NS(%x;%y),%z);</dt>
+<dd>This rule transforms the relations XB or XS into NS if their target node (%y) have the feature "spec". Note that we assigned this feature to "two" in rule #3</dd>
+<dt>/[ACDIJNPV][ACS]/(%x;%y,qua):=qua(%x;%y);</dt>
+<dd>At last, the relations AA, AC, AS, CA, CC, CS etc are replaced by "qua" if their target argument has the feature "qua". We have also assigned this feature to "two" in rule #3.</dd></dl>
+<!-- 
+NewPP limit report
+Cached time: 20260910010605
+Cache expiry: 86400
+Reduced expiry: false
+Complications: []
+CPU time usage: 0.005 seconds
+Real time usage: 0.006 seconds
+Preprocessor visited node count: 49/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/100
+Expensive parser function count: 0/100
+Unstrip recursion depth: 0/20
+Unstrip post‐expand size: 398/5000000 bytes
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    0.000      1 -total
+-->
+
+<!-- Saved in parser cache with key u965818192_SLvgQ-l8z2_:pcache:625:|#|:idhash:canonical and timestamp 20260910010605 and revision id 14596. Rendering was triggered because: diff-page
+ -->
+</div>

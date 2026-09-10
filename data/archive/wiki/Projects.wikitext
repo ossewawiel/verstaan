@@ -1,0 +1,203 @@
+The UNL Program is organized in many different projects leading to the development of the language and computational resources required by the UNL System. The projects can be open or closed, and funded or non-funded, depending on the language and on the scope. Most projects involving the development of language resources follow the flow defined by the [[FoR-UNL]], and range from A1 (most basic level) to C2 (most advanced level). Software development projects follow the itinerary defined in the UNDL Foundation Road Map.
+
+== Language Resources (Lingware) ==
+There are three different types of projects dealing with the development of language resources. Each of them have specific sub-types, as indicated below.
+*'''Dictionary''' projects aims at proving entries to the UNL-driven dictionaries
+**[[GD]]: Generation (UNL->NL) Dictionary projects aims at mapping UWs into natural language lexical items
+**[[AD]]: Analysis (NL->UNL) Dictionary projects aims at mapping natural language lexical items into UWs
+**[[ND]]: Natural Language Dictionary projects aims at treating entries resulting from GD Dictionary projects
+**[[UD]]: UNL Dictionary projects aims at analyzing, defining and exemplifying UWs
+*'''Corpus''' projects aims at providing corpora for assessing UNL grammars
+**'''GC''': Generation (UNL->NL) Corpus projects aims at NL-izing a UNL document
+**'''AC''': Analysis (NL->UNL) Corpus projects aims at UNL-izing a natural language document
+*'''Memory''' projects aims at providing other lexical resources for UNL-based systems
+**KB: Knowledge Base projects aims at providing entries for the UNL Knowledge Base
+**UM: UNL Memory projects aims at providing entries for the UNL Memory
+**NM: NL Memory projects aims at providing entries for the NL Memory
+**AM: Analysis (NL->UNL) Memory projects aims at mapping translation units into UNL
+**GM: Generation (UNL->NL) Memory projects aims at UNL segments into natural language expressions
+
+=== List of Active Projects ===
+
+{| border=1 align=center cellpadding=3
+!width="10%" | Title<br />(in alphabetical order)
+!width="5%" | Type
+!width="5%" | Open
+!width="5%" | Funded<ref>Funding is always restricted to a specific set of languages. The full details for each project are available at UNLWEB>PROJECTS>[SELECT THE PROJECT NAME].</ref>
+!width="5%" | Active
+!width="80%" | Description
+|-
+|align=center|[[AESOP]]
+|align=center|GC
+|align=center|YES
+|align=center|YES
+|align=center|YES
+|The project [[AESOP]] aims at NLizing simple and frequent UNL structures in order to induce UNL>NL grammars.
+|-
+|align=center|[[BRUNO]]
+|align=center|ND
+|align=center|YES
+|align=center|YES<ref>Only BRUNO-A1 is funded for all languages.</ref>
+|align=center|YES
+|The project [[BRUNO]] (Basic Resources for UNlizatiOn) aims at providing NL->UNL (analysis) dictionaries based in the frequency of occurrence of lemmas in the source language.
+|-
+|align=center|[[CORNELIA]]
+|align=center|AC
+|align=center|NO
+|align=center|NO
+|align=center|SOON
+|The project [[CORNELIA]] aims at UNLizing simple and frequent natural language structures in order to induce NL>UNL grammars.
+|-
+|align=center|[[DIVA]]
+|align=center|ND
+|align=center|YES
+|align=center|YES
+|align=center|YES
+|The project [[DIVA]] aims the revision of the entries created in the projects MIR, NADIA and BRUNO.
+|-
+|align=center|[[FRIDA]]
+|align=center|ND
+|align=center|NO
+|align=center|YES
+|align=center|YES
+|The project FRIDA (Français, Rumantsch, Italiano and Deutsch for Analysis) aims at mapping the most frequent lemmas of the official languages of Switzerland (German, French, Italian and Romansh) into UNL.
+|-
+|align=center|[[IGLU]]
+|align=center|AC
+|align=center|NO
+|align=center|NO
+|align=center|YES
+|The project [[IGLU]] (from GLosses to Unl) intends to map WordNet glosses from English into UNL.
+|-
+|align=center|[[LACE]]
+|align=center|AD+AM
+|align=center|NO
+|align=center|NO
+|align=center|YES
+|The main goal of the project LACE (Lexical Acquisition from Comparable tExts) is to build language modules out of data automatically extracted from comparable corpora. The results are expected to be incorporated in the architecture of UNL-based systems as supplementary resources for natural language disambiguation, both in analysis and generation, and will be used for improving the performance of applications in machine translation, summarization, information retrieval and semantic reasoning. The project has been developed under the CADMOS consortium (University of Geneva, University of Lausanne and École Politechnique Fédérale de Lausanne), and is supported by the Wilsdorf Foundation.
+|-
+|align=center|[[LPP|LE PETIT PRINCE]]
+|align=center|AC+GD
+|align=center|YES
+|align=center|NO
+|align=center|YES
+|The project Le Petit Prince (or LPP) aims at UNLizing the integral text of Le Petit Prince, a French novel published by Antoine de Saint-Exupéry in 1943. The main goal is to set standards and guidelines for human UNLization, and to test several tools that have been developed at the UNDL Foundation. 
+|-
+|align=center|[[Lewis & Short|LEWIS & SHORT]]
+|align=center|ND
+|align=center|NO
+|align=center|YES
+|align=center|YES
+|The project [[Lewis & Short]] aims at mapping lemmas extracted from the Lewis & Short Latin Dictionary (1879) into UNL. The project is coordinated by the UNL Center at the University of Patras, in Greece.
+|-
+|align=center|[[MIR]]
+|align=center|GD
+|align=center|YES
+|align=center|YES<ref>Only MIR-A1 is funded for all languages.</ref>
+|align=center|YES
+|The project [[MIR]] (Multilingual InfrastRucture) aims at creating UNL->NL (generation) dictionaries based in the WordNet3.0.
+|-
+|align=center|[[NADIA]]
+|align=center|ND
+|align=center|YES
+|align=center|YES<ref>Only NADIA-A1 is funded for all languages.</ref>
+|align=center|YES
+|The project [[NADIA]] (NAtural language Dictionary for UNL-NL mAppings) aims at creating NL dictionaries based in generation dictionaries.
+|-
+|align=center|[[UGO]]
+|align=center|GC
+|align=center|YES
+|align=center|YES<ref>Only UGO-A1 is funded for all languages.</ref>
+|align=center|YES
+|The project [[UGO]] aims at NLizing simple and frequent UNL structures in order to induce UNL>NL grammars.
+|-
+|align=center|[[Universal Library]]
+|align=center|AC
+|align=center|NO
+|align=center|NO
+|align=center|YES
+|The project [[Universal Library]] aims at UNLizing books that are considered to be an essential foundation of literature and philosophy.
+|-
+|align=center|[[WIKIPEDIA]]
+|align=center|AD
+|align=center|YES
+|align=center|NO
+|align=center|YES
+|The project [[WIKIPEDIA]] aims at creating dictionary entries corresponding to the titles of the Wikipedia.
+|}
+
+=== List of Past Projects ===
+
+{| border=1 align=center cellpadding=3
+!width="10%" | Title<br />(in alphabetical order)
+!width="5%" | Type
+!width="5%" | Open
+!width="5%" | Funded
+!width="5%" | Active
+!width="80%" | Description
+|-
+|align=center|CRATYLUS
+|align=center|AC
+|align=center|NO
+|align=center|NO
+|align=center|NO
+|The project Cratylus aims at UNLizing the integral text of  Cratylus (360 BC), written by the Greek philosopher Plato (427? BC-347? BC). Cratylus is one of the most well-known Platonic dialogues, and an outstanding cornerstone in the history of language studies. The text was used mainly to provide some standards for UNLization.
+|-
+|align=center|[[EOLSS]]
+|align=center|AC+GD
+|align=center|NO
+|align=center|NO
+|align=center|NO
+|The project EOLSS aims at multilingualizing, via UNL, the content of 30 articles of the Encyclopedia of Water, one of the many encyclopedias of the Encyclopedia of Life Support Systems (EOLSS), an integrated compendium of several encyclopaedias, which attempts to forge pathways between disciplines and to foster the transdisciplinary relations between subjects especially related to the life supporting systems.
+|-
+|align=center|LIS
+|align=center|AC+GD
+|align=center|NO
+|align=center|NO
+|align=center|NO
+|The Library Information System (LIS) is an information retrieval system that aims at performing multilingual search over bibliographical metadata. The main goal of the project is to UNLize a small set of MARC21 records and to provide the resources necessary to generate it into at least five different languages other than Arabic. The project has been developed by the UNL Center at the Library of Alexandria.
+|}
+
+=== How to participate? ===
+All the projects dealing with language resources are developed within the [[UNLarium]], the UNDL Foundation linguist-friendly crowd-sourcing environment. In order to participate in a project, check the corresponding requisites below and see the instructions at [http://www.unlweb.net.br/unlweb/index.php?option=com_content&view=article&id=64:how-to-start&catid=1:latest-news&Itemid=60 Getting Started].
+
+=== Requisites for participating in Language Resources Projects ===
+All the certificates below can be pursued at [[VALERIE]], the Virtual Learning Environment for UNL.
+
+{| border=1 align=center cellpadding=3
+!Project Type
+!Requisite<ref>As of September 1st, 2013</ref>
+|-
+|align=center|GD
+|align=center|[[CLEA|CLEA250]]
+|-
+|align=center|ND
+|align=center|[[CLEA|CLEA500]]
+|-
+|align=center|AD
+|align=center|[[CLEA|CLEA750]]
+|-
+|align=center|UD
+|align=center|[[CUP|CUP500]]
+|-
+|align=center|GC
+|align=center|[[CUP|CUP500]]
+|-
+|align=center|AC
+|align=center|[[CUP|CUP500]]
+|-
+|align=center|KB
+|align=center|[[CUP|CUP500]]
+|-
+|align=center|UM
+|align=center|[[CUP|CUP500]]
+|-
+|align=center|GM
+|align=center|[[CUP|CUP500]]
+|-
+|align=center|AM
+|align=center|[[CUP|CUP500]]
+|}
+
+== Notes ==
+<references />

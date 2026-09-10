@@ -1,0 +1,184 @@
+<div class="mw-content-ltr mw-parser-output" lang="en" dir="ltr"><p><b>S-rule</b> (syntactic/semantic rule) is a specific type of <a href="/wiki/Transformation_rule" class="mw-redirect" title="Transformation rule">transformation rule</a> used for dealing with <a href="/wiki/Syntactic_relations" title="Syntactic relations">syntactic relations</a> and <a href="/wiki/Semantic_relations" class="mw-redirect" title="Semantic relations">semantic relations</a> in the UNL framework.
+</p>
+<div id="toc" class="toc" role="navigation" aria-labelledby="mw-toc-heading"><input type="checkbox" role="button" id="toctogglecheckbox" class="toctogglecheckbox" style="display:none" /><div class="toctitle" lang="en" dir="ltr"><h2 id="mw-toc-heading">Contents</h2><span class="toctogglespan"><label class="toctogglelabel" for="toctogglecheckbox"></label></span></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#When_to_use_S-rules"><span class="tocnumber">1</span> <span class="toctext">When to use S-rules</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#When_not_to_use_S-rules"><span class="tocnumber">2</span> <span class="toctext">When not to use S-rules</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="#Types_of_S-rules"><span class="tocnumber">3</span> <span class="toctext">Types of S-rules</span></a>
+<ul>
+<li class="toclevel-2"><a href="#Altering_nodes_in_a_relation"><span class="tocnumber">3.1</span> <span class="toctext">Altering nodes in a relation</span></a></li>
+<li class="toclevel-2"><a href="#Creating_nodes_in_a_relation"><span class="tocnumber">3.2</span> <span class="toctext">Creating nodes in a relation</span></a></li>
+<li class="toclevel-2"><a href="#Deleting_nodes_in_a_relation"><span class="tocnumber">3.3</span> <span class="toctext">Deleting nodes in a relation</span></a></li>
+<li class="toclevel-2"><a href="#Creating_relations"><span class="tocnumber">3.4</span> <span class="toctext">Creating relations</span></a></li>
+<li class="toclevel-2"><a href="#Deleting_relations"><span class="tocnumber">3.5</span> <span class="toctext">Deleting relations</span></a></li>
+<li class="toclevel-2"><a href="#Replacing_relations"><span class="tocnumber">3.6</span> <span class="toctext">Replacing relations</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-4"><a href="#Properties"><span class="tocnumber">4</span> <span class="toctext">Properties</span></a></li>
+<li class="toclevel-1 tocsection-5"><a href="#Indexes"><span class="tocnumber">5</span> <span class="toctext">Indexes</span></a></li>
+<li class="toclevel-1 tocsection-6"><a href="#Examples"><span class="tocnumber">6</span> <span class="toctext">Examples</span></a></li>
+<li class="toclevel-1 tocsection-7"><a href="#Formal_Syntax"><span class="tocnumber">7</span> <span class="toctext">Formal Syntax</span></a></li>
+</ul>
+</div>
+
+<div class="mw-heading mw-heading2"><h2 id="When_to_use_S-rules">When to use S-rules</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=S-rule&amp;veaction=edit&amp;section=1" title="Edit section: When to use S-rules" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=S-rule&amp;action=edit&amp;section=1" title="Edit section&#39;s source code: When to use S-rules">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>S-rules are used for altering, replacing, creating and deleting non-linear relations.
+</p>
+<div class="mw-heading mw-heading2"><h2 id="When_not_to_use_S-rules">When not to use S-rules</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=S-rule&amp;veaction=edit&amp;section=2" title="Edit section: When not to use S-rules" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=S-rule&amp;action=edit&amp;section=2" title="Edit section&#39;s source code: When not to use S-rules">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>S-rules are not used for for linear relations (such as affixation, string manipulation and list manipulation, which must be addressed by <a href="/wiki/A-rule" title="A-rule">A-rules</a>, <a href="/wiki/N-rule" title="N-rule">N-rules</a> and <a href="/wiki/L-rule" title="L-rule">L-rules</a>, respectively).
+</p>
+<div class="mw-heading mw-heading2"><h2 id="Types_of_S-rules">Types of S-rules</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=S-rule&amp;veaction=edit&amp;section=3" title="Edit section: Types of S-rules" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=S-rule&amp;action=edit&amp;section=3" title="Edit section&#39;s source code: Types of S-rules">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>Relations are altered, replaced, created and deleted by <a class="mw-selflink selflink">S-rules</a>:
+</p>
+<div class="mw-heading mw-heading3"><h3 id="Altering_nodes_in_a_relation">Altering nodes in a relation</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Transformation_over_relations&amp;veaction=edit&amp;section=T-1" title="Edit section: Altering nodes in a relation" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Transformation_over_relations&amp;action=edit&amp;section=T-1" title="Edit section&#39;s source code: Altering nodes in a relation">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>Elements of nodes in relations are altered through the operators + (add) and - (delete). The operator + may be omitted. 
+</p>
+<ul><li>rel(%x,A;%y,B):=rel(%x,+C;%y,+D); (add the feature C to %x and D to %y)</li>
+<li>rel(%x,A;%y,B):=rel(%x,C;%y,D);(the same as above)</li>
+<li>rel(%x,A;%y,B):=rel(%x,-A;%y); (delete the feature A from %x)</li></ul>
+<p>"strings", [headwords] and [[UWs]] are considered to be features (but a single node may have only one of each)
+</p>
+<ul><li>rel(%x;%y):=rel(%x,"a";%y); (replace the existing string in %x, if any, by "a")</li>
+<li>rel(%x;%y):=rel(%x,[A];%y);(replace the existing headword in %x, if any, by [A])</li>
+<li>rel(%x;%y):=rel(%x,[[A]];%y); (replace the existing UW in %x, if any, by [[A]])</li></ul>
+<div class="mw-heading mw-heading3"><h3 id="Creating_nodes_in_a_relation">Creating nodes in a relation</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Transformation_over_relations&amp;veaction=edit&amp;section=T-2" title="Edit section: Creating nodes in a relation" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Transformation_over_relations&amp;action=edit&amp;section=T-2" title="Edit section&#39;s source code: Creating nodes in a relation">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>Nodes are created when they are not co-indexed to any node in the left side (see <a href="/wiki/Indexation" class="mw-redirect" title="Indexation">Indexation</a>):
+</p>
+<ul><li>rel(%x,A;%y,B):=rel(%x;%y;<b>%z,+A</b>); (the node %z, with the feature A, is created as a new argument of the relation rel)</li></ul>
+<div class="mw-heading mw-heading3"><h3 id="Deleting_nodes_in_a_relation">Deleting nodes in a relation</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Transformation_over_relations&amp;veaction=edit&amp;section=T-3" title="Edit section: Deleting nodes in a relation" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Transformation_over_relations&amp;action=edit&amp;section=T-3" title="Edit section&#39;s source code: Deleting nodes in a relation">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>Nodes are deleted when they are not co-indexed to any node in the right side (see <a href="/wiki/Indexation" class="mw-redirect" title="Indexation">Indexation</a>):
+</p>
+<ul><li>rel(%x,A;%y,B;<b>%z,C</b>):=rel(%x;%y); (the node %z is deleted as an argument of the relation rel)</li></ul>
+<p>Nodes are completelly deleted if, and only if, they are not part of any other relation
+</p>
+<div class="mw-heading mw-heading3"><h3 id="Creating_relations">Creating relations</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Transformation_over_relations&amp;veaction=edit&amp;section=T-4" title="Edit section: Creating relations" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Transformation_over_relations&amp;action=edit&amp;section=T-4" title="Edit section&#39;s source code: Creating relations">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>Relations are created by the operator + (add) before the relation to be created. This operator may not be omitted.
+</p>
+<ul><li>rel(%x;%y):=+rel2(%x;%z); (a new relation rel2 is created between the nodes %x and %z; the original relation is not altered)</li></ul>
+<p>Creation of relations is a possible source of infinite loops. In order to prevent the rule from applying eternally, the condition field must be controlled:
+</p>
+<ul><li>rel(%x;%y)^rel2(%x;%z):=+rel2(%x;%z);</li></ul>
+<div class="mw-heading mw-heading3"><h3 id="Deleting_relations">Deleting relations</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Transformation_over_relations&amp;veaction=edit&amp;section=T-5" title="Edit section: Deleting relations" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Transformation_over_relations&amp;action=edit&amp;section=T-5" title="Edit section&#39;s source code: Deleting relations">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>Relations are deleted when they are not repeated in the right side, except in case of + 
+</p>
+<ul><li>rel(%x;%y):=; (the relation rel between the nodes %x and %y is deleted)</li>
+<li>rel(%x;%y):=rel2(%x;%y); (the relation rel between %x and %y is deleted and a new relation rel2 is created in its place) (replacement)</li>
+<li>rel(%x;%y):=+rel2(%x;%y); (the relation rel is preserved and a new relation rel2 is created) (creation)</li></ul>
+<div class="mw-heading mw-heading3"><h3 id="Replacing_relations">Replacing relations</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Transformation_over_relations&amp;veaction=edit&amp;section=T-6" title="Edit section: Replacing relations" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Transformation_over_relations&amp;action=edit&amp;section=T-6" title="Edit section&#39;s source code: Replacing relations">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>Relations in the left side are replaced by relations in the right side, except in case of +:
+</p>
+<ul><li>rel(%x;%y):=rel2(%x;%y); (the relation rel between %x and %y is deleted and a new relation rel2 is created in its place)</li>
+<li>rel1(%x;%y)rel2(%y;%z):=rel3(%x;%z); (the relations rel1 and rel2 are deleted and a new relation rel3 is created in their place) (merge)</li>
+<li>rel(%x;%y):=rel1(%x;%y)rel2(%y;%z); (the relation rel is deleted and two new relations rel1 and rel2 are created in its place) (divide)</li>
+<li>(%x)(%y):=rel(%x;%y); (the linear relation between the nodes %x and %y is replaced by the non-linear relation rel between the same nodes)</li>
+<li>L(%x;%y):=rel(%x;%y); (the same as above)</li></ul>
+<div class="mw-heading mw-heading2"><h2 id="Properties">Properties</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=S-rule&amp;veaction=edit&amp;section=4" title="Edit section: Properties" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=S-rule&amp;action=edit&amp;section=4" title="Edit section&#39;s source code: Properties">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<ol><li>S-rules always end in ";"
+<ul><li>rel("a");</li>
+<li><strike>rel("a")</strike></li></ul></li>
+<li>Relations are n-ary, i.e., they may have as many arguments as necessary, isolated by semicolon (";")
+<ul><li>rel("a"); (relation with one argument)</li>
+<li>rel("a";"b"); (relation with two arguments)</li>
+<li>rel("a";"b";"c"); (relation with three arguments)</li>
+<li>etc.</li></ul>
+<dl><dd>Syntactic relations are not predefined, although we have been using a set of binary relations based on the <a href="/wiki/Syntactic_relations" title="Syntactic relations">X-bar theory</a>.</dd>
+<dd>Semantic relations constitute a predefined and closed set that can be found <a href="/wiki/Universal_Relations" title="Universal Relations">here</a>.</dd></dl></li>
+<li>Inside each relation, nodes may be referenced by any of its elements, isolated by comma (,):
+<dl><dd>VC(%a;%b) - syntactic relation between a node where index = %a and another node where index = %b</dd>
+<dd>agt("a",[a],[[a]],A;"b",[b],[[b]],B) - semantic relation between a node having the feature A where string = "a" AND headword [a] AND UW = [[a]] AND another node having the feature B where string = "b" AND headword = [b] AND UW = [[b]]</dd></dl></li>
+<li>The arguments of a relation may be empty in case they are not affected by S-rules.
+<dl><dd>rel(;):=rel2(;); (replace all relations rel by rel2, regardless of their arguments)</dd></dl></li>
+<li>Relations may be conjoined through juxtaposition:
+<dl><dd>agt(%x;%y)obj(%x;%z) - two semantic relations: one between (%x) and (%y) AND other between (%x) and (%z)</dd>
+<dd><strike>VC([a];[b]),VC([a];[c])</strike> - conjoined relations must not be isolated by comma</dd></dl></li>
+<li>Relations may be disjoined through {braces}
+<dl><dd>{("a")|("b")}("c") - either ("a")("c") or ("b")("c")</dd>
+<dd>{agt(%x;%y)|exp(%x;%y)}obj(%x;%z) - either agt(%x;%y)obj(%x;%z) or exp(%x;%y)obj(%x;%z)</dd></dl></li>
+<li>Order is not important between relations, but essential between arguments of the same relation
+<dl><dd>rel1("b")rel2("c")rel3("d") = rel2("c")rel3("d")rel1("b") = rel3("d")rel2("c")rel1("b")</dd>
+<dd>rel1("a";"b"); <b>&#8800;</b> rel1("b";"a");</dd></dl></li>
+<li>Relations may be replaced by regular expressions
+<dl><dd>/.{2,3}/(%x;%y) - any relation made of two or three characters between %x and %y</dd></dl></li>
+<li>Arguments of relations may be expressed by <a href="/wiki/A-rule" title="A-rule">A-rules</a>, but only in the right side of rules
+<dl><dd>rel("a"):=rel("an"); or rel("a"):=rel(0&gt;"n");</dd></dl></li>
+<li>S-rules do not affect nodes unless explicitly informed
+<dl><dd>rel("a",[a],<a href="/wiki/index.php?title=A&amp;action=edit&amp;redlink=1" class="new" title="A (page does not exist)">a</a>,A,%x;"b",[b],[[b]],B,%y):=rel2(%x;%y); (the nodes %x and %y do not undergo any change)</dd>
+<dd>rel("a",[a],<a href="/wiki/index.php?title=A&amp;action=edit&amp;redlink=1" class="new" title="A (page does not exist)">a</a>,A,%x;"b",[b],[[b]],B,%y):=rel2(%x);  (the node %x does not undergo any change; the node %y is deleted)</dd>
+<dd>rel("a",[a],<a href="/wiki/index.php?title=A&amp;action=edit&amp;redlink=1" class="new" title="A (page does not exist)">a</a>,A,%x;"b",[b],[[b]],B,%y):=rel2(%x,-A;%y); (the feature A is removed from the node %x; all the rest, including the node %y, does not undergo any change)</dd></dl></li>
+<li>"^" is used for negation
+<dl><dd>rel1(%x;%y)^rel2(%y;%z):=+rel2(%y;%z); (if there is a rel1 between the nodes %x and %y and there is no relation rel2 between the nodes %y and %z, create a new relation rel2 between the nodes %y and %z)</dd></dl></li></ol>
+<div class="mw-heading mw-heading2"><h2 id="Indexes">Indexes</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=S-rule&amp;veaction=edit&amp;section=5" title="Edit section: Indexes" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=S-rule&amp;action=edit&amp;section=5" title="Edit section&#39;s source code: Indexes">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>See <a href="/wiki/Indexation" class="mw-redirect" title="Indexation">Indexation</a>
+</p>
+<div class="mw-heading mw-heading2"><h2 id="Examples">Examples</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=S-rule&amp;veaction=edit&amp;section=6" title="Edit section: Examples" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=S-rule&amp;action=edit&amp;section=6" title="Edit section&#39;s source code: Examples">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>Examples of S-rules:
+</p>
+<ul><li>composition
+<ul><li>VA("into account",PP); (add the PP "into account" as the adjunct of the verb)</li></ul></li>
+<li>subcategorization
+<ul><li>VC(PH([in])); (the complement of the verb is a prepositional phrase headed by the preposition "in")</li></ul></li>
+<li>agreement
+<ul><li>VS(ANUM,APER); (the specifier of the verb assigns number (ANUM) and person (APER) to its head</li></ul></li>
+<li>case marking
+<ul><li>VS(NOM); (the specifier of the verb receives the case nominative (NOM)</li></ul></li>
+<li>distribution
+<ul><li>VA(&gt;&gt;); (the adjunct of the verb comes at the right side of the verb after a blank space)</li></ul></li>
+<li>adjacency
+<ul><li>VA(AJ2); (the adjunct of the verb integrates the second projection of the head)</li></ul></li>
+<li>periphrasis
+<ul><li>VH(%vh,FUT):=+IC([will];%vh,+INF);</li></ul></li>
+<li>projection
+<ul><li>VS(%head;%spec)VB(%head;%comp):=VP(VB(%head;%comp);%spec); (integrate the two relations on the left side into a single relation)</li></ul></li>
+<li>mapping
+<ul><li>agt(%source;%target):=VS(%source;%target); (the agent relation is mapped into a VS relation)</li></ul></li></ul>
+<div class="mw-heading mw-heading2"><h2 id="Formal_Syntax">Formal Syntax</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=S-rule&amp;veaction=edit&amp;section=7" title="Edit section: Formal Syntax" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=S-rule&amp;action=edit&amp;section=7" title="Edit section&#39;s source code: Formal Syntax">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>S-rules comply with the following formal syntax: 
+</p>
+<pre>&lt;S-RULE&gt;               &#160;::= &lt;CONDITION&gt; ":=" (&lt;RELATION&gt;)+";"
+&lt;CONDITION&gt;            &#160;::= &lt;TAG&gt;(","&lt;TAG&gt;)* | (&lt;RELATION&gt;)*
+&lt;RELATION&gt;             &#160;::= &lt;SYNTACTIC RELATION&gt; | &lt;SEMANTIC RELATION&gt;
+&lt;SEMANTIC RELATION&gt;    &#160;::= &lt;UNL RELATION&gt; "(" &lt;NODE&gt; ";" &lt;NODE&gt; ")"
+&lt;SYNTACTIC RELATION&gt;   &#160;::= &lt;NL RELATION&gt; "(" (&lt;NODE&gt;";")? &lt;NODE&gt; ")"
+&lt;UNL RELATION&gt;         &#160;::= {one of the head-driven semantic relations defined in the <a href="/wiki/Universal_Relations" title="Universal Relations">UNL Specs</a>}  
+&lt;NL RELATION&gt;          &#160;::= {one of the head-driven syntactic relations defined in the <a href="/wiki/Tagset" title="Tagset">UNDLF Tagset</a>} 
+&lt;NODE&gt;                 &#160;::= &lt;FEATURE&gt;(","&lt;FEATURE&gt;)* 
+&lt;FEATURE&gt;              &#160;::= &lt;ID&gt;|&lt;TAG&gt;|"""&lt;STRING&gt;"""|"["&lt;STRING&gt;"]"|&lt;DIRECTION&gt;|&lt;SYNTACTIC RELATION&gt;|&lt;ACTION&gt;
+&lt;ID&gt;                   &#160;::= "%"[a-zA-Z_0-9]+
+&lt;TAG&gt;                  &#160;::= {one of the tags defined in the <a href="/wiki/Tagset" title="Tagset">UNDLF Tagset</a>}
+&lt;STRING&gt;               &#160;::= [a..Z]+
+&lt;DIRECTION&gt;            &#160;::= "&gt;"|"&gt;&gt;"|"&lt;"|"&lt;&lt;"
+&lt;ACTION&gt;               &#160;::= &lt;PREFIXATION&gt; | &lt;SUFFIXATION&gt; | &lt;INFIXATION&gt; | &lt;REPLACEMENT&gt; (cf. <a href="/wiki/A-rule" title="A-rule">A-rule</a>)
+</pre>
+<p>where<br />
+&lt;a&gt; = a is a non-terminal symbol<br />
+"a" = a is a constant<br />
+a | b = a or b<br />
+(a)? = a can be repeated 0 or one time<br />
+(a)* = a can be repeated 0 or more times<br />
+(a)+ = a can be repeated 1 or more times<br />
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20260910071733
+Cache expiry: 86400
+Reduced expiry: false
+Complications: [show‐toc]
+CPU time usage: 0.010 seconds
+Real time usage: 0.011 seconds
+Preprocessor visited node count: 103/1000000
+Post‐expand include size: 3176/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 3/100
+Expensive parser function count: 0/100
+Unstrip recursion depth: 0/20
+Unstrip post‐expand size: 61/5000000 bytes
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    1.371      1 Transformation_over_relations
+100.00%    1.371      1 -total
+-->
+
+<!-- Saved in parser cache with key u965818192_SLvgQ-l8z2_:pcache:504:|#|:idhash:canonical and timestamp 20260910071733 and revision id 13242. Rendering was triggered because: page-view
+ -->
+</div>

@@ -1,0 +1,171 @@
+<div class="mw-content-ltr mw-parser-output" lang="en" dir="ltr"><p>In the scope of the project <a href="/wiki/LACE" title="LACE">LACE</a>, an <b>anchor</b> is an element that may facilitate word alignment at the document level.
+</p>
+<div class="mw-heading mw-heading2"><h2 id="HTML_elements">HTML elements</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Anchor&amp;veaction=edit&amp;section=1" title="Edit section: HTML elements" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Anchor&amp;action=edit&amp;section=1" title="Edit section&#39;s source code: HTML elements">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>The following HTML elements are used to define the set of anchors in the project <a href="/wiki/LACEhpc" title="LACEhpc">LACEhpc</a>. They are said to involve smaller texts and, therefore, are more likely to provide lexical mappings.
+</p>
+<table class="wikitable">
+
+<tbody><tr>
+<th>Tag</th>
+<th>Description
+</th></tr>
+<tr>
+<td>&lt;a&gt;</td>
+<td>Defines a hyperlink
+</td></tr>
+<tr>
+<td>&lt;b&gt;</td>
+<td>Defines bold text
+</td></tr>
+<tr>
+<td>&lt;caption&gt;</td>
+<td>Defines a table caption
+</td></tr>
+<tr>
+<td>&lt;dt&gt;</td>
+<td>Defines a term (an item) in a definition list
+</td></tr>
+<tr>
+<td>&lt;em&gt;</td>
+<td>Defines emphasized text&#160;
+</td></tr>
+<tr>
+<td>&lt;figcaption&gt;</td>
+<td>Defines a caption for a &lt;figure&gt; element
+</td></tr>
+<tr>
+<td>&lt;h1&gt; to &lt;h6&gt;</td>
+<td>Defines HTML headings
+</td></tr>
+<tr>
+<td>&lt;i&gt;</td>
+<td>Defines a part of text in an alternate voice or mood
+</td></tr>
+<tr>
+<td>&lt;legend&gt;</td>
+<td>Defines a caption for a &lt;fieldset&gt;, &lt; figure&gt;, or &lt;details&gt; element
+</td></tr>
+<tr>
+<td>&lt;li&gt;</td>
+<td>Defines a list item
+</td></tr>
+<tr>
+<td>&lt;mark&gt;</td>
+<td>Defines marked/highlighted text
+</td></tr>
+<tr>
+<td>&lt;nav&gt;</td>
+<td>Defines navigation links
+</td></tr>
+<tr>
+<td>&lt;q&gt;</td>
+<td>Defines a short quotation
+</td></tr>
+<tr>
+<td>&lt;small&gt;</td>
+<td>Defines smaller text
+</td></tr>
+<tr>
+<td>&lt;strike&gt;</td>
+<td>Not supported in HTML5. Deprecated in HTML 4.01. Defines strike-through text
+</td></tr>
+<tr>
+<td>&lt;strong&gt;</td>
+<td>Defines important text
+</td></tr>
+<tr>
+<td>&lt;sub&gt;</td>
+<td>Defines subscripted text
+</td></tr>
+<tr>
+<td>&lt;sup&gt;</td>
+<td>Defines superscripted text
+</td></tr>
+<tr>
+<td>&lt;td&gt;</td>
+<td>Defines a cell in a table
+</td></tr>
+<tr>
+<td>&lt;th&gt;</td>
+<td>Defines a header cell in a table
+</td></tr></tbody></table>
+<div class="mw-heading mw-heading2"><h2 id="Observations">Observations</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Anchor&amp;veaction=edit&amp;section=2" title="Edit section: Observations" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Anchor&amp;action=edit&amp;section=2" title="Edit section&#39;s source code: Observations">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<dl><dt>Nesting</dt>
+<dd>Anchors ignore nesting. For instance, the sequence &lt;b&gt;&lt;i&gt;ABC&lt;/i&gt;DEF&lt;/b&gt; was considered to have two anchors: &lt;i&gt;ABC&lt;/i&gt; and &lt;b&gt;ABCDEF&lt;/b&gt;.</dd>
+<dt>Attributes and events</dt>
+<dd>HTML attributes and events are ignored. For instance: given &lt;a href="http://www.unlweb.net" target="_blank" title="UNL"&gt;UNLweb&lt;/a&gt;, the anchor is simply &lt;a&gt;UNLweb&lt;/a&gt;.</dd></dl>
+<div class="mw-heading mw-heading2"><h2 id="Example">Example</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Anchor&amp;veaction=edit&amp;section=3" title="Edit section: Example" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Anchor&amp;action=edit&amp;section=3" title="Edit section&#39;s source code: Example">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<table class="wikitable">
+<tbody><tr>
+<th width="50%">Original
+</th>
+<th width="50%">Anchors
+</th></tr>
+<tr>
+<td>
+&lt;HEAD&gt;
+&lt;TITLE&gt;Basic HTML Sample Page&lt;/TITLE&gt;
+&lt;/HEAD&gt;
+&lt;BODY BGCOLOR="WHITE"&gt;
+&lt;CENTER&gt;
+&lt;H1&gt;A Simple Sample Web Page&lt;/H1&gt;
+Extracted from &lt;a href="http://sheldonbrown.com/web_sample1.html"&gt;Sheldon Brown&lt;/a&gt;.
+&lt;IMG SRC="scb_eagle_contact.jpeg"&gt;
+&lt;H2&gt;Demonstrating a few HTML features&lt;/H2&gt;
+&lt;/CENTER&gt;
+&lt;b&gt;HTML&lt;/b&gt; is really a very simple language. It consists of ordinary text, with commands that are enclosed by "&lt;" and "&gt;" characters, or bewteen an "&amp;" and a ";". &lt;P&gt;
+You don't really need to know much HTML to create a page, because you can copy bits of HTML from other pages that do what you want, then change the text!&lt;P&gt;
+&lt;H3&gt;Line Breaks&lt;/H3&gt;
+HTML doesn't normally use line breaks for ordinary text. A white space of any size is treated as a single space. This is because the author of the page has no way of knowing the size of the reader's screen, or what size type they will have their browser set for.&lt;P&gt;
+If you want to put a line break at a particular place, you can use the "&lt;BR&gt;" command, or, for a paragraph break, the "&lt;P&gt;" command, which will insert a blank line. The heading command ("&lt;4&gt;&lt;/4&gt;") puts a blank line above and below the heading text.
+&lt;H4&gt;Starting and Stopping Commands&lt;/H4&gt;
+Most HTML commands come in pairs: for example, "&lt;H4&gt;" marks the beginning of a size 4 heading, and "&lt;/H4&gt;" marks the end of it. The closing command is always the same as the opening command, except for the addition of the "/".&lt;P&gt;
+Modifiers are sometimes included along with the basic command, inside the opening command's &lt; &gt;. The modifier does not need to be repeated in the closing command.
+&lt;H1&gt;This is a size "1" heading&lt;/H1&gt;
+&lt;H2&gt;This is a size "2" heading&lt;/H2&gt;
+&lt;H3&gt;This is a size "3" heading&lt;/H3&gt;
+&lt;H4&gt;This is a size "4" heading&lt;/H4&gt;
+&lt;H5&gt;This is a size "5" heading&lt;/H5&gt;
+&lt;H6&gt;This is a size "6" heading&lt;/H6&gt;
+&lt;center&gt;
+&lt;/body&gt;
+
+</td>
+<td>
+<pre>&lt;H1&gt;A Simple Sample Web Page&lt;/H1&gt;
+&lt;a&gt;Sheldon Brown&lt;/a&gt;
+&lt;H2&gt;Demonstrating a few HTML features&lt;/H2&gt;
+&lt;b&gt;HTML&lt;/b&gt;
+&lt;H3&gt;Line Breaks&lt;/H3&gt;
+&lt;H1&gt;This is a size "1" heading&lt;/H1&gt;
+&lt;H2&gt;This is a size "2" heading&lt;/H2&gt;
+&lt;H3&gt;This is a size "3" heading&lt;/H3&gt;
+&lt;H4&gt;This is a size "4" heading&lt;/H4&gt;
+&lt;H5&gt;This is a size "5" heading&lt;/H5&gt;
+&lt;H6&gt;This is a size "6" heading&lt;/H6&gt;
+</pre>
+</td></tr></tbody></table>
+<!-- 
+NewPP limit report
+Cached time: 20260910160406
+Cache expiry: 86400
+Reduced expiry: false
+Complications: []
+CPU time usage: 0.004 seconds
+Real time usage: 0.004 seconds
+Preprocessor visited node count: 42/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/100
+Expensive parser function count: 0/100
+Unstrip recursion depth: 0/20
+Unstrip post‐expand size: 2785/5000000 bytes
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    0.000      1 -total
+-->
+
+<!-- Saved in parser cache with key u965818192_SLvgQ-l8z2_:pcache:761:|#|:idhash:canonical and timestamp 20260910160406 and revision id 15762. Rendering was triggered because: diff-page
+ -->
+</div>

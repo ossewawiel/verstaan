@@ -1,0 +1,72 @@
+English [[determiners]] are always represented by attributes.
+
+{| border="1"  cellpadding="5"
+!Determiner
+!Attribute
+!English
+!UNL
+|-
+|a, an||@indef||a book||book.@indef
+|-
+|a few||@paucal||a few books||book.@paucal
+|-
+|a little||@paucal||a little ammount||ammount.@paucal
+|-
+|a lot of||@multal||a lot of books||book.@multal
+|-
+|all||@all||all books||book.@all
+|-
+|another||@other||another book||book.@other
+|-
+|any||@any||any book||book.@any
+|-
+|both||@both||both books||book.@both
+|-
+|each||@each||each book||book.@each
+|-
+|either||@either||either book||book.@either
+|-
+|else||@other||something else||something.@other
+|-
+|every||@every||every book||book.@every
+|-
+|few||@paucal||few books||book.@paucal
+|-
+|little||@paucal||little damage||damage.@paucal
+|-
+|many||@multal||many books||book.@multal
+|-
+|most||@most||most books||book.@most
+|-
+|much||@multal||much effort||effort.@multal
+|-
+|neither||@neither||neither foot||foot.@neither
+|-
+|no||@not||no book||book.@not
+|-
+|other||@other||other book||book.@other
+|-
+|own||@own||own book||book.@own
+|-
+|same||@same||same book||book.@same
+|-
+|several||@multal||several books||book.@multal
+|-
+|some||@paucal||some books||book.@paucal
+|-
+|such||@such||such books||book.@such
+|-
+|that, those||@distal||that book||book.@distal
+|-
+|the||@def||the book||book.@def
+|-
+|this, these||@proximal||this book||book.@proximal
+|-
+|what||@wh||what book||book.@wh
+|-
+|whatever||@wh||whatever book||book.@wh
+|-
+|which||@wh||which book||book.@wh
+|-
+|whichever||@wh||whichever book||book.@wh
+|}

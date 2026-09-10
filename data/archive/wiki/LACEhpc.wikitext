@@ -1,0 +1,60 @@
+The project LACE<sup>hpc</sup> is part of the project [[LACE]] and aims at designing and implementing efficient high-performance computing methods for extracting monolingual and multilingual resources from comparable non-parallel corpora.
+
+== Goals ==
+The project LACE<sup>hpc</sup> is divided in four main tasks:
+*extracting n-grams from monolingual corpora;
+*aligning n-grams in bilingual corpora; 
+*building monolingual and multilingual language models; 
+*minimizing and indexing the resulting databases for use in the UNL framework. 
+The proposal includes the adaptation and implementation of existing algorithms; the evaluation, revision and optimization of extraction and alignment methods; and studies for sustainability of the resulting techniques, especially on scalability and portability.<br />
+In addition to HPC-oriented algorithms, the project is expected to deliver several different monolingual and bilingual databases, as well as aligned corpora and translation memories, which are important assets for natural language processing and fundamental resources for research in Linguistics and Computational Linguistics.
+
+== Corpus ==
+In order to extract the data, we have proposed the use of the [http://www.wikipedia.org Wikipedia] as our corpus.<br />
+The choice for the Wikipedia derives from five main reasons:
+#Relevance: Wikipedia is one of the largest reference web sites, attracting nearly 68 million visitors monthly;
+#Multilinguality: Wikipedia comprises more than 15,000,000 articles in more than 270 languages, many of which are inter-related and may be used to constitute a document-aligned multilingual comparable (non-parallel) corpus;
+#Comprehensiveness: Wikipedia is not constrained in domain;
+#Openness: Wikipedia texts are available under the Creative Commons Attribution-Share Alike License, which would avoid copyright issues concerning the distribution and use of the derived material; 
+#Accessibility: Wikipedia is easily and freely downloadable. 
+The raw corpus is presented in two distributions at [http://cadmos.undlfoundation.ch:8080/corpus/]:
+*The experimental corpus contains 10K documents from 3 languages (English, French and Japanese) aligned at the document level
+*The abridged corpus contains 100K documents from 10 languages (Dutch, English, French, German, Italian, Japanese, Polish, Portuguese, Russian and Spanish) aligned at the document level.
+
+== N-grams ==
+''main article: [[N-gram]]''<br /><br />
+The n-grams are presented in two different sets: continuous n-grams and discontinuous n-grams. Each set is further organized in four different subsets:
+*0. raw data (n-grams extracted from the corpus)
+*1. frequency filtered (n-grams whose frequency is equal or higher than the ratio between tokens/types for all n-grams in the corpus)
+*2. redundancy filtered (frequency-filtered n-grams that cannot be subsumed by any other existing frequency-filtered n-gram)
+*3. constituency scores (the results of applying constituency scores to the redundancy-filtered n-grams)
+The latest release of the n-grams extracted in the project LACE<sup>hpc</sup> may be downloaded from [http://cadmos.undlfoundation.ch:8080/n-grams/]
+
+== Anchors ==
+''main article: [[Anchor]]''
+
+== MWE ==
+''main article: [[MWE]]''
+
+
+
+== Participants ==
+The project LACE<sup>hpc</sup> has been developed by the UNDL Foundation in collaboration with the Centre for Advanced Modelling Science (CADMOS), which includes researchers from the University of Geneva (UNIGE) and from the École Polytechnique Fédérale de Lausanne (EPFL).
+*Project Managers
+**Bastien CHOPARD (CADMOS)
+**Gilles FALQUET (UNIGE)
+**Ronaldo MARTINS (UNDL Foundation)
+*Participants
+**Kamal CHICK ECHIOUK (UNDL Foundation)
+**Meghdad FAHRAMAND (PhD student at UNIGE)
+**Jean-Luc FALCONE (UNIGE)
+**Jacques GUYOT (Simple Shift)
+
+== Files ==
+*[http://www.undlfoundation.org/lace/docs/LACEhpc.pdf Original project]
+
+== Support ==
+The LACE<sup>hpc</sup> project is supported by a grant from the Hans Wilsdorf Foundation.
+
+== Notes ==
+<references />

@@ -1,0 +1,136 @@
+<div class="mw-content-ltr mw-parser-output" lang="en" dir="ltr"><p>AESOP is an experimental corpus used to refine the initial versions of the grammar for sentence-based <a href="/wiki/UNLization" title="UNLization">UNLization</a> and <a href="/wiki/NLization" title="NLization">NLization</a>, using <a href="/wiki/IAN" title="IAN">IAN</a> and <a href="/wiki/EUGENE" title="EUGENE">EUGENE</a>, respectively. It comprises 6 very short texts in English and their corresponding graphs in UNL. 
+</p>
+<div id="toc" class="toc" role="navigation" aria-labelledby="mw-toc-heading"><input type="checkbox" role="button" id="toctogglecheckbox" class="toctogglecheckbox" style="display:none" /><div class="toctitle" lang="en" dir="ltr"><h2 id="mw-toc-heading">Contents</h2><span class="toctogglespan"><label class="toctogglelabel" for="toctogglecheckbox"></label></span></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Goal"><span class="tocnumber">1</span> <span class="toctext">Goal</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#Repository"><span class="tocnumber">2</span> <span class="toctext">Repository</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="#Instructions"><span class="tocnumber">3</span> <span class="toctext">Instructions</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="#Notes"><span class="tocnumber">4</span> <span class="toctext">Notes</span></a></li>
+</ul>
+</div>
+
+<div class="mw-heading mw-heading2"><h2 id="Goal">Goal</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=AESOP&amp;veaction=edit&amp;section=1" title="Edit section: Goal" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=AESOP&amp;action=edit&amp;section=1" title="Edit section&#39;s source code: Goal">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>The project AESOP has two main goals:
+</p>
+<ol><li>To provide a translation memory from UNL to natural language, in order to be used for inducing UNL&gt;NL grammars; and</li>
+<li>To provide standards for fully-automatic sentence-driven NLization, to be used as the parameter for evaluating the precision of UNL&gt;NL grammars.</li></ol>
+<div class="mw-heading mw-heading2"><h2 id="Repository">Repository</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=AESOP&amp;veaction=edit&amp;section=2" title="Edit section: Repository" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=AESOP&amp;action=edit&amp;section=2" title="Edit section&#39;s source code: Repository">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>AESOP consists of 6 texts, which are translations of Aesop's fables to English. Most of them have been derived from the standard version by George Fyler Townsend (available at <a rel="nofollow" class="external text" href="http://www.gutenberg.org/cache/epub/21/pg21.txt">The Project Gutenberg</a>), but they have suffered slight changes in order to become more suitable for natural language processing. <br />
+</p>
+<table border="1" align="center" cellpadding="2">
+<tbody><tr>
+<th>Project
+</th>
+<th>Title
+</th>
+<th>English*
+</th>
+<th>UNL**
+</th>
+<th>Number of sentences
+</th></tr>
+<tr>
+<td>AESOP-A1
+</td>
+<td align="center">The Hare and the Tortoise
+</td>
+<td align="center"><a rel="nofollow" class="external text" href="http://www.unlweb.net.br/resources/corpus/AESOP/aa1_eng.txt">aa1_eng.txt</a>
+</td>
+<td align="center"><a rel="nofollow" class="external text" href="http://www.unlweb.net.br/resources/corpus/AESOP/aa1_unl.txt">aa1_unl.txt</a>
+</td>
+<td align="center">13
+</td></tr>
+<tr>
+<td>AESOP-A2
+</td>
+<td align="center">The Bat and The Weasels
+</td>
+<td align="center"><a rel="nofollow" class="external text" href="http://www.unlweb.net.br/resources/corpus/AESOP/aa2_eng.txt">aa2_eng.txt</a>
+</td>
+<td align="center"><a rel="nofollow" class="external text" href="http://www.unlweb.net.br/resources/corpus/AESOP/aa2_unl.txt">aa2_unl.txt</a>
+</td>
+<td align="center">10
+</td></tr>
+<tr>
+<td>AESOP-B1
+</td>
+<td align="center">The Father and his Sons
+</td>
+<td align="center"><a rel="nofollow" class="external text" href="http://www.unlweb.net.br/resources/corpus/AESOP/ab1_eng.txt">ab1_eng.txt</a>
+</td>
+<td align="center"><a rel="nofollow" class="external text" href="http://www.unlweb.net.br/resources/corpus/AESOP/ab1_unl.txt">ab1_unl.txt</a>
+</td>
+<td align="center">11
+</td></tr>
+<tr>
+<td>AESOP-B2
+</td>
+<td align="center">The Ants and the Grasshopper
+</td>
+<td align="center"><a rel="nofollow" class="external text" href="http://www.unlweb.net.br/resources/corpus/AESOP/ab2_eng.txt">ab2_eng.txt</a>
+</td>
+<td align="center"><a rel="nofollow" class="external text" href="http://www.unlweb.net.br/resources/corpus/AESOP/ab2_unl.txt">ab2_unl.txt</a>
+</td>
+<td align="center">10
+</td></tr>
+<tr>
+<td>AESOP-C1
+</td>
+<td align="center">The Man and the Lion
+</td>
+<td align="center"><a rel="nofollow" class="external text" href="http://www.unlweb.net.br/resources/corpus/AESOP/ac1_eng.txt">ac1_eng.txt</a>
+</td>
+<td align="center"><a rel="nofollow" class="external text" href="http://www.unlweb.net.br/resources/corpus/AESOP/ac1_unl.txt">ac1_unl.txt</a>
+</td>
+<td align="center">11
+</td></tr>
+<tr>
+<td>AESOP-C2
+</td>
+<td align="center">
+</td>
+<td align="center"><a rel="nofollow" class="external text" href="http://www.unlweb.net.br/resources/corpus/AESOP/ac2_eng.txt">ac2_eng.txt</a>
+</td>
+<td align="center"><a rel="nofollow" class="external text" href="http://www.unlweb.net.br/resources/corpus/AESOP/ac2_unl.txt">ac2_unl.txt</a>
+</td>
+<td align="center">11
+</td></tr>
+</tbody></table>
+<p>*To be manually translated to your target language in order to be used as the input for UNLization (IAN)<br />
+**To be used as the input for NLization (EUGENE)<br />
+</p>
+<div class="mw-heading mw-heading2"><h2 id="Instructions">Instructions</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=AESOP&amp;veaction=edit&amp;section=3" title="Edit section: Instructions" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=AESOP&amp;action=edit&amp;section=3" title="Edit section&#39;s source code: Instructions">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>In AESOP, users are expected to map UNL graphs into natural language sentences. This process must take into consideration the following:
+</p>
+<ul><li>The NLization is the generation, to the target language, of the information conveyed by the UNL graph. It defines the expected output of UNL in natural language, and will be used to measure the precision of UNL&gt;NL grammars. The NLization must comply with the principles below:</li>
+<li>The NLization must convey all and only the information available in the UNL graph, i.e., the NLization must not add or suppress any information;</li>
+<li>The NLization must be a grammatical sentence of the target language, i.e., it should be syntactically and semantically well-formed;</li>
+<li>The NLization must belong to the standard variety of the target language, i.e., it should not contain slang, jargon, archaisms, SMS language and other non-standard structures;</li>
+<li>The NLization must contain punctuation signs only if absolutely necessary or explicitly stated in the UNL graph;</li>
+<li>A single graph may lead to differnt NLizations, to be provided in separate lines. These may convey different order of constituents, if possible in the target language.</li></ul>
+<div class="mw-heading mw-heading2"><h2 id="Notes">Notes</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=AESOP&amp;veaction=edit&amp;section=4" title="Edit section: Notes" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=AESOP&amp;action=edit&amp;section=4" title="Edit section&#39;s source code: Notes">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+
+<!-- 
+NewPP limit report
+Cached time: 20260909220604
+Cache expiry: 86400
+Reduced expiry: false
+Complications: [show‐toc]
+CPU time usage: 0.009 seconds
+Real time usage: 0.009 seconds
+Preprocessor visited node count: 31/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/100
+Expensive parser function count: 0/100
+Unstrip recursion depth: 0/20
+Unstrip post‐expand size: 3/5000000 bytes
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    0.000      1 -total
+-->
+
+<!-- Saved in parser cache with key u965818192_SLvgQ-l8z2_:pcache:858:|#|:idhash:canonical and timestamp 20260909220604 and revision id 16494. Rendering was triggered because: page-view
+ -->
+</div>

@@ -1,0 +1,68 @@
+'''Degree''' is a category normally used to specify the extent of a comparison between adjectives or adverbs, such as comparative and superlative. In UNL, it is also used to represent the value of [[adverbs|specifier adverbs]]. 
+
+== Natural language ==
+In the UNLarium, degree must be informed only when expressed by morphological means, such as in "bigger" and "biggest".<br >
+The values of the degree are the following:
+
+{{#tree:id=nl_degree|openlevels=0|root=Degree (DEG)|
+*positive (PST): no comparison
+*comparative (CMP): comparison between two
+*superlative (SUP): comparison between more than two
+**comparative superlative (SUPR)
+**absolute superlative (SUPA)
+*diminutive (DIM): used to convey a slight degree of the root meaning, smallness of the object or quality named, encapsulation, intimacy, or endearment
+*augmentative (AUG): expresses greater intensity, often in size, but also in other attributes (opposite of a diminutive)
+}}
+
+
+
+;The positive is the default value and may be omitted.
+
+=== Examples ===
+*Positive (PST): big, good, bad
+*Comparative (CMP): bigger, better, worse
+*Superlative (SUP): biggest, best, worst
+*Diminutive (DIM):
+*Augmentative (AUG):
+
+== UNL ==
+In UNL, degree is to be represented by attributes:
+
+{{#tree:id=unl_degree|openlevels=0|root=Degree|
+*@not: negative
+**@almost: approximative
+*positive
+**@again: iterative
+**@emphasis: emphasis
+**@enough: sufficiently (enough)
+**@extra: excessively (too) 
+**@minus: downtoned (a little)
+**@plus: intensified (very)
+*comparative
+**@more: comparative of superiority
+**@less: comparative of inferiority
+**@equal: comparative of equality
+*superlative
+**@most: superlative of superiority
+**@least: superlative of inferiority
+}}
+
+;The basis for the comparison is expressed by the relation 'bas'.
+:<nowiki>more <A> than <B> = bas(A.@more, B)</nowiki>
+:<nowiki>less <A> than <B> = bas(A.@less, B)</nowiki>
+:<nowiki>as <A> as <B> = bas(A.@equal, B)</nowiki>
+
+;Degree attributes may be combined:
+:very much happier = happy.@more.@plus
+
+=== Examples ===
+*X is more fascinating than Y = aoj(fascinating.@more, X), bas(fascinating.@more, Y)
+*X is better than Y = aoj(good.@more, X), bas(good.@more, Y)
+*X is less fascinating than Y = aoj(fascinating.@less, X), bas(fascinating.@less, Y)
+*X is worse than Y = aoj(good.@less, X), bas(good.@less, Y)
+*X is as fascinating as Y = aoj(fascinating.@equal, X), bas(fascinating.@equal, Y)
+*X is the most fascinating of the Ys = aoj(fascinating.@most, X), bas(fascinating.@most, Y)
+*X is the best of the Ys = aoj(good.@most, X), bas(good.@most, Y)
+*X is the least fascinating of the Ys = aoj(fascinating.@least, X), bas(fascinating.@least, Y)
+*X is the worst of the Ys = aoj(good.@least, X), bas(good.@least, Y)
+*X is not so fascinating as Y = aoj(fascinating.@less, X), bas(fascinating.@less, Y)

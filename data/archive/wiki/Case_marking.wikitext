@@ -1,0 +1,35 @@
+'''Case marking''' is the process of assigning [[case|grammatical case]] values to dependent nouns for the type of relationship they bear to their heads. Usually a language is said to "have cases" only if nouns change their form (nouns decline) to reflect their case. In the UNL<sup>arium</sup> framework, case marking is defined through [[S-rule]]s. Case marking is not informed in UNL.
+
+== Syntax ==
+Case marking is defined through [[S-rule]]s in the following format:
+
+ <SYNTACTIC ROLE>(+<CASE>);
+
+Where:<br />
+*<SYNTACTIC ROLE> is the [[Syntactic roles|syntactic role]] (VA, VC, VS, VH, etc) of the case-marked term in relation to the head; and
+*<CASE> is the [[case|grammatical case]] to be assigned.
+
+== Examples ==
+;VS(+NOM);
+:assigns the nominative case (NOM) to the specifier of the verb (VS)
+;VC(+ACC);
+:assigns the accusative case (ACC) to the complement of the verb (VC)
+
+== Observations ==
+;Conditional case-marking
+:Conditional case-marking may be stated by defining the left side of the s-rule and co-indexing it to the right side:
+:*VC(+DAT); (unconditional case-marking: assign the dative case (DAT) to the complement of the verb);
+:*VC(PP):=VC(+DAT); (conditional case-marking: assign the dative case (DAT) to the complement of the verb (VC) if it is a PP);
+:*VC([make];NP):=VC(+ACC); (conditional case-marking: assign the accusative case (ACC) to the complement of the verb (VC) whose lemma is "make").
+;Complex case-marking
+:A single case-marking rule may contain several case-marking operations:
+:*VS(+NOM)VC(+ACC)VA(+OBL); (assign the nominative case to the specifier of the verb, the accusative case to the complement of the verb, and the oblique case to the adjunct to the verb)
+;Use of "+"
+:As rules are conservative (i.e., features are preserved unless explicitly deleted), the use of "+" is actually optional:
+:*VC(+DAT); is the same as VC(DAT);
+;Case-unmarking
+:Assigned cases may be deleted through "-":
+:*VC(-ACC); (deletes the accusative case from every verb complement)
+:*VC(PP):=VC(-ACC); (deletes the accusative case from verb complements which are prepositional phrases)
+;The symbol '''^''' is used for negation and to control infinite recursion:
+:*VC(^NOM):=VC(NOM); (assign the nominative case to the complement of verb if it does not have the nominative case)

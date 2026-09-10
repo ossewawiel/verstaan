@@ -1,0 +1,46 @@
+'''Polarity''' is a category that indicates the distinction between affirmative and negative.
+
+== Natural Language ==
+In the UNLarium, polarity may assume two values:
+
+{{#tree:id=nl_polarity|openlevels=0|root=Polarity|
+*affirmative (AFM)
+*negative (NEG)
+}}
+
+=== Examples ===
+*English
+**not = NEG
+**never = NEG
+**none = NEG
+
+== UNL ==
+In UNL, the attribute polarity may assume the following values:
+
+{{#tree:id=unl_polarity|openlevels=0|root=Polarity|
+*@yes
+*@not
+*@maybe
+}}
+
+
+;Affirmative is the default value and must be omitted. The attribute @yes is used only for emphatic affirmative:
+:I live here = live
+:I do live here = live.@yes
+
+;Polarity attributes must be assigned according to the scope of the affirmative or negative
+:She didn't come = come.@not
+:I don't know whether she came = know.@not (but not <strike>came.@not</strike>)
+
+;Polarity attributes must not be informed when lexicalized:
+:never = never (and not <strike>never.@not</strike>)
+:I never lived here = live (and not <strike>live.@not</strike>)
+
+;Double negatives must be rewritten as simple negatives
+:I don't know nothing = I don't know anything (know.@not) or I know nothing (know)
+
+=== Examples ===
+*I live here = live
+*I do live here = live.@yes
+*I don't live here = live.@not
+*Maybe I live here = live.@maybe

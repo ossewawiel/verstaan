@@ -1,0 +1,34 @@
+<div class="mw-content-ltr mw-parser-output" lang="en" dir="ltr"><p>Hyper-relations are altered, replaced, created and deleted by <a href="/wiki/T-rule" title="T-rule">T-rules</a>:
+</p>
+<div class="mw-heading mw-heading3"><h3 id="Creating_hyper-relations">Creating hyper-relations</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Transformation_over_hyper-relations&amp;veaction=edit&amp;section=1" title="Edit section: Creating hyper-relations" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Transformation_over_hyper-relations&amp;action=edit&amp;section=1" title="Edit section&#39;s source code: Creating hyper-relations">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>Hyper-relations are created through encapsulating relations:
+</p>
+<ul><li>rel1(%x;%y)rel2(%x;%z):=rel1(rel2(%x;%z);%y); (the relation rel1 between %x and %y becomes a hyper-relation between the relation rel2(%x;%z) and the node %y.)</li></ul>
+<div class="mw-heading mw-heading3"><h3 id="Transforming_hyper-relations_into_simple_relations">Transforming hyper-relations into simple relations</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Transformation_over_hyper-relations&amp;veaction=edit&amp;section=2" title="Edit section: Transforming hyper-relations into simple relations" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Transformation_over_hyper-relations&amp;action=edit&amp;section=2" title="Edit section&#39;s source code: Transforming hyper-relations into simple relations">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>Hyper-relations are transformed into simple relations by removing their internal relations:
+</p>
+<ul><li>rel1(rel2(%x;%z);%y):=rel1(%x;%y)rel2(%x;%z); (the hyper-relation rel1 between the relation rel2(%x;%z) and the node %y is transformed into a simple relation between the nodes %x and %y; the relatin rel2(%x;%z) is not affected.)</li></ul>
+<!-- 
+NewPP limit report
+Cached time: 20260910013645
+Cache expiry: 86400
+Reduced expiry: false
+Complications: []
+CPU time usage: 0.002 seconds
+Real time usage: 0.002 seconds
+Preprocessor visited node count: 7/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/100
+Expensive parser function count: 0/100
+Unstrip recursion depth: 0/20
+Unstrip post‐expand size: 0/5000000 bytes
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    0.000      1 -total
+-->
+
+<!-- Saved in parser cache with key u965818192_SLvgQ-l8z2_:pcache:800:|#|:idhash:canonical and timestamp 20260910013645 and revision id 16094. Rendering was triggered because: page-view
+ -->
+</div>

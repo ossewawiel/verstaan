@@ -1,0 +1,57 @@
+CLEA<sup>1500</sup> certifies that you have reached a standard of knowledge concerning the development of natural language grammars for [[UNLization]] and may officially participate in the UNL Research. The certificate consists of a set of 50 sentences that must be UNLized with IAN.
+
+== Goal ==
+In CLEA<sup>1500</sup>, you are expected to provide the lingware (dictionary and grammars) necessary to '''UNLize''' a translated version of [[UCA1]].
+
+== Instructions ==
+#Training corpus
+##Prepare the training corpus
+##*<u>If your native language is not English</u>: translate (manually) the 50 sentences of the corpus [[UCA1]] from English into your native language. Be as close as possible to the original, and provide one single translation for each sentence. This will be your input document file, and your goal will be to provide (automatically, through [[IAN]]) the UNL graphs for each sentence. See an example of input file [http://www.unlweb.net.br/resources/UCA1/uca1_fra.txt here].
+##*<u>If your native language is English</u>: use the corpus [[UCA2]] as your input document file.
+##Save the translated text (without the English original) in a plain text (.txt) file with UTF-8 encoding and upload it to UNLWEB>UNLDEV>IAN>NL FILES. 
+#Dictionary<ref>Instead of creating a whole new dictionary from scratch, you may try localizing the English dictionary available at [http://www.unlweb.net.br/resources/UCA1/eng_unl_dic.txt eng_unl_dic.txt]. Note that "localization" is not the same as "translation". You may need other features (in English, for instance, nouns do not have gender or case) or other entries. In any case, the resulting dictionary should reflect your translated version of the corpus (i.e., all entries appearing in your translated version of the corpus should appear in the dictionary). For further information on localization, see [[Localization]]. For information on the dictionary structure, see [[Dictonary Specs]]. For an explanation of the structure of the English dictionary, see [[English_dictionary|English Dictionary]]. In case you need additional features, use only the tags available at the [[tagset]].</ref> 
+##Create a dictionary for your training corpus. Your dictionary must contain <u>all and only the word forms appearing in your training corpus</u>, and must comply with the [[Dictionary Specs]].
+##Save the NL-UNL dictionary in a plain text (.txt) file with UTF-8 encoding and upload it to UNLWEB>UNLDEV>IAN>DICTIONARIES.
+#Grammars<ref>In order to prepare the grammar, study the [[Grammar Specs]]. Next, take a look at the structure of the [[English_grammar|English Grammar]] for a detailed example. In many cases, it is simpler just to localize the English grammars to your own locale rather than creating a whole grammar from the scratch. See the instructions at [[Localization]].</ref>
+##Create the NL-UNL (analysis) grammars necessary to UNLize the natural language sentences of the translated corpus. These grammars are the most difficult (and the actual goal) of the whole analysis task. There can be three different types of grammar:
+##*[[N-grammar]], which is used to segment<ref>This is not necessary, because the corpus is already segmented.</ref> the text into sentences and to normalize the input text, resolving contractions, abbreviations and other phenomena that can be handled without the dictionary (i.e., by manipulating isolated strings of characters);
+##*[[T-grammar]], which is used to transform the list structure (i.e., the natural language sentence) into a graph structure (the UNL graph);
+##*[[D-grammar]], which is used to improve the performance of the [[tokenization]] and of the [[transformation]].<ref>D-rules used in tokenization are used either to prevent wrong lexical matches or to provoke right lexical matches. D-rules used in transformation are used to either prevent or provoke the application of certain rules.</ref>
+##Save the NL-UNL grammars in a plain text (.txt) file with UTF-8 encoding and upload them to the corresponding tabs in UNLWEB>UNLDEV>IAN.
+##Test them and do the necessary changes until you get good results.
+#Evaluation
+##Export the actual output of IAN (range=1-100, trace-level=NONE).
+##Check the F-measure of the actual output at UNLWEB>UNLARIUM>TOOLS>F-MEASURE.<ref>The F-measure compares the actual output (exported from IAN) with the expected output (available at [http://www.unlweb.net.br/resources/UCA1/uca1_unl.txt uca1_unl.txt])</ref>
+##If the F-measure > 0.9, upload the corpus, dictionary and grammars to VALERIE (UNLWEB>VALERIE>CLEA1500) in order to have your exercise evaluated.
+
+== Samples and Examples ==
+The following resources have been used to deal with UCA1 in English and may be used as a sample of what is expected to be provided
+{|border=1 cellpadding=5 align=center
+|+UNLization
+!Language
+!Corpus
+!Dictionary
+!N-Grammar
+!T-Grammar
+!D-Grammar
+!Output
+|-
+|align=center|English
+|[http://www.unlweb.net.br/resources/UCA1/uca1_eng.txt uca1_eng.txt]
+|[http://www.unlweb.net.br/resources/UCA1/eng_unl_dic.txt eng_unl_dic.txt]
+|[http://www.unlweb.net.br/resources/UCA1/eng_unl_ngrammar.txt eng_unl_ngrammar.txt]
+|[http://www.unlweb.net.br/resources/UCA1/eng_unl_tgrammar.txt eng_unl_tgrammar.txt]
+|[http://www.unlweb.net.br/resources/UCA1/eng_unl_dgrammar.txt eng_unl_dgrammar.txt]
+|[http://www.unlweb.net.br/resources/UCA1/eng_unl_trace.txt eng_unl_trace.txt]
+|}
+<br />
+
+== Recommended Readings ==
+Before starting the activity, and in order to fully understand what is expected to be done, it is important for you to be acquainted with the following documentation:
+*[[Tagset]], because you are expected to use only the tags included in the tagset
+*[[UNL Dictionary Specs]], which is essential to understand the dictionary structure
+*[[UNL Grammar Specs]], which is essential to understand the grammar structure
+It is also interesting to make a test drive with [[IAN]].
+
+== Notes ==
+<references/>

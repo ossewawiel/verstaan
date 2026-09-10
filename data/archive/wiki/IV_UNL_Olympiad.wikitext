@@ -1,0 +1,230 @@
+The UNL Olympiad is a series of competitions organised by the UNDL Foundation in order to foster the development of UNL-driven resources (dictionaries, grammars and corpora). The fourth edition of the Olympiad is devoted to the development of grammars and dictionaries for UNLizing (with [[IAN]]) and NLizing (with [[EUGENE]]) the corpus derived from the project [[AESOP|AESOP-A1]]. 
+
+== Important dates ==
+Preparatory phase
+*<strike>[[AESOP|AESOP-A1]]: until 22 Sep 2014</strike>
+*<strike>Open discussion: 23-30 Sep 2014</strike>
+*<strike>Official release of the corpus: 7 Oct 2014</strike>
+Competition
+*<strike>Deadline for uploading the grammars and dictionaries: 15 Nov 2014</strike>
+*<strike>First results: 23 Nov 2014</strike>
+*<strike>Open discussion of the results: 24-30 Nov 2014</strike>
+*<strike>Final results: 7 Dec 2014</strike>
+
+== Preparatory Phase (Concluded) ==
+Participation in the preparatory phase is open to all candidates and is not compulsory, provided that at least one user of the working language completes the project AESOP-A1. 
+
+=== AESOP-A1 ===
+The first phase of the IV UNL Olympiad is the project [[AESOP|AESOP-A1]], which is open and funded for all languages. This project will set the corpus and the reference for UNLization and NLization. It consists of 13 UNL graphs that must be NLized (i.e., generated into natural language, manually). This process must be done only once for each language, i.e., it is not necessary (nor possible) that all users address the 13 UNL graphs. The progress report of the project AESOP-A1 with the number of available entries is available at UNLWEB>PROJECTS>AESOP-A1>PROGRESS REPORT.
+
+=== Open Discussion ===
+The second phase of the IV UNL Olympiad will consist in an open discussion of the results of the project AESOP-A1. All users will be able to propose the inclusion, suppression or modification of the NLizations proposed to the UNL graphs, in order to avoid any biases and privileges for specific users.
+
+=== Official Release ===
+The official corpus and set of languages, resulting from the preparatory phases, was released on 7 Oct 2014.
+
+== Competition (Concluded) ==
+
+=== Goals ===
+The IV UNL Olympiad has two main goals:
+*To prepare the dictionaries and grammars for UNLizing, with [[IAN]], the corpus AESOP-A1; and/or
+*To prepare the dictionaries and grammars for NLizing, with [[EUGENE]], the corpus AESOP-A1.
+UNLization is the process of representing, into UNL, the information conveyed by a natural language document. NLization, conversely, is the process of representing, in natural language, the information conveyed by a UNL document. These are done, respectively, with IAN and EUGENE, which are engines available at the [[UNLdev]].
+
+=== Modalities ===
+The competition is organised in two modalities:
+*Best UNLization Grammar for <LANGUAGE>
+*Best NLization Grammar for <LANGUAGE>
+Where <LANGUAGE> is one of the languages participating in this Olympiad (see the complete list below).<br />
+Candidates may participate in one or two modalities, i.e., they may work with the UNLization grammar, with the NLization grammar, or with both.<br />
+Candidates may also participate in one or more languages, provided that they belong to the official list.
+
+=== Prizes ===
+Prizes are awarded to the best grammars of each modality (UNLization and NLization) for each language<ref>This means that for each language there will be awarded up to 6 prizes: Best UNLization Grammar, Second Best UNLization Grammar, Third Best UNLization Grammar, Best NLization Grammar, Second Best UNLization Grammar and Third Best NLization Grammar</ref>:
+*1st place: Gold Medal
+*2nd place: Silver Medal
+*3rd place: Bronze Medal
+Additionally, the <u>10 best UNLization grammars among all languages</u> and the <u>10 best NLization grammars among all languages</u> will be awarded USD500.00 each.<ref>The value of USD500.00 will be paid only to the 10 best UNLization or NLization grammars '''in general''', and not to the 10 best UNLization/NLizations of each language.</ref>
+
+=== Corpus ===
+The official corpus will be available for download at UNLWEB>UNLARIUM>CORPUS>AESOP-A1>EXPORT on 7 Oct 2014.
+
+=== Languages ===
+The list of languages participating in the IV UNL Olympiad is the following:
+*Armenian
+*Baatonum
+*Bengali
+*Bosnian
+*Bulgarian
+*Czech
+*Estonian
+*French
+*Georgian
+*German
+*Greek (Ancient)
+*Greek (Modern)
+*Hindi
+*Khmer
+*Latin
+*Oriya
+*Panjabi
+*Persian
+*Portuguese
+*Russian
+*Sinhala
+*Tamil
+*Telugu
+*Ukrainian
+*Vietnamese
+
+=== Instructions ===
+#The competition is free and open to any participant, but it is limited to the set of languages listed above.
+#The OFFICIAL CORPUS must be extracted from the UNLarium (at UNLWEB>UNLARIUM>CORPUS>AESOP-A1>EXPORT>WORKING LANGUAGE). The NL corpus is used in UNLization (with IAN); the UNL corpus is used in NLization (with EUGENE).
+#Candidates must build their WORKING CORPUS out of the official corpus by selecting one NL sentence for each UNL graph. Note that, in the official corpus, the same UNL graph may have several candidate NL sentences in the same language. Candidates must select only one (per graph) to work with. This means that the UNLization will involve 13 NL sentences (i.e., candidates are expected to provide the dictionaries and grammars to map 13 sentences from their working language to UNL), and the NLization will involve 13 UNL graphs (i.e., candidates are expected to provide the dictionaries and grammars to map 13 UNL graphs to their working language).
+#The goal of the UNLization modality is to UNLize ALL sentences from the NL WORKING CORPUS (not from the official corpus); the goal of the NLization modality is to NLize ALL graphs from the UNL WORKING CORPUS.<ref>The goal of the Olympiad is to provide ONE POSSIBLE MAPPING for each structure, i.e., to map natural language sentences to at least one valid UNL graph, and to map the UNL graph into at least one valid NL sentence. This means that, if the natural language is ambiguous, and may be mapped into several different UNL graphs, the UNLization will be considered valid if the resulting UNL graph is one of the possible candidates according to the OFFICIAL CORPUS. Conversely, whenever the same UNL graph may be mapped into several different NL sentences, the NLization is considered valid if the resulting NL sentence is one of the possible mappings according to the OFFICIAL CORPUS.</ref>
+#Absolutely no change can be made to any sentence from the official corpus (either in natural language or in UNL), i.e., candidates can only choose among the official sentences but cannot alter them, and must use them as they are.
+#In order to apply, candidates must upload the grammar and dictionary files to [http://www.unlweb.net.br/unlversity www.unlweb.net.br/unlversity] until the deadline
+#The dictionary files must comply with the [[Dictionary Specs]] and may only bring features present in the [[Tagset]]. They should not contain temporary words. 
+#The grammar files must comply with the [[Grammar Specs]] and must be as generic possible. They should not target the specific sentences of the corpus, but the general structures presented there. 
+#The [[F-measure]] of the grammars must be equal or greater than 0.9<ref>The F-measure may be calculate at UNLWEB>UNLARIUM>TOOLS>F-MEASURE</ref>.
+#The files must be original. Grammars whose similarity proves to go beyond any reasonable doubt will be discarded, unless provided by the same author (for different languages).
+
+=== Evaluation ===
+Grammars will be evaluated and ranked according to the following criteria:
+*Best [[F-measure]]
+*Scalability (i.e., extendibility, or the capacity of being reused to other corpora), in case of grammars with the same F-Measure
+*Date of submission, in case of grammars with the same F-Measure and equally scalable
+
+=== Final Results  ===
+==== UNLization (Qualified Grammars Only) ====
+{|border=1 cellpadding=2
+!rowspan=2 align=center|Submission
+!rowspan=2 align=center|Author
+!rowspan=2 align=center|L Pair
+!rowspan=2 align=center|F-Measure
+!rowspan=2 align=center|Medal
+!rowspan=2 align=center|Position
+!colspan=5 align=center|Files
+|-
+!align=center|Corpus
+!align=center|Dic
+!align=center|T-grammar
+!align=center|D-grammar
+!align=center|Output
+|-
+|align=center|22-10-2014
+|align=center|Sergiy Prots
+|align=center|ukr>unl
+|align=center|1.000
+|align=center|GOLDEN
+|align=center|1
+|align=center|[http://www.unlweb.net.br/unlversity/files/corpus_109.txt]
+|align=center|[http://www.unlweb.net.br/unlversity/files/dic_109.txt]
+|align=center|[http://www.unlweb.net.br/unlversity/files/tgrammar_109.txt]
+|align=center|[http://www.unlweb.net.br/unlversity/files/dgrammar_109.txt]
+|align=center|[http://www.unlweb.net.br/unlversity/files/output_109.txt]
+|-
+|align=center|25-10-2014
+|align=center|Sergiy Prots
+|align=center|rus>unl
+|align=center|1.000
+|align=center|GOLDEN
+|align=center|2
+|align=center|[http://www.unlweb.net.br/unlversity/files/corpus_110.txt]
+|align=center|[http://www.unlweb.net.br/unlversity/files/dic_110.txt]
+|align=center|[http://www.unlweb.net.br/unlversity/files/tgrammar_110.txt]
+|align=center|[http://www.unlweb.net.br/unlversity/files/dgrammar_110.txt]
+|align=center|[http://www.unlweb.net.br/unlversity/files/output_110.txt]
+|-
+|align=center|10-11-2014
+|align=center|Yordanka Stancheva
+|align=center|bul>unl
+|align=center|0.923
+|align=center|GOLDEN
+|align=center|5
+|align=center|[http://www.unlweb.net.br/unlversity/files/corpus_115.txt]
+|align=center|[http://www.unlweb.net.br/unlversity/files/dic_115.txt]
+|align=center|[http://www.unlweb.net.br/unlversity/files/tgrammar_115.txt]
+|align=center|[http://www.unlweb.net.br/unlversity/files/dgrammar_115.txt]
+|align=center|[http://www.unlweb.net.br/unlversity/files/output_115.txt]
+|-
+|align=center|11-11-2014
+|align=center|Parteek Kumar
+|align=center|pan>unl
+|align=center|1.000
+|align=center|GOLDEN
+|align=center|3
+|align=center|[http://www.unlweb.net.br/unlversity/files/corpus_119.txt]
+|align=center|[http://www.unlweb.net.br/unlversity/files/dic_119.txt]
+|align=center|[http://www.unlweb.net.br/unlversity/files/tgrammar_119.txt]
+|align=center|[http://www.unlweb.net.br/unlversity/files/dgrammar_119.txt]
+|align=center|[http://www.unlweb.net.br/unlversity/files/output_119.txt]
+|-
+|align=center|13-11-2014
+|align=center|Sergiy Prots
+|align=center|ger>unl
+|align=center|1.000
+|align=center|GOLDEN
+|align=center|4
+|align=center|[http://www.unlweb.net.br/unlversity/files/corpus_121.txt]
+|align=center|[http://www.unlweb.net.br/unlversity/files/dic_121.txt]
+|align=center|[http://www.unlweb.net.br/unlversity/files/tgrammar_121.txt]
+|align=center|[http://www.unlweb.net.br/unlversity/files/dgrammar_121.txt]
+|align=center|[http://www.unlweb.net.br/unlversity/files/output_121.txt]
+|-
+|align=center|14-11-2014
+|align=center|Parteek Kumar
+|align=center|hin>unl
+|align=center|0.923
+|align=center|GOLDEN
+|align=center|6
+|align=center|[http://www.unlweb.net.br/unlversity/files/corpus_122.txt]
+|align=center|[http://www.unlweb.net.br/unlversity/files/dic_122.txt]
+|align=center|[http://www.unlweb.net.br/unlversity/files/tgrammar_122.txt]
+|align=center|[http://www.unlweb.net.br/unlversity/files/dgrammar_122.txt]
+|align=center|[http://www.unlweb.net.br/unlversity/files/output_122.txt]
+|}
+
+==== NLization (Qualified Grammars Only) ====
+{|border=1 cellpadding=2
+!rowspan=2 align=center|Submission
+!rowspan=2 align=center|Author
+!rowspan=2 align=center|L Pair
+!rowspan=2 align=center|F-Measure
+!rowspan=2 align=center|Medal
+!rowspan=2 align=center|Position
+!colspan=5 align=center|Files
+|-
+!align=center|Corpus
+!align=center|Dic
+!align=center|T-grammar
+!align=center|D-grammar
+!align=center|Output
+|-
+|align=center|11-11-2014
+|align=center|Parteek Kumar
+|align=center|unl>pan
+|align=center|1.000
+|align=center|GOLDEN
+|align=center|1
+|align=center|[http://www.unlweb.net.br/unlversity/files/corpus_117.txt]
+|align=center|[http://www.unlweb.net.br/unlversity/files/dic_117.txt]
+|align=center|[http://www.unlweb.net.br/unlversity/files/tgrammar_117.txt]
+|align=center|[http://www.unlweb.net.br/unlversity/files/dgrammar_117.txt]
+|align=center|[http://www.unlweb.net.br/unlversity/files/output_117.txt]
+|-
+|align=center|15-11-2014
+|align=center|Parteek Kumar
+|align=center|unl>hin
+|align=center|1.000
+|align=center|GOLDEN
+|align=center|2
+|align=center|[http://www.unlweb.net.br/unlversity/files/corpus_126.txt]
+|align=center|[http://www.unlweb.net.br/unlversity/files/dic_126.txt]
+|align=center|[http://www.unlweb.net.br/unlversity/files/tgrammar_126.txt]
+|align=center|[http://www.unlweb.net.br/unlversity/files/dgrammar_126.txt]
+|align=center|[http://www.unlweb.net.br/unlversity/files/output_126.txt]
+|}
+
+== Notes ==
+<references />

@@ -1,0 +1,211 @@
+<div class="mw-content-ltr mw-parser-output" lang="en" dir="ltr"><p>Hyper-relation is a relation between <a href="/wiki/Relation" class="mw-redirect" title="Relation">relations</a>, or between relations and nodes.
+</p>
+<div id="toc" class="toc" role="navigation" aria-labelledby="mw-toc-heading"><input type="checkbox" role="button" id="toctogglecheckbox" class="toctogglecheckbox" style="display:none" /><div class="toctitle" lang="en" dir="ltr"><h2 id="mw-toc-heading">Contents</h2><span class="toctogglespan"><label class="toctogglelabel" for="toctogglecheckbox"></label></span></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Basic_Symbols"><span class="tocnumber">1</span> <span class="toctext">Basic Symbols</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#Basic_Concepts"><span class="tocnumber">2</span> <span class="toctext">Basic Concepts</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="#Notation"><span class="tocnumber">3</span> <span class="toctext">Notation</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="#Properties"><span class="tocnumber">4</span> <span class="toctext">Properties</span></a></li>
+<li class="toclevel-1 tocsection-5"><a href="#Examples"><span class="tocnumber">5</span> <span class="toctext">Examples</span></a></li>
+<li class="toclevel-1 tocsection-6"><a href="#Transformations"><span class="tocnumber">6</span> <span class="toctext">Transformations</span></a>
+<ul>
+<li class="toclevel-2"><a href="#Creating_hyper-relations"><span class="tocnumber">6.1</span> <span class="toctext">Creating hyper-relations</span></a></li>
+<li class="toclevel-2"><a href="#Transforming_hyper-relations_into_simple_relations"><span class="tocnumber">6.2</span> <span class="toctext">Transforming hyper-relations into simple relations</span></a></li>
+</ul>
+</li>
+</ul>
+</div>
+
+<div class="mw-heading mw-heading2"><h2 id="Basic_Symbols">Basic Symbols</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Hyper-relation&amp;veaction=edit&amp;section=1" title="Edit section: Basic Symbols" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Hyper-relation&amp;action=edit&amp;section=1" title="Edit section&#39;s source code: Basic Symbols">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<table border="1" cellpadding="2" align="center">
+<caption>Basic symbols used in the UNL framework
+</caption>
+<tbody><tr>
+<th>Symbol
+</th>
+<th>Definition
+</th>
+<th>Example
+</th></tr>
+<tr>
+<td align="center">( )
+</td>
+<td>node
+</td>
+<td>(%a)
+</td></tr>
+<tr>
+<td align="center">" "
+</td>
+<td>string
+</td>
+<td>"went"
+</td></tr>
+<tr>
+<td align="center">[ ]
+</td>
+<td>natural language entry (headword)
+</td>
+<td>[go]
+</td></tr>
+<tr>
+<td align="center">[[ ]]
+</td>
+<td>UW
+</td>
+<td>[[to go(icl&gt;to move)]]
+</td></tr>
+<tr>
+<td align="center">//
+</td>
+<td><a href="/wiki/Regular_expression" title="Regular expression">regular expression</a>
+</td>
+<td>/a{2,3}/ = aa,aaa
+</td></tr>
+<tr>
+<td align="center">rel(x;y)
+</td>
+<td>relation
+</td>
+<td>agt(kill;Peter)
+</td></tr>
+<tr>
+<td align="center">^
+</td>
+<td>not
+</td>
+<td>^a = not a
+</td></tr>
+<tr>
+<td align="center">{ | }
+</td>
+<td>or
+</td>
+<td>{a|b} = a or b
+</td></tr>
+<tr>
+<td align="center">%
+</td>
+<td><a href="/wiki/Index" title="Index">index</a> for nodes, attributes and values
+</td>
+<td>%x
+</td></tr>
+<tr>
+<td align="center">:
+</td>
+<td><a href="/wiki/Scope" title="Scope">scope ID</a>
+</td>
+<td>:01
+</td></tr>
+<tr>
+<td align="center">#
+</td>
+<td><a href="/wiki/Index" title="Index">index</a> for sub-NLWs
+</td>
+<td>#01
+</td></tr>
+<tr>
+<td align="center">=
+</td>
+<td>attribute-value assignment
+</td>
+<td>POS=NOU
+</td></tr>
+<tr>
+<td align="center">!
+</td>
+<td>rule trigger
+</td>
+<td>!PLR
+</td></tr>
+<tr>
+<td align="center">&amp;
+</td>
+<td>merge operator
+</td>
+<td>%x&amp;%y
+</td></tr>
+<tr>
+<td align="center">?
+</td>
+<td>dictionary lookup operator
+</td>
+<td>?[a]
+</td></tr></tbody></table>
+<div class="mw-heading mw-heading2"><h2 id="Basic_Concepts">Basic Concepts</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Hyper-relation&amp;veaction=edit&amp;section=2" title="Edit section: Basic Concepts" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Hyper-relation&amp;action=edit&amp;section=2" title="Edit section&#39;s source code: Basic Concepts">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<figure class="mw-halign-center" typeof="mw:File"><a href="/wiki/File:Grammar.png" class="mw-file-description"><img src="/wiki/images/thumb/5/59/Grammar.png/400px-Grammar.png" decoding="async" width="400" height="206" class="mw-file-element" srcset="/wiki/images/thumb/5/59/Grammar.png/600px-Grammar.png 1.5x, /wiki/images/5/59/Grammar.png 2x" /></a><figcaption></figcaption></figure>
+<dl><dt><a href="/wiki/Node" title="Node">Node</a></dt>
+<dd>A node is the most elementary unit in the graph. It is the result of the <a href="/wiki/Tokenization" title="Tokenization">tokenization</a> process, and corresponds to the notion of "lexical item". At the surface level, a natural language sentence is considered a list of nodes, and a UNL graph a set of relations between nodes.</dd>
+<dt><a href="/wiki/Relation" class="mw-redirect" title="Relation">Relation</a></dt>
+<dd>In order to form a natural language sentence or a UNL graph, nodes are inter-related by relations. In the UNL framework, there are three different types of relations: the linear (list) relation, syntactic relations and semantic relations.</dd>
+<dt><a href="/wiki/Hyper-Node" class="mw-redirect" title="Hyper-Node">Hyper-Node</a></dt>
+<dd>A hyper-node is a sub-graph, i.e., a <a href="/wiki/Scope" title="Scope">scope</a>: a node containing relations between nodes.</dd>
+<dt><a href="/wiki/Hyper-Relation" class="mw-redirect" title="Hyper-Relation">Hyper-Relation</a></dt>
+<dd>A hyper-relation is a relation between relations.</dd></dl>
+<div class="mw-heading mw-heading2"><h2 id="Notation">Notation</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Hyper-relation&amp;veaction=edit&amp;section=3" title="Edit section: Notation" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Hyper-relation&amp;action=edit&amp;section=3" title="Edit section&#39;s source code: Notation">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>Hyper-relations and <a href="/wiki/Relation" class="mw-redirect" title="Relation">relations</a> are represented in the same way, i.e.,
+</p>
+<pre>rel:scope(arg1;arg2;...;argn)
+</pre>
+<p>where:
+</p>
+<ul><li>rel is the name of the hyper-relation</li>
+<li>scope is the <a href="/wiki/Scope" title="Scope">scope</a> of the hyper-relation</li>
+<li>arg1, arg2, ... are the arguments of the hyper-relation</li></ul>
+<p>The only difference between relations and hyper-relations is that the latter has at least one relation as one of its arguments, e.g.:
+</p>
+<ul><li>rel(rel1(arg1;arg2);arg3;...;argn)</li></ul>
+<p>For better readability, inner relations are normally replaced by relation ID's, to be represented by :XX, where XX is a two-digit string
+</p>
+<ul><li>rel(rel1(arg1;arg2);arg3;...;argn) is the same as rel(:01;arg3;...;argn)rel1:01(arg1;arg2)</li></ul>
+<div class="mw-heading mw-heading2"><h2 id="Properties">Properties</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Hyper-relation&amp;veaction=edit&amp;section=4" title="Edit section: Properties" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Hyper-relation&amp;action=edit&amp;section=4" title="Edit section&#39;s source code: Properties">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<dl><dt>A hyper-relation may have one single relation as each argument</dt></dl>
+<ul><li>XP(XB(%a;%b);%c) - the source argument of the hyper-relation XP is a relation</li>
+<li>XP(%a;XB(%b;%c)) - the target argument of the hyper-relation XP is a relation</li>
+<li>XP(VC(%a;%b);VA(%a;%c)) - the source and the target argument of the hyper-relation XP are relations</li>
+<li><strike>XP(VC(%a;%b)VA(%a;%c);VS(%a;%d))</strike> - a hyper-relation may not have more than one relation as one single argument (in this case, the hyper-relation XP contained two relations as the source argument)</li></ul>
+<dl><dt>Differently from <a href="/wiki/Nodes" class="mw-redirect" title="Nodes">nodes</a>, relations do not have elements (strings, headwords, features and indexes)</dt></dl>
+<ul><li><strike>XP(XB(%a;%b),"ab",[ab],[[ab]],A,B;%c)</strike> (the relation XB(%a;%b) may not have strings, UWs, headwords or any features)</li></ul>
+<div class="mw-heading mw-heading2"><h2 id="Examples">Examples</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Hyper-relation&amp;veaction=edit&amp;section=5" title="Edit section: Examples" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Hyper-relation&amp;action=edit&amp;section=5" title="Edit section&#39;s source code: Examples">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>Examples of hyper-relations
+</p>
+<ul><li>XP(XB(%a;%b);%c) - a syntactic relation XP between the syntactic relation XB(%a;%b) and the node %c</li>
+<li>and(agt([a];[b]);agt([a];[c])) - a semantic relation "and" between the semantic relations agt([a];[b]) AND agt([a];[c])</li></ul>
+<div class="mw-heading mw-heading2"><h2 id="Transformations">Transformations</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Hyper-relation&amp;veaction=edit&amp;section=6" title="Edit section: Transformations" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Hyper-relation&amp;action=edit&amp;section=6" title="Edit section&#39;s source code: Transformations">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>Hyper-relations are altered, replaced, created and deleted by <a href="/wiki/T-rule" title="T-rule">T-rules</a>:
+</p>
+<div class="mw-heading mw-heading3"><h3 id="Creating_hyper-relations">Creating hyper-relations</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Transformation_over_hyper-relations&amp;veaction=edit&amp;section=T-1" title="Edit section: Creating hyper-relations" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Transformation_over_hyper-relations&amp;action=edit&amp;section=T-1" title="Edit section&#39;s source code: Creating hyper-relations">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>Hyper-relations are created through encapsulating relations:
+</p>
+<ul><li>rel1(%x;%y)rel2(%x;%z):=rel1(rel2(%x;%z);%y); (the relation rel1 between %x and %y becomes a hyper-relation between the relation rel2(%x;%z) and the node %y.)</li></ul>
+<div class="mw-heading mw-heading3"><h3 id="Transforming_hyper-relations_into_simple_relations">Transforming hyper-relations into simple relations</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Transformation_over_hyper-relations&amp;veaction=edit&amp;section=T-2" title="Edit section: Transforming hyper-relations into simple relations" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Transformation_over_hyper-relations&amp;action=edit&amp;section=T-2" title="Edit section&#39;s source code: Transforming hyper-relations into simple relations">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>Hyper-relations are transformed into simple relations by removing their internal relations:
+</p>
+<ul><li>rel1(rel2(%x;%z);%y):=rel1(%x;%y)rel2(%x;%z); (the hyper-relation rel1 between the relation rel2(%x;%z) and the node %y is transformed into a simple relation between the nodes %x and %y; the relatin rel2(%x;%z) is not affected.)</li></ul>
+<!-- 
+NewPP limit report
+Cached time: 20260910153427
+Cache expiry: 86400
+Reduced expiry: false
+Complications: [show‐toc]
+CPU time usage: 0.011 seconds
+Real time usage: 0.013 seconds
+Preprocessor visited node count: 45/1000000
+Post‐expand include size: 2420/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 3/100
+Expensive parser function count: 0/100
+Unstrip recursion depth: 0/20
+Unstrip post‐expand size: 12/5000000 bytes
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    3.240      1 -total
+ 36.76%    1.191      1 Basic_Symbols
+ 29.78%    0.965      1 Grammar_units
+ 28.58%    0.926      1 Transformation_over_hyper-relations
+-->
+
+<!-- Saved in parser cache with key u965818192_SLvgQ-l8z2_:pcache:788:|#|:idhash:canonical and timestamp 20260910153427 and revision id 16020. Rendering was triggered because: diff-page
+ -->
+</div>

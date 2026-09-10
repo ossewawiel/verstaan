@@ -1,0 +1,50 @@
+'''Numerals''' are LRUs that represent numbers.
+
+== Natural Language ==
+In the UNL<sup>arium</sup> framework, numerals are classified as:
+*cardinal (CDN): describe quantity (“two”, “three”)
+*ordinal (ORD): describe position (“first”, “second”)
+*partitive (PTN): describe division (“half”, “two thirds”)
+*multiplicative (MLN): describe repetition (“once”, “twice”)
+*distributive (DTN): describe distributions (“in pairs”, “by the dozen”)
+Numeral determiners must be classified as numerals. 
+
+== UNL ==
+In UNL, numerals are to be replaced by numbers, without separators for thousands, and with "." for decimals. They are temporary UWs. 
+
+;Cardinal numerals
+::1 = 1
+::one = 1
+::2 = 2
+::two = 2
+::MDCCCIX = 1819
+::1000000   = 1000000
+::1 000 000 = 1000000
+::1,000,000 = 1000000
+::3.14159 = 3.14159
+::3,14159 = 3.14159
+
+;Ordinal numerals
+:To be represented as @ordinal
+::1st = 1.@ordinal
+::first = 1.@ordinal
+
+;Partitive numerals
+:To be represented as cardinal numerals
+::1/3 = 1/3
+::one third = 1/3
+::half = 1/2
+::quarter = 1/4
+
+;Multiplicative numerals
+:To be represented as @times
+::once = 1.@times
+::twice = 2.@times
+::thrice = 3.@times
+::four times = 4.@times
+
+;Collective numerals
+:To be represented as @tuple
+::double = 2.@tuple
+::triple = 3.@tuple
+::sextuple = 6.@tuple

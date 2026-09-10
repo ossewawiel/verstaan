@@ -1,0 +1,52 @@
+Gender can be either a grammatical or a natural category. As a natural category, gender is the wide set of characteristics that are seen to distinguish between '''male''' and '''female''' entities; as a grammatical category, gender is much more arbitrary and it is used for the analysis of word-classes displaying such contrasts as '''masculine''', '''feminine''' and '''neuter'''. 
+
+The linguistic notion of grammatical gender is distinguished from the biological and social notion of natural gender, although they interact closely in many languages. The grammatical (masculine) gender of the French word "danseur", for instance, is motivated by the fact that it refers to a male dancer, in opposition to "danseuse" (feminine), which refers to a female dancer; on the other hand, the grammatical gender of the French word "sang" (=blood) is rather arbitrary, provided that blood is neither a male or a female entity ("sangre", which is the Spanish equivalent to "sang", is feminine). 
+
+In the UNL approach, grammatical gender, as a language-dependent feature, must be informed only in the UNL-NL dictionary; natural gender, on the other hand, must be represented through specific attributes in the UNL-ization process.
+
+== Natural language ==
+In the UNLarium framework, grammatical gender must be informed only for gender-inflective languages (such as French, Russian, Spanish, but not English), according to five different values:
+
+{{#tree:id=nl_gender|openlevels=0|root=Gender (GEN)|
+*feminine (FEM)
+*masculine (MCL)
+*neuter (NEU)
+*common (COM): masculine or feminine
+*[[variable]] (VAR): not fixed by the language (see [[variable]])
+}}
+
+
+In the last two  cases (common and variable), the words may be classified both as masculine and feminine. The difference is that, in common gender, a change of gender implies a change of the natural gender of the reference ("un pianiste" = man, "une pianiste" = woman), whereas, in variable gender, a change of gender does not affect the reference ("un après-midi" = "une après-midi" = an afternoon).
+
+=== Examples ===
+
+*Feminine (FEM): “sangre” (es), “color” (es), "mensagem" (pt), "couleur" (fr), etc.
+*Masculine (MCL): “sang” (fr), "message" (fr), etc.
+*Neuter (NEU): "das Pfund" (de), "krzesło" (pl), etc.
+*Common (COM): "pianiste" (fr), "docteur" (fr), "professeur" (fr), etc.
+*Variable (VAR): "après-midi" (fr), "Kind" (de), etc.
+
+== UNL ==
+In UNL, grammatical gender is not represented, but natural gender is represented by attributes in case of animate referents whose gender is marked. The gender attributes are the following:
+
+{{#tree:id=unl_gender|openlevels=0|root=Gender|
+*@male
+*@female
+*@neutral
+}}
+
+
+;In UNL, gender is marked only for UWs referring to animate referents whose sex is marked:
+:ship = ship (and not ship.@female, because "ship" is not animate)
+:teacher = teacher (because the gender is not marked)
+:female teacher = teacher.@female (animate referent and marked gender)
+;Gender, when lexicalized, is omitted:
+:queen = queen (and not queen.@female)
+
+=== Examples ===
+
+*French
+**un professeur = professeur (no natural gender information)
+**une enseignante = enseignant.@female 
+**la femme = femme (gender lexicalized), or  être humain.@female (=human being.@female)
+**la lune = lune (no natural gender, only grammatical gender)

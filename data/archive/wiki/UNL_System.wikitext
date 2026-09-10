@@ -1,0 +1,39 @@
+The '''UNL System''' is the set of basic modules of UNL and the rules to combine them.
+
+== UNLization ==
+''Main article: [[UNLization]]''
+[[File:UNLization.png|thumb|left|200px]]
+UNLization is the process of representing the content of a natural language structure into UNL. This process is carried out by a [[Tools#UNLizers|UNLizer]]. The input for the UNLizer is a natural language document or set of documents. The UNLizer first  segments the natural language input according to the [[NL-UNL S-Grammar]]. Next, it [[tokenization|tokenizes]] each processing unit according to the [[NL-UNL Dictionary]] and the [[NL-UNL Memory]]. The tokenization process may be controlled by the [[NL-UNL D-Grammar]]. The resulting tokenized string is then syntactically and semantically analyzed with the [[NL-UNL T-Grammar]], which may be improved by the [[NL-UNL D-Grammar]], the [[NL Memory]], the [[UNL Memory]], the [[UNL Knowledge Base]] and the [[UNL Ontology]]. The output of the process is a UNL document, which may reflect either the deep or the surface structure of the text, of each sentence or of each word of the natural language input document, depending on the structure of the grammar.
+<br style="clear: both" />
+
+== NLization == 
+''Main article: [[NLization]]''
+[[File:NLization.png|thumb|left|200px]]
+NLization is the process of generating a natural language document out of UNL. This process is carried out by a [[Tools#NLizers|NLizer]]. The input for the NLization is a UNL document. The input document, which is already segmented according to the [[UNL Document Structure]], is [[tokenization|tokenized]], according to the [[UNL-NL Dictionary]] and the [[UNL-NL Memory]]. The tokenization process may be controlled by the [[UNL-NL D-Grammar]]. The resulting tokenized string is then syntactically and semantically analyzed with the [[UNL-NL T-Grammar]], which may be improved by the [[UNL-NL D-Grammar]], the [[NL Memory]], the [[UNL Memory]], the [[UNL Knowledge Base]] and the [[UNL Ontology]]. The output of the process is a natural language document, which may reflect either the deep or the surface structure of the whole or part of the UNL input document.
+<br style="clear: both" />
+
+== Modules ==
+*[[Lexica|Lexical Databases]]
+**The '''UNL Ontology''', the '''UNL Knowledge Base''' and the '''UNL Memory''' are lists of semantic frames between UW's. These repositories include ontological relations ("a kind of" and "an instance of"), in case of UNL Ontology; necessary (ontological and thematic) relations (such as "is the agent of", "is the place where", "is the moment when"), in case of UNL Knowledge Base; and any typical relations, in case of the UNL Memory. 
+**The '''UNL<->NL Dictionary''' is a list of mappings between UW's and natural language entries. It is a bilingual dictionary where UW's are translated into [[LRU|lexical realisation units]] of a given natural language, and vice-versa.
+**The '''UNL<->NL Memory''' is a list of mappings between UNL and natural language extracted from previous UNLizations and NLizations.
+**The '''NL Memory''' is a list of syntactic frames between natural language entries.
+*[[Grammar]]s
+**The '''UNL<->NL T-Grammar''' is the set of transformation rules used to manipulate data structures.
+**The '''UNL<->NL D-Grammar''' is the set of disambiguation rules used to control the use of transformation rules.
+*[[Tools]]
+**'''UNLizers''' are tools used for UNLization ([[IAN]] and [[SEAN]], for instance).
+**'''NLizers''' are tools used for NLization ([[EUGENE]]).
+
+== Specs ==
+
+;[[Tagset]]
+:The Tagset is a harmonized system for representing linguistic constants.
+;[[Dictionary Specs]]
+:The Dictionary Specs state the syntax of dictionaries.
+;[[Grammar Specs]]
+:The Grammar Specs state the syntax of grammar rules.
+;[[KB Specs]]
+:The UNL Knowledge Base Specs state the syntax of knowledge bases.
+;[[Memory Specs]]
+:The Memory Specs state the syntax of example bases.

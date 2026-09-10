@@ -1,0 +1,92 @@
+'''Aspect''' is a category used to indicate the temporal internal structure of an event.
+
+== Natural language == 
+In the UNLarium, aspect may assume the following values:
+
+{{#tree:id=nl_tense|openlevels=0|root=Aspect (ASP)|
+*aorist (AOR): aorist
+*causative (CAU): causative
+*perfective (PFV): completed
+*imperfective (NPFV): uncompleted
+**continuative (CTN): continuous
+***progressive (PGS): ongoing
+**habitual (HAB): habitual
+**iterative (ITE): repetition
+*perfect (PFC): relevant to the present
+**experiential perfect aspect (EXP): relevant because of the experience
+**perfect of persistent situation (PSS): relevant because of the persistence
+**perfect of recent past (PRP): relevant because of the proximity 
+**perfect of result (RES): relevant because of the result
+*prospective (PPT): imminent
+*inceptive (ICP): beginning
+*terminative (TER): cessation
+}}
+
+;Perfect and perfective are different aspectual values:
+:perfective = seen as completed  (He ate the apple)
+:perfect = seen as relevant to the present (He has eaten the apple)
+
+;Aspect values may be combined through "&":
+:I am eating = PGS
+:I have been eating = PGS&PSS
+
+;Marked aspect
+:Aspect may be '''inflectional''' (i.e., the value of aspect will be assigned by inflections, such as in English) or '''native''' (the value of aspect is assigned in the root of the verb, i.e.., the verb cannot be inflected concerning aspect; in order to have a different aspect value, we have to use a different root, which is a different entry in the dictionary). In the dictionary, aspect must be informed only if marked, i.e., if native, or not inflectional. If this is not the case, i.e., if the aspect is generated through inflections, the field aspect must be left empty and the entry must be associated to a paradigm that generates the corresponding aspect inflections.
+
+=== Examples ===
+*causative (CAU): He made him eat an apple.
+*perfective (PFV): He ate an apple
+*progressive (PGS): He is eating an apple
+*habitual (HAB): He eats apples. 
+*iterative (ITE): He has been eating apples for years
+*experiential perfect aspect (EXP): He has never eaten an apple
+*perfect of persistent situation (PSS): He has been eating that apple since yesterday
+*perfect of recent past (PRP): He has just eaten the apple
+*perfect of result (RES): He has eaten the apple
+*prospective (PPT): He is about to eat the apple
+*inceptive (ICP): He starts to eat the apple
+*terminative (TER): He finishes eating the apple
+
+== UNL ==
+In UNL, aspect is to be represented by attributes indicating the temporal internal structure of the event. 
+
+{{#tree:id=unl_aspect|openlevels=0|root=Aspect|
+*'''@causative''': causative
+*'''@continuative''': continuous
+*'''@experiential''': experience
+*'''@habitual''': habitual
+*'''@imperfective''': uncompleted
+*'''@inceptive''': beginning
+*'''@inchoative''': inchoative
+*'''@iterative''': repetition
+*'''@perfect''': relevant to the present
+*'''@perfective''': completed
+*'''@permissive''': permissive
+*'''@persistent''': persistent
+*'''@progressive''': ongoing
+*'''@prospective''': imminent
+*'''@result''': result
+*'''@terminative''': cessation
+}}
+
+
+;Aspect values may be combined.
+:I start to eat = eat.@inceptive
+:I'm starting to eat = eat.@inceptive.@progressive
+
+=== Examples ===
+*@causative: He made him eat the apple.
+*@continuative: I'm still eating the apple.
+*@experiential: I have already eaten an apple
+*@habitual: I eat apples.
+*@imperfective: I was eating the apple (when she came).
+*@inceptive: I start eating the apple.
+*@iterative: I ate and ate the apple.
+*@perfective: I ate the apple.
+*@progressive: I'm eating the apple.
+*@prospective: I'm about to eat the apple.
+*@terminative: I finished eating the apple.
+
+List of verb forms:
+*[[English verbs|English verb forms]]
+*[[French grammar#Verb forms|French verb forms]]

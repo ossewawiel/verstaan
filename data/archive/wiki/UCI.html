@@ -1,0 +1,114 @@
+<div class="mw-content-ltr mw-parser-output" lang="en" dir="ltr"><p>An <b>Uniform Concept Identifier</b> (UCI) is used to identify a concept. It is a URI (Uniform Resource Identifier) for <a href="/wiki/UW" class="mw-redirect" title="UW">UW</a>'s. In the UNL framework, UCI's are represented either as UCL (Uniform Concept Locator) or UCN (Uniform Concept Name).
+</p>
+<div id="toc" class="toc" role="navigation" aria-labelledby="mw-toc-heading"><input type="checkbox" role="button" id="toctogglecheckbox" class="toctogglecheckbox" style="display:none" /><div class="toctitle" lang="en" dir="ltr"><h2 id="mw-toc-heading">Contents</h2><span class="toctogglespan"><label class="toctogglelabel" for="toctogglecheckbox"></label></span></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Structure"><span class="tocnumber">1</span> <span class="toctext">Structure</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#UCL_(Uniform_Concept_Locator)"><span class="tocnumber">2</span> <span class="toctext">UCL (Uniform Concept Locator)</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="#UCN_(Uniform_Concept_Name)"><span class="tocnumber">3</span> <span class="toctext">UCN (Uniform Concept Name)</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="#UCL_or_UCN?"><span class="tocnumber">4</span> <span class="toctext">UCL or UCN?</span></a></li>
+<li class="toclevel-1 tocsection-5"><a href="#Simplified_Notation"><span class="tocnumber">5</span> <span class="toctext">Simplified Notation</span></a></li>
+<li class="toclevel-1 tocsection-6"><a href="#Formal_Syntax"><span class="tocnumber">6</span> <span class="toctext">Formal Syntax</span></a></li>
+</ul>
+</div>
+
+<div class="mw-heading mw-heading2"><h2 id="Structure">Structure</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=UCI&amp;veaction=edit&amp;section=1" title="Edit section: Structure" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=UCI&amp;action=edit&amp;section=1" title="Edit section&#39;s source code: Structure">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>The UCI follows the generic syntax defined for URI's:
+</p>
+<pre>&lt;scheme name&gt;&#160;: &lt;hierarchical part&gt;
+</pre>
+<p>Where:
+</p>
+<ul><li>&lt;scheme name&gt; determines the syntax and semantics of the hierarchical part. In the UNLframework, there are two schemes:
+<ul><li>ucl, which is used for uniform concept locators</li>
+<li>ucn, which is used for uniform concept names</li></ul></li>
+<li>&lt;hierarchical part&gt;  holds the identification information.</li></ul>
+<div class="mw-heading mw-heading2"><h2 id="UCL_(Uniform_Concept_Locator)"><span id="UCL_.28Uniform_Concept_Locator.29"></span>UCL (Uniform Concept Locator)</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=UCI&amp;veaction=edit&amp;section=2" title="Edit section: UCL (Uniform Concept Locator)" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=UCI&amp;action=edit&amp;section=2" title="Edit section&#39;s source code: UCL (Uniform Concept Locator)">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>Uniform Concept Locators (UCL), as URL's, provide a method for finding the concept in the <a href="/wiki/UNL_Knowledge_Base" title="UNL Knowledge Base">UNL Knowledge Base</a>. They are represented as: 
+</p>
+<pre>ucl://&lt;AUTHORITY&gt;/&lt;ID&gt;
+</pre>
+<p>Where:
+</p>
+<ul><li>ucl is the scheme name for uniform concept locators</li>
+<li>&lt;AUTHORITY&gt; is the authority (knowledge base) responsible for the concept (unlkb.unlweb.net, by default)</li>
+<li>&lt;ID&gt; is the index of the concept in the knowledge base</li></ul>
+<p>For instance, the concept "a piece of furniture having a smooth flat top that is usually supported by one or more vertical legs", which is lexicalized in English through the noun "table", may be located through:
+</p>
+<pre>ucl://unlkb.unlweb.net.br/104379964
+</pre>
+<p>This address is expected to bring all the information concerning the concept, i.e., it's definition in UNL, which may be used by the languages where this concept is not lexicalized.
+</p>
+<div class="mw-heading mw-heading2"><h2 id="UCN_(Uniform_Concept_Name)"><span id="UCN_.28Uniform_Concept_Name.29"></span>UCN (Uniform Concept Name)</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=UCI&amp;veaction=edit&amp;section=3" title="Edit section: UCN (Uniform Concept Name)" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=UCI&amp;action=edit&amp;section=3" title="Edit section&#39;s source code: UCN (Uniform Concept Name)">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>Uniform Concept Names (UCN) use the ucn scheme and, as URN's, do not imply availability of the identified resource. They are represented as:
+</p>
+<pre>ucn:&lt;LID&gt;:&lt;NSS&gt;
+</pre>
+<p>Where
+</p>
+<ul><li>ucn is the scheme name for uniform concept names</li>
+<li>&lt;LID&gt; is namespace identifier, which corresponds to the three-character ISO 639-2 code for languages</li>
+<li>&lt;NSS&gt; is the namespace-specific string</li></ul>
+<p>For instance, the concept "a piece of furniture having a smooth flat top that is usually supported by one or more vertical legs", which is lexicalized in English through the noun "table" may be associated to several different names:
+</p>
+<pre>ucn:eng:table(icl&gt;furniture)
+ucn:fra:table(icl&gt;mobilier)
+ucn:esp:mesa(icl&gt;mobiliario)
+ucn:deu:Tisch(icl&gt;Möbel)
+ucn:rus:стол(icl&gt;мебель)
+</pre>
+<p>UCN's must be unique and the namespace-specific string is normally split into two different parts: a root and a suffix, as exemplified above. The root can be a word or a multi-word expression. The suffix, which is always introduced by a UNL relation, is used to disambiguate the root.
+</p>
+<div class="mw-heading mw-heading2"><h2 id="UCL_or_UCN?"><span id="UCL_or_UCN.3F"></span>UCL or UCN?</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=UCI&amp;veaction=edit&amp;section=4" title="Edit section: UCL or UCN?" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=UCI&amp;action=edit&amp;section=4" title="Edit section&#39;s source code: UCL or UCN?">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>UCL and UCN are both UCI's (i.e., uniform concept identifiers). They are both used to identify UW's. The difference is that UCL is an address to the position of the UW in the <a href="/wiki/UNL_Knowledge_Base" title="UNL Knowledge Base">UNL Knowledge Base</a>, whereas the UCN is only the name of the UW. The same address (i.e., UCL) may be associated to different UCN's, but a single UCN may not have more than one UCL. A UCL always describe an available UW, i.e., a UW that has been already defined in the UNL KB, whereas a UCN is not necessarily linked to an address. In that sense, UCL's are more "official" than UCN's, which are normally used in order to preserve the readability of the UNL code.
+</p>
+<div class="mw-heading mw-heading2"><h2 id="Simplified_Notation">Simplified Notation</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=UCI&amp;veaction=edit&amp;section=5" title="Edit section: Simplified Notation" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=UCI&amp;action=edit&amp;section=5" title="Edit section&#39;s source code: Simplified Notation">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>In the <a href="/wiki/UNL_document" title="UNL document">UNL Document Structure</a>, UCI's are always abbreviated to the last part, because the scheme, the authority and the namespace may be inferred from the document header. For instance: 
+</p>
+<ul><li>104379964 instead of ucl://unlkb.unlweb.net.br/104379964</li>
+<li>table(icl&gt;furniture) instead of ucn:eng:table(icl&gt;furniture)</li></ul>
+<div class="mw-heading mw-heading2"><h2 id="Formal_Syntax">Formal Syntax</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=UCI&amp;veaction=edit&amp;section=6" title="Edit section: Formal Syntax" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=UCI&amp;action=edit&amp;section=6" title="Edit section&#39;s source code: Formal Syntax">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<pre>&lt;UCI&gt;       &#160;::= &lt;UCL&gt;|&lt;UCN&gt;
+&lt;UCL&gt;       &#160;::= "ucl://"&lt;AUTHORITY&gt;"/"&lt;PATH&gt;
+&lt;AUTHORITY&gt; &#160;::= &lt;UTF-8 character&gt;+
+&lt;ID&gt;        &#160;::= [0123456789]+
+&lt;UCN&gt;       &#160;::= "ucn://"&lt;LID&gt;":"&lt;NSS&gt;
+&lt;LID&gt;       &#160;::= [a-z]{3}
+&lt;NSS&gt;       &#160;::= &lt;root&gt;[&lt;suffix&gt;]
+&lt;root&gt;      &#160;::= &lt;UTF-8 character&gt;+
+&lt;suffix&gt;    &#160;::= "("&lt;relation&gt;{"&gt;","&lt;"}&lt;root&gt;")"
+&lt;relation&gt;  &#160;::= {"agt","and","aoj",...}
+</pre>
+<p>where:<br />
++       to be repeated 1 or more times<br />
+&lt; &gt; 	variable<br />
+" "	terminal symbol<br />
+::=	... is defined as ...<br />
+|       or<br />
+[ ]	optional element<br />
+{ }	alternative element<br />
+...	to be repeated more than 0 times<br />
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20260909223623
+Cache expiry: 86400
+Reduced expiry: false
+Complications: [show‐toc]
+CPU time usage: 0.004 seconds
+Real time usage: 0.005 seconds
+Preprocessor visited node count: 63/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/100
+Expensive parser function count: 0/100
+Unstrip recursion depth: 0/20
+Unstrip post‐expand size: 498/5000000 bytes
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    0.000      1 -total
+-->
+
+<!-- Saved in parser cache with key u965818192_SLvgQ-l8z2_:pcache:651:|#|:idhash:canonical and timestamp 20260909223623 and revision id 15107. Rendering was triggered because: diff-page
+ -->
+</div>

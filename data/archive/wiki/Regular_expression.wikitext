@@ -1,0 +1,140 @@
+'''Regular expressions''', also referred to as regex or regexp, provide a concise and flexible means for matching strings of text, such as particular characters, words, or patterns of characters. In the UNL<sup>arium</sup> framework, regular expressions follow the [http://www.pcre.org/ PCRE library]. 
+
+== Syntax ==
+Regular expressions come between /forward slashes/. They are used to replace "/strings/" (between quotes), [/natural language entries/] (between brackets), <nowiki>[[/UWs/]]</nowiki> (between double square brackets) or /features/. For instance:
+*"/.../" matches any string made of three characters
+*[/[abc]/] matches the natural language entries "a", "b" and "c"
+*<nowiki>[[/(abc|def)/]]</nowiki> matches the UW "abc" or "def"
+*/(MCL|FEM)/ matches the features MCL or FEM
+
+== Metacharacters ==
+For a comprehensive list of metacharacters, please consult [http://www.pcre.org/ Perl Compatible Regular Expressions].
+
+
+{|border=1 cellpadding=2 align=center
+!colspan=2|Characters
+|-
+|'''a'''
+|match the character a
+|-
+|'''3'''
+|match the number 3
+|-
+!colspan=2|Wildcards
+|-
+|'''.'''
+|match any character
+|-
+|'''\…''' 
+|quote single metacharacter: \. matches a dot instead of any character and \\ matches a single backslash
+|-
+|'''\w'''
+|alphanumeric + underscore (shortcut for [0-9a-zA-Z_])
+|-
+|'''\W'''
+|any character not covered by \w
+|-
+|'''\d'''
+|numeric (shortcut for [0-9])
+|-
+|'''\D'''
+|any character not covered by \d
+|-
+|'''\s'''
+|whitespace (shortcut for [ \t\n\r\f])
+|-
+|'''\S'''
+|any character not covered by \s
+|-
+|'''[…]'''
+|any character listed: [a5!d-g] means a, 5, ! and d, e, f, g
+|-
+|'''[^…]'''
+|any character not listed: [^a5!d-g] means anything but a, 5, ! and d, e, f, g
+|-
+!colspan=2|Quantifiers
+|-
+|'''?'''
+|match 1 or 0 times
+|-
+|'''*'''
+|0 or more times
+|-
+|'''<nowiki>+</nowiki>'''
+|1 or more times
+|-
+|'''{n}'''
+|exactly n times
+|-
+|'''{n,}'''
+|at least n times
+|-
+|'''{n,m}'''
+|at least n but not more than m times, as often as possible
+|-
+!colspan=2|Grouping
+|-
+|'''(...)'''
+|
+|-
+!colspan=2|Special characters
+|-
+|<nowiki>{ } [ ] ( ) ^ $ . | * + ?</nowiki> 
+|to match these characters, override (escape) with \
+|}
+
+== Examples ==
+
+{|border=1 cellpadding=2 align=center
+!RegEx
+!Description
+!Matches
+|-
+|/abc/
+|match the sequence "abc"
+|abc
+|-
+|/abc./
+|match the sequence "abc" plus one character
+|abca, abcb, abcc, abcd, abce, ...
+|-
+|/abc(a)?/
+|match the sequence "abc" plus zero or one character "a"
+|abc, abca
+|-
+|/abc(a)*/
+|match the sequence "abc" plus zero or more characters "a"
+|abc, abca, abcaa, abcaaa, abcaaaa, abcaaaaa, ...
+|-
+|/abc(a)+/
+|match the sequence "abc" plus one or more characters "a"
+|abca, abcaa, abcaaa, abcaaaa, ...
+|-
+|/abc(a){3}/
+|match the sequence "abc" plus three characters "a"
+|abcaaa
+|-
+|/abc(a){3,}/
+|match the sequence "abc" plus at least three characters "a"
+|abcaaa, abcaaaa, abcaaaaa, abcaaaaaa, ...
+|-
+|/abc(a){2,5}/
+|match the sequence "abc" plus two to five characters "a"
+|abcaa, abcaaa, abcaaaa, abcaaaaa
+|-
+|/a[bcd]e/
+|match "a" plus "b", "c" or "d", plus "e"
+|abe, ace, ade
+|-
+|/a[^bcd]e/
+|match "a" plus any character that is not "b", "c" or "d", plus "e"
+|aae, aee, afe, age, ahe, ...
+|-
+|/a\d/
+|match "a" plus any single digit
+|a0, a1, a2, a3, a4, a5, a6, a7, a8, a9
+|-
+|/a(\d){2}/
+|match "a" plus any two digits
+|a00, a01, a02, a03, a04, ...
+|}

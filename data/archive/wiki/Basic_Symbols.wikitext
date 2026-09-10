@@ -1,0 +1,66 @@
+{| border="1" cellpadding="2" align=center
+|+Basic symbols used in the UNL framework
+!Symbol
+!Definition
+!Example
+|-
+|align=center|( )
+|node
+|(%a)
+|-
+|align=center|" "
+|string
+|"went"
+|-
+|align=center|[ ]
+|natural language entry (headword)
+|[go]
+|-
+|align=center|[[ ]]
+|UW
+|[[to go(icl>to move)]]
+|-
+|align=center|//
+|[[regular expression]]
+|/a{2,3}/ = aa,aaa
+|-
+|align=center|rel(x;y)
+|relation
+|agt(kill;Peter)
+|-
+|align=center|<nowiki>^</nowiki>
+|not
+|^a = not a
+|-
+|align=center|{ | }
+|or
+|<nowiki>{a|b}</nowiki> = a or b
+|-
+|align=center|%
+|[[index]] for nodes, attributes and values
+|%x
+|-
+|align=center|:
+|[[scope|scope ID]]
+|:01
+|-
+|align=center|#
+|[[index]] for sub-NLWs
+|#01
+|-
+|align=center|=
+|attribute-value assignment
+|POS=NOU
+|-
+|align=center|!
+|rule trigger
+|!PLR
+|-
+|align=center|&
+|merge operator
+|%x&%y
+|-
+|align=center|?
+|dictionary lookup operator
+|?[a]
+|}

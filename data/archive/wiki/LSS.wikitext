@@ -1,0 +1,36 @@
+Linear Sentence Structures (LSS) are sequences of part-of-speech tags. 
+
+== Methodology ==
+LSS's are extracted from the [[tokenization]] of a corpus using the enumerative dictionary, i.e., the list of the word forms available for a given language. As the enumerative dictionary may contain multiword expressions, the length of the LSS may not correspond to the number of isolated words in the sentence, but to the number of dictionary entries resulting from the application of the principle of the longest first. Additionally, as the tokenization does not perform any lexical disambiguation, the LSS contain all possible lexical categories of each of the components. The punctuation of the original sentence is preserved.
+
+== Categories ==
+LSS uses the values of the attribute [[LEX|Lexical Category (LEX)]]:
+*A (adverb)
+*J (adjective)
+*N (noun)
+*V (verb)
+*D (determiner)
+etc.<br />
+The symbol # is used for words not found in the dictionary.
+The punctuation is preserved.
+
+== Ambiguities ==
+LSS brings all possible categories of a given string. Ambiguities must be represented between {} and isolated by |. They can be local (affecting the whole sentence) or local (affecting only part of it).
+*{A|N} = a string that can be an adverb and a noun
+*{A|J|N} = a string that can be an adverb, an adjective and a noun
+*{N|V} = a string that can be a noun and a verb
+etc.
+
+== Example ==
+ SENTENCE: The book is on the table.<br />
+ LSS: D {N|V} {V|I} {P|A|N} D {N|V}.
+Because:
+*"the" is a determiner
+*"book" may be a verb or a noun
+*"is" may be a verb or an auxiliary
+*"on" may be a preposition, an adverb or a noun
+*"table" may be a noun or a verb
+Note that the punctuation (blank spaces and punctuation signs) is preserved in the LSS.
+
+== Goal ==
+The main goal of the LSS is to induce disambiguation rules.

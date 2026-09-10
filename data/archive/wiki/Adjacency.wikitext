@@ -1,0 +1,80 @@
+'''Adjacency''' is the distance between two branches in a tree structure. In the UNL<sup>arium</sup> framework, adjacency is used to represent the structure of [[Syntax|maximal projections]] and, therefore, to state the distance of constituents in relation to the head. 
+
+== Values ==
+
+The number of intermediate projections define the values of the adjacency in the UNL<sup>arium</sup> framework, which are the following:
+
+{{#tree:id=ADC|openlevels=0|root=Adjacency (AJC)|
+*AJ0 (immediate): the constituent is actually an inseparable part of the head (as in inseparable phrasal verbs)
+*AJ1 (nearest): the constituent has the highest precedence over other constituents (i.e., it is necessarily the nearest to the head)
+*AJ2 (near): the constituent has a high precedence but it is not necessarily the nearest to the head (i.e., there may be other constituents nearer to the head)
+*AJ3 (distant): the constituent has low precedence but it is not necessarily the most distant from the head (i.e., there may be other constituents farther from the head)
+*AJ4 (most distant): the constituent has the lowest precedence over other constituents (i.e., it is necessarily the most distant from the head)
+}}
+
+== Examples ==
+
+<pre>
+         XP
+        / \
+     spec XB4
+          / \
+        XB3  adjt2
+        / \
+     XB2 adjt1
+     / \
+   XB1 comp2
+   /  \
+  X  comp1
+</pre>
+
+In the structure above:
+*comp1 = AJ1 (there is only one projection (XB1) between comp1 and X)
+*comp2 = AJ2 (there are two projections (XB1 and XB2) between comp2 and X)
+*adjt1 = AJ3 (there are three projections (XB1, XB2 and XB3) between adjt1 and X)
+*adjt2 = AJ4 (there are four projections (XB1, XB2, XB3, XB4) between adjt2 and X)
+
+== Dictionary == 
+Adjacency is informed in the dictionary only in the following cases:
+*Compounds that do not follow the adjacency patterns (such as "bring home the bacon", where the adjunct precedes the complement)
+*Compounds that have more than one complement or more than one adjunct whose order is important (such as in "go from strength to strength")
+
+=== Examples ===
+*bring home the bacon
+**base form = bring
+**compound = +VA([home],'''AJ1''')VC("the bacon",'''AJ2''');
+*go from strength to strength
+**base form = go
+**compound = +VA("from strength",'''AJ1''')VA("to strength",'''AJ2''');
+
+== Grammar ==
+In the grammar, adjacency is defined through [[S-rule]]s in the following format:
+
+ <SYNTACTIC ROLE>(+<ADJACENCY>);
+
+Where:<br />
+*<SYNTACTIC ROLE> is the [[Syntactic roles|syntactic role]] (VA, VC, VS, VH, etc) of the constituent in relation to the head; and
+*<ADJACENCY> is the adjancency (AJ0, AJ1, AJ2, etc) of the constituent in relation to the head.
+
+=== Examples ===
+*VH(+AJ0); (the head is part of the verb)
+*VC(+AJ1); (the object integrates the first projection of the head)
+
+=== Observations ===
+;Complex adjacency
+:A single adjacency rule may contain several operations:
+:*VC(+AJ1)VA(+AJ2); (the complement integrates the first projection and the adjunct integrates the second one)
+;Conditional adjacency
+:Conditional adjacency may be stated by defining the left side of the s-rule and coindexing it to the right side:
+:*VC(+AJ1); (unconditional adjacency: the complement will always integrate the first projection);
+:*VC(PPR):=VC(+AJ1); (conditional adjacency: the complement will integrate the first projection if a personal pronoun;
+;Use of "+"
+:As rules are conservative (i.e., features are preserved unless explicitly deleted), the use of "+" is actually optional:
+:*VC(AJ1); is the same as VC(+AJ1);
+;Reordering
+:Reordering can be done in three different ways:
+:*By [[L-rule]]s, if the process involves neighbour constituents and affects only the surface structure of the phrase;
+:*By attribute change (i.e., deleting and adding distribution features), such as in "VC(-AJ1,+AJ2);" 
+:*By [[movement]], in case of more complex inversions and extraction of constituents
+;The symbol '''^''' is used for negation and to control infinite recursion:
+:*VC(^AJ1):=VC(AJ1); (assign the feature "AJ1" to the complement of the verb if it does not have it yet)

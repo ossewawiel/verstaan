@@ -1,0 +1,105 @@
+English [[conjunctions]] are represented by [[Universal Relations]], or by Universal Relations and [[Universal Attributes]]. 
+
+ 
+<nowiki>*</nowiki> indicates optional representation<br />
+<nowiki>***</nowiki> indicates relation under discussion
+
+{|border="1" cellpadding="5"
+!Conjunction
+!Relation
+!Attribute
+!English
+!UNL
+|-
+|after||tim||@after||The books will be sent to the library after I have read them.||tim(send, read.@after)
+|-
+|although||ant||@although*||Although they have arrived early they could not enter.||ant(enter, arrive.@although) or ant(enter, arrive)
+|-
+|and||and||||He sold an apartment and bought a country-house.||and(sell, buy) 
+|-
+|as||***||@as*||The situation is not so bad as you suggest.||***(bad, suggest.@as)
+|-
+|as||rsn||@because*||It`s empty, as it had been upside down||rsn(empty, upside.@because) or  rsn(empty, upside)
+|-
+|as||tim||||His hands trembled as he spoke.||tim(tremble, speak)
+|-
+|as if||man||@as.@if||He gives orders as if he were the master of the house.||man(give, master.@as.@if)
+|-
+|as though||man||@as.@if||He treated me as though I were a stranger.|| man(treat, stranger.@as.@if)
+|-
+|as well as||and||*||Robert, as well as Smith, deservers punishment.||and(Smith.@and, Robert) or and(Smith, Robert)
+|-
+|because||rsn||@because*||He said he cannot go because he is very busy.||rsn(go, busy.@because) or rsn(go, busy)
+|-
+|before||tim||@before||Look before you leap.||tim(look, leap.@before)
+|-
+|both... and||and||@and*||He both speaks and writes perfectly.||and(write.@and, speak) or and(write, speak)
+|-
+|but||***||@but||He is young but sensible.||***(sensible.@but, young)
+|-
+|either... or||or||@or*||He will arrive either tomorrow or the day after tomorrow.|| or(day.@or, tomorrow) or or(day, tomorrow)
+|-
+|even if||con||@even.@if||I intend to go even if it rains.||con(go, rain.@even.@if) or con(go, rain.@even)
+|-
+|even though||***||@although||Even though I was really tired, I couldn`t sleep.||***(sleep, tired.@although)
+|-
+|except if||con||@except.@if||I intend to go except if it rains.||con(go, rain.@except.@if) or(go, rain.@except)
+|-
+|for||rsn||@because*||We must go, for it is late.||rsn(go, late.@because) or rsn(go, late)
+|-
+|if||obj||-||I asked him if he intended to travel this month.||obj(ask, intend)
+|-
+|if||con||@if*||If you promise to come, I will wait for you.||con(wait, promise.@if) or con(wait, promise)
+|-
+|in case (that)||rsn||@in_case||He wears two watches in case one of them stops.||rsn(wear, stop.@in_case)
+|-
+|neither... nor||and||@and*||He drinks neither tea nor milk.||and(milk.@and.@not, tea.@not) or and(milk.@not, tea.@not)
+|-
+|nor||and||@and*||He would not buy it nor would he accept it as a gift.||and(accept.@and.@not, buy.@not) or and(accept.@not, buy.@not)
+|-
+|not only... but also||and||@and*||Not only does Sue raise money for the symphony, but she also ushers at all of their concerts.||and(usher.@and, raise) or and(usher, raise)
+|-
+|only if||con||.@if.@only||Only if you promise to come, I will wait for you.||con(wait, promise.@if.@only) or con(wait, promise.@only)
+|-
+|or||or||.@or*||You must prove that you are right or apologize||or(apologize.@or, prove) or or(apologize, prove)
+|-
+|since||rsn||@because*||Since you don`t like this model, I`ll show you another one|| rsn(show, like.@because) or rsn(show, like)
+|-
+|since||tmf||@since*||What have you been doign since I last say you?||tmf(do, say.@since) or tmf(do, say)
+|-
+|so||***||@so*||We are late for the train, so we must take a taxi.||***(take, late.@so) 
+|-
+|so that||***||@so*||He preferred to work in the morning, so that he might be free in the afternoon.||***(free, prefer.@so)
+|-
+|than||bas||-||You are taller than he (is).||bas(tall, he)
+|-
+|that||obj||-||I know that is impossible.||obj(know, impossible)
+|-
+|that||rsn||@because*||He is so hoarse that we can hardly hear what he says.||rsn(hear, hoarse.@because) or rsn(hear, hoarse)
+|-
+|that||***||@so*||He ran so much that he might arrive in time.||***(arrive.@so, run)
+|-
+|then||***||@so*||Our expenses will be very heavy: we will have to buy a great number of books; then we'll have to pay several debts.||***(pay.@so, buy)
+|-
+|though||***||@although||||
+|-
+|till||tmt||@until*||Wait till the day breaks.|| tmt(wait, break.@until) or tmt(wait, break)
+|-
+|unless||con||@unless||I shall go unless it rains.||con(go, rain.@unless)
+|-
+|until||tmt||@until*||Wait until the day breaks.||tmt(wait, break.@until) or tmt(wait, break) 
+|-
+|when||tim||@when*||When I arrive I will write.||tim(write, arrive.@when) or tim(write, arrive)
+|-
+|whereas||coo||@whereas*||You didn`t work yesterday, whereas he worked till midnight.||coo(work, work.@whereas) or coo(work, work)
+|-
+|whether||obj||-||I asked him whether he intended to travel this month.||obj(ask, travel)
+|-
+|whether... or||or||@or*||I would like to know whether he is in France or in England.||or(England, France)
+|-
+|while||coo||@whereas*||You were punctual , while he is always late.||coo(punctual, late.@whereas) or coo(punctual, late)
+|-
+|while||dur||@while*||Remain standing while they sing.||dur(stand, sing.@while) or dur(stand, sing)
+|-
+|yet||***||@but||He is extremely poor, yet he is as happy as a king.||***(king.@but, poor)
+|}

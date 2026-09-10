@@ -1,0 +1,138 @@
+Frequently asked questions about UNL. If your question is not below, write to [mailto:info@undl.org.br contact].
+
+
+
+== General considerations about UNL ==
+
+
+=== Why is the UNL approach different from machine translation (MT)? ===
+
+Unlike machine translation systems, the UNL system does not involve natural language analysis, the stumbling block for existing machine translation technologies. Furthermore, UNL differs from MT in that it focuses upon an interlingua approach and does not prioritize language analysis. According to this perspective, UNL avoids the bottleneck of text comprehension, which demands a precision that is not mandatory, and would even be unfeasible, in the UNL project. While a MT system focuses upon content, UNL focuses upon the interface, by means of controlling the language in use and admitting user intervention whenever needed. MT also focuses upon syntax transference between any two original and target languages and is concerned with meaning preservation, therefore it is also concerned with relevance of information. A good MT system that succeeds must also take into account the psychological reality of the interlocutors (e.g., their expectations, their level of proficiency, etc.). All these comprise features of discourse processing that are of great concern in MT, but not crucial in UNL.
+
+=== How does the UNL system avoid natural language analysis? ===
+
+An UNL system is not intended to translate a source text into a target text. It is conceived of as a convertion program that mediates between UNL and natural languages. Its basic goal is to supply the users with a global-scale common language and enable information exchange through computer networks. What it does is to provide both a means of "enconverting" information encoded in natural languages into UNL-format information (with the help of a UNL editing system = the enconverter) and a means of "deconverting" the UNL-format information into the equivalent counterpart written in natural languages (with the help of the DECO system - the deconverter). 
+
+=== What is the point of trying an alternative approach to MT?  ===
+
+It is a fact that translation is a challenging task even for human translators. It is a far more overwhelming task for computers. As yet, a series of problems remain unsolved and computer translation is unable to supply a high-quality output. Although the UNL system is not a machine translation system, its peculiar features are powerful enough to enable global-scale information exchange for practical purposes. Moreover, it provides a framework within which several research teams from distinct languages can work cooperatively -- developers of enconverter/deconverter systems for a given natural language can benefit from research done for other natural languages.
+
+=== Is the UNL approach focused on a system of communication or on a system of language representation? ===
+
+The strength of the UNL approach lies in providing information exchange. It focuses on the representation of information, not on the communication process itself, which involves complex issues. In other words, it explores the representational facet of human languages by focusing upon grammar and language use and, thus, it aims basically at a constrained communication. However, provided UNL is circumscribed to some boundaries (e.g., type of message to be conveyed, genre of discourse, etc.), as well as to the inherent limitations imposed by the computer network communication itself, it can also be thought of as a system of (limited) communication.
+
+=== Is UNL aimed at representing a subset of the languages considered?  ===
+
+If it is meant that UNL avoids dealing with too complex sentence structures and intractable structural and lexical ambiguities, YES. However,UNL is aimed at representing any language as a whole. Variations of grammatical structures, as well as sophisticated language use (e.g., complex sentence structures and intractable structural and lexical ambiguities), may need to be constrained. In this case, the UNL approach is similar to controlled language methodologies. At the present stage, UNL is not intended to tackle problems that pose severe bottlenecks to human communication like e.g. poetry or any other sort of information which may introduce ambiguities.
+
+=== What is the theoretical framework that underlies the UNL approach?  ===
+
+In general, semantic networks and conceptual structures give foundation to both, a general parser and a general deconverter. The deconverter, in special, is based on a context‑free grammar and is implemented as a rule-based system. 
+
+=== What sort of texts cannot be conveyed in UNL? ===
+
+As the UNL system is conceived of a global-scale common language to enable information exchange through a computer network, it is obviously not suitable to deal with elaborated or literary texts. 
+
+=== Does the set of relation labels and attribute labels fully cover the main features of the involved languages? ===
+
+Our previous experience has shown that the set of defined labels is capable of covering the bulk of a number of languages. By bulk of a given language we mean a high percentage of ordinary constructions of the language.
+
+=== How can one check whether the UNL representation is good enough for conveying the meaning intended by the author of a text? ===
+
+When writing a UNL code, either using an automatic enconverter or doing it by hand or semi‑automatically, one may check the adequacy of the UNL representation by comparing the meaning of the output of the deconverter, in the same language, with the meaning of the corresponding original sentence. Getting back the original meaning points out the quality of the generated UNL sentence. 
+
+=== The enconverter/deconverter systems may be biased because of idiosyncrasies of a particular language. The test with the deconverter output may be misleading, as the UNL representation may not be appropriate for another language. How can one diagnose such a problem? ===
+
+The UNL representation conveys meaning. As such, it should be independent of a specific language and idiosyncrasies of a particular language should be tackled during the development of its specific enconverter/deconverter. For problems that may still be unsolved, a group of researchers should assess the output of the deconverters for several languages, working on the very same UNL representation. Each individual should also be proficient in the involved languages in order to detect the most common problems and be able to properly address the UNL formalism as a whole. In such a way, the formalism itself should be modified in order to avoid biases of any kind.
+
+=== Why is the deconverter, rather than the enconverter, being developed first in the UNL project? ===
+
+The UNL project aims at providing proper tools to handle information in the near future. Since the construction of an enconverter requires a very sophisticated computational linguistic treatment, it is unfeasible to reach the main goal of the UNL project in a short period of time, unless mechanisms are provided for human interaction. In this case, the enconverter is not fully automatic, but it allows for information to be accessed. Making deconverters available first, at the same time that enconversion is supervised, will allow people to communicate all around the world. This will demonstrate the potential of UNL and allow assessment of the task of enconversion.
+
+=== Does the UNL representation features form frozen, unchangeable structures? ===
+
+As for the current set of relation and attribute labels, any change would not be trivial, since there are various research teams throughout the world working on a single UNL specification. It is worthwhile noting that any updating will only make sense when every single subproject evaluates the extension of the modification, in order to avoid idiosyncrasies of a particular language. Otherwise, language‑specific features may risk the character of universality of the UNL formalism. 
+
+== Dictionaries ==
+
+=== What is a UW? ===
+
+It is a representation of any single universal meaning (independent of any specific language) based upon the English vocabulary. For example, the UW COMMUNICATION denotes every possible meaning of the English word "communication", that is, "the act of communicating" or "the process of communicating". In order to express specific meanings, a method is introduced to limit the range of a UW: descriptions of specific meanings of a UW are given between parentheses. For example, the specification com(icl>information‑transfer) denotes the meaning "information that is communicated" (UW: "com"; limited range: "icl>information‑transfer"), in which "icl" is the label of the "inclusion relation" and "information‑transfer" is the UW that denotes every possible meaning of the compound English word "information‑transfer" (or "information transfer"). In this example, "icl" itself is responsible for the limitation of the meaning of the UW COMMUNICATION.
+
+=== How many dictionaries must be coded? ===
+
+Local dictionaries must be available for each native language involved in the UNL project to be used by both, the enconverter and the deconverter. These dictionaries comprise one that associates lexical items of each native language to the Universal Words and a co-occurrence dictionary.
+
+=== What sort of information do the dictionaries hold? ===
+
+Entry of the UW dictionary: <native language headword> <UW> <grammatical features>
+
+=== Which grammatical features should be used for categorizing a headword? Is there any restriction about the set of grammatical features? ===
+
+This categorization is completely language specific. There is no limit for the number of attributes used for a given headword, which may even include semantic attributes. This does not pose a problem for DECO as the generation rules are also language specific. 
+
+=== Is the representation in the UW dictionary ontological? ===
+
+Yes. A hierarchical classification of meanings is represented in the UW dictionary, by means of a property‑inheritance network of concepts.
+
+=== How was the UW dictionary built? ===
+
+Several English dictionaries were employed for collecting the UWs. At the moment, universal UWs are represented in a global UW dictionary available at the UNU site.
+
+=== How the research teams can access the UW dictionary? ===
+
+Registered members of the UNL projects are allowed to access UWs from the global dictionary through a command interface system via e-mail. Moreover, via commands of this interface, one can add new native language headwords by associating them to existenting UWs. This association can also be eliminated by deleting headwords from the dictionary.  
+
+== Deconversion ==
+
+=== What is the DECO system? ===
+
+It is a universal natural language generator that provides means to specify deconverters from UNL to any given natural language.
+
+=== What does the DECO system do? ===
+
+It is designed to convert any UNL "sentence" into a target natural language counterpart. For example, the UNL sentence 
+
+agt(investigate.@entry.@past.@pred.@entry,I)
+
+obj(investigate.@entry.@past.@pred.@entry,cause@def)
+
+can be converted into the English sentence "I investigated the cause", or into the Portuguese sentence "Eu investiguei a causa", or into the Japanese sentence ...., and so forth. 
+
+=== What is the formalism underlying the DECO system? ===
+
+It is basically an automaton with the potential to generate phrase-structure languages. 
+
+=== What is the node-net? ===
+
+It is simply a direct hypergraph structure that represents any UNL "sentence". 
+
+=== What is there in a node? ===
+
+Each node corresponds to an entry of the UW dictionary of the target language. Basically, it contains the target language headword, the corresponding UW, and a set of grammatical attributes of the target headword. For example: ...
+
+=== What is a node list? ===
+
+The node-list can be conceived of as the "working space" where the generation rules are applied and the target language sentence is built. The input of the deconverter at the initial stage is the node-list that contains three nodes: the sentence head node, the entry node from the node net, and the sentence tail node. It must be stressed that the generation rules are applied exclusively to the nodes on the node-list. Each node in the node-net becomes visible to them after having been placed on the node-list. 
+
+=== Is it provided a specific set of generation rules? ===
+
+No, because these rules represent the mapping from UNL sentences (content information) to morphosyntactical representation in the target language. Thus, this grammatical information is completely dependent on each particular language. 
+
+=== Why are there exactly two windows to scan the node-list? ===
+
+Two windows are necessary for insert-on-left and insert-on-right operations on the sentence being built. More than two windows could be useful but also could lead to aprocessing explosion.
+
+=== How should the generation rules be created? ===
+
+The generation rules are completely language specific and, thus, they must be specified by each research team. From the viewpoint of implementation, their formal specification must conform to the DECO system syntax.
+
+== Enconverter == 
+
+=== How can the user "enconvert" his/her text into UNL? ===
+
+One should not expect to develop high quality, fully-automatic enconverters. The idea is to use a semi-automatic interactive system in which the user would help the enconverter to achieve its task.
+
+=== Would the user need to learn the UNL formalism? ===
+
+Ideally, the user is not expected to master the UNL formalism. The UNL system interface, therefore, would need to embed knowledge about possible difficulties in the representation of a particular language. The development of such an interface is completely dependent on a specific language and is certainly a challenging task, since it must allow the user to help the system in resolving ambiguities, even when the user does not have any knowledge about the UNL formalism or any linguistic metalanguage.

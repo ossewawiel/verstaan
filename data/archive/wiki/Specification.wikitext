@@ -1,0 +1,41 @@
+'''Specifiers''' are represented, in UNL, by specifying attributes or by the relation "mod", depending on the type of specification.
+
+== Specifying attributes ==
+Specifying attributes are used in case of general specification (normally conveyed by determiners):
+{{#tree:id=reference|openlevels=0|root=Reference|
+*@also
+*@def (definite)
+**@both (both)
+**@distal (far from the speaker)
+**@each (each)
+**@either (either)
+**@every (every)
+**@medial (near the addressee)
+**@other (other)
+**@own (own)
+**@proximal (near the speaker)
+**@same (same)
+**@such (such)
+*@even
+*@indef (indefinite)
+**@certain (certain)
+**@wh
+*@only
+}}
+
+== Relation mod ==
+The relation "mod" is used to express more specific specifiers:
+
+ mod(head, specifier)
+
+== Examples ==
+*the book = book.@def
+*that book = book.@distal
+*each book = book.@each
+*every book = book.@every
+*other book = book.@other
+*this book = book.@proximal
+*same book = book.@same
+*a book = book.@indef
+*record book = mod(book, record)
+*new book = mod(book, new)

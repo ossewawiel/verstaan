@@ -1,0 +1,221 @@
+<div class="mw-content-ltr mw-parser-output" lang="en" dir="ltr"><p>C-rule (composition rule) is a specific subtype of <a href="/wiki/Transformation_rule" class="mw-redirect" title="Transformation rule">transformation rule</a> used for creating compounds and multi-word expressions out of base forms in the UNLarium framework.
+</p>
+<div id="toc" class="toc" role="navigation" aria-labelledby="mw-toc-heading"><input type="checkbox" role="button" id="toctogglecheckbox" class="toctogglecheckbox" style="display:none" /><div class="toctitle" lang="en" dir="ltr"><h2 id="mw-toc-heading">Contents</h2><span class="toctogglespan"><label class="toctogglelabel" for="toctogglecheckbox"></label></span></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Compounds"><span class="tocnumber">1</span> <span class="toctext">Compounds</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#When_to_use_composition_rules"><span class="tocnumber">2</span> <span class="toctext">When to use composition rules</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="#When_not_to_use_composition_rules"><span class="tocnumber">3</span> <span class="toctext">When not to use composition rules</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="#Syntax"><span class="tocnumber">4</span> <span class="toctext">Syntax</span></a></li>
+<li class="toclevel-1 tocsection-5"><a href="#Examples"><span class="tocnumber">5</span> <span class="toctext">Examples</span></a></li>
+<li class="toclevel-1 tocsection-6"><a href="#Agreement"><span class="tocnumber">6</span> <span class="toctext">Agreement</span></a></li>
+<li class="toclevel-1 tocsection-7"><a href="#Observations"><span class="tocnumber">7</span> <span class="toctext">Observations</span></a></li>
+<li class="toclevel-1 tocsection-8"><a href="#Notes"><span class="tocnumber">8</span> <span class="toctext">Notes</span></a></li>
+</ul>
+</div>
+
+<div class="mw-heading mw-heading2"><h2 id="Compounds">Compounds</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=C-rule&amp;veaction=edit&amp;section=1" title="Edit section: Compounds" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=C-rule&amp;action=edit&amp;section=1" title="Edit section&#39;s source code: Compounds">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p><b>Compounding</b> or <b>composition</b> is the word-formation process of creating compounds by combining or putting together lexemes. In the UNL<sup>arium</sup> framework, compounds are treated as ordinary simple words except in case of discontinuous <a href="/wiki/Multiword_expression" title="Multiword expression">multiword expressions</a> or with infixation (such as "give in" or "take into account"). In these cases, the <a href="/wiki/Lemma" title="Lemma">lemma</a> is different from the <a href="/wiki/Base_form" class="mw-redirect" title="Base form">base form</a>, and the compound-formation process is expected to be defined through special rules, the <b>composition rules</b>, or <b>C-rules</b>.
+</p>
+<div class="mw-heading mw-heading2"><h2 id="When_to_use_composition_rules">When to use composition rules</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=C-rule&amp;veaction=edit&amp;section=2" title="Edit section: When to use composition rules" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=C-rule&amp;action=edit&amp;section=2" title="Edit section&#39;s source code: When to use composition rules">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>Composition rules must be created when and only when the <a href="/wiki/Base_form" class="mw-redirect" title="Base form">base form</a> is different from the <a href="/wiki/Lemma" title="Lemma">lemma</a>.<br />
+This situation occurs only in case of the following <a href="/wiki/Multiword_expression" title="Multiword expression">multiword expressions</a>:
+</p>
+<ul><li>when inflections are formed by infixation (in opposition to simple suffixation or prefixation); or</li>
+<li>when the multiword expression is discontinuous.</li></ul>
+<p>For instance:<br />
+The English multiword expression "call for" has the following inflections: "call for", "call<b>s</b> for", "call<b>ed</b> for", "call<b>ing</b> for", etc. These inflections are formed by infixation, in the sense they apply in the middle of the expression (between "call" and "for"). If we simply associate this expression to the inflectional paradigm of "call", we will have the following results: "call for", "call for<b>s</b>", "call for<b>ed</b>", "call for<b>ing</b>", etc. In order to prevent this problem, and to avoid the unnecessary proliferation of rules in the grammar, we split the multiword expression into two segments: the <b>base form</b> (BF), i.e., the term over which the inflections will be directly applied; and the <b>composition rule</b> (C-rule), which is the rule used to rebuild the lemma out of the base form. In the case of "call for", the BF is "call" and the c-rule is "VH([for],P);".
+</p>
+<div class="mw-heading mw-heading2"><h2 id="When_not_to_use_composition_rules">When not to use composition rules</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=C-rule&amp;veaction=edit&amp;section=3" title="Edit section: When not to use composition rules" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=C-rule&amp;action=edit&amp;section=3" title="Edit section&#39;s source code: When not to use composition rules">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>Composition rules must not be used in the following circumstances:
+</p>
+<ul><li>When the word is not a multiword expression;</li>
+<li>When the multiword expression is invariant;</li>
+<li>When the inflections of the multiword expression are formed by prefixation or suffixation (such as in "call center" &gt; "call center<b>s</b>");</li></ul>
+<div class="mw-heading mw-heading2"><h2 id="Syntax">Syntax</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=C-rule&amp;veaction=edit&amp;section=4" title="Edit section: Syntax" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=C-rule&amp;action=edit&amp;section=4" title="Edit section&#39;s source code: Syntax">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>C-rules follow the syntax below:
+</p>
+<pre> &lt;SYNTACTIC ROLE&gt;(&lt;ADDED&gt;,&lt;FEATURES&gt;);
+</pre>
+<p>Where:<br />
+</p>
+<ul><li>&lt;SYNTACTIC ROLE&gt; is the <a href="/wiki/Syntactic_role" class="mw-redirect" title="Syntactic role">syntactic role</a> (VA, VC, VS, VH, etc) of the term to be added to the base form;</li>
+<li>&lt;ADDED&gt; is the term to be added to the base form to form the compound. It must be represented between [brackets], if it is a lemma (i.e., if it is an entry in the dictionary), or between "quotes", if a string (i.e., if it is not an entry in the dictionary)</li>
+<li>&lt;FEATURES&gt; are the features of the term to be added to the base form. The following features are mandatory:
+<ul><li>the <a href="/wiki/Lexical_category" title="Lexical category">lexical category</a> (A,J,N,V,C,P,D) of the term to be added, in case of isolated terms (between [brackets], or <a href="/wiki/Syntactic_roles" class="mw-redirect" title="Syntactic roles">maximal projections</a> (AP,JP,NP,VP,CP,PP,DP), in case of complex structures (between "quotes")</li>
+<li>the <a href="/wiki/Inflection" title="Inflection">inflectional properties</a> (paradigm and/or inflectional rules) of the term to be added, if a [dictionary entry] that is not invariant (i.e., not M0)</li>
+<li>the <a href="/wiki/Distribution" title="Distribution">distribution</a> (i.e., the position) of the term to be added, if not default</li>
+<li>the <a href="/wiki/Adjacency" title="Adjacency">adjacency</a> of the term to be added, if not default</li>
+<li>other features necessary to generate the inflections of the term to be added, if these features cannot be inherited from the base form (see agreement, below)</li></ul></li></ul>
+<div class="mw-heading mw-heading2"><h2 id="Examples">Examples</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=C-rule&amp;veaction=edit&amp;section=5" title="Edit section: Examples" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=C-rule&amp;action=edit&amp;section=5" title="Edit section&#39;s source code: Examples">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<table border="1" cellpadding="2" align="center">
+<tbody><tr>
+<th>Lemma
+</th>
+<th>Base Form
+</th>
+<th>Composition rule
+</th>
+<th>Description
+</th></tr>
+<tr>
+<td>give in
+</td>
+<td>give
+</td>
+<td>VH([in],P)
+</td>
+<td>add the lemma "in", which is a preposition (P), as part of the head of the verbal phrase (VH)
+</td></tr>
+<tr>
+<td>make sense
+</td>
+<td>make
+</td>
+<td>VC([sense],N,M2)
+</td>
+<td>add the lemma "sense", which is a noun (N) belonging to the paradigm M2, as a complement of the head of the verbal phrase (VC)
+</td></tr>
+<tr>
+<td>take into account
+</td>
+<td>take
+</td>
+<td>VA("into account",AP)
+</td>
+<td>add the string "into account", which is an adverbial phrase (AP), as an adjunct to the head of the verbal phrase (VA)
+</td></tr>
+<tr>
+<td>throw &lt;person&gt; to the lions
+</td>
+<td>throw
+</td>
+<td>VA("to the lions",AP)
+</td>
+<td>add the string "to the lions", which is an adverbial phrase (AP), as an adjunct to the head of the verbal phrase (VA)
+</td></tr></tbody></table>
+<div class="mw-heading mw-heading2"><h2 id="Agreement">Agreement</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=C-rule&amp;veaction=edit&amp;section=6" title="Edit section: Agreement" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=C-rule&amp;action=edit&amp;section=6" title="Edit section&#39;s source code: Agreement">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>In some cases, the term to be added agrees with the base form (in gender, number, case, etc.).<br />
+The agreement is carried out automatically by the machine as follows:
+</p>
+<ul><li>The agreement occurs only if the term to be added is not invariant (i.e., if it is provided between [brackets] and associated to an existing paradigm)<br /></li>
+<li>The term to be added follows the rules defined in the paradigm, according, first, to the categories explicitly informed in the composition rule and, secondly, to the categories inherited from the base form. In case of conflict, the former prevails over the latter.</li>
+<li>The agreement will occur only if the term to be added satisfies all the conditions stated in the corresponding paradigm.<sup id="cite_ref-1" class="reference"><a href="#cite_note-1"><span class="cite-bracket">&#91;</span>1<span class="cite-bracket">&#93;</span></a></sup></li></ul>
+<p><br />
+Consider, for instance, the case below:
+</p>
+<ul><li>paradigm X = NOM&amp;SNG:=0&gt;"";NOM&amp;PLR:=0&gt;"e";ACC&amp;SNG:=0&gt;"m";ACC&amp;PLR:=0&gt;"s"; etc</li>
+<li>paradigm Y = FEM&amp;NOM&amp;SNG:=2&gt;"a";MCL&amp;NOM&amp;SNG:=0&gt;"";NEU&amp;NOM&amp;SNG:=1&gt;"m";FEM&amp;NOM&amp;PLR:=2&gt;"ae";MCL&amp;NOM&amp;SNG:=2&gt;"i";NEU&amp;NOM&amp;SNG:=2&gt;"a";etc.</li>
+<li>lemma = lingua franca (Latin)</li>
+<li>base form = lingua (GEN=FEM, PARADIGM=X)</li>
+<li>composition rules (compare the difference: the correct rule is the last one)</li></ul>
+<p><br />
+</p>
+<table border="1" cellpadding="2" align="center">
+<tbody><tr>
+<th>Composition rule
+</th>
+<th>Inflections
+</th>
+<th>Description
+</th></tr>
+<tr>
+<td>NA("franca",JP)
+</td>
+<td>lingua franca, linguae franca, linguam franca, linguas franca, etc.
+</td>
+<td>the base form "lingua" follows the rules of the inflection of the paradigm X; the term "franca" is invariant, because a "string"
+</td></tr>
+<tr>
+<td>NA([francus],J,M0)
+</td>
+<td>lingua francus, linguae francus, linguam francus, linguas francus, etc.
+</td>
+<td>the base form "lingua" follows the rules of the inflection of the paradigm X; the term "francus" is invariant, because M0
+</td></tr>
+<tr>
+<td>NA([francus],J,FEM,SNG,NOM,MY)
+</td>
+<td>lingua franca, linguae franca, linguam franca, linguas franca, etc.
+</td>
+<td>the base form "lingua" follows the rules of the inflection of the paradigm X; the term "franca" has gender (FEM), number (SNG) and case (NOM) fixed and, therefore, follows only the rule FEM&amp;NOM&amp;SNG from MY
+</td></tr>
+<tr>
+<td>NA([francus],J,FEM,SNG,MY)
+</td>
+<td>lingua franca, linguae franca, linguam francam, linguas francam, etc.
+</td>
+<td>the base form "lingua" follows the rules of the inflection of the paradigm X; the term "franca" has gender (FEM) and number (SNG) fixed and, therefore, follows only the rules FEM&amp;NOM&amp;SNG, FEM&amp;ACC&amp;SNG, etc.)
+</td></tr>
+<tr>
+<td>NA([franca],J,MY)
+</td>
+<td>lingua franca, linguae francae, linguam francam, linguas francas, etc.
+</td>
+<td>the base form "lingua" follows the rules of the inflection of the paradigm X; the term "franca" follows the rules FEM&amp;NOM&amp;SNG, FEM&amp;NOM&amp;PLR, FEM&amp;ACC&amp;SNG, etc, according to the corresponding values of "lingua" - note that the rules containing MCL and NEU will not be applied, because the only gender information, inherited from the "lingua", is FEM.
+</td></tr></tbody></table>
+<div class="mw-heading mw-heading2"><h2 id="Observations">Observations</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=C-rule&amp;veaction=edit&amp;section=7" title="Edit section: Observations" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=C-rule&amp;action=edit&amp;section=7" title="Edit section&#39;s source code: Observations">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<dl><dt>Composition rules must end in semicolon</dt>
+<dd></dd>
+<dd><strike>VH([in],P)</strike></dd>
+<dd>VH([in],P);</dd>
+<dt>Inflectional paradigms must be informed only if not invariant (i.e., not M0)</dt>
+<dd><strike>VH([in],P,M0);</strike></dd>
+<dd>VH([in],P);</dd>
+<dt>Phrasal verbs</dt>
+<dd>Particles of phrasal verbs must be represented as part of the head, if non separable, or as adjuncts, if separable:
+<ul><li>give in = VH([in],P); (because <strike>"give something in"</strike>)</li>
+<li>give back = VA([back],A); (because "give back something" or "give something back")</li></ul></dd></dl>
+<dl><dt>"Quotes" or [brackets]?</dt>
+<dd>In the compound-formation process, the UNL<sup>arium</sup> distinguishes between strings (to be represented between "") and lemmas (to be represented between [ ]). The difference between strings and lemmas has to do with the dictionary status: lemmas (but not strings) are expected to be dictionary entries.
+<ul><li>VA("into account",AP); (the string "into account" is not expected to be a dictionary entry)</li>
+<li>VC([sense],N,M2); (the term "sense" is expected to be a dictionary entry).</li></ul></dd></dl>
+<dl><dt>Lexical categories (A,J,N,V,P,...) or maximal projections (AP,JP,NP,VP,PP,...)?</dt>
+<dd>[Dictionary entries] must be associated to their <a href="/wiki/Lexical_category" title="Lexical category">lexical category</a> whereas "strings" must be associated to their <a href="/wiki/Syntactic_roles" class="mw-redirect" title="Syntactic roles">maximal projection</a>
+<ul><li>take into account = VA("into account",<b>AP</b>); and not <strike>VA([into account],A,M0);</strike></li>
+<li>make sense = VC([sense],<b>N</b>,M2); and not <strike>VC("sense",NP);</strike></li></ul></dd></dl>
+<dl><dt>General syntactic roles (NP, PP, XP) must not be defined in composition rules but inside the <a href="/wiki/Subcategorization_frame" class="mw-redirect" title="Subcategorization frame">subcategorization frame</a></dt>
+<dd></dd>
+<dd>throw &lt;person&gt; to the lions =VA("to the lions",AP,M0); (and not "VA("to the lions",AP,M0)VC(NP);". The lemma should be associated to the transitive frame instead)</dd>
+<dt>There can be as many composition rules as necessary to form the lemma out of the base form.</dt>
+<dd>VH([up],P)VC("the ghost",NP); (give &gt; give up the ghost)</dd>
+<dt>Compounds must include as many terms as different syntactic roles.</dt>
+<dd>give up the ghost = VH([up],P,M0)VC("the ghost",NP); (<strike>VH("up the ghost")</strike> or <strike>VC("up the ghost")</strike>)</dd>
+<dt>Order is to be represented by the <a href="/wiki/Distribution" title="Distribution">distribution features</a> ("&gt;", "&gt;&gt;", "&lt;", "&lt;&lt;", ...), if not default</dt>
+<dd></dd>
+<dd>VC([love],N,M0); (order must not be informed, because in English complements come at the right side by default: <i>make</i> &gt; <i>make love</i>)</dd>
+<dd>NS([the],D); (order must not be informed, because in English specifiers come at the left side, by default: <i>Netherlands</i> &gt; <i>the Netherlands</i>)</dd>
+<dd>NA([available],J,<b>&gt;&gt;</b>); (order must be informed, because in English nominal adjuncts come at the left side, by default: <i>table</i> &gt; <i>new table</i>)</dd>
+<dt>Adjacency is to be represented by the <a href="/wiki/Adjacency" title="Adjacency">adjacency features</a> (AJ0,AJ1,AJ2,...), if not default</dt>
+<dd></dd>
+<dd>VC([love],N,M2); (adjacency must not be informed, because in English complements come after the head, by default: <i>make</i> &gt; <i>make love</i>)</dd>
+<dd>VH([up],P)VC("the ghost",NP); (adjacency must not be informed, because in English head particles come before complements, by default: <i>give</i> &gt; <i>give up the ghost</i>)</dd>
+<dd>VA([home],A,AJ1)VC("the bacon",NP,AJ2); (adjacency must be informed because in English the complement is normally generated before the adjunct: <i>bring the bacon home</i>)</dd></dl>
+<div class="mw-heading mw-heading2"><h2 id="Notes">Notes</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=C-rule&amp;veaction=edit&amp;section=8" title="Edit section: Notes" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=C-rule&amp;action=edit&amp;section=8" title="Edit section&#39;s source code: Notes">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<div class="mw-references-wrap"><ol class="references">
+<li id="cite_note-1"><span class="mw-cite-backlink"><a href="#cite_ref-1">↑</a></span> <span class="reference-text">If the term to be added is associated to a paradigm that requires, for instance, gender (MCL, FEM, etc), the inflections will be generated if, and only if, these values are either informed explicitly in the composition rule or if they can be inherited from the base form).</span>
+</li>
+</ol></div>
+<!-- 
+NewPP limit report
+Cached time: 20260910160418
+Cache expiry: 86400
+Reduced expiry: false
+Complications: [show‐toc]
+CPU time usage: 0.012 seconds
+Real time usage: 0.013 seconds
+Preprocessor visited node count: 99/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/100
+Expensive parser function count: 0/100
+Unstrip recursion depth: 0/20
+Unstrip post‐expand size: 674/5000000 bytes
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    0.000      1 -total
+-->
+
+<!-- Saved in parser cache with key u965818192_SLvgQ-l8z2_:pcache:487:|#|:idhash:canonical and timestamp 20260910160418 and revision id 12716. Rendering was triggered because: diff-page
+ -->
+</div>

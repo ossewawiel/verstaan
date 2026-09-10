@@ -1,0 +1,13 @@
+Segmentation is the processing of splitting the input into processing units. In [[UNLization]] with [[IAN]], the natural language input document is split into sentences; in [[UNLization]] with [[SEAN]], the natural language input is split into texts; in [[NLization]] with [[EUGENE]], the UNL input is split into graphs.
+
+== IAN ==
+In [[IAN]], segmentation is done using a set of predefined* sentence boundaries:
+*punctuation signs: ".",";","!","?","..."
+*special characters: end-of-line, end-of-paragraph
+<nowiki>*</nowiki> This process is expected to be replaced by a user-defined system in the coming releases of IAN.
+
+== EUGENE ==
+In [[EUGENE]], segmentation is done using the [[UNL document]] tags.
+*The tag [S] defines the beginning of a sentence, and the tag [/S] defines the end of a sentence
+*The tag {org} defines the beginning of the source sentence, and the tag {/org} defines the end of the source sentence
+*The tag {unl} defines the beginning of the UNL graph, and the tag {/unl} defines the end of the UNL graph

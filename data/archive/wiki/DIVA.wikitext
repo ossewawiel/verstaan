@@ -1,0 +1,23 @@
+The project DiVa (Dictionary Verification) is dedicated to the verification of entries created in the projects NADIA and BRUNO.
+
+== Goals ==
+The goal of the project DiVa is to perform the fist check of the entries inserted in the UNL<sup>arium</sup>, including:
+*to delete entries that are not lexical units (i.e., that cannot be found in ordinary dictionaries) 
+*to correct typos and any spelling problems 
+*to delete wrong mappings or to add missing mappings 
+*to check the morphological behavior (categories, inflections and frames) 
+
+== Requisites == 
+As a verification project, DIVA is open only for users at the "editor" level, i.e., users at the level A2 holding CLEA1000.
+
+== Structure ==
+The project DiVa is divided into 6 subprojects:
+*DIVA-A1 targets the entries inserted in [[NADIA|NADIA-A1]] and [[BRUNO|BRUNO-A1]]
+*DIVA-A2 targets the entries inserted in [[NADIA|NADIA-A2]] and [[BRUNO|BRUNO-A2]]
+*DIVA-B1 targets the entries inserted in [[NADIA|NADIA-B1]] and [[BRUNO|BRUNO-B1]]
+*DIVA-B2 targets the entries inserted in [[NADIA|NADIA-B2]] and [[BRUNO|BRUNO-B2]]
+*DIVA-C1 targets the entries inserted in [[NADIA|NADIA-C1]] and [[BRUNO|BRUNO-C1]]
+*DIVA-C2 targets the entries inserted in [[NADIA|NADIA-C2]] and [[BRUNO|BRUNO-C2]]
+
+== Languages ==
+The languages involved in FRIDA are available at UNLWEB>PROJECTS.

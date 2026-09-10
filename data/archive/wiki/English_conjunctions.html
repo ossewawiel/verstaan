@@ -1,0 +1,363 @@
+<div class="mw-content-ltr mw-parser-output" lang="en" dir="ltr"><p>English <a href="/wiki/Conjunctions" class="mw-redirect" title="Conjunctions">conjunctions</a> are represented by <a href="/wiki/Universal_Relations" title="Universal Relations">Universal Relations</a>, or by Universal Relations and <a href="/wiki/Universal_Attributes" title="Universal Attributes">Universal Attributes</a>. 
+</p><p><br /> 
+* indicates optional representation<br />
+*** indicates relation under discussion
+</p>
+<table border="1" cellpadding="5">
+<tbody><tr>
+<th>Conjunction
+</th>
+<th>Relation
+</th>
+<th>Attribute
+</th>
+<th>English
+</th>
+<th>UNL
+</th></tr>
+<tr>
+<td>after</td>
+<td>tim</td>
+<td>@after</td>
+<td>The books will be sent to the library after I have read them.</td>
+<td>tim(send, read.@after)
+</td></tr>
+<tr>
+<td>although</td>
+<td>ant</td>
+<td>@although*</td>
+<td>Although they have arrived early they could not enter.</td>
+<td>ant(enter, arrive.@although) or ant(enter, arrive)
+</td></tr>
+<tr>
+<td>and</td>
+<td>and</td>
+<td></td>
+<td>He sold an apartment and bought a country-house.</td>
+<td>and(sell, buy)
+</td></tr>
+<tr>
+<td>as</td>
+<td>***</td>
+<td>@as*</td>
+<td>The situation is not so bad as you suggest.</td>
+<td>***(bad, suggest.@as)
+</td></tr>
+<tr>
+<td>as</td>
+<td>rsn</td>
+<td>@because*</td>
+<td>It`s empty, as it had been upside down</td>
+<td>rsn(empty, upside.@because) or  rsn(empty, upside)
+</td></tr>
+<tr>
+<td>as</td>
+<td>tim</td>
+<td></td>
+<td>His hands trembled as he spoke.</td>
+<td>tim(tremble, speak)
+</td></tr>
+<tr>
+<td>as if</td>
+<td>man</td>
+<td>@as.@if</td>
+<td>He gives orders as if he were the master of the house.</td>
+<td>man(give, master.@as.@if)
+</td></tr>
+<tr>
+<td>as though</td>
+<td>man</td>
+<td>@as.@if</td>
+<td>He treated me as though I were a stranger.</td>
+<td>man(treat, stranger.@as.@if)
+</td></tr>
+<tr>
+<td>as well as</td>
+<td>and</td>
+<td>*</td>
+<td>Robert, as well as Smith, deservers punishment.</td>
+<td>and(Smith.@and, Robert) or and(Smith, Robert)
+</td></tr>
+<tr>
+<td>because</td>
+<td>rsn</td>
+<td>@because*</td>
+<td>He said he cannot go because he is very busy.</td>
+<td>rsn(go, busy.@because) or rsn(go, busy)
+</td></tr>
+<tr>
+<td>before</td>
+<td>tim</td>
+<td>@before</td>
+<td>Look before you leap.</td>
+<td>tim(look, leap.@before)
+</td></tr>
+<tr>
+<td>both... and</td>
+<td>and</td>
+<td>@and*</td>
+<td>He both speaks and writes perfectly.</td>
+<td>and(write.@and, speak) or and(write, speak)
+</td></tr>
+<tr>
+<td>but</td>
+<td>***</td>
+<td>@but</td>
+<td>He is young but sensible.</td>
+<td>***(sensible.@but, young)
+</td></tr>
+<tr>
+<td>either... or</td>
+<td>or</td>
+<td>@or*</td>
+<td>He will arrive either tomorrow or the day after tomorrow.</td>
+<td>or(day.@or, tomorrow) or or(day, tomorrow)
+</td></tr>
+<tr>
+<td>even if</td>
+<td>con</td>
+<td>@even.@if</td>
+<td>I intend to go even if it rains.</td>
+<td>con(go, rain.@even.@if) or con(go, rain.@even)
+</td></tr>
+<tr>
+<td>even though</td>
+<td>***</td>
+<td>@although</td>
+<td>Even though I was really tired, I couldn`t sleep.</td>
+<td>***(sleep, tired.@although)
+</td></tr>
+<tr>
+<td>except if</td>
+<td>con</td>
+<td>@except.@if</td>
+<td>I intend to go except if it rains.</td>
+<td>con(go, rain.@except.@if) or(go, rain.@except)
+</td></tr>
+<tr>
+<td>for</td>
+<td>rsn</td>
+<td>@because*</td>
+<td>We must go, for it is late.</td>
+<td>rsn(go, late.@because) or rsn(go, late)
+</td></tr>
+<tr>
+<td>if</td>
+<td>obj</td>
+<td>-</td>
+<td>I asked him if he intended to travel this month.</td>
+<td>obj(ask, intend)
+</td></tr>
+<tr>
+<td>if</td>
+<td>con</td>
+<td>@if*</td>
+<td>If you promise to come, I will wait for you.</td>
+<td>con(wait, promise.@if) or con(wait, promise)
+</td></tr>
+<tr>
+<td>in case (that)</td>
+<td>rsn</td>
+<td>@in_case</td>
+<td>He wears two watches in case one of them stops.</td>
+<td>rsn(wear, stop.@in_case)
+</td></tr>
+<tr>
+<td>neither... nor</td>
+<td>and</td>
+<td>@and*</td>
+<td>He drinks neither tea nor milk.</td>
+<td>and(milk.@and.@not, tea.@not) or and(milk.@not, tea.@not)
+</td></tr>
+<tr>
+<td>nor</td>
+<td>and</td>
+<td>@and*</td>
+<td>He would not buy it nor would he accept it as a gift.</td>
+<td>and(accept.@and.@not, buy.@not) or and(accept.@not, buy.@not)
+</td></tr>
+<tr>
+<td>not only... but also</td>
+<td>and</td>
+<td>@and*</td>
+<td>Not only does Sue raise money for the symphony, but she also ushers at all of their concerts.</td>
+<td>and(usher.@and, raise) or and(usher, raise)
+</td></tr>
+<tr>
+<td>only if</td>
+<td>con</td>
+<td>.@if.@only</td>
+<td>Only if you promise to come, I will wait for you.</td>
+<td>con(wait, promise.@if.@only) or con(wait, promise.@only)
+</td></tr>
+<tr>
+<td>or</td>
+<td>or</td>
+<td>.@or*</td>
+<td>You must prove that you are right or apologize</td>
+<td>or(apologize.@or, prove) or or(apologize, prove)
+</td></tr>
+<tr>
+<td>since</td>
+<td>rsn</td>
+<td>@because*</td>
+<td>Since you don`t like this model, I`ll show you another one</td>
+<td>rsn(show, like.@because) or rsn(show, like)
+</td></tr>
+<tr>
+<td>since</td>
+<td>tmf</td>
+<td>@since*</td>
+<td>What have you been doign since I last say you?</td>
+<td>tmf(do, say.@since) or tmf(do, say)
+</td></tr>
+<tr>
+<td>so</td>
+<td>***</td>
+<td>@so*</td>
+<td>We are late for the train, so we must take a taxi.</td>
+<td>***(take, late.@so)
+</td></tr>
+<tr>
+<td>so that</td>
+<td>***</td>
+<td>@so*</td>
+<td>He preferred to work in the morning, so that he might be free in the afternoon.</td>
+<td>***(free, prefer.@so)
+</td></tr>
+<tr>
+<td>than</td>
+<td>bas</td>
+<td>-</td>
+<td>You are taller than he (is).</td>
+<td>bas(tall, he)
+</td></tr>
+<tr>
+<td>that</td>
+<td>obj</td>
+<td>-</td>
+<td>I know that is impossible.</td>
+<td>obj(know, impossible)
+</td></tr>
+<tr>
+<td>that</td>
+<td>rsn</td>
+<td>@because*</td>
+<td>He is so hoarse that we can hardly hear what he says.</td>
+<td>rsn(hear, hoarse.@because) or rsn(hear, hoarse)
+</td></tr>
+<tr>
+<td>that</td>
+<td>***</td>
+<td>@so*</td>
+<td>He ran so much that he might arrive in time.</td>
+<td>***(arrive.@so, run)
+</td></tr>
+<tr>
+<td>then</td>
+<td>***</td>
+<td>@so*</td>
+<td>Our expenses will be very heavy: we will have to buy a great number of books; then we'll have to pay several debts.</td>
+<td>***(pay.@so, buy)
+</td></tr>
+<tr>
+<td>though</td>
+<td>***</td>
+<td>@although</td>
+<td></td>
+<td>
+</td></tr>
+<tr>
+<td>till</td>
+<td>tmt</td>
+<td>@until*</td>
+<td>Wait till the day breaks.</td>
+<td>tmt(wait, break.@until) or tmt(wait, break)
+</td></tr>
+<tr>
+<td>unless</td>
+<td>con</td>
+<td>@unless</td>
+<td>I shall go unless it rains.</td>
+<td>con(go, rain.@unless)
+</td></tr>
+<tr>
+<td>until</td>
+<td>tmt</td>
+<td>@until*</td>
+<td>Wait until the day breaks.</td>
+<td>tmt(wait, break.@until) or tmt(wait, break)
+</td></tr>
+<tr>
+<td>when</td>
+<td>tim</td>
+<td>@when*</td>
+<td>When I arrive I will write.</td>
+<td>tim(write, arrive.@when) or tim(write, arrive)
+</td></tr>
+<tr>
+<td>whereas</td>
+<td>coo</td>
+<td>@whereas*</td>
+<td>You didn`t work yesterday, whereas he worked till midnight.</td>
+<td>coo(work, work.@whereas) or coo(work, work)
+</td></tr>
+<tr>
+<td>whether</td>
+<td>obj</td>
+<td>-</td>
+<td>I asked him whether he intended to travel this month.</td>
+<td>obj(ask, travel)
+</td></tr>
+<tr>
+<td>whether... or</td>
+<td>or</td>
+<td>@or*</td>
+<td>I would like to know whether he is in France or in England.</td>
+<td>or(England, France)
+</td></tr>
+<tr>
+<td>while</td>
+<td>coo</td>
+<td>@whereas*</td>
+<td>You were punctual , while he is always late.</td>
+<td>coo(punctual, late.@whereas) or coo(punctual, late)
+</td></tr>
+<tr>
+<td>while</td>
+<td>dur</td>
+<td>@while*</td>
+<td>Remain standing while they sing.</td>
+<td>dur(stand, sing.@while) or dur(stand, sing)
+</td></tr>
+<tr>
+<td>yet</td>
+<td>***</td>
+<td>@but</td>
+<td>He is extremely poor, yet he is as happy as a king.</td>
+<td>***(king.@but, poor)
+</td></tr></tbody></table>
+<!-- 
+NewPP limit report
+Cached time: 20260909175717
+Cache expiry: 86400
+Reduced expiry: false
+Complications: []
+CPU time usage: 0.011 seconds
+Real time usage: 0.011 seconds
+Preprocessor visited node count: 8/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/100
+Expensive parser function count: 0/100
+Unstrip recursion depth: 0/20
+Unstrip post‐expand size: 4/5000000 bytes
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    0.000      1 -total
+-->
+
+<!-- Saved in parser cache with key u965818192_SLvgQ-l8z2_:pcache:606:|#|:idhash:canonical and timestamp 20260909175717 and revision id 14367. Rendering was triggered because: diff-page
+ -->
+</div>

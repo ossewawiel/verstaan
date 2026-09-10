@@ -1,0 +1,59 @@
+The project Lewis & Short Latin Dictionary aims at mapping Latin lemmas extracted from the Lewis & Short Latin Dictionary (1879) into UNL. The lemmas were extracted from the online version of "A Latin Dictionary" available at the [http://www.perseus.tufts.edu/hopper/ Perseus Digital Library]. The project is coordinated by the UNL Language Center at the University of Patras, in Greece.
+
+== Scope ==
+The Project Lewis & Short, under the acronym "lat" in the [[UNLarium]], is open to students enrolled in undergraduate and graduate Study Programs in Classics, and especially in Latin Language and (Roman) Literature. Specialists and Graduates in the field of Latin Language and Literature (of Classics, as well) are very welcomed, too.
+
+== History ==
+The project Lewis & Short started on in December 2011 within the framework of the '''Internship Program in Computational Linguistics''' coordinated and sponsored by the '''UNDL Foundation'''. Under the supervision of Dr. Olga Vartzioti, five students of the Classics’ Section of the Department of Philology at the University of Patras participated in the six-month Internship Program, and worked on creating entries for the Latin-UNL Dictionary. The success of this first phase led to an agreement between the UNDL Foundation and the University of Patras for the creation of a UNL Centre at the University of Patras, which has been responsible, since then, by the development of the activities. The project was coordinated by Dr. Olga Vartzioti from December 2011 to October 2013, when Dr. Vartzioti passed away in a car accident. Since then, the project has been coordinated by Dr. Athina Papachrysostomou.
+
+== Goals and Benefits ==
+The project Lewis & Short aims at addressing the complete Lewis & Short Latin Dictionary into UNL. This will be a useful linguistic tool for academic purposes and cross-language validation according to the UNLweb’s goals. 
+ 
+Enrollment in the Project Lewis & Short will provide for the students, now and on, further development of their skills and competences in Latin Language and its use, and also familiarization with grammar research and comparative linguistics. 
+
+Creation and development of Latin Language resources into UNL (dictionary, grammar, knowledge bases, translation memories and corpora, i.e. Latin Literature) will not only help academic purposes, but will provide an extend and broad reception of Latin Literature among people and communities who are not specialists in reading Latin Literature, but are interested in cultural studies or having an impulse in studying classical civilizations, e.g. Roman, and their impact to present cultures and linguistic origins or cross-cultural relations. 
+
+== Instructions ==
+The following is required from students working on assignments in the Lewis & Short Latin Dictionary:
+*Lemmas
+**Please, do not modify the lemmas. As for verbs, you should write the lemma in first person singular.
+*Mappings
+**Nouns, verbs, adjectives and adverbs must be mapped to the most frequent UW, i.e. the meaning of the Latin lemma in English. You must check the meanings in the [http://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:1999.04.0059 L & S Latin Dictionary], or Glossa (off line, download from [http://athirdway.com/glossa/download.html here]).
+**Prepositions, conjunctions, interjections and numerals are not linked to UWs. They are represented by [[Universal Relations]] or [[Universal Attributes]]. In these cases, the field UW must be left empty.
+**Pronouns are linked to the pro-UW "00". In these cases, the lemma must be linked to the UW "00".
+**In case you cannot find an adequate mapping to the Latin lemma, you have three options:
+***If the lemma can be reduced to an existing UW + attribute, then link the lemma to the UW and include the corresponding attribute in the field "Other Features" through the rule "att=@attribute". This option should be used if, and only if, lemma = UW.@attribute
+***If the lemma cannot be reduced to any existing UW, then you have to propose a new one. In order to propose new UW's, fill in the corresponding form with the following information:
+****HEADWORD = the corresponding English word, whenever the lemma can be easily translated into English; or the transliteration of the Latin word, otherwise;
+****SYNSET = any synonyms to the headword, if any (in English), plus the Latin original lemma, if the headword is not a transliteration. The elements in the synset must be isolated by comma.
+****DEFINITION = just copy the definition from Lewis & Short
+****EXAMPLES = just copy the examples from Lewis & Short
+**In case you cannot decide what to do, just decline the entry.
+*Inflections
+**You should choose a rule from the drop down list. If there is not a relevant paradigm in this list, choose the option M1 (IRREGULAR/MULTIWORD/NON-EXISTING). These cases will be addressed later.
+*Subcategorization
+**You may choose the option Y0 (AVALENT). The subcategorization frame will provided in the verification phase.
+*Further information or questions please do not hesitate to contact [mailto:r.martins@undlfoundation.org Ronaldo Martins].
+
+== Examples of entries ==
+LEMMA = Zōrŏastres
+*DEFINITION = Persian prophet who founded Zoroastrianism (circa 628-551 BC)
+*MAPPING = Zoroaster, Zarathustra (UW = 111407715)
+LEMMA = circumvŏlo
+*DEFINITION: to fly around (= to fly.@around)
+*MAPPING: fly, wing (UW = 201940403)
+*Other features: att=@around
+LEMMA = zygis
+*DEFINITION: wild thyme
+*MAPPING: NOT AVAILABLE (NEW UW)
+**HEADWORD: thyme
+**SYNSET: zygis
+**DEFINITION: wild thyme
+**EXAMPLE: App. Herb. 99.
+LEMMA = zygostăsĭum
+*DEFINITION: the office of a weigh-master
+*MAPPING: NOT AVAILABLE (NEW UW)
+**HEADWORD: zygostasium
+**SYNSET: EMPTY
+**DEFINITION: the office of a weigh-master
+**EXAMPLE: Cod. Th. 15, 26, 1.

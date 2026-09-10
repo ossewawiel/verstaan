@@ -1,0 +1,32 @@
+'''Number''' is a category that typically corresponds to the actual quantity of the referents of a given noun. 
+
+== Natural Language ==
+In natural languages, number may be realised by grammatical affixes (such as "s" for plural, in English) or by quantifiers (such as "a couple of", "many", etc).<br>
+In the UNLarium framework, the grammatical category of number may assume the following values:
+
+* NUM
+** singular (SNG): one of a class
+** singulare tantum (SNGT): used only in singular
+** plural (PLR): more than one of a class
+*** dual (DUA): two of a class
+*** trial (TRI): three of a class
+*** quadrual (QDR): four of a class
+*** paucal (PAU): few of a class
+*** multal (MUL): many of a class
+*** plurale tantum (PLRT): used only in plural
+** Invariant (INV): a single form used both in singular and plural
+;The plural (PLR) subsumes more specific number values and must be used when there is no particular information on the quantity of the reference.<br>
+:books = PLR
+:pants = PLR
+:glasses = PLR
+
+=== Examples ===
+
+*singular (SNG): book, city, kiss
+*singulare tantum (SNGT):  furniture
+*plural (PLR): books, cities, kisses
+*plurale tantum (PLRT): clothes, measles
+*invariant (INV): series, species
+
+== UNL ==
+In UNL, number is represented by [[quantifier|quantifying attributes]].

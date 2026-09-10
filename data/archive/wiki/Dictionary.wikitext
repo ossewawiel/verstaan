@@ -1,0 +1,216 @@
+Dictionaries are lists of lexical items with their corresponding features. 
+
+== Types ==
+In the UNL framework, there are four different types of dictionaries:
+*The [[UNL Dictionary]], or UD, is the inventory of Universal Words. It is a flat list of UWs in alphabetical order with their corresponding semantic features.
+*The [[NL Dictionary]], or ND, is the inventory of lexical items of a given natural language (NL). It is a flat list of natural language entries with their corresponding grammatical features.
+*The [[UNL-NL Dictionary]], or Generation Dictionary, or simply GD, is a bilingual dictionary linking entries of the UNL Dictionary to entries of the NL Dictionary.
+*The [[NL-UNL Dictionary]], or Analysis Dictionary, or simply AD, is a bilingual dictionary linking entries of the NL Dictionary to entries of the UNL Dictionary.
+
+== General syntax ==
+Dictionaries are plain text files with a single entry per line in the following format:
+*UNL Dictionary
+ [UCN]  {ID} "UCL" (ATTR , ... )  < unl , FRE , PRI >; COMMENTS
+*UNL-NL Dictionaries
+ [NLW]  {ID}  “UW”  (ATTR , ... )  < FLG , FRE , PRI >; COMMENTS
+*NL-UNL Dictionaries
+ [NLW]  {ID}  “UW”  (ATTR , ... )  < FLG , FRE , PRI >; COMMENTS
+
+Where:
+
+;NLW
+:The lexical item of the natural language. Its format is decided by the dictionary builder. It can be:
+::*a multiword expression: [United States of America]
+::*a compound:  [hot-dog]
+::*a simple word: [happiness]
+::*a simple morpheme: [happ]
+::*a non-motivated linguistic entity: [g]
+::*a complex structure (see below): [[bring] [back]]
+::*a regular expression (see below): [/colou{0,1}r/]
+
+;ID
+:The unique identifier (primary-key) of the entry.
+
+;UW
+:The Universal Word of UNL, either simple ("book"), modified ("book.@pl") or complex ("aoj(new,book)"). This field can be empty if a word does not need a UW. It can also be a  regular expression. The UW may be represented by the corresponding [[UCL]] or [[UCN]].
+
+;ATTR
+:The list of features of the NLW, extracted out of the [[tagset|UNDL Foundation tagset]]. It can be:
+::*a list of simple features: NOU, MCL, SNG
+::*a list of attribute-value pairs: POS=NOU, GEN=MCL, NUM=SNG
+::*a list of inflection rules (see below): FLX(PLR:=”oo”:”ee”)
+Attributes are separated by “,”.
+
+;FLG
+:The three-character language code according to [http://en.wikipedia.org/wiki/List_of_ISO_639-2_codes ISO 639-3].
+ 
+;FRE
+:The frequency of NLW in natural texts. Used for natural language analysis (NL-UNL). It can range from 0 (less frequent) to 255 (most frequent).
+
+;PRI
+:The priority of the NLW. Used for natural language generation (UNL-NL). It can range from 0 to 255.
+
+;COMMENT
+:Any comment necessary to clarify the mapping between NL and UNL entries. It must end with the return code.
+
+The features marked with * are not supported by the UNL Centre's tools
+
+== Formal syntax ==
+
+ <UNL Dictionary entry>    ::= “[”<UW>”]”  “{”<ID>”}”            “(”<FEATURE LIST>”)” ”< unl  ”,”<PRI>”,”<FRE>”>;” 
+ <NL Dictionary entry>     ::= “[”<NLW>”]” “{”<ID>”}”            “(”<FEATURE LIST>”)” ”<”<FLG>”,”<PRI>”,”<FRE>”>;” 
+ <UNL-NL Dictionary entry> ::= “[”<NLW>”]” “{”<ID>”}” “””<UW>“”” “(”<FEATURE LIST>”)” ”<”<FLG>”,”<PRI>”,”<FRE>”>;” 
+
+ <NLW>::= <SIMPLE NLW>|<COMPOUND NLW>|<REGULAR EXPRESSION>)
+ <SIMPLE NLW> ::= <text>
+ <COMPOUND NLW> ::= (“[”<text>”]”)+
+ <ID> ::= <positive integer>
+ <UW> ::= <text>|<REGULAR EXPRESSION>
+ <FEATURE LIST> ::= <FEATURE> (”,”<FEATURE>)+
+ <FEATURE> ::= (<VALUE>|<ATTRIBUTE>”=”<VALUE>|<RULE LIST>|”#”<SUBNLWID><FEATURE LIST>)
+ <SUBNLWID> ::= [01-99]
+ <RULE LIST> ::= <RULE>(”;”<RULE>)*
+ <RULE> ::= <ATTRIBUTE>”(”<VALUE>”:=”<[[a-rule]]>(”;”<VALUE>”:=”<[[a-rule]]>)*”)”
+ <ATTRIBUTE> ::= <text>
+ <VALUE> ::= <text>(”&”<text>)*
+ <FLG> ::= [http://en.wikipedia.org/wiki/List_of_ISO_639-2_codes ISO 639-3 language codes]
+ <PRI> ::= [0-255]
+ <FRE> ::= [0-255]
+ <REGULAR EXPRESSION> ::= "/"<[http://www.pcre.org/ PERL COMPATIBLE REGULAR EXPRESSIONS]>"/"
+
+Where:<br />
+"" = string literal<br />
++ = to be repeated 1 or more times<br />
+<nowiki>*</nowiki> = to be repeated 0 or more times<br />
+| = alternative<br />
+Horizontal blank spaces are allowed and ignored except inside quoted text (string literals).
+
+== Complex structures as NLW* ==
+In order to deal with '''multiple word expressions''', the NLW can be represented as a complex structure comprising several sub-NLW entries. The syntax for complex NLWs is:
+
+ [[sub-NLW][sub-NLW]...[sub-NLW]]  {ID}  “UW”  (ATTR , ..., #01(ATTR, ...), #02(ATTR, ...), ...)  < FLG , FRE , PRI >; COMMENTS
+
+Where:<br />
+[sub-NLW] is a part of the NLW;<br />
+<nowiki>#01</nowiki>(ATTR, ...) are the specific features for the first sub-NLW to appear in the NLW; <br />
+<nowiki>#02</nowiki>(ATTR, ...) are the specific features for the second sub-NLW to appear in the NLW; <br />
+and so on.<br />
+The first sub-NLW to appear in a NLW will be always the 01, the second the 02, and so on. <br />
+The feature list preceded by #<number> will apply only to the corresponding sub-NLW.<br />
+The features outside the sub-NLW feature lists are shared by all sub-NLWs.
+
+:Example<br />
+::[[bring] [back]] {12343} "to bring back(icl>to bring)" (pos=VER, #01(IFX(ET0:=4>"ought")), #02(pos=PRE)) <eng, 0, 0>;<br />
+:::In the entry above, the NLW has been split into two different sub-NLWs ([bring] and [back] with a blank space in between). Each of these sub-NLWs has different features, referred to in the embedded parentheses inside the feature list. The sub-NLW [bring], which was the first to appear, has the feature "IFX(ET0:=4>"ought")", while the sub-NLW [back], which was the second, has the feature "pos=PRE". The feature "pos=VER", which is outside the specific feature lists, is shared by both of them.
+
+== Inflection rules inside dictionary entries* == 
+In order to deal with '''exceptions''' and '''irregular''' forms, dictionaries may contain rules, which must be included inside the feature list, as follows:
+
+ <RULE>            ::= <ATTRIBUTE>”(”<VALUE>”:=”<[[a-rule]]> (”;”<VALUE>”:=”<[[a-rule]]>)* ”)”
+ <ATTRIBUTE>       ::= <HYPER-ATTRIBUTE>|<SIMPLE ATTRIBUTE>
+ <HYPER ATTRIBUTE> ::= <text>
+ <ATTRIBUTE>       ::= <text>
+ <VALUE>           ::= <VALUE LIST>|<SIMPLE VALUE>
+ <VALUE LIST>      ::= <SIMPLE VALUE>("&"<SIMPLE VALUE>)*
+ <SIMPLE VALUE>    ::= <text>
+
+Where:<br />
+<ATTRIBUTE> is the attribute that will be used to call the rule<br />
+<VALUE> is the value of the attribute that will trigger the rule<br />
+<a-rule> is an affixation rule (described in [[a-rule]])<br />
+"" = string literal<br />
++ = to be repeated 1 or more times<br />
+<nowiki>*</nowiki> = to be repeated 0 or more times<br />
+| = alternative<br />
+Horizontal blank spaces are allowed and ignored except inside quoted text (string literals).
+=== Scope of inflection rules ===
+Inflection rules always apply over the field <NLW> and are used only in UNL-to-NL (i.e., generation) dictionaries. In NL-to-UNL (analysis) dictionaries, the recognition of irregular forms and allographs is made either by listing variants, by hyper-regularisation or by regular expressions, as indicated below:
+*UNL-to-NL Dictionary
+**[bring] "bring" (POS=VER, TEN(PAS:="brought")) <eng,0,0>;
+*NL-to-UNL Dictionary
+**First option: listing variants (recommmended)
+***[bring] "bring" (POS=VER, TEN=PRS) <eng,0,0>;
+***[brought] "bring" (POS=VER, TEN=PAS) <eng,0,0>;
+**Second option: hyper-regularisation
+***[br] "bring" (POS=VER) <eng,0,0>;
+**Third option: regular expression
+***[/br(ing|ought)/] "bring" (POS=VER) <eng,0,0>;
+
+=== Triggering inflectional rules ===
+Inflectional rules are triggered in the grammar by the command "!"<ATTRIBUTE>, as in the example below:
+*Dictionary
+**[foot] "foot" (POS=NOU, NUM(PLR:="oo":"ee")) <eng,0,0>;
+*Grammar
+*#(NUM=PLR,^inflected):=(!NUM,+inflected); or
+*#(PLR,^inflected):=(!NUM,+inflected); or
+*#(NUM,^inflected):=(!NUM,+inflected);
+In the first case (NUM=PLR), the system verifies if the attribute "NUM" is set and if it has the value "PLR". In the second and in the third case, the system simply verifies if the word has any feature (attribute or value) equal to "PLR" or "NUM".<br />
+It's important to stress that, as the features of the dictionary are defined by the user, there is no way of pre-assigning attribute-value pairs. In that sense, it's not possible to infer that "PLR" will be a value of the attribute "NUM" except through an assignment of the form "NUM=PLR" (i.e., given only "PLR" or "NUM", is not possible to state "NUM=PLR").
+
+=== Hyper-attributes and value lists ===
+Apart from simple attributes, inflection rules may also be introduced by hyper-attributes, i.e., attributes that take other attributes as values. This latter case is used in case of morpheme overlapping (amalgam), i.e., when the inflectional morphology does not allow clear separation between specific attributes, such as in English verbal morphology, where tense, aspect and mood are generally conflated. Values of hyper-attributes are hence complex structures that may comprehend several different values concatenated through "&". These value lists must be, however, analysable, as they may be referred as separated entities inside the generation grammar, as exemplified below:
+*Dictionary
+**FLX(1PS&PRS&IND:=0>"s")
+*Grammar
+*#(PER=1PS,TEN=PRS,MOO=IND,^inflected):=(!FLX,+inflected); or
+*#(1PS,PRS,IND,^inflected):=(!FLX,+inflected); or
+*#(PER,TEN,MOO,^inflected):=(!FLX,+inflected);
+In the first rule, the system verifies if the attributes "PER", "TEN" and "MOO" are set and if they have the values "1PS", "PRS" and "IND", respectively. In the second and in the third case, the system simply verifies if the word has the features (attributes or values) equal to "1PS", "PRS" and "IND", or "PER", "TEN" and "MOO".
+
+=== Examples of inflection rules ===
+;<nowiki>NUM(PLR:="men")</nowiki>
+:If the node has the value or the attribute "plural" (PLR) then replace the whole natural language word by "men" in case of !NUM
+;<nowiki>POS(ORD:="1">"1st","2">"2nd","3">"3rd")</nowiki>
+:If the node has the value or the attribute "ordinal" (ORD) then, in case of !POS:
+::if the last character of the string is "1", then replace "1" by "1st"; and
+::if the last character of the string is "2", then replace "2" by "2nd"; and
+::if the last character of the string is "3", then replace "3" by "3rd".
+;<nowiki>FLX(3PS&PRS&IND:=0>"s")</nowiki>
+::if the word has the value or the attribute "3PS"; and
+::if the word has the value or the attribute "PRS"; and
+::if the word has the value or the attribute "IND"; then
+::add "s" to its end in case of !FLX
+
+== Regular expressions inside dictionary entries* == 
+Both the NLW and the UW may be replaced by regular expressions. In both cases, regular expressions must be included between a pair of "/" and should comply with the [http://www.pcre.org/ PCRE - Perl Compatible Regular Expressions]]. They should be represented as follows:
+
+Regular expression in the field <NLW> (used in NL-to-UNL)
+ [/<RegEx>/] "<UW>" (<FEATURE LIST>) <FLG,FRE,PRI>;
+Regular expression in the field <UW> (used in UNL-to-NL)
+ [<NLW>] "/<RegEx>/" (<FEATURE LIST>) <FLG,FRE,PRI>;
+
+=== Examples ===
+;Regular expressions in the field <NLW>
+:<nowiki>[/colo(u)?r/] "color" (POS=NOU) <eng,0,0>; (NLW = {color, colour})</nowiki>
+:<nowiki>[/cit(y|ies)/] "city" (POS=NOU) <eng,0,0>; (NLW = {city, cities})</nowiki>
+:<nowiki>[/(\d){4}/] "" (ENT=YEAR) <eng,0,0>; (NLW = any sequence of four digits)</nowiki>
+;Regular expressions in the field <UW>
+:[city] "/city(.)*/" (POS=NOU) <eng,0,0>; (UW = any UW that starts by the string "city")
+:[city] "/(.)+\(iof\>city\)/" (POS=NOU) <eng,0,0>; (UW = any UW that ends by the string "(iof>city)"
+
+== Frequency and priority ==
+Frequency is used for natural language analysis (from NL to UNL) whereas priority is used for natural language generation (from UNL to NL). In that sense, given the dictionary
+:[nlw1] "uw" (A) <eng,0,1>;
+:[nlw2] "uw" (A) <eng,0,2>;
+:[nlw3] "uw" (A) <eng,0,3>;
+:[nlw] "uw1" (A) <eng,1,0>;
+:[nlw] "uw2" (A) <eng,2,0>;
+:[nlw] "uw3" (A) <eng,3,0>;
+The first natural language word candidate for the UW "uw" will be [nlw3] because it has the highest priority, whereas the first UW candidate for the natural language word [nlw] will be "uw3", because it has the highest frequency.<br />
+In case of words with the same priority, the first natural language word to be matched is the first one to appear in the UNL-NL dictionary. The same happens to words with the same frequency: the first UW to be matched is the first one to appear in the NL-UNL dictionary.
+
+== Examples of dictionary entries ==
+
+[China]{24} "China(iof>Asian country)" (NOU, WRD, SNG, P0, F0) <eng,0,0>;<br />
+[choose]{106} "to choose(icl>to decide)" (POS=VER, LEX=WRD, PAR=M1, FRA=Y76, FLX(3PS&PRS&IND:=0>"s"; PAS:="chose"; PTP:="chosen"; GER:="choosing";)) <eng,0,0>;<br />
+[clear-eyed]{25} "clear-eyed(icl>discerning)" (POS=ADJ, LEX=WRD, PAR=M0, FRA=Y0) <en,0,0>;<br />
+[Peter]{177}"Peter(iof>person)"(NOU)<eng,10,30>;<br />
+[kill]{5987}"kill(icl>do)"(FLX(PAS:=0>"ed";))<eng,70,80>;<br />
+[[bring] [back]]{2345}"bring back"(POS=VER,VA(01>02),#01(POS=VER,FLX(PAS:=3>"ought";)),#02(POS=PRE))<eng,50,34>;<br />
+[/br(ing|ought)/] "bring(icl>do)" (POS=VER) <eng,0,0>;<br />
+<nowiki>[[/br(ing|ought)/] [back]]{2345} "bring back(icl>do)" (POS=VER,#01(POS=VER),#02(POS=PRE))<eng,50,34>;</nowiki><br />
+<nowiki>[/colo(u)?r/] "color" (POS=NOU) <eng,0,0>; (NLW = {color, colour})</nowiki><br />
+<nowiki>[/cit(y|ies)/] "city" (POS=NOU) <eng,0,0>; (NLW = {city, cities})</nowiki><br />
+<nowiki>[/(\d){4}/] "" (ENT=YEAR) <eng,0,0>; (NLW = any sequence of four digits)</nowiki><br />
+[city] "/city(.)*/" (POS=NOU) <eng,0,0>; (UW = any UW that starts by the string "city")<br />
+[city] "/(.)+\(iof\>city\)/" (POS=NOU) <eng,0,0>; (UW = any UW that ends by the string "(iof>city)"

@@ -13,8 +13,12 @@ import argparse
 import os
 import sys
 from collections.abc import Sequence
+from pathlib import Path
 
 from tools.mirror import __version__
+from tools.mirror.config import load_config
+from tools.mirror.http_client import RateLimitedClient, UrllibTransport
+from tools.mirror.run import run_mirror
 
 # Argument spellings that would smuggle a credential onto the command line, and the literal
 # environment variable names themselves (`--flag=UNL_PASS` or a bare `UNL_USER=x` positional).
@@ -65,6 +69,29 @@ def build_parser() -> argparse.ArgumentParser:
         ),
     )
     parser.add_argument("--version", action="version", version=f"%(prog)s {__version__}")
+
+    subparsers = parser.add_subparsers(dest="command")
+    run_parser = subparsers.add_parser(
+        "run",
+        help=(
+            "Fetch every public page, wiki page and linked static file from unlarchive.org "
+            "(SPEC.md §3.1). Public, no-login sources only."
+        ),
+    )
+    run_parser.add_argument(
+        "--config", default="mirror.toml", help="Path to mirror.toml (default: %(default)s)."
+    )
+    run_parser.add_argument(
+        "--archive-root",
+        default="data/archive",
+        help="Where mirrored files land (default: %(default)s).",
+    )
+    run_parser.add_argument(
+        "--manifest",
+        default=None,
+        help="Path to manifest.jsonl (default: <archive-root>/manifest.jsonl).",
+    )
+
     return parser
 
 
@@ -77,9 +104,28 @@ def main(argv: Sequence[str] | None = None) -> int:
         return 2
 
     parser = build_parser()
-    parser.parse_args(argv)
+    args = parser.parse_args(argv)
 
-    # M0 skeleton: no network call, no fetch. M1 (SPEC.md §3.1) fills this in.
+    if getattr(args, "command", None) != "run":
+        # No subcommand: the M0 skeleton behaviour. `--help`/`--version` already exited above.
+        return 0
+
+    archive_root = Path(args.archive_root)
+    manifest_path = Path(args.manifest) if args.manifest else archive_root / "manifest.jsonl"
+
+    config = load_config(args.config)
+    client = RateLimitedClient(
+        UrllibTransport(),
+        host=config.host,
+        user_agent=config.user_agent,
+        rate_limit_seconds=config.rate_limit_seconds,
+        retries=config.retries,
+        retry_backoff_seconds=config.retry_backoff_seconds,
+    )
+    report = run_mirror(config, client, archive_root, manifest_path)
+    print(report.summary())
+    for note in report.notes:
+        print(f"note: {note}")
     return 0
 
 

@@ -1,0 +1,6 @@
+The UC-A1 is an experimental corpus used to prepare the initial versions of the grammar for sentence-based [[UNLization]] and [[NLization]], using [[IAN]] and [[EUGENE]], respectively. It comprises a list of 50 structures in UNL, and is supposed to cover very basic linguistic phenomena. 
+
+== The corpus ==
+The corpus UCA1 was extracted from a simplified and translated version of "The Hare and the Tortoise", by Aesop. 
+*[http://www.unlweb.net.br/resources/UCA1/uca1_eng.txt UC-A1 in English], to be translated (manually) in order to be used as the input for the UNLization process (with [[IAN]])
+*[http://www.unlweb.net.br/resources/UCA1/uca1_unl.txt UC-A1 in UNL], to be used "as is", as the input for the NLization process (with [[EUGENE]])

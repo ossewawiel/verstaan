@@ -1,0 +1,61 @@
+The UGO (Universal Generation cOrpus) aims at defining the standards for fully-automatic sentence-driven [[NLization]]. 
+
+== Goal ==
+The project UGO has two main goals:
+#To provide a translation memory from UNL to natural language, in order to be used for inducing UNL>NL grammars; and
+#To provide standards for fully-automatic sentence-driven NLization, to be used as the parameter for evaluating the precision of UNL>NL grammars.
+
+== Repository ==
+UGO is a repository of UNL graphs depicting basic structures of UNL. It is divided into 6 different subprojects according to the following criteria:
+
+{|border="1" align="center" cellpadding="2"
+!Repository
+!# of entries
+!Description
+|-
+|align="center"|UGO-A1
+|align="center"|250
+|align="center"|simple NP's
+|-
+|align="center"|UGO-A2
+|align="center"|250
+|align="center"|simple VP's
+|-
+|align="center"|UGO-B1
+|align="center"|250
+|align="center"|complex NP's
+|-
+|align="center"|UGO-B2
+|align="center"|250
+|align="center"|complex VP's
+|-
+|align="center"|UGO-C1
+|align="center"|250
+|align="center"|full sentences
+|-
+|align="center"|UGO-C2
+|align="center"|250
+|align="center"|full sentences
+|}
+
+== Requisistes ==
+UGO is open to all languages<ref>Except English, which was the source for all data</ref> complying with following requisites:
+*UGO-A1 does not have any pre-requisite;
+*UGO-A1 and [[CORNELIA-A1]] are requisites for UGO-A2;
+*UGO-A2 and [[CORNELIA-A2]] are requisites for UGO-B1;
+*UGO-B1 and [[CORNELIA-B1]] are requisites for UGO-B2;
+*UGO-B2 and [[CORNELIA-B2]] are requisites for UGO-C1;
+*UGO-C1 and [[CORNELIA-C1]] are requisites for UGO-C2;
+In order to join UGO, users are expected to have [[CUP250]] and [[CUP500]]
+
+== Instructions ==
+In UGO, users are expected to map UNL graphs into natural language sentences. This process must take into consideration the following:
+*The NLization is the generation, to the target language, of the information conveyed by the UNL graph. It defines the expected output of UNL in natural language, and will be used to measure the precision of UNL>NL grammars. The NLization must comply with the principles below:
+*The NLization must convey all and only the information available in the UNL graph, i.e., the NLization must not add or suppress any information;
+*The NLization must be a grammatical sentence of the target language, i.e., it should be syntactically and semantically well-formed;
+*The NLization must belong to the standard variety of the target language, i.e., it should not contain slang, jargon, archaisms, SMS language and other non-standard structures;
+*The NLization must contain punctuation signs only if absolutely necessary or explicitly stated in the UNL graph;
+*A single graph may lead to differnt NLizations, to be provided in separate lines. These may convey different order of constituents, if possible in the target language.
+
+== Notes ==
+<references />

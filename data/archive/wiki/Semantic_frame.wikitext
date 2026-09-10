@@ -1,0 +1,87 @@
+Universal relations express generalizations on the types of lexical functions that are established between the UW and its arguments in the predication. These functions derive from the internal semantic structure of the UWs and are normally grouped into semantic frames, which describe the '''necessary''' semantic arguments that some UWs may have.
+
+{|table border=1 align=center cellpadding=5
+|+Semantic Frames of Verbs
+!width=10%|Type
+!width=10%|Frame
+!width=40%|Description
+!width=40%|Example
+|-
+|rowspan=9 align=center|action verbs
+|align=center|agt
+|intransitive verbs whose subject is the agent of the event  (unergative)
+|John danced = agt(danced;John) 
+|-
+|align=center|agt,obj
+|transitive verbs whose subject is the agent and the object is the patient of the event
+|John killed Peter = agt(kill;John)obj(kill;Peter)
+|-
+|align=center|agt,cnt
+|transitive verbs whose subject is the agent and the object is the theme of the event
+|John read a book = agt(read;John)cnt(read;book)<br />
+John talked about Peter = agt(talk;John)cnt(talk;Peter)
+|-
+|align=center|agt,exp
+|transitive verbs whose subject is the agent and the object is an experiencer of the event
+|John congratulates Peter = agt(congratulate;John)exp(congratulate;Peter)
+|-
+|align=center|agt,res
+|transitive verbs whose subject is the agent and the object is a result of the event
+|John made a cake = agt(make;John)res(make;cake)
+|-
+|align=center|agt,plc
+|transitive verbs whose subject is the agent and the object is a place
+|John is going to NY = gol(go;NY)<br />
+John is coming from NY = src(come;NY)<br />
+John is going through NY = via(go;NY)<br />
+John is going from NY to Geneva through Paris = src(go;NY)src(go;Geneva)via(go;Paris) 
+|-
+|align=center|agt,cnt,gol
+|ditransitive verbs whose subject is the agent and the objects are theme, and final state, place or recipient
+|John gave a book to Mary = agt(give;John)cnt(give;book)gol(give;Mary)<br />
+John threw the ball at me = agt(throw;John)cnt(throw;ball)gol(throw;I)
+|-
+|align=center|agt,cnt,src
+|ditransitive verbs whose subject is the agent and objects are theme, and initial state, place or origin
+|John took a book from Mary = agt(take;John)cnt(take;book)src(take;Mary)<br />
+|-
+|align=center|agt,exp,cnt
+|ditransitive verbs whose subject is the agent objects are experiencer and content
+|John told Peter about Mary = agt(tell;John)exp(tell;Peter)cnt(tell;Mary)<br />
+|-
+|rowspan=2 align=center|process verbs
+|align=center|obj
+|intransitive verbs whose subject is the patient (unaccusative)
+|John died = obj(die;John)
+|-
+|align=center|gol,cnt
+|transitive verbs whose subject is the recipient (benefactive)
+|John won the lottery = gol(win;John)cnt(win;lottery)
+|-
+|rowspan=2 align=center|experiential verbs
+|align=center|exp,cnt
+|transitive verbs whose subject is an experiencer
+|John likes Peter = exp(like;John)cnt(like;Peter)
+|-
+|align=center|cnt,exp
+|transitive verbs whose object is an experiencer
+|Peter pleases John = cnt(please;Peter)exp(please;John)
+|-
+|rowspan=4 align=center|stative verbs
+|align=center|aoj
+|linking verbs
+|John is dead = aoj(dead;John)
+|-
+|align=center|plc
+|locative linking verbs
+|John is in NY = plc(John;NY)<br />
+John is from NY = src(John;NY)
+|-
+|align=center|aoj,cnt
+|possession verbs
+|John has two daughters = aoj(have;John)cnt(have;daughter)
+|-
+|align=center|aoj,plc
+|locative verbs
+|John lives in NY = aoj(live;John)plc(live;NY) 
+|}

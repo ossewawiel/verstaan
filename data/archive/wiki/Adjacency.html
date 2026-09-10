@@ -1,0 +1,117 @@
+<div class="mw-content-ltr mw-parser-output" lang="en" dir="ltr"><p><b>Adjacency</b> is the distance between two branches in a tree structure. In the UNL<sup>arium</sup> framework, adjacency is used to represent the structure of <a href="/wiki/Syntax" title="Syntax">maximal projections</a> and, therefore, to state the distance of constituents in relation to the head. 
+</p>
+<div id="toc" class="toc" role="navigation" aria-labelledby="mw-toc-heading"><input type="checkbox" role="button" id="toctogglecheckbox" class="toctogglecheckbox" style="display:none" /><div class="toctitle" lang="en" dir="ltr"><h2 id="mw-toc-heading">Contents</h2><span class="toctogglespan"><label class="toctogglelabel" for="toctogglecheckbox"></label></span></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Values"><span class="tocnumber">1</span> <span class="toctext">Values</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#Examples"><span class="tocnumber">2</span> <span class="toctext">Examples</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="#Dictionary"><span class="tocnumber">3</span> <span class="toctext">Dictionary</span></a>
+<ul>
+<li class="toclevel-2 tocsection-4"><a href="#Examples_2"><span class="tocnumber">3.1</span> <span class="toctext">Examples</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-5"><a href="#Grammar"><span class="tocnumber">4</span> <span class="toctext">Grammar</span></a>
+<ul>
+<li class="toclevel-2 tocsection-6"><a href="#Examples_3"><span class="tocnumber">4.1</span> <span class="toctext">Examples</span></a></li>
+<li class="toclevel-2 tocsection-7"><a href="#Observations"><span class="tocnumber">4.2</span> <span class="toctext">Observations</span></a></li>
+</ul>
+</li>
+</ul>
+</div>
+
+<div class="mw-heading mw-heading2"><h2 id="Values">Values</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Adjacency&amp;veaction=edit&amp;section=1" title="Edit section: Values" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Adjacency&amp;action=edit&amp;section=1" title="Edit section&#39;s source code: Values">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>The number of intermediate projections define the values of the adjacency in the UNL<sup>arium</sup> framework, which are the following:
+</p><p>{{#tree:id=ADC|openlevels=0|root=Adjacency (AJC)|
+</p>
+<ul><li>AJ0 (immediate): the constituent is actually an inseparable part of the head (as in inseparable phrasal verbs)</li>
+<li>AJ1 (nearest): the constituent has the highest precedence over other constituents (i.e., it is necessarily the nearest to the head)</li>
+<li>AJ2 (near): the constituent has a high precedence but it is not necessarily the nearest to the head (i.e., there may be other constituents nearer to the head)</li>
+<li>AJ3 (distant): the constituent has low precedence but it is not necessarily the most distant from the head (i.e., there may be other constituents farther from the head)</li>
+<li>AJ4 (most distant): the constituent has the lowest precedence over other constituents (i.e., it is necessarily the most distant from the head)</li></ul>
+<p>}}
+</p>
+<div class="mw-heading mw-heading2"><h2 id="Examples">Examples</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Adjacency&amp;veaction=edit&amp;section=2" title="Edit section: Examples" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Adjacency&amp;action=edit&amp;section=2" title="Edit section&#39;s source code: Examples">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<pre>         XP
+        / \
+     spec XB4
+          / \
+        XB3  adjt2
+        / \
+     XB2 adjt1
+     / \
+   XB1 comp2
+   /  \
+  X  comp1
+</pre>
+<p>In the structure above:
+</p>
+<ul><li>comp1 = AJ1 (there is only one projection (XB1) between comp1 and X)</li>
+<li>comp2 = AJ2 (there are two projections (XB1 and XB2) between comp2 and X)</li>
+<li>adjt1 = AJ3 (there are three projections (XB1, XB2 and XB3) between adjt1 and X)</li>
+<li>adjt2 = AJ4 (there are four projections (XB1, XB2, XB3, XB4) between adjt2 and X)</li></ul>
+<div class="mw-heading mw-heading2"><h2 id="Dictionary">Dictionary</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Adjacency&amp;veaction=edit&amp;section=3" title="Edit section: Dictionary" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Adjacency&amp;action=edit&amp;section=3" title="Edit section&#39;s source code: Dictionary">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>Adjacency is informed in the dictionary only in the following cases:
+</p>
+<ul><li>Compounds that do not follow the adjacency patterns (such as "bring home the bacon", where the adjunct precedes the complement)</li>
+<li>Compounds that have more than one complement or more than one adjunct whose order is important (such as in "go from strength to strength")</li></ul>
+<div class="mw-heading mw-heading3"><h3 id="Examples_2">Examples</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Adjacency&amp;veaction=edit&amp;section=4" title="Edit section: Examples" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Adjacency&amp;action=edit&amp;section=4" title="Edit section&#39;s source code: Examples">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<ul><li>bring home the bacon
+<ul><li>base form = bring</li>
+<li>compound = +VA([home],<b>AJ1</b>)VC("the bacon",<b>AJ2</b>);</li></ul></li>
+<li>go from strength to strength
+<ul><li>base form = go</li>
+<li>compound = +VA("from strength",<b>AJ1</b>)VA("to strength",<b>AJ2</b>);</li></ul></li></ul>
+<div class="mw-heading mw-heading2"><h2 id="Grammar">Grammar</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Adjacency&amp;veaction=edit&amp;section=5" title="Edit section: Grammar" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Adjacency&amp;action=edit&amp;section=5" title="Edit section&#39;s source code: Grammar">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>In the grammar, adjacency is defined through <a href="/wiki/S-rule" title="S-rule">S-rules</a> in the following format:
+</p>
+<pre>&lt;SYNTACTIC ROLE&gt;(+&lt;ADJACENCY&gt;);
+</pre>
+<p>Where:<br />
+</p>
+<ul><li>&lt;SYNTACTIC ROLE&gt; is the <a href="/wiki/Syntactic_roles" class="mw-redirect" title="Syntactic roles">syntactic role</a> (VA, VC, VS, VH, etc) of the constituent in relation to the head; and</li>
+<li>&lt;ADJACENCY&gt; is the adjancency (AJ0, AJ1, AJ2, etc) of the constituent in relation to the head.</li></ul>
+<div class="mw-heading mw-heading3"><h3 id="Examples_3">Examples</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Adjacency&amp;veaction=edit&amp;section=6" title="Edit section: Examples" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Adjacency&amp;action=edit&amp;section=6" title="Edit section&#39;s source code: Examples">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<ul><li>VH(+AJ0); (the head is part of the verb)</li>
+<li>VC(+AJ1); (the object integrates the first projection of the head)</li></ul>
+<div class="mw-heading mw-heading3"><h3 id="Observations">Observations</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Adjacency&amp;veaction=edit&amp;section=7" title="Edit section: Observations" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Adjacency&amp;action=edit&amp;section=7" title="Edit section&#39;s source code: Observations">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<dl><dt>Complex adjacency</dt>
+<dd>A single adjacency rule may contain several operations:
+<ul><li>VC(+AJ1)VA(+AJ2); (the complement integrates the first projection and the adjunct integrates the second one)</li></ul></dd></dl>
+<dl><dt>Conditional adjacency</dt>
+<dd>Conditional adjacency may be stated by defining the left side of the s-rule and coindexing it to the right side:
+<ul><li>VC(+AJ1); (unconditional adjacency: the complement will always integrate the first projection);</li>
+<li>VC(PPR):=VC(+AJ1); (conditional adjacency: the complement will integrate the first projection if a personal pronoun;</li></ul></dd></dl>
+<dl><dt>Use of "+"</dt>
+<dd>As rules are conservative (i.e., features are preserved unless explicitly deleted), the use of "+" is actually optional:
+<ul><li>VC(AJ1); is the same as VC(+AJ1);</li></ul></dd></dl>
+<dl><dt>Reordering</dt>
+<dd>Reordering can be done in three different ways:
+<ul><li>By <a href="/wiki/L-rule" title="L-rule">L-rules</a>, if the process involves neighbour constituents and affects only the surface structure of the phrase;</li>
+<li>By attribute change (i.e., deleting and adding distribution features), such as in "VC(-AJ1,+AJ2);"</li>
+<li>By <a href="/wiki/Movement" title="Movement">movement</a>, in case of more complex inversions and extraction of constituents</li></ul></dd></dl>
+<dl><dt>The symbol <b>^</b> is used for negation and to control infinite recursion</dt>
+<dd>
+<ul><li>VC(^AJ1):=VC(AJ1); (assign the feature "AJ1" to the complement of the verb if it does not have it yet)</li></ul></dd></dl>
+<!-- 
+NewPP limit report
+Cached time: 20260910102759
+Cache expiry: 86400
+Reduced expiry: false
+Complications: [show‐toc]
+CPU time usage: 0.008 seconds
+Real time usage: 0.008 seconds
+Preprocessor visited node count: 33/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/100
+Expensive parser function count: 0/100
+Unstrip recursion depth: 0/20
+Unstrip post‐expand size: 151/5000000 bytes
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    0.000      1 -total
+-->
+
+<!-- Saved in parser cache with key u965818192_SLvgQ-l8z2_:pcache:512:|#|:idhash:canonical and timestamp 20260910102759 and revision id 13311. Rendering was triggered because: diff-page
+ -->
+</div>

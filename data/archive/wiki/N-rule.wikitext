@@ -1,0 +1,105 @@
+N-rule or normalization rule is a special type of [[transformation rule]] used to prepare the natural language input for automatic processing. They constitute the pre-processing module that applies over the input as a string and runs prior to the [[tokenization]]. The set of N-rules forms the '''Normalization Grammar''', or '''N-Grammar'''.
+
+== When to use N-rules ==
+N-rules are used to normalize the input string PRIOR to the processing, i.e., before any dictionary search. They have two roles:
+*to normalize the input text (to replace abbreviations by their extend forms, to extend contractions, etc.)
+*to segment the natural language text into sentences (i.e., to create the tags <SHEAD> (beginning of a sentence), <STAIL> (end of a sentence), <CHEAD> (beginning of a scope) and <CTAIL> (end of a scope) inside the input text). These tags are used as sentence and clause boundaries, and define the units of processing of the Transformation and Disambiguation grammars.
+
+== When not to use N-rules ==
+N-rules cannot be used when we depend on information extracted from the dictionary (such as part-of-speech, number, gender, etc.)
+
+== Where to use N-rules ==
+N-rules are used in [[IAN]] and [[SEAN]], i.e., in UNLization systems. They must be provided at the N-rules tab.
+
+== Syntax ==
+N-rules comply with the syntax below:
+ (<NODE>)(<NODE>)...(<NODE>) := (<NODE>)(<NODE>)...(<NODE>);
+Where:
+*<NODE> is a string or a [[regular expression]]. Strings are always represented between "quotes"; regular expressions (for strings) between "/forward slashes inside quotes/". 
+*the left side of the operator := states the condition
+*the right side of the operator := states the action to be performed over each string of the condition.
+
+== Types ==
+N-rules are used to:
+*replace strings: "axb" > "ayb"
+*delete strings: "axb" > "ab"
+*create strings: "ab" > "axb"
+*reorder strings: "ab" > "ba"
+*assign sentence boundaries: "ab" > "a"<STAIL>"b"
+
+== Example ==
+*[http://www.unlweb.net.br/resources/english/eng_ngrammar_ian.txt English N-Grammar (for IAN)]
+
+;Replacement of strings
+*("Mr."):=("Mister"); (replace "Mr." by "Mister")
+*("Mr")("."):=("Mister"); (the same as above)
+*("doctor"):=("dr."); (replace "doctor" by "dr.")
+*("an "):=("a "); (replace "an " by "a ")
+*("don't"):=("do not"); (replace "don't" by "do not")
+*("don't"):=("do")(" ")("not"); (the same as above)
+;Deletion of strings
+*("/[A-Z]/",%x)(".",%y):=(%x); (deletes the "." after capital letters)
+;Creation of strings
+*(SHEAD,%x)(^" ",%y):=(%x)(" ",%z)(%y); (add a blank space after the beginning of the sentence)
+;Reordering of strings
+*("Am",%x)(" ",%y)("I",%z):=(%z)(%y)(%x); (reorder "Am I" as "I Am")
+;Segmentation (see below)
+*(".",%x):=(%x)(+STAIL,%y); (creates an STAIL node after a ".";<ref>This rule contains an eternal loop and it is used here only to illustrate the creation of nodes. The correct rule would be (".",%x)(^STAIL,%z):=(%x)(+STAIL,%y)(%z);</ref>)
+
+== Segmentation ==
+In the UNL framework, natural language segmentation is done through the following tags:
+*<SHEAD> indicates the beginning of a sentence
+*<STAIL> indicates the end of a sentence
+*<CHEAD> indicates the beginning of a scope (any portion of text smaller than a sentence)
+*<CTAIL> indicates the end of a scope (any portion of text smaller than a sentence)
+The tags <SHEAD> and <STAIL> defines the sentence boundaries and are automatically assigned by the system according to line breaks and paragraph breaks. No punctuation sign is used as a sentence boundary by default. In order to break the input text into other portions, the corresponding N-rules must be provided. This is done by appending empty nodes with the features SHEAD, STAIL, CHEAD or CTAIL to the left or to the right of existing strings. 
+*Original text: <SHEAD>abcde<STAIL>
+*Rule: ("c",%x)(^STAIL,%y):=(%x)(STAIL)(%y);
+*Modified text: <SHEAD>abc<STAIL><SHEAD>de<STAIL> 
+
+;Observations
+*The tag <SHEAD> is assigned automatically after <STAIL>
+*The tag <STAIL> is assigned automatically before <SHEAD>
+
+== Properties ==
+#N-rules can only manipulate strings or regular expressions. Features (such as N, NOU, MCL, etc.) cannot be used in N-rules.
+#:("Mr."):=("Mister"); (string manipulation)
+#:("/[A-Z]/",%x)(".",%y):=(%x); (regular expression manipulation)
+#:<strike>("Mr.",ABB):=("Mister");</strike> (this is not a N-rule, because it involves a non-string element, i.e., ABB) 
+#Regular expressions may only be used in the left side.<br />
+#:("/[A-Z]/",%x)(".",%y):=(%x); 
+#:<strike>("/[A-Z]/")("."):=("/[A-Z]/");</strike> 
+#N-rules are recursive<nowiki>:</nowiki> rules will apply while conditions are true:
+#:The rule "(" "):=("-");" will transform "a b c d e" into "a-b-c-d-e" (and not only in "a-b c d e")
+#The symbol '''^''' is used for negation and may be used to prevent infinite loops:
+#:The rule (".",%x):=(%x)(+STAIL,%y); contains a loop, and will lead to (".")(STAIL)(STAIL)(STAIL)(STAIL).... In order to prevent that, we have to indicate that STAIL must be added if it does not exist yet, i.e.: (".",%x)(^STAIL,%z):=(%x)(+STAIL,%y)(%z);
+#In the right side, changes may be expressed by the right side of [[A-rule]]s inside each form. The default is replacement.
+#:The rule "("a")(" ")("/[aeiou].+/"):=("an")( )( );" could also be expressed as "("a")(" ")("/[aeiou].*/"):=(0>"n")( )( );", i.e., the change from "a" to "an" could be expressed either by "an" or 0>"n".
+#Rules apply only if all conditions are true.
+#:The rule "("a")(" ")("/[aeiou].+/"):=("an")( )( );" will apply only in case of "a" before a blank and a node starting with "a", "e", "i", "o" or "u".
+#Nodes may be deleted through replacement by zero:
+#:(" "):=; (deletes all the blank spaces)
+#Nodes in the left side that are not coindexed to nodes in the right side are deleted (see [[Indexation]])
+#:<strike>(" ")("don't")(" "):=("do not");</strike> provides "I don't know">"Ido notknow"
+#:(" ")("don't")(" "):=()("do not")(); provides "I don't know">I do not know"
+#N-rules manipulate any strings meeting the conditions
+#:<strike>("art"):=("article");</strike> provides "'''art''' 20">"'''article''' 20", but also "My name is B'''art'''">"My name is B'''article'''", "I love S'''art'''re">"I love S'''article'''re"
+#:({SHEAD|" "})("art")({STAIL|" "}):=()("article")(); (i.e., replace "art" by "article" if inbetween blank spaces or sentence boundaries
+
+== Indexes ==
+see [[Indexation]]
+
+== Common mistakes ==
+*<strike>"Mr":="Mister";</strike>
+**Conditions and actions must always come between parentheses: ("Mr"):=("Mister"); 
+*<strike>(Mr):=(Mister);</strike> 
+**Strings must come between quotes (inside the parentheses): ("Mr"):=("Mister"); 
+*<strike>("Mr"):=("Mister")</strike> 
+**Rules must end in semicolon: ("Mr"):=("Mister"); 
+*<strike><nowiki>("a")(" ")("/[aeiou].*/"):=("an");</nowiki></strike> 
+**"a adjective">"a": the blank and the following form are deleted because they are not present at the right side
+*<strike><nowiki>("de")(" ")("/[aeiou].*/"):=("d'")("/[aeiou].*/");</nowiki></strike>
+**"de avoir">"d' ": coindexation is based on ordering and not on features. The third form is deleted because it's not present at the right side; the second form, which is BLK, receives the feature VOW;
+
+== N-rules and L-rules ==
+{{:Difference between N-rules and L-rules}}

@@ -1,0 +1,10 @@
+To be represented by the attributes @def, @indef or @generic, depending on the scope of the reference.
+
+ @def
+I bought the book = book.@def
+
+ @indef
+I bought a book = book.@indef
+
+ @generic
+I like books = book.@generic

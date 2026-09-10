@@ -1,0 +1,391 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<title>UNL Archive</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/base/jquery-ui.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
+<style>
+    /* Override jQuery UI font settings */
+    .ui-widget, .ui-widget input, .ui-widget select, .ui-widget textarea, .ui-widget button {
+        font-family: inherit !important;
+        font-size: inherit !important;
+    }
+</style>
+<link rel="stylesheet" type="text/css" media="all" href="default.css" />
+</head>
+
+
+
+
+<body>
+<iframe name="I1" height="40" width="100%" scrolling="no" align="top" border="0" frameborder="0" src="unlwebbar/">
+Your browser does not support inline frames or is currently configured not to display inline frames.
+</iframe>
+
+
+   <div id="header" class="text-center py-10">
+    <img src="shared/images/unl_archive.png" alt="UNL Archive Logo" style="max-width:400px; width:100%; height:auto;">
+    
+    <hr />
+</div>
+
+<style>
+    .menu li ul li {
+        margin-top: 8px;
+        margin-bottom: 8px;
+    }
+</style>
+<!-- Menu superior -->
+
+<style>
+    /* Reset básico */
+    .menu,
+    .menu ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .menu {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        background: #fff;
+        position: relative;
+    }
+
+    .menu>li {
+        position: relative;
+    }
+
+    .menu>li>a {
+        display: block;
+        padding: 10px 18px;
+        text-decoration: none;
+        color: #222;
+        font-weight: bold;
+        transition: background 0.2s;
+    }
+
+    .menu>li:hover>a,
+    .menu>li:focus-within>a {
+        background: #eee;
+    }
+
+    .menu li ul {
+        display: none;
+        position: absolute;
+        left: 0;
+        top: 100%;
+        min-width: 180px;
+        background: #fff;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        z-index: 10;
+    }
+
+    .menu li:hover>ul,
+    .menu li:focus-within>ul {
+        display: block;
+    }
+
+    .menu li ul li a {
+        padding: 8px 16px;
+        color: #222;
+        font-weight: strong;
+        white-space: nowrap;
+    }
+
+    .menu li ul li a:hover {
+        background: #f5f5f5;
+    }
+
+    /* Hamburger */
+    .menu-toggle {
+        display: none;
+        background: none;
+        border: none;
+        font-size: 2em;
+        margin: 10px;
+        cursor: pointer;
+    }
+
+    @media (max-width: 900px) {
+        .menu {
+            flex-direction: column;
+            align-items: stretch;
+            display: none;
+            width: 100%;
+        }
+
+        .menu.open {
+            display: flex;
+        }
+
+        .menu>li {
+            width: 100%;
+        }
+
+        .menu>li>a {
+            padding: 14px 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .menu li ul {
+            position: static;
+            box-shadow: none;
+            min-width: 0;
+        }
+
+        .menu li ul {
+            display: none;
+        }
+
+        .menu li.open>ul {
+            display: block;
+        }
+
+        .menu-toggle {
+            display: block;
+        }
+    }
+</style>
+
+<button class="menu-toggle" aria-label="Open menu" onclick="document.querySelector('.menu').classList.toggle('open')">&#9776;</button>
+<ul class="menu">
+    <li><a href="index.php?unlweb=home">HOME</a></li>
+    <li><a href="index.php?unlweb=unlarium" title="Language resources">LINGWARE</a></li>
+    <li><a href="index.php?unlweb=dev" title="Computer resources">SOFTWARE</a></li>
+    <li><a href="index.php?unlweb=education" title="Educational resources">EDUCATION</a></li>
+    <li><a href="index.php?unlweb=documentation" title="Documentation resources">DOCUMENTATION</a></li>
+    <li><a href="index.php?unlweb=unl" title="UNL resources">UNL</a></li>
+    <li><a href="index.php?unlweb=undl" title="UNDL resources">UNDL</a></li>
+
+</ul>
+
+<script>
+    // Mobile submenu toggle with navigation on second click 
+    document.querySelectorAll('.menu > li').forEach(function(li) {
+        var link = li.querySelector('a');
+        if (li.querySelector('ul')) {
+            li.dataset.opened = "false";
+            link.addEventListener('click', function(e) {
+                if (window.innerWidth <= 900) {
+                    if (li.dataset.opened === "false") {
+                        e.preventDefault();
+                        li.classList.add('open');
+                        li.dataset.opened = "true";
+                    } else {
+                        // allow navigation
+                        li.dataset.opened = "false";
+                    }
+                }
+            });
+            // Close submenu when clicking outside
+            document.addEventListener('click', function(event) {
+                if (window.innerWidth <= 900) {
+                    if (!li.contains(event.target)) {
+                        li.classList.remove('open');
+                        li.dataset.opened = "false";
+                    }
+                }
+            });
+        }
+    });
+</script>
+
+
+<hr />
+<div class="center"><h1>The UNDL Foundation (2001-2024)</h1>
+<p>The UNDL Foundation was a non-profit organization established in Geneva, Switzerland in 2001 and formally dissolved in 2024. As an NGO with consultative status with the United Nations Economic and Social Council (ECOSOC) from 2004, the Foundation operated under the aegis of Swiss civil law with a governing board of twelve internationally renowned scholars and policy makers.</p>
+
+<p>During its years of activity, the Foundation worked in close collaboration with international linguistic centers, universities, and various organizations worldwide to build and develop the UNL platform. Its network consisted of linguists, software engineers, and IT specialists from around the globe who collectively elaborated new applications and enhanced the UNL system—a scientific community that grew steadily through modern networking methods.</p>
+
+
+<div class="accordion">
+
+    <h2>Mission</h2>
+    <div>
+        <p>Under a special mandate from the United Nations granted in 2002, the UNDL Foundation's duty was to "reduce the digital inequalities and enhance communication between multiple cultures in the world." The Foundation aimed to use UNL technology to ease communication between peoples by granting them access to universal knowledge available on and through the Internet.</p>
+
+        <p>The UNDL Foundation believed that linguistic and cultural differences often cause misunderstandings or even conflicts between peoples, and saw the UNL as a solution to dampen these issues by diminishing the digital divide in the world. The long-term vision was for UNL to become the universal conveyor of knowledge between peoples, helping to eradicate illiteracy and ignorance, and thereby fostering peace in the world.</p>
+
+        <p>To protect the UNL technology and make it free for all, the original patents were registered in the name of the United Nations, allowing the Foundation to share this technology with everyone without commercial interests.</p>
+    </div>
+
+<h2>Governance Structure</h2>
+<div>
+    <p>The UNDL Foundation had a lean organization. It was governed by the Board of the Foundation, assisted by the Executive Committee (ExCo) and the Head Office:</p>
+    <div class="inner-accordion">
+        <h3>Board</h3>
+        <div>
+            <p>The Board of the Foundation was constituted by eminent persons, from different regions of the world, representing various fields of sciences or public responsibilities in national and international arenas. Members were chosen for their intellectual and professional competence in the academic and public affairs communities. The Board was responsible for defining the general policy of the Foundation, overseeing its activities, and approving its annual budget and financial statements. It met at least once a year.</p>
+            <ul>
+                <p>Members of the Board included:</p>
+                <li>Prof. Tarcisio G. Della Senta, President</li>
+                <li>Mr. Abdullatif Y. Al-Hamad, Member</li>
+                <li>Ms. Nicoletta Calzonari, Member</li>
+                <li>Mr. Jean-Pierre Conzen, Member</li>
+                <li>Mr. Giorgio Margaritondo, Member</li>
+                <li>Mr. M.G.K. Menon, Member</li>
+                <li>Mr. Pierre Mottu, Member</li>
+                <li>Mr. Kazuhiko Nishi, Member</li>
+                <li>Mr. Ismail Serageldin, Member</li>
+                <li>Mr. Justin Thorens, Vice-president</li>
+                <li>Mr. Hiroshi Uchida, Member</li>
+                <li>Ms. Meiying Zhu, Member</li>
+            </ul>
+        </div>
+    </div>
+    <div class="inner-accordion">
+        <h3>Executive Committee (ExCo)</h3>
+        <div>
+            <img src="shared/images/Exco.jpg" alt="Executive Committee Members" style="max-width:300px; height:auto;" />
+            <p>The Executive Committee (ExCo) assisted its President in directing and managing daily administration affairs. The ExCo acted in the name of the Board and deliberated on administrative and financial matters ad referendum of the Board. It also overviewed the overall management of the Foundation. It was composed of three to five members appointed by the President of the Board from its members.</p>
+            <p>Members of the ExCo included:</p>
+            <ul>
+                <li>Mr. Tarcisio G. Della Senta, President</li>
+                <li>Mr. Jean Pierre Contzen</li>
+                <li>Mr. Hiroshi Uchida</li>
+                <li>Mr. M.G.K. Menon</li>
+            </ul>
+        </div>
+    </div>
+    <div class="inner-accordion">
+        <h3>Head Office</h3>
+        <div>
+            <p>Overall executive management of the Foundation was directed by the Head Office in Geneva, under the President of the Foundation, as its CEO, and his senior team:</p>
+            <ul>
+                <li>Mr. Tarcisio G. Della Senta, President</li>
+                <li>Mr. Justin Thorens, Vice-president</li>
+                <li>Mr. Ronaldo Martins, Language Resources Manager</li>
+                <li>Mr. Vahan Avetisyan, Computer Resources Manager</li>
+                <li>Mr. Xavier Thorens, Administration Manager</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+    <h2>Achievements</h2>
+    <div>
+        <p>The Foundation developed, preserved, managed, and protected the UNL system and its infrastructure under the aegis of the United Nations. While many different scientific institutes contributed to UNL's development, the Foundation's work consisted of managing its usage, development, and propagation.
+
+        <h3>Operations in Geneva</h3>
+
+        <p>From the head office in Geneva, the Foundation deployed all necessary resources for the UNL system to function. The work encompassed:</p>
+        <uL>
+            <li>Research and development</li>
+            <li>Technical management</li>
+            <li>Internal management</li>
+            <li>External relations with the UNL community of researchers, linguists, and software designers</li>
+            <li>Organization of seminars, workshops, and UNL Schools</li>
+            <li>Promotion of the UNL system and its applications</li>
+        </uL>
+
+        <p>A team of linguists, IT specialists, and IT engineers managed the digital infrastructure of UNL. Both the linguistic and IT departments had directors whose work was supported by an administration manager. Highly specialized staff worked on the technical maintenance of the digital UNL platform and on creating linguistic resources and knowledge bases for the UNL system.
+
+        <h3>The UNL Community</h3>
+
+        <p>The international UNL network was managed from the Geneva headquarters. At its peak, nearly 1,000 individuals worldwide regularly enhanced the UNL dictionaries by inputting grammar, syntax, and vocabulary from their natural languages into UNL. They represented the core of a multicultural, multilingual global community working primarily through the UNLarium platform.
+
+        <p>From April 2013, IT specialists were also welcomed to join the community through the UNLForge worksite, where they could participate online in the UNL project. More than 45 languages were treated by the UNL during the Foundation's active years.
+    </div>
+
+
+    <h2>Journey</h2>
+    <div>
+        <h3>Genesis (1996-2001)</h3>
+        <img src="shared/images/unu.png" alt="UNU" style="max-width:200px; height:auto;" />
+
+        <p>The UNL was created by the Institute of Advanced Studies of the United Nations University (UNU-IAS) in Tokyo, Japan, beginning in 1996. The project was initiated by Professor Tarcísio G. Della Senta, then Director of UNU-IAS, who recognized that a truly universal university would be limited by language barriers. He enlisted Professor Hiroshi Uchida and Meiying Zhu to create a universal language that could translate all knowledge into every language.</p>
+
+        <p>By 1999, the first patents were submitted and subsequently approved in China, Japan, and the United States. The inventors decided to offer these patents to the United Nations to protect the technology and make it accessible to all.</p>
+
+        <h3>Establishment in Geneva (2001-2009)</h3>
+        <img src="shared/images/unl_logo.png" alt="UNDL Foundation Logo" style="max-width:200px; height:auto;" />
+       
+
+        <p>In 2001, the UNDL Foundation was created in Geneva to develop and promote UNL in a more structured context. During this period, the Foundation gathered a wider international linguistic network and obtained its special mandate from the United Nations.</p>         
+
+        <p>In 2006, the Foundation partially translated EOLSS (Encyclopedia of Life Support Systems), a 250,000-page scientific encyclopedia produced under UNESCO's aegis, to demonstrate UNL's capabilities and advantages.</p>
+
+        <h3>UNL+3 Project (2009-2012)</h3>
+        <img src="shared/images/logoUNDL.jpg" alt="UNDL Foundation Logo" style="max-width:200px; height:auto;" />
+
+        <p>The Foundation launched the UNL+3 project, a three-year plan to refocus on its long-term mission of easing communication between all peoples. During this period:</p>
+
+        <ul>
+            <li>The UNLweb platform was created to host all UNL tools, resources and applications</li>
+            <li>The UNLarium platform was created to facilitate the work of linguists</li>
+            <li>Applications such as IAN and EUGENE were launched on the UNLdev platform</li>
+            <li>Language processing applications like Muhit, Lily, Keys and TUT were developed</li>
+            <li>Projects like the LPP (translating "The Little Prince" into UNL) were completed</li>
+            <li>Various seminars, workshops, and UNL Schools were organized</li>
+        </ul>
+
+        <h3>Final Years (2012-2015)</h3>
+        <img src="shared/images/undl_newlogo.jpeg" alt="UNDL Foundation Logo" style="max-width:200px; height:auto;" />
+
+        <p>By 2012, the UNLweb became fully operational and open for participation, containing all necessary tools and applications for developing UNL: UNLarium, UNLdev, UNLwiki, UNLforum, and VALERIE.</p>
+
+        <p>Following 2015, the Foundation ceased active operations, leading to its formal dissolution in February 2024.</p>
+    </div>
+
+    <h2>Our Legacy</h2>
+    <div>
+        <p>As a non-profit organization, the UNDL Foundation operated outside the competitive market, supported by donations from various organizations and individuals. The Foundation maintained no commercial interests throughout its existence. Using state-of-the-art computational linguistic and artificial intelligence algorithms of its time, the Foundation's work in Natural Language Processing and Automatic Translation represented a significant effort to bridge linguistic divides.</p>
+
+        <p>The Foundation invited everyone to participate in the development of the UNL project by contributing linguistic knowledge and databases in their natural language, with a primary goal of supporting languages that were rare or nonexistent on the Internet, thereby working to reduce the digital gap in the world.</p>
+
+        <p>The UNDL Foundation stood as an ambitious attempt to create a universal language system for the digital age, bringing together scholars, linguists, and technologists from around the world in pursuit of a more linguistically accessible Internet.</p>
+    </div>
+</div>
+
+<script>
+    $(function() {
+        $(".accordion").accordion({
+            collapsible: true,
+            heightStyle: "content",
+            active: false
+        });
+        $(".inner-accordion").accordion({
+            collapsible: true,
+            heightStyle: "content",
+            active: false
+        });
+    });
+</script>
+
+<div style="text-align:center; margin-top:30px;">
+    <button class="btn"
+        onclick="window.location.href='index.php?unlweb=home'"
+
+        onmouseover="this.style.backgroundColor='#005bb5'"
+        onmouseout="this.style.backgroundColor='#0073e6'">
+        ⬅ Back to Home
+    </button>
+
+
+</div>
+<br />
+</div></div> 
+
+<hr />
+<div id="footer" style="max-width:600px; margin:0 auto; text-align:center; font-size:0.7em;">
+    <div style="display: flex; justify-content: center; align-items: center;">
+            <a href="index.php?unlweb=terms" style="margin-right: 10px;">Terms and Conditions</a> |
+            <a href="index.php?unlweb=about" style="margin-left: 10px; margin-right: 10px;">About UNL Archive</a> |
+            <a href="index.php?unlweb=contact" style="margin-left: 10px;">Contact</a>
+    </div>
+</div>
+<br /><br />
+</body>
+</html>

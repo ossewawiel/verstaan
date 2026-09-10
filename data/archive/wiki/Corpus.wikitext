@@ -1,0 +1,23 @@
+A UNL corpus is a collection of documents written in UNL according to the [[UNL document]] structure. 
+
+== Types ==
+UNL corpora are normally classified according to the [[UNLization]] strategies:
+*Fully automatic UNLization (the whole process is carried out by the machine, without any intervention of the human user)
+*Human-aided machine UNLization (the process is carried mainly by the machine, with some intervention of the human user, either as a pre-editor or as a post-editor, or during the UNLization itself, as in dialogue-based UNLization)
+*Machine-aided human UNLization (the process is carried mainly by the human user, with some help of the machine, as in the dictionary or memory lookup)
+*Fully human UNLization (the whole process is carried by the human user, without any intervention of the machine)
+
+== UNL Reference Corpus (UC) ==
+The UNL Reference Corpus (UC) is the corpus used to prepare and to assess grammars for sentence-based [[NLization]]. It is divided in 6 different levels according to the [[FoR-UNL|Framework of Reference for UNL (FoR-UNL)]]:
+*[[UC-A1]]: UNL Reference Corpus A1 (100 isolated sentences with very simple semantic structures)
+*[[UC-A2]]: UNL Reference Corpus A2 (300 isolated sentences with very simple semantic structures)
+*[[UC-B1]]: UNL Reference Corpus B1 (5 short stories)
+*UC-B2: UNL Reference Corpus B2
+*UC-C1: UNL Reference Corpus C1
+*UC-C2: UNL Reference Corpus C2
+
+== NL Reference Corpus (NC) ==
+The [[NC|NL Reference Corpus (NC)]] is the corpus used to prepare and to assess grammars for sentence-based [[UNLization]].
+
+== List of UNL Corpora ==
+[[List of UNL Corpora]]

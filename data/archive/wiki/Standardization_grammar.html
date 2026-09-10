@@ -1,0 +1,52 @@
+<div class="mw-content-ltr mw-parser-output" lang="en" dir="ltr"><p>The Standardization Grammar is a <a href="/wiki/Transformation_grammar" class="mw-redirect" title="Transformation grammar">transformation grammar</a> used to standardize the feature structure and to propagate values and attributes according to the hierarchy defined in the <a href="/wiki/Tagset" title="Tagset">Tagset</a>. The Standardization Grammar is bidirectional, i.e., the same grammar is used both in is used both in <a href="/wiki/UNLization" title="UNLization">UNLization</a> and <a href="/wiki/NLization" title="NLization">NLization</a>. As the language-specific grammars and the <a href="/wiki/Default_grammar" title="Default grammar">Default grammar</a> depend on the standardization of the feature structure, the standardization grammar must be the first grammar to be loaded to the T-rules tab in <a href="/wiki/IAN" title="IAN">IAN</a> and <a href="/wiki/EUGENE" title="EUGENE">EUGENE</a>. 
+</p>
+<div class="mw-heading mw-heading2"><h2 id="File">File</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Standardization_grammar&amp;veaction=edit&amp;section=1" title="Edit section: File" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Standardization_grammar&amp;action=edit&amp;section=1" title="Edit section&#39;s source code: File">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<ul><li><a rel="nofollow" class="external text" href="http://www.unlweb.net.br/resources/grammar/s-grammar.txt">Standardization Grammar</a></li></ul>
+<p>The Standardization Grammar may also be downloaded from the <a rel="nofollow" class="external text" href="http://www.unlweb.net.br/unlarium/dictionary/export_tagset.php?order=normalize">UNLarium</a>
+</p>
+<div class="mw-heading mw-heading2"><h2 id="Structure">Structure</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Standardization_grammar&amp;veaction=edit&amp;section=2" title="Edit section: Structure" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Standardization_grammar&amp;action=edit&amp;section=2" title="Edit section&#39;s source code: Structure">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>The Standardization Grammar is divided into three modules:
+</p>
+<ul><li><b>Standardization</b>, where isolated features are rewritten in the attribute-value format.</li></ul>
+<p>This is used when the feature list of entries are not represented in the dictionary in the attribute-value format, or as a cross-check for the feature assignment operations performed by the grammar itself. An example of standardization rules is:
+</p>
+<pre>(CAU,^ASP):=(-CAU,+ASP=CAU);
+</pre>
+<p>if a node has the feature "CAU" (= causative) but does not have the attribute "ASP" (aspect), then rewrite CAU as ASP=CAU
+</p>
+<ul><li><b>Propagation</b>, where the features of top categories are copied to their children.</li></ul>
+<p>This is used to avoid proliferating rules. For instance, every word having the feature SNGT (singulare tantum) is also SNG (singular). This information is not stated in the dictionary, and must be made explicit in the grammar, in order not to simply duplicate all rules dealing with SNG. This generalization movement is performed by rules such as:
+</p>
+<pre>(SNGT,^SNG):=(-NUM,-SGNT,+NUM=SNG,+NUM=SNGT);
+</pre>
+<p>if a node has the feature SNGT (singulare tantum) and does not have the feature SNG (singular), then copy the feature SNG to it
+</p>
+<ul><li><b>Other standardization rules</b>, to deal with special cases such as temporary UW's, pronouns and numbers, such as:</li></ul>
+<pre>(TEMP,^LEX):=(+LEX=N,+POS=PPN); treats all temporary words as proper nouns
+</pre>
+<p>temporary UW's, which are absent from the dictionary, do not have any information other than the feature TEMP. In order to manipulate them inside the grammar, we assign them the feature PPN (proper name) (i.e., all temporary words are interpreted as proper names)
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20260910005750
+Cache expiry: 86400
+Reduced expiry: false
+Complications: []
+CPU time usage: 0.003 seconds
+Real time usage: 0.003 seconds
+Preprocessor visited node count: 13/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/100
+Expensive parser function count: 0/100
+Unstrip recursion depth: 0/20
+Unstrip post‐expand size: 0/5000000 bytes
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    0.000      1 -total
+-->
+
+<!-- Saved in parser cache with key u965818192_SLvgQ-l8z2_:pcache:701:|#|:idhash:canonical and timestamp 20260910005750 and revision id 15284. Rendering was triggered because: page-view
+ -->
+</div>

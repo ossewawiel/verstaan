@@ -1,0 +1,105 @@
+In the scope of the project [[LACE]], an '''anchor''' is an element that may facilitate word alignment at the document level.
+
+== HTML elements ==
+The following HTML elements are used to define the set of anchors in the project [[LACEhpc]]. They are said to involve smaller texts and, therefore, are more likely to provide lexical mappings.
+
+{| class="wikitable"
+|-
+! Tag !! Description
+|-
+| &lt;a&gt; || Defines a hyperlink
+|-
+| &lt;b&gt; || Defines bold text
+|-
+| &lt;caption&gt; || Defines a table caption
+|-
+| &lt;dt&gt; || Defines a term (an item) in a definition list
+|-
+| &lt;em&gt; || Defines emphasized text&nbsp;
+|-
+| &lt;figcaption&gt; || Defines a caption for a &lt;figure&gt; element
+|-
+| &lt;h1&gt; to &lt;h6&gt; || Defines HTML headings
+|-
+| &lt;i&gt; || Defines a part of text in an alternate voice or mood
+|-
+| &lt;legend&gt; || Defines a caption for a &lt;fieldset&gt;, &lt; figure&gt;, or &lt;details&gt; element
+|-
+| &lt;li&gt; || Defines a list item
+|-
+| &lt;mark&gt; || Defines marked/highlighted text
+|-
+| &lt;nav&gt; || Defines navigation links
+|-
+| &lt;q&gt; || Defines a short quotation
+|-
+| &lt;small&gt; || Defines smaller text
+|-
+| &lt;strike&gt; || Not supported in HTML5. Deprecated in HTML 4.01. Defines strike-through text
+|-
+| &lt;strong&gt; || Defines important text
+|-
+| &lt;sub&gt; || Defines subscripted text
+|-
+| &lt;sup&gt; || Defines superscripted text
+|-
+| &lt;td&gt; || Defines a cell in a table
+|-
+| &lt;th&gt; || Defines a header cell in a table
+|}
+
+== Observations ==
+;Nesting
+:Anchors ignore nesting. For instance, the sequence <nowiki><b><i>ABC</i>DEF</b></nowiki> was considered to have two anchors: <nowiki><i>ABC</i></nowiki> and <nowiki><b>ABCDEF</b></nowiki>.
+;Attributes and events
+:HTML attributes and events are ignored. For instance: given <nowiki><a href="http://www.unlweb.net" target="_blank" title="UNL">UNLweb</a></nowiki>, the anchor is simply <nowiki><a>UNLweb</a></nowiki>.
+
+== Example ==
+
+{| class="wikitable"
+!width="50%"|Original
+!width="50%"|Anchors
+|-
+|<nowiki>
+<HEAD>
+<TITLE>Basic HTML Sample Page</TITLE>
+</HEAD>
+<BODY BGCOLOR="WHITE">
+<CENTER>
+<H1>A Simple Sample Web Page</H1>
+Extracted from <a href="http://sheldonbrown.com/web_sample1.html">Sheldon Brown</a>.
+<IMG SRC="scb_eagle_contact.jpeg">
+<H2>Demonstrating a few HTML features</H2>
+</CENTER>
+<b>HTML</b> is really a very simple language. It consists of ordinary text, with commands that are enclosed by "<" and ">" characters, or bewteen an "&" and a ";". <P>
+You don't really need to know much HTML to create a page, because you can copy bits of HTML from other pages that do what you want, then change the text!<P>
+<H3>Line Breaks</H3>
+HTML doesn't normally use line breaks for ordinary text. A white space of any size is treated as a single space. This is because the author of the page has no way of knowing the size of the reader's screen, or what size type they will have their browser set for.<P>
+If you want to put a line break at a particular place, you can use the "<BR>" command, or, for a paragraph break, the "<P>" command, which will insert a blank line. The heading command ("<4></4>") puts a blank line above and below the heading text.
+<H4>Starting and Stopping Commands</H4>
+Most HTML commands come in pairs: for example, "<H4>" marks the beginning of a size 4 heading, and "</H4>" marks the end of it. The closing command is always the same as the opening command, except for the addition of the "/".<P>
+Modifiers are sometimes included along with the basic command, inside the opening command's < >. The modifier does not need to be repeated in the closing command.
+<H1>This is a size "1" heading</H1>
+<H2>This is a size "2" heading</H2>
+<H3>This is a size "3" heading</H3>
+<H4>This is a size "4" heading</H4>
+<H5>This is a size "5" heading</H5>
+<H6>This is a size "6" heading</H6>
+<center>
+</body>
+</nowiki>
+|
+<pre>
+<H1>A Simple Sample Web Page</H1>
+<a>Sheldon Brown</a>
+<H2>Demonstrating a few HTML features</H2>
+<b>HTML</b>
+<H3>Line Breaks</H3>
+<H1>This is a size "1" heading</H1>
+<H2>This is a size "2" heading</H2>
+<H3>This is a size "3" heading</H3>
+<H4>This is a size "4" heading</H4>
+<H5>This is a size "5" heading</H5>
+<H6>This is a size "6" heading</H6>
+</pre>
+|}

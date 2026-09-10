@@ -1,0 +1,703 @@
+<div class="mw-content-ltr mw-parser-output" lang="en" dir="ltr"><p><b>A-rule</b> (affixation rule) is a specific type of <a href="/wiki/Transformation_rule" class="mw-redirect" title="Transformation rule">transformation rule</a> used for generating affixes (prefixes, suffixes, infixes) in the UNLarium framework. 
+</p>
+<div id="toc" class="toc" role="navigation" aria-labelledby="mw-toc-heading"><input type="checkbox" role="button" id="toctogglecheckbox" class="toctogglecheckbox" style="display:none" /><div class="toctitle" lang="en" dir="ltr"><h2 id="mw-toc-heading">Contents</h2><span class="toctogglespan"><label class="toctogglelabel" for="toctogglecheckbox"></label></span></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#When_to_use_A-rules"><span class="tocnumber">1</span> <span class="toctext">When to use A-rules</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#When_not_to_use_A-rules"><span class="tocnumber">2</span> <span class="toctext">When not to use A-rules</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="#Types_of_A-rules"><span class="tocnumber">3</span> <span class="toctext">Types of A-rules</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="#Simple_A-rules"><span class="tocnumber">4</span> <span class="toctext">Simple A-rules</span></a>
+<ul>
+<li class="toclevel-2 tocsection-5"><a href="#Syntax"><span class="tocnumber">4.1</span> <span class="toctext">Syntax</span></a></li>
+<li class="toclevel-2 tocsection-6"><a href="#Examples"><span class="tocnumber">4.2</span> <span class="toctext">Examples</span></a></li>
+<li class="toclevel-2 tocsection-7"><a href="#Observations"><span class="tocnumber">4.3</span> <span class="toctext">Observations</span></a></li>
+<li class="toclevel-2 tocsection-8"><a href="#Common_mistakes"><span class="tocnumber">4.4</span> <span class="toctext">Common mistakes</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-9"><a href="#Complex_A-rules"><span class="tocnumber">5</span> <span class="toctext">Complex A-rules</span></a>
+<ul>
+<li class="toclevel-2 tocsection-10"><a href="#Syntax_2"><span class="tocnumber">5.1</span> <span class="toctext">Syntax</span></a></li>
+<li class="toclevel-2 tocsection-11"><a href="#Examples_2"><span class="tocnumber">5.2</span> <span class="toctext">Examples</span></a></li>
+<li class="toclevel-2 tocsection-12"><a href="#Observations_2"><span class="tocnumber">5.3</span> <span class="toctext">Observations</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-13"><a href="#Formal_syntax"><span class="tocnumber">6</span> <span class="toctext">Formal syntax</span></a></li>
+<li class="toclevel-1 tocsection-14"><a href="#Notes"><span class="tocnumber">7</span> <span class="toctext">Notes</span></a></li>
+</ul>
+</div>
+
+<div class="mw-heading mw-heading2"><h2 id="When_to_use_A-rules">When to use A-rules</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=A-rule&amp;veaction=edit&amp;section=1" title="Edit section: When to use A-rules" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=A-rule&amp;action=edit&amp;section=1" title="Edit section&#39;s source code: When to use A-rules">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>A-rules are used for prefixation, suffixation and infixation, i.e., for adding morphemes to a given base form. They are used for generating <b>inflections</b> (such as "book"&gt;"books", "love"&gt;"loved") or <b>derivations</b> (such as "dress"&gt;"undress", "write"&gt;"writer"). 
+</p>
+<div class="mw-heading mw-heading2"><h2 id="When_not_to_use_A-rules">When not to use A-rules</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=A-rule&amp;veaction=edit&amp;section=2" title="Edit section: When not to use A-rules" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=A-rule&amp;action=edit&amp;section=2" title="Edit section&#39;s source code: When not to use A-rules">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>A-rules are not used for <b>composition</b> (i.e., to form new words by combining or putting together old words), as in "give"&gt;"give in", "go"&gt;"have gone" or "man"&gt;"fireman"). This should be treated by <a href="/wiki/C-rule" title="C-rule">C-rules</a>.
+</p>
+<div class="mw-heading mw-heading2"><h2 id="Types_of_A-rules">Types of A-rules</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=A-rule&amp;veaction=edit&amp;section=3" title="Edit section: Types of A-rules" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=A-rule&amp;action=edit&amp;section=3" title="Edit section&#39;s source code: Types of A-rules">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>There are two types of A-rules:
+</p>
+<ul><li><b>simple A-rules</b> involve a single action (such as prefixation, suffixation, infixation and replacement); and</li>
+<li><b>complex A-rules</b> involve more than one action (such as circumfixation).</li></ul>
+<div class="mw-heading mw-heading2"><h2 id="Simple_A-rules">Simple A-rules</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=A-rule&amp;veaction=edit&amp;section=4" title="Edit section: Simple A-rules" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=A-rule&amp;action=edit&amp;section=4" title="Edit section&#39;s source code: Simple A-rules">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>There are four types of simple A-rules:
+</p>
+<ul><li><b>prefixation</b>, for adding morphemes at the beginning of a base form.</li>
+<li><b>suffixation</b>, for adding morphemes at the end of a base form</li>
+<li><b>infixation</b>, for adding morphemes to the middle of the base form</li>
+<li><b>replacement</b>, for changing the base form</li></ul>
+<div class="mw-heading mw-heading3"><h3 id="Syntax">Syntax</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=A-rule&amp;veaction=edit&amp;section=5" title="Edit section: Syntax" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=A-rule&amp;action=edit&amp;section=5" title="Edit section&#39;s source code: Syntax">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>The syntax for simple A-rules is the following:
+<br />
+<br />
+<b>prefixation</b>
+</p>
+<pre>CONDITION&#160;:= "ADDED" &lt; DELETED;
+</pre>
+<p><b>suffixation</b>
+</p>
+<pre>CONDITION&#160;:= DELETED &gt; "ADDED";
+</pre>
+<p><b>infixation</b>
+</p>
+<pre>CONDITION&#160;:= [REFERENCE] &gt; "ADDED";
+CONDITION&#160;:= "ADDED" &lt; [REFERENCE];
+</pre>
+<p><b>replacement</b>
+</p>
+<pre> CONDITION&#160;:= DELETED&#160;: "ADDED";
+</pre>
+<p><b>duplication</b>
+</p>
+<pre> CONDITION&#160;:= [REFERENCE]+;
+</pre>
+<p>Where:
+</p>
+<ul><li>CONDITION = tag (such as "PLR", "FEM", etc) or list of tags ("FEM&amp;PLR") that indicates when the rule should be applied</li>
+<li>ADDED (between quotes) = the string to be added&#160;;</li>
+<li>REFERENCE (between square brackets) = the reference string (between quotes) or the position (without quotes) of the string to be added;</li>
+<li>DELETED = the string (between quotes) or the number of characters (without quotes) to be deleted.</li></ul>
+<div class="mw-heading mw-heading3"><h3 id="Examples">Examples</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=A-rule&amp;veaction=edit&amp;section=6" title="Edit section: Examples" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=A-rule&amp;action=edit&amp;section=6" title="Edit section&#39;s source code: Examples">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<table border="1" align="center" cellpadding="2">
+<caption>Prefixation
+</caption>
+<tbody><tr>
+<th>RULE
+</th>
+<th>BEHAVIOR
+</th>
+<th>BEFORE
+</th>
+<th>AFTER
+</th></tr>
+<tr>
+<td width="100">X:="y"&lt;"z";
+</td>
+<td width="300">if X replace the string "z" by the string "y" in the beginning of the string
+</td>
+<td width="50"><b>z</b>abc
+</td>
+<td width="50"><b>y</b>abc
+</td></tr>
+<tr>
+<td>X:="y"&lt;1;
+</td>
+<td>if X replace the first character of the string  by "y"
+</td>
+<td><b>z</b>abc
+</td>
+<td><b>y</b>abc
+</td></tr>
+<tr>
+<td>X:="y"&lt;0;
+</td>
+<td>if X add the string "y" to the beginning of the string
+</td>
+<td>zabc
+</td>
+<td><b>y</b>zabc
+</td></tr>
+<tr>
+<td>X:="y"&lt;;<sup id="cite_ref-not_1-0" class="reference"><a href="#cite_note-not-1"><span class="cite-bracket">&#91;</span>1<span class="cite-bracket">&#93;</span></a></sup>
+</td>
+<td>if X add the string "y" to the beginning of the string (idem previous)
+</td>
+<td>zabc
+</td>
+<td><b>y</b>zabc
+</td></tr>
+<tr>
+<td>X:="y"&lt;&lt;0;<sup id="cite_ref-not_1-1" class="reference"><a href="#cite_note-not-1"><span class="cite-bracket">&#91;</span>1<span class="cite-bracket">&#93;</span></a></sup>
+</td>
+<td>if X add the string "y" and a blank space to the beginning of the string
+</td>
+<td>zabc
+</td>
+<td><b>y</b> zabc
+</td></tr>
+<tr>
+<td>X:="y"&lt;&lt;;<sup id="cite_ref-not_1-2" class="reference"><a href="#cite_note-not-1"><span class="cite-bracket">&#91;</span>1<span class="cite-bracket">&#93;</span></a></sup>
+</td>
+<td>if X add the string "y" and a blank space to the beginning of the string (idem previous)
+</td>
+<td>zabc
+</td>
+<td><b>y</b> zabc
+</td></tr></tbody></table>
+<p><br />
+</p>
+<table border="1" align="center" cellpadding="2">
+<caption>Suffixation
+</caption>
+<tbody><tr>
+<th>RULE
+</th>
+<th>BEHAVIOR
+</th>
+<th>BEFORE
+</th>
+<th>AFTER
+</th></tr>
+<tr>
+<td width="100">X:="z"&gt;"y";
+</td>
+<td width="300">if X replace the string "z" by the string "y" in the end of the string
+</td>
+<td width="50">abc<b>z</b>
+</td>
+<td width="50">abc<b>y</b>
+</td></tr>
+<tr>
+<td>X:=1&gt;"y";
+</td>
+<td>if X replace the last character of the string  by "y"
+</td>
+<td>abc<b>z</b>
+</td>
+<td>abc<b>y</b>
+</td></tr>
+<tr>
+<td>X:=0&gt;"y";
+</td>
+<td>if X add the string "y" to the end of the string
+</td>
+<td>abcz
+</td>
+<td>abcz<b>y</b>
+</td></tr>
+<tr>
+<td>X:=&gt;"y";<sup id="cite_ref-not_1-3" class="reference"><a href="#cite_note-not-1"><span class="cite-bracket">&#91;</span>1<span class="cite-bracket">&#93;</span></a></sup>
+</td>
+<td>if X add the string "y" to the end of the string (idem previous)
+</td>
+<td>abcz
+</td>
+<td>abcz<b>y</b>
+</td></tr>
+<tr>
+<td>X:=0&gt;&gt;"y";<sup id="cite_ref-not_1-4" class="reference"><a href="#cite_note-not-1"><span class="cite-bracket">&#91;</span>1<span class="cite-bracket">&#93;</span></a></sup>
+</td>
+<td>if X add a blank space  and the string "y" to the end of the string
+</td>
+<td>abcz
+</td>
+<td>abcz <b>y</b>
+</td></tr>
+<tr>
+<td>X:=&gt;&gt;"y";<sup id="cite_ref-not_1-5" class="reference"><a href="#cite_note-not-1"><span class="cite-bracket">&#91;</span>1<span class="cite-bracket">&#93;</span></a></sup>
+</td>
+<td>if X add a blank space  and the string "y" to the end of the string (idem previous)
+</td>
+<td>abcz
+</td>
+<td>abcz <b>y</b>
+</td></tr></tbody></table>
+<p><br />
+</p>
+<table border="1" align="center" cellpadding="2">
+<caption>Infixation
+</caption>
+<tbody><tr>
+<th>RULE
+</th>
+<th>BEHAVIOR
+</th>
+<th>BEFORE
+</th>
+<th>AFTER
+</th></tr>
+<tr>
+<td width="100">X:=[2]&gt;"y";
+</td>
+<td width="300">if X add "y" to the right of the second character
+</td>
+<td width="50">abc
+</td>
+<td width="50">ab<b>y</b>c
+</td></tr>
+<tr>
+<td>X:="y"&lt;[3];
+</td>
+<td>if X add "y" to the left of the third character
+</td>
+<td>abc
+</td>
+<td>ab<b>y</b>c
+</td></tr>
+<tr>
+<td>X:=["b"]&gt;"y";
+</td>
+<td>if X add "y" to the right of "b";
+</td>
+<td>abc
+</td>
+<td>ab<b>y</b>c
+</td></tr>
+<tr>
+<td>X:="y"&lt;["c"];
+</td>
+<td>if X add "y" to the left of "c"
+</td>
+<td>abc
+</td>
+<td>ab<b>y</b>c
+</td></tr>
+<tr>
+<td>X:="y"&lt;[3="c"];
+</td>
+<td>if X add "y" to the left of "c", if "c" is the third character
+</td>
+<td>abc
+</td>
+<td>ab<b>y</b>c
+</td></tr>
+<tr>
+<td>X:=[2,="b"]&gt;"y";
+</td>
+<td>if X add "y" to the right of "b", if "b" is the second character;
+</td>
+<td>abc
+</td>
+<td>ab<b>y</b>c
+</td></tr>
+<tr>
+<td>X:=[-2]&gt;"y";
+</td>
+<td>if X add "y" to the right of the second character from the right
+</td>
+<td>abc
+</td>
+<td>ab<b>y</b>c
+</td></tr>
+<tr>
+<td>X:="y"&lt;[-2];
+</td>
+<td>if X add "y" to the left of the second character from the right
+</td>
+<td>abc
+</td>
+<td>a<b>y</b>bc
+</td></tr></tbody></table>
+<p><br />
+</p>
+<table border="1" align="center" cellpadding="2">
+<caption>Replacement
+</caption>
+<tbody><tr>
+<th>RULE
+</th>
+<th>BEHAVIOR
+</th>
+<th>BEFORE
+</th>
+<th>AFTER
+</th></tr>
+<tr>
+<td width="100">X:="y";
+</td>
+<td width="300">if X replace the whole by "y"
+</td>
+<td width="50">X
+</td>
+<td width="50"><b>y</b>
+</td></tr>
+<tr>
+<td>X:="z":"y";
+</td>
+<td>if X replace the string "z" by "y"
+</td>
+<td>a<b>z</b>bc
+</td>
+<td>a<b>y</b>bc
+</td></tr>
+<tr>
+<td>X:=[2-3]:"y";
+</td>
+<td>if X replace the second to the third character by "y"
+</td>
+<td>a<b>bc</b>z
+</td>
+<td>a<b>y</b>z
+</td></tr></tbody></table>
+<p><br />
+</p>
+<table border="1" align="center" cellpadding="2">
+<caption>Duplication
+</caption>
+<tbody><tr>
+<th>RULE
+</th>
+<th>BEHAVIOR
+</th>
+<th>BEFORE
+</th>
+<th>AFTER
+</th></tr>
+<tr>
+<td width="100">X:=[2]+;
+</td>
+<td width="300">if X duplicate the second character
+</td>
+<td width="50">abc
+</td>
+<td width="50">ab<b>b</b>c
+</td></tr>
+<tr>
+<td width="100">X:=[-2]+;
+</td>
+<td width="300">if X duplicate the second last character
+</td>
+<td width="50">abc
+</td>
+<td width="50">ab<b>b</b>c
+</td></tr>
+<tr>
+<td width="100">X:=[2="b"]+;
+</td>
+<td width="300">if X duplicate the second character, if it is "b"
+</td>
+<td width="50">abc
+</td>
+<td width="50">ab<b>b</b>c
+</td></tr></tbody></table>
+<div class="mw-heading mw-heading3"><h3 id="Observations">Observations</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=A-rule&amp;veaction=edit&amp;section=7" title="Edit section: Observations" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=A-rule&amp;action=edit&amp;section=7" title="Edit section&#39;s source code: Observations">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<dl><dt>Rules will only be applied if all conditions are true</dt>
+<dd></dd>
+<dd>X:="y"&lt;"z"; ( "zabc" changes to "yabc", but "abc" remains "abc" since there is no "z" to be replaced)</dd>
+<dt>String fields are necessarily continuous</dt>
+<dd></dd>
+<dd>X:="aaa"&lt;"xyz"; ( "xyzbbb" changes to "aaabbb", but "bxbybz" remains "bxbybz" since there is no continuous string "xyz" to be replaced)</dd>
+<dt>Prefixation, infixation and suffixation rules apply only once (i.e, rules are not exhaustive)</dt>
+<dd>PLR:=0&gt;"s"; ("X" becomes "Xs", and not "Xssssss...")</dd>
+<dt>Replacement rules apply as long as the conditions are true</dt>
+<dd></dd>
+<dd>X:="a":"b"; ( "aaa" becomes "bbb" and not "abb")</dd>
+<dt>In prefixation and suffixation rules, the part to be deleted may be represented by the number of characters (without quotes)</dt>
+<dd></dd></dl>
+<table align="center" cellpadding="2">
+
+<tbody><tr>
+<td width="150">PLR&#160;:= "X"&lt;"";
+</td>
+<td>=
+</td>
+<td width="150">PLR&#160;:= "X"&lt;0;
+</td>
+<td>(ABC becomes XABC)
+</td></tr>
+<tr>
+<td>PLR:= "X"&lt;"A";
+</td>
+<td>=
+</td>
+<td>PLR:= "X"&lt;1;
+</td>
+<td>(ABC becomes XBC)
+</td></tr>
+<tr>
+<td>PLR:= "XY"&lt;"AB";
+</td>
+<td>=
+</td>
+<td>PLR:= "XY"&lt;2;
+</td>
+<td>(ABC becomes XYC)
+</td></tr>
+<tr>
+<td>PLR:=""&gt;"X";
+</td>
+<td>=
+</td>
+<td>PLR:= 0&gt;"X";
+</td>
+<td>(ABC becomes ABCX)
+</td></tr>
+<tr>
+<td>PLR:="C"&gt;"X";
+</td>
+<td>=
+</td>
+<td>PLR:= 1&gt;"X";
+</td>
+<td>(ABC becomes ABX)
+</td></tr>
+<tr>
+<td>PLR:="BC"&gt;"XY";
+</td>
+<td>=
+</td>
+<td>PLR:= 2&gt;"XY";
+</td>
+<td>(ABC becomes AXY)
+</td></tr></tbody></table>
+<dl><dt>In infixation and duplication rules, the position of the addition may be made with reference to the end of string by using "-".</dt></dl>
+<table border="1" align="center" cellpadding="2">
+<tbody><tr>
+<th>RULE
+</th>
+<th>BEHAVIOR
+</th>
+<th>BEFORE
+</th>
+<th>AFTER
+</th></tr>
+<tr>
+<td width="70">X:=[2]&gt;"y";
+</td>
+<td width="300">if X add "y" to the right of the second character
+</td>
+<td width="50">abc
+</td>
+<td width="50">ab<b>y</b>c
+</td></tr>
+<tr>
+<td>X:=[-2]&gt;"y";
+</td>
+<td>if X add "y" to the right of the second last character
+</td>
+<td>abc
+</td>
+<td>ab<b>y</b>c
+</td></tr>
+<tr>
+<td>X:="y"&lt;[2];
+</td>
+<td>if X add "y" to the left of the second character
+</td>
+<td>abcde
+</td>
+<td>a<b>y</b>bc
+</td></tr>
+<tr>
+<td>X:="y"&lt;[-2];
+</td>
+<td>if X add "y" to the left of the second last character
+</td>
+<td>abcde
+</td>
+<td>abc<b>y</b>de
+</td></tr></tbody></table>
+<dl><dt>In infixation and duplication rules, the reference may be either a string, a position or both</dt>
+<dd></dd></dl>
+<table border="1" align="center" cellpadding="2">
+<tbody><tr>
+<th>RULE
+</th>
+<th>REFERENCE
+</th></tr>
+<tr>
+<td width="100">X:=[1]&gt;"y";
+</td>
+<td width="300">The reference is the position only ("y" will be inserted to the right of the first character)
+</td></tr>
+<tr>
+<td>X:=["a"]&gt;"y";
+</td>
+<td>The reference is the string only ("y" will be inserted to the right of any "a")
+</td></tr>
+<tr>
+<td>X:=[1="a"]&gt;"y";
+</td>
+<td>The reference is the position and the string ("y" will be inserted to the right of the first character if the first character is "a")
+</td></tr></tbody></table>
+<dl><dt>In replacement rules, the part to be deleted may be omitted if the whole string is to be replaced</dt>
+<dd></dd></dl>
+<table cellpadding="2">
+
+<tbody><tr>
+<td width="150">PLR:="ABC":"XYZ";
+</td>
+<td>=
+</td>
+<td width="150">PLR:="XYZ"
+</td>
+<td>(ABC becomes XYZ)
+</td></tr></tbody></table>
+<dl><dt>In replacement rules, the part to be deleted may be represented by an interval of characters in the format [beginning-end]</dt>
+<dd></dd></dl>
+<table cellpadding="3">
+
+<tbody><tr>
+<td width="150">PLR:="B":"X";
+</td>
+<td>=
+</td>
+<td width="150">PLR:=[2-2]:"X";
+</td>
+<td>(ABC becomes AXC)
+</td></tr></tbody></table>
+<dl><dt>The symbol "^" is used for negation ("^MCL" means "not MCL")</dt>
+<dd></dd>
+<dd>NOU&amp;^MCL:="x":"y"; (If NOU and not MCL then replace "x" by "y")</dd>
+<dt>"&lt;&lt;" and "&gt;&gt;" add blank spaces<sup id="cite_ref-not_1-6" class="reference"><a href="#cite_note-not-1"><span class="cite-bracket">&#91;</span>1<span class="cite-bracket">&#93;</span></a></sup></dt>
+<dd>X:="a"&lt;&lt;"b" ("bc" becomes "a bc" and not "abc")</dd>
+<dt>A-rules do not generate new words but only modify the existing ones.</dt>
+<dd>The A-rule "FUT:="will"&lt;&lt;0;" (i.e, generate "will" as a prefix to the base form in case of future) will transform "love" into "will love", which will be considered, however, as a single word and not as a compound. Notice that this is the reason why compound tenses must never be generated through A-rules; otherwise, it would never be possible to generate other words (such as "not", "always", etc) between "will" and "love".</dd></dl>
+<div class="mw-heading mw-heading3"><h3 id="Common_mistakes">Common mistakes</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=A-rule&amp;veaction=edit&amp;section=8" title="Edit section: Common mistakes" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=A-rule&amp;action=edit&amp;section=8" title="Edit section&#39;s source code: Common mistakes">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<ul><li>nou:= "y"&lt;"z";  (WRONG: Tags are case sensitive)</li>
+<li>NNN:= "y"&lt;"z";  (WRONG: NNN is not defined in the tagset)</li>
+<li>NOUFEM:="y"&lt;"z"; (WRONG: Tags must be separated by "&amp;")</li>
+<li>NOU,FEM:="y"&lt;"z"; (WRONG: Tags must be separated by "&amp;")</li>
+<li>NOU &amp; FEM:="y"&lt;"z";  (WRONG: There can be no blank spaces between tags)</li>
+<li>X:=1&lt;1; (WRONG: The left side must always be a string in a prefixation rule)</li>
+<li>X:=1&gt;1; (WRONG: The right side must always be a string in a suffixation rule)</li>
+<li>X:=1; (WRONG: Replacement rules do not allow for numbers)</li>
+<li>X:=1:1; (WRONG: Replacement rules do not allow for numbers)</li></ul>
+<div class="mw-heading mw-heading2"><h2 id="Complex_A-rules">Complex A-rules</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=A-rule&amp;veaction=edit&amp;section=9" title="Edit section: Complex A-rules" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=A-rule&amp;action=edit&amp;section=9" title="Edit section&#39;s source code: Complex A-rules">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>Complex A-rules are formed from the combination of simple A-rules:
+</p>
+<ul><li>circumfixation (prefixation + suffixation), to add a prefix and a suffix at the same time</li>
+<li>prefixation + infixation, to add a prefix and a infix at the same time</li>
+<li>infixation + suffixation, to add an infix and a suffix at the same time</li>
+<li>prefixation + infixation + suffixation, to add a prefix, an infix and a suffix at the same time</li></ul>
+<div class="mw-heading mw-heading3"><h3 id="Syntax_2">Syntax</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=A-rule&amp;veaction=edit&amp;section=10" title="Edit section: Syntax" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=A-rule&amp;action=edit&amp;section=10" title="Edit section&#39;s source code: Syntax">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>Complex A-rules are formed by concatenating simple a-rules with ",":
+<br />
+<br />
+<b>circumfixation</b> 
+</p>
+<pre>CONDITION&#160;:= "ADDED" &lt; DELETED , DELETED &gt; "ADDED";
+</pre>
+<p><b>prefixation + infixation</b> 
+</p>
+<pre>CONDITION&#160;:= "ADDED" &lt; DELETED , DELETED &gt; "ADDED";
+</pre>
+<p><b>infixation + suffixation</b>
+</p>
+<pre>CONDITION&#160;:= DELETED &gt; "ADDED" , "DELETED" &gt; "ADDED";
+</pre>
+<p>etc.
+</p>
+<div class="mw-heading mw-heading3"><h3 id="Examples_2">Examples</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=A-rule&amp;veaction=edit&amp;section=11" title="Edit section: Examples" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=A-rule&amp;action=edit&amp;section=11" title="Edit section&#39;s source code: Examples">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<table border="1" align="center" cellpadding="2">
+<caption>Complex m-rules
+</caption>
+<tbody><tr>
+<th>RULE
+</th>
+<th>BEHAVIOR
+</th>
+<th>BEFORE
+</th>
+<th>AFTER
+</th></tr>
+<tr>
+<td width="100">X:="x"&lt;0, 0&gt;"y";
+</td>
+<td width="300">if X add "x" to the beginning and "y" to the end of the string
+</td>
+<td width="50">A
+</td>
+<td width="50"><b>x</b>A<b>y</b>
+</td></tr>
+<tr>
+<td>X:="x"&lt;0, "A":"y";
+</td>
+<td>if X add "x" to the beginning and replace "A" by "y"
+</td>
+<td>ABC
+</td>
+<td><b>xy</b>BC
+</td></tr>
+<tr>
+<td>X:="A":"y", 0&gt;"x";
+</td>
+<td>if X replace "A" by "y" and add "x" to the end of the string
+</td>
+<td>ABC
+</td>
+<td><b>y</b>BC<b>x</b>
+</td></tr>
+<tr>
+<td>X:="x"&lt;0, "A":"y", 0&gt;"z";
+</td>
+<td>if X add "x" to the beginning, replace "A" by "y" and add "z" to the end of the string
+</td>
+<td>ABC
+</td>
+<td><b>xy</b>BCz
+</td></tr></tbody></table>
+<div class="mw-heading mw-heading3"><h3 id="Observations_2">Observations</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=A-rule&amp;veaction=edit&amp;section=12" title="Edit section: Observations" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=A-rule&amp;action=edit&amp;section=12" title="Edit section&#39;s source code: Observations">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<dl><dt>Complex A-rules are also used to integrate different simple A-rules</dt>
+<dd></dd></dl>
+<table cellpadding="2" border="1" align="center">
+
+<tbody><tr>
+<td>ORD:="1"&gt;"1st";<br />ORD:="2"&gt;"2nd";<br />ORD:="3"&gt;"3rd";
+</td>
+<td>ORD:="1"&gt;"1st", "2"&gt;"2nd", "3"&gt;"3rd";
+</td></tr></tbody></table>
+<dl><dt>Actions are applied from left to right (i.e., order is important)</dt>
+<dd>PLR&#160;:= "s" &gt; "ses", "y" &gt; "ies";  (kiss &gt; kisses, city &gt; cities)</dd>
+<dd>PLR&#160;:= "y" &gt; "ies", "s" &gt; "ses";  (kiss &gt; kisses, city&gt;cities&gt;citieses)</dd></dl>
+<div class="mw-heading mw-heading2"><h2 id="Formal_syntax">Formal syntax</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=A-rule&amp;veaction=edit&amp;section=13" title="Edit section: Formal syntax" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=A-rule&amp;action=edit&amp;section=13" title="Edit section&#39;s source code: Formal syntax">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>A-rules comply with the following syntax:
+</p>
+<pre>&lt;A-RULE&gt;          &#160;::= &lt;CONDITION&gt; ":=" &lt;ACTION&gt; ("," &lt;ACTION&gt;)* ";"
+&lt;CONDITION&gt;       &#160;::= &lt;ATAG&gt;("&amp;"("^")?&lt;ATAG&gt;)*
+&lt;ATAG&gt;            &#160;::= {one of the tags defined in the <a href="/wiki/Tagset" title="Tagset">UNDLF Tagset</a>}
+&lt;ACTION&gt;          &#160;::= &lt;PREFIXATION&gt; | &lt;SUFFIXATION&gt; | &lt;INFIXATION&gt; | &lt;REPLACEMENT&gt;
+&lt;PREFIXATION&gt;     &#160;::= &lt;ADDED&gt;	 {"&lt;" | "&lt;&lt;"} 	(&lt;DELETED&gt;)?
+&lt;SUFFIXATION&gt;     &#160;::= (&lt;DELETED&gt;)? {"&gt;" | "&gt;&gt;"} 	&lt;ADDED&gt;
+&lt;INFIXATION&gt;      &#160;::= "["&lt;DELETED"]" "&gt;" &lt;ADDED&gt; | &lt;ADDED&gt; "&lt;" "["&lt;DELETED"]"
+&lt;REPLACEMENT&gt;     &#160;::= ( &lt;STRING&gt; ":" )? &lt;ADDED&gt; | "[" &lt;INTEGER&gt; "-" &lt;INTEGER&gt; "]" ":"  &lt;ADDED&gt;
+&lt;ADDED&gt;           &#160;::= &lt;STRING&gt; 
+&lt;DELETED&gt;         &#160;::= &lt;STRING&gt; | &lt;INTEGER&gt;  
+&lt;STRING&gt;          &#160;::= " " " [a..Z]+ " " "
+&lt;INTEGER&gt;         &#160;::= [0..9]+
+</pre>
+<p>where
+</p><p>&lt;a&gt; = a is a non-terminal symbol<br />
+"a" = a is a constant<br />
+a | b = a or b<br />
+{ a | b } = either a or b<br />
+(a)? = a can occur 0 or 1 time<br />
+(a)* = a can be repeated 0 or more times<br />
+(a)+ = a can be repeated 1 or more times<br />
+</p>
+<div class="mw-heading mw-heading2"><h2 id="Notes">Notes</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=A-rule&amp;veaction=edit&amp;section=14" title="Edit section: Notes" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=A-rule&amp;action=edit&amp;section=14" title="Edit section&#39;s source code: Notes">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<div class="mw-references-wrap"><ol class="references">
+<li id="cite_note-not-1"><span class="mw-cite-backlink">↑ <sup><a href="#cite_ref-not_1-0">1.0</a></sup> <sup><a href="#cite_ref-not_1-1">1.1</a></sup> <sup><a href="#cite_ref-not_1-2">1.2</a></sup> <sup><a href="#cite_ref-not_1-3">1.3</a></sup> <sup><a href="#cite_ref-not_1-4">1.4</a></sup> <sup><a href="#cite_ref-not_1-5">1.5</a></sup> <sup><a href="#cite_ref-not_1-6">1.6</a></sup></span> <span class="reference-text">This feature is not supported by the UNL<sup>dev</sup>.</span>
+</li>
+</ol></div>
+<!-- 
+NewPP limit report
+Cached time: 20260910153124
+Cache expiry: 86400
+Reduced expiry: false
+Complications: [show‐toc]
+CPU time usage: 0.027 seconds
+Real time usage: 0.028 seconds
+Preprocessor visited node count: 115/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/100
+Expensive parser function count: 0/100
+Unstrip recursion depth: 0/20
+Unstrip post‐expand size: 1688/5000000 bytes
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    0.000      1 -total
+-->
+
+<!-- Saved in parser cache with key u965818192_SLvgQ-l8z2_:pcache:404:|#|:idhash:canonical and timestamp 20260910153124 and revision id 11023. Rendering was triggered because: diff-page
+ -->
+</div>

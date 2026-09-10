@@ -1,0 +1,53 @@
+The '''UNLarium''' is a generation-driven framework, i.e., it was developed mainly to provide resources for generating natural language texts out of UNL documents. In that sense, dictionary entries should correspond to a '''translation''' of a given [[UW | Universal Word]] (UW) in a specific natural language. This means that you are not allowed to add entries at your will; you will have first to choose a project (a "corpus") and to address the entries appearing in that corpus. In order to avoid that the same UW can be addressed twice by different users, you will also have to "reserve" entries as '''assignments'''. For the time being, you may reserve up to 250 entries, to be treated in the period of one week, after which they will return to the main dictionary (and may be locked by other users). Additionally, only '''authors''' are allowed to reserve and to add entries. In order to become an author, you will have first to be approved in '''VALERIE''', the Virtual Learning Environment for UNL, which is the UNLarium sandbox. In VALERIE, you will find a very small corpus (''Le Petit Prince'') to be thoroughly addressed, and no special permission or assignment is required. 
+
+In order to facilitate the task of creating entries, UWs have been divided into 5 different categories ("adjectives", "adverbs", "nouns", "verbs" and "others"), each of which with a specific form. The forms can be found in the option '''Dictionary'''  and comprise 9 required fields, which are described below.
+
+== LEMMA ==
+It's the canonical form or citation form of a word, i.e. the word as it normally appears in ordinary dictionaries. In English, for instance, ''run'', ''runs'', ''ran'' and ''running'' are forms of the same lexeme, with ''run'' as the lemma. The lemma is normally the form of singular, for nouns; of masculine singular, for adjectives; and of infinitive, for verbs. The lemma can also be a compound ("skinhead" or "African-American") or a multi-word expression ("United States of America"), but it should be reduced to the inflectional part of the word in case of separable words ("take (sth) into account", to be represented as "take"). In this latter case, the separable part of the word ("into account") must be represented in the field SUBCATEGORIZATION RULES.
+
+== WORD FORMATION ==
+The word formation refers to the structure of the natural language word. The word can be:
+*a free morpheme (WRD), i.e., a regular word, such as "table", "beautiful", "yesterday", "give"; 
+*a multi-word expression (MTW), i.e., a word containing more than one stem, linked by hyphen ("African-American"), by blank spaces ("United States of America") or simply concatenated ("skinhead"); or 
+*a bound morpheme (SBW), i.e., a morpheme that cannot stand alone as an independent word (such as "writ", "-s", "un-").
+The word formation refers to the natural language word and not to the lemma. That's why the lemma "take", when standing for "take into account", is to be classified as a multi-word expression.
+
+== PART OF SPEECH ==
+The part of speech of the natural language word. The set of parts of speech is constrained by the class of the UW.
+
+== GENDER ==
+It's required for nouns in languages that grammaticalize gender. The gender can be:
+*masculine (MCL), such as "he";
+*feminine (FEM), such as "she";
+*neutral (NEU), such as "it";
+*common, i.e., masculine or feminine (MOF), such as the French "pianiste", whose gender varies according to the referent: "le pianiste" (MCL), in case of man; "la pianiste" (FEM), in case of woman;
+*variable, i.e., masculine and feminine (MAF), such as the French "après-midi", that is used both in masculine ("un après-midi") and in feminine ("une après-midi") form, without any semantic change.
+
+== INFLECTIONAL PARADIGM ==
+It should be informed always, even in the case of non-inflectional words, such as adverbs. There are two predefined values:
+*invariant (INV), for words that do not vary, i.e., that do not receive any inflection (such as adverbs); and
+*irregular (IRR), for words that do vary, but not according to any general set of rules (such as English irregular verbs).
+In the latter case, the inflectional rules should be informed in the field INFLECTIONAL RULES, below INFLECTIONAL PARADIGM.
+In all other cases - i.e., regular or quasi-regular words - the paradigms should be first created in the morphology module of the grammar in order to be available as an option to be selected. ([[Inflectional_paradigms|See how to create paradigms]])
+
+== INFLECTIONAL RULES ==
+They should be informed only in case of irregular words, i.e., in case of words that vary but not according to any general paradigm.
+
+== SUBCATEGORIZATION FRAME ==
+It should be informed always, even in the case of words whose valency is zero. There are two predefined values:
+*avalent (AVA), for words that do not require any syntactic argument (as most of adjectives, adverbs and nouns);
+*irregular (IRR), for words that do require a syntactic argument, but not according to any general subcategorization frame.
+In the latter case, the subcategorization rules should be informed in the field SUBCATEGORIZATION RULES, below SUBCATEGORIZATION FRAME.
+In all other cases, the subcategorization rules should be first created in the syntax module of the grammar in order to be available as an option to be selected. (See how to create subcategorization frames)
+
+== SUBCATEGORIZATION RULES ==
+They should be informed in two cases:
+*in case of separable multi-word expressions (such as "take into account");
+*in case of frame-specific words, i.e., words that require syntactic arguments, but not according to any subcategorization frame.
+
+== DESCRIPTIVE MORPHOLOGY ==
+The fields related to the descriptive morphology should be filled if and only if the lemma has not one of the default values, i.e.:
+*if the lemma is not the masculine singular of an adjective;
+*if the lemma is not the singular of a noun; or
+*if the lemma is not the infinitive of a verb.
+In all other cases, the descriptive morphology is not to be informed (it will be automatically generated out of the generative morphology rules).

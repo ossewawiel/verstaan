@@ -1,0 +1,29 @@
+'''Lexical category''' is the topmost level of the part of speech. It indicates the general morphological, syntactic and semantic behaviour of a lexical item.
+
+== Natural Language ==
+The UNL<sup>arium</sup> acknowledges 12 different lexical categories in natural languages:
+
+{{#tree:id=lex|openlevels=0|root=Lexical Categories|
+*[[adjectives]] (J): (adjectives and participles)
+*[[adpositions]] (P): (prepositions, postpositions, circumpositions)
+*[[adverbs]] (A): (specifier adverbs, adjunct adverbs, conjunts and disjuncts)
+*[[affixes]] (F): (prefixes, infixes, suffixes and circumfixes)
+*[[conjunctions]] (C): (subordinating and coordinating conjunctions)
+*[[determiners]] (D): (articles, quantifiers, possessives and demonstratives)
+*[[inflections]] (I): (auxiliary and modal verbs)
+*[[nouns]] (N): (common nouns and proper nouns)
+**proper nouns (E): (proper nouns)
+*[[numerals]] (U): (cardinal, ordinal, multiplicative, partitive, distributive)
+*[[pronouns]] (R): (demonstrative, personal, possessive, indefinite, interrogative, reflexive, reciprocal, relative, emphatic)
+*[[verbs]] (V): (full verb and copula)
+*[[others]] (O): (particles, classifiers, interjections)
+}}
+
+== UNL ==
+As UWs represent only open-class items, there are only four lexical categories in UNL:
+{{#tree:id=tagset|openlevels=0|root=Lexical Category (LEX)|
+**'''Adjectival UWs''' (J) designate attributes. 
+**'''Adverbial UWs''' (A) designate circumstances.
+**'''Nominal UWs''' (N) designate things.
+**'''Verbal UWs''' (V) designate occurrence or performance of an action, or the existence of a state or condition.
+}}

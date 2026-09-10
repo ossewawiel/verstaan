@@ -1,0 +1,166 @@
+<div class="mw-content-ltr mw-parser-output" lang="en" dir="ltr"><p>Numbers are always expressed, in UNL, as digits. The UNLization process is then the process of transforming numerals ("one", "twenty-one", "first", "two thirds") into the corresponding digits ("1", "21", "1.@ordinal", "2/3"). The NLization process, on the other hand, may keep the digits as they are, i.e., there is nothing to be done concerning the NLization of numerals (the UNL "2" may be generated, in English, as "2", instead of "two").
+</p>
+<div id="toc" class="toc" role="navigation" aria-labelledby="mw-toc-heading"><input type="checkbox" role="button" id="toctogglecheckbox" class="toctogglecheckbox" style="display:none" /><div class="toctitle" lang="en" dir="ltr"><h2 id="mw-toc-heading">Contents</h2><span class="toctogglespan"><label class="toctogglelabel" for="toctogglecheckbox"></label></span></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#UNLization"><span class="tocnumber">1</span> <span class="toctext">UNLization</span></a>
+<ul>
+<li class="toclevel-2 tocsection-2"><a href="#UNLization_steps"><span class="tocnumber">1.1</span> <span class="toctext">UNLization steps</span></a>
+<ul>
+<li class="toclevel-3 tocsection-3"><a href="#Normalization"><span class="tocnumber">1.1.1</span> <span class="toctext">Normalization</span></a></li>
+<li class="toclevel-3 tocsection-4"><a href="#Transformation"><span class="tocnumber">1.1.2</span> <span class="toctext">Transformation</span></a></li>
+<li class="toclevel-3 tocsection-5"><a href="#Examples"><span class="tocnumber">1.1.3</span> <span class="toctext">Examples</span></a>
+<ul>
+<li class="toclevel-4 tocsection-6"><a href="#twenty"><span class="tocnumber">1.1.3.1</span> <span class="toctext">twenty</span></a></li>
+<li class="toclevel-4 tocsection-7"><a href="#twenty-one"><span class="tocnumber">1.1.3.2</span> <span class="toctext">twenty-one</span></a></li>
+<li class="toclevel-4 tocsection-8"><a href="#one_hundred"><span class="tocnumber">1.1.3.3</span> <span class="toctext">one hundred</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-9"><a href="#NLization"><span class="tocnumber">2</span> <span class="toctext">NLization</span></a></li>
+</ul>
+</div>
+
+<div class="mw-heading mw-heading2"><h2 id="UNLization">UNLization</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=English_grammar/Numbers&amp;veaction=edit&amp;section=1" title="Edit section: UNLization" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=English_grammar/Numbers&amp;action=edit&amp;section=1" title="Edit section&#39;s source code: UNLization">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>In order to UNLize numerals, you have to consider the following:
+</p>
+<ul><li>Cardinals, decimals, fractions and isolated digits are always represented as digits, without any thousand separator, and with the period as the decimal separator:
+<dl><dd>seventeen = 17</dd>
+<dd>seventy-six = 76</dd>
+<dd>one thousand one hundred forty-four = 1144</dd>
+<dd>two million three hundred forty-four thousand five hundred fifty-five = 2344555</dd>
+<dd>one point two three = 1.23</dd>
+<dd>one half = 1/2</dd>
+<dd>six sevenths = 6/7</dd>
+<dd>two two two = 222</dd></dl></li>
+<li>Ordinals must be represented in UNL as digits, without any thousand separator, followed by the attribute @ordinal:
+<dl><dd>1st = 1.@ordinal</dd>
+<dd>first = 1.@ordinal</dd>
+<dd>thirty-second = 32.@ordinal</dd></dl></li></ul>
+<div class="mw-heading mw-heading3"><h3 id="UNLization_steps">UNLization steps</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=English_grammar/Numbers&amp;veaction=edit&amp;section=2" title="Edit section: UNLization steps" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=English_grammar/Numbers&amp;action=edit&amp;section=2" title="Edit section&#39;s source code: UNLization steps">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<div class="mw-heading mw-heading4"><h4 id="Normalization">Normalization</h4><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=English_grammar/Numbers&amp;veaction=edit&amp;section=3" title="Edit section: Normalization" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=English_grammar/Numbers&amp;action=edit&amp;section=3" title="Edit section&#39;s source code: Normalization">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>The first issue in numbers is to prepare the input for transformation. In English, this is done by replacing the word "a" by the digit "1" ("a thousand" &gt; "1 thousand"); by eliminating number separators ("twenty-one" &gt; "twenty one"); and so on, as illustrated by the rules below:
+</p>
+<dl><dt>({SHEAD|CHEAD|^BLK,^DIGIT},%x)([a],%z)({"hundred"|"thousand"|"million"|"billion"|"trillion"},%y):=(%x)("1",[1],[[1]],LEX=U,POS=CDN,DIGIT,%w)(%y);</dt>
+<dd>Replaces the word "a" by the digit "1" ("a thousand" &gt; "1 thousand")</dd>
+<dt>(DIGIT,%x)([point],%y)(DIGIT,%z):=(DIGIT,%x)(".",[[.]],PERIOD,%w)(DIGIT,%z); ("one point five" &gt; "one . five")</dt>
+<dd>Replaces words for symbols by their corresponding symbols</dd></dl>
+<div class="mw-heading mw-heading4"><h4 id="Transformation">Transformation</h4><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=English_grammar/Numbers&amp;veaction=edit&amp;section=4" title="Edit section: Transformation" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=English_grammar/Numbers&amp;action=edit&amp;section=4" title="Edit section&#39;s source code: Transformation">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>After the normalization, the input is processed in order to convert natural language entries into digits. We have to consider the following cases:
+</p>
+<dl><dt>Simple cardinals ("zero", "eleven")</dt>
+<dd>They will be automatically converted into digits, because their corresponding entries are in the dictionary.</dd>
+<dt>Round cardinals ("twenty", "one thousand", "one million", "one trillion", etc)</dt>
+<dd>We have to add the missing zeros. The word [twenty], for instance, is linked to the UW "2"; the words [hundred], [thousand], [million], [billion] and [trillion] have been linked to the UW "". For instance: the input "one million" requires 6 zeros after the "1".</dd>
+<dt>Non-round cardinals ("twenty-three", "two hundred fifty-five")</dt>
+<dd>We have to represent the correspnding digits and fill in the missing slots. For instance: the input "one hundred and one" requires us to add a zero between two "1".</dd>
+<dt>Simple cardinals ("first", "second")</dt>
+<dd>They will be automatically converted into digits + @ordinal, because their corresponding entries are in the dictionary.</dd>
+<dt>Compound and complex ordinals</dt>
+<dd>The will be processed by rules taking the ordinal suffixes ("st","nd","rd" and "th") into account:
+<ul><li>({DIGIT|CDN},%x)([th]):=(%x,ORD,att=@ordinal); ("11th" &gt; 11.@ordinal, "eleventh" &gt; 11.@ordinal)</li>
+<li>(ORD,%x)([s]):=(%x);</li></ul></dd></dl>
+<dl><dt>Fixed fractions ("one half", "one quarter")</dt>
+<dd>Since they are very specific, we have special rules for them in the grammar:
+<ul><li>(DIGIT,CDN,%x)({[half]|[halves]},%y):=(%x)("2",[2],[[2]],U,DIGIT,ORD,%z);</li>
+<li>(DIGIT,CDN,%x)({[quarter]|[quarters]},%y):=(%x)("4",[4],[[4]],U,DIGIT,ORD,%z);</li></ul></dd></dl>
+<dl><dt>Other fractions</dt>
+<dd>They will be handled by rules such as:
+<ul><li>(DIGIT,CDN,%x)("/",%z)(DIGIT,ORD,%y):=(%x&amp;%z&amp;%y,-CDN,-ORD,+PTN); one fifth &gt; 1/5</li></ul></dd></dl>
+<div class="mw-heading mw-heading4"><h4 id="Examples">Examples</h4><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=English_grammar/Numbers&amp;veaction=edit&amp;section=5" title="Edit section: Examples" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=English_grammar/Numbers&amp;action=edit&amp;section=5" title="Edit section&#39;s source code: Examples">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<div class="mw-heading mw-heading5"><h5 id="twenty">twenty</h5><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=English_grammar/Numbers&amp;veaction=edit&amp;section=6" title="Edit section: twenty" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=English_grammar/Numbers&amp;action=edit&amp;section=6" title="Edit section&#39;s source code: twenty">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>INPUT (ENG): twenty
+OUTPUT (UNL): 20
+Dictionary:
+</p>
+<ul><li>[twenty]{}"2" (LEX=U,POS=CDN,DIGIT,DOZEN)&lt;eng,255,0&gt;;</li></ul>
+<p>T-grammar:
+</p>
+<ol><li>1({SHEAD|CHEAD|^BLK},%z)(DIGIT,DOZEN,%x)({^DIGIT,^BLK,^PUT,^[and]|"thousand"|"million"|"billion"|"trillion"|STAIL|CTAIL},%y):=(%z)(%x)([[0]],[0],"0",DIGIT)(%y);</li>
+<li>2({SHEAD|CHEAD|^BLK},%z)(DIGIT,DOZEN,%x)(DIGIT,%y):=(%z)(%x&amp;%y,-DOZEN,+00);</li></ol>
+<p>Trace:
+</p>
+<ul><li>INPUT: "twenty"</li>
+<li>STATE 0: ("twenty",[twenty],[[2]],LEX=U,POS=CDN,DIGIT,DOZEN) (after tokenization)</li>
+<li>STATE 1: ("twenty",[twenty],[[2]],LEX=U,POS=CDN,DIGIT,DOZEN)("0",[0],[[0]],DIGIT) (after rule #1)</li>
+<li>STATE 2: ("twenty0",[twenty0],[[20]][,LEX=U,POS=CDN,DIGIT,00]) (after rule #2)</li>
+<li>OUTPUT: "20"</li></ul>
+<p>The first rule transforms [twenty] into [twenty][0] if [twenty] is not followed by any digit. The second rule merges the dozen with the unit. Note that the merge (&amp;) rules merges everything: strings ("twenty0"), natural language words ([twenty0]), UWs (<a href="/wiki/index.php?title=20&amp;action=edit&amp;redlink=1" class="new" title="20 (page does not exist)">20</a>) and features. The output of IAN is always the UW.
+</p>
+<div class="mw-heading mw-heading5"><h5 id="twenty-one">twenty-one</h5><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=English_grammar/Numbers&amp;veaction=edit&amp;section=7" title="Edit section: twenty-one" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=English_grammar/Numbers&amp;action=edit&amp;section=7" title="Edit section&#39;s source code: twenty-one">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>INPUT (ENG): twenty-one
+OUTPUT (UNL): 21
+Dictionary:
+</p>
+<ul><li>[twenty]{}"2" (LEX=U,POS=CDN,DIGIT,DOZEN)&lt;eng,255,0&gt;;</li>
+<li>[one]{}"1" (LEX=U,POS=CDN,DIGIT)&lt;eng,255,0&gt;;</li>
+<li>[-]{}""(PUT,HYPHEN)&lt;eng,0,0&gt;;</li></ul>
+<p>T-grammar:
+</p>
+<ol><li>(DIGIT,%x)(HYPHEN)(DIGIT,%y):=(%x)(%y);</li>
+<li>({SHEAD|CHEAD|^BLK},%z)(DIGIT,DOZEN,%x)(DIGIT,%y):=(%z)(%x&amp;%y,-DOZEN,+00);</li></ol>
+<p>Trace:
+</p>
+<ul><li>INPUT: "twenty-one"</li>
+<li>STATE 0: ("twenty",[twenty],[[2]],LEX=U,POS=CDN,DIGIT,DOZEN)("-",[-],[[]],PUT,HYPHEN)("one",[one],[[1]],LEX=U,POS=CDN,DIGIT) (after *tokenization)</li>
+<li>STATE 1: ("twenty",[twenty],[[2]],LEX=U,POS=CDN,DIGIT,DOZEN)("one",[one],[[1]],LEX=U,POS=CDN,DIGIT)  (after rule #1, which deleted the hyphen)</li>
+<li>STATE 2: ("twentyone",[twentyone],[[21]],LEX=U,POS=CDN,DIGIT,00]) (after rule #2)</li>
+<li>OUTPUT: "21"</li></ul>
+<div class="mw-heading mw-heading5"><h5 id="one_hundred">one hundred</h5><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=English_grammar/Numbers&amp;veaction=edit&amp;section=8" title="Edit section: one hundred" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=English_grammar/Numbers&amp;action=edit&amp;section=8" title="Edit section&#39;s source code: one hundred">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>INPUT (ENG): two hundred
+OUTPUT (UNL): 100
+Dictionary:
+</p>
+<ul><li>[hundred]{}"" (LEX=U,POS=CDN)&lt;eng,255,0&gt;;</li>
+<li>[two]{}"2" (LEX=U,POS=CDN,DIGIT)&lt;eng,255,0&gt;;</li>
+<li>[ ]{}""(BLK)&lt;eng,0,0&gt;;</li></ul>
+<p>T-grammar:
+</p>
+<ol><li>(BLK):=;</li>
+<li>({SHEAD|CHEAD|^BLK},%z)(DIGIT,HUNDRED,%x)({^DIGIT,^BLK,^PUT,^[and]|DIGIT,^DOZEN,^00|STAIL|CTAIL},%y):=(%z)(%x)([[0]],[0],"0",DOZEN,DIGIT)(%y);</li>
+<li>({SHEAD|CHEAD|^BLK},%z)(DIGIT,HUNDRED,%x)(DIGIT,00,%y):=(%z)(%x&amp;%y,-HUNDRED,-00,+000);</li>
+<li>(DIGIT,%x)("hundred"):=(%x,+HUNDRED);</li>
+<li>({SHEAD|CHEAD|^BLK},%z)(DIGIT,DOZEN,%x)({^DIGIT,^BLK,^PUT,^[and]|"thousand"|"million"|"billion"|"trillion"|STAIL|CTAIL},%y):=(%z)(%x)([[0]],[0],"0",DIGIT)(%y);</li>
+<li>({SHEAD|CHEAD|^BLK},%z)(DIGIT,DOZEN,%x)(DIGIT,%y):=(%z)(%x&amp;%y,-DOZEN,+00);</li></ol>
+<ul><li>INPUT: "two hundred"</li>
+<li>STATE 0: ("two",[two],[[2]],LEX=U,POS=CDN,DIGIT)(" ",[ ],[[]],BLK)("hundred",[hundred],[[]],LEX=U,POS=CDN) (after tokenization)</li>
+<li>STATE 1: ("two",[two],[[2]],LEX=U,POS=CDN,DIGIT)("hundred",[hundred],[[]],LEX=U,POS=CDN) (after rule #1, which deletes the blank space)</li>
+<li>STATE 2: ("two",[two],[[2]],LEX=U,POS=CDN,DIGIT,HUNDRED)(after rule #4, which copied the feature HUNDRED to the first digit and deleted the node "HUNDRED")</li>
+<li>STATE 3: ("two",[two],[[2]],LEX=U,POS=CDN,DIGIT,HUNDRED)([[0]],[0],"0",DOZEN,DIGIT) (after rule #2, which added a 0 after one hundred)</li>
+<li>STATE 4: ("two",[two],[[2]],LEX=U,POS=CDN,DIGIT)([[0]],[0],"0",DOZEN,DIGIT)([[0]],[0],"0",DIGIT) (after rule #5, which added a 0 after the DOZEN)</li>
+<li>STATE 5: ("two",[two],[[2]],LEX=U,POS=CDN,DIGIT)([[00]],[00],DIGIT,00) (after rule #6, which merged the dozen and the digit)</li>
+<li>STATE 6: ("two00",[two00],[[200]],LEX=U,POS=CDN,DIGIT,000)(after rule #7, which merged the hundreds and the dozen)</li>
+<li>OUTPUT: "200"</li></ul>
+<div class="mw-heading mw-heading2"><h2 id="NLization">NLization</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=English_grammar/Numbers&amp;veaction=edit&amp;section=9" title="Edit section: NLization" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=English_grammar/Numbers&amp;action=edit&amp;section=9" title="Edit section&#39;s source code: NLization">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>As digit UWs can be generated as digits in natural language, the NLization of numbers does not require any action for cardinals, fractions and decimals. In case of ordinals, it's important to replace @ordinal by the corresponding abbreviation. In English:
+</p>
+<ul><li>("/\d*1/",@ordinal,%x):=(%x,-@ordinal)("st",[st],[[]]); add "st" to the ordinals ending in 1</li>
+<li>("/\d*2/",@ordinal,%x):=(%x,-@ordinal)("nd",[nd],[[]]); add "nd" to the ordinals ending in 2</li>
+<li>("/\d*3/",@ordinal,%x):=(%x,-@ordinal)("rd",[rd],[[]]); add "rd" to the ordinals ending in 3</li>
+<li>("/\d*[4567890]/",@ordinal,%x):=(%x,-@ordinal)("th",[th],[[]]); add "th" to the ordinals ending in 4,5,6,7,8,9 or 0</li></ul>
+<!-- 
+NewPP limit report
+Cached time: 20260909233632
+Cache expiry: 86400
+Reduced expiry: false
+Complications: [show‐toc]
+CPU time usage: 0.008 seconds
+Real time usage: 0.008 seconds
+Preprocessor visited node count: 178/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/100
+Expensive parser function count: 0/100
+Unstrip recursion depth: 0/20
+Unstrip post‐expand size: 2285/5000000 bytes
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    0.000      1 -total
+-->
+
+<!-- Saved in parser cache with key u965818192_SLvgQ-l8z2_:pcache:619:|#|:idhash:canonical and timestamp 20260909233632 and revision id 14522. Rendering was triggered because: diff-page
+ -->
+</div>

@@ -1,0 +1,128 @@
+The UNL Olympiad is a series of competitions organised by the UNDL Foundation in order to foster the development of UNL-driven resources (dictionaries, grammars and corpora). The second edition of the Olympiad is devoted to the development of grammars for the corpus [[UC-A1]]. The competition is open to any participant, and the deadline is July 1st, 2013. 
+
+== Important dates ==
+*<strike>July 1st, 2013: Deadline for submitting the files</strike>
+*<strike>July 15th, 2013: Results</strike>
+
+== Modalities ==
+The competition is organised in two modalities:
+*Best UNLization Grammar for <LANGUAGE>
+*Best NLization Grammar for <LANGUAGE>
+Where <LANGUAGE> is one of the languages participating in this Olympiad (see the complete list below).<br />
+Candidates may participate in one or two modalities, i.e., they may work with the UNLization grammar, with the NLization grammar, or with both.<br />
+Candidates may also participate in one or more languages, provided that they belong to the list below.
+
+== Prizes ==
+Prizes are awarded to the best grammars of each modality (UNLization and NLization) for each language<ref>This means that for each language there will be awarded up to 6 prizes: Best UNLization Grammar, Second Best UNLization Grammar, Third Best UNLization Grammar, Best NLization Grammar, Second Best UNLization Grammar and Third Best NLization Grammar</ref>:
+*1st place: Gold Medal
+*2nd place: Silver Medal
+*3rd place: Bronze Medal
+Additionally, the 10 best UNLization grammars and the 10 best NLization grammars will be awarded with USD500.00 each.
+
+== Corpus ==
+*[http://www.unlweb.net.br/resources/corpus/UCA1/UCA1_eng.txt UC-A1 in English], to be (manually) translated to your target language in order to be used as the input for the UNLization process (with [[IAN]])
+*[http://www.unlweb.net.br/resources/corpus/UCA1/UCA1_unl.txt UC-A1 in UNL], to be used, "as is" (i.e., without any change), as the input for the NLization process (with [[EUGENE]])
+
+== Instructions ==
+Manuals, instructions, examples and samples of grammars for the corpus UCA1 may be found at [[UCA1]].
+
+== Registration ==
+Candidates must upload their files to http://www.unlweb.net.br/olympiad/registration before 23:59:59 (UTC) of July 1st, 2013.
+*For the participants working with the UNLization grammar (IAN):
+**NL corpus, with the human translation, to the target language, of the sentences of the Corpus UC-A1;
+**NL>UNL dictionary, with the natural language analysis dictionary used to UNLize the translated version of the Corpus UC-A1, including the Default Dictionary, if used;
+**NL>UNL t-grammar, with the transformation grammar used to UNLize the translated version of the Corpus UC-A1, including the Normalization and the Default Grammar, if used;
+**NL>UNL d-grammar, with the disambiguation grammar used to UNLize the translated version of the Corpus UC-A1;
+**NL>UNL output, with the output provided by IAN, for all sentences of the NL corpus, at the trace level "none";
+**The [[F-measure]] for the actual output against the expected output ([http://www.unlweb.net.br/resources/corpus/UCA1/UCA1_unl.txt UCA1_unl.txt); 
+*For the participants working with the NLization grammar (EUGENE)
+**NL corpus, with the human translation, to the target language, of the sentences of the Corpus UC-A1;
+**UNL>NL dictionary, with the natural language generation dictionary used to NLize the UNL version of Corpus UC-A1, including the Default Dictionary, if used;
+**UNL>NL t-grammar, with the transformation grammar used to NLize the UNL version of the Corpus UC-A1, including the Normalization and the Default Grammar, if used;
+**UNL>NL d-grammar, with the disambiguation grammar used to NLize the UNL version of the Corpus UC-A1;
+**UNL>NL output, with the output provided by EUGENE, for all sentences of the UNL corpus, at the trace level "none";
+**The [[F-measure]] for the actual output against the expected output (i.e., the NL Corpus),
+All files must be provided in UTF-8.<br />
+The [[F-measure]] may be calculated at UNLWEB>UNLARIUM>GRAMMAR>[YOUR LOCALE]>F-Measure.<br />
+In order to obtain the output, run IAN (for NL>UNL) or EUGENE (for UNL>NL) with the option "range" (available at the top menu of the right hand window) and export the result.
+
+== Requisites ==
+The competition is free and open to any participant, but it is limited to the set of languages described below.<br />
+The files must comply with the following requisites:
+*The corpus must comply with the translation standards of the target language and should not be artificially translated in order to provoke better results. 
+*The input corpus used in UNLization will be used as the reference corpus used to evaluate the NLization output.
+*The dictionary files must comply with the [[Dictionary Specs]] and may only bring features present in the [[Tagset]]. They should not contain temporary words. 
+*The grammar files must comply with the [[Grammar Specs]] and must be as generic possible. They should not target the specific sentences of the corpus, but the general structures presented there. 
+*The [[F-measure]] of the grammars must be equal or greater than 0.8.<ref>The F-measure may be calculate at UNLWEB>UNLARIUM>GRAMMAR>[LOCALE]>F-MEASURE</ref>
+*The files must be original. Grammars whose similarity proves to go beyond any reasonable doubt will be discarded, unless provided by the same author (for different languages).
+
+== Evaluation ==
+Grammars will be evaluated and ranked according to the following criteria:
+*Best [[F-measure]]
+*Scalability (i.e., extendibility, or the capacity of being reused to other corpora), in case of grammars with the same F-Measure
+*Date of submission, in case of grammars with the same F-Measure and equally scalable
+
+== Languages ==
+The II UNL Olympiad will be dedicated to the development of grammars for the following languages<ref>The choice of the languages was motivated by three criteria: 1) Languages for which we do not have the basic grammars yet; 2) Languages that have participated in recent UNL Schools; and 3) Languages that have already started the project MIR-A1.</ref> 
+*Afrikaans
+*Armenian
+*Assamese
+*Bengali
+*Bulgarian (NLization only)
+*Chinese
+*Croatian
+*Estonian
+*German
+*Greek (Modern)
+*Gujarati
+*Hindi
+*Indonesian
+*Japanese
+*Kannada
+*Kashmiri
+*Khmer
+*Laotian
+*Latin
+*Malay
+*Malayalam
+*Manipuri
+*Marathi
+*Nepali
+*Oriya (NLization only)
+*Persian
+*Punjabi
+*Sanskrit
+*Serbian
+*Sindhi
+*Sinhala
+*Slovenian
+*Swahili
+*Swedish
+*Tamil
+*Telugu
+*Thai
+*Turkish
+*Vietnamese
+
+Candidates may participate in one or more languages above.
+
+== General Results ==
+The prize of USD500.00 will be awarded to the 20 grammars below:
+*10 Best UNLization Grammars<ref name="A">One per language, according to the best F-measure and, in case of the same F-measure for the same language, according to the earliest submission date.</ref>:
+[[File:2O_results2.png]]
+<br />
+*10 Best NLization Grammars<ref name="A"/>:
+[[File:2O_results3.png]]
+
+== Results per Language ==
+All the grammars submitted whose F-measure > 0.800.<br /><br />
+[[File:2O_results1.png]]
+
+== Files ==
+The files provided by each participant have been uploaded to the UNLarium and may be exported from <nowiki>UNLARIUM>GRAMMAR>[LOCALE]>GRAMMARS</nowiki>.
+
+== Certificates ==
+Certificates of Participation are available at the UNLWEB>CERTIFICATES.
+
+== Notes ==
+<references />

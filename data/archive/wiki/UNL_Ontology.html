@@ -1,0 +1,130 @@
+<div class="mw-content-ltr mw-parser-output" lang="en" dir="ltr"><p>The <b>UNL Ontology</b>, formerly known as the UW System, is a tree-like structure where UWs are interconnected through hierarchical relations: icl (is-a-kind-of) and iof (is-an-instance-of). Differently from the <a href="/wiki/UNL_Knowledge_Base" title="UNL Knowledge Base">UNL Knowledge Base</a>, which comprises any relation necessary to define a given UW, the UNL Ontology contains only <b>monotonic</b> relations, i.e., relations that preserve the features of their arguments, and that may be used for inheritance.<br /><br />
+The UNL Ontology may be provided in two different formats:
+</p>
+<ul><li>Extended, in XML; or</li>
+<li>Simplified, as a set of <a href="/wiki/Grammar_Specs#Disambiguation_Rules" class="mw-redirect" title="Grammar Specs">network disambiguation rules</a></li></ul>
+<p><br />
+</p>
+<div id="toc" class="toc" role="navigation" aria-labelledby="mw-toc-heading"><input type="checkbox" role="button" id="toctogglecheckbox" class="toctogglecheckbox" style="display:none" /><div class="toctitle" lang="en" dir="ltr"><h2 id="mw-toc-heading">Contents</h2><span class="toctogglespan"><label class="toctogglelabel" for="toctogglecheckbox"></label></span></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Extended_format"><span class="tocnumber">1</span> <span class="toctext">Extended format</span></a>
+<ul>
+<li class="toclevel-2 tocsection-2"><a href="#XML_Schema"><span class="tocnumber">1.1</span> <span class="toctext">XML Schema</span></a></li>
+<li class="toclevel-2 tocsection-3"><a href="#Example"><span class="tocnumber">1.2</span> <span class="toctext">Example</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-4"><a href="#Simplified_format"><span class="tocnumber">2</span> <span class="toctext">Simplified format</span></a>
+<ul>
+<li class="toclevel-2 tocsection-5"><a href="#Examples"><span class="tocnumber">2.1</span> <span class="toctext">Examples</span></a></li>
+</ul>
+</li>
+</ul>
+</div>
+
+<div class="mw-heading mw-heading2"><h2 id="Extended_format">Extended format</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=UNL_Ontology&amp;veaction=edit&amp;section=1" title="Edit section: Extended format" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=UNL_Ontology&amp;action=edit&amp;section=1" title="Edit section&#39;s source code: Extended format">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>UNL Ontology entries in extended format must have the following structure:
+</p>
+<pre>&lt;relation name="RNAME" type="RTYPE" frequency="RFREQ"&gt;
+  &lt;source id="SID" attribute="ATT" lang="UNL" frequency="SFREQ" class="SCLASS"&gt;SOURCE&lt;/source&gt;
+  &lt;target id="TID" attribute="ATT" lang="UNL" frequency="TFREQ" class="TCLASS"&gt;TARGET&lt;/target&gt;
+&lt;/relation&gt;
+</pre>
+<p>Where:<br />
+RNAME is either "icl" (is-a-kind-of) or "iof" (is-an-instance-of);<br />
+RTYPE is the type of the existing relation<br />
+RFREQ is either 0 (false) or 1 (true);<br />
+SFREQ is the frequency of the SOURCE in the corpus;<br />
+TFREQ is the frequency of the TARGET in the corpus;<br />
+SID is a number used to identify the SOURCE;<br />
+TID is a number used to identify the TARGET;<br />
+ATT is one of the existing UNL attributes ("entry", "past", etc);<br />
+SCLASS is the general class of the SOURCE;<br />
+TCLASS is the general class of the TARGET;<br />
+SOURCE is the source node of the UNL relation; <br />
+TARGET is the target node of the UNL relation; <br />
+</p>
+<div class="mw-heading mw-heading3"><h3 id="XML_Schema">XML Schema</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=UNL_Ontology&amp;veaction=edit&amp;section=2" title="Edit section: XML Schema" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=UNL_Ontology&amp;action=edit&amp;section=2" title="Edit section&#39;s source code: XML Schema">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<pre>&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" version="1.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+ &lt;xsd:element name="ontology"&gt;
+   &lt;xsd:complexType&gt;
+     &lt;xsd:sequence&gt;
+       &lt;xsd:element maxOccurs="unbounded" name="relation"&gt;
+         &lt;xsd:complexType&gt;
+           &lt;xsd:sequence&gt;
+             &lt;xsd:element name="source"&gt;
+               &lt;xsd:complexType&gt;
+                 &lt;xsd:attribute name="id" type="xsd:unsignedLong" use="required" /&gt;
+                 &lt;xsd:attribute name="attribute" type="xsd:string" use="optional" /&gt;
+                 &lt;xsd:attribute name="lang" type="xsd:string" use="optional" /&gt;
+                 &lt;xsd:attribute name="frequency" type="xsd:int" use="optional"/&gt;
+                 &lt;xsd:attribute name="class" type="xsd:string" use="optional"/&gt;
+               &lt;/xsd:complexType&gt;
+             &lt;/xsd:element&gt;
+             &lt;xsd:element name="target"&gt;
+               &lt;xsd:complexType&gt;
+                 &lt;xsd:attribute name="id" type="xsd:unsignedLong" use="required"/&gt;
+                 &lt;xsd:attribute name="attribute" type="xsd:string" use="optional" /&gt;
+                 &lt;xsd:attribute name="lang" type="xsd:string" use="optional"/&gt;
+                 &lt;xsd:attribute name="frequency" type="xsd:int" use="optional"/&gt;
+                 &lt;xsd:attribute name="class" type="xsd:string" use="optional"/&gt;
+               &lt;/xsd:complexType&gt;
+             &lt;/xsd:element&gt;
+           &lt;/xsd:sequence&gt;
+           &lt;xsd:attribute name="name" type="xsd:string" use="required"/&gt;
+           &lt;xsd:attribute name="type" type="xsd:string" use="optional"/&gt;
+           &lt;xsd:attribute name="frequency" type="xsd:int" use="optional"/&gt;
+         &lt;/xsd:complexType&gt;
+       &lt;/xsd:element&gt;
+     &lt;/xsd:sequence&gt;
+   &lt;/xsd:complexType&gt;
+ &lt;/xsd:element&gt;
+&lt;/xsd:schema&gt;
+</pre>
+<div class="mw-heading mw-heading3"><h3 id="Example">Example</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=UNL_Ontology&amp;veaction=edit&amp;section=3" title="Edit section: Example" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=UNL_Ontology&amp;action=edit&amp;section=3" title="Edit section&#39;s source code: Example">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<pre>&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ontology&gt;
+ &lt;relation name="icl" frequency="1"&gt;
+  &lt;source id="410" attribute="entry" lang="UNL" frequency="20" class="nou"&gt;100001930&lt;/source&gt;
+  &lt;target id="2243" lang="UNL" frequency="2" class="nou"&gt;100001740&lt;/target&gt;
+ &lt;/relation&gt;
+&lt;/ontology&gt;
+</pre>
+<div class="mw-heading mw-heading2"><h2 id="Simplified_format">Simplified format</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=UNL_Ontology&amp;veaction=edit&amp;section=4" title="Edit section: Simplified format" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=UNL_Ontology&amp;action=edit&amp;section=4" title="Edit section&#39;s source code: Simplified format">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>UNL Ontology entries in simplified format must have the structure of <a href="/wiki/Grammar_Specs#Disambiguation_Rules" class="mw-redirect" title="Grammar Specs">network disambiguation rules</a>, as follows:
+</p>
+<pre>RELATION(SOURCE;TARGET)=DC;
+</pre>
+<p>Where:<br />
+RELATION is either "icl" or "iof";<br />
+SOURCE is the source UW of the UNL relation;<br />
+TARGET is the target UW of the UNL relation; <br />
+DC is either 0 (false) or 1 (true)<br />
+</p>
+<div class="mw-heading mw-heading3"><h3 id="Examples">Examples</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=UNL_Ontology&amp;veaction=edit&amp;section=5" title="Edit section: Examples" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=UNL_Ontology&amp;action=edit&amp;section=5" title="Edit section&#39;s source code: Examples">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>icl(&lt;[[100001930]];[[100001740]])=1; (= a physical entity is a kind of entity)<br />
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20260909202710
+Cache expiry: 86400
+Reduced expiry: false
+Complications: [show‐toc]
+CPU time usage: 0.004 seconds
+Real time usage: 0.004 seconds
+Preprocessor visited node count: 47/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/100
+Expensive parser function count: 0/100
+Unstrip recursion depth: 0/20
+Unstrip post‐expand size: 2132/5000000 bytes
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    0.000      1 -total
+-->
+
+<!-- Saved in parser cache with key u965818192_SLvgQ-l8z2_:pcache:378:|#|:idhash:canonical and timestamp 20260909202710 and revision id 9961. Rendering was triggered because: diff-page
+ -->
+</div>

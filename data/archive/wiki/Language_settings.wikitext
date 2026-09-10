@@ -1,0 +1,55 @@
+'''Language settings''' are used to define the general parameters of a given language, such as word order, syntactic agreement and case marking. They can also be used to describe grammatical redundancy (and therefore to avoid proliferating rules) or to indicate how an absent (i.e., a non-grammaticalized) category should be translated.
+
+== When to use language settings ==
+
+Language settings should be defined in three cases:
+* to set phonotactic, morphotactic and syntactic parameters of the language; 
+* to state grammatical redundancy and to avoid proliferating rules; and
+* to ensure cross-linguistic mapping. 
+
+=== General parameters ===
+
+In English, the grammatical category of [[person]] is represented, in almost all cases, by the same morpheme (zero). Instead of repeating this information inside every verb paradigm, we can represent it as general language setting such as:
+
+ 1PS:=0>""; (= if FIRST PERSON OF SINGULAR, then ADD NOTHING) 
+ 2PS:=0>""; (= if SECOND PERSON OF SINGULAR, then ADD NOTHING) 
+ 1PP:=0>""; (= if FIRST PERSON OF PLURAL, then ADD NOTHING) 
+ 2PP:=0>""; (= if SECOND PERSON OF PLURAL, then ADD NOTHING) 
+ 3PP:=0>""; (= if THIRD PERSON OF PLURAL, then ADD NOTHING) 
+
+In this case, only the exceptions (such as the 3PS and the verb "to be") would be treated inside the verb paradigm.
+
+The same can be stated for the present progressive [[tense]], which is always formed by the periphrasis TO BE + GERUND. Instead of indicating this possibility inside the verb paradigms, we can simply create a general rule that would be applied in all cases.
+
+ ET1&PGS&1PS:=IP("am":VP(GER)); 
+ ET1&PGS&2PS:=IP("are":VP(GER));
+ ET1&PGS&3PS:=IP("is":VP(GER)); 
+ ET1&PGS&1PP:=IP("are":VP(GER));
+ ET1&PGS&2PP:=IP("are":VP(GER)); 
+ ET1&PGS&3PP:=IP("are":VP(GER)); 
+
+=== Grammatical redundancy ===
+
+In English, the grammatical category of [[mood]] is conflated, and there is no clear morphological distinction between the indicative, the subjunctive, the conditional and other possible values of the attribute. This information can be represented by a general rule:
+
+ SUB:=IND; The SUBJUNCTIVE is equal to the INDICATIVE
+ CON:=IND; The CONDITIONAL is equal to the INDICATIVE 
+ IMP:=IND; The IMPERATIVE is equal to the INDICATIVE
+
+In this case, the indicative (IND) is the only form that needs to be defined in the verb paradigm.
+
+=== Translation === 
+
+In English, the grammatical category of [[number]] may have only two different values: singular or plural. In several other languages, however, the number may assume other values, such as dual, trial and quadrual. The English grammar must inform what to do in those cases in order to ensure full intertranslatability. 
+
+The language settings may indicate that:
+
+ DUA:=NS(PLR;<,"a couple of"); (if DUAL, the string "a couple of" should be generated as the specifier of the noun phrase (NS), whose head would assume the value of PLURAL) 
+ TRI:=PLR; (if TRIAL, the word will assume the value of PLURAL) 
+ QDR:=PLR; (if QUADRUAL, the word will assume the value of PLURAL
+
+== Syntax == 
+
+The syntax of language setting rules depends on the action to be performed:
+* Morphological rules (i.e., those involving prefixation, suffixation or infixation) must comply with the '''[[M-rule]]''' formalism
+* Syntactic rules (i.e., those involving the insertion of words) must comply with the '''[[S-Rule]]''' formalism

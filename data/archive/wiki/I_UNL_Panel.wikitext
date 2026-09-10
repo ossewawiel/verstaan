@@ -1,0 +1,111 @@
+The main purpose of the UNL Panel is to collect the opinion of specialists, from inside and outside the UNL Community, about technical issues of the UNL, as to prepare the ground for an in-depth revision of the current specifications. The I UNL Panel, an associated event to [http://www.coling2012-iitb.org/ COLING 2012], is devoted to the nature and role of [[UW]]'s. 
+
+== Rationale ==
+The UNL is an artificial language created to represent and process information across language barriers. Initially proposed by the Institute of Advanced Studies of the United Nations University, in Tokyo, Japan, in 1996, it has been enhanced and promoted by the UNDL Foundation, in Geneva, Switzerland, under a mandate of the United Nations, since 2000. 
+
+The basic assumption of the UNL approach is that the information conveyed by natural languages can be formally represented through a semantic network made of three different types of discrete semantic units: [[Universal Words]] (UW's), [[Universal Relations]] and [[Universal Attributes]]. The UW's are the nodes in the graph, to be interlinked by relations and specified by attributes. 
+
+The I UNL Panel, an associated event to COLING 2012, is devoted to the nature and role of Universal Words (UW's), the nodes in the UNL semantic graph.
+
+As the name indicates, Universal Words are expected to be "universal". This does not mean that they represent a sort of common lexical denominator to all languages or a semantic primitive. The concept of universality, in UNL, must be understood in terms of "semantic accessibility", i.e, in the sense of "capable of being used and understood by all" (as in "universal adapter", "universal screwdriver" or "universal remote control"), and UW's depict concepts that may range from absolutely global to absolutely local, and even temporary. They are universal in the sense that they are uniform identifiers to the entities defined in the UNL Knowledge Base, which is expected to map everything that we know about the world, and that is used to assign translatability to any concept.  
+
+In order to take the best directions concerning the UW's, the UNDL Foundation will listen to 6 specialists about 5 topics of lexical semantics:
+*What is to be considered a "Universal Word"?
+*Which named entities should be introduced in the dictionary of UW's, if any?
+*UW's must correspond to roots, to stems or to word forms?
+*Antonyms should be represented as a single UW or as different UW's?
+*When a multiword expression must be represented as a UW?
+
+These topics will be discussed considering the five questions below. They illustrate practical issues concerning UW's and have been receiving several different possible answers. The main goal of I UNL Panel is to discuss which answers would be more appropriate and feasible, considering the nature and role of the UNL, and the state of the art of the theory and technology on natural language processing. 
+
+Participants are expected to use these particular cases as starting points for their presentations, but we would expect them to suggest some general procedures to be adopted in similar cases, which could either confirm or deny our current practices, defined in the section [[UW]]'s, and which have been object of revision. Participants should understand, however, that only the structure of UNL is under discussion. The commitments, assumptions and properties of the UNL, which are the keystones of the language and are presented in the [[Introduction to UNL]], should be taken for granted, and are expected to be used as the general framework for all the answers. 
+
+The specialists are requested to explain their positions both in a paper in a question-answer format and in a 30-minute oral presentation (to be delivered during the meeting). The oral presentations will be followed by a discussion session, according to the tentative program below.
+
+== Presentations ==
+The presentations are available in .pdf format.
+*Introduction
+**[http://www.unlweb.net.br/panel/martins.pdf Ronaldo Martins]
+*Panelists
+**[http://www.unlweb.net.br/panel/alansary.pdf Sameh Alansary] (University of Alexandria, Library of Alexandria)
+**[http://www.unlweb.net.br/panel/bhattacharyya.pdf Pushpak Bhattacharyya] (IIT-Bombay)
+**[http://www.unlweb.net.br/panel/boguslavsky.pdf Igor Boguslavsky] (Universidad Politécnica de Madrid/Institute for Information Transmission Problems, Russian Academy of Sciences)
+**[http://www.unlweb.net.br/panel/calzolari.pdf Nicoletta Calzolari] (Istituto di Linguistica Computazionale Antonio Zampolli, Pisa)
+**Mike Dillinger (eBay)
+**Eric Wehrli (Université de Genève)
+
+== Venue ==
+VMCC Board Room<br />
+Victor Menezes Convention Center - IIT Bombay<br />
+Mumbai - India
+
+== Background ==
+*[[Introduction to UNL]] (to be used as the background for the discussion)
+*[[UW]] (to be criticized, if necessary)
+
+== Questions ==
+Considering the commitments, assumptions and properties of the UNL, defined in [[Introduction to UNL]], and<br />
+Considering the state of the art of the theory and technology on natural language processing,<br />
+
+Which would be the most appropriate and feasible answers to the questions below?
+
+;1) How many UW's should be recognized in the sentence below?
+ "Charles Dickens is generally regarded as the most important English novelist of the Victorian period"
+:The basic assumption of the UNL approach is that the information conveyed by natural languages can be formally and usefully represented through semantic networks composed of three different types of discrete semantic entities: UW's, relations and attributes. UW's are nodes in the UNL graph; relations are arcs between nodes; and attributes are specifiers that restrict the extension of nodes. This three-layered representation poses several problems to the UNLization as the distinction between these three entities is not always clear. Consider, for instance, the sentence above. How many UW's (either permanent or temporary) should be recognized in this sentence? 
+:*"Victorian period" should be represented as single UW ("Victorian period") or as two different UW's ("Victorian" and "period")? 
+:*The verb "to be" should be represented as a UW or as a relation between "Charles Dickens" and "the most important English novelist of the Victorian period"? (Consider also the options "was" and "has been" in the same context)
+:*The preposition "of" should be represented as a UW or as a relation between "the most important novelist" and "the Victorian period"? (Consider also the options "since", "from ... on", "in" or "during" instead of "of")
+:*"generally regarded as" should be represented by UW's ("generally", "regarded", "as", for instance) or as an attribute (a downtoner, which lowers the truth effect of the declaration) to be assigned to the whole proposition "Charles Dickens is the most important English novelist of the Victorian period"?
+:*The adverb "most" should be represented as a UW or as a superlative marker (to be represented as an attribute to be assigned to the adjective "important"?) (Consider also "greatest English novelist" instead of "most important English novelist")
+
+;2) "Charles Dickens" should be represented as a permanent UW or as a temporary UW?
+:The [[UNL Dictionary]] contains only permanent UW's. Untranslatable expressions, even though transliteratable, are not included in the dictionary, but may be used in the UNL graphs as temporary UW's. This is the obvious case for URL's, e-mail addresses, phone numbers, formulae etc. However, there are cases in which these criteria are still under dispute: proper names (of people, of places, of brands etc.), for instance. When they should be considered permanent UW's (and included in the UNL Dictionary) and when they should not? Consider, for instance, the case of "Charles Dickens". Should it be defined as a permanent UW and included in the UNL Dictionary? Or should it be treated as a temporary UW? Consider also the cases of "Charles J Dickens" (an American citizen born on 06/17/1949 and died on 10/21/2004); the "Charles Dickens Museum", located in London; the bar and restaurant "Charles Dickens", located in Southwark; the "Charles Dickens School", located in Kent; and other entities named "Charles Dickens". Consider the size (and the maintenance) of the UNL Dictionary, in case you suggest to treat them all as permanent UW's; or, otherwise, consider how to handle concepts that have not been included in the UNL Dictionary. 
+
+;3) "hunger" (= "a physiological need for food"), "hungry" (= "feeling hunger"), "hungrily" (= "in the manner of someone who is very hungry") and "hunger" (= "to cause to experience hunger") should be represented as simple, compound or complex UW's?
+:In the current framework, UW's can be simple, compound or complex. A simple UW is represented as a node in the UNL graph. A compound UW is represented as a node with attribute(s). A complex UW is represented as a sub-graph, i.e., as a set of interlinked nodes. This offers different possibilities of representing the concepts above. For instance:
+
+{|align="center" border="1" cellpadding="5"
+|+Simplified<ref>The representations are here simplified in order to be more didactic. Simple UW's cannot be as ambiguous or English-biased as "hunger". The same for attributes such as "@full_of", "@make" or "@manner". The complex UW is actually the definition of the word. It indicates that, instead of a UW, the concept must be represented by a whole graph depicting the definition of the concept. For instance: "felling hunger" would be represented, in simplified UNL, as obj(to feel,hunger).</ref> UW candidates for "hunger", "hungry", "hungrily" and "to hunger"
+!Lexical Item<br />(English)
+!Simple UW
+!Compound UW
+!Complex UW
+|-
+|hunger
+|hunger
+|hungry.@ness
+|a physiological need for food
+|-
+|hungry
+|hungry
+|hunger.@full_of
+|feeling hunger
+|-
+|hungrily
+|hungrily
+|hunger.@full_of.@manner<br/>hungry.@manner
+|in the manner of someone who is very hungry
+|-
+|hunger
+|hunger
+|hunger.@full_of.@make<br />hungry.@make
+|to cause to experience hunger
+|}
+:Which is the best way to represent these concepts? Consider the fact that some of these concepts are not lexicalized in all languages (for instance, the adjective "hungry" is not very frequent in German and French: "I am hungry" is normally translated as "Ich habe Hunger" or "J'ai faim", respectively). Consider also the actual importance of part-of-speech for lexical semantics. Consider, at last, the actual "compositionality" of these concepts.<ref>It is important to stress that these differences do not pose any practical restrictions to the UNL representation. For instance, the English noun phrase "hungry boy" could be represented in UNL as:
+:*mod(boy, hungry) ("feeling hunger" as a Simple UW)
+:*mod(boy, hunger.@full_of) ("feeling hunger" as a Compound UW)
+:*mod(boy, :01)obj:01(to feel,hunger) ("feeling hunger" as a Complex UW)
+:In the same way, these differences do not pose any restrictions to the resources (dictionaries and grammars). For instance, the French dictionary could bring:
+:*[affamé]{} "hungry" (LEX=J,POS=ADJ,GEN=MCL,NUM=SNG)<fra,0,0>; ("delighting the senses" as a Simple UW)
+:*[affamé]{} "hunger.@full_of" (LEX=J,POS=ADJ,GEN=MCL,NUM=SNG)<fra,0,0>; ("delighting the senses" as a Compound UW)
+:*[affamé]{} "obj(to feel, hunger)" (LEX=J,POS=ADJ,GEN=MCL,NUM=SNG)<fra,0,0>; ("delighting the senses"as a Complex UW)
+:But these differences do pose semantic consequences: a simple UW represents a concept seen as a single unit, whereas compound and complex UWs are strictly compositional, i.e., the meaning of the UW is entirely derived from its components. Furthermore, translating "I am hungry" by "Je suis affamé", although possible, is not really convenient in French.</ref> 
+
+;4) Antonyms such as "mortal" and "immortal", "hot" and "cold", and "son" and "father" should be represented as a single UW (and the corresponding attributes) or as different UW's?
+:The UNL is expected to be non-redundant: synonyms (such as "hunger" and "hungriness") and paraphrases (such as "Mary killed Peter" and "Peter was killed by Mary") are expected to be represented in the same way. What should we do with antonyms? Should we have a non-marked UW (such as "mortal", "hot" and "son") and generate their antonyms as compound UW's (such as "mortal.@not", "hot.@not" and "son.@converse") in order to avoid vocabulary multiplication and to cover languages with lexical gaps (unpaired words)? Or should we represent all them as simple UW's ("mortal", "immmortal", "hot", "cold", "son", "father") because they could not be fully reduced to the combination of a simple UW and an attribute? Consider the case of absolute opposites (such as "mortal" x "immortal", which could be opposed by an attribute such as @not), of gradable opposites (such as "hot" and "cold", which would also require intensifiers, such as hot.@extra, hot.@plus, hot, hot.@minus, hot.@not, hot.@not.@minus, hot.@not.@plus and hot.@not.@extra), and of relational opposites (such as the converse "son" and "father", that would require a special attribute - @converse, for instance - to inform that if x is son of y, y is father of x).
+
+;5) "Farbfernsehgerät" ("color television set", in German) should be represented as a simple or complex UW?
+:According to the current standards, every concept lexicalized in at least one language must be defined as a permanent UW and included in the UNL Dictionary. The concept of "lexicalization" is, however, highly controversial, and seems to vary considerably between different languages, and even between different lexicographical approaches for the same language. This has been true specially for multiword expressions, i.e., lexemes containing more than one stem, which are recognized as single entries in some dictionaries, and simply ignored by others. For the time being, we have been avoiding this discussion by assuming that, if a word was included (either as an entry or as a sub-entry) in any knowledgeable dictionary, it should be considered "lexicalized" and, therefore, defined as a permanent UW. But this procedure seems to be exaggeratedly language-dependent. "Farbfernsehgerät", for instance, is considered to be lexicalized in German, because it can be found in German dictionaries as one single entry; the English equivalent "color television set", however, seems not to be lexicalized yet in English, because it could not be found in the major English dictionaries. Should we represent this concept as a simple (non-compositional) UW (as in German), or as a complex (compositional) UW (as in English)? Consider the fact that "Farbfernsehgerät" is formed by "Farbe", "Fernsehen" and "Gerät", i.e., that the compound is not simply the concatenation of  three words, but underwent spelling changes (in addition to semantic changes, if any). Consider also the case of compounds such as "baby-talk" (tatpuruṣa or endocentric, i.e., "baby" is a special kind of "talk"), "bittersweet" (dvandva or copulative, i.e., "bitter" and "sweet") and "skinhead" (bahuvrihi or exocentric, i.e., non-compositional). Consider, at last, the case of idioms, such as "all ears", "closed book" and "cold feet".
+
+== Notes ==
+<references />

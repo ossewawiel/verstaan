@@ -1,0 +1,47 @@
+'''Agreement''' or '''concord''' is a form of cross-reference between different parts of a sentence or phrase. Agreement happens when a word changes form depending on the other words it relates to. In the UNL<sup>arium</sup> framework, agreement is defined through [[S-rule]]s. Agreement is not informed in UNL.
+
+== Syntax ==
+Agreement is defined through [[S-rule]]s in the following format:
+
+ <SYNTACTIC ROLE>(+<AGREEMENT>);
+
+Where:<br />
+*<SYNTACTIC ROLE> is the [[Syntactic roles|syntactic role]] (VA, VC, VS, VH, etc) of the constituent in relation to the head; and
+*<AGREEMENT> is the agreement to be assigned, and may assume the following values:
+**ANUM = assigns number (if the constituent assigns number value to the head)
+**AGEN = assigns gender (if the constituent assigns gender value to the head)
+**APER = assigns person (if the constituent assigns person value to the head)
+**ACAS = assigns case   (if the constituent assigns case value to the head)
+**ATNS = assigns tense  (if the constituent assigns tense value to the head)
+**RNUM = receives number (if the constituent receives number value from the head)
+**RGEN = receives gender (if the constituent receives gender value from the head)
+**RPER = receives person (if the constituent receives person value from the head)
+**RCAS = receives case   (if the constituent receives case value from the head)
+**RTNS = receives tense  (if the constituent receives tense value from the the head)
+
+== Examples ==
+;VS(+ANUM);
+:number agreement: the verb agrees with its specifier in number (i.e., the specifier of the verb assigns number to the verb)
+;NA(+RGEN);
+:gender agreement: the adjunct agrees with the noun in gender (i.e., the adjunct receives gender from the noun) 
+
+== Observations ==
+;Conditional agreement
+:Conditional agreement may be stated by defining the left side of the s-rule and coindexing it to the right side:
+:*NA(+RGEN); (unconditional agreement: the adjunct always receives the gender from the noun);
+:*NA(ADJ):=NA(+RGEN); (conditional agreement: the adjunct receives the gender from the noun if adjective);
+:*NA(^PP):=NA(+RGEN); (conditional agreement: the adjunct receives the gender from the noun if not a prepositional phrase);
+:*NA(GEN):=NA(+RGEN); (conditional agreement: the adjunct receives the gender from the noun if the noun has the feature gender (GEN);
+;Complex agreement
+:A single agreement rule may contain several agreement operations:
+:*VS(+ANUM,+APER,+AGEN); (the specifier of the verb assigns number, person and gender to it)
+:*NS(+RNUM,+RPER,+RGEN)NA(+RNUM,+RPER,+RGEN); (the specifier and the adjunct of the noun receives number, person and gender from it)
+;Use of "+"
+:As rules are conservative (i.e., features are preserved unless explicitly deleted), the use of "+" is actually optional:
+:*VS(+RNUM); is the same as VS(RNUM);
+;Feature removal
+:Agreement features may be deleted through "-"
+:*NA(-RGEN); (delete "receive gender" from all noun adjuncts)
+:*NA(PP):=NA(-RGEN); (delete "receive gender" from all noun adjuncts that have the feature PP)
+;The symbol '''^''' is used for negation and to control infinite recursion:
+:*NA(^RGEN):=NA(+RGEN); (the adjunct receives the gender from the noun if it does not have the feature "receive gender")

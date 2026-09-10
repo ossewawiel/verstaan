@@ -1,0 +1,118 @@
+In phrase structure grammars, the sentence is understood as a hierarchical structure made of “immediate constituents”, i.e., a word or a group of words that functions as a syntactic unit. The immediate constituent analysis was first mentioned by Leonard Bloomfield [1933], was developed further by Rulon Wells [1947] and Noam Chomsky [1957, 1965], and is now considerably widespread. The constituent structure of sentences is normally identified using constituency tests (e.g. topicalization, clefting, pseudoclefting, pro-form substitution, answer ellipsis, passivization, omission, coordination, etc.), which depends heavily on speakers’ intuitions and may not be directly replicated by machines. In what follows, we present some strategies that we claim to provide some clues about the immediate constituent structure of sentences. As they are rather probabilistic, we have organized them in a “constituency score”, which can be used to help us filtering non-relevant n-grams extracted from comparable corpora.
+
+The constituency score is the probability of a given n-gram to function as a syntactic unit (i.e., a “constituent”) in a sentence. For the time being, it is defined as the weighted average of three different independent measures: distribution, substitution and dependency, as described below. As we are dealing with a non-annotated source document, where the part-of-speech tagging is not available, the constituent tests must be calculated by reference to the immediate left and right contexts of the n-gram. 
+
+== Definitions ==
+*An n-gram “x” is any sequence recognized as such after the length, frequency and redundancy filters:
+*A prefix of x is the longest n-gram immediately before x, if any; or the boundary marker #, otherwise. 
+*A suffix of x is the longest n-gram immediately after x, if any; or the boundary marker #, otherwise.
+*A circumfix of x is the pair (p,s) where p and s are, respectively, the prefix and the suffix of a given occurrence of x.
+*An infix of (p,s) is the set of n-grams that may occur between p and s, including the empty set, in case “p” can be directly followed by “s”.
+*T(x) is the total number of occurrences of x in the corpus.
+*T(x>n) is the total number of occurrences of (x>n)-grams in the corpus containing x
+*T(x<n) is the total number of occurrences of (x<n)-grams in the corpus contained by x
+*P(x) is the set of all possible prefixes of x. 
+*S(x) is the set of all possible suffixes of x.
+*C(x) is the set of all possible circumfixes of x.
+*I(p,s) is the set of all possible infixes to (p,s).
+*|f(x)| is the cardinality of f(x), i.e., the number of distinct elements of the set defined by the function f(x)
+
+ 
+== Distribution (d) ==
+A n-gram is considered to be fully “free” (d = 1) if it can happen in different syntactic contexts, and is considered to be fully “bound” (d = 0) if it occurs always in the same context. This test is expected to emulate, at some extent, the collocational constituency tests (topicalization and clefting, mainly). The distribution is calculated by the following formula:
+
+ d = |P(x)| * |S(x)| / T(x)2
+
+Where |P(x)| and |S(x)| are, respectively, the number of distinct prefixes and suffixes that x may have in the corpus; and T(x) is the total number of occurrences of x in the corpus. 
+
+For instance, given the n-gram “a b c” and the corpus below:
+
+<pre>		
+x a b c #
+# a b c #
+x a b c w
+# a b c z
+x a b c #
+</pre>
+
+The distribution measure would be the following:
+
+<pre>
+|P(x)|  = 2 (“x” and #)
+|S(x)| = 3 (#, “w” and “z”)
+T(x) = 5
+d = (2*3)/52 = 0.24
+</pre>
+
+According to this rule, any n-gram with T(x) = 1 (i.e., occurring only once in the corpus) will have d=1. The same will happen for n-grams that do not repeat any prefixes and suffixes in any occurrence, i.e., which are completely free. The distribution measure decreases when the n-gram context is steadier in the syntactic structure, i.e., when the number of different prefixes and suffixes is reduced. But no n-gram will have d=0, because fully bound n-grams have been already filtered by the redundancy filter.
+
+== Substitution (s) ==
+A n-gram is considered to be fully “replaceable” (s = 1) if it can be replaced by other n-grams in the same context, and it is considered to be “irreplaceable” (s = 0) otherwise. This constituency test is expected to emulate the pro-form substitution and the omission tests. The substitution is calculated by the following formula:
+
+ s = ( |I(C(x))| - |C(x)| ) /  ( |I(C(x))| * |C(x)| )
+
+Where |I(C(x))| is the number of distinct infixes to the circumfixes of x, and |C(x)| is the number of distinct circumfixes of x.
+
+For instance, given the n-gram “a b c” and the corpus below:
+
+<pre>
+x a b c #
+x a b c #
+x a b #
+x b #
+x #
+</pre>
+
+The substitution measure would be the following:
+
+<pre>
+|I(C(x))| = 4 (“a b c”, “a b”, “b”, ∅)
+|C(x)| = 1 (“x #”)
+s = ( 4 – 1 ) / (4 * 1) = 0.75
+</pre>
+
+According to this rule, any n-gram that cannot be replaced by any other n-gram (i.e., where |I(C(x))| = |C(x)|) will have s = 0. The substitution measure increases as the circumfix becomes more frequent, i.e., when the n-gram may be replaced by several different others in the same context.
+
+== Dependency (i) ==
+An n-gram is considered “independent” (i=1) if it cannot be reduced to an existing (n-1)-gram nor integrated into an existing (n+1)-gram; and it is considered “dependent”  (i=0) if it can be fully reduced to an existing (n-1)-gram or integrated into an existing (n+1)-gram. These scores are calculated by the following formula:
+
+ i = [TO BE DEVELOPED]
+ ix-1  =  ( T(x-1) – T(x)  ) / T(x-1)  (n>1)
+ ix+1 = 1 – (( T(x) – T(x+1) ) / T(x))  (n<7)
+
+Where T(x) is the total number of n-grams x; T(x+1), the total number of (n+1)-grams including x; and T(x-1), the total number of (n-1)-grams included in x. The ix-1 score cannot be calculated to 1-grams, because n cannot be smaller than 1; and the ix+1  score cannot be calculated to 7-grams, because n cannot be greater than 7.
+
+For instance, given the n-gram “a b c” and the corpus below:
+
+<pre>
+      b c      (70 times)
+   a b         (70 times)
+   a b c      (50 times)
+x a b c y   (10 times)
+x a b c z   (10 times)
+x a b c w  (10 times)	
+</pre>
+
+The compositionality measures would be the following:
+
+<pre>
+T(x) = 50
+T(x+1) = 30
+T(x-1) = 140 
+ix-1  =  (140-50)/140 = 0.6	
+ix+1  = (50 – 30)/50 = 0.4
+</pre>
+
+According to this rule, an n-gram will be considered fully non-compositional (ix-1 = 1) when it is as frequent as the sum of the number of its smaller structures (T(x) = T(x-1)); and it will be considered fully incorporated when it is as frequent as the number of the structures in which it can be incorporated (T(x) = T(x+1)).
+
+<pre>
+constituency score: (d * s) / (d + s)
+s = ( |I(C(x))| - |C(x)| ) /  ( |I(C(x))| + |C(x)| )
+</pre>
+
+== References == 
+
+Bloomfield, Leonard. 1933. Language. New York: Henry Holt<br />
+Wells, Rulon S. 1947. "Immediate Constituents." Language: 23. pp. 81–117.<br />
+Chomsky, Noam 1957. Syntactic Structures. The Hague/Paris: Mouton.<br />
+Chomsky, Noam 1965. Aspects of the Theory of Syntax. Cambridge, Massachusetts: MIT Press.<br />

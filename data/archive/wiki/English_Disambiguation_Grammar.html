@@ -1,0 +1,60 @@
+<div class="mw-content-ltr mw-parser-output" lang="en" dir="ltr"><p>The English disambiguation grammars, or English d-grammars, are a part of the <a href="/wiki/English_grammar" title="English grammar">English grammar</a> and are used to improve the results of the <a href="/wiki/Tokenization" title="Tokenization">tokenization</a> and to control the application of <a href="/wiki/T-rule" title="T-rule">t-rules</a>. They follow the formalism described at <a href="/wiki/UNL_Grammar_Specs#Disambiguation_Rules" class="mw-redirect" title="UNL Grammar Specs">UNL Grammar Specs</a> and are used both in natural language analysis (<a href="/wiki/UNLization" title="UNLization">UNLization</a>) and in natural language generation (<a href="/wiki/NLization" title="NLization">NLization</a>). 
+</p>
+<div class="mw-heading mw-heading2"><h2 id="ENG-&gt;UNL_Disambiguation_Grammar"><span id="ENG-.3EUNL_Disambiguation_Grammar"></span>ENG-&gt;UNL Disambiguation Grammar</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=English_Disambiguation_Grammar&amp;veaction=edit&amp;section=1" title="Edit section: ENG-&gt;UNL Disambiguation Grammar" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=English_Disambiguation_Grammar&amp;action=edit&amp;section=1" title="Edit section&#39;s source code: ENG-&gt;UNL Disambiguation Grammar">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>In natural language analysis, the d-grammar is used to control the <a href="/wiki/Tokenization" title="Tokenization">tokenization</a> of the English sentences, i.e., to prevent wrong lexical choices and to induce the best matches. The d-grammar comprises two different types of disambiguation rules, or d-rules:
+</p>
+<ul><li><b>Negative</b> (blocking) rules, where the probability is equal to 0, prevent lexical choices
+<dl><dd>For instance, the rule (D)(BLK)(V)=0; informs that the sequence determiner+blank space+verb is not allowed, i.e., there cannot be a determiner before a verb.</dd></dl></li>
+<li><b>Positive</b> rules, where the probability is more than 0, force lexical choices
+<dl><dd>For instance, the rule (['s],V)(BLK)(GER)=1; informs that the entry ['s] as a verb is to be preferred before a gerund (there are three entries ['s] in the dictionary: the contracted form of "is", the particle used to form the genitive and a plural suffix; if this rule is not stated, the system would simply select the first one appearing in the dictionary with the highest frequency)</dd></dl></li></ul>
+<div class="mw-heading mw-heading3"><h3 id="How_to_use_d-grammars">How to use d-grammars</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=English_Disambiguation_Grammar&amp;veaction=edit&amp;section=2" title="Edit section: How to use d-grammars" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=English_Disambiguation_Grammar&amp;action=edit&amp;section=2" title="Edit section&#39;s source code: How to use d-grammars">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>D-grammars must be uploaded to or provided directly at the tab <b>d-rules</b> in <a href="/wiki/IAN" title="IAN">IAN</a>.
+</p>
+<div class="mw-heading mw-heading3"><h3 id="Examples_of_disambiguation_rules">Examples of disambiguation rules</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=English_Disambiguation_Grammar&amp;veaction=edit&amp;section=3" title="Edit section: Examples of disambiguation rules" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=English_Disambiguation_Grammar&amp;action=edit&amp;section=3" title="Edit section&#39;s source code: Examples of disambiguation rules">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<dl><dt>TOKENIZATION OF TEMPORARY WORDS (used to control hyper-segmentation)</dt></dl>
+<pre>(TEMP,^DIGIT,^W)(^BLK,^PUT,^STAIL)=0;
+</pre>
+<dl><dd>there must be a blank, a punctuation sign or the end of the sentence after a temporary word, i.e., a temporary word cannot be followed by other word, except for digits, as in "1st"</dd></dl>
+<pre>(^BLK,^PUT,^SHEAD)(TEMP,^W)=0;
+</pre>
+<dl><dd>there must be a blank, a punctuation sign or the beginning of the sentence before a temporary word, i.e., a temporary word cannot be preceded by other word</dd></dl>
+<p>(TEMP)(PUT)(TEMP)=0; there cannot be two temporary words separated by punctuation mark
+</p>
+<dl><dt>DETERMINERS X PRONOUNS (used to disambiguate pronouns from determiners, which come first in the dictionary)</dt></dl>
+<pre>(D,^AFT)({PUT,^BLK|STAIL})=0; 
+</pre>
+<dl><dd>determiners may not come at the end of the sentence or before a punctuation mark, except if their distribution is AFT, like "enough"</dd></dl>
+<pre>(D,^AFT)(BLK)({V|P|AAV})=0; 
+</pre>
+<dl><dd>determiners may not be precede verbs, prepositions or adjunct adverbs, except if their distribution is AFT</dd>
+<dt>AUXILIARY VERBS X MAIN VERBS (have, be)</dt></dl>
+<pre>(AUX)(BLK)(^V,^[not])=0; 
+</pre>
+<dl><dd>an auxiliary verb must be followed by a verb or the words "not" or "to"</dd></dl>
+<pre>(AUX)(BLK)([not])(BLK)(^V)=0; 
+</pre>
+<dl><dd>if followed by "not", the auxiliary must be followed by a verb</dd></dl>
+<!-- 
+NewPP limit report
+Cached time: 20260910163810
+Cache expiry: 86400
+Reduced expiry: false
+Complications: []
+CPU time usage: 0.006 seconds
+Real time usage: 0.007 seconds
+Preprocessor visited node count: 17/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/100
+Expensive parser function count: 0/100
+Unstrip recursion depth: 0/20
+Unstrip post‐expand size: 0/5000000 bytes
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    0.000      1 -total
+-->
+
+<!-- Saved in parser cache with key u965818192_SLvgQ-l8z2_:pcache:610:|#|:idhash:canonical and timestamp 20260910163810 and revision id 14403. Rendering was triggered because: api-parse
+ -->
+</div>

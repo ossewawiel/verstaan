@@ -1,0 +1,175 @@
+<div class="mw-content-ltr mw-parser-output" lang="en" dir="ltr"><p>Inflectional paradigms are sets of rules used to generate the inflected forms out of the <a href="/wiki/Base_form" class="mw-redirect" title="Base form">base form</a>. 
+</p>
+<div id="toc" class="toc" role="navigation" aria-labelledby="mw-toc-heading"><input type="checkbox" role="button" id="toctogglecheckbox" class="toctogglecheckbox" style="display:none" /><div class="toctitle" lang="en" dir="ltr"><h2 id="mw-toc-heading">Contents</h2><span class="toctogglespan"><label class="toctogglelabel" for="toctogglecheckbox"></label></span></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#When_to_use_inflectional_paradigms"><span class="tocnumber">1</span> <span class="toctext">When to use inflectional paradigms</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#When_not_to_use_inflectional_paradigms"><span class="tocnumber">2</span> <span class="toctext">When not to use inflectional paradigms</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="#Predefined_Paradigms"><span class="tocnumber">3</span> <span class="toctext">Predefined Paradigms</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="#Semi-regular_words"><span class="tocnumber">4</span> <span class="toctext">Semi-regular words</span></a></li>
+<li class="toclevel-1 tocsection-5"><a href="#How_to_create_inflectional_paradigms"><span class="tocnumber">5</span> <span class="toctext">How to create inflectional paradigms</span></a></li>
+<li class="toclevel-1 tocsection-6"><a href="#Syntax"><span class="tocnumber">6</span> <span class="toctext">Syntax</span></a></li>
+<li class="toclevel-1 tocsection-7"><a href="#Examples"><span class="tocnumber">7</span> <span class="toctext">Examples</span></a></li>
+</ul>
+</div>
+
+<div class="mw-heading mw-heading2"><h2 id="When_to_use_inflectional_paradigms">When to use inflectional paradigms</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Inflectional_paradigms&amp;veaction=edit&amp;section=1" title="Edit section: When to use inflectional paradigms" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Inflectional_paradigms&amp;action=edit&amp;section=1" title="Edit section&#39;s source code: When to use inflectional paradigms">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>Inflectional paradigms are used when:
+</p>
+<ul><li>inflections can be described by <b>AFFIXATION</b> (i.e., prefixation, infixation or suffixation) AND</li>
+<li>inflections are <b>REGULAR</b> (i.e., they may be applied to several different words)</li></ul>
+<p>Consider, for instance, the case of the English nouns making the plural in -s (<i>book</i>&gt;<i>books</i>, <i>table</i>&gt;<i>tables</i>, etc.). This can be expressed by affixation (suffixation of -s) and it is regular (there are many words in this set). This morphological behavior is then described by the paradigm M2, which contains two rules:
+</p>
+<ul><li>SNG:=0&gt;""; (do not add anything to the word in case of singular)</li>
+<li>PLR:=0&gt;"s"; (add "s" to the end of the word in case of plural)</li></ul>
+<p>This paradigm is created within the English grammar and is associated, in the English dictionary, to all words having the same morphological behavior.<br />
+In the grammar:
+</p>
+<ul><li>Paradigm M2: SNG:=0&gt;""; PLR:=0&gt;"s";</li></ul>
+<p>In the dictionary:
+</p>
+<ul><li>[table]{ID}"UW"(LEX=N,POS=NOU,...,<b>PAR=M2</b>)&lt;eng,0,0&gt;;</li>
+<li>[book]{ID}"UW"(LEX=N,POS=NOU,...,<b>PAR=M2</b>)&lt;eng,0,0&gt;;</li>
+<li>...</li></ul>
+<div class="mw-heading mw-heading2"><h2 id="When_not_to_use_inflectional_paradigms">When not to use inflectional paradigms</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Inflectional_paradigms&amp;veaction=edit&amp;section=2" title="Edit section: When not to use inflectional paradigms" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Inflectional_paradigms&amp;action=edit&amp;section=2" title="Edit section&#39;s source code: When not to use inflectional paradigms">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>Inflectional paradigms are not used in the following cases:
+</p>
+<ul><li>When the word is INVARIANT (such as adverbs and adjectives, in English); OR</li>
+<li>When the word is NOT INFLECTIONAL, i.e., when it is CONCATENATIVE, in the sense that the word forms are formed out of the same base form simply by concatenating particles (such as auxiliaries, adpositions and even affixes) that do not affect the base form; OR</li>
+<li>When the inflections are <b>NOT REGULAR</b>, i.e., when they are too specific (such as <i>mouse</i>&gt;<i>mice</i>, in English); OR</li>
+<li>When the inflections <b>CANNOT BE EXPRESSED BY AFFIXATION</b>, i.e., when inflections are represented by periphrases (such as future, in English: <i>go</i> &gt; <i>will go</i>).</li></ul>
+<p>Consider, for instance, the cases below:
+</p>
+<ul><li>The English adverb "now"
+<dl><dd>The adverb "now" is invariant (i.e., it does not change its form according to number, gender, tense, aspect, etc.) and, therefore, must be associated to the paradigm M0 (INVARIANT). No paradigm must be created in this case.</dd></dl></li>
+<li>The English possessive case marker 's or ' ("John"&gt;"John's", or "Hans"&gt;"Hans'")
+<dl><dd>The possessive case marker in English is simply concatenative, and not a real inflection, in the sense that it does not affect the base form, even if it may take different forms depending on the ending of the base form ("'s" or "'"). The possessive case must not be included within nominal paradigms in English.</dd></dl></li>
+<li>The English noun "mouse"
+<dl><dd>The noun "mouse" is inflectional (i.e., it changes its form in singular and plural), which can be expressed by two suffixation rules:
+<dl><dd>SNG:=0&gt;""; (do not add anything to the word in case of singular)</dd>
+<dd>PLR:="mice"; (replace everything by "mice" in case of plural)</dd></dl></dd>
+<dd>These rules, however, are very specific, because they apply to a very limited set of words. Therefore, this behavior should not be defined as a paradigm in the grammar, but as inflectional rules inside the dictionary:<br /></dd>
+<dd>In the grammar:<br />
+<ul><li>Paradigm M1 (IRREGULAR), i.e., the inflectional rules are defined inside the dictionary because they are too specific</li></ul></dd>
+<dd>In the dictionary:
+<ul><li>[mouse]{ID}"UW"(LEX=N,POS=NOU,...,<b>PAR=M1</b>,<b>FLX(SNG:=0&gt;"";PLR:="mice";)</b>)&lt;eng,0,0&gt;;</li></ul></dd></dl></li>
+<li>The English verb "love"
+<dl><dd>The verb "love" is inflectional (i.e., it changes its form in the present, past, future, etc), and these changes can be expressed by several suffixation rules:
+<ul><li>INF:=0&gt;""; (do not add anything to the word in case of infinitive)</li>
+<li>PAS:=0&gt;"d"; (add "d" to the word in case of past tense)</li>
+<li>3PS&amp;PRS&amp;IND:=0&gt;"s"; (add "s" to the word in case of third person singular present indicative)</li>
+<li>GER:=1&gt;"ing"; (remove the last character and add "ing" in case of gerund)</li></ul></dd>
+<dd>...</dd>
+<dd>Note, however, that some inflections of the verb cannot be generated by affixation, such as the future (<i>love</i>&gt;<i>will love</i>), the present progressive (<i>love</i>&gt;<i>is loving</i>), the present perfect (<i>love</i>&gt;<i>has loved</i>), etc. In these cases, the inflection is not simply a matter of appending strings to the end of the word. Note, for instance, that the negation comes in-between: "will not love", "is not loving", "has not loved"; and that the order may be changed in interrogatives: "will he/Peter/the boy with the telescope love?". So, we cannot define these inflections as mere affixes, but as a whole new syntactic structures. These inflections, thus, are not included inside paradigms, and must be defined in a different way. Paradigms must only include SIMPLE FORMS (the paradigm for English verbs contain only simple tenses, for instance) and must contain ONLY NON-REDUNDANT forms.</dd></dl></li></ul>
+<div class="mw-heading mw-heading2"><h2 id="Predefined_Paradigms">Predefined Paradigms</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Inflectional_paradigms&amp;veaction=edit&amp;section=3" title="Edit section: Predefined Paradigms" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Inflectional_paradigms&amp;action=edit&amp;section=3" title="Edit section&#39;s source code: Predefined Paradigms">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>There are two predefined paradigms in the UNL<sup>arium</sup>:
+</p>
+<dl><dt>INVARIANT (M0)</dt>
+<dd>If the word is not inflectional (case of adverbs in English, for instance) or does not accept any inflectional variant (case of "clothes", used only in plural, or "species", that has the same form in singular and plural).</dd>
+<dt>IRREGULAR (M1)</dt>
+<dd>If the word is inflectional but does not follow any existing paradigm, as in irregular forms (such as "man", "mouse", "foot" and "child"). In this case, the corresponding inflectional rules should be provided as <a href="/wiki/Inflectional_rules" title="Inflectional rules">inflectional rules</a>.</dd></dl>
+<div class="mw-heading mw-heading2"><h2 id="Semi-regular_words">Semi-regular words</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Inflectional_paradigms&amp;veaction=edit&amp;section=4" title="Edit section: Semi-regular words" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Inflectional_paradigms&amp;action=edit&amp;section=4" title="Edit section&#39;s source code: Semi-regular words">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>Semi-regular words, i.e., words that follow regular paradigms except for some few cases, must be linked to the corresponding regular paradigms. The irregular forms must be informed in the field INFLECTIONAL RULES, which will prevail over the forms created through inflectional paradigms. 
+</p><p>Consider, for instance, the following cases:
+</p>
+<dl><dt>MINOR SPELLING IRREGULARITIES (diacritics)</dt>
+<dd>In French, the verb "acheter" (= to buy) follows, in general, the regular paradigm of verbs ending in -er, except for some forms in the present indicative, present subjunctive and conditional, where the root becomes "achèt", with a "è" instead of an "e". This verb must be then associated to the regular paradigm of verbs ending in -er and, additionally, in the field INFLECTIONAL RULES, the irregular forms must be listed as follows:</dd></dl>
+<ul><li>1PS&amp;PRS&amp;IND:="achète"; (i.e., replace the first person present indicative by "achète")</li>
+<li>2PS&amp;PRS&amp;IND:="achètes"; (i.e., replace the second person present indicative by "achètes")</li>
+<li>3PS&amp;PRS&amp;IND:="achète"; (i.e., replace the third person present indicative by "achète")</li></ul>
+<p>etc.
+</p>
+<dl><dt>DEFECTIVE WORDS</dt>
+<dd></dd>
+<dd>In Portuguese, the verb "colorir" (= to color) follows, in general, the regular paradigm of verbs ending in -ir, except for the first person present indicative, which does not exist. This verb must be then associated to the regular paradigm of verbs ending in -ir and, additionally, in the field INFLECTIONAL RULES, the defective form must be listed as follows:</dd></dl>
+<ul><li>1PS&amp;PRS&amp;IND:=NULL; (i.e., do not generate the first person present indicative)</li></ul>
+<dl><dt>REDUNDANT FORMS</dt>
+<dd>In English, the word "fish" may have two different plural forms: "fish" and "fishes". Both are acceptable by the grammar. In order to cope with both possibilities, we have to associate "fish" to one paradigm (the one that adds -es to words ending in -sh, for instance) and to inform, in the INFLECTIONAL RULES, the other possibility as follows:</dd></dl>
+<ul><li>PLR&amp;ALT:="fish"; (i.e., there is another possibility to form the plural)</li></ul>
+<p>In case of redundancy, it is important not to forget to add ALT, or the system will keep only the inflectional rule.
+</p>
+<div class="mw-heading mw-heading2"><h2 id="How_to_create_inflectional_paradigms">How to create inflectional paradigms</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Inflectional_paradigms&amp;veaction=edit&amp;section=5" title="Edit section: How to create inflectional paradigms" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Inflectional_paradigms&amp;action=edit&amp;section=5" title="Edit section&#39;s source code: How to create inflectional paradigms">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p><a href="/wiki/How_to_create_inflectional_paradigms" title="How to create inflectional paradigms">How to create inflectional paradigms</a>
+</p>
+<div class="mw-heading mw-heading2"><h2 id="Syntax">Syntax</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Inflectional_paradigms&amp;veaction=edit&amp;section=6" title="Edit section: Syntax" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Inflectional_paradigms&amp;action=edit&amp;section=6" title="Edit section&#39;s source code: Syntax">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>Inflectional paradigms are expressed by <a href="/wiki/A-rule" title="A-rule">A-rules</a>, a special formalism for introducing prefixes, infixes and suffixes to the base form.
+</p>
+<div class="mw-heading mw-heading2"><h2 id="Examples">Examples</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Inflectional_paradigms&amp;veaction=edit&amp;section=7" title="Edit section: Examples" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Inflectional_paradigms&amp;action=edit&amp;section=7" title="Edit section&#39;s source code: Examples">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<table border="1" cellpadding="5">
+<tbody><tr>
+<th>Name
+</th>
+<th>Rules
+</th>
+<th>Description
+</th>
+<th>Examples
+</th></tr>
+<tr>
+<td>PLR:=0&gt;"s"
+</td>
+<td>SNG:=0&gt;"";PLR:=0&gt;"s";
+</td>
+<td>Add "s" to the end of the form in case of plural
+</td>
+<td>table&gt;tables, boy&gt;boys, etc
+</td></tr>
+<tr>
+<td>PLR:="y"&gt;"ies"
+</td>
+<td>SNG:=0&gt;"";PLR:="y"&gt;"ies";
+</td>
+<td>Replace "y" by "ies" at the end of the form in case of plural
+</td>
+<td>baby&gt;babies, city&gt;cities, etc
+</td></tr>
+<tr>
+<td>PLR:="f"&gt;"ves"
+</td>
+<td>SNG:=0&gt;"";PLR:="f"&gt;"ves";
+</td>
+<td>Replace "f" by "ves" at the end of the form in case of plural
+</td>
+<td>wolf&gt;wolves, half&gt;halves, etc
+</td></tr>
+<tr>
+<td>PAS:=0&gt;"ed"
+</td>
+<td>INF:=0&gt;"";PAS:=0&gt;"ed";GER:=0&gt;"ing";PTP:=0&gt;"ed";3PS&amp;PRS&amp;IND:=0&gt;"s";
+</td>
+<td>Add "ed" in the simple past, "ing" in the gerund, ...
+</td>
+<td>work&gt;worked, ask&gt;asked, etc
+</td></tr>
+<tr>
+<td>PAS:=0&gt;"d"
+</td>
+<td>INF:=0&gt;"";PAS:=0&gt;"d";GER:=e&gt;"ing";PTP:=0&gt;"d";3PS&amp;PRS&amp;IND:=0&gt;"s";
+</td>
+<td>Add "d" in the simple past, replace the final "e" by "ing" in the gerund, ...
+</td>
+<td>use&gt;used, arrange&gt;arranged, etc
+</td></tr></tbody></table>
+<!-- 
+NewPP limit report
+Cached time: 20260909220626
+Cache expiry: 86400
+Reduced expiry: false
+Complications: [show‐toc]
+CPU time usage: 0.006 seconds
+Real time usage: 0.007 seconds
+Preprocessor visited node count: 28/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/100
+Expensive parser function count: 0/100
+Unstrip recursion depth: 0/20
+Unstrip post‐expand size: 0/5000000 bytes
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    0.000      1 -total
+-->
+
+<!-- Saved in parser cache with key u965818192_SLvgQ-l8z2_:pcache:398:|#|:idhash:canonical and timestamp 20260909220626 and revision id 10594. Rendering was triggered because: diff-page
+ -->
+</div>

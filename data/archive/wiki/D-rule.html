@@ -1,0 +1,303 @@
+<div class="mw-content-ltr mw-parser-output" lang="en" dir="ltr"><p><b>D-rules</b> or disambiguation rules are used to prevent wrong lexical choices, to provoke best matches and to check the consistency of graphs, trees and lists. The set of D-rules form the <b>Disambiguation grammar</b>, or <b>D-Grammar</b>.
+</p>
+<div id="toc" class="toc" role="navigation" aria-labelledby="mw-toc-heading"><input type="checkbox" role="button" id="toctogglecheckbox" class="toctogglecheckbox" style="display:none" /><div class="toctitle" lang="en" dir="ltr"><h2 id="mw-toc-heading">Contents</h2><span class="toctogglespan"><label class="toctogglelabel" for="toctogglecheckbox"></label></span></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Syntax"><span class="tocnumber">1</span> <span class="toctext">Syntax</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#Types_of_Disambiguation_Rules"><span class="tocnumber">2</span> <span class="toctext">Types of Disambiguation Rules</span></a>
+<ul>
+<li class="toclevel-2 tocsection-3"><a href="#Linear_Disambiguation_Rules"><span class="tocnumber">2.1</span> <span class="toctext">Linear Disambiguation Rules</span></a>
+<ul>
+<li class="toclevel-3 tocsection-4"><a href="#Examples"><span class="tocnumber">2.1.1</span> <span class="toctext">Examples</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-5"><a href="#Non-Linear_Disambiguation_Rules"><span class="tocnumber">2.2</span> <span class="toctext">Non-Linear Disambiguation Rules</span></a>
+<ul>
+<li class="toclevel-3 tocsection-6"><a href="#Examples_2"><span class="tocnumber">2.2.1</span> <span class="toctext">Examples</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-7"><a href="#Scope_of_Disambiguation_Rules"><span class="tocnumber">3</span> <span class="toctext">Scope of Disambiguation Rules</span></a>
+<ul>
+<li class="toclevel-2 tocsection-8"><a href="#Tokenization"><span class="tocnumber">3.1</span> <span class="toctext">Tokenization</span></a></li>
+<li class="toclevel-2 tocsection-9"><a href="#Transformation"><span class="tocnumber">3.2</span> <span class="toctext">Transformation</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-10"><a href="##PREFERRED_AND_#FINAL"><span class="tocnumber">4</span> <span class="toctext">#PREFERRED AND #FINAL</span></a></li>
+<li class="toclevel-1 tocsection-11"><a href="#Examples_3"><span class="tocnumber">5</span> <span class="toctext">Examples</span></a></li>
+<li class="toclevel-1 tocsection-12"><a href="#Properties"><span class="tocnumber">6</span> <span class="toctext">Properties</span></a></li>
+<li class="toclevel-1 tocsection-13"><a href="#Formal_Syntax_of_Disambiguation_Rules"><span class="tocnumber">7</span> <span class="toctext">Formal Syntax of Disambiguation Rules</span></a></li>
+<li class="toclevel-1 tocsection-14"><a href="#Notes"><span class="tocnumber">8</span> <span class="toctext">Notes</span></a></li>
+</ul>
+</div>
+
+<div class="mw-heading mw-heading2"><h2 id="Syntax">Syntax</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=D-rule&amp;veaction=edit&amp;section=1" title="Edit section: Syntax" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=D-rule&amp;action=edit&amp;section=1" title="Edit section&#39;s source code: Syntax">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>D-rules follow the general syntax:
+</p>
+<pre>STATEMENT=P;
+</pre>
+<p>Where<br />
+STATEMENT is the left side (condition) of a <a href="/wiki/L-rule" title="L-rule">L-rule</a> or a <a href="/wiki/S-rule" title="S-rule">S-rule</a>; and<br />
+P, which can range from 0 (impossible) to 255 (necessary), is the probability of occurrence of the STATEMENT<br />
+</p>
+<div class="mw-heading mw-heading2"><h2 id="Types_of_Disambiguation_Rules">Types of Disambiguation Rules</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=D-rule&amp;veaction=edit&amp;section=2" title="Edit section: Types of Disambiguation Rules" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=D-rule&amp;action=edit&amp;section=2" title="Edit section&#39;s source code: Types of Disambiguation Rules">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>There are two types of disambiguation rules:
+</p>
+<ul><li>Linear disambiguation rules, when the rule applies over lists of nodes</li>
+<li>Non-linear disambiguation rules, when the rule applies over non-linear relations between nodes</li></ul>
+<div class="mw-heading mw-heading3"><h3 id="Linear_Disambiguation_Rules">Linear Disambiguation Rules</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=D-rule&amp;veaction=edit&amp;section=3" title="Edit section: Linear Disambiguation Rules" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=D-rule&amp;action=edit&amp;section=3" title="Edit section&#39;s source code: Linear Disambiguation Rules">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>Linear disambiguation rules apply over the natural language list structure to constrain word selection (dictionary retrieval) or the application of both Tree-to-List (TL) and List-to-List (LL) Transformation Rules. They have the following format:
+</p>
+<pre>(node 1)(node 2)(...)(node n)=P;
+</pre>
+<p>Where (node 1), (node 2) and (node n) are nodes, and P is an integer (from 0 to 255).
+</p>
+<div class="mw-heading mw-heading4"><h4 id="Examples">Examples</h4><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=D-rule&amp;veaction=edit&amp;section=4" title="Edit section: Examples" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=D-rule&amp;action=edit&amp;section=4" title="Edit section&#39;s source code: Examples">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<dl><dt>(ART)(VER)=0;</dt>
+<dd>An article (ART) may not precede a verb (VER).</dd>
+<dt>(ART)(NOU)=255;</dt>
+<dd>Articles (ART) always precede nouns (NOU).</dd></dl>
+<div class="mw-heading mw-heading3"><h3 id="Non-Linear_Disambiguation_Rules">Non-Linear Disambiguation Rules</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=D-rule&amp;veaction=edit&amp;section=5" title="Edit section: Non-Linear Disambiguation Rules" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=D-rule&amp;action=edit&amp;section=5" title="Edit section&#39;s source code: Non-Linear Disambiguation Rules">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>Non-linear disambiguation rules apply over the syntactic or the network structure to constrain the application of List-to-Tree (LT), Tree-to-Tree (TT), Tree-to-Network (TN) and Network-to-Network (NN) Transformation Rules. They have the following format:
+</p>
+<pre>REL1(arg1;arg2;...)REL2(arg3;arg4;...)...RELN(argx;argy;...)=P;
+</pre>
+<p>Where REL1, REL2 and REL2 are syntactic or semantic relations, with their corresponding arguments (arg1, arg2, ...), and P is an integer (from 0 to 255).
+</p>
+<div class="mw-heading mw-heading4"><h4 id="Examples_2">Examples</h4><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=D-rule&amp;veaction=edit&amp;section=6" title="Edit section: Examples" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=D-rule&amp;action=edit&amp;section=6" title="Edit section&#39;s source code: Examples">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<dl><dt>VS(VER;ADJ)=0;</dt>
+<dd>An adjective (ADJ) may not be an specifier (VS) of a verb (VER).</dd>
+<dt>NS(NOU;DET)=255;</dt>
+<dd>Determiners (DET) are always specifiers (NS) of nouns (NOU).</dd>
+<dt>agt(VER;ADJ)=0;</dt>
+<dd>An adjective (ADJ) may not be an agent (agt) of a verb (VER).</dd>
+<dt>agt(VER;NOU)=255;</dt>
+<dd>Agents (agt) of verbs (VER) are always nouns (NOU).</dd></dl>
+<div class="mw-heading mw-heading2"><h2 id="Scope_of_Disambiguation_Rules">Scope of Disambiguation Rules</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=D-rule&amp;veaction=edit&amp;section=7" title="Edit section: Scope of Disambiguation Rules" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=D-rule&amp;action=edit&amp;section=7" title="Edit section&#39;s source code: Scope of Disambiguation Rules">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>Disambiguation rules may apply:
+</p>
+<ul><li>Only during <a href="/wiki/Tokenization" title="Tokenization">tokenization</a>, in order to control the dictionary retrieval</li>
+<li>Only during <a href="/wiki/Transformation" title="Transformation">transformation</a>, in order to control the application of <a href="/wiki/T-rule" title="T-rule">T-rules</a></li>
+<li>During tokenization and transformation</li></ul>
+<div class="mw-heading mw-heading3"><h3 id="Tokenization">Tokenization</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=D-rule&amp;veaction=edit&amp;section=8" title="Edit section: Tokenization" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=D-rule&amp;action=edit&amp;section=8" title="Edit section&#39;s source code: Tokenization">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<dl><dd>main article: <a href="/wiki/Tokenization" title="Tokenization">tokenization</a></dd></dl>
+<p>During <a href="/wiki/Tokenization" title="Tokenization">tokenization</a>, D-rules are used to resolve lexical ambiguities.<br />
+For instance, given the dictionary:
+</p>
+<ul><li>[ ]{}""(BLK)&lt;eng,0,0&gt;;</li>
+<li>[a]{}""(POS=ART)&lt;eng,0,0&gt;;</li>
+<li>[book]{}"to book(equ&gt;to reserve)" (POS=VER)&lt;eng,2,0&gt;; (higher frequency)</li>
+<li>[book]{}"book(icl&gt;document)" (POS=NOU)&lt;eng,1,0&gt;; (lower frequency)</li></ul>
+<p>The input string<br />
+</p>
+<dl><dd>"a book"</dd></dl>
+<p>will be tokenized as<br />
+</p>
+<dl><dd>("a",[a],[[]],POS=ART)(" ",[ ],[[]],BLK)<b>("book",[book],[[to book(equ&gt;to reserve)]],POS=VER)</b><br /></dd></dl>
+<p>which is not correct, because "book", in this context, should be classified as a noun and not as a verb<br />
+In order to induce the correct behavior, two types of D-rules could be used:
+</p>
+<ul><li>to prevent verbs from appearing after article + blank, i.e., (ART)(BLK)(VER)=0; or</li>
+<li>to force possible nouns to appear after article + blank, i.e., (ART)(BLK)(NOU)=1;</li></ul>
+<p>In both case the result will be:
+</p>
+<dl><dd>("a",[a],[[]],POS=ART)(" ",[ ],[[]],BLK)<b>("book",[book],[[book(icl&gt;document)]],POS=NOU)</b><br /></dd></dl>
+<p>which is the correct one.
+</p>
+<div class="mw-heading mw-heading3"><h3 id="Transformation">Transformation</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=D-rule&amp;veaction=edit&amp;section=9" title="Edit section: Transformation" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=D-rule&amp;action=edit&amp;section=9" title="Edit section&#39;s source code: Transformation">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>In <a href="/wiki/Transformation" title="Transformation">transformation</a>, D-rules are used to resolve syntactic and semantic ambiguities.<br />
+For instance, given the state:
+</p>
+<dl><dd>("book",N)("of",P)("Peter",N)("about",P)("John",N)</dd></dl>
+<p>And the grammar:
+</p>
+<ol><li>(%x,N)(%y,P):=(NA(%x;%y),+N); (i.e., replace the sequence noun + preposition by a hyper-node containing a relation NA (noun adjunct) between them)</li>
+<li>(%x,P)(%y,N):=(PC(%x;%y),+P); (i.e., replace the sequence preposition + noun by a hyper-node containing a relation PC (prepopsition complement) between them)</li></ol>
+<p>The result of the application of the rules, in the order defined by the grammar, would be
+</p>
+<dl><dd>(NA("book",N;"of",P)("NA("Peter",N;"about",P)("John",N)</dd></dl>
+<p>which corresponds to the wrong analysis [ [book of] [Peter about] [John] ] <br />
+In order to induce the correct behavior, two types of D-rules could be used:
+</p>
+<ul><li>to prevent NA's from appearing before nouns, i.e., (NA(;))(N)=0;</li>
+<li>to force PC's to apply first, i.e., PC(P;N)=1;</li></ul>
+<p>In both cases the result will be:
+</p>
+<dl><dd>("book",N)(PC("of",P;"Peter",N),P)(PC("about",P;"John",N),P) (after applying the rule #2 two times)</dd>
+<dd>(NA("book",N;PC("of",P;"Peter",N),P),N)(PC("about",P;"John",N),P)(after applying the rule #1 for the first time)</dd>
+<dd>(NA(NA("book",N;PC("of",P;"Peter",N),P),N;PC("about",P;"John",N),P),N)(after applying the rule #1 for the second time time)</dd></dl>
+<p>which corresponds to [ [ [book][of Peter] ] [about John] ].
+</p>
+<div class="mw-heading mw-heading2"><h2 id="#PREFERRED_AND_#FINAL"><span id=".23PREFERRED_AND_.23FINAL"></span>#PREFERRED AND #FINAL</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=D-rule&amp;veaction=edit&amp;section=10" title="Edit section: #PREFERRED AND #FINAL" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=D-rule&amp;action=edit&amp;section=10" title="Edit section&#39;s source code: #PREFERRED AND #FINAL">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>The features #PREFERRED and #FINAL are used to change the default order of replacements during <a href="/wiki/Tokenization" title="Tokenization">tokenization</a> in blocking rules.
+</p>
+<ul><li>#PREFERRED means "if this possibility is blocked, <b>try first other candidate tokens for the other strings</b> before trying other candidate tokens for this string"</li>
+<li>#FINAL means "if this possibility is blocked, <b>do not try any other candidate token for this string</b>, i.e., try only other candidate tokens for the other strings"</li></ul>
+<p>Consider, for instance, the example below:
+</p>
+<ul><li>input string: ABC</li>
+<li>dictionary:
+<ul><li>[A]{}"a1"(A1)&lt;,,&gt;;</li>
+<li>[A]{}"a2"(A2)&lt;,,&gt;;</li>
+<li>[B]{}"b1"(B1)&lt;,,&gt;;</li>
+<li>[B]{}"b2"(B2)&lt;,,&gt;;</li>
+<li>[C]{}"c1"(C1)&lt;,,&gt;;</li>
+<li>[C]{}"c2"(C2)&lt;,,&gt;;</li></ul></li></ul>
+<p>According to the default order (left to right), the tokenization will try the following alternatives (in this specific order):
+</p>
+<ol><li>[A1][B1][C1]</li>
+<li>[A1][B1][C2]</li>
+<li>[A1][B2][C1]</li>
+<li>[A1][B2][C2]</li>
+<li>[A2][B1][C1]</li>
+<li>[A2][B1][C2]</li>
+<li>[A2][B2][C1]</li>
+<li>[A2][B2][C2]</li></ol>
+<p>If no alternative is blocked, the best match will be the first one. If the first is blocked, the best will be the second, and so on. In order to alter this order, #PREFERRED and #FINAL may be used depending on the expected output.
+</p>
+<ul><li>#PREFERRED is used when you want simply to alter the order of these matches but you want all of them to be tested before you decide for re-segmenting the string</li>
+<li>#FINAL is used when you want to prevent some of these alternatives from being tested, i.e., when you want to start earlier the re-segmentation process</li></ul>
+<p>Compare the behaviour of the system for the grammars below:
+</p>
+<ul><li>D-GRAMMAR #1</li></ul>
+<ol><li>(A1)(B1,#PREFERRED)=0; (blocks the sequence of tokens with the features A1 and B1, but indicates that A1 must be changed prior to B1)</li></ol>
+<ul><li>NEW ORDER</li></ul>
+<ol><li>[A2][B1][C1] (previously 5)</li>
+<li>[A2][B1][C2] (previously 6)</li>
+<li>[A1][B2][C1] (previously 3)</li>
+<li>[A1][B2][C2] (previously 4)</li>
+<li>[A2][B2][C1] (previously 7)</li>
+<li>[A2][B2][C2] (previously 8)</li></ol>
+<p>Note, in the above, that the options 1 and 2 are not tested because they are blocked, and the order of attempts is changed. However, if, for any reason (other blocking rules), these first alternatives are also blocked, the system still tries to find, within the same segmentation, other candidates. If all of them are blocked, and only then, the system will re-segment the string, according to the process defined at <a href="/wiki/Tokenization" title="Tokenization">tokenization</a>.
+</p>
+<ul><li>D-GRAMMAR #2</li></ul>
+<ol><li>(A1)(B1,#FINAL)=0; (blocks the sequence of tokens with the features A1 and B1 and prevents the system from trying other candidates for B1)</li></ol>
+<ul><li>NEW ORDER</li></ul>
+<ol><li>[A2][B1][C1] (previously 5)</li>
+<li>[A2][B1][C2] (previously 6)</li></ol>
+<p>Note, in the above, that the options 1 and 2 are not tested because they are blocked. Note, also, that other candidates for the second string (i.e., where the second string is B2) are not tested, because B1 is #FINAL. So, if these two matches fail, the system starts re-segmenting the sentence.<br />
+At last, note that #PREFERRED and #FINAL do not prevail other the priority of application of rules. If the grammar was simply:
+</p>
+<ol><li>(A1)(B2,#PREFERRED)=0;</li></ol>
+<p>or 
+</p>
+<ol><li>(A1)(B2,#FINAL)=0;</li></ol>
+<p>the output would be still
+</p>
+<ol><li>[A1][B1][C1]</li></ol>
+<p>because this is the best match and it is not blocked by any rule.
+</p><p>For a practical example in English, see below<sup id="cite_ref-1" class="reference"><a href="#cite_note-1"><span class="cite-bracket">&#91;</span>1<span class="cite-bracket">&#93;</span></a></sup>
+</p>
+<div class="mw-heading mw-heading2"><h2 id="Examples_3">Examples</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=D-rule&amp;veaction=edit&amp;section=11" title="Edit section: Examples" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=D-rule&amp;action=edit&amp;section=11" title="Edit section&#39;s source code: Examples">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<ul><li>List structures
+<ul><li>(ART)(BLK)(VER)=0;  (an article (ART) may not precede a verb (VER))</li>
+<li>(ART)(BLK)(NOU)=255; (articles (ART) always precede nouns (NOU))</li></ul></li>
+<li>Syntactic and semantic structures
+<ul><li>agt(VER;ADJ)=0;  (an adjective (ADJ) may not be an agent (agt) of a verb (VER))</li>
+<li>agt(VER;NOU)=255; (agents (agt) of verbs (VER) are always nouns (NOU))</li>
+<li>VS(VER;ADJ)=0; (an adjective (ADJ) may not be an specifier (VS) of a verb (VER))</li>
+<li>NS(NOU;DET)=255; (determiners (DET) are always specifiers (NS) of nouns (NOU))</li></ul></li></ul>
+<div class="mw-heading mw-heading2"><h2 id="Properties">Properties</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=D-rule&amp;veaction=edit&amp;section=12" title="Edit section: Properties" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=D-rule&amp;action=edit&amp;section=12" title="Edit section&#39;s source code: Properties">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<dl><dt>PRIORITY</dt>
+<dd>Rules are checked serially, according to the order defined in the grammar. The first rule will be the first to be checked, the second will be the second, and so on.
+<dl><dd>For instance, given the grammar:
+<dl><dd>(A)(B)=0;</dd>
+<dd>(B)(C)=0;</dd>
+<dd>(A)(D)=1;</dd>
+<dd>(A)(E)=1;</dd></dl></dd>
+<dd>The first rule to be checked will be the first one, the second, the second one, and so on.<br /></dd>
+<dd>Note that the order does not affect blocking rules (i.e., those with the right side = 0) but it does affect positive rules. In the example above, if the node after (A) could be both (D) or (E), the first option (D) will be preferred because it is the first to appear in the grammar.</dd></dl></dd></dl>
+<dl><dt>INDEXATION</dt>
+<dd>All instances of the same node must be co-indexed (or they will be considered different nodes). See <a href="/wiki/Index" title="Index">Index</a>.
+<dl><dd>For instance:
+<dl><dd>rel(%x;%y)rel(%x;%z)=0; (there cannot be two relations rel with the same source argument)</dd>
+<dd>(%x,GEN=%y)(%y,GEN=%x)=1; (two sequential nodes with the same value of the attribute GEN should be preferred over possible alternatives)</dd></dl></dd></dl></dd></dl>
+<dl><dt>CONJUNCTION</dt>
+<dd>D-rules may have as many items in the left side as necessary. They must be always juxtaposed:<br />
+<dl><dd><dl><dd>(A)(B)(C)(D)(E)=0; (there cannot be five nodes in sequence with the features A, B, C, D and E, respectively)</dd>
+<dd>rel(A;B)rel(C;D)rel(E;F)=0; (there cannot be three relations rel(A;B), rel(C;D) and rel(E;F))</dd></dl></dd></dl></dd></dl>
+<dl><dt>DISJUNCTION</dt>
+<dd>The left side of the rules may bring disjuncts. Disjuncts must be represented between {braces} and must be separated by |.
+<dl><dd>{(A)|(B)}=0; (there cannot be any node with the feature A nor any node with the feature B)</dd>
+<dd>{(A)|(B)}(C)=0; (there cannot be any node with the feature A nor any node with the feature B in front of a node with the feature C)</dd>
+<dd>{rel(A;B)rel(A;C)}=0; (there cannot be any relation rel between nodes with the features A and B, or A and C</dd></dl></dd></dl>
+<dl><dt>REGULAR EXPRESSIONS</dt>
+<dd>The left side of the rules may bring <a href="/wiki/Regular_expressions" class="mw-redirect" title="Regular expressions">regular expressions</a> between "/":
+<dl><dd>("/.../")=0; (there cannot be any node with three characters)</dd>
+<dd>(/[ABC]/)=0; (there cannot be any node with the features A, B or C)</dd>
+<dd>/(agt|obj)/(D;D)=0; (there cannot any relation agt or obj between two determiners)</dd></dl></dd></dl>
+<dl><dt>CONCISION</dt>
+<dd>In order for rules to be as small as possible, the source and the target nodes may be simple place-holders:
+<dl><dd><dl><dd>cob(;):=0; (there cannot be any cob relation between two nodes, whatever the nodes)</dd></dl></dd></dl></dd></dl>
+<dl><dt>READABILITY</dt>
+<dd>There can be blank spaces between variables and symbols. Comments can be added after the “;”.
+<dl><dd><dl><dd>cob (&#160;; ) = 0; (there cannot be any cob  relation).</dd></dl></dd></dl></dd></dl>
+<div class="mw-heading mw-heading2"><h2 id="Formal_Syntax_of_Disambiguation_Rules">Formal Syntax of Disambiguation Rules</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=D-rule&amp;veaction=edit&amp;section=13" title="Edit section: Formal Syntax of Disambiguation Rules" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=D-rule&amp;action=edit&amp;section=13" title="Edit section&#39;s source code: Formal Syntax of Disambiguation Rules">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>Disambiguation rules must comply with the following syntax
+</p>
+<pre>&lt;DISAMBIGUATION RULE&gt;&#160;::= &lt;NN RULE&gt; | &lt;TT RULE&gt; | &lt;LL RULE&gt; 
+&lt;NN RULE&gt;            &#160;::= (&lt;SEM&gt;)+ "=" [0-255]";"
+&lt;TT RULE&gt;            &#160;::= (&lt;SYN&gt;)+ "=" [0-255]";"
+&lt;LL RULE&gt;            &#160;::= "(" &lt;NODE&gt; ")" ( "(" &lt;NODE&gt; ")" )+ "=" [0-255]";"
+&lt;SEM&gt;                &#160;::= &lt;TEXT&gt; "(" &lt;NODE&gt; ";" &lt;NODE&gt; ")"
+&lt;SYN&gt;                &#160;::= &lt;TEXT&gt; "(" &lt;NODE&gt; ";" &lt;NODE&gt; ")"
+&lt;NODE&gt;               &#160;::= ( (&lt;DESCRIPTION&gt;)( "," &lt;DESCRIPTION&gt; )* )?
+&lt;DESCRIPTION&gt;        &#160;::= &lt;STRING&gt; | &lt;ENTRY&gt; | &lt;FEATURE&gt; | &lt;RELATION&gt;
+&lt;STRING&gt;             &#160;::= """&lt;text&gt;"""
+&lt;ENTRY&gt;              &#160;::= "["&lt;entry&gt;"]"
+&lt;FEATURE&gt;            &#160;::= &lt;VALUE&gt; | &lt;ATTRIBUTE&gt; | &lt;ATTRIBUTE&gt;"="&lt;VALUE&gt;
+&lt;RELATION&gt;           &#160;::= &lt;SEM&gt;|&lt;SYN&gt;
+&lt;VALUE&gt;              &#160;::= &lt;TEXT&gt;
+&lt;ATTRIBUTE&gt;          &#160;::= &lt;TEXT&gt;
+&lt;TEXT&gt;               &#160;::= any sequence of characters except whitespace | &lt;REGULAR EXPRESSION&gt;
+&lt;REGULAR EXPRESSION&gt; &#160;::= "/"&lt;<a rel="nofollow" class="external text" href="http://www.pcre.org/">PERL COMPATIBLE REGULAR EXPRESSIONS</a>&gt;"/"
+</pre>
+<div class="mw-heading mw-heading2"><h2 id="Notes">Notes</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=D-rule&amp;veaction=edit&amp;section=14" title="Edit section: Notes" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=D-rule&amp;action=edit&amp;section=14" title="Edit section&#39;s source code: Notes">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<div class="mw-references-wrap"><ol class="references">
+<li id="cite_note-1"><span class="mw-cite-backlink"><a href="#cite_ref-1">↑</a></span> <span class="reference-text">
+Input string:
+<ul><li>this book</li></ul>
+dictionary:
+<ul><li>[this]{1}"00"(R)&lt;eng,0,0&gt;; (this is my book)</li>
+<li>[this]{2}""(D)&lt;eng,0,0&gt;; (this book is mine)</li>
+<li>[book]{4}"book"(N)&lt;eng,0,0&gt;;</li>
+<li>[book]{3}"to book"(V)&lt;eng,0,0&gt;;</li></ul>
+According to the order defined in the dictionary, the input string would be tokenized as<br />
+<ul><li>(R)(N) (i.e., [this] = pronoun and [book] = noun)<br /></li></ul>
+which is not the expected result (we expect "this" to be tokenized as a determiner, rather than as a pronoun)<br />
+In order to prevent this tokenization, we may create a D-rule such as:
+<ul><li>(R)(N)=0; (the sequence pronoun + noun is prohibited)</li></ul>
+but the result of this rule would be "book" as a verb, instead of "this" as a determiner, i.e.:<br />
+<ul><li>(R)(V) (i.e., [this] = pronoun and [book] = verb)<br /></li></ul>
+because D-rules apply from left to right, and the system will try to replace first the rightmost nodes, if possible.<br />
+In order to prevent the system from replacing the rightmost nodes, we have to assign #PREFERRED to the nodes to be preserved:
+<ul><li>(R)(N,#PREFERRED)=0; (there cannot be a pronoun before a noun, but try to replace the pronoun before trying to replace the noun)</li></ul>
+In this case, the machine will try to replace first the node without #PREFERRED and will get, then:<br />
+<ul><li>(D)(N) (i.e., [this] = determiner and [book] = noun)<br /></li></ul>
+which is exactly the expected result.</span>
+</li>
+</ol></div>
+<!-- 
+NewPP limit report
+Cached time: 20260909213915
+Cache expiry: 86400
+Reduced expiry: false
+Complications: [show‐toc]
+CPU time usage: 0.013 seconds
+Real time usage: 0.014 seconds
+Preprocessor visited node count: 351/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/100
+Expensive parser function count: 0/100
+Unstrip recursion depth: 0/20
+Unstrip post‐expand size: 3323/5000000 bytes
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    0.000      1 -total
+-->
+
+<!-- Saved in parser cache with key u965818192_SLvgQ-l8z2_:pcache:518:|#|:idhash:canonical and timestamp 20260909213915 and revision id 13513. Rendering was triggered because: diff-page
+ -->
+</div>

@@ -1,0 +1,164 @@
+The English grammars follow, in general, the [[X-bar]] approach, with some adaptations. They are used for transforming English sentences into UNL ([[UNLization]]) and for generating English sentences out of UNL graphs ([[NLization]]). They follow the syntax defined at the [[UNL Grammar Specs]] and the tags described at the [[Tagset]]. 
+
+== Files ==
+
+{|border=1 cellpadding=5 align=center
+|+UNLization
+!Corpus
+!Dictionary<ref>Two dictionaries are necessary for each language: the language-specific dictionary, and the [[Default Dictionary]], which contains language-independent entries, such as punctuation signs and regular expressions. The default dictionary must be loaded after the language-specific dictionary.</ref>
+!T-Grammar<ref>Three t-grammars are necessary for each language: the [[Standardization grammar]], the language-specific grammar, and the [[Default grammar]]. The standardization grammar and the default grammar are language-independent. The grammars must be loaded in this order: 1) standardization, 2) language-specific, and 3) default.</ref>
+!D-Grammar
+!Output
+!F-Measure
+|-
+|[http://www.unlweb.net.br/resources/corpus/UCA1/UCA1_eng.txt UC-A1 in English]
+|[http://www.unlweb.net.br/resources/dic/UCA1/eng_unl_dic.txt ENG-UNL Dictionary]<br />[http://www.unlweb.net.br/resources/dic/default_dic.txt Default Dictionary]
+|[http://www.unlweb.net.br/resources/grammar/s-grammar.txt Standardization Grammar]<br />[http://www.unlweb.net.br/resources/grammar/UCA1/eng_unl_tgrammar.txt ENG-UNL T-Grammar]<br />[http://www.unlweb.net.br/resources/grammar/nl_unl_tgrammar.txt Default T-Grammar]
+|[http://www.unlweb.net.br/resources/grammar/UCA1/eng_unl_dgrammar.txt ENG-UNL D-Grammar]
+|[http://www.unlweb.net.br/resources/output/UCA1/eng_unl.txt ENG>UNL]
+|1.000
+|-
+|[http://www.unlweb.net.br/resources/corpus/UCA2/UCA2_eng.txt UC-A2 in English]
+|[http://www.unlweb.net.br/resources/dic/UCA2/eng_unl_dic.txt ENG-UNL Dictionary]<br />[http://www.unlweb.net.br/resources/dic/default_dic.txt Default Dictionary]
+|[http://www.unlweb.net.br/resources/grammar/s-grammar.txt Standardization Grammar]<br />[http://www.unlweb.net.br/resources/grammar/UCA2/eng_unl_tgrammar.txt ENG-UNL T-Grammar]<br />[http://www.unlweb.net.br/resources/grammar/nl_unl_tgrammar.txt Default T-Grammar]
+|[http://www.unlweb.net.br/resources/grammar/UCA2/eng_unl_dgrammar.txt ENG-UNL D-Grammar]
+|[http://www.unlweb.net.br/resources/output/UCA2/eng_unl.txt ENG>UNL]
+|1.000
+|-
+|[http://www.unlweb.net.br/resources/corpus/UCB1/UCB1_eng.txt UC-B1 in English]
+|[http://www.unlweb.net.br/resources/dic/UCB1/eng_unl_dic.txt ENG-UNL Dictionary]<br />[http://www.unlweb.net.br/resources/dic/default_dic.txt Default Dictionary]
+|[http://www.unlweb.net.br/resources/grammar/s-grammar.txt Standardization Grammar]<br />[http://www.unlweb.net.br/resources/grammar/UCB1/eng_unl_tgrammar.txt ENG-UNL T-Grammar]<br />[http://www.unlweb.net.br/resources/grammar/nl_unl_tgrammar.txt Default T-Grammar]
+|[http://www.unlweb.net.br/resources/grammar/UCB1/eng_unl_dgrammar.txt ENG-UNL D-Grammar]
+|[http://www.unlweb.net.br/resources/output/UCB1/eng_unl.txt ENG>UNL]
+|1.000
+|}
+<br />
+{|border=1 cellpadding=5 align=center
+|+NLization
+!Corpus
+!Dictionary<ref>Two dictionaries are necessary for each language: the language-specific dictionary, and the [[Default Dictionary]], which contains language-independent entries, such as punctuation signs and regular expressions. The default dictionary must be loaded after the language-specific dictionary.</ref>
+!T-Grammar<ref>Three t-grammars are necessary for each language: the [[Standardization grammar]], the language-specific grammar, and the [[Default grammar]]. The standardization grammar and the default grammar are language-independent. The grammars must be loaded in this order: 1) standardization, 2) language-specific, and 3) default.</ref>
+!D-Grammar
+!Output
+!F-Measure
+|-
+|[http://www.unlweb.net.br/resources/corpus/UCA1/UCA1_unl.txt UC-A1 in UNL]
+|[http://www.unlweb.net.br/resources/dic/UCA1/unl_eng_dic.txt UNL-ENG Dictionary]<br />[http://www.unlweb.net.br/resources/dic/default_dic.txt Default Dictionary]
+|[http://www.unlweb.net.br/resources/grammar/s-grammar.txt Standardization Grammar]<br />[http://www.unlweb.net.br/resources/grammar/UCA1/unl_eng_tgrammar.txt UNL-ENG T-Grammar]<br />[http://www.unlweb.net.br/resources/grammar/unl_nl_tgrammar.txt Default T-Grammar]
+|[http://www.unlweb.net.br/resources/grammar/UCA1/unl_eng_dgrammar.txt UNL-ENG D-Grammar]
+|[http://www.unlweb.net.br/resources/output/UCA1/unl_eng.txt UNL>ENG]
+|
+|-
+|[http://www.unlweb.net.br/resources/corpus/UCA2/UCA2_unl.txt UC-A2 in UNL]
+|[http://www.unlweb.net.br/resources/dic/UCA2/unl_eng_dic.txt UNL-ENG Dictionary]<br />[http://www.unlweb.net.br/resources/dic/default_dic.txt Default Dictionary]
+|[http://www.unlweb.net.br/resources/grammar/s-grammar.txt Standardization Grammar]<br />[http://www.unlweb.net.br/resources/grammar/UCA2/unl_eng_tgrammar.txt UNL-ENG T-Grammar]<br />[http://www.unlweb.net.br/resources/grammar/unl_nl_tgrammar.txt Default T-Grammar]
+|[http://www.unlweb.net.br/resources/grammar/UCA2/unl_eng_dgrammar.txt UNL-ENG D-Grammar]
+|[http://www.unlweb.net.br/resources/output/UCA2/unl_eng.txt UNL>ENG]
+|
+|-
+|[http://www.unlweb.net.br/resources/corpus/UCB1/UCB1_unl.txt UC-A1 in UNL]
+|[http://www.unlweb.net.br/resources/dic/UCB1/unl_eng_dic.txt UNL-ENG Dictionary]<br />[http://www.unlweb.net.br/resources/dic/default_dic.txt Default Dictionary]
+|[http://www.unlweb.net.br/resources/grammar/s-grammar.txt Standardization Grammar]<br />[http://www.unlweb.net.br/resources/grammar/UCB1/unl_eng_tgrammar.txt UNL-ENG T-Grammar]<br />[http://www.unlweb.net.br/resources/grammar/unl_nl_tgrammar.txt Default T-Grammar]
+|[http://www.unlweb.net.br/resources/grammar/UCB1/unl_eng_dgrammar.txt UNL-ENG D-Grammar]
+|[http://www.unlweb.net.br/resources/output/UCB1/unl_eng.txt UNL>ENG]
+|
+|}
+
+== Structure ==
+The English grammars are '''unidirectional'''. There is a grammar for UNLization (the ENG->UNL Analysis Grammar) and another grammar for NLization (the UNL->ENG Generation Grammar). The former takes natural languages sentences as inputs and provides the corresponding UNL graphs as outputs; the latter takes UNL graphs as inputs and provides the corresponding English sentences as outputs.
+
+The English grammars are of two types: the '''transformation grammar''', or simply [[t-grammar]], which is used to manipulate data structures (i.e., to convert lists into trees, trees into networks, networks into a trees, trees into lists); and the '''disambiguation grammar''', or simply [[d-grammar]], which is used to control the behavior of the t-grammar (by prohibiting or inducing some of its possibilities).
+
+The grammars used to UNLize English sentences and to English-ize UNL graphs are actually made of three modules:
+*the [[Standardization grammar]], which is used to standardize the feature structure;
+*the '''English Grammar''' itself, which contains rules that are specific to English; and
+*the and the  [[Default grammar]], which contain language-independent transformation rules.
+The Standardization Grammar and the Default Grammar are used by all languages, and not only English. <br />
+The Standardization Grammar is bidirectional, i.e., the same grammar is used both in UNLization and NLization. The other two grammars are unidirectional.<br />
+The Standardization Grammar must be loaded first, because the other grammars depend on the normalized feature structure; the English Grammar must be loaded after the standardization grammar; and the Default Grammar is loaded be after the other two.
+
+== Features ==
+The grammars play with a set of features that come from three different sources:
+*'''Dictionary features''' are the features ascribed to the entries in the dictionary, and appear as attribute-value pairs (LEX=N,GEN=MCL,NUM=SNG). 
+*'''System-defined features''' are features automatically assigned by EUGENE and IAN during the processing. They are the following:
+**SHEAD = beggining of the sentence (system-defined feature assigned automatically by the machine)
+**CHEAD = beginning of a scope (system-defined feature assigned automatically by the machine)
+**STAIL = end of the sentence (system-defined feature assigned automatically by the machine)
+**CTAIL = end of a scope (system-defined feature assigned automatically by the machine)
+**TEMP = temporary entry (system-defined feature assigned to the strings that are not present in the dictionary)
+**SCOPE = scopes entry (system-defined feature assigned to hyper-nodes)
+**DIGIT = digits (system-defined feature assigned to digits)
+*'''Grammar features''' are features created inside the grammar in any of its intermediate states between the input and the output.
+The dictionary and system-defined features are described at the [[Tagset]].
+
+== UNLization (ENG->UNL) ==
+The UNLization process is performed in three different steps:
+<ol>
+<li>[[Segmentation]] of English sentences is done automatically by the machine. It uses some punctuation signs (such as ".","?","!") and special characters (end of line, end of paragraph) as sentence boundaries. As the sentences are provided one per line, this step does not require any action from the grammar developer.</li>
+<li>[[Tokenization]] of each sentence is done against the dictionary entries, from left to right, following the principle of the longest first. As there are several lexical ambiguities, some disambiguation rules are required to induce the correct lexical choice. The tokenization is done with the [[English Disambiguation Grammar]].</li>
+<li>[[Transformation]] applies after tokenization and is divided in three modules:</li>
+<ol>
+<li>Standardization, which is simply the standardization of the feature structure, carried out by the [[Standardization grammar]]</li>
+<li>English-specific transformation is performed by the ENG->UNL T-Grammar and is divided in two steps:
+<ol>
+<li>'''Morphology''', where English features (such as PLR, PAS and [not]) are mapped into attributes (@pl, @past and @not, respectively).</li>
+<li>'''Syntax''', where structures that are specific to English (such as determiners, compounds and coordination) are mapped into UNL.</li> 
+</ol>
+<li>General transformation is performed by the [[Default grammar]] and is divided in five steps:
+#'''Pre-processing''' (prepares the input for the processing)
+#'''Parsing''' (converts the input list structure into a tree structure)
+#'''Transformation''' (converts the surface tree struture into the deep tree structure)
+#'''Dearborization''' (converts the tree structure into a network structure)
+#'''Interpretation''' (converts the syntactic network into a semantic network)
+#'''Post-processing''' (adjusts the final output)
+</ol>
+</ol>
+=== Examples of ENG->UNL Transformation Rules ===
+ (N,PLR,^@pl,^@multal,^@paucal,^@all):=(+att=@pl); 
+:assigns the attribute @pl to plural nouns (books > book.@pl). In order to avoid redundancy, the system checks whether the word will not receive any other plural attribute (such as @multal, @paucal and @all)
+ (MOV,%x)(V,%y):=(%y,+att=%x); 
+:copies the attributes from the modal verb (%x) to the main verb (%y) and deletes the modal verb (must.@obligation kill > kill.@obligation). Attributes of modal verbs are assigned in the dictionary.
+ (VB,%x)(FPR):=(%x,+att=@reflexive);
+:assigns the feature @reflexive to the verb if followed by a reflexive pronoun, and deletes the reflexive pronoun (kill himself > kill.@reflexive)
+ (D,att,%x)(NB,%y)({^N|PUT|STAIL|CTAIL},%right):=(%y,+att=%x)(%right); 
+:copies the attributes of the determiner to noun phrase (the.@def book > book.@def). Attributes of determiners are assigned in the dictionary. The rule only applies if the noun phrase is not followed by a noun or if it is followed by a punctuation sign, the end of sentence or the end of scope.
+ (XP,%x)([and])(XP=%x,%y):=(and(%y;%x),+LEX=%x,+XP=%x,+rel=and,%xy);
+:creates the relation "and" between two maximal projections of the same category isolated by the conjunction "and" (John and Mary > and(Mary,John).
+
+== NLization (UNL->ENG) ==
+The NLization process is performed in three different steps:
+<ol>
+<li>[[Segmentation]] of UNL sentences is done automatically by the machine. It uses the [[UNL document structure]] to split the input UNL document into a set of sentences to be processed one at a time.</li>
+<li>[[Tokenization]] of each sentence is done against the dictionary entries, following the principle of the highest priority first. As there are several lexical ambiguities, some disambiguation rules are required to induce the correct lexical choice. The tokenization is done with the [[English Disambiguation Grammar]].</li>
+<li>[[Transformation]] applies after tokenization and is divided in two modules:</li>
+<ol>
+<li>Standardization, which is simply the standardization of the feature structure, carried out by the [[Standardization grammar]]</li>
+<li>English-specific transformation is performed by the UNL->ENG T-Grammar and is divided in three steps:
+<ol>
+<li>'''Semantics''', where relations and attributes of UNL are mapped into English structures.</li>
+<li>'''Morphology''', where the paradigms are copied from the grammar to each entry.</li>
+<li>'''Post-processing''', where the output list is adjusted to the English standards.</li> 
+</ol>
+<li>General transformation is performed by the [[Default grammar]] and is divided in six steps:
+#'''Pre-processing''' (prepares the input for the processing)
+#'''Arborization''' (converts the syntactic network into a syntactic tree)
+#'''Transformation''' (converts the deep syntactic structure into the surface syntactic structure)
+#'''Linearization''' (converts the syntactic structure into a list structure)
+#'''Morphological generation''' (inflects the words that need to be inflected)
+#'''Post-processing''' (adjusts the final output)
+</ol>
+</ol>
+=== Examples of UNL->ENG Transformation Rules ===
+ agt(%x,V;%y,N):=VS(%x,PER=%y;%y,-CAS,+CAS=NOM); 
+:transforms the agent relation between a verb and a noun into verb specifier relation between the verb and the noun: agt(kill,he) > VS(kill,he)
+ (%x,N,@def):=(NS(%x,-@def;%y,[the],LEX=D,POS=ART),+LEX=N); 
+:transforms the attribute @def into a noun specifier relation between the noun and the determiner "the": book.@def > NS(book,the)
+ (%x,@pl):=(%x,-@pl,-NUM,+NUM=PLR);
+:assigns the feature NUM=PLR to the words containing the attribute @pl
+ (%x,>AND):=(%x,->AND,+>BLK)([and],LEX=C,POS=CCJ,+>BLK);
+:generates the conjunction "and" to the right of the words containing the feature ">AND"
+ (D,%d)([all],%all):=(%all)(%d); 
+:reverts the order between determiners and "all": the all books > all the books, my all books > all my books
+
+== Notes ==
+<references />

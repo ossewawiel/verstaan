@@ -1,0 +1,275 @@
+<div class="mw-content-ltr mw-parser-output" lang="en" dir="ltr"><p>The English grammars follow, in general, the <a href="/wiki/X-bar" class="mw-redirect" title="X-bar">X-bar</a> approach, with some adaptations. They are used for transforming English sentences into UNL (<a href="/wiki/UNLization" title="UNLization">UNLization</a>) and for generating English sentences out of UNL graphs (<a href="/wiki/NLization" title="NLization">NLization</a>). They follow the syntax defined at the <a href="/wiki/UNL_Grammar_Specs" class="mw-redirect" title="UNL Grammar Specs">UNL Grammar Specs</a> and the tags described at the <a href="/wiki/Tagset" title="Tagset">Tagset</a>. 
+</p>
+<div id="toc" class="toc" role="navigation" aria-labelledby="mw-toc-heading"><input type="checkbox" role="button" id="toctogglecheckbox" class="toctogglecheckbox" style="display:none" /><div class="toctitle" lang="en" dir="ltr"><h2 id="mw-toc-heading">Contents</h2><span class="toctogglespan"><label class="toctogglelabel" for="toctogglecheckbox"></label></span></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Files"><span class="tocnumber">1</span> <span class="toctext">Files</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#Structure"><span class="tocnumber">2</span> <span class="toctext">Structure</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="#Features"><span class="tocnumber">3</span> <span class="toctext">Features</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="#UNLization_(ENG-&gt;UNL)"><span class="tocnumber">4</span> <span class="toctext">UNLization (ENG-&gt;UNL)</span></a>
+<ul>
+<li class="toclevel-2 tocsection-5"><a href="#Examples_of_ENG-&gt;UNL_Transformation_Rules"><span class="tocnumber">4.1</span> <span class="toctext">Examples of ENG-&gt;UNL Transformation Rules</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-6"><a href="#NLization_(UNL-&gt;ENG)"><span class="tocnumber">5</span> <span class="toctext">NLization (UNL-&gt;ENG)</span></a>
+<ul>
+<li class="toclevel-2 tocsection-7"><a href="#Examples_of_UNL-&gt;ENG_Transformation_Rules"><span class="tocnumber">5.1</span> <span class="toctext">Examples of UNL-&gt;ENG Transformation Rules</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-8"><a href="#Notes"><span class="tocnumber">6</span> <span class="toctext">Notes</span></a></li>
+</ul>
+</div>
+
+<div class="mw-heading mw-heading2"><h2 id="Files">Files</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=English_grammar&amp;veaction=edit&amp;section=1" title="Edit section: Files" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=English_grammar&amp;action=edit&amp;section=1" title="Edit section&#39;s source code: Files">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<table border="1" cellpadding="5" align="center">
+<caption>UNLization
+</caption>
+<tbody><tr>
+<th>Corpus
+</th>
+<th>Dictionary<sup id="cite_ref-1" class="reference"><a href="#cite_note-1"><span class="cite-bracket">&#91;</span>1<span class="cite-bracket">&#93;</span></a></sup>
+</th>
+<th>T-Grammar<sup id="cite_ref-2" class="reference"><a href="#cite_note-2"><span class="cite-bracket">&#91;</span>2<span class="cite-bracket">&#93;</span></a></sup>
+</th>
+<th>D-Grammar
+</th>
+<th>Output
+</th>
+<th>F-Measure
+</th></tr>
+<tr>
+<td><a rel="nofollow" class="external text" href="http://www.unlweb.net.br/resources/corpus/UCA1/UCA1_eng.txt">UC-A1 in English</a>
+</td>
+<td><a rel="nofollow" class="external text" href="http://www.unlweb.net.br/resources/dic/UCA1/eng_unl_dic.txt">ENG-UNL Dictionary</a><br /><a rel="nofollow" class="external text" href="http://www.unlweb.net.br/resources/dic/default_dic.txt">Default Dictionary</a>
+</td>
+<td><a rel="nofollow" class="external text" href="http://www.unlweb.net.br/resources/grammar/s-grammar.txt">Standardization Grammar</a><br /><a rel="nofollow" class="external text" href="http://www.unlweb.net.br/resources/grammar/UCA1/eng_unl_tgrammar.txt">ENG-UNL T-Grammar</a><br /><a rel="nofollow" class="external text" href="http://www.unlweb.net.br/resources/grammar/nl_unl_tgrammar.txt">Default T-Grammar</a>
+</td>
+<td><a rel="nofollow" class="external text" href="http://www.unlweb.net.br/resources/grammar/UCA1/eng_unl_dgrammar.txt">ENG-UNL D-Grammar</a>
+</td>
+<td><a rel="nofollow" class="external text" href="http://www.unlweb.net.br/resources/output/UCA1/eng_unl.txt">ENG&gt;UNL</a>
+</td>
+<td>1.000
+</td></tr>
+<tr>
+<td><a rel="nofollow" class="external text" href="http://www.unlweb.net.br/resources/corpus/UCA2/UCA2_eng.txt">UC-A2 in English</a>
+</td>
+<td><a rel="nofollow" class="external text" href="http://www.unlweb.net.br/resources/dic/UCA2/eng_unl_dic.txt">ENG-UNL Dictionary</a><br /><a rel="nofollow" class="external text" href="http://www.unlweb.net.br/resources/dic/default_dic.txt">Default Dictionary</a>
+</td>
+<td><a rel="nofollow" class="external text" href="http://www.unlweb.net.br/resources/grammar/s-grammar.txt">Standardization Grammar</a><br /><a rel="nofollow" class="external text" href="http://www.unlweb.net.br/resources/grammar/UCA2/eng_unl_tgrammar.txt">ENG-UNL T-Grammar</a><br /><a rel="nofollow" class="external text" href="http://www.unlweb.net.br/resources/grammar/nl_unl_tgrammar.txt">Default T-Grammar</a>
+</td>
+<td><a rel="nofollow" class="external text" href="http://www.unlweb.net.br/resources/grammar/UCA2/eng_unl_dgrammar.txt">ENG-UNL D-Grammar</a>
+</td>
+<td><a rel="nofollow" class="external text" href="http://www.unlweb.net.br/resources/output/UCA2/eng_unl.txt">ENG&gt;UNL</a>
+</td>
+<td>1.000
+</td></tr>
+<tr>
+<td><a rel="nofollow" class="external text" href="http://www.unlweb.net.br/resources/corpus/UCB1/UCB1_eng.txt">UC-B1 in English</a>
+</td>
+<td><a rel="nofollow" class="external text" href="http://www.unlweb.net.br/resources/dic/UCB1/eng_unl_dic.txt">ENG-UNL Dictionary</a><br /><a rel="nofollow" class="external text" href="http://www.unlweb.net.br/resources/dic/default_dic.txt">Default Dictionary</a>
+</td>
+<td><a rel="nofollow" class="external text" href="http://www.unlweb.net.br/resources/grammar/s-grammar.txt">Standardization Grammar</a><br /><a rel="nofollow" class="external text" href="http://www.unlweb.net.br/resources/grammar/UCB1/eng_unl_tgrammar.txt">ENG-UNL T-Grammar</a><br /><a rel="nofollow" class="external text" href="http://www.unlweb.net.br/resources/grammar/nl_unl_tgrammar.txt">Default T-Grammar</a>
+</td>
+<td><a rel="nofollow" class="external text" href="http://www.unlweb.net.br/resources/grammar/UCB1/eng_unl_dgrammar.txt">ENG-UNL D-Grammar</a>
+</td>
+<td><a rel="nofollow" class="external text" href="http://www.unlweb.net.br/resources/output/UCB1/eng_unl.txt">ENG&gt;UNL</a>
+</td>
+<td>1.000
+</td></tr></tbody></table>
+<p><br />
+</p>
+<table border="1" cellpadding="5" align="center">
+<caption>NLization
+</caption>
+<tbody><tr>
+<th>Corpus
+</th>
+<th>Dictionary<sup id="cite_ref-3" class="reference"><a href="#cite_note-3"><span class="cite-bracket">&#91;</span>3<span class="cite-bracket">&#93;</span></a></sup>
+</th>
+<th>T-Grammar<sup id="cite_ref-4" class="reference"><a href="#cite_note-4"><span class="cite-bracket">&#91;</span>4<span class="cite-bracket">&#93;</span></a></sup>
+</th>
+<th>D-Grammar
+</th>
+<th>Output
+</th>
+<th>F-Measure
+</th></tr>
+<tr>
+<td><a rel="nofollow" class="external text" href="http://www.unlweb.net.br/resources/corpus/UCA1/UCA1_unl.txt">UC-A1 in UNL</a>
+</td>
+<td><a rel="nofollow" class="external text" href="http://www.unlweb.net.br/resources/dic/UCA1/unl_eng_dic.txt">UNL-ENG Dictionary</a><br /><a rel="nofollow" class="external text" href="http://www.unlweb.net.br/resources/dic/default_dic.txt">Default Dictionary</a>
+</td>
+<td><a rel="nofollow" class="external text" href="http://www.unlweb.net.br/resources/grammar/s-grammar.txt">Standardization Grammar</a><br /><a rel="nofollow" class="external text" href="http://www.unlweb.net.br/resources/grammar/UCA1/unl_eng_tgrammar.txt">UNL-ENG T-Grammar</a><br /><a rel="nofollow" class="external text" href="http://www.unlweb.net.br/resources/grammar/unl_nl_tgrammar.txt">Default T-Grammar</a>
+</td>
+<td><a rel="nofollow" class="external text" href="http://www.unlweb.net.br/resources/grammar/UCA1/unl_eng_dgrammar.txt">UNL-ENG D-Grammar</a>
+</td>
+<td><a rel="nofollow" class="external text" href="http://www.unlweb.net.br/resources/output/UCA1/unl_eng.txt">UNL&gt;ENG</a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a rel="nofollow" class="external text" href="http://www.unlweb.net.br/resources/corpus/UCA2/UCA2_unl.txt">UC-A2 in UNL</a>
+</td>
+<td><a rel="nofollow" class="external text" href="http://www.unlweb.net.br/resources/dic/UCA2/unl_eng_dic.txt">UNL-ENG Dictionary</a><br /><a rel="nofollow" class="external text" href="http://www.unlweb.net.br/resources/dic/default_dic.txt">Default Dictionary</a>
+</td>
+<td><a rel="nofollow" class="external text" href="http://www.unlweb.net.br/resources/grammar/s-grammar.txt">Standardization Grammar</a><br /><a rel="nofollow" class="external text" href="http://www.unlweb.net.br/resources/grammar/UCA2/unl_eng_tgrammar.txt">UNL-ENG T-Grammar</a><br /><a rel="nofollow" class="external text" href="http://www.unlweb.net.br/resources/grammar/unl_nl_tgrammar.txt">Default T-Grammar</a>
+</td>
+<td><a rel="nofollow" class="external text" href="http://www.unlweb.net.br/resources/grammar/UCA2/unl_eng_dgrammar.txt">UNL-ENG D-Grammar</a>
+</td>
+<td><a rel="nofollow" class="external text" href="http://www.unlweb.net.br/resources/output/UCA2/unl_eng.txt">UNL&gt;ENG</a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td><a rel="nofollow" class="external text" href="http://www.unlweb.net.br/resources/corpus/UCB1/UCB1_unl.txt">UC-A1 in UNL</a>
+</td>
+<td><a rel="nofollow" class="external text" href="http://www.unlweb.net.br/resources/dic/UCB1/unl_eng_dic.txt">UNL-ENG Dictionary</a><br /><a rel="nofollow" class="external text" href="http://www.unlweb.net.br/resources/dic/default_dic.txt">Default Dictionary</a>
+</td>
+<td><a rel="nofollow" class="external text" href="http://www.unlweb.net.br/resources/grammar/s-grammar.txt">Standardization Grammar</a><br /><a rel="nofollow" class="external text" href="http://www.unlweb.net.br/resources/grammar/UCB1/unl_eng_tgrammar.txt">UNL-ENG T-Grammar</a><br /><a rel="nofollow" class="external text" href="http://www.unlweb.net.br/resources/grammar/unl_nl_tgrammar.txt">Default T-Grammar</a>
+</td>
+<td><a rel="nofollow" class="external text" href="http://www.unlweb.net.br/resources/grammar/UCB1/unl_eng_dgrammar.txt">UNL-ENG D-Grammar</a>
+</td>
+<td><a rel="nofollow" class="external text" href="http://www.unlweb.net.br/resources/output/UCB1/unl_eng.txt">UNL&gt;ENG</a>
+</td>
+<td>
+</td></tr></tbody></table>
+<div class="mw-heading mw-heading2"><h2 id="Structure">Structure</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=English_grammar&amp;veaction=edit&amp;section=2" title="Edit section: Structure" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=English_grammar&amp;action=edit&amp;section=2" title="Edit section&#39;s source code: Structure">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>The English grammars are <b>unidirectional</b>. There is a grammar for UNLization (the ENG-&gt;UNL Analysis Grammar) and another grammar for NLization (the UNL-&gt;ENG Generation Grammar). The former takes natural languages sentences as inputs and provides the corresponding UNL graphs as outputs; the latter takes UNL graphs as inputs and provides the corresponding English sentences as outputs.
+</p><p>The English grammars are of two types: the <b>transformation grammar</b>, or simply <a href="/wiki/T-grammar" class="mw-redirect" title="T-grammar">t-grammar</a>, which is used to manipulate data structures (i.e., to convert lists into trees, trees into networks, networks into a trees, trees into lists); and the <b>disambiguation grammar</b>, or simply <a href="/wiki/D-grammar" class="mw-redirect" title="D-grammar">d-grammar</a>, which is used to control the behavior of the t-grammar (by prohibiting or inducing some of its possibilities).
+</p><p>The grammars used to UNLize English sentences and to English-ize UNL graphs are actually made of three modules:
+</p>
+<ul><li>the <a href="/wiki/Standardization_grammar" title="Standardization grammar">Standardization grammar</a>, which is used to standardize the feature structure;</li>
+<li>the <b>English Grammar</b> itself, which contains rules that are specific to English; and</li>
+<li>the and the  <a href="/wiki/Default_grammar" title="Default grammar">Default grammar</a>, which contain language-independent transformation rules.</li></ul>
+<p>The Standardization Grammar and the Default Grammar are used by all languages, and not only English. <br />
+The Standardization Grammar is bidirectional, i.e., the same grammar is used both in UNLization and NLization. The other two grammars are unidirectional.<br />
+The Standardization Grammar must be loaded first, because the other grammars depend on the normalized feature structure; the English Grammar must be loaded after the standardization grammar; and the Default Grammar is loaded be after the other two.
+</p>
+<div class="mw-heading mw-heading2"><h2 id="Features">Features</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=English_grammar&amp;veaction=edit&amp;section=3" title="Edit section: Features" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=English_grammar&amp;action=edit&amp;section=3" title="Edit section&#39;s source code: Features">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>The grammars play with a set of features that come from three different sources:
+</p>
+<ul><li><b>Dictionary features</b> are the features ascribed to the entries in the dictionary, and appear as attribute-value pairs (LEX=N,GEN=MCL,NUM=SNG).</li>
+<li><b>System-defined features</b> are features automatically assigned by EUGENE and IAN during the processing. They are the following:
+<ul><li>SHEAD = beggining of the sentence (system-defined feature assigned automatically by the machine)</li>
+<li>CHEAD = beginning of a scope (system-defined feature assigned automatically by the machine)</li>
+<li>STAIL = end of the sentence (system-defined feature assigned automatically by the machine)</li>
+<li>CTAIL = end of a scope (system-defined feature assigned automatically by the machine)</li>
+<li>TEMP = temporary entry (system-defined feature assigned to the strings that are not present in the dictionary)</li>
+<li>SCOPE = scopes entry (system-defined feature assigned to hyper-nodes)</li>
+<li>DIGIT = digits (system-defined feature assigned to digits)</li></ul></li>
+<li><b>Grammar features</b> are features created inside the grammar in any of its intermediate states between the input and the output.</li></ul>
+<p>The dictionary and system-defined features are described at the <a href="/wiki/Tagset" title="Tagset">Tagset</a>.
+</p>
+<div class="mw-heading mw-heading2"><h2 id="UNLization_(ENG-&gt;UNL)"><span id="UNLization_.28ENG-.3EUNL.29"></span>UNLization (ENG-&gt;UNL)</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=English_grammar&amp;veaction=edit&amp;section=4" title="Edit section: UNLization (ENG-&gt;UNL)" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=English_grammar&amp;action=edit&amp;section=4" title="Edit section&#39;s source code: UNLization (ENG-&gt;UNL)">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>The UNLization process is performed in three different steps:
+</p>
+<ol>
+<li><a href="/wiki/Segmentation" title="Segmentation">Segmentation</a> of English sentences is done automatically by the machine. It uses some punctuation signs (such as ".","?","!") and special characters (end of line, end of paragraph) as sentence boundaries. As the sentences are provided one per line, this step does not require any action from the grammar developer.</li>
+<li><a href="/wiki/Tokenization" title="Tokenization">Tokenization</a> of each sentence is done against the dictionary entries, from left to right, following the principle of the longest first. As there are several lexical ambiguities, some disambiguation rules are required to induce the correct lexical choice. The tokenization is done with the <a href="/wiki/English_Disambiguation_Grammar" title="English Disambiguation Grammar">English Disambiguation Grammar</a>.</li>
+<li><a href="/wiki/Transformation" title="Transformation">Transformation</a> applies after tokenization and is divided in three modules:</li>
+<ol>
+<li>Standardization, which is simply the standardization of the feature structure, carried out by the <a href="/wiki/Standardization_grammar" title="Standardization grammar">Standardization grammar</a></li>
+<li>English-specific transformation is performed by the ENG-&gt;UNL T-Grammar and is divided in two steps:
+<ol>
+<li><b>Morphology</b>, where English features (such as PLR, PAS and [not]) are mapped into attributes (@pl, @past and @not, respectively).</li>
+<li><b>Syntax</b>, where structures that are specific to English (such as determiners, compounds and coordination) are mapped into UNL.</li> 
+</ol>
+</li><li>General transformation is performed by the <a href="/wiki/Default_grammar" title="Default grammar">Default grammar</a> and is divided in five steps:
+<ol><li><b>Pre-processing</b> (prepares the input for the processing)</li>
+<li><b>Parsing</b> (converts the input list structure into a tree structure)</li>
+<li><b>Transformation</b> (converts the surface tree struture into the deep tree structure)</li>
+<li><b>Dearborization</b> (converts the tree structure into a network structure)</li>
+<li><b>Interpretation</b> (converts the syntactic network into a semantic network)</li>
+<li><b>Post-processing</b> (adjusts the final output)</li></ol>
+</li></ol>
+</ol>
+<div class="mw-heading mw-heading3"><h3 id="Examples_of_ENG-&gt;UNL_Transformation_Rules"><span id="Examples_of_ENG-.3EUNL_Transformation_Rules"></span>Examples of ENG-&gt;UNL Transformation Rules</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=English_grammar&amp;veaction=edit&amp;section=5" title="Edit section: Examples of ENG-&gt;UNL Transformation Rules" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=English_grammar&amp;action=edit&amp;section=5" title="Edit section&#39;s source code: Examples of ENG-&gt;UNL Transformation Rules">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<pre>(N,PLR,^@pl,^@multal,^@paucal,^@all):=(+att=@pl); 
+</pre>
+<dl><dd>assigns the attribute @pl to plural nouns (books &gt; book.@pl). In order to avoid redundancy, the system checks whether the word will not receive any other plural attribute (such as @multal, @paucal and @all)</dd></dl>
+<pre>(MOV,%x)(V,%y):=(%y,+att=%x); 
+</pre>
+<dl><dd>copies the attributes from the modal verb (%x) to the main verb (%y) and deletes the modal verb (must.@obligation kill &gt; kill.@obligation). Attributes of modal verbs are assigned in the dictionary.</dd></dl>
+<pre>(VB,%x)(FPR):=(%x,+att=@reflexive);
+</pre>
+<dl><dd>assigns the feature @reflexive to the verb if followed by a reflexive pronoun, and deletes the reflexive pronoun (kill himself &gt; kill.@reflexive)</dd></dl>
+<pre>(D,att,%x)(NB,%y)({^N|PUT|STAIL|CTAIL},%right):=(%y,+att=%x)(%right); 
+</pre>
+<dl><dd>copies the attributes of the determiner to noun phrase (the.@def book &gt; book.@def). Attributes of determiners are assigned in the dictionary. The rule only applies if the noun phrase is not followed by a noun or if it is followed by a punctuation sign, the end of sentence or the end of scope.</dd></dl>
+<pre>(XP,%x)([and])(XP=%x,%y):=(and(%y;%x),+LEX=%x,+XP=%x,+rel=and,%xy);
+</pre>
+<dl><dd>creates the relation "and" between two maximal projections of the same category isolated by the conjunction "and" (John and Mary &gt; and(Mary,John).</dd></dl>
+<div class="mw-heading mw-heading2"><h2 id="NLization_(UNL-&gt;ENG)"><span id="NLization_.28UNL-.3EENG.29"></span>NLization (UNL-&gt;ENG)</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=English_grammar&amp;veaction=edit&amp;section=6" title="Edit section: NLization (UNL-&gt;ENG)" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=English_grammar&amp;action=edit&amp;section=6" title="Edit section&#39;s source code: NLization (UNL-&gt;ENG)">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>The NLization process is performed in three different steps:
+</p>
+<ol>
+<li><a href="/wiki/Segmentation" title="Segmentation">Segmentation</a> of UNL sentences is done automatically by the machine. It uses the <a href="/wiki/index.php?title=UNL_document_structure&amp;action=edit&amp;redlink=1" class="new" title="UNL document structure (page does not exist)">UNL document structure</a> to split the input UNL document into a set of sentences to be processed one at a time.</li>
+<li><a href="/wiki/Tokenization" title="Tokenization">Tokenization</a> of each sentence is done against the dictionary entries, following the principle of the highest priority first. As there are several lexical ambiguities, some disambiguation rules are required to induce the correct lexical choice. The tokenization is done with the <a href="/wiki/English_Disambiguation_Grammar" title="English Disambiguation Grammar">English Disambiguation Grammar</a>.</li>
+<li><a href="/wiki/Transformation" title="Transformation">Transformation</a> applies after tokenization and is divided in two modules:</li>
+<ol>
+<li>Standardization, which is simply the standardization of the feature structure, carried out by the <a href="/wiki/Standardization_grammar" title="Standardization grammar">Standardization grammar</a></li>
+<li>English-specific transformation is performed by the UNL-&gt;ENG T-Grammar and is divided in three steps:
+<ol>
+<li><b>Semantics</b>, where relations and attributes of UNL are mapped into English structures.</li>
+<li><b>Morphology</b>, where the paradigms are copied from the grammar to each entry.</li>
+<li><b>Post-processing</b>, where the output list is adjusted to the English standards.</li> 
+</ol>
+</li><li>General transformation is performed by the <a href="/wiki/Default_grammar" title="Default grammar">Default grammar</a> and is divided in six steps:
+<ol><li><b>Pre-processing</b> (prepares the input for the processing)</li>
+<li><b>Arborization</b> (converts the syntactic network into a syntactic tree)</li>
+<li><b>Transformation</b> (converts the deep syntactic structure into the surface syntactic structure)</li>
+<li><b>Linearization</b> (converts the syntactic structure into a list structure)</li>
+<li><b>Morphological generation</b> (inflects the words that need to be inflected)</li>
+<li><b>Post-processing</b> (adjusts the final output)</li></ol>
+</li></ol>
+</ol>
+<div class="mw-heading mw-heading3"><h3 id="Examples_of_UNL-&gt;ENG_Transformation_Rules"><span id="Examples_of_UNL-.3EENG_Transformation_Rules"></span>Examples of UNL-&gt;ENG Transformation Rules</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=English_grammar&amp;veaction=edit&amp;section=7" title="Edit section: Examples of UNL-&gt;ENG Transformation Rules" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=English_grammar&amp;action=edit&amp;section=7" title="Edit section&#39;s source code: Examples of UNL-&gt;ENG Transformation Rules">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<pre>agt(%x,V;%y,N):=VS(%x,PER=%y;%y,-CAS,+CAS=NOM); 
+</pre>
+<dl><dd>transforms the agent relation between a verb and a noun into verb specifier relation between the verb and the noun: agt(kill,he) &gt; VS(kill,he)</dd></dl>
+<pre>(%x,N,@def):=(NS(%x,-@def;%y,[the],LEX=D,POS=ART),+LEX=N); 
+</pre>
+<dl><dd>transforms the attribute @def into a noun specifier relation between the noun and the determiner "the": book.@def &gt; NS(book,the)</dd></dl>
+<pre>(%x,@pl):=(%x,-@pl,-NUM,+NUM=PLR);
+</pre>
+<dl><dd>assigns the feature NUM=PLR to the words containing the attribute @pl</dd></dl>
+<pre>(%x,&gt;AND):=(%x,-&gt;AND,+&gt;BLK)([and],LEX=C,POS=CCJ,+&gt;BLK);
+</pre>
+<dl><dd>generates the conjunction "and" to the right of the words containing the feature "&gt;AND"</dd></dl>
+<pre>(D,%d)([all],%all):=(%all)(%d); 
+</pre>
+<dl><dd>reverts the order between determiners and "all": the all books &gt; all the books, my all books &gt; all my books</dd></dl>
+<div class="mw-heading mw-heading2"><h2 id="Notes">Notes</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=English_grammar&amp;veaction=edit&amp;section=8" title="Edit section: Notes" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=English_grammar&amp;action=edit&amp;section=8" title="Edit section&#39;s source code: Notes">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<div class="mw-references-wrap"><ol class="references">
+<li id="cite_note-1"><span class="mw-cite-backlink"><a href="#cite_ref-1">↑</a></span> <span class="reference-text">Two dictionaries are necessary for each language: the language-specific dictionary, and the <a href="/wiki/Default_Dictionary" title="Default Dictionary">Default Dictionary</a>, which contains language-independent entries, such as punctuation signs and regular expressions. The default dictionary must be loaded after the language-specific dictionary.</span>
+</li>
+<li id="cite_note-2"><span class="mw-cite-backlink"><a href="#cite_ref-2">↑</a></span> <span class="reference-text">Three t-grammars are necessary for each language: the <a href="/wiki/Standardization_grammar" title="Standardization grammar">Standardization grammar</a>, the language-specific grammar, and the <a href="/wiki/Default_grammar" title="Default grammar">Default grammar</a>. The standardization grammar and the default grammar are language-independent. The grammars must be loaded in this order: 1) standardization, 2) language-specific, and 3) default.</span>
+</li>
+<li id="cite_note-3"><span class="mw-cite-backlink"><a href="#cite_ref-3">↑</a></span> <span class="reference-text">Two dictionaries are necessary for each language: the language-specific dictionary, and the <a href="/wiki/Default_Dictionary" title="Default Dictionary">Default Dictionary</a>, which contains language-independent entries, such as punctuation signs and regular expressions. The default dictionary must be loaded after the language-specific dictionary.</span>
+</li>
+<li id="cite_note-4"><span class="mw-cite-backlink"><a href="#cite_ref-4">↑</a></span> <span class="reference-text">Three t-grammars are necessary for each language: the <a href="/wiki/Standardization_grammar" title="Standardization grammar">Standardization grammar</a>, the language-specific grammar, and the <a href="/wiki/Default_grammar" title="Default grammar">Default grammar</a>. The standardization grammar and the default grammar are language-independent. The grammars must be loaded in this order: 1) standardization, 2) language-specific, and 3) default.</span>
+</li>
+</ol></div>
+<!-- 
+NewPP limit report
+Cached time: 20260910162201
+Cache expiry: 86400
+Reduced expiry: false
+Complications: [show‐toc]
+CPU time usage: 0.022 seconds
+Real time usage: 0.023 seconds
+Preprocessor visited node count: 119/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/100
+Expensive parser function count: 0/100
+Unstrip recursion depth: 0/20
+Unstrip post‐expand size: 2385/5000000 bytes
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    0.000      1 -total
+-->
+
+<!-- Saved in parser cache with key u965818192_SLvgQ-l8z2_:pcache:447:|#|:idhash:canonical and timestamp 20260910162201 and revision id 11810. Rendering was triggered because: diff-page
+ -->
+</div>

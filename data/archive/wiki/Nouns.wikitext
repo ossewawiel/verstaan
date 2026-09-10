@@ -1,0 +1,32 @@
+To be represented as UWs, if common nouns or widely known proper names, or as [[temporary UWs]], otherwise.
+
+== Attributes ==
+
+;[[Gender]], if marked and grammaticalized;
+:teacher = teacher (no gender information)
+:female teacher = teacher.@female 
+:une enseignante = enseignant.@female 
+:la femme = femme (gender lexicalized)
+;[[Number]], if marked and grammaticalized;
+:books = book.@pl
+:few books = book.@paucal
+:several books = book.@multal
+:livres = livres.@pl
+:peuple = peuple (number lexicalized)
+;[[Determiners]], when informed;
+:this book = book.@proximal
+:that book = book.@distal
+:other book = book.@other
+:le livre = livre.@def
+:un livre = livre.@indef
+:ce livre-ci = livre.@proximal
+:ce livre-là = livre.@distal
+
+Observations:<br />
+;Proper names are not expected to have any attribute, except when used as common nouns:
+:The United States of America = United States of America (and not "United States of America.@def.@pl")
+:Le Petit Prince = Petit Prince (and not "Petit Prince.@def")
+:Le Caire = Caire (and not "Caire.@def")
+:However: 
+::Is there a Paul in this classroom = Paul.@indef
+::There are many Indias = India.@many

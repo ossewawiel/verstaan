@@ -1,0 +1,68 @@
+'''Tense''' is a category used in the grammatical description of verbs (along with [[aspect]] and [[mood]]), referring primarily to the way the grammar marks the time at which the action denoted by the verb took place. It can be broadly classified as:
+*'''absolute tense''': indicates time in relationship to the time of the utterance (i.e. "now"). 
+*'''relative tense''': in relationship to some other time, other than the time of utterance.
+
+
+== Natural language == 
+In the UNLarium framework, the attribute tense is represented by the following hierarchy, where lower levels subsume upper levels:
+
+{{#tree:id=nl_tense|openlevels=0|root=Tense (TNS)|
+*absolute tense
+**present (PRS): in the present
+**past (PAS): in the past
+***hesternal past tense (HEP): before yesterday
+***prehesternal past tense (PEP): before hesternal tense
+***hodiernal past tense (HOP): before today
+***prehodiernal past tense (POP): before hodiernal tense
+***immediate past tense (IPT): very recent past
+***nonrecent past tense (NRCP): before recent past
+***recent past tense (RCP): recent past
+***nonremote past tense (NRMP): after remote past
+***remote past tense (RMP): remote past
+**future (FUT): in the future
+***near future (FUN): in the near future
+***remote future (FUR): not in the near future
+**nonpast (NPAS): not in the past
+**nonfuture (NFUT): not in the future
+**still (STL): immediately before the utterance
+**not-yet (NYET): expected to occur in the future
+*relative tense
+**relative past (RPT): before an absolute tense
+**relative nonpast (NRPT): not before an absolute tense
+**relative present (RPS): at the absolute tense
+**relative future (RFT): after an absolute tense
+**relative nonfuture (NRFT): not after an absolute tense
+}}
+
+;General tenses
+:General tenses, such as simple past or simple future in English, are indicated by the uppermost level of the corresponding branch.
+::English
+:::simple past = PAS
+:::simple future = FUT
+;Relative and absolute-relative tenses are indicated by combining absolute and relative tags through "&":
+:English: 
+::past perfect (= past of the past): PAS&RPT
+::future perfect (= past of the future): FUT&RPT
+:French:
+::passé antérieur (= past of the past):  PAS&RPT
+::future antérieur (= past of the future): FUT&RPT
+;Tense, mood and aspect
+:Tense, mood and aspect can be conjoined with "&":
+::aorist: PAS&PFV
+::imperfect (past imperfect): PAS&NPFV
+::present perfect: PRS&PFC
+;Simple and compound tenses
+:The difference between simple and compound forms must be informed only if they represent different alternatives for the same tense. Compounds are indicated through the attribute "CPW":
+::French
+:::passé simple: PAS
+:::passé composé: PAS&CPW
+
+
+
+== UNL ==
+In UNL, tense is to be represented by [[time|time attributes]].
+
+== Examples ==
+List of grammatical tenses:
+*[[English grammar#Verb forms|English tenses]]
+*[[French grammar#Verb forms|French tenses]]

@@ -1,0 +1,95 @@
+The '''UNL Ontology''', formerly known as the UW System, is a tree-like structure where UWs are interconnected through hierarchical relations: icl (is-a-kind-of) and iof (is-an-instance-of). Differently from the [[UNL Knowledge Base]], which comprises any relation necessary to define a given UW, the UNL Ontology contains only '''monotonic''' relations, i.e., relations that preserve the features of their arguments, and that may be used for inheritance.<br /><br />
+The UNL Ontology may be provided in two different formats:
+*Extended, in XML; or
+*Simplified, as a set of [[Grammar_Specs#Disambiguation_Rules|network disambiguation rules]]
+
+
+== Extended format ==
+
+UNL Ontology entries in extended format must have the following structure:
+
+ <relation name="RNAME" type="RTYPE" frequency="RFREQ">
+   <source id="SID" attribute="ATT" lang="UNL" frequency="SFREQ" class="SCLASS">SOURCE</source>
+   <target id="TID" attribute="ATT" lang="UNL" frequency="TFREQ" class="TCLASS">TARGET</target>
+ </relation>
+
+Where:<br />
+RNAME is either "icl" (is-a-kind-of) or "iof" (is-an-instance-of);<br />
+RTYPE is the type of the existing relation<br />
+RFREQ is either 0 (false) or 1 (true);<br />
+SFREQ is the frequency of the SOURCE in the corpus;<br />
+TFREQ is the frequency of the TARGET in the corpus;<br />
+SID is a number used to identify the SOURCE;<br />
+TID is a number used to identify the TARGET;<br />
+ATT is one of the existing UNL attributes ("entry", "past", etc);<br />
+SCLASS is the general class of the SOURCE;<br />
+TCLASS is the general class of the TARGET;<br />
+SOURCE is the source node of the UNL relation; <br />
+TARGET is the target node of the UNL relation; <br />
+
+=== XML Schema ===
+
+<pre>
+<?xml version="1.0" encoding="utf-16"?>
+<xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" version="1.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+ <xsd:element name="ontology">
+   <xsd:complexType>
+     <xsd:sequence>
+       <xsd:element maxOccurs="unbounded" name="relation">
+         <xsd:complexType>
+           <xsd:sequence>
+             <xsd:element name="source">
+               <xsd:complexType>
+                 <xsd:attribute name="id" type="xsd:unsignedLong" use="required" />
+                 <xsd:attribute name="attribute" type="xsd:string" use="optional" />
+                 <xsd:attribute name="lang" type="xsd:string" use="optional" />
+                 <xsd:attribute name="frequency" type="xsd:int" use="optional"/>
+                 <xsd:attribute name="class" type="xsd:string" use="optional"/>
+               </xsd:complexType>
+             </xsd:element>
+             <xsd:element name="target">
+               <xsd:complexType>
+                 <xsd:attribute name="id" type="xsd:unsignedLong" use="required"/>
+                 <xsd:attribute name="attribute" type="xsd:string" use="optional" />
+                 <xsd:attribute name="lang" type="xsd:string" use="optional"/>
+                 <xsd:attribute name="frequency" type="xsd:int" use="optional"/>
+                 <xsd:attribute name="class" type="xsd:string" use="optional"/>
+               </xsd:complexType>
+             </xsd:element>
+           </xsd:sequence>
+           <xsd:attribute name="name" type="xsd:string" use="required"/>
+           <xsd:attribute name="type" type="xsd:string" use="optional"/>
+           <xsd:attribute name="frequency" type="xsd:int" use="optional"/>
+         </xsd:complexType>
+       </xsd:element>
+     </xsd:sequence>
+   </xsd:complexType>
+ </xsd:element>
+</xsd:schema>
+</pre>
+
+=== Example ===
+
+ <?xml version="1.0" encoding="utf-16"?>
+ <ontology>
+  <relation name="icl" frequency="1">
+   <source id="410" attribute="entry" lang="UNL" frequency="20" class="nou">100001930</source>
+   <target id="2243" lang="UNL" frequency="2" class="nou">100001740</target>
+  </relation>
+ </ontology>
+
+== Simplified format ==
+
+UNL Ontology entries in simplified format must have the structure of [[Grammar_Specs#Disambiguation_Rules|network disambiguation rules]], as follows:
+
+ RELATION(SOURCE;TARGET)=DC;
+
+Where:<br />
+RELATION is either "icl" or "iof";<br />
+SOURCE is the source UW of the UNL relation;<br />
+TARGET is the target UW of the UNL relation; <br />
+DC is either 0 (false) or 1 (true)<br />
+
+=== Examples ===
+
+<nowiki>icl(<[[100001930]];[[100001740]])=1; (= a physical entity is a kind of entity)</nowiki><br />

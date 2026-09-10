@@ -1,0 +1,35 @@
+The '''UNL<->NL Memory''' is a set of mappings between a given natural language and UNL. It may be unidirectional (UNL-NL Memory or NL-UNL Memory) or bidirectional (UNL<->NL Memory). It is used to improve and normalize the results of the [[UNLization]] and the [[NLization]], as it contain segments that have been previously UNLized or NLized.<br/><br />
+The UNL<->NL Memory may be provided in two different formats:
+*Extended, in TMX; or
+*Simplified, as a set of [[Grammar_Specs#Disambiguation_Rules|network disambiguation rules]]
+
+
+
+== Extended format ==
+
+UNL<->NL Memory entries in extended format must comply with the [http://www.gala-global.org/lisa-oscar-standards Translation Memory eXchange Specs], as follows:
+
+    <tu>
+        <tuv xml:lang="en"><seg>a good deal</seg><tuv>
+        <tuv xml:lang="unl"><seg>400059171</seg><tuv>
+    </tu>
+     
+Where:<br />
+<tu> is the beginning of the translation unit<br />
+</tu> is the end of the translation unit<br />
+<tuv> is the beginning translation unit variant<br />
+</tuv> is the end of the translation unit variant<br />
+<seg> is the beginning of the translation segment<br />
+</seg> is the end of the translation segment<br />
+
+== Simplified format ==
+
+UNL<->NL Memory entries in simplified format must be represented as a set of [[Grammar_Specs#Disambiguation_Rules|network disambiguation rules]], as follows:
+
+ equ(SOURCE;TARGET)=DC;
+
+Where:<br />
+equ is the UNL relation for "equivalent";<br />
+SOURCE is the source segment;<br />
+TARGET is the target segment; <br />
+DC is the degree of certainty (i.e., the likelihood of the relation between the SOURCE and the TARGET)<br />

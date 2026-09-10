@@ -1,0 +1,94 @@
+The UNDL Foundation invites submissions to the second volume of the UNL Series, to be published on January 2015, and which will be dedicated to the nature and role of  [[relation]]s and [[attribute]]s in the UNL framework. The participation is open and free, and the submissions must necessarily comply with the instructions below. Authors of selected papers will be invited to present their work in the II UNL Panel, to be held in Geneva, on March 2015. The UNDL Foundation will pay the travel and accommodation expenses for the selected candidates not living in Geneva.
+
+== Important Dates ==
+*Deadline for submission: 10 Jan 2015
+*Notification of acceptance: 10 Feb 2015
+*Final version: 28 Feb 2015
+*II UNL Panel: March 2015
+
+== Goal ==
+The main purpose of the UNL Panel is to collect the opinion of specialists, from inside and outside the UNL Community, about technical issues of the UNL, as to prepare the ground for an in-depth revision of the current specifications.
+
+== Rationale ==
+Originally proposed more than 15 years ago, the UNL Specs have not escaped from the action of time and have not incorporated yet several recent advances in the domain of natural language processing. Additionally, there has been a claim for better standardization practices in the UNL framework, especially after the results of the large-scale development inside the [http://www.unlweb.net UNLweb]. In order to organize this discussion, the UNDL Foundation divided the subjects into three chapters, to be addressed in three different meetings:
+*Universal Words (the set, notation and properties of UWs), which have been already addressed at the I UNL Panel (COLING 2012), and whose results are available at MARTINS, R. (ed). (2013). Lexical Issues of UNL: Universal Networking Language 2012 Panel. Cambridge: Cambridge Scholars Publishing. 
+*Relations and Attributes (the set, notation and properties of relations and attributes), which is the object of this II UNL Panel; and
+*Document structure (format, encoding, schema and validation)
+ 
+== Questions == 
+'''Considering the commitments, assumptions and properties defined at the [[Introduction to UNL]]''', how would you represent, as a language-independent semantic graph, the following English sentences?
+
+#The disappointment killed Mary.
+#The book is right under the table.
+#Peter is between John and Mary.
+#John took a very long nap.
+#John made Peter go away.
+
+== Current answers ==
+The sentences above illustrate some theoretical and practical issues concerning relations and attributes that have been receiving several different possible answers within the current UNL framework. The main goal of II UNL Panel is to discuss which answers would be more appropriate and feasible, considering the state of the art of the theory and technology on natural language processing. We would ask participants to use them as starting points for their presentations, but we would expect them to suggest some general procedures to be adopted in similar cases. The current answers are the following: 
+
+;1. The disappointment killed Mary.
+:a) agt(killed,disappointment), i.e., as an agent relation between "killed" and "disappointment", because "disappointment" caused Mary to die;
+:b) agt(killled,disappointment.@metaphor), i.e., as an agent relation between "killed" and "disappointment" and an attribute .@metaphor to be assigned to "disappointment" (or to "killed"? or to "agt"?), in order to indicate that a "disappointment" cannot actually "cause" the death of anyone;
+:c) man(killed,disappointment), i.e., as a manner relation between "killed" and "disappointment", because a disappointment is rather a manner or a state in which Mary died;
+:d) ???(killed,disappointment), i.e., as a different relation between "killed" and "disappointment" (in this case, which relation?);
+:e) killed(disappointment, Mary), i.e., not as a semantic case, but as a content relation (in this case, how to handle languages where the verb "to kill" is lexicalized as "to cause to die"?). 
+:f) other (please specify).
+
+;2. The book is right under the table.<ref>Consider, please, that the resulting semantic graph must be suitable for languages that do not lexicalize place relations, i.e., where "the book is right under the table" is translated as "the book is tableunder", where "under" is a locative case marker and not an adposition. Consider, also, that the original sentence was "The book is RIGHT under the table", and that none of the answers proposed cover this intensification.</ref>
+:a) place(book,table), i.e., as a general relation "place"  between "book" and "table", without any reference to the idea that the book is "under" (and not "in", "above", "near" etc.);
+:b) under(book,table), i.e., as a specific relation "under" between "book" and "table", without any reference to the idea that "under" is actually a possible value of "place";
+:c) relation1(book,under)relation2(under,table), i.e., as two different relations, as if there is no direct relation between "book" and "table" (in this case, which would be labels of relation1 and relation2?);
+:d) place(book,table.@under), i.e., as a general "place" relation between "book" and "table" and by an attribute "@under" assigned to "table", in order to specify its role;
+:e) place.@under(book,table), i.e., as a general "place" relation between "book" and "table"  and by an attribute "@under" assigned to the relation itself;
+:f) other (please specify).
+
+;3. Peter is between John and Mary.
+:a) place(Peter,:01)between:01(John,Mary), i.e., as a general relation "place" between "Peter" and the relation "between(John, Mary)";
+:b) place(Peter,:01.@between)and:01(John,Mary), i.e., as a general relation "place" between the relation "and(John,Mary)" with the attribute .@between;
+:c) between(Peter,John,Mary), i.e., as one single ternary relation "between" between "Peter", "John" and "Mary" (in this case, consider the implications, to the model, of relations with three arguments);
+:d) relation1(Peter,John)relation2(Peter,Mary), i.e., as two (different?) relations between "Peter" and "John", and "Peter" and "Mary", because both "John" and "Mary" are spatial referents for "Peter" (in this case, please specify the relations);
+:e) place(Peter,John.@attribute1)place(Peter,Mary.@attribute2), i.e., as a general relation "place" between "Peter and "John", and "Peter" and "Mary", modified by the corresponding attributes (in this case, please specify which attributes);
+:f) other (please specify).
+
+;4. John took a very long nap.
+:a) exp(took a nap,John), i.e., as a general relation "experiencer" between "took a nap" and "John", without any reference to the fact that it was a "long" nap;
+:b) exp(took a nap.@intensifier,John), i.e., as a general relation "experiencer" between "took a nap" and "John" and an intensification attribute (in this case, indicate which intensifier should be used in order to convey the information that the nap was "very long" and not, for instance, "long" and "deep";
+:c) exp(take,John)cnt(take,nap)mod(nap,long.@plus), i.e., as three relations: an experiencer relation between "take" and "John", a content relation between "take" and "nap", and a modifier relation between "nap" and "long.@plus" (in this case, consider the case of languages were "to take a nap" would be consider one single lexical unit);
+:d) other (please specify);
+
+;5. John made Peter go away.
+:a) agt(made,John)res(made,:01)???:01(go away,Peter), i.e., as a relation "agent" between "made" and "John", a relation "result" between "John" and "Peter go away",  because "Peter go away" is the result of the action of "John" (in this case, consider which would be the semantic case between "Peter" and "go away");
+:b) agt(made,John)obj(made,Peter)???(made,go away), i.e., as a relation "agent" between "made" and "John", a relation "patient" between "John" and "Peter" (because "Peter" suffered the action), and another relation between "made" and "go away" (in this case, consider which would be the semantic case between "made" and "go away", and how the information that it was "Peter" that went away would be represented);
+:c) agt(made,John)obj(made,Peter)???(go away,Peter), i.e., as a relation "agent" between "made" and "John", a relation "patient" between "John" and "Peter" (because "Peter" suffered the action), and another relation between "Peter" and "go away" (in this case, consider which would be the semantic case between "Peter" and "go away", and how the information that it was "John" that caused Peter to go away would be represented);
+:d) other (please specify).
+
+== Instructions to authors ==
+Specialists are requested to explain their positions in a paper in a question-answer format, which must necessarily address the five questions above. The papers must comply with the following format: 
+*Language: English
+*Format: .docx, .doc, .rtf or .odt
+*Length: from 5 to 30 pages
+*Page: A4 with margins of 2.5 cm. 
+*Title: Times 16, centralized. Each paper must have its own title (do not use "Lexical Aspects of UNL", "I UNL Panel" or other very general titles)
+*Authors: Times 14, centralized, two lines after the title, separated by comma (in case of more than one author)
+*Authors' afiliation: Footnote
+*Abstract (from 150 to 250 words): Times 12, two lines after the authors
+*Headings: Times 14, justified, numbered (1, 1.1, 1.1.1), with an extra line before each heading
+*Body: Times 12, justified, single spacing, indentation of 1.25 cm in the first line of each paragraph
+*Footnotes: Times 10, justified, single spacing. Use footnotes instead of end notes. Footnotes should not contain figures, tables and/or the bibliographic details of a reference.
+*Tables and figures should have a number and a caption. Do not use color.
+*Citations: use the [http://libweb.anglia.ac.uk/referencing/harvard.htm Harvard System]. For instance: Redman (2006, p.22) or (Redman, 2006, p.22)
+*References: use the [http://libweb.anglia.ac.uk/referencing/harvard.htm Harvard System]. For instance: Redman, P., 2006. ''Good essay writing: a social sciences guide''. 3rd ed. London: Open University.
+
+== Submission ==
+The chapters must be submitted through the form available at www.unlweb.net.br/research.
+
+== Support ==
+Authors<ref>Only one author per chapter</ref> of selected papers will be invited to present their work in the II UNL Panel, to be held in Geneva, on March 2015. 
+The UNDL Foundation will pay the following travel and accommodation expenses for the selected candidates not living in Geneva:
+*a round-trip plane, bus or train ticket from/to Geneva in economic class;
+*4 (four) nights at a mid-range hotel in Geneva; and
+*CHF1000.00 (one thousand Swiss francs), to cover any other expenses, including meals and transportation.
+
+== Notes ==
+<references />

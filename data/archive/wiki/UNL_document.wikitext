@@ -1,0 +1,59 @@
+'''UNL documents''' are documents written in UNL. They are plain text files that include [[UNL Sentences]] and some special tags. They are the output of the [[UNLization]] process and the input of the [[NLization]] process. 
+
+== Syntax ==
+
+A UNL document is enclosed with tags “[D:<id>]” and “[/D]”. Within these tags, each paragraph is enclosed with a pair of tags “[P:<id>]” and “[/P]”, and each sentence is enclosed with a pair of tags “[S:<id>]” and “[/S]”. Inside a sentence, the text of original sentence is enclosed with “{org:<lang>}” and “{/org}”, its UNL expression is enclosed with “{unl:<id>}” and “{/unl}”. Sentences of target languages can also be stored in the UNL document. Each target sentence is enclosed with a pair of language tags “{<lang>}” and “{</lang>}” following the UNL expression of each sentence.
+
+<div align="center">
+{|border="1"
+|+
+==== Tags used in UNL Documents ====
+!Tag
+!Description
+|-
+|[D:<id>] 
+|indicates the beginning of a document.
+|-
+|[/D] 
+|indicates the end of a document
+|-
+|[P:<id>] 
+|indicates the beginning of a paragraph.
+|-
+|[/P] 
+|indicates the end of a paragraph
+|-
+|[S:<id>] 
+|indicates the beginning of a sentence.
+|-
+|[/S] 
+|indicates the end of a sentence
+|-
+|<nowiki>{org:<lang>=<code>}</nowiki>
+|indicates the beginning of an original/source sentence
+|-
+|{/org} 
+|indicates the end of an original sentence
+|-
+|{unl:<id>} 
+|indicates the beginning of the UNL expressions of a sentence.
+|-
+|{/unl} 
+|indicates the end of the UNL expressions of a sentence
+|-
+|{<lang>} 
+|indicates the beginning of a target sentence of the language indicated by <lang> 
+|-
+|{/<lang>} 
+|indicates the end of a target sentence of the language indicated by <lang> 
+|}
+</div>
+
+;Where
+:<nowiki>:</nowiki><b><id></b> (optional), which is normally represented by an integer, may be any sequence of characters used to identify the document, the sentence, the paragraph or the UNL expression
+:<b><lang></b> (optional in case of {org}) corresponds to the language code in ISO639-2 or ISO639-3
+:<b>=<nowiki><code></nowiki></b> (optional) corresponds to the character encoding
+
+== Semantics ==
+
+For the time being, a UNL document is simply a collection of UNL sentences. However, it can also be treated as a hypergraph itself, comprising several subhypergraphs (the UNL sentences) inter-related by a special relation "nxt" (for "next"), which indicates sequential order. In the [[XUNL Project]], we have been proposing some other strategies for representing cross-sentential relations, which are, however, still under discussion.

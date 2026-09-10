@@ -1,0 +1,40 @@
+Relations are altered, replaced, created and deleted by [[S-rule]]s:
+
+=== Altering nodes in a relation ===
+Elements of nodes in relations are altered through the operators + (add) and - (delete). The operator + may be omitted. 
+*rel(%x,A;%y,B):=rel(%x,+C;%y,+D); (add the feature C to %x and D to %y)
+*rel(%x,A;%y,B):=rel(%x,C;%y,D);(the same as above)
+*rel(%x,A;%y,B):=rel(%x,-A;%y); (delete the feature A from %x)
+"strings", [headwords] and <nowiki>[[UWs]]</nowiki> are considered to be features (but a single node may have only one of each)
+*rel(%x;%y):=rel(%x,"a";%y); (replace the existing string in %x, if any, by "a")
+*rel(%x;%y):=rel(%x,[A];%y);(replace the existing headword in %x, if any, by [A])
+*rel(%x;%y):=rel(%x,<nowiki>[[A]]</nowiki>;%y); (replace the existing UW in %x, if any, by <nowiki>[[A]]</nowiki>)
+
+=== Creating nodes in a relation ===
+Nodes are created when they are not co-indexed to any node in the left side (see [[Indexation]]):
+*rel(%x,A;%y,B):=rel(%x;%y;'''%z,+A'''); (the node %z, with the feature A, is created as a new argument of the relation rel)
+
+=== Deleting nodes in a relation ===
+Nodes are deleted when they are not co-indexed to any node in the right side (see [[Indexation]]):
+*rel(%x,A;%y,B;'''%z,C'''):=rel(%x;%y); (the node %z is deleted as an argument of the relation rel)
+Nodes are completelly deleted if, and only if, they are not part of any other relation
+
+=== Creating relations ===
+Relations are created by the operator + (add) before the relation to be created. This operator may not be omitted.
+*rel(%x;%y):=+rel2(%x;%z); (a new relation rel2 is created between the nodes %x and %z; the original relation is not altered)
+Creation of relations is a possible source of infinite loops. In order to prevent the rule from applying eternally, the condition field must be controlled:
+*rel(%x;%y)^rel2(%x;%z):=+rel2(%x;%z); 
+
+=== Deleting relations ===
+Relations are deleted when they are not repeated in the right side, except in case of + 
+*rel(%x;%y):=; (the relation rel between the nodes %x and %y is deleted)
+*rel(%x;%y):=rel2(%x;%y); (the relation rel between %x and %y is deleted and a new relation rel2 is created in its place) (replacement)
+*rel(%x;%y):=+rel2(%x;%y); (the relation rel is preserved and a new relation rel2 is created) (creation)
+
+=== Replacing relations ===
+Relations in the left side are replaced by relations in the right side, except in case of +:
+*rel(%x;%y):=rel2(%x;%y); (the relation rel between %x and %y is deleted and a new relation rel2 is created in its place) 
+*rel1(%x;%y)rel2(%y;%z):=rel3(%x;%z); (the relations rel1 and rel2 are deleted and a new relation rel3 is created in their place) (merge)
+*rel(%x;%y):=rel1(%x;%y)rel2(%y;%z); (the relation rel is deleted and two new relations rel1 and rel2 are created in its place) (divide)
+*(%x)(%y):=rel(%x;%y); (the linear relation between the nodes %x and %y is replaced by the non-linear relation rel between the same nodes)
+*L(%x;%y):=rel(%x;%y); (the same as above)

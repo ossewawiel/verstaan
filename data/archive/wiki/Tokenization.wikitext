@@ -1,0 +1,257 @@
+Tokenization is the process of segmenting the input into [[nodes]], i.e., the tokens or processing units of the UNL framework.<br />
+In [[UNLization]], tokenization corresponds to splitting the natural language input into lexical items, i.e., to recognize that the string "Barking dogs seldom bite" contains 7 tokens: [barking][ ][dogs][ ][seldom][ ][bite], if these entries are provided in the [[dictionary]].<br />
+In [[NLization]], tokenization  corresponds to splitting the UNL graph into UWs, relations and attributes, i.e., to recognize that, in the graph "agt(bite,dog.@pl)mod(dog.@pl,bark)tim(bite,seldom)", there are three relations ("agt", "mod" and "tim"), one attribute ("@pl") and 4 UWs ("bite", "dog", "bark" and "seldom").
+
+== System-assigned values ==
+The following tokens are created by default.
+:SCOPE - Scope
+:SHEAD - Sentence head (the beginning of a sentence)
+:STAIL - Sentence tail (the end of a sentence)
+:CHEAD - Scope head (the beginning of a scope)
+:CTAIL - Scope tail (the end of a scope)
+:TEMP - Temporary entry (entry not found in the dictionary)
+:DIGIT - Any sequence of digits (i.e.: 0,1,2,3,4,5,6,7,8,9)
+
+== UNLization (tokenization of natural language input) ==
+The tokenization of the natural language input follows the general principles below:
+#Except for digits, the tokenization algorithm is '''strictly dictionary-based'''
+#:The system tries to match the strings of the natural language input against the entries existing in the dictionary. In case it does not succeed, the string is treated as a temporary entry. There is not predefined token: spaces and punctuation signs have to be inserted in the dictionary in order to be treated as non-temporary entries. For instance, if the dictionary is empty, the string "Barking dogs seldom bite" will be considered as a single token. If the dictionary contains only the entry [d], the input will be tokenized as [Barking ][d][ogs sel][d][om bite].
+#The tokenization algorithm tries to '''match first the longest entries in the dictionary'''.
+#:The system tries to match first the longest entries. If the dictionary contains only two entries: [d] and [do], the string "Barking dogs seldom bite" will be tokenized as [Barking ][do][gs sel][do][m bite], instead of [Barking ][d][ogs sel][d][om bite], because the length of [do] is larger than the lenght of [d].
+#The tokenization algorithm observes the '''frequency of the entries informed in the dictionary''' (the highest frequent entries come first).
+#:The system observes the frequency defined in the dictionary. If the dictionary contains only two entries: [do] and [og], but the frequency of [og] is higher than the frequency of [do], the string "Barking dogs seldom bite" will be tokenized as [Barking d][og][s sel][do][m bite], instead of [Barking ][do][gs sel][do][m bite].
+#The tokenization algorithm observes the '''order of the entries in the dictionary''' (the system selects the first to appear in case of same frequency)
+#:The system observes the order defined in the dictionary. If the dictionary contains only two entries: [do] and [og], with the same frequency, but [og] appears first in the dictionary, the string "Barking dogs seldom bite" will be tokenized as [Barking d][og][s sel][do][m bite], instead of [Barking ][do][gs sel][do][m bite].
+#The tokenization algorithm goes '''from left to right'''.
+#:The system tokenizes first the leftmost entries. If the dictionary contains only two entries: [do] and [og], with the same length and with the same frequency, the string "Barking dogs seldom bite" will be tokenized as [Barking ][do][gs sel][do][m bite], instead of [Barking d][og][s sel][do][m bite], because [do] appears first than [og].
+#The tokenization algorithm is '''case-insensitive''', except in case of regular expressions
+#:the string "a" will matched by both [a] and [A], but the entry [/a/] will match only the string "a"
+#The tokenization algorithm assigns the feature '''TEMP''' (temporary) to the strings that were not found in the dictionary.
+#:If the dictionary contains only the entry [d], the input will be tokenized as [Barking ][d][ogs sel][d][om bite], and the tokens [Barking ],[ogs sel] and [om bite] will receive the feature TEMP.
+#The tokenization algorithm '''blocks tokens or sequences of tokens prohibited by [[D-rules]]'''.
+#:If the disambiguation grammar contains the rule ("do")("gs sel")=0, and the dictionary contains only two entries: [do] and [og], the string "Barking dogs seldom bite" will be tokenized as [Barking d][og][s sel][do][m bite], regardless the frequency and the order of [do] and [og], because the the possibility of "do" being followed by "gs sel" is prohibited by the grammar.
+#In case of several possible candidates, the tokenization algorithm picks the ones induced by [[D-rules]], if any.
+#:If the disambiguation grammar contains the rule ("og")("s sel")=1, and the dictionary contains only two entries: [do] and [og], the string "Barking dogs seldom bite" will be tokenized as [Barking d][og][s sel][do][m bite], regardless the frequency and the order of [do] and [og], because the the possibility of "og" being followed by "s sel" is induced by the grammar.
+#Retokenization can be done only in the case of entries having the feature TEMP
+
+=== Tokenization of spaces, punctuation signs and symbols ===
+The tokenization does not have any system-defined tokens except for digits. Any token has be to inserted in the dictionary in order to be recognized as a non-temporary entry.
+{|align="center" border="1" cellpadding="2"
+!input
+!dictionary
+!tokenization output
+|-
+|a b
+|empty
+|["a b"], where "a b" = TEMP
+|-
+|a b
+|[a] {} "a" (A) <,,>;
+|[a][" b"], where [" b"] = TEMP
+|-
+|a b
+|[b] {} "b" (B) <,,>;
+|["a "][b], where ["a "] = TEMP
+|-
+|a b
+|[a] {} "a" (A) <,,>;<br />[b] {} "b" (B) <,,>;
+|[a][" "][b], where [" "] = TEMP
+|-
+|a b
+|[a] {} "a" (A) <,,>;<br />[b] {} "b" (B) <,,>;<br />[ ] {} "" (BLK) <,,>;
+|[a][ ][b] (no temporary entries)
+|}
+
+=== Tokenization of digits ===
+Any sequence of isolated digits (i.e., sided by non-temporary tokens) is considered one single token and receives the features TEMP and DIGIT. The UW is considered to be the digit.
+{|align="center" border="1" cellpadding="2"
+!input
+!dictionary
+!tokenization output
+|-
+|1234
+|empty
+|[1234] {} "1234" (TEMP,DIGIT) <,,>;
+|-
+|1,234
+|empty
+|[1,234]{}""(TEMP)<,,>;
+|-
+|1,234
+|[,]{}""(COMMA)<,,>
+|[1]{}""(TEMP,DIGIT)<,,>;<br />[,]{}""(COMMA)<,,>;<br />[234]{}"234"(TEMP,DIGIT)<,,>;
+|-
+|abc123
+|empty
+|["abc123"]{}""(TEMP)<,,>;
+|-
+|abc123
+|[abc]{}"abc"(A)<,,>;
+|[abc]{}"abc"(A)<,,>;<br />[123]{}"123"(DIGIT)<,,>;
+|}
+
+=== Tokenization of temporary entries ===
+Any sequence of characters except digits (and including special symbols, such as space and punctuation signs) not found in the dictionary is considered a temporary entry and receives the feature TEMP. The UW is considered to be empty.
+{|align="center" border="1" cellpadding="2"
+!input
+!dictionary
+!tokenization output
+|-
+|asdfg
+|empty
+|["asdfg"]{}""(TEMP) <,,>;
+|-
+|asdfg hijkl
+|empty
+|["asdfg hijkl"]{}""(TEMP)<,,>;
+|-
+|asdfg hijlk
+|[ ]{}""(BLK)<,,>;
+|["asdfg"]{}""(TEMP)<,,>;<br />[ ]{}""(BLK)<,,>;<br />["hijlk"]{}""(TEMP)<,,>;
+|}
+
+=== Tokenization of natural language entries ===
+
+;Dictionary:<br />
+:[abcde]{}""(...)<...>;<br />
+:[abcd]{}""(...)<...>;<br />
+:[bcde]{}""(...)<...>;<br />
+:[abc]{}""(...)<...>;<br />
+:[bcd]{}""(...)<...>;<br />
+:[cde]{}""(...)<...>;<br />
+:[ab]{}""(...)<...>;<br />
+:[bc]{}""(...)<...>;<br />
+:[cd]{}""(...)<...>;<br />
+:[de]{}""(...)<...>;<br />
+:[a]{}""(A1,...)<...>;<br />
+:[a]{}""(A2,...)<...>;<br />
+:[b]{}""(B1,...)<...>;<br />
+:[b]{}""(B2,...)<...>;<br />
+:[c]{}""(C1,...)<...>;<br />
+:[c]{}""(C2,...)<...>;<br />
+:[d]{}""(D1,...)<...>;<br />
+:[d]{}""(D2,...)<...>;<br />
+:[e]{}""(E1,...)<...>;<br />
+:[e]{}""(E2,...)<...>;<br />
+<br />
+
+;Case 1 
+:input: "abcde"
+:disambiguation rule: NONE
+:tokenization output: [abcde] (the longest entry in the dictionary)
+;Case 2
+:input: "abcde"
+:disambiguation rule: ("abcde")=0; (prohibits the sequence "abcde")
+:tokenization output: [abcd][e] (the second longest possibility from left to right according to the dictionary)
+;Case 3
+:input: "abcde"
+:disambiguation rules: ("abcde")=0;("abcd")("e")=0;
+:tokenization output: [a][bcde] (the third longest possibility from left to right according to the dictionary)
+;Case 4
+:input: "abcde"
+:disambiguation rules: ("abcde")=0;("abcd")("e")=0;("a")("bcde")=0;
+:tokenization output: [abc][de] (the fourth longest possibility from left to right according to the dictionary)
+;Case 5
+:input: "abcde"
+:disambiguation rules: ("/.{3,5}/")=0; (prohibits any token made of 3, 4 or 5 characters)
+:tokenization output: [ab][cd][e]
+;Case 6
+:input: "abXcYde"
+:disambiguation rule: NONE
+:tokenization output: [ab][X][c][Y][de] (where [X] and [Y] are temporary entries)
+
+=== Properties of tokenization ===
+ Positive disambiguation rules only apply over candidates to the same position with the same length
+;Case 7
+:input: "abcde"
+:disambiguation rule: ("abcd")("e")=100; (induces the sequence [abcd][e])
+:tokenization output: [abcde] (positive disambiguation rules do not prevail over the principle of longest first)
+;Case 8
+:input: "abcde"
+:disambiguation rule: ("/.{2,5}/")=0; (prohibits any token made of 2, 3, 4 or 5 characters)
+:tokenization output: [a,A1][b,B1][c,C1][d,D1][e,E1] (among the candidates, these entries come first in the dictionary)
+;Case 9
+:input: "abcde"
+:disambiguation rule: ("/.{2,5}/")=0; (A2)(B2)=1; (induces the sequence [A2][B2])
+:tokenization output: [a,A2][b,B2][c,C1][d,D1][e,E1] (A2 and B2 were chosen instead of A1 and B1)
+ Positive disambiguation rules apply according to their probability and, for the rules with the same probability, according to their order in the grammar
+;Case 10
+:input: "abcde"
+:disambiguation rule: ("/.{2,5}/")=0; (A2)(B2)=1; (A2)(B1)=1; (induces the sequence [A2][B2] and [A2][B1])
+:tokenization output: [a,A2][b,B2][c,C1][d,D1][e,E1] (the rule [A2][B2] has the same probability as [A2][B1] and comes first in the grammar)
+;Case 11
+:input: "abcde"
+:disambiguation rule: ("/.{2,5}/")=0; (A2)(B2)=1; (A2)(B1)=2; (induces the sequence [A2][B2] and [A2][B1])
+:tokenization output: [a,A2][b,B1][c,C1][d,D1][e,E1] (the priority of the rule [A2][B1] is higher than [A2][B2])
+;Case 12
+:input: "abcde"
+:disambiguation rule: ("/.{2,5}/")=0; (A2)(B2)=1; (B1)(C2)=2; (induces the sequence [A2][B1])
+:tokenization output: [a,A1][b,B1][c,C2][d,D1][e,E1] (the priority of the rule [B1][C2] is higher than [A2][B2])
+ The attribute #FINAL is used to indicate context
+ The tokenization algorithm backtracks in case of dead-ends.
+In case of backtracking, the tokenization starts merging nodes from left to right, but considering their size, i.e., the shortest combinations appear first.
+;Case 13
+:input: "abcde"
+:dictionary:
+[a]{}""(...)<...>;<br />
+[b]{}""(...)<...>;<br />
+[c]{}""(...)<...>;<br />
+[d]{}""(...)<...>;<br />
+[e]{}""(...)<...>;<br />
+:disambiguation rule: ("a")("b")("c")("d")("e")=0;
+:tokenization output: [ab][c][d][e] (the first combination of shortest temporary nodes from left to right after [a][b][c][d][e], which was blocked by the disambiguation rule. Note that [ab] is not in the dictionary and, therefore, will be treated as TEMP)
+
+=== <nowiki>#FINAL AND #PREFERRED</nowiki> ===
+The attribute #FINAL and #PREFERRED are used to alter the default order of replacements during tokenization as described in [[D-rules]].
+
+As the tokenization algorithm goes from left to right, the system will try to replace first the rightmost entries in case of blocking patterns. In order to prevent this, the attribute #FINAL should be introduced to the entries that are not expected to be replaced, whereas #PREFERRED is introduced to the entries that are expected to be replaced only if there is no other alternative.
+
+;Case 14
+:input: "abcde"
+:disambiguation rule: ("/.{2,5}/")=0; (A1)(B1)=0; 
+:tokenization output: [a,A1][b,B2][c,C1][d,D1][e,E1] (Since the sequence (A1)(B1) is prohibited by the D-rule, the system tries to replace first B1, which is the rightmost entry)
+:disambiguation rule: ("/.{2,5}/")=0; (A1)(B1,#PREFERRED)=0; 
+:tokenization output: [a,A2][b,B1][c,C1][d,D1][e,E1] (Since the sequence (A1)(B1) is prohibited by the D-rule, the system tries to replace first A1, which is the rightmost entry without the attribute #PREFERRED)
+
+=== Retokenization ===
+Temporary nodes (i.e., nodes having the feature TEMP) may be retokenized. In order to retokenize (split) a non-temporary node, it is necessary to assign the feature TEMP to it (but this does not affect any existing feature, including the headword and the UW). <br />
+Examples:
+*Infixation: add the character "c" between the characters "b" and "d" in case of verbs (V) in the past tense (PAS): abde > abcde, bbdd > bbcde, xbdy > xbcdy, etc.
+Grammar
+#("/.+bd.+/",V,PAS,%x):=(%x,+TEMP,+SPLIT); (assigns TEMP to the node %x if it is V and PAS and contains the string "bd" inside)
+#("/.+b/",SPLIT,%x1)("/d.+/",SPLIT,%x2):=(%x1,-SPLIT,+MERGE)("c",MERGE)(%x2,[],[[]],-SPLIT,+MERGE); (split the string and add "c" after "b" and before "d")
+#(%x,MERGE)(%y,MERGE):=(%x&%y); (merge two adjacent nodes having the feature MERGE)
+#(%x,^MERGE)(%y,MERGE)(%z,^MERGE):=(%x)(%y,-MERGE)(%z); (delete the feature MERGE if there is nothing else to be merged)
+#(%x,^MERGE,^SPLIT,^[[]],TEMP):=(%x,-TEMP); (delete the feature TEMP if there is nothing to be merged or split and the node has a UW)
+Trace<br />
+0 ("abde",[abde],<nowiki>[[abde]]</nowiki>,V,PAS) original node<br />
+1 ("abde",[abde],<nowiki>[[abde]]</nowiki>,V,PAS,TEMP,SPLIT) after applying rule 1 (add TEMP and SPLIT)<br />
+2 ("ab",[abde],<nowiki>[[abde]]</nowiki>,V,PAS,TEMP,MERGE)("c",MERGE)("de",[],[[]],V,PAS,TEMP,MERGE) after applying rule 2 (split "abde" and create "c" in the middle)<br />
+3 ("abc",[abde],<nowiki>[[abde]]</nowiki>,V,PAS,TEMP,MERGE) after applying rule 3 (merge "ab" with "c")<br />
+4 ("abcde",[abde],<nowiki>[[abde]]</nowiki>,V,PAS,TEMP,MERGE) after applying rule 3 (merge "abc" with "de")<br />
+5 ("abcde",[abde],<nowiki>[[abde]]</nowiki>,V,PAS,TEMP) after applying rule 4 (remove MERGE)<br />
+6 ("abcde",[abde],<nowiki>[[abde]]</nowiki>,V,PAS) after applying rule 5 (remove TEMP)<br />
+Observations:
+;Splitting operations affect only strings. All the features of the source node, including headword and UW, are preserved in the target nodes:
+Given the node ("abcd",<nowiki>[abcd]</nowiki>,<nowiki>[[abcd]]</nowiki>,A),<br />
+the retokenization rule ("ab",%x)("cd",%y):=(%x)("1",%z)(%y);<br />
+does not affect the original headword, UW and feature, i.e.:<br />
+the nodes ("ab") and ("cd") still have, each one, the features <nowiki>[abcd]</nowiki>,<nowiki>[[abcd]]</nowiki>,A.<br />
+Because of that, it is important (as indicated in the rule 2 above) to delete the UW and the headword of all split nodes except one; otherwise, when we merge them back, the UW and the headword will be multiplied, because the merge rule concatenates strings, UWs and headwords. For instance, if the rule 2 in the grammar above were:<br />
+2 ("/.+b/",SPLIT,%x1)("/d.+/",SPLIT,%x2):=(%x1,-SPLIT,+MERGE)("c",MERGE)(%x2,-SPLIT,+MERGE); (i.e., if it did not contain [],[[]])<br />
+The final result would have been:<br />
+6 ("abcde",[abdeabde],<nowiki>[[abdeabde]]</nowiki>,V,PAS)
+
+== NLization (tokenization of UNL input) ==
+The tokenization of the UNL input does not involve special issues. It simply follows the structure of the [[UNL document]], which is not ambiguous.
+
+;Case 15
+:Dictionary:<br />
+[x]{}"x"(...)<...>;<br />
+[xa]{}"x.@a"(...)<...>;<br />
+[xab]{}"x.@a.@b"(...)<...>;<br />
+[y]{}"y"(...)<...>;<br />
+:Input:
+agt(x.@a.@b,y)
+:Tokenization output
+agt([xab],[y])

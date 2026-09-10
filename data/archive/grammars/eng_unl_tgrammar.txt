@@ -1,0 +1,84 @@
+﻿;============================================================================================
+;ENG-UNL TRANSFORMATION GRAMMAR FOR THE CORPUS UC-A1
+;Documentation available at http://www.unlweb.net/wiki/English_grammar
+;This grammar must be used with the NL-UNL Default Transformation Grammar (available at http://www.unlweb.net/wiki/Default_grammar)
+;============================================================================================
+
+;============================================================================================
+;============================================================================================
+;1. ENGLISH MORPHOLOGY
+;============================================================================================
+;============================================================================================
+
+;============================================================================================
+;1.1 NOUNS
+;============================================================================================
+;Number
+(N,PLR,^@pl,^@multal,^@paucal,^@all):=(+att=@pl); books > book.@pl
+;============================================================================================
+
+;============================================================================================
+;1.2 VERBS
+;============================================================================================
+;Tense and aspect
+(AUX,%x)(GER,%y):=(%y,+att=@progressive,+att=%x);  is.@present killing > killing.@progressive.@present
+(AUX,%x)(V,%y):=(%y,+att=%x); will.@future kill > kill.@future
+(^AUX,^BLK,^[not],^[n't])(V,{^AUX|COP},PRS,^@present):=()(+att=@present); kill > kill.@present
+(^AUX,^BLK,^[not],^[n't])(V,{^AUX|COP},PAS,^@past):=()(+att=@past); killed < kill.@past
+;Modality 
+(MOV,%x)(V,%y):=(%y,+att=%x); must.@obligation kill > kill.@obligation
+;Negation
+([not])([to],%x)(V,%y):=(%x)(+att=@not,%y); not to do > do.@not
+({[not]|[n't]})({V,^AUX|J|N|A|D},%x):=(+att=@not,%x); not kill > kill.@not
+;Reflexivity and reciprocity
+(VB,%x)(FPR):=(%x,+att=@reflexive); kill himself > kill.@reflexive
+
+;============================================================================================
+;============================================================================================
+;2. ENGLISH SYNTAX
+;============================================================================================
+;============================================================================================
+
+;============================================================================================
+;2.1 NP (Noun Phrase)
+;============================================================================================
+;Compounds 
+(N,%x)(NB,%y)({XP,^D,^J|PUT|STAIL|CTAIL},%right):=(NB(%y,+proj;%x,+adjt),+XB=NB,+LEX=N,%new)(%right); glass mug > NB(mug, glass)
+;Possessive determiners (POD)
+(POD,%x)(NB,%y)({^N|PUT|STAIL|CTAIL},%right):=(NB(%y;%x,+adjt,+pos),+LEX=N,+XB=NB,%new)(%right); my book > NB(book,I)
+;Determiners (D)
+(D,att,%x)(NB,%y)({^N|PUT|STAIL|CTAIL},%right):=(%y,+att=%x)(%right); the.@def book > book.@def
+;============================================================================================
+
+;============================================================================================
+;2.2 JP (Adjective Phrase)
+;============================================================================================
+;Intensifiers (SAV)
+(SAV,att,%x)({AB|JB|DB},%y):=(%y,+att=%x); very.@plus beautiful > beautiful.@plus
+(SAV,^att,%x)({AB|JB|DB},%y):=(XB(%y;%x,+spec,+man),+LEX=%y,+XB=%y); extremely beautiful > XB(beautiful,extremely)
+;============================================================================================
+
+
+;============================================================================================
+;2.3 PP (Prepositional Phrase)
+;============================================================================================
+(P,^PP,%x)(XP,^DP,^PP,%y)({XP|PUT|STAIL|CTAIL},%z):=(%y,-LEX,-XP,+LEX=P,+XP=PP,+adjt,+rel=%x,+att=%x)(%z); from Paris > Paris.@from
+;============================================================================================
+
+;============================================================================================
+;2.4 CP (Complementizer Phrase)
+;===========================================================================================
+;Conjunctions
+;Coordination
+(XP,%x)(COMMA,%c)(XP=%x,rel=and,%y):=(%x)([and],+W,%new)(%y); John, Mary and Peter > John and Mary and Peter
+(XP,%x)(COMMA,%c)(XP=%x,rel=or,%y):=(%x)([or],+W,%new)(%y); John, Mary or Peter > John or Mary or Peter
+(XP,%x)([and])(XP=%x,%y):=(and(%y;%x),+LEX=%x,+XP=%x,+rel=and,%new); John and Mary > and(Mary,John)
+(XP,%x)([or])(XP=%x,%y):=(or(%y;%x),+LEX=%x,+XP=%x,+rel=or,%new); John or Mary > or(Mary,John)
+
+;============================================================================================
+;2.5 Other rules
+;===========================================================================================
+;Punctuation
+(VP,%x)(QMARK):=(%x,att=@interrogative); who killed Mary? > who killed.@interrogative Mary
+
+ 

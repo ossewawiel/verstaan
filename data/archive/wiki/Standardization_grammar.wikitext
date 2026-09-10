@@ -1,0 +1,19 @@
+The Standardization Grammar is a [[transformation grammar]] used to standardize the feature structure and to propagate values and attributes according to the hierarchy defined in the [[Tagset]]. The Standardization Grammar is bidirectional, i.e., the same grammar is used both in is used both in [[UNLization]] and [[NLization]]. As the language-specific grammars and the [[Default grammar]] depend on the standardization of the feature structure, the standardization grammar must be the first grammar to be loaded to the T-rules tab in [[IAN]] and [[EUGENE]]. 
+
+== File ==
+*[http://www.unlweb.net.br/resources/grammar/s-grammar.txt Standardization Grammar]
+The Standardization Grammar may also be downloaded from the [http://www.unlweb.net.br/unlarium/dictionary/export_tagset.php?order=normalize UNLarium]
+
+== Structure ==
+The Standardization Grammar is divided into three modules:
+*'''Standardization''', where isolated features are rewritten in the attribute-value format.
+This is used when the feature list of entries are not represented in the dictionary in the attribute-value format, or as a cross-check for the feature assignment operations performed by the grammar itself. An example of standardization rules is:
+ (CAU,^ASP):=(-CAU,+ASP=CAU);
+if a node has the feature "CAU" (= causative) but does not have the attribute "ASP" (aspect), then rewrite CAU as ASP=CAU
+*'''Propagation''', where the features of top categories are copied to their children.
+This is used to avoid proliferating rules. For instance, every word having the feature SNGT (singulare tantum) is also SNG (singular). This information is not stated in the dictionary, and must be made explicit in the grammar, in order not to simply duplicate all rules dealing with SNG. This generalization movement is performed by rules such as:
+ (SNGT,^SNG):=(-NUM,-SGNT,+NUM=SNG,+NUM=SNGT);
+if a node has the feature SNGT (singulare tantum) and does not have the feature SNG (singular), then copy the feature SNG to it
+*'''Other standardization rules''', to deal with special cases such as temporary UW's, pronouns and numbers, such as:
+ (TEMP,^LEX):=(+LEX=N,+POS=PPN); treats all temporary words as proper nouns
+temporary UW's, which are absent from the dictionary, do not have any information other than the feature TEMP. In order to manipulate them inside the grammar, we assign them the feature PPN (proper name) (i.e., all temporary words are interpreted as proper names)

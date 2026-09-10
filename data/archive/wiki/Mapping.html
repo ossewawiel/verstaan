@@ -1,0 +1,101 @@
+<div class="mw-content-ltr mw-parser-output" lang="en" dir="ltr"><p><b>Mapping</b> is the relation between elements of UNL and elements of natural language (NL). The elements so related can be any kind of linguistic entity (words, attributes or relations).
+</p>
+<div id="toc" class="toc" role="navigation" aria-labelledby="mw-toc-heading"><input type="checkbox" role="button" id="toctogglecheckbox" class="toctogglecheckbox" style="display:none" /><div class="toctitle" lang="en" dir="ltr"><h2 id="mw-toc-heading">Contents</h2><span class="toctogglespan"><label class="toctogglelabel" for="toctogglecheckbox"></label></span></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Types_of_Mapping"><span class="tocnumber">1</span> <span class="toctext">Types of Mapping</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#Universal_Words_and_Lexical_Realisation_Units"><span class="tocnumber">2</span> <span class="toctext">Universal Words and Lexical Realisation Units</span></a>
+<ul>
+<li class="toclevel-2 tocsection-3"><a href="#Examples"><span class="tocnumber">2.1</span> <span class="toctext">Examples</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-4"><a href="#Attributes"><span class="tocnumber">3</span> <span class="toctext">Attributes</span></a>
+<ul>
+<li class="toclevel-2 tocsection-5"><a href="#Examples_2"><span class="tocnumber">3.1</span> <span class="toctext">Examples</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-6"><a href="#Relations"><span class="tocnumber">4</span> <span class="toctext">Relations</span></a></li>
+</ul>
+</div>
+
+<div class="mw-heading mw-heading2"><h2 id="Types_of_Mapping">Types of Mapping</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Mapping&amp;veaction=edit&amp;section=1" title="Edit section: Types of Mapping" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Mapping&amp;action=edit&amp;section=1" title="Edit section&#39;s source code: Types of Mapping">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>In the UNL<sup>arium</sup> framework, mapping is expressed by two types of T-rules:
+</p>
+<ul><li><a href="/wiki/L-rule" title="L-rule">L-rules</a> are used to map to surface structures (lists); and</li>
+<li><a href="/wiki/S-rule" title="S-rule">S-rules</a> are used to map to deep structures (trees).</li></ul>
+<div class="mw-heading mw-heading2"><h2 id="Universal_Words_and_Lexical_Realisation_Units">Universal Words and Lexical Realisation Units</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Mapping&amp;veaction=edit&amp;section=2" title="Edit section: Universal Words and Lexical Realisation Units" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Mapping&amp;action=edit&amp;section=2" title="Edit section&#39;s source code: Universal Words and Lexical Realisation Units">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p><a href="/wiki/Universal_Words" title="Universal Words">Universal Words</a> (UW)s are mapped into <a href="/wiki/Lexical_Realisation_Unit" title="Lexical Realisation Unit">Lexical Realisation Units</a> (LRUs) and LRUs are mapped into UWs in the UNL-NL Dictionary, which is a bidirectional bilingual dictionary mapping lexical items between UNL and NL. A single UW may correspond to several different natural language entries (synonymy), and one single open-class natural language entry may correspond to several UWs (homography). Entries from closed classes are not mapped into UWs, but to relations or attributes. Numerals (such as "six", "sixth", "6"), formulae (H<sub>2</sub>0) and untranslatable expressions (such as "<a rel="nofollow" class="external free" href="http://www.unlweb.net">http://www.unlweb.net</a>") are represented as temporary UWs, i.e., they are not expected to be included in the UNL-NL dictionaries. The same happens to most proper names. Temporary UWs are automatically assigned the feature TEMP, and may be addressed by named entity recognition modules in UNL-based applications.
+</p><p>In the grammar, additional mappings between UWs and LRUs may be expressed by L-rules or S-rules such as the following:
+</p>
+<pre>([[&lt;UW&gt;]]):=("&lt;LRU&gt;"); 
+("&lt;LRU&gt;"):=([[&lt;UW&gt;]]);
+</pre>
+<p>Where:
+</p>
+<ul><li>UWs are represented between [[ ]];</li>
+<li>LRUs are represented between "" (if strings) or [ ] (if lemmas)</li></ul>
+<div class="mw-heading mw-heading3"><h3 id="Examples">Examples</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Mapping&amp;veaction=edit&amp;section=3" title="Edit section: Examples" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Mapping&amp;action=edit&amp;section=3" title="Edit section&#39;s source code: Examples">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<ul><li>UNL-NL mapping
+<ul><li>([[100001740]]):=([entity]);</li>
+<li>([[100001740]],@pl):=("entities");</li>
+<li>([[100743500]]):=NC([waste];[time]); (=waste of time)</li></ul></li>
+<li>NL-UNL mapping
+<ul><li>([entity]):=([[100001740]]);</li>
+<li>("entities"):=([[100001740]],@pl);</li>
+<li>("smooth landing"):=mod([[100052500]];[[302243411]]);</li></ul></li></ul>
+<div class="mw-heading mw-heading2"><h2 id="Attributes"><a href="/wiki/Attributes" class="mw-redirect" title="Attributes">Attributes</a></h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Mapping&amp;veaction=edit&amp;section=4" title="Edit section: Attributes" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Mapping&amp;action=edit&amp;section=4" title="Edit section&#39;s source code: Attributes">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>Most UNL attributes may be directly associated to NL categories (such as such as <a href="/wiki/Aspect" title="Aspect">aspect</a>, <a href="/wiki/Degree" title="Degree">degree</a>, <a href="/wiki/Gender" title="Gender">gender</a>, <a href="/wiki/Number" title="Number">number</a>, <a href="/wiki/Tense" title="Tense">tense</a>, <a href="/wiki/Mood" title="Mood">mood</a>, <a href="/wiki/Register" title="Register">register</a>, <a href="/wiki/Voice" title="Voice">voice</a> and <a href="/wiki/Social_deixis" title="Social deixis">social deixis</a>), and vice-versa. This association is made through L-rules such as the following:
+</p>
+<pre>(&lt;UNL ATTRIBUTE&gt;):=(&lt;NL ATTRIBUTE&gt;);
+(&lt;NL ATTRIBUTE&gt;):=(&lt;UNL ATTRIBUTE&gt;);
+</pre>
+<div class="mw-heading mw-heading3"><h3 id="Examples_2">Examples</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Mapping&amp;veaction=edit&amp;section=5" title="Edit section: Examples" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Mapping&amp;action=edit&amp;section=5" title="Edit section&#39;s source code: Examples">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<ul><li>UNL-NL mapping
+<ul><li>(@pl):=(PLR);</li>
+<li>(@past):=(PAS);</li>
+<li>(@passive):=(PSV);</li>
+<li>(@male):=(MCL);</li>
+<li>(@past,@progressive):=(PAS,PGS);</li>
+<li>(@ellipsis):=(""); (replace the node with @ellipsis by "")</li></ul></li>
+<li>NL-UNL mapping
+<ul><li>(PLR):=(@pl);</li>
+<li>(PAS):=(@past);</li>
+<li>(PAS,PGS):=(@past,@progressive);</li></ul></li></ul>
+<p>Some attributes, however, cannot be directly assigned to any value, and are rather treated as features to be addressed by more complex L-rules or S-rules:
+</p>
+<ul><li>@square_bracket
+<ul><li>(@square_bracket,%ref):= ("[")(%ref)("]"); (generate square brackets before and after the node)</li></ul></li>
+<li>@emphasis
+<ul><li>VC(@emphasis,%comp):=+IS(%comp)VC(%comp,TRACE); (topicalization)</li></ul></li></ul>
+<div class="mw-heading mw-heading2"><h2 id="Relations">Relations</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Mapping&amp;veaction=edit&amp;section=6" title="Edit section: Relations" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Mapping&amp;action=edit&amp;section=6" title="Edit section&#39;s source code: Relations">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>Mapping between relations is always represented by S-rules:
+</p>
+<ul><li>UNL-NL mapping:
+<ul><li>agt(%source;%target):=VS(%source;%target);</li>
+<li>tim(%source;%target):=VA(%source;PC([in];%target));</li></ul></li>
+<li>NL-UNL mapping:
+<ul><li>VC(%source;%target):=obj(%source;%target);</li>
+<li>VA(%source;PC([in];%target)):=tim(%source;%target);</li></ul></li></ul>
+<!-- 
+NewPP limit report
+Cached time: 20260910111601
+Cache expiry: 86400
+Reduced expiry: false
+Complications: [show‐toc]
+CPU time usage: 0.005 seconds
+Real time usage: 0.006 seconds
+Preprocessor visited node count: 74/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/100
+Expensive parser function count: 0/100
+Unstrip recursion depth: 0/20
+Unstrip post‐expand size: 99/5000000 bytes
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    0.000      1 -total
+-->
+
+<!-- Saved in parser cache with key u965818192_SLvgQ-l8z2_:pcache:521:|#|:idhash:canonical and timestamp 20260910111601 and revision id 13529. Rendering was triggered because: diff-page
+ -->
+</div>

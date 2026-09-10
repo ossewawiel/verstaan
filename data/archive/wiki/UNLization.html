@@ -1,0 +1,212 @@
+<div class="mw-content-ltr mw-parser-output" lang="en" dir="ltr"><p><b>UNLization</b>, formerly known as enconversion, is the process of "representing" the content of a natural language structure into UNL. This representation should be understood as a <b>interpretation</b> rather than as a <b>translation</b> of the source document, in the sense it is not necessarily committed to mimic its linguistic structure (such as lexical choice and syntax) but to extract its semantic structure (it must replicate concepts and  relations between concepts conveyed by the linguistic structure).
+</p>
+<div id="toc" class="toc" role="navigation" aria-labelledby="mw-toc-heading"><input type="checkbox" role="button" id="toctogglecheckbox" class="toctogglecheckbox" style="display:none" /><div class="toctitle" lang="en" dir="ltr"><h2 id="mw-toc-heading">Contents</h2><span class="toctogglespan"><label class="toctogglelabel" for="toctogglecheckbox"></label></span></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Units"><span class="tocnumber">1</span> <span class="toctext">Units</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#Paradigms"><span class="tocnumber">2</span> <span class="toctext">Paradigms</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="#Recall"><span class="tocnumber">3</span> <span class="toctext">Recall</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="#Precision"><span class="tocnumber">4</span> <span class="toctext">Precision</span></a></li>
+<li class="toclevel-1 tocsection-5"><a href="#Level"><span class="tocnumber">5</span> <span class="toctext">Level</span></a></li>
+<li class="toclevel-1 tocsection-6"><a href="#Methods"><span class="tocnumber">6</span> <span class="toctext">Methods</span></a></li>
+<li class="toclevel-1 tocsection-7"><a href="#Tools"><span class="tocnumber">7</span> <span class="toctext">Tools</span></a></li>
+<li class="toclevel-1 tocsection-8"><a href="#Challenges"><span class="tocnumber">8</span> <span class="toctext">Challenges</span></a>
+<ul>
+<li class="toclevel-2 tocsection-9"><a href="#Lexical_and_syntactic_ambiguity"><span class="tocnumber">8.1</span> <span class="toctext">Lexical and syntactic ambiguity</span></a></li>
+</ul>
+</li>
+</ul>
+</div>
+
+<div class="mw-heading mw-heading2"><h2 id="Units">Units</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=UNLization&amp;veaction=edit&amp;section=1" title="Edit section: Units" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=UNLization&amp;action=edit&amp;section=1" title="Edit section&#39;s source code: Units">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>The process of UNLization may have different representation units, as follows:
+</p>
+<ul><li>Word-driven UNLization (the source document is represented as a single network of individual concepts)</li>
+<li>Sentence-driven UNLization (the source document is represented as a list of non-semantically related networks of individual concepts)</li>
+<li>Text-driven UNLization (the source document is represented as a network of semantically related networks of individual concepts)</li></ul>
+<p>In word-driven UNLization, the sentence boundaries and the structure of the source document are ignored, and the source document is represented as a single graph, i.e., as a simple network of individual concepts. In sentence-driven UNLization, the source document is analyzed, sentence by sentence, as a list of non-semantically related hyper-graphs. Each sentence is represented separately, and the only relation standing between sentences is the order in the source document. At last, text-driven UNLization targets the rhetorical structure of the source document, i.e., it analyzes the source document as a network of semantically related hyper-graphs. Word-driven UNLization is used mainly for information retrieval and extraction, whereas sentence- and text-driven UNLization are normally used for translation.
+</p>
+<div class="mw-heading mw-heading2"><h2 id="Paradigms">Paradigms</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=UNLization&amp;veaction=edit&amp;section=2" title="Edit section: Paradigms" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=UNLization&amp;action=edit&amp;section=2" title="Edit section&#39;s source code: Paradigms">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>The process of UNLization may follow several different paradigms, as follows:
+</p>
+<ul><li>Language-based UNLization (based mainly in a <a href="/wiki/UNL_Dictionary" title="UNL Dictionary">NL-UNL dictionary</a> and <a href="/wiki/Grammar_Specs" class="mw-redirect" title="Grammar Specs">NL-UNL grammar</a>)</li>
+<li>Knowledge-based UNLization (based mainly in the <a href="/wiki/UNL_Knowledge_Base" title="UNL Knowledge Base">UNL Knowledge Base</a>)</li>
+<li>Memory-based UNLization (based mainly in the <a href="/wiki/UNL-NL_Memory" title="UNL-NL Memory">UNL-NL Memory</a>)</li>
+<li>Statistical-based UNLization (based mainly in statistical predictions derived from UNL-NL corpora)</li>
+<li>Dialogue-based UNLization (based mainly in the interaction with the user)</li></ul>
+<p>The actual UNLization is normally hybrid and may combine several of the strategies above.
+</p>
+<div class="mw-heading mw-heading2"><h2 id="Recall">Recall</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=UNLization&amp;veaction=edit&amp;section=3" title="Edit section: Recall" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=UNLization&amp;action=edit&amp;section=3" title="Edit section&#39;s source code: Recall">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>The process of UNLization may target the whole source document or only parts of it (e.g. main clauses):
+</p>
+<ul><li>Full UNLization (the whole source document is UNLized)</li>
+<li>Partial (or chunk) UNLization (only a part of the source document is UNLized)</li></ul>
+<dl><dt>Peter killed John with a knife yesterday morning.</dt>
+<dd>Full UNLization: Peter saw John yesterday morning.</dd>
+<dd>Partial UNLization: Peter saw John.</dd></dl>
+<div class="mw-heading mw-heading2"><h2 id="Precision">Precision</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=UNLization&amp;veaction=edit&amp;section=4" title="Edit section: Precision" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=UNLization&amp;action=edit&amp;section=4" title="Edit section&#39;s source code: Precision">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>The process of UNLization may target the deep semantic structure of the source document (i.e., the resulting semantic structure replicates the syntactic structure of the original) or only its surface structure (the resulting semantic structure does not preserve the syntactic structure of the original)
+</p>
+<ul><li>Deep UNLization (the UNLization focus the deep semantic structure of the source document)</li>
+<li>Shallow UNLization (the UNLization focus the surface semantic structure of the source document)</li></ul>
+<p>Syntactic structures are preserved in the UNL document by the use of syntactic attributes (such as @passive, @topic, etc) or by hyper-nodes (i.e., <a href="/wiki/Scope" title="Scope">scopes</a>). For some purposes, as translation, UNLization may require syntactic details; for others, such as information retrieval, syntactic structures at this level are not normally necessary:
+</p>
+<dl><dt>Mary was kissed by Peter</dt>
+<dd>Shallow UNLization: Peter kissed Mary</dd>
+<dd>Deep UNLization: [Peter kissed Mary].@passive</dd>
+<dt>Mary saw Peter going to Paris.</dt>
+<dd>Shallow UNLization: Mary saw Peter &amp; Peter was going to Paris</dd>
+<dd>Deep UNLization: Mary saw [Peter going to Paris].</dd>
+<dt>As for the little girl, the dog licked her.</dt>
+<dd>Shallow UNLization: the dog licked the little girl</dd>
+<dd>Deep UNLization: the dog licked [the little girl].@topic</dd></dl>
+<div class="mw-heading mw-heading2"><h2 id="Level">Level</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=UNLization&amp;veaction=edit&amp;section=5" title="Edit section: Level" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=UNLization&amp;action=edit&amp;section=5" title="Edit section&#39;s source code: Level">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>The process of UNLization may target literal meanings (locutionary content) or non-literal meanings (ilocutionary content).
+</p>
+<ul><li>Locutionary (the UNLization represents only the literal meaning)</li>
+<li>Ilocutionary (the UNLization represents also non-literal meanings, including speech acts)</li></ul>
+<p>The ilocutionary force may be represented by figure of speech and speech acts attributes: 
+</p>
+<dl><dt>It is as soft as concrete</dt>
+<dd>Locutionary level: it is as soft as concrete</dd>
+<dd>Ilocutionary level: [it is as soft as concrete].@irony</dd>
+<dt>Can you pass me the salt?</dt>
+<dd>Locutionary level: can you pass me the salt?</dd>
+<dd>Ilocutionaruy level: [you pass me the salt].@request</dd></dl>
+<div class="mw-heading mw-heading2"><h2 id="Methods">Methods</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=UNLization&amp;veaction=edit&amp;section=6" title="Edit section: Methods" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=UNLization&amp;action=edit&amp;section=6" title="Edit section&#39;s source code: Methods">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>Humans and machines may play different roles in UNLization methods:
+</p>
+<ul><li>Fully automatic UNLization (the whole process is carried out by the machine, without any intervention of the human user)</li>
+<li>Human-aided machine UNLization (the process is carried mainly by the machine, with some intervention of the human user, either as a pre-editor or as a post-editor, or during the UNLization itself, as in dialogue-based UNLization)</li>
+<li>Machine-aided human UNLization (the process is carried mainly by the human user, with some help of the machine, as in the dictionary or memory lookup)</li>
+<li>Fully human UNLization (the whole process is carried by the human user, without any intervention of the machine)</li></ul>
+<div class="mw-heading mw-heading2"><h2 id="Tools">Tools</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=UNLization&amp;veaction=edit&amp;section=7" title="Edit section: Tools" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=UNLization&amp;action=edit&amp;section=7" title="Edit section&#39;s source code: Tools">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>For the time being, there are four UNLization tools, as described below:
+</p>
+<table border="1" cellpadding="3" align="center">
+<tbody><tr>
+<th>Tool
+</th>
+<th>Unit
+</th>
+<th>Paradigms
+</th>
+<th>Recall
+</th>
+<th>Precision
+</th>
+<th>Level
+</th>
+<th>Method
+</th>
+<th>Licence
+</th>
+<th>Author
+</th></tr>
+<tr>
+<td><a href="/wiki/IAN" title="IAN">IAN</a>
+</td>
+<td>sentence
+</td>
+<td>LB,KB,EB,MB,DB
+</td>
+<td>F,P
+</td>
+<td>D,S
+</td>
+<td>L,I
+</td>
+<td>FA,HA
+</td>
+<td>freeware
+</td>
+<td>UNDLF
+</td></tr>
+<tr>
+<td><a href="/wiki/SEAN" title="SEAN">SEAN</a>
+</td>
+<td>word
+</td>
+<td>LB,KB,EB,MB
+</td>
+<td>P
+</td>
+<td>D,S
+</td>
+<td>L,I
+</td>
+<td>FA
+</td>
+<td>freeware
+</td>
+<td>BA
+</td></tr>
+<tr>
+<td><a href="/wiki/index.php?title=UNL_Editor&amp;action=edit&amp;redlink=1" class="new" title="UNL Editor (page does not exist)">UNL Editor</a>
+</td>
+<td>sentence
+</td>
+<td>LB,MB
+</td>
+<td>F,B
+</td>
+<td>D,S
+</td>
+<td>L,I
+</td>
+<td>MA
+</td>
+<td>freeware
+</td>
+<td>UNDLF
+</td></tr>
+<tr>
+<td><a href="/wiki/index.php?title=EnCo&amp;action=edit&amp;redlink=1" class="new" title="EnCo (page does not exist)">EnCo</a>
+</td>
+<td>sentence
+</td>
+<td>LB,KB
+</td>
+<td>F
+</td>
+<td>D
+</td>
+<td>L,I
+</td>
+<td>FA
+</td>
+<td>shareware
+</td>
+<td>UNLC
+</td></tr></tbody></table>
+<div class="mw-heading mw-heading2"><h2 id="Challenges">Challenges</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=UNLization&amp;veaction=edit&amp;section=8" title="Edit section: Challenges" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=UNLization&amp;action=edit&amp;section=8" title="Edit section&#39;s source code: Challenges">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<div class="mw-heading mw-heading3"><h3 id="Lexical_and_syntactic_ambiguity">Lexical and syntactic ambiguity</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=UNLization&amp;veaction=edit&amp;section=9" title="Edit section: Lexical and syntactic ambiguity" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=UNLization&amp;action=edit&amp;section=9" title="Edit section&#39;s source code: Lexical and syntactic ambiguity">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>The UNL document does not contain the ambiguities of the original, and will only encode one of its possible semantic realisations, preferably the most frequent one:
+</p>
+<dl><dt>The bank crashed.</dt>
+<dd>UNL is not able to preserve the lexical ambiguity of the word "bank" in the sentence above. The UNL representation will necessarily choose between one of the possible concepts conveyed by the English word "bank".</dd>
+<dt>The boy saw the girl with binoculars</dt>
+<dd>UNL is not able to represent the syntactic ambiguity of the sentence above. The UNL representation will necessarily choose between one of the possible syntactic structures of the sentence.</dd></dl>
+<!-- 
+NewPP limit report
+Cached time: 20260909223624
+Cache expiry: 86400
+Reduced expiry: false
+Complications: [show‐toc]
+CPU time usage: 0.007 seconds
+Real time usage: 0.008 seconds
+Preprocessor visited node count: 36/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/100
+Expensive parser function count: 0/100
+Unstrip recursion depth: 0/20
+Unstrip post‐expand size: 0/5000000 bytes
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    0.000      1 -total
+-->
+
+<!-- Saved in parser cache with key u965818192_SLvgQ-l8z2_:pcache:565:|#|:idhash:canonical and timestamp 20260909223624 and revision id 16724. Rendering was triggered because: page-view
+ -->
+</div>

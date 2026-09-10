@@ -1,0 +1,155 @@
+'''Pronouns''' are LRUs that substitute other LRUs. 
+
+== Natural Language == 
+In the UNL<sup>arium</sup> framework, pronouns are classified as follows: 
+*'''personal (PPR)''' ("I", "me")
+*'''demonstrative (DEP)''' (“this”, in "this is my house") (not to be confounded with demonstrative determiners: "this house")
+*'''dummy (DUM)''' ("it" in "it is raining")
+*'''emphatic (EPR)''' (“myself”, in "I did it myself")
+*'''indefinite (NPR)''' (“somebody”, “nothing”)
+*'''interrogative (IPR)''' (“who”, in "who is there?")
+*'''possessive (SPR)''' (“mine”) (not to be confounded with possessive determiners: "my house")
+*'''reflexive (FPR)''' (“myself”, in "I saw myself")
+*'''reciprocal (CPR)''' (“each other”, “one another”)
+*'''relative (RPR)''' ("who" in "I didn't see who is there").
+Pronouns playing determiner roles (such as possessive determiners or demonstrative determiners) must be classified as [[determiners]].
+
+== UNL ==
+In UNL, pronouns are to be represented:
+*as pronoun attributes assigned to the [[null UW]], in case of exophora (i.e., when reference is made to an extra-sentential referent); and
+*by their referents in case of endophora (i.e., when reference is made to an intra-sentential referent, which may come either before (anaphora) or after (cataphora) the pronoun).
+
+=== Personal pronouns ===
+
+To be represented as 00.@1 (first person), 00.@2 (second person) and 00.@3 (third person), as follows:
+
+ 00.@1 - the speaker
+I (en), me (en), we (en), us (en), je (fr), on (fr), nous (fr);
+ 00.@2 - the addressee
+you (en), tu (fr), vous (fr);
+ 00.@3 - other
+he (en), she (en), it (en), they (en), il (fr), elle (fr), ils (fr), elles (fr).
+
+They can be modified by the following attributes:
+
+;[[Number]]
+:@pl (00.@1.@pl = we (en));
+;[[Gender]]
+:@male (00.@3.@male = he)
+:@female (00.@3.@female = she)
+:@neutral (00.@3.@neutral = it)
+;[[Social Deixis]]
+:@polite (00.@2.@polite = vous (fr))
+;[[Discourse]]
+:@emphasis (00.@1.@emphasis = I [did it] myself)
+
+Dummy (semantically empty) pronouns (used when grammatical rules require a noun), such as in "It is raining", must not be represented. 
+
+=== Possessive pronouns (not to be confounded with possessive determiners) ===
+
+To be represented as Personal Pronouns as the target argument of a relation "POS".
+
+ The book is mine = pos(book, 00.@1)
+
+=== Demonstrative Pronouns ===
+
+To be represented as "00.@proximal" (proximal), "00.@medial" (medial) and "00.@distal" (distal). 
+
+;00.@proximal
+:used to refer to the person, thing or event present, nearby, just mentioned or about to be said.
+::this, these (en): '''This''' is my cat. '''These''' are my tools. 
+::ceci, celui-ci, celle-ci, ceux-ci, celles-ci (fr): Tout '''ceci''' ne me plaît guère. 
+::éste, estos, ésta, éstas (es)
+
+;00.@medial
+:used to refer to something near the addressee.
+:used to refer to the one designated, implied, mentioned, or understood.
+::that, those (en): What kind of soup is '''that'''?
+::cela, celui-là, celle-là, ceux-là, celles-là (fr): Qui c'est '''celui-là'''?
+::ése, ésos, ésa, esas (es)
+
+;00.@distal
+:used to refer to something far from both speaker and listener.
+::that, those (en): What kind of soup is '''that'''?
+::cela, celui-là, celle-là, ceux-là, celles-là (fr): Qui c'est '''celui-là'''?
+::aquél, aquéllos, aquélla, aquéllas (es)
+
+=== Indefinite pronouns ===
+
+To be represented by the null UW and the corresponding attributes.
+
+*all = 00.@all
+*another = 00.@other
+*any = 00.@any
+*anybody = 00.@any.@person
+*anyone = 00.@any.@person
+*anything = 00.@any.@thing
+*both = 00.@both
+*each = 00.@each
+*either = 00.@either
+*everybody = 00.@all.@person
+*everyone = 00.@all.@person
+*everything = 00.@all.@thing
+*few = 00.@paucal
+*fewer = 00.@paucal.@less
+*less = 00.@paucal
+*little = 00.@paucal
+*many = 00.@multal
+*more = 00.@more
+*most = 00.@most
+*much = 00.@multal
+*no one = 00.@no.@person
+*nobody = 00.@no.@person
+*none = 00.@no
+*nothing = 00.@no.@thing
+*one = 00
+*other = 00.@other
+*others = 00.@other.@pl
+*plenty = 00.@multal
+*several = 00.@multal
+*some = 00.@paucal
+*somebody = 00.@person
+*someone = 00.@person
+*something = 00.@thing
+*such = 00.@such
+
+=== Relative pronouns ===
+
+To be represented by the antecedent. The attribute @relative must be assigned to the main entry of the relative clause.
+
+;Hunter is the boy '''who''' kissed Monique.
+:aoj(boy, Hunter)
+:agt(kiss.@relative, boy)
+;Hunter is the boy to whom Monique gave a gift.
+:aoj(boy, Hunter)
+:gol(give.@relative, boy)
+;Jack built the house in which I now live.
+:obj(build, house)
+:plc(live.@relative, house)
+;Jack is the boy whose friend built my house. 
+:aoj(boy, Jack)
+:pos(friend, Jack)
+:agt(build.@relative, friend)
+
+=== Interrogative pronouns ===
+
+To be represented by the [[null UW]] and the attribute .@wh.
+
+;Who is he?
+:aoj(he, 00.@wh)
+;Where is he?
+:plc(he, 00.@wh)
+;How is he?
+:man(he, 00.@wh)
+
+=== Reflexive pronouns === 
+
+Not to be represented. The attribute @reflexive ([[voice#Middle voice|Middle voice]]) should be assigned to the main entry of the clause.
+
+ Peter killed himself = agt(kill.@reflexive, Peter) 
+
+=== Reciprocal pronouns ===
+
+Not to be represented. The attribute @reciprocal ([[voice#Middle voice|Middle voice]]) should be assigned to the main entry of the clause.
+
+ The boys killed each other = agt(kill.@reciprocal, boy)

@@ -1,0 +1,482 @@
+<div class="mw-content-ltr mw-parser-output" lang="en" dir="ltr"><p>A node is the most elementary unit in the <a href="/wiki/Grammar" title="Grammar">grammar</a>. It is the result of the <a href="/wiki/Tokenization" title="Tokenization">tokenization</a> process, and corresponds to the notion of "lexical item". At the surface level, a natural language sentence is considered a list of nodes, and a UNL graph a set of relations between nodes. 
+</p>
+<div id="toc" class="toc" role="navigation" aria-labelledby="mw-toc-heading"><input type="checkbox" role="button" id="toctogglecheckbox" class="toctogglecheckbox" style="display:none" /><div class="toctitle" lang="en" dir="ltr"><h2 id="mw-toc-heading">Contents</h2><span class="toctogglespan"><label class="toctogglelabel" for="toctogglecheckbox"></label></span></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Basic_Symbols"><span class="tocnumber">1</span> <span class="toctext">Basic Symbols</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#Basic_Concepts"><span class="tocnumber">2</span> <span class="toctext">Basic Concepts</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="#Notation"><span class="tocnumber">3</span> <span class="toctext">Notation</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="#Elements"><span class="tocnumber">4</span> <span class="toctext">Elements</span></a></li>
+<li class="toclevel-1 tocsection-5"><a href="#Example"><span class="tocnumber">5</span> <span class="toctext">Example</span></a></li>
+<li class="toclevel-1 tocsection-6"><a href="#Indexation"><span class="tocnumber">6</span> <span class="toctext">Indexation</span></a></li>
+<li class="toclevel-1 tocsection-7"><a href="#Properties"><span class="tocnumber">7</span> <span class="toctext">Properties</span></a></li>
+<li class="toclevel-1 tocsection-8"><a href="#&quot;Strings&quot;_or_[headwords]?"><span class="tocnumber">8</span> <span class="toctext">"Strings" or [headwords]?</span></a></li>
+<li class="toclevel-1 tocsection-9"><a href="#Transformations_over_nodes"><span class="tocnumber">9</span> <span class="toctext">Transformations over nodes</span></a>
+<ul>
+<li class="toclevel-2"><a href="#Altering_elements_of_nodes"><span class="tocnumber">9.1</span> <span class="toctext">Altering elements of nodes</span></a></li>
+<li class="toclevel-2"><a href="#Deleting_nodes"><span class="tocnumber">9.2</span> <span class="toctext">Deleting nodes</span></a></li>
+<li class="toclevel-2"><a href="#Creating_nodes"><span class="tocnumber">9.3</span> <span class="toctext">Creating nodes</span></a></li>
+<li class="toclevel-2"><a href="#Duplicating_(cloning)_nodes"><span class="tocnumber">9.4</span> <span class="toctext">Duplicating (cloning) nodes</span></a></li>
+<li class="toclevel-2"><a href="#Splitting_nodes"><span class="tocnumber">9.5</span> <span class="toctext">Splitting nodes</span></a></li>
+<li class="toclevel-2"><a href="#Merging_nodes_(&amp;)"><span class="tocnumber">9.6</span> <span class="toctext">Merging nodes (&amp;)</span></a></li>
+<li class="toclevel-2"><a href="#Retrieving_entries_in_the_dictionary_after_tokenization_(?)"><span class="tocnumber">9.7</span> <span class="toctext">Retrieving entries in the dictionary after tokenization (?)</span></a></li>
+<li class="toclevel-2"><a href="#Triggering_rules_(!)"><span class="tocnumber">9.8</span> <span class="toctext">Triggering rules (!)</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-10"><a href="#Notes"><span class="tocnumber">10</span> <span class="toctext">Notes</span></a></li>
+</ul>
+</div>
+
+<div class="mw-heading mw-heading2"><h2 id="Basic_Symbols">Basic Symbols</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Node&amp;veaction=edit&amp;section=1" title="Edit section: Basic Symbols" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Node&amp;action=edit&amp;section=1" title="Edit section&#39;s source code: Basic Symbols">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<table border="1" cellpadding="2" align="center">
+<caption>Basic symbols used in the UNL framework
+</caption>
+<tbody><tr>
+<th>Symbol
+</th>
+<th>Definition
+</th>
+<th>Example
+</th></tr>
+<tr>
+<td align="center">( )
+</td>
+<td>node
+</td>
+<td>(%a)
+</td></tr>
+<tr>
+<td align="center">" "
+</td>
+<td>string
+</td>
+<td>"went"
+</td></tr>
+<tr>
+<td align="center">[ ]
+</td>
+<td>natural language entry (headword)
+</td>
+<td>[go]
+</td></tr>
+<tr>
+<td align="center">[[ ]]
+</td>
+<td>UW
+</td>
+<td>[[to go(icl&gt;to move)]]
+</td></tr>
+<tr>
+<td align="center">//
+</td>
+<td><a href="/wiki/Regular_expression" title="Regular expression">regular expression</a>
+</td>
+<td>/a{2,3}/ = aa,aaa
+</td></tr>
+<tr>
+<td align="center">rel(x;y)
+</td>
+<td>relation
+</td>
+<td>agt(kill;Peter)
+</td></tr>
+<tr>
+<td align="center">^
+</td>
+<td>not
+</td>
+<td>^a = not a
+</td></tr>
+<tr>
+<td align="center">{ | }
+</td>
+<td>or
+</td>
+<td>{a|b} = a or b
+</td></tr>
+<tr>
+<td align="center">%
+</td>
+<td><a href="/wiki/Index" title="Index">index</a> for nodes, attributes and values
+</td>
+<td>%x
+</td></tr>
+<tr>
+<td align="center">:
+</td>
+<td><a href="/wiki/Scope" title="Scope">scope ID</a>
+</td>
+<td>:01
+</td></tr>
+<tr>
+<td align="center">#
+</td>
+<td><a href="/wiki/Index" title="Index">index</a> for sub-NLWs
+</td>
+<td>#01
+</td></tr>
+<tr>
+<td align="center">=
+</td>
+<td>attribute-value assignment
+</td>
+<td>POS=NOU
+</td></tr>
+<tr>
+<td align="center">!
+</td>
+<td>rule trigger
+</td>
+<td>!PLR
+</td></tr>
+<tr>
+<td align="center">&amp;
+</td>
+<td>merge operator
+</td>
+<td>%x&amp;%y
+</td></tr>
+<tr>
+<td align="center">?
+</td>
+<td>dictionary lookup operator
+</td>
+<td>?[a]
+</td></tr></tbody></table>
+<div class="mw-heading mw-heading2"><h2 id="Basic_Concepts">Basic Concepts</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Node&amp;veaction=edit&amp;section=2" title="Edit section: Basic Concepts" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Node&amp;action=edit&amp;section=2" title="Edit section&#39;s source code: Basic Concepts">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<figure class="mw-halign-center" typeof="mw:File"><a href="/wiki/File:Grammar.png" class="mw-file-description"><img src="/wiki/images/thumb/5/59/Grammar.png/400px-Grammar.png" decoding="async" width="400" height="206" class="mw-file-element" srcset="/wiki/images/thumb/5/59/Grammar.png/600px-Grammar.png 1.5x, /wiki/images/5/59/Grammar.png 2x" /></a><figcaption></figcaption></figure>
+<dl><dt><a class="mw-selflink selflink">Node</a></dt>
+<dd>A node is the most elementary unit in the graph. It is the result of the <a href="/wiki/Tokenization" title="Tokenization">tokenization</a> process, and corresponds to the notion of "lexical item". At the surface level, a natural language sentence is considered a list of nodes, and a UNL graph a set of relations between nodes.</dd>
+<dt><a href="/wiki/Relation" class="mw-redirect" title="Relation">Relation</a></dt>
+<dd>In order to form a natural language sentence or a UNL graph, nodes are inter-related by relations. In the UNL framework, there are three different types of relations: the linear (list) relation, syntactic relations and semantic relations.</dd>
+<dt><a href="/wiki/Hyper-Node" class="mw-redirect" title="Hyper-Node">Hyper-Node</a></dt>
+<dd>A hyper-node is a sub-graph, i.e., a <a href="/wiki/Scope" title="Scope">scope</a>: a node containing relations between nodes.</dd>
+<dt><a href="/wiki/Hyper-Relation" class="mw-redirect" title="Hyper-Relation">Hyper-Relation</a></dt>
+<dd>A hyper-relation is a relation between relations.</dd></dl>
+<div class="mw-heading mw-heading2"><h2 id="Notation">Notation</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Node&amp;veaction=edit&amp;section=3" title="Edit section: Notation" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Node&amp;action=edit&amp;section=3" title="Edit section&#39;s source code: Notation">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>Nodes are represented between (parentheses).<br />
+Each node may have several different elements, which are listed inside parentheses, isolated by comma.<br />
+Examples of nodes:
+</p>
+<ul><li>("a")</li>
+<li>([a])</li>
+<li>([[a]])</li>
+<li>(NOU)</li>
+<li>(POS=NOU)</li>
+<li>("a",[a],[[a]],LEX=N,POS=NOU,GEN=MCL,NUM=SNG)</li></ul>
+<p>Nodes are related by <a href="/wiki/Relation" class="mw-redirect" title="Relation">relations</a>. In a relation, different nodes are isolated by ";"
+</p>
+<ul><li>rel("a";"b") (a relation rel between the nodes ("a") and ("b"))</li></ul>
+<div class="mw-heading mw-heading2"><h2 id="Elements">Elements</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Node&amp;veaction=edit&amp;section=4" title="Edit section: Elements" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Node&amp;action=edit&amp;section=4" title="Edit section&#39;s source code: Elements">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>Any node is a structure containing the following <b>necessary</b> elements:
+</p>
+<ul><li>a <b>string</b>, to be represented between "quotes", which expresses the actual state of the node;</li>
+<li>a <b>headword</b>, to be represented between [square brackets], which expresses the original value of the node in the dictionary;</li>
+<li>a <b>UW</b>, to be represented between [[double square brackets]], which expresses the UW value of the node;</li>
+<li>a <b>feature or set of features</b>, which express the features of the node;</li>
+<li>an <a href="/wiki/Index" title="Index">Index</a>, preceded by the symbol&#160;%, which is used to reference the node.</li></ul>
+<p>The elements of a node can be:
+</p>
+<ul><li><b>native</b>, if defined in the dictionary; or</li>
+<li><b>non-native</b>, if assigned by transformation rules.</li></ul>
+<div class="mw-heading mw-heading2"><h2 id="Example">Example</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Node&amp;veaction=edit&amp;section=5" title="Edit section: Example" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Node&amp;action=edit&amp;section=5" title="Edit section&#39;s source code: Example">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>Consider the input string "an apple" and the dictionary<sup id="cite_ref-1" class="reference"><a href="#cite_note-1"><span class="cite-bracket">&#91;</span>1<span class="cite-bracket">&#93;</span></a></sup> below:
+</p>
+<dl><dd>[an]{111}""(LEX=D,POS=ART)&lt;eng,0,0&gt;;</dd>
+<dd>[ ]{3333}""(LEX=O,POS=PUT,BLK)&lt;eng,0,)&gt;;</dd>
+<dd>[apple]{222}"apple(icl&gt;fruit)"(LEX=N,POS=NOU)&lt;eng,0,0&gt;;</dd></dl>
+<p>In the <a href="/wiki/Tokenization" title="Tokenization">tokenization</a> process, the input string is segmented into nodes according to the dictionary. This means that the input string above is analyzed as a list of three nodes:
+</p>
+<dl><dd>("an",[an],[[]],LEX=D,POS=ART)</dd>
+<dd>(" ",[ ],[[]],LEX=O,POS=PUT,BLK)</dd>
+<dd>("apple",[apple],[[apple(icl&gt;fruit)]],LEX=N,POS=NOU)</dd></dl>
+<p>Each node consists of:
+</p>
+<ul><li>a string, between quotes ("an", " ", "apple");</li>
+<li>a headword, between brackets ([an],[ ],[apple]);</li>
+<li>a UW, between double brackets ([[]],[[]],[[apple(icl&gt;fruit)]]);</li>
+<li>a set of features (LEX=D, POS=ART, LEX=O, ..., BLK)</li></ul>
+<p>These elements are said to be native because they are inherited from the dictionary.<br />
+During the processing, we may change any of these elements with <a href="/wiki/T-rule" title="T-rule">T-rules</a>. The resulting new elements are said to be non-native because they are assigned by rules.<br />
+Consider, for instance, the example below:
+</p>
+<ul><li>INITIAL STATE: (<b>"an"</b>,[an],[[]],LEX=D,POS=ART)</li>
+<li>RULE APPLIED: ("an"):=("a");<sup id="cite_ref-2" class="reference"><a href="#cite_note-2"><span class="cite-bracket">&#91;</span>2<span class="cite-bracket">&#93;</span></a></sup></li>
+<li>FINAL STATE: (<b>"a"</b>,[an],[[]],LEX=D,POS=ART)</li></ul>
+<p>Note, in the above, that the node changed its string value from "an" to "a". As this was the only change intended, the rule referred only to the string value of the node ("an").<br />
+In addition to changing the string, we could have changed any element of the node:
+</p>
+<ul><li>(ART):=(-ART); (delete the feature ART from the nodes having the feature ART)</li>
+<li>(ART,^NDEF):=(+NDEF); (add the feature NDEF to the nodes having the feature ART and not having the feature NDEF)</li>
+<li>("an",ART,^NDEF):=("a",-ART,+NDEF); (set the string to "a", remove the feature ART and add the feature NDEF to the nodes having the feature ART and not having the feature NDEF whose string is "an").<br /></li></ul>
+<div class="mw-heading mw-heading2"><h2 id="Indexation">Indexation</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Node&amp;veaction=edit&amp;section=6" title="Edit section: Indexation" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Node&amp;action=edit&amp;section=6" title="Edit section&#39;s source code: Indexation">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<dl><dd>main article: <a href="/wiki/Indexation" class="mw-redirect" title="Indexation">Indexation</a></dd></dl>
+<p>In most cases, we have to assign an index to the node. This happens when we want to perform operations over nodes instead of elements of nodes.<br />
+Consider, for instance, the need for reversing the order of the input string "an apple" in order to generate "apple an". If we write a rule as:
+</p>
+<ul><li>("an")(" ")("apple"):=("apple")(" ")("an");</li></ul>
+<p>We would have the following output:
+</p>
+<dl><dd>("apple",[an],[[]],LEX=D,POS=ART)</dd>
+<dd>(" ",[ ],[[]],LEX=O,POS=PUT,BLK)</dd>
+<dd>("an",[apple],[[apple(icl&gt;fruit)]],LEX=N,POS=NOU)</dd></dl>
+<p>Note, in the above, that we have simply replaced the string "an" by "apple", and "apple" by "an", preserving all the other features, which is not the intended behavior (after the rule, "apple" is ART and "an" is NOU).<br />
+In order to manipulate entire nodes (and not only some elements), we have to create indexes such as:
+</p>
+<ul><li>("an",%index1)(" ",%index2)("apple",%index3):=(%index3)(%index2)(%index1);</li></ul>
+<p>In this case, the output would be the expected one:
+</p>
+<dl><dd>("apple",[apple],[[apple(icl&gt;fruit)]],LEX=N,POS=NOU)</dd>
+<dd>(" ",[ ],[[]],LEX=O,POS=PUT,BLK)</dd>
+<dd>("an",[an],[[]],LEX=D,POS=ART)</dd></dl>
+<p>Indexes, which are introduced by the symbol&#160;%, are always temporary (they are valid only within rules using them) and are used for co-indexing nodes. For further information on indexes, see <a href="/wiki/Indexation" class="mw-redirect" title="Indexation">indexation</a>.
+</p>
+<div class="mw-heading mw-heading2"><h2 id="Properties">Properties</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Node&amp;veaction=edit&amp;section=7" title="Edit section: Properties" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Node&amp;action=edit&amp;section=7" title="Edit section&#39;s source code: Properties">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<ol><li>Nodes are enclosed between (parentheses)
+<dl><dd>("a") is a node</dd>
+<dd>"a" is not a node</dd></dl></li>
+<li>Inside relations, parentheses are not duplicated, except in case of <a href="/wiki/Hyper-node" title="Hyper-node">hyper-nodes</a>
+<dl><dd>rel("a";"b") (relation rel between the nodes ("a") and ("b"))</dd>
+<dd><strike>rel(("a");("b"))</strike></dd></dl></li>
+<li>The elements of a node are separated by comma
+<dl><dd>("a",[a],[[a]],A,B,A=C,%a)</dd></dl></li>
+<li>The order of elements inside a node is not relevant.
+<dl><dd>("a",[a],[[a]],A,B,A=C,%a) is the same as ([[a]],B,A,"a",[a],A=C,%a)</dd></dl></li>
+<li>Nodes may have one single string, headword, UW and index, but may have as many features as necessary
+<dl><dd><strike>("a","b")</strike> (a node may not contain more than one string)</dd>
+<dd><strike>([a],[b])</strike> (a node may not contain more than one headword)</dd>
+<dd><strike>([[a]],[[b]])</strike> (a node may not contain more than one UW)</dd>
+<dd><strike>(%a,%b)</strike> (a node may not contain more than one index)</dd>
+<dd>(A,B,C,D,...,Z) (a node may contain as many features as necessary)</dd></dl></li>
+<li>A node may be referred by any of its elements, but only the index make it unique
+<dl><dd>("a") refers to all nodes where actual string = "a"</dd>
+<dd>([a]) refers to all nodes where headword = [a]</dd>
+<dd>([[a]]) refers to all nodes where UW = [[a]]</dd>
+<dd>(A) refers to all nodes having the feature A</dd>
+<dd>("a",[a],[[a]],A) refers to all nodes having the feature A where string = "a" and headword = [a] and UW = [[a]]</dd>
+<dd>(%a) refers to the specific node with the index %a</dd></dl></li>
+<li>Nodes are automatically indexed according to a position-based system if no explicit index is provided (see <a href="/wiki/Indexation" class="mw-redirect" title="Indexation">Indexation</a>)
+<dl><dd>("a")("b") is actually ("a",%01)("b",%02)</dd></dl></li>
+<li><a href="/wiki/Regular_expressions" class="mw-redirect" title="Regular expressions">Regular expressions</a> may be used to make reference to any element of the node, except the index
+<dl><dd>("/a{2,3}/") refers to all nodes where string is a sequence of 2 to 3 characters "a"</dd>
+<dd>([/a{2,3}/]) refers to all nodes where headword is a sequence of 2 to 3 characters "a"</dd>
+<dd>([[/a{2,3}/]]) refers to all nodes where UW is a sequence of 2 to 3 characters "a"</dd>
+<dd>(/a{2,3}/) refers to all nodes having a feature that is a sequence of 2 to 3 characters "a"</dd></dl></li>
+<li>Nodes may contain disjoint features enclosed between {braces} and separated by vertical bar
+<dl><dd>({A|B}) refers to all nodes having the feature A OR B</dd></dl></li>
+<li>Node features may be expressed as simple attributes, or attribute-value pairs:
+<dl><dd>(MCL) - feature as an attribute: refers to all nodes having the feature MCL</dd>
+<dd>(GEN=MCL) - feature as an attribute-value pair, which is the same as (GEN,MCL): refers to all nodes having the features GEN and MCL.</dd></dl></li>
+<li>Attribute-value pairs may be used to create co-reference between different nodes (as in agreement):
+<dl><dd>(%x,GEN)(%y,GEN=%x) - the value of the attribute GEN of the node %x is the same as the attribute GEN of the node %y (see <a href="/wiki/Indexation" class="mw-redirect" title="Indexation">Indexation</a>)</dd></dl></li></ol>
+<div class="mw-heading mw-heading2"><h2 id="&quot;Strings&quot;_or_[headwords]?"><span id=".22Strings.22_or_.5Bheadwords.5D.3F"></span>"Strings" or [headwords]?</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Node&amp;veaction=edit&amp;section=8" title="Edit section: &quot;Strings&quot; or [headwords]?" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Node&amp;action=edit&amp;section=8" title="Edit section&#39;s source code: &quot;Strings&quot; or [headwords]?">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<ul><li><b>"Double quotes"</b> are always used to represent strings: "a" will match only the string "a"</li>
+<li><b>[Simple square brackets]</b> are always used to represent natural language entries (headwords) in the dictionary</li></ul>
+<p>In the initial state, i.e., right after <a href="/wiki/Tokenization" title="Tokenization">tokenization</a>, the "string" and the [headword] of a node are the same. During the processing, however, they can become different.<br />
+Consider, for instance, the case of "an apple" above. Note that, after applying the rule:
+</p>
+<dl><dd>("an"):=("a");</dd></dl>
+<p>The resulting node is:
+</p>
+<dl><dd>(<b>"a"</b>,[an],[[]],LEX=D,POS=ART)</dd></dl>
+<p>Note, in the above, that the string is now "a" whereas the headword is still [an]. We could have also changed the headword as in:
+</p>
+<dl><dd>("an",[an]):=("a",[a]);</dd></dl>
+<p>But it is normally interesting to preserve the headword in order to keep the track of the dictionary entries being used (regardless of their string changes).<br />
+In this case, if we want to make reference to the actual string value of the node, we use "quotes"; if we want to make reference to the string as it was retrieved in the dictionary, we use [brackets].
+</p>
+<div class="mw-heading mw-heading2"><h2 id="Transformations_over_nodes">Transformations over nodes</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Node&amp;veaction=edit&amp;section=9" title="Edit section: Transformations over nodes" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Node&amp;action=edit&amp;section=9" title="Edit section&#39;s source code: Transformations over nodes">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>Nodes are altered, replaced, created and deleted by <a href="/wiki/T-rule" title="T-rule">T-rules</a>:
+</p>
+<div class="mw-heading mw-heading3"><h3 id="Altering_elements_of_nodes">Altering elements of nodes</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Transformation_over_nodes&amp;veaction=edit&amp;section=T-1" title="Edit section: Altering elements of nodes" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Transformation_over_nodes&amp;action=edit&amp;section=T-1" title="Edit section&#39;s source code: Altering elements of nodes">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>Any changes to the elements of nodes must be stated in the right side of rules. Changes affect only the elements explicitly indicated in rules:
+</p>
+<dl><dd>("a",[a],[[a]],A):=("b"); (only the string is affected by the rule; all other elements are preserved. The resulting node is ("b",[a],[[a]],A) )</dd></dl>
+<dl><dt>"Strings"</dt>
+<dd>Nodes may have one single string. This value is set through the operator "+", reset through the operator "-", or modified through <a href="/wiki/A-rule" title="A-rule">A-rules</a>. The operator "+" may be omitted. Changes to strings do not affect any other element (headwords, UWs and features)
+<ul><li>(""):=(+"a"); (the string of the node is set from "" to "a")</li>
+<li>(""):=("a"); (the same as above)</li>
+<li>():=("a"); (the same as above)</li>
+<li>("a"):=(+"b"); (the string of the node is set from "a" to "b")</li>
+<li>("a"):=("b"); (the same as above)</li>
+<li>("a"):=(-"a"); (the string of the node is reset, i.e., it changes from "a" to "")</li>
+<li>("a"):=(""); (the same as above)</li>
+<li>("a"):=("x"&lt;0,0&gt;"y"); (the string of the node is modified from "a" to "xay")</li></ul></dd></dl>
+<dl><dt>[headwords]</dt>
+<dd>Nodes may have one single headword. This value is set through the operator "+" and reset through the operator "-". The operator "+" may be omitted. Headwords may not be modified through <a href="/wiki/A-rule" title="A-rule">A-rules</a>. Changes to headwords do not affect any other element (strings, UWs and features)
+<ul><li>([]):=(+[a]); (the headword of the node is set from [] to [a])</li>
+<li>([]):=([a]); (the same as above)</li>
+<li>():=([a]); (the same as above)</li>
+<li>([a]):=(+[b]); (the headword of the node is set from [a] to [b])</li>
+<li>([a]):=([b]); (the same as above)</li>
+<li>([a]):=(-[a]); (the headword of the node is reset, i.e., it changes from [a] to [])</li>
+<li>([a]):=([]); (the same as above)</li>
+<li><strike>([a]):=("x"&lt;0,0&gt;"y");</strike> (it is not possible to modify headwords through A-rules.</li></ul></dd></dl>
+<dl><dt>[[UWs]]</dt>
+<dd>Nodes may have one single UW. This value is set through the operator "+" and reset through the operator "-". The operator "+" may be omitted. UWs may not be modified through <a href="/wiki/A-rule" title="A-rule">A-rules</a>. Changes to UWs do not affect any other element (strings, headwords and features)
+<ul><li>([[]]):=(+[[a]]); (the UW of the node is set from [[]] to [[a]])</li>
+<li>([[]]):=([[a]]); (the same as above)</li>
+<li>():=([[a]]); (the same as above)</li>
+<li>([[a]]):=(+[[b]]); (the UW of the node is set from [[a]] to [[b]])</li>
+<li>([[a]]):=([[b]]); (the same as above)</li>
+<li>([[a]]):=(-[[a]]); (the UW of the node is reset, i.e., it changes from [[a]] to [[]])</li>
+<li>([[a]]):=([[]]); (the same as above)</li>
+<li><strike>([a]):=("x"&lt;0,0&gt;"y");</strike> (it is not possible to modify UWs through A-rules.</li></ul></dd></dl>
+<dl><dt>Features</dt>
+<dd>Nodes may have as many features as necessary. Features may come isolated in a list (POS,NOU,GEN,MCL,NUM,SNG) or as pairs of attribute=value (POS=NOU,GEN=MCL,NUM=SNG). Changes to features do not affect any other element (strings, headwords and UWs)</dd></dl>
+<ul><li>Adding features to nodes
+<dl><dd>Features are added through the operator + (add). The operator "+" may be omitted.
+<ul><li>():=(+B); (add the feature B to the node)</li>
+<li>():=(B); (the same as above)</li></ul></dd>
+<dd>Rules are recursive: the feature will be added to the node while the condition is true.
+<ul><li>():=(+B); (the resulting node is (B,B,B,...), i.e., this is an infinite loop)</li>
+<li>(^B):=(+B); (the resulting node is (B), i.e., the feature B is added only if the node does not contain it yet)</li></ul></dd>
+<dd>The operator + (add) does not create attribute=value pairs automatically (it simply adds features to the nodes)
+<ul><li>(%x,^POS,^NOU):=(%x,+NOU); (the resulting node is (NOU) and not (POS=NOU) because POS has not been added)</li>
+<li>(%x,^POS,^NOU):=(%x,+POS,+NOU); (the resulting node is (POS,NOU) and not (POS=NOU) because there was no assignment POS=NOU)</li>
+<li>(%x,POS,^NOU):=(%x,+NOU); (the resulting node is (POS,NOU) because there was no assignment POS=NOU)</li>
+<li>(%x,^POS,^NOU):=(%x,+POS=NOU); (the resulting node is (POS=NOU))</li>
+<li>(%x,POS,^NOU):=(%x,+POS=NOU); (the resulting node is (POS, POS=NOU) because the feature POS has been duplicated)</li></ul></dd></dl></li>
+<li>Deleting features from nodes
+<dl><dd>Features are deleted through the operator - (delete).</dd>
+<dd>():=(-B); (delete the feature B from the node)</dd>
+<dd>Rules are recursive: the feature will be deleted from the node while the condition is true.</dd>
+<dd>():=(-B); (the rule will delete all instances of the feature B from the node, i.e., the node (B,B,B,B,B) will become ()</dd>
+<dd>The operator "-" may also be used to reset attributes:
+<ul><li>(%x,POS,NOU):=(%x,-NOU); (the resulting node is (POS) because the feature POS was not deleted)</li>
+<li>(%x,POS,NOU):=(%x,-POS,-NOU); (the resulting node is () because both features POS and NOU were deleted)</li>
+<li>(%x,POS=NOU):=(%x,-NOU); (the resulting node is (POS) because only the value of the attribute POS was deleted)</li>
+<li>(%x,POS=NOU):=(%x,-POS); (the resulting node is () because the attribute POS was deleted with all its values)</li></ul></dd></dl></li>
+<li>Copying features
+<dl><dd>Features can be copied from one to another node through indexes
+<ul><li>(%x,GEN)(%y,^GEN):=(%x)(%y,GEN=%x); (the value of the attribute GEN is copied from the node %x to %y);</li></ul></dd></dl></li></ul>
+<dl><dt>Indexes</dt>
+<dd>Indexes are used to make reference to the whole node instead of its elements. Any change in the index means a completely new node, and no element is preserved.
+<ul><li>(%x,"a"):=(%x,"b"); (the string of the node %x is set from "a" to "b"; all the other elements of the node %x are preserved)</li>
+<li>(%x,"a"):=(%y,"b"); (the whole node %x is replaced by a new node %y whose string is "b"; no element from %x is copied to %y)</li></ul></dd></dl>
+<div class="mw-heading mw-heading3"><h3 id="Deleting_nodes">Deleting nodes</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Transformation_over_nodes&amp;veaction=edit&amp;section=T-2" title="Edit section: Deleting nodes" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Transformation_over_nodes&amp;action=edit&amp;section=T-2" title="Edit section&#39;s source code: Deleting nodes">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>In linear rules, nodes are deleted if they are not repeated (co-indexed) in the right side:
+</p>
+<ul><li>(%x)(%y):=(%x); (the node %y will be deleted)</li></ul>
+<p>In other rules, nodes are deleted if they are not repeated (co-indexed) in the right side and are not part of any other relation:
+</p>
+<ul><li>rel(%x;%y):=rel(%x); (the node %y will be deleted if, and only if, it is not part of any other relation)</li></ul>
+<div class="mw-heading mw-heading3"><h3 id="Creating_nodes">Creating nodes</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Transformation_over_nodes&amp;veaction=edit&amp;section=T-3" title="Edit section: Creating nodes" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Transformation_over_nodes&amp;action=edit&amp;section=T-3" title="Edit section&#39;s source code: Creating nodes">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>Nodes are created through the use of new indexes in the right side:
+</p>
+<ul><li>("a",%x)("b",%y):=(%x)(%y)("c",%z); (the node %z will be created)</li>
+<li>("a",%x)("b",%y):=(%x)("c",%z); (the node %z will be created, and %y will be deleted)</li></ul>
+<div class="mw-heading mw-heading3"><h3 id="Duplicating_(cloning)_nodes"><span id="Duplicating_.28cloning.29_nodes"></span>Duplicating (cloning) nodes</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Transformation_over_nodes&amp;veaction=edit&amp;section=T-4" title="Edit section: Duplicating (cloning) nodes" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Transformation_over_nodes&amp;action=edit&amp;section=T-4" title="Edit section&#39;s source code: Duplicating (cloning) nodes">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>Nodes may be duplicated by repeating indexes on the right side along with the command #CLONE:
+</p>
+<ul><li>("a",^CLONED,%x):=(%x,+CLONED)(%x,+CLONED,#CLONE);
+<dl><dd>("a") becomes ("a")("a")<br /></dd></dl></li></ul>
+<p>In order to avoid infinite recursion, it is important to change the condition on the right side (in the example above, the feature +CLONED, assigned to all instances of the clone, prevents the rule from applying indefinitely)<br />
+Clones contain the same elements of the original nodes, unless they are explicitly altered during the cloning:
+</p>
+<ul><li>("a",[a],[[a]],A,^CLONED,%x):=(%x,+CLONED)(%x,+CLONED,#CLONE);
+<dl><dd>("a",[a],[[a]],A) becomes ("a",[a],[[a]],A,CLONED)("a",[a],[[a]],A,CLONED)</dd></dl></li>
+<li>(A,^CLONED,%x):=(%x,-A,+B,+CLONED)(%x,-A,+C,+CLONED,#CLONE);
+<dl><dd>(A) becomes (B,CLONED)(C,CLONED)</dd></dl></li></ul>
+<div class="mw-heading mw-heading3"><h3 id="Splitting_nodes">Splitting nodes</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Transformation_over_nodes&amp;veaction=edit&amp;section=T-5" title="Edit section: Splitting nodes" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Transformation_over_nodes&amp;action=edit&amp;section=T-5" title="Edit section&#39;s source code: Splitting nodes">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>One node may be split into two or more nodes through the use of splitting rules. 
+Consider, for instance, the cases below:
+</p>
+<dl><dt>Splitting rules deal only with strings and apply only to nodes with the feature TEMP.</dt>
+<dd>Original node: ("abc",TEMP)</dd>
+<dd>Split rule: ("abc"):=("ab")("c");</dd>
+<dd>Resulting nodes: ("ab",TEMP)("c",TEMP);</dd>
+<dd>However, if the original node was ("abc"), without TEMP, the rule would not have been applied (i.e., it is necessary to assign the feature TEMP to the node before splitting it)</dd>
+<dt>Splitting rules are conservative: the elements of the original node, except the string, will be preserved unless explicitly altered.</dt>
+<dd>Original node: ("abc",[abc],[[abc]],A,B,C,TEMP)</dd>
+<dd>Split rule: ("abc"):=("ab")("c");</dd>
+<dd>Resulting nodes: ("ab",[abc],[[abc]],A,B,C,TEMP)("c",[abc],[[abc]],A,B,C,TEMP) (i.e., the elements of the original node will be copied to the new nodes)</dd>
+<dd>However, if the rule was: ("abc"):=("ab",-A,-B,-C,-TEMP,+AB)("c",-TEMP);</dd>
+<dd>The result would be: ("ab",[abc],[[abc]],AB)("c",[abc],[[abc]],A,B,C)</dd></dl>
+<div class="mw-heading mw-heading3"><h3 id="Merging_nodes_(&amp;)"><span id="Merging_nodes_.28.26.29"></span>Merging nodes (&amp;)</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Transformation_over_nodes&amp;veaction=edit&amp;section=T-6" title="Edit section: Merging nodes (&amp;)" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Transformation_over_nodes&amp;action=edit&amp;section=T-6" title="Edit section&#39;s source code: Merging nodes (&amp;)">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>Two or more nodes may be merged by the command &amp;:
+</p>
+<ul><li>(%x)(%y)(%z):=(%x&amp;%y&amp;%z);</li></ul>
+<p>In the example above("a")("b")("c") becomes ("abc")
+</p>
+<dl><dt>Merge operations concatenate headwords and UWs, and join features</dt></dl>
+<p>("hw1",[[uw1]],F1,%x)("hw2",[[uw2]],F2,%y)("hw3",[[uw3]],F3,%z):=(%x&amp;%y&amp;%z);<br />
+The resulting node is ("hw1hw2hw3",[[uw1uw2uw3]],F1,F2,F3)
+</p>
+<dl><dt>Compare the difference</dt></dl>
+<ul><li>(%x)(%y):=(%z); (the nodes %x and %y are replaced by %z, and their features are lost unless explicitly included in %z)</li>
+<li>(%x)(%y):=(%x&amp;%y); (the nodes %x and %y are merged)</li></ul>
+<div class="mw-heading mw-heading3"><h3 id="Retrieving_entries_in_the_dictionary_after_tokenization_(?)"><span id="Retrieving_entries_in_the_dictionary_after_tokenization_.28.3F.29"></span>Retrieving entries in the dictionary after tokenization (?)</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Transformation_over_nodes&amp;veaction=edit&amp;section=T-7" title="Edit section: Retrieving entries in the dictionary after tokenization (?)" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Transformation_over_nodes&amp;action=edit&amp;section=T-7" title="Edit section&#39;s source code: Retrieving entries in the dictionary after tokenization (?)">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>During transformation (i.e., after tokenization), dictionary entries may be accessed from transformation rules by the command "?"
+</p>
+<ul><li>(?[headword]) retrieves the first entry in the dictionary with the headword "headword"</li>
+<li>(?[[uw]]) retrieves the first entry in the dictionary with the UW "uw"</li>
+<li>(?[headword],?[[uw]],?feature) retrieves the first entry in the dictionary with the headword "headword", the UW "uw" and the feature "feature"</li></ul>
+<p>Regular expressions, variables and disjunction may also be used in dictionary search
+</p>
+<ul><li>(?[/abcd./]) retrieves the first entry in the dictionary whose headword has 5 characters and begins with "abcd" (this works only in natural language generation)</li>
+<li>(?[[/abcd./]]) retrieves the first entry in the dictionary whose UW has 5 characters and begins with "abcd" (this works only in natural language analysis)</li></ul>
+<dl><dt>Obligatory parameters</dt>
+<dd>Due to the indexation algorithm, the headword is obligatory in IAN and the UW is obligatory in EUGENE:</dd></dl>
+<ul><li>(?[headword]) will work only in IAN</li>
+<li>(?[[uw]]) will work only in EUGENE</li>
+<li>(?feature) will not work in IAN or EUGENE</li></ul>
+<dl><dt>Variables</dt>
+<dd>In order to avoid repetition, dictionary look-up may use the values of indexed nodes in the left side</dd></dl>
+<ul><li>(?[%x]) retrieves the first entry in the dictionary with the same headword of the node %x</li>
+<li>(?[[%x]]) retrieves the first entry in the dictionary with the same UW of the node %x</li>
+<li>(?[%x],ATT=%x) retrieves the first entry in the dictionary with the same headword of the node %x and whose attribute ATT has the same value of the attribute ATT of the node %x</li></ul>
+<dl><dt>Example</dt></dl>
+<p>Dictionary search is used mainly in natural language generation
+</p>
+<ul><li>(N,NUM,GEN,@def,%noun):=(?[[]],?ART,?DEF,?NUM=%noun,?GEN=%noun)(%noun,-@def);</li></ul>
+<p>In case of node %noun with the features noun (N), number (NUM) and gender (GEN), and with the attribute @def (definite), search the first entry in the dictionary associated with the UW "" (empty UW) with the features ART and DEF, and whose attributes NUM and GEN have the same values of the ones of the node %noun, and insert it in front of the noun. Remove @def from the noun in order to avoid an infinite loop.
+</p>
+<div class="mw-heading mw-heading3"><h3 id="Triggering_rules_(!)"><span id="Triggering_rules_.28.21.29"></span>Triggering rules (!)</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Transformation_over_nodes&amp;veaction=edit&amp;section=T-8" title="Edit section: Triggering rules (!)" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Transformation_over_nodes&amp;action=edit&amp;section=T-8" title="Edit section&#39;s source code: Triggering rules (!)">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p><a href="/wiki/Dictionary_Specs#Inflection_rules_inside_dictionary_entries.2A" class="mw-redirect" title="Dictionary Specs">Inflectional rules</a> are triggered in the grammar by the command "!"&lt;ATTRIBUTE&gt;.<br />
+Given the dictionary entry:
+</p>
+<ul><li>[foot] "foot" (POS=NOU, NUM(PLR:="oo":"ee")) &lt;eng,0,0&gt;;</li></ul>
+<p>The rule NUM(PLR:="oo":"ee") is triggered by !NUM<br />
+For instance:
+</p>
+<ul><li>(NUM=PLR,^inflected):=(!NUM,+inflected); or</li>
+<li>(PLR,^inflected):=(!NUM,+inflected); or</li>
+<li>(NUM,^inflected):=(!NUM,+inflected);</li></ul>
+<p>In the first case (NUM=PLR), the system verifies if the attribute "NUM" is set and if it has the value "PLR". In the second and in the third case, the system simply verifies if the word has any feature (attribute or value) equal to "PLR" or "NUM".<br />
+It's important to stress that, as the features of the dictionary are defined by the user, there is no way of pre-assigning attribute-value pairs. In that sense, it's not possible to infer that "PLR" will be a value of the attribute "NUM" except through an assignment of the form "NUM=PLR" (i.e., given only "PLR" or "NUM", is not possible to state "NUM=PLR").
+</p><p><br />
+</p>
+<div class="mw-heading mw-heading2"><h2 id="Notes">Notes</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Node&amp;veaction=edit&amp;section=10" title="Edit section: Notes" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Node&amp;action=edit&amp;section=10" title="Edit section&#39;s source code: Notes">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<div class="mw-references-wrap"><ol class="references">
+<li id="cite_note-1"><span class="mw-cite-backlink"><a href="#cite_ref-1">↑</a></span> <span class="reference-text">For the structure of the dictionary, please consult <a href="/wiki/Dictionary" title="Dictionary">dictionary</a>.</span>
+</li>
+<li id="cite_note-2"><span class="mw-cite-backlink"><a href="#cite_ref-2">↑</a></span> <span class="reference-text">This is a T-rule and means: replace the string value from "an" to "a". For further information on T-rules, please consult <a href="/wiki/T-rule" title="T-rule">T-rule</a>.</span>
+</li>
+</ol></div>
+<!-- 
+NewPP limit report
+Cached time: 20260909220845
+Cache expiry: 86400
+Reduced expiry: false
+Complications: [show‐toc]
+CPU time usage: 0.025 seconds
+Real time usage: 0.028 seconds
+Preprocessor visited node count: 376/1000000
+Post‐expand include size: 14928/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 3/100
+Expensive parser function count: 0/100
+Unstrip recursion depth: 0/20
+Unstrip post‐expand size: 1332/5000000 bytes
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    6.129      1 -total
+ 32.61%    1.999      1 Transformation_over_nodes
+ 22.42%    1.374      1 Basic_Symbols
+ 17.49%    1.072      1 Grammar_units
+-->
+
+<!-- Saved in parser cache with key u965818192_SLvgQ-l8z2_:pcache:777:|#|:idhash:canonical and timestamp 20260909220845 and revision id 15913. Rendering was triggered because: diff-page
+ -->
+</div>

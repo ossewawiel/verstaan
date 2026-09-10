@@ -1,0 +1,135 @@
+<div class="mw-content-ltr mw-parser-output" lang="en" dir="ltr"><p>In phrase structure grammars, the sentence is understood as a hierarchical structure made of “immediate constituents”, i.e., a word or a group of words that functions as a syntactic unit. The immediate constituent analysis was first mentioned by Leonard Bloomfield [1933], was developed further by Rulon Wells [1947] and Noam Chomsky [1957, 1965], and is now considerably widespread. The constituent structure of sentences is normally identified using constituency tests (e.g. topicalization, clefting, pseudoclefting, pro-form substitution, answer ellipsis, passivization, omission, coordination, etc.), which depends heavily on speakers’ intuitions and may not be directly replicated by machines. In what follows, we present some strategies that we claim to provide some clues about the immediate constituent structure of sentences. As they are rather probabilistic, we have organized them in a “constituency score”, which can be used to help us filtering non-relevant n-grams extracted from comparable corpora.
+</p><p>The constituency score is the probability of a given n-gram to function as a syntactic unit (i.e., a “constituent”) in a sentence. For the time being, it is defined as the weighted average of three different independent measures: distribution, substitution and dependency, as described below. As we are dealing with a non-annotated source document, where the part-of-speech tagging is not available, the constituent tests must be calculated by reference to the immediate left and right contexts of the n-gram. 
+</p>
+<div id="toc" class="toc" role="navigation" aria-labelledby="mw-toc-heading"><input type="checkbox" role="button" id="toctogglecheckbox" class="toctogglecheckbox" style="display:none" /><div class="toctitle" lang="en" dir="ltr"><h2 id="mw-toc-heading">Contents</h2><span class="toctogglespan"><label class="toctogglelabel" for="toctogglecheckbox"></label></span></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Definitions"><span class="tocnumber">1</span> <span class="toctext">Definitions</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#Distribution_(d)"><span class="tocnumber">2</span> <span class="toctext">Distribution (d)</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="#Substitution_(s)"><span class="tocnumber">3</span> <span class="toctext">Substitution (s)</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="#Dependency_(i)"><span class="tocnumber">4</span> <span class="toctext">Dependency (i)</span></a></li>
+<li class="toclevel-1 tocsection-5"><a href="#References"><span class="tocnumber">5</span> <span class="toctext">References</span></a></li>
+</ul>
+</div>
+
+<div class="mw-heading mw-heading2"><h2 id="Definitions">Definitions</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Constituency_score&amp;veaction=edit&amp;section=1" title="Edit section: Definitions" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Constituency_score&amp;action=edit&amp;section=1" title="Edit section&#39;s source code: Definitions">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<ul><li>An n-gram “x” is any sequence recognized as such after the length, frequency and redundancy filters:</li>
+<li>A prefix of x is the longest n-gram immediately before x, if any; or the boundary marker #, otherwise.</li>
+<li>A suffix of x is the longest n-gram immediately after x, if any; or the boundary marker #, otherwise.</li>
+<li>A circumfix of x is the pair (p,s) where p and s are, respectively, the prefix and the suffix of a given occurrence of x.</li>
+<li>An infix of (p,s) is the set of n-grams that may occur between p and s, including the empty set, in case “p” can be directly followed by “s”.</li>
+<li>T(x) is the total number of occurrences of x in the corpus.</li>
+<li>T(x&gt;n) is the total number of occurrences of (x&gt;n)-grams in the corpus containing x</li>
+<li>T(x&lt;n) is the total number of occurrences of (x&lt;n)-grams in the corpus contained by x</li>
+<li>P(x) is the set of all possible prefixes of x.</li>
+<li>S(x) is the set of all possible suffixes of x.</li>
+<li>C(x) is the set of all possible circumfixes of x.</li>
+<li>I(p,s) is the set of all possible infixes to (p,s).</li>
+<li>|f(x)| is the cardinality of f(x), i.e., the number of distinct elements of the set defined by the function f(x)</li></ul>
+<p> 
+</p>
+<div class="mw-heading mw-heading2"><h2 id="Distribution_(d)"><span id="Distribution_.28d.29"></span>Distribution (d)</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Constituency_score&amp;veaction=edit&amp;section=2" title="Edit section: Distribution (d)" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Constituency_score&amp;action=edit&amp;section=2" title="Edit section&#39;s source code: Distribution (d)">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>A n-gram is considered to be fully “free” (d = 1) if it can happen in different syntactic contexts, and is considered to be fully “bound” (d = 0) if it occurs always in the same context. This test is expected to emulate, at some extent, the collocational constituency tests (topicalization and clefting, mainly). The distribution is calculated by the following formula:
+</p>
+<pre>d = |P(x)| * |S(x)| / T(x)2
+</pre>
+<p>Where |P(x)| and |S(x)| are, respectively, the number of distinct prefixes and suffixes that x may have in the corpus; and T(x) is the total number of occurrences of x in the corpus. 
+</p><p>For instance, given the n-gram “a b c” and the corpus below:
+</p>
+<pre>		
+x a b c #
+# a b c #
+x a b c w
+# a b c z
+x a b c #
+</pre>
+<p>The distribution measure would be the following:
+</p>
+<pre>|P(x)|  = 2 (“x” and #)
+|S(x)| = 3 (#, “w” and “z”)
+T(x) = 5
+d = (2*3)/52 = 0.24
+</pre>
+<p>According to this rule, any n-gram with T(x) = 1 (i.e., occurring only once in the corpus) will have d=1. The same will happen for n-grams that do not repeat any prefixes and suffixes in any occurrence, i.e., which are completely free. The distribution measure decreases when the n-gram context is steadier in the syntactic structure, i.e., when the number of different prefixes and suffixes is reduced. But no n-gram will have d=0, because fully bound n-grams have been already filtered by the redundancy filter.
+</p>
+<div class="mw-heading mw-heading2"><h2 id="Substitution_(s)"><span id="Substitution_.28s.29"></span>Substitution (s)</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Constituency_score&amp;veaction=edit&amp;section=3" title="Edit section: Substitution (s)" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Constituency_score&amp;action=edit&amp;section=3" title="Edit section&#39;s source code: Substitution (s)">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>A n-gram is considered to be fully “replaceable” (s = 1) if it can be replaced by other n-grams in the same context, and it is considered to be “irreplaceable” (s = 0) otherwise. This constituency test is expected to emulate the pro-form substitution and the omission tests. The substitution is calculated by the following formula:
+</p>
+<pre>s = ( |I(C(x))| - |C(x)| ) /  ( |I(C(x))| * |C(x)| )
+</pre>
+<p>Where |I(C(x))| is the number of distinct infixes to the circumfixes of x, and |C(x)| is the number of distinct circumfixes of x.
+</p><p>For instance, given the n-gram “a b c” and the corpus below:
+</p>
+<pre>x a b c #
+x a b c #
+x a b #
+x b #
+x #
+</pre>
+<p>The substitution measure would be the following:
+</p>
+<pre>|I(C(x))| = 4 (“a b c”, “a b”, “b”, ∅)
+|C(x)| = 1 (“x #”)
+s = ( 4 – 1 ) / (4 * 1) = 0.75
+</pre>
+<p>According to this rule, any n-gram that cannot be replaced by any other n-gram (i.e., where |I(C(x))| = |C(x)|) will have s = 0. The substitution measure increases as the circumfix becomes more frequent, i.e., when the n-gram may be replaced by several different others in the same context.
+</p>
+<div class="mw-heading mw-heading2"><h2 id="Dependency_(i)"><span id="Dependency_.28i.29"></span>Dependency (i)</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Constituency_score&amp;veaction=edit&amp;section=4" title="Edit section: Dependency (i)" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Constituency_score&amp;action=edit&amp;section=4" title="Edit section&#39;s source code: Dependency (i)">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>An n-gram is considered “independent” (i=1) if it cannot be reduced to an existing (n-1)-gram nor integrated into an existing (n+1)-gram; and it is considered “dependent”  (i=0) if it can be fully reduced to an existing (n-1)-gram or integrated into an existing (n+1)-gram. These scores are calculated by the following formula:
+</p>
+<pre>i = [TO BE DEVELOPED]
+ix-1  =  ( T(x-1) – T(x)  ) / T(x-1)  (n&gt;1)
+ix+1 = 1 – (( T(x) – T(x+1) ) / T(x))  (n&lt;7)
+</pre>
+<p>Where T(x) is the total number of n-grams x; T(x+1), the total number of (n+1)-grams including x; and T(x-1), the total number of (n-1)-grams included in x. The ix-1 score cannot be calculated to 1-grams, because n cannot be smaller than 1; and the ix+1  score cannot be calculated to 7-grams, because n cannot be greater than 7.
+</p><p>For instance, given the n-gram “a b c” and the corpus below:
+</p>
+<pre>      b c      (70 times)
+   a b         (70 times)
+   a b c      (50 times)
+x a b c y   (10 times)
+x a b c z   (10 times)
+x a b c w  (10 times)	
+</pre>
+<p>The compositionality measures would be the following:
+</p>
+<pre>T(x) = 50
+T(x+1) = 30
+T(x-1) = 140 
+ix-1  =  (140-50)/140 = 0.6	
+ix+1  = (50 – 30)/50 = 0.4
+</pre>
+<p>According to this rule, an n-gram will be considered fully non-compositional (ix-1 = 1) when it is as frequent as the sum of the number of its smaller structures (T(x) = T(x-1)); and it will be considered fully incorporated when it is as frequent as the number of the structures in which it can be incorporated (T(x) = T(x+1)).
+</p>
+<pre>constituency score: (d * s) / (d + s)
+s = ( |I(C(x))| - |C(x)| ) /  ( |I(C(x))| + |C(x)| )
+</pre>
+<div class="mw-heading mw-heading2"><h2 id="References">References</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Constituency_score&amp;veaction=edit&amp;section=5" title="Edit section: References" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Constituency_score&amp;action=edit&amp;section=5" title="Edit section&#39;s source code: References">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>Bloomfield, Leonard. 1933. Language. New York: Henry Holt<br />
+Wells, Rulon S. 1947. "Immediate Constituents." Language: 23. pp. 81–117.<br />
+Chomsky, Noam 1957. Syntactic Structures. The Hague/Paris: Mouton.<br />
+Chomsky, Noam 1965. Aspects of the Theory of Syntax. Cambridge, Massachusetts: MIT Press.<br />
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20260910163643
+Cache expiry: 86400
+Reduced expiry: false
+Complications: [show‐toc]
+CPU time usage: 0.006 seconds
+Real time usage: 0.006 seconds
+Preprocessor visited node count: 54/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/100
+Expensive parser function count: 0/100
+Unstrip recursion depth: 0/20
+Unstrip post‐expand size: 707/5000000 bytes
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    0.000      1 -total
+-->
+
+<!-- Saved in parser cache with key u965818192_SLvgQ-l8z2_:pcache:871:|#|:idhash:canonical and timestamp 20260910163643 and revision id 16577. Rendering was triggered because: api-parse
+ -->
+</div>

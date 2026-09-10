@@ -1,0 +1,230 @@
+<div class="mw-content-ltr mw-parser-output" lang="en" dir="ltr"><p>Multiword Expressions (MTW) are lexical structures made up of a sequence of two or more lexemes. They can be concatenated ("darkroom", "skinhead") or isolated by hyphens ("blue-green", "African-American") or blank spaces ("round table", "part of speech"). Multiword expressions can be continuous ("get over") or discontinuous ("get &lt;something&gt; together"). They correspond to compounds ("fireman", "hardware"), phrases ("in spite of", "take into account"), idioms ("kick the bucket", "play cat and mouse"), fragments of sentences ("and so on", "whatever the case") or sentences ("Every evil is followed by some good", "No flies enter a mouth that is shut"). Multiword expressions may also include acronyms (such as "UNESCO"), multiple-word contractions (such as "don't") and blends (such as "sitcom") that are still analysable (differently from "radar" and "motel", which are represented as simple words). Classical compounds ("agriculture", "photograph") and their derivations ("agricultural", "photographically") are treated as simple words if they do not include more than one free morpheme. Phrasal verbs ("give in", "come across") are treated as multiword expressions.
+</p>
+<div id="toc" class="toc" role="navigation" aria-labelledby="mw-toc-heading"><input type="checkbox" role="button" id="toctogglecheckbox" class="toctogglecheckbox" style="display:none" /><div class="toctitle" lang="en" dir="ltr"><h2 id="mw-toc-heading">Contents</h2><span class="toctogglespan"><label class="toctogglelabel" for="toctogglecheckbox"></label></span></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Multiword_expressions_in_the_UNLarium"><span class="tocnumber">1</span> <span class="toctext">Multiword expressions in the UNLarium</span></a>
+<ul>
+<li class="toclevel-2 tocsection-2"><a href="#Multiword_expressions_formed_by_a_single_inflectional_element"><span class="tocnumber">1.1</span> <span class="toctext">Multiword expressions formed by a single inflectional element</span></a></li>
+<li class="toclevel-2 tocsection-3"><a href="#Multiword_expressions_formed_by_several_inflectional_elements"><span class="tocnumber">1.2</span> <span class="toctext">Multiword expressions formed by several inflectional elements</span></a></li>
+<li class="toclevel-2 tocsection-4"><a href="#Multiword_expressions_formed_by_coordination"><span class="tocnumber">1.3</span> <span class="toctext">Multiword expressions formed by coordination</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-5"><a href="#Multiword_Expressions_in_Natural_Language_Analysis"><span class="tocnumber">2</span> <span class="toctext">Multiword Expressions in Natural Language Analysis</span></a>
+<ul>
+<li class="toclevel-2 tocsection-6"><a href="#Continuous_Multiword_Expressions"><span class="tocnumber">2.1</span> <span class="toctext">Continuous Multiword Expressions</span></a></li>
+<li class="toclevel-2 tocsection-7"><a href="#Discontinuous_Multiword_Expressions"><span class="tocnumber">2.2</span> <span class="toctext">Discontinuous Multiword Expressions</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-8"><a href="#Notes"><span class="tocnumber">3</span> <span class="toctext">Notes</span></a></li>
+</ul>
+</div>
+
+<div class="mw-heading mw-heading2"><h2 id="Multiword_expressions_in_the_UNLarium">Multiword expressions in the UNLarium</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Multiword_expression&amp;veaction=edit&amp;section=1" title="Edit section: Multiword expressions in the UNLarium" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Multiword_expression&amp;action=edit&amp;section=1" title="Edit section&#39;s source code: Multiword expressions in the UNLarium">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<div class="mw-heading mw-heading3"><h3 id="Multiword_expressions_formed_by_a_single_inflectional_element">Multiword expressions formed by a single inflectional element</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Multiword_expression&amp;veaction=edit&amp;section=2" title="Edit section: Multiword expressions formed by a single inflectional element" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Multiword_expression&amp;action=edit&amp;section=2" title="Edit section&#39;s source code: Multiword expressions formed by a single inflectional element">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<dl><dt>Lemma</dt>
+<dd>The lemma of a <b>continuous</b> multiword expression is the multiword expression itself ("part of speech");</dd>
+<dd>The lemma of a <b>discontinuous</b> multiword expression must include the obligatory variables ("behind &lt;person&gt;'s back");</dd>
+<dd>The lemma of a <b>continuous/discontinuous</b> multiword expression is the multiword expression itself ("take into account", "bring back").</dd></dl>
+<dl><dt>Base form</dt>
+<dd>The base form is the same as the lemma, except in case of multiword expressions that involve <b>discontinuity</b> or <b>infixation</b>, i.e., where variations cannot be generated by simple prefixation and/or suffixation rules. In these cases, the base form will correspond to the lemma of the longest common denominator between all the possible variations of the word. The base form must necessarily belong to the same category of the lemma.</dd>
+<dd>For instance:
+<ul><li>coffee house (continuous multiword expression without infixation: "coffee house"&gt;"coffee house<b>s</b>"): BF=lemma="coffee house"</li>
+<li>give in (continuous multiword expression with infixation: "give in"&gt;"g<b>a</b>ve in"): BF="give" <code>&#8800;</code> lemma="give in"</li>
+<li>behind one's back (discontinuous multiword expression without infixation: "behind my back", "behind his back", etc.): BF="behind" <code>&#8800;</code> lemma="behind &lt;person&gt;'s back"</li>
+<li>take into account (discontinuous multiword expression with infixation: "take it into account", "took that into account"): BF="take" <code>&#8800;</code> lemma="take into account"</li></ul></dd></dl>
+<dl><dt>Composition rules</dt>
+<dd>Composition rules are rules that are applied over the base form to generate the lemma. They are used only when the lemma is different from the base form.</dd>
+<dd>For instance:
+<ul><li>coffee house: lemma = base form, composition rule = NULL</li>
+<li>give in: lemma (= give in) <code>&#8800;</code> base form (= give), composition rule = VH([in]); (i.e., lemma = base form + "in")</li>
+<li>take into account: lemma <code>&#8800;</code> base form, composition rule = VA("into account"); (i.e, lemma = base form + "into account")</li>
+<li>behind one's back: lemma <code>&#8800;</code> base form, composition rules = PA([back]); (i.e., lemma = base form + "back")</li></ul></dd>
+<dd>The composition rules are further described in <a href="/wiki/Composition" class="mw-redirect" title="Composition">composition</a></dd></dl>
+<dl><dt>Inflectional paradigm</dt>
+<dd>The inflectional paradigm and the inflectional rules apply over the base form (and not over the lemma).</dd>
+<dd>For instance:
+<ul><li>coffee house: base form = "coffee house", paradigm = M2 (regular nouns that make the plural in -s);</li>
+<li>give in: base form = "give", paradigm = M1 (irregular), inflectional rules = (PAS:="gave";PTP:="given";);</li>
+<li>take into account: base form = "take", paradigm = M1 (irregular), inflectional rules = (PAS:="took";PTP:="taken";);</li>
+<li>behind &lt;person&gt;'s back: base form = "behind", paradigm = M0 (invariant)</li></ul></dd></dl>
+<dl><dt>Subcategorization frame</dt>
+<dd>The subcategorization frame refers to the the lemma (and not to the base form).</dd>
+<dd>For instance:
+<ul><li>coffee house: base form = "coffee house", frame = Y0 (avalent);</li>
+<li>give in: base form = "give", frame = Y38 (Somebody ----s something);</li>
+<li>take into account: base form = "take", frame = Y38 (Somebody ----s something);</li>
+<li>behind &lt;person&gt;'s back: base form = "behind", frame = Y1 (irregular), subcategorization rules: PC(NA([back];ANM,GNT));</li></ul></dd></dl>
+<div class="mw-heading mw-heading3"><h3 id="Multiword_expressions_formed_by_several_inflectional_elements">Multiword expressions formed by several inflectional elements</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Multiword_expression&amp;veaction=edit&amp;section=3" title="Edit section: Multiword expressions formed by several inflectional elements" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Multiword_expression&amp;action=edit&amp;section=3" title="Edit section&#39;s source code: Multiword expressions formed by several inflectional elements">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>Multiword expressions may consist of several different inflectional elements. In Latin, for instance, the expression "lingua franca" involves two words: "lingua", a noun, and "franca", an adjective, both inflectional, and the latter must agree with the former in number, gender and case, as follows:
+</p>
+<table border="1" align="center" cellpadding="5">
+<tbody><tr>
+<th>case
+</th>
+<th>singular
+</th>
+<th>plural
+</th></tr>
+<tr>
+<td width="150px"><b>nominative</b>
+</td>
+<td width="150px">lingu<b>a</b> franc<b>a</b>
+</td>
+<td width="150px">lingu<b>ae</b> franc<b>ae</b>
+</td></tr>
+<tr>
+<td><b>vocative</b>
+</td>
+<td>lingu<b>a</b> franc<b>a</b>
+</td>
+<td>lingu<b>ae</b> franc<b>ae</b>
+</td></tr>
+<tr>
+<td><b>accusative</b>
+</td>
+<td>lingu<b>am</b> franc<b>am</b>
+</td>
+<td>lingu<b>as</b> franc<b>as</b>
+</td></tr>
+<tr>
+<td><b>genitive</b>
+</td>
+<td>lingu<b>ae</b> franc<b>ae</b>
+</td>
+<td>lingu<b>arum</b> franc<b>arum</b>
+</td></tr>
+<tr>
+<td><b>dative</b>
+</td>
+<td>lingu<b>ae</b> franc<b>ae</b>
+</td>
+<td>lingu<b>is</b> franc<b>is</b>
+</td></tr>
+<tr>
+<td><b>ablative</b>
+</td>
+<td>lingu<b>a</b> franc<b>a</b>
+</td>
+<td>lingu<b>is</b> franc<b>is</b>
+</td></tr></tbody></table>
+<p>In the UNL<sup>arium</sup> framework, the following applies to "lingua franca":
+</p>
+<ul><li>LEMMA = "lingua franca"</li>
+<li>BASE FORM = "lingua" (because "lingua franca" involves infixation; and "lingua" is the part of the lemma that belongs to the same category of "lingua franca", which is a noun)</li>
+<li>COMPOSITION RULES = NA([francus],J,M7,FEM,RNUM,RCAS);
+<ul><li>Where:</li>
+<li>NA indicates that "lingua" requires a nominal adjunct, which is formed according to the specifications below (enclosed between parentheses):</li>
+<li>[francus] indicates that this adjunct is made out of the word that has the lemma "francus"</li>
+<li>J indicates that [francus] is an adjective</li>
+<li>M7 indicates that [francus] belongs to the paradigm M7 (adjectives of the type -us,-a,-um)</li>
+<li>FEM indicates that [francus] must be generated in the feminine form</li>
+<li>RNUM indicates that [francus] must have the same number of the head of the noun phrase (i.e., "lingua")</li>
+<li>RCAS indicates that [francus] must have the same case of the head of the noun phrase (i.e., "lingua")</li></ul></li>
+<li>INFLECTIONAL PARADIGM = M2 ("lingua" follows the first declension of Latin nouns)</li>
+<li>SUBCATEGORIZATION FRAME = Y0 (avalent: "lingua franca" does not require any specifier or complement)</li></ul>
+<div class="mw-heading mw-heading3"><h3 id="Multiword_expressions_formed_by_coordination">Multiword expressions formed by coordination</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Multiword_expression&amp;veaction=edit&amp;section=4" title="Edit section: Multiword expressions formed by coordination" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Multiword_expression&amp;action=edit&amp;section=4" title="Edit section&#39;s source code: Multiword expressions formed by coordination">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>Multiword expressions formed by coordination such as "oranges and apples", "cloak and dagger", "smoke and mirrors", etc, are normally invariant and, in these cases, do not offer any problem, because lemma = base form, and there are no composition rules. There are, however, expressions such as "twist and shout" that may be inflected: "twisted and shouted", "twisting and shouting", etc. In these cases, the whole syntactic structure has to be analyzed in order for the system to handle all possible combinations.
+</p>
+<ul><li>LEMMA = twist and shout</li>
+<li>BASE FORM = twist</li>
+<li>COMPOSITION RULES = VA(CC([and];[shout],M16,RPER,RNUM,RTNS,RASP));
+<ul><li>Where:</li>
+<li>VA indicates that the base form "twist", which is a verb, requires an adjunct, which is formed as follows:</li>
+<li>The adjunct is a complementizer phrase whose head is "and" and whose complement is [shout];</li>
+<li>[shout] belongs to the paradigm M16 (regular verbs)</li>
+<li>[shout] receives person (RPER), number (RNUM), tense (RTNS) and aspect (RASP) from the head of the verbal phrase</li></ul></li>
+<li>INFLECTIONAL PARADIGM = M16 ("twist" is a regular verb)</li>
+<li>SUBCATEGORIZATION FRAME = Y32 (Somebody ----s)</li></ul>
+<p><br />
+</p>
+<div class="mw-heading mw-heading2"><h2 id="Multiword_Expressions_in_Natural_Language_Analysis">Multiword Expressions in Natural Language Analysis</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Multiword_expression&amp;veaction=edit&amp;section=5" title="Edit section: Multiword Expressions in Natural Language Analysis" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Multiword_expression&amp;action=edit&amp;section=5" title="Edit section&#39;s source code: Multiword Expressions in Natural Language Analysis">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<div class="mw-heading mw-heading3"><h3 id="Continuous_Multiword_Expressions">Continuous Multiword Expressions</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Multiword_expression&amp;veaction=edit&amp;section=6" title="Edit section: Continuous Multiword Expressions" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Multiword_expression&amp;action=edit&amp;section=6" title="Edit section&#39;s source code: Continuous Multiword Expressions">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>Continuous Multiword Expressions do not offer any problem in natural language analysis as they normally correspond to one single dictionary entry, automatically generated according to the rules described above.<br />
+For instance, the Latin dictionary will bring several different entries for the same lemma "lingua franca":
+</p>
+<ul><li>[lingua franca]{}"lingua franca"(LEX=N,POS=NOU,LST=MTW,GEN=FEM,CAS=NOM,NUM=SNG)&lt;lat,0,0&gt;; (nominative singular)</li>
+<li>[lingua franca]{}"lingua franca"(LEX=N,POS=NOU,LST=MTW,GEN=FEM,CAS=VOC,NUM=SNG)&lt;lat,0,0&gt;; (vocative singular)</li>
+<li>[linguam francam]{}"lingua franca"(LEX=N,POS=NOU,LST=MTW,GEN=FEM,CAS=ACC,NUM=SNG)&lt;lat,0,0&gt;; (accusative singular)</li>
+<li>[linguae francae]{}"lingua franca"(LEX=N,POS=NOU,LST=MTW,GEN=FEM,CAS=GNT,NUM=SNG)&lt;lat,0,0&gt;; (genitive singular)</li>
+<li>[linguae francae]{}"lingua franca"(LEX=N,POS=NOU,LST=MTW,GEN=FEM,CAS=DAT,NUM=SNG)&lt;lat,0,0&gt;; (dative singular)</li>
+<li>[lingua franca]{}"lingua franca"(LEX=N,POS=NOU,LST=MTW,GEN=FEM,CAS=ABL,NUM=SNG)&lt;lat,0,0&gt;; (ablative singular)</li>
+<li>[linguae francae]{}"lingua franca"(LEX=N,POS=NOU,LST=MTW,GEN=FEM,CAS=NOM,NUM=PLR)&lt;lat,0,0&gt;; (nominative plural)</li>
+<li>[linguae francae]{}"lingua franca"(LEX=N,POS=NOU,LST=MTW,GEN=FEM,CAS=VOC,NUM=PLR)&lt;lat,0,0&gt;; (vocative plural)</li>
+<li>[linguas francas]{}"lingua franca"(LEX=N,POS=NOU,LST=MTW,GEN=FEM,CAS=ACC,NUM=PLR)&lt;lat,0,0&gt;; (accusative plural)</li>
+<li>[linguarum francarum]{}"lingua franca"(LEX=N,POS=NOU,LST=MTW,GEN=FEM,CAS=GNT,NUM=PLR)&lt;lat,0,0&gt;; (genitive plural)</li>
+<li>[linguis francis]{}"lingua franca"(LEX=N,POS=NOU,LST=MTW,GEN=FEM,CAS=DAT,NUM=PLR)&lt;lat,0,0&gt;; (dative plural)</li>
+<li>[linguis francis]{}"lingua franca"(LEX=N,POS=NOU,LST=MTW,GEN=FEM,CAS=ABL,NUM=PLR)&lt;lat,0,0&gt;; (ablative plural)</li></ul>
+<p><br />
+</p>
+<div class="mw-heading mw-heading3"><h3 id="Discontinuous_Multiword_Expressions">Discontinuous Multiword Expressions</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Multiword_expression&amp;veaction=edit&amp;section=7" title="Edit section: Discontinuous Multiword Expressions" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Multiword_expression&amp;action=edit&amp;section=7" title="Edit section&#39;s source code: Discontinuous Multiword Expressions">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>Discontinuous Multiword Expressions cannot be represented as one single dictionary entry because they may involve non-adjacent segments. In this case, we must use information concerning the <a href="/wiki/Subcategorization" title="Subcategorization">subcategorization</a> of the base form. <br />
+Consider, for instance, the case of "bring back" in English, which may be separable: "to bring [something] back".<br />
+If we represent [bring back] as one single dictionary entry, the system will never match sentences as:
+</p>
+<ul><li>(1) <b>Bring</b> him <b>back</b>, please!</li></ul>
+<p>The only solution is then to split discontinuous multiword expression in as many separable parts as it may have, i.e.,:
+</p>
+<ul><li>[bring]{}"bring back"(LEX=V,POS=VER,LST=MTW,GOV=VA([back],A),...)&lt;en,0,0&gt;; where GOV=VA([back],A) describes the subcategorization rule to form the entry (i.e., the  verb requires the adjunct [back], which is an adverb)</li>
+<li>[back]{}"back"(LEX=A,POS=ADV)&lt;en,0,0&gt;;</li></ul>
+<p>According to this dictionary structure, sentence (1) above will be tokenized as:
+</p>
+<ul><li>(1) [bring][ ][him][ ][back]</li></ul>
+<p>as if "bring" and "back" were completely different entries. However, these entries can be merged later on, during the <a href="/wiki/Transformation" title="Transformation">transformation</a> phase. This can be done through:
+</p>
+<ul><li>reordering words in the preprocessing phase:</li></ul>
+<dl><dd><ul><li>(VA[back],%x)(^[back],%y):=(%y)(%x); move the verb to the right until it finds its adjunct</li></ul>
+<dl><dd><ul><li>[bring][him][back] &gt;&gt; [him][bring][back]</li></ul></dd></dl></dd></dl>
+<ul><li>parsing</li></ul>
+<dl><dd><ul><li>(V,%x)(NP,%y):=(VB(%x;%y),+LEX=V,+XB=VB,+GOV=%x,%new); (create an intermediate projection XB out of a V + NP and assign to it the values of the verbal head)</li></ul>
+<dl><dd><ul><li>[bring][him][back] &gt;&gt; [VB(bring;him)][back]</li></ul></dd></dl></dd></dl>
+<p>Once the discontinuity has been eliminated (i.e., all the separable parts of the multiword expression are contiguous), the entry can be merged:
+</p>
+<dl><dd><ul><li>by simply deleting the separable part (if the tokenization is already correct, i.e., the head of the multiword expression is mapped to the correct UW)</li></ul>
+<dl><dd><ul><li>(VA[back],%x)([back],%y):=(%x,-VA[back]); (delete the separable part if they are contiguous)</li></ul></dd></dl>
+<ul><li>by copying features of the separable part to the head of the multiword expression</li></ul>
+<dl><dd><ul><li>(VA[back],%x)([back],%y):=(%x,-VA[back],+FEATURES FROM %y); (copy some features from the separable part to the head of the multiword expression and delete the separable part<sup id="cite_ref-1" class="reference"><a href="#cite_note-1"><span class="cite-bracket">&#91;</span>1<span class="cite-bracket">&#93;</span></a></sup>)</li></ul></dd></dl></dd></dl>
+<dl><dt>Tokenizing multiword expressions made of regular words</dt></dl>
+<p>If the head of the multiword expression may stand as an isolated entry, it will important to disambiguate the lexical choice during the tokenization in order to avoid retokenization and backtracking. In the case of "bring back", for instance, "bring" may perfectly work as an independent entry, so that the English dictionary will actually contain:
+</p>
+<ul><li>[bring]{}"bring"(LEX=V,POS=VER,LST=WRD,...)&lt;en,0,0&gt;; "bring" as a regular word, i.e., not as a part of a multiword expression</li>
+<li>[bring]{}"bring back"(LEX=V,POS=VER,LST=MTW,GOV=VA([back],A),...)&lt;en,0,0&gt;; "bring" as a part of a multiword expression</li>
+<li>[back]{}"back"(LEX=A,POS=ADV)&lt;en,0,0&gt;;</li></ul>
+<p>In order to induce the system to choose the correct entry in the dictionary, a disambiguation rule must be created for the tokenization phase:
+</p>
+<ul><li>(VA[back])([back])=1; (i.e., prefer tokens with these features if they happen to occur<sup id="cite_ref-2" class="reference"><a href="#cite_note-2"><span class="cite-bracket">&#91;</span>2<span class="cite-bracket">&#93;</span></a></sup>.</li></ul>
+<p><br />
+</p><p><br />
+</p>
+<div class="mw-heading mw-heading2"><h2 id="Notes">Notes</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Multiword_expression&amp;veaction=edit&amp;section=8" title="Edit section: Notes" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Multiword_expression&amp;action=edit&amp;section=8" title="Edit section&#39;s source code: Notes">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<div class="mw-references-wrap"><ol class="references">
+<li id="cite_note-1"><span class="mw-cite-backlink"><a href="#cite_ref-1">↑</a></span> <span class="reference-text">The features to be copied must be explicitly informed, i.e., GEN=%y, or NUM=%y, etc.</span>
+</li>
+<li id="cite_note-2"><span class="mw-cite-backlink"><a href="#cite_ref-2">↑</a></span> <span class="reference-text">Note that this rule will only apply if the nodes are contiguous. In order to handle non-contiguous nodes, you will have to inform them explicitly or to use regular expressions:
+<ul><li>explicit: (VA[back])()([back])=1; there can be one single node in-between</li>
+<li>regex: (VA[back])/(){0,3}/([back])=1; there can be up to three nodes in-between</li></ul>
+</span></li>
+</ol></div>
+<!-- 
+NewPP limit report
+Cached time: 20260909183345
+Cache expiry: 86400
+Reduced expiry: false
+Complications: [show‐toc]
+CPU time usage: 0.011 seconds
+Real time usage: 0.012 seconds
+Preprocessor visited node count: 152/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/100
+Expensive parser function count: 0/100
+Unstrip recursion depth: 0/20
+Unstrip post‐expand size: 2557/5000000 bytes
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    0.000      1 -total
+-->
+
+<!-- Saved in parser cache with key u965818192_SLvgQ-l8z2_:pcache:580:|#|:idhash:canonical and timestamp 20260909183345 and revision id 13878. Rendering was triggered because: diff-page
+ -->
+</div>

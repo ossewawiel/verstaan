@@ -1,0 +1,152 @@
+'''Part of speech''' (POS) is an attribute defined by the syntactic or morphological behaviour of the [[Lexical Realisation Unit]]. In order to avoid redundancy and to be as comprehensive as possible, the UNLarium presents the part of speech as a hierarchy where lower values subsume the upper ones. LRUs are expected to be classified at the deepest (most specific) possible level of the hierarchy.
+
+{{#tree:id=tagset|openlevels=0|root=part of speech (POS)|
+*[[#Adjective|adjective]] (ADJ)
+*[[#Adposition|adposition]] (ADP)
+**circumposition (CIR)
+**postposition (PPS)
+**preposition (PRE)
+*[[#Adverb|adverb]] (ADV)
+**specifier adverb (SAV)
+**adjunct adverb (AAV)
+**conjunct (CJT)
+**disjunct (DJT)
+*[[#Affix|affix]] (AFF)
+**circumfix (CCX)
+**infix (IFX)
+**prefix (PFX)
+**suffix (SFX)
+*[[#Classifier|classifier]] (CLA)
+*[[#Conjunction|conjunction]] (CNJ)
+**coordinating conjunction (COO)
+***correlative conjunction (CRC)
+**subordinanting conjunction (SCJ)
+***adverbializer (AVR)
+***complementizer (CMR)
+***relativizer (RVZ)
+*[[#Determiner|determiner]] (DET)
+**article (ART)
+**demonstrative determiner (DEM)
+**possessive determiner (POD)
+**quantifier (QUA)
+*[[#Interjection|interjection]] (ITJ)
+*[[#Noun|noun]] (NOU)
+**proper noun (PPN)
+*[[#Numeral|numeral]] (NMR)
+**cardinal numeral (CDN)
+**distributive numeral (DTN)
+**partitive numeral (PTN)
+**multiplicative numeral (MLN)
+**ordinal numeral (ORD)
+*[[#Particle|particle]] (PTC)
+*[[#Pronoun|pronoun]] (PRO)
+**demonstrative pronoun (DEP)
+**dummy pronoun (DUM)
+**emphatic pronoun (EPR)
+**indefinite pronoun (NPR)
+**interrogative pronoun (IPR)
+**personal pronoun (PPR)
+**possessive pronoun (SPR)
+**reciprocal pronoun (CPR)
+**reflexive pronoun (FPR)
+**relative pronoun (RPR)
+*[[#Verb|verb]] (VER)
+**auxiliary verb (AUX)
+***modal verb (MOV)
+**copula (COP)
+**verbal (VBL)
+***infinitive (INF)
+***gerund (GER)
+***participle (PTP)
+***gerundive (GDV)
+***supine (SPN)
+}}
+
+
+== Adjective ==
+[[Adjectives]] are open-class LRUs whose main syntactic role is to assign attributes to a noun. Adjectives are distinguished from determiners, which express references rather than qualities.
+
+== Adposition == 
+Adpositions are closed-class LRUs whose main role is to designate a relation between LRUs. They are subclassified according to their position:
+*'''prepositions''' precede the related LRU
+*'''postpositions''' follow the related LRU
+*'''circumpositions''' surround the related LRU
+== Adverb ==
+[[Adverbs]] are open-class LRUs that modify any part of the language other than a noun. Adverbs can modify verbs, adjectives (including numbers), clauses, sentences and other adverbs. There are four classes of adverbs:
+*'''specifier adverbs''' are adverbs that specify an adjective, a verb or another adverb:
+**very tired
+**not tired
+*'''adjunct adverbs''' are adverbs that qualify an adjective, a verb or another adverb by indicating manner, time, place or frequency
+**go slowly
+**go now
+**go there
+**go often
+*'''conjuncts''' (not to be confounded with conjunctions) are connecting adverbs that add information to the sentence that is not considered part of the propositional content (or at least not essential) but which connects the sentence with previous parts of the discourse:
+**He has no money. '''In addition''', he has no means of getting any.
+**The French love music. '''In other words''', music is appreciated in France.
+*'''disjuncts''' are a type of adverbial adjunct that expresses information that is not considered essential to the sentence it appears in, but which is considered to be the speaker's or writer's attitude towards, or descriptive statement of, the propositional content of the sentence:
+**'''Honestly''', I didn't do it. (Meaning "I'm honest when I say I didn't do it" rather than *"I didn't do it in an honest way.")
+**'''Fortunately''', I have it right here.
+**'''In my opinion''', the green one is better.
+
+== Affix ==
+Affix is a LRU that is attached to another to add grammatical information (such as number, gender, tense and case) or to form a new LRU.  They are subclassified according to their position:
+*'''prefixes''' precede the modified LRU
+*'''suffixes''' follow the modified LRU
+*'''circumfixes''' surround the modified LRU
+*'''infixes''' modify the internal structure of the modified LRU
+== Classifier ==
+A classifier is a LRU used to classify the referent of a noun according to its meaning.
+== Conjunction ==
+Conjunctions are LRUs that connect two other LRUs, phrases or clauses. They can be:
+*'''coordinating conjunctions ''' ("and", "or", "but"), if they join two or more items of equal syntactic importance; or
+*'''subordinating conjunctions ''' ("because", "while"), if they introduce a dependent clause. 
+'''Correlative conjunctions''' are pairs of conjunctions that work together to coordinate two items (both … and, (n)either … (n)or, not (only) … but (also)....).<br> '''Complementizers''' are special subordinating conjunctions that introduce complement clauses ("that" in "I know that he came").
+== Determiner ==
+[[Determiners]] are noun-modifiers that express the reference of a noun or noun-phrase in the context, including quantity, rather than attributes expressed by adjectives. This function is usually performed by:
+*'''articles''' (which express definiteness): “a”, “the”
+*'''demonstrative determiners''' (which express position): “this”, in "this house is mine" (not to be confounded with demonstrative pronouns)
+*'''possessive determiners''' (which express property): “my”, “your” (not to be confounded with possessive pronouns)
+*'''quantifiers''' (which express quantities): “a lot of”, “several” (not to be confounded with numerals)
+Numeral determiners must be classified as numerals.
+
+== Interjection ==
+Interjections are LRUs without a grammatical connection with the rest of the sentence and that simply express emotion on the part of the speaker.
+== Noun ==
+Nouns are LRUs used to name a person, place, thing, quality, or action and that can function as the subject or object of a verb, the object of a preposition, or an appositive.<br> '''Proper nouns''' are nouns representing unique entities (such as London, Jupiter or Johnny), as distinguished from common nouns which describe a class of entities (such as city, planet or person).
+== Numeral ==
+Numerals are LRUs that represent numbers. They can be:
+*'''cardinal''' (describe quantity): “two”, “three”
+*'''ordinal''' (describe position): “first”, “second”
+*'''partitive''' (describe division): “half”, “two thirds”
+*'''multiplicative''' (describe repetition): “once”, “twice”
+*'''collective''' (describe groups): “double”, “triple”
+*'''distributive''' (describe  distributions): “in pairs”, “by the dozen”
+Numeral determiners must be classified as numerals.
+
+== Particle ==
+A particle is a function word that is not assignable to any of the traditional grammatical word classes. In English, the infinitive marker "to" and the negator "not" are examples of words that are usually regarded as particles.
+== Pronoun ==
+Pronouns are LRUs that substitute other LRUs. They can be:
+*'''personal''' ("I", "me")
+*'''demonstrative''' (“this”, in "this is my house") (not to be confounded with demonstrative determiners)
+*'''dummy''' ("it" in "it is raining")
+*'''emphatic''' (“myself”, in "I did it myself")
+*'''indefinite''' (“somebody”, “nothing”)
+*'''interrogative''' (“who”, in "who is there?")
+*'''possessive''' (“mine”) (not to be confounded with possessive determiners)
+*'''reflexive''' (“myself”, in "I saw myself")
+*'''reciprocal''' (“each other”, “one another”)
+*'''relative''' ("who" in "I didn't see who is there").
+Pronouns playing determiner roles (such as possessive determiners or demonstrative determiners) must be classified as determiners.
+== Verb ==
+A verb is a LRU that denotes an action (bring, read, walk, run, murder), an occurrence (decompose, shine), or a state of being (exist, stand).<br>
+An '''auxiliary verb''' ("will" in "I will go") is a verb functioning to give further semantic or syntactic information about the main or full verb of the phrase.<br>
+A '''modal verb''' ("can", "must", "have to") is a type of auxiliary verb that is used to indicate modality.<br>
+A '''copula''' ("be", "become", "seem"), also called a "passive verb" or "linking verb", is a verb used to link the subject of a sentence with a predicate (a subject complement or an adverbial).<br>
+'''Verbals''' are non-finite verb forms that act simultaneously as a verb and as another part of speech (nouns, adjectives and adverbs). They are further classified:
+*'''participles''', which include past and present participles and function as adjectives (e.g. "burnt" in "burnt log", "betting" a "betting man");
+*'''gerunds''', which function as nouns and can be used with or without an article (the "running" in "running of the Bulls", "studying" and "Studying Latin is a way to better understand English")
+*'''infinitives''', which have noun-like ("be" in "the question is to be or not to be"), adjective-like ("do" in "work to do") or adverb-like functions ("talk" in "she came over to talk").
+*'''supines'''
+*'''gerundives'''

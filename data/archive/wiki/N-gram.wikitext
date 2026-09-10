@@ -1,0 +1,23 @@
+In the scope of the project [[LACE]], an '''n-gram''' is a linear structure of n strings composed entirely of ANY KIND OF LETTER FROM ANY LANGUAGE, i.e., the regex [/p{L}]+, isolated by blank space, punctuation marks, end of sentence, and any other character not comprised in /p{L}, such as [.,;:!?()"<>]. Strings containing digits or any non-alphabetical characters (such as [@_#$%/]) were ignored<ref>This means that the input string “abc def g-hi jkl m1 234 nop qrs tu_vw” was said to have:
+*six 1-grams (“abc”, “def”, “g-hi”, “jkl” “nop”, “qrs”)
+*four 2-grams (“abc def”, “def g-hi”, “g-hi jkl”, “nop qrs”)
+*two 3-grams (“abc def g-hi”, “def g-hi jkl”)
+*one 4-gram (“abc def g-hi jkl”). 
+The strings "m1", "234" and "tu_vw" were not considered valid and, therefore, any n-grams including them were excluded from the results.</ref>.
+== Continuous and Discontinuous N-grams ==
+In the scope of the project [[LACE]], n-grams are said to be "continuous" or "discontinuous":
+*a '''continuous n-gram''' is an invariant sequence of n immediately adjacent items, i.e., without any other items in-between;
+*a '''discontinuous n-gram'''  is an open pattern: it is a continuous n-gram where some items are variable, i.e., a sequence of x and y (x+y=n) items where x items come in the same position and are isolated by the same number of y in-between items. A discontinuous n-gram is valid if, for the same x, there are at least two different y, otherwise we consider it noise. A discontinuous n-gram may have one or more discontinuities, but due to the necessity of defining its external boundaries, we limit the notion of discontinuity to the internal items of an n-gram. In our notation, discontinuities are represented by the place holder "."<ref>In the example above, there are two discontinuous 3-grams (“abc . g-hi”, “def . jkl”) and three discontinuous 4-grams (“abc . . jkl”, “abc def . jkl”, “abc . g-hi jkl”).</ref> Given the precondition of external boundaries, discontinuous n-grams should meet the requirement: n>2.
+== Relevance ==
+In the scope of the project [[LACE]], N-grams are considered to be '''linguistically-relevant''' if they are frequent, non-redundant, of a certain length, and may figure as syntactic and semantic units, according to the following criteria:   
+*Length:
+*:In the context of LACE, we treated both continuous and discontinuous n-grams with up to 7 items, i.e., where 1 ≤ n ≤ 7.
+*Frequency:
+*:In the context of LACE, we considered an n-gram to be frequent in the corpus if its frequency of occurrence is equal or higher than the ratio between tokens and types, where “tokens” is the total number of n-grams in the corpus, and “types” is the number of distinct n-grams in the corpus. For instance: given a corpus with 5,000 occurrences of distinct 1,000 unigrams, a 1-gram is considered relevant if, and only if, it occurs 5 or more times.
+*Redundancy:
+*:In the context of LACE, we intend an n-gram to be redundant if it is subsumed by any other x-gram, where x ≥ n. In that sense, the 1-gram “a” is considered unique if, and only if, there is at least one context “x a” and at least one context “a y”, where “x a” and “a y” have not been defined as an n-gram according to the criteria above concerning length and frequency. For instance, the items “Sri” and “Lanka” are not considered to be 1-grams because they cannot occur in isolation: they always appear as part of the 2-gram “Sri Lanka” (i.e., there is no context in the corpus in which we have “Sri” but not “Lanka”). The same applies for discontinuous n-grams: the sequence “a . . d” is a 4-gram if it is not subsumed by the 4-gram “a b . d”, i.e., if there is at least one “a x . d” where x ≠ b.=
+*Constituency
+:The constituency score is the probability of a given n-gram to function as a syntactic unit (i.e., a “constituent”) in a sentence. For the time being, it is defined as the weighted average of 2 different independent measures: distribution and substitution, as described at [[constituency score]].
+
+== Notes ==
+<references />

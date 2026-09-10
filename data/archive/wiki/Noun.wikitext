@@ -1,0 +1,17 @@
+'''Nouns''' are [[LRU]]s used to name a person, place, thing, quality, or action and that can function as the subject or object of a verb, the object of a preposition, or an appositive. 
+
+== Natural language ==
+In the UNL<sup>arium</sup> framework, nouns and proper nouns are classified in two different categories:
+*'''Common nouns''' (NOU) describe a class of entities (such as "city", "planet", "person", "language", etc);
+*'''Proper nouns''' (PPN) represent unique entities (such as "London", "Jupiter", "Johnny", "English", etc).
+In languages such as English, the difference between common nouns and proper nouns is usually marked by capitalization:
+*''God'', in upper case, is used for representing a unique entity (i.e., a proper noun), while
+*''god'', in lower case, is used to describe a class of entities (a common noun).
+Spelling, however, is sometimes misleading:
+*''Japanese'' and ''Americans'', for instance, are used to describe a class rather than a unique entity; while
+*''earth'' is used for representing a unique entity (the planet we live in).
+
+== UNL ==
+In UNL, nouns are always represented by UWs.
+*'''Common nouns''' are always represented as regular UWs, to be included in the UNL Dictionary and defined in the UNL KB.
+*'''Proper nouns''' may be represented either as regular UWs or as [[temporary UWs]], depending on their relevance. Names of places (such as "United States"), of people ("Jesus Christ"), of brands ("Coca-cola"), of works ("Romeo and Juliet", "La Gioconda", "Clair de Lune"), of newspapers ("The New York Times"), etc. are to be represented as regular UWs only if normally described in ordinary encyclopedias.

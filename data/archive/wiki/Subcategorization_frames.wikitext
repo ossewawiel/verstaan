@@ -1,0 +1,105 @@
+'''Subcategorization frames''' are sets of rules used to generate syntactic structures out of the [[base form]]. 
+
+== What are subcategorization frames ? ==
+Subcategorization frames are sets of [[subcategorization]] rules that apply for a wide range of cases, i.e., that are regular.
+
+== When to use subcategorization frames ==
+Subcategorization frames are used in case of [[valency|valent]] words whose syntactic needs follow a general rule, i.e., whenever there can be stated a regular pattern for generating constituents linked to the base form, such as specifiers, complements and adjuncts.
+
+For instance, many verbs in English take a NP as a specifier (subject) and another NP as complement (direct object). This syntactic behavior, described by the frame VS(NP)VC(NP);, can be assigned to many different verbs and, therefore, must be defined as a subcategorization frame.
+
+== When not to use subcategorization frames ==
+Subcategorization frames are not used in case of avalent words or in case of irregular behaviour, which is described by [[subcategorization rules]].
+
+For instance, very few verbs, in English, admit more than two arguments, such as "to bet" in "I bet you ten pounds that they lose". This syntactic behavior, which can be described by the rule VS(NP)VC(PPR)VC(NP)VC(CH([that]));, as very specific, is likely to be defined as a subcategorization rule, to be created inside the dictionary, rather than as a subcategorization frame, created in the grammar.
+
+== Syntax ==
+See [[subcategorization]]
+
+== Examples ==
+
+{| border="1" cellpadding="5"
+!Rules
+!Description
+!Examples
+|-
+|NS(DP([the]));
+|The noun phrase requires the determiner phrase "the" as its specifier (NS)
+|the United States, the Netherlands, the United Kingdom
+|-
+|VS(NP);
+|The verbal phrase requires a noun phrase as a specifier (VS) (intransitive verbs)
+|sleep, die, etc.
+|-
+|VS(NP)VC(NP);
+|The verbal phrase requires a noun phrase as a specifier (VS) and a noun phrase as a complement (VC) (direct transitive verbs)
+|make, read, write, etc
+|-
+|VS(NP)VC(PH([on]));
+|The verbal phrase requires a noun phrase as a specifier (VS) and a prepositional phrase headed by "on" as a complement (VC)(indirect transitive verbs governing "on")
+|depend, insist, operate
+|-
+|VS(NP)VC(NP)VC(PH([to]));
+|The verbal phrase requires a noun phrase as a specifier (VS), a noun phrase as a complement (VC), and a prepositional phrase headed by "to" as a complement (VC)(ditransitive verbs)
+|give
+|}
+
+== Syntactic ambiguities ==
+One single word may have different valencies. The English verb "to read", for instance, can be part of several different structures:
+*Impersonal: ''John loves reading'' (avalent, i.e., no frame)
+*Intransitive: ''John is reading a lot'' (monovalent: VS(NP);)
+*Direct transitive: ''John read a book'' (divalent: VS(NP)VC(NP);)
+*Ditransitive: ''John is reading the book to Mary'' (trivalent: VS(NP)VC(NP)VC(PH([to])); 
+Likewise, the adjective "surprised" may select different prepositions:
+*''Everyone was surprised''. (avalent, i.e., no frame)
+*''Everyone was surprised by the news.'' (monovalent: JC(PH([by]));)
+*''Everyone was surprised at the news.'' (monovalent: JC(PH([at]));)
+If these ambiguities DO NOT CHANGE THE CORE MEANING of the word (i.e., in case of polysemy), as in the cases above, they must be described inside the same frame according to the following procedures:
+#Different number of arguments
+#:The frame must represent the '''most complete''' possible structure made of '''necessary''' arguments:
+#:*''to read'' = VS(NP)VC(NP)VC(PH([to])); 
+#Different type of arguments
+#:The frame must bring '''all possible''' structures through the use of {|} 
+#:*''surprised'' = JC(PH({[by]|[at]}));
+#Different number and type of arguments
+#:The frame must represent '''all possible most complete''' structures:
+#:*To distinguish<ref>The verb "to distinguish" is said to have several different senses:<br />
+1. To perceive as being different or distinct.<br />
+2. To perceive distinctly; discern. <br />
+3. To make noticeable or different; set apart. <br />
+4. To cause (oneself) to be eminent or recognized. <br />
+5. To perceive or indicate differences. <br />
+Some of these senses (namely 1,2,5) are somewhat inter-related, as they are associated to the core idea of "perceiving" and should be considered inside the same frame. The senses 3 and 4 are considerably different from the others (although related one to the other) and, therefore, must be described in a different frame, as indicated below.</ref>
+#:**Direct transitive: ''They have distinguished the mast of ships on the horizon.'' (VS(NP)VC(NP);)
+#:**Indirect transitive: ''They have distinguished between right and wrong.'' (VS(NP)VC(PH([between]));)
+#:**Ditransitive: ''They have distinguished him from the other boys.'' (VS(NP)VC(NP)VC(PH([from]));
+#:*:Frame: VS(NP){VC(NP)|VC(PH([between])|VC(NP)VC(PH([from])}
+#:*Angry
+#:**''Why are you so angry?'' (avalent, i.e., no frame)
+#:**''Why are you so angry '''about''' it?'' (monovalent: JC(PH([about]));)
+#:**''Why are you so angry '''with''' Peter?'' (monovalent: JC(PH([with]));)
+#:**''Why are you so angry '''with''' me '''for''' not doing this?'' (divalent: JC(PH([with]))JC(PH([for]));)
+#:*:Frame: JC(PH([with]))JC(PH({|[about]|[for]}));)
+If the ambiguities CHANGE THE CORE MEANING of the word (i.e., in case of truly homographs), as in the case below, the entry must be split into different frames:
+*To be
+:*to exist: ''I think, therefore I am''. (monovalent: VS(NP); )
+:*to take place: "The test was yesterday." (divalent: VS(NP)VC({AP|PP});)
+:*to go: "I was in Italy". (divalent: VS(NP)VC({AP|PP});)
+:*copula: "He was good." (divalent: VS(NP)VC({NP|JP|PP|AP});)
+:*auxiliary: "He is going to Paris." (avalent: no frame)
+
+== Reference ==
+The subcategorization frames are referred as follows:
+*by its common name (such as "intransitive", "direct transitive"), in case of well-established reference;
+*by the rule itself, in case of single-rule frames; 
+*by the most distinctive rule, if any; or
+*by a "leading form", i.e., a typical example (a prototype) representative of the whole category, otherwise.
+
+There are two predefined frames in the UNL<sup>arium</sup>:
+;AVALENT
+:If the word has valency equal to 0, i.e., if it does not require any argument.
+;IRREGULAR
+:If the word requires an argument but does not follow any existing frame.
+
+== Notes ==
+<references />

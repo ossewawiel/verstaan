@@ -1,0 +1,34 @@
+'''Lexical structure''' is a category that indicates the internal structure of a lexical item.
+
+In the UNLarium framework, there can be three different types of word forms, depending on their internal structure:
+
+{{#tree:id=tagset|openlevels=0|root=Lexical Structure (LST)|
+*subword (SBW) (bound morpheme)
+*simple word (WRD) (lexeme)
+**abbreviation (ABB)
+**clitic (CLI)
+*multiword expression (MTW) (more than one lexeme)
+**acronym  and initialism (ACR)
+**multiple-word contraction and blends (CTT)
+}}
+
+== Subwords ==
+
+'''Subwords''' (SBW) are structures that do not have independent existence in the language and only appear together with other morphemes to form a lexeme. Subwords include affixes (such as "un-", "re-", "-ful", "-ness") and roots that do not occur alone (such as "rupt" in "interrupt", "disrupt", "corrupt", "rupture", etc).
+
+== Simple words ==
+
+'''Simple Words''' (WRD) are the smallest (indivisible) lexemes in the semantic system of a language. They may consist of:
+*one single free morpheme (such as "happy", "break");
+*one single free morpheme and bound morphemes ("unhappy", "happiness", "happily", "unbreakable", "unbreakableness"); and
+*compounds of bound morphemes (such as "interrupt", "disrupt", "corrupt").
+
+Simple words may also include abbreviations (such as "ad", for advertisement, "dr." and "St." ).
+
+== Multiword expressions ==
+
+'''[[Multiword Expression]]s''' (MTW) are lexical structures made up of a sequence of two or more lexemes. They can be concatenated ("darkroom", "skinhead") or isolated by hyphens ("blue-green", "African-American") or blank spaces ("round table", "part of speech"). Multiword expressions can be continuous ("get over") or discontinuous ("get <something> together"). They correspond to compounds ("fireman", "hardware"), phrases ("in spite of", "take into account"), idioms ("kick the bucket", "play cat and mouse"), fragments of sentences ("and so on", "whatever the case") or sentences ("Every evil is followed by some good", "No flies enter a mouth that is shut"). 
+
+Multiword expressions may also include acronyms (such as "UNESCO"), multiple-word contractions (such as "don't") and blends (such as "sitcom") that are still analysable (differently from "radar" and "motel", which are represented as simple words).
+
+Classical compounds ("agriculture", "photograph") and their derivations ("agricultural", "photographically") are to be treated as simple words if they do not include more than one free morpheme. Phrasal verbs ("give in", "come across") are treated as multiword expressions.

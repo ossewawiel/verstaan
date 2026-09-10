@@ -1,0 +1,270 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<title>UNL Archive</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/base/jquery-ui.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
+<style>
+    /* Override jQuery UI font settings */
+    .ui-widget, .ui-widget input, .ui-widget select, .ui-widget textarea, .ui-widget button {
+        font-family: inherit !important;
+        font-size: inherit !important;
+    }
+</style>
+<link rel="stylesheet" type="text/css" media="all" href="default.css" />
+</head>
+
+
+
+
+<body>
+<iframe name="I1" height="40" width="100%" scrolling="no" align="top" border="0" frameborder="0" src="unlwebbar/">
+Your browser does not support inline frames or is currently configured not to display inline frames.
+</iframe>
+
+
+   <div id="header" class="text-center py-10">
+    <img src="shared/images/unl_archive.png" alt="UNL Archive Logo" style="max-width:400px; width:100%; height:auto;">
+    
+    <hr />
+</div>
+
+<style>
+    .menu li ul li {
+        margin-top: 8px;
+        margin-bottom: 8px;
+    }
+</style>
+<!-- Menu superior -->
+
+<style>
+    /* Reset básico */
+    .menu,
+    .menu ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .menu {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        background: #fff;
+        position: relative;
+    }
+
+    .menu>li {
+        position: relative;
+    }
+
+    .menu>li>a {
+        display: block;
+        padding: 10px 18px;
+        text-decoration: none;
+        color: #222;
+        font-weight: bold;
+        transition: background 0.2s;
+    }
+
+    .menu>li:hover>a,
+    .menu>li:focus-within>a {
+        background: #eee;
+    }
+
+    .menu li ul {
+        display: none;
+        position: absolute;
+        left: 0;
+        top: 100%;
+        min-width: 180px;
+        background: #fff;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        z-index: 10;
+    }
+
+    .menu li:hover>ul,
+    .menu li:focus-within>ul {
+        display: block;
+    }
+
+    .menu li ul li a {
+        padding: 8px 16px;
+        color: #222;
+        font-weight: strong;
+        white-space: nowrap;
+    }
+
+    .menu li ul li a:hover {
+        background: #f5f5f5;
+    }
+
+    /* Hamburger */
+    .menu-toggle {
+        display: none;
+        background: none;
+        border: none;
+        font-size: 2em;
+        margin: 10px;
+        cursor: pointer;
+    }
+
+    @media (max-width: 900px) {
+        .menu {
+            flex-direction: column;
+            align-items: stretch;
+            display: none;
+            width: 100%;
+        }
+
+        .menu.open {
+            display: flex;
+        }
+
+        .menu>li {
+            width: 100%;
+        }
+
+        .menu>li>a {
+            padding: 14px 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .menu li ul {
+            position: static;
+            box-shadow: none;
+            min-width: 0;
+        }
+
+        .menu li ul {
+            display: none;
+        }
+
+        .menu li.open>ul {
+            display: block;
+        }
+
+        .menu-toggle {
+            display: block;
+        }
+    }
+</style>
+
+<button class="menu-toggle" aria-label="Open menu" onclick="document.querySelector('.menu').classList.toggle('open')">&#9776;</button>
+<ul class="menu">
+    <li><a href="index.php?unlweb=home">HOME</a></li>
+    <li><a href="index.php?unlweb=unlarium" title="Language resources">LINGWARE</a></li>
+    <li><a href="index.php?unlweb=dev" title="Computer resources">SOFTWARE</a></li>
+    <li><a href="index.php?unlweb=education" title="Educational resources">EDUCATION</a></li>
+    <li><a href="index.php?unlweb=documentation" title="Documentation resources">DOCUMENTATION</a></li>
+    <li><a href="index.php?unlweb=unl" title="UNL resources">UNL</a></li>
+    <li><a href="index.php?unlweb=undl" title="UNDL resources">UNDL</a></li>
+
+</ul>
+
+<script>
+    // Mobile submenu toggle with navigation on second click 
+    document.querySelectorAll('.menu > li').forEach(function(li) {
+        var link = li.querySelector('a');
+        if (li.querySelector('ul')) {
+            li.dataset.opened = "false";
+            link.addEventListener('click', function(e) {
+                if (window.innerWidth <= 900) {
+                    if (li.dataset.opened === "false") {
+                        e.preventDefault();
+                        li.classList.add('open');
+                        li.dataset.opened = "true";
+                    } else {
+                        // allow navigation
+                        li.dataset.opened = "false";
+                    }
+                }
+            });
+            // Close submenu when clicking outside
+            document.addEventListener('click', function(event) {
+                if (window.innerWidth <= 900) {
+                    if (!li.contains(event.target)) {
+                        li.classList.remove('open');
+                        li.dataset.opened = "false";
+                    }
+                }
+            });
+        }
+    });
+</script>
+
+
+<hr />
+<div class="center"><div class="archive-banner">
+  <div class="archive-banner-content">
+     <div class="archive-banner-text">
+      <h1 style="margin: 0;">UNL Archive</h1>
+      <h3>Preserving the legacy of the UNL Project</h3>
+      <p>The UNL Archive is a repository dedicated to preserving and providing access to the materials produced by the Universal Networking Language (UNL) Project, an international initiative that sought to represent knowledge in a language-independent way through machine-tractable semantic networks. Conducted first by the Institute of Advanced Studies of the United Nations University in Tokyo (1996–2001) and later by the UNDL Foundation in Geneva (2001–2015), the project developed a comprehensive formalism for multilingual communication, knowledge representation, and natural language processing. Although the initiative has been discontinued, its outputs are now made freely available to the community through this archive. All materials are provided “as is”, with no further development or support, ensuring that the documentation and resources remain accessible for historical, academic, and technical reference.
+      </p>
+      <a href="index.php?unlweb=about">Read more</a>
+    </div>
+  </div>
+</div>
+
+</div>
+
+
+<div class="container">
+
+  <a href="index.php?unlweb=unlarium" class="banner1">
+    <img src="shared/images/unlarium2.png" alt="Language Resources">
+    <div class="banner-title">Language Resources</div>
+    <div class="banner-desc">Dictionaries, grammars, knowledge bases, example bases, and corpora developed under the UNL framework.</div>
+  </a>
+
+
+  <a href="index.php?unlweb=dev" class="banner1">
+    <img src="shared/images/research.png" alt="Computational Resources">
+    <div class="banner-title">Computational Resources</div>
+    <div class="banner-desc">Applications, tools, and source code created for UNL processing and development.</div>
+  </a>
+
+  <a href="index.php?unlweb=documentation" class="banner1">
+    <img src="shared/images/unlwiki.jpg" alt="Documentation">
+    <div class="banner-title">Documentation</div>
+    <div class="banner-desc">Access manuals, reference guides, and technical documentation from the UNL Project.</div>
+  </a>
+
+  <a href="index.php?unlweb=education" class="banner1">
+    <img src="shared/images/school.png" alt="UNL Education">
+    <div class="banner-title">Education</div>
+    <div class="banner-desc">Explore the educational initiatives that promoted UNL learning, dissemination, and competitions.</div>
+  </a>
+
+  <a href="index.php?unlweb=unl" class="banner1">
+    <img src="shared/images/unl_logo.png" alt="UNL Logo">
+    <div class="banner-title">The UNL Programme</div>
+    <div class="banner-desc">Learn about the origins, goals, and evolution of the Universal Networking Language Project (1997–2015).</div>
+  </a>
+
+  <a href="index.php?unlweb=undl" class="banner1">
+    <img src="shared/images/logoUNDL.jpg" alt="UNDL Logo" style="max-width:200px;">
+    <div class="banner-title">The UNDL Foundation</div>
+    <div class="banner-desc">Discover the organization that maintained the UNL Project and promoted its development worldwide.</div>
+  </a>
+
+
+</div></div> 
+
+<hr />
+<div id="footer" style="max-width:600px; margin:0 auto; text-align:center; font-size:0.7em;">
+    <div style="display: flex; justify-content: center; align-items: center;">
+            <a href="index.php?unlweb=terms" style="margin-right: 10px;">Terms and Conditions</a> |
+            <a href="index.php?unlweb=about" style="margin-left: 10px; margin-right: 10px;">About UNL Archive</a> |
+            <a href="index.php?unlweb=contact" style="margin-left: 10px;">Contact</a>
+    </div>
+</div>
+<br /><br />
+</body>
+</html>

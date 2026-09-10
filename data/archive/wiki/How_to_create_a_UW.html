@@ -1,0 +1,192 @@
+<div class="mw-content-ltr mw-parser-output" lang="en" dir="ltr"><p>The <a href="/wiki/UNL_Dictionary" title="UNL Dictionary">UNL Dictionary</a> is never completed. It is expected to contain all the concepts that are lexicalized in at least one language. These include:
+</p>
+<ul><li>local concepts (i.e., concepts that are culture-bound and must be borrowed from the source language)<sup id="cite_ref-1" class="reference"><a href="#cite_note-1"><span class="cite-bracket">&#91;</span>1<span class="cite-bracket">&#93;</span></a></sup>;</li>
+<li>local named entities (i.e., names of rivers, mountains, beaches, cities, states, neighborhoods, brands, companies, rulers, celebrities, works of art, etc., that have been acknowledged by local encyclopedias)</li>
+<li>local products and practices (i.e., names of food, clothing, rituals, festivities, etc., which are specific to a given region)</li></ul>
+<p>All these concepts, if lexicalized<sup id="cite_ref-2" class="reference"><a href="#cite_note-2"><span class="cite-bracket">&#91;</span>2<span class="cite-bracket">&#93;</span></a></sup> in at least one language, must be included in the UNL Dictionary as <a href="/wiki/Universal_Words" title="Universal Words">Universal Words</a>.
+</p>
+<div id="toc" class="toc" role="navigation" aria-labelledby="mw-toc-heading"><input type="checkbox" role="button" id="toctogglecheckbox" class="toctogglecheckbox" style="display:none" /><div class="toctitle" lang="en" dir="ltr"><h2 id="mw-toc-heading">Contents</h2><span class="toctogglespan"><label class="toctogglelabel" for="toctogglecheckbox"></label></span></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Universal_Word_(UW)"><span class="tocnumber">1</span> <span class="toctext">Universal Word (UW)</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#General_Principles"><span class="tocnumber">2</span> <span class="toctext">General Principles</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="#Naming_Principles"><span class="tocnumber">3</span> <span class="toctext">Naming Principles</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="#Instructions"><span class="tocnumber">4</span> <span class="toctext">Instructions</span></a></li>
+<li class="toclevel-1 tocsection-5"><a href="#Notes"><span class="tocnumber">5</span> <span class="toctext">Notes</span></a></li>
+</ul>
+</div>
+
+<div class="mw-heading mw-heading2"><h2 id="Universal_Word_(UW)"><span id="Universal_Word_.28UW.29"></span>Universal Word (UW)</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=How_to_create_a_UW&amp;veaction=edit&amp;section=1" title="Edit section: Universal Word (UW)" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=How_to_create_a_UW&amp;action=edit&amp;section=1" title="Edit section&#39;s source code: Universal Word (UW)">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>A <a href="/wiki/UW" class="mw-redirect" title="UW">UW</a> is a concept endowed with semantic accessibility. The semantic accessibility is granted when the concept is introduced in the <a href="/wiki/UNL_Knowledge_Base" title="UNL Knowledge Base">UNL Knowledge Base</a>, i.e., when we connect the concept to other existing concepts. Thereafter, the concept may be handled even by languages that do not have it yet.<sup id="cite_ref-3" class="reference"><a href="#cite_note-3"><span class="cite-bracket">&#91;</span>3<span class="cite-bracket">&#93;</span></a></sup><br />
+</p><p>To include a UW in the UNLKB is to define its <a href="/wiki/UCI" title="UCI">UCI</a> (Uniform Concept Identifier), which is made of two parts:
+</p>
+<ul><li>the UCL (Uniform Concept Locator), which is a 9-digit number, automatically assigned by the machine; and</li>
+<li>the UCN (Uniform Concept Name), which is an expression in the format</li></ul>
+<pre>LRU(RELATION&gt;CLASSIFIER)
+</pre>
+<p>In the above:
+</p>
+<ul><li><b>LRU</b> stands for <a href="/wiki/Lexical_Realisation_Unit" title="Lexical Realisation Unit">Lexical Realisation Unit</a>, i.e., the name of the entity/concept. It can be a proper name (such as "Pablo Picasso", "Guernica", "Spanish Civil War", "Spanish Republican Armed Forces", "Facebook", "Candy Crush", etc.) or a common name ("paella", "baga ghanoush", "latifundium", "ilunga", etc.). For the time being, in order to ensure cross-language understanding, the name must be expressed in the way it is normally translated into English (i.e., "Spain", instead of "España", "Greece" instead of "Ελλάδα", "baba ghanoush" instead of "بابا غنوج", etc.).<sup id="cite_ref-4" class="reference"><a href="#cite_note-4"><span class="cite-bracket">&#91;</span>4<span class="cite-bracket">&#93;</span></a></sup> In any case, the LRU is a "lexical unit", i.e., a real word (either simple or complex), and never an expression used to define the word. For instance, the LRU for "baba ghanoush" is "baba ghanoush" and not "dish of eggplant mashed and mixed with olive oil and various seasonings".</li>
+<li><b>CLASSIFIER</b> is a category used to disambiguate and classify the LRU. It must be UW already defined in the UNL KB, and normally describes a general class or category (such as "person", "country", "city", etc.) to which the LRU may be linked.</li>
+<li><b>RELATION</b> is a <a href="/wiki/Universal_Relation" class="mw-redirect" title="Universal Relation">Universal Relations</a> used to link the LRU to the CLASSIFIER. We normally use one of the following ontological relations:
+<ul><li>icl = is-a-kind-of, when the classifier can be said to be a hypernym for the LRU (e.g., table(icl&gt;furniture))</li>
+<li>iof = is-an-instance-of, when the classifier can be said to describe a class to which the LRU belongs (e.g., Paris(iof&gt;city))</li>
+<li>pof = is-a-part-of, when the classifier can be said to describe the whole of which the LRU is a part (e.g., finger(pof&gt;hand))</li>
+<li>aoj = is-an-attribute-of, when the classifier can be said to describe an attribute of which the LRU is a value (e.g., blue(aoj&gt;color))</li></ul></li></ul>
+<p>Examples:
+</p>
+<ul><li>Spain(iof&gt;country), a country named Spain</li>
+<li>Bay of Biscay(iof&gt;gulf), a gulf named Bay of Biscay</li>
+<li>Spanish Civil War(iof&gt;war), a war named Spanish Civil War</li>
+<li>Pablo Picasso(iof&gt;person), a person named Pablo Picasso</li>
+<li>Guernica(iof&gt;city), a city named Guernica</li>
+<li>Guernica(iof&gt;painting), a painting named Guernica</li>
+<li>paella(icl&gt;food), a type of food named paella</li>
+<li>Facebook(iof&gt;social network), a social network named Facebook</li>
+<li>Candy Crush Saga(iof&gt;video game), a video game named Candy Crush Saga</li></ul>
+<div class="mw-heading mw-heading2"><h2 id="General_Principles">General Principles</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=How_to_create_a_UW&amp;veaction=edit&amp;section=2" title="Edit section: General Principles" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=How_to_create_a_UW&amp;action=edit&amp;section=2" title="Edit section&#39;s source code: General Principles">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>UW's must comply with the following principles:
+</p>
+<dl><dt>1. Translatability</dt>
+<dd>UWs correspond to concepts that we have to translate from language to language. Do not include, in the UNL Dictionary, named entities that are not translatable, such as "09:05:14", "715 Broadway, 7th floor, New York, NY 10003 USA", "+41 22 8090 8090", "info@undlfoundation.org" or "www.undlfoundation.org".</dd>
+<dt>2. Non-Compositionality</dt>
+<dd>UWs correspond to concepts that were considered to be non-compositional (i.e., non-analyzable) in at least one language. Do not create UW's for concepts that are provisional and can be easily reduced to other existing UW's, such as "women who wear big hats in theaters", which, although possibly relevant, does not correspond to a <b>lexical unit</b> in any existing language, since it does not describe a single concept, but several different concepts ("woman", "to wear", "big", "hat", "theater") bound together. In this sense, multiword expressions are to be included in the UNL Dictionary only when they are non-compositional. For instance, the concept of "hot potato" is only worth of being included in the UNL Dictionary when "hot potato" &#8800; "hot" + "potato" (i.e., when "hot potato" describes, not a potato that is hot, but an awkward or delicate matter).</dd>
+<dt>3. Relevance</dt>
+<dd>Proper names must be included in the UNL Dictionary if, and only if, they are listed as entries in acknowledged encyclopedias. For instance, according to the White Pages, there are at least 5 people named "Sigmund Smith" in the US, but none of them are listed in the English Wikipedia or Encyclopaedia Britannica. Therefore, they should not be included in the UNL Dictionary (although "Sigmund" and "Smith", as separate entries, should be there, because they are very frequent).</dd></dl>
+<div class="mw-heading mw-heading2"><h2 id="Naming_Principles">Naming Principles</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=How_to_create_a_UW&amp;veaction=edit&amp;section=3" title="Edit section: Naming Principles" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=How_to_create_a_UW&amp;action=edit&amp;section=3" title="Edit section&#39;s source code: Naming Principles">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>In order to name a concept, the following must be observed:
+</p>
+<dl><dt>4. Non-redundancy</dt>
+<dd>There must be no synonymy in the UNL Dictionary. Do not create UW's that have the same meaning of existing UW's. For instance, there are several different ways of making reference to the city of New York: New York, City of New York, NY, NYC, N.Y.C., The Big Apple, Nueva York (es), Nova Iorque (pt), Нью-Йорк (ru), ニューヨーク (ja), etc. All these names must be linked to one single UW: New York(iof&gt;city), because they all have the same reference.</dd>
+<dt>5. Non-ambiguity</dt>
+<dd>There must be no ambiguity in the UNL Dictionary. Do not re-use existing UW's that have different meanings. For instance, there is a city named "New York" in Lincolnshire, in the UK. This city should not be linked to New York(iof&gt;city), because New York(iof&gt;city) does not describe "any city named New York", but a specific city, as informed in the UNLKB. So, you have to create a different UW in this case: either New York(pof&gt;Lincolnshire), or New York(plc&gt;Lincolnshire), or even New York(iof&gt;city,pof&gt;Lincolnshire).</dd>
+<dt>6. Simplicity</dt>
+<dd>UWs must be as short as possible. UW's are only labels for concepts. They are not intended to define or to explain the concept. So, shorter is better. The UW corresponding to the city of New York should be simply "New York(iof&gt;city)" and not "New York(iof&gt;city,iof&gt;capital,pof&gt;New York State,equ&gt;NY,equ&gt;NYC,etc.)". The definition for a given UW is provided in the UNLKB and not in the name of the UW. In the UNLKB, for instance, the UW "New York(iof&gt;city)" will be connected to several other UW's ("capital(icl&gt;city"), "New York(iof&gt;state)", "United States of America(iof&gt;country)", "Manhattan(iof&gt;borough)", "Empire State(iof&gt;building)", etc.), but there is no need for this to be reflected in the name of the UW.</dd>
+<dt>7. Transparency</dt>
+<dd>UWs must be as transparent as possible. The meaning of "New York(iof&gt;city)" is much clearer than "New York(iof&gt;place)". Note that, in the latter case, we would have to go to the UNLKB in order to understand whether we are talking about the city of New York, the state of New York or any place named "New York". So, it is better to use specific classifiers (such as "city") rather than generic classifiers (such as "place").<sup id="cite_ref-5" class="reference"><a href="#cite_note-5"><span class="cite-bracket">&#91;</span>5<span class="cite-bracket">&#93;</span></a></sup></dd></dl>
+<div class="mw-heading mw-heading2"><h2 id="Instructions">Instructions</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=How_to_create_a_UW&amp;veaction=edit&amp;section=4" title="Edit section: Instructions" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=How_to_create_a_UW&amp;action=edit&amp;section=4" title="Edit section&#39;s source code: Instructions">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>UW's are created in the <a href="/wiki/UNLarium" title="UNLarium">UNLarium</a> by any user holding <a href="/wiki/index.php?title=CUP500&amp;action=edit&amp;redlink=1" class="new" title="CUP500 (page does not exist)">CUP500</a>. In order to create UW's, go to UNLWEB&gt;UNLARIUM&gt;DICTIONARY&gt;UNL&gt;ADD and follow the instructions below.
+</p><p><br />
+</p>
+<table align="center" border="1" cellpadding="5">
+<tbody><tr>
+<th>Type
+</th>
+<th>LRU
+</th>
+<th>RELATION
+</th>
+<th>CLASSIFIER
+</th>
+<th>EXAMPLES
+</th></tr>
+<tr>
+<td>PROPER NOUNS
+</td>
+<td>The proper noun, translated or transliterated into English, in its most standard format<sup id="cite_ref-6" class="reference"><a href="#cite_note-6"><span class="cite-bracket">&#91;</span>6<span class="cite-bracket">&#93;</span></a></sup>
+</td>
+<td align="center">iof
+</td>
+<td>The general class to which the proper noun belongs
+</td>
+<td>Africa(iof&gt;continent)<br />East Africa(iof&gt;region)<br />Tanzania(iof&gt;country)<br />Dodoma(iof&gt;city)<br />Congo(iof&gt;river)<br />Kilimanjaro(iof&gt;mountain)<br />Pablo Picasso(iof&gt;person)<br />Harry Potter(iof&gt;character)<br />Guernica(iof&gt;painting)<br />Matrix(iof&gt;movie)<br />Bridge Over Troubled Water(iof&gt;song)<br />Microsoft(iof&gt;corporation)
+</td></tr>
+<tr>
+<td>COMMON NOUNS (CONCRETE)
+</td>
+<td>The common noun, translated or transliterated into English
+</td>
+<td align="center">icl
+</td>
+<td>The general class to which the common noun is a subclass (i.e., a hyponym)
+</td>
+<td>paella(icl&gt;food)<br />lasagna(icl&gt;food)<br />kimono(icl&gt;clothing)<br />acetazolamide(icl&gt;drug)<br />baseball(icl&gt;sport)<br />crocodile(icl&gt;reptile)<br />ikebana(icl&gt;art)<br />
+</td></tr>
+<tr>
+<td>COMMON NOUNS (ABSTRACT)
+</td>
+<td>The common noun, translated or transliterated into English
+</td>
+<td align="center">icl
+</td>
+<td>The general class to which the common noun is a subclass (i.e., a hyponym)
+</td>
+<td>ataraxia(icl&gt;state)<br />cheromania(icl&gt;mania)<br />cherophobia(icl&gt;phobia)<br />eudaimonism(icl&gt;system)<br />macarism(icl&gt;practice)
+</td></tr>
+<tr>
+<td>ADJECTIVES
+</td>
+<td>The adjective, translated or transliterated into English
+</td>
+<td align="center">aoj
+</td>
+<td>The general attribute of which the adjective is a value
+</td>
+<td>blue(aoj&gt;color)<br />blue(aoj&gt;mood)<br />high(aoj&gt;height)<br />high(aoj&gt;degree)<br />high(aoj&gt;price)<br />high(aoj&gt;volume)
+</td></tr>
+<tr>
+<td>ADVERBS
+</td>
+<td>The adverb, translated or transliterated into English<sup id="cite_ref-7" class="reference"><a href="#cite_note-7"><span class="cite-bracket">&#91;</span>7<span class="cite-bracket">&#93;</span></a></sup>
+</td>
+<td align="center">icl
+</td>
+<td>where, when
+</td>
+<td>here(icl&gt;where)<br />there(icl&gt;where)<br />now(icl&gt;when)<br />then(icl&gt;when)
+</td></tr>
+<tr>
+<td>VERBS
+</td>
+<td>The verb, translated or transliterated into English, preceded by the particle "to"<sup id="cite_ref-8" class="reference"><a href="#cite_note-8"><span class="cite-bracket">&#91;</span>8<span class="cite-bracket">&#93;</span></a></sup>
+</td>
+<td align="center">icl
+</td>
+<td>The general event of which the verb is a troponym<sup id="cite_ref-9" class="reference"><a href="#cite_note-9"><span class="cite-bracket">&#91;</span>9<span class="cite-bracket">&#93;</span></a></sup>
+</td>
+<td>to die(icl&gt;to change state)<br />to nibble(icl&gt;to eat)<br />to gorge(icl&gt;to eat)<br />to traipse(icl&gt;to walk)<br />to mince(icl&gt;to walk)
+</td></tr></tbody></table>
+<div class="mw-heading mw-heading2"><h2 id="Notes">Notes</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=How_to_create_a_UW&amp;veaction=edit&amp;section=5" title="Edit section: Notes" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=How_to_create_a_UW&amp;action=edit&amp;section=5" title="Edit section&#39;s source code: Notes">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<div class="mw-references-wrap"><ol class="references">
+<li id="cite_note-1"><span class="mw-cite-backlink"><a href="#cite_ref-1">↑</a></span> <span class="reference-text">Consider, for instance, the case of the word "ilunga", from Tshiluba, which means "a person who is ready to forgive any transgression a first time and then to tolerate it for a second time, but never for a third time". This is considered to be a "local" concept in the sense that it cannot be "replaced" by one single lexical item of English, although it can be "explained" in English.</span>
+</li>
+<li id="cite_note-2"><span class="mw-cite-backlink"><a href="#cite_ref-2">↑</a></span> <span class="reference-text">i.e., acknowledged as a "lexical unit", to be included as entries in ordinary dictionaries or encyclopedias</span>
+</li>
+<li id="cite_note-3"><span class="mw-cite-backlink"><a href="#cite_ref-3">↑</a></span> <span class="reference-text">Consider, for instance, the case of "ilunga". "Ilunga" is a word of Tshiluba, a language spoken in the Republic of Congo. The concept conveyed by "ilunga" is not lexicalized in English or French, for instance. In this sense, "ilunga" is not directly translatable to these languages, i.e., we cannot simply replace "ilunga" by an English or French word. But this does not mean that English and French speakers cannot understand the idea conveyed by "ilunga". The only difference is that they will have to decompose the concept in several other discrete concepts (as in "person who is ready to forgive any transgression a first time and then to tolerate it for a second time, but never for a third dime"). This is the role of the UNL Knowledge Base: to interconnect concepts in order for them to be "universally" understandable.</span>
+</li>
+<li id="cite_note-4"><span class="mw-cite-backlink"><a href="#cite_ref-4">↑</a></span> <span class="reference-text">Note, however, that many concepts are only transliterated into English. For instance: "paella", "latifundium" and "ilunga" normally appear as such in English texts, even though they are not English words, i.e., they are not really translated, but borrowed, as loan words. Normally, in these cases, the words are represented in italic or between quotes in English texts, or are followed by a translator's note.</span>
+</li>
+<li id="cite_note-5"><span class="mw-cite-backlink"><a href="#cite_ref-5">↑</a></span> <span class="reference-text">On the other hand, it is important not to be too reductionist: "Pablo Picasso(iof&gt;person)" is better than "Pablo Picasso(iof&gt;painter)", because he was not only a painter, but also a sculptor, a print-maker, a ceramicist, a poet among others.</span>
+</li>
+<li id="cite_note-6"><span class="mw-cite-backlink"><a href="#cite_ref-6">↑</a></span> <span class="reference-text">"New York" rather than "NY" or "Big Apple"; "Barack Obama" rather than "Obama" or "Barack Hussein Obama II"; "FIFA" rather than "Fédération Internationale de Football Association", etc.</span>
+</li>
+<li id="cite_note-7"><span class="mw-cite-backlink"><a href="#cite_ref-7">↑</a></span> <span class="reference-text">Only adverbs that cannot be reduced to adjectives (i.e., time and place adverbs) are included in the UNL Dictionary. Degree adverbs (such as "more", "less" and "too") are represented as <a href="/wiki/Universal_Attributes" title="Universal Attributes">Universal Attributes</a>. The same happens to conjuncts and disjuncts (such as "although", "however" and "furthermore"). Manner adverbs (such as "slowly", "loudly" and "naturally") are represented by the corresponding adjectives + the attribute @manner: slowly = slow.@manner, loudly = loud.@manner, naturally = natural.@manner.</span>
+</li>
+<li id="cite_note-8"><span class="mw-cite-backlink"><a href="#cite_ref-8">↑</a></span> <span class="reference-text">The particle "to" is required to differentiate between verbs and nouns, because both use the same "icl" relation.</span>
+</li>
+<li id="cite_note-9"><span class="mw-cite-backlink"><a href="#cite_ref-9">↑</a></span> <span class="reference-text">The notion of troponymy was proposed by Christiane Fellbaum and George Miller in Fellbaum, C; Miller, G (1990). "Folk psychology or semantic entailment? A reply to Rips and Conrad (1989)". Psychological Review 97: 565–570. According to the authors, a troponym is a particular way of executing a more general action or process. For instance: "to nibble" and "to gorge" are particular ways of "eating".</span>
+</li>
+</ol></div>
+<!-- 
+NewPP limit report
+Cached time: 20260910142507
+Cache expiry: 86400
+Reduced expiry: false
+Complications: [show‐toc]
+CPU time usage: 0.016 seconds
+Real time usage: 0.017 seconds
+Preprocessor visited node count: 170/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/100
+Expensive parser function count: 0/100
+Unstrip recursion depth: 0/20
+Unstrip post‐expand size: 5797/5000000 bytes
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    0.000      1 -total
+-->
+
+<!-- Saved in parser cache with key u965818192_SLvgQ-l8z2_:pcache:847:|#|:idhash:canonical and timestamp 20260910142507 and revision id 16392. Rendering was triggered because: diff-page
+ -->
+</div>

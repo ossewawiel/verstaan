@@ -1,0 +1,30 @@
+'''Voice''' (also called diathesis) of a verb describes the relationship between the action (or state) that the verb expresses and the participants identified by its arguments (subject and object). 
+
+== Natural language ==
+In the UNLarium, the voice values are the following:
+
+{{#tree:id=nl_voice|openlevels=0|root=Voice|
+*active voice (ACV): the subject is the agent or actor of the verb
+*middle voice (MID): the subject and the object of the verb are the same
+*passive voice (PSV): the subject is the patient, target or undergoer of the action
+}}
+
+== UNL ==
+To be represented by attributes:
+
+{{#tree:id=unl_voice|openlevels=0|root=Voice|
+*@active 
+*@passive
+*@reflexive
+*@reciprocal
+}}
+ 
+
+;@active is the default voice and may be omitted
+:He built this house in 1895 = build (or build.@active)
+
+=== Examples ===
+*@active: He built this house in 1895
+*@passive: This house was built in 1895.
+*@reflexive: He killed himself.
+*@reciprocal: They killed each other.

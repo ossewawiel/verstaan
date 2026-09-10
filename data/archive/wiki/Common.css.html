@@ -1,0 +1,146 @@
+<div class="mw-content-ltr mw-parser-output" lang="en" dir="ltr"><p>/* CSS placed here will be applied to all skins */
+</p><p>.dtree {
+</p>
+<pre>       font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+       font-size: 11px;
+       color: #666;
+       white-space: nowrap;
+</pre>
+<p>}
+.dtree img {
+</p>
+<pre>       border: 0px;
+       vertical-align: middle;
+</pre>
+<p>}
+.dtree a {
+</p>
+<pre>       color: #333;
+       text-decoration: none;
+</pre>
+<p>}
+.dtree a.node, .dtree a.nodeSel {
+</p>
+<pre>       white-space: nowrap;
+       padding: 1px 2px 1px 2px;
+</pre>
+<p>}
+.dtree a.node:hover, .dtree a.nodeSel:hover {
+</p>
+<pre>       color: #333;
+       text-decoration: underline;
+</pre>
+<p>}
+.dtree a.nodeSel {
+</p>
+<pre>       background-color: #c0d2ec;
+</pre>
+<p>}
+.dtree .clip {
+</p>
+<pre>       overflow: hidden;
+</pre>
+<p>}
+</p><p>/*
+</p>
+<ul><li>Dynamic menus</li>
+<li>/</li></ul>
+<p>.dmenu { width: 180px }
+</p><p>.dmenu, .dmenu ul { /* all lists */
+padding: 0;
+margin: 0;
+list-style: none;
+}
+.dmenu .selflink { font-weight: normal; }
+</p><p>.dmenu li { /* all list items */
+position: relative;
+float: left;
+width: 172px;
+padding: 4px;
+z-index: 100;
+}
+</p><p>.dmenu li,
+.dmenu li.even a,
+.dmenu li.odd a,
+.dmenu li li,
+.dmenu li li a,
+.dmenu li li li,
+.dmenu li li li a {
+color&#160;: black;
+}
+</p><p>.dmenu li li { margin: 0; }
+</p><p>.dmenu li ul { /* second-level lists */
+position: absolute;
+left: -999em;
+z-index: 101;
+border: 1px solid #ccc;
+}
+</p><p>.dmenu li ul ul { /* third-and-above-level lists */
+position: absolute;
+left: -999em;
+margin: 0 0 0 0;
+z-index: 102;
+}
+</p><p>.dmenu li.odd .submenu {
+width: 12px;
+height: 15px;
+float: right;
+background: url(/common/images/rarr-lt.png) 0 3px no-repeat;
+}
+.dmenu li.even .submenu {
+width: 12px;
+height: 15px;
+float: right;
+background: url(/common/images/rarr-dk.png) 0 3px no-repeat;
+}
+.dmenu li.odd {
+	background: #E9EDF4;
+	border: 2px solid #E9EDF4;
+}
+.dmenu li.even {
+	background: #D0D8E8;
+	border: 2px solid #D0D8E8;
+}
+</p><p>.dmenu li:hover, .dmenu li.sfhover {
+	border: 2px solid #385D8A;
+}
+</p><p>.dmenu li:hover ul ul,
+.dmenu li:hover ul ul ul,
+.dmenu li.sfhover ul ul,
+.dmenu li.sfhover ul ul ul {
+left: -999em;
+}
+</p><p>.dmenu li:hover ul,
+.dmenu li li:hover ul,
+.dmenu li li li:hover ul,
+.dmenu li.sfhover ul,
+.dmenu li li.sfhover ul,
+.dmenu li li li.sfhover ul { /* lists nested under hovered list items */
+left: 182px;
+top: -3px;
+}
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20260910163631
+Cache expiry: 86400
+Reduced expiry: false
+Complications: []
+CPU time usage: 0.003 seconds
+Real time usage: 0.003 seconds
+Preprocessor visited node count: 1/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 1/100
+Expensive parser function count: 0/100
+Unstrip recursion depth: 0/20
+Unstrip post‐expand size: 0/5000000 bytes
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    0.000      1 -total
+-->
+
+<!-- Saved in parser cache with key u965818192_SLvgQ-l8z2_:pcache:414:|#|:idhash:canonical and timestamp 20260910163631 and revision id 11222. Rendering was triggered because: api-parse
+ -->
+</div>

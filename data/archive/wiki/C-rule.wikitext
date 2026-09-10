@@ -1,0 +1,136 @@
+C-rule (composition rule) is a specific subtype of [[transformation rule]] used for creating compounds and multi-word expressions out of base forms in the UNLarium framework.
+
+== Compounds ==
+'''Compounding''' or '''composition''' is the word-formation process of creating compounds by combining or putting together lexemes. In the UNL<sup>arium</sup> framework, compounds are treated as ordinary simple words except in case of discontinuous [[multiword expression]]s or with infixation (such as "give in" or "take into account"). In these cases, the [[lemma]] is different from the [[base form]], and the compound-formation process is expected to be defined through special rules, the '''composition rules''', or '''C-rules'''.
+
+== When to use composition rules ==
+Composition rules must be created when and only when the [[base form]] is different from the [[lemma]].<br />
+This situation occurs only in case of the following [[multiword expression]]s:
+*when inflections are formed by infixation (in opposition to simple suffixation or prefixation); or
+*when the multiword expression is discontinuous.
+For instance:<br />
+The English multiword expression "call for" has the following inflections: "call for", "call'''s''' for", "call'''ed''' for", "call'''ing''' for", etc. These inflections are formed by infixation, in the sense they apply in the middle of the expression (between "call" and "for"). If we simply associate this expression to the inflectional paradigm of "call", we will have the following results: "call for", "call for'''s'''", "call for'''ed'''", "call for'''ing'''", etc. In order to prevent this problem, and to avoid the unnecessary proliferation of rules in the grammar, we split the multiword expression into two segments: the '''base form''' (BF), i.e., the term over which the inflections will be directly applied; and the '''composition rule''' (C-rule), which is the rule used to rebuild the lemma out of the base form. In the case of "call for", the BF is "call" and the c-rule is "VH([for],P);".
+
+== When not to use composition rules ==
+Composition rules must not be used in the following circumstances:
+*When the word is not a multiword expression;
+*When the multiword expression is invariant;
+*When the inflections of the multiword expression are formed by prefixation or suffixation (such as in "call center" > "call center'''s'''");
+
+== Syntax ==
+C-rules follow the syntax below:
+  <SYNTACTIC ROLE>(<ADDED>,<FEATURES>);
+Where:<br />
+*<SYNTACTIC ROLE> is the [[syntactic role]] (VA, VC, VS, VH, etc) of the term to be added to the base form;
+*<ADDED> is the term to be added to the base form to form the compound. It must be represented between <nowiki>[</nowiki>brackets<nowiki>]</nowiki>, if it is a lemma (i.e., if it is an entry in the dictionary), or between <nowiki>"</nowiki>quotes<nowiki>"</nowiki>, if a string (i.e., if it is not an entry in the dictionary)
+*<FEATURES> are the features of the term to be added to the base form. The following features are mandatory:
+**the [[lexical category]] (A,J,N,V,C,P,D) of the term to be added, in case of isolated terms (between <nowiki>[brackets]</nowiki>, or [[syntactic roles|maximal projections]] (AP,JP,NP,VP,CP,PP,DP), in case of complex structures (between "quotes")
+**the [[inflection|inflectional properties]] (paradigm and/or inflectional rules) of the term to be added, if a <nowiki>[dictionary entry]</nowiki> that is not invariant (i.e., not M0)
+**the [[distribution]] (i.e., the position) of the term to be added, if not default
+**the [[adjacency]] of the term to be added, if not default
+**other features necessary to generate the inflections of the term to be added, if these features cannot be inherited from the base form (see agreement, below)
+
+== Examples ==
+{|border=1 cellpadding=2 align=center
+!Lemma
+!Base Form
+!Composition rule
+!Description
+|-
+|give in
+|give
+|VH([in],P)
+|add the lemma "in", which is a preposition (P), as part of the head of the verbal phrase (VH)
+|-
+|make sense
+|make
+|VC([sense],N,M2)
+|add the lemma "sense", which is a noun (N) belonging to the paradigm M2, as a complement of the head of the verbal phrase (VC)
+|-
+|take into account
+|take
+|VA("into account",AP)
+|add the string "into account", which is an adverbial phrase (AP), as an adjunct to the head of the verbal phrase (VA)
+|-
+|throw <person> to the lions
+|throw
+|VA("to the lions",AP)
+|add the string "to the lions", which is an adverbial phrase (AP), as an adjunct to the head of the verbal phrase (VA) 
+|}
+
+== Agreement ==
+In some cases, the term to be added agrees with the base form (in gender, number, case, etc.).<br />
+The agreement is carried out automatically by the machine as follows:
+*The agreement occurs only if the term to be added is not invariant (i.e., if it is provided between [brackets] and associated to an existing paradigm)<br />
+*The term to be added follows the rules defined in the paradigm, according, first, to the categories explicitly informed in the composition rule and, secondly, to the categories inherited from the base form. In case of conflict, the former prevails over the latter.
+*The agreement will occur only if the term to be added satisfies all the conditions stated in the corresponding paradigm.<ref>If the term to be added is associated to a paradigm that requires, for instance, gender (MCL, FEM, etc), the inflections will be generated if, and only if, these values are either informed explicitly in the composition rule or if they can be inherited from the base form).</ref>
+<br />
+Consider, for instance, the case below:
+*paradigm X = NOM&SNG:=0>"";NOM&PLR:=0>"e";ACC&SNG:=0>"m";ACC&PLR:=0>"s"; etc
+*paradigm Y = FEM&NOM&SNG:=2>"a";MCL&NOM&SNG:=0>"";NEU&NOM&SNG:=1>"m";FEM&NOM&PLR:=2>"ae";MCL&NOM&SNG:=2>"i";NEU&NOM&SNG:=2>"a";etc.
+*lemma = lingua franca (Latin)
+*base form = lingua (GEN=FEM, PARADIGM=X)
+*composition rules (compare the difference: the correct rule is the last one)
+<br />
+{|border=1 cellpadding=2 align=center
+!Composition rule
+!Inflections
+!Description
+|-
+|NA("franca",JP)
+|lingua franca, linguae franca, linguam franca, linguas franca, etc.
+|the base form "lingua" follows the rules of the inflection of the paradigm X; the term "franca" is invariant, because a "string"
+|-
+|NA([francus],J,M0)
+|lingua francus, linguae francus, linguam francus, linguas francus, etc.
+|the base form "lingua" follows the rules of the inflection of the paradigm X; the term "francus" is invariant, because M0
+|-
+|NA([francus],J,FEM,SNG,NOM,MY)
+|lingua franca, linguae franca, linguam franca, linguas franca, etc.
+|the base form "lingua" follows the rules of the inflection of the paradigm X; the term "franca" has gender (FEM), number (SNG) and case (NOM) fixed and, therefore, follows only the rule FEM&NOM&SNG from MY
+|-
+|NA([francus],J,FEM,SNG,MY)
+|lingua franca, linguae franca, linguam francam, linguas francam, etc.
+|the base form "lingua" follows the rules of the inflection of the paradigm X; the term "franca" has gender (FEM) and number (SNG) fixed and, therefore, follows only the rules FEM&NOM&SNG, FEM&ACC&SNG, etc.)
+|-
+|NA([franca],J,MY)
+|lingua franca, linguae francae, linguam francam, linguas francas, etc.
+|the base form "lingua" follows the rules of the inflection of the paradigm X; the term "franca" follows the rules FEM&NOM&SNG, FEM&NOM&PLR, FEM&ACC&SNG, etc, according to the corresponding values of "lingua" - note that the rules containing MCL and NEU will not be applied, because the only gender information, inherited from the "lingua", is FEM.
+|}
+
+== Observations ==
+;Composition rules must end in semicolon:
+:<strike>VH([in],P)</strike>
+:VH([in],P);
+;Inflectional paradigms must be informed only if not invariant (i.e., not M0)
+:<strike>VH([in],P,M0);</strike>
+:VH([in],P);
+;Phrasal verbs
+:Particles of phrasal verbs must be represented as part of the head, if non separable, or as adjuncts, if separable:
+:*give in = VH([in],P); (because <strike>"give something in"</strike>)
+:*give back = VA([back],A); (because "give back something" or "give something back")
+;"Quotes" or [brackets]?
+:In the compound-formation process, the UNL<sup>arium</sup> distinguishes between strings (to be represented between "") and lemmas (to be represented between [ ]). The difference between strings and lemmas has to do with the dictionary status: lemmas (but not strings) are expected to be dictionary entries.
+:*VA("into account",AP); (the string "into account" is not expected to be a dictionary entry)
+:*VC([sense],N,M2); (the term "sense" is expected to be a dictionary entry).
+;Lexical categories (A,J,N,V,P,...) or maximal projections (AP,JP,NP,VP,PP,...)?
+:<nowiki>[Dictionary entries]</nowiki> must be associated to their [[lexical category]] whereas "strings" must be associated to their [[syntactic roles|maximal projection]]
+:*take into account = VA("into account",'''AP'''); and not <strike>VA([into account],A,M0);</strike>
+:*make sense = VC([sense],'''N''',M2); and not <strike>VC("sense",NP);</strike> 
+;General syntactic roles (NP, PP, XP) must not be defined in composition rules but inside the [[subcategorization frame]]:
+:throw <person> to the lions =VA("to the lions",AP,M0); (and not "VA("to the lions",AP,M0)VC(NP);". The lemma should be associated to the transitive frame instead)
+;There can be as many composition rules as necessary to form the lemma out of the base form.
+:VH([up],P)VC("the ghost",NP); (give > give up the ghost)
+;Compounds must include as many terms as different syntactic roles. 
+:give up the ghost = VH([up],P,M0)VC("the ghost",NP); (<strike>VH("up the ghost")</strike> or <strike>VC("up the ghost")</strike>)
+;Order is to be represented by the [[Distribution|distribution features]] (">", ">>", "<", "<<", ...), if not default:
+:VC([love],N,M0); (order must not be informed, because in English complements come at the right side by default: ''make'' > ''make love'')
+:NS([the],D); (order must not be informed, because in English specifiers come at the left side, by default: ''Netherlands'' > ''the Netherlands'')
+:NA([available],J,'''>>'''); (order must be informed, because in English nominal adjuncts come at the left side, by default: ''table'' > ''new table'')
+;Adjacency is to be represented by the [[Adjacency|adjacency features]] (AJ0,AJ1,AJ2,...), if not default:
+:VC([love],N,M2); (adjacency must not be informed, because in English complements come after the head, by default: ''make'' > ''make love'')
+:VH([up],P)VC("the ghost",NP); (adjacency must not be informed, because in English head particles come before complements, by default: ''give'' > ''give up the ghost'')
+:VA([home],A,AJ1)VC("the bacon",NP,AJ2); (adjacency must be informed because in English the complement is normally generated before the adjunct: ''bring the bacon home'')
+
+== Notes ==
+<references />

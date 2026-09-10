@@ -1,0 +1,71 @@
+UC-B1 is an experimental corpus used to refine the initial versions of the grammar for sentence-based [[UNLization]] and [[NLization]], using [[IAN]] and [[EUGENE]], respectively. It comprises 5 very short texts in English and their corresponding graphs in UNL. 
+
+== The Corpus ==
+UC-B1 consists of 5 texts, which are translations of Aesop's fables to English. Most of them have been derived from the standard version by George Fyler Townsend (available at [http://www.gutenberg.org/cache/epub/21/pg21.txt The Project Gutenberg]), but they have suffered slight changes in order to become more suitable for natural language processing. <br />
+
+{|border=1 align=center cellpadding=2
+!Text
+!Title
+!English*
+!UNL**
+!Number of sentences
+|-
+|Text 1
+|align=center|The Hare and the Tortoise
+|align=center|[http://www.unlweb.net.br/resources/corpus/UCB1/UCB1_t1_eng.txt UCB1_t1_eng.txt]
+|align=center|[http://www.unlweb.net.br/resources/corpus/UCB1/UCB1_t1_unl.txt UCB1_t1_unl.txt]
+|align=center|13
+|-
+|Text 2
+|align=center|The Bat and The Weasels
+|align=center|[http://www.unlweb.net.br/resources/corpus/UCB1/UCB1_t2_eng.txt UCB1_t2_eng.txt]
+|align=center|to be provided soon
+|align=center|10
+|-
+|Text 3
+|align=center|The Father and his Sons
+|align=center|[http://www.unlweb.net.br/resources/corpus/UCB1/UCB1_t3_eng.txt UCB1_t3_eng.txt]
+|align=center|to be provided soon
+|align=center|11
+|-
+|Text 4
+|align=center|The Ants and the Grasshopper
+|align=center|[http://www.unlweb.net.br/resources/corpus/UCB1/UCB1_t4_eng.txt UCB1_t4_eng.txt]
+|align=center|to be provided soon
+|align=center|10
+|-
+|Text 5
+|align=center|The Man and the Lion
+|align=center|[http://www.unlweb.net.br/resources/corpus/UCB1/UCB1_t5_eng.txt UCB1_t5_eng.txt]
+|align=center|to be provided soon
+|align=center|11
+|-
+|}
+<nowiki>*</nowiki>To be manually translated to your target language in order to be used as the input for UNLization (IAN)<br />
+<nowiki>**</nowiki>To be used as the input for NLization (EUGENE)<br />
+<nowiki>***</nowiki>To be used for the natural language generation dictionary
+
+== Goals ==
+#To provide the dictionary and grammars necessary to '''UNLize''' your translated version of UC-B1 (with [[IAN]])
+#To provide the dictionary and grammars necessary to '''NLize''', to your target language, the UNL version of UC-B1 (with [[EUGENE]])
+
+== Samples and Examples ==
+The following resources have been used to deal with UC-A1 in English and may be used as a sample of what is expected to be provided
+*UNLization
+**[http://www.unlweb.net.br/resources/dic/UCB1/eng_unl_dic.txt ENG-UNL Dictionary] (English dictionary used for the UNLization of UC-B1) (Documentation available at [[English_dictionary|English Dictionary]])
+**[http://www.unlweb.net.br/resources/dic/default_dic.txt Default Dictionary] (Dictionary used to handle blank spaces, punctuation signs and other language-independent information) (Documentation available at [[Default Dictionary]])
+**[http://www.unlweb.net.br/resources/grammar/UCB1/eng_unl_tgrammar.txt ENG-UNL T-Grammar] (Transformation grammar used for the UNLization of UC-B1) (Documentation available at [[English_grammar|English Grammar]])
+**[http://www.unlweb.net.br/resources/grammar/UCB1/eng_unl_dgrammar.txt ENG-UNL D-Grammar] (Disambiguation grammar used for the UNLization of UC-B1) (Documentation available at [[English_grammar|English Grammar]])
+**[http://www.unlweb.net.br/resources/grammar/nl_unl_tgrammar.txt Default T-Grammar] (Default transformation grammar for UNLization) (Documentation available at [[Default Grammar]])
+*NLization
+**[http://www.unlweb.net.br/resources/dic/UCB1/unl_eng_dic.txt UNL-ENG Dictionary] (English dictionary used for the NLization of UC-B1) (Documentation available at [[English_dictionary|English Dictionary]])
+**[http://www.unlweb.net.br/resources/dic/default_dic.txt Default Dictionary] (Dictionary used to handle blank spaces, punctuation signs and other language-independent information) (Documentation available at [[Default Dictionary]])
+**[http://www.unlweb.net.br/resources/dic/UCB1/unl_eng_tgrammar.txt UNL-ENG T-Grammar] (Transformation grammar used for the NLization of UC-B1) (Documentation available at [[English_grammar|English Grammar]])
+**[http://www.unlweb.net.br/resources/grammar/unl_nl_tgrammar.txt Default T-Grammar] (Default transformation grammar for NLization) (Documentation available at [[Default Grammar]])
+
+== Recommended Readings ==
+Before starting the activity, and in order to fully understand what is expected to be done, it is important for you to be acquainted with the following documentation:
+*[[Tagset]], because you are expected to use only the tags included in the tagset
+*[[UNL Dictionary Specs]], which is essential to understand the dictionary structure
+*[[UNL Grammar Specs]], which is essential to understand the grammar structure
+It is also interesting to make a test drive with [[IAN]] and [[EUGENE]].

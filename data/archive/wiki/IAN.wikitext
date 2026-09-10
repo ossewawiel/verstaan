@@ -1,0 +1,43 @@
+IAN is a natural language analysis system. It represents natural language sentences as semantic networks in the UNL format. In its current release, it is a web application developed in Java and available at the [[UNLdev]]. 
+
+== The name ==
+IAN is an acronym for '''I'''nteractive '''AN'''alysis system.
+
+== Requirements ==
+As a universal engine, IAN must be parameterized to the source languages with the following files, to be provided through IAN's interface:
+*The input natural language document, i.e., the document to be UNL-ized
+*The NL-UNL (analysis) dictionary, i.e., a lexical database where [[UW]]s are mapped into natural language entries, along with the corresponding features, to be provided according to the [[UNL Dictionary Specs]]
+*The NL-UNL (analysis) transformation grammar, i.e., a set of of transformation rules used to convert natural language sentences into UNL graphs, to be provided according to the [[UNL Grammar Specs]]
+*The NL-UNL (analysis) disambiguation grammar, i.e, a set of disambiguation rules used to improve the results of the [[tokenization]] and of the [[transformation]]
+
+== Functioning ==
+IAN performs the three following movements over the input file:
+*[[Segmentation]], i.e., the division of the input document into a series of processing units (sentences), which are processed one at a time
+*[[Tokenization]], i.e., the identification of the tokens (lexical items) of each sentence of the input document
+*[[Transformation]], i.e., the application of the transformation rules of the grammar over each tokenized sentence in order to represent it as a UNL graph
+
+== Quick start ==
+As part of the [[UNLdev]], IAN is available at [http://dev.undlfoundation.org/analysis/login.jsp]. You must be registered in the UNL<sup>web</sup> in order to log in.<br />
+IAN has 5 tabs:
+*The welcome tab
+*'''NL input''', where you have to provide the natural language document to be UNLized. You may either create a new file or upload an existing file. 
+*'''Dictionaries''', where you have to provide the NL-UNL dictonaries (i.e., the dictionaries to be used in natural language analysis). You may either create a new file or upload an existing file. Use the default option "Database", instead of "Compiled Dictionaries", which are used for very big dictionaries. In any case, the dictionary must be provided according to the [[UNL Dictionary Specs]]. Once you create/upload a dictionary, you have to select it (by clicking the corresponding check box) and load it (by pressing the load button at the top menu). You may have several different dictionaries, and may load many of them to process the same corpus, but be sure that they are loaded in the correct order (because the order of the entries in the dictionary does matter for [[tokenization]]). You may reorder the dictionaries through the option "reorder dictionaries" at the top menu.
+*'''T-rules''', where you have to provide the NL-UNL [[transformation grammar]] (i.e., the grammar to be used to process the natural language input). You may either create a new file or upload an existing file. Use the default option "Database", instead of "Compiled Grammars", which are used for very big grammars. In any case, the grammar must be provided according to the [[UNL Grammar Specs]], and must contain only [[transformation rule]]s. Once you create/upload a grammar, you have to select it (by clicking the corresponding check box) and load it (by pressing the load button at the top menu). You may have several different grammars, and may load many of them to process the same corpus, but be sure that they are loaded in the correct order (because the order of the rules does matter for transformation). You may reorder the grammars through the option "reorder grammars" at the top menu.
+*'''D-rules''', where you have to provide the NL-UNL [[disambiguation grammar]] (i.e., the grammar to be used to control the tokenization and improve the results of the transformation grammar). You may either create a new file or upload an existing file. In any case, the grammar must be provided according to the [[UNL Grammar Specs]], and must contain only [[disambiguation rule]]s. Once you create/upload a grammar, you have to select it (by clicking the corresponding check box) and load it (by pressing the load button at the top menu). You may have several different grammars, and may load many of them to process the same corpus, but be sure that they are loaded in the correct order (because the order of the rules does matter for disambiguation). You may reorder the grammars through the option "reorder grammars" at the top menu.
+*'''IAN console''', where you will get the results. The IAN console brings the list of sentences appearing in the NL input, which may be processed one at a time, or in a range. The results are displayed in 5 different trace levels.
+
+== Test drive ==
+You may test the system using the resources below:
+*NL input: to be uploaded to the tab '''NL input''' (don't forget to select and load the file after uploading it)
+*#[http://www.unlweb.net.br/resources/corpus/UCA1/UCA1_eng.txt UCA1_eng.txt] (corpus UCA1 in English) 
+*Dictionaries: to be uploaded, IN THE FOLLOWING ORDER, to the tab '''Dictionaries''' (don't forget to select and load the file after uploading it)
+*#[http://www.unlweb.net.br/resources/dic/UCA1/eng_unl_dic.txt eng_unl_dic.txt] (entries appearing in the corpus [[UCA1]] 
+*#[http://www.unlweb.net.br/resources/dic/default_dic.txt Default Dictionary] (blank space, punctuation signs and other generic entries)
+*N-grammar: to be uploaded to the tab "N-rules" (don't forget to select and load the file after uploading it)
+*#[http://www.unlweb.net.br/resources/grammar/n-grammar.txt Normalization Grammar] (used to normalize the input text)
+*T-grammars: to be uploaded, IN THE FOLLOWING ORDER, to the tab '''T-rules''' (don't forget to select and load the file after uploading it)
+*#[http://www.unlweb.net.br/resources/grammar/s-grammar.txt Standardization Grammar] (used to standardize the features coming from the dictionary)
+*#[http://www.unlweb.net.br/resources/grammar/UCA1/eng_unl_tgrammar.txt ENG-UNL T-Grammar] (language-specific rules)
+*#[http://www.unlweb.net.br/resources/grammar/nl_unl_tgrammar.txt Default T-Grammar] (generic rules)
+*D-grammar: to be uploaded to the tab '''D-rules''' (don't forget to select and load the file after uploading it)
+*#[http://www.unlweb.net.br/resources/grammar/UCA1/eng_unl_dgrammar.txt eng_unl_dgrammar.txt] (disambiguation rules)

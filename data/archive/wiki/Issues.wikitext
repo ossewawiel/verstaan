@@ -1,0 +1,103 @@
+List of pending features and known bugs.
+
+== IAN and EUGENE (VERSION 1.1) ==
+=== Back-end ===
+<strike>
+;Parsing 
+:Parsing of rules need to be improved. IAN and EUGENE were accepting rules with unbalanced parentheses. There is also a problem of an extra comma in the rules. The sensitivity of syntactic check of the Engines should be higher. Eugene and IAN must be sensitive to the following syntactic error:
+:*(%a,A,B,C):=((%a,+E); (This rule is being accepted by the system)
+;Encoding 
+:Eugene and IAN should reject wrong UTF-8 encoding. From the perspective of the user, the rule was perfect, and the string was clearly and correctly displayed; but the machine was replacing it by empty.
+;Consistency of graphs 
+:Rules leading to impossible graphs are working. The example below is generating an impossible graph.
+:(NB(N,%n;JB(%j;%j2),{and|or},%adjc),%m):= (JB(%j;%j2),rel=%adjc) (NB(N,%n;%j),rel=%m)(NB(N,%n;%j2),rel=%m);
+:This rule is putting the same node %j in two different positions in the node list. This should not be possible. A node cannot be inside two different nodes in a list structure.''
+;Preprocessing module 
+:A module for preprocessing is needed in IAN. It will serve for sentence segmentation and morphological preprocessing. Rules of the preprocessing module will be only of the LL type, will only deal with strings and will apply before any dictionary search. They will be used to assign STAIL and SHEAD. Regular expressions should be admitted. The unit of processing will be the paragraph (i.e., any string between \n and \r). Examples of possible rules:
+:*<nowiki>(" .",%x):=(%x)(+STAIL,%y);</nowiki>   
+:*<nowiki>(".",%x)(/[ABCDEFGHIJKLMNOPQRSTUVWXYZ]/,%y):=(%z,+SHEAD)(%x)(%y);</nowiki>   
+:*<nowiki>("an ",%x)(/[aeiouy]/,%y):=("a ",%x)(%y);</nowiki> 
+:Observations:
+:*+STAIL automatically creates SHEAD (in addition to STAIL itself), and +SHEAD automatically create STAIL.
+:*The preprocessing module should be provided in a separate tab (S-Rules, for segmentation rules)
+;Mathematical operations (574)
+:Mathematical operations inside nodes <br />
+:*<nowiki>(%x):=(%x-1);</nowiki> (i.e., reduce the value of %x in 1) 
+:*<nowiki>(%x):=(%x+1);</nowiki> (i.e., add 1 to %x) 
+:*<nowiki>(%x):=(%x*2);</nowiki> (i.e., multiply %x by 2) 
+:*<nowiki>(%x):=(%x/2); (</nowiki>i.e., divide % by 2)
+</strike>
+;Indexation of relations (postponed)
+:Relations should admit an index, as nodes. This would avoid ambiguity when dealing with relations in different scopes:
+::XB:%a(%x;%y)XB:%b(%x;%z):=XB:%a(XB(%x;%y);%z); the relation XB(%x;%y) will be created as a scope inside %a
+::XB:%a(%x;%y)XB:%b(%x;%z):=XB:%b(XB(%x;%y);%z); the relation XB(%x;%y) will be created as a scope inside %b
+:In any case, the indexation should comply with a possible graph structure
+<strike>
+;Discontinuous multiword expressions (706)
+:Headwords, UWs and strings used as values of attributes:
+*(%x,ATTRIBUTE=[%y])(%y):=ACTION; the system checks whether the value of the attribute ATTRIBUTE is the HEADWORD of %y 
+*(%x,ATTRIBUTE=<nowiki>[[%y]]</nowiki>)(%y):=ACTION; the system checks whether the value of the attribute ATTRIBUTE is the UW of %y 
+*(%x,ATTRIBUTE="%y")(%y):=ACTION; the system checks whether the value of the attribute ATTRIBUTE is the STRING of %y 
+*CONDITION:=(%x,ATTRIBUTE=[%y])(%y): the system assigns the attribute ATTRIBUTE to %x with the value of the HEADWORD of %y 
+*CONDITION:=(%x,ATTRIBUTE=<nowiki>[[%y]]</nowiki>)(%y): the system assigns the attribute ATTRIBUTE to %x with the value of the UW of %y 
+*CONDITION:=(%x,ATTRIBUTE="%y")(%y): the system assigns the attribute ATTRIBUTE to %x with the value of the STRING of %y
+:Rules with discontinuous nodes
+*(%x)(ANY SEQUENCE OF NODES, %z)(%y):=(%x)(%y)(%z);
+</strike>
+
+===Front-end===
+<strike>
+;Drag-and-drop 
+:To include the possibility of using "drag-and-drop" to reorder dictionaries and dictionary entries, and grammars and grammar rules (in addition to the current one);
+</strike>
+;Test sets
+:To improve the test sets. They should show only the differences. And the results should be exportable and importable.
+;Trace 
+:The trace must be thoroughly revised. The desired structure is presented at [http://www.unlweb.net.br/forum/viewtopic.php?t=575]
+<strike>
+;Groups 
+:Groups should be collapsible/expandable, and a single file may participate in several groups (grouping must be done using tags, instead of exclusive categories)
+</strike>
+;Shared resources
+:Shared resources must bring the possibility of being reordered (currently, we cannot reorder them)
+;NL and UNL documents 
+:Shared NL inputs (currently, it's only possible to send them, but then the changes are not propagated). And they should work as dictionaries and grammars (we should have the option of grouping them and loading more than one at a time)
+;IAN/EUGENE communication
+:A given output of IAN could be used as the input for EUGENE and vice-versa - using the loaded resources
+<strike>
+;Update 
+:Dictionary and grammar update should replace the current files instead of adding the resources to the end of the existing files
+;Range
+:The trace level of the option "range" should be defined by user. It's OK to use NONE as default, but the user could also have more detailed results for more than one sentence.
+</strike>
+
+== IAN and EUGENE (VERSION 1.2) ==
+1. To include the option UNDO for the deletion of files and entries<br />
+2. Selecting a file should be the same as loading it (changed to: indicating clearly that a file has been loaded)<br />
+3. <strike>The range interval should be also user-defined. For the time being, it's only possible to select the interval from the drop-down list.</strike><br />
+4. Users should have the possibility of uploading more than one file at once in a single .zip file<br />
+5. Users should have the possibility of visualizing the output of IAN as a graph<br />
+6. Backtracking (top-down approach)<br />
+
+== IAN and EUGENE 2.0 ==
+1. SDK<br />
+2. Stand-alone version of IAN and EUGENE<br />
+
+== LILY (VERSION 1.1) ==
+1. Localization of the interface should be done through uploading a localization file (directly by admin).<br />
+2. Include LILY in the UNLdev. The user should have the option of seeing the results of Lily for his/her own data.<br />
+3. Alternative translations. The user should have the option of selecting other possible results according to the grammar.<br />
+4. Mobile (app) version.<br />
+
+== KEYS (VERSION 1.0) ==
+1. Graphic output (as fancy as possible and with support for touch screen).<br />
+2. Localizable interface.<br />
+3. Another design for the interface (cleaner and simpler).<br />
+3. Mobile (app) version.<br />
+4. Integration with EUGENE.<br />
+
+== UNL Tool Kit (VERSION BETA) ==
+1. Corpus processing: given a set of documents, the system should clean it (from html tags, for instance), segment it (according to the a user-defined set of symbols), tokenize it (according to the dictionary), extract the word list (with frequency of occurrence), lemmatize it (according to the dictionary), POS tag it (according to the dictionary) and extract the POS patterns (with the frequency of occurrence). The system should also include search facilities (concordance).<br />
+2. Dictionary builder: given a word list, the system should lemmatize it (according to the dictionary) and POS tag it.<br />
+3. Grammar builder: given a set of POS tagged sentences, the system should build the corresponding trees in order to form a tree-bank (by hand, i.e., through a tree-builder user-friendly interface, or automatically, using a grammar provided according to the Grammar Specs). The tree-bank will be used to induce a grammar (reverse engineering).<br />
+4. Graph builder: given a set of trees, the system should build the corresponding graphs in order to form a graph-bank (by hand, i.e., through a graph-builder user-friendly interface) or automatically (using a grammar provided according to the Grammar Specs). The graph-bank will be used to induce a grammar (reverse engineering).<br />

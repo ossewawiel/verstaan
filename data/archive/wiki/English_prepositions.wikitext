@@ -1,0 +1,367 @@
+English [[prepositions]] are always represented by [[Universal Relations]] or by Universal Relations and [[Universal Attributes]].
+
+== For ==
+The preposition "for" may have, in English, several values, as follows:
+
+{|border=1 cellpadding=5
+!rowspan=2|Value
+!rowspan=2|UNL
+!colspan=2|Examples
+|-
+!English
+!UNL
+|-
+|Aim or purpose
+|pur
+|trained for the ministry, put the house up for sale
+|pur(trained, ministry)
+|-
+|Destination
+|to
+|headed off for town
+|to(headed off, town)
+|-
+|Object of a desire, intention or perception
+|obj
+|eager for success
+|obj(eager, success)
+|-
+|Recipient (direction, addressee) of an action
+|gol
+|prepared lunch for us
+|gol(prepared, us)
+|-
+|Beneficiary of an action
+|ben
+|He did it for us
+|ben(did, us)
+|-
+|Duration
+|dur
+|stood in line for an hour
+|dur(stood, hour)
+|-
+|On behalf of, in favor of, in place of
+|man
+|spoke for all members
+|man(spoke, members.@for)
+|-
+|Amount, extent
+|man
+|a bill for five dollars; walked for miles; 
+|man(bill, dollars.@for)
+|-
+|As being
+|man
+|mistook me for the librarian
+|man(mistook, librarian.@for)
+|}
+
+== In ==
+The preposition "in" may have, in English, several values, as follows:
+
+{|border=1 cellpadding=5
+!rowspan=2|Value
+!rowspan=2|UNL
+!colspan=2|Examples
+|-
+!English
+!UNL
+|-
+|complement (necessary argument)
+|obj
+|interested in Math
+|obj(interested, Math)
+|-
+|time (when?)
+|tim
+|work in 1973
+|tim(work, 1973)
+|-
+|physical place (where?)
+|plc
+|work in Switzerland
+|plc(work, Switzerland)
+|-
+|logical place (in what?)
+|scn
+|work in the project
+|scn(work, project)
+|-
+|affected place
+|opl
+|hit in the face
+|opl(hit, face)
+|-
+|manner (how)
+|man
+|split in two
+|man(split, 2.@in)
+|-
+|attribute (which)
+|mod
+|a man in overcoat
+|mod(man, overcoat.@in)
+|-
+|final state (= into)
+|gol
+|throw in the basket
+|gol(throw, basket)
+|}
+
+=== Attribute @in ===
+The attribute @in is the default for the relations "tim", "plc" and "scn" and may be omitted in these cases. It may also be omitted in "obj" relations, whose government is stated in the dictionary. For the other relations, its use is mandatory:
+*work in Switzerland = plc(work, Switzerland) = plc(work, Switzerland.@in)
+*work in 1973 = tim(work, 1973) = tim(work, 1973.@in)
+*split in two = man(split, 2.@in) '''&ne;''' man(split,2) = split as two
+*man in overcoat = mod(man, overcoat.@in) '''&ne;''' mod(man, overcoat) = man of overcoat
+
+== Of ==
+The preposition "of" may have, in English, several values, as follows:
+
+{|border=1 cellpadding=5
+!rowspan=2|Value
+!rowspan=2|UNL
+!colspan=2|Examples
+|-
+!English
+!UNL
+|-
+|Part of
+|pof
+|day of the week
+|pof(day, week)
+|-
+|By
+|agt
+|beloved of the family
+|agt(beloved, family)
+|-
+|Caused by; resulting from: 
+|rsn
+|a death of tuberculosis
+|agt(death, tuberculosis)
+|-
+|Produced by
+|agt
+|products of the vine
+|agt(products, vine)
+|-
+|Derived or coming from; originating at or from
+|src
+|customs of the South
+|src(customs, South)
+|-
+|So as to be separated or relieved from
+|src
+|cured of distemper
+|src(cured, distemper)
+|-
+|issuing from
+|src
+|products of the vine
+|src(products, vine)
+|-
+|Away from; at a distance from
+|plf
+|a mile east of here
+|plf(east, here)
+|-
+|Composed or made from 
+|mat
+|a dress of silk
+|mat(dress, silk)
+|-
+|named or called
+|nam
+|the Garden of Eden
+|nam(Garden, Eden)
+|-
+|With reference to; about
+|cnt
+|will speak of it later
+|cnt(speak, it)
+|-
+|Centering on; directed toward
+|obj
+|a love of horses
+|obj(love, horses)
+|-
+|From the total or group comprising
+|qua
+|group of friends
+|qua(friends, group)
+|-
+|Quantified as
+|qua
+|a depth of ten feet
+|qua(depth, feet)
+|-
+|During or on a specified time
+|tim
+|problems of recent years
+|tim(problems, years)
+|-
+|Set aside for
+|pur
+|a day of rest
+|pur(day, rest)
+|-
+|Belonging or connected to
+|mod
+|the rungs of a ladder
+|mod(rungs, ladder)
+|-
+|Possessing; having
+|mod
+|a person of honor
+|mod(person, honor)
+|-
+|Containing or carrying
+|mod
+|a basket of groceries
+|mod(basket, groceries)
+|-
+|Associated with or adhering to
+|mod
+|people of your religion
+|mod(people, religion)
+|-
+|On one's part
+|mod
+|very nice of you
+|mod(nice, you)
+|-
+|Characterized or identified by
+|cnt
+|a year of famine
+|cnt(year, famine)
+|-
+|In respect to
+|cnt
+|slow of speech
+|cnt(slow, speech)
+|}
+
+
+=== Observations ===
+;Types
+:The expressions "a type of", "a kind of" and "a sort of", if not modified, are to be replaced by the relation '''icl''' (inclusion):
+*X is a type of energy = icl(X, energy)
+*X is a kind of behaviour = icl(X, behavior)
+*X is a sort of decision = icl(X, decision)
+:In case of modification, "type", "kind" and "sort" must be represented as UWs, according to the general case for specifiers indicated below:
+*X is a specific type of energy = aoj(energy.@entry, X) mod(type.@spec, energy.@entry) mod(type.@spec, specific)
+*X is a special kind of behaviour = aoj(behaviour.@entry, X) mod(kind.@spec, behaviour.@entry) mod(kind.@spec, special)
+*X is a new sort of decision = aoj(decision.@entry, X) mod(sort.@spec, decision.@entry) mod(sort.@spec, new)
+;Parts
+:The expression "a part of", if not modified, is to be replaced by the relation '''pof''' (part-of)
+*X is a part of the table = pof(X, table)
+:In case of modification, "part" must be represented as a UW, according to the general case for specifiers indicated below:
+*X is the front part of the table = aoj(table.@entry, X) mod(part.@spec, table.@entry) mod(part.@spec, front)
+;Units
+:Units of measurement are always to be indicated by the relation '''qua''' (quantifier):
+*a group of students = qua(students, group)
+*a drop of water = qua(water, drop)
+*a piece of fruit = qua(fruit, piece)
+*an article of clothing = qua(clothing, article)
+*a bowl of cereal = qua(cereal, bowl)
+*a grain of sand = qua(sand, grain)
+*a loaf of bread = qua(bread, loaf)
+*a crowd of spectators = qua(spectators, crowd)
+*a set of instructions = qua(instructions, set)
+*a flock of sheep  = qua(sheep, flock)
+*a herd of cattle = qua(cattle, herd)
+*a pack of wolves = qua(wolves, pack)
+*a pride of lions = qua(lions, pride)
+*a gaggle of geese = qua(geese, gaggle)
+*a bolt of lightning = qua(lightning, bolt)
+*a game of tennis = qua(tennis, game)
+*a clap of thunder = qua(thunder, clap)
+;Spec
+:The preposition "of" is often used to introduce a specifier to the head of the noun phrase. If the specifier is to be represented as the source node of the relation (as in the case of "mod"), it should receive the attribute '''@spec''', as follows: 
+*a form of love = mod(form.@spec, love)
+*a symbol of love = mod(symbol.@spec, love)
+*a brand of shampoo = mod(brand.@spec, shampoo)
+*an act of kindness = mod(act.@spec, kindness)
+*the quality of being disloyal = mod(quality.@spec, 00)
+*etc.
+;Apposition
+:The preposition "of" may also be used to indicate an apposition. In such cases, the attribute '''@spec''' should also be used. 
+*that idiot of a driver = mod(idiot.@spec, driver)
+
+== To ==
+The preposition "to" may have, in English, several values, as follows:
+
+{|border=1 cellpadding=5
+!rowspan=2|Value
+!rowspan=2|UNL
+!colspan=2|Examples
+|-
+!English
+!UNL
+|-
+|complement (necessary argument)
+|obj
+|refer to a dictionary
+|obj(refer, dictionary)
+|-
+|direction (towards)
+|to
+|go to the city
+|to(go, city)
+|-
+|final place
+|plt
+|go to the bottom
+|plt(go, bottom)
+|-
+|purpose
+|pur
+|go to discuss
+|pur(go, discuss)
+|-
+|addressee
+|gol
+|answer to John
+|gol(answer, John)
+|-
+|final state
+|gol
+|nursed her back to health
+|gol(nurse, health)
+|-
+|final time
+|tmt
+|worked from nine to five
+|tmt(work, 5)
+|-
+|comparison
+|bas
+|superior to the others
+|bas(superior, others)
+|-
+|degree or extent
+|man
+|smooth to the touch
+|man(smooth, touch.@to)
+|-
+|manner
+|man
+|parallel to the road
+|man(parallel, road.@to)
+|}
+
+=== Observations ===
+The preposition "to" must be replaced by its equivalents in the following situations:
+;to = against
+:Their faces pressed to the windows = Their faces pressed against the windows
+;to = of
+:looked for the top to the jar = looked for the top of the jar
+;to = before
+:ten to five = ten before five
+
+;@to
+The preposition "to" is the default for the relations "to", "plt", "gol", "pur", "tmt" and "bas" and may be omitted in these cases. It may also be omitted in case of the relation "obj", whose government is defined in the dictionary. For "man", the preposition should be explicitly indicated by the attribute "@to":
+*answer to John = gol(answer, John) = gol(answer, John.@to)
+*smooth to the touch = man(smooth, touch.@to) '''&ne;''' man(smooth, touch) = smooth as touch

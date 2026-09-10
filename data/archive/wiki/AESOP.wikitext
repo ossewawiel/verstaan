@@ -1,0 +1,68 @@
+AESOP is an experimental corpus used to refine the initial versions of the grammar for sentence-based [[UNLization]] and [[NLization]], using [[IAN]] and [[EUGENE]], respectively. It comprises 6 very short texts in English and their corresponding graphs in UNL. 
+
+== Goal ==
+The project AESOP has two main goals:
+#To provide a translation memory from UNL to natural language, in order to be used for inducing UNL>NL grammars; and
+#To provide standards for fully-automatic sentence-driven NLization, to be used as the parameter for evaluating the precision of UNL>NL grammars.
+
+== Repository ==
+AESOP consists of 6 texts, which are translations of Aesop's fables to English. Most of them have been derived from the standard version by George Fyler Townsend (available at [http://www.gutenberg.org/cache/epub/21/pg21.txt The Project Gutenberg]), but they have suffered slight changes in order to become more suitable for natural language processing. <br />
+
+{|border=1 align=center cellpadding=2
+!Project
+!Title
+!English*
+!UNL**
+!Number of sentences
+|-
+|AESOP-A1
+|align=center|The Hare and the Tortoise
+|align=center|[http://www.unlweb.net.br/resources/corpus/AESOP/aa1_eng.txt aa1_eng.txt]
+|align=center|[http://www.unlweb.net.br/resources/corpus/AESOP/aa1_unl.txt aa1_unl.txt]
+|align=center|13
+|-
+|AESOP-A2
+|align=center|The Bat and The Weasels
+|align=center|[http://www.unlweb.net.br/resources/corpus/AESOP/aa2_eng.txt aa2_eng.txt]
+|align=center|[http://www.unlweb.net.br/resources/corpus/AESOP/aa2_unl.txt aa2_unl.txt]
+|align=center|10
+|-
+|AESOP-B1
+|align=center|The Father and his Sons
+|align=center|[http://www.unlweb.net.br/resources/corpus/AESOP/ab1_eng.txt ab1_eng.txt]
+|align=center|[http://www.unlweb.net.br/resources/corpus/AESOP/ab1_unl.txt ab1_unl.txt]
+|align=center|11
+|-
+|AESOP-B2
+|align=center|The Ants and the Grasshopper
+|align=center|[http://www.unlweb.net.br/resources/corpus/AESOP/ab2_eng.txt ab2_eng.txt]
+|align=center|[http://www.unlweb.net.br/resources/corpus/AESOP/ab2_unl.txt ab2_unl.txt]
+|align=center|10
+|-
+|AESOP-C1
+|align=center|The Man and the Lion
+|align=center|[http://www.unlweb.net.br/resources/corpus/AESOP/ac1_eng.txt ac1_eng.txt]
+|align=center|[http://www.unlweb.net.br/resources/corpus/AESOP/ac1_unl.txt ac1_unl.txt]
+|align=center|11
+|-
+|AESOP-C2
+|align=center|
+|align=center|[http://www.unlweb.net.br/resources/corpus/AESOP/ac2_eng.txt ac2_eng.txt]
+|align=center|[http://www.unlweb.net.br/resources/corpus/AESOP/ac2_unl.txt ac2_unl.txt]
+|align=center|11
+|-
+|}
+<nowiki>*</nowiki>To be manually translated to your target language in order to be used as the input for UNLization (IAN)<br />
+<nowiki>**</nowiki>To be used as the input for NLization (EUGENE)<br />
+
+== Instructions ==
+In AESOP, users are expected to map UNL graphs into natural language sentences. This process must take into consideration the following:
+*The NLization is the generation, to the target language, of the information conveyed by the UNL graph. It defines the expected output of UNL in natural language, and will be used to measure the precision of UNL>NL grammars. The NLization must comply with the principles below:
+*The NLization must convey all and only the information available in the UNL graph, i.e., the NLization must not add or suppress any information;
+*The NLization must be a grammatical sentence of the target language, i.e., it should be syntactically and semantically well-formed;
+*The NLization must belong to the standard variety of the target language, i.e., it should not contain slang, jargon, archaisms, SMS language and other non-standard structures;
+*The NLization must contain punctuation signs only if absolutely necessary or explicitly stated in the UNL graph;
+*A single graph may lead to differnt NLizations, to be provided in separate lines. These may convey different order of constituents, if possible in the target language.
+
+== Notes ==
+<references />

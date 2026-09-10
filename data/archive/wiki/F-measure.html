@@ -1,0 +1,107 @@
+<div class="mw-content-ltr mw-parser-output" lang="en" dir="ltr"><p>In the UNL System, the F-measure (or F1-score) is the measure of a grammar's accuracy. It considers both the precision and the recall of the grammar to compute the score, according to the formula
+</p>
+<pre>F-measure = 2 x ( (precision x recall) / (precision + recall) )
+</pre>
+<p>In the above:
+</p>
+<ul><li><b>precision</b> is the number of correct results divided by the number of all returned results</li>
+<li><b>recall</b> is the number of correct results divided by the number of results that should have been returned</li></ul>
+<div id="toc" class="toc" role="navigation" aria-labelledby="mw-toc-heading"><input type="checkbox" role="button" id="toctogglecheckbox" class="toctogglecheckbox" style="display:none" /><div class="toctitle" lang="en" dir="ltr"><h2 id="mw-toc-heading">Contents</h2><span class="toctogglespan"><label class="toctogglelabel" for="toctogglecheckbox"></label></span></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#UNLization"><span class="tocnumber">1</span> <span class="toctext">UNLization</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#NLization"><span class="tocnumber">2</span> <span class="toctext">NLization</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="#How_to_calculate_the_F-Measure"><span class="tocnumber">3</span> <span class="toctext">How to calculate the F-Measure</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="#References"><span class="tocnumber">4</span> <span class="toctext">References</span></a></li>
+</ul>
+</div>
+
+<div class="mw-heading mw-heading2"><h2 id="UNLization"><a href="/wiki/UNLization" title="UNLization">UNLization</a></h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=F-measure&amp;veaction=edit&amp;section=1" title="Edit section: UNLization" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=F-measure&amp;action=edit&amp;section=1" title="Edit section&#39;s source code: UNLization">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<dl><dt>RETURNED</dt></dl>
+<p>A result is considered <b>"RETURNED"</b> when:
+</p>
+<ul><li>the output is a graph (i.e., all the nodes are interlinked); AND</li>
+<li>the output is made only of UW's (i.e., without natural language words)</li></ul>
+<dl><dt>CORRECT</dt></dl>
+<p>A result is considered <b>"CORRECT"</b> when:
+</p>
+<ul><li>The discrepancy of relations between the actual and the expected output is less than 0.3; AND</li>
+<li>The discrepancy of UW's between the actual and the expected output is less than 0.3; AND</li>
+<li>The overall discrepancy is less than 0.3.</li></ul>
+<p>WHERE<br />
+</p>
+<dl><dd>Discrepancy of relations is calculated by the formula:</dd></dl>
+<pre>(exceeding_relations + missing_relations)/total_relations
+</pre>
+<dl><dd>Discrepancy of UW's is calculated by the formula:</dd></dl>
+<pre>(exceeding_UW + missing_UW)/total_UW
+</pre>
+<dl><dd>Overall discrepancy is calculated by the formula:</dd></dl>
+<pre>((3*(exceeding_relations+missing_relations))+(2*(exceding_UW+missing_UW)+(exceding_attribute+missing_attribute))/((3*total_relations)+(2*total_UW)+(total_attribute))
+</pre>
+<dl><dd><ul><li>exceeding_relations is the number of relations present in the actual output but absent from the expected output</li>
+<li>missing_relations is the number of relations absent from the actual output but present in the expected output</li>
+<li>total_relations is the sum of the total number of relations in the actual output and in the expected output</li>
+<li>exceeding_UW is the number of UW's<sup id="cite_ref-a_1-0" class="reference"><a href="#cite_note-a-1"><span class="cite-bracket">&#91;</span>1<span class="cite-bracket">&#93;</span></a></sup> present in the actual output but absent from the expected output</li>
+<li>missing_UW is the number of UW's<sup id="cite_ref-a_1-1" class="reference"><a href="#cite_note-a-1"><span class="cite-bracket">&#91;</span>1<span class="cite-bracket">&#93;</span></a></sup> absent from the actual output but present in the expected output</li>
+<li>total_UW is the sum of the total number of UW's<sup id="cite_ref-a_1-2" class="reference"><a href="#cite_note-a-1"><span class="cite-bracket">&#91;</span>1<span class="cite-bracket">&#93;</span></a></sup> in the actual output and in the expected output</li>
+<li>exceeding_attribute is the number of attributes<sup id="cite_ref-b_2-0" class="reference"><a href="#cite_note-b-2"><span class="cite-bracket">&#91;</span>2<span class="cite-bracket">&#93;</span></a></sup> present in the actual output but absent from the expected output</li>
+<li>missing_attribute is the number of attributes<sup id="cite_ref-b_2-1" class="reference"><a href="#cite_note-b-2"><span class="cite-bracket">&#91;</span>2<span class="cite-bracket">&#93;</span></a></sup> absent from the actual output but present in the expected output</li>
+<li>total_attribute is the sum of the total number of attributes<sup id="cite_ref-b_2-2" class="reference"><a href="#cite_note-b-2"><span class="cite-bracket">&#91;</span>2<span class="cite-bracket">&#93;</span></a></sup> in the actual output and in the expected output</li></ul></dd></dl>
+<div class="mw-heading mw-heading2"><h2 id="NLization"><a href="/wiki/NLization" title="NLization">NLization</a></h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=F-measure&amp;veaction=edit&amp;section=2" title="Edit section: NLization" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=F-measure&amp;action=edit&amp;section=2" title="Edit section&#39;s source code: NLization">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<dl><dt>RETURNED</dt></dl>
+<p>A result is considered <b>"RETURNED"</b> when the output is a list of natural language words (i.e., without any UW).
+</p>
+<dl><dt>CORRECT</dt></dl>
+<p>A result is considered <b>"CORRECT"</b> when the difference between the actual result and the expected result is less than 0.3<br />
+</p>
+<dl><dd>The difference between the actual and the expected result is calculated by the formula</dd></dl>
+<pre>(exceeding_words+missing_words)/(total_words)
+</pre>
+<p>WHERE
+</p>
+<dl><dd><ul><li>exceeding_words is the number of words present in the actual output but absent from the expected output</li>
+<li>missing_words is the number of words absent from the actual output but present in the expected output</li>
+<li>total_words is the sum of the total number of words in the actual output and in the expected output</li></ul></dd></dl>
+<div class="mw-heading mw-heading2"><h2 id="How_to_calculate_the_F-Measure">How to calculate the F-Measure</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=F-measure&amp;veaction=edit&amp;section=3" title="Edit section: How to calculate the F-Measure" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=F-measure&amp;action=edit&amp;section=3" title="Edit section&#39;s source code: How to calculate the F-Measure">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>The F-measure may be automatically calculated at UNLWEB&gt;UNLARIUM&gt;TOOLS&gt;F-MEASURE.<br />
+In order to calculate the F-Measure, you have to provide the following:
+</p>
+<ul><li>For UNLization
+<ul><li>The actual UNL output, automatically generated by <a href="/wiki/IAN" title="IAN">IAN</a> with your grammars and dictionaries, at the trace level NONE<sup id="cite_ref-range_3-0" class="reference"><a href="#cite_note-range-3"><span class="cite-bracket">&#91;</span>3<span class="cite-bracket">&#93;</span></a></sup></li>
+<li>The expected UNL output for the same set of sentences</li></ul></li>
+<li>For NLization
+<ul><li>The actual NL output, automatically generated by <a href="/wiki/EUGENE" title="EUGENE">EUGENE</a> with your grammars and dictionaries, at the trace level MINIMAL<sup id="cite_ref-range_3-1" class="reference"><a href="#cite_note-range-3"><span class="cite-bracket">&#91;</span>3<span class="cite-bracket">&#93;</span></a></sup>.</li>
+<li>The expected NL output for the same set of sentences</li></ul></li></ul>
+<div class="mw-heading mw-heading2"><h2 id="References">References</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=F-measure&amp;veaction=edit&amp;section=4" title="Edit section: References" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=F-measure&amp;action=edit&amp;section=4" title="Edit section&#39;s source code: References">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<div class="mw-references-wrap"><ol class="references">
+<li id="cite_note-a-1"><span class="mw-cite-backlink">↑ <sup><a href="#cite_ref-a_1-0">1.0</a></sup> <sup><a href="#cite_ref-a_1-1">1.1</a></sup> <sup><a href="#cite_ref-a_1-2">1.2</a></sup></span> <span class="reference-text">For the sake of comparison, UW's appearing in the source position are considered to be different from UW's appearing in the target position of a relation. Scopes are ignored.</span>
+</li>
+<li id="cite_note-b-2"><span class="mw-cite-backlink">↑ <sup><a href="#cite_ref-b_2-0">2.0</a></sup> <sup><a href="#cite_ref-b_2-1">2.1</a></sup> <sup><a href="#cite_ref-b_2-2">2.2</a></sup></span> <span class="reference-text">For the sake of comparison, attributes appearing in the source position are considered to be different from attributes appearing in the target position of a relation. Optional attributes (such as .@def and .@indef) are ignored.</span>
+</li>
+<li id="cite_note-range-3"><span class="mw-cite-backlink">↑ <sup><a href="#cite_ref-range_3-0">3.0</a></sup> <sup><a href="#cite_ref-range_3-1">3.1</a></sup></span> <span class="reference-text">Select the option RANGE, with all sentences, in order to generate the output for all sentences at once</span>
+</li>
+</ol></div>
+<!-- 
+NewPP limit report
+Cached time: 20260910151908
+Cache expiry: 86400
+Reduced expiry: false
+Complications: [show‐toc]
+CPU time usage: 0.009 seconds
+Real time usage: 0.029 seconds
+Preprocessor visited node count: 96/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/100
+Expensive parser function count: 0/100
+Unstrip recursion depth: 0/20
+Unstrip post‐expand size: 2538/5000000 bytes
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    0.000      1 -total
+-->
+
+<!-- Saved in parser cache with key u965818192_SLvgQ-l8z2_:pcache:650:|#|:idhash:canonical and timestamp 20260910151908 and revision id 15085. Rendering was triggered because: diff-page
+ -->
+</div>

@@ -1,0 +1,528 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<title>UNL Archive</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/base/jquery-ui.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
+<style>
+    /* Override jQuery UI font settings */
+    .ui-widget, .ui-widget input, .ui-widget select, .ui-widget textarea, .ui-widget button {
+        font-family: inherit !important;
+        font-size: inherit !important;
+    }
+</style>
+<link rel="stylesheet" type="text/css" media="all" href="default.css" />
+</head>
+
+
+
+
+<body>
+<iframe name="I1" height="40" width="100%" scrolling="no" align="top" border="0" frameborder="0" src="unlwebbar/">
+Your browser does not support inline frames or is currently configured not to display inline frames.
+</iframe>
+
+
+   <div id="header" class="text-center py-10">
+    <img src="shared/images/unl_archive.png" alt="UNL Archive Logo" style="max-width:400px; width:100%; height:auto;">
+    
+    <hr />
+</div>
+
+<style>
+    .menu li ul li {
+        margin-top: 8px;
+        margin-bottom: 8px;
+    }
+</style>
+<!-- Menu superior -->
+
+<style>
+    /* Reset básico */
+    .menu,
+    .menu ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .menu {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        background: #fff;
+        position: relative;
+    }
+
+    .menu>li {
+        position: relative;
+    }
+
+    .menu>li>a {
+        display: block;
+        padding: 10px 18px;
+        text-decoration: none;
+        color: #222;
+        font-weight: bold;
+        transition: background 0.2s;
+    }
+
+    .menu>li:hover>a,
+    .menu>li:focus-within>a {
+        background: #eee;
+    }
+
+    .menu li ul {
+        display: none;
+        position: absolute;
+        left: 0;
+        top: 100%;
+        min-width: 180px;
+        background: #fff;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        z-index: 10;
+    }
+
+    .menu li:hover>ul,
+    .menu li:focus-within>ul {
+        display: block;
+    }
+
+    .menu li ul li a {
+        padding: 8px 16px;
+        color: #222;
+        font-weight: strong;
+        white-space: nowrap;
+    }
+
+    .menu li ul li a:hover {
+        background: #f5f5f5;
+    }
+
+    /* Hamburger */
+    .menu-toggle {
+        display: none;
+        background: none;
+        border: none;
+        font-size: 2em;
+        margin: 10px;
+        cursor: pointer;
+    }
+
+    @media (max-width: 900px) {
+        .menu {
+            flex-direction: column;
+            align-items: stretch;
+            display: none;
+            width: 100%;
+        }
+
+        .menu.open {
+            display: flex;
+        }
+
+        .menu>li {
+            width: 100%;
+        }
+
+        .menu>li>a {
+            padding: 14px 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .menu li ul {
+            position: static;
+            box-shadow: none;
+            min-width: 0;
+        }
+
+        .menu li ul {
+            display: none;
+        }
+
+        .menu li.open>ul {
+            display: block;
+        }
+
+        .menu-toggle {
+            display: block;
+        }
+    }
+</style>
+
+<button class="menu-toggle" aria-label="Open menu" onclick="document.querySelector('.menu').classList.toggle('open')">&#9776;</button>
+<ul class="menu">
+    <li><a href="index.php?unlweb=home">HOME</a></li>
+    <li><a href="index.php?unlweb=unlarium" title="Language resources">LINGWARE</a></li>
+    <li><a href="index.php?unlweb=dev" title="Computer resources">SOFTWARE</a></li>
+    <li><a href="index.php?unlweb=education" title="Educational resources">EDUCATION</a></li>
+    <li><a href="index.php?unlweb=documentation" title="Documentation resources">DOCUMENTATION</a></li>
+    <li><a href="index.php?unlweb=unl" title="UNL resources">UNL</a></li>
+    <li><a href="index.php?unlweb=undl" title="UNDL resources">UNDL</a></li>
+
+</ul>
+
+<script>
+    // Mobile submenu toggle with navigation on second click 
+    document.querySelectorAll('.menu > li').forEach(function(li) {
+        var link = li.querySelector('a');
+        if (li.querySelector('ul')) {
+            li.dataset.opened = "false";
+            link.addEventListener('click', function(e) {
+                if (window.innerWidth <= 900) {
+                    if (li.dataset.opened === "false") {
+                        e.preventDefault();
+                        li.classList.add('open');
+                        li.dataset.opened = "true";
+                    } else {
+                        // allow navigation
+                        li.dataset.opened = "false";
+                    }
+                }
+            });
+            // Close submenu when clicking outside
+            document.addEventListener('click', function(event) {
+                if (window.innerWidth <= 900) {
+                    if (!li.contains(event.target)) {
+                        li.classList.remove('open');
+                        li.dataset.opened = "false";
+                    }
+                }
+            });
+        }
+    });
+</script>
+
+
+<hr />
+<div class="center"><h1>UNL Education Programme</h1>
+<p>
+    The <b>UNL Education Programme</b> was established by the UNDL Foundation to promote education,
+    training, and engagement in the field of UNL. It was aimed to
+    prepare linguists, translators, and computational language specialists to participate in
+    the creation, management, and application of UNL resources and technologies.
+</p>
+<p>
+    The Programme consisted of three main initiatives, which complemented each other and covered
+    different aspects of UNL learning and practice:
+</p>
+
+<h2>VALERIE — The Virtual Learning Environment for UNL</h2>
+
+<div style="display:flex; align-items:flex-start; gap:20px; flex-wrap:wrap;">
+    <img src="shared/images/valerie.JPG" alt="VALERIE Logo" style="width:200px; height:auto; flex:0 0 200px;" />
+    <p style="flex:1 1 300px; min-width:200px; text-align:justify;">
+        <b>VALERIE</b> (VirtuAl LEaRnIng Environment) was the e-learning platform of the
+        UNL Education Programme. It was created by the UNDL Foundation to train linguists,
+        translators, and language specialists in natural language engineering, with a special
+        focus on the UNL and on the development of linguistic resources within the UNL<sup>arium</sup> environment. Although the platform is no longer active, it remains available <i>as is</i> for archival
+        and reference purposes. Users may still access its contents and resources, but
+        no further maintenance, updates, or technical support are provided by the UNDL Foundation.
+        The information below summarizes the structure and objectives of the programme as it was originally conceived.
+    </p>
+</div>
+
+<div class="accordion">
+    <h3 class="accordion-header">Purpose and Structure</h3>
+    <div class="accordion-content">
+
+
+        <p align="justify">
+            <b>VALERIE</b> was designed to teach and accredit participants to work with UNL-driven tools
+            and resources. It provided open and free certification courses aimed at preparing candidates
+            to contribute to UNL linguistic development. No prior experience in computational linguistics
+            was required, though participants were expected to be familiar with descriptive linguistics
+            and to have working knowledge of English.
+        </p>
+        <p>
+            To obtain a certificate, candidates were required to study the teaching materials available on the UNLwiki and complete a series of exercises and problem sets, which were automatically evaluated by the system. The entire process was self-paced and could be paused and resumed at any time.
+        </p>
+    </div>
+
+    <h3 class="accordion-header">Certificates</h3>
+    <div class="accordion-content">
+        <p align="justify">
+            The platform offered two main series of certificates, each comprising multiple levels with
+            automatic evaluation and theoretical lessons. Successful candidates were granted permission
+            to work within the <b>UNL<sup>arium</sup></b> framework for the creation of linguistic resources.
+        </p>
+
+        <ul>
+            <li><b>CLEA – Certificate of Language Engineering Aptitude:</b>
+                focused on describing and categorizing natural language phenomena, required for developing
+                dictionaries and grammars for UNL systems.</li>
+
+            <li><b>CUP – Certificate of Proficiency in UNL:</b>
+                focused on representing information conveyed by natural language texts into UNL, required
+                for creating UNL resources such as dictionaries, corpora, and semantic networks.</li>
+        </ul>
+    </div>
+
+
+    <h3 class="accordion-header">CLEA – Certificate of Language Engineering Aptitude</h3>
+    <div class="accordion-content">
+        <p align="justify">
+            CLEA was a series of certificates issued by the UNDL Foundation to train linguists in
+            machine-oriented descriptive linguistics. It included four levels:
+        </p>
+        <ul>
+            <li><b>CLEA<sup>250</sup></b> — basic level, focused on concept-to-word mapping;</li>
+            <li><b>CLEA<sup>450</sup></b> — intermediate level, focused on lexical description;</li>
+            <li><b>CLEA<sup>700</sup></b> — advanced level, focused on transformational grammar;</li>
+            <li><b>CLEA<sup>1000</sup></b> — advanced level, focused on disambiguation grammar.</li>
+        </ul>
+
+    </div>
+
+
+    <h3 class="accordion-header">CUP – Certificate of Proficiency in UNL</h3>
+    <div class="accordion-content">
+
+        <h3></h3>
+        <p align="justify">
+            CUP was the certification programme devoted to training candidates to represent
+            natural language phenomena in UNL. It included three levels:
+        <ul>
+            <li><b>CUP<sup>250</sup></b> — basic level, focused on natural language generation;</li>
+            <li><b>CUP<sup>500</sup></b> — intermediate level, focused on natural language analysis.</li>
+        </ul>
+        </p>
+    </div>
+
+</div>
+<br />
+
+<h2>UNLversity</h2>
+<div style="display:flex; align-items:flex-start; gap:20px; flex-wrap:wrap;">
+    <img src="shared/images/unlversity.png" alt="UNLversity Logo" style="width:200px; height:auto; flex:0 0 200px;" />
+    <p style="flex:1 1 300px; min-width:200px; text-align:justify;">
+    The <strong>UNLversity</strong> was an initiative of the UNDL Foundation designed to promote education, research, and practical training in UNL and Computational Linguistics. It encompassed three main programs: the <strong>UNL Panel</strong>, which convened experts to discuss and refine the theoretical and technical foundations of UNL; the <strong>UNL Schools</strong>, a series of international workshops that trained language specialists and computational linguists in creating dictionaries, grammars, and corpora; and the <strong>UNL Internship</strong>, which provided hands-on experience for students and young researchers in the development of UNL resources.
+</p>
+</div>
+
+
+
+<div class="accordion">
+    <h3 class="accordion-header">UNL Panel</h3>
+    <div class="accordion-content">
+        <p align="justify">
+            The <b>UNL Panel</b> was established by the UNDL Foundation as part of the
+            UNLversity initiative to promote academic discussion about the theoretical
+            and technical aspects of the UNL. The panels
+            brought together specialists from the UNL community and from the broader field
+            of natural language processing to evaluate and revise the formal specifications
+            of UNL. Two editions were held between 2012 and 2015, each focusing on a
+            different foundational component of the UNL framework.
+        </p>
+         <p align="justify">
+                    The I UNL Panel took place in Mumbai, India, on December 15, 2012,
+                    as an associated event to <a href="http://www.coling2012-iitb.org/" target="_blank">COLING 2012</a>.
+                    It focused on the nature and role of <b>Universal Words (UWs)</b>—the nodes in the UNL semantic graph.
+                    The goal was to define principles for identifying, naming, and organizing
+                    UWs within the UNL Knowledge Base, ensuring consistency, universality,
+                    and interoperability across languages.
+                </p>
+
+
+                <p align="justify">
+                    The panelists were:
+                <ul>
+                    <li>Eric Wehrli (Université de Genève)</li>
+                    <li>Igor Boguslavsky (Universidad Politécnica de Madrid / Russian Academy of Sciences)</li>
+                    <li>Mike Dillinger (eBay)</li>
+                    <li>Nicoletta Calzolari (Istituto di Linguistica Computazionale "A. Zampolli", Pisa)</li>
+                    <li>Pushpak Bhattacharyya (IIT Bombay)</li>
+                    <li>Sameh Alansary (University of Alexandria)</li>
+                </ul>
+                </p>
+
+                <p align="justify">
+                    The panel was chaired by Ronaldo Martins (UNDL Foundation) and organized
+                    at the Victor Menezes Convention Center, IIT Bombay. The discussions addressed
+                    key questions about the scope and identity of UWs, including:
+                </p>
+                <ul>
+                    <li>What constitutes a Universal Word?</li>
+                    <li>How should named entities and multiword expressions be handled?</li>
+                    <li>Should antonyms or word forms share the same UW?</li>
+                </ul>
+
+                <p align="justify">
+                    The proceedings of this first panel were later published as:
+                    <br>
+                    <i>MARTINS, R. (ed.) (2013). <b>Lexical Issues of UNL: Universal Networking Language 2012 Panel.</b> Cambridge: Cambridge Scholars Publishing.</i>
+                </p>
+      
+   </div>
+</div>
+
+<div class="accordion">
+    <h3 class="accordion-header">UNL School</h3>
+    <div class="accordion-content">
+
+        <p align="justify">
+            The UNL Schools were a distinguished series of international workshops hosted by the UNDL Foundation from 2003 to 2014, dedicated to the advancement of linguistic resources within the UNL framework. Over the course of these events, the Schools became a beacon of cross-cultural cooperation and intellectual rigor, training language specialists and computational linguists to create foundational dictionaries, corpora, and sophisticated grammatical modules for natural language processing in a broad array of the world’s languages.
+        <p>
+
+        <div class="inner-accordion">
+            <h3 class="inner-accordion-header">Description</h3>
+            <div class="inner-accordion-content">
+
+                <p>Spanning sixteen editions, the UNL Schools convened at diverse academic and cultural hubs, including Geneva (Switzerland), Mumbai (India), Alexandria (Egypt), Macau (China), Yerevan (Armenia), Patras (Greece), and Brasilia (Brazil). Each edition focused on languages relevant to the region or specific linguistic groups, contributing substantially to expanding UNL’s reach. Languages ranged from European tongues such as Croatian, Danish, and Greek, to South Asian languages including Hindi and Bengali, to indigenous South American languages like Quechua and Guarani, as well as many more.
+                </p>
+                <p>
+                    Every workshop was a meticulous 30-hour immersion lasting five days, where participants developed lexical entries, morphological inflections, syntactic frames, and semantic grammars, using web-based integrated development environments such as UNLdev. The Schools were designed for native speakers and experts who met stringent academic and certification criteria, fostering a community deeply knowledgeable and passionate about language engineering. Financial support was offered to enable attendance from diverse locales, underscoring the inclusive and global nature of the initiative.
+                </p>
+                <p>
+                    The UNL Schools were more than technical training sessions; they were pioneering forums that helped build a shared linguistic infrastructure for machine translation, multilingual information retrieval, summarization, and semantic reasoning. This effort significantly contributed to the vision of UNL as a tool to reduce language barriers and promote cross-cultural understanding under the auspices of the United Nations.
+                </p>
+                <p>
+                    Though now discontinued, the legacy of the UNL Schools endures as a testament to collaboration, innovation, and dedication to linguistic diversity and technology. They remain a cherished chapter in the history of natural language processing, inspiring future generations to continue bridging human languages through the power of artificial languages and computational linguistics.
+                </p>
+            </div>
+            <h3 class="inner-accordion-header">Editions</h3>
+            <div class="inner-accordion-content">
+                <p>The UNL Schools were held in the following locations and years:</p>
+                <ul>
+                    <li>I UNL School, June 2003, IIT Bombay, Mumbai, India</li>
+                    <li>II UNL School, November 2004, Yerevan, Armenia</li>
+                    <li>III UNL School, March 2005, Bibliotheca Alexandrina, Alexandria, Egypt</li>
+                    <li>IV UNL School, July 2005, UNDL Brasil, Florianópolis, Brazil</li>
+                    <li>V UNL School, August 2005, UNDL Foundation Office, Geneva, Switzerland</li>
+                    <li>VI UNL School, March 2006, UNDL Foundation Office,Geneva, Switzerland</li>
+                    <li>VII UNL School, September 2009, Yerevan, Armenia</li>
+                    <li>VIII - UNL School - February, 2012 - UNDL Foundation Office, Geneva, Switzerland</li>
+                    <li>IX UNL School - June, 2012 - IIT Bombay, Mumbai, India</li>
+                    <li>X - UNL School - October, 2012 - Bibliotheca Alexandrina, Alexandria, Egypt</li>
+                    <li>XI - UNL School - March, 2013 - University of Macau, Macau, China</li>
+                    <li>XII UNL School -June, 2013 - UNDL Foundation Office, Geneva, Switzerland</li>
+                    <li>XIII - UNL School - October, 2013 - University of Armenia, Yerevan, Armenia</li>
+                    <li>XIV UNL School - March, 2014 - University of Patras, Patras, Greece</li>
+                    <li>XV UNL School - July, 2014 - UNDL Foundation Office, Geneva, Switzerland</li>
+                    <li>XVI UNL School - November, 2014 - University of Brasilia, Brasilia, Brazil</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="accordion">
+    <h3 class="accordion-header">UNL Internship</h3>
+    <div class="accordion-content">
+
+        <p align="justify">
+            The <b>UNL Internship</b> was part of the UNLversity initiative, created by the
+            UNDL Foundation to offer practical training opportunities in Computational Linguistics
+            for students and young researchers. The program was devoted to preparing participants for the
+            creation and development of linguistic resources—such as dictionaries, grammars, knowledge bases,
+            translation memories, and corpora—for UNL-driven projects.
+        <p align="justify">
+            The internship was open to students enrolled in undergraduate or graduate programs in
+            Languages, Linguistics, Computational Linguistics, Natural Language Processing,
+            or related fields, in Switzerland or abroad. It could be pursued remotely (online) or
+            on-site at the UNDL Foundation headquarters in Geneva. The programme combined theoretical
+            training with supervised project-based work, promoting hands-on experience in language resource
+            engineering.
+        </p>
+    </div>
+    <br />
+
+
+</div>
+<h2>UNL Olympiad </h2>
+<div style="display:flex; align-items:flex-start; gap:20px; flex-wrap:wrap;">
+    <img src="shared/images/olympiad.png" alt="UNL Olympiad" style="max-width:150px; height:auto; flex:0 0 200px;" />
+    <p style="flex:1 1 300px; min-width:200px; text-align:justify;">The <b>UNL Olympiad</b> stands as a prestigious series of international competitions, organized by the UNDL Foundation, dedicated to advancing the development of grammatical resources within the UNL framework. In its time, the Olympiad was a driving force that fostered innovation and skill in designing and implementing UNL and natural language grammars, nurturing a global community of language engineers committed to excellence. It unfolded in successive editions from 2013 to 2014, each centered on creating and refining dictionaries and grammar modules for UNLizing (transforming natural language into UNL representation) and NLizing (generating natural language from UNL). These competitions were open to all participants meeting language-specific criteria and featured prizes recognizing outstanding grammar development achievements.
+</p>
+</div>
+
+<div class="accordion">
+    <h3 class="accordion-header">I UNL Olympiad (Deadline February 15, 2013)</h3>
+    <div class="accordion-content">
+        Devoted to development of grammars for the UC-A1 corpus of 100 sentences, the first Olympiad welcomed submissions across over 30 languages, including Assamese, Bengali, Chinese, German, Hindi, Japanese, Russian, Tamil, Turkish, and Ukrainian. It featured two modalities, Best UNLization Grammar and Best NLization Grammar, awarding gold, silver, and bronze medals for each language category as well as for top performers overall. This inaugural event set high evaluation standards, including F-measure and scalability criteria.
+    </div>
+</div>
+<div class="accordion">
+    <h3 class="accordion-header">II UNL Olympiad (Deadline July 1, 2013)</h3>
+    <div class="accordion-content">
+
+        Building on the first, this edition continued development on the UC-A1 corpus, expanding to languages including Afrikaans, Bulgarian, Estonian, Greek, Kannada, Khmer, Malay, Nepali, Persian, Punjabi, Sinhalese, Slovenian, Swedish, and Vietnamese. Medals were again awarded for both modalities per language, alongside monetary prizes of USD 500 for the 10 best grammars in each modality globally.
+    </div>
+</div>
+<div class="accordion">
+    <h3 class="accordion-header">III UNL Olympiad (Deadline March 30, 2014)</h3>
+    <div class="accordion-content">
+
+        Focused on the UGO-A1 corpus, this Olympiad maintained the dual modality format and prize structure. Participating languages included Afrikaans, Bulgarian, Chinese, Georgian, Hindi, Kannada, Persian, Portuguese, Russian, Sinhala, Slovenian, Telugu, Ukrainian, and Vietnamese. The competition emphasized the importance of dictionaries and grammars rigorously prepared for UNLization and NLization engines IAN and EUGENE available within UNLdev.
+    </div>
+</div>
+<div class="accordion">
+    <h3 class="accordion-header">IV UNL Olympiad (October - December 2014)</h3>
+    <div class="accordion-content">
+
+        The final Olympiad centered on the AESOP-A1 corpus, emphasizing collective preparatory phases including open discussions and official releases to ensure equitable participation. It upheld the established goals of preparing grammars and dictionaries for UNLizing and NLizing, and awarded medals and significant cash prizes. Languages spanned Bulgarian, German, Hindi, Panjabi, Russian, and Ukrainian among others, reflecting the diversity and scope of the UNL community.
+    </div>
+    <br />
+
+</div>
+
+</div>
+
+<!-- Make sure jQuery and jQuery UI are included -->
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+<script>
+    $(function() {
+        // Initialize outer accordion
+        $(".accordion").accordion({
+            collapsible: true,
+            heightStyle: "content",
+            active: false,
+            header: ".accordion-header"
+        });
+
+        // Initialize inner accordion(s)
+        $(".inner-accordion").accordion({
+            collapsible: true,
+            heightStyle: "content",
+            active: false,
+            header: ".inner-accordion-header"
+        });
+    });
+</script>
+
+<div style="text-align:center; margin-top:30px;">
+    <button class="btn"
+        onclick="window.location.href='index.php?unlweb=home'"
+
+        onmouseover="this.style.backgroundColor='#005bb5'"
+        onmouseout="this.style.backgroundColor='#0073e6'">
+        ⬅ Back to Home
+    </button>
+
+    <button class="btn"
+        onclick="window.location.href='/valerie/index.php'"
+
+        onmouseover="this.style.backgroundColor='#005bb5'"
+        onmouseout="this.style.backgroundColor='#0073e6'">
+        Enter VALERIE ➡
+    </button>
+</div></div> 
+
+<hr />
+<div id="footer" style="max-width:600px; margin:0 auto; text-align:center; font-size:0.7em;">
+    <div style="display: flex; justify-content: center; align-items: center;">
+            <a href="index.php?unlweb=terms" style="margin-right: 10px;">Terms and Conditions</a> |
+            <a href="index.php?unlweb=about" style="margin-left: 10px; margin-right: 10px;">About UNL Archive</a> |
+            <a href="index.php?unlweb=contact" style="margin-left: 10px;">Contact</a>
+    </div>
+</div>
+<br /><br />
+</body>
+</html>

@@ -1,0 +1,125 @@
+<div class="mw-content-ltr mw-parser-output" lang="en" dir="ltr"><p>MIR is a centralized repository of lexical data extracted from the WordNet3.0. It contains 117,659 <a href="/wiki/UW" class="mw-redirect" title="UW">UW</a>'s representing different sets of synonyms (or synsets) of English, which are expected to be associated to the corresponding lexical items of any language, whenever possible. 
+</p>
+<div id="toc" class="toc" role="navigation" aria-labelledby="mw-toc-heading"><input type="checkbox" role="button" id="toctogglecheckbox" class="toctogglecheckbox" style="display:none" /><div class="toctitle" lang="en" dir="ltr"><h2 id="mw-toc-heading">Contents</h2><span class="toctogglespan"><label class="toctogglelabel" for="toctogglecheckbox"></label></span></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Goal"><span class="tocnumber">1</span> <span class="toctext">Goal</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#Repository"><span class="tocnumber">2</span> <span class="toctext">Repository</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="#Structure"><span class="tocnumber">3</span> <span class="toctext">Structure</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="#Requisites"><span class="tocnumber">4</span> <span class="toctext">Requisites</span></a></li>
+<li class="toclevel-1 tocsection-5"><a href="#Instructions"><span class="tocnumber">5</span> <span class="toctext">Instructions</span></a></li>
+<li class="toclevel-1 tocsection-6"><a href="#Notes"><span class="tocnumber">6</span> <span class="toctext">Notes</span></a></li>
+</ul>
+</div>
+
+<div class="mw-heading mw-heading2"><h2 id="Goal">Goal</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=MIR&amp;veaction=edit&amp;section=1" title="Edit section: Goal" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=MIR&amp;action=edit&amp;section=1" title="Edit section&#39;s source code: Goal">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>The project MIR has two main goals:
+</p>
+<ol><li>To provide a concept-to-word multilingual database (i.e., a decoding or writer's dictionary). This dictionary is expected to be used in <a href="/wiki/NLization" title="NLization">language-based shallow NLization</a>, i.e., in generating natural language documents out of UNL graphs, especially through <a href="/wiki/EUGENE" title="EUGENE">EUGENE</a>.</li>
+<li>To assign a universality degree to each of the senses registered in the WordNet3.0 in order to decide in which section of the <a href="/wiki/UNL_Dictionary" title="UNL Dictionary">UNL Dictionary</a> they should be included: in the UNL Core Dictionary, in the UNL Abridged Dictionary or in the UNL Unabridged Dictionary.</li></ol>
+<div class="mw-heading mw-heading2"><h2 id="Repository">Repository</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=MIR&amp;veaction=edit&amp;section=2" title="Edit section: Repository" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=MIR&amp;action=edit&amp;section=2" title="Edit section&#39;s source code: Repository">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>MIR is based on the WordNet3.0. It contains 117,659 <a href="/wiki/UW" class="mw-redirect" title="UW">UW</a>'s, which correspond to the different sets of synonyms (or synsets) of English. Each UW was defined as a 9-digit string with the following format:
+</p>
+<pre>&lt;POS&gt;&lt;WORDNETID&gt;
+</pre>
+<p>where:<br />
+</p>
+<ul><li>&lt;POS&gt; = {1,2,3,4}, being 1 = noun, 2 = verb, 3 = adjective and 4 = adverb;</li>
+<li>and &lt;WORDNETID&gt; is the synset ID in the WordNet30.</li></ul>
+<p>Along with the UW, we provide the definition, examples, headwords and other features extracted from the WordNet3.0.<br />
+As an English-biased repository, which is expected to cover only concepts lexicalized in English, MIR should not be mistaken by the whole <a href="/wiki/UNL_Dictionary" title="UNL Dictionary">UNL Dictionary</a>, of which it is only a part.
+</p>
+<div class="mw-heading mw-heading2"><h2 id="Structure">Structure</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=MIR&amp;veaction=edit&amp;section=3" title="Edit section: Structure" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=MIR&amp;action=edit&amp;section=3" title="Edit section&#39;s source code: Structure">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>MIR is divided into 6 different subprojects according to the following criteria:
+</p>
+<ul><li>MIR-A1 contains only nouns corresponding to entries that are normally addressed in visual dictionaries (such as Merriam-Webster's Visual Dictionary and DK Visual Dictionaries)</li>
+<li>MIR-A2 contains entries extracted from two main repositories:
+<ul><li><a rel="nofollow" class="external text" href="http://www.cs.utexas.edu/~kbarker/working_notes/ldoce-vocab.html">The Longman defining vocabulary</a></li>
+<li><a rel="nofollow" class="external text" href="http://simple.wikipedia.org/wiki/Wikipedia:Basic_English_combined_wordlist">Basic English 2,000 Word List</a></li></ul></li></ul>
+<p><br /> 
+</p>
+<table border="1" align="center" cellpadding="2">
+<tbody><tr>
+<th>Repository
+</th>
+<th># of entries<sup id="cite_ref-1" class="reference"><a href="#cite_note-1"><span class="cite-bracket">&#91;</span>1<span class="cite-bracket">&#93;</span></a></sup>
+</th></tr>
+<tr>
+<td align="center">MIR-A1
+</td>
+<td align="center">3,161
+</td></tr>
+<tr>
+<td align="center">MIR-A2
+</td>
+<td align="center">6,830
+</td></tr>
+<tr>
+<td align="center">MIR-B1
+</td>
+<td align="center">9,449
+</td></tr>
+<tr>
+<td align="center">MIR-B2
+</td>
+<td align="center">10,000
+</td></tr>
+<tr>
+<td align="center">MIR-C1
+</td>
+<td align="center">40,000
+</td></tr>
+<tr>
+<td align="center">MIR-C2
+</td>
+<td align="center">40,000
+</td></tr></tbody></table>
+<div class="mw-heading mw-heading2"><h2 id="Requisites">Requisites</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=MIR&amp;veaction=edit&amp;section=4" title="Edit section: Requisites" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=MIR&amp;action=edit&amp;section=4" title="Edit section&#39;s source code: Requisites">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>MIR is open to all languages<sup id="cite_ref-2" class="reference"><a href="#cite_note-2"><span class="cite-bracket">&#91;</span>2<span class="cite-bracket">&#93;</span></a></sup> complying with following requisites:
+</p>
+<ul><li>MIR-A1 does not have any pre-requisite;</li>
+<li>MIR-A1, <a href="/wiki/NADIA-A1" class="mw-redirect" title="NADIA-A1">NADIA-A1</a> and <a href="/wiki/BRUNO-A1" class="mw-redirect" title="BRUNO-A1">BRUNO-A1</a> are requisites for MIR-A2;</li>
+<li>MIR-A2, <a href="/wiki/NADIA-A2" class="mw-redirect" title="NADIA-A2">NADIA-A2</a> and <a href="/wiki/BRUNO-A2" class="mw-redirect" title="BRUNO-A2">BRUNO-A2</a> are requisites for MIR-B1;</li>
+<li>MIR-B1, <a href="/wiki/NADIA-B1" class="mw-redirect" title="NADIA-B1">NADIA-B1</a> and <a href="/wiki/BRUNO-B1" class="mw-redirect" title="BRUNO-B1">BRUNO-B1</a> are requisites for MIR-B2;</li>
+<li>MIR-B2, <a href="/wiki/NADIA-B2" class="mw-redirect" title="NADIA-B2">NADIA-B2</a> and <a href="/wiki/BRUNO-B2" class="mw-redirect" title="BRUNO-B2">BRUNO-B2</a> are requisites for MIR-C1;</li>
+<li>MIR-C1, <a href="/wiki/NADIA-C1" class="mw-redirect" title="NADIA-C1">NADIA-C1</a> and <a href="/wiki/BRUNO-C1" class="mw-redirect" title="BRUNO-C1">BRUNO-C1</a> are requisites for MIR-C2.</li></ul>
+<div class="mw-heading mw-heading2"><h2 id="Instructions">Instructions</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=MIR&amp;veaction=edit&amp;section=5" title="Edit section: Instructions" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=MIR&amp;action=edit&amp;section=5" title="Edit section&#39;s source code: Instructions">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>In MIR, users are expect to link UW's (i.e., concepts) to natural language entries. This process must take into consideration the following:
+</p>
+<ul><li>The UW is a <b>concept</b>, and not an English word. English words are provided only as examples. They should not be translated. The most important part of a UW is its definition, not the English headwords.</li>
+<li>The UW must be associated only to <a href="/wiki/LRU" class="mw-redirect" title="LRU"><b>lexical items</b></a>, i.e., words recognized as such by the lexicography of a language. These words may be simple, compound or complex (multiword expressions), <u>but they must figure as entries or sub-entries in monolingual dictionaries</u>. If a UW is not lexicalized in a given language, i.e., if it is not realized as a lexical unit, but as a sequence of words (a periphrases) that has not been lexicalized yet, the UW should be reported either as UNDERSPECIFIED (if it is too general) or OVERSPECIFIED (if it is too specific). Users should not forget that one of our goals is to assign a degree of universality to the senses coming from the WordNet3.0, which brings many concepts that are English-specific.</li>
+<li>The UW must be associated only to <b><a href="/wiki/Lemma" title="Lemma">lemmas</a></b>, i.e., to the citation form of words (the form that is used in ordinary dictionaries, such as the infinitive, for verbs, the singular, for nouns, etc.). Inflections must not be informed as natural language entries.</li>
+<li>The UW must be associated to natural language entries of the <b>same part-of-speech</b>. A nominal concept must be necessarily associated to a noun or a noun phrase; a verbal concept, to a verb or a verbal phrase; an adjectival concept, to an adjective or to an adjective phrase; an adverbial concept, to an adverb or adverbial phrase<sup id="cite_ref-3" class="reference"><a href="#cite_note-3"><span class="cite-bracket">&#91;</span>3<span class="cite-bracket">&#93;</span></a></sup>.</li>
+<li>The same UW can be associated to several natural language entries, provided that they are informed according to the <b>frequency of use</b>. Non-standard lexical units (archaisms, jargon, slang, taboo, etc.) should be avoided and, if included, should be marked (in the field "register"). Spelling variations, if standard, must be informed as different entries.</li></ul>
+<div class="mw-heading mw-heading2"><h2 id="Notes">Notes</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=MIR&amp;veaction=edit&amp;section=6" title="Edit section: Notes" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=MIR&amp;action=edit&amp;section=6" title="Edit section&#39;s source code: Notes">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<div class="mw-references-wrap"><ol class="references">
+<li id="cite_note-1"><span class="mw-cite-backlink"><a href="#cite_ref-1">↑</a></span> <span class="reference-text">The numbers are approximate. The actual number of entries is dynamic. If a given UW is reported as underspecified or overspecified by more than three languages, it is removed from the databases until its universality is validated.</span>
+</li>
+<li id="cite_note-2"><span class="mw-cite-backlink"><a href="#cite_ref-2">↑</a></span> <span class="reference-text">Except English, which was the source for all data</span>
+</li>
+<li id="cite_note-3"><span class="mw-cite-backlink"><a href="#cite_ref-3">↑</a></span> <span class="reference-text">Users should not forget that prepositional phrases may play adjective or adverbial roles, and can be considered adjective or adverbial phrases. However, prepositional phrases should be used as natural language entries only if "lexicalized", i.e., if they figure as entries or sub-entries in monolingual dictionaries.</span>
+</li>
+</ol></div>
+<!-- 
+NewPP limit report
+Cached time: 20260910091558
+Cache expiry: 86400
+Reduced expiry: false
+Complications: [show‐toc]
+CPU time usage: 0.011 seconds
+Real time usage: 0.012 seconds
+Preprocessor visited node count: 77/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/100
+Expensive parser function count: 0/100
+Unstrip recursion depth: 0/20
+Unstrip post‐expand size: 1511/5000000 bytes
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    0.000      1 -total
+-->
+
+<!-- Saved in parser cache with key u965818192_SLvgQ-l8z2_:pcache:649:|#|:idhash:canonical and timestamp 20260910091558 and revision id 15049. Rendering was triggered because: diff-page
+ -->
+</div>

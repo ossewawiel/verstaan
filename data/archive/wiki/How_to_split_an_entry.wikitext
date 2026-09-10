@@ -1,0 +1,17 @@
+In the UNL<sup>arium</sup>, entries may be mapped to several different [[UW]]s, provided that they preserve the same features ([[gender]], [[number]], [[inflectional paradigm]], [[subcategorization frame]], [[register]], etc.). If a single lemma may have different morphological or syntatic behaviors, the entry must be split, i.e., it should correspond to more than one entry in the dictionary.
+
+Consider, for instance, the case of the word "data", in English, which was formerly the plural of the Latin "datum". Nowadays, "data" is used in English:
+*as a plural noun, meaning “facts or pieces of information” (''These data are described fully on page 8'');
+*as a singular mass noun meaning “information” (''The data has been entered in the computer'')
+In this case, the word must be split, i.e., there will be two "data" in the dictionary: the first, linked to the UW "facts or pieces of information", will have NUM=PLRT (plurale tantum); the second, linked to "information", will have NUM=SNGT (singulare tantum).
+
+== When to split an entry ==
+Entries must be split whenever they may have more than one morphological or syntactic behavior, e.g.:
+*entries that may have more than one number (such as "data", in English, which can be singulare tantum or plurale tanum)
+*entries that may have more than one gender (such as "arbre", in French, which can be masculine or feminine)
+*entries that may have more than one register (such as "sick", in English, wich may mean "ill" in ordinary register or "awesome" in slang register)
+*entries that may belong to different inflectional paradigms (such as "fish", in English, that may have plural in "fish" or "fishes")
+
+== How to split an entry ==
+Whenever the entry is mapped to more than one UW, you should have, at the bottom of the dictionary form in the UNL<sup>arium</sup>, the option for splitting it. In this case, the entry will be split according to the different meanings.<br />
+If the entry can be mapped to one single meaning or if the different morphological or syntactic behaviors concern the same set of meanings, you will have to first artificially split it in order to clone it (by editing the corresponding features in each of its versions).

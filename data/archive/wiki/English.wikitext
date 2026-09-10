@@ -1,0 +1,180 @@
+This page provides guidelines for English in the UNL framework.
+
+
+*[[English conjunctions|Conjunctions]]
+*[[English prepositions|Prepositions]]
+*[[English verbs|Verbs]]
+
+
+
+
+=== Adpositions as Universal Relations ===
+As words that connect two other words, adpositions are always represented in UNL as relations:
+
+;agt = by
+;ben = for
+;dur = during
+;frm = from
+;gol = to
+;ins = with
+;man = as
+;met = by
+;mod = of
+;opl = in
+;per = per
+;plc = in
+;plf = from
+;plt = to
+;pof = of
+;pos = of
+;ptn = with
+;pur = for
+;scn = in
+;src = from
+;tim = in
+;tmf = since
+;tmt = until
+;to = to
+;via = through
+
+=== Adpositions as Universal Attributes ===
+Adpositions are also represented as attributes when they assign specific values to general relations. For instance:
+
+;the book is in the box
+:the relation "plc" (place) is sufficient to represent the meaning intended by "in" and no attribute is necessary: plc(book, box)
+;the book is under the box
+:the relation "plc" (place) is too generic to represent the meaning intended by "under" and the attribute @under is necessary: plc(book, box.@under)
+
+
+For the time being, adpositions have been represented by their English correspondents.
+
+;@aboard
+;@about
+;@above
+;@according_to
+;@across
+;@after
+;@against
+;@ahead_of
+;@along
+;@alongside
+;@amid
+;@among
+;@apart_from
+;@around
+;@as
+;@as_far_as
+;@as_of
+;@as_per
+;@as_regards
+;@as_well_as
+;@aside
+;@aside_from
+;@astride
+;@at
+;@athwart
+;@atop
+;@barring
+;@because_of
+;@before
+;@behind
+;@below
+;@beneath
+;@beside
+;@besides
+;@between
+;@beyond
+;@but
+;@by
+;@by_means_of
+;@circa
+;@close_to
+;@concerning
+;@despite
+;@down
+;@due_to
+;@during
+;@except
+;@except_for
+;@excluding
+;@failing
+;@far_from
+;@following
+;@for
+;@from
+;@from_on
+;@given
+;@in
+;@in_accordance_with
+;@in_addition_to
+;@in_case_of
+;@in_favor_of
+;@in_front_of
+;@in_place_of
+;@in_spite_of
+;@in_terms_of
+;@including
+;@inside
+;@inside_of
+;@instead_of
+;@into
+;@like
+;@mid
+;@near
+;@near_to
+;@next
+;@next_to
+;@notwithstanding
+;@of
+;@off
+;@on
+;@on_account_of
+;@on_behalf_of
+;@on_top_of
+;@onto
+;@opposite
+;@out
+;@out_from
+;@out_of
+;@outside
+;@outside_of
+;@over
+;@owing_to
+;@pace
+;@per
+;@prior_to
+;@pursuant_to
+;@qua
+;@regarding
+;@regardless_of
+;@round
+;@save
+;@since
+;@subsequent_to
+;@than
+;@thanks_to
+;@that_of
+;@through
+;@throughout
+;@to
+;@toward
+;@towards
+;@under
+;@underneath
+;@unlike
+;@until
+;@up
+;@upon
+;@versus
+;@via
+;@with
+;@with_regard_to
+;@with_relation_to
+;@with_respect_to
+;@within
+;@without
+;@worth
+
+
+
+== Verbs ==

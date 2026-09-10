@@ -1,0 +1,214 @@
+<div class="mw-content-ltr mw-parser-output" lang="en" dir="ltr"><p>The Default grammar is expected to be language-independent and is normally loaded, after the language-specific grammars, in order to handle phenomena that are not covered by them. The default grammar is used only in transformation (<a href="/wiki/T-grammar" class="mw-redirect" title="T-grammar">t-grammar</a>) and is unidirectional: there is a default grammar for <a href="/wiki/UNLization" title="UNLization">UNLization</a>, and a different default grammar for <a href="/wiki/NLization" title="NLization">NLization</a>.
+</p>
+<div id="toc" class="toc" role="navigation" aria-labelledby="mw-toc-heading"><input type="checkbox" role="button" id="toctogglecheckbox" class="toctogglecheckbox" style="display:none" /><div class="toctitle" lang="en" dir="ltr"><h2 id="mw-toc-heading">Contents</h2><span class="toctogglespan"><label class="toctogglelabel" for="toctogglecheckbox"></label></span></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Files"><span class="tocnumber">1</span> <span class="toctext">Files</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#NL&gt;UNL_Default_Grammar_(UNLization)"><span class="tocnumber">2</span> <span class="toctext">NL&gt;UNL Default Grammar (UNLization)</span></a>
+<ul>
+<li class="toclevel-2 tocsection-3"><a href="#Pre-processing"><span class="tocnumber">2.1</span> <span class="toctext">Pre-processing</span></a></li>
+<li class="toclevel-2 tocsection-4"><a href="#Parsing"><span class="tocnumber">2.2</span> <span class="toctext">Parsing</span></a></li>
+<li class="toclevel-2 tocsection-5"><a href="#Transformation"><span class="tocnumber">2.3</span> <span class="toctext">Transformation</span></a></li>
+<li class="toclevel-2 tocsection-6"><a href="#Dearborization"><span class="tocnumber">2.4</span> <span class="toctext">Dearborization</span></a></li>
+<li class="toclevel-2 tocsection-7"><a href="#Interpretation"><span class="tocnumber">2.5</span> <span class="toctext">Interpretation</span></a></li>
+<li class="toclevel-2 tocsection-8"><a href="#Post-processing"><span class="tocnumber">2.6</span> <span class="toctext">Post-processing</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-9"><a href="#UNL&gt;NL_Default_Grammar_(NLization)"><span class="tocnumber">3</span> <span class="toctext">UNL&gt;NL Default Grammar (NLization)</span></a>
+<ul>
+<li class="toclevel-2 tocsection-10"><a href="#Pre-processing_2"><span class="tocnumber">3.1</span> <span class="toctext">Pre-processing</span></a></li>
+<li class="toclevel-2 tocsection-11"><a href="#Arborization"><span class="tocnumber">3.2</span> <span class="toctext">Arborization</span></a></li>
+<li class="toclevel-2 tocsection-12"><a href="#Transformation_2"><span class="tocnumber">3.3</span> <span class="toctext">Transformation</span></a></li>
+<li class="toclevel-2 tocsection-13"><a href="#Linearization"><span class="tocnumber">3.4</span> <span class="toctext">Linearization</span></a></li>
+<li class="toclevel-2 tocsection-14"><a href="#Morphological_generation"><span class="tocnumber">3.5</span> <span class="toctext">Morphological generation</span></a></li>
+<li class="toclevel-2 tocsection-15"><a href="#Post-processing_2"><span class="tocnumber">3.6</span> <span class="toctext">Post-processing</span></a></li>
+</ul>
+</li>
+</ul>
+</div>
+
+<div class="mw-heading mw-heading2"><h2 id="Files">Files</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Default_grammar&amp;veaction=edit&amp;section=1" title="Edit section: Files" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Default_grammar&amp;action=edit&amp;section=1" title="Edit section&#39;s source code: Files">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<ul><li><a rel="nofollow" class="external text" href="http://www.unlweb.net.br/resources/grammar/nl_unl_tgrammar.txt">NL&gt;UNL Default Grammar (natural language analysis)</a></li>
+<li><a rel="nofollow" class="external text" href="http://www.unlweb.net.br/resources/grammar/unl_nl_tgrammar.txt">UNL&gt;NL Default Grammar (natural language generation)</a></li></ul>
+<div class="mw-heading mw-heading2"><h2 id="NL&gt;UNL_Default_Grammar_(UNLization)"><span id="NL.3EUNL_Default_Grammar_.28UNLization.29"></span>NL&gt;UNL Default Grammar (UNLization)</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Default_grammar&amp;veaction=edit&amp;section=2" title="Edit section: NL&gt;UNL Default Grammar (UNLization)" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Default_grammar&amp;action=edit&amp;section=2" title="Edit section&#39;s source code: NL&gt;UNL Default Grammar (UNLization)">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>The NL&gt;UNL Default Grammar is divided into 6 sections
+</p>
+<ol><li>Pre-processing (prepares the input for the processing)</li>
+<li>Parsing (converts the input list structure into a tree structure)</li>
+<li>Transformation (converts the surface tree struture into the deep tree structure)</li>
+<li>Dearborization (converts the tree structure into a network structure)</li>
+<li>Interpretation (converts the syntactic network into a semantic network)</li>
+<li>Post-processing (adjusts the final output)</li></ol>
+<div class="mw-heading mw-heading3"><h3 id="Pre-processing">Pre-processing</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Default_grammar&amp;veaction=edit&amp;section=3" title="Edit section: Pre-processing" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Default_grammar&amp;action=edit&amp;section=3" title="Edit section&#39;s source code: Pre-processing">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>The pre-processing module aims at preparing the input for processing. It includes rule such as the following:
+</p>
+<pre>(TEMP,%x)(BLK,%y)(TEMP,%z):=(%x&amp;%y&amp;%z,-BLK); merges temporary nodes
+</pre>
+<p>if there are two nodes (TEMP) isolated by a blank space (BLK) they become one single node
+</p>
+<dl><dd>("asdfgh")(" ")("asdfgh")&gt;("asdfgh asdfgh")</dd></dl>
+<pre>(PPN,%x)(BLK,%y)(PPN,%z):=(%x&amp;%y&amp;%z,+TEMP,-BLK); merges sequences of proper names
+</pre>
+<p>if there are two proper names (PPN) isolated by a blank space (BLK) they become one single node
+</p>
+<dl><dd>("John")(" ")("Smith") &gt; ("John Smith")</dd></dl>
+<pre>(BLK):=; deletes the blank space
+</pre>
+<p>deletes all blank spaces 
+</p>
+<dl><dd>("a")(" ")("b") &gt; ("a")("b")</dd></dl>
+<div class="mw-heading mw-heading3"><h3 id="Parsing">Parsing</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Default_grammar&amp;veaction=edit&amp;section=4" title="Edit section: Parsing" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Default_grammar&amp;action=edit&amp;section=4" title="Edit section&#39;s source code: Parsing">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<figure class="mw-halign-left" typeof="mw:File/Thumb"><a href="/wiki/File:Parsing.png" class="mw-file-description"><img src="/wiki/images/thumb/8/82/Parsing.png/200px-Parsing.png" decoding="async" width="200" height="149" class="mw-file-element" srcset="/wiki/images/thumb/8/82/Parsing.png/300px-Parsing.png 1.5x, /wiki/images/thumb/8/82/Parsing.png/400px-Parsing.png 2x" /></a><figcaption></figcaption></figure>
+<p>The parsing module performs the syntactic analysis of the normalized input. It converts the list structure (a sequence of tokens) into a tree structure (a hierarchy of tokens). The parsing follows some general procedures coming from the <a href="/wiki/X-bar_theory" title="X-bar theory">X-bar theory</a> and results in a tree structure with binary branching. Language-specific parsing rules are described in the language grammar; the parsing performed by the Default Grammar covers only very general structures. It is done in five steps:
+</p>
+<ul><li><b>Complementation</b>, when the system tries to create intermediate projections (XB) out of the combination of the existing intermediate projections with possible complement candidates (XB + COMP &gt; XB, or COMP + XB &gt; XB)</li>
+<li><b>Adjunction</b>, when the system tries to create intermediate projections (XB) out of the combination of the existing intermediate projections with possible adjunct candidates (XB + ADJT &gt; XB, or ADJT + XB &gt; XB)</li>
+<li><b>Specification</b>, when the system tries to create maximal projections (XP) out of the combination of the existing intermediate projections with possible specifier candidates (SPEC + XB &gt; XP, or XB + SPEC &gt; XP)</li>
+<li><b>Maximal projection</b>, when the system tries to create maximal projections (XP) out of intermediate projections when there is no possible combination (no complement, adjunct or specifier)</li>
+<li><b>Intermediate projection</b>, when the system tries to create intermediate projections (XB) out of the heads when there is no possible combination (no complement or adjunct)</li></ul>
+<p>As it is seen above, the parsing module of the Default Grammar is highly dependent on the X-bar configuration. Consider, for instance, the case of the sentence "John killed Mary yesterday", supposing that the constituents have been already analyzed as:
+</p>
+<ul><li>John = NP</li>
+<li>killed = V</li>
+<li>Mary = NP</li>
+<li>yesterday = AP</li></ul>
+<p>The following rules are applied:
+</p>
+<ol><li>First projection: (V,^proj,^XB,^XP):=(+XB=VB);
+<dl><dd>V projects VB, whatever the case: V[killed] &gt; VB[killed]</dd></dl></li>
+<li>Complementation: (VB,%vb)(NP,%np):=(VB(%vb,+proj;%np,+comp,+proj),+XB=VB,+LEX=V,%new);
+<dl><dd>VB + NP, i.e., VB[killed] NP[Mary], projects another VB: VB[killed Mary]</dd></dl></li>
+<li>Adjunction: (VB,%vb)(AP,%ap):=(VB(%vb,+proj;%ap,+adjt,+proj),+XB=VB,+LEX=V,%new);
+<dl><dd>VB + AP, i.e., VB[killed Mary] AP[yesterday], projects another VB: VB[killed Mary yesterday]</dd></dl></li>
+<li>Specification: (NP,%np)(VB,%vb):=(VP(%vb,+proj;%np,+spec,+proj),+XP=VP,+LEX=V,%new);
+<dl><dd>NP + VB, i.e., NP[John] VB[killed Mary yesterday], projects a VP: VP[John killed Mary yesterday]</dd></dl></li></ol>
+<p>Unfortunately, the rules cannot be so direct, because they are applied from left to right, and the system must wait for the processing of all possible candidates before starting this arborization process. That is why in most cases the rules are context-sensitive, as follows:
+</p>
+<pre>(DP,%dp)(NB,%nb)({^D,^J,^N,^P|PUT|STAIL|CTAIL},%right):=(NP(%nb,+proj;%dp,+spec,+proj),+XP=NP,+LEX=N,%new)(%right);
+</pre>
+<dl><dd>DP + NB will form a NP if, and only if, the NB is not followed by any determiner, adjective, noun or preposition (because they will still be part of the NB) or if the NB is followed by a punctuation sign (PUT), the end of the sentence (STAIL) or the end of the scope (CTAIL)</dd></dl>
+<p><br style="clear: both" />
+</p>
+<div class="mw-heading mw-heading3"><h3 id="Transformation">Transformation</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Default_grammar&amp;veaction=edit&amp;section=5" title="Edit section: Transformation" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Default_grammar&amp;action=edit&amp;section=5" title="Edit section&#39;s source code: Transformation">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<figure class="mw-halign-left" typeof="mw:File/Thumb"><a href="/wiki/File:Transformation.png" class="mw-file-description"><img src="/wiki/images/thumb/e/e2/Transformation.png/200px-Transformation.png" decoding="async" width="200" height="150" class="mw-file-element" srcset="/wiki/images/thumb/e/e2/Transformation.png/300px-Transformation.png 1.5x, /wiki/images/thumb/e/e2/Transformation.png/400px-Transformation.png 2x" /></a><figcaption></figcaption></figure>
+<p>The transformation module converts a surface syntactic (tree) structure into a deep syntactic (tree) structure.<br />
+The output of the parsing is a surface (tree) structure. This surface structure does not contain yet some dependency relations that were not represented directly inside the list and which are important in the UNLization process. For instance, in case of "John did not kill Mary", the NP "John" will be represented at the position of specifier of the IP "did not kill Mary", but it is important to move it to the position of specifier of the VP "kill Mary". In order to do that, we have to convert the surface structure into a deep structure. This is done by movement rules such as the following:
+</p>
+<pre>IP(IB(;VP(;e));%s,^e):=IP(IB(;VP(;%s));%e,+e); 
+</pre>
+<dl><dd>Moves the non-empty (^e) node %s, which is at the position of specifier of IP, to the position of specifier of VP that is a complement of this IP, if this position is empty (e).</dd></dl>
+<p><br style="clear: both" />
+</p>
+<div class="mw-heading mw-heading3"><h3 id="Dearborization">Dearborization</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Default_grammar&amp;veaction=edit&amp;section=6" title="Edit section: Dearborization" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Default_grammar&amp;action=edit&amp;section=6" title="Edit section&#39;s source code: Dearborization">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<figure class="mw-halign-left" typeof="mw:File/Thumb"><a href="/wiki/File:Dearborization.png" class="mw-file-description"><img src="/wiki/images/thumb/4/4d/Dearborization.png/200px-Dearborization.png" decoding="async" width="200" height="149" class="mw-file-element" srcset="/wiki/images/thumb/4/4d/Dearborization.png/300px-Dearborization.png 1.5x, /wiki/images/thumb/4/4d/Dearborization.png/400px-Dearborization.png 2x" /></a><figcaption></figcaption></figure>
+<p>The UNL graph is a network rather than a tree. In order to be converted to UNL, the deep syntactic structure must be "dearborized", i.e., transformed into a network structure. This is done by rewriting X-bar relations (XP,XB) as head-driven syntactic relations (XS,XC,XA) as indicated in <a href="/wiki/X-bar" class="mw-redirect" title="X-bar">X-bar</a>, i.e.:
+</p>
+<pre>XP(XB(XB(HEAD;COMP);ADJT);SPEC) = XC(HEAD;COMP)XA(HEAD;ADJT)XS(HEAD;SPEC)
+</pre>
+<p>In the Default Grammar, dearborization is performed by rules of the type:
+</p>
+<pre>XP(XB(%x;%y);%z):=XB(%x;%y)XS(%x;%z);
+</pre>
+<dl><dd>If there are three nodes %x, %y and %z, so that %x and %y projects an XB, and this XB, along with %z, projects an XP, then rewrites this as two relations having %x as first argument: XB(%x;%y) and XS(%x;%z)</dd></dl>
+<p><br style="clear: both" />
+</p>
+<div class="mw-heading mw-heading3"><h3 id="Interpretation">Interpretation</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Default_grammar&amp;veaction=edit&amp;section=7" title="Edit section: Interpretation" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Default_grammar&amp;action=edit&amp;section=7" title="Edit section&#39;s source code: Interpretation">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<figure class="mw-halign-left" typeof="mw:File/Thumb"><a href="/wiki/File:Interpretation.png" class="mw-file-description"><img src="/wiki/images/thumb/2/25/Interpretation.png/200px-Interpretation.png" decoding="async" width="200" height="152" class="mw-file-element" srcset="/wiki/images/thumb/2/25/Interpretation.png/300px-Interpretation.png 1.5x, /wiki/images/thumb/2/25/Interpretation.png/400px-Interpretation.png 2x" /></a><figcaption></figcaption></figure>
+<p>The interpretation module simply maps the syntactic network into a semantic network by analyzing the arguments of each relation. It is formed by rules of the type:
+</p>
+<pre>/[ACDIJNPV][ACS]/(%x;%y,tim):=tim(%x;%y);
+</pre>
+<dl><dd>if there is any syntactic relation (AA,AC,AS,CA,CC,CS,...) between two nodes %x and %y, and %y has the feature "tim", then rewrites this (syntactic) relation as a semantic relation of the type "tim" between these two nodes.</dd></dl>
+<p><br style="clear: both" />
+</p>
+<div class="mw-heading mw-heading3"><h3 id="Post-processing">Post-processing</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Default_grammar&amp;veaction=edit&amp;section=8" title="Edit section: Post-processing" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Default_grammar&amp;action=edit&amp;section=8" title="Edit section&#39;s source code: Post-processing">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>The post-processing module simply adjusts the resulting graph to the UNL standards, in order to eliminate contradictions and redundancies. For instance, the rule
+</p>
+<pre>(@pl,{@multal|@paucal|@all|@both}):=(-@pl); eliminates the redundancy of @pl
+</pre>
+<p>is used to eliminate the redundancy of @pl and @multal. As @multal conveys already the idea of plural, @multal.@pl is redundant and should be fixed.
+</p>
+<div class="mw-heading mw-heading2"><h2 id="UNL&gt;NL_Default_Grammar_(NLization)"><span id="UNL.3ENL_Default_Grammar_.28NLization.29"></span>UNL&gt;NL Default Grammar (NLization)</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Default_grammar&amp;veaction=edit&amp;section=9" title="Edit section: UNL&gt;NL Default Grammar (NLization)" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Default_grammar&amp;action=edit&amp;section=9" title="Edit section&#39;s source code: UNL&gt;NL Default Grammar (NLization)">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>The NL&gt;UNL Default Grammar is divided into 6 sections
+</p>
+<ol><li>Pre-processing (prepares the input for the processing)</li>
+<li>Arborization (converts the syntactic network into a syntactic tree)</li>
+<li>Transformation (converts the deep syntactic structure into the surface syntactic structure)</li>
+<li>Linearization (converts the syntactic structure into a list structure)</li>
+<li>Morphological generation (inflects the words that need to be inflected)</li>
+<li>Post-processing (adjusts the final output)</li></ol>
+<div class="mw-heading mw-heading3"><h3 id="Pre-processing_2">Pre-processing</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Default_grammar&amp;veaction=edit&amp;section=10" title="Edit section: Pre-processing" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Default_grammar&amp;action=edit&amp;section=10" title="Edit section&#39;s source code: Pre-processing">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<div class="mw-heading mw-heading3"><h3 id="Arborization">Arborization</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Default_grammar&amp;veaction=edit&amp;section=11" title="Edit section: Arborization" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Default_grammar&amp;action=edit&amp;section=11" title="Edit section&#39;s source code: Arborization">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<figure class="mw-halign-left" typeof="mw:File/Thumb"><a href="/wiki/File:Arborization.png" class="mw-file-description"><img src="/wiki/images/thumb/5/57/Arborization.png/200px-Arborization.png" decoding="async" width="200" height="150" class="mw-file-element" srcset="/wiki/images/thumb/5/57/Arborization.png/300px-Arborization.png 1.5x, /wiki/images/thumb/5/57/Arborization.png/400px-Arborization.png 2x" /></a><figcaption></figcaption></figure>
+<p>The arborization module converts a syntactic network into a syntactic tree. It is the same as the dearborization module, but in the opposite direction. It converts the network into a tree because trees are much more suitable to linearization than networks. Arborization rules are of the following type:
+</p>
+<pre>VB(%x;%y)VS(%x;%z):=VP(VB(%x;%y);%z);
+VB(%x;%y)VA(%x;%z):=VB(VB(%x;%y);%z);
+VB(%x;%y)VC(%x;%z):=VB(VB(%x;%y);%z);
+VC(%x;%y):=VB(%x;%y);
+VA(%x;%y):=VB(%x;%y);
+VS(%x;%y):=VP(%x;%y); 
+</pre>
+<dl><dd>if there is a VB and a VS sharing the same head, create a VP between the VB and the second argument of VS.</dd></dl>
+<p><br style="clear: both" />
+</p>
+<div class="mw-heading mw-heading3"><h3 id="Transformation_2">Transformation</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Default_grammar&amp;veaction=edit&amp;section=12" title="Edit section: Transformation" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Default_grammar&amp;action=edit&amp;section=12" title="Edit section&#39;s source code: Transformation">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<figure class="mw-halign-left" typeof="mw:File/Thumb"><a href="/wiki/File:Transformation2.png" class="mw-file-description"><img src="/wiki/images/thumb/6/61/Transformation2.png/200px-Transformation2.png" decoding="async" width="200" height="149" class="mw-file-element" srcset="/wiki/images/thumb/6/61/Transformation2.png/300px-Transformation2.png 1.5x, /wiki/images/thumb/6/61/Transformation2.png/400px-Transformation2.png 2x" /></a><figcaption></figcaption></figure>
+<p>In the UNL&gt;NL Default Grammar, the transformation module transforms the deep syntactic structure derived from the arborization into a surface structure. If in the UNLization process, the specifier of IP was moved to the position of specifier of VP, now it goes back to its original position, in order to be generated in the right position (if not, the verb would be generated after the auxiliary, in case of English, for instance).
+<br style="clear: both" />
+</p>
+<div class="mw-heading mw-heading3"><h3 id="Linearization">Linearization</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Default_grammar&amp;veaction=edit&amp;section=13" title="Edit section: Linearization" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Default_grammar&amp;action=edit&amp;section=13" title="Edit section&#39;s source code: Linearization">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<figure class="mw-halign-left" typeof="mw:File/Thumb"><a href="/wiki/File:Linearization.png" class="mw-file-description"><img src="/wiki/images/thumb/3/30/Linearization.png/200px-Linearization.png" decoding="async" width="200" height="149" class="mw-file-element" srcset="/wiki/images/thumb/3/30/Linearization.png/300px-Linearization.png 1.5x, /wiki/images/thumb/3/30/Linearization.png/400px-Linearization.png 2x" /></a><figcaption></figcaption></figure>
+<p>The linearization module converts a tree structure into a list structure. It is formed by rules of the following type:
+</p>
+<pre>VP(%x;%y):=(%y,+&gt;BLK)(%x);
+</pre>
+<dl><dd>if the there is a VP between %x and %y, remove this relation and writes %y in front of %x.</dd></dl>
+<p><br style="clear: both" />
+</p>
+<div class="mw-heading mw-heading3"><h3 id="Morphological_generation">Morphological generation</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Default_grammar&amp;veaction=edit&amp;section=14" title="Edit section: Morphological generation" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Default_grammar&amp;action=edit&amp;section=14" title="Edit section&#39;s source code: Morphological generation">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>The morphological generation module comprises one single rule:
+</p>
+<pre>(%x,^inflected,FLX):=(%x,!FLX,+inflected);
+</pre>
+<p>This rule triggers the rules extracted from the inflectional paradigms (grammar) or from the [[Dictionary_Specs#Inflection_rules_inside_dictionary_entries.2A|inflectional rules (dictionary)]. This is done through the operand "!" which, in this case, applies all the rules comprised inside the field FLX. For instance, the English grammar brings the following rule, which is copied to the entry during the NLization process:
+</p>
+<pre>(%x,M2):=(%x,-M2,+FLX(SNG:=0&gt;""; PLR:=0&gt;"s";));  
+</pre>
+<dl><dd>if the word belongs to the paradigm M2, then copy to this word the rule FLX(SNG:=0&gt;""; PLR:=0&gt;"s";), i.e., in order to make the singular, add nothing, and in order to make the plural, add "s" to the end of the word.</dd></dl>
+<div class="mw-heading mw-heading3"><h3 id="Post-processing_2">Post-processing</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Default_grammar&amp;veaction=edit&amp;section=15" title="Edit section: Post-processing" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Default_grammar&amp;action=edit&amp;section=15" title="Edit section&#39;s source code: Post-processing">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>The post-processing module is used to adjust the list to the standards of natural language output. It contains rules to eliminate remaining scopes, to add blank spaces, to capitalize the first word in a sentence, etc. 
+</p>
+<pre>((%x)(%y)(%z)):=(%x)(%y)(%z);
+((%x)(%y)):=(%x)(%y);
+</pre>
+<dl><dd>removes remaining scopes</dd></dl>
+<pre>(%x,&gt;BLK)(%y,^BLK,^STAIL):=(%x,-&gt;BLK)(" ",+BLK)(%y);
+</pre>
+<dl><dd>inserts blank spaces after the words requiring a blank space (the feature &gt;BLK was inserted during the linearization step)</dd></dl>
+<pre>(%x,&gt;COMMA):=(%x,-&gt;COMMA)(",",PUT=COMMA);
+</pre>
+<dl><dd>inserts comma after the words requiring comma (the feature &gt;COMMA was inserted in previous steps)</dd></dl>
+<!-- 
+NewPP limit report
+Cached time: 20260909203307
+Cache expiry: 86400
+Reduced expiry: false
+Complications: [show‐toc]
+CPU time usage: 0.020 seconds
+Real time usage: 0.022 seconds
+Preprocessor visited node count: 66/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/100
+Expensive parser function count: 0/100
+Unstrip recursion depth: 0/20
+Unstrip post‐expand size: 0/5000000 bytes
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    0.000      1 -total
+-->
+
+<!-- Saved in parser cache with key u965818192_SLvgQ-l8z2_:pcache:688:|#|:idhash:canonical and timestamp 20260909203307 and revision id 15213. Rendering was triggered because: diff-page
+ -->
+</div>

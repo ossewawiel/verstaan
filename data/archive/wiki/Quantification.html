@@ -1,0 +1,84 @@
+<div class="mw-content-ltr mw-parser-output" lang="en" dir="ltr"><p><b>Quantifiers</b> are expressed in UNL by quantifying attributes or through the relation "qua", depending on the type of quantification.
+</p>
+<div class="mw-heading mw-heading2"><h2 id="Attributes">Attributes</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Quantification&amp;veaction=edit&amp;section=1" title="Edit section: Attributes" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Quantification&amp;action=edit&amp;section=1" title="Edit section&#39;s source code: Attributes">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>Generic quantity values are expressed, in UNL, by the following attributes:
+{{#tree:id=number|openlevels=0|root=Quantity|
+</p>
+<ul><li>@any (any) (existential quantifier)</li>
+<li>@all (all) (universal quantifier)</li>
+<li>@entire (entire)</li>
+<li>@generic (no quantification)</li>
+<li>@half (half)</li>
+<li>@majority (a major part)</li>
+<li>@minority (a minor part)</li>
+<li>@no (none)</li>
+<li>@part (part)</li>
+<li>@pl (plural)
+<ul><li>@dual</li>
+<li>@trial</li>
+<li>@quadrual</li>
+<li>@paucal</li>
+<li>@multal</li></ul></li>
+<li>@singular (default)</li>
+<li>@times (multiplicative)</li>
+<li>@tuple (collective)</li>
+<li>@unit (unit)</li></ul>
+<p>}}
+</p><p><br />
+</p>
+<dl><dt>@singular is the default number value and may be omitted</dt>
+<dd></dd>
+<dd>book = book (or book.@singular)</dd>
+<dt>number, when lexicalized, should be omitted as well</dt>
+<dd></dd>
+<dd>two glasses (=drinking vessel) = glasses.@pl</dd>
+<dd>a pair of glasses (=spectacles) = glasses (and not glasses.@pl)</dd></dl>
+<div class="mw-heading mw-heading3"><h3 id="Examples">Examples</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Quantification&amp;veaction=edit&amp;section=2" title="Edit section: Examples" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Quantification&amp;action=edit&amp;section=2" title="Edit section&#39;s source code: Examples">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<ul><li>@singular
+<ul><li>book = book or book.@singular</li></ul></li>
+<li>@pl
+<ul><li>books = book.@pl</li>
+<li>children = child.@pl</li>
+<li>livres = livre.@pl</li></ul></li>
+<li>@paucal
+<ul><li>a few books = book.@paucal</li>
+<li>some books = book.@paucal</li></ul></li>
+<li>@multal
+<ul><li>many books = book.@multal</li>
+<li>several books = book.@multal</li></ul></li></ul>
+<div class="mw-heading mw-heading2"><h2 id="Relation">Relation</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Quantification&amp;veaction=edit&amp;section=3" title="Edit section: Relation" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Quantification&amp;action=edit&amp;section=3" title="Edit section&#39;s source code: Relation">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>Specific quantities must be expressed by the relation "qua":
+</p>
+<pre>qua(quantified, quantifier)
+</pre>
+<dl><dt>Quantifiers are expressed by Arabic numerals, if numeric, or by UWs, otherwise</dt>
+<dd></dd>
+<dd>two books = qua(book, 2)</dd>
+<dd>a set of books = qua(book, set)</dd>
+<dt>The attribute @pl may be omitted in case of specific quantities</dt>
+<dd></dd>
+<dd>two books = qua(book.@pl, 2) = qua(book, 2)</dd></dl>
+<!-- 
+NewPP limit report
+Cached time: 20260910164519
+Cache expiry: 86400
+Reduced expiry: false
+Complications: []
+CPU time usage: 0.006 seconds
+Real time usage: 0.006 seconds
+Preprocessor visited node count: 12/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/100
+Expensive parser function count: 0/100
+Unstrip recursion depth: 0/20
+Unstrip post‐expand size: 0/5000000 bytes
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    0.000      1 -total
+-->
+
+<!-- Saved in parser cache with key u965818192_SLvgQ-l8z2_:pcache:535:|#|:idhash:canonical and timestamp 20260910164519 and revision id 13580. Rendering was triggered because: api-parse
+ -->
+</div>

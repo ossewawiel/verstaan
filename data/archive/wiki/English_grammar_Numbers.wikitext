@@ -1,0 +1,111 @@
+Numbers are always expressed, in UNL, as digits. The UNLization process is then the process of transforming numerals ("one", "twenty-one", "first", "two thirds") into the corresponding digits ("1", "21", "1.@ordinal", "2/3"). The NLization process, on the other hand, may keep the digits as they are, i.e., there is nothing to be done concerning the NLization of numerals (the UNL "2" may be generated, in English, as "2", instead of "two").
+
+== UNLization ==
+In order to UNLize numerals, you have to consider the following:
+*Cardinals, decimals, fractions and isolated digits are always represented as digits, without any thousand separator, and with the period as the decimal separator:
+*:seventeen = 17
+*:seventy-six = 76
+*:one thousand one hundred forty-four = 1144
+*:two million three hundred forty-four thousand five hundred fifty-five = 2344555
+*:one point two three = 1.23
+*:one half = 1/2
+*:six sevenths = 6/7
+*:two two two = 222
+*Ordinals must be represented in UNL as digits, without any thousand separator, followed by the attribute @ordinal:
+*:1st = 1.@ordinal
+*:first = 1.@ordinal
+*:thirty-second = 32.@ordinal
+
+=== UNLization steps ===
+==== Normalization ====
+The first issue in numbers is to prepare the input for transformation. In English, this is done by replacing the word "a" by the digit "1" ("a thousand" > "1 thousand"); by eliminating number separators ("twenty-one" > "twenty one"); and so on, as illustrated by the rules below:
+;<nowiki>({SHEAD|CHEAD|^BLK,^DIGIT},%x)([a],%z)({"hundred"|"thousand"|"million"|"billion"|"trillion"},%y):=(%x)("1",[1],[[1]],LEX=U,POS=CDN,DIGIT,%w)(%y);</nowiki>
+:Replaces the word "a" by the digit "1" ("a thousand" > "1 thousand")
+;<nowiki>(DIGIT,%x)([point],%y)(DIGIT,%z):=(DIGIT,%x)(".",[[.]],PERIOD,%w)(DIGIT,%z);</nowiki> ("one point five" > "one . five")
+:Replaces words for symbols by their corresponding symbols
+
+==== Transformation ====
+After the normalization, the input is processed in order to convert natural language entries into digits. We have to consider the following cases:
+;Simple cardinals ("zero", "eleven")
+:They will be automatically converted into digits, because their corresponding entries are in the dictionary.
+;Round cardinals ("twenty", "one thousand", "one million", "one trillion", etc)
+:We have to add the missing zeros. The word [twenty], for instance, is linked to the UW "2"; the words [hundred], [thousand], [million], [billion] and [trillion] have been linked to the UW "". For instance: the input "one million" requires 6 zeros after the "1".
+;Non-round cardinals ("twenty-three", "two hundred fifty-five")
+:We have to represent the correspnding digits and fill in the missing slots. For instance: the input "one hundred and one" requires us to add a zero between two "1".
+;Simple cardinals ("first", "second")
+:They will be automatically converted into digits + @ordinal, because their corresponding entries are in the dictionary.
+;Compound and complex ordinals
+:The will be processed by rules taking the ordinal suffixes ("st","nd","rd" and "th") into account:
+:*<nowiki>({DIGIT|CDN},%x)([th]):=(%x,ORD,att=@ordinal);</nowiki> ("11th" > 11.@ordinal, "eleventh" > 11.@ordinal)
+:*<nowiki>(ORD,%x)([s]):=(%x);</nowiki>
+;Fixed fractions ("one half", "one quarter")
+:Since they are very specific, we have special rules for them in the grammar:
+:*<nowiki>(DIGIT,CDN,%x)({[half]|[halves]},%y):=(%x)("2",[2],[[2]],U,DIGIT,ORD,%z);</nowiki>
+:*<nowiki>(DIGIT,CDN,%x)({[quarter]|[quarters]},%y):=(%x)("4",[4],[[4]],U,DIGIT,ORD,%z);</nowiki>
+;Other fractions
+:They will be handled by rules such as:
+:*<nowiki>(DIGIT,CDN,%x)("/",%z)(DIGIT,ORD,%y):=(%x&%z&%y,-CDN,-ORD,+PTN);</nowiki> one fifth > 1/5
+
+==== Examples ====
+===== twenty =====
+INPUT (ENG): twenty
+OUTPUT (UNL): 20
+Dictionary:
+*[twenty]{}"2" (LEX=U,POS=CDN,DIGIT,DOZEN)<eng,255,0>;
+T-grammar:
+#1<nowiki>({SHEAD|CHEAD|^BLK},%z)(DIGIT,DOZEN,%x)({^DIGIT,^BLK,^PUT,^[and]|"thousand"|"million"|"billion"|"trillion"|STAIL|CTAIL},%y):=(%z)(%x)([[0]],[0],"0",DIGIT)(%y);</nowiki>
+#2<nowiki>({SHEAD|CHEAD|^BLK},%z)(DIGIT,DOZEN,%x)(DIGIT,%y):=(%z)(%x&%y,-DOZEN,+00);</nowiki>
+Trace:
+*INPUT: "twenty"
+*STATE 0: <nowiki>("twenty",[twenty],[[2]],LEX=U,POS=CDN,DIGIT,DOZEN)</nowiki> (after tokenization)
+*STATE 1: <nowiki>("twenty",[twenty],[[2]],LEX=U,POS=CDN,DIGIT,DOZEN)("0",[0],[[0]],DIGIT)</nowiki> (after rule #1)
+*STATE 2: <nowiki>("twenty0",[twenty0],[[20]][,LEX=U,POS=CDN,DIGIT,00])</nowiki> (after rule #2)
+*OUTPUT: "20"
+The first rule transforms [twenty] into [twenty][0] if [twenty] is not followed by any digit. The second rule merges the dozen with the unit. Note that the merge (&) rules merges everything: strings ("twenty0"), natural language words ([twenty0]), UWs ([[20]]) and features. The output of IAN is always the UW.
+===== twenty-one =====
+INPUT (ENG): twenty-one
+OUTPUT (UNL): 21
+Dictionary:
+*[twenty]{}"2" (LEX=U,POS=CDN,DIGIT,DOZEN)<eng,255,0>;
+*[one]{}"1" (LEX=U,POS=CDN,DIGIT)<eng,255,0>;
+*[-]{}""(PUT,HYPHEN)<eng,0,0>;
+T-grammar:
+#<nowiki>(DIGIT,%x)(HYPHEN)(DIGIT,%y):=(%x)(%y);</nowiki>
+#<nowiki>({SHEAD|CHEAD|^BLK},%z)(DIGIT,DOZEN,%x)(DIGIT,%y):=(%z)(%x&%y,-DOZEN,+00);</nowiki>
+Trace:
+*INPUT: "twenty-one"
+*STATE 0: <nowiki>("twenty",[twenty],[[2]],LEX=U,POS=CDN,DIGIT,DOZEN)("-",[-],[[]],PUT,HYPHEN)("one",[one],[[1]],LEX=U,POS=CDN,DIGIT)</nowiki> (after *tokenization)
+*STATE 1: <nowiki>("twenty",[twenty],[[2]],LEX=U,POS=CDN,DIGIT,DOZEN)("one",[one],[[1]],LEX=U,POS=CDN,DIGIT)</nowiki>  (after rule #1, which deleted the hyphen)
+*STATE 2: <nowiki>("twentyone",[twentyone],[[21]],LEX=U,POS=CDN,DIGIT,00])</nowiki> (after rule #2)
+*OUTPUT: "21"
+===== one hundred =====
+INPUT (ENG): two hundred
+OUTPUT (UNL): 100
+Dictionary:
+*[hundred]{}"" (LEX=U,POS=CDN)<eng,255,0>;
+*[two]{}"2" (LEX=U,POS=CDN,DIGIT)<eng,255,0>;
+*[ ]{}""(BLK)<eng,0,0>;
+T-grammar:
+#<nowiki>(BLK):=;</nowiki>
+#<nowiki>({SHEAD|CHEAD|^BLK},%z)(DIGIT,HUNDRED,%x)({^DIGIT,^BLK,^PUT,^[and]|DIGIT,^DOZEN,^00|STAIL|CTAIL},%y):=(%z)(%x)([[0]],[0],"0",DOZEN,DIGIT)(%y);</nowiki>
+#<nowiki>({SHEAD|CHEAD|^BLK},%z)(DIGIT,HUNDRED,%x)(DIGIT,00,%y):=(%z)(%x&%y,-HUNDRED,-00,+000);</nowiki>
+#<nowiki>(DIGIT,%x)("hundred"):=(%x,+HUNDRED);</nowiki>
+#<nowiki>({SHEAD|CHEAD|^BLK},%z)(DIGIT,DOZEN,%x)({^DIGIT,^BLK,^PUT,^[and]|"thousand"|"million"|"billion"|"trillion"|STAIL|CTAIL},%y):=(%z)(%x)([[0]],[0],"0",DIGIT)(%y);</nowiki>
+#<nowiki>({SHEAD|CHEAD|^BLK},%z)(DIGIT,DOZEN,%x)(DIGIT,%y):=(%z)(%x&%y,-DOZEN,+00);</nowiki>
+*INPUT: "two hundred"
+*STATE 0: <nowiki>("two",[two],[[2]],LEX=U,POS=CDN,DIGIT)(" ",[ ],[[]],BLK)("hundred",[hundred],[[]],LEX=U,POS=CDN)</nowiki> (after tokenization)
+*STATE 1: <nowiki>("two",[two],[[2]],LEX=U,POS=CDN,DIGIT)("hundred",[hundred],[[]],LEX=U,POS=CDN)</nowiki> (after rule #1, which deletes the blank space)
+*STATE 2: <nowiki>("two",[two],[[2]],LEX=U,POS=CDN,DIGIT,HUNDRED)</nowiki>(after rule #4, which copied the feature HUNDRED to the first digit and deleted the node "HUNDRED")
+*STATE 3: <nowiki>("two",[two],[[2]],LEX=U,POS=CDN,DIGIT,HUNDRED)([[0]],[0],"0",DOZEN,DIGIT)</nowiki> (after rule #2, which added a 0 after one hundred)
+*STATE 4: <nowiki>("two",[two],[[2]],LEX=U,POS=CDN,DIGIT)([[0]],[0],"0",DOZEN,DIGIT)([[0]],[0],"0",DIGIT)</nowiki> (after rule #5, which added a 0 after the DOZEN)
+*STATE 5: <nowiki>("two",[two],[[2]],LEX=U,POS=CDN,DIGIT)([[00]],[00],DIGIT,00)</nowiki> (after rule #6, which merged the dozen and the digit)
+*STATE 6: <nowiki>("two00",[two00],[[200]],LEX=U,POS=CDN,DIGIT,000)</nowiki>(after rule #7, which merged the hundreds and the dozen)
+*OUTPUT: "200"
+
+== NLization ==
+As digit UWs can be generated as digits in natural language, the NLization of numbers does not require any action for cardinals, fractions and decimals. In case of ordinals, it's important to replace @ordinal by the corresponding abbreviation. In English:
+
+*("/\d*1/",@ordinal,%x):=(%x,-@ordinal)("st",[st],[[]]); add "st" to the ordinals ending in 1
+*("/\d*2/",@ordinal,%x):=(%x,-@ordinal)("nd",[nd],[[]]); add "nd" to the ordinals ending in 2
+*("/\d*3/",@ordinal,%x):=(%x,-@ordinal)("rd",[rd],[[]]); add "rd" to the ordinals ending in 3
+*("/\d*[4567890]/",@ordinal,%x):=(%x,-@ordinal)("th",[th],[[]]); add "th" to the ordinals ending in 4,5,6,7,8,9 or 0

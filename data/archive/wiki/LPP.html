@@ -1,0 +1,106 @@
+<div class="mw-content-ltr mw-parser-output" lang="en" dir="ltr"><p>The Projet Le Petit Prince (LPP)  aims at translating, to the Universal Networking Language (UNL), the integral text of Le Petit Prince, a French novel published by Antoine de Saint-Exupéry in 1943. Our main goal is 1) to set standards and guidelines for human UNLization; and 2) to test several tools that have been developed at the UNDL Foundation. The resulting UNL document is also planned to be used in the evaluation of UNL-based translations, and as a training material for VALERIE, the Virtual Learning Environment for UNL. 
+</p>
+<div id="toc" class="toc" role="navigation" aria-labelledby="mw-toc-heading"><input type="checkbox" role="button" id="toctogglecheckbox" class="toctogglecheckbox" style="display:none" /><div class="toctitle" lang="en" dir="ltr"><h2 id="mw-toc-heading">Contents</h2><span class="toctogglespan"><label class="toctogglelabel" for="toctogglecheckbox"></label></span></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Motivation"><span class="tocnumber">1</span> <span class="toctext">Motivation</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#Corpus"><span class="tocnumber">2</span> <span class="toctext">Corpus</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="#Methodology"><span class="tocnumber">3</span> <span class="toctext">Methodology</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="#UNLization_Guidelines"><span class="tocnumber">4</span> <span class="toctext">UNLization Guidelines</span></a></li>
+<li class="toclevel-1 tocsection-5"><a href="#Participants"><span class="tocnumber">5</span> <span class="toctext">Participants</span></a></li>
+<li class="toclevel-1 tocsection-6"><a href="#Results"><span class="tocnumber">6</span> <span class="toctext">Results</span></a></li>
+</ul>
+</div>
+
+<div class="mw-heading mw-heading2"><h2 id="Motivation">Motivation</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=LPP&amp;veaction=edit&amp;section=1" title="Edit section: Motivation" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=LPP&amp;action=edit&amp;section=1" title="Edit section&#39;s source code: Motivation">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>Le Petit Prince is one of the best selling books ever (more than 80 million copies), and has been translated to more than 180 languages, providing thus the possibility of contrasting and evaluating a wide range of UNL-based translations. The book can be said to be short enough to allow for a fully-manual UNLization and long enough to afford the possibility of generalizing the UNLization strategies to other similar texts. Additionally, the book offers the chance of experimenting UNL in three up-to-now unexplored situations: literature, narrative and French original.
+</p>
+<div class="mw-heading mw-heading2"><h2 id="Corpus">Corpus</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=LPP&amp;veaction=edit&amp;section=2" title="Edit section: Corpus" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=LPP&amp;action=edit&amp;section=2" title="Edit section&#39;s source code: Corpus">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>The integral version of Le Petit Prince, which has been released under public domain in Canada, was obtained from <a rel="nofollow" class="external autonumber" href="http://wikilivres.ca/wiki/Le_Petit_Prince">[1]</a>. The text was automatically segmented in five punctuation marks (".", ":", "?", "!" and "...") and in the control character for end of line. This  segmentation strategy led to several problems, including:
+</p>
+<ul><li>Isolation of subordinate clauses separated from the main one by ":" or "?"
+<dl><dd>Mais toujours elle me répondait&#160;:  «&#160;C’est un chapeau.&#160;»</dd>
+<dd>Sur tout ça&#160;? dit le petit prince.</dd></dl></li>
+<li>Isolation of interjections followed by "!"
+<dl><dd>— Ah&#160;! ça c’est drôle…&#160;»</dd></dl></li>
+<li>Isolation of vocatives and hesitations followed by "...":
+<dl><dd>— Sire… sur quoi régnez-vous&#160;?</dd>
+<dd>— De… de la Justice&#160;!</dd></dl></li>
+<li>Unbalanced quotation marks:
+<dl><dd>«&#160;Non&#160;! Celui-là est déjà très malade. Fais-en un autre.&#160;»</dd></dl></li></ul>
+<p>As we would not be able to replicate a human revision for other texts, we have decided to keep all these artificial sentence boundaries, and to address the problem of text segmentation in a second phase of the project.
+</p><p>The result of the segmentation is a corpus with the following characteristics, where "tokens" stand for the general frequency of occurrence, and "types" for frequency of occurrence of distinct units (i.e., without repetition):
+</p>
+<table border="1" align="center">
+<tbody><tr>
+<th>Unit
+</th>
+<th>Tokens
+</th>
+<th>Types
+</th></tr>
+<tr>
+<th>words
+</th>
+<td align="center">15,513
+</td>
+<td align="center">2,378
+</td></tr>
+<tr>
+<th>sentences
+</th>
+<td align="center">1,684
+</td>
+<td align="center">1,603
+</td></tr></tbody></table>
+<div class="mw-heading mw-heading2"><h2 id="Methodology">Methodology</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=LPP&amp;veaction=edit&amp;section=3" title="Edit section: Methodology" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=LPP&amp;action=edit&amp;section=3" title="Edit section&#39;s source code: Methodology">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>The UNLization process was carried out in a fully-manual way through the UNL Editor, a graph-based NL-to-UNL analysis system that has been developed by the UNDL Foundation and which is available at <a rel="nofollow" class="external autonumber" href="http://dev.undlfoundation.org">[2]</a>. The sentences have been divided into two main different groups:
+</p>
+<ul><li>the training corpus, which comprises the first 53 sentences of the book (dedication and first chapter) including the title; and</li>
+<li>the application corpus, which comprises the remaining 1,550 sentences.</li></ul>
+<p>The training corpus wase addressed collectively by the group of human UNLizers in order to synchronize UNLization strategies and to set the guidelines for the application corpus.<br />
+The application corpus was divided into three different groups: ECA, LGA and PTK, according to the similarity of sentences (and not to the order of appearance). Each group was assigned to a different participant in this project. Sentences were further divided according to the delivery schedule, at the rate of 90 sentences per week per participant (210 sentences per week in total, if we consider that one participant had a part-time contract).<br />
+Except for the training corpus, the sentences have been distributed according to the similarity (and not according to the order in the corpus). This was intended to speed up the process and to guarantee some standardization. Repeated sentences were suppressed, and similar sentences (as the ones below) were grouped, in order to be handled in the same way. 
+</p>
+<ul><li>Adieu , dit la fleur.</li>
+<li>Adieu , dit-il à la fleur.</li>
+<li>Adieu , répéta-t-il.</li>
+<li>Adieu, dit le renard.</li>
+<li>Adieu, dit-il (pds) .</li>
+<li>Adieu, fit le petit prince.</li></ul>
+<p>The text was automatically segmented in end-of-line, “.”, “?”, “!”, “:” and “…”. However, the UNL Editor did not recognize end-of-line as a delimiter, and required “.” after titles. That’s why “Le Petit Prince” appears as “Le Petit Prince.” (with a dot). Additionally, the UNL Editor had problems with “…”, which is split into three different sentences, generating sentences made of an isolated “.”. In order to avoid that, all “…” were replaced by “(pds)” (= points-de-suspension).
+</p>
+<div class="mw-heading mw-heading2"><h2 id="UNLization_Guidelines">UNLization Guidelines</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=LPP&amp;veaction=edit&amp;section=4" title="Edit section: UNLization Guidelines" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=LPP&amp;action=edit&amp;section=4" title="Edit section&#39;s source code: UNLization Guidelines">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>In order to normalize the UNLization process, we have set some Instructions and proposed a set of <a href="/wiki/UNLization_Guidelines" class="mw-redirect" title="UNLization Guidelines">UNLization Guidelines</a> to be used with French originals.
+</p>
+<div class="mw-heading mw-heading2"><h2 id="Participants">Participants</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=LPP&amp;veaction=edit&amp;section=5" title="Edit section: Participants" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=LPP&amp;action=edit&amp;section=5" title="Edit section&#39;s source code: Participants">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<ul><li>CZAJKOWSKA, Ewa (ECA)</li>
+<li>GOUVEIA, Luisa (LGA)</li>
+<li>MARTINS, Ronaldo (RMA) (coord).</li>
+<li>TOKAREV, Pavel (PTV)</li></ul>
+<div class="mw-heading mw-heading2"><h2 id="Results">Results</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=LPP&amp;veaction=edit&amp;section=6" title="Edit section: Results" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=LPP&amp;action=edit&amp;section=6" title="Edit section&#39;s source code: Results">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>The results of the project are available at the <a href="/wiki/UNLarium" title="UNLarium">UNLarium</a>: ULNWEB&gt;UNLARIUM&gt;CORPUS&gt;LPP.
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20260909225740
+Cache expiry: 86400
+Reduced expiry: false
+Complications: [show‐toc]
+CPU time usage: 0.006 seconds
+Real time usage: 0.006 seconds
+Preprocessor visited node count: 21/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/100
+Expensive parser function count: 0/100
+Unstrip recursion depth: 0/20
+Unstrip post‐expand size: 0/5000000 bytes
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    0.000      1 -total
+-->
+
+<!-- Saved in parser cache with key u965818192_SLvgQ-l8z2_:pcache:699:|#|:idhash:canonical and timestamp 20260909225740 and revision id 15279. Rendering was triggered because: diff-page
+ -->
+</div>

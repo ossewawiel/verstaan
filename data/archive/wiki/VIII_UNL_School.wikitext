@@ -1,0 +1,100 @@
+The VIII UNL School, formerly UNL Grammar Workshop, was held in Geneva, Switzerland, from Feb 6-10, 2012.
+== Languages ==
+*Armenian
+*Bulgarian
+*Estonian
+*German
+*Greek
+*Polish
+*Portuguese
+*Romanian
+*Russian
+*Swedish
+
+== Goals ==
+*To build the basic modules of a NL-UNL (analysis) grammar
+*To build the basic modules of a UNL-UNL (generation) grammar
+
+== Corpus ==
+*[[Corpus500]]
+
+== Deliverables ==
+;DEADLINE: 01 SEP 2012
+;ANALYSIS (IAN)
+*The manual translated version of the 500 sentences of the reference corpus (corpus_LID.txt)
+*The analysis dictionary used to analyze those 500 sentences (ana_dic_LID.txt)
+*The analysis grammar used to analyze those 500 sentences (ana_gra_LID.txt)
+*The analysis disambiguation grammar, if any, used to analyze those 500 sentences (ana_dis_LID.txt)
+*The UNL output for those 500 sentences generated from the dictionary and grammars above (ana_out_LID.txt)
+;GENERATION (EUGENE)
+*The generation dictionary used to generate the reference corpus onto natural language (gen_dic_LID.txt)
+*The generation grammar, including inflectional paradigms, used to generate the reference corpus onto natural language (gen_gra_LID.txt)
+*The generation disambiguation grammar, if any, used to generate the reference corpus onto natural language (gen_dis_LID.txt)
+*The natural language output generated from the dictionary and grammars above (gen_out_LID.txt)
+:'''LID''' is to be replaced by the ISO639-2 two-character code of the language (en = English, el = Greek, etc.). Accordingly, the Greek corpus is to be provided as corpus_el.txt; the Greek analysis dictionary, as ana_dic_el.txt; and so on. All the files must be shared with "martins" in EUGENE and IAN.
+
+== Presentations ==
+{| border="1" cellpadding="2" align=center
+!Title
+!pdf
+|-
+|Corpus
+|[http://www.unlweb.net.br/resources/geneva2012/Corpus.pdf pdf]
+|-
+|NL-UNL Dictionary
+|[http://www.unlweb.net.br/resources/geneva2012/Dictionary1.pdf pdf]
+|-
+|UNL-NL Dictionary
+|[http://www.unlweb.net.br/resources/geneva2012/Dictionary2.pdf pdf]
+|-
+|Grammar
+|[http://www.unlweb.net.br/resources/geneva2012/Grammar.pdf pdf]
+|}
+
+== English examples and templates ==
+;ANALYSIS (IAN)
+*Dictionaries
+**[http://www.unlweb.net.br/resources/geneva2012/ana_dic_eng.txt English analysis dictionary (for the reference corpus)]
+**[http://www.unlweb.net.br/resources/geneva2012/ana_dic.txt Default dictionary (punctuation and regular expressions)]
+*Grammars
+**[http://www.unlweb.net.br/resources/geneva2012/ana_gra_eng.pdf English analysis grammar (simplified)]
+**[http://www.unlweb.net.br/resources/geneva2012/ana_gra_eng.txt English analysis grammar (full)]
+**[http://www.unlweb.net.br/resources/geneva2012/ana_gra.txt Default analysis grammar]
+**[http://www.unlweb.net.br/resources/geneva2012/ana_dis_eng.txt English disambiguation grammar]
+;GENERATION (EUGENE)
+*English generation dictionary (to be provided soon)
+*English generation grammar (to be provided soon)
+*English disambiguation grammar (for generation) (to be provided soon)
+
+== Participants ==
+*Carolin ARNOLD (German)
+*Ewa CZAJKOWSKA (Polish)
+*Grega MILHARCIC (Slovenian)
+*Luisa GOUVEIA (Portuguese)
+*Martin LUTS (Estonian)
+*Mihaela ILIOAIA (Romanian)
+*Ofelia HOVHANNISYAN (Armenian)
+*Olga VARTZIOTI (Greek) 
+*Polina LENKOVA (Russian) 
+*Ronaldo MARTINS (UNL)
+*Sameh ALANSARY (Arabic)
+*Sara STYMNE (Swedish)
+*Yordanka STANCHEVA (Bulgarian)
+
+== Program ==
+;Feb 06th, 2012 - Monday
+:09:00-10:00	Introduction
+:10:00-12:00	I – Corpus
+:14:00-17:00	II – UNL-NL dictionary
+;Feb 07th, 2012 - Tuesday	
+:09:00-12:00	III – Morphology (inflectional paradigms)
+:14:00-17:00	IV – NL dictionary
+;Feb 08th, 2012- Wednesday
+:09:00-12:00	V – UNL-NL grammar (I)
+:14:00-17:00	V – UNL-NL grammar (II)
+;Feb 09th, 2012 - Thursday
+:09:00-12:00	VI – NL-UNL grammar (I)
+:14:00-17:00	VI – NL-UNL grammar (II)
+;Feb 10th, 2012 - Friday
+:09:00-12:00	Evaluation
+:14:00-17:00	Discussion

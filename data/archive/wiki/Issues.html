@@ -1,0 +1,137 @@
+<div class="mw-content-ltr mw-parser-output" lang="en" dir="ltr"><p>List of pending features and known bugs.
+</p>
+<div id="toc" class="toc" role="navigation" aria-labelledby="mw-toc-heading"><input type="checkbox" role="button" id="toctogglecheckbox" class="toctogglecheckbox" style="display:none" /><div class="toctitle" lang="en" dir="ltr"><h2 id="mw-toc-heading">Contents</h2><span class="toctogglespan"><label class="toctogglelabel" for="toctogglecheckbox"></label></span></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#IAN_and_EUGENE_(VERSION_1.1)"><span class="tocnumber">1</span> <span class="toctext">IAN and EUGENE (VERSION 1.1)</span></a>
+<ul>
+<li class="toclevel-2 tocsection-2"><a href="#Back-end"><span class="tocnumber">1.1</span> <span class="toctext">Back-end</span></a></li>
+<li class="toclevel-2 tocsection-3"><a href="#Front-end"><span class="tocnumber">1.2</span> <span class="toctext">Front-end</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-4"><a href="#IAN_and_EUGENE_(VERSION_1.2)"><span class="tocnumber">2</span> <span class="toctext">IAN and EUGENE (VERSION 1.2)</span></a></li>
+<li class="toclevel-1 tocsection-5"><a href="#IAN_and_EUGENE_2.0"><span class="tocnumber">3</span> <span class="toctext">IAN and EUGENE 2.0</span></a></li>
+<li class="toclevel-1 tocsection-6"><a href="#LILY_(VERSION_1.1)"><span class="tocnumber">4</span> <span class="toctext">LILY (VERSION 1.1)</span></a></li>
+<li class="toclevel-1 tocsection-7"><a href="#KEYS_(VERSION_1.0)"><span class="tocnumber">5</span> <span class="toctext">KEYS (VERSION 1.0)</span></a></li>
+<li class="toclevel-1 tocsection-8"><a href="#UNL_Tool_Kit_(VERSION_BETA)"><span class="tocnumber">6</span> <span class="toctext">UNL Tool Kit (VERSION BETA)</span></a></li>
+</ul>
+</div>
+
+<div class="mw-heading mw-heading2"><h2 id="IAN_and_EUGENE_(VERSION_1.1)"><span id="IAN_and_EUGENE_.28VERSION_1.1.29"></span>IAN and EUGENE (VERSION 1.1)</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Issues&amp;veaction=edit&amp;section=1" title="Edit section: IAN and EUGENE (VERSION 1.1)" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Issues&amp;action=edit&amp;section=1" title="Edit section&#39;s source code: IAN and EUGENE (VERSION 1.1)">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<div class="mw-heading mw-heading3"><h3 id="Back-end">Back-end</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Issues&amp;veaction=edit&amp;section=2" title="Edit section: Back-end" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Issues&amp;action=edit&amp;section=2" title="Edit section&#39;s source code: Back-end">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p><strike>
+</strike></p><strike><dl><dt>Parsing</dt>
+<dd>Parsing of rules need to be improved. IAN and EUGENE were accepting rules with unbalanced parentheses. There is also a problem of an extra comma in the rules. The sensitivity of syntactic check of the Engines should be higher. Eugene and IAN must be sensitive to the following syntactic error:
+<ul><li>(%a,A,B,C):=((%a,+E); (This rule is being accepted by the system)</li></ul></dd></dl></strike><strike><dl><dt>Encoding</dt>
+<dd>Eugene and IAN should reject wrong UTF-8 encoding. From the perspective of the user, the rule was perfect, and the string was clearly and correctly displayed; but the machine was replacing it by empty.</dd>
+<dt>Consistency of graphs</dt>
+<dd>Rules leading to impossible graphs are working. The example below is generating an impossible graph.</dd>
+<dd>(NB(N,%n;JB(%j;%j2),{and|or},%adjc),%m):= (JB(%j;%j2),rel=%adjc) (NB(N,%n;%j),rel=%m)(NB(N,%n;%j2),rel=%m);</dd>
+<dd>This rule is putting the same node %j in two different positions in the node list. This should not be possible. A node cannot be inside two different nodes in a list structure.<i></i></dd>
+<dt>Preprocessing module</dt>
+<dd>A module for preprocessing is needed in IAN. It will serve for sentence segmentation and morphological preprocessing. Rules of the preprocessing module will be only of the LL type, will only deal with strings and will apply before any dictionary search. They will be used to assign STAIL and SHEAD. Regular expressions should be admitted. The unit of processing will be the paragraph (i.e., any string between \n and \r). Examples of possible rules:
+<ul><li>(" .",%x):=(%x)(+STAIL,%y);</li>
+<li>(".",%x)(/[ABCDEFGHIJKLMNOPQRSTUVWXYZ]/,%y):=(%z,+SHEAD)(%x)(%y);</li>
+<li>("an ",%x)(/[aeiouy]/,%y):=("a ",%x)(%y);</li></ul></dd>
+<dd>Observations:
+<ul><li>+STAIL automatically creates SHEAD (in addition to STAIL itself), and +SHEAD automatically create STAIL.</li>
+<li>The preprocessing module should be provided in a separate tab (S-Rules, for segmentation rules)</li></ul></dd></dl></strike><strike><dl><dt>Mathematical operations (574)</dt>
+<dd>Mathematical operations inside nodes <br />
+<ul><li>(%x):=(%x-1); (i.e., reduce the value of %x in 1)</li>
+<li>(%x):=(%x+1); (i.e., add 1 to %x)</li>
+<li>(%x):=(%x*2); (i.e., multiply %x by 2)</li>
+<li>(%x):=(%x/2); (i.e., divide&#160;% by 2)</li></ul></dd></dl></strike><strike></strike><p><strike></strike>
+</p>
+<dl><dt>Indexation of relations (postponed)</dt>
+<dd>Relations should admit an index, as nodes. This would avoid ambiguity when dealing with relations in different scopes:
+<dl><dd>XB:%a(%x;%y)XB:%b(%x;%z):=XB:%a(XB(%x;%y);%z); the relation XB(%x;%y) will be created as a scope inside %a</dd>
+<dd>XB:%a(%x;%y)XB:%b(%x;%z):=XB:%b(XB(%x;%y);%z); the relation XB(%x;%y) will be created as a scope inside %b</dd></dl></dd>
+<dd>In any case, the indexation should comply with a possible graph structure</dd></dl>
+<p><strike>
+</strike></p><strike><dl><dt>Discontinuous multiword expressions (706)</dt>
+<dd>Headwords, UWs and strings used as values of attributes:</dd></dl></strike><strike><ul><li>(%x,ATTRIBUTE=[%y])(%y):=ACTION; the system checks whether the value of the attribute ATTRIBUTE is the HEADWORD of %y</li>
+<li>(%x,ATTRIBUTE=[[%y]])(%y):=ACTION; the system checks whether the value of the attribute ATTRIBUTE is the UW of %y</li>
+<li>(%x,ATTRIBUTE="%y")(%y):=ACTION; the system checks whether the value of the attribute ATTRIBUTE is the STRING of %y</li>
+<li>CONDITION:=(%x,ATTRIBUTE=[%y])(%y): the system assigns the attribute ATTRIBUTE to %x with the value of the HEADWORD of %y</li>
+<li>CONDITION:=(%x,ATTRIBUTE=[[%y]])(%y): the system assigns the attribute ATTRIBUTE to %x with the value of the UW of %y</li>
+<li>CONDITION:=(%x,ATTRIBUTE="%y")(%y): the system assigns the attribute ATTRIBUTE to %x with the value of the STRING of %y</li></ul></strike><strike><dl><dd>Rules with discontinuous nodes</dd></dl></strike><strike><ul><li>(%x)(ANY SEQUENCE OF NODES, %z)(%y):=(%x)(%y)(%z);</li></ul></strike><strike></strike><p><strike></strike>
+</p>
+<div class="mw-heading mw-heading3"><h3 id="Front-end">Front-end</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Issues&amp;veaction=edit&amp;section=3" title="Edit section: Front-end" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Issues&amp;action=edit&amp;section=3" title="Edit section&#39;s source code: Front-end">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p><strike>
+</strike></p><strike><dl><dt>Drag-and-drop</dt>
+<dd>To include the possibility of using "drag-and-drop" to reorder dictionaries and dictionary entries, and grammars and grammar rules (in addition to the current one);</dd></dl></strike><strike></strike><p><strike></strike>
+</p>
+<dl><dt>Test sets</dt>
+<dd>To improve the test sets. They should show only the differences. And the results should be exportable and importable.</dd>
+<dt>Trace</dt>
+<dd>The trace must be thoroughly revised. The desired structure is presented at <a rel="nofollow" class="external autonumber" href="http://www.unlweb.net.br/forum/viewtopic.php?t=575">[1]</a></dd></dl>
+<p><strike>
+</strike></p><strike><dl><dt>Groups</dt>
+<dd>Groups should be collapsible/expandable, and a single file may participate in several groups (grouping must be done using tags, instead of exclusive categories)</dd></dl></strike><strike></strike><p><strike></strike>
+</p>
+<dl><dt>Shared resources</dt>
+<dd>Shared resources must bring the possibility of being reordered (currently, we cannot reorder them)</dd>
+<dt>NL and UNL documents</dt>
+<dd>Shared NL inputs (currently, it's only possible to send them, but then the changes are not propagated). And they should work as dictionaries and grammars (we should have the option of grouping them and loading more than one at a time)</dd>
+<dt>IAN/EUGENE communication</dt>
+<dd>A given output of IAN could be used as the input for EUGENE and vice-versa - using the loaded resources</dd></dl>
+<p><strike>
+</strike></p><strike><dl><dt>Update</dt>
+<dd>Dictionary and grammar update should replace the current files instead of adding the resources to the end of the existing files</dd>
+<dt>Range</dt>
+<dd>The trace level of the option "range" should be defined by user. It's OK to use NONE as default, but the user could also have more detailed results for more than one sentence.</dd></dl></strike><strike></strike><p><strike></strike>
+</p>
+<div class="mw-heading mw-heading2"><h2 id="IAN_and_EUGENE_(VERSION_1.2)"><span id="IAN_and_EUGENE_.28VERSION_1.2.29"></span>IAN and EUGENE (VERSION 1.2)</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Issues&amp;veaction=edit&amp;section=4" title="Edit section: IAN and EUGENE (VERSION 1.2)" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Issues&amp;action=edit&amp;section=4" title="Edit section&#39;s source code: IAN and EUGENE (VERSION 1.2)">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>1. To include the option UNDO for the deletion of files and entries<br />
+2. Selecting a file should be the same as loading it (changed to: indicating clearly that a file has been loaded)<br />
+3. <strike>The range interval should be also user-defined. For the time being, it's only possible to select the interval from the drop-down list.</strike><br />
+4. Users should have the possibility of uploading more than one file at once in a single .zip file<br />
+5. Users should have the possibility of visualizing the output of IAN as a graph<br />
+6. Backtracking (top-down approach)<br />
+</p>
+<div class="mw-heading mw-heading2"><h2 id="IAN_and_EUGENE_2.0">IAN and EUGENE 2.0</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Issues&amp;veaction=edit&amp;section=5" title="Edit section: IAN and EUGENE 2.0" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Issues&amp;action=edit&amp;section=5" title="Edit section&#39;s source code: IAN and EUGENE 2.0">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>1. SDK<br />
+2. Stand-alone version of IAN and EUGENE<br />
+</p>
+<div class="mw-heading mw-heading2"><h2 id="LILY_(VERSION_1.1)"><span id="LILY_.28VERSION_1.1.29"></span>LILY (VERSION 1.1)</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Issues&amp;veaction=edit&amp;section=6" title="Edit section: LILY (VERSION 1.1)" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Issues&amp;action=edit&amp;section=6" title="Edit section&#39;s source code: LILY (VERSION 1.1)">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>1. Localization of the interface should be done through uploading a localization file (directly by admin).<br />
+2. Include LILY in the UNLdev. The user should have the option of seeing the results of Lily for his/her own data.<br />
+3. Alternative translations. The user should have the option of selecting other possible results according to the grammar.<br />
+4. Mobile (app) version.<br />
+</p>
+<div class="mw-heading mw-heading2"><h2 id="KEYS_(VERSION_1.0)"><span id="KEYS_.28VERSION_1.0.29"></span>KEYS (VERSION 1.0)</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Issues&amp;veaction=edit&amp;section=7" title="Edit section: KEYS (VERSION 1.0)" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Issues&amp;action=edit&amp;section=7" title="Edit section&#39;s source code: KEYS (VERSION 1.0)">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>1. Graphic output (as fancy as possible and with support for touch screen).<br />
+2. Localizable interface.<br />
+3. Another design for the interface (cleaner and simpler).<br />
+3. Mobile (app) version.<br />
+4. Integration with EUGENE.<br />
+</p>
+<div class="mw-heading mw-heading2"><h2 id="UNL_Tool_Kit_(VERSION_BETA)"><span id="UNL_Tool_Kit_.28VERSION_BETA.29"></span>UNL Tool Kit (VERSION BETA)</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Issues&amp;veaction=edit&amp;section=8" title="Edit section: UNL Tool Kit (VERSION BETA)" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Issues&amp;action=edit&amp;section=8" title="Edit section&#39;s source code: UNL Tool Kit (VERSION BETA)">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>1. Corpus processing: given a set of documents, the system should clean it (from html tags, for instance), segment it (according to the a user-defined set of symbols), tokenize it (according to the dictionary), extract the word list (with frequency of occurrence), lemmatize it (according to the dictionary), POS tag it (according to the dictionary) and extract the POS patterns (with the frequency of occurrence). The system should also include search facilities (concordance).<br />
+2. Dictionary builder: given a word list, the system should lemmatize it (according to the dictionary) and POS tag it.<br />
+3. Grammar builder: given a set of POS tagged sentences, the system should build the corresponding trees in order to form a tree-bank (by hand, i.e., through a tree-builder user-friendly interface, or automatically, using a grammar provided according to the Grammar Specs). The tree-bank will be used to induce a grammar (reverse engineering).<br />
+4. Graph builder: given a set of trees, the system should build the corresponding graphs in order to form a graph-bank (by hand, i.e., through a graph-builder user-friendly interface) or automatically (using a grammar provided according to the Grammar Specs). The graph-bank will be used to induce a grammar (reverse engineering).<br />
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20260910113114
+Cache expiry: 86400
+Reduced expiry: false
+Complications: [show‐toc]
+CPU time usage: 0.009 seconds
+Real time usage: 0.009 seconds
+Preprocessor visited node count: 91/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/100
+Expensive parser function count: 0/100
+Unstrip recursion depth: 0/20
+Unstrip post‐expand size: 199/5000000 bytes
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    0.000      1 -total
+-->
+
+<!-- Saved in parser cache with key u965818192_SLvgQ-l8z2_:pcache:599:|#|:idhash:canonical and timestamp 20260910113114 and revision id 14169. Rendering was triggered because: diff-page
+ -->
+</div>

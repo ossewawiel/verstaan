@@ -1,0 +1,45 @@
+'''Subcategorization rules''' are sets of rules used to generate particular syntactic structures out of the [[base form]]. 
+
+== What are subcategorization rules ==
+
+Subcategorization rules are rules for describing the necessary constituents for a form to project its corresponding maximal projection.
+
+== When to use subcategorization rules ==
+
+Subcategorization rules are used in case of '''valent''' words that have an '''irregular syntactic behaviour'''.
+
+== When not to use subcategorization rules ==
+
+Subcategorization rules are not used in case of '''avalent words''' or in case of valent words that have a regular syntactic behaviour (i.e., which may be described by [[subcategorization frames]]).
+
+== Syntax ==
+
+Subcategorization rules are expressed by [[S-rule]]s, a special formalism for representing the syntactic structure of phrases.
+ 
+ <SYNTACTIC ROLE>(<REQUIRED>);
+
+Where:<br/>
+<SYNTACTIC ROLE> is the [[Syntactic roles]] (VA, VC, VS, VH, etc) of the term required by the base form; and<br />
+<REQUIRED> is the term required by the base form to saturate its syntactic structure, to be expressed as:
+*the maximal projection (NP, VP, JP, AP, PP, DP), in case of general phrases, or a specific head, in case of particular cases;
+*the order, if not default;
+*the adjacency, if not default;
+*other features, when pertinent.
+The head is represented between "quotes", if a string, or between [brackets], if a lemma.
+
+== Examples ==
+
+{| border="1" cellpadding="5"
+!Rules
+!Description
+!Examples
+|-
+|VS(NP)VC(NP)VA(PP("into account"));
+|The verbal phrase requires three arguments: a specifier (NP), a complement (NP) and an adjunct (the fixed PP "into account")
+|take into account
+|-
+|VS(NP)VC(NP,HUM)VA(PP("to the lions"));
+|The verbal phrase requires three arguments: a specifier (NP), a complement (NP with the feature HUM = human) and an adjunct (the fixed PP "to the lions")
+|throw someone to the lions
+|-
+|}

@@ -1,0 +1,99 @@
+'''Syntactic roles''' are the roles that constituents play inside a syntactic structure. The UNL<sup>arium</sup> framework follows the [[Syntax|X-bar approach]] and proposes six main syntactic roles:
+
+*'''HEAD''' is the nucleus or the source of the whole syntactic structure, which is actually derived (or projected) out of it. In the UNL<sup>arium</sup> framework, there are 8 possible heads:
+**'''N''' = nouns and nominals
+**'''J''' = adjectives and adjectivals
+**'''V''' = full verbs and verbals
+**'''A''' = adverbs and adverbials
+**'''P''' = adpositions (prepositions, postpositions, circumpositions)
+**'''I''' = auxiliary verbs
+**'''D''' = determiners
+**'''C''' = complementizers (conjunctions)
+*'''COMP''' (i.e., complement) is an internal argument, i.e., a word, phrase or clause which is necessary to the head to complete its meaning (e.g., objects of transitive verbs);
+*'''ADJT''' (i.e., adjunct) is a word, phrase or clause which modifies the head but which is not syntactically required by it (adjuncts are expected to be extranuclear, i.e., removing an adjunct would leave a grammatically well-formed sentence);
+*'''SPEC''' (i.e., specifier) is an external argument, i.e., a word, phrase or clause which qualifies (determines) the head;
+*'''XB''' (intermediate projection) is any of the intermediate structures projected out of the head; and
+*'''XP''' (maximal projection) is the most comprehensive structure projected out of the head.
+
+These general roles are further specified according to the eight possible syntactic heads as follows:
+
+{{#tree:id=SYN|openlevels=0|root=Syntactic roles (SYN)|
+*adjunct (XA)
+**adjunct to the head of an adjective phrase (JA)
+**adjunct to the head of an adverbial phrase (AA)
+**adjunct to the head of a complementizer phrase (CA)
+**adjunct to the head of a determiner phrase (DA)
+**adjunct to the head of an inflectional phrase (IA)
+**adjunct to the head of a nominal phrase (NA)
+**adjunct to the head of a prepositional phrase (PA)
+**adjunct to the head of a verbal phrase (VA)
+*complement (XC)
+**complement of the head of an adjective phrase (JC)
+**complement of the head of an adverbial phrase (AC)
+**complement of the head of a complementizer phrase (CC)
+**complement of the head of a determiner phrase (DC)
+**complement of the head of an inflectional phrase (IC)
+**complement of the head of a nominal phrase (NC)
+**complement of the head of a prepositional phrase (PC)
+**complement of the head of a verbal phrase (VC)
+*head (XH)
+**head of an adverbial phrase (AH)
+**head of an adjective phrase (JH)
+**head of a complementizer phrase (CH)
+**head of a determiner phrase (DH)
+**head of an inflectional phrase (IH)
+**head of a nominal phrase (NH)
+**head of a prepositional phrase (PH)
+**head of a verbal phrase (VH)
+*specifier (XS)
+**specifier of the head of an adjective phrase(JS)
+**specifier of the head of an adverbial phrase (AS)
+**specifier of the head of a complementizer phrase (CS)
+**specifier of the head of a determiner phrase(DS)
+**specifier of the head of an inflectional phrase (IS)
+**specifier of the head of a nominal phrase (NS)
+**specifier of the head of a prepositional phrase (PS)
+**specifier of the head of a verbal phrase (VS)
+*maximal projection (XP)
+**adjective phrase (JP)
+**adverbial phrase (AP)
+**complementizer phrase (CP)
+**determiner phrase (DP)
+**inflectional phrase (IP)
+**nominal phrase (NP)
+**prepositional phrase (PP)
+**verbal phrase (VP)
+*intermediate projection (XB)
+**adverbial phrase (AB)
+**adjective phrase (JB)
+**complementizer phrase (CB)
+**determiner phrase (DB)
+**inflectional phrase (IB)
+**nominal phrase (NB)
+**prepositional phrase (PB)
+**verbal phrase (VB)
+*trace (TRACE)
+}}
+
+= Examples =
+*complement of the head of an adverbial phrase (AC): contrarily [to popular belief]
+*specifier of the head of an adverbial phrase (AS): [nearly] always
+*complement of the head of a complementizer phrase (CC): if [John comes]
+*specifier of the head of a complementizer phrase (CS): [even] if 
+*specifier of the head of a determiner phrase(DS): [almost] every
+*complement of the head of an inflectional phrase (IC): will [kiss Peter]
+*specifier of the head of an inflectional phrase (IS): [Mary] will (kiss Peter)
+*adjunct to the head of an adjective phrase (JA): beautiful [to see]
+*complement of the head of an adjective phrase (JC): loyal [to the queen]
+*specifier of the head of an adjective phrase(JS): [very] loyal
+*adjunct to the head of a nominal phrase (NA): [beautiful] table
+*complement of the head of a nominal phrase (NC): construction [of Babel]
+*specifier of the head of a nominal phrase (NS): [the] construction
+*complement of the head of a prepositional phrase (PC): under [the table]
+*specifier of the head of a prepositional phrase (PS): [right] under
+*adjunct to the head of a verbal phrase (VA): loved [desperately]
+*complement of the head of a verbal phrase (VC): loved [Mary]
+*specifier of the head of a verbal phrase (VS): [never] loved
+
+= Further information =
+For further information on the syntax approach of the UNL<sup>arium</sup> refer to [[X-bar]].

@@ -1,0 +1,116 @@
+<div class="mw-content-ltr mw-parser-output" lang="en" dir="ltr"><p>CLEA<sup>2000</sup> certifies that you have reached a standard of knowledge concerning the development of natural language grammars for <a href="/wiki/NLization" title="NLization">NLization</a> and may officially participate in the UNL Research. The certificate consists of a set of 100 graphs that must be NLized with EUGENE.
+</p>
+<div id="toc" class="toc" role="navigation" aria-labelledby="mw-toc-heading"><input type="checkbox" role="button" id="toctogglecheckbox" class="toctogglecheckbox" style="display:none" /><div class="toctitle" lang="en" dir="ltr"><h2 id="mw-toc-heading">Contents</h2><span class="toctogglespan"><label class="toctogglelabel" for="toctogglecheckbox"></label></span></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Goal"><span class="tocnumber">1</span> <span class="toctext">Goal</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#Instructions"><span class="tocnumber">2</span> <span class="toctext">Instructions</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="#Samples_and_Examples"><span class="tocnumber">3</span> <span class="toctext">Samples and Examples</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="#Recommended_Readings"><span class="tocnumber">4</span> <span class="toctext">Recommended Readings</span></a></li>
+<li class="toclevel-1 tocsection-5"><a href="#Notes"><span class="tocnumber">5</span> <span class="toctext">Notes</span></a></li>
+</ul>
+</div>
+
+<div class="mw-heading mw-heading2"><h2 id="Goal">Goal</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=CLEA2000&amp;veaction=edit&amp;section=1" title="Edit section: Goal" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=CLEA2000&amp;action=edit&amp;section=1" title="Edit section&#39;s source code: Goal">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>In CLEA<sup>2000</sup>, you are expected to provide the lingware (dictionary and grammars) necessary to <b>NLize</b> the corpus <a href="/wiki/UCA1" class="mw-redirect" title="UCA1">UCA1</a> into your native language.
+</p>
+<div class="mw-heading mw-heading2"><h2 id="Instructions">Instructions</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=CLEA2000&amp;veaction=edit&amp;section=2" title="Edit section: Instructions" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=CLEA2000&amp;action=edit&amp;section=2" title="Edit section&#39;s source code: Instructions">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<ol><li>Training corpus
+<ol><li>Prepare the training corpus
+<ul><li><u>If your native language is not English</u>: translate (manually) the 100 sentences of the corpus <a href="/wiki/UCA1" class="mw-redirect" title="UCA1">UCA1</a> from English into your native language. Be as close as possible to the original, and provide one single translation for each sentence. This will be your expected output, and your goal will be to get (automatically, through <a href="/wiki/EUGENE" title="EUGENE">EUGENE</a>) these NL sentences out of the UNL graphs. See an example of input file <a rel="nofollow" class="external text" href="http://www.unlweb.net.br/resources/UCA1/uca1_unl.txt">here</a>. Note that you have to translate only the sentences between {org}{/org}</li>
+<li><u>If your native language is English</u>: use the corpus <a href="/wiki/UCA2" class="mw-redirect" title="UCA2">UCA2</a> as your input document file.</li></ul></li>
+<li>Save the translated text (without the English original) in a plain text (.txt) file with UTF-8 encoding and upload it to UNLWEB&gt;UNLDEV&gt;EUGENE&gt;UNL FILES.</li></ol></li>
+<li>Dictionary<sup id="cite_ref-1" class="reference"><a href="#cite_note-1"><span class="cite-bracket">&#91;</span>1<span class="cite-bracket">&#93;</span></a></sup>
+<ol><li>Create a dictionary for your training corpus. Your dictionary must contain <u>all and only the word forms appearing in your training corpus</u>, and must comply with the <a href="/wiki/Dictionary_Specs" class="mw-redirect" title="Dictionary Specs">Dictionary Specs</a>.</li>
+<li>Save the NL-UNL dictionary in a plain text (.txt) file with UTF-8 encoding and upload it to UNLWEB&gt;UNLDEV&gt;EUGENE&gt;DICTIONARIES.</li></ol></li>
+<li>Grammars<sup id="cite_ref-2" class="reference"><a href="#cite_note-2"><span class="cite-bracket">&#91;</span>2<span class="cite-bracket">&#93;</span></a></sup>
+<ol><li>Create the UNL-NL (generation) grammars necessary to NLize the UNL graphs. These grammars are the most difficult (and the actual goal) of the whole analysis task. There can be two different types of grammar:
+<ul><li><a href="/wiki/T-grammar" class="mw-redirect" title="T-grammar">T-grammar</a>, which is used to transform the graph structure (the UNL graph) into a list structure (the NL sentence);</li>
+<li><a href="/wiki/D-grammar" class="mw-redirect" title="D-grammar">D-grammar</a>, which is used to improve the performance of the <a href="/wiki/Tokenization" title="Tokenization">tokenization</a> and of the <a href="/wiki/Transformation" title="Transformation">transformation</a>.<sup id="cite_ref-3" class="reference"><a href="#cite_note-3"><span class="cite-bracket">&#91;</span>3<span class="cite-bracket">&#93;</span></a></sup></li></ul></li>
+<li>Save the UNL-NL grammars in a plain text (.txt) file with UTF-8 encoding and upload them to the corresponding tabs in UNLWEB&gt;UNLDEV&gt;EUGENE.</li>
+<li>Test them and do the necessary changes until you get good results.</li></ol></li>
+<li>Evaluation
+<ol><li>Export the actual output of EUGENE (range=1-100, trace-level=MINIMAL).</li>
+<li>Check the F-measure of the actual output at UNLWEB&gt;UNLARIUM&gt;TOOLS&gt;F-MEASURE.<sup id="cite_ref-4" class="reference"><a href="#cite_note-4"><span class="cite-bracket">&#91;</span>4<span class="cite-bracket">&#93;</span></a></sup></li>
+<li>If the F-measure &gt; 0.9, upload the corpus, dictionary and grammars to VALERIE (UNLWEB&gt;VALERIE&gt;CLEA2000) in order to have your exercise evaluated.</li></ol></li></ol>
+<div class="mw-heading mw-heading2"><h2 id="Samples_and_Examples">Samples and Examples</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=CLEA2000&amp;veaction=edit&amp;section=3" title="Edit section: Samples and Examples" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=CLEA2000&amp;action=edit&amp;section=3" title="Edit section&#39;s source code: Samples and Examples">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>The following resources have been used to deal with UCA1 in English and may be used as a sample of what is expected to be provided
+</p>
+<table border="1" cellpadding="5" align="center">
+<caption>NLization
+</caption>
+<tbody><tr>
+<th>Language
+</th>
+<th>Corpus
+</th>
+<th>Dictionary
+</th>
+<th>T-Grammar
+</th>
+<th>D-Grammar
+</th>
+<th>Output
+</th></tr>
+<tr>
+<td align="center">English
+</td>
+<td><a rel="nofollow" class="external text" href="http://www.unlweb.net.br/resources/UCA1/uca1_unl.txt">uca1_unl.txt</a>
+</td>
+<td><a rel="nofollow" class="external text" href="http://www.unlweb.net.br/resources/UCA1/unl_eng_dic.txt">unl_eng_dic.txt</a>
+</td>
+<td><a rel="nofollow" class="external text" href="http://www.unlweb.net.br/resources/UCA1/unl_eng_tgrammar.txt">unl_eng_tgrammar.txt</a>
+</td>
+<td><a rel="nofollow" class="external text" href="http://www.unlweb.net.br/resources/UCA1/unl_eng_dgrammar.txt">unl_eng_dgrammar.txt</a>
+</td>
+<td><a rel="nofollow" class="external text" href="http://www.unlweb.net.br/resources/UCA1/unl_eng_trace.txt">unl_eng_trace.txt</a>
+</td></tr></tbody></table>
+<p><br />
+</p>
+<div class="mw-heading mw-heading2"><h2 id="Recommended_Readings">Recommended Readings</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=CLEA2000&amp;veaction=edit&amp;section=4" title="Edit section: Recommended Readings" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=CLEA2000&amp;action=edit&amp;section=4" title="Edit section&#39;s source code: Recommended Readings">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>Before starting the activity, and in order to fully understand what is expected to be done, it is important for you to be acquainted with the following documentation:
+</p>
+<ul><li><a href="/wiki/Tagset" title="Tagset">Tagset</a>, because you are expected to use only the tags included in the tagset</li>
+<li><a href="/wiki/UNL_Dictionary_Specs" class="mw-redirect" title="UNL Dictionary Specs">UNL Dictionary Specs</a>, which is essential to understand the dictionary structure</li>
+<li><a href="/wiki/UNL_Grammar_Specs" class="mw-redirect" title="UNL Grammar Specs">UNL Grammar Specs</a>, which is essential to understand the grammar structure</li>
+<li><a href="/wiki/X-bar" class="mw-redirect" title="X-bar">X-bar</a></li>
+<li><a href="/wiki/Default_Dictionary" title="Default Dictionary">Default Dictionary</a></li>
+<li><a href="/wiki/English_dictionary" title="English dictionary">English dictionary</a></li>
+<li><a href="/wiki/Default_grammar" title="Default grammar">Default grammar</a></li>
+<li><a href="/wiki/English_grammar" title="English grammar">English grammar</a></li></ul>
+<p>It is also interesting to make a test drive with <a href="/wiki/EUGENE" title="EUGENE">EUGENE</a>.
+</p>
+<div class="mw-heading mw-heading2"><h2 id="Notes">Notes</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=CLEA2000&amp;veaction=edit&amp;section=5" title="Edit section: Notes" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=CLEA2000&amp;action=edit&amp;section=5" title="Edit section&#39;s source code: Notes">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<div class="mw-references-wrap"><ol class="references">
+<li id="cite_note-1"><span class="mw-cite-backlink"><a href="#cite_ref-1">↑</a></span> <span class="reference-text">Instead of creating a whole new dictionary from scratch, you may try localizing the English dictionary available at <a rel="nofollow" class="external text" href="http://www.unlweb.net.br/resources/UCA1/unl_eng_dic.txt">unl_eng_dic.txt</a>. Note that "localization" is not the same as "translation". You may need other features (in English, for instance, nouns do not have gender or case) or other entries. In any case, the resulting dictionary should reflect your translated version of the corpus (i.e., all entries appearing in your translated version of the corpus should appear in the dictionary). For further information on localization, see <a href="/wiki/Localization" title="Localization">Localization</a>. For information on the dictionary structure, see <a href="/wiki/index.php?title=Dictonary_Specs&amp;action=edit&amp;redlink=1" class="new" title="Dictonary Specs (page does not exist)">Dictonary Specs</a>. For an explanation of the structure of the English dictionary, see <a href="/wiki/English_dictionary" title="English dictionary">English Dictionary</a>. In case you need additional features, use only the tags available at the <a href="/wiki/Tagset" title="Tagset">tagset</a>.</span>
+</li>
+<li id="cite_note-2"><span class="mw-cite-backlink"><a href="#cite_ref-2">↑</a></span> <span class="reference-text">In order to prepare the grammar, study the <a href="/wiki/Grammar_Specs" class="mw-redirect" title="Grammar Specs">Grammar Specs</a>. Next, take a look at the structure of the <a href="/wiki/English_grammar" title="English grammar">English Grammar</a> for a detailed example. In many cases, it is simpler just to localize the English grammars to your own locale rather than creating a whole grammar from the scratch. See the instructions at <a href="/wiki/Localization" title="Localization">Localization</a>.</span>
+</li>
+<li id="cite_note-3"><span class="mw-cite-backlink"><a href="#cite_ref-3">↑</a></span> <span class="reference-text">D-rules used in tokenization are used either to prevent wrong lexical matches or to provoke right lexical matches. D-rules used in transformation are used to either prevent or provoke the application of certain rules.</span>
+</li>
+<li id="cite_note-4"><span class="mw-cite-backlink"><a href="#cite_ref-4">↑</a></span> <span class="reference-text">The F-measure compares the actual output (exported from EUGENE) with the expected output (available at <a rel="nofollow" class="external text" href="http://www.unlweb.net.br/resources/UCA1/uca1_unl.txt">uca1_unl.txt</a>)</span>
+</li>
+</ol></div>
+<!-- 
+NewPP limit report
+Cached time: 20260910163557
+Cache expiry: 86400
+Reduced expiry: false
+Complications: [show‐toc]
+CPU time usage: 0.016 seconds
+Real time usage: 0.018 seconds
+Preprocessor visited node count: 86/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/100
+Expensive parser function count: 0/100
+Unstrip recursion depth: 0/20
+Unstrip post‐expand size: 2875/5000000 bytes
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    0.000      1 -total
+-->
+
+<!-- Saved in parser cache with key u965818192_SLvgQ-l8z2_:pcache:863:|#|:idhash:canonical and timestamp 20260910163557 and revision id 16551. Rendering was triggered because: api-parse
+ -->
+</div>

@@ -1,0 +1,15 @@
+The UNL<sup>dev</sup> is an integrated environment for the development of UNL-driven grammars. It currently contains the following systems:
+
+== NL-izers (deconverters) ==
+NL-izers (or deconverters) are tools for producing natural language texts out of UNL documents.
+*[[EUGENE]] (dEep-to-sUrface GENErator) [freeware] [by UNDL Foundation]
+:UNDL Foundation open-source NL-izer
+
+== UNL-izers (enconverters) ==
+UNL-izers (or enconverters) are tools for producing UNL documents out of natural language texts.
+*[[IAN]] (Interactive ANalyzer) [freeware] [by UNDL Foundation]
+:UNDL Foundation open-source interactive UNLizer
+*[[SEAN]] (Shallow Enhanced ANalyzer) [freeware] [by UNDL Foundation]
+:UNDL Foundation open-source fully-automatic UNLizer
+*[[UNL Editor]] [freeware] [by UNDL Foundation]
+:UNDL Foundation open-source fully-manual UNLizer

@@ -1,0 +1,79 @@
+<div class="mw-content-ltr mw-parser-output" lang="en" dir="ltr"><p>Relations are altered, replaced, created and deleted by <a href="/wiki/S-rule" title="S-rule">S-rules</a>:
+</p>
+<div id="toc" class="toc" role="navigation" aria-labelledby="mw-toc-heading"><input type="checkbox" role="button" id="toctogglecheckbox" class="toctogglecheckbox" style="display:none" /><div class="toctitle" lang="en" dir="ltr"><h2 id="mw-toc-heading">Contents</h2><span class="toctogglespan"><label class="toctogglelabel" for="toctogglecheckbox"></label></span></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Altering_nodes_in_a_relation"><span class="tocnumber">1</span> <span class="toctext">Altering nodes in a relation</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#Creating_nodes_in_a_relation"><span class="tocnumber">2</span> <span class="toctext">Creating nodes in a relation</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="#Deleting_nodes_in_a_relation"><span class="tocnumber">3</span> <span class="toctext">Deleting nodes in a relation</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="#Creating_relations"><span class="tocnumber">4</span> <span class="toctext">Creating relations</span></a></li>
+<li class="toclevel-1 tocsection-5"><a href="#Deleting_relations"><span class="tocnumber">5</span> <span class="toctext">Deleting relations</span></a></li>
+<li class="toclevel-1 tocsection-6"><a href="#Replacing_relations"><span class="tocnumber">6</span> <span class="toctext">Replacing relations</span></a></li>
+</ul>
+</div>
+
+<div class="mw-heading mw-heading3"><h3 id="Altering_nodes_in_a_relation">Altering nodes in a relation</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Transformation_over_relations&amp;veaction=edit&amp;section=1" title="Edit section: Altering nodes in a relation" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Transformation_over_relations&amp;action=edit&amp;section=1" title="Edit section&#39;s source code: Altering nodes in a relation">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>Elements of nodes in relations are altered through the operators + (add) and - (delete). The operator + may be omitted. 
+</p>
+<ul><li>rel(%x,A;%y,B):=rel(%x,+C;%y,+D); (add the feature C to %x and D to %y)</li>
+<li>rel(%x,A;%y,B):=rel(%x,C;%y,D);(the same as above)</li>
+<li>rel(%x,A;%y,B):=rel(%x,-A;%y); (delete the feature A from %x)</li></ul>
+<p>"strings", [headwords] and [[UWs]] are considered to be features (but a single node may have only one of each)
+</p>
+<ul><li>rel(%x;%y):=rel(%x,"a";%y); (replace the existing string in %x, if any, by "a")</li>
+<li>rel(%x;%y):=rel(%x,[A];%y);(replace the existing headword in %x, if any, by [A])</li>
+<li>rel(%x;%y):=rel(%x,[[A]];%y); (replace the existing UW in %x, if any, by [[A]])</li></ul>
+<div class="mw-heading mw-heading3"><h3 id="Creating_nodes_in_a_relation">Creating nodes in a relation</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Transformation_over_relations&amp;veaction=edit&amp;section=2" title="Edit section: Creating nodes in a relation" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Transformation_over_relations&amp;action=edit&amp;section=2" title="Edit section&#39;s source code: Creating nodes in a relation">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>Nodes are created when they are not co-indexed to any node in the left side (see <a href="/wiki/Indexation" class="mw-redirect" title="Indexation">Indexation</a>):
+</p>
+<ul><li>rel(%x,A;%y,B):=rel(%x;%y;<b>%z,+A</b>); (the node %z, with the feature A, is created as a new argument of the relation rel)</li></ul>
+<div class="mw-heading mw-heading3"><h3 id="Deleting_nodes_in_a_relation">Deleting nodes in a relation</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Transformation_over_relations&amp;veaction=edit&amp;section=3" title="Edit section: Deleting nodes in a relation" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Transformation_over_relations&amp;action=edit&amp;section=3" title="Edit section&#39;s source code: Deleting nodes in a relation">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>Nodes are deleted when they are not co-indexed to any node in the right side (see <a href="/wiki/Indexation" class="mw-redirect" title="Indexation">Indexation</a>):
+</p>
+<ul><li>rel(%x,A;%y,B;<b>%z,C</b>):=rel(%x;%y); (the node %z is deleted as an argument of the relation rel)</li></ul>
+<p>Nodes are completelly deleted if, and only if, they are not part of any other relation
+</p>
+<div class="mw-heading mw-heading3"><h3 id="Creating_relations">Creating relations</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Transformation_over_relations&amp;veaction=edit&amp;section=4" title="Edit section: Creating relations" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Transformation_over_relations&amp;action=edit&amp;section=4" title="Edit section&#39;s source code: Creating relations">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>Relations are created by the operator + (add) before the relation to be created. This operator may not be omitted.
+</p>
+<ul><li>rel(%x;%y):=+rel2(%x;%z); (a new relation rel2 is created between the nodes %x and %z; the original relation is not altered)</li></ul>
+<p>Creation of relations is a possible source of infinite loops. In order to prevent the rule from applying eternally, the condition field must be controlled:
+</p>
+<ul><li>rel(%x;%y)^rel2(%x;%z):=+rel2(%x;%z);</li></ul>
+<div class="mw-heading mw-heading3"><h3 id="Deleting_relations">Deleting relations</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Transformation_over_relations&amp;veaction=edit&amp;section=5" title="Edit section: Deleting relations" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Transformation_over_relations&amp;action=edit&amp;section=5" title="Edit section&#39;s source code: Deleting relations">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>Relations are deleted when they are not repeated in the right side, except in case of + 
+</p>
+<ul><li>rel(%x;%y):=; (the relation rel between the nodes %x and %y is deleted)</li>
+<li>rel(%x;%y):=rel2(%x;%y); (the relation rel between %x and %y is deleted and a new relation rel2 is created in its place) (replacement)</li>
+<li>rel(%x;%y):=+rel2(%x;%y); (the relation rel is preserved and a new relation rel2 is created) (creation)</li></ul>
+<div class="mw-heading mw-heading3"><h3 id="Replacing_relations">Replacing relations</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Transformation_over_relations&amp;veaction=edit&amp;section=6" title="Edit section: Replacing relations" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Transformation_over_relations&amp;action=edit&amp;section=6" title="Edit section&#39;s source code: Replacing relations">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>Relations in the left side are replaced by relations in the right side, except in case of +:
+</p>
+<ul><li>rel(%x;%y):=rel2(%x;%y); (the relation rel between %x and %y is deleted and a new relation rel2 is created in its place)</li>
+<li>rel1(%x;%y)rel2(%y;%z):=rel3(%x;%z); (the relations rel1 and rel2 are deleted and a new relation rel3 is created in their place) (merge)</li>
+<li>rel(%x;%y):=rel1(%x;%y)rel2(%y;%z); (the relation rel is deleted and two new relations rel1 and rel2 are created in its place) (divide)</li>
+<li>(%x)(%y):=rel(%x;%y); (the linear relation between the nodes %x and %y is replaced by the non-linear relation rel between the same nodes)</li>
+<li>L(%x;%y):=rel(%x;%y); (the same as above)</li></ul>
+<!-- 
+NewPP limit report
+Cached time: 20260909170759
+Cache expiry: 86400
+Reduced expiry: false
+Complications: [show‐toc]
+CPU time usage: 0.004 seconds
+Real time usage: 0.004 seconds
+Preprocessor visited node count: 36/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/100
+Expensive parser function count: 0/100
+Unstrip recursion depth: 0/20
+Unstrip post‐expand size: 17/5000000 bytes
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    0.000      1 -total
+-->
+
+<!-- Saved in parser cache with key u965818192_SLvgQ-l8z2_:pcache:799:|#|:idhash:canonical and timestamp 20260909170759 and revision id 16093. Rendering was triggered because: diff-page
+ -->
+</div>

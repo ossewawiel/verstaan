@@ -1,0 +1,70 @@
+'''Transitivity''' is a category that indicates the number of objects a verb requires or takes in a given instance.
+
+== Natural language ==
+In the UNLarium framework, transitivity may assume the following values:
+
+{{#tree:id=nl_TRA|openlevels=0|root=Transitivity (TRA)|
+*no transitivity (NTRA): copula and linking verbs
+*transitive (TST): has object
+**direct monotransitive (TSTD): one direct object
+**indirect monotransitive (TSTI): one indirect object
+**ditransitive (TST2): one direct object and one indirect object
+**tritransitive (TST3): three objects
+*intransitive (NTST): no object
+**unergative (NERG): the subject is the agent
+**unaccusative (NACC): the subject is not the agent
+}}
+
+=== How to define the transitivity of a verb ===
+The same verb normally may have many different transitivity values. However, in order to avoid representing all possible transitivity values, we always try to represent the "'''native transitivity'''" of a verb, i.e., the one that includes only the necessary arguments normally required by the root in order to form the simplest maximal projection. 
+
+Consider, for instance, the case of "to read", in English. It can normally be found as:
+*intransitive:  Peter can read (i.e., he is not illiterate), Peter reads a lot, Peter reads well, etc.
+*direct transitive: Peter is reading the book
+*indirect transitive: Peter reads to his sister every night
+*ditransitive: Peter likes to read books to his children
+The same applies to most English verbs, i.e., the actual transitivity of a verb depends on the context.<br />
+However, in the dictionary, i.e., in the absence of any context, we cannot represent all these possibilities, because this would actually prevent us from using the transitivity value in a productive way. We try then to understand "to read" in isolation, and include only the minimum set of arguments that is really required by the verb in order to form its most conventional syntactic structure. The verb "to read", for instance, seems to require only two arguments: the subject (who reads) and the object (what is read). This would normally suffice, being the other transitivity values a sort of extrapolation of this original (native) transitivity structure. For instance, in the intransitive and in the indirect transitive use, we could say that that the object is actually there, but elliptical; on the other hand, the ditransitive use would involve a complement (the recipient) that is normally optional.
+
+This principle leads us to the following general rules that should be applied to the transitivity:
+
+;Objects are to be considered elliptical (hidden) in verbal constructions if they can be inferred from the context. 
+:I read all the afternoon = I read (something) all the afternoon = direct monotransitive (TSTD) 
+:John kisses well = John kisses (someone) well = direct monotransitive (TSTD)
+:John buys (and Peter sells) = John buys (something) = direct monotransitive (TSTD) 
+
+;Different transitivity values mean different senses
+:The same verb may have different transitivity values, but only when associated to different UWs:
+::John lives in Paris  = indirect transitive (TSTI) (live = reside)
+::John lives a nightmare = direct monotransitive (TSTD) (live = experience)
+
+;Complements (essential) are not to be confounded with adjuncts (accidental)
+:John bought a car for Mary = direct monotransitive (TSTD) and not ditransitive (TST2), because "for Mary" is not a complement, but an adjunct of the verb "to buy"
+:John gave a car to Mary = ditransitive (TST2), because both "a car" and "to Mary" are complements of the verb "to give".
+
+;Copula is to be considered without transitivity (NTRA)
+
+;Subject and object complements are not to be represented as part of the transitivity of the verb:
+:You make me nervous = You make [me become nervous] = direct monotransitive (TSTD) and not ditransitive
+:I considered him to be an excellent choice = I considered [that he was an excellent choice] = direct monotransitive (TST) and not ditransitive
+
+;Transitivity is a property of the whole multi-word expression and not only of the verb.
+:to make love = intransitive (NTST), and not transitive (to make)
+:to kill oneself = intransitive (NTST), and not transitive (to kill)
+
+;Unergative x Unaccusative
+Intransitive verbs may be either "unergative", when the subject is the agent of the action described by the verb, or "unaccusative", when the subject is not the agent. Compare, for instance:
+:unergative (NERG) = run (the subject of "run" initiates the action described by the verb)
+:unaccusative (NACC) = fall (the subject of "fall" suffers the action described by the verb)
+
+=== Examples ===
+*English
+**unergative (NERG) = run (John ran)
+**unaccusative (NACC) = fall (John fell)
+**direct monotransitive (TSTD) = kiss (John kissed Jane)
+**indirect monotransitive (TSTI) = depend (John depends on Jane)
+**ditransitive (TST2) = give (John gave Jane an apple)
+**tritransitive (TST3) = trade (John traded Jane an apple for an orange)
+
+== UNL ==
+In UNL, transitivity, as a syntactic property, is not informed.

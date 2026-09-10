@@ -1,0 +1,799 @@
+<div class="mw-content-ltr mw-parser-output" lang="en" dir="ltr"><p>T-rules, or transformation rules, are rules that alter the state of nodes. They are used for normalization, for syntactic analysis and for semantic interpretation. The set of the t-rules forms the <b>Transformation grammar</b>, or <b>T-Grammar</b>. 
+</p>
+<div id="toc" class="toc" role="navigation" aria-labelledby="mw-toc-heading"><input type="checkbox" role="button" id="toctogglecheckbox" class="toctogglecheckbox" style="display:none" /><div class="toctitle" lang="en" dir="ltr"><h2 id="mw-toc-heading">Contents</h2><span class="toctogglespan"><label class="toctogglelabel" for="toctogglecheckbox"></label></span></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Basic_Symbols"><span class="tocnumber">1</span> <span class="toctext">Basic Symbols</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#Basic_Concepts"><span class="tocnumber">2</span> <span class="toctext">Basic Concepts</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="#Syntax"><span class="tocnumber">3</span> <span class="toctext">Syntax</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="#Types_of_Transformation_Rules"><span class="tocnumber">4</span> <span class="toctext">Types of Transformation Rules</span></a>
+<ul>
+<li class="toclevel-2 tocsection-5"><a href="#List-to-List_Rules"><span class="tocnumber">4.1</span> <span class="toctext">List-to-List Rules</span></a></li>
+<li class="toclevel-2 tocsection-6"><a href="#Tree-to-Tree_Rules"><span class="tocnumber">4.2</span> <span class="toctext">Tree-to-Tree Rules</span></a></li>
+<li class="toclevel-2 tocsection-7"><a href="#Network-to-Network_Rules"><span class="tocnumber">4.3</span> <span class="toctext">Network-to-Network Rules</span></a></li>
+<li class="toclevel-2 tocsection-8"><a href="#List-to-Tree_Rules"><span class="tocnumber">4.4</span> <span class="toctext">List-to-Tree Rules</span></a></li>
+<li class="toclevel-2 tocsection-9"><a href="#Tree-to-List_Rules"><span class="tocnumber">4.5</span> <span class="toctext">Tree-to-List Rules</span></a></li>
+<li class="toclevel-2 tocsection-10"><a href="#Tree-to-Network_Rules"><span class="tocnumber">4.6</span> <span class="toctext">Tree-to-Network Rules</span></a></li>
+<li class="toclevel-2 tocsection-11"><a href="#Network-to-Tree_Rules"><span class="tocnumber">4.7</span> <span class="toctext">Network-to-Tree Rules</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-12"><a href="#Special_types_of_transformation_rules"><span class="tocnumber">5</span> <span class="toctext">Special types of transformation rules</span></a></li>
+<li class="toclevel-1 tocsection-13"><a href="#General_properties_of_transformation_rules"><span class="tocnumber">6</span> <span class="toctext">General properties of transformation rules</span></a></li>
+<li class="toclevel-1 tocsection-14"><a href="#Formal_Syntax_of_Transformation_Rules"><span class="tocnumber">7</span> <span class="toctext">Formal Syntax of Transformation Rules</span></a></li>
+<li class="toclevel-1 tocsection-15"><a href="#Examples_of_Rules"><span class="tocnumber">8</span> <span class="toctext">Examples of Rules</span></a>
+<ul>
+<li class="toclevel-2 tocsection-16"><a href="#LL_RULES"><span class="tocnumber">8.1</span> <span class="toctext">LL RULES</span></a></li>
+<li class="toclevel-2 tocsection-17"><a href="#LT_RULES"><span class="tocnumber">8.2</span> <span class="toctext">LT RULES</span></a></li>
+<li class="toclevel-2 tocsection-18"><a href="#TL_Rules"><span class="tocnumber">8.3</span> <span class="toctext">TL Rules</span></a></li>
+<li class="toclevel-2 tocsection-19"><a href="#TT_or_NN_Rules"><span class="tocnumber">8.4</span> <span class="toctext">TT or NN Rules</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-20"><a href="#Notes"><span class="tocnumber">9</span> <span class="toctext">Notes</span></a></li>
+</ul>
+</div>
+
+<div class="mw-heading mw-heading2"><h2 id="Basic_Symbols">Basic Symbols</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=T-rule&amp;veaction=edit&amp;section=1" title="Edit section: Basic Symbols" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=T-rule&amp;action=edit&amp;section=1" title="Edit section&#39;s source code: Basic Symbols">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<table border="1" cellpadding="2" align="center">
+<caption>Basic symbols used in the UNL framework
+</caption>
+<tbody><tr>
+<th>Symbol
+</th>
+<th>Definition
+</th>
+<th>Example
+</th></tr>
+<tr>
+<td align="center">( )
+</td>
+<td>node
+</td>
+<td>(%a)
+</td></tr>
+<tr>
+<td align="center">" "
+</td>
+<td>string
+</td>
+<td>"went"
+</td></tr>
+<tr>
+<td align="center">[ ]
+</td>
+<td>natural language entry (headword)
+</td>
+<td>[go]
+</td></tr>
+<tr>
+<td align="center">[[ ]]
+</td>
+<td>UW
+</td>
+<td>[[to go(icl&gt;to move)]]
+</td></tr>
+<tr>
+<td align="center">//
+</td>
+<td><a href="/wiki/Regular_expression" title="Regular expression">regular expression</a>
+</td>
+<td>/a{2,3}/ = aa,aaa
+</td></tr>
+<tr>
+<td align="center">rel(x;y)
+</td>
+<td>relation
+</td>
+<td>agt(kill;Peter)
+</td></tr>
+<tr>
+<td align="center">^
+</td>
+<td>not
+</td>
+<td>^a = not a
+</td></tr>
+<tr>
+<td align="center">{ | }
+</td>
+<td>or
+</td>
+<td>{a|b} = a or b
+</td></tr>
+<tr>
+<td align="center">%
+</td>
+<td><a href="/wiki/Index" title="Index">index</a> for nodes, attributes and values
+</td>
+<td>%x
+</td></tr>
+<tr>
+<td align="center">:
+</td>
+<td><a href="/wiki/Scope" title="Scope">scope ID</a>
+</td>
+<td>:01
+</td></tr>
+<tr>
+<td align="center">#
+</td>
+<td><a href="/wiki/Index" title="Index">index</a> for sub-NLWs
+</td>
+<td>#01
+</td></tr>
+<tr>
+<td align="center">=
+</td>
+<td>attribute-value assignment
+</td>
+<td>POS=NOU
+</td></tr>
+<tr>
+<td align="center">!
+</td>
+<td>rule trigger
+</td>
+<td>!PLR
+</td></tr>
+<tr>
+<td align="center">&amp;
+</td>
+<td>merge operator
+</td>
+<td>%x&amp;%y
+</td></tr>
+<tr>
+<td align="center">?
+</td>
+<td>dictionary lookup operator
+</td>
+<td>?[a]
+</td></tr></tbody></table>
+<div class="mw-heading mw-heading2"><h2 id="Basic_Concepts">Basic Concepts</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=T-rule&amp;veaction=edit&amp;section=2" title="Edit section: Basic Concepts" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=T-rule&amp;action=edit&amp;section=2" title="Edit section&#39;s source code: Basic Concepts">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<figure class="mw-halign-center" typeof="mw:File"><a href="/wiki/File:Grammar.png" class="mw-file-description"><img src="/wiki/images/thumb/5/59/Grammar.png/400px-Grammar.png" decoding="async" width="400" height="206" class="mw-file-element" srcset="/wiki/images/thumb/5/59/Grammar.png/600px-Grammar.png 1.5x, /wiki/images/5/59/Grammar.png 2x" /></a><figcaption></figcaption></figure>
+<dl><dt><a href="/wiki/Node" title="Node">Node</a></dt>
+<dd>A node is the most elementary unit in the graph. It is the result of the <a href="/wiki/Tokenization" title="Tokenization">tokenization</a> process, and corresponds to the notion of "lexical item". At the surface level, a natural language sentence is considered a list of nodes, and a UNL graph a set of relations between nodes.</dd>
+<dt><a href="/wiki/Relation" class="mw-redirect" title="Relation">Relation</a></dt>
+<dd>In order to form a natural language sentence or a UNL graph, nodes are inter-related by relations. In the UNL framework, there are three different types of relations: the linear (list) relation, syntactic relations and semantic relations.</dd>
+<dt><a href="/wiki/Hyper-Node" class="mw-redirect" title="Hyper-Node">Hyper-Node</a></dt>
+<dd>A hyper-node is a sub-graph, i.e., a <a href="/wiki/Scope" title="Scope">scope</a>: a node containing relations between nodes.</dd>
+<dt><a href="/wiki/Hyper-Relation" class="mw-redirect" title="Hyper-Relation">Hyper-Relation</a></dt>
+<dd>A hyper-relation is a relation between relations.</dd></dl>
+<div class="mw-heading mw-heading2"><h2 id="Syntax">Syntax</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=T-rule&amp;veaction=edit&amp;section=3" title="Edit section: Syntax" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=T-rule&amp;action=edit&amp;section=3" title="Edit section&#39;s source code: Syntax">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>The Transformation Rules follow the very general formalism
+</p>
+<pre>α:=β;
+</pre>
+<p>where the left side α is a condition statement, and the right side β is an action to be performed over α.
+</p>
+<div class="mw-heading mw-heading2"><h2 id="Types_of_Transformation_Rules">Types of Transformation Rules</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=T-rule&amp;veaction=edit&amp;section=4" title="Edit section: Types of Transformation Rules" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=T-rule&amp;action=edit&amp;section=4" title="Edit section&#39;s source code: Types of Transformation Rules">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>Natural language sentences and UNL graphs are supposed to convey the same amount of information in different structures: whereas the former arranges data as an ordered list of words, the latter organizes it as a hypergraph. In that sense, translating from natural language into UNL and from UNL into natural language is ultimately a matter of transforming lists into networks and vice-versa. 
+</p><p>The UNDLF generation and analysis tools assume that such transformation should be carried out progressively, i.e., through a transitional data structure: the tree, which could be used as an interface between lists and networks. Accordingly, the UNL Grammar states seven different types of rules (LL, TT, NN, LT, TL, TN, NT), as indicated below:
+</p>
+<ul><li><b>ANALYSIS</b> (NL-UNL)
+<ul><li>LL - List Processing (list-to-list)</li>
+<li>LT - Surface-Structure Formation (list-to-tree)</li>
+<li>TT - Syntactic Processing (tree-to-tree)</li>
+<li>TN - Deep-Structure Formation (tree-to-network)</li>
+<li>NN - Semantic Processing (network-to-network)</li></ul></li></ul>
+<ul><li><b>GENERATION</b> (UNL-NL)
+<ul><li>NN - Semantic Processing (network-to-network)</li>
+<li>NT - Deep-Structure Formation (network-to-tree)</li>
+<li>TT - Syntactic Processing (tree-to-tree)</li>
+<li>TL - Surface-Structure Formation (tree-to-list)</li>
+<li>LL - List Processing (list-to-list)</li></ul></li></ul>
+<p>The <b>NL original sentence</b> is supposed to be preprocessed, by the LL rules, in order to become an ordered list. Next, the resulting <b>list structure</b> is parsed with the LT rules, so as to unveil its <b>surface syntactic structure</b>, which is already a tree. The tree structure is further processed by the TT rules in order to expose its inner organization, the <b>deep syntactic structure</b>, which is supposed to be more suitable to the semantic interpretation. Then, this deep syntactic structure is projected into a semantic network by the TN rules. The resultant <b>semantic network</b> is then post-edited by the NN rules in order to comply with UNL standards and generate the <b>UNL Graph</b>.
+</p><p>The reverse process is carried out during natural language generation. The <b>UNL graph</b> is preprocessed by the NN rules in order to become a more easily tractable semantic network. The resulting <b>network structure</b> is converted, by the NT rules, into a syntactic structure, which is still distant from the surface structure, as it is directly derived from the semantic arrangement. This <b>deep syntactic structure</b> is subsequently transformed into a <b>surface syntactic structure</b> by the TT rules. The surface syntactic structure undergoes many other changes according to the TL rules, which generate a NL-like <b>list structure</b>. This list structure is finally realized as a <b>natural language sentence</b> by the LL rules.
+</p><p>As sentences are complex structures that may contain nested or embedded phrases, both the analysis and the generation processes may be <b>interleaved</b> rather than pipelined. This means that the natural flow described above is only "normal" and not "necessary". During natural language generation, a LL rule may apply prior to a TT rule, or a NN rule may be applied after a TL rule. Rules are recursive and must be applied in the order defined in the grammar as long as their conditions are true, regardless of the state.
+</p>
+<div class="mw-heading mw-heading3"><h3 id="List-to-List_Rules">List-to-List Rules</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=T-rule&amp;veaction=edit&amp;section=5" title="Edit section: List-to-List Rules" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=T-rule&amp;action=edit&amp;section=5" title="Edit section&#39;s source code: List-to-List Rules">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>The list-to-list (LL) rules are used for processing lists, both in analysis and in generation. In analysis, these rules are used for pre-editing the natural language sentence and preparing the input to the syntactic module; in generation, they are used for post-editing the output of the syntactic module and generating the natural language sentence.
+</p><p>There are 5 different subtypes of LL rules:
+</p>
+<table cellpadding="5" border="1" align="center">
+<caption>LL rules
+</caption>
+<tbody><tr>
+<th>ACTION
+</th>
+<th>RULE
+</th>
+<th>DESCRIPTION
+</th></tr>
+<tr>
+<td rowspan="2">ADD
+</td>
+<td>(%x):=(%x)(%y);
+</td>
+<td>The node %y is added to the right of the node %x
+</td></tr>
+<tr>
+<td>(%x):=(%y)(%x);
+</td>
+<td>The node %y is added to the left of the node %x
+</td></tr>
+<tr>
+<td rowspan="2">DELETE
+</td>
+<td>(%x):=-(%x);
+</td>
+<td rowspan="2">The node %x is deleted.
+</td></tr>
+<tr>
+<td>(%x):=;
+</td></tr>
+<tr>
+<td>REPLACE
+</td>
+<td>(%x):=(%y);
+</td>
+<td>All the instances of the node %x will be replaced by the node %y
+</td></tr>
+<tr>
+<td>MERGE
+</td>
+<td>(%x)(%y):=(%x&amp;%y);
+</td>
+<td>The nodes %x and %y will be merged
+</td></tr>
+</tbody></table>
+<div align="center">Where %x and %y are nodes.</div>
+<div class="mw-heading mw-heading3"><h3 id="Tree-to-Tree_Rules">Tree-to-Tree Rules</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=T-rule&amp;veaction=edit&amp;section=6" title="Edit section: Tree-to-Tree Rules" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=T-rule&amp;action=edit&amp;section=6" title="Edit section&#39;s source code: Tree-to-Tree Rules">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>The tree-to-tree rules (TT) are used for processing trees, both in analysis and in generation. During analysis, these rules are used for revealing the deep structure out of the surface structure; in generation, they are used for transforming the deep into the surface syntactic structure.
+</p><p>Syntactic relations are n-ary: they can have as many arguments (nodes) as necessary.
+</p><p>There are 3 different subtypes of TT rules:
+</p>
+<table cellpadding="5" border="1" align="center">
+<caption>TT rules
+</caption>
+<tbody><tr>
+<th>ACTION
+</th>
+<th>RULE
+</th>
+<th>DESCRIPTION
+</th></tr>
+<tr>
+<td>ADD RELATION
+</td>
+<td>SYN1(%x;%y):=+SYN2(%w;%z);
+</td>
+<td>The relation SYN2 between the nodes %w and %z will be added to the graph containing the relation SYN1 between the nodes %x and %y
+</td></tr>
+<tr>
+<td rowspan="2">DELETE RELATION
+</td>
+<td>SYN(%x;%y):=-SYN(%x;%y);
+</td>
+<td rowspan="2">The relation SYN between the nodes %x and %y will be deleted (the nodes %x and %y will not be deleted)
+</td></tr>
+<tr>
+<td>SYN(%x;%y)=;
+</td></tr>
+<tr>
+<td>REPLACE RELATION
+</td>
+<td>SYN1(%x;%y):=SYN2(%w;%z);
+</td>
+<td>The relation SYN1 between the nodes %x and %y will be replaced by the relation SYN2 between the nodes %w and %z
+</td></tr></tbody></table>
+<div align="center">Where SYN is a syntactic relation, and %x, %y, %z and %w are nodes.</div>
+<p><br />
+As syntactic relations are n-ary, the REPLACE RELATION may also be used to ADD or DELETE nodes.
+</p><p><br />
+</p>
+<table border="1" cellpadding="5" align="center">
+<caption>Special types of TT replace relations
+</caption>
+<tbody><tr>
+<th>ACTION
+</th>
+<th>RULE
+</th>
+<th>DESCRIPTION
+</th></tr>
+<tr>
+<td>ADD NODE
+</td>
+<td>SYN(%x;%y):=SYN(%x;%y;%z);
+</td>
+<td>The binary relation SYN between the nodes %x and %y is replaced by a ternary relation SYN between the nodes %x, %y and %z
+</td></tr>
+<tr>
+<td>DELETE NODE
+</td>
+<td>SYN(%x;%y):=SYN(%y);
+</td>
+<td>The binary relation SYN between the nodes %x and %y is replaced by a unary relation SYN with the node %y
+</td></tr>
+</tbody></table>
+<div align="center">Where SYN is a syntactic relation, and %x, %y and %z are nodes.</div>
+<div class="mw-heading mw-heading3"><h3 id="Network-to-Network_Rules">Network-to-Network Rules</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=T-rule&amp;veaction=edit&amp;section=7" title="Edit section: Network-to-Network Rules" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=T-rule&amp;action=edit&amp;section=7" title="Edit section&#39;s source code: Network-to-Network Rules">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>The network-to-network rules (NN) are used for processing networks, both in analysis and in generation. During analysis, these rules are used for post-editing the semantic network structure derived from the syntactic module in order to generate the UNL graph; in generation, they are used for pre-editing the UNL graph, transforming it into a semantic network that would be more appropriate for sentence generation.
+</p><p>There are 3 different subtypes of NN rules:
+</p>
+<table cellpadding="5" border="1" align="center">
+<caption>NN rules
+</caption>
+<tbody><tr>
+<th>ACTION
+</th>
+<th>RULE
+</th>
+<th>DESCRIPTION
+</th></tr>
+<tr>
+<td>ADD RELATION
+</td>
+<td>SEM1(%x;%y):=+SEM2(%w;%z);
+</td>
+<td>The relation SEM2 between the nodes %w and %z will be added to the graph containing the relation SEM1 between the nodes %x and %y
+</td></tr>
+<tr>
+<td rowspan="2">DELETE RELATION
+</td>
+<td>SEM(%x;%y):=-SEM(%x;%y);
+</td>
+<td rowspan="2">The relation SEM between the nodes %x and %y will be deleted (the nodes %x and %y will not be deleted)
+</td></tr>
+<tr>
+<td>SEM(%x;%y)=;
+</td></tr>
+<tr>
+<td>REPLACE RELATION
+</td>
+<td>SEM1(%x;%y):=SEM2(%w;%z);
+</td>
+<td>The relation SEM1 between the nodes %x and %y will be replaced by the relation SEM2 between the nodes %w and %z
+</td></tr></tbody></table>
+<div align="center">Where SEM is any of the existing UNL relations, and %x, %y, %z and %w are nodes.</div>
+<div class="mw-heading mw-heading3"><h3 id="List-to-Tree_Rules">List-to-Tree Rules</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=T-rule&amp;veaction=edit&amp;section=8" title="Edit section: List-to-Tree Rules" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=T-rule&amp;action=edit&amp;section=8" title="Edit section&#39;s source code: List-to-Tree Rules">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>The list-to-tree (LT) rules are used to parse the list structure into a tree structure.<br /> 
+There are 2 different subtypes of LT rules:
+</p>
+<table cellpadding="5" border="1" align="center">
+<caption>LT rule
+</caption>
+<tbody><tr>
+<th>ACTION
+</th>
+<th>RULE
+</th>
+<th>DESCRIPTION
+</th></tr>
+<tr>
+<td>ADD
+</td>
+<td>(%x)(%y):=+SYN(%x;%y);
+</td>
+<td>The relation SYN is created between the nodes %x and %y if there is a linear relation between them (the linear relation is not deleted)
+</td></tr>
+<tr>
+<td>REPLACE
+</td>
+<td>(%x)(%y):=SYN(%x;%y);
+</td>
+<td>The linear relation between %x and %y is replaced by the relation SYN between the same nodes (i.e., the linear relation is deleted)
+</td></tr>
+</tbody></table>
+<div align="center">Where SYN is a syntactic relation, and %x and %y are nodes.</div>
+<div class="mw-heading mw-heading3"><h3 id="Tree-to-List_Rules">Tree-to-List Rules</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=T-rule&amp;veaction=edit&amp;section=9" title="Edit section: Tree-to-List Rules" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=T-rule&amp;action=edit&amp;section=9" title="Edit section&#39;s source code: Tree-to-List Rules">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>The tree-to-list (TL) rules are used to linearize the tree structure into a list structure. There is one single type of TL rule:
+</p><p>There is a single type of TL rule:
+</p>
+<table cellpadding="5" border="1" align="center">
+<caption>TL rule
+</caption>
+<tbody><tr>
+<th>ACTION
+</th>
+<th>RULE
+</th>
+<th>DESCRIPTION
+</th></tr>
+<tr>
+<td>REPLACE
+</td>
+<td>SYN(%x;%y):=(%x)(%y);
+</td>
+<td>The relation SYN between %x and %y is replaced by a linear relation between %x and %y
+</td></tr></tbody></table>
+<div align="center">Where SYN is a syntactic relation and %x and %y are nodes.</div>
+<div class="mw-heading mw-heading3"><h3 id="Tree-to-Network_Rules">Tree-to-Network Rules</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=T-rule&amp;veaction=edit&amp;section=10" title="Edit section: Tree-to-Network Rules" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=T-rule&amp;action=edit&amp;section=10" title="Edit section&#39;s source code: Tree-to-Network Rules">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>The tree-to-network (TN) rules derive a semantic network out of a syntactic tree. 
+</p><p>There are 2 types of TN rules:
+</p>
+<table cellpadding="5" border="1" align="center">
+<caption>TN rule
+</caption>
+<tbody><tr>
+<th>ACTION
+</th>
+<th>RULE
+</th>
+<th>DESCRIPTION
+</th></tr>
+<tr>
+<td>ADD
+</td>
+<td>SYN(%x;%y):=+SEM(%w;%x);
+</td>
+<td>The semantic relation SEM between the nodes %w and %x is created if there is a syntactic relation SYN between the nodes %x and %y
+</td></tr>
+<tr>
+<td>REPLACE
+</td>
+<td>SYN(%x;%y):=SEM(%x;%y);
+</td>
+<td>The syntactic relation SYN between the nodes %x and %y is replaced by the semantic relation SEM between the same nodes.
+</td></tr></tbody></table>
+<div align="center">Where SYN is a syntactic relation, SEM is a semantic relation, and %x, %y, %w and %z are nodes.</div>
+<div class="mw-heading mw-heading3"><h3 id="Network-to-Tree_Rules">Network-to-Tree Rules</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=T-rule&amp;veaction=edit&amp;section=11" title="Edit section: Network-to-Tree Rules" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=T-rule&amp;action=edit&amp;section=11" title="Edit section&#39;s source code: Network-to-Tree Rules">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>The network-to-tree (NT) rules reorganizes the network structure as a deep tree structure. 
+</p><p>There are two types of TN rules:
+</p>
+<table cellpadding="5" border="1" align="center">
+<caption>NT rule
+</caption>
+<tbody><tr>
+<th>ACTION
+</th>
+<th>RULE
+</th>
+<th>DESCRIPTION
+</th></tr>
+<tr>
+<td>ADD
+</td>
+<td>SEM(%x;%y):=+SYN(%w;%x);
+</td>
+<td>The syntactic relation SYN between the nodes %w and %x is created if there is a semantic relation SEM between the nodes %x and %y
+</td></tr>
+<tr>
+<td>REPLACE
+</td>
+<td>SEM(%x;%y):=SYN(%x;%y);
+</td>
+<td>The semantic relation SEM between the nodes %x and %y is replaced by the syntactic relation SYN between the same nodes.
+</td></tr></tbody></table>
+<div align="center">Where SYN is a syntactic relation, SEM is a semantic relation, and %x, %y, %w and %z are nodes.</div>
+<div class="mw-heading mw-heading2"><h2 id="Special_types_of_transformation_rules">Special types of transformation rules</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=T-rule&amp;veaction=edit&amp;section=12" title="Edit section: Special types of transformation rules" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=T-rule&amp;action=edit&amp;section=12" title="Edit section&#39;s source code: Special types of transformation rules">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<ul><li><a href="/wiki/A-rule" title="A-rule">A-rule</a> is a specific type of T-rule used for affixation (prefixation, infixation, suffixation)</li>
+<li><a href="/wiki/C-rule" title="C-rule">C-rule</a> is a specific type of T-rule used for composition (word formation in case of compounds and multiword expressions)</li>
+<li><a href="/wiki/L-rule" title="L-rule">L-rule</a> is a specific type of T-rule used for handling word order</li>
+<li><a href="/wiki/N-rule" title="N-rule">N-rule</a> is a specific type of T-rule used for segmenting sentences and normalizing the input text</li>
+<li><a href="/wiki/S-rule" title="S-rule">S-rule</a> is a specific type of T-rule used for handling syntactic structures</li></ul>
+<div class="mw-heading mw-heading2"><h2 id="General_properties_of_transformation_rules">General properties of transformation rules</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=T-rule&amp;veaction=edit&amp;section=13" title="Edit section: General properties of transformation rules" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=T-rule&amp;action=edit&amp;section=13" title="Edit section&#39;s source code: General properties of transformation rules">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<dl><dt>PRIORITY</dt>
+<dd>Rules are applied serially, according to the order defined in the grammar. The first rule will be the first to be applied, the second will be the second, and so on. In case of the same rule being applicable more than once, rules are applied from left to right (in case of lists) and top-down (in case of graphs).
+<dl><dd>For instance:
+<dl><dd>List structure
+<dl><dd>INPUT = [a][ ][beautiful][ ][book]</dd>
+<dd>GRAMMAR =
+<dl><dd>RULE#1: ([ ]):=; (delete the blank space)</dd>
+<dd>RULE#2: ([beautiful])([ ])([book]):=([book])([beautiful]); (replace "beautiful+blank+book" by "book+beautiful")</dd></dl></dd>
+<dd>RESULT:
+<dl><dd>INITIAL STATE: [a][ ][beautiful][ ][book]</dd>
+<dd>STATE#1: [a][beautiful][ ][book] (the RULE#1 is the first applicable rule to appear in the grammar and, therefore, is the first one to be applied, and it will apply to the leftmost blank)</dd>
+<dd>STATE#2: [a][beautiful][book] (the RULE#1  applies a second time, because there is a second blank space in the input)</dd>
+<dd>FINAL STATE: [a][beautiful][book] (the RULE#2 never applies, because its condition is no longer true after the second application of RULE#1)</dd></dl></dd></dl></dd>
+<dd>Graph structure
+<dl><dd>INPUT = mod(book,beautiful)mod(book,new)</dd>
+<dd>GRAMMAR =
+<dl><dd>RULE#1: mod(%x;%y):=NA(%x;%y); (replace the mod relation between the nodes %x and %y by a NA relation between the same nodes)</dd></dl></dd>
+<dd>RESULT:
+<dl><dd>INITIAL STATE: mod(book,beautiful)mod(book,new)</dd>
+<dd>STATE#1: NA(book,beautiful)mod(book,new) (the RULE#1 is the first applicable rule to appear in the grammar and, therefore, is the first one to be applied, and it will apply to the topmost relation, i.e., the first one to appear in the graph)</dd>
+<dd>STATE#2: NA(book,beautiful)NA(book,new) (the RULE#1  applies a second time, because there is a second mod relation to be replaced)</dd>
+<dd>FINAL STATE: NA(book,beautiful)NA(book,new)</dd></dl></dd></dl></dd></dl></dd></dl></dd></dl>
+<dl><dt>RECURSIVENESS</dt>
+<dd>Rules are applied recursively as long as their conditions are true. Because of that, special attention should be paid to ADD rules:</dd></dl>
+<ul><li><strike>(%x,A):=(%x,+B);</strike> (creates an infinite loop, because the feature B will be added infinitely to the node %x)<br /></li></ul>
+<p>In order to avoid the endless repetition, the condition side must be changed to (%x,A,^B):=(%x,+B); (the rule applies only once)
+</p>
+<ul><li><strike>REL1(%x;%y):=+REL2(%x;%z);</strike> (creates an infinite loop, because the REL2 will be added infinitely to the graph)<br /></li></ul>
+<p>In order to avoid the endless repetition, the condition side must be changed to REL1(%x;%y)^REL(%x;%z):=+REL2(%x;%z); OR
+REL1(%x,^BREAK;%y):=+REL2(%x,+BREAK;%z); (the rule applies only once)
+</p>
+<dl><dt>COMPREHENSIVENESS</dt>
+<dd>Grammars are applied comprehensively as long as there is at least one applicable rule.</dd></dl>
+<dl><dt>CONSERVATION</dt>
+<dd>Rules affect only the information clearly specified. No relation, node or feature is deleted unless explicitly informed.<br /></dd>
+<dd>For instance, in the examples below, the source node of the “agt” relation preserves, in all cases, the value “a”. The only change concerns the feature “c”, which is added to the source node of the “agt” in the first two cases; and the feature “b”, which is deleted from the target node in the third case.
+<dl><dd><dl><dd>agt(a;b):=agt(c;);</dd>
+<dd>agt(a;b):=agt(+c;);</dd>
+<dd>agt(a;b):=agt(;-b);</dd></dl></dd></dl></dd>
+<dd>In any case, the ADD and DELETE rules (i.e., when the right side starts with “+” or “-“) preserve the items in the left side, except for the explicitly deleted ones:
+<dl><dd><dl><dd>INPUT: 	agt(%x;%y) obj(%x;%z) tim(%x;%w)</dd>
+<dd>RULE: 	agt(%x;%y) ^mod(%x;%k):=+mod(%x;%k);</dd>
+<dd>OUTPUT: 	agt(%x;%y) obj(%x;%z) tim(%x;%w) mod(%x;%k)</dd></dl></dd></dl></dd>
+<dd>or
+<dl><dd><dl><dd>INPUT: 	agt(%x;%y) obj(%x;%z) tim(%x;%w)</dd>
+<dd>RULE: 	agt(%x;%y):=-agt(%x;%y);</dd>
+<dd>OUTPUT: 	obj(%x;%z) tim(%x;%w)</dd></dl></dd></dl></dd></dl>
+<dl><dt>SCOPE</dt>
+<dd>LL and LT rules apply over nodes, whereas NN, TT, NT, TN and TL rules apply over relations.
+<dl><dd>Nodes may be deleted only through LL and LT rules (i.e., when appearing in the left side of rules).
+<dl><dd>(A):=; (the node containing the feature "A" is deleted)</dd>
+<dd>(%A,A):=-(%A); (the node containing the feature "A" is deleted - the same as above)</dd>
+<dd>(%A,A)(%B,B):=(%A); (the node containing the feature "B" is deleted because not present in the right side - see <a href="#Indexes">indexes</a>)</dd>
+<dd>(%A,A)(%B,B)(%C,C):=REL(%A;%B); (the node containing the feature "C" is deleted, because not present in the right side - see  <a href="#Indexes">indexes</a>)</dd></dl></dd>
+<dd>Nodes may not be deleted through NN, TT, NT, TN and TL rules (i.e., when not appearing in the left side of rules).
+<dl><dd>REL(%A,A;%B,B;%C,C):=(%A)(%B); (the relation between the nodes containing the features "A", "B" and "C" is replaced by a linear relation between the nodes containing the features "A" and "B". The node "C", however, is not deleted, even though absent from the right side - see <a href="#Indexes">indexes</a>)</dd></dl></dd>
+<dd>Relations may be deleted directly through NN, TT, NT, TN and TL rules, and indirectly through LL and LT rules (when their nodes are deleted).
+<dl><dd>REL(A;B):=; (The relation between the nodes containing the features "A" and "B" is deleted, but the nodes are preserved)</dd>
+<dd>REL(A;B)REL(%C,C;%D,D):=REL(%C;%D); (The relation between the nodes containing the features "A" and "B" is deleted; its nodes and the relation between the nodes containing the features "C" and "D" are preserved)</dd>
+<dd>(A):=; (The node containing the feature "A" is deleted, as well as all relations in which it figures as an argument)</dd></dl></dd></dl></dd></dl>
+<dl><dt>INDEXATION</dt>
+<dd>All instances of the same node must be co-indexed (or they will be considered different nodes). See <a href="/wiki/Indexation" class="mw-redirect" title="Indexation">Indexation</a>.
+<dl><dd>(%a)(%b):=(%a); (delete the node %b)</dd>
+<dd>(%a)(%b):=(%b); (delete the node %a)</dd>
+<dd>rel(%a;%b):=rel(%a;%c); (replace the node %b by the node %c; the node %a does not undergo any change)</dd>
+<dd>SYN(%x,^NUM;%y,NUM):=SYN(%x,NUM=%y;%y); (copy the value of the attribute NUM from the node %y to the node %x)</dd></dl></dd></dl>
+<dl><dt>ACTION</dt>
+<dd>Rules may add or delete values to the source and the target nodes, but only in the right side items:
+<dl><dd><dl><dd>agt(a;b):=agt(+c;);</dd>
+<dd>agt(a;b):=agt(;-b);</dd></dl></dd></dl></dd></dl>
+<dl><dt>CONJUNCTION</dt>
+<dd>Both the left and the right side of the rule may have as many items as necessary, as exemplified below:<br />
+<dl><dd><dl><dd>SEM(A;B)SEM(C;D)SEM(E;F):=SEM(G;H)SEM(I;J)SEM(K;L);</dd></dl></dd></dl></dd></dl>
+<dl><dt>DISJUNCTION</dt>
+<dd>The left side of the rules may bring disjuncts, but not the right side. Disjuncts must be represented between {braces} and must be separated by |.
+<dl><dd><dl><dd>{SEM(A;B)|SEM(C;D)}^SEM(E;F):=+SEM(E;F);</dd>
+<dd>SEM(A;B){SEM(C;D)|SEM(E;F)}:=-SEM(A;B);</dd>
+<dd>agt(VER,{V01|V02};NOU,^SNG}:=;</dd></dl></dd></dl></dd></dl>
+<dl><dt>REGULAR EXPRESSIONS</dt>
+<dd>The left side of the rules may bring <a href="/wiki/Regular_expressions" class="mw-redirect" title="Regular expressions">regular expressions</a> between "/":
+<dl><dd>/(agt|obj|aoj)/(A,%a;B,%b):=VS(%a;%b);
+<dl><dd>The rule above applies in case of agt(A;B), obj(A;B) and aoj(A;B)</dd></dl></dd>
+<dd>/[a-z]{2,3}/(A,%a;B,%b):=VS(%a;%b);
+<dl><dd>The rule above applies in case of any sequence of two or three alphabetic characters in the position of relation of A and B</dd></dl></dd>
+<dd>agt(/(VER|NOU)/,%a;%b):=VS(%a;%b);
+<dl><dd>The rule above applies in case of VER and NOU as features of the first node of the relation "agt"</dd></dl></dd>
+<dd>agt(POS=/(VER|NOU)/,%a;%b):=VS(%a;%b);
+<dl><dd>The rule above applies in case of VER and NOU as values of the attribute POS of the first node of the relation "agt"</dd></dl></dd></dl></dd></dl>
+<dl><dt>CONCISION</dt>
+<dd>In order for rules to be as small as possible, the source and the target nodes may be simple place-holders or <a href="#Indexes">indexes</a>:
+<dl><dd><dl><dd>cob(;):=obj(;);</dd>
+<dd>tim(%01;[[in]]),obj([[in]];%02):=tim(%01;%02);</dd>
+<dd>tim(VER,%01;[[in]]),obj([[in]];NOU,%02):=tim(%01;%02);</dd>
+<dd>tim(VER;<a href="/wiki/In" class="mw-redirect" title="In">in</a>),obj(<a href="/wiki/In" class="mw-redirect" title="In">in</a>;NOU):=tim(;%04);</dd></dl></dd></dl></dd>
+<dd>In the DELETE rules, the right side may be omitted in case of deletion of the entire left side:
+<dl><dd><dl><dd>obj(PRE;):=;</dd></dl></dd></dl></dd></dl>
+<dl><dt>READABILITY</dt>
+<dd>There can be blank spaces between variables and symbols. Comments can be added after the “;”.
+<dl><dd><dl><dd>obj (&#160;; )&#160;:=&#160;; this rule deletes every “obj” relation.</dd></dl></dd></dl></dd></dl>
+<dl><dt>COMMUTATIVITY</dt>
+<dd>Inside the same side of NN, NT, TT and TN rules, the order of the factors does not affect the result<sup id="cite_ref-1" class="reference"><a href="#cite_note-1"><span class="cite-bracket">&#91;</span>1<span class="cite-bracket">&#93;</span></a></sup>
+<dl><dd><dl><dd>SEM(A;B):=SEM(C;D)SEM(E;F);    IS EQUIVALENT TO    SEM(A;B):= SEM(E;F)SEM(C;D);</dd>
+<dd>SYN(A;B):=SYN(C;D)SYN(E;F);    IS EQUIVALENT TO    SYN(A;B):= SYN(E;F)SYN(C;D);</dd></dl></dd></dl></dd>
+<dd>The order of the factors affect the result in case list-processing rules (LL, LT and TL):
+<dl><dd><dl><dd>(A):=(B)(C);       IS DIFFERENT FROM   (A):=(C)(B);</dd>
+<dd>SYN(A;B):=(C)(D);  IS DIFFERENT FROM   SYN(A;B):=(D)(C);</dd>
+<dd>(C)(D):=SYN(A;B);  IS DIFFERENT FROM   (D)(C):=SYN(A;B);</dd></dl></dd></dl></dd>
+<dd>Additionally, the order of the features inside a relation does not affect the end result, but the order of the nodes is non-commutative.
+<dl><dd><dl><dd>SEM( VER,TRA&#160;; NOU,MCL )    IS THE SAME AS    SEM( TRA,VER&#160;; MCL,NOU )</dd></dl></dd></dl></dd>
+<dd>But:
+<dl><dd><dl><dd>SEM( VER,TRA&#160;; NOU,MCL)     IS DIFFERENT FROM   SEM( NOU,MCL&#160;; VER,TRA )</dd></dl></dd></dl></dd></dl>
+<dl><dt>DICTIONARY RULES (see also <a href="/wiki/Dictionary_Specs#Inflection_rules_inside_dictionary_entries.2A" class="mw-redirect" title="Dictionary Specs"> Inflection rules inside dictionary entries</a>)</dt>
+<dd>Dictionary rules are triggered by <b>"!"&lt;ATTRIBUTE&gt;</b>:
+<dl><dd>Dictionary
+<dl><dd>[foot] "foot" (NOU, NUM(PLR:=”oo”:”ee”)) &lt;eng,0,0&gt;;</dd>
+<dd>[city] "city" (NOU, NUM(PLR:=”y”&gt;”ies”)) &lt;eng,0,0&gt;;</dd></dl></dd>
+<dd>Grammar
+<dl><dd>(@pl, NUM):=(!NUM,-@pl);</dd></dl></dd>
+<dd>Output
+<dl><dd>foot&gt;feet</dd>
+<dd>city&gt;cities</dd></dl></dd></dl></dd></dl>
+<div class="mw-heading mw-heading2"><h2 id="Formal_Syntax_of_Transformation_Rules">Formal Syntax of Transformation Rules</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=T-rule&amp;veaction=edit&amp;section=14" title="Edit section: Formal Syntax of Transformation Rules" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=T-rule&amp;action=edit&amp;section=14" title="Edit section&#39;s source code: Formal Syntax of Transformation Rules">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<pre>&lt;TRANSFORMATION RULE&gt;&#160;::= &lt;NN RULE&gt; | &lt;NT RULE&gt; | &lt;TT RULE&gt; | &lt;TL RULE&gt; | &lt;LL RULE&gt; | &lt;LT RULE&gt; | &lt;TN RULE&gt;
+&lt;NN RULE&gt;            &#160;::= (&lt;SEM&gt;)+ ":=" ( ("-"|"+")? &lt;SEM&gt; )* ";"
+&lt;TT RULE&gt;            &#160;::= (&lt;SYN&gt;)+ ":=" ( ("-"|"+")? &lt;SYN&gt; )* ";"
+&lt;LL RULE&gt;            &#160;::= ( "(" &lt;NODE&gt; ")" )+ ":=" ( ("-"|"+")? "(" &lt;NODE&gt; ")" )* ";"
+&lt;NT RULE&gt;            &#160;::= (&lt;SEM&gt;)+ ":=" ( &lt;SYN&gt; )+ ";"
+&lt;TN RULE&gt;            &#160;::= (&lt;SYN&gt;)+ ":=" ( &lt;SEM&gt; )+ ";"
+&lt;TL RULE&gt;            &#160;::= (&lt;SYN&gt;)+ ":=" ( "(" &lt;NODE&gt; ")" )+ ";"
+&lt;LT RULE&gt;            &#160;::= ( "(" &lt;NODE&gt; ")" )+ ":=" ( &lt;SYN&gt; )+ ";"
+&lt;SEM&gt;                &#160;::= &lt;TEXT&gt; "(" &lt;NODE&gt; ";" &lt;NODE&gt; ")"
+&lt;SYN&gt;                &#160;::= &lt;TEXT&gt; "(" &lt;NODE&gt; ";" &lt;NODE&gt; ")"
+&lt;NODE&gt;               &#160;::= ( (&lt;DESCRIPTION&gt;)( "," &lt;DESCRIPTION&gt; )* )?
+&lt;DESCRIPTION&gt;        &#160;::= &lt;STRING&gt; | &lt;ENTRY&gt; | &lt;SUB-ENTRY&gt; | &lt;FEATURE&gt; | &lt;INDEX&gt; | &lt;RELATION&gt;
+&lt;STRING&gt;             &#160;::= """&lt;text&gt;"""
+&lt;ENTRY&gt;              &#160;::= "["&lt;entry&gt;"]"
+&lt;SUB-ENTRY&gt;          &#160;::= &lt;INDEX&gt;"#"[01-99]
+&lt;FEATURE&gt;            &#160;::= &lt;VALUE&gt; | &lt;ATTRIBUTE&gt; | &lt;ATTRIBUTE&gt;"="&lt;VALUE&gt;
+&lt;INDEX&gt;              &#160;::= ( "%"([01-99]|[a-zA-Z_]+) )+
+&lt;RELATION&gt;           &#160;::= &lt;SEM&gt;|&lt;SYN&gt;
+&lt;VALUE&gt;              &#160;::= &lt;TEXT&gt;
+&lt;ATTRIBUTE&gt;          &#160;::= &lt;TEXT&gt;
+&lt;TEXT&gt;               &#160;::= any sequence of characters except whitespace | &lt;REGULAR EXPRESSION&gt;
+&lt;REGULAR EXPRESSION&gt; &#160;::= "/"&lt;<a rel="nofollow" class="external text" href="http://www.pcre.org/">PERL COMPATIBLE REGULAR EXPRESSIONS</a>&gt;"/"
+</pre>
+<p>Where: <br />
+"" = constant<br />
++ = to be repeated one or more times<br />
+* = to be repeated zero or more times<br />
+? = to be repeated zero or one time<br />
+| = or<br />
+[x-y] = from x to y<br />
+</p>
+<div class="mw-heading mw-heading2"><h2 id="Examples_of_Rules">Examples of Rules</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=T-rule&amp;veaction=edit&amp;section=15" title="Edit section: Examples of Rules" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=T-rule&amp;action=edit&amp;section=15" title="Edit section&#39;s source code: Examples of Rules">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>In the examples below:
+</p>
+<ul><li>L(A;B) is a linear (list) relation between A and B (i.e., L(A;B) = (A)(B))<br /></li>
+<li>REL(A;B) is a non-linear (tree or network) relation between A and B<br /></li>
+<li>%X is the index for a node<br /></li>
+<li>:X indicates that the following relation or node is inside the hyper-node X<br /></li>
+<li>A,B,C,D,B1,B2,B3 and B4 are features of the nodes %A,%B,%C,%D,%B1,%B2,%B3 and %B4, respectively.<br /></li></ul>
+<div class="mw-heading mw-heading3"><h3 id="LL_RULES">LL RULES</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=T-rule&amp;veaction=edit&amp;section=16" title="Edit section: LL RULES" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=T-rule&amp;action=edit&amp;section=16" title="Edit section&#39;s source code: LL RULES">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<pre>INITIAL STATE: L(%A;%B) L(%B;%C) L(%C;%D) L:B(%B1;%B2) L:B(%B2;%B3) REL:B(%B1;%B4)
+</pre>
+<dl><dt>LL#1: (B):=;</dt>
+<dd>(Delete all nodes having the feature B, wherever they are)</dd>
+<dd>FINAL STATE: L(%A;%C) L(%C;%D) <br /></dd>
+<dd>The whole hyper-node %B will be deleted, including all its nodes, no matter in which level.</dd></dl>
+<dl><dt>LL#2: (B1):=;</dt>
+<dd>(Delete all nodes having the feature B1, wherever they are)</dd>
+<dd>FINAL STATE: L(%A;%B) L(%B;%C) L(%C;%D) L:B(%B2;%B3) :B(%B4)</dd>
+<dd>Only the node (%B1) is deleted. The relation REL is also deleted, but the node %B4 is preserved as an isolated node inside the hyper-node %B.</dd></dl>
+<dl><dt>LL#3: ((B1)):=;</dt>
+<dd>(Delete any hyper-node that contains the node having the feature B1, wherever they are);</dd>
+<dd>FINAL STATE: L(%A;%C) L(%C;%D)</dd>
+<dd>The whole hyper-node %B will be deleted, including all its nodes, no matter in which level.</dd></dl>
+<dl><dt>LL#4: (B1):=(NEW);</dt>
+<dd>(Add the feature “NEW” to all nodes having the feature B1)</dd>
+<dd>FINAL STATE: L(%A;%B) L(%B;%C) L(%C;%D) L:B(%B1;%B2) L:B(%B2;%B3) REL:B(%B1;%B4) (NO CHANGE IN THE NODE STRUCTURE)</dd>
+<dd>There is no indexes in the left and the right side, which have the same number of nodes. This means that they are automatically co-indexed. No node is deleted or replaced. The feature “NEW” is added to the the node %B1, because it contains the feature B1. This rule provokes a look, because the feature NEW will be added indefinitely to the node %B1. In order to avoid this, the condition should be set (B1,^NEW):=(NEW);</dd></dl>
+<dl><dt>LL#5: (%x,B1):=(%y,NEW); </dt>
+<dd>(Replace any node having the feature B1 by a new node having the feature NEW)</dd>
+<dd>FINAL STATE: L(%A;%B) L(%B;%C) L(%C;%D) L:B(%NEW;%B2) L:B(%B2;%B3) REL:B(%NEW;%B4)</dd>
+<dd>The node %B1 is deleted and replaced by a new node %NEW. Notice that all instances of the node are replaced.</dd></dl>
+<dl><dt>LL#6: ({(B1)|(B3)}):=;</dt>
+<dd>(Delete any hyper-node that contains nodes having the features B1 or B3);</dd>
+<dd>FINAL STATE: L(%A;%C) L(%C;%D)</dd>
+<dd>The whole hyper-node %B will be deleted, including all its nodes, no matter in which level.</dd></dl>
+<dl><dt>LL#7: ((B1)(B2)):=;</dt>
+<dd>(Delete any hyper-node that contains the relation L(B1;B2));</dd>
+<dd>FINAL STATE: L(%A;%C) L(%C;%D)</dd>
+<dd>The whole hyper-node %B will be deleted, including all its nodes, no matter in which level.</dd></dl>
+<dl><dt>LL#8: ((B1)(B3)):=; </dt>
+<dd>(Delete any hyper-node that contains the relation L(B1;B3))</dd>
+<dd>Nothing happens. The condition is not true in the case of the initial state indicated above.</dd></dl>
+<dl><dt>LL#9: ((B1)):=(-feature); </dt>
+<dd>(Remove the feature “feature” from any hyper-node containing a node with the feature B1)</dd>
+<dd>As the left and the right side do not have indexes, they are automatically co-indexed. The co-indexation, however, is valid only to the hyper-node level, because the right side does not contain any inner node. In that sense, the feature “feature” is not removed from the inner node, but from the hyper-node.</dd></dl>
+<dl><dt>LL#10: ((B1)):=((-feature)); </dt>
+<dd>(Remove the feature “feature” from anynode having the feature B1 which is inside a hyper-node)</dd>
+<dd>The automatic indexation affects both levels: the hyper-node and the node, because they are equivalent. The rule is the same as (%x,(%y,B1)):=(%x,(%y,-feature));. The feature “feature” is now removed from the inner node and not from the hyper-node.</dd></dl>
+<dl><dt>LL#11: ((%x,B1)):=((%y,NEW));</dt>
+<dd>(Replace any node containing the feature B1 inside a hyper-node by a new node containing the feature 'NEW')</dd>
+<dd>FINAL STATE: L(%A;%B) L(%B;%C) L(%C;%D) L:B(%NEW;%B2) L:B(%B2;%B3) REL:B(%NEW;%B4)</dd>
+<dd>The same as (%x,B1):=(%y,NEW); but inside a hyper-node (i.e., the rule applies only to the nodes having the feature B1 which are inside some other node).</dd></dl>
+<dl><dt>LL#12: ((B1)):=((E)(F)); </dt>
+<dd>(Replace any node containing the feature B1 by a linear relation between two new nodes containing the features E and F, respectively)</dd>
+<dd>FINAL STATE:&#160;: L(%A;%B) L(%B;%C) L(%C;%D) L:B(%B2;%B3) REL:B(%HB;%B4) L:HB(%E;%F)</dd>
+<dd>The same as (%x,B1):=(%y,E)(%z,F); but inside a hyper-node (i.e., the rule applies only to the nodes having the feature B1 which are inside some other node). The linear relation between the nodes (%B1) and (%B2) disappear, because (%B1) is an argument of a non-linear relation REL(%B1;%B4) and should be replaced, therefore, by a hyper-node instead of a simple sequence of nodes (%E)(%F), since <strike>REL((%E)(%F);(%B4))</strike> is not possible. As a consequence, the nodes (%E) and (%F) are created inside the hyper-node %HB and may not hold any linear relation with %B2, because they are now in different scopes.</dd></dl>
+<dl><dt>LL#13: ((B1)):=(((E)(F),-B1)); </dt>
+<dd>(Replace any node containing the feature B1 by a new node containing a linear relation between two new nodes containing the features E and F, respectively)</dd>
+<dd>FINAL STATE: L(%A;%B) L(%B;%C) L(%C;%D) L:B(%HB;%B2) L:B(%B2;%B3) REL:B(%HB;%B4) L:HB(%E;%F)</dd>
+<dd>The same as (%x,(%a,B1)):=(%x,(%b,E)(%c,F)); but inside a hyper-node (i.e., the rule applies only to the nodes having the feature B1 which are inside some other node). Differently from the previous example, the node containg the feature B1 is replaced by a hyper-node and not by two other nodes of the same level. As the system is conservative, the feature B1 has to deleted in order to prevent the rule from applying eternally.</dd></dl>
+<dl><dt>LL#14:((B1)):=((E),(F)); </dt>
+<dd>(Replace the node containing the feature B1 by two new nodes containing the features E and F, respectively)</dd>
+<dd>FINAL STATE: L(%A;%B) L(%B;%C) L(%C;%D) L:B(%HB;%B2) L:B(%B2;%B3) REL:B(%HB;%B4) :HB(%E) :HB(%F)</dd>
+<dd>The nodes (E) and (F) no longer constitute a linear relation, and are added as isolated notes to the hyper-node. Because of that, (B1) has to be replaced, necessarily, by a hyper-node. This means that this rule will have exactly the same effect of the rule below.</dd></dl>
+<dl><dt>LL#15:((B1)):=(((E),(F),-B1)); </dt>
+<dd>(Replace the node containing the feature B1 by two new nodes containing the features E and F, respectively)</dd>
+<dd>FINAL STATE: L(%A;%B) L(%B;%C) L(%C;%D) L:B(%HB;%B2) L:B(%B2;%B3) REL:B(%HB;%B4) :HB(%E) :HB(%F)</dd>
+<dd>The nodes (E) and (F) no longer constitute a linear relation, and are added as isolated notes to the hyper-node. As the system is conservative, the feature B1 has to deleted in order to prevent the rule from applying eternally.</dd></dl>
+<dl><dt>LL#16: (REL(%B1;%B4)):=(NEWREL(%B1;%B5));</dt>
+<dd>(Replace the relation REL between the nodes %B1 and %B4 by a new relation NEWREL between the existing node %B1 and a new node %B5)</dd>
+<dd>FINAL STATE: L(%A;%B) L(%B;%C) L(%C;%D) L:B(%B1;%B2) L:B(%B2;%B3) NEWREL:B(%B1;%B5) :B(%B4)</dd>
+<dd>Nodes on both sides are automatically co-indexed, because their number is the same. Therefore, the relation on the left side is replaced by the relation on the right side in the same hyper-node. No node is deleted: notice that %B4 is still there. This is the same as REL(A;B):=REL(C;D);.</dd></dl>
+<dl><dt>LL#17:(B1)(B2):=; </dt>
+<dd>(The same as L(%B1;%B2):=; i.e., delete the linear relation between %B1 and %B2)</dd>
+<dd>FINAL STATE: L(%A;%B) L(%B;%C) L(%C;%D) :B(%B3) REL:B(%B1;%B4)</dd>
+<dd>The linear relation between (%B1) and (%B2) is deleted, but the nodes (%B1) and (%B2) are preserved if part of other non-linear relations.</dd></dl>
+<dl><dt>LL#18:(B1)(B2):=(B5); </dt>
+<dd>(The same as L(%B1;%B2):=(%B5); i.e., replace the linear relation between %B1 and %B2 by %B5)</dd>
+<dd>FINAL STATE: L(%A;%B) L(%B;%C) L(%C;%D) L:B(%B5;%B3) REL:B(%B1;%B4)</dd>
+<dd>The linear relation between (%B1) and (%B2) is replaced by %B5, but the nodes (%B1) and (%B2) are preserved if part of other non-linear relations.</dd></dl>
+<dl><dt>LL#19:(%B1,B1)(B2):=(%B1); </dt>
+<dd>(The same as L(%B1;%B2):=(%B1); i.e., replace the linear relation between %B1 and %B2 by %B1)</dd>
+<dd>FINAL STATE: L(%A;%B) L(%B;%C) L(%C;%D) L:B(%B1;%B3) REL:B(%B1;%B4)</dd>
+<dd>The linear relation between (%B1) and (%B2) is replaced by %B1, but the nodes (%B1) and (%B2) are preserved if part of other non-linear relations.</dd></dl>
+<dl><dt>LL#20:(B1)(%B2,B2):=(%B2); </dt>
+<dd>(The same as L(%B1;%B2):=(%B2); i.e., replace the linear relation between %B1 and %B2 by %B2)</dd>
+<dd>FINAL STATE: L(%A;%B) L(%B;%C) L(%C;%D) L:B(%B2;%B3) REL:B(%B1;%B4)</dd>
+<dd>The linear relation between (%B1) and (%B2) is replaced by %B2, but the nodes (%B1) and (%B2) are preserved if part of other non-linear relations.</dd></dl>
+<dl><dt>LL#21:(%B1,B1)(%B2,B2):=(%B1,(%B2));</dt>
+<dd>(replace the linear relation between %B1 and %B2 by the node %B1 with %B2 inside as an isolated node)</dd>
+<dd>FINAL STATE: L(%A;%B) L(%B;%C) L(%C;%D) L:B(%B1;%B3) REL:B(%B1;%B4) :B1(%B2)</dd>
+<dd>The linear relation between (%B1) and (%B2) is replaced by %B1, but the nodes (%B1) and (%B2) are preserved if part of other non-linear relations.</dd></dl>
+<dl><dt>LL#22: (%D,D):=(%D,-D,+D1)(%D,-D,+D2);</dt>
+<dd>(Duplicate the node having the feature D, wherever they are)</dd>
+<dd>FINAL STATE: L(%A;%B) L(%B;%C) L(%C;%D1) L(%D1;%D2) L:B(%B1;%B2) L:B(%B2;%B3) REL:B(%B1;%B4)</dd>
+<dd>The whole hyper-node %D will be duplicated, including all its nodes, no matter in which level. Node duplication occurs only in LL rules. As the system is conservative, the feature D has to deleted in order to prevent the rule from applying eternally.</dd></dl>
+<div class="mw-heading mw-heading3"><h3 id="LT_RULES">LT RULES</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=T-rule&amp;veaction=edit&amp;section=17" title="Edit section: LT RULES" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=T-rule&amp;action=edit&amp;section=17" title="Edit section&#39;s source code: LT RULES">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<pre>INITIAL STATE: L(%A;%B) L(%B;%C) L(%C;%D) L:B(%B1;%B2) L:B(%B2;%B3) REL:B(%B1;%B4)
+</pre>
+<dl><dt>LT#1: (%B1,B1)(%B2,B2):=REL(%B1;%B2); </dt>
+<dd>(Replace the relation L(%B1;%B2) by the relation REL(%B1;%B2))</dd>
+<dd>FINAL STATE: L(%A;%B) L(%B;%C) L(%C;%D) REL:B(%B1;%B2) L:B(%B2;%B3) REL:B(%B1;%B4)</dd>
+<dd>No node is deleted, but there’s no longer a linear relation between %B1 and %B2. There’s still, however, a linear relation between %B2 and %B3 inside the hyper-node %B.</dd></dl>
+<dl><dt>LT#2: (%B1,B1)(%B2,B2):=+REL(%B1;%B2); </dt>
+<dd>(Add the relation REL(%B1;%B2) to the graph )</dd>
+<dd>FINAL STATE: L(%A;%B) L(%B;%C) L(%C;%D) L:B(%B1;%B2) L:B(%B2;%B3) REL:B(%B1;%B4) REL(%B1;%B2)</dd>
+<dd>No node or relation is deleted. A new relation is created in the graph.</dd></dl>
+<dl><dt>LT#3: (%B1,B1)(%B2,B2)(%B3,B3):=REL(%B1;%B2); </dt>
+<dd>(Replace the relations L(%B1;%B2)L(%B2;%B3) by the relation REL(%B1;%B2))</dd>
+<dd>FINAL STATE: L(%A;%B) L(%B;%C) L(%C;%D) REL:B(%B1;%B2) REL:B(%B1;%B4)</dd>
+<dd>The node (%B3) is deleted because it is not present in the right side.</dd></dl>
+<dl><dt>LT#4: (%B1,B1)(%B3,B3)(%B2,B2):=REL(%B1;%B2); </dt>
+<dd>(Replace the relations L(%B1;%B3)L(%B3;%B2) by the relation REL(%B1;%B2))</dd>
+<dd>Nothing happens. The condition is not true in this case.</dd></dl>
+<dl><dt>LT#5: (%B1,B1):=REL(%B1;%B5); (Replace the node having the feature B1 by the relation REL(%B1;%B5))</dt>
+<dd>FINAL STATE: L(%A;%B) L(%B;%C) L(%C;%D) L:B(%B2;%B3) REL:B(%HB;%B4) REL:HB(%B1;%B5)</dd>
+<dd>There is no longer a linear relation between %B1 and %B2, because the node was replaced by a relation and, therefore, removed from the list structure.</dd></dl>
+<dl><dt>LT#6: (%B1,B1):=+REL(%B1;%B5); (Add the relation REL(%B1;%B5) to the graph)</dt>
+<dd>FINAL STATE: L(%A;%B) L(%B;%C) L(%C;%D) L:B(%B1;%B2) L:B(%B2;%B3) REL:B(%B1;%B4) REL(%B1;%B5)</dd>
+<dd>No node is replaced or deleted. A new relation is added to the graph.</dd></dl>
+<dl><dt>LT#7: (REL(%B1,B1;%B4,B4)):=NEWREL(%B1;%B4); (Replace the hyper-node containing the relation REL by the relation NEWREL(%B1;%B5) </dt>
+<dd>FINAL STATE: L(%A;%C) L(%C;%D) NEWREL(%B1;%B4)</dd>
+<dd>The whole hyper-node %B will be replaced by the new relation. All its inner nodes not referred to in the right side will be deleted as well.</dd></dl>
+<dl><dt>LT#8: (REL(%B1,B1;%B4,B4)):=+NEWREL(%B1;%B4); (Add the relation NEWREL(%B1;%B4) to the graph)&lt;/nowiki&gt;</dt>
+<dd>FINAL STATE: L(%A;%B) L(%B;%C) L(%C;%D) L:B(%B1;%B2) L:B(%B2;%B3) REL:B(%B1;%B4) NEWREL(%B1;%B4)</dd>
+<dd>The hyper-node remains the same. The relation NEWREL(%B1;%B4) is added to its outer scope.</dd></dl>
+<div class="mw-heading mw-heading3"><h3 id="TL_Rules">TL Rules</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=T-rule&amp;veaction=edit&amp;section=18" title="Edit section: TL Rules" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=T-rule&amp;action=edit&amp;section=18" title="Edit section&#39;s source code: TL Rules">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<pre>INITIAL STATE: L(%A;%B) L(%B;%C) REL:B(%B1;%B2) REL:B(%B1;%B3)
+</pre>
+<dl><dt>TL#1: REL(%B1;%B2)REL(%B1;%B3):=(%B1)(%B2);</dt>
+<dd>(Replace the relation REL between the nodes %B1 and %B2 and the relation REL between the nodes %B1 and %B3 by a linear relation between %B1 and %B2)</dd>
+<dd>FINAL STATE: L(%A;%B) L(%B;%C) L:B(%B1;%B2)</dd>
+<dd>The node %B3 is deleted, because it does not have any other relation with any other node inside the hyper-node.</dd>
+<dt>TL#2: REL(%B1;%B2):=(%B2);</dt>
+<dd>(Replace the relation REL between the nodes %B1 and %B2 by the node %B1)</dd>
+<dd>FINAL STATE: L(%A;%B) L(%B;%C) REL:B(%B1;%B3) :B(%B2)</dd>
+<dt>The node %B1 is not deleted, because it still has a relation with the node %B3. The relation between %B1 and %B2 is replaced by a single node %B2.</dt></dl>
+<div class="mw-heading mw-heading3"><h3 id="TT_or_NN_Rules">TT or NN Rules</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=T-rule&amp;veaction=edit&amp;section=19" title="Edit section: TT or NN Rules" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=T-rule&amp;action=edit&amp;section=19" title="Edit section&#39;s source code: TT or NN Rules">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<pre>INITIAL STATE: L(%A;%B) L(%B;%C) L(%C;%D) L:B(%B1;%B2) L:B(%B2;%B3) REL:B(%B1;%B4)
+</pre>
+<dl><dt>TT#1:REL(%x;%y):=NEWREL(%x;%y)</dt>
+<dd>FINAL STATE: L(%A;%B) L(%B;%C) L(%C;%D) L:B(%B1;%B2) L:B(%B2;%B3) NEWREL:B(%B1;%B4)</dd>
+<dd>The relation is changed, but the arguments %x and %y are preserved.</dd></dl>
+<dl><dt>TT#2: REL(%x;%y):=REL(%w;%z)</dt>
+<dd>FINAL STATE: L(%A;%B) L(%B;%C) L(%C;%D) L:B(%B1;%B2) L:B(%B2;%B3) :B(%B4) REL(%w;%z)</dd>
+<dd>The relation between %x and %y is deleted, but the nodes are preserved. Noticed that %B4 became an isolated node, but it’s still there, because no node may be deleted by a NN rule.</dd></dl>
+<pre>INITIAL STATE&#160;: REL(%x;%y;%z)
+</pre>
+<dl><dt>TT#3:REL(%x;%y;%z):=REL(%x;%y);</dt>
+<dd>FINAL STATE: REL(%x;%y) (%z)</dd>
+<dd>The node %z is not deleted.</dd></dl>
+<div class="mw-heading mw-heading2"><h2 id="Notes">Notes</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=T-rule&amp;veaction=edit&amp;section=20" title="Edit section: Notes" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=T-rule&amp;action=edit&amp;section=20" title="Edit section&#39;s source code: Notes">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<div class="mw-references-wrap"><ol class="references">
+<li id="cite_note-1"><span class="mw-cite-backlink"><a href="#cite_ref-1">↑</a></span> <span class="reference-text">It is important to consider that the resulting order of relations may affect the application of other rules in some implementations. For instance, the rules "SEM(A;B):=SEM(C;D)SEM(E;F);" and "SEM(A;B):= SEM(E;F)SEM(C;D);" will provide the same result, but the relation "SEM(C;D)" may be listed before "SEM(E;F)" in the first case, and after it in the second case. This means that a general rule like SEM(;):=SYN(;);, which would be applicable to both generated relations, will be applied first to "SEM(C;D)" in the first case, and to "SEM(E;F)" in the second case.</span>
+</li>
+</ol></div>
+<!-- 
+NewPP limit report
+Cached time: 20260909191234
+Cache expiry: 86400
+Reduced expiry: false
+Complications: [show‐toc]
+CPU time usage: 0.034 seconds
+Real time usage: 0.036 seconds
+Preprocessor visited node count: 508/1000000
+Post‐expand include size: 1663/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 3/100
+Expensive parser function count: 0/100
+Unstrip recursion depth: 0/20
+Unstrip post‐expand size: 3948/5000000 bytes
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    2.672      1 -total
+ 55.17%    1.474      1 Basic_Symbols
+ 42.44%    1.134      1 Grammar_units
+-->
+
+<!-- Saved in parser cache with key u965818192_SLvgQ-l8z2_:pcache:628:|#|:idhash:canonical and timestamp 20260909191234 and revision id 14678. Rendering was triggered because: diff-page
+ -->
+</div>

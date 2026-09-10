@@ -1,0 +1,125 @@
+'''Universal Words''', or simply '''UW's''', are the words of UNL, and correspond to nodes - to be interlinked by [[Universal Relations]] and specified by [[Universal Attributes]] - in a UNL graph. 
+
+== Definition == 
+The basic assumption of the UNL approach is that the information conveyed by natural languages can be formally represented through a [[semantic network]] made of three different types of discrete semantic units: Universal Words, [[Universal Relations]] and [[Universal Attributes]]. The Universal Words (UW's) are the nodes in the graph, to be interlinked by relations and specified by attributes. They correspond to semantic discrete units conveyed by natural language open lexical categories (noun, verb, adjective and adverb). Any other semantic content (such as the ones conveyed by articles, prepositions, conjunctions etc.) is represented as attributes or relations. This criterion is not language-biased: if a given semantic value proves to be conveyed, in any language, by a closed class, it should not be represented as a UW, regardless of its realisation in other languages.
+
+== The universality of UW's ==
+As the name indicates, Universal Words are expected to be "universal". This does not mean that they represent a sort of common lexical denominator to all languages or a semantic primitive. The concept of "[[universal|universality]]", in UNL, must be understood in the sense of "capable of being used and understood by all", and Universal Words depict concepts that may range from absolutely global to absolutely local, and even temporary. They are "universal" in the sense that they are uniform identifiers to the entities defined in the [[UNL Knowledge Base]], which is expected to map everything that we know about the world, and that is used to assign translatability to any concept.  
+
+UW's may represent concepts that are believed to be lexicalized<ref>i.e., consolidated as a single indivisible lexical unit.</ref>in most languages (such as "cause to die"); concepts that are lexicalized only in a few languages (such as "to execute someone by suffocation so as to leave the body intact and suitable for dissection"); concepts that are lexicalized in one single language (such as "a person who is ready to forgive any transgression a first time and then to tolerate it for a second time, but never for a third time"); and concepts that are not lexicalized in any language (such as "women that normally wear red hats and white shoes in big theaters"). The universality of a UW does not come from the type of concept that it represents, but from the way it does that: the UW provides a method for processing the concept, so that any natural language would be able to deal with it, either as a single node, if lexicalized, or as a hyper-node (i.e., a sub-graph), otherwise.
+
+== Permanent UW's and Temporary UW's ==
+UW's can be permanent or temporary.
+;Permanent UW's
+:Permanent UW's are included in the [[UNL Dictionary]] and correspond to concepts that have been already lexicalized in at least one language (i.e., which are conceived as single lexical items and included therefore in natural language dictionaries). They can be simple, compound or complex (see below).
+;Temporary UW's
+:Temporary UW's are words that:
+:*Represent concepts or entities that are still in process of lexicalization ("googlers", "twittered");
+:*Are too specific to be included in the UNL Dictionary ("Universal Networking Digital Language Foundation", "Léon Werth"); or
+:*Are not translatable ("3.14159", "H<sub>2</sub>O", "www.undlfoundation.org"); 
+
+== Simple UW's, Compound UW's and Complex UW's ==
+Permanent UWs can be simple, compound or complex. 
+
+;Simple UW's
+:A simple UW is an isolated node in the UNL graph. It is used when the UW represents a concept that is not compositional, i.e., that cannot be fully reduced to constituent concepts, such as "big" (> "above average"), "put" (> "cause to be in a certain state") or "stamp" (> "a small adhesive token").  
+
+;Compound UW's
+:A compound UW is an isolated node combined with attributes. It is used when the concept can be fully derived from the combination of an existing simple UW and a UNL attribute, such as the concept conveyed by the English word "bigger", which can be represented simply as the UW corresponding to "big" specified by the degree attribute "@more".
+
+;Complex UW's
+:A complex UW is a hyper-node, i.e., a sub-graph inside the UNL graph. As graphs, complex UWs follow the structure defined for [[UNL Sentences]]. They are used when the concept can be fully derived from the combination of existing UW's, relations and attributes, such as in the case of the concept conveyed by the English word "to stamp" (= "affix a stamp to"), which could be represented, in UNL, as the graph corresponding to the definition "affix a stamp to".
+
+== Principles ==
+;Sense
+:UW's represent sense and not reference. UW's are related to the intension (sense, meaning, connotation) rather than to the extension (reference, denotation) of linguistic expressions. The expressions "morning star" and "evening star", which are said to have the same reference (the planet Venus), must be necessarily represented by different UW's, because they convey different "modes of presentation" of the same object, i.e., have different senses: "the last star to disappear in the morning" and "the first star to appear in the evening", respectively.
+;Productivity
+:UW's must correspond to and only to contents conveyed by natural language '''open lexical categories''' (nouns, verbs, adjectives and adverbs). Any other semantic content (such as the ones conveyed by articles, prepositions, conjunctions etc.) should be represented as attributes or relations. This criterion is not language-biased: if a given semantic value proves to be conveyed, in any language, by a closed class, it should not be represented as a UW, regardless of its realisation in other languages. The only exception to this principle are the pro-forms, which are represented by a special type of UW, the pro-UW, or null UW (see below).
+;Compositionality
+:Simple UW's must correspond to and only to contents expressed by non-compositional lexical items, i.e., words and multiword expressions that cannot be fully reduced to the combination of existing UW's, attributes and relations. Compound and complex UW's must be used when the content can be fully determined by the meanings of constituent expressions and the rules used to combine them.
+;Comprehensiveness
+:UW's are "universal" in the sense that they constitute the lexicon of a "universal language", i.e., that they convey ideas that can be expressed in each and every language. They are not universal in the sense that they are lexicalized in all languages. In that sense, UW's are not to be considered semantic primitives, nor should represent only common concepts. The repertoire of UW's is supposed to be as comprehensive as the set of different individual concepts depicted by different cultures, no matter how specific they are. Furthermore, the lexicon of UNL constitutes an open set, subject to permanent increase with new UW's, as UNL is supposed to incessantly incorporate new cultures and cultural changes. 
+;Universality
+:Permanent UW's may represent concepts with different degrees of universality and are stored accordingly in three nested lexical databases, which are subdivisions of the [[UNL Dictionary]]:
+:*The UNL Core Dictionary contains only permanent simple UW's that represent concepts that are (presumably) lexicalized in all languages
+:*The UNL Abridged Dictionary contains all permanent UW's (simple, compound or complex) that represent concepts that are lexicalized in at least two different language families 
+:*The UNL Unabridged Dictionary contains all permanent UW's (simple, compound or complex) that represent concepts that are lexicalized in at least one language
+;Non-Ambiguity and Non-Redundancy
+:A given sense may not be represented by more than one UW, and one UW may not have more than one sense. There is no homonymy, synonymy or polysemy in UNL. 
+;Simplicity
+:Simple UW's are names (and not definitions) for senses. The simple UW does not bring much (or any) information about its sense. It is just a label. Any information concerning the sense is expected to be provided by the three different lexical databases available inside the UNL framework: the [[UNL Dictionary]], the [[UNL Knowledge Base]] and the [[UNL Memory]].
+
+== Structure ==
+Universal Words are represented as follows:
+*Permanent UW's
+**Simple UW's are represented as [[UCI|Uniform Concept Identifier]]s (UCI)
+**Compound UW's are represented as UCI's combined with [[Universal Attribute]]s
+**Complex UW's are represented as a sub-graph (i.e., a UNL sentence) made of UCI's interlinked by [[Universal Relations]] and specified by [[Universal Attributes]].
+*Temporary UW's
+:Temporary UWs are always represented between "double quotes", and observe the source language spelling practices (concerning, for instance, capitalization). For the time being, they are also expected to be transliterated in Roman script.
+
+== Examples ==
+{|align="center" border="1" cellpadding="5"
+|+Examples of UW's
+!align="center"|Type
+!align="center"|Concept<br/>(in English)
+!align="center"|Lexicalization<br />(in English)
+!align="center"|UW
+|-
+|align="center"|Simple UW
+|align="center"|above average
+|align="center"|big
+|align="center"|301382086
+|-
+|align="center"|Compound UW
+|align="center"|comparative of above average
+|align="center"|bigger
+|align="center"|301382086.@more
+|-
+|align="center"|Complex UW
+|align="center"|affix a stamp to
+|align="center"|stamp
+|align="center"|obj(201356370,106796119)
+|-
+|align="center"|Temporary UW
+|align="center"|UNDL Foundation
+|align="center"|UNDL Foundation
+|align="center"|"UNDL Foundation"
+|}
+
+== Categories of UW's ==
+
+Permanent UW's are classified in four different categories, depending on their semantic values:
+
+;Lexical Category (LEX)
+*Adjectival UW's (LEX=J) designate attributes. 
+*Adverbial UW's (LEX=A) designate circumstances.
+*Nominal UW's (LEX=N) designate things.
+*Verbal UW's (LEX=V) designate occurrence or performance of an action, or the existence of a state or condition.
+
+
+These categories are semantically-based. They are related to the UW's and are not oriented to any particular language. In that sense, adjectival UW's (such as "300217728" = "delighting the senses or exciting intellectual or emotional admiration") tend to be associated to English adjectives ("beautiful"), but they can also be realised as prepositional phrases ("with beauty"), verbal phrases ("possessing beauty"), etc.
+
+== Pro-UW's ==
+The UNL representation is expected to be as semantically saturated as possible, and deictics are supposed to be substituted during the UNLization process. In that sense, ellipses and natural language pro-forms (such as "he", "she", "it", "they" etc.) are expected to be replaced by their corresponding antecedents. In many cases, however, it is not possible to find a substitute for words requiring information that is not available inside natural language texts. In these cases, we use pro-UWs, which are represented by the null UW "00" combined with attributes, when applicable. The main cases are:
+*'''Exophora''', which is the reference to something that is not inside the text. This is the case of personal pronouns (such as "I", "you", "we" etc.) for which there is no antecedent in the text (i.e., which refer directly to the context of utterance). These pronouns are represented by the null UW "00" followed by the person attributes (@1, for first person singular; @2, for second person singular; @3, for third person singular; @1.@pl, for first person plural; @2.@pl, for second person plural; and @3.@pl, for third person plural)
+*'''Indefinite pronouns''' (such as "none", "anyone", "everything" etc.), which refer to general categories of people or things. These pronouns are represented by the null UW "00" followed by determiner attributes ("none" = "00.@no", "anyone" = "00.@any.@person", "everything" = "00.@every.@thing" etc.).
+*'''Interrogative pronouns''' (such as "who", "whom", "where" etc.), which refer to omitted constituents of the syntactic structure. These pronouns are represented by the null UW "00" followed by the attribute "@wh" ("who" = "00.@wh", "whom" = "00.@wh", "where" = "00.@wh" etc.). The difference between them is determined by the relation in which they appear: "00.@wh" is to be interpreted as "who" when the target argument of an "agt" (agent) relation;  as "when" when the target argument of a "tim" (time) relation; as a "where" when the target argument of a "plc" (place) relation; and so on.
+*'''Interjections''' (such as "Ouch!", "Yeah!", "Shhh!" etc.), when used in isolation to express an emotion or sentiment on the part of the speaker. These UWs are always represented by the null UW "00" followed by an emotional attribute (@anger, @pain etc).
+*'''Ellipses''', when cannot be replaced by any antecedent, are represented by the null UW "00" without any specific attribute: "To be or not to be?", for instance, should be represented either as "aoj(exist,00)" or "aoj(00,00)", depending on the interpretation ("to exist or not to exist" or "to be that or not to be that", respectively). because the necessary subject is missing and cannot be linked to any particular referent.
+It is important to stress that all cases above refer to situations where the semantic content cannot be fully saturated. Whenever possible, pro-forms and ellipses are expected to be replaced by their referents. For instance, the pro-UW "00.@3" is not supposed to be used in the case of "Peter said that he will not come", if we are sure that "he" is "Peter". In this case, this sentence is expected to be represented as "Peter(i) said that Peter(i) will not come". It should also be stressed that, in the UNL approach, pronouns should be differentiated from determiners. The word "which" in "which is that?" is an interrogative pronoun and should be represented, therefore, by the pro-UW "00.@wh", if we cannot determine to what we are referring to; but the word "which" in "which book is that?" is a determiner, to be represented as an attribute (.@wh) assigned to "book" ("book.@wh").
+
+== Proper UW's ==
+Most named entities (names of people, of places, of brands etc.) are represented as temporary UW's, because it would not be feasible to include them all in the [[UNL Dictionary]]. Nevertheless, some named entities of widespread use (such as "England", "William Shakespeare", "Romeo and Juliet", "Romeo" etc.) have been already included in the UNL Dictionary and are treated as permanent UW's. Our current criteria is the Wikipedia. If a proper name is defined as an entry in the Wikipedia, then it should be defined as a permanent UW and included in the [[UNL Dictionary|UNL Unabridged Dictionary]].
+
+== Lexical Databases ==
+''Main article: [[Lexica]]''
+
+UW's are grouped in several different lexical databases:
+*The [[UNL Dictionary]] is a flat list of UW's with the corresponding semantic features. It is divided into three different nested dictionaries: the UNL Core Dictionary, the UNL Abridged Dictionary and the UNL Unabridged Dictionary. The UNL Core Dictionary brings permanent UW's which are supposed to be lexicalized in all languages; the UNL Abridged Dictionary brings permanent UW's which are lexicalized in at least two language families (and includes therefore the UNL Core Dictionary); the UNL Unabridged Dictionary, which contains the UNL Abridged Dictionary, brings the whole sent of permanent UW's (i.e., the concepts that are lexicalized in at least one language). 
+*The [[UNL Knowledge Base]] is a network where UW's are interconnected by the [[Universal Relations]] of UNL. Differently from the UNL Dictionary, which brings only general features (such as lexical category, semantic class, abstractness, cardinality, etc.), the UNL KB represents the intension (the meaning) of each UW. In the UNL KB, it is informed, for instance, that the UW "dog" is linked to the UW's "domesticated", "carnivorous", "mammal", etc. 
+*The [[UNL Ontology]] is a part of the UNL Knowledge Base. It is a network where UW's are interconnected by the ontological relations of UNL, i.e., "is-a-kind-of" ("icl") and "is-an-instance-of" ("iof").
+*The [[UNL Memory]] is also a network where UW's are interconnected by the [[Universal Relations]] of UNL, but, differently from the UNL Knowledge Base, which brings the intension of a UW, the UNL Memory brings its extension, i.e., the set of instances of a UW. In the UNL Memory, it is informed, for instance, that the UW "dog" may be the agent of the UW "to bite", the object of the UW "to eat", the instrument of the UW "to chase", etc.
+
+== How to create a UW ==
+See the instructions at [[How to create a UW]]

@@ -1,0 +1,59 @@
+<div class="mw-content-ltr mw-parser-output" lang="en" dir="ltr"><p><b>Case marking</b> is the process of assigning <a href="/wiki/Case" title="Case">grammatical case</a> values to dependent nouns for the type of relationship they bear to their heads. Usually a language is said to "have cases" only if nouns change their form (nouns decline) to reflect their case. In the UNL<sup>arium</sup> framework, case marking is defined through <a href="/wiki/S-rule" title="S-rule">S-rules</a>. Case marking is not informed in UNL.
+</p>
+<div class="mw-heading mw-heading2"><h2 id="Syntax">Syntax</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Case_marking&amp;veaction=edit&amp;section=1" title="Edit section: Syntax" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Case_marking&amp;action=edit&amp;section=1" title="Edit section&#39;s source code: Syntax">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>Case marking is defined through <a href="/wiki/S-rule" title="S-rule">S-rules</a> in the following format:
+</p>
+<pre>&lt;SYNTACTIC ROLE&gt;(+&lt;CASE&gt;);
+</pre>
+<p>Where:<br />
+</p>
+<ul><li>&lt;SYNTACTIC ROLE&gt; is the <a href="/wiki/Syntactic_roles" class="mw-redirect" title="Syntactic roles">syntactic role</a> (VA, VC, VS, VH, etc) of the case-marked term in relation to the head; and</li>
+<li>&lt;CASE&gt; is the <a href="/wiki/Case" title="Case">grammatical case</a> to be assigned.</li></ul>
+<div class="mw-heading mw-heading2"><h2 id="Examples">Examples</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Case_marking&amp;veaction=edit&amp;section=2" title="Edit section: Examples" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Case_marking&amp;action=edit&amp;section=2" title="Edit section&#39;s source code: Examples">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<dl><dt>VS(+NOM);</dt>
+<dd>assigns the nominative case (NOM) to the specifier of the verb (VS)</dd>
+<dt>VC(+ACC);</dt>
+<dd>assigns the accusative case (ACC) to the complement of the verb (VC)</dd></dl>
+<div class="mw-heading mw-heading2"><h2 id="Observations">Observations</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Case_marking&amp;veaction=edit&amp;section=3" title="Edit section: Observations" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Case_marking&amp;action=edit&amp;section=3" title="Edit section&#39;s source code: Observations">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<dl><dt>Conditional case-marking</dt>
+<dd>Conditional case-marking may be stated by defining the left side of the s-rule and co-indexing it to the right side:
+<ul><li>VC(+DAT); (unconditional case-marking: assign the dative case (DAT) to the complement of the verb);</li>
+<li>VC(PP):=VC(+DAT); (conditional case-marking: assign the dative case (DAT) to the complement of the verb (VC) if it is a PP);</li>
+<li>VC([make];NP):=VC(+ACC); (conditional case-marking: assign the accusative case (ACC) to the complement of the verb (VC) whose lemma is "make").</li></ul></dd></dl>
+<dl><dt>Complex case-marking</dt>
+<dd>A single case-marking rule may contain several case-marking operations:
+<ul><li>VS(+NOM)VC(+ACC)VA(+OBL); (assign the nominative case to the specifier of the verb, the accusative case to the complement of the verb, and the oblique case to the adjunct to the verb)</li></ul></dd></dl>
+<dl><dt>Use of "+"</dt>
+<dd>As rules are conservative (i.e., features are preserved unless explicitly deleted), the use of "+" is actually optional:
+<ul><li>VC(+DAT); is the same as VC(DAT);</li></ul></dd></dl>
+<dl><dt>Case-unmarking</dt>
+<dd>Assigned cases may be deleted through "-":
+<ul><li>VC(-ACC); (deletes the accusative case from every verb complement)</li>
+<li>VC(PP):=VC(-ACC); (deletes the accusative case from verb complements which are prepositional phrases)</li></ul></dd></dl>
+<dl><dt>The symbol <b>^</b> is used for negation and to control infinite recursion</dt>
+<dd>
+<ul><li>VC(^NOM):=VC(NOM); (assign the nominative case to the complement of verb if it does not have the nominative case)</li></ul></dd></dl>
+<!-- 
+NewPP limit report
+Cached time: 20260910092515
+Cache expiry: 86400
+Reduced expiry: false
+Complications: []
+CPU time usage: 0.003 seconds
+Real time usage: 0.003 seconds
+Preprocessor visited node count: 15/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/100
+Expensive parser function count: 0/100
+Unstrip recursion depth: 0/20
+Unstrip post‐expand size: 0/5000000 bytes
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    0.000      1 -total
+-->
+
+<!-- Saved in parser cache with key u965818192_SLvgQ-l8z2_:pcache:509:|#|:idhash:canonical and timestamp 20260910092515 and revision id 13277. Rendering was triggered because: diff-page
+ -->
+</div>

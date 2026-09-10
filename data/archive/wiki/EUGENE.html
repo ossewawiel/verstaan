@@ -1,0 +1,77 @@
+<div class="mw-content-ltr mw-parser-output" lang="en" dir="ltr"><p>EUGENE is a natural language generation system. It generates natural language sentences out of semantic networks represented in the UNL format. In its current release, it is a web application developed in Java and available at the <a href="/wiki/UNLdev" title="UNLdev">UNLdev</a>. 
+</p>
+<div id="toc" class="toc" role="navigation" aria-labelledby="mw-toc-heading"><input type="checkbox" role="button" id="toctogglecheckbox" class="toctogglecheckbox" style="display:none" /><div class="toctitle" lang="en" dir="ltr"><h2 id="mw-toc-heading">Contents</h2><span class="toctogglespan"><label class="toctogglelabel" for="toctogglecheckbox"></label></span></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#The_name"><span class="tocnumber">1</span> <span class="toctext">The name</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#Requirements"><span class="tocnumber">2</span> <span class="toctext">Requirements</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="#Functioning"><span class="tocnumber">3</span> <span class="toctext">Functioning</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="#Quick_start"><span class="tocnumber">4</span> <span class="toctext">Quick start</span></a></li>
+<li class="toclevel-1 tocsection-5"><a href="#Test_drive"><span class="tocnumber">5</span> <span class="toctext">Test drive</span></a></li>
+</ul>
+</div>
+
+<div class="mw-heading mw-heading2"><h2 id="The_name">The name</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=EUGENE&amp;veaction=edit&amp;section=1" title="Edit section: The name" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=EUGENE&amp;action=edit&amp;section=1" title="Edit section&#39;s source code: The name">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>EUGENE is an acronym for dEp-to-sUrface GENErator 
+</p>
+<div class="mw-heading mw-heading2"><h2 id="Requirements">Requirements</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=EUGENE&amp;veaction=edit&amp;section=2" title="Edit section: Requirements" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=EUGENE&amp;action=edit&amp;section=2" title="Edit section&#39;s source code: Requirements">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>As a universal engine, EUGENE must be parameterized to the target languages with the following files, to be provided through EUGENE's interface:
+</p>
+<ul><li>The input document in the <a href="/wiki/UNL_document" title="UNL document">UNL document structure</a>, i.e., the universal semantic network to be generated in natural language</li>
+<li>The UNL-NL (generation) dictionary, i.e., a lexical database where <a href="/wiki/UW" class="mw-redirect" title="UW">UWs</a> are mapped into natural language entries, along with the corresponding features, to be provided according to the <a href="/wiki/UNL_Dictionary_Specs" class="mw-redirect" title="UNL Dictionary Specs">UNL Dictionary Specs</a></li>
+<li>The UNL-NL (generation) transformation grammar, i.e., a set of of transformation rules used to convert the UNL graphs into natural langauge sentences, to be provided according to the <a href="/wiki/UNL_Grammar_Specs" class="mw-redirect" title="UNL Grammar Specs">UNL Grammar Specs</a></li>
+<li>The UNL-NL (generation) disambiguation grammar, i.e, a set of disambiguation rules used to improve the results of the <a href="/wiki/Tokenization" title="Tokenization">tokenization</a> and of the <a href="/wiki/Transformation" title="Transformation">transformation</a></li></ul>
+<p>to be provided according to the <a href="/wiki/UNL_Grammar_Specs" class="mw-redirect" title="UNL Grammar Specs">UNL Grammar Specs</a>, to be provided according to the <a href="/wiki/UNL_Grammar_Specs" class="mw-redirect" title="UNL Grammar Specs">UNL Grammar Specs</a>
+</p>
+<div class="mw-heading mw-heading2"><h2 id="Functioning">Functioning</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=EUGENE&amp;veaction=edit&amp;section=3" title="Edit section: Functioning" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=EUGENE&amp;action=edit&amp;section=3" title="Edit section&#39;s source code: Functioning">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>EUGENE performs the three following movements over the input file:
+</p>
+<ul><li><a href="/wiki/Segmentation" title="Segmentation">Segmentation</a>, i.e., the division of the input document into a series of isolated graphs, which are processed one at a time</li>
+<li><a href="/wiki/Tokenization" title="Tokenization">Tokenization</a>, i.e., the identification of the tokens (<a href="/wiki/UW" class="mw-redirect" title="UW">UWs</a>, <a href="/wiki/Universal_Relations" title="Universal Relations">Universal Relations</a> and <a href="/wiki/Universal_Attributes" title="Universal Attributes">Universal Attributes</a>) of each graph of the input document</li>
+<li><a href="/wiki/Transformation" title="Transformation">Transformation</a>, i.e., the application of the transformation rules of the grammar over each tokenized graph in order to generate a natural language sentence</li></ul>
+<div class="mw-heading mw-heading2"><h2 id="Quick_start">Quick start</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=EUGENE&amp;veaction=edit&amp;section=4" title="Edit section: Quick start" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=EUGENE&amp;action=edit&amp;section=4" title="Edit section&#39;s source code: Quick start">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>As part of the <a href="/wiki/UNLdev" title="UNLdev">UNLdev</a>, EUGENE is available at <a rel="nofollow" class="external autonumber" href="http://dev.undlfoundation.org/generation/login.jsp">[1]</a>. You must be registered in the UNL<sup>web</sup> in order to log in.<br />
+EUGENE has 5 tabs:
+</p>
+<ul><li>The welcome tab</li>
+<li><b>UNL input</b>, where you have to provide the UNL document to be NLized. You may either create a new file or upload an existing file.</li>
+<li><b>Dictionaries</b>, where you have to provide the UNL-NL dictonaries (i.e., the dictionaries to be used in natural language generation). You may either create a new file or upload an existing file. Use the default option "Database", instead of "Compiled", which are used for very big dictionaries. In any case, the dictionary must be provided according to the <a href="/wiki/UNL_Dictionary_Specs" class="mw-redirect" title="UNL Dictionary Specs">UNL Dictionary Specs</a>. Once you create/upload a dictionary, you have to select it (by clicking the corresponding check box) and load it (by pressing the load button at the top menu). You may have several different dictionaries, and may load many of them to process the same corpus, but be sure that they are loaded in the correct order (because the order of the entries in the dictionary does matter for <a href="/wiki/Tokenization" title="Tokenization">tokenization</a>). You may reorder the dictionaries through the option "reorder dictionaries" at the top menu.</li>
+<li><b>T-rules</b>, where you have to provide the UNL-NL <a href="/wiki/Transformation_grammar" class="mw-redirect" title="Transformation grammar">transformation grammar</a> (i.e., the grammar to be used to convert the UNL input into the NL output). You may either create a new file or upload an existing file. In any case, the grammar must be provided according to the <a href="/wiki/UNL_Grammar_Specs" class="mw-redirect" title="UNL Grammar Specs">UNL Grammar Specs</a>, and must contain only <a href="/wiki/Transformation_rule" class="mw-redirect" title="Transformation rule">transformation rules</a>. Once you create/upload a grammar, you have to select it (by clicking the corresponding check box) and load it (by pressing the load button at the top menu). You may have several different grammars, and may load many of them to process the same corpus, but be sure that they are loaded in the correct order (because the order of the rules does matter for transformation). You may reorder the grammars through the option "reorder grammars" at the top menu.</li>
+<li><b>D-rules</b>, where you have to provide the UNL-NL <a href="/wiki/Disambiguation_grammar" class="mw-redirect" title="Disambiguation grammar">disambiguation grammar</a> (i.e., the grammar to be used to control the</li></ul>
+<div class="mw-heading mw-heading2"><h2 id="Test_drive">Test drive</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=EUGENE&amp;veaction=edit&amp;section=5" title="Edit section: Test drive" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=EUGENE&amp;action=edit&amp;section=5" title="Edit section&#39;s source code: Test drive">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>You may test the system using the resources below:
+</p>
+<ul><li>UNL Document: to be uploaded to the tab <b>UNL document</b> (don't forget to select the file after uploading it)
+<ol><li><a rel="nofollow" class="external text" href="http://www.unlweb.net.br/resources/corpus/UCA1/UCA1_unl.txt">UCA1_unl.txt</a>,</li></ol></li>
+<li>Dictionaries: to be uploaded, IN THE FOLLOWING ORDER, to the tab <b>Dictionaries</b> (don't forget to select and load the file after uploading it)
+<ol><li><a rel="nofollow" class="external text" href="http://www.unlweb.net.br/resources/dic/UCA1/unl_eng_dic.txt">unl_eng_dic.txt</a> (entries appearing in the corpus UCA1)</li>
+<li><a rel="nofollow" class="external text" href="http://www.unlweb.net.br/resources/dic/default_dic.txt">Default Dictionary</a> (blank space, punctuation signs and other generic entries)</li></ol></li>
+<li>T-grammar: to be uploaded, IN THE FOLLOWING ORDER, to the tab <b>T-rules</b> (don't forget to select and load the file after uploading it)
+<ol><li><a rel="nofollow" class="external text" href="http://www.unlweb.net.br/resources/grammar/s-grammar.txt">Standardization Grammar</a> (used to standardize the structure of the dictionary entries)</li>
+<li><a rel="nofollow" class="external text" href="http://www.unlweb.net.br/resources/grammar/UCA1/unl_eng_tgrammar.txt">UNL-ENG T-Grammar</a> (language-specific rules)</li>
+<li><a rel="nofollow" class="external text" href="http://www.unlweb.net.br/resources/grammar/unl_nl_tgrammar.txt">Default T-Grammar</a> (generic rules)</li></ol></li>
+<li>D-grammar: to be uploaded to the tab <b>D-rules</b> (don't forget to select and load the file after uploading it)
+<ol><li><a rel="nofollow" class="external text" href="http://www.unlweb.net.br/resources/grammar/UCA1/unl_eng_dgrammar.txt">UNL-ENG D-Grammar</a> (disambiguation rules)</li></ol></li></ul>
+<!-- 
+NewPP limit report
+Cached time: 20260910082813
+Cache expiry: 86400
+Reduced expiry: false
+Complications: [show‐toc]
+CPU time usage: 0.006 seconds
+Real time usage: 0.006 seconds
+Preprocessor visited node count: 38/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/100
+Expensive parser function count: 0/100
+Unstrip recursion depth: 0/20
+Unstrip post‐expand size: 0/5000000 bytes
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    0.000      1 -total
+-->
+
+<!-- Saved in parser cache with key u965818192_SLvgQ-l8z2_:pcache:601:|#|:idhash:canonical and timestamp 20260910082813 and revision id 14205. Rendering was triggered because: diff-page
+ -->
+</div>

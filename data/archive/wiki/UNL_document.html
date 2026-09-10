@@ -1,0 +1,107 @@
+<div class="mw-content-ltr mw-parser-output" lang="en" dir="ltr"><p><b>UNL documents</b> are documents written in UNL. They are plain text files that include <a href="/wiki/UNL_Sentences" class="mw-redirect" title="UNL Sentences">UNL Sentences</a> and some special tags. They are the output of the <a href="/wiki/UNLization" title="UNLization">UNLization</a> process and the input of the <a href="/wiki/NLization" title="NLization">NLization</a> process. 
+</p>
+<div class="mw-heading mw-heading2"><h2 id="Syntax">Syntax</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=UNL_document&amp;veaction=edit&amp;section=1" title="Edit section: Syntax" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=UNL_document&amp;action=edit&amp;section=1" title="Edit section&#39;s source code: Syntax">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>A UNL document is enclosed with tags “[D:&lt;id&gt;]” and “[/D]”. Within these tags, each paragraph is enclosed with a pair of tags “[P:&lt;id&gt;]” and “[/P]”, and each sentence is enclosed with a pair of tags “[S:&lt;id&gt;]” and “[/S]”. Inside a sentence, the text of original sentence is enclosed with “{org:&lt;lang&gt;}” and “{/org}”, its UNL expression is enclosed with “{unl:&lt;id&gt;}” and “{/unl}”. Sentences of target languages can also be stored in the UNL document. Each target sentence is enclosed with a pair of language tags “{&lt;lang&gt;}” and “{&lt;/lang&gt;}” following the UNL expression of each sentence.
+</p>
+<div align="center">
+<table border="1">
+<caption>
+<div class="mw-heading mw-heading4"><h4 id="Tags_used_in_UNL_Documents">Tags used in UNL Documents</h4><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=UNL_document&amp;veaction=edit&amp;section=2" title="Edit section: Tags used in UNL Documents" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=UNL_document&amp;action=edit&amp;section=2" title="Edit section&#39;s source code: Tags used in UNL Documents">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+</caption>
+<tbody><tr>
+<th>Tag
+</th>
+<th>Description
+</th></tr>
+<tr>
+<td>[D:&lt;id&gt;]
+</td>
+<td>indicates the beginning of a document.
+</td></tr>
+<tr>
+<td>[/D]
+</td>
+<td>indicates the end of a document
+</td></tr>
+<tr>
+<td>[P:&lt;id&gt;]
+</td>
+<td>indicates the beginning of a paragraph.
+</td></tr>
+<tr>
+<td>[/P]
+</td>
+<td>indicates the end of a paragraph
+</td></tr>
+<tr>
+<td>[S:&lt;id&gt;]
+</td>
+<td>indicates the beginning of a sentence.
+</td></tr>
+<tr>
+<td>[/S]
+</td>
+<td>indicates the end of a sentence
+</td></tr>
+<tr>
+<td>{org:&lt;lang&gt;=&lt;code&gt;}
+</td>
+<td>indicates the beginning of an original/source sentence
+</td></tr>
+<tr>
+<td>{/org}
+</td>
+<td>indicates the end of an original sentence
+</td></tr>
+<tr>
+<td>{unl:&lt;id&gt;}
+</td>
+<td>indicates the beginning of the UNL expressions of a sentence.
+</td></tr>
+<tr>
+<td>{/unl}
+</td>
+<td>indicates the end of the UNL expressions of a sentence
+</td></tr>
+<tr>
+<td>{&lt;lang&gt;}
+</td>
+<td>indicates the beginning of a target sentence of the language indicated by &lt;lang&gt;
+</td></tr>
+<tr>
+<td>{/&lt;lang&gt;}
+</td>
+<td>indicates the end of a target sentence of the language indicated by &lt;lang&gt;
+</td></tr></tbody></table>
+</div>
+<dl><dt>Where</dt>
+<dd>:<b>&lt;id&gt;</b> (optional), which is normally represented by an integer, may be any sequence of characters used to identify the document, the sentence, the paragraph or the UNL expression</dd>
+<dd><b>&lt;lang&gt;</b> (optional in case of {org}) corresponds to the language code in ISO639-2 or ISO639-3</dd>
+<dd><b>=&lt;code&gt;</b> (optional) corresponds to the character encoding</dd></dl>
+<div class="mw-heading mw-heading2"><h2 id="Semantics">Semantics</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=UNL_document&amp;veaction=edit&amp;section=3" title="Edit section: Semantics" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=UNL_document&amp;action=edit&amp;section=3" title="Edit section&#39;s source code: Semantics">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>For the time being, a UNL document is simply a collection of UNL sentences. However, it can also be treated as a hypergraph itself, comprising several subhypergraphs (the UNL sentences) inter-related by a special relation "nxt" (for "next"), which indicates sequential order. In the <a href="/wiki/XUNL_Project" title="XUNL Project">XUNL Project</a>, we have been proposing some other strategies for representing cross-sentential relations, which are, however, still under discussion.
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20260910031337
+Cache expiry: 86400
+Reduced expiry: false
+Complications: []
+CPU time usage: 0.005 seconds
+Real time usage: 0.005 seconds
+Preprocessor visited node count: 28/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/100
+Expensive parser function count: 0/100
+Unstrip recursion depth: 0/20
+Unstrip post‐expand size: 44/5000000 bytes
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    0.000      1 -total
+-->
+
+<!-- Saved in parser cache with key u965818192_SLvgQ-l8z2_:pcache:362:|#|:idhash:canonical and timestamp 20260910031337 and revision id 9592. Rendering was triggered because: diff-page
+ -->
+</div>

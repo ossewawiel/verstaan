@@ -1,0 +1,72 @@
+'''Semantic rules''' are rules for mapping UNL structures into natural language and vice-versa. They can be of two different types: '''relation rules''', i.e., rules that map UNL relations into syntactic structures; and '''attribute rules''', which are rules that map UNL attributes into morpho-syntactic structures. 
+
+== Relation Rules ==
+
+ SEMANTIC RELATION := SYNTACTIC RELATION;
+Relation rules are used for translating UNL relations into natural language syntactic structures. They form a special case of the [[S-Rule]] type, because:
+*differently from other s-rules, the heads of the syntactic relations may not be simplified; and
+*differently from other s-rules, both arguments of the syntactic relation must be coindexed to the arguments of the semantic relation through the placeholders %01 and %02, which stand for the left and the right argument [of the semantic relation], respectively.
+
+=== Templates ===
+
+{| border="1" cellpadding="5"
+!CASE
+!TEMPLATE*
+!EXAMPLE
+!GLOSS
+|-
+|ADJUNCT (DIRECT)
+|XA(%01;%02);
+|mod(NOU;ADJ):=NA(%01;%02);
+|if "mod(NOU;ADJ)" then the ADJ (%02) is a direct adjunct to the NOU (%01)
+|-
+|ADJUNCT (INDIRECT)
+|XA(%01;YC(Y;%02));
+|tim(VER;NOU):=VA(%01;PC([in];%02));
+|if "tim(VER;NOU)" then the NOU (%02) is the complement of the preposition "in" which is the head of the prepositional phrase adjunct to the VER (%01)
+|-
+|COMPLEMENT (DIRECT)
+|XC(%01;%02)
+|obj(VER;NOU):=VC(%01;%02);
+|if "mod(VER;NOU)" then the NOU (%02) is the direct complement of the VER (%01)
+|-
+|COMPLEMENT (INDIRECT)
+|XC(%01;YC(Y;%02));
+|gol(VER;NOU):=VC(%01;PC([to];%02));
+|if "gol(VER;NOU)" then the NOU (%02) is the complement of the preposition "to" which is the head of the prepositional phrase complement to the VER (%01)
+|-
+|SPECIFIER
+|XS(%01;%02)
+|agt(VER;NOU):=VS(%01;%02);
+|if "agt(VER;NOU)" then the NOU (%02) is the specifier of the VER (%01)
+|}
+<nowiki>*</nowiki>X and Y must be replaced by lexical categories (N,A,J,V,P,C,D,I), depending on the nature of the heads.
+
+== Attribute Rules ==
+Attribute rules are used for translating UNL attributes into natural language morpho-syntactic structures. They can be of three different types:
+
+=== Feature assignment ===
+ ATTRIBUTE := TAG;
+To be used when the attribute is equivalent to an existing natural language feature
+*<nowiki>@pl := PLR;</nowiki>
+the attribute .@pl, which stands for plural, is directly equivalent to the tag "PLR"
+*<nowiki>@past := ET0;</nowiki>
+the attribute .@past, which stands for past, is directly equivalent to the tag "ET0"
+*<nowiki>@past.@progress := ET0&RT1;</nowiki>
+the attribute .@past.@progress, which stands for the past continous, is directly equivalent to the tagset "ET0&RT1"
+
+=== m-rule ===
+ ATTRIBUTE := ADD < DELETE; (PREFIXATION)
+ ATTRIBUTE := DELETE > ADD; (SUFFIXATION)
+ ATTRIBUTE := DELETE : ADD; (REPLACEMENT)
+To be used when the attribute cannot be associated to an existing tag and implies a morphological or orthographical change
+*<nowiki>@interrogative :=  0 > "?";</nowiki>
+the attribute .@interrogative implies the generation of a question mark "?" at the end of the sentence
+*<nowiki>@square_bracket := "[" < 0, 0 > "]";</nowiki>
+the attribute .@square_bracket implies the generation of an opening bracket in the beginning of the sentence, and of a closing bracket in the end of the sentence
+
+=== s-rule ===
+ ATTRIBUTE := SYNTACTIC RELATION;
+To be used when the attribute cannot be associated to an existing tag and implies a change in the syntactic structure of the sentence (i.e., the insertion of a word)
+*<nowiki>@def := NS(DP([the]));</nowiki>
+the attribute .@def implies the generation of a definite article in the position of the specifier of the noun
