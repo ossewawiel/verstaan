@@ -16,9 +16,10 @@
 // against a running server, to find this). Never delete the directory here; only ensure it
 // exists and (re)write each fixture file's content, so a second call is a no-op change to
 // files the watcher already knows about, not a missing directory.
-import { mkdirSync, writeFileSync } from 'node:fs';
+import { mkdirSync, writeFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 import { tmpdir } from 'node:os';
+import { execFileSync } from 'node:child_process';
 
 export const FIXTURE_REPO = join(tmpdir(), 'verstaan-console-e2e-fixture');
 
@@ -48,4 +49,55 @@ export function buildFixtureRepo(): void {
 
 export function setIssueStatus(n: number, status: string): void {
   writeFileSync(issuePath(n), issueMd(n, `Fixture quest ${n}`, status));
+}
+
+// A second, real working tree of FIXTURE_REPO, checked out at `main`'s own current commit — no
+// commit ahead, none behind — proving issue 112: a fresh tree with no work of its own yet is
+// exactly as "merged" to `git merge-base --is-ancestor` as a tree whose work has already landed
+// by squash merge, so the Now row must decide from the issue file, never from ancestry.
+const HEAD_TREE_REL = '.worktrees/head-quest';
+const HEAD_TREE_ABS = join(FIXTURE_REPO, HEAD_TREE_REL);
+export const HEAD_QUEST_N = 11;
+
+function git(args: string[], cwd: string = FIXTURE_REPO): void {
+  execFileSync('git', args, { cwd, stdio: 'ignore' });
+}
+
+/** Called once, before Playwright's webServer starts (playwright.config.ts), so the server's own
+ * worktree scan already knows about this tree at startup (server/src/index.ts's `startWatching`
+ * calls `readWorktrees()` once, at boot, to decide what to watch). Idempotent for the same reason
+ * `buildFixtureRepo()` is: config-load runs more than once per Playwright invocation. */
+export function buildHeadWorktree(): void {
+  if (!existsSync(join(FIXTURE_REPO, '.git'))) {
+    git(['init', '-q', '-b', 'main']);
+    git(['config', 'user.email', 'fixture@example.com']);
+    git(['config', 'user.name', 'Fixture']);
+    writeFileSync(join(FIXTURE_REPO, '.gitignore'), '.worktrees/\n');
+  }
+  git(['add', '-A']);
+  try {
+    git(['commit', '-q', '-m', 'fixture']);
+  } catch {
+    // Nothing changed since the last call (buildFixtureRepo()'s files are the same every time).
+  }
+  if (!existsSync(HEAD_TREE_ABS)) {
+    git(['worktree', 'add', '-q', '--detach', HEAD_TREE_ABS, 'HEAD']);
+  }
+  const issuesDir = join(HEAD_TREE_ABS, 'docs', 'factory', 'issues');
+  mkdirSync(issuesDir, { recursive: true });
+  setHeadQuestStatus('in-progress');
+}
+
+function headQuestPath(): string {
+  return join(HEAD_TREE_ABS, 'docs', 'factory', 'issues', `${String(HEAD_QUEST_N).padStart(2, '0')}-head-quest.md`);
+}
+
+/** Toggled off by now-row.spec.ts's "Nothing in progress" test, which needs every quest,
+ * including this one, out of flight, and back on by nothing else — this fixture's whole point is
+ * to sit in-progress at a tree that has never committed. */
+export function setHeadQuestStatus(status: string): void {
+  writeFileSync(
+    headQuestPath(),
+    `---\nissue: ${HEAD_QUEST_N}\ntitle: "Head quest"\nmilestone: Side\nstatus: ${status}\ndepends_on: []\nagent: implementer\nmodel: sonnet\neffort: low\nworktree: ${HEAD_TREE_REL}\n---\n## What\n\nFixture issue proving a tree at main's own head still shows in the Now row (issue 112).\n\n## Done when\n\n- [ ] one\n`,
+  );
 }

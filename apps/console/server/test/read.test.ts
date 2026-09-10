@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MPL-2.0
-// Ported from tools/console/test/run.mjs's readWorktrees fixture coverage (issue 109's `merged`
+// Ported from tools/console/test/run.mjs's readWorktrees fixture coverage (issue 112's `finished`
 // field). No real git checkout is exercised here: every shell-out is injected so the fixture
 // stays independent of this repository's own worktree layout.
 import { describe, it, expect } from 'vitest';
@@ -23,19 +23,22 @@ const fakePorcelain =
 const fakeListShFn = (cmd: string) =>
   cmd.includes('--git-common-dir') ? fakeCommonDir : cmd.includes('worktree list') ? fakePorcelain : '';
 
-describe('readWorktrees merged field (issue 109)', () => {
-  it('marks a tree whose head is an ancestor of main as merged', () => {
-    const rows = readWorktrees({ shFn: fakeListShFn, shInFn: () => '', shInOkFn: (cwd) => cwd === fakeSideTree });
-    expect(rows.find((r) => r.path === '.worktrees/side-92-worktrees')?.merged).toBe(true);
+describe('readWorktrees finished field (issue 112)', () => {
+  // A non-root tree is finished when no in-progress issue file names it and its working tree is
+  // clean. No ancestry: a tree that has not started and a tree whose work has landed via a squash
+  // merge are the same shape in git, so `finished` never asks git that question.
+  it('marks a clean tree with no in-progress issue file as finished', () => {
+    const rows = readWorktrees({ shFn: fakeListShFn, shInFn: () => '' });
+    expect(rows.find((r) => r.path === '.worktrees/side-92-worktrees')?.finished).toBe(true);
   });
 
-  it('always reports the root tree as merged: false, even when the ancestor check would say yes', () => {
-    const rows = readWorktrees({ shFn: fakeListShFn, shInFn: () => '', shInOkFn: (cwd) => cwd === fakeSideTree });
-    expect(rows.find((r) => r.isRoot)?.merged).toBe(false);
+  it('always reports the root tree as finished: false, even when clean', () => {
+    const rows = readWorktrees({ shFn: fakeListShFn, shInFn: () => '' });
+    expect(rows.find((r) => r.isRoot)?.finished).toBe(false);
   });
 
-  it('marks a tree whose head is not an ancestor of main as merged: false', () => {
-    const rows = readWorktrees({ shFn: fakeListShFn, shInFn: () => '', shInOkFn: () => false });
-    expect(rows.find((r) => !r.isRoot)?.merged).toBe(false);
+  it('marks a dirty tree as finished: false', () => {
+    const rows = readWorktrees({ shFn: fakeListShFn, shInFn: (cwd) => (cwd === fakeSideTree ? ' M some-file.md' : '') });
+    expect(rows.find((r) => !r.isRoot)?.finished).toBe(false);
   });
 });

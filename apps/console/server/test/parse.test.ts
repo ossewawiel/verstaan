@@ -71,7 +71,7 @@ describe('inProgressQuests (issue 110)', () => {
     isRoot: false,
     dirty: 0,
     stampMatches: false,
-    merged: false,
+    finished: false,
     issue: null,
     ...over,
   });
@@ -98,12 +98,17 @@ describe('inProgressQuests (issue 110)', () => {
     ]);
   });
 
-  it('drops a quest in-progress only in a merged tree', () => {
+  // issue 112: the old `merged` flag answered "is this branch's HEAD an ancestor of main", true
+  // for a tree that has not committed yet — exactly as true as for a tree whose work has landed —
+  // and inProgressQuests dropped the quest whenever every claimant tree carried it. The field is
+  // gone; a matching tree is enough on its own, so a tree at `main`'s own head still contributes
+  // its quest.
+  it('reports a quest whose tree sits at main\'s own head (issue 112)', () => {
     const rows = inProgressQuests(
       [mkIssue(50, 'A')],
-      [mkTree({ path: '.worktrees/side-50-a', branch: 'side-50-a', merged: true, issue: { n: 50, title: 'A' } })],
+      [mkTree({ path: '.worktrees/side-50-a', branch: 'side-50-a', head: 'abc', issue: { n: 50, title: 'A' } })],
     );
-    expect(rows).toEqual([]);
+    expect(rows).toEqual([{ n: 50, title: 'A', agent: null, model: null, effort: null, tree: 'side-50-a' }]);
   });
 
   it('returns an empty list when no issue is in-progress', () => {

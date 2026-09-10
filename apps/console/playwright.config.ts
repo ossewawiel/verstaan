@@ -1,5 +1,5 @@
 import { defineConfig } from '@playwright/test';
-import { FIXTURE_REPO, buildFixtureRepo } from './e2e/fixture-repo';
+import { FIXTURE_REPO, buildFixtureRepo, buildHeadWorktree } from './e2e/fixture-repo';
 
 // apps/console: Playwright drives the built app against the real Fastify server (npm run build
 // && npm run start), on a port the ordinary console never binds, so a running dev instance on
@@ -8,6 +8,9 @@ import { FIXTURE_REPO, buildFixtureRepo } from './e2e/fixture-repo';
 // this checkout's own docs/factory/issues.
 const PORT = 7865;
 buildFixtureRepo();
+// A real git repo and a second worktree at its own HEAD (issue 112's now-row.spec.ts), built
+// before the server starts so its startup worktree scan already knows about the tree.
+buildHeadWorktree();
 
 export default defineConfig({
   testDir: 'e2e',

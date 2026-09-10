@@ -67,7 +67,7 @@ const mkInProgressIssue = (n, title) => ({
   n, file: `${n}-x.md`, title, milestone: 'Side', status: 'in-progress', worktree: null, dependsOn: [],
   agent: null, agents: [], model: null, effort: null, checkpoint: null, commit: null, what: '', doneWhen: { total: 0, ticked: 0 },
 });
-const mkTree = (over) => ({ path: '.', branch: null, detached: false, head: 'abc', isRoot: false, dirty: 0, stampMatches: false, merged: false, issue: null, ...over });
+const mkTree = (over) => ({ path: '.', branch: null, detached: false, head: 'abc', isRoot: false, dirty: 0, stampMatches: false, finished: false, issue: null, ...over });
 
 const oneQuest = [mkInProgressIssue(50, 'A')];
 const oneTree = [mkTree({ path: '.worktrees/side-50-a', branch: 'side-50-a', issue: { n: 50, title: 'A' } })];
@@ -82,9 +82,14 @@ const twoTrees = [
 check('inProgressQuests reports both quests, lowest number first',
   inProgressQuests(twoQuests, twoTrees).map((q) => [q.n, q.tree]), [[50, 'side-50-a'], [51, 'side-51-b']]);
 
-const mergedOnlyTree = [mkTree({ path: '.worktrees/side-50-a', branch: 'side-50-a', merged: true, issue: { n: 50, title: 'A' } })];
-check('inProgressQuests drops a quest in-progress only in a merged tree',
-  inProgressQuests(oneQuest, mergedOnlyTree), []);
+// issue 112: the old `merged` flag answered "is this branch's HEAD an ancestor of main", true for
+// a tree that has not committed yet — exactly as true as for a tree whose work has landed — and
+// inProgressQuests dropped the quest whenever every claimant tree carried it. The field is gone;
+// this pins that a matching tree is enough on its own, whatever else is true of that tree, so a
+// tree at `main`'s own head still contributes its quest.
+const treeAtMainHead = [mkTree({ path: '.worktrees/side-50-a', branch: 'side-50-a', head: 'abc', issue: { n: 50, title: 'A' } })];
+check('inProgressQuests reports a quest whose tree sits at main\'s own head (issue 112)',
+  inProgressQuests(oneQuest, treeAtMainHead), [{ n: 50, title: 'A', agent: null, model: null, effort: null, tree: 'side-50-a' }]);
 
 check('inProgressQuests returns an empty list when no issue is in-progress', inProgressQuests([], []), []);
 
@@ -180,18 +185,19 @@ const detachedPorcelain = `worktree ${fakeRoot}\nHEAD 33333333333333333333333333
 const detachedRows = readWorktrees({ shFn: (cmd) => (cmd.includes('--git-common-dir') ? fakeCommonDir : cmd.includes('worktree list') ? detachedPorcelain : ''), shInFn: () => '' });
 check('readWorktrees reports a detached root tree as branch null, detached true', detachedRows.map((r) => [r.path, r.branch, r.detached]), [['.', null, true]]);
 
-// merged: true when a non-root tree's HEAD is an ancestor of main (issue 109). shInOkFn stands in
-// for `git merge-base --is-ancestor <head> main`, whose signal is the exit code, not stdout, so it
-// is injected as its own function rather than reusing shInFn.
-const mergedRows = readWorktrees({ shFn: fakeListShFn, shInFn: () => '', shInOkFn: (cwd) => cwd === fakeSideTree });
-check('readWorktrees marks a tree whose head is an ancestor of main as merged',
-  mergedRows.find((r) => r.path === '.worktrees/side-92-worktrees')?.merged, true);
-check('readWorktrees always reports the root tree as merged: false, even when the ancestor check would say yes',
-  mergedRows.find((r) => r.isRoot)?.merged, false);
+// finished (issue 112): a non-root tree is finished when no in-progress issue file names it and
+// its working tree is clean. No ancestry: a tree that has not started and a tree whose work has
+// landed via a squash merge are the same shape in git, so `finished` never asks git that question.
+const cleanRows = readWorktrees({ shFn: fakeListShFn, shInFn: () => '' });
+check('readWorktrees marks a clean tree with no in-progress issue file as finished (issue 112)',
+  cleanRows.find((r) => r.path === '.worktrees/side-92-worktrees')?.finished, true);
+check('readWorktrees always reports the root tree as finished: false, even when clean (issue 112)',
+  cleanRows.find((r) => r.isRoot)?.finished, false);
 
-const unmergedRows = readWorktrees({ shFn: fakeListShFn, shInFn: () => '', shInOkFn: () => false });
-check('readWorktrees marks a tree whose head is not an ancestor of main as merged: false',
-  unmergedRows.find((r) => !r.isRoot)?.merged, false);
+const dirtyShInFn = (cwd) => (cwd === fakeSideTree ? ' M some-file.md' : '');
+const dirtyRows = readWorktrees({ shFn: fakeListShFn, shInFn: dirtyShInFn });
+check('readWorktrees marks a dirty tree as finished: false (issue 112)',
+  dirtyRows.find((r) => !r.isRoot)?.finished, false);
 
 // mergeIssuesAcrossWorktrees: a status closed in a side quest's own worktree, unmerged anywhere
 // else, must not disappear just because the console happens to be generated from a different

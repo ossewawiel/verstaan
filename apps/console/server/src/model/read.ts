@@ -69,19 +69,6 @@ function shIn(cwd: string, cmd: string): string {
   }
 }
 
-/** Exit-code only: `git merge-base --is-ancestor` says nothing on stdout, so `shIn`'s
- * string-return shape does not fit. `true` means the command exited 0. */
-function shInOk(cwd: string, cmd: string): boolean {
-  try {
-    execSync(cmd, { cwd, stdio: 'ignore' });
-    return true;
-  } catch {
-    return false;
-  } finally {
-    lastGitCommandAt = Date.now();
-  }
-}
-
 export function resolveRootPath(shFn: (cmd: string) => string = sh): string {
   const commonDir = shFn('git rev-parse --path-format=absolute --git-common-dir');
   return commonDir ? resolve(commonDir, '..') : REPO;
@@ -133,12 +120,10 @@ function inProgressIssueOf(treeAbsPath: string, treeRelPath: string): { n: numbe
 export function readWorktrees({
   shFn = sh,
   shInFn = shIn,
-  shInOkFn = shInOk,
   rootPath = resolveRootPath(shFn),
 }: {
   shFn?: (cmd: string) => string;
   shInFn?: (cwd: string, cmd: string) => string;
-  shInOkFn?: (cwd: string, cmd: string) => boolean;
   rootPath?: string;
 } = {}): WorktreeSummary[] {
   const list = parseWorktreePorcelain(shFn('git worktree list --porcelain'));
@@ -150,12 +135,16 @@ export function readWorktrees({
     const dirty = shInFn(abs, 'git status --porcelain').split('\n').filter(Boolean).length;
     const full = shInFn(abs, 'git rev-parse HEAD');
     const stampMatches = !!common && !!full && existsSync(resolve(rootPath, common, 'verstaan-gate-stamps', full));
-    // Is this tree's HEAD already reachable from `main`? True means the branch's work is merged
-    // and the tree is a candidate for `git worktree remove` (issue 109). The root tree always
-    // reports false: `main` is never merged into itself. A squash-merged branch, whose commits
-    // are never ancestors of `main`, reads as unmerged (Not in scope, issue 109).
-    const merged = !isRoot && !!w.head && shInOkFn(abs, `git merge-base --is-ancestor ${w.head} main`);
-    return { path: rel, branch: w.branch, detached: w.detached, head: w.head, isRoot, dirty, stampMatches, merged, issue: inProgressIssueOf(abs, rel) };
+    const issue = inProgressIssueOf(abs, rel);
+    // Is this tree done with its work, so it is a candidate for `git worktree remove` (issue
+    // 109)? Answered from the same two facts every other field here already needs — no
+    // in-progress issue file names this tree, and its working tree is clean — never from git
+    // ancestry (issue 112). Ancestry cannot tell a tree that has not started work from one whose
+    // work has landed: the repo squash-merges every pull request, so a landed branch's commits
+    // are never ancestors of `main`, and an untouched branch's HEAD always is. The root tree
+    // always reports false: the root is never a candidate for removal.
+    const finished = !isRoot && dirty === 0 && !issue;
+    return { path: rel, branch: w.branch, detached: w.detached, head: w.head, isRoot, dirty, stampMatches, finished, issue };
   });
 }
 

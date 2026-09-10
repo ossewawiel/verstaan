@@ -64,7 +64,7 @@
 .tree__dirty--warn { color: var(--st-deferred); }
 .tree__stamp { color: var(--ink-faint); }
 .tree__stamp--ok { color: var(--st-done); }
-.tree__merged--yes { color: var(--st-done); }
+.tree__finished--yes { color: var(--st-done); }
 .tree__issue { color: var(--st-in-progress); }
 
 /* ---- rooms row on the console ------------------------------------------ */

@@ -2,14 +2,14 @@
 issue: 112
 title: "The Now row trusts the issue file, and the merged label stops guessing from ancestry"
 milestone: Side
-status: open
+status: done
 depends_on: [109, 110]
 agent: implementer
 agents: [implementer]
 model: sonnet
 effort: medium
 checkpoint: null
-commit: null
+commit: 0fd9efb
 worktree: null
 github_issue: 61
 ---
@@ -79,12 +79,14 @@ and a tree whose work has landed are the same shape in git.
 
 ## Done when
 
-- [ ] `inProgressQuests()` consults no tree flag in either model layer.
-- [ ] `merged` is gone from both `readWorktrees()` ports, replaced by `finished` as defined above.
-- [ ] No file under `apps/console/` or `tools/console/` runs `git merge-base --is-ancestor`.
-- [ ] Both Trees panels label a finished tree "finished".
-- [ ] Tests in `tools/console/test/` and `apps/console/server/test/` fail first, then pass.
-- [ ] An e2e spec proves the Now row names a quest whose tree sits at `main`'s head.
-- [ ] The live console at `http://127.0.0.1:7864/` names issue 7 and `m1-mirror` in its Now row,
-      checked with the Playwright MCP browser.
-- [ ] `python -m tools.validate --all` exits 0.
+- [x] `inProgressQuests()` consults no tree flag in either model layer.
+- [x] `merged` is gone from both `readWorktrees()` ports, replaced by `finished` as defined above.
+- [x] No file under `apps/console/` or `tools/console/` runs `git merge-base --is-ancestor`.
+- [x] Both Trees panels label a finished tree "finished".
+- [x] Tests in `tools/console/test/` and `apps/console/server/test/` fail first, then pass.
+- [x] An e2e spec proves the Now row names a quest whose tree sits at `main`'s head.
+- [x] The live console at `http://127.0.0.1:7864/` names issue 7 and `m1-mirror` in its Now row,
+      checked with the Playwright MCP browser. Proved as an A/B against the real tree on
+      2026-09-10: the old code served the same repo at "Nothing in progress" and labelled the
+      tree "merged"; the new code names "#07 ... — m1-mirror" and drops the label.
+- [x] `python -m tools.validate --all` exits 0.

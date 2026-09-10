@@ -69,15 +69,15 @@
   }
 
   function tree(t) {
-    var r = el('div', 'tree' + (t.isRoot ? ' tree--root' : '') + (t.merged ? ' tree--merged' : ''));
+    var r = el('div', 'tree' + (t.isRoot ? ' tree--root' : '') + (t.finished ? ' tree--finished' : ''));
     r.appendChild(el('span', 'tree__path mono', t.path + (t.isRoot ? ' (root)' : '')));
     r.appendChild(el('span', 'tree__branch mono', t.branch || 'detached'));
     r.appendChild(el('span', 'tree__dirty' + (t.dirty ? ' tree__dirty--warn' : ''), t.dirty ? t.dirty + ' dirty' : 'clean'));
     r.appendChild(el('span', 'tree__stamp' + (t.stampMatches ? ' tree__stamp--ok' : ''), t.stampMatches ? 'stamped' : 'no stamp'));
-    r.appendChild(el('span', 'tree__merged' + (t.merged ? ' tree__merged--yes' : ''), t.merged ? 'merged' : ''));
-    // A merged tree's branch is done work, even if a stale issue file still names it in-progress
-    // (the file has not been removed yet). Never show it as the active tree for an issue.
-    r.appendChild(el('span', 'tree__issue', !t.merged && t.issue ? '#' + pad(t.issue.n) + ' ' + t.issue.title : '—'));
+    r.appendChild(el('span', 'tree__finished' + (t.finished ? ' tree__finished--yes' : ''), t.finished ? 'finished' : ''));
+    // A finished tree names no issue by definition (issue 112): `finished` requires no in-progress
+    // issue file to name this tree, so `t.issue` is already null whenever `t.finished` is true.
+    r.appendChild(el('span', 'tree__issue', t.issue ? '#' + pad(t.issue.n) + ' ' + t.issue.title : '—'));
     return r;
   }
 
