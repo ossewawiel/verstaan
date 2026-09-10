@@ -2,15 +2,15 @@
 issue: 103
 title: "The loadout on every quest: the card shows agent, model and effort, and the validator refuses a quest without them"
 milestone: Side
-status: in-progress
+status: done
 depends_on: [99]
 agent: implementer
 agents: [implementer]
 model: sonnet
 effort: low
 checkpoint: null
-commit: null
-worktree: .worktrees/side-103-loadout-on-every-quest
+commit: 1e63f0c
+worktree: null
 github_issue: null
 ---
 ## What
