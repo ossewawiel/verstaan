@@ -31,6 +31,13 @@ if node -e "require('http').get('http://127.0.0.1:$port/health',r=>process.exit(
 fi
 
 log="$common/console-serve.log"
-(cd "$root/apps/console" && VERSTAAN_CONSOLE_PORT="$port" nohup node "$server" --port "$port" >"$log" 2>&1 &)
+# The `&` must apply to the node command alone. `(cd dir && nohup node ... &)` backgrounds the
+# whole `cd && nohup` list, and the helper subshell running that list keeps this hook's stdout
+# open for as long as the server lives: Claude Code reads the hook through a pipe, so the session
+# start would wait for the hook's timeout instead of the hook (issue 102).
+(
+  cd "$root/apps/console" || exit 0
+  VERSTAAN_CONSOLE_PORT="$port" nohup node "$server" --port "$port" >"$log" 2>&1 </dev/null &
+)
 echo "console-serve: started http://127.0.0.1:$port (log: $log)"
 exit 0
