@@ -2,15 +2,15 @@
 issue: 112
 title: "The Now row trusts the issue file, and the merged label stops guessing from ancestry"
 milestone: Side
-status: in-progress
+status: done
 depends_on: [109, 110]
 agent: implementer
 agents: [implementer]
 model: sonnet
 effort: medium
 checkpoint: null
-commit: null
-worktree: .worktrees/side-112-now-row-trusts-issue-file
+commit: 0fd9efb
+worktree: null
 github_issue: 61
 ---
 
