@@ -88,6 +88,6 @@ in the same change and say so in its `## What` with one sentence.
 
 - Start the work. That is `/factory-run`.
 - Edit `PLAN.md` §7's milestone ranges, an ADR, or any agent file. Say when one of those needs
-  changing and stop.
+  changing and stop; a new milestone range goes through `/create-map`, not through this skill.
 - Raise a loadout past the agent's default without saying why in the issue's `## What`.
 - Write a quest whose Done when is empty.

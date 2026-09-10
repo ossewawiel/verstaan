@@ -124,6 +124,7 @@ Copied in shape from `timewarp`, adapted for C++ and data work. Three principles
 | `/factory-run [n]` | `.claude/skills/factory-run/` | Pick the next open issue, route it to agents, run gates, stop at checkpoints. |
 | `/gate` | `.claude/commands/` | The full local gate before a pull request. Writes the stamp. |
 | `/quest [main\|side] [seed]` | `.claude/skills/quest/` | The quest giver: plan one quest with the developer, write its issue file, validate, mirror. Never starts the work. |
+| `/create-map [seed]` | `.claude/skills/create-map/` | Plans a new map: interrogate, decide, extend `PLAN.md` §7, then quest each milestone. The one skill allowed to write a §7 row, and only with the owner's yes at every stage. |
 | `/factory-retro` | `.claude/skills/factory-retro/` | Turn repeated failures into rules. Never applies without approval. |
 | `implementer` | `.claude/agents/` | Makes failing tests pass; builds tooling and engine code. Sonnet, medium. |
 | `test-writer` | `.claude/agents/` | Turns a test table into failing tests. Sonnet, medium. |
