@@ -123,6 +123,7 @@ Copied in shape from `timewarp`, adapted for C++ and data work. Three principles
 | `/factory-status` | `.claude/commands/` | Regenerate `STATE.md`, print the next command. Cold-start safe. |
 | `/factory-run [n]` | `.claude/skills/factory-run/` | Pick the next open issue, route it to agents, run gates, stop at checkpoints. |
 | `/gate` | `.claude/commands/` | The full local gate before a pull request. Writes the stamp. |
+| `/quest [main\|side] [seed]` | `.claude/skills/quest/` | The quest giver: plan one quest with the developer, write its issue file, validate, mirror. Never starts the work. |
 | `/factory-retro` | `.claude/skills/factory-retro/` | Turn repeated failures into rules. Never applies without approval. |
 | `implementer` | `.claude/agents/` | Makes failing tests pass; builds tooling and engine code. Sonnet, medium. |
 | `test-writer` | `.claude/agents/` | Turns a test table into failing tests. Sonnet, medium. |

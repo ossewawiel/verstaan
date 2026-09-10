@@ -111,8 +111,10 @@ runs once per merge. Do not raise a level to get past a failure; report the fail
 
 ## The quest giver
 
-New work does not appear from nowhere. A new milestone's issues are written at a checkpoint
-from `PLAN.md` §7 and what the last milestone found. A new direction goes through interrogation
+New work does not appear from nowhere. `/quest` is the quest giver's tool: it plans one quest
+with the developer, asking only what the files cannot answer, writes the issue file to `SPEC.md`
+§6, validates it and mirrors it. A new milestone's issues are written at a checkpoint from
+`PLAN.md` §7 and what the last milestone found, through the same skill. A new direction goes through interrogation
 first, the way the whole plan did: the brief under `docs/decisions/` is the record, and each
 decision becomes an ADR before it becomes an issue.
 
