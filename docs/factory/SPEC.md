@@ -129,7 +129,7 @@ issue: 7
 title: "Mirror the public pages and the wiki"
 milestone: M1
 status: open            # open | in-progress | done
-depends_on: [6]
+depends_on: [6]         # every number must be an existing issue; may cross main and side (issue 104)
 agent: implementer
 agents: [implementer, docs-writer]
 model: sonnet

@@ -18,8 +18,47 @@ export function loadoutOf(issue: Pick<Issue, 'agent' | 'model' | 'effort'>): { t
     : { text: `no loadout: ${[!issue.agent && 'agent', !issue.model && 'model', !issue.effort && 'effort'].filter(Boolean).join(', ')} missing`, complete };
 }
 
+/** One blocking link, either direction. `cross` means it crosses the main/side divide. */
+export interface Link {
+  n: number;
+  title: string;
+  status: Issue['status'];
+  side: boolean;
+  cross: boolean;
+  missing: boolean;
+}
+export interface Links {
+  blockedBy: Link[];
+  blocks: Link[];
+}
+
+const pad = (n: number) => `#${String(n).padStart(2, '0')}`;
+const kind = (l: Link) => (l.missing ? 'unknown quest' : l.side ? 'side quest' : 'main quest');
+
+/** The block lines on the summary row (issue 104): what this quest is still waiting on, and
+ * what is waiting on it. Only open links are listed; a done dependency blocks nothing. A link
+ * that crosses the main/side divide is marked so the eye cannot slide past it: a side quest
+ * holding up the main line is the case the owner asked to see. */
+function BlockLines({ links }: { links: Links }) {
+  if (!links.blockedBy.length && !links.blocks.length) return null;
+  const line = (label: string, list: Link[]) =>
+    list.length ? (
+      <span className={`story__block${list.some((l) => l.cross) ? ' story__block--cross' : ''}`}>
+        {list.some((l) => l.cross) ? '⚔ ' : ''}
+        {label} {list.map((l) => `${pad(l.n)} (${kind(l)}, ${l.status === 'in-progress' ? 'in progress' : l.status})`).join(', ')}
+      </span>
+    ) : null;
+  return (
+    <>
+      {line('blocked by', links.blockedBy)}
+      {line('blocks', links.blocks)}
+    </>
+  );
+}
+
 interface Props {
   issue: Issue;
+  links: Links;
   expanded: boolean;
   onToggle: (n: number) => void;
 }
@@ -27,7 +66,7 @@ interface Props {
 /** One quest card. `React.memo` keeps a card that has not changed from re-rendering at all when
  * a sibling's data does (issue 99's flicker proof): the list re-renders on every SSE-driven
  * refetch, but a card whose own `issue` object is referentially unchanged bails out here. */
-function IssueCardImpl({ issue, expanded, onToggle }: Props) {
+function IssueCardImpl({ issue, links, expanded, onToggle }: Props) {
   const id = String(issue.n).padStart(2, '0');
   const loadout = loadoutOf(issue);
   return (
@@ -47,6 +86,7 @@ function IssueCardImpl({ issue, expanded, onToggle }: Props) {
         <span className="story__title">
           {issue.title}
           <span className={`story__loadout${loadout.complete ? '' : ' story__loadout--missing'}`}>{loadout.text}</span>
+          <BlockLines links={links} />
         </span>
         <span className="story__status">
           {/* All three glyphs and all three labels are always in the DOM, one shown per status
@@ -75,7 +115,11 @@ function IssueCardImpl({ issue, expanded, onToggle }: Props) {
             <dt>Milestone</dt>
             <dd>{issue.milestone}</dd>
             <dt>Depends on</dt>
-            <dd>{issue.dependsOn.length ? issue.dependsOn.map((d) => `#${String(d).padStart(2, '0')}`).join(', ') : 'none'}</dd>
+            <dd>{issue.dependsOn.length ? issue.dependsOn.map(pad).join(', ') : 'none'}</dd>
+            <dt>Blocked by</dt>
+            <dd>{links.blockedBy.length ? links.blockedBy.map((l) => `${pad(l.n)} ${l.title} (${kind(l)}, ${l.status})`).join('; ') : 'nothing open'}</dd>
+            <dt>Blocks</dt>
+            <dd>{links.blocks.length ? links.blocks.map((l) => `${pad(l.n)} ${l.title} (${kind(l)}, ${l.status})`).join('; ') : 'nothing open'}</dd>
             <dt>Agent</dt>
             <dd>{issue.agents.join(', ') || 'none'}</dd>
             <dt>Loadout</dt>
@@ -121,4 +165,12 @@ function sameIssue(a: Issue, b: Issue): boolean {
   );
 }
 
-export const IssueCard = memo(IssueCardImpl, (prev, next) => sameIssue(prev.issue, next.issue) && prev.expanded === next.expanded);
+const linkKey = (list: Link[]) => list.map((l) => `${l.n}:${l.status}:${l.cross}:${l.missing}`).join(',');
+function sameLinks(a: Links, b: Links): boolean {
+  return linkKey(a.blockedBy) === linkKey(b.blockedBy) && linkKey(a.blocks) === linkKey(b.blocks);
+}
+
+export const IssueCard = memo(
+  IssueCardImpl,
+  (prev, next) => sameIssue(prev.issue, next.issue) && sameLinks(prev.links, next.links) && prev.expanded === next.expanded,
+);

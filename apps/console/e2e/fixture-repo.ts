@@ -29,7 +29,11 @@ export function issuePath(n: number): string {
 function issueMd(n: number, title: string, status: string): string {
   // Issue 9 alone has no loadout, so the suite can prove the card flags a quest file that lacks one.
   const loadout = n === 9 ? '' : 'model: sonnet\neffort: low\n';
-  return `---\nissue: ${n}\ntitle: "${title}"\nmilestone: Fixture\nstatus: ${status}\ndepends_on: []\nagent: implementer\n${loadout}---\n## What\n\nFixture issue ${n} for the console's own e2e suite.\n\n## Done when\n\n- [ ] one\n`;
+  // Issues 9 and 10 are side quests (issue 104). 10 waits on main quest 7; main quest 8 waits on
+  // side quest 9: one cross-divide block in each direction for the suite to find on the cards.
+  const milestone = n >= 9 ? 'Side' : 'Fixture';
+  const deps = n === 10 ? '[7]' : n === 8 ? '[9]' : '[]';
+  return `---\nissue: ${n}\ntitle: "${title}"\nmilestone: ${milestone}\nstatus: ${status}\ndepends_on: ${deps}\nagent: implementer\n${loadout}---\n## What\n\nFixture issue ${n} for the console's own e2e suite.\n\n## Done when\n\n- [ ] one\n`;
 }
 
 export function buildFixtureRepo(): void {
