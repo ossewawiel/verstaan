@@ -3,11 +3,18 @@
 // field). No real git checkout is exercised here: every shell-out is injected so the fixture
 // stays independent of this repository's own worktree layout.
 import { describe, it, expect } from 'vitest';
+import { join, dirname } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { readWorktrees } from '../src/model/read.js';
 
-const fakeRoot = '/fake-root';
-const fakeSideTree = '/fake-root/.worktrees/side-92-worktrees';
-const fakeCommonDir = '/fake-root/.git';
+// A real absolute path built with join(), not a hardcoded POSIX literal: readWorktrees() compares
+// shInOkFn's cwd argument against resolve()'d paths, and a forward-slash literal never equals the
+// backslash form resolve() produces on Windows CI. tools/console/test/run.mjs's fixture (issue
+// 109) hit this first.
+const here = dirname(fileURLToPath(import.meta.url));
+const fakeRoot = join(here, '__fake-root__');
+const fakeSideTree = join(fakeRoot, '.worktrees', 'side-92-worktrees');
+const fakeCommonDir = join(fakeRoot, '.git');
 
 const fakePorcelain =
   `worktree ${fakeRoot}\nHEAD 1111111111111111111111111111111111111111\nbranch refs/heads/main\n\n` +
