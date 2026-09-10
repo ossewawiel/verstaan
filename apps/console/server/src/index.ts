@@ -61,6 +61,15 @@ export function watchPaths(
   add(join(root, 'docs', 'factory'), 'state');
   add(join(root, 'docs'), 'docs', true);
   add(join(root, '.claude', 'agents'), 'party');
+  // The directory that *contains* every worktree, not any one tree's own files. `/factory-run`
+  // creates `.worktrees/side-NN-<slug>` mid-run; a change here is the earliest local signal that
+  // a new tree exists, well before that tree's own `docs/factory/issues` has anything watchable
+  // in it. Labelled `issues`, not `worktrees`: the `.git/worktrees` admin dir (below) carries the
+  // `worktrees` section, and `shouldIgnoreGitEcho` suppresses that section for a short window
+  // after this process's own `git worktree` calls. A new tree appearing is never such an echo —
+  // this process never runs `git worktree add` itself — so it must never be dropped, and giving
+  // it a distinct section is simpler than teaching the echo filter a carve-out.
+  add(join(root, '.worktrees'), 'issues');
   for (const w of worktrees) add(join(resolve(root, w.path), 'docs', 'factory', 'issues'), 'issues');
   if (commonDir) {
     add(commonDir, 'git');
@@ -258,6 +267,11 @@ function startWatching(onChange: (section: string) => void) {
       if (existsSync(dir) && !paths.some((x) => x.path === dir)) {
         paths.push({ path: dir, section: 'issues' });
         watchDirectory(dir, filteredOnChange, 'issues', watchers);
+        // A tree the 30-second rescan just found is new to this server: whatever brought it here
+        // (a `/factory-run` mid-way through writing `status: in-progress`) already happened, and
+        // no future filesystem event is guaranteed to fire soon. Without this, a connected
+        // browser holds its stale `/api/state` until some unrelated path changes.
+        filteredOnChange('issues');
       }
     }
   }, 30000).unref();

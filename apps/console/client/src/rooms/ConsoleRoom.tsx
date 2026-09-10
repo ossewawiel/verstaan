@@ -42,6 +42,23 @@ export function ConsoleRoom() {
         <p className="panel__title">Now / Next</p>
         <div className="nn-row nn-row--now">
           <span className="nn-row__label">Now</span>
+          {model.inProgress.length === 0 ? (
+            <span className="nn-row__text">Nothing in progress</span>
+          ) : (
+            <ul className="nn-row__text nn-row__list">
+              {model.inProgress.map((q) => (
+                <li key={q.n}>
+                  <Link to={`/quests/${String(q.n).padStart(2, '0')}`}>
+                    #{String(q.n).padStart(2, '0')} {q.title}
+                  </Link>{' '}
+                  — {q.tree ?? '(this tree)'}
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+        <div className="nn-row">
+          <span className="nn-row__label">Last</span>
           <span className="nn-row__text">{model.last ? `#${String(model.last.n).padStart(2, '0')} ${model.last.title} — done` : 'Nothing closed yet'}</span>
         </div>
         <div className="nn-row">
