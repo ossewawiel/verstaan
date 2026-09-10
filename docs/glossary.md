@@ -69,8 +69,8 @@ term here instead, with the file that defines it.
 | Ledger | `docs/factory/lessons.jsonl`, one line per fast-gate failure. | `.claude/hooks/capture-failure.sh` |
 | Signature | The `sig` field of a ledger line. Three of a kind is ripe for the retro. | `.claude/skills/factory-retro/SKILL.md` |
 | Level | A rule promoted from the ledger by the retro, with approval. | same |
-| Console | `docs/factory/console/`, the local site rendered from the files. | `tools/console/` |
-| Library | The console's index of every project document. | `tools/console/` |
+| Console | The app: `apps/console/`, a Fastify server and a React client at `http://127.0.0.1:7864`, read-only, rooms as real routes, updated live over SSE. The one part of the repository allowed its own dependencies. A zero-dependency file-based copy for `file://` use stays under `tools/console/`. | ADR 0010 |
+| Library | The console's index of every project document. | `apps/console/` |
 | Issue file | `docs/factory/issues/NN-title.md`. The source of truth for status. | `SPEC.md` §6 |
 | Test-cases companion | `NN-test-cases.md`, the rule-author's table that becomes tests. | `.claude/agents/rule-author.md` |
 

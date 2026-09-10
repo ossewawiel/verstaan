@@ -62,10 +62,10 @@ def run_hook(
     )
 
 
-def add_serve_script(repo: Path) -> None:
-    serve = repo / "tools" / "console" / "src" / "serve.mjs"
-    serve.parent.mkdir(parents=True)
-    serve.write_text("// stub\n", encoding="utf-8")
+def add_built_server(repo: Path) -> None:
+    server = repo / "apps" / "console" / "dist-server" / "server" / "src" / "index.js"
+    server.parent.mkdir(parents=True)
+    server.write_text("// stub\n", encoding="utf-8")
 
 
 def test_no_node_exits_zero_and_says_so(repo, tmp_path):
@@ -84,7 +84,7 @@ def test_missing_serve_script_exits_zero_without_starting(repo, tmp_path):
 
 
 def test_running_service_is_left_alone(repo, tmp_path):
-    add_serve_script(repo)
+    add_built_server(repo)
     stub_dir, log = fake_node(tmp_path)
     path = hermetic_tool_path(tmp_path, NEEDED, stub_dir)
     result = run_hook(repo, path, {"FAKE_LOG": str(log), "FAKE_HEALTH": "0"})
@@ -94,7 +94,7 @@ def test_running_service_is_left_alone(repo, tmp_path):
 
 
 def test_service_is_started_when_nothing_answers(repo, tmp_path):
-    add_serve_script(repo)
+    add_built_server(repo)
     stub_dir, log = fake_node(tmp_path)
     path = hermetic_tool_path(tmp_path, NEEDED, stub_dir)
     result = run_hook(repo, path, {"FAKE_LOG": str(log), "FAKE_HEALTH": "1"})
@@ -105,11 +105,11 @@ def test_service_is_started_when_nothing_answers(repo, tmp_path):
             break
         time.sleep(0.1)
     assert log.exists()
-    assert "serve.mjs" in log.read_text(encoding="utf-8")
+    assert "dist-server" in log.read_text(encoding="utf-8")
 
 
 def test_port_comes_from_the_environment(repo, tmp_path):
-    add_serve_script(repo)
+    add_built_server(repo)
     stub_dir, log = fake_node(tmp_path)
     path = hermetic_tool_path(tmp_path, NEEDED, stub_dir)
     result = run_hook(

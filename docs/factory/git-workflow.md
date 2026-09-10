@@ -48,6 +48,19 @@ written for free; this repository's own root checkout was `git init`-ed locally 
 `git remote add origin`, so `main@{upstream}` has never resolved there. The name-based fallback in
 `require_gate.sh` is what makes the exemption fire on that tree at all.
 
+Since issue 92, a session's working directory is a worktree, never the root tree — this is now
+the normal case, not the exception. Catching the root tree up after a pull request merges on
+GitHub means running the fast-forward above against the root tree from inside a worktree session:
+`cd <root> && git merge --ff-only origin/main`, fetching first if the worktree's own view of
+`origin/main` is stale. As of 2026-09-09 this is refused from a worktree session:
+`require_gate.sh` decides its `main`-only exemption from the session's own working directory, not
+the tree the command targets, so the hook refuses the fast-forward even though the root tree is on
+`main` and clean. Issue 97 tracks the fix. Until it lands, catch the root tree up from a shell
+outside the agent's tool calls — a terminal window, not an agent-issued command. Do not route
+around the hook with `git -C <root> merge`; the hook's segment matcher does not examine that form
+at all, so it passes through unexamined rather than satisfying the check, and a real unstamped
+merge into `main` written the same way would pass through too.
+
 Every Claude Code hook follows this same shape (`docs/factory/issues/93-hooks-as-tracked-scripts.md`):
 the logic is a tracked script under `tools/factory/hooks/` with a pytest module under
 `tools/factory/tests/`; `.claude/hooks/<name>.sh` is a wrapper of at most six lines that `exec`s

@@ -164,8 +164,9 @@
     set('foot', 'Rendered ' + m.generated + ' from docs/factory/issues, .claude/agents, lessons.jsonl and git. Regenerate with node tools/console/src/generate.mjs. Nothing here is editable; the files are.');
   }
 
-  /* live.js (the service) calls update(model) on every change event instead of reloading the
-   * page: no flicker, and nothing the reader opened or scrolled to is lost. */
+  /* Exposed for a future in-place caller; nothing calls update(model) today. The service that
+   * once did (serve.mjs + live.js) is gone (issue 99): live updates now come from apps/console,
+   * a separate Node/React app that does not use this file at all. */
   window.verstaanConsole = { update: render };
 
   var m = island();

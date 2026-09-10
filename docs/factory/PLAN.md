@@ -103,6 +103,7 @@ tests/                        engine tests, golden files, equivalence tests
 | Data | YAML in git; SQLite index built on demand for the management UI later | Reviewable in pull requests |
 | CI | Local hook gates from day one; GitHub Actions matrix (windows, ubuntu; arm from M4) running the same gate steps, added by side quest 91 | The gate ladder is the CI on day one, and the remote runs the same ladder |
 | Source control | Git, single repository, milestone branches, one commit per issue; GitHub milestones, labels and pull requests as a mirror of the issue files, never the other way round (side quest 91) | The history is a deliverable; the files stay the only truth |
+| Console | Node 20+, Fastify, TypeScript server; React 19, TypeScript, Vite client; TanStack Query; React Router; plain CSS (side quest 99, ADR 0010) | The one part of the repository allowed dependencies of its own — it never sits on the translation path (ADR 0008 keeps the engine and the Python tools at zero) |
 
 ## 6. The code factory
 
@@ -170,12 +171,18 @@ The factory plays as an exploration: the map is the repository and the milestone
 is the current milestone branch, a side quest is an unblocked out-of-order issue, an encounter is
 one issue and its commit, the party is the five agents costed to a model and effort each, and
 levelling is a lesson promoted to a rule by the retro. The quest giver is the interrogation and
-investigation work that decides what to do next. The console is a local `file://` page rendered
-from the issue files, git, the gate stamp and the ledger. It never invents state. Its top panel is
-always one next move to type and one side task under ten minutes that only the owner can do.
-Skin: the Colonial CIC theme from bob's docsite, amber phosphor on hull grey, cut-corner panels,
-status carried by glyph and label as well as colour. Voice: `docs/standards/voice.md`, no
-cheering. The console is a Post-M6 side quest pulled forward when the owner says so.
+investigation work that decides what to do next. The console is a small Node/React app
+(`apps/console/`, side quest 99, ADR 0010): a Fastify server with a read-only JSON API over the
+issue files, git, the gate stamp and the ledger, and a React client that renders five rooms —
+Console, Quests, Playbook, Library, Glossary — as real routes and diffs its own DOM on every
+change instead of reloading. It never invents state and never writes to the repository; that is
+quest 100. Its top panel is always one next move to type and one side task under ten minutes that
+only the owner can do. A zero-dependency file-based copy stays under `tools/console/` for a
+`file://` reader with no service running (`node tools/console/src/generate.mjs`). Skin: the
+Colonial CIC theme from bob's docsite, amber phosphor on hull grey, cut-corner panels, status
+carried by glyph and label as well as colour. Voice: `docs/standards/voice.md`, no cheering. The
+console was a Post-M6 side quest, pulled forward once already (quest 95) and again for quest 99,
+because the owner keeps it open every session.
 
 ## 7. Milestones and backlog
 

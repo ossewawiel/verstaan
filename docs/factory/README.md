@@ -62,23 +62,33 @@ Rules in full at `SPEC.md` §5. What actually runs, proven in issue 01:
 
 ## The console
 
-The console is the game: the page that says where the project is. It runs as a small local
-service. A `SessionStart` hook starts it for you at the beginning of a session, from the root
-tree, if nothing already answers on the port. Double-click `console.cmd` (or run `.\console.ps1`)
-in the repository root to start it by hand and open `http://127.0.0.1:7864`; `console.cmd` also
-starts `node tools/console/src/serve.mjs` if it is not running. Start it from the root tree: the
-service reads the tree its own file sits in, so `console.cmd` double-clicked inside a worktree
-binds the Library, Playbook and Glossary rooms to that worktree's docs instead of the root's. Only
-issue status merges across every tree regardless of where the service runs. The page reloads
-itself the moment an issue file or the git state changes in any tree, and it reloads for a doc at
-the top level of `docs/`. The watch on `docs/` is not recursive, so a doc nested a level deeper,
-such as `docs/standards/voice.md`, can change without waking the page. Nothing is written to disk,
-nothing on it is editable, and it listens on the loopback address only.
+The console is the game: the page that says where the project is. It is a small Node/React app,
+`apps/console/` (issue 99; ADR 0010) — a Fastify server with a read-only JSON API and a change
+stream, and a React client built with Vite. `apps/console` is the one part of the repository
+allowed dependencies of its own; the engine and the Python tools stay at zero (ADR 0008).
 
-The file-based copy, `docs/factory/console/index.html`, still exists for a machine with no
-service running: `node tools/console/src/generate.mjs` from any tree writes that tree's console
-and the root's, hooks run it on edits and stops, and the root page reloads itself every two
-minutes. It is never committed. Five rooms either way:
+A `SessionStart` hook starts the built server for you at the beginning of a session, from the
+root tree, if nothing already answers on the port; it never builds the app itself, only starts
+what is already built. Double-click `console.cmd` (or run `.\console.ps1`) in the repository root
+to start it by hand and open `http://127.0.0.1:7864`: the first run installs dependencies
+(`npm ci`) and builds the app (`npm run build`) inside `apps/console`, and every later run rebuilds
+only when the client or server source is newer than the last build. Start it from the root tree:
+the server reads the tree its own files sit in, so `console.cmd` double-clicked inside a worktree
+binds the Library, Playbook and Glossary rooms to that worktree's docs instead of the root's. Only
+issue status merges across every tree regardless of where the server runs. React Router gives
+every room a real path (`/quests/07`, `/library/docs/factory/PLAN.md`); the SSE change stream
+invalidates only the data a room is showing, so an open card, scroll position and focus survive a
+change instead of the page reloading. The watch on `docs/` is recursive on Windows and macOS, so a
+doc nested a level deeper, such as `docs/standards/voice.md`, wakes the page too; Node's recursive
+watch is not reliable on Linux, so there the watch stays top-level-only, same as the old file
+console. Nothing is written to disk, nothing on it is editable, and it listens on the loopback
+address only.
+
+The file-based copy, `docs/factory/console/index.html`, still exists for a machine with no server
+running: `node tools/console/src/generate.mjs` from any tree writes that tree's console and the
+root's, hooks run it on edits and stops, and the root page reloads itself every two minutes. It is
+never committed, and it is untouched by issue 99 — it stays the zero-dependency fallback under
+`tools/console/`, separate from the app under `apps/console/`. Five rooms either way:
 
 | Room | What it holds |
 |---|---|
