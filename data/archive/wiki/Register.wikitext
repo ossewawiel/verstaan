@@ -1,0 +1,45 @@
+'''Register''' is a variety of a language used for a particular purpose or in a particular social setting. 
+
+== Natural language ==
+In the UNLarium framework, register may assume the following values:
+
+{{#tree:id=nl_REG|openlevels=0|root=Register (REG)|
+*archaism (ARC): no longer current
+*colloquialism (CLQ): not used in formal speech
+*dialect (DIA): regional speech pattern
+*jargon (JGN): technical vocabulary of a particular profession
+*literary (LIT): used only in literature
+*pejorative (PEJ): having an unpleasant or disparaging connotation, but which are not taboo
+*slang (SLG): used by a specific social group
+*taboo (TAB): offensive
+}}
+
+=== Examples ===
+*thou (you) = archaism (ARC)
+*wanna (want to) = colloquialism (CLQ)
+*wee (small) = dialect (DIA) (Scotticism)
+*canis lupus familiaris (dog) = jargon  (JGN)
+*nitwit (stupid person) = pejorative (PEJ)
+*waken (awake) = literary (LIT)
+*ajax (exceptionally attractive girl) = slang (SLG)
+*crap (nonsense) = taboo (TAB)
+
+== UNL ==
+In UNL, register is represented by attributes:
+
+{{#tree:id=unl_REG|openlevels=0|root=Register|
+*@archaic
+*@colloquial
+*@dialect
+*@jargon
+*@literary
+*@pejorative
+*@slang
+*@taboo
+}}
+
+=== Examples ===
+*Thou = you.@archaic
+*bide a wee = bide a short time.@dialect
+*canis lupus familiaris = dog.@jargon
+*she is ajax = she is attractive.@slang

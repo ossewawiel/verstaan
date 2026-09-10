@@ -1,0 +1,66 @@
+An '''Uniform Concept Identifier''' (UCI) is used to identify a concept. It is a URI (Uniform Resource Identifier) for [[UW]]'s. In the UNL framework, UCI's are represented either as UCL (Uniform Concept Locator) or UCN (Uniform Concept Name).
+
+== Structure ==
+The UCI follows the generic syntax defined for URI's:
+ <scheme name> : <hierarchical part>
+Where:
+*<scheme name> determines the syntax and semantics of the hierarchical part. In the UNLframework, there are two schemes:
+**ucl, which is used for uniform concept locators
+**ucn, which is used for uniform concept names
+*<hierarchical part>  holds the identification information.
+
+== UCL (Uniform Concept Locator) ==
+Uniform Concept Locators (UCL), as URL's, provide a method for finding the concept in the [[UNL Knowledge Base]]. They are represented as: 
+ ucl://<AUTHORITY>/<ID>
+Where:
+*ucl is the scheme name for uniform concept locators
+*<AUTHORITY> is the authority (knowledge base) responsible for the concept (unlkb.unlweb.net, by default)
+*<ID> is the index of the concept in the knowledge base
+For instance, the concept "a piece of furniture having a smooth flat top that is usually supported by one or more vertical legs", which is lexicalized in English through the noun "table", may be located through:
+ ucl://unlkb.unlweb.net.br/104379964
+This address is expected to bring all the information concerning the concept, i.e., it's definition in UNL, which may be used by the languages where this concept is not lexicalized.
+
+== UCN (Uniform Concept Name) ==
+Uniform Concept Names (UCN) use the ucn scheme and, as URN's, do not imply availability of the identified resource. They are represented as:
+ ucn:<LID>:<NSS>
+Where
+*ucn is the scheme name for uniform concept names
+*<LID> is namespace identifier, which corresponds to the three-character ISO 639-2 code for languages
+*<NSS> is the namespace-specific string
+For instance, the concept "a piece of furniture having a smooth flat top that is usually supported by one or more vertical legs", which is lexicalized in English through the noun "table" may be associated to several different names:
+ ucn:eng:table(icl>furniture)
+ ucn:fra:table(icl>mobilier)
+ ucn:esp:mesa(icl>mobiliario)
+ ucn:deu:Tisch(icl>Möbel)
+ ucn:rus:стол(icl>мебель)
+UCN's must be unique and the namespace-specific string is normally split into two different parts: a root and a suffix, as exemplified above. The root can be a word or a multi-word expression. The suffix, which is always introduced by a UNL relation, is used to disambiguate the root.
+
+== UCL or UCN? ==
+UCL and UCN are both UCI's (i.e., uniform concept identifiers). They are both used to identify UW's. The difference is that UCL is an address to the position of the UW in the [[UNL Knowledge Base]], whereas the UCN is only the name of the UW. The same address (i.e., UCL) may be associated to different UCN's, but a single UCN may not have more than one UCL. A UCL always describe an available UW, i.e., a UW that has been already defined in the UNL KB, whereas a UCN is not necessarily linked to an address. In that sense, UCL's are more "official" than UCN's, which are normally used in order to preserve the readability of the UNL code.
+
+== Simplified Notation ==
+In the [[UNL document|UNL Document Structure]], UCI's are always abbreviated to the last part, because the scheme, the authority and the namespace may be inferred from the document header. For instance: 
+*104379964 instead of ucl://unlkb.unlweb.net.br/104379964
+*table(icl>furniture) instead of ucn:eng:table(icl>furniture)
+
+== Formal Syntax ==
+
+ <nowiki><UCI>        ::= <UCL>|<UCN></nowiki>
+ <nowiki><UCL>        ::= "ucl://"<AUTHORITY>"/"<PATH></nowiki>
+ <nowiki><AUTHORITY>  ::= <UTF-8 character>+</nowiki>
+ <nowiki><ID>         ::= [0123456789]+</nowiki>
+ <nowiki><UCN>        ::= "ucn://"<LID>":"<NSS></nowiki>
+ <nowiki><LID>        ::= [a-z]{3}</nowiki>
+ <nowiki><NSS>        ::= <root>[<suffix>]</nowiki>
+ <nowiki><root>       ::= <UTF-8 character>+</nowiki>
+ <nowiki><suffix>     ::= "("<relation>{">","<"}<root>")"</nowiki>
+ <nowiki><relation>   ::= {"agt","and","aoj",...}</nowiki>
+where:<br>
++       to be repeated 1 or more times<br >
+< > 	variable<br >
+" "	terminal symbol<br >
+<nowiki>::=</nowiki>	... is defined as ...<br >
+|       or<br >
+[ ]	optional element<br >
+{ }	alternative element<br >
+...	to be repeated more than 0 times<br >

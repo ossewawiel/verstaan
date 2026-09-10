@@ -1,0 +1,53 @@
+'''UNL tools''' are programming software developed to assist linguists in producing UNL resources (such as dictionaries and grammars). They differ from [[Applications|UNL applications]] in that they are not tailored to non-specialists and require expertise in UNL.
+
+== NLizers ==
+NL-izers (formerly known as deconverters) are [[NLization]] tools, i.e., tools for producing natural language texts out of UNL documents.
+*[[EUGENE]] (dEep-to-sUrface GENErator) [freeware] [by UNDL Foundation]
+:UNDL Foundation open-source NL-izer
+*[http://www.undl.org/unlsys/ds.html DeCo] [shareware] [by UNL Tokyo]
+:UNL Centre's official deconverter engine
+
+== UNLizers ==
+UNL-izers (formerly known as enconverters) are [[UNLization]] tools, i.e., tools for producing UNL documents out of natural language texts.
+*[[IAN]] (Interactive ANalyzer) [freeware] [by UNDL Foundation]
+:UNDL Foundation open-source interactive UNLizer
+*[[SEAN]] (Shallow Enhanced ANalyzer) [freeware] [by UNDL Foundation]
+:UNDL Foundation open-source fully-automatic UNLizer
+*[[UNL Editor]] [freeware] [by UNDL Foundation]
+:UNDL Foundation open-source fully-manual UNLizer
+*[http://www.undl.org/unlsys/ds.html EnCo] [shareware] [by UNL Tokyo]
+:UNL Centre's official enconverter engine
+*UP (Universal Parser) [shareware] [by UNL Tokyo]
+:Customized version of Enco for UNL Annotation
+[[UNLization#Tools|Comparison of UNLization tools]]
+
+== IDEs ==
+IDE (Integrated Development Environment) tools are used for producing language resources (dictionaries and grammars) for UNL.
+
+*[[UNLarium]] [freeware] [by UNDL Foundation]
+:A web-based database management system where registered users are able to create, to edit and to export dictionary entries and grammar rules according to the UNDL Foundation standards for language engineering.
+*[[UNLdev]] [freeware] [by UNDL Foundation]
+:A wrapper application for developing various UNL tools and applications
+*[http://www.undl.org/index.php?option=com_content&task=view&id=47&Itemid=85 UNL-IDE] [shareware] [by ISUAC/Bibliotheca Alexandrina]
+:Tool used to view the UNL semantic network, search the UNL documents, write rules, check their syntax, debug, watch the EnCo, DeCo and Universal Parser outputs for the given rules and dictionary and annotate natural language texts
+
+== Proofing Tools == 
+Profing tools are used for checking the spelling and syntactic consistency of UNL documents
+
+* [http://www.undl.org/unlsys/verify/021224.html UNL Verifier] [shareware] [by UNL Tokyo]
+:UNL Centre's official spell and grammar checker for UNL documents
+
+== Dictionary Tools ==
+Dictionary tools are used for producing UNL lexical resources
+
+*[http://www.undl.org/unlsys/ds.html Word Dictionary Builder] [shareware] [by UNL Tokyo]
+:UNL Centre's official dictionary compiler
+*[http://www.undl.org/index.php?option=com_content&task=view&id=47&Itemid=85 UW Gate] [shareware] [by UNL Tokyo]
+:Tool to search and view UWs and corresponding words of natural languages
+*[http://www.undl.org/index.php?option=com_content&task=view&id=47&Itemid=85 UW Gate Plus] [shareware] [by UNL Tokyo]
+:Tool to modify data of UWs and/or corresponding words of natural languages
+
+== Other ==
+
+*[http://www.undl.org/index.php?option=com_content&task=view&id=47&Itemid=85 UNL Proxy Server]
+:UNL Proxy Server package

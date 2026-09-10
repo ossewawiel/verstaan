@@ -1,0 +1,71 @@
+<div class="mw-content-ltr mw-parser-output" lang="en" dir="ltr"><p><b>Agreement</b> or <b>concord</b> is a form of cross-reference between different parts of a sentence or phrase. Agreement happens when a word changes form depending on the other words it relates to. In the UNL<sup>arium</sup> framework, agreement is defined through <a href="/wiki/S-rule" title="S-rule">S-rules</a>. Agreement is not informed in UNL.
+</p>
+<div class="mw-heading mw-heading2"><h2 id="Syntax">Syntax</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Agreement&amp;veaction=edit&amp;section=1" title="Edit section: Syntax" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Agreement&amp;action=edit&amp;section=1" title="Edit section&#39;s source code: Syntax">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>Agreement is defined through <a href="/wiki/S-rule" title="S-rule">S-rules</a> in the following format:
+</p>
+<pre>&lt;SYNTACTIC ROLE&gt;(+&lt;AGREEMENT&gt;);
+</pre>
+<p>Where:<br />
+</p>
+<ul><li>&lt;SYNTACTIC ROLE&gt; is the <a href="/wiki/Syntactic_roles" class="mw-redirect" title="Syntactic roles">syntactic role</a> (VA, VC, VS, VH, etc) of the constituent in relation to the head; and</li>
+<li>&lt;AGREEMENT&gt; is the agreement to be assigned, and may assume the following values:
+<ul><li>ANUM = assigns number (if the constituent assigns number value to the head)</li>
+<li>AGEN = assigns gender (if the constituent assigns gender value to the head)</li>
+<li>APER = assigns person (if the constituent assigns person value to the head)</li>
+<li>ACAS = assigns case   (if the constituent assigns case value to the head)</li>
+<li>ATNS = assigns tense  (if the constituent assigns tense value to the head)</li>
+<li>RNUM = receives number (if the constituent receives number value from the head)</li>
+<li>RGEN = receives gender (if the constituent receives gender value from the head)</li>
+<li>RPER = receives person (if the constituent receives person value from the head)</li>
+<li>RCAS = receives case   (if the constituent receives case value from the head)</li>
+<li>RTNS = receives tense  (if the constituent receives tense value from the the head)</li></ul></li></ul>
+<div class="mw-heading mw-heading2"><h2 id="Examples">Examples</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Agreement&amp;veaction=edit&amp;section=2" title="Edit section: Examples" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Agreement&amp;action=edit&amp;section=2" title="Edit section&#39;s source code: Examples">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<dl><dt>VS(+ANUM);</dt>
+<dd>number agreement: the verb agrees with its specifier in number (i.e., the specifier of the verb assigns number to the verb)</dd>
+<dt>NA(+RGEN);</dt>
+<dd>gender agreement: the adjunct agrees with the noun in gender (i.e., the adjunct receives gender from the noun)</dd></dl>
+<div class="mw-heading mw-heading2"><h2 id="Observations">Observations</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Agreement&amp;veaction=edit&amp;section=3" title="Edit section: Observations" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Agreement&amp;action=edit&amp;section=3" title="Edit section&#39;s source code: Observations">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<dl><dt>Conditional agreement</dt>
+<dd>Conditional agreement may be stated by defining the left side of the s-rule and coindexing it to the right side:
+<ul><li>NA(+RGEN); (unconditional agreement: the adjunct always receives the gender from the noun);</li>
+<li>NA(ADJ):=NA(+RGEN); (conditional agreement: the adjunct receives the gender from the noun if adjective);</li>
+<li>NA(^PP):=NA(+RGEN); (conditional agreement: the adjunct receives the gender from the noun if not a prepositional phrase);</li>
+<li>NA(GEN):=NA(+RGEN); (conditional agreement: the adjunct receives the gender from the noun if the noun has the feature gender (GEN);</li></ul></dd></dl>
+<dl><dt>Complex agreement</dt>
+<dd>A single agreement rule may contain several agreement operations:
+<ul><li>VS(+ANUM,+APER,+AGEN); (the specifier of the verb assigns number, person and gender to it)</li>
+<li>NS(+RNUM,+RPER,+RGEN)NA(+RNUM,+RPER,+RGEN); (the specifier and the adjunct of the noun receives number, person and gender from it)</li></ul></dd></dl>
+<dl><dt>Use of "+"</dt>
+<dd>As rules are conservative (i.e., features are preserved unless explicitly deleted), the use of "+" is actually optional:
+<ul><li>VS(+RNUM); is the same as VS(RNUM);</li></ul></dd></dl>
+<dl><dt>Feature removal</dt>
+<dd>Agreement features may be deleted through "-"
+<ul><li>NA(-RGEN); (delete "receive gender" from all noun adjuncts)</li>
+<li>NA(PP):=NA(-RGEN); (delete "receive gender" from all noun adjuncts that have the feature PP)</li></ul></dd></dl>
+<dl><dt>The symbol <b>^</b> is used for negation and to control infinite recursion</dt>
+<dd>
+<ul><li>NA(^RGEN):=NA(+RGEN); (the adjunct receives the gender from the noun if it does not have the feature "receive gender")</li></ul></dd></dl>
+<!-- 
+NewPP limit report
+Cached time: 20260910022752
+Cache expiry: 86400
+Reduced expiry: false
+Complications: []
+CPU time usage: 0.005 seconds
+Real time usage: 0.005 seconds
+Preprocessor visited node count: 13/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/100
+Expensive parser function count: 0/100
+Unstrip recursion depth: 0/20
+Unstrip post‐expand size: 0/5000000 bytes
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    0.000      1 -total
+-->
+
+<!-- Saved in parser cache with key u965818192_SLvgQ-l8z2_:pcache:479:|#|:idhash:canonical and timestamp 20260910022752 and revision id 12523. Rendering was triggered because: page-view
+ -->
+</div>

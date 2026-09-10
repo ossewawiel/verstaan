@@ -1,0 +1,17 @@
+LILY (Language-to-Interlanguage-to-Language sYstem) is an interlingua-based human-aided multilingual machine translation web service. It is expected to provide end-to-end high-quality translations through semi-automatic (human-interactive) analysis of the source text into the Universal Networking Language (UNL) and fully-automatic generation from the resulting UNL document onto several different target languages. LILY includes [[IAN]] and [[EUGENE]].
+
+== LILY Development Plan ==
+
+=== Version 1.1 ===
+#Localization of the interface should be done through uploading a localization file (directly by admin). (done)
+#Include LILY in the UNLdev. The user should have the option of seeing the results of Lily for his/her own data. (open issue)
+#Alternative translations. The user should have the option of selecting other possible results according to the grammar. (open issue)
+#Mobile (app) version. (open issue)
+
+=== Version 1.2 ===
+#Multi-tab targets (as in Google Translate)
+#"See all" option (to display all the results at the same time in parallel text boxes)
+#"Provide a better translation" option
+#Show UNL as a graph
+#Automatic detection of the language of the interface (through the browser)
+#Upload document option

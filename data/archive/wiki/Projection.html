@@ -1,0 +1,123 @@
+<div class="mw-content-ltr mw-parser-output" lang="en" dir="ltr"><p><b>Projection</b> is the mechanism by which, in a given syntactic tree, one or two constituents are integrated into a more complex structure. It is the bottom-up movement of merging or collapsing one or two subordinate nodes into a higher node in order to form a <a href="/wiki/index.php?title=Syntactic_structure&amp;action=edit&amp;redlink=1" class="new" title="Syntactic structure (page does not exist)">syntactic structure</a>. In the UNL<sup>arium</sup> framework, projection is used to build the sentence structure out of the individual constituents (head, specifier, adjunct and complement) during natural language generation. 
+</p>
+<div id="toc" class="toc" role="navigation" aria-labelledby="mw-toc-heading"><input type="checkbox" role="button" id="toctogglecheckbox" class="toctogglecheckbox" style="display:none" /><div class="toctitle" lang="en" dir="ltr"><h2 id="mw-toc-heading">Contents</h2><span class="toctogglespan"><label class="toctogglelabel" for="toctogglecheckbox"></label></span></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Use"><span class="tocnumber">1</span> <span class="toctext">Use</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#Syntax"><span class="tocnumber">2</span> <span class="toctext">Syntax</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="#Examples"><span class="tocnumber">3</span> <span class="toctext">Examples</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="#Observations"><span class="tocnumber">4</span> <span class="toctext">Observations</span></a></li>
+</ul>
+</div>
+
+<div class="mw-heading mw-heading2"><h2 id="Use">Use</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Projection&amp;veaction=edit&amp;section=1" title="Edit section: Use" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Projection&amp;action=edit&amp;section=1" title="Edit section&#39;s source code: Use">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>Projections are used to build trees out of the head-driven relations, i.e., to go from:
+</p>
+<pre><b>XS(head;specifier);</b>, which describes the relation between the head of the structure and its specifier
+<b>XA(head;adjunct);</b>, which describes the relation between the head of the structure and its adjuncts
+<b>XC(head;complement);</b>, which describes the relation between the head of the structure and its complements
+<b>XH(head);</b>, which describes the head of the structure
+</pre>
+<p>to: 
+</p>
+<pre>    XP
+   / \
+spec  XB
+     / \
+    XB  adjt
+   / \
+  X   comp
+  |
+head
+</pre>
+<p>This is done by a set of rules as follows:
+</p>
+<dl><dt>first intermediate projection (lower XB)</dt></dl>
+<p>XC(%head;%comp):=XB(%head;%comp);
+</p>
+<dl><dd>projects the first intermediate projection (XB) in case of comp</dd></dl>
+<p>XA(%head;%comp):=XB(%head;%adjt);
+</p>
+<dl><dd>projects the first intermediate projection (XB) in case of adjt (i.e., when there is no comp)</dd></dl>
+<p>XH(%head):=XB(%head;);
+</p>
+<dl><dd>projects the first intermediate projection (XB) when there is no comp or adjt (the second argument is empty)</dd>
+<dt>second intermediate projection (if any)</dt></dl>
+<p>XB(%head;%xb1)XA(%head;%adjt):=XB(XB(%head;%xb1);%adjt);
+</p>
+<dl><dd>projects the second intermediate projection (XB) in case of adjt (the tree has a comp and a adjt, or two adjts)</dd></dl>
+<p>XB(%head;%comp1)XC(%head;%comp2):=XB(XB(%head;%comp1);%comp2);
+</p>
+<dl><dd>projects the second intermediate projection (XB) in case of comp (the tree has two comps)</dd>
+<dt>third intermediate projection (if any)</dt></dl>
+<p>XB(XB(%head;%xb1);%xb2))XA(%head;%adjt):=XB(XB(XB(%head;%xb1);xb2);%adjt)); (the tree has one comp and two adjts, two comps and one adjt or three adjts)
+</p>
+<dl><dt>fourth intermediate projection (if any)</dt></dl>
+<p>...
+</p>
+<dl><dt>maximal projection</dt></dl>
+<p>XB(%head;):=XP(XB(%head;);); 
+</p>
+<dl><dd>minimal tree: the tree has only the head (no comp, adjt or spec)</dd></dl>
+<p>XB(%head;%xb):=XP(XB(%head;%xb););
+</p>
+<dl><dd>the tree has only one intermediate projection and no spec</dd></dl>
+<p>XB(%head;%xb)XS(%head;%spec):=XP(XB(%head;%xb);%spec);
+</p>
+<dl><dd>the tree has only one intermediate projection and the spec</dd></dl>
+<p>XB(%head;%xb):=XP(XB(%head;%xb););
+</p>
+<dl><dd>the tree has only one intermediate projection and no spec</dd></dl>
+<p>XB(XB(%head;%xb1);%xb2)XS(%head;%spec):=XP(XB(XB(%head;%xb1);%xb2);%spec);
+</p>
+<dl><dd>the tree has two intermediate projections and the spec</dd></dl>
+<p>XB(XB(%head;%xb1);%xb2):=XP(XB(XB(%head;%xb1);%xb2););
+</p>
+<dl><dd>the tree has two intermediate projections and no spec</dd></dl>
+<p>etc.
+</p>
+<div class="mw-heading mw-heading2"><h2 id="Syntax">Syntax</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Projection&amp;veaction=edit&amp;section=2" title="Edit section: Syntax" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Projection&amp;action=edit&amp;section=2" title="Edit section&#39;s source code: Syntax">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>Projection rules are <a href="/wiki/S-rules" class="mw-redirect" title="S-rules">S-rules</a> of the replace type, i.e.:
+</p>
+<pre>&lt;RELATION&gt;&#160;:= &lt;RELATION&gt;;
+</pre>
+<p>Where &lt;RELATION&gt; is a <a href="/wiki/Syntactic_roles" class="mw-redirect" title="Syntactic roles">syntactic relation</a>, including a &lt;HEAD&gt;, in case of head-only relations (VH, NH, PH, JH, AH, CH, IH, DH), or a &lt;HEAD&gt; and a &lt;ARGUMENT&gt;, in case of binary relations (VC, VS, VA, NC, NS, NA, etc.).
+</p><p>There are mainly two types of projection rules:
+</p>
+<ul><li>Replace, when the number of relations in the left side is the same as in the right side, and which is used for collapsing single-branched structures (i.e., parent nodes that have one single child)</li>
+<li>Merge, when the number of relations in the left side is greater than in the right side, and which is used for collapsing double-branched structures (i.e., parent nodes that have two children).</li></ul>
+<div class="mw-heading mw-heading2"><h2 id="Examples">Examples</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Projection&amp;veaction=edit&amp;section=3" title="Edit section: Examples" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Projection&amp;action=edit&amp;section=3" title="Edit section&#39;s source code: Examples">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<ul><li>VH(%head):=VB(%head);
+<ul><li>The head of the verbal phrase becomes the head of the verbal intermediate projection (VB)</li></ul></li>
+<li>VC(%head;%comp):=VB(%head;%comp);
+<ul><li>The head of the verbal phrase becomes the head of the verbal intermediate projection and the complement of the verbal phrase becomes the second argument of the verbal intermediate projection</li></ul></li>
+<li>VB(%head;%comp)VA(%head;%adjt):=VB(VB(%head;%comp);%adjt);
+<ul><li>The verbal intermediate projection becomes the head of a higher intermediate projection that takes the adjunct to the verb as second argument</li></ul></li></ul>
+<div class="mw-heading mw-heading2"><h2 id="Observations">Observations</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Projection&amp;veaction=edit&amp;section=4" title="Edit section: Observations" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Projection&amp;action=edit&amp;section=4" title="Edit section&#39;s source code: Observations">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<dl><dt>Indexation</dt>
+<dd>As in <a href="/wiki/S-rule" title="S-rule">S-rules</a>, nodes in projection rules are always indexed, either by user-defined labels (such as %head, %comp or any other) or by the position in the left side of the rules.</dd>
+<dt>Sentence structure</dt>
+<dd>The main goal of projection rules is to build the sentence structure described in <a href="/wiki/Syntax" title="Syntax">Syntax</a>.</dd></dl>
+<!-- 
+NewPP limit report
+Cached time: 20260909210540
+Cache expiry: 86400
+Reduced expiry: false
+Complications: [show‐toc]
+CPU time usage: 0.005 seconds
+Real time usage: 0.005 seconds
+Preprocessor visited node count: 80/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/100
+Expensive parser function count: 0/100
+Unstrip recursion depth: 0/20
+Unstrip post‐expand size: 108/5000000 bytes
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    0.000      1 -total
+-->
+
+<!-- Saved in parser cache with key u965818192_SLvgQ-l8z2_:pcache:514:|#|:idhash:canonical and timestamp 20260909210540 and revision id 13358. Rendering was triggered because: diff-page
+ -->
+</div>

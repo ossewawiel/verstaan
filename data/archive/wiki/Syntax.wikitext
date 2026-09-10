@@ -1,0 +1,51 @@
+In Linguistics, '''syntax''' is "the study of the principles and processes by which sentences are constructed in particular languages"<ref name="a"> Chomsky, Noam. [1957]. Syntactic Structures. p. 11.</ref>. It assumes that:
+*natural language sentences can be broken down into components (the so-called syntactic constituents);
+*the resulting structure (i.e., the relations between syntactic constituents) is hierarchical rather than a simple list; and
+*the structure can be predicted by rules (i.e., the structure is regular), which consist the grammar of the language.
+For instance, the sentence: 
+<blockquote>''they killed the man''</blockquote>
+is more productively represented as (1) than (2)
+{|
+|-
+|align=center|[[file:syntax.png]]
+|width=20%|
+|align=center|'''[they][ ][killed][ ][the][ ][man]'''
+|-
+|align=center|(1)
+|width=20%|
+|align=center|(2)
+|}
+
+== Approaches ==
+There are two main approaches to syntax:
+*the constituency approach
+*the dependency approach
+
+The '''constituency''' approach derives from the subject-predicate division of Latin and Greek grammars that is based on term logic and reaches back to Aristotle in antiquity. It consists in dividing a sentence into major parts (immediate constituents), which are in turn divided into further parts. The process continues until irreducible constituents are reached, i.e., until each constituent consists of only a word or a meaningful part of a word. The end result is often presented in a visual diagrammatic form that reveals the hierarchical immediate constituent structure of the sentence at hand. These diagrams are usually trees.  
+
+The '''dependency''' approach was first acknowledged concretely and developed as the basis for a comprehensive theory of syntax and grammar by Lucien Tesnière in his posthumously published work Éléments de syntaxe structurale. It derives from the work of Gottlob Frege, who rejected the classic binary division of the sentence and replaced it with an understanding of sentence logic in terms of predicates and their arguments. The dependency relation views the (finite) verb as the structural center of all clause structure. All other syntactic units (e.g. words) are either directly or indirectly dependent on the verb. Structure is determined by the relation between a word (a head) and its dependents. 
+
+[[file:syntax3.png]]
+
+== Grammars ==
+Grammars derive from specific implementations of syntactic approaches. A constituency approach will lead to constituency grammars (i.e., sets of rules that can be used to divide the sentence into constituents), whereas a dependency approach will lead to dependency grammars (i.e., sets of rules that can be used to identify dependency relations between syntactic units). 
+
+There are several implementations of each approach:
+*Constituency grammars
+**Government and Binding Theory (GB)
+**Generalized Phrase Structure Grammar (GPSG)
+**Head-Driven Phrase Structure Grammar (HPSG)
+**Lexical Functional Grammar (LFG)
+**Categorial Grammar (CG)
+*Dependency grammars
+**Algebraic Syntax
+**Functional Generative Description
+**Lexicase
+**Meaning-Text Theory
+**Operator Grammar
+**Word Grammar
+
+In the UNL<sup>arium</sup> framework, the syntactic module is built on a very specific module of a constituency grammar: the [[X-bar]]. 
+
+== Notes ==
+<references />

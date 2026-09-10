@@ -1,0 +1,73 @@
+Temporary entries are entries that are not expected to be translated, such as URL's, e-mail addresses, phone numbers, etc. They are not included in the dictionary, because the UNL is the same as the source. 
+
+== UNLization ==
+Temporary entries are not actually translated to UNL. They are represented, in UNL, between quotes, as natural language entries. For instance: the UNL for "asfsdfdfdsf" is "asfsdfdfdsf"; the UNL for "www.undlfoundation.org" is "www.undlfoundation.org"; etc. Temporary entries in non-Latin script have to be transliterated into Latin script. For instance: the UNL for "班禅额尔德尼" is "Panchen Erdeni". The  quotes are provided automatically by the system: all the words having the feature TEMP will be displayed, in the final output, between quotes. The feature TEMP is assigned automatically by the system to all the entries that were not found in the dictionary.
+
+=== asfsdfdfdsf ===
+*INPUT (ENG): asfsdfdfdsf
+*OUTPUT (UNL): "asfsdfdfdsf"
+*DICTIONARY: no entry is necessary
+*T-GRAMMAR: no rule is necessary
+*D-GRAMMAR: to control hyper-segmentation, as explained below.
+The OUTPUT for "asfsdfdfdsf" should be simply "asfsdfdfdsf". No process is actually required. However, the English dictionary contains the entries:<br />
+*[as]{}"" (LEX=C,POS=SCJ,POS=AVR,att=@as,rel=man)<eng,255,0>; and
+*[s]{}"" (LEX=F,POS=SFX,LST=SBW)<eng,255,0>;
+If we do not control the [[tokenization]] process, "asfsdfdfdsf" will be tokenized as [as][f][s][dfdfd][s][f], which is not correct, since we expect the whole string to be treated as a single temporary entry. In order to avoid that, we have to inform the machine that words such as [as] may only happen after a blank space or the beginning of the sentence, and before a blank space. Similary, we have to tell the machine that the suffix [s] must be followed by a blank space. This kind of information is provided in the [[disambiguation grammar]] (d-grammar), and it is used to prevent the system from hyper-analyzing temporary entries. In the English d-grammar, this is done by the rules:
+;(TEMP)(^BLK,^PUT,^STAIL)=0;
+:(a temporary word must be followed by a blank, a punctuation mark or the end of the sentence)
+;(^BLK,^PUT,^SHEAD)(TEMP)=0; 
+Note that, in order for these rules to apply, the punctuation marks and the blank space must be included in the dictionary with the corresponding features (PUT and BLK, respectively). See the [[Default Dictionary]], for an example. The SHEAD (beginning of the sentence) and STAIL (end of sentence) are system-defined features and are assigned automatically by the machine. You don't need to introduce them in the dictionary.
+
+=== asfsdfdfdsf asfsdfdfdsf ===
+*INPUT (ENG): asfsdfdfdsf asfsdfdfdsf
+*OUTPUT (UNL): "asfsdfdfdsf asfsdfdfdsf"
+*DICTIONARY: no entry is necessary
+*T-GRAMMAR: (TEMP,%x)(BLK,%y)(TEMP,%z):=(%x&%y&%z); (merges two temporary nodes with a space in-between)
+*D-GRAMMAR: the same as above, to prevent hyper-segmentation.
+From the application of the d-rule above, the tokenization result will be [asfsdfdfdsf][ ][asfsdfdfdsf], which is not actually good, because we would like the whole string to be one single token [asfsdfdfdsf asfsdfdfdsf]. We need then a rule to merge the two temporary words, which is the following: 
+;<nowiki>(TEMP,%x)(BLK,%y)(TEMP,%z):=(%x&%y&%z);</nowiki> 
+The command & merges the nodes, as described in the [[UNL Grammar Specs]].
+
+=== www.undlfoundation.org ===
+*INPUT (ENG): www.undlfoundation.org
+*OUTPUT (UNL): "www.undlfoundation.org"
+*DICTIONARY: no entry is necessary
+*T-GRAMMAR: no rule is necessary
+*D-GRAMMAR: to control hyper-segmentation, as explained below.
+If we introduce the rules above to the disambiguation grammar, we will solve the problems concerning "asfsdfdfdsf", "asfsdfdfdsf asfsdfdfdsf" and "asfsdfdfdsf asfsdfdfdsf asfsdfdfdsf", which will be correctly tokenized, but we will not solve the problems concerning "www.undlfoundation.org", because, in this case, there are punctuation marks between temporary words. The result of the tokenization will be: [www][.][undlfoundation][.][org], which is not good, because we would expect [www.undlfoundation.org]. We have then to tell the machine that there cannot be two temporary words separated by punctuation mark. Therefore:
+;(TEMP)(PUT)(TEMP)=0;
+:(there cannot be two temporary words separated by punctuation mark)
+The problem is that this rule will apply only to "www.undlfoundation.org", which will be correctly tokenized as [www.undlfoundation.org], but will not work for "<nowiki>http://www.undlfoundation.org</nowiki>", because we have three punctuation marks (://) between two temporary words. <br />
+There are two solutions in this case:
+#To extend the rule to:
+#;(TEMP)(PUT)(TEMP)=0; 
+#:(there cannot be two temporary words separated by one punctuation mark)
+#;(TEMP)(PUT)(PUT)(TEMP)=0;
+#:(there cannot be two temporary words separated by two punctuation marks)
+#;(TEMP)(PUT)(PUT)(PUT)(TEMP)=0;
+#:(there cannot be two temporary words separated by three punctuation marks)
+#Or to add regular expressions in the dictionary to deal with URL's and e-mail addresses, such as
+#*[/(?i)(http\:\/\/[^ ]+)/]{}""(TEMP,LEX=N,POS=PPN,URL)<eng,0,0>;
+#*[/(?i)(https\:\/\/[^ ]+)/]{}""(TEMP,LEX=N,POS=PPN,URL)<eng,0,0>;
+#*[/(?i)(ftp\:\/\/[^ ]+)/]{}""(TEMP,LEX=N,POS=PPN,URL)<eng,0,0>;
+#*[/(?i)(www\.[^ ]+)/]{}""(TEMP,LEX=N,POS=PPN,URL)<eng,0,0>;
+#*[/(?i)([^ ]+@[^ ]+)/]{}""(TEMP,LEX=N,POS=PPN,EMAIL)<eng,0,0>;
+In the English grammar, we have adopted the second solution. These entries are available in the default dictionary, at the end of the English dictionary.
+
+=== Extending the rules ===
+A major problem with temporary nodes is that they may be part of sentences containing non-temporary words. This requires some additional measures. For instance, the rule
+;(TEMP)(^BLK,^PUT,^STAIL)=0;
+is too generic to be actually useful. Consider for instance, the case of "1st" or "1980's". In both cases we have temporary words ("1" and "1980") that are not followed by BLK, PUT or STAIL. We should then inform the system that digits may come before words:
+;(TEMP,^DIGIT)(^BLK,^PUT,^STAIL)=0;
+However, this is not enough. The rule above will block the deletion of blank spaces after temporary words. Note that disambiguation rules are applied not only during tokenization, but during transformation as well. No transformation rule can generate a result that is prohibited by disambiguation rules. If we have an input like [www.undlfoundation.org][ ][is][ ][a][ ][website], and the rule:
+;<nowiki>(BLK):=;</nowiki>
+this rule will never apply to the first blank space, because the state [www.undlfoundation.org][is] is prohibited by the d-rule (there must be a BLK, a PUT or STAIL after TEMP). In order to prevent this from happening, we can further specify the d-rules as:
+;<nowiki>(TEMP,^DIGIT,^W)(^BLK,^PUT,^STAIL)=0;</nowiki>
+;<nowiki>(^BLK,^PUT,^SHEAD)(TEMP,^W)=0;</nowiki>
+And assign the feature "W" to all words that have been already tokenized. This can be done by a general rule such as:
+;<nowiki>(^W,^SBW,^BLK,^SHEAD,^STAIL,^CHEAD,^CTAIL):=(+W);</nowiki> 
+:assigns the feature W to the words that are not subword (SBW), blank (BLK), SHEAD, STAIL, CHEAD or CTAIL
+This will prevent the temporary string from being hyper-segmented, but will allow us to delete the blank spaces before and after it after the tokenization.
+
+== NLization ==
+The NLization of temporary UWs do not require any action from the user. The UW "asfsdfdfdsf" will be automatically generated as "asfsdfdfdsf" if this UW is not in the dictionary.

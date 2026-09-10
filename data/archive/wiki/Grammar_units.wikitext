@@ -1,0 +1,10 @@
+[[file:grammar.png|center|400px]]
+
+;[[Node]]
+:A node is the most elementary unit in the graph. It is the result of the [[tokenization]] process, and corresponds to the notion of "lexical item". At the surface level, a natural language sentence is considered a list of nodes, and a UNL graph a set of relations between nodes. 
+;[[Relation]]
+:In order to form a natural language sentence or a UNL graph, nodes are inter-related by relations. In the UNL framework, there are three different types of relations: the linear (list) relation, syntactic relations and semantic relations.
+;[[Hyper-Node]]
+:A hyper-node is a sub-graph, i.e., a [[scope]]: a node containing relations between nodes.
+;[[Hyper-Relation]]
+:A hyper-relation is a relation between relations.

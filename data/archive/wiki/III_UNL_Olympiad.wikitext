@@ -1,0 +1,247 @@
+The UNL Olympiad is a series of competitions organised by the UNDL Foundation in order to foster the development of UNL-driven resources (dictionaries, grammars and corpora). The third edition of the Olympiad is devoted to the development of grammars and dictionaries for UNLizing (with [[IAN]]) and NLizing (with [[EUGENE]]) the corpus derived from the project [[UGO-A1]]. 
+
+== Important dates ==
+<strike>Preparatory phase</strike>
+*<strike>[[UGO-A1]]: until Jan 15, 2014</strike>
+*<strike>Open discussion: from Jan 16 to Jan 30, 2014</strike>
+*<strike>Official release of the corpus: Feb 15, 2014</strike>
+Competition
+*<strike>Deadline for uploading the grammars and dictionaries: Mar 30, 2014</strike>
+*<strike>First results: Apr 15, 2014</strike>
+*<strike>Open discussion of the results: Apr 16-22, 2014</strike>
+*<strike>Final results: Apr 30, 2014</strike>
+
+== Preparatory Phase (Concluded) ==
+Participation in the preparatory phase is open to all candidates and is not compulsory, provided that at least one user of the working language completes the project UGO-A1. 
+
+=== UGO-A1 ===
+The first phase of the III UNL Olympiad is the project [[UGO-A1]], which is open and funded for all languages. This project will set the corpus and the reference for UNLization and NLization. It consists of 250 UNL graphs that must be NLized (i.e., generated into natural language, manually). This process must be done only once for each language, i.e., it is not necessary (nor possible) that all users address the 250 UNL graphs. The progress report of the project UGO-A1 with the number of available entries is available at UNLWEB>PROJECTS>UGO-A1>PROGRESS REPORT.
+
+=== Open Discussion ===
+The second phase of the III UNL Olympiad will consist in an open discussion of the results of the project UGO-A1. All users will be able to propose the inclusion, suppression or modification of the NLizations proposed to the UNL graphs, in order to avoid any biases and privileges for specific users.
+
+=== Official Release ===
+The official corpus and set of languages, resulting from the preparatory phases, was released on Feb 17th, 2014.
+
+== Competition (Concluded) ==
+
+=== Goals ===
+The III UNL Olympiad has two main goals:
+*To prepare the dictionaries and grammars for UNLizing, with [[IAN]], the corpus UGO-A1; and/or
+*To prepare the dictionaries and grammars for NLizing, with [[EUGENE]], the corpus UGO-A1.
+UNLization is the process of representing, into UNL, the information conveyed by a natural language document. NLization, conversely, is the process of representing, in natural language, the information conveyed by a UNL document. These are done, respectively, with IAN and EUGENE, which are engines available at the [[UNLdev]].
+
+=== Modalities ===
+The competition is organised in two modalities:
+*Best UNLization Grammar for <LANGUAGE>
+*Best NLization Grammar for <LANGUAGE>
+Where <LANGUAGE> is one of the languages participating in this Olympiad (see the complete list below).<br />
+Candidates may participate in one or two modalities, i.e., they may work with the UNLization grammar, with the NLization grammar, or with both.<br />
+Candidates may also participate in one or more languages, provided that they belong to the official list.
+
+=== Prizes ===
+Prizes are awarded to the best grammars of each modality (UNLization and NLization) for each language<ref>This means that for each language there will be awarded up to 6 prizes: Best UNLization Grammar, Second Best UNLization Grammar, Third Best UNLization Grammar, Best NLization Grammar, Second Best UNLization Grammar and Third Best NLization Grammar</ref>:
+*1st place: Gold Medal
+*2nd place: Silver Medal
+*3rd place: Bronze Medal
+Additionally, the <u>10 best UNLization grammars among all languages</u> and the <u>10 best NLization grammars among all languages</u> will be awarded USD500.00 each.<ref>The value of USD500.00 will be paid only to the 10 best UNLization or NLization grammars '''in general''', and not to the 10 best UNLization/NLizations of each language.</ref>
+
+=== Corpus ===
+The official corpus is available for download at UNLWEB>UNLARIUM>CORPUS>UGO-A1>EXPORT.
+
+=== Languages ===
+The languages participating in the III UNL Olympiad are the following<ref>Those are the languages that finished UGO-A1 on time.</ref>:
+*Afrikaans
+*Bulgarian
+*Chinese
+*Estonian
+*Georgian
+*Greek (Modern)
+*Hindi
+*Kannada
+*Khmer
+*Malay
+*Nepali
+*Panjabi
+*Persian
+*Portuguese
+*Russian
+*Sinhala
+*Slovenian
+*Telugu
+*Ukrainian
+*Vietnamese
+
+=== Instructions ===
+#The competition is free and open to any participant, but it is limited to the set of languages listed above.<br />
+#In order to apply, candidates must upload the grammar and dictionary files to [http://www.unlweb.net.br/unlversity www.unlweb.net.br/unlversity] until the deadline (i.e., March 30, 2014)
+#The corpus must be extracted from the UNLarium (at UNLWEB>UNLARIUM>CORPUS>UGO-A1>EXPORT) and may not undergo any change. The goal of the UNLization modality is to UNLize ALL sentences from the NL corpus; the goal of the NLization modality is to NLize ALL graphs from the UNL corpus.<ref>The goal of the Olympiad is to provide ONE POSSIBLE MAPPING for each structure, i.e., to map each natural language to at least one valid UNL graph, and to map the UNL graph into at least one valid NL sentence. This means that, if the natural language is ambiguous, and may be mapped into several different UNL graphs, the UNLization will be considered valid if the resulting UNL graph is one of the possible candidates according to the corpus. Conversely, whenever the same UNL graph may be mapped into several different NL sentences, the NLization is considered valid if the resulting NL sentence is one of the possible mappings according to the corpus.</ref>
+#The dictionary files must comply with the [[Dictionary Specs]] and may only bring features present in the [[Tagset]]. They should not contain temporary words. 
+#The grammar files must comply with the [[Grammar Specs]] and must be as generic possible. They should not target the specific sentences of the corpus, but the general structures presented there. 
+#The [[F-measure]] of the grammars must be equal or greater than 0.9<ref>The F-measure may be calculate at UNLWEB>UNLARIUM>TOOLS>F-MEASURE</ref>.
+#The files must be original. Grammars whose similarity proves to go beyond any reasonable doubt will be discarded, unless provided by the same author (for different languages).
+#Manuals, instructions, examples and samples of grammars may be found at [[UCA1]].<ref>The corpus UC-A1, although similar, is not the same as UGO-A1, and the samples do not cover all cases.</ref>
+
+=== Evaluation ===
+Grammars will be evaluated and ranked according to the following criteria:
+*Best [[F-measure]]
+*Scalability (i.e., extendibility, or the capacity of being reused to other corpora), in case of grammars with the same F-Measure
+*Date of submission, in case of grammars with the same F-Measure and equally scalable
+
+== Final Results ==
+
+=== UNLization ===
+{|border=1 align=center
+!rowspan=2 align=center|General Position
+!rowspan=2 align=center|Language Pair
+!rowspan=2 align=center|Author
+!rowspan=2 align=center|F-Measure
+!rowspan=2 align=center|Submission Date
+!rowspan=2 align=center|Medal
+!colspan=4 align=center|Files
+|-
+!Dictionary
+!T-Grammar
+!D-Grammar
+!Output
+|-
+|align=center|1
+|align=center|slv>unl
+|align=center|Grega Milharcic
+|align=center|1.000
+|align=center|07/03/2014
+|align=center|GOLD
+|align=center|[http://www.unlweb.net.br/unlversity/files/dic_95.txt]
+|align=center|[http://www.unlweb.net.br/unlversity/files/tgrammar_95.txt]
+|align=center|[http://www.unlweb.net.br/unlversity/files/dgrammar_95.txt]
+|align=center|[http://www.unlweb.net.br/unlversity/files/output_95.txt]
+|-
+|align=center|2
+|align=center|pan>unl
+|align=center|Parteek Kumar
+|align=center|0.990
+|align=center|29/03/2014
+|align=center|GOLD
+|align=center|[http://www.unlweb.net.br/unlversity/files/dic_104.txt]
+|align=center|[http://www.unlweb.net.br/unlversity/files/tgrammar_104.txt]
+|align=center|[http://www.unlweb.net.br/unlversity/files/dgrammar_104.txt]
+|align=center|[http://www.unlweb.net.br/unlversity/files/output_104.txt]
+|-
+|align=center|3
+|align=center|bul>unl
+|align=center|Yordanka Stancheva
+|align=center|0.976
+|align=center|21/03/2014
+|align=center|GOLD
+|align=center|[http://www.unlweb.net.br/unlversity/files/dic_100.txt]
+|align=center|[http://www.unlweb.net.br/unlversity/files/tgrammar_100.txt]
+|align=center|[http://www.unlweb.net.br/unlversity/files/dgrammar_100.txt]
+|align=center|[http://www.unlweb.net.br/unlversity/files/output_100.txt]
+|-
+|align=center|4
+|align=center|ukr>unl
+|align=center|Sergiy Prots
+|align=center|0.946
+|align=center|25/03/2014
+|align=center|GOLD
+|align=center|[http://www.unlweb.net.br/unlversity/files/dic_107.txt]
+|align=center|[http://www.unlweb.net.br/unlversity/files/tgrammar_107.txt]
+|align=center|[http://www.unlweb.net.br/unlversity/files/dgrammar_107.txt]
+|align=center|[http://www.unlweb.net.br/unlversity/files/output_107.txt]
+|-
+|align=center|5
+|align=center|rus>unl
+|align=center|Sergiy Prots
+|align=center|0.942
+|align=center|23/03/2014
+|align=center|GOLD
+|align=center|[http://www.unlweb.net.br/unlversity/files/dic_102.txt]
+|align=center|[http://www.unlweb.net.br/unlversity/files/tgrammar_102.txt]
+|align=center|[http://www.unlweb.net.br/unlversity/files/dgrammar_102.txt]
+|align=center|[http://www.unlweb.net.br/unlversity/files/output_102.txt]
+|}
+
+=== NLization ===
+{|border=1 align=center
+!rowspan=2 align=center|General Position
+!rowspan=2 align=center|Language Pair
+!rowspan=2 align=center|Author
+!rowspan=2 align=center|F-Measure
+!rowspan=2 align=center|Submission Date
+!rowspan=2 align=center|Medal
+!colspan=4 align=center|Files
+|-
+!align=center|Dictionary
+!align=center|T-Grammar
+!align=center|D-Grammar
+!align=center|Output
+|-
+|align=center|1
+|align=center|unl>slv
+|align=center|Grega Milharcic
+|align=center|1.000
+|align=center|07/03/2014
+|align=center|GOLD
+|align=center|[http://www.unlweb.net.br/unlversity/files/dic_95.txt]
+|align=center|[http://www.unlweb.net.br/unlversity/files/tgrammar_95.txt]
+|align=center|[http://www.unlweb.net.br/unlversity/files/dgrammar_95.txt]
+|align=center|[http://www.unlweb.net.br/unlversity/files/output_95.txt]
+|-
+|align=center|2
+|align=center|unl>bul
+|align=center|Yordanka Stancheva
+|align=center|1.000
+|align=center|21/03/2014
+|align=center|GOLD
+|align=center|[http://www.unlweb.net.br/unlversity/files/dic_101.txt]
+|align=center|[http://www.unlweb.net.br/unlversity/files/tgrammar_101.txt]
+|align=center|[http://www.unlweb.net.br/unlversity/files/dgrammar_101.txt]
+|align=center|[http://www.unlweb.net.br/unlversity/files/output_101.txt]
+|-
+|align=center|3
+|align=center|unl>pan
+|align=center|Parteek Kumar
+|align=center|0.996
+|align=center|30/03/2014
+|align=center|GOLD
+|align=center|[http://www.unlweb.net.br/unlversity/files/dic_108.txt]
+|align=center|[http://www.unlweb.net.br/unlversity/files/tgrammar_108.txt]
+|align=center|[http://www.unlweb.net.br/unlversity/files/dgrammar_108.txt]
+|align=center|[http://www.unlweb.net.br/unlversity/files/output_108.txt]
+|-
+|align=center|4
+|align=center|unl>per
+|align=center|Maryam Faal Hamedanchi
+|align=center|0.994
+|align=center|29/03/2014
+|align=center|GOLD
+|align=center|[http://www.unlweb.net.br/unlversity/files/dic_106.txt]
+|align=center|[http://www.unlweb.net.br/unlversity/files/tgrammar_106.txt]
+|align=center|[http://www.unlweb.net.br/unlversity/files/dgrammar_106.txt]
+|align=center|[http://www.unlweb.net.br/unlversity/files/output_106.txt]
+|-
+|align=center|5
+|align=center|unl>ukr
+|align=center|Sergiy Prots
+|align=center|0.957
+|align=center|30/03/2014
+|align=center|GOLD
+|align=center|[http://www.unlweb.net.br/unlversity/files/dic_107.txt]
+|align=center|[http://www.unlweb.net.br/unlversity/files/tgrammar_107.txt]
+|align=center|[http://www.unlweb.net.br/unlversity/files/dgrammar_107.txt]
+|align=center|[http://www.unlweb.net.br/unlversity/files/output_107.txt]
+|-
+|align=center|6
+|align=center|unl>rus
+|align=center|Sergiy Prots
+|align=center|0.916
+|align=center|29/03/2014
+|align=center|GOLD
+|align=center|[http://www.unlweb.net.br/unlversity/files/dic_105.txt]
+|align=center|[http://www.unlweb.net.br/unlversity/files/tgrammar_105.txt]
+|align=center|[http://www.unlweb.net.br/unlversity/files/dgrammar_105.txt]
+|align=center|[http://www.unlweb.net.br/unlversity/files/output_105.txt]
+|}
+
+== Notes ==
+<references />

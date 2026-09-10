@@ -1,0 +1,146 @@
+<div class="mw-content-ltr mw-parser-output" lang="en" dir="ltr"><p><b>Semantic rules</b> are rules for mapping UNL structures into natural language and vice-versa. They can be of two different types: <b>relation rules</b>, i.e., rules that map UNL relations into syntactic structures; and <b>attribute rules</b>, which are rules that map UNL attributes into morpho-syntactic structures. 
+</p>
+<div id="toc" class="toc" role="navigation" aria-labelledby="mw-toc-heading"><input type="checkbox" role="button" id="toctogglecheckbox" class="toctogglecheckbox" style="display:none" /><div class="toctitle" lang="en" dir="ltr"><h2 id="mw-toc-heading">Contents</h2><span class="toctogglespan"><label class="toctogglelabel" for="toctogglecheckbox"></label></span></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Relation_Rules"><span class="tocnumber">1</span> <span class="toctext">Relation Rules</span></a>
+<ul>
+<li class="toclevel-2 tocsection-2"><a href="#Templates"><span class="tocnumber">1.1</span> <span class="toctext">Templates</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-3"><a href="#Attribute_Rules"><span class="tocnumber">2</span> <span class="toctext">Attribute Rules</span></a>
+<ul>
+<li class="toclevel-2 tocsection-4"><a href="#Feature_assignment"><span class="tocnumber">2.1</span> <span class="toctext">Feature assignment</span></a></li>
+<li class="toclevel-2 tocsection-5"><a href="#m-rule"><span class="tocnumber">2.2</span> <span class="toctext">m-rule</span></a></li>
+<li class="toclevel-2 tocsection-6"><a href="#s-rule"><span class="tocnumber">2.3</span> <span class="toctext">s-rule</span></a></li>
+</ul>
+</li>
+</ul>
+</div>
+
+<div class="mw-heading mw-heading2"><h2 id="Relation_Rules">Relation Rules</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Semantic_rules&amp;veaction=edit&amp;section=1" title="Edit section: Relation Rules" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Semantic_rules&amp;action=edit&amp;section=1" title="Edit section&#39;s source code: Relation Rules">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<pre>SEMANTIC RELATION&#160;:= SYNTACTIC RELATION;
+</pre>
+<p>Relation rules are used for translating UNL relations into natural language syntactic structures. They form a special case of the <a href="/wiki/index.php?title=S-Rule&amp;action=edit&amp;redlink=1" class="new" title="S-Rule (page does not exist)">S-Rule</a> type, because:
+</p>
+<ul><li>differently from other s-rules, the heads of the syntactic relations may not be simplified; and</li>
+<li>differently from other s-rules, both arguments of the syntactic relation must be coindexed to the arguments of the semantic relation through the placeholders %01 and %02, which stand for the left and the right argument [of the semantic relation], respectively.</li></ul>
+<div class="mw-heading mw-heading3"><h3 id="Templates">Templates</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Semantic_rules&amp;veaction=edit&amp;section=2" title="Edit section: Templates" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Semantic_rules&amp;action=edit&amp;section=2" title="Edit section&#39;s source code: Templates">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<table border="1" cellpadding="5">
+<tbody><tr>
+<th>CASE
+</th>
+<th>TEMPLATE*
+</th>
+<th>EXAMPLE
+</th>
+<th>GLOSS
+</th></tr>
+<tr>
+<td>ADJUNCT (DIRECT)
+</td>
+<td>XA(%01;%02);
+</td>
+<td>mod(NOU;ADJ):=NA(%01;%02);
+</td>
+<td>if "mod(NOU;ADJ)" then the ADJ (%02) is a direct adjunct to the NOU (%01)
+</td></tr>
+<tr>
+<td>ADJUNCT (INDIRECT)
+</td>
+<td>XA(%01;YC(Y;%02));
+</td>
+<td>tim(VER;NOU):=VA(%01;PC([in];%02));
+</td>
+<td>if "tim(VER;NOU)" then the NOU (%02) is the complement of the preposition "in" which is the head of the prepositional phrase adjunct to the VER (%01)
+</td></tr>
+<tr>
+<td>COMPLEMENT (DIRECT)
+</td>
+<td>XC(%01;%02)
+</td>
+<td>obj(VER;NOU):=VC(%01;%02);
+</td>
+<td>if "mod(VER;NOU)" then the NOU (%02) is the direct complement of the VER (%01)
+</td></tr>
+<tr>
+<td>COMPLEMENT (INDIRECT)
+</td>
+<td>XC(%01;YC(Y;%02));
+</td>
+<td>gol(VER;NOU):=VC(%01;PC([to];%02));
+</td>
+<td>if "gol(VER;NOU)" then the NOU (%02) is the complement of the preposition "to" which is the head of the prepositional phrase complement to the VER (%01)
+</td></tr>
+<tr>
+<td>SPECIFIER
+</td>
+<td>XS(%01;%02)
+</td>
+<td>agt(VER;NOU):=VS(%01;%02);
+</td>
+<td>if "agt(VER;NOU)" then the NOU (%02) is the specifier of the VER (%01)
+</td></tr></tbody></table>
+<p>*X and Y must be replaced by lexical categories (N,A,J,V,P,C,D,I), depending on the nature of the heads.
+</p>
+<div class="mw-heading mw-heading2"><h2 id="Attribute_Rules">Attribute Rules</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Semantic_rules&amp;veaction=edit&amp;section=3" title="Edit section: Attribute Rules" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Semantic_rules&amp;action=edit&amp;section=3" title="Edit section&#39;s source code: Attribute Rules">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>Attribute rules are used for translating UNL attributes into natural language morpho-syntactic structures. They can be of three different types:
+</p>
+<div class="mw-heading mw-heading3"><h3 id="Feature_assignment">Feature assignment</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Semantic_rules&amp;veaction=edit&amp;section=4" title="Edit section: Feature assignment" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Semantic_rules&amp;action=edit&amp;section=4" title="Edit section&#39;s source code: Feature assignment">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<pre>ATTRIBUTE&#160;:= TAG;
+</pre>
+<p>To be used when the attribute is equivalent to an existing natural language feature
+</p>
+<ul><li>@pl&#160;:= PLR;</li></ul>
+<p>the attribute .@pl, which stands for plural, is directly equivalent to the tag "PLR"
+</p>
+<ul><li>@past&#160;:= ET0;</li></ul>
+<p>the attribute .@past, which stands for past, is directly equivalent to the tag "ET0"
+</p>
+<ul><li>@past.@progress&#160;:= ET0&amp;RT1;</li></ul>
+<p>the attribute .@past.@progress, which stands for the past continous, is directly equivalent to the tagset "ET0&amp;RT1"
+</p>
+<div class="mw-heading mw-heading3"><h3 id="m-rule">m-rule</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Semantic_rules&amp;veaction=edit&amp;section=5" title="Edit section: m-rule" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Semantic_rules&amp;action=edit&amp;section=5" title="Edit section&#39;s source code: m-rule">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<pre>ATTRIBUTE&#160;:= ADD &lt; DELETE; (PREFIXATION)
+ATTRIBUTE&#160;:= DELETE &gt; ADD; (SUFFIXATION)
+ATTRIBUTE&#160;:= DELETE&#160;: ADD; (REPLACEMENT)
+</pre>
+<p>To be used when the attribute cannot be associated to an existing tag and implies a morphological or orthographical change
+</p>
+<ul><li>@interrogative&#160;:=  0 &gt; "?";</li></ul>
+<p>the attribute .@interrogative implies the generation of a question mark "?" at the end of the sentence
+</p>
+<ul><li>@square_bracket&#160;:= "[" &lt; 0, 0 &gt; "]";</li></ul>
+<p>the attribute .@square_bracket implies the generation of an opening bracket in the beginning of the sentence, and of a closing bracket in the end of the sentence
+</p>
+<div class="mw-heading mw-heading3"><h3 id="s-rule">s-rule</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Semantic_rules&amp;veaction=edit&amp;section=6" title="Edit section: s-rule" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Semantic_rules&amp;action=edit&amp;section=6" title="Edit section&#39;s source code: s-rule">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<pre>ATTRIBUTE&#160;:= SYNTACTIC RELATION;
+</pre>
+<p>To be used when the attribute cannot be associated to an existing tag and implies a change in the syntactic structure of the sentence (i.e., the insertion of a word)
+</p>
+<ul><li>@def&#160;:= NS(DP([the]));</li></ul>
+<p>the attribute .@def implies the generation of a definite article in the position of the specifier of the noun
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20260909190257
+Cache expiry: 86400
+Reduced expiry: false
+Complications: [show‐toc]
+CPU time usage: 0.005 seconds
+Real time usage: 0.005 seconds
+Preprocessor visited node count: 52/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/100
+Expensive parser function count: 0/100
+Unstrip recursion depth: 0/20
+Unstrip post‐expand size: 146/5000000 bytes
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    0.000      1 -total
+-->
+
+<!-- Saved in parser cache with key u965818192_SLvgQ-l8z2_:pcache:407:|#|:idhash:canonical and timestamp 20260909190257 and revision id 11102. Rendering was triggered because: diff-page
+ -->
+</div>

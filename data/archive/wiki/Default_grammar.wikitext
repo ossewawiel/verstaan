@@ -1,0 +1,131 @@
+The Default grammar is expected to be language-independent and is normally loaded, after the language-specific grammars, in order to handle phenomena that are not covered by them. The default grammar is used only in transformation ([[t-grammar]]) and is unidirectional: there is a default grammar for [[UNLization]], and a different default grammar for [[NLization]].
+
+== Files ==
+*[http://www.unlweb.net.br/resources/grammar/nl_unl_tgrammar.txt NL>UNL Default Grammar (natural language analysis)]
+*[http://www.unlweb.net.br/resources/grammar/unl_nl_tgrammar.txt UNL>NL Default Grammar (natural language generation)]
+
+== NL>UNL Default Grammar (UNLization) ==
+The NL>UNL Default Grammar is divided into 6 sections
+#Pre-processing (prepares the input for the processing)
+#Parsing (converts the input list structure into a tree structure)
+#Transformation (converts the surface tree struture into the deep tree structure)
+#Dearborization (converts the tree structure into a network structure)
+#Interpretation (converts the syntactic network into a semantic network)
+#Post-processing (adjusts the final output)
+
+=== Pre-processing ===
+The pre-processing module aims at preparing the input for processing. It includes rule such as the following:
+ (TEMP,%x)(BLK,%y)(TEMP,%z):=(%x&%y&%z,-BLK); merges temporary nodes
+if there are two nodes (TEMP) isolated by a blank space (BLK) they become one single node
+:("asdfgh")(" ")("asdfgh")>("asdfgh asdfgh") 
+ (PPN,%x)(BLK,%y)(PPN,%z):=(%x&%y&%z,+TEMP,-BLK); merges sequences of proper names
+if there are two proper names (PPN) isolated by a blank space (BLK) they become one single node
+:("John")(" ")("Smith") > ("John Smith")
+ (BLK):=; deletes the blank space
+deletes all blank spaces 
+:("a")(" ")("b") > ("a")("b")
+
+=== Parsing ===
+[[File:Parsing.png|thumb|left|200px]]
+The parsing module performs the syntactic analysis of the normalized input. It converts the list structure (a sequence of tokens) into a tree structure (a hierarchy of tokens). The parsing follows some general procedures coming from the [[X-bar theory]] and results in a tree structure with binary branching. Language-specific parsing rules are described in the language grammar; the parsing performed by the Default Grammar covers only very general structures. It is done in five steps:
+*'''Complementation''', when the system tries to create intermediate projections (XB) out of the combination of the existing intermediate projections with possible complement candidates (XB + COMP > XB, or COMP + XB > XB)
+*'''Adjunction''', when the system tries to create intermediate projections (XB) out of the combination of the existing intermediate projections with possible adjunct candidates (XB + ADJT > XB, or ADJT + XB > XB)
+*'''Specification''', when the system tries to create maximal projections (XP) out of the combination of the existing intermediate projections with possible specifier candidates (SPEC + XB > XP, or XB + SPEC > XP)
+*'''Maximal projection''', when the system tries to create maximal projections (XP) out of intermediate projections when there is no possible combination (no complement, adjunct or specifier)
+*'''Intermediate projection''', when the system tries to create intermediate projections (XB) out of the heads when there is no possible combination (no complement or adjunct)
+As it is seen above, the parsing module of the Default Grammar is highly dependent on the X-bar configuration. Consider, for instance, the case of the sentence "John killed Mary yesterday", supposing that the constituents have been already analyzed as:
+*John = NP
+*killed = V
+*Mary = NP
+*yesterday = AP
+The following rules are applied:
+#First projection: (V,^proj,^XB,^XP):=(+XB=VB); 
+#:V projects VB, whatever the case: V[killed] > VB[killed]
+#Complementation: (VB,%vb)(NP,%np):=(VB(%vb,+proj;%np,+comp,+proj),+XB=VB,+LEX=V,%new); 
+#:VB + NP, i.e., VB[killed] NP[Mary], projects another VB: VB[killed Mary]
+#Adjunction: (VB,%vb)(AP,%ap):=(VB(%vb,+proj;%ap,+adjt,+proj),+XB=VB,+LEX=V,%new); 
+#:VB + AP, i.e., VB[killed Mary] AP[yesterday], projects another VB: VB[killed Mary yesterday]
+#Specification: (NP,%np)(VB,%vb):=(VP(%vb,+proj;%np,+spec,+proj),+XP=VP,+LEX=V,%new);
+#:NP + VB, i.e., NP[John] VB[killed Mary yesterday], projects a VP: VP[John killed Mary yesterday]
+Unfortunately, the rules cannot be so direct, because they are applied from left to right, and the system must wait for the processing of all possible candidates before starting this arborization process. That is why in most cases the rules are context-sensitive, as follows:
+ (DP,%dp)(NB,%nb)({^D,^J,^N,^P|PUT|STAIL|CTAIL},%right):=(NP(%nb,+proj;%dp,+spec,+proj),+XP=NP,+LEX=N,%new)(%right);
+:DP + NB will form a NP if, and only if, the NB is not followed by any determiner, adjective, noun or preposition (because they will still be part of the NB) or if the NB is followed by a punctuation sign (PUT), the end of the sentence (STAIL) or the end of the scope (CTAIL)
+<br style="clear: both" />
+=== Transformation ===
+[[File:Transformation.png|thumb|left|200px]]
+The transformation module converts a surface syntactic (tree) structure into a deep syntactic (tree) structure.<br />
+The output of the parsing is a surface (tree) structure. This surface structure does not contain yet some dependency relations that were not represented directly inside the list and which are important in the UNLization process. For instance, in case of "John did not kill Mary", the NP "John" will be represented at the position of specifier of the IP "did not kill Mary", but it is important to move it to the position of specifier of the VP "kill Mary". In order to do that, we have to convert the surface structure into a deep structure. This is done by movement rules such as the following:
+ IP(IB(;VP(;e));%s,^e):=IP(IB(;VP(;%s));%e,+e); 
+:Moves the non-empty (^e) node %s, which is at the position of specifier of IP, to the position of specifier of VP that is a complement of this IP, if this position is empty (e).
+<br style="clear: both" />
+=== Dearborization ===
+[[File:Dearborization.png|thumb|left|200px]]
+The UNL graph is a network rather than a tree. In order to be converted to UNL, the deep syntactic structure must be "dearborized", i.e., transformed into a network structure. This is done by rewriting X-bar relations (XP,XB) as head-driven syntactic relations (XS,XC,XA) as indicated in [[X-bar]], i.e.:
+ XP(XB(XB(HEAD;COMP);ADJT);SPEC) = XC(HEAD;COMP)XA(HEAD;ADJT)XS(HEAD;SPEC)
+In the Default Grammar, dearborization is performed by rules of the type:
+ XP(XB(%x;%y);%z):=XB(%x;%y)XS(%x;%z);
+:If there are three nodes %x, %y and %z, so that %x and %y projects an XB, and this XB, along with %z, projects an XP, then rewrites this as two relations having %x as first argument: XB(%x;%y) and XS(%x;%z)
+<br style="clear: both" />
+
+=== Interpretation ===
+[[File:Interpretation.png|thumb|left|200px]]
+The interpretation module simply maps the syntactic network into a semantic network by analyzing the arguments of each relation. It is formed by rules of the type:
+ /[ACDIJNPV][ACS]/(%x;%y,tim):=tim(%x;%y);
+:if there is any syntactic relation (AA,AC,AS,CA,CC,CS,...) between two nodes %x and %y, and %y has the feature "tim", then rewrites this (syntactic) relation as a semantic relation of the type "tim" between these two nodes.
+<br style="clear: both" />
+
+=== Post-processing ===
+The post-processing module simply adjusts the resulting graph to the UNL standards, in order to eliminate contradictions and redundancies. For instance, the rule
+ (@pl,{@multal|@paucal|@all|@both}):=(-@pl); eliminates the redundancy of @pl
+is used to eliminate the redundancy of @pl and @multal. As @multal conveys already the idea of plural, @multal.@pl is redundant and should be fixed.
+
+== UNL>NL Default Grammar (NLization) ==
+The NL>UNL Default Grammar is divided into 6 sections
+#Pre-processing (prepares the input for the processing)
+#Arborization (converts the syntactic network into a syntactic tree)
+#Transformation (converts the deep syntactic structure into the surface syntactic structure)
+#Linearization (converts the syntactic structure into a list structure)
+#Morphological generation (inflects the words that need to be inflected)
+#Post-processing (adjusts the final output)
+
+=== Pre-processing ===
+
+=== Arborization ===
+[[File:Arborization.png|thumb|left|200px]]
+The arborization module converts a syntactic network into a syntactic tree. It is the same as the dearborization module, but in the opposite direction. It converts the network into a tree because trees are much more suitable to linearization than networks. Arborization rules are of the following type:
+ VB(%x;%y)VS(%x;%z):=VP(VB(%x;%y);%z);
+ VB(%x;%y)VA(%x;%z):=VB(VB(%x;%y);%z);
+ VB(%x;%y)VC(%x;%z):=VB(VB(%x;%y);%z);
+ VC(%x;%y):=VB(%x;%y);
+ VA(%x;%y):=VB(%x;%y);
+ VS(%x;%y):=VP(%x;%y); 
+:if there is a VB and a VS sharing the same head, create a VP between the VB and the second argument of VS.
+<br style="clear: both" />
+
+=== Transformation ===
+[[File:Transformation2.png|thumb|left|200px]]
+In the UNL>NL Default Grammar, the transformation module transforms the deep syntactic structure derived from the arborization into a surface structure. If in the UNLization process, the specifier of IP was moved to the position of specifier of VP, now it goes back to its original position, in order to be generated in the right position (if not, the verb would be generated after the auxiliary, in case of English, for instance).
+<br style="clear: both" />
+
+=== Linearization ===
+[[File:Linearization.png|thumb|left|200px]]
+The linearization module converts a tree structure into a list structure. It is formed by rules of the following type:
+ VP(%x;%y):=(%y,+>BLK)(%x);
+:if the there is a VP between %x and %y, remove this relation and writes %y in front of %x.
+<br style="clear: both" />
+
+=== Morphological generation ===
+The morphological generation module comprises one single rule:
+ (%x,^inflected,FLX):=(%x,!FLX,+inflected);
+This rule triggers the rules extracted from the inflectional paradigms (grammar) or from the [[Dictionary_Specs#Inflection_rules_inside_dictionary_entries.2A|inflectional rules (dictionary)]. This is done through the operand "!" which, in this case, applies all the rules comprised inside the field FLX. For instance, the English grammar brings the following rule, which is copied to the entry during the NLization process:
+ (%x,M2):=(%x,-M2,+FLX(SNG:=0>""; PLR:=0>"s";));  
+:if the word belongs to the paradigm M2, then copy to this word the rule FLX(SNG:=0>""; PLR:=0>"s";), i.e., in order to make the singular, add nothing, and in order to make the plural, add "s" to the end of the word.
+=== Post-processing ===
+The post-processing module is used to adjust the list to the standards of natural language output. It contains rules to eliminate remaining scopes, to add blank spaces, to capitalize the first word in a sentence, etc. 
+ ((%x)(%y)(%z)):=(%x)(%y)(%z);
+ ((%x)(%y)):=(%x)(%y);
+:removes remaining scopes
+ (%x,>BLK)(%y,^BLK,^STAIL):=(%x,->BLK)(" ",+BLK)(%y);
+:inserts blank spaces after the words requiring a blank space (the feature >BLK was inserted during the linearization step)
+ (%x,>COMMA):=(%x,->COMMA)(",",PUT=COMMA);
+:inserts comma after the words requiring comma (the feature >COMMA was inserted in previous steps)

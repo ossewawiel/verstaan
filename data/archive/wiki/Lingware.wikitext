@@ -1,0 +1,26 @@
+The [[UNL System]] comprises three different types of language resources: '''lexica''', '''grammars''' and '''corpora'''. These resources have been provided mainly through the [[UNLarium]].
+
+== [[Lexica]] ==
+''Main article: [[Lexica]]''
+*[[UNL Dictionary]], or UNL<sup>dic</sup>: a flat list of UW's and their corresponding semantic features
+*[[UNL Ontology]]: a hierarchy of UW's
+*[[UNL Knowledge Base]], or UNL<sup>KB</sup>: a network of necessary interactions between UW's
+*[[UNL Memory]]: a network of necessary and typical interactions between UW's 
+*[[NL Dictionary]], or NL<sup>dic</sup>: a list of natural language entries and their corresponding features
+*[[NL Memory]]: a list of typical interactions between natural language entries
+*[[UNL-NL Dictionary]], or UNL-NL<sup>dic</sup>: a list of lexical mappings between UNL and a given natural language
+*[[UNL-NL Memory]]: a list of mappings between UNL and a given natural language
+
+== [[Grammar]]s ==
+''Main article: [[Grammar]]''
+
+*UNL-NL T-Grammar: used for natural language generation
+*UNL-NL D-Grammar: used for improving the results of the UNL-NL T-Grammar
+*NL-UNL T-Grammar: used for natural language analysis
+*NL-UNL D-Grammar: used for tokenization and for improving the results of the NL-UNL T-Grammar
+
+== [[Corpus|Corpora]] ==
+''Main article: [[Corpus]]''
+
+*UNL Corpus: documents written in UNL, to be provided according to the [[UNL document|UNL document structure]]
+*NL Corpus: documents written in natural language

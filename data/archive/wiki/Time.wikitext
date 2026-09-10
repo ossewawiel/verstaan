@@ -1,0 +1,53 @@
+'''Time''' is a semantic category that indicates when a given event occurs. It may be expressed by attributes or by relations.
+
+== Time attributes == 
+The values for the attribute time are the following:
+{{#tree:id=time|openlevels=0|root=Time|
+*absolute time
+**'''@past''': at a time before the moment of utterance
+**'''@present''': at the moment of utterance
+**'''@future''': at a time after the moment of utterance
+**'''@recent''': close to the moment of utterance
+**'''@remote''': remote from the moment of utterance
+*relative time
+**'''@anterior''': before some other time other than the time of utterance
+**'''@posterior''': after some other time other than the time of utterance
+*other
+**@after
+**@before
+**@during
+**@following
+**@from
+**@from_on
+**@in
+**@prior_to
+**@since
+**@subsequent_to
+}}
+
+;The UNL representation indicates the time rather than the grammatical tense of a form.
+:There is no simple one-to-one relationship between tense forms and time. In English, for instance, the present (grammatical tense) may be used to represent the future (time)<br>
+: I’m going home tomorrow = go.@future.@recent (and not go.@present)
+;@present is used to indicate an action at the present, and not habits, routines and statements:
+:I'm in Frankfurt. = @present
+:I always come to school by cycle. = no time information
+:The sun sets in the Occident. = no time information
+;Time values may be combined.
+:I'm going home tomorrow = go.@future.@recent
+:I had been there = @past.@anterior
+
+== Time relations == 
+Time may be expressed by the following relations:
+{{#tree:id=rtime|openlevels=0|root=Time|
+*tim (time)
+**tmf (time from)
+**tmt (time to)
+**fmt (from to)
+**dur (duration)
+}}
+=== Examples ===
+*do now = tim(do,now)
+*do since yesterday = tmf(do, yesterday)
+*do until tomorrow = tmt(do, tomorrow)
+*from yesterday to tomorrow = fmt(yesterday, tomorrow)
+*do while walk = dur(do, walk)

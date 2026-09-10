@@ -1,0 +1,48 @@
+In the UNL framework, a '''grammar''' is a set of rules that is used to generate UNL out of natural language, and natural language out of UNL. Along with [[Dictionary|dictionaries]], they constitute the basic resource for [[UNLization]] and [[NLization]].
+
+== Basic Symbols ==
+{{:Basic Symbols}}
+
+== Basic Concepts ==
+{{:Grammar units}}
+
+== Rules ==
+{{:Rule}}
+
+== Modules ==
+In the UNL framework there are three types of grammar:
+*[[N-Grammar]], or Normalization Grammar, is a set of T-rules used to segment the natural language text into sentences and to prepare the input for processing.
+*[[T-Grammar]], or Transformation Grammar, is a set of T-rules used to transform natural language into UNL or UNL into natural language.
+*[[D-Grammar]], or Disambiguation Grammar, is a set of D-rules used to to improve the performance of transformation rules by constraining or forcing their applicability.
+
+== Direction ==
+In the UNL framework, grammars are not bidirectional, although they share the same syntax:
+*[[UNLization]] (NL>UNL)
+**The '''N-Grammar''' contains the normalization rules for natural natural analysis
+**The '''Analysis T-Grammar''' contains the transformation rules used for natural language analysis
+**The '''Analysis D-Grammar''' contains the disambiguation rules used for [[tokenization]] and for improving the results of the NL-UNL T-Grammar
+*[[NLization]] (UNL>NL)
+**The '''Generation T-Grammar''' contains the transformation rules used for natural language generation
+**The '''Generation D-Grammar''' contains the disambiguation rules used for improving the results of the UNL-NL T-Grammar
+
+== Processing Units ==
+In the UNL framework, grammars may target different processing units:
+*'''Text-driven grammars''' process the source document as a single unit (i.e., without any internal subdivision)
+*'''Sentence-driven grammars''' process each sentence or graph separately
+*'''Word-driven grammars''' process words in isolation
+Text-driven grammars are normally used in summarization and simplification, when the rhetorical structure of the source document is important. Sentence-driven grammars are used mostly in translation, when the source document can be treated as a list of non-semantically related units, to be processed one at a time. Word-driven grammars are used in information retrieval and opinion mining, when each word or node can be treated in isolation. <br />
+
+== Recall == 
+Grammars may target the whole source document or only parts of it (e.g. main clauses):
+*'''Chunk grammars''' target only a part of the source document
+*'''Full grammars''' target the whole source document
+
+== Precision ==
+Grammars may target the deep or the surface structure of the source document:
+*'''Deep grammars''' focus on the deep dependency relations of the source document and normally have three levels (network, tree and list)
+*'''Shallow grammars''' focus only on the surface dependency relations of the source document and normally have only two levels (network and list)
+
+== Assessment ==
+''Main article: [[F-measure]]''
+
+Grammars are evaluated through a weighted average of precision and recall, the F-measure.

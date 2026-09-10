@@ -1,0 +1,60 @@
+Indexes (%) are used for co-indexing nodes in [[T-rule]]s and [[D-rule]]s.
+
+== Use ==
+Indexes are used in [[T-rule]]s and [[D-rule]]s.
+
+=== T-rules ===
+In [[T-rule]]s, indexes are used:
+*to associate nodes in the left side of the rule (CONDITION) to nodes in the right side of the rule (ACTION):
+:*(%a)(%b)(%c):=(%b); (delete the first and the third nodes, and keep the second)
+:*(%a)(%b)(%c):=(%c)(%b)(%a); (reverse the order)
+:*rel(%a;%b;%c):=rel(%a;%b); (remove the third argument of the relation rel)
+:*rel(%a;%b;%c):=rel(%c;%b;%a); (reverse the order of the arguments of the relation rel)
+*to associate nodes within the left side of the rules
+:*(%a)(%b)(%a):=(%b); (delete the first and the third nodes, if they are the same)
+:*rel1(%a;%b)rel2(%a;%c):=rel3(%a;%c); (replace the relations rel1 and rel2 by the relation rel3 if the first argument of rel1 is the first argument of rel2)
+*to copy values of attributes between nodes
+:*(%a)(%b):=(%a)(%b,GEN=%a); (copy the value of the attribute GEN from the node %a to the node %b if the node %b comes after the node %a)
+:*NA(%a;%b):=NA(%a;%b,GEN=%a); (copy the value of the attribute GEN from the node %a to the node %b if there is a relation NA between them)
+*to test values of attributes within the left side of the rules
+:*(%a)(%b,GEN=%a):=; (delete the nodes %a and %b if they have the same value of the attribute GEN)
+:*rel1(%a;%b,GEN=%b):=rel2(%a;%b); (replace the relation rel1 by rel2 if the arguments of rel1 have the same value of the attribute GEN)
+
+=== D-rules ===
+In [[D-rule]]s, indexes are used to test values of attributes within the left side of the rules
+:*(%a,ART)(%b,NOU,GEN=%a)=1; (nouns following articles normally have the same gender of the article)
+
+== Syntax ==
+Indexes are made of any sequence of alphanumeric characters and underscore preceded by % and starting by alphabetic characters:
+:%index
+:%a
+:%first_index
+:%a1
+:<strike>%first index</strike> (no blank spaces are allowed)
+:<strike>%_a</strike> (indexes must start with alphabetic characters)
+:<strike>%03</strike> (numeric characters cannot be used as user-defined indexes)
+
+== Default Indexation ==
+If not explicitly informed, indexation is done automatically by the machine, as follows:
+*if the '''number of nodes is the same''' in the left and in the right side, NODES ARE CO-INDEXED, starting from left to right
+*:("a")("b")("c"):=("d")("e")("f"); is the same as ("a",%01)("b",%02)("c",%03):=("d",%01)("e",%02)("f",%03); (i.e., "a" will be replaced by "d", "b" by "e", and "c" by "f")  
+*:rel("a";"b";"c"):=rel("d";"e";"f"); is the same as rel("a",%01;"b",%02;"c",%03):=rel("d",%01;"e",%02;"f",%03);
+*if the '''number of nodes is not the same''' in both sides, NODES ARE NOT CO-INDEXED
+*:("a")("b")("c"):=("d")("e"); is the same as ("a",%01)("b",%02)("c",%03):=("d",%04)("e",%05); (i.e., "a", "b" and "c" will be deleted, and "d" and "e" will be created)
+*:rel("a";"b";"c"):=rel("d";"e"); is the same as rel("a",%01;"b",%02;"c",%03):=rel("d",%04;"e",%05);
+Default indexes are also assigned to hyper-nodes and sub-nodes by the notation <PARENT NODE><CHILD NODE>, where <PARENT NODE> may be, itself, a sub-node:
+:*(((A))):=(((B))); is the same as (%01(%01%01(%01%01%01,A))):=(%01(%01%01(%01%01%01,B)));
+:*X(Y(A;B);C) is the same as X('''%01''',Y('''%01%01''',A;'''%01%02''',B);'''%02''')
+::*%01 = Y(A;B), %02 = C, %01%01 = A, %01%02 = B
+:*X(Y(Z(A;B);C);D) is the same as X('''%01''',Y('''%01%01''',Z('''%01%01%01''',A;'''%01%01%02''',B);'''%01%02''',C);'''%02''',D)
+::*%01 = Y(Z(A;B);C), %02 = D, %01%01 = Z(A;B), %01%02 = C, %01%01%01 = A, %01%01%02 = B
+In order to avoid ambiguities, it is highly recommended that indexes are replaced by user-defined labels made of any sequence of alphabetic characters and underscore:
+:("a",%a)("b",%b):=("c",%a)("d",%b); instead of (A)(B):=(C)(D);
+
+== Observations ==
+#Non-indexed nodes in the right side means ADDITION, whereas left-side nodes that are not referred to in the right side means DELETION
+#:X(%a;%b):=Y(%a;X;%b); is the same as X(%a;%b):=Y(%a;'''%02''',X,;%b); (it means that a new node with the feature X will be created for the relation Y)
+#:X(%a;%b;%c):=Y(%a;%c); (it means that the second node of X will be deleted from the relation Y)
+#Any co-indexation is made by the use of indexes and not by the repetition of features.
+#:''''X(A;)Y(A;)''' is different from '''X(%a;)Y(%a;)'''. 
+#::In the former case, the first node of X is not necessarily the first node of Y, they only share the same feature A; in the latter case, the first node of X is necessarily the first node of Y.</blockquote>

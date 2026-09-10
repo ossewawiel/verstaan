@@ -1,0 +1,323 @@
+<div class="mw-content-ltr mw-parser-output" lang="en" dir="ltr"><p>Hyper-nodes are <a href="/wiki/Node" title="Node">nodes</a> containing <a href="/wiki/Relation" class="mw-redirect" title="Relation">relations</a> between nodes. They represent <a href="/wiki/Scope" title="Scope">scopes</a> or sub-graphs. 
+</p>
+<div id="toc" class="toc" role="navigation" aria-labelledby="mw-toc-heading"><input type="checkbox" role="button" id="toctogglecheckbox" class="toctogglecheckbox" style="display:none" /><div class="toctitle" lang="en" dir="ltr"><h2 id="mw-toc-heading">Contents</h2><span class="toctogglespan"><label class="toctogglelabel" for="toctogglecheckbox"></label></span></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Basic_Symbols"><span class="tocnumber">1</span> <span class="toctext">Basic Symbols</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#Basic_Concepts"><span class="tocnumber">2</span> <span class="toctext">Basic Concepts</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="#Scopes"><span class="tocnumber">3</span> <span class="toctext">Scopes</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="#Notation"><span class="tocnumber">4</span> <span class="toctext">Notation</span></a></li>
+<li class="toclevel-1 tocsection-5"><a href="#Elements"><span class="tocnumber">5</span> <span class="toctext">Elements</span></a></li>
+<li class="toclevel-1 tocsection-6"><a href="#Properties"><span class="tocnumber">6</span> <span class="toctext">Properties</span></a></li>
+<li class="toclevel-1 tocsection-7"><a href="#Examples"><span class="tocnumber">7</span> <span class="toctext">Examples</span></a></li>
+<li class="toclevel-1 tocsection-8"><a href="#Transformations"><span class="tocnumber">8</span> <span class="toctext">Transformations</span></a>
+<ul>
+<li class="toclevel-2"><a href="#Changes"><span class="tocnumber">8.1</span> <span class="toctext">Changes</span></a></li>
+<li class="toclevel-2"><a href="#Deletion"><span class="tocnumber">8.2</span> <span class="toctext">Deletion</span></a></li>
+<li class="toclevel-2"><a href="#Extraction"><span class="tocnumber">8.3</span> <span class="toctext">Extraction</span></a></li>
+<li class="toclevel-2"><a href="#Create"><span class="tocnumber">8.4</span> <span class="toctext">Create</span></a></li>
+</ul>
+</li>
+</ul>
+</div>
+
+<div class="mw-heading mw-heading2"><h2 id="Basic_Symbols">Basic Symbols</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Hyper-node&amp;veaction=edit&amp;section=1" title="Edit section: Basic Symbols" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Hyper-node&amp;action=edit&amp;section=1" title="Edit section&#39;s source code: Basic Symbols">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<table border="1" cellpadding="2" align="center">
+<caption>Basic symbols used in the UNL framework
+</caption>
+<tbody><tr>
+<th>Symbol
+</th>
+<th>Definition
+</th>
+<th>Example
+</th></tr>
+<tr>
+<td align="center">( )
+</td>
+<td>node
+</td>
+<td>(%a)
+</td></tr>
+<tr>
+<td align="center">" "
+</td>
+<td>string
+</td>
+<td>"went"
+</td></tr>
+<tr>
+<td align="center">[ ]
+</td>
+<td>natural language entry (headword)
+</td>
+<td>[go]
+</td></tr>
+<tr>
+<td align="center">[[ ]]
+</td>
+<td>UW
+</td>
+<td>[[to go(icl&gt;to move)]]
+</td></tr>
+<tr>
+<td align="center">//
+</td>
+<td><a href="/wiki/Regular_expression" title="Regular expression">regular expression</a>
+</td>
+<td>/a{2,3}/ = aa,aaa
+</td></tr>
+<tr>
+<td align="center">rel(x;y)
+</td>
+<td>relation
+</td>
+<td>agt(kill;Peter)
+</td></tr>
+<tr>
+<td align="center">^
+</td>
+<td>not
+</td>
+<td>^a = not a
+</td></tr>
+<tr>
+<td align="center">{ | }
+</td>
+<td>or
+</td>
+<td>{a|b} = a or b
+</td></tr>
+<tr>
+<td align="center">%
+</td>
+<td><a href="/wiki/Index" title="Index">index</a> for nodes, attributes and values
+</td>
+<td>%x
+</td></tr>
+<tr>
+<td align="center">:
+</td>
+<td><a href="/wiki/Scope" title="Scope">scope ID</a>
+</td>
+<td>:01
+</td></tr>
+<tr>
+<td align="center">#
+</td>
+<td><a href="/wiki/Index" title="Index">index</a> for sub-NLWs
+</td>
+<td>#01
+</td></tr>
+<tr>
+<td align="center">=
+</td>
+<td>attribute-value assignment
+</td>
+<td>POS=NOU
+</td></tr>
+<tr>
+<td align="center">!
+</td>
+<td>rule trigger
+</td>
+<td>!PLR
+</td></tr>
+<tr>
+<td align="center">&amp;
+</td>
+<td>merge operator
+</td>
+<td>%x&amp;%y
+</td></tr>
+<tr>
+<td align="center">?
+</td>
+<td>dictionary lookup operator
+</td>
+<td>?[a]
+</td></tr></tbody></table>
+<div class="mw-heading mw-heading2"><h2 id="Basic_Concepts">Basic Concepts</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Hyper-node&amp;veaction=edit&amp;section=2" title="Edit section: Basic Concepts" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Hyper-node&amp;action=edit&amp;section=2" title="Edit section&#39;s source code: Basic Concepts">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<figure class="mw-halign-center" typeof="mw:File"><a href="/wiki/File:Grammar.png" class="mw-file-description"><img src="/wiki/images/thumb/5/59/Grammar.png/400px-Grammar.png" decoding="async" width="400" height="206" class="mw-file-element" srcset="/wiki/images/thumb/5/59/Grammar.png/600px-Grammar.png 1.5x, /wiki/images/5/59/Grammar.png 2x" /></a><figcaption></figcaption></figure>
+<dl><dt><a href="/wiki/Node" title="Node">Node</a></dt>
+<dd>A node is the most elementary unit in the graph. It is the result of the <a href="/wiki/Tokenization" title="Tokenization">tokenization</a> process, and corresponds to the notion of "lexical item". At the surface level, a natural language sentence is considered a list of nodes, and a UNL graph a set of relations between nodes.</dd>
+<dt><a href="/wiki/Relation" class="mw-redirect" title="Relation">Relation</a></dt>
+<dd>In order to form a natural language sentence or a UNL graph, nodes are inter-related by relations. In the UNL framework, there are three different types of relations: the linear (list) relation, syntactic relations and semantic relations.</dd>
+<dt><a href="/wiki/Hyper-Node" class="mw-redirect" title="Hyper-Node">Hyper-Node</a></dt>
+<dd>A hyper-node is a sub-graph, i.e., a <a href="/wiki/Scope" title="Scope">scope</a>: a node containing relations between nodes.</dd>
+<dt><a href="/wiki/Hyper-Relation" class="mw-redirect" title="Hyper-Relation">Hyper-Relation</a></dt>
+<dd>A hyper-relation is a relation between relations.</dd></dl>
+<div class="mw-heading mw-heading2"><h2 id="Scopes">Scopes</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Hyper-node&amp;veaction=edit&amp;section=3" title="Edit section: Scopes" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Hyper-node&amp;action=edit&amp;section=3" title="Edit section&#39;s source code: Scopes">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<dl><dd>main article: <a href="/wiki/Scope" title="Scope">Scope</a></dd></dl>
+<p>A scope is a sub-graph inside a graph, i.e., group of relations between nodes that work as a <b>single entity</b>. For instance, in the sentence "Mary saw Peter when John arrived", the dependent clause "when John arrived" describes the argument of a time relation and, therefore, should be represented as a hyper-node (i.e., as a sub-graph) as indicated below:
+</p>
+<figure class="mw-halign-center" typeof="mw:File"><a href="/wiki/File:Scope.jpg" class="mw-file-description"><img src="/wiki/images/thumb/a/a4/Scope.jpg/500px-Scope.jpg" decoding="async" width="500" height="190" class="mw-file-element" srcset="/wiki/images/thumb/a/a4/Scope.jpg/750px-Scope.jpg 1.5x, /wiki/images/a/a4/Scope.jpg 2x" /></a><figcaption></figcaption></figure>
+<p>In the UNL table representation, hyper-nodes are indexed by ":XX", where XX is a two-digit hyper-node index. The main node index is :00 and may be omitted. Hyper-node indexes must be associated to every relation inside the node. 
+</p>
+<figure class="mw-halign-center" typeof="mw:File"><a href="/wiki/File:Scope1.jpg" class="mw-file-description"><img src="/wiki/images/thumb/3/3b/Scope1.jpg/300px-Scope1.jpg" decoding="async" width="300" height="145" class="mw-file-element" srcset="/wiki/images/3/3b/Scope1.jpg 1.5x" /></a><figcaption></figcaption></figure>
+<div class="mw-heading mw-heading2"><h2 id="Notation">Notation</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Hyper-node&amp;veaction=edit&amp;section=4" title="Edit section: Notation" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Hyper-node&amp;action=edit&amp;section=4" title="Edit section&#39;s source code: Notation">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>As any <a href="/wiki/Node" title="Node">node</a>, hyper-nodes are represented between (parentheses):
+</p>
+<ul><li>(("a")("b")) - a hyper-node containing a list relation between two nodes</li>
+<li>(L("a";"b")) - the same as above</li>
+<li>(VC("a";"b")) - a hyper-node containing a syntactic relation <i>VC</i> between two nodes</li>
+<li>(agt("a";"b")) - a hyper-node containing a semantic relation <i>agt</i> between two nodes</li></ul>
+<p>For better readability, hyper-nodes are normally referenced by the <b>SCOPE ID</b> :XX, where XX is a two-character unique identifier for the hyper-node. 
+</p>
+<ul><li>tim(saw;agt(arrived;John)) (= saw when John arrived) is represented as
+<dl><dd>tim(saw;<b>:01</b>)</dd>
+<dd>agt<b>:01</b>(arrived;John)</dd></dl></li></ul>
+<p>All relations inside the same scope must share the same scope ID
+</p>
+<ul><li>tim(saw;agt(killed;John)obj(killed;Peter)) (= saw when John killed Peter) is represented as
+<dl><dd>tim(saw;<b>:01</b>)</dd>
+<dd>agt<b>:01</b>(killed;John)</dd>
+<dd>obj<b>:01</b>(killed;Peter)</dd></dl></li></ul>
+<p>The scope ID of the main scope is 00 and is omitted by default.
+</p>
+<ul><li>tim(saw;:01)agt:01(arrived;John) is the same as tim<b>:00</b>(saw;:01)agt:01(arrived;John)</li></ul>
+<div class="mw-heading mw-heading2"><h2 id="Elements">Elements</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Hyper-node&amp;veaction=edit&amp;section=5" title="Edit section: Elements" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Hyper-node&amp;action=edit&amp;section=5" title="Edit section&#39;s source code: Elements">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>As any <a href="/wiki/Node" title="Node">node</a>, hyper-nodes are vectors (uni-dimensional arrays) containing the following necessary elements: 
+</p>
+<ul><li>a string, represented between "quotes"</li>
+<li>a headword, represented between [simple square brackets]</li>
+<li>a UW, represented between [[double square brackets]]</li>
+<li>features, of which the internal relations are a special type</li>
+<li>an <a href="/wiki/Index" title="Index">index</a>, preceded by&#160;%</li></ul>
+<div class="mw-heading mw-heading2"><h2 id="Properties">Properties</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Hyper-node&amp;veaction=edit&amp;section=6" title="Edit section: Properties" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Hyper-node&amp;action=edit&amp;section=6" title="Edit section&#39;s source code: Properties">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<dl><dt>As any node, hyper-nodes are expressed between (parentheses)</dt>
+<dd>(("a")("b"))</dd>
+<dt>Elements of inner nodes are not elements of hyper-nodes</dt>
+<dd></dd>
+<dd>(%a,"a",[a],[[a]],A,(%b,"b",[b],[[b]],B))
+<dl><dd>The elements of the hyper-node %a are "a", [a], [[a]], A and the node %b</dd>
+<dd>The elements of the node %b are "b", [b], [[b]], B</dd>
+<dd>The whole inner node (%b,"b",[b],[[b]],B) is an element of %a and may be used to reference it: (("b")), (([b])), (([[b]]), ((B))</dd>
+<dd>However, "b", [b], [[b]] and B are not elements of %a (i.e., %a will not match ("b") but only (("b"))</dd></dl></dd></dl>
+<dl><dt>As any node, hyper-nodes may have one single string, one single headword and one single UW, but may have as many features as necessary</dt>
+<dd>(([kick],V)([the],D)([bucket],N),"kick the bucket",[kick the bucket],[[die]],V,NTST)
+<dl><dd>the hyper-node is formed of the following elements:
+<ul><li>the string "kick the bucket"</li>
+<li>the headword [kick the bucket]</li>
+<li>the UW [[die]]</li>
+<li>the features V and NTST</li>
+<li>the list relation between the nodes ([kick],V)([the],D)([bucket],N)</li></ul></dd>
+<dd>Note that the string, headword and UW of the hyper-node may not coincide with the corresponding values of the inner nodes.</dd></dl></dd></dl>
+<dl><dt>Internal nodes and relations work in the same way as features</dt>
+<dd>(("a"),("b")) (a hyper-node containing two nodes: ("a") and ("b") (there is no necessary relation between ("a") and ("b"))</dd>
+<dd>(("a")("b")) (a hyper-node containing a list relation between the nodes ("a") and ("b")</dd>
+<dd>({("a")|("b")}) (a hyper-node containing either the node ("a") or the node ("b")</dd>
+<dd>({("a")("b")|("c")("d")}) (a hyper-node containing either a list relation between the nodes ("a") and ("b") or a list relation between the nodes ("c") and ("d")</dd>
+<dd>(rel("a";"b"),rel("c";"d")) (a hyper-node containing the relations rel("a";"b") and the relation rel("c";"d"))</dd>
+<dd>(rel("a";"b")rel("c";"d")) (the same as above)</dd>
+<dd>({rel("a";"b")|rel("c";"d")}) (a hyper-node containing either the relation rel("a";"b") or the relation rel("c";"d"))</dd>
+<dt>As any node, hyper-nodes may be referenced by any of its elements, including internal nodes and relations</dt>
+<dd>(([kick],V)) - refers to any hyper-node containing the node ([kick],V)</dd>
+<dd>(([the],D)([bucket],N)) - refers to any hyper-node containing a linear relation between ([the],D) AND ([bucket],N)</dd>
+<dd>(([kick],D),([bucket],N)) - refers to any hyper-node containing the nodes ([kick],V) AND ([bucket],N)</dd>
+<dt>A hyper-node can be the internal node of another hyper-node</dt>
+<dd></dd>
+<dd>((("a"))) - a hyper-node containing a hyper-node containing the node "a"</dd>
+<dt>Hyper-nodes and inner nodes are also indexed (see <a href="/wiki/Indexation" class="mw-redirect" title="Indexation">Indexation</a>)</dt>
+<dd>(%c,(%b,(%a,"a"))) - a hyper-node %c contaning a hyper-node %b contaning the node %a</dd>
+<dd>(%c,LEX=%a,(%b,(%a,"a"))) - a hyper-node %c containing a hyper-node %b containing the node %a, where the value of LEX of %c is the same as the value of LEX of %a</dd>
+<dt>When a hyper-node is deleted, all its internal relations are deleted, if they are not referenced in the rule</dt>
+<dd>(([kick],V)([the],D)([bucket],N)):=; (the hyper-node is deleted, as well as the relations ([kick],V)([the],D) AND ([the],D)([bucket],N))</dd>
+<dd>(([kick],V)):=; (all hyper-nodes containing the node ([kick],V) are deleted, even if the hyper-node consists of several other inner nodes</dd></dl>
+<div class="mw-heading mw-heading2"><h2 id="Examples">Examples</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Hyper-node&amp;veaction=edit&amp;section=7" title="Edit section: Examples" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Hyper-node&amp;action=edit&amp;section=7" title="Edit section&#39;s source code: Examples">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>Examples of hyper-nodes are the following:
+</p>
+<ul><li>(("a"),("b")) - a hyper-node containing the nodes ("a") and ('b")</li>
+<li>(("a")("b")) - a hyper-node containing a linear relation between the nodes ("a") and ("b")</li>
+<li>(VC(%x;%y)VA(%x;%z)) - a hyper-node containing two syntactic relations: VC(%x;%y) AND VA(%x;%z)</li>
+<li>(agt([a];[b])obj([a];[c])) - a hyper-node containing two semantic relations: agt([a];[b]) AND obj([a];[c])</li>
+<li>(([kick],V)([the],D)([bucket],N),V,NTST) - a hyper-node having the features V and NTST and containing two linear relations: one between the nodes ([kick],V) and ([the],D), and other between ([the],D) and [bucket],N)</li>
+<li>(([kick],V)([the],D)([bucket],N),"kick the bucket",[[die]],V,NTST) - the same as before, except for the fact that the hyper-node has string = "kick the bucket" and UW = [[die]]</li></ul>
+<p>Hyper-nodes may also contain internal hyper-nodes:
+</p>
+<ul><li>((("a")("b"))("c")) - a hyper-node containing a linear relation between the hyper-node (("a")("b")) and the node ("c")</li></ul>
+<div class="mw-heading mw-heading2"><h2 id="Transformations">Transformations</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Hyper-node&amp;veaction=edit&amp;section=8" title="Edit section: Transformations" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Hyper-node&amp;action=edit&amp;section=8" title="Edit section&#39;s source code: Transformations">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<div class="mw-heading mw-heading3"><h3 id="Changes">Changes</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Transformation_over_hyper-nodes&amp;veaction=edit&amp;section=T-1" title="Edit section: Changes" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Transformation_over_hyper-nodes&amp;action=edit&amp;section=T-1" title="Edit section&#39;s source code: Changes">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>Hyper-nodes, as <a href="/wiki/Node" title="Node">nodes</a>, have elements, which may be altered by the use of the operators + (add) and - (delete). The operator + may be omitted. Changes affect only the scopes indicated.
+</p>
+<dl><dt>Changes to the main scope</dt></dl>
+<ul><li>(%a,"a",[a],[[a]],A,(%b,"b")):=(%a,"c");(the string of the hyper-node is set to "c"; the internal node %b is not affected)</li>
+<li>(%a,"a",[a],[[a]],A,(%b,"b")):=(%a,"");(the string of the hyper-node is set to ""; the internal node %b is not affected)</li>
+<li>(%a,"a",[a],[[a]],A,(%b,"b")):=(%a,-"a");(the same as above)</li>
+<li>(%a,"a",[a],[[a]],A,(%b,"b")):=(%a,[c]);(the headword of the hyper-node is set to [c]; the internal node %b is not affected)</li>
+<li>(%a,"a",[a],[[a]],A,(%b,"b")):=(%a,[[c]]);(the UW of the hyper-node is set to [[c]]; the internal node %b is not affected)</li>
+<li>(%a,"a",[a],[[a]],A,^B,(%b,"b")):=(%a,+B);(add the feature B to the hyper-node %a; the internal node %b is not affected)</li>
+<li>(%a,"a",[a],[[a]],A,^B,(%b,"b")):=(%a,B); (the same as above: add the feature B to %a)</li>
+<li>(%a,"a",[a],[[a]],A,(%b,"b")):=(%a,-A);(delete the feature A from the hyper-node %a; the internal node %b is not affected)</li></ul>
+<dl><dt>Changes to inner scopes</dt></dl>
+<ul><li>(%a,(%b,"b",[b],[[b]],B)):=(%a,(%b,"c"));(the string of the inner node %b is set to "c"; the hyper-node %a is not affected)</li>
+<li>(%a,(%b,"b",[b],[[b]],B)):=(%a,(%b,""));(the string of the inner node %b is set to ""; the hyper-node %a is not affected)</li>
+<li>(%a,(%b,"b",[b],[[b]],B)):=(%a,(%b,-"b"));(the same as above)</li>
+<li>(%a,(%b,"b",[b],[[b]],B)):=(%a,(%b,[c]));(the headword of the inner node %bis set to [c]; the hyper-node %a is not affected)</li>
+<li>(%a,(%b,"b",[b],[[b]],B)):=(%a,(%b,[[c]]));(the UW of the inner node %b is set to [[c]]; the hyper-node %a is not affected)</li>
+<li>(%a,(%b,"b",[b],[[b]],B,^C)):=(%a,(%b,+C));(add the feature C to the inner node %b; the hyper-node %a is not affected)</li>
+<li>(%a,(%b,"b",[b],[[b]],B,^C)):=(%a,(%b,C)); (the same as above: add the feature C to %b)</li>
+<li>(%a,(%b,"b",[b],[[b]],B)):=(%a,(%b,-B));(delete the feature B from the inner node %b; the hyper-node %a is not affected)</li></ul>
+<dl><dt>Rules must have as many parentheses as the depth of the inner scope to be altered</dt></dl>
+<ul><li>(%a,(%b,(%c,(%d,(%e,"e",[e],[[e]],E))))):=(%a,(%b,(%c,(%d,(%e,"f"))))); (the string of inner node %e is set to "f"; the enclosing nodes %d, %c, %b and %a are not affected)</li></ul>
+<dl><dt>Hyper-nodes do not need to be represented if the changes apply to nodes instead of nodes inside hyper-nodes</dt>
+<dd></dd></dl>
+<ul><li>(%a,(%b,"b",[b],[[b]],B)):=(%a,(%b,"c")); (the string of the inner node %b is set to "c"; the hyper-node %a is not affected)</li></ul>
+<p>could be represented simply as
+</p>
+<ul><li>(%b,"b",[b],[[b]],B)):=(%b,"c");</li></ul>
+<p>if the changes apply to all nodes ("b",[b],[[b]],B) and not only to those inside scopes.
+</p>
+<div class="mw-heading mw-heading3"><h3 id="Deletion">Deletion</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Transformation_over_hyper-nodes&amp;veaction=edit&amp;section=T-2" title="Edit section: Deletion" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Transformation_over_hyper-nodes&amp;action=edit&amp;section=T-2" title="Edit section&#39;s source code: Deletion">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>Hyper-nodes, as any <a href="/wiki/Node" title="Node">node</a>, are deleted if they are not repeated (co-indexed) in the right side. In this case, all the inner nodes are deleted as well:
+</p>
+<ul><li>(REL(%x;%y),%z):=; (the hyper-node %z will be deleted, and all its internal nodes and relations as well)</li></ul>
+<p>As any feature, inner nodes are conservative, and are not deleted even if they are not repeated (co-indexed) in the right side:
+</p>
+<ul><li>(%a,A,^B):=(%a,+B); (the feature A is not deleted from the node %a)</li>
+<li>(%a,^B,(%b,"b")):=(%a,+B); (the node %b is not deleted from the hyper-node %a)</li></ul>
+<p>In order to delete inner nodes, the operator "-" must be used
+</p>
+<ul><li>(%a,A,(%b,B)):=(%a,-(%b)); (the node %b is deleted from the hyper-node %a)</li>
+<li>(%a,A,rel(%b;%c)):=(%a,-rel(%b;%c)); (the relation rel(%b;%c) is deleted from the hyper-node %a)</li></ul>
+<div class="mw-heading mw-heading3"><h3 id="Extraction">Extraction</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Transformation_over_hyper-nodes&amp;veaction=edit&amp;section=T-3" title="Edit section: Extraction" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Transformation_over_hyper-nodes&amp;action=edit&amp;section=T-3" title="Edit section&#39;s source code: Extraction">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>Nodes may be extracted from hyper-nodes by removing the corresponding parentheses. In this case, the hyper-node is deleted (along with its features), but the internal nodes and relations are preserved, if repeated on the right side.
+</p>
+<ul><li>((%x),%y):=(%x); (the hyper-node %y is deleted, but its internal node %x is preserved; in case %y have nodes other than %x, these nodes will be deleted as well, because they are not repeated in the right side)</li>
+<li>(REL(%x;%y),%z):=REL(%x;%y); (the hyper-node %z is deleted, but its internal relation REL(%x;%y) is preserved; in case %z have relations other than REL(%x;%y), and nodes other than %x and %y, these will be deleted as well, because they are not repeated in the right side.</li></ul>
+<div class="mw-heading mw-heading3"><h3 id="Create">Create</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Transformation_over_hyper-nodes&amp;veaction=edit&amp;section=T-4" title="Edit section: Create" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Transformation_over_hyper-nodes&amp;action=edit&amp;section=T-4" title="Edit section&#39;s source code: Create">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>Hyper-nodes are created through the encapsulation of existing nodes
+</p>
+<ul><li>(%x):=((%x),%y); (the hyper-node %y is created, with the node %x there inside)</li>
+<li>REL(%x;%y):=(REL(%x;%y),%z); (the hyper-node %z is created, with the relation REL between the nodes %x and %y inside)</li>
+<li>(%x)(%y):=((%x)(%y),%z); (the hyper-node %z is created, with the linear relation between the nodes %x and %y there inside)</li></ul>
+<dl><dt>Attention</dt>
+<dd>relations and nodes must be repeated in the right side or they will be deleted
+<ul><li>(%x):=(%y); (the node %x will be simply replaced by %y; no hyper-node will be created)</li>
+<li>REL(%x;%y):=(%z); (the relation REL between the nodes %x and %y will be replaced by the node %z; no hyper-node will be created)</li></ul></dd></dl>
+<!-- 
+NewPP limit report
+Cached time: 20260909172122
+Cache expiry: 86400
+Reduced expiry: false
+Complications: [show‐toc]
+CPU time usage: 0.025 seconds
+Real time usage: 0.028 seconds
+Preprocessor visited node count: 186/1000000
+Post‐expand include size: 7384/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 3/100
+Expensive parser function count: 0/100
+Unstrip recursion depth: 0/20
+Unstrip post‐expand size: 215/5000000 bytes
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    5.411      1 -total
+ 36.55%    1.978      1 Transformation_over_hyper-nodes
+ 31.45%    1.702      1 Basic_Symbols
+ 25.39%    1.374      1 Grammar_units
+-->
+
+<!-- Saved in parser cache with key u965818192_SLvgQ-l8z2_:pcache:782:|#|:idhash:canonical and timestamp 20260909172122 and revision id 16000. Rendering was triggered because: diff-page
+ -->
+</div>

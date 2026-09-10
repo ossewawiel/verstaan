@@ -1,0 +1,413 @@
+'''A-rule''' (affixation rule) is a specific type of [[transformation rule]] used for generating affixes (prefixes, suffixes, infixes) in the UNLarium framework. 
+== When to use A-rules ==
+A-rules are used for prefixation, suffixation and infixation, i.e., for adding morphemes to a given base form. They are used for generating '''inflections''' (such as "book">"books", "love">"loved") or '''derivations''' (such as "dress">"undress", "write">"writer"). 
+
+== When not to use A-rules ==
+A-rules are not used for '''composition''' (i.e., to form new words by combining or putting together old words), as in "give">"give in", "go">"have gone" or "man">"fireman"). This should be treated by [[C-rule]]s.
+
+== Types of A-rules ==
+There are two types of A-rules:
+*'''simple A-rules''' involve a single action (such as prefixation, suffixation, infixation and replacement); and
+*'''complex A-rules''' involve more than one action (such as circumfixation).
+
+== Simple A-rules ==
+There are four types of simple A-rules:
+*'''prefixation''', for adding morphemes at the beginning of a base form.
+*'''suffixation''', for adding morphemes at the end of a base form
+*'''infixation''', for adding morphemes to the middle of the base form
+*'''replacement''', for changing the base form
+=== Syntax ===
+The syntax for simple A-rules is the following:
+<br>
+<br>
+'''prefixation'''
+ CONDITION := "ADDED" < DELETED;
+'''suffixation'''
+ CONDITION := DELETED > "ADDED";
+'''infixation'''
+ CONDITION := [REFERENCE] > "ADDED";
+ CONDITION := "ADDED" < [REFERENCE];
+'''replacement'''
+  CONDITION := DELETED : "ADDED";
+'''duplication'''
+  CONDITION := [REFERENCE]+;
+Where:
+*CONDITION = tag (such as "PLR", "FEM", etc) or list of tags ("FEM&PLR") that indicates when the rule should be applied
+*ADDED (between quotes) = the string to be added ;
+*REFERENCE (between square brackets) = the reference string (between quotes) or the position (without quotes) of the string to be added;
+*DELETED = the string (between quotes) or the number of characters (without quotes) to be deleted.
+
+=== Examples ===
+{|border="1" align="center" cellpadding="2"
+|+Prefixation
+! RULE
+! BEHAVIOR
+! BEFORE
+! AFTER
+|-
+|width=100| X:="y"<"z";
+|width=300| if X replace the string "z" by the string "y" in the beginning of the string
+|width=50| '''z'''abc
+|width=50| '''y'''abc
+|-
+| X:="y"<1;
+| if X replace the first character of the string  by "y"
+| '''z'''abc
+| '''y'''abc
+|-
+| X:="y"<0;
+| if X add the string "y" to the beginning of the string
+| zabc
+| '''y'''zabc
+|-
+| X:="y"<;<ref name="not">This feature is not supported by the UNL<sup>dev</sup>.</ref>
+| if X add the string "y" to the beginning of the string (idem previous)
+| zabc
+| '''y'''zabc
+|-
+| X:="y"<<0;<ref name="not"/>
+| if X add the string "y" and a blank space to the beginning of the string
+| zabc
+| '''y''' zabc
+|-
+| X:="y"<<;<ref name="not"/>
+| if X add the string "y" and a blank space to the beginning of the string (idem previous)
+| zabc	
+| '''y''' zabc
+|}
+<br>
+{|border="1" align="center" cellpadding="2"
+|+Suffixation
+! RULE
+! BEHAVIOR
+! BEFORE
+! AFTER
+|-
+|width=100| X:="z">"y";
+|width=300| if X replace the string "z" by the string "y" in the end of the string
+|width=50| abc'''z'''
+|width=50| abc'''y'''
+|-
+| X:=1>"y";
+| if X replace the last character of the string  by "y"
+| abc'''z'''
+| abc'''y'''
+|-
+| X:=0>"y";
+| if X add the string "y" to the end of the string
+| abcz
+| abcz'''y'''
+|-
+| X:=>"y";<ref name="not"/>
+| if X add the string "y" to the end of the string (idem previous)
+| abcz
+| abcz'''y'''
+|-
+| X:=0>>"y";<ref name="not"/>
+| if X add a blank space  and the string "y" to the end of the string
+| abcz
+| abcz '''y'''
+|-
+| X:=>>"y";<ref name="not"/>
+| if X add a blank space  and the string "y" to the end of the string (idem previous)
+| abcz
+| abcz '''y'''
+|}
+<br>
+{|border="1" align="center" cellpadding="2"
+|+Infixation
+! RULE
+! BEHAVIOR
+! BEFORE
+! AFTER
+|-
+|width=100| X:=[2]>"y";
+|width=300| if X add "y" to the right of the second character
+|width=50| abc
+|width=50| ab'''y'''c
+|-
+| X:="y"<[3];
+| if X add "y" to the left of the third character
+| abc
+| ab'''y'''c
+|-
+| X:=["b"]>"y";
+| if X add "y" to the right of "b";
+| abc
+| ab'''y'''c
+|-
+| X:="y"<["c"];
+| if X add "y" to the left of "c"
+| abc
+| ab'''y'''c
+|-
+| X:="y"<[3="c"];
+| if X add "y" to the left of "c", if "c" is the third character
+| abc
+| ab'''y'''c
+|-
+| X:=[2,="b"]>"y";
+| if X add "y" to the right of "b", if "b" is the second character;
+| abc
+| ab'''y'''c
+|-
+| X:=[-2]>"y";
+| if X add "y" to the right of the second character from the right
+| abc
+| ab'''y'''c
+|-
+| X:="y"<[-2];
+| if X add "y" to the left of the second character from the right
+| abc
+| a'''y'''bc
+|}
+<br>
+{|border="1" align="center" cellpadding="2"
+|+Replacement
+! RULE
+! BEHAVIOR
+! BEFORE
+! AFTER
+|-
+|width=100| X:="y";
+|width=300| if X replace the whole by "y"
+|width=50| X
+|width=50| '''y'''
+|-
+| X:="z":"y";
+| if X replace the string "z" by "y"
+| a'''z'''bc
+| a'''y'''bc
+|-
+| X:=[2-3]:"y";
+| if X replace the second to the third character by "y"
+| a'''bc'''z
+| a'''y'''z
+|}
+<br>
+{|border="1" align="center" cellpadding="2"
+|+Duplication
+! RULE
+! BEHAVIOR
+! BEFORE
+! AFTER
+|-
+|width=100| X:=[2]+;
+|width=300| if X duplicate the second character
+|width=50| abc
+|width=50| ab'''b'''c
+|-
+|width=100| X:=[-2]+;
+|width=300| if X duplicate the second last character
+|width=50| abc
+|width=50| ab'''b'''c
+|-
+|width=100| X:=[2="b"]+;
+|width=300| if X duplicate the second character, if it is "b"
+|width=50| abc
+|width=50| ab'''b'''c
+|}
+
+=== Observations ===
+;Rules will only be applied if all conditions are true: 
+:X:="y"<"z"; ( "zabc" changes to "yabc", but "abc" remains "abc" since there is no "z" to be replaced)
+;String fields are necessarily continuous: 
+:X:="aaa"<"xyz"; ( "xyzbbb" changes to "aaabbb", but "bxbybz" remains "bxbybz" since there is no continuous string "xyz" to be replaced)
+;Prefixation, infixation and suffixation rules apply only once (i.e, rules are not exhaustive)
+:PLR:=0>"s"; ("X" becomes "Xs", and not "Xssssss...")
+;Replacement rules apply as long as the conditions are true:
+:X:="a":"b"; ( "aaa" becomes "bbb" and not "abb")
+;In prefixation and suffixation rules, the part to be deleted may be represented by the number of characters (without quotes):
+{|align=center cellpadding=2
+|-
+|width=150|PLR := "X"<"";
+|=
+|width=150|PLR := "X"<0;
+|(ABC becomes XABC)
+|-
+|PLR:= "X"<"A";
+|=
+|PLR:= "X"<1;
+|(ABC becomes XBC)
+|-
+|PLR:= "XY"<"AB";
+|=
+|PLR:= "XY"<2;
+|(ABC becomes XYC)
+|-
+|PLR:="">"X";
+|=
+|PLR:= 0>"X";
+|(ABC becomes ABCX)
+|-
+|PLR:="C">"X";
+|=
+|PLR:= 1>"X";
+|(ABC becomes ABX)
+|-
+|PLR:="BC">"XY";
+|=
+|PLR:= 2>"XY";
+|(ABC becomes AXY)
+|}
+;In infixation and duplication rules, the position of the addition may be made with reference to the end of string by using "-".
+{|border="1" align="center" cellpadding="2"
+! RULE
+! BEHAVIOR
+! BEFORE
+! AFTER
+|-
+|width=70| X:=[2]>"y";
+|width=300| if X add "y" to the right of the second character
+|width=50| abc
+|width=50| ab'''y'''c
+|-
+|X:=[-2]>"y";
+|if X add "y" to the right of the second last character
+|abc
+|ab'''y'''c
+|-
+|X:="y"<[2];
+|if X add "y" to the left of the second character
+|abcde
+|a'''y'''bc
+|-
+|X:="y"<[-2];
+|if X add "y" to the left of the second last character
+|abcde
+|abc'''y'''de
+|}
+;In infixation and duplication rules, the reference may be either a string, a position or both:
+{|border="1" align="center" cellpadding="2"
+! RULE
+! REFERENCE
+|-
+|width=100| X:=[1]>"y";
+|width=300| The reference is the position only ("y" will be inserted to the right of the first character)
+|-
+| X:=["a"]>"y";
+| The reference is the string only ("y" will be inserted to the right of any "a")
+|-
+| X:=[1="a"]>"y";
+| The reference is the position and the string ("y" will be inserted to the right of the first character if the first character is "a")
+|}
+;In replacement rules, the part to be deleted may be omitted if the whole string is to be replaced:
+{|cellpadding=2
+|-
+|width=150|PLR:="ABC":"XYZ";
+|=
+|width=150|PLR:="XYZ"
+|(ABC becomes XYZ)
+|}
+;In replacement rules, the part to be deleted may be represented by an interval of characters in the format [beginning-end]:
+{|cellpadding=3
+|-
+|width=150|PLR:="B":"X";
+|=
+|width=150|PLR:=[2-2]:"X";
+|(ABC becomes AXC)
+|}
+;The symbol "^" is used for negation ("^MCL" means "not MCL"): 
+:NOU&^MCL:="x":"y"; (If NOU and not MCL then replace "x" by "y")
+;"<<" and ">>" add blank spaces<ref name="not"/>
+:X:="a"<<"b" ("bc" becomes "a bc" and not "abc")
+;A-rules do not generate new words but only modify the existing ones.
+:The A-rule "FUT:="will"<<0;" (i.e, generate "will" as a prefix to the base form in case of future) will transform "love" into "will love", which will be considered, however, as a single word and not as a compound. Notice that this is the reason why compound tenses must never be generated through A-rules; otherwise, it would never be possible to generate other words (such as "not", "always", etc) between "will" and "love".
+
+=== Common mistakes ===
+*nou:= "y"<"z";  (WRONG: Tags are case sensitive)
+*NNN:= "y"<"z";  (WRONG: NNN is not defined in the tagset)
+*NOUFEM:="y"<"z"; (WRONG: Tags must be separated by "&")
+*NOU,FEM:="y"<"z"; (WRONG: Tags must be separated by "&")
+*NOU & FEM:="y"<"z";  (WRONG: There can be no blank spaces between tags)
+*X:=1<1; (WRONG: The left side must always be a string in a prefixation rule)
+*X:=1>1; (WRONG: The right side must always be a string in a suffixation rule)
+*X:=1; (WRONG: Replacement rules do not allow for numbers)
+*X:=1:1; (WRONG: Replacement rules do not allow for numbers)
+
+== Complex A-rules ==
+Complex A-rules are formed from the combination of simple A-rules:
+*circumfixation (prefixation + suffixation), to add a prefix and a suffix at the same time
+*prefixation + infixation, to add a prefix and a infix at the same time
+*infixation + suffixation, to add an infix and a suffix at the same time
+*prefixation + infixation + suffixation, to add a prefix, an infix and a suffix at the same time
+=== Syntax ===
+Complex A-rules are formed by concatenating simple a-rules with ",":
+<br>
+<br>
+'''circumfixation''' 
+ CONDITION := "ADDED" < DELETED , DELETED > "ADDED";
+'''prefixation + infixation''' 
+ CONDITION := "ADDED" < DELETED , DELETED > "ADDED";
+'''infixation + suffixation'''
+ CONDITION := DELETED > "ADDED" , "DELETED" > "ADDED";
+etc.
+
+=== Examples ===
+{|border="1" align="center" cellpadding="2"
+|+Complex m-rules
+! RULE
+! BEHAVIOR
+! BEFORE
+! AFTER
+|-
+|width=100| X:="x"<0, 0>"y";
+|width=300| if X add "x" to the beginning and "y" to the end of the string
+|width=50| A
+|width=50| '''x'''A'''y'''
+|-
+| X:="x"<0, "A":"y";
+| if X add "x" to the beginning and replace "A" by "y"
+| ABC
+| '''xy'''BC
+|-
+| X:="A":"y", 0>"x";
+| if X replace "A" by "y" and add "x" to the end of the string
+| ABC
+| '''y'''BC'''x'''
+|-
+| X:="x"<0, "A":"y", 0>"z";
+| if X add "x" to the beginning, replace "A" by "y" and add "z" to the end of the string
+| ABC
+| '''xy'''BCz
+|}
+
+=== Observations ===
+;Complex A-rules are also used to integrate different simple A-rules:
+{|cellpadding=2 border=1 align=center
+|-
+|ORD:="1">"1st";<br>ORD:="2">"2nd";<br>ORD:="3">"3rd";
+|ORD:="1">"1st", "2">"2nd", "3">"3rd";
+|}
+;Actions are applied from left to right (i.e., order is important)
+:PLR := "s" > "ses", "y" > "ies";  (kiss > kisses, city > cities)
+:PLR := "y" > "ies", "s" > "ses";  (kiss > kisses, city>cities>citieses)
+
+== Formal syntax == 
+A-rules comply with the following syntax:
+
+ <A-RULE>           ::= <CONDITION> ":=" <ACTION> ("," <ACTION>)* ";"
+ <CONDITION>        ::= <ATAG>("&"("^")?<ATAG>)*
+ <ATAG>             ::= {one of the tags defined in the [[Tagset|UNDLF Tagset]]}
+ <ACTION>           ::= <PREFIXATION> | <SUFFIXATION> | <INFIXATION> | <REPLACEMENT>
+ <PREFIXATION>      ::= <ADDED>	 {"<" | "<<"} 	(<DELETED>)?
+ <SUFFIXATION>      ::= (<DELETED>)? {">" | ">>"} 	<ADDED>
+ <INFIXATION>       ::= "["<DELETED"]" ">" <ADDED> | <ADDED> "<" "["<DELETED"]"
+ <REPLACEMENT>      ::= ( <STRING> ":" )? <ADDED> | "[" <INTEGER> "-" <INTEGER> "]" ":"  <ADDED>
+ <ADDED>            ::= <STRING> 
+ <DELETED>          ::= <STRING> | <INTEGER>  
+ <STRING>           ::= " " " [a..Z]+ " " "
+ <INTEGER>          ::= [0..9]+
+
+where
+
+<a> = a is a non-terminal symbol<br />
+"a" = a is a constant<br />
+a | b = a or b<br />
+{ a | b } = either a or b<br />
+(a)? = a can occur 0 or 1 time<br />
+(a)* = a can be repeated 0 or more times<br />
+(a)+ = a can be repeated 1 or more times<br />
+
+== Notes ==
+<references/>

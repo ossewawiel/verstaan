@@ -1,0 +1,17 @@
+SEAN is a natural language analysis system. It represents natural language texts as semantic networks in the UNL format. In its current release, it is a web application developed in Java and available at the [[UNLdev]]. 
+
+== The name ==
+SEAN is an acronym for '''S'''hallow '''E'''nhanced '''AN'''alysis system.
+
+== Requirements ==
+As a universal engine, SEAN must be parameterized to the source languages with the following files, to be provided through SEAN's interface:
+*The input natural language document, i.e., the document to be UNL-ized
+*The NL-UNL (analysis) dictionary, i.e., a lexical database where [[UW]]s are mapped into natural language entries, along with the corresponding features, to be provided according to the [[UNL Dictionary Specs]]
+*The NL-UNL (analysis) transformation grammar, i.e., a set of of transformation rules used to convert natural language sentences into UNL graphs, to be provided according to the [[UNL Grammar Specs]]
+*The NL-UNL (analysis) disambiguation grammar, i.e, a set of disambiguation rules used to improve the results of the [[tokenization]] and of the [[transformation]]
+
+== Functioning ==
+SEAN performs the three following movements over the input file:
+*[[Segmentation]], i.e., the division of the input document into a series of processing units (sentences), which are processed one at a time
+*[[Tokenization]], i.e., the identification of the tokens (lexical items) of each sentence of the input document
+*[[Transformation]], i.e., the application of the transformation rules of the grammar over each tokenized sentence in order to represent it as a UNL graph

@@ -1,0 +1,123 @@
+This page is dedicated to the documentation of the technical decisions concerning Persian in the UNLframework.
+
+== Nouns ==
+Nouns, in Persian, have the following inflectional schema:
+*SNG (singular)
+*PLR (plural)
+
+=== Examples ===
+;M2 (PLR:=>"‌ها";)
+:SNG:=0>"";
+:PLR:=0>"‌ها";
+:Examples: کاسه>کاسه‌ها; پسر>پسرها; رادیو>رادیوها;
+;M3 (PLR:=>"ان";)
+:SNG:=0>"";
+:PLR:=0>"ان"; 
+:Examples: مرد>مردان; زن>زنان; فرزند>فرزندان;
+
+
+Most Persian nouns have more than one plural form. 
+
+Example: پسر>پسرها>پسران, معلم>معلمان>معلمین>معلم‌ها, منطقه>منطقه‌ها>مناطق
+
+The most frequent plural form of a noun is considered as an inflectional paradigm and the less frequent, as an inflectional rule. 
+
+'''Ex:''' پسر
+
+Inflectional paradigm:  M3:PLR:=>"ان";
+
+Inflectional Rules:     PLR&ALT:=>"‌ها";
+
+== Verbs ==
+Verbal Paradigms in Persian are derived from two stems: past stem and present stem. So each Persian verb is presented by two entries; "Infinitive Form" as a reference for past tense paradigms and "First Person Singular Present Indicative" for present tense.
+
+Example:
+"to eat": "خوردن" / "خورم"
+
+"to go": "رفتن"/"روم"
+
+Hence, Persian verbs have the following Inflectional Paradigms: 
+
+
+'''Past tense paradigm:'''
+
+''INF:=0>"";''    '''Ex:''' خوردن
+
+PAS&PFV&1PS:="ن">"م";                                        
+
+PAS&PFV&2PS:="ن">"ی";....
+
+'''Ex:'''  خوردم/خوردی/خورد   /خوردیم/خوردید/خوردند
+
+PAS&RES&1PS:="ن">"ه‌ام";
+
+PAS&RES&2PS:="ن">"ه‌ای";....
+
+'''Ex:''' خورده‌ام/ خورده‌ای/خورده‌است    خورده‌ایم/خورده‌اید/خورده‌اند  
+
+NPFV&PAS&1PS:= "می‌"<0,"ن">"م";
+
+NPFV&PAS&2PS:="می‌"<0,"ن">"ی";.... 
+
+'''Ex:''' می‌خوردم/می‌خوردی/می‌خورد    می‌خوردیم/می‌خوردید/ می‌خوردند
+
+PTL:="ن">"ه‌";   '''Ex:''' خورده
+
+ 
+
+'''Present tense paradigm:'''
+
+''1PS&PRS&IND:=0>"";''        '''Ex:''' خورم
+
+PRS&CTN&1PS:="می‌"<0;
+
+PRS&CTN&2PS:="می‌"<0,"م">"ی";... 
+
+'''Ex:''' می‌خورم/می‌خوری/‌می‌خورد    می‌خوریم/می‌خورید/می‌خورند
+
+PRS&SUB&1PS:="ب"<0;
+
+PRS&SUB&2PS:="ب"<0,"م">"ی";...
+
+'''Ex:''' بخورم/بخوری/بخورد     بخوریم/بخورید/بخورند
+
+IMP&2PS:="ب"<0,"م">"";      Ex:  بخور
+
+IMP&2PP:="ب"<0,"م">"ید";    Ex:  بخورید
+
+PHB&2PS:="ن"<0,"م">"";      Ex:  نخور
+
+PHB&2PP:="ن"<0,"م">"ید";    Ex:  نخورید
+
+
+
+----
+'''Present stem of "بودن"'''
+
+The present stem for Persian verb "بودن" are "استن" and "هستن", which have different Inflectional Paradigms, provided in the Paradigm list. In most Persian complex predicates with adjective as the preverb, like "امیدوار بودن", the present stem "استن" is dominantly in use. 
+
+<nowiki>Ex: Past tense:     "امیدوار بودم"
+       present:      "امیدوارم"     "امیدوارید" ...
+</nowiki>
+
+
+"هستن" is mainly used as a copula to convey "existence". "عصر خانه هستم."
+
+
+
+
+----
+
+'''Compositional rules for compound verbs with complex light verbs '''
+
+To provide the compositional rules for Persian compound verbs with complex light verb like “پیدا کردن”, consider that we have two separate verb complement: the adjective “پیدا”, which remains from the complex light verb “پیدا کردن” and the preverb which can be of different grammatical categories (n, v, P, adj or adv). We should introduce both complements in the C-rule. 
+
+Example 1: “آرامش پیدا کردن”
+“آرامش”= N
+Base Form: کردن
+VC([پیدا],J,M,IBEF)VC([آرامش],N,M0,BEF);
+
+Example 2: "سر راه بردارم"
+"از"= P
+Base form:دارم 
+VC([بر],P,M,IBEF)VC([از سر راه],P,M0,BEF);

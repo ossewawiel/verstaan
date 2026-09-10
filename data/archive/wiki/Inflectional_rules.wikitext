@@ -1,0 +1,39 @@
+'''Inflectional rules''' are used to generate the inflected forms out of the [[base form]]. They differ from [[inflectional paradigms]] in the sense that they are specific to particular words (i.e., they are used to generated only irregular forms),
+
+== When to use inflectional rules ==
+
+Inflectional rules should be used when the inflectional behaviour of a word is too specific (i.e., irregular). 
+
+== When not to use inflectional rules ==
+
+Inflectional rules should be avoided whenever there can be stated a regular pattern for inflecting words. In this case, the inflectional behaviour should be described by an [[inflectional paradigms | inflectional paradigm]].
+
+== Examples ==
+
+;English
+:The word "child" is irregular and cannot be linked to any existing paradigm. So, the word must be associated to the paradigm IRREGULAR and the following must be informed in the field inflectional rules:
+:*SNG:="child";
+:*PLR:="children";
+
+;Latin
+:The word "Iuppiter" is irregular and cannot be linked to any existing paradigm. So, the word must be associated to the paradigm IRREGULAR and the following must be informed in the field inflectional rules:
+:*SNG&NOM:="Iuppiter";
+:*SNG&GNT:="Iovis";
+:*SNG&DAT:="Iovi";
+:*SNG&ACC:="Iovem";
+:*SNG&VOC:="Iuppiter";
+:*ABL&SNG:="Ioves";
+:*NOM&PLR:=NULL;
+:*GNT&PLR:=NULL;
+:*DAT&PLR:=NULL;
+:*ACC&PLR:=NULL;
+:*VOC&PLR:=NULL;
+:*ABL&PLR:=NULL;
+
+== Syntax == 
+
+Inflectional rules should comply with the '''[[A-rule]]''' formalism for writing morphological rules in the UNL framework.
+
+== Observation == 
+
+Inflectional rules can be combined with inflectional paradigms in order to describe localized irregular behaviour.

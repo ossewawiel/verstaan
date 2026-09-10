@@ -1,0 +1,78 @@
+'''Person''' is a category that defines the deictic reference to a participant in an event, such as the speaker, the addressee or others.
+
+== Natural language ==
+Grammatical person typically defines a language's set of personal pronouns:
+
+{{#tree:id=nl_person|openlevels=0|root=Person (PER)|
+*Impersonal (NPER)
+*First person (1PER)
+**First person of singular (1PS)
+**First person of plural (1PP)
+*Second person (2PER)
+**Second person of singular (2PS)
+**Second person of plural (2PP)
+*Third person (3PER)
+**Third person of singular (3PS)
+**Third person of plural (3PP)
+}}
+
+=== Observations ===
+;Grammatical person is different from semantic person.
+:In French, the pronoun "vous" is 2PP (second person plural), although it may be used to refer to a single addressee. In Spanish, "usted" is 3PS (third person singular), although it designates the addressee and not an external referent. 
+;Top level categories (1PER, 2PER and 3PER) are used only when it is not possible to determine the exact number of the person.
+:In English, the pronoun "you" may be used both in singular and plural and, therefore, is 2PER. The pronoun "I", however, is always used in the singular, and must be defined as 1PS (first person singular) rather than as 1PER (first person) only.
+
+=== Examples ===
+*English
+**1PS = I, me, my, mine, am
+**2PER = you, your, yours
+**3PS = he, she, it, his, her, hers, its, is, loves
+**1PP = we, us, our
+**3PP = they, them, theirs
+*French
+**1PS = je, moi, me, mon, mien, suis, aimes
+**2PS = tu, toi, te, ton, tien, es, aimes
+**3PER = se
+**3PS = il, elle, le, la, lui, on, son, sien, est, aime
+**1PP = nous, notre, nôtre, sommes, aimons
+**2PP = vous, votre, vôtre, êtes, aimez
+**2PP = ils, elles, les, las, leur, sont, aiment
+
+== UNL ==
+In UNL, person should be represented by attributes but only in case of personal pronouns, which are to be represented by the [[Null UW]]. The values for person attributes are:
+
+{{#tree:id=unl_person|openlevels=0|root=Person|
+*@1 (speaker)
+*@2 (addressee)
+*@3 (other)
+}}
+
+
+;The value of the attribute must reflect the role of the participant (which may not coincide with the corresponding grammatical person).
+:On va partir demain. (We'll leave tomorrow) : grammatical person = 3PS, attribute = @1 (first person)
+;The number of participants is informed through the [[number]] attributes:
+:I'll leave = 00.@1
+:We'll leave = 00.@1.@pl
+;The gender of participants is informed through the [[gender]] attributes:
+:He'll leave = 00.@3.@male ("he" should be represented by "00.@3.@male" only in case of exophora)
+:She'll leave = 00.@3.@female ("she" should be represented by "00.@3.@female" only in case of exophora)
+;Degrees of formality and informality are informed through the [[social deixis]] attributes:
+:Tu es belle, Sophie! (You're beautiful, Sophie!) = 00.@2
+:Vous êtes belle, Sophie! (You're beautiful, Sophie!) = 00.@2.@formal
+
+=== Examples ===
+
+*English
+**I go: agt(go, 00.@1)
+**We go: agt(go, 00.@1.@pl)
+**You go: agt(go, 00.@2) or agt(go, 00.@2.@pl)
+**It goes: agt(go, 00.@3) ("it" should be represented by "00.@3" only in case of exophora)
+**They go: agt(go, 00.@3.@pl) ("they" should be represented by "00.@3" only in case of exophora)
+*French
+**Je vais (I go): agt(aller, 00.@1)
+**Tu vas (You go): agt(aller, 00.@2)
+**On va (We go): agt(aller, 00.@1.@pl)
+**Nous allons (We go): agt(aller, 00.@1.@pl)
+**Vous allez (You go): agt(aller, 00.@2.@formal) or agt(aller, 00.@2.@pl)
+**Il va (He goes): agt(go, 00.@3) ("il" should be represented by "00.@3" only in case of exophora)
+**Ils vont (They go): agt(go, 00.@3.@pl) ("ils" should be represented by "00.@3" only in case of exophora)

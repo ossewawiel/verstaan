@@ -1,0 +1,72 @@
+The '''Universal Networking Language''' (UNL) is an artificial language created to represent and process information across language barriers. 
+
+== Mission ==
+Conceived within the scope of the [https://unesdoc.unesco.org/ark:/48223/pf0000104267 Universal Declaration of Linguistic Rights] (1996, Barcelona), UNL was proposed as a technological response to the digital divide and to global language barriers, linguistic imperialism, and language prejudice, as well as to the asymmetry of information and accessibility issues that results from them. It sought to promote a more equitable exchange of knowledge across languages, fostering inclusion, mutual understanding, and respect for linguistic diversity.
+
+== History == 
+
+The [[UNL Programme]] started in 1996, as an initiative of the [http://www.ias.unu.edu Institute of Advanced Studies] of the [http://www.unu.edu United Nations University] in Tokyo, Japan. In January 2001, the United Nations University set up an autonomous organization, the [http://www.undlfoundation.org UNDL Foundation], to be responsible for the development and management of the UNL Programme.  The Foundation, a non-profit international organisation, has an independent identity from the United Nations University, although it has special links with the United Nations. It inherited from the UNU/IAS the mandate of implementing the UNL Programme. Its headquarters are based in Geneva, Switzerland.
+
+The UNL Programme has already crossed important milestones. The overall architecture of the UNL System has been developed with a set of basic software and tools necessary for its functioning. These are being tested and improved. A vast amount of linguistic resources from the various native languages already under development has been accumulated in the last few years. Moreover, the technical infrastructure for expanding these resources is already in place, thus facilitating the participation of many more languages in the UNL system from now on. A growing number of scientific papers and academic dissertations on the UNL are being published every year.  
+
+The most visible accomplishment so far is the recognition by the Patent Co-operation Treaty (PCT) of the innovative character and industrial applicability of the UNL, which was obtained in May 2002 through the World Intellectual Property Organisation (WIPO). Acquiring the patent for the UNL is a completely novel achievement within the United Nations.
+
+== Commitments ==
+The main goal of the UNL Programme is to construct the UNL, an artificial language that can be used to process information across the language barriers. The major commitments of the UNL are the following:
+
+;I - The UNL must represent information
+:The UNL is first and foremost a knowledge representation language. The most important corollary of this first commitment is that UNL is not a meta-language, i.e., it is not intended to describe or represent natural languages; on the contrary, it is used to represent the information conveyed by natural languages. The goal of UNL is to represent "what was meant" and not "what was said". Accordingly, the UNL provides an '''interpretation''' rather than a translation of a given utterance. The UNL version of an existing document is not bound to preserve the lexical and the syntactic choices of the original, but must represent, in a non-ambiguous format, one of its possible meanings, preferably the most conventional one.
+
+;II - The UNL must be a language for computers
+:The UNL is an artificial language shaped to represent knowledge in a machine-tractable format. Like other formal systems, it seeks to provide the infrastructure for computers to handle what is meant by natural languages. Differently from other auxiliary languages (such as Esperanto, Interlingua, Volapük, Ido and others), the UNL is not intended to be a human language. We do not expect people to speak UNL or to communicate in UNL. But we do expect computers to process UNL: to generate UNL out of natural language, and vice-versa, with and without human aid. We expect computers to be able to extract information from UNL documents, and to detect paraphrases, entailments, implicatures, presuppositions, inferences, contradictions and redundancies among a set of propositions represented in UNL. 
+
+;III - The UNL must be self-sufficient
+:In the UNL approach, there are two basic movements: [[UNLization]] and [[NLization]]. UNLization is the process of representing the information conveyed by natural language into UNL; NLization, conversely, is the process of generating a natural language document out of UNL. In order to be fully "understandable" (and manageable) by machines, the UNL must be self-sufficient, i.e., should be as semantically complete and saturated as possible. The UNL representation must not depend on any implicit knowledge, and should explicitly codify all information. This means that the UNLization should be completely independent from the NLization, and vice-versa, i.e., the UNLization should not take into consideration which will be the target language or format of any future NLization; and the NLization should not need any information about the original source language or previous structure of any UNL document. 
+
+;IV - The UNL must be general-purpose
+:At first glance, the UNL seems to be a pivot-language to which the source texts are converted before being translated into the target languages. It can, in fact, be used for such a purpose, but its primary objective is to serve as an infrastructure for handling knowledge. In addition to translation, the UNL is expected to be used in several other different tasks, such as text mining, multilingual document generation, summarization, text simplification, information retrieval and extraction, sentiment analysis etc. Indeed, in UNL-based systems there is no need for the source language to be different from the target language: an English text may be represented in UNL in order to be generated, once again, in English, as a summarized, a simplified, a localized or a simply rephrased version of the original. 
+
+;V - The UNL must be independent from any particular natural language
+:The UNL is expected to be the language of the United Nations and, therefore, must not be circumscribed to any existing natural language in particular, under the risk of being rejected by the state members of the General Assembly.
+
+== Assumptions ==
+;1. Languages convey information
+:The UNL assumes that one of the most outstanding uses of natural languages is to convey '''information''', i.e., that natural languages can be used to represent what we know about the world. This "aboutness" of natural languages, i.e., its representational role, is the main object of the UNL, which is expected, not to do what natural languages do, but to represent what they represent.
+
+;2. Information can be represented by semantic networks
+:The UNL assumes that any information conveyed by natural language can be formally and usefully represented by a '''semantic network'''. This idea is not new. Semantic networks have been used in knowledge representation at least since Charles S. Peirce, and as an interlingua for machine translation since the 1950's. In the UNL approach, this semantic network (or UNL graph) is made of three different types of discrete semantic entities: concepts, relations and attributes. Concepts are nodes in the network; relations are arcs linking nodes; and attributes are used to delimit the use of nodes. This three-layered representation model is the cornerstone of the UNL, and a distinctive feature over other semantic networks, which normally propose only two levels: edges and vertices. 
+
+;3. Any information may be expressed in any language
+:The UNL assumes that any information conveyed by natural languages is '''translatable''', i.e., that natural languages differ, not in their power to express information, but in the way they do that. The UNL also assumes that, in order to ensure this "translatability" of information, the semantic network must be independent of any natural language in particular (i.e., it must be "universal"<ref>The idea of "universality", in UNL, must be understood in the sense of "capable of being used and understood by all" (as in "Coordinated '''Universal''' Time (UTC)", or in "'''universal''' adapter"), rather than "common to all" (as in "'''Universal''' Grammar"). See [[Universal]].</ref>). This is achieved by defining a standard (uniform) set of universally-accessible semantic entities, which are the elements of UNL: [[Universal Word]]s (or UW's), [[Universal Relations]] and [[Universal Attributes]].
+
+== Properties ==
+;Non-Ambiguity
+:As a formal system, the UNL is not expected to have any ambiguity, at any level. The sentence "The girls saw the boy with the telescope" must be represented, in UNL, in a way that there is no ambiguity concerning the meaning of "saw" (past tense of the verb "to see" x present tense of the verb "to saw" x noun "saw") or the dependency relations of "with the telescope" ("saw with the telescope" x "the boy with the telescope").
+;Non-Redundancy
+:As a knowledge representation language, the UNL is not expected to have any redundancy. Expressions such as "free gift", "round circle" and "murder to death" are expected to be represented, in UNL, as "gift", "circle" and "murder", respectively. Likewise, sentences such as "Peter killed John", "Peter murdered John", "It's Peter who killed John" and "John was killed by Peter" are expected to be represented in UNL in the same way<ref>The differences between them can be represented by attributes such as @topic and @passive, but this is rather optional, because the goal of UNL is to represent "what was meant" and not "what was said" or "how it was said".</ref>.
+;Compositionality
+:As a formal system, the UNL is always literal, i.e., fully compositional. UNL expressions must derive their semantic value thoroughly from their components, which must be explicitly defined in the [[UNL Knowledge Base]]. Accordingly, the UNL does not allow for any figure of speech, such as metaphor and metonymy. Tropes must be represented, in UNL, by their intended meaning. A sentence such as "John devoured thousands of books", for instance, must be represented, in UNL, as "John read many books eagerly"<ref>The information that this content has been conveyed through figurative language can be indicated by the corresponding attributes (@metaphor, @hyperbole, etc.), but this is optional.</ref>. 
+;Declarativeness
+:As a knowledge representation language, the UNL is not expected to perform speech acts (such as promises, requests, orders etc.), but only to describe them in a constative manner. For instance, given a performative utterance such as "Can you pass me the salt?", the role of the UNL is to represent "you pass the salt to me" and to indicate that this was a polite request<ref>This can be done by the use of the attributes @polite and @request.</ref>. The UNL representation itself will not be a request, nor will be bound to provoke the same (perlocutionary) effect caused by the original utterance.
+;Completeness
+:As a fully-explicit semantic system, the UNL is not expected to have ellipses or pro-forms, except when the referent is not present in the document (exophora). A sentence such as "The monkey took the banana and ate it" must be represented, in UNL, as "[The monkey]<sub>i</sub> took [the banana]<sub>j</sub>  and [the monkey]<sub>i</sub>  ate [the banana]<sub>j</sub>".
+
+== Structure ==
+{{:Semantic network}}
+
+== UNL Specs ==
+The structure of the UNL is defined by the [[Specs|UNL Specs]]. The UNL Specs specify the structure of a UNL document; the syntax of a UNL graph; the syntax of Universal Words; the set of relations; the set of attributes; and all the information concerning UNL as a formalism:
+*[[Universal Words]]
+*[[Universal Attributes]]
+*[[Universal Relations]]
+*[[UNL sentence|UNL sentence structure]]
+*[[UNL document|UNL document structure]]
+
+== Notes ==
+<references />
+
+== References ==
+* Martins, R. (ed). (2013). Lexical issues of UNL. Cambridge Scholar Publishing.
+* Uchida, H.; Zhu, M.; Della Senta, T. (1999). A gift for a millenium. Tokyo: IAS/UNU.
+* UNL. (1996). Universal Networking Language: an electronic language for communication, understanding and collaboration. Tokyo: UNL Center.
+* Cardeñosa, J.; Gelbukh, A.; Tovar, E. (Eds.) (2005).  [http://www.cicling.org/2005/UNL-book/ Universal Networking Language: Advances in Theory and Applications]. 443 pp.

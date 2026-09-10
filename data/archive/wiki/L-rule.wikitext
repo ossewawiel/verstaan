@@ -1,0 +1,126 @@
+'''L-rule''' (linear rule) is a specific type of [[transformation rule]] used for applying transformations over ordered sequences of isolated nodes. 
+
+== When to use L-rules ==
+L-rules are used for:
+*reordering nodes in a list: a b c > a c b
+*replacing nodes in a list: a b c > a x c
+*adding nodes in a list: a b c > a x b c
+*deleting nodes in a list: a b c > a c
+
+== When not to use L-rules ==
+L-rules are not used in transformations over structures other than lists (i.e., trees and graphs). In these cases, we use [[S-rules]] (syntactic rules).
+
+== Syntax ==
+L-rules comply with the syntax below:
+ (<NODE>)(<NODE>)...(<NODE>) := (<NODE>)(<NODE>)...(<NODE>);
+Where:
+*<NODE> is a [[node]] 
+*the left side of the operator := states the condition
+*the right side of the operator := states the action (replacement, change, creation, deletion, division, merge) to be performed over the condition.
+
+== Examples ==
+{|border="1" align="center" cellpadding="2"
+|+Examples
+!width=20%|RULE
+!width=15%|BEFORE > AFTER
+!width=65%|DESCRIPTION
+|-
+|("a")("b")("c"):=("d")("e")("f"); 
+|abc > def
+|"a" will be replaced by "d"; "b" by "e"; and "c" by "f"
+|-
+|("a")("b")("c"):=("d")( )( ); 
+|abc > dbc
+|"a" will be replaced by "d"; "b" and "c" will be preserved
+|-
+|("a")("b")("c"):=("d")("")("");
+|abc > d
+|"a" will be replaced by "d"; "b" and "c" will be replaced by "" (i.e., blank)
+|-
+|("a")("b")("c"):=("d",%01)(%02); 
+|abc >  db
+|"a" will be replaced by "d"; "b" will be preserved; "c" will be deleted
+|-
+|("a")("b")("c"):=("d",%01); 
+|abc > d
+|"a" will be replaced by "d"; "b" and "c" will be deleted
+|-
+|("a")("b")("c"):=(%03)(%02)(%01); 
+|abc > cba
+|"a", "b" and "c" will be preserved, but reordered
+|-
+|("a")("b")("c"):=("d",%01)(%03); 
+|abc > dc
+|"a" will be replaced by "d"; "b" will be deleted; "c" will be preserved
+|-
+|("a")("b")("c"):=("d",%01)("g")(%02)(%03); 
+|abc > dgbc
+|"a" will be replaced by "d"; "b" and "c" will be preserved; and a new node "g" will be created between "a" and "b"
+|- 
+|("a",ART)(BLK)("/[aeiou].*/"):=("an")( )( );
+|'''a''' adjective > '''an''' adjective
+|replace the article (ART) "a" by "an" before a blank space (BLK) and a node starting with "a", "e", "i", "o" or "u"; preserve the second node (BLK) and the third node without any change
+|-
+|("a",PRE)(BLK)("a",ART):=("à",PRE,ART,CTC);
+|'''a''' '''a''' > '''à'''
+|replace the preposition (PRE) "a" + blank (BLK) + article (ART) "a" by "à"; add the features PRE (preposition), ART (article) and CTC (contraction) to the node "à"
+|-
+|("de",PRE)(BLK)("le",ART):=("du",PRE,ART,CTC);
+|'''de''' '''le''' > '''du'''
+|replace the preposition (PRE) "de" + blank (BLK) + article (ART) "le" by "du"; add the features PRE, ART and CTC to the node "du"
+|-
+|("a",VER)(BLK)("il",PPR):=( )("-t-",-BLK)( );
+|'''a il''' > '''a-t-il'''
+|replace the blank space (BLK) between the verb (VER) "a" and the pronoun (PPR) "il" by "-t-"; remove the feature BLK from the second form; preserve the first and the third form without any change
+|-
+|("de",PRE)(BLK)("/[aeiou].*/"):=("d'",%01)(%03);
+|'''de avoir''' > '''d'avoir'''
+|replace the preposition (PRE) "de" + blank space (BLK) + a node starting with "a", "e", "i", "o" or "u" by "d'"; delete the second form (BLK); and preserve the third form (%03) without any change
+|-
+|}
+
+== Transformations ==
+{{:Transformation_over_nodes}}
+
+== Transformations over hyper-nodes ==
+{{:Transformation_over_hyper-nodes}}
+
+== Properties ==
+#L-rules are recursive<nowiki>:</nowiki> rules will apply while conditions are true:
+#:The rule "(BLK):=("-");" will transform "a b c d e" into "a-b-c-d-e" (and not only in "a-b c d e")
+#:The rule "(X):=(+Y);" will never stop (i.e., it contains an infinite loop): the feature Y will keep been added eternally (X,Y,Y,Y,Y,Y,Y,Y,...)
+#The symbol '''^''' is used for negation and may be used to prevent infinite loops:
+#:*(X,^Y):=(+Y); (= add the feature Y to a node containing the feature X that does not contain the feature Y yet)
+#:*(^".")(STAIL):=(%01)(".")(%02); (Add a period before the end of the sentence if there is not a period yet)
+#Rules are conservative. No feature is changed or deleted unless explicitly indicated through "-".
+#:In the rule ("x",A):=("y"); the string "x" is replaced by the string "y", but the feature A is not altered (i.e.,the final state will be ("y",A));
+#:In the rule ("x",A):=("y",A); the string "x" is replaced by the string "y" and the feature A is added to the node (i.e., the final state will be ("y",A,A))
+#:The rule "("a",ART)(BLK)("/a[bcd]e/"):=("an")( )( );" does not affect the status of the second and the third nodes. On the other hand, the rule "("a",VER)(BLK)("il",PPR):=( )("-t-",-BLK)( );" alters the status of the second node by deleting the feature BLK.
+#Regular expressions may be used in order to make reference to the elements of a node, but only in the left (condition) side.<br />
+#:("/[A-Z]/",%x)(".",%y):=(%x); 
+#:<strike>("/[A-Z]/")("."):=("/[A-Z]/");</strike> 
+#In the ACTION field, changes to the elements of a node may be expressed by the right side of [[A-rule]]s
+#:The rule "("a",ART)(BLK)("/[aeiou].*/"):=("an")( )( );" could also be expressed as "("a",ART)(BLK)("/[aeiou].*/"):=(0>"n")( )( );", i.e., the change from "a" to "an" could be expressed either by "an" or 0>"n".
+#Rules apply only if all conditions are true.
+#:The rule "("a")(BLK)("/[aeiou].*/"):=("an")( )( );" will apply only in case of "a" before a blank and a node starting with "a", "e", "i", "o" or "u".
+
+== Indexes ==
+See: [[Indexation]]
+
+== Common mistakes ==
+*<strike>"Mr":="Mister";</strike>
+**Conditions and actions must always come between parentheses: ("Mr"):=("Mister"); 
+*<strike>(Mr):=(Mister);</strike> 
+**Constants must come between quotes (inside the parentheses): ("Mr"):=("Mister"); 
+*<strike>("Mr"):=("Mister")</strike> 
+**Rules must end in semicolon: ("Mr"):=("Mister"); 
+*<strike>("I am"):=("I'm");</strike>
+**Each separate word form must be isolated between parentheses and described as a different condition: ("I")(BLK)("am"):=("I'm");
+*<strike><nowiki>("a",ART)(BLK)(VOW):=("an");</nowiki></strike> 
+**"a adjective">"a": the blank and the following form are deleted because they are not present at the right side
+*<strike><nowiki>("de",PRE)(BLK)(VOW):=("d'")(VOW);</nowiki></strike>
+**"de avoir">"d' ": coindexation is based on ordering and not on features. The third form is deleted because it's not present at the right side; the second form, which is BLK, receives the feature VOW;
+
+
+== N-rules and L-rules ==
+{{:Difference between N-rules and L-rules}}

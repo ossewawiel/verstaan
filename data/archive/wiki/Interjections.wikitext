@@ -1,0 +1,21 @@
+To be represented as attributes, to be assigned to the main sentence, if available, or to the [[null UW]], if not.
+
+== Interjection attributes ==
+
+;@anger
+;@consent
+:("Shall we go?")"Uh-huh." = 00.@agreement
+;@attention
+:"Hey! look at that!" = look.@attention
+;@contentment
+;@disagreement
+;@discontentment
+;@dissent
+;@hesitation
+:"Lima is the capital of...er...Peru." = Peru.@hesitation
+;@pain
+:"Ouch! (That hurts)" = 00.@pain
+;@relief
+;@surprise
+:"Oh! You're here!" = here.@surprise
+;@weariness

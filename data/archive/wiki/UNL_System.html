@@ -1,0 +1,72 @@
+<div class="mw-content-ltr mw-parser-output" lang="en" dir="ltr"><p>The <b>UNL System</b> is the set of basic modules of UNL and the rules to combine them.
+</p>
+<div id="toc" class="toc" role="navigation" aria-labelledby="mw-toc-heading"><input type="checkbox" role="button" id="toctogglecheckbox" class="toctogglecheckbox" style="display:none" /><div class="toctitle" lang="en" dir="ltr"><h2 id="mw-toc-heading">Contents</h2><span class="toctogglespan"><label class="toctogglelabel" for="toctogglecheckbox"></label></span></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#UNLization"><span class="tocnumber">1</span> <span class="toctext">UNLization</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#NLization"><span class="tocnumber">2</span> <span class="toctext">NLization</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="#Modules"><span class="tocnumber">3</span> <span class="toctext">Modules</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="#Specs"><span class="tocnumber">4</span> <span class="toctext">Specs</span></a></li>
+</ul>
+</div>
+
+<div class="mw-heading mw-heading2"><h2 id="UNLization">UNLization</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=UNL_System&amp;veaction=edit&amp;section=1" title="Edit section: UNLization" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=UNL_System&amp;action=edit&amp;section=1" title="Edit section&#39;s source code: UNLization">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p><i>Main article: <a href="/wiki/UNLization" title="UNLization">UNLization</a></i>
+</p>
+<figure class="mw-halign-left" typeof="mw:File/Thumb"><a href="/wiki/File:UNLization.png" class="mw-file-description"><img src="/wiki/images/thumb/c/c6/UNLization.png/200px-UNLization.png" decoding="async" width="200" height="157" class="mw-file-element" srcset="/wiki/images/thumb/c/c6/UNLization.png/300px-UNLization.png 1.5x, /wiki/images/thumb/c/c6/UNLization.png/400px-UNLization.png 2x" /></a><figcaption></figcaption></figure>
+<p>UNLization is the process of representing the content of a natural language structure into UNL. This process is carried out by a <a href="/wiki/Tools#UNLizers" title="Tools">UNLizer</a>. The input for the UNLizer is a natural language document or set of documents. The UNLizer first  segments the natural language input according to the <a href="/wiki/NL-UNL_S-Grammar" class="mw-redirect" title="NL-UNL S-Grammar">NL-UNL S-Grammar</a>. Next, it <a href="/wiki/Tokenization" title="Tokenization">tokenizes</a> each processing unit according to the <a href="/wiki/NL-UNL_Dictionary" class="mw-redirect" title="NL-UNL Dictionary">NL-UNL Dictionary</a> and the <a href="/wiki/NL-UNL_Memory" class="mw-redirect" title="NL-UNL Memory">NL-UNL Memory</a>. The tokenization process may be controlled by the <a href="/wiki/NL-UNL_D-Grammar" class="mw-redirect" title="NL-UNL D-Grammar">NL-UNL D-Grammar</a>. The resulting tokenized string is then syntactically and semantically analyzed with the <a href="/wiki/NL-UNL_T-Grammar" class="mw-redirect" title="NL-UNL T-Grammar">NL-UNL T-Grammar</a>, which may be improved by the <a href="/wiki/NL-UNL_D-Grammar" class="mw-redirect" title="NL-UNL D-Grammar">NL-UNL D-Grammar</a>, the <a href="/wiki/NL_Memory" title="NL Memory">NL Memory</a>, the <a href="/wiki/UNL_Memory" title="UNL Memory">UNL Memory</a>, the <a href="/wiki/UNL_Knowledge_Base" title="UNL Knowledge Base">UNL Knowledge Base</a> and the <a href="/wiki/UNL_Ontology" title="UNL Ontology">UNL Ontology</a>. The output of the process is a UNL document, which may reflect either the deep or the surface structure of the text, of each sentence or of each word of the natural language input document, depending on the structure of the grammar.
+<br style="clear: both" />
+</p>
+<div class="mw-heading mw-heading2"><h2 id="NLization">NLization</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=UNL_System&amp;veaction=edit&amp;section=2" title="Edit section: NLization" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=UNL_System&amp;action=edit&amp;section=2" title="Edit section&#39;s source code: NLization">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p><i>Main article: <a href="/wiki/NLization" title="NLization">NLization</a></i>
+</p>
+<figure class="mw-halign-left" typeof="mw:File/Thumb"><a href="/wiki/File:NLization.png" class="mw-file-description"><img src="/wiki/images/thumb/8/8b/NLization.png/200px-NLization.png" decoding="async" width="200" height="156" class="mw-file-element" srcset="/wiki/images/thumb/8/8b/NLization.png/300px-NLization.png 1.5x, /wiki/images/thumb/8/8b/NLization.png/400px-NLization.png 2x" /></a><figcaption></figcaption></figure>
+<p>NLization is the process of generating a natural language document out of UNL. This process is carried out by a <a href="/wiki/Tools#NLizers" title="Tools">NLizer</a>. The input for the NLization is a UNL document. The input document, which is already segmented according to the <a href="/wiki/UNL_Document_Structure" class="mw-redirect" title="UNL Document Structure">UNL Document Structure</a>, is <a href="/wiki/Tokenization" title="Tokenization">tokenized</a>, according to the <a href="/wiki/UNL-NL_Dictionary" class="mw-redirect" title="UNL-NL Dictionary">UNL-NL Dictionary</a> and the <a href="/wiki/UNL-NL_Memory" title="UNL-NL Memory">UNL-NL Memory</a>. The tokenization process may be controlled by the <a href="/wiki/UNL-NL_D-Grammar" class="mw-redirect" title="UNL-NL D-Grammar">UNL-NL D-Grammar</a>. The resulting tokenized string is then syntactically and semantically analyzed with the <a href="/wiki/UNL-NL_T-Grammar" class="mw-redirect" title="UNL-NL T-Grammar">UNL-NL T-Grammar</a>, which may be improved by the <a href="/wiki/UNL-NL_D-Grammar" class="mw-redirect" title="UNL-NL D-Grammar">UNL-NL D-Grammar</a>, the <a href="/wiki/NL_Memory" title="NL Memory">NL Memory</a>, the <a href="/wiki/UNL_Memory" title="UNL Memory">UNL Memory</a>, the <a href="/wiki/UNL_Knowledge_Base" title="UNL Knowledge Base">UNL Knowledge Base</a> and the <a href="/wiki/UNL_Ontology" title="UNL Ontology">UNL Ontology</a>. The output of the process is a natural language document, which may reflect either the deep or the surface structure of the whole or part of the UNL input document.
+<br style="clear: both" />
+</p>
+<div class="mw-heading mw-heading2"><h2 id="Modules">Modules</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=UNL_System&amp;veaction=edit&amp;section=3" title="Edit section: Modules" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=UNL_System&amp;action=edit&amp;section=3" title="Edit section&#39;s source code: Modules">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<ul><li><a href="/wiki/Lexica" title="Lexica">Lexical Databases</a>
+<ul><li>The <b>UNL Ontology</b>, the <b>UNL Knowledge Base</b> and the <b>UNL Memory</b> are lists of semantic frames between UW's. These repositories include ontological relations ("a kind of" and "an instance of"), in case of UNL Ontology; necessary (ontological and thematic) relations (such as "is the agent of", "is the place where", "is the moment when"), in case of UNL Knowledge Base; and any typical relations, in case of the UNL Memory.</li>
+<li>The <b>UNL&lt;-&gt;NL Dictionary</b> is a list of mappings between UW's and natural language entries. It is a bilingual dictionary where UW's are translated into <a href="/wiki/LRU" class="mw-redirect" title="LRU">lexical realisation units</a> of a given natural language, and vice-versa.</li>
+<li>The <b>UNL&lt;-&gt;NL Memory</b> is a list of mappings between UNL and natural language extracted from previous UNLizations and NLizations.</li>
+<li>The <b>NL Memory</b> is a list of syntactic frames between natural language entries.</li></ul></li>
+<li><a href="/wiki/Grammar" title="Grammar">Grammars</a>
+<ul><li>The <b>UNL&lt;-&gt;NL T-Grammar</b> is the set of transformation rules used to manipulate data structures.</li>
+<li>The <b>UNL&lt;-&gt;NL D-Grammar</b> is the set of disambiguation rules used to control the use of transformation rules.</li></ul></li>
+<li><a href="/wiki/Tools" title="Tools">Tools</a>
+<ul><li><b>UNLizers</b> are tools used for UNLization (<a href="/wiki/IAN" title="IAN">IAN</a> and <a href="/wiki/SEAN" title="SEAN">SEAN</a>, for instance).</li>
+<li><b>NLizers</b> are tools used for NLization (<a href="/wiki/EUGENE" title="EUGENE">EUGENE</a>).</li></ul></li></ul>
+<div class="mw-heading mw-heading2"><h2 id="Specs">Specs</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=UNL_System&amp;veaction=edit&amp;section=4" title="Edit section: Specs" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=UNL_System&amp;action=edit&amp;section=4" title="Edit section&#39;s source code: Specs">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<dl><dt><a href="/wiki/Tagset" title="Tagset">Tagset</a></dt>
+<dd>The Tagset is a harmonized system for representing linguistic constants.</dd>
+<dt><a href="/wiki/Dictionary_Specs" class="mw-redirect" title="Dictionary Specs">Dictionary Specs</a></dt>
+<dd>The Dictionary Specs state the syntax of dictionaries.</dd>
+<dt><a href="/wiki/Grammar_Specs" class="mw-redirect" title="Grammar Specs">Grammar Specs</a></dt>
+<dd>The Grammar Specs state the syntax of grammar rules.</dd>
+<dt><a href="/wiki/KB_Specs" class="mw-redirect" title="KB Specs">KB Specs</a></dt>
+<dd>The UNL Knowledge Base Specs state the syntax of knowledge bases.</dd>
+<dt><a href="/wiki/Memory_Specs" class="mw-redirect" title="Memory Specs">Memory Specs</a></dt>
+<dd>The Memory Specs state the syntax of example bases.</dd></dl>
+<!-- 
+NewPP limit report
+Cached time: 20260910152803
+Cache expiry: 86400
+Reduced expiry: false
+Complications: [show‐toc]
+CPU time usage: 0.008 seconds
+Real time usage: 0.009 seconds
+Preprocessor visited node count: 49/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/100
+Expensive parser function count: 0/100
+Unstrip recursion depth: 0/20
+Unstrip post‐expand size: 0/5000000 bytes
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    0.000      1 -total
+-->
+
+<!-- Saved in parser cache with key u965818192_SLvgQ-l8z2_:pcache:370:|#|:idhash:canonical and timestamp 20260910152803 and revision id 9820. Rendering was triggered because: diff-page
+ -->
+</div>

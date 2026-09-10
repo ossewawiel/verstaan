@@ -1,0 +1,58 @@
+'''Quantifiers''' are expressed in UNL by quantifying attributes or through the relation "qua", depending on the type of quantification.
+
+== Attributes ==
+Generic quantity values are expressed, in UNL, by the following attributes:
+{{#tree:id=number|openlevels=0|root=Quantity|
+*@any (any) (existential quantifier)
+*@all (all) (universal quantifier)
+*@entire (entire)
+*@generic (no quantification)
+*@half (half)
+*@majority (a major part)
+*@minority (a minor part)
+*@no (none)
+*@part (part)
+*@pl (plural)
+**@dual
+**@trial
+**@quadrual
+**@paucal
+**@multal
+*@singular (default)
+*@times (multiplicative)
+*@tuple (collective)
+*@unit (unit)
+}}
+
+
+;@singular is the default number value and may be omitted:
+:book = book (or book.@singular)
+;number, when lexicalized, should be omitted as well:
+:two glasses (=drinking vessel) = glasses.@pl
+:a pair of glasses (=spectacles) = glasses (and not glasses.@pl)
+
+=== Examples ===
+
+*@singular
+**book = book or book.@singular
+*@pl
+**books = book.@pl
+**children = child.@pl
+**livres = livre.@pl
+*@paucal
+**a few books = book.@paucal
+**some books = book.@paucal
+*@multal
+**many books = book.@multal
+**several books = book.@multal
+
+== Relation ==
+Specific quantities must be expressed by the relation "qua":
+
+ qua(quantified, quantifier)
+
+;Quantifiers are expressed by Arabic numerals, if numeric, or by UWs, otherwise:
+:two books = qua(book, 2)
+:a set of books = qua(book, set)
+;The attribute @pl may be omitted in case of specific quantities:
+:two books = qua(book.@pl, 2) = qua(book, 2)

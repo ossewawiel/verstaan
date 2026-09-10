@@ -1,0 +1,97 @@
+'''Syntactic structure''' is the configuration or the arrangement of the forms in a phrase so as to elicit its internal syntactic dependencies (such as government, agreement, etc). 
+
+== Universal Structure ==
+The UNL<sup>arium</sup> framework follows the [[Syntax|X-bar approach]], which postulates that all human languages share the same underlying syntactic structure, whose abstract configuration is depicted in the diagram below:
+
+<pre>
+    XP
+   / \
+spec  XB
+     / \
+    XB  adjt
+   / \
+  X   comp
+  |
+head
+</pre>
+In the above:
+*X is the '''head''', the nucleus or the source of the whole syntactic structure, which is actually derived (or projected) out of it. 
+*'''comp''' (i.e., complement) is an internal argument, i.e., a word, phrase or clause which is necessary to the head to complete its meaning (e.g., objects of transitive verbs)
+*'''adjt''' (i.e., adjunct) is a word, phrase or clause which modifies the head but which is not syntactically required by it  (adjuncts are expected to be extranuclear, i.e., removing an adjunct would leave a grammatically well-formed sentence)
+*'''spec''' (i.e., specifier) is an external argument, i.e., a word, phrase or clause which qualifies (determines) the head
+*'''XB''' (X-bar) is the general name for any of the intermediate projections derived from X 
+*'''XP''' (X-bar-bar, X-double-bar, X-phrase) is the maximal projection of X.
+
+== Representation ==
+In the UNL<sup>arium</sup> framework, syntactic structures are represented by [[S-rule]]s as follows:
+
+ '''XP(XB(XB(head;complement);adjunct);spec);'''
+
+For simplification reasons, the same structure may be represented by four head-driven relations, as follows:
+
+ '''XS(head;specifier);''', which describes the relation between the head of the structure and its specifier
+ '''XA(head;adjunct);''', which describes the relation between the head of the structure and its adjuncts
+ '''XC(head;complement);''', which describes the relation between the head of the structure and its complements
+ '''XH(head);''', which describes the head of the structure
+
+This is to say that:
+
+ '''XP(XB(XB(head;complement);adjunct);spec) := XS(head;specifier)XA(head;adjunct)XC(head;complement)'''
+ '''XS(head;specifier)XA(head;adjunct)XC(head;complement) := XP(XB(XB(head;complement);adjunct);spec) 
+'''
+Where X must be replaced by one of the eight possible heads (N, P, V, A, J, C, D, I).
+
+<b>Sentence-driven relations (XP, XB)</b> define the syntactic configuration of the sentence, while <b>head-driven relations (XC, XS, XA, XH)</b> 
+define the syntactic roles of the constituents (with reference to the head). They are different ways of representing the same information and, therefore, are mutually exclusive in the same level of representation.
+
+== Examples ==
+*'''NH([boy]);''' ("boy" is the head of a noun phrase)
+*'''DP([a]);''' ("a" is a determiner phrase)
+*'''JH([beautiful]);''' ("beautiful" is the head of an adjective phrase)
+*'''AP([very]);''' ("very" is an adverbial phrase)
+*'''JP("very beautiful");''' ("very beautiful" is an adjective phrase)
+*'''JA([beautiful];AP([very]));''' (the adverbial phrase "very" is an adjunct in the adjective phrase headed by "beautiful") = very beautiful
+*'''NS([boy];DP([a]));''' (the determiner phrase "a" is the specifier of a noun phrase headed by "boy") = a boy
+*'''NA([boy];JP("very beautiful");''' (the adjective phrase "very beautiful" is an adjunct in the noun phrase headed by "boy") = very beautiful boy
+*'''NA([boy];JH([beautiful]));''' (the adjective phrase headed by "beautiful" is an adjunct in the noun phrase headed by "boy") = (very) beautiful boy
+*'''NA([boy];JA([beautiful];AP([very]));''' (the adverbial phrase "very" is an adjunct in the adjective phrase headed by "beautiful"; the adjective phrase headed by "beautiful" is an adjunct in the noun phrase headed by "boy") = very beautiful boy
+*'''NP(NB([boy];JP("very beautiful"));DP([a]));''' (the noun phrase headed by "boy" has an adjunct (the adjective phrase "very beautiful") and a specifier (the determiner phrase "a")) = a very beautiful boy
+
+== Observations ==
+;Except for XH, which is unary, syntactic relations are always binary:
+:*NH(head);
+:*NB(head;complement);
+:*NB(NB(head;complement);complement);
+:*<strike>NB(head;complement;complement);</strike>
+;In the head-driven relations XA, XC and XS, heads may be omitted:
+:*NC(head;complement);
+:*NC(complement);
+;In sentence-driven relations (XB and XP), heads may not be omitted:
+:*NB(head;complement);
+:*<strike>NB(complement);</strike>
+;Constituents are phrases
+:Specifiers, adjuncts and complements are to be represented as complex structures, even when they are composed of a single node
+:*a boy
+:**<strike>NS([boy];[a]);</strike>
+:**NS([boy];DP([a]));
+;Strings are represented between "quotes" while lemmas are represented between [brackets].
+:The UNL<sup>arium</sup> distinguishes between strings (to be represented between "quotes") and lemmas (to be represented between [brackets]). The difference between strings and lemmas has to do with variance and the dictionary status: if the constituent is expected to figure as an entry in the dictionary (e.g., "in", "the", "after", "love", "sense", etc) or if may vary (e.g., if it may be inflected, or further composed by specification, adjunction or complementation), it must be represented between brackets; if it's a full phrase whose internal structure is not relevant, because invariant, it must come between quotes:
+:*VA("into account"); (the string "into account" does not vary: ''take'' > ''take into account'', ''<strike>take into more account</strike>'')
+:*VC([sense]); (the term "sense" may be further specified: ''make'' > ''make sense'', ''make any sense'', ''make no sense'', etc).
+;XH and XP are not the same:
+:*VP([make]); = the verbal phrase is "make" (there's no other constituent in the phrase)
+:*VH([make]); = the head of the phrase is "make" (the phrase may contain other constituents)
+;Phrases may be replaced by unique indexes for simplification reasons:
+:indexes are to be expressed by ":<VALUE>", where <VALUE> is a two-digit string
+:*NA([boy];JA([beautiful];AP([very]))); (no indexes)
+:*NA([boy];:01)JA:01([beautiful];:02)AP:02([very]); (with indexes)
+;Relations are juxtaposed (and not separated by ","):
+:*NS(DP)NA(JP);
+:*<strike>NS(DP),NA(JP);</strike>
+;Head-driven relations (XS, XC, XA) are commutative (the order is not relevant):
+:*NS(DP)NA(JP); = NA(JP)NS(DP);
+;Sentence-driven relations (XP, XB) are not commutative (the order is relevant):
+:*PB(PB("a";"b");"c"); is different from PB(PB("a";"c");"b");
+;Rules always end in ";":
+:*NS(DP)NA(JP);
+:*<strike>NS(DP)NA(JP)</strike>

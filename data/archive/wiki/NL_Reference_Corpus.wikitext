@@ -1,0 +1,110 @@
+The NL Reference Corpus (NC) is the corpus used to prepare and to assess grammars for sentence-based [[UNLization]]. It is divided in 6 different levels according to the [[FoR-UNL|Framework of Reference for UNL (FoR-UNL)]]:
+*NC-A1: NL Reference Corpus A1 
+*NC-A2: NL Reference Corpus A2 
+*NC-B1: NL Reference Corpus B1
+*NC-B2: NL Reference Corpus B2
+*NC-C1: NL Reference Corpus C1
+*NC-C2: NL Reference Corpus C2
+
+== Methodology ==
+As a natural language corpus, the NC varies for each language. It is derived from a base corpus to be compiled and processed according to the following criteria:
+#The '''Base Corpus''' must have at least 5,000,000 tokens (strings isolated by blank space and other word boundary markers). It must be representative of the contemporary standard use of the written language, and should include documents from as many different genres and domains as possible. 
+#The Base Corpus must be '''segmented''' (in sentences). 
+#The Segmented Corpus must be '''tokenized''' (according to the natural language dictionary exported from the UNLarium).
+#The Tokenized Corpus must be '''annotated''' for lexical category, in order to generate the [[LSS|linear sentence structures]] (LSS).
+#The Annotated Corpus (C) must be subdivided into 6 different subsets, according to the number of tokens:
+#*A1C = length <= 15th percentile (very small sentences)
+#*A2C = 15th percentile < length <= 30th percentile (small sentences)
+#*B1C = 30th percentile < length <= 45th percentile (small medium-size sentences)
+#*B2C = 45th percentile < length <= 60th percentile (long medium-size sentences)
+#*C1C = 60th percentile < length <= 80th percentile (long sentences)
+#*C2C = length > 80th percentile (very long sentences)
+#Each subcorpus is used to compile a part of the NC corpus: the training corpora (A) and the testing corpora (B).
+#*The training corpora consists of 1 exemplar of the 1,000 most frequent LSS, and will be used to prepare the grammar:
+#**A1A = 1 sentence for each 1,000 most frequent LSS from A1_C (1,000 sentences in total)
+#**A2A = 1 sentence for each 1,000 most frequent LSS from A2_C (1,000 sentences in total)
+#**B1A = 1 sentence for each 1,000 most frequent LSS from B1_C (1,000 sentences in total)
+#**B2A = 1 sentence for each 1,000 most frequent LSS from B2_C (1,000 sentences in total)
+#**C1A = 1 sentence for each 1,000 most frequent LSS from C1_C (1,000 sentences in total)
+#**C2A = 1 sentence for each 1,000 most frequent LSS from C2_C (1,000 sentences in total)
+#*The testing corpora consists of 4 exemplars of each LSS included in the training corpora. The exemplars are randomly selected in the Annotated Corpus.
+#**A1B = 4 sentences for each 1,000 most frequent LSS from A1_C (4,000 sentences in total)
+#**A2B = 4 sentences for each 1,000 most frequent LSS from A2_C (4,000 sentences in total)
+#**B1B = 4 sentences for each 1,000 most frequent LSS from B1_C (4,000 sentences in total)
+#**B2B = 4 sentences for each 1,000 most frequent LSS from B2_C (4,000 sentences in total)
+#**C1B = 4 sentences for each 1,000 most frequent LSS from C1_C (4,000 sentences in total)
+#**C2B = 4 sentences for each 1,000 most frequent LSS from C2_C (4,000 sentences in total)
+#The whole NC corpus (i.e., 5 exemplars for each LSS) is used to calculate the [[F-measure]], which is the parameter for assessing the precision and the recall of the grammars.
+
+== Files ==
+{|border=1 cellpadding=5
+!rowspan=2|Language
+!colspan=6|Training Corpora (A)
+!colspan=6|Test Corpora (B)
+!colspan=6|Annotated Corpora (C)
+!colspan=6|Percentiles<br |>(number of tokens)
+!colspan=6|Sentences (Total)
+|-
+!A1A
+!A2A
+!B1A
+!B2A
+!C1A
+!C2A
+!A1B
+!A2B
+!B1B
+!B2B
+!C1B
+!C2B
+!A1C
+!A2C
+!B1C
+!B2C
+!C1C
+!C2C
+!A1
+!A2
+!B1
+!B2
+!C1
+!C2
+!A1C
+!A2C
+!B1C
+!B2C
+!C1C
+!C2C
+|-
+|Arabic
+|[http://www.unlweb.net.br/resources/corpus/NC/NC_ara_A1A.rar]
+|[http://www.unlweb.net.br/resources/corpus/NC/NC_ara_A2A.rar]
+|[http://www.unlweb.net.br/resources/corpus/NC/NC_ara_B1A.rar]
+|[http://www.unlweb.net.br/resources/corpus/NC/NC_ara_B2A.rar]
+|[http://www.unlweb.net.br/resources/corpus/NC/NC_ara_C1A.rar]
+|[http://www.unlweb.net.br/resources/corpus/NC/NC_ara_C2A.rar]
+|[http://www.unlweb.net.br/resources/corpus/NC/NC_ara_A1B.rar]
+|[http://www.unlweb.net.br/resources/corpus/NC/NC_ara_A2B.rar]
+|[http://www.unlweb.net.br/resources/corpus/NC/NC_ara_B1B.rar]
+|[http://www.unlweb.net.br/resources/corpus/NC/NC_ara_B2B.rar]
+|[http://www.unlweb.net.br/resources/corpus/NC/NC_ara_C1B.rar]
+|[http://www.unlweb.net.br/resources/corpus/NC/NC_ara_C2B.rar]
+|[http://www.unlweb.net.br/resources/corpus/NC/NC_ara_A1C.rar]
+|[http://www.unlweb.net.br/resources/corpus/NC/NC_ara_A2C.rar]
+|[http://www.unlweb.net.br/resources/corpus/NC/NC_ara_B1C.rar]
+|[http://www.unlweb.net.br/resources/corpus/NC/NC_ara_B2C.rar]
+|[http://www.unlweb.net.br/resources/corpus/NC/NC_ara_C1C.rar]
+|[http://www.unlweb.net.br/resources/corpus/NC/NC_ara_C2C.rar]
+|1-8
+|9-12
+|13-16
+|17-21
+|22-31
+|32-
+|118,067
+|155,495
+|153,312
+|149,948
+|170,893
+|163,214
+|}

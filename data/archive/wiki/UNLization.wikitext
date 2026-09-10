@@ -1,0 +1,121 @@
+<b>UNLization</b>, formerly known as enconversion, is the process of "representing" the content of a natural language structure into UNL. This representation should be understood as a '''interpretation''' rather than as a '''translation''' of the source document, in the sense it is not necessarily committed to mimic its linguistic structure (such as lexical choice and syntax) but to extract its semantic structure (it must replicate concepts and  relations between concepts conveyed by the linguistic structure).
+
+== Units ==
+The process of UNLization may have different representation units, as follows:
+*Word-driven UNLization (the source document is represented as a single network of individual concepts)
+*Sentence-driven UNLization (the source document is represented as a list of non-semantically related networks of individual concepts)
+*Text-driven UNLization (the source document is represented as a network of semantically related networks of individual concepts)
+In word-driven UNLization, the sentence boundaries and the structure of the source document are ignored, and the source document is represented as a single graph, i.e., as a simple network of individual concepts. In sentence-driven UNLization, the source document is analyzed, sentence by sentence, as a list of non-semantically related hyper-graphs. Each sentence is represented separately, and the only relation standing between sentences is the order in the source document. At last, text-driven UNLization targets the rhetorical structure of the source document, i.e., it analyzes the source document as a network of semantically related hyper-graphs. Word-driven UNLization is used mainly for information retrieval and extraction, whereas sentence- and text-driven UNLization are normally used for translation.
+
+== Paradigms ==
+The process of UNLization may follow several different paradigms, as follows:
+*Language-based UNLization (based mainly in a [[UNL Dictionary|NL-UNL dictionary]] and [[Grammar Specs|NL-UNL grammar]])
+*Knowledge-based UNLization (based mainly in the [[UNL Knowledge Base]])
+*Memory-based UNLization (based mainly in the [[UNL-NL Memory]])
+*Statistical-based UNLization (based mainly in statistical predictions derived from UNL-NL corpora)
+*Dialogue-based UNLization (based mainly in the interaction with the user)
+The actual UNLization is normally hybrid and may combine several of the strategies above.
+
+== Recall == 
+The process of UNLization may target the whole source document or only parts of it (e.g. main clauses):
+*Full UNLization (the whole source document is UNLized)
+*Partial (or chunk) UNLization (only a part of the source document is UNLized)
+;Peter killed John with a knife yesterday morning.
+:Full UNLization: Peter saw John yesterday morning.
+:Partial UNLization: Peter saw John.
+
+== Precision ==
+The process of UNLization may target the deep semantic structure of the source document (i.e., the resulting semantic structure replicates the syntactic structure of the original) or only its surface structure (the resulting semantic structure does not preserve the syntactic structure of the original)
+*Deep UNLization (the UNLization focus the deep semantic structure of the source document)
+*Shallow UNLization (the UNLization focus the surface semantic structure of the source document)
+Syntactic structures are preserved in the UNL document by the use of syntactic attributes (such as @passive, @topic, etc) or by hyper-nodes (i.e., [[scope]]s). For some purposes, as translation, UNLization may require syntactic details; for others, such as information retrieval, syntactic structures at this level are not normally necessary:
+;Mary was kissed by Peter
+:Shallow UNLization: Peter kissed Mary
+:Deep UNLization: [Peter kissed Mary].@passive
+;Mary saw Peter going to Paris.
+:Shallow UNLization: Mary saw Peter & Peter was going to Paris
+:Deep UNLization: Mary saw [Peter going to Paris].
+;As for the little girl, the dog licked her.
+:Shallow UNLization: the dog licked the little girl
+:Deep UNLization: the dog licked [the little girl].@topic
+
+== Level ==
+The process of UNLization may target literal meanings (locutionary content) or non-literal meanings (ilocutionary content).
+*Locutionary (the UNLization represents only the literal meaning)
+*Ilocutionary (the UNLization represents also non-literal meanings, including speech acts)
+The ilocutionary force may be represented by figure of speech and speech acts attributes: 
+;It is as soft as concrete
+:Locutionary level: it is as soft as concrete
+:Ilocutionary level: [it is as soft as concrete].@irony
+;Can you pass me the salt?
+:Locutionary level: can you pass me the salt?
+:Ilocutionaruy level: [you pass me the salt].@request
+
+== Methods ==
+Humans and machines may play different roles in UNLization methods:
+*Fully automatic UNLization (the whole process is carried out by the machine, without any intervention of the human user)
+*Human-aided machine UNLization (the process is carried mainly by the machine, with some intervention of the human user, either as a pre-editor or as a post-editor, or during the UNLization itself, as in dialogue-based UNLization)
+*Machine-aided human UNLization (the process is carried mainly by the human user, with some help of the machine, as in the dictionary or memory lookup)
+*Fully human UNLization (the whole process is carried by the human user, without any intervention of the machine)
+
+== Tools ==
+For the time being, there are four UNLization tools, as described below:
+{|border=1 cellpadding=3 align=center
+!Tool
+!Unit
+!Paradigms
+!Recall
+!Precision
+!Level
+!Method
+!Licence
+!Author
+|-
+|[[IAN]]
+|sentence
+|LB,KB,EB,MB,DB
+|F,P
+|D,S
+|L,I
+|FA,HA
+|freeware
+|UNDLF
+|-
+|[[SEAN]]
+|word
+|LB,KB,EB,MB
+|P
+|D,S
+|L,I
+|FA
+|freeware
+|BA
+|-
+|[[UNL Editor]]
+|sentence
+|LB,MB
+|F,B
+|D,S
+|L,I
+|MA
+|freeware
+|UNDLF
+|-
+|[[EnCo]]
+|sentence
+|LB,KB
+|F
+|D
+|L,I
+|FA
+|shareware
+|UNLC
+|}
+
+== Challenges ==
+=== Lexical and syntactic ambiguity ===
+The UNL document does not contain the ambiguities of the original, and will only encode one of its possible semantic realisations, preferably the most frequent one:
+;The bank crashed.
+:UNL is not able to preserve the lexical ambiguity of the word "bank" in the sentence above. The UNL representation will necessarily choose between one of the possible concepts conveyed by the English word "bank".
+;The boy saw the girl with binoculars
+:UNL is not able to represent the syntactic ambiguity of the sentence above. The UNL representation will necessarily choose between one of the possible syntactic structures of the sentence.

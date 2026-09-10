@@ -1,0 +1,254 @@
+The X-bar theory was first proposed by Noam Chomsky (1970)<ref>Chomsky, Noam (1970). Remarks on nominalization. In: R. Jacobs and P. Rosenbaum (eds.) ''Reading in English Transformational Grammar'', 184-221. Waltham: Ginn.</ref>. It postulates that all human languages share certain structural similarities, including the same underlying syntactic structure, which is known as the "X-bar". The [[Default Grammar]] is based in a modified version of the X-bar approach, as indicated below.
+
+== Constituency grammars ==
+[[syntax|Constituency grammars]] are a method of sentence analysis that divides a sentence into major parts, which are in turn further divided into smaller parts in a process that continues until irreducible constituents are reached, i.e., until each constituent consists of only a word or a meaningful part of a word. The end result is presented in a visual diagrammatic form that reveals the hierarchical immediate constituent structure of the sentence at hand. For example:
+
+[[file:syntax4.png]]
+
+This tree illustrates the manner in which the entire sentence is divided first into two constituents (NP and VP, i.e., subject and predicate), which are further divided into immediate constituents (V, NP, A), and so on, until the smallest constituents (N, V, D, A) are reached.
+
+== X-bar ==
+The X-bar is a specific implementation of constituency grammars: it is a method of sentence analysis that divides the sentence into constituents, but it states some very specific rules for doing that:
+*the topmost node (S, in the diagram above) is called '''XP''' (X-phrase) and is considered to be the '''maximal projection''' of a head X. This means that the whole process must be understood bottom-up (from a head to its projections) instead of top-down. 
+*the "X" is actually a variable that must be replaced by any of the possible heads: noun (N), verb (V), adjective (J), adverb (A), etc. In that sense, there is no real XP, but NP's, VP's, JP's, etc. A VP (verbal phrase) is the maximal projection of a verb (V); a NP (noun phrase) is the maximal projection of a noun (N); and so on. The sentence above, for instance, can be considered to be the maximal projection of a V (''killed'') and, therefore, constitutes a VP (verbal phrase), instead of "S". The use of the "X" (and therefore "XP") comes from the fact that one of the claims of the theory is that all these phrases (NP, VP, JP, etc.) share the same underlying structure, i.e., a NP is a specific implementation of a general XP.
+*projections are always binary, i.e., the tree cannot bring more than two branches at a time. In the example above, for instance, there is a VP (''killed the man yesterday'') with three branches. This is not possible in X-bar. In order to avoid this, the head may have '''intermediate projections''' before the maximal projection. These intermediate projections are called '''XB''' (from X-bar), and again must be replaced by the specific categories of the head (NB is the intermediate projection of N, VB is the intermediate projection of V, etc.).
+*the maximal projection is "maximal", i.e., there can be one single maximal projection of the same head. If we simply replace "S" by "VP" in the example above, the VP would project a VP, which is not possible according to the X-bar. We have then to proliferate the intermediate projections (VB's in our case). One head can have as many intermediate projections as necessary, but it can have one single maximal projection.
+*there can be four different types of arguments inside the X-bar structure: the head, which projects the whole structure ("killed", in the example above); the complement (or comp), that complements the head ("the man"); the adjunct (or adjt), that modifies the head ("yesterday"); and the specifier (or spec), that determines the head ("they"). The head can have as many complements and adjuncts as necessary, but it can have one single specifier.
+*The intermediate projections (NB's, VB's, JB's, etc.) are actually combinations of the head with its complements and adjuncts, if any, where as the maximal projection (NP, VP, JP, etc.) is the combination of the head with its specifier, if any.
+*the complements, adjuncts and specifiers are themselves maximal projections (of different categories other than the head). For instance, the complement of "killed" is not simply a noun but a NP ("the man"), which is the maximal projection of the noun head ("man"). Likewise, the adjunct of "killed" is not the word "yesterday" but the AP ("yesterday"), which is the maximal projection of the adverbial head "yesterday". 
+If we provide all the changes indicated above to our previous tree, we get the X-bar representation of the sentence, which is the following:
+
+[[file:syntax5.png]]
+
+In the above:
+*"they" is a NP, i.e., a maximal projection of nominal head (the personal pronoun "they"). It plays the role of the specifier of the VP.
+*"killed" is the head of the VP, which is actually a projection of it. 
+*"the man" is a NP, i.e., a maximal projection of a nominal head (the noun "man"). It plays the role of the complement of the VP (and, therefore, constitutes a VB).
+*"the" is a DP, i.e., a maximal projection of a determiner head (the article "the"). It plays the role of the specifier of the NP, which is inside the VB.
+*"yesterday" is an AP, i.e., a maximal projection of an adverbial head (the adverb "yesterday"). It plays the role of the adjunct of the VP (and, therefore, constitutes a VB).
+*VP, NP, DP, AP are maximal projections
+*VB and NB are intermediate projections
+
+== X-bar Structure ==
+The X-bar abstract configuration is depicted in the diagram below:
+[[File:Xbar_structure.png|thumb|left|200px]]
+*X is the '''head''', the nucleus or the source of the whole syntactic structure, which is actually derived (or projected) out of it. The letter X is used to signify an arbitrary lexical category (part of speech). When analyzing a specific utterance, specific categories are assigned. Thus, the X may become an N for noun, a V for verb, an J for adjective, a P for preposition, etc. 
+*'''comp''' (i.e., complement) is an internal argument, i.e., a word, phrase or clause which is necessary to the head to complete its meaning (e.g., objects of transitive verbs)
+*'''adjt''' (i.e., adjunct) is a word, phrase or clause which modifies the head but which is not syntactically required by it  (adjuncts are expected to be extra-nuclear, i.e., removing an adjunct would leave a grammatically well-formed sentence)
+*'''spec''' (i.e., specifier) is an external argument, i.e., a word, phrase or clause which qualifies (determines) the head
+*'''XB''' (X-bar) is the general name for any of the intermediate projections derived from X 
+*'''XP''' (X-bar-bar, X-double-bar, X-phrase) is the maximal projection of X.
+<br style="clear: both" />
+
+== Core concepts ==
+The head, the complement, the specifier and the adjunct are said to be the constituents of the syntactic representation and define the four general universal syntactic roles. 
+=== Heads ===
+In the X-bar diagram depicted above, the letter X is used to signify an arbitrary category. Thus, the X may become an N for noun, a V for verb, and so on. In the [[Default Grammar]], there are eight different types of heads: 
+*N = nouns and nominals: personal pronouns, demonstrative pronouns, nominalizations, etc
+*V = verbs
+*J = adjectives
+*A = adverbs<ref>In the X-bar theory, differently from the UNLarium approach, adverbs are subsumed by prepositions and are not considered to be an independent lexical category.</ref>
+*P = prepositions
+*D = determiners: articles, demonstrative determiners, possessive determiners, quantifiers 
+*I = auxiliary verbs
+*C = conjunctions
+
+=== Specifiers ===
+Specifiers are used to narrow the meaning intended by the head. They include:
+*articles: '''the''' (book), '''a''' (book), etc.
+*possessive determiners: '''my''' (book), '''your''' (book), etc.
+*demonstrative determiners: '''this''' (book), '''that''' (book), etc.
+*quantifiers: '''no''' (answer), '''every''' (hour), etc.
+*intensifiers (emphasizers, amplifiers, downtoners): '''very''' (expensive), '''quite''' (well), '''nearly''' (under), etc.
+
+=== Complements ===
+Complements are used to complete the meaning intended by the head. They may be:
+*direct objects: (do) '''something''', (give) '''something'''
+*indirect objects: (laugh at) '''something''', (give to) '''someone'''
+*complement of deverbals (i.e., nouns deriving from verbs): (construction of) '''the city''', (arrival of) '''Peter'''
+*complement of adjectives: (loyal) '''to the queen''', (interested) '''in Chemistry'''
+*complement of adverbs: (contrarily) '''to popular belief''', (independently) '''from her'''
+*complement of prepositions: (under) '''the table''', (after) '''today'''
+*complement of conjunctions: (and) '''Peter''', (I don't know if) '''he'll come'''
+
+=== Adjuncts ===
+Adjuncts are used to modify the meaning intended by the head:
+*adjectives: '''beautiful''' (table)
+*adverbs: (speak) '''slowly'''
+*prepositional phrases: (table) '''of wood'''
+
+== Projections ==
+In the X-bar theory, the heads (X) project two different types of structures:
+*XB (x-bar) is the '''intermediate projection''', and is derived from the combination of the head or any of its intermediate projections with complements and adjuncts
+*XP (x-bar-bar, or x-phrase) is the '''maximal projection''', and is derived from the combination of the topmost intermediate projection and the specifier
+There can be as many intermediate projections as adjuncts and complements, but any head projects one single maximal projection, because it may have one single specifier.
+
+The heads define the nature of the intermediate and maximal projections, thus:
+*A head N projects NB's and a Noun Phrase (NP)
+*A head V projects VB's and a Verbal Phrase (VP)
+*A head J projects JB's and an Adjective Phrase (JP)
+*A head A projects AB's and an Adverbial Phrase (AP)
+*A head P projects PB's and a Prepositional Phrase (PP)
+*A head D projects DB's and a Determiner Phrase (DP)
+*A head I projects IB's and an Inflectional Phrase (IP)
+*A head C projects CB's and Complementizer Phrase (CP)
+
+== Phrase structures ==
+Specifiers, complements and adjuncts are themselves complex syntactic structures (i.e., maximal projections, or XP's) which are combined to form the sentence structure:
+{|border=1 cellpadding=2 align=center
+!rowspan=5|PHRASE
+!colspan=4|STRUCTURE
+|-
+!colspan=4|XP
+|-
+!rowspan=3|SPEC
+!colspan=3|XB
+|-
+!colspan=2|XB
+!rowspan=2|ADJT
+|-
+!HEAD
+!COMP
+|-
+!width=50|NP
+!width=50|DP
+!width=50|N
+!width=50|PP
+!width=50|JP,PP
+|-
+!VP
+!NP
+!V
+!NP,PP
+!PP,JP,AP
+|-
+!JP
+!AP
+!J
+!PP
+!AP,JP,PP
+|-
+!AP
+!AP
+!A
+!PP
+!PP,AP
+|-
+!PP
+!AP
+!P
+!NP,JP,VP
+!AP
+|-
+!DP
+!DP
+!D
+! -
+!AP
+|-
+!IP
+!NP
+!I
+!VP
+!AP
+|-
+!CP
+!AP
+!C
+!IP
+!AP
+|-
+|}
+=== Examples ===
+{|align=center
+|[[File:Tortoise.png|thumbnail|left|100px]]
+|[[File:Thetortoise.png|thumbnail|left|100px]]
+|[[File:Thebeautifultortoise.png|thumbnail|left|100px]]
+|[[File:Thebeautifultortoisewontherace.png|thumbnail|left|100px]]
+|}
+
+== Properties ==
+=== Branching is binary  ===
+A key assumption of X-bar theory is that branching is always binary, if it occurs. This means that there should be as many XB's as complements and adjuncts.  
+
+{|align=center 
+|+Possible configurations of a NP
+|-
+|[[File:NP1.png|thumbnail|100px]]
+|[[File:NP2.png|thumbnail|100px]]
+|}
+<br style="clear: both" />
+
+=== Order is parametrized  ===
+The order of the constituents (specifiers, complements and adjuncts) is subject to language specific parametrization and may vary:<br />
+[[File:Order.png|thumbnail|center|100px|]]
+<br style="clear: both" />
+
+== Conventions ==
+The following conventions have been adopted in the [[Default Grammar]]. They do not correspond to the current assumptions of the X-bar theory, and derive rather from extralinguistic issues (such as machine-tractability).
+
+=== Coordination ===
+[[File:Coordination.png|thumb|left|100px]]
+In the original X-bar approach, branching is always binary. In the Default Grammar, this is also true, except for coordination, where branching is ternary. In any case, the coordinated constituents always project a structure of the same category (two coordinate NP's project a NP, two coordinated NB's project a NB, and so on). In case of a coordination of more than two constituents, the coordination must be represented in separate steps (i.e., branching cannot be greater than 3).
+<br style="clear: both" />
+
+=== Surface and Deep Structures ===
+[[File:Surfaceanddeepstructures.png|thumb|left|100px]]
+The Default Grammar differentiates between the surface syntactic structure and the deep syntactic structure. The former preserves the order of the words in the sentence; the latter preserves the dependency relations. The deep structure is converted into the surface structure, and vice-versa, through the movement of the constituents. This may entail different configurations for the same sentence, depending on the type of the representation.
+<br style="clear: both" />
+
+=== Topmost levels ===
+[[File:XP.png|thumb|left|100px]]
+The Default Grammar adopts the following general configuration, where CP is the topmost category, IP is the complement of CP, and VP is the complement of IP.
+<br style="clear: both" />
+
+=== CP ===
+[[File:CP.png|thumb|left|100px]]
+CP is the maximal projection of a conjunction. It is also used to represent topicalization (i.e., movement of a constituent out of its original position to the beginning of the sentence).<br />
+Differently from the current X-bar approach, the Default Grammar considers a clause to be an instance of CP (instead of DP). However, CP is represented only in two cases:
+*When there is a subordinating conjunction, which will be the head of CP; and
+*In the surface structure, when there is any topicalization. In this case, the topicalized constituent is represented at the position of adjunct of CP (even if the head of CP is empty).
+CP is not represented when there is no subordinating conjunction or topicalized element. 
+<br style="clear: both" />
+=== IP ===
+IP is the maximal projection of an auxiliary verb. Differently from the current X-bar approach, only auxiliary verbs may occupy the position of the head of IP. IP is represented in the following cases:
+*When the sentence contains an auxiliary verb, which will be the head of IP; and
+*When there is a CP and the sentence is finite (i.e., it is inflected in tense, aspect or mood).
+IP is not represented when there is no CP nor auxiliary verb. 
+The subject of a sentence is represented at the position of the spec of IP whenever the sentence contains an auxiliary verb. If this is not the case, and the subject is not topicalized, the subject is always represented at the position of the spec of VP.
+<br style="clear: both" />
+
+=== VP ===
+VP is the maximal projection of a main verb or a copula (but not of an auxiliary verb). It may contain one single specifier (the subject of the clause) and as many adjuncts and complements as necessary. The position of the spec of VP is occupied only if there is no auxiliary verb (in this case the subject is represented as the spec of IP) or when the subject is not topicalized (in this case it is represented as the adjunct of CP). There is no structural difference between complements (either direct or indirect) or adjuncts. They are always represented as branches of the intermediate projection. Predicates are represented as complements of copula (linking) verbs.
+<br style="clear: both" />
+=== NP ===
+NP is the maximal projection of a noun. It may contain one single specifier (DP), and as many adjuncts and complements as necessary.
+<br style="clear: both" />
+=== JP ===
+JP is the maximal projection of an adjective. It may contain one single specifier (AP), and as many adjuncts and complements as necessary.
+<br style="clear: both" />
+=== AP ===
+AP is the maximal projection of an adverb. It may contain one single specifier (other AP), and as many adjuncts and complements as necessary.
+<br style="clear: both" />
+=== PP ===
+PP is the maximal projection of a preposition. It may contain one single specifier (AP), and as many adjuncts and complements as necessary.
+<br style="clear: both" />
+=== DP ===
+DP is the maximal projection of a determiner. It may contain one single specifier (other DP) and adjuncts. A DP may not contain complements.
+<br style="clear: both" />
+
+== Representation ==
+[[File:HDR.png|thumb|left|100px]]
+The X-bar may be represented in two different formats:
+*'''Projection-driven''', where all relations are represented in terms of intermediate and maximal projections (i.e., XB's and XP's)
+*'''Head-driven''', where all relations are represented by reference to the head (i.e., specifiers, complements and adjuncts)
+The projection-driven representation is used when the tree structure is important; the head-driven representation, when the network representation is required.<br />
+XP(XB(HEAD;COMP);ADJT);SPEC) = XS(HEAD;SPEC)XC(HEAD;COMP)XA(HEAD;ADJT)<br />
+<br style="clear: both" />
+
+== Further reading ==
+*[http://en.wikipedia.org/wiki/X-bar_theory Wikipedia]
+
+
+== Notes ==
+<references />

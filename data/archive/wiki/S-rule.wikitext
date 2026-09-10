@@ -1,0 +1,95 @@
+'''S-rule''' (syntactic/semantic rule) is a specific type of [[transformation rule]] used for dealing with [[syntactic relations]] and [[semantic relations]] in the UNL framework.
+
+== When to use S-rules ==
+S-rules are used for altering, replacing, creating and deleting non-linear relations.
+
+== When not to use S-rules ==
+S-rules are not used for for linear relations (such as affixation, string manipulation and list manipulation, which must be addressed by [[A-rule]]s, [[N-rule]]s and [[L-rule]]s, respectively).
+
+== Types of S-rules ==
+{{:Transformation over relations}}
+
+== Properties ==
+#S-rules always end in ";"
+#*rel("a");
+#*<strike>rel("a")</strike>
+#Relations are n-ary, i.e., they may have as many arguments as necessary, isolated by semicolon (";")
+#*rel("a"); (relation with one argument)
+#*rel("a";"b"); (relation with two arguments)
+#*rel("a";"b";"c"); (relation with three arguments)
+#*etc.
+#:Syntactic relations are not predefined, although we have been using a set of binary relations based on the [[syntactic relations|X-bar theory]].
+#:Semantic relations constitute a predefined and closed set that can be found [[Universal Relations|here]].
+#Inside each relation, nodes may be referenced by any of its elements, isolated by comma (,):
+#:VC(%a;%b) - syntactic relation between a node where index = %a and another node where index = %b
+#:agt("a",[a],<nowiki>[[a]]</nowiki>,A;"b",[b],<nowiki>[[b]]</nowiki>,B) - semantic relation between a node having the feature A where string = "a" AND headword <nowiki>[a]</nowiki> AND UW = <nowiki>[[a]]</nowiki> AND another node having the feature B where string = "b" AND headword = [b] AND UW = <nowiki>[[b]]</nowiki>
+#The arguments of a relation may be empty in case they are not affected by S-rules.
+#:rel(;):=rel2(;); (replace all relations rel by rel2, regardless of their arguments)
+#Relations may be conjoined through juxtaposition:
+#:agt(%x;%y)obj(%x;%z) - two semantic relations: one between (%x) and (%y) AND other between (%x) and (%z)
+#:<strike>VC([a];[b]),VC([a];[c])</strike> - conjoined relations must not be isolated by comma
+#Relations may be disjoined through {braces}
+#:{("a")|("b")}("c") - either ("a")("c") or ("b")("c")
+#:{agt(%x;%y)|exp(%x;%y)}obj(%x;%z) - either agt(%x;%y)obj(%x;%z) or exp(%x;%y)obj(%x;%z)
+#Order is not important between relations, but essential between arguments of the same relation
+#:rel1("b")rel2("c")rel3("d") = rel2("c")rel3("d")rel1("b") = rel3("d")rel2("c")rel1("b")
+#:rel1("a";"b"); '''&ne;''' rel1("b";"a");
+#Relations may be replaced by regular expressions
+#:/.{2,3}/(%x;%y) - any relation made of two or three characters between %x and %y
+#Arguments of relations may be expressed by [[A-rule]]s, but only in the right side of rules 
+#:rel("a"):=rel("an"); or rel("a"):=rel(0>"n");
+#S-rules do not affect nodes unless explicitly informed
+#:rel("a",[a],[[a]],A,%x;"b",[b],<nowiki>[[b]]</nowiki>,B,%y):=rel2(%x;%y); (the nodes %x and %y do not undergo any change)
+#:rel("a",[a],[[a]],A,%x;"b",[b],<nowiki>[[b]]</nowiki>,B,%y):=rel2(%x);  (the node %x does not undergo any change; the node %y is deleted)
+#:rel("a",[a],[[a]],A,%x;"b",[b],<nowiki>[[b]]</nowiki>,B,%y):=rel2(%x,-A;%y); (the feature A is removed from the node %x; all the rest, including the node %y, does not undergo any change)
+#"^" is used for negation
+#:rel1(%x;%y)^rel2(%y;%z):=+rel2(%y;%z); (if there is a rel1 between the nodes %x and %y and there is no relation rel2 between the nodes %y and %z, create a new relation rel2 between the nodes %y and %z)
+
+== Indexes ==
+See [[Indexation]]
+
+== Examples ==
+Examples of S-rules:
+*composition
+**VA("into account",PP); (add the PP "into account" as the adjunct of the verb)
+*subcategorization
+**VC(PH([in])); (the complement of the verb is a prepositional phrase headed by the preposition "in")
+*agreement
+**VS(ANUM,APER); (the specifier of the verb assigns number (ANUM) and person (APER) to its head
+*case marking
+**VS(NOM); (the specifier of the verb receives the case nominative (NOM)
+*distribution
+**VA(>>); (the adjunct of the verb comes at the right side of the verb after a blank space)
+*adjacency
+**VA(AJ2); (the adjunct of the verb integrates the second projection of the head)
+*periphrasis
+**VH(%vh,FUT):=+IC([will];%vh,+INF);
+*projection
+**VS(%head;%spec)VB(%head;%comp):=VP(VB(%head;%comp);%spec); (integrate the two relations on the left side into a single relation)
+*mapping
+**agt(%source;%target):=VS(%source;%target); (the agent relation is mapped into a VS relation)
+
+== Formal Syntax ==
+S-rules comply with the following formal syntax: 
+
+ <<nowiki>S-RULE</nowiki>>                ::= <CONDITION> ":=" (<RELATION>)+";"
+ <CONDITION>             ::= <TAG>(","<TAG>)* | (<RELATION>)*
+ <RELATION>              ::= <SYNTACTIC RELATION> | <SEMANTIC RELATION>
+ <SEMANTIC RELATION>     ::= <UNL RELATION> "(" <NODE> ";" <NODE> ")"
+ <SYNTACTIC RELATION>    ::= <NL RELATION> "(" (<NODE>";")? <NODE> ")"
+ <UNL RELATION>          ::= {one of the head-driven semantic relations defined in the [[Universal Relations|UNL Specs]]}  
+ <NL RELATION>           ::= {one of the head-driven syntactic relations defined in the [[Tagset|UNDLF Tagset]]} 
+ <NODE>                  ::= <FEATURE>(","<FEATURE>)* 
+ <FEATURE>               ::= <ID>|<TAG>|"""<STRING>"""|"["<STRING>"]"|<DIRECTION>|<SYNTACTIC RELATION>|<ACTION>
+ <ID>                    ::= "%"[a-zA-Z_0-9]+
+ <TAG>                   ::= {one of the tags defined in the [[Tagset|UNDLF Tagset]]}
+ <STRING>                ::= [a..Z]+
+ <DIRECTION>             ::= ">"|">>"|"<"|"<<"
+ <ACTION>                ::= <PREFIXATION> | <SUFFIXATION> | <INFIXATION> | <REPLACEMENT> (cf. [[A-rule]])
+where<br />
+<a> = a is a non-terminal symbol<br />
+"a" = a is a constant<br />
+a | b = a or b<br />
+(a)? = a can be repeated 0 or one time<br />
+(a)* = a can be repeated 0 or more times<br />
+(a)+ = a can be repeated 1 or more times<br />

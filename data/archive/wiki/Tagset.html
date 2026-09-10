@@ -1,0 +1,581 @@
+<div class="mw-content-ltr mw-parser-output" lang="en" dir="ltr"><p>The set of features in a UNL-driven dictionary depends on the structure of the natural language and may vary a lot. However, in order to better standardize lexical resources inside the UNL framework, the UNDL Foundation recommends the adoption of the following tags for some specific and pervasive grammatical phenomena. Several of those linguistic constants have been already proposed to the <b>Data Category Registry</b> (ISO 12620), and represent widely accepted linguistic concepts. Our main intention here is just to provide a harmonized system to be shared by the UNL community so as to make dictionaries as easily understandable and exchangeable as possible.
+</p>
+<div class="mw-heading mw-heading2"><h2 id="When_to_use_the_UNDLF_Tagset">When to use the UNDLF Tagset</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Tagset&amp;veaction=edit&amp;section=1" title="Edit section: When to use the UNDLF Tagset" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Tagset&amp;action=edit&amp;section=1" title="Edit section&#39;s source code: When to use the UNDLF Tagset">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>The UNDLF Tagset is required for providing lexical resources (dictionary entries and grammar rules) in the <a rel="nofollow" class="external text" href="http://www.undlfoundation.org/unlarium">UNLarium</a> framework. Indeed, the whole environment has been already prepared to accept only the tags here presented. In most cases, the use of tags is rather unnoticeable and effortless, since users are supposed to make higher-level choices ("adjective", for instance) which will be internally represented through the corresponding authorized labels ("ADJ"). However, in several circumstances, as when creating inflectional paradigms or subcategorization frames, users are expected to address more fine-grained linguistic phenomena that may require a specialized metalanguage. That's exactly the purpose of this tagset: to provide the technical means for describing any linguistic behaviour. And it should do that in a strongly standardised way, i.e., so that others could easily understand and exploit the data for their own benefit.
+</p>
+<div class="mw-heading mw-heading2"><h2 id="General_Guidelines">General Guidelines</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Tagset&amp;veaction=edit&amp;section=2" title="Edit section: General Guidelines" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Tagset&amp;action=edit&amp;section=2" title="Edit section&#39;s source code: General Guidelines">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>In order to define the tags to be used in the UNDLF Tagset, the following premises were adopted:
+</p>
+<ul><li>Tags should be as comprehensive as possible (i.e., they should cover all widely accepted linguistic concepts)</li>
+<li>Tags should be as few as possible (i.e., they should avoid redundancy)</li>
+<li>Tags should be as short as possible (i.e., they should fit in a three-character string)</li>
+<li>Tags should be as mnemonic as possible (i.e., they should be provided through English acronyms or abbreviations)</li>
+<li>Tags should constitute a taxonomic hierarchy (so that upper level values could be inferred from the lower ones).</li></ul>
+<p>Additionally, the following conventions were adopted:
+</p>
+<ul><li>Tags are written in upper case letters;</li>
+<li>Negation is represented by prefixation with "N-" (past = PAS, nonpast = NPAS).</li></ul>
+<p>We have tried to stick to the standard abbreviations proposed by the <a rel="nofollow" class="external text" href="http://www.eva.mpg.de/lingua/resources/glossing-rules.php">Leipzig Glossing Rules</a> and by David Crystal in <i>A dictionary of Linguistics and Phonetics</i> (2008), as much as they comply with the rules above. The resulting set of tags, which is still subject to additions and revisions, is presented below. For the time being, the definitions and examples have been extracted out of the <i>Glossary of Linguistic Terms</i> (Loos et alii), available at <a rel="nofollow" class="external text" href="http://www.sil.org/linguistics/GlossaryOfLinguisticTerms/">SIL International</a>. The tags are expected to migrate to an on-line environment, still under construction, where accredited linguists will have the opportunity to enhance and to improve this repertoire.
+</p>
+<div class="mw-heading mw-heading2"><h2 id="Tree_of_attributes_and_values">Tree of attributes and values</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Tagset&amp;veaction=edit&amp;section=3" title="Edit section: Tree of attributes and values" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Tagset&amp;action=edit&amp;section=3" title="Edit section&#39;s source code: Tree of attributes and values">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>The hierarchy of tags is depicted in the tree below. The topmost level represents the attributes of which the tags are a value. Lower positions subsume upper levels (for instance: progressive is a value of continuative, which is a value of imperfective, which is a value of the attribute aspect), but are not mandatory, as they can be too specialized ("go" is just a verb, and not any of the subcategories of verb). In any case, natural language phenomena should be classified as deep as possible in the tagset structure ("un-" should be classified as a prefix, rather than as an affix).
+</p>
+<pre><a rel="nofollow" class="external text" href="http://www.unlweb.net.br/unlarium/dictionary/export_tagset.php">List of tags in alphabetical order</a>
+</pre>
+<p>{{#tree:id=tagset|openlevels=0|root=Tags|
+</p>
+<ul><li><a href="/wiki/index.php?title=Abstractness&amp;action=edit&amp;redlink=1" class="new" title="Abstractness (page does not exist)">abstractness</a> (ABN)
+<ul><li>abstract (ABT)</li>
+<li>concrete (CCT)</li></ul></li>
+<li><a href="/wiki/Adjacency" title="Adjacency">adjacency</a> (AJC)
+<ul><li>immediate (AJ0)</li>
+<li>nearest (AJ1)</li>
+<li>near (AJ2)</li>
+<li>distant (AJ3)</li>
+<li>most distant (AJ4)</li></ul></li>
+<li><a href="/wiki/Agreement" title="Agreement">agreement</a> (AGR)
+<ul><li>assigns case (ACAS)</li>
+<li>assigns gender (AGEN)</li>
+<li>assigns number (ANUM)</li>
+<li>assigns person (APER)</li>
+<li>assigns tense (ATNS)</li>
+<li>receives case (RCAS)</li>
+<li>receives gender (RGEN)</li>
+<li>receives number (RNUM)</li>
+<li>receives person (RPER)</li>
+<li>receives tense (RTNS)</li></ul></li>
+<li>alienability (ALY)
+<ul><li>alienable (ALI)</li>
+<li>unalienable (NALI)</li></ul></li>
+<li><a href="/wiki/index.php?title=Animacy&amp;action=edit&amp;redlink=1" class="new" title="Animacy (page does not exist)">animacy</a> (ANI)
+<ul><li>animate (ANM)</li>
+<li>inanimate (NANM)</li></ul></li>
+<li><a href="/wiki/Aspect" title="Aspect">aspect</a> (ASP)
+<ul><li>aorist (AOR)</li>
+<li>causative (CAU)</li>
+<li>perfective (PFV)</li>
+<li>imperfective (NPFV)
+<ul><li>continuative (CTN)
+<ul><li>progressive (PGS)</li></ul></li>
+<li>habitual (HAB)</li>
+<li>iterative (ITE)</li></ul></li>
+<li>perfect (PFC)
+<ul><li>experiential perfect aspect (EXP)</li>
+<li>perfect of persistent situation (PSS)</li>
+<li>perfect of recent past (PRP)</li>
+<li>perfect of result (RES)</li></ul></li>
+<li>prospective (PPT)</li>
+<li>inceptive (ICP)</li>
+<li>terminative (TER)</li></ul></li>
+<li>cardinality (CAR)
+<ul><li>one single referent (ONE)</li>
+<li>a pair of referents (TWO)</li>
+<li>three referents (TRE)</li>
+<li>countable (CTB)</li>
+<li>uncountable (NCTB)</li>
+<li>collective (COL)</li>
+<li>more than one referent (PLU)</li></ul></li>
+<li><a href="/wiki/Case" title="Case">case</a> (CAS)
+<ul><li>abessive (ABE)</li>
+<li>ablative (ABL)</li>
+<li>accusative (ACC)</li>
+<li>adessive (ADE)</li>
+<li>allative (ALL)</li>
+<li>absolutive (ABS)</li>
+<li>benefactive (BEN)</li>
+<li>comitative (CMT)</li>
+<li>construct state (CTS)</li>
+<li>dative (DAT)</li>
+<li>delative (DEL)</li>
+<li>elative (ELA)</li>
+<li>equative (EQU)</li>
+<li>ergative (ERG)</li>
+<li>essive (ESS)</li>
+<li>genitive (GNT)</li>
+<li>hortative (HOR)</li>
+<li>illative (ILL)</li>
+<li>inessive (INE)</li>
+<li>instrumental (INS)</li>
+<li>lative (LAT)</li>
+<li>locative (LOC)</li>
+<li>nominative (NOM)</li>
+<li>oblique (OBL)</li>
+<li>prolative (PLT)</li>
+<li>prepositional (PPL)</li>
+<li>partitive (PTT)</li>
+<li>superessive (SPE)</li>
+<li>terminative (TRM)</li>
+<li>translative (TLT)</li>
+<li>vocative (VOC)</li></ul></li>
+<li>defineteness (DFN)
+<ul><li>definite (DEF)</li>
+<li>generic (GNR)</li>
+<li>indefinite (NDEF)</li>
+<li>nonspecified (NSPC)</li>
+<li>specificied (SPC)</li></ul></li>
+<li><a href="/wiki/Degree" title="Degree">degree</a> (DEG)
+<ul><li>augmentative (AUG)</li>
+<li>comparative (CMP)</li>
+<li>diminutive (DIM)</li>
+<li>positive (PST)</li>
+<li>superlative (SUP)
+<ul><li>absolute superlative (SUPA)</li>
+<li>comparative superlative (SUPR)</li></ul></li></ul></li>
+<li><a href="/wiki/Distribution" title="Distribution">distribution</a> (DIS)
+<ul><li>after (AFT)</li>
+<li>before (BEF)</li>
+<li>end (END)</li>
+<li>free (FRE)</li>
+<li>front (FRT)</li>
+<li>immediately after (IAFT)</li>
+<li>immediately before (IBEF)</li>
+<li>middle (MID)</li></ul></li>
+<li><a href="/wiki/Information_structure" class="mw-redirect" title="Information structure">information structure</a> (IST)
+<ul><li>focus (FOC)</li>
+<li>rheme (RHE)</li>
+<li>theme (THE)</li></ul></li>
+<li><a href="/wiki/Gender" title="Gender">gender</a> (GEN)
+<ul><li>feminine (FEM)</li>
+<li>masculine (MCL)</li>
+<li>neuter (NEU)</li>
+<li>common (COM)</li>
+<li>variable (VAR)</li></ul></li>
+<li><a href="/wiki/Lexical_category" title="Lexical category">lexical category</a> (LEX)
+<ul><li><a href="/wiki/Adjective" title="Adjective">adjective</a> (J)</li>
+<li><a href="/wiki/Adposition" class="mw-redirect" title="Adposition">adposition</a> (P)</li>
+<li><a href="/wiki/Adverb" class="mw-redirect" title="Adverb">adverb</a> (A)</li>
+<li><a href="/wiki/Affix" title="Affix">affix</a> (F)</li>
+<li><a href="/wiki/Conjunction" title="Conjunction">conjunction</a> (C)</li>
+<li><a href="/wiki/Determiner" class="mw-redirect" title="Determiner">determiner</a> (D)</li>
+<li><a href="/wiki/Inflection" title="Inflection">inflection</a> (I)</li>
+<li><a href="/wiki/Noun" title="Noun">noun</a> (N)</li>
+<li><a href="/wiki/Numeral" title="Numeral">numeral</a> (U)</li>
+<li><a href="/wiki/Noun" title="Noun">proper noun</a> (E)</li>
+<li><a href="/wiki/Pronoun" class="mw-redirect" title="Pronoun">pronoun</a> (R)</li>
+<li><a href="/wiki/Verb" title="Verb">verb</a> (V)</li>
+<li>other (O)</li></ul></li>
+<li><a href="/wiki/Lexical_structure" title="Lexical structure">lexical structure</a> (LST)
+<ul><li>subword (SBW)</li>
+<li>simple word (WRD)
+<ul><li>abbreviation (ABB) and single-word contraction</li>
+<li>clitic (CLI)</li></ul></li>
+<li>multiword expression (MTW)
+<ul><li>acronym (ACR) and initialism</li>
+<li>multiple-word contraction (CTT) and blend</li></ul></li></ul></li>
+<li><a href="/wiki/Modality" title="Modality">modality</a> (MOD)
+<ul><li>realis (REA)</li>
+<li>irrealis (NREA)</li>
+<li>alethic (ALE)</li>
+<li>deontic (DEO)
+<ul><li>comissive (CMS)</li>
+<li>directive (DRT)</li>
+<li>volitive (VLT)</li></ul></li>
+<li>epistemic (EPI)
+<ul><li>evidentiality (EVI)</li>
+<li>judgment (JDG)</li></ul></li></ul></li>
+<li><a href="/wiki/Mood" title="Mood">mood</a> (MOO)
+<ul><li>none (non-finite verb forms) (VBL)
+<ul><li>gerund (GER)</li>
+<li>gerundive (GDV)</li>
+<li>infinitive (INF)</li>
+<li>participle (PTP)</li>
+<li>supine (SPN)</li></ul></li>
+<li>assumptive (AUM)</li>
+<li>causative (CAU)</li>
+<li>conditional (CON)</li>
+<li>declarative (DEC)</li>
+<li>deductive (DED)</li>
+<li>deliberative (DLB)</li>
+<li>dubitative (DUB)</li>
+<li>hypothetical (HYP)</li>
+<li>imperative (IMP)</li>
+<li>imprecative (IPC)</li>
+<li>indicative (IND)</li>
+<li>inferential (INFR)</li>
+<li>interrogative (INT)</li>
+<li>jussive (JUS)</li>
+<li>obligative (OBM)</li>
+<li>optative (OPT)</li>
+<li>permissive (PMS)</li>
+<li>potential (POT)</li>
+<li>precative (PCT)</li>
+<li>prohibitive (PHB)</li>
+<li>speculative (SPT)</li>
+<li>subjunctive (SUB)</li></ul></li>
+<li><a href="/wiki/Morphology" title="Morphology">morphology</a> (MOR)
+<ul><li>affix (AFF)
+<ul><li>inflectional affix (IAX)</li>
+<li>derivational affix (DAX)</li></ul></li>
+<li>base form (BF)
+<ul><li>root (ROO)</li>
+<li>stem (STE)</li></ul></li>
+<li>word form (WFO)</li>
+<li>alternative form (ALT)
+<ul><li>alternative form 1 (ALT1)</li>
+<li>alternative form 2 (ALT2)</li>
+<li>alternative form 3 (ALT3)</li>
+<li>short or weak form (SHO)</li>
+<li>long or strong form (STR)</li></ul></li></ul></li>
+<li><a href="/wiki/Number" title="Number">number</a> (NUM)
+<ul><li>singular (SNG)
+<ul><li>singulare tantum (SNGT)</li></ul></li>
+<li>plural (PLR)
+<ul><li>dual (DUA)</li>
+<li>trial (TRI)</li>
+<li>quadrual (QDR)</li>
+<li>paucal (PAU)</li>
+<li>multal (MUL)</li>
+<li>plurale tantum (PLRT)</li></ul></li>
+<li>invariant (INV)</li></ul></li>
+<li><a href="/wiki/Part_of_speech" title="Part of speech">part of speech</a> (POS)
+<ul><li><a href="/wiki/Adjective" title="Adjective">adjectives</a> (J)
+<ul><li>adjective (ADJ)</li>
+<li>participle (PTL)</li></ul></li>
+<li><a href="/wiki/Adposition" class="mw-redirect" title="Adposition">adposition</a> (P)
+<ul><li>circumposition (CIR)</li>
+<li>postposition (PPS)</li>
+<li>preposition (PRE)</li></ul></li>
+<li><a href="/wiki/Adverb" class="mw-redirect" title="Adverb">adverb</a> (A)
+<ul><li>specifier adverb (SAV)</li>
+<li>adjunct adverb (AAV)</li>
+<li>conjunct (CJT)</li>
+<li>disjunct (DJT)</li></ul></li>
+<li><a href="/wiki/Affix" title="Affix">affix</a> (F)
+<ul><li>circumfix (CCX)</li>
+<li>infix (IFX)</li>
+<li>prefix (PFX)</li>
+<li>suffix (SFX)</li></ul></li>
+<li><a href="/wiki/Conjunction" title="Conjunction">conjunction</a> (C)
+<ul><li>coordinating conjunction (COO)
+<ul><li>correlative conjunction (CRC)</li></ul></li>
+<li>subordinating conjunction (SCJ)
+<ul><li>adverbializer (AVR)</li>
+<li>complementizer (CMR)</li>
+<li>relativizer (RVZ)</li></ul></li></ul></li>
+<li><a href="/wiki/Determiner" class="mw-redirect" title="Determiner">determiner</a> (D)
+<ul><li>article (ART)</li>
+<li>demonstrative determiner (DEM)</li>
+<li>possessive determiner (POD)</li>
+<li>quantifier (QUA)</li></ul></li>
+<li>inflection (I)
+<ul><li>auxiliary verb (AUX)
+<ul><li>modal verb (MOV)</li></ul></li></ul></li>
+<li><a href="/wiki/Noun" title="Noun">noun</a> (N)
+<ul><li>common noun (NOU)</li></ul></li>
+<li><a href="/wiki/Noun" title="Noun">proper noun</a> (E)
+<ul><li>proper noun (PPN)</li></ul></li>
+<li><a href="/wiki/Numeral" title="Numeral">numeral</a> (U)
+<ul><li>DIGIT (digits)
+<ul><li>DOZEN (used to deal with dozens)</li>
+<li>HUNDRED (used to deal with hundreds)</li></ul></li>
+<li>cardinal numeral (CDN)</li>
+<li>distributive numeral (DTN)</li>
+<li>partitive numeral (PTN)</li>
+<li>multiplicative numeral (MLN)</li>
+<li>ordinal numeral (ORD)</li></ul></li>
+<li><a href="/wiki/Pronoun" class="mw-redirect" title="Pronoun">pronoun</a> (R)
+<ul><li>demonstrative pronoun (DEP)</li>
+<li>dummy pronoun (DUM)</li>
+<li>emphatic pronoun (EPR)</li>
+<li>indefinite pronoun (NPR)</li>
+<li>interrogative pronoun (IPR)</li>
+<li>personal pronoun (PPR)</li>
+<li>possessive pronoun (SPR)</li>
+<li>reciprocal pronoun (CPR)</li>
+<li>reflexive pronoun (FPR)</li>
+<li>relative pronoun (RPR)</li></ul></li>
+<li><a href="/wiki/Verb" title="Verb">verb</a> (V)
+<ul><li>full verb (VER)</li>
+<li>copula (COP)</li></ul></li>
+<li>other (O)
+<ul><li>classifier (CLA)</li>
+<li>interjection (ITJ)</li>
+<li>particle (PTC)</li>
+<li>punctuation (PUT)
+<ul><li>blank (BLK)</li>
+<li>' (APOSTROPHE)</li>
+<li>- (HYPHEN)</li>
+<li>! (EMARK)</li>
+<li>" (QUOTE)</li>
+<li># (HASH)</li>
+<li>$ (DOLLAR)</li>
+<li>% (PERCENTAGE)</li>
+<li>&amp; (AMPERSAND)</li>
+<li>( (OPARENTHESIS)</li>
+<li>) (CPARENTHESIS)</li>
+<li>* (ASTERISK)</li>
+<li>, (COMMA)</li>
+<li>. (PERIOD)</li>
+<li>/ (FSLASH)</li>
+<li>: (COLON)</li>
+<li>; (SEMICOLON)</li>
+<li>? (QMARK)</li>
+<li>[ (OSBRACKET)</li>
+<li>\ (BSLASH)</li>
+<li>] (CSBRACKET)</li>
+<li>{ (OCBRACE)</li>
+<li>} (CCBRACE)</li>
+<li>€ (EURO)</li>
+<li>+ (PLUS)</li>
+<li>&lt; (LTHAN)</li>
+<li>= (EQUAL)</li>
+<li>&gt; (GTHAN)</li></ul></li></ul></li></ul></li>
+<li><a href="/wiki/Person" title="Person">person</a> (PER)
+<ul><li>impersonal (NPER)</li>
+<li>first person (1PER)
+<ul><li>first person singular (1PS)</li>
+<li>first person plural (1PP)
+<ul><li>123PP (me, you and others)</li>
+<li>13PP (me and others)</li></ul></li></ul></li>
+<li>second person (2PER)
+<ul><li>second person singular (2PS)</li>
+<li>second person plural (2PP)</li></ul></li>
+<li>third person (3PER)
+<ul><li>third person singular (3PS)</li>
+<li>third person plural (3PP)</li></ul></li></ul></li>
+<li><a href="/wiki/Polarity" title="Polarity">polarity</a> (POL)
+<ul><li>affirmative (AFM)</li>
+<li>negative (NEG)</li></ul></li>
+<li><a href="/wiki/Register" title="Register">register</a> (REG)
+<ul><li>archaism (ARC)</li>
+<li>colloquialism (CLQ)</li>
+<li>dialect (DIA)</li>
+<li>jargon (JGN)</li>
+<li>literary (LIT)</li>
+<li>pejorative (PEJ)</li>
+<li>slang (SLG)</li>
+<li>taboo (TAB)</li></ul></li>
+<li><a href="/wiki/Social_deixis" title="Social deixis">social deixis</a> (SOD)
+<ul><li>solidarity (SOL)
+<ul><li>familiar (FAM)</li>
+<li>intimate (ITM)</li>
+<li>polite (PLN)</li></ul></li>
+<li>status (STS)
+<ul><li>equivalent (EVL)</li>
+<li>inferior (IFS)</li>
+<li>reverential (REV)</li>
+<li>superior (SPS)</li></ul></li></ul></li>
+<li><a href="/wiki/Syntactic_roles" class="mw-redirect" title="Syntactic roles">syntactic roles</a> (SYN)
+<ul><li>adjunct (XA)
+<ul><li>adjunct to the head of an adjective phrase (JA)</li>
+<li>adjunct to the head of an adverbial phrase (AA)</li>
+<li>adjunct to the head of a complementizer phrase (CA)</li>
+<li>adjunct to the head of a determiner phrase (DA)</li>
+<li>adjunct to the head of an inflectional phrase (IA)</li>
+<li>adjunct to the head of a nominal phrase (NA)</li>
+<li>adjunct to the head of a prepositional phrase (PA)</li>
+<li>adjunct to the head of a verbal phrase (VA)</li></ul></li>
+<li>complement (XC)
+<ul><li>complement of the head of an adjective phrase (JC)</li>
+<li>complement of the head of an adverbial phrase (AC)</li>
+<li>complement of the head of a complementizer phrase (CC)</li>
+<li>complement of the head of a determiner phrase (DC)</li>
+<li>complement of the head of an inflectional phrase (IC)</li>
+<li>complement of the head of a nominal phrase (NC)</li>
+<li>complement of the head of a prepositional phrase (PC)</li>
+<li>complement of the head of a verbal phrase (VC)</li></ul></li>
+<li>head (XH)
+<ul><li>head of an adverbial phrase (AH)</li>
+<li>head of an adjective phrase (JH)</li>
+<li>head of a complementizer phrase (CH)</li>
+<li>head of a determiner phrase (DH)</li>
+<li>head of an inflectional phrase (IH)</li>
+<li>head of a nominal phrase (NH)</li>
+<li>head of a prepositional phrase (PH)</li>
+<li>head of a verbal phrase (VH)</li></ul></li>
+<li>specifier (XS)
+<ul><li>specifier of the head of an adjective phrase(JS)</li>
+<li>specifier of the head of an adverbial phrase (AS)</li>
+<li>specifier of the head of a complementizer phrase (CS)</li>
+<li>specifier of the head of a determiner phrase(DS)</li>
+<li>specifier of the head of an inflectional phrase (IS)</li>
+<li>specifier of the head of a nominal phrase (NS)</li>
+<li>specifier of the head of a prepositional phrase (PS)</li>
+<li>specifier of the head of a verbal phrase (VS)</li></ul></li>
+<li>maximal projection (XP)
+<ul><li>adjective phrase (JP)</li>
+<li>adverbial phrase (AP)</li>
+<li>complementizer phrase (CP)</li>
+<li>determiner phrase (DP)</li>
+<li>inflectional phrase (IP)</li>
+<li>nominal phrase (NP)</li>
+<li>prepositional phrase (PP)</li>
+<li>verbal phrase (VP)</li></ul></li>
+<li>intermediate projection (XB)
+<ul><li>adverbial phrase (AB)</li>
+<li>adjective phrase (JB)</li>
+<li>complementizer phrase (CB)</li>
+<li>determiner phrase (DB)</li>
+<li>inflectional phrase (IB)</li>
+<li>nominal phrase (NB)</li>
+<li>prepositional phrase (PB)</li>
+<li>verbal phrase (VB)</li></ul></li>
+<li>trace (TRACE)</li></ul></li>
+<li><a href="/wiki/Tense" title="Tense">tense</a> (TNS)
+<ul><li>absolute tense (ATE)
+<ul><li>past (PAS)</li>
+<li>present (PRS)
+<ul><li>preterit (PTR)</li>
+<li>hesternal past tense (HEP)</li>
+<li>prehesternal past tense (PEP)</li>
+<li>hodiernal past tense (HOP)</li>
+<li>prehodiernal past tense (POP)</li>
+<li>immediate past tense (IPT)</li>
+<li>nonrecent past tense (NRCP)</li>
+<li>recent past tense (RCP)</li>
+<li>nonremote past tense (NRMP)</li>
+<li>remote past tense (RMP)</li></ul></li>
+<li>future (FUT)
+<ul><li>near future (FUN)</li>
+<li>remote future (FUR)</li></ul></li>
+<li>nonpast (NPAS)</li>
+<li>nonfuture (NFUT)</li>
+<li>still (STL)</li>
+<li>not-yet (NYET)</li></ul></li>
+<li>relative tense (RTE)
+<ul><li>relative past (RPT)</li>
+<li>relative nonpast (NRPT)</li>
+<li>relative present (RPS)</li>
+<li>relative future (RFT)</li>
+<li>relative nonfuture (NRFT)</li></ul></li></ul></li>
+<li><a href="/wiki/Transitivity" title="Transitivity">transitivity</a> (TRA)
+<ul><li>no transitivity (NTRA) (linking verb)</li>
+<li>transitive (TST)
+<ul><li>direct transitive (TSTD)</li>
+<li>indirect transitive (TSTI)</li>
+<li>ditransitive (TST2)</li>
+<li>tritransitive (TST3)</li></ul></li>
+<li>intransitive (NTST)
+<ul><li>unergative (NERG)</li>
+<li>unaccusative (NACC)</li></ul></li></ul></li>
+<li><a href="/wiki/Universal_Attribute" class="mw-redirect" title="Universal Attribute">Universal Attributes</a> (att)
+<ul><li>animacy attributes (ANIA)</li>
+<li>aspect attributes (ASPA)</li>
+<li>degree attributes (DEGA)</li>
+<li>emotion attributes (FEEL)</li>
+<li>figure of speech attributes (FIGA)</li>
+<li>gender attributes (GENA)</li>
+<li>information structure attributes (ISTA)</li>
+<li>lexical attributes (LEXA)</li>
+<li>manner attributes (HOW)</li>
+<li>modality attributes (MODA)</li>
+<li>person attributes (PERA)</li>
+<li>polarity attributes (POLA)</li>
+<li>place attributes (WHERE)</li>
+<li>quantification attributes (QUAA)</li>
+<li>register attributes (REGA)</li>
+<li>social deixis attributes (SODA)</li>
+<li>specification attributes (WHICH)</li>
+<li>syntactic structures (SYNA)</li>
+<li>time attributes (WHEN)</li>
+<li>voice attribute (VOIA)</li></ul></li>
+<li><a href="/wiki/Universal_Relations" title="Universal Relations">Universal Relations</a> (rel)</li>
+<li><a href="/wiki/Universal_Words" title="Universal Words">Universal Words</a> (SEM)
+<ul><li>Adjective concepts
+<ul><li>age (AGE)</li>
+<li>colour (COR)</li>
+<li>dimension (DMS)</li>
+<li>human propensity (HPP)</li>
+<li>physical property (PHY)</li>
+<li>speed (SPD)</li>
+<li>value (VLE)</li>
+<li>other adjectives (JJJ)</li></ul></li>
+<li>Adverbial concepts
+<ul><li>degree (DGR)</li>
+<li>manner (MAN)</li>
+<li>place (PLE)</li>
+<li>time (TME)</li>
+<li>other adverbs (AAA)</li></ul></li>
+<li>Nominal concepts
+<ul><li>act or action (ACT)</li>
+<li>animal (ANL)</li>
+<li>artifact (ARF) (man-made objects)</li>
+<li>attribute (ATR) (of people and objects)</li>
+<li>body part (BON)</li>
+<li>cognitive processes and contents (CGN)</li>
+<li>communicative processes and contents (CMN)</li>
+<li>feelings and emotions (FEE)</li>
+<li>foods and drinks (FOO)</li>
+<li>groupings of people or objects (GRO)</li>
+<li>location (LCT) (spatial position)</li>
+<li>motive (MTV) (goals)</li>
+<li>natural events (NEV)</li>
+<li>natural objects (NOB) (non man-made objects)</li>
+<li>natural phenomena (PHE)</li>
+<li>plant (PLA)</li>
+<li>possession or transfer of possession (PON)</li>
+<li>natural process (NAT)</li>
+<li>person (HUM)</li>
+<li>quantities and units of measure (QTT)</li>
+<li>relations between people or things or ideas (REL)</li>
+<li>substance (SBS)</li>
+<li>shape (SHA) (two or three-dimensional shapes)</li>
+<li>state (STA) (stable states of affairs)</li>
+<li>time and temporal relations (TIM)</li></ul></li>
+<li>Verbal concepts
+<ul><li>body action (BOV)</li>
+<li>cognitive verb (CGV)</li>
+<li>change (CHA)</li>
+<li>communication verb (CMV)</li>
+<li>competition (CPT)</li>
+<li>creation (CRE)</li>
+<li>consumption (CSM)</li>
+<li>contact (CTC)</li>
+<li>emotion (EMO)</li>
+<li>motion (MOT)</li>
+<li>perception (PCP)</li>
+<li>possession verb (POV)</li>
+<li>social (SOC)</li>
+<li>stative (STT)</li>
+<li>weather (WEA)</li></ul></li></ul></li>
+<li><a href="/wiki/Valency" title="Valency">valency</a> (VAL)
+<ul><li>avalent (VAL0)</li>
+<li>monovalent (VAL1)</li>
+<li>divalent (VAL2)</li>
+<li>trivalent (VAL3)</li>
+<li>tetravalent (VAL4)</li></ul></li>
+<li><a href="/wiki/Voice" title="Voice">voice</a> (VOI)
+<ul><li>active voice (ACV)</li>
+<li>middle voice (MIV)</li>
+<li>passive voice (PSV)</li></ul></li>
+<li>other
+<ul><li>System-defined values
+<ul><li>CHEAD (beginning of a scope)</li>
+<li>CTAIL (end of a scope)</li>
+<li>DIGIT (digits)</li>
+<li>SCOPE (scope)</li>
+<li>SHEAD (beginning of the sentence)</li>
+<li>STAIL (end of the sentence)</li>
+<li>TEMP (temporary entry - not found in the dictionary)</li></ul></li>
+<li>Grammar-related attributes
+<ul><li>FLX (inflectional rules)</li>
+<li>FRA (subcategorization frame)</li>
+<li>GOV (subcategorization rules)</li>
+<li>PAR (inflectional paradigm)</li>
+<li>SFR (semantic frame)</li></ul></li></ul></li></ul>
+<p>}}
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20260910084000
+Cache expiry: 86400
+Reduced expiry: false
+Complications: []
+CPU time usage: 0.019 seconds
+Real time usage: 0.019 seconds
+Preprocessor visited node count: 91/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/100
+Expensive parser function count: 0/100
+Unstrip recursion depth: 0/20
+Unstrip post‐expand size: 62/5000000 bytes
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    0.000      1 -total
+-->
+
+<!-- Saved in parser cache with key u965818192_SLvgQ-l8z2_:pcache:399:|#|:idhash:canonical and timestamp 20260910084000 and revision id 16739. Rendering was triggered because: diff-page
+ -->
+</div>

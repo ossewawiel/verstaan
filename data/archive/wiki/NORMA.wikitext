@@ -1,0 +1,14 @@
+NORMA is the UNL normalizer. It is expected to normalize knowledge bases, i.e., sets of statements expressed in the [[UNL KB]] format. The main goal of the system is to organize and consolidate raw knowledge bases.
+
+== Normalization ==
+Normalization is the process of:
+*suppressing redundancies (relations with the same source and target nodes);
+*suppressing tautologies (relations where the source node is the same as the target node);
+*suppressing contradictions (opposite relations between the same nodes, or the same relations between opposite nodes);
+*generalization (replacing a node by a hyper-node, or a relation by a hyper-relation);
+*specification (replacing a hyper-node by a node or a set of nodes, or a hyper-relation by a relation); 
+*merging relations (replacing two nodes by a single node); and 
+*dividing relations (replacing one node by two or more nodes).  
+
+== Development ==
+NORMA has been developed by the Library of Alexandria.

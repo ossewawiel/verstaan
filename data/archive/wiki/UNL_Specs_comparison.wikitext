@@ -1,0 +1,809 @@
+== Universal Relations ==
+The set of relations has been undergoing some changes throughout the history of UNL. The table below presents the list of relations according to the several [[Specs|UNL Specs]]. 
+&nbsp;
+
+<div align="center">
+{| border="1"
+|-
+! RELATION
+! DEFINITION
+! width="30" | 1996
+! width="30" | 1.0
+! width="30" | 1.5
+! width="30" | 2.0
+! width="30" | 1998
+! width="30" | 3.0
+! width="30" | 3.1
+! width="30" | 3.2
+! width="30" | 3.3
+! width="30" | 2005
+! width="30" | 2010
+|-
+| [[agt]]
+| agent
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" |
+| style="background: #4F81BD" | 
+|-
+| [[and]]
+| conjunction
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" |
+| style="background: #4F81BD" | 
+|-
+| [[ant]]
+| antonym
+| &nbsp;
+| &nbsp;
+| style="background: #4F81BD" | 
+| &nbsp;
+| &nbsp;
+| &nbsp;
+| &nbsp;
+| &nbsp;
+| &nbsp;
+| &nbsp;
+| style="background: #4F81BD" |
+|-
+| [[aoj]]
+| attributive object
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" |
+| style="background: #4F81BD" | 
+|-
+| [[bas]]
+| basis
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" |
+| <ref>Subsumed by per (measure).</ref>
+|-
+| [[ben]]
+| beneficiary
+| style="background: #4F81BD" | 
+| &nbsp;
+| &nbsp;
+| &nbsp;
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" |
+| style="background: #4F81BD" | 
+|-
+| [[cag]]
+| co-agent
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" |
+| <ref>Subsumed by ptn (partner).</ref>
+|-
+| [[cao]]
+| co-thing with attribute
+| &nbsp;
+| &nbsp;
+| &nbsp;
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" |
+| &nbsp;
+|-
+| [[cau]]
+| cause
+| style="background: #4F81BD" | 
+| &nbsp;
+| &nbsp;
+| &nbsp;
+| &nbsp;
+| &nbsp;
+| &nbsp;
+| &nbsp;
+| &nbsp;
+| &nbsp;
+| &nbsp;
+|-
+| [[cnt]]
+| content
+| &nbsp;
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+|-
+| [[cob]]
+| co-object
+| &nbsp;
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| &nbsp;
+|-
+| [[con]]
+| condition
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" |
+|-
+| [[coo]]
+| co-occurrence
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" |
+| <ref>Subsumed by dur (duration).</ref>
+|-
+| [[dur]]
+| duration
+| &nbsp;
+| &nbsp;
+| &nbsp;
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" |
+| style="background: #4F81BD" | 
+|-
+| [[equ]]
+| synonym
+| &nbsp;
+| &nbsp;
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" |
+| style="background: #4F81BD" | 
+|-
+| [[exp]]
+| experiencer
+| &nbsp;
+| style="background: #4F81BD" | 
+| &nbsp;
+| &nbsp;
+| &nbsp;
+| &nbsp;
+| &nbsp;
+| &nbsp;
+| &nbsp;
+| &nbsp;
+| style="background: #4F81BD" |
+|-
+| [[fld]]
+| semantic field
+| &nbsp;
+| &nbsp;
+| style="background: #4F81BD" | 
+| &nbsp;
+| &nbsp;
+| &nbsp;
+| &nbsp;
+| &nbsp;
+| &nbsp;
+| &nbsp;
+| style="background: #4F81BD" |
+|-
+| [[fmt]]
+| from-to
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" |
+| &nbsp;
+|-
+| [[frm]]
+| origin
+| &nbsp;
+| &nbsp;
+| &nbsp;
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| <ref>Subsumed by src (source).</ref>
+|-
+| [[gol]]
+| goal
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" |
+| style="background: #4F81BD" | 
+|-
+| [[icl]]
+| inclusion
+| &nbsp;
+| &nbsp;
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" |
+| style="background: #4F81BD" | 
+|-
+| [[ins]]
+| instrument
+| style="background: #4F81BD" | 
+| &nbsp;
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" |
+| style="background: #4F81BD" | 
+|-
+| [[iof]]
+| an instance of
+| &nbsp;
+| &nbsp;
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" |
+| style="background: #4F81BD" | 
+|-
+| [[lpl]]
+| logical place
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| &nbsp;
+| &nbsp;
+| &nbsp;
+| &nbsp;
+| &nbsp;
+| &nbsp;
+| &nbsp;
+| style="background: #4F81BD" |
+|-
+| [[man]]
+| manner
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" |
+|-
+| [[mat]]
+| material
+| style="background: #4F81BD" | 
+| &nbsp;
+| &nbsp;
+| &nbsp;
+| &nbsp;
+| &nbsp;
+| &nbsp;
+| &nbsp;
+| &nbsp;
+| &nbsp;
+| style="background: #4F81BD" |
+|-
+| [[met]]
+| method
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" |
+| <ref>Subsumed by ins (instrument).</ref>
+|-
+| [[mod]]
+| modifier
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" |
+| style="background: #4F81BD" | 
+|-
+| [[nam]]
+| name
+| &nbsp;
+| &nbsp;
+| &nbsp;
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" |
+| style="background: #4F81BD" | 
+|-
+| [[num]]
+| number
+| style="background: #4F81BD" | 
+| &nbsp;
+| &nbsp;
+| &nbsp;
+| &nbsp;
+| &nbsp;
+| &nbsp;
+| &nbsp;
+| &nbsp;
+| &nbsp;
+| &nbsp;
+|-
+| [[obj]]
+| object
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" |
+| style="background: #4F81BD" |  
+|-
+| [[opl]]
+| objective place
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+|-
+| [[or]]
+| disjunction
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+|-
+| [[per]]
+| unit to measure object
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+|-
+| [[plc]]
+| place
+| &nbsp;
+| &nbsp;
+| &nbsp;
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+|-
+| [[plf]]
+| initial place
+| &nbsp;
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+|-
+| [[plt]]
+| final place
+| &nbsp;
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+|-
+| [[pof]]
+| part-of
+| &nbsp;
+| style="background: #4F81BD" | 
+| &nbsp;
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+|-
+| [[pos]]
+| possessor
+| style="background: #4F81BD" | 
+| &nbsp;
+| &nbsp;
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+|-
+| [[ppl]]
+| physical place
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| &nbsp;
+| &nbsp;
+| &nbsp;
+| &nbsp;
+| &nbsp;
+| &nbsp;
+| &nbsp;
+| <ref>Replaced by plc (place).</ref>
+|-
+| [[ptn]]
+| partner
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" |
+|-
+| [[pur]]
+| purpose
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" |
+| style="background: #4F81BD" | 
+|-
+| [[qua]]
+| quantity
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" |
+| style="background: #4F81BD" | 
+|-
+| [[res]]
+| theme
+| &nbsp;
+| &nbsp;
+| &nbsp; 
+| &nbsp;
+| &nbsp; 
+| &nbsp; 
+| &nbsp; 
+| &nbsp; 
+| &nbsp; 
+| &nbsp;
+| style="background: #4F81BD" | 
+|-
+| [[rsn]]
+| reason
+| &nbsp;
+| &nbsp;
+| &nbsp;
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" |
+| style="background: #4F81BD" | 
+|-
+| [[scn]]
+| scene
+| &nbsp;
+| &nbsp;
+| &nbsp;
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" |
+| <ref>Replaced by lpl (logical place).</ref>
+|-
+| [[seq]]
+| sequential order
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" |
+| style="background: #4F81BD" | 
+|-
+| [[shd]]
+| sentence head
+| &nbsp;
+| &nbsp;
+| &nbsp;
+| &nbsp;
+| &nbsp;
+| &nbsp;
+| &nbsp;
+| &nbsp;
+| &nbsp;
+| style="background: #4F81BD" |
+| &nbsp; 
+|-
+| [[smd]]
+| not semantically related
+| &nbsp;
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| &nbsp;
+| &nbsp;
+| &nbsp;
+| &nbsp;
+| &nbsp;
+| &nbsp;
+| &nbsp;
+| &nbsp;
+|-
+| [[soj]]
+| stative object
+| style="background: #4F81BD" | 
+| &nbsp;
+| &nbsp;
+| &nbsp;
+| &nbsp;
+| &nbsp;
+| &nbsp;
+| &nbsp;
+| &nbsp;
+| &nbsp;
+| &nbsp;
+|-
+| [[src]]
+| source
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" |
+| style="background: #4F81BD" |  
+|-
+| [[tim]]
+| time
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+|-
+| [[tmf]]
+| time-from
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+|-
+| [[tmt]]
+| time-to
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+|-
+| [[to]]
+| destination
+| &nbsp;
+| &nbsp;
+| &nbsp;
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| <ref>Subsumed by gol (goal).</ref> 
+|-
+| [[via]]
+| intermediate place
+| &nbsp;
+| &nbsp;
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+| style="background: #4F81BD" | 
+|}
+</div>
+
+== Notes ==
+<references />

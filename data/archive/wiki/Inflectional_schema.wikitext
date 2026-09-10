@@ -1,0 +1,154 @@
+Inflectional schema are templates used to create [[inflectional paradigm]]s. It is a list of all possible inflections that a word may assume in a given language. For the purpose of this description, we consider "inflection" only the transformations that are applied over the [[base form]] through affixation (prefixation, suffixation and infixation). Composition, as in periphrastic constructions, are not included inside the inflectional paradigms and, therefore, should not be included inside the inflectional schema either.
+
+== Instructions ==
+#The inflectional schema applies only to inflectional categories (such as nouns and verbs, in English; or nouns, verbs and adjectives, in French). Invariant categories (such as adverbs and adjectives in English; or adverbs in French) are not included inside the inflectional schema.
+#The inflectional schema must include only simple forms generated through affixation (prefixation, suffixation and infixation), such as the simple present ("goes"), the simple past ("went"), the gerund ("going") and the past participle ("gone") in English. Complex forms, i.e., those forms involving auxiliaries and other supporting words, such as the future ("will go"), the present progressive ("is going") and the past perfect ("had gone") of English are not treated here.
+#The inflectional schema must be as comprehensive as possible, but must target only regular words. Regular English verbs, for instance, may have five different simple forms (infinitive, third person singular present indicative, past, gerund, past participle), which constitute the inflectional schema for verbs in English. Some irregular verbs, such as the verb "to be", have several more (first person singular present indicative, second person singular present indicative, etc.), but these forms will not be listed inside the inflectional schema, because this is not regular.
+== Examples ==
+=== Nouns ===
+Inflectional schema for nouns
+==== English ====
+English nouns may vary only in number ("book">"books", "city">"cities"). Gender variation (as in "actor">"actors","actress","actresses") is irregular and should not be represented inside the inflectional schema (although should be defined as an inflectional paradigm).
+SNG<br />
+PLR<br />
+==== French ====
+French nouns vary in number ("table">"tables", "livre">"livres"), or in number and gender ("sorcier">"sorciers","sorcière","sorcières"). As variation in gender is also common (although not frequent as in number), the inflectional schema for nouns in French do include both values.<br />
+MCL&SNG<br />
+MCL&PLR<br />
+FEM&SNG<br />
+FEM&PLR<br />
+==== Latin ====
+Latin nouns may vary in number and case ("rosa">"rosae","rosam","rosas","rosis",etc):
+SNG&NOM<br />
+SNG&VOC<br />
+SNG&ACC<br />
+SNG&GNT<br />
+SNG&DAT<br />
+SNG&ABL<br />
+PLR&NOM<br />
+PLR&VOC<br />
+PLR&ACC<br />
+PLR&GNT<br />
+PLR&DAT<br />
+PLR&ABL<br />
+=== Adjectives ===
+Inflectional schema for adjectives
+==== English ====
+Adjectives are invariant in English and, therefore, have no inflectional schema.
+==== French ====
+Adjectives in French vary in number and gender ("beau">"beaux","belle","belles").
+MCL&SNG<br />
+MCL&PLR<br />
+FEM&SNG<br />
+FEM&PLR<br />
+==== Latin ====
+Adjectives in Latin vary in number, gender and case ("bonus">"bona","bonum","boni","bonam","bonos",etc.)<BR />
+MCL&SNG&NOM<br />
+MCL&SNG&VOC<br />
+MCL&SNG&ACC<br />
+MCL&SNG&GNT<br />
+MCL&SNG&DAT<br />
+MCL&SNG&ABL<br />
+MCL&PLR&NOM<br />
+MCL&PLR&VOC<br />
+MCL&PLR&ACC<br />
+MCL&PLR&GNT<br />
+MCL&PLR&DAT<br />
+MCL&PLR&ABL<br />
+FEM&SNG&NOM<br />
+FEM&SNG&VOC<br />
+FEM&SNG&ACC<br />
+FEM&SNG&GNT<br />
+FEM&SNG&DAT<br />
+FEM&SNG&ABL<br />
+FEM&PLR&NOM<br />
+FEM&PLR&VOC<br />
+FEM&PLR&ACC<br />
+FEM&PLR&GNT<br />
+FEM&PLR&DAT<br />
+FEM&PLR&ABL<br />
+NEU&SNG&NOM<br />
+NEU&SNG&VOC<br />
+NEU&SNG&ACC<br />
+NEU&SNG&GNT<br />
+NEU&SNG&DAT<br />
+NEU&SNG&ABL<br />
+NEU&PLR&NOM<br />
+NEU&PLR&VOC<br />
+NEU&PLR&ACC<br />
+NEU&PLR&GNT<br />
+NEU&PLR&DAT<br />
+NEU&PLR&ABL<br />
+=== Verbs ===
+Inflectional schema for verbs
+==== English ====
+English verbs may have 5 different simple forms: infinitive, third person singular indicative, simple past, past participle and gerund.<br />
+INF<br />
+3PS&PRS&IND<br />
+PAS<br />
+PTP<br />
+GER<br />
+==== French ====
+French verbs may have several different simple forms:<br />
+;présent de l'indicatif
+1PS&PRS&IND<br />
+2PS&PRS&IND<br />
+3PS&PRS&IND<br />
+1PP&PRS&IND<br />
+2PP&PRS&IND<br />
+3PP&PRS&IND<br />
+;imparfait de l'indicatif
+1PS&PAS&NPFV&IND<br />
+2PS&PAS&NPFV&IND<br />
+3PS&PAS&NPFV&IND<br />
+1PP&PAS&NPFV&IND<br />
+2PP&PAS&NPFV&IND<br />
+3PP&PAS&NPFV&IND<br />
+;passé simple de l'indicatif
+1PS&PAS&PFV&IND<br />
+2PS&PAS&PFV&IND<br />
+3PS&PAS&PFV&IND<br />
+1PP&PAS&PFV&IND<br />
+2PP&PAS&PFV&IND<br />
+3PP&PAS&PFV&IND<br />
+;futur simple de l'indicatif
+1PS&FUT&IND<br />
+2PS&FUT&IND<br />
+3PS&FUT&IND<br />
+1PP&FUT&IND<br />
+2PP&FUT&IND<br />
+3PP&PRS&IND<br />
+;conditionnel présent
+1PS&PRS&CON<br />
+2PS&PRS&CON<br />
+3PS&PRS&CON<br />
+1PP&PRS&CON<br />
+2PP&PRS&CON<br />
+3PP&PRS&CON<br />
+;présent du subjonctif
+1PS&PRS&SUB<br />
+2PS&PRS&SUB<br />
+3PS&PRS&SUB<br />
+1PP&PRS&SUB<br />
+2PP&PRS&SUB<br />
+3PP&PRS&SUB<br />
+;imparfati du subjonctif
+1PS&PAS&NPFV&SUB<br />
+2PS&PAS&NPFV&SUB<br />
+3PS&PAS&NPFV&SUB<br />
+1PP&PAS&NPFV&SUB<br />
+2PP&PAS&NPFV&SUB<br />
+3PP&PAS&NPFV&SUB<br />
+;présent de l'impératif
+2PS&PRS&IMP<br />
+1PP&PRS&IMP<br />
+2PP&PRS&IMP<br />
+;participe passé
+PTP&PAS&MCL&SNG<br />
+PTP&PAS&MCL&PLR<br />
+PTP&PAS&FEM&SNG<br />
+PTP&pAS&FEM&PLR<br />
+;participe présent
+PTP&PRS<br />
+;infinitif
+INF<br />

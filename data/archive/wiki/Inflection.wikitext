@@ -1,0 +1,65 @@
+In grammar, '''inflection''' is the modification of a word to express different grammatical categories such as [[tense]], [[mood]], [[voice]], [[aspect]], [[person]], [[number]], [[gender]] and [[case]]. Conjugation is the inflection of verbs; declension is the inflection of nouns, adjectives and pronouns. Inflection is not to be confounded with [[#Inflection_or_Derivation?|Inflection or Derivation?]]. or [[#Inflection_or_Agglutination?|agglutination]].
+
+== Inflectional Paradigms and Inflectional Rules ==
+
+In the UNL<sup>arium</sup> framework, inflection is indicated by a set of transformations carried over the [[base form]]. This set of transformations can be represented by:
+*'''[[inflectional paradigms]]''', in case of regular behaviour (i.e., a set of transformations that is followed by several different words)
+*'''[[inflectional rules]]''', in case of irregular behaviour (i.e., a set of transformation that is followed by very few words); or
+*'''inflectional paradigms''' and '''inflectional rules''', in case of quasi-regular behaviour (i.e., when the word is mainly regular but has some inflectional particularities).
+
+The difference between inflectional paradigms and inflectional rules is mainly a question of frequency. If a rule is applicable to several different words, it should be defined as a general inflectional paradigm; if it is applicable to a single word or to a very limited number of cases, it should be defined as an inflectional rule inside the very entry.
+
+For instance, the plural of English nouns is considerably regular and can be treated, in most cases, by the general paradigm '''PLR:=0>"s";''' (= add an "s" to the end of the word). This paradigm may be associated to a wide range of English words (such as ''table'', ''book'', ''boy'', ''computer'', etc). However, there are several special cases (such as ''man''>''men'', ''child''>''children'', ''foot''>''feet'') that, being very limited, should be treated by inflectional rules instead of inflectional paradigms. The third case ("quasi-regular") is considerably rare in English, but may be found in French, for instance, where verbs such as ''acheter'' (= to buy) follows the conjugation of the second group in all cases but undergoes a small change in the root ("e" becomes "è") in some persons and tenses. To avoid the proliferation of paradigms, quasi-regular words are associated to general inflectional models, and only their corresponding exceptions are listed as inflectional rules.
+
+== Syntax ==
+Inflectional paradigms and inflectional rules are expressed by [[A-rule]]s, a special formalism for introducing prefixes, infixes and suffixes to the base form.
+
+== Inflections inside the dictionary ==
+The UNL<sup>arium</sup> framework brings two main dictionary formats:
+*'''Generative''', i.e., base forms and the corresponding lexical features and generation rules (to be used in natural language generation)
+*'''Enumerative''', i.e., word forms, with the corresponding lexical features (to be used in natural language analysis)
+A sample of each format of the English dictionary is presented below:
+;generative
+:[foot] {2883} "100284665" (POS=NOU,LST=WRD,NUM=SNG,PAR=M1,INFR=FLX(PLR:="feet";)) <eng,0,0>;
+;enumerative
+:[foot] {2883} "100284665" (POS=NOU,LST=WRD,NUM=SNG,PAR=M1) <eng,0,0>;
+:[feet] {2883} "100284665" (POS=NOU,LST=WRD,NUM=PLR,PAR=M1) <eng,0,0>;
+The enumerative dictionary includes all inflected forms as entries and, therefore, does not bring any inflectional rule except for the inflectional paradigm (PAR=M1). The generative dictionary, which brings only base forms as entries, includes the information on the inflectional paradigm and on inflectional rules.<br />
+Inflections are represented in the dictionary entry structure as follows:
+*Inflectional paradigms are informed as '''PAR=Mxx''', where "PAR" indicates "inflectional paradigm"; "M" is the fixed leading symbol for the paradigm; and "xx" is the number of the inflectional paradigm previously defined in the grammar.
+*Inflectional rules are informed as '''INFR=FLX(<A-RULE>)''' where INFR indicates "inflectional rule"; "FLX" is the fixed leading tag for the inflection rules set; and <A-RULE> is the affixation rule, or set of affixation rules, used to generate the inflections out of the base form. 
+=== Examples of dictionary entries with inflectional information ===
+[kill]{5987}"200355177"(FRA=Y38,LST=WRD,MOR=ROO,'''PAR=M16''',POS=VER,TRA=TST) <eng,70,80>; <br />
+[bring] {2345}"200767334"(FRA=Y38,LST=WRD,MOR=STE,PAR=M22,POS=VER,TRA=TST,'''INFR=FLX(PAS:="brought";PTP:="brought";)''')<eng,50,34>;<br />
+
+== Inflection or Agglutination? ==
+The difference between inflection and agglutination can be very controversial. In both cases, we add something (an affix, an adposition, a particle, another word, i.e., an "appendix") to the base form in order to specify its meaning. In the UNLarium framework, in order to avoid any ambiguity, the following is adopted:
+*There is '''inflection''' when the appendix provokes ANY changes to the base form; and
+*There is '''agglutination''' or '''concatenation''' when the appendix provokes NO changes to the base form.
+For instance: the genitive case is said to be inflectional in Latin ("campus">"campi") and concatenative (agglutinative) in English ("John">"John's") because, in the former case, the base form is changed (the ending "us" is replaced by "i"), whereas in the latter case the ending "'s" does not affect the base form ("John").<ref>Note that the changes must be related to the base form, and not the appendices. In English, for instance, the genitive marker can be either "'s" or "s" depending on the ending of the base form (John>John's, but Hans>Hans'). In this case, it's the base form that affects the appendix, not the opposite. And since the base form is not affected, the result is concatenation rather than inflection.</ref>
+
+Consider, for instance, the imaginary language A, where:
+*"ABCDE" is the base form;
+*"a","b","c","d" and "e" are appending forms (affixes, adpositions, particles, auxiliary words, etc.)
+Given the difference between inflection and agglutination stated above, the following applies:
+*appendix + altered base form = inflection (aBCDE, aFBCDE, aABDE, ...) 
+*appendix + base form = agglutination (aABCDE, aaABCDE, bABCDE, ...)
+*altered base form + appendix = inflection (ABCDa, ABCDFa, ABDEa, ...)
+*base form + appendix = agglutination (ABCDEa, ABCDEaa, ABCDEb, ...)
+*appendix + altered base form + appendix = inflection (aBCDEb, aBDEb, aABCDb, ...)
+*appendix + base form + appendix = agglutination (aABCDEb, aaABCDEb, bABCDEa, ...) 
+
+=== An example: gender ===
+Several languages use auxiliary words, adpositions and even affixes (prefixes or suffixes) to convey attributes that sometimes can be understood as "inflectional". Compare the cases below for the grammatical category of gender, which is normally referred to as inflectional:
+*Latin: magister (base form), magister (masculine), magistra (feminine)
+*English: teacher (base form), male teacher (masculine), female teacher (feminine)
+*Spanish: profesor (base form), profesor (masculine), profesora (feminine)
+Note that, in Latin, gender is clearly inflectional, because it involves a change in the base form ("magister">"magistra").<br />
+In English, the same gender attribute requires auxiliary words ("male" and "female"), but they do not affect the morphology of the base form ("teacher"). Therefore, this should be considered an agglutination, rather than an inflection, even if there would be no blank space in-between (i.e., "maleteacher" or "teachermale" would be still agglutinative).<br />
+In Spanish, gender is apparently formed by simply juxtaposing an "a" and, if so, it would be still agglutinative ("profesor">"profesora"), according to the principles above. However, we know that the morphology in Spanish is more complex than this, because "profesor", the base form which is also the masculine, actually contains already a masculine gender morpheme (the "zero" morpheme), which is replaced by "a" (i.e., "a" is not simply juxtaposed). In that sense, "profesor" is actually "profesor+&empty;", which is replaced by "profesor+a", as in Latin "magist+er">"magist+ra". Therefore, gender in Spanish must be considered an inflection. We can clearly see this if we consider, for instance, the opposition "maestro" (masculine) x "maestra" (feminine), which are also possible candidates for "teacher" in Spanish.<br />
+
+== Inflection or Derivation? ==
+Derivations create new words, whereas inflections do not: they are used only to specify the meaning intended by a given base form (to indicate that it is plural, or masculine, or happened in the past). In that sense, inflections must necessarily preserve the lexical category of the base form (i.e., inflections cannot change nouns into verbs, or verbs into adjectives, etc.: "national" is not an inflection of "nation", "nationalize" is not an inflection of "national", and "nationalization" is not an inflection of "nationalize"). Additionally, inflections cannot promote any changes that will modify (instead of only specifying) the meaning of the base form, such as negation ("undo" is not an inflection of "do") and iteration ("redo" is not an inflection of "do").
+
+== Notes ==
+<references />

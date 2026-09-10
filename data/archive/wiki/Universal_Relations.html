@@ -1,0 +1,510 @@
+<div class="mw-content-ltr mw-parser-output" lang="en" dir="ltr"><p><b>Universal Relations</b>, formerly known as "links", are labelled arcs connecting a node to another node in a UNL graph. They correspond to two-place semantic predicates holding between two <a href="/wiki/Universal_Words" title="Universal Words">Universal Words</a>. In UNL, universal relations have been normally used to represent semantic cases or thematic roles (such as agent, object, instrument, etc.) between UWs. The repertoire of universal relations is defined in the <a href="/wiki/Specs" title="Specs">UNL Specs</a> and it is not open to frequent additions.
+</p>
+<div id="toc" class="toc" role="navigation" aria-labelledby="mw-toc-heading"><input type="checkbox" role="button" id="toctogglecheckbox" class="toctogglecheckbox" style="display:none" /><div class="toctitle" lang="en" dir="ltr"><h2 id="mw-toc-heading">Contents</h2><span class="toctogglespan"><label class="toctogglelabel" for="toctogglecheckbox"></label></span></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Definition"><span class="tocnumber">1</span> <span class="toctext">Definition</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#Syntax"><span class="tocnumber">2</span> <span class="toctext">Syntax</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="#Hierarchy_of_relations"><span class="tocnumber">3</span> <span class="toctext">Hierarchy of relations</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="#Observations"><span class="tocnumber">4</span> <span class="toctext">Observations</span></a></li>
+<li class="toclevel-1 tocsection-5"><a href="#List_of_relations_in_alphabetical_order"><span class="tocnumber">5</span> <span class="toctext">List of relations in alphabetical order</span></a></li>
+<li class="toclevel-1 tocsection-6"><a href="#Notes"><span class="tocnumber">6</span> <span class="toctext">Notes</span></a></li>
+</ul>
+</div>
+
+<div class="mw-heading mw-heading2"><h2 id="Definition">Definition</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Universal_Relations&amp;veaction=edit&amp;section=1" title="Edit section: Definition" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Universal_Relations&amp;action=edit&amp;section=1" title="Edit section&#39;s source code: Definition">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>In the UNL framework, universal relations describe <b>semantic functions</b> between two UWs. These functions are binary and directed (from a source to a target) and are claimed to be universal. Because of their similarity in name and function to syntactic relations, it may seem that the labels used for relations are different names for special grammatical functions. This is emphatically not the case. The intention is that the labels used denote specific ideas rather than grammatical structures: the idea of “something that initiates an event,” or “agent” for example, is quite different from “grammatical subject of a sentence”, even though many times the subject of a sentence will indicate the agent of the event. The agent of an event may also appear as an adjective or noun modifier, with the preposition “by” or embedded in nouns with “er” suffixes. The whole point of the conceptual relations is to have a name for these very different grammatical structures which are conceptually quite the same. Thus, the conceptual relations used in UNL are much more abstract than the grammatical relations found in sentences.
+</p>
+<div class="mw-heading mw-heading2"><h2 id="Syntax">Syntax</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Universal_Relations&amp;veaction=edit&amp;section=2" title="Edit section: Syntax" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Universal_Relations&amp;action=edit&amp;section=2" title="Edit section&#39;s source code: Syntax">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>Universal relations are represented as follows: 
+</p>
+<pre>&lt;rel&gt;:&lt;scope&gt;(&lt;source&gt;,&lt;target&gt;)
+</pre>
+<p>where:
+</p>
+<ul><li>&lt;rel&gt; is the name of the relation (two-character or three-character lower-case strings) (see the complete list of relations below)</li>
+<li>&lt;scope&gt; is the scope of the relation (two-character unique identifier for the scope). The scope may be omitted if the main scope, i.e., :00. See <a href="/wiki/Scope" title="Scope">scope</a>.</li>
+<li>&lt;source&gt; is the UW that assigns the relation &lt;rel&gt;</li>
+<li>&lt;target&gt; is the UW that receives the relation &lt;rel&gt;.</li></ul>
+<div class="mw-heading mw-heading2"><h2 id="Hierarchy_of_relations">Hierarchy of relations</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Universal_Relations&amp;veaction=edit&amp;section=3" title="Edit section: Hierarchy of relations" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Universal_Relations&amp;action=edit&amp;section=3" title="Edit section&#39;s source code: Hierarchy of relations">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>Universal Relations are organized in a hierarchy where lower nodes subsume upper nodes. The topmost level is the relation "rel", which simply indicates that there is a semantic relation between two elements. 
+</p><p>{{#tree:id=relations|openlevels=2|root=rel|
+</p>
+<ul><li>agt (agent)</li>
+<li>and (conjunction)</li>
+<li>aoj (object of an attribute)
+<ul><li>ant (antonym, different from)</li>
+<li>equ (synonym, equal to)</li>
+<li>fld (field)</li>
+<li>icl (hyponym, a kind of)</li>
+<li>iof (example, instance of)</li>
+<li>pof (meronym, part of)</li></ul></li>
+<li>ben (beneficiary)</li>
+<li>cnt (content or theme)</li>
+<li>con (condition)</li>
+<li>exp (experiencer)</li>
+<li>mod (modifier)
+<ul><li>mat (material)</li>
+<li>nam (name)</li>
+<li>pos (possessor)</li>
+<li>qua (quantifier)</li></ul></li>
+<li>obj (patient)
+<ul><li>opl (objective place)</li>
+<li>res (result)</li></ul></li>
+<li>or (disjunction)</li>
+<li>per (proportion, rate, distribution or basis for a comparison)
+<ul><li>bas (basis for a comparison)</li></ul></li>
+<li>plc (location: physical or logical)
+<ul><li>gol (final place or state, destination)</li>
+<li>lpl (logical place, scene)</li>
+<li>src (initial place or state, origin)</li>
+<li>via (intermediate place, path)</li></ul></li>
+<li>ptn (partner)</li>
+<li>tim (time)
+<ul><li>tmf (initial time)</li>
+<li>tmt (final time)</li>
+<li>dur (duration)
+<ul><li>coo (co-occurrence)</li></ul></li></ul></li>
+<li>man (manner)
+<ul><li>ins (instrument or method)
+<ul><li>met (method)</li></ul></li>
+<li>pur (purpose)</li></ul></li>
+<li>rsn (reason)</li>
+<li>seq (consequence)</li></ul>
+<p>}}
+</p>
+<div class="mw-heading mw-heading2"><h2 id="Observations">Observations</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Universal_Relations&amp;veaction=edit&amp;section=4" title="Edit section: Observations" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Universal_Relations&amp;action=edit&amp;section=4" title="Edit section&#39;s source code: Observations">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<ol><li>Arguments of relations are not commutative:
+<dl><dd>cnt(evidence;absence),i.e., <i>evidence of absence</i>, is different from cnt(absence;evidence), i.e., <i>absence of evidence</i></dd></dl></li>
+<li>The target always defines the relation:<sup id="cite_ref-1" class="reference"><a href="#cite_note-1"><span class="cite-bracket">&#91;</span>1<span class="cite-bracket">&#93;</span></a></sup>
+<dl><dd>&lt;relation&gt;(&lt;source&gt;;&lt;target&gt;) =&gt; &lt;target&gt; is the &lt;relation&gt; of &lt;source&gt;
+<ul><li>agt(kill;Peter) = <i>Peter</i> is the <b>agent</b> of <i>kill</i></li>
+<li>obj(kill;Peter) = <i>Peter</i> is the <b>patient</b> of <i>kill</i></li>
+<li>tim(kill;yesterday) = <i>yesterday</i> is the <b>time</b> of <i>kill</i></li>
+<li>plc(kill;kicthen) = <i>kitchen</i> is the <b>place</b> of <i>kill</i></li>
+<li>mod(book;beautiful) = <i>beautiful</i> is a <b>modifier</b> of <i>book</i></li>
+<li>icl(document;book) = <i>book</i> is a <b>type</b> of <i>document</i></li>
+<li>iof(city;Paris) = <i>Paris</i> is an <b>instance</b> of <i>city</i></li>
+<li>agt:01(kill;Peter) = <i>Peter</i> is the <b>agent</b> of <i>kill</i> in the scope :01 (see <a href="/wiki/Scope" title="Scope">scope</a>).</li></ul></dd></dl></li>
+<li>Relations describe semantic dependencies rather than syntactic roles.
+<dl><dd>The same relation may play different syntactic roles. Consider, for instance, the case of the relation 'gol' (goal):
+<ul><li>Specifier: <i>Peter received the book</i> = gol(received;Peter)</li>
+<li>Complement: <i>Mary gave the book to Peter</i> = gol(gave;Peter)</li>
+<li>Adjunct: <i>Mary bought a book to Peter</i> = gol(bought;Peter)</li></ul></dd></dl></li>
+<li>Lexical and syntactic ambiguities are solved through relations.
+<dl><dd>Consider, for instance, the case of the English preposition "in", as in <i>Peter works in X</i>.
+<ul><li>plc(work;X) = X is the physical place where Peter works (as in <i>Peter works in Geneva</i>)</li>
+<li>lpl(work;X) = X is the logical place where Peter works (as in <i>Peter works in politics</i>)</li>
+<li>cnt(work;X) = X is the content of the work of Peter (as in <i>Peter works in improving a given technology</i>)</li>
+<li>tim(work;X) = X is the time when Peter works (as in <i>Peter works in the summer</i>)</li>
+<li>dur(work;X) = X is the duration of the work of Peter (as in <i>Peter works in ten hours</i>)</li>
+<li>man(work;X) = X is the manner Peter works (as in <i>Peter works in intervals</i>)</li></ul></dd></dl></li>
+<li>Relations are not necessarily bound to a given lexical category.
+<dl><dd>The same relation may be used to describe nominal and verbal structures:
+<ul><li>agt: <i>John arrived</i> = agt(arrived;John), <i>arrival of John</i> = agt(arrival;John)</li>
+<li>gol: <i>go to NY</i> = gol(go;NY), <i>train to NY</i> = gol(train;NY)</li>
+<li>cnt: <i>talk about John</i> = cnt(talk;John), <i>book about John</i> = cnt(book;John)</li></ul></dd></dl></li>
+<li>In most cases, lower relations may be completely replaced by the corresponding upper levels with the help of attributes:
+<ul><li><i>come from NY</i> = src(come;NY) = plc(come;NY.@from)</li>
+<li><i>go to NY</i> = gol(go;NY) = plc(go;NY.@to)</li>
+<li><i>go through Geneva</i> = via(go;Geneva) = plc(go;Geneva.@through)</li>
+<li><i>work since early</i> = tmf(work;early) = tim(work;early.@since)</li>
+<li><i>work until late</i> = tmt(work;late) = tim(work;late.@until)</li>
+<li><i>work during the summer</i> = dur(work;summer) = tim(work;summer.@during)</li>
+<li><i>kill with a knife</i> = ins(kill;knife) = man(kill;knife.@with)</li>
+<li>etc.</li></ul></li>
+<li>In several cases, however, relations are not completely interchangeable, and replacement implies a significant semantic loss. In these cases, upper levels must be used carefully, and only when there is no other alternative:
+<ul><li><i>John is Peter</i> = equ(Peter;John) &#8776;  aoj(Peter;John)</li>
+<li><i>Dogs are mammals</i> = icl(mammals;dogs) &#8776;  aoj(mammals;dogs)</li>
+<li><i>John is a human being</i> = iof(human being;John) &#8776;  aoj(human being;John)</li>
+<li><i>table of wood</i> = mat(table;wood) &#8776;  mod(table;wood)</li>
+<li><i>city of New York</i> = nam(city;New York) &#8776;  mod(city;New York)</li>
+<li><i>Peter's book</i> = pos(book;Peter) &#8776;  mod(book;Peter)</li></ul></li>
+<li>The use of relations depends on the internal semantic structure of the UW (see <a href="/wiki/Semantic_frame" title="Semantic frame">semantic frames</a>).
+<dl><dd>Consider, for instance, the verbs "to kill", "to love" and "to give":
+<ul><li>To kill: the subject is the agent of the action, and the object is the patient, in the sense it is transformed by the action. Therefore, the verb "to kill" assigns the relations "agt" (agent) to its subject and "obj" (patient) to its object.</li>
+<li>To love: the subject is not properly an agent, in the sense that it does not carry out the event; it is rather an experiencer. Additionally, the object is not a "patient", in the sense that it does not undergo any change; it is actually the content or theme of the event. Therefore: the verb "to love" assigns the relations "exp" (experiencer) to its subject and "cnt" (content) to its object.</li>
+<li>to give: the subject is the agent of the action, and the verb contains two objects: the object that is given and the recipient of this object. The object that is given normally does not undergo any change other than the position and, in this sense, is normally represented as "cnt" (content); the recipient is represented by the relation "gol" (goal).</li></ul></dd></dl></li></ol>
+<div class="mw-heading mw-heading2"><h2 id="List_of_relations_in_alphabetical_order">List of relations in alphabetical order</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Universal_Relations&amp;veaction=edit&amp;section=5" title="Edit section: List of relations in alphabetical order" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Universal_Relations&amp;action=edit&amp;section=5" title="Edit section&#39;s source code: List of relations in alphabetical order">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<table border="1" cellpadding="5">
+<tbody><tr>
+<th width="3%">Tag
+</th>
+<th width="7%">Relation
+</th>
+<th width="45%">Definition
+</th>
+<th width="45%">Example
+</th></tr>
+<tr>
+<td>agt
+</td>
+<td>agent
+</td>
+<td>A participant in an action or process that provokes a change of state or location.
+</td>
+<td>John killed Mary = agt(killed;John)<br />Mary was killed by John = agt(killed;John)<br />arrival of John = agt(arrival;John)
+</td></tr>
+<tr>
+<td>and
+</td>
+<td>conjunction
+</td>
+<td>Used to state a conjunction between two entities.
+</td>
+<td>John and Mary = and(John;Mary)<br />both John and Mary = and(John;Mary)<br />neither John nor Mary = and(John;Mary)<br />John as well as Mary = and(John;Mary)
+</td></tr>
+<tr>
+<td>ant
+</td>
+<td>opposition or concession
+</td>
+<td>Used to indicate that two entities do not share the same meaning or reference. Also used to indicate concession.
+</td>
+<td>John is not Peter = ant(Peter;John)<br />3 + 2&#160;!= 6 = ant(6;3+2)<br />Although he's quiet, he's not shy = ant(he's not shy;he's quiet)
+</td></tr>
+<tr>
+<td>aoj
+</td>
+<td>object of an attribute
+</td>
+<td>The subject of an stative verb. Also used to express the predicative relation between the predicate and the subject.
+</td>
+<td>John has two daughters = aoj(have;John)<br />the book belongs to Mary = aoj(belong;book)<br />the book contains many pictures = aoj(contain;book)<br />John is sad = aoj(sad;John)<br />John looks sad = aoj(sad;John);
+</td></tr>
+<tr>
+<td>ben
+</td>
+<td>beneficiary
+</td>
+<td>A participant who is advantaged or disadvantaged by an event.
+</td>
+<td>John works for Peter = ben(works;Peter)<br />John gave the book to Mary for Peter = ben(gave;Peter)
+</td></tr>
+<tr>
+<td>cnt
+</td>
+<td>content or theme
+</td>
+<td>The object of an stative or experiental verb, or the theme of an entity.
+</td>
+<td>John has two daughters = cnt(have;two daughters)<br />the book belongs to Mary = cnt(belong;Mary)<br />the book contains many pictures = cnt(contain;many pictures)<br />John believes in Mary = cnt(believe;Mary)<br />John saw Mary = cnt(saw;Mary)<br />John loves Mary = cnt(love;Mary)<br />The explosion was heard by everyone = cnt(hear;explosion)<br />a book about Peter = cnt(book;Peter)
+</td></tr>
+<tr>
+<td>con
+</td>
+<td>condition
+</td>
+<td>A condition of an event.
+</td>
+<td>If I see him, I will tell him = con(I will tell him;I see him)<br />I will tell him if I see him = con(I will tell him;I see him);
+</td></tr>
+<tr>
+<td>dur
+</td>
+<td>duration or co-occurrence
+</td>
+<td>The duration of an entity or event.
+</td>
+<td>John worked for five hours = dur(worked;five hours)<br />John worked hard the whole summer = dur(worked;the whole summer)<br />John completed the task in ten minutes = dur(completed;ten minutes)<br />John was reading while Peter was cooking = dur(John was reading;Peter was cooking)
+</td></tr>
+<tr>
+<td>equ
+</td>
+<td>synonym or paraphrase
+</td>
+<td>Used to indicate that two entities share the same meaning or reference. Also used to indicate semantic apposition.
+</td>
+<td>The morning star is the evening star = equ(evening star;morning star)<br />3 + 2 = 5 = equ(5;3+2)<br />UN (United Nations) = equ(UN;United Nations)<br />John, the brother of Mary = equ(John;the brother of Mary)
+</td></tr>
+<tr>
+<td>exp
+</td>
+<td>experiencer
+</td>
+<td>A participant in an action or process who receives a sensory impression or is the locus of an experiential event.
+</td>
+<td>John believes in Mary = exp(believe;John)<br />John saw Mary = exp(saw;John)<br />John loves Mary = exp(love;John)<br />The explosion was heard by everyone = exp(hear;everyone)
+</td></tr>
+<tr>
+<td>fld
+</td>
+<td>field
+</td>
+<td>Used to indicate the semantic domain of an entity.
+</td>
+<td>sentence (linguistics) = fld(sentence;linguistics)
+</td></tr>
+<tr>
+<td>gol
+</td>
+<td>final state, place, destination or recipient
+</td>
+<td>The final state, place, destination or recipient of an entity or event.
+</td>
+<td>John received the book = gol(received;John)<br />John won the prize = gol(won;John)<br />John changed from poor to rich = gol(changed;rich)<br />John gave the book to Mary = gol(gave;Mary)<br />He threw the book at me = gol(threw;me)<br />John goes to NY = gol(go;NY)<br />train to NY = gol(train;NY)
+</td></tr>
+<tr>
+<td>icl
+</td>
+<td>hyponymy, is a kind of
+</td>
+<td>Used to refer to a subclass of a class.
+</td>
+<td>Dogs are mammals = icl(mammal;dogs)
+</td></tr>
+<tr>
+<td>ins
+</td>
+<td>instrument or method
+</td>
+<td>An inanimate entity or method that an agent uses to implement an event. It is the stimulus or immediate physical cause of an event.
+</td>
+<td>The cook cut the cake with a knife = ins(cut;knife)<br />She used a crayon to scribble a note = ins(used;crayon)<br />That window was broken by a hammer = ins(broken;hammer)<br />He solved the problem with a new algorithm = ins(solved;a new algorithm)<br />He solved the problem using an algorithm = ins(solved;using an algorithm)<br />He used Mathematics to solve the problem = ins(used;Mathematics)
+</td></tr>
+<tr>
+<td>iof
+</td>
+<td>is an instance of
+</td>
+<td>Used to refer to an instance or individual element of a class.
+</td>
+<td>John is a human being = iof(human being;John)
+</td></tr>
+<tr>
+<td>lpl
+</td>
+<td>logical place
+</td>
+<td>A non-physical place where an entity or event occurs or a state exists.
+</td>
+<td>John works in politics = lpl(works;politics)<br />John is in love = lpl(John;love)<br />officer in command = lpl(officer;command)
+</td></tr>
+<tr>
+<td>man
+</td>
+<td>manner
+</td>
+<td>Used to indicate how the action, experience or process of an event is carried out.
+</td>
+<td>John bought the car quickly = man(bought;quickly)<br />John bought the car in equal payments = man(bought;in equal payments)<br />John paid in cash = man(paid;in cash)<br />John wrote the letter in German = man(wrote;in German)<br />John wrote the letter in a bad manner = man(wrote;in a bad manner)
+</td></tr>
+<tr>
+<td>mat
+</td>
+<td>material
+</td>
+<td>Used to indicate the material of which an entity is made.
+</td>
+<td>A statue in bronze = mat(statue;bronze)<br />a wood box = mat(box;wood)<br />a glass mug = mat(mug;glass)
+</td></tr>
+<tr>
+<td>mod
+</td>
+<td>modifier
+</td>
+<td>A general modification of an entity.
+</td>
+<td>a beautiful book = mod(book;beautiful)<br />an old book = mod(book;old)<br />a book with 10 pages = mod(book;with 10 pages)<br />a book in hard cover = mod(book;in hard cover)<br />a poem in iambic pentameter = mod(poem;in iambic pentamenter)<br />a man in an overcoat = mod(man;in an overcoat)
+</td></tr>
+<tr>
+<td>nam
+</td>
+<td>name
+</td>
+<td>The name of an entity.
+</td>
+<td>The city of New York = nam(city;New York)<br />my friend Willy = nam(friend;Willy)
+</td></tr>
+<tr>
+<td>obj
+</td>
+<td>patient
+</td>
+<td>A participant in an action or process undergoing a change of state or location.
+</td>
+<td>John killed Mary = obj(killed;Mary)<br />Mary died = obj(died;Mary)<br />The snow melts = obj(melts;snow)
+</td></tr>
+<tr>
+<td>opl
+</td>
+<td>objective place
+</td>
+<td>A place affected by an action or process.
+</td>
+<td>John was hit in the face = opl(hit;face)<br />John fell in the water = opl(fell;water)
+</td></tr>
+<tr>
+<td>or
+</td>
+<td>disjunction
+</td>
+<td>Used to indicate a disjunction between two entities.
+</td>
+<td>John or Mary = or(John;Mary)<br />either John or Mary = or(John;Mary)
+</td></tr>
+<tr>
+<td>per
+</td>
+<td>proportion, rate, distribution, measure or basis for a comparison
+</td>
+<td>Used to indicate a measure or quantification of an event.
+</td>
+<td>The course was split in two parts = per(split;in two parts)<br />twice a week = per(twice;week)<br />The new coat costs $70 = per(cost;$70)<br />
+<p>John is more beautiful than Peter = per(beautiful;Peter)<br />John is as intelligent as Mary = per(intelligent;Mary)<br />John is the most intelligent of us = per(intelligent;we)
+</p>
+</td></tr>
+<tr>
+<td>plc
+</td>
+<td>place
+</td>
+<td>The location or spatial orientation of an entity or event.
+</td>
+<td>John works here = plc(work;here)<br />John works in NY = plc(work;NY)<br />John works in the office = plc(work;office)<br />John is in the office = plc(John;office)<br />a night in Paris = plc(night;Paris)
+</td></tr>
+<tr>
+<td>pof
+</td>
+<td>is part of
+</td>
+<td>Used to refer to a part of a whole.
+</td>
+<td>John is part of the family = pof(family;John)
+</td></tr>
+<tr>
+<td>pos
+</td>
+<td>possessor
+</td>
+<td>The possessor of a thing.
+</td>
+<td>the book of John = pos(book;John)<br />John's book = pos(book;John)<br />his book = pos(book;he)
+</td></tr>
+<tr>
+<td>ptn
+</td>
+<td>partner
+</td>
+<td>A secondary (non-focused) participant in an event.
+</td>
+<td>John fights with Peter = ptn(fight;Peter)<br />John wrote the letter with Peter = ptn(wrote;Peter)<br />John lives with Peter = ptn(live;Peter)
+</td></tr>
+<tr>
+<td>pur
+</td>
+<td>purpose
+</td>
+<td>The purpose of an entity or event.
+</td>
+<td>John left early in order to arrive early = pur(John left early;arrive early)<br />You should come to see us = pur(you should come;see us)<br />book for children = pur(book;children)
+</td></tr>
+<tr>
+<td>qua
+</td>
+<td>quantity
+</td>
+<td>Used to express the quantity of an entity.
+</td>
+<td>two books = qua(book;2)<br />a group of students = qua(students;group)
+</td></tr>
+<tr>
+<td>res
+</td>
+<td>result or factitive
+</td>
+<td>A referent that results from an entity or event.
+</td>
+<td>The cook bake a cake = res(bake;cake)<br />They built a very nice building = res(built;a very nice building)
+</td></tr>
+<tr>
+<td>rsn
+</td>
+<td>reason
+</td>
+<td>The reason of an entity or event.
+</td>
+<td>John left because it was late = rsn(John left;it was late)<br />John killed Mary because of John = rsn(killed;John)
+</td></tr>
+<tr>
+<td>seq
+</td>
+<td>consequence
+</td>
+<td>Used to express consequence.
+</td>
+<td>I think therefore I am = seq(I think;I am)
+</td></tr>
+<tr>
+<td>src
+</td>
+<td>initial state, place, origin or source
+</td>
+<td>The initial state, place, origin or source of an entity or event.
+</td>
+<td>John came from NY = src(came;NY)<br />John is from NY = src(John;NY)<br />train from NY = src(train;NY)<br />John changed from poor into rich = src(changed;poor)<br />John received the book from Peter = src(received;Peter)<br />John withdrew the money from the cashier = src(withdrew;cashier)
+</td></tr>
+<tr>
+<td>tim
+</td>
+<td>time
+</td>
+<td>The temporal placement of an entity or event.
+</td>
+<td>The whistle will sound at noon = tim(sound;noon)<br />John came yesterday = tim(came;yesterday)
+</td></tr>
+<tr>
+<td>tmf
+</td>
+<td>initial time
+</td>
+<td>The initial time of an entity or event.
+</td>
+<td>John worked since early = tmf(worked;early)
+</td></tr>
+<tr>
+<td>tmt
+</td>
+<td>final time
+</td>
+<td>The final time of an entity or event.
+</td>
+<td>John worked until late = tmt(worked;late)
+</td></tr>
+<tr>
+<td>via
+</td>
+<td>intermediate state or place
+</td>
+<td>The intermediate place or state of an entity or event.
+</td>
+<td>John went from NY to Geneva through Paris = via(went;Paris)<br />The baby crawled across the room  = via(crawled;across the room)
+</td></tr></tbody></table>
+<div class="mw-heading mw-heading2"><h2 id="Notes">Notes</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Universal_Relations&amp;veaction=edit&amp;section=6" title="Edit section: Notes" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Universal_Relations&amp;action=edit&amp;section=6" title="Edit section&#39;s source code: Notes">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<div class="mw-references-wrap"><ol class="references">
+<li id="cite_note-1"><span class="mw-cite-backlink"><a href="#cite_ref-1">↑</a></span> <span class="reference-text">The order of the arguments, in many cases, is counter-intuitive. Consider, for instance, the case of "icl" (hyponymy) as in "Dogs are mammals". The relation is icl(mammal;dogs) because "dogs" is the target of the hyponymy, i.e, "dogs" is a hyponym of "mammals", and not the opposite. This seems to contradict with "Peter is in NY", where we have plc(Peter;NY), but it's important to notice that, in both cases, the general principle of the order (i.e., the relation is always defined by the target) is being followed. In this sense, an important change from the past Specs is the order of the relations "and" and "or". Up to the UNL2005, "Mary and John" were represented as and(John;Mary); from the version UNL2010, the same relation, in order to preserve the general principle of the order, is represented as and(Mary;John).</span>
+</li>
+</ol></div>
+<!-- 
+NewPP limit report
+Cached time: 20260910080105
+Cache expiry: 86400
+Reduced expiry: false
+Complications: [show‐toc]
+CPU time usage: 0.015 seconds
+Real time usage: 0.016 seconds
+Preprocessor visited node count: 124/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/100
+Expensive parser function count: 0/100
+Unstrip recursion depth: 0/20
+Unstrip post‐expand size: 1175/5000000 bytes
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    0.000      1 -total
+-->
+
+<!-- Saved in parser cache with key u965818192_SLvgQ-l8z2_:pcache:359:|#|:idhash:canonical and timestamp 20260910080105 and revision id 9368. Rendering was triggered because: diff-page
+ -->
+</div>

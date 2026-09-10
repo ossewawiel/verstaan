@@ -1,0 +1,235 @@
+'''D-rules''' or disambiguation rules are used to prevent wrong lexical choices, to provoke best matches and to check the consistency of graphs, trees and lists. The set of D-rules form the '''Disambiguation grammar''', or '''D-Grammar'''.
+
+== Syntax ==
+D-rules follow the general syntax:
+
+ STATEMENT=P;
+
+Where<br />
+STATEMENT is the left side (condition) of a [[L-rule]] or a [[S-rule]]; and<br />
+P, which can range from 0 (impossible) to 255 (necessary), is the probability of occurrence of the STATEMENT<br />
+
+== Types of Disambiguation Rules ==
+There are two types of disambiguation rules:
+*Linear disambiguation rules, when the rule applies over lists of nodes
+*Non-linear disambiguation rules, when the rule applies over non-linear relations between nodes  
+
+=== Linear Disambiguation Rules ===
+Linear disambiguation rules apply over the natural language list structure to constrain word selection (dictionary retrieval) or the application of both Tree-to-List (TL) and List-to-List (LL) Transformation Rules. They have the following format:
+ (node 1)(node 2)(...)(node n)=P;
+Where (node 1), (node 2) and (node n) are nodes, and P is an integer (from 0 to 255).
+
+==== Examples ====
+;(ART)(VER)=0; 
+:An article (ART) may not precede a verb (VER).
+;(ART)(NOU)=255;
+:Articles (ART) always precede nouns (NOU).
+
+=== Non-Linear Disambiguation Rules ===
+Non-linear disambiguation rules apply over the syntactic or the network structure to constrain the application of List-to-Tree (LT), Tree-to-Tree (TT), Tree-to-Network (TN) and Network-to-Network (NN) Transformation Rules. They have the following format:
+ REL1(arg1;arg2;...)REL2(arg3;arg4;...)...RELN(argx;argy;...)=P;
+Where REL1, REL2 and REL2 are syntactic or semantic relations, with their corresponding arguments (arg1, arg2, ...), and P is an integer (from 0 to 255).
+
+==== Examples ====
+;VS(VER;ADJ)=0; 
+:An adjective (ADJ) may not be an specifier (VS) of a verb (VER).
+;NS(NOU;DET)=255;
+:Determiners (DET) are always specifiers (NS) of nouns (NOU).
+;agt(VER;ADJ)=0; 
+:An adjective (ADJ) may not be an agent (agt) of a verb (VER).
+;agt(VER;NOU)=255;
+:Agents (agt) of verbs (VER) are always nouns (NOU).
+
+== Scope of Disambiguation Rules ==
+Disambiguation rules may apply:
+*Only during [[tokenization]], in order to control the dictionary retrieval
+*Only during [[transformation]], in order to control the application of [[T-rule]]s
+*During tokenization and transformation
+
+=== Tokenization ===
+:main article: [[tokenization]]
+During [[tokenization]], D-rules are used to resolve lexical ambiguities.<br />
+For instance, given the dictionary:
+*[ ]{}""(BLK)<eng,0,0>;
+*[a]{}""(POS=ART)<eng,0,0>;
+*[book]{}"to book(equ>to reserve)" (POS=VER)<eng,2,0>; (higher frequency)
+*[book]{}"book(icl>document)" (POS=NOU)<eng,1,0>; (lower frequency)
+The input string<br />
+:"a book"
+will be tokenized as<br />
+:("a",[a],<nowiki>[[]]</nowiki>,POS=ART)(" ",[ ],<nowiki>[[]]</nowiki>,BLK)'''("book",[book],<nowiki>[[to book(equ>to reserve)]]</nowiki>,POS=VER)'''<br />
+which is not correct, because "book", in this context, should be classified as a noun and not as a verb<br />
+In order to induce the correct behavior, two types of D-rules could be used:
+*to prevent verbs from appearing after article + blank, i.e., (ART)(BLK)(VER)=0; or
+*to force possible nouns to appear after article + blank, i.e., (ART)(BLK)(NOU)=1;
+In both case the result will be:
+:("a",[a],<nowiki>[[]]</nowiki>,POS=ART)(" ",[ ],<nowiki>[[]]</nowiki>,BLK)'''("book",[book],<nowiki>[[book(icl>document)]]</nowiki>,POS=NOU)'''<br />
+which is the correct one.
+
+=== Transformation ===
+In [[transformation]], D-rules are used to resolve syntactic and semantic ambiguities.<br />
+For instance, given the state:
+:("book",N)("of",P)("Peter",N)("about",P)("John",N)
+And the grammar:
+#(%x,N)(%y,P):=(NA(%x;%y),+N); (i.e., replace the sequence noun + preposition by a hyper-node containing a relation NA (noun adjunct) between them)
+#(%x,P)(%y,N):=(PC(%x;%y),+P); (i.e., replace the sequence preposition + noun by a hyper-node containing a relation PC (prepopsition complement) between them)
+The result of the application of the rules, in the order defined by the grammar, would be
+:(NA("book",N;"of",P)("NA("Peter",N;"about",P)("John",N)
+which corresponds to the wrong analysis [ [book of] [Peter about] [John] ] <br />
+In order to induce the correct behavior, two types of D-rules could be used:
+*to prevent NA's from appearing before nouns, i.e., (NA(;))(N)=0; 
+*to force PC's to apply first, i.e., PC(P;N)=1;
+In both cases the result will be:
+:("book",N)(PC("of",P;"Peter",N),P)(PC("about",P;"John",N),P) (after applying the rule #2 two times)
+:(NA("book",N;PC("of",P;"Peter",N),P),N)(PC("about",P;"John",N),P)(after applying the rule #1 for the first time)
+:(NA(NA("book",N;PC("of",P;"Peter",N),P),N;PC("about",P;"John",N),P),N)(after applying the rule #1 for the second time time)
+which corresponds to [ [ [book][of Peter] ] [about John] ].
+
+== #PREFERRED AND #FINAL ==
+The features #PREFERRED and #FINAL are used to change the default order of replacements during [[tokenization]] in blocking rules.
+*<nowiki>#PREFERRED</nowiki> means "if this possibility is blocked, <b>try first other candidate tokens for the other strings</b> before trying other candidate tokens for this string"
+*<nowiki>#FINAL</nowiki> means "if this possibility is blocked, <b>do not try any other candidate token for this string</b>, i.e., try only other candidate tokens for the other strings"
+Consider, for instance, the example below:
+*input string: ABC
+*dictionary:
+**<nowiki>[A]{}"a1"(A1)<,,>;</nowiki>
+**<nowiki>[A]{}"a2"(A2)<,,>;</nowiki>
+**<nowiki>[B]{}"b1"(B1)<,,>;</nowiki>
+**<nowiki>[B]{}"b2"(B2)<,,>;</nowiki>
+**<nowiki>[C]{}"c1"(C1)<,,>;</nowiki>
+**<nowiki>[C]{}"c2"(C2)<,,>;</nowiki>
+According to the default order (left to right), the tokenization will try the following alternatives (in this specific order):
+#<nowiki>[A1][B1][C1]</nowiki> 
+#<nowiki>[A1][B1][C2]</nowiki> 
+#<nowiki>[A1][B2][C1]</nowiki> 
+#<nowiki>[A1][B2][C2]</nowiki>
+#<nowiki>[A2][B1][C1]</nowiki>
+#<nowiki>[A2][B1][C2]</nowiki>
+#<nowiki>[A2][B2][C1]</nowiki>
+#<nowiki>[A2][B2][C2]</nowiki>
+If no alternative is blocked, the best match will be the first one. If the first is blocked, the best will be the second, and so on. In order to alter this order, #PREFERRED and #FINAL may be used depending on the expected output.
+*<nowiki>#PREFERRED</nowiki> is used when you want simply to alter the order of these matches but you want all of them to be tested before you decide for re-segmenting the string
+*<nowiki>#FINAL</nowiki> is used when you want to prevent some of these alternatives from being tested, i.e., when you want to start earlier the re-segmentation process
+Compare the behaviour of the system for the grammars below:
+*D-GRAMMAR #1
+#<nowiki>(A1)(B1,#PREFERRED)=0;</nowiki> (blocks the sequence of tokens with the features A1 and B1, but indicates that A1 must be changed prior to B1)
+*NEW ORDER
+#<nowiki>[A2][B1][C1]</nowiki> (previously 5)
+#<nowiki>[A2][B1][C2]</nowiki> (previously 6)
+#<nowiki>[A1][B2][C1]</nowiki> (previously 3)
+#<nowiki>[A1][B2][C2]</nowiki> (previously 4)
+#<nowiki>[A2][B2][C1]</nowiki> (previously 7)
+#<nowiki>[A2][B2][C2]</nowiki> (previously 8)
+Note, in the above, that the options 1 and 2 are not tested because they are blocked, and the order of attempts is changed. However, if, for any reason (other blocking rules), these first alternatives are also blocked, the system still tries to find, within the same segmentation, other candidates. If all of them are blocked, and only then, the system will re-segment the string, according to the process defined at [[tokenization]].
+*D-GRAMMAR #2
+#<nowiki>(A1)(B1,#FINAL)=0;</nowiki> (blocks the sequence of tokens with the features A1 and B1 and prevents the system from trying other candidates for B1)
+*NEW ORDER
+#<nowiki>[A2][B1][C1]</nowiki> (previously 5)
+#<nowiki>[A2][B1][C2]</nowiki> (previously 6)
+Note, in the above, that the options 1 and 2 are not tested because they are blocked. Note, also, that other candidates for the second string (i.e., where the second string is B2) are not tested, because B1 is #FINAL. So, if these two matches fail, the system starts re-segmenting the sentence.<br />
+At last, note that #PREFERRED and #FINAL do not prevail other the priority of application of rules. If the grammar was simply:
+#<nowiki>(A1)(B2,#PREFERRED)=0;</nowiki> 
+or 
+#<nowiki>(A1)(B2,#FINAL)=0;</nowiki>
+the output would be still
+#<nowiki>[A1][B1][C1]</nowiki> 
+because this is the best match and it is not blocked by any rule.
+
+For a practical example in English, see below<ref>
+Input string:
+*this book
+dictionary:
+*[this]{1}"00"(R)<eng,0,0>; (this is my book)
+*[this]{2}""(D)<eng,0,0>; (this book is mine)
+*[book]{4}"book"(N)<eng,0,0>;
+*[book]{3}"to book"(V)<eng,0,0>;
+According to the order defined in the dictionary, the input string would be tokenized as<br />
+*(R)(N) (i.e., [this] = pronoun and [book] = noun)<br />
+which is not the expected result (we expect "this" to be tokenized as a determiner, rather than as a pronoun)<br />
+In order to prevent this tokenization, we may create a D-rule such as:
+*(R)(N)=0; (the sequence pronoun + noun is prohibited)
+but the result of this rule would be "book" as a verb, instead of "this" as a determiner, i.e.:<br />
+*(R)(V) (i.e., [this] = pronoun and [book] = verb)<br />
+because D-rules apply from left to right, and the system will try to replace first the rightmost nodes, if possible.<br />
+In order to prevent the system from replacing the rightmost nodes, we have to assign #PREFERRED to the nodes to be preserved:
+*(R)(N,#PREFERRED)=0; (there cannot be a pronoun before a noun, but try to replace the pronoun before trying to replace the noun)
+In this case, the machine will try to replace first the node without #PREFERRED and will get, then:<br />
+*(D)(N) (i.e., [this] = determiner and [book] = noun)<br />
+which is exactly the expected result.
+</ref>
+
+== Examples ==
+*List structures
+**(ART)(BLK)(VER)=0;  (an article (ART) may not precede a verb (VER))
+**(ART)(BLK)(NOU)=255; (articles (ART) always precede nouns (NOU))
+*Syntactic and semantic structures
+**agt(VER;ADJ)=0;  (an adjective (ADJ) may not be an agent (agt) of a verb (VER))
+**agt(VER;NOU)=255; (agents (agt) of verbs (VER) are always nouns (NOU))
+**VS(VER;ADJ)=0; (an adjective (ADJ) may not be an specifier (VS) of a verb (VER))
+**NS(NOU;DET)=255; (determiners (DET) are always specifiers (NS) of nouns (NOU))
+
+== Properties ==
+
+;PRIORITY
+:Rules are checked serially, according to the order defined in the grammar. The first rule will be the first to be checked, the second will be the second, and so on. 
+::For instance, given the grammar:
+:::(A)(B)=0;
+:::(B)(C)=0;
+:::(A)(D)=1;
+:::(A)(E)=1;
+::The first rule to be checked will be the first one, the second, the second one, and so on.<br />
+::Note that the order does not affect blocking rules (i.e., those with the right side = 0) but it does affect positive rules. In the example above, if the node after (A) could be both (D) or (E), the first option (D) will be preferred because it is the first to appear in the grammar.  
+
+;INDEXATION
+:All instances of the same node must be co-indexed (or they will be considered different nodes). See [[Index]].
+::For instance:
+:::rel(%x;%y)rel(%x;%z)=0; (there cannot be two relations rel with the same source argument)
+:::(%x,GEN=%y)(%y,GEN=%x)=1; (two sequential nodes with the same value of the attribute GEN should be preferred over possible alternatives)
+
+;CONJUNCTION
+:D-rules may have as many items in the left side as necessary. They must be always juxtaposed:<br />
+:::(A)(B)(C)(D)(E)=0; (there cannot be five nodes in sequence with the features A, B, C, D and E, respectively)
+:::rel(A;B)rel(C;D)rel(E;F)=0; (there cannot be three relations rel(A;B), rel(C;D) and rel(E;F))
+
+;DISJUNCTION
+:The left side of the rules may bring disjuncts. Disjuncts must be represented between {braces} and must be separated by |. 
+::{(A)|(B)}=0; (there cannot be any node with the feature A nor any node with the feature B)
+::{(A)|(B)}(C)=0; (there cannot be any node with the feature A nor any node with the feature B in front of a node with the feature C)
+::{rel(A;B)rel(A;C)}=0; (there cannot be any relation rel between nodes with the features A and B, or A and C
+
+;REGULAR EXPRESSIONS
+:The left side of the rules may bring [[regular expressions]] between "/":
+::("/.../")=0; (there cannot be any node with three characters)
+::(/[ABC]/)=0; (there cannot be any node with the features A, B or C)
+::/(agt|obj)/(D;D)=0; (there cannot any relation agt or obj between two determiners)
+
+;CONCISION
+:In order for rules to be as small as possible, the source and the target nodes may be simple place-holders:
+:::cob(;):=0; (there cannot be any cob relation between two nodes, whatever the nodes) 
+
+;READABILITY
+:There can be blank spaces between variables and symbols. Comments can be added after the “;”.
+:::cob ( ; ) = 0; (there cannot be any cob  relation).
+
+== Formal Syntax of Disambiguation Rules ==
+Disambiguation rules must comply with the following syntax
+
+ <nowiki><DISAMBIGUATION RULE> ::= <NN RULE> | <TT RULE> | <LL RULE> </nowiki>
+ <nowiki><NN RULE>             ::= (<SEM>)+ "=" [0-255]";"</nowiki>
+ <nowiki><TT RULE>             ::= (<SYN>)+ "=" [0-255]";"</nowiki>
+ <nowiki><LL RULE>             ::= "(" <NODE> ")" ( "(" <NODE> ")" )+ "=" [0-255]";"</nowiki>
+ <nowiki><SEM>                 ::= <TEXT> "(" <NODE> ";" <NODE> ")"</nowiki>
+ <nowiki><SYN>                 ::= <TEXT> "(" <NODE> ";" <NODE> ")"</nowiki>
+ <nowiki><NODE>                ::= ( (<DESCRIPTION>)( "," <DESCRIPTION> )* )?</nowiki>
+ <nowiki><DESCRIPTION>         ::= <STRING> | <ENTRY> | <FEATURE> | <RELATION></nowiki>
+ <nowiki><STRING>              ::= """<text>"""</nowiki>
+ <nowiki><ENTRY>               ::= "["<entry>"]"</nowiki>
+ <nowiki><FEATURE>             ::= <VALUE> | <ATTRIBUTE> | <ATTRIBUTE>"="<VALUE></nowiki>
+ <nowiki><RELATION>            ::= <SEM>|<SYN></nowiki>
+ <nowiki><VALUE>               ::= <TEXT></nowiki>
+ <nowiki><ATTRIBUTE>           ::= <TEXT></nowiki>
+ <nowiki><TEXT>                ::= any sequence of characters except whitespace | <REGULAR EXPRESSION></nowiki>
+ <REGULAR EXPRESSION>  ::= "/"<[http://www.pcre.org/ PERL COMPATIBLE REGULAR EXPRESSIONS]>"/"
+
+== Notes ==
+<references />

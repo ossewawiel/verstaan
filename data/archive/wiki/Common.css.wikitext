@@ -1,0 +1,118 @@
+/* CSS placed here will be applied to all skins */
+
+.dtree {
+        font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+        font-size: 11px;
+        color: #666;
+        white-space: nowrap;
+}
+.dtree img {
+        border: 0px;
+        vertical-align: middle;
+}
+.dtree a {
+        color: #333;
+        text-decoration: none;
+}
+.dtree a.node, .dtree a.nodeSel {
+        white-space: nowrap;
+        padding: 1px 2px 1px 2px;
+}
+.dtree a.node:hover, .dtree a.nodeSel:hover {
+        color: #333;
+        text-decoration: underline;
+}
+.dtree a.nodeSel {
+        background-color: #c0d2ec;
+}
+.dtree .clip {
+        overflow: hidden;
+}
+
+/*
+* Dynamic menus
+*/
+.dmenu { width: 180px }
+ 
+.dmenu, .dmenu ul { /* all lists */
+padding: 0;
+margin: 0;
+list-style: none;
+}
+.dmenu .selflink { font-weight: normal; }
+ 
+.dmenu li { /* all list items */
+position: relative;
+float: left;
+width: 172px;
+padding: 4px;
+z-index: 100;
+}
+ 
+.dmenu li,
+.dmenu li.even a,
+.dmenu li.odd a,
+.dmenu li li,
+.dmenu li li a,
+.dmenu li li li,
+.dmenu li li li a {
+color : black;
+}
+ 
+.dmenu li li { margin: 0; }
+ 
+.dmenu li ul { /* second-level lists */
+position: absolute;
+left: -999em;
+z-index: 101;
+border: 1px solid #ccc;
+}
+ 
+.dmenu li ul ul { /* third-and-above-level lists */
+position: absolute;
+left: -999em;
+margin: 0 0 0 0;
+z-index: 102;
+}
+ 
+.dmenu li.odd .submenu {
+width: 12px;
+height: 15px;
+float: right;
+background: url(/common/images/rarr-lt.png) 0 3px no-repeat;
+}
+.dmenu li.even .submenu {
+width: 12px;
+height: 15px;
+float: right;
+background: url(/common/images/rarr-dk.png) 0 3px no-repeat;
+}
+.dmenu li.odd {
+	background: #E9EDF4;
+	border: 2px solid #E9EDF4;
+}
+.dmenu li.even {
+	background: #D0D8E8;
+	border: 2px solid #D0D8E8;
+}
+ 
+.dmenu li:hover, .dmenu li.sfhover {
+	border: 2px solid #385D8A;
+}
+ 
+.dmenu li:hover ul ul,
+.dmenu li:hover ul ul ul,
+.dmenu li.sfhover ul ul,
+.dmenu li.sfhover ul ul ul {
+left: -999em;
+}
+ 
+.dmenu li:hover ul,
+.dmenu li li:hover ul,
+.dmenu li li li:hover ul,
+.dmenu li.sfhover ul,
+.dmenu li li.sfhover ul,
+.dmenu li li li.sfhover ul { /* lists nested under hovered list items */
+left: 182px;
+top: -3px;
+}

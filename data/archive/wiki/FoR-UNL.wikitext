@@ -1,0 +1,63 @@
+FoR-UNL ('''F'''ramework '''o'''f '''R'''eference for '''UNL''') is a guideline used to describe achievements of natural languages in relation to UNL. It was inspired by the [http://www.coe.int/t/dg4/linguistic/Cadre1_en.asp Common European Framework of Reference for Languages (CEFR)], and its main goal is to provide a method for assessing the availability and quality of natural language resources inside the [[UNL System]].
+
+== Reference Levels ==
+The FoR-UNL classifies languages in three broad divisions which can be divided into six levels, according to the recall and precision of the corresponding resources:
+*'''A''' - Basic Level
+**'''A1''' - Breakthrough or beginner
+**'''A2''' - Waystage or elementary
+*'''B''' - Intermediate Level
+**'''B1''' - Threshold or intermediate
+**'''B2''' - Vantage or upper intermediate
+*'''C''' - Advanced Level
+**'''C1''' - Effective Operational
+**'''C2''' - Mastery
+
+== Descriptors ==
+The descriptors below inform what is required for a language to be classified in each level:
+
+{|border="1" align="center" cellpadding="5"
+!Level
+!Dictionary<br />(base forms)
+!Grammar
+|-
+|align="center"|A1
+|align="center"|5,000
+|align="center"|Morphology: NP
+|-
+|align="center"|A2
+|align="center"|10,000
+|align="center"|Morphology: others
+|-
+|align="center"|B1
+|align="center"|20,000
+|align="center"|Syntax: NP
+|-
+|align="center"|B2
+|align="center"|40,000
+|align="center"|Syntax: VP
+|-
+|align="center"|C1
+|align="center"|70,000
+|align="center"|Syntax: IP
+|-
+|align="center"|C2
+|align="center"|100,000
+|align="center"|Syntax: CP
+|}
+
+== Methodology ==
+In order to achieve the results above, each language must observe the following procedures<ref>This flow is not observed in some special cases, such as Latin, for instance</ref>. Each level is a prerequisite for the next (A2 is not open before A1 is finished, and so on):
+*Dictionary flow (dictionary projects):
+**A1: [[MIR|MIR-A1]] > [[NADIA|NADIA-A1]] > [[BRUNO|BRUNO-A1]]
+**A2: [[MIR|MIR-A2]] > [[NADIA|NADIA-A2]] > [[BRUNO|BRUNO-A2]]
+**B1: [[MIR|MIR-B1]] > [[NADIA|NADIA-B1]] > [[BRUNO|BRUNO-B1]]
+**B2: [[MIR|MIR-B2]] > [[NADIA|NADIA-B2]] > [[BRUNO|BRUNO-B2]]
+**C1: [[MIR|MIR-C1]] > [[NADIA|NADIA-C1]] > [[BRUNO|BRUNO-C1]]
+**C2: [[MIR|MIR-C2]] > [[NADIA|NADIA-C2]] > [[BRUNO|BRUNO-C2]]
+*Grammar flow (corpus projects):
+**A1: [[UGO|UGO-A1]] > [[CORNELIA|CORNELIA-A1]]
+**A2: [[UGO|UGO-A2]] > [[CORNELIA|CORNELIA-A2]]
+**B1: [[UGO|UGO-B1]] > [[CORNELIA|CORNELIA-B1]]
+**B2: [[UGO|UGO-B2]] > [[CORNELIA|CORNELIA-B2]]
+**C1: [[UGO|UGO-C1]] > [[CORNELIA|CORNELIA-C1]]
+**C2: [[UGO|UGO-C2]] > [[CORNELIA|CORNELIA-C2]]

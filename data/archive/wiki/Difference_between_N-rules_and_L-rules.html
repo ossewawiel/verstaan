@@ -1,0 +1,34 @@
+<div class="mw-content-ltr mw-parser-output" lang="en" dir="ltr"><p><a href="/wiki/N-rule" title="N-rule">N-rules</a> and <a href="/wiki/L-rule" title="L-rule">L-rules</a> are basically the same. The only difference is that L-rules are part of the Transformation Grammar and, therefore, applies <b>after</b> <a href="/wiki/Tokenization" title="Tokenization">tokenization</a>, whereas N-rules constitute the N-grammar, and apply <b>before</b> tokenization.  This means that N-rules may only deal with strings or regular expressions, whereas L-rules may also deal with other elements (such as features and UW's):
+</p>
+<ul><li>L-rule
+<ul><li>("I")(BLK)("am"):=("I'm"); (I am&gt;I'm)</li>
+<li>("a",PRE)(BLK)("a",ART):=("à",+ART,+CTC); (a a&gt;à)</li>
+<li>("de",PRE)(BLK)("le",ART):=("du",+ART,+CTC); (de le&gt;du)</li></ul></li>
+<li>N-rule
+<ul><li>("I")(" ")("am"):=("I'm"); (replace "I am" by "I'm")</li></ul></li></ul>
+<p>Note, in the above, that we may use dictionary features (such as BLK, PRE, ART) in L-rules, but we cannot use any dictionary feature in N-rules. The only features available in N-rules are the system-defined features, such as SHEAD (beginning of the sentence) and STAIL (end of the sentence).
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20260909233944
+Cache expiry: 86400
+Reduced expiry: false
+Complications: []
+CPU time usage: 0.001 seconds
+Real time usage: 0.001 seconds
+Preprocessor visited node count: 1/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 1/100
+Expensive parser function count: 0/100
+Unstrip recursion depth: 0/20
+Unstrip post‐expand size: 0/5000000 bytes
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    0.000      1 -total
+-->
+
+<!-- Saved in parser cache with key u965818192_SLvgQ-l8z2_:pcache:801:|#|:idhash:canonical and timestamp 20260909233944 and revision id 16095. Rendering was triggered because: page-view
+ -->
+</div>

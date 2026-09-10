@@ -1,0 +1,66 @@
+MIR is a centralized repository of lexical data extracted from the WordNet3.0. It contains 117,659 [[UW]]'s representing different sets of synonyms (or synsets) of English, which are expected to be associated to the corresponding lexical items of any language, whenever possible. 
+
+== Goal ==
+The project MIR has two main goals:
+#To provide a concept-to-word multilingual database (i.e., a decoding or writer's dictionary). This dictionary is expected to be used in [[NLization|language-based shallow NLization]], i.e., in generating natural language documents out of UNL graphs, especially through [[EUGENE]].
+#To assign a universality degree to each of the senses registered in the WordNet3.0 in order to decide in which section of the [[UNL Dictionary]] they should be included: in the UNL Core Dictionary, in the UNL Abridged Dictionary or in the UNL Unabridged Dictionary.
+
+== Repository ==
+MIR is based on the WordNet3.0. It contains 117,659 [[UW]]'s, which correspond to the different sets of synonyms (or synsets) of English. Each UW was defined as a 9-digit string with the following format:
+ <POS><WORDNETID>
+where:<br />
+*<POS> = {1,2,3,4}, being 1 = noun, 2 = verb, 3 = adjective and 4 = adverb; 
+*and <WORDNETID> is the synset ID in the WordNet30.
+Along with the UW, we provide the definition, examples, headwords and other features extracted from the WordNet3.0.<br />
+As an English-biased repository, which is expected to cover only concepts lexicalized in English, MIR should not be mistaken by the whole [[UNL Dictionary]], of which it is only a part.
+
+== Structure ==
+MIR is divided into 6 different subprojects according to the following criteria:
+*MIR-A1 contains only nouns corresponding to entries that are normally addressed in visual dictionaries (such as Merriam-Webster's Visual Dictionary and DK Visual Dictionaries)
+*MIR-A2 contains entries extracted from two main repositories:
+**[http://www.cs.utexas.edu/~kbarker/working_notes/ldoce-vocab.html The Longman defining vocabulary]
+**[http://simple.wikipedia.org/wiki/Wikipedia:Basic_English_combined_wordlist Basic English 2,000 Word List]
+
+ 
+{|border="1" align="center" cellpadding="2"
+!Repository
+!# of entries<ref>The numbers are approximate. The actual number of entries is dynamic. If a given UW is reported as underspecified or overspecified by more than three languages, it is removed from the databases until its universality is validated.</ref>
+|-
+|align="center"|MIR-A1
+|align="center"|3,161
+|-
+|align="center"|MIR-A2
+|align="center"|6,830
+|-
+|align="center"|MIR-B1
+|align="center"|9,449
+|-
+|align="center"|MIR-B2
+|align="center"|10,000
+|-
+|align="center"|MIR-C1
+|align="center"|40,000
+|-
+|align="center"|MIR-C2
+|align="center"|40,000
+|}
+
+== Requisites ==
+MIR is open to all languages<ref>Except English, which was the source for all data</ref> complying with following requisites:
+*MIR-A1 does not have any pre-requisite;
+*MIR-A1, [[NADIA-A1]] and [[BRUNO-A1]] are requisites for MIR-A2;
+*MIR-A2, [[NADIA-A2]] and [[BRUNO-A2]] are requisites for MIR-B1;
+*MIR-B1, [[NADIA-B1]] and [[BRUNO-B1]] are requisites for MIR-B2;
+*MIR-B2, [[NADIA-B2]] and [[BRUNO-B2]] are requisites for MIR-C1;
+*MIR-C1, [[NADIA-C1]] and [[BRUNO-C1]] are requisites for MIR-C2.
+
+== Instructions ==
+In MIR, users are expect to link UW's (i.e., concepts) to natural language entries. This process must take into consideration the following:
+*The UW is a '''concept''', and not an English word. English words are provided only as examples. They should not be translated. The most important part of a UW is its definition, not the English headwords.
+*The UW must be associated only to [[LRU|'''lexical items''']], i.e., words recognized as such by the lexicography of a language. These words may be simple, compound or complex (multiword expressions), <u>but they must figure as entries or sub-entries in monolingual dictionaries</u>. If a UW is not lexicalized in a given language, i.e., if it is not realized as a lexical unit, but as a sequence of words (a periphrases) that has not been lexicalized yet, the UW should be reported either as UNDERSPECIFIED (if it is too general) or OVERSPECIFIED (if it is too specific). Users should not forget that one of our goals is to assign a degree of universality to the senses coming from the WordNet3.0, which brings many concepts that are English-specific.
+*The UW must be associated only to '''[[lemma]]s''', i.e., to the citation form of words (the form that is used in ordinary dictionaries, such as the infinitive, for verbs, the singular, for nouns, etc.). Inflections must not be informed as natural language entries.
+*The UW must be associated to natural language entries of the '''same part-of-speech'''. A nominal concept must be necessarily associated to a noun or a noun phrase; a verbal concept, to a verb or a verbal phrase; an adjectival concept, to an adjective or to an adjective phrase; an adverbial concept, to an adverb or adverbial phrase<ref>Users should not forget that prepositional phrases may play adjective or adverbial roles, and can be considered adjective or adverbial phrases. However, prepositional phrases should be used as natural language entries only if "lexicalized", i.e., if they figure as entries or sub-entries in monolingual dictionaries.</ref>.
+*The same UW can be associated to several natural language entries, provided that they are informed according to the '''frequency of use'''. Non-standard lexical units (archaisms, jargon, slang, taboo, etc.) should be avoided and, if included, should be marked (in the field "register"). Spelling variations, if standard, must be informed as different entries.
+
+== Notes ==
+<references />

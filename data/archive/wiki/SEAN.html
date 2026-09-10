@@ -1,0 +1,42 @@
+<div class="mw-content-ltr mw-parser-output" lang="en" dir="ltr"><p>SEAN is a natural language analysis system. It represents natural language texts as semantic networks in the UNL format. In its current release, it is a web application developed in Java and available at the <a href="/wiki/UNLdev" title="UNLdev">UNLdev</a>. 
+</p>
+<div class="mw-heading mw-heading2"><h2 id="The_name">The name</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=SEAN&amp;veaction=edit&amp;section=1" title="Edit section: The name" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=SEAN&amp;action=edit&amp;section=1" title="Edit section&#39;s source code: The name">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>SEAN is an acronym for <b>S</b>hallow <b>E</b>nhanced <b>AN</b>alysis system.
+</p>
+<div class="mw-heading mw-heading2"><h2 id="Requirements">Requirements</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=SEAN&amp;veaction=edit&amp;section=2" title="Edit section: Requirements" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=SEAN&amp;action=edit&amp;section=2" title="Edit section&#39;s source code: Requirements">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>As a universal engine, SEAN must be parameterized to the source languages with the following files, to be provided through SEAN's interface:
+</p>
+<ul><li>The input natural language document, i.e., the document to be UNL-ized</li>
+<li>The NL-UNL (analysis) dictionary, i.e., a lexical database where <a href="/wiki/UW" class="mw-redirect" title="UW">UWs</a> are mapped into natural language entries, along with the corresponding features, to be provided according to the <a href="/wiki/UNL_Dictionary_Specs" class="mw-redirect" title="UNL Dictionary Specs">UNL Dictionary Specs</a></li>
+<li>The NL-UNL (analysis) transformation grammar, i.e., a set of of transformation rules used to convert natural language sentences into UNL graphs, to be provided according to the <a href="/wiki/UNL_Grammar_Specs" class="mw-redirect" title="UNL Grammar Specs">UNL Grammar Specs</a></li>
+<li>The NL-UNL (analysis) disambiguation grammar, i.e, a set of disambiguation rules used to improve the results of the <a href="/wiki/Tokenization" title="Tokenization">tokenization</a> and of the <a href="/wiki/Transformation" title="Transformation">transformation</a></li></ul>
+<div class="mw-heading mw-heading2"><h2 id="Functioning">Functioning</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=SEAN&amp;veaction=edit&amp;section=3" title="Edit section: Functioning" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=SEAN&amp;action=edit&amp;section=3" title="Edit section&#39;s source code: Functioning">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>SEAN performs the three following movements over the input file:
+</p>
+<ul><li><a href="/wiki/Segmentation" title="Segmentation">Segmentation</a>, i.e., the division of the input document into a series of processing units (sentences), which are processed one at a time</li>
+<li><a href="/wiki/Tokenization" title="Tokenization">Tokenization</a>, i.e., the identification of the tokens (lexical items) of each sentence of the input document</li>
+<li><a href="/wiki/Transformation" title="Transformation">Transformation</a>, i.e., the application of the transformation rules of the grammar over each tokenized sentence in order to represent it as a UNL graph</li></ul>
+<!-- 
+NewPP limit report
+Cached time: 20260910164602
+Cache expiry: 86400
+Reduced expiry: false
+Complications: []
+CPU time usage: 0.004 seconds
+Real time usage: 0.004 seconds
+Preprocessor visited node count: 15/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/100
+Expensive parser function count: 0/100
+Unstrip recursion depth: 0/20
+Unstrip post‐expand size: 0/5000000 bytes
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    0.000      1 -total
+-->
+
+<!-- Saved in parser cache with key u965818192_SLvgQ-l8z2_:pcache:605:|#|:idhash:canonical and timestamp 20260910164602 and revision id 14356. Rendering was triggered because: api-parse
+ -->
+</div>

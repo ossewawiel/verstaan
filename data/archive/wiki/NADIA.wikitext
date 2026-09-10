@@ -1,0 +1,52 @@
+The project NADIA ('''NA'''tural language '''DI'''ctionary for UNL-NL m'''A'''ppings is devoted to the creation of NL dictionaries for entries derived from [[GD|generation dictionaries]].
+
+== Goal ==
+The project NADIA has two main goals:
+#To review UNL-NL mappings provided in generation dictionary projects (such as [[MIR]]).
+#To provide morphological information (such as gender, number, inflectional paradigm, etc) and syntactic information (transitivity, subcategorization frame, etc) to natural language entries derived from generation dictionaries
+
+== Repository ==
+NADIA is language dependent. Every language has its own set of entries to be addressed. The list of entries is derived from the corresponding MIR projects, as indicated below:
+
+{|border="1" align="center" cellpadding="2"
+!Subproject
+!Source
+|-
+|align="center"|NADIA-A1
+|align="center"|MIR-A1
+|-
+|align="center"|NADIA-A2
+|align="center"|MIR-A2
+|-
+|align="center"|NADIA-B1
+|align="center"|MIR-B1
+|-
+|align="center"|NADIA-B2
+|align="center"|MIR-B2
+|-
+|align="center"|NADIA-C1
+|align="center"|MIR-C1
+|-
+|align="center"|NADIA-C2
+|align="center"|MIR-C2
+|}
+
+== Requisites ==
+NADIA is open to all languages, except to English, for which it is expected to be already finished. As a derivative project, NADIA depends on the results of MIR, and it is open only when the language reaches at least 90% of the corresponding level in MIR<ref>For instance, NADIA-A1 for French is open only after French achieves 90% in MIR-A1.</ref>:
+*[[MIR-A1]] is required for NADIA-A1;
+*[[MIR-A2]] is required for NADIA-A2;
+*[[MIR-B1]] is required for NADIA-B1;
+*[[MIR-B2]] is required for NADIA-B2;
+*[[MIR-C1]] is required for NADIA-C1;
+*[[MIR-C2]] is required for NADIA-C2.
+
+== Instructions ==
+In NADIA, users are expected to provide the features for natural language lemmas that were linked to UW's in the project MIR, according to the following instructions:
+#Entries must be treated only if lexical units. If the lemma deriving from MIR is not a lexical unit, users are expected to report the problem and not to provide any information.
+#Entries must be treated only if lemmas. If the entry deriving from MIR is not a lemma, users are expected to report the problem and not to provide any information.
+#Entries must be corrected, in case of spelling problems. If the entry deriving from MIR has spelling problems, users are expected to correct it and to treat it normally.
+#Entries must be addressed thoroughly. Users are expected to provide all the morphological, syntactic and semantic information concerning each entry.
+#Entries must be split, in case they have different morphosyntactic behavior (gender, number, inflectional paradigm, subcategorization frame).
+
+== Notes ==
+<references />

@@ -1,0 +1,315 @@
+'''Universal Relations''', formerly known as "links", are labelled arcs connecting a node to another node in a UNL graph. They correspond to two-place semantic predicates holding between two [[Universal Words]]. In UNL, universal relations have been normally used to represent semantic cases or thematic roles (such as agent, object, instrument, etc.) between UWs. The repertoire of universal relations is defined in the [[Specs|UNL Specs]] and it is not open to frequent additions.
+
+== Definition ==
+In the UNL framework, universal relations describe '''semantic functions''' between two UWs. These functions are binary and directed (from a source to a target) and are claimed to be universal. Because of their similarity in name and function to syntactic relations, it may seem that the labels used for relations are different names for special grammatical functions. This is emphatically not the case. The intention is that the labels used denote specific ideas rather than grammatical structures: the idea of “something that initiates an event,” or “agent” for example, is quite different from “grammatical subject of a sentence”, even though many times the subject of a sentence will indicate the agent of the event. The agent of an event may also appear as an adjective or noun modifier, with the preposition “by” or embedded in nouns with “er” suffixes. The whole point of the conceptual relations is to have a name for these very different grammatical structures which are conceptually quite the same. Thus, the conceptual relations used in UNL are much more abstract than the grammatical relations found in sentences.
+
+== Syntax ==
+Universal relations are represented as follows: 
+ <rel>:<scope>(<source>,<target>)
+where:
+*<rel> is the name of the relation (two-character or three-character lower-case strings) (see the complete list of relations below)
+*<scope> is the scope of the relation (two-character unique identifier for the scope). The scope may be omitted if the main scope, i.e., :00. See [[scope]].
+*<source> is the UW that assigns the relation <rel>
+*<target> is the UW that receives the relation <rel>.
+
+== Hierarchy of relations ==
+Universal Relations are organized in a hierarchy where lower nodes subsume upper nodes. The topmost level is the relation "rel", which simply indicates that there is a semantic relation between two elements. 
+
+{{#tree:id=relations|openlevels=2|root=rel|
+*agt (agent)
+*and (conjunction)
+*aoj (object of an attribute)
+**ant (antonym, different from)
+**equ (synonym, equal to)
+**fld (field)
+**icl (hyponym, a kind of)
+**iof (example, instance of)
+**pof (meronym, part of)
+*ben (beneficiary)
+*cnt (content or theme)
+*con (condition)
+*exp (experiencer)
+*mod (modifier)
+**mat (material)
+**nam (name)
+**pos (possessor)
+**qua (quantifier)
+*obj (patient)
+**opl (objective place)
+**res (result)
+*or (disjunction)
+*per (proportion, rate, distribution or basis for a comparison)
+**bas (basis for a comparison)
+*plc (location: physical or logical)
+**gol (final place or state, destination)
+**lpl (logical place, scene)
+**src (initial place or state, origin)
+**via (intermediate place, path)
+*ptn (partner)
+*tim (time)
+**tmf (initial time)
+**tmt (final time)
+**dur (duration)
+***coo (co-occurrence)
+*man (manner)
+**ins (instrument or method)
+***met (method)
+**pur (purpose)
+*rsn (reason)
+*seq (consequence)
+}}
+
+== Observations ==
+#Arguments of relations are not commutative:
+#:cnt(evidence;absence),i.e., ''evidence of absence'', is different from cnt(absence;evidence), i.e., ''absence of evidence''
+#The target always defines the relation:<ref>The order of the arguments, in many cases, is counter-intuitive. Consider, for instance, the case of "icl" (hyponymy) as in "Dogs are mammals". The relation is icl(mammal;dogs) because "dogs" is the target of the hyponymy, i.e, "dogs" is a hyponym of "mammals", and not the opposite. This seems to contradict with "Peter is in NY", where we have plc(Peter;NY), but it's important to notice that, in both cases, the general principle of the order (i.e., the relation is always defined by the target) is being followed. In this sense, an important change from the past Specs is the order of the relations "and" and "or". Up to the UNL2005, "Mary and John" were represented as and(John;Mary); from the version UNL2010, the same relation, in order to preserve the general principle of the order, is represented as and(Mary;John).</ref>
+#:<relation>(<source>;<target>) => <target> is the <relation> of <source>
+#:*agt(kill;Peter) = ''Peter'' is the '''agent''' of ''kill''
+#:*obj(kill;Peter) = ''Peter'' is the '''patient''' of ''kill''
+#:*tim(kill;yesterday) = ''yesterday'' is the '''time''' of ''kill''
+#:*plc(kill;kicthen) = ''kitchen'' is the '''place''' of ''kill''
+#:*mod(book;beautiful) = ''beautiful'' is a '''modifier''' of ''book''
+#:*icl(document;book) = ''book'' is a '''type''' of ''document''
+#:*iof(city;Paris) = ''Paris'' is an '''instance''' of ''city''
+#:*agt:01(kill;Peter) = ''Peter'' is the '''agent''' of ''kill'' in the scope :01 (see [[scope]]).
+#Relations describe semantic dependencies rather than syntactic roles.
+#:The same relation may play different syntactic roles. Consider, for instance, the case of the relation 'gol' (goal):
+#:*Specifier: ''Peter received the book'' = gol(received;Peter)
+#:*Complement: ''Mary gave the book to Peter'' = gol(gave;Peter)
+#:*Adjunct: ''Mary bought a book to Peter'' = gol(bought;Peter)
+#Lexical and syntactic ambiguities are solved through relations.
+#:Consider, for instance, the case of the English preposition "in", as in ''Peter works in X''.
+#:*plc(work;X) = X is the physical place where Peter works (as in ''Peter works in Geneva'')
+#:*lpl(work;X) = X is the logical place where Peter works (as in ''Peter works in politics'')
+#:*cnt(work;X) = X is the content of the work of Peter (as in ''Peter works in improving a given technology'')
+#:*tim(work;X) = X is the time when Peter works (as in ''Peter works in the summer'')
+#:*dur(work;X) = X is the duration of the work of Peter (as in ''Peter works in ten hours'')
+#:*man(work;X) = X is the manner Peter works (as in ''Peter works in intervals'')
+#Relations are not necessarily bound to a given lexical category.
+#:The same relation may be used to describe nominal and verbal structures:
+#:*agt: ''John arrived'' = agt(arrived;John), ''arrival of John'' = agt(arrival;John)
+#:*gol: ''go to NY'' = gol(go;NY), ''train to NY'' = gol(train;NY)
+#:*cnt: ''talk about John'' = cnt(talk;John), ''book about John'' = cnt(book;John)
+#In most cases, lower relations may be completely replaced by the corresponding upper levels with the help of attributes:
+#*''come from NY'' = src(come;NY) = plc(come;NY.@from)
+#*''go to NY'' = gol(go;NY) = plc(go;NY.@to)
+#*''go through Geneva'' = via(go;Geneva) = plc(go;Geneva.@through)
+#*''work since early'' = tmf(work;early) = tim(work;early.@since)
+#*''work until late'' = tmt(work;late) = tim(work;late.@until)
+#*''work during the summer'' = dur(work;summer) = tim(work;summer.@during)
+#*''kill with a knife'' = ins(kill;knife) = man(kill;knife.@with) 
+#*etc.
+#In several cases, however, relations are not completely interchangeable, and replacement implies a significant semantic loss. In these cases, upper levels must be used carefully, and only when there is no other alternative:
+#*''John is Peter'' = equ(Peter;John) &asymp;  aoj(Peter;John)
+#*''Dogs are mammals'' = icl(mammals;dogs) &asymp;  aoj(mammals;dogs)
+#*''John is a human being'' = iof(human being;John) &asymp;  aoj(human being;John)
+#*''table of wood'' = mat(table;wood) &asymp;  mod(table;wood)
+#*''city of New York'' = nam(city;New York) &asymp;  mod(city;New York)
+#*''Peter's book'' = pos(book;Peter) &asymp;  mod(book;Peter)
+#The use of relations depends on the internal semantic structure of the UW (see [[semantic frame]]s).
+#:Consider, for instance, the verbs "to kill", "to love" and "to give":
+#:*To kill: the subject is the agent of the action, and the object is the patient, in the sense it is transformed by the action. Therefore, the verb "to kill" assigns the relations "agt" (agent) to its subject and "obj" (patient) to its object. 
+#:*To love: the subject is not properly an agent, in the sense that it does not carry out the event; it is rather an experiencer. Additionally, the object is not a "patient", in the sense that it does not undergo any change; it is actually the content or theme of the event. Therefore: the verb "to love" assigns the relations "exp" (experiencer) to its subject and "cnt" (content) to its object.
+#:*to give: the subject is the agent of the action, and the verb contains two objects: the object that is given and the recipient of this object. The object that is given normally does not undergo any change other than the position and, in this sense, is normally represented as "cnt" (content); the recipient is represented by the relation "gol" (goal).
+
+== List of relations in alphabetical order ==
+{|border=1 cellpadding=5
+!width=3%|Tag
+!width=7%|Relation
+!width=45%|Definition
+!width=45%|Example
+|-
+|agt
+|agent
+|A participant in an action or process that provokes a change of state or location.
+|John killed Mary = agt(killed;John)<br />Mary was killed by John = agt(killed;John)<br />arrival of John = agt(arrival;John)
+|-
+|and
+|conjunction
+|Used to state a conjunction between two entities.
+|John and Mary = and(John;Mary)<br />both John and Mary = and(John;Mary)<br />neither John nor Mary = and(John;Mary)<br />John as well as Mary = and(John;Mary)
+|-
+|ant
+|opposition or concession
+|Used to indicate that two entities do not share the same meaning or reference. Also used to indicate concession.
+|John is not Peter = ant(Peter;John)<br />3 + 2 != 6 = ant(6;3+2)<br />Although he's quiet, he's not shy = ant(he's not shy;he's quiet)
+|-
+|aoj
+|object of an attribute
+|The subject of an stative verb. Also used to express the predicative relation between the predicate and the subject.
+|John has two daughters = aoj(have;John)<br />the book belongs to Mary = aoj(belong;book)<br />the book contains many pictures = aoj(contain;book)<br />John is sad = aoj(sad;John)<br />John looks sad = aoj(sad;John);
+|-
+|ben
+|beneficiary
+|A participant who is advantaged or disadvantaged by an event.
+|John works for Peter = ben(works;Peter)<br />John gave the book to Mary for Peter = ben(gave;Peter)
+|-
+|cnt
+|content or theme
+|The object of an stative or experiental verb, or the theme of an entity.
+|John has two daughters = cnt(have;two daughters)<br />the book belongs to Mary = cnt(belong;Mary)<br />the book contains many pictures = cnt(contain;many pictures)<br />John believes in Mary = cnt(believe;Mary)<br />John saw Mary = cnt(saw;Mary)<br />John loves Mary = cnt(love;Mary)<br />The explosion was heard by everyone = cnt(hear;explosion)<br />a book about Peter = cnt(book;Peter)
+|-
+|con
+|condition
+|A condition of an event.
+|If I see him, I will tell him = con(I will tell him;I see him)<br />I will tell him if I see him = con(I will tell him;I see him);
+|-
+|dur
+|duration or co-occurrence
+|The duration of an entity or event.
+|John worked for five hours = dur(worked;five hours)<br />John worked hard the whole summer = dur(worked;the whole summer)<br />John completed the task in ten minutes = dur(completed;ten minutes)<br />John was reading while Peter was cooking = dur(John was reading;Peter was cooking)
+|-
+|equ
+|synonym or paraphrase
+|Used to indicate that two entities share the same meaning or reference. Also used to indicate semantic apposition.
+|The morning star is the evening star = equ(evening star;morning star)<br />3 + 2 = 5 = equ(5;3+2)<br />UN (United Nations) = equ(UN;United Nations)<br />John, the brother of Mary = equ(John;the brother of Mary)
+|-
+|exp
+|experiencer
+|A participant in an action or process who receives a sensory impression or is the locus of an experiential event.
+|John believes in Mary = exp(believe;John)<br />John saw Mary = exp(saw;John)<br />John loves Mary = exp(love;John)<br />The explosion was heard by everyone = exp(hear;everyone)
+|-
+|fld
+|field
+|Used to indicate the semantic domain of an entity.
+|sentence (linguistics) = fld(sentence;linguistics)
+|-
+|gol
+|final state, place, destination or recipient
+|The final state, place, destination or recipient of an entity or event.
+|John received the book = gol(received;John)<br />John won the prize = gol(won;John)<br />John changed from poor to rich = gol(changed;rich)<br />John gave the book to Mary = gol(gave;Mary)<br />He threw the book at me = gol(threw;me)<br />John goes to NY = gol(go;NY)<br />train to NY = gol(train;NY)
+|-
+|icl
+|hyponymy, is a kind of
+|Used to refer to a subclass of a class.
+|Dogs are mammals = icl(mammal;dogs)
+|-
+|ins
+|instrument or method
+|An inanimate entity or method that an agent uses to implement an event. It is the stimulus or immediate physical cause of an event.
+|The cook cut the cake with a knife = ins(cut;knife)<br />She used a crayon to scribble a note = ins(used;crayon)<br />That window was broken by a hammer = ins(broken;hammer)<br />He solved the problem with a new algorithm = ins(solved;a new algorithm)<br />He solved the problem using an algorithm = ins(solved;using an algorithm)<br />He used Mathematics to solve the problem = ins(used;Mathematics)
+|-
+|iof
+|is an instance of
+|Used to refer to an instance or individual element of a class.
+|John is a human being = iof(human being;John)
+|-
+|lpl
+|logical place
+|A non-physical place where an entity or event occurs or a state exists.
+|John works in politics = lpl(works;politics)<br />John is in love = lpl(John;love)<br />officer in command = lpl(officer;command)
+|-
+|man
+|manner
+|Used to indicate how the action, experience or process of an event is carried out.
+|John bought the car quickly = man(bought;quickly)<br />John bought the car in equal payments = man(bought;in equal payments)<br />John paid in cash = man(paid;in cash)<br />John wrote the letter in German = man(wrote;in German)<br />John wrote the letter in a bad manner = man(wrote;in a bad manner)
+|-
+|mat
+|material
+|Used to indicate the material of which an entity is made.
+|A statue in bronze = mat(statue;bronze)<br />a wood box = mat(box;wood)<br />a glass mug = mat(mug;glass)
+|-
+|mod
+|modifier
+|A general modification of an entity.
+|a beautiful book = mod(book;beautiful)<br />an old book = mod(book;old)<br />a book with 10 pages = mod(book;with 10 pages)<br />a book in hard cover = mod(book;in hard cover)<br />a poem in iambic pentameter = mod(poem;in iambic pentamenter)<br />a man in an overcoat = mod(man;in an overcoat)
+|-
+|nam
+|name
+|The name of an entity.
+|The city of New York = nam(city;New York)<br />my friend Willy = nam(friend;Willy)
+|-
+|obj
+|patient
+|A participant in an action or process undergoing a change of state or location.
+|John killed Mary = obj(killed;Mary)<br />Mary died = obj(died;Mary)<br />The snow melts = obj(melts;snow)
+|-
+|opl
+|objective place
+|A place affected by an action or process.
+|John was hit in the face = opl(hit;face)<br />John fell in the water = opl(fell;water)
+|-
+|or
+|disjunction
+|Used to indicate a disjunction between two entities.
+|John or Mary = or(John;Mary)<br />either John or Mary = or(John;Mary)
+|-
+|per
+|proportion, rate, distribution, measure or basis for a comparison
+|Used to indicate a measure or quantification of an event.
+|The course was split in two parts = per(split;in two parts)<br />twice a week = per(twice;week)<br />The new coat costs $70 = per(cost;$70)<br />
+John is more beautiful than Peter = per(beautiful;Peter)<br />John is as intelligent as Mary = per(intelligent;Mary)<br />John is the most intelligent of us = per(intelligent;we)
+|-
+|plc
+|place
+|The location or spatial orientation of an entity or event.
+|John works here = plc(work;here)<br />John works in NY = plc(work;NY)<br />John works in the office = plc(work;office)<br />John is in the office = plc(John;office)<br />a night in Paris = plc(night;Paris)
+|-
+|pof
+|is part of
+|Used to refer to a part of a whole.
+|John is part of the family = pof(family;John)
+|-
+|pos
+|possessor
+|The possessor of a thing.
+|the book of John = pos(book;John)<br />John's book = pos(book;John)<br />his book = pos(book;he)
+|-
+|ptn
+|partner
+|A secondary (non-focused) participant in an event.
+|John fights with Peter = ptn(fight;Peter)<br />John wrote the letter with Peter = ptn(wrote;Peter)<br />John lives with Peter = ptn(live;Peter)
+|-
+|pur
+|purpose
+|The purpose of an entity or event.
+|John left early in order to arrive early = pur(John left early;arrive early)<br />You should come to see us = pur(you should come;see us)<br />book for children = pur(book;children)
+|-
+|qua
+|quantity
+|Used to express the quantity of an entity.
+|two books = qua(book;2)<br />a group of students = qua(students;group)
+|-
+|res
+|result or factitive
+|A referent that results from an entity or event.
+|The cook bake a cake = res(bake;cake)<br />They built a very nice building = res(built;a very nice building)
+|-
+|rsn
+|reason
+|The reason of an entity or event.
+|John left because it was late = rsn(John left;it was late)<br />John killed Mary because of John = rsn(killed;John)
+|-
+|seq
+|consequence
+|Used to express consequence.
+|I think therefore I am = seq(I think;I am)
+|-
+|src
+|initial state, place, origin or source
+|The initial state, place, origin or source of an entity or event.
+|John came from NY = src(came;NY)<br />John is from NY = src(John;NY)<br />train from NY = src(train;NY)<br />John changed from poor into rich = src(changed;poor)<br />John received the book from Peter = src(received;Peter)<br />John withdrew the money from the cashier = src(withdrew;cashier)
+|-
+|tim
+|time
+|The temporal placement of an entity or event.
+|The whistle will sound at noon = tim(sound;noon)<br />John came yesterday = tim(came;yesterday)
+|-
+|tmf
+|initial time
+|The initial time of an entity or event.
+|John worked since early = tmf(worked;early)
+|-
+|tmt
+|final time
+|The final time of an entity or event.
+|John worked until late = tmt(worked;late)
+|-
+|via
+|intermediate state or place
+|The intermediate place or state of an entity or event.
+|John went from NY to Geneva through Paris = via(went;Paris)<br />The baby crawled across the room  = via(crawled;across the room)
+|}
+
+== Notes ==
+<references />

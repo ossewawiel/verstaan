@@ -1,0 +1,34 @@
+The '''UNL Ontology''', also known as the UW System, is a tree-like structure where UWs are interconnected through ontological relations: [[icl]] (is-a-kind-of), [[iof]] (is-an-instance-of), [[equ]] (is-equivalent-to) and [[pof]] (is-a-part-of). The UNL Ontology is claimed to improve the results of the [[enconversion]] process, as it can be used as a word sense disambiguation strategy; and the [[deconversion]] results, as it would compensate dictionary limitations. In what follows, we present the current specifications for the UNL Ontology. They are not mandatory but are required from those interested in using UNL Centre's and UNDL Foundation's tools.
+== Syntax ==
+
+The UNL Ontology is a plain text file with a single entry per line. There are two possible representations for UNL Ontology entries: they can be either represented as [[Master Definition|Master Definitions]] or as [[UNL Knowledge Base]] (UNLKB) entries.
+
+When represented as UNLKB entries, the UNL Ontology entries have the following format:
+
+{|
+|<UNL Ontology entry> 
+|::=
+|<binary relation>"="<degree of certainty>";"
+|-
+|<binary relation>
+|::=
+|{icl, iof, equ, pof} "(" <source node> "," <target node> ")"
+|-
+|<source node>
+|::=
+|any existing UW
+|-
+|<target node>
+|::=
+|any existing UW
+|-
+|<degree of certainty>
+|::=
+|{0,1}
+|}
+
+Where:<br >
+0 = false <br >
+1 = true <br >
+
+[[Master Definitions]], or simply MD, is an abbreviated form for representing the UNL Ontology entries, but they can be used only with "[[icl]]" relations. This is the technique used by the UNL Centre to represent the UW System.

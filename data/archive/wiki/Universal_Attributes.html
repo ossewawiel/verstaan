@@ -1,0 +1,417 @@
+<div class="mw-content-ltr mw-parser-output" lang="en" dir="ltr"><p><b>Universal Attributes</b> are arcs linking a node to itself. In opposition to <a href="/wiki/Universal_Relations" title="Universal Relations">Universal Relations</a>, they correspond to one-place predicates, i.e., functions that take a single argument. In UNL, attributes have been normally used to represent information conveyed by natural language grammatical categories (such as tense, mood, aspect, number, etc). The set of attributes, which is claimed to be universal, is defined in the <a href="/wiki/Specs" title="Specs">UNL Specs</a> and is not open to frequent additions.
+</p>
+<div class="mw-heading mw-heading2"><h2 id="Syntax">Syntax</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Universal_Attributes&amp;veaction=edit&amp;section=1" title="Edit section: Syntax" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Universal_Attributes&amp;action=edit&amp;section=1" title="Edit section&#39;s source code: Syntax">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>The syntax of attributes is defined as follows:
+</p>
+<pre>&lt;attribute&gt;     &#160;::= "@"&lt;attribute name&gt;
+&lt;attribute name&gt;&#160;::= &lt;character&gt;+
+&lt;character&gt;     &#160;::= {“a”,...,“z”,“_”}
+</pre>
+<p>where:<br />
+&lt; &gt; 	variable<br />
+" "	terminal symbol<br />
+::=... is defined as ...<br />
+{ }	disjunction ("or")<br />
++       to be used one or more times<br />
+...	to be repeated more than 0 times<br />
+</p><p>Attribute names are always lower case words or expressions. Normally, English words ("past", "will") or mnemonic abbreviations ("def", "pl") are used for attribute labelling. No blank space is allowed inside an attribute name.
+</p>
+<div class="mw-heading mw-heading2"><h2 id="Semantics">Semantics</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Universal_Attributes&amp;veaction=edit&amp;section=2" title="Edit section: Semantics" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Universal_Attributes&amp;action=edit&amp;section=2" title="Edit section&#39;s source code: Semantics">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>Attributes are annotations made to nodes or hypernodes of a UNL hypergraph. They denote the circumstances under which these nodes (or hypernodes) are used. 
+</p><p>Attributes may convey three different kinds of information: 
+</p>
+<ul><li>The information on the role of the node in the UNL graph (as in the case for '@entry', that indicates the main (starting) node of a UNL directed graph);</li>
+<li>The information conveyed by bound morphemes and closed classes, such as affixes (gender, number, tense, aspect, mood, voice, etc), determiners (articles and demonstratives), adpositions (prepositions, postpositions and circumpositions), conjunctions, auxiliary and quasi-auxiliary verbs (auxiliaries, modals, coverbs, preverbs) and degree adverbs (specifiers).</li>
+<li>The information on the (external) context of the utterance, i.e., non-verbal elements of communication, such as prosody, sentence and text structure, politeness, schemes, social deixis and speech acts.</li></ul>
+<div class="mw-heading mw-heading2"><h2 id="Set_of_attributes">Set of attributes</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Universal_Attributes&amp;veaction=edit&amp;section=3" title="Edit section: Set of attributes" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Universal_Attributes&amp;action=edit&amp;section=3" title="Edit section&#39;s source code: Set of attributes">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<pre><a rel="nofollow" class="external text" href="http://www.unlweb.net.br/unlarium/dictionary/export_attributes.php">List of attributes in alphabetical order</a>
+</pre>
+<p>{{#tree:id=tagset|openlevels=0|root=att|
+</p>
+<ul><li><a href="/wiki/index.php?title=Animacy&amp;action=edit&amp;redlink=1" class="new" title="Animacy (page does not exist)">animacy</a> (ANIA)
+<ul><li>@person</li>
+<li>@thing</li></ul></li>
+<li><a href="/wiki/Aspect" title="Aspect">aspect</a> (ASPA)
+<ul><li>@causative: causative</li>
+<li>@continuative: continuous</li>
+<li>@experiential: experience</li>
+<li>@habitual: habitual</li>
+<li>@imperfective: uncompleted</li>
+<li>@inceptive: beginning</li>
+<li>@inchoative: change of state</li>
+<li>@iterative: repetition</li>
+<li>@perfect: perfect</li>
+<li>@perfective: completed</li>
+<li>@permissive: permissive</li>
+<li>@persistent: persistent</li>
+<li>@progressive: ongoing</li>
+<li>@prospective: imminent</li>
+<li>@result: result</li>
+<li>@terminative: cessation</li></ul></li>
+<li><a href="/wiki/Degree" title="Degree">degree</a> (DEGA)
+<ul><li>@almost: approximative</li>
+<li>@also: repetitive</li>
+<li>positive
+<ul><li>@again: iterative</li>
+<li>@emphasis: emphasis</li>
+<li>@enough: sufficiently (enough)</li>
+<li>@extra: excessively (too)</li>
+<li>@minus: downtoned (a little)</li>
+<li>@plus: intensified (very)</li></ul></li>
+<li>comparative
+<ul><li>@more: comparative of superiority</li>
+<li>@less: comparative of inferiority</li>
+<li>@equal: comparative of equality</li></ul></li>
+<li>superlative
+<ul><li>@most: superlative of superiority</li>
+<li>@least: superlative of inferiority</li></ul></li></ul></li>
+<li><a href="/wiki/index.php?title=Emotion&amp;action=edit&amp;redlink=1" class="new" title="Emotion (page does not exist)">emotions</a> (FEEL)
+<ul><li>@anger</li>
+<li>@attention</li>
+<li>@consent</li>
+<li>@contentment</li>
+<li>@disagreement</li>
+<li>@discontentment</li>
+<li>@dissent</li>
+<li>@hesitation</li>
+<li>@pain</li>
+<li>@relief</li>
+<li>@surprise</li>
+<li>@weariness</li></ul></li>
+<li><a href="/wiki/Figure_of_speech" title="Figure of speech">figure of speech</a> (FIGA)
+<ul><li>Schemes
+<ul><li>@brachylogia: omission of conjunctions between a series of words</li>
+<li>@chiasmus: reversal of grammatical structures in successive clauses</li>
+<li>@climax: arrangement of words in order of increasing importance</li>
+<li>@consonance: repetition of consonant sounds without the repetition of the vowel sounds</li>
+<li>@ellipsis: omission of words</li>
+<li>@epanalepsis: repetition of the initial word or words of a clause or sentence at the end of the clause or sentence</li>
+<li>@interruption: insertion of a clause or sentence in a place where it interrupts the natural flow of the sentence</li>
+<li>@parallelism: use of similar structures in two or more clauses</li>
+<li>@pleonasm: Use of superfluous or redundant words</li>
+<li>@polyptoton: repetition of words derived from the same root</li>
+<li>@polysyndeton: repetition of conjunctions</li>
+<li>@symploce: combination of anaphora and epistrophe</li></ul></li>
+<li>Tropes
+<ul><li>@anthropomorphism: Ascribing human characteristics to something that is not human, such as an animal or a god (see zoomorphism)</li>
+<li>@antiphrasis: Word or words used contradictory to their usual meaning, often with irony</li>
+<li>@antonomasia: Substitution of a phrase for a proper name or vice versa</li>
+<li>@catachresis: use an existing word to denote something that has no name in the current language</li>
+<li>@double_negative: Grammar construction that can be used as an expression and it is the repetition of negative words</li>
+<li>@dysphemism: Substitution of a harsher, more offensive, or more disagreeable term for another. Opposite of euphemism</li>
+<li>@epanorthosis: Immediate and emphatic self-correction, often following a slip of the tongue</li>
+<li>@euphemism: Substitution of a less offensive or more agreeable term for another</li>
+<li>@hyperbole: Use of exaggerated terms for emphasis</li>
+<li>@irony: Use of word in a way that conveys a meaning opposite to its usual meaning</li>
+<li>@metaphor: Stating one entity is another for the purpose of comparing them in quality</li>
+<li>@metonymy: Substitution of a word to suggest what is really meant</li>
+<li>@onomatopoeia: Words that sound like their meaning</li>
+<li>@oxymoron: Using two terms together, that normally contradict each other</li>
+<li>@paradox: Use of apparently contradictory ideas to point out some underlying truth</li>
+<li>@paronomasia: A form of pun, in which words similar in sound but with different meanings are used</li>
+<li>@periphrasis: Using several words instead of few</li>
+<li>@repetition: Repeated usage of word(s)/group of words in the same sentence to create a poetic/rhythmic effect</li>
+<li>@synecdoche: Form of metonymy, in which a part stands for the whole</li>
+<li>@synesthesia: Description of one kind of sense impression by using words that normally describe another.</li>
+<li>@zoomorphism: Applying animal characteristics to humans or gods</li></ul></li></ul></li>
+<li><a href="/wiki/Gender" title="Gender">gender</a> (GENA)
+<ul><li>@female</li>
+<li>@male</li>
+<li>@neutral</li></ul></li>
+<li><a href="/wiki/Information_structure" class="mw-redirect" title="Information structure">information structure</a> (ISTA)
+<ul><li>@comment: what is being said about the topic</li>
+<li>@focus: information that is contrary to the presuppositions of the interlocutor</li>
+<li>@topic: what is being talked about</li></ul></li>
+<li><a href="/wiki/Lexical_category" title="Lexical category">lexical category</a> (LEXA)
+<ul><li>@adjective</li>
+<li>@adverb</li>
+<li>@noun</li>
+<li>@verb</li></ul></li>
+<li><a href="/wiki/index.php?title=Manner&amp;action=edit&amp;redlink=1" class="new" title="Manner (page does not exist)">manner</a> (HOW)
+<ul><li>@according_to</li>
+<li>@against</li>
+<li>@although</li>
+<li>@and</li>
+<li>@as</li>
+<li>@as.@if</li>
+<li>@as_far_as</li>
+<li>@as_of</li>
+<li>@as_per</li>
+<li>@as_regards</li>
+<li>@as_well_as</li>
+<li>@barring</li>
+<li>@because</li>
+<li>@because_of</li>
+<li>@besides</li>
+<li>@but</li>
+<li>@by</li>
+<li>@by_means_of</li>
+<li>@concerning</li>
+<li>@despite</li>
+<li>@due_to</li>
+<li>@even.@if</li>
+<li>@except</li>
+<li>@except.@if</li>
+<li>@except_for</li>
+<li>@excluding</li>
+<li>@failing</li>
+<li>@for</li>
+<li>@given</li>
+<li>@if</li>
+<li>@if.@only</li>
+<li>@in_accordance_with</li>
+<li>@in_addition_to</li>
+<li>@in_case</li>
+<li>@in_case_of</li>
+<li>@in_favor_of</li>
+<li>@in_place_of</li>
+<li>@in_spite_of</li>
+<li>@including</li>
+<li>@instead_of</li>
+<li>@like</li>
+<li>@notwithstanding</li>
+<li>@off</li>
+<li>@on_account_of</li>
+<li>@on_behalf_of</li>
+<li>@or</li>
+<li>@owing_to</li>
+<li>@pace</li>
+<li>@per</li>
+<li>@pursuant_to</li>
+<li>@qua</li>
+<li>@regarding</li>
+<li>@regardless_of</li>
+<li>@save</li>
+<li>@so</li>
+<li>@than</li>
+<li>@thanks_to</li>
+<li>@that_of</li>
+<li>@unless</li>
+<li>@unlike</li>
+<li>@versus</li>
+<li>@with</li>
+<li>@with_regard_to</li>
+<li>@with_relation_to</li>
+<li>@with_respect_to</li>
+<li>@without</li>
+<li>@worth</li></ul></li>
+<li><a href="/wiki/Modality" title="Modality">modality</a> (MODA)
+<ul><li>@ability</li>
+<li>@advice</li>
+<li>@agreement</li>
+<li>@assertion</li>
+<li>@assumption</li>
+<li>@belief</li>
+<li>@command</li>
+<li>@conclusion</li>
+<li>@condition</li>
+<li>@confirmation</li>
+<li>@consequence</li>
+<li>@conviction</li>
+<li>@decision</li>
+<li>@deduction</li>
+<li>@desire</li>
+<li>@determination</li>
+<li>@doubt</li>
+<li>@exclamation</li>
+<li>@exhortation</li>
+<li>@expectation</li>
+<li>@fear</li>
+<li>@hope</li>
+<li>@hypothesis</li>
+<li>@intention</li>
+<li>@interrogation</li>
+<li>@invitation</li>
+<li>@judgement</li>
+<li>@narrative</li>
+<li>@necessity</li>
+<li>@obligation</li>
+<li>@opinion</li>
+<li>@permission</li>
+<li>@possibility</li>
+<li>@prediction</li>
+<li>@presumption</li>
+<li>@probability</li>
+<li>@prohibition</li>
+<li>@promise</li>
+<li>@regret</li>
+<li>@request</li>
+<li>@speculation</li>
+<li>@suggestion</li>
+<li>@threat</li>
+<li>@warning</li></ul></li>
+<li><a href="/wiki/index.php?title=Nominal_attributes&amp;action=edit&amp;redlink=1" class="new" title="Nominal attributes (page does not exist)">nominal attributes</a> (NOUA)
+<ul><li>@about</li>
+<li>@round</li>
+<li>@of</li></ul></li>
+<li><a href="/wiki/Person" title="Person">person</a> (PERA)
+<ul><li>@1 (first person: speaker)</li>
+<li>@2 (second person: addressee)</li>
+<li>@3 (third person)</li></ul></li>
+<li><a href="/wiki/Place" title="Place">place</a> (WHERE)
+<ul><li>location
+<ul><li>@above</li>
+<li>@among</li>
+<li>@around</li>
+<li>@at</li>
+<li>@back</li>
+<li>@behind</li>
+<li>@below</li>
+<li>@beside</li>
+<li>@between</li>
+<li>@beyond</li>
+<li>@bottom</li>
+<li>@front</li>
+<li>@in</li>
+<li>@inside</li>
+<li>@left</li>
+<li>@on</li>
+<li>@opposite</li>
+<li>@outside</li>
+<li>@over</li>
+<li>@right</li>
+<li>@side</li>
+<li>@top</li>
+<li>@under</li>
+<li>@within</li></ul></li>
+<li>position
+<ul><li>@contact</li>
+<li>@far</li>
+<li>@near</li></ul></li>
+<li>direction
+<ul><li>@across</li>
+<li>@along</li>
+<li>@clockwise</li>
+<li>@down</li>
+<li>@from</li>
+<li>@through</li>
+<li>@throughout</li>
+<li>@to</li>
+<li>@towards</li>
+<li>@up</li></ul></li></ul></li>
+<li><a href="/wiki/Polarity" title="Polarity">polarity</a> (POLA)
+<ul><li>@yes (affirmative)</li>
+<li>@not (negative)</li>
+<li>@maybe (dubitative)</li></ul></li>
+<li><a href="/wiki/Quantification" title="Quantification">quantification</a> (QUAA)
+<ul><li>@any (any) (existential quantifier)</li>
+<li>@all (all) (universal quantifier)</li>
+<li>@entire (entire)</li>
+<li>@generic (no quantification)</li>
+<li>@half (half)</li>
+<li>@majority (a major part)</li>
+<li>@minority (a minor part)</li>
+<li>@no (none)</li>
+<li>@part (part)</li>
+<li>@pl (plural)
+<ul><li>@dual</li>
+<li>@trial</li>
+<li>@quadrual</li>
+<li>@paucal</li>
+<li>@multal</li></ul></li>
+<li>@singular (default)</li>
+<li>@times (multiplicative)</li>
+<li>@tuple (collective)</li>
+<li>@unit (unit)</li></ul></li>
+<li><a href="/wiki/Register" title="Register">register</a> (REGA)
+<ul><li>@archaic</li>
+<li>@colloquial</li>
+<li>@dialect</li>
+<li>@jargon</li>
+<li>@literary</li>
+<li>@pejorative</li>
+<li>@slang</li>
+<li>@taboo</li></ul></li>
+<li><a href="/wiki/Social_deixis" title="Social deixis">social deixis</a> (SODA)
+<ul><li>@equivalent</li>
+<li>@familiar</li>
+<li>@inferior</li>
+<li>@intimate</li>
+<li>@polite</li>
+<li>@reverential</li>
+<li>@superior</li></ul></li>
+<li><a href="/wiki/Specification" title="Specification">specification</a> (WHICH)
+<ul><li>@also (also)</li>
+<li>@circa</li>
+<li>@def (definite)
+<ul><li>@both (both)</li>
+<li>@distal (far from the speaker)</li>
+<li>@each (each)</li>
+<li>@either (either)</li>
+<li>@medial (near the addressee)</li>
+<li>@other (other)</li>
+<li>@own (own)</li>
+<li>@proximal (near the speaker)</li>
+<li>@same (same)</li>
+<li>@such (such)</li></ul></li>
+<li>@even</li>
+<li>@indef (indefinite)
+<ul><li>@certain (certain)</li>
+<li>@wh</li></ul></li>
+<li>@neither</li>
+<li>@only</li>
+<li>@ordinal (ordinal)</li></ul></li>
+<li>syntactic structures (SYNA)
+<ul><li>conventions
+<ul><li>@angle_bracket</li>
+<li>@brace</li>
+<li>@double_parenthesis</li>
+<li>@double_quote</li>
+<li>@parenthesis</li>
+<li>@single_quote</li>
+<li>@square_bracket</li></ul></li>
+<li>@entry (sentence head)</li>
+<li>@relative (relative clause head)</li>
+<li>@speech (direct speech)</li>
+<li>@title (title)</li>
+<li>@vocative (vocative)</li></ul></li>
+<li><a href="/wiki/Time" title="Time">time</a> (WHEN)
+<ul><li>absolute tense
+<ul><li>@past: at a time before the moment of utterance</li>
+<li>@present: at the moment of utterance</li>
+<li>@future: at a time after the moment of utterance</li>
+<li>@recent: close to the moment of utterance</li>
+<li>@remote: remote from the moment of utterance</li></ul></li>
+<li>relative tense
+<ul><li>@anterior: before some other time other than the time of utterance</li>
+<li>@posterior: after some other time other than the time of utterance</li></ul></li>
+<li>other
+<ul><li>@after</li>
+<li>@before</li>
+<li>@during</li>
+<li>@following</li>
+<li>@prior_to</li>
+<li>@since</li>
+<li>@subsequent_to</li>
+<li>@until</li></ul></li></ul></li>
+<li><a href="/wiki/Voice" title="Voice">voice</a> (VOIA)
+<ul><li>@active: He built this house in 1895</li>
+<li>@passive: This house was built in 1895.</li>
+<li>@reflexive: He killed himself.</li>
+<li>@reciprocal: They killed each other.</li></ul></li></ul>
+<p>}}
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20260910072217
+Cache expiry: 86400
+Reduced expiry: false
+Complications: []
+CPU time usage: 0.017 seconds
+Real time usage: 0.018 seconds
+Preprocessor visited node count: 44/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/100
+Expensive parser function count: 0/100
+Unstrip recursion depth: 0/20
+Unstrip post‐expand size: 157/5000000 bytes
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    0.000      1 -total
+-->
+
+<!-- Saved in parser cache with key u965818192_SLvgQ-l8z2_:pcache:360:|#|:idhash:canonical and timestamp 20260910072217 and revision id 16738. Rendering was triggered because: diff-page
+ -->
+</div>

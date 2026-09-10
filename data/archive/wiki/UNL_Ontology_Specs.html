@@ -1,0 +1,71 @@
+<div class="mw-content-ltr mw-parser-output" lang="en" dir="ltr"><p>The <b>UNL Ontology</b>, also known as the UW System, is a tree-like structure where UWs are interconnected through ontological relations: <a href="/wiki/index.php?title=Icl&amp;action=edit&amp;redlink=1" class="new" title="Icl (page does not exist)">icl</a> (is-a-kind-of), <a href="/wiki/index.php?title=Iof&amp;action=edit&amp;redlink=1" class="new" title="Iof (page does not exist)">iof</a> (is-an-instance-of), <a href="/wiki/index.php?title=Equ&amp;action=edit&amp;redlink=1" class="new" title="Equ (page does not exist)">equ</a> (is-equivalent-to) and <a href="/wiki/index.php?title=Pof&amp;action=edit&amp;redlink=1" class="new" title="Pof (page does not exist)">pof</a> (is-a-part-of). The UNL Ontology is claimed to improve the results of the <a href="/wiki/Enconversion" class="mw-redirect" title="Enconversion">enconversion</a> process, as it can be used as a word sense disambiguation strategy; and the <a href="/wiki/Deconversion" class="mw-redirect" title="Deconversion">deconversion</a> results, as it would compensate dictionary limitations. In what follows, we present the current specifications for the UNL Ontology. They are not mandatory but are required from those interested in using UNL Centre's and UNDL Foundation's tools.
+</p>
+<div class="mw-heading mw-heading2"><h2 id="Syntax">Syntax</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=UNL_Ontology_Specs&amp;veaction=edit&amp;section=1" title="Edit section: Syntax" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=UNL_Ontology_Specs&amp;action=edit&amp;section=1" title="Edit section&#39;s source code: Syntax">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>The UNL Ontology is a plain text file with a single entry per line. There are two possible representations for UNL Ontology entries: they can be either represented as <a href="/wiki/index.php?title=Master_Definition&amp;action=edit&amp;redlink=1" class="new" title="Master Definition (page does not exist)">Master Definitions</a> or as <a href="/wiki/UNL_Knowledge_Base" title="UNL Knowledge Base">UNL Knowledge Base</a> (UNLKB) entries.
+</p><p>When represented as UNLKB entries, the UNL Ontology entries have the following format:
+</p>
+<table>
+<tbody><tr>
+<td>&lt;UNL Ontology entry&gt;
+</td>
+<td>::=
+</td>
+<td>&lt;binary relation&gt;"="&lt;degree of certainty&gt;";"
+</td></tr>
+<tr>
+<td>&lt;binary relation&gt;
+</td>
+<td>::=
+</td>
+<td>{icl, iof, equ, pof} "(" &lt;source node&gt; "," &lt;target node&gt; ")"
+</td></tr>
+<tr>
+<td>&lt;source node&gt;
+</td>
+<td>::=
+</td>
+<td>any existing UW
+</td></tr>
+<tr>
+<td>&lt;target node&gt;
+</td>
+<td>::=
+</td>
+<td>any existing UW
+</td></tr>
+<tr>
+<td>&lt;degree of certainty&gt;
+</td>
+<td>::=
+</td>
+<td>{0,1}
+</td></tr></tbody></table>
+<p>Where:<br />
+0 = false <br />
+1 = true <br />
+</p><p><a href="/wiki/index.php?title=Master_Definitions&amp;action=edit&amp;redlink=1" class="new" title="Master Definitions (page does not exist)">Master Definitions</a>, or simply MD, is an abbreviated form for representing the UNL Ontology entries, but they can be used only with "<a href="/wiki/index.php?title=Icl&amp;action=edit&amp;redlink=1" class="new" title="Icl (page does not exist)">icl</a>" relations. This is the technique used by the UNL Centre to represent the UW System.
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20260910165024
+Cache expiry: 86400
+Reduced expiry: false
+Complications: []
+CPU time usage: 0.007 seconds
+Real time usage: 0.009 seconds
+Preprocessor visited node count: 12/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/100
+Expensive parser function count: 0/100
+Unstrip recursion depth: 0/20
+Unstrip post‐expand size: 0/5000000 bytes
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    0.000      1 -total
+-->
+
+<!-- Saved in parser cache with key u965818192_SLvgQ-l8z2_:pcache:381:|#|:idhash:canonical and timestamp 20260910165024 and revision id 9983. Rendering was triggered because: api-parse
+ -->
+</div>

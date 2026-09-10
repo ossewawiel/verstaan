@@ -1,0 +1,69 @@
+The XI UNL School will be dedicated to the development and improvement of the grammatical resources for the languages below. It will take place at the University of Macau, in Macau, from March 11th to 15th, 2013.
+
+== Call for Participation ==
+The CFP is available at [http://www.unlweb.net.br/unlweb/index.php?option=com_content&view=article&id=78:xi-unl-school-&catid=1:latest-news&Itemid=60].
+
+== Important dates ==
+*<strike>03/Feb/2013: Deadline for the applications</strike>
+*<strike>10/Feb/2013: Notification of accepted candidates</strike>
+*11-15/Mar/2013: XI UNL School
+
+== Material ==
+*Exercises
+**1 [http://www.unlweb.net.br/resources/corpus/UCA1/UCA1_eng.txt UCA1_eng.txt]
+**2 [http://www.unlweb.net.br/resources/corpus/UCA1/UCA1_unl_exp.txt UCA1_unl_exp.txt]
+**6 [http://www.unlweb.net.br/resources/corpus/UCB1/UCB1_t1_eng.txt UCB1]
+**9 [http://www.unlweb.net.br/resources/grammar/normalization_grammar.txt normalization_grammar.txt], [http://www.unlweb.net.br/resources/grammar/nl_unl_tgrammar.txt nl_unl_tgrammar.txt]
+**10 [http://www.unlweb.net.br/resources/grammar/normalization_grammar.txt normalization_grammar.txt], [http://www.unlweb.net.br/resources/grammar/unl_nl_tgrammar.txt unl_nl_tgrammar.txt]
+**12 [[UCA1]]
+**13 [[UCA1]]
+**14 [[UCA1]]
+*Slides
+**[http://www.unlweb.net.br/school/macau2013/day1.pdf Day #1, March 11th]
+**[http://www.unlweb.net.br/school/macau2013/day2.pdf Day #2, March 12th] 
+**[http://www.unlweb.net.br/school/macau2013/day3.pdf Day #3, March 13th]
+**[http://www.unlweb.net.br/school/macau2013/day4.pdf Day #4, March 14th]
+**[http://www.unlweb.net.br/school/macau2013/day5.pdf Day #5, March 15th] 
+*Additional material
+**[[Tagset]], because you are expected to use only the tags included in the tagset
+**[[UNL Dictionary Specs]], which is essential to understand the dictionary structure
+**[[UNL Grammar Specs]], which is essential to understand the grammar structure
+**[[X-bar]]
+**[[Default Dictionary]]
+**[[English dictionary]]
+**[[Default grammar]]
+**[[English grammar]]
+
+== Participants ==
+*Angela Manukian (Armenian)
+*Chittaphone Chansylilath (Laotian)
+*Chunlei Yang (Chinese)
+*Jeanette Tan Yi Wen (Japanese)
+*Kim Sokphyrum (Khmer)
+*Lilit Paremuzyan (Armenian)
+*Muhammad Zulhelmy bin Mohd Rosman (Malay)
+*Siyou Liu (Chinese)
+*Somdev Kar (Bengali)
+*Suos Samak (Khmer)
+*Teng Wei Min (Chinese)
+*Vinh Dang (Vietnamese)
+*Viraj Karunananda (Sinhala)
+*Viraj Welgama (Sinhala)
+
+== Pre-workshop tasks  ==
+#Corpus
+##Translate (manually) the 100 sentences of the corpus [http://www.unlweb.net.br/resources/corpus/UCA1/UCA1_eng.txt UC-A1] from English into your native language. Be as close as possible to the original, and provide one single translation for each sentence. This will be your input document file, and your goal will be to provide (automatically, through [[IAN]]) the UNL graphs for each sentence
+##Save the translated text (without the English original) in a plain text (.txt) file with UTF-8 encoding and name it corpus_???.txt where ??? must be replaced by the corresponding  [http://en.wikipedia.org/wiki/List_of_ISO_639-2_codes ISO 639-2 language code].
+#Analysis Dictionary
+##Localize the dictionary available at [http://www.unlweb.net.br/resources/dic/UCA1/eng_unl_dic.txt eng_unl_dic.txt]. Note that "localization" is not the same as "translation". You may need other features (in English, for instance, nouns do not have gender or case) or other entries. In any case, the resulting dictionary should fit your translated version of the corpus (i.e., all the entries appearing in your translated version of the corpus should appear in the dictionary). For further information on localization, see [[Localization]]. For information on the dictionary structure, see [[Dictionary Specs]]. For an explanation of the structure of the English dictionary, see [[English_dictionary|English Dictionary]]. In case you need additional features, use only the tags available at the [[tagset]]. 
+##Save the NL-UNL dictionary in a plain text (.txt) file with UTF-8 encoding and name it ???_unl_dic.txt where ??? must be replaced by the corresponding  [http://en.wikipedia.org/wiki/List_of_ISO_639-2_codes ISO 639-2 language code].
+#Generation Dictionary
+##Localize the dictionary available at [http://www.unlweb.net.br/resources/dic/UCA1/unl_eng_dic.txt unl_eng_dic.txt]. Follow the same procedures described above.
+##Save the UNL-NL dictionary in a plain text (.txt) file with UTF-8 encoding and name it unl_???_dic.txt where ??? must be replaced by the corresponding  [http://en.wikipedia.org/wiki/List_of_ISO_639-2_codes ISO 639-2 language code].
+#Send the 3 files to r.martins@undlfoundation.org before March 4th
+
+== Venue ==
+University of Macau, Macau
+
+== Local Organization ==
+Prof. Dr. Ana Luísa Varani Leal (University of Macau)

@@ -1,0 +1,90 @@
+'''Modality''' (or '''illocutionary force''') is a semantic category used to indicate the attitudes on the part of the speaker towards the factual content of the utterance, e.g. uncertainty, definiteness, vagueness, possibility. It is normally manifest by the grammatical category of '''mood''', but may also be expressed by lexical means.
+
+== Natural language == 
+In natural languages, modality is normally associated with the grammatical category of [[mood]].<br >
+
+== UNL ==
+In UNL, modality is to be represented by attributes indicating propositional attitudes. 
+
+{{#tree:id=unl_modality|openlevels=0|root=Modality|
+*@ability
+*@advice
+*@agreement
+*@assertion
+*@assumption
+*@belief
+*@command
+*@condition
+*@conclusion
+*@confirmation
+*@consequence
+*@conviction
+*@decision
+*@determination
+*@deduction
+*@desire
+*@doubt
+*@exclamation
+*@exhortation
+*@expectation
+*@fear
+*@hope
+*@hypothesis
+*@intention
+*@interrogation
+*@invitation
+*@judgement
+*@narrative
+*@necessity
+*@obligation
+*@opinion
+*@permission
+*@possibility
+*@probability
+*@prediction
+*@presumption
+*@prohibition
+*@promise
+*@regret
+*@request
+*@speculation
+*@suggestion
+*@threat
+*@warning
+}}
+
+=== Examples ===
+*@ability: I can go there.
+*@advice: You should go there.
+*@assertion: It is hot outside.
+*@belief: I believe that it is hot outside.
+*@command: Go there!
+*@condition: If I went there
+*@confirmation: Yes, it is hot outside.
+*@conviction: It is certain that it is hot outside.
+*@decision: I'll go there.
+*@determination: I'll go there.
+*@deduction: It must be hot outside (because everybody is sweating).
+*@desire: It might be hot outside.
+*@doubt: I doubt that it is hot outside.
+*@exclamation: It could be hot outside!
+*@exhortation: Let's go there.
+*@fear: I'm afraid it's hot outside.
+*@hope: I hope that it is hot outside.
+*@hypothesis: It may be hot outside.
+*@intention: I'll go there tomorrow.
+*@interrogation: Is it hot outside?
+*@invitation: Would you go there?
+*@narrative: He told me that it is hot outside.
+*@necessity: It has to be hot outside.
+*@obligation: It must be hot outside. 
+*@opinion: I think that it is hot outside.
+*@permission: I may go there.
+*@possibility: It can be hot outside.
+*@probability: It is probably hot outside. 
+*@prohibition: Don't go there!
+*@promise: I'll go there (I promise).
+*@regret: Unfortunately, it is hot outside.
+*@request: Go there, please.
+*@speculation: Would it be hot outside?
+*@suggestion: Perhaps it is hot outside.

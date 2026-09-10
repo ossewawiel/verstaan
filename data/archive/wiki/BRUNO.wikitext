@@ -1,0 +1,79 @@
+The project BRUNO ('''B'''asic '''R'''esources for '''UN'''Lizati'''O'''n) is devoted to the creation of NL-UNL (analysis) dictionaries.
+
+== Goal ==
+The project BRUNO has two main goals:
+#To provide several word-to-concept monolingual databases (i.e., encoding or reader's dictionaries). These dictionaries are expected to be used in [[UNLization]], i.e., in generating UNL graphs out of natural language documents, especially through [[IAN]].
+#To find concepts that are not enclosed in the WordNet3.0 and should be incorporated to the [[UNL Dictionary]].
+
+== Repository ==
+BRUNO is language dependent. Every language has its own set of entries to be addressed. The repository is divided into 6 different subprojects according to the frequency of use of the lemmas. 
+*BRUNO-A1 contains the list of the 2,000 most frequent lemmas of the language (including articles, prepositions, conjunctions, auxiliary verbs, etc.);
+*BRUNO-A2 contains the next 3,000 most frequent lemmas of the language;
+*BRUNO-B1 contains the next 5,000 most frequent lemmas of the language;
+And so on.
+
+{|border="1" align="center" cellpadding="2"
+!Repository
+!# of lemmas 
+|-
+|align="center"|BRUNO-A1
+|align="center"|2,000
+|-
+|align="center"|BRUNO-A2
+|align="center"|3,000
+|-
+|align="center"|BRUNO-B1
+|align="center"|5,000
+|-
+|align="center"|BRUNO-B2
+|align="center"|5,000
+|-
+|align="center"|BRUNO-C1
+|align="center"|10,000
+|-
+|align="center"|BRUNO-C2
+|align="center"|10,000
+|}
+
+== Requisites ==
+The project BRUNO is open to all languages complying with the following requisites:
+*[[MIR-A1]] and [[NADIA-A1]] are required for BRUNO-A1;
+*[[MIR-A2]] and [[NADIA-A2]] are required for BRUNO-A2;
+*[[MIR-B1]] and [[NADIA-B1]] are required for BRUNO-B1;
+*[[MIR-B2]] and [[NADIA-B2]] are required for BRUNO-B2;
+*[[MIR-C1]] and [[NADIA-C1]] are required for BRUNO-C1;
+*[[MIR-C2]] and [[NADIA-C2]] are required for BRUNO-C2;
+*In all cases, the language must contain a reasonable amount of [[inflectional paradigms]] and [[subcategorization frames]] already registered in the [[UNLarium]].
+
+== Preparing the list of entries ==
+#List of entries
+#:Participants are expected to provide a list of the entries according to the following criteria:
+#:*The list of entries must include the most frequent lemmas of the language, including articles, prepositions, conjunctions, nouns, verbs, adjectives, adverbs, etc.
+#:*The list of entries can be extracted from prestigious monolingual dictionaries or from a corpus considered to be representative of the standard written language<ref>This corpus can be either an existing reputable corpus or a new corpus compiled according to the criteria defined at [[NC]].</ref>.
+#:*The list of entries must be ordered according to the frequency of occurrence (the most frequent entries must come first)<ref>The frequency of use is not often informed by ordinary dictionaries but may be inferred from the several distributions of the same dictionary: basic, intermediate or advanced, for instance.</ref>.
+#:*The list of entries must be lemmatized<ref>There should be as many lemmas as different '''morphological behavior''' (part-of-speech, gender, number, inflections, etc.). The word "book", in English, should correspond to two lemmas: "book" as a noun, and "book" as a verb. Note that the many different meanings of "book" as a noun do not lead to different lemmas, because all of them have the same morphological behavior, i.e., are singular and make plural in -s. On the other hand, the noun "livre", in French, should correspond to two lemmas: "livre" as a noun masculine (= "book"), and "livre" as a noun feminine (= "pound"). This difference is not derived from the different meanings, but from the different morphological behavior: one is masculine and the other is feminine.</ref>
+#:*Entries must be provided in a plain text file (.txt) with UTF-8 encoding, with one entry per line, along with the corresponding value of the lexical category [[LEX]], in the following format:
+#::lemma:LEX<ref>See an example at [http://www.unlweb.net.br/resources/bruno/hu_a1.txt]</ref>
+#Verification
+#:The list of entries is verified by a language manager or, in case there is no language manager for the target language, by the Language Resources Manager of the UNDL Foundation. If approved, it is uploaded to the UNLarium, and the corresponding BRUNO project is open.
+#Dictionary
+#:Entries become available, in the UNLarium, for all the registered users of a given language, in case of open projects, or for the approved candidates, in case of closed projects. Users are expected to provide all the morphological, syntactic and semantic information for each entry
+
+== Instructions ==
+;Lexical Category
+:Whenever the lexical category for a given lemma is provided, check whether it is correct. If it is not correct, decline the entry and report the problem by clicking over the yellow triangle at the right of the main entry. If the lexical category is not provided, select the most likely category. Do not worry about homonyms: provide one single category for a given main entry.
+;Lemma
+:Do not change the lemma. If it is not correct (i.e., if it is misspelled or cannot be considered to be a lexical unit), decline the entry and report the problem by clicking over the yellow triangle at the right of the main entry.
+;Provide as many UW's as necessary to each lemma, but do not include very rare or unusual cases. And check the order: the most likely senses must appear first.
+;Base Form
+:You have to worry about the base form only in case of multiword expressions 1) whose inflections cannot be formed by simple affixation or 2) which are discontinuous. In these cases, provide the corresponding composition rules.
+;Inflection
+:Select AND TEST the inflectional paradigm that generates the inflections of the base form. Any errors here will be propagated to the dictionary, so be careful. And pay attention to the cases below:
+:*LOCALIZED IRREGULARITY: if the word is mostly regular and its irregularity is localized in some few and specific rules (more than one possible plural for nouns, or defective verbs that are not used in a given person, for instance, but follow the general rules for all the others), assign the word to the corresponding paradigm and list, in the box "inflectional rules", its irregularities;
+:*NON-EXISTING PARADIGM: if the word is regular or semi-regular (in the sense that there are several other words in the same case), and cannot be associated to any existing paradigm, press the button REQUEST A NEW PARADIGM and provide the corresponding details;
+:*IRREGULAR WORDS: if the word is irregular (i.e., it has a quite unusual and specific morphological behavior), choose the option IRREGULAR and provide the corresponding inflectional rules.
+;Subcategorization
+:Subcategorization is only required when the word REQUIRES a complement or a specifier (indirect transitive verbs that select an specific preposition, for instance). In this case, you have to inform the corresponding subcategorization frame. If the subcategorization frame is not available, press the button REQUEST A NEW SUBCATEGORIZATION FRAME and provide the corresponding details.
+
+== Notes ==
+<references />

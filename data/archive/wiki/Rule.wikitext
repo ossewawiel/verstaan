@@ -1,0 +1,40 @@
+Grammars are sets of rules used to go from UNL into natural language, or from natural language into UNL. In the UNL framework, there can be two different types of rules:
+:*[[T-rule]]s, or transformation rules, are used to perform changes to nodes or relations
+:*[[D-rule]]s, or disambiguation rules, are used to control changes over nodes or relations
+
+=== [[T-rule]]s ===
+:''main article'':[[T-rule]]
+T-rules are used to perform actions and follow the very general formalism 
+
+ α:=β;
+
+where the left side α is a condition statement, and the right side β is an action to be performed over α. 
+
+There are several different especial types of T-rules:
+*[[A-rule]] is a specific type of T-rule used for affixation (prefixation, infixation, suffixation)
+*[[C-rule]] is a specific type of T-rule used for composition (word formation in case of compounds and multiword expressions)
+*[[L-rule]] is a specific type of T-rule used for handling word order
+*[[N-rule]] is a specific type of T-rule used for segmenting sentences and normalizing the input text
+*[[S-rule]] is a specific type of T-rule used for handling syntactic structures 
+
+==== Examples of T-rules ====
+*PLR:=0>"s"; (A-rule: add "s" in case of plural, as in ''book''>''books'')
+*MTW:=+VA("into account",PP); (C-rule: add the prepositional phrase "into account" as an adjunct to the verbal phrase (VA) in order to form the multiword expression, as in ''take''>take ''into account'')
+*(ART,%x)(QUA,%y):=(%y)(%x); (L-rule: reverse the order ART+QUA to QUA+ART, as in ''the all''>''all the'') 
+*("don't"):=("do not"); (N-rule: replace the contraction "don't" by "do not")
+*(V,%x)(N,%y):=VC(%x;%y); (S-rule: replace the linear relation between a verb and a noun by the syntactic relation VC between them)
+
+=== [[D-rule]]s ===
+:''main article:'' [[D-rule]]
+D-rules are used to control the action of T-rules. They are used to control the dictionary retrieval (in [[tokenization]]) and to prevent or to induce the application of rules in transformation. 
+
+D-rules follow the syntax: 
+
+ α=P;
+
+where the left side α is a statement and the right side P is an integer from 0 to 255 that indicates the probability of occurrence of α.
+
+==== Examples of D-rules ====
+*(ART)(VER)=0; (there cannot be any article before a verb)
+*agt(^V,^J;)=0; (the source node of an agent relation must be either a verb or an adjective)
+*(D)(N)=1; (determiners may come before nouns)

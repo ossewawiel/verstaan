@@ -1,0 +1,53 @@
+Localization is the process of adapting dictionaries and grammars to a specific language, which is referred to as "locale". In the UNL framework, localization of existing resources is one of the strategies that can be adopted in order to create basic dictionaries and grammars required to process simple corpora. In what follows, we give some instructions concerning the localization of the [[English dictionary]] and the [[English grammar]].
+
+== Localization of the English Dictionary ==
+In order to localize the English Dictionary, you have to consider the following:
+*The localization affects only the fields [natural language entry] and (the feature list). Do not localize the field "UW": it is not English (although written in English); it is UNL.
+*:For instance: given the entry
+*::[book]{}"book" (LEX=N,POS=NOU,NUM=SNG)<eng,0,0>;
+*:The localization of this entry to Spanish, French, Portuguese, German and Russian should be as follows:
+*::[livre]{}"book" (LEX=N,POS=NOU,NUM=SNG,GEN=MCL)<fra,0,0>;
+*::[libro]{}"book" (LEX=N,POS=NOU,NUM=SNG,GEN=MCL)<esp,0,0>;
+*::[livro]{}"book" (LEX=N,POS=NOU,NUM=SNG,GEN=MCL)<por,0,0>;
+*::[Buch]{}"book" (LEX=N,POS=NOU,NUM=SNG,GEN=NEU)<deu,0,0>;
+*::[книга]{}"book" (LEX=N,POS=NOU,NUM=SNG,GEN=FEM,CAS=NOM)<rus,0,0>;
+*The feature list depends on the locale
+*:In English, for instance, there is no gender information, because English has no grammatical gender. This is not the case of French, where gender must be provided. In Russian, in addition to gender, we have to add case as well, because Russian has morphological case. You have to add, to the feature list, the inflectional categories available for your language. But note that you may only use the tags available at the [[Tagset]].
+*Values of attributes depend on the locale 
+*:Note also that the values of the attribute may vary from language to language. In Spanish, the natural language word corresponding to "book" is masculine (GEN=MCL); in German, it is neutral (GEN=NEU); in Russian, it is feminine (GEN=FEM).
+*The localization should be corpus-driven: your dictionary should contain all and only the words appearing in your translated version of the corpus. 
+*:The word "book" may have several different meanings, and may be translated by different words in your locale. You don't have to consider all these possibilities. You must address only the use that the word actually had in the corpus. Additionally, you don't have to treat forms that did not appear in the corpus. In the English Dictionary, for instance, there are both "book" and "books", because these two forms appear in the corpus; but note that there is only "girl" in singular, because "girls" in plural does not appear in the corpus. In short: your dictionary must reflect your corpus. You don't have to include words or word forms that are not there. You are not creating a generic dictionary, but a rather small, corpus-driven dictionary, because the main goal here is not the dictionary, but the grammars.
+*The set of natural language entries depend on the locale:
+*:In English, for instance, we may have different modal auxiliaries for ability ("can") and possibility ("may"). In French, there is only one: "pouvoir". On the other hand, in French there are three different definite articles ("le","la","les"), whereas in English there is only one ("the"). These differences do affect the dictionary structure:
+*::English dictionary
+*:::[can]{}"" (LEX=V,POS=AUX,POS=MOV,att=@ability)<eng,255,0>;
+*:::[may]{}"" (LEX=V,POS=AUX,POS=MOV,att=@possibility)<eng,255,0>;
+*::French dictionary
+*:::[peut]{}""(LEX=V,POS=AUX,POS=MOV,ATE=PRS,PER=3PS,att=@ability,att=@possibility)<eng,255,0>; (note that "pouvoir", in French, may have several other different forms: "peux", "pouvons", "pouvez", etc, but they do not appear in the corpus)
+*::English dictionary
+*:::[the]{}"" (LEX=D,POS=ART,att=@def)<eng,255,0>;
+*::French dictionary
+*:::[le]{}"" (LEX=D,POS=ART,NUM=SNG,GEN=MCL,att=@def)<eng,255,0>; (note that number and gender, which were not revelant in English, are now required in French)
+*:::[la]{}"" (LEX=D,POS=ART,NUM=SNG,GEN=FEM,att=@def)<eng,255,0>;
+*:::[les]{}"" (LEX=D,POS=ART,NUM=PLR,att=@def)<eng,255,0>;
+*The classification of natural language entries must be UNL-based
+*:Don't forget that you are creating either a NL-UNL or a UNL-NL dictionary, i.e., a bilingual dictionary between your locale and UNL. You have to map the lexical items of your language into UNL, and the UWs into your language. In order to do that, you have to have in mind how the word will be represented in UNL. In several cases, you will not be able to simply adopt the descriptive conventions created for your language. Some English grammars, for instance, treat the word "this" as a "demonstrative pronoun" only, without making any difference between the adjective ("this book") and the noun ("this is the book") uses of the word. In UNL, these two "this" will be represented differently: the first one - "this" as a determiner - will be represented by an attribute (@proximal); the second one - "this" as a pronoun - will be represented by the pro-form "00". Therefore, <u>independently on how this phenomenon is described by English traditional grammars</u>, these two "this" must be differentiated: as a demonstrative determiner and as a demonstrative pronoun:
+*::[this]{}"" (LEX=D,POS=DEM,NUM=SNG,att=@proximal)<eng,255,0>;
+*::[this]{}"00.@proximal" (LEX=R,POS=DEP,NUM=SNG)<eng,255,0>;
+
+== Localization of the English Grammar ==
+Instead of creating a whole grammar from the scratch, you should consider localizing the English grammar, which is a far much simpler strategy to start your first grammar. In order to do that, the following is very important:
+*You should localize the English dictionary, as described above, instead of creating a brand new dictionary, with a different entry structure. 
+*Revise the grammar formalism at the [[UNL Grammar Specs]]. Don't forget that:
+**(parentheses) mean a node
+**"quotes" mean natural language strings
+**[single brackets] mean natural language words
+**<nowiki>[[double brackets]]</nowiki> mean UW's
+**% means indexes
+**X=Y means the attribute X has the value Y (GEN=MCL means gender is masculine) 
+**isolated strings are features (MCL is masculine)
+**:For instance, the rule:
+**::<nowiki>("a",[b],[[c]],D=E,F,%g):=(%g)("g")</nowiki>;
+**:means:
+**::IF there is node whose string is "a", whose natural language word is "b", whose UW is "c", and which has the feature D with the value E, and the feature F, ADD a new node, whose string is "g", to the right of it. Note that %g is used only to index the left side and the right side of the rules (i.e, to indicate that the new node will be inserted to the right of the node referred to in the left side). For further information of the rule structure, read carefully the [[UNL Grammar Specs]].
+*Localize only the rules that are strictly related to English, i.e., the English specific grammar. Do not localize the standardization grammar and the default grammar. They are expected to be valid for all languages.

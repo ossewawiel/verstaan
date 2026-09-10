@@ -1,0 +1,8 @@
+[[N-rule]]s and [[L-rule]]s are basically the same. The only difference is that L-rules are part of the Transformation Grammar and, therefore, applies '''after''' [[tokenization]], whereas N-rules constitute the N-grammar, and apply '''before''' tokenization.  This means that N-rules may only deal with strings or regular expressions, whereas L-rules may also deal with other elements (such as features and UW's):
+*L-rule
+**("I")(BLK)("am"):=("I'm"); (I am>I'm)
+**("a",PRE)(BLK)("a",ART):=("à",+ART,+CTC); (a a>à)
+**("de",PRE)(BLK)("le",ART):=("du",+ART,+CTC); (de le>du)
+*N-rule
+**("I")(" ")("am"):=("I'm"); (replace "I am" by "I'm")
+Note, in the above, that we may use dictionary features (such as BLK, PRE, ART) in L-rules, but we cannot use any dictionary feature in N-rules. The only features available in N-rules are the system-defined features, such as SHEAD (beginning of the sentence) and STAIL (end of the sentence).

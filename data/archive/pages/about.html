@@ -1,0 +1,347 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<title>UNL Archive</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/base/jquery-ui.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
+<style>
+    /* Override jQuery UI font settings */
+    .ui-widget, .ui-widget input, .ui-widget select, .ui-widget textarea, .ui-widget button {
+        font-family: inherit !important;
+        font-size: inherit !important;
+    }
+</style>
+<link rel="stylesheet" type="text/css" media="all" href="default.css" />
+</head>
+
+
+
+
+<body>
+<iframe name="I1" height="40" width="100%" scrolling="no" align="top" border="0" frameborder="0" src="unlwebbar/">
+Your browser does not support inline frames or is currently configured not to display inline frames.
+</iframe>
+
+
+   <div id="header" class="text-center py-10">
+    <img src="shared/images/unl_archive.png" alt="UNL Archive Logo" style="max-width:400px; width:100%; height:auto;">
+    
+    <hr />
+</div>
+
+<style>
+    .menu li ul li {
+        margin-top: 8px;
+        margin-bottom: 8px;
+    }
+</style>
+<!-- Menu superior -->
+
+<style>
+    /* Reset básico */
+    .menu,
+    .menu ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .menu {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        background: #fff;
+        position: relative;
+    }
+
+    .menu>li {
+        position: relative;
+    }
+
+    .menu>li>a {
+        display: block;
+        padding: 10px 18px;
+        text-decoration: none;
+        color: #222;
+        font-weight: bold;
+        transition: background 0.2s;
+    }
+
+    .menu>li:hover>a,
+    .menu>li:focus-within>a {
+        background: #eee;
+    }
+
+    .menu li ul {
+        display: none;
+        position: absolute;
+        left: 0;
+        top: 100%;
+        min-width: 180px;
+        background: #fff;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        z-index: 10;
+    }
+
+    .menu li:hover>ul,
+    .menu li:focus-within>ul {
+        display: block;
+    }
+
+    .menu li ul li a {
+        padding: 8px 16px;
+        color: #222;
+        font-weight: strong;
+        white-space: nowrap;
+    }
+
+    .menu li ul li a:hover {
+        background: #f5f5f5;
+    }
+
+    /* Hamburger */
+    .menu-toggle {
+        display: none;
+        background: none;
+        border: none;
+        font-size: 2em;
+        margin: 10px;
+        cursor: pointer;
+    }
+
+    @media (max-width: 900px) {
+        .menu {
+            flex-direction: column;
+            align-items: stretch;
+            display: none;
+            width: 100%;
+        }
+
+        .menu.open {
+            display: flex;
+        }
+
+        .menu>li {
+            width: 100%;
+        }
+
+        .menu>li>a {
+            padding: 14px 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .menu li ul {
+            position: static;
+            box-shadow: none;
+            min-width: 0;
+        }
+
+        .menu li ul {
+            display: none;
+        }
+
+        .menu li.open>ul {
+            display: block;
+        }
+
+        .menu-toggle {
+            display: block;
+        }
+    }
+</style>
+
+<button class="menu-toggle" aria-label="Open menu" onclick="document.querySelector('.menu').classList.toggle('open')">&#9776;</button>
+<ul class="menu">
+    <li><a href="index.php?unlweb=home">HOME</a></li>
+    <li><a href="index.php?unlweb=unlarium" title="Language resources">LINGWARE</a></li>
+    <li><a href="index.php?unlweb=dev" title="Computer resources">SOFTWARE</a></li>
+    <li><a href="index.php?unlweb=education" title="Educational resources">EDUCATION</a></li>
+    <li><a href="index.php?unlweb=documentation" title="Documentation resources">DOCUMENTATION</a></li>
+    <li><a href="index.php?unlweb=unl" title="UNL resources">UNL</a></li>
+    <li><a href="index.php?unlweb=undl" title="UNDL resources">UNDL</a></li>
+
+</ul>
+
+<script>
+    // Mobile submenu toggle with navigation on second click 
+    document.querySelectorAll('.menu > li').forEach(function(li) {
+        var link = li.querySelector('a');
+        if (li.querySelector('ul')) {
+            li.dataset.opened = "false";
+            link.addEventListener('click', function(e) {
+                if (window.innerWidth <= 900) {
+                    if (li.dataset.opened === "false") {
+                        e.preventDefault();
+                        li.classList.add('open');
+                        li.dataset.opened = "true";
+                    } else {
+                        // allow navigation
+                        li.dataset.opened = "false";
+                    }
+                }
+            });
+            // Close submenu when clicking outside
+            document.addEventListener('click', function(event) {
+                if (window.innerWidth <= 900) {
+                    if (!li.contains(event.target)) {
+                        li.classList.remove('open');
+                        li.dataset.opened = "false";
+                    }
+                }
+            });
+        }
+    });
+</script>
+
+
+<hr />
+<div class="center"><div class="terms">
+
+  
+    <h1 style="margin-top:0">About UNL Archive</h1>
+
+
+    <div style="border:1px solid #cce4ff; background:#f7fbff; padding:16px; border-left:6px solid #0073e6; border-radius:6px; margin:16px 0; font-size:13px;">
+    <h2 id="foreword" style="font-size:1.12em; margin-top:0;">Foreword: Is the UNL Still Useful?</h2>
+    <div style="text-align:right; margin-bottom:12px;">
+      <strong>Ronaldo Martins, PhD</strong><br>
+      <small style="font-size:0.85em;">Former Language Resources Manager, UNDL Foundation<br>
+      <a href="mailto:admin@unlarchive.org">admin@unlarchive.org</a></small>
+    </div>
+
+    <p>In 2015, the UNDL Foundation ceased operations due to financial constraints. Since then, UNLweb had not been maintained and functioned irregularly, with frequent periods of downtime. There was an increasing risk that the results of almost 20 years of research could simply disappear. The present UNL Archive is an attempt to preserve the history and resources of the UNL Programme.</p>
+    <p>To many, this may seem a futile effort, since symbolic approaches appear to play no further role in language processing, which has been dominated by neural networks and large language models. Nevertheless, while AI's statistical methods have revolutionized the field, their limitations—such as the  lack of explainability, dependence on big data, and the exclusion of less-resourced languages—suggest that explicit meaning representation may not be obsolete after all. Perhaps UNL's original vision of an inclusive linguistic architecture capable of preserving linguistic diversity is not outdated, but increasingly urgent.</p>
+    <p>This archive, dedicated to keeping its documentation and resources accessible for historical, academic, and technical reference, may yet serve those seeking alternative paths to enhance the transparency, inclusiveness, and interpretability of contemporary AI.</p>
+
+    <a href="index.php?unlweb=archive" style="font-size:0.95em;">Read more</a>
+    </div>
+
+
+
+ <div class="about-accordion">
+
+ <h2 id="purpose">Purpose</h2>
+ <div>
+  <p>The UNL Archive is a repository dedicated to preserving and providing access to the materials produced by the Universal Networking Language (UNL) Project, ensuring that the documentation and resources remain accessible for historical, academic, and technical reference. The Archive's mission is archival preservation and public access for research, teaching, reference, and reuse under the licensing and limits described below.</p>
+</div>
+
+  <h2 id="as-is">Limitations</h2>
+<div>
+  <p>All materials are provided <strong>“as of 2015”</strong>, with no further development or support. They are preserved in their original form, and the UNL Archive does not undertake any further development, maintenance, or technical assistance for archived content. Users should be aware that some components may depend on deprecated technologies or external resources that are no longer maintained.</p>
+</div>
+
+
+  <h2 id="license">License &amp; Reuse</h2>
+  <div>
+  <p>All data is released under an Attribution-ShareAlike (CC BY-SA) Creative Commons license. These resources are preserved as-is for reference and reuse, provided proper credit is given and derivative works are released under the same or a compatible license (CC BY-SA). See <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a> for details.</p>
+  </div>
+
+
+  <h2 id="contents">Content</h2>
+  <div>
+  <p>The UNL Archive comprises the following materials:</p>
+
+  <ul style="text-align:justify">
+    <li>
+      A concise, introductory overview explaining what UNLweb was, the UNL Program, and its main applications — designed to provide newcomers and researchers with essential contextual understanding.
+    </li>
+
+    <li style="margin-top:8px">
+      Access to the original version of <strong>UNLweb</strong>, except for the Joomla-based interface (previously used for news) and certain features that depend on deprecated external libraries requiring substantial redevelopment. These components remain archived but may not be operational. Core UNLweb functionality, however, is fully preserved: past users can still log in, access their profiles, and retrieve their data; new users can register accounts and contribute to the platform.
+    </li>
+
+    <li style="margin-top:8px">
+      Access to the original version of <strong>UNLarium</strong> — the crowdsourcing environment for the development of language resources — including its data and functionality, except for elements that relied on third-party code no longer maintained. Some interactive or integrated features may therefore be limited, but users can still contribute to dictionaries and grammars, access lexical resources, and explore the archived content.
+    </li>
+
+    <li style="margin-top:8px">
+      Access to the original version of <strong>UNLwiki</strong>, the primary source of project documentation, including UNL Specifications and UNDL Foundation Recommendations for Language Engineering. All preserved content remains available for reading and research, but public editing has been disabled for security reasons.
+    </li>
+
+    <li style="margin-top:8px">
+      Access to the original version of <strong>VALERIE</strong> — the Virtual Learning Environment for UNL — including the ability to obtain new certificates. These certificates are maintained because they are required for user access and functionality, but they are no longer signed by the original project authority and therefore do not carry official validation.
+    </li>
+  </ul>
+
+  <p>The UNL Archive does not yet include the following components:</p>
+  <ul style="text-align:justify">
+    <li><strong>UNL dev</strong> — the development environment and its tools (IAN, SEAN, EUGENE, NORMA, etc.). These require substantial updates to function properly;</li>
+    <li><strong>UNL Core</strong> — the core framework and its associated modules. This component also requires further work before it can be restored or made operational.</li>
+    <li><strong>Lily</strong>, <strong>Keys</strong>, and <strong>Tut</strong> — these were never publicly released and depend on UNLdev and UNLCore for operation, which prevents their inclusion at this stage.</li>
+    <li><strong>UNL Community</strong> — the social networking platform for users and developers. It was scarcely used within UNLweb, does not contain any technical material and is therefore not part of the Archive.</li>
+    <li><strong>UNL Forum</strong> — the discussion and message exchange facility, which was heavily vandalized with spam and has been permanently disabled.</li>
+    <li><strong>UNL Centre's</strong> tools (DeCo, EnCo, Universal Parser, DicBuilder and UW Gate) — these tools are proprietary and were never part of UNLweb.</li>
+    <li>Other tools and resources developed by partners or third parties that were not directly integrated into UNLweb, UNLarium or UNLdev.</li>
+  </ul>
+
+  </div>
+
+  <h2 id="independence">Independence</h2>
+  <div>
+  <p>UNL Archive is a private initiative without any links to the United Nations University, the UNDL Foundation, or any other organization previously involved in the UNL Project. References to those organizations within archived materials are historical and do not imply current affiliation, sponsorship or endorsement.</p>
+</div>
+
+
+  <h2 id="contribute">Contribute / Volunteer</h2>
+  <div>
+  <p>Volunteer work or any form of contribution is welcomed. The Archive is volunteer-run and contributions are appreciated — whether improving metadata, digitizing materials, fixing preservation issues, or helping with technical tasks. If you want to help, please contact: <a href="mailto:admin@unlarchive.org">admin@unlarchive.org</a></p>
+</div>
+
+
+  <h2 id="history">Founding, History and Dedication</h2>
+  <div>
+  <p>UNL Archive was created upon a request from <strong>Prof. Tarcisio Della Senta</strong>, former President of the UNDL Foundation, to preserve the materials of the UNL Project after its closure. The Archive is maintained by <strong>Ronaldo Martins</strong>, former Language Resources Manager of the UNDL Foundation, in a volunteer capacity.</p>
+  <p>
+    This Archive is also offered as a tribute to everyone who worked on the UNL Project — in Geneva and around the world — and who shared the vision that the UNL would facilitate communication and understanding among all peoples and serve as a technological response to the digital divide and to global language barriers, linguistic imperialism, and language prejudice, as well as to the asymmetry of information and accessibility issues that results from them. While that vision was not realized, the efforts and dedication of all involved deserve recognition and remembrance.
+  </p>
+
+</div>
+
+
+  <h2 id="legal">Legal &amp; Technical Notices</h2>
+  <div>
+  <p class="important"><strong>Technical and legal note:</strong> Materials are preserved in their original form without warranties or committed updates. Before using any component in production (for example, certificates, libraries, or services), verify compatibility, legal status and operational validity.</p>
+
+  <p class="muted">For license questions, content removal requests, or to submit materials, contact: <a href="mailto:admin@unlarchive.org">admin@unlarchive.org</a>.</p>
+</div>
+  </div>
+
+<script>
+        $(function() {
+            $(".about-accordion").accordion({
+                collapsible: true,
+                heightStyle: "content",
+                active: false
+            });
+        });
+</script>
+
+
+<div style="text-align:center; margin-top:30px;">
+  <button class="btn"
+    onclick="window.location.href='index.php?unlweb=home'"
+
+    onmouseover="this.style.backgroundColor='#005bb5'"
+    onmouseout="this.style.backgroundColor='#0073e6'">
+    ⬅ Back to Home
+  </button>
+
+
+</div></div> 
+
+<hr />
+<div id="footer" style="max-width:600px; margin:0 auto; text-align:center; font-size:0.7em;">
+    <div style="display: flex; justify-content: center; align-items: center;">
+            <a href="index.php?unlweb=terms" style="margin-right: 10px;">Terms and Conditions</a> |
+            <a href="index.php?unlweb=about" style="margin-left: 10px; margin-right: 10px;">About UNL Archive</a> |
+            <a href="index.php?unlweb=contact" style="margin-left: 10px;">Contact</a>
+    </div>
+</div>
+<br /><br />
+</body>
+</html>

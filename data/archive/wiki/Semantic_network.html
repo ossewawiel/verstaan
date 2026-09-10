@@ -1,0 +1,87 @@
+<div class="mw-content-ltr mw-parser-output" lang="en" dir="ltr"><p>The main goal of the UNL is to represent, in a machine-tractable format, the <b>information</b> conveyed by natural language documents. In the UNL framework, this information is represented by a <b>semantic network</b>, i.e., a network which represents semantic relations between concepts. This semantic network, or <b>UNL graph</b>, is made of three different types of discrete semantic entities: <a href="/wiki/Universal_Words" title="Universal Words">Universal Words</a>, <a href="/wiki/Universal_Relations" title="Universal Relations">Universal Relations</a> and <a href="/wiki/Universal_Attributes" title="Universal Attributes">Universal Attributes</a>. Universal Words, or simply UW's, are the nodes in the semantic network; Universal Relations are arcs linking UW's; and Universal Attributes are used to instantiate UW's. 
+</p><p>For instance, the English sentence "Peter killed Mary yesterday with a knife in the kitchen because of John" could be represented, in simplified UNL, as:
+</p><p><span typeof="mw:File"><a href="/wiki/File:Graph0.png" class="mw-file-description"><img src="/wiki/images/thumb/d/d4/Graph0.png/300px-Graph0.png" decoding="async" width="300" height="217" class="mw-file-element" srcset="/wiki/images/thumb/d/d4/Graph0.png/450px-Graph0.png 1.5x, /wiki/images/d/d4/Graph0.png 2x" /></a></span>
+</p><p>In the above:
+</p>
+<ul><li>"Peter", "kill", "Mary", "yesterday", "knife", "kitchen" and "John" are Universal Words</li>
+<li>"agt" (agent), "obj" (patient), "tim" (time), "ins" (instrument), "plc" (place) and "rsn" (reason) are Universal Relations</li>
+<li>"@past", "@def" and "@indef" are Universal Attributes</li></ul>
+<div class="mw-heading mw-heading3"><h3 id="General_Principles">General Principles</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Semantic_network&amp;veaction=edit&amp;section=1" title="Edit section: General Principles" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Semantic_network&amp;action=edit&amp;section=1" title="Edit section&#39;s source code: General Principles">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>The three-layered representation model poses several problems to the <a href="/wiki/UNLization" title="UNLization">UNLization</a> as the distinction between what is supposed to be represented by each unit is not always clear. One difficulty concerns what is to be represented as a UW (i.e., as a node in the UNL graph) and what is to be represented as a link between UW's. How many UW's are there, for instance, in the sentence "Charles Dickens was the author of Oliver Twist"? Should "author" be represented as a UW or as a relation between "Charles Dickens" and "Oliver Twist"? Should the verb "to be" be represented as a UW or as a relation between "Charles Dickens" and "author"? Should the preposition "of" be represented as a UW or as a relation between "author" and "Oliver Twist"?
+</p><p>Given the difficulty to categorize concepts, the UNL assumes the following principles:
+</p>
+<pre>1. If the information can only be conveyed by open lexical categories (nouns, adjectives, adverbs and verbs), or if it is conveyed by pronouns and numbers,
+   it is represented by <b>UW'</b>s, i.e., as nodes in the UNL graph;
+
+2. If the information can be conveyed, in any language, 
+   by closed class categories (affixes, determiners, auxiliary verbs, copula, classifiers, conjunctions, interjections and prepositions), or
+   by syntactic phenomena (word order, agreement, government and case marking), 
+   it is represented
+   2.1. as <b>attributes</b>, if the information is not relational, i.e., if it can be associated to a single node (or hyper-node) in the graph; or
+   2.2. as <b>relations</b>, if the information is relational and reducible to the set of Universal Relations; or
+   2.3. as <b>relations and attributes</b>, if the information is relational but not reducible to the set of Universal Relations.
+</pre>
+<div class="mw-heading mw-heading3"><h3 id="Examples">Examples</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Semantic_network&amp;veaction=edit&amp;section=2" title="Edit section: Examples" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Semantic_network&amp;action=edit&amp;section=2" title="Edit section&#39;s source code: Examples">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<dl><dt>(1) Mary died</dt></dl>
+<p><span typeof="mw:File"><a href="/wiki/File:Graph1.png" class="mw-file-description"><img src="/wiki/images/thumb/3/3c/Graph1.png/200px-Graph1.png" decoding="async" width="200" height="75" class="mw-file-element" srcset="/wiki/images/thumb/3/3c/Graph1.png/300px-Graph1.png 1.5x, /wiki/images/thumb/3/3c/Graph1.png/400px-Graph1.png 2x" /></a></span>
+</p><p>Consider, for instance, the sentence<br />
+(1) Mary died.<br />
+This sentence is said to convey the following information<br />
+(1a) There is Mary (i.e., there is someone named Mary)<br />
+(1b) There is the process of dying<br />
+(1c) There is a relation between "Mary" and "die" (i.e., "Mary" undergoes a change of state expressed by "dying")<br />
+(1d) The fact described by (1c) happened in the past<br />
+The information conveyed by (1a) and (1b) can only be expressed by open lexical categories (noun and verb, respectively) and, therefore, (1a) and (1b) are defined as UW's, i.e., nodes in the graph. The information conveyed by (1c) cannot be said to be represented by a lexical item (such as "Mary" or "die"); it is defined by the position of the words in the sentence, i.e., by the fact that "Mary" comes right before "die". Actually, this information is relational, i.e., it links "Mary" and "die". This relation ("patient") is already part of the repertoire of Universal Relations and can be expressed by the tag "obj". The information conveyed by (1d) is not relational, in the sense that it does not link two nodes, but rather modify the whole relation between "Mary" and "die". As it is not relational, and can be expressed by closed class categories (the suffix "-d"), it is represented by the attribute @past, to be assigned to head of the relation (the UW "die"). 
+</p>
+<dl><dt>(2) The book is on the table</dt></dl>
+<p><span typeof="mw:File"><a href="/wiki/File:Graph2.png" class="mw-file-description"><img src="/wiki/images/thumb/3/33/Graph2.png/200px-Graph2.png" decoding="async" width="200" height="69" class="mw-file-element" srcset="/wiki/images/thumb/3/33/Graph2.png/300px-Graph2.png 1.5x, /wiki/images/thumb/3/33/Graph2.png/400px-Graph2.png 2x" /></a></span>
+</p><p>Consider, now, the sentence<br />
+(2) The book is on the table.<br />
+This sentence is said to convey the following information<br />
+(2a) There is a book<br />
+(2b) We know this book (i.e., this book is definite)<br />
+(2c) There is a table<br />
+(2d) We know this table (i.e., this table is definite)<br />
+(2e) There is a relation between "book" and "table"<br />
+(2f) The relation (2e) is of the type "on" (and not "under", or "inside")<br />
+The information conveyed by (2a) and (2c) is, again, expressed by open lexical categories (noun, in both cases) and cannot be reduced to any closed class category. The information conveyed by (2b) and (2d), which is expressed by the article "the", modifies isolated nodes and, accordingly, is not relational: (2b) modifies (2a), and (2d) modifies (2c). They are therefore expressed by attributes (@def): book.@def and table.@def. The information conveyed by (2e) can be associated to the copula ("is") and it is definitely relational: it links "book" to "table". This relation is said to describe a "place", which is also part of the repertoire of Universal Relations (expressed by "plc"). However, "plc(book;table)" is too vague to express the information conveyed by the sentence, which explicitly indicates that the book is "on" the table. The information conveyed by (2f) is also relational and is expressed by a preposition ("on"). Ideally, we would have a relation "place_on", and we would represent (2) as "place_on(book;table)" instead of simply "plc(book;table)". But this would lead to several other relations: place_on, place_above, place_under, place_in_front_of, and so on. In order to avoid the proliferation of the repertoire of relations, we have decided to express these details by the combination of relations and attributes, i.e., "plc(book;table.@on)".
+</p>
+<dl><dt>(3) Charles Dickens was the author of Oliver Twist</dt></dl>
+<p><span typeof="mw:File"><a href="/wiki/File:Graph3.png" class="mw-file-description"><img src="/wiki/images/thumb/8/83/Graph3.png/300px-Graph3.png" decoding="async" width="300" height="60" class="mw-file-element" srcset="/wiki/images/thumb/8/83/Graph3.png/450px-Graph3.png 1.5x, /wiki/images/thumb/8/83/Graph3.png/600px-Graph3.png 2x" /></a></span>
+</p><p>At last, let's come back to the case of<br /> 
+(3) Charles Dickens was the author of Oliver Twist.<br />
+In this sentence, we notice the following:<br />
+(3a) There is Charles Dickens<br />
+(3b) There is Oliver Twist<br />
+(3c) There is the concept of "author"<br />
+(3d) There is a relation between "Charles Dickens" and "author" (we can say that "Charles Dickens is an author")<br />
+(3e) There is a relation between "Oliver Twist" and "author" (we can say that "Oliver Twist is the product of an author")<br />
+(3f) There is a relation between "Charles Dickens" and "Oliver Twist" (and this relation is mediated by the concept of "author")<br />
+(3g) The relation described by (3f) happened in the past<br />
+Once again, (3a) and (3b) can only be realized by an open lexical category (noun) and, therefore, must be represented as UW's. The concept conveyed by (3c) is far more controversial. One 
+may argue that this concept may be represented by derivational suffixes, such as -er (as in "writer") or -or (as in "creator"), or by the preposition "by" (as in "Oliver Twist by Charles Dickens"), but this is not really accurate, since both -er and -or are used for "one who performs an action", and "by" denotes rather an agent. None of them can fully replace "author" in this context, i.e., as someone who writes a book. Accordingly, (3c) should also be expressed by a UW. The information conveyed by (3d) and (3e) is relational and fits existing relations in the repertoire of Universal Relations: attribute ("author" is an attribute of "Charles Dickens", or aoj(Charles Dickens;author)), and content ("Oliver Twist" is the theme of "author", or cnt(author;Oliver Twist)). The relation (3f) poses a problem to UNL because, in UNL, relations must be necessarily binary, i.e., they must have only two arguments. But this is solved by the general assumption that, given rel(a;b) and rel(b;c), "a" is related to "c" through "b". As for (3g), this is another source of problem. We know that the scope of the past tense, in this case, is not the whole sentence (the fact that Charles Dickens wrote Oliver Twist is still true); the information of past is rather related to Charles Dickens, in the sense that it indicates that he no longer lives. In any case, this information is not relational, and must be expressed by the attribute .@past, to be assigned to "Charles Dickens".
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20260910155942
+Cache expiry: 86400
+Reduced expiry: false
+Complications: []
+CPU time usage: 0.010 seconds
+Real time usage: 0.011 seconds
+Preprocessor visited node count: 37/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/100
+Expensive parser function count: 0/100
+Unstrip recursion depth: 0/20
+Unstrip post‐expand size: 0/5000000 bytes
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    0.000      1 -total
+-->
+
+<!-- Saved in parser cache with key u965818192_SLvgQ-l8z2_:pcache:516:|#|:idhash:canonical and timestamp 20260910155942 and revision id 13445. Rendering was triggered because: diff-page
+ -->
+</div>

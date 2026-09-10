@@ -1,0 +1,559 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<title>UNL Archive</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/base/jquery-ui.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
+<style>
+    /* Override jQuery UI font settings */
+    .ui-widget, .ui-widget input, .ui-widget select, .ui-widget textarea, .ui-widget button {
+        font-family: inherit !important;
+        font-size: inherit !important;
+    }
+</style>
+<link rel="stylesheet" type="text/css" media="all" href="default.css" />
+</head>
+
+
+
+
+<body>
+<iframe name="I1" height="40" width="100%" scrolling="no" align="top" border="0" frameborder="0" src="unlwebbar/">
+Your browser does not support inline frames or is currently configured not to display inline frames.
+</iframe>
+
+
+   <div id="header" class="text-center py-10">
+    <img src="shared/images/unl_archive.png" alt="UNL Archive Logo" style="max-width:400px; width:100%; height:auto;">
+    
+    <hr />
+</div>
+
+<style>
+    .menu li ul li {
+        margin-top: 8px;
+        margin-bottom: 8px;
+    }
+</style>
+<!-- Menu superior -->
+
+<style>
+    /* Reset básico */
+    .menu,
+    .menu ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .menu {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        background: #fff;
+        position: relative;
+    }
+
+    .menu>li {
+        position: relative;
+    }
+
+    .menu>li>a {
+        display: block;
+        padding: 10px 18px;
+        text-decoration: none;
+        color: #222;
+        font-weight: bold;
+        transition: background 0.2s;
+    }
+
+    .menu>li:hover>a,
+    .menu>li:focus-within>a {
+        background: #eee;
+    }
+
+    .menu li ul {
+        display: none;
+        position: absolute;
+        left: 0;
+        top: 100%;
+        min-width: 180px;
+        background: #fff;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        z-index: 10;
+    }
+
+    .menu li:hover>ul,
+    .menu li:focus-within>ul {
+        display: block;
+    }
+
+    .menu li ul li a {
+        padding: 8px 16px;
+        color: #222;
+        font-weight: strong;
+        white-space: nowrap;
+    }
+
+    .menu li ul li a:hover {
+        background: #f5f5f5;
+    }
+
+    /* Hamburger */
+    .menu-toggle {
+        display: none;
+        background: none;
+        border: none;
+        font-size: 2em;
+        margin: 10px;
+        cursor: pointer;
+    }
+
+    @media (max-width: 900px) {
+        .menu {
+            flex-direction: column;
+            align-items: stretch;
+            display: none;
+            width: 100%;
+        }
+
+        .menu.open {
+            display: flex;
+        }
+
+        .menu>li {
+            width: 100%;
+        }
+
+        .menu>li>a {
+            padding: 14px 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .menu li ul {
+            position: static;
+            box-shadow: none;
+            min-width: 0;
+        }
+
+        .menu li ul {
+            display: none;
+        }
+
+        .menu li.open>ul {
+            display: block;
+        }
+
+        .menu-toggle {
+            display: block;
+        }
+    }
+</style>
+
+<button class="menu-toggle" aria-label="Open menu" onclick="document.querySelector('.menu').classList.toggle('open')">&#9776;</button>
+<ul class="menu">
+    <li><a href="index.php?unlweb=home">HOME</a></li>
+    <li><a href="index.php?unlweb=unlarium" title="Language resources">LINGWARE</a></li>
+    <li><a href="index.php?unlweb=dev" title="Computer resources">SOFTWARE</a></li>
+    <li><a href="index.php?unlweb=education" title="Educational resources">EDUCATION</a></li>
+    <li><a href="index.php?unlweb=documentation" title="Documentation resources">DOCUMENTATION</a></li>
+    <li><a href="index.php?unlweb=unl" title="UNL resources">UNL</a></li>
+    <li><a href="index.php?unlweb=undl" title="UNDL resources">UNDL</a></li>
+
+</ul>
+
+<script>
+    // Mobile submenu toggle with navigation on second click 
+    document.querySelectorAll('.menu > li').forEach(function(li) {
+        var link = li.querySelector('a');
+        if (li.querySelector('ul')) {
+            li.dataset.opened = "false";
+            link.addEventListener('click', function(e) {
+                if (window.innerWidth <= 900) {
+                    if (li.dataset.opened === "false") {
+                        e.preventDefault();
+                        li.classList.add('open');
+                        li.dataset.opened = "true";
+                    } else {
+                        // allow navigation
+                        li.dataset.opened = "false";
+                    }
+                }
+            });
+            // Close submenu when clicking outside
+            document.addEventListener('click', function(event) {
+                if (window.innerWidth <= 900) {
+                    if (!li.contains(event.target)) {
+                        li.classList.remove('open');
+                        li.dataset.opened = "false";
+                    }
+                }
+            });
+        }
+    });
+</script>
+
+
+<hr />
+<div class="center">    <div style="display: flex; align-items: flex-start; gap: 30px;">
+
+        <div>
+            <h1>The UNL Programme (1996-2015)</h1>
+            <p>
+                The UNL Programme aimed to create a multilingual infrastructure composed of language resources and processing tools that allowed individuals to generate and access information in their own languages. Its broader mission was to support intercultural exchange, dialogue among civilizations, peace, and development worldwide. The Programme was conducted first by the Institute of Advanced Studies of the United Nations University in Tokyo (1996–2001) and later by the UNDL Foundation in Geneva (2001–2015).
+
+            </p>
+            <div style="max-width:800px; margin:10px auto; display:flex; justify-content:center;">
+                <video controls preload="metadata" style="width:100%; max-width:600px; height:auto; background:#000; display:block;" aria-label="UNL Video 2025">
+                    <source src="UNL2025.mp4" type="video/mp4">
+                    Your browser does not support HTML5 video. <a href="UNL2025.mp4" download>Download the video</a>.
+                </video>
+            </div>
+</div>
+    </div>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+
+    <script>
+        $(function() {
+            // Add icons to accordion headers
+            $(".unlarium-accordion .ui-accordion-header").prepend('<i class="fa fa-chevron-right"></i> ');
+            $(".inner-accordion .ui-accordion-header").prepend('<i class="fa fa-chevron-right"></i> ');
+        });
+    </script>
+
+    <div class="unlarium-accordion">
+
+        <h2>Mission and Vision</h2>
+        <div>
+            <p>The Universal Networking Language Programme represented one of the most ambitious initiatives ever undertaken to bridge the linguistic divides that have long separated humanity. Born within the United Nations and conceived at the Institute of Advanced Studies of the United Nations University, the Programme's mission was to enable all peoples to generate and access information and knowledge in their native languages and cultures, breaking down the barriers that isolated countless individuals from the global community.</p>
+            <p>The Programme pursued this mission with two interconnected goals. The immediate objective was to construct a multilingual infrastructure capable of dissolving the linguistic barriers that excluded so many from participating in the emerging digital global society—barriers that existed simply because dominant languages monopolized the expression of culture and knowledge. The broader, more profound aspiration was to facilitate genuine interchange of cultural values among all the world's peoples, thereby contributing to dialogue among civilizations, to lasting peace, and to the equitable development of all nations.
+            </p>
+        </div>
+
+        <h2>History of the Programme</h2>
+        <div>
+
+            <p>The UNL Programme was initiated in 1996 as a pioneering effort to create a multilingual information infrastructure that would enable people worldwide to access and share knowledge in their native languages. The Programme was conducted from 1996 to 2001 under the auspices of the Institute of Advanced Studies at the United Nations University (UNU) in Tokyo, Japan, and from 2001 to 2015 by the autonomous UNDL Foundation based in Geneva, Switzerland.</p>
+
+            <h3>Phase 1: 1996-2001</h3>
+
+            <p>The UNL Programme began in 1996 as an initiative of the <strong>Institute of Advanced Studies</strong> (IAS) at the United Nations University (UNU) in Tokyo, Japan. From its inception, it engaged a consortium of university departments from all regions of the world in its development, the so called <strong>"Language Centres"</strong>. A global-scale network of research and development teams, involving approximately 200 specialists in computer science and linguistics, worked to create the linguistic resources and develop the web structure of the UNL System, with the UNL Centre, in Tokyo, providing technological support and coordinating implementation across this distributed network.</p>
+
+            <div class="inner-accordion">
+                <h3>UNL Language Centres</h3>
+                <div>
+                    <p>The following institutions served as UNL Language Centres, each responsible for developing linguistic resources and tools for their respective languages:</p>
+                    <ul>
+                        <li>Arabic: The Royal Scientific Society of Jordan</li>
+                        <li>Chinese: Research Centre of Computer & Microelectronics Industrial Development (CCID), Ministry of Information Industry, People's Republic of China</li>
+                        <li>English: UNL Centre, Tokyo, Japan</li>
+                        <li>French: GETA-CLIPS, Joseph Fourier University, and CNRS, France</li>
+                        <li>German: Institute for Applied Information Sciences, Saarbrücken, Germany</li>
+                        <li>Hindi: Indian Institute of Technology, Bombay, India</li>
+                        <li>Indonesian: Directorate for Technology in Informatics and Electronics, Agency for the Assessment and Application of Technology (BPP Teknologi), Indonesia</li>
+                        <li>Italian: Institute of Computational Linguistics, Pisa, and CNRS, Italy</li>
+                        <li>Japanese: Tokyo Technological University</li>
+                        <li>Latvian: Institute of Mathematics and Computer Science of the University of Latvia</li>
+                        <li>Mongolian: Mongolian State Pedagogical University</li>
+                        <li>Portuguese: University of São Paulo, São Carlos, Brazil</li>
+                        <li>Russian: Institute for Information Transmission Problems, Russian Academy of Sciences; and STAR SPB Ltd, Saint Petersburg</li>
+                        <li>Spanish: Polytechnic University of Madrid, Spain</li>
+                        <li>Thai: National Electronics and Computer Technology Centre (NECTEC), Thailand</li>
+                    </ul>
+                </div>
+            </div>
+
+            <p>At the turn of the millenium, UNL dictionaries for fifteen languages had been compiled, containing between 50 K and 200 K words depending on the language. Each Language Centre developed the grammar rules required to interface between their language and the UNL. The structure of the UNL Knowledge Base was defined, and the inventory of human knowledge grew continuously with new entries. </p>
+
+            <p>The Programme's development was marked by numerous international and regional symposia, workshops, and meetings. Following the initial launch at the United Nations University in Tokyo in November 1996, international symposia were organized at UNESCO (Paris, 1997), the United Nations (New York, 1998) and the European Community (Brussels, 1999). Technical workshops took place in Beijing (1997, 1999), Curitiba (1997), Madrid (1998), Phuket (1998), and Perugia (1999), bringing together researchers and developers from around the world.</p>
+
+            <P>Originally restricted to the Language Centres, the UNL Programme was opened to a broader community, the so called <strong>UNL Society</strong>, in 1999, with the publication of <i>A Gift for a Millennium</i>, a brochure inviting researchers and developers from around the world to join the initiative. This marked a significant expansion of the Programme's reach, allowing individual researchers and groups to contribute to the development of the UNL System.
+
+            <p>The First Open Conference on UNL took place in November 2001 in Suzhou, China. By the early 2000s, the UNL Society had grown to 240 members from 30 countries, all with access to the tools necessary for developing and advancing the UNL System. This community exemplified the Programme’s commitment to open, collaborative development and proved essential to its continuity during challenging times.
+
+            <h3>Phase 2: 2001-2008</h3>
+
+            <p>In January 2001, the United Nations University established an autonomous organization, the UNDL Foundation, to assume responsibility for the development and management of the UNL Programme. Structured as a non-profit international organization with headquarters in Geneva, Switzerland, the Foundation maintained an independent identity from the United Nations University while preserving special links with the UN system. It inherited from the UNU/IAS the mandate of implementing the UNL Programme and fulfilling its ambitious mission.</p>
+
+            <p>The UNDL Foundation built upon the achievements of the earlier phase, leveraging the linguistic resources and technological infrastructure developed during the initial years of the Programme. It sought to enhance the UNL System's capabilities and expand its user base, promoting the adoption of UNL technologies in various domains.</p>
+
+            <p>One of the Programme's most significant accomplishments was the recognition by the Patent Cooperation Treaty (PCT) of the innovative character and industrial applicability of the UNL, achieved in May 2002 through the World Intellectual Property Organization (WIPO). This patent acquisition represented a completely novel achievement within the United Nations system and underscored both the technological innovation embodied in the UNL and the commitment to maintaining it as a resource for all humanity.</p>
+
+            <p>During these years, the UNDL Foundation continued to organize international symposia and workshops, fostering collaboration and knowledge exchange among researchers and developers. Notable events included meetings held at the United Nations Office in Geneva (2001) and workshops in Petra (2001), Goa (2002), Alexandria (2003, 2004), Mumbai (2003), Yerevan (2004), Florianópolis (2005) and Geneva (2006).</p>
+
+            <p>Despite its technical achievements and international support, the Programme faced significant challenges in securing sustainable funding and achieving widespread adoption. By the mid-2000s, financial constraints forced a drastic reduction in activities, and the Language Centres could no longer be funded at their previous levels. This period marked a difficult transition for the Programme, as the ambitious vision of a comprehensive global network confronted the practical realities of long-term institutional support.
+            </p>
+
+            <p>However, the UNDL Foundation demonstrated remarkable resilience during this challenging period. Rather than abandoning its mission entirely, it adapted by redirecting resources toward strategic projects. The Foundation maintained several important initiatives that showcased the practical applications of UNL technology, such as the UNLization of the EOLSS (Encyclopedia of Life Support Systems), which illustrated UNL’s potential to democratize access to scientific and educational content.</p>
+            
+            <p>These projects, though more limited in scope than the original ambitious network of Language Centres, kept alive the core vision of the Programme and demonstrated practical pathways for applying UNL technology to real-world challenges in multilingual knowledge management and communication.</p>
+
+            <h3>Phase 3: 2009-2015</h3>
+            <div style="text-align: center; margin: 20px 0;">
+                <img src="shared/images/roadmap.png" alt="UNDLF Roadmap" style="max-width: 600px; height: auto;" />
+                <div style="font-size: 1rem; color: #555; margin-top: 4px;">UNL+3 Project</div>
+            </div>
+
+            <p>From 2009 to 2015, the UNDL Foundation entered a period of consolidation and expansion, marked by renewed partnerships, technological renewal, and global outreach. The Foundation regained funding, specially from the Arab Fund for Economic and Social Development, and established a strategic and profitable partnership with the Library of Alexandria in Egypt. This collaboration provided the resources and institutional support needed to redevelop the UNL System from the ground up in the UNL+3 project.</p>
+
+            <p>During this phase, the old tools, EnCo and DeCo, which had been developed in the late 1990s by the UNL Centre, were replaced by a new generation of high-level, linguist-friendly engines—IAN, SEAN, and EUGENE. These were fully integrated into a web-based development environment, UNL{dev}, providing a seamless platform for creating and managing UNL resources.
+
+            <p>To support collaborative development, the UNDL Foundation launched the UNLarium, a crowdsourcing environment for language resources development. Accredited users from around the world could create, edit, and revise entries across different domains and projects, significantly extending the reach and productivity of the UNL Programme.
+
+            <p>The Foundation also invested in training and research initiatives. It developed VALERIE, the Virtual Learning Environment for UNL, and established the UNLversity, which organized the UNL Panel and 10 UNL Schools, alongside the 4 UNL Olympiads, fostering education and capacity building in computational linguistics and UNL technologies.
+
+            <p>Documentation and knowledge dissemination were enhanced through the UNLwiki, a collaborative encyclopedia detailing the UNL formalism, rules, and best practices. All tools and resources were made accessible through UNLweb, a central web portal for the UNL community, including the UNL Forum and the UNL Community, which facilitated interaction and collaboration among researchers and developers worldwide.
+
+            <p>With a strengthened infrastructure, the UNDL Foundation was able to develop end-user applications, including Muhit (a multilingual dictionary), Lily (a machine translation system), Keys (an information retrieval system), and TUT (a text processing system). Over the following six years, the Foundation hosted numerous events and projects in collaboration with institutions such as the Cadmos Consortium and the University of Geneva (LACE project), the Library of Alexandria (LIS and UNL Core), and the University of Patras (Liddel & Scott for Ancient Greek, Lewis & Short for Latin), in addition to in-house initiatives such as the UNLization of Le Petit Prince and several other projects (BRUNO, CORNELIA, FRIDA, MIR, UGO).
+
+            <p>By December 2015, the UNL Programme had grown to include more than 2,000 users, covering over 100 languages and providing more than 2M entries, including both dictionary and grammar resources. VALERIE - the Virtual Learning Environment for UNL - had issued more than 1,500 certificates.
+
+            <p>However, by the end of 2015, the Foundation once again faced funding difficulties. The paradigm shift from symbolic, rule-based approaches to statistical and data-driven methods in natural language processing diverted available funds, forcing the closure of most projects. Ultimately, the UNDL Foundation could no longer sustain its staff and had to cease operations, entering a period of hibernation while awaiting renewed interest in dictionary- and rule-based language resources. The Foundation was formally dissolved in 2024.
+
+            <p>Despite these challenges, the UNL Programme's legacy endures. It laid the groundwork for future research in multilingual information processing and demonstrated the potential of collaborative, open-source approaches to language technology development. The Programme's vision of a world where everyone can access and share knowledge in their native languages remains a guiding principle for ongoing efforts in this field.</p>
+
+        </div>
+
+        <h2>What is UNL?</h2>
+        <div>
+            <img src="shared/images/unl_logo.png" alt="UNL Logo" style="max-width: 400px; height: auto;" />
+            <p>The Universal Networking Language (UNL) is an artificial language created to represent and process information across language barriers. It functions as a computational formalism for knowledge representation rather than a human communication tool. It is designed to capture and convey the semantic content of natural language texts in a machine-tractable, unambiguous format.</p>
+
+            <h3>Primary Purpose</h3>
+
+            <p>UNL serves as an infrastructure for handling knowledge independently of natural languages and computing platforms. It acts as a semantic markup language that represents the essential content and meaning of texts rather than their surface form, enabling information to be represented, processed and regenerated in multiple human languages.</p>
+
+             <h3>Structural Framework</h3>
+            <p>UNL represents information as a <strong>hypergraph</strong> (semantic network) composed of three discrete semantic entities: Universal Words, Universal Relations and Universal Attributes.</p>
+
+            <img src="shared/images/thefatcatsatonthemat.png" alt="UNL example" style="max-width: 800px; height: auto; display:block; margin:10px auto;" />
+
+            <div class="inner-accordion">
+                <h4>Universal Words (UWs) - Concepts/Nodes</h4>
+                <div>
+                    <p>Universal Words represent concepts and serve as nodes or hypernodes in the network. They are standardized, universally-accessible semantic units that reference concepts rather than language-specific words.</p>
+                    <p>Example: "cat(icl>feline)", "mat(icl>floor cover)", "to sit(icl>to rest)", and "fat(equ>abdominous)" are uniform concept names (UCN) for Universal Words, which may be expressed in different languages (here, in English) in order to keep the UNL code readable. In the UNL system, however, they are internally represented by the corresponding uniform concept locators (UCL) in the UNL Knowledge Base (a 9-digit code).</p>
+                </div>
+            </div>
+
+            <div class="inner-accordion">
+                <h4>Universal Relations - Labeled Arcs</h4>
+                <div>
+                    <p>Universal Relations are labeled semantic links connecting nodes, including:</p>
+                    <ul>
+                        <li><strong>Ontological relations:</strong> is a kind of, is an instance of</li>
+                        <li><strong>Logical relations:</strong> and, or</li>
+                        <li><strong>Thematic relations:</strong> agent, object, instrument, time, place</li>
+                    </ul>
+                    <p>Example: "aoj" (attribute of object) linking "fat" to "cat", "exp" (experiencer) linking "sit" to "cat", and "plc" (physical place) linking "sit" to "mat".</p>
+                </div>
+            </div>
+
+            <div class="inner-accordion">
+                <h4>Universal Attributes - Node Modifiers</h4>
+                <div>
+                    <p>Universal Attributes delimit and specify the use of nodes, encoding:</p>
+                    <ul>
+                        <li>Tense (@past, @present, @future)</li>
+                        <li>Modality (@imperative, @interrogative)</li>
+                        <li>Reference (@def, @indef)</li>
+                        <li>Focus and emphasis (@topic, @entry)</li>
+                        <li>Other features (@exclamation, @passive, @polite)</li>
+                    </ul>
+                    <p>Example: "@def" specifies that the cat and the mat are the specific instances being referred to; "@present" specifies that the cat is sitting on the mat at the current time; and "@on" specifies that it is sitting on top of the mat.</p>
+                </div>
+            </div>
+
+                       
+            
+            <h3>Core Characteristics</h3>
+      
+            <div class="inner-accordion">
+                <h5>Meaning-Oriented Representation</h5>
+                <p>UNL is fundamentally a knowledge representation system. It represents "what was meant" rather than "what was said", providing <strong>interpretations</strong> rather than literal translations. The UNL version of a document preserves semantic content while potentially differing from the original in lexical and syntactic choices.</p>
+            </div>
+
+            <div class="inner-accordion">
+                <h4>Machine-Oriented Design</h4>
+                <div>
+                    <p>Unlike auxiliary languages such as Esperanto or Interlingua, UNL is specifically designed for computers, not humans. It enables machines to:</p>
+                    <ul>
+                        <li>Generate UNL from natural language and vice versa</li>
+                        <li>Extract information from UNL documents</li>
+                        <li>Perform semantic reasoning (i.e., detect paraphrases, entailments, contradictions, and redundancies)</li>
+                        <li>Process semantic relationships without human linguistic intuition</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="inner-accordion">
+                <h4>Language Independence</h4>
+                <p>UNL is designed to be independent of any particular natural language. It uses a standard set of semantic entities that are universally accessible and not tied to the grammar or vocabulary of any specific language. This neutrality is essential for its role as a potential language infrastructure for the United Nations, ensuring no bias toward any member state's language.</p>
+            </div>
+
+            <div class="inner-accordion">
+                <h4>Semantic Self-Sufficiency</h4>
+                <div>
+                    <p>UNL representations are semantically complete and saturated, explicitly codifying all information without relying on implicit knowledge. This ensures that:</p>
+
+                    <ul>
+                        <li>UNLization (converting natural language to UNL) is independent of any future target language</li>
+                        <li>NLization (generating natural language from UNL) requires no information about the source language or original structure</li>
+                    </ul>
+                </div>
+            </div>
+            <br />
+
+           
+
+            <h3>Fundamental Properties</h3>
+
+            <p>UNL is governed by several key principles that ensure its effectiveness as a knowledge representation system:</p>
+            <div class="inner-accordion">
+                <h4>Non-Ambiguity</h4>
+                <p>As a formal system, UNL eliminates all ambiguity. The sentence "The girls saw the boy with the telescope" must clearly indicate whether "saw" is past tense of "see" versus "saw" (the tool), and whether the telescope belongs to the boy or was used for seeing.</p>
+            </div>
+
+            <div class="inner-accordion">
+                <h4>Non-Redundancy</h4>
+                <p>UNL eliminates redundant expressions. "Free gift", "round circle", and "murder to death" are represented simply as "gift", "circle", and "murder". Semantically equivalent sentences like "Peter killed John" and "John was killed by Peter" receive identical UNL representations.</p>
+            </div>
+
+            <div class="inner-accordion">
+                <h4>Compositionality</h4>
+                <p>UNL is fully literal and compositional—semantic values derive entirely from explicitly defined components. Figures of speech (metaphors, metonymy) must be represented by their intended meanings. "John devoured thousands of books" becomes "John read many books eagerly."</p>
+            </div>
+
+            <div class="inner-accordion">
+                <h4>Declarativeness</h4>
+                <p>UNL describes speech acts rather than performing them. A request like "Can you pass me the salt?" is represented as "you pass the salt to me" with attributes indicating it was a polite request (@polite, @request).</p>
+            </div>
+
+            <div class="inner-accordion">
+                <h4>Completeness</h4>
+                <p>UNL representations are fully explicit, avoiding ellipses and pro-forms except for exophoric references. "The monkey took the banana and ate it" is represented with explicit repeated references: "[The monkey]ᵢ took [the banana]ⱼ and [the monkey]ᵢ ate [the banana]ⱼ."</p>
+            </div>
+
+        </div>
+
+        <h2>Applications</h2>
+        <div>
+            <p>During its operation, UNL was applied in:</p>
+            <ul>
+                <li>Automatic summarization</li>
+                <li>Document rephrasing and localization</li>
+                <li>Information retrieval</li>
+                <li>Machine translation</li>
+                <li>Multilingual document generation</li>
+                <li>Semantic reasoning</li>
+                <li>Sentiment analysis</li>
+                <li>Text mining</li>
+                <li>Text simplification</li>
+            </ul>
+            <p>UNL enabled rephrasing, summarizing, or simplifying texts even in the same language, demonstrating its versatility beyond translation.</p>
+        </div>
+
+        <h2>The UNL System Architecture</h2>
+        <div>
+            <p>The UNL System comprised three essential components that worked in concert: linguistic resources and the software technology to manage them, and the applications that could be generated from this foundation.</p>
+
+            <h3>Linguistic Resources</h3>
+            <p>The UNL System's linguistic resources included:</p>
+            <ul>
+                <li><strong>The UNL Dictionary</strong>: The list of Universal Words (UWs) and their semantic attributes.</li>
+                <li><strong>The UNL Knowledge Base</strong>: A structured repository of facts and relationships between concepts, enabling definition, inference and reasoning.</li>
+                <li><strong>The UNL Ontology</strong>: A hierarchical representation of UWs.</li>
+                <li><strong>The UNL Memory</strong>: A corpus-based large collection of frequent relations between UWs.</li>
+                <li><strong>The NL Dictionaries</strong>: Language-specific lexicons with the corresponding morphological and syntactic information.</li>
+                <li><strong>The NL Memories</strong>: A corpus-based large collection of collocations and co-occurrences between natural language words.</li>
+                <li><strong>The UNL-NL Dictionaries</strong>: Mappings between UWs and their equivalents in each natural language.</li>
+                <li><strong>The NL-UNL Dictionaries</strong>: Mappings from natural language words to UWs.</li>
+                <li><strong>The UNL Grammar</strong>: The list of Universal Relations and Attributes, their definitions and possible values.</li>
+                <li><strong>The NL Grammar</strong>: Language-specific rules for natural language analysis and generation.</li>
+                <li><strong>The UNL-NL Grammar:</strong> Language-specific rules for converting between natural language and UNL representations (UNLization).</li>
+                <li><strong>The NL-UNL Grammar:</strong> Language-specific rules for converting between UNL and natural language representations (NLization).</li>
+            </ul>
+
+            <h3>Software Technology</h3>
+            <p>The software technology underpinning the UNL System included:</p>
+            <ul>
+                <li><strong>UNLization Tools:</strong> Software to convert natural language texts into UNL representations using the linguistic resources.</li>
+                <li><strong>NLization Tools:</strong> Software to generate natural language texts from UNL representations in various target languages.</li>
+                <li><strong>UNL Tools:</strong> A suite of utilities for processing UNL documents, including normalization, validation, editing, semantic inference and visualization tools.</li>
+                <li><strong>NL Tools:</strong> A suite of utilities for processing natural language texts, including normalization, tokenization, part-of-speech tagging, and syntactic parsing.</li>
+                <li><strong>UNL Development Tools:</strong> Software to assist in the development and maintenance of UNL resources (dictionatries, knowledge bases, corpora, grammars, etc.).</li>
+                <li><strong>Collaboration Tools:</strong> Platforms for facilitating collaboration among researchers, educators, and developers working with UNL resources.</li>
+                <li><strong>Interoperability Tools:</strong> Integration with other language technologies and standards, such as RDF and OWL, to facilitate integration with broader linguistic and semantic frameworks.</li>
+                <li><strong>UNL API:</strong> A set of programming interfaces for integrating UNL functionalities into external applications.</li>
+
+
+            </ul>
+            <h3>Applications</h3>
+            <p>The UNL System enabled the development of various applications, including:</p>
+            <ul>
+                <li><strong>Machine Translation Systems:</strong> Tools for translating texts between multiple languages using UNL as an interlingua.</li>
+                <li><strong>Information Retrieval Systems:</strong> Multilingual search engines that could retrieve information across languages based on semantic content.</li>
+                <li><strong>Text Mining Tools:</strong> Applications for extracting information and knowledge from large corpora of text in multiple languages.</li>
+                <li><strong>Document Summarization Tools:</strong> Software for generating concise summaries of texts while preserving their essential meaning.</li>
+                <li><strong>Semantic Web Applications:</strong> Tools for representing and querying knowledge on the Semantic Web using UNL.</li>
+                <li>And many more...</li>
+            </ul>
+        </div>
+
+
+        <h2>Legacy and Memory</h2>
+        <div>
+            <p>The UNL Programme represented a remarkable vision: that technology could serve not merely to translate between languages, but to create a genuine space for intercultural dialogue and knowledge sharing. It embodied the conviction that linguistic diversity, far from being a barrier to overcome, was a heritage to be preserved and celebrated—and that digital technology could be harnessed to honor that diversity while enabling universal communication.</p>
+            <p>Though the active phase of the Programme has concluded, its legacy endures in the relationships it fostered, the technical innovations it produced, the research it inspired, and most importantly, in the vision it articulated: a world where every language and culture has equal standing in the digital realm, where knowledge flows freely across linguistic boundaries, and where technology serves the cause of mutual understanding among all peoples. The UNL Archive exists to preserve this legacy and to keep alive the memory of what was attempted, what was achieved, and what remains possible when humanity commits itself to building bridges across the divides that separate us.</p>
+        </div>
+    </div>
+    <script>
+        $(function() {
+            $(".unlarium-accordion").accordion({
+                collapsible: true,
+                heightStyle: "content",
+                active: false
+            });
+            $(".inner-accordion").accordion({
+                collapsible: true,
+                heightStyle: "content",
+                active: false
+            });
+            $(".inner2-accordion").accordion({
+                collapsible: true,
+                heightStyle: "content",
+                active: false
+            });
+        });
+    </script>
+
+    <div style="text-align:center; margin-top:30px;">
+        <button class="btn"
+            onclick="window.location.href='index.php?unlweb=home'"
+
+            onmouseover="this.style.backgroundColor='#005bb5'"
+            onmouseout="this.style.backgroundColor='#0073e6'">
+            ⬅ Back to Home
+        </button>
+
+
+    </div>
+    <br /></div> 
+
+<hr />
+<div id="footer" style="max-width:600px; margin:0 auto; text-align:center; font-size:0.7em;">
+    <div style="display: flex; justify-content: center; align-items: center;">
+            <a href="index.php?unlweb=terms" style="margin-right: 10px;">Terms and Conditions</a> |
+            <a href="index.php?unlweb=about" style="margin-left: 10px; margin-right: 10px;">About UNL Archive</a> |
+            <a href="index.php?unlweb=contact" style="margin-left: 10px;">Contact</a>
+    </div>
+</div>
+<br /><br />
+</body>
+</html>

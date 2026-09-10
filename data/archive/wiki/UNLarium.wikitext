@@ -1,0 +1,101 @@
+The '''[http://www.undlfoundation.org/unlarium UNLarium]''' is the UNDL Foundation’s language resources management system. It is a web-based integrated development environment for creating and editing language resources for natural language engineering especially related (but not limited) to the UNL framework.
+
+== Goals ==
+The UNLarium is a linguist-friendly integrated development environment for producing language resources for natural language processing. It is a web-based collaborative database management system where registered users are able to create, to edit, to share and to export lexical and grammatical resources. Users are also allowed to search, to browse and to export corpora in UNL, and to download dictionaries and grammars that have been provided by other users and in other languages.
+
+Although originally conceived inside the UNL framework, the UNLarium intends not to require any deep knowledge on UNL, and its data may be used in several natural language processing systems, in addition to UNL-based applications. Furthermore, the system is supposed to be used as a research workplace for exchanging information and testing several linguistic constants that have been proposed for describing and predicting natural language phenomena. One of our main goals is to figure out a language-independent metalanguage that would be as comprehensive, as harmonized and as confluent as required by multilingual processing.
+
+== Structure ==
+The UNLarium comprises three main sections:
+*'''dictionary''', for adding and editing dictionary entries;
+*'''grammar''', for adding and editing inflectional paradigms, subcategorization frames, and other grammar rules; and
+*'''corpus''', for adding, editing and exploring documents in UNL.
+
+The UNLarium is for the most part a generation-driven framework, as the main goal is to provide resources to generate the corpus from UNL into a natural language. In that sense, it is a corpus-driven environment. Users always have to choose a working corpus (project) in order to address the corresponding entries and grammatical phenomena, which are extracted automatically out of the UNLized version of the source document. This is a sort of validation strategy for the data inserted in the database. Additionally, the UNLarium is chiefly a lexicon-based platform. Everything starts from the dictionary, and grammar rules are expected to be provided on demand.
+
+== UNLdots ==
+
+The activity in the UNLarium is measured by UNLdots, a unit of time and complexity for estimating the effort normally spent in performing UNLarium-related tasks. The rates for UNLdots are the following:
+
+{|border=1 align=center cellpadding=5
+!activity
+!UNLdot
+|-
+|Add 01 (one) new dictionary entry
+|align=center|01
+|-
+|Add 01 (one) new dictionary rule
+|align=center|01
+|-
+|Add 01 (one) new grammar rule
+|align=center|01
+|-
+|Edit 01 (one) dictionary entry (last modified by other user)
+|align=center|01
+|-
+|Edit 01 (one) dictionary rule (last modified by other user)
+|align=center|01
+|-
+|Edit 01 (one) grammar rule (last modified by other user)
+|align=center|01
+|}
+
+No UNLdot is afforded to users editing their own data (i.e., data that have been inserted or last modified by the same user).  
+
+== Levels == 
+
+The UNLarium comprises seven different levels of expertise, which are assigned according to the number of UNLdots accumulated by the user, as follows:
+
+{|border=1 align=center cellpadding=5
+!level
+!number of UNLdots
+|-
+|align=center|A0
+|from 0 to 5,000 UNLDots
+|-
+|align=center|A1
+|from 5,001 to 15,000 UNLDots
+|-
+|align=center|A2
+|from 15,001 to 30,000 UNLDots
+|-
+|align=center|B1
+|from 30,001 to 50,000 UNLDots
+|-
+|align=center|B2
+|from 50,001 to 75,000 UNLDots
+|-
+|align=center|C1
+|from 75,001 to 100,000 UNLDots
+|-
+|align=center|C2
+|above 100,001 UNLDots
+|}
+
+== Permissions == 
+The UNLarium comprises seven different categories of permission, which are assigned by the UNDL Foundation according to several characteristics, including level, certification, performance, expertise, institutional status and academic records:
+
+*'''Observers''': are allowed only to view data;
+*'''Trainees''': are allowed to add and edit their own data;
+*'''Authors''': (A1 required) are allowed to add and edit their own data;
+*'''Editors''' (B1 required): are allowed to add data and edit authors' data;
+*'''Revisers''' (C1 required):  are allowed to add data and edit authors’ and editors’ data;
+*'''Managers''':  are allowed to add and edit any data, including projects;
+*'''Supermanagers''': are allowed to edit the source code of the system.
+
+The initial (default) permission level is Observer. In order to become Author, users must be certified by [[VALERIE]], the Virtual Learning Environment for UNL. They should also be approved in the trainee program. In order to avoid problems, every data is double-checked inside the UNLarium: first by the editor, and then by the reviser. Permissions may be altered depending on users’ track history. Users may be demoted if their evaluated entries achieve 20% or above of errors in the period of one month.
+
+== Contributors == 
+The UNLarium comprises four different types of users:
+
+*'''Volunteers''', i.e., those who participate in the project voluntarily;
+*'''Freelancers''', i.e.,  accredited professionals who are paid for their work; 
+*'''Partners''', i.e., members of affiliate institutions; and
+*'''Employees''' of the UNDL Foundation.
+
+Volunteers and freelancers participate in the UNLarium as fully-independent and self-determining contributors and are not committed to any goal, timetable, schedule, deadline or obligation other than complying with the system specifications. They must reserve and block a number of entries (from 50 to 250) that they intend to address in the period of one calendar month, after which the untreated entries will be automatically returned to the general database and may be reserved and blocked by other contributors. Volunteers and freelancers will not be able to make new reservations prior to the accomplishment of the on-going assignment, and will not experience any penalty for not completing the task in the accepted time.
+
+Freelancers are remunerated according to their level and to the amount of UNLdots accumulated in the period of one month, but freelancer work is restricted to the languages and to the projects explicitly indicated by the UNDL Foundation. Any contribution to any language or to any project not explicitly funded by the UNDL Foundation is considered voluntary and will not be remunerated.
+
+== License ==
+As a result of a collaborative project, the data stored in the UNLarium is available under an Attribution Share Alike (CC-BY-SA) Creative Commons license, which means that any one may use the resources, provided that authors are cited and that the derivative work is released under the same or a similar license.

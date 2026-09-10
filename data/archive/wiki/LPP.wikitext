@@ -1,0 +1,63 @@
+The Projet Le Petit Prince (LPP)  aims at translating, to the Universal Networking Language (UNL), the integral text of Le Petit Prince, a French novel published by Antoine de Saint-Exupéry in 1943. Our main goal is 1) to set standards and guidelines for human UNLization; and 2) to test several tools that have been developed at the UNDL Foundation. The resulting UNL document is also planned to be used in the evaluation of UNL-based translations, and as a training material for VALERIE, the Virtual Learning Environment for UNL. 
+
+== Motivation ==
+
+Le Petit Prince is one of the best selling books ever (more than 80 million copies), and has been translated to more than 180 languages, providing thus the possibility of contrasting and evaluating a wide range of UNL-based translations. The book can be said to be short enough to allow for a fully-manual UNLization and long enough to afford the possibility of generalizing the UNLization strategies to other similar texts. Additionally, the book offers the chance of experimenting UNL in three up-to-now unexplored situations: literature, narrative and French original.
+
+== Corpus ==
+
+The integral version of Le Petit Prince, which has been released under public domain in Canada, was obtained from [http://wikilivres.ca/wiki/Le_Petit_Prince]. The text was automatically segmented in five punctuation marks (".", ":", "?", "!" and "...") and in the control character for end of line. This  segmentation strategy led to several problems, including:
+*Isolation of subordinate clauses separated from the main one by ":" or "?"
+*:Mais toujours elle me répondait :  « C’est un chapeau. »
+*:Sur tout ça ? dit le petit prince.
+*Isolation of interjections followed by "!"
+*:— Ah ! ça c’est drôle… »
+*Isolation of vocatives and hesitations followed by "...":
+*:— Sire… sur quoi régnez-vous ?
+*:— De… de la Justice !
+*Unbalanced quotation marks:
+*:« Non ! Celui-là est déjà très malade. Fais-en un autre. »
+As we would not be able to replicate a human revision for other texts, we have decided to keep all these artificial sentence boundaries, and to address the problem of text segmentation in a second phase of the project.
+ 
+The result of the segmentation is a corpus with the following characteristics, where "tokens" stand for the general frequency of occurrence, and "types" for frequency of occurrence of distinct units (i.e., without repetition):
+
+{|border=1 align=center
+!Unit
+!Tokens
+!Types
+|- 
+!words
+|align=center|15,513
+|align=center|2,378
+|-
+!sentences
+|align=center|1,684
+|align=center|1,603
+|}
+
+== Methodology ==
+The UNLization process was carried out in a fully-manual way through the UNL Editor, a graph-based NL-to-UNL analysis system that has been developed by the UNDL Foundation and which is available at [http://dev.undlfoundation.org]. The sentences have been divided into two main different groups:
+*the training corpus, which comprises the first 53 sentences of the book (dedication and first chapter) including the title; and
+*the application corpus, which comprises the remaining 1,550 sentences.
+The training corpus wase addressed collectively by the group of human UNLizers in order to synchronize UNLization strategies and to set the guidelines for the application corpus.<br />
+The application corpus was divided into three different groups: ECA, LGA and PTK, according to the similarity of sentences (and not to the order of appearance). Each group was assigned to a different participant in this project. Sentences were further divided according to the delivery schedule, at the rate of 90 sentences per week per participant (210 sentences per week in total, if we consider that one participant had a part-time contract).<br />
+Except for the training corpus, the sentences have been distributed according to the similarity (and not according to the order in the corpus). This was intended to speed up the process and to guarantee some standardization. Repeated sentences were suppressed, and similar sentences (as the ones below) were grouped, in order to be handled in the same way. 
+*Adieu , dit la fleur.
+*Adieu , dit-il à la fleur.
+*Adieu , répéta-t-il.
+*Adieu, dit le renard.
+*Adieu, dit-il (pds) .
+*Adieu, fit le petit prince.
+The text was automatically segmented in end-of-line, “.”, “?”, “!”, “:” and “…”. However, the UNL Editor did not recognize end-of-line as a delimiter, and required “.” after titles. That’s why “Le Petit Prince” appears as “Le Petit Prince.” (with a dot). Additionally, the UNL Editor had problems with “…”, which is split into three different sentences, generating sentences made of an isolated “.”. In order to avoid that, all “…” were replaced by “(pds)” (= points-de-suspension).
+
+== UNLization Guidelines ==
+In order to normalize the UNLization process, we have set some Instructions and proposed a set of [[UNLization Guidelines]] to be used with French originals.
+
+== Participants ==
+*CZAJKOWSKA, Ewa (ECA)
+*GOUVEIA, Luisa (LGA)
+*MARTINS, Ronaldo (RMA) (coord).
+*TOKAREV, Pavel (PTV)
+
+== Results ==
+The results of the project are available at the [[UNLarium]]: ULNWEB>UNLARIUM>CORPUS>LPP.

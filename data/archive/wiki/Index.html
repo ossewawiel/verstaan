@@ -1,0 +1,100 @@
+<div class="mw-content-ltr mw-parser-output" lang="en" dir="ltr"><p>Indexes (%) are used for co-indexing nodes in <a href="/wiki/T-rule" title="T-rule">T-rules</a> and <a href="/wiki/D-rule" title="D-rule">D-rules</a>.
+</p>
+<div id="toc" class="toc" role="navigation" aria-labelledby="mw-toc-heading"><input type="checkbox" role="button" id="toctogglecheckbox" class="toctogglecheckbox" style="display:none" /><div class="toctitle" lang="en" dir="ltr"><h2 id="mw-toc-heading">Contents</h2><span class="toctogglespan"><label class="toctogglelabel" for="toctogglecheckbox"></label></span></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Use"><span class="tocnumber">1</span> <span class="toctext">Use</span></a>
+<ul>
+<li class="toclevel-2 tocsection-2"><a href="#T-rules"><span class="tocnumber">1.1</span> <span class="toctext">T-rules</span></a></li>
+<li class="toclevel-2 tocsection-3"><a href="#D-rules"><span class="tocnumber">1.2</span> <span class="toctext">D-rules</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-4"><a href="#Syntax"><span class="tocnumber">2</span> <span class="toctext">Syntax</span></a></li>
+<li class="toclevel-1 tocsection-5"><a href="#Default_Indexation"><span class="tocnumber">3</span> <span class="toctext">Default Indexation</span></a></li>
+<li class="toclevel-1 tocsection-6"><a href="#Observations"><span class="tocnumber">4</span> <span class="toctext">Observations</span></a></li>
+</ul>
+</div>
+
+<div class="mw-heading mw-heading2"><h2 id="Use">Use</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Index&amp;veaction=edit&amp;section=1" title="Edit section: Use" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Index&amp;action=edit&amp;section=1" title="Edit section&#39;s source code: Use">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>Indexes are used in <a href="/wiki/T-rule" title="T-rule">T-rules</a> and <a href="/wiki/D-rule" title="D-rule">D-rules</a>.
+</p>
+<div class="mw-heading mw-heading3"><h3 id="T-rules">T-rules</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Index&amp;veaction=edit&amp;section=2" title="Edit section: T-rules" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Index&amp;action=edit&amp;section=2" title="Edit section&#39;s source code: T-rules">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>In <a href="/wiki/T-rule" title="T-rule">T-rules</a>, indexes are used:
+</p>
+<ul><li>to associate nodes in the left side of the rule (CONDITION) to nodes in the right side of the rule (ACTION):</li></ul>
+<dl><dd><ul><li>(%a)(%b)(%c):=(%b); (delete the first and the third nodes, and keep the second)</li>
+<li>(%a)(%b)(%c):=(%c)(%b)(%a); (reverse the order)</li>
+<li>rel(%a;%b;%c):=rel(%a;%b); (remove the third argument of the relation rel)</li>
+<li>rel(%a;%b;%c):=rel(%c;%b;%a); (reverse the order of the arguments of the relation rel)</li></ul></dd></dl>
+<ul><li>to associate nodes within the left side of the rules</li></ul>
+<dl><dd><ul><li>(%a)(%b)(%a):=(%b); (delete the first and the third nodes, if they are the same)</li>
+<li>rel1(%a;%b)rel2(%a;%c):=rel3(%a;%c); (replace the relations rel1 and rel2 by the relation rel3 if the first argument of rel1 is the first argument of rel2)</li></ul></dd></dl>
+<ul><li>to copy values of attributes between nodes</li></ul>
+<dl><dd><ul><li>(%a)(%b):=(%a)(%b,GEN=%a); (copy the value of the attribute GEN from the node %a to the node %b if the node %b comes after the node %a)</li>
+<li>NA(%a;%b):=NA(%a;%b,GEN=%a); (copy the value of the attribute GEN from the node %a to the node %b if there is a relation NA between them)</li></ul></dd></dl>
+<ul><li>to test values of attributes within the left side of the rules</li></ul>
+<dl><dd><ul><li>(%a)(%b,GEN=%a):=; (delete the nodes %a and %b if they have the same value of the attribute GEN)</li>
+<li>rel1(%a;%b,GEN=%b):=rel2(%a;%b); (replace the relation rel1 by rel2 if the arguments of rel1 have the same value of the attribute GEN)</li></ul></dd></dl>
+<div class="mw-heading mw-heading3"><h3 id="D-rules">D-rules</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Index&amp;veaction=edit&amp;section=3" title="Edit section: D-rules" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Index&amp;action=edit&amp;section=3" title="Edit section&#39;s source code: D-rules">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>In <a href="/wiki/D-rule" title="D-rule">D-rules</a>, indexes are used to test values of attributes within the left side of the rules
+</p>
+<dl><dd><ul><li>(%a,ART)(%b,NOU,GEN=%a)=1; (nouns following articles normally have the same gender of the article)</li></ul></dd></dl>
+<div class="mw-heading mw-heading2"><h2 id="Syntax">Syntax</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Index&amp;veaction=edit&amp;section=4" title="Edit section: Syntax" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Index&amp;action=edit&amp;section=4" title="Edit section&#39;s source code: Syntax">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>Indexes are made of any sequence of alphanumeric characters and underscore preceded by&#160;% and starting by alphabetic characters:
+</p>
+<dl><dd>%index</dd>
+<dd>%a</dd>
+<dd>%first_index</dd>
+<dd>%a1</dd>
+<dd><strike>%first index</strike> (no blank spaces are allowed)</dd>
+<dd><strike>%_a</strike> (indexes must start with alphabetic characters)</dd>
+<dd><strike>%03</strike> (numeric characters cannot be used as user-defined indexes)</dd></dl>
+<div class="mw-heading mw-heading2"><h2 id="Default_Indexation">Default Indexation</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Index&amp;veaction=edit&amp;section=5" title="Edit section: Default Indexation" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Index&amp;action=edit&amp;section=5" title="Edit section&#39;s source code: Default Indexation">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>If not explicitly informed, indexation is done automatically by the machine, as follows:
+</p>
+<ul><li>if the <b>number of nodes is the same</b> in the left and in the right side, NODES ARE CO-INDEXED, starting from left to right
+<dl><dd>("a")("b")("c"):=("d")("e")("f"); is the same as ("a",%01)("b",%02)("c",%03):=("d",%01)("e",%02)("f",%03); (i.e., "a" will be replaced by "d", "b" by "e", and "c" by "f")</dd>
+<dd>rel("a";"b";"c"):=rel("d";"e";"f"); is the same as rel("a",%01;"b",%02;"c",%03):=rel("d",%01;"e",%02;"f",%03);</dd></dl></li>
+<li>if the <b>number of nodes is not the same</b> in both sides, NODES ARE NOT CO-INDEXED
+<dl><dd>("a")("b")("c"):=("d")("e"); is the same as ("a",%01)("b",%02)("c",%03):=("d",%04)("e",%05); (i.e., "a", "b" and "c" will be deleted, and "d" and "e" will be created)</dd>
+<dd>rel("a";"b";"c"):=rel("d";"e"); is the same as rel("a",%01;"b",%02;"c",%03):=rel("d",%04;"e",%05);</dd></dl></li></ul>
+<p>Default indexes are also assigned to hyper-nodes and sub-nodes by the notation &lt;PARENT NODE&gt;&lt;CHILD NODE&gt;, where &lt;PARENT NODE&gt; may be, itself, a sub-node:
+</p>
+<dl><dd><ul><li>(((A))):=(((B))); is the same as (%01(%01%01(%01%01%01,A))):=(%01(%01%01(%01%01%01,B)));</li>
+<li>X(Y(A;B);C) is the same as X(<b>%01</b>,Y(<b>%01%01</b>,A;<b>%01%02</b>,B);<b>%02</b>)</li></ul>
+<dl><dd><ul><li>%01 = Y(A;B), %02 = C, %01%01 = A, %01%02 = B</li></ul></dd></dl>
+<ul><li>X(Y(Z(A;B);C);D) is the same as X(<b>%01</b>,Y(<b>%01%01</b>,Z(<b>%01%01%01</b>,A;<b>%01%01%02</b>,B);<b>%01%02</b>,C);<b>%02</b>,D)</li></ul>
+<dl><dd><ul><li>%01 = Y(Z(A;B);C), %02 = D, %01%01 = Z(A;B), %01%02 = C, %01%01%01 = A, %01%01%02 = B</li></ul></dd></dl></dd></dl>
+<p>In order to avoid ambiguities, it is highly recommended that indexes are replaced by user-defined labels made of any sequence of alphabetic characters and underscore:
+</p>
+<dl><dd>("a",%a)("b",%b):=("c",%a)("d",%b); instead of (A)(B):=(C)(D);</dd></dl>
+<div class="mw-heading mw-heading2"><h2 id="Observations">Observations</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Index&amp;veaction=edit&amp;section=6" title="Edit section: Observations" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Index&amp;action=edit&amp;section=6" title="Edit section&#39;s source code: Observations">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<ol><li>Non-indexed nodes in the right side means ADDITION, whereas left-side nodes that are not referred to in the right side means DELETION
+<dl><dd>X(%a;%b):=Y(%a;X;%b); is the same as X(%a;%b):=Y(%a;<b>%02</b>,X,;%b); (it means that a new node with the feature X will be created for the relation Y)</dd>
+<dd>X(%a;%b;%c):=Y(%a;%c); (it means that the second node of X will be deleted from the relation Y)</dd></dl></li>
+<li>Any co-indexation is made by the use of indexes and not by the repetition of features.
+<dl><dd>'<b>X(A;)Y(A;)</b> is different from <b>X(%a;)Y(%a;)</b>.
+<dl><dd>In the former case, the first node of X is not necessarily the first node of Y, they only share the same feature A; in the latter case, the first node of X is necessarily the first node of Y.</dd></dl></dd></dl></li></ol>
+<!-- 
+NewPP limit report
+Cached time: 20260909235406
+Cache expiry: 86400
+Reduced expiry: false
+Complications: [show‐toc]
+CPU time usage: 0.005 seconds
+Real time usage: 0.005 seconds
+Preprocessor visited node count: 24/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/100
+Expensive parser function count: 0/100
+Unstrip recursion depth: 0/20
+Unstrip post‐expand size: 0/5000000 bytes
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    0.000      1 -total
+-->
+
+<!-- Saved in parser cache with key u965818192_SLvgQ-l8z2_:pcache:756:|#|:idhash:canonical and timestamp 20260909235406 and revision id 15710. Rendering was triggered because: diff-page
+ -->
+</div>

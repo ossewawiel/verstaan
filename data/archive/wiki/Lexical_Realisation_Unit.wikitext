@@ -1,0 +1,108 @@
+In the UNLarium framework, a '''Lexical Realisation Unit''' (or simply '''LRU''') is the natural language counterpart to a [[UW]]. It can be a subword (a root, an affix), a simple word or a multiword expression (compounds, collocations, idioms). 
+
+== Lexical realisation (LR) == 
+The UNLarium is first and foremost a generation-driven framework, which has been developed mainly to provide resources for generating natural language texts out of UNL graphs. In that sense, UNLarium entries should correspond to the most likely '''realisations''', in a given language, of a given concept (i.e., a '''UW'''). The expression “realisation" stands here for a mixture of wording and phrasing, i.e., the manner in which the concept is articulated in a given language. For instance, the UW 109358358 (= “the natural satellite of the Earth”) is realised, in English, by the word “moon”; in French, by “lune”; in German, by “Mond”; in Russian, by “луна”; in Spanish, by “luna”; in Chinese, by 月; and so on. Your first task in the UNLarium is exactly to find out linguistic realisations for UWs, which will be always presented by their corresponding definition in English. 
+
+LRs, however, are not simply linguistic realisations; they are '''lexical''' realisations. This means that LRs should correspond to the units of the vocabulary of a language, i.e., to a "lexical item". Let’s come back to our previous example. Apart from “moon”, the UW 109358358 can be realised, in English, by the expression “the natural satellite of the Earth”, which is indeed very frequent (2.130.000 occurrences in Google). This expression, however, is a “definition” rather than a “lexical realisation” for the UW, and should therefore not correspond to a LR.
+
+The differences between definitions and lexical items, or between “defining” and “naming” a concept, are fairly subjective, and are normally ascribed to the compositionality (or analyticity) of the candidate term: if the meaning of the compound can be reduced to the combination of the meaning of its components, it is said to be simply a definition; otherwise, i.e., if there is a sort of semantic surplus, a supplementary (or even complementary) sense added to the simple combination, the term is considered a lexical item. The above-mentioned expression "the natural satellite of the Earth", for instance, does not bring any new semantic content to the ones conveyed by its components. This is not the case of "geostationary communications satellite", which subsumes the idea of "orbit" which is not explicitly present in the compound. Accordingly, "geostationary communications satellite" (208.000 occurrences in Google) should be treated as a LR, whereas "the natural satellite of the Earth", in spite of its higher frequency, should not.
+
+== Lexical Realisation Unit (LRU) ==
+In synthetic (inflected) languages, such as the Indo-European ones, a single UW may be realised by different lexical realisations in order to express different grammatical categories, such as number, gender, tense and case. The UW 200358431 (= “pass from physical life and lose all bodily attributes and functions necessary to sustain life”), for instance, is realised, in English, by the forms "to die", "die", "dies", "dying", "died", "dead", "will die", etc. These LRs are said to be different forms of the same '''Lexical Realisation Unit''' (or LRU).
+
+Lexical Realisation Units are therefore abstract underlying units shared by different lexical realisations, but they should not be mistaken for lexemes. Indeed, it is not very simple to associate the idea of LRU to that of a lexeme, as LRUs may correspond to different morphological structures: 
+*roots (such as "anthropo", which is one of the possible LRUs for the UW 102472293 = “any living or extinct member of the family Hominidae characterized by superior intelligence, articulate speech, and erect carriage");  
+*stems (such as "unhappy", which is one of the possible LRUs for the UW 301149494 = "experiencing or marked by or causing sadness or sorrow or discontent"); and
+*word forms (such as "glasses", which is one of the possible LRUs for the UW 104272054 = "optical instrument consisting of a pair of lenses for correcting defective vision").
+
+Additionally, LRUs may also correspond to complex structures comprising several different (and even discontinuous) lexemes, as in "geostationary communications satellite" or "throw <someone> to the lions".
+
+== Lexical Realisation Set (LRS) == 
+
+As languages have different lexicalisation processes, a single definition may correspond to several different LRUs, which are said to be '''synonyms'''. The UW 200358431 (“pass from physical life and lose all bodily attributes and functions necessary to sustain life”), for instance, may be realised in English by several different LRs: “die”, “croak”, “decease”, “drop dead”, “buy the farm”, “cash in one's chips”, “give-up the ghost”, “kick the bucket”, “pass away”, “perish”, “snuff it”, “pop off”, “expire”, “conk”, “exit”, “choke”, “go”, “pass”, etc. In such cases, all LRUs should be informed in the UNLarium inside a single '''Lexical Realisation Set''' (LRS). 
+
+There are cases, however, in which the definition cannot be lexically realised in the target language. This happens in two situations:
+*When the concept is '''underspecified''', i.e., too broad (or vague) to be realised. The concept of “red entity”, for instance, may be coextensive with several different English LRUs (“blood”, “cherry”, “ruby”, “ketchup”, “Spiderman”, etc), but these are rather '''subordinate terms''' (or '''hyponyms'''), in the sense they only include and partly match the intended sense. As the expression “red entity” itself is too compositional and too occasional to be considered already lexicalized (Google brings only 8,040 occurrences for this bigram), there will no LRU in this case. 
+*When the concept is '''overspecified''', i.e., too narrow (or specific) to be realised. Consider, for instance, the definition “a person who is ready to forgive any transgression a first time and then to tolerate it for a second time, but never for a third time”. This definition does not lead to any LRU in English, French or Russian, even though it corresponds to a single word (“ilunga”) in Tshiluba, a language spoken in the Republic of Congo. We may obviously express the concept in any language, but we have to do it through a periphrasis (as we have done for English) or through a '''superordinate term''' (or '''hypernym'''), such as “forgiver”, “excuser”, “pardoner”, which are again fairly accurate. 
+
+In both cases, there will be no realisation to be informed, and it is important to indicate, in the UNLarium, that the concept has not been lexicalized yet, which means that it can be expressed in the target language only by means of definitions (periphrases) and other semantically related (and inaccurate) LRUs (such as hyponyms or hypernyms). This is done by informing that the Lexical Realisation Set is empty.
+
+== Examples ==
+
+{| align="center" border="1" cellpadding="5"
+!Concept
+!Lexical Realisations
+!Lexical Realisation Unit (LRU)
+|-
+|width="30%"|large gregarious predatory feline of Africa and India having a tawny coat with a shaggy mane in the male
+|width="30%"|lion, lions, king of beasts, kings of beasts, Panthera leo
+|width="30%"|lion, king of beasts, Panthera leo
+|-
+|a female lion
+|lioness, lionesses
+|lioness
+|-
+|a large and densely populated urban area
+|city, cities, metropolis, urban center, urban centers
+|city, metropolis, urban center
+|-
+|the part of the leg of a human being below the ankle joint
+|foot, feet, human foot, human feet, pes
+|foot, human foot, pes
+|-
+|the largest city in New York State and in the United States
+|New York, New York City, NY, NYC
+|New York, New York City, NY, NYC
+|-
+|the corporate executive responsible for the operations of the firm
+|chief executive officer, chief executive officers, chief operating officer, chief operating officers, CEO, CEOs
+|chief executive officer, chief operating officer, CEO
+|-
+|optical instrument consisting of a pair of lenses for correcting defective vision
+|spectacles, specs, eyeglasses, glasses 
+|spectacles, specs, eyeglasses, glasses 
+|-
+|pale yellowish wine made from white grapes or red grapes with skins removed before fermentation
+|white wine, white wines
+|white wine
+|-
+|a person whose occupation is teaching
+|profesor (male singular), profesores (male plural), profesora (female singular), profesoras (female plural) (Spanish)
+|profesor
+|-
+|solid-hoofed herbivorous quadruped domesticated since prehistoric times
+|cheval (male singular), chevaux (male plural), jument (female singular), juments (female plural) (French)
+|cheval, jument
+|-
+|delighting the senses or exciting intellectual or emotional admiration
+|beautiful
+|beautiful
+|-
+|delighting the senses or exciting intellectual or emotional admiration
+|beau (masculine singular), beaux (masculine plural), belle (feminine singular), belles (feminine plural) (French)
+|beau
+|-
+|have the quality of being
+|to be, be, am, is, are, was, were, being, been
+|be
+|-
+|have a great affection or liking for
+|aime, aimes, aimons, aimez, aiment, aimerais, ai aimé, aimais, ... (French)
+|aimer 
+|-
+|steer a vehicle to the side of the road
+|to pull over, pull over, pulls over, pulled over, ...
+|pull over
+|-
+|allow or plan for a certain possibility
+|to take into account, take into account, takes into account, taking into account, ...
+|take into account
+|-
+|on the day preceding today
+|yesterday
+|yesterday
+|-
+|in a willing manner
+|gladly, lief, fain
+|gladly, lief, fain
+|}

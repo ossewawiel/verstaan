@@ -1,0 +1,80 @@
+'''Projection''' is the mechanism by which, in a given syntactic tree, one or two constituents are integrated into a more complex structure. It is the bottom-up movement of merging or collapsing one or two subordinate nodes into a higher node in order to form a [[syntactic structure]]. In the UNL<sup>arium</sup> framework, projection is used to build the sentence structure out of the individual constituents (head, specifier, adjunct and complement) during natural language generation. 
+
+== Use == 
+
+Projections are used to build trees out of the head-driven relations, i.e., to go from:
+
+ '''XS(head;specifier);''', which describes the relation between the head of the structure and its specifier
+ '''XA(head;adjunct);''', which describes the relation between the head of the structure and its adjuncts
+ '''XC(head;complement);''', which describes the relation between the head of the structure and its complements
+ '''XH(head);''', which describes the head of the structure
+
+to: 
+
+<pre>
+    XP
+   / \
+spec  XB
+     / \
+    XB  adjt
+   / \
+  X   comp
+  |
+head
+</pre>
+
+This is done by a set of rules as follows:
+
+;first intermediate projection (lower XB)
+XC(%head;%comp)<nowiki>:=</nowiki>XB(%head;%comp);
+:projects the first intermediate projection (XB) in case of comp
+XA(%head;%comp)<nowiki>:=</nowiki>XB(%head;%adjt);
+:projects the first intermediate projection (XB) in case of adjt (i.e., when there is no comp)
+XH(%head)<nowiki>:=</nowiki>XB(%head;);
+:projects the first intermediate projection (XB) when there is no comp or adjt (the second argument is empty)
+;second intermediate projection (if any)
+XB(%head;%xb1)XA(%head;%adjt)<nowiki>:=</nowiki>XB(XB(%head;%xb1);%adjt);
+:projects the second intermediate projection (XB) in case of adjt (the tree has a comp and a adjt, or two adjts)
+XB(%head;%comp1)XC(%head;%comp2)<nowiki>:=</nowiki>XB(XB(%head;%comp1);%comp2);
+:projects the second intermediate projection (XB) in case of comp (the tree has two comps)
+;third intermediate projection (if any)
+XB(XB(%head;%xb1);%xb2))XA(%head;%adjt)<nowiki>:=</nowiki>XB(XB(XB(%head;%xb1);xb2);%adjt)); (the tree has one comp and two adjts, two comps and one adjt or three adjts)
+;fourth intermediate projection (if any)
+...
+;maximal projection
+XB(%head;)<nowiki>:=</nowiki>XP(XB(%head;);); 
+:minimal tree: the tree has only the head (no comp, adjt or spec)
+XB(%head;%xb)<nowiki>:=</nowiki>XP(XB(%head;%xb););
+:the tree has only one intermediate projection and no spec
+XB(%head;%xb)XS(%head;%spec)<nowiki>:=</nowiki>XP(XB(%head;%xb);%spec);
+:the tree has only one intermediate projection and the spec
+XB(%head;%xb)<nowiki>:=</nowiki>XP(XB(%head;%xb););
+:the tree has only one intermediate projection and no spec
+XB(XB(%head;%xb1);%xb2)XS(%head;%spec)<nowiki>:=</nowiki>XP(XB(XB(%head;%xb1);%xb2);%spec);
+:the tree has two intermediate projections and the spec
+XB(XB(%head;%xb1);%xb2)<nowiki>:=</nowiki>XP(XB(XB(%head;%xb1);%xb2););
+:the tree has two intermediate projections and no spec
+etc.
+
+== Syntax ==
+Projection rules are [[S-rules]] of the replace type, i.e.:
+ <RELATION> := <RELATION>;
+Where <RELATION> is a [[Syntactic roles|syntactic relation]], including a <HEAD>, in case of head-only relations (VH, NH, PH, JH, AH, CH, IH, DH), or a <HEAD> and a <ARGUMENT>, in case of binary relations (VC, VS, VA, NC, NS, NA, etc.).
+
+There are mainly two types of projection rules:
+*Replace, when the number of relations in the left side is the same as in the right side, and which is used for collapsing single-branched structures (i.e., parent nodes that have one single child)
+*Merge, when the number of relations in the left side is greater than in the right side, and which is used for collapsing double-branched structures (i.e., parent nodes that have two children).
+
+== Examples ==
+*VH(%head):=VB(%head); 
+**The head of the verbal phrase becomes the head of the verbal intermediate projection (VB)
+*VC(%head;%comp):=VB(%head;%comp);
+**The head of the verbal phrase becomes the head of the verbal intermediate projection and the complement of the verbal phrase becomes the second argument of the verbal intermediate projection
+*VB(%head;%comp)VA(%head;%adjt):=VB(VB(%head;%comp);%adjt);
+**The verbal intermediate projection becomes the head of a higher intermediate projection that takes the adjunct to the verb as second argument
+
+== Observations == 
+;Indexation
+:As in [[S-rule]]s, nodes in projection rules are always indexed, either by user-defined labels (such as %head, %comp or any other) or by the position in the left side of the rules.
+;Sentence structure
+:The main goal of projection rules is to build the sentence structure described in [[Syntax]].

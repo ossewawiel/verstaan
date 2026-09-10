@@ -1,0 +1,49 @@
+'''Case''' is a grammatical category that indicates the grammatical function of a word (such as the role of subject, of direct object, or of possessor) in a phrase or clause. As a syntactic rather than semantic notion, case marking is not directly represented in UNL, but only in the UNL-NL grammars. 
+
+== Natural language ==
+In the UNLarium, case must be informed only to the forms (such as English personal pronouns) still holding an inflectional case system.<br>
+The values for the case attribute are the following:
+
+{{#tree:id=nl_case|openlevels=0|root=Case (CAS)|
+**abessive (ABE): lack or absence of
+**ablative (ABL): movement from or cause
+**accusative (ACC): direct object of a verb
+**allative (ALL): motion to or toward
+**absolutive (ABS): subject of intransitive verbs or object of transitive verbs in ergative-absolutive languages
+**benefactive (BEN): beneficiary
+**causative (CAU): cause
+**comitative (CMT): accompaniment
+**construct state (CTS)
+**dative (DAT): indirect object of a verb
+**delative (DEL): motion downward from
+**elative (ELA): motion out of or away from
+**equative (EQU): likeness or identity
+**ergative (ERG): subject of transitive verbs in ergative-absolutive languages
+**essive (ESS):  temporary state
+**genitive (GNT): possessor
+**illative (ILL): motion into or direction toward
+**inessive (INE): location within
+**instrumental (INS): means of the accomplishment
+**lative (LAT): motion up to
+**locative (LOC): location at
+**nominative (NOM): subject of a finite verb
+**oblique (OBL): object of a verb or of a preposition
+**prolative (PLT):  motion along or by
+**prepositional (PPL): object of a preposition
+**partitive (PTT): partial nature of
+**superessive (SPE): location on
+**translative (TLT): result of a process of change
+**vocative (VOC): being addressed
+}}
+
+=== Examples ===
+*English
+**nominative (NOM): I ("I saw him")
+**genitive (GNT): my ("my house")
+**oblique (OBL): me ("He saw me")
+*Latin
+**nominative (NOM): nauta ("nauta ibi stat" = the sailor is standing here)
+**genitive (GNT): nautae ("nomen nautae est Claudius" = the sailor's name is Claudius)
+**dative (DAT): nautae ("nautae donum dedi" = I gave a present to the sailor)
+**accusative (ACC): nautam ("nautam vidi" = I saw the sailor)
+**ablative (ABL): nautā ("sum altior nautā" = I am taller than the sailor)

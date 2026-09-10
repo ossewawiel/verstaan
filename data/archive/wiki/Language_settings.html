@@ -1,0 +1,86 @@
+<div class="mw-content-ltr mw-parser-output" lang="en" dir="ltr"><p><b>Language settings</b> are used to define the general parameters of a given language, such as word order, syntactic agreement and case marking. They can also be used to describe grammatical redundancy (and therefore to avoid proliferating rules) or to indicate how an absent (i.e., a non-grammaticalized) category should be translated.
+</p>
+<div id="toc" class="toc" role="navigation" aria-labelledby="mw-toc-heading"><input type="checkbox" role="button" id="toctogglecheckbox" class="toctogglecheckbox" style="display:none" /><div class="toctitle" lang="en" dir="ltr"><h2 id="mw-toc-heading">Contents</h2><span class="toctogglespan"><label class="toctogglelabel" for="toctogglecheckbox"></label></span></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#When_to_use_language_settings"><span class="tocnumber">1</span> <span class="toctext">When to use language settings</span></a>
+<ul>
+<li class="toclevel-2 tocsection-2"><a href="#General_parameters"><span class="tocnumber">1.1</span> <span class="toctext">General parameters</span></a></li>
+<li class="toclevel-2 tocsection-3"><a href="#Grammatical_redundancy"><span class="tocnumber">1.2</span> <span class="toctext">Grammatical redundancy</span></a></li>
+<li class="toclevel-2 tocsection-4"><a href="#Translation"><span class="tocnumber">1.3</span> <span class="toctext">Translation</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-5"><a href="#Syntax"><span class="tocnumber">2</span> <span class="toctext">Syntax</span></a></li>
+</ul>
+</div>
+
+<div class="mw-heading mw-heading2"><h2 id="When_to_use_language_settings">When to use language settings</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Language_settings&amp;veaction=edit&amp;section=1" title="Edit section: When to use language settings" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Language_settings&amp;action=edit&amp;section=1" title="Edit section&#39;s source code: When to use language settings">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>Language settings should be defined in three cases:
+</p>
+<ul><li>to set phonotactic, morphotactic and syntactic parameters of the language;</li>
+<li>to state grammatical redundancy and to avoid proliferating rules; and</li>
+<li>to ensure cross-linguistic mapping.</li></ul>
+<div class="mw-heading mw-heading3"><h3 id="General_parameters">General parameters</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Language_settings&amp;veaction=edit&amp;section=2" title="Edit section: General parameters" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Language_settings&amp;action=edit&amp;section=2" title="Edit section&#39;s source code: General parameters">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>In English, the grammatical category of <a href="/wiki/Person" title="Person">person</a> is represented, in almost all cases, by the same morpheme (zero). Instead of repeating this information inside every verb paradigm, we can represent it as general language setting such as:
+</p>
+<pre>1PS:=0&gt;""; (= if FIRST PERSON OF SINGULAR, then ADD NOTHING) 
+2PS:=0&gt;""; (= if SECOND PERSON OF SINGULAR, then ADD NOTHING) 
+1PP:=0&gt;""; (= if FIRST PERSON OF PLURAL, then ADD NOTHING) 
+2PP:=0&gt;""; (= if SECOND PERSON OF PLURAL, then ADD NOTHING) 
+3PP:=0&gt;""; (= if THIRD PERSON OF PLURAL, then ADD NOTHING) 
+</pre>
+<p>In this case, only the exceptions (such as the 3PS and the verb "to be") would be treated inside the verb paradigm.
+</p><p>The same can be stated for the present progressive <a href="/wiki/Tense" title="Tense">tense</a>, which is always formed by the periphrasis TO BE + GERUND. Instead of indicating this possibility inside the verb paradigms, we can simply create a general rule that would be applied in all cases.
+</p>
+<pre>ET1&amp;PGS&amp;1PS:=IP("am":VP(GER)); 
+ET1&amp;PGS&amp;2PS:=IP("are":VP(GER));
+ET1&amp;PGS&amp;3PS:=IP("is":VP(GER)); 
+ET1&amp;PGS&amp;1PP:=IP("are":VP(GER));
+ET1&amp;PGS&amp;2PP:=IP("are":VP(GER)); 
+ET1&amp;PGS&amp;3PP:=IP("are":VP(GER)); 
+</pre>
+<div class="mw-heading mw-heading3"><h3 id="Grammatical_redundancy">Grammatical redundancy</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Language_settings&amp;veaction=edit&amp;section=3" title="Edit section: Grammatical redundancy" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Language_settings&amp;action=edit&amp;section=3" title="Edit section&#39;s source code: Grammatical redundancy">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>In English, the grammatical category of <a href="/wiki/Mood" title="Mood">mood</a> is conflated, and there is no clear morphological distinction between the indicative, the subjunctive, the conditional and other possible values of the attribute. This information can be represented by a general rule:
+</p>
+<pre>SUB:=IND; The SUBJUNCTIVE is equal to the INDICATIVE
+CON:=IND; The CONDITIONAL is equal to the INDICATIVE 
+IMP:=IND; The IMPERATIVE is equal to the INDICATIVE
+</pre>
+<p>In this case, the indicative (IND) is the only form that needs to be defined in the verb paradigm.
+</p>
+<div class="mw-heading mw-heading3"><h3 id="Translation">Translation</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Language_settings&amp;veaction=edit&amp;section=4" title="Edit section: Translation" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Language_settings&amp;action=edit&amp;section=4" title="Edit section&#39;s source code: Translation">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>In English, the grammatical category of <a href="/wiki/Number" title="Number">number</a> may have only two different values: singular or plural. In several other languages, however, the number may assume other values, such as dual, trial and quadrual. The English grammar must inform what to do in those cases in order to ensure full intertranslatability. 
+</p><p>The language settings may indicate that:
+</p>
+<pre>DUA:=NS(PLR;&lt;,"a couple of"); (if DUAL, the string "a couple of" should be generated as the specifier of the noun phrase (NS), whose head would assume the value of PLURAL) 
+TRI:=PLR; (if TRIAL, the word will assume the value of PLURAL) 
+QDR:=PLR; (if QUADRUAL, the word will assume the value of PLURAL
+</pre>
+<div class="mw-heading mw-heading2"><h2 id="Syntax">Syntax</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Language_settings&amp;veaction=edit&amp;section=5" title="Edit section: Syntax" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Language_settings&amp;action=edit&amp;section=5" title="Edit section&#39;s source code: Syntax">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>The syntax of language setting rules depends on the action to be performed:
+</p>
+<ul><li>Morphological rules (i.e., those involving prefixation, suffixation or infixation) must comply with the <b><a href="/wiki/M-rule" class="mw-redirect" title="M-rule">M-rule</a></b> formalism</li>
+<li>Syntactic rules (i.e., those involving the insertion of words) must comply with the <b><a href="/wiki/index.php?title=S-Rule&amp;action=edit&amp;redlink=1" class="new" title="S-Rule (page does not exist)">S-Rule</a></b> formalism</li></ul>
+<!-- 
+NewPP limit report
+Cached time: 20260910164135
+Cache expiry: 86400
+Reduced expiry: false
+Complications: [show‐toc]
+CPU time usage: 0.008 seconds
+Real time usage: 0.010 seconds
+Preprocessor visited node count: 19/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/100
+Expensive parser function count: 0/100
+Unstrip recursion depth: 0/20
+Unstrip post‐expand size: 0/5000000 bytes
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    0.000      1 -total
+-->
+
+<!-- Saved in parser cache with key u965818192_SLvgQ-l8z2_:pcache:402:|#|:idhash:canonical and timestamp 20260910164135 and revision id 10911. Rendering was triggered because: api-parse
+ -->
+</div>

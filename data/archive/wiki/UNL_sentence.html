@@ -1,0 +1,137 @@
+<div class="mw-content-ltr mw-parser-output" lang="en" dir="ltr"><p><b>UNL sentences</b>, or UNL expressions, are sentences of UNL. They are hypergraphs made out of nodes (<a href="/wiki/Universal_Words" title="Universal Words">Universal Words</a>) interlinked by binary semantic <a href="/wiki/Universal_Relations" title="Universal Relations">Universal Relations</a> and modified by <a href="/wiki/Universal_Attributes" title="Universal Attributes">Universal Attributes</a>. UNL sentences have been the basic unit of representation inside the UNL framework.
+</p>
+<div class="mw-heading mw-heading2"><h2 id="Syntax">Syntax</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=UNL_sentence&amp;veaction=edit&amp;section=1" title="Edit section: Syntax" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=UNL_sentence&amp;action=edit&amp;section=1" title="Edit section&#39;s source code: Syntax">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>According to the <a href="/wiki/Specs" title="Specs">UNL Specs</a>, there are two different ways of representing UNL sentences: the table format and the list format. In the list format, UWs and relations are represented separately; in the table format, they constitute a single structure.
+</p>
+<div class="mw-heading mw-heading3"><h3 id="List_Format">List Format</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=UNL_sentence&amp;veaction=edit&amp;section=2" title="Edit section: List Format" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=UNL_sentence&amp;action=edit&amp;section=2" title="Edit section&#39;s source code: List Format">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>The syntax for UNL sentences in the list format is the following: 
+</p>
+<table>
+<tbody><tr>
+<td>&lt;UNL sentence&gt;
+</td>
+<td>::=
+</td>
+<td>"[W]" &lt;list of UWs&gt; "[/W]" [ "[R]" &lt;list of relations&gt; "[/R]" ]
+</td></tr>
+<tr>
+<td>&lt;list of UWs&gt;
+</td>
+<td>::=
+</td>
+<td>&lt;UW+attributes&gt; [&lt;UW+attributes&gt;...]
+</td></tr>
+<tr>
+<td>&lt;UW+attributes&gt;
+</td>
+<td>::=
+</td>
+<td>&lt;UW&gt;{“:”&lt;Scope-ID&gt;}}[&lt;attribute list&gt;]”:”&lt;UW-ID&gt;
+</td></tr>
+<tr>
+<td>&lt;list of relations&gt;
+</td>
+<td>::=
+</td>
+<td>&lt;binary relation&gt;[&lt;binary relation&gt;...]
+</td></tr>
+<tr>
+<td>&lt;binary relation&gt;
+</td>
+<td>::=
+</td>
+<td>&lt;source node&gt;&lt;relation[":"&lt;Scope-ID&gt;]&lt;target node&gt;
+</td></tr>
+<tr>
+<td>&lt;source node&gt;
+</td>
+<td>::=
+</td>
+<td>&lt;UW-ID&gt;
+</td></tr>
+<tr>
+<td>&lt;target node&gt;
+</td>
+<td>::=
+</td>
+<td>&lt;UW-ID&gt;
+</td></tr></tbody></table>
+<div class="mw-heading mw-heading3"><h3 id="Table_Format">Table Format</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=UNL_sentence&amp;veaction=edit&amp;section=3" title="Edit section: Table Format" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=UNL_sentence&amp;action=edit&amp;section=3" title="Edit section&#39;s source code: Table Format">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>The syntax for UNL sentences in the table format is the following:
+</p>
+<table>
+<tbody><tr>
+<td>&lt;UNL sentence&gt;
+</td>
+<td>::=
+</td>
+<td>&lt;list of relations&gt;
+</td></tr>
+<tr>
+<td>&lt;list of relations&gt;
+</td>
+<td>::=
+</td>
+<td>&lt;binary relation&gt;[&lt;binary relation&gt;...]
+</td></tr>
+<tr>
+<td>&lt;binary relation&gt;
+</td>
+<td>::=
+</td>
+<td>&lt;relation&gt; [“:”&lt;Scope-ID&gt;] “(“ &lt;source node&gt; , &lt;target node&gt; ")"
+</td></tr>
+<tr>
+<td>&lt;source node&gt;
+</td>
+<td>::=
+</td>
+<td>&lt;UW+attributes&gt;
+</td></tr>
+<tr>
+<td>&lt;target node&gt;
+</td>
+<td>::=
+</td>
+<td>&lt;UW+attributes&gt;
+</td></tr>
+<tr>
+<td>&lt;UW+attributes&gt;
+</td>
+<td>::=
+</td>
+<td>&lt;UW&gt;{“:”&lt;Scope-ID&gt;}}[&lt;attribute list&gt;]”:”&lt;UW-ID&gt;
+</td></tr></tbody></table>
+<p><br />
+Where <br />
+" and " indicate a predefined delimiter <br />
+&lt; and &gt; indicate a non-terminal symbol <br />
+{ and } indicate a range <br />
+[ and ] indicate an omissible part <br />
+... indicates more than 0 times repetition of the front part <br />
+::= indicates the left part can be replaced by the right part <br />
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20260910165054
+Cache expiry: 86400
+Reduced expiry: false
+Complications: []
+CPU time usage: 0.006 seconds
+Real time usage: 0.006 seconds
+Preprocessor visited node count: 23/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/100
+Expensive parser function count: 0/100
+Unstrip recursion depth: 0/20
+Unstrip post‐expand size: 62/5000000 bytes
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    0.000      1 -total
+-->
+
+<!-- Saved in parser cache with key u965818192_SLvgQ-l8z2_:pcache:367:|#|:idhash:canonical and timestamp 20260910165054 and revision id 9603. Rendering was triggered because: api-parse
+ -->
+</div>

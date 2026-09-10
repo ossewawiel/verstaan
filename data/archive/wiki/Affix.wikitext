@@ -1,0 +1,20 @@
+An '''affix''' is a morpheme that is attached to a word stem to form a new word. 
+
+== Types ==
+Affixes may be derivational or inflectional.
+*'''Inflectional''' affixes assign grammatical properties (such as number, gender, tense, person) to the stem in order to form the different word forms of the same lexeme ("-s" in "tables", "-ed" in "loved")
+*'''Derivational''' affixes form a new lexeme by modifying the meaning (and sometimes the category) of the root ("un-" in "unhappy", "-ness" in "happiness").
+
+== Position ==
+Affixes are divided depending on their position with reference to the stem
+*prefix (PFX) - Appears at the front of the stem (such as "un-" in "undo", or "re-" in "rewrite")
+*suffix (SFX) - Appears at the back of the stem (such "-s" in "tables", or "-er" in "writer")
+*infix (IFX) - Appears within the stem (very rare in English, such as "-ma-" in "sophistimacated")
+*circumfix (CCX) - Appears at the front and at the back of the stem (very rare in English, such as "a-" + "-ed" in "ascattered")
+
+== Affixes and Roots ==
+In the UNL<sup>arium</sup> framework, affixes are differentiated from roots in the sense that affixes are considered to be semantically bound and, therefore, are represented by attributes, whereas roots are considered to be semantically free and, therefore, are represented by UW's. Consider, for instance, the examples below:
+*un- is considered to be semantically bound (i.e., it is only a modifier of the root) and, therefore, a prefix (to be represented by the attribute @not): undo = do.@not
+*-s is considered to be semantically bound (i.e., it is only a modifier of the root) and, therefore, a suffix (to be represented by the attribute @pl): tables = table.@pl
+*geo- is considered to be semantically free (i.e., it has an autonomous meaning = earth) and, therefore, a root (to be represented by a UW): geophysics = geo + physics (and not physics.@geo)
+*-phobia is considered to be semantically free (i.e., it has an autonomous meaning = fear) and, therefore, a root (to be represented by a UW): googlephobia = google + phobia (and not google.@phobia)

@@ -1,0 +1,49 @@
+The UNL representation is a '''hyper-graph''', which means that it may consist of several interlinked or subordinate sub-graphs. These sub-graphs are represented as [[hyper-node]]s and correspond roughly to the concept of dependent (subordinate) clauses, i.e., groups of words that consist of a subject (explicit or implied) and a predicate and which are embedded in a larger structure (the independent clause). They are used to define the boundaries between complex semantic entities being represented. 
+
+== What is a scope ==
+A scope is a group of relations between nodes that work as a '''single semantic entity''' in a UNL graph. For instance, in the sentence "Mary saw Peter when John arrived", the dependent clause "when John arrived" describes the argument of a time relation and, therefore, should be represented as a hyper-node (i.e., as a sub-graph) as indicated below:
+
+[[Image:Scope.jpg|center|500px]]
+
+In the UNL table representation, hyper-nodes are indexed by ":XX", where XX is a two-digit hyper-node index. The main node index is :00 and may be omitted. Hyper-node indexes must be associated to every relation inside the node. 
+
+[[Image:Scope1.jpg|center|300px]]
+
+== When to use scopes ==
+Scopes must be used to isolate dependent clauses:
+*adverbial clauses:
+**time: her father died [when she was young].
+**condition: [If they lose weight during an illness], they soon regain it afterwards.
+**purpose: They had to take some of his land [so that they could extend the churchyard].
+**reason: I couldn't feel anger against him [because I liked him too much].
+**consequence: My suitcase had become so damaged on the journey home [that the lid would not stay closed].
+**concession: I used to read a lot [although I don't get much time for books now].
+**place: He said he was happy [where he was].
+**manner: I was never allowed to do things [the way I wanted to do them].
+*adjective clauses:
+**The vegetables [that people often leave uneaten] are usually the most nutritious.
+**Chewing with her mouth open is one reason [why Fred cannot stand sitting across from his sister Melanie].
+*nominal clauses:
+**subjective: [Why you did that] is a mystery for me. 
+**subjective complement: You can be [whomever you want].
+**objective: I know [that the weather will be very hot].
+Scopes must also be used to prevent semantic ambiguities: 
+*electric [light orchestra], with scope, i.e., a "light orchestra" that is electric; or
+*electric light orchestra, without scope, i.e., an orchestra that is both "light" and "electric".
+
+== When not to use scopes ==
+*Scopes should not be used to isolate terms that do not form a semantic unity or that are not semantically ambiguous. <br />
+*Scopes may also be omitted in word-driven representations, i.e., in representations that focus on relations between words rather than on relations between clauses.
+
+== Co-indexation ==
+Nodes must be co-indexed when used in different scopes. There are two main co-indexation strategies:
+*re-use, i.e., to use one single node as argument of relations in different scopes
+*duplication, i.e., to duplicate nodes and to link them by the relation "equ"
+Both strategies are illustrated below for the sentence "Mary saw Peter when he arrived"..
+[[Image:Scope2.jpg|center|500px]]
+In the first case, the node "Peter" is the argument of two different relations: obj, in the main scope (00); and agt, in the scope 01. This is possible because scopes refer to relations and not to nodes. In the second case, the node "Peter" has been duplicated, and the duplicates have been linked by the relation "equ". Semantically, both representations are possible and equally valid; in the UNL framework, however, we prefer to use the first (re-use) and leave the second for the cases where there can be circularity, such as in:
+[[Image:Scope3.jpg|center|300px]]
+
+== @relative ==
+Adjective (relative) clauses may be expressed by the attribute @relative instead of scopes. The attribute @relative must be assigned to the main node in the relative clause.
+[[Image:Scope4.jpg|center|400px]]

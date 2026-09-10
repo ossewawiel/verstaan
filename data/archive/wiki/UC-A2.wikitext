@@ -1,0 +1,134 @@
+The UC-A2 is the second part of an experimental corpus used to prepare the initial versions of the grammar for sentence-based [[UNLization]] and [[NLization]], using [[IAN]] and [[EUGENE]], respectively. It comprises a list of 300 structures in UNL, and is supposed to cover very basic linguistic phenomena. 
+
+== The corpus ==
+*UC-A2 in one single file
+**[http://www.unlweb.net.br/resources/corpus/UCA2/UCA2_eng.txt UC-A2 in English], to be (manually) translated to your target language in order to be used as the input for the UNLization process (with [[IAN]])
+**[http://www.unlweb.net.br/resources/corpus/UCA2/UCA2_unl.txt UC-A2 in UNL], to be used, "as is" (i.e., without any change), as the input for the NLization process (with [[EUGENE]])
+*UC-A2 in different files (the same as above, but divided according to the different classes)
+{|+CorpusA2 border=1 align=center cellpadding=5
+!Type
+!English*
+!UNL**
+!Number of sentences
+|-
+|Cardinals
+|[http://www.unlweb.net.br/resources/corpus/UCA2/UCA2_CDN_eng.txt UCA2_CDN_eng.txt]***
+|[http://www.unlweb.net.br/resources/corpus/UCA2/UCA2_CDN_unl.txt UCA2_CDN_unl.txt]
+|align=center|70
+|-
+|Ordinals
+|[http://www.unlweb.net.br/resources/corpus/UCA2/UCA2_ORD_eng.txt UCA2_ORD_eng.txt]***
+|[http://www.unlweb.net.br/resources/corpus/UCA2/UCA2_ORD_unl.txt UCA2_ORD_unl.txt]
+|align=center|50
+|-
+|Fractions
+|[http://www.unlweb.net.br/resources/corpus/UCA2/UCA2_PTN_eng.txt UCA2_PTN_eng.txt]***
+|[http://www.unlweb.net.br/resources/corpus/UCA2/UCA2_PTN_unl.txt UCA2_PTN_unl.txt]
+|align=center|20
+|-
+|Other numerals
+|[http://www.unlweb.net.br/resources/corpus/UCA2/UCA2_U_eng.txt UCA2_U_eng.txt]***
+|[http://www.unlweb.net.br/resources/corpus/UCA2/UCA2_U_unl.txt UCA2_U_unl.txt]
+|align=center|50
+|-
+|Determiners
+|[http://www.unlweb.net.br/resources/corpus/UCA2/UCA2_DET_eng.txt UCA2_DET_eng.txt]***
+|[http://www.unlweb.net.br/resources/corpus/UCA2/UCA2_DET_unl.txt UCA2_DET_unl.txt]
+|align=center|35
+|-
+|Prepositions
+|[http://www.unlweb.net.br/resources/corpus/UCA2/UCA2_PRE_eng.txt UCA2_PRE_eng.txt]***
+|[http://www.unlweb.net.br/resources/corpus/UCA2/UCA2_PRE_unl.txt UCA2_PRE_unl.txt]
+|align=center|20
+|-
+|Noun Phrase
+|[http://www.unlweb.net.br/resources/corpus/UCA2/UCA2_NP_eng.txt UCA2_NP_eng.txt]***
+|[http://www.unlweb.net.br/resources/corpus/UCA2/UCA2_NP_unl.txt UCA2_NP_unl.txt]
+|align=center|15
+|-
+|Time
+|[http://www.unlweb.net.br/resources/corpus/UCA2/UCA2_TIME_eng.txt UCA2_TIME_eng.txt]***
+|[http://www.unlweb.net.br/resources/corpus/UCA2/UCA2_TIME_unl.txt UCA2_TIME_unl.txt]
+|align=center|15
+|-
+|Verbs
+|[http://www.unlweb.net.br/resources/corpus/UCA2/UCA2_VER_eng.txt UCA2_VER_eng.txt]***
+|[http://www.unlweb.net.br/resources/corpus/UCA2/UCA2_VER_unl.txt UCA2_VER_unl.txt]
+|align=center|10
+|-
+|Pronouns
+|[http://www.unlweb.net.br/resources/corpus/UCA2/UCA2_R_eng.txt UCA2_R_eng.txt]***
+|[http://www.unlweb.net.br/resources/corpus/UCA2/UCA2_R_unl.txt UCA2_R_unl.txt]
+|align=center|25
+|-
+|Sentence Structures
+|[http://www.unlweb.net.br/resources/corpus/UCA2/UCA2_S_eng.txt UCA2_S_eng.txt]***
+|[http://www.unlweb.net.br/resources/corpus/UCA2/UCA2_S_unl.txt UCA2_S_unl.txt]
+|align=center|30
+|}
+<nowiki>*</nowiki>To be manually translated to your target language in order to be used as the input for UNLization (IAN)<br />
+<nowiki>**</nowiki>To be used as the input for NLization (EUGENE)<br />
+<nowiki>***</nowiki>Do not translate (or transliterate) the temporary entries<br />
+
+== Goals ==
+#To provide the dictionary and grammars necessary to '''UNLize''' your translated version of UC-A2 (with [[IAN]])
+#To provide the dictionary and grammars necessary to '''NLize''', to your target language, the UNL version of UC-A2 (with [[EUGENE]])
+
+== Methodology ==
+In order to prepare the dictionaries and grammars to deal with UC-B1, follow the steps below for each text:
+=== UNLization ===
+#Corpus
+##Translate (manually) the sentences of UC-B1 from English into your native language. Be as close as possible to the original, and provide one single translation for each sentence. This will be your input document file, and your goal will be to provide (automatically, through [[IAN]]) the UNL graphs for each sentence
+##Save the translated texts (without the English original) in a plain text (.txt) file with UTF-8 encoding and upload it to UNLWEB>UNLDEV>IAN>NL FILES. 
+#Dictionary
+##Create the analysis dictionary corresponding to the word forms appearing in your translated version of the corpus. The dictionary must be created in compliance with the  [[Dictionary Specs]] and may contain only tags available at the [[tagset]]. For an example of the English dictionary, see [[English_dictionary|English Dictionary]]. 
+##Save the NL-UNL dictionary in a plain text (.txt) file with UTF-8 encoding and upload it to UNLWEB>UNLDEV>IAN>DICTIONARIES.
+##Upload the [http://www.unlweb.net.br/resources/dic/default_dic.txt Default Dictionary]  to UNLWEB>UNLDEV>IAN>DICTIONARIES.
+#Grammar
+##Create the NL-UNL (analysis) transformation grammar necessary to analyze, in UNL, the natural language sentences of the translated corpus. This grammar is the most difficult (and the actual goal) of the whole analysis task. In order to prepare the grammar, study the [[Grammar Specs]]. Next, take a look at the structure of the [[English_grammar|English Grammar]] for a detailed example. In many cases, it would be simpler just to localize the English grammar to your own locale rather than creating a whole grammar from the scratch. See the instructions at [[Localization]]. The grammar is normally developed inside IAN, because we have to test it every time. But you may also prepare a draft grammar, save it in a plain text (.txt) file with UTF-8 encoding and upload it to UNLWEB>UNLDEV>IAN>T-RULES.
+##Create the NL-UNL (analysis) disambiguation grammar in order to improve the results of the transformation and to control the process of tokenization. Again, this  grammar is normally developed inside IAN (at the D-RULES tab), because we have to test it every time. Consult the [[English_grammar|English Grammar]] for a detailed example of a disambiguation grammar.
+##Test the grammar against the corpus and provide the necessary changes.
+
+=== NLization ===
+#Corpus
+##Upload the UNL files corresponding to the 5 texts of UC-B1 to UNLWEB>UNLDEV>EUGENE>UNL DOCUMENT. Do not make any change to these files.
+#Dictionary
+##Create the generation dictionary corresponding to the word forms appearing in your translated version of the corpus. The dictionary must be created in compliance with the  [[Dictionary Specs]] and may contain only tags available at the [[tagset]]. For an example of the English dictionary, see [[English_dictionary|English Dictionary]]. 
+##Save the UNL-NL dictionary in a plain text (.txt) file with UTF-8 encoding and upload it to UNLWEB>UNLDEV>PROJECTS>EUGENE>DICTIONARIES.
+##Upload the [http://www.unlweb.net.br/resources/dic/default_dic.txt Default Dictionary] to UNLWEB>UNLDEV>GENERATION>DICTIONARIES.
+#Grammar
+##Export the inflectional grammar of your language from UNLARIUM>GRAMMAR>[YOUR LOCALE]>EXPORT. If the grammar of your language is not available yet, you may:
+###Provide it through the UNLarium; or
+###Create the inflectional paradigms only for the inflected forms appearing in the UNL-NL dictionary. In that case, follow the model available at [http://www.unlweb.net.br/unlarium/grammar/export_grammar.php?type=M&direction=G&lang=en English Inflectional Grammar]. The documentation of the English grammar is available at [http://www.unlweb.net.br/unlarium/grammar/export_grammar.php?type=M&lang=en English Inflectional Grammar (only for reference)]. For further information, see [[Inflectional paradigms]].
+##Save the inflectional grammar in a plain text (.txt) file with UTF-8 encoding and upload it to UNLWEB>UNLDEV>PROJECTS>EUGENE>RULES.
+##Provide the UNL-NL (generation) T-grammar and D-grammar necessary to generate natural language sentences from the UNL corpus. Follow the sample instructions available for the analysis grammar.
+
+== Assessment ==
+The actual outputs must be evaluated against the expected outputs using the [[F-Measure]], which can be automatically calcuated at UNLWEB>UNLARIUM>GRAMMAR>[LOCALE]>F-MEASURE
+*UNLization
+**Actual output: the output provided by IAN, in your language, with the resources that you have provided, for the translated version of UC-A2
+**Expected output: [http://www.unlweb.net.br/resources/corpus/UCA2/UCA2_unl.txt UC-A2 in UNL]
+*NLization
+**Actual output: the output provided by EUGENE, in your language, with the resources that you have provided, for the input file [http://www.unlweb.net.br/resources/corpus/UCA2/UCA2_unl.txt UC-A2 in UNL]
+**Expected output: the human-translated version of UC-A2 used as the input for the UNLization
+
+== Samples and Examples ==
+The following resources have been used to deal with UC-A2 in English and may be used as a sample of what is expected to be provided
+*UNLization
+**[http://www.unlweb.net.br/resources/dic/UCA2/eng_unl_dic.txt ENG-UNL Dictionary] (English dictionary used for the UNLization of UC-A2) (Documentation available at [[English_dictionary|English Dictionary]])
+**[http://www.unlweb.net.br/resources/dic/default_dic.txt Default Dictionary] (Dictionary used to handle blank spaces, punctuation signs and other language-independent information) (Documentation available at [[Default Dictionary]])
+**[http://www.unlweb.net.br/resources/grammar/UCA2/eng_unl_tgrammar.txt ENG-UNL T-Grammar] (Transformation grammar used for the UNLization of UC-A2) (Documentation available at [[English_grammar|English Grammar]])
+**[http://www.unlweb.net.br/resources/grammar/UCA2/eng_unl_dgrammar.txt ENG-UNL D-Grammar] (Disambiguation grammar used for the UNLization of UC-A2) (Documentation available at [[English_grammar|English Grammar]])
+**[http://www.unlweb.net.br/resources/grammar/nl_unl_tgrammar.txt Default T-Grammar] (Default transformation grammar for UNLization) (Documentation available at [[Default Grammar]])
+*NLization
+**[http://www.unlweb.net.br/resources/dic/UCA2/unl_eng_dic.txt UNL-ENG Dictionary] (English dictionary used for the NLization of UC-A2) (Documentation available at [[English_dictionary|English Dictionary]])
+**[http://www.unlweb.net.br/resources/dic/default_dic.txt Default Dictionary] (Dictionary used to handle blank spaces, punctuation signs and other language-independent information) (Documentation available at [[Default Dictionary]])
+**[http://www.unlweb.net.br/resources/dic/UCA2/unl_eng_tgrammar.txt UNL-ENG T-Grammar] (Transformation grammar used for the NLization of UC-A2) (Documentation available at [[English_grammar|English Grammar]])
+**[http://www.unlweb.net.br/resources/grammar/unl_nl_tgrammar.txt Default T-Grammar] (Default transformation grammar for NLization) (Documentation available at [[Default Grammar]])
+
+== Recommended Readings ==
+Before starting the activity, and in order to fully understand what is expected to be done, it is important for you to be acquainted with the following documentation:
+*[[Tagset]], because you are expected to use only the tags included in the tagset
+*[[UNL Dictionary Specs]], which is essential to understand the dictionary structure
+*[[UNL Grammar Specs]], which is essential to understand the grammar structure
+It is also interesting to make a test drive with [[IAN]] and [[EUGENE]].

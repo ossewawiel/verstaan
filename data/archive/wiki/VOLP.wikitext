@@ -1,0 +1,109 @@
+The project VOLP is devoted to the UNLization of the Vocabulário Ortográfico da Língua Portuguesa (VOLP), published by Academia Brasileira de Letras.
+
+== Goal ==
+The project VOLP has two main goals:
+#To provide a Brazilian Portuguese to UNL dictionary, which is expected to be used in [[UNLization]], i.e., in generating UNL graphs out of natural language documents, especially through [[IAN]].
+#To find concepts that are not enclosed in the WordNet3.0 and should be incorporated to the [[UNL Dictionary]].
+
+== Repository ==
+The whole VOLP contains more than 400.000 lemmas, which have been divided into 6 different repositories according to the lexical category. 
+
+
+{|border="1" align="center" cellpadding="2"
+!Repository
+!# of lemmas 
+!Category
+|-
+|align="center"|VOLP-A1
+|align="center"|40,000
+|align="center"|N
+|-
+|align="center"|VOLP-A2
+|align="center"|40,000
+|align="center"|N
+|-
+|align="center"|VOLP-B1
+|align="center"|40,000
+|align="center"|J
+|-
+|align="center"|VOLP-B2
+|align="center"|40,000
+|align="center"|J
+|-
+|align="center"|VOLP-C1
+|align="center"|40,000
+|align="center"|V
+|-
+|align="center"|VOLP-C2
+|align="center"|40,000
+|align="center"|V
+|}
+
+== Participants ==
+*VOLP-A1
+**Ivo Moreira Lopes (LEA-MSI/UnB)
+**Rodrigo Sateles (PBSL-LIP/UnB)
+**William Pontes Costa (LEA-MSI/UnB)
+**Daniela Mineu de Oliveira (LEA-MSI/UnB)
+
+== Instructions ==
+;Goal 
+:In the project VOLP, your main goal is:
+:*to map the natural language entry to all its possible senses (which are represented by different UW's)
+:*to provide all the lexical and morphological information concerning the entry (by filling in the corresponding form)
+
+;Homonyms
+:Most natural language entries are semantically ambiguous and may have many different senses. If these different senses do not affect the morphological behavior of the entry, there is no problem and you may provide them all within the same entry. However, sometimes a change in the sense leads to a change in the morphological features of the word (the entry is feminine with the meaning X, and masculine with the meaning Y, for instance; or it's a common noun with the meaning X and a proper noun with the meaning Y). In this case, you have first to assign, to the entry, all possible senses (i.e., you should link the entry to all possible UW's, without caring about the morphological behavior). Next, you have to SPLIT the entry (using the button at the end of the form) and GROUP those that have the same morphological behavior. The entries within the same group may have different senses, but will share the same lexical features. Do not forget to address all groups. 
+
+;Empty, wrong and incomplete entries
+:You will find, in the project VOLP, three different types of entries:
+:*Entries that are empty, i.e., which have not been mapped yet to any UW and do not contain any information. In this case, you have to link it to as many UW's as possible, and provide all the necessary information.
+:*Entries that are CORRECT but INCOMPLETE, i.e., which have not been mapped to all possible UW's or that have not been associated yet to inflectional paradigms or subcategorization frames. In this case, you should add the missing mappings and information.
+:*Entries that are INCORRECT, i.e., which have been associated to wrong UW's or to the wrong paradigms and frames. In this case, you should correct the information and provide any additional mappings, if necessary.
+
+;Lexical Category
+:Whenever the lexical category for a given lemma is provided, check whether it is correct. If it is not correct, decline the entry and report the problem by clicking over the yellow triangle at the right of the main entry. If the lexical category is not provided, select the most likely category. 
+
+;Lemma
+:Do not change the lemma. If it is not correct (i.e., if it is misspelled or cannot be considered to be a lexical unit), decline the entry and report the problem by clicking over the yellow triangle at the right of the main entry.
+
+;UW
+:One of your tasks is to map natural language entries to UW's, i.e., to link it to all possible senses that the entry may have.  Provide as many UW's as necessary to each lemma, but do not include very rare or unusual cases. And check the order<nowiki>:</nowiki> the most likely senses must appear first.<br />
+:The list of lemmas contain only citation forms, i.e., the word as it normally appears in ordinary monolingual dictionaries. You must remember that ordinary dictionaries do not bring inflections. If you find a inflected form as a lemma (such as "glasses", for instance), note that this is not an inflection, but a new lemma/entry<ref>Although originally associated to "glass", "glasses" is today a completely independent word</ref>. You should never associate inflected forms to the UW's corresponding to the non-marked terms (i.e., do not link "glasses" to the senses of "glass", but only to the specific senses of "glasses"). The same will happen in gender: do not link the feminine to a masculine ("africana", in Italian, or "religieuse", in French, are not the feminine forms for "africano" or "religieux" - they are different entries with specific meanings<ref>"africana" is the set of books, documents, artifacts, artistic works, etc., reflecting or concerned with African history, life, or culture; and "religieuse" is a type of pastry.</ref>). In case you cannot find any specific meaning for the inflected form, please decline the entry. 
+:If, by change, the sense that you are searching for does not exist yet in the UNL Dictionary, you must propose a new UW, by filling in the form that appears when your search for a given UW does not provide any output.
+;Base Form
+:The Base Form must be the same as the lemma. Do not change it.
+
+;Inflection
+:Select AND TEST the inflectional paradigm that generates the inflections of the base form. Any errors here will be propagated to the dictionary, so be careful. In case of no applicable inflection paradigm, select the option IRREGULAR or NON-EXISTENT, depending on the case. 
+
+;Subcategorization
+:Subcategorization is only required when the word REQUIRES a complement or a specifier (indirect transitive verbs that select an specific preposition, for instance). In this case, you have to inform the corresponding subcategorization frame. In case of no applicable subcategorization frame, select the option IRREGULAR or NON-EXISTENT, depending on the case.
+
+;Register
+:You should inform the register only if the entry does not belong to the standard language, i.e., if it is not used in written form (colloquialism, such as "wanna"), or if it not used anymore (archaism, such as "thou"), or if it is used only in technical domain (jargon, such as "Canis lupus familiaris"), etc.
+
+;Region
+:You should inform the country only if the entry is used only in a specific country, and not among the whole community of the language.
+
+;Frequency 
+:Leave 0 (this information is extracted later from corpus)
+
+;Priority
+:Leave 0 (this information is extracted later from corpus)
+
+;Other features
+:This field is used only when the UW requires some attributes. This is very rare and should be avoided. 
+
+;Comments
+:You may leave your doubts or problems here, in order for us to discuss them later, but they must be provided in English, because the discussion will involve the whole group.
+
+== New UW's ==
+f the lemma cannot be mapped to any existing UW, then you have to propose a new one. In order to propose new UW's, fill in the corresponding form with the following information:
+*HEADWORD = the corresponding English word, whenever the lemma can be easily translated into English (do not use definitions, but lexical units); or the word in the source language (transliterated into Latin script), otherwise.
+*SYNSET = any synonyms to the headword, if any (in English, if the headword is in English; or in the source language, if the headword is not in English). This field is optional, and the elements in the synset must be isolated by comma.
+*DEFINITION = the definition of the headword in English
+*EXAMPLES = Examples of the use of the headword (in English, if the headword is in English: in the source language, if it is in the source language)
+
+== Notes ==
+<references />

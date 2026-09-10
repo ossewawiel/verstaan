@@ -1,0 +1,39 @@
+'''Social deixis''' is a category that indicates the social characteristics of, or distinctions between, the participants or referents in a speech event.
+
+== Natural language ==
+In the UNLarium framework, social deixis may assume the following values:
+
+{{#tree:id=nl_SOL|openlevels=0|root=Social Deixis (SOD)|
+**solidarity (SOL): like-mindedness or similarity of behavioral disposition between a speaker and addressee
+***familiar (FAM): high degree of solidarity
+***intimate (ITM): very high degree of solidarity 
+***polite (PLN): low degree of solidarity
+**status (STS): scale of social standing that is often realized in differing socially deictic linguistic forms
+***equivalent (EVL): equality of status
+***inferior  (IFS): low degree of status
+***reverential  (REV): very high status
+***superior  (SPS): high status
+}}
+
+=== Examples ===
+*French
+**tu = FAM, vous = PLN
+
+== UNL ==
+In UNL, the attribute social deixis may assume the following values:
+
+{{#tree:id=unl_SOL|openlevels=0|root=Social Deixis|
+*@familiar
+*@intimate
+*@polite
+*@equivalent
+*@inferior
+*@superior
+*@reverential
+}}
+
+=== Examples ===
+*English letter closings
+**Yours faithfully = closing.@polite
+**Best wishes = closing.@familiar
+**Love always = closing.@intimate

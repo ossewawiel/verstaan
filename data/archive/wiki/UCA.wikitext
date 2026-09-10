@@ -1,0 +1,30 @@
+The UC-A is an experimental corpus used to prepare the initial versions of the grammar for sentence-based [[UNLization]] and [[NLization]], using [[IAN]] and [[EUGENE]], respectively. It comprises two subcorpora: [[UC-A1]] and [[UC-A2]].
+
+== The corpus ==
+*In one single file (400 sentences):
+**[http://www.unlweb.net.br/resources/corpus/UCA/UCA_eng.txt UC-A in English], to be (manually) translated to your target language in order to be used as the input for the UNLization process (with [[IAN]])
+**[http://www.unlweb.net.br/resources/corpus/UCA/UCA_unl.txt UC-A in UNL], to be used, "as is" (i.e., without any change), as the input for the NLization process (with [[EUGENE]])
+*According to the general distribution:
+**[[UC-A1]] (100 sentences)
+**[[UC-A2]] (300 sentences)
+
+== Goals ==
+#To provide the dictionary and grammars necessary to '''UNLize''' your translated version of UC-A (with [[IAN]])
+#To provide the dictionary and grammars necessary to '''NLize''', to your target language, the UNL version of UC-A (with [[EUGENE]])
+
+== Methodology ==
+#Prepare the dictionary and grammars to deal with UC-A1 (follow the instructions available at [[UC-A1]])
+#Prepare the dictionary and grammars to deal with UC-A2 (follow the instructions available at [[UC-A2]])
+#Merge the corresponding resources and make the necessary changes
+
+== Assessment ==
+The actual outputs must be evaluated against the expected outputs using the [[F-Measure]], which can be automatically calcuated at UNLWEB>UNLARIUM>GRAMMAR>[LOCALE]>F-MEASURE
+*UNLization
+**Actual output: the output provided by IAN, in your language, with the resources that you have provided, for the translated version of UC-A
+**Expected output: [http://www.unlweb.net.br/resources/corpus/UCA/UCA_unl.txt UC-A in UNL]
+*NLization
+**Actual output: the output provided by EUGENE, in your language, with the resources that you have provided, for the input file [http://www.unlweb.net.br/resources/corpus/UCA/UCA_unl.txt UC-A in UNL]
+**Expected output: the human-translated version of UC-A used as the input for the UNLization
+
+== Samples and Examples ==
+See the samples and examples in [[UC-A1]] and [[UC-A2]]

@@ -1,0 +1,41 @@
+EUGENE is a natural language generation system. It generates natural language sentences out of semantic networks represented in the UNL format. In its current release, it is a web application developed in Java and available at the [[UNLdev]]. 
+
+== The name ==
+EUGENE is an acronym for dEp-to-sUrface GENErator 
+
+== Requirements ==
+As a universal engine, EUGENE must be parameterized to the target languages with the following files, to be provided through EUGENE's interface:
+*The input document in the [[UNL_document|UNL document structure]], i.e., the universal semantic network to be generated in natural language
+*The UNL-NL (generation) dictionary, i.e., a lexical database where [[UW]]s are mapped into natural language entries, along with the corresponding features, to be provided according to the [[UNL Dictionary Specs]]
+*The UNL-NL (generation) transformation grammar, i.e., a set of of transformation rules used to convert the UNL graphs into natural langauge sentences, to be provided according to the [[UNL Grammar Specs]]
+*The UNL-NL (generation) disambiguation grammar, i.e, a set of disambiguation rules used to improve the results of the [[tokenization]] and of the [[transformation]]
+to be provided according to the [[UNL Grammar Specs]], to be provided according to the [[UNL Grammar Specs]]
+
+== Functioning ==
+EUGENE performs the three following movements over the input file:
+*[[Segmentation]], i.e., the division of the input document into a series of isolated graphs, which are processed one at a time
+*[[Tokenization]], i.e., the identification of the tokens ([[UW]]s, [[Universal Relations]] and [[Universal Attributes]]) of each graph of the input document
+*[[Transformation]], i.e., the application of the transformation rules of the grammar over each tokenized graph in order to generate a natural language sentence
+
+== Quick start ==
+As part of the [[UNLdev]], EUGENE is available at [http://dev.undlfoundation.org/generation/login.jsp]. You must be registered in the UNL<sup>web</sup> in order to log in.<br />
+EUGENE has 5 tabs:
+*The welcome tab
+*'''UNL input''', where you have to provide the UNL document to be NLized. You may either create a new file or upload an existing file.
+*'''Dictionaries''', where you have to provide the UNL-NL dictonaries (i.e., the dictionaries to be used in natural language generation). You may either create a new file or upload an existing file. Use the default option "Database", instead of "Compiled", which are used for very big dictionaries. In any case, the dictionary must be provided according to the [[UNL Dictionary Specs]]. Once you create/upload a dictionary, you have to select it (by clicking the corresponding check box) and load it (by pressing the load button at the top menu). You may have several different dictionaries, and may load many of them to process the same corpus, but be sure that they are loaded in the correct order (because the order of the entries in the dictionary does matter for [[tokenization]]). You may reorder the dictionaries through the option "reorder dictionaries" at the top menu.
+*'''T-rules''', where you have to provide the UNL-NL [[transformation grammar]] (i.e., the grammar to be used to convert the UNL input into the NL output). You may either create a new file or upload an existing file. In any case, the grammar must be provided according to the [[UNL Grammar Specs]], and must contain only [[transformation rule]]s. Once you create/upload a grammar, you have to select it (by clicking the corresponding check box) and load it (by pressing the load button at the top menu). You may have several different grammars, and may load many of them to process the same corpus, but be sure that they are loaded in the correct order (because the order of the rules does matter for transformation). You may reorder the grammars through the option "reorder grammars" at the top menu.
+*'''D-rules''', where you have to provide the UNL-NL [[disambiguation grammar]] (i.e., the grammar to be used to control the
+
+== Test drive ==
+You may test the system using the resources below:
+*UNL Document: to be uploaded to the tab '''UNL document''' (don't forget to select the file after uploading it)
+*#[http://www.unlweb.net.br/resources/corpus/UCA1/UCA1_unl.txt UCA1_unl.txt], 
+*Dictionaries: to be uploaded, IN THE FOLLOWING ORDER, to the tab '''Dictionaries''' (don't forget to select and load the file after uploading it)
+*#[http://www.unlweb.net.br/resources/dic/UCA1/unl_eng_dic.txt unl_eng_dic.txt] (entries appearing in the corpus UCA1)
+*#[http://www.unlweb.net.br/resources/dic/default_dic.txt Default Dictionary] (blank space, punctuation signs and other generic entries)
+*T-grammar: to be uploaded, IN THE FOLLOWING ORDER, to the tab '''T-rules''' (don't forget to select and load the file after uploading it)
+*#[http://www.unlweb.net.br/resources/grammar/s-grammar.txt Standardization Grammar] (used to standardize the structure of the dictionary entries)
+*#[http://www.unlweb.net.br/resources/grammar/UCA1/unl_eng_tgrammar.txt UNL-ENG T-Grammar] (language-specific rules)
+*#[http://www.unlweb.net.br/resources/grammar/unl_nl_tgrammar.txt Default T-Grammar] (generic rules)
+*D-grammar: to be uploaded to the tab '''D-rules''' (don't forget to select and load the file after uploading it)
+*#[http://www.unlweb.net.br/resources/grammar/UCA1/unl_eng_dgrammar.txt UNL-ENG D-Grammar] (disambiguation rules)

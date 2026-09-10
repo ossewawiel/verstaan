@@ -1,0 +1,21 @@
+A '''verb''' is a [[LRU]] that denotes an action (''bring'', ''read'', ''walk'', ''run'', ''murder''), an occurrence (''decompose'', ''shine''), or a state of being (''exist'', ''stand'').
+
+== Natural Language ==
+In the UNL<sup>arium</sup> framework, verbs are classified as follows:
+*A '''lexical verb''' (VER) is the head of a verb phrase, i.e., a word that denotes an action, an occurrence or a state of being;
+*A '''copula''' (COP) (such as "be", "become", "seem"), also called "linking verb", is used to link the subject of a sentence with a predicate (a subject complement or an adverbial).
+*An auxiliary verb is a verb functioning to give further semantic or syntactic information about the main verb of the phrase. Auxliary verbs are classified as inflections (I). They can be:
+**A '''simple auxiliary verb''' (AUX) (such as "will" in "I will go", "do" in "I don't go", or "have" in "I had gone") if used only to convey information about [[tense]] and [[aspect]]; 
+**A '''modal verb''' (MOD) (such as "can", "must", "have to") if used to indicate [[modality]].
+;Several verbs may be either lexical or auxiliary depending on the context:
+*I have a book (have = lexical verb)
+*I have read the book (have = auxiliary verb)
+*He appears to be tired (appear = modal verb)
+*He appeared in the party (appear = lexical verb)
+
+== UNL ==
+In UNL, lexical verbs are represented as UWs, whereas auxiliary verbs are represented as attributes. The copula verb is represented by relations (see [[be]] for further information).
+*I have a book = aoj(have, I), obj(have, book) 
+*I have read a book = aoj(read.@perfect, I), obj(read.@perfect, book)
+*He appears to be tired = aoj(tired.@belief, he)
+*He appeared in the party = agt(appear.@past, he), plc(appear.@past, party)

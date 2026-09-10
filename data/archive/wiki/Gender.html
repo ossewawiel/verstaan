@@ -1,0 +1,86 @@
+<div class="mw-content-ltr mw-parser-output" lang="en" dir="ltr"><p>Gender can be either a grammatical or a natural category. As a natural category, gender is the wide set of characteristics that are seen to distinguish between <b>male</b> and <b>female</b> entities; as a grammatical category, gender is much more arbitrary and it is used for the analysis of word-classes displaying such contrasts as <b>masculine</b>, <b>feminine</b> and <b>neuter</b>. 
+</p><p>The linguistic notion of grammatical gender is distinguished from the biological and social notion of natural gender, although they interact closely in many languages. The grammatical (masculine) gender of the French word "danseur", for instance, is motivated by the fact that it refers to a male dancer, in opposition to "danseuse" (feminine), which refers to a female dancer; on the other hand, the grammatical gender of the French word "sang" (=blood) is rather arbitrary, provided that blood is neither a male or a female entity ("sangre", which is the Spanish equivalent to "sang", is feminine). 
+</p><p>In the UNL approach, grammatical gender, as a language-dependent feature, must be informed only in the UNL-NL dictionary; natural gender, on the other hand, must be represented through specific attributes in the UNL-ization process.
+</p>
+<div id="toc" class="toc" role="navigation" aria-labelledby="mw-toc-heading"><input type="checkbox" role="button" id="toctogglecheckbox" class="toctogglecheckbox" style="display:none" /><div class="toctitle" lang="en" dir="ltr"><h2 id="mw-toc-heading">Contents</h2><span class="toctogglespan"><label class="toctogglelabel" for="toctogglecheckbox"></label></span></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Natural_language"><span class="tocnumber">1</span> <span class="toctext">Natural language</span></a>
+<ul>
+<li class="toclevel-2 tocsection-2"><a href="#Examples"><span class="tocnumber">1.1</span> <span class="toctext">Examples</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-3"><a href="#UNL"><span class="tocnumber">2</span> <span class="toctext">UNL</span></a>
+<ul>
+<li class="toclevel-2 tocsection-4"><a href="#Examples_2"><span class="tocnumber">2.1</span> <span class="toctext">Examples</span></a></li>
+</ul>
+</li>
+</ul>
+</div>
+
+<div class="mw-heading mw-heading2"><h2 id="Natural_language">Natural language</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Gender&amp;veaction=edit&amp;section=1" title="Edit section: Natural language" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Gender&amp;action=edit&amp;section=1" title="Edit section&#39;s source code: Natural language">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>In the UNLarium framework, grammatical gender must be informed only for gender-inflective languages (such as French, Russian, Spanish, but not English), according to five different values:
+</p><p>{{#tree:id=nl_gender|openlevels=0|root=Gender (GEN)|
+</p>
+<ul><li>feminine (FEM)</li>
+<li>masculine (MCL)</li>
+<li>neuter (NEU)</li>
+<li>common (COM): masculine or feminine</li>
+<li><a href="/wiki/Variable" class="mw-redirect" title="Variable">variable</a> (VAR): not fixed by the language (see <a href="/wiki/Variable" class="mw-redirect" title="Variable">variable</a>)</li></ul>
+<p>}}
+</p><p><br />
+In the last two  cases (common and variable), the words may be classified both as masculine and feminine. The difference is that, in common gender, a change of gender implies a change of the natural gender of the reference ("un pianiste" = man, "une pianiste" = woman), whereas, in variable gender, a change of gender does not affect the reference ("un après-midi" = "une après-midi" = an afternoon).
+</p>
+<div class="mw-heading mw-heading3"><h3 id="Examples">Examples</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Gender&amp;veaction=edit&amp;section=2" title="Edit section: Examples" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Gender&amp;action=edit&amp;section=2" title="Edit section&#39;s source code: Examples">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<ul><li>Feminine (FEM): “sangre” (es), “color” (es), "mensagem" (pt), "couleur" (fr), etc.</li>
+<li>Masculine (MCL): “sang” (fr), "message" (fr), etc.</li>
+<li>Neuter (NEU): "das Pfund" (de), "krzesło" (pl), etc.</li>
+<li>Common (COM): "pianiste" (fr), "docteur" (fr), "professeur" (fr), etc.</li>
+<li>Variable (VAR): "après-midi" (fr), "Kind" (de), etc.</li></ul>
+<div class="mw-heading mw-heading2"><h2 id="UNL">UNL</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Gender&amp;veaction=edit&amp;section=3" title="Edit section: UNL" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Gender&amp;action=edit&amp;section=3" title="Edit section&#39;s source code: UNL">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>In UNL, grammatical gender is not represented, but natural gender is represented by attributes in case of animate referents whose gender is marked. The gender attributes are the following:
+</p><p>{{#tree:id=unl_gender|openlevels=0|root=Gender|
+</p>
+<ul><li>@male</li>
+<li>@female</li>
+<li>@neutral</li></ul>
+<p>}}
+</p><p><br />
+</p>
+<dl><dt>In UNL, gender is marked only for UWs referring to animate referents whose sex is marked</dt>
+<dd></dd>
+<dd>ship = ship (and not ship.@female, because "ship" is not animate)</dd>
+<dd>teacher = teacher (because the gender is not marked)</dd>
+<dd>female teacher = teacher.@female (animate referent and marked gender)</dd>
+<dt>Gender, when lexicalized, is omitted</dt>
+<dd></dd>
+<dd>queen = queen (and not queen.@female)</dd></dl>
+<div class="mw-heading mw-heading3"><h3 id="Examples_2">Examples</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Gender&amp;veaction=edit&amp;section=4" title="Edit section: Examples" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Gender&amp;action=edit&amp;section=4" title="Edit section&#39;s source code: Examples">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<ul><li>French
+<ul><li>un professeur = professeur (no natural gender information)</li>
+<li>une enseignante = enseignant.@female</li>
+<li>la femme = femme (gender lexicalized), or  être humain.@female (=human being.@female)</li>
+<li>la lune = lune (no natural gender, only grammatical gender)</li></ul></li></ul>
+<!-- 
+NewPP limit report
+Cached time: 20260910062451
+Cache expiry: 86400
+Reduced expiry: false
+Complications: [show‐toc]
+CPU time usage: 0.005 seconds
+Real time usage: 0.005 seconds
+Preprocessor visited node count: 18/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/100
+Expensive parser function count: 0/100
+Unstrip recursion depth: 0/20
+Unstrip post‐expand size: 0/5000000 bytes
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    0.000      1 -total
+-->
+
+<!-- Saved in parser cache with key u965818192_SLvgQ-l8z2_:pcache:441:|#|:idhash:canonical and timestamp 20260910062451 and revision id 11629. Rendering was triggered because: page-view
+ -->
+</div>

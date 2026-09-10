@@ -1,0 +1,45 @@
+# SPDX-License-Identifier: MPL-2.0
+# Sources for `tools.mirror` (SPEC.md §3.1). Read-only list; the mirror never writes here.
+#
+# `licence` and `licence_url` below are the fallback recorded for a file when the page that
+# links it does not itself carry a Creative Commons link. When a page does link one (the
+# UNLarium page links CC BY-SA 2.5 CH; the public pages and the terms page link CC BY-SA 4.0),
+# the mirror records what that page actually linked, not this fallback. See docs/standards/data.md.
+
+[mirror]
+host = "unlarchive.org"
+user_agent = "verstaan-mirror (+https://github.com/ossewawiel/verstaan)"
+rate_limit_seconds = 1.0
+retries = 3
+retry_backoff_seconds = 1.0
+
+# The public, unauthenticated pages (`index.php?unlweb=<name>`). This list is the fixed menu the
+# home page links; the mirror re-derives it from the home page's own links on every run and only
+# falls back to this list if that discovery finds nothing.
+[[source]]
+name = "pages"
+kind = "unlweb_pages"
+base_url = "https://unlarchive.org/index.php"
+entry_page = "home"
+licence = "CC BY-SA 4.0"
+licence_url = "https://creativecommons.org/licenses/by-sa/4.0/"
+
+# The wiki, via the MediaWiki API. No licence link appears on wiki pages themselves, so every
+# wiki file falls back to the site-wide licence the terms page states.
+[[source]]
+name = "wiki"
+kind = "mediawiki"
+api_url = "https://unlarchive.org/wiki/api.php"
+licence = "CC BY-SA 4.0"
+licence_url = "https://unlarchive.org/index.php?unlweb=terms"
+
+# Static grammar files and UNLarium exports. These are discovered as links on the pages above
+# (chiefly `index.php?unlweb=unlarium`, which links CC BY-SA 2.5 CH) rather than enumerated here.
+[[source]]
+name = "unlarium"
+kind = "linked_static"
+licence = "CC BY-SA 2.5 CH"
+licence_url = "http://creativecommons.org/licenses/by-sa/2.5/ch/"
+path_prefixes = ["/grammars/", "/uploads/", "/unlarium/"]
+path_suffix_allow = [".txt", ".pdf", ".png", ".jpg", ".jpeg"]
+path_pattern_allow = ["export_.*\\.php"]

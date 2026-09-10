@@ -1,0 +1,15 @@
+'''Adjectives''' are open-class [[LRU]]s whose main syntactic role is to assign attributes to a noun. Adjectives are distinguished from [[determiners]], which express references rather than qualities.
+
+== Natural language ==
+In the UNL<sup>arium</sup> framework, adjectives are classified in two different categories:
+* '''Adjective''' (ADJ) itself (such as "beautiful", "pale", "clean", etc); and 
+* '''Participle''' (PTP), a derivative of a non-finite verb used as an adjective (such as "broken", "cleared", etc). 
+In languages such as English, several participles (such as "interesting", "closed", etc) are normally represented as adjectives, while others (such as "relieved" and "enclosed") have been still represented as verbal forms. In order to define if a word should be classified as an adjective or a participle, users are expected to follow the lexicographical tradition of the language (which is usually consolidated in the main dictionaries).
+
+== UNL ==
+In UNL, adjectives are classified as regular UWs, to be linked to their modified by:
+*AOJ, in case of predicative role 
+**the sky is blue = aoj(blue, sky)
+*MOD, in case of attributive role
+**blue sky = mod(sky, blue)
+Adjectives are also subject to [[Degree|attributes of degree]].

@@ -2,7 +2,7 @@
 issue: 7
 title: "Mirror the public pages, the wiki and the static grammar files"
 milestone: M1
-status: open
+status: in-progress
 depends_on: [6]
 agent: implementer
 agents: [implementer]
@@ -11,6 +11,7 @@ effort: medium
 checkpoint: null
 commit: null
 github_issue: 7
+worktree: .worktrees/m1-mirror
 ---
 ## What
 
@@ -40,6 +41,6 @@ Logged-in exports (issue 08). Any interpretation of content.
 
 ## Done when
 
-- [ ] `data/archive/manifest.jsonl` has a line for every file present, and `sha256` matches.
-- [ ] Wiki page count and static file count are in the report.
-- [ ] Two consecutive runs; the second downloads nothing new. Shown.
+- [x] `data/archive/manifest.jsonl` has a line for every file present, and `sha256` matches.
+- [x] Wiki page count and static file count are in the report.
+- [x] Two consecutive runs; the second downloads nothing new. Shown.

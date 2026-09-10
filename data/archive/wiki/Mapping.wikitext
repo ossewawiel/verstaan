@@ -1,0 +1,61 @@
+'''Mapping''' is the relation between elements of UNL and elements of natural language (NL). The elements so related can be any kind of linguistic entity (words, attributes or relations).
+
+== Types of Mapping ==
+In the UNL<sup>arium</sup> framework, mapping is expressed by two types of T-rules:
+*[[L-rule]]s are used to map to surface structures (lists); and
+*[[S-rule]]s are used to map to deep structures (trees).
+
+== Universal Words and Lexical Realisation Units ==
+[[Universal Words]] (UW)s are mapped into [[Lexical Realisation Unit]]s (LRUs) and LRUs are mapped into UWs in the UNL-NL Dictionary, which is a bidirectional bilingual dictionary mapping lexical items between UNL and NL. A single UW may correspond to several different natural language entries (synonymy), and one single open-class natural language entry may correspond to several UWs (homography). Entries from closed classes are not mapped into UWs, but to relations or attributes. Numerals (such as "six", "sixth", "6"), formulae (H<sub>2</sub>0) and untranslatable expressions (such as "http://www.unlweb.net") are represented as temporary UWs, i.e., they are not expected to be included in the UNL-NL dictionaries. The same happens to most proper names. Temporary UWs are automatically assigned the feature TEMP, and may be addressed by named entity recognition modules in UNL-based applications.
+
+In the grammar, additional mappings between UWs and LRUs may be expressed by L-rules or S-rules such as the following:
+ ([[<UW>]]):=("<LRU>"); 
+ ("<LRU>"):=([[<UW>]]);
+Where:
+*UWs are represented between [[ ]];
+*LRUs are represented between "" (if strings) or [ ] (if lemmas)
+
+=== Examples ===
+*UNL-NL mapping
+**(<nowiki>[[100001740]]</nowiki>):=([entity]);
+**(<nowiki>[[100001740]]</nowiki>,@pl):=("entities");
+**(<nowiki>[[100743500]]</nowiki>):=NC([waste];[time]); (=waste of time)
+*NL-UNL mapping
+**(<nowiki>[entity]</nowiki>):=(<nowiki>[[100001740]]</nowiki>);
+**("entities"):=(<nowiki>[[100001740]]</nowiki>,@pl);
+**("smooth landing"):=mod(<nowiki>[[100052500]]</nowiki>;<nowiki>[[302243411]]</nowiki>);
+
+== [[Attributes]] == 
+Most UNL attributes may be directly associated to NL categories (such as such as [[aspect]], [[degree]], [[gender]], [[number]], [[tense]], [[mood]], [[register]], [[voice]] and [[social deixis]]), and vice-versa. This association is made through L-rules such as the following:
+ (<UNL ATTRIBUTE>):=(<NL ATTRIBUTE>);
+ (<NL ATTRIBUTE>):=(<UNL ATTRIBUTE>);
+
+=== Examples ===
+*UNL-NL mapping
+**(@pl):=(PLR);
+**(@past):=(PAS);
+**(@passive):=(PSV);
+**(@male):=(MCL);
+**(@past,@progressive):=(PAS,PGS);
+**(@ellipsis):=(""); (replace the node with @ellipsis by "")
+*NL-UNL mapping
+**(PLR):=(@pl);
+**(PAS):=(@past);
+**(PAS,PGS):=(@past,@progressive);
+
+Some attributes, however, cannot be directly assigned to any value, and are rather treated as features to be addressed by more complex L-rules or S-rules:
+
+*@square_bracket
+**(@square_bracket,%ref):= ("[")(%ref)("]"); (generate square brackets before and after the node)
+*@emphasis
+**VC(@emphasis,%comp):=+IS(%comp)VC(%comp,TRACE); (topicalization)
+
+== Relations == 
+Mapping between relations is always represented by S-rules:
+
+*UNL-NL mapping:
+**agt(%source;%target):=VS(%source;%target);
+**tim(%source;%target):=VA(%source;PC([in];%target));
+*NL-UNL mapping:
+**VC(%source;%target):=obj(%source;%target);
+**VA(%source;PC([in];%target)):=tim(%source;%target);

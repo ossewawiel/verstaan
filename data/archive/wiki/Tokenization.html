@@ -1,0 +1,355 @@
+<div class="mw-content-ltr mw-parser-output" lang="en" dir="ltr"><p>Tokenization is the process of segmenting the input into <a href="/wiki/Nodes" class="mw-redirect" title="Nodes">nodes</a>, i.e., the tokens or processing units of the UNL framework.<br />
+In <a href="/wiki/UNLization" title="UNLization">UNLization</a>, tokenization corresponds to splitting the natural language input into lexical items, i.e., to recognize that the string "Barking dogs seldom bite" contains 7 tokens: [barking][ ][dogs][ ][seldom][ ][bite], if these entries are provided in the <a href="/wiki/Dictionary" title="Dictionary">dictionary</a>.<br />
+In <a href="/wiki/NLization" title="NLization">NLization</a>, tokenization  corresponds to splitting the UNL graph into UWs, relations and attributes, i.e., to recognize that, in the graph "agt(bite,dog.@pl)mod(dog.@pl,bark)tim(bite,seldom)", there are three relations ("agt", "mod" and "tim"), one attribute ("@pl") and 4 UWs ("bite", "dog", "bark" and "seldom").
+</p>
+<div id="toc" class="toc" role="navigation" aria-labelledby="mw-toc-heading"><input type="checkbox" role="button" id="toctogglecheckbox" class="toctogglecheckbox" style="display:none" /><div class="toctitle" lang="en" dir="ltr"><h2 id="mw-toc-heading">Contents</h2><span class="toctogglespan"><label class="toctogglelabel" for="toctogglecheckbox"></label></span></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#System-assigned_values"><span class="tocnumber">1</span> <span class="toctext">System-assigned values</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#UNLization_(tokenization_of_natural_language_input)"><span class="tocnumber">2</span> <span class="toctext">UNLization (tokenization of natural language input)</span></a>
+<ul>
+<li class="toclevel-2 tocsection-3"><a href="#Tokenization_of_spaces,_punctuation_signs_and_symbols"><span class="tocnumber">2.1</span> <span class="toctext">Tokenization of spaces, punctuation signs and symbols</span></a></li>
+<li class="toclevel-2 tocsection-4"><a href="#Tokenization_of_digits"><span class="tocnumber">2.2</span> <span class="toctext">Tokenization of digits</span></a></li>
+<li class="toclevel-2 tocsection-5"><a href="#Tokenization_of_temporary_entries"><span class="tocnumber">2.3</span> <span class="toctext">Tokenization of temporary entries</span></a></li>
+<li class="toclevel-2 tocsection-6"><a href="#Tokenization_of_natural_language_entries"><span class="tocnumber">2.4</span> <span class="toctext">Tokenization of natural language entries</span></a></li>
+<li class="toclevel-2 tocsection-7"><a href="#Properties_of_tokenization"><span class="tocnumber">2.5</span> <span class="toctext">Properties of tokenization</span></a></li>
+<li class="toclevel-2 tocsection-8"><a href="##FINAL_AND_#PREFERRED"><span class="tocnumber">2.6</span> <span class="toctext">#FINAL AND #PREFERRED</span></a></li>
+<li class="toclevel-2 tocsection-9"><a href="#Retokenization"><span class="tocnumber">2.7</span> <span class="toctext">Retokenization</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-10"><a href="#NLization_(tokenization_of_UNL_input)"><span class="tocnumber">3</span> <span class="toctext">NLization (tokenization of UNL input)</span></a></li>
+</ul>
+</div>
+
+<div class="mw-heading mw-heading2"><h2 id="System-assigned_values">System-assigned values</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Tokenization&amp;veaction=edit&amp;section=1" title="Edit section: System-assigned values" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Tokenization&amp;action=edit&amp;section=1" title="Edit section&#39;s source code: System-assigned values">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>The following tokens are created by default.
+</p>
+<dl><dd>SCOPE - Scope</dd>
+<dd>SHEAD - Sentence head (the beginning of a sentence)</dd>
+<dd>STAIL - Sentence tail (the end of a sentence)</dd>
+<dd>CHEAD - Scope head (the beginning of a scope)</dd>
+<dd>CTAIL - Scope tail (the end of a scope)</dd>
+<dd>TEMP - Temporary entry (entry not found in the dictionary)</dd>
+<dd>DIGIT - Any sequence of digits (i.e.: 0,1,2,3,4,5,6,7,8,9)</dd></dl>
+<div class="mw-heading mw-heading2"><h2 id="UNLization_(tokenization_of_natural_language_input)"><span id="UNLization_.28tokenization_of_natural_language_input.29"></span>UNLization (tokenization of natural language input)</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Tokenization&amp;veaction=edit&amp;section=2" title="Edit section: UNLization (tokenization of natural language input)" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Tokenization&amp;action=edit&amp;section=2" title="Edit section&#39;s source code: UNLization (tokenization of natural language input)">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>The tokenization of the natural language input follows the general principles below:
+</p>
+<ol><li>Except for digits, the tokenization algorithm is <b>strictly dictionary-based</b>
+<dl><dd>The system tries to match the strings of the natural language input against the entries existing in the dictionary. In case it does not succeed, the string is treated as a temporary entry. There is not predefined token: spaces and punctuation signs have to be inserted in the dictionary in order to be treated as non-temporary entries. For instance, if the dictionary is empty, the string "Barking dogs seldom bite" will be considered as a single token. If the dictionary contains only the entry [d], the input will be tokenized as [Barking ][d][ogs sel][d][om bite].</dd></dl></li>
+<li>The tokenization algorithm tries to <b>match first the longest entries in the dictionary</b>.
+<dl><dd>The system tries to match first the longest entries. If the dictionary contains only two entries: [d] and [do], the string "Barking dogs seldom bite" will be tokenized as [Barking ][do][gs sel][do][m bite], instead of [Barking ][d][ogs sel][d][om bite], because the length of [do] is larger than the lenght of [d].</dd></dl></li>
+<li>The tokenization algorithm observes the <b>frequency of the entries informed in the dictionary</b> (the highest frequent entries come first).
+<dl><dd>The system observes the frequency defined in the dictionary. If the dictionary contains only two entries: [do] and [og], but the frequency of [og] is higher than the frequency of [do], the string "Barking dogs seldom bite" will be tokenized as [Barking d][og][s sel][do][m bite], instead of [Barking ][do][gs sel][do][m bite].</dd></dl></li>
+<li>The tokenization algorithm observes the <b>order of the entries in the dictionary</b> (the system selects the first to appear in case of same frequency)
+<dl><dd>The system observes the order defined in the dictionary. If the dictionary contains only two entries: [do] and [og], with the same frequency, but [og] appears first in the dictionary, the string "Barking dogs seldom bite" will be tokenized as [Barking d][og][s sel][do][m bite], instead of [Barking ][do][gs sel][do][m bite].</dd></dl></li>
+<li>The tokenization algorithm goes <b>from left to right</b>.
+<dl><dd>The system tokenizes first the leftmost entries. If the dictionary contains only two entries: [do] and [og], with the same length and with the same frequency, the string "Barking dogs seldom bite" will be tokenized as [Barking ][do][gs sel][do][m bite], instead of [Barking d][og][s sel][do][m bite], because [do] appears first than [og].</dd></dl></li>
+<li>The tokenization algorithm is <b>case-insensitive</b>, except in case of regular expressions
+<dl><dd>the string "a" will matched by both [a] and [A], but the entry [/a/] will match only the string "a"</dd></dl></li>
+<li>The tokenization algorithm assigns the feature <b>TEMP</b> (temporary) to the strings that were not found in the dictionary.
+<dl><dd>If the dictionary contains only the entry [d], the input will be tokenized as [Barking ][d][ogs sel][d][om bite], and the tokens [Barking ],[ogs sel] and [om bite] will receive the feature TEMP.</dd></dl></li>
+<li>The tokenization algorithm <b>blocks tokens or sequences of tokens prohibited by <a href="/wiki/D-rules" class="mw-redirect" title="D-rules">D-rules</a></b>.
+<dl><dd>If the disambiguation grammar contains the rule ("do")("gs sel")=0, and the dictionary contains only two entries: [do] and [og], the string "Barking dogs seldom bite" will be tokenized as [Barking d][og][s sel][do][m bite], regardless the frequency and the order of [do] and [og], because the the possibility of "do" being followed by "gs sel" is prohibited by the grammar.</dd></dl></li>
+<li>In case of several possible candidates, the tokenization algorithm picks the ones induced by <a href="/wiki/D-rules" class="mw-redirect" title="D-rules">D-rules</a>, if any.
+<dl><dd>If the disambiguation grammar contains the rule ("og")("s sel")=1, and the dictionary contains only two entries: [do] and [og], the string "Barking dogs seldom bite" will be tokenized as [Barking d][og][s sel][do][m bite], regardless the frequency and the order of [do] and [og], because the the possibility of "og" being followed by "s sel" is induced by the grammar.</dd></dl></li>
+<li>Retokenization can be done only in the case of entries having the feature TEMP</li></ol>
+<div class="mw-heading mw-heading3"><h3 id="Tokenization_of_spaces,_punctuation_signs_and_symbols"><span id="Tokenization_of_spaces.2C_punctuation_signs_and_symbols"></span>Tokenization of spaces, punctuation signs and symbols</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Tokenization&amp;veaction=edit&amp;section=3" title="Edit section: Tokenization of spaces, punctuation signs and symbols" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Tokenization&amp;action=edit&amp;section=3" title="Edit section&#39;s source code: Tokenization of spaces, punctuation signs and symbols">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>The tokenization does not have any system-defined tokens except for digits. Any token has be to inserted in the dictionary in order to be recognized as a non-temporary entry.
+</p>
+<table align="center" border="1" cellpadding="2">
+<tbody><tr>
+<th>input
+</th>
+<th>dictionary
+</th>
+<th>tokenization output
+</th></tr>
+<tr>
+<td>a b
+</td>
+<td>empty
+</td>
+<td>["a b"], where "a b" = TEMP
+</td></tr>
+<tr>
+<td>a b
+</td>
+<td>[a] {} "a" (A) &lt;,,&gt;;
+</td>
+<td>[a][" b"], where [" b"] = TEMP
+</td></tr>
+<tr>
+<td>a b
+</td>
+<td>[b] {} "b" (B) &lt;,,&gt;;
+</td>
+<td>["a "][b], where ["a "] = TEMP
+</td></tr>
+<tr>
+<td>a b
+</td>
+<td>[a] {} "a" (A) &lt;,,&gt;;<br />[b] {} "b" (B) &lt;,,&gt;;
+</td>
+<td>[a][" "][b], where [" "] = TEMP
+</td></tr>
+<tr>
+<td>a b
+</td>
+<td>[a] {} "a" (A) &lt;,,&gt;;<br />[b] {} "b" (B) &lt;,,&gt;;<br />[ ] {} "" (BLK) &lt;,,&gt;;
+</td>
+<td>[a][ ][b] (no temporary entries)
+</td></tr></tbody></table>
+<div class="mw-heading mw-heading3"><h3 id="Tokenization_of_digits">Tokenization of digits</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Tokenization&amp;veaction=edit&amp;section=4" title="Edit section: Tokenization of digits" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Tokenization&amp;action=edit&amp;section=4" title="Edit section&#39;s source code: Tokenization of digits">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>Any sequence of isolated digits (i.e., sided by non-temporary tokens) is considered one single token and receives the features TEMP and DIGIT. The UW is considered to be the digit.
+</p>
+<table align="center" border="1" cellpadding="2">
+<tbody><tr>
+<th>input
+</th>
+<th>dictionary
+</th>
+<th>tokenization output
+</th></tr>
+<tr>
+<td>1234
+</td>
+<td>empty
+</td>
+<td>[1234] {} "1234" (TEMP,DIGIT) &lt;,,&gt;;
+</td></tr>
+<tr>
+<td>1,234
+</td>
+<td>empty
+</td>
+<td>[1,234]{}""(TEMP)&lt;,,&gt;;
+</td></tr>
+<tr>
+<td>1,234
+</td>
+<td>[,]{}""(COMMA)&lt;,,&gt;
+</td>
+<td>[1]{}""(TEMP,DIGIT)&lt;,,&gt;;<br />[,]{}""(COMMA)&lt;,,&gt;;<br />[234]{}"234"(TEMP,DIGIT)&lt;,,&gt;;
+</td></tr>
+<tr>
+<td>abc123
+</td>
+<td>empty
+</td>
+<td>["abc123"]{}""(TEMP)&lt;,,&gt;;
+</td></tr>
+<tr>
+<td>abc123
+</td>
+<td>[abc]{}"abc"(A)&lt;,,&gt;;
+</td>
+<td>[abc]{}"abc"(A)&lt;,,&gt;;<br />[123]{}"123"(DIGIT)&lt;,,&gt;;
+</td></tr></tbody></table>
+<div class="mw-heading mw-heading3"><h3 id="Tokenization_of_temporary_entries">Tokenization of temporary entries</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Tokenization&amp;veaction=edit&amp;section=5" title="Edit section: Tokenization of temporary entries" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Tokenization&amp;action=edit&amp;section=5" title="Edit section&#39;s source code: Tokenization of temporary entries">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>Any sequence of characters except digits (and including special symbols, such as space and punctuation signs) not found in the dictionary is considered a temporary entry and receives the feature TEMP. The UW is considered to be empty.
+</p>
+<table align="center" border="1" cellpadding="2">
+<tbody><tr>
+<th>input
+</th>
+<th>dictionary
+</th>
+<th>tokenization output
+</th></tr>
+<tr>
+<td>asdfg
+</td>
+<td>empty
+</td>
+<td>["asdfg"]{}""(TEMP) &lt;,,&gt;;
+</td></tr>
+<tr>
+<td>asdfg hijkl
+</td>
+<td>empty
+</td>
+<td>["asdfg hijkl"]{}""(TEMP)&lt;,,&gt;;
+</td></tr>
+<tr>
+<td>asdfg hijlk
+</td>
+<td>[ ]{}""(BLK)&lt;,,&gt;;
+</td>
+<td>["asdfg"]{}""(TEMP)&lt;,,&gt;;<br />[ ]{}""(BLK)&lt;,,&gt;;<br />["hijlk"]{}""(TEMP)&lt;,,&gt;;
+</td></tr></tbody></table>
+<div class="mw-heading mw-heading3"><h3 id="Tokenization_of_natural_language_entries">Tokenization of natural language entries</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Tokenization&amp;veaction=edit&amp;section=6" title="Edit section: Tokenization of natural language entries" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Tokenization&amp;action=edit&amp;section=6" title="Edit section&#39;s source code: Tokenization of natural language entries">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<dl><dt>Dictionary</dt>
+<dd><br /></dd>
+<dd>[abcde]{}""(...)&lt;...&gt;;<br /></dd>
+<dd>[abcd]{}""(...)&lt;...&gt;;<br /></dd>
+<dd>[bcde]{}""(...)&lt;...&gt;;<br /></dd>
+<dd>[abc]{}""(...)&lt;...&gt;;<br /></dd>
+<dd>[bcd]{}""(...)&lt;...&gt;;<br /></dd>
+<dd>[cde]{}""(...)&lt;...&gt;;<br /></dd>
+<dd>[ab]{}""(...)&lt;...&gt;;<br /></dd>
+<dd>[bc]{}""(...)&lt;...&gt;;<br /></dd>
+<dd>[cd]{}""(...)&lt;...&gt;;<br /></dd>
+<dd>[de]{}""(...)&lt;...&gt;;<br /></dd>
+<dd>[a]{}""(A1,...)&lt;...&gt;;<br /></dd>
+<dd>[a]{}""(A2,...)&lt;...&gt;;<br /></dd>
+<dd>[b]{}""(B1,...)&lt;...&gt;;<br /></dd>
+<dd>[b]{}""(B2,...)&lt;...&gt;;<br /></dd>
+<dd>[c]{}""(C1,...)&lt;...&gt;;<br /></dd>
+<dd>[c]{}""(C2,...)&lt;...&gt;;<br /></dd>
+<dd>[d]{}""(D1,...)&lt;...&gt;;<br /></dd>
+<dd>[d]{}""(D2,...)&lt;...&gt;;<br /></dd>
+<dd>[e]{}""(E1,...)&lt;...&gt;;<br /></dd>
+<dd>[e]{}""(E2,...)&lt;...&gt;;<br /></dd></dl>
+<p><br />
+</p>
+<dl><dt>Case 1</dt>
+<dd>input: "abcde"</dd>
+<dd>disambiguation rule: NONE</dd>
+<dd>tokenization output: [abcde] (the longest entry in the dictionary)</dd>
+<dt>Case 2</dt>
+<dd>input: "abcde"</dd>
+<dd>disambiguation rule: ("abcde")=0; (prohibits the sequence "abcde")</dd>
+<dd>tokenization output: [abcd][e] (the second longest possibility from left to right according to the dictionary)</dd>
+<dt>Case 3</dt>
+<dd>input: "abcde"</dd>
+<dd>disambiguation rules: ("abcde")=0;("abcd")("e")=0;</dd>
+<dd>tokenization output: [a][bcde] (the third longest possibility from left to right according to the dictionary)</dd>
+<dt>Case 4</dt>
+<dd>input: "abcde"</dd>
+<dd>disambiguation rules: ("abcde")=0;("abcd")("e")=0;("a")("bcde")=0;</dd>
+<dd>tokenization output: [abc][de] (the fourth longest possibility from left to right according to the dictionary)</dd>
+<dt>Case 5</dt>
+<dd>input: "abcde"</dd>
+<dd>disambiguation rules: ("/.{3,5}/")=0; (prohibits any token made of 3, 4 or 5 characters)</dd>
+<dd>tokenization output: [ab][cd][e]</dd>
+<dt>Case 6</dt>
+<dd>input: "abXcYde"</dd>
+<dd>disambiguation rule: NONE</dd>
+<dd>tokenization output: [ab][X][c][Y][de] (where [X] and [Y] are temporary entries)</dd></dl>
+<div class="mw-heading mw-heading3"><h3 id="Properties_of_tokenization">Properties of tokenization</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Tokenization&amp;veaction=edit&amp;section=7" title="Edit section: Properties of tokenization" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Tokenization&amp;action=edit&amp;section=7" title="Edit section&#39;s source code: Properties of tokenization">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<pre>Positive disambiguation rules only apply over candidates to the same position with the same length
+</pre>
+<dl><dt>Case 7</dt>
+<dd>input: "abcde"</dd>
+<dd>disambiguation rule: ("abcd")("e")=100; (induces the sequence [abcd][e])</dd>
+<dd>tokenization output: [abcde] (positive disambiguation rules do not prevail over the principle of longest first)</dd>
+<dt>Case 8</dt>
+<dd>input: "abcde"</dd>
+<dd>disambiguation rule: ("/.{2,5}/")=0; (prohibits any token made of 2, 3, 4 or 5 characters)</dd>
+<dd>tokenization output: [a,A1][b,B1][c,C1][d,D1][e,E1] (among the candidates, these entries come first in the dictionary)</dd>
+<dt>Case 9</dt>
+<dd>input: "abcde"</dd>
+<dd>disambiguation rule: ("/.{2,5}/")=0; (A2)(B2)=1; (induces the sequence [A2][B2])</dd>
+<dd>tokenization output: [a,A2][b,B2][c,C1][d,D1][e,E1] (A2 and B2 were chosen instead of A1 and B1)</dd></dl>
+<pre>Positive disambiguation rules apply according to their probability and, for the rules with the same probability, according to their order in the grammar
+</pre>
+<dl><dt>Case 10</dt>
+<dd>input: "abcde"</dd>
+<dd>disambiguation rule: ("/.{2,5}/")=0; (A2)(B2)=1; (A2)(B1)=1; (induces the sequence [A2][B2] and [A2][B1])</dd>
+<dd>tokenization output: [a,A2][b,B2][c,C1][d,D1][e,E1] (the rule [A2][B2] has the same probability as [A2][B1] and comes first in the grammar)</dd>
+<dt>Case 11</dt>
+<dd>input: "abcde"</dd>
+<dd>disambiguation rule: ("/.{2,5}/")=0; (A2)(B2)=1; (A2)(B1)=2; (induces the sequence [A2][B2] and [A2][B1])</dd>
+<dd>tokenization output: [a,A2][b,B1][c,C1][d,D1][e,E1] (the priority of the rule [A2][B1] is higher than [A2][B2])</dd>
+<dt>Case 12</dt>
+<dd>input: "abcde"</dd>
+<dd>disambiguation rule: ("/.{2,5}/")=0; (A2)(B2)=1; (B1)(C2)=2; (induces the sequence [A2][B1])</dd>
+<dd>tokenization output: [a,A1][b,B1][c,C2][d,D1][e,E1] (the priority of the rule [B1][C2] is higher than [A2][B2])</dd></dl>
+<pre>The attribute #FINAL is used to indicate context
+The tokenization algorithm backtracks in case of dead-ends.
+</pre>
+<p>In case of backtracking, the tokenization starts merging nodes from left to right, but considering their size, i.e., the shortest combinations appear first.
+</p>
+<dl><dt>Case 13</dt>
+<dd>input: "abcde"</dd>
+<dd>dictionary:</dd></dl>
+<p>[a]{}""(...)&lt;...&gt;;<br />
+[b]{}""(...)&lt;...&gt;;<br />
+[c]{}""(...)&lt;...&gt;;<br />
+[d]{}""(...)&lt;...&gt;;<br />
+[e]{}""(...)&lt;...&gt;;<br />
+</p>
+<dl><dd>disambiguation rule: ("a")("b")("c")("d")("e")=0;</dd>
+<dd>tokenization output: [ab][c][d][e] (the first combination of shortest temporary nodes from left to right after [a][b][c][d][e], which was blocked by the disambiguation rule. Note that [ab] is not in the dictionary and, therefore, will be treated as TEMP)</dd></dl>
+<div class="mw-heading mw-heading3"><h3 id="#FINAL_AND_#PREFERRED"><span id=".23FINAL_AND_.23PREFERRED"></span>#FINAL AND #PREFERRED</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Tokenization&amp;veaction=edit&amp;section=8" title="Edit section: #FINAL AND #PREFERRED" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Tokenization&amp;action=edit&amp;section=8" title="Edit section&#39;s source code: #FINAL AND #PREFERRED">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>The attribute #FINAL and #PREFERRED are used to alter the default order of replacements during tokenization as described in <a href="/wiki/D-rules" class="mw-redirect" title="D-rules">D-rules</a>.
+</p><p>As the tokenization algorithm goes from left to right, the system will try to replace first the rightmost entries in case of blocking patterns. In order to prevent this, the attribute #FINAL should be introduced to the entries that are not expected to be replaced, whereas #PREFERRED is introduced to the entries that are expected to be replaced only if there is no other alternative.
+</p>
+<dl><dt>Case 14</dt>
+<dd>input: "abcde"</dd>
+<dd>disambiguation rule: ("/.{2,5}/")=0; (A1)(B1)=0;</dd>
+<dd>tokenization output: [a,A1][b,B2][c,C1][d,D1][e,E1] (Since the sequence (A1)(B1) is prohibited by the D-rule, the system tries to replace first B1, which is the rightmost entry)</dd>
+<dd>disambiguation rule: ("/.{2,5}/")=0; (A1)(B1,#PREFERRED)=0;</dd>
+<dd>tokenization output: [a,A2][b,B1][c,C1][d,D1][e,E1] (Since the sequence (A1)(B1) is prohibited by the D-rule, the system tries to replace first A1, which is the rightmost entry without the attribute #PREFERRED)</dd></dl>
+<div class="mw-heading mw-heading3"><h3 id="Retokenization">Retokenization</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Tokenization&amp;veaction=edit&amp;section=9" title="Edit section: Retokenization" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Tokenization&amp;action=edit&amp;section=9" title="Edit section&#39;s source code: Retokenization">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>Temporary nodes (i.e., nodes having the feature TEMP) may be retokenized. In order to retokenize (split) a non-temporary node, it is necessary to assign the feature TEMP to it (but this does not affect any existing feature, including the headword and the UW). <br />
+Examples:
+</p>
+<ul><li>Infixation: add the character "c" between the characters "b" and "d" in case of verbs (V) in the past tense (PAS): abde &gt; abcde, bbdd &gt; bbcde, xbdy &gt; xbcdy, etc.</li></ul>
+<p>Grammar
+</p>
+<ol><li>("/.+bd.+/",V,PAS,%x):=(%x,+TEMP,+SPLIT); (assigns TEMP to the node %x if it is V and PAS and contains the string "bd" inside)</li>
+<li>("/.+b/",SPLIT,%x1)("/d.+/",SPLIT,%x2):=(%x1,-SPLIT,+MERGE)("c",MERGE)(%x2,[],[[]],-SPLIT,+MERGE); (split the string and add "c" after "b" and before "d")</li>
+<li>(%x,MERGE)(%y,MERGE):=(%x&amp;%y); (merge two adjacent nodes having the feature MERGE)</li>
+<li>(%x,^MERGE)(%y,MERGE)(%z,^MERGE):=(%x)(%y,-MERGE)(%z); (delete the feature MERGE if there is nothing else to be merged)</li>
+<li>(%x,^MERGE,^SPLIT,^[[]],TEMP):=(%x,-TEMP); (delete the feature TEMP if there is nothing to be merged or split and the node has a UW)</li></ol>
+<p>Trace<br />
+0 ("abde",[abde],[[abde]],V,PAS) original node<br />
+1 ("abde",[abde],[[abde]],V,PAS,TEMP,SPLIT) after applying rule 1 (add TEMP and SPLIT)<br />
+2 ("ab",[abde],[[abde]],V,PAS,TEMP,MERGE)("c",MERGE)("de",[],[[]],V,PAS,TEMP,MERGE) after applying rule 2 (split "abde" and create "c" in the middle)<br />
+3 ("abc",[abde],[[abde]],V,PAS,TEMP,MERGE) after applying rule 3 (merge "ab" with "c")<br />
+4 ("abcde",[abde],[[abde]],V,PAS,TEMP,MERGE) after applying rule 3 (merge "abc" with "de")<br />
+5 ("abcde",[abde],[[abde]],V,PAS,TEMP) after applying rule 4 (remove MERGE)<br />
+6 ("abcde",[abde],[[abde]],V,PAS) after applying rule 5 (remove TEMP)<br />
+Observations:
+</p>
+<dl><dt>Splitting operations affect only strings. All the features of the source node, including headword and UW, are preserved in the target nodes</dt>
+<dd></dd></dl>
+<p>Given the node ("abcd",[abcd],[[abcd]],A),<br />
+the retokenization rule ("ab",%x)("cd",%y):=(%x)("1",%z)(%y);<br />
+does not affect the original headword, UW and feature, i.e.:<br />
+the nodes ("ab") and ("cd") still have, each one, the features [abcd],[[abcd]],A.<br />
+Because of that, it is important (as indicated in the rule 2 above) to delete the UW and the headword of all split nodes except one; otherwise, when we merge them back, the UW and the headword will be multiplied, because the merge rule concatenates strings, UWs and headwords. For instance, if the rule 2 in the grammar above were:<br />
+2 ("/.+b/",SPLIT,%x1)("/d.+/",SPLIT,%x2):=(%x1,-SPLIT,+MERGE)("c",MERGE)(%x2,-SPLIT,+MERGE); (i.e., if it did not contain [],[[]])<br />
+The final result would have been:<br />
+6 ("abcde",[abdeabde],[[abdeabde]],V,PAS)
+</p>
+<div class="mw-heading mw-heading2"><h2 id="NLization_(tokenization_of_UNL_input)"><span id="NLization_.28tokenization_of_UNL_input.29"></span>NLization (tokenization of UNL input)</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Tokenization&amp;veaction=edit&amp;section=10" title="Edit section: NLization (tokenization of UNL input)" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Tokenization&amp;action=edit&amp;section=10" title="Edit section&#39;s source code: NLization (tokenization of UNL input)">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>The tokenization of the UNL input does not involve special issues. It simply follows the structure of the <a href="/wiki/UNL_document" title="UNL document">UNL document</a>, which is not ambiguous.
+</p>
+<dl><dt>Case 15</dt>
+<dd>Dictionary:<br /></dd></dl>
+<p>[x]{}"x"(...)&lt;...&gt;;<br />
+[xa]{}"x.@a"(...)&lt;...&gt;;<br />
+[xab]{}"x.@a.@b"(...)&lt;...&gt;;<br />
+[y]{}"y"(...)&lt;...&gt;;<br />
+</p>
+<dl><dd>Input:</dd></dl>
+<p>agt(x.@a.@b,y)
+</p>
+<dl><dd>Tokenization output</dd></dl>
+<p>agt([xab],[y])
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20260910035759
+Cache expiry: 86400
+Reduced expiry: false
+Complications: [show‐toc]
+CPU time usage: 0.018 seconds
+Real time usage: 0.018 seconds
+Preprocessor visited node count: 162/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 3/100
+Expensive parser function count: 0/100
+Unstrip recursion depth: 0/20
+Unstrip post‐expand size: 138/5000000 bytes
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    0.000      1 -total
+-->
+
+<!-- Saved in parser cache with key u965818192_SLvgQ-l8z2_:pcache:594:|#|:idhash:canonical and timestamp 20260910035759 and revision id 14043. Rendering was triggered because: diff-page
+ -->
+</div>

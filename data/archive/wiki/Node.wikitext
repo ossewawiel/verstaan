@@ -1,0 +1,134 @@
+A node is the most elementary unit in the [[grammar]]. It is the result of the [[tokenization]] process, and corresponds to the notion of "lexical item". At the surface level, a natural language sentence is considered a list of nodes, and a UNL graph a set of relations between nodes. 
+
+== Basic Symbols ==
+{{:Basic Symbols}}
+
+== Basic Concepts ==
+{{:Grammar units}}
+
+== Notation ==
+Nodes are represented between (parentheses).<br />
+Each node may have several different elements, which are listed inside parentheses, isolated by comma.<br />
+Examples of nodes:
+*("a")
+*([a])
+*(<nowiki>[[a]]</nowiki>)
+*(NOU)
+*(POS=NOU)
+*("a",[a],<nowiki>[[a]]</nowiki>,LEX=N,POS=NOU,GEN=MCL,NUM=SNG)
+Nodes are related by [[relation]]s. In a relation, different nodes are isolated by ";"
+*rel("a";"b") (a relation rel between the nodes ("a") and ("b"))
+
+== Elements ==
+Any node is a structure containing the following '''necessary''' elements:
+*a '''string''', to be represented between "quotes", which expresses the actual state of the node;
+*a '''headword''', to be represented between [square brackets], which expresses the original value of the node in the dictionary;
+*a '''UW''', to be represented between <nowiki>[[double square brackets]]</nowiki>, which expresses the UW value of the node;
+*a '''feature or set of features''', which express the features of the node;
+*an [[Index]], preceded by the symbol %, which is used to reference the node.
+The elements of a node can be:
+*'''native''', if defined in the dictionary; or
+*'''non-native''', if assigned by transformation rules.
+
+== Example ==
+Consider the input string "an apple" and the dictionary<ref>For the structure of the dictionary, please consult [[dictionary]].</ref> below:
+:[an]{111}""(LEX=D,POS=ART)<eng,0,0>;
+:[ ]{3333}""(LEX=O,POS=PUT,BLK)<eng,0,)>;
+:[apple]{222}"apple(icl>fruit)"(LEX=N,POS=NOU)<eng,0,0>;
+In the [[tokenization]] process, the input string is segmented into nodes according to the dictionary. This means that the input string above is analyzed as a list of three nodes:
+:("an",[an],<nowiki>[[]]</nowiki>,LEX=D,POS=ART)
+:(" ",[ ],<nowiki>[[]]</nowiki>,LEX=O,POS=PUT,BLK)
+:("apple",[apple],<nowiki>[[apple(icl>fruit)]]</nowiki>,LEX=N,POS=NOU)
+Each node consists of:
+*a string, between quotes ("an", " ", "apple"); 
+*a headword, between brackets ([an],[ ],[apple]);
+*a UW, between double brackets (<nowiki>[[]]</nowiki>,<nowiki>[[]]</nowiki>,<nowiki>[[apple(icl>fruit)]]</nowiki>);
+*a set of features (LEX=D, POS=ART, LEX=O, ..., BLK)
+These elements are said to be native because they are inherited from the dictionary.<br />
+During the processing, we may change any of these elements with [[T-rule]]s. The resulting new elements are said to be non-native because they are assigned by rules.<br />
+Consider, for instance, the example below:
+*INITIAL STATE: ('''"an"''',[an],<nowiki>[[]]</nowiki>,LEX=D,POS=ART)
+*RULE APPLIED: ("an"):=("a");<ref>This is a T-rule and means: replace the string value from "an" to "a". For further information on T-rules, please consult [[T-rule]].</ref>
+*FINAL STATE: ('''"a"''',[an],<nowiki>[[]]</nowiki>,LEX=D,POS=ART)
+Note, in the above, that the node changed its string value from "an" to "a". As this was the only change intended, the rule referred only to the string value of the node ("an").<br />
+In addition to changing the string, we could have changed any element of the node:
+*(ART):=(-ART); (delete the feature ART from the nodes having the feature ART)
+*(ART,^NDEF):=(+NDEF); (add the feature NDEF to the nodes having the feature ART and not having the feature NDEF)
+*("an",ART,^NDEF):=("a",-ART,+NDEF); (set the string to "a", remove the feature ART and add the feature NDEF to the nodes having the feature ART and not having the feature NDEF whose string is "an").<br />
+
+== Indexation ==
+:main article: [[Indexation]]
+In most cases, we have to assign an index to the node. This happens when we want to perform operations over nodes instead of elements of nodes.<br />
+Consider, for instance, the need for reversing the order of the input string "an apple" in order to generate "apple an". If we write a rule as:
+*("an")(" ")("apple"):=("apple")(" ")("an");
+We would have the following output:
+:("apple",[an],[[]],LEX=D,POS=ART)
+:(" ",[ ],[[]],LEX=O,POS=PUT,BLK)
+:("an",[apple],[[apple(icl>fruit)]],LEX=N,POS=NOU)
+Note, in the above, that we have simply replaced the string "an" by "apple", and "apple" by "an", preserving all the other features, which is not the intended behavior (after the rule, "apple" is ART and "an" is NOU).<br />
+In order to manipulate entire nodes (and not only some elements), we have to create indexes such as:
+*("an",%index1)(" ",%index2)("apple",%index3):=(%index3)(%index2)(%index1);
+In this case, the output would be the expected one:
+:("apple",[apple],[[apple(icl>fruit)]],LEX=N,POS=NOU)
+:(" ",[ ],[[]],LEX=O,POS=PUT,BLK)
+:("an",[an],[[]],LEX=D,POS=ART)
+Indexes, which are introduced by the symbol %, are always temporary (they are valid only within rules using them) and are used for co-indexing nodes. For further information on indexes, see [[indexation]].
+
+== Properties ==
+#Nodes are enclosed between (parentheses)
+#:("a") is a node
+#:"a" is not a node
+#Inside relations, parentheses are not duplicated, except in case of [[hyper-node]]s
+#:rel("a";"b") (relation rel between the nodes ("a") and ("b"))
+#:<strike>rel(("a");("b"))</strike>
+#The elements of a node are separated by comma
+#:("a",[a],<nowiki>[[a]]</nowiki>,A,B,A=C,%a)
+#The order of elements inside a node is not relevant.
+#:("a",[a],<nowiki>[[a]]</nowiki>,A,B,A=C,%a) is the same as (<nowiki>[[a]]</nowiki>,B,A,"a",[a],A=C,%a)
+#Nodes may have one single string, headword, UW and index, but may have as many features as necessary
+#:<strike>("a","b")</strike> (a node may not contain more than one string)
+#:<strike>([a],[b])</strike> (a node may not contain more than one headword)
+#:<strike>(<nowiki>[[a]]</nowiki>,<nowiki>[[b]]</nowiki>)</strike> (a node may not contain more than one UW) 
+#:<strike>(%a,%b)</strike> (a node may not contain more than one index)
+#:(A,B,C,D,...,Z) (a node may contain as many features as necessary)
+#A node may be referred by any of its elements, but only the index make it unique
+#:("a") refers to all nodes where actual string = "a"
+#:([a]) refers to all nodes where headword = [a]
+#:(<nowiki>[[a]]</nowiki>) refers to all nodes where UW = <nowiki>[[a]]</nowiki>
+#:(A) refers to all nodes having the feature A
+#:("a",[a],<nowiki>[[a]]</nowiki>,A) refers to all nodes having the feature A where string = "a" and headword = [a] and UW = <nowiki>[[a]]</nowiki>
+#:(%a) refers to the specific node with the index %a
+#Nodes are automatically indexed according to a position-based system if no explicit index is provided (see [[Indexation]])
+#:("a")("b") is actually ("a",%01)("b",%02)
+#[[Regular expressions]] may be used to make reference to any element of the node, except the index
+#:("/a{2,3}/") refers to all nodes where string is a sequence of 2 to 3 characters "a"
+#:([/a{2,3}/]) refers to all nodes where headword is a sequence of 2 to 3 characters "a"
+#:([[/a{2,3}/]]) refers to all nodes where UW is a sequence of 2 to 3 characters "a"
+#:(/a{2,3}/) refers to all nodes having a feature that is a sequence of 2 to 3 characters "a"
+#Nodes may contain disjoint features enclosed between {braces} and separated by vertical bar
+#:({A|B}) refers to all nodes having the feature A OR B
+#Node features may be expressed as simple attributes, or attribute-value pairs:
+#:(MCL) - feature as an attribute: refers to all nodes having the feature MCL
+#:(GEN=MCL) - feature as an attribute-value pair, which is the same as (GEN,MCL): refers to all nodes having the features GEN and MCL.
+#Attribute-value pairs may be used to create co-reference between different nodes (as in agreement):
+#:(%x,GEN)(%y,GEN=%x) - the value of the attribute GEN of the node %x is the same as the attribute GEN of the node %y (see [[Indexation]])
+
+== "Strings" or [headwords]? ==
+*'''"Double quotes"''' are always used to represent strings: "a" will match only the string "a"
+*'''<nowiki>[Simple square brackets]</nowiki>''' are always used to represent natural language entries (headwords) in the dictionary
+In the initial state, i.e., right after [[tokenization]], the "string" and the [headword] of a node are the same. During the processing, however, they can become different.<br />
+Consider, for instance, the case of "an apple" above. Note that, after applying the rule:
+:("an"):=("a");
+The resulting node is:
+:('''"a"''',[an],<nowiki>[[]]</nowiki>,LEX=D,POS=ART)
+Note, in the above, that the string is now "a" whereas the headword is still [an]. We could have also changed the headword as in:
+:("an",[an]):=("a",[a]);
+But it is normally interesting to preserve the headword in order to keep the track of the dictionary entries being used (regardless of their string changes).<br />
+In this case, if we want to make reference to the actual string value of the node, we use "quotes"; if we want to make reference to the string as it was retrieved in the dictionary, we use [brackets].
+
+== Transformations over nodes ==
+{{:Transformation_over_nodes}}
+
+
+== Notes ==
+<references />

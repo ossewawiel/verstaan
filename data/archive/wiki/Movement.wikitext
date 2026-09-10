@@ -1,0 +1,36 @@
+'''Movement''' is the process of changing the place of nodes in a given syntactic structure. In the UNL<sup>arium</sup> framework, movement rules are used to deal with transformations that affect the surface structure of the sentence such as topicalization and passivization. 
+
+== Syntax ==
+Movement rules are [[S-rules]] of the replace type, i.e.:
+ <RELATION> := <RELATION>;
+Where the left-side <RELATION> is a [[Syntactic roles|syntactic relation]] that indicates the source position and the right-side relation is a relation that indicates the target position.
+
+There are mainly two types of projection rules:
+*Full movement, when the previous position is totally deleted;
+*Trace movement, when a trace (a vestige) is left in the original position.
+
+== Examples ==
+*VS(%spec):=IS(%spec); 
+**The specifier of the verb is moved to the position of specifier of the inflectional phrase. The position of the specifier of the verb no longer exists.
+*VS(%spec):=IS(%spec)VS("",TRACE); 
+**The specifier of the verb is moved to the position of specifier of the inflectional phrase and the feature TRACE is left in the position of the specifier of the verb.
+
+== Observations == 
+;Indexation
+:As in [[S-rule]]s, nodes in movement rules are always indexed, either by user-defined labels (such as %head, %comp or any other) or by the position in the left side of the rules.
+;Movement rules may affect several different nodes at the same time, as in passivization:
+:*VC(%head;%comp)VS(%head;%spec):=VS(%head;%comp)VA(%head;PC([by];%spec));
+;Features may be assigned or deleted from nodes on the right side of movement rules:
+:*VC(%head;%comp)VS(%head;%spec):=VS(%head;%comp,'''-ACC,+NOM''')VA(%head;PC([by];%spec));
+;Occupied positions
+:Moving a node to a position already occupied implies:
+:*Creating a new intermediate projection in case of complement (VC, NC, PC, etc) and adjunct (VA, NA, PA, etc) relations 
+:*Replacing the existing nodes in case of head (VH, NH, PH, etc) and specifier (VS, NS, PS, etc) relations
+;Moving and ordering
+:Reordering branches inside a maximal projection is done by changing [[adjacency]] values
+;Movement rules are replacement rules
+:Relations appearing in the left side will be deleted if absent from the right side:
+:*X(%a;%b)Y(%c;%d):=Z(%a;%b); (the relation "Y(%c;%d)" will be deleted, even if it's not affected by the rule)
+:*X(%a;%b)Y(%c;%d):=Z(%a;%b)Y(%c;%d); (the relation "Y(%c;%d)" is preserved)
+;S-rules or L-rules?
+:Movement may be addressed either by S-rules or [[L-rule]]s, depending on the relation between the constituents to be moved. If the relation is rather spatial than syntactic, L-rules must be used; otherwise, use S-rules.

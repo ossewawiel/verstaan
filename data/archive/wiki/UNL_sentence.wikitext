@@ -1,0 +1,78 @@
+'''UNL sentences''', or UNL expressions, are sentences of UNL. They are hypergraphs made out of nodes ([[Universal Words]]) interlinked by binary semantic [[Universal Relations]] and modified by [[Universal Attributes]]. UNL sentences have been the basic unit of representation inside the UNL framework.
+
+== Syntax ==
+
+According to the [[Specs|UNL Specs]], there are two different ways of representing UNL sentences: the table format and the list format. In the list format, UWs and relations are represented separately; in the table format, they constitute a single structure.
+
+=== List Format ===
+
+The syntax for UNL sentences in the list format is the following: 
+
+{|
+|<UNL sentence>
+|::=
+|"[W]" <list of UWs> "[/W]" [ "[R]" <list of relations> "[/R]" ]
+|-
+|<list of UWs>
+|::=
+|<UW+attributes> [<UW+attributes>...]
+|-
+|<UW+attributes>
+|::=
+|<UW>{“:”<Scope-ID>}}[<attribute list>]”:”<UW-ID>
+|-
+|<list of relations>
+|::=
+|<binary relation>[<binary relation>...]
+|-
+|<binary relation>
+|::=
+|<source node><relation[":"<Scope-ID>]<target node>
+|-
+|<source node>
+|::=
+|<UW-ID>
+|-
+|<target node>
+|::=
+|<UW-ID>
+|}
+
+=== Table Format ===
+
+The syntax for UNL sentences in the table format is the following:
+
+{|
+|<UNL sentence>
+|::=
+|<list of relations>
+|-
+|<list of relations>
+|::=
+|<binary relation>[<binary relation>...]
+|-
+|<binary relation>
+|::=
+|<relation> [“:”<Scope-ID>] “(“ <source node> , <target node> ")"
+|-
+|<source node>
+|::=
+|<UW+attributes>
+|-
+|<target node>
+|::=
+|<UW+attributes>
+|-
+|<UW+attributes>
+|::=
+|<UW>{“:”<Scope-ID>}}[<attribute list>]”:”<UW-ID>
+|}
+
+
+Where <br >
+" and " indicate a predefined delimiter <br >
+< and > indicate a non-terminal symbol <br >
+{ and } indicate a range <br >
+[ and ] indicate an omissible part <br >
+... indicates more than 0 times repetition of the front part <br >
+<nowiki>::= indicates the left part can be replaced by the right part </nowiki><br >

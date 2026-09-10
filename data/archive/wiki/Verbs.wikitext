@@ -1,0 +1,36 @@
+A verb is a word that in syntax conveys an action (bring, read, walk, run, learn), an occurrence (happen, become), or a state of being (be, exist, stand). 
+
+== Natural language ==
+Verbs are normally classified in four different categories:
+*Auxiliary verbs (AUX), when they simply convey information on the [[tense]] and [[aspect]] of the main verb
+*Modal verbs (MOD), when they convey information about the [[modality]] of the sentence
+*Copulas (COP), when they simply link the subject to the predicate
+*Verbs (VER), when they convey actions, occurrences or states.
+
+=== Attributes for Verbs ===
+In many languages, verbs are inflected to encode person, tense, aspect, mood and voice.
+*[[Person]]
+*[[Tense]]
+*[[Mood]]
+*[[Aspect]]
+*[[Voice]]
+
+=== Lists of verbs ===
+*[[English verbs]]
+*[[French grammar#Auxiliary verbs|French verbs]]
+
+== UNL ==
+Verbs are represented in UNL:
+*by attributes, in case of auxiliary or modal verbs;
+*by relations, in case of linking verbs (copula);
+*by UWs, otherwise.
+
+=== Verbs as attributes ===
+
+;Modal verbs are represented by attributes of [[modality]], such as @ability (can), @desire (wish), @necessity (need), @obligation (must, have to), @permission (may), etc.
+;Auxiliary verbs are represented by attributes of [[tense]] or [[aspect]], such as @future (will), @present.@progressive (is + gerund), @past.@perfect (had + participle), etc.
+
+=== Verbs as relations ===
+
+;Copula verbs are represented as the relation "aoj"
+:Peter is beautiful = aoj(beautiful, Peter)

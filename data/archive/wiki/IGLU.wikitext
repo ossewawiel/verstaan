@@ -1,0 +1,57 @@
+The project IGLU aims at UNL-izing the definitions of 27,255 entries extracted from an abridged version of the WordNet3.0. 
+Results are expected to be incorporated into the [[UNL Knowledge Base]] (UNL KB), which codifies the most systematic part of the  meaning conveyed by natural language words, and to constitute a UNL-ization memory, to be used in future mappings between English and UNL.
+
+== Size ==
+The IGLU contains 30,342 distinct sentences, or 141,577 open-class tokens, corresponding to 27,255 entries of the WordNet3.0. 
+
+== Availability ==
+The corpus can be exported and downloaded from the UNL<sup>arium</sup>: UNLWEB>UNLARIUM>CORPUS>IGLU>EXPORT. All data stored in the UNL<sup>arium</sup> is available under an Attribution Share Alike (CC-BY-SA) Creative Commons license, which means that you may use the resources as you want, provided that you cite the authors and that the derivative work is released under the same or a similar license.
+
+== Methodology ==
+The corpus was first divided according to the part of speech of the definiendum (noun, adjective, adverb, verb), to the number of open-class tokens of the definitions, and to the similarity of definitions. It was then addressed in a fully-manual way (through the UNL Editor) by the UNDL Foundation and the UNL Center at the Library of Alexandria. The following guidelines were adopted during the UNLization process:
+
+;The definition must never be changed.
+:As the definition was provided by the WN30 and is used as our main index, there must be no change in the definition, even if it contains typos or proves to be clearly inadequate. Changes, if any, must be done directly in the UNL graph.
+;The definition must not contain the definiendum.
+:The relation between the definiendum (the term being defined) and its definition is represented by the relation "equ" (= equal). This means that the definition must be different from the definiendum, under the risk of tautology.
+;The definition must have the same lexical category of the definiendum.
+:Definitions must preserve the category of the definiendum: nouns must be defined by nominal phrases; adjectives, by adjective phrases; adverbs, by adverbial phrases; and verbs, by verbal phrases. This means that:
+:*The entry node of the definition must belong to the same category of the definiendum; or
+:*The entry node must be part of a relation that has the same category of the definiendum.
+{|border=1 align=center
+!Definiendum
+!Definition
+|-
+|noun
+|noun.@entry, or 00.@entry, or XX.@noun
+|-
+|adjective
+|adjective.@entry, XX.@adjective, or ADJT(XX.@entry, YY)
+|-
+|adverb
+|adverb.@entry, XX.@adverb, or ADJT(XX.@entry, YY)
+|-
+|verb
+|verb.@entry, XX.@verb
+|}
+<div align=center>where ADJT = adjunction relations (all except agt, obj, aoj)</div>
+:As we have been finding, in the WN30, many examples of definitions that do not follow this schema, some adaptations (either by suppression or addition) may be required.
+:*responsible (J) = being the agent or cause
+:**addition = (state of) being the agent or cause 
+:**suppression = <strike>being</strike> the agent or cause 
+;The definition must not contain language-dependent information.
+:Some entries in the WN30 bring information concerning use rather than sense ("short term", "abbreviation", "slang", etc). This information must be represented by attributes, if possible, or simply suppressed, otherwise, during the UNLization process:
+:*"short for railway" must be represented as "railway.@abbreviation"
+:*"euphemism for fat" must be represented as "fat.@euphemism"
+:*"'rattling' is informal" must be reported as error (there is no information on sense, only on use)
+;The definition must be a complete structure.
+:Due to the unusual use of semicolon in the WN30, some definitions have been wrongly split, and do not constitute complete statements. In order to correct the problem, incomplete sentences must be represented as:
+:1. a modifier to the head of the previous sentence
+::*elected four times = (president who was) elected four times
+::*drawn by a single horse = (carriage that is) drawn by a single horse
+:2. a relative sentence to the NULL UW, if (1) is not possible;
+::*constrasting with mental ability = (something) contrasting with mental ability
+::*enclosed within the skull = (something that is) enclosed within the skull
+::*contains the face and brains = (something that) contains the face and brains
+:3. error, if (1) and (2) are not possible
+;Errors must be reported by leaving the sentence empty.

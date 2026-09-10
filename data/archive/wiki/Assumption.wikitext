@@ -1,0 +1,10 @@
+'''Assumptions''' must be represented, in UNL, by the attribute @assumption, which is a value of [[modality]].
+
+*X is intended to be Y = equ(X, Y.@assumption)
+*X is meant to be Y = equ(X, Y.@assumption)
+*X is said to be Y = equ(X, Y.@assumption)
+
+The same applies to actions:
+*X is intended to be done = obj(do.@assumption, X)
+*X is meant to be done = obj(do.@assumption, X)
+*X is said to be done = obj(do.@assumption, X)

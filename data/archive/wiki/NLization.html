@@ -1,0 +1,150 @@
+<div class="mw-content-ltr mw-parser-output" lang="en" dir="ltr"><p><b>NLization</b>, formerly known as deconversion, is the process of generating natural language structures corresponding to UNL graphs. 
+</p>
+<div id="toc" class="toc" role="navigation" aria-labelledby="mw-toc-heading"><input type="checkbox" role="button" id="toctogglecheckbox" class="toctogglecheckbox" style="display:none" /><div class="toctitle" lang="en" dir="ltr"><h2 id="mw-toc-heading">Contents</h2><span class="toctogglespan"><label class="toctogglelabel" for="toctogglecheckbox"></label></span></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Units"><span class="tocnumber">1</span> <span class="toctext">Units</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#Paradigms"><span class="tocnumber">2</span> <span class="toctext">Paradigms</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="#Recall"><span class="tocnumber">3</span> <span class="toctext">Recall</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="#Precision"><span class="tocnumber">4</span> <span class="toctext">Precision</span></a></li>
+<li class="toclevel-1 tocsection-5"><a href="#Level"><span class="tocnumber">5</span> <span class="toctext">Level</span></a></li>
+<li class="toclevel-1 tocsection-6"><a href="#Methods"><span class="tocnumber">6</span> <span class="toctext">Methods</span></a></li>
+<li class="toclevel-1 tocsection-7"><a href="#Tools"><span class="tocnumber">7</span> <span class="toctext">Tools</span></a></li>
+</ul>
+</div>
+
+<div class="mw-heading mw-heading2"><h2 id="Units">Units</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=NLization&amp;veaction=edit&amp;section=1" title="Edit section: Units" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=NLization&amp;action=edit&amp;section=1" title="Edit section&#39;s source code: Units">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>The process of NLization may have different generation units, as follows:
+</p>
+<ul><li>Word-driven NLization</li>
+<li>Sentence-driven NLization</li>
+<li>Text-driven NLization</li></ul>
+<div class="mw-heading mw-heading2"><h2 id="Paradigms">Paradigms</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=NLization&amp;veaction=edit&amp;section=2" title="Edit section: Paradigms" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=NLization&amp;action=edit&amp;section=2" title="Edit section&#39;s source code: Paradigms">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>The process of NLization may follow several different paradigms, as follows:
+</p>
+<ul><li>Language-based NLization (based mainly in a <a href="/wiki/UNL_Dictionary" title="UNL Dictionary">UNL-NL dictionary</a> and <a href="/wiki/Grammar_Specs" class="mw-redirect" title="Grammar Specs">UNL-NL grammar</a>)</li>
+<li>Knowledge-based NLization (based mainly in the <a href="/wiki/UNL_Knowledge_Base" title="UNL Knowledge Base">UNL Knowledge Base</a>)</li>
+<li>Memory-based NLization (based mainly in the <a href="/wiki/UNL-NL_Memory" title="UNL-NL Memory">UNL-NL Memory</a>)</li>
+<li>Statistical-based NLization (based mainly in statistical predictions derived from UNL-NL corpora)</li>
+<li>Dialogue-based NLization (based mainly in the interaction with the user)</li></ul>
+<p>The actual NLization is normally hybrid and may combine several of the strategies above.
+</p>
+<div class="mw-heading mw-heading2"><h2 id="Recall">Recall</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=NLization&amp;veaction=edit&amp;section=3" title="Edit section: Recall" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=NLization&amp;action=edit&amp;section=3" title="Edit section&#39;s source code: Recall">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>The process of NLization may target the whole source document or only parts of it (e.g. main clauses):
+</p>
+<ul><li>Full NLization (the whole source document is NLized)</li>
+<li>Partial (or chunk) NLization (only a part of the source document is NLized)</li></ul>
+<dl><dt>agt(killed,Peter)obj(killed,John)ins(killed,knife)tim(killed,yesterday)</dt>
+<dd>Full NLization: Peter killed John with a knife yesterday.</dd>
+<dd>Partial NLization: Peter killed John</dd></dl>
+<div class="mw-heading mw-heading2"><h2 id="Precision">Precision</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=NLization&amp;veaction=edit&amp;section=4" title="Edit section: Precision" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=NLization&amp;action=edit&amp;section=4" title="Edit section&#39;s source code: Precision">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>The process of NLization may target the deep syntactic structure of the source graph (i.e., the resulting syntactic structure replicates the semantic structure of the original) or only its surface structure (the resulting syntactic structure does not preserve the semantic structure of the original)
+</p>
+<ul><li>Deep NLization (the NLization focus the deep syntactic structure of the source graph)</li>
+<li>Shallow NLization (the NLization focus the surface syntactic structure of the source graph)</li></ul>
+<p>Syntactic structures are preserved in the UNL document by the use of syntactic attributes (such as @passive, @topic, etc) or by hyper-nodes (i.e., <a href="/wiki/Scope" title="Scope">scopes</a>). 
+</p>
+<dl><dt>agt(killed.@passive,Peter)obj(killed.@passive,John)</dt>
+<dd>Shallow NLization: Peter killed John</dd>
+<dd>Deep NLization: John was killed by Peter</dd></dl>
+<div class="mw-heading mw-heading2"><h2 id="Level">Level</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=NLization&amp;veaction=edit&amp;section=5" title="Edit section: Level" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=NLization&amp;action=edit&amp;section=5" title="Edit section&#39;s source code: Level">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>The process of NLization may target literal meanings (locutionary content) or non-literal meanings (ilocutionary content).
+</p>
+<ul><li>Locutionary (the NLization represents only the literal meaning)</li>
+<li>Ilocutionary (the NLization represents also non-literal meanings, including speech acts)</li></ul>
+<p>The ilocutionary force may be represented by figure of speech and speech acts attributes: 
+</p>
+<dl><dt>agt(pass.@request,you)gol(pass.@request,me)obj(pass.@request,salt)</dt>
+<dd>Locutionary level: Pass me the salt</dd>
+<dd>Ilocutionary level: Can you pass me salt? / Would you pass me the salt?</dd></dl>
+<div class="mw-heading mw-heading2"><h2 id="Methods">Methods</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=NLization&amp;veaction=edit&amp;section=6" title="Edit section: Methods" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=NLization&amp;action=edit&amp;section=6" title="Edit section&#39;s source code: Methods">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>Humans and machines may play different roles in NLization methods:
+</p>
+<ul><li>Fully automatic NLization (the whole process is carried out by the machine, without any intervention of the human user)</li>
+<li>Human-aided machine NLization (the process is carried mainly by the machine, with some intervention of the human user, either as a pre-editor or as a post-editor, or during the NLization itself, as in dialogue-based NLization)</li>
+<li>Machine-aided human NLization (the process is carried mainly by the human user, with some help of the machine, as in the dictionary or memory look-up)</li>
+<li>Fully human NLization (the whole process is carried by the human user, without any intervention of the machine)</li></ul>
+<div class="mw-heading mw-heading2"><h2 id="Tools">Tools</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=NLization&amp;veaction=edit&amp;section=7" title="Edit section: Tools" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=NLization&amp;action=edit&amp;section=7" title="Edit section&#39;s source code: Tools">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>For the time being, there are two NLization tools, as described below:
+</p>
+<table border="1" cellpadding="3" align="center">
+<tbody><tr>
+<th>Tool
+</th>
+<th>Unit
+</th>
+<th>Paradigms
+</th>
+<th>Recall
+</th>
+<th>Precision
+</th>
+<th>Level
+</th>
+<th>Method
+</th>
+<th>Licence
+</th>
+<th>Author
+</th></tr>
+<tr>
+<td><a href="/wiki/EUGENE" title="EUGENE">EUGENE</a>
+</td>
+<td>sentence
+</td>
+<td>LB,KB,EB,MB,DB
+</td>
+<td>F,P
+</td>
+<td>D,S
+</td>
+<td>L,I
+</td>
+<td>FA,HA
+</td>
+<td>freeware
+</td>
+<td>UNDLF
+</td></tr>
+<tr>
+<td><a href="/wiki/index.php?title=DeCo&amp;action=edit&amp;redlink=1" class="new" title="DeCo (page does not exist)">DeCo</a>
+</td>
+<td>sentence
+</td>
+<td>LB,KB
+</td>
+<td>F
+</td>
+<td>D
+</td>
+<td>L,I
+</td>
+<td>FA
+</td>
+<td>shareware
+</td>
+<td>UNLC
+</td></tr></tbody></table>
+<!-- 
+NewPP limit report
+Cached time: 20260909185711
+Cache expiry: 86400
+Reduced expiry: false
+Complications: [show‐toc]
+CPU time usage: 0.005 seconds
+Real time usage: 0.005 seconds
+Preprocessor visited node count: 26/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/100
+Expensive parser function count: 0/100
+Unstrip recursion depth: 0/20
+Unstrip post‐expand size: 0/5000000 bytes
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    0.000      1 -total
+-->
+
+<!-- Saved in parser cache with key u965818192_SLvgQ-l8z2_:pcache:578:|#|:idhash:canonical and timestamp 20260909185711 and revision id 16726. Rendering was triggered because: diff-page
+ -->
+</div>

@@ -1,0 +1,29 @@
+The English disambiguation grammars, or English d-grammars, are a part of the [[English grammar]] and are used to improve the results of the [[tokenization]] and to control the application of [[t-rule]]s. They follow the formalism described at [[UNL_Grammar_Specs#Disambiguation_Rules|UNL Grammar Specs]] and are used both in natural language analysis ([[UNLization]]) and in natural language generation ([[NLization]]). 
+
+== ENG->UNL Disambiguation Grammar ==
+In natural language analysis, the d-grammar is used to control the [[tokenization]] of the English sentences, i.e., to prevent wrong lexical choices and to induce the best matches. The d-grammar comprises two different types of disambiguation rules, or d-rules:
+*'''Negative''' (blocking) rules, where the probability is equal to 0, prevent lexical choices
+*:For instance, the rule (D)(BLK)(V)=0; informs that the sequence determiner+blank space+verb is not allowed, i.e., there cannot be a determiner before a verb.
+*'''Positive''' rules, where the probability is more than 0, force lexical choices
+*:For instance, the rule (['s],V)(BLK)(GER)=1; informs that the entry ['s] as a verb is to be preferred before a gerund (there are three entries ['s] in the dictionary: the contracted form of "is", the particle used to form the genitive and a plural suffix; if this rule is not stated, the system would simply select the first one appearing in the dictionary with the highest frequency)
+
+=== How to use d-grammars ===
+D-grammars must be uploaded to or provided directly at the tab '''d-rules''' in [[IAN]].
+
+=== Examples of disambiguation rules ===
+;TOKENIZATION OF TEMPORARY WORDS (used to control hyper-segmentation)
+ (TEMP,^DIGIT,^W)(^BLK,^PUT,^STAIL)=0;
+:there must be a blank, a punctuation sign or the end of the sentence after a temporary word, i.e., a temporary word cannot be followed by other word, except for digits, as in "1st"
+ (^BLK,^PUT,^SHEAD)(TEMP,^W)=0;
+:there must be a blank, a punctuation sign or the beginning of the sentence before a temporary word, i.e., a temporary word cannot be preceded by other word
+(TEMP)(PUT)(TEMP)=0; there cannot be two temporary words separated by punctuation mark
+;DETERMINERS X PRONOUNS (used to disambiguate pronouns from determiners, which come first in the dictionary)
+ (D,^AFT)({PUT,^BLK|STAIL})=0; 
+:determiners may not come at the end of the sentence or before a punctuation mark, except if their distribution is AFT, like "enough"
+ (D,^AFT)(BLK)({V|P|AAV})=0; 
+:determiners may not be precede verbs, prepositions or adjunct adverbs, except if their distribution is AFT
+;AUXILIARY VERBS X MAIN VERBS (have, be)
+ (AUX)(BLK)(^V,^[not])=0; 
+:an auxiliary verb must be followed by a verb or the words "not" or "to"
+ (AUX)(BLK)([not])(BLK)(^V)=0; 
+:if followed by "not", the auxiliary must be followed by a verb

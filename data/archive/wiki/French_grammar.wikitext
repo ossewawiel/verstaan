@@ -1,0 +1,80 @@
+== Auxiliary verbs ==
+
+*ARRETER DE
+**@terminative -  Il a enfin arrêté de fumer après 10 ans. (fumer.@terminative)
+*AVOIR (to be represented as a tense)
+*AVOIR BESOIN DE
+**@necessity - J'ai besoin de sortir (sortir.@necessity)
+*CESSER DE
+**@terminative - Il a enfin cessé de neiger. (neiger.@terminative)
+*COMMENCER A
+**@inceptive - Il a commencé à pleuvoir (pleuvoir.@inceptive)
+*CONTINUER A
+**@continuative - le President a continué à faire son discours. (faire.@continuative)
+*DEVOIR
+**@obligation (= have to) - Je dois aller au travail (aller.@obligation)
+**@probability (= must) - Elle doit avoir 13 ans  (avoir.@probability)
+**@suggestion (= should) - On doit procéder ainsi (procéder.@suggestion)
+*ÊTRE (to be represented as a tense)
+*ÊTRE EN TRAIN DE
+**@progressive - Les étudiants sont en train d'écrire l'épreuve d'examen. (écrire.@progressive)
+*ÊTRE SUR LE POINT DE
+**@prospective - Les deux collègues sont sur le point de se disputer. (disputer.@prospective)
+*FAIRE
+**@causative - J'ai fait cuire un énorme bûche. (cuire.@causative)
+*FALLOIR
+**@necessity - Il faut commencer la présentation aussitôt.  (commencer.@necessity)
+*FINIR DE
+**@terminative - Nous avons fini de la regarder. (regarder.@terminative)
+*LAISSER
+**@permissive - Le petit enfant a laissé tomber son bonnet. (tomber.@permissive)
+*POUVOIR
+**@ability (= be able to) - Peux-tu soulever cette boîte? (soulever.@ability)
+**@permission (= be allowed to) - Est-ce que je peux me servir de ta voiture? (servir.@permission)
+**@possibility (= can) - Pouvez-vous me tenir la porte s'il vous plaît? (tenir.@possibility)
+**@desire (= may) Puisse cette nouvelle année exaucer vos vœux les plus chers (exaucer.@desire)
+*SAVOIR
+**@ability - Il sait lire (lire.@ability)
+*SE METTRE A
+**@inceptive - Nous nous sommes mis à pleurer. (pleurer.@inceptive)
+*VOULOIR
+**@desire - Il veut partir en voyage (partir.@desire)
+
+== Tenses ==
+
+*Indicatif
+**Présent = @present (Je vais = aller.@present)
+**Passé simple = @past (J'allai = aller.@past)
+**Passé composé = @past (Je suis allé = aller.@past)
+**Passé proche = @past.@recent (Je viens d'aller = aller.@past.@recent)
+**Passé antérieur = @past.@anterior.@perfective(Je fus allé = aller.@past.@anterior.@perfective)
+**Imparfait = @past.@imperfective(j'allais = aller.@past.@imperfect)
+**Plus-que-parfait = @past.@anterior (J'étais allé = aller.@past.@anterior)
+**Futur simple = @future (J'irai = aller.@future)
+**Futur antérieur = @future.@anterior (Je serai allé = aller.@future.@anterior)
+**Futur antérieur du passé (=Conditionnel passé) = @past.@posterior.@perfective (Je serais allé = aller.@past.@posterior.@perfective)
+**Futur du passé (=Conditionnel présent) = @past.@posterior (J'irais = aller.@past.@posterior)
+**Futur proche = @future.@recent (Je vais aller = aller.@future.@recent)
+
+*Subjonctif (@hypothesis, @desire, @hope, etc)
+**Présent = @present.@hypothesis (que j'aille = aller.@present.@hypothesis)
+**Passé = @past.@hypothesis  (que je sois allé = aller.@past.@hypothesis)
+**Imparfait = @past.@imperfective.@hypothesis  (que j'allasse = aller.@past.@imperfective.@hypothesis)
+**Plus-que-parfait = @past.@anterior.@hypothesis   (que je fusse allé = aller.@past.@anterior.@hypothesis)
+ 
+*Conditionnel (@posterior)
+**Présent (= Futur du passé) = @past.@posterior (J'irais = aller.@past.@posterior)
+**Passé (= Futur antérieur du passé) = @past.@posterior.@perfective (Je serais allé = aller.@past.@posterior.@perfective)
+**Passé (= Futur antérieur du passé)= @past.@posterior.@perfective  (Je fusse allé = aller.@past.@posterior.@perfective)
+ 
+*Impératif (@command)
+**Présent = @present.@command (va = aller.@present.@command)
+**Passé = @past.@command (sois allé = aller.@past.@command)
+ 
+*Gérondif (=ADVERB)
+**Présent = NONE (en allant = aller)
+**Passé = NONE (en étant allé = aller)
+
+*Infinitif
+**Présent = NONE (aller = aller)
+**Passé = @perfective (être allé = aller.@perfective)

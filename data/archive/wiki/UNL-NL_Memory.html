@@ -1,0 +1,59 @@
+<div class="mw-content-ltr mw-parser-output" lang="en" dir="ltr"><p>The <b>UNL&lt;-&gt;NL Memory</b> is a set of mappings between a given natural language and UNL. It may be unidirectional (UNL-NL Memory or NL-UNL Memory) or bidirectional (UNL&lt;-&gt;NL Memory). It is used to improve and normalize the results of the <a href="/wiki/UNLization" title="UNLization">UNLization</a> and the <a href="/wiki/NLization" title="NLization">NLization</a>, as it contain segments that have been previously UNLized or NLized.<br /><br />
+The UNL&lt;-&gt;NL Memory may be provided in two different formats:
+</p>
+<ul><li>Extended, in TMX; or</li>
+<li>Simplified, as a set of <a href="/wiki/Grammar_Specs#Disambiguation_Rules" class="mw-redirect" title="Grammar Specs">network disambiguation rules</a></li></ul>
+<p><br />
+</p>
+<div class="mw-heading mw-heading2"><h2 id="Extended_format">Extended format</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=UNL-NL_Memory&amp;veaction=edit&amp;section=1" title="Edit section: Extended format" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=UNL-NL_Memory&amp;action=edit&amp;section=1" title="Edit section&#39;s source code: Extended format">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>UNL&lt;-&gt;NL Memory entries in extended format must comply with the <a rel="nofollow" class="external text" href="http://www.gala-global.org/lisa-oscar-standards">Translation Memory eXchange Specs</a>, as follows:
+</p>
+<pre>   &lt;tu&gt;
+       &lt;tuv xml:lang="en"&gt;&lt;seg&gt;a good deal&lt;/seg&gt;&lt;tuv&gt;
+       &lt;tuv xml:lang="unl"&gt;&lt;seg&gt;400059171&lt;/seg&gt;&lt;tuv&gt;
+   &lt;/tu&gt;
+    
+</pre>
+<p>Where:<br />
+&lt;tu&gt; is the beginning of the translation unit<br />
+&lt;/tu&gt; is the end of the translation unit<br />
+&lt;tuv&gt; is the beginning translation unit variant<br />
+&lt;/tuv&gt; is the end of the translation unit variant<br />
+&lt;seg&gt; is the beginning of the translation segment<br />
+&lt;/seg&gt; is the end of the translation segment<br />
+</p>
+<div class="mw-heading mw-heading2"><h2 id="Simplified_format">Simplified format</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=UNL-NL_Memory&amp;veaction=edit&amp;section=2" title="Edit section: Simplified format" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=UNL-NL_Memory&amp;action=edit&amp;section=2" title="Edit section&#39;s source code: Simplified format">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>UNL&lt;-&gt;NL Memory entries in simplified format must be represented as a set of <a href="/wiki/Grammar_Specs#Disambiguation_Rules" class="mw-redirect" title="Grammar Specs">network disambiguation rules</a>, as follows:
+</p>
+<pre>equ(SOURCE;TARGET)=DC;
+</pre>
+<p>Where:<br />
+equ is the UNL relation for "equivalent";<br />
+SOURCE is the source segment;<br />
+TARGET is the target segment; <br />
+DC is the degree of certainty (i.e., the likelihood of the relation between the SOURCE and the TARGET)<br />
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20260910024327
+Cache expiry: 86400
+Reduced expiry: false
+Complications: []
+CPU time usage: 0.004 seconds
+Real time usage: 0.004 seconds
+Preprocessor visited node count: 22/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/100
+Expensive parser function count: 0/100
+Unstrip recursion depth: 0/20
+Unstrip post‐expand size: 0/5000000 bytes
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    0.000      1 -total
+-->
+
+<!-- Saved in parser cache with key u965818192_SLvgQ-l8z2_:pcache:557:|#|:idhash:canonical and timestamp 20260910024327 and revision id 13661. Rendering was triggered because: page-view
+ -->
+</div>

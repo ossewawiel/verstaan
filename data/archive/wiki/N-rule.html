@@ -1,0 +1,157 @@
+<div class="mw-content-ltr mw-parser-output" lang="en" dir="ltr"><p>N-rule or normalization rule is a special type of <a href="/wiki/Transformation_rule" class="mw-redirect" title="Transformation rule">transformation rule</a> used to prepare the natural language input for automatic processing. They constitute the pre-processing module that applies over the input as a string and runs prior to the <a href="/wiki/Tokenization" title="Tokenization">tokenization</a>. The set of N-rules forms the <b>Normalization Grammar</b>, or <b>N-Grammar</b>.
+</p>
+<div id="toc" class="toc" role="navigation" aria-labelledby="mw-toc-heading"><input type="checkbox" role="button" id="toctogglecheckbox" class="toctogglecheckbox" style="display:none" /><div class="toctitle" lang="en" dir="ltr"><h2 id="mw-toc-heading">Contents</h2><span class="toctogglespan"><label class="toctogglelabel" for="toctogglecheckbox"></label></span></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#When_to_use_N-rules"><span class="tocnumber">1</span> <span class="toctext">When to use N-rules</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#When_not_to_use_N-rules"><span class="tocnumber">2</span> <span class="toctext">When not to use N-rules</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="#Where_to_use_N-rules"><span class="tocnumber">3</span> <span class="toctext">Where to use N-rules</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="#Syntax"><span class="tocnumber">4</span> <span class="toctext">Syntax</span></a></li>
+<li class="toclevel-1 tocsection-5"><a href="#Types"><span class="tocnumber">5</span> <span class="toctext">Types</span></a></li>
+<li class="toclevel-1 tocsection-6"><a href="#Example"><span class="tocnumber">6</span> <span class="toctext">Example</span></a></li>
+<li class="toclevel-1 tocsection-7"><a href="#Segmentation"><span class="tocnumber">7</span> <span class="toctext">Segmentation</span></a></li>
+<li class="toclevel-1 tocsection-8"><a href="#Properties"><span class="tocnumber">8</span> <span class="toctext">Properties</span></a></li>
+<li class="toclevel-1 tocsection-9"><a href="#Indexes"><span class="tocnumber">9</span> <span class="toctext">Indexes</span></a></li>
+<li class="toclevel-1 tocsection-10"><a href="#Common_mistakes"><span class="tocnumber">10</span> <span class="toctext">Common mistakes</span></a></li>
+<li class="toclevel-1 tocsection-11"><a href="#N-rules_and_L-rules"><span class="tocnumber">11</span> <span class="toctext">N-rules and L-rules</span></a></li>
+</ul>
+</div>
+
+<div class="mw-heading mw-heading2"><h2 id="When_to_use_N-rules">When to use N-rules</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=N-rule&amp;veaction=edit&amp;section=1" title="Edit section: When to use N-rules" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=N-rule&amp;action=edit&amp;section=1" title="Edit section&#39;s source code: When to use N-rules">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>N-rules are used to normalize the input string PRIOR to the processing, i.e., before any dictionary search. They have two roles:
+</p>
+<ul><li>to normalize the input text (to replace abbreviations by their extend forms, to extend contractions, etc.)</li>
+<li>to segment the natural language text into sentences (i.e., to create the tags &lt;SHEAD&gt; (beginning of a sentence), &lt;STAIL&gt; (end of a sentence), &lt;CHEAD&gt; (beginning of a scope) and &lt;CTAIL&gt; (end of a scope) inside the input text). These tags are used as sentence and clause boundaries, and define the units of processing of the Transformation and Disambiguation grammars.</li></ul>
+<div class="mw-heading mw-heading2"><h2 id="When_not_to_use_N-rules">When not to use N-rules</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=N-rule&amp;veaction=edit&amp;section=2" title="Edit section: When not to use N-rules" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=N-rule&amp;action=edit&amp;section=2" title="Edit section&#39;s source code: When not to use N-rules">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>N-rules cannot be used when we depend on information extracted from the dictionary (such as part-of-speech, number, gender, etc.)
+</p>
+<div class="mw-heading mw-heading2"><h2 id="Where_to_use_N-rules">Where to use N-rules</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=N-rule&amp;veaction=edit&amp;section=3" title="Edit section: Where to use N-rules" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=N-rule&amp;action=edit&amp;section=3" title="Edit section&#39;s source code: Where to use N-rules">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>N-rules are used in <a href="/wiki/IAN" title="IAN">IAN</a> and <a href="/wiki/SEAN" title="SEAN">SEAN</a>, i.e., in UNLization systems. They must be provided at the N-rules tab.
+</p>
+<div class="mw-heading mw-heading2"><h2 id="Syntax">Syntax</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=N-rule&amp;veaction=edit&amp;section=4" title="Edit section: Syntax" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=N-rule&amp;action=edit&amp;section=4" title="Edit section&#39;s source code: Syntax">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>N-rules comply with the syntax below:
+</p>
+<pre>(&lt;NODE&gt;)(&lt;NODE&gt;)...(&lt;NODE&gt;)&#160;:= (&lt;NODE&gt;)(&lt;NODE&gt;)...(&lt;NODE&gt;);
+</pre>
+<p>Where:
+</p>
+<ul><li>&lt;NODE&gt; is a string or a <a href="/wiki/Regular_expression" title="Regular expression">regular expression</a>. Strings are always represented between "quotes"; regular expressions (for strings) between "/forward slashes inside quotes/".</li>
+<li>the left side of the operator&#160;:= states the condition</li>
+<li>the right side of the operator&#160;:= states the action to be performed over each string of the condition.</li></ul>
+<div class="mw-heading mw-heading2"><h2 id="Types">Types</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=N-rule&amp;veaction=edit&amp;section=5" title="Edit section: Types" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=N-rule&amp;action=edit&amp;section=5" title="Edit section&#39;s source code: Types">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>N-rules are used to:
+</p>
+<ul><li>replace strings: "axb" &gt; "ayb"</li>
+<li>delete strings: "axb" &gt; "ab"</li>
+<li>create strings: "ab" &gt; "axb"</li>
+<li>reorder strings: "ab" &gt; "ba"</li>
+<li>assign sentence boundaries: "ab" &gt; "a"&lt;STAIL&gt;"b"</li></ul>
+<div class="mw-heading mw-heading2"><h2 id="Example">Example</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=N-rule&amp;veaction=edit&amp;section=6" title="Edit section: Example" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=N-rule&amp;action=edit&amp;section=6" title="Edit section&#39;s source code: Example">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<ul><li><a rel="nofollow" class="external text" href="http://www.unlweb.net.br/resources/english/eng_ngrammar_ian.txt">English N-Grammar (for IAN)</a></li></ul>
+<dl><dt>Replacement of strings</dt></dl>
+<ul><li>("Mr."):=("Mister"); (replace "Mr." by "Mister")</li>
+<li>("Mr")("."):=("Mister"); (the same as above)</li>
+<li>("doctor"):=("dr."); (replace "doctor" by "dr.")</li>
+<li>("an "):=("a "); (replace "an " by "a ")</li>
+<li>("don't"):=("do not"); (replace "don't" by "do not")</li>
+<li>("don't"):=("do")(" ")("not"); (the same as above)</li></ul>
+<dl><dt>Deletion of strings</dt></dl>
+<ul><li>("/[A-Z]/",%x)(".",%y):=(%x); (deletes the "." after capital letters)</li></ul>
+<dl><dt>Creation of strings</dt></dl>
+<ul><li>(SHEAD,%x)(^" ",%y):=(%x)(" ",%z)(%y); (add a blank space after the beginning of the sentence)</li></ul>
+<dl><dt>Reordering of strings</dt></dl>
+<ul><li>("Am",%x)(" ",%y)("I",%z):=(%z)(%y)(%x); (reorder "Am I" as "I Am")</li></ul>
+<dl><dt>Segmentation (see below)</dt></dl>
+<ul><li>(".",%x):=(%x)(+STAIL,%y); (creates an STAIL node after a ".";<sup id="cite_ref-1" class="reference"><a href="#cite_note-1"><span class="cite-bracket">&#91;</span>1<span class="cite-bracket">&#93;</span></a></sup>)</li></ul>
+<div class="mw-heading mw-heading2"><h2 id="Segmentation">Segmentation</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=N-rule&amp;veaction=edit&amp;section=7" title="Edit section: Segmentation" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=N-rule&amp;action=edit&amp;section=7" title="Edit section&#39;s source code: Segmentation">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>In the UNL framework, natural language segmentation is done through the following tags:
+</p>
+<ul><li>&lt;SHEAD&gt; indicates the beginning of a sentence</li>
+<li>&lt;STAIL&gt; indicates the end of a sentence</li>
+<li>&lt;CHEAD&gt; indicates the beginning of a scope (any portion of text smaller than a sentence)</li>
+<li>&lt;CTAIL&gt; indicates the end of a scope (any portion of text smaller than a sentence)</li></ul>
+<p>The tags &lt;SHEAD&gt; and &lt;STAIL&gt; defines the sentence boundaries and are automatically assigned by the system according to line breaks and paragraph breaks. No punctuation sign is used as a sentence boundary by default. In order to break the input text into other portions, the corresponding N-rules must be provided. This is done by appending empty nodes with the features SHEAD, STAIL, CHEAD or CTAIL to the left or to the right of existing strings. 
+</p>
+<ul><li>Original text: &lt;SHEAD&gt;abcde&lt;STAIL&gt;</li>
+<li>Rule: ("c",%x)(^STAIL,%y):=(%x)(STAIL)(%y);</li>
+<li>Modified text: &lt;SHEAD&gt;abc&lt;STAIL&gt;&lt;SHEAD&gt;de&lt;STAIL&gt;</li></ul>
+<dl><dt>Observations</dt></dl>
+<ul><li>The tag &lt;SHEAD&gt; is assigned automatically after &lt;STAIL&gt;</li>
+<li>The tag &lt;STAIL&gt; is assigned automatically before &lt;SHEAD&gt;</li></ul>
+<div class="mw-heading mw-heading2"><h2 id="Properties">Properties</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=N-rule&amp;veaction=edit&amp;section=8" title="Edit section: Properties" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=N-rule&amp;action=edit&amp;section=8" title="Edit section&#39;s source code: Properties">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<ol><li>N-rules can only manipulate strings or regular expressions. Features (such as N, NOU, MCL, etc.) cannot be used in N-rules.
+<dl><dd>("Mr."):=("Mister"); (string manipulation)</dd>
+<dd>("/[A-Z]/",%x)(".",%y):=(%x); (regular expression manipulation)</dd>
+<dd><strike>("Mr.",ABB):=("Mister");</strike> (this is not a N-rule, because it involves a non-string element, i.e., ABB)</dd></dl></li>
+<li>Regular expressions may only be used in the left side.<br />
+<dl><dd>("/[A-Z]/",%x)(".",%y):=(%x);</dd>
+<dd><strike>("/[A-Z]/")("."):=("/[A-Z]/");</strike></dd></dl></li>
+<li>N-rules are recursive: rules will apply while conditions are true:
+<dl><dd>The rule "(" "):=("-");" will transform "a b c d e" into "a-b-c-d-e" (and not only in "a-b c d e")</dd></dl></li>
+<li>The symbol <b>^</b> is used for negation and may be used to prevent infinite loops:
+<dl><dd>The rule (".",%x):=(%x)(+STAIL,%y); contains a loop, and will lead to (".")(STAIL)(STAIL)(STAIL)(STAIL).... In order to prevent that, we have to indicate that STAIL must be added if it does not exist yet, i.e.: (".",%x)(^STAIL,%z):=(%x)(+STAIL,%y)(%z);</dd></dl></li>
+<li>In the right side, changes may be expressed by the right side of <a href="/wiki/A-rule" title="A-rule">A-rules</a> inside each form. The default is replacement.
+<dl><dd>The rule "("a")(" ")("/[aeiou].+/"):=("an")( )( );" could also be expressed as "("a")(" ")("/[aeiou].*/"):=(0&gt;"n")( )( );", i.e., the change from "a" to "an" could be expressed either by "an" or 0&gt;"n".</dd></dl></li>
+<li>Rules apply only if all conditions are true.
+<dl><dd>The rule "("a")(" ")("/[aeiou].+/"):=("an")( )( );" will apply only in case of "a" before a blank and a node starting with "a", "e", "i", "o" or "u".</dd></dl></li>
+<li>Nodes may be deleted through replacement by zero:
+<dl><dd>(" "):=; (deletes all the blank spaces)</dd></dl></li>
+<li>Nodes in the left side that are not coindexed to nodes in the right side are deleted (see <a href="/wiki/Indexation" class="mw-redirect" title="Indexation">Indexation</a>)
+<dl><dd><strike>(" ")("don't")(" "):=("do not");</strike> provides "I don't know"&gt;"Ido notknow"</dd>
+<dd>(" ")("don't")(" "):=()("do not")(); provides "I don't know"&gt;I do not know"</dd></dl></li>
+<li>N-rules manipulate any strings meeting the conditions
+<dl><dd><strike>("art"):=("article");</strike> provides "<b>art</b> 20"&gt;"<b>article</b> 20", but also "My name is B<b>art</b>"&gt;"My name is B<b>article</b>", "I love S<b>art</b>re"&gt;"I love S<b>article</b>re"</dd>
+<dd>({SHEAD|" "})("art")({STAIL|" "}):=()("article")(); (i.e., replace "art" by "article" if inbetween blank spaces or sentence boundaries</dd></dl></li></ol>
+<div class="mw-heading mw-heading2"><h2 id="Indexes">Indexes</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=N-rule&amp;veaction=edit&amp;section=9" title="Edit section: Indexes" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=N-rule&amp;action=edit&amp;section=9" title="Edit section&#39;s source code: Indexes">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>see <a href="/wiki/Indexation" class="mw-redirect" title="Indexation">Indexation</a>
+</p>
+<div class="mw-heading mw-heading2"><h2 id="Common_mistakes">Common mistakes</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=N-rule&amp;veaction=edit&amp;section=10" title="Edit section: Common mistakes" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=N-rule&amp;action=edit&amp;section=10" title="Edit section&#39;s source code: Common mistakes">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<ul><li><strike>"Mr":="Mister";</strike>
+<ul><li>Conditions and actions must always come between parentheses: ("Mr"):=("Mister");</li></ul></li>
+<li><strike>(Mr):=(Mister);</strike>
+<ul><li>Strings must come between quotes (inside the parentheses): ("Mr"):=("Mister");</li></ul></li>
+<li><strike>("Mr"):=("Mister")</strike>
+<ul><li>Rules must end in semicolon: ("Mr"):=("Mister");</li></ul></li>
+<li><strike>("a")(" ")("/[aeiou].*/"):=("an");</strike>
+<ul><li>"a adjective"&gt;"a": the blank and the following form are deleted because they are not present at the right side</li></ul></li>
+<li><strike>("de")(" ")("/[aeiou].*/"):=("d'")("/[aeiou].*/");</strike>
+<ul><li>"de avoir"&gt;"d' ": coindexation is based on ordering and not on features. The third form is deleted because it's not present at the right side; the second form, which is BLK, receives the feature VOW;</li></ul></li></ul>
+<div class="mw-heading mw-heading2"><h2 id="N-rules_and_L-rules">N-rules and L-rules</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=N-rule&amp;veaction=edit&amp;section=11" title="Edit section: N-rules and L-rules" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=N-rule&amp;action=edit&amp;section=11" title="Edit section&#39;s source code: N-rules and L-rules">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p><a class="mw-selflink selflink">N-rules</a> and <a href="/wiki/L-rule" title="L-rule">L-rules</a> are basically the same. The only difference is that L-rules are part of the Transformation Grammar and, therefore, applies <b>after</b> <a href="/wiki/Tokenization" title="Tokenization">tokenization</a>, whereas N-rules constitute the N-grammar, and apply <b>before</b> tokenization.  This means that N-rules may only deal with strings or regular expressions, whereas L-rules may also deal with other elements (such as features and UW's):
+</p>
+<ul><li>L-rule
+<ul><li>("I")(BLK)("am"):=("I'm"); (I am&gt;I'm)</li>
+<li>("a",PRE)(BLK)("a",ART):=("à",+ART,+CTC); (a a&gt;à)</li>
+<li>("de",PRE)(BLK)("le",ART):=("du",+ART,+CTC); (de le&gt;du)</li></ul></li>
+<li>N-rule
+<ul><li>("I")(" ")("am"):=("I'm"); (replace "I am" by "I'm")</li></ul></li></ul>
+<p>Note, in the above, that we may use dictionary features (such as BLK, PRE, ART) in L-rules, but we cannot use any dictionary feature in N-rules. The only features available in N-rules are the system-defined features, such as SHEAD (beginning of the sentence) and STAIL (end of the sentence).
+</p>
+<div class="mw-references-wrap"><ol class="references">
+<li id="cite_note-1"><span class="mw-cite-backlink"><a href="#cite_ref-1">↑</a></span> <span class="reference-text">This rule contains an eternal loop and it is used here only to illustrate the creation of nodes. The correct rule would be (".",%x)(^STAIL,%z):=(%x)(+STAIL,%y)(%z);</span>
+</li>
+</ol></div>
+<!-- 
+NewPP limit report
+Cached time: 20260909224817
+Cache expiry: 86400
+Reduced expiry: false
+Complications: [show‐toc]
+CPU time usage: 0.010 seconds
+Real time usage: 0.011 seconds
+Preprocessor visited node count: 72/1000000
+Post‐expand include size: 929/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/100
+Expensive parser function count: 0/100
+Unstrip recursion depth: 0/20
+Unstrip post‐expand size: 236/5000000 bytes
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    1.318      1 Difference_between_N-rules_and_L-rules
+100.00%    1.318      1 -total
+-->
+
+<!-- Saved in parser cache with key u965818192_SLvgQ-l8z2_:pcache:753:|#|:idhash:canonical and timestamp 20260909224817 and revision id 15703. Rendering was triggered because: page-view
+ -->
+</div>

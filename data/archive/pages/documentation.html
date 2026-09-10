@@ -1,0 +1,320 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<title>UNL Archive</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/base/jquery-ui.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
+<style>
+    /* Override jQuery UI font settings */
+    .ui-widget, .ui-widget input, .ui-widget select, .ui-widget textarea, .ui-widget button {
+        font-family: inherit !important;
+        font-size: inherit !important;
+    }
+</style>
+<link rel="stylesheet" type="text/css" media="all" href="default.css" />
+</head>
+
+
+
+
+<body>
+<iframe name="I1" height="40" width="100%" scrolling="no" align="top" border="0" frameborder="0" src="unlwebbar/">
+Your browser does not support inline frames or is currently configured not to display inline frames.
+</iframe>
+
+
+   <div id="header" class="text-center py-10">
+    <img src="shared/images/unl_archive.png" alt="UNL Archive Logo" style="max-width:400px; width:100%; height:auto;">
+    
+    <hr />
+</div>
+
+<style>
+    .menu li ul li {
+        margin-top: 8px;
+        margin-bottom: 8px;
+    }
+</style>
+<!-- Menu superior -->
+
+<style>
+    /* Reset básico */
+    .menu,
+    .menu ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .menu {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        background: #fff;
+        position: relative;
+    }
+
+    .menu>li {
+        position: relative;
+    }
+
+    .menu>li>a {
+        display: block;
+        padding: 10px 18px;
+        text-decoration: none;
+        color: #222;
+        font-weight: bold;
+        transition: background 0.2s;
+    }
+
+    .menu>li:hover>a,
+    .menu>li:focus-within>a {
+        background: #eee;
+    }
+
+    .menu li ul {
+        display: none;
+        position: absolute;
+        left: 0;
+        top: 100%;
+        min-width: 180px;
+        background: #fff;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        z-index: 10;
+    }
+
+    .menu li:hover>ul,
+    .menu li:focus-within>ul {
+        display: block;
+    }
+
+    .menu li ul li a {
+        padding: 8px 16px;
+        color: #222;
+        font-weight: strong;
+        white-space: nowrap;
+    }
+
+    .menu li ul li a:hover {
+        background: #f5f5f5;
+    }
+
+    /* Hamburger */
+    .menu-toggle {
+        display: none;
+        background: none;
+        border: none;
+        font-size: 2em;
+        margin: 10px;
+        cursor: pointer;
+    }
+
+    @media (max-width: 900px) {
+        .menu {
+            flex-direction: column;
+            align-items: stretch;
+            display: none;
+            width: 100%;
+        }
+
+        .menu.open {
+            display: flex;
+        }
+
+        .menu>li {
+            width: 100%;
+        }
+
+        .menu>li>a {
+            padding: 14px 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .menu li ul {
+            position: static;
+            box-shadow: none;
+            min-width: 0;
+        }
+
+        .menu li ul {
+            display: none;
+        }
+
+        .menu li.open>ul {
+            display: block;
+        }
+
+        .menu-toggle {
+            display: block;
+        }
+    }
+</style>
+
+<button class="menu-toggle" aria-label="Open menu" onclick="document.querySelector('.menu').classList.toggle('open')">&#9776;</button>
+<ul class="menu">
+    <li><a href="index.php?unlweb=home">HOME</a></li>
+    <li><a href="index.php?unlweb=unlarium" title="Language resources">LINGWARE</a></li>
+    <li><a href="index.php?unlweb=dev" title="Computer resources">SOFTWARE</a></li>
+    <li><a href="index.php?unlweb=education" title="Educational resources">EDUCATION</a></li>
+    <li><a href="index.php?unlweb=documentation" title="Documentation resources">DOCUMENTATION</a></li>
+    <li><a href="index.php?unlweb=unl" title="UNL resources">UNL</a></li>
+    <li><a href="index.php?unlweb=undl" title="UNDL resources">UNDL</a></li>
+
+</ul>
+
+<script>
+    // Mobile submenu toggle with navigation on second click 
+    document.querySelectorAll('.menu > li').forEach(function(li) {
+        var link = li.querySelector('a');
+        if (li.querySelector('ul')) {
+            li.dataset.opened = "false";
+            link.addEventListener('click', function(e) {
+                if (window.innerWidth <= 900) {
+                    if (li.dataset.opened === "false") {
+                        e.preventDefault();
+                        li.classList.add('open');
+                        li.dataset.opened = "true";
+                    } else {
+                        // allow navigation
+                        li.dataset.opened = "false";
+                    }
+                }
+            });
+            // Close submenu when clicking outside
+            document.addEventListener('click', function(event) {
+                if (window.innerWidth <= 900) {
+                    if (!li.contains(event.target)) {
+                        li.classList.remove('open');
+                        li.dataset.opened = "false";
+                    }
+                }
+            });
+        }
+    });
+</script>
+
+
+<hr />
+<div class="center"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/base/jquery-ui.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
+
+<div id="center">
+
+
+
+
+    <div style="display: flex; align-items: flex-start; gap: 30px;">
+        <div>
+            <h1>Documentation</h1>
+            <p>
+    The UNL Documentation presents the foundational materials and guidelines produced during the development of the Universal Networking Language. It includes the official <strong>UNL Specifications</strong>, which define the structure of UNL sentences, Universal Words, relations, and attributes; the <strong>UNDL Foundation Recommendations</strong>, which provided standards for creating and managing lexical, grammatical, and knowledge-base resources; and the <strong>UNL<sup>wiki</sup></strong>, an archived repository of linguistic resources and documentation. Together, these resources offer a comprehensive view of UNL as a knowledge representation framework and its historical implementation, enabling researchers, linguists, and developers to explore the system’s design, applications, and accumulated data even after the project’s conclusion.
+</p>
+
+        </div>
+    </div>
+
+    <h2>UNL Specifications</h2>
+    <p>The UNL Specs define the structure of the UNL. They specify the structure of a UNL document, the syntax of a UNL sentence and of Universal Words, the set of relations and attributes and all the information concerning UNL as a formalism. </p>
+
+    <div class="unlarium-accordion">
+
+        <h4>Current Specs (UNDL Foundation)</h4>
+        <ul>
+            <li><a href="docs/2010.html">Version 2010</a></li>
+        </ul>
+
+        <h4>Past Specs (UNL Centre)</h4>
+        <ul>
+            <li><a href="docs/Spec2005.pdf">Version 2005</a> (June, 2005)</li>
+            <li><a href="docs/Spec33.pdf">Version 3.3</a> (December, 2004) </li>
+            <li><a href="docs/Spec32.pdf">Version 3.2</a> (July, 2003) </li>
+            <li><a href="docs/Spec31.pdf">Version 3.1</a> (May, 2002) </li>
+            <li><a href="docs/Spec30.pdf">Version 3.0</a> (November, 2001) </li>
+            <li><a href="docs/Gift.pdf">Uchida, H.; Zhu, M.; Della Senta, T. (1999). A gift for a millenium. Tokyo: IAS/UNU. </li>
+            <li><a href="docs/Spec20.pdf">Version 2.0</a> (July, 1999) </li>
+            <li><a href="docs/Spec15.pdf">Version 1.5</a> (May, 1998) </li>
+            <li><a href="docs/Spec10.pdf">Version 1.0</a> (April, 1998) </li>
+            <li><a href="docs/Spec97.pdf">UNL. (1996). Universal Networking Language: an electronic language for communication, understanding and collaboration. Tokyo: UNL Center.</a> </li>
+        </ul>
+</div>
+<br />
+
+    <h2>UNDL Foundation Recommendations</h2>
+
+    <p>The UNDLF Recommendations were created by the UNDL Foundation (UNDLF) to standardize the way natural language resources—such as dictionaries, grammars, and knowledge bases—are built across the UNL R&D network. They are not a core part of the UNL Specifications, since they deal mainly with software architecture, but they are required for anyone using UNDL Foundation tools such as IAN, SEAN, EUGENE, NORMA, or UNL Editor. Other tools may use different formats for dictionaries or knowledge bases, but UNDL Foundation tools only work with resources that follow these standards. These formats are also the default export options from UNLarium. The Recommendations are available at the UNLwiki.</p>
+        
+    They comprise: </p>
+    <ul>
+        <li><a href="https://unlarchive.org/wiki/Tagset" title="Tagset">UNDLF Tagset</a>, a harmonized system for representing linguistic constants; </li>
+        <li><a href="https://unlarchive.org/wiki/Dictionary" title="Dictionary Specs">UNDLF Dictionary Specs</a>, which state the syntax of dictionary entries; </li>
+        <li><a href="https://unlarchive.org/wiki/Grammar" title="Grammar Specs">UNDLF Grammar Specs,</a> which state the syntax of grammar rules;. </li>
+        <li><a href="https://unlarchive.org/wiki/UNL_Knowledge_Base" title="KB Specs">UNDLF KB Specs</a>, which state the syntax of the UNL KB,t the UNL Ontology and the UNL Memory. </li>
+    </ul>
+
+    <h2>The UNL<sup>wiki</sup></h2><br />
+    <div style="display:flex; align-items:center;">
+        <a href="/wiki"><img src="shared/images/unlwiki.jpg" style="float:right; margin-right:20px; width:200px; height:auto;" /></a>
+       <p>
+    The <strong>UNL<sup>wiki</sup></strong> served as a central online repository for the documentation of the Universal Networking Language, hosting reference materials developed throughout the life of the UNL Project. It provided information about the formalism, dictionaries, grammar specifications, knowledge bases. In this archived version, the UNL<sup>wiki</sup> preserves only the visualization and download features: users can explore and retrieve the accumulated data, but editing and updating are no longer available. The UNL<sup>wiki</sup> remains an important historical record, offering insight into the structure, content, and evolution of UNL as a multilingual knowledge representation system.
+</p>
+
+        
+
+
+    </div>
+    
+
+
+
+    <script>
+        $(function() {
+            $("#unlarium-accordion").accordion({
+                collapsible: true,
+                heightStyle: "content",
+                active: false
+            });
+            $(".unlarium-accordion").accordion({
+                collapsible: true,
+                heightStyle: "content",
+                active: false
+            });
+        });
+    </script>
+
+    <div style="text-align:center; margin-top:30px;">
+        <button class="btn"
+            onclick="window.location.href='index.php?unlweb=home'"
+
+            onmouseover="this.style.backgroundColor='#005bb5'"
+            onmouseout="this.style.backgroundColor='#0073e6'">
+            ⬅ Back to Home
+        </button>
+
+        <button class="btn"
+            onclick="window.location.href='/wiki'"
+
+            onmouseover="this.style.backgroundColor='#005bb5'"
+            onmouseout="this.style.backgroundColor='#0073e6'">
+            Enter the UNLwiki ➡
+        </button>
+    </div>
+    <br />
+</div></div> 
+
+<hr />
+<div id="footer" style="max-width:600px; margin:0 auto; text-align:center; font-size:0.7em;">
+    <div style="display: flex; justify-content: center; align-items: center;">
+            <a href="index.php?unlweb=terms" style="margin-right: 10px;">Terms and Conditions</a> |
+            <a href="index.php?unlweb=about" style="margin-left: 10px; margin-right: 10px;">About UNL Archive</a> |
+            <a href="index.php?unlweb=contact" style="margin-left: 10px;">Contact</a>
+    </div>
+</div>
+<br /><br />
+</body>
+</html>

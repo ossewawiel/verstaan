@@ -1,0 +1,75 @@
+<div class="mw-content-ltr mw-parser-output" lang="en" dir="ltr"><p>Linear Sentence Structures (LSS) are sequences of part-of-speech tags. 
+</p>
+<div id="toc" class="toc" role="navigation" aria-labelledby="mw-toc-heading"><input type="checkbox" role="button" id="toctogglecheckbox" class="toctogglecheckbox" style="display:none" /><div class="toctitle" lang="en" dir="ltr"><h2 id="mw-toc-heading">Contents</h2><span class="toctogglespan"><label class="toctogglelabel" for="toctogglecheckbox"></label></span></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Methodology"><span class="tocnumber">1</span> <span class="toctext">Methodology</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#Categories"><span class="tocnumber">2</span> <span class="toctext">Categories</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="#Ambiguities"><span class="tocnumber">3</span> <span class="toctext">Ambiguities</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="#Example"><span class="tocnumber">4</span> <span class="toctext">Example</span></a></li>
+<li class="toclevel-1 tocsection-5"><a href="#Goal"><span class="tocnumber">5</span> <span class="toctext">Goal</span></a></li>
+</ul>
+</div>
+
+<div class="mw-heading mw-heading2"><h2 id="Methodology">Methodology</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=LSS&amp;veaction=edit&amp;section=1" title="Edit section: Methodology" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=LSS&amp;action=edit&amp;section=1" title="Edit section&#39;s source code: Methodology">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>LSS's are extracted from the <a href="/wiki/Tokenization" title="Tokenization">tokenization</a> of a corpus using the enumerative dictionary, i.e., the list of the word forms available for a given language. As the enumerative dictionary may contain multiword expressions, the length of the LSS may not correspond to the number of isolated words in the sentence, but to the number of dictionary entries resulting from the application of the principle of the longest first. Additionally, as the tokenization does not perform any lexical disambiguation, the LSS contain all possible lexical categories of each of the components. The punctuation of the original sentence is preserved.
+</p>
+<div class="mw-heading mw-heading2"><h2 id="Categories">Categories</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=LSS&amp;veaction=edit&amp;section=2" title="Edit section: Categories" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=LSS&amp;action=edit&amp;section=2" title="Edit section&#39;s source code: Categories">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>LSS uses the values of the attribute <a href="/wiki/LEX" class="mw-redirect" title="LEX">Lexical Category (LEX)</a>:
+</p>
+<ul><li>A (adverb)</li>
+<li>J (adjective)</li>
+<li>N (noun)</li>
+<li>V (verb)</li>
+<li>D (determiner)</li></ul>
+<p>etc.<br />
+The symbol # is used for words not found in the dictionary.
+The punctuation is preserved.
+</p>
+<div class="mw-heading mw-heading2"><h2 id="Ambiguities">Ambiguities</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=LSS&amp;veaction=edit&amp;section=3" title="Edit section: Ambiguities" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=LSS&amp;action=edit&amp;section=3" title="Edit section&#39;s source code: Ambiguities">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>LSS brings all possible categories of a given string. Ambiguities must be represented between {} and isolated by |. They can be local (affecting the whole sentence) or local (affecting only part of it).
+</p>
+<ul><li>{A|N} = a string that can be an adverb and a noun</li>
+<li>{A|J|N} = a string that can be an adverb, an adjective and a noun</li>
+<li>{N|V} = a string that can be a noun and a verb</li></ul>
+<p>etc.
+</p>
+<div class="mw-heading mw-heading2"><h2 id="Example">Example</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=LSS&amp;veaction=edit&amp;section=4" title="Edit section: Example" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=LSS&amp;action=edit&amp;section=4" title="Edit section&#39;s source code: Example">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<pre>SENTENCE: The book is on the table.<br />
+LSS: D {N|V} {V|I} {P|A|N} D {N|V}.
+</pre>
+<p>Because:
+</p>
+<ul><li>"the" is a determiner</li>
+<li>"book" may be a verb or a noun</li>
+<li>"is" may be a verb or an auxiliary</li>
+<li>"on" may be a preposition, an adverb or a noun</li>
+<li>"table" may be a noun or a verb</li></ul>
+<p>Note that the punctuation (blank spaces and punctuation signs) is preserved in the LSS.
+</p>
+<div class="mw-heading mw-heading2"><h2 id="Goal">Goal</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=LSS&amp;veaction=edit&amp;section=5" title="Edit section: Goal" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=LSS&amp;action=edit&amp;section=5" title="Edit section&#39;s source code: Goal">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>The main goal of the LSS is to induce disambiguation rules.
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20260910092518
+Cache expiry: 86400
+Reduced expiry: false
+Complications: [show‐toc]
+CPU time usage: 0.005 seconds
+Real time usage: 0.005 seconds
+Preprocessor visited node count: 19/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/100
+Expensive parser function count: 0/100
+Unstrip recursion depth: 0/20
+Unstrip post‐expand size: 0/5000000 bytes
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    0.000      1 -total
+-->
+
+<!-- Saved in parser cache with key u965818192_SLvgQ-l8z2_:pcache:745:|#|:idhash:canonical and timestamp 20260910092518 and revision id 15645. Rendering was triggered because: page-view
+ -->
+</div>

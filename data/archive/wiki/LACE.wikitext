@@ -1,0 +1,9 @@
+The main goal of the project LACE (Language Acquisition from Comparable tExts) is to build language modules out of data automatically extracted from comparable corpora. The results are expected to be incorporated in the architecture of UNL-based systems as supplementary resources for natural language disambiguation, both in analysis and generation, and will be used for improving the performance of applications in machine translation, summarization, information retrieval and semantic reasoning.
+
+== Motivation ==
+UNL-based systems have been built upon lexical resources provided in a rather manual basis, mainly because the current technology on word sense disambiguation has not achieved yet the maturity level that would dispense the treatment by humans. The increasing availability of natural language data in digital format encourages, however, the exploration of strategies for extracting supplementary lexical information from comparable corpora, which could extend the coverage of the current resources and, in the end, may provide a less expensive alternative for populating lexical databases in the UNL framework.
+
+The project LACE aims at compiling, replicating and extending techniques that have been widely used in statistical natural language processing, and evaluating their results in UNL-based applications. As a long term enterprise, the Project has been divided in three subsidiary projects, devoted to three different types of corpus and involving, therefore, three different extraction strategies:
+*LACE<sup>pc</sup> - To extract data from parallel corpora (proceedings from the United Nations and from the European Parliament);
+*[[LACEhpc|LACE<sup>hpc</sup>]] - To extract data from comparable semi-parallel corpora (Wikipedia) using high-performance computing; and
+*LACE<sup>npc</sup> - To extract data from comparable non-parallel corpora (newspapers) using linguistically-motivated models of language automatic acquisition.

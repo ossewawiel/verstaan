@@ -1,0 +1,396 @@
+'''Universal Attributes''' are arcs linking a node to itself. In opposition to [[Universal Relations]], they correspond to one-place predicates, i.e., functions that take a single argument. In UNL, attributes have been normally used to represent information conveyed by natural language grammatical categories (such as tense, mood, aspect, number, etc). The set of attributes, which is claimed to be universal, is defined in the [[Specs|UNL Specs]] and is not open to frequent additions.
+
+== Syntax ==
+
+The syntax of attributes is defined as follows:
+
+ <nowiki><attribute>      ::= "@"<attribute name></nowiki>
+ <nowiki><attribute name> ::= <character>+</nowiki>
+ <nowiki><character>      ::= {“a”,...,“z”,“_”}</nowiki>
+
+where:<br />
+< > 	variable<br />
+" "	terminal symbol<br />
+<nowiki>::=</nowiki>... is defined as ...<br />
+{ }	disjunction ("or")<br />
+<nowiki>+</nowiki>       to be used one or more times<br />
+...	to be repeated more than 0 times<br />
+
+Attribute names are always lower case words or expressions. Normally, English words ("past", "will") or mnemonic abbreviations ("def", "pl") are used for attribute labelling. No blank space is allowed inside an attribute name.
+
+== Semantics ==
+
+Attributes are annotations made to nodes or hypernodes of a UNL hypergraph. They denote the circumstances under which these nodes (or hypernodes) are used. 
+
+Attributes may convey three different kinds of information: 
+*The information on the role of the node in the UNL graph (as in the case for '@entry', that indicates the main (starting) node of a UNL directed graph);
+*The information conveyed by bound morphemes and closed classes, such as affixes (gender, number, tense, aspect, mood, voice, etc), determiners (articles and demonstratives), adpositions (prepositions, postpositions and circumpositions), conjunctions, auxiliary and quasi-auxiliary verbs (auxiliaries, modals, coverbs, preverbs) and degree adverbs (specifiers). 
+*The information on the (external) context of the utterance, i.e., non-verbal elements of communication, such as prosody, sentence and text structure, politeness, schemes, social deixis and speech acts.
+
+== Set of attributes ==
+
+ [http://www.unlweb.net.br/unlarium/dictionary/export_attributes.php List of attributes in alphabetical order]
+
+{{#tree:id=tagset|openlevels=0|root=att|
+*[[animacy]] (ANIA)
+**@person
+**@thing
+*[[aspect]] (ASPA)
+**@causative: causative
+**@continuative: continuous
+**@experiential: experience
+**@habitual: habitual
+**@imperfective: uncompleted
+**@inceptive: beginning
+**@inchoative: change of state
+**@iterative: repetition
+**@perfect: perfect
+**@perfective: completed
+**@permissive: permissive
+**@persistent: persistent
+**@progressive: ongoing
+**@prospective: imminent
+**@result: result
+**@terminative: cessation
+*[[degree]] (DEGA)
+**@almost: approximative
+**@also: repetitive
+**positive
+***@again: iterative
+***@emphasis: emphasis
+***@enough: sufficiently (enough)
+***@extra: excessively (too) 
+***@minus: downtoned (a little)
+***@plus: intensified (very)
+**comparative
+***@more: comparative of superiority
+***@less: comparative of inferiority
+***@equal: comparative of equality
+**superlative
+***@most: superlative of superiority
+***@least: superlative of inferiority
+*[[emotion]]s (FEEL)
+**@anger
+**@attention
+**@consent
+**@contentment
+**@disagreement
+**@discontentment
+**@dissent
+**@hesitation
+**@pain
+**@relief
+**@surprise
+**@weariness 
+*[[figure of speech]] (FIGA)
+**Schemes
+***@brachylogia: omission of conjunctions between a series of words 
+***@chiasmus: reversal of grammatical structures in successive clauses
+***@climax: arrangement of words in order of increasing importance
+***@consonance: repetition of consonant sounds without the repetition of the vowel sounds
+***@ellipsis: omission of words
+***@epanalepsis: repetition of the initial word or words of a clause or sentence at the end of the clause or sentence
+***@interruption: insertion of a clause or sentence in a place where it interrupts the natural flow of the sentence
+***@parallelism: use of similar structures in two or more clauses
+***@pleonasm: Use of superfluous or redundant words
+***@polyptoton: repetition of words derived from the same root
+***@polysyndeton: repetition of conjunctions
+***@symploce: combination of anaphora and epistrophe
+**Tropes
+***@anthropomorphism: Ascribing human characteristics to something that is not human, such as an animal or a god (see zoomorphism)
+***@antiphrasis: Word or words used contradictory to their usual meaning, often with irony
+***@antonomasia: Substitution of a phrase for a proper name or vice versa
+***@catachresis: use an existing word to denote something that has no name in the current language
+***@double_negative: Grammar construction that can be used as an expression and it is the repetition of negative words
+***@dysphemism: Substitution of a harsher, more offensive, or more disagreeable term for another. Opposite of euphemism
+***@epanorthosis: Immediate and emphatic self-correction, often following a slip of the tongue
+***@euphemism: Substitution of a less offensive or more agreeable term for another
+***@hyperbole: Use of exaggerated terms for emphasis
+***@irony: Use of word in a way that conveys a meaning opposite to its usual meaning
+***@metaphor: Stating one entity is another for the purpose of comparing them in quality
+***@metonymy: Substitution of a word to suggest what is really meant
+***@onomatopoeia: Words that sound like their meaning
+***@oxymoron: Using two terms together, that normally contradict each other
+***@paradox: Use of apparently contradictory ideas to point out some underlying truth
+***@paronomasia: A form of pun, in which words similar in sound but with different meanings are used
+***@periphrasis: Using several words instead of few
+***@repetition: Repeated usage of word(s)/group of words in the same sentence to create a poetic/rhythmic effect
+***@synecdoche: Form of metonymy, in which a part stands for the whole
+***@synesthesia: Description of one kind of sense impression by using words that normally describe another.
+***@zoomorphism: Applying animal characteristics to humans or gods 
+*[[gender]] (GENA)
+**@female
+**@male
+**@neutral
+*[[information structure]] (ISTA)
+**@comment: what is being said about the topic
+**@focus: information that is contrary to the presuppositions of the interlocutor
+**@topic: what is being talked about
+*[[lexical category]] (LEXA)
+**@adjective
+**@adverb
+**@noun
+**@verb
+*[[manner]] (HOW)
+**@according_to
+**@against
+**@although
+**@and
+**@as
+**@as.@if
+**@as_far_as
+**@as_of
+**@as_per
+**@as_regards
+**@as_well_as
+**@barring
+**@because
+**@because_of
+**@besides
+**@but
+**@by
+**@by_means_of
+**@concerning
+**@despite
+**@due_to
+**@even.@if
+**@except
+**@except.@if
+**@except_for
+**@excluding
+**@failing
+**@for
+**@given
+**@if
+**@if.@only
+**@in_accordance_with
+**@in_addition_to
+**@in_case
+**@in_case_of
+**@in_favor_of
+**@in_place_of
+**@in_spite_of
+**@including
+**@instead_of
+**@like
+**@notwithstanding
+**@off
+**@on_account_of
+**@on_behalf_of
+**@or
+**@owing_to
+**@pace
+**@per
+**@pursuant_to
+**@qua
+**@regarding
+**@regardless_of
+**@save
+**@so
+**@than
+**@thanks_to
+**@that_of
+**@unless
+**@unlike
+**@versus
+**@with
+**@with_regard_to
+**@with_relation_to
+**@with_respect_to
+**@without
+**@worth 
+*[[modality]] (MODA)
+**@ability
+**@advice
+**@agreement
+**@assertion
+**@assumption
+**@belief
+**@command
+**@conclusion
+**@condition
+**@confirmation
+**@consequence
+**@conviction
+**@decision
+**@deduction
+**@desire
+**@determination
+**@doubt
+**@exclamation
+**@exhortation
+**@expectation
+**@fear
+**@hope
+**@hypothesis
+**@intention
+**@interrogation
+**@invitation
+**@judgement
+**@narrative
+**@necessity
+**@obligation
+**@opinion
+**@permission
+**@possibility
+**@prediction
+**@presumption
+**@probability
+**@prohibition
+**@promise
+**@regret
+**@request
+**@speculation
+**@suggestion
+**@threat
+**@warning
+*[[nominal attributes]] (NOUA)
+**@about
+**@round
+**@of
+*[[person]] (PERA)
+**@1 (first person: speaker)
+**@2 (second person: addressee)
+**@3 (third person)
+*[[place]] (WHERE)
+**location
+***@above
+***@among
+***@around
+***@at
+***@back
+***@behind
+***@below
+***@beside
+***@between
+***@beyond
+***@bottom
+***@front
+***@in
+***@inside
+***@left
+***@on
+***@opposite
+***@outside
+***@over
+***@right
+***@side
+***@top
+***@under
+***@within
+**position
+***@contact
+***@far
+***@near
+**direction
+***@across
+***@along
+***@clockwise
+***@down
+***@from
+***@through
+***@throughout
+***@to
+***@towards
+***@up
+*[[polarity]] (POLA)
+**@yes (affirmative)
+**@not (negative)
+**@maybe (dubitative)
+*[[quantification]] (QUAA)
+**@any (any) (existential quantifier)
+**@all (all) (universal quantifier)
+**@entire (entire)
+**@generic (no quantification)
+**@half (half)
+**@majority (a major part)
+**@minority (a minor part)
+**@no (none)
+**@part (part)
+**@pl (plural)
+***@dual
+***@trial
+***@quadrual
+***@paucal
+***@multal
+**@singular (default)
+**@times (multiplicative)
+**@tuple (collective)
+**@unit (unit)
+*[[register]] (REGA)
+**@archaic
+**@colloquial
+**@dialect
+**@jargon
+**@literary
+**@pejorative
+**@slang
+**@taboo
+*[[social deixis]] (SODA)
+**@equivalent
+**@familiar
+**@inferior
+**@intimate
+**@polite
+**@reverential
+**@superior
+*[[specification]] (WHICH)
+**@also (also)
+**@circa
+**@def (definite)
+***@both (both)
+***@distal (far from the speaker)
+***@each (each)
+***@either (either)
+***@medial (near the addressee)
+***@other (other)
+***@own (own)
+***@proximal (near the speaker)
+***@same (same)
+***@such (such)
+**@even
+**@indef (indefinite)
+***@certain (certain)
+***@wh
+**@neither
+**@only
+**@ordinal (ordinal)
+*syntactic structures (SYNA)
+**conventions
+***@angle_bracket
+***@brace
+***@double_parenthesis
+***@double_quote
+***@parenthesis
+***@single_quote
+***@square_bracket
+**@entry (sentence head)
+**@relative (relative clause head)
+**@speech (direct speech)
+**@title (title)
+**@vocative (vocative)
+*[[time]] (WHEN)
+**absolute tense
+***@past: at a time before the moment of utterance
+***@present: at the moment of utterance
+***@future: at a time after the moment of utterance
+***@recent: close to the moment of utterance
+***@remote: remote from the moment of utterance
+**relative tense
+***@anterior: before some other time other than the time of utterance
+***@posterior: after some other time other than the time of utterance
+**other
+***@after
+***@before
+***@during
+***@following
+***@prior_to
+***@since
+***@subsequent_to
+***@until
+*[[voice]] (VOIA)
+**@active: He built this house in 1895
+**@passive: This house was built in 1895.
+**@reflexive: He killed himself.
+**@reciprocal: They killed each other.
+}}

@@ -1,0 +1,67 @@
+<div class="mw-content-ltr mw-parser-output" lang="en" dir="ltr"><p><b>Periphrasis</b> is a device by which a grammatical category or grammatical relationship is expressed by a free morpheme (such as an auxiliary verb), instead of being shown by inflection or derivation. 
+</p>
+<div class="mw-heading mw-heading2"><h2 id="Syntax">Syntax</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Periphrasis&amp;veaction=edit&amp;section=1" title="Edit section: Syntax" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Periphrasis&amp;action=edit&amp;section=1" title="Edit section&#39;s source code: Syntax">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>In the UNL<sup>arium</sup> framework, periphrases always lead to the creation of syntactic relations, which are expressed through <a href="/wiki/S-rule" title="S-rule">S-rules</a> of the type create, as follows:
+</p>
+<pre>&lt;RELATION&gt;&#160;:= +&lt;RELATION&gt;;
+</pre>
+<p>Where:<br />
+</p>
+<ul><li>&lt;RELATION&gt;, at the left side, is a relation containing the node that brings the value of the attribute to be realised by complex grammatical structures; and</li>
+<li>&lt;RELATION&gt;, at the right side, is the <a href="/wiki/Syntactic_roles" class="mw-redirect" title="Syntactic roles">syntactic relation</a> to be created, containing the &lt;HEAD&gt;, in case of head-only relations (VH, NH, JH, PH, IH, CH, AH, DH), or the &lt;HEAD&gt; and &lt;ARGUMENT&gt; (i.e, complement, adjunct or specifier), in case of binary relations (VA, VC, VS, VB, NA, NC, NS, etc), one of which co-indexed with the reference node in the left side.</li></ul>
+<div class="mw-heading mw-heading2"><h2 id="Examples">Examples</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Periphrasis&amp;veaction=edit&amp;section=2" title="Edit section: Examples" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Periphrasis&amp;action=edit&amp;section=2" title="Edit section&#39;s source code: Examples">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<ul><li>dual: <i>book</i> &gt; <i>two books</i>
+<ul><li>NH(%nh,DUA):=+NS(%nh,+PLR;DH("two"));</li>
+<li>The determiner phrase "two" is generated as the specifier of the head, which receives the feature PLR (plural).</li></ul></li>
+<li>future: <i>do</i> &gt; <i>will do</i>
+<ul><li>VH(%vh,FUT):=+IC([will];%vh,+INF);</li>
+<li>The head of the verbal phrase receives the feature INF (infinitive) and becomes the complement of an inflectional phrase headed by the lemma "will" if it has the feature FUT (future)</li></ul></li>
+<li>present progressive: <i>do</i> &gt; <i>is doing</i>
+<ul><li>VH(%vh,PRS,PGS):=+IC([be],+PRS;%vh,+GER);</li>
+<li>The head of the verbal phrase receives the feature GER (gerund) and becomes the complement of an inflectional phrase headed by the lemma "be" if it has the features PRS and PGS (present and progressive)</li></ul></li>
+<li>present perfect: <i>do</i> &gt; <i>have done</i>
+<ul><li>VH(%vh,PRS,PFC):=+IC([have],+PRS;%vh,+PTP);</li>
+<li>The head of the verbal phrase receives the feature PTP (past participle) and becomes the complement of an inflectional phrase headed by the lemma "have" if it has the features PRS and PFC (present and perfect)</li></ul></li>
+<li>Negation: <i>read</i> &gt; <i>do not read</i>
+<ul><li>VH(%vh,NEG):=+IC([do];%vh,+INF)VA(%vh;[not],+&lt;&lt;);</li>
+<li>The head of the verbal phrase receives the feature infinitive (INF) and becomes the complement of an inflectional phrase headed by the lemma "do"; the adjunct "not" is generated to the left of the head of the verbal phrase)</li></ul></li>
+<li>Present perfect progressive: <i>read</i> &gt; <i>have been reading</i>
+<ul><li>VH(%vh,PRS,PFC,PGS):=+IC([have],+PRS;[be],+PTP,%ic)IC(%ic;%vh,+GER);</li>
+<li>Create two IPs: the lower one has the head of the verbal phrase as its complement; the second one has the lower IP as its complement. The lowest IP is headed by the lemma "be" whereas the highest is headed by the lemma "have". The head of the highest IP receives the feature present (PRS); the head of the second IP receives the feature participle (PTP); and the head of the verbal phrase receives the feature gerund (GER).)</li></ul></li></ul>
+<div class="mw-heading mw-heading2"><h2 id="Observations">Observations</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Periphrasis&amp;veaction=edit&amp;section=3" title="Edit section: Observations" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Periphrasis&amp;action=edit&amp;section=3" title="Edit section&#39;s source code: Observations">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<dl><dt>Indexation</dt>
+<dd>As in S-rules, nodes in projection rules are always indexed, either by user-defined labels (such as %head, %comp or any other) or by the position in the left side of the rules.</dd>
+<dt>Nodes as maximal projections</dt>
+<dd>New nodes may be inserted as maximal projections if their internal structure is invariable:
+<ul><li>paucal: <i>book</i> &gt; <i>some books</i></li>
+<li>NH(%nh,PAU):=+NS(%nh,+PLR;DP("some"));</li></ul></dd></dl>
+<dl><dt>Two-step generation</dt>
+<dd>Some periphrases are generated by the application of two rules:
+<ul><li>future progressive: <i>be</i> &gt; <i>will be speaking</i>;</li>
+<li>VH(%vh,FUT,PGS):=+IC([be],+FUT;+GER);</li>
+<li>VH(%vh,FUT):=+IC([will];%vh,+INF);</li></ul></dd>
+<dd>The first rule makes <i>be</i> &gt; <i>be speaking</i>; the second makes <i>be</i> &gt; <i>will be</i>.</dd></dl>
+<!-- 
+NewPP limit report
+Cached time: 20260909212758
+Cache expiry: 86400
+Reduced expiry: false
+Complications: []
+CPU time usage: 0.005 seconds
+Real time usage: 0.005 seconds
+Preprocessor visited node count: 12/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/100
+Expensive parser function count: 0/100
+Unstrip recursion depth: 0/20
+Unstrip post‐expand size: 0/5000000 bytes
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    0.000      1 -total
+-->
+
+<!-- Saved in parser cache with key u965818192_SLvgQ-l8z2_:pcache:508:|#|:idhash:canonical and timestamp 20260909212758 and revision id 13260. Rendering was triggered because: diff-page
+ -->
+</div>

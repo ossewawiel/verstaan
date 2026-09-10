@@ -1,0 +1,140 @@
+The IX UNL School, formerly UNL Grammar Workshop, took place at the IIT-Bombay, in Mumbai, India, from June 15-19, 2012.
+
+== Languages ==
+*Assamese
+*Bengali
+*Gujarati
+*Hindi
+*Kannada
+*Kashmiri
+*Malayalam
+*Manipuri
+*Marathi
+*Oriya
+*Punjabi
+*Sanskrit
+*Sindhi
+*Tamil
+*Telugu
+
+== Goals ==
+*To build the basic modules of a NL-UNL (analysis) grammar
+*To build the basic modules of a UNL-NL (generation) grammar
+
+== Slides ==
+*[http://www.unlweb.net.br/resources/mumbai2012/Day1.pdf Day #1] (Corpus and Dictionary)
+*[http://www.unlweb.net.br/resources/mumbai2012/Day2.pdf Day #2] (Morphology)
+*[http://www.unlweb.net.br/resources/mumbai2012/Day3a.pdf Day #3] (UNL-ization)
+*[http://www.unlweb.net.br/resources/mumbai2012/Day4.pdf Day #4] (NL-ization)
+*[http://www.unlweb.net.br/resources/mumbai2012/Day5.pdf Day #5] (Evaluation and Discussion)
+
+== Corpus ==
+*English
+**[http://www.unlweb.net.br/resources/mumbai2012/corpus50_eng.txt Corpus 50] Training corpus in English (50 sentences), to be manually translated to the target languages, in order to be used as the input for IAN
+**[[Corpus500]] Experimental corpus in English (500 sentences), to be manually translated to the target languages, in order to be used as the input for IAN
+*UNL
+**[http://www.unlweb.net.br/resources/mumbai2012/corpus50_unl.txt Corpus 50] Training corpus in UNL (50 sentences), to be used as the input for EUGENE
+**[[Corpus500]], Experimental corpus in UNL (500 sentences), to be used as the input for EUGENE
+
+== Methodology ==
+The following activities must be accomplished during the workshop.
+;Corpus
+#Translate the 50 sentences of [http://www.unlweb.net.br/resources/mumbai2012/corpus50_eng.txt Corpus50_eng.txt] into your native language. Be as close as possible to the original.
+#Save the translated text (without the English original) in a plain text (.txt) file with UTF-8 encoding and upload it to UNLWEB>UNLDEV>PROJECTS>IAN>NL FILES. 
+#Upload the file [http://www.unlweb.net.br/resources/mumbai2012/corpus50_unl.txt Corpus50_unl.txt] to UNLWEB>UNLDEV>PROJECTS>EUGENE>UNL DOCUMENTS
+;NL-UNL Dictionary (Analysis)
+#Extract the word list (i.e., the set of all distinct word forms) appearing in your translation of the Corpus 50
+#Create the NL-UNL dictionary for all the word forms following the English model available at [http://www.unlweb.net.br/resources/mumbai2012/dic50_eng_ana.txt English Analysis Dictionary 50]. Use only the tags available at the [[tagset]]. For further information on the dictionary structure, see [[Dictionary Specs]].
+#Save the NL-UNL dictionary in a plain text (.txt) file with UTF-8 encoding and upload it to UNLWEB>UNLDEV>PROJECTS>IAN>DICTIONARIES. 
+;UNL-NL Dictionary (Generation)
+#Localize the UNL-NL dictionary available at [http://www.unlweb.net.br/resources/mumbai2012/dic50_eng_gen.txt English Generation Dictionary 50]. The localized version must reflect the word list of your translated corpus. Use only the tags available at the [[tagset]]. For further information on the dictionary structure, see [[Dictionary Specs]].
+#Save the UNL-NL dictionary in a plain text (.txt) file with UTF-8 encoding and upload it to UNLWEB>UNLDEV>PROJECTS>EUGENE>DICTIONARIES. 
+;Morphology
+#Export the inflectional grammar of your language from UNLARIUM>GRAMMAR>[YOUR LOCALE]>EXPORT. If the grammar of your language is not available yet, you may:
+##Provide it through the UNLarium (only for users approved in CLEA700); or
+##Create the inflectional paradigms only for the inflected forms appearing in the UNL-NL dictionary. In that case, follow the model available at [http://www.unlweb.net.br/unlarium/grammar/export_grammar.php?type=M&direction=G&lang=en English Inflectional Grammar]. The documentation of the English grammar is available at [http://www.unlweb.net.br/unlarium/grammar/export_grammar.php?type=M&lang=en English Inflectional Grammar (only for reference)]. For further information, see [[Inflectional paradigms]].
+#Save the inflectional grammar in a plain text (.txt) file with UTF-8 encoding and upload it to UNLWEB>UNLDEV>PROJECTS>EUGENE>RULES.
+;NL-UNL (Analysis) Grammar
+#Provide the NL-UNL (analysis) grammar necessary to analyze, in UNL, the natural language sentences of the translated corpus.
+#Save the NL-UNL grammar in a plain text (.txt) file with UTF-8 encoding and upload it to UNLWEB>UNLDEV>PROJECTS>IAN>RULES.
+#Test the grammar against the corpus and provide the necessary changes
+;UNL-NL (Generation) Grammar
+#Provide the UNL-NL (generation) grammar necessary to generate natural language sentences from the UNL corpus.
+#Save the UNL-NL grammar in a plain text (.txt) file with UTF-8 encoding and upload it to UNLWEB>UNLDEV>PROJECTS>EUGENE>RULES.
+#Test the grammar against the corpus and provide the necessary changes
+
+== Follow-up ==
+In order to get the bonus and apply to the intermediate-level workshop, the participants are requested to repeat the steps above to the Corpus 500. The instructions are available at [http://www.unlweb.net.br/resources/mumbai2012/Day5.pdf Day #5].
+
+== Dictionaries ==
+*Analysis
+**[http://www.unlweb.net.br/resources/mumbai2012/dic50_eng_ana.txt Corpus 50] Sample of the English analysis dictionary for the entries appearing in the Corpus 50
+*Generation
+**[http://www.unlweb.net.br/resources/mumbai2012/dic50_eng_gen.txt Corpus 50] Sample of the English generation dictionary for the entries appearing in the Corpus 50
+
+== Grammars == 
+*Analysis
+**[http://www.unlweb.net.br/resources/mumbai2012/ana_gra_eng.pdf English Analysis Grammar] Sample of the English analysis grammar for the structures appearing in the Corpus 50
+*Generation
+**[http://www.unlweb.net.br/resources/mumbai2012/ana_gra_gen.pdf English Generation Grammar] Sample of the English generation grammar for the structures appearing in the Corpus 50
+
+== Participants ==
+*Aadil Kak (Kashmiri)
+*Ankur Aher (Marathi)
+*Arulmozi Selvaraj (Tamil)
+*Balaji Jagan (Tamil)
+*Brijesh Bhatt (Gujarati)
+*Jyotesh Choudhari (Marathi)
+*Kashyap Popat (Gujarati)
+*Laishram Rishikanta Meitei (Manipuri)
+*Navanath Saharia (Assamese)
+*Niladri Sekhar Dash (Bengali)
+*Pallab Bhattacharjee
+*Parameswarappa S (Kannada)
+*Parteek Kumar (Punjabi)
+*Pinkey Nainwani (Sindhi)
+*Pradnya Mohite (Marathi)
+*Raj Dabre (Marathi)
+*Ranjan Das (Oriya)
+*Renuka Devi (Telugu)
+*Sachin Pawar (Marathi)
+*Samir J. Sohoni (Sanskrit)
+*Shaikh Samiulla Z. (Marathi)
+*Shailendra Kumar (Hindi)
+*Sreelekha S. (Malayalam)
+*Sudha Bhingardire (Marathi)
+*Swapnil S. Ghuge (Marathi)
+*Tanuja Ajotikar (Sanskrit)
+*Trupti Nisar (Gujarati)
+
+== Schedule ==
+;Jun 11th, 2012 - Monday
+:09:00-10:00	Introduction
+:10:00-12:00	I – Corpus
+:14:00-17:00	II – UNL-NL dictionary
+;Jun 12th, 2012 - Tuesday	
+:09:00-12:00	III – Morphology (inflectional paradigms)
+:14:00-17:00	IV – NL dictionary
+;Jun 13th, 2012- Wednesday
+:09:00-12:00	V – UNL-NL grammar (I)
+:14:00-17:00	V – UNL-NL grammar (II)
+;Jun 14th, 2012 - Thursday
+:09:00-12:00	VI – NL-UNL grammar (I)
+:14:00-17:00	VI – NL-UNL grammar (II)
+;Jun 15th, 2012 - Friday
+:09:00-12:00	Evaluation
+:14:00-17:00	Discussion
+
+== Venue ==
+SIC 301<br />
+Kanwal Rekhi Building<br />
+IIT Bombay<br />
+Mumbai, India<br />
+
+== Local Organization ==
+*Pushpak Bhattacharyya
+*Deepak D Jagtap
+
+== Instructors ==
+*Ronaldo Martins (UNDL Foundation)
+*Sameh Alansary (University of Alexandria)

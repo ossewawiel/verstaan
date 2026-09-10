@@ -1,0 +1,96 @@
+Hyper-nodes are [[node]]s containing [[relation]]s between nodes. They represent [[scope]]s or sub-graphs. 
+
+== Basic Symbols ==
+{{:Basic Symbols}}
+
+== Basic Concepts ==
+{{:Grammar units}}
+
+== Scopes ==
+:main article: [[Scope]]
+A scope is a sub-graph inside a graph, i.e., group of relations between nodes that work as a '''single entity'''. For instance, in the sentence "Mary saw Peter when John arrived", the dependent clause "when John arrived" describes the argument of a time relation and, therefore, should be represented as a hyper-node (i.e., as a sub-graph) as indicated below:
+
+[[Image:Scope.jpg|center|500px]]
+
+In the UNL table representation, hyper-nodes are indexed by ":XX", where XX is a two-digit hyper-node index. The main node index is :00 and may be omitted. Hyper-node indexes must be associated to every relation inside the node. 
+
+[[Image:Scope1.jpg|center|300px]]
+
+== Notation ==
+As any [[node]], hyper-nodes are represented between (parentheses):
+*(("a")("b")) - a hyper-node containing a list relation between two nodes
+*(L("a";"b")) - the same as above
+*(VC("a";"b")) - a hyper-node containing a syntactic relation ''VC'' between two nodes
+*(agt("a";"b")) - a hyper-node containing a semantic relation ''agt'' between two nodes
+For better readability, hyper-nodes are normally referenced by the '''SCOPE ID''' :XX, where XX is a two-character unique identifier for the hyper-node. 
+*tim(saw;agt(arrived;John)) (= saw when John arrived) is represented as 
+*:tim(saw;''':01''') 
+*:agt''':01'''(arrived;John) 
+All relations inside the same scope must share the same scope ID
+*tim(saw;agt(killed;John)obj(killed;Peter)) (= saw when John killed Peter) is represented as 
+*:tim(saw;''':01''')
+*:agt''':01'''(killed;John) 
+*:obj''':01'''(killed;Peter)
+The scope ID of the main scope is 00 and is omitted by default.
+*tim(saw;:01)agt:01(arrived;John) is the same as tim''':00'''(saw;:01)agt:01(arrived;John)
+
+== Elements ==
+As any [[node]], hyper-nodes are vectors (uni-dimensional arrays) containing the following necessary elements: 
+*a string, represented between "quotes"
+*a headword, represented between [simple square brackets]
+*a UW, represented between <nowiki>[[double square brackets]]</nowiki>
+*features, of which the internal relations are a special type
+*an [[index]], preceded by %
+
+== Properties ==
+;As any node, hyper-nodes are expressed between (parentheses)
+:(("a")("b"))
+;Elements of inner nodes are not elements of hyper-nodes:
+:(%a,"a",[a],<nowiki>[[a]]</nowiki>,A,(%b,"b",[b],<nowiki>[[b]]</nowiki>,B))
+::The elements of the hyper-node %a are "a", [a], <nowiki>[[a]]</nowiki>, A and the node %b
+::The elements of the node %b are "b", [b], <nowiki>[[b]]</nowiki>, B
+::The whole inner node (%b,"b",[b],<nowiki>[[b]]</nowiki>,B) is an element of %a and may be used to reference it: (("b")), (([b])), ((<nowiki>[[b]]</nowiki>), ((B))
+::However, "b", [b], <nowiki>[[b]]</nowiki> and B are not elements of %a (i.e., %a will not match ("b") but only (("b")) 
+;As any node, hyper-nodes may have one single string, one single headword and one single UW, but may have as many features as necessary
+:(([kick],V)([the],D)([bucket],N),"kick the bucket",[kick the bucket],<nowiki>[[die]]</nowiki>,V,NTST)
+::the hyper-node is formed of the following elements:
+::*the string "kick the bucket"
+::*the headword [kick the bucket]
+::*the UW <nowiki>[[die]]</nowiki>
+::*the features V and NTST
+::*the list relation between the nodes ([kick],V)([the],D)([bucket],N)
+::Note that the string, headword and UW of the hyper-node may not coincide with the corresponding values of the inner nodes.
+;Internal nodes and relations work in the same way as features
+:(("a"),("b")) (a hyper-node containing two nodes: ("a") and ("b") (there is no necessary relation between ("a") and ("b"))
+:(("a")("b")) (a hyper-node containing a list relation between the nodes ("a") and ("b") 
+:({("a")|("b")}) (a hyper-node containing either the node ("a") or the node ("b")
+:({("a")("b")|("c")("d")}) (a hyper-node containing either a list relation between the nodes ("a") and ("b") or a list relation between the nodes ("c") and ("d")
+:(rel("a";"b"),rel("c";"d")) (a hyper-node containing the relations rel("a";"b") and the relation rel("c";"d"))
+:(rel("a";"b")rel("c";"d")) (the same as above) 
+:({rel("a";"b")|rel("c";"d")}) (a hyper-node containing either the relation rel("a";"b") or the relation rel("c";"d"))
+;As any node, hyper-nodes may be referenced by any of its elements, including internal nodes and relations
+:(([kick],V)) - refers to any hyper-node containing the node ([kick],V)
+:(([the],D)([bucket],N)) - refers to any hyper-node containing a linear relation between ([the],D) AND ([bucket],N)
+:(([kick],D),([bucket],N)) - refers to any hyper-node containing the nodes ([kick],V) AND ([bucket],N)
+;A hyper-node can be the internal node of another hyper-node:
+:((("a"))) - a hyper-node containing a hyper-node containing the node "a"
+;Hyper-nodes and inner nodes are also indexed (see [[Indexation]])
+:(%c,(%b,(%a,"a"))) - a hyper-node %c contaning a hyper-node %b contaning the node %a
+:(%c,LEX=%a,(%b,(%a,"a"))) - a hyper-node %c containing a hyper-node %b containing the node %a, where the value of LEX of %c is the same as the value of LEX of %a
+;When a hyper-node is deleted, all its internal relations are deleted, if they are not referenced in the rule
+:(([kick],V)([the],D)([bucket],N)):=; (the hyper-node is deleted, as well as the relations ([kick],V)([the],D) AND ([the],D)([bucket],N))
+:(([kick],V)):=; (all hyper-nodes containing the node ([kick],V) are deleted, even if the hyper-node consists of several other inner nodes
+
+== Examples ==
+Examples of hyper-nodes are the following:
+*(("a"),("b")) - a hyper-node containing the nodes ("a") and ('b")
+*(("a")("b")) - a hyper-node containing a linear relation between the nodes ("a") and ("b")
+*(VC(%x;%y)VA(%x;%z)) - a hyper-node containing two syntactic relations: VC(%x;%y) AND VA(%x;%z)
+*(agt([a];[b])obj([a];[c])) - a hyper-node containing two semantic relations: agt([a];[b]) AND obj([a];[c])
+*(([kick],V)([the],D)([bucket],N),V,NTST) - a hyper-node having the features V and NTST and containing two linear relations: one between the nodes ([kick],V) and ([the],D), and other between ([the],D) and [bucket],N)
+*(([kick],V)([the],D)([bucket],N),"kick the bucket",<nowiki>[[die]]</nowiki>,V,NTST) - the same as before, except for the fact that the hyper-node has string = "kick the bucket" and UW = <nowiki>[[die]]</nowiki>
+Hyper-nodes may also contain internal hyper-nodes:
+*((("a")("b"))("c")) - a hyper-node containing a linear relation between the hyper-node (("a")("b")) and the node ("c")
+
+== Transformations  ==
+{{:Transformation over hyper-nodes}}

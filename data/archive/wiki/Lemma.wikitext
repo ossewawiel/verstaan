@@ -1,0 +1,68 @@
+'''Lemma''' is the canonical (citation) form of a [[morphology|lexeme]], i.e., the word as it would appear in an ordinary dictionary.
+
+Lexemes, as a set of different word forms with different inflectional affixes, but with the same stem, are normally referred to by a citation (default) word form called '''lemma'''. The lemma, more generally referred to as '''headword''', is essentially an abstract representation, subsuming all the formal lexical variations which may apply within the same lexeme. For instance, the lexeme comprising the word forms "die", "dies", "died", "dying" is normally referred, in English, by the lemma "die".
+
+== How to create a lemma ==
+Lemmas may vary from language to language. In English, for instance, the lemma of a verbal lexeme is the infinitive form ("love", "be"); in Latin, it is the first person of singular of the present of indicative ("amo", "sum"). In the UNLarium framework, the lemma is expected to be the most common citation form of a given lexeme in the lexicographical tradition of the working language (i.e., the infinitive, in English, the first person, in Latin, and so on), provided that:
+;The lemma must be an existing word form (i.e., not a root or an affix)
+:The lemma of the lexeme "die, dies, died, dying" must be "die" and not "d-".
+:The lemma of the lexeme "clothes" (used only in plural) is "clothes" and not "cloth", because "cloth" does not exist<ref>Note that the lemma of "glasses" can be "glass" or "glasses" depending on the sense: a drinking vessel = one glass, two glasses (lemma = glass); a pair of lenses = glasses (lemma = glasses)</ref>
+;The lemma represents ''inflections'' not ''derivations''
+:The lemma of the lexeme "unhappy" is "unhappy" and not "happy", because "unhappy" is not an inflection (but a derivation) of "happy"
+:The lemma of "denationalization" is "denationalization" and not "denationalize" or "nation", because "denationalization" is not an inflection (but a derivation) of "denationalize" or "nation"
+;The lemma must be as complete as possible
+:The lemma of the lexeme "kick the bucket, kicks the bucket, kicking the bucket, kicked the bucket" must be "kick the bucket" and not "kick" or "bucket".
+:The lemma of the lexeme "me souviens, te souviens, se souvient, etc" (fr = remember) must be "se souvenir" (and not "souvenir").
+;The lemma must include obligatory (and only obligatory) variables:
+:The lemma of the lexeme "behind someone's back" must be "behind <person>'s back" (there is no "behind back");
+:However, the lemma of the lexeme "take something into account, taking something into account, etc" must be "take into account" (because there can be "take into account", as in "you must take into account that ...").
+::Obligatory variables, if any, must be expressed by the corresponding value between < >. The values must be expressed in the working language in lower case letters: "person", "personne", "pessoa", etc.
+
+== Examples ==
+
+{|border=1 align=center cellpadding=5
+!word forms
+!lemma
+|-
+|here
+|here
+|-
+|happy
+|happy
+|-
+|unhappy
+|unhappy
+|-
+|happily
+|happily
+|-
+|table, tables
+|table
+|-
+|denationalization
+|denationalization
+|-
+|denationalize, denationalizes, denationalizing, denationalized
+|denationalize
+|-
+|love, loves, loving, loved
+|love
+|-
+|am, be, is, are, was, were, being, been
+|be
+|-
+|fireman, firemen
+|fireman
+|-
+|kick the bucket, kicks the bucket, kicking the bucket, etc
+|kick the bucket
+|-
+|take into account, takes into account, taking into account, etc
+|take into account
+|-
+|behind one's back
+|behind <person>'s back
+|}
+
+== Notes ==
+<references/>

@@ -1,0 +1,112 @@
+'''Adverbs'''  are open-class [[LRU]]s that modify any part of the language other than a noun. Adverbs can modify verbs, adjectives (including numbers), clauses, sentences and other adverbs. 
+
+== Natural Language ==
+
+In the UNL<sup>arium</sup> framework, '''adverbs''' are classified in four different categories: specifiers, adjuncts, conjuncts and disjuncts. 
+*'''Specifier adverbs''' (SAV) (such as “not”, “more”, “less”, “very”, etc) are adverbs that do not really introduce new information, but only specify the information conveyed by a verb, an adjective or another adverb. They do not constitute properly an open class category and many of them may be replaced by other closed class categories, such as affixes (not happy = unhappy, write again = rewrite, more happy = happier);
+*'''Adjunct adverbs''' (AAV) (such as “slowly”, “always”, “frequently”, “here”, etc) are adverbs that qualify a verb, an adjective or another adverb by indicating manner, time, place and frequency. They answer questions such as "how", "when", "where" and "how often". They differ from specifier adverbs in the sense they introduce and can be associated to independent concepts;
+*'''Conjuncts''' (CJT) <ref>Not to be confounded with conjunctions</ref> (such as "in addition", "in other words", "for instance", etc) are connecting adverbs that add information to the sentence that is not considered part of the propositional content (or at least not essential) but which connects the sentence with previous parts of the discourse; and 
+*'''Disjuncts''' (DJT) (aka adverbs of viewpoint or commenting adverbs, such as "fortunately", "in my opinion", etc) express information that is not considered essential to the sentence it appears in, but which is considered to be the speaker's or writer's attitude towards, or descriptive statement of, the propositional content of the sentence.
+
+== UNL ==
+In UNL, adverbs are represented as UWs or attributes, depending on the case:
+*'''Specifier adverbs''' are represented by [[degree|attributes of degree]] (@not, @more, @less, @plus, @minus, @almost, @again, etc);
+{|table border=1 align=center cellpadding=2
+|+Specifier adverbs
+!Type
+!English
+!UNL
+|-
+!Negative
+|align=center|not intelligent
+|align=center|intelligent.@not
+|-
+!Approximative
+|align=center|almost intelligent
+|align=center|intelligent.@almost
+|-
+!Comparative
+|align=center|more intelligent
+|align=center|intelligent.@more
+|-
+!Intensifier
+|align=center|very intelligent
+|align=center|intelligent.@plus
+|}
+*'''Adjunct adverbs''' are always represented as UWs:
+{|table border=1 align=center cellpadding=2
+|+Adjunct adverbs
+!Type
+!English
+!UNL
+|-
+!Manner
+|align=center|go fast
+|align=center|man(go, fast)
+|-
+!Time<ref>Time adverbs may be the target node of the relations '''tim''' (time), '''tmf''' (time from), '''tmt''' (time to) and '''fmt''' (from to)</ref>
+|align=center|go now
+|align=center|tim(go, now)
+|-
+!Place<ref>Place adverbs may be the target node of the relations '''plc''' (place), '''plf''' (place from), '''plt''' (place to) and '''via'''.</ref>
+|align=center|live here
+|align=center|plc(live, here)
+|-
+!Frequency<ref>Frequency adverbs are the target node of the relation '''man''' (manner) and not of the relation '''tim''' (time)</ref>
+
+|align=center|do usually
+|align=center|man(do, usually)
+|}
+*'''Conjuncts''' are represented as UWs linked to the whole sentence (to be treated as a hypernode) by the relation man (manner).
+{|table border=1 align=center cellpadding=2
+|+Conjuncts
+!English
+!UNL
+|-
+|He has no money. In addition, he has no means of getting any
+|man("he has no means of getting any", "in addition")
+|-
+|The French love music. In other words, music is appreciated in France.
+|man("music is appreciated in France", "in other words")
+|}
+*'''Disjuncts''' are represented as follows:
+**As attributes, if their meaning can be subsumed by any of the [[modality|attributes of modality]] (such as @belief, @conviction, etc); or
+**As UWs, otherwise.
+{|table border=1 align=center cellpadding=2
+|+Disjuncts
+!English
+!UNL
+|-
+|Fortunately, I have it right here.
+|man("I have it right here", "fortunately")
+|-
+|In my opinion, the green one is better.
+|"the green one is better".@opinion
+|}
+
+
+;Observation
+:Not all intensifiers are represented as attributes. Many adjunct adverbs (such as ''amazingly'', ''absurdly'', ''sharply'', ''terribly'', ''deeply'', ''unbelievably'', etc) may also be used to amplify adjectives. However, as they are not only intensifiers but also qualifiers, they must be represented as UWs:
+{|table border=1 align=center cellpadding=2
+|+Intensifiers
+!Type
+!English
+!UNL
+|-
+!rowspan=2|Amplifier
+|align=center|very difficult
+|align=center|difficult.@plus
+|-
+|align=center|absurdly difficult
+|align=center|man(difficult, absurdly)
+|-
+!rowspan=2|Downtoner
+|align=center|a bit difficult
+|align=center|difficult.@minus
+|-
+|align=center|relatively difficult
+|align=center|man(difficult, relatively)
+|}
+
+== Notes ==
+<references />

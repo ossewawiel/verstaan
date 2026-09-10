@@ -1,0 +1,17 @@
+'''Adpositions''' are connecting words used for a wide range of syntactic and semantic functions, most commonly modification and complementation. 
+
+== Natural Language ==
+
+Natural language adpositions are classified as '''prepositions''', when preceding a phrase; as '''postpositions''', when following a phrase; and as '''circumpositions''', when surrounding a phrase:
+
+== UNL ==
+Natural language adpositions are expected to be explicitly represented in UNL by [[Universal Relations]] or by Universal Relations and [[Universal Attributes]]:
+*the book of John = pos(book,John) (preposition represented as a relation)
+*the book about John = cnt(book,John) (preposition represented as a relation)
+*He lives in Geneva = plc(live,Geneva) (preposition represented as a relation)
+*He died in 1956 = tim(died,"1956") (preposition represented as a relation)
+*He is going to Geneva = gol(go,Geneva) or plc(go,Geneva.@to) (preposition represented as a specific relation ("gol") or as a general relation ("plc") and an attribute)
+*He has been working since Saturday = tmf(work,Saturday) or tim(work,Saturday.@from) (preposition represented as a specific relation ("tmf") or as a general relation ("tim") and an attribute)
+*The book near the table = plc(book,table.@near) (preposition represented as a relation and an attribute)
+*The book under the table = plc(book,table.@bottom.@contact) (preposition represented as a relation and attributes)
+*The book below the table = plc(book,table.@bottom.@near) (preposition represented as a relation and attributes)

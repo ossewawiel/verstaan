@@ -1,0 +1,9 @@
+Hyper-relations are altered, replaced, created and deleted by [[T-rule]]s:
+
+=== Creating hyper-relations ===
+Hyper-relations are created through encapsulating relations:
+*rel1(%x;%y)rel2(%x;%z):=rel1(rel2(%x;%z);%y); (the relation rel1 between %x and %y becomes a hyper-relation between the relation rel2(%x;%z) and the node %y.)
+
+=== Transforming hyper-relations into simple relations ===
+Hyper-relations are transformed into simple relations by removing their internal relations:
+*rel1(rel2(%x;%z);%y):=rel1(%x;%y)rel2(%x;%z); (the hyper-relation rel1 between the relation rel2(%x;%z) and the node %y is transformed into a simple relation between the nodes %x and %y; the relatin rel2(%x;%z) is not affected.)

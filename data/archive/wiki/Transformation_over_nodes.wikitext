@@ -1,0 +1,151 @@
+Nodes are altered, replaced, created and deleted by [[T-rule]]s:
+
+=== Altering elements of nodes ===
+Any changes to the elements of nodes must be stated in the right side of rules. Changes affect only the elements explicitly indicated in rules:
+:("a",[a],<nowiki>[[a]]</nowiki>,A):=("b"); (only the string is affected by the rule; all other elements are preserved. The resulting node is ("b",[a],<nowiki>[[a]]</nowiki>,A) )
+
+;"Strings"
+:Nodes may have one single string. This value is set through the operator "+", reset through the operator "-", or modified through [[A-rule]]s. The operator "+" may be omitted. Changes to strings do not affect any other element (headwords, UWs and features)
+:*(""):=(+"a"); (the string of the node is set from "" to "a")
+:*(""):=("a"); (the same as above)
+:*():=("a"); (the same as above)
+:*("a"):=(+"b"); (the string of the node is set from "a" to "b")
+:*("a"):=("b"); (the same as above)
+:*("a"):=(-"a"); (the string of the node is reset, i.e., it changes from "a" to "")
+:*("a"):=(""); (the same as above)
+:*("a"):=("x"<0,0>"y"); (the string of the node is modified from "a" to "xay") 
+;<nowiki>[headwords]</nowiki>
+:Nodes may have one single headword. This value is set through the operator "+" and reset through the operator "-". The operator "+" may be omitted. Headwords may not be modified through [[A-rule]]s. Changes to headwords do not affect any other element (strings, UWs and features)
+:*([]):=(+[a]); (the headword of the node is set from [] to [a])
+:*([]):=([a]); (the same as above)
+:*():=([a]); (the same as above)
+:*([a]):=(+[b]); (the headword of the node is set from [a] to [b])
+:*([a]):=([b]); (the same as above)
+:*([a]):=(-[a]); (the headword of the node is reset, i.e., it changes from [a] to [])
+:*([a]):=([]); (the same as above)
+:*<strike>([a]):=("x"<0,0>"y");</strike> (it is not possible to modify headwords through A-rules. 
+;<nowiki>[[UWs]]</nowiki>
+:Nodes may have one single UW. This value is set through the operator "+" and reset through the operator "-". The operator "+" may be omitted. UWs may not be modified through [[A-rule]]s. Changes to UWs do not affect any other element (strings, headwords and features)
+:*(<nowiki>[[]]</nowiki>):=(+<nowiki>[[a]]</nowiki>); (the UW of the node is set from <nowiki>[[]]</nowiki> to <nowiki>[[a]]</nowiki>)
+:*(<nowiki>[[]]</nowiki>):=(<nowiki>[[a]]</nowiki>); (the same as above)
+:*():=(<nowiki>[[a]]</nowiki>); (the same as above)
+:*(<nowiki>[[a]]</nowiki>):=(+<nowiki>[[b]]</nowiki>); (the UW of the node is set from <nowiki>[[a]]</nowiki> to <nowiki>[[b]]</nowiki>)
+:*(<nowiki>[[a]]</nowiki>):=(<nowiki>[[b]]</nowiki>); (the same as above)
+:*(<nowiki>[[a]]</nowiki>):=(-<nowiki>[[a]]</nowiki>); (the UW of the node is reset, i.e., it changes from <nowiki>[[a]]</nowiki> to <nowiki>[[]]</nowiki>)
+:*(<nowiki>[[a]]</nowiki>):=(<nowiki>[[]]</nowiki>); (the same as above)
+:*<strike>([a]):=("x"<0,0>"y");</strike> (it is not possible to modify UWs through A-rules. 
+;Features
+:Nodes may have as many features as necessary. Features may come isolated in a list (POS,NOU,GEN,MCL,NUM,SNG) or as pairs of attribute=value (POS=NOU,GEN=MCL,NUM=SNG). Changes to features do not affect any other element (strings, headwords and UWs)
+*Adding features to nodes
+*:Features are added through the operator + (add). The operator "+" may be omitted.
+*:*():=(+B); (add the feature B to the node)
+*:*():=(B); (the same as above)
+*:Rules are recursive: the feature will be added to the node while the condition is true.
+*:*():=(+B); (the resulting node is (B,B,B,...), i.e., this is an infinite loop)
+*:*(^B):=(+B); (the resulting node is (B), i.e., the feature B is added only if the node does not contain it yet)
+*:The operator + (add) does not create attribute=value pairs automatically (it simply adds features to the nodes)
+*:*(%x,^POS,^NOU):=(%x,+NOU); (the resulting node is (NOU) and not (POS=NOU) because POS has not been added)
+*:*(%x,^POS,^NOU):=(%x,+POS,+NOU); (the resulting node is (POS,NOU) and not (POS=NOU) because there was no assignment POS=NOU)
+*:*(%x,POS,^NOU):=(%x,+NOU); (the resulting node is (POS,NOU) because there was no assignment POS=NOU)
+*:*(%x,^POS,^NOU):=(%x,+POS=NOU); (the resulting node is (POS=NOU))
+*:*(%x,POS,^NOU):=(%x,+POS=NOU); (the resulting node is (POS, POS=NOU) because the feature POS has been duplicated)
+*Deleting features from nodes
+*:Features are deleted through the operator - (delete).
+*:():=(-B); (delete the feature B from the node)
+*:Rules are recursive: the feature will be deleted from the node while the condition is true.
+*:():=(-B); (the rule will delete all instances of the feature B from the node, i.e., the node (B,B,B,B,B) will become ()
+*:The operator "-" may also be used to reset attributes:
+*:*(%x,POS,NOU):=(%x,-NOU); (the resulting node is (POS) because the feature POS was not deleted)
+*:*(%x,POS,NOU):=(%x,-POS,-NOU); (the resulting node is () because both features POS and NOU were deleted)
+*:*(%x,POS=NOU):=(%x,-NOU); (the resulting node is (POS) because only the value of the attribute POS was deleted)
+*:*(%x,POS=NOU):=(%x,-POS); (the resulting node is () because the attribute POS was deleted with all its values)
+*Copying features
+*:Features can be copied from one to another node through indexes
+*:*(%x,GEN)(%y,^GEN):=(%x)(%y,GEN=%x); (the value of the attribute GEN is copied from the node %x to %y);
+;Indexes
+:Indexes are used to make reference to the whole node instead of its elements. Any change in the index means a completely new node, and no element is preserved.
+:*(%x,"a"):=(%x,"b"); (the string of the node %x is set from "a" to "b"; all the other elements of the node %x are preserved)
+:*(%x,"a"):=(%y,"b"); (the whole node %x is replaced by a new node %y whose string is "b"; no element from %x is copied to %y)
+
+=== Deleting nodes ===
+In linear rules, nodes are deleted if they are not repeated (co-indexed) in the right side:
+*(%x)(%y):=(%x); (the node %y will be deleted)
+In other rules, nodes are deleted if they are not repeated (co-indexed) in the right side and are not part of any other relation:
+*rel(%x;%y):=rel(%x); (the node %y will be deleted if, and only if, it is not part of any other relation)
+
+=== Creating nodes ===
+Nodes are created through the use of new indexes in the right side:
+*("a",%x)("b",%y):=(%x)(%y)("c",%z); (the node %z will be created)
+*("a",%x)("b",%y):=(%x)("c",%z); (the node %z will be created, and %y will be deleted)
+
+=== Duplicating (cloning) nodes ===
+Nodes may be duplicated by repeating indexes on the right side along with the command #CLONE:
+*("a",^CLONED,%x):=(%x,+CLONED)(%x,+CLONED,#CLONE);
+*:("a") becomes ("a")("a")<br />
+In order to avoid infinite recursion, it is important to change the condition on the right side (in the example above, the feature +CLONED, assigned to all instances of the clone, prevents the rule from applying indefinitely)<br />
+Clones contain the same elements of the original nodes, unless they are explicitly altered during the cloning:
+*("a",[a],<nowiki>[[a]]</nowiki>,A,^CLONED,%x):=(%x,+CLONED)(%x,+CLONED,#CLONE);
+*:("a",[a],<nowiki>[[a]]</nowiki>,A) becomes ("a",[a],<nowiki>[[a]]</nowiki>,A,CLONED)("a",[a],<nowiki>[[a]]</nowiki>,A,CLONED)
+*(A,^CLONED,%x):=(%x,-A,+B,+CLONED)(%x,-A,+C,+CLONED,#CLONE);
+*:(A) becomes (B,CLONED)(C,CLONED)
+
+=== Splitting nodes ===
+One node may be split into two or more nodes through the use of splitting rules. 
+Consider, for instance, the cases below:
+;Splitting rules deal only with strings and apply only to nodes with the feature TEMP. 
+:Original node: ("abc",TEMP)
+:Split rule: ("abc"):=("ab")("c"); 
+:Resulting nodes: ("ab",TEMP)("c",TEMP);
+:However, if the original node was ("abc"), without TEMP, the rule would not have been applied (i.e., it is necessary to assign the feature TEMP to the node before splitting it)
+;Splitting rules are conservative<nowiki>:</nowiki> the elements of the original node, except the string, will be preserved unless explicitly altered.
+:Original node: ("abc",[abc],<nowiki>[[abc]]</nowiki>,A,B,C,TEMP)
+:Split rule: ("abc"):=("ab")("c"); 
+:Resulting nodes: ("ab",[abc],<nowiki>[[abc]]</nowiki>,A,B,C,TEMP)("c",[abc],<nowiki>[[abc]]</nowiki>,A,B,C,TEMP) (i.e., the elements of the original node will be copied to the new nodes)
+:However, if the rule was: ("abc"):=("ab",-A,-B,-C,-TEMP,+AB)("c",-TEMP); 
+:The result would be: ("ab",[abc],<nowiki>[[abc]]</nowiki>,AB)("c",[abc],<nowiki>[[abc]]</nowiki>,A,B,C)
+
+=== Merging nodes (&) ===
+Two or more nodes may be merged by the command &:
+*(%x)(%y)(%z):=(%x&%y&%z); 
+In the example above("a")("b")("c") becomes ("abc")
+;Merge operations concatenate headwords and UWs, and join features
+("hw1",<nowiki>[[uw1]]</nowiki>,F1,%x)("hw2",<nowiki>[[uw2]]</nowiki>,F2,%y)("hw3",<nowiki>[[uw3]]</nowiki>,F3,%z):=(%x&%y&%z);<br />
+The resulting node is ("hw1hw2hw3",<nowiki>[[uw1uw2uw3]]</nowiki>,F1,F2,F3)
+;Compare the difference
+*(%x)(%y):=(%z); (the nodes %x and %y are replaced by %z, and their features are lost unless explicitly included in %z)
+*(%x)(%y):=(%x&%y); (the nodes %x and %y are merged)
+
+=== Retrieving entries in the dictionary after tokenization (?) ===
+During transformation (i.e., after tokenization), dictionary entries may be accessed from transformation rules by the command "?"
+*(?<nowiki>[headword]</nowiki>) retrieves the first entry in the dictionary with the headword "headword"
+*(?<nowiki>[[uw]]</nowiki>) retrieves the first entry in the dictionary with the UW "uw"
+*(?<nowiki>[headword]</nowiki>,?<nowiki>[[uw]]</nowiki>,?feature) retrieves the first entry in the dictionary with the headword "headword", the UW "uw" and the feature "feature"
+Regular expressions, variables and disjunction may also be used in dictionary search
+*(?<nowiki>[/abcd./]</nowiki>) retrieves the first entry in the dictionary whose headword has 5 characters and begins with "abcd" (this works only in natural language generation)
+*(?<nowiki>[[/abcd./]]</nowiki>) retrieves the first entry in the dictionary whose UW has 5 characters and begins with "abcd" (this works only in natural language analysis)
+;Obligatory parameters
+:Due to the indexation algorithm, the headword is obligatory in IAN and the UW is obligatory in EUGENE:
+*(?<nowiki>[headword]</nowiki>) will work only in IAN
+*(?<nowiki>[[uw]]</nowiki>) will work only in EUGENE
+*(?<nowiki>feature</nowiki>) will not work in IAN or EUGENE
+;Variables
+:In order to avoid repetition, dictionary look-up may use the values of indexed nodes in the left side
+*(?<nowiki>[%x]</nowiki>) retrieves the first entry in the dictionary with the same headword of the node %x
+*(?<nowiki>[[%x]]</nowiki>) retrieves the first entry in the dictionary with the same UW of the node %x
+*(?<nowiki>[%x],ATT=%x</nowiki>) retrieves the first entry in the dictionary with the same headword of the node %x and whose attribute ATT has the same value of the attribute ATT of the node %x
+;Example
+Dictionary search is used mainly in natural language generation
+*(N,NUM,GEN,@def,%noun):=(?[[]],?ART,?DEF,?NUM=%noun,?GEN=%noun)(%noun,-@def);
+In case of node %noun with the features noun (N), number (NUM) and gender (GEN), and with the attribute @def (definite), search the first entry in the dictionary associated with the UW "" (empty UW) with the features ART and DEF, and whose attributes NUM and GEN have the same values of the ones of the node %noun, and insert it in front of the noun. Remove @def from the noun in order to avoid an infinite loop.
+
+=== Triggering rules (!) === 
+[[Dictionary_Specs#Inflection_rules_inside_dictionary_entries.2A|Inflectional rules]] are triggered in the grammar by the command "!"<ATTRIBUTE>.<br />
+Given the dictionary entry:
+*[foot] "foot" (POS=NOU, NUM(PLR:="oo":"ee")) <eng,0,0>;
+The rule NUM(PLR:="oo":"ee") is triggered by !NUM<br />
+For instance:
+*(NUM=PLR,^inflected):=(!NUM,+inflected); or
+*(PLR,^inflected):=(!NUM,+inflected); or
+*(NUM,^inflected):=(!NUM,+inflected);
+In the first case (NUM=PLR), the system verifies if the attribute "NUM" is set and if it has the value "PLR". In the second and in the third case, the system simply verifies if the word has any feature (attribute or value) equal to "PLR" or "NUM".<br />
+It's important to stress that, as the features of the dictionary are defined by the user, there is no way of pre-assigning attribute-value pairs. In that sense, it's not possible to infer that "PLR" will be a value of the attribute "NUM" except through an assignment of the form "NUM=PLR" (i.e., given only "PLR" or "NUM", is not possible to state "NUM=PLR").

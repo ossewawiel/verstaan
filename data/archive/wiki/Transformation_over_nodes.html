@@ -1,0 +1,197 @@
+<div class="mw-content-ltr mw-parser-output" lang="en" dir="ltr"><p>Nodes are altered, replaced, created and deleted by <a href="/wiki/T-rule" title="T-rule">T-rules</a>:
+</p>
+<div id="toc" class="toc" role="navigation" aria-labelledby="mw-toc-heading"><input type="checkbox" role="button" id="toctogglecheckbox" class="toctogglecheckbox" style="display:none" /><div class="toctitle" lang="en" dir="ltr"><h2 id="mw-toc-heading">Contents</h2><span class="toctogglespan"><label class="toctogglelabel" for="toctogglecheckbox"></label></span></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Altering_elements_of_nodes"><span class="tocnumber">1</span> <span class="toctext">Altering elements of nodes</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#Deleting_nodes"><span class="tocnumber">2</span> <span class="toctext">Deleting nodes</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="#Creating_nodes"><span class="tocnumber">3</span> <span class="toctext">Creating nodes</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="#Duplicating_(cloning)_nodes"><span class="tocnumber">4</span> <span class="toctext">Duplicating (cloning) nodes</span></a></li>
+<li class="toclevel-1 tocsection-5"><a href="#Splitting_nodes"><span class="tocnumber">5</span> <span class="toctext">Splitting nodes</span></a></li>
+<li class="toclevel-1 tocsection-6"><a href="#Merging_nodes_(&amp;)"><span class="tocnumber">6</span> <span class="toctext">Merging nodes (&amp;)</span></a></li>
+<li class="toclevel-1 tocsection-7"><a href="#Retrieving_entries_in_the_dictionary_after_tokenization_(?)"><span class="tocnumber">7</span> <span class="toctext">Retrieving entries in the dictionary after tokenization (?)</span></a></li>
+<li class="toclevel-1 tocsection-8"><a href="#Triggering_rules_(!)"><span class="tocnumber">8</span> <span class="toctext">Triggering rules (!)</span></a></li>
+</ul>
+</div>
+
+<div class="mw-heading mw-heading3"><h3 id="Altering_elements_of_nodes">Altering elements of nodes</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Transformation_over_nodes&amp;veaction=edit&amp;section=1" title="Edit section: Altering elements of nodes" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Transformation_over_nodes&amp;action=edit&amp;section=1" title="Edit section&#39;s source code: Altering elements of nodes">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>Any changes to the elements of nodes must be stated in the right side of rules. Changes affect only the elements explicitly indicated in rules:
+</p>
+<dl><dd>("a",[a],[[a]],A):=("b"); (only the string is affected by the rule; all other elements are preserved. The resulting node is ("b",[a],[[a]],A) )</dd></dl>
+<dl><dt>"Strings"</dt>
+<dd>Nodes may have one single string. This value is set through the operator "+", reset through the operator "-", or modified through <a href="/wiki/A-rule" title="A-rule">A-rules</a>. The operator "+" may be omitted. Changes to strings do not affect any other element (headwords, UWs and features)
+<ul><li>(""):=(+"a"); (the string of the node is set from "" to "a")</li>
+<li>(""):=("a"); (the same as above)</li>
+<li>():=("a"); (the same as above)</li>
+<li>("a"):=(+"b"); (the string of the node is set from "a" to "b")</li>
+<li>("a"):=("b"); (the same as above)</li>
+<li>("a"):=(-"a"); (the string of the node is reset, i.e., it changes from "a" to "")</li>
+<li>("a"):=(""); (the same as above)</li>
+<li>("a"):=("x"&lt;0,0&gt;"y"); (the string of the node is modified from "a" to "xay")</li></ul></dd></dl>
+<dl><dt>[headwords]</dt>
+<dd>Nodes may have one single headword. This value is set through the operator "+" and reset through the operator "-". The operator "+" may be omitted. Headwords may not be modified through <a href="/wiki/A-rule" title="A-rule">A-rules</a>. Changes to headwords do not affect any other element (strings, UWs and features)
+<ul><li>([]):=(+[a]); (the headword of the node is set from [] to [a])</li>
+<li>([]):=([a]); (the same as above)</li>
+<li>():=([a]); (the same as above)</li>
+<li>([a]):=(+[b]); (the headword of the node is set from [a] to [b])</li>
+<li>([a]):=([b]); (the same as above)</li>
+<li>([a]):=(-[a]); (the headword of the node is reset, i.e., it changes from [a] to [])</li>
+<li>([a]):=([]); (the same as above)</li>
+<li><strike>([a]):=("x"&lt;0,0&gt;"y");</strike> (it is not possible to modify headwords through A-rules.</li></ul></dd></dl>
+<dl><dt>[[UWs]]</dt>
+<dd>Nodes may have one single UW. This value is set through the operator "+" and reset through the operator "-". The operator "+" may be omitted. UWs may not be modified through <a href="/wiki/A-rule" title="A-rule">A-rules</a>. Changes to UWs do not affect any other element (strings, headwords and features)
+<ul><li>([[]]):=(+[[a]]); (the UW of the node is set from [[]] to [[a]])</li>
+<li>([[]]):=([[a]]); (the same as above)</li>
+<li>():=([[a]]); (the same as above)</li>
+<li>([[a]]):=(+[[b]]); (the UW of the node is set from [[a]] to [[b]])</li>
+<li>([[a]]):=([[b]]); (the same as above)</li>
+<li>([[a]]):=(-[[a]]); (the UW of the node is reset, i.e., it changes from [[a]] to [[]])</li>
+<li>([[a]]):=([[]]); (the same as above)</li>
+<li><strike>([a]):=("x"&lt;0,0&gt;"y");</strike> (it is not possible to modify UWs through A-rules.</li></ul></dd></dl>
+<dl><dt>Features</dt>
+<dd>Nodes may have as many features as necessary. Features may come isolated in a list (POS,NOU,GEN,MCL,NUM,SNG) or as pairs of attribute=value (POS=NOU,GEN=MCL,NUM=SNG). Changes to features do not affect any other element (strings, headwords and UWs)</dd></dl>
+<ul><li>Adding features to nodes
+<dl><dd>Features are added through the operator + (add). The operator "+" may be omitted.
+<ul><li>():=(+B); (add the feature B to the node)</li>
+<li>():=(B); (the same as above)</li></ul></dd>
+<dd>Rules are recursive: the feature will be added to the node while the condition is true.
+<ul><li>():=(+B); (the resulting node is (B,B,B,...), i.e., this is an infinite loop)</li>
+<li>(^B):=(+B); (the resulting node is (B), i.e., the feature B is added only if the node does not contain it yet)</li></ul></dd>
+<dd>The operator + (add) does not create attribute=value pairs automatically (it simply adds features to the nodes)
+<ul><li>(%x,^POS,^NOU):=(%x,+NOU); (the resulting node is (NOU) and not (POS=NOU) because POS has not been added)</li>
+<li>(%x,^POS,^NOU):=(%x,+POS,+NOU); (the resulting node is (POS,NOU) and not (POS=NOU) because there was no assignment POS=NOU)</li>
+<li>(%x,POS,^NOU):=(%x,+NOU); (the resulting node is (POS,NOU) because there was no assignment POS=NOU)</li>
+<li>(%x,^POS,^NOU):=(%x,+POS=NOU); (the resulting node is (POS=NOU))</li>
+<li>(%x,POS,^NOU):=(%x,+POS=NOU); (the resulting node is (POS, POS=NOU) because the feature POS has been duplicated)</li></ul></dd></dl></li>
+<li>Deleting features from nodes
+<dl><dd>Features are deleted through the operator - (delete).</dd>
+<dd>():=(-B); (delete the feature B from the node)</dd>
+<dd>Rules are recursive: the feature will be deleted from the node while the condition is true.</dd>
+<dd>():=(-B); (the rule will delete all instances of the feature B from the node, i.e., the node (B,B,B,B,B) will become ()</dd>
+<dd>The operator "-" may also be used to reset attributes:
+<ul><li>(%x,POS,NOU):=(%x,-NOU); (the resulting node is (POS) because the feature POS was not deleted)</li>
+<li>(%x,POS,NOU):=(%x,-POS,-NOU); (the resulting node is () because both features POS and NOU were deleted)</li>
+<li>(%x,POS=NOU):=(%x,-NOU); (the resulting node is (POS) because only the value of the attribute POS was deleted)</li>
+<li>(%x,POS=NOU):=(%x,-POS); (the resulting node is () because the attribute POS was deleted with all its values)</li></ul></dd></dl></li>
+<li>Copying features
+<dl><dd>Features can be copied from one to another node through indexes
+<ul><li>(%x,GEN)(%y,^GEN):=(%x)(%y,GEN=%x); (the value of the attribute GEN is copied from the node %x to %y);</li></ul></dd></dl></li></ul>
+<dl><dt>Indexes</dt>
+<dd>Indexes are used to make reference to the whole node instead of its elements. Any change in the index means a completely new node, and no element is preserved.
+<ul><li>(%x,"a"):=(%x,"b"); (the string of the node %x is set from "a" to "b"; all the other elements of the node %x are preserved)</li>
+<li>(%x,"a"):=(%y,"b"); (the whole node %x is replaced by a new node %y whose string is "b"; no element from %x is copied to %y)</li></ul></dd></dl>
+<div class="mw-heading mw-heading3"><h3 id="Deleting_nodes">Deleting nodes</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Transformation_over_nodes&amp;veaction=edit&amp;section=2" title="Edit section: Deleting nodes" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Transformation_over_nodes&amp;action=edit&amp;section=2" title="Edit section&#39;s source code: Deleting nodes">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>In linear rules, nodes are deleted if they are not repeated (co-indexed) in the right side:
+</p>
+<ul><li>(%x)(%y):=(%x); (the node %y will be deleted)</li></ul>
+<p>In other rules, nodes are deleted if they are not repeated (co-indexed) in the right side and are not part of any other relation:
+</p>
+<ul><li>rel(%x;%y):=rel(%x); (the node %y will be deleted if, and only if, it is not part of any other relation)</li></ul>
+<div class="mw-heading mw-heading3"><h3 id="Creating_nodes">Creating nodes</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Transformation_over_nodes&amp;veaction=edit&amp;section=3" title="Edit section: Creating nodes" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Transformation_over_nodes&amp;action=edit&amp;section=3" title="Edit section&#39;s source code: Creating nodes">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>Nodes are created through the use of new indexes in the right side:
+</p>
+<ul><li>("a",%x)("b",%y):=(%x)(%y)("c",%z); (the node %z will be created)</li>
+<li>("a",%x)("b",%y):=(%x)("c",%z); (the node %z will be created, and %y will be deleted)</li></ul>
+<div class="mw-heading mw-heading3"><h3 id="Duplicating_(cloning)_nodes"><span id="Duplicating_.28cloning.29_nodes"></span>Duplicating (cloning) nodes</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Transformation_over_nodes&amp;veaction=edit&amp;section=4" title="Edit section: Duplicating (cloning) nodes" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Transformation_over_nodes&amp;action=edit&amp;section=4" title="Edit section&#39;s source code: Duplicating (cloning) nodes">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>Nodes may be duplicated by repeating indexes on the right side along with the command #CLONE:
+</p>
+<ul><li>("a",^CLONED,%x):=(%x,+CLONED)(%x,+CLONED,#CLONE);
+<dl><dd>("a") becomes ("a")("a")<br /></dd></dl></li></ul>
+<p>In order to avoid infinite recursion, it is important to change the condition on the right side (in the example above, the feature +CLONED, assigned to all instances of the clone, prevents the rule from applying indefinitely)<br />
+Clones contain the same elements of the original nodes, unless they are explicitly altered during the cloning:
+</p>
+<ul><li>("a",[a],[[a]],A,^CLONED,%x):=(%x,+CLONED)(%x,+CLONED,#CLONE);
+<dl><dd>("a",[a],[[a]],A) becomes ("a",[a],[[a]],A,CLONED)("a",[a],[[a]],A,CLONED)</dd></dl></li>
+<li>(A,^CLONED,%x):=(%x,-A,+B,+CLONED)(%x,-A,+C,+CLONED,#CLONE);
+<dl><dd>(A) becomes (B,CLONED)(C,CLONED)</dd></dl></li></ul>
+<div class="mw-heading mw-heading3"><h3 id="Splitting_nodes">Splitting nodes</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Transformation_over_nodes&amp;veaction=edit&amp;section=5" title="Edit section: Splitting nodes" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Transformation_over_nodes&amp;action=edit&amp;section=5" title="Edit section&#39;s source code: Splitting nodes">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>One node may be split into two or more nodes through the use of splitting rules. 
+Consider, for instance, the cases below:
+</p>
+<dl><dt>Splitting rules deal only with strings and apply only to nodes with the feature TEMP.</dt>
+<dd>Original node: ("abc",TEMP)</dd>
+<dd>Split rule: ("abc"):=("ab")("c");</dd>
+<dd>Resulting nodes: ("ab",TEMP)("c",TEMP);</dd>
+<dd>However, if the original node was ("abc"), without TEMP, the rule would not have been applied (i.e., it is necessary to assign the feature TEMP to the node before splitting it)</dd>
+<dt>Splitting rules are conservative: the elements of the original node, except the string, will be preserved unless explicitly altered.</dt>
+<dd>Original node: ("abc",[abc],[[abc]],A,B,C,TEMP)</dd>
+<dd>Split rule: ("abc"):=("ab")("c");</dd>
+<dd>Resulting nodes: ("ab",[abc],[[abc]],A,B,C,TEMP)("c",[abc],[[abc]],A,B,C,TEMP) (i.e., the elements of the original node will be copied to the new nodes)</dd>
+<dd>However, if the rule was: ("abc"):=("ab",-A,-B,-C,-TEMP,+AB)("c",-TEMP);</dd>
+<dd>The result would be: ("ab",[abc],[[abc]],AB)("c",[abc],[[abc]],A,B,C)</dd></dl>
+<div class="mw-heading mw-heading3"><h3 id="Merging_nodes_(&amp;)"><span id="Merging_nodes_.28.26.29"></span>Merging nodes (&amp;)</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Transformation_over_nodes&amp;veaction=edit&amp;section=6" title="Edit section: Merging nodes (&amp;)" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Transformation_over_nodes&amp;action=edit&amp;section=6" title="Edit section&#39;s source code: Merging nodes (&amp;)">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>Two or more nodes may be merged by the command &amp;:
+</p>
+<ul><li>(%x)(%y)(%z):=(%x&amp;%y&amp;%z);</li></ul>
+<p>In the example above("a")("b")("c") becomes ("abc")
+</p>
+<dl><dt>Merge operations concatenate headwords and UWs, and join features</dt></dl>
+<p>("hw1",[[uw1]],F1,%x)("hw2",[[uw2]],F2,%y)("hw3",[[uw3]],F3,%z):=(%x&amp;%y&amp;%z);<br />
+The resulting node is ("hw1hw2hw3",[[uw1uw2uw3]],F1,F2,F3)
+</p>
+<dl><dt>Compare the difference</dt></dl>
+<ul><li>(%x)(%y):=(%z); (the nodes %x and %y are replaced by %z, and their features are lost unless explicitly included in %z)</li>
+<li>(%x)(%y):=(%x&amp;%y); (the nodes %x and %y are merged)</li></ul>
+<div class="mw-heading mw-heading3"><h3 id="Retrieving_entries_in_the_dictionary_after_tokenization_(?)"><span id="Retrieving_entries_in_the_dictionary_after_tokenization_.28.3F.29"></span>Retrieving entries in the dictionary after tokenization (?)</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Transformation_over_nodes&amp;veaction=edit&amp;section=7" title="Edit section: Retrieving entries in the dictionary after tokenization (?)" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Transformation_over_nodes&amp;action=edit&amp;section=7" title="Edit section&#39;s source code: Retrieving entries in the dictionary after tokenization (?)">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>During transformation (i.e., after tokenization), dictionary entries may be accessed from transformation rules by the command "?"
+</p>
+<ul><li>(?[headword]) retrieves the first entry in the dictionary with the headword "headword"</li>
+<li>(?[[uw]]) retrieves the first entry in the dictionary with the UW "uw"</li>
+<li>(?[headword],?[[uw]],?feature) retrieves the first entry in the dictionary with the headword "headword", the UW "uw" and the feature "feature"</li></ul>
+<p>Regular expressions, variables and disjunction may also be used in dictionary search
+</p>
+<ul><li>(?[/abcd./]) retrieves the first entry in the dictionary whose headword has 5 characters and begins with "abcd" (this works only in natural language generation)</li>
+<li>(?[[/abcd./]]) retrieves the first entry in the dictionary whose UW has 5 characters and begins with "abcd" (this works only in natural language analysis)</li></ul>
+<dl><dt>Obligatory parameters</dt>
+<dd>Due to the indexation algorithm, the headword is obligatory in IAN and the UW is obligatory in EUGENE:</dd></dl>
+<ul><li>(?[headword]) will work only in IAN</li>
+<li>(?[[uw]]) will work only in EUGENE</li>
+<li>(?feature) will not work in IAN or EUGENE</li></ul>
+<dl><dt>Variables</dt>
+<dd>In order to avoid repetition, dictionary look-up may use the values of indexed nodes in the left side</dd></dl>
+<ul><li>(?[%x]) retrieves the first entry in the dictionary with the same headword of the node %x</li>
+<li>(?[[%x]]) retrieves the first entry in the dictionary with the same UW of the node %x</li>
+<li>(?[%x],ATT=%x) retrieves the first entry in the dictionary with the same headword of the node %x and whose attribute ATT has the same value of the attribute ATT of the node %x</li></ul>
+<dl><dt>Example</dt></dl>
+<p>Dictionary search is used mainly in natural language generation
+</p>
+<ul><li>(N,NUM,GEN,@def,%noun):=(?[[]],?ART,?DEF,?NUM=%noun,?GEN=%noun)(%noun,-@def);</li></ul>
+<p>In case of node %noun with the features noun (N), number (NUM) and gender (GEN), and with the attribute @def (definite), search the first entry in the dictionary associated with the UW "" (empty UW) with the features ART and DEF, and whose attributes NUM and GEN have the same values of the ones of the node %noun, and insert it in front of the noun. Remove @def from the noun in order to avoid an infinite loop.
+</p>
+<div class="mw-heading mw-heading3"><h3 id="Triggering_rules_(!)"><span id="Triggering_rules_.28.21.29"></span>Triggering rules (!)</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Transformation_over_nodes&amp;veaction=edit&amp;section=8" title="Edit section: Triggering rules (!)" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Transformation_over_nodes&amp;action=edit&amp;section=8" title="Edit section&#39;s source code: Triggering rules (!)">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p><a href="/wiki/Dictionary_Specs#Inflection_rules_inside_dictionary_entries.2A" class="mw-redirect" title="Dictionary Specs">Inflectional rules</a> are triggered in the grammar by the command "!"&lt;ATTRIBUTE&gt;.<br />
+Given the dictionary entry:
+</p>
+<ul><li>[foot] "foot" (POS=NOU, NUM(PLR:="oo":"ee")) &lt;eng,0,0&gt;;</li></ul>
+<p>The rule NUM(PLR:="oo":"ee") is triggered by !NUM<br />
+For instance:
+</p>
+<ul><li>(NUM=PLR,^inflected):=(!NUM,+inflected); or</li>
+<li>(PLR,^inflected):=(!NUM,+inflected); or</li>
+<li>(NUM,^inflected):=(!NUM,+inflected);</li></ul>
+<p>In the first case (NUM=PLR), the system verifies if the attribute "NUM" is set and if it has the value "PLR". In the second and in the third case, the system simply verifies if the word has any feature (attribute or value) equal to "PLR" or "NUM".<br />
+It's important to stress that, as the features of the dictionary are defined by the user, there is no way of pre-assigning attribute-value pairs. In that sense, it's not possible to infer that "PLR" will be a value of the attribute "NUM" except through an assignment of the form "NUM=PLR" (i.e., given only "PLR" or "NUM", is not possible to state "NUM=PLR").
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20260910135545
+Cache expiry: 86400
+Reduced expiry: false
+Complications: [show‐toc]
+CPU time usage: 0.010 seconds
+Real time usage: 0.011 seconds
+Preprocessor visited node count: 280/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/100
+Expensive parser function count: 0/100
+Unstrip recursion depth: 0/20
+Unstrip post‐expand size: 304/5000000 bytes
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    0.000      1 -total
+-->
+
+<!-- Saved in parser cache with key u965818192_SLvgQ-l8z2_:pcache:797:|#|:idhash:canonical and timestamp 20260910135545 and revision id 16063. Rendering was triggered because: diff-page
+ -->
+</div>

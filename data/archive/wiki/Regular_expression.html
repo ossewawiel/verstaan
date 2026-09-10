@@ -1,0 +1,246 @@
+<div class="mw-content-ltr mw-parser-output" lang="en" dir="ltr"><p><b>Regular expressions</b>, also referred to as regex or regexp, provide a concise and flexible means for matching strings of text, such as particular characters, words, or patterns of characters. In the UNL<sup>arium</sup> framework, regular expressions follow the <a rel="nofollow" class="external text" href="http://www.pcre.org/">PCRE library</a>. 
+</p>
+<div class="mw-heading mw-heading2"><h2 id="Syntax">Syntax</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Regular_expression&amp;veaction=edit&amp;section=1" title="Edit section: Syntax" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Regular_expression&amp;action=edit&amp;section=1" title="Edit section&#39;s source code: Syntax">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>Regular expressions come between /forward slashes/. They are used to replace "/strings/" (between quotes), [/natural language entries/] (between brackets), [[/UWs/]] (between double square brackets) or /features/. For instance:
+</p>
+<ul><li>"/.../" matches any string made of three characters</li>
+<li>[/[abc]/] matches the natural language entries "a", "b" and "c"</li>
+<li>[[/(abc|def)/]] matches the UW "abc" or "def"</li>
+<li>/(MCL|FEM)/ matches the features MCL or FEM</li></ul>
+<div class="mw-heading mw-heading2"><h2 id="Metacharacters">Metacharacters</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Regular_expression&amp;veaction=edit&amp;section=2" title="Edit section: Metacharacters" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Regular_expression&amp;action=edit&amp;section=2" title="Edit section&#39;s source code: Metacharacters">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>For a comprehensive list of metacharacters, please consult <a rel="nofollow" class="external text" href="http://www.pcre.org/">Perl Compatible Regular Expressions</a>.
+</p><p><br />
+</p>
+<table border="1" cellpadding="2" align="center">
+<tbody><tr>
+<th colspan="2">Characters
+</th></tr>
+<tr>
+<td><b>a</b>
+</td>
+<td>match the character a
+</td></tr>
+<tr>
+<td><b>3</b>
+</td>
+<td>match the number 3
+</td></tr>
+<tr>
+<th colspan="2">Wildcards
+</th></tr>
+<tr>
+<td><b>.</b>
+</td>
+<td>match any character
+</td></tr>
+<tr>
+<td><b>\…</b>
+</td>
+<td>quote single metacharacter: \. matches a dot instead of any character and \\ matches a single backslash
+</td></tr>
+<tr>
+<td><b>\w</b>
+</td>
+<td>alphanumeric + underscore (shortcut for [0-9a-zA-Z_])
+</td></tr>
+<tr>
+<td><b>\W</b>
+</td>
+<td>any character not covered by \w
+</td></tr>
+<tr>
+<td><b>\d</b>
+</td>
+<td>numeric (shortcut for [0-9])
+</td></tr>
+<tr>
+<td><b>\D</b>
+</td>
+<td>any character not covered by \d
+</td></tr>
+<tr>
+<td><b>\s</b>
+</td>
+<td>whitespace (shortcut for [ \t\n\r\f])
+</td></tr>
+<tr>
+<td><b>\S</b>
+</td>
+<td>any character not covered by \s
+</td></tr>
+<tr>
+<td><b>[…]</b>
+</td>
+<td>any character listed: [a5!d-g] means a, 5,&#160;! and d, e, f, g
+</td></tr>
+<tr>
+<td><b>[^…]</b>
+</td>
+<td>any character not listed: [^a5!d-g] means anything but a, 5,&#160;! and d, e, f, g
+</td></tr>
+<tr>
+<th colspan="2">Quantifiers
+</th></tr>
+<tr>
+<td><b>?</b>
+</td>
+<td>match 1 or 0 times
+</td></tr>
+<tr>
+<td><b>*</b>
+</td>
+<td>0 or more times
+</td></tr>
+<tr>
+<td><b>+</b>
+</td>
+<td>1 or more times
+</td></tr>
+<tr>
+<td><b>{n}</b>
+</td>
+<td>exactly n times
+</td></tr>
+<tr>
+<td><b>{n,}</b>
+</td>
+<td>at least n times
+</td></tr>
+<tr>
+<td><b>{n,m}</b>
+</td>
+<td>at least n but not more than m times, as often as possible
+</td></tr>
+<tr>
+<th colspan="2">Grouping
+</th></tr>
+<tr>
+<td><b>(...)</b>
+</td>
+<td>
+</td></tr>
+<tr>
+<th colspan="2">Special characters
+</th></tr>
+<tr>
+<td>{ } [ ] ( ) ^ $ . | * +&#160;?
+</td>
+<td>to match these characters, override (escape) with \
+</td></tr></tbody></table>
+<div class="mw-heading mw-heading2"><h2 id="Examples">Examples</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Regular_expression&amp;veaction=edit&amp;section=3" title="Edit section: Examples" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Regular_expression&amp;action=edit&amp;section=3" title="Edit section&#39;s source code: Examples">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<table border="1" cellpadding="2" align="center">
+<tbody><tr>
+<th>RegEx
+</th>
+<th>Description
+</th>
+<th>Matches
+</th></tr>
+<tr>
+<td>/abc/
+</td>
+<td>match the sequence "abc"
+</td>
+<td>abc
+</td></tr>
+<tr>
+<td>/abc./
+</td>
+<td>match the sequence "abc" plus one character
+</td>
+<td>abca, abcb, abcc, abcd, abce, ...
+</td></tr>
+<tr>
+<td>/abc(a)?/
+</td>
+<td>match the sequence "abc" plus zero or one character "a"
+</td>
+<td>abc, abca
+</td></tr>
+<tr>
+<td>/abc(a)*/
+</td>
+<td>match the sequence "abc" plus zero or more characters "a"
+</td>
+<td>abc, abca, abcaa, abcaaa, abcaaaa, abcaaaaa, ...
+</td></tr>
+<tr>
+<td>/abc(a)+/
+</td>
+<td>match the sequence "abc" plus one or more characters "a"
+</td>
+<td>abca, abcaa, abcaaa, abcaaaa, ...
+</td></tr>
+<tr>
+<td>/abc(a){3}/
+</td>
+<td>match the sequence "abc" plus three characters "a"
+</td>
+<td>abcaaa
+</td></tr>
+<tr>
+<td>/abc(a){3,}/
+</td>
+<td>match the sequence "abc" plus at least three characters "a"
+</td>
+<td>abcaaa, abcaaaa, abcaaaaa, abcaaaaaa, ...
+</td></tr>
+<tr>
+<td>/abc(a){2,5}/
+</td>
+<td>match the sequence "abc" plus two to five characters "a"
+</td>
+<td>abcaa, abcaaa, abcaaaa, abcaaaaa
+</td></tr>
+<tr>
+<td>/a[bcd]e/
+</td>
+<td>match "a" plus "b", "c" or "d", plus "e"
+</td>
+<td>abe, ace, ade
+</td></tr>
+<tr>
+<td>/a[^bcd]e/
+</td>
+<td>match "a" plus any character that is not "b", "c" or "d", plus "e"
+</td>
+<td>aae, aee, afe, age, ahe, ...
+</td></tr>
+<tr>
+<td>/a\d/
+</td>
+<td>match "a" plus any single digit
+</td>
+<td>a0, a1, a2, a3, a4, a5, a6, a7, a8, a9
+</td></tr>
+<tr>
+<td>/a(\d){2}/
+</td>
+<td>match "a" plus any two digits
+</td>
+<td>a00, a01, a02, a03, a04, ...
+</td></tr></tbody></table>
+<!-- 
+NewPP limit report
+Cached time: 20260909232120
+Cache expiry: 86400
+Reduced expiry: false
+Complications: []
+CPU time usage: 0.007 seconds
+Real time usage: 0.007 seconds
+Preprocessor visited node count: 29/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/100
+Expensive parser function count: 0/100
+Unstrip recursion depth: 0/20
+Unstrip post‐expand size: 50/5000000 bytes
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    0.000      1 -total
+-->
+
+<!-- Saved in parser cache with key u965818192_SLvgQ-l8z2_:pcache:502:|#|:idhash:canonical and timestamp 20260909232120 and revision id 13125. Rendering was triggered because: diff-page
+ -->
+</div>

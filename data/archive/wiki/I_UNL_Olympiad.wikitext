@@ -1,0 +1,156 @@
+The UNL Olympiad is a series of competitions organised by the UNDL Foundation in order to foster the development of UNL-driven resources (dictionaries, grammars and corpora). The first edition of the Olympiad is devoted to the development of grammars for the corpus [[UC-A1]], comprising 100 sentences. The competition is open to any participant, and the deadline is February 15th, 2013. 
+
+== Important dates ==
+*<strike>November 15th, 2012: Call for Participation</strike>
+*<strike>February 15th, 2013: Deadline for submitting the files</strike>
+
+== Modalities ==
+The competition is organised in two modalities:
+*Best UNLization Grammar for <LANGUAGE>
+*Best NLization Grammar for <LANGUAGE>
+Where <LANGUAGE> is one of the languages participating in this Olympiad (see the complete list below).<br />
+Candidates may participate in one or two modalities, i.e., they may work with the UNLization grammar, with the NLization grammar, or with both.<br />
+Candidates may also participate in one or more languages, provided that they belong to the list below.
+
+== Prizes ==
+Prizes are awarded to the best grammars of each modality (UNLization and NLization) for each language<ref>This means that for each language there will be awarded up to 6 prizes: Best UNLization Grammar, Second Best UNLization Grammar, Third Best UNLization Grammar, Best NLization Grammar, Second Best UNLization Grammar and Third Best NLization Grammar</ref>:
+*1st place: Gold Medal and USD500.00
+*2nd place: Silver Medal
+*3rd place: Bronze Medal
+Additionally, the authors of the three best UNLization Grammars among all languages and the authors of the three best NLization Grammars among all languages will also be invited to participate in the next intermediate-level grammar workshop, to be held in Geneva, Switzerland, on May 2013.
+
+== Registration ==
+Candidates must be registered at the [http://www.unlweb.net UNLweb]. Participation is open and free, and the registration to the Olympiad is done by sending the following files to r.martins@undlfoundation.org until 23:59:59 (UTC) of February 15th, 2013.
+*For the participants working with the UNLization grammar (IAN):
+**UCA1_<LID>.txt, with the human translation, to the target language, of the sentences of the Corpus UC-A1;
+**<LID>_unl_dic.txt, with the natural language analysis dictionary used to UNLize the translated version of the Corpus UC-A1;
+**<LID>_unl_tgrammar.txt, with the transformation grammar used to UNLize the translated version of the Corpus UC-A1;
+**<LID>_unl_dgrammar.txt, with the disambiguation grammar used to UNLize the translated version of the Corpus UC-A1;
+**<LID>_unl_output.txt, with the output provided by IAN
+*For the participants working with the NLization grammar (EUGENE)
+**UCA1_<LID>.txt, with the human translation, to the target language, of the sentences of the Corpus UC-A1;
+**unl_<LID>_dic.txt, with the natural language generation dictionary used to NLize the UNL version of Corpus UC-A1;
+**unl_<LID>_tgrammar.txt, with the transformation grammar used to NLize the UNL version of the Corpus UC-A1;
+**unl_<LID>_dgrammar.txt, with the disambiguation grammar used to NLize the UNL version of the Corpus UC-A1;
+**unl_<LID>_output.txt, with the output provided by EUGENE
+Where <LID> must be replaced by the three-character language according to [http://en.wikipedia.org/wiki/List_of_ISO_639-3_codes ISO 639-3].<ref>For instance, the files to be provided by Russian (code = "rus") must be UCA1_rus.txt, rus_unl_dic.txt, rus_unl_tgrammar.txt, etc.</ref>.<br />
+All files must be provided in UTF-8.
+
+== Requisites ==
+The competition is free and open to any participant, but it is limited to the set of languages described below.<br />
+The files must comply with the following requisites:
+*The corpus must comply with the translation standards of the target language and should not be artificially translated in order to provoke better results. 
+*The input corpus used in UNLization will be used as the reference corpus used to evaluate the NLization output.
+*The dictionary files must comply with the [[Dictionary Specs]] and may only bring features present in the [[Tagset]]. They should not contain temporary words. 
+*The grammar files must comply with the [[Grammar Specs]] and must be as generic possible. They should not target the specific sentences of the corpus, but the general structures presented there. 
+*The [[F-measure]] of the grammars must be equal or greater than 0.8.<ref>The F-measure may be calculate at UNLWEB>UNLARIUM>GRAMMAR>[LOCALE]>F-MEASURE</ref>
+*The files must be original. Grammars whose similarity proves to go beyond any reasonable doubt will be discarded, unless provided by the same author (for different languages).
+
+== Evaluation ==
+Grammars will be evaluated and ranked according to the following criteria:
+*Best [[F-measure]]
+*Scalability (i.e., extendibility, or the capacity of being reused to other corpora), in case of grammars with the same F-Measure
+*Date of submission, in case of grammars with the same F-Measure and equally scalable
+
+== Languages ==
+The I UNL Olympiad will be dedicated to the development of grammars for the following languages<ref>The choice of the languages was motivated by three criteria: 1) Languages for which we do not have the basic grammars yet; 2) Languages that have participated in the recent UNL Schools; and 3) Languages that have already started the project MIR-A1.</ref> 
+*Assamese
+*Baatonum
+*Bengali
+*Bulgarian
+*Chinese
+*Croatian
+*Dutch
+*German
+*Gujarati
+*Hindi
+*Hungarian
+*Indonesian
+*Italian
+*Japanese
+*Kashmiri
+*Malayalam
+*Manipuri
+*Marathi
+*Oriya
+*Persian
+*Polish
+*Romanian
+*Russian
+*Sanskrit
+*Sindhi
+*Slovak
+*Swahili
+*Swedish
+*Tamil
+*Telugu
+*Thai
+*Turkish
+*Ukrainian
+
+Candidates may participate in one or more languages above.
+
+== Results ==
+
+=== General results ===
+*Best UNLization Grammar:
+**Gold Metal: Grega Milharcic (hun,ita,nld,slk,ukr)
+**Silver Medal: Mihaela Ilioaia (rom)
+**Bronze Medal: Sergiy Prots (pol)
+*Best NLization Grammar
+**Gold Medal: Grega Milharcic (ukr, nld)
+**Silver Medal: Sergiy Prots (rus)
+**Bronze Medal: Mihaela Ilioaia (rom)
+
+=== Results by language pair* ===
+<nowiki>*</nowiki>Only for grammars whose F-measure are equal or higher than 0.8
+{|border=1 cellpadding=5
+!Grammars
+!F-measure
+!Author
+!Position<br/>in the language pair
+!Files
+|-
+|align=center|bul>unl||align=center|0.873||align=center|Yordanka Stancheva||align=center|Gold Medal||align=center|[http://www.unlweb.net.br/resources/grammar/UCA1/bul_unl.rar]
+|-
+|align=center|hun>unl||align=center|1.000||align=center|Grega Milharcic||align=center|Gold Medal||align=center|[http://www.unlweb.net.br/resources/grammar/UCA1/hun_unl.rar]
+|-
+|align=center|ita>unl||align=center|1.000||align=center|Grega Milharcic||align=center|Gold Medal||align=center|[http://www.unlweb.net.br/resources/grammar/UCA1/ita_unl.rar]
+|-
+|align=center|nld>unl||align=center|1.000||align=center|Grega Milharcic||align=center|Gold Medal||align=center|[http://www.unlweb.net.br/resources/grammar/UCA1/nld_unl.rar]
+|-
+|align=center|ori>unl||align=center|0.840||align=center|Ranjan Das||align=center|Gold Medal||align=center|[http://www.unlweb.net.br/resources/grammar/UCA1/ori_unl.rar]
+|-
+|align=center|pol>unl||align=center|0.920||align=center|Sergiy Prots||align=center|Gold Medal||align=center|[http://www.unlweb.net.br/resources/grammar/UCA1/pol_unl.rar]
+|-
+|align=center|rom>unl||align=center|0.940||align=center|Mihaela Ilioaia||align=center|Gold Medal||align=center|[http://www.unlweb.net.br/resources/grammar/UCA1/rom_unl.rar]
+|-
+|align=center|rus>unl||align=center|0.880||align=center|Sergiy Prots||align=center|Gold Medal||align=center|[http://www.unlweb.net.br/resources/grammar/UCA1/rus_unl.rar]
+|-
+|align=center|slk>unl||align=center|0.970||align=center|Grega Milharcic||align=center|Gold Medal||align=center|[http://www.unlweb.net.br/resources/grammar/UCA1/slk_unl.rar]
+|-
+|align=center|ukr>unl||align=center|0.970||align=center|Grega Milharcic||align=center|Gold Medal||align=center|[http://www.unlweb.net.br/resources/grammar/UCA1/ukr_unl_1.rar]
+|-
+|align=center|ukr>unl||align=center|0.880||align=center|Sergiy Prots||align=center|Silver Medal||align=center|[http://www.unlweb.net.br/resources/grammar/UCA1/ukr_unl_2.rar]
+|-
+|align=center|unl>hun||align=center|0.930||align=center|Grega Milharcic||align=center|Gold Medal||align=center|[http://www.unlweb.net.br/resources/grammar/UCA1/unl_hun.rar]
+|-
+|align=center|unl>ita||align=center|0.930||align=center|Grega Milharcic||align=center|Gold Medal||align=center|[http://www.unlweb.net.br/resources/grammars/UCA1/unl_ita.rar]
+|-
+|align=center|unl>nld||align=center|0.950||align=center|Grega Milharcic||align=center|Gold Medal||align=center|[http://www.unlweb.net.br/resources/grammar/UCA1/unl_nld.rar]
+|-
+|align=center|unl>pol||align=center|0.920||align=center|Sergiy Prots||align=center|Gold Medal||align=center|[http://www.unlweb.net.br/resources/grammar/UCA1/unl_pol.rar]
+|-
+|align=center|unl>rom||align=center|0.900||align=center|Mihaela Ilioaia||align=center|Gold Medal||align=center|[http://www.unlweb.net.br/resources/grammar/UCA1/unl_rom.rar]
+|-
+|align=center|unl>rus||align=center|0.940||align=center|Sergiy Prots||align=center|Gold Medal||align=center|[http://www.unlweb.net.br/resources/grammar/UCA1/unl_rus.rar]
+|-
+|align=center|unl>slk||align=center|0.930||align=center|Grega Milharcic||align=center|Gold Medal||align=center|[http://www.unlweb.net.br/resources/grammar/UCA1/unl_slk.rar]
+|-
+|align=center|unl>ukr||align=center|0.970||align=center|Grega Milharcic||align=center|Gold Medal||align=center|[http://www.unlweb.net.br/resources/grammar/UCA1/unl_ukr_1.rar]
+|-
+|align=center|unl>ukr||align=center|0.940||align=center|Sergiy Prots||align=center|Silver Medal||align=center|[http://www.unlweb.net.br/resources/grammar/UCA1/unl_ukr_2.rar]
+|}
+
+== Notes ==
+<references />

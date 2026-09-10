@@ -1,0 +1,78 @@
+<div class="mw-content-ltr mw-parser-output" lang="en" dir="ltr"><p>IAN is a natural language analysis system. It represents natural language sentences as semantic networks in the UNL format. In its current release, it is a web application developed in Java and available at the <a href="/wiki/UNLdev" title="UNLdev">UNLdev</a>. 
+</p>
+<div id="toc" class="toc" role="navigation" aria-labelledby="mw-toc-heading"><input type="checkbox" role="button" id="toctogglecheckbox" class="toctogglecheckbox" style="display:none" /><div class="toctitle" lang="en" dir="ltr"><h2 id="mw-toc-heading">Contents</h2><span class="toctogglespan"><label class="toctogglelabel" for="toctogglecheckbox"></label></span></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#The_name"><span class="tocnumber">1</span> <span class="toctext">The name</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#Requirements"><span class="tocnumber">2</span> <span class="toctext">Requirements</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="#Functioning"><span class="tocnumber">3</span> <span class="toctext">Functioning</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="#Quick_start"><span class="tocnumber">4</span> <span class="toctext">Quick start</span></a></li>
+<li class="toclevel-1 tocsection-5"><a href="#Test_drive"><span class="tocnumber">5</span> <span class="toctext">Test drive</span></a></li>
+</ul>
+</div>
+
+<div class="mw-heading mw-heading2"><h2 id="The_name">The name</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=IAN&amp;veaction=edit&amp;section=1" title="Edit section: The name" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=IAN&amp;action=edit&amp;section=1" title="Edit section&#39;s source code: The name">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>IAN is an acronym for <b>I</b>nteractive <b>AN</b>alysis system.
+</p>
+<div class="mw-heading mw-heading2"><h2 id="Requirements">Requirements</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=IAN&amp;veaction=edit&amp;section=2" title="Edit section: Requirements" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=IAN&amp;action=edit&amp;section=2" title="Edit section&#39;s source code: Requirements">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>As a universal engine, IAN must be parameterized to the source languages with the following files, to be provided through IAN's interface:
+</p>
+<ul><li>The input natural language document, i.e., the document to be UNL-ized</li>
+<li>The NL-UNL (analysis) dictionary, i.e., a lexical database where <a href="/wiki/UW" class="mw-redirect" title="UW">UWs</a> are mapped into natural language entries, along with the corresponding features, to be provided according to the <a href="/wiki/UNL_Dictionary_Specs" class="mw-redirect" title="UNL Dictionary Specs">UNL Dictionary Specs</a></li>
+<li>The NL-UNL (analysis) transformation grammar, i.e., a set of of transformation rules used to convert natural language sentences into UNL graphs, to be provided according to the <a href="/wiki/UNL_Grammar_Specs" class="mw-redirect" title="UNL Grammar Specs">UNL Grammar Specs</a></li>
+<li>The NL-UNL (analysis) disambiguation grammar, i.e, a set of disambiguation rules used to improve the results of the <a href="/wiki/Tokenization" title="Tokenization">tokenization</a> and of the <a href="/wiki/Transformation" title="Transformation">transformation</a></li></ul>
+<div class="mw-heading mw-heading2"><h2 id="Functioning">Functioning</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=IAN&amp;veaction=edit&amp;section=3" title="Edit section: Functioning" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=IAN&amp;action=edit&amp;section=3" title="Edit section&#39;s source code: Functioning">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>IAN performs the three following movements over the input file:
+</p>
+<ul><li><a href="/wiki/Segmentation" title="Segmentation">Segmentation</a>, i.e., the division of the input document into a series of processing units (sentences), which are processed one at a time</li>
+<li><a href="/wiki/Tokenization" title="Tokenization">Tokenization</a>, i.e., the identification of the tokens (lexical items) of each sentence of the input document</li>
+<li><a href="/wiki/Transformation" title="Transformation">Transformation</a>, i.e., the application of the transformation rules of the grammar over each tokenized sentence in order to represent it as a UNL graph</li></ul>
+<div class="mw-heading mw-heading2"><h2 id="Quick_start">Quick start</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=IAN&amp;veaction=edit&amp;section=4" title="Edit section: Quick start" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=IAN&amp;action=edit&amp;section=4" title="Edit section&#39;s source code: Quick start">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>As part of the <a href="/wiki/UNLdev" title="UNLdev">UNLdev</a>, IAN is available at <a rel="nofollow" class="external autonumber" href="http://dev.undlfoundation.org/analysis/login.jsp">[1]</a>. You must be registered in the UNL<sup>web</sup> in order to log in.<br />
+IAN has 5 tabs:
+</p>
+<ul><li>The welcome tab</li>
+<li><b>NL input</b>, where you have to provide the natural language document to be UNLized. You may either create a new file or upload an existing file.</li>
+<li><b>Dictionaries</b>, where you have to provide the NL-UNL dictonaries (i.e., the dictionaries to be used in natural language analysis). You may either create a new file or upload an existing file. Use the default option "Database", instead of "Compiled Dictionaries", which are used for very big dictionaries. In any case, the dictionary must be provided according to the <a href="/wiki/UNL_Dictionary_Specs" class="mw-redirect" title="UNL Dictionary Specs">UNL Dictionary Specs</a>. Once you create/upload a dictionary, you have to select it (by clicking the corresponding check box) and load it (by pressing the load button at the top menu). You may have several different dictionaries, and may load many of them to process the same corpus, but be sure that they are loaded in the correct order (because the order of the entries in the dictionary does matter for <a href="/wiki/Tokenization" title="Tokenization">tokenization</a>). You may reorder the dictionaries through the option "reorder dictionaries" at the top menu.</li>
+<li><b>T-rules</b>, where you have to provide the NL-UNL <a href="/wiki/Transformation_grammar" class="mw-redirect" title="Transformation grammar">transformation grammar</a> (i.e., the grammar to be used to process the natural language input). You may either create a new file or upload an existing file. Use the default option "Database", instead of "Compiled Grammars", which are used for very big grammars. In any case, the grammar must be provided according to the <a href="/wiki/UNL_Grammar_Specs" class="mw-redirect" title="UNL Grammar Specs">UNL Grammar Specs</a>, and must contain only <a href="/wiki/Transformation_rule" class="mw-redirect" title="Transformation rule">transformation rules</a>. Once you create/upload a grammar, you have to select it (by clicking the corresponding check box) and load it (by pressing the load button at the top menu). You may have several different grammars, and may load many of them to process the same corpus, but be sure that they are loaded in the correct order (because the order of the rules does matter for transformation). You may reorder the grammars through the option "reorder grammars" at the top menu.</li>
+<li><b>D-rules</b>, where you have to provide the NL-UNL <a href="/wiki/Disambiguation_grammar" class="mw-redirect" title="Disambiguation grammar">disambiguation grammar</a> (i.e., the grammar to be used to control the tokenization and improve the results of the transformation grammar). You may either create a new file or upload an existing file. In any case, the grammar must be provided according to the <a href="/wiki/UNL_Grammar_Specs" class="mw-redirect" title="UNL Grammar Specs">UNL Grammar Specs</a>, and must contain only <a href="/wiki/Disambiguation_rule" class="mw-redirect" title="Disambiguation rule">disambiguation rules</a>. Once you create/upload a grammar, you have to select it (by clicking the corresponding check box) and load it (by pressing the load button at the top menu). You may have several different grammars, and may load many of them to process the same corpus, but be sure that they are loaded in the correct order (because the order of the rules does matter for disambiguation). You may reorder the grammars through the option "reorder grammars" at the top menu.</li>
+<li><b>IAN console</b>, where you will get the results. The IAN console brings the list of sentences appearing in the NL input, which may be processed one at a time, or in a range. The results are displayed in 5 different trace levels.</li></ul>
+<div class="mw-heading mw-heading2"><h2 id="Test_drive">Test drive</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=IAN&amp;veaction=edit&amp;section=5" title="Edit section: Test drive" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=IAN&amp;action=edit&amp;section=5" title="Edit section&#39;s source code: Test drive">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>You may test the system using the resources below:
+</p>
+<ul><li>NL input: to be uploaded to the tab <b>NL input</b> (don't forget to select and load the file after uploading it)
+<ol><li><a rel="nofollow" class="external text" href="http://www.unlweb.net.br/resources/corpus/UCA1/UCA1_eng.txt">UCA1_eng.txt</a> (corpus UCA1 in English)</li></ol></li>
+<li>Dictionaries: to be uploaded, IN THE FOLLOWING ORDER, to the tab <b>Dictionaries</b> (don't forget to select and load the file after uploading it)
+<ol><li><a rel="nofollow" class="external text" href="http://www.unlweb.net.br/resources/dic/UCA1/eng_unl_dic.txt">eng_unl_dic.txt</a> (entries appearing in the corpus <a href="/wiki/UCA1" class="mw-redirect" title="UCA1">UCA1</a></li>
+<li><a rel="nofollow" class="external text" href="http://www.unlweb.net.br/resources/dic/default_dic.txt">Default Dictionary</a> (blank space, punctuation signs and other generic entries)</li></ol></li>
+<li>N-grammar: to be uploaded to the tab "N-rules" (don't forget to select and load the file after uploading it)
+<ol><li><a rel="nofollow" class="external text" href="http://www.unlweb.net.br/resources/grammar/n-grammar.txt">Normalization Grammar</a> (used to normalize the input text)</li></ol></li>
+<li>T-grammars: to be uploaded, IN THE FOLLOWING ORDER, to the tab <b>T-rules</b> (don't forget to select and load the file after uploading it)
+<ol><li><a rel="nofollow" class="external text" href="http://www.unlweb.net.br/resources/grammar/s-grammar.txt">Standardization Grammar</a> (used to standardize the features coming from the dictionary)</li>
+<li><a rel="nofollow" class="external text" href="http://www.unlweb.net.br/resources/grammar/UCA1/eng_unl_tgrammar.txt">ENG-UNL T-Grammar</a> (language-specific rules)</li>
+<li><a rel="nofollow" class="external text" href="http://www.unlweb.net.br/resources/grammar/nl_unl_tgrammar.txt">Default T-Grammar</a> (generic rules)</li></ol></li>
+<li>D-grammar: to be uploaded to the tab <b>D-rules</b> (don't forget to select and load the file after uploading it)
+<ol><li><a rel="nofollow" class="external text" href="http://www.unlweb.net.br/resources/grammar/UCA1/eng_unl_dgrammar.txt">eng_unl_dgrammar.txt</a> (disambiguation rules)</li></ol></li></ul>
+<!-- 
+NewPP limit report
+Cached time: 20260909223626
+Cache expiry: 86400
+Reduced expiry: false
+Complications: [show‐toc]
+CPU time usage: 0.006 seconds
+Real time usage: 0.006 seconds
+Preprocessor visited node count: 34/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/100
+Expensive parser function count: 0/100
+Unstrip recursion depth: 0/20
+Unstrip post‐expand size: 0/5000000 bytes
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    0.000      1 -total
+-->
+
+<!-- Saved in parser cache with key u965818192_SLvgQ-l8z2_:pcache:602:|#|:idhash:canonical and timestamp 20260909223626 and revision id 14233. Rendering was triggered because: page-view
+ -->
+</div>

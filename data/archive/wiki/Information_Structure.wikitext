@@ -1,0 +1,19 @@
+'''Information Structure''' describes the way in which information is formally packaged within a sentence, often focusing on the ways in which topic-comment structures are used to make particular parts of information stand out as particularly salient in relation to others.
+
+== Natural language == 
+In the UNLarium, the information structure may assume the following values:
+
+{{#tree:id=foc|openlevels=0|root=Information Structure (IST)|
+*focus (FOC): focus
+*theme (THE): topic
+*rheme (RHE): comment
+}}
+
+== UNL ==
+In UNL, the information structure is represented by the following attributes: 
+
+{{#tree:id=unl_focus|openlevels=0|root=Information Structure (IST)|
+**@focus
+**@topic
+**@comment
+}}

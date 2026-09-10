@@ -1,0 +1,119 @@
+The '''UNL Memory''', also known as UNL Example Base, is a network structure where UW's are interconnected through any semantic relation of UNL. Differently from the [[UNL Ontology]], which deals only with monotonic relations ("icl" and "iof"), and the [[UNL Knowledge Base]], which deals only with relations used to define a concept, the UNL Memory contains any relation that is likely to link two concepts, including those that are not necessary but only frequent, according to their use in a given corpus. In that sense, the UNL Memory comprises and extends the UNL Ontology and the UNL<sup>KB</sup>.<br /><br />
+The UNL Memory may be provided in two different formats:
+*Extended, in XML; or
+*Simplified, as a set of [[Grammar_Specs#Disambiguation_Rules|network disambiguation rules]]
+
+
+== Extended format ==
+
+UNL Memory entries in extended format must have the following structure:
+
+ <relation name="RNAME" type="RTYPE" frequency="RFREQ">
+   <source id="SID" attribute="ATT" lang="UNL" frequency="SFREQ" class="SCLASS">SOURCE</source>
+   <target id="TID" attribute="ATT" lang="UNL" frequency="TFREQ" class="TCLASS">TARGET</target>
+ </relation>
+
+Where:<br />
+RNAME is the name of one existing UNL relation ("agt", "aoj", "obj", etc);<br />
+RTYPE is the type of the existing relation<br />
+RFREQ is the frequency of the relation TYPE between the SOURCE and the TARGET in the corpus;<br />
+SFREQ is the frequency of the SOURCE in the corpus;<br />
+TFREQ is the frequency of the TARGET in the corpus;<br />
+SID is a number used to identify the SOURCE;<br />
+TID is a number used to identify the TARGET;<br />
+ATT is one of the existing UNL attributes ("entry", "past", etc);<br />
+SCLASS is the general class of the SOURCE;<br />
+TCLASS is the general class of the TARGET;<br />
+SOURCE is the source node of the UNL relation; <br />
+TARGET is the target node of the UNL relation; <br />
+
+=== XML Schema ===
+
+<pre>
+<?xml version="1.0" encoding="utf-16"?>
+<xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" version="1.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+ <xsd:element name="eb">
+   <xsd:complexType>
+     <xsd:sequence>
+       <xsd:element maxOccurs="unbounded" name="relation">
+         <xsd:complexType>
+           <xsd:sequence>
+             <xsd:element name="source">
+               <xsd:complexType>
+                 <xsd:attribute name="id" type="xsd:unsignedLong" use="required" />
+                 <xsd:attribute name="attribute" type="xsd:string" use="optional" />
+                 <xsd:attribute name="lang" type="xsd:string" use="optional" />
+                 <xsd:attribute name="frequency" type="xsd:int" use="optional"/>
+                 <xsd:attribute name="class" type="xsd:string" use="optional"/>
+               </xsd:complexType>
+             </xsd:element>
+             <xsd:element name="target">
+               <xsd:complexType>
+                 <xsd:attribute name="id" type="xsd:unsignedLong" use="required"/>
+                 <xsd:attribute name="attribute" type="xsd:string" use="optional" />
+                 <xsd:attribute name="lang" type="xsd:string" use="optional"/>
+                 <xsd:attribute name="frequency" type="xsd:int" use="optional"/>
+                 <xsd:attribute name="class" type="xsd:string" use="optional"/>
+               </xsd:complexType>
+             </xsd:element>
+           </xsd:sequence>
+           <xsd:attribute name="name" type="xsd:string" use="required"/>
+           <xsd:attribute name="type" type="xsd:string" use="optional"/>
+           <xsd:attribute name="frequency" type="xsd:int" use="optional"/>
+         </xsd:complexType>
+       </xsd:element>
+     </xsd:sequence>
+   </xsd:complexType>
+ </xsd:element>
+</xsd:schema>
+</pre>
+
+=== Example ===
+
+ <?xml version="1.0" encoding="utf-16"?>
+ <eb>
+  <relation name="mod" frequency="2">
+   <source id="410" attribute="entry" lang="UNL" frequency="20" class="nou">book(icl>document)</source>
+   <target id="2243" lang="UNL" frequency="2" class="nou">republic(icl>form of government)</target>
+  </relation>
+  <relation name="mod" frequency="1">
+   <source id="410" attribute="entry" lang="UNL" frequency="20" class="nou">book(icl>document)</source>
+   <target id="466" lang="UNL" frequency="1" class="nou">certainty(icl>attribute)</target>
+  </relation>
+  <relation name="mod" frequency="1">
+   <source id="410" attribute="entry" lang="UNL" frequency="20" class="nou">book(icl>document)</source>
+   <target id="583" lang="UNL" frequency="2" class="nou">creation(icl>action)</target>
+  </relation>
+  <relation name="mod" frequency="1">
+   <source id="410" attribute="entry" lang="UNL" frequency="20" class="nou">book(icl>document)</source>
+   <target id="1539" lang="UNL" frequency="3" class="nou">lineage(icl>descendant)</target>
+  </relation>
+  <relation name="mod" frequency="1">
+   <source id="410" attribute="entry" lang="UNL" frequency="20" class="nou">book(icl>document)</source>
+   <target id="1566" lang="UNL" frequency="11" class="nou">love(icl>emotion)</target>
+  </relation>
+ </eb>
+
+== Simplified format ==
+
+UNL Memory entries in simplified format must have the structure of [[Grammar_Specs#Disambiguation_Rules|network disambiguation rules]], as follows:
+
+ RELATION(SOURCE;TARGET)=DC;
+
+Where:<br />
+RELATION is the name of one existing UNL relation ("agt", "aoj", "obj", etc);<br />
+SOURCE is the source node of the UNL relation;<br />
+TARGET is the target node of the UNL relation; <br />
+DC is the degree of certainty (i.e., the likelihood of the relation between the SOURCE and the TARGET), ranging from 0 (impossible) to 255 (necessary)<br />
+The SOURCE and the TARGET nodes may be referred as:
+*constants (i.e., specific UWs), to be represented between double square brackets: <nowiki>[[103485997]]</nowiki>
+*a feature (attribute, value, or attribute-value pair) or set of features of a group of UWs: N, LEX=N, N&ABT
+*a relation or a set of relations: agt(N,V)
+
+=== Examples ===
+
+<nowiki>icl(<[[100001930]];[[100001740]])=1; (= a physical entity is a kind of entity)</nowiki><br />
+pof(N;V)=0; (= a nominal concept cannot be a part of a verbal concept)<br />
+pof(LEX=N;LEX=V)=0; (= a nominal concept cannot be a part of a verbal concept)<br />
+icl(ABT;^ABT)=0; (= an abstract concept cannot be a kind of non-abstract concept)<br />
+and(agt(;);^agt(;))=0; (= an agent relation may not be coordinated with a non-agent relation)<br />

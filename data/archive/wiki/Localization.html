@@ -1,0 +1,78 @@
+<div class="mw-content-ltr mw-parser-output" lang="en" dir="ltr"><p>Localization is the process of adapting dictionaries and grammars to a specific language, which is referred to as "locale". In the UNL framework, localization of existing resources is one of the strategies that can be adopted in order to create basic dictionaries and grammars required to process simple corpora. In what follows, we give some instructions concerning the localization of the <a href="/wiki/English_dictionary" title="English dictionary">English dictionary</a> and the <a href="/wiki/English_grammar" title="English grammar">English grammar</a>.
+</p>
+<div class="mw-heading mw-heading2"><h2 id="Localization_of_the_English_Dictionary">Localization of the English Dictionary</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Localization&amp;veaction=edit&amp;section=1" title="Edit section: Localization of the English Dictionary" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Localization&amp;action=edit&amp;section=1" title="Edit section&#39;s source code: Localization of the English Dictionary">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>In order to localize the English Dictionary, you have to consider the following:
+</p>
+<ul><li>The localization affects only the fields [natural language entry] and (the feature list). Do not localize the field "UW": it is not English (although written in English); it is UNL.
+<dl><dd>For instance: given the entry
+<dl><dd>[book]{}"book" (LEX=N,POS=NOU,NUM=SNG)&lt;eng,0,0&gt;;</dd></dl></dd>
+<dd>The localization of this entry to Spanish, French, Portuguese, German and Russian should be as follows:
+<dl><dd>[livre]{}"book" (LEX=N,POS=NOU,NUM=SNG,GEN=MCL)&lt;fra,0,0&gt;;</dd>
+<dd>[libro]{}"book" (LEX=N,POS=NOU,NUM=SNG,GEN=MCL)&lt;esp,0,0&gt;;</dd>
+<dd>[livro]{}"book" (LEX=N,POS=NOU,NUM=SNG,GEN=MCL)&lt;por,0,0&gt;;</dd>
+<dd>[Buch]{}"book" (LEX=N,POS=NOU,NUM=SNG,GEN=NEU)&lt;deu,0,0&gt;;</dd>
+<dd>[книга]{}"book" (LEX=N,POS=NOU,NUM=SNG,GEN=FEM,CAS=NOM)&lt;rus,0,0&gt;;</dd></dl></dd></dl></li>
+<li>The feature list depends on the locale
+<dl><dd>In English, for instance, there is no gender information, because English has no grammatical gender. This is not the case of French, where gender must be provided. In Russian, in addition to gender, we have to add case as well, because Russian has morphological case. You have to add, to the feature list, the inflectional categories available for your language. But note that you may only use the tags available at the <a href="/wiki/Tagset" title="Tagset">Tagset</a>.</dd></dl></li>
+<li>Values of attributes depend on the locale
+<dl><dd>Note also that the values of the attribute may vary from language to language. In Spanish, the natural language word corresponding to "book" is masculine (GEN=MCL); in German, it is neutral (GEN=NEU); in Russian, it is feminine (GEN=FEM).</dd></dl></li>
+<li>The localization should be corpus-driven: your dictionary should contain all and only the words appearing in your translated version of the corpus.
+<dl><dd>The word "book" may have several different meanings, and may be translated by different words in your locale. You don't have to consider all these possibilities. You must address only the use that the word actually had in the corpus. Additionally, you don't have to treat forms that did not appear in the corpus. In the English Dictionary, for instance, there are both "book" and "books", because these two forms appear in the corpus; but note that there is only "girl" in singular, because "girls" in plural does not appear in the corpus. In short: your dictionary must reflect your corpus. You don't have to include words or word forms that are not there. You are not creating a generic dictionary, but a rather small, corpus-driven dictionary, because the main goal here is not the dictionary, but the grammars.</dd></dl></li>
+<li>The set of natural language entries depend on the locale:
+<dl><dd>In English, for instance, we may have different modal auxiliaries for ability ("can") and possibility ("may"). In French, there is only one: "pouvoir". On the other hand, in French there are three different definite articles ("le","la","les"), whereas in English there is only one ("the"). These differences do affect the dictionary structure:
+<dl><dd>English dictionary
+<dl><dd>[can]{}"" (LEX=V,POS=AUX,POS=MOV,att=@ability)&lt;eng,255,0&gt;;</dd>
+<dd>[may]{}"" (LEX=V,POS=AUX,POS=MOV,att=@possibility)&lt;eng,255,0&gt;;</dd></dl></dd>
+<dd>French dictionary
+<dl><dd>[peut]{}""(LEX=V,POS=AUX,POS=MOV,ATE=PRS,PER=3PS,att=@ability,att=@possibility)&lt;eng,255,0&gt;; (note that "pouvoir", in French, may have several other different forms: "peux", "pouvons", "pouvez", etc, but they do not appear in the corpus)</dd></dl></dd>
+<dd>English dictionary
+<dl><dd>[the]{}"" (LEX=D,POS=ART,att=@def)&lt;eng,255,0&gt;;</dd></dl></dd>
+<dd>French dictionary
+<dl><dd>[le]{}"" (LEX=D,POS=ART,NUM=SNG,GEN=MCL,att=@def)&lt;eng,255,0&gt;; (note that number and gender, which were not revelant in English, are now required in French)</dd>
+<dd>[la]{}"" (LEX=D,POS=ART,NUM=SNG,GEN=FEM,att=@def)&lt;eng,255,0&gt;;</dd>
+<dd>[les]{}"" (LEX=D,POS=ART,NUM=PLR,att=@def)&lt;eng,255,0&gt;;</dd></dl></dd></dl></dd></dl></li>
+<li>The classification of natural language entries must be UNL-based
+<dl><dd>Don't forget that you are creating either a NL-UNL or a UNL-NL dictionary, i.e., a bilingual dictionary between your locale and UNL. You have to map the lexical items of your language into UNL, and the UWs into your language. In order to do that, you have to have in mind how the word will be represented in UNL. In several cases, you will not be able to simply adopt the descriptive conventions created for your language. Some English grammars, for instance, treat the word "this" as a "demonstrative pronoun" only, without making any difference between the adjective ("this book") and the noun ("this is the book") uses of the word. In UNL, these two "this" will be represented differently: the first one - "this" as a determiner - will be represented by an attribute (@proximal); the second one - "this" as a pronoun - will be represented by the pro-form "00". Therefore, <u>independently on how this phenomenon is described by English traditional grammars</u>, these two "this" must be differentiated: as a demonstrative determiner and as a demonstrative pronoun:
+<dl><dd>[this]{}"" (LEX=D,POS=DEM,NUM=SNG,att=@proximal)&lt;eng,255,0&gt;;</dd>
+<dd>[this]{}"00.@proximal" (LEX=R,POS=DEP,NUM=SNG)&lt;eng,255,0&gt;;</dd></dl></dd></dl></li></ul>
+<div class="mw-heading mw-heading2"><h2 id="Localization_of_the_English_Grammar">Localization of the English Grammar</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Localization&amp;veaction=edit&amp;section=2" title="Edit section: Localization of the English Grammar" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Localization&amp;action=edit&amp;section=2" title="Edit section&#39;s source code: Localization of the English Grammar">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>Instead of creating a whole grammar from the scratch, you should consider localizing the English grammar, which is a far much simpler strategy to start your first grammar. In order to do that, the following is very important:
+</p>
+<ul><li>You should localize the English dictionary, as described above, instead of creating a brand new dictionary, with a different entry structure.</li>
+<li>Revise the grammar formalism at the <a href="/wiki/UNL_Grammar_Specs" class="mw-redirect" title="UNL Grammar Specs">UNL Grammar Specs</a>. Don't forget that:
+<ul><li>(parentheses) mean a node</li>
+<li>"quotes" mean natural language strings</li>
+<li>[single brackets] mean natural language words</li>
+<li>[[double brackets]] mean UW's</li>
+<li>% means indexes</li>
+<li>X=Y means the attribute X has the value Y (GEN=MCL means gender is masculine)</li>
+<li>isolated strings are features (MCL is masculine)
+<dl><dd>For instance, the rule:
+<dl><dd>("a",[b],[[c]],D=E,F,%g):=(%g)("g");</dd></dl></dd>
+<dd>means:
+<dl><dd>IF there is node whose string is "a", whose natural language word is "b", whose UW is "c", and which has the feature D with the value E, and the feature F, ADD a new node, whose string is "g", to the right of it. Note that %g is used only to index the left side and the right side of the rules (i.e, to indicate that the new node will be inserted to the right of the node referred to in the left side). For further information of the rule structure, read carefully the <a href="/wiki/UNL_Grammar_Specs" class="mw-redirect" title="UNL Grammar Specs">UNL Grammar Specs</a>.</dd></dl></dd></dl></li></ul></li>
+<li>Localize only the rules that are strictly related to English, i.e., the English specific grammar. Do not localize the standardization grammar and the default grammar. They are expected to be valid for all languages.</li></ul>
+<!-- 
+NewPP limit report
+Cached time: 20260910164201
+Cache expiry: 86400
+Reduced expiry: false
+Complications: []
+CPU time usage: 0.006 seconds
+Real time usage: 0.006 seconds
+Preprocessor visited node count: 15/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/100
+Expensive parser function count: 0/100
+Unstrip recursion depth: 0/20
+Unstrip post‐expand size: 54/5000000 bytes
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    0.000      1 -total
+-->
+
+<!-- Saved in parser cache with key u965818192_SLvgQ-l8z2_:pcache:617:|#|:idhash:canonical and timestamp 20260910164201 and revision id 14489. Rendering was triggered because: api-parse
+ -->
+</div>

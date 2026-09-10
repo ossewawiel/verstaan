@@ -1,0 +1,83 @@
+'''NLization''', formerly known as deconversion, is the process of generating natural language structures corresponding to UNL graphs. 
+
+== Units ==
+The process of NLization may have different generation units, as follows:
+*Word-driven NLization
+*Sentence-driven NLization
+*Text-driven NLization
+
+== Paradigms ==
+The process of NLization may follow several different paradigms, as follows:
+*Language-based NLization (based mainly in a [[UNL Dictionary|UNL-NL dictionary]] and [[Grammar Specs|UNL-NL grammar]])
+*Knowledge-based NLization (based mainly in the [[UNL Knowledge Base]])
+*Memory-based NLization (based mainly in the [[UNL-NL Memory]])
+*Statistical-based NLization (based mainly in statistical predictions derived from UNL-NL corpora)
+*Dialogue-based NLization (based mainly in the interaction with the user)
+The actual NLization is normally hybrid and may combine several of the strategies above.
+
+== Recall == 
+The process of NLization may target the whole source document or only parts of it (e.g. main clauses):
+*Full NLization (the whole source document is NLized)
+*Partial (or chunk) NLization (only a part of the source document is NLized)
+;agt(killed,Peter)obj(killed,John)ins(killed,knife)tim(killed,yesterday)
+:Full NLization: Peter killed John with a knife yesterday.
+:Partial NLization: Peter killed John
+
+== Precision ==
+The process of NLization may target the deep syntactic structure of the source graph (i.e., the resulting syntactic structure replicates the semantic structure of the original) or only its surface structure (the resulting syntactic structure does not preserve the semantic structure of the original)
+*Deep NLization (the NLization focus the deep syntactic structure of the source graph)
+*Shallow NLization (the NLization focus the surface syntactic structure of the source graph)
+Syntactic structures are preserved in the UNL document by the use of syntactic attributes (such as @passive, @topic, etc) or by hyper-nodes (i.e., [[scope]]s). 
+;agt(killed.@passive,Peter)obj(killed.@passive,John)
+:Shallow NLization: Peter killed John
+:Deep NLization: John was killed by Peter
+
+== Level ==
+The process of NLization may target literal meanings (locutionary content) or non-literal meanings (ilocutionary content).
+*Locutionary (the NLization represents only the literal meaning)
+*Ilocutionary (the NLization represents also non-literal meanings, including speech acts)
+The ilocutionary force may be represented by figure of speech and speech acts attributes: 
+;agt(pass.@request,you)gol(pass.@request,me)obj(pass.@request,salt)
+:Locutionary level: Pass me the salt
+:Ilocutionary level: Can you pass me salt? / Would you pass me the salt?
+
+== Methods ==
+Humans and machines may play different roles in NLization methods:
+*Fully automatic NLization (the whole process is carried out by the machine, without any intervention of the human user)
+*Human-aided machine NLization (the process is carried mainly by the machine, with some intervention of the human user, either as a pre-editor or as a post-editor, or during the NLization itself, as in dialogue-based NLization)
+*Machine-aided human NLization (the process is carried mainly by the human user, with some help of the machine, as in the dictionary or memory look-up)
+*Fully human NLization (the whole process is carried by the human user, without any intervention of the machine)
+
+== Tools ==
+For the time being, there are two NLization tools, as described below:
+{|border=1 cellpadding=3 align=center
+!Tool
+!Unit
+!Paradigms
+!Recall
+!Precision
+!Level
+!Method
+!Licence
+!Author
+|-
+|[[EUGENE]]
+|sentence
+|LB,KB,EB,MB,DB
+|F,P
+|D,S
+|L,I
+|FA,HA
+|freeware
+|UNDLF
+|-
+|[[DeCo]]
+|sentence
+|LB,KB
+|F
+|D
+|L,I
+|FA
+|shareware
+|UNLC
+|}

@@ -1,0 +1,181 @@
+'''Morphology''' is the branch of linguistics that studies patterns of word formation within and across languages, and attempts to formulate rules that model the knowledge of the speakers of those languages.
+
+== Words, word forms and lexemes == 
+
+There are several difficulties in arriving at a consistent use of the term "word" in relation to other categories of linguistic description, and several criteria (prosodical, morphological, syntactical) have been suggested for the identification of words in a language. One of the main difficulties concerns the use of the term "word" both as a class and as any of its elements. The forms "love", "loves", "loving" and "loved", for instance, may be considered to be different "words" of English or different forms (variants) of the same "word", depending on the case.
+
+In order to avoid ambiguities, linguists differentiate between two senses of "word". The first sense, the one in which "love", "loves", "loving" and "loved" are different "words", is usually called a '''word form'''. Word forms are therefore "the physically definable units which one encounters in a stretch of writing (bounded by spaces) or speech (where identification is more difficult, but where there may be phonological clues to identify boundaries, such as a pause, or juncture features)" (Crystal, 2008, p. 522).
+
+The second sense, the one in which "love", "loves", "loving" and "loved" are "the same word", is normally called a '''lexeme'''. The lexeme is an abstract underlying unit that corresponds to a set of different word forms reputed to be part of the same word class.
+
+== Morphemes == 
+
+Different word forms are said to be part of the same lexeme if they share the same fundamental morphological identity. This means that word forms are analysed into smaller units, called '''morphemes''', which are the smallest linguistic units that have semantic meaning.
+
+Morphemes can be classified according to several different criteria. The most frequent ones are syntactic and semantic. From the syntactic perspective, morphemes can be:
+*'''free morpheme''', if they can stand alone (such as "table", "happy"); or
+*'''bound morpheme''', if they cannot stand alone (such as "un-", "-ism" and "-rupt-").
+From the semantic point of view, there are again two main different types of morphemes:
+* '''root''' - the primary unit of a word unit, which carries the most significant aspects of semantic content; and
+* '''affix''' - a morpheme attached to the root to modify its meaning (such as "-s" in "tables", or "un-" in "undo").
+Word forms may have one (“fire”, “man”, “dish”, “washer”) or several roots (“fireman”, "dishwasher"), and zero ("happy") or more ("unhappy", "unhappiness") affixes.
+
+== Affixes ==
+
+Affixes are divided into several categories, depending on their position and their role with reference to the root. The most important positional categories are:
+*'''prefix''' (PFX) - Appears at the front of the root (such as "un-" in "undo", or "re-" in "rewrite")
+*'''suffix''' (SFX) - Appears at the back of the root (such "-s" in "tables", or "-er" in "writer")
+*'''infix''' (IFX) - Appears within the root (very rare in English, such as "-ma-" in "sophistimacated")
+*'''circumfix''' (CCX) - Appears at the front and at the back of the root (very rare in English, such as "a-" + "-ed" in "ascattered")
+
+As for their roles, there are two main different types of affixes:
+*'''inflectional affix''' - assign grammatical properties (such as number, gender, tense, person) to the root in order to form the different word forms of the same lexeme ("-s" in "tables", "-ed" in "loved")
+*'''derivational affix''' - form a new lexeme by modifying the meaning (and sometimes the category) of the root ("un-" in "unhappy", "-ness" in "happiness").
+
+== Stem ==
+
+The combination of roots and derivational affixes is usually called '''stem''' (or '''inflectional root'''). The stem is therefore the longest common denominator among all word forms belonging to the same lexeme. It defines the basic structure over which inflections apply. For instance:
+
+{|align=center cellpadding=2 border=1
+!colspan=5|word form
+|-
+!colspan=4|stem
+!rowspan=2|inflectional<br>affix
+|-
+!derivational<br>affix
+!root
+!colspan=2|derivational<br>affix
+|-
+|align=center|de-
+|align=center|nation
+|align=center|<nowiki>-</nowiki>al
+|align=center|<nowiki>-</nowiki>iz-
+|align=center|<nowiki>-</nowiki>e<br>-es<br>-ed<br>-ing
+|}
+
+== Overlapping == 
+
+Morphological categories often coincide, but they correspond to different levels of morphological analysis. In non-inflectional (invariant) lexemes (such as English adjectives and adverbs), for instance, the stem is equal to the word form ("happily" = word form = stem). In non-derivational (primitive) lexemes, the stem is equal to the root ("here" = stem = root). In any case, especially in inflectional and derivational lexemes, these categories are clearly differentiated. The Spanish lexeme corresponding to the forms of the adjective "desanimado" (= discouraged), for instance, has the following morphological items:
+*word forms = desanimado, desanimada, desanimados, desanimadas
+*stem = desanimad-
+*inflectional affixes = -o, -a, -os, -as
+*derivational affixes = des-, -ad-
+*root = anim-
+
+In case of overlapping, these categories are used from the least comprehensive ("root") to the most comprehensive ("word form"). Thus;
+*"friend" (word form = stem = root) is classified as root;
+*"unfriendly" (word form = stem) is classified as stem; and
+*"clothes" (word form > stem) is classified as word form.
+
+== Alternative forms ==
+In some languages, a given inflection may assume different forms. The feature ALT must be used for alternative forms.<br />
+In English, for instance, the word 'volcano' may have two different plural forms:
+*PLR:=volcanos;
+*PLR&ALT:=volcanoes;
+In case of more than one possible alternative form, the features ALT1, ALT2 and ALT3 must be used instead of ALT.<br />
+For instance, in Arabic the word 'elephant' has three plural forms, as indicated below:
+*PLR:=فِيَلة;
+*PLR&ALT1:=فُيُول;
+*PLR&ALT2:=أفْيال;
+
+
+== Morphological categories ==
+
+In the UNLarium, we recognize six main morphological categories:
+
+{{#tree:id=tagset|openlevels=0|root=Morphology (MOR)|
+*affix (AFF)
+**inflectional affix (IAX) 
+**derivational affix (DAX)
+*base form (BF)
+**root (ROO)
+**stem (STE) = root + derivational affixes
+*word form (WFO) = root + derivational affixes + inflectional affixes
+*alternative form (ALT)
+**alternative form 1 (ALT1)
+**alternative form 2 (ALT2)
+**alternative form 3 (ALT3)
+**short or weak form (SHO)
+**long or strong form (STR)
+}}
+
+== Examples ==
+
+{|border=1 align=center cellpadding=5
+!lexeme
+!word forms
+!root
+!derivational affixes
+!inflectional affixes
+!stem
+|-
+|1
+|here
+|here
+|
+|
+|here
+|-
+|2
+|happy
+|happy
+|
+|
+|happy
+|-
+|3
+|unhappy
+|happy
+|un-
+|
+|unhappy
+|-
+|4
+|table, tables
+|table
+|
+|<nowiki>-</nowiki>s
+|table
+|-
+|5
+|happiness
+|happy
+|<nowiki>-</nowiki>ness
+|
+|happiness
+|-
+|6
+|love, loves, loving, loved
+|lov-
+|
+|<nowiki>-</nowiki>e,<nowiki>-</nowiki>s, <nowiki>-</nowiki>ing, <nowiki>-</nowiki>ed
+|lov-
+|-
+|7
+|desanimado, desanimada, desanimados, desanimadas
+|anim-
+|des-, -ad-
+|<nowiki>-</nowiki>o, <nowiki>-</nowiki>a, <nowiki>-</nowiki>s
+|desanimad-
+|-
+|8
+|unbreakableness
+|break
+|un-, -able, -ness
+|
+|unbreakableness
+|-
+|9
+|fireman, firemen
+|fire, man
+|
+|
+|fireman
+|-
+|10
+|part of speech, parts of speech
+|part, of, speech
+|
+|<nowiki>-</nowiki>s
+|part of speech
+|}

@@ -1,0 +1,401 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<title>UNL Archive</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/base/jquery-ui.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
+<style>
+    /* Override jQuery UI font settings */
+    .ui-widget, .ui-widget input, .ui-widget select, .ui-widget textarea, .ui-widget button {
+        font-family: inherit !important;
+        font-size: inherit !important;
+    }
+</style>
+<link rel="stylesheet" type="text/css" media="all" href="default.css" />
+</head>
+
+
+
+
+<body>
+<iframe name="I1" height="40" width="100%" scrolling="no" align="top" border="0" frameborder="0" src="unlwebbar/">
+Your browser does not support inline frames or is currently configured not to display inline frames.
+</iframe>
+
+
+   <div id="header" class="text-center py-10">
+    <img src="shared/images/unl_archive.png" alt="UNL Archive Logo" style="max-width:400px; width:100%; height:auto;">
+    
+    <hr />
+</div>
+
+<style>
+    .menu li ul li {
+        margin-top: 8px;
+        margin-bottom: 8px;
+    }
+</style>
+<!-- Menu superior -->
+
+<style>
+    /* Reset básico */
+    .menu,
+    .menu ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .menu {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        background: #fff;
+        position: relative;
+    }
+
+    .menu>li {
+        position: relative;
+    }
+
+    .menu>li>a {
+        display: block;
+        padding: 10px 18px;
+        text-decoration: none;
+        color: #222;
+        font-weight: bold;
+        transition: background 0.2s;
+    }
+
+    .menu>li:hover>a,
+    .menu>li:focus-within>a {
+        background: #eee;
+    }
+
+    .menu li ul {
+        display: none;
+        position: absolute;
+        left: 0;
+        top: 100%;
+        min-width: 180px;
+        background: #fff;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        z-index: 10;
+    }
+
+    .menu li:hover>ul,
+    .menu li:focus-within>ul {
+        display: block;
+    }
+
+    .menu li ul li a {
+        padding: 8px 16px;
+        color: #222;
+        font-weight: strong;
+        white-space: nowrap;
+    }
+
+    .menu li ul li a:hover {
+        background: #f5f5f5;
+    }
+
+    /* Hamburger */
+    .menu-toggle {
+        display: none;
+        background: none;
+        border: none;
+        font-size: 2em;
+        margin: 10px;
+        cursor: pointer;
+    }
+
+    @media (max-width: 900px) {
+        .menu {
+            flex-direction: column;
+            align-items: stretch;
+            display: none;
+            width: 100%;
+        }
+
+        .menu.open {
+            display: flex;
+        }
+
+        .menu>li {
+            width: 100%;
+        }
+
+        .menu>li>a {
+            padding: 14px 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .menu li ul {
+            position: static;
+            box-shadow: none;
+            min-width: 0;
+        }
+
+        .menu li ul {
+            display: none;
+        }
+
+        .menu li.open>ul {
+            display: block;
+        }
+
+        .menu-toggle {
+            display: block;
+        }
+    }
+</style>
+
+<button class="menu-toggle" aria-label="Open menu" onclick="document.querySelector('.menu').classList.toggle('open')">&#9776;</button>
+<ul class="menu">
+    <li><a href="index.php?unlweb=home">HOME</a></li>
+    <li><a href="index.php?unlweb=unlarium" title="Language resources">LINGWARE</a></li>
+    <li><a href="index.php?unlweb=dev" title="Computer resources">SOFTWARE</a></li>
+    <li><a href="index.php?unlweb=education" title="Educational resources">EDUCATION</a></li>
+    <li><a href="index.php?unlweb=documentation" title="Documentation resources">DOCUMENTATION</a></li>
+    <li><a href="index.php?unlweb=unl" title="UNL resources">UNL</a></li>
+    <li><a href="index.php?unlweb=undl" title="UNDL resources">UNDL</a></li>
+
+</ul>
+
+<script>
+    // Mobile submenu toggle with navigation on second click 
+    document.querySelectorAll('.menu > li').forEach(function(li) {
+        var link = li.querySelector('a');
+        if (li.querySelector('ul')) {
+            li.dataset.opened = "false";
+            link.addEventListener('click', function(e) {
+                if (window.innerWidth <= 900) {
+                    if (li.dataset.opened === "false") {
+                        e.preventDefault();
+                        li.classList.add('open');
+                        li.dataset.opened = "true";
+                    } else {
+                        // allow navigation
+                        li.dataset.opened = "false";
+                    }
+                }
+            });
+            // Close submenu when clicking outside
+            document.addEventListener('click', function(event) {
+                if (window.innerWidth <= 900) {
+                    if (!li.contains(event.target)) {
+                        li.classList.remove('open');
+                        li.dataset.opened = "false";
+                    }
+                }
+            });
+        }
+    });
+</script>
+
+
+<hr />
+<div class="center">  <div class="terms">
+
+  <header>
+    <h1>UNL Archive — Terms and Conditions</h1>
+    <p class="muted">Effective date: October 23, 2025</p>
+  </header>
+
+  <section class="section">
+    <h2>1. Introduction</h2>
+    <p>
+      These Terms and Conditions (&quot;Terms&quot;) govern your access to and use of the UNL Archive website, services and content (collectively, the &quot;Service&quot;). By using the Service you agree to these Terms. If you do not agree, do not use the Service.
+    </p>
+  </section>
+
+  <section class="section">
+    <h2>2. Definitions</h2>
+    <ul>
+      <li><strong>&quot;UNL&quot;</strong> — Universal Networking Language (the subject and original body of materials preserved in the Archive).</li>
+      <li><strong>&quot;UNL Archive&quot;</strong> or <strong>&quot;we&quot;/&quot;us&quot;</strong> — the private initiative that operates this repository.</li>
+      <li><strong>&quot;You&quot;</strong> — any user or visitor of the Service.</li>
+      <li><strong>&quot;Materials&quot;</strong> — documentation, code, data, images, papers, metadata and other resources preserved and made available through the Service.</li>
+    </ul>
+  </section>
+
+  <section class="section">
+    <h2>3. Purpose and Scope</h2>
+    <p>
+      The UNL Archive is a repository dedicated to preserving and providing access to the materials produced by the Universal Networking Language (UNL), ensuring that the documentation and resources remain accessible for historical, academic, and technical reference. The Archive's purpose is archival preservation and public access for research, teaching, reference, and reuse under the terms described below.
+    </p>
+  </section>
+
+  <section class="section">
+    <h2>4. Access and Use</h2>
+    <p>
+      Subject to these Terms, we grant you a non-exclusive, non-transferable right to access and use the Service and the Materials solely for lawful, non-commercial or commercial purposes consistent with the license terms described in Section 6 below.
+    </p>
+    <p>
+      You must not use the Service or Materials in a way that violates applicable law, infringes third-party rights, or interferes with the operation of the Service.
+    </p>
+  </section>
+
+  <section class="section">
+    <h2>5. &quot;As Is&quot; Provision — No Further Development or Support</h2>
+    <p>
+      All materials hosted by the UNL Archive are provided <strong>&quot;as is&quot;</strong>. The UNL Archive does not provide further development, updates, maintenance, or technical support for the hosted Materials beyond preservation and distribution. By using the Service and Materials you acknowledge and accept that:
+    </p>
+    <ul>
+      <li>Materials may be archived in their original form and may contain bugs, errors, omissions, or outdated information;</li>
+      <li>We do not guarantee fixes, enhancements, upgrades, or ongoing improvements to any Material; and</li>
+      <li>We do not provide technical support, warranties, or service-level commitments related to the Materials.</li>
+    </ul>
+  </section>
+
+  <section class="section">
+    <h2>6. License &amp; Reuse</h2>
+    <p>
+      Unless stated otherwise for a specific item, all Materials in the UNL Archive are released under the <strong>Attribution-ShareAlike (CC BY-SA)</strong> Creative Commons license. That means:
+    </p>
+    <ul>
+      <li>You are free to <strong>share</strong> (copy and redistribute) and <strong>adapt</strong> (remix, transform, build upon) the Materials for any purpose, including commercial use;</li>
+      <li>You must give <strong>appropriate credit</strong> (attribution) to the original author(s) as specified by the particular item, provide a link to the license, and indicate if changes were made;</li>
+      <li>If you remix, transform, or build upon the Materials, you must distribute your contributions under the <strong>same license</strong> (CC BY-SA) or a compatible open license;</li>
+      <li>The full license text and details are available at the Creative Commons website: <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">https://creativecommons.org/licenses/by-sa/4.0/</a> (or later versions where applicable).</li>
+    </ul>
+    <p>
+      Where a particular item specifies additional or different licensing terms, those terms apply to that item.
+    </p>
+  </section>
+
+  <section class="section">
+    <h2>7. Attribution Requirements</h2>
+    <p>
+      When you use Materials from the Archive you must provide clear attribution that includes at least:
+    </p>
+    <ul>
+      <li>The title of the material (if available);</li>
+      <li>The author(s) or source as indicated in the item metadata;</li>
+      <li>A statement that the material was obtained from the UNL Archive and a link to the specific item where practicable; and</li>
+      <li>A reference to the CC BY-SA license (including a link) and an indication whether changes were made.</li>
+    </ul>
+  </section>
+
+  <section class="section">
+    <h2>8. Ownership and Intellectual Property</h2>
+    <p>
+      Ownership of the underlying intellectual property in each Material (including copyrights and moral rights) remains with the original rights holders unless otherwise stated. This Agreement does not transfer ownership of any Material to you. The Archive only provides access and a license consistent with the terms above.
+    </p>
+  </section>
+
+  <section class="section">
+    <h2>9. No Affiliation with Prior Organizations</h2>
+    <p>
+      The UNL Archive is a private initiative and is <strong>not</strong> affiliated with, sponsored by, endorsed by, or otherwise connected to the United Nations University, the UNDL Foundation, or any other organization, institution, project, or party that was previously involved in any UNL-related activities, unless expressly stated in a particular item's metadata. Any references to such organizations in archived Materials are part of the preserved content and do not imply current association.
+    </p>
+  </section>
+
+  <section class="section">
+    <h2>10. Third-Party Content and Links</h2>
+    <p>
+      The Service may contain links to third-party websites or resources. We do not control, endorse, or assume responsibility for any third-party content. Access to any third-party site is at your own risk and subject to the terms of that site.
+    </p>
+  </section>
+
+  <section class="section">
+    <h2>11. Disclaimer of Warranties</h2>
+    <p>
+      TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, THE UNL ARCHIVE, ITS OFFICERS, AGENTS, VOLUNTEERS AND CONTRIBUTORS PROVIDE THE SERVICE AND MATERIALS <strong>AS IS</strong> AND MAKE NO WARRANTIES OR REPRESENTATIONS OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, NON-INFRINGEMENT, OR TITLE. WE DO NOT WARRANT THAT THE SERVICE WILL BE UNINTERRUPTED, ERROR-FREE, OR FREE FROM HARMFUL COMPONENTS.
+    </p>
+  </section>
+
+  <section class="section">
+    <h2>12. Limitation of Liability</h2>
+    <p>
+      TO THE MAXIMUM EXTENT PERMITTED BY LAW, IN NO EVENT WILL THE UNL ARCHIVE BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES ARISING OUT OF YOUR ACCESS TO OR USE OF THE SERVICE OR MATERIALS, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGES. OUR AGGREGATE LIABILITY FOR DIRECT DAMAGES IS LIMITED TO THE AMOUNT, IF ANY, YOU PAID TO ACCESS THE SERVICE IN THE SIX (6) MONTHS PRIOR TO THE CLAIM; IF YOU PAID NOTHING, OUR AGGREGATE LIABILITY IS LIMITED TO ONE HUNDRED U.S. DOLLARS (USD 100), OR THE MINIMUM AMOUNT PERMITTED BY LAW.
+    </p>
+  </section>
+
+  <section class="section">
+    <h2>13. Takedown Requests and Notices</h2>
+    <p>
+      If you believe that any Material posted on the UNL Archive infringes your copyright or other rights, please provide a written notice to the Archive containing:
+    </p>
+    <ul>
+      <li>Your contact information;</li>
+      <li>Identification of the copyrighted work or other rights you claim is infringed;</li>
+      <li>A description and link or location of the allegedly infringing material in the Archive;</li>
+      <li>A statement, under penalty of perjury, that you have a good faith belief the use is not authorized; and</li>
+      <li>Your electronic or physical signature.</li>
+    </ul>
+    <p>
+      We will investigate and take action as appropriate, which may include removing or disabling access to content, after evaluating the notice. Contact details for notices are provided in Section 16 below.
+    </p>
+  </section>
+
+  <section class="section">
+    <h2>14. Privacy</h2>
+    <p>
+      Our Privacy Policy, which explains how we collect and use personal data, is available separately on the site. By using the Service you consent to our collection and use of personal information as set out in that policy.
+    </p>
+  </section>
+
+  <section class="section">
+    <h2>15. Modifications to the Terms or Service</h2>
+    <p>
+      We may modify these Terms or change, suspend, or discontinue the Service at any time. Material changes to these Terms will be posted on the Service with an updated effective date. Continued use of the Service after such changes constitutes acceptance of the updated Terms.
+    </p>
+  </section>
+
+  <section class="section">
+    <h2>16. Contact</h2>
+    <p>
+      For questions about these Terms, licensing, takedown notices, or other inquiries related to the UNL Archive, please contact:
+    </p>
+    <p>
+      <strong>Email:</strong> <a href="mailto:admin@unlarchive.org">admin@unlarchive.org</a><br />
+      
+    </p>
+  </section>
+
+  <section class="section">
+    <h2>17. Governing Law and Dispute Resolution</h2>
+    <p>
+      These Terms are governed by the laws of Brazil, without regard to its conflict-of-law principles. Any dispute arising out of or relating to these Terms or your use of the Service shall be exclusively brought in the competent courts of Brazil, unless otherwise mutually agreed in writing.
+    </p>
+  </section>
+
+  <section class="section">
+    <h2>18. Miscellaneous</h2>
+    <ul>
+      <li>If any provision of these Terms is found to be invalid or unenforceable, that provision will be enforced to the maximum extent permissible and the remaining provisions will remain in full force and effect.</li>
+      <li>These Terms constitute the entire agreement between you and the UNL Archive regarding the Service, superseding any prior or contemporaneous agreements.</li>
+    </ul>
+  </section>
+
+  </div>
+
+  <div style="text-align:center; margin-top:30px;">
+        <button class="btn"
+            onclick="window.location.href='index.php?unlweb=home'"
+
+            onmouseover="this.style.backgroundColor='#005bb5'"
+            onmouseout="this.style.backgroundColor='#0073e6'">
+            ⬅ Back to Home
+        </button>
+
+
+    </div></div> 
+
+<hr />
+<div id="footer" style="max-width:600px; margin:0 auto; text-align:center; font-size:0.7em;">
+    <div style="display: flex; justify-content: center; align-items: center;">
+            <a href="index.php?unlweb=terms" style="margin-right: 10px;">Terms and Conditions</a> |
+            <a href="index.php?unlweb=about" style="margin-left: 10px; margin-right: 10px;">About UNL Archive</a> |
+            <a href="index.php?unlweb=contact" style="margin-left: 10px;">Contact</a>
+    </div>
+</div>
+<br /><br />
+</body>
+</html>

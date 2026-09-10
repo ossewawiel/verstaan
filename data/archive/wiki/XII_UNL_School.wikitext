@@ -1,0 +1,198 @@
+The UNDL Foundation invites applications for the XII UNL School, to take place in Geneva, Switzerland, from July 1st to 5th, 2013. This is an intermediate-level workshop dedicated to the improvement of grammatical resources already existing in the UNL framework. The UNDL Foundation will pay the travel and accommodation expenses for the selected candidates not living in Geneva.
+
+== IMPORTANT DATES ==
+
+*<strike>12/05/2013: Deadline for the applications</strike>
+*<strike>20/05/2013: Notification of accepted candidates</strike>
+*<strike>1-5/07/2013: XII UNL School</strike>
+*30/09/2012: Deadline for the post-workshop tasks
+
+== GOALS ==
+#To compile the corpus NC-A1
+#To prepare the basic modules for the UNLization of the corpus NC-A1
+#To prepare the basic modules for the NLization of the corpus NC-A1
+
+== PROGRAM ==
+*1/07/2013: Normalization Grammar
+*2/07/2013: Closed-Class Dictionary
+*3/07/2013: Open-Class Word List
+*4/07/2013: NC-A1
+*5/07/2013: Evaluation and discussion
+
+== MATERIAL ==
+*1/07/2013
+**[http://www.unlweb.net.br/school/geneva2013/day1.pdf Presentation]
+**[http://www.unlweb.net.br/school/geneva2013/exercise1.txt Exercise #1] (text to be normalized)
+**[http://www.unlweb.net.br/school/geneva2013/normalization_eng.txt Exercise #2] (normalization grammar for English)
+*2/07/2013
+**[http://www.unlweb.net.br/school/geneva2013/day2.pdf Presentation]
+**[http://www.unlweb.net.br/school/geneva2013/eng_dic.txt Exercise #3] (English Closed-Class Dictionary)
+*3/07/2013
+**[http://www.unlweb.net.br/school/geneva2013/day3.pdf Presentation]
+**[[#WORD FORMS| Exercise #4]] (Open-Class Word List)
+*4/07/2013
+**[http://www.unlweb.net.br/school/geneva2013/day4.pdf Presentation]
+*5/07/2013
+**[http://www.unlweb.net.br/school/geneva2013/day5.pdf Presentation]
+
+== PARTICIPANTS ==
+*Kim Sokphyrum (Khmer)
+*Marwa Saber (Arabic)
+*Muhammad Zulhelmy Bin Mohd Rosman (Malay)
+*Ofelia Hovhannisyan (Armenian)
+*Parameswarappa S (Kannada)
+*Parteek Kumar (Panjabi)
+*Ronaldo Martins (UNL)
+*Sameh Alansary (Arabic)
+*Serhii Prots (Ukrainian)
+*Suos Samak (Khmer)
+*Teng Wei Min (Chinese)
+*Yordanka Stancheva (Bulgarian)
+
+== VENUE ==
+UNDL Foundation Office, Geneva
+
+== POST-WORKSHOP TASKS ==
+Deadline = 30/09/2013
+*Open-Class Word List (3,000 word forms)
+*Corpus NC-A1
+**Original corpus: 5-10 original articles from the Wikipedia about culture-specific subjects (minimum of 5,000 words), in separate files, in plain text format with UTF-8 encoding
+**List of at least 1,000 noun phrases appearing in the corpus with the following characteristics:
+***the length of the NP must be equal or greater than 2 words (one-word NP's must be excluded): <strike>Geneva</strike>
+***NP's must not contain foreign words: <strike>the city of Genève</strike> (note that "the city of Geneva" is OK)
+***NP's must be continuous (there cannot be any extra-content, e.g., parentheses, inside the NP): <strike>the second most populous city in Switzerland (after Zurich)</strike> (note that the NP will be "the second most populous city in Switzerland")
+***NP's must not contain verbs, even when used as nouns, adjectives or adverbs: <strike>French-'''speaking''' part of Switzerland</strike>, <strike>numerous international organizations, '''including''' the headquarters of many of the agencies of the United Nations and the Red Cross</strike> (in the latter case, there will be 2 NP's: "numerous international organizations" and "the headquarters... Red Cross")
+***NP's must be original (no change should be made to the original text from the Wikipedia)
+***NP's must ignore nesting (only the longest NP must be considered): "the headquarters of many of the agencies of the United Nations and the Red Cross" must be treated as a single NP (the inner NP's, such as "the agencies of the United Nations and the Red Cross" must not be extracted from the longer NP)
+***NP's must be unique (repetitions must be ignored)
+***NP's must be provided one per line in a plain text file, with UTF-8 encoding.
+The completion of the post-workshop tasks is not mandatory but any intermediate-level workshop will only accept candidates having finished all A1 activities described in [[FoR-UNL]].
+
+== FOLLOW-UP ==
+The following projects will be open upon the accomplishment of the post-workshop tasks
+*BRUNO-A1 (open only for languages where number of subcategorization frames (all languages) > 15 and number of paradigms (inflectional languages) > 15): 2,000 entries (around 4,000 UNLdots)
+*NC-A1: 1,000 entries (3,000 UNLdots)
+
+== ADDITIONAL MATERIAL ==
+=== Open Class Word List ===
+Extracted from the most frequent words in Wikipedia
+
+{|table border=1 cellpadding=5
+!Language
+!File
+|-
+|Arabic
+|[http://www.unlweb.net.br/resources/geneva2013/ar_words.xls ar_words.xls]
+|-
+|Armenian
+|[http://www.unlweb.net.br/resources/geneva2013/hy_words.xls hy_words.xls]
+|-
+|Bulgarian
+|[http://www.unlweb.net.br/resources/geneva2013/bg_words.xls bg_words.xls]
+|-
+|Chinese
+|[http://www.unlweb.net.br/resources/geneva2013/zh_words.xls zh_words.xls]
+|-
+|Kannada
+|[http://www.unlweb.net.br/resources/geneva2013/kn_words.xls kn_words.xls]
+|-
+|Khmer
+|[http://www.unlweb.net.br/resources/geneva2013/km_words.xls km_words.xls]
+|-
+|Malay
+|[http://www.unlweb.net.br/school/geneva2013/ms_words.xls ms_words.xls]
+|-
+|Punjabi
+|[http://www.unlweb.net.br/school/geneva2013/pa_words.xls pa_words.xls]
+|-
+|Ukrainian
+|[http://www.unlweb.net.br/school/geneva2013/uk_words.xls uk_words.xls]
+|}
+
+=== NP Examples ===
+{|table border=1 cellpadding=5
+!width="50%"|original text
+!width="50%"|NP
+|-
+|Geneva is the second most populous city in Switzerland (after Zurich) and is the most populous city of Romandy, the French-speaking part of Switzerland. Situated where the Rhone exits Lake Geneva, it is the capital of the Republic and Canton of Geneva. The municipality (ville de Genève) has a population (as of March 2013) of 194,245, and the canton (République et Canton de Genève, which includes the city) has 472,530 residents. In 2007, the urban area, or agglomération franco-valdo-genevoise (Great Geneva or Grand Genève in French) had 1,240,000 inhabitants in 189 municipalities in both Switzerland and France.
+|<strike>Geneva</strike> (length = 1)<br />
+the second most populous city in Switzerland<br />
+<strike>Zurich</strike> (length = 1)<br />
+the most populous city of Romandy<br />
+<strike>the French-speaking part of Switzerland</strike> (verb)<br />
+<strike>Switzerland</strike> (length = 1)<br />
+the Rhone<br />
+Lake Geneva<br />
+the capital of the Republic and Canton of Geneva<br />
+The municipality<br />
+<strike>ville de Genève</strike> (foreign language)<br />
+a population<br />
+the canton<br />
+<strike>République et Canton de Genève</strike> (foreign language)<br />
+the city<br />
+472,530 residents<br />
+the urban area<br />
+<strike>agglomération franco-valdo-genevoise</strike> (foreign language)<br />
+<strike>Great Geneva or Grand Genève in French</strike> (foreign language)<br />
+1,240,000 inhabitants in 189 municipalities in both Switzerland and France<br />
+|}
+
+=== SSS Examples ===
+{|table border=1 cellpadding=5
+!sentence
+!SSS
+|-
+|book
+|NH(book)
+|-
+|the book
+|NS(book;the)
+|-
+|beautiful book
+|NA(book;beautiful)
+|-
+|book of John
+|NA(book;:01)<br/>PC:01(of;John)
+|-
+|the book of John
+|NS(book;the)<br/>NA(book;:01)<br/>PC:01(of;John)
+|-
+|the beautiful book of John
+|NS(book;the)<br/>NA(book;beautiful)<br/>NA(book;:01)<br/>PC:01(of;John)
+|-
+|the book of Math of John
+|NS(book;the)<br/>NA(book;:01)<br/>PC:01(of;Math)<br/>NA(book;:02)<br />PC:02(of;John)
+|-
+|the book about the construction of Babel
+|NS(book;the)<br/>NA(book;:01)<br/>PC:01(about;:02)<br/>NS:02(construction;the)<br/>NA:02(construction;:03)<br/>PC:03(of;Babel)
+|}
+
+=== UNL Simplified Examples ===
+{|table border=1 cellpadding=5
+!sentence
+!UNL
+|-
+|book
+|book
+|-
+|the book
+|book.@def
+|-
+|beautiful book
+|mod(book;beautiful)
+|-
+|book of John
+|pos(book;John)
+|-
+|the book of John
+|pos(book.@def;John)
+|-
+|the beautiful book of John
+|mod(book.@def;beautiful)<br />pos(book.@def;John)
+|-
+|the book of Math of John
+|cnt(book.@def;Math)<br />pos(book.@def;John)
+|-
+|the book about the construction of Babel
+|cnt(book.@def;:01)<br />obj(construction.@def;Babel)
+|}

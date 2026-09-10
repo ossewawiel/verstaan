@@ -1,0 +1,36 @@
+Hyper-relation is a relation between [[relation]]s, or between relations and nodes.
+
+== Basic Symbols ==
+{{:Basic Symbols}}
+
+== Basic Concepts ==
+{{:Grammar units}}
+
+== Notation ==
+Hyper-relations and [[relation]]s are represented in the same way, i.e.,
+ rel:scope(arg1;arg2;...;argn)
+where:
+*rel is the name of the hyper-relation
+*scope is the [[scope]] of the hyper-relation
+*arg1, arg2, ... are the arguments of the hyper-relation
+The only difference between relations and hyper-relations is that the latter has at least one relation as one of its arguments, e.g.:
+*rel(rel1(arg1;arg2);arg3;...;argn)
+For better readability, inner relations are normally replaced by relation ID's, to be represented by :XX, where XX is a two-digit string
+*rel(rel1(arg1;arg2);arg3;...;argn) is the same as rel(:01;arg3;...;argn)rel1:01(arg1;arg2)
+
+== Properties ==
+;A hyper-relation may have one single relation as each argument
+*XP(XB(%a;%b);%c) - the source argument of the hyper-relation XP is a relation
+*XP(%a;XB(%b;%c)) - the target argument of the hyper-relation XP is a relation
+*XP(VC(%a;%b);VA(%a;%c)) - the source and the target argument of the hyper-relation XP are relations
+*<strike>XP(VC(%a;%b)VA(%a;%c);VS(%a;%d))</strike> - a hyper-relation may not have more than one relation as one single argument (in this case, the hyper-relation XP contained two relations as the source argument)
+;Differently from [[nodes]], relations do not have elements (strings, headwords, features and indexes)
+*<strike>XP(XB(%a;%b),"ab",[ab],<nowiki>[[ab]]</nowiki>,A,B;%c)</strike> (the relation XB(%a;%b) may not have strings, UWs, headwords or any features)
+
+== Examples ==
+Examples of hyper-relations
+*XP(XB(%a;%b);%c) - a syntactic relation XP between the syntactic relation XB(%a;%b) and the node %c
+*and(agt([a];[b]);agt([a];[c])) - a semantic relation "and" between the semantic relations agt([a];[b]) AND agt([a];[c])
+
+== Transformations ==
+{{:Transformation over hyper-relations}}

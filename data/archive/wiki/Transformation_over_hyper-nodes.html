@@ -1,0 +1,91 @@
+<div class="mw-content-ltr mw-parser-output" lang="en" dir="ltr"><div id="toc" class="toc" role="navigation" aria-labelledby="mw-toc-heading"><input type="checkbox" role="button" id="toctogglecheckbox" class="toctogglecheckbox" style="display:none" /><div class="toctitle" lang="en" dir="ltr"><h2 id="mw-toc-heading">Contents</h2><span class="toctogglespan"><label class="toctogglelabel" for="toctogglecheckbox"></label></span></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Changes"><span class="tocnumber">1</span> <span class="toctext">Changes</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#Deletion"><span class="tocnumber">2</span> <span class="toctext">Deletion</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="#Extraction"><span class="tocnumber">3</span> <span class="toctext">Extraction</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="#Create"><span class="tocnumber">4</span> <span class="toctext">Create</span></a></li>
+</ul>
+</div>
+
+<div class="mw-heading mw-heading3"><h3 id="Changes">Changes</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Transformation_over_hyper-nodes&amp;veaction=edit&amp;section=1" title="Edit section: Changes" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Transformation_over_hyper-nodes&amp;action=edit&amp;section=1" title="Edit section&#39;s source code: Changes">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>Hyper-nodes, as <a href="/wiki/Node" title="Node">nodes</a>, have elements, which may be altered by the use of the operators + (add) and - (delete). The operator + may be omitted. Changes affect only the scopes indicated.
+</p>
+<dl><dt>Changes to the main scope</dt></dl>
+<ul><li>(%a,"a",[a],[[a]],A,(%b,"b")):=(%a,"c");(the string of the hyper-node is set to "c"; the internal node %b is not affected)</li>
+<li>(%a,"a",[a],[[a]],A,(%b,"b")):=(%a,"");(the string of the hyper-node is set to ""; the internal node %b is not affected)</li>
+<li>(%a,"a",[a],[[a]],A,(%b,"b")):=(%a,-"a");(the same as above)</li>
+<li>(%a,"a",[a],[[a]],A,(%b,"b")):=(%a,[c]);(the headword of the hyper-node is set to [c]; the internal node %b is not affected)</li>
+<li>(%a,"a",[a],[[a]],A,(%b,"b")):=(%a,[[c]]);(the UW of the hyper-node is set to [[c]]; the internal node %b is not affected)</li>
+<li>(%a,"a",[a],[[a]],A,^B,(%b,"b")):=(%a,+B);(add the feature B to the hyper-node %a; the internal node %b is not affected)</li>
+<li>(%a,"a",[a],[[a]],A,^B,(%b,"b")):=(%a,B); (the same as above: add the feature B to %a)</li>
+<li>(%a,"a",[a],[[a]],A,(%b,"b")):=(%a,-A);(delete the feature A from the hyper-node %a; the internal node %b is not affected)</li></ul>
+<dl><dt>Changes to inner scopes</dt></dl>
+<ul><li>(%a,(%b,"b",[b],[[b]],B)):=(%a,(%b,"c"));(the string of the inner node %b is set to "c"; the hyper-node %a is not affected)</li>
+<li>(%a,(%b,"b",[b],[[b]],B)):=(%a,(%b,""));(the string of the inner node %b is set to ""; the hyper-node %a is not affected)</li>
+<li>(%a,(%b,"b",[b],[[b]],B)):=(%a,(%b,-"b"));(the same as above)</li>
+<li>(%a,(%b,"b",[b],[[b]],B)):=(%a,(%b,[c]));(the headword of the inner node %bis set to [c]; the hyper-node %a is not affected)</li>
+<li>(%a,(%b,"b",[b],[[b]],B)):=(%a,(%b,[[c]]));(the UW of the inner node %b is set to [[c]]; the hyper-node %a is not affected)</li>
+<li>(%a,(%b,"b",[b],[[b]],B,^C)):=(%a,(%b,+C));(add the feature C to the inner node %b; the hyper-node %a is not affected)</li>
+<li>(%a,(%b,"b",[b],[[b]],B,^C)):=(%a,(%b,C)); (the same as above: add the feature C to %b)</li>
+<li>(%a,(%b,"b",[b],[[b]],B)):=(%a,(%b,-B));(delete the feature B from the inner node %b; the hyper-node %a is not affected)</li></ul>
+<dl><dt>Rules must have as many parentheses as the depth of the inner scope to be altered</dt></dl>
+<ul><li>(%a,(%b,(%c,(%d,(%e,"e",[e],[[e]],E))))):=(%a,(%b,(%c,(%d,(%e,"f"))))); (the string of inner node %e is set to "f"; the enclosing nodes %d, %c, %b and %a are not affected)</li></ul>
+<dl><dt>Hyper-nodes do not need to be represented if the changes apply to nodes instead of nodes inside hyper-nodes</dt>
+<dd></dd></dl>
+<ul><li>(%a,(%b,"b",[b],[[b]],B)):=(%a,(%b,"c")); (the string of the inner node %b is set to "c"; the hyper-node %a is not affected)</li></ul>
+<p>could be represented simply as
+</p>
+<ul><li>(%b,"b",[b],[[b]],B)):=(%b,"c");</li></ul>
+<p>if the changes apply to all nodes ("b",[b],[[b]],B) and not only to those inside scopes.
+</p>
+<div class="mw-heading mw-heading3"><h3 id="Deletion">Deletion</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Transformation_over_hyper-nodes&amp;veaction=edit&amp;section=2" title="Edit section: Deletion" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Transformation_over_hyper-nodes&amp;action=edit&amp;section=2" title="Edit section&#39;s source code: Deletion">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>Hyper-nodes, as any <a href="/wiki/Node" title="Node">node</a>, are deleted if they are not repeated (co-indexed) in the right side. In this case, all the inner nodes are deleted as well:
+</p>
+<ul><li>(REL(%x;%y),%z):=; (the hyper-node %z will be deleted, and all its internal nodes and relations as well)</li></ul>
+<p>As any feature, inner nodes are conservative, and are not deleted even if they are not repeated (co-indexed) in the right side:
+</p>
+<ul><li>(%a,A,^B):=(%a,+B); (the feature A is not deleted from the node %a)</li>
+<li>(%a,^B,(%b,"b")):=(%a,+B); (the node %b is not deleted from the hyper-node %a)</li></ul>
+<p>In order to delete inner nodes, the operator "-" must be used
+</p>
+<ul><li>(%a,A,(%b,B)):=(%a,-(%b)); (the node %b is deleted from the hyper-node %a)</li>
+<li>(%a,A,rel(%b;%c)):=(%a,-rel(%b;%c)); (the relation rel(%b;%c) is deleted from the hyper-node %a)</li></ul>
+<div class="mw-heading mw-heading3"><h3 id="Extraction">Extraction</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Transformation_over_hyper-nodes&amp;veaction=edit&amp;section=3" title="Edit section: Extraction" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Transformation_over_hyper-nodes&amp;action=edit&amp;section=3" title="Edit section&#39;s source code: Extraction">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>Nodes may be extracted from hyper-nodes by removing the corresponding parentheses. In this case, the hyper-node is deleted (along with its features), but the internal nodes and relations are preserved, if repeated on the right side.
+</p>
+<ul><li>((%x),%y):=(%x); (the hyper-node %y is deleted, but its internal node %x is preserved; in case %y have nodes other than %x, these nodes will be deleted as well, because they are not repeated in the right side)</li>
+<li>(REL(%x;%y),%z):=REL(%x;%y); (the hyper-node %z is deleted, but its internal relation REL(%x;%y) is preserved; in case %z have relations other than REL(%x;%y), and nodes other than %x and %y, these will be deleted as well, because they are not repeated in the right side.</li></ul>
+<div class="mw-heading mw-heading3"><h3 id="Create">Create</h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Transformation_over_hyper-nodes&amp;veaction=edit&amp;section=4" title="Edit section: Create" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Transformation_over_hyper-nodes&amp;action=edit&amp;section=4" title="Edit section&#39;s source code: Create">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>Hyper-nodes are created through the encapsulation of existing nodes
+</p>
+<ul><li>(%x):=((%x),%y); (the hyper-node %y is created, with the node %x there inside)</li>
+<li>REL(%x;%y):=(REL(%x;%y),%z); (the hyper-node %z is created, with the relation REL between the nodes %x and %y inside)</li>
+<li>(%x)(%y):=((%x)(%y),%z); (the hyper-node %z is created, with the linear relation between the nodes %x and %y there inside)</li></ul>
+<dl><dt>Attention</dt>
+<dd>relations and nodes must be repeated in the right side or they will be deleted
+<ul><li>(%x):=(%y); (the node %x will be simply replaced by %y; no hyper-node will be created)</li>
+<li>REL(%x;%y):=(%z); (the relation REL between the nodes %x and %y will be replaced by the node %z; no hyper-node will be created)</li></ul></dd></dl>
+<!-- 
+NewPP limit report
+Cached time: 20260910132110
+Cache expiry: 86400
+Reduced expiry: false
+Complications: [show‐toc]
+CPU time usage: 0.006 seconds
+Real time usage: 0.006 seconds
+Preprocessor visited node count: 133/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/100
+Expensive parser function count: 0/100
+Unstrip recursion depth: 0/20
+Unstrip post‐expand size: 120/5000000 bytes
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    0.000      1 -total
+-->
+
+<!-- Saved in parser cache with key u965818192_SLvgQ-l8z2_:pcache:798:|#|:idhash:canonical and timestamp 20260910132110 and revision id 16079. Rendering was triggered because: diff-page
+ -->
+</div>

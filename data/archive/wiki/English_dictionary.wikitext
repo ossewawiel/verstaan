@@ -1,0 +1,199 @@
+The English dictionaries are used, along with the [[English grammar]]s, in the process of [[UNLization]] and [[NLization]] with [[IAN]] and [[EUGENE]], respectively. They follow the [[UNL Dictionary Specs]] and use the tags provided in the [[Tagset]]. They are provided in two different formats:
+*The '''ENG-UNL (Analysis) Dictionary''', to be used in UNLization (IAN), is presented in the enumerative format, i.e., it brings all word forms ("die","dies","dying","dead") and not only base forms
+*The '''UNL-ENG (Generation) Dictionary''', to be used in NLization (EUGENE), is presented in the generative format, i.e., it brings only base forms ("die") along with the instructions to generate the corresponding inflections
+
+== Files ==
+The English dictionaries for the corpus [[UC]] may be downloaded from:
+{|border=1 align=center cellpadding=5
+!Corpus
+!ENG>UNL
+!UNL>ENG
+|-
+|UC-A1
+|[http://www.unlweb.net.br/resources/dic/UCA1/eng_unl_dic.txt eng_unl_dic.txt]
+|[http://www.unlweb.net.br/resources/dic/UCA1/unl_eng_dic.txt unl_eng_dic.txt] 
+|-
+|UC-A2
+|[http://www.unlweb.net.br/resources/dic/UCA2/eng_unl_dic.txt eng_unl_dic.txt] (open class dictionary)<br />
+[http://www.unlweb.net.br/resources/dic/eng_dic.txt eng_dic.txt] (closed class dictionary)
+|[http://www.unlweb.net.br/resources/dic/UCA2/unl_eng_dic.txt unl_eng_dic.txt] (open class dictionary)<br />
+[http://www.unlweb.net.br/resources/dic/eng_dic.txt eng_dic.txt] (closed class dictionary)<br />
+|-
+|UC-B1
+|[http://www.unlweb.net.br/resources/dic/UCB1/eng_unl_dic.txt eng_unl_dic.txt]
+|[http://www.unlweb.net.br/resources/dic/UCB1/unl_eng_dic.txt unl_eng_dic.txt] 
+|}
+<br />
+The UNLization and the NLization also uses the [[Default Dictionary]], which must be loaded after the language-specific dictionary.<br />
+The complete English dictionaries may be exported from the [[UNLarium]]: UNLWEB>UNLARIUM>DICTIONARY>ENGLISH>EXPORT.
+
+== Dictionary Structure ==
+The English dictionaries are '''unidirectional'''. There is one dictionary for [[UNLization]] (the ENG->UNL (Analysis) Dictionary) and one dictionary for [[NLization]] (the UNL->ENG (Generation) Dictionary). Both dictionaries are complemented by the [[Default Dictionary]], which brings punctuation signs and regular expressions to process language independent entries (such as URL's, dates, e-mail addresses, etc.).
+
+The English dictionaries are divided into two parts:
+*'''Corpus-specific words''' bring open-class words (i.e., nouns, adjectives, verbs and adverbs) appearing in the corpus
+*'''Closed-class categories''' bring closed-class words (determiners, prepositions, conjunctions, etc.) of English
+
+== Dictionary Entry Structure ==
+According to the [[UNL Dictionary Specs]], entries are provided in the following format:
+ [Natural Language Entry]{}"UW"(feature list)<eng,FREQUENCY,PRIORITY>;
+Where:
+*[Natural Language Entry] is a '''word form''' ("die","dies","dying","dead") in the ENG-UNL (Analysis) Dictionary and a '''base form''' ("die") in the UNL-ENG (Generation) Dictionary
+*"UW" may bring an ordinary UW ("book"); a pro-form ("00"), in case of pronouns; or can also be empty (""), in case of natural language entries, such as determiners and prepositions, that are not associated to any UW.
+*The feature list is a list of attribute-value pairs as defined in the [[Tagset]].
+*FREQUENCY is used only in the ENG-UNL dictionary: higher frequency words prevail over other candidates <u>with the same length</u> during the tokenization of the natural language sentence.
+*PRIORITY is used only in the UNL-ENG dictionary: higher priority words prevail over other candidates during the tokenization of the UNL graph.
+The features used in the dictionary are the following
+{|border=1 align=center
+|+Feature structure of the ENG-UNL Dictionary
+!Class
+!ENG-UNL
+!UNL-ENG
+|-
+|Common noun and proper names (N)
+|LEX,POS,NUM
+|LEX,POS,NUM,PAR,FLX
+|-
+|Adjectives (J)
+|LEX,POS
+|LEX,POS
+|-
+|Adverbs (A)
+|LEX,POS,att
+|LEX,POS,att
+|-
+|Verbs (V)
+|LEX,POS,TRA,ATE,PER
+|LEX,POS,TRA,PAR,FLX
+|-
+|Conjunctions (C)
+|LEX,POS,att,rel
+|LEX,POS,att,rel
+|-
+|Determiners (D)
+|LEX,POS,att
+|LEX,POS,att
+|-
+|Prepositions (P)
+|LEX,POS,att,rel
+|LEX,POS,att,rel
+|-
+|Pronouns (R)
+|LEX,POS,CAS,PER,NUM
+|LEX,POS,CAS,PER,NUM
+|-
+|Numerals (U)
+|LEX,POS
+|not represented
+|}
+;The tags are defined in the [[Tagset]]<br />
+*LEX is the lexical category (LEX=N, for nouns; LEX=J, for adjectives; LEX=V, for verbs; LEX=A, for adverbs; etc)
+*POS is the part-of-speech (POS=NOU, for common nouns; POS=PPN, for proper names; etc)
+*NUM is the grammatical number (NUM=SNG, for singular; NUM=PLR, for plural; etc)
+*TRA is the transitivity (TRA=NTST, for intransitive verbs; TRA=TSTD, for direct transitive verbs; etc) 
+*PER is the grammatical person (PER=1PS, for first person singular; PER=2PS, for second person singular; etc)
+*ATE is the absolute tense (ATE=PAS, for past; ATE=PRS, for present; etc)
+*CAS is the morphological case (CAS=NOM, for nominative; CAS=OBL, for oblique)
+;<nowiki></nowiki>att (attribute)
+:the atrribute "att", along with its corresponding value, is used when the word is associated to an attribute (instead of a UW). For instance:
+::[the]{}"" (LEX=D,POS=ART,'''att=@def''')<eng,255,0>;
+::In this case, the English word "the" does not correspond to any UW, but to the attribute "@def".
+;<nowiki></nowiki>rel (relation)
+:the atrribute "rel", along with its corresponding value, is used when the word is associated to a relation (instead of a UW). For instance:
+::[of]{}"" (LEX=P,POS=PRE,'''rel=mod''')<eng,255,0>;
+::In this case, the English word "of" does not correspond to any UW, but to the relation "mod"
+;Some entries may have both "att" and "rel". For instance:
+:[under]{}"" (P,'''rel=plc,att=@under''')<eng,255,0>;
+:In this case, the English word "under" corresponds both to the relation "plc" (place) and the attribute "@under".
+;PAR (paradigm)
+:the attribute "PAR" is used only for inflectional words (nouns and verbs, in English) and indicates the paradigm number. It is used only in generation (UNL-ENG Dictionary). PAR=M0 always indicates invariant word ("glasses", for instance). PAR=M1 always indicates irregular words ("foot", for instance). The other values - M2, M3, M4, ... - are indexed to the inflectional paradigms provided in the [[UNLarium]]), and which are exported in order to compose the morphological module of the grammar (see [[English_grammar|English grammar]]).
+;FLX (inflectional rules)
+:the attribute "FLX" is used only in case of irregular words (i.e., when PAR=M1). It is used only in generation (UNL-ENG Dictionary). It provides the rules to inflect words that do not follow an inflectional paradigm. These rules are informed inside the dictionary (See [[UNL Dictionary Specs#Inflection_rules_inside_dictionary_entries.2A|UNL Dictionary Specs]]).
+::[foot]{}"foot"(LEX=N,POS=NOU,PAR=M1,'''FLX(SNG:=0>"";PLR:=0>"s";)''')<eng,0,0>;
+:::The values of the attribute FLX inform how to create the inflections for SNG (singular) and PLR (plural) in case of this particular irregular word
+;LST (lexical structure)
+:The attribute LST is assigned only in case of subwords (SBW) and contractions (CTT):
+::[shan't]{}"" (LEX=V,'''LST=CTT''',POS=AUX,POS=MOV,att=@conviction;@not)<eng,255,0>; (contraction)
+::['ve]{}"" (LEX=V,POS=AUX,ATE=INF,'''LST=SBW''')<eng,255,0>; (subword)
+;Pronouns are associated to the pro-form UW 00 with the corresponding attributes, whenever applicable:
+:[I]{}"'''00.@1'''" (LEX=R,POS=PPR,CAS=NOM,PER=1PS)<eng,255,0>;
+:The English word "I" is associated to the UW "00.@1" (the pro-form for first person singular) and not only to "00", which is simply a pro-form.
+;Pronouns and determiners
+:It's important to differentiate pronouns from determiners. The former behave as nouns and are associated to the UW 00 with the corresponding attributes; the latter are associated to the NULL UW. Compare the difference:
+::This is a book. ("this" is a '''demonstrative pronoun''', to be represented as [this]{}"00.@proximal" (LEX=R,POS=DEP,NUM=SNG)<eng,255,0>;
+::This book ("this" is a '''demonstrative determiner''', to be represented as [this]{}"" (LEX=D,POS=DEM,NUM=SNG,att=@proximal)<eng,255,0>;
+:This difference is very important, <u>regardless the conventions adopted in the different grammar traditions</u>, because these two "this" will be represented differently in UNL.
+;Possessive pronouns and possessive determiners, because associated to the same UW, may be represented in a single entry:
+::This book is his. ("his" is a possessive pronoun, to be represented as [his]{}"00.@3.@male" (LEX='''R''',LEX=D,POS='''SPR''',POS=POD, PER=3PS)<eng,255,0>;
+::This is his book. ("his" is a possessive determiner, to be represented as [his]{}"00.@3.@male" (LEX=R,LEX='''D''',POS=SPR,POS='''POD''',PER=3PS)<eng,255,0>;
+:The entry [his] has two attributes LEX and two attributes POS, one for each use of the word. They can be included in the same entry because they are both associated to the same UW.
+;Multiple values for the same attributes inside the same entry
+:An entry may have several different values for the same features if all its instances are associated to the same UW:
+::[killed]{}"kill"(LEX=V,POS=VER,TRA=TSTD,'''ATE=PAS,ATE=PTP''')<eng,0,0>;
+:::The entry [killed] may have two values for the attribute ATE (absolute tense): PAS (past) and PTP (participle), because in both cases the entry is associated to the same UW "kill"
+::[be]{}"" (LEX=V,'''POS=COP,POS=AUX''',ATE=INF)<eng,255,0>;
+:::The entry [be] may have two values for the attribute POS (part-of-speech): COP (copula) and AUX (auxiliary), because in both cases the entry is associated to the same UW ""
+::<strike>[this]{}"00.@proximal" (LEX=R,LEX=D,POS=DEP,POS=DEM,NUM=SNG)<eng,255,0>;</strike>
+:::The entry [this] may not have two values for the attributes LEX and POS because it is associated to different UWs when a determiner (LEX=D,POS=DEM) and a pronoun (LEX=R,POS=DEP). Therefore:
+:::[this]{}"00.@proximal" (LEX=R,POS=DEP,NUM=SNG)<eng,255,0>;
+:::[this]{}"" (LEX=D,POS=DEM,NUM=SNG,att=@proximal)<eng,255,0>;
+;Cumulative attributes
+:Cumulative attributes for the same entry must be informed inside the same attribute "att" isolated by ";"
+::[can't]{}"" (LEX=V,LST=CTT,POS=AUX,POS=MOV''',att=@ability;@not''')<eng,255,0>;
+:::The auxiliary [can't] is not @ability OR @not, but @ability AND @not at the same time(.@ability.@not)
+::[may]{}"" (LEX=V,LST=CTT,POS=AUX,POS=MOV,'''att=@permission,att=@possibility''')<eng,255,0>;
+:::The auxiliary [may] is either @permission OR @possibility, and not both at the same time.
+
+== Issues in the ENG-UNL dictionary ==
+<ol>
+<li>The English dictionary does not contain digits as natural language entries, but only words. The entries [one] and [first] are in the dictionary, but not the entry [1].</li>
+<li>All natural language words corresponding to numbers are associated to UWs represented by digits, because numbers are always represented in UNL by digits
+:[zero]{}"0" (LEX=U,POS=CDN,DIGIT)<eng,255,0>;
+:The English word "zero" is associated to the UW "0".</li>
+<li>The English dictionary contains only simple forms (such as [one], [eleven], [twenty], [hundred]). Compound forms (such as [twenty-one]) and complex forms (such as [one hundred]) are not included in the dictionary, but are generated by the grammar.</li>
+<li>In order to handle compound and complex forms, dozens are associated to units, as in: 
+:[/(?i)twent(y|ie)/]{}"2" (LEX=U,POS=CDN,DIGIT,DOZEN)<eng,255,0>;
+:Where "twenty" is associated to "2", instead of "20", because "twenty-one" is not "201", but "21".</li>
+<li>In order to handle compound and complex forms, [hundred], [thousand], [million], [billion] and [trillion] are associated to the NULL UW, as in:
+:[hundred]{}"" (LEX=U,POS=CDN)<eng,255,0>;
+:Where [hundred] is associated to the UW "", instead of "100" or "1", because "two hundred" is not "2100" or "21", but "200".</li>
+<li>The English dictionary does not contain words for ordinals, except the irregular ones ([first], [second], [third], [fifth], [eighth], [ninth] and [twelfth]). All the other ordinals are expected to be recognized by the grammar because they follow the general rule CARDINAL + "th" ("seventh" = "seven" + "th"). This is the reason for including the entry [th] is included in the dictionary:
+:[th]{}"" (LEX=I,POS=SFX,LST=SBW)<eng,255,0>;</li>
+<li>In order to cope with spelling changes in the formation of ordinals ("twenty" = "twentieth", and not "twentyth"), dozens have been represented as regular expressions:
+:[/(?i)twent(y|ie)/]{}"2" (LEX=U,POS=CDN,DIGIT,DOZEN)<eng,255,0>;
+:The regular expression  /(?i)twent(y|ie)/ corresponds to both "twenty" and "twentie", which allows for the recognition of "twentieth" as "twentie"+"th". The feature (?i) means "case insensitive", i.e., the entry will match: "twenty", "Twenty", "TWENTY", "twentie", etc.</li>
+<li>The irregular ordinals included in the dictionary were associated to the corresponding UW and the attribute @ordinal, as in
+:[first]{}"1.@ordinal" (LEX=U,POS=ORD,DIGIT)<eng,255,0>;</li>
+<li>The feature DIGIT was introduced whenever the UW is a digit:
+:[zero]{}"0" (LEX=U,POS=CDN,DIGIT)<eng,255,0>; 
+:but [hundred]{}"" (LEX=U,POS=CDN)<eng,255,0>;</li>
+<li>Decimals and fractions were not represented inside the dictionary because they are generated either from cardinals or ordinals.</li>
+</ol>
+
+== Issues in the UNL-ENG Dictionary ==
+;Generation dictionaries may not have regular expressions as natural language entries
+:Since the natural language is the target of the generation process, UWs cannot be mapped into regular expressions, because regular expressions are used only to recognize strings in the natural language input. For instance:
+::The entry [/(?i)twent(y|ie)/]{}"2" (LEX=U,POS=CDN,DIGIT,DOZEN)<eng,255,0>; is useful when we find, in the natural language document, a string such as "twenty", "twentie", "Twentie" etc. In natural language generation, however, we depart from the UW "2" and, in case of regular expressions as natural language entries, we would not be able to decide to which string this UW should be mapped.
+;Numbers in the UNL-ENG dictionary
+:The UNL-ENG dictionary does not contain numbers. In this version of the dictionary, numbers are always generated as digits, i.e., given the input qua(book,2), the result will be "2 books" instead of "two books".
+
+== Comparison between the ENG-UNL and the UNL-ENG dictionaries ==
+;Size
+The UNL-ENG is considerably smaller than the ENG-UNL dictionary, because it contains only base forms. For instance, instead of 4 entries associated to the UW "arrive", it contains only one:
+::ENG-UNL Dictionary
+:::[arrive]{}"arrive"(LEX=V,POS=VER,TRA=TSTI,ATE=INF)<eng,0,0>;
+:::[arrives]{}"arrive"(LEX=V,POS=VER,TRA=TSTI,PER=3PS,ATE=PRS)<eng,0,0>;
+:::[arrived]{}"arrive"(LEX=V,POS=VER,TRA=TSTI,ATE=PAS,ATE=PTP)<eng,0,0>;
+:::[arriving]{}"arrive"(LEX=V,POS=VER,TRA=TSTI,ATE=GER)<eng,0,0>;
+::UNL-ENG Dictionary
+:::[arrive]{}"arrive"(LEX=V,POS=VER,TRA=TSTI,PAR=M17)<eng,0,0>;
+However, dictionary entries inside the UNL-ENG dictionary can be considerably longer than the ones in the ENG-UNL dictionary, because of the inflectional rules. Compare the entries for the verb "to be", for instance
+::ENG-UNL Dictionary
+:::[be]{}"" (LEX=V,POS=COP,POS=AUX,ATE=INF)<eng,255,0>;
+::UNL-ENG Dictionary
+:::[be]{}""(LEX=V,POS=COP,POS=AUX,PAR=M1,FLX(1PS&PRS:="am";2PS&PRS:="are";3PS&PRS:="is";1PP&PRS:="are";2PP&PRS:="are";3PP&PRS:="are";1PS&PAS:="was";2PS&PAS:="were";3PS&PAS:="was";1PP&PAS:="were";2PP&PAS:="were";3PP&PAS:="were";PTP:="been";))<eng,0,0>;
+;Why is it necessary to have two different dictionaries (one for analysis and other for generation)?
+:In principle, you may use the same dictionary in both directions. The system does not require you to have different dictionaries. However, it is far much simpler to have two different dictionaries, because of the following:
+:*Natural language analysis can be much more complicated if you operate with base forms. In this case, you will have to cope with the spelling variations in the grammar. For instance: if you have only the entry [baby] in the dictionary, instead of both [baby] and [babies], the tokenization of the string "babies" will be much more complicated: you will have to treat "babies" as a temporary entry, to lemmatize it through the grammar, and to search back in the dictionary, which is a quite expensive process. One solution would be to have only the regular part of the word in the dictionary (i.e., [bab] instead of [baby]), but in this case the number of lexical ambiguities may raise enormously, and the disambiguation grammar would have to be considerably extended.
+:*Natural language generation can be much more complicated if you operate with word forms. In this case, you will have to backtrack frequently, because you don't know, in the beginning of the process, which is the form to be generated. If you have both [baby] and [babies] in your generation dictionary, and given the input qua(baby,2), you will first generate "baby" in order to realize, later on, that it should be "babies", and you will have to backtrack to the insertion movement, which could have happened many rules before, and this backtracking is again quite expensive in terms of processing.
+:*Don't forget that the dictionaries are prepared inside the [[UNLarium]]: the lexical database is populated only once, and the two different dictionaries (generative and enumerative) are generated automatically out of the same matrix.

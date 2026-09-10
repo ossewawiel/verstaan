@@ -1,0 +1,62 @@
+<div class="mw-content-ltr mw-parser-output" lang="en" dir="ltr"><p><b>Movement</b> is the process of changing the place of nodes in a given syntactic structure. In the UNL<sup>arium</sup> framework, movement rules are used to deal with transformations that affect the surface structure of the sentence such as topicalization and passivization. 
+</p>
+<div class="mw-heading mw-heading2"><h2 id="Syntax">Syntax</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Movement&amp;veaction=edit&amp;section=1" title="Edit section: Syntax" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Movement&amp;action=edit&amp;section=1" title="Edit section&#39;s source code: Syntax">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>Movement rules are <a href="/wiki/S-rules" class="mw-redirect" title="S-rules">S-rules</a> of the replace type, i.e.:
+</p>
+<pre>&lt;RELATION&gt;&#160;:= &lt;RELATION&gt;;
+</pre>
+<p>Where the left-side &lt;RELATION&gt; is a <a href="/wiki/Syntactic_roles" class="mw-redirect" title="Syntactic roles">syntactic relation</a> that indicates the source position and the right-side relation is a relation that indicates the target position.
+</p><p>There are mainly two types of projection rules:
+</p>
+<ul><li>Full movement, when the previous position is totally deleted;</li>
+<li>Trace movement, when a trace (a vestige) is left in the original position.</li></ul>
+<div class="mw-heading mw-heading2"><h2 id="Examples">Examples</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Movement&amp;veaction=edit&amp;section=2" title="Edit section: Examples" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Movement&amp;action=edit&amp;section=2" title="Edit section&#39;s source code: Examples">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<ul><li>VS(%spec):=IS(%spec);
+<ul><li>The specifier of the verb is moved to the position of specifier of the inflectional phrase. The position of the specifier of the verb no longer exists.</li></ul></li>
+<li>VS(%spec):=IS(%spec)VS("",TRACE);
+<ul><li>The specifier of the verb is moved to the position of specifier of the inflectional phrase and the feature TRACE is left in the position of the specifier of the verb.</li></ul></li></ul>
+<div class="mw-heading mw-heading2"><h2 id="Observations">Observations</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Movement&amp;veaction=edit&amp;section=3" title="Edit section: Observations" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Movement&amp;action=edit&amp;section=3" title="Edit section&#39;s source code: Observations">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<dl><dt>Indexation</dt>
+<dd>As in <a href="/wiki/S-rule" title="S-rule">S-rules</a>, nodes in movement rules are always indexed, either by user-defined labels (such as %head, %comp or any other) or by the position in the left side of the rules.</dd>
+<dt>Movement rules may affect several different nodes at the same time, as in passivization</dt>
+<dd>
+<ul><li>VC(%head;%comp)VS(%head;%spec):=VS(%head;%comp)VA(%head;PC([by];%spec));</li></ul></dd></dl>
+<dl><dt>Features may be assigned or deleted from nodes on the right side of movement rules</dt>
+<dd>
+<ul><li>VC(%head;%comp)VS(%head;%spec):=VS(%head;%comp,<b>-ACC,+NOM</b>)VA(%head;PC([by];%spec));</li></ul></dd></dl>
+<dl><dt>Occupied positions</dt>
+<dd>Moving a node to a position already occupied implies:
+<ul><li>Creating a new intermediate projection in case of complement (VC, NC, PC, etc) and adjunct (VA, NA, PA, etc) relations</li>
+<li>Replacing the existing nodes in case of head (VH, NH, PH, etc) and specifier (VS, NS, PS, etc) relations</li></ul></dd></dl>
+<dl><dt>Moving and ordering</dt>
+<dd>Reordering branches inside a maximal projection is done by changing <a href="/wiki/Adjacency" title="Adjacency">adjacency</a> values</dd>
+<dt>Movement rules are replacement rules</dt>
+<dd>Relations appearing in the left side will be deleted if absent from the right side:
+<ul><li>X(%a;%b)Y(%c;%d):=Z(%a;%b); (the relation "Y(%c;%d)" will be deleted, even if it's not affected by the rule)</li>
+<li>X(%a;%b)Y(%c;%d):=Z(%a;%b)Y(%c;%d); (the relation "Y(%c;%d)" is preserved)</li></ul></dd></dl>
+<dl><dt>S-rules or L-rules?</dt>
+<dd>Movement may be addressed either by S-rules or <a href="/wiki/L-rule" title="L-rule">L-rules</a>, depending on the relation between the constituents to be moved. If the relation is rather spatial than syntactic, L-rules must be used; otherwise, use S-rules.</dd></dl>
+<!-- 
+NewPP limit report
+Cached time: 20260910084002
+Cache expiry: 86400
+Reduced expiry: false
+Complications: []
+CPU time usage: 0.003 seconds
+Real time usage: 0.004 seconds
+Preprocessor visited node count: 11/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/100
+Expensive parser function count: 0/100
+Unstrip recursion depth: 0/20
+Unstrip post‐expand size: 0/5000000 bytes
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    0.000      1 -total
+-->
+
+<!-- Saved in parser cache with key u965818192_SLvgQ-l8z2_:pcache:515:|#|:idhash:canonical and timestamp 20260910084002 and revision id 13368. Rendering was triggered because: diff-page
+ -->
+</div>

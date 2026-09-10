@@ -1,0 +1,95 @@
+The project CORNELIA ('''COR'''pus for '''N'''atural languag'''E''' to UN'''L''' '''I'''nductive '''A'''nalysis) is devoted to the creation of resources (LSS, SSS, UNL) for inducing grammars for UNLization.  
+
+== Goal ==
+The project CORNELIA has three main goals:
+#To provide Linear Sentence Structures ([[LSS]]) to be used in natural language disambiguation;
+#To provide Syntactic Sentence Structures ([[SSS]]) to be used in natural language transformation;
+#To provide NL-UNL memories, to be used in [[UNLization]].
+
+== Repository ==
+CORNELIA is language dependent. Every language has its own set of entries to be addressed. The list of entries is extracted from the Wikipedia and is organized as follows:
+
+{|border="1" align="center" cellpadding="2"
+!Subproject
+!# of entries
+!Description
+|-
+|align="center"|CORNELIA-A1
+|align="center"|1,000
+|align="center"|simple noun phrases
+|-
+|align="center"|CORNELIA-A2
+|align="center"|1,000
+|align="center"|simple verbal phrases
+|-
+|align="center"|CORNELIA-B1
+|align="center"|1,000
+|align="center"|complex noun phrases
+|-
+|align="center"|CORNELIA-B2
+|align="center"|1,000
+|align="center"|complex verbal phrases
+|-
+|align="center"|CORNELIA-C1
+|align="center"|1,000
+|align="center"|short sentences (< average sentence length)
+|-
+|align="center"|CORNELIA-C2
+|align="center"|1,000
+|align="center"|long sentences (> average sentence length)
+|}
+
+== Requisites ==
+CORNELIA is open to all languages, according to the following requisites:
+*CORNELIA-A1 is required for CORNELIA-A2;
+*CORNELIA-A2 is required for CORNELIA-B1;
+*CORNELIA-B1 is required for CORNELIA-B2;
+*CORNELIA-B2 is required for CORNELIA-C1;
+*CORNELIA-C1 is required for CORNELIA-C2;
+
+== Instructions ==
+#Compilation
+#*CORNELIA-A1: SIMPLE NP's
+#**Original corpus: 5-10 original articles from the Wikipedia about culture-specific subjects (minimum of 5,000 words), in separate files, in plain text format with UTF-8 encoding
+#**List of at least 1,000 noun phrases appearing in the corpus with the following characteristics:
+#***the length of the NP must be equal or greater than 2 words (one-word NP's must be excluded): <strike>Geneva</strike>
+#***NP's must not contain foreign words: <strike>the city of Genève</strike><ref>Note that "the city of Geneva" is OK.</ref>
+#***NP's must be continuous (there cannot be any extra-content, e.g., parentheses, inside the NP): <strike>the second most populous city in Switzerland (after Zurich)</strike><ref>Note that the NP's will be "the second most populous city in Switzerland" and "Zurich".</ref>
+#***NP's must not contain verbs, even when used as nouns, adjectives or adverbs: <strike>French-'''speaking''' part of Switzerland</strike>, <strike>numerous international organizations, '''including''' the headquarters of many of the agencies of the United Nations and the Red Cross</strike><ref>In the latter case, there will be 2 NP's: "numerous international organizations" and "the headquarters... Red Cross".</ref>
+#***NP's must be original (no change should be made to the original text from the Wikipedia)
+#***NP's must ignore nesting (only the longest NP must be considered): "the headquarters of many of the agencies of the United Nations and the Red Cross" must be treated as a single NP<ref>Inner NP's, such as "the agencies of the United Nations and the Red Cross", must not be extracted from the longer NP.</ref>
+#***NP's must be unique (repetitions must be ignored)
+#***NP's must be provided one per line in a plain text file, with UTF-8 encoding.
+
+== Examples (NP) ==
+{|table border=1 cellpadding=5
+!width="50%"|original text
+!width="50%"|NP
+|-
+|Geneva is the second most populous city in Switzerland (after Zurich) and is the most populous city of Romandy, the French-speaking part of Switzerland. Situated where the Rhone exits Lake Geneva, it is the capital of the Republic and Canton of Geneva. The municipality (ville de Genève) has a population (as of March 2013) of 194,245, and the canton (République et Canton de Genève, which includes the city) has 472,530 residents. In 2007, the urban area, or agglomération franco-valdo-genevoise (Great Geneva or Grand Genève in French) had 1,240,000 inhabitants in 189 municipalities in both Switzerland and France.
+|<strike>Geneva</strike> (length = 1)<br />
+the second most populous city in Switzerland<br />
+<strike>Zurich</strike> (length = 1)<br />
+the most populous city of Romandy<br />
+<strike>the French-speaking part of Switzerland</strike> (verb)<br />
+<strike>Switzerland</strike> (length = 1)<br />
+the Rhone<br />
+Lake Geneva<br />
+the capital of the Republic and Canton of Geneva<br />
+The municipality<br />
+<strike>ville de Genève</strike> (foreign language)<br />
+a population<br />
+the canton<br />
+<strike>République et Canton de Genève</strike> (foreign language)<br />
+the city<br />
+472,530 residents<br />
+the urban area<br />
+<strike>agglomération franco-valdo-genevoise</strike> (foreign language)<br />
+<strike>Great Geneva or Grand Genève in French</strike> (foreign language)<br />
+1,240,000 inhabitants<br />
+189 municipalities<br />
+both Switzerland and France<br />
+|}
+
+== Notes ==
+<references />

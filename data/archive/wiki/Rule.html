@@ -1,0 +1,76 @@
+<div class="mw-content-ltr mw-parser-output" lang="en" dir="ltr"><p>Grammars are sets of rules used to go from UNL into natural language, or from natural language into UNL. In the UNL framework, there can be two different types of rules:
+</p>
+<dl><dd><ul><li><a href="/wiki/T-rule" title="T-rule">T-rules</a>, or transformation rules, are used to perform changes to nodes or relations</li>
+<li><a href="/wiki/D-rule" title="D-rule">D-rules</a>, or disambiguation rules, are used to control changes over nodes or relations</li></ul></dd></dl>
+<div id="toc" class="toc" role="navigation" aria-labelledby="mw-toc-heading"><input type="checkbox" role="button" id="toctogglecheckbox" class="toctogglecheckbox" style="display:none" /><div class="toctitle" lang="en" dir="ltr"><h2 id="mw-toc-heading">Contents</h2><span class="toctogglespan"><label class="toctogglelabel" for="toctogglecheckbox"></label></span></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#T-rules"><span class="tocnumber">1</span> <span class="toctext">T-rules</span></a>
+<ul>
+<li class="toclevel-2 tocsection-2"><a href="#Examples_of_T-rules"><span class="tocnumber">1.1</span> <span class="toctext">Examples of T-rules</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-3"><a href="#D-rules"><span class="tocnumber">2</span> <span class="toctext">D-rules</span></a>
+<ul>
+<li class="toclevel-2 tocsection-4"><a href="#Examples_of_D-rules"><span class="tocnumber">2.1</span> <span class="toctext">Examples of D-rules</span></a></li>
+</ul>
+</li>
+</ul>
+</div>
+
+<div class="mw-heading mw-heading3"><h3 id="T-rules"><a href="/wiki/T-rule" title="T-rule">T-rules</a></h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Rule&amp;veaction=edit&amp;section=1" title="Edit section: T-rules" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Rule&amp;action=edit&amp;section=1" title="Edit section&#39;s source code: T-rules">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<dl><dd><i>main article</i>:<a href="/wiki/T-rule" title="T-rule">T-rule</a></dd></dl>
+<p>T-rules are used to perform actions and follow the very general formalism 
+</p>
+<pre>α:=β;
+</pre>
+<p>where the left side α is a condition statement, and the right side β is an action to be performed over α. 
+</p><p>There are several different especial types of T-rules:
+</p>
+<ul><li><a href="/wiki/A-rule" title="A-rule">A-rule</a> is a specific type of T-rule used for affixation (prefixation, infixation, suffixation)</li>
+<li><a href="/wiki/C-rule" title="C-rule">C-rule</a> is a specific type of T-rule used for composition (word formation in case of compounds and multiword expressions)</li>
+<li><a href="/wiki/L-rule" title="L-rule">L-rule</a> is a specific type of T-rule used for handling word order</li>
+<li><a href="/wiki/N-rule" title="N-rule">N-rule</a> is a specific type of T-rule used for segmenting sentences and normalizing the input text</li>
+<li><a href="/wiki/S-rule" title="S-rule">S-rule</a> is a specific type of T-rule used for handling syntactic structures</li></ul>
+<div class="mw-heading mw-heading4"><h4 id="Examples_of_T-rules">Examples of T-rules</h4><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Rule&amp;veaction=edit&amp;section=2" title="Edit section: Examples of T-rules" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Rule&amp;action=edit&amp;section=2" title="Edit section&#39;s source code: Examples of T-rules">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<ul><li>PLR:=0&gt;"s"; (A-rule: add "s" in case of plural, as in <i>book</i>&gt;<i>books</i>)</li>
+<li>MTW:=+VA("into account",PP); (C-rule: add the prepositional phrase "into account" as an adjunct to the verbal phrase (VA) in order to form the multiword expression, as in <i>take</i>&gt;take <i>into account</i>)</li>
+<li>(ART,%x)(QUA,%y):=(%y)(%x); (L-rule: reverse the order ART+QUA to QUA+ART, as in <i>the all</i>&gt;<i>all the</i>)</li>
+<li>("don't"):=("do not"); (N-rule: replace the contraction "don't" by "do not")</li>
+<li>(V,%x)(N,%y):=VC(%x;%y); (S-rule: replace the linear relation between a verb and a noun by the syntactic relation VC between them)</li></ul>
+<div class="mw-heading mw-heading3"><h3 id="D-rules"><a href="/wiki/D-rule" title="D-rule">D-rules</a></h3><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Rule&amp;veaction=edit&amp;section=3" title="Edit section: D-rules" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Rule&amp;action=edit&amp;section=3" title="Edit section&#39;s source code: D-rules">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<dl><dd><i>main article:</i> <a href="/wiki/D-rule" title="D-rule">D-rule</a></dd></dl>
+<p>D-rules are used to control the action of T-rules. They are used to control the dictionary retrieval (in <a href="/wiki/Tokenization" title="Tokenization">tokenization</a>) and to prevent or to induce the application of rules in transformation. 
+</p><p>D-rules follow the syntax: 
+</p>
+<pre>α=P;
+</pre>
+<p>where the left side α is a statement and the right side P is an integer from 0 to 255 that indicates the probability of occurrence of α.
+</p>
+<div class="mw-heading mw-heading4"><h4 id="Examples_of_D-rules">Examples of D-rules</h4><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Rule&amp;veaction=edit&amp;section=4" title="Edit section: Examples of D-rules" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Rule&amp;action=edit&amp;section=4" title="Edit section&#39;s source code: Examples of D-rules">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<ul><li>(ART)(VER)=0; (there cannot be any article before a verb)</li>
+<li>agt(^V,^J;)=0; (the source node of an agent relation must be either a verb or an adjective)</li>
+<li>(D)(N)=1; (determiners may come before nouns)</li></ul>
+<!-- 
+NewPP limit report
+Cached time: 20260910145809
+Cache expiry: 86400
+Reduced expiry: false
+Complications: [show‐toc]
+CPU time usage: 0.004 seconds
+Real time usage: 0.004 seconds
+Preprocessor visited node count: 22/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/100
+Expensive parser function count: 0/100
+Unstrip recursion depth: 0/20
+Unstrip post‐expand size: 0/5000000 bytes
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    0.000      1 -total
+-->
+
+<!-- Saved in parser cache with key u965818192_SLvgQ-l8z2_:pcache:778:|#|:idhash:canonical and timestamp 20260910145809 and revision id 15923. Rendering was triggered because: page-view
+ -->
+</div>

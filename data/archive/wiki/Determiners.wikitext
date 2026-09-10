@@ -1,0 +1,17 @@
+'''Determiners''' are noun-modifiers that express the reference of a noun or noun-phrase in the context, including quantity, rather than attributes expressed by [[adjectives]]. This function is usually performed by articles, demonstratives, possessive determiners, or quantifiers.
+
+== Natural Language == 
+In the UNL<sup>arium</sup> framework, determiners are further classified as:
+*'''articles (ART)''': express definiteness (“a”, “the”)
+*'''demonstrative determiners (DEM)''': express position (“this”, in "this house is mine") (not to be confounded with [[pronouns|demonstrative pronouns]])
+*'''possessive determiners (POD)''': express property (“my”, “your”) (not to be confounded with [[pronouns|possessive pronouns]])
+*'''quantifiers (QUA)''': express quantities (“a lot of”, “several”) (not to be confounded with numerals) 
+Numeral determiners must be classified as numerals.
+
+=== Lists of determiners ===
+
+*[[English determiners]]
+
+
+== UNL ==
+In UNL, determiners are represented by [[quantifiers|quantifying attributes]], if quantifiers, or [[reference|reference attributes]], if articles and demonstratives. Numerals and possessive determiners are represented by UWs.

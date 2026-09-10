@@ -1,0 +1,88 @@
+'''Subcategorization''' is the definition of the number and types of the syntactic arguments that co-occurs with the [[base form]] in order to form a phrase. 
+
+== What is subcategorization ==
+The idea of a subcategorization is related to the concepts of [[valency]] and [[transitivity]]. Subcategorization rules are schemes that define the number and the type of specifiers, complements and adjuncts that a [[base form]] needs to constitute its corresponding [[Syntax|maximal projection]].
+
+For instance, the noun "apple" does not require any adjunct, specifier or complement to form a noun phrase (as in "I love apples"). The fact that it is often combined with other forms to form more complex noun phrases (as in "the apple", "delicious apple", "apple from Argentina", etc) is rather accidental, and does not affect the fact the word does not need them to constitute the simplest maximal projection. The same happens to the forms "beautiful" and "now", which may project, alone, an adjective phrase and an adverbial phrase, respectively.
+
+However, there are forms such as "give", "of", "and", "Netherlands" and "interested" that cannot project phrases without the help of other constituents. They require specifiers, complements or adjuncts to form a "minimal maximal projection".  The verb "give", for instance, requires at least one specifier (the subject) and two objects (a direct and an indirect), even if, in several contexts, they are not explicit<ref>In sentences such as "John was given a book" or "I gave the book", arguments are either undefined or omitted but they do exist and, when absent from the sentence, are provided by the context. See [[valency]].</ref>. The same happens to "of", "and" and "interested", which always requires a complement to form a prepositional phrase, a complementizer phrase and an adjective phrase, respectively. The form "Netherlands", on the other hand, requires a specifier ("the") to project a noun phrase (<strike>I go to Netherlands</strike>).
+
+A subcategorization rule is the syntactic device that describes these conditions, i.e., what is really necessary  (the obligatory constituents) for a form to project its corresponding maximal projection.
+
+== Necessary and optional arguments ==
+Subcategorization describes only '''necessary''' arguments, i.e., those that are required by the word in order to form a maximal projection. Optional elements are not informed inside the subcategorization. For instance:
+<blockquote>''Peter killed Mary yesterday in the kitchen with a knife''</blockquote>
+In the sentence above, we have the following:
+*"Peter" (N) does not need any argument and may project a NP alone
+*"killed" (V) needs two arguments in order to project a minimal VP: "Peter" (specifier) and "Mary" (complement). The other phrases ("yesterday", "in the kitchen" and "with a knife") are not necessary for a minimal VP.<ref>Note that "Peter killed Mary" would be already a well-formed VP. This is not the case of *"killed", *"Peter killed" and *"killed Mary".</ref>
+*"Mary" (N) does not need any argument and may project a NP alone
+*"yesterday" (A) does not need any argument and may project a AP alone
+*"in" (P) needs a complement in order to project a minimal PP
+*"the" (D) does not need any argument and may project a DP alone
+*"kitchen" (N) does not need any argument and may project a NP alone (as in "I love kitchens")
+*"with" (P) needs a complement in order to project a minimal PP
+*"a" (D) does not need any argument and may project a DP alone
+*"knife" (N) does not need any argument and may project a NP alone (as in "I hate knives")
+It is important to differentiate then between constituents that are NECESSARY to form a maximal projection, and constituents that, although important, are not necessary to form a maximal projection. Subcategorization concerns only necessary constituents, i.e., the subcategorization of "killed" will not include "yesterday", "in the kitchen" or "with a knife", for instance.
+
+== Subcategorization rules and subcategorization frames ==
+In the UNL<sup>arium</sup> framework, subcategorization is indicated by a set of transformations carried over the base form. This set of transformations can be represented by:
+*'''[[subcategorization frames]]''', in case of regular behaviour (i.e., a set of transformations that is followed by several different words)
+*'''[[subcategorization rules]]''', i.e., in case of irregular behaviour (i.e., a set of transformation that is followed by very few words); or
+
+For instance, the rule "VS(NP)VC(NP);" (= the verb takes a noun phrase as the specifier and a noun phrase as a complement) is associated to all direct transitive verbs of English (''to buy'', ''to make'', ''to do'', etc) and should be defined, therefore, as a subcategorization frame. The same happens to the rule "VS(NP)VC(PH([on]));" (= the verb takes a noun phrase as the subject and a prepositional phrase headed by "on" as a complement), which is less general, but still quite comprehensive, and would be applicable to all indirect transitive verbs that select the preposition ''on'' (such as ''to depend'', ''to insist'', ''to operate'', etc).
+
+;Examples of subcategorization frames
+:Intransitive verbs: VS(NP);
+:Direct transitive verbs: VS(NP)VC(NP);
+:Indirect transitive verbs selecting prepositional phrases headed by "on": VS(NP)VC(PH([on]));
+:Indirect transitive verbs selecting prepositional phrases headed by "in": VS(NP)VC(PH([in]));
+:Ditransitive verbs: VS(NP)VC(NP)VC(PH([to]));
+:Nouns selecting prepositional phrases headed by "of": NC(PH([of]));
+:Adjectives selecting prepositional phrases headed by "in": JC(PH([in]));
+:Adjectives selecting prepositional phrases headed by "of": JC(PH([of]));
+:Adverbs selecting prepositional phrases headed by "to": AC(PH([to]));
+:etc.
+
+The number and the type of arguments, however, is not often as regular as described above. Consider, for instance, the case of the "throw someone to the lions" or "behind one's back". These expressions can be considered to follow general subcategorization frames (ditransitive verbs, in case of "throw someone to the lions", and transitive prepositions, in case of "behind one's back"), but they are actually quite more specific and need to be treated separately. In the first case, we have to inform that the direct object of "throw" is a person and that the indirect object is a fixed expression "to the lions"; likewise, we have to inform that the object of "behind" is a person in genitive case followed by the fixed word "back". As this behavior is very specific, it is defined by subcategorization rules instead of subcategorization frames. 
+
+;Examples of subcategorization rules:
+:VS(NP)VC(NP,HUM)VC(PP("to the lions")); (the specifier of the verb is a NP, the complement is a NP with the feature HUM (human) and the second complement is the particular PP "to the lions"
+:PC(NA(N,HUM;NP([back])); (the complement of the preposition is a NP whose head is a N with the feature HUM (human) and with the NP "back" as its adjunct
+
+The main difference between subcategorization rules and subcategorization frames is that the former is stored in the dictionary (and hence is activated only when the entry is found in a given corpus) whereas the latter is stored in the grammar and is always processed.
+
+== Syntax ==
+Subcategorization frames and rules are expressed by [[S-rule]]s, a special formalism for representing the syntactic structure of phrases.
+ 
+ <HD SYNTACTIC ROLE>(<ARGUMENT>);
+
+Where:<br/>
+<HD SYNTACTIC ROLE> is a head-driven [[Syntactic role]] (VA, VC, VS, VH, etc) of the term required by the base form; and<br />
+<ARGUMENT> is the term required by the base form to saturate its syntactic structure, i.e., in order to form the simplest maximal projection (NP, VP, JP, AP, PP, DP). <br />
+
+== Observations ==
+#There must be as many syntactic roles as [[Subcategorization#Necessary_and_optional_arguments|necessary arguments]] inside a subcategorization frame
+#*VS(NP); (intransitive verbs)
+#*VS(NP)VC(NP); (direct transitive verbs)
+#*VS(NP)VC(NP)VC(NP); (a verb with two direct objects)
+#*VS(NP)VC(NP)VC(NP)VC(NP); (a verb with three direct objects)
+#The arguments must be represented by their corresponding maximal projection (NP,VP,etc.) or by a XH relation in case the argument is necessarily headed by a given word:
+#*VS(NP)VC(NP); (verbs taking a NP as specifier and another NP as complement)
+#*VS(NP)VC(PH([of])); (verbs taking a NP as specifier a PP introduced by [of] as a complement = PH([of]);)
+#The arguments may have as many features as necessary, provided that they are '''necessary''' and represented according to the [[Tagset]].
+#*VS(NP,NOM); (verbs taking a NP in the nominative case (NOM) as specifier)
+#*VS(NP,NOM)VC(NP,ACC); (verbs taking a NP in the nominative case as specifier and another NP in accusative case as complement)
+#*VS(NP,PPR,NOM); (verbs taking a NP that is a personal pronoun (PPR) in the nominative case (NOM))
+#:Features of arguments may be omitted if they are default
+#:If the NP is always NOM in VS there is no need for VS(NP,NOM); the frame must be simply VS(NP);
+#Maximal projections must explicitly indicate the value of the phrase when they are fixed.
+#*NS(DP([the])); (the noun requires the DP "the", i.e., the whole DP is fixed and cannot be modified) 
+#:compare with
+#*NS(DH([the])); (the noun requires a DP headed by "the", i.e., the DP structure is variable, provided that it is headed by "the")
+#Strings must be represented between "quotes" while headwords must be represented between [brackets].
+#*VC(PH([of])); (the word "of" is supposed to be included in the dictionary and, therefore, must be represented as an [entry]
+#*VC("to the lions"); (the expression "to the lions" is not supposed to be included in the dictionary and, therefore, must be represented as a "string"
+
+== Notes ==
+<references />

@@ -1,0 +1,65 @@
+'''Multiword Expressions''' or '''MWE''' are "a sequence of words that acts as a single unit at some level of linguistic analysis"<ref>Nicoleta Calzolari, Charles Fillmore, Ralph Grishman, Nancy Ide, Alessandro Lenci, Catherine Macleod, and Antonio Zampolli. 2002. Towards best practice for multiword expressions in computational lexicons. In Proc. of the Third LREC (LREC 2002), pages 1934–1940, Las Palmas, Canary Islands, Spain, May. ELRA.</ref> or that may have "idiosyncratic interpretations that cross word boundaries (or spaces)"<ref>Ivan Sag, Timothy Baldwin, Francis Bond, Ann Copestake, and Dan Flickinger. 2002. Multiword expressions: A pain in the neck for NLP. In Proc. of the 3rd CICLing (CICLing-2002), volume 2276/2010 of LNCS, pages 1–15, Mexico City, Mexico, Feb. Springer</ref>.
+
+== Qualities of MWE ==
+According to the [http://lingo.stanford.edu/index.html CSLI LinGO Lab], MWE's may defined by a set of necessary/sufficient conditions:
+*Necessary conditions (but not sufficient)
+**'''Institutionalisation/conventionalisation''': process of an expression becoming recognised and accepted as a lexical item, through consistent use over time 
+*Sufficient conditions (but not necessary)
+**'''Semantic/pragmatic non-compositionality''': there is a mismatch between the semantics/pragmatics of the parts and the whole; includes the case of the component lexical items having specialised meanings within the context of the MWE, not accessible in simplex contexts
+***idiomatic expression (non-compositional): the expression is semantically opaque and functions as a gestalt (e.g. kick the bucket)
+***idiomatically combining expression (idiosyncratically compositional): the lexical parts can be seen to (post hoc) assume components of the semantics of the whole, whereby the sum of the parts equals the whole (e.g. let the cat out of the bag)
+**'''Syntactic irregularity''': the expression cannot be parsed based on the simplex morphology (parts of speech) of the components
+***syntactically-irregular MWEs: all of a sudden, the be all and end all of NP
+***syntactically regular MWEs: kick the bucket, fly off the handle
+**'''Non-identifiability''': when first exposed to the expression, the meaning cannot be predicted from its surface form
+***idiom of decoding (non-identifiable): "misleading lexical clusters" (e.g. kick the bucket, fly off the handle)
+***idiom of encoding (identifiable): idiosyncratic lexical combination; note that all idioms of decoding are also idioms of encoding (example strict idioms of encoding -- wide awake, plain truth)
+*Neither necessary nor sufficient
+**'''Lexicogrammatical fixedness''': formal rigidity, preferred lexical realisation, restrictions on aspect, mood, voice, etc.
+***lexicogrammatically fixed MWE: kick the bucket, #the bucket was kicked, #slowly kick the bucket
+***lexicogrammatically fixed non-MWE: look like, *(to be) looked like, *is looking like
+**'''Situatedness''': the expression is associated with a fixed pragmatic point
+***situated MWEs: good morning, all aboard
+***non-situated MWEs: first off, to and fro
+**'''Figuration''': the expression encodes some metaphor, metonymy, hyperbole, etc, even if the nature thereof is underspecified
+***figurative expressions: bull market, beat around the bush
+***non-figurative expressions: first off, to and fro
+**'''Proverbiality''': the expression is used "to describe--and implicitly, to explain--a recurrent situation of particular social interest ... in virtue of its resemblance or relation to a scenario involving homely, concrete things and relations" 
+**'''Informality''': the expression is associated with more informal or colloquial registers
+**'''Affect''': the expression encodes a certain evaluation of affective stance toward the thing it denotes
+
+== Types of MWE ==
+According to <ref>Rosamund Moon. 1998 Fixed Expressions and Idioms in English: A Corpus-based Approach. Oxford: Clarendon Press.</ref>, there are several types of MWE's:
+*Anomalous collocations: lexicogrammatically marked
+**(syntactically) ill-formed collocations: (at all, by and large)
+**cranberry collocations: idiosyncratic lexical component -- one or more words found only in that collocation (in retrospect, kith and kin)
+**defective collocations: idiosyncratic meaning component (in effect, foot the bill)
+**phraseological collocations: semi-productive constructions, occurring in paradigms (in/into/out of action, on show/display)
+*Formulae: pragmatically marked
+**simple formulae/sayings: compositional strings with a special discourse function (alive and well, a horse, a horse, my kingdom for a horse)
+**metaphorical/literal proverbs: (you can't have your cake and eat it, enough is enough)
+**similes (as good as gold)
+*Metaphors: semantically marked (non-compositional)
+**transparent metaphors: (behind someone's back, pack one's bags)
+**semi-transparent metaphors: (on an even keel, pecking order)
+**opaque metaphors: (bite the bullet, kick the bucket)
+*Collocations: compositional word co-occurrence of markedly high frequency
+**semantic collocations: co-occurrence preferences/priming effects (jam with FOOD)
+**lexico-semantic collocations: collocation paradigms (rancid butter/fat, face the truth/facts/problem)
+**syntactic collocations: fully-productive phraseological collocations (too ... to ...)
+
+== Annotation ==
+In the scope of the project LACE, MWE candidates were annotated according to the following criteria:
+*MWE=-4, when the candidate was automatically discarded because containing one single token
+*MWE=-3, when the candidate was automatically discarded because starting or ending in determiners, pronouns, conjunctions or auxiliaries  
+*MWE=-2, when the candidate is only a bag of words: ''goals with, poisoning in, program began''
+*MWE=-1, when the candidate, although a syntactic unit, cannot be said to be a MWE: ''entire plan, higher values, most emblematic'' 
+*MWE=0, when the candidate was not tagged
+*MWE=1, when the candidate is syntactically and semantically regular, identifiable (i.e., fully compositional) and does not involve any lexicogrammatical fixedness: ''library card, machine translation, brief moment''
+*MWE=2, when the candidate is semantically regular, syntactically open, identifiable (i.e., fully compositional) and involves lexicogrammatical fixedness: ''a day at, a day to, depend on, look like, go to'' 
+*MWE=3, when the candidate is semantically regular, syntactically closed, identifiable (i.e., fully compositional) and involves lexicogrammatical fixedness: ''heavy accent, sound asleep, leap year''
+*MWE=4, when the candidate is semantically irregular and not identifiable (i.e., non-compositional): ''rock and roll, by heart, private eye, barbed wire, kick the bucket, come across, call off''
+*MWE-5, when the candidate is a proper noun: ''mark x, united states, new york''
+
+== References ==
+<references />

@@ -1,0 +1,94 @@
+<div class="mw-content-ltr mw-parser-output" lang="en" dir="ltr"><p>The <a href="/wiki/UNL_System" title="UNL System">UNL System</a> contains three different types of lexical databases: dictionaries, knowledge bases and memories.   
+</p>
+<div id="toc" class="toc" role="navigation" aria-labelledby="mw-toc-heading"><input type="checkbox" role="button" id="toctogglecheckbox" class="toctogglecheckbox" style="display:none" /><div class="toctitle" lang="en" dir="ltr"><h2 id="mw-toc-heading">Contents</h2><span class="toctogglespan"><label class="toctogglelabel" for="toctogglecheckbox"></label></span></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Features,_Frames_and_Mappings"><span class="tocnumber">1</span> <span class="toctext">Features, Frames and Mappings</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#Dictionaries"><span class="tocnumber">2</span> <span class="toctext">Dictionaries</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="#Knowledge_Bases"><span class="tocnumber">3</span> <span class="toctext">Knowledge Bases</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="#Memories"><span class="tocnumber">4</span> <span class="toctext">Memories</span></a></li>
+<li class="toclevel-1 tocsection-5"><a href="#Notes"><span class="tocnumber">5</span> <span class="toctext">Notes</span></a></li>
+</ul>
+</div>
+
+<div class="mw-heading mw-heading2"><h2 id="Features,_Frames_and_Mappings"><span id="Features.2C_Frames_and_Mappings"></span>Features, Frames and Mappings</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Lexica&amp;veaction=edit&amp;section=1" title="Edit section: Features, Frames and Mappings" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Lexica&amp;action=edit&amp;section=1" title="Edit section&#39;s source code: Features, Frames and Mappings">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>The lexical resources of UNL are represented in three different types of data structures: features, frames and mappings.
+</p>
+<ul>
+<li>
+<b>Features</b> are monadic predicates that describe distinctive properties of each entry. They are normally represented in the &lt;ATTRIBUTE&gt;=&lt;VALUE&gt; pair format, where &lt;ATTRIBUTE&gt; corresponds to general linguistic attributes (such as "part of speech", "gender", "number", "polarity", "abstractness", etc.), and &lt;VALUE&gt; corresponds to the value that an attribute may assume. In the UNL framework, the set of attributes and values is closed and strongly standardized, and is explicitly and exhaustively defined by the <a href="/wiki/Tagset" title="Tagset">Tagset</a>. Language-independent features (such semantic class, abstractness, polarity, etc.)<sup id="cite_ref-1" class="reference"><a href="#cite_note-1"><span class="cite-bracket">&#91;</span>1<span class="cite-bracket">&#93;</span></a></sup> are represented only in the UNL Dictionary, and language-dependent features (such as number, tense, mood, aspect, etc.) are represented in the NL Dictionaries. Both features are merged in the UNL-NL dictionaries.
+</li>
+<li>
+<b>Frames</b> are dyadic predicates that represent interactions between entries. They can be either semantic or syntactic. 
+<ul>
+<li><b>Semantic Frames</b> represent a collection of facts that specifies or distinguishes (i.e., "defines") each UW. They represent interactions between UW's and can be either "necessary" or "typical". The set of necessary (essential) interactions constitutes the <a href="/wiki/UNL_Knowledge_Base" title="UNL Knowledge Base">UNL Knowledge Base</a>; the set of typical (essential and accidental) interactions constitutes the <a href="/wiki/UNL_Memory" title="UNL Memory">UNL Memory</a>, which includes the UNL Knowledge Base. The difference between "necessary" and "typical" is a matter of logic: an interaction between two UW's X and Y is considered to be "essential" if Y is a logical consequence of X, i.e., if X entails Y; and it is considered to be "typical", if it is simply recurring<sup id="cite_ref-2" class="reference"><a href="#cite_note-2"><span class="cite-bracket">&#91;</span>2<span class="cite-bracket">&#93;</span></a></sup>. The necessary interactions are further analyzed in monotonic and non-monotonic: the former corresponds to the relations "is-a-kind-of" and "is-an-instance-of", whose set constitutes the <a href="/wiki/UNL_Ontology" title="UNL Ontology">UNL Ontology</a>, a tree hierarchical structure which is part of the UNL Knowledge Base. All these interactions, either necessary or typical, are represented as UNL graphs, i.e., as a coherent (network) structure made of UW's, relations and attributes. Semantic frames are used mostly for word sense disambiguation, for lexicalization (i.e., to fill in lexical gaps) and for semantic reasoning.
+</li>
+<li><b>Syntactic Frames</b> represent interactions between natural language words. These interactions can also be "necessary" or "typical". They are considered to be necessary when a given word requires another word in order to form a syntactic unit. That is the case, for instance, of the English verb "to depend", which requires the complement to be introduced by the preposition "on". An interaction is considered to be "typical" when only recurring, but not obligatory. That is the case of collocations, such as "highly sophisticated" and "extremely happy" (instead of "extremely sophisticated" or "highly happy"). The necessary syntactic frames are defined as <a href="/wiki/Subcategorization_frames" title="Subcategorization frames">subcategorization frames</a> or <a href="/wiki/Subcategorization_rules" title="Subcategorization rules">subcategorization rules</a> inside NL dictionaries. The typical syntactic frames are listed in the <a href="/wiki/NL_Memory" title="NL Memory">NL Memory</a>. 
+</li>
+</ul>
+</li>
+<li>
+<b>Mappings</b> represent relations between UNL and natural languages, and are classified in two different categories: lexical mappings and translation mappings. Lexical mappings are represented in the UNL-NL dictionaries, where UW's are associated to natural language lexical items, and vice-versa. Translation mappings are represented in the UNL-NL memories, where recurring translations between UNL and NL are stored. The main difference between UNL-NL dictionaries and UNL-NL memories is that the former involves only lexical units, whereas the latter may involve larger segments. Both resources are used in <a href="/wiki/UNLization" title="UNLization">UNLization</a> and <a href="/wiki/NLization" title="NLization">NLization</a>, and UNL-NL memories normally prevail over UNL-NL dictionaries: the UNL-NL dictionary is activated only when there is no UNL-NL memory available or suitable for a given input. 
+</li>
+</ul>
+<div class="mw-heading mw-heading2"><h2 id="Dictionaries">Dictionaries</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Lexica&amp;veaction=edit&amp;section=2" title="Edit section: Dictionaries" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Lexica&amp;action=edit&amp;section=2" title="Edit section&#39;s source code: Dictionaries">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p><i>Main article: <a href="/wiki/Dictionary" title="Dictionary">Dictionary</a></i>
+</p><p>Dictionaries are feature-based repositories, i.e., a flat list of entries with their corresponding features. The dictionaries comply with the structure defined in the <a href="/wiki/Dictionary_Specs" class="mw-redirect" title="Dictionary Specs">Dictionary Specs</a> and must contain only tags defined in the <a href="/wiki/Tagset" title="Tagset">Tagset</a>. They are divided in four different categories:
+</p>
+<ul><li>The <a href="/wiki/UNL_Dictionary" title="UNL Dictionary">UNL Dictionary</a>, or simply <b>UD</b>, is a list of <a href="/wiki/UW" class="mw-redirect" title="UW">UW</a>'s and their semantic (language-independent) markers. It is divided into three different nested lexical databases: the UNL Core Dictionary, the UNL Abridged Dictionary and the UNL Unabridged Dictionary. The UNL Core Dictionary brings permanent UW's which are supposed to be lexicalized in all languages; the UNL Abridged Dictionary brings permanent UW's which are lexicalized in at least two language families (and includes therefore the UNL Core Dictionary); the UNL Unabridged Dictionary, which contains the UNL Abridged Dictionary, brings the whole sent of permanent UW's (i.e., the concepts that are lexicalized in at least one language).</li>
+<li>The <a href="/wiki/NL_Dictionary" title="NL Dictionary">NL Dictionary</a>, or simply <b>ND</b>, is a list of natural language entries with the corresponding morphological and syntactic (language-dependent) features.</li>
+<li>The <a href="/wiki/UNL-NL_Dictionary" class="mw-redirect" title="UNL-NL Dictionary">UNL-NL Dictionary</a>, or <b>Generation Dictionary</b>, or simply <b>GD</b>, is a list of lexical mappings between UW's and natural language entries.</li>
+<li>The <a href="/wiki/NL-UNL_Dictionary" class="mw-redirect" title="NL-UNL Dictionary">NL-UNL Dictionary</a>, or <b>Analysis Dictionary</b>, or simply <b>AD</b>, is a list of lexical mappings between natural language entries and UW's.</li></ul>
+<p>The UD and the ND are monolingual databases, in UNL and in Natural Language, respectively; the AD and the ND are bilingual databases: NL&gt;UNL, in case of AD, and UNL&gt;NL, in case of GD.
+</p>
+<div class="mw-heading mw-heading2"><h2 id="Knowledge_Bases">Knowledge Bases</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Lexica&amp;veaction=edit&amp;section=3" title="Edit section: Knowledge Bases" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Lexica&amp;action=edit&amp;section=3" title="Edit section&#39;s source code: Knowledge Bases">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p><i>Main article: <a href="/wiki/UNL_Knowledge_Base" title="UNL Knowledge Base">UNL Knowledge Base</a></i>
+</p><p>The lexicon of UNL is formed by the set of permanent <a href="/wiki/UW" class="mw-redirect" title="UW">UW</a>'s, which are expected to represent concepts lexicalized in at least one language. UW's, however, are simply <a href="/wiki/UCI" title="UCI">uniform concept identifiers</a>, i.e., arbitrary addresses or names that do not convey, themselves, any information. The UNL Dictionary provides further information on each UW, but it is still very limited. It does not contain any distinguisher, i.e., any information that can be used to differentiate a given UW from the others that belong to the same class. This information is provided in the  <a href="/wiki/UNL_Knowledge_Base" title="UNL Knowledge Base">UNL Knowledge Base</a>, or UNL<sup>KB</sup>, which is a frame-based repository made of <b>necessary</b> interactions between UW's.
+</p><p>The UNL Knowledge Base is expected to represent the intension (the meaning) of UW's. It follows the general structuralist approach adopted in the UNL framework according to which the UNL, in order to be <a href="/wiki/Universal" title="Universal">universal</a>, must be defined as a closed system made exclusively of interdependent entities, i.e., a coherent system of oppositions in which the value of a given element is entirely derived from its interactions with the other elements within the same system. In that sense, the definition of a UW is not its translation in any natural language but its representation inside the UNL Knowledge Base. The meaning of the UW "104379964" is not "table", but a set of relations such as:
+</p>
+<blockquote>
+<p>icl(104379243,103405725)=255; (a table is a piece of furniture)<br />
+pof(:01,104379243)=255; (a table has a top that is smooth and flat) <br />
+mod:01(108663860,302236842)<br />
+mod:01(108663860,300910101)<br />
+pof(103654826,104379243)=255; (a table has legs)<br />
+</p>
+</blockquote>
+<p>As indicated above, the UNL<sup>KB</sup> contains all necessary interactions between UW's. Some of these interactions, however, are not monotonic, in the sense that they do not preserve the features of their arguments. The definition above, for instance, involves two types of relation: icl(= "is-a-kind-of") and pof (= "is-a-part-of"). The properties of the source argument of an "icl" relation may be propagated to the target argument (a red table will be a red piece of furniture), but this is not always true in a "pof" relation (a red leg does not make a table red). The set of monotonic relations ("icl" and "iof") constitute the <a href="/wiki/UNL_Ontology" title="UNL Ontology">UNL Ontology</a>, which is a part of the UNL<sup>KB</sup> that is used to simplify definitions by inheritance.
+</p>
+<div class="mw-heading mw-heading2"><h2 id="Memories">Memories</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Lexica&amp;veaction=edit&amp;section=4" title="Edit section: Memories" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Lexica&amp;action=edit&amp;section=4" title="Edit section&#39;s source code: Memories">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<p>Differently from dictionaries and knowledge bases, which are based on and extracted from natural language dictionaries, memories are based on corpus. In the UNL System, there are three different types of memory bases.
+</p>
+<ul><li>The <a href="/wiki/UNL_Memory" title="UNL Memory">UNL Memory</a> is a frame-based network of UW's that extends and complements the UNL<sup>KB</sup>. The difference is that the UNL<sup>KB</sup>, which is dictionary-based, contains only necessary relations between UW's, whereas the UNL Memory, which is corpus-based, brings necessary and typical interactions between UW's along with their frequency of occurrence. The UNL Memory constitutes the extension of UW's, as it involves all the instances of use of a given UW (i.e., the UNL Memory describe the possible world of UNL, which can be used to assign truth values to UNL propositions).</li>
+<li>The <a href="/wiki/NL_Memory" title="NL Memory">NL Memory</a> is a list of syntactic (subcategorization) frames between natural language entries which describes sequences of words or terms that co-occur more often than would be expected by chance. They are used to represent collocations, i.e., partly or fully fixed expressions that become established through repeated context-dependent use.</li>
+<li>The <a href="/wiki/UNL-NL_Memory" title="UNL-NL Memory">UNL-NL Memory</a> is a list of frequent mappings between UNL and a given natural language. It is the UNL translation memory, i.e., the set of previous experiences in UNLization and NLization. Differently from the UNL-NL<sup>dic</sup>, which involves only lexical mappings, the UNL-NL Memory involves any segments, and may include several lexical units.</li></ul>
+<div class="mw-heading mw-heading2"><h2 id="Notes">Notes</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/wiki/index.php?title=Lexica&amp;veaction=edit&amp;section=5" title="Edit section: Notes" class="mw-editsection-visualeditor">edit</a><span class="mw-editsection-divider"> | </span><a href="/wiki/index.php?title=Lexica&amp;action=edit&amp;section=5" title="Edit section&#39;s source code: Notes">edit source</a><span class="mw-editsection-bracket">]</span></span></div>
+<div class="mw-references-wrap"><ol class="references">
+<li id="cite_note-1"><span class="mw-cite-backlink"><a href="#cite_ref-1">↑</a></span> <span class="reference-text">Language-independent (semantic) features are closely related to the notions of "classeme" (Pottier, 1965), and of "semantic markers" or "classifiers" (Katz &amp; Fodor, 1963).</span>
+</li>
+<li id="cite_note-2"><span class="mw-cite-backlink"><a href="#cite_ref-2">↑</a></span> <span class="reference-text">Consider, for instance, the case of the UW's corresponding to the concepts conveyed by the English words "table" (= piece of furniture having a smooth flat top that is usually supported by one or more vertical legs), "furniture" (= furnishings that make a room or other area ready for occupancy) and "round" (= having a circular shape). The interaction between "table" and "furniture" is considered "necessary", because there is no table, in that sense, which is not a piece of furniture. However, the interaction between "table" and "round" is considered "typical", because, although highly frequent, there can be tables that are not round.</span>
+</li>
+</ol></div>
+<!-- 
+NewPP limit report
+Cached time: 20260909224518
+Cache expiry: 86400
+Reduced expiry: false
+Complications: [show‐toc]
+CPU time usage: 0.008 seconds
+Real time usage: 0.009 seconds
+Preprocessor visited node count: 74/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/100
+Expensive parser function count: 0/100
+Unstrip recursion depth: 0/20
+Unstrip post‐expand size: 1445/5000000 bytes
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    0.000      1 -total
+-->
+
+<!-- Saved in parser cache with key u965818192_SLvgQ-l8z2_:pcache:567:|#|:idhash:canonical and timestamp 20260909224518 and revision id 13808. Rendering was triggered because: page-view
+ -->
+</div>
