@@ -2,15 +2,15 @@
 issue: 110
 title: "The console's Now row shows the quest in flight, and clears when none is"
 milestone: Side
-status: in-progress
+status: done
 depends_on: [99, 109]
 agent: implementer
 agents: [implementer]
 model: sonnet
 effort: medium
 checkpoint: null
-commit: null
-worktree: .worktrees/side-110-now-row-shows-work-in-flight
+commit: 913d825
+worktree: null
 github_issue: 55
 ---
 
