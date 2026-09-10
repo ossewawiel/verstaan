@@ -2,15 +2,15 @@
 issue: 108
 title: "Console prose and doc-rail links don't fit the amber theme"
 milestone: Side
-status: in-progress
+status: done
 depends_on: []
 agent: implementer
 agents: [implementer]
 model: sonnet
 effort: medium
 checkpoint: null
-commit: null
-worktree: .worktrees/side-108-console-link-colours
+commit: a7ab189
+worktree: null
 github_issue: 51
 ---
 
@@ -56,9 +56,12 @@ hover and focus, border or underline carrying the affordance instead of a borrow
 
 ## Done when
 
-- [ ] `.prose a` and `.doc-rail a` no longer reference `--st-in-progress`.
-- [ ] Both use the amber-dim/amber rest/hover pattern, verified against `.cic-bar__nav a`.
-- [ ] `grep -n "st-in-progress" apps/console/client/public/*.css` shows only status rules.
-- [ ] Console checked live with the Playwright MCP browser: doc-page links read on-theme at
-      rest and on hover.
-- [ ] `npm run test:e2e` passes in `apps/console`.
+- [x] `.prose a` and `.doc-rail a` no longer reference `--st-in-progress`.
+- [x] Both use the amber-dim/amber rest/hover pattern, verified against `.cic-bar__nav a`.
+- [x] `grep -n "st-in-progress" apps/console/client/public/*.css` shows only status rules.
+- [x] Console checked live with the Playwright MCP browser: doc-page links read on-theme at
+      rest and on hover. Verified on `/library/docs/factory/git-workflow.md` — `.doc-rail a`
+      renders `--amber-dim` (rgb(184,122,18)) at rest, `--amber` (rgb(255,176,0)) on hover;
+      `.prose a` matches the same rest/hover pair (a real markdown link never appears in this
+      repo's current docs, so a link was injected into `.prose` in the live DOM to check the rule).
+- [x] `npm run test:e2e` passes in `apps/console`.
