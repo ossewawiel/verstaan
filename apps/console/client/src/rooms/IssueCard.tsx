@@ -6,6 +6,18 @@ const GLYPH: Record<Issue['status'], string> = { done: '●', 'in-progress': '�
 const LABEL: Record<Issue['status'], string> = { done: 'done', 'in-progress': 'in progress', open: 'open' };
 const STATUSES: Issue['status'][] = ['done', 'in-progress', 'open'];
 
+/** The loadout: who takes the quest, at which model and effort (SPEC.md §6, playbook "Resource
+ * rules"). It is the armour and weapons the quest is embarked with, so it sits on the summary
+ * row, visible without opening the card, the way the file console's meta line showed it. A quest
+ * file missing any of the three is flagged rather than left blank: `tools.validate --all`
+ * refuses such a file, and the card says so in the meantime. */
+export function loadoutOf(issue: Pick<Issue, 'agent' | 'model' | 'effort'>): { text: string; complete: boolean } {
+  const complete = Boolean(issue.agent && issue.model && issue.effort);
+  return complete
+    ? { text: `${issue.agent} / ${issue.model} / ${issue.effort}`, complete }
+    : { text: `no loadout: ${[!issue.agent && 'agent', !issue.model && 'model', !issue.effort && 'effort'].filter(Boolean).join(', ')} missing`, complete };
+}
+
 interface Props {
   issue: Issue;
   expanded: boolean;
@@ -17,6 +29,7 @@ interface Props {
  * refetch, but a card whose own `issue` object is referentially unchanged bails out here. */
 function IssueCardImpl({ issue, expanded, onToggle }: Props) {
   const id = String(issue.n).padStart(2, '0');
+  const loadout = loadoutOf(issue);
   return (
     <li className={`story story--${issue.status}`}>
       <button
@@ -31,7 +44,10 @@ function IssueCardImpl({ issue, expanded, onToggle }: Props) {
         }}
       >
         <span className="story__id">#{id}</span>
-        <span className="story__title">{issue.title}</span>
+        <span className="story__title">
+          {issue.title}
+          <span className={`story__loadout${loadout.complete ? '' : ' story__loadout--missing'}`}>{loadout.text}</span>
+        </span>
         <span className="story__status">
           {/* All three glyphs and all three labels are always in the DOM, one shown per status
               (issue 99: "no layout shift on update"). A real browser's Layout Instability API
@@ -62,6 +78,14 @@ function IssueCardImpl({ issue, expanded, onToggle }: Props) {
             <dd>{issue.dependsOn.length ? issue.dependsOn.map((d) => `#${String(d).padStart(2, '0')}`).join(', ') : 'none'}</dd>
             <dt>Agent</dt>
             <dd>{issue.agents.join(', ') || 'none'}</dd>
+            <dt>Loadout</dt>
+            <dd className={loadout.complete ? undefined : 'story__loadout--missing'}>{loadout.text}</dd>
+            <dt>Checkpoint</dt>
+            <dd>{issue.checkpoint != null ? String(issue.checkpoint) : 'none'}</dd>
+            <dt>Worktree</dt>
+            <dd>{issue.worktree ?? 'none'}</dd>
+            <dt>Commit</dt>
+            <dd>{issue.commit != null ? String(issue.commit) : 'none'}</dd>
             <dt>Done when</dt>
             <dd>
               {issue.doneWhen.ticked} / {issue.doneWhen.total}
@@ -87,7 +111,13 @@ function sameIssue(a: Issue, b: Issue): boolean {
     a.doneWhen.ticked === b.doneWhen.ticked &&
     a.doneWhen.total === b.doneWhen.total &&
     a.dependsOn.join(',') === b.dependsOn.join(',') &&
-    a.agents.join(',') === b.agents.join(',')
+    a.agents.join(',') === b.agents.join(',') &&
+    a.agent === b.agent &&
+    a.model === b.model &&
+    a.effort === b.effort &&
+    a.worktree === b.worktree &&
+    String(a.checkpoint) === String(b.checkpoint) &&
+    String(a.commit) === String(b.commit)
   );
 }
 

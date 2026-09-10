@@ -2,6 +2,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useStateQuery, useWorktreesQuery } from '../api/queries';
+import { loadoutOf } from './IssueCard';
 
 export function ConsoleRoom() {
   const { data: model, isLoading } = useStateQuery();
@@ -47,9 +48,13 @@ export function ConsoleRoom() {
           <span className="nn-row__label">Next</span>
           <span className="nn-row__text">
             {model.next ? (
-              <Link to={`/quests/${String(model.next.n).padStart(2, '0')}`}>
-                #{String(model.next.n).padStart(2, '0')} {model.next.title}
-              </Link>
+              <>
+                <Link to={`/quests/${String(model.next.n).padStart(2, '0')}`}>
+                  #{String(model.next.n).padStart(2, '0')} {model.next.title}
+                </Link>{' '}
+                <span className={`story__loadout${loadoutOf(model.next).complete ? '' : ' story__loadout--missing'}`}>{loadoutOf(model.next).text}</span>
+                {' '}· <code>{model.next.command}</code>
+              </>
             ) : (
               'None open'
             )}

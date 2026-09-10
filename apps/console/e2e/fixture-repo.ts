@@ -27,7 +27,9 @@ export function issuePath(n: number): string {
 }
 
 function issueMd(n: number, title: string, status: string): string {
-  return `---\nissue: ${n}\ntitle: "${title}"\nmilestone: Fixture\nstatus: ${status}\ndepends_on: []\nagent: implementer\n---\n## What\n\nFixture issue ${n} for the console's own e2e suite.\n\n## Done when\n\n- [ ] one\n`;
+  // Issue 9 alone has no loadout, so the suite can prove the card flags a quest file that lacks one.
+  const loadout = n === 9 ? '' : 'model: sonnet\neffort: low\n';
+  return `---\nissue: ${n}\ntitle: "${title}"\nmilestone: Fixture\nstatus: ${status}\ndepends_on: []\nagent: implementer\n${loadout}---\n## What\n\nFixture issue ${n} for the console's own e2e suite.\n\n## Done when\n\n- [ ] one\n`;
 }
 
 export function buildFixtureRepo(): void {
