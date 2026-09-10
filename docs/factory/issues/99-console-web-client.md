@@ -2,15 +2,15 @@
 issue: 99
 title: "The console as a web app: a Node service and a React client that grow with the project"
 milestone: Side
-status: in-progress
+status: done
 depends_on: [98]
 agent: implementer
 agents: [implementer, docs-writer, verifier]
 model: sonnet
 effort: high
 checkpoint: 4
-commit: null
-worktree: .worktrees/side-99-console-web-client
+commit: 3c2de03
+worktree: null
 github_issue: 31
 ---
 ## What
