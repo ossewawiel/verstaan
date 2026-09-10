@@ -2,15 +2,15 @@
 issue: 102
 title: "The console runs on Linux and macOS: console.sh, and the SessionStart starter that issue 95 promised"
 milestone: Side
-status: in-progress
+status: done
 depends_on: [99]
 agent: implementer
 agents: [implementer]
 model: sonnet
 effort: low
 checkpoint: null
-commit: null
-worktree: .worktrees/side-102-console-on-linux
+commit: 6e3bc72
+worktree: null
 github_issue: null
 ---
 ## What
