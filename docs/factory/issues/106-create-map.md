@@ -2,15 +2,15 @@
 issue: 106
 title: "The create-map skill: a new map is a new line of main quests, planned through interrogation, ADRs and PLAN §7 before any quest is written"
 milestone: Side
-status: in-progress
+status: done
 depends_on: [105]
 agent: docs-writer
 agents: [docs-writer]
 model: sonnet
 effort: medium
 checkpoint: null
-commit: null
-worktree: .worktrees/side-106-create-map
+commit: 79b3cb8
+worktree: null
 github_issue: 44
 ---
 ## What
