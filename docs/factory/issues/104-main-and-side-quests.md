@@ -2,15 +2,15 @@
 issue: 104
 title: "Main quests and side quests apart, and a block that crosses the line is marked on both cards"
 milestone: Side
-status: in-progress
+status: done
 depends_on: [103]
 agent: implementer
 agents: [implementer]
 model: sonnet
 effort: low
 checkpoint: null
-commit: null
-worktree: .worktrees/side-104-main-and-side-quests
+commit: e1c123f
+worktree: null
 github_issue: null
 ---
 ## What
