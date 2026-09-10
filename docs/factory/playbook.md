@@ -101,7 +101,10 @@ the thing that drifted. That is why nothing here is automatic past step 2.
 
 ## Resource rules
 
-Every party member has a model and an effort in its file, and the console shows them. The
+Every party member has a model and an effort in its file, and the console shows them. Every
+quest file names its `agent`, `model` and `effort` too (SPEC.md §6), the loadout it is embarked
+with: the quest card shows it on its summary row, and `python -m tools.validate --all` refuses a
+quest file that lacks any of the three, so a new quest or side quest cannot land without one. The
 three-pass sequence (rule-author at opus high, then two sonnet passes) is for engine core and
 rule design only. Tooling takes one implementer pass. The verifier is opus and read-only, and
 runs once per merge. Do not raise a level to get past a failure; report the failure instead.

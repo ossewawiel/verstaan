@@ -13,6 +13,7 @@ list an empty `data/languages/` produces.
 from __future__ import annotations
 
 import argparse
+import re
 import subprocess
 import sys
 from collections.abc import Callable, Sequence
@@ -186,6 +187,44 @@ def check_cli_notice(root: Path) -> list[str]:
     return errors
 
 
+LOADOUT_FIELDS = ("agent", "model", "effort")
+_FRONTMATTER_RE = re.compile(r"\A---\r?\n(.*?)\r?\n---", re.DOTALL)
+
+
+def issue_files(root: Path) -> list[Path]:
+    """`docs/factory/issues/NN-*.md`, the quest files, minus the test-cases companions
+    (`04-test-cases.md` is a table of rows, not a quest; the console skips it the same way)."""
+    issues = root / "docs" / "factory" / "issues"
+    if not issues.is_dir():
+        return []
+    return sorted(
+        p
+        for p in issues.glob("*.md")
+        if re.match(r"\d+-.*\.md$", p.name) and not p.name.endswith("-test-cases.md")
+    )
+
+
+def check_issue_loadouts(root: Path) -> list[str]:
+    """Issue 103. Every quest file names its loadout, the `agent`, `model` and `effort` it is
+    embarked with (SPEC.md §6; playbook "Resource rules"). The console shows the three on the
+    card, and a quest without them cannot be routed. A file with no frontmatter block at all is
+    not a quest and is left alone."""
+    errors: list[str] = []
+    for path in issue_files(root):
+        match = _FRONTMATTER_RE.match(path.read_text(encoding="utf-8"))
+        if not match:
+            continue
+        present: dict[str, str] = {}
+        for line in match.group(1).splitlines():
+            key, sep, value = line.partition(":")
+            if sep:
+                present[key.strip()] = value.strip()
+        missing = [f for f in LOADOUT_FIELDS if not present.get(f) or present[f] == "null"]
+        if missing:
+            errors.append(f"{_rel(root, path)}: no loadout: {', '.join(missing)} missing")
+    return errors
+
+
 def check_licences(root: Path) -> list[str]:
     """Every check `--licences` runs, in order."""
     errors: list[str] = []
@@ -213,6 +252,8 @@ def run(
         files = list_changed_language_files(repo_root, changed_paths)
 
     errors = validate_files(files)
+    if mode == "all":
+        errors += check_issue_loadouts(repo_root)
     for error in errors:
         print(error, file=sys.stderr)
     return 1 if errors else 0

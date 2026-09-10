@@ -143,6 +143,18 @@
 .story__summary[aria-expanded='true'] {
   background: rgba(255, 176, 0, 0.08);
 }
+.story__loadout {
+  /* The quest's agent / model / effort, on the summary row so it is read before embarking. A
+     block under the title, not a fourth grid column: the title column is the only one that may
+     vary in width, and a loadout of any length inside it never moves the status column. */
+  display: block;
+  font-size: 0.78rem;
+  color: var(--ink-dim);
+  letter-spacing: 0.02em;
+}
+.story__loadout--missing {
+  color: var(--st-in-progress);
+}
 .story-detail {
   padding: 0.2rem 0.8rem 0.9rem;
   background: rgba(0, 0, 0, 0.25);
