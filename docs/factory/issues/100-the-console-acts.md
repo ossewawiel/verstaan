@@ -22,7 +22,8 @@ links to testing, stop and start of services, syncing info with github etc. full
 Every action is a job: a named command the server already knows how to run, in a named tree,
 with its output streamed to the page and its exit code shown. The page never invents a command
 and never bypasses a gate; it runs the same scripts the terminal runs, so the rules in `SPEC.md`
-§5 and the hooks still hold. Nothing here writes an issue file; that is quest 101.
+§5 and the hooks still hold. Nothing here writes an issue file or any other repo content; that
+is item 1 of the road list in `99-console-web-client.md`, and it has no quest of its own yet.
 
 ## Shape
 
@@ -34,8 +35,13 @@ and never bypasses a gate; it runs the same scripts the terminal runs, so the ru
 - **Kinds, the allow-list**: `gate-fast` (the Stop hook's script), `gate` (the full ladder, as
   `/gate` runs it, writing the stamp only on success), `ctest --label <l>`, `pytest <path>`,
   `console-tests`, `validate --all`, `mirror --check`, `mirror` (sync to GitHub), `service start`
-  and `service stop` for the console and, later, other local services, `worktree list`.
+  and `service stop` for a local service other than the console itself, `worktree list`.
   Each kind maps to a fixed command template; `args` are validated against a schema per kind.
+- **Two kinds carry an environment the terminal supplies by hand.** `mirror` and `mirror --check`
+  run `python -m tools.factory.mirror_github` with `GH_TOKEN` set from `gh auth token`; the
+  server reads the token at job start and never logs it. `gate` needs the gitignored
+  `CMakeUserPresets.json` in the tree it runs in, so the job checks for the file first and
+  fails with that as the reason instead of letting CMake fail on a missing preset.
 - **Openers**: `GET /api/open` with `{what}` from `doc`, `artifact`, `tree`, `pr`, `issue`,
   `run` returns a URL the client opens: an in-app route for documents, a GitHub URL for pull
   requests, issues and CI runs, `vscode://file/<path>` for a tree or a file, the interrogation
@@ -46,8 +52,10 @@ and never bypasses a gate; it runs the same scripts the terminal runs, so the ru
   tile that names a state gains the action that changes it (Gate stamp: run the gate; Remote:
   sync; Ledger: open the retro proposal).
 - **Safety**: loopback only; a job runs as the same user; the allow-list is the only way to
-  run anything; `gate` cannot be marked passed without the real stamp; `service stop` refuses
-  to stop the console that is serving the request unless `{confirm: true}`.
+  run anything; `gate` cannot be marked passed without the real stamp. The console cannot stop
+  itself: a page that kills the server serving it leaves no way back from the page, and only
+  `console.sh` in a terminal or the SessionStart hook starts it again (quest 102). `service stop`
+  named on the console is refused, not confirmed.
 
 ## Acceptance criteria
 
@@ -59,8 +67,9 @@ and never bypasses a gate; it runs the same scripts the terminal runs, so the ru
   then allows `gh pr ready` for that commit. Proven.
 - `mirror` from the page creates a missing GitHub issue and writes `github_issue` back; the
   page shows the drift check going from red to green. Proven with a throwaway issue file.
-- `service stop` on the console itself without `confirm` is refused with a message; with it,
-  the page shows "service stopped" and `console.cmd` starts it again.
+- `service stop` naming the console is 400 with the reason, whatever the body carries. Tested.
+- `gate` in a tree with no `CMakeUserPresets.json` exits non-zero naming the missing file, and
+  writes no stamp. **Proven by moving the file aside.**
 - Openers: a document opens in-app; a tree opens VS Code; a PR opens GitHub. Each tested for
   the URL shape; the VS Code and GitHub ones exercised by hand and recorded.
 - Two jobs requested for one tree run in order, the second shows "queued behind #id".
@@ -72,11 +81,13 @@ and never bypasses a gate; it runs the same scripts the terminal runs, so the ru
 
 ## Not in scope
 
-Writing issue files or any repo content (quest 101). Remote access. Running agents from the
-page (a later quest, once the job runner is proven).
+Writing issue files or any repo content: item 1 of the road list in `99-console-web-client.md`,
+still unquested. Stopping or restarting the console from its own page; its lifecycle stays with
+`console.sh` and the SessionStart hook. Remote access. Running agents from the page, a later
+quest once the job runner is proven.
 
 ## Done when
 
-- [ ] The three proofs, gate-fast failure, gate stamp, mirror sync, are in the report.
+- [ ] The four proofs, gate-fast failure, gate stamp, missing preset, mirror sync, are in the report.
 - [ ] The Actions rail and the Jobs room exist and are keyboard-complete.
 - [ ] PR merged through the gate check.
