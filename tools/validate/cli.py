@@ -225,6 +225,41 @@ def check_issue_loadouts(root: Path) -> list[str]:
     return errors
 
 
+def _frontmatter_fields(path: Path) -> dict[str, str] | None:
+    match = _FRONTMATTER_RE.match(path.read_text(encoding="utf-8"))
+    if not match:
+        return None
+    fields: dict[str, str] = {}
+    for line in match.group(1).splitlines():
+        key, sep, value = line.partition(":")
+        if sep:
+            fields[key.strip()] = value.strip()
+    return fields
+
+
+def check_issue_dependencies(root: Path) -> list[str]:
+    """Issue 104. Every number in a quest's `depends_on` names a quest file that exists, and
+    never the quest itself. The console draws "blocked by" and "blocks" from `depends_on` across
+    main and side quests both; a dangling number would draw a block that nothing can lift."""
+    files = issue_files(root)
+    known = {int(re.match(r"(\d+)", p.name).group(1)) for p in files}
+    errors: list[str] = []
+    for path in files:
+        fields = _frontmatter_fields(path)
+        if fields is None:
+            continue
+        own = int(re.match(r"(\d+)", path.name).group(1))
+        deps = [int(n) for n in re.findall(r"\d+", fields.get("depends_on", ""))]
+        for dep in deps:
+            if dep == own:
+                errors.append(f"{_rel(root, path)}: depends_on names the quest itself (#{own})")
+            elif dep not in known:
+                errors.append(
+                    f"{_rel(root, path)}: depends_on names #{dep}, and no such quest exists"
+                )
+    return errors
+
+
 def check_licences(root: Path) -> list[str]:
     """Every check `--licences` runs, in order."""
     errors: list[str] = []
@@ -254,6 +289,7 @@ def run(
     errors = validate_files(files)
     if mode == "all":
         errors += check_issue_loadouts(repo_root)
+        errors += check_issue_dependencies(repo_root)
     for error in errors:
         print(error, file=sys.stderr)
     return 1 if errors else 0

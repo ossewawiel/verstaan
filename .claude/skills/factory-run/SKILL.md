@@ -88,6 +88,23 @@ The tree itself is not removed here: it is removed by the milestone's close-out 
 branch has merged into `main` (`docs/factory/git-workflow.md` "Worktrees"), because other issues
 on the same branch may still need it.
 
+## Writing a quest
+
+A checkpoint, a retro or the owner may have you write a new issue file. Follow `SPEC.md` §6
+exactly, and decide two things before the body (playbook "The quest giver"):
+
+- **Main or side.** `milestone:` is an `M` number for the main line, `Side` or `Post-M6` for a
+  side quest. The quests room shows the two apart; a side quest never appears under a milestone.
+- **What it waits on, across the line too.** `depends_on` lists every quest that must be done
+  first, main or side. If this side quest is what a main quest is waiting for, put this number in
+  that main quest's `depends_on` as well, so the main quest's card shows the block. The console
+  draws "blocked by" and "blocks" from `depends_on` and nothing else; a cross-line block is marked
+  on both cards. `python -m tools.validate --all` refuses a number that names no quest, so the
+  gate catches a typo here.
+
+Every quest carries its loadout, `agent`, `model` and `effort` (issue 103); the same validator
+refuses one without.
+
 ## Checkpoints
 
 If the issue's `checkpoint:` is set, stop after step 10 and do not start the next issue. Checkpoint

@@ -115,3 +115,13 @@ New work does not appear from nowhere. A new milestone's issues are written at a
 from `PLAN.md` §7 and what the last milestone found. A new direction goes through interrogation
 first, the way the whole plan did: the brief under `docs/decisions/` is the record, and each
 decision becomes an ADR before it becomes an issue.
+
+A quest is on the main line (its milestone is an `M` number) or it is a side quest (`Side` or
+`Post-M6`); the quests room shows the two apart. The line between them is not a wall:
+`depends_on` may point across it in either direction, and it often should. A side quest that a
+main quest needs first (worktrees before the first merge, CI before the second) is written with
+that main quest's number in the main quest's `depends_on`; a side quest that needs a main quest's
+work names it the same way. Whoever writes the quest names every such dependency, because the
+console draws "blocked by" and "blocks" from `depends_on` and nothing else, and marks a block
+that crosses the line so it cannot be skimmed past. `python -m tools.validate --all` refuses a
+`depends_on` that names a quest that does not exist, or the quest itself.

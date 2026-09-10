@@ -25,7 +25,9 @@ test('changing one issue mutates fewer than 20 DOM nodes and leaves an open card
 
   await page.goto('/quests');
   await page.waitForFunction(() => (window as unknown as { __sseOpen?: boolean }).__sseOpen === true);
-  await page.getByRole('button', { name: /#08/ }).click();
+  // By id, not by accessible name: since issue 104 a card that blocks #08 also carries the
+  // text "#08" on its summary row, so a name match would resolve to two buttons.
+  await page.locator('#quest-summary-08').click();
   await expect(page.locator('#quest-detail-08')).toBeVisible();
 
   // Scroll card 08 out of the very top so a scroll reset would be visible, then focus its
@@ -49,7 +51,7 @@ test('changing one issue mutates fewer than 20 DOM nodes and leaves an open card
   setIssueStatus(7, 'in-progress');
 
   // The status label for #07 is the one thing that must change.
-  await expect(page.getByRole('listitem').filter({ hasText: '#07' }).locator('.status-label:not([hidden])')).toHaveText('in progress', { timeout: 10_000 });
+  await expect(page.locator('#quest-summary-07 .status-label:not([hidden])')).toHaveText('in progress', { timeout: 10_000 });
 
   const mutations = await page.evaluate(() => (window as unknown as { __mutations: number }).__mutations);
   const scrollAfter = await page.evaluate(() => window.scrollY);

@@ -3,6 +3,7 @@
 // summary row before the card is opened (issue 103). A quest file missing any of the three is
 // flagged on the card, not left blank. The Next row on the console shows the same.
 import { test, expect } from '@playwright/test';
+import { setIssueStatus } from './fixture-repo';
 
 test('a quest card shows agent / model / effort without being opened', async ({ page }) => {
   await page.goto('/quests');
@@ -17,6 +18,11 @@ test('a quest file without a loadout is flagged on its card', async ({ page }) =
 });
 
 test('the Next row on the console carries the loadout', async ({ page }) => {
+  // Earlier specs set 6 and 7 in progress, and 8 waits on side quest 9 (issue 104's fixture), so
+  // without this reset no main quest would be next and the row would read "None open". Order
+  // independence is worth the two writes.
+  setIssueStatus(6, 'open');
+  setIssueStatus(7, 'open');
   await page.goto('/');
   await expect(page.getByText('Next', { exact: true }).locator('..')).toContainText('implementer / sonnet / low');
 });
