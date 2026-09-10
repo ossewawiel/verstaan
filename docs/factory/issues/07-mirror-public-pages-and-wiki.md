@@ -2,16 +2,16 @@
 issue: 7
 title: "Mirror the public pages, the wiki and the static grammar files"
 milestone: M1
-status: in-progress
+status: done
 depends_on: [6]
 agent: implementer
 agents: [implementer]
 model: sonnet
 effort: medium
 checkpoint: null
-commit: null
+commit: a308efe
 github_issue: 7
-worktree: .worktrees/m1-mirror
+worktree: null
 ---
 ## What
 
