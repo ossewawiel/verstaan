@@ -2,15 +2,15 @@
 issue: 109
 title: "A merged quest tree is removed by the merge path, and the console marks any tree whose branch is already on main"
 milestone: Side
-status: in-progress
+status: done
 depends_on: [92, 99]
 agent: implementer
 agents: [implementer]
 model: sonnet
 effort: medium
 checkpoint: null
-commit: null
-worktree: .worktrees/side-109-remove-tree-after-merge
+commit: dd58829
+worktree: null
 github_issue: 52
 ---
 
