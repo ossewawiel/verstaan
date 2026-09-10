@@ -52,6 +52,12 @@ body {
 }
 .skip-link:focus { left: 0; }
 
+/* Base link idiom, so a link with no other rule never falls back to the browser's default blue:
+ * dim amber at rest, full amber on hover/focus. Every component-specific `a` rule below is a
+ * refinement of this (a border, a block display), never a different colour pair. */
+a { color: var(--amber-dim); text-decoration: none; }
+a:hover, a:focus-visible { color: var(--amber); }
+
 /* ---- cut-corner snub-rectangle: the signature shape ---------------------- */
 .snub, .cic-bar, .tile, .panel {
   clip-path: polygon(
