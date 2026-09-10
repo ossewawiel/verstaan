@@ -205,7 +205,7 @@ a.tile:hover .tile__corner { border-top-color: var(--amber); }
 .prose h3 { color: var(--amber-dim); font-size: .92rem; letter-spacing: .06em; margin: 1.3rem 0 .4rem; }
 .prose strong { color: var(--ink); }
 .prose code { background: var(--hull-2); border: 1px solid var(--plate-edge); padding: .05rem .3rem; color: var(--amber); font-size: .85em; }
-.prose a { color: var(--st-in-progress); text-decoration: none; border-bottom: 1px dotted var(--st-in-progress); }
+.prose a { color: var(--amber-dim); text-decoration: none; border-bottom: 1px dotted var(--amber-dim); }
 .prose a:hover, .prose a:focus { color: var(--amber); border-bottom-color: var(--amber); }
 
 .tip {

@@ -2,7 +2,7 @@
 issue: 108
 title: "Console prose and doc-rail links don't fit the amber theme"
 milestone: Side
-status: open
+status: in-progress
 depends_on: []
 agent: implementer
 agents: [implementer]
@@ -10,7 +10,7 @@ model: sonnet
 effort: medium
 checkpoint: null
 commit: null
-worktree: null
+worktree: .worktrees/side-108-console-link-colours
 github_issue: 51
 ---
 
