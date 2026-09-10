@@ -1,7 +1,11 @@
 ---
 name: factory-run
 description: Phase B of the Verstaan code factory. Regenerates STATE.md, picks the next open issue or a given one, routes it to the right subagents at the right model and effort, runs the gates, and stops at checkpoints. Use when /factory-run is invoked or when resuming work on docs/factory/issues/.
+argument-hint: [issue-number] [--resume]
 ---
+
+Issue: `$ARGUMENTS` (empty means the next open one). One issue, one work commit, one
+`chore(#NN): close` commit. Then stop and print the next command.
 
 ## Every run starts the same way
 

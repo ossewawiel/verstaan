@@ -121,9 +121,9 @@ Copied in shape from `timewarp`, adapted for C++ and data work. Three principles
 | Piece | Where | Job |
 |---|---|---|
 | `/factory-status` | `.claude/commands/` | Regenerate `STATE.md`, print the next command. Cold-start safe. |
-| `/factory-run [n]` | `.claude/commands/` + `skills/factory-run` | Pick the next open issue, route it to agents, run gates, stop at checkpoints. |
+| `/factory-run [n]` | `.claude/skills/factory-run/` | Pick the next open issue, route it to agents, run gates, stop at checkpoints. |
 | `/gate` | `.claude/commands/` | The full local gate before a pull request. Writes the stamp. |
-| `/factory-retro` | `.claude/commands/` + `skills/factory-retro` | Turn repeated failures into rules. Never applies without approval. |
+| `/factory-retro` | `.claude/skills/factory-retro/` | Turn repeated failures into rules. Never applies without approval. |
 | `implementer` | `.claude/agents/` | Makes failing tests pass; builds tooling and engine code. Sonnet, medium. |
 | `test-writer` | `.claude/agents/` | Turns a test table into failing tests. Sonnet, medium. |
 | `rule-author` | `.claude/agents/` | Drafts grammar rules and dictionary entries against the reference languages, with test sentences. Opus, high. |
