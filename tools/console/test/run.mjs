@@ -141,6 +141,19 @@ const detachedPorcelain = `worktree ${fakeRoot}\nHEAD 33333333333333333333333333
 const detachedRows = readWorktrees({ shFn: (cmd) => (cmd.includes('--git-common-dir') ? fakeCommonDir : cmd.includes('worktree list') ? detachedPorcelain : ''), shInFn: () => '' });
 check('readWorktrees reports a detached root tree as branch null, detached true', detachedRows.map((r) => [r.path, r.branch, r.detached]), [['.', null, true]]);
 
+// merged: true when a non-root tree's HEAD is an ancestor of main (issue 109). shInOkFn stands in
+// for `git merge-base --is-ancestor <head> main`, whose signal is the exit code, not stdout, so it
+// is injected as its own function rather than reusing shInFn.
+const mergedRows = readWorktrees({ shFn: fakeListShFn, shInFn: () => '', shInOkFn: (cwd) => cwd === fakeSideTree });
+check('readWorktrees marks a tree whose head is an ancestor of main as merged',
+  mergedRows.find((r) => r.path === '.worktrees/side-92-worktrees')?.merged, true);
+check('readWorktrees always reports the root tree as merged: false, even when the ancestor check would say yes',
+  mergedRows.find((r) => r.isRoot)?.merged, false);
+
+const unmergedRows = readWorktrees({ shFn: fakeListShFn, shInFn: () => '', shInOkFn: () => false });
+check('readWorktrees marks a tree whose head is not an ancestor of main as merged: false',
+  unmergedRows.find((r) => !r.isRoot)?.merged, false);
+
 // mergeIssuesAcrossWorktrees: a status closed in a side quest's own worktree, unmerged anywhere
 // else, must not disappear just because the console happens to be generated from a different
 // tree (the bug reported against issue 91: "the console still shows #91 as open").

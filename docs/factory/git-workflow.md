@@ -75,6 +75,14 @@ git worktree remove .worktrees/<branch>
 git branch -d <branch>
 ```
 
+Who runs that, and when, depends on the branch prefix. A `side-*` or `quest-*` branch has one
+issue, or one quest file, on it, and no close-out issue ever runs for it — so the merge path
+itself removes the tree, right after `git pull --ff-only` has caught the root tree up
+(`.claude/skills/factory-run/SKILL.md` step 10, `.claude/skills/quest/SKILL.md` §4). A milestone
+branch, `m*-*`, carries several issues in one tree, so no single issue's merge is the right moment
+to remove it; the milestone's close-out issue runs the same two commands once every issue on the
+branch has landed.
+
 `.worktrees/` is gitignored. Hooks live in the one shared directory `git rev-parse
 --git-common-dir` resolves to (not `--git-dir`, which is per-worktree and has no `hooks/` of its
 own) and fire the same way for every tree; `tools/console/install-git-hooks.sh` installs there.

@@ -21,6 +21,12 @@ function shIn(cwd, cmd) {
   try { return execSync(cmd, { cwd, stdio: ['ignore', 'pipe', 'ignore'] }).toString().trim(); } catch { return ''; }
 }
 
+/** Exit-code only: `git merge-base --is-ancestor` says nothing on stdout, so `shIn`'s
+ * string-return shape does not fit. `true` means the command exited 0. */
+function shInOk(cwd, cmd) {
+  try { execSync(cmd, { cwd, stdio: 'ignore' }); return true; } catch { return false; }
+}
+
 /** The repository's root tree, independent of which tree this code happens to be running from.
  * `--git-common-dir` is shared by every `git worktree` tree off one repository and resolves to
  * the root tree's own `.git` directory (this repo's root layout is not bare), so its parent is
@@ -87,12 +93,17 @@ function inProgressIssueOf(treeAbsPath, treeRelPath) {
   return matchInProgressIssue(readDir(dir), treeRelPath);
 }
 
-/** `git worktree list --porcelain` plus, per tree, dirty count, gate-stamp match and the
- * in-progress issue found by reading that tree's own files on disk. The root tree (this repo's
- * own checkout) is marked `isRoot`. One row per `git worktree add`. The stamp store is shared
- * (`<git-common-dir>/verstaan-gate-stamps/<sha>`), so `stampMatches` asks one question per tree:
- * did this tree's HEAD commit pass the gate, wherever it was gated. */
-export function readWorktrees({ shFn = sh, shInFn = shIn, rootPath = resolveRootPath(shFn) } = {}) {
+/** `git worktree list --porcelain` plus, per tree, dirty count, gate-stamp match, whether the
+ * branch has already merged into `main`, and the in-progress issue found by reading that tree's
+ * own files on disk. The root tree (this repo's own checkout) is marked `isRoot`. One row per
+ * `git worktree add`. The stamp store is shared (`<git-common-dir>/verstaan-gate-stamps/<sha>`),
+ * so `stampMatches` asks one question per tree: did this tree's HEAD commit pass the gate,
+ * wherever it was gated. `merged` asks a different question, `git merge-base --is-ancestor <head>
+ * main`: is this tree's HEAD already reachable from `main`, so its work is done and the tree is a
+ * candidate for `git worktree remove` (issue 109). The root tree always reports `merged: false` —
+ * `main` is never merged into itself. This reads only `merge-base --is-ancestor`; a squash-merged
+ * branch, whose commits are never ancestors of `main`, reads as unmerged (Not in scope, issue 109). */
+export function readWorktrees({ shFn = sh, shInFn = shIn, shInOkFn = shInOk, rootPath = resolveRootPath(shFn) } = {}) {
   const list = parseWorktreePorcelain(shFn('git worktree list --porcelain'));
   const common = shFn('git rev-parse --path-format=absolute --git-common-dir');
   return list.map((w) => {
@@ -102,9 +113,10 @@ export function readWorktrees({ shFn = sh, shInFn = shIn, rootPath = resolveRoot
     const dirty = shInFn(abs, 'git status --porcelain').split('\n').filter(Boolean).length;
     const full = shInFn(abs, 'git rev-parse HEAD');
     const stampMatches = !!common && !!full && existsSync(resolve(rootPath, common, 'verstaan-gate-stamps', full));
+    const merged = !isRoot && !!w.head && shInOkFn(abs, `git merge-base --is-ancestor ${w.head} main`);
     // `detached` rides along because `branch` is null on a detached HEAD and null alone does not
     // say why. CI checks a pull request out detached, so this is the normal case there, not a fault.
-    return { path: rel, branch: w.branch, detached: w.detached, head: w.head, isRoot, dirty, stampMatches, issue: inProgressIssueOf(abs, rel) };
+    return { path: rel, branch: w.branch, detached: w.detached, head: w.head, isRoot, dirty, stampMatches, merged, issue: inProgressIssueOf(abs, rel) };
   });
 }
 

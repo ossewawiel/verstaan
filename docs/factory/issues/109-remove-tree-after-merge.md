@@ -2,7 +2,7 @@
 issue: 109
 title: "A merged quest tree is removed by the merge path, and the console marks any tree whose branch is already on main"
 milestone: Side
-status: open
+status: in-progress
 depends_on: [92, 99]
 agent: implementer
 agents: [implementer]
@@ -10,7 +10,7 @@ model: sonnet
 effort: medium
 checkpoint: null
 commit: null
-worktree: null
+worktree: .worktrees/side-109-remove-tree-after-merge
 github_issue: 52
 ---
 
@@ -73,10 +73,10 @@ as live. The `git-workflow.md` and `factory-run` texts say the same thing.
 
 ## Done when
 
-- [ ] `factory-run` step 10 removes a `side-*`/`quest-*` tree and branch after the merge and pull.
-- [ ] `quest` skill §4 does the same for the quest-file branch it merges.
-- [ ] `git-workflow.md` "Worktrees" states the two removal paths by branch prefix.
-- [ ] `readWorktrees()` reports `merged` in both the file console and the web console model.
-- [ ] Both Trees panels show the "merged" label; Now/Next never picks a merged tree.
-- [ ] Tests for `merged` in `tools/console/test/` and `apps/console/server/test/` fail first, then pass.
-- [ ] `python -m tools.validate --all` exits 0.
+- [x] `factory-run` step 10 removes a `side-*`/`quest-*` tree and branch after the merge and pull.
+- [x] `quest` skill §4 does the same for the quest-file branch it merges.
+- [x] `git-workflow.md` "Worktrees" states the two removal paths by branch prefix.
+- [x] `readWorktrees()` reports `merged` in both the file console and the web console model.
+- [x] Both Trees panels show the "merged" label; Now/Next never picks a merged tree.
+- [x] Tests for `merged` in `tools/console/test/` and `apps/console/server/test/` fail first, then pass.
+- [x] `python -m tools.validate --all` exits 0.
