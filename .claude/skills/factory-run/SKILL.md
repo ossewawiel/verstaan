@@ -90,8 +90,9 @@ on the same branch may still need it.
 
 ## Writing a quest
 
-A checkpoint, a retro or the owner may have you write a new issue file. Follow `SPEC.md` §6
-exactly, and decide two things before the body (playbook "The quest giver"):
+A checkpoint, a retro or the owner may have you write a new issue file. Use the `quest` skill
+(`.claude/skills/quest/SKILL.md`): it follows `SPEC.md` §6 exactly and decides two things
+before the body (playbook "The quest giver"):
 
 - **Main or side.** `milestone:` is an `M` number for the main line, `Side` or `Post-M6` for a
   side quest. The quests room shows the two apart; a side quest never appears under a milestone.

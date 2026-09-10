@@ -118,7 +118,7 @@ export const LIBRARY = [
   { group: 'UNL reference', blurb: 'Agent-readable UNL specifications and formats, produced by M1.', dir: 'docs/unl-reference', recursive: true },
   { group: 'Licences and contributing', blurb: 'The legal seam between the two halves of the repo.', items: ['README.md', 'CLA.md', 'TRADEMARK.md', 'CONTRIBUTORS.md'] },
   { group: 'The party', blurb: 'Each agent\'s brief, as the agent reads it.', dir: '.claude/agents' },
-  { group: 'Skills and commands', blurb: 'The procedures the party follows.', items: ['.claude/skills/factory-run/SKILL.md', '.claude/skills/factory-retro/SKILL.md', '.claude/commands/factory-status.md', '.claude/commands/gate.md'] },
+  { group: 'Skills and commands', blurb: 'The procedures the party follows.', items: ['.claude/skills/factory-run/SKILL.md', '.claude/skills/quest/SKILL.md', '.claude/skills/factory-retro/SKILL.md', '.claude/commands/factory-status.md', '.claude/commands/gate.md'] },
 ];
 
 function walk(dir, recursive) {
