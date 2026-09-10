@@ -2,15 +2,15 @@
 issue: 101
 title: "One entry per procedure: the factory-run and factory-retro wrappers fold into their skills"
 milestone: Side
-status: in-progress
+status: done
 depends_on: []
 agent: implementer
 agents: [implementer]
 model: sonnet
 effort: low
 checkpoint: null
-commit: null
-worktree: .worktrees/side-101-one-entry-per-procedure
+commit: b6cf14d
+worktree: null
 github_issue: null
 ---
 ## What
