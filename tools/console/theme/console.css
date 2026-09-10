@@ -55,7 +55,7 @@
 .sig__last { color: var(--ink-faint); font-size: .76rem; }
 .empty { color: var(--ink-faint); font-size: .86rem; margin: 0; }
 
-.tree { display: grid; grid-template-columns: 1fr 8rem 4rem 4rem 1fr; gap: .8rem; padding: .4rem 0; border-bottom: 1px dashed var(--plate-edge); font-size: .86rem; align-items: baseline; }
+.tree { display: grid; grid-template-columns: 1fr 8rem 4rem 4rem 4rem 1fr; gap: .8rem; padding: .4rem 0; border-bottom: 1px dashed var(--plate-edge); font-size: .86rem; align-items: baseline; }
 @media (max-width: 900px) { .tree { grid-template-columns: 1fr 1fr; } }
 .tree--root .tree__path { color: var(--amber); }
 .tree__path { color: var(--ink); word-break: break-all; }
@@ -64,6 +64,7 @@
 .tree__dirty--warn { color: var(--st-deferred); }
 .tree__stamp { color: var(--ink-faint); }
 .tree__stamp--ok { color: var(--st-done); }
+.tree__merged--yes { color: var(--st-done); }
 .tree__issue { color: var(--st-in-progress); }
 
 /* ---- rooms row on the console ------------------------------------------ */

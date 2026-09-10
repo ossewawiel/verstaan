@@ -76,7 +76,7 @@ All of this runs inside the issue's worktree, `.worktrees/<branch>`.
 
     | Option | What you run |
     |---|---|
-    | Gate, PR, merge | `/gate`, push, `gh pr create`, wait for the `gate` check, `gh pr merge` |
+    | Gate, PR, merge | `/gate`, push, `gh pr create`, wait for the `gate` check, `gh pr merge`, then `cd` to the root tree and `git pull --ff-only`; if the branch is `side-*` or `quest-*`, `git worktree remove .worktrees/<branch> && git branch -d <branch>` |
     | Gate and PR, then stop | the same, stopping once the PR is open and its check is green |
     | Push only | `git push -u origin <branch>`, nothing else |
     | Hold | nothing reaches GitHub |
@@ -84,9 +84,12 @@ All of this runs inside the issue's worktree, `.worktrees/<branch>`.
     `/gate` is what stamps HEAD, and `require_gate.sh` refuses `gh pr ready` and `gh pr merge`
     without that stamp, so every option above "push only" runs it first.
 
-The tree itself is not removed here: it is removed by the milestone's close-out issue once the
-branch has merged into `main` (`docs/factory/git-workflow.md` "Worktrees"), because other issues
-on the same branch may still need it.
+For a `side-*` or `quest-*` branch, "Gate, PR, merge" removes the tree in the same step: once
+`git pull --ff-only` in the root tree has caught up, `git worktree remove .worktrees/<branch>`
+and `git branch -d <branch>` run there, because no close-out issue ever runs for that branch. A
+milestone branch, `m1-mirror` say, is the exception: several issues share its tree, so the tree
+stays until the milestone's close-out issue removes it once every issue on the branch has landed
+(`docs/factory/git-workflow.md` "Worktrees").
 
 ## Writing a quest
 

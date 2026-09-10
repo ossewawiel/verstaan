@@ -69,12 +69,15 @@
   }
 
   function tree(t) {
-    var r = el('div', 'tree' + (t.isRoot ? ' tree--root' : ''));
+    var r = el('div', 'tree' + (t.isRoot ? ' tree--root' : '') + (t.merged ? ' tree--merged' : ''));
     r.appendChild(el('span', 'tree__path mono', t.path + (t.isRoot ? ' (root)' : '')));
     r.appendChild(el('span', 'tree__branch mono', t.branch || 'detached'));
     r.appendChild(el('span', 'tree__dirty' + (t.dirty ? ' tree__dirty--warn' : ''), t.dirty ? t.dirty + ' dirty' : 'clean'));
     r.appendChild(el('span', 'tree__stamp' + (t.stampMatches ? ' tree__stamp--ok' : ''), t.stampMatches ? 'stamped' : 'no stamp'));
-    r.appendChild(el('span', 'tree__issue', t.issue ? '#' + pad(t.issue.n) + ' ' + t.issue.title : '—'));
+    r.appendChild(el('span', 'tree__merged' + (t.merged ? ' tree__merged--yes' : ''), t.merged ? 'merged' : ''));
+    // A merged tree's branch is done work, even if a stale issue file still names it in-progress
+    // (the file has not been removed yet). Never show it as the active tree for an issue.
+    r.appendChild(el('span', 'tree__issue', !t.merged && t.issue ? '#' + pad(t.issue.n) + ' ' + t.issue.title : '—'));
     return r;
   }
 

@@ -84,7 +84,11 @@ export function ConsoleRoom() {
             <li key={w.path}>
               <strong>{w.path}</strong> — {w.branch ?? '(detached)'} @ {w.head}
               {w.dirty > 0 ? `, ${w.dirty} dirty` : ''}
-              {w.issue ? (
+              {w.merged ? <span className="tree__merged"> · merged</span> : null}
+              {/* A merged tree's branch is done work, even if a stale issue file still names it
+                  in-progress (the file has not been removed yet). Never show it as the active
+                  tree for an issue. */}
+              {!w.merged && w.issue ? (
                 <>
                   {' '}
                   ·{' '}

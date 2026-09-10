@@ -69,6 +69,19 @@ function shIn(cwd: string, cmd: string): string {
   }
 }
 
+/** Exit-code only: `git merge-base --is-ancestor` says nothing on stdout, so `shIn`'s
+ * string-return shape does not fit. `true` means the command exited 0. */
+function shInOk(cwd: string, cmd: string): boolean {
+  try {
+    execSync(cmd, { cwd, stdio: 'ignore' });
+    return true;
+  } catch {
+    return false;
+  } finally {
+    lastGitCommandAt = Date.now();
+  }
+}
+
 export function resolveRootPath(shFn: (cmd: string) => string = sh): string {
   const commonDir = shFn('git rev-parse --path-format=absolute --git-common-dir');
   return commonDir ? resolve(commonDir, '..') : REPO;
@@ -120,8 +133,14 @@ function inProgressIssueOf(treeAbsPath: string, treeRelPath: string): { n: numbe
 export function readWorktrees({
   shFn = sh,
   shInFn = shIn,
+  shInOkFn = shInOk,
   rootPath = resolveRootPath(shFn),
-}: { shFn?: (cmd: string) => string; shInFn?: (cwd: string, cmd: string) => string; rootPath?: string } = {}): WorktreeSummary[] {
+}: {
+  shFn?: (cmd: string) => string;
+  shInFn?: (cwd: string, cmd: string) => string;
+  shInOkFn?: (cwd: string, cmd: string) => boolean;
+  rootPath?: string;
+} = {}): WorktreeSummary[] {
   const list = parseWorktreePorcelain(shFn('git worktree list --porcelain'));
   const common = shFn('git rev-parse --path-format=absolute --git-common-dir');
   return list.map((w) => {
@@ -131,7 +150,12 @@ export function readWorktrees({
     const dirty = shInFn(abs, 'git status --porcelain').split('\n').filter(Boolean).length;
     const full = shInFn(abs, 'git rev-parse HEAD');
     const stampMatches = !!common && !!full && existsSync(resolve(rootPath, common, 'verstaan-gate-stamps', full));
-    return { path: rel, branch: w.branch, detached: w.detached, head: w.head, isRoot, dirty, stampMatches, issue: inProgressIssueOf(abs, rel) };
+    // Is this tree's HEAD already reachable from `main`? True means the branch's work is merged
+    // and the tree is a candidate for `git worktree remove` (issue 109). The root tree always
+    // reports false: `main` is never merged into itself. A squash-merged branch, whose commits
+    // are never ancestors of `main`, reads as unmerged (Not in scope, issue 109).
+    const merged = !isRoot && !!w.head && shInOkFn(abs, `git merge-base --is-ancestor ${w.head} main`);
+    return { path: rel, branch: w.branch, detached: w.detached, head: w.head, isRoot, dirty, stampMatches, merged, issue: inProgressIssueOf(abs, rel) };
   });
 }
 

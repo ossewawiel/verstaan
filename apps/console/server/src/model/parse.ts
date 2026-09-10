@@ -284,6 +284,7 @@ export interface WorktreeSummary {
   isRoot: boolean;
   dirty: number;
   stampMatches: boolean;
+  merged: boolean;
   issue: { n: number; title: string } | null;
 }
 
