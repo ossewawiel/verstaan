@@ -213,7 +213,12 @@ describe('two jobs on one tree run in order', () => {
   });
 });
 
-describe('gate: missing CMakeUserPresets.json fails before cmake ever runs', () => {
+// This precheck path is Linux/Darwin-only (kinds.ts:78, gated on `process.platform !== 'win32'`):
+// a throwaway tmp dir has neither CMakeUserPresets.json nor the tracked CMakePresets.json, so on
+// win32 the precheck falls through to the different, correct "CMakePresets.json is missing"
+// message instead -- proven on that platform by the windows-latest leg of the build matrix
+// exercising this file's real CI run, not by this describe block.
+describe.skipIf(process.platform === 'win32')('gate: missing CMakeUserPresets.json fails before cmake ever runs', () => {
   it('the precheck names the missing file', async () => {
     const { JOB_KINDS } = await import('../src/jobs/kinds.js');
     const tmp = mkdtempSync(join(tmpdir(), 'verstaan-gate-precheck-'));

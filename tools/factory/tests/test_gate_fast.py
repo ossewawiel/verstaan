@@ -14,6 +14,7 @@ from __future__ import annotations
 
 import json
 import os
+import platform
 import shutil
 import subprocess
 import sys
@@ -148,15 +149,6 @@ def _stub_cmake_argv_capture(stub_dir: Path, log: Path) -> None:
         script.chmod(0o755)
 
 
-def _stub_uname(stub_dir: Path, kernel_name: str) -> None:
-    """A `uname` on `stub_dir` that always answers `kernel_name` to `-s`, so the platform switch
-    in gate_fast.sh/gate_full.sh can be driven to either branch without needing a second real OS
-    to test on."""
-    script = stub_dir / "uname"
-    script.write_text(f"#!/usr/bin/env bash\nprintf '%s\\n' \"{kernel_name}\"\n", encoding="utf-8")
-    script.chmod(0o755)
-
-
 def _run_with_engine_change(
     repo: Path, stub_dir: Path, log: Path
 ) -> subprocess.CompletedProcess[str]:
@@ -179,11 +171,25 @@ def _run_with_engine_change(
     )
 
 
+# A stubbed `uname` script on PATH is honoured by gate_fast.sh's own real `uname -s` call on
+# Linux and Darwin, but not reliably on the `windows-latest` leg of this repo's build matrix:
+# Git Bash resolves `uname` to its own MSYS binary ahead of a PATH-only script there, for reasons
+# tied to how that shell was launched (not a plain interactive login shell) rather than to
+# anything gate_fast.sh does. Rather than depend on a stub whose effectiveness varies by host,
+# both tests below exercise the *real*, unstubbed `uname` of whichever CI leg runs them, and each
+# is skipped on hosts where that real uname can't answer the question it asks -- the other leg of
+# the matrix answers it instead.
+
+
+@pytest.mark.skipif(
+    platform.system() not in ("Linux", "Darwin"),
+    reason="exercises this host's own real uname; the linux-gcc branch needs a Linux/Darwin host "
+    "to answer it, and is covered by the ubuntu-latest legs of this repo's build matrix",
+)
 def test_engine_change_picks_linux_gcc_on_linux(repo, tmp_path: Path) -> None:
     """The branch the original hardcoded-msvc-debug bug lived in, on the platform it actually
-    breaks on: a real `uname` (this test host's own, expected to say `Linux` in CI and in every
-    dev sandbox this suite runs in) must steer gate_fast.sh to the `linux-gcc` preset, never the
-    Windows-only `msvc-debug` one."""
+    breaks on: this host's own real `uname -s` (`Linux` in CI, `Darwin` on a Mac) must steer
+    gate_fast.sh to the `linux-gcc` preset, never the Windows-only `msvc-debug` one."""
     stub_dir = tmp_path / "stub-bin"
     stub_dir.mkdir()
     log = tmp_path / "cmake-calls.log"
@@ -197,16 +203,22 @@ def test_engine_change_picks_linux_gcc_on_linux(repo, tmp_path: Path) -> None:
     assert "msvc-debug" not in calls
 
 
+@pytest.mark.skipif(
+    platform.system() in ("Linux", "Darwin"),
+    reason="exercises this host's own real uname; the msvc-debug fallback needs a host that is "
+    "neither Linux nor Darwin to answer it, and is covered by the windows-latest leg of this "
+    "repo's build matrix",
+)
 def test_engine_change_picks_msvc_debug_when_uname_is_not_linux_or_darwin(
     repo, tmp_path: Path
 ) -> None:
-    """`uname` stubbed to answer neither `Linux` nor `Darwin` (a stand-in for Windows, where the
-    real presets are MSVC-only) must steer gate_fast.sh to `msvc-debug`, not `linux-gcc`."""
+    """This host's own real `uname -s` answers neither `Linux` nor `Darwin` (Windows Git Bash, a
+    stand-in for every platform whose presets are MSVC-only): gate_fast.sh must steer to
+    `msvc-debug`, not `linux-gcc`."""
     stub_dir = tmp_path / "stub-bin"
     stub_dir.mkdir()
     log = tmp_path / "cmake-calls.log"
     _stub_cmake_argv_capture(stub_dir, log)
-    _stub_uname(stub_dir, "MINGW64_NT-not-a-real-linux-or-darwin")
 
     result = _run_with_engine_change(repo, stub_dir, log)
     assert result.returncode == 0, result.stderr
