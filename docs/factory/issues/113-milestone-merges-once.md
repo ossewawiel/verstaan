@@ -2,15 +2,15 @@
 issue: 113
 title: "A milestone branch merges once, at its close-out, and a merged branch leaves origin"
 milestone: Side
-status: in-progress
+status: done
 depends_on: [97, 109]
 agent: implementer
 agents: [implementer]
 model: sonnet
 effort: medium
 checkpoint: 4
-commit: null
-worktree: .worktrees/side-113-milestone-merges-once
+commit: 97d0badd291df826666c5c8fe5ab999416aa7122
+worktree: null
 github_issue: 66
 ---
 
@@ -74,11 +74,11 @@ own when a pull request merges.
 
 ## Done when
 
-- [ ] `factory-run` step 10 gates its shipping options on the branch prefix, and an `m*-*` branch
+- [x] `factory-run` step 10 gates its shipping options on the branch prefix, and an `m*-*` branch
       cannot merge there.
-- [ ] `git-workflow.md` says a milestone branch merges once, at its close-out issue, and names the
+- [x] `git-workflow.md` says a milestone branch merges once, at its close-out issue, and names the
       command that ends the draft.
-- [ ] The merge path deletes the branch from `origin` for a `side-*` or `quest-*` branch.
-- [ ] `delete_branch_on_merge` is `true` on the repository.
-- [ ] `git ls-remote --heads origin` lists no already-merged branch.
-- [ ] `python -m tools.validate --all` exits 0.
+- [x] The merge path deletes the branch from `origin` for a `side-*` or `quest-*` branch.
+- [x] `delete_branch_on_merge` is `true` on the repository.
+- [x] `git ls-remote --heads origin` lists no already-merged branch.
+- [x] `python -m tools.validate --all` exits 0.
