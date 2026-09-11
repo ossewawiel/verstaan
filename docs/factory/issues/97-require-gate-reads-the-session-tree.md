@@ -2,7 +2,7 @@
 issue: 97
 title: "require-gate decides the branch from the session's tree, not the command's"
 milestone: Side
-status: open
+status: in-progress
 depends_on: [96]
 agent: implementer
 agents: [implementer]
@@ -10,7 +10,7 @@ model: sonnet
 effort: medium
 checkpoint: null
 commit: null
-worktree: null
+worktree: .worktrees/quest-97-require-gate-reads-the-session-tree
 github_issue: 27
 ---
 ## What
