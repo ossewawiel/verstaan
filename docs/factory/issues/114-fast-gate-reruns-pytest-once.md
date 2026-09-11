@@ -2,7 +2,7 @@
 issue: 114
 title: "The fast gate re-runs a tooling suite once before it blocks, and records a flake as a flake"
 milestone: Side
-status: open
+status: in-progress
 depends_on: [93]
 agent: implementer
 agents: [implementer]
@@ -10,7 +10,7 @@ model: sonnet
 effort: medium
 checkpoint: null
 commit: null
-worktree: null
+worktree: .worktrees/side-114-fast-gate-reruns-pytest-once
 github_issue: 69
 ---
 ## What

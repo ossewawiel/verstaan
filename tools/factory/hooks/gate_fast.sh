@@ -55,7 +55,16 @@ fi
 
 for tool in $(printf '%s\n' "$changed" | sed -n 's#^tools/\([a-z_]*\)/.*#\1#p' | sort -u); do
   [ -d "tools/$tool/tests" ] || continue
-  out=$("$PYTHON" -m pytest "tools/$tool/tests" -q 2>&1) || fail test pytest-red "gate-fast: pytest failed in tools/$tool.
+  # The common path -- a passing suite -- runs pytest exactly once. Only a non-zero first run
+  # pays for a second: a suite that fails once and then passes is a flake (issue 114), logged as
+  # `pytest-flaky` and let through; a suite that fails twice blocks as before, on the second run's
+  # own output, via `pytest-red`.
+  out=$("$PYTHON" -m pytest "tools/$tool/tests" -q 2>&1) && continue
+  out=$("$PYTHON" -m pytest "tools/$tool/tests" -q 2>&1) && {
+    bash "$cap" test pytest-flaky "gate-fast: pytest in tools/$tool failed once then passed on retry (flaky)."
+    continue
+  }
+  fail test pytest-red "gate-fast: pytest failed in tools/$tool.
 $(printf '%s' "$out" | tail -n 30)"
 done
 exit 0
