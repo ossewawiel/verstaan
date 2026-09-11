@@ -127,6 +127,86 @@ def test_stop_hook_active_suppresses_a_failure_that_would_otherwise_block(repo):
     assert len(lessons(repo)) == 1
 
 
+def test_failing_twice_tool_tests_block_exit_2_once_logged_and_prints_second_run(repo):
+    """A suite that fails on both the first and the second run: blocks, logs one `pytest-red`
+    line, and the printed detail is the *second* run's output (each run bumps a counter file and
+    embeds the count in its failure message, so the two runs are distinguishable)."""
+    add_tool_with_test(
+        repo,
+        "alwaysbad",
+        """
+        from pathlib import Path
+
+        def test_always_fails():
+            counter = Path(__file__).parent / "run-count.txt"
+            n = int(counter.read_text()) if counter.exists() else 0
+            n += 1
+            counter.write_text(str(n))
+            assert False, f"run {n} of alwaysbad"
+        """,
+    )
+    result = run_hook(repo, "{}")
+    assert result.returncode == 2
+    assert "gate-fast: pytest failed in tools/alwaysbad" in result.stderr
+    assert "run 2 of alwaysbad" in result.stderr
+    assert "run 1 of alwaysbad" not in result.stderr
+    entries = lessons(repo)
+    assert len(entries) == 1
+    assert entries[0]["stage"] == "test"
+    assert entries[0]["sig"] == "pytest-red"
+
+
+def test_flaky_tool_tests_pass_on_retry_exit_0_and_logged_as_flaky(repo):
+    """A suite that fails on the first run (no marker file yet) and passes on the second run
+    (the first run created the marker): does not block, and logs one `pytest-flaky` line naming
+    the tool."""
+    add_tool_with_test(
+        repo,
+        "flaky",
+        """
+        from pathlib import Path
+
+        def test_passes_on_second_run():
+            marker = Path(__file__).parent / "marker"
+            if not marker.exists():
+                marker.write_text("seen")
+                assert False, "first run fails on purpose"
+            assert True
+        """,
+    )
+    result = run_hook(repo, "{}")
+    assert result.returncode == 0
+    entries = lessons(repo)
+    assert len(entries) == 1
+    assert entries[0]["stage"] == "test"
+    assert entries[0]["sig"] == "pytest-flaky"
+    assert "flaky" in entries[0]["detail"]
+
+
+def test_passing_tool_tests_run_pytest_exactly_once(repo):
+    """The common path -- a suite that passes first time -- must not pay for a retry: the test
+    body increments a counter file each time it actually runs, so the hook running pytest twice
+    (even though the first run passed) would show up as `2` here."""
+    add_tool_with_test(
+        repo,
+        "goodtwice",
+        """
+        from pathlib import Path
+
+        def test_counts_invocations():
+            counter = Path(__file__).parent / "counter.txt"
+            n = int(counter.read_text()) if counter.exists() else 0
+            counter.write_text(str(n + 1))
+            assert True
+        """,
+    )
+    result = run_hook(repo, "{}")
+    assert result.returncode == 0
+    assert lessons(repo) == []
+    counter = repo / "tools" / "goodtwice" / "tests" / "counter.txt"
+    assert counter.read_text(encoding="utf-8") == "1"
+
+
 def test_unrelated_tool_without_a_tests_directory_is_skipped(repo):
     (repo / "tools" / "notests").mkdir(parents=True)
     (repo / "tools" / "notests" / "__init__.py").write_text("", encoding="utf-8")
