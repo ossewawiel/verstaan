@@ -61,4 +61,6 @@ The stamp names the commit, not the tree, so a branch gated in its worktree can 
 the root. `tools/factory/hooks/require_gate.sh` is what reads it.
 
 A failed gate leaves no stamp, which is what keeps the merge shut. Report each step's command,
-exit code and time. Then hand over as `docs/factory/git-workflow.md` "Finishing a milestone" says.
+exit code and time. Then hand over as `.claude/skills/factory-run/SKILL.md` step 10 says: the
+four points in `docs/factory/git-workflow.md` "Finishing a milestone" for an `m*-*` branch, the
+same four right after "Pull requests" merges for a `side-*` or `quest-*` branch.

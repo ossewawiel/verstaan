@@ -5,8 +5,9 @@
 - `main` is always green and always releasable. Nothing is committed to it directly.
 - One branch per milestone: `m0-foundation`, `m1-mirror`, `m2-store`, `m3-engine`, `m4-compiler`,
   `m5-apps`, `m6-growth`. Post-M6 work uses `post-m6-<slug>`.
-- A milestone branch is cut from `main` when its first issue starts and merged when `/gate` passes
-  and the verifier has read the diff.
+- A milestone branch is cut from `main` when its first issue starts. It merges once, at its
+  close-out issue, when `/gate` passes and the verifier has read the diff. A `side-*` or `quest-*`
+  branch merges once too, but per issue, right after that issue's own `/gate` and verifier pass.
 
 ## Worktrees
 
@@ -69,8 +70,11 @@ A tree is removed once its branch has merged, with:
 
 ```
 git worktree remove .worktrees/<branch>
-git branch -d <branch>
+git branch -D <branch>
 ```
+
+`-D`, not `-d`: every branch here merges by squash or by a separate merge commit, never by
+fast-forward, so its own tip is never an ancestor of `main` and `-d` refuses it.
 
 Who runs that, and when, depends on the branch prefix. A `side-*` or `quest-*` branch has one
 issue, or one quest file, on it, and no close-out issue ever runs for it — so the merge path
@@ -118,19 +122,37 @@ no extra step is needed for the root's console to catch up.
 
 ## Pull requests
 
-`origin` is `ossewawiel/verstaan` on GitHub (issue 91). A milestone branch opens a draft PR at its
-first push, with `.github/PULL_REQUEST_TEMPLATE.md` (Summary, Issues closed, Gate report,
-Verifier report, Checklist):
+`origin` is `ossewawiel/verstaan` on GitHub (issue 91), with `delete_branch_on_merge` set so a
+merged branch leaves `origin` on its own. A milestone branch opens one draft PR at its first
+push, with `.github/PULL_REQUEST_TEMPLATE.md` (Summary, Issues closed, Gate report, Verifier
+report, Checklist):
 
 ```
 git push -u origin <branch>
 gh pr create --draft --base main --head <branch>
 ```
 
+That draft is the only pull request the branch ever gets. Every later issue on the branch pushes
+its commits to the same draft and leaves it open; no issue's own merge closes it. The draft ends,
+once, at the milestone's close-out issue — see "Finishing a milestone" below.
+
+A `side-*` or `quest-*` branch opens a normal pull request instead, never a draft, and that pull
+request is the one that merges, per issue:
+
+```
+git push -u origin <branch>
+gh pr create --base main --head <branch>
+```
+
 `main` is protected: no direct pushes, one approving review or the owner's own merge, and the
-`gate` status check (`.github/workflows/gate.yml`) must pass. `gh pr ready` only works after
-`/gate` has stamped HEAD; the `require-gate` hook refuses it otherwise, the same way it refuses
-`git merge`.
+`gate` status check (`.github/workflows/gate.yml`) must pass. A non-draft `gh pr create`,
+`gh pr ready` and `gh pr merge` all refuse to run unless `/gate` has stamped HEAD
+(`require_gate.sh`); `gh pr create --draft` is exempt, since a draft cannot merge on its own.
+A side or quest branch's pull request is never a draft, so `gh pr ready` never runs for it —
+`gh pr merge --squash` merges it directly, using its own `--delete-branch` flag to remove it
+from `origin`. Do not also run `git push origin --delete <branch>`: `--delete-branch` already
+covers it, and the two commands race on the same delete. Once that merge lands, tell the
+developer the same four points "Finishing a milestone" below lists for a milestone branch.
 
 `docs/factory/issues/*.md` are mirrored onto GitHub issues and milestones by
 `tools/factory/mirror_github.py` (idempotent; `--check` reports drift and exits non-zero). GitHub
@@ -140,8 +162,20 @@ never used to reopen or close a local file.
 
 ## Finishing a milestone
 
-The merge procedure is "Pull requests" above; there is no other. Once `gh pr merge` has landed
-the branch, tell the developer, in this order:
+A milestone branch merges once, here, and nowhere earlier. Every issue on the branch has already
+pushed its own commit to the one draft pull request opened in "Pull requests" above. The
+close-out issue ends the draft and merges it, with a real merge commit, never a squash — the
+branch's own commits stay on `main` as its own ancestors, unlike a squash-merged issue 07's:
+
+```
+gh pr ready <pr-number>
+gh pr merge <pr-number> --merge --delete-branch
+```
+
+`gh pr ready` ends the draft. Both commands refuse to run unless `/gate` has stamped HEAD
+(`require_gate.sh`, "Worktrees" above). A `side-*` or `quest-*` branch never runs `gh pr ready` —
+its pull request was never a draft. "Pull requests" above is its whole merge procedure. Once
+`gh pr merge` has landed the milestone branch, tell the developer, in this order:
 1. Which issues closed, with their commits.
 2. What the gate ran and how long it took.
 3. What the verifier flagged and what was done about it.
