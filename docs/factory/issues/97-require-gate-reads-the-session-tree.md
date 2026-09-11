@@ -2,15 +2,15 @@
 issue: 97
 title: "require-gate decides the branch from the session's tree, not the command's"
 milestone: Side
-status: in-progress
+status: done
 depends_on: [96]
 agent: implementer
 agents: [implementer]
 model: sonnet
 effort: medium
 checkpoint: null
-commit: null
-worktree: .worktrees/quest-97-require-gate-reads-the-session-tree
+commit: d964eb0
+worktree: null
 github_issue: 27
 ---
 ## What
@@ -112,9 +112,9 @@ requirement anywhere. Changing what `/gate` stamps.
 
 ## Done when
 
-- [ ] From a session whose working directory is a worktree, the root tree on `main` can
+- [x] From a session whose working directory is a worktree, the root tree on `main` can
       fast-forward from `origin/main`, and the tree is level with `origin/main`.
-- [ ] A merge into `main` written as `git -C <root> merge --no-ff <branch>` is refused.
-- [ ] `git merge --ff-only origin/main 2>&1` resolves the ref as `origin/main`.
-- [ ] A gated command quoted inside a heredoc body does not trigger the hook.
-- [ ] Every existing test in `tools/factory/tests/test_require_gate.py` still passes.
+- [x] A merge into `main` written as `git -C <root> merge --no-ff <branch>` is refused.
+- [x] `git merge --ff-only origin/main 2>&1` resolves the ref as `origin/main`.
+- [x] A gated command quoted inside a heredoc body does not trigger the hook.
+- [x] Every existing test in `tools/factory/tests/test_require_gate.py` still passes.
