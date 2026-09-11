@@ -1,12 +1,17 @@
 // SPDX-License-Identifier: MPL-2.0
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useStateQuery, useWorktreesQuery } from '../api/queries';
 import { loadoutOf } from './IssueCard';
+import { ActionsRail } from '../components/ActionsRail';
+import { ActionButton } from '../components/ActionButton';
+import { api } from '../api/client';
 
 export function ConsoleRoom() {
   const { data: model, isLoading } = useStateQuery();
   const { data: worktrees } = useWorktreesQuery();
+  const navigate = useNavigate();
   const prevMetrics = useRef<Map<string, string>>(new Map());
   const [pulsing, setPulsing] = useState<Set<string>>(new Set());
 
@@ -83,6 +88,46 @@ export function ConsoleRoom() {
         </div>
       </div>
 
+      <ActionsRail tree="." />
+
+      <div className="panel status-row">
+        <div className="status-row__item">
+          <p className="panel__title">Gate stamp</p>
+          <p className="panel__ctx">{model.stamp.present && model.stamp.matches ? 'stamped for this commit' : model.stamp.present ? 'stamp present, does not match HEAD' : 'no stamp'}</p>
+          <ActionButton
+            label="Run the gate"
+            onRun={async () => {
+              const { id } = await api.jobs.create('gate', '.', {});
+              navigate(`/jobs/${id}`);
+            }}
+          />
+        </div>
+        <div className="status-row__item">
+          <p className="panel__title">Remote</p>
+          <p className="panel__ctx">{model.git.remote}</p>
+          <ActionButton
+            label="Sync"
+            destructive
+            armedLabel="Confirm: sync to GitHub"
+            onRun={async () => {
+              const { id } = await api.jobs.create('mirror', '.', {});
+              navigate(`/jobs/${id}`);
+            }}
+          />
+        </div>
+        <div className="status-row__item">
+          <p className="panel__title">Ledger</p>
+          <p className="panel__ctx">{model.lessons.total} lesson(s) logged</p>
+          <ActionButton
+            label="Open the retro proposal"
+            onRun={async () => {
+              const url = await api.open('doc', { path: 'docs/factory/playbook.md' });
+              navigate(url);
+            }}
+          />
+        </div>
+      </div>
+
       <div className="tiles">
         {model.milestones.map((m) => (
           <Link key={m.name} to={`/quests?milestone=${encodeURIComponent(m.name)}`} className="tile snub">
@@ -126,13 +171,6 @@ export function ConsoleRoom() {
             </li>
           ))}
         </ul>
-      </div>
-
-      <div className="panel">
-        <p className="panel__title">Ledger</p>
-        <p className="panel__ctx">
-          {model.lessons.total} lesson(s) logged. {model.reviews.count} pending review row(s).
-        </p>
       </div>
     </section>
   );

@@ -12,6 +12,8 @@ import fastifyCompress from '@fastify/compress';
 import { REPO, readRepo, resolveRootPath, readWorktrees, msSinceLastGitCommand } from './model/read.js';
 import { buildModel } from './model/parse.js';
 import { render, titleOf, splitFrontmatter } from './model/markdown.js';
+import { JobManager } from './jobs/runner.js';
+import { registerJobRoutes } from './jobs/routes.js';
 
 const args = process.argv.slice(2);
 const portFlag = args.indexOf('--port');
@@ -198,6 +200,20 @@ export function buildApp({ readRepoFn = readRepo }: { readRepoFn?: typeof readRe
     reply.type('application/json').send({ path: doc.path, title: titleOf(doc.content, doc.path), html, headings });
   });
 
+  // Artifacts (issue 100): the interrogation brief and similar generated pages, served read-only
+  // and only if `readArtefacts()` already names them -- the same allow-list the Library uses for
+  // documents, so `/api/artifacts/*` can never be used to read an arbitrary repo file.
+  app.get('/api/artifacts/*', async (req, reply) => {
+    const path = (req.params as { '*': string })['*'];
+    const { repo } = getModel();
+    const known = repo.artefacts.find((a) => a.path === path);
+    if (!known) return reply.code(404).send({ error: 'artifact not found' });
+    const full = join(REPO, path);
+    if (!existsSync(full)) return reply.code(404).send({ error: 'artifact not found' });
+    const content = readFileSync(full, 'utf8');
+    reply.type(path.endsWith('.html') ? 'text/html' : 'text/plain').send(content);
+  });
+
   app.get('/api/library', async (_req, reply) => {
     const { repo } = getModel();
     reply.type('application/json').send(
@@ -213,6 +229,18 @@ export function buildApp({ readRepoFn = readRepo }: { readRepoFn?: typeof readRe
   app.get('/api/ledger', async (_req, reply) => {
     const { model } = getModel();
     reply.type('application/json').send({ lessons: model.lessons, reviews: model.reviews });
+  });
+
+  const jobs = new JobManager();
+  const rootPath = resolveRootPath();
+  registerJobRoutes(app, {
+    jobs,
+    repoRoot: rootPath,
+    port: PORT,
+    treeRoots: () => {
+      const { repo } = getModel();
+      return [rootPath, ...repo.worktrees.map((w) => resolve(rootPath, w.path))];
+    },
   });
 
   app.get('/events', { compress: false }, async (req, reply) => {
@@ -235,7 +263,7 @@ export function buildApp({ readRepoFn = readRepo }: { readRepoFn?: typeof readRe
     req.raw.on('close', () => clients.delete(client));
   });
 
-  return { app, getModel, invalidate, broadcast, onChange, clients };
+  return { app, getModel, invalidate, broadcast, onChange, clients, jobs };
 }
 
 function startWatching(onChange: (section: string) => void) {

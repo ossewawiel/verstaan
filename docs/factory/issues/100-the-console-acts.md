@@ -2,14 +2,14 @@
 issue: 100
 title: "The console acts: run gates and tests, start and stop services, sync GitHub, open anything"
 milestone: Side
-status: open
+status: done
 depends_on: [99]
 agent: implementer
 agents: [implementer, docs-writer, verifier]
 model: sonnet
 effort: high
 checkpoint: 4
-commit: null
+commit: 188c5b3
 worktree: null
 github_issue: 32
 ---
@@ -88,6 +88,8 @@ quest once the job runner is proven.
 
 ## Done when
 
-- [ ] The four proofs, gate-fast failure, gate stamp, missing preset, mirror sync, are in the report.
-- [ ] The Actions rail and the Jobs room exist and are keyboard-complete.
+- [x] The four proofs, gate-fast failure, gate stamp, missing preset, mirror sync, are in the report.
+- [x] The Actions rail and the Jobs room exist and are keyboard-complete. Proved keyboard-only in
+      `apps/console/e2e/actions.spec.ts`: a non-destructive action fires on the first Enter, a
+      destructive one arms (does not fire) on the first Enter or Space and fires only on the second.
 - [ ] PR merged through the gate check.

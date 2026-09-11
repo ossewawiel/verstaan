@@ -12,6 +12,12 @@ secrets/
 build/
 out/
 cmake-build-*/
+# Per-machine CMake presets (e.g. a Linux worktree's linux-gcc/linux-clang presets, "Linux gate
+# presets" -- docs/factory/issues/100-the-console-acts.md). Was excluded only via the untracked,
+# per-clone .git/info/exclude; on a fresh clone without that local exclude, copying this file in
+# by hand left the tree "dirty" by git's own reckoning, which tools/factory/hooks/gate_full.sh
+# refuses to stamp.
+CMakeUserPresets.json
 *.obj
 *.o
 *.pdb
