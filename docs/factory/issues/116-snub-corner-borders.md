@@ -2,15 +2,15 @@
 issue: 116
 title: "The console's cut corners carry the border line: every snub card is framed on all six edges"
 milestone: Side
-status: in-progress
+status: done
 depends_on: [99]
 agent: implementer
 agents: [implementer]
 model: sonnet
 effort: medium
 checkpoint: null
-commit: null
-worktree: .worktrees/side-116-snub-corner-borders
+commit: f992618
+worktree: null
 github_issue: 81
 ---
 ## What
@@ -67,8 +67,8 @@ colour stays the edge and amber pair the tiles already use.
 
 ## Done when
 
-- [ ] Every `.tile` and `.panel` shows the one-pixel frame on all six edges at rest, on hover
+- [x] Every `.tile` and `.panel` shows the one-pixel frame on all six edges at rest, on hover
       and on focus, checked with a Playwright screenshot in the hand-off.
-- [ ] The frame is defined once in the snub block of `theme.css`.
-- [ ] `npm run test:e2e` in `apps/console` is green.
+- [x] The frame is defined once in the snub block of `theme.css`.
+- [x] `npm run test:e2e` in `apps/console` is green.
 - [ ] PR merged through the gate check.
