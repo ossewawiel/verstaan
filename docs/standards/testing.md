@@ -32,3 +32,7 @@ exactly this for the whole ladder.
   `tests/fixtures/` as a tiny language pair, `xxa` ⇄ `xxb`, invented for tests only.
 - Coverage: `verstaan_core` at 80 % line coverage, measured in `/gate`. Nothing else has a number.
 - Never pipe a test command into `head`, `tail` or `grep` and then read the exit code.
+- A tooling test that shells out spawns processes in the hundreds, and Windows sometimes refuses:
+  exit `3221225794` (`0xC0000142`, STATUS_DLL_INIT_FAILED) from `git init` or any other spawned
+  binary is the OS, not the test. Re-run before believing it. The same `tools/factory` suite that
+  errored on 20 to 34 fixtures per run on Windows passes 84 tests in 5 s on Linux.
