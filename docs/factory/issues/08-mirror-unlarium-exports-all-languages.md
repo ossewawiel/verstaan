@@ -9,7 +9,7 @@ agents: [implementer]
 model: sonnet
 effort: medium
 checkpoint: null
-commit: PENDING
+commit: 7cea7e9
 github_issue: 8
 worktree: null
 ---
