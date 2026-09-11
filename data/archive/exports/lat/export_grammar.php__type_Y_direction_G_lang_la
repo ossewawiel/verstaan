@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<title>UNLarium</title>
+<link rel="stylesheet" type="text/css" media="all" href="../../shared/default.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"  />
+<link rel="shortcut icon" href="../favicon.ico" type="image/x-icon" />
+</head>
+
+<body>
+<h1>Latin Subcategorization  Grammar for Natural Language Generation</h1>Version of September 11, 2026, 1:41 pm<br />Documentation available at <a href="http://www.unlarchive.org/wiki/index.php/Grammar" target="_blank">http://www.unlarchive.org/wiki/index.php/Grammar</a><br />Tagset available at <a href="../dictionary/export_tagset.php" target="_blank">Export UNDL Foundation tagset</a>.<br /><br /><b>Y0</b><br />AVALENT<br /><br /><b>Y1</b><br />NO SUBCATEGORIZATION FRAME: rules defined inside the entry in the dictionary<br /><br /><b>Y9</b><br />Prepositions show relations of words. The following Prepositions govern the Ablative case:
+abs,ab,a;coram;cum;de;ex,e;in (if denotes rest);intus;palam;prae;pro;procul;simul;sine;sub (if denotes rest);tenus (tenus regularly follows its case). (<i>ab,a;coram;cum;de;ex,e;in;intus;palam;prae;pro;procul;simul;sine;sub</i>)<br />PC(ABL,AFT,AJ1);<br /><br /><b>Y103</b><br />Prepositions show relations of words. The following prepositions govern the Accusative:
+ad,adversus,ante,apud,circa,circiter,circum,cis,citra,contra,erga,extra,in (if denotes motion),infra,intra,inter,iuxta,ob,penesper,pone,post,praeter,prope,propter,secundum,sub (if denotes motion),subter,super,supra,trans,ultra,usque ad,versus (versus always follows its case). (<i>ad,adversus,ante,apud,circa,circiter,circum,cis,citra,contra,erga,extra,infra,intra,inter,iuxta,ob,penesper,pone,post,praeter,prope,propter,secundum,subter,super,supra,trans,ultra,usque ad,versus (versus always follows its case).</i>)<br />PC(ACC,AFT,AJ1);
+<br /><br /><b>Y104</b><br />Prepositions show relations of words. The following Prepositions govern the Genitive case:
+causa,gratia. (<i>causa;gratia</i>)<br />PC(GNT,AFT,AJ1);
+<br /><br /><b>Y145</b><br />requires a verb specifier (which is a NP in the nominative case) and a verb complement(which is a
+NP in the accusative case); (<i>prompto thesauros</i>)<br />VS(NP,NOM)VC(NP,ACC);
+<br /><br /><b>Y146</b><br />GNT as a complement to the noun (<i>timor populi</i>)<br />NC(NP,GNT);
+<br /><br /><b>Y150</b><br />Adjectives that require a complement in Genitive. (<i>plena exemplorum</i>)<br />JC(NP,GNT);
+<br /><br /><b>Y151</b><br />Adjectives that require a complement in Dative. (<i>amica poetae</i>)<br />JC(NP,DAT);
+<br /><br /><b>Y152</b><br />Nouns that require a complement in the dative case. (<i>obtemperatio legibus</i>)<br />NC(NP,DAT);
+<br /><br /><b>Y153</b><br />Nouns that require a complement in the ablative case. (<i>ablativus qualitātis</i>)<br />NC(NP,ABL);
+<br /><br /><b>Y154</b><br />Adjectives that require a complement in Ablative. (<i>liber metu</i>)<br />JC(NP,ABL);
+<br /><br /><b>Y155</b><br />Verbs that require complement in the Dative case, such as obtemperare, ignoscere, etc. (<i>oboediamus legibus</i>)<br />VS(NP)VC(NP,DAT);
+<br /><br /><b>Y157</b><br />Verbs that require a complement in the Ablative case, such as expellere, prohibere, abesse, etc. (<i>Tarquinius regno expulsus est</i>)<br />VS(NP)VC(NP,ABL);
+<br /><br /><b>Y158</b><br />Verbs that require two complements, one in the Ablative case and one in the Accusative. (<i>Consules cives metu liberaverunt</i>)<br />VS(NP)VC(NP,ACC)VC(NP,ABL);
+<br /><br /><b>Y159</b><br />Verbs that require two complements, both in the Accusative case. (<i>nemo potest deum celare consilia sua</i>)<br />VS(NP)VC(NP,ACC)VC(NP,ACC);
+<br /><br /><b>Y160</b><br />Verbs that don't require a complement. This kind of verbs can either be tagged as unaccusative or unergative. (<i>eo</i>)<br />VS(NP);
+<br /><br /><b>Y161</b><br />Verbs that require a complement in the Accusative case and a complement in the Genitive case. (<i>legati foederis Carthagenienses admonuerunt</i>)<br />VS(NP)VC(NP,ACC)VC(NP,GNT);
+<br /><br /><b>Y162</b><br />Verbs that require two complements, one in the Accusative case and one in the Dative case. (<i>timor addit alas pedibus</i>)<br />VS(NP)VC(NP,ACC)VC(NP,DAT);
+<br /><br /></body>
+<html>

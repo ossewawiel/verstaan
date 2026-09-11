@@ -1,0 +1,251 @@
+;============================================================================================
+;NL-UNL DEFAULT TRANSFORMATION GRAMMAR
+;Documentation available at http://www.unlweb.net/wiki/Default_grammar
+;============================================================================================
+
+;============================================================================================
+;============================================================================================
+;1. PRE-PROCESSING
+;Prepares the input sentence for processing
+;===========================================================================================
+;============================================================================================
+
+;Punctuation
+(TEMP,%x)(BLK,%y)(TEMP,%z):=(%x&%y&%z,-BLK); merges temporary words
+(PPN,%x)(BLK,%y)(PPN,%z):=(%x&%y&%z,+TEMP,-BLK); merges sequences of proper names
+(BLK):=; deletes the blank space (this rule applies only if the blank space is in the dictionary)
+
+;Merge (used when the feature MERGE> or <MERGE is assigned)
+(%x,MERGE>)(%y):=(%x&%y,-MERGE>);
+(%x)(%y,<MERGE)(%y):=(%x&%y,-<MERGE);
+
+;Expressions of time 
+(TIME,^"/\d\d\:\d\d\:\d\d/"):=(-TIME,+TEMP); analyze expressions of time that don't follow the syntax HH:MM:SS
+(HOUR,%h)(MINUTE,%m):=(%h)(":")(%m); introduces a colon between the hour and the minute, if not any
+(MINUTE,%m)(SECOND,%s):=(%m)(":")(%s); introduces a colon between the minute and the second, if not any
+(DIGIT,^HOUR,%h)(":",%a)(DIGIT,^MINUTE,%m)(":",%b)(DIGIT,^SECOND,%s):=(%h,+HOUR)(%a)(%m,+MINUTE)(%b)(%s,+SECOND); by default DD:DD:DD = HH:MM:SS
+(DIGIT,^HOUR,^MINUTE,%h)(":",%a)(DIGIT,^MINUTE,^SECOND,%m):=(%h,+HOUR)(%a)(%m,+MINUTE); by default DD:DD = HH:MM
+({"/\d/"|[[/\d/]]},^DOZEN,{SECOND|MINUTE|HOUR},%x)({^BLK|STAIL|CTAIL},%y):=([0],[[0]],MERGE>)(%x)(%y); normalize orphan digits: 1 > 01
+(HOUR,%h)(":",%a)(MINUTE,%m)({STAIL|CTAIL|^":"},%rc):=(%h)(%a)(%m)(":")([[00]],+DIGIT,+SECOND)(%rc);  [HH]:[MM] > [HH]:[MM]:[00]
+(MINUTE,%m)({STAIL|CTAIL|^SECOND,^DIGIT,^BLK,^":"},%rc):=(%m)(":")([[00]],+DIGIT,+SECOND)(%rc); [MM] > [MM]:[00]
+({SHEAD|CHEAD|^MINUTE,^DIGIT,^BLK,^":"},%lc)(SECOND,%s):=(%lc)([[00]],+DIGIT,+MINUTE)(":")(%s); [SS] > [00]:[SS]
+(HOUR,%h)({STAIL|CTAIL|^MINUTE,^DIGIT,^BLK,^":"},%rc):=(%h)(":")([[00]],+DIGIT,+MINUTE)(%rc); [HH] > [HH]:[00]
+({SHEAD|CHEAD|^HOUR,^DIGIT,^BLK,^":"},%lc)(MINUTE,%y):=(%lc)([[00]],+DIGIT,+HOUR)(":")(%y); [MM] > [00]:[MM]
+(HOUR,%h)(":",%a)(MINUTE,%m)(":",%b)(SECOND,%s):=(%h&%a&%m&%b&%s,+TIME,-HOUR,-MINUTE,-SECOND); [HH][:][MM][:][SS] > [HH:MM:SS]
+
+
+;============================================================================================
+;============================================================================================
+;2. PARSING (ARBORIZATION)
+;Converts the input list structure into a tree
+;============================================================================================
+;============================================================================================
+
+;Intermediate projection (XB): complementation 
+;XB + COMP > XB (right complementation)
+(VB,%vb)({NP|PP|JP},%xp):=(VB(%vb,+proj;%xp,+comp,+proj),+XB=VB,+LEX=V,%new);
+(PB,%pb)({NP|VP|JP},%xp):=(PB(%pb,+proj;%xp,+comp,+proj),+XB=PB,+LEX=P,%new);
+(JB,%jb)(PP,%pp):=(JB(%jb,+proj;%pp,+comp,+proj),+XB=JB,+LEX=J,%new);
+(AB,%ab)(PP,%pp):=(AB(%ab,+proj;%pp,+comp,+proj),+XB=AB,+LEX=A,%new);
+(IB,%ib)(VP,%vp):=(IB(%ib,+proj;%vp,+comp,+proj),+XB=IB,+LEX=I,%new);
+({XP,^IP|SHEAD|CHEAD|PUT},%left)(VP,^proj,%v):=(%left)(IB(e,+proj;%v,+comp,+proj),+XB=IB,+LEX=I);
+(CB,%cb)(IP,%ip):=(CB(%cb,+proj;%ip,+proj),+XB=CB,+LEX=C,%new);
+;COMP + XB > XB (left complementation)
+(PPR,NP,^NOM,%np)(VB,%vb):=(VB(%vb,+proj;%np,+comp,+proj),+XB=VB,+LEX=V,%new);
+
+;Intermediate projection (XB): adjunction 
+;XB + ADJT > XB (right adjunction)
+(VB,%vb)({PP|JP|AP},%xp):=(VB(%vb,+proj;%xp,+adjt,+proj),+XB=VB,+LEX=V,%new);
+(NB,%nb)(JP,%jp):=(NB(%nb,+proj;%jp,+adjt,+proj),+XB=NB,+LEX=N,%new);
+({SHEAD|CHEAD|PUT|^P,^V},%left)(NB,%nb)(PP,%xp):=(%left)(NB(%nb,+proj;%xp,+adjt,+proj),+XB=NB,+LEX=N,%new);
+(JB,%jb)(AP,%xp):=(JB(%jb,+proj;%xp,+adjt,+proj),+XB=JB,+LEX=J,%new);
+;ADJT + XB > XB (left adjunction)
+(JP,%jp)(NB,%nb)({XP|PUT|STAIL|CTAIL},%right):=(NB(%nb,+proj;%jp,+adjt,+proj),+XB=NB,+LEX=N,%new)(%right);
+(AP,%ap)(VB,%vb)({XP|PUT|STAIL|CTAIL},%right):=(VB(%vb,+proj;%ap,+adjt,+proj),+XB=VB,+LEX=V,+POS=%x,%new)(%right);
+
+;Maximal projection (XP): specification 
+;SPEC + XB > XP  (left specification)
+(AP,%ap)(AB,%ab)({^P|PUT|STAIL|CTAIL},%right):=(AP(%ab,+proj;%ap,+spec,+proj),+XP=AP,+LEX=A,%new)(%right);
+(AP,%ap)(JB,%jb)({^P|PUT|STAIL|CTAIL},%right):=(JP(%jb,+proj;%ap,+spec,+proj),+XP=JP,+LEX=J,%new)(%right);
+(DP,%dp)(NB,%nb)({^D,^J,^N,^P|PUT|STAIL|CTAIL},%right):=(NP(%nb,+proj;%dp,+spec,+proj),+XP=NP,+LEX=N,%new)(%right);
+(NP,%np)(VB,%vb)({^A,^J,^N,^P|PUT|STAIL|CTAIL},%right):=(VP(%vb,+proj;%np,+spec,+proj),+XP=VP,+LEX=V,%new)(%right);
+(AP,%ap)(PB,%pb)({^A,^J,^N,^V|PUT|STAIL|CTAIL},%right):=(PP(%pb,+proj;%ap,+spec,+proj),+XP=PP,+LEX=P,%new)(%right);
+(NP,%np)(IB,%ib)(XP,^VP,%right):=(IP(%ib,+proj;%np,+spec,+proj),+XP=IP,+LEX=I,%new)(%right);
+(XP,%xp)(CB,%cb)(XP,^IP,%right):=(CP(%cb,+proj;%xp,+spec,+proj),+XP=CP,+LEX=C,%new)(%right);
+
+;Maximal projection (XP): general rule (XB > XP)
+({^A|SHEAD|CHEAD|PUT})(AB,^proj,^XP):=()(-XB,-AB,+XP=AP,+proj);
+({^A|SHEAD|CHEAD|PUT})(DB,^proj,^XP):=()(-XB,-DB,+XP=DP,+proj);
+({^A|SHEAD|CHEAD|PUT})(JB,^proj,^XP)({^P|PUT|STAIL|CTAIL}):=()(-XB,-JB,+XP=JP,+proj)();
+({^D,^J,^N|SHEAD|CHEAD|PUT})(NB,^proj,^XP)({^D,^J,^P|PUT|STAIL|CTAIL}):=()(-XB,-NB,+XP=NP,+proj)();
+({^A,^N|SHEAD|CHEAD|PUT})(VB,^proj,^XP)({^A,^J,^N,^P|PUT|STAIL|CTAIL}):=()(-XB,-VB,+XP=VP,+proj)();
+({^A|SHEAD|CHEAD|PUT})(PB,^proj,^XP,%pb)({PUT|STAIL|CTAIL}):=()(-XB,-PB,+XP=PP,+proj)();
+({XP,^NP|SHEAD|CHEAD|PUT},%left)(IB,^proj,^XP,%ib)(XP,^VP,%right):=(%left)(IP(%ib,+proj;+e),+XP=IP,+LEX=I,%new)(%right);
+({XP|SHEAD|CHEAD|PUT},%left)(CB,^CCJ,^proj,^XP,%cb)(XP,^IP,%right):=(%left)(CP(%cb,+proj;+e),+XP=CP,+LEX=C,%new)(%right);
+(R,^XP,^proj):=(+XP=NP,+proj);
+(C,CCJ,^XP,^proj):=(+XP=CP,+proj);
+
+;Intermediate projection: general rule (X > XB)
+(A,^proj,^XB,^XP):=(+XB=AB);
+(D,^proj,^XB,^XP):=(+XB=DB);
+(J,^proj,^XB,^XP):=(+XB=JB);
+(N,^proj,^XB,^XP):=(+XB=NB);
+(P,^proj,^XB,^XP):=(+XB=PB);
+(V,^proj,^XB,^XP):=(+XB=VB);
+(I,^proj,^XB,^XP):=(+XB=IB);
+(C,^proj,^XB,^XP):=(+XB=CB);
+
+;============================================================================================
+;============================================================================================
+;3. TRANSFORMATION
+;Converts the surface syntactic structure into the deep syntactic structure
+;============================================================================================
+;============================================================================================
+
+;Moving the subject from IP to VP
+IP(IB(;VP(;e));%s,^e):=IP(IB(;VP(;%s));%e,+e);
+;De-topicalization
+CP(CB(;IP(IB(;VP(VB(;e);));));%a,^e):=CP(CB(;IP(IB(;VP(VB(;%a);));));%e,+e); (moving spec of CP to adjt of VP - position available)
+CP(CB(;IP(IB(;VP(VB(;^e),%vb;));));%a,^e):=CP(CB(;IP(IB(;VP(VB(VB(%vb;%a))));));%e,+e); (moving spec of CP to adjt of VP - position non-available)
+
+
+;============================================================================================
+;============================================================================================
+;4. DEARBORIZATION
+;Convers the syntactic tree into a syntactic network
+;============================================================================================
+;============================================================================================
+
+;Generalization
+/[ACDIJNPV]B/(%x;%y):=XB(%x;%y);
+/[ACDIJNPV]P/(%x;%y):=XP(%x;%y);
+
+;Moving the attributes from outer nodes to inner nodes
+(XB(%x;%y),%w,att):=(XB(%x,+att=%w;%y),%w,-att);
+(XP(%x;%y),%w,att):=(XP(%x,+att=%w;%y),%w,-att);
+
+;Moving the relations from outer nodes to inner nodes
+(XB(%x;%y),%w,rel):=(XB(%x,+rel=%w;%y),%w,-rel);
+(XP(%x;%y),%w,rel):=(XP(%x,+rel=%w;%y),%w,-rel);
+
+;Converting trees into head-driven phrase structures
+XP(XB(%x;%y);%z):=XB(%x;%y)XS(%x;%z);
+XB(XB(%x;%y);%z):=XB(%x;%y)XB(%x;%z);
+XS(XB(%x;%y);%z):=XB(%x;%y)XS(%x;%z);
+XS(%x;XB(%y;%z)):=XS(%x;%y)XB(%y;%z);
+XB(%z;XB(%x;%y)):=XB(%x;%y)XB(%z;%x);
+XP(%x;%y):=XS(%x;%y);
+
+;Deletion of empty categories
+XB(%x;e):=(%x);
+XS(%x;e):=(%x);
+(e):=;
+
+;Labeling head-driven phrase structures
+XB(%x,A;%y,adjt):=AA(%x;%y);
+XB(%x,C;%y,adjt):=CA(%x;%y);
+XB(%x,D;%y,adjt):=DA(%x;%y);
+XB(%x,I;%y,adjt):=IA(%x;%y);
+XB(%x,J;%y,adjt):=JA(%x;%y);
+XB(%x,N;%y,adjt):=NA(%x;%y);
+XB(%x,P;%y,adjt):=PA(%x;%y);
+XB(%x,V;%y,adjt):=VA(%x;%y);
+
+XB(%x,A;%y,comp):=NC(%x;%y);
+XB(%x,C;%y,comp):=CC(%x;%y);
+XB(%x,D;%y,comp):=DC(%x;%y);
+XB(%x,I;%y,comp):=IC(%x;%y);
+XB(%x,J;%y,comp):=JC(%x;%y);
+XB(%x,N;%y,comp):=NC(%x;%y);
+XB(%x,P;%y,comp):=PC(%x;%y);
+XB(%x,V;%y,comp):=VC(%x;%y);
+
+XB(%x,A;%y):=AA(%x;%y);
+XB(%x,C;%y):=CA(%x;%y);
+XB(%x,D;%y):=DA(%x;%y);
+XB(%x,I;%y):=IA(%x;%y);
+XB(%x,J;%y):=JA(%x;%y);
+XB(%x,N;%y):=NA(%x;%y);
+XB(%x,P;%y):=PA(%x;%y);
+XB(%x,V;%y):=VA(%x;%y);
+
+XS(%x,A;%y):=AS(%x;%y);
+XS(%x,C;%y):=CS(%x;%y);
+XS(%x,D;%y):=DS(%x;%y);
+XS(%x,I;%y):=IS(%x;%y);
+XS(%x,J;%y):=JS(%x;%y);
+XS(%x,N;%y):=NS(%x;%y);
+XS(%x,P;%y):=PS(%x;%y);
+XS(%x,V;%y):=VS(%x;%y);
+
+;============================================================================================
+;============================================================================================
+;5. INTERPRETATION
+;Converts the syntactic network into a semantic network
+;============================================================================================
+;============================================================================================
+;Relations
+/[ACDIJNPV][ACS]/(%x;%y,adr):=adr(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,agt):=agt(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,ant):=ant(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,aoj):=aoj(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,ben):=ben(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,bas):=bas(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,cag):=cag(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,cnt):=cnt(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,con):=con(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,cob):=cob(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,coo):=coo(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,dur):=dur(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,equ):=equ(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,exp):=exp(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,fld):=fld(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,frm):=frm(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,gol):=gol(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,icl):=icl(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,ins):=ins(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,iof):=iof(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,man):=man(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,mat):=mat(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,met):=met(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,mod):=mod(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,nam):=nam(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,obj):=obj(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,per):=per(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,plc):=plc(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,plf):=plf(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,plt):=plt(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,pof):=pof(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,pos):=pos(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,ptn):=ptn(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,pur):=pur(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,qua):=qua(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,rsn):=rsn(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,scn):=scn(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,seq):=seq(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,src):=src(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,tim):=tim(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,tmf):=tmf(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,tmt):=tmt(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,to):=to(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,via):=via(%x;%y);
+
+;Default
+NA(%x;%y,DIGIT,^ORD):=qua(%x;%y);
+NA(%x;%y):=mod(%x;%y);
+/[ACDIJPV]A/(%x;%y):=man(%x;%y);
+/[ACDIJNPV]C/(%x;%y):=obj(%x;%y);
+VS(%x;%y):=agt(%x;%y);
+/[ACDIJNP]S/(%x;%y):=mod(%x;%y);
+
+;============================================================================================
+;============================================================================================
+;6. POST-PROCESSING
+;Post-edits the semantic network 
+;============================================================================================
+;============================================================================================
+(@pl,{@multal|@paucal|@all|@both}):=(-@pl); eliminates the redundancy of @pl
+agt(%x,COP;%y)obj(%x;%z):=aoj(%z,+att=%x;%y); eliminates the copula
+agt(%x;%y,N)obj(%x;%z,J):=agt(%x;%y)aoj(%z;%y); transforms the predicate of the object into the predicate of the subject
+or(%a;and(%b1;%b2),%b):=or(%a;or(%b1;%b2),%b); propagates or to its internal conjunctions
+aoj(%x,SPR;%y):=pos(%y;%x); replaces aoj by pos when the first argument of the aoj is a possesive pronoun

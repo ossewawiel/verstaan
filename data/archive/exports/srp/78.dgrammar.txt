@@ -1,0 +1,5 @@
+﻿/(agt|obj|aoj|exp|cnt)/(;D)=0; (determiners cannot be arguments of relations, because they are always attributes
+agt(%x,V;%y,D,^PPR)=0;
+(V,PFV,{@habitual|@progressive},%x)=0;
+pos(N,%x;R,%y)=0;
+mod(%x,N;%y,PPN)=0;

@@ -1,0 +1,13 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<title>UNLarium</title>
+<link rel="stylesheet" type="text/css" media="all" href="../../shared/default.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"  />
+<link rel="shortcut icon" href="../favicon.ico" type="image/x-icon" />
+</head>
+
+<body>
+<h1>Ukrainian Subcategorization  Grammar for Natural Language Generation</h1>Version of September 11, 2026, 2:27 pm<br />Documentation available at <a href="http://www.unlarchive.org/wiki/index.php/Grammar" target="_blank">http://www.unlarchive.org/wiki/index.php/Grammar</a><br />Tagset available at <a href="../dictionary/export_tagset.php" target="_blank">Export UNDL Foundation tagset</a>.<br /><br /><b>Y0</b><br />AVALENT<br /><br /><b>Y1</b><br />NO SUBCATEGORIZATION FRAME: rules defined inside the entry in the dictionary<br /><br /><b>Y45</b><br />VS(NP)VC(NP,DAT) (<i>діти допомагають батькам</i>)<br />VS(NP,NOM,ANUM,APER,AGEN)VC(NP,DAT);<br /><br /><b>Y46</b><br />Direct transitive verb (<i>Степан любить Україну</i>)<br />VS(NP,NOM,APER,ANUM,AGEN)VC(NP,ACC);<br /><br /><b>Y47</b><br />Indirect transitive verb with noun phrase as verb specifier and noun phrase as verb complement in genetive case (<i>Дитина боїться темряви</i>)<br />VS(NP,NOM,APER,ANUM,AGEN)VC(NP,GNT);<br /><br /><b>Y48</b><br />Indirect transitive (<i>Петро був головою</i>)<br />VS(NP,NOM,APER,ANUM,AGEN)VC(NP,INS);<br /><br /><b>Y49</b><br />Indirect transitive verb with noun phrase as verb specifier and preposition phrase as verb complement in locative case (<i>Цар сидить на троні</i>)<br />VS(NP,NOM,APER,ANUM,AGEN)VC(PP,LOC);<br /><br /><b>Y50</b><br />Intransitive verb (<i>Дівчина спала</i>)<br />VS(NP,NOM,APER,ANUM,AGEN);<br /><br /><b>Y52</b><br />Ditransitive verb with complements in accusative and dative case (<i>Газ із сланцю дарує Україні надію</i>)<br />VS(NP,NOM,APER,ANUM,AGEN)VC(NP,ACC)VC(NP,DAT);<br /><br /><b>Y54</b><br />Indirect transitive verb with noun phrase as verb specifier and preposition phrase as verb complement in accusative case (<i>Памʼятай про смерть</i>)<br />VS(NP,NOM,APER,ANUM,AGEN)VC(PP,ACC);<br /><br /><b>Y58</b><br />VS(NP)VC(INF) (<i>Мені пощастило потрапити на концерт.</i>)<br />VS(NP,DAT)VC(VH(INF));<br /><br /><b>Y115</b><br />indirect transitive verbs selecting prepositional phrases headed by "до" (<i>припадати</i>)<br />VS(NP)VC(PH([до]),GNT);<br /><br /><b>Y118</b><br />intransitive or transitive or indirect transitive verbs selecting prepositional phrases headed by "у" or "в" (<i>припадати</i>)<br />VS(NP)VC(NP,ACC)VC(PH({[у]|[в]}),{GNT|ACC|LOC});<br /><br /></body>
+<html>

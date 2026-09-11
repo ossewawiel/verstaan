@@ -1,0 +1,9 @@
+; RuleSet:(MX)A1_slk
+; User:Grega Milharcic (grega)
+; Date:23.17.2013 at 03:17:07
+
+; "A1_slk"
+; MX
+/(agt|obj|aoj)/(;D)=0; (determiners cannot be arguments of relations, because they are always attributes
+mod(%x,N;%y,N)=0;
+agt(%x,V;%y,D,^PPR)=0;

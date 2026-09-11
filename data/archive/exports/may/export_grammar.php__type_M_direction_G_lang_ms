@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<title>UNLarium</title>
+<link rel="stylesheet" type="text/css" media="all" href="../../shared/default.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"  />
+<link rel="shortcut icon" href="../favicon.ico" type="image/x-icon" />
+</head>
+
+<body>
+<h1>Malay Inflectional  Grammar for Natural Language Generation</h1>Version of September 11, 2026, 1:44 pm<br />Documentation available at <a href="http://www.unlarchive.org/wiki/index.php/Grammar" target="_blank">http://www.unlarchive.org/wiki/index.php/Grammar</a><br />Tagset available at <a href="../dictionary/export_tagset.php" target="_blank">Export UNDL Foundation tagset</a>.<br /><br />(%x,M3):=(%x,-M3,+FLX(ACV:=""<0;
+ACV&TST:=""<"k","meng"<0;
+PSV:="di"<0;
+));<br /><br />(%x,M4):=(%x,-M4,+FLX(ACV:=0>""; 
+ACV&TST:=""<"p","mem"<0;
+PSV:="di"<0;
+));<br /><br />(%x,M5):=(%x,-M5,+FLX(ACV:=0>""; 
+ACV&TST:=""<"t","men"<0 ;
+PSV:="di"<0;));<br /><br />(%x,M6):=(%x,-M6,+FLX(ACV:=""<0;
+ACV&TST:="meny"<"s";
+PSV:="di"<0;));<br /><br />(%x,M7):=(%x,-M7,+FLX(ACV:=""<0;
+ACV&TST:="me"<0;
+PSV:="di"<0;));<br /><br />(%x,M9):=(%x,-M9,+FLX(ACV:=""<0;
+ACV&TST:="menge"<0;
+PSV:="di"<0;
+));<br /><br />(%x,M11):=(%x,-M11,+FLX(INV:=0>"";
+SNG:="se"<0;));<br /><br />(%x,M94):=(%x,-M94,+FLX(ACV:=""<0;
+ACV&TST:="menye"<"";
+PSV:="di"<0;));<br /><br /></body>
+<html>

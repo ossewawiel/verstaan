@@ -1,0 +1,2809 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<title>UNLarium</title>
+<link rel="stylesheet" type="text/css" media="all" href="../../shared/default.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"  />
+<link rel="shortcut icon" href="../favicon.ico" type="image/x-icon" />
+</head>
+
+<body>
+<h1>Georgian Inflectional  Grammar</h1>Version of September 11, 2026, 1:20 pm<br />Documentation available at <a href="http://www.unlarchive.org/wiki/index.php/Grammar" target="_blank">http://www.unlarchive.org/wiki/index.php/Grammar</a><br />Tagset available at <a href="../dictionary/export_tagset.php" target="_blank">Export UNDL Foundation tagset</a>.<br /><br /><b>M0</b><br />Invariant<br /><br /><b>M1</b><br />Irregular: rules are defined inside the entry in the dictionary<br /><br /><b>M2</b><br />The Georgian Nouns which Base Form end with a consonant. (<i>აბ,     
+აბაზიან,
+აბაჟურ,
+აბაზ,     
+აბედ,
+აბზაც</i>)<br />SNG&NOM:=0>"ი";<br />
+SNG&ERG:=0>"მა";<br />
+SNG&DAT:=0>"ს";<br />
+SNG&DAT&ALT:=0>"სა";<br />
+SNG&GNT:=0>"ის";<br />
+SNG&GNT&ALT:=0>"ისა";<br />
+SNG&INS:=0>"ით";<br />
+SNG&INS&ALT:=0>"ითა";<br />
+SNG&ABL:=0>"ად";<br />
+SNG&ABL&ALT:=0>"ადა";<br />
+SNG&VOC:=0>"ო";<br />
+SNG&ADE:=0>"ზე";<br />
+SNG&INE:=0>"თან";<br />
+SNG&LOC:=0>"ში";<br />
+SNG&ILL:=0>"ისკენ";<br />
+SNG&ILL&ALT:=0>"ისაკენ";<br />
+SNG&ILL&ALT1:=0>"ში";<br />
+SNG&CMT:=0>"ითურთ";<br />
+SNG&DEL:=0>"ისგან";<br />
+SNG&DEL&ALT:=0>"ისაგან";<br />
+SNG&ELA:=0>"იდან";<br />
+SNG&EQU:=0>"ივით";<br />
+SNG&EQU&ALT:=0>"ივითა";<br />
+SNG&LAT:=0>"ამდე";<br />
+SNG&LAT&ALT:=0>"ამდის";<br />
+SNG&BEN:=0>"ისთვის";<br />
+SNG&BEN&ALT:=0>"ისათვის";<br />
+PLR&NOM:=0>"ები";<br />
+PLR&ERG:=0>"ებმა";<br />
+PLR&DAT:=0>"ებს";<br />
+PLR&DAT&ALT:=0>"ებსა";<br />
+PLR&GNT:=0>"ების";<br />
+PLR&GNT&ALT:=0>"ებისა";<br />
+PLR&INS:=0>"ებით";<br />
+PLR&INS&ALT:=0>"ებითა";<br />
+PLR&ABL:=0>"ებად";<br />
+PLR&ABL&ALT:=0>"ებადა";<br />
+PLR&VOC:=0>"ებო";<br />
+PLR&ADE:=0>"ებზე";<br />
+PLR&INE:=0>"ებთან";<br />
+PLR&LOC:=0>"ებში";<br />
+PLR&ILL:=0>"ებისკენ";<br />
+PLR&ILL&ALT:=0>"ებისაკენ";<br />
+PLR&ILL&ALT1:=0>"ებში";<br />
+PLR&CMT:=0>"ებითურთ";<br />
+PLR&DEL:=0>"ებისგან";<br />
+PLR&DEL&ALT:=0>"ებისაგან";<br />
+PLR&ELA:=0>"ებიდან";<br />
+PLR&EQU:=0>"ებივით";<br />
+PLR&LAT:=0>"ებამდე";<br />
+PLR&LAT&ALT:=0>"ებამდის";<br />
+PLR&BEN:=0>"ებისთვის";<br />
+PLR&BEN&ALT:=0>"ებისათვის";<br />
+PLR&NOM&ALT:=0>"ნი";<br />
+PLR&ERG&ALT:=0>"თა";<br />
+PLR&DAT&ALT1:=0>"თა";<br />
+PLR&GNT&ALT1:=0>"თა";<br />
+PLR&VOC&ALT:=0>"ნო";<br />
+;<br /><br /><b>M3</b><br />The Georgian Nouns which Base Form end with a sonor "ლ", "ნ", 'რ", "მ" and  get squeezed (loosing a vowel in Base Form) in Singular Genitive, Instrumental and Ablative and in all cases of Plural. (<i>წამალ~წამლ,
+პატიმარ~პატიმრ,
+პაემან~პაემნ,
+ატამ~ატმ,
+სომეხ~სომხ,
+ყასაბ~ყასბ</i>)<br />SNG&NOM:=0>"ი";<br />
+SNG&ERG:=0>"მა";<br />
+SNG&DAT:=0>"ს";<br />
+SNG&DAT&ALT:="0>სა";<br />
+SNG&GNT:=[-2]:"",0>"ის";<br />
+SNG&GNT&ALT:=[-2]:"",0>"ისა";<br />
+SNG&INS:=[-2]:"",0>"ით";<br />
+SNG&INS&ALT:=[-2]:"",0>"ითა";<br />
+SNG&ABL:=[-2]:"",0>"ად";<br />
+SNG&ABL&ALT:=[-2]:"",0>"ადა";<br />
+SNG&VOC:=0>"ო";<br />
+SNG&ADE:=0>"ზე";<br />
+SNG&INE:=0>"ში";<br />
+SNG&LOC:=0>"ში";<br />
+SNG&ILL:=[-2]:"",0>"ისკენ";<br />
+SNG&ILL&ALT1:=[-2]:"",0>"ისაკენ";<br />
+SNG&ILL&ALT2:=0>"ში";<br />
+SNG&CMT:=[-2]:"",0>"ითურთ";<br />
+SNG&DEL:=[-2]:"",0>"ისგან";<br />
+SNG&DEL&ALT:=[-2]:"",0>"ისაგან";<br />
+SNG&ELA:=[-2]:"",0>"იდან";<br />
+SNG&EQU:=0>"სავით";<br />
+SNG&EQU&ALT:=0>"სავითა";<br />
+SNG&LAT:=[-2]:"",0>"ამდე";<br />
+SNG&LAT&ALT:=[-2]:"",0>"ამდის";<br />
+SNG&BEN:=[-2]:"",0>"ისთვის";<br />
+SNG&BEN&ALT:=[-2]:"",0>"ისათვის";<br />
+
+PLR&NOM:=[-2]:"",0>"ები";<br />
+PLR&ERG:=[-2]:"",0>"ებმა";<br />
+PLR&DAT:=[-2]:"",0>"ებს";<br />
+PLR&DAT&ALT:=[-2]:"",0>"ებსა";<br />
+PLR&GNT:=[-2]:"",0>"ების";<br />
+PLR&GNT&ALT:=[-2]:"",0>"ებისა";<br />
+PLR&INS:=[-2]:"",0>"ებით";<br />
+PLR&INS&ALT:=[-2]:"",0>"ებითა";<br />
+PLR&ABL:=[-2]:"",0>"ებად";<br />
+PLR&ABL&ALT:=[-2]:"",0>"ებადა";<br />
+PLR&VOC:=[-2]:"",0>"ებო";<br />
+PLR&ADE:=[-2]:"",0>"ებზე";<br />
+PLR&INE:=[-2]:"",0>"ებთან";<br />
+PLR&LOC:=[-2]:"",0>"ებში";<br />
+PLR&ILL:=[-2]:"",0>"ებისკენ";<br />
+PLR&ILL&ALT:=[-2]:"",0>"ებისაკენ";<br />
+PLR&ILL&ALT1:=[-2]:"",0>"ებში";<br />
+PLR&CMT:=[-2]:"",0>"ებითურთ";<br />
+PLR&DEL:=[-2]:"",0>"ებისგან";<br />
+PLR&DEL&ALT:=[-2]:"",0>"ებისაგან";<br />
+PLR&ELA:=[-2]:"",0>"ებიდან";<br />
+PLR&EQU:=[-2]:"",0>"ებივით";<br />
+PLR&LAT:=[-2]:"",0>"ებამდე";<br />
+PLR&LAT&ALT:=[-2]:"",0>"ებამდის";<br />
+PLR&BEN:=[-2]:"",0>"ებისთვის";<br />
+PLR&BEN&ALT1:=[-2]:"",0>"ებისათვის";<br />
+
+PLR&NOM&ALT:=0>"ნი";<br />
+PLR&ERG&ALT:=0>"თა";<br />
+PLR&DAT&ALT1:=0>"თა";<br />
+PLR&GNT&ALT1:=0>"თა";<br />
+PLR&VOC&ALT:=0>"ნო";<br />
+;<br /><br /><b>M4</b><br />The Georgian Nouns which Base Form end with a vowel "ა" that get reduced in Singular Genitive and Instrumental and in all cases of Plural. (<i>ძმა~ძმ,
+და~დ,
+დაავადება~დაავადებ,
+დაბა~დაბ</i>)<br />SNG&NOM:=0>"";<br />
+SNG&ERG:=0>"მ";<br />
+SNG&DAT:=0>"ს";<br />
+SNG&DAT&ALT:=0>"სა";<br />
+SNG&GNT:=1>"ის";<br />
+SNG&GNT&ALT:=1>"ისა";<br />
+SNG&INS:=1>"ით";<br />
+SNG&INS&ALT:=1>"ითა";<br />
+SNG&ABL:=0>"დ";<br />
+SNG&ABL&ALT:=0>"და";<br />
+SNG&VOC:=0>"ო";<br />
+SNG&VOC&ALT:=0>"ვ";<br />
+SNG&ADE:=0>"ზე";<br />
+SNG&INE:=0>"სთან";<br />
+SNG&LOC:=0>"ში";<br />
+SNG&ILL:=1>"ისკენ";<br />
+SNG&ILL&ALT:=1>"ისაკენ";<br />
+SNG&ILL&ALT1:=0>"ში";<br />
+ 
+SNG&CMT:=1>"ითურთ";<br />
+SNG&DEL:=1>"ისგან";<br />
+SNG&DEL&ALT1:=1>"ისაგან";<br />
+SNG&ELA:=1>"იდან";<br />
+SNG&EQU:=0>"სავით";<br />
+SNG&EQU&ALT1:=0>"სავითა";<br />
+SNG&LAT:=0>"მდე";<br />
+SNG&LAT&ALT:=0>"მდის";<br />
+SNG&BEN:=1>"ისთვის";<br />
+SNG&BEN&ALT:=1>"ისათვის";<br />
+
+PLR&NOM:=1>"ები";<br />
+PLR&ERG:=1>"ებმა";<br />
+PLR&DAT:=1>"ებს";<br />
+PLR&DAT&ALT:=1>"ებსა";<br />
+PLR&GNT:=1>"ების";<br />
+PLR&GNT&ALT:=1>"ებისა";<br />
+PLR&INS:=1>"ებით";<br />
+PLR&INS&ALT:=1>"ებითა";<br />
+PLR&ABL:=1>"ებად";<br />
+PLR&ABL&ALT:=1>"ებადა";<br />
+PLR&VOC:=1>"ებო";<br />
+
+PLR&ADE:=1>"ებზე";<br />
+PLR&INE:=1>"ებთან";<br />
+PLR&LOC:=1>"ებში";<br />
+PLR&ILL:=1>"ებისკენ";<br />
+PLR&ILL&ALT:=1>"ებისაკენ";<br />
+PLR&ILL&ALT1:=1>"ებში";<br />
+PLR&CMT:=1>"ებითურთ";<br />
+PLR&DEL:=1>"ებისგან";<br />
+PLR&DEL&ALT:=1>"ებისაგან";<br />
+PLR&ELA:=1>"ებიდან";<br />
+PLR&EQU:=1>"ებივით";<br />
+PLR&LAT:=1>"ებამდე";<br />
+PLR&LAT&ALT:=1>"ებამდის";<br />
+PLR&BEN:=1>"ებისთვის";<br />
+PLR&BEN&ALT:=1>"ებისათვის";<br />
+
+PLR&NOM&ALT:=0>"ნი";<br />
+PLR&ERG&ALT:=0>"თა";<br />
+PLR&DAT&ALT1:=0>"თა";<br />
+PLR&GNT&ALT1:=0>"თა";<br />
+PLR&VOC&ALT:=0>"ნო";<br />
+;<br /><br /><b>M5</b><br />The Georgian Nouns which Base Form end with a vowel "ე" that get reduced in Singular Genitive and Instrumental. (<i>ხე~ხ,
+დამნაშავე~დამნაშავ,
+დამსწრე~დამსწრ,
+დონე~დონ,
+დღე~დღ,
+ვაკე~ვაკ</i>)<br />SNG&NOM:=0>"";<br />
+SNG&ERG:=0>"მ";<br />
+SNG&DAT:=0>"ს";<br />
+SNG&DAT&ALT:=0>"სა";<br />
+SNG&GNT:=1>"ის";<br />
+SNG&GNT&ALT:=1>"ისა";<br />
+SNG&INS:=1>"ით";<br />
+SNG&INS&ALT:=1>"ითა";<br />
+ 
+SNG&ABL:=0>"დ";<br />
+SNG&ABL&ALT:=0>"და";<br />
+SNG&VOC:=0>"ო";<br />
+SNG&VOC&ALT:=0>"ვ";<br />
+SNG&ADE:=0>"ზე";<br />
+SNG&INE:=0>"სთან";<br />
+SNG&LOC:=0>"ში";<br />
+SNG&ILL:=1>"ისკენ";<br />
+SNG&ILL&ALT:=1>"ისაკენ";<br />
+SNG&ILL&ALT1:=0>"ში";<br />
+ 
+SNG&CMT:=1>"ითურთ";<br />
+SNG&DEL:=1>"ისგან";<br />
+SNG&DEL&ALT:=1>"ისაგან";<br />
+SNG&ELA:=1>"იდან";<br />
+SNG&EQU:=0>"სავით";<br />
+SNG&EQU&ALT:=0>"სავითა";<br />
+SNG&LAT:=0>"მდე";<br />
+SNG&LAT&ALT:=0>"მდის";<br />
+SNG&BEN:=1>"ისთვის";<br />
+SNG&BEN&ALT:=1>"ისათვის";<br />
+
+PLR&NOM:=0>"ები";<br />
+PLR&ERG:=0>"ებმა";<br />
+PLR&DAT:=0>"ებს";<br />
+PLR&DAT&ALT:=0>"ებსა";<br />
+PLR&GNT:=0>"ების";<br />
+PLR&GNT&ALT:=0>"ებისა";<br />
+PLR&INS:=0>"ებით";<br />
+PLR&INS&ALT:=0>"ებითა";<br />
+  
+PLR&ABL:=0>"ებად";<br />
+PLR&ABL&ALT:=0>"ებადა";<br />
+PLR&VOC:=0>"ებო";<br />
+
+PLR&ADE:=0>"ებზე";<br />
+PLR&INE:=0>"ებთან";<br />
+PLR&LOC:=0>"ებში";<br />
+PLR&ILL:=0>"ებისკენ";<br />
+PLR&ILL&ALT:=0>"ებისაკენ";<br />
+PLR&ILL&ALT1:=0>"ებში";<br />
+ 
+PLR&CMT:=0>"ებითურთ";<br />
+PLR&DEL:=0>"ებისგან";<br />
+PLR&DEL&ALT:=0>"ებისაგან";<br />
+PLR&ELA:=0>"ებიდან";<br />
+PLR&EQU:=0>"ებივით";<br />
+PLR&LAT:=0>"ებამდე";<br />
+PLR&LAT&ALT:=0>"ებამდის";<br />
+PLR&BEN:=0>"ებისთვის";<br />
+PLR&BEN&ALT:=0>"ებისათვის";<br />
+ 
+PLR&NOM&ALT:=0>"ნი";<br />
+PLR&ERG&ALT:=0>"თა";<br />
+PLR&DAT&ALT1:=0>"თა";<br />
+PLR&GNT&ALT1:=0>"თა";<br />
+PLR&VOC&ALT:=0>"ნო";<br />
+;<br /><br /><b>M6</b><br />The Georgian Nouns which Base Form end with a vowel "ა" that get reduced in Plural. (<i>გოგონა~გოგონ,
+დათუნა~დათუნ,
+დათუნია~დათუნი,
+დედაბერა~დედაბერ,
+დედისერთა~დედისერთ</i>)<br />SNG&NOM:=0>"";<br />
+SNG&ERG:=0>"მ";<br />
+SNG&DAT:=0>"ს";<br />
+SNG&DAT&ALT:=0>"სა";<br />
+SNG&GNT:=0>"ს";<br />
+SNG&GNT&ALT:=0>"სი";<br />
+SNG&INS:=0>"თი";<br />
+SNG&ABL:=0>"დ";<br />
+SNG&VOC:=0>"ვ";<br />
+
+SNG&ADE:=0>"ზე";<br />
+SNG&INE:=0>"სთან";<br />
+SNG&LOC:=0>"ში";<br />
+SNG&ILL:=0>"სკენ";<br />
+SNG&ILL&ALT:=0>"საკენ";<br />
+SNG&ILL&ALT1:=0>"ში";<br />
+
+SNG&CMT:=0>"თურთ";<br />
+SNG&DEL:=0>"სგან";<br />
+SNG&DEL&ALT:=0>"საგან";<br />
+SNG&ELA:=0>"დან";<br />
+SNG&EQU:=0>"სავით";<br />
+SNG&EQU&ALT:=0>"სავითა";<br />
+SNG&LAT:=0>"მდე";<br />
+SNG&LAT&ALT:=0>"მდის";<br />
+SNG&BEN:=0>"სთვის";<br />
+SNG&BEN&ALT:=0>"სათვის";<br />
+
+PLR&NOM:=1>"ები";<br />
+PLR&ERG:=1>"ებმა";<br />
+PLR&DAT:=1>"ებს";<br />
+PLR&DAT&ALT:=1>"ებსა";<br />
+PLR&GNT:=1>"ების";<br />
+PLR&GNT&ALT:=1>"ებისა";<br />
+PLR&INS:=1>"ებით";<br />
+PLR&INS&ALT:=1>"ებითა";<br />
+PLR&ABL:=1>"ებად";<br />
+PLR&ABL&ALT:=1>"ებადა";<br />
+PLR&VOC:=1>"ებო";<br />
+
+PLR&ADE:=1>"ებზე";<br />
+PLR&INE:=1>"ებთან";<br />
+PLR&LOC:=1>"ებში";<br />
+PLR&ILL:=1>"ებისკენ";<br />
+PLR&ILL&ALT:=1>"ებისაკენ";<br />
+PLR&ILL&ALT1:=1>"ებში";<br />
+PLR&CMT:=1>"ებითურთ";<br />
+PLR&DEL:=1>"ებისგან";<br />
+PLR&DEL&ALT:=1>"ებისაგან";<br />
+PLR&ELA:=1>"ებიდან";<br />
+PLR&EQU:=1>"ებივით";<br />
+PLR&LAT:=1>"ებამდე";<br />
+PLR&LAT&ALT:=1>"ებამდის";<br />
+PLR&BEN:=1>"ებისთვის";<br />
+PLR&BEN&ALT:=1>"ებისათვის";<br />
+                    
+PLR&NOM&ALT:=0>"ნი";<br />
+PLR&ERG&ALT:=0>"თა";<br />
+PLR&DAT&ALT1:=0>"თა";<br />
+PLR&GNT&ALT1:=0>"თა";<br />
+PLR&VOC&ALT:=0>"ნო";<br />
+;<br /><br /><b>M7</b><br />The Georgian Nouns which Base Form end with vowels "ო","უ","ე". (<i>კიბო,
+წყარო,
+ენაბლუ, 
+კაშნე,
+კათოლიკე,
+მართვე,
+ანტიქრისტე,
+დეფილე,
+ატაშე,
+ატელიე,
+ფოიე</i>)<br />SNG&NOM:=0>"";<br />
+SNG&ERG:=0>"მ";<br />
+SNG&DAT:=0>"ს";<br />
+SNG&DAT&ALT:=0>"სა";<br />
+SNG&GNT:=0>"ს";<br />
+SNG&GNT&ALT:=0>"სი";<br />
+SNG&INS:=0>"თი";<br />
+SNG&ABL:=0>"დ";<br />
+SNG&VOC:=0>"ვ";<br />
+SNG&ADE:=0>"ზე";<br />
+SNG&INE:=0>"სთან";<br />
+SNG&LOC:=0>"ში";<br />
+SNG&ILL:=0>"სკენ";<br />
+SNG&ILL&ALT:=0>"საკენ";<br />
+SNG&ILL&ALT1:=0>"ში";<br />
+ 
+SNG&CMT:=0>"თურთ";<br />
+SNG&DEL:=0>"სგან";<br />
+SNG&DEL&ALT:=0>"საგან";<br />
+SNG&ELA:=0>"დან";<br />
+SNG&EQU:=0>"სავით";<br />
+SNG&EQU&ALT:=0>"სავითა";<br />
+SNG&LAT:=0>"მდე";<br />
+SNG&LAT&ALT:=0>"მდის";<br />
+SNG&BEN:=0>"სთვის";<br />
+SNG&BEN&ALT:=0>"სათვის";<br />
+PLR&NOM:=0>"ები";<br />
+PLR&ERG:=0>"ებმა";<br />
+PLR&DAT:=0>"ებს";<br />
+PLR&DAT&ALT:=0>"ებსა";<br />
+PLR&GNT:=0>"ების";<br />
+PLR&GNT&ALT:=0>"ებისა";<br />
+PLR&INS:=0>"ებით";<br />
+PLR&INS&ALT:=0>"ებითა";<br />
+PLR&ABL:=0>"ებად";<br />
+PLR&ABL&ALT:=0>"ებადა";<br />
+PLR&VOC:=0>"ებო";<br />
+PLR&ADE:=0>"ებზე";<br />
+PLR&INE:=0>"ებთან";<br />
+PLR&LOC:=0>"ებში";<br />
+PLR&ILL:=0>"ებისკენ";<br />
+PLR&ILL&ALT:=0>"ებისაკენ";<br />
+PLR&ILL&ALT1:=0>"ებში";<br />
+PLR&CMT:=0>"ებითურთ";<br />
+PLR&DEL:=0>"ებისგან";<br />
+PLR&DEL&ALT:=0>"ებისაგან";<br />
+PLR&ELA:=0>"ებიდან";<br />
+PLR&EQU:=0>"ებივით";<br />
+PLR&LAT:=0>"ებამდე";<br />
+PLR&LAT&ALT:=0>"ებამდის";<br />
+PLR&BEN:=0>"ებისთვის";<br />
+PLR&BEN&ALT:=0>"ებისათვის";<br />
+PLR&NOM&ALT:=0>"ნი";<br />
+PLR&ERG&ALT:=0>"თა";<br />
+PLR&DAT&ALT1:=0>"თა";<br />
+PLR&GNT&ALT1:=0>"თა";<br />
+PLR&VOC&ALT:=0>"ნო";<br />
+;<br /><br /><b>M8</b><br />The Georgian loaned Nouns which Base Form end with a vowel "ი" that get reduced in Plural. (<i>ტაქსი,        
+ტრამვაი</i>)<br />SNG&NOM:=0>"";<br />
+SNG&ERG:=0>"მ";<br />
+SNG&DAT:=0>"ს";<br />
+SNG&DAT&ALT:=0>"სა";<br />
+SNG&GNT:=0>"ს";<br />
+SNG&INS:=0>"თ";<br />
+SNG&ABL:=0>"დ";<br />
+SNG&VOC:=0>"";<br />
+SNG&ADE:=0>"ზე";<br />
+SNG&INE:=0>"სთან";<br />
+SNG&LOC:=0>"ში";<br />
+SNG&ILL:=0>"სკენ";<br />
+SNG&ILL&ALT:=0>"საკენ";<br />
+SNG&ILL&ALT1:=0>"ში";<br />
+SNG&CMT:=0>"თურთ";<br />
+SNG&DEL:=0>"სგან";<br />
+SNG&DEL&ALT:=0>"საგან";<br />
+SNG&ELA:=0>"დან";<br />
+SNG&EQU:=0>"ვით";<br />
+SNG&EQU&ALT:=0>"ვითა";<br />
+SNG&LAT:=0>"მდე";<br />
+SNG&LAT&ALT:=0>"მდის";<br />
+SNG&BEN:=0>"სთვის";<br />
+SNG&BEN&ALT:=0>"სათვის";<br />
+PLR&NOM:=1>"ები";<br />
+PLR&ERG:=1>"ებმა";<br />
+PLR&DAT:=1>"ებს";<br />
+PLR&DAT&ALT:=1>"ებსა";<br />
+PLR&GNT:=1>"ების";<br />
+PLR&GNT&ALT:=1>"ებისა";<br />
+PLR&INS:=1>"ებით";<br />
+PLR&INS&ALT:=1>"ებითა";<br />
+PLR&ABL:=1>"ებად";<br />
+PLR&ABL&ALT:=1>"ებადა";<br />
+PLR&VOC:=1>"ებო";<br />
+PLR&ADE:=1>>"ებზე";<br />
+PLR&INE:=1>"ებთან";<br />
+PLR&LOC:=1>"ებში";<br />
+PLR&ILL:=1>"ებისკენ";<br />
+PLR&ILL&ALT:=1>"ებისაკენ";<br />
+PLR&ILL&ALT1:=1>"ებში";<br />
+PLR&CMT:=1>"ებითურთ";<br />
+PLR&DEL:=1>"ებისგან";<br />
+PLR&DEL&ALT:=1>"ებისაგან";<br />
+PLR&ELA:=1>"ებიდან";<br />
+PLR&EQU:=1>"ებივით";<br />
+PLR&LAT:=1>"ებამდე";<br />
+PLR&LAT&ALT:=1>"ებამდის";<br />
+PLR&BEN:=1>"ებისთვის";<br />
+PLR&BEN&ALT:=1>"ებისათვის";<br />
+;<br /><br /><b>M9</b><br />The Georgian Nouns which Base Form end with a vowel "ა" that get reduced and Base Forms squeezed (loosing a vowel in Base Form) in Genitive, Instrumental and Ablative and in all cases of Plural. (<i>ფანჯარა~ფანჯრ,
+ტომარა~ტომრ,
+ქვეყანა~ქვეყნ,
+ქარხანა~ქარხნ,
+პეპელა~პეპლ,
+წიფელა~წიფლ</i>)<br />SNG&NOM:=0>"";<br />
+SNG&ERG:=0>"მ";<br />
+SNG&DAT:=0>"ს";<br />
+SNG&DAT&ALT:=0>"სა";<br />
+SNG&GNT:=[-3]:"",[-1]:"ის";<br />
+SNG&GNT&ALT:=[-3]:"",[-1]:"ისა";<br />
+SNG&INS:=[-3]:"",[-1]:"ით";<br />
+SNG&INS&ALT:=[-3]:"",[-1]:"ითა";<br />
+SNG&ABL:=[-3]:"",[-1]:"ად";<br />
+SNG&ABL&ALT:=[-3]:"",[-1]:"ადა";<br />
+SNG&VOC:=0>"ვ";<br />
+SNG&ADE:=0>"ზე";<br />
+SNG&INE:=0>"სთან";<br />
+SNG&LOC:=0>"ში";<br />
+SNG&ILL:=[-3]:"",[-1]:"ისკენ";<br />
+SNG&ILL&ALT:=[-3]:"",[-1]:"ისაკენ";<br />
+SNG&ILL&ALT1:=0>"ში";<br />
+
+SNG&CMT:=[-3]:"",[-1]:"ითურთ";<br />
+SNG&DEL:=[-3]:"",[-1]:"ისგან";<br />
+SNG&DEL&ALT:=[-3]:"",[-1]:"ისაგან";<br />
+SNG&ELA:=[-3]:"",[-1]:"იდან";<br />
+SNG&EQU:=0>"სავით";<br />
+SNG&EQU&ALT:=0>"სავითა";<br />
+SNG&LAT:=[-3]:"",[-1]:"ამდე";<br />
+SNG&LAT&ALT:=[-3]:"",[-1]:"ამდის";<br />
+SNG&BEN:=[-3]:"",[-1]:"ისთვის";<br />
+SNG&BEN&ALT:=[-3]:"",[-1]:"ისათვის";<br />
+
+PLR&NOM:=[-3]:"",[-1]:"ები";<br />
+PLR&ERG:=[-3]:"",[-1]:"ებმა";<br />
+PLR&DAT:=[-3]:"",[-1]:"ებს";<br />
+PLR&DAT&ALT:=[-3]:"",[-1]:"ებსა";<br />
+PLR&GNT:=[-3]:"",[-1]:"ების";<br />
+PLR&GNT&ALT:=[-3]:"",[-1]:"ებისა";<br />
+PLR&INS:=[-3]:"",[-1]:"ებით";<br />
+PLR&INS&ALT:=[-3]:"",[-1]:"ებითა";<br />
+
+PLR&ABL:=[-3]:"",[-1]:"ებად";<br />
+PLR&ABL&ALT:=[-3]:"",[-1]:"ებადა";<br />
+PLR&VOC:=[-3]:"",[-1]:"ებო";<br />
+
+PLR&ADE:=[-3]:"",[-1]:"ებზე";<br />
+PLR&INE:=[-3]:"",[-1]:"ებთან";<br />
+PLR&LOC:=[-3]:"",[-1]:"ებში";<br />
+PLR&ILL:=[-3]:"",[-1]:"ებისკენ";<br />
+PLR&ILL&ALT:=[-3]:"",[-1]:"ებისაკენ";<br />
+PLR&ILL&ALT1:=[-3]:"",[-1]:"ებში";<br />
+
+PLR&CMT:=[-3]:"",[-1]:"ებითურთ";<br />
+PLR&DEL:=[-3]:"",[-1]:"ებისგან";<br />
+PLR&DEL&ALT:=[-3]:"",[-1]:"ებისაგან";<br />
+PLR&ELA:=[-3]:"",[-1]:"ებიდან";<br />
+PLR&EQU:=[-3]:"",[-1]:"ებივით";<br />
+PLR&LAT:=[-3]:"",[-1]:"ებამდე";<br />
+PLR&LAT&ALT:=[-3]:"",[-1]:"ებამდის";<br />
+PLR&BEN:=[-3]:"",[-1]:"ებისთვის";<br />
+PLR&BEN&ALT:=[-3]:"",[-1]:"ებისათვის";<br />
+
+PLR&NOM&ALT:=0>"ნი";<br />
+PLR&ERG&ALT:=0>"თა";<br />
+PLR&DAT&ALT1:=0>"თა";<br />
+PLR&GNT&ALT1:=0>"თა";<br />
+PLR&VOC&ALT:=0>"ნო";<br />
+;<br /><br /><b>M10</b><br />The Georgian Singulare Tantum Nouns which Base Form end with a consonant. (<i>დანაზოგ,
+დაგადუგ,
+დავლურ,
+დამაღ,         
+დამლევ</i>)<br />SNG&NOM:=0>"ი";<br />
+SNG&ERG:=0>"მა";<br />
+SNG&DAT:=0>"ს";<br />
+SNG&DAT&ALT:=0>"სა";<br />
+SNG&GNT:=0>"ის";<br />
+SNG&GNT&ALT:=0>"ისა";<br />
+SNG&INS:=0>"ით";<br />
+SNG&INS&ALT:=0>"ითა";<br />
+  
+SNG&ABL:=0>"ად";<br />
+SNG&ABL&ALT:=0>"ადა";<br />
+SNG&VOC:=0>"ო";<br />
+SNG&ADE:=0>"ზე";<br />
+SNG&INE:=0>"თან";<br />
+SNG&LOC:=0>"ში";<br />
+SNG&ILL:=0>"ისკენ";<br />
+SNG&ILL&ALT:=0>"ისაკენ";<br />
+SNG&ILL&ALT1:=0>"ში";<br />
+ 
+SNG&CMT:=0>"ითურთ";<br />
+SNG&DEL:=0>"ისგან";<br />
+SNG&DEL&ALT:=0>"ისაგან";<br />
+SNG&ELA:=0>"იდან";<br />
+SNG&EQU:=0>"ივით";<br />
+SNG&EQU&ALT:=0>"ივითა";<br />
+SNG&LAT:=0>"ამდე";<br />
+SNG&LAT&ALT:=0>"ამდის";<br />
+SNG&BEN:=0>"ისთვის";<br />
+SNG&BEN&ALT:=0>"ისათვის";<br />
+;<br /><br /><b>M11</b><br />The Georgian Nouns of Singulare Tantum which Base Form end with vowels "ო","ე","უ","ა". (<i>დო,
+ესპერანტო,
+თავბრუ,
+თეთრა,     
+იავნანა,
+კარატე</i>)<br />SNG&NOM:=0>"";<br />
+SNG&ERG:=0>"მ";<br />
+SNG&DAT:=0>"ს";<br />
+SNG&DAT&ALT:=0>"სა";<br />
+SNG&GNT:=0>"ს";<br />
+SNG&GNT&ALT:=0>"სი";<br />
+SNG&INS:=0>"თი";<br />
+SNG&ABL:=0>"დ";<br />
+SNG&VOC:=0>"ვ";<br />
+SNG&ADE:=0>"ზე";<br />
+SNG&INE:=0>"სთან";<br />
+SNG&LOC:=0>"ში";<br />
+SNG&ILL:=0>"სკენ";<br />
+SNG&ILL&ALT:=0>"საკენ";<br />
+SNG&ILL&ALT1:=0>"ში";<br />
+SNG&CMT:=0>"თურთ";<br />
+SNG&DEL:=0>"სგან";<br />
+SNG&DEL&ALT:=0>"საგან";<br />
+SNG&ELA:=0>"დან";<br />
+SNG&EQU:=0>"სავით";<br />
+SNG&EQU&ALT:=0>"სავითა";<br />
+SNG&LAT:=0>"მდე";<br />
+SNG&LAT&ALT:=0>"მდის";<br />
+SNG&BEN:=0>"სთვის";<br />
+SNG&BEN&ALT:=0>"სათვის";<br />
+ ;<br /><br /><b>M12</b><br />The Georgian Nouns of Singulare Tantum which Base Form  get squeezed (loosing a vowel in Base Form) in Genitive, Instrumental and Ablative. (<i>იღბალ~იღბლ,
+შაქარ~შაქრ,
+შაბიამან~შაბიამნ,
+არაყ~არყ,
+ნაგავ~ნაგვ</i>)<br />SNG&NOM:=0>"ი";<br />
+SNG&ERG:=0>"მა";<br />
+SNG&DAT:=0>"ს";<br />
+SNG&DAT&ALT:=0>"სა";<br />
+SNG&GNT:=[-2]:"",0>"ის";<br />
+SNG&GNT&ALT:=[-2]:"",0>"ისა";<br />
+SNG&INS:=[-2]:"",0>"ით";<br />
+SNG&INS&ALT:=[-2]:"",0>"ითა";<br />
+SNG&ABL:=[-2]:"",0>"ად";<br />
+SNG&ABL&ALT:=[-2]:"",0>"ადა";<br />
+
+SNG&VOC:=0>"ო";<br />
+SNG&ADE:=0>"ზე";<br />
+SNG&INE:=0>"თან";<br />
+SNG&LOC:=0>"ში";<br />
+SNG&ILL:=[-2]:"",0>"ისკენ";<br />
+SNG&ILL&ALT:=[-2]:"",0>"ისაკენ";<br />
+SNG&ILL&ALT1:=0>"ში";<br />
+ 
+SNG&CMT:=[-2]:"",0>"ითურთ";<br />
+SNG&DEL:=[-2]:"",0>"ისგან";<br />
+SNG&DEL&ALT:=[-2]:"",0>"ისაგან";<br />
+SNG&ELA:=[-2]:"",0>"იდან";<br />
+SNG&EQU:=0>"ივით";<br />
+SNG&EQU&ALT:=0>"ივითა";<br />
+SNG&LAT:=[-2]:"",0>"ამდე";<br />
+SNG&LAT&ALT:=[-2]:"",0>"ამდის";<br />
+SNG&BEN:=[-2]:"",0>"ისთვის";<br />
+SNG&BEN&ALT:=[-2]:"",0>"ისათვის";<br />
+;<br /><br /><b>M13</b><br /> The Georgian Nouns of Singulare Tantum which Base Form end with a wavel "ა" and get reduced in Genitive and Instrumental. (<i>განათლება~განათლებ,
+დაარსება~დაარსებ,
+დაახლოება~დაახლოებ,
+დაბადება~დაბადებ,
+დაბანა~დაბან</i>)<br />SNG&NOM:=0>"";<br />
+SNG&ERG:=0>"მ";<br />
+SNG&DAT:=0>"ს";<br />
+SNG&DAT&ALT:=0>"სა";<br />
+SNG&GNT:=1>"ის";<br />
+SNG&GNT&ALT:=1>"ისა";<br />
+SNG&INS:=1>"ით";<br />
+SNG&INS&ALT:=1>"ითა";<br />
+SNG&ABL:=0>"დ";<br />
+SNG&ABL&ALT:=0>"და";<br />
+SNG&VOC:=0>"ვ";<br />
+SNG&ADE:=0>"ზე";<br />
+SNG&INE:=0>"სთან";<br />
+SNG&LOC:=0>"ში";<br />
+SNG&ILL:=1>"ისკენ";<br />
+SNG&ILL&ALT:=1>"ისაკენ";<br />
+SNG&ILL&ALT1:=0>"ში";<br />
+SNG&CMT:=1>"ითურთ";<br />
+SNG&DEL:=1>"ისგან";<br />
+SNG&DEL&ALT:=1>"ისაგან";<br />
+SNG&ELA:=1>"იდან";<br />
+SNG&EQU:=0>"სავით";<br />
+SNG&EQU&ALT:=0>"სავითა";<br />
+SNG&LAT:=0>"მდე";<br />
+SNG&LAT&ALT:=0>"მდის";<br />
+SNG&BEN:=1>"ისთვის";<br />
+SNG&BEN&ALT:=1>"ისათვის";<br />
+;<br /><br /><b>M14</b><br />The loaned Nouns of Singulare Tantum which Base Form end with a vowel "ი" and get reduced in Genitive, Instrumental, Ablative. (<i>ვისკი~ვისკ,
+ლედი~ლედ,
+ჰოკეი~ჰოკე</i>)<br />SNG&NOM:=0>"";<br />
+SNG&ERG:=0>"მ";<br />
+SNG&DAT:=0>"ს";<br />
+SNG&DAT&ALT:=0>"სა";<br />
+SNG&GNT:=1>"ის";<br />
+SNG&INS:=1>"ით";<br />
+SNG&ABL:=1>"ად";<br />
+SNG&VOC:=0>"";<br />
+SNG&ADE:=0>"ზე";<br />
+SNG&INE:=0>"სთან";<br />
+SNG&LOC:=0>"ში";<br />
+SNG&ILL:=0>"სკენ";<br />
+SNG&ILL&ALT1:=0>"საკენ";<br />
+SNG&ILL&ALT2:=0>"ში";<br />
+SNG&CMT:=0>"თურთ";<br />
+SNG&DEL:=0>"სგან";<br />
+SNG&DEL&ALT:=0>"საგან";<br />
+SNG&ELA:=0>"დან";<br />
+SNG&EQU:=0>"სავით";<br />
+SNG&EQU&ALT:=0>"სავითა";<br />
+SNG&LAT:=0>"მდე";<br />
+SNG&LAT&ALT1:=0>"მდის";<br />
+SNG&BEN:=0>"სთვის";<br />
+SNG&BEN&ALT:=0>"სათვის";<br />
+;<br /><br /><b>M15</b><br /> A Georgian Noun of Singulare Tantum which Base Form ends with "ო". (<i>დრო</i>)<br />SNG&NOM:=0>"";<br />
+SNG&ERG:=0>"მ";<br />
+SNG&DAT:=0>"ს";<br />
+SNG&DAT&ALT:=0>"სა";<br />
+SNG&GNT:=0>"ის";<br />
+SNG&GNT&ALT:=0>"ისა";<br />
+SNG&INS:=0>"ით";<br />
+SNG&INS&ALT:=0>"ითა";<br />
+SNG&ABL:=0>"დ";<br />
+SNG&ABL&ALT:=0>"და";<br />
+SNG&VOC:=0>"ვ";<br />
+SNG&ADE:=0>"ზე";<br />
+SNG&INE:=0>"სთან";<br />
+SNG&LOC:=0>"ში";<br />
+SNG&ILL:=0>"ისკენ";<br />
+SNG&ILL&ALT:=0>"ისაკენ";<br />
+SNG&ILL&ALT1:=0>"ში";<br />
+ 
+SNG&CMT:=0>"ითურთ";<br />
+SNG&DEL:=0>"ისგან";<br />
+SNG&DEL&ALT:=0>"ისაგან";<br />
+SNG&ELA:=0>"იდან";<br />
+SNG&EQU:=0>"სავით";<br />
+SNG&EQU&ALT:=0>"სავითა";<br />
+SNG&LAT:=0>"მდე";<br />
+SNG&LAT&ALT:=0>"მდის";<br />
+SNG&BEN:=0>"ისთვის";<br />
+SNG&BEN&ALT:=0>"ისათვის";<br />
+;<br /><br /><b>M16</b><br />A Georgian Noun which Base Form ends with "ვ" and gets reduced and  squeezed (loosing a vowel in Base Form) in Singular Genitive, Instrumental, Ablative and in all cases of Plural. (<i>ამბავ~ამბ</i>)<br />SNG&NOM:=0>"ი";<br />
+SNG&ERG:=0>"მა";<br />
+SNG&DAT:=0>"ს";<br />
+SNG&DAT&ALT:=0>"სა";<br />
+SNG&GNT:=2>"ის";<br />
+SNG&GNT&ALT:=2>"ისა";<br />
+SNG&INS:=2>"ით";<br />
+SNG&INS&ALT:=2>"ითა";<br />
+ 
+SNG&ABL:=2>"ად";<br />
+SNG&ABL&ALT:=2>"ადა";<br />
+SNG&VOC:=0>"ო";<br />
+SNG&ADE:=0>"ზე";<br />
+SNG&INE:=0>"თან";<br />
+SNG&LOC:=0>"ში";<br />
+SNG&ILL:=2>"ისკენ";<br />
+SNG&ILL&ALT:=2>"ისაკენ";<br />
+SNG&ILL&ALT1:=0>"ში";<br />
+ 
+SNG&CMT:=2>"ითურთ";<br />
+SNG&DEL:=2>"ისგან";<br />
+SNG&DEL&ALT:=2>"ისაგან";<br />
+SNG&ELA:=2>"იდან";<br />
+SNG&EQU:=0>"ივით";<br />
+SNG&EQU&ALT:=0>"ივითა";<br />
+SNG&LAT:=2>"ამდე";<br />
+SNG&LAT&ALT:=2>"ამდის";<br />
+SNG&BEN:=2>"ისთვის";<br />
+SNG&BEN&ALT:=2>"ისათვის";<br />
+
+PLR&NOM:=2>"ები";<br />
+PLR&ERG:=2>"ებმა";<br />
+PLR&DAT:=2>"ებს";<br />
+PLR&DAT&ALT:=2>"ებსა";<br />
+PLR&GNT:=2>"ების";<br />
+PLR&GNT&ALT:=2>"ებისა";<br />
+PLR&INS:=2>"ებით";<br />
+PLR&INS&ALT:=2>"ებითა";<br />
+  
+PLR&ABL:=2>"ებად";<br />
+PLR&ABL&ALT:=2>"ებადა";<br />
+PLR&VOC:=2>"ებო";<br />
+
+PLR&ADE:=2>"ებზე";<br />
+PLR&INE:=2>"ებთან";<br />
+PLR&LOC:=2>"ებში";<br />
+PLR&ILL:=2>"ებისკენ";<br />
+PLR&ILL&ALT:=2>"ებისაკენ";<br />
+PLR&ILL&ALT1:=2>"ებში";<br />
+ 
+PLR&CMT:=2>"ებითურთ";<br />
+PLR&DEL:=2>"ებისგან";<br />
+PLR&DEL&ALT:=2>"ებისაგან";<br />
+PLR&ELA:=2>"ებიდან";<br />
+PLR&EQU:=2>"ებივით";<br />
+PLR&LAT:=2>"ებამდე";<br />
+PLR&LAT&ALT:=2>"ებამდის";<br />
+PLR&BEN:=2>"ებისთვის";<br />
+PLR&BEN&ALT:=2>"ებისათვის";<br />
+  
+PLR&NOM&ALT:=0>"ნი";<br />
+PLR&ERG&ALT:=0>"თა";<br />
+PLR&DAT&ALT1:=0>"თა";<br />
+PLR&GNT&ALT1:=0>"თა";<br />
+PLR&VOC&ALT:=0>"ნო";<br />
+;<br /><br /><b>M17</b><br />The Georgian Nouns in which a Base Form vowel "ო" is replaced by a consonant "ვ" in Genitive, Instrumental and Ablative cases of Singular and in all cases of Plural.  (<i>მინდორ~მინდვრ,
+პამიდორ~პამიდვრ,
+მთავადიაკონ~მთავადიაკვნ,
+მონაზონ~მონაზვნ</i>)<br />SNG&NOM:=0>"ი";<br />
+SNG&ERG:=0>"მა";<br />
+SNG&DAT:=0>"ს";<br />
+SNG&DAT&ALT:=0>"სა";<br />
+SNG&GNT:=[-2]:"ვ",0>"ის";<br />
+SNG&GNT&ALT:=[-2]:"ვ",0>"ისა";<br />
+SNG&INS:=[-2]:"ვ",0>"ით";<br />
+SNG&INS&ALT:=[-2]:"ვ",0>"ითა";<br />
+ 
+SNG&ABL:=[-2]:"ვ",0>"ად";<br />
+SNG&ABL&ALT:=[-2]:"ვ",0>"ადა";<br />
+SNG&VOC:=0>"ო";<br />
+SNG&ADE:=0>"ზე";<br />
+SNG&INE:=0>"თან";<br />
+SNG&LOC:=0>"ში";<br />
+SNG&ILL:=[-2]:"ვ",0>"ისკენ";<br />
+SNG&ILL&ALT:=[-2]:"ვ",0>"ისაკენ";<br />
+SNG&ILL&ALT1:=0>"ში";<br />
+ 
+SNG&CMT:=[-2]:"ვ",0>"ითურთ";<br />
+SNG&DEL:=[-2]:"ვ",0>"ისგან";<br />
+SNG&DEL&ALT:=[-2]:"ვ",0>"ისაგან";<br />
+SNG&ELA:=[-2]:"ვ",0>"იდან";<br />
+SNG&EQU:=0>"ივით";<br />
+SNG&EQU&ALT:=0>"ივითა";<br />
+SNG&LAT:=[-2]:"ვ",0>"ამდე";<br />
+SNG&LAT&ALT:=[-2]:"ვ",0>"ამდის";<br />
+SNG&BEN:=[-2]:"ვ",0>"ისთვის";<br />
+SNG&BEN&ALT:=[-2]:"ვ",0>"ისათვის";<br />
+
+PLR&NOM:=[-2]:"ვ",0>"ები";<br />
+PLR&ERG:=[-2]:"ვ",0>"ებმა";<br />
+PLR&DAT:=[-2]:"ვ",0>"ებს";<br />
+PLR&DAT&ALT:=[-2]:"ვ",0>"ებსა";<br />
+PLR&GNT:=[-2]:"ვ",0>"ების";<br />
+PLR&GNT&ALT:=[-2]:"ვ",0>"ებისა";<br />
+PLR&INS:=[-2]:"ვ",0>"ებით";<br />
+PLR&INS&ALT1:=[-2]:"ვ",0>"ებითა";<br />
+  
+PLR&ABL:=[-2]:"ვ",0>"ებად";<br />
+PLR&ABL&ALT:=[-2]:"ვ",0>"ებადა";<br />
+PLR&VOC:=[-2]:"ვ",0>"ებო";<br />
+
+PLR&ADE:=[-2]:"ვ",0>"ებზე";<br />
+PLR&INE:=[-2]:"ვ",0>"ებთან";<br />
+PLR&LOC:=[-2]:"ვ",0>"ებში";<br />
+PLR&ILL:=[-2]:"ვ",0>"ებისკენ";<br />
+PLR&ILL&ALT:=[-2]:"ვ",0>"ებისაკენ";<br />
+PLR&ILL&ALT1:=[-2]:"ვ",0>"ებში";<br />
+ 
+PLR&CMT:=[-2]:"ვ",0>"ებითურთ";<br />
+PLR&DEL:=[-2]:"ვ",0>"ებისგან";<br />
+PLR&DEL&ALT:=[-2]:"ვ",0>"ებისაგან";<br />
+PLR&ELA:=[-2]:"ვ",0>"ებიდან";<br />
+PLR&EQU:=[-2]:"ვ",0>"ებივით";<br />
+PLR&LAT:=[-2]:"ვ",0>"ებამდე";<br />
+PLR&LAT&ALT:=[-2]:"ვ",0>"ებამდის";<br />
+PLR&BEN:=[-2]:"ვ",0>"ებისთვის";<br />
+PLR&BEN&ALT:=[-2]:"ვ",0>"ებისათვის";<br />
+
+PLR&NOM&ALT:=0>"ნი";<br />
+PLR&ERG&ALT:=0>"თა";<br />
+PLR&DAT&ALT1:=0>"თა";<br />
+PLR&GNT&ALT1:=0>"თა";<br />
+PLR&VOC&ALT:=0>"ნო";<br />
+;<br /><br /><b>M18</b><br />The Georgian Nouns of Singulare Tantum in which Base Form vowels "ო" or "ა" is replaced by a consonant "ვ" in Genitive, Instrumental and Ablative. (<i>ნიორ~ნივრ,
+მაწონ~მაწვნ,
+საფუარ~საფუვრ,
+ნიგოზ~ნიგვზ</i>)<br />SNG&NOM:=0>"ი";<br />
+SNG&ERG:=0>"მა";<br />
+SNG&DAT:=0>"ს";<br />
+SNG&DAT&ALT:=0>"სა";<br />
+SNG&GNT:=[-2]:"ვ",0>"ის";<br />
+SNG&GNT&ALT:=[-2]:"ვ",0>"ისა";<br />
+SNG&INS:=[-2]:"ვ",0>"ით";<br />
+SNG&INS&ALT:=[-2]:"ვ",0>"ითა";<br />
+ 
+SNG&ABL:=[-2]:"ვ",0>"ად";<br />
+SNG&ABL&ALT:=[-2]:"ვ",0>"ადა";<br />
+SNG&VOC:=0>"ო";<br />
+SNG&ADE:=0>"ზე";<br />
+SNG&INE:=0>"თან";<br />
+SNG&LOC:=0>"ში";<br />
+SNG&ILL:=[-2]:"ვ",0>"ისკენ";<br />
+SNG&ILL&ALT:=[-2]:"ვ",0>"ისაკენ";<br />
+SNG&ILL&ALT1:=0>"ში";<br />
+ 
+SNG&CMT:=[-2]:"ვ",0>"ითურთ";<br />
+SNG&DEL:=[-2]:"ვ",0>"ისგან";<br />
+SNG&DEL&ALT:=[-2]:"ვ",0>"ისაგან";<br />
+SNG&ELA:=[-2]:"ვ",0>"იდან";<br />
+SNG&EQU:=0>"სავით";<br />
+SNG&EQU&ALT:=0>"სავითა";<br />
+SNG&LAT:=[-2]:"ვ",0>"ამდე";<br />
+SNG&LAT&ALT:=[-2]:"ვ",0>"ამდის";<br />
+SNG&BEN:=[-2]:"ვ",0>"ისთვის";<br />
+SNG&BEN&ALT:=[-2]:"ვ",0>"ისათვის";<br />
+;<br /><br /><b>M19</b><br /> Two Georgian Nouns of Singulare Tantum. (<i>დავითნ,
+ჯამნ</i>)<br />SNG&NOM:=0>"ი";<br />
+SNG&ERG:=0>"მა";<br />
+SNG&DAT:=0>"ს";<br />
+SNG&DAT&ALT:=0>"სა";<br />
+SNG&GNT:=0>"ის";<br />
+SNG&GNT&ALT:=0>"ისა";<br />
+SNG&INS:=0>"ით";<br />
+SNG&INS&ALT:=0>"ითა";<br />
+ 
+SNG&ABL:=0>"ად";<br />
+SNG&ABL&ALT:=0>"ადა";<br />
+SNG&VOC:=0>"ო";<br />
+SNG&ADE:=0>"ზე";<br />
+SNG&INE:=0>"თან";<br />
+SNG&LOC:=0>"ში";<br />
+SNG&ILL:=0>"ისკენ";<br />
+SNG&ILL&ALT:=0>"ისაკენ";<br />
+SNG&ILL&ALT1:=0>"ში";<br />
+ 
+SNG&CMT:=0>"ითურთ";<br />
+SNG&DEL:=0>"ისგან";<br />
+SNG&DEL&ALT:=0>"ისაგან";<br />
+SNG&ELA:=0>"იდან";<br />
+SNG&EQU:=0>"სავით";<br />
+SNG&EQU&ALT:=0>"სავითა";<br />
+SNG&LAT:=0>"ამდე";<br />
+SNG&LAT&ALT:=0>"ამდის";<br />
+SNG&BEN:=0>"ისთვის";<br />
+SNG&BEN&ALT:=0>"ისათვის";<br />
+;<br /><br /><b>M20</b><br />A Georgian Noun which Base Form gets squeezed by replacement of CVC complex (Consonant-Vowel-Consonant)with a consonant "ვ" in Genitive, Instrumental, Ablative of Singular but displays also alternative forms with the source Base Form in the same cases (<i>ღმერთ~ღვთ</i>)<br />SNG&NOM:=0>"ი";<br />
+SNG&ERG:=0>"მა";<br />
+SNG&DAT:=0>"ს";<br />
+SNG&DAT&ALT:=0>"სა";<br />
+SNG&GNT:="მერ":"ვ",0>"ის";<br />
+SNG&GNT&ALT:="მერ":"ვ",0>"ისა";<br />
+SNG&GNT&ALT1:=0>"ის";<br />
+SNG&GNT&ALT2:=0>"ისა";<br />
+SNG&INS:="მერ":"ვ",0>"ით";<br />
+SNG&INS&ALT:="მერ":"ვ",0>"ითა";<br />
+SNG&INS&ALT1:=0>"ით";<br />
+SNG&INS&ALT2:=0>"ითა";<br />
+ 
+SNG&ABL:="მერ":"ვ",0>"ად";<br />
+SNG&ABL&ALT:="მერ":"ვ",0>"ადა";<br />
+SNG&ABL&ALT1:=0>"ად";<br />
+SNG&ABL&ALT2:=0>"ადა";<br />
+SNG&VOC:=0>"ო";<br />
+SNG&ADE:=0>"ზე";<br />
+SNG&INE:=0>"თან";<br />
+SNG&LOC:=0>"ში";<br />
+SNG&ILL:="მერ":"ვ",0>"ისკენ";<br />
+SNG&ILL&ALT:="მერ":"ვ",0>"ისაკენ";<br />
+SNG&ILL&ALT1:=0>"ში";<br />
+SNG&ILL&ALT2:=0>"ისკენ";<br />
+SNG&CMT:=0>"ითურთ";<br />
+SNG&DEL:="მერ":"ვ",0>"ისკენ";<br />
+SNG&DEL&ALT:="მერ":"ვ",0>"ისაკენ";<br />
+SNG&DEL&ALT1:=0>"ისგან";<br />
+SNG&DEL&ALT2:=0>"ისაგან";<br />
+SNG&ELA:=0>"იდან";<br />
+SNG&EQU:=0>"ივით";<br />
+SNG&EQU&ALT:=0>"ივითა";<br />
+SNG&LAT:=0>"ამდე";<br />
+SNG&LAT&ALT:=0>"ამდის";<br />
+SNG&BEN:=0>"ისთვის";<br />
+SNG&BEN&ALT:=0>"ისათვის";<br />
+
+PLR&NOM:=0>"ები";<br />
+PLR&ERG:=0>"ებმა";<br />
+PLR&DAT:=0>"ებს";<br />
+PLR&DAT&ALT:=0>"ებსა";<br />
+PLR&GNT:=0>"ების";<br />
+PLR&GNT&ALT:=0>"ებისა";<br />
+PLR&INS:=0>"ებით";<br />
+PLR&INS&ALT:=0>"ებითა";<br />
+  
+PLR&ABL:=0>"ებად";<br />
+PLR&ABL&ALT:=0>"ებადა";<br />
+PLR&VOC:=0>"ებო";<br />
+
+PLR&ADE:=0>"ებზე";<br />
+PLR&INE:=0>"ებთან";<br />
+PLR&LOC:=0>"ებში";<br />
+PLR&ILL:=0>"ებისკენ";<br />
+PLR&ILL&ALT:=0>"ებისაკენ";<br />
+PLR&ILL&ALT1:=0>"ებში";<br />
+ 
+PLR&CMT:=0>"ებითურთ";<br />
+PLR&DEL:=0>"ებისგან";<br />
+PLR&DEL&ALT:=0>"ებისაგან";<br />
+PLR&ELA:=0>"ებიდან";<br />
+PLR&EQU:=0>"ებივით";<br />
+PLR&LAT:=0>"ებამდე";<br />
+PLR&LAT&ALT:=0>"ებამდის";<br />
+PLR&BEN:=0>"ებისთვის";<br />
+PLR&BEN&ALT:=0>"ებისათვის";<br />
+ 
+PLR&NOM&ALT:=0>"ნი";<br />
+PLR&ERG&ALT:=0>"თა";<br />
+PLR&DAT&ALT1:=0>"თა";<br />
+PLR&GNT&ALT1:=0>"თა";<br />
+PLR&VOC&ALT:=0>"ნო";<br />
+;<br /><br /><b>M21</b><br />Two Georgian Nouns which Base Form lose the last consonant and get squeezed in Genitive, Instrumental, Ablative of Singular and in all cases of Plural. (<i>ხუცეს~ხუც,
+ამბავ~ამბ</i>)<br />SNG&NOM:=0>"ი";<br />
+SNG&ERG:=0>"მა";<br />
+SNG&DAT:=0>"ს";<br />
+SNG&DAT&ALT:=0>"სა";<br />
+SNG&GNT:=2>"ის";<br />
+SNG&GNT&ALT:=2>"ისა";<br />
+SNG&INS:=2>"ით";<br />
+SNG&INS&ALT:=2>"ითა";<br />
+ 
+SNG&ABL:=2>"ად";<br />
+SNG&ABL&ALT:=2>"ადა";<br />
+SNG&VOC:=0>"ო";<br />
+SNG&ADE:=0>"ზე";<br />
+SNG&INE:=0>"თან";<br />
+SNG&LOC:=0>"ში";<br />
+SNG&ILL:=2>"ისკენ";<br />
+SNG&ILL&ALT:=2>"ისაკენ";<br />
+SNG&ILL&ALT1:=0>"ში";<br />
+ 
+SNG&CMT:=2>"",0>"ითურთ";<br />
+SNG&DEL:=2>"ისგან";<br />
+SNG&DEL&ALT:=2>"ისაგან";<br />
+SNG&ELA:=2>"იდან";<br />
+SNG&EQU:=0>"ივით";<br />
+SNG&EQU&ALT:=0>"ივითა";<br />
+SNG&LAT:=2>"ამდე";<br />
+SNG&LAT&ALT:=2>"ამდის";<br />
+SNG&BEN:=2>"ისთვის";<br />
+SNG&BEN&ALT:=2>"ისათვის";<br />
+
+PLR&NOM:=2>"ები";<br />
+PLR&ERG:=2>"ებმა";<br />
+PLR&DAT:=2>"ებს";<br />
+PLR&DAT&ALT:=2>"ებსა";<br />
+PLR&GNT:=2>"ების";<br />
+PLR&GNT&ALT:=2>"ებისა";<br />
+PLR&INS:=2>"ებით";<br />
+PLR&INS&ALT:=2>"ებითა";<br />
+  
+PLR&ABL:=2>"ებად";<br />
+PLR&ABL&ALT:=2>"ებადა";<br />
+PLR&VOC:=2>"ებო";<br />
+
+PLR&ADE:=2>"ებზე";<br />
+PLR&INE:=2>"ებთან";<br />
+PLR&LOC:=2>"ებში";<br />
+PLR&ILL:=2>"ებისკენ";<br />
+PLR&ILL&ALT:=2>"ებისაკენ";<br />
+PLR&ILL&ALT1:=2>"ებში";<br />
+ 
+PLR&CMT:=2>"ებითურთ";<br />
+PLR&DEL:=2>"ებისგან";<br />
+PLR&DEL&ALT:=2>"ებისაგან";<br />
+PLR&ELA:=2>"ებიდან";<br />
+PLR&EQU:=2>"ებივით";<br />
+PLR&LAT:=2>"ებამდე";<br />
+PLR&LAT&ALT:=2>"ებამდის";<br />
+PLR&BEN:=2>"ებისთვის";<br />
+PLR&BEN&ALT:=2>"ებისათვის";<br />
+  
+PLR&NOM&ALT:=0>"ნი";<br />
+PLR&ERG&ALT:=0>"თა";<br />
+PLR&DAT&ALT1:=0>"თა";<br />
+PLR&GNT&ALT1:=0>"თა";<br />
+PLR&VOC&ALT:=0>"ნო";<br />
+;<br /><br /><b>M22</b><br />A Georgian Noun of Singulare Tantum which Base Form gets squeesed in Genitive, Instrumental, Ablative of Singular but displays also alternative forms with the source Base Form in the same cases. (<i>კურთხევან~კურთხევნ</i>)<br />SNG&NOM:=0>"ი";<br />
+SNG&ERG:=0>"მა";<br />
+SNG&DAT:=0>"ს";<br />
+SNG&DAT&ALT:=0>"სა";<br />
+SNG&GNT:=[-2]:"",0>"ის";<br />
+SNG&GNT&ALT:=[-2]:"",0>"ისა";<br />
+SNG&GNT&ALT1:=0>"ის";<br />
+SNG&GNT&ALT2:=0>"ისა";<br />
+SNG&INS:=[-2]:"",0>"ით";<br />
+SNG&INS&ALT:=[-2]:"",0>"ითა";<br />
+SNG&INS&ALT1:=0>"ით";<br />
+SNG&INS&ALT2:=0>"ითა";<br />
+ 
+SNG&ABL:=[-2]:"",0>"ად";<br />
+SNG&ABL&ALT:=[-2]:"",0>"ადა";<br />
+SNG&ABL&ALT1:=0>"ად";<br />
+SNG&ABL&ALT2:=0>"ადა";<br />
+SNG&VOC:=0>"ო";<br />
+SNG&ADE:=0>"ზე";<br />
+SNG&INE:=0>"თან";<br />
+SNG&LOC:=0>"ში";<br />
+SNG&ILL:=[-2]:"",0>"ისკენ";<br />
+SNG&ILL&ALT:=[-2]:"",0>"ისაკენ";<br />
+SNG&ILL&ALT1:=0>"ში";<br />
+SNG&ILL&ALT2:=0>"ისკენ";<br />
+SNG&CMT:=[-2]:"",0>"ითურთ";<br />
+SNG&CMT&ALT:=0>"ითურთ";<br />
+SNG&DEL:=[-2]:"",0>"ისგან";<br />
+SNG&DEL&ALT:=[-2]:"",0>"ისაგან";<br />
+SNG&DEL&ALT1:=0>"ისგან";<br />
+SNG&DEL&ALT2:=0>"ისაგან";<br />
+SNG&ELA:=[-2]:"",0>"იდან";<br />
+SNG&ELA&ALT:=0>"იდან";<br />
+SNG&EQU:=0>"ივით";<br />
+SNG&EQU&ALT:=0>"ივითა";<br />
+ 
+SNG&LAT:=[-2]:"",0>"ამდე";<br />
+SNG&LAT&ALT:=[-2]:"",0>"ამდის";<br />
+SNG&LAT&ALT1:=0>"ამდე";<br />
+SNG&LAT&ALT2:=0>"ამდის";<br />
+SNG&BEN:=[-2]:"",0>"ისთვის";<br />
+SNG&BEN&ALT:=[-2]:"",0>"ისათვის";<br />
+SNG&BEN&ALT1:=0>"ისთვის";<br />
+SNG&BEN&ALT2:=0>"ისათვის";<br />
+;<br /><br /><b>M23</b><br />The Georgian Nouns of Plurale Tantum. (<i>არჩევნებ,
+ეპოლეტებ,
+ზინზილებ</i>)<br />PLR&NOM:=0>"ი";<br />
+PLR&ERG:=0>"მა";<br />
+PLR&DAT:=0>"ს";<br />
+PLR&DAT&ALT:=0>"სა";<br />
+PLR&GNT:=0>"ის";<br />
+PLR&GNT&ALT:=0>"ისა";<br />
+PLR&INS:=0>"ით";<br />
+PLR&INS&ALT:=0>"ითა";<br />
+ 
+PLR&ABL:=0>"ად";<br />
+PLR&ABL&ALT:=0>"ადა";<br />
+PLR&VOC:=0>"ო";<br />
+PLR&ADE:=0>"ზე";<br />
+PLR&INE:=0>"თან";<br />
+PLR&LOC:=0>"ში";<br />
+PLR&ILL:=0>"ისკენ";<br />
+PLR&ILL&ALT:=0>"ისაკენ";<br />
+PLR&ILL&ALT1:=0>"ში";<br />
+ 
+PLR&CMT:=0>"ითურთ";<br />
+PLR&DEL:=0>"ისგან";<br />
+PLR&DEL&ALT:=0>"ისაგან";<br />
+PLR&ELA:=0>"იდან";<br />
+PLR&EQU:=0>"ივით";<br />
+PLR&EQU&ALT:=0>"ივითა";<br />
+PLR&LAT:=0>"ამდე";<br />
+PLR&LAT&ALT:=0>"ამდის";<br />
+PLR&BEN:=0>"ისთვის";<br />
+PLR&BEN&ALT:=0>"ისათვის";<br />
+;<br /><br /><b>M24</b><br />The Georgian Adjectives which stem end with a consonant. (<i>ეგზოტიკურ,
+კარგ,
+გაუმჯობესებულ,
+აბურდულ, 
+აბსტრაქტულ</i>)<br />SNG&NOM:=0>"ი";<br />
+SNG&ERG:=0>"მა";<br />
+SNG&DAT:=0>"ს";<br />
+SNG&DAT&ALT:=0>"სა";<br />
+SNG&GNT:=0>"ის";<br />
+SNG&GNT&ALT:=0>"ისა";<br />
+SNG&INS:=0>"ით";<br />
+SNG&INS&ALT:=0>"ითა";<br />
+SNG&ABL:=0>"ად";<br />
+SNG&ABL&ALT:=0>"ადა";<br />
+SNG&VOC:=0>"ო";<br />
+SNG&ADE:=0>"ზე";<br />
+SNG&INE:=0>"თან";<br />
+SNG&LOC:=0>"ში";<br />
+SNG&ILL:=0>"ისკენ";<br />
+SNG&ILL&ALT:=0>"ისაკენ";<br />
+SNG&ILL&ALT1:=0>"ში";<br />
+SNG&CMT:=0>"ითურთ";<br />
+SNG&DEL:=0>"ისგან";<br />
+SNG&DEL&ALT:=0>"ისაგან";<br />
+SNG&ELA:=0>"იდან";<br />
+SNG&EQU:=0>"ივით";<br />
+SNG&EQU&ALT:=0>"ივითა";<br />
+SNG&LAT:=0>"ამდე";<br />
+SNG&LAT&ALT:=0>"ამდის";<br />
+SNG&BEN:=0>"ისთვის";<br />
+SNG&BEN&ALT:=0>"ისათვის";<br />
+
+PLR&NOM:=0>"ები";<br />
+PLR&ERG:=0>"ებმა";<br />
+PLR&DAT:=0>"ებს";<br />
+PLR&DAT&ALT:=0>"ებსა";<br />
+PLR&GNT:=0>"ების";<br />
+PLR&GNT&ALT:=0>"ებისა";<br />
+PLR&INS:=0>"ებით";<br />
+PLR&INS&ALT:=0>"ებითა";<br />
+PLR&ABL:=0>"ებად";<br />
+PLR&ABL&ALT:=0>"ებადა";<br />
+PLR&VOC:=0>"ებო";<br />
+PLR&ADE:=0>"ებზე";<br />
+PLR&INE:=0>"ებთან";<br />
+PLR&LOC:=0>"ებში";<br />
+PLR&ILL:=0>"ებისკენ";<br />
+PLR&ILL&ALT:=0>"ებისაკენ";<br />
+PLR&ILL&ALT1:=0>"ებში";<br />
+PLR&CMT:=0>"ებითურთ";<br />
+PLR&DEL:=0>"ებისგან";<br />
+PLR&DEL&ALT1:=0>"ებისაგან";<br />
+PLR&ELA:=0>"ებიდან";<br />
+PLR&EQU:=0>"ებივით";<br />
+PLR&LAT:=0>"ებამდე";<br />
+PLR&LAT&ALT:=0>"ებამდის";<br />
+PLR&BEN:=0>"ებისთვის";<br />
+PLR&BEN&ALT:=0>"ებისათვის";<br />
+PLR&NOM&ALT:=0>"ნი";<br />
+PLR&ERG&ALT:=0>"თა";<br />
+PLR&DAT&ALT1:=0>"თა";<br />
+PLR&GNT&ALT1:=0>"თა";<br />
+PLR&VOC&ALT:=0>"ნო";<br />
+;<br /><br /><b>M25</b><br />The Georgian Adjectives which stem end with a consonant and get squeezed in Genitive and Instrumental.
+ (<i>ამაჩუყებელ,
+ამაწიოკებელ,
+გადასაბრუნებელ,
+გასაკეთებელ
+</i>)<br />SNG&NOM:=0>"ი";<br />
+SNG&ERG:=0>"მა";<br />
+SNG&DAT:=0>"ს";<br />
+SNG&DAT&ALT:="0>სა";<br />
+SNG&GNT:=[-2]:"",0>"ის";<br />
+SNG&GNT&ALT:=[-2]:"",0>"ისა";<br />
+SNG&INS:=[-2]:"",0>"ით";<br />
+SNG&INS&ALT:=[-2]:"",0>"ითა";<br />
+SNG&ABL:=[-2]:"",0>"ად";<br />
+SNG&ABL&ALT:=[-2]:"",0>"ადა";<br />
+SNG&VOC:=0>"ო";<br />
+SNG&ADE:=0>"ზე";<br />
+SNG&INE:=0>"ში";<br />
+SNG&LOC:=0>"ში";<br />
+SNG&ILL:=[-2]:"",0>"ისკენ";<br />
+SNG&ILL&ALT1:=[-2]:"",0>"ისაკენ";<br />
+SNG&ILL&ALT2:=0>"ში";<br />
+SNG&CMT:=[-2]:"",0>"ითურთ";<br />
+SNG&DEL:=[-2]:"",0>"ისგან";<br />
+SNG&DEL&ALT:=[-2]:"",0>"ისაგან";<br />
+SNG&ELA:=[-2]:"",0>"იდან";<br />
+SNG&EQU:=0>"სავით";<br />
+SNG&EQU&ALT:=0>"სავითა";<br />
+SNG&LAT:=[-2]:"",0>"ამდე";<br />
+SNG&LAT&ALT:=[-2]:"",0>"ამდის";<br />
+SNG&BEN:=[-2]:"",0>"ისთვის";<br />
+SNG&BEN&ALT:=[-2]:"",0>"ისათვის";<br />
+
+PLR&NOM:=[-2]:"",0>"ები";<br />
+PLR&ERG:=[-2]:"",0>"ებმა";<br />
+PLR&DAT:=[-2]:"",0>"ებს";<br />
+PLR&DAT&ALT:=[-2]:"",0>"ებსა";<br />
+PLR&GNT:=[-2]:"",0>"ების";<br />
+PLR&GNT&ALT:=[-2]:"",0>"ებისა";<br />
+PLR&INS:=[-2]:"",0>"ებით";<br />
+PLR&INS&ALT:=[-2]:"",0>"ებითა";<br />
+PLR&ABL:=[-2]:"",0>"ებად";<br />
+PLR&ABL&ALT:=[-2]:"",0>"ებადა";<br />
+PLR&VOC:=[-2]:"",0>"ებო";<br />
+PLR&ADE:=[-2]:"",0>"ებზე";<br />
+PLR&INE:=[-2]:"",0>"ებთან";<br />
+PLR&LOC:=[-2]:"",0>"ებში";<br />
+PLR&ILL:=[-2]:"",0>"ებისკენ";<br />
+PLR&ILL&ALT:=[-2]:"",0>"ებისაკენ";<br />
+PLR&ILL&ALT1:=[-2]:"",0>"ებში";<br />
+PLR&CMT:=[-2]:"",0>"ებითურთ";<br />
+PLR&DEL:=[-2]:"",0>"ებისგან";<br />
+PLR&DEL&ALT:=[-2]:"",0>"ებისაგან";<br />
+PLR&ELA:=[-2]:"",0>"ებიდან";<br />
+PLR&EQU:=[-2]:"",0>"ებივით";<br />
+PLR&LAT:=[-2]:"",0>"ებამდე";<br />
+PLR&LAT&ALT:=[-2]:"",0>"ებამდის";<br />
+PLR&BEN:=[-2]:"",0>"ებისთვის";<br />
+PLR&BEN&ALT1:=[-2]:"",0>"ებისათვის";<br />
+
+PLR&NOM&ALT:=0>"ნი";<br />
+PLR&ERG&ALT:=0>"თა";<br />
+PLR&DAT&ALT1:=0>"თა";<br />
+PLR&GNT&ALT1:=0>"თა";<br />
+PLR&VOC&ALT:=0>"ნო";<br />
+;<br /><br /><b>M26</b><br />The Georgian Adjectives which stem end with a vowel "ა" that get reduced in Singular Genitive and Instrumental. (<i>ბრმა,
+ანკარა,
+არამზადა,
+ღრმა        
+</i>)<br />SNG&NOM:=0>"";<br />
+SNG&ERG:=0>"მ";<br />
+SNG&DAT:=0>"ს";<br />
+SNG&DAT&ALT:=0>"სა";<br />
+SNG&GNT:=1>"ის";<br />
+SNG&GNT&ALT:=1>"ისა";<br />
+SNG&INS:=1>"ით";<br />
+SNG&INS&ALT:=1>"ითა";<br />
+SNG&ABL:=0>"დ";<br />
+SNG&ABL&ALT:=0>"და";<br />
+SNG&VOC:=0>"ო";<br />
+SNG&VOC&ALT:=0>"ვ";<br />
+SNG&ADE:=0>"ზე";<br />
+SNG&INE:=0>"სთან";<br />
+SNG&LOC:=0>"ში";<br />
+SNG&ILL:=1>"ისკენ";<br />
+SNG&ILL&ALT:=1>"ისაკენ";<br />
+SNG&ILL&ALT1:=0>"ში";<br />
+ 
+SNG&CMT:=1>"ითურთ";<br />
+SNG&DEL:=1>"ისგან";<br />
+SNG&DEL&ALT1:=1>"ისაგან";<br />
+SNG&ELA:=1>"იდან";<br />
+SNG&EQU:=0>"სავით";<br />
+SNG&EQU&ALT1:=0>"სავითა";<br />
+SNG&LAT:=0>"მდე";<br />
+SNG&LAT&ALT:=0>"მდის";<br />
+SNG&BEN:=1>"ისთვის";<br />
+SNG&BEN&ALT:=1>"ისათვის";<br />
+
+PLR&NOM:=1>"ები";<br />
+PLR&ERG:=1>"ებმა";<br />
+PLR&DAT:=1>"ებს";<br />
+PLR&DAT&ALT:=1>"ებსა";<br />
+PLR&GNT:=1>"ების";<br />
+PLR&GNT&ALT:=1>"ებისა";<br />
+PLR&INS:=1>"ებით";<br />
+PLR&INS&ALT:=1>"ებითა";<br />
+PLR&ABL:=1>"ებად";<br />
+PLR&ABL&ALT:=1>"ებადა";<br />
+PLR&VOC:=1>"ებო";<br />
+
+PLR&ADE:=1>"ებზე";<br />
+PLR&INE:=1>"ებთან";<br />
+PLR&LOC:=1>"ებში";<br />
+PLR&ILL:=1>"ებისკენ";<br />
+PLR&ILL&ALT:=1>"ებისაკენ";<br />
+PLR&ILL&ALT1:=1>"ებში";<br />
+PLR&CMT:=1>"ებითურთ";<br />
+PLR&DEL:=1>"ებისგან";<br />
+PLR&DEL&ALT:=1>"ებისაგან";<br />
+PLR&ELA:=1>"ებიდან";<br />
+PLR&EQU:=1>"ებივით";<br />
+PLR&LAT:=1>"ებამდე";<br />
+PLR&LAT&ALT:=1>"ებამდის";<br />
+PLR&BEN:=1>"ებისთვის";<br />
+PLR&BEN&ALT:=1>"ებისათვის";<br />
+
+PLR&NOM&ALT:=0>"ნი";<br />
+PLR&ERG&ALT:=0>"თა";<br />
+PLR&DAT&ALT1:=0>"თა";<br />
+PLR&GNT&ALT1:=0>"თა";<br />
+PLR&VOC&ALT:=0>"ნო";<br />
+;<br /><br /><b>M27</b><br />The Georgian Adjectives which stem end with a vowel "ე" that get reduced in Singular Genitive and Instrumental. (<i>ცნობისმოყვარე,
+ცრუმორწმუნე,
+ფართე,
+მჩატე,      
+მცირე</i>)<br />SNG&NOM:=0>"";<br />
+SNG&ERG:=0>"მ";<br />
+SNG&DAT:=0>"ს";<br />
+SNG&DAT&ALT:=0>"სა";<br />
+SNG&GNT:=1>"ის";<br />
+SNG&GNT&ALT:=1>"ისა";<br />
+SNG&INS:=1>"ით";<br />
+SNG&INS&ALT:=1>"ითა";<br />
+ 
+SNG&ABL:=0>"დ";<br />
+SNG&ABL&ALT:=0>"და";<br />
+SNG&VOC:=0>"ო";<br />
+SNG&VOC&ALT:=0>"ვ";<br />
+SNG&ADE:=0>"ზე";<br />
+SNG&INE:=0>"სთან";<br />
+SNG&LOC:=0>"ში";<br />
+SNG&ILL:=1>"ისკენ";<br />
+SNG&ILL&ALT:=1>"ისაკენ";<br />
+SNG&ILL&ALT1:=0>"ში";<br />
+ 
+SNG&CMT:=1>"ითურთ";<br />
+SNG&DEL:=1>"ისგან";<br />
+SNG&DEL&ALT:=1>"ისაგან";<br />
+SNG&ELA:=1>"იდან";<br />
+SNG&EQU:=0>"სავით";<br />
+SNG&EQU&ALT:=0>"სავითა";<br />
+SNG&LAT:=0>"მდე";<br />
+SNG&LAT&ALT:=0>"მდის";<br />
+SNG&BEN:=1>"ისთვის";<br />
+SNG&BEN&ALT:=1>"ისათვის";<br />
+
+PLR&NOM:=0>"ები";<br />
+PLR&ERG:=0>"ებმა";<br />
+PLR&DAT:=0>"ებს";<br />
+PLR&DAT&ALT:=0>"ებსა";<br />
+PLR&GNT:=0>"ების";<br />
+PLR&GNT&ALT:=0>"ებისა";<br />
+PLR&INS:=0>"ებით";<br />
+PLR&INS&ALT:=0>"ებითა";<br />
+  
+PLR&ABL:=0>"ებად";<br />
+PLR&ABL&ALT:=0>"ებადა";<br />
+PLR&VOC:=0>"ებო";<br />
+
+PLR&ADE:=0>"ებზე";<br />
+PLR&INE:=0>"ებთან";<br />
+PLR&LOC:=0>"ებში";<br />
+PLR&ILL:=0>"ებისკენ";<br />
+PLR&ILL&ALT:=0>"ებისაკენ";<br />
+PLR&ILL&ALT1:=0>"ებში";<br />
+ 
+PLR&CMT:=0>"ებითურთ";<br />
+PLR&DEL:=0>"ებისგან";<br />
+PLR&DEL&ALT:=0>"ებისაგან";<br />
+PLR&ELA:=0>"ებიდან";<br />
+PLR&EQU:=0>"ებივით";<br />
+PLR&LAT:=0>"ებამდე";<br />
+PLR&LAT&ALT:=0>"ებამდის";<br />
+PLR&BEN:=0>"ებისთვის";<br />
+PLR&BEN&ALT:=0>"ებისათვის";<br />
+ 
+PLR&NOM&ALT:=0>"ნი";<br />
+PLR&ERG&ALT:=0>"თა";<br />
+PLR&DAT&ALT1:=0>"თა";<br />
+PLR&GNT&ALT1:=0>"თა";<br />
+PLR&VOC&ALT:=0>"ნო";<br />
+;<br /><br /><b>M28</b><br />The Georgian Adjectives which stem end with a vowel "ა". (<i>მარჯვენა,
+წმიდა,
+ფარატინა</i>)<br />SNG&NOM:=0>"";<br />
+SNG&ERG:=0>"მ";<br />
+SNG&DAT:=0>"ს";<br />
+SNG&DAT&ALT:=0>"სა";<br />
+SNG&GNT:=0>"ს";<br />
+SNG&GNT&ALT:=0>"სი";<br />
+SNG&INS:=0>"თი";<br />
+SNG&ABL:=0>"დ";<br />
+SNG&VOC:=0>"ვ";<br />
+
+SNG&ADE:=0>"ზე";<br />
+SNG&INE:=0>"სთან";<br />
+SNG&LOC:=0>"ში";<br />
+SNG&ILL:=0>"სკენ";<br />
+SNG&ILL&ALT:=0>"საკენ";<br />
+SNG&ILL&ALT1:=0>"ში";<br />
+
+SNG&CMT:=0>"თურთ";<br />
+SNG&DEL:=0>"სგან";<br />
+SNG&DEL&ALT:=0>"საგან";<br />
+SNG&ELA:=0>"დან";<br />
+SNG&EQU:=0>"სავით";<br />
+SNG&EQU&ALT:=0>"სავითა";<br />
+SNG&LAT:=0>"მდე";<br />
+SNG&LAT&ALT:=0>"მდის";<br />
+SNG&BEN:=0>"სთვის";<br />
+SNG&BEN&ALT:=0>"სათვის";<br />
+
+PLR&NOM:=1>"ები";<br />
+PLR&ERG:=1>"ებმა";<br />
+PLR&DAT:=1>"ებს";<br />
+PLR&DAT&ALT:=1>"ებსა";<br />
+PLR&GNT:=1>"ების";<br />
+PLR&GNT&ALT:=1>"ებისა";<br />
+PLR&INS:=1>"ებით";<br />
+PLR&INS&ALT:=1>"ებითა";<br />
+PLR&ABL:=1>"ებად";<br />
+PLR&ABL&ALT:=1>"ებადა";<br />
+PLR&VOC:=1>"ებო";<br />
+
+PLR&ADE:=1>"ებზე";<br />
+PLR&INE:=1>"ებთან";<br />
+PLR&LOC:=1>"ებში";<br />
+PLR&ILL:=1>"ებისკენ";<br />
+PLR&ILL&ALT:=1>"ებისაკენ";<br />
+PLR&ILL&ALT1:=1>"ებში";<br />
+PLR&CMT:=1>"ებითურთ";<br />
+PLR&DEL:=1>"ებისგან";<br />
+PLR&DEL&ALT:=1>"ებისაგან";<br />
+PLR&ELA:=1>"ებიდან";<br />
+PLR&EQU:=1>"ებივით";<br />
+PLR&LAT:=1>"ებამდე";<br />
+PLR&LAT&ALT:=1>"ებამდის";<br />
+PLR&BEN:=1>"ებისთვის";<br />
+PLR&BEN&ALT:=1>"ებისათვის";<br />
+                    
+PLR&NOM&ALT:=0>"ნი";<br />
+PLR&ERG&ALT:=0>"თა";<br />
+PLR&DAT&ALT1:=0>"თა";<br />
+PLR&GNT&ALT1:=0>"თა";<br />
+PLR&VOC&ALT:=0>"ნო";<br />
+ ;<br /><br /><b>M29</b><br />The Georgian Adjectives which stem end with a vowel "ო". (<i>ბოლო,
+ახლო,
+ნოტიო,
+კერძო,
+საბაზო</i>)<br />SNG&NOM:=0>"";<br />
+SNG&ERG:=0>"მ";<br />
+SNG&DAT:=0>"ს";<br />
+SNG&DAT&ALT:=0>"სა";<br />
+SNG&GNT:=0>"ს";<br />
+SNG&GNT&ALT:=0>"სი";<br />
+SNG&INS:=0>"თი";<br />
+SNG&ABL:=0>"დ";<br />
+SNG&VOC:=0>"ვ";<br />
+SNG&ADE:=0>"ზე";<br />
+SNG&INE:=0>"სთან";<br />
+SNG&LOC:=0>"ში";<br />
+SNG&ILL:=0>"სკენ";<br />
+SNG&ILL&ALT:=0>"საკენ";<br />
+SNG&ILL&ALT1:=0>"ში";<br />
+ 
+SNG&CMT:=0>"თურთ";<br />
+SNG&DEL:=0>"სგან";<br />
+SNG&DEL&ALT:=0>"საგან";<br />
+SNG&ELA:=0>"დან";<br />
+SNG&EQU:=0>"სავით";<br />
+SNG&EQU&ALT:=0>"სავითა";<br />
+SNG&LAT:=0>"მდე";<br />
+SNG&LAT&ALT:=0>"მდის";<br />
+SNG&BEN:=0>"სთვის";<br />
+SNG&BEN&ALT:=0>"სათვის";<br />
+PLR&NOM:=0>"ები";<br />
+PLR&ERG:=0>"ებმა";<br />
+PLR&DAT:=0>"ებს";<br />
+PLR&DAT&ALT:=0>"ებსა";<br />
+PLR&GNT:=0>"ების";<br />
+PLR&GNT&ALT:=0>"ებისა";<br />
+PLR&INS:=0>"ებით";<br />
+PLR&INS&ALT:=0>"ებითა";<br />
+PLR&ABL:=0>"ებად";<br />
+PLR&ABL&ALT:=0>"ებადა";<br />
+PLR&VOC:=0>"ებო";<br />
+PLR&ADE:=0>"ებზე";<br />
+PLR&INE:=0>"ებთან";<br />
+PLR&LOC:=0>"ებში";<br />
+PLR&ILL:=0>"ებისკენ";<br />
+PLR&ILL&ALT:=0>"ებისაკენ";<br />
+PLR&ILL&ALT1:=0>"ებში";<br />
+PLR&CMT:=0>"ებითურთ";<br />
+PLR&DEL:=0>"ებისგან";<br />
+PLR&DEL&ALT:=0>"ებისაგან";<br />
+PLR&ELA:=0>"ებიდან";<br />
+PLR&EQU:=0>"ებივით";<br />
+PLR&LAT:=0>"ებამდე";<br />
+PLR&LAT&ALT:=0>"ებამდის";<br />
+PLR&BEN:=0>"ებისთვის";<br />
+PLR&BEN&ALT:=0>"ებისათვის";<br />
+PLR&NOM&ALT:=0>"ნი";<br />
+PLR&ERG&ALT:=0>"თა";<br />
+PLR&DAT&ALT1:=0>"თა";<br />
+PLR&GNT&ALT1:=0>"თა";<br />
+PLR&VOC&ALT:=0>"ნო";<br />
+;<br /><br /><b>M30</b><br />The Georgian Adjectives in which a stem vowel "ო" is replaced by a consonant "ვ" in Singular of Genitive, Instrumental and Ablative cases. (<i>განიერ,
+უტყუარ,        
+ღონიერ,
+გონიერ,        
+მშიერ,
+ნებიერ,
+მშვენიერ,
+პირმშვენიერ</i>)<br />SNG&NOM:=0>"ი";<br />
+SNG&ERG:=0>"მა";<br />
+SNG&DAT:=0>"ს";<br />
+SNG&DAT&ALT:=0>"სა";<br />
+SNG&GNT:=[-2]:"ვ",0>"ის";<br />
+SNG&GNT&ALT:=[-2]:"ვ",0>"ისა";<br />
+SNG&INS:=[-2]:"ვ",0>"ით";<br />
+SNG&INS&ALT:=[-2]:"ვ",0>"ითა";<br />
+ 
+SNG&ABL:=[-2]:"ვ",0>"ად";<br />
+SNG&ABL&ALT:=[-2]:"ვ",0>"ადა";<br />
+SNG&VOC:=0>"ო";<br />
+SNG&ADE:=0>"ზე";<br />
+SNG&INE:=0>"თან";<br />
+SNG&LOC:=0>"ში";<br />
+SNG&ILL:=[-2]:"ვ",0>"ისკენ";<br />
+SNG&ILL&ALT:=[-2]:"ვ",0>"ისაკენ";<br />
+SNG&ILL&ALT1:=0>"ში";<br />
+ 
+SNG&CMT:=[-2]:"ვ",0>"ითურთ";<br />
+SNG&DEL:=[-2]:"ვ",0>"ისგან";<br />
+SNG&DEL&ALT:=[-2]:"ვ",0>"ისაგან";<br />
+SNG&ELA:=[-2]:"ვ",0>"იდან";<br />
+SNG&EQU:=0>"ივით";<br />
+SNG&EQU&ALT:=0>"ივითა";<br />
+SNG&LAT:=[-2]:"ვ",0>"ამდე";<br />
+SNG&LAT&ALT:=[-2]:"ვ",0>"ამდის";<br />
+SNG&BEN:=[-2]:"ვ",0>"ისთვის";<br />
+SNG&BEN&ALT:=[-2]:"ვ",0>"ისათვის";<br />
+
+PLR&NOM:=[-2]:"ვ",0>"ები";<br />
+PLR&ERG:=[-2]:"ვ",0>"ებმა";<br />
+PLR&DAT:=[-2]:"ვ",0>"ებს";<br />
+PLR&DAT&ALT:=[-2]:"ვ",0>"ებსა";<br />
+PLR&GNT:=[-2]:"ვ",0>"ების";<br />
+PLR&GNT&ALT:=[-2]:"ვ",0>"ებისა";<br />
+PLR&INS:=[-2]:"ვ",0>"ებით";<br />
+PLR&INS&ALT1:=[-2]:"ვ",0>"ებითა";<br />
+  
+PLR&ABL:=[-2]:"ვ",0>"ებად";<br />
+PLR&ABL&ALT:=[-2]:"ვ",0>"ებადა";<br />
+PLR&VOC:=[-2]:"ვ",0>"ებო";<br />
+
+PLR&ADE:=[-2]:"ვ",0>"ებზე";<br />
+PLR&INE:=[-2]:"ვ",0>"ებთან";<br />
+PLR&LOC:=[-2]:"ვ",0>"ებში";<br />
+PLR&ILL:=[-2]:"ვ",0>"ებისკენ";<br />
+PLR&ILL&ALT:=[-2]:"ვ",0>"ებისაკენ";<br />
+PLR&ILL&ALT1:=[-2]:"ვ",0>"ებში";<br />
+ 
+PLR&CMT:=[-2]:"ვ",0>"ებითურთ";<br />
+PLR&DEL:=[-2]:"ვ",0>"ებისგან";<br />
+PLR&DEL&ALT:=[-2]:"ვ",0>"ებისაგან";<br />
+PLR&ELA:=[-2]:"ვ",0>"ებიდან";<br />
+PLR&EQU:=[-2]:"ვ",0>"ებივით";<br />
+PLR&LAT:=[-2]:"ვ",0>"ებამდე";<br />
+PLR&LAT&ALT:=[-2]:"ვ",0>"ებამდის";<br />
+PLR&BEN:=[-2]:"ვ",0>"ებისთვის";<br />
+PLR&BEN&ALT:=[-2]:"ვ",0>"ებისათვის";<br />
+
+PLR&NOM&ALT:=0>"ნი";<br />
+PLR&ERG&ALT:=0>"თა";<br />
+PLR&DAT&ALT1:=0>"თა";<br />
+PLR&GNT&ALT1:=0>"თა";<br />
+PLR&VOC&ALT:=0>"ნო";<br />
+;<br /><br /><b>M31</b><br />The Georgian Adjectives ending with a vowel "ა", "ე" which are reduced and stem squeezed in Genitive, Instrumental and Ablative cases. (<i>მეტიჩარა,
+მოყვარე</i>)<br />SNG&NOM:=0>"";<br />
+SNG&ERG:=0>"მ";<br />
+SNG&DAT:=0>"ს";<br />
+SNG&DAT&ALT:=0>"სა";<br />
+SNG&GNT:=[-3]:"",1>"ის";<br />
+SNG&GNT&ALT:=[-3]:"",1>"ისა";<br />
+SNG&INS:=[-3]:"",1>"ით";<br />
+SNG&INS&ALT:=[-3]:"",1>"ითა";<br />
+SNG&ABL:=[-3]:"",1>"ად";<br />
+SNG&ABL&ALT:=[-3]:"",1>"ადა";<br />
+SNG&VOC:=0>"ო";<br />
+SNG&VOC&ALT:=0>"ვ";<br />
+SNG&ADE:=0>"ზე";<br />
+SNG&INE:=0>"ში";<br />
+SNG&LOC:=0>"ში";<br />
+SNG&ILL:=[-3]:"",1>"ისკენ";<br />
+SNG&ILL&ALT1:=[-3]:"",1>"ისაკენ";<br />
+SNG&ILL&ALT2:=0>"ში";<br />
+SNG&CMT:=[-3]:"",1>"ითურთ";<br />
+SNG&DEL:=[-3]:"",1>"ისგან";<br />
+SNG&DEL&ALT:=[-3]:"",1>"ისაგან";<br />
+SNG&ELA:=[-3]:"",1>"იდან";<br />
+SNG&EQU:=1>"სავით";<br />
+SNG&EQU&ALT:=1>"სავითა";<br />
+SNG&LAT:=[-3]:"",1>"ამდე";<br />
+SNG&LAT&ALT:=[-3]:"",1>"ამდის";<br />
+SNG&BEN:=[-3]:"",1>"ისთვის";<br />
+SNG&BEN&ALT:=[-3]:"",1>"ისათვის";<br />
+
+PLR&NOM:=[-3]:"",1>"ები";<br />
+PLR&ERG:=[-3]:"",1>"ებმა";<br />
+PLR&DAT:=[-3]:"",1>"ებს";<br />
+PLR&DAT&ALT:=[-3]:"",1>"ებსა";<br />
+PLR&GNT:=[-3]:"",1>"ების";<br />
+PLR&GNT&ALT:=[-3]:"",1>"ებისა";<br />
+PLR&INS:=[-3]:"",1>"ებით";<br />
+PLR&INS&ALT1:=[-3]:"",1>"ებითა";<br />
+  
+PLR&ABL:=[-3]:"",1>"ებად";<br />
+PLR&ABL&ALT:=[-3]:"",1>"ებადა";<br />
+PLR&VOC:=[-3]:"",1>"ებო";<br />
+
+PLR&ADE:=[-3]:"",1>"ებზე";<br />
+PLR&INE:=[-3]:"",1>"ებთან";<br />
+PLR&LOC:=[-3]:"",1>"ებში";<br />
+PLR&ILL:=[-3]:"",1>"ებისკენ";<br />
+PLR&ILL&ALT:=[-3]:"",1>"ებისაკენ";<br />
+PLR&ILL&ALT1:=[-3]:"",1>"ებში";<br />
+ 
+PLR&CMT:=[-3]:"",1>"ებითურთ";<br />
+PLR&DEL:=[-3]:"",1>"ებისგან";<br />
+PLR&DEL&ALT:=[-3]:"",1>"ებისაგან";<br />
+PLR&ELA:=[-3]:"",1>"ებიდან";<br />
+PLR&EQU:=[-3]:"",1>"ებივით";<br />
+PLR&LAT:=[-3]:"",1>"ებამდე";<br />
+PLR&LAT&ALT:=[-3]:"",1>"ებამდის";<br />
+PLR&BEN:=[-3]:"",1>"ებისთვის";<br />
+PLR&BEN&ALT:=[-3]:"",1>"ებისათვის";<br />
+
+PLR&NOM&ALT:=1>"ნი";<br />
+PLR&ERG&ALT:=1>"თა";<br />
+PLR&DAT&ALT1:=1>"თა";<br />
+PLR&GNT&ALT1:=1>"თა";<br />
+PLR&VOC&ALT:=1>"ნო";<br />
+;<br /><br /><b>M32</b><br />The Georgian Adjectives ending with a consonant as a Noun Adjuncts in a Adj+Noun compound. (<i>ლამაზი,
+ახალი</i>)<br />NOM:=0>"ი";<br />
+ERG:=0>"მა";<br />
+DAT:=0>"";<br />
+GNT:=0>"ი";<br />
+INS:=0>"ი";<br />
+ABL:=0>"";<br />
+VOC:=0>"ო";<br />
+ADE:=0>"";<br />
+INE:=0>"";<br />
+LOC:=0>"";<br />
+ILL:=0>"";<br />
+ILL&ALT:=0>"ი";<br />
+CMT:=0>"ი";<br />
+DEL:=0>"ი";<br />
+ELA:=0>"ი";<br />
+EQU:=0>"";<br />
+LAT:=0>"";<br />
+BEN:=0>"ი";<br />
+;<br /><br /><b>M33</b><br />The Georgian loaned Nouns of Singulare Tantum which Base Form end with a vowel "ი".
+ (<i>ჩაი,
+კივი</i>)<br />SNG&NOM:=0>"";<br />
+SNG&ERG:=0>"მ";<br />
+SNG&DAT:=0>"ს";<br />
+SNG&DAT&ALT:=0>"სა";<br />
+SNG&GNT:=0>"ს";<br />
+SNG&INS:=0>"თ";<br />
+SNG&ABL:=0>"დ";<br />
+SNG&VOC:=0>"";<br />
+SNG&ADE:=0>"ზე";<br />
+SNG&INE:=0>"სთან";<br />
+SNG&LOC:=0>"ში";<br />
+SNG&ILL:=0>"სკენ";<br />
+SNG&ILL&ALT:=0>"საკენ";<br />
+SNG&ILL&ALT1:=0>"ში";<br />
+SNG&CMT:=0>"თურთ";<br />
+SNG&DEL:=0>"სგან";<br />
+SNG&DEL&ALT:=0>"საგან";<br />
+SNG&ELA:=0>"დან";<br />
+SNG&EQU:=0>"ვით";<br />
+SNG&EQU&ALT:=0>"ვითა";<br />
+SNG&LAT:=0>"მდე";<br />
+SNG&LAT&ALT:=0>"მდის";<br />
+SNG&BEN:=0>"სთვის";<br />
+SNG&BEN&ALT:=0>"სათვის";<br />
+;<br /><br /><b>M35</b><br />The Georgian Noun ending with a vowel as a Noun Adjunct in Singular. (<i>პიცა</i>)<br />SNG&NOM:=0>"";<br />
+SNG&ERG:=0>"";<br />
+SNG&DAT:=0>"";<br />
+SNG&GNT:=0>"";<br />
+SNG&INS:=0>"";<br />
+SNG&ABL:=0>"";<br />
+SNG&VOC:=0>"";<br />
+SNG&ADE:=0>"";<br />
+SNG&INE:=0>"";<br />
+SNG&LOC:=0>"";<br />
+SNG&ILL:=0>"";<br />
+SNG&CMT:=0>"";<br />
+SNG&DEL:=0>"";<br />
+SNG&ELA:=0>"";<br />
+SNG&EQU:=0>"";<br />
+SNG&LAT:=0>"";<br />
+SNG&BEN:=0>"";<br />
+;<br /><br /><b>M36</b><br />The Georgian Noun ending with a consonant as a Noun Adjunct in Singular. (<i>ძეხვი, ყველი</i>)<br />SNG&NOM:=0>"ი";<br />
+SNG&ERG:=0>"მა";<br />
+SNG&DAT:=0>"";<br />
+SNG&GNT:=0>"ი";<br />
+SNG&INS:=0>"ი";<br />
+SNG&ABL:=0>"";<br />
+SNG&VOC:=0>"ო";<br />
+SNG&ADE:=0>"";<br />
+SNG&INE:=0>"";<br />
+SNG&LOC:=0>"";<br />
+SNG&ILL:=0>"";<br />
+SNG&CMT:=0>"ი";<br />
+SNG&DEL:=0>"ი";<br />
+SNG&ELA:=0>"ი";<br />
+SNG&EQU:=0>"";<br />
+SNG&LAT:=0>"";<br />
+SNG&BEN:=0>"ი";<br />
+;<br /><br /><b>M37</b><br />Active voice with i_theme marker for Present, Future, Past and Past_INFR (147 BF) (<i>გაყიდ,
+დაბეკნ,
+დაბერკნ,
+დაბლარდნ,
+დაბლიკვნ </i>)<br />ACV&IND&PRS&1PS:="ვ"<2,0>"ი";<br />
+ACV&IND&PRS&2PS:=""<2,0>"ი";<br />
+ACV&IND&PRS&3PS:=""<2,0>"ის";<br />
+ACV&IND&PRS&1PP:="ვ"<2,0>"ით";<br />
+ACV&IND&PRS&2PP:=""<2,0>"ით";<br />
+ACV&IND&PRS&3PP:=""<2,0>"იან";<br />
+
+ACV&IND&FUT&1PS:="ვ"<[3],0>"ი";<br />
+ACV&IND&FUT&2PS:=0>"ი";<br />
+ACV&IND&FUT&3PS:=0>"ის";<br />
+ACV&IND&FUT&1PP:="ვ"<[3],0>"ით";<br />
+ACV&IND&FUT&2PP:=0>"ით";<br />
+ACV&IND&FUT&3PP:=0>"იან";<br />
+  
+
+ACV&IND&PAS&1PS:="ვ"<[3],0>"ე";<br />
+ACV&IND&PAS&2PS:=0>"ე";<br />
+ACV&IND&PAS&3PS:=0>"ა";<br />
+ACV&IND&PAS&1PP:="ვ"<[3],0>"ეთ";<br />
+ACV&IND&PAS&2PP:=0>"ეთ";<br />
+ACV&IND&PAS&3PP:=0>"ეს";<br />
+
+ACV&INFR&PAS&1PS:="მი"<[3],0>"ია";<br />
+ACV&INFR&PAS&2PS:="გი"<[3],0>"ია";<br />
+ACV&INFR&PAS&3PS:="უ"<[3],0>"ია";<br />
+ACV&INFR&PAS&2PP:="გვი"<[3],0>"ია";<br />
+ACV&INFR&PAS&1PP:="გი"<[3],0>"ათ";<br />
+ACV&INFR&PAS&3PP:="უ"<[3],0>"ათ";<br />
+
+ACV&CON&PAS&1PS:="მე"<[3],0>"ა";<br />
+ACV&CON&PAS&2PS:="გე"<[3],0>"ა";<br />
+ACV&CON&PAS&3PS:="ე"<[3],0>"ა";<br />
+ACV&CON&PAS&1PP:="გვე"<[3],0>"ა";<br />
+ACV&CON&PAS&2PP:="გე"<[3],0>"ათ";<br />
+ACV&CON&PAS&3PP:="ე"<[3],0>"ათ";<br />
+   
+
+ACV&SUB&PAS&1PS:="მე"<[3],0>"ოს";<br />
+ACV&SUB&PAS&2PS:="გე"<[3],0>"ოს";<br />
+ACV&SUB&PAS&3PS:="ე"<[3],0>"ოს";<br />
+ACV&SUB&PAS&1PP:="გვე"<[3],0>"ოს";<br />
+ACV&SUB&PAS&2PP:="გე"<[3],0>"ოთ";<br />
+ACV&SUB&PAS&3PP:="ე"<[3],0>"ოთ";<br />
+   
+;<br /><br /><b>M38</b><br />Active voice with am_theme marker (<i>შესვ,
+გათქვ,
+დასვ,
+დადგ,
+შედგ
+</i>)<br />
+ACV&IND&PRS&1PS:="ვ"<2,0>"ამ";<br />
+ACV&IND&PRS&2PS:=""<2,0>"ამ";<br />
+ACV&IND&PRS&3PS:=""<2,0>"ამს";<br />
+ACV&IND&PRS&1PP:="ვ"<2,0>"ამთ";<br />
+ACV&IND&PRS&2PP:=""<2,0>"ამთ";<br />
+ACV&IND&PRS&3PP:=""<2,0>"ამენ";<br />
+
+ACV&IND&FUT&1PS:="ვ"<[3],0>"ამ";<br />
+ACV&IND&FUT&2PS:=0>"ამ";<br />
+ACV&IND&FUT&3PS:=0>"ამს";<br />
+ACV&IND&FUT&1PP:="ვ"<[3],0>"ამთ";<br />
+ACV&IND&FUT&2PP:=0>"ამთ";<br />
+ACV&IND&FUT&3PP:=0>"ამენ";<br />
+  
+
+ACV&IND&PAS&1PS:="ვ"<[3],0>"ი";<br />
+ACV&IND&PAS&2PS:=0>"ი";<br />
+ACV&IND&PAS&3PS:=0>"ა";<br />
+ACV&IND&PAS&1PP:="ვ"<[3],0>"ით";<br />
+ACV&IND&PAS&2PP:=0>"ით";<br />
+ACV&IND&PAS&3PP:=0>"ეს";<br />
+
+ACV&INFR&PAS&1PS:="მი"<[3],0>"ამს";<br />
+ACV&INFR&PAS&2PS:="გი"<[3],0>"ამს";<br />
+ACV&INFR&PAS&3PS:="უ"<[3],0>"ამს";<br />
+ACV&INFR&PAS&2PP:="გვი"<[3],0>"ამს";<br />
+ACV&INFR&PAS&1PP:="გი"<[3],0>"ამათ";<br />
+ACV&INFR&PAS&3PP:="უ"<[3],0>"ამათ";<br />
+
+ACV&CON&PAS&1PS:="მე"<[3],0>"ა";<br />
+ACV&CON&PAS&2PS:="გე"<[3],0>"ა";<br />
+ACV&CON&PAS&3PS:="ე"<[3],0>"ა";<br />
+ACV&CON&PAS&1PP:="გვე"<[3],0>"ა";<br />
+ACV&CON&PAS&2PP:="გე"<[3],0>"ათ";<br />
+ACV&CON&PAS&3PP:="ე"<[3],0>"ათ";<br />
+   
+
+ACV&SUB&PAS&1PS:="მე"<[3],0>"ას";<br />
+ACV&SUB&PAS&2PS:="გე"<[3],0>"ას";<br />
+ACV&SUB&PAS&3PS:="ე"<[3],0>"ას";<br />
+ACV&SUB&PAS&1PP:="გვე"<[3],0>"ას";<br />
+ACV&SUB&PAS&2PP:="გე"<[3],0>"ას";<br />
+ACV&SUB&PAS&3PP:="ე"<[3],0>"ათ";<br />
+   
+;<br /><br /><b>M39</b><br />Active voice with av_theme marker (<i>გაბერ,
+დაბარ,
+მიბაძ,
+მოცელ,
+გაფერ  </i>)<br />ACV&IND&PRS&1PS:="ვ"<2,0>"ავ";<br />
+ACV&IND&PRS&2PS:=""<2,0>"ავ";<br />
+ACV&IND&PRS&3PS:=""<2,0>"ავს";<br />
+ACV&IND&PRS&1PP:="ვ"<2,0>"ავთ";<br />
+ACV&IND&PRS&2PP:=""<2,0>"ავთ";<br />
+ACV&IND&PRS&3PP:=""<2,0>"ავენ";<br />
+
+ACV&IND&FUT&1PS:="ვ"<[3],0>"ავ";<br />
+ACV&IND&FUT&2PS:=0>"ავ";<br />
+ACV&IND&FUT&3PS:=0>"ავს";<br />
+ACV&IND&FUT&1PP:="ვ"<[3],0>"ავთ";<br />
+ACV&IND&FUT&2PP:=0>"ავთ";<br />
+ACV&IND&FUT&3PP:=0>"ავენ";<br />
+  
+
+ACV&IND&PAS&1PS:="ვ"<[3],0>"ე";<br />
+ACV&IND&PAS&2PS:=0>"ე";<br />
+ACV&IND&PAS&3PS:=0>"ა";<br />
+ACV&IND&PAS&1PP:="ვ"<[3],0>"ეთ";<br />
+ACV&IND&PAS&2PP:=0>"ეთ";<br />
+ACV&IND&PAS&3PP:=0>"ეს";<br />
+
+ACV&INFR&PAS&1PS:="მი"<[3],0>"ავს";<br />
+ACV&INFR&PAS&2PS:="გი"<[3],0>"ავს";<br />
+ACV&INFR&PAS&3PS:="უ"<[3],0>"ავს";<br />
+ACV&INFR&PAS&2PP:="გვი"<[3],0>"ავს";<br />
+ACV&INFR&PAS&1PP:="გი"<[3],0>"ავთ";<br />
+ACV&INFR&PAS&3PP:="უ"<[3],0>"ავთ";<br />
+
+ACV&CON&PAS&1PS:="მე"<[3],0>"ა";<br />
+ACV&CON&PAS&2PS:="გე"<[3],0>"ა";<br />
+ACV&CON&PAS&3PS:="ე"<[3],0>"ა";<br />
+ACV&CON&PAS&1PP:="გვე"<[3],0>"ა";<br />
+ACV&CON&PAS&2PP:="გე"<[3],0>"ათ";<br />
+ACV&CON&PAS&3PP:="ე"<[3],0>"ათ";<br />
+   
+
+ACV&SUB&PAS&1PS:="მე"<[3],0>"ოს";<br />
+ACV&SUB&PAS&2PS:="გე"<[3],0>"ოს";<br />
+ACV&SUB&PAS&3PS:="ე"<[3],0>"ოს";<br />
+ACV&SUB&PAS&1PP:="გვე"<[3],0>"ოს";<br />
+ACV&SUB&PAS&2PP:="გე"<[3],0>"ოს";<br />
+ACV&SUB&PAS&3PP:="ე"<[3],0>"ოთ";<br />
+  
+;<br /><br /><b>M40</b><br />Active voice with no_theme marker (<i>გატეხ,
+დაწერ,
+დაბან,
+მოწოვ,
+დახვეტ,
+მოხვეჭ
+</i>)<br />ACV&IND&PRS&1PS:="ვ"<2;<br />
+ACV&IND&PRS&2PS:=""<2;<br />
+ACV&IND&PRS&3PS:=""<2,0>"ს";<br />
+ACV&IND&PRS&1PP:="ვ"<2,0>"თ";<br />
+ACV&IND&PRS&2PP:=""<2,0>"თ";<br />
+ACV&IND&PRS&3PP:=""<2,0>"ენ";<br />
+
+ACV&IND&FUT&1PS:="ვ"<[3],0>"";<br />
+ACV&IND&FUT&2PS:=0>"";<br />
+ACV&IND&FUT&3PS:=0>"ს";<br />
+ACV&IND&FUT&1PP:="ვ"<[3],0>"თ";<br />
+ACV&IND&FUT&2PP:=0>"თ";<br />
+ACV&IND&FUT&3PP:=0>"ენ";<br />
+  
+
+ACV&IND&PAS&1PS:="ვ"<[3],0>"ე";<br />
+ACV&IND&PAS&2PS:=0>"ე";<br />
+ACV&IND&PAS&3PS:=0>"ა";<br />
+ACV&IND&PAS&1PP:="ვ"<[3],0>"ეთ";<br />
+ACV&IND&PAS&2PP:=0>"ეთ";<br />
+ACV&IND&PAS&3PP:=0>"ეს";<br />
+
+ACV&INFR&PAS&1PS:="მი"<[3],0>"ია";<br />
+ACV&INFR&PAS&2PS:="გი"<[3],0>"ია";<br />
+ACV&INFR&PAS&3PS:="უ"<[3],0>"ია";<br />
+ACV&INFR&PAS&2PP:="გვი"<[3],0>"ია";<br />
+ACV&INFR&PAS&1PP:="გი"<[3],0>"ათ";<br />
+ACV&INFR&PAS&3PP:="უ"<[3],0>"ათ";<br />
+
+ACV&CON&PAS&1PS:="მე"<[3],0>"ა";<br />
+ACV&CON&PAS&2PS:="გე"<[3],0>"ა";<br />
+ACV&CON&PAS&3PS:="ე"<[3],0>"ა";<br />
+ACV&CON&PAS&1PP:="გვე"<[3],0>"ა";<br />
+ACV&CON&PAS&2PP:="გე"<[3],0>"ათ";<br />
+ACV&CON&PAS&3PP:="ე"<[3],0>"ათ";<br />
+   
+
+ACV&SUB&PAS&1PS:="მე"<[3],0>"ას";<br />
+ACV&SUB&PAS&2PS:="გე"<[3],0>"ას";<br />
+ACV&SUB&PAS&3PS:="ე"<[3],0>"ას";<br />
+ACV&SUB&PAS&1PP:="გვე"<[3],0>"ას";<br />
+ACV&SUB&PAS&2PP:="გე"<[3],0>"ას";<br />
+ACV&SUB&PAS&3PP:="ე"<[3],0>"ათ";<br />
+  
+;<br /><br /><b>M41</b><br />Active voice with eb_theme marker (<i>დაბად,
+დაკიდ,
+დატაც,
+დატოვ</i>)<br />ACV&IND&PRS&1PS:="ვ"<2,0>"ებ";<br />
+ACV&IND&PRS&2PS:=""<2,0>"ებ";<br />
+ACV&IND&PRS&3PS:=""<2,0>"ებს";<br />
+ACV&IND&PRS&1PP:="ვ"<2,0>"ებთ";<br />
+ACV&IND&PRS&2PP:=""<2,0>"ებთ";<br />
+ACV&IND&PRS&3PP:=""<2,0>"ებენ";<br />
+
+ACV&IND&FUT&1PS:="ვ"<[3],0>"ებ";<br />
+ACV&IND&FUT&2PS:=0>"ებ";<br />
+ACV&IND&FUT&3PS:=0>"ებს";<br />
+ACV&IND&FUT&1PP:="ვ"<[3],0>"ებთ";<br />
+ACV&IND&FUT&2PP:=0>"ებთ";<br />
+ACV&IND&FUT&3PP:=0>"ებენ";<br />
+  
+
+ACV&IND&PAS&1PS:="ვ"<[3],0>"ე";<br />
+ACV&IND&PAS&2PS:=0>"ე";<br />
+ACV&IND&PAS&3PS:=0>"ა";<br />
+ACV&IND&PAS&1PP:="ვ"<[3],0>"ეთ";<br />
+ACV&IND&PAS&2PP:=0>"ეთ";<br />
+ACV&IND&PAS&3PP:=0>"ეს";<br />
+
+ACV&INFR&PAS&1PS:="მი"<[3],0>"ებია";<br />
+ACV&INFR&PAS&2PS:="გი"<[3],0>"ებია";<br />
+ACV&INFR&PAS&3PS:="უ"<[3],0>"ებია";<br />
+ACV&INFR&PAS&2PP:="გვი"<[3],0>"ებია";<br />
+ACV&INFR&PAS&1PP:="გი"<[3],0>"ებიათ";<br />
+ACV&INFR&PAS&3PP:="უ"<[3],0>"ებიათ";<br />
+
+ACV&CON&PAS&1PS:="მე"<[3],0>"ებია";<br />
+ACV&CON&PAS&2PS:="გე"<[3],0>"ებია";<br />
+ACV&CON&PAS&3PS:="ე"<[3],0>"ებია";<br />
+ACV&CON&PAS&1PP:="გვე"<[3],0>"ებია";<br />
+ACV&CON&PAS&2PP:="გე"<[3],0>"ებიათ";<br />
+ACV&CON&PAS&3PP:="ე"<[3],0>"ებიათ";<br />
+   
+
+ACV&SUB&PAS&1PS:="მე"<[3],0>"ებიოს";<br />
+ACV&SUB&PAS&2PS:="გე"<[3],0>"ებიოს";<br />
+ACV&SUB&PAS&3PS:="ე"<[3],0>"ებიოს";<br />
+ACV&SUB&PAS&1PP:="გვე"<[3],0>"ებიოს";<br />
+ACV&SUB&PAS&2PP:="გე"<[3],0>"ებიოს";<br />
+ACV&SUB&PAS&3PP:="ე"<[3],0>"ებიოთ";<br />
+  
+;<br /><br /><b>M42</b><br />Active voice with ablaut_e/i (<i>ხლეჩ~ხლიჩ,
+გრეხ~გრიხ,
+ფლეთ~ფლით  </i>)<br />ACV&IND&PRS&1PS:="ვ"<2;<br />
+ACV&IND&PRS&2PS:=""<2;<br />
+ACV&IND&PRS&3PS:=""<2,0>"ს";<br />
+ACV&IND&PRS&1PP:="ვ"<2,0>"თ";<br />
+ACV&IND&PRS&2PP:=""<2,0>"თ";<br />
+ACV&IND&PRS&3PP:=""<2,0>"ენ";<br />
+
+ACV&IND&FUT&1PS:="ვ"<[3];<br />
+ACV&IND&FUT&2PS:=0>"";<br />
+ACV&IND&FUT&3PS:=0>"ს";<br />
+ACV&IND&FUT&1PP:="ვ"<[3],0>"თ";<br />
+ACV&IND&FUT&2PP:=0>"თ";<br />
+ACV&IND&FUT&3PP:=0>"ენ";<br />
+  
+ACV&IND&PAS&1PS:="ვ"<[3],[-2]:"ი",0>"ე";<br />
+ACV&IND&PAS&2PS:=[-2]:"ი",0>"ე";<br />
+ACV&IND&PAS&3PS:=[-2]:"ი",0>"ა";<br />
+ACV&IND&PAS&1PP:="ვ"<[3],[-2]:"ი",0>"ეთ";<br />
+ACV&IND&PAS&2PP:=[-2]:"ი",0>"ეთ";<br />
+ACV&IND&PAS&3PP:=[-2]:"ი",0>"ეს";<br />
+
+ACV&INFR&PAS&1PS:="მი"<[3],0>"ია";<br />
+ACV&INFR&PAS&2PS:="გი"<[3],0>"ია";<br />
+ACV&INFR&PAS&3PS:="უ"<[3],0>"ია";<br />
+ACV&INFR&PAS&2PP:="გვი"<[3],0>"ია";<br />
+ACV&INFR&PAS&1PP:="გი"<[3],0>"ათ";<br />
+ACV&INFR&PAS&3PP:="უ"<[3],0>"ათ";<br />
+
+ACV&CON&PAS&1PS:="მე"<[3],[-2]:"ი",0>"ა";<br />
+ACV&CON&PAS&2PS:="გე"<[3],[-2]:"ი",0>"ა";<br />
+ACV&CON&PAS&3PS:="ე"<[3],[-2]:"ი",0>"ა";<br />
+ACV&CON&PAS&1PP:="გვე"<[3],[-2]:"ი",0>"ა";<br />
+ACV&CON&PAS&2PP:="გე"<[3],[-2]:"ი",0>"ათ";<br />
+ACV&CON&PAS&3PP:="ე"<[3],[-2]:"ი",0>"ათ";<br />
+
+ACV&SUB&PAS&1PS:="მე"<[3],[-2]:"ი",0>"ოს";<br />
+ACV&SUB&PAS&2PS:="გე"<[3],[-2]:"ი",0>"ოს";<br />
+ACV&SUB&PAS&3PS:="ე"<[3],[-2]:"ი",0>"ოს";<br />
+ACV&SUB&PAS&1PP:="გვე"<[3],[-2]:"ი",0>"ოს";<br />
+ACV&SUB&PAS&2PP:="გე"<[3],[-2]:"ი",0>"ოს";<br />
+ACV&SUB&PAS&3PP:="ე"<[3],[-2]:"ი",0>"ოთ";<br />
+
+;<br /><br /><b>M43</b><br />Active voice with ablaut_ev/i (<i>გათევ~გათი, 
+გათრევ~გათრი </i>)<br />ACV&IND&PRS&1PS:="ვა"<2;<br />
+ACV&IND&PRS&2PS:="ა"<2;<br />
+ACV&IND&PRS&3PS:="ა"<2,0>"ს";<br />
+ACV&IND&PRS&1PP:="ვა"<2,0>"თ";<br />
+ACV&IND&PRS&2PP:="ა"<2,0>"თ";<br />
+ACV&IND&PRS&3PP:="ა"<2,0>"ენ";<br />
+
+ACV&IND&FUT&1PS:="ვა"<[3];<br />
+ACV&IND&FUT&2PS:="ა"<[3];<br />
+ACV&IND&FUT&3PS:="ა"<[3],0>"ს";<br />
+ACV&IND&FUT&1PP:="ვა"<[3],0>"თ";<br />
+ACV&IND&FUT&2PP:="ა"<[3],0>"თ";<br />
+ACV&IND&FUT&3PP:="ა"<[3],0>"ენ";<br />
+  
+
+ACV&IND&PAS&1PS:="ვა"<[3],2>"იე";<br />
+ACV&IND&PAS&2PS:="ა"<[3],2>"იე";<br />
+ACV&IND&PAS&3PS:="ა"<[3],2>"ია";<br />
+ACV&IND&PAS&1PP:="ვა"<[3],2>"იეთ";<br />
+ACV&IND&PAS&2PP:="ა"<[3],2>"იეთ";<br />
+ACV&IND&PAS&3PP:="ა"<[3],2>"იეს";<br />
+
+ACV&INFR&PAS&1PS:="მი"<[3],0>"ია";<br />
+ACV&INFR&PAS&2PS:="გი"<[3],0>"ია";<br />
+ACV&INFR&PAS&3PS:="უ"<[3],0>"ია";<br />
+ACV&INFR&PAS&2PP:="გვი"<[3],0>"ია";<br />
+ACV&INFR&PAS&1PP:="გი"<[3],0>"იათ";<br />
+ACV&INFR&PAS&3PP:="უ"<[3],0>"იათ";<br />
+
+ACV&CON&PAS&1PS:="მე"<[3],2>"ია";<br />
+ACV&CON&PAS&2PS:="გე"<[3],2>"ია";<br />
+ACV&CON&PAS&3PS:="ე"<[3],2>"ია";<br />
+ACV&CON&PAS&1PP:="გვე"<[3],2>"ია";<br />
+ACV&CON&PAS&2PP:="გე"<[3],2>"იათ";<br />
+ACV&CON&PAS&3PP:="ე"<[3],2>"იათ";<br />
+   
+
+ACV&SUB&PAS&1PS:="მე"<[3],2>"იოს";<br />
+ACV&SUB&PAS&2PS:="გე"<[3],2>"იოს";<br />
+ACV&SUB&PAS&3PS:="ე"<[3],2>"იოს";<br />
+ACV&SUB&PAS&1PP:="გვე"<[3],2>"იოს";<br />
+ACV&SUB&PAS&2PP:="გე"<[3],2>"იოთ";<br />
+ACV&SUB&PAS&3PP:="ე"<[3],2>"იოთ";<br />
+   
+;<br /><br /><b>M44</b><br />Active voice with ob_theme marker
+ (<i>გათბ,
+გახმ,
+დალბ,
+დალპ,
+გალღ,
+დალტ </i>)<br />
+ACV&IND&PRS&1PS:="ვა"<2,0>"ობ";<br />
+ACV&IND&PRS&2PS:="ა"<2,0>"ობ";<br />
+ACV&IND&PRS&3PS:="ა"<2,0>"ობს";<br />
+ACV&IND&PRS&1PP:="ვა"<2,0>"ობთ";<br />
+ACV&IND&PRS&2PP:="ა"<2,0>"ობთ";<br />
+ACV&IND&PRS&3PP:="ა"<2,0>"ობენ";<br />
+
+ACV&IND&FUT&1PS:="ვა"<[3],0>"ობ";<br />
+ACV&IND&FUT&2PS:="ა"<[3],0>"ობ";<br />
+ACV&IND&FUT&3PS:="ა"<[3],0>"ობს";<br />
+ACV&IND&FUT&1PP:="ვა"<[3],0>"ობთ";<br />
+ACV&IND&FUT&2PP:="ა"<[3],0>"ობთ";<br />
+ACV&IND&FUT&3PP:="ა"<[3],0>"ობენ";<br />
+  
+
+ACV&IND&PAS&1PS:="ვა"<[3],0>"ე";<br />
+ACV&IND&PAS&2PS:="ა"<[3],0>"ე";<br />
+ACV&IND&PAS&3PS:="ა"<[3],0>"ო";<br />
+ACV&IND&PAS&1PP:="ვა"<[3],0>"ეთ";<br />
+ACV&IND&PAS&2PP:="ა"<[3],0>"ეთ";<br />
+ACV&IND&PAS&3PP:="ა"<[3],0>"ეს";<br />
+
+ACV&INFR&PAS&1PS:="მი"<[3],0>"ია";<br />
+ACV&INFR&PAS&2PS:="გი"<[3],0>"ია";<br />
+ACV&INFR&PAS&3PS:="უ"<[3],0>"ია";<br />
+ACV&INFR&PAS&2PP:="გვი"<[3],0>"ია";<br />
+ACV&INFR&PAS&1PP:="გი"<[3],0>"იათ";<br />
+ACV&INFR&PAS&3PP:="უ"<[3],0>"იათ";<br />
+
+ACV&CON&PAS&1PS:="მე"<[3],0>"ო";<br />
+ACV&CON&PAS&2PS:="გე"<[3],0>"ო";<br />
+ACV&CON&PAS&3PS:="ე"<[3],0>"ო";<br />
+ACV&CON&PAS&1PP:="გვე"<[3],0>"ო";<br />
+ACV&CON&PAS&2PP:="გე"<[3],0>"ოთ";<br />
+ACV&CON&PAS&3PP:="ე"<[3],0>"ოთ";<br />
+   
+
+ACV&SUB&PAS&1PS:="მე"<[3],0>"ოს";<br />
+ACV&SUB&PAS&2PS:="გე"<[3],0>"ოს";<br />
+ACV&SUB&PAS&3PS:="ე"<[3],0>"ოს";<br />
+ACV&SUB&PAS&1PP:="გვე"<[3],0>"ოს";<br />
+ACV&SUB&PAS&2PP:="გე"<[3],0>"ოთ";<br />
+ACV&SUB&PAS&3PP:="ე"<[3],0>"ოთ";<br />
+   
+;<br /><br /><b>M45</b><br />Active voice with op_theme marker
+ (<i>შე/გა/და/გამო/ყოფ~ყავ
+
+</i>)<br />IND&PRS&1PS:="ვ"<0,0>"";<br />
+IND&PRS&2PS:=0>"";<br />
+IND&PRS&3PS:=0>"ს";<br />
+
+IND&PRS&1PP:="ვ"<0,0>"თ";<br />
+IND&PRS&2PP:=0>"თ";<br />
+IND&PRS&3PP:=0>"ენ";<br />
+   
+
+IND&NPFV&1PS:="ვ"<0,0>"დი";<br />
+IND&NPFV&2PS:=0>"დი";<br />
+IND&NPFV&3PS:=0>"და";<br />
+
+IND&NPFV&1PP:="ვ"<0,0>"დით";<br />
+IND&NPFV&2PP:=0>"დით";<br />
+IND&NPFV&3PP:=0>"დნენ";<br />
+   
+
+SUB&PRS&1PS:="ვ"<0,0>"დე";<br />
+SUB&PRS&2PS:=0>"დე";<br />
+SUB&PRS&3PS:=0>"დეს";<br />
+
+SUB&PRS&1PP:="ვ"<0,0>"დეთ";<br />
+SUB&PRS&2PP:=0>"დეთ";<br />
+SUB&PRS&3PP:=0>"დნენ";<br />
+   
+
+IND&FUT&1PS:="შევ"<0,0>"";<br />
+IND&FUT&2PS:="შე"<0,0>"";<br />
+IND&FUT&3PS:="შე"<0,0>"ს";<br />
+
+IND&FUT&1PP:="შევ"<0,0>"თ";<br />
+IND&FUT&2PP:="შე"<0,0>"თ";<br />
+IND&FUT&3PP:="შე"<0,0>"ენ";<br />
+   
+
+IND&RFT&1PS:="შევ"<0,0>"დი";<br />
+IND&RFT&2PS:="შე"<0,0>"დი";<br />
+IND&RFT&3PS:="შე"<0,0>"და";<br />
+
+IND&RFT&1PP:="შევ"<0,0>"დით";<br />
+IND&RFT&2PP:="შე"<0,0>"დით";<br />
+IND&RFT&3PP:="შე"<0,0>"დნენ";<br />
+   
+
+SUB&RFT&1PS:="შევ"<0,0>"დე";<br />
+SUB&RFT&2PS:="შე"<0,0>"დე";<br />
+SUB&RFT&3PS:="შე"<0,0>"დეს";<br />
+
+SUB&RFT&1PP:="შევ"<0,0>"დეთ";<br />
+SUB&RFT&2PP:="შე"<0,0>"დეთ";<br />
+SUB&RFT&3PP:="შე"<0,0>"დნენ";<br />
+   
+
+
+IND&PAS&1PS:="შევ"<0,"ოფ":"ავ",0>"ი";<br />
+IND&PAS&2PS:="შე"<0,"ოფ":"ავ",0>"ი";<br />
+IND&PAS&3PS:="შე"<0,1>"";<br />
+
+IND&PAS&1PP:="შევ"<0,"ოფ":"ავ",0>"ით";<br />
+IND&PAS&2PP:="შე"<0,"ოფ":"ავ",0>"ით";<br />
+IND&PAS&3PP:="შე"<0,"ოფ":"ვ",0>"ეს";<br />
+   
+
+SUB&FUT&1PS:="შევ"<0,1>"";<br />
+SUB&FUT&2PS:="შე"<0,1>"";<br />
+SUB&FUT&3PS:="შე"<0,1>"ს";<br />
+
+SUB&FUT&1PP:="შევ"<0,1>"თ";<br />
+SUB&FUT&2PP:="შე"<0,1>"თ";<br />
+SUB&FUT&3PP:="შე"<0,1>"ნ";<br />
+   
+
+
+INFR&PAS&1PS:="შემი"<0,"ოფ":"ვ",0>"ია";<br />
+INFR&PAS&2PS:="შეგი"<0,"ოფ":"ვ",0>"ია";<br />
+INFR&PAS&3PS:="შეუ"<0,"ოფ":"ვ",0>"ია";<br />
+
+INFR&PAS&1PP:="შეგვი"<0,"ოფ":"ვ",0>"ია";<br />
+INFR&PAS&2PP:="შეგი"<0,"ოფ":"ვ",0>"იათ";<br />
+INFR&PAS&3PP:="შეუ"<0,"ოფ":"ვ",0>"იათ";<br />
+   
+
+CON&PAS&1PS:="შემე"<0,1>"";<br />
+CON&PAS&2PS:="შეგე"<0,1>"";<br />
+CON&PAS&3PS:="შეე"<0,1>"";<br />
+
+CON&PAS&1PP:="შეგვე"<0,1>"";<br />
+CON&PAS&2PP:="შეგე"<0,1>"თ";<br />
+CON&PAS&3PP:="შეე"<0,1>"თ";<br />
+   
+
+SUB&PAS&1PS:="შემე"<0,1>"ს";<br />
+SUB&PAS&2PS:="შეგე"<0,1>"ს";<br />
+SUB&PAS&3PS:="შეე"<0,1>"ს";<br />
+
+SUB&PAS&1PP:="შეგვე"<0,1>"ს";<br />
+SUB&PAS&2PP:="შეგე"<0,1>"თ";<br />
+SUB&PAS&3PP:="შეე"<0,1>"თ";<br />
+   
+;<br /><br /><b>M46</b><br />Active voice with ablaut_0/a
+ (<i>გვრ~გვარ,
+ყრ~ყარ,
+ზრდ~ზარ,
+თლ~თალ, 
+ღვრ~ღვარ,
+შლ~შალ,
+სვრ~სვარ</i>)<br />
+IND&PRS&1PS:="ვ"<0,0>"ი";<br />
+IND&PRS&2PS:=0>"ი";<br />
+IND&PRS&3PS:=0>"ის";<br />
+
+IND&PRS&1PP:="ვ"<0,0>"ით";<br />
+IND&PRS&2PP:=0>"ით";<br />
+IND&PRS&3PP:=0>"იან";<br />
+  
+
+IND&NPFV&1PS:="ვ"<0,0>"იდი";<br />
+IND&NPFV&2PS:=0>"იდი";<br />
+IND&NPFV&3PS:=0>"იდა";<br />
+
+IND&NPFV&1PP:="ვ"<0,0>"იდით";<br />
+IND&NPFV&2PP:=0>"იდით";<br />
+IND&NPFV&3PP:=0>"იდნენ";<br />
+   
+
+SUB&PRS&1PS:="ვ"<0,0>"იდე";<br />
+SUB&PRS&2PS:=0>"იდე";<br />
+SUB&PRS&3PS:=0>"იდეს";<br />
+
+SUB&PRS&1PP:="ვ"<0,0>"იდეთ";<br />
+SUB&PRS&2PP:=0>"იდეთ";<br />
+SUB&PRS&3PP:=0>"იდნენ";<br />
+  
+
+IND&FUT&1PS:="მოვ"<0,0>"ი";<br />
+IND&FUT&2PS:="მო"<0,0>"ი";<br />
+IND&FUT&3PS:="მო"<0,0>"ის";<br />
+
+IND&FUT&1PP:="მოვ"<0,0>"ით";<br />
+IND&FUT&2PP:="მო"<0,0>"ით";<br />
+IND&FUT&3PP:="მო"<0,0>"იან";<br />
+  
+
+IND&RFT&1PS:="მოვ"<0,0>"იდი";<br />
+IND&RFT&2PS:="მო"<0,0>"იდი";<br />
+IND&RFT&3PS:="მო"<0,0>"იდა";<br />
+
+IND&RFT&1PP:="მოვ"<0,0>"იდით";<br />
+IND&RFT&2PP:="მო"<0,0>"იდით";<br />
+IND&RFT&3PP:="მო"<0,0>"იდნენ";<br />
+   
+
+SUB&RFT&1PS:="მოვ"<0,0>"იდე";<br />
+SUB&RFT&2PS:="მო"<0,0>"იდე";<br />
+SUB&RFT&3PS:="მო"<0,0>"იდეს";<br />
+
+SUB&RFT&1PP:="მოვ"<0,0>"იდეთ";<br />
+SUB&RFT&2PP:="მო"<0,0>"იდეთ";<br />
+SUB&RFT&3PP:="მო"<0,0>"იდნენ";<br />
+  
+
+IND&PAS&1PS:="მოვ"<0,[-2]>"ა",0>"ე";<br />
+IND&PAS&2PS:="მო"<0,[-2]>"ა",0>"ე";<br />
+IND&PAS&3PS:="მო"<0,[-2]>"ა",0>"ა";<br />
+
+IND&PAS&1PP:="მოვ"<0,[-2]>"ა",0>"ეთ";<br />
+IND&PAS&2PP:="მო"<0,[-2]>"ა",0>"ეთ";<br />
+IND&PAS&3PP:="მო"<0,[-2]>"ა",0>"ეს";<br />
+   
+
+SUB&FUT&1PS:="მოვ"<0,[-2]>"ა",0>"ო";<br />
+SUB&FUT&2PS:="მო"<0,[-2]>"ა",0>"ო";<br />
+SUB&FUT&3PS:="მო"<0,[-2]>"ა",0>"ოს";<br />
+
+SUB&FUT&1PP:="მოვ"<0,[-2]>"ა",0>"ოთ";<br />
+SUB&FUT&2PP:="მო"<0,[-2]>"ა",0>"ოთ";<br />
+SUB&FUT&3PP:="მო"<0,[-2]>"ა",0>"ონ";<br />
+  
+
+INFR&PAS&1PS:="მომი"<0,0>"ია";<br />
+INFR&PAS&2PS:="მოგი"<0,0>"ია";<br />
+INFR&PAS&3PS:="მოუ"<0,0>"ია";<br />
+
+INFR&PAS&1PP:="მოგვი"<0,0>"ია";<br />
+INFR&PAS&2PP:="მოგი"<0,0>"იათ";<br />
+INFR&PAS&3PP:="მოუ"<0,0>"იათ";<br />
+   
+
+CON&PAS&1PS:="მომე"<0,[-2]>"ა",0>"ა";<br />
+CON&PAS&2PS:="მოგე"<0,[-2]>"ა",0>"ა";<br />
+CON&PAS&3PS:="მოე"<0,[-2]>"ა",0>"ა";<br />
+
+CON&PAS&1PP:="მოგვე"<0,[-2]>"ა",0>"ა";<br />
+CON&PAS&2PP:="მოგე"<0,[-2]>"ა",0>"ათ";<br />
+CON&PAS&3PP:="მოე"<0,[-2]>"ა",0>"ათ";<br />
+   
+
+SUB&PAS&1PS:="მომე"<0,[-2]>"ა",0>"ოს";<br />
+SUB&PAS&2PS:="მოგე"<0,[-2]>"ა",0>"ოს";<br />
+SUB&PAS&3PS:="მოე"<0,[-2]>"ა",0>"ოს";<br />
+
+SUB&PAS&1PP:="მოგვე"<0,[-2]>"ა",0>"ოს";<br />
+SUB&PAS&2PP:="მოგე"<0,[-2]>"ა",0>"ოთ";<br />
+SUB&PAS&3PP:="მოე"<0,[-2]>"ა",0>"ოთ";<br />
+   
+;<br /><br /><b>M47</b><br />Active voice with a_augemnt & am_theme marker (<i>ბ,
+რთხ,
+რტყ</i>)<br />
+IND&PRS&1PS:="ვა"<0,0>"ამ";<br />
+IND&PRS&2PS:="ა"<0,0>"ამ";<br />
+IND&PRS&3PS:="ა"<0,0>"ამს";<br />
+
+IND&PRS&1PP:="ვა"<0,0>"ამთ";<br />
+IND&PRS&2PP:="ა"<0,0>"ამთ";<br />
+IND&PRS&3PP:="ა"<0,0>"ამენ";<br />
+   
+
+IND&NPFV&1PS:="ვა"<0,0>"ამდი";<br />
+IND&NPFV&2PS:="ა"<0,0>"ამდი";<br />
+IND&NPFV&3PS:="ა"<0,0>"ამდა";<br />
+
+IND&NPFV&1PP:="ვა"<0,0>"ამდით";<br />
+IND&NPFV&2PP:="ა"<0,0>"ამდით";<br />
+IND&NPFV&3PP:="ა"<0,0>"ამდნენ";<br />
+   
+
+SUB&PRS&1PS:="ვა"<0,0>"ამდე";<br />
+SUB&PRS&2PS:="ა"<0,0>"ამდე";<br />
+SUB&PRS&3PS:="ა"<0,0>"ამდეს";<br />
+
+SUB&PRS&1PP:="ვა"<0,0>"ამდეთ";<br />
+SUB&PRS&2PP:="ა"<0,0>"ამდეთ";<br />
+SUB&PRS&3PP:="ა"<0,0>"ამდნენ";<br />
+   
+
+IND&FUT&1PS:="დავა"<0,0>"ამ";<br />
+IND&FUT&2PS:="დაა"<0,0>"ამ";<br />
+IND&FUT&3PS:="დაა"<0,0>"ამს";<br />
+
+IND&FUT&1PP:="დავა"<0,0>"ამთ";<br />
+IND&FUT&2PP:="დაა"<0,0>"ამთ";<br />
+IND&FUT&3PP:="დაა"<0,0>"ამენ";<br />
+   
+
+IND&RFT&1PS:="დავა"<0,0>"ამდი";<br />
+IND&RFT&2PS:="დაა"<0,0>"ამდი";<br />
+IND&RFT&3PS:="დაა"<0,0>"ამდა";<br />
+
+IND&RFT&1PP:="დავა"<0,0>"ამდით";<br />
+IND&RFT&2PP:="დაა"<0,0>"ამდით";<br />
+IND&RFT&3PP:="დაა"<0,0>"ამდნენ";<br />
+ 
+
+SUB&RFT&1PS:="დავა"<0,0>"ამდე";<br />
+SUB&RFT&2PS:="დაა"<0,0>"ამდე";<br />
+SUB&RFT&3PS:="დაა"<0,0>"ამდეს";<br />
+
+SUB&RFT&1PP:="დავა"<0,0>"ამდეთ";<br />
+SUB&RFT&2PP:="დაა"<0,0>"ამდეთ";<br />
+SUB&RFT&3PP:="დაა"<0,0>"ამდნენ";<br />
+   
+
+
+IND&PAS&1PS:="დავა"<0,0>"ი";<br />
+IND&PAS&2PS:="დაა"<0,0>"ი";<br />
+IND&PAS&3PS:="დაა"<0,0>"ა";<br />
+
+IND&PAS&1PP:="დავა"<0,0>"ით";<br />
+IND&PAS&2PP:="დაა"<0,0>"ით";<br />
+IND&PAS&3PP:="დაა"<0,0>"ეს";<br />
+   
+
+SUB&FUT&1PS:="დავა"<0,0>"ა";<br />
+SUB&FUT&2PS:="დაა"<0,0>"ა";<br />
+SUB&FUT&3PS:="დაა"<0,0>"ას";<br />
+
+SUB&FUT&1PP:="დავა"<0,0>"ათ";<br />
+SUB&FUT&2PP:="დაა"<0,0>"ათ";<br />
+SUB&FUT&3PP:="დაა"<0,0>"ან";<br />
+   
+
+
+INFR&PAS&1PS:="დამი"<0,0>"ამს";<br />
+INFR&PAS&2PS:="დაგი"<0,0>"ამს";<br />
+INFR&PAS&3PS:="დაუ"<0,0>"ამს";<br />
+
+INFR&PAS&1PP:="დაგვი"<0,0>"ამს";<br />
+INFR&PAS&2PP:="დაგი"<0,0>"ამთ";<br />
+INFR&PAS&3PP:="დაუ"<0,0>"ამთ";<br />
+   
+
+CON&PAS&1PS:="დამე"<0,0>"ა";<br />
+CON&PAS&2PS:="დაგე"<0,0>"ა";<br />
+CON&PAS&3PS:="დაე"<0,0>"ა";<br />
+
+CON&PAS&1PP:="დაგვე"<0,0>"ა";<br />
+CON&PAS&2PP:="დაგე"<0,0>"ათ";<br />
+CON&PAS&3PP:="დაე"<0,0>"ათ";<br />
+   
+
+SUB&PAS&1PS:="დამე"<0,0>"ას";<br />
+SUB&PAS&2PS:="დაგე"<0,0>"ას";<br />
+SUB&PAS&3PS:="დაე"<0,0>"ას";<br />
+
+SUB&PAS&1PP:="დაგვე"<0,0>"ას";<br />
+SUB&PAS&2PP:="დაგე"<0,0>"ათ";<br />
+SUB&PAS&3PP:="დაე"<0,0>"ათ";<br />
+   
+;<br /><br /><b>M48</b><br />Active voice with ablaut_0/a & av_theme marker
+ (<i>კრ~კარ</i>)<br />IND&PRS&1PS:="ვ"<0,0>"ავ";<br />
+IND&PRS&2PS:=0>"ავ";<br />
+IND&PRS&3PS:=0>"ავს";<br />
+
+IND&PRS&1PP:="ვ"<0,0>"ავთ";<br />
+IND&PRS&2PP:=0>"ავთ";<br />
+IND&PRS&3PP:=0>"ავენ";<br />
+   
+
+IND&NPFV&1PS:="ვ"<0,0>"ავდი";<br />
+IND&NPFV&2PS:=0>"ავდი";<br />
+IND&NPFV&3PS:=0>"ავდა";<br />
+
+IND&NPFV&1PP:="ვ"<0,0>"ავდით";<br />
+IND&NPFV&2PP:=0>"ავდით";<br />
+IND&NPFV&3PP:=0>"ავდნენ";<br />
+ 
+
+SUB&PRS&1PS:="ვ"<0,0>"ავდე";<br />
+SUB&PRS&2PS:=0>"ავდე";<br />
+SUB&PRS&3PS:=0>"ავდეს";<br />
+
+SUB&PRS&1PP:="ვ"<0,0>"ავდეთ";<br />
+SUB&PRS&2PP:=0>"ავდეთ";<br />
+SUB&PRS&3PP:=0>"ავდნენ";<br />
+   
+
+IND&FUT&1PS:="შევ"<0,0>"ავ";<br />
+IND&FUT&2PS:="შე"<0,0>"ავ";<br />
+IND&FUT&3PS:="შე"<0,0>"ავს";<br />
+
+IND&FUT&1PP:="შევ"<0,0>"ავთ";<br />
+IND&FUT&2PP:="შე"<0,0>"ავთ";<br />
+IND&FUT&3PP:="შე"<0,0>"ავენ";<br />
+   
+
+IND&RFT&1PS:="შევ"<0,0>"ავდი";<br />
+IND&RFT&2PS:="შე"<0,0>"ავდი";<br />
+IND&RFT&3PS:="შე"<0,0>"ავდა";<br />
+
+IND&RFT&1PP:="შევ"<0,0>"ავდით";<br />
+IND&RFT&2PP:="შე"<0,0>"ავდით";<br />
+IND&RFT&3PP:="შე"<0,0>"ავდნენ";<br />
+ 
+
+SUB&RFT&1PS:="შევ"<0,0>"ავდე";<br />
+SUB&RFT&2PS:="შე"<0,0>"ავდე";<br />
+SUB&RFT&3PS:="შე"<0,0>"ავდეს";<br />
+
+SUB&RFT&1PP:="შევ"<0,0>"ავდეთ";<br />
+SUB&RFT&2PP:="შე"<0,0>"ავდეთ";<br />
+SUB&RFT&3PP:="შე"<0,0>"ავდნენ";<br />
+   
+
+IND&PAS&1PS:="შევ"<0,[-2]>"ა",0>"ი";<br />
+IND&PAS&2PS:="შე"<0,[-2]>"ა",0>"ი";<br />
+IND&PAS&3PS:="შე"<0,0>"ა";<br />
+
+IND&PAS&1PP:="შევ"<0,[-2]>"ა",0>"ით";<br />
+IND&PAS&2PP:="შე"<0,[-2]>"ა",0>"ით";<br />
+IND&PAS&3PP:="შე"<0,0>"ეს";<br />
+   
+
+SUB&FUT&1PS:="შევ"<0,0>"ა";<br />
+SUB&FUT&2PS:="შე"<0,0>"ა";<br />
+SUB&FUT&3PS:="შე"<0,0>"ას";<br />
+
+SUB&FUT&1PP:="შევ"<0,0>"ათ";<br />
+SUB&FUT&2PP:="შევ"<0,0>"ათ";<br />
+SUB&FUT&3PP:="შე"<0,0>"ან";<br />
+
+ 
+INFR&PAS&1PS:="შემი"<0,0>"ავს";<br />
+INFR&PAS&2PS:="შეგი"<0,0>"ავს";<br />
+INFR&PAS&3PS:="შეუ"<0,0>"ავს";<br />
+
+INFR&PAS&1PP:="შეგვი"<0,0>"ავს";<br />
+INFR&PAS&2PP:="შეგი"<0,0>"ავთ";<br />
+INFR&PAS&3PP:="შეუ"<0,0>"ავთ";<br />
+   
+
+CON&PAS&1PS:="შემე"<0,0>"ა";<br />
+CON&PAS&2PS:="შეგე"<0,0>"ა";<br />
+CON&PAS&3PS:="შეე"<0,0>"ა";<br />
+
+CON&PAS&1PP:="შეგვე"<0,0>"ა";<br />
+CON&PAS&2PP:="შეგე"<0,0>"ათ";<br />
+CON&PAS&3PP:="შეე"<0,0>"ათ";<br />
+   
+
+SUB&PAS&1PS:="შემე"<0,0>"ას";<br />
+SUB&PAS&2PS:="შეგე"<0,0>"ას";<br />
+SUB&PAS&3PS:="შეე"<0,0>"ას";<br />
+
+SUB&PAS&1PP:="შეგვე"<0,0>"ას";<br />
+SUB&PAS&2PP:="შეგე"<0,0>"ათ";<br />
+SUB&PAS&3PP:="შეე"<0,0>"ათ";<br />
+   
+;<br /><br /><b>M49</b><br />Active voice with i_augemnt & eb_theme marker (<i>ღ,
+ბირ,
+ბოხ,
+ცოდვ,
+ჟინ</i>)<br />IND&PRS&1PS:="ვი"<0,0>"ებ";<br />
+IND&PRS&2PS:="ი"<0,0>"ებ";<br />
+IND&PRS&3PS:="ი"<0,0>"ებს";<br />
+
+IND&PRS&1PP:="ვი"<0,0>"ებთ";<br />
+IND&PRS&2PP:="ი"<0,0>"ებთ";<br />
+IND&PRS&3PP:="ი"<0,0>"ებენ";<br />
+   
+IND&NPFV&1PS:="ვი"<0,0>"ებდი";<br />
+IND&NPFV&2PS:="ი"<0,0>"ებდი";<br />
+IND&NPFV&3PS:="ი"<0,0>"ებდა";<br />
+
+IND&NPFV&1PP:="ვი"<0,0>"ებდით";<br />
+IND&NPFV&2PP:="ი"<0,0>"ებდით";<br />
+IND&NPFV&3PP:="ი"<0,0>"ებდნენ";<br />
+   
+SUB&PRS&1PS:="ვი"<0,0>"ებდე";<br />
+SUB&PRS&2PS:="ი"<0,0>"ებდე";<br />
+SUB&PRS&3PS:="ი"<0,0>"ებდეს";<br />
+
+SUB&PRS&1PP:="ვი"<0,0>"ებდეთ";<br />
+SUB&PRS&2PP:="ი"<0,0>"ებდეთ";<br />
+SUB&PRS&3PP:="ი"<0,0>"ებდნენ";<br />
+   
+IND&FUT&1PS:="ავი"<0,0>"ებ";<br />
+IND&FUT&2PS:="აი"<0,0>"ებ";<br />
+IND&FUT&3PS:="აი"<0,0>"ებს";<br />
+
+IND&FUT&1PP:="ავი"<0,0>"ებთ";<br />
+IND&FUT&2PP:="აი"<0,0>"ებთ";<br />
+IND&FUT&3PP:="აი"<0,0>"ებენ";<br />
+   
+IND&RFT&1PS:="ავი"<0,0>"ებდი";<br />
+IND&RFT&2PS:="აი"<0,0>"ებდი";<br />
+IND&RFT&3PS:="აი"<0,0>"ებდა";<br />
+
+IND&RFT&1PP:="ავი"<0,0>"ებდით";<br />
+IND&RFT&2PP:="აი"<0,0>"ებდით";<br />
+IND&RFT&3PP:="აი"<0,0>"ებდნენ";<br />
+ 
+SUB&RFT&1PS:="ავი"<0,0>"ებდე";<br />
+SUB&RFT&2PS:="აი"<0,0>"ებდე";<br />
+SUB&RFT&3PS:="აი"<0,0>"ებდეს";<br />
+
+SUB&RFT&1PP:="ავი"<0,0>"ებდეთ";<br />
+SUB&RFT&2PP:="აი"<0,0>"ებდეთ";<br />
+SUB&RFT&3PP:="აი"<0,0>"ებდნენ";<br />
+   
+IND&PAS&1PS:="ავი"<0,0>"ე";<br />
+IND&PAS&2PS:="აი"<0,0>"ე";<br />
+IND&PAS&3PS:="აი"<0,0>"ო";<br />
+
+IND&PAS&1PP:="ავი"<0,0>"ეთ";<br />
+IND&PAS&2PP:="აი"<0,0>"ეთ";<br />
+IND&PAS&3PP:="აი"<0,0>"ეს";<br />
+   
+SUB&FUT&1PS:="ავი"<0,0>"ო";<br />
+SUB&FUT&2PS:="აი"<0,0>"ო";<br />
+SUB&FUT&3PS:="აი"<0,0>"ოს";<br />
+
+SUB&FUT&1PP:="ავი"<0,0>"ოთ";<br />
+SUB&FUT&2PP:="აი"<0,0>"ოთ";<br />
+SUB&FUT&3PP:="აი"<0,0>"ონ";<br />
+   
+INFR&PAS&1PS:="ამი"<0,0>"ია";<br />
+INFR&PAS&2PS:="აგი"<0,0>"ია";<br />
+INFR&PAS&3PS:="აუ"<0,0>"ია";<br />
+
+INFR&PAS&1PP:="აგვი"<0,0>"ია";<br />
+INFR&PAS&2PP:="აგი"<0,0>"იათ";<br />
+INFR&PAS&3PP:="აუ"<0,0>"იათ";<br />
+   
+CON&PAS&1PS:="ამე"<0,0>"ო";<br />
+CON&PAS&2PS:="აგე"<0,0>"ო";<br />
+CON&PAS&3PS:="აე"<0,0>"ო";<br />
+
+CON&PAS&1PP:="აგვე"<0,0>"ო";<br />
+CON&PAS&2PP:="აგე"<0,0>"ოთ";<br />
+CON&PAS&3PP:="აე"<0,0>"ოთ";<br />
+   
+SUB&PAS&1PS:="ამე"<0,0>"ოს";<br />
+SUB&PAS&2PS:="აგე"<0,0>"ოს";<br />
+SUB&PAS&3PS:="აე"<0,0>"ოს";<br />
+
+SUB&PAS&1PP:="აგვე"<0,0>"ოს";<br />
+SUB&PAS&2PP:="აგე"<0,0>"ოთ";<br />
+SUB&PAS&3PP:="აე"<0,0>"ოთ";<br />
+   
+;<br /><br /><b>M50</b><br />Active voice with u_augemnt & eb_theme marker (<i>ღ,
+წყ</i>)<br />IND&PRS&1PS:="ვუ"<0,0>"ებ";<br />
+IND&PRS&2PS:="უ"<0,0>"ებ";<br />
+IND&PRS&3PS:="უ"<0,0>"ებს";<br />
+
+IND&PRS&1PP:="ვუ"<0,0>"ებთ";<br />
+IND&PRS&2PP:="უ"<0,0>"ებთ";<br />
+IND&PRS&3PP:="უ"<0,0>"ებენ";<br />
+   
+
+IND&NPFV&1PS:="ვუ"<0,0>"ებდი";<br />
+IND&NPFV&2PS:="უ"<0,0>"ებდი";<br />
+IND&NPFV&3PS:="უ"<0,0>"ებდა";<br />
+
+IND&NPFV&1PP:="ვუ"<0,0>"ებდით";<br />
+IND&NPFV&2PP:="უ"<0,0>"ებდით";<br />
+IND&NPFV&3PP:="უ"<0,0>"ებდნენ";<br />
+   
+
+SUB&PRS&1PS:="ვუ"<0,0>"ებდე";<br />
+SUB&PRS&2PS:="უ"<0,0>"ებდე";<br />
+SUB&PRS&3PS:="უ"<0,0>"ებდეს";<br />
+
+SUB&PRS&1PP:="ვუ"<0,0>"ებდეთ";<br />
+SUB&PRS&2PP:="უ"<0,0>"ებდეთ";<br />
+SUB&PRS&3PP:="უ"<0,0>"ებდნენ";<br />
+   
+
+IND&FUT&1PS:="ავუ"<0,0>"ებ";<br />
+IND&FUT&2PS:="აუ"<0,0>"ებ";<br />
+IND&FUT&3PS:="აუ"<0,0>"ებს";<br />
+
+IND&FUT&1PP:="ავუ"<0,0>"ებთ";<br />
+IND&FUT&2PP:="აუ"<0,0>"ებთ";<br />
+IND&FUT&3PP:="აუ"<0,0>"ებენ";<br />
+   
+
+IND&RFT&1PS:="ავუ"<0,0>"ებდი";<br />
+IND&RFT&2PS:="აუ"<0,0>"ებდი";<br />
+IND&RFT&3PS:="აუ"<0,0>"ებდა";<br />
+
+IND&RFT&1PP:="ავუ"<0,0>"ებდით";<br />
+IND&RFT&2PP:="აუ"<0,0>"ებდით";<br />
+IND&RFT&3PP:="აუ"<0,0>"ებდნენ";<br />
+ 
+
+SUB&RFT&1PS:="ავუ"<0,0>"ებდე";<br />
+SUB&RFT&2PS:="აუ"<0,0>"ებდე";<br />
+SUB&RFT&3PS:="აუ"<0,0>"ებდეს";<br />
+
+SUB&RFT&1PP:="ავუ"<0,0>"ებდეთ";<br />
+SUB&RFT&2PP:="აუ"<0,0>"ებდეთ";<br />
+SUB&RFT&3PP:="აუ"<0,0>"ებდნენ";<br />
+   
+
+IND&PAS&1PS:="ავუ"<0,0>"ე";<br />
+IND&PAS&2PS:="აუ"<0,0>"ე";<br />
+IND&PAS&3PS:="აუ"<0,0>"ო";<br />
+
+IND&PAS&1PP:="ავუ"<0,0>"ეთ";<br />
+IND&PAS&2PP:="აუ"<0,0>"ეთ";<br />
+IND&PAS&3PP:="აუ"<0,0>"ეს";<br />
+   
+
+SUB&FUT&1PS:="ავუ"<0,0>"ო";<br />
+SUB&FUT&2PS:="აუ"<0,0>"ო";<br />
+SUB&FUT&3PS:="აუ"<0,0>"ოს";<br />
+
+SUB&FUT&1PP:="ავუ"<0,0>"ოთ";<br />
+SUB&FUT&2PP:="აუ"<0,0>"ოთ";<br />
+SUB&FUT&3PP:="აუ"<0,0>"ონ";<br />
+   
+
+INFR&PAS&1PS:="ამი"<0,0>"ია";<br />
+INFR&PAS&2PS:="აგი"<0,0>"ია";<br />
+INFR&PAS&3PS:="აუ"<0,0>"ია";<br />
+
+INFR&PAS&1PP:="აგვი"<0,0>"ია";<br />
+INFR&PAS&2PP:="აგი"<0,0>"იათ";<br />
+INFR&PAS&3PP:="აუ"<0,0>"იათ";<br />
+   
+
+CON&PAS&1PS:="ამე"<0,0>"ო";<br />
+CON&PAS&2PS:="აგე"<0,0>"ო";<br />
+CON&PAS&3PS:="აე"<0,0>"ო";<br />
+
+CON&PAS&1PP:="აგვე"<0,0>"ო";<br />
+CON&PAS&2PP:="აგე"<0,0>"ოთ";<br />
+CON&PAS&3PP:="აე"<0,0>"ოთ";<br />
+   
+
+SUB&PAS&1PS:="ამე"<0,0>"ოს";<br />
+SUB&PAS&2PS:="აგე"<0,0>"ოს";<br />
+SUB&PAS&3PS:="აე"<0,0>"ოს";<br />
+
+SUB&PAS&1PP:="აგვე"<0,0>"ოს";<br />
+SUB&PAS&2PP:="აგე"<0,0>"ოთ";<br />
+SUB&PAS&3PP:="აე"<0,0>"ოთ";<br />
+   
+;<br /><br /><b>M51</b><br />Active voice with a_augemnt & av_theme marker (<i>კრ</i>)<br />IND&PRS&1PS:="ვა"<0,0>"ავ";<br />
+IND&PRS&2PS:="ა"<0,0>"ავ";<br />
+IND&PRS&3PS:="ა"<0,0>"ავს";<br />
+
+IND&PRS&1PP:="ვა"<0,0>"ავთ";<br />
+IND&PRS&2PP:="ა"<0,0>"ავთ";<br />
+IND&PRS&3PP:="ა"<0,0>"ავენ";<br />
+   
+
+IND&NPFV&1PS:="ვა"<0,0>"ავდი";<br />
+IND&NPFV&2PS:="ა"<0,0>"ავდი";<br />
+IND&NPFV&3PS:="ა"<0,0>"ავდა";<br />
+
+IND&NPFV&1PP:="ვა"<0,0>"ავდით";<br />
+IND&NPFV&2PP:="ა"<0,0>"ავდით";<br />
+IND&NPFV&3PP:="ა"<0,0>"ავდნენ";<br />
+   
+
+SUB&PRS&1PS:="ვა"<0,0>"ავდე";<br />
+SUB&PRS&2PS:="ა"<0,0>"ავდე";<br />
+SUB&PRS&3PS:="ა"<0,0>"ავდეს";<br />
+
+SUB&PRS&1PP:="ვა"<0,0>"ავდეთ";<br />
+SUB&PRS&2PP:="ა"<0,0>"ავდეთ";<br />
+SUB&PRS&3PP:="ა"<0,0>"ავდნენ";<br />
+   
+
+IND&FUT&1PS:="გავა"<0,0>"ავ";<br />
+IND&FUT&2PS:="გაა"<0,0>"ავ";<br />
+IND&FUT&3PS:="გაა"<0,0>"ავს";<br />
+
+IND&FUT&1PP:="გავა"<0,0>"ავთ";<br />
+IND&FUT&2PP:="გაა"<0,0>"ავთ";<br />
+IND&FUT&3PP:="გაა"<0,0>"ავენ";<br />
+   
+
+IND&RFT&1PS:="გავა"<0,0>"ავდი";<br />
+IND&RFT&2PS:="გაა"<0,0>"ავდი";<br />
+IND&RFT&3PS:="გაა"<0,0>"ავდა";<br />
+
+IND&RFT&1PP:="გავა"<0,0>"ავდით";<br />
+IND&RFT&2PP:="გაა"<0,0>"ავდით";<br />
+IND&RFT&3PP:="გაა"<0,0>"ავდით";<br />
+   
+
+SUB&RFT&1PS:="გავა"<0,0>"ავდე";<br />
+SUB&RFT&2PS:="გაა"<0,0>"ავდე";<br />
+SUB&RFT&3PS:="გაა"<0,0>"ავდეს";<br />
+
+SUB&RFT&1PP:="გავა"<0,0>"ავდეთ";<br />
+SUB&RFT&2PP:="გაა"<0,0>"ავდეთ";<br />
+SUB&RFT&3PP:="გაა"<0,0>"ავდნენ";<br />
+   
+
+IND&PAS&1PS:="გავა"<0,[2]:"ა",0>"ი";<br />
+IND&PAS&2PS:="გაა"<0,[2]:"ა",0>"ი";<br />
+IND&PAS&3PS:="გაა"<0,0>"ა";<br />
+
+IND&PAS&1PP:="გავა"<0,[2]:"ა",0>"ით";<br />
+IND&PAS&2PP:="გაა"<0,[2]:"ა",0>"ით";<br />
+IND&PAS&3PP:="გაა"<0,0>"ეს";<br />
+   
+
+SUB&FUT&1PS:="გავა"<0,0>"ა";<br />
+SUB&FUT&2PS:="გაა"<0,0>"ა";<br />
+SUB&FUT&3PS:="გაა"<0,0>"ას";<br />
+
+SUB&FUT&1PP:="გავა"<0,0>"ათ";<br />
+SUB&FUT&2PP:="გაა"<0,0>"ათ";<br />
+SUB&FUT&3PP:="გაა"<0,0>"ან";<br />
+   
+
+
+INFR&PAS&1PS:="გამი"<0,0>"ავს";<br />
+INFR&PAS&2PS:="გაგი"<0,0>"ავს";<br />
+INFR&PAS&3PS:="გაუ"<0,0>"ავს";<br />
+
+INFR&PAS&1PP:="გაგვი"<0,0>"ავს";<br />
+INFR&PAS&2PP:="გაგი"<0,0>"ავთ";<br />
+INFR&PAS&3PP:="გაუ"<0,0>"ავთ";<br />
+   
+
+OPT&PAS&1PS:="გამე"<0,0>"ა";<br />
+OPT&PAS&2PS:="გაგე"<0,0>"ა";<br />
+OPT&PAS&3PS:="გაე"<0,0>"ა";<br />
+
+OPT&PAS&1PP:="გაგვე"<0,0>"ა";<br />
+OPT&PAS&2PP:="გაგე"<0,0>"ათ";<br />
+OPT&PAS&3PP:="გაე"<0,0>"ათ";<br />
+   
+
+SUB&PAS&1PS:="გამე"<0,0>"ას";<br />
+SUB&PAS&2PS:="გაგე"<0,0>"ას";<br />
+SUB&PAS&3PS:="გაე"<0,0>"ას";<br />
+
+SUB&PAS&1PP:="გაგვე"<0,0>"ას";<br />
+SUB&PAS&2PP:="გაგე"<0,0>"ათ";<br />
+SUB&PAS&3PP:="გაე"<0,0>"ათ";<br />
+   
+;<br /><br /></body>
+<html>

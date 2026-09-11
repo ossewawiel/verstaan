@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<title>UNLarium</title>
+<link rel="stylesheet" type="text/css" media="all" href="../../shared/default.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"  />
+<link rel="shortcut icon" href="../favicon.ico" type="image/x-icon" />
+</head>
+
+<body>
+<h1>Arabic Subcategorization  Grammar for Natural Language Generation</h1>Version of September 11, 2026, 12:42 pm<br />Documentation available at <a href="http://www.unlarchive.org/wiki/index.php/Grammar" target="_blank">http://www.unlarchive.org/wiki/index.php/Grammar</a><br />Tagset available at <a href="../dictionary/export_tagset.php" target="_blank">Export UNDL Foundation tagset</a>.<br /><br /><b>Y0</b><br />AVALENT<br /><br /><b>Y1</b><br />NO SUBCATEGORIZATION FRAME: rules defined inside the entry in the dictionary<br /><br /><b>Y16</b><br />AO (<i>أكل</i>)<br />VS(NP)VC({NP|VP});
+<br /><br /><b>Y17</b><br />AO3 (<i>حكم على</i>)<br />VS(NP,%01)VC(PP,%02):=VS(+NP,+NOM,+ANUM,+APER,+AGEN,%01)VC(PH([على]),+DAT,%02);<br /><br /><b>Y18</b><br />AOG6 (<i>أعطى</i>)<br />VS(+NP,+NOM,+APER,+ANUM,+AGEN)VC(+NP,+ACC)VC(PH([ل]),+DAT);<br /><br /><b>Y19</b><br />OG (<i>أصبح الولد معافى</i>)<br />VS(NP)VC(NP);
+<br /><br /><b>Y20</b><br />A (<i>مشى</i>)<br />VS(NP,%01):=VS(+NP,+NOM,+APER,+ANUM,+AGEN,%01); <br /><br /><b>Y116</b><br />The adjunct in a noun phrase is an adjective phrase (<i>منضدة جميلة</i>)<br />NA(%x;%y,JP):=NA(%x;%y);<br /><br /><b>Y220</b><br />AOG7 (<i>ابتز المال منه</i>)<br />VS(NP,%01)VC(NP,%02)VC(NP,%03):=VS(+NP,+NOM,+APER,+ANUM,+AGEN,%01)VC(+NP,+ACC,%02)VC(PH([من]),+DAT,%03);<br /><br /><b>Y252</b><br />VS rule (<i>he plays</i>)<br />VS(%x;%y):=VS(%x,FRT,AJ2;%y);<br /><br /><b>Y253</b><br />tree to tree (<i>ذهب</i>)<br />VC(%x;%y):=VB(%x;%y);<br /><br /><b>Y276</b><br />vc (<i>رسم خرائط</i>)<br />VC(NP);<br /><br /><b>Y278</b><br />vc (<i>رسم خرائط</i>)<br />VC(NP);<br /><br /><b>Y444</b><br />AO8 (<i>وحّد مع</i>)<br />VS(NP,%01)VC(NP,%02)VC(NP,%03):=VS(+NP,+NOM,+APER,+ANUM,+AGEN,%01)VC(+NP,+ACC,%02)VC(PH([مع]),+DAT,%03);<br /><br /><b>Y460</b><br />AO2 (<i>استعان ب</i>)<br />VS(NP)VC({CP|PP});
+<br /><br /><b>Y514</b><br />AOG (<i>وهب جاره المال</i>)<br />VS(NP)VC({NP|VP})VC(NP);
+<br /><br /><b>Y515</b><br />AOG3 (<i>فرض إرادته عليه</i>)<br />VS(NP,%01)VC(NP,%02)VC(NP,%03):=VS(+NP,+NOM,+APER,+ANUM,+AGEN,%01)VC(+NP,+ACC,%02)VC(PH([على]),+DAT,%03);<br /><br /><b>Y516</b><br />O (<i>تدفق الماء</i>)<br />VS(NP,%01):=VS(+NP,+ACC,+APER,+ANUM,+AGEN,%01);<br /><br /><b>Y518</b><br />AOG2 (<i>سمّى</i>)<br />VS(NP,%01)VC(NP,%02)VC(NP,%03):=VS(+NP,+NOM,+APER,+ANUM,+AGEN,%01)VC(+NP,+ACC,%02)VC(PH([ب]),+DAT,%03);<br /><br /><b>Y519</b><br />AOG8 (<i>مزج</i>)<br />VS(NP,%01)VC(NP,%02)VC(NP,%03):=VS(+NP,+NOM,+APER,+ANUM,+AGEN,%01)VC(+NP,+ACC,%02)VC(PH([مع]),+DAT,%03);<br /><br /><b>Y520</b><br />AO1 (<i>وصل</i>)<br />VS(NP,%01)VC(PP,%02):=VS(+NP,+NOM,+ANUM,+APER,+AGEN,%01)VC(PH([إلى]),+DAT,%02);<br /><br /><b>Y521</b><br />AOG1 (<i>قدم</i>)<br />VS(NP,%01)VC(NP,%02)VC(NP,%03):=VS(+NP,+NOM,+APER,+ANUM,+AGEN,%01)VC(+NP,+ACC,%02)VC(PH([إلى]),+DAT,%03);<br /><br /><b>Y522</b><br />AO4 (<i>أجاب</i>)<br />VS(NP)VC(PH([عن]));
+<br /><br /><b>Y523</b><br />AOG4 (<i>أبعد</i>)<br />VS(NP)VC(NP)VC(PH([عن]));
+<br /><br /><b>Y524</b><br />AO5 (<i>فشل</i>)<br />VS(NP,%01)VC(PP,%02):=VS(+NP,+NOM,+ANUM,+APER,+AGEN,%01)VC(PH([في]),+DAT,%02);<br /><br /><b>Y525</b><br />AOG5 (<i>غرس</i>)<br />VS(NP,%01)VC(NP,%02)VC(NP,%03):=VS(+NP,+NOM,+APER,+ANUM,+AGEN,%01)VC(+NP,+ACC,%02)VC(PH([في]),+DAT,%03);<br /><br /><b>Y526</b><br />AO6 (<i>لوح</i>)<br />VS(NP,%01)VC(PP,%02):=VS(+NP,+NOM,+ANUM,+APER,+AGEN,%01)VC(PH([ل]),+DAT,%02);<br /><br /><b>Y527</b><br />AO7 (<i>فر</i>)<br />VS(NP){VC(PH([إلى]))|VC(PH([من]))};
+<br /><br /><b>Y528</b><br />AO9 (<i>وفّق</i>)<br />VS(NP,%01)VC(PP,%02):=VS(+NP,+NOM,+ANUM,+APER,+AGEN,%01)VC(PH([بين]),+DAT,%02);<br /><br /><b>Y529</b><br />AOG9 (<i>قسّم</i>)<br />VS(NP,%01)VC(NP,%02)VC(NP,%03):=VS(+NP,+NOM,+APER,+ANUM,+AGEN,%01)VC(+NP,+ACC,%02)VC(PH([بين]),+DAT,%03);<br /><br /><b>Y536</b><br />JS (<i>مشترك</i>)<br />VS(NP)VC(PH([في])); <br /><br /><b>Y537</b><br />AC[إلى/ل] (<i>باالإضافة إلى</i>)<br />AC(PH({[إلى]|[ل]}));
+ <br /><br /><b>Y701</b><br />AO10 (<i>ظن ان</i>)<br />VS(NP,%01)VC(PP,%02):=VS(+NP,+NOM,+ANUM,+APER,+AGEN,%01)VC(PH([أن]),+DAT,%02);<br /><br /><b>Y702</b><br />SA5 (<i>استمر في</i>)<br />VS(NP,%01)VC(PP,%02):=VS(+NP,+NOM,+ANUM,+APER,+AGEN,%01)VA(PH([في]),+DAT,%02);<br /><br /><b>Y703</b><br />بـ (<i>متصل ب 
+متعلق ب</i>)<br />JC(PH([ب]));<br /><br /><b>Y704</b><br />على (<i>حصول على</i>)<br />NC(PH([على]));
+<br /><br /><b>Y707</b><br />JC[على] (<i>معتمد على
+مجبر على</i>)<br />JC(PH([على]));<br /><br /><b>Y714</b><br />JC(ل); (<i>مستمع ل
+مقدم ل
+</i>)<br />JC(PH([ل]));<br /><br /><b>Y715</b><br />JC(من) (<i>معفي من
+متضرر من
+</i>)<br />JC(PH([من]));<br /><br /><b>Y718</b><br />VC[حول] (<i>التف حول</i>)<br />
+ VS(NP)VC(PH([حول]));<br /><br /><b>Y721</b><br />JC(عن) (<i>منشق عن
+مبتعد عن</i>)<br />JC(PH([عن]));<br /><br /><b>Y722</b><br />JC(في) (<i>مستغرق في
+مقصر في</i>)<br />JC(PH([في]));<br /><br /><b>Y723</b><br />JC(إلى) (<i>منقسم إلى
+متوجه إلى</i>)<br />JC(PH([إلى]));<br /><br /><b>Y724</b><br />JC(مع) (<i>متماشي مع
+متعادل مع</i>)<br />JC(PH([مع]));<br /><br /><b>Y725</b><br />JC(بين) (<i>متواجد بين
+منقسم بين
+</i>)<br />JC(PH([بين]));<br /><br /><b>Y730</b><br />NERG&TSTD&TSTI (<i>تزوج</i>)<br />VS(NP);
+VS(NP)VC(NP);
+VS(NP)VC(PH([من]));
+<br /><br /><b>Y731</b><br />AC[عن] (<i>بعيدا عن</i>)<br />AC(PH([عن]));
+<br /><br /><b>Y732</b><br />NC(ب) (<i>ارتباط ب</i>)<br />NC(PH([ب]));
+<br /><br /><b>Y733</b><br />NC(إلى) (<i>وصول إلى</i>)<br />NC(PH([إلى]));
+<br /><br /><b>Y734</b><br />NC(عن) (<i>ابتعاد عن</i>)<br />NC(PH([عن]));
+<br /><br /><b>Y735</b><br />NC(في) (<i>استغراق في</i>)<br />NC(PH([في]));
+<br /><br /><b>Y736</b><br />NC(ل) (<i>خضوع ل</i>)<br />NC(PH([ل]));
+<br /><br /><b>Y737</b><br />NC(من) (<i>إعفاء من</i>)<br />NC(PH([من]));
+<br /><br /><b>Y738</b><br />NC(مع) (<i>تواكب مع</i>)<br />NC(PH([مع]));
+<br /><br /><b>Y739</b><br />NC(بين) (<i>تواجد بين</i>)<br />NC(PH([بين]));
+<br /><br /><b>Y741</b><br />Someone/ someone .... something (<i>أكل</i>)<br />VS(NP)VC(NP);
+<br /><br /></body>
+<html>

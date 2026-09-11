@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<title>UNLarium</title>
+<link rel="stylesheet" type="text/css" media="all" href="../../shared/default.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"  />
+<link rel="shortcut icon" href="../favicon.ico" type="image/x-icon" />
+</head>
+
+<body>
+<h1>Italian Subcategorization  Grammar</h1>Version of September 11, 2026, 1:33 pm<br />Documentation available at <a href="http://www.unlarchive.org/wiki/index.php/Grammar" target="_blank">http://www.unlarchive.org/wiki/index.php/Grammar</a><br />Tagset available at <a href="../dictionary/export_tagset.php" target="_blank">Export UNDL Foundation tagset</a>.<br /><br /><b>Y0</b><br />AVALENT<br /><br /><b>Y1</b><br />NO SUBCATEGORIZATION FRAME: rules defined inside the entry in the dictionary<br /><br /><b>Y51</b><br />di, da, in, tra, fra (<i>primo di, primo da, primo in, primo tra, primo fra</i>)<br />JC(PP([di],[da],[in],[tra],[fra]));<br /><br /><b>Y52</b><br />di, a, con (<i>contemporaneo di, contemporaneo a, contemporaneo con</i>)<br />JC(PP([di],[a],[con]));<br /><br /><b>Y54</b><br />in, con, per, tra, fra (<i>perduto in, perduto con, perduto per, perduto tra, perduto fra</i>)<br />JC(PP([in],[con],[per],[tra],[fra]));<br /><br /><b>Y55</b><br />da, in, su, per, tra, fra (<i>altro da, altro in, altro su, altro per, altro tra, altro fra</i>)<br />JC(PP([da],[in],[su],[per],[tra],[fra]));<br /><br /><b>Y56</b><br />di, in, per, tra, fra (<i>grande di, grande in, grande per, grandre tra, grande fra</i>)<br />JC(PP([di],[in],[per],[tra],[fra]));<br /><br /><b>Y57</b><br />transitivo diretto (<i>pubblicare</i>)<br />VS(NP)VC(NP,ACC);
+<br /><br /><b>Y58</b><br />intransitivo (<i>lavorare</i>)<br />VS(NP);
+<br /><br /><b>Y59</b><br />a, da, in, con, su, per, tra, fra (<i>applicato a, applicato da, applicato in, applicato con, applicato su, applicato per, applicato tra, applicato fra</i>)<br />JC(PP([a],[da],[in],[con],[su],[per],[tra],[fra]));<br /><br /><b>Y60</b><br />di, su, per, tra, fra (<i>nero di, nero su, nero per, nero tra, nero fra</i>)<br />JC(PP([di],[su],[per],[tra],[fra]));<br /><br /><b>Y61</b><br />in, con, su, per, tra, fra (<i>cinematografico in, cinematografico con, cinematografico su, cinematografico per, cinematografico tra, cinematografico fra</i>)<br />JC(PP([in],[con],[su],[per],[tra],[fra]));<br /><br /><b>Y64</b><br />di, in, su, per, tra, fra (<i>climatico</i>)<br />JC(PP([di],[in],[su],[per],[tra],[fra]));<br /><br /><b>Y65</b><br />a, con, tra, fra (<i>comune a</i>)<br />JC(PP([a],[con],[tra],[fra]));<br /><br /><b>Y66</b><br />di, a, da, in, per, tra, fra (<i>primo tra</i>)<br />JC(PP([a],[da],[in],[di],[su],[per],[tra],[fra]));<br /><br /><b>Y67</b><br />di, per (<i>segreto di, segreto per</i>)<br />JC(PP([di],[per]));<br /><br /><b>Y68</b><br />a, da, in, tra, fra (<i>impossibile a, da, in, tra, fra</i>)<br />JC(PP([a],[da],[in],[tra],[fra]));<br /><br /><b>Y75</b><br />di (<i>imperlato di;</i>)<br />JC(PP([di]));<br /><br /><b>Y76</b><br />di, da, in, con, per (<i>benedetto</i>)<br />JC(PP([di],[da],[in],[con],[per]));<br /><br /><b>Y77</b><br />in (<i>civile</i>)<br />JC(PP([in]));<br /><br /><b>Y78</b><br />a, in (<i>ingannevole a</i>)<br />JC(PP([a],[in]));<br /><br /><b>Y79</b><br />da (<i>incantato da</i>)<br />JC(PP([da]));<br /><br /><b>Y80</b><br />di, da, in (<i>libero di, da, in</i>)<br />JC(PP([di],[da],[in]));<br /><br /><b>Y81</b><br />da, per (<i>dannoso da, dannoso per</i>)<br />JC(PP([da],[per]));<br /><br /><b>Y82</b><br />per (<i>ideale per</i>)<br />JC(PP([per]));<br /><br /><b>Y83</b><br />a, da, in, con (<i>sposato a, sposato da, sposato in, sposato con</i>)<br />JC(PP([a],[da],[in],[con]));<br /><br /><b>Y94</b><br />tra, fra (<i>popolare, secondario</i>)<br />JC(PP([tra],[fra]));<br /><br /><b>Y95</b><br />a (<i>soffice a</i>)<br />JC(PH([a]));
+<br /><br /><b>Y128</b><br />di, da, con, per (<i>minacciato di, da, con, per</i>)<br />JC(PP([di],[da],[con],[per]));<br /><br /><b>Y165</b><br />di (<i>abbandono di</i>)<br />NC(PP([di]);<br /><br /><b>Y166</b><br />di, in (<i>attività di, attività in</i>)<br />NC(PP([di],[in]);<br /><br /><b>Y167</b><br />a, per (<i>dedizione a, dedizione per</i>)<br />NC(PP([a],[per]);<br /><br /><b>Y168</b><br />in (<i>equilibrio in, suddivisione in, vantaggio in</i>)<br />NC(PP([in]);<br /><br /><b>Y169</b><br />di, per (<i>analisi di, analisi per</i>)<br />NC(PP([di],[per]);<br /><br /><b>Y170</b><br />a, da (<i>chiamata a, chiamata da</i>)<br />NC(PP([a],[da]);<br /><br /><b>Y171</b><br />di, da (<i>matita di legno, matita da disegno</i>)<br />NC(PH({[di]|[da]}));
+<br /><br /><b>Y172</b><br />tra, fra, per (<i>confronto tra, confronto fra, confronto per</i>)<br />NC(PH({[tra]|[fra]|[per]}));
+<br /><br /><b>Y173</b><br />su, con (<i>disaccordo su, disaccordo con</i>)<br />NC(PH({[con]|[su]}));
+<br /><br /><b>Y174</b><br />con (<i>con successo</i>)<br />AC(PP([con]));<br /><br /><b>Y175</b><br />Il Cairo (<i>Il Cairo</i>)<br />NS(DH([il]));
+<br /><br /><b>Y194</b><br />di, con, su (<i>contatto di, contatto su, contatto con</i>)<br />NC(PH({[su]|[con]|[di]}));
+<br /><br /><b>Y195</b><br />di, da, in, su (<i>cappello di feltro, cappello da prete, cappello in testa, cappello sulle ventitrè</i>)<br />NC(PP([di],[da],[in],[su]));<br /><br /><b>Y213</b><br />di, da, in (<i>di, da, in</i>)<br />NC(PP([di],[da],[in]));<br /><br /><b>Y215</b><br />da (<i>bestia da soma;</i>)<br />NC(PP([a]);<br /><br /><b>Y216</b><br />per (<i>gesso per lavagna;</i>)<br />NC(PP([per]);<br /><br /><b>Y217</b><br />tutto (<i>tutto il mondo; tutte queste notizie; tutta quanta la torta;</i>)<br />JC(PP([il],[la],[le],[i],[gli],[quanto],[quanta],[quante],[quanti],[questo],[questa],[queste],[questi]));<br /><br /><b>Y260</b><br />a, contro (<i>lotta a, lotta contro</i>)<br />NC(PH({[a]|[contro]}));
+<br /><br /><b>Y262</b><br />su (<i>teoria su</i>)<br />NC(PH([su]));
+<br /><br /><b>Y270</b><br />a (<i>deroga</i>)<br />NC(PH([a]));
+<br /><br /><b>Y271</b><br />di, su (<i>sconto</i>)<br />NC(PH({[di]|[su]}));
+<br /><br /><b>Y272</b><br />sutura (<i>sutura</i>)<br />JC(PH([fra]));
+<br /><br /><b>Y273</b><br />di + con (<i>baratto</i>)<br />NC(PH([di]))NC(PH([con]));
+<br /><br /><b>Y274</b><br />contro (<i>delitto contro</i>)<br />NC(PH([contro]));
+<br /><br /><b>Y275</b><br />fra, tra (<i>divario</i>)<br />NC(PH({[fra]|[tra]}));
+<br /><br /><b>Y277</b><br />di + tra (<i>permuta</i>)<br />NC(PH([di]))NC(PH([tra]));
+<br /><br /><b>Y278</b><br />per, contro (<i>battaglia contro, battaglia per</i>)<br />NC(PH({[per]|[contro]}));
+<br /><br /><b>Y279</b><br />di + a (<i>vincita</i>)<br />NC(PH([di]))NC(PH([a]));
+<br /><br /><b>Y280</b><br />verso (<i>iattanza verso</i>)<br />NC(PH([verso]));
+<br /><br /><b>Y282</b><br />fra, tra (<i>paragone</i>)<br />NC(PH({[con]|[fra]|[tra]}));
+<br /><br /><b>Y283</b><br />su, con, contro (<i>polemica su, polemica con, polemica contro</i>)<br />NC(PH({[su]|[con]|[contro]}));
+<br /><br /><b>Y284</b><br />a, verso, contro (<i>sbandata</i>)<br />NC(PH({[a]|[verso]|[contro]}));
+<br /><br /><b>Y285</b><br />di, entro (<i>scadenza</i>)<br />NC(PH({[di]|[entro]}));
+<br /><br /><b>Y286</b><br />La Traviata (<i>La Traviata</i>)<br />NS(DH([la]));
+<br /><br /><b>Y287</b><br />in, a, contro, verso (<i>frecciata</i>)<br />NC(PH({[in]|[a]|[verso]|[contro]}));
+<br /><br /><b>Y288</b><br />di + con, fra, tra (<i>contrasto, fregatura</i>)<br />NC(PH([di]))NC(PH({[con]|[tra]|[fra]}));
+<br /><br /><b>Y289</b><br />a, contro, in, su (<i>bottigliata</i>)<br />NC(PH({[su]|[in]|[a]|[contro]}));
+<br /><br /><b>Y290</b><br />di, fra, tra (<i>compattezza, cannibalismo</i>)<br />NC(PH({[di]|[tra]|[fra]}));
+<br /><br /><b>Y291</b><br />di + in, su (<i>caricamento</i>)<br />NC(PH([di]))NC(PH({[su]|[in]}));
+<br /><br /><b>Y292</b><br />con, di, fra, tra (<i>complicità</i>)<br />NC(PH({[di]|[con]|[tra]|[fra]}));
+<br /><br /><b>Y293</b><br />con, di (<i>confinante</i>)<br />NC(PH({[di]|[con]}));
+<br /><br /><b>Y294</b><br />con (<i>familiarità con</i>)<br />NC(PH([con]));
+<br /><br /><b>Y295</b><br />di + da (<i>sottrazione</i>)<br />NC(PH([di]))NC(PH([da]));
+<br /><br /><b>Y296</b><br />di + a + da (<i>trapianto</i>)<br />NC(PH([di]))NC(PH([a]))NC(PH([da]));
+<br /><br /><b>Y298</b><br />di, in, su (<i>viabilità</i>)<br />NC(PH({[di]|[in]|[su]}));
+<br /><br /><b>Y299</b><br />a, con, in, per, su (<i>viaggetto</i>)<br />NC(PH({[a]|[con]|[in]|[per]|[su]}));
+<br /><br /><b>Y301</b><br />acido (<i>acido</i>)<br />JC(PH({[con]|[contro]}));
+<br /><br /><b>Y302</b><br />verso (<i>acritico</i>)<br />JC(PH([verso]));
+<br /><br /><b>Y303</b><br />adatto (<i>adatto</i>)<br />JC(PH({[a]|[per]}));
+<br /><br /><b>Y304</b><br />a, di (<i>additivo</i>)<br />NC(PH({[a]|[di]}));
+<br /><br /><b>Y305</b><br />con, verso (<i>affettuoso</i>)<br />JC(PH({[con]|[verso]}));
+<br /><br /><b>Y306</b><br />di, in (<i>agile</i>)<br />JC(PH({[di]|[in]}));
+<br /><br /><b>Y309</b><br />per + da (<i>ammirato</i>)<br />JC(PH([per))JC(PH([da]));
+<br /><br /><b>Y311</b><br />a, di (<i>additivo</i>)<br />JC(PH({[a]|[di]}));
+<br /><br /><b>Y312</b><br />a, contro (<i>addossato</i>)<br />JC(PH({[a]|[contro]}));
+<br /><br /><b>Y313</b><br />a, da (<i>affacciato</i>)<br />JC(PH({[a]|[da]}));
+<br /><br /><b>Y314</b><br />allienato (<i>allineato</i>)<br />JC(PH({[con]|[per]}));
+<br /><br /><b>Y315</b><br />aggiornato (<i>aggiornato</i>)<br />JC(PH([su]));
+<br /><br /><b>Y317</b><br />al (<i>sistemino</i>)<br />JC(PH([al]));
+<br /><br /><b>Y319</b><br />con, di (<i>colmabile</i>)<br />JC(PH({[di]|[con]}));
+<br /><br /><b>Y320</b><br />di, per, verso (<i>colpevole</i>)<br />JC(PH({[di]|[per]|[verso]}));
+<br /><br /><b>Y321</b><br />con (<i>comparato, continuo, congruo</i>)<br />JC(PH([con]));
+<br /><br /><b>Y322</b><br />a, con (<i>conforme, congiunto, coniugato, connesso, consono, contiguo</i>)<br />JC(PH({[a]|[con]}));
+<br /><br /><b>Y323</b><br />da, fra, tra (<i>conteso</i>)<br />NC(PH({[da]|[fra]|[tra]}));
+<br /><br /><b>Y325</b><br />da, fra, in, tra (<i>diffuso</i>)<br />JC(PH({[da]|[fra]|[in]|[tra]}));
+<br /><br /><b>Y326</b><br />fra, in, tra (<i>dilagante, disperso, dissolto</i>)<br />JC(PH({[fra]|[in]|[tra]}));
+<br /><br /><b>Y327</b><br />con, in (<i>diluibile</i>)<br />JC(PH({[con]|[in]}));
+<br /><br /><b>Y328</b><br />con, da (<i>dipinto</i>)<br />JC(PH({[con]|[da]}));
+<br /><br /><b>Y329</b><br />contro (<i>insorto</i>)<br />JC(PH([contro]));
+<br /><br /><b>Y330</b><br />concorrere a (<i>concorrere, controreplicare</i>)<br />VS(NP)VC(PH([a]));
+<br /><br /><b>Y331</b><br />constare di (<i>constare</i>)<br />VS(NP)VC(PH([di]));
+<br /><br /><b>Y332</b><br />contendere NP con (<i>contendere </i>)<br />VS(NP)VC(NP)VC(PH([con]));
+<br /><br /><b>Y333</b><br />contendere (<i>contendere</i>)<br />VS(NP)VC(PH([con]));
+<br /><br /><b>Y334</b><br />direct object + a, in (<i>convogliare</i>)<br />VS(NP)VC(NP)VC(PH({[a]|[in]}));
+<br /><br /><b>Y335</b><br />direct object + su, verso, in (<i>convogliare</i>)<br />VS(NP)VC(NP)VC(PH({[in]|[su]|[verso]}));
+<br /><br /><b>Y336</b><br />direct object + con, di (<i>equipaggiare </i>)<br />VS(NP)VC(NP)VC(PH({[con]|[di]}));
+<br /><br /><b>Y337</b><br />direct object + a (<i>equiparare</i>)<br />VS(NP)VC(NP)VC(PH([a]));
+<br /><br /><b>Y338</b><br />direct object + a, con (<i>equiparare</i>)<br />VS(NP)VC(NP)VC(PH({[a]|[con]}));
+<br /><br /><b>Y339</b><br />incespicare (<i>incespicare</i>)<br />VS(NP)VC(PH([in]));
+<br /><br /><b>Y340</b><br />attorno a, intorno a  (<i>orbitare</i>)<br />VS(NP)VC(PH({[attorno a]|[intorno a]}));
+<br /><br /><b>Y341</b><br />per (<i>optare</i>)<br />VS(NP)VC(PH([per]));
+<br /><br /><b>Y342</b><br />orbare NP di (<i>orbare</i>)<br />VS(NP)VC(NP)VC(PH([di]));
+<br /><br /><b>Y343</b><br />instillare NP di (<i>instillare, inoculare, inscrivere, insilare, insinuare, insufflare</i>)<br />VS(NP)VC(NP)VC(PH([in]));
+<br /><br /><b>Y344</b><br />direct object + in, su (<i>inscrivere, mettere</i>)<br />VS(NP)VC(NP)VC(PH({[in]|[su]}));
+<br /><br /><b>Y345</b><br />malignare NP su (<i>malignare </i>)<br />VS(NP)VC(NP)VC(PH([su]));
+<br /><br /><b>Y346</b><br />direct object + per, contro (<i>militare</i>)<br />VS(NP)VC(NP)VC(PH({[per]|[contro]}));
+<br /><br /><b>Y347</b><br />procedere (<i>procedere</i>)<br />VS(NP)VC(PH([contro]));
+<br /><br /><b>Y348</b><br />scaturire (<i>scaturire</i>)<br />VS(NP)VC(PH([da]));
+<br /><br /><b>Y349</b><br />sceverare NP da (<i>sceverare</i>)<br />VS(NP)VC(NP)VC(PH([da]));
+<br /><br /><b>Y371</b><br />direct object + per (<i>spacciare</i>)<br />VS(NP)VC(NP)VC(PH([per]));
+<br /><br /><b>Y373</b><br />stillare su (<i>stillare</i>)<br />VS(NP)VC(PH([su]));
+<br /><br /><b>Y374</b><br />direct object + di,in (<i>stipare</i>)<br />VS(NP)VC(NP)VC(PH({[di]|[in]}));
+<br /><br /><b>Y375</b><br />direct object + da, in (<i>subentrare</i>)<br />VS(NP)VC(NP)VC(PH({[da]|[in]}));
+<br /><br /><b>Y376</b><br />a (<i>conformemente, contrariamente, correlativamente, corrispondentemente, incontro, oltre</i>)<br />AC(PH([a]));
+<br /><br /><b>Y377</b><br />a,con (<i>congiuntamente, contestualmente</i>)<br />AC(PH({[a]|[con]}));
+<br /><br /><b>Y378</b><br />da (<i>differentemente, indipendentemente</i>)<br />AC(PH([da]));
+<br /><br /></body>
+<html>

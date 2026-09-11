@@ -1,0 +1,12 @@
+; RuleSet:(MX)reference grammar
+; User:LILYACBA LILYACBA (lilyacba)
+; Date:21.40.2013 at 04:40:59
+
+; "reference grammar"
+; MX
+(^@def,%x,^blk,^letter,^BLK,^and,^ART,^W,^SHEAD,^CHEAD,^SCOPE,^ANUM,^PUT,^PFX,^ABB,^WHQ)(%y,^SFX,^letter,^BLK,^and,^ART,^blk,^W,^STAIL,^CTAIL,^SCOPE,^PUT,^".",^SPRON)=0; ,^ANUM  deleted
+(TEMP,%x)(SFX)=0;
+(TEMP,%x)(PUT)=0;
+(MINUTE)(BLK)(QUA,%x)=0;
+(PRE)(BLK)(A,%x)=0;
+(sequance)(POD)=0;

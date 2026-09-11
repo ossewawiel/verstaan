@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<title>UNLarium</title>
+<link rel="stylesheet" type="text/css" media="all" href="../../shared/default.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"  />
+<link rel="shortcut icon" href="../favicon.ico" type="image/x-icon" />
+</head>
+
+<body>
+<h1>Marathi Inflectional  Grammar for Natural Language Generation</h1>Version of September 11, 2026, 1:45 pm<br />Documentation available at <a href="http://www.unlarchive.org/wiki/index.php/Grammar" target="_blank">http://www.unlarchive.org/wiki/index.php/Grammar</a><br />Tagset available at <a href="../dictionary/export_tagset.php" target="_blank">Export UNDL Foundation tagset</a>.<br /><br />(%x,M2):=(%x,-M2,+FLX(PLR:=0>"े";
+SNG&OBL:=0>"ा";
+PLR&OBL:=0>"ां";));<br /><br />(%x,M3):=(%x,-M3,+FLX(MCL&1PS&PRS:=0>"तो";
+MCL&1PS&PAS:=0>"ले";
+MCL&1PS&FUT:=0>"ेन"; 
+MCL&2PS&PRS:=0>"तोस";
+MCL&2PS&PAS:=0>"लेस";
+MCL&2PS&FUT:=0>"शील";  
+MCL&3PS&PRS:=0>"तो";
+MCL&3PS&PAS:=0>"ले";
+MCL&3PS&FUT:=0>"ेल";
+MCL&1PP&PRS:=0>"तो";
+MCL&1PP&PAS:=0>"ले";
+MCL&1PP&FUT:=0>"ू"; 
+MCL&2PP&PRS:=0>"ता";
+MCL&2PP&PAS:=0>"लेत";
+MCL&2PP&FUT:=0>"ाल"; 
+MCL&3PP&PRS:=0>"तात";
+MCL&3PP&PAS:=0>"ले";
+MCL&3PP&FUT:=0>"तील"; 
+FEM&1PS&PRS:=0>"ते";
+FEM&1PS&PAS:=0>"ले";
+FEM&1PS&FUT:=0>"ेन";
+FEM&2PS&PRS:=0>"तेस";
+FEM&2PS&PAS:=0>"लेस";
+FEM&2PS&FUT:=0>"शील";
+FEM&3PS&PRS:=0>"ते";
+FEM&3PS&PAS:=0>"ले";
+FEM&3PS&FUT:=0>"ेल";
+FEM&1PP&PRS:=0>"तो";
+FEM&1PP&PAS:=0>"ले";
+FEM&1PP&FUT:=0>"ू";
+FEM&2PP&PRS:=0>"ता";
+FEM&2PP&PAS:=0>"लेत";
+FEM&2PP&FUT:=0>"ाल"; 
+FEM&3PP&PRS:=0>"तात";
+FEM&3PP&PAS:=0>"ले";
+FEM&3PP&FUT:=0>"तील";
+GER:=0>"त";
+NEU&3PS&PRS:=0>"ते";
+NEU&3PS&PAS:=0>"ले";
+NEU&3PS&FUT:=0>"ेल";
+NEU&3PP&PRS:=0>"तात";
+NEU&3PP&PAS:=0>"ले";
+NEU&3PP&FUT:=0>"तील";));<br /><br />(%x,M4):=(%x,-M4,+FLX( 
+MCL&1PS&PRS:=0>"";
+MCL&1PS&PAS:="होतो";
+MCL&1PS&FUT:="असेन"; 
+MCL&2PS&PRS:=0>"स";
+MCL&2PS&PAS:="होतास";
+MCL&2PS&FUT:="असशील";
+MCL&3PS&PRS:=0>"";
+MCL&3PS&PAS:="होता";
+MCL&3PS&FUT:="असेल";
+MCL&1PP&PRS:="े">"ोत";
+MCL&1PP&PAS:="होतो";
+MCL&1PP&FUT:="असू";
+MCL&2PP&PRS:="े">"ात";
+MCL&2PP&PAS:="होतात";
+MCL&2PP&FUT:="असाल";
+MCL&3PP&PRS:=0>"त";
+MCL&3PP&PAS:="होते";
+MCL&3PP&FUT:="असतील";
+FEM&1PS&PRS:=0>"";
+FEM&1PS&PAS:="होते";
+FEM&1PS&FUT:="असेन";
+FEM&2PS&PRS:=0>"स";
+FEM&2PS&PAS:="होतीस";
+FEM&2PS&FUT:="असशील";
+FEM&3PS&PRS:=0>"";
+FEM&3PS&PAS:="होती";
+FEM&3PS&FUT:="असेल";
+FEM&1PP&PRS:="े">"ोत";
+FEM&1PP&PAS:="होतो";
+FEM&1PP&FUT:="असू ";
+FEM&2PP&PRS:="े">"ात";
+FEM&2PP&PAS:="होतात";
+FEM&2PP&FUT:="असाल";
+FEM&3PP&PRS:=0>"त";
+FEM&3PP&PAS:="होत्या";
+FEM&3PP&FUT:="असतील";));<br /><br />(%x,M5):=(%x,-M5,+FLX(MCL&1PS&PRS:=0>"तो";
+MCL&1PS&PAS:="र">"ेलो";
+MCL&1PS&FUT:="">"ेन"; 
+MCL&2PS&PRS:=0>"तोस";
+MCL&2PS&PAS:="र">"ेलास";
+MCL&2PS&FUT:=0>"शील";
+MCL&3PS&PRS:=0>"तो";
+MCL&3PS&PAS:="र">"ेला";
+MCL&3PS&FUT:="">"ेल";
+MCL&1PP&PRS:=0>"तो";
+MCL&1PP&PAS:="र">"ेलो";
+MCL&1PP&FUT:=0>"ू";
+MCL&2PP&PRS:=0>"ता";
+MCL&2PP&PAS:="र">"ेलात";
+MCL&2PP&FUT:=0>"ाल"; 
+MCL&3PP&PRS:=0>"तात";
+MCL&3PP&PAS:="र">"ेले";
+MCL&3PP&FUT:=0>"तील";
+FEM&1PS&PRS:=0>"ते";
+FEM&1PS&PAS:="र">"ेले";
+FEM&1PS&FUT:=0>"ेन"; 
+FEM&2PS&PRS:=0>"तेस";
+FEM&2PS&PAS:="र">"ेलीस";
+FEM&2PS&FUT:=0>"शील";  
+FEM&3PS&PRS:=0>"ते";
+FEM&3PS&PAS:="र">"ेली";
+FEM&3PS&FUT:=0>"ेल";
+FEM&1PP&PRS:=0>"तो";
+FEM&1PP&PAS:="र">"ेलो";
+FEM&1PP&FUT:=0>"ू"; 
+FEM&2PP&PRS:=0>"ता";
+FEM&2PP&PAS:="र">"ेलात";
+FEM&2PP&FUT:=0>"ाल";
+FEM&3PP&PRS:=0>"तात";
+FEM&3PP&PAS:="र">"ेल्या";
+FEM&3PP&FUT:=0>"तील";));<br /><br />(%x,M6):=(%x,-M6,+FLX(SNG:=0>"";
+PLR:=0>"";
+PLR&OBL:=0>"ं";));<br /><br /></body>
+<html>

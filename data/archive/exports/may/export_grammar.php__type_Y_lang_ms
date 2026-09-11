@@ -1,0 +1,176 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<title>UNLarium</title>
+<link rel="stylesheet" type="text/css" media="all" href="../../shared/default.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"  />
+<link rel="shortcut icon" href="../favicon.ico" type="image/x-icon" />
+</head>
+
+<body>
+<h1>Malay Subcategorization  Grammar</h1>Version of September 11, 2026, 1:44 pm<br />Documentation available at <a href="http://www.unlarchive.org/wiki/index.php/Grammar" target="_blank">http://www.unlarchive.org/wiki/index.php/Grammar</a><br />Tagset available at <a href="../dictionary/export_tagset.php" target="_blank">Export UNDL Foundation tagset</a>.<br /><br /><b>Y0</b><br />AVALENT<br /><br /><b>Y1</b><br />NO SUBCATEGORIZATION FRAME: rules defined inside the entry in the dictionary<br /><br /><b>Y10</b><br />add numeral classifier [buah] to nouns.
+ (<i>rumah > sebuah rumah
+padang > sebuah padang</i>)<br />NS(([buah],M11),CLA);<br /><br /><b>Y12</b><br />add numeral classifier [orang] to nouns. (<i>gadis> seorang gadis
+lelaki > seorang lelaki</i>)<br />NS(([orang],M11),CLA);<br /><br /><b>Y13</b><br />add numeral classifier [biji] to nouns. (<i>telur> sebiji telur
+cawan > sebiji cawan
+</i>)<br />NS(([biji],M11),CLA);<br /><br /><b>Y14</b><br />add numeral classifier [ekor] to nouns. (<i>kambing> seekor kambing
+kucing > seekor kucing</i>)<br />NS(([ekor],M11),CLA);<br /><br /><b>Y15</b><br />add numeral classifier [batang] to nouns. (<i>pokok> sebatang pokok
+rokok> sebatang rokok</i>)<br />NS(([batang],M11),CLA);<br /><br /><b>Y16</b><br />add numeral classifier [keping] to nouns. (<i>sekeping roti
+sekeping kertas</i>)<br />NS(([keping],M11),CLA);<br /><br /><b>Y17</b><br />add numeral classifier [angkatan] to nouns. (<i>seangkatan tentera
+seangkatan polis laut</i>)<br />NS(([keping],M11),CLA);<br /><br /><b>Y18</b><br />add numeral classifier [angkatan] to nouns. (<i>sebaris ayat
+sebaris kata</i>)<br />NS(([baris],M11),CLA);<br /><br /><b>Y19</b><br />add numeral classifier [bentuk] to nouns. (<i>sebentuk cincin
+</i>)<br />NS(([bentuk],M11),CLA);<br /><br /><b>Y20</b><br />add numeral classifier [berkas] to nouns. (<i>seberkas kayu api</i>)<br />NS(([berkas],M11),CLA);<br /><br /><b>Y21</b><br />add numeral classifier [bidang] to nouns. (<i>sebidang tanah</i>)<br />NS(([bidang],M11),CLA);<br /><br /><b>Y22</b><br />add numeral classifier [bilah] to nouns. (<i>sebilah pedang
+sebilah pisau</i>)<br />NS(([bilah],M11),CLA);<br /><br /><b>Y23</b><br />add numeral classifier [buku] to nouns. (<i>sebuku sabun
+sebuku roti</i>)<br />NS(([buku],M11),CLA);<br /><br /><b>Y24</b><br />add numeral classifier [bungkus] to nouns. (<i>sebungkus nasi
+sebungkus mee</i>)<br />NS(([bungkus],M11),CLA);<br /><br /><b>Y25</b><br />add numeral classifier [butir] to nouns. (<i>sebutir peluru
+sebutir pasir</i>)<br />NS(([butir],M11),CLA);<br /><br /><b>Y26</b><br />add numeral classifier [carik] to nouns. (<i>secarik kain
+secarik kertas</i>)<br />NS(([carik],M11),CLA);<br /><br /><b>Y27</b><br />add numeral classifier [cebis] to nouns. (<i>secebis kaca
+secebis rayuan</i>)<br />NS(([cebis],M11),CLA);<br /><br /><b>Y28</b><br />add numeral classifier [cekak] to nouns.
+
+benda bersaiz secekak jari (<i>secekak jari
+secekak sirih</i>)<br />NS(([cekak],M11),CLA);<br /><br /><b>Y29</b><br />add numeral classifier [cubit] to nouns.
+
+sedikit (<i>secubit garam
+secubit gula</i>)<br />NS(([cubit],M11),CLA);<br /><br /><b>Y30</b><br />add numeral classifier [das] to nouns.
+
+tembakan (<i>21 das tembakan meriam
+sedas tembakan pistol</i>)<br />NS(([das],M11),CLA);<br /><br /><b>Y31</b><br />add numeral classifier [deret] to nouns.
+
+benda-benda dalam sebarisan (<i>sederet kedai
+</i>)<br />NS(([deret],M11),CLA);<br /><br /><b>Y32</b><br />add numeral classifier [gugus] to nouns.
+
+benda-benda sama jenis yang dikumpulkan dalam satu ikatan (<i>segugus anggur
+segugus kunci</i>)<br />NS(([gugus],M11),CLA);<br /><br /><b>Y33</b><br />add numeral classifier [gelung] to nouns.
+
+benda yang berlingkar (<i>segelung tali
+segelung tikar</i>)<br />NS(([gelung],M11),CLA);<br /><br /><b>Y34</b><br />add numeral classifier [gemal] to nouns.
+
+sama dengan "cekak" (<i>segemal padi
+</i>)<br />NS(([gelung],M11),CLA);<br /><br /><b>Y35</b><br />add numeral classifier [genggam] to nouns.
+
+benda-benda yang dipegang dalam kepalan tangan (<i>segenggam beras
+segenggam pasir</i>)<br />NS(([genggam],M11),CLA);<br /><br /><b>Y36</b><br />add numeral classifier [gumpal] to nouns.
+
+ (<i>segumpal tanah
+segumpal darah
+segumpal asap</i>)<br />NS(([gumpal],M11),CLA);<br /><br /><b>Y37</b><br />add numeral classifier [hidangan] to nouns.
+
+kumpulan makanan dan minuman yang disajikan (<i>sehidangan kuih-muih
+sehidangan makanan</i>)<br />NS(([hidangan],M11),CLA);<br /><br /><b>Y38</b><br />add numeral classifier [helai] to nouns.
+
+benda yang nipis dan lebar (<i>sehelai baju
+sehelai kain</i>)<br />NS(([helai],M11),CLA);<br /><br /><b>Y39</b><br />add numeral classifier [hiris] to nouns.
+
+potongan nipis (<i>sehiris daging
+</i>)<br />NS(([hiris],M11),CLA);<br /><br /><b>Y40</b><br />add numeral classifier [ikat] to nouns.
+
+benda-benda yang diikat rapat (<i>seikat kayu api</i>)<br />NS(([ikat],M11),CLA);<br /><br /><b>Y41</b><br />add numeral classifier [jambak] to nouns.
+
+karangan (bunga dll.) (<i>sejambak bunga</i>)<br />NS(([jambak],M11),CLA);<br /><br /><b>Y42</b><br />add numeral classifier [jambangan] to nouns.
+
+benda dalam pasu atau belanga (<i>sejambangan bunga</i>)<br />NS(([jambangan],M11),CLA);<br /><br /><b>Y43</b><br />add numeral classifier [jemput] to nouns.
+
+benda-benda yang diambil dengan hujung jari (<i>sejemput pasir</i>)<br />NS(([jemput],M11),CLA);<br /><br /><b>Y44</b><br />add numeral classifier [kaki] to nouns.
+
+ (<i>sekaki payung
+sekaki cendawan</i>)<br />NS(([kaki],M11),CLA);<br /><br /><b>Y45</b><br />add numeral classifier [kandang] to nouns.
+
+haiwan dalam kandang (<i>sekandang kambing</i>)<br />NS(([kandang],M11),CLA);<br /><br /><b>Y46</b><br />add numeral classifier [kapur] to nouns.
+
+sirih (<i>sekapur sirih</i>)<br />NS(([kapur],M11),CLA);<br /><br /><b>Y47</b><br />add numeral classifier [kawan] to nouns.
+
+kumpulan haiwan (<i>sekawan lembu</i>)<br />NS(([kawan],M11),CLA);<br /><br /><b>Y48</b><br />add numeral classifier [kepal] to nouns
+
+gumpalan
+ (<i>beberapa kepal nasi</i>)<br />NS(([kepal],M11),CLA);<br /><br /><b>Y49</b><br />add numeral classifier [keping] to nouns
+
+kepingan, potongan (<i>sekeping kertas</i>)<br />NS(([keping],M11),CLA);<br /><br /><b>Y50</b><br />add numeral classifier [kepul] to nouns
+
+gumpalan asap atau awan yang tebal (<i>sekepul asap
+</i>)<br />NS(([kepul],M11),CLA);<br /><br /><b>Y51</b><br />add numeral classifier [kerat] to nouns
+
+bahagian, potongan (<i>sekerat tulang</i>)<br />NS(([kerat],M11),CLA);<br /><br /><b>Y52</b><br />add numeral classifier [ketul] to nouns
+
+gumpalan, ketulan (<i>seketul daging</i>)<br />NS(([ketul],M11),CLA);<br /><br /><b>Y53</b><br />add numeral classifier [kotak] to nouns
+
+benda dalam kotak (<i>sekotak bijirin sarapan</i>)<br />NS(([ketul],M11),CLA);<br /><br /><b>Y54</b><br />add numeral classifier [kuntum] to nouns
+
+untuk bunga (<i>sekuntum bunga merah</i>)<br />NS(([kuntum],M11),CLA);<br /><br /><b>Y55</b><br />add numeral classifier [laras] to nouns
+
+senjata (<i>selaras senapang</i>)<br />NS(([laras],M11),CLA);<br /><br /><b>Y56</b><br />add numeral classifier [lembar] to nouns
+
+benda yang panjang dan luas bidangnya (<i>sebidang kain</i>)<br />NS(([lembar],M11),CLA);<br /><br /><b>Y57</b><br />add numeral classifier [lembar] to nouns
+
+sama dengan "gelung" (<i>selingkar tali</i>)<br />NS(([lingkar],M11),CLA);<br /><br /><b>Y58</b><br />add numeral classifier [naskhah] to nouns
+
+salinan bahan bacaan bersiri (<i>senaskhah majalah
+senaskhah surat khabar</i>)<br />NS(([naskhah],M11),CLA);<br /><br /><b>Y60</b><br />add numeral classifier [papan] to nouns
+
+kepingan (<i>sepapan petai
+sepapan lantai</i>)<br />NS(([papan],M11),CLA);<br /><br /><b>Y61</b><br />add numeral classifier [pasang] to nouns
+
+benda yang berduaan (<i>sepasang kasut
+sepasang kasut</i>)<br />NS(([pasang],M11),CLA);<br /><br /><b>Y62</b><br />add numeral classifier [pasukan] to nouns
+
+kumpulan seragam (<i>sepasukan pemain bola sepak
+sepasukan pemain hoki</i>)<br />NS(([pasukan],M11),CLA);<br /><br /><b>Y63</b><br />add numeral classifier [patah] to nouns
+
+perkataan (<i>sepatah kata
+</i>)<br />NS(([patah],M11),CLA);<br /><br /><b>Y64</b><br />add numeral classifier [patah] to nouns
+
+bangunan (<i>sepuluh pintu kedai</i>)<br />NS(([pintu],M11),CLA);<br /><br /><b>Y65</b><br />add numeral classifier [potong] to nouns
+
+kepingan yang dipotong (<i>sepotong kek</i>)<br />NS(([potong],M11),CLA);<br /><br /><b>Y66</b><br />add numeral classifier [pucuk] to nouns
+
+1) surat
+2) senjata api (<i>sepucuk surat
+sepucuk pistol</i>)<br />NS(([pucuk],M11),CLA);<br /><br /><b>Y67</b><br />add numeral classifier [puntung] to nouns
+
+keratan kayu yang pendek-pendek (<i>sepuntung kayu api</i>)<br />NS(([puntung],M11),CLA);<br /><br /><b>Y68</b><br />add numeral classifier [rangkap] to nouns
+
+baris-baris karangan (<i>serangkap pantun</i>)<br />NS(([rangkap],M11),CLA);<br /><br /><b>Y69</b><br />add numeral classifier [rawan] to nouns
+
+menyatakan selengkap benda itu (<i>serawan jala</i>)<br />NS(([rawan],M11),CLA);<br /><br /><b>Y70</b><br />add numeral classifier [ruas] to nouns.
+
+bahagian di antara dua benda (<i>beberapa ruas tebu</i>)<br />NS(([ruas],M11),CLA);<br /><br /><b>Y71</b><br />add numeral classifier [rumpun] to nouns.
+
+kelompok, ikatan (<i>serumpun serai</i>)<br />NS(([rumpun],M11),CLA);<br /><br /><b>Y72</b><br />add numeral classifier [sikat] to nouns.
+
+tangkai pisang (<i>sesikat pisang</i>)<br />NS(([sikat],M11),CLA);<br /><br /><b>Y73</b><br />add numeral classifier [sikat] to nouns.
+
+sebanyak yang dijemput dan dimasukkan ke mulut (<i>sesuap nasi</i>)<br />NS(([sikat],M11),CLA);<br /><br /><b>Y74</b><br />add numeral classifier [tandan] to nouns.
+
+buah-buahan yang bergugus (<i>setandan pisang</i>)<br />NS(([tandan],M11),CLA);<br /><br /><b>Y75</b><br />add numeral classifier [tangkai] to nouns.
+
+untuk bunga (<i>setangkai bunga</i>)<br />NS(([tangkai],M11),CLA);<br /><br /><b>Y76</b><br />add numeral classifier [teguk] to nouns.
+
+sebanyak yang ditelan sekali (<i>seteguk air</i>)<br />NS(([teguk],M11),CLA);<br /><br /><b>Y77</b><br />add numeral classifier [timbun] to nouns.
+
+himpunan sesuatu yang bertindih-tindih (<i>setimbun sampah</i>)<br />NS(([timbun],M11),CLA);<br /><br /><b>Y78</b><br />add numeral classifier [titik] to nouns.
+
+untuk titisan (<i>setitik air mata
+setitik darah</i>)<br />NS(([titik],M11),CLA);<br /><br /><b>Y79</b><br />add numeral classifier [ulas] to nouns.
+
+bahagian buah yang berbiji dll. (<i>seulas buah rambutan
+seulas buah durian</i>)<br />NS(([ulas],M11),CLA);<br /><br /><b>Y80</b><br />add numeral classifier [untai] to nouns.
+
+rangkaian benda yg dicucuk (<i>seuntai manik</i>)<br />NS(([untai],M11),CLA);<br /><br /><b>Y81</b><br />add numeral classifier [urat] to nouns.
+
+gelang atau benda yang kecil (halus) dan panjang (<i>dua urat gelang</i>)<br />NS(([urat],M11),CLA);<br /><br /><b>Y82</b><br />add numeral classifier [utas] to nouns.
+
+benda yg berurai (<i>seutas jam tangan</i>)<br />NS(([utas],M11),CLA);<br /><br /><b>Y83</b><br />Adjektif yang memerlukan frasa nama sebagai pelengkap
+
+ (<i>lebih daripada, 
+harus untuk</i>)<br />JC(NP);<br /><br /><b>Y84</b><br />Adjektif yang memerlukan pelengkap diperkenalkan oleh "dengan"
+ (<i>selaras> selaras dengan    
+</i>)<br />JC(PH([dengan]));<br /><br /><b>Y85</b><br />Adjektif yang memerlukan pelengkap diperkenalkan oleh "untuk"
+ (<i>kenaikan > kenaikan untuk</i>)<br />JC(PH([untuk]));  <br /><br /><b>Y86</b><br />Adjektif yang memerlukan pelengkap diperkenalkan oleh "dari"     (<i>jauh > jauh dari</i>)<br />JC(PH([dari]));  <br /><br /><b>Y87</b><br />Adjektif yang memerlukan pelengkap diperkenalkan oleh "daripada"     (<i>kurang > kurang daripada</i>)<br />JC(PH([daripada]));  <br /><br /><b>Y88</b><br />Adverba yang memerlukan frasa nama sebagai pelengkap
+ (<i>dan lain lain > dll</i>)<br />AC(NP);<br /><br /><b>Y89</b><br />Adverba yang memerlukan pelengkap diperkenalkan oleh "dengan"
+ (<i>bersama-sama> bersama-sama dengan</i>)<br />AC(PH([dengan])); <br /><br /><b>Y90</b><br />Adverba yang memerlukan pelengkap diperkenalkan oleh "untuk"
+ (<i>sebagai balasan> sebagai balasan untuk</i>)<br />AC(PH([untuk]));<br /><br /><b>Y91</b><br />Adverba yang memerlukan pelengkap diperkenalkan oleh "di"
+ (<i>atas> di atas</i>)<br />JC(PH([di]));  <br /><br /><b>Y92</b><br />Adjektif yang memerlukan pelengkap diperkenalkan oleh "yang"
+ (<i>baik > yang baik
+</i>)<br />JC(RVZ([yang]));<br /><br /><b>Y93</b><br />add yang (<i>yang baru
+yang lama</i>)<br />JC(RVZ([yang]));<br /><br /></body>
+<html>

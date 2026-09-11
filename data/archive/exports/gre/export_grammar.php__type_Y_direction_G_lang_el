@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<title>UNLarium</title>
+<link rel="stylesheet" type="text/css" media="all" href="../../shared/default.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"  />
+<link rel="shortcut icon" href="../favicon.ico" type="image/x-icon" />
+</head>
+
+<body>
+<h1>Greek (Modern) Subcategorization  Grammar for Natural Language Generation</h1>Version of September 11, 2026, 1:27 pm<br />Documentation available at <a href="http://www.unlarchive.org/wiki/index.php/Grammar" target="_blank">http://www.unlarchive.org/wiki/index.php/Grammar</a><br />Tagset available at <a href="../dictionary/export_tagset.php" target="_blank">Export UNDL Foundation tagset</a>.<br /><br /><b>Y0</b><br />AVALENT<br /><br /><b>Y1</b><br />NO SUBCATEGORIZATION FRAME: rules defined inside the entry in the dictionary<br /><br /><b>Y3</b><br />Direct transitive verb. It is to be used for either animate or inanimate objects. (<i>βλέπω;ακούω;γνωρίζω;</i>)<br />VS(NP)VC(NP);
+<br /><br /><b>Y48</b><br />Noun requiring a complement introduced by the preposition "για" (<i>ταψί για;ελπίδα για;αναζήτηση για</i>)<br />NC(PH([για]));
+<br /><br /><b>Y49</b><br />Nouns requiring a complement in Genitive case. (<i>έξοδος κινδύνου;ζώνη ασφαλείας;επίπεδο ζωής</i>)<br />NC(NP,GNT);
+<br /><br /><b>Y50</b><br />A noun requiring a complement introduced by the preposition "με" (<i>κοτόπουλο με πατάτες;άτομα με ειδικές ανάγκες</i>)<br />NC(PH([με]));
+<br /><br /><b>Y51</b><br />A noun requiring a complement introduced by the preposition "από" (<i>καρδιά από χρυσάφι;δόντι από ελέφαντα;κομπολόι από κεχριμπάρι</i>)<br />NC(PH([από]));
+<br /><br /><b>Y52</b><br />A noun requiring a complement introduced by the preposition "σε" (<i>κακάο σε σκόνη</i>)<br />NC(PH([σε]));
+<br /><br /><b>Y78</b><br />Intransitive verb (<i>αναπνέω;αναπαύομαι</i>)<br />VS(NP);
+<br /><br /><b>Y79</b><br />Ditransitive verb with a complement. (<i>ορίζω;διορίζω</i>)<br />VS(NP)VC(NP)VC(NP);
+<br /><br /><b>Y80</b><br />Indirect transitive verb that selects the preposition "με" (<i>μοιάζω;παίζω</i>)<br />VS(NP)VC(PH([με]));
+<br /><br /><b>Y81</b><br />Indirect transitive verb that selects the preposition "σε" (<i>αφοσιώνομαι;αφιερώνομαι</i>)<br />VS(NP)VC(PH([σε]));
+<br /><br /><b>Y82</b><br />Ditransitive verb whose indirect object is introduced by "σε" (<i>δίνω;μοιράζω</i>)<br />VS(NP)VC(NP)VC(PH([σε]));
+<br /><br /><b>Y83</b><br />Ditransitive verb whose indirect object is introduced by "από" (<i>παίρνω;σώζω</i>)<br />VS(NP)VC(NP)VC(PH([από]));
+<br /><br /><b>Y84</b><br />Ditransitive verb whose indirect object is introduced by "με" (<i>σκοτώνω;χτυπάω</i>)<br />VS(NP)VC(NP)VC(PH([με]));
+<br /><br /><b>Y85</b><br />Direct transitive verb whose object is a clause introduced by "ότι" or "πως" (<i>γνωρίζω;νομίζω</i>)<br />{VS(NP)VC(CH([ότι]))|VS(NP)VC(CH([πως]))};
+<br /><br /><b>Y86</b><br />Direct transitive verb whose object is a clause introduced by "να" (<i>θέλω;διατάζω</i>)<br />VS(NP)VC(CH([να]));
+<br /><br /><b>Y87</b><br />Direct transitive verb whose object is a clause introduced by "τι" or "αν" (<i>ρωτάω;κοιτάω</i>)<br />{VS(NP)VC(CH([τι]))|VS(NP)VC(CH([αν]))};
+<br /><br /><b>Y88</b><br />Direct transitive verb whose object is a clause introduced by "γιατί" (<i>φεύγω;ξέρω</i>)<br />VS(NP)VC(CH([γιατί]));
+<br /><br /><b>Y105</b><br />Indirect transitive verb that selects the preposition "προς" (<i>κλίνω;γέρνω</i>)<br />VS(NP)VC(PH([προς]));
+<br /><br /><b>Y106</b><br />Indirect transitive verb that selects the preposition "για" (<i>κοιτάζω;μιλάω;δικάζομαι</i>)<br />VS(NP)VC(PH([για]));
+<br /><br /><b>Y107</b><br />Ditransitive verb whose indirect object is introduced by "για" (<i>κρατάω;φυλάω</i>)<br />VS(NP)VC(NP)VC(PH([για]));
+<br /><br /><b>Y119</b><br />Indirect transitive verb that selects the preposition "για" (<i>κοιτάζω;ψάχνω</i>)<br />VS(NP)VC(PH([για]));
+<br /><br /><b>Y120</b><br />Indirect transitive verb that selects the preposition "από" (<i>ξεφεύγω;ξεφυτρώνω</i>)<br />VS(NP)VC(PH([από]));
+<br /><br /><b>Y121</b><br />Ditransitive verb whose indirect object is introduced by "να" (<i>προτρέπω;παροτρύνω</i>)<br />VS(NP)VC(NP)VC(CH([να]));
+<br /><br /><b>Y131</b><br />Prepositions that require a complement in Genitive. (<i>εξ αποστάσεως</i>)<br />PC(NP,AFT,GNT);
+<br /><br /><b>Y132</b><br />Prepositions that require a complement in Accusative. (<i>σε σκόνη</i>)<br />PC(NP,AFT,ACC);
+<br /><br /></body>
+<html>

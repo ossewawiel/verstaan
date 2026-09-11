@@ -1,0 +1,12 @@
+; RuleSet:(MX)Chinese Disambiguation Rule
+; User:TENG WEI MIN (teng49)
+; Date:01.12.2013 at 01:12:00
+
+; "Chinese Disambiguation Rule"
+; MX
+(V)(D)=0;
+#([一],D)(^[點])=0;
+#(D)(N)=1;
+#([一],D)(N)=0;
+#([一點],D)([點],N)=0;
+#([點],N)(DIGIT)=1;

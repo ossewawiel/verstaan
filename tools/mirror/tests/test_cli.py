@@ -42,12 +42,29 @@ def test_no_args_exits_zero():
         ["--pass=hunter2"],
         ["UNL_USER=bob"],
         ["UNL_PASS=hunter2"],
+        ["login", "--unl-user", "bob"],
+        ["login", "--pass=hunter2"],
     ],
 )
 def test_refuses_credential_arguments(argv, capsys):
     assert main(argv) == 2
     err = capsys.readouterr().err
     assert "UNL_USER" in err or "UNL_PASS" in err or "environment" in err
+
+
+def test_login_exits_3_with_one_line_when_credentials_are_missing(monkeypatch, capsys):
+    monkeypatch.delenv("UNL_USER", raising=False)
+    monkeypatch.delenv("UNL_PASS", raising=False)
+    assert main(["login"]) == 3
+    err = capsys.readouterr().err.strip().splitlines()
+    assert len(err) == 1
+    assert "UNL_USER" in err[0] and "UNL_PASS" in err[0]
+
+
+def test_login_exits_3_when_only_one_credential_is_set(monkeypatch, capsys):
+    monkeypatch.setenv("UNL_USER", "wawiel")
+    monkeypatch.delenv("UNL_PASS", raising=False)
+    assert main(["login"]) == 3
 
 
 def test_reject_credential_args_returns_none_for_clean_argv():

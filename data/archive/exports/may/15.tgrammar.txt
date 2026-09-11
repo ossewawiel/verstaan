@@ -1,0 +1,1395 @@
+; RuleSet:(MX)Normalization (1), (MX)MALAY T-Grammar UCA1, (MX)DEFAULT(3), (MX)MALAY T UCA2
+; User:Muhammad Zulhelmy Bin Mohd Rosman (helmy67)
+; Date:01.23.2013 at 12:23:48
+
+; "Normalization (1)"
+; MX
+#([yang]):= ; relativizer 'yang' rule2
+(CAU,^ASP):=(-CAU,+ASP=CAU);
+(PFV,^ASP):=(-PFV,+ASP=PFV);
+(NPFV,^ASP):=(-NPFV,+ASP=NPFV);
+(PFC,^ASP):=(-PFC,+ASP=PFC);
+(PPT,^ASP):=(-PPT,+ASP=PPT);
+(ICP,^ASP):=(-ICP,+ASP=ICP);
+(TER,^ASP):=(-TER,+ASP=TER);
+(ABE,^CAS):=(-ABE,+CAS=ABE);
+(ABL,^CAS):=(-ABL,+CAS=ABL);
+(ACC,^CAS):=(-ACC,+CAS=ACC);
+(ADE,^CAS):=(-ADE,+CAS=ADE);
+(ALL,^CAS):=(-ALL,+CAS=ALL);
+(ABS,^CAS):=(-ABS,+CAS=ABS);
+(BEN,^CAS):=(-BEN,+CAS=BEN);
+(CMT,^CAS):=(-CMT,+CAS=CMT);
+(DAT,^CAS):=(-DAT,+CAS=DAT);
+(DEL,^CAS):=(-DEL,+CAS=DEL);
+(ELA,^CAS):=(-ELA,+CAS=ELA);
+(EQU,^CAS):=(-EQU,+CAS=EQU);
+(ERG,^CAS):=(-ERG,+CAS=ERG);
+(ESS,^CAS):=(-ESS,+CAS=ESS);
+(GNT,^CAS):=(-GNT,+CAS=GNT);
+(HOR,^CAS):=(-HOR,+CAS=HOR);
+(ILL,^CAS):=(-ILL,+CAS=ILL);
+(INE,^CAS):=(-INE,+CAS=INE);
+(INS,^CAS):=(-INS,+CAS=INS);
+(LAT,^CAS):=(-LAT,+CAS=LAT);
+(LOC,^CAS):=(-LOC,+CAS=LOC);
+(NOM,^CAS):=(-NOM,+CAS=NOM);
+(OBL,^CAS):=(-OBL,+CAS=OBL);
+(PLT,^CAS):=(-PLT,+CAS=PLT);
+(PPL,^CAS):=(-PPL,+CAS=PPL);
+(PTT,^CAS):=(-PTT,+CAS=PTT);
+(SPE,^CAS):=(-SPE,+CAS=SPE);
+(TRM,^CAS):=(-TRM,+CAS=TRM);
+(TLT,^CAS):=(-TLT,+CAS=TLT);
+(VOC,^CAS):=(-VOC,+CAS=VOC);
+(AFT,^DIS):=(-AFT,+DIS=AFT);
+(BEF,^DIS):=(-BEF,+DIS=BEF);
+(END,^DIS):=(-END,+DIS=END);
+(FRE,^DIS):=(-FRE,+DIS=FRE);
+(FRT,^DIS):=(-FRT,+DIS=FRT);
+(IAFT,^DIS):=(-IAFT,+DIS=IAFT);
+(IBEF,^DIS):=(-IBEF,+DIS=IBEF);
+(MID,^DIS):=(-MID,+DIS=MID);
+(FEM,^GEN):=(-FEM,+GEN=FEM);
+(MCL,^GEN):=(-MCL,+GEN=MCL);
+(NEU,^GEN):=(-NEU,+GEN=NEU);
+(J,^LEX):=(-J,+LEX=J);
+(P,^LEX):=(-P,+LEX=P);
+(A,^LEX):=(-A,+LEX=A);
+(I,^LEX):=(-I,+LEX=I);
+(F,^LEX):=(-f,+LEX=F);
+(C,^LEX):=(-C,+LEX=C);
+(D,^LEX):=(-D,+LEX=D);
+(N,^LEX):=(-N,+LEX=N);
+(U,^LEX):=(-U,+LEX=U);
+(R,^LEX):=(-R,+LEX=R);
+(V,^LEX):=(-V,+LEX=V);
+(O,^LEX):=(-O,+LEX=O);
+(AUM,^MOO):=(-AUM,+MOO=AUM);
+(CAU,^MOO):=(-CAU,+MOO=CAU);
+(CON,^MOO):=(-CON,+MOO=CON);
+(DEC,^MOO):=(-DEC,+MOO=DEC);
+(DED,^MOO):=(-DED,+MOO=DED);
+(DLB,^MOO):=(-DLB,+MOO=DLB);
+(DUB,^MOO):=(-DUB,+MOO=DUB);
+(HYP,^MOO):=(-HYP,+MOO=HYP);
+(IMP,^MOO):=(-IMP,+MOO=IMP);
+(IPC,^MOO):=(-IPC,+MOO=IPC);
+(IND,^MOO):=(-IND,+MOO=IND);
+(INT,^MOO):=(-INT,+MOO=INT);
+(JUS,^MOO):=(-JUS,+MOO=JUS);
+(OBM,^MOO):=(-OBM,+MOO=OBM);
+(OPT,^MOO):=(-OPT,+MOO=OPT);
+(PMS,^MOO):=(-PMS,+MOO=PMS);
+(POT,^MOO):=(-POT,+MOO=POT);
+(PCT,^MOO):=(-PCT,+MOO=PCT);
+(PHB,^MOO):=(-PHB,+MOO=PHB);
+(SPT,^MOO):=(-SPT,+MOO=SPT);
+(SUB,^MOO):=(-SUB,+MOO=SUB);
+(SNG,^NUM):=(-SNG,+NUM=SNG);
+(PLR,^NUM):=(-PLR,+NUM=PLR);
+(ADJ,^POS):=(-ADJ,+POS=ADJ);
+(PTP,^POS):=(-PTP,+POS=PTP);
+(CIR,^POS):=(-CIR,+POS=CIR);
+(PPS,^POS):=(-PPS,+POS=PPS);
+(PRE,^POS):=(-PRE,+POS=PRE);
+(SAV,^POS):=(-SAV,+POS=SAV);
+(AAV,^POS):=(-AAV,+POS=AAV);
+(CJT,^POS):=(-CJT,+POS=CJT);
+(DJT,^POS):=(-DJT,+POS=DJT);
+(CCX,^POS):=(-CCX,+POS=CCX);
+(IFX,^POS):=(-IFX,+POS=IFX);
+(PFX,^POS):=(-PFX,+POS=PFX);
+(SFX,^POS):=(-SFX,+POS=SFX);
+(CLA,^POS):=(-CLA,+POS=CLA);
+(COO,^POS):=(-COO,+POS=COO);
+(SCJ,^POS):=(-SCJ,+POS=SCJ);
+(ART,^POS):=(-ART,+POS=ART);
+(DEM,^POS):=(-DEM,+POS=DEM);
+(POD,^POS):=(-POD,+POS=POD);
+(QUA,^POS):=(-QUA,+POS=QUA);
+(ITJ,^POS):=(-ITJ,+POS=ITJ);
+(NOU,^POS):=(-NOU,+POS=NOU);
+(PPN,^POS):=(-PPN,+POS=PPN);
+(CDN,^POS):=(-CDN,+POS=CDN);
+(DTN,^POS):=(-DTN,+POS=DTN);
+(PTN,^POS):=(-PTN,+POS=PTN);
+(MLN,^POS):=(-MLN,+POS=MLN);
+(ORD,^POS):=(-ORD,+POS=ORD);
+(PTC,^POS):=(-PTC,+POS=PTC);
+(DEP,^POS):=(-DEP,+POS=DEP);
+(DUM,^POS):=(-DUM,+POS=DUM);
+(EPR,^POS):=(-EPR,+POS=EPR);
+(NPR,^POS):=(-NPR,+POS=NPR);
+(IPR,^POS):=(-IPR,+POS=IPR);
+(PPR,^POS):=(-PPR,+POS=PPR);
+(SPR,^POS):=(-SPR,+POS=SPR);
+(CPR,^POS):=(-CPR,+POS=CPR);
+(FPR,^POS):=(-FPR,+POS=FPR);
+(RPR,^POS):=(-RPR,+POS=RPR);
+(VER,^POS):=(-VER,+POS=VER);
+(AUX,^POS):=(-AUX,+POS=AUX);
+(MOV,^POS):=(-MOV,+POS=MOV);
+(COP,^POS):=(-COP,+POS=COP);
+(1PP,^PER):=(-1PP,+PER=1PP);
+(1PS,^PER):=(-1PS,+PER=1PS);
+(2PP,^PER):=(-2PP,+PER=2PP);
+(2PS,^PER):=(-2PS,+PER=2PS);
+(3PP,^PER):=(-3PP,+PER=3PP);
+(3PS,^PER):=(-3PS,+PER=3PS);
+(NB,^XB):=(-NB,+XB=NB);
+(AB,^XB):=(-AB,+XB=AB);
+(JB,^XB):=(-JB,+XB=JB);
+(IB,^XB):=(-IB,+XB=IB);
+(CB,^XB):=(-CB,+XB=CB);
+(DB,^XB):=(-DB,+XB=DB);
+(VB,^XB):=(-VB,+XB=VB);
+(PB,^XB):=(-PB,+XB=PB);
+(NP,^XP):=(-NP,+XP=NP);
+(AP,^XP):=(-AP,+XP=AP);
+(JP,^XP):=(-JP,+XP=JP);
+(IP,^XP):=(-IP,+XP=IP);
+(CP,^XP):=(-CP,+XP=CP);
+(DP,^XP):=(-DP,+XP=DP);
+(VP,^XP):=(-VP,+XP=VP);
+(PP,^XP):=(-PP,+XP=PP);
+(XB,N,^NB):=(+XB=NB);
+(XB,A,^AB):=(+XB=AB);
+(XB,J,^JB):=(+XB=JB);
+(XB,I,^IB):=(+XB=IB);
+(XB,C,^CB):=(+XB=CB);
+(XB,D,^DB):=(+XB=DB);
+(XB,V,^VB):=(+XB=VB);
+(XB,P,^PB):=(+XB=PB);
+(PRS,^ATE):=(-PRS,+ATE=PRS);
+(PAS,^ATE):=(-PAS,+ATE=PAS);
+(FUT,^ATE):=(-FUT,+ATE=FUT);
+(NPAS,^ATE):=(-NPAS,+ATE=NPAS);
+(NFUT,^ATE):=(-NFUT,+ATE=NFUT);
+(STL,^ATE):=(-STL,+ATE=STL);
+(NYET,^ATE):=(-NYET,+ATE=NYET);
+(RPT,^RTE):=(-RPT,+RTE=RPT);
+(NRPT,^RTE):=(-NRPT,+RTE=NRPT);
+(RPS,^RTE):=(-RPS,+RTE=RPS);
+(RFT,^RTE):=(-RFT,+RTE=RFT);
+(NRFT,^RTE):=(-NRFT,+RTE=NRFT);
+(NTRA,^TRA):=(-NTRA,+TRA=NTRA);
+(TST,^TRA):=(-TST,+TRA=TST);
+(NTST,^TRA):=(-NTST,+TRA=NTST);
+(ACV,^VOI):=(-ACV,+VOI=ACV);
+(MIV,^VOI):=(-MIV,+VOI=MIV);
+(PSV,^VOI):=(-PSV,+VOI=PSV);
+(@1,^att=@1):=(-@1,+att=@1,+PERA);
+(@2,^att=@2):=(-@2,+att=@2,+PERA);
+(@3,^att=@3):=(-@3,+att=@3,+PERA);
+(@ability,^att=@ability):=(-@ability,+att=@ability,+MODA);
+(@aboard,^att=@aboard):=(-@aboard,+att=@aboard,+WHERE);
+(@about,^att=@about):=(-@about,+att=@about,+WHICH);
+(@above,^att=@above):=(-@above,+att=@above,+WHERE);
+(@according_to,^att=@according_to):=(-@according_to,+att=@according_to,+HOW);
+(@across,^att=@across):=(-@across,+att=@across,+WHERE);
+(@active,^att=@active):=(-@active,+att=@active,+VOIA);
+(@adjective,^att=@adjective):=(-@adjective,+att=@adjective,+LEXA);
+(@adverb,^att=@adverb):=(-@adverb,+att=@adverb,+LEXA);
+(@advice,^att=@advice):=(-@advice,+att=@advice,+MODA);
+(@after,^att=@after):=(-@after,+att=@after,+WHEN);
+(@again,^att=@again):=(-@again,+att=@again,+DEGA);
+(@against,^att=@against):=(-@against,+att=@against,+HOW);
+(@agreement,^att=@agreement):=(-@agreement,+att=@agreement,+MODA);
+(@ahead_of,^att=@ahead_of):=(-@ahead_of,+att=@ahead_of,+WHERE);
+(@all,^att=@all):=(-@all,+att=@all,+QUAA);
+(@alliteration,^att=@alliteration):=(-@alliteration,+att=@alliteration,+FIGA);
+(@almost,^att=@almost):=(-@almost,+att=@almost,+DEGA);
+(@along,^att=@along):=(-@along,+att=@along,+WHERE);
+(@alongside,^att=@alongside):=(-@alongside,+att=@alongside,+WHERE);
+(@also,^att=@also):=(-@also,+att=@also,+DEGA);
+(@although,^att=@although):=(-@although,+att=@although,+HOW);
+(@amid,^att=@amid):=(-@amid,+att=@amid,+WHERE);
+(@among,^att=@among):=(-@among,+att=@among,+WHERE);
+(@anacoluthon,^att=@anacoluthon):=(-@anacoluthon,+att=@anacoluthon,+FIGA);
+(@anadiplosis,^att=@anadiplosis):=(-@anadiplosis,+att=@anadiplosis,+FIGA);
+(@anaphora,^att=@anaphora):=(-@anaphora,+att=@anaphora,+FIGA);
+(@anastrophe,^att=@anastrophe):=(-@anastrophe,+att=@anastrophe,+FIGA);
+(@and,^att=@and):=(-@and,+att=@and,+HOW);
+(@anger,^att=@anger):=(-@anger,+att=@anger,+FEEL);
+(@angle_bracket,^att=@angle_bracket):=(-@angle_bracket,+att=@angle_bracket,+SYNA);
+(@antanaclasis,^att=@antanaclasis):=(-@antanaclasis,+att=@antanaclasis,+FIGA);
+(@anterior,^att=@anterior):=(-@anterior,+att=@anterior,+WHEN);
+(@anthropomorphism,^att=@anthropomorphism):=(-@anthropomorphism,+att=@anthropomorphism,+FIGA);
+(@anticlimax,^att=@anticlimax):=(-@anticlimax,+att=@anticlimax,+FIGA);
+(@antimetabole,^att=@antimetabole):=(-@antimetabole,+att=@antimetabole,+FIGA);
+(@antiphrasis,^att=@antiphrasis):=(-@antiphrasis,+att=@antiphrasis,+FIGA);
+(@antithesis,^att=@antithesis):=(-@antithesis,+att=@antithesis,+FIGA);
+(@antonomasia,^att=@antonomasia):=(-@antonomasia,+att=@antonomasia,+FIGA);
+(@any,^att=@any):=(-@any,+att=@any,+QUAA);
+(@apart_from,^att=@apart_from):=(-@apart_from,+att=@apart_from,+WHERE);
+(@apposition,^att=@apposition):=(-@apposition,+att=@apposition,+FIGA);
+(@archaic,^att=@archaic):=(-@archaic,+att=@archaic,+REGA);
+(@around,^att=@around):=(-@around,+att=@around,+WHERE);
+(@as,^att=@as):=(-@as,+att=@as,+HOW);
+(@as_far_as,^att=@as_far_as):=(-@as_far_as,+att=@as_far_as,+HOW);
+(@as_of,^att=@as_of):=(-@as_of,+att=@as_of,+HOW);
+(@as_per,^att=@as_per):=(-@as_per,+att=@as_per,+HOW);
+(@as_regards,^att=@as_regards):=(-@as_regards,+att=@as_regards,+HOW);
+(@as_well_as,^att=@as_well_as):=(-@as_well_as,+att=@as_well_as,+HOW);
+(@as.@if,^att=@as.@if):=(-@as.@if,+att=@as.@if,+HOW);
+(@aside,^att=@aside):=(-@aside,+att=@aside,+WHERE);
+(@aside_from,^att=@aside_from):=(-@aside_from,+att=@aside_from,+WHERE);
+(@assertion,^att=@assertion):=(-@assertion,+att=@assertion,+MODA);
+(@assonance,^att=@assonance):=(-@assonance,+att=@assonance,+FIGA);
+(@assumption,^att=@assumption):=(-@assumption,+att=@assumption,+MODA);
+(@astride,^att=@astride):=(-@astride,+att=@astride,+WHERE);
+(@asyndeton,^att=@asyndeton):=(-@asyndeton,+att=@asyndeton,+FIGA);
+(@at,^att=@at):=(-@at,+att=@at,+WHERE);
+(@athwart,^att=@athwart):=(-@athwart,+att=@athwart,+WHERE);
+(@atop,^att=@atop):=(-@atop,+att=@atop,+WHERE);
+(@attention,^att=@attention):=(-@attention,+att=@attention,+FEEL);
+(@barring,^att=@barring):=(-@barring,+att=@barring,+HOW);
+(@because,^att=@because):=(-@because,+att=@because,+HOW);
+(@because_of,^att=@because_of):=(-@because_of,+att=@because_of,+HOW);
+(@before,^att=@before):=(-@before,+att=@before,+WHEN);
+(@behind,^att=@behind):=(-@behind,+att=@behind,+WHERE);
+(@belief,^att=@belief):=(-@belief,+att=@belief,+MODA);
+(@below,^att=@below):=(-@below,+att=@below,+WHERE);
+(@beneath,^att=@beneath):=(-@beneath,+att=@beneath,+WHERE);
+(@beside,^att=@beside):=(-@beside,+att=@beside,+WHERE);
+(@besides,^att=@besides):=(-@besides,+att=@besides,+HOW);
+(@between,^att=@between):=(-@between,+att=@between,+WHERE);
+(@beyond,^att=@beyond):=(-@beyond,+att=@beyond,+WHERE);
+(@both,^att=@both):=(-@both,+att=@both,+WHICH);
+(@brace,^att=@brace):=(-@brace,+att=@brace,+SYNA);
+(@brachylogia,^att=@brachylogia):=(-@brachylogia,+att=@brachylogia,+FIGA);
+(@but,^att=@but):=(-@but,+att=@but,+HOW);
+(@by,^att=@by):=(-@by,+att=@by,+HOW);
+(@by_means_of,^att=@by_means_of):=(-@by_means_of,+att=@by_means_of,+HOW);
+(@catachresis,^att=@catachresis):=(-@catachresis,+att=@catachresis,+FIGA);
+(@causative,^att=@causative):=(-@causative,+att=@causative,+ASPA);
+(@certain,^att=@certain):=(-@certain,+att=@certain,+WHICH);
+(@chiasmus,^att=@chiasmus):=(-@chiasmus,+att=@chiasmus,+FIGA);
+(@circa,^att=@circa):=(-@circa,+att=@circa,+WHICH);
+(@climax,^att=@climax):=(-@climax,+att=@climax,+FIGA);
+(@close_to,^att=@close_to):=(-@close_to,+att=@close_to,+WHERE);
+(@colloquial,^att=@colloquial):=(-@colloquial,+att=@colloquial,+REGA);
+(@command,^att=@command):=(-@command,+att=@command,+MODA);
+(@concerning,^att=@concerning):=(-@concerning,+att=@concerning,+HOW);
+(@conclusion,^att=@conclusion):=(-@conclusion,+att=@conclusion,+MODA);
+(@condition,^att=@condition):=(-@condition,+att=@condition,+MODA);
+(@confirmation,^att=@confirmation):=(-@confirmation,+att=@confirmation,+MODA);
+(@consent,^att=@consent):=(-@consent,+att=@consent,+FEEL);
+(@consequence,^att=@consequence):=(-@consequence,+att=@consequence,+MODA);
+(@consonance,^att=@consonance):=(-@consonance,+att=@consonance,+FIGA);
+(@contentment,^att=@contentment):=(-@contentment,+att=@contentment,+FEEL);
+(@continuative,^att=@continuative):=(-@continuative,+att=@continuative,+ASPA);
+(@conviction,^att=@conviction):=(-@conviction,+att=@conviction,+MODA);
+(@decision,^att=@decision):=(-@decision,+att=@decision,+MODA);
+(@deduction,^att=@deduction):=(-@deduction,+att=@deduction,+MODA);
+(@def,^att=@def):=(-@def,+att=@def,+WHICH);
+(@desire,^att=@desire):=(-@desire,+att=@desire,+MODA);
+(@despite,^att=@despite):=(-@despite,+att=@despite,+HOW);
+(@determination,^att=@determination):=(-@determination,+att=@determination,+MODA);
+(@dialect,^att=@dialect):=(-@dialect,+att=@dialect,+REGA);
+(@disagreement,^att=@disagreement):=(-@disagreement,+att=@disagreement,+FEEL);
+(@discontentment,^att=@discontentment):=(-@discontentment,+att=@discontentment,+FEEL);
+(@dissent,^att=@dissent):=(-@dissent,+att=@dissent,+FEEL);
+(@distal,^att=@distal):=(-@distal,+att=@distal,+WHICH);
+(@double_negative,^att=@double_negative):=(-@double_negative,+att=@double_negative,+FIGA);
+(@double_parenthesis,^att=@double_parenthesis):=(-@double_parenthesis,+att=@double_parenthesis,+SYNA);
+(@double_quote,^att=@double_quote):=(-@double_quote,+att=@double_quote,+SYNA);
+(@doubt,^att=@doubt):=(-@doubt,+att=@doubt,+MODA);
+(@down,^att=@down):=(-@down,+att=@down,+WHERE);
+(@dual,^att=@dual):=(-@dual,+att=@dual,+QUAA);
+(@due_to,^att=@due_to):=(-@due_to,+att=@due_to,+HOW);
+(@during,^att=@during):=(-@during,+att=@during,+WHEN);
+(@dysphemism,^att=@dysphemism):=(-@dysphemism,+att=@dysphemism,+FIGA);
+(@each,^att=@each):=(-@each,+att=@each,+WHICH);
+(@either,^att=@either):=(-@either,+att=@either,+WHICH);
+(@ellipsis,^att=@ellipsis):=(-@ellipsis,+att=@ellipsis,+FIGA);
+(@emphasis,^att=@emphasis):=(-@emphasis,+att=@emphasis,+SYNA);
+(@enough,^att=@enough):=(-@enough,+att=@enough,+DEGA);
+(@entry,^att=@entry):=(-@entry,+att=@entry,+SYNA);
+(@epanalepsis,^att=@epanalepsis):=(-@epanalepsis,+att=@epanalepsis,+FIGA);
+(@epanorthosis,^att=@epanorthosis):=(-@epanorthosis,+att=@epanorthosis,+FIGA);
+(@equal,^att=@equal):=(-@equal,+att=@equal,+DEGA);
+(@equivalent,^att=@equivalent):=(-@equivalent,+att=@equivalent,+SODA);
+(@euphemism,^att=@euphemism):=(-@euphemism,+att=@euphemism,+FIGA);
+(@even,^att=@even):=(-@even,+att=@even,+WHICH);
+(@even.@if,^att=@even.@if):=(-@even.@if,+att=@even.@if,+HOW);
+(@every,^att=@every):=(-@every,+att=@every,+QUAA);
+(@except,^att=@except):=(-@except,+att=@except,+HOW);
+(@except_for,^att=@except_for):=(-@except_for,+att=@except_for,+HOW);
+(@except.@if,^att=@except.@if):=(-@except.@if,+att=@except.@if,+HOW);
+(@exclamation,^att=@exclamation):=(-@exclamation,+att=@exclamation,+MODA);
+(@excluding,^att=@excluding):=(-@excluding,+att=@excluding,+HOW);
+(@exhortation,^att=@exhortation):=(-@exhortation,+att=@exhortation,+MODA);
+(@expectation,^att=@expectation):=(-@expectation,+att=@expectation,+MODA);
+(@experiential,^att=@experiential):=(-@experiential,+att=@experiential,+ASPA);
+(@extra,^att=@extra):=(-@extra,+att=@extra,+DEGA);
+(@failing,^att=@failing):=(-@failing,+att=@failing,+HOW);
+(@familiar,^att=@familiar):=(-@familiar,+att=@familiar,+SODA);
+(@far_from,^att=@far_from):=(-@far_from,+att=@far_from,+WHERE);
+(@fear,^att=@fear):=(-@fear,+att=@fear,+MODA);
+(@female,^att=@female):=(-@female,+att=@female,+GENA);
+(@following,^att=@following):=(-@following,+att=@following,+WHEN);
+(@for,^att=@for):=(-@for,+att=@for,+HOW);
+(@from,^att=@from):=(-@from,+att=@from,+WHERE);
+(@future,^att=@future):=(-@future,+att=@future,+WHEN);
+(@generic,^att=@generic):=(-@generic,+att=@generic,+QUAA);
+(@given,^att=@given):=(-@given,+att=@given,+HOW);
+(@habitual,^att=@habitual):=(-@habitual,+att=@habitual,+ASPA);
+(@hesitation,^att=@hesitation):=(-@hesitation,+att=@hesitation,+FEEL);
+(@hope,^att=@hope):=(-@hope,+att=@hope,+MODA);
+(@hyperbole,^att=@hyperbole):=(-@hyperbole,+att=@hyperbole,+FIGA);
+(@hypothesis,^att=@hypothesis):=(-@hypothesis,+att=@hypothesis,+MODA);
+(@if,^att=@if):=(-@if,+att=@if,+HOW);
+(@if.@only,^att=@if.@only):=(-@if.@only,+att=@if.@only,+HOW);
+(@imperfective,^att=@imperfective):=(-@imperfective,+att=@imperfective,+ASPA);
+(@in,^att=@in):=(-@in,+att=@in,+WHERE);
+(@in_accordance_with,^att=@in_accordance_with):=(-@in_accordance_with,+att=@in_accordance_with,+HOW);
+(@in_addition_to,^att=@in_addition_to):=(-@in_addition_to,+att=@in_addition_to,+HOW);
+(@in_case,^att=@in_case):=(-@in_case,+att=@in_case,+HOW);
+(@in_case_of,^att=@in_case_of):=(-@in_case_of,+att=@in_case_of,+HOW);
+(@in_front_of,^att=@in_front_of):=(-@in_front_of,+att=@in_front_of,+WHERE);
+(@in_place_of,^att=@in_place_of):=(-@in_place_of,+att=@in_place_of,+WHERE);
+(@in_spite_of,^att=@in_spite_of):=(-@in_spite_of,+att=@in_spite_of,+HOW);
+(@inceptive,^att=@inceptive):=(-@inceptive,+att=@inceptive,+ASPA);
+(@inchoative,^att=@inchoative):=(-@inchoative,+att=@inchoative,+ASPA);
+(@including,^att=@including):=(-@including,+att=@including,+HOW);
+(@indef,^att=@indef):=(-@indef,+att=@indef,+WHICH);
+(@inferior,^att=@inferior):=(-@inferior,+att=@inferior,+SODA);
+(@inside,^att=@inside):=(-@inside,+att=@inside,+WHERE);
+(@inside_of,^att=@inside_of):=(-@inside_of,+att=@inside_of,+WHERE);
+(@instead_of,^att=@instead_of):=(-@instead_of,+att=@instead_of,+HOW);
+(@intention,^att=@intention):=(-@intention,+att=@intention,+MODA);
+(@interrogation,^att=@interrogation):=(-@interrogation,+att=@interrogation,+MODA);
+(@intimate,^att=@intimate):=(-@intimate,+att=@intimate,+SODA);
+(@into,^att=@into):=(-@into,+att=@into,+WHERE);
+(@invitation,^att=@invitation):=(-@invitation,+att=@invitation,+MODA);
+(@irony,^att=@irony):=(-@irony,+att=@irony,+FIGA);
+(@iterative,^att=@iterative):=(-@iterative,+att=@iterative,+ASPA);
+(@jargon,^att=@jargon):=(-@jargon,+att=@jargon,+REGA);
+(@judgement,^att=@judgement):=(-@judgement,+att=@judgement,+MODA);
+(@least,^att=@least):=(-@least,+att=@least,+DEGA);
+(@less,^att=@less):=(-@less,+att=@less,+DEGA);
+(@like,^att=@like):=(-@like,+att=@like,+HOW);
+(@male,^att=@male):=(-@male,+att=@male,+GENA);
+(@maybe,^att=@maybe):=(-@maybe,+att=@maybe,+POLA);
+(@metaphor,^att=@metaphor):=(-@metaphor,+att=@metaphor,+FIGA);
+(@metonymy,^att=@metonymy):=(-@metonymy,+att=@metonymy,+FIGA);
+(@mid,^att=@mid):=(-@mid,+att=@mid,+WHERE);
+(@minus,^att=@minus):=(-@minus,+att=@minus,+DEGA);
+(@more,^att=@more):=(-@more,+att=@more,+DEGA);
+(@most,^att=@most):=(-@most,+att=@most,+DEGA);
+(@multal,^att=@multal):=(-@multal,+att=@multal,+QUAA);
+(@narrative,^att=@narrative):=(-@narrative,+att=@narrative,+MODA);
+(@near,^att=@near):=(-@near,+att=@near,+WHERE);
+(@near_to,^att=@near_to):=(-@near_to,+att=@near_to,+WHERE);
+(@necessity,^att=@necessity):=(-@necessity,+att=@necessity,+MODA);
+(@neither,^att=@neither):=(-@neither,+att=@neither,+WHICH);
+(@neutral,^att=@neutral):=(-@neutral,+att=@neutral,+GENA);
+(@next,^att=@next):=(-@next,+att=@next,+WHERE);
+(@next_to,^att=@next_to):=(-@next_to,+att=@next_to,+WHERE);
+(@no,^att=@no):=(-@no,+att=@no,+QUAA);
+(@not,^att=@not):=(-@not,+att=@not,+POLA);
+(@notwithstanding,^att=@notwithstanding):=(-@notwithstanding,+att=@notwithstanding,+HOW);
+(@noun,^att=@noun):=(-@noun,+att=@noun,+LEXA);
+(@obligation,^att=@obligation):=(-@obligation,+att=@obligation,+MODA);
+(@of,^att=@of):=(-@of,+att=@of,+HOW);
+(@off,^att=@off):=(-@off,+att=@off,+HOW);
+(@on,^att=@on):=(-@on,+att=@on,+WHERE);
+(@on_account_of,^att=@on_account_of):=(-@on_account_of,+att=@on_account_of,+HOW);
+(@on_behalf_of,^att=@on_behalf_of):=(-@on_behalf_of,+att=@on_behalf_of,+HOW);
+(@on_top_of,^att=@on_top_of):=(-@on_top_of,+att=@on_top_of,+WHERE);
+(@only,^att=@only):=(-@only,+att=@only,+WHICH);
+(@onomatopoeia,^att=@onomatopoeia):=(-@onomatopoeia,+att=@onomatopoeia,+FIGA);
+(@onto,^att=@onto):=(-@onto,+att=@onto,+WHERE);
+(@opinion,^att=@opinion):=(-@opinion,+att=@opinion,+MODA);
+(@opposite,^att=@opposite):=(-@opposite,+att=@opposite,+WHERE);
+(@or,^att=@or):=(-@or,+att=@or,+HOW);
+(@ordinal,^att=@ordinal):=(-@ordinal,+att=@ordinal,+WHICH);
+(@other,^att=@other):=(-@other,+att=@other,+WHICH);
+(@out,^att=@out):=(-@out,+att=@out,+WHERE);
+(@out_from,^att=@out_from):=(-@out_from,+att=@out_from,+WHERE);
+(@out_of,^att=@out_of):=(-@out_of,+att=@out_of,+WHERE);
+(@outside,^att=@outside):=(-@outside,+att=@outside,+WHERE);
+(@outside_of,^att=@outside_of):=(-@outside_of,+att=@outside_of,+WHERE);
+(@over,^att=@over):=(-@over,+att=@over,+WHERE);
+(@owing_to,^att=@owing_to):=(-@owing_to,+att=@owing_to,+HOW);
+(@own,^att=@own):=(-@own,+att=@own,+WHICH);
+(@oxymoron,^att=@oxymoron):=(-@oxymoron,+att=@oxymoron,+FIGA);
+(@pace,^att=@pace):=(-@pace,+att=@pace,+HOW);
+(@pain,^att=@pain):=(-@pain,+att=@pain,+FEEL);
+(@paradox,^att=@paradox):=(-@paradox,+att=@paradox,+FIGA);
+(@parallelism,^att=@parallelism):=(-@parallelism,+att=@parallelism,+FIGA);
+(@parenthesis,^att=@parenthesis):=(-@parenthesis,+att=@parenthesis,+SYNA);
+(@paronomasia,^att=@paronomasia):=(-@paronomasia,+att=@paronomasia,+FIGA);
+(@passive,^att=@passive):=(-@passive,+att=@passive,+VOIA);
+(@past,^att=@past):=(-@past,+att=@past,+WHEN);
+(@paucal,^att=@paucal):=(-@paucal,+att=@paucal,+QUAA);
+(@per,^att=@per):=(-@per,+att=@per,+HOW);
+(@perfective,^att=@perfective):=(-@perfective,+att=@perfective,+ASPA);
+(@periphrasis,^att=@periphrasis):=(-@periphrasis,+att=@periphrasis,+FIGA);
+(@permission,^att=@permission):=(-@permission,+att=@permission,+MODA);
+(@permissive,^att=@permissive):=(-@permissive,+att=@permissive,+ASPA);
+(@persistent,^att=@persistent):=(-@persistent,+att=@persistent,+ASPA);
+(@person,^att=@person):=(-@person,+att=@person,+ANIA);
+(@pl,^att=@pl):=(-@pl,+att=@pl,+QUAA);
+(@pleonasm,^att=@pleonasm):=(-@pleonasm,+att=@pleonasm,+FIGA);
+(@plus,^att=@plus):=(-@plus,+att=@plus,+DEGA);
+(@polite,^att=@polite):=(-@polite,+att=@polite,+SODA);
+(@polyptoton,^att=@polyptoton):=(-@polyptoton,+att=@polyptoton,+FIGA);
+(@polysyndeton,^att=@polysyndeton):=(-@polysyndeton,+att=@polysyndeton,+FIGA);
+(@possibility,^att=@possibility):=(-@possibility,+att=@possibility,+MODA);
+(@posterior,^att=@posterior):=(-@posterior,+att=@posterior,+WHEN);
+(@prediction,^att=@prediction):=(-@prediction,+att=@prediction,+MODA);
+(@present,^att=@present):=(-@present,+att=@present,+WHEN);
+(@presumption,^att=@presumption):=(-@presumption,+att=@presumption,+MODA);
+(@prior_to,^att=@prior_to):=(-@prior_to,+att=@prior_to,+WHEN);
+(@probability,^att=@probability):=(-@probability,+att=@probability,+MODA);
+(@progressive,^att=@progressive):=(-@progressive,+att=@progressive,+ASPA);
+(@prohibition,^att=@prohibition):=(-@prohibition,+att=@prohibition,+MODA);
+(@promise,^att=@promise):=(-@promise,+att=@promise,+MODA);
+(@prospective,^att=@prospective):=(-@prospective,+att=@prospective,+ASPA);
+(@proximal,^att=@proximal):=(-@proximal,+att=@proximal,+WHICH);
+(@pursuant_to,^att=@pursuant_to):=(-@pursuant_to,+att=@pursuant_to,+HOW);
+(@qua,^att=@qua):=(-@qua,+att=@qua,+HOW);
+(@quadrual,^att=@quadrual):=(-@quadrual,+att=@quadrual,+QUAA);
+(@recent,^att=@recent):=(-@recent,+att=@recent,+WHEN);
+(@reciprocal,^att=@reciprocal):=(-@reciprocal,+att=@reciprocal,+VOIA);
+(@reflexive,^att=@reflexive):=(-@reflexive,+att=@reflexive,+VOIA);
+(@regarding,^att=@regarding):=(-@regarding,+att=@regarding,+HOW);
+(@regardless_of,^att=@regardless_of):=(-@regardless_of,+att=@regardless_of,+HOW);
+(@regret,^att=@regret):=(-@regret,+att=@regret,+MODA);
+(@relative,^att=@relative):=(-@relative,+att=@relative,+SYNA);
+(@relief,^att=@relief):=(-@relief,+att=@relief,+FEEL);
+(@remote,^att=@remote):=(-@remote,+att=@remote,+WHEN);
+(@repetition,^att=@repetition):=(-@repetition,+att=@repetition,+FIGA);
+(@request,^att=@request):=(-@request,+att=@request,+MODA);
+(@result,^att=@result):=(-@result,+att=@result,+ASPA);
+(@reverential,^att=@reverential):=(-@reverential,+att=@reverential,+SODA);
+(@round,^att=@round):=(-@round,+att=@round,+HOW);
+(@same,^att=@same):=(-@same,+att=@same,+WHICH);
+(@save,^att=@save):=(-@save,+att=@save,+HOW);
+(@since,^att=@since):=(-@since,+att=@since,+WHEN);
+(@single_quote,^att=@single_quote):=(-@single_quote,+att=@single_quote,+SYNA);
+(@singular,^att=@singular):=(-@singular,+att=@singular,+QUAA);
+(@slang,^att=@slang):=(-@slang,+att=@slang,+REGA);
+(@so,^att=@so):=(-@so,+att=@so,+HOW);
+(@speculation,^att=@speculation):=(-@speculation,+att=@speculation,+MODA);
+(@speech,^att=@speech):=(-@speech,+att=@speech,+FIGA);
+(@square_bracket,^att=@square_bracket):=(-@square_bracket,+att=@square_bracket,+SYNA);
+(@subsequent_to,^att=@subsequent_to):=(-@subsequent_to,+att=@subsequent_to,+WHEN);
+(@such,^att=@such):=(-@such,+att=@such,+WHICH);
+(@suggestion,^att=@suggestion):=(-@suggestion,+att=@suggestion,+MODA);
+(@superior,^att=@superior):=(-@superior,+att=@superior,+SODA);
+(@surprise,^att=@surprise):=(-@surprise,+att=@surprise,+FEEL);
+(@symploce,^att=@symploce):=(-@symploce,+att=@symploce,+FIGA);
+(@synecdoche,^att=@synecdoche):=(-@synecdoche,+att=@synecdoche,+FIGA);
+(@synesthesia,^att=@synesthesia):=(-@synesthesia,+att=@synesthesia,+FIGA);
+(@taboo,^att=@taboo):=(-@taboo,+att=@taboo,+REGA);
+(@terminative,^att=@terminative):=(-@terminative,+att=@terminative,+ASPA);
+(@than,^att=@than):=(-@than,+att=@than,+HOW);
+(@thanks_to,^att=@thanks_to):=(-@thanks_to,+att=@thanks_to,+HOW);
+(@that_of,^att=@that_of):=(-@that_of,+att=@that_of,+HOW);
+(@thing,^att=@thing):=(-@thing,+att=@thing,+ANIA);
+(@threat,^att=@threat):=(-@threat,+att=@threat,+MODA);
+(@through,^att=@through):=(-@through,+att=@through,+WHERE);
+(@throughout,^att=@throughout):=(-@throughout,+att=@throughout,+WHERE);
+(@times,^att=@times):=(-@times,+att=@times,+QUAA);
+(@title,^att=@title):=(-@title,+att=@title,+SYNA);
+(@to,^att=@to):=(-@to,+att=@to,+WHERE);
+(@topic,^att=@topic):=(-@topic,+att=@topic,+SYNA);
+(@toward,^att=@toward):=(-@toward,+att=@toward,+WHERE);
+(@towards,^att=@towards):=(-@towards,+att=@towards,+WHERE);
+(@trial,^att=@trial):=(-@trial,+att=@trial,+QUAA);
+(@tuple,^att=@tuple):=(-@tuple,+att=@tuple,+QUAA);
+(@under,^att=@under):=(-@under,+att=@under,+WHERE);
+(@underneath,^att=@underneath):=(-@underneath,+att=@underneath,+WHERE);
+(@unless,^att=@unless):=(-@unless,+att=@unless,+HOW);
+(@unlike,^att=@unlike):=(-@unlike,+att=@unlike,+HOW);
+(@until,^att=@until):=(-@until,+att=@until,+WHEN);
+(@up,^att=@up):=(-@up,+att=@up,+WHERE);
+(@upon,^att=@upon):=(-@upon,+att=@upon,+HOW);
+(@verb,^att=@verb):=(-@verb,+att=@verb,+LEXA);
+(@versus,^att=@versus):=(-@versus,+att=@versus,+HOW);
+(@via,^att=@via):=(-@via,+att=@via,+WHERE);
+(@vocative,^att=@vocative):=(-@vocative,+att=@vocative,+SYNA);
+(@warning,^att=@warning):=(-@warning,+att=@warning,+MODA);
+(@weariness,^att=@weariness):=(-@weariness,+att=@weariness,+FEEL);
+(@wh,^att=@wh):=(-@wh,+att=@wh,+WHICH);
+(@when,^att=@when):=(-@when,+att=@when,+WHEN);
+(@whereas,^att=@whereas):=(-@whereas,+att=@whereas,+HOW);
+(@while,^att=@while):=(-@while,+att=@while,+WHEN);
+(@with,^att=@with):=(-@with,+att=@with,+HOW);
+(@with_regard_to,^att=@with_regard_to):=(-@with_regard_to,+att=@with_regard_to,+HOW);
+(@with_respect_to,^att=@with_respect_to):=(-@with_respect_to,+att=@with_respect_to,+HOW);
+(@within,^att=@within):=(-@within,+att=@within,+WHERE);
+(@without,^att=@without):=(-@without,+att=@without,+HOW);
+(@worth,^att=@worth):=(-@worth,+att=@worth,+HOW);
+(@yes,^att=@yes):=(-@yes,+att=@yes,+POLA);
+(@zoomorphism,^att=@zoomorphism):=(-@zoomorphism,+att=@zoomorphism,+FIGA);
+(CTN,^NPFV):=(-ASP,-CTN,+ASP=CTN,+ASP=NPFV);
+(PGS,^CTN,^NPFV):=(-ASP,-PGS,+ASP=PGS,+ASP=CTN,+ASP=NPFV);
+(HAB,^NPFV):=(-ASP,-HAB,+ASP=HAB,+ASP=NPFV);
+(ITE,^NPFV):=(-ASP,-ITE,+ASP=ITE,+ASP=NPFV);
+(EXP,^PFC):=(-ASP,-EXP,+ASP=EXP,+ASP=PFC);
+(PSS,^PFC):=(-ASP,-PSS,+ASP=PSS,+ASP=PFC);
+(PRP,^PFC):=(-ASP,-PRP,+ASP=PRP,+ASP=PFC);
+(RES,^PFC):=(-ASP,-RES,+ASP=RES,+ASP=PFC);
+(COM,^MCL,^FEM):=(-GEN,-COM,+GEN=COM,+GEN=MCL,+GEN=FEM);
+(VAR,^MCL,^FEM,^NEU):=(-GEN,-VAR,+GEN=VAR,GEN=MCL,+GEN=FEM,+GEN=NEU);
+({CIR|PPS|PRE},^P):=(-LEX,+LEX=P);
+({SAV|AAV|CJT|DJT},^A):=(-LEX,+LEX=A);
+#({CCX|IFX|PFX|SFX},^F):=(-LEX,+LEX=F);
+({COO|SCJ},^C):=(-LEX,+LEX=C);
+({ART|DEM|POD|QUA},^D):=(-LEX,+LEX=D);
+({NOU|PPN},^N):=(-LEX,+LEX=N);
+({CDN|DTN|PTN|MLN|ORD},^U):=(-LEX,+LEX=U);
+({DEP|DUM|EPR|NPR|IPR|PPR|SPR|CPR|FPR|RPR},^R):=(-LEX,+LEX=R);
+(/X[BP]/(%x,N;%y),^N):=(+LEX=N);
+(/X[BP]/(%x,A;%y),^A):=(+LEX=A);
+(/X[BP]/(%x,J;%y),^J):=(+LEX=J);
+(/X[BP]/(%x,I;%y),^I):=(+LEX=I);
+(/X[BP]/(%x,C;%y),^C):=(+LEX=C);
+(/X[BP]/(%x,D;%y),^D):=(+LEX=D);
+(/X[BP]/(%x,V;%y),^V):=(+LEX=V);
+(/X[BP]/(%x,P;%y),^P):=(+LEX=P);
+(SNGT,^SNG):=(-NUM,-SGNT,+NUM=SNG,+NUM=SNGT); SNGT is also SNG
+(PLRT,^PLR):=(-NUM,-PLRT,+NUM=PLR,+NUM=PLRT); PLRT is also PLR
+(INV,^SNG,^PLR):=(-NUM,-INV,+NUM=SNG,+NUM=PLR,+NUM=INV); INV is both SNG and PLR
+(DUA,^PLR):=(-NUM,-DUA,+NUM=DUA,+NUM=PLR);
+(TRI,^PLR):=(-NUM,-TRI,+NUM=PLR,+NUM=TRI);
+(QDR,^PLR):=(-NUM,-QDR,+NUM=PLR,+NUM=QDR);
+(PAU,^PLR):=(-NUM,-PAU,+NUM=PLR,+NUM=PAU);
+(MUL,^PLR):=(-NUM,-MUL,+NUM=PLR,+NUM=MUL);
+(CRC,^COO):=(-POS,-CRC,+POS=CRC,+POS=COO);
+(AVR,^SCJ):=(-POS,-AVR,+POS=AVR,+POS=SCJ);
+(CMR,^SCJ):=(-POS,-CMR,+POS=CMR,+POS=SCJ);
+(RVZ,^SCJ):=(-POS,-RVZ,+POS=RVZ,+POS=SCJ);
+(N,INV,^3PS,^3PP,^PER):=(+PER=3PS,+PER=3PP); plural nouns are 3PP
+(N,PLR,^3PP,^PER):=(+PER=3PP); plural nouns are 3PP
+(N,SNG,^3PS,^PER):=(+PER=3PS); singular nouns are 3PS
+(PTR,^PAS):=(-ATE,-PTR,+ATE=PTR,+ATE=PAS);
+(HEP,^PAS):=(-ATE,-HEP,+ATE=HEP,+ATE=PAS);
+(PEP,^PAS):=(-ATE,-PEP,+ATE=PEP,+ATE=PAS);
+(HOP,^PAS):=(-ATE,-HOP,+ATE=HOP,+ATE=PAS);
+(POP,^PAS):=(-ATE,-POP,+ATE=POP,+ATE=PAS);
+(IPT,^PAS):=(-ATE,-IPT,+ATE=IPT,+ATE=PAS);
+(NRCP,^PAS):=(-ATE,-NRCP,+ATE=NRCP,+ATE=PAS);
+(RCP,^PAS):=(-ATE,-RCP,+ATE=RCP,+ATE=PAS);
+(NRMP,^PAS):=(-ATE,-NRMP,+ATE=NRMP,+ATE=PAS);
+(RMP,^PAS):=(-ATE,-RMP,+ATE=RMP,+ATE=PAS);
+(FUN,^FUT):=(-ATE,-FUN,+ATE=FUN,+ATE=FUT);
+(FUR,^FUT):=(-ATE,-FUR,+ATE=FUR,+ATE=FUT);
+(TSTD,^TST):=(-TRA,-TSTD,+TRA=TSTD,+TRA=TST);
+(TSTI,^TST):=(-TRA,-TSTI,+TRA=TSTI,+TRA=TST);
+(TST2,^TST):=(-TRA,-TST2,+TRA=TST2,+TRA=TST);
+(TST3,^TST):=(-TRA,-TST3,+TRA=TST3,+TRA=TST);
+(NERG,^NTST):=(-TRA,-NERG,+TRA=NERG,+TRA=NTST);
+(NACC,^NTST):=(-TRA,-NACC,+TRA=NACC,+TRA=NTST);
+(XB(%x;%y),^XB,^XP):=(+XB); assigns the feature XB to the nodes containing intermediate projections
+(XP(%x;%y),^XP):=(+XP); assigns the feature XP to the nodes containing maximal projections
+(SEM=TME,^rel):=(+rel=tim);
+(SEM=MAN,^rel):=(+rel=man);
+(SEM=PLE,^rel):=(+rel=plc);
+(UW,TEMP):=(-TEMP); removes the feature TEMP from the words with the feature UW
+(TEMP,^LEX):=(+LEX=N,+POS=PPN); treats all temporary words as proper nouns
+(R,^N):=(+LEX=N); assigns the feature N to pronouns
+(PTN,^N):=(+LEX=N); assigns the feature N to partitive numbers
+({CDN|ORD},^J):=(+J); assigns the feature J to cardinals and ordinals
+({DTN|MLN},^A):=(+A); assigns the feature A to distributive ("in pairs") and multiplicative ("twice") numbers
+#(BLK):=; deletes the blank space (this rule applies only if the blank space is in the dictionary)
+; "MALAY T-Grammar UCA1"
+; MX
+(PPR,%y)("punya",%x):=(%y, -PPR, +POS=SPR,-CAS,-PER); saya punya
+("diri",%x)(PPR,%y):=(%y, -PPR, +POS=FPR); diri kamu = youself
+#([sesuku])(BLK)([past])(BLK)(DIGIT,%y):=(%y,+HOUR)([[15]],+DIGIT,+MINUTE); a quarter past ten
+([pukul])(BLK)(DIGIT,%x):=(%x,+HOUR);
+(DIGIT,^"1/2",%x)(BLK)([jam]):=(%x,+HOUR);
+(DIGIT,%x)(BLK)([minit]):=(%x,+MINUTE);
+(DIGIT,%x)(BLK)([saat]):=(%x,+SECOND);
+([yang],%x)(BLK)(D, @def, %y):=(%y, -@def,+@distal); change @def to @distal for itu
+([yang]):= ; relativizer 'yang' rule2
+(N,%x)([yang])(/\w/,%y):= (%x)(%y); relativizer 'yang' rule
+(N,PLR,^@pl,^@multal,^@paucal,^@all):=(+att=@pl); books > book.@pl
+(AUX,%x)(GER,%y):=(%y,+att=@progressive,+att=%x);  is.@present killing > killing.@progressive.@present
+(AUX,%x)(V,%y):=(%y,+att=%x); will.@future kill > kill.@future
+(^AUX,^BLK,^[not],^[n't])(V,{^AUX|COP},PRS,^@present):=()(+att=@present); kill > kill.@present
+(^AUX,^BLK,^[not],^[n't])(V,{^AUX|COP},PAS,^@past):=()(+att=@past); killed < kill.@past
+(MOV,%x)(V,%y):=(%y,+att=%x); must.@obligation kill > kill.@obligation
+([tidak])([to],%x)(V,%y):=(%x)(+att=@not,%y); not to do > do.@not
+({[tidak]|[n't]})({V,^AUX|J|N|A|D},%x):=(+att=@not,%x); not kill > kill.@not
+(VB,%x)(FPR):=(%x,+att=@reflexive); kill himself > kill.@reflexive
+(N,%z)(NB,%x)(DP,^POD,att,%y)({^N|PUT|STAIL|CTAIL},%left):=(%z,+att=%y)(%x)(%left); buku lain
+(N,^DIGIT,%x)(NB,%y)({XP,^D,^J|PUT|STAIL|CTAIL},%right):=(NB(%x,+proj;%y,+adjt),+XB=NB,+LEX=N,%new)(%right); glass mug > NB(mug, glass)
+(NB,^DIGIT,%x)(POD,%z)(DP,^POD,att,%y)({^N|PUT|STAIL|CTAIL},%right):=(%x,+att=%y)(%z)(%right); buku lain
+(NB,%x)(N,%z)(DP,^POD,att,%y)({^J|^N|PUT|STAIL|CTAIL},%left):=(%x,+att=%y)(%z)(%left); cawan kaca itu
+#(POD,%x)(NB,%y)({^N|PUT|STAIL|CTAIL},%right):=(NB(%y;%x,+adjt,+pos),+LEX=N,+XB=NB,%new)(%right); my book > NB(book,I)
+(DP,att,%x)(NB,%y)({^N|PUT|STAIL|CTAIL},%right):=(%y,+att=%x)(%right); the.@def book > book.@def
+(NB,^PPN,%x)(N,^PPN,%y)({XP,^D,^ADJ},%right):=(NB(%x,+proj;%y,+adjt),+XB=NB,+LEX=N,%new)(%right); cawan kaca > NB(cawan, kaca)
+(NB,%x)(POD,%y)({^N|PUT|STAIL|CTAIL},%right):=(NB(%x;%y,+adjt,+pos),+LEX=N,+XB=NB,%new)(%right); buku saya > NB(buku,saya)
+(SAV,att,%x)({AB|JB|DB},%y):=(%y,+att=%x); very.@plus beautiful > beautiful.@plus
+(SAV,^att,%x)({AB|JB|DB},%y):=(XB(%y;%x,+spec,+man),+LEX=%y,+XB=%y); extremely beautiful > XB(beautiful,extremely)
+(DIGIT,^ORD,%y)(NB,^[jam],^DIGIT,%x):=(XB(%x;%y,+spec,+qua),+LEX=N,+XB=NB,%z);
+(P,^PP,%x)(XP,^DP,^PP,%y)({XP|PUT|STAIL|CTAIL},%z):=(%y,-LEX,-XP,+LEX=P,+XP=PP,+adjt,+rel=%x,+att=%x)(%z); from Paris > Paris.@from
+(XP,%x)(COMMA,%c)(XP=%x,rel=and,%y):=(%x)([dan],+W,%new)(%y); John, Mary and Peter > John and Mary and Peter
+(XP,%x)(COMMA,%c)(XP=%x,rel=or,%y):=(%x)([atau],+W,%new)(%y); John, Mary or Peter > John or Mary or Peter
+(XP,%x)([dan])(XP=%x,%y):=(and(%y;%x),+LEX=%x,+XP=%x,+rel=and,%new); John and Mary > and(Mary,John)
+(XP,%x)([atau])(XP=%x,%y):=(or(%y;%x),+LEX=%x,+XP=%x,+rel=or,%new); John or Mary > or(Mary,John)
+(VP,%x)(QMARK):=(%x,att=@interrogative); who killed Mary? > who killed.@interrogative Mary
+(NP,%np)(NB,%nb2):=(NB(%np,+proj;%nb2,+adjt,+proj),-XP,+XB=NB,+LEX=N,%new);
+#(NB,%nb)(JP,%jp):=(NB(%nb,+proj;%jp,+adjt,+proj),+XB=NP,+LEX=N,%new);
+#(DP,%x)(JP,%y):=aoj(%y;%x);
+({R|NP|DP},^DIGIT,%x)(JP,^DIGIT,^[terakhir],%y):=(%x)(LEX=V,POS=COP,ATE=PRS,%z)(%y); add a NULL Copula in between Noun and Adjective
+(PPR,%x)(P,%y)(NB,%z):=(%x)(%y)(-XB,+XP=NP,%z);
+([ke],%x)([-],%y)(DIGIT,%z):=(%x)(%z);
+; "MALAY T UCA2"
+; MX
+([diri],%x)(PPR,%y):=(%y, -PPR, +POS=FPR); diri kamu = youself
+(%x,MERGE>)(%y):=(%x&%y,-MERGE>);
+(%x)(%y,<MERGE)(%y):=(%x&%y,-<MERGE);
+(N,PLR,^@pl):=(-PLR,+att=@pl);
+(J,CMP):=(-CMP,+att=@more); bigger > bigger.@more
+(J,SUP):=(-SUP,+att=@most); biggest > biggest.@most
+([lebih],%x)([banyak],%y):=(%x); remove banyak
+([lebih],%x)(J,%y):=(%y,+att=@more); more expensive > expensive.@more
+([most],%x)(J,%y):=(%y,+att=@most); most expensive > expensive.@most
+([less],%x)(J,%y):=(%y,+att=@less); less expensive > expensive.@less
+([least],%x)(J,%y):=(%y,+att=@least); least expensive > expensive.@least
+({@present|@past|@future},^TNS):=(+TNS);
+(AUX,%x)(V,GER,%y):=(+att=@progressive,+att=%x,%y);  is/was/be/been killing
+({[will]|['ll]|[won't]},%x)([have])(V,PTP,%y):=(+att=@anterior,+att=%x,%y); will have killed
+({[would]|['d]},%x)([have])(V,PTP,%y):=(+att=@past,+att=@posterior,+att=%x,%y); would have killed
+({[have]|[has]|['ve]|[had]|['d]},%x)(V,PTP,%y)({^V,^BLK|SHEAD|STAIL},%z):=(+att=%x,%y)(%z); have killed
+({[will]|['ll]|[won't]},%x)(V,%y)({^V,^BLK|SHEAD|STAIL},%z):=(+att=%x,%y)(%z); will kill
+({[would]|['d]},%x)(V,%y)({^V,^BLK|SHEAD|STAIL},%z):=(+att=%x,%y)(%z); would kill
+([used])([to])(V,INF,%y):=(+att=@habitual,%y); used to kill
+([going])(BLK)([to])(BLK)(V,%y):=(+att=@recent,%y); is going to kill
+([just])(V,%x):=(+att=@recent,%x); just killed
+([still])(V,%x):=(+att=@continuative,%x); still killing
+([sudah])(V,%x):=(+att=@perfective,%x); already killed
+(V,%x)([already]):=(+att=@perfective,%x); killed already
+([did],%x)(V,INF,%y):=(-ATE,+ATE=PAS,+att=%x,%y); did kill
+({[do]|[does]})(V,%x):=(-ATE,+ATE=PRS,+att=@present,%x); does kill
+(^AUX,^BLK,^[not],^[n't])(V,{^AUX|COP},PRS,^TNS):=()(+att=@present,+TNS); kill
+(^AUX,^BLK,^[not],^[n't])(V,{^AUX|COP},PAS,^TNS):=()(+att=@past,+TNS); killed
+({^AUX,^BLK,^[not]|SHEAD|CHEAD},%x)([to])(V,%y):=(%x)(-ATE,+ATE=INF,%y); to kill
+(MOV,%x)(V,%y):=(%y,+att=%x); can.@ability kill > kill.@ability
+([ought],%x)([to])(V,%y):=(%y,+att=@probability);
+({[have]|[has]|[had]},%x)([to])(V,%y):=(%y,+att=@obligation);
+([able])(BLK)([to])(BLK)(V,%x):=(+att=@ability,%x); able to do
+([not])([to],%x)(V,%y):=(%x)(+att=@not,%y);
+({[not]|[n't]})({V,^AUX|J|N|A|D},%x):=(+att=@not,%x);
+(VB,%x)(FPR):=(%x,+att=@reflexive);
+(VB,%x)(CPR):=(%x,+att=@reciprocal);
+({SHEAD|CHEAD|^BLK,^DIGIT},%x)([se],HOUR,%z)({"belas"|"puluh"|"ratus"|"ribu"|"bilion"|"trilion"},%y):=(%x)("1",[1],[[1]],U,CDN,DIGIT,HOUR,%w)(%y); sepuluh jam
+({SHEAD|CHEAD|^BLK,^DIGIT},%x)([se],%z)({"belas"|"puluh"|"ratus"|"ribu"|"bilion"|"trilion"},%y):=(%x)("1",[1],[[1]],U,CDN,DIGIT,%w)(%y); sepuluh jam
+({SHEAD|CHEAD|^BLK,^DIGIT,^[se]},%x)({"belas"|"puluh"|"ratus"|"ribu"|"bilion"|"trilion"},%y):=(%x)("1",[1],[[1]],U,CDN,DIGIT,%z)(%y); thousand > 1 thousand
+(DIGIT,%x)(HYPHEN)(DIGIT,%y):=(%x)(%y); twenty-one > twenty one
+(DIGIT,%x)([dan])(DIGIT,%y):=(%x)(%y); hundred and one > hundred one
+(DIGIT,%x)(COMMA,%y)(DIGIT,%z):=(%x&%z); 1,234 > 1234
+({SHEAD|CHEAD|^BLK},^FLAG,%z)(DIGIT,BELAS,^FLAG,%x)({^DIGIT,^FLAG,^BLK,^PUT,^[dan]|"ratus"|"ribu"|"juta"|"bilion"|"trilion"|STAIL|CTAIL},%y):=(%z)([[1]],[1],"1",DIGIT,FLAG)(%x)(%y);
+#({SHEAD|CHEAD|^BLK},%z)(DIGIT,%x)(DIGIT,BELAS,%y):=(%z)(%x&%y,-BELAS);
+(DIGIT,%x)(DIGIT,BELAS,%y)({STAIL|CTAIL|^BLK},%z):=(%x&%y,-BELAS)(%z);
+(DIGIT,%x)(PUT,PERCENTAGE,%y):=(%x&%y,-PUT); 1 % > 1%
+(DIGIT,%x)(FSLASH,%y)(DIGIT,%z):=(%x&%y&%z,-FSLASH,+FRACTION); 1 / 5 > 1/5
+([campur],%x)(DIGIT,%y):=([+],[[+]],PUT,PLUS)(%y); plus 7 > + 7
+([tolak],%x)(DIGIT,%y):=([-],[[-]],PUT,HYPHEN)(%y); minus 7 > - 7
+({[+]|[-]},%x)(DIGIT,%y):=(%x&%y,-PUT,-PLUS,-HYPHEN); + 7 > +7
+(DIGIT,%x)(PERIOD,%y)(DIGIT,%z,^DECIMAL):=(%x&%y&%z,-PUT,-PERIOD,+DECIMAL); 1 . 2 > 1.2
+(DIGIT,%x)([perpuluhan],%y)(DIGIT,%z):=(DIGIT,%x)(".",[[.]],PERIOD,%w)(DIGIT,%z); 1 point 5 > 1 . 5
+(DIGIT,TRILLION,%x)({^DIGIT,^BLK,^PUT,^[dan]|STAIL|CTAIL},%y):=(%x)([[0]],[0],"0",BILLION,DIGIT)(%y);
+(DIGIT,TRILLION,%x)(DIGIT,^BILLION,%y)({^DIGIT,^U,^BLK|STAIL|CTAIL},%z):=(%x)([[0]],[0],"0",BILLION,DIGIT)(%y)(%z);
+({SHEAD|CHEAD|^BLK,^DIGIT},%x)(DIGIT,TRILLION,%y)(DIGIT,BILLION,^000,%z):=(%x)(%y)([[0]],[0],"0",0,DIGIT)(%z);
+(DIGIT,BILLION,%x)({^DIGIT,^BLK,^PUT,^[dan]|STAIL|CTAIL},%y):=(%x)([[0]],[0],"0",MILLION,DIGIT)(%y);
+(DIGIT,BILLION,%x)(DIGIT,^MILLION,%y)({^DIGIT,^U,^BLK|STAIL|CTAIL},%z):=(%x)([[0]],[0],"0",MILLION,DIGIT)(%y)(%z);
+({SHEAD|CHEAD|^BLK,^DIGIT},%x)(DIGIT,BILLION,%y)(DIGIT,MILLION,^000,%z):=(%x)(%y)([[0]],[0],"0",0,DIGIT)(%z);
+(DIGIT,MILLION,%x)({^DIGIT,^BLK,^PUT,^[dan]|STAIL|CTAIL},%y):=(%x)([[0]],[0],"0",THOUSAND,DIGIT)(%y);
+(DIGIT,MILLION,%x)(DIGIT,^THOUSAND,%y)({^DIGIT,^U,^BLK|STAIL|CTAIL},%z):=(%x)([[0]],[0],"0",THOUSAND,DIGIT)(%y)(%z);
+({SHEAD|CHEAD|^BLK,^DIGIT},%x)(DIGIT,MILLION,%y)(DIGIT,THOUSAND,^000,%z):=(%x)(%y)([[0]],[0],"0",0,DIGIT)(%z);
+(DIGIT,THOUSAND,%x)({^DIGIT,^BLK,^PUT,^[dan]|STAIL|CTAIL},%y):=(%x)([[0]],[0],"0",HUNDRED,DIGIT)(%y);
+#({SHEAD|CHEAD|^BLK},%z)(DIGIT,BELAS,%x)({^DIGIT,^BLK,^PUT,^[dan]|"ratus"|"ribu"|"juta"|"bilion"|"trilion"|STAIL|CTAIL},%y):=(%z)([[1]],[1],"1",DIGIT)(%x)(%y);
+(DIGIT,THOUSAND,%x)(DIGIT,^HUNDRED,%y)({^[ratus],^BLK|STAIL|CTAIL},%z):=(%x)([[0]],[0],"0",HUNDRED,DIGIT)(%y)(%z);
+(DIGIT,%x)(BLK)("puluh"):=(%x,+DOZEN);
+#(DIGIT,%x)(BLK)("bilion"):=(%x,+BILLION);
+(DIGIT,%x)(BLK)("belas"):=(%x, +BELAS);
+(DIGIT,%x)(BLK)("ratus"):=(%x,+HUNDRED);
+#(DIGIT,%x)(BLK)("ribu"):=(%x,+THOUSAND);
+#(DIGIT,%x)(BLK)("juta"):=(%x,+MILLION);
+#(DIGIT,%x)(BLK)("trilion"):=(%x,+TRILLION);
+({SHEAD|CHEAD|^BLK},%z)(DIGIT,HUNDRED,%x)({^DIGIT,^BLK,^PUT,^[dan]|DIGIT,^DOZEN,^00|STAIL|CTAIL},%y):=(%z)(%x)([[0]],[0],"0",DOZEN,DIGIT)(%y);
+#({SHEAD|CHEAD|^BLK},%z)(DIGIT,HUNDRED,%x)({^DIGIT,^BLK,^PUT,^[dan]|DIGIT,^DOZEN,^00|STAIL|CTAIL},%y)({^DIGIT,^BLK,^PUT|DIGIT,^DOZEN,^00|STAIL|CTAIL},%g)({^DIGIT,^BLK,^PUT,^[puluh]|DIGIT,^DOZEN,^00|STAIL|CTAIL},%h):=(%z)(%x)([[0]],[0],"0",DOZEN,DIGIT)(%y)(%g)(%h);
+({SHEAD|CHEAD|^BLK},%z)(DIGIT,DOZEN,^HUNDRED,%x)({^DIGIT,^BLK,^PUT,^[dan]|"belas"|"ribu"|"juta"|"bilion"|"trilion"|STAIL|CTAIL},%y):=(%z)(%x)([[0]],[0],"0",DIGIT)(%y);
+([0],0,%x)(DIGIT,^00,^000,%y):=(%x&%y,-0,+00);
+([0],0,%x)(DIGIT,00,^000,%y):=(%x&%y,-0,-00,+000);
+({SHEAD|CHEAD|^BLK,^DIGIT},%x)(DIGIT,TRILLION,%y)(DIGIT,BILLION,000,%z):=(%x)(%y&%z,-TRILLION);
+({SHEAD|CHEAD|^BLK,^DIGIT},%x)(DIGIT,BILLION,%y)(DIGIT,MILLION,000,%z):=(%x)(%y&%z,-BILLION);
+({SHEAD|CHEAD|^BLK,^DIGIT},%x)(DIGIT,MILLION,%y)(DIGIT,THOUSAND,000,%z):=(%x)(%y&%z,-MILLION);
+({SHEAD|CHEAD|^BLK,^DIGIT},%z)(DIGIT,THOUSAND,%x)(DIGIT,HUNDRED,%y):=(%z)(%x&%y,-THOUSAND);
+({SHEAD|CHEAD|^BLK},%z)(DIGIT,HUNDRED,%x)(DIGIT,00,%y):=(%z)(%x&%y,-HUNDRED,-00,+000);
+({SHEAD|CHEAD|^BLK},%z)(DIGIT,DOZEN,^HUNDRED,%x)(DIGIT,%y):=(%z)(%x&%y,-DOZEN,+00);
+([pukul])(BLK)(DIGIT,%x):=(%x,+HOUR);
+(DIGIT,%x)("trilion"):=(%x,+TRILLION);
+(DIGIT,%x)("bilion"):=(%x,+BILLION);
+(DIGIT,%x)("ribu"):=(%x,+THOUSAND);
+(DIGIT,%x)("juta"):=(%x,+MILLION);
+(DIGIT,%x)("ratus"):=(%x,+HUNDRED);
+(DIGIT,%x)("puluh"):=(%x,+DOZEN);
+(DIGIT,%x)("belas"):=(%x, +BELAS);
+([se],BELAS,%x):=(%x,-BELAS,MERGE>)([[1]],+DIGIT);
+([ke-])({DIGIT|CDN},%x):=(%x,ORD,att=@ordinal);
+#({DIGIT|CDN},%x)([nd]):=(%x,ORD,att=@ordinal);
+#({DIGIT|CDN},%x)([rd]):=(%x,ORD,att=@ordinal);
+#({DIGIT|CDN},%x)([th]):=(%x,ORD,att=@ordinal);
+(ORD,%x)([s]):=(%x);
+([a],%a)(DIGIT,ORD,%x)([of],%y):=("1",[[1]],DIGIT,CDN,%b)(%x)(%y); a fifth > one fifth
+([setengah]):=("1/2",[[1/2]],[1/2],U,DIGIT,PTN,W); a half > 1/2 half
+([setengah],%x)(N,%y):=("1/2",[[1/2]],[1/2],U,DIGIT,PTN,W,%z)(%y); half book > 1/2 book
+(DIGIT,CDN,%x)([setengah],%y):=(%x)("2",[2],[[2]],U,DIGIT,ORD,%z); one half > 1/2
+(DIGIT,CDN,%x)({[quarter]|[quarters]},%y):=(%x)("4",[4],[[4]],U,DIGIT,ORD,%z); one quarter / 1/4
+(DIGIT,CDN,%x)(DIGIT,PTN,%y):=(%x)(" ",[ ],[[ ]],JOIN,%w)(%y);
+(DIGIT,CDN,%x)([per],%z)(DIGIT,CDN,%y):=(%x)(%y,-CDN,+POS=ORD);
+(DIGIT,CDN,%x)(JOIN,%y)(DIGIT,PTN,%z):=(%x&%y&%z,-CDN,-JOIN);
+({^BLK|SHEAD|STAIL},%a)(DIGIT,CDN,%x)(DIGIT,ORD,%y):=(%a)(%x)("/",[[/]])(%y);
+(DIGIT,CDN,%x)("/",%z)(DIGIT,ORD,%y):=(%x&%z&%y,-CDN,-ORD,+PTN);
+(PTN,%x)([of]):=(%x);
+(PTN,@ordinal):=(-@ordinal);
+(DIGIT,%x)({[s]|['s]},I):=(%x,-DIGIT,-TEMP,+W,+LEX=N,att=@pl);
+(DIGIT,%x)("times"):=(%x,+@times,+LEX=A,+POS=AAV); two times > 2.@times
+(U,^DOZEN,^HUNDRED,^THOUSAND,^MILLION,^BILLION,^TRILLION,^ORD,^PTN,^HOUR,^MINUTE,^SECOND,%x)(U,^DOZEN,^HUNDRED,^THOUSAND,^MILLION,^BILLION,^TRILLION,^ORD,^PTN,%y)({^DIGIT,^BLK|STAIL|CTAIL},%z):=(%x&%y)(%z); (merge digits)
+([[0]],ADD12):=([12],[[12]],-ADD12);
+([[1]],ADD12):=([13],[[13]],-ADD12);
+([[2]],ADD12):=([14],[[14]],-ADD12);
+([[3]],ADD12):=([15],[[15]],-ADD12);
+([[4]],ADD12):=([16],[[16]],-ADD12);
+([[5]],ADD12):=([17],[[17]],-ADD12);
+([[6]],ADD12):=([18],[[18]],-ADD12);
+([[7]],ADD12):=([19],[[19]],-ADD12);
+([[8]],ADD12):=([20],[[20]],-ADD12);
+([[9]],ADD12):=([21],[[21]],-ADD12);
+([[10]],ADD12):=([22],[[22]],-ADD12);
+([[11]],ADD12):=([23],[[23]],-ADD12);
+([[12]],ADD12):=([00],[[00]],-ADD12);
+(BELAS,%x)(BLK)({SECOND|MINUTE|HOUR},%y):=(%x&%y, -BELAS);
+(DOZEN,%x)(BLK)({SECOND|MINUTE|HOUR},%y):=(%x&%y, -DOZEN);
+(DIGIT,DOZEN,{SECOND|MINUTE|HOUR},%x):=(%x,-DOZEN, MERGE>)([[0]], +DIGIT, %y);
+(DIGIT,BELAS,{SECOND|MINUTE|HOUR},%y):=([[1]], +DIGIT, MERGE>, %x)(%y,-BELAS);
+({"/\d/"|[[/\d/]]},^DOZEN,{SECOND|MINUTE|HOUR},%x)({^BLK|STAIL|CTAIL},%y):=([0],[[0]],MERGE>)(%x)(%y);
+#(^DOZEN)({"/\d/"|[[/\d/]]},^DOZEN,{SECOND|MINUTE|HOUR},%x)({^BLK|STAIL|CTAIL},%y):=([0],[[0]],MERGE>)(%x)(%y);
+(DIGIT,%x,^TIME)(":",%a)(DIGIT,%y,^TIME)(":",%b)(DIGIT,%z,^TIME)({^PM|^BLK|STAIL|CTAIL},%w):=(%x&%a&%y&%b&%z,+TIME,-HOUR,-MINUTE,-SECOND)(%w);
+(DIGIT,%x,^TIME)(":",%a)(DIGIT,%y,^TIME)(":",%b)(DIGIT,%z,^TIME)(PM,%w):=(%x,+ADD12)(%a)(%y)(%b)(%z);
+(DIGIT,%x,^TIME)(":",%a)(DIGIT,%y,^TIME)({STAIL|CTAIL|^":"},%z):=(%x)(%a)(%y)(":")([[00]],+DIGIT)(%z);
+(DIGIT,%x)(BLK)({"s"|"sec"|"secs"|"second"|"seconds"}):=(%x,+SECOND);
+(DIGIT,%x)(BLK)({"m"|"min"|"minute"|"minutes"}):=(%x,+MINUTE);
+(DIGIT,%x)({"h"|"hr"|"hour"|"hours"|"o'clock"}):=(%x,+HOUR);
+({SHEAD|CHEAD|^MINUTE,^DIGIT,^BLK,^":",^[dan]},%x)(SECOND,%y):=(%x)([[00]],+DIGIT,+MINUTE)(%y);
+({SHEAD|CHEAD|^HOUR,^DIGIT,^BLK,^":",^[dan]},%x)(MINUTE,%y):=(%x)([[00]],+DIGIT,+HOUR)(%y);
+(MINUTE,^DOZEN,%x)({STAIL|CTAIL|^SECOND,^DIGIT,^BLK,^":",^[dan]},%y):=(%x)([[00]],+DIGIT,+SECOND,%z)(%y);
+(MINUTE,DOZEN,%x)({STAIL|CTAIL|^SECOND,^DIGIT,^BLK,^":",^[dan]},%y):=(%x)([[0]],+DIGIT,+SECOND,%z)(%y);
+(HOUR,%x)({STAIL|CTAIL|^MINUTE,^DIGIT,^BLK,^":",^[dan]},%y):=(%x)([[00]],+DIGIT,+MINUTE,%z)(%y);
+(HOUR,%x)(MINUTE,%y)(SECOND,%z):=(%x)(":")(%y)(":")(%z);
+(HOUR,%x)(":",%a)(MINUTE,%y)(":",%b)(SECOND,%z):=(%x&%a&%y&%b&%z,+TIME,-HOUR,-MINUTE,-SECOND);
+({[setengah]|[1/2]},%x)([selepas])(DIGIT,%y):=(%y,+HOUR)([[30]],+DIGIT,+MINUTE); half past ten
+("1/2")(BLK)([jam]):=([[30]],+DIGIT,+MINUTE); half an hour
+([se])([suku])(BLK)([selepas])(BLK)(DIGIT,%y):=(%y,+HOUR)([[15]],+DIGIT,+MINUTE); a quarter past ten
+([a])(BLK)([quarter])(BLK)([to])(BLK)(DIGIT,%y):=(%y,+HOUR,+REDUCE1)([[45]],+DIGIT,+MINUTE);
+(DIGIT,%x)([selepas])(DIGIT,%y):=(%y,+HOUR)(%x,+MINUTE);
+(DIGIT,%x)([to])(DIGIT,%y):=(%y,+HOUR)(%x,+MINUTE);
+(TIME,%x)(AM):=(%x); AM is not represented
+(TIME,%x)(PM):=(%x); AM is not represented
+(TIME,^"/\d\d\:\d\d\:\d\d/"):=(-TIME,+TEMP);
+({^BLK|^DIGIT|^":"|SHEAD|CHEAD},%x)(DIGIT,%y)(PM):=(%x)(%y,+ADD12,+HOUR);
+({^BLK|^DIGIT|^":"|SHEAD|CHEAD},%x)(DIGIT,%y)(AM):=(%x)(%y,+HOUR);
+(YEAR,%x)({BC|AD|CE},%y):=(%x&%y);
+(MONTH,%x){(COMMA)|("")}("/([01][0-9])?[0-9][0-9]/",^YEAR,%y):=(%x)(%y,+YEAR);
+(DIGIT,%x){({"st"|"nd"|"rd"|"th"})|("")}({"january"|"jan"}):=(%x,+DAY)([[1]],+DIGIT,+MONTH);
+(DIGIT,%x){({"st"|"nd"|"rd"|"th"})|("")}({"february"|"feb"}):=(%x,+DAY)([[2]],+DIGIT,+MONTH);
+(DIGIT,%x){({"st"|"nd"|"rd"|"th"})|("")}({"march"|"mar"}):=(%x,+DAY)([[3]],+DIGIT,+MONTH);
+(DIGIT,%x){({"st"|"nd"|"rd"|"th"})|("")}({"april"|"apr"}):=(%x,+DAY)([[4]],+DIGIT,+MONTH);
+(DIGIT,%x){({"st"|"nd"|"rd"|"th"})|("")}({"may"|"may"}):=(%x,+DAY)([[5]],+DIGIT,+MONTH);
+(DIGIT,%x){({"st"|"nd"|"rd"|"th"})|("")}({"june"|"jun"}):=(%x,+DAY)([[6]],+DIGIT,+MONTH);
+(DIGIT,%x){({"st"|"nd"|"rd"|"th"})|("")}({"july"|"jul"}):=(%x,+DAY)([[7]],+DIGIT,+MONTH);
+(DIGIT,%x){({"st"|"nd"|"rd"|"th"})|("")}({"august"|"aug"}):=(%x,+DAY)([[8]],+DIGIT,+MONTH);
+(DIGIT,%x){({"st"|"nd"|"rd"|"th"})|("")}({"september"|"sep"}):=(%x,+DAY)([[9]],+DIGIT,+MONTH);
+(DIGIT,%x){({"st"|"nd"|"rd"|"th"})|("")}({"october"|"oct"}):=(%x,+DAY)([[10]],+DIGIT,+MONTH);
+(DIGIT,%x){({"st"|"nd"|"rd"|"th"})|("")}({"november"|"nov"}):=(%x,+DAY)([[11]],+DIGIT,+MONTH);
+(DIGIT,%x){({"st"|"nd"|"rd"|"th"})|("")}({"december"|"dec"}):=(%x,+DAY)([[12]],+DIGIT,+MONTH);
+({"january"|"jan"})(DIGIT,%x){({"st"|"nd"|"rd"|"th"})|("")}:=(%x,+DAY)([[1]],+DIGIT,+MONTH);
+({"february"|"feb"})(DIGIT,%x){({"st"|"nd"|"rd"|"th"})|("")}:=(%x,+DAY)([[2]],+DIGIT,+MONTH);
+({"march"|"mar"})(DIGIT,%x){({"st"|"nd"|"rd"|"th"})|("")}:=(%x,+DAY)([[3]],+DIGIT,+MONTH);
+({"april"|"apr"})(DIGIT,%x){({"st"|"nd"|"rd"|"th"})|("")}:=(%x,+DAY)([[4]],+DIGIT,+MONTH);
+({"may"|"may"})(DIGIT,%x){({"st"|"nd"|"rd"|"th"})|("")}:=(%x,+DAY)([[5]],+DIGIT,+MONTH);
+({"june"|"jun"})(DIGIT,%x){({"st"|"nd"|"rd"|"th"})|("")}:=(%x,+DAY)([[6]],+DIGIT,+MONTH);
+({"july"|"jul"})(DIGIT,%x){({"st"|"nd"|"rd"|"th"})|("")}:=(%x,+DAY)([[7]],+DIGIT,+MONTH);
+({"august"|"aug"})(DIGIT,%x){({"st"|"nd"|"rd"|"th"})|("")}:=(%x,+DAY)([[8]],+DIGIT,+MONTH);
+({"september"|"sep"})(DIGIT,%x){({"st"|"nd"|"rd"|"th"})|("")}:=(%x,+DAY)([[9]],+DIGIT,+MONTH);
+({"october"|"oct"})(DIGIT,%x){({"st"|"nd"|"rd"|"th"})|("")}:=(%x,+DAY)([[10]],+DIGIT,+MONTH);
+({"november"|"nov"})(DIGIT,%x){({"st"|"nd"|"rd"|"th"})|("")}:=(%x,+DAY)([[11]],+DIGIT,+MONTH);
+({"december"|"dec"})(DIGIT,%x){({"st"|"nd"|"rd"|"th"})|("")}:=(%x,+DAY)([[12]],+DIGIT,+MONTH);
+(DAY,%x)(MONTH,%y)(YEAR,%z):=(%x)("/")(%y)("/")(%z);
+(DAY,%x)("/",%a)(MONTH,%y)("/",%b)(YEAR,%z):=(%x&%a&%y&%b&%z,+DATE,-DAY,-MONTH,-YEAR);
+(DAY,%x)(MONTH,%y)({STAIL|CTAIL|^DIGIT,^YEAR,^"/"}):=(%x)("/")(%y);
+(DAY,%x)("/",%a)(MONTH,%y):=(%x&%a&%y,+DATE,-DAY,-MONTH);
+(N,%y)(DB,att,^POD,%x):=(%y,+att=%x); the.@def book > book.@def
+(N,%y(DP,att,%x)):=(%y,+att=%x); the.@def book of John > book of John.@def
+(N,%x)(D,att,AFT,%y):=(%x,+att=%y); books enough.@enough > books.@enough
+(D,att,%x)([of])(NP,%y):=(%y,+att=%x); all.@all of them > them.@all
+({DIGIT|QUA},%x)(CLA,%y)(N,%z):=(%x)(%z,-SNG,+NUM=PLR); remove Classifier from analysis when it occurs after DIGIT
+(NB,%x)(DIGIT,@to,%y):=(XB(%x;%y,+spec,+mod),+LEX=N,+XB=NB,%z); first book > XB(book,first)
+(DIGIT,^ORD,%y)(NB,^[jam],^DIGIT,%x):=(XB(%x;%y,+spec,+qua),+LEX=N,+XB=NB,%z); two books > XB(books,two)
+(POD,%x)(NB,%y):=(XP(%y;%x,+spec,+pos),+LEX=N,+XP=NP,%z); my book > XP(book,I)
+(N,%x)([of])(SPR,%y):=(XB(%x;%y,+spec,+pos),+LEX=N,+XB=NB,%z); book of mine > XP(book,I)
+(N,%x)(PTC,GNT)(N,%y):=(XB(%y;%x,+spec,+pos),+LEX=N,+XB=NB,%z); John's book > XB(book,John)
+(NPR,%x)([of])(NP,%y):=(XB(%y;%x,+spec,+qua),+LEX=N,+XB=NB,%z); none of them > XB(them, none)
+([whose],%x)(N,%y):=(XB(%y;%x,+spec,+pos),+LEX=N,+XB=NB,%z);
+(SAV,att,%x)({AB|JB|DB},%y):=(%y,+att=%x); very.@plus beautiful > beautiful.@plus
+({AB|JB},%x)(SAV,att,AFT,%y):=(%x,+att=%y); beautiful enough.@enough > beautiful.@enough
+(SAV,^att,%x)({AB|JB|DB},%y):=(XB(%y;%x,+spec,+man),+LEX=%y,+XB=%y); extremely beautiful > XB(beautiful,extremely)
+([from])(%x,XP)([on]):=(%x,-LEX,-XP,+LEX=P,+XP=PP,+adjt,+rel=man,+att=@from_on);
+(P,^PP,%x)(XP,^DP,^PP,%y)({XP|PUT|STAIL|CTAIL},%z):=(%y,-LEX,-XP,+LEX=P,+XP=PP,+adjt,+rel=%x,+att=%x)(%z);
+(%x,V)(CMR)(VP,%y):=(XB(%x;%y,+comp,+rel=obj);
+(AVR,%x)(XP,%y):=(%y,-LEX,-XP,+LEX=C,+XP=CP,+adjt,+att=%x,+rel=%x);
+([kedua-dua])(NP,%x)([dan])(NP,%y):=(XB(%x;%y,+adjt,+att=@and,+rel=and),+LEX=N,+XP=NP,%z);
+([either])(NP,%x)([or])(NP,%y):=(XB(%x;%y,+adjt,+att=@or,+rel=or),+LEX=N,+XP=NP,,%z);
+([neither])(NP,%x)([nor])(NP,%y):=(XB(%x;%y,+adjt,+att=@and,+rel=and),+LEX=N,+XP=NP,,%z);
+([not only])(NP,%x)([but also])(P,%y):=(XB(%x;%y,+adjt,+att=@and,+rel=and),+LEX=N,+XP=NP,%z);
+([whether])(NP,%x)([or])(NP,%y):=(XB(%x;%y,+adjt,+att=@or,+rel=or),+LEX=N,+XP=NP,%z);
+(NP,%x)(COMMA,%c)(NP,%y)({[dan]|[nor]})(NP,%z):=(%x)([dan],+W,%a)(and(%z;%y),+LEX=N,+XP=NP,%yz);
+(VP,%x)(COMMA,%c)(VP,%y)({[dan]|[nor]})(VP,%z):=(%x)([dan],+W,%a)(and(%z;%y),+LEX=V,+XP=VP,%yz);
+(AP,%x)(COMMA,%c)(AP,%y)({[dan]|[nor]})(AP,%z):=(%x)([dan],+W,%a)(and(%z;%y),+LEX=A,+XP=AP,%yz);
+(JP,%x)(COMMA,%c)(JP,%y)({[dan]|[nor]})(JP,%z):=(%x)([dan],+W,%a)(and(%z;%y),+LEX=J,+XP=JP,%yz);
+(PP,%x)(COMMA,%c)(PP,%y)({[dan]|[nor]})(PP,%z):=(%x)([dan],+W,%a)(and(%z;%y),+LEX=P,+XP=PP,%yz);
+(NP,%x)(COMMA,%c)(NP,%y)([or])(NP,%z):=(%x)([or],+W,%a)(or(%z;%y),+LEX=N,+XP=NP,%yz);
+(VP,%x)(COMMA,%c)(VP,%y)([or])(VP,%z):=(%x)([or],+W,%a)(or(%z;%y),+LEX=V,+XP=VP,%yz);
+(AP,%x)(COMMA,%c)(AP,%y)([or])(AP,%z):=(%x)([or],+W,%a)(or(%z;%y),+LEX=A,+XP=AP,%yz);
+(JP,%x)(COMMA,%c)(JP,%y)([or])(JP,%z):=(%x)([or],+W,%a)(or(%z;%y),+LEX=J,+XP=JP,%yz);
+(PP,%x)(COMMA,%c)(PP,%y)([or])(PP,%z):=(%x)([or],+W,%a)(or(%z;%y),+LEX=P,+XP=PP,%yz);
+(VP,%x)({[dan]|[nor]|COMMA})(VP,%y):=(and(%y;%x),+LEX=V,+XP=VP,%xy);
+(NP,%x)({[dan]|[nor]|COMMA})(NP,%y):=(and(%y;%x),+LEX=N,+XP=NP,%xy);
+(AP,%x)({[dan]|[nor]|COMMA})(AP,%y):=(and(%y;%x),+LEX=A,+XP=AP,%xy);
+(JP,%x)({[dan]|[nor]|COMMA})(JP,%y):=(and(%y;%x),+LEX=J,+XP=JP,%xy);
+(PP,%x)({[dan]|[nor]|COMMA})(PP,%y):=(and(%y;%x),+LEX=P,+XP=PP,%xy);
+(VP,%x)([or])(VP,%y):=(or(%y;%x),+LEX=V,+XP=VP,%xy);
+(NP,%x)([or])(NP,%y):=(or(%y;%x),+LEX=N,+XP=NP,%xy);
+(AP,%x)([or])(AP,%y):=(or(%y;%x),+LEX=A,+XP=AP,%xy);
+(JP,%x)([or])(JP,%y):=(or(%y;%x),+LEX=J,+XP=JP,%xy);
+(PP,%x)([or])(PP,%y):=(or(%y;%x),+LEX=P,+XP=PP,%xy);
+(BLK):=; deletes the blank space
+(XP,%x)(QMARK):=(%x,att=@interrogative);
+(XP,%x)(EMARK):=(%x,att=@exclamative);
+(CAU,^ASP):=(-CAU,+ASP=CAU);
+(PFV,^ASP):=(-PFV,+ASP=PFV);
+(NPFV,^ASP):=(-NPFV,+ASP=NPFV);
+(PFC,^ASP):=(-PFC,+ASP=PFC);
+(PPT,^ASP):=(-PPT,+ASP=PPT);
+(ICP,^ASP):=(-ICP,+ASP=ICP);
+(TER,^ASP):=(-TER,+ASP=TER);
+(ABE,^CAS):=(-ABE,+CAS=ABE);
+(ABL,^CAS):=(-ABL,+CAS=ABL);
+(ACC,^CAS):=(-ACC,+CAS=ACC);
+(ADE,^CAS):=(-ADE,+CAS=ADE);
+(ALL,^CAS):=(-ALL,+CAS=ALL);
+(ABS,^CAS):=(-ABS,+CAS=ABS);
+(BEN,^CAS):=(-BEN,+CAS=BEN);
+(CMT,^CAS):=(-CMT,+CAS=CMT);
+(DAT,^CAS):=(-DAT,+CAS=DAT);
+(DEL,^CAS):=(-DEL,+CAS=DEL);
+(ELA,^CAS):=(-ELA,+CAS=ELA);
+(EQU,^CAS):=(-EQU,+CAS=EQU);
+(ERG,^CAS):=(-ERG,+CAS=ERG);
+(ESS,^CAS):=(-ESS,+CAS=ESS);
+(GNT,^CAS):=(-GNT,+CAS=GNT);
+(HOR,^CAS):=(-HOR,+CAS=HOR);
+(ILL,^CAS):=(-ILL,+CAS=ILL);
+(INE,^CAS):=(-INE,+CAS=INE);
+(INS,^CAS):=(-INS,+CAS=INS);
+(LAT,^CAS):=(-LAT,+CAS=LAT);
+(LOC,^CAS):=(-LOC,+CAS=LOC);
+(NOM,^CAS):=(-NOM,+CAS=NOM);
+(OBL,^CAS):=(-OBL,+CAS=OBL);
+(PLT,^CAS):=(-PLT,+CAS=PLT);
+(PPL,^CAS):=(-PPL,+CAS=PPL);
+(PTT,^CAS):=(-PTT,+CAS=PTT);
+(SPE,^CAS):=(-SPE,+CAS=SPE);
+(TRM,^CAS):=(-TRM,+CAS=TRM);
+(TLT,^CAS):=(-TLT,+CAS=TLT);
+(VOC,^CAS):=(-VOC,+CAS=VOC);
+(FEM,^GEN):=(-FEM,+GEN=FEM);
+(MCL,^GEN):=(-MCL,+GEN=MCL);
+(NEU,^GEN):=(-NEU,+GEN=NEU);
+(J,^LEX):=(-J,+LEX=J);
+(P,^LEX):=(-P,+LEX=P);
+(A,^LEX):=(-A,+LEX=A);
+(I,^LEX):=(-I,+LEX=I);
+(C,^LEX):=(-C,+LEX=C);
+(D,^LEX):=(-D,+LEX=D);
+(N,^LEX):=(-N,+LEX=N);
+(U,^LEX):=(-U,+LEX=U);
+(R,^LEX):=(-R,+LEX=R);
+(V,^LEX):=(-V,+LEX=V);
+(O,^LEX):=(-O,+LEX=O);
+(AUM,^MOO):=(-AUM,+MOO=AUM);
+(CAU,^MOO):=(-CAU,+MOO=CAU);
+(CON,^MOO):=(-CON,+MOO=CON);
+(DEC,^MOO):=(-DEC,+MOO=DEC);
+(DED,^MOO):=(-DED,+MOO=DED);
+(DLB,^MOO):=(-DLB,+MOO=DLB);
+(DUB,^MOO):=(-DUB,+MOO=DUB);
+(HYP,^MOO):=(-HYP,+MOO=HYP);
+(IMP,^MOO):=(-IMP,+MOO=IMP);
+(IPC,^MOO):=(-IPC,+MOO=IPC);
+(IND,^MOO):=(-IND,+MOO=IND);
+(INT,^MOO):=(-INT,+MOO=INT);
+(JUS,^MOO):=(-JUS,+MOO=JUS);
+(OBM,^MOO):=(-OBM,+MOO=OBM);
+(OPT,^MOO):=(-OPT,+MOO=OPT);
+(PMS,^MOO):=(-PMS,+MOO=PMS);
+(POT,^MOO):=(-POT,+MOO=POT);
+(PCT,^MOO):=(-PCT,+MOO=PCT);
+(PHB,^MOO):=(-PHB,+MOO=PHB);
+(SPT,^MOO):=(-SPT,+MOO=SPT);
+(SUB,^MOO):=(-SUB,+MOO=SUB);
+(SNG,^NUM):=(-SNG,+NUM=SNG);
+(PLR,^NUM):=(-PLR,+NUM=PLR);
+(ADJ,^POS):=(-ADJ,+POS=ADJ);
+(PTP,^POS):=(-PTP,+POS=PTP);
+(CIR,^POS):=(-CIR,+POS=CIR);
+(PPS,^POS):=(-PPS,+POS=PPS);
+(PRE,^POS):=(-PRE,+POS=PRE);
+({CIR|PPS|PRE},^P):=(-LEX,+LEX=P);
+(SAV,^POS):=(-SAV,+POS=SAV);
+(AAV,^POS):=(-AAV,+POS=AAV);
+(CJT,^POS):=(-CJT,+POS=CJT);
+(DJT,^POS):=(-DJT,+POS=DJT);
+({SAV|AAV|CJT|DJT},^A):=(-LEX,+LEX=A);
+(CCX,^POS):=(-CCX,+POS=CCX);
+(IFX,^POS):=(-IFX,+POS=IFX);
+(PFX,^POS):=(-PFX,+POS=PFX);
+(SFX,^POS):=(-SFX,+POS=SFX);
+#({CCX|IFX|PFX|SFX},^I):=(-LEX,+LEX=I);
+(CLA,^POS):=(-CLA,+POS=CLA);
+(COO,^POS):=(-COO,+POS=COO);
+(SCJ,^POS):=(-SCJ,+POS=SCJ);
+({COO|SCJ},^C):=(-LEX,+LEX=C);
+(ART,^POS):=(-ART,+POS=ART);
+(DEM,^POS):=(-DEM,+POS=DEM);
+(POD,^POS):=(-POD,+POS=POD);
+(QUA,^POS):=(-QUA,+POS=QUA);
+({ART|DEM|POD|QUA},^D):=(-LEX,+LEX=D);
+(ITJ,^POS):=(-ITJ,+POS=ITJ);
+(NOU,^POS):=(-NOU,+POS=NOU);
+(PPN,^POS):=(-PPN,+POS=PPN);
+({NOU|PPN},^N):=(-LEX,+LEX=N);
+(CDN,^POS):=(-CDN,+POS=CDN);
+(DTN,^POS):=(-DTN,+POS=DTN);
+(PTN,^POS):=(-PTN,+POS=PTN);
+(MLN,^POS):=(-MLN,+POS=MLN);
+(ORD,^POS):=(-ORD,+POS=ORD);
+({CDN|DTN|PTN|MLN|ORD},^U):=(-LEX,+LEX=U);
+(PTC,^POS):=(-PTC,+POS=PTC);
+(DEP,^POS):=(-DEP,+POS=DEP);
+(DUM,^POS):=(-DUM,+POS=DUM);
+(EPR,^POS):=(-EPR,+POS=EPR);
+(NPR,^POS):=(-NPR,+POS=NPR);
+(IPR,^POS):=(-IPR,+POS=IPR);
+(PPR,^POS):=(-PPR,+POS=PPR);
+(SPR,^POS):=(-SPR,+POS=SPR);
+(CPR,^POS):=(-CPR,+POS=CPR);
+(FPR,^POS):=(-FPR,+POS=FPR);
+(RPR,^POS):=(-RPR,+POS=RPR);
+({DEP|DUM|EPR|NPR|IPR|PPR|SPR|CPR|FPR|RPR},^R):=(-LEX,+LEX=R);
+(VER,^POS):=(-VER,+POS=VER);
+(AUX,^POS):=(-AUX,+POS=AUX);
+(MOV,^POS):=(-MOV,+POS=MOV);
+(COP,^POS):=(-COP,+POS=COP);
+({VER|AUX|MOV|COP},^V):=(-LEX,+LEX=V);
+(1PP,^PER):=(-1PP,+PER=1PP);
+(1PS,^PER):=(-1PS,+PER=1PS);
+(2PP,^PER):=(-2PP,+PER=2PP);
+(2PS,^PER):=(-2PS,+PER=2PS);
+(3PP,^PER):=(-3PP,+PER=3PP);
+(3PS,^PER):=(-3PS,+PER=3PS);
+(CRC,^COO):=(-POS,-CRC,+POS=CRC,+POS=COO);
+(AVR,^SCJ):=(-POS,-AVR,+POS=AVR,+POS=SCJ);
+(CMR,^SCJ):=(-POS,-CMR,+POS=CMR,+POS=SCJ);
+(RVZ,^SCJ):=(-POS,-RVZ,+POS=RVZ,+POS=SCJ);
+(NB,^XB):=(-NB,+XB=NB);
+(AB,^XB):=(-AB,+XB=AB);
+(JB,^XB):=(-JB,+XB=JB);
+(IB,^XB):=(-IB,+XB=IB);
+(CB,^XB):=(-CB,+XB=CB);
+(DB,^XB):=(-DB,+XB=DB);
+(VB,^XB):=(-VB,+XB=VB);
+(PB,^XB):=(-PB,+XB=PB);
+(NP,^XP):=(-NP,+XP=NP);
+(AP,^XP):=(-AP,+XP=AP);
+(JP,^XP):=(-JP,+XP=JP);
+(IP,^XP):=(-IP,+XP=IP);
+(CP,^XP):=(-CP,+XP=CP);
+(DP,^XP):=(-DP,+XP=DP);
+(VP,^XP):=(-VP,+XP=VP);
+(PP,^XP):=(-PP,+XP=PP);
+(XB,N,^NB):=(+XB=NB);
+(XB,A,^AB):=(+XB=AB);
+(XB,J,^JB):=(+XB=JB);
+(XB,I,^IB):=(+XB=IB);
+(XB,C,^CB):=(+XB=CB);
+(XB,D,^DB):=(+XB=DB);
+(XB,V,^VB):=(+XB=VB);
+(XB,P,^PB):=(+XB=PB);
+(PRS,^ATE):=(-PRS,+ATE=PRS);
+(PAS,^ATE):=(-PAS,+ATE=PAS);
+(FUT,^ATE):=(-FUT,+ATE=FUT);
+(NPAS,^ATE):=(-NPAS,+ATE=NPAS);
+(NFUT,^ATE):=(-NFUT,+ATE=NFUT);
+(STL,^ATE):=(-STL,+ATE=STL);
+(NYET,^ATE):=(-NYET,+ATE=NYET);
+(RPT,^RTE):=(-RPT,+RTE=RPT);
+(NRPT,^RTE):=(-NRPT,+RTE=NRPT);
+(RPS,^RTE):=(-RPS,+RTE=RPS);
+(RFT,^RTE):=(-RFT,+RTE=RFT);
+(NRFT,^RTE):=(-NRFT,+RTE=NRFT);
+(NTRA,^TRA):=(-NTRA,+TRA=NTRA);
+(TST,^TRA):=(-TST,+TRA=TST);
+(NTST,^TRA):=(-NTST,+TRA=NTST);
+(ACV,^VOI):=(-ACV,+VOI=ACV);
+(MIV,^VOI):=(-MIV,+VOI=MIV);
+(PSV,^VOI):=(-PSV,+VOI=PSV);
+(CTN,^NPFV):=(-ASP,-CTN,+ASP=CTN,+ASP=NPFV);
+(PGS,^CTN,^NPFV):=(-ASP,-PGS,+ASP=PGS,+ASP=CTN,+ASP=NPFV);
+(HAB,^NPFV):=(-ASP,-HAB,+ASP=HAB,+ASP=NPFV);
+(ITE,^NPFV):=(-ASP,-ITE,+ASP=ITE,+ASP=NPFV);
+(EXP,^PFC):=(-ASP,-EXP,+ASP=EXP,+ASP=PFC);
+(PSS,^PFC):=(-ASP,-PSS,+ASP=PSS,+ASP=PFC);
+(PRP,^PFC):=(-ASP,-PRP,+ASP=PRP,+ASP=PFC);
+(RES,^PFC):=(-ASP,-RES,+ASP=RES,+ASP=PFC);
+(COM,^MCL,^FEM):=(-GEN,-COM,+GEN=COM,+GEN=MCL,+GEN=FEM);
+(VAR,^MCL,^FEM,^NEU):=(-GEN,-VAR,+GEN=VAR,GEN=MCL,+GEN=FEM,+GEN=NEU);
+(SNGT,^SNG):=(-NUM,-SGNT,+NUM=SNG,+NUM=SNGT); SNGT is also SNG
+(PLRT,^PLR):=(-NUM,-PLRT,+NUM=PLR,+NUM=PLRT); PLRT is also PLR
+(INV,^SNG,^PLR):=(-NUM,-INV,+NUM=SNG,+NUM=PLR,+NUM=INV); INV is both SNG and PLR
+(DUA,^PLR):=(-NUM,-DUA,+NUM=DUA,+NUM=PLR);
+(TRI,^PLR):=(-NUM,-TRI,+NUM=PLR,+NUM=TRI);
+(QDR,^PLR):=(-NUM,-QDR,+NUM=PLR,+NUM=QDR);
+(PAU,^PLR):=(-NUM,-PAU,+NUM=PLR,+NUM=PAU);
+(MUL,^PLR):=(-NUM,-MUL,+NUM=PLR,+NUM=MUL);
+(N,PLR,^3PP):=(-PER,+PER=3PP); plural nouns are 3PP
+(N,SNG,^3PS):=(-PER,+PER=3PS); singular nouns are 3PS
+(PTR,^PAS):=(-ATE,-PTR,+ATE=PTR,+ATE=PAS);
+(HEP,^PAS):=(-ATE,-HEP,+ATE=HEP,+ATE=PAS);
+(PEP,^PAS):=(-ATE,-PEP,+ATE=PEP,+ATE=PAS);
+(HOP,^PAS):=(-ATE,-HOP,+ATE=HOP,+ATE=PAS);
+(POP,^PAS):=(-ATE,-POP,+ATE=POP,+ATE=PAS);
+(IPT,^PAS):=(-ATE,-IPT,+ATE=IPT,+ATE=PAS);
+(NRCP,^PAS):=(-ATE,-NRCP,+ATE=NRCP,+ATE=PAS);
+(RCP,^PAS):=(-ATE,-RCP,+ATE=RCP,+ATE=PAS);
+(NRMP,^PAS):=(-ATE,-NRMP,+ATE=NRMP,+ATE=PAS);
+(RMP,^PAS):=(-ATE,-RMP,+ATE=RMP,+ATE=PAS);
+(FUN,^FUT):=(-ATE,-FUN,+ATE=FUN,+ATE=FUT);
+(FUR,^FUT):=(-ATE,-FUR,+ATE=FUR,+ATE=FUT);
+(TSTD,^TST):=(-TRA,-TSTD,+TRA=TSTD,+TRA=TST);
+(TSTI,^TST):=(-TRA,-TSTI,+TRA=TSTI,+TRA=TST);
+(TST2,^TST):=(-TRA,-TST2,+TRA=TST2,+TRA=TST);
+(TST3,^TST):=(-TRA,-TST3,+TRA=TST3,+TRA=TST);
+(NERG,^NTST):=(-TRA,-NERG,+TRA=NERG,+TRA=NTST);
+(NACC,^NTST):=(-TRA,-NACC,+TRA=NACC,+TRA=NTST);
+(XB(%x;%y),^XB,^XP):=(+XB); assigns the feature XB to the nodes containing intermediate projections
+(XP(%x;%y),^XP):=(+XP); assigns the feature XP to the nodes containing maximal projections
+(/X[BP]/(%x,N;%y),^N):=(+LEX=N);
+(/X[BP]/(%x,A;%y),^A):=(+LEX=A);
+(/X[BP]/(%x,J;%y),^J):=(+LEX=J);
+(/X[BP]/(%x,I;%y),^I):=(+LEX=I);
+(/X[BP]/(%x,C;%y),^C):=(+LEX=C);
+(/X[BP]/(%x,D;%y),^D):=(+LEX=D);
+(/X[BP]/(%x,V;%y),^V):=(+LEX=V);
+(/X[BP]/(%x,P;%y),^P):=(+LEX=P);
+(UW,TEMP):=(-TEMP); removes the feature TEMP from the words with the feature UW
+(TEMP,%x)(BLK,%y)(TEMP,%z):=(%x&%y&%z,-BLK); merges temporary words
+(TEMP,^LEX):=(+LEX=N,+POS=PPN); treats all temporary words as proper nouns
+(PPN,%a)(BLK,%b)(PPN,%c):=(%a&%b&%c,+TEMP,-BLK); merges sequences of proper names
+(^W,^SBW,^BLK,^SHEAD,^STAIL,^CHEAD,^CTAIL):=(+W); assigns the feature W to simple words and multiword expressions, even if temporary
+(R,^N):=(+LEX=N); assigns the feature N to pronouns
+(PTN,^N):=(+LEX=N); assigns the feature N to partitive numbers
+({CDN|ORD},^J):=(+J); assigns the feature J to cardinals and ordinals
+({DTN|MLN},^A):=(+A); assigns the feature A to distributive ("in pairs") and multiplicative ("twice") numbers
+({^A|SHEAD|CHEAD})(DB,^head,^DP,^XP):=()(+XP=DP,-XB);
+({^A|SHEAD|CHEAD})(AB,^head,^AP,^XP):=()(+XP=AP,-XB);
+({^A|SHEAD|CHEAD})(JB,^head,^JP,^XP)({^P|STAIL|CTAIL}):=()(+XP=JP,-XB)();
+({V|P})(NB,^head,^NP,^XP)({PP|PUT|STAIL|CTAIL}):=()(+XP=NP,-XB)();
+({^D,^J,^PPN,^BLK|SHEAD|CHEAD})(NB,PPN,^DIGIT,^head,^NP,^XP)({^D,^J,^PPN,^BLK|PUT|STAIL|CTAIL}):=()(+XP=NP,-XB)();
+({^D,^J,^N,^BLK|SHEAD|CHEAD})(NB,^head,^DIGIT,^NP,^XP)({^D,^J,^P,^PP,^RPR|PUT|STAIL|CTAIL}):=()(+XP=NP,-XB)();
+({^A,^N|SHEAD|CHEAD})(VB,^head,^VP,^XP)({^A,^J,^N,^P|STAIL|CTAIL}):=()(+XP=VP,-XB)();
+({^A|SHEAD|CHEAD})(IB,^head,^IP,^XP)({^V|STAIL|CTAIL}):=()(+XP=IP,-XB)();
+({^A|SHEAD|CHEAD})(CB,^head,^CP,^XP)({^I,^V|STAIL|CTAIL}):=()(+XP=CP,-XB)();#
+({^A|SHEAD|CHEAD})(PB,^head,^PP,^XP)({STAIL|CTAIL|PUT}):=()(+XP=PP,-XB)();
+(D,^head,^XB,^XP):=(+XB=DB);
+(A,^head,^XB,^XP):=(+XB=AB);
+(J,^head,^XB,^XP):=(+XB=JB);
+(N,^head,^XB,^XP):=(+XB=NB);
+(V,^head,^XB,^XP):=(+XB=VB);
+(I,^head,^XB,^XP):=(+XB=IB);
+(C,^head,^XB,^XP):=(+XB=CB);
+(P,^head,^XB,^XP):=(+XB=PB);
+(VB,^ITST,%x)({NP|PP|JP},%y)({XP|STAIL|CTAIL},%z):=(XB(%x,+head;%y,+comp),+XB=VB,+LEX=V,+POS=%x,%xy)(%z);
+(PB,%x)({NP|VP|JP},%y)({XP|STAIL|CTAIL},%z):=(XB(%x,+head;%y,+comp),+XB=PB,+LEX=P,%xy)(%z);
+({^V|^P|SHEAD|CHEAD},%w)(NB,%x)(PP,%y)({XP|CB|STAIL|CTAIL},%z):=(%w)(XB(%x,+head;%y,+comp),+XB=NB,+LEX=N,%xy)(%z);
+(JB,%x)(PP,%y)({XP|STAIL|CTAIL},%z):=(XB(%x,+head;%y,+comp),+XB=JB,+LEX=J,%xy)(%z);
+(AB,%x)(PP,%y)({XP|STAIL|CTAIL},%z):=(XB(%x,+head;%y,+comp),+XB=AB,+LEX=A,%xy)(%z);
+(IB,%x)(VP,%y)({XP|STAIL|CTAIL},%z):=(XB(%x,+head;%y,+comp),+XB=IB,+LEX=I,%xy)(%z);
+(CB,%x)(IP,%y)({XP|STAIL|CTAIL},%z):=(XB(%x,+head;%y,+comp),+XB=CB,+LEX=C,%xy)(%z);
+(N,%y)(NB,%x)({XP|STAIL|CTAIL},%z):=(XB(%x,+att=%y;%y,-att,+adjt),+XB=NB,+LEX=N,%xy)(%z);
+(VB,ITST,%x)(NP,%y)({XP|STAIL|CTAIL},%z):=(XB(%x;%y,+adjt),+XB=VB,+LEX=V,+POS=%x,%xy)(%z);
+(VB,%x)({PP|JP|AP},%y)({XP|STAIL|CTAIL},%z):=(XB(%x;%y,+adjt),+XB=VB,+LEX=V,+POS=%x,%xy)(%z);
+(NB,%x)({JP|PP},%y)({XP|STAIL|CTAIL},%z):=(XB(%x;%y,+adjt),+XB=NB,+LEX=N,%xy)(%z);
+(JB,%x)({AP|PP},%y)({XP|STAIL|CTAIL},%z):=(XB(%x;%y,+adjt),+XB=JB,+LEX=J,%xy)(%z);
+(JP,^DIGIT,%y)(NB,%x)({XP|CB|VB|PUT|STAIL|CTAIL},%z):=(XB(%x;%y,+adjt),+XB=NB,+LEX=N,%xy)(%z);
+(AP,%y)(VB,%x)({XP|STAIL|CTAIL},%z):=(XB(%x;%y,+adjt),+XB=VB,+LEX=V,+POS=%x,%xy)(%z);
+(IB,%x)(AP,%y)({XP|STAIL|CTAIL},%z):=(XB(%x;%y,+adjt),+XB=IB,+LEX=I,%xy)(%z);
+(CB,%x)(AP,%y)({XP|STAIL|CTAIL},%z):=(XB(%x;%y,+adjt),+XB=CB,+LEX=C,%xy)(%z);
+(XP,%x)(CP,%y):=(XB(%x;%y,+adjt),+LEX=%x);
+(AP,%y)(AB,%x)({XP|STAIL|CTAIL},%z):=(XP(%x;%y,+spec),+XP=AP,+LEX=A,%xy)(%z);
+(AP,%y)(JB,%x)({XP|STAIL|CTAIL},%z):=(XP(%x;%y,+spec),+XP=JP,+LEX=J,%xy)(%z);
+(DP,%y)(NB,%x)({XP|STAIL|CTAIL},%z):=(XP(%x;%y,+spec),+XP=NP,+LEX=N,%xy)(%z);
+(NP,%y)(VB,%x)({^A,^J,^N,^P|STAIL|CTAIL},%z):=(XP(%x;%y,+spec),+XP=VP,+LEX=V,%xy)(%z);
+(AP,%y)(PB,%x)({^A,^J,^N,^V|STAIL|CTAIL},%z):=(XP(%x;%y,+spec),+XP=PP,+LEX=P,%xy)(%z);
+(AP,%y)(IB,%x)({^V|STAIL|CTAIL},%z):=(XP(%x;%y,+spec),+XP=IP,+LEX=I,%xy)(%z);
+(AP,%y)(CB,%x)({^I,^V|STAIL|CTAIL},%z):=(XP(%x;%y,+spec),+XP=CP,+LEX=C,%xy)(%z);
+(XB(%x;%y),%w,att):=(XB(%x,+att=%w;%y),%w,-att);
+(XP(%x;%y),%w,att):=(XP(%x,+att=%w;%y),%w,-att);
+XB(XB(%x;%y);%z):=XB(%x;%y)XB(%x;%z);
+XP(XB(%x;%y);%z):=XB(%x;%y)XS(%x;%z);
+XP(%x;%y):=XS(%x;%y);
+(/X[BS]/(%x;%y,adjt),N,%z):=(NA(%x;%y),%z);
+(/X[BS]/(%x;%y,adjt),J,%z):=(JA(%x;%y),%z);
+(/X[BS]/(%x;%y,adjt),A,%z):=(AA(%x;%y),%z);
+(/X[BS]/(%x;%y,adjt),V,%z):=(VA(%x;%y),%z);
+(/X[BS]/(%x;%y,adjt),P,%z):=(PA(%x;%y),%z);
+(/X[BS]/(%x;%y,adjt),D,%z):=(DA(%x;%y),%z);
+(/X[BS]/(%x;%y,adjt),I,%z):=(IA(%x;%y),%z);
+(/X[BS]/(%x;%y,adjt),C,%z):=(CA(%x;%y),%z);
+(/X[BS]/(%x;%y,comp),N,%z):=(NC(%x;%y),%z);
+(/X[BS]/(%x;%y,comp),J,%z):=(JC(%x;%y),%z);
+(/X[BS]/(%x;%y,comp),A,%z):=(AC(%x;%y),%z);
+(/X[BS]/(%x;%y,comp),V,%z):=(VC(%x;%y),%z);
+(/X[BS]/(%x;%y,comp),P,%z):=(PC(%x;%y),%z);
+(/X[BS]/(%x;%y,comp),D,%z):=(DC(%x;%y),%z);
+(/X[BS]/(%x;%y,comp),I,%z):=(IC(%x;%y),%z);
+(/X[BS]/(%x;%y,comp),C,%z):=(CC(%x;%y),%z);
+(/X[BS]/(%x;%y,spec),N,%z):=(NS(%x;%y),%z);
+(/X[BS]/(%x;%y,spec),N,%z):=(NS(%x;%y),%z);
+(/X[BS]/(%x;%y,spec),J,%z):=(JS(%x;%y),%z);
+(/X[BS]/(%x;%y,spec),A,%z):=(AS(%x;%y),%z);
+(/X[BS]/(%x;%y,spec),V,%z):=(VS(%x;%y),%z);
+(/X[BS]/(%x;%y,spec),P,%z):=(PS(%x;%y),%z);
+(/X[BS]/(%x;%y,spec),D,%z):=(DS(%x;%y),%z);
+(/X[BS]/(%x;%y,spec),I,%z):=(IS(%x;%y),%z);
+(/X[BS]/(%x;%y,spec),C,%z):=(CS(%x;%y),%z);
+/[ACDIJNPV][ACS]/(%x;%y,agt):=agt(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,ant):=ant(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,aoj):=aoj(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,and,^plc):=and(%y;%x);
+/[ACDIJNPV][ACS]/(%x;%y,ben):=ben(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,bas):=bas(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,cag):=cag(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,cnt):=cnt(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,con):=con(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,cob):=cob(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,coo):=coo(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,dur):=dur(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,equ):=equ(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,fld):=fld(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,frm):=frm(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,dur):=gol(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,icl):=icl(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,ins):=ins(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,iof):=iof(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,man):=man(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,mat):=mat(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,met):=met(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,mod):=mod(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,nam):=nam(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,obj):=obj(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,or):=or(%y;%x);
+/[ACDIJNPV][ACS]/(%x;%y,per):=per(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,plc):=plc(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,plf):=plf(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,plt):=plt(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,pof):=pof(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,pos):=pos(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,ptn):=ptn(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,pur):=pur(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,qua):=qua(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,rsn):=rsn(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,scn):=scn(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,seq):=seq(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,src):=src(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,tim):=tim(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,tmf):=tmf(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,tmt):=tmt(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,to):=to(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,via):=via(%x;%y);
+NA(%x;%y,PPR):=pos(%x;%y); replaces aoj by pos when the first argument of the aoj is a possesive pronoun
+NA(%x;%y):=mod(%x;%y);
+/[ACDIJPV]A/(%x;%y):=man(%x;%y);
+/[ACDIJNPV]C/(%x;%y):=obj(%x;%y);
+VS(%x;%y):=agt(%x;%y);
+/[ACDIJNP]S/(%x;%y):=mod(%x;%y);
+(@pl,{@multal|@paucal|@all|@both}):=(-@pl); eliminates the redundany of @pl
+(@recent,@present):=(-@present,+@future);
+agt(%x,COP;%y)obj(%x;%z):=aoj(%z,+att=%x;%y); eliminates the copula
+agt(%x;%y,N)obj(%x;%z,J):=agt(%x;%y)aoj(%z;%y); transforms the predicate of the object into the predicate of the subject
+or(%a;and(%b1;%b2),%b):=or(%a;or(%b1;%b2),%b); propagates or to its internal conjunctions
+(DIGIT,@to,%x):=(%x,-@to,+att=@ordinal);
+#(DIGIT,%x)(BLK)([minit]):=(%x,+MINUTE);
+agt(%x,K701;%y):=exp(%x;%y); change agt to exp for love (K701)
+obj(%x,K701;%y):=cnt(%x;%y); change obj to cnt for love (K701)
+; "DEFAULT(3)"
+; MX
+(NB,%x)(DP,^POD,att,%y)({^N|PUT|STAIL|CTAIL},%right):=(%x,+att=%y)(%right); buku lain
+(TEMP,%x)(BLK,%y)(TEMP,%z):=(%x&%y&%z,-BLK); merges temporary words
+(PPN,%x)(BLK,%y)(PPN,%z):=(%x&%y&%z,+TEMP,-BLK); merges sequences of proper names
+(BLK):=; deletes the blank space (this rule applies only if the blank space is in the dictionary)
+(VB,%vb)({NP|PP|JP},%xp):=(VB(%vb,+proj;%xp,+comp,+proj),+XB=VB,+LEX=V,%new);
+(PB,%pb)({NP|VP|JP},%xp):=(PB(%pb,+proj;%xp,+comp,+proj),+XB=PB,+LEX=P,%new);
+(JB,%jb)(PP,%pp):=(JB(%jb,+proj;%pp,+comp,+proj),+XB=JB,+LEX=J,%new);
+(AB,%ab)(PP,%pp):=(AB(%ab,+proj;%pp,+comp,+proj),+XB=AB,+LEX=A,%new);
+(IB,%ib)(VP,%vp):=(IB(%ib,+proj;%vp,+comp,+proj),+XB=IB,+LEX=I,%new);
+({XP,^IP|SHEAD|CHEAD|PUT},%left)(VP,^proj,%v):=(%left)(IB(e,+proj;%v,+comp,+proj),+XB=IB,+LEX=I);
+(CB,%cb)(IP,%ip):=(CB(%cb,+proj;%ip,+proj),+XB=CB,+LEX=C,%new);
+(PPR,NP,^NOM,%np)(VB,%vb):=(VB(%vb,+proj;%np,+comp,+proj),+XB=VB,+LEX=V,%new);
+(VB,%vb)({PP|JP|AP},%xp):=(VB(%vb,+proj;%xp,+adjt,+proj),+XB=VB,+LEX=V,%new);
+(NB,%nb)(JP,%jp):=(NB(%nb,+proj;%jp,+adjt,+proj),+XB=NB,+LEX=N,%new);
+({SHEAD|CHEAD|PUT|^P,^V},%left)(NB,%nb)(PP,%xp):=(%left)(NB(%nb,+proj;%xp,+adjt,+proj),+XB=NB,+LEX=N,%new);
+(JB,%jb)(AP,%xp):=(JB(%jb,+proj;%xp,+adjt,+proj),+XB=JB,+LEX=J,%new);
+(JP,^DIGIT,%jp)(NB,%nb)({XP|PUT|STAIL|CTAIL},%right):=(NB(%nb,+proj;%jp,+adjt,+proj),+XB=NB,+LEX=N,%new)(%right);
+(AP,%ap)(VB,%vb)({XP|PUT|STAIL|CTAIL},%right):=(VB(%vb,+proj;%ap,+adjt,+proj),+XB=VB,+LEX=V,+POS=%x,%new)(%right);
+(AP,%ap)(AB,%ab)({^P|PUT|STAIL|CTAIL},%right):=(AP(%ab,+proj;%ap,+spec,+proj),+XP=AP,+LEX=A,%new)(%right);
+(AP,%ap)(JB,%jb)({^P|PUT|STAIL|CTAIL},%right):=(JP(%jb,+proj;%ap,+spec,+proj),+XP=JP,+LEX=J,%new)(%right);
+(DP,%dp,^CLA)(NB,%nb)({^D,^J,^N,^P|PUT|STAIL|CTAIL},%right):=(NP(%nb,+proj;%dp,+spec,+proj),+XP=NP,+LEX=N,%new)(%right);
+(NP,%np)(VB,%vb)({^A,^J,^N,^P|PUT|STAIL|CTAIL},%right):=(VP(%vb,+proj;%np,+spec,+proj),+XP=VP,+LEX=V,%new)(%right);
+(AP,%ap)(PB,%pb)({^A,^J,^N,^V|PUT|STAIL|CTAIL},%right):=(PP(%pb,+proj;%ap,+spec,+proj),+XP=PP,+LEX=P,%new)(%right);
+(NP,%np)(IB,%ib)(XP,^VP,%right):=(IP(%ib,+proj;%np,+spec,+proj),+XP=IP,+LEX=I,%new)(%right);
+(XP,%xp)(CB,%cb)(XP,^IP,%right):=(CP(%cb,+proj;%xp,+spec,+proj),+XP=CP,+LEX=C,%new)(%right);
+({^A|SHEAD|CHEAD|PUT})(AB,^proj,^XP):=()(-XB,-AB,+XP=AP,+proj);
+({^A|SHEAD|CHEAD|PUT})(DB,^proj,^XP):=()(-XB,-DB,+XP=DP,+proj);
+({^A|SHEAD|CHEAD|PUT})(JB,^proj,^XP)({^P|PUT|STAIL|CTAIL}):=()(-XB,-JB,+XP=JP,+proj)();
+({^D,^J,^N|SHEAD|CHEAD|PUT})(NB,^proj,^XP)({^D,^J,^P|PUT|STAIL|CTAIL}):=()(-XB,-NB,+XP=NP,+proj)();
+({^A,^N|SHEAD|CHEAD|PUT})(VB,^proj,^XP)({^A,^J,^N,^P|PUT|STAIL|CTAIL}):=()(-XB,-VB,+XP=VP,+proj)();
+({^A|SHEAD|CHEAD|PUT})(PB,^proj,^XP,%pb)({PUT|STAIL|CTAIL}):=()(-XB,-PB,+XP=PP,+proj)();
+({XP,^NP|SHEAD|CHEAD|PUT},%left)(IB,^proj,^XP,%ib)(XP,^VP,%right):=(%left)(IP(%ib,+proj;+e),+XP=IP,+LEX=I,%new)(%right);
+({XP|SHEAD|CHEAD|PUT},%left)(CB,^CCJ,^proj,^XP,%cb)(XP,^IP,%right):=(%left)(CP(%cb,+proj;+e),+XP=CP,+LEX=C,%new)(%right);
+(R,^XP,^proj):=(+XP=NP,+proj);
+(C,CCJ,^XP,^proj):=(+XP=CP,+proj);
+(A,^proj,^XB,^XP):=(+XB=AB);
+(D,^proj,^XB,^XP):=(+XB=DB);
+(J,^proj,^XB,^XP):=(+XB=JB);
+(N,^proj,^XB,^XP):=(+XB=NB);
+(P,^proj,^XB,^XP):=(+XB=PB);
+(V,^proj,^XB,^XP):=(+XB=VB);
+(I,^proj,^XB,^XP):=(+XB=IB);
+(C,^proj,^XB,^XP):=(+XB=CB);
+IP(IB(;VP(;e));%s,^e):=IP(IB(;VP(;%s));%e,+e);
+CP(CB(;IP(IB(;VP(VB(;e);));));%a,^e):=CP(CB(;IP(IB(;VP(VB(;%a);));));%e,+e); (moving spec of CP to adjt of VP - position available)
+CP(CB(;IP(IB(;VP(VB(;^e),%vb;));));%a,^e):=CP(CB(;IP(IB(;VP(VB(VB(%vb;%a))));));%e,+e); (moving spec of CP to adjt of VP - position non-available)
+/[ACDIJNPV]B/(%x;%y):=XB(%x;%y);
+/[ACDIJNPV]P/(%x;%y):=XP(%x;%y);
+(XB(%x;%y),%w,att):=(XB(%x,+att=%w;%y),%w,-att);
+(XP(%x;%y),%w,att):=(XP(%x,+att=%w;%y),%w,-att);
+(XB(%x;%y),%w,rel):=(XB(%x,+rel=%w;%y),%w,-rel);
+(XP(%x;%y),%w,rel):=(XP(%x,+rel=%w;%y),%w,-rel);
+XP(XB(%x;%y);%z):=XB(%x;%y)XS(%x;%z);
+XB(XB(%x;%y);%z):=XB(%x;%y)XB(%x;%z);
+XS(XB(%x;%y);%z):=XB(%x;%y)XS(%x;%z);
+XS(%x;XB(%y;%z)):=XS(%x;%y)XB(%y;%z);
+XB(%z;XB(%x;%y)):=XB(%x;%y)XB(%z;%x);
+XP(%x;%y):=XS(%x;%y);
+XB(%x;e):=(%x);
+XS(%x;e):=(%x);
+(e):=;
+XB(%x,A;%y,adjt):=AA(%x;%y);
+XB(%x,C;%y,adjt):=CA(%x;%y);
+XB(%x,D;%y,adjt):=DA(%x;%y);
+XB(%x,I;%y,adjt):=IA(%x;%y);
+XB(%x,J;%y,adjt):=JA(%x;%y);
+XB(%x,N;%y,adjt):=NA(%x;%y);
+XB(%x,P;%y,adjt):=PA(%x;%y);
+XB(%x,V;%y,adjt):=VA(%x;%y);
+XB(%x,A;%y,comp):=NC(%x;%y);
+XB(%x,C;%y,comp):=CC(%x;%y);
+XB(%x,D;%y,comp):=DC(%x;%y);
+XB(%x,I;%y,comp):=IC(%x;%y);
+XB(%x,J;%y,comp):=JC(%x;%y);
+XB(%x,N;%y,comp):=NC(%x;%y);
+XB(%x,P;%y,comp):=PC(%x;%y);
+XB(%x,V;%y,comp):=VC(%x;%y);
+XB(%x,A;%y):=AA(%x;%y);
+XB(%x,C;%y):=CA(%x;%y);
+XB(%x,D;%y):=DA(%x;%y);
+XB(%x,I;%y):=IA(%x;%y);
+XB(%x,J;%y):=JA(%x;%y);
+XB(%x,N;%y):=NA(%x;%y);
+XB(%x,P;%y):=PA(%x;%y);
+XB(%x,V;%y):=VA(%x;%y);
+XS(%x,A;%y):=AS(%x;%y);
+XS(%x,C;%y):=CS(%x;%y);
+XS(%x,D;%y):=DS(%x;%y);
+XS(%x,I;%y):=IS(%x;%y);
+XS(%x,J;%y):=JS(%x;%y);
+XS(%x,N;%y):=NS(%x;%y);
+XS(%x,P;%y):=PS(%x;%y);
+XS(%x,V;%y):=VS(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,adr):=adr(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,agt):=agt(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,ant):=ant(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,aoj):=aoj(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,ben):=ben(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,bas):=bas(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,cag):=cag(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,cnt):=cnt(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,con):=con(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,cob):=cob(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,coo):=coo(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,dur):=dur(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,equ):=equ(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,exp):=exp(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,fld):=fld(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,frm):=frm(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,gol):=gol(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,icl):=icl(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,ins):=ins(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,iof):=iof(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,man):=man(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,mat):=mat(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,met):=met(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,mod):=mod(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,nam):=nam(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,obj):=obj(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,per):=per(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,plc):=plc(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,plf):=plf(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,plt):=plt(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,pof):=pof(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,pos):=pos(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,ptn):=ptn(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,pur):=pur(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,qua):=qua(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,rsn):=rsn(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,scn):=scn(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,seq):=seq(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,src):=src(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,tim):=tim(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,tmf):=tmf(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,tmt):=tmt(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,to):=to(%x;%y);
+/[ACDIJNPV][ACS]/(%x;%y,via):=via(%x;%y);
+NA(%x;%y):=mod(%x;%y);
+/[ACDIJPV]A/(%x;%y):=man(%x;%y);
+/[ACDIJNPV]C/(%x;%y):=obj(%x;%y);
+VS(%x;%y):=agt(%x;%y);
+/[ACDIJNP]S/(%x;%y):=mod(%x;%y);
+(@pl,{@multal|@paucal|@all|@both}):=(-@pl); eliminates the redundancy of @pl
+(@recent,@present):=(-@present,+@future);
+agt(%x,COP;%y)obj(%x;%z):=aoj(%z,+att=%x;%y); eliminates the copula
+agt(%x;%y,N)obj(%x;%z,J):=agt(%x;%y)aoj(%z;%y); transforms the predicate of the object into the predicate of the subject
+or(%a;and(%b1;%b2),%b):=or(%a;or(%b1;%b2),%b); propagates or to its internal conjunctions
+aoj(%x,SPR;%y):=pos(%y;%x); replaces aoj by pos when the first argument of the aoj is a possesive pronoun
+#(NP,%x)(JP,%y):=aoj(%y;%z);

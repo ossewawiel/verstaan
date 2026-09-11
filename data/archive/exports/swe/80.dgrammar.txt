@@ -1,0 +1,7 @@
+; RuleSet:(MX)unl_swe_dgrammar
+; User:Sergiy Prots (prots)
+; Date:23.07.2013 at 02:07:31
+
+; "unl_swe_dgrammar"
+; MX
+/(agt|obj|aoj)/(;D)=0; (determiners cannot be arguments of relations, because they are always attributes

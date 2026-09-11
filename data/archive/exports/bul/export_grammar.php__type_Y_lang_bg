@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<title>UNLarium</title>
+<link rel="stylesheet" type="text/css" media="all" href="../../shared/default.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"  />
+<link rel="shortcut icon" href="../favicon.ico" type="image/x-icon" />
+</head>
+
+<body>
+<h1>Bulgarian Subcategorization  Grammar</h1>Version of September 11, 2026, 12:53 pm<br />Documentation available at <a href="http://www.unlarchive.org/wiki/index.php/Grammar" target="_blank">http://www.unlarchive.org/wiki/index.php/Grammar</a><br />Tagset available at <a href="../dictionary/export_tagset.php" target="_blank">Export UNDL Foundation tagset</a>.<br /><br /><b>Y0</b><br />AVALENT<br /><br /><b>Y1</b><br />NO SUBCATEGORIZATION FRAME: rules defined inside the entry in the dictionary<br /><br /><b>Y122</b><br />Някой прави нещо (<i>чета, пиша</i>)<br />VS(NP,NOM,APER,ANUM,AGEN)VC(NP,ACC);
+<br /><br /><b>Y123</b><br />Някой прави (<i>заспивам</i>)<br />VS(NP,NOM,ANUM,APER,AGEN);
+<br /><br /><b>Y124</b><br />Някой прави нещо на някого (<i>давам</i>)<br />VS(NP,NOM,ANUM,APER,AGEN)VC(NP,ACC)VC(PH([на],DAT));
+<br /><br /><b>Y141</b><br />Някой добавя нещо към нещо (<i>добавям</i>)<br />VS(NP,NOM,ANUM,APER,AGEN)VC(NP,ACC)VC(PH([към]));
+<br /><br /><b>Y142</b><br />Някой информира някого за нещо (<i>информирам</i>)<br />VS(NP,NOM,ANUM,APER,AGEN)VC(NP,ACC)VC(PH([за]));
+<br /><br /><b>Y143</b><br />Някой размишлява върху нещо (<i>размишлявам</i>)<br />VS(NP)VC(PH([върху]));
+<br /><br /><b>Y144</b><br />Някой служи на някого (<i>служа</i>)<br />VS(NP,NOM,ANUM,APER,AGEN)VC(PH([на],DAT));
+<br /><br /><b>Y145</b><br />Някой става някакъв (<i>ставам</i>)<br />VS(NP,NOM,APER,ANUM,AGEN)VC(NP);
+<br /><br /><b>Y147</b><br />Изглежда, че (<i>изглежда</i>)<br />VS(DUM,3PS)VC(CH([че]));
+<br /><br /><b>Y149</b><br />Някой зависи от някого (<i>завися</i>)<br />VS(NP,NOM,ANUM,APER,AGEN)VC(PH([от],ACC));
+<br /><br /><b>Y150</b><br />Някой настоява пред някого (<i>настоявам</i>)<br />VS(NP,NOM,ANUM,APER,AGEN)VC(PH([пред],ACC));
+<br /><br /><b>Y151</b><br />Някой допринася за нещо (<i>допринасям за нещо</i>)<br />VS(NP,NOM,ANUM,APER,AGEN)VC(PH([за],ACC));
+<br /><br /><b>Y154</b><br />Някой участва в нещо (<i>участвам в състезание</i>)<br />VS(NP,NOM,ANUM,APER,AGEN)VC(PH([в],ACC));
+<br /><br /><b>Y155</b><br />някой се прозява (<i>прозявам се</i>)<br />VS(NP,NOM,APER,ANUM,AGEN)VC("се");
+<br /><br /><b>Y157</b><br />някой гледа към нещо (<i>Къщата гледа към реката.</i>)<br />VS(NP,NOM,ANUM,APER,AGEN)VC(PP([към],ACC));<br /><br /><b>Y158</b><br />Някой отказва някого от нещо (<i>Отказах брат ми от тази идея.</i>)<br />VS(NP,NOM,ANUM,APER,AGEN),VC(NP,ACC); VS(NP,NOM,ANUM,APER,AGEN),VC(NP,ACC),VC(PH([от]));<br /><br /><b>Y159</b><br />Някой иска да бъде нещо/някакъв (<i>Искам да бъда музикант.</i>)<br />VS(NP,NOM,ANUM,APER,AGEN)VC(PH([да];VH,ANUM,APER));<br /><br /><b>Y160</b><br />Някой моли някого да направи нещо (<i>Моля те да дойдеш с мен.</i>)<br />VS(NP,NOM,ANUM,APER,AGEN),VC(NP,ACC);
+VS(NP,NOM,ANUM,APER,AGEN),VC(NP,ACC),VC(PC([да];VH,ANUM,APER));<br /><br /><b>Y161</b><br />Някой заповядва на някого да направи нещо (<i>Заповядах на войниците да застанат мирно.</i>)<br />VS(NP,NOM,ANUM,APER,AGEN)VC(PP([на],DAT));
+VS(NP,NOM,ANUM,APER,AGEN)VC(PP([на],DAT)),VC(PC([да];VH,ANUM,APER));<br /><br /><b>Y163</b><br />Някой си спомня (<i>спомням си</i>)<br />VS(NP,NOM,APER,ANUM,AGEN)VC("си");<br /><br /><b>Y164</b><br />Генериране на прилагателни
+NA(момиче,красиво)=красиво момиче (<i>красив замък; красива жена; красиво момиче;</i>)<br />NA(%x,N;%y,J):=(%y)(" ")(%x);
+NA(N;J):=NA(N;J,RPER,RNUM,RGEN);
+<br /><br /><b>Y191</b><br />Някой експериментира с/върху/... нещо (<i>експериментирам; дриблирам</i>)<br />VS(NP)VC(PP);
+<br /><br /><b>Y192</b><br />Някой източва вода от нещо (<i>източвам</i>)<br />VS(NP,NOM,ANUM,APER,AGEN)VC(NP,ACC)VC(PH([от]));
+<br /><br /><b>Y193</b><br />Някой свързва някого/нещо с някого/нещо
+свързвам
+ (<i>свързвам</i>)<br />VS(NP,NOM,ANUM,APER,AGEN)VC(NP,ACC)VC(PH([с]));
+<br /><br /></body>
+<html>

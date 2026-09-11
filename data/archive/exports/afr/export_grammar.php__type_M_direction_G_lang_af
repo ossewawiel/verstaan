@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<title>UNLarium</title>
+<link rel="stylesheet" type="text/css" media="all" href="../../shared/default.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"  />
+<link rel="shortcut icon" href="../favicon.ico" type="image/x-icon" />
+</head>
+
+<body>
+<h1>Afrikaans Inflectional  Grammar for Natural Language Generation</h1>Version of September 11, 2026, 12:39 pm<br />Documentation available at <a href="http://www.unlarchive.org/wiki/index.php/Grammar" target="_blank">http://www.unlarchive.org/wiki/index.php/Grammar</a><br />Tagset available at <a href="../dictionary/export_tagset.php" target="_blank">Export UNDL Foundation tagset</a>.<br /><br />(%x,M2):=(%x,-M2,+FLX(SNG:=0>"";
+PLR:=0>"s";));<br /><br />(%x,M3):=(%x,-M3,+FLX(SNG:=0>"";
+PLR:=0>"e";));<br /><br />(%x,M4):=(%x,-M4,+FLX(SNG:=0>"";
+PLR:="eid">"ede";));<br /><br />(%x,M5):=(%x,-M5,+FLX(SNG:=0>"";
+PLR:=[-2]:"",0>"e";));<br /><br />(%x,M6):=(%x,-M6,+FLX(SNG:=0>"";
+PLR:=0>"te";));<br /><br />(%x,M7):=(%x,-M7,+FLX(SNG:=0>"";
+PLR:=[-1]:"e";));<br /><br />(%x,M16):=(%x,-M16,+FLX(SNG:=>"";
+PLR:=>"'s";));<br /><br />(%x,M17):=(%x,-M17,+FLX(SNG:=>"";
+PLR:=[-1]+,>"e";));<br /><br />(%x,M18):=(%x,-M18,+FLX(SNG:=>"";
+PLR:=1>"we";));<br /><br />(%x,M19):=(%x,-M19,+FLX(SNG:=>"";
+PLR:=>"ë";));<br /><br />(%x,M20):=(%x,-M20,+FLX(SNG:=>"";
+PLR:=1>"ë";));<br /><br />(%x,M21):=(%x,-M21,+FLX(SNG:=>"";
+PLR:=2>"e";
+));<br /><br />(%x,M22):=(%x,-M22,+FLX(SNG:=>"";
+PLR:=1>"aie";
+));<br /><br />(%x,M23):=(%x,-M23,+FLX(SNG:=>"";
+PLR:=2>"we";
+));<br /><br />(%x,M24):=(%x,-M24,+FLX(SNG:=>"";
+PLR:=2>"ë";
+));<br /><br />(%x,M25):=(%x,-M25,+FLX(SNG:=>"";
+PLR:=1>"wwe";
+));<br /><br />(%x,M26):=(%x,-M26,+FLX(INF:=>"";
+PAS:="ge"<0;
+PTP:="ge"<0;
+));<br /><br /></body>
+<html>

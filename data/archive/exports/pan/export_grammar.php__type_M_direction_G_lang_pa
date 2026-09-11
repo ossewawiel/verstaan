@@ -1,0 +1,210 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<title>UNLarium</title>
+<link rel="stylesheet" type="text/css" media="all" href="../../shared/default.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"  />
+<link rel="shortcut icon" href="../favicon.ico" type="image/x-icon" />
+</head>
+
+<body>
+<h1>Panjabi Inflectional  Grammar for Natural Language Generation</h1>Version of September 11, 2026, 1:52 pm<br />Documentation available at <a href="http://www.unlarchive.org/wiki/index.php/Grammar" target="_blank">http://www.unlarchive.org/wiki/index.php/Grammar</a><br />Tagset available at <a href="../dictionary/export_tagset.php" target="_blank">Export UNDL Foundation tagset</a>.<br /><br />(%x,M3):=(%x,-M3,+FLX(NOM&SNG:=0>"";
+NOM&PLR:=0>"ਆਂ";
+OBL&PLR:=0>"ਆਂ";
+ABL&SNG:=0>"ਓਂ";
+));<br /><br />(%x,M4):=(%x,-M4,+FLX(NOM:=0>"";
+OBL&PLR:=0>"ਾਂ";
+VOC&SNG:=0>"ਾ";
+VOC&PLR:=0>"ੋ";
+));<br /><br />(%x,M5):=(%x,-M5,+FLX(NOM&SNG:=0>"";
+NOM&PLR:=1>"ੇ";
+OBL&SNG:=1>"ੇ";
+OBL&PLR:=1>"ਿਆਂ";
+ABL&SNG:=1>"ਿਓਂ";
+LOC&PLR:=1>"ੀਂ";
+
+));<br /><br />(%x,M6):=(%x,-M6,+FLX(NOM:=0>"";
+OBL&PLR:=0>"ਾਂ";
+ABL&SNG:=0>"ੋਂ";
+LOC&PLR:=0>"ੀਂ";
+));<br /><br />(%x,M7):=(%x,-M7,+FLX(NOM:=0>"";
+OBL&PLR:=0>"ਾਂ";
+));<br /><br />(%x,M9):=(%x,-M9,+FLX(NOM:=0>"";
+OBL&PLR:=1>"ਵਾਂ";
+));<br /><br />(%x,M10):=(%x,-M10,+FLX(NOM:=0>"";
+OBL&PLR:=0>"ਾਂ";
+ABL&SNG:=0>"ੋਂ";
+LOC&SNG:=0>"ੇ";
+LOC&PLR:=0>"ੀਂ";
+));<br /><br />(%x,M12):=(%x,-M12,+FLX(NOM:=0>"";
+OBL&PLR:=0>"ਾਂ";
+ABL&SNG:=0>"ੋਂ";
+));<br /><br />(%x,M13):=(%x,-M13,+FLX(NOM&SNG:=0>"";
+NOM&PLR:=0>"ਆਂ";
+OBL&PLR:=0>"ਆਂ";
+
+));<br /><br />(%x,M14):=(%x,-M14,+FLX(NOM:=0>"";
+OBL&PLR:=0>"ਾਂ";
+ABL&SNG:=0>"ੋਂ";
+VOC&SNG:=0>"ਾ";
+VOC&PLR:=0>"ੋ";
+));<br /><br />(%x,M15):=(%x,-M15,+FLX(NOM&SNG:=0>"";
+NOM&PLR:=0>"ਾਂ";
+OBL&PLR:=0>"ਾਂ";
+LOC&PLR:=0>"ੀਂ";
+INS&PLR:=0>"ੀਂ";
+));<br /><br />(%x,M16):=(%x,-M16,+FLX(NOM:=0>"";
+OBL&PLR:=0>"ਾਂ";
+LOC&PLR:=0>"ੀਂ";
+INS&PLR:=0>"ੀਂ";
+VOC&PLR:=0>"ੋ";
+));<br /><br />(%x,M17):=(%x,-M17,+FLX(NOM:=0>"";
+ABL&SNG:=0>"ੋਂ";
+));<br /><br />(%x,M18):=(%x,-M18,+FLX(NOM&SNG:=0>"";
+NOM&PLR:=1>"ੇ";
+OBL&SNG:=1>"ੇ";
+OBL&PLR:=1>"ਿਆਂ";
+ABL&SNG:=1>"ਿਓਂ";
+));<br /><br />(%x,M19):=(%x,-M19,+FLX(NOM&SNG:=0>"";
+NOM&PLR:=0>"ਵਾਂ";
+OBL&PLR:=0>"ਵਾਂ";
+));<br /><br />(%x,M20):=(%x,-M20,+FLX(NOM&SNG:=0>"";
+NOM&PLR:=0>"ਾਂ";
+OBL&PLR:=0>"ਾਂ";
+ABL&SNG:=0>"ੋਂ";
+LOC&SNG:=0>"ੇ";
+));<br /><br />(%x,M21):=(%x,-M21,+FLX(NOM:=0>"";
+OBL&PLR:=0>"ਆਂ";
+VOC&SNG:=0>"ਆ";
+VOC&PLR:=0>"ਓ";
+));<br /><br />(%x,M22):=(%x,-M22,+FLX(NOM:=0>"";
+OBL&PLR:=0>"ਆਂ";
+VOC&SNG:=0>"ਆ";
+VOC&PLR:=0>"ਓ";
+));<br /><br />(%x,M23):=(%x,-M23,+FLX(NOM:=0>"";
+ABL&SNG:=0>"ਓਂ";
+));<br /><br />(%x,M24):=(%x,-M24,+FLX(NOM&SNG:=0>"";
+NOM&PLR:=0>"ਂ";
+OBL&PLR:=0>"ਂ";
+));<br /><br />(%x,M25):=(%x,-M25,+FLX(NOM&SNG:=0>"";
+NOM&PLR:=1>"ੇ";
+OBL&SNG:=1>"ੇ";
+));<br /><br />(%x,M26):=(%x,-M26,+FLX(NOM:=0>"";
+OBL&PLR:=0>"ਵਾਂ";
+ABL&SNG:=0>"ਓਂ";
+LOC&PLR:=0>"ਈਂ";
+));<br /><br />(%x,M27):=(%x,-M27,+FLX(NOM:=0>"";
+OBL&SNG:=1>"ੇ";
+ABL&SNG:=1>"ਿਓਂ";
+LOC&SNG:=1>"ੇ";
+));<br /><br />(%x,M28):=(%x,-M28,+FLX(NOM:=0>"";
+OBL&SNG:=1>"ੇ";
+OBL&PLR:=1>"ਿਆਂ";
+
+));<br /><br />(%x,M29):=(%x,-M29,+FLX(NOM&SNG:=0>"";
+NOM&PLR:=1>"ੇ";
+OBL&SNG:=1>"ੇ";
+OBL&PLR:=1>"ਿਆਂ";
+VOC&SNG:=1>"ਿਆ";
+VOC&PLR:=1>"ਿਓਂ";
+));<br /><br />(%x,M30):=(%x,-M30,+FLX(NOM&SNG:=0>"";
+NOM&PLR:=0>"ਾਂ";
+OBL&PLR:=0>"ਾਂ";
+ABL&SNG:=0>"ੋਂ";
+VOC&SNG:=0>"ੇ";
+VOC&PLR:=0>"ੋ";
+));<br /><br />(%x,M31):=(%x,-M31,+FLX(NOM&SNG:=0>"";
+NOM&PLR:=0>"ਵਾਂ";
+OBL&PLR:=0>"ਵਾਂ";
+VOC&SNG:=0>"ਏ";
+VOC&PLR:=0>"ਵੋ";
+));<br /><br />(%x,M32):=(%x,-M32,+FLX(NOM&SNG:=0>"";
+NOM&PLR:=0>"ਵਾਂ";
+OBL&PLR:=0>"ਵਾਂ";
+VOC&PLR:=0>"ਓ";
+));<br /><br />(%x,M33):=(%x,-M33,+FLX(NOM&SNG:=0>"";
+NOM&PLR:=0>"ਆਂ";
+OBL&PLR:=0>"ਆਂ";
+VOC&SNG:=0>"ਏ";
+VOC&PLR:=0>"ਓ";
+));<br /><br />(%x,M34):=(%x,-M34,+FLX(NOM&SNG:=0>"";
+NOM&PLR:=0>"ਾਂ";
+OBL&PLR:=0>"ਾਂ";
+VOC&SNG:=0>"ੇ";
+VOC&PLR:=0>"ੋ";
+));<br /><br />(%x,M35):=(%x,-M35,+FLX(NOM:=0>"";
+VOC&SNG:=0>"ਵਾ";
+VOC&PLR:=0>"ਵੋ";
+));<br /><br />(%x,M36):=(%x,-M36,+FLX(NOM:=0>"";
+VOC&SNG:=0>"ਾ";
+
+));<br /><br />(%x,M37):=(%x,-M37,+FLX(NOM:=0>"";
+OBL&PLR:=0>"ਾਂ";
+VOC&SNG:=0>"ਾ";
+
+));<br /><br />(%x,M38):=(%x,-M38,+FLX(NOM&PLR:=1>"ੇ";
+OBL&SNG:=1>"ੇ";
+OBL&PLR:=1>"ਿਆਂ";
+ABL:=0>"";
+LOC:=0>"";
+VOC:=0>"";
+));<br /><br />(%x,M39):=(%x,-M39,+FLX(NOM&PLR:=1>"ੇ";
+OBL&SNG:=1>"ੇ";
+OBL&PLR:=1>"ਿਆਂ";
+ABL:=0>"";
+LOC:=0>"";
+VOC&SNG:=1>"ਿਆ";
+VOC&PLR:=1>"ਿਓ";
+));<br /><br />(%x,M40):=(%x,-M40,+FLX(NOM&PLR:=0>"ਆਂ";
+OBL&PLR:=0>"ਆਂ";
+ABL:=0>"";
+LOC:=0>"";
+VOC:=0>"";
+
+));<br /><br />(%x,M41):=(%x,-M41,+FLX(NOM:=0>"";
+OBL&PLR:=0>"ਾਂ";
+ABL:=0>"";
+LOC:=0>"";
+VOC&SNG:=0>"ਾ";
+VOC&PLR:=0>"ੋ";
+));<br /><br />(%x,M42):=(%x,-M42,+FLX(NOM:=0>"";
+OBL&PLR:=0>"ਾਂ";
+ABL:=0>"";
+LOC:=0>"";
+VOC:=0>"";
+
+));<br /><br />(%x,M43):=(%x,-M43,+FLX(NOM:=0>"";
+OBL&PLR:=0>"ਆਂ";
+ABL:=0>"";
+LOC:=0>"";
+VOC&SNG:=0>"ਆ";
+VOC&PLR:=0>"ਓ";
+));<br /><br />(%x,M44):=(%x,-M44,+FLX(NOM&PLR:=2>"ੇ";
+OBL&SNG:=2>"ੇ";
+OBL&PLR:=0>"ਂ";
+ABL:=0>"";
+LOC:=0>"";
+VOC:=0>"";
+
+));<br /><br />(%x,M45):=(%x,-M45,+FLX(NOM:=0>"";
+OBL&PLR:=0>"ਾਂ";
+ABL:=0>"";
+LOC:=0>"";
+VOC&PLR:=0>"ੋ";
+));<br /><br />(%x,M46):=(%x,-M46,+FLX(NOM&PLR:=1>"ੇ";
+OBL&SNG:=1>"ੇ";
+OBL&PLR:=1>"ਿਆਂ";
+ABL&SNG:=1>"ਿਓਂ";
+LOC:=0>"";
+VOC:=0>"";
+));<br /><br />(%x,M47):=(%x,-M47,+FLX(NOM&PLR:=0>"ਆਂ";
+OBL&PLR:=0>"ਆਂ";
+ABL:=0>"";
+LOC:=0>"";
+VOC&SNG:=0>"ਏ";
+VOC&PLR:=0>"ਓ";
+));<br /><br />(%x,M64):=(%x,-M64,+FLX(NOM&FEM&PLR:=0>"ਆਂ";
+OBL&FEM&PLR:=0>"ਆਂ";
+));<br /><br /></body>
+<html>

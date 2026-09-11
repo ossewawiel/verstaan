@@ -1,0 +1,13 @@
+; RuleSet:(MX)rus_unl_dgrammar
+; User:Sergiy Prots (prots)
+; Date:25.07.2012 at 03:07:36
+
+; "rus_unl_dgrammar"
+; MX
+(TEMP,^DIGIT,^W)(^BLK,^PUT,^STAIL)=0; there must be a blank, a punctuation sign or the end of the sentence after a temporary word, i.e., a temporary word cannot be followed by other word, except for digits, as in "1st"
+(^BLK,^PUT,^SHEAD)(TEMP,^W)=0; there must be a blank, a punctuation sign or the beginning of the sentence before a temporary word, i.e., a temporary word cannot be preceded by other word
+(TEMP)(PUT)(TEMP)=0; there cannot be two temporary words separated by punctuation mark
+(D,^AFT)({PUT,^BLK|STAIL})=0; determiners may not come at the end of the sentence or before a punctuation mark, except if their distribution is AFT, like "enough"
+(D,^AFT)(BLK)({V|P|AAV})=0; determiners may not be precede verbs, prepositions or adjunct adverbs, except if their distribution is AFT
+(AUX)(BLK)(^V,^[не])=0; an auxiliary verb must be followed by a verb or the words "not" or "to"
+(AUX)(BLK)([не])(BLK)(^V)=0; if followed by "not", the auxiliary must be followed by a verb

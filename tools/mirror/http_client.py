@@ -8,6 +8,7 @@ here even though this is a tool, not the engine). `UrllibTransport` is the real 
 
 from __future__ import annotations
 
+import http.cookiejar
 import time
 import urllib.error
 import urllib.request
@@ -24,19 +25,33 @@ class HttpResponse:
 
 
 class Transport(Protocol):
-    def request(self, url: str, headers: dict[str, str]) -> HttpResponse: ...
+    def request(
+        self, url: str, headers: dict[str, str], *, data: bytes | None = None
+    ) -> HttpResponse: ...
 
 
 class UrllibTransport:
     """The real transport. HTTP error responses (4xx/5xx) come back as a normal `HttpResponse`,
     not an exception — the mirror records error bodies (SPEC.md §3.1's broken export), it does
     not discard them. Only a transport-level failure (DNS, connection refused, timeout) raises.
+
+    Cookies (issue 08's logged-in session) live in an in-memory `http.cookiejar.CookieJar`, never
+    a `FileCookieJar` — the session cookie must never touch disk. One instance's cookies are
+    shared by every request it makes, GET or POST, for the lifetime of the process only.
     """
 
-    def request(self, url: str, headers: dict[str, str]) -> HttpResponse:
-        req = urllib.request.Request(url, headers=headers)
+    def __init__(self) -> None:
+        self._cookie_jar = http.cookiejar.CookieJar()
+        self._opener = urllib.request.build_opener(
+            urllib.request.HTTPCookieProcessor(self._cookie_jar)
+        )
+
+    def request(
+        self, url: str, headers: dict[str, str], *, data: bytes | None = None
+    ) -> HttpResponse:
+        req = urllib.request.Request(url, headers=headers, data=data)
         try:
-            with urllib.request.urlopen(req, timeout=30) as resp:
+            with self._opener.open(req, timeout=30) as resp:
                 return HttpResponse(resp.status, dict(resp.headers), resp.read())
         except urllib.error.HTTPError as exc:
             return HttpResponse(exc.code, dict(exc.headers or {}), exc.read())
@@ -83,6 +98,40 @@ class RateLimitedClient:
         self.request_count = 0
 
     def get(self, url: str, *, extra_headers: dict[str, str] | None = None) -> HttpResponse:
+        return self._request(url, data=None, extra_headers=extra_headers)
+
+    def get_while(
+        self,
+        url: str,
+        still_pending,
+        *,
+        extra_headers: dict[str, str] | None = None,
+    ) -> HttpResponse:
+        """Like `get`, but retries — same bounded `retries` and `retry_backoff_seconds * attempt`
+        backoff as a transport failure or a 5xx status — while `still_pending(response.body)` says
+        the body is not a real answer yet (issue 08: UNLarium's "please wait, generating…"
+        placeholder page, or a zip export not yet materialised). Gives up after the same number
+        of attempts as any other retry and returns the last response, pending or not — the caller
+        decides how to record a still-pending body, this method never raises for one.
+        """
+        response = self.get(url, extra_headers=extra_headers)
+        for attempt in range(1, self._retries):
+            if not still_pending(response.body):
+                return response
+            self._sleep(self._retry_backoff_seconds * attempt)
+            response = self.get(url, extra_headers=extra_headers)
+        return response
+
+    def post(
+        self, url: str, *, data: bytes, extra_headers: dict[str, str] | None = None
+    ) -> HttpResponse:
+        """A rate-limited, retried POST — issue 08's sign-in form. Same host and retry rules as
+        `get`; the only difference is a request body."""
+        return self._request(url, data=data, extra_headers=extra_headers)
+
+    def _request(
+        self, url: str, *, data: bytes | None, extra_headers: dict[str, str] | None
+    ) -> HttpResponse:
         if not _same_host(url, self._host):
             raise OffHostError(f"refusing to fetch off-host url: {url!r} (host is {self._host!r})")
 
@@ -95,7 +144,13 @@ class RateLimitedClient:
             self._wait_for_rate_limit()
             self.request_count += 1
             try:
-                response = self._transport.request(url, headers)
+                # `data=None` is omitted, not passed, so a `Transport` fake written before issue
+                # 08 (POST support) — `def request(self, url, headers):` — still works unchanged.
+                response = (
+                    self._transport.request(url, headers, data=data)
+                    if data is not None
+                    else self._transport.request(url, headers)
+                )
             except Exception as exc:  # noqa: BLE001 - a transport failure is retried, not typed
                 last_exc = exc
             else:

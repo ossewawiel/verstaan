@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<title>UNLarium</title>
+<link rel="stylesheet" type="text/css" media="all" href="../shared/default.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"  />
+<link rel="shortcut icon" href="../favicon.ico" type="image/x-icon" />
+</head>
+
+<body>
+<h1>;Czech Dictionary</h1>;Version of September 11, 2026, 1:04 pm<br />;Documentation available at <a href="http://www.unlarchive.org/wiki/index.php/Dictionary_Specs" target="_blank">http://www.unlarchive.org/wiki/index.php/Dictionary_Specs</a><br />;Grammar available at <a href="http://www.unlarchive.org/unlarium/grammar/export_grammar.php?lang=cs" target="_blank">http://www.unlarchive.org/unlarium/grammar/export_grammar.php?lang=cs</a><br />;Tagset available at <a href="http://www.unlarchive.org/unlarium/grammar/export_tagset.php" target="_blank">http://www.unlarchive.org/unlarium/grammar/export_tagset.php</a><br /><br />;Generative Unabridged Dictionary for the project WIKIPEDIA-D<br /><br /><div id="progressbar1" class="progressbar" style="position:relative;width:400px;border:1px solid #999;padding:6px;margin:6px 0;">
+  <div id="progressbar1_message" style="margin-bottom:6px;">Please wait...</div>
+  <div style="position:relative;width:100%;height:22px;background:transparent;">
+    <div style="width:100%;height:100%;"><div style="width:400px;height:22px;float:left;background-color:#eee;"></div></div>
+    <div id="progressbar1_fill" style="position:absolute;left:0;top:0;height:100%;display:flex;align-items:center;overflow:hidden;"></div>
+  </div>
+</div><br />
+<b>Fatal error</b>:  Uncaught mysqli_sql_exception: Table 'u965818192_unlweb.dic_cs_gen' doesn't exist in /home/u965818192/domains/unlarchive.org/public_html/shared/functions.inc.php:2805
+Stack trace:
+#0 /home/u965818192/domains/unlarchive.org/public_html/shared/functions.inc.php(2805): mysqli_query()
+#1 /home/u965818192/domains/unlarchive.org/public_html/unlarium/dictionary/export_dic.php(84): print_entry()
+#2 {main}
+  thrown in <b>/home/u965818192/domains/unlarchive.org/public_html/shared/functions.inc.php</b> on line <b>2805</b><br />

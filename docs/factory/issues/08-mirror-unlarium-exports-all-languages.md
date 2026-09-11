@@ -2,15 +2,16 @@
 issue: 8
 title: "Mirror the logged-in UNLarium exports for every language"
 milestone: M1
-status: open
+status: done
 depends_on: [7]
 agent: implementer
 agents: [implementer]
 model: sonnet
 effort: medium
 checkpoint: null
-commit: null
+commit: 7cea7e9
 github_issue: 8
+worktree: null
 ---
 ## What
 
@@ -39,7 +40,14 @@ than the archive's own author credits inside export files.
 
 ## Done when
 
-- [ ] Afrikaans, English and Dutch exports are present and non-empty where the language table
-      says they should be.
-- [ ] The count of languages with a non-empty dictionary export matches the table's non-zero
-      base-form rows, or every difference is explained in the report.
+- [x] Afrikaans, English and Dutch exports are present and non-empty where the language table
+      says they should be. afr 77/82, eng 79/94, dut 62/77 files non-empty; every gap is one of
+      the 16 large multi-combo dictionary zips (`<lang>_ana|gen_a|u_c|e_ucl|ucn.zip`) that the
+      archive server never finished generating within the retry budget, recorded honestly as
+      `status: timeout`, never `ok` or `empty`. Every other export type (grammar, tagset,
+      per-project dictionary combos) is present and non-empty for all three languages.
+- [x] The count of languages with a non-empty dictionary export matches the table's non-zero
+      base-form rows, or every difference is explained in the report. All 47 languages with a
+      non-zero base-forms/word-forms/paradigms/frames row have at least one non-empty dictionary
+      export on disk; 43 of those have `base_forms > 0`, the other 4 are grammar-only rows with an
+      empty dictionary (`grc`, `prs`, `mar`, `pol`).

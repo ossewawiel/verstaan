@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<title>UNLarium</title>
+<link rel="stylesheet" type="text/css" media="all" href="../../shared/default.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"  />
+<link rel="shortcut icon" href="../favicon.ico" type="image/x-icon" />
+</head>
+
+<body>
+<h1>Khmer Subcategorization  Grammar for Natural Language Generation</h1>Version of September 11, 2026, 1:39 pm<br />Documentation available at <a href="http://www.unlarchive.org/wiki/index.php/Grammar" target="_blank">http://www.unlarchive.org/wiki/index.php/Grammar</a><br />Tagset available at <a href="../dictionary/export_tagset.php" target="_blank">Export UNDL Foundation tagset</a>.<br /><br /><b>Y0</b><br />AVALENT<br /><br /><b>Y1</b><br />NO SUBCATEGORIZATION FRAME: rules defined inside the entry in the dictionary<br /><br /><b>Y2</b><br />Noun needs the classifier [នាក់] whenever it is accompanied by a numeral or quantifier.  (<i>ខ្ញុំមានកូន២នាក់។</i>)<br />NS(DH([នាក់],CLA));
+<br /><br /><b>Y4</b><br />Noun requires the classifier [ក្បាល] whenever it is accompanied by a numeral or quantifier. (<i>សៀវភៅ​៣​ក្បាល សត្វគោ៥ក្បាល</i>)<br />NS(DH([ក្បាល],CLA));
+<br /><br /><b>Y7</b><br />Noun requires the classifier [គ្រឿង] whenever it is accompanied by a numeral or quantifier. (<i>ឡាន២គ្រឿង</i>)<br />NS(DH([គ្រឿង],CLA));
+<br /><br /><b>Y11</b><br />Noun requires the classifier [ធុង] whenever it is accompanied by a numeral or quantifier. (<i>ទឹក២ធុង</i>)<br />NS(DH([ធុង],CLA));
+<br /><br /><b>Y17</b><br />Noun requires the classifier [គ្រាប់] whenever it is accompanied by a numeral or quantifier. (<i>គ្រាប់ស្ករ៥គ្រាប់</i>)<br />NS(DH([គ្រាប់],CLA));
+<br /><br /><b>Y18</b><br />Noun requires the classifier [ដើម] whenever it is accompanied by a numeral or quantifier. (<i>ដើមស្វាយ៣ដើម</i>)<br />NS(DH([ដើម],CLA));
+<br /><br /><b>Y28</b><br />Noun requires the classifier [យ៉ាង] whenever it is accompanied by a numeral or quantifier. (<i>គុណប្រយោជន៍សំខាន់៥យ៉ាង</i>)<br />NS(DH([យ៉ាង],CLA));
+<br /><br /><b>Y29</b><br />Noun requires the classifier [មុខ] whenever it is accompanied by a numeral or quantifier. (<i>ម្ហូប៥មុខ</i>)<br />NS(DH([មុខ],CLA));
+<br /><br /><b>Y32</b><br />Intransitive Verb (<i>គាត់ដើរ</i>)<br />VS(NP);
+<br /><br /><b>Y33</b><br />Intransitive Verb with a particle which denotes continuous action. (<i>គាត់កំពុងដើរ</i>)<br />VS(NP)VA(AH([កំពុង],PTC));
+<br /><br /><b>Y34</b><br />Intransitive Verb with a particle which denotes past action. (<i>គាត់បានដើរ</i>)<br />VS(NP)VA(AH([បាន],PTC));
+<br /><br /><b>Y35</b><br />Transitive Verb (<i>ក្មេងស្រីញ៉ាំបាយ</i>)<br />VS(NP)VC(NP);
+<br /><br /><b>Y36</b><br />Transitive Verb with a particle which denotes continuous action. (<i>ក្មេងស្រីកំពុងញ៉ាំបាយ</i>)<br />VS(NP)VA(AH([កំពុង],PTC))VC(NP);
+<br /><br /><b>Y37</b><br />Transitive Verb with a particle which denotes past action.
+ (<i>ក្មេងស្រីបានញ៉ាំបាយរួចហើយ</i>)<br />VS(NP)VA(AH([បាន],PTC))VC(NP);
+<br /><br /><b>Y38</b><br />Intransitive Verb with a particle which denotes negation. (<i>គាត់មិនដើរ</i>)<br />VS(NP)VA(AH([មិន],PTC));
+<br /><br /><b>Y39</b><br />Transitive Verb with a particle which denotes negation. (<i>ក្មេងស្រីមិនញ៉ាំបាយ</i>)<br />VS(NP)VA(AH([មិន],PTC))VC(NP);
+<br /><br /><b>Y40</b><br />Noun requires the classifier [ខ្នង] or [ល្វែង] whenever it is accompanied by a numeral or quantifier. (<i>ផ្ទះ ៤ ខ្នង, ផ្ទះ ១ ល្វែង</i>)<br />NS(DH({[ខ្នង],CLA|[ល្វែង],CLA}));
+<br /><br /><b>Y43</b><br />Noun requires the classifier [សន្លឹក] whenever it is accompanied by a numeral or quantifier. (<i>ក្រដាស់៣សន្លឹក</i>)<br />NS(DH([សន្លឹក],CLA));
+<br /><br /><b>Y44</b><br />Noun needs the classifier [ផ្លែ] whenever it is accompanied by a numeral or quantifier.
+ស្វាយ៥ផ្លែ។ (<i>ស្វាយ៥ផ្លែ</i>)<br />NS(DH([ផ្លែ],CLA));
+<br /><br /><b>Y45</b><br />Noun needs the classifier [ខ្សែ] whenever it is accompanied by a numeral or quantifier.
+ខ្សែដៃ៥ខ្សែ។ (<i>ខ្សែដៃ៥ខ្សែ</i>)<br />NS(DH([ខ្សែ],CLA));
+<br /><br /><b>Y46</b><br />Noun classifier [បទ] for song  (<i>ចម្រៀង៥បទ</i>)<br />NS(DH([បទ],CLA));
+<br /><br /><b>Y47</b><br />Noun classifier  [វង់] for ring (<i>ចិញ្ចៀន១វង់</i>)<br />NS(DH([វង់],CLA));
+<br /><br /><b>Y48</b><br />Noun needs the classifier [អង្គ], for king words, whenever it is accompanied by a numeral or quantifier. (<i>សម្ដេចមានបុត្រី៣អង្គ។
+សម្ដេចមានបុត្រា៥អង្គ។</i>)<br />NS(DH([អង្គ],CLA));
+<br /><br /></body>
+<html>

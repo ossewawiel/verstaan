@@ -1,0 +1,726 @@
+; RuleSet:(MX)reference grammar
+; User:LILYACBA LILYACBA (lilyacba)
+; Date:21.40.2013 at 04:40:03
+
+; "reference grammar"
+; MX
+(^W,^BLK,^SHEAD,^STAIL,^CHEAD,^CTAIL):=(+W);
+(W,%y,^blk)(BLK):=(%y,blk);
+(NEG,PAS,%x)(N,%y):=(%x,@not,@past);
+#(question mark,PUT):=;
+({N|PPN},^NOU):=(NOU);
+(PUT,colon,%x):=;
+(%a,R,POS=PPR,PER=3PS)(%b,V,POS=COP,PER=3PS)(%c,J,POS=ADJ):=aoj(%c,+att=@present;%a);
+("أ",^letter,^WHQ):=([[a]],letter,-TEMP,w);
+("ب",^w,^preposition):=([[b]],letter,-TEMP,w);
+("ت",^w):=([[t]],letter,-TEMP,w);
+("ث",^w):=([[th]],letter,-TEMP,w);
+("ج",^w):=([[g]],letter,-TEMP,w);
+("ح",^w):=([[h]],letter,-TEMP,w);
+("خ",^w):=([[kh]],letter,-TEMP,w);
+("د",^w):=([[d]],letter,-TEMP,w);
+("ذ",^w):=([[z]],letter,-TEMP,w);
+("ر",^w):=([[r]],letter,-TEMP,w);
+("ز",^w):=([[z]],letter,-TEMP,w);
+("س",^w):=([[s]],letter,-TEMP,w);
+("ش",^w):=([[sh]],letter,-TEMP,w);
+("ص",^w):=([[s]],letter,-TEMP,w);
+("ض",^w):=([[d]],letter,-TEMP,w);
+("ط",^w):=([[t]],letter,-TEMP,w);
+("ظ",^w):=([[z]],letter,-TEMP,w);
+("ع",^w):=([[a]],letter,-TEMP,w);
+("غ",^w):=([[a]],letter,-TEMP,w);
+("ف",^w):=([[f]],letter,-TEMP,w);
+("ق",^w):=([[q]],letter,-TEMP,w);
+(^{V|PTC},%z)("ك",^w)(^{V|N},%y):=(%z)([[k]],letter,-TEMP,w)(%y);
+("ل",^w,^preposition):=([[l]],letter,-TEMP,w);
+("م",^w):=([[m]],letter,-TEMP,w);
+("ن",^w):=([[n]],letter,-TEMP,w);
+("ه",^w,^POD):=([[h]],letter,-TEMP,w);
+("و",^w,^and):=([[w]],letter,-TEMP,w);
+(SHEAD)("ي",^w):=([[y]],letter,-TEMP,w);
+(^{V|PTC},%z)("ي",^w)(^{V|N},%y):=(%z)([[i]],letter,-TEMP,w)(%y);
+("ا",^w):=([[a]],letter,-TEMP,w);
+("آ",^w):=([[aa]],letter,-TEMP,w);
+("ى",^w):=([[aa]],letter,-TEMP,w);
+("ة",^w):=([[a]],letter,-TEMP,w);
+("ء",^w):=([[a]],letter,-TEMP,w);
+("ؤ",^w):=([[oa]],letter,-TEMP,w);
+("ئ",^w):=([[ah]],letter,-TEMP,w);
+("إ",^w):=([[ai]],letter,-TEMP,w);
+(letter,^BLK,%x)(BLK,^NameCom,%y):=(%x,BLKafter);
+(letter,^arof,^AS,^BLKafter,^trans,^POD,%x)(letter,^BLKafter,^and,^N,^preposition,^orr,%y):=(%x&%y,transs,TEMP,^BLKafter,letter);م+ح
+(letter,^BLKafter,^preposition,%x)(letter,BLKafter,%y):=(%x&%y,+trans,-transs,PPN,TEMP,-BLKafter);محمد م
+({^V,^and|SHEAD},%v)(PPN,%x)(PPN,%y):=(%v)(PPN,%x)([[ ]],space,%z)(PPN,%y);
+(PPN,%x)({space|BLK},%z)(PPN,%y):=(%x&%z&%y,PPN,-space);
+(and,%y)(ANUM,^Mod,^V,^PARTI,^aoj,%x):=(%x,+And); والولد
+(HOURS,%q)(Scores,%q)(%x,and)(PARTI,%r):=("0",NEWZERO)(%x,ADDHOU)(":15",NEWZERO)(":00",NEWZERO);الرابعة والربع ساعة
+(ANUM,%z)(%x,and)(PARTI,%r):=(%z,ANUM)(" ",[[ ]],NEWPARTI)(PARTI,%r);
+(%z,ANUM)(NEWPARTI,%q):=(%z&%q,PARTICOMP,-NEWPARTI);نصف+ " "
+(PARTICOMP,%q)(PARTI,%r):=(%q&%r,-PARTICOMP,ANUM);نصف + واحد
+(ANUM,^NWEPOINTNUMBER,^COMPMINUTES,%z)(%x,And,^NWEPOINTNUMBER,^COMPMINUTES):=(%z)(%x,-And);
+(COMPADDHOU,%r)(%x,ADDMIN)(NEWZERO,%s)(ANUM,%t)(SECONDS,%q):=(%r&%x,NEWHOUMINSEC,-ADDMIN,-COMPADDHOU,-SECONDS)("0:",NEWZERO)(%t,NEWZERO,-SECONDS);ساعة+دقيقة +ثانية
+(NEWZERO,%q)(%y,ADDHOU)(COMPMINUTES,%t):=(%q&%y&%t,-COMPMINUTES,-ADDHOU,+HOURMINUTE);الساعة و دقيقة
+(ART,%y)(J,%x):=(%x,+JP,-J);
+(ART,^FOR,%y)({^ANUM|^DIGT},{trans|N},%x):=(%x,@def);
+(ART,%y)({ANUM|DIGT},{ORD|^Scores},%x):=(%x,@ordinal);
+(ART,%y)({ANUM|DIGT},%x):=(%x,ANUM);الواحد والعشرون
+(HOURS,%t)(ANUM,Scores,%y)(ANUM,Twenties,%x)(MINUTE,%q):=("0",NEWZERO)(%y,ADDHOU,-Scores)(":",NEWZERO)(%x,ADDMIN,-Twenties)("0:00",NEWZERO);الساعة الثالثة وخمسون دقيقة
+(preposition,^@but,%y)(J,%x):=(%x,att=%y);تقريبا جميل
+(ANUM,Scores,%y)(ANUM,Twenties,%x):=(%x&%y,-Twenties,-Scores,+scor,ANUM,+complete);25
+(Hundreds,%x)(ANUM,scor,%y):=(%x&%y,-Twenties,-Hundreds,-scor,ANUM,COMHS,+complete);125
+(Hundreds,%x)(ANUM,addTwenties,%y):=(%x&%y,-Hundreds,HUNTWEN,ANUM,+complete);120
+(ANUM,Twenties,%y)({STAIL|N|millions|Thousands},%t):=(%y,+ANUM,Twenties)("0",[[0]],+new,%2)(%t);2+0
+(ANUM,Twenties,%y)(new,%x):=(%y&%x,-Twenties,+addTwenties,+ANUM,+complete);add new after 2+0
+(Hundreds,%y)(Scores,^NWEPOINTNUMBER,%x):=(Hundreds,%y)("0",[[0]],+new,%2)(Scores,%x);1+0+1
+(Hundreds,%y)(new,%x)(ANUM,Scores,%z):=(%y&%x&%z,-Hundreds,+HUNSCOR,ANUM,+complete);101
+(ANUM,Hundreds,%y)(%x,Thousands,ANUM):=(%y,-Thousands,-Hundreds,HUNTHOU);400+1000
+(%y,HUNTHOU)(COMHS,%x):=(%y,HUNTHOU)("00",[[00]],+new,%2)(COMHS,ANUM,%x);400000+125
+(%y,HUNTHOU)(HUNTWEN,%x):=(%y,HUNTWEN)("00",[[00]],+new,%2)(HUNTWEN,ANUM,%x);400000+150
+(%y,HUNTHOU)(HUNSCOR,%x):=(%y,HUNTHOU)("00",[[00]],+new,%2)(HUNSCOR,ANUM,%x);400000+101
+(%y,HUNTHOU)(Scores,%x):=(%y,HUNTHOU)("0000",[[0000]],+new,%2)(Scores,ANUM,%x);400000+1
+(%y,HUNTHOU)(addTwenties,%x):=(%y,HUNTHOU)("000",[[000]],+new,%2)(addTwenties,ANUM,%x);40000+50
+(%y,HUNTHOU)(scor,%x):=(%y,HUNTHOU)("000",[[000]],+new,%2)(scor,ANUM,%x);4000+51
+(%y,HUNTHOU)(addHundreds,%x):=(%y,HUNTHOU)("00",[[00]],+new,%2)(addHundreds,ANUM,%x);400+100
+(%y,HUNTHOU)(new,%2):=(%y&%2,-HUNTHOU,ANUM,addHUNTHOU,+complete);4+00000
+(addHUNTHOU,%y)(Scores,%x):=(%y&%x,ANUM,-Scores,-addHUNTHOU,comthouS,+complete);400001
+(addHUNTHOU,%y)(addTwenties,%x):=(%y&%x,ANUM,-addTwenties,-addHUNTHOU,comthouT,+complete);400050
+(addHUNTHOU,%y)(scor,%x):=(%y&%x,ANUM,-scor,-addHUNTHOU,comthouTs,+complete);400025
+(addHUNTHOU,%y)(addHundreds,%x):=(%y&%x,ANUM,-addHundreds,-addHUNTHOU,comthouTAH,+complete);400100
+(addHUNTHOU,%y)(HUNSCOR,%x):=(%y&%x,ANUM,-HUNSCOR,-addHUNTHOU,comthouTAHS,+complete);400101
+(addHUNTHOU,%y)(HUNTWEN,%x):=(%y&%x,ANUM,-HUNTWEN,-addHUNTHOU,comTWENHUN,+complete);400150
+(addHUNTHOU,%y)(COMHS,%x):=(%y&%x,ANUM,-COMHS,-addHUNTHOU,comCOMHS,+complete);400125
+(ANUM,Hundreds,%y)({STAIL|N|millions|Thousands},%t):=(%y,+ANUM,Hundreds)("00",[[00]],+new,%2)(%t);2+00
+(%y,HUNTHOU)({STAIL|N|millions|Thousands},%t):=(%y,Hundreds,ANUM,-Thousands,-HUNTHOU)("00000",[[00000]],+new,%2)(%t);4+00000
+(ANUM,Hundreds,%y)(new,%x):=(%y&%x,-Hundreds,-new,+addHundreds,ANUM,+complete);add new after 2+00
+(ANUM,addTwenties,%y)(%x,Thousands,ANUM):=(%y,-Thousands,-addTwenties,addTwentiesHTHOU);40+1000
+(%y,addTwentiesHTHOU)({HUNSCOR|HUNTWEN|addHundreds|COMHS},%x):=(%y&%x,addTwentiesHTHOU,-HUNTWEN,-HUNSCOR,-addTwentiesHTHOU,-COMHS,-addHundreds,+HTHOUHUNSCOR,+complete);40101
+(%y,addTwentiesHTHOU)(Scores,%x):=(%y,addTwentiesHTHOU)("00",[[00]],+new,%2)(Scores,ANUM,%x);4000+1
+(%y,addTwentiesHTHOU)(addTwenties,%x):=(%y,addTwentiesHTHOU)("0",[[0]],+new,%2)(addTwenties,ANUM,%x);400+50
+(%y,addTwentiesHTHOU)(scor,%x):=(%y,addTwentiesHTHOU)("0",[[0]],+new,%2)(scor,ANUM,%x);400+55
+(addTwentiesHTHOUN,%y)(Scores,%x):=(%y&%x,ANUM,-Scores,-addTwentiesHTHOUN,addTwentiesHTHOUNS,+complete);40001
+(addTwentiesHTHOUN,%y)(addTwenties,%x):=(%y&%x,ANUM,-addTwenties,-addTwentiesHTHOUN,addTwentiesHTHOUNSTWE);40050
+(addTwentiesHTHOUN,%y)(addHundreds,%x):=(%y&%x,ANUM,-addHundreds,-addTwentiesHTHOUN,addTwentiesHTHOUNSTHOUS);40100
+(addTwentiesHTHOUN,%y)(scor,%x):=(%y&%x,ANUM,-scor,-addTwentiesHTHOUN,addTwentiesHTHOUNSCOR);40050
+(addTwentiesHTHOUN,%y)(HUNSCOR,%x):=(%y&%x,ANUM,-HUNSCOR,-addTwentiesHTHOUN,addTwentiesHTHOUNSTHUNSCOR);40100
+(addTwentiesHTHOUN,%y)(HUNTWEN,%x):=(%y&%x,ANUM,-HUNTWEN,-addTwentiesHTHOUN,addTwentiesHTHOUNSTHUNHUNTWEN);40150
+(addTwentiesHTHOUN,%y)(COMHS,%x):=(%y&%x,ANUM,-COMHS,-addTwentiesHTHOUN,addTwentiesHTHOUNSTHUNCOMHS);40150
+(COMHS,%x)(Thousands,%y)(Scores,%t):=(%x&%t,-COMHS,-Score);233+1000+83
+(%x,Thousands,ANUM)(%y,Scores,ANUM):=(%x,Thousands,ANUM)("00",[[00]],+new,%2)(%y,Scores,ANUM);1+00+1
+(%x,addThous,ANUM)(%y,Scores,ANUM):=(%x&%y,ANUM,+THOUSCOR);1+00+1
+(scor,%q)(Thousands,%x)(ANUM,{HUNTWEN|COMHS},%y):=(%q&%y,-Thousands,ANUM);11+1+150
+(Thousands,%x)(ANUM,{HUNTWEN|COMHS},%y):=(%x&%y,-Thousands,ANUM);1+150
+(%x,Thousands,ANUM)(%y,addTwenties,ANUM):=(%x,Thousands,ANUM)("0",[[0]],+new,%2)(%y,addTwenties,ANUM);1+0+50
+(%x,addThous,ANUM)(%y,addTwenties,ANUM):=(%x&%y,ANUM);1+0+50
+(Thousands,%x)(ANUM,addHundreds,%y):=(%x&%y,-Thousands,ThousWEN,ANUM);1100
+(%y,addTwentiesHTHOU)({STAIL|N|millions|Thousands},%t):=(%y,-Hundreds,ANUM,-Thousands,-addTwentiesHTHOU,+addhousands)("000",[[000]],+new,%2)(%t);40000
+(%y,addhousands)("0000",[[0000]],+new,%2):=(%y&%2,+addhousandsnew);
+({SHEAD|CHEAD},^ANUM,%x)(ANUM,Thousands,%y)({STAIL|N|millions|Thousands},%t):=(%y,+ANUM,Thousands)("000",[[000]],+new,%2)(%t);1+000
+(ANUM,^millions,%x)(ANUM,Thousands,%y):=(%x,ANUM,Thousands)("000",[[000]],+new,%2);any number+thousand
+(ANUM,Thousands,%y)(new,%x):=(%y&%x,-Thousands,+addThous,ANUM);add new after 1+000
+(%y,addTwentiesHTHOU)(new,%2):=(%y&%2,-addTwentiesHTHOU,ANUM,+addTwentiesHTHOUN);4+00000
+(+addTwenties,ANUM,%x)(ANUM,millions,%y):=(%x,addTwenties,millions,ANUM,addTwentiesM)("0000",[[0000]],+new,%2);
+({SHEAD|CHEAD},^ANUM,%x)(ANUM,billion,%y)({STAIL|N},%t):=(%y,+ANUM,billion)("000000000",[[000000000]],+new,%2)(%t);1+0000001+000000000بليون
+({SHEAD|CHEAD},^ANUM,%x)(ANUM,trilions,%y)({STAIL|N},%t):=(%y,+ANUM,trilions)("000000000000",[[000000000000]],+new,%2)(%t);1+000000000000تريليون
+({SHEAD|CHEAD},^ANUM,%x)(ANUM,millions,%y)({STAIL|N},%t):=(%y,+ANUM,millions)("000000",[[000000]],+new,%2)(%t);1+000000
+(ANUM,millions,%y)(ANUM,{comthouS|addHUNTHOU|comthouT|comthouTs|comthouTAH|comthouTAHS|comTWENHUN|comCOMHS|addHundreds},%x):=(%y&%x,+ANUM,-millions,-addHUNTHOU,-comthouS,-comthouT,-comthouTs,-comthouTAH,-comthouTAHS,-comTWENHUN,-comCOMHS,-addHundreds,+complete);million+40000
+(ANUM,millions,%y)(ANUM,{addHundreds|HUNSCOR|HUNTWEN|COMHS},%x):=(%y,+ANUM,millions)("000",[[000]],+new,%2)(ANUM,%x);million+100
+(ANUM,millions,%y)(ANUM,{HTHOUHUNSCOR|addTwentiesHTHOUNSTWE|addhousands|addTwentiesHTHOUNS|addTwentiesHTHOUNSCOR},%x):=(%y,+ANUM,millions)("0",[[0]],+new,%2)(ANUM,%x);million+1000
+(ANUM,millions,%y)(ANUM,addhousandsnew,%x):=(%y,+ANUM,millions)("00",[[00]],+new,%2)(addhousandsnew,%x);million+4000
+(ANUM,millions,%y)(ANUM,addTwentiesHTHOU,%x):=(%y,+ANUM,millions)("00",[[00]],+new,%2)(ANUM,addTwentiesHTHOU,%x);million+4000
+(ANUM,millions,%y)(ANUM,Thousands,%x):=(%y,+ANUM,millions)("00",[[00]],+new,%2)(ANUM,Thousands,%x);million+1000
+(ANUM,millions,%y)(ANUM,Scores,%x):=(%y,+ANUM,millions)("00000",[[00000]],+new,%2)(ANUM,Scores,%x);million+1
+({scor|addHundreds},%q)(ANUM,millions,%y)(ANUM,{addTwenties|scor},%x):=(ANUM,%q)("0000",[[0000]],+new)(ANUM,%x);اثنان وعشرون مليون وواحد وعشرون
+(ANUM,%q)(new,%2)(ANUM,%x):=(%q&%2&%x,DIGIT,-ANUM,-millions);
+(ANUM,millions,%y)(ANUM,{addTwenties|scor},%x):=(%y,+ANUM,millions)("0000",[[0000]],+new,%2)(ANUM,%x);million+1
+(addmillions,%y)(ANUM,{HUNTWEN|addHundreds|HUNSCOR|COMHS},%x):=(%y&%x,-addmillions,-HUNTWEN,-addHundreds,-HUNSCOR,-COMHS);million+120
+(addmillions,%y)(ANUM,{addHundreds|HUNSCOR|HUNTWEN|COMHS},%x):=(%y&%x,-addmillions,-addHundreds,-HUNSCOR,-HUNTWEN,-COMHS);million+100
+(addmillions,%y)(ANUM,Scores,%x):=(%y&%x,-addmillions,-Scores);million+1
+(addmillions,%y)(ANUM,addhousandsnew,%x):=(%y&%x,-addmillions,-addhousandsnew);million+4000
+(addmillions,%y)(ANUM,addhousands,%x):=(%y&%x,-addmillions,-addhousands,-Thousands);million+4000
+(addmillions,%y)(ANUM,HTHOUHUNSCOR,%x):=(%y&%x,-addmillions,-HTHOUHUNSCOR,-Thousands);million+4000
+(addmillions,%y)(ANUM,Thousands,%x):=(%y&%x,-addmillions,-Thousands,+MT)("000",[[000]],+new,%2);million+1000
+(addmillions,%y)(ANUM,{addTwenties|scor},%x):=(%y&%x,-addmillions,-addTwenties,-scor);million+10+25
+(ANUM,millions,%y)(new,%x):=(%y&%x,-millions,+addmillions,ANUM,-new);add new after 1+000000
+(HOURS,%t)(ANUM,Scores,%y)(ANUM,scor,%x)(MINUTE,%q):=("0",NEWZERO)(%y,ADDHOU,-Scores)(":",NEWZERO)(%x,ADDMIN,-scor)(":00",NEWZERO);الساعة الثالثة وخمسة عشر دقيقة
+(HOURS,%t)(ANUM,Scores,%y)(ANUM,Scores,%x)(MINUTE,%q):=("0",NEWZERO)(%y,ADDHOU,-Scores)(":0",NEWZERO)(%x,ADDMIN,-Scores)(":00",NEWZERO);الساعة الثالثة وخمس دقيقة
+(ANUM,trilions,%y)(new,%x):=(%y&%x,-trilions,+addtrilions,ANUM,-new);add new after 1+000000000000
+(ANUM,billion,%y)(new,%x):=(%y&%x,-billion,+addbillion,ANUM,-new);add new after 1+000000000
+(ANUM,%x)(ANUM,millions,%y):=(%x,ANUM,millions)("000000",[[000000]],+new,%2);any number+million
+(ANUM,%t)(ANUM,%r)(PTC,from,%x)(ANUM,{addTwenties|Thousands},%y):=(%t,+NEWNUMber)(".",[[.]],POINT)(%r);أربعة وسبعة من عشرة
+(ANUM,%t)(ANUM,%r)(PTC,from,%x)(ANUM,addhousands,%y)(new,%q):=(%t,+NEWNUMber)(".",[[.]],POINT)(%r); آلافأربعة وسبعة من عشرة
+(ANUM,^NWEPOINTNUMBER,^@ordinal,^NEWZERO,^ADDMIN,^ADDsec,^@ordinal,%X)(ANUM,^NWEPOINTNUMBER,^ADDMIN,^ADDsec,^NEWZERO,^TIMES,%Y):=(%X&%Y,ANUM);
+(ANUM,%t)(PTC,from,%x)(ANUM,{addTwenties|Thousands},%y):=("0",[[0]],NEWNUMber)(".",[[.]],POINT)(%t);أربعة من عشرة
+(ANUM,%t)(PTC,from,%x)(ANUM,addhousands,%y)(new,%q):=("0",[[0]],NEWNUMber)(".",[[.]],POINT)(%t);آلاف أربعة من عشرة
+(NEWNUMber,%y)(POINT,%q)(%t):=(%y&%q&%t,-Twenties,+NWEPOINTNUMBER);عشرة
+(ANUM,%y)(MINUTE,%q)(ANUM,%x)(SECONDS,%t):=("00:",NEWZERO)(%y,ADDMIN,-And)(":",NEWZERO)(%x,ADDsec,-And);الساعة" خمسون دقيقة وثانية
+(NEWZERO,%t)(%q,COMPADDHOU):=(%t&%q,-COMPADDHOU);ساعات
+(NEWZERO,%y)(NEWZERO,%x)(%q,ADDsec):=(%y&%x&%q,+COMPADDsec);ثانية الساعات
+(COMPMINUTES,%t)(ADDsec,%q):=(%t&%q,-COMPMINUTES,-ADDsec,+MINUTESECOND);ساعة دقيقة وثانية"
+(NEWZERO,%y)(%q,ADDHOU)(NEWZERO,%x):=(%y&%q&%x,+COMPADDHOU); الساعات ساعة
+(NEWZERO,%y)(%q,ADDMIN)(NEWZERO,%x):=(%y&%q&%x,+COMPMINUTES); الساعات دقيقة
+(NEWHOUMINSEC,%y)(NEWZERO,%q)(NEWZERO,%x):=(%y&%q&%x,+NEWHOUMINSECss); الساعات +دقيقة+ ثانية
+(%x,ADDHOU)(NEWZERO,%y):=(%x&%y,+COMPADDHOU); الساعات ساعة
+(ANUM,%t)(MINUTE,%q):=("00:",NEWZERO)(%t,+ADDMIN,-MINUTE)(":00",NEWZERO);خمسة عشر دقيقة ساعات
+(HOURS,%q)(ANUM,^Scores,%x):=(%x,+ADDHOU,-HOURS)(":00:00",NEWZERO);الساعة العاشرة الساعات
+(HOURS,%q)(Scores,%x):=("0",NEWZERO)(%x,+ADDHOU,-HOURS)(":00:00",NEWZERO);الساعة الواحدة الساعات
+(ANUM,%t)(SECONDS,%q):=("00:",NEWZERO,W)("00:",NEWZERO,W)(%t,ADDsec,-SECONDS);خمسة عشر ثانية ساعات
+(PARTI,%x)(HOURS,%q):=("00",NEWZERO,W)(":30",+ADDHOU,-HOURS,W)(":00",NEWZERO,W);ساعة الساعات نصف
+(HOURS,%q):=(":00",NEWZERO)(%q,+ADDHOU,-HOURS)(":00",NEWZERO);ساعة الساعات
+(MINUTE,%q):=("00:",NEWZERO)(%q,+ADDMIN,-MINUTE)(":00",NEWZERO);دقيقة الساعات
+(N,SECONDS,%q):=("00:",NEWZERO,W)("00:",NEWZERO,W)(%q,+ADDsec,-SECONDS);ثانية الساعات
+(OF,%x)(^@def,%y):=(@def,%y);
+({COMPMINUTES|COMPADDsec|COMPADDHOU|HOURMINUTE|NEWHOUMINSEC|NEWHOUMINSECss},@ordinal,%q):=(%q,-@ordinal);ساعات
+(ANUM,%q)(TIMES,ANUM,%y):=(%q,@times,-TIMES);3 مرات
+(TIMES,%x):=(%x,@times,-TIMES);مرة
+(DIGIT,^ANUM,%x):=(ANUM,%x);
+(^DIGIT,ANUM,%x):=(DIGIT,ANUM,%x);
+({^C|SHEAD},%z)(V,{TST|TSTI|NERG|TSTD},^PSV,MCL,%x)({N,MCL|ANUM},^SUBJ,%y):=(%z)(%x)(SUBJ,%y);
+(V,{TST|TSTI|NERG|TSTD},FEM,%x)(N,FEM,^SUBJ,%y):=(%x)(SUBJ,%y);
+(ART,FOR,%y)(N,%x):=(%x,FOR,att=%y,NP);
+(ART,%y)(N,%x):=(%x,att=%y,NP);
+(ART,%y)({QUA|own|other|only},%x):=(%x);
+(QUA,%x)(plus,%y):=(QUA,%x,att=@plus);
+(like,%y)(DEM,%z)(N,%x):=(N,%x,@such);
+(MOST,%y)(DEM,%z)(N,%x):=(N,%x,@such.@most);
+({any|anyWH},%y)(N,%x)(question mark,%z):=(N,%x,@wh);
+(anyWH,%y)(N,%x)(POD,%z)(question mark,%w):=(N,%x,@wh)(POD,%z);
+(DEM,%y)(N,%x,@def):=(%x,att=%y,-@def,NP);
+(N,PLR,^@pl,%x):=(%x,@pl);
+(QUA,%y)(N,%x,@def):=(%x,att=%y);
+({@all|@no},%x)(ANUM,Scores,TTT,%y):=([[00]],N,@person,-ANUM,-DIGIT,att=%x,%y);
+(^N,^V,^POD,^PPR,%x)({all|same|both|each|MOST|MORE|QUA|own|enough|only|other},%y):=(%y)(%x);
+({J|JP},%x)(plus,%y):=(%x,att=@plus);
+(^CMP,^J,%x)(plus,%y):=(%y)(%x);
+(CMP,%x)(plus,%y):=(%x,att=@plus);
+(CMP,%y)(N,%x)(PTC,from):=(%x,att=%y,bas);
+(N,%x)({QUA|own|enough|CMP|other|only},%y):=(%x,att=%y);
+(NEG,%x)(N,%y):=(%y,@no);
+({all|same|both|each|MOST|MORE|QUA|any|owm|enough|Neither|MOST|LEAST},%x)(N,%y):=(%y,att=%x);
+(N,DUA,^@dual,%x):=(%x,@dual);
+({J|JP},%x)(extra,%y):=(%x,att=@extra);
+({J|JP},%x)(QUITE,%y):=(%x,att=@minus);
+(V,AUM)(N,ACT,%0x):=(N,+@suggestion,%0x);
+(PTC,NEG,%y)(J,%x):=(%x,att=@not);
+(ART,%x)(like,%y)(STAIL,%z):=(like,%y)(STAIL,%z);
+(V,%y)(FPR,%x):=(%y,@reflexive);
+(V,%y)(CPR,%x):=(%y,@reciprocal);
+(V,%y)(FRR,%x):=(%y,@reflexive);
+(NEG,FUT,%x) (V,%y)  := (%y,@not,@progressive);
+(NEG,PAS,%x) (V,PRS,%y)  := (%y,@not,@past,-PRS);
+(NEG,%x)(V,%y):=(%y,@not);
+(V,PAS,^@past,%y):=(%y,@past);
+(V,PRS,^@present,%y):=(%y,@present);
+(FUT)(V,@present,%y):=(%y,@future,-@present,-PRS);
+(V,FUT,^@future,%y):=(%y,@future);
+(%0x,VB)(@ability,%y):=(%0x,@ability);
+(V,ability,%y)(%0x,POD):=(%0x,PPR)(V,%y,@ability);
+(PTC,FOR CONFORMATION)(V,PAS,^@anterior,%0x):=(@perfective,PAS,%0x,-PTC,-FOR CONFORMATION);
+(V,%0t,@not,STT,@past)(V,@perfective,@present,%0x):=(V,%0x,@not,PAS,@anterior,-PRS,-@perfective,-@present,-STT);
+(V,%0t,@not,STT,@past)(V,PRS,%0x):=(V,%0x,@not,@progressive,-PRS,-@present,@past);
+(V,%0t,@not,STT)(V,{PAS|@past},%0x):=(V,%0x,@not,@progressive);
+(STT,FUT)(V,@perfective,@present,%0x):=(V,@anterior,-@perfective,-@present,%0x,FUT,-STT);
+(STT,FUT)(V,@perfective,^@present,%0x):=(V,@anterior,-@perfective,%0x,FUT,-STT);
+(STT,PAS,@not)(V,@perfective,%0x):=(V,@anterior,@not,-@perfective,PAS,%0x);
+(STT,PAS)(V,@perfective,%0x):=(V,@anterior,-@perfective,PAS,%0x);
+(STT,V,PAS,%t)(V,PRS,%0x):=(V,PAS,@progressive,%0x,-PRS,-@present,-STT);
+(STT,FUT)(V,@perfective,@past,%0x):=(V,@future,@anterior,-@past,-@perfective,%0x);
+(V,%0t,STT)(POss,%0x)(V,STT,%r):=(V,%r,att=%0x);
+(STT,V,PAS)(V,FUT,%v):=(%v,@past,@progressive,-FUT,-PAS);
+(V,%0t,STT)(CGV,%0x):=(V,%0x,att=%0t,-STT);
+(STT,%t)(V,@future,%0x):=(V,@recent,%0x);
+(V,AUM)(V,%0x):=(V,+@suggestion,%0x);
+(ability,V,@not,%t)(N,ACT,%0x):=(%0x,@ability,@not,V);
+(ability,V,^@not,%t)(N,ACT,%0x):=(%0x,@ability,V);
+(V,@not,%t)({N,ACT|V},%0x):=(%0x,att=%t,V,@not);
+#({preposition|V},%t)({N,ACT|V},%0x,^PTCCON):=(%0x,att=%t,V);
+(OBM)({N,ACT|V},%0x):=(%0x,+@obligation);
+(PTC,FOR CONFORMATION,%t)(V,PRS,%0y):=(V,@present,@possibility,%0y);
+(V,ITE)(V,%0x):=(V,+@again,%0x);
+(V,%0x)(ALSO):=(V,+@also,%0x);
+(Conviction,%t)(V,%0x):=(V,%0x,+@conviction);
+(V,ICP,%0x)(V,%0y):=(V,@inceptive,%0y);
+(V,ICP,%0x)(N,ACT,%0y):=(N,@inceptive,+ACT,%0y);
+(V,TER,%0x)(N,ACT,%0y):=(N,@terminative,+ACT,%0y);
+(V,TER,%0x)(V,%0y):=(V,@terminative,%0y);
+(V,CAU,%0y)(V,%0x):=(V,%0x,+@causative);
+(V,CAU,%0y)(N,ACT,%0x):=(N,%0x,+@causative);
+(V,CTN)(N,ACT,%0x):=(N,%0x,+@continuative);
+(V,CTN)(V,%0x):=(V,%0x,+@continuative);
+(CONFIRMATION)(V,%0x):=(V,%0x,+@confirmation);
+(CONFIRMATION)(N,ACT,%0x):=(N,ACT,%0x,+@confirmation);
+(V,HAB)(V,%0x):=(V,%0x,+@habitual);
+(N,ITE)(V,%0x):=(V,+@again,%0x);
+({POT|CGV},PAS,%t)(V,%0x):=(V,%0x,att=%t);
+({POT|CGV},%t)(V,%0x):=(V,%0x,+@probability);
+(V,HAB)(N,ACT,%0x):=(N,ACT,%0x,+@habitual);
+(J,CMP,%0x):=(J,+@more,%0x,-CMP);
+(J,SUP,%0x):=(J,%0x,+@most,-SUP);
+(V,ability,%y)(%0x,{V|N,ACT}):=(%0x,@ability);
+({OBM|ability},%y)(PTC,con)({N,ACT|V},%0x):=(%0x,att=%y);
+(CGV,%t)(PTC,con)(V,%0x):=(V,%0x,att=%t);
+(wh D)(V,%0x):=(V,%0x,@interrogation);
+({wh agt|wh obj|wh adj},%n)(V,%0x,^@interrogation):=(%n)(V,%0x,@interrogation);
+(PTC,con,%y)(V,PSV,@past,%x):=(%x,-@past,@passive);
+(J,%x)(C,and)(J,%y):=(JB(%y;%x),rel=and,JB);
+(JB,%x)(C,and)(J,%y):=(JB(%y;%x),rel=and,JB);
+(J,%x)(C,or)(J,%y):=(JB(%y;%x),rel=or,JB);
+(JB,%x)(C,or)(J,%y):=(JB(%y;%x),rel=or,JB);
+({J|JB|JP},%x)(preposition,@but)({J|JB|JP},%y):=(JB(%y,@but;%x),rel=and,JB);
+(J,blk,%y)(POD,2PS)(N,%x):=(JB(%y;%x,@equal),rel=bas,JB);
+(J,%x)(A,%y):=(JB(%x;%y),rel=man,JB);
+(A,%y)(J,%x):=(JB(%x;%y),rel=man,JB);
+({^V,TST2|SHEAD|C|PTC},%f)(N,%x)(POD,%y):=(%f)(NB(%x;%y),rel=pos,NP);
+(N,%x)(@wh,^wh adj,%y)(^N,%z):=(%f)(NB(%x;%y),rel=pos,NP)(%z);
+(ANUM,^@ordinal,%y)(N,%x):=(NB(%x;%y),rel=qua,NP);
+(N,%x)(ANUM,@ordinal,%y):=(NB(%x;%y),rel=mod,NP);
+(attributes-of,%x)(N,%y):=(NB(N,%y;%x),rel=qua,NP);
+(ABB,%x)(PPN,%y):=(NB(%x;%y),rel=nam,NP);
+(N,^PPN,^ACT,^bas,%n)(PPN,%adjc):=(NB(%n;%adjc),rel=mod,NP);
+(N,@def,%n)(N,{@most|@least},%adjc):=(NB(%n;%adjc),rel=mod,NP);
+(N,%n)(N,bas,%adjc):=(NB(%adjc,bas;%n),rel=aoj,NP);
+(N,^LCT,^SUBJ,%n)(N,@def,%adjc):=(NB(%n;%adjc),rel=mod,NP);
+(N,@def,%n)(JP,%adjc)({^@but|^C|STAIL},%w):=(NB(%n;%adjc),rel=mod,NP)(%w);
+("كان",%f)({N,@def|DEM|PPN|PPR},%n)(J,^PGS,^Y460,^Y701,%adjc):=(NB(%adjc;%n),rel=aoj,NP);
+(N,cob,%n)(J,^PGS,^Y460,^Y701,%adjc):=(NB(%adjc;%n),rel=aoj,NP);
+({^own|SHEAD},%f)({N,@def|DEM|PPN|PPR},%n)(J,^PGS,^Y460,^Y701,%adjc):=(%f)(NB(%adjc;%n),rel=aoj,NP);
+(N,^cob,%n)(J,%adjc):=(NB(%n;%adjc),rel=mod,NP,MOD);
+(NP,%n)(JP,%adjc):=(NB(%n;%adjc),rel=mod,NP);
+(NP,MOD,%n)(J,%adjc):=(NB(%n;%adjc),rel=mod,NP,MOD);
+(NP,%n)(J,%adjc):=(NB(%n;%adjc),rel=mod,NP,MOD);
+(N,%n)(PTC,from)(N,LCT,%adjc):=(NB(%n;%adjc),rel=frm,NP);
+({^V,Y527|SHEAD})(N,%n)(PTC,from)(N,%adjc):=(NB(%n;%adjc),rel=mod,NP);
+(N,%n)(PTC,about)(N,%adjc):=(NB(%n;%adjc),rel=cnt,NP);
+(N,%n)(PTC,for)(N,%adjc):=(NB(%n;%adjc),rel=ben,NP);
+(N,TIM,%n)(N,TIM,%adjc):=(NB(%n;%adjc),rel=tim,NP);
+({^V,Y460|SHEAD},%z)(N,^PPN,%n)(PTC,by)(N,%adjc):=(%z)(NB(%n;%adjc),rel=met,NP);
+(N,%n)(PTC,about)(NP,%adjc):=(NB(%n;%adjc),rel=cnt,NP);
+(NP,%n)(PTC,from)(N,LCT,%adjc):=(NB(%n;%adjc),rel=frm,NP);
+(NP,%n)(PTC,about)(N,%adjc):=(NB(%n;%adjc),rel=cnt,NP);
+(NP,%n)(PTC,for)({N|PPN},%adjc):=(NB(%n;%adjc),rel=ben,NP);
+({NPA|SHEAD|V},%z)({N|PPN|POD|PPR},%x)(C,and)({N|PPN|POD|PPR},%y):=(%z)(NB(%y;%x),rel=and,NP,NPA);
+({NPR|SHEAD|V},%z)({N|PPN|POD|PPR},%x)(C,or)({N|PPN|POD|PPR},%y):=(%z)(NB(%y;%x),rel=or,NP,NPR);
+(NP,%x)(C,and)({N|PPN|POD|PPR},%y):=(and(%y;%x),NP);
+(NP,%x)(C,or)({N|PPN|POD|PPR},%y):=(or(%y;%x),NP);
+(N,%n)(JB,bas,%adjc):=(NB(%adjc;%n),rel=aoj,NP);
+(N,%n)(JB,%adjc):=(NB(%n;%adjc),rel=mod,NP);
+(NP,%n)(JB,%adjc):=(NB(%n;%adjc),rel=aoj,NP);
+(NP,%x)(C,and)(NP,%y):=(and(%y;%x),NP);
+(NP,%x)(C,or)(NP,%y):=(or(%y;%x),NP);
+({N,@def|DEM|PPN|PPR},%n)(JB,%adjc):=(NB(%adjc;%n),rel=aoj,NP);
+(PTC,con,%x)(POD,%n)(JB,%adjc):=(NB(%adjc;%n),rel=aoj,NP);
+(%x,@least)(PPR)(preposition,@most,%y):=(NB(%y,[[00]];[[00]],%x),NB,rel=aoj);
+({PTC,O,NOU},%t)(DEM,%x)(question mark,PUT):=(NB([[00]],%x;[[00]],@wh,att=%t),NB,rel=aoj);
+({wh agt|wh obj},%t)(DEM,%x)(question mark,PUT):=(NB([[00]],%x;[[00]],att=%t),NB,rel=aoj);
+(NB(%adjc,bas;%n),aoj,%m)(N,^@1,^@2,^@3,%y):=(NB(NB(%adjc,-bas;%n),rel=%m;N,%y),NP,rel=bas);
+(PPR,%y)(V,COP,%t)(J,^PGS,%x):=(NB(%x,@belief,@present;%y),NB,rel=aoj);-هي تبدو جميلة
+(own,%j)(POD,%t)(J,%x):=(NB(NB([[00]],-@own,N,%j;%t),rel=pos;%x),rel=aoj);
+(NP,%x)(ANUM,@ordinal,%y):=(NB(%x;%y),rel=mod,NP);
+(NP,%x)(ANUM,^@ordinal,%y):=(NB(%x;%y),rel=qua,NP);
+({^V|SHEAD},%f)(NP,%x)(NP,%y):=(%f)(NB(%y;%x),rel=aoj,NP);
+(@possibility.@perfect,%w)(PTC,con,%x)(V,%v)(J,%j):=(%v)(%j,@possibility,@perfect);
+(SHEAD)(PTC,con,%x)(V,%v):=(%v);
+(N,LCT,%n)(N,%adjc):=(NB(%n;%adjc),rel=aoj,LCT,NP);
+({^N|SHEAD},%x)(V,^TST2,^ACC,^PSV,%v)({N|ANUM},SUBJ,%y):=(%x)(%y)(%v);
+(wh obj,%x)(V,^TST2,%v)(POD,%y)({N|NP},%z):=(%z)(%v)(%x);
+({^N|SHEAD},%x)(V,^TST2,%v)(POD,%y)({N|NP},%z):=(%x)(%z)(%v)(%y);
+({^N|SHEAD},%x)(V,^TST2,%v)({N|NP},%y)({N|NP},%z):=(%x)(%y)(%v)(%z);
+(^N,%x)(CO,VB,^subj,%v)({^N|STAIL},%y):=(%x)([[00]],@3,@male,N)(%v,subj)(%y);
+(^N,SHEAD,^PPR,%x)(V,{TST|NTST},MCL,3PS,%v)({^N|STAIL},%y):=(%x)([[00]],@3,@male,N,PPR)(%v)(%y);
+(^N,SHEAD,^PPR,%x)(V,{TST|NERG},FEM,3PS,%v)({^N|STAIL},%y):=(%x)([[00]],@3,@female,N)(V,FEM,TST,%v)(%y);
+(^N,^PPR,SHEAD,%x)(V,{TST|TSTD},1PS,%v)({^N|STAIL},%y):=(%x)([[00]],@1,N)(V,1PS,TST,%v)(%y);
+#(V,^with_SUBJ,DUA,3PP,%v):=([[00]],@3,@dual,N)(V,with_SUBJ,%v);
+(wh adj,%adj)(%spec)(V,%v)(%comp):=(%spec)(V,%v)(%comp)(wh adj,%adj);
+(^N,%x)(VB,%v)(C,and,%x)(VB,%adjt):=(%x)(VB(%v;%adjt),VB,rel=and);
+(V,%v)(C,and,%x)(VB,%adjt):=(and(%v;%adjt),VB,CO);
+(%x,VP)(@but,%w)(%y):=(and(%x;%y,@but),VP);
+(A,%adjt)(V,%v):=(VB(%v;%adjt),VB,rel=man);
+(V,%v)(A,%adjt):=(VB(%v;%adjt),VB,rel=man);
+(V,TST2,%v)(%s,POD):=(VB(%v;[[00]],%s),TST2,VB,rel=gol);
+(V,TST2,%v)(%s,N):=(VB(%v;%s),TST2,VB,rel=obj);
+(V,%v)(N,TIM,%adjt):=(VB(%v;%adjt),VB,rel=tim);
+(V,POV,%v)(%s,POD)({ENOUGH|eachOneOf|N|NANUM|MOST|NOU|JB|other|like|QUA|any},%comp):=(VB(%v;[[00]],%comp),VB,rel=obj);
+(V,%v)(wh obj,%spec):=(VB(%v;%spec),VB,rel=obj);
+({V|N,ACT},%v)({N|POD|NP},^FOR,%adjt):=(VB(%v;%adjt),VB,rel=obj);
+({N|POD|NP},^FOR,%adjt)(V,PSV,%v):=(VB(%v,@passive;%adjt),VB,psv,rel=obj);
+({N|POD|NP},^FOR,%adjt)(V,NACC,%v):=(VB(%v;%adjt),VB,rel=obj);
+(V,Y527,%v)(PTC,from)({N|NP},%adjt):=(VB(%v;%adjt),VB,rel=obj);
+(J,Y460,%v)(PTC,by)({N|NP},%adjt):=(VB(%v,V;%adjt),VB,rel=obj);
+(V,Y460,%v)(PTC,by)({N|NP},%adjt):=(VB(%v;%adjt),VB,rel=obj);
+(V,NERG,Y17,%v)(PTC,on)({N|NP},%adjt):=(VB(%v;%adjt,@on),VB,rel=plc);
+(V,Y701,%v)(PTC,con)({N|NP},%adjt):=(VB(%v;%adjt),VB,rel=obj);
+(V,Y17,%v)(PTC,on)({N|NP|VP},^SUBJ,%adjt):=(VB(%v;%adjt),VB,rel=obj);
+(V,%v)(NP,tim,%adjt):=(VB(%v;%adjt),VB,rel=tim);
+(V,%v)(PTC,by)(N,ARF,%adjt):=(VB(%v;%adjt),VB,rel=met);
+(V,%v)(PTC,by)(NP,%adjt):=(VB(%v;%adjt,att=@by),VB,rel=man);
+(V,%v)(PTC,with)(N,%adjt):=(VB(%v;%adjt,@with),VB,rel=man);
+(V,%v)(PTC,in)(N,TIM,%adjt):=(VB(%v;%adjt),VB,rel=tim);
+({V|N,ACT|J,PGS},%v)(PTC,to)(N,%adjt):=(VB(%v;%adjt),VB,rel=to);
+({V|N,ACT|J,PGS},%v)(PTC,from)(N,%adjt):=(VB(%v;%adjt),VB,rel=frm);
+({V,^Y17|N,ACT|J,PGS},%v)(PTC,preposition,^on,%x)(N,%adjt):=(VB(%v;%adjt,att=%x),VB,rel=man);
+(V,TST2,%v)(NB(N,%comp;POD,%comp1),pos,%comp2):=(VB(VB(V,%v,TST2;N,%comp),rel=obj,%v;POD,%comp1),VB,rel=gol);
+(VB,TST2,%v)(POD,%comp1):=(VB(VB,%v;%comp1),VB,rel=gol);
+(VB,TST2,%v)({NP|N},%comp1):=(VB(VB,%v;%comp1),VB,rel=obj);
+(VB,%v)(A,%adjt):=(VB(%v;%adjt),VB,rel=man);
+(VB,%v)({N|NP},FOR,%adjt):=(VB(%v;%adjt),VB,rel=pur);
+(VB,%v)(wh adj,%adjt):=(VB(%v;%adjt),VB,rel=%adjt);
+(VB,%v)(PTC,with)(N,%adjt):=(VB(%v;%adjt),VB,rel=man);
+(VB,%v)(PTC,by)(N,ARF,%adjt):=(VB(%v;%adjt),VB,rel=met);
+(VB,%v)(PTC,until)(NP,%adjt):=(VB(%v;%adjt,att=@until),VB,rel=man);
+(VB,%v)(PTC,to)(N,%adjt):=(VB(%v;%adjt),VB,rel=to);
+(VB,%v)(PTC,VIA)(N,%adjt):=(VB(%v;%adjt),VB,rel=via);
+(VB,%v)(PTC,in)(N,%adjt):=(VB(%v;%adjt),VB,rel=plc);
+(VB,%v)(PTC,because)(N,^ACT,%adjt):=(VB(%v;%adjt),VB,rel=rsn);
+(PTC,@in)(VB,%v):=(%v,@in,TIM);
+(VB,%v)(PTC,on,%x)(N,%adjt):=(VB(%v;%adjt,att=%x),VB,rel=plc);
+(SHEAD,%x)({N|PPR},%spec)(V,%v)({STAIL|con},%y):=(%x)(VP(%v;%spec),VP)(%y);
+(VB,%v,psv)(PTC,by,%x)(N,%adjt):=(VP(%v;%adjt));
+(VB,%v)(C,and)(VB,%vb):=(and(%v;%vb),and,VB,CO);
+({N|PPN|PPR|NP|ANUM},^FOR,%spec)(VB,%v):=(VP(%v;%spec),VP);
+({N|PPN|PPR|NP},^FOR,%spec)(VB,%v):=(VP(%v;%spec),VP);
+({JB|@any|NANUM|N|NOU|both|QUA|eachOneOf|anyWH|other},%spec)(VB,%v):=(VP(%v;%spec,[[00]],N),VP);
+(wh agt,%spec)(VB,%v):=(VP(%v;%spec),VP);
+(relative,%x)({VP|VB},%spec)({VP|VB},%v):=(%v)(relative,%x)(%spec);
+(VP,%v)(PTC,con)(VP,%spec):=(CP(%v;%spec),rel=obj);
+({VP|VB},%v)(relative,%x)({VP|VB},%spec):=(CP(%v;%spec),rel=%x);
+(preposition,att=@although,%x)(NP,%n)(PUT)(VP,%v):=(CP(%v;%n,@although),rel=and);
+(J,Y701,%v)(PTC,con)(VB,%adjt):=(VB(%v,V;%adjt),VB,rel=obj);
+(VP(VB(V,%v2;%comp),%v;{N|PPR|person|thimg|DEP|NP},%n))(PTC,con)(VP(V,%v3;N,%n2),%v1):=(CP(VP(VB(V,%v2;%comp),rel=%v;%n);VP(V,%v3;N,%n2),rel=%v1),NR,rel=obj);
+(VP(VB(V,%v2;%comp),%v;{N|PPR|person|thimg|DEP|NP},%n))(PTC,con)(V,%v1):=(CP(VP(VB(V,%v2;%comp),rel=%v;%n);V,%v1),rel=obj);
+(A,TME,%adjt)(VP(VB(V,%v2;%comp),%v;{N|PPR|person|thimg|DEP|NP},%n)):=(VP(VB(VB(V,%v2;%comp),rel=%v;A,%adjt),rel=tim;%n));
+#(TIM,VB,%adjt)(VP(VB(V,%v2;%adjt2),%v;%n)) :=(VP(VB(VB(V,%v2;%adjt2),%v,rel=%v;%n,rel=%n);%adjt,rel=time));
+(^N,SHEAD,^PPR,%x)(V,"يكون",%v)({^N|STAIL},%y):=(%x)([[00]],@3,N,cob)(%y);
+(LCT,NP,%v)(PTC,in,%x)(N,%adjt):=(NB(%v;%adjt,att=%x),NB,rel=plc);
+CP(%v;%adjc,@although):=and(%v;%adjc,@although);
+(CP(VP(V,%v;{N|PPR|person|thimg|DEP|NP},%n);VP(VB(VB(V,%v1;%comp),%y;%adj),%z;{N|PPR|person|thing},%spec)),%w):=((VP(V,%v;%n))(VP(VB(VB(V,%v1;%comp),rel=%y;%adj),rel=%z;{N|PPR|person|thing},%spec))(VB(V,%v;V,%v1,@relative),rel=%w));
+(CP(VP(V,%v;%n);VP(VB(VB(VB(VB(V,%v1;%comp),%y;%adj),%z;%adjc1),%f;%adjc2),%m;{N|PPR|person|thing},%spec)),%w):=((VP(V,%v;%n))(VP(VB(VB(VB(VB(V,%v1;%comp),rel=%y;%adj),rel=%z;%adjc1),rel=%f;%adjc2),rel=%m;{N|PPR|person|thing},%spec))(VB(V,%v;V,%v1,@relative),rel=%w));
+(CP(VP(V,%v;{N|PPR|person|thimg|DEP|NP},%n);VP(VB(V,%v1;%comp),%y;{N|PPR|person|thing},%spec)),%w):=((VP(V,%v;%n))(VP(VB(V,%v1;%comp),rel=%y;%spec))(VB(V,%v;V,%v1,@relative),rel=%w));
+(CP(VP(VB(V,%x;N,%comp),%v;{N|PPR|SPR|thing|person},%spec);VP(V,%v1;{N|PPR|SPR|thing|person},%spec1),%m),NR,%y):=((VP(VB(V,%x;N,%comp),rel=%v;%spec))(VP(VB(V,%v1,@relative;N,%comp),rel=obj;%spec1)));
+(CP(NB(%j;N,%n),%m;VP(VB(V,%v1;%comp),%x;{N|PPR|person|thing},%spec)),JR):=(NB(%j;N,%n),rel=%m)(VB(%j;V,%v1,@relative),rel=obj)(VP(VB(V,%v1,@relative;%comp),rel=%x;%spec));
+(CP(VP(VB(V,%v;%comp),%x;%spec);VB(%v1;{N|PPR|person|thing},%spec1),%z),%Q):=((VP(VB(V,%v;%comp),rel=%x;%spec))(VB(%v1,att=%f;%spec1),rel=%z)(VB(%v;%v1,@relative),rel=%Q));
+(CP(VP(VB(V,%x;N,%comp),%v;{N|PPR|SPR|thing|person},%spec);VP(V,%v1;{N|PPR|SPR|thing|person},%spec1),%m),%y):=(VP(VB(V,%x;N,%comp),rel=%v;%spec))(VB(V,%x;V,%v1,@relative),rel=%y)(VP(V,@relative,%v1;%spec1));
+(CP(VP(VB(V,%v2;%comp),%v;{N|PPR|person|thimg|DEP|NP},%n);V,%v1),%w):=(VP(VB(V,%v2;%comp),rel=%v;%n))(VP(V,%v1,@relative;%comp));
+(CP(VP(VB(V,%v2;%comp),%v;%n);VP(VB(V,%v3;POD,%comp1),%v4;%n1),%v1),%w,obj):=((VP(VB(V,%v2;%comp),rel=%v;%n))(VP(V,%v3;%n1))(VB(%v3,@relative;%comp),rel=%w));
+VP(VB(VB(VB(VB(V,%v;%comp),%x;%adjct),%y;%adjt1),%z;%adjt2),%m;%spec):=(VB(VB(VB(VB(V,%v;%comp),rel=%x;%adjct),rel=%y;%adjt1),rel=%z;%adjt2),rel=%m)VS(V,%v;%spec);
+(VP(VB(VB(V,%v;%comp),%x;%adjt),%y;%spec)):=((VB(VB(V,%v;%comp),rel=%x;%adjt),rel=%y)VS(V,%v;%spec));
+VP(VB(VB(V,%v;NB(N,%n;%adjc),%comp),%x;VB(V,%v1;A,%adjt),%y),%z;%spec):=(VB(VB(V,%v;NB(N,%n;%adjc),%comp),%x;VB(V,%v1;A,%adjt),%y),rel=%z)VS(V,%v;%spec);
+(VP(VB(VB(VB(VB(VB(V,%v;%comp),%x;%adjct),%y;%adjt1),%z;%adjt2),%m;%adjt3),%w;%spec)):=((VB(VB(VB(VB(VB(V,%v;%comp),rel=%x;%adjct),rel=%y;%adjt1),rel=%z;%adjt2),rel=%m;%adjt3),rel=%w)VS(V,%v;%spec));
+VP(VB(VB(VB(VB(V,%v;%comp),%x;%adjct),%y;%adjt1),%z;%adjt2),%m;%spec):=(VB(VB(VB(VB(V,%v;%comp),rel=%x;%adjct),rel=%y;%adjt1),rel=%z;%adjt2),rel=%m)VS(V,%v;%spec);
+VP(VB(VB(VB(%v;%adjct),%y;%adjt1),%z;%adjt2),%m;%spec):=((VB(VB(VB(%v;%adjct),rel=%y;%adjt1),rel=%z;%adjt2),rel=%m)VS(%v;%spec));
+VP(VB(VB(V,%v;N,%n);NP,%x),%y;%spec):=(VB(VB(V,%v;N,%n);NP,%x),rel=%y)VS(V,%v;%spec);
+VP(VB(VB(V,%v;NP,%comp),%x;A,%adjt),%x;%spec):=VB(VB(V,%v;NP,%comp),%x;A,%adjt)VS(V,%v;%n);
+VP(VB(VB(V,%v;NP,%comp),%x;%adjt),%y;%spec):=(VB(VB(V,%v;NP,%comp),rel=%x;%adjt),rel=%y)VS(%v;%spec);
+VP(VB(%v;%comp),%x;NB(N,%n;%adjc),%spec):=((VB(V,%v;%comp),rel=%x)(NB(N,%n;%adjc),rel=%spec)VS(V,%v;N,%n));
+VP(VB(V,%v;NB(N,TIM,%n;%adjc),%comp),%y;%spec):=(VB(V,%v;NB(N,TIM,%n;%adjc),rel=%comp),rel=%y)VS(V,%v;%spec);
+(VB(VB(VB(VB(VB(V,%v;%comp),%x;%adjct),%y;%adjt1),%z;%adjt2),%m;%adjt3),%w):=((VB(VB(VB(VB(V,%v;%comp),rel=%x;%adjct),rel=%y;%adjt1),rel=%z;%adjt2),rel=%m)VA(V,%v;%adjt3,rel=%w));
+(VP(VB(V,%v;%adjt),%x;{N|person|thing|DEP|PPR|thing|wh agt},%spec)):=((VB(V,%v;%adjt),rel=%x)VS(V,%v;%spec));
+(VB(VB(V,%v1;%comp1),%y;VB(V,%v;%comp),%x),{and|or},%z):=((VB(%v;%v1),rel=%z)(VB(V,%v1;%comp1),rel=%y)(VB(V,%v;%comp),rel=%x));
+(VB(VB(VB(VB(V,%v;%comp),%x;%adjct),%y;%adjt1),%z;%adjt2),%m):=((VB(VB(VB(V,%v;%comp),rel=%x;%adjct),rel=%y;%adjt1),rel=%z)VA(V,%v;%adjt2,rel=%m));
+(VB(VB(VB(V,%v;%comp),%x;%adjct),%y;%adjt1),%z):=((VB(VB(V,%v;%comp),%x,rel=%x;%adjct),%y,rel=%y)(VB(V,%v;%adjt1),rel=%z));
+(VB(VB(V,%v;NB(N,%n;%adjc),%comp),%x;VB(V,%v1;A,%adjt),%y),%z):=(VB(V,%v;NB(N,%n;%adjc),rel=%comp),rel=%x)VA(V,%v1,rel=%z;A,%adjt,rel=%y)VA(V,%v;V,%v1,rel=%z);
+#(VP(V,@relative,%v1;{N|PPR|SPR|thing|person|wh agt},%spec1)):=(VS(V,%v1;%spec1));
+(VB(VB(V,%v;N,%n);NB(N,%n1;%adjc),%x),%m):=(VB(V,%v;N,%n))(NB(N,%n1;%adjc),rel=%x)VA(V,%v;N,%n1,rel=%m);
+(VB(VB(V,%x;NB(N,%n;%adjc),%comp),%v;%adjc1),%y):=(VB(V,%x;NB(N,%n;%adjc),rel=%comp,%comp),rel=%v,%v)(VB(V,%x;%adjc1),rel=%y,%y);
+(VB(J,%j;VB(V,%x;%y),%comp),%z):=((VB(V,%x;%y),rel=%comp)(VB(%j;%x),rel=%z));
+(VB(VB(V,%x;%comp),%v;%adjc),%y):=(VB(V,%x;%comp),rel=%v)(VB(V,%x;%adjc),rel=%y);
+(VB(V,%v;NB(NB(N,%n;N,%adjc),{or|and},%x;N,%adjc2),{or|and},%y)):=(VC(V,%v;%adjc,obj)VC(V,%v;N,%n,obj)VC(V,%v;N,%adjc2,obj)(NB(NB(N,%n;%adjc),rel=%x;N,%adjc2),rel=%y));
+(VB(V,%v;NB(%n1;%n2),{and|or},%comp),%m):=((NB(%n1;%n2),rel=%comp)(VC(V,%v;%comp),rel=%m));
+(VB(NB("ready",J,%adjc;N,%n),%x;VB(%v;%adjt),%y),%m):=(NB("ready",J,%adjc;N,%n),rel=%x)(VB(%v;%adjt),rel=%y)(VB("ready",J,%adjc;%v),rel=obj);
+#(VB(V,%v;NB(%n;%adjc),%x),%m):=((VB(V,%v;%n),rel=%m)(NB(N,%n;%adjc),rel=%x));
+(VB(VB(V,%v;%comp),%x;NB(%n;NB(%n1;%adjc),%m),%adjt),%y):=(NB(%n;NB(%n1;%adjc),rel=%m),rel=%adjt)(VB(V,%v;%comp),rel=%x)(VB(V,%v;%n),rel=%y);
+(VB(VB(V,%v;%comp),%x;NB(%n;%adjc),%adjt),%y):=(NB(%n;%adjc),rel=%adjt)(VB(V,%v;%comp),rel=%x)(VB(V,%v;%n),rel=%y);
+(VB(V,%v;(NA(N,%n;N,%adjc),scn),%comp)):=VC(V,%v;N,%n)NA(N,%n;N,%adjc,rel=scn);
+(VB(VB(%v;%comp),%x;%adjt),%y):=((VB(%v;%comp),rel=%x)(VB(%v;%adjt),rel=%y));
+VP(VA(%v;%adjct);%spec):=VA(%v;%adjct)VS(%v;%spec);
+(VP(V,%v;{N|PPR|person|thimg|DEP|NP},%n)):=VS(V,%v;%n);
+VB(%v;%adjt,gol):=VA(%v;%adjt,gol);
+(VB(^SCOPE,%v;%adjt,^rel),%x):=VB(%v;%adjt,rel=%x,D);
+VB(%v;%comp,obj):=VC(%v;%comp);
+VB(%v;N,%adjt,tim):=VA(%v;%adjt,tim);
+VB(^SCOPE,%v;%adjt,plc):=VA(%v;%adjt,plc);
+VB(%v;%adjt,scn):=VA(%v;%adjt,scn);
+VB(%v;%adjt,pur):=VA(%v;%adjt,pur);
+VB(^SCOPE,%v;%adjt,rsn):=VA(%v;%adjt,rsn);
+VB(%v;%adjt,ins):=VA(%v;%adjt,ins);
+VB(^SCOPE,%V;%adjt,man):=VA(%V;%adjt,man);
+VB(%V;%adjt,met):=VA(%V;%adjt,met);
+VB(%V;%adjt,frm):=VA(%V;%adjt,frm);
+VB(%V;%adjt,to,D):=VA(%V;%adjt,to);
+VB(%V;%adjt,via):=VA(%V;%adjt,via);
+VB(%v;%adjt,dur):=VA(%v;%adjt,dur);
+VB(^SCOPE,%v;^SCOPE,%adjt,tim):=VA(%v;%adjt,tim);
+VB(^SCOPE,%V;^SCOPE,%adjt,and):=VC(%V;%adjt,and);
+VB(^SCOPE,%V;^SCOPE,%adjt,or):=VC(%V;%adjt,or);
+#(VP(%x;%y),%w,att):=(VP(%x,+att=%w,position=%w;%y),%w,-att);
+#(and(%x;%y),%w,att):=(and(%x;%y,+att=%w,position=%w),%w,-att);
+#(NP(%x;%y),%w,att):=(NP(%x,+att=%w,position=%w;%y),%w,-att);
+#(JP(%x;%y),%w,att):=(JP(%x,+att=%w,position=%w;%y),%w,-att);
+#(AP(%x;%y),%w,att,position):=(AP(%x,+att=%w,position=%w;%y),%w,-att);
+#(CB(%x;%y),%w,att):=(CB(%x,+att=%w;%y),%w,-att);
+#(VB(%x;%y),%w,att):=(VB(%x,+att=%w;%y),%w,-att);
+(NB(%x;%y),%w,att):=(NB(%x,+att=%w;%y),%w,-att);
+(JB(%x;%y),%w,att):=(JB(%x,+att=%w;%y),%w,-att);
+#(AB(%x;%y),%w,att):=(AB(%x,+att=%w;%y),%w,-att);
+#(IB(%x;%y),%w,att):=(IB(%x,+att=%w;%y),%w,-att);
+#(VB(VB(%x;%y),%m;%z),%f):=((VB(%x;%y),rel=%m)(VB(%x;%z),rel=%f));
+#VP(VB(%x;%y),%m;%z):=((VB(%x;%y),rel=%m)VS(%x;%z));
+NP(NB(%x;%y),%m;%z):=(NB(%x;%y),rel=%m)NS(%x;%z);
+JP(JB(%x;%y),%m;%z):=(JB(%x;%y),rel=%m)JS(%x;%z);
+#AP(AB(%x;%y),%m;%z):=(AB(%x;%y),rel=%m)AS(%x;%z);
+(AB(AB(%x;%y),%m;%z),%f):=(AB(%x;%y),rel=%m)(AB(%x;%z),rel=%f);
+(NB(N,%n1;NB(N,%n;%adjc),%x),%m):=((NB(N,%n1;N,%n),rel=%m)(NB(%n;%adjc),rel=%x));
+(JB(JB(%x;%y),%m;%z),%f):=(JB(%x;%y),rel=%m)(JB(%x;%z),rel=%f);
+(NB(NB(%x;%y),%m;%z),%f):=((NB(%x;%y),rel=%m)(NB(%x;%z),rel=%f));
+(NB(%x;JB(%y;%z),%adjc),%n):=((NB(%x;%y),rel=%n)(JB(%y;%z),rel=%adjc));
+(NB(JB(%x;%y),%m;%z),%f):=((NB(%x;%z),rel=%f)(JB(%x;%y),rel=%m,att=%f),%f);
+#(VB(%v;%comp),obj):=VC(%v;%comp,obj);
+#(VB(%v;%adjt),tim):=VA(%v;%adjt,tim);
+#(VB(^SCOPE,%v;%adjt),plc):=VA(%v;%adjt,plc);
+#(VB(%v;%adjt),scn):=VA(%v;%adjt,scn);
+#(VB(%v;%adjt),pur):=VA(%v;%adjt,pur);
+#(VB(^SCOPE,%v;%adjt),rsn):=VA(%v;%adjt,rsn);
+#(VB(%v;%adjt),ins):=VA(%v;%adjt,ins);
+#(VB(%v;%adjt),via):=VA(%v;%adjt,via);
+#(VB(%V;%adjt),frm):=VA(%V;%adjt,frm);
+#(VB(%V;%adjt),to):=VA(%V;%adjt,to);
+#(VB(%V;%adjt),man):=VA(%V;%adjt,man);
+(JB(%y;%x,^rel),%z):=JB(%y;%x,rel=%z);
+JB(%y;%x,and):=JC(%y;%x,and);
+JB(%y;%x,or):=JC(%y;%x,or);
+JB(%j;%adjc,man):=JA(%j;%adjc,man);
+JB(%n;%adjc,bas):=JA(%n;%adjc,bas);
+(NB(%n;%x),and):=(NC(%n;%x),and);
+(NB(%n;%x),or):=(NC(%n;%x),or);
+(NB(N,ABB,%adjct;N,PPN,%n),nam):=(NA(N,ABB,%adjct;N,PPN,%n),nam);
+(NB(%n;%adjc),pos):=(NA(%n;%adjc),pos);
+(NB(%n;%adjc),equ):=(NA(%n;%adjc),equ);
+(NB(%n;%adjc),scn):=(NA(%n;%adjc),scn);
+(NB(%n;%adjc),plc):=(NA(%n;%adjc),plc);
+(NB(%n,@spec;%adjc),mod):=(NA(%n,@spec;%adjc),mod);
+(NB(%n;%adjc),pur):=(NA(%n;%adjc),pur);
+(NB(%n;%adjc),cnt):=(NA(%n;%adjc),cnt);
+(NB(%n;%adjc),frm):=(NA(%n;%adjc),frm);
+(NB(%n;%adjc),pos):=(NA(%n;%adjc),pos);
+(NB(%x;ANUM,@ordinal,%y),mod):=(NA(%x;ANUM,%y),mod);
+(NB(%y;%x),qua):=(NA(%y;%x),qua);
+(NB(%n;%adjc),tim):=(NA(%n;%adjc),tim);
+(NB(J,%adjc;%n),aoj):=(NA(J,%adjc;%n),aoj);
+(NB(%n;%adjc),mod):=(NA(%n;%adjc),mod);
+(NB(%n;%adjc),plc):=(NA(%n;%adjc),plc);
+(NB(%n;%adjc),mod):=(NA(%n;%adjc),mod);
+(NB(%n;%adjc),plc):=(NA(%n;%adjc),plc);
+(NB(%n;%adjc),met):=(NA(%n;%adjc),met);
+(NB(%x;%y),rel=mod):=(NA(%x;%y,rel=mod));
+(NB(%n;%adjc),aoj):=(NA(%n;%adjc),aoj);
+(NB(%n;%adjc),ben):=(NA(%n;%adjc),ben);
+(NB(%n;%adjc),bas):=(NA(%n;%adjc),bas);
+(CP(VP(V,%v;%n);VP(VB(VB(VB(VB(V,%v1;%comp),%y;%adj),%z;%adjc1),%f;%adjc2),%m;{N|PPR|person|thing},%spec)),%w):=((VP(V,%v;%n))(VP(VB(VB(VB(VB(V,%v1;%comp),rel=%y;%adj),rel=%z;%adjc1),rel=%f;%adjc2),rel=%m;{N|PPR|person|thing},%spec))(VB(V,%v;V,%v1,@relative),rel=%w));
+(CP(VP(V,%v;{N|PPR|person|thimg|DEP|NP},%n);VP(VB(VB(V,%v1;%comp),%y;%adj),%z;{N|PPR|person|thing},%spec)),%w):=((VP(V,%v;%n))(VP(VB(VB(V,%v1;%comp),rel=%y;%adj),rel=%z;{N|PPR|person|thing},%spec))(VB(V,%v;V,%v1,@relative),rel=%w));
+(CP(VP(V,%v;{N|PPR|person|thimg|DEP|NP},%n);VP(VB(V,%v1;%comp),%y;{N|PPR|person|thing},%spec)),%w):=((VP(V,%v;%n))(VP(VB(V,%v1;%comp),rel=%y;%spec))(VB(V,%v;V,%v1,@relative),rel=%w));
+(CP(VP(VB(V,%x;N,%comp),%v;{N|PPR|SPR|thing|person},%spec);VP(V,%v1;{N|PPR|SPR|thing|person},%spec1),%m),NR,%y):=((VP(VB(V,%x;N,%comp),rel=%v;%spec))(VP(VB(V,%v1,@relative;N,%comp),rel=obj;%spec1)));
+(CP(NB(%j;N,%n),%m;VP(VB(V,%v1;%comp),%x;{N|PPR|person|thing},%spec)),JR):=(NB(%j;N,%n),rel=%m)(VB(%j;V,%v1,@relative),rel=obj)(VP(VB(V,%v1,@relative;%comp),rel=%x;%spec));
+(CP(VP(VB(V,%v;%comp),%x;%spec);VB(%v1;{N|PPR|person|thing},%spec1),%z),%Q):=((VP(VB(V,%v;%comp),rel=%x;%spec))(VB(%v1,att=%f;%spec1),rel=%z)(VB(%v;%v1,@relative),rel=%Q));
+(CP(VP(VB(V,%x;N,%comp),%v;{N|PPR|SPR|thing|person},%spec);VP(V,%v1;{N|PPR|SPR|thing|person},%spec1),%m),%y):=(VP(VB(V,%x;N,%comp),rel=%v;%spec))(VB(V,%x;V,%v1,@relative),rel=%y)(VP(V,@relative,%v1;%spec1));
+(CP(VP(VB(V,%v2;%comp),%v;{N|PPR|person|thimg|DEP|NP},%n);V,%v1),%w):=(VP(VB(V,%v2;%comp),rel=%v;%n))(VP(V,%v1,@relative;%comp));
+(CP(VP(VB(V,%v2;%comp),%v;%n);VP(VB(V,%v3;POD,%comp1),%v4;%n1),%v1),%w,obj):=((VP(VB(V,%v2;%comp),rel=%v;%n))(VP(V,%v3;%n1))(VB(%v3,@relative;%comp),rel=%w));
+(VP(VP(VB(V,%v;%comp),%x;%spec);VB(%v1;{N|PPR|person|thing},%spec1),%z),%Q,{and|or}):=((VP(VB(V,%v;%comp),rel=%x;%spec))(VB(%v1,att=%f;%spec1),rel=%z)(VB(%v;%v1),rel=%Q));
+VP(VB(V,%v;{N|NP},%n),%y;NB(NB(N,%n1;N,%n2);N,%n3),{and|or},%spec):=(VB(V,%v;%n),rel=%y)VS(V,%v;N,%n2)VS(V,%v;N,%n1)VS(V,%v;N,%n3)(NB(NB(N,%n1;N,%n2);N,%n3),rel=%spec);
+VP(VB(V,%v;{N|NP},%n),%y;NB(N,%n1;N,%n2),{and|or},%spec):=(VB(V,%v;%n),rel=%y)(NB(N,%n1;N,%n2),rel=%spec)VS(V,%v;N,%n2)VS(V,%v;N,%n1);
+VP(VB(VB(VB(VB(V,%v;%comp),%x;%adjct),%y;%adjt1),%z;%adjt2),%m;%spec):=(VB(VB(VB(VB(V,%v;%comp),rel=%x;%adjct),rel=%y;%adjt1),rel=%z;%adjt2),rel=%m)VS(V,%v;%spec);
+(VP(VB(VB(V,%v;%comp),%x;%adjt),%y;{N|PPR|person|thing|wh agt},%spec)):=((VB(VB(V,%v;%comp),rel=%x;%adjt),rel=%y)VS(V,%v;%spec));
+VP(VB(VB(V,%v;NB(N,%n;%adjc),%comp),%x;VB(V,%v1;A,%adjt),%y),%z;{N|PPR|person|thing|wh agt},%spec):=(VB(VB(V,%v;NB(N,%n;%adjc),%comp),%x;VB(V,%v1;A,%adjt),%y),rel=%z)VS(V,%v;%spec);
+(VP(VB(VB(VB(VB(VB(V,%v;%comp),%x;%adjct),%y;%adjt1),%z;%adjt2),%m;%adjt3),%w;{N|PPR|DEP|person|thing|wh agt},%spec)):=((VB(VB(VB(VB(VB(V,%v;%comp),rel=%x;%adjct),rel=%y;%adjt1),rel=%z;%adjt2),rel=%m;%adjt3),rel=%w)VS(V,%v;%spec));
+VP(VB(VB(VB(VB(V,%v;%comp),%x;%adjct),%y;%adjt1),%z;%adjt2),%m;{N|PPR|DEP|person|thing|wh agt},%spec):=(VB(VB(VB(VB(V,%v;%comp),rel=%x;%adjct),rel=%y;%adjt1),rel=%z;%adjt2),rel=%m)VS(V,%v;%spec);
+VP(VB(VB(VB(%v;%adjct),%y;%adjt1),%z;%adjt2),%m;{N|PPR|DEP|person|thing|wh agt},%spec):=((VB(VB(VB(%v;%adjct),rel=%y;%adjt1),rel=%z;%adjt2),rel=%m)VS(%v;%spec));
+VP(VB(VB(V,%v;N,%n);NP,%x),%y;{N|PPR|person|thing|wh agt},%spec):=(VB(VB(V,%v;N,%n);NP,%x),rel=%y)VS(V,%v;%spec);
+VP(VB(VB(V,%v;NP,%comp),%x;A,%adjt),%x;NB(N,%n;%adjc),%spec):=VB(VB(V,%v;NP,%comp),%x;A,%adjt)NB(N,%n;%adjc,rel=%spec)VS(V,%v;N,%n);
+VP(VB(VB(V,%v;NP,%comp),%x;%adjt),%y;%spec):=(VB(VB(V,%v;NP,%comp),rel=%x;%adjt),rel=%y)VS(%v;%spec);
+VP(VB(%v;%comp),%x;NB(N,%n;%adjc),%spec):=((VB(V,%v;%comp),rel=%x)VS(V,%v;%spec));
+VP(VB(V,%v;NB(N,TIM,%n;%adjc),%comp),%y;{N|PPR|person|thing|wh agt},%spec):=(VB(V,%v;NB(N,TIM,%n;%adjc),rel=%comp),rel=%y)VS(V,%v;%spec);
+VP(VB(V,%v;N,%n),%y;NB(N,%n1;%adjc),%spec):=(NB(N,%n1;%adjc),rel=%spec)VC(V,%v;N,%n)VS(V,%v;N,%n1);
+(VB(VB(VB(VB(VB(V,%v;%comp),%x;%adjct),%y;%adjt1),%z;%adjt2),%m;%adjt3),%w):=((VB(VB(VB(VB(V,%v;%comp),rel=%x;%adjct),rel=%y;%adjt1),rel=%z;%adjt2),rel=%m)VA(V,%v;%adjt3,rel=%w));
+(VP(VB(V,%v;%adjt),%x;{N|person|thing|DEP|PPR|thing|wh agt},%spec)):=((VB(V,%v;%adjt),rel=%x)VS(V,%v;%spec));
+(VB(VB(V,%v1;%comp1),%y;VB(V,%v;%comp),%x),{and|or},%z):=((VB(%v;%v1),rel=%z)(VB(V,%v1;%comp1),rel=%y)(VB(V,%v;%comp),rel=%x));
+(VB(VB(VB(VB(V,%v;%comp),%x;%adjct),%y;%adjt1),%z;%adjt2),%m):=((VB(VB(VB(V,%v;%comp),rel=%x;%adjct),rel=%y;%adjt1),rel=%z)VA(V,%v;%adjt2,rel=%m));
+(VB(VB(VB(V,%v;%comp),%x;%adjct),%y;%adjt1),%z):=((VB(VB(V,%v;%comp),rel=%x;%adjct),rel=%y)VA(V,%v;%adjt1,rel=%z));
+(VB(VB(V,%v;NB(N,%n;%adjc),%comp),%x;VB(V,%v1;A,%adjt),%y),%z):=(VB(V,%v;NB(N,%n;%adjc),rel=%comp),rel=%x)VA(V,%v1,rel=%z;A,%adjt,rel=%y)VA(V,%v;V,%v1,rel=%z);
+#(VP(V,@relative,%v1;{N|PPR|SPR|thing|person|wh agt},%spec1)):=(VS(V,%v1;%spec1));
+(VB(VB(V,%v;N,%n);NB(N,%n1;%adjc),%x),%m):=(VB(V,%v;N,%n))(NB(N,%n1;%adjc),rel=%x)VA(V,%v;N,%n1,rel=%m);
+(VB(VB(V,%x;NB(N,%n;%adjc),%comp),%v;%adjc1),%y):=(VB(V,%x;NB(N,%n;%adjc),rel=%comp),rel=%v)(VB(V,%x;%adjc1),rel=%y);
+(VB(J,%j;VB(V,%x;%y),%comp),%z):=((VB(V,%x;%y),rel=%comp)(VB(%j;%x),rel=%z));
+#(VB(VB(V,%x;%comp),%v;%adjc),%y):=((VB(V,%x;%comp),rel=%v)(VB(V,%x;%adjc),rel=%y));
+(VB(V,%v;NB(NB(N,%n;N,%adjc),{or|and},%x;N,%adjc2),{or|and},%y)):=(VC(V,%v;%adjc,obj)VC(V,%v;N,%n,obj)VC(V,%v;N,%adjc2,obj)(NB(NB(N,%n;%adjc),rel=%x;N,%adjc2),rel=%y));
+#(VB(V,%v;NB(%n1;%n2),{and|or},%comp),%m):=(VC(V,%v;%comp)(NB(%n1;%n2),rel=%comp));
+(VB(NB("ready",J,%adjc;N,%n),%x;VB(%v;%adjt),%y),%m):=(NB("ready",J,%adjc;N,%n),rel=%x)(VB(%v;%adjt),rel=%y)(VB("ready",J,%adjc;%v),rel=obj);
+(VB(V,%v;NB(%n;%adjc),%x),%m):=((VB(V,%v;%n),rel=%m)(NB(N,%n;%adjc),rel=%x));
+(VB(VB(V,%v;%comp),%x;NB(%n;NB(%n1;%adjc),%m),%adjt),%y):=(NB(%n;NB(%n1;%adjc),rel=%m),rel=%adjt)(VB(V,%v;%comp),rel=%x)(VB(V,%v;%n),rel=%y);
+(VB(VB(V,%v;%comp),%x;NB(%n;%adjc),%adjt),%y):=(NB(%n;%adjc),rel=%adjt)(VB(V,%v;%comp),rel=%x)(VB(V,%v;%n),rel=%y);
+(VB(V,%v;(NA(N,%n;N,%adjc),scn),%comp)):=VC(V,%v;N,%n)NA(N,%n;N,%adjc,rel=scn);
+(NB(NB(%v;%comp),%x;%adjt),%y):=((NB(%v;%comp),rel=%x)(NB(%v;%adjt),rel=%y));
+VP(VA(%v;%adjct);%spec):=VA(%v;%adjct)VS(%v;%spec);
+(VP(V,%v;{N|PPR|person|thimg|DEP|NP},%n)):=VS(V,%v;%n);
+VB(%v;%adjt,gol):=VA(%v;%adjt,gol);
+(VB(^SCOPE,%v;%adjt,^rel),%x):=VB(%v;%adjt,rel=%x,D);
+VB(%v;%comp,obj,D):=VC(%v;%comp);
+VB(%v;N,%adjt,tim):=VA(%v;%adjt,tim);
+VB(^SCOPE,%v;%adjt,plc):=VA(%v;%adjt,plc);
+VB(%v;%adjt,scn):=VA(%v;%adjt,scn);
+VB(%v;%adjt,pur):=VA(%v;%adjt,pur);
+VB(^SCOPE,%v;%adjt,rsn):=VA(%v;%adjt,rsn);
+VB(%v;%adjt,ins):=VA(%v;%adjt,ins);
+VB(^SCOPE,%V;^SCOPE,%adjt,man):=VA(%V;%adjt,man);
+VB(%V;%adjt,met):=VA(%V;%adjt,met);
+VB(%V;%adjt,frm):=VA(%V;%adjt,frm);
+VB(%V;%adjt,to,D):=VA(%V;%adjt,to);
+(VP(SCOPE,%v;%spec)):=(VS(%v;%spec)); israa
+VB(%V;%adjt,via):=VA(%V;%adjt,via);
+VB(%v;%adjt,dur):=VA(%v;%adjt,dur);
+VB(^SCOPE,%v;^SCOPE,%adjt,tim):=VA(%v;%adjt,tim);
+VB(^SCOPE,%V;^SCOPE,%adjt,and):=VC(%V;%adjt,and);
+VB(^SCOPE,%V;^SCOPE,%adjt,or):=VC(%V;%adjt,or);
+(NB(NB(NB(%n;%adjc),%x;%adjc2),%m;NB(NB(NB(%n1;%adjc1),%y;%adjc21),%w;%adjct31),%Q),{and|or},%f):=((NB(NB(%n;%adjc),%x;%adjc2),rel=%m)(NB(NB(NB(%n1;%adjc1),%y;%adjc21),%w;%adjct31),rel=%Q)(NB(%n;%n1),rel=%f));
+(NB(NB(NB(NB(%n;%adjc),%y;%adjc1),%x;%adjc2),{and|or},%z;%adjc3),{and|or},%m):=(NB(NB(NB(%n;%adjc),rel=%y;%adjc1),rel=%x;%adjc2),rel=%z)(NB(%adjc2;%adjc3),rel=%m); over 4 nodes coordination
+(NB(NB(NB(%n;%adjc),{and|or},%x;%adjc2),{and|or},%z;%adjc3),{and|or},%m):=(NB(NB(%n;%adjc),rel=%x;%adjc2),rel=%z)(NB(%adjc2;%adjc3),rel=%m); coordination
+(NB(NB(N,%n;N,%comp),{and|or},%x;N,%y),{and|or},%m):=(NB(N,%n;N,%comp),rel=%x)(NB(%comp;%y),rel=%m); coordination 3 nodes
+(NB(NB(NB(N,%n;%adjc),%x;N,%adjc2),and,%s;NB(N,%n1;N,%adjc1),%z),%m):=(NB(NB(N,%n;%adjc),rel=%x;N,%adjc2),rel=and)(NB(N,%n1;N,%adjc1),rel=%z)(NB(N,%n;N,%n1),rel=%m)(NB(N,%adjc2;N,%n1),rel=%m);
+#(NB(NB(NP,%x;N,%z);N,%y),%m):=NB(NP,%x;N,%z)NB(N,%z;N,%y,rel=%m);
+(NB(NB(N%n1;%adjc1),%x;NB(N%n2;%adjc2),%y),%m):=NB(N%n1;%adjc1,rel=%x)NB(N%n2;%adjc2,rel=%y)NB(N,%n1;N,%n2,rel=%m);
+(NB(NB(NB(N,%n1;%adjc1),%x;%adjc2),%w;NB(NB(N,%n2;%adjc3),%y;%adjc4),%z),%m):=((NB(NB(N,%n2;%adjc3),rel=%y;%adjc4),rel=%z)(NB(NB(N,%n1;%adjc1),rel=%x;%adjc2),rel=%w)(NB(N,%n1;N,%n2),rel=%m));
+(NB(N,%adjc2;NB(NB(N,%n;%adjc),%x;J,%adjc2),%y),%m):=NB(NB(N,%n;%adjc),%x;J,%adjc2)NB(N,%adjc2;N,%n,rel=%m);
+(NB(NB(NB(N,%n;%adjc),%x;J,%adjc2),%y;SPR,%z),%m):=(NB(NB(N,%n;%adjc),rel=%x;J,%adjc2),rel=%y)(NB(N,%n;SPR,%z),rel=%m);
+(NB(NB(NB(N,%n;%adjc),%x;N,%adjc2),%y;SPR,%z),%m):=NB(NB(N,%n;%adjc),%x;N,%adjc2)NB(N,%n;SPR,%y,rel=%m);
+(NB(NB(NB(N,%n;%adjc);J,%adjc2);ANUM,%z),%m):=NB(NB(N,%n;%adjc);J,%adjc2)NB(N,%n;ANUM,%y,rel=%m);
+(NB(NB(NB(N,%n;%adjc),%x;N,%adjc2),%y;ANUM,%z),%m):=NB(NB(N,%n;%adjc),%x;N,%adjc2)NB(N,%n;ANUM,%y,rel=%m);
+(NB(NB(N,%n;%adjc),%x;SPR,%y),%m):=(NB(N,%n;%adjc),rel=%x)(NB(N,%n;SPR,%y),rel=%m);
+#(NB(NB(NB(NB(%n;%adjc);%adjc2);%adjc3);%adjc4),%f):=NB(NB(NB(%n;%adjc);%adjc2);%adjc3)NB(%n;%adjc4,rel=%f);
+(NB(NB(NB(N,%n;%adjc),%y;NB(N,%n1;%adjc1),%x),{and|or},%m;NB(N,%n3;%adjc3),%f),%w,{and|or}):=((NB(NB(N,%n;%adjc),rel=%y;NB(N,%n1;%adjc1),rel=%x),rel=%m)(NB(N,%n3;%adjc3),rel=%f)(NB(N,%n1;N,%n3),rel=%w));
+(NB(NB(N,%n;%adjc),%y;NB(N,%n1;%adjc1),%x),{and|or},%m):=(NB(N,%n,and;%adjc),rel=%y)(NB(N,%n1;%adjc1),rel=%x)(NB(N,%n;N,%n1),rel=%m);
+(NB(NB(NB(NB(%n;%adjc),%x;%adjc2),%y;%djc3),%z;%adjc4),%m):=(NB(NB(NB(%n;%adjc),rel=%x;%adjc2),rel=%y;%djc3),rel=%z)(NB(%n;%adjc4,att=%m),rel=%m);
+#(NB(NB(NB(%n;%adjc),%x;%adjc2),%z;%adjc3),%m):=(NB(NB(%n;%adjc),rel=%x;%adjc2),rel=%z)(NB(%n;%adjc3),rel=%m);
+#(NB(NB(NB(N,%n;N,%adjc),%y;N,%adjc2),%x;N,%adjc3),%m):=(NB(NB(N,%n;N,%adjc),%y;N,%adjc2),%x)NB(N,%adjc2;N,%adjc3,rel=%m);
+#(NB(NB(N,%n;%adjc),%x;ANUM,%y),%m):=((NB(N,%n;%adjc),rel=%x)(NB(N,%n;ANUM,%y),rel=%m));
+NB(NB(N,%n;%adjc),or,%x;N,%adjc2):=NB(N,%adjc,rel=or;N,%adjc2,rel=or)NB(%n;%adjc,rel=or);
+#(NB(NB(N,%n;%adjc),%x;N,%adjc2),%m):=NB(N,%n;N,%adjc2,rel=%m)NB(%n;%adjc,rel=%x);
+(NB(J,%adjc;NB(N,%n;%adjc2),%x),%m):=(NB(N,%n;%adjc2),rel=%x)(NB(J,%adjc;N,%n),rel=%m);
+(NB(NB(%n;%adjc),%x;%adjc2),%m):=(NB(%n;%adjc),rel=%x)(NB(%n;%adjc2),rel=%m);
+(NB(JB(JB(%j;%j2),{and|or},%adjc;%j3),{and|or},%adjc1;%n),%m):=((JB(JB(%j;%j2),rel=%adjc;%j3),rel=%adjc1)(NB(%j;%n),rel=%m)(NB(%j2;%n),rel=%m)(NB(%j3;%n),rel=%m));
+(NB(N,%z;PP(preposition,%y;NB(N,%n;%adjc),%x),%w),%m):=(NB(N,%n,att=%y;%adjc),rel=%x)(NB(N,%z;N,%n,att=%y),rel=%m);
+(NB({N|PPR|DEM},%n;JB(JB(J,%y;J,%x),%j;A,%adjc),%j1),%m):=(JB(JB(J,%y;J,%x),rel=%j;A,%adjc),rel=%j1)NB(N,%n;J,%y,rel=%m)NB(N,%n;J,%x,rel=%m);
+#(NB({N|PPR|DEM},%n;JB(%j;%j2),{and|or},%adjc),%m):= ((JB(%j;%j2),rel=%adjc) (NB(N,%n;%j),rel=%m)(NB(N,%n;%j2),rel=%m));
+(NB((JB(JB(%j;%j2),%adjc2;%j3),{and|or},%adjc);{N|PPR|DEM},%n),%m):=((JB(JB(%j;%j2),rel=%adjc2;%j3),rel=%adjc)(NB(%j2;%n),rel=%m)(NB(%j;%n),rel=%m)(NB(%j3;%n),rel=%m));
+(NB(JB(%j;%j2),{and|or},%adjc;{N|PPR|DEM},%n),%m):=((JB(%j;%j2),rel=%adjc)(NB(%j;%n),rel=%m)(NB(%j2;%n),rel=%m));
+(NB(%n;JB(%y;%x),%z),%m):=(JB(%y;%x,rel=%z)(NB(%n;%y),rel=%m));
+(NB(JB(%j;%j2),%adjc;%n),%m):=(JB(%j;%j2),rel=%adjc)(NB(%j;%n),rel=%m);
+(NB(%n;JB(%y;%x),%z),%m):=(JB(%y;%x,rel=%z)(NB(NB(%n;%x),rel=%m;%y),rel=%m));
+(NB({N|PPR|DEM},%n;JB(J,%j;A,%adjc),%x),%m):=JB(J,%j;A,%adjc,rel=%x)NB(%n;J,%j,rel=%m);
+(PP(preposition,PLC,%y;NB(%n;%adjc),%x),%m):=NB(%n,att=%y;%adjc,rel=%x);
+(PP(preposition,TIM,%y;NB(%n;%adjc),%x),%m):=NB(%n,att=%y;%adjc,rel=%x);
+NB(NB(N,%n;%adjc),%y;attribute with of,%x):=NB(N,%n;%adjc,rel=%y)NB(N,%n;attribute with of,%x,rel=qua);
+(JB(JB(%j;%j2),%adjc;%j3),%adjc1):=(JB(%j;%j2),rel=%adjc)(JB(%j2;%j3),rel=%adjc1);
+(PP(preposition,MAN,%y;NB(%n;%adjc),%x),%m):=NB(%n,att=%y;%adjc,rel=%x);
+(JB(%y;%x,^rel),%z):=JB(%y;%x,rel=%z);
+(NB(%n;%x),and):=(NC(%n;%x),and);
+(NB(N,%n;N,%x),or):=(NC(N,%n;N,%x),or);
+(NB(N,ABB,%adjct;N,PPN,%n),nam):=(NA(N,ABB,%adjct;N,PPN,%n),nam);
+(NB(N,%n;%adjc),pos):=(NA(N,%n;%adjc),pos);
+(NB(N,%n;N,ACR,%adjc),equ):=(NA(N,%n;N,ACR,%adjc),equ);
+(NB(N,%n;N,ABT,%adjc),scn):=(NA(N,%n;N,ABT,%adjc),scn);
+(NB(N,%n;N,%adjc),plc):=(NA(N,%n;N,ABT,%adjc),plc);
+(NB(N,%n,@spec;N,%adjc),mod):=(NA(N,%n,@spec;N,%adjc),mod);
+(NB(N,%n;N,%adjc),pur):=(NA(N,%n;N,%adjc),pur);
+(NB(N,%n;N,%adjc),cnt):=(NA(N,%n;N,%adjc),cnt);
+(NB(N,%n;N,%adjc),frm):=(NA(N,%n;N,%adjc),frm);
+(NB(N,%n;N,%adjc),pos):=(NA(N,%n;N,%adjc),pos);
+(NB(N,%x;ANUM,@ordinal,%y),mod):=(NA(N,%x;ANUM,%y),mod);
+(NB(N,%y;%x),qua):=(NA(N,%y;%x),qua);
+(NB(%n;%adjc),tim):=(NA(%n;%adjc),tim);
+(NB(J,%adjc;%n),aoj):=(NA(J,%adjc;%n),aoj);
+(NB(%n;%adjc),mod):=(NA(%n;%adjc),mod);
+(NB(N,%n;N,%adjc),plc):=(NA(N,%n;N,%adjc),plc);
+(NB(N,%n;N,%adjc),mod):=(NA(N,%n;N,%adjc),mod);
+(JB(JB(J,%y;J,%x),%j;A,%adjc),%m):=JB(J,%y;J,%x,rel=%j)JB(J,%y;A,%adjc,rel=%m)JB(J,%x;A,%adjc,rel=%m);
+JB(%y;%x,and):=JC(%y;%x,and);
+JB(%y;%x,or):=JC(%y;%x,or);
+JB(%j;%adjc,man):=JA(%j;%adjc,man);
+(NB(%n;%adjc),plc):=(NA(%n;%adjc),plc);
+(NB(%n;%adjc),met):=(NA(%n;%adjc),met);
+(NB(%x;%y),rel=mod):=(NA(%x;%y,rel=mod));
+(NB(%n;%adjc),aoj):=(NA(%n;%adjc),aoj);
+JB(%n;%adjc,bas):=JA(%n;%adjc,bas);
+(NB(N,%n;N,%adjc),ben):=(NA(N,%n;N,%adjc),ben);
+(NB(%n;%adjc),bas):=(NA(%n;%adjc),bas);
+VC(%x;%y,obj):=obj(%x;%y);
+(NA(N,%x;N,%y),FRM):=src(N,%x;N,%y);
+(NA(N,%0y;%0x),aoj):=aoj(N,%0y;%0x);
+(NA({N|PPR|DEP},%0x;J,%0y),aoj):=aoj(%0x;J,%0y);
+(NA(N,%0x;N,%0y,of),mod):=mod(N,%0x,+@spec;N,%0y);
+(NA(%x;%y),mod):=mod(%x;%y);
+(NA(J,%0x;%0y),aoj):=(aoj(J,%0x;%0y));
+(NA(N,%0x;ANUM,%0y),tim):=tim(N,%0x;ANUM,%0y);
+VS(V,STT,%0y;%0x):=aoj(V,STT,%0y;%0x);
+VC(V,NACC,%0y;N,%0x):=obj(V,NACC,%0y;N,%0x);
+VS(V,%0x;N,%0y):=agt(V,%0x;N,%0y);
+(NA(N,%0x;N,%0y),rel=scn):=scn(N,%0x;N,%0y);
+(NC(%x;%y),and):=and(%x;%y);
+(NA(N,%x;N,ACR,%y),equ):=equ(N,%x;N,ACR,%y);
+(NA(N,%x;N,%y),plc):=plc(N,%x;N,%y);
+VA(%x;%y,pur):=pur(%x;%y);
+(NA(N,%x;N,%y),pur):=pur(N,%x;N,%y);
+#NA(N,%0y;N,%0x):=mod(N,%0y;N,%0x);
+VA(%x;%y,man):=man(%x;%y);
+VC(V,%y,PSV;{N|PPR|DEP},%x):=obj(V,%y,PSV;%x);
+VS(%y;%x):=agt(%y;%x);
+(NA(N,%y;SPR,%x),pos):=pos(N,%y;SPR,%x);
+VA(%x;%y,tim):=tim(%x;%y);
+VC(V,%x;%y,^and):=obj(V,%x;%y);
+(NA(N,%x;N,%y),FRM):=src(N,%x;N,%y);
+NA(%0y;%0x,aoj):=aoj(%0y;%0x);
+NA(J,%0y,aoj;{N|PPR|DEP},%0x):=aoj(J,%0y;%0x);
+NA(J,%x;%y,aoj):=aoj(J,%x;%y);
+(NA(%n;%adjc),tim):=tim(%n;%adjc);
+VC(V,NACC,%0y;N,%0x):=obj(V,NACC,%0y;N,%0x);
+VS(V,%x;%y):=agt(V,%x;%y);
+(NA(N,%0x;N,%0y),scn):=scn(N,%0x;N,%0y);
+NC(%n1;%n2,and):=and(%n1;%n2);
+(NA(N,%x;N,ACR,%y),equ):=equ(N,%x;N,ACR,%y,equ);
+(NA(N,%x;N,%y),plc):=plc(N,%x;N,%y);
+VA(%x;%y,ins):=ins(%x;%y);
+(NA(N,%x;N,%y),pur):=pur(N,%x;N,%y);
+#(NA(N,%0y;N,%0x),mod):=mod(N,%0y;N,%0x);
+VA(%x;%y,met):=met(%x;%y);
+VC(V,%y,PSV;{N|PPR|DEP},%x):=obj(V,%y,PSV;%x);
+VS(V,%y,PSV;{N|PPR|DEP},%x):=agt(V,%y,PSV;%x);
+(NA(%y;%x),pos):=pos(%y;%x);
+VA(%x;%y,dur):=dur(%x;%y);
+(NA(N,%y;%x),qua):=qua(N,%y;%x);
+(NC(%n;%comp),or):=or(%n;%comp,or);
+(NA(N,ABB,%adjct;N,PPN,%n),nam):=nam(N,ABB,%adjct;N,PPN,%n);
+(NC(%n;%comp),and):=and(%n;%comp);
+(NA(N,%n;N,%adjc),frm):=frm(N,%n;N,%adjc);
+VA(%x;%y,plc):=plc(%x;%y);
+(NA(N,%x;N,%y),cnt):=cnt(N,%x;N,%y);
+JC(%y;%x,or):=or(%y;%x);
+JC(%y;%x,and):=and(%y;%x);
+JA(%j;%adjc,man):=man(%j;%adjc,man);
+(NA(%n;%adjc),met):=met(%n;%adjc);
+VA(%x;%y,frm):=frm(%x;%y);
+VA(%x;%y,gol):=gol(%x;%y);
+VA(%x;%y,plt):=plt(%x;%y);
+VA(%x;%y,plf):=plf(%x;%y);
+VA(%x;%y,rsn):=rsn(%x;%y);
+VA(%x;%y,scn):=scn(%x;%y);
+VA(%x;%y,src):=src(%x;%y);
+VA(%x;%y,tmf):=tmf(%x;%y);
+VA(%x;%y,tmt):=tmt(%x;%y);
+VA(%x;%y,via):=via(%x;%y);
+VA(%v;%adjt,gol):=gol(%v;%adjt);
+VA(%x;%y,to):=to(%x;%y);
+JA(%n;%adjc,bas):=bas(%n;%adjc);
+(VS(V,@relative,%v1;{N|PPR|POD|thing|person},%spec1)):=(agt(V,%v1;%spec1));
+(NA(N,%n;N,%adjc),ben):=ben(N,%n;N,%adjc);
+VC(%x;%y,and):=and(%x;%y);
+VC(%x;%y,or):=or(%x;%y);
+(NA(%n;%adjc),aoj):=aoj(%n;%adjc);
+(NA(%n;%adjc),bas):=bas(%n;%adjc);
+VC(%x;%y,exp):=exp(%x;%y);
+#(%x,^SCOPE)(%y,^SCOPE):=rel(%x;%y);

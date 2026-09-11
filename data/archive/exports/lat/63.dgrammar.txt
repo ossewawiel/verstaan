@@ -1,0 +1,13 @@
+﻿; RuleSet:(MX)lat_unl_dgrammar
+; User:Sergiy Prots (prots)
+; Date:05.53.2013 at 12:53:05
+
+; "lat_unl_dgrammar"
+; MX
+(TEMP,^DIGIT,^W)(^BLK,^PUT,^STAIL)=0; there must be a blank, a punctuation sign or the end of the sentence after a temporary word, i.e., a temporary word cannot be followed by other word, except for digits, as in "1st"
+(^BLK,^PUT,^SHEAD)(TEMP,^W)=0; there must be a blank, a punctuation sign or the beginning of the sentence before a temporary word, i.e., a temporary word cannot be preceded by other word
+(TEMP)(PUT)(TEMP)=0; there cannot be two temporary words separated by punctuation mark
+(P,rel=plc)(BLK)(N,TIM)=0;
+(P,rel=plc)(BLK)(D)(BLK)(N,SEM=TIM)=0;
+(P,rel=tim )(BLK )(N,SEM=LCT)= 0;
+(P,rel=tim )(BLK )(D)(BLK)(N,LCT)= 0;
