@@ -9,7 +9,7 @@ agents: [implementer, docs-writer, verifier]
 model: sonnet
 effort: high
 checkpoint: 4
-commit: 188c5b3
+commit: 39b4cfe
 worktree: null
 github_issue: 32
 ---
@@ -92,4 +92,4 @@ quest once the job runner is proven.
 - [x] The Actions rail and the Jobs room exist and are keyboard-complete. Proved keyboard-only in
       `apps/console/e2e/actions.spec.ts`: a non-destructive action fires on the first Enter, a
       destructive one arms (does not fire) on the first Enter or Space and fires only on the second.
-- [ ] PR merged through the gate check.
+- [x] PR merged through the gate check. Merged as #76 via squash commit 0034c2c.
