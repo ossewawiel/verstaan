@@ -2,5 +2,5 @@
 
 Last completed:  #112 — The Now row trusts the issue file, and the merged label stops guessing from ancestry (Side), commit 0fd9efb; merged to main via PR #63 as squash commit f39a9be
 Next up:         #08 — Mirror the logged-in UNLarium exports for every language (M1)
-Branch / PR:     main, https://github.com/ossewawiel/verstaan.git, 0 files dirty, level with origin/main, no gate stamp for 079b975
+Branch / PR:     main, https://github.com/ossewawiel/verstaan.git, 0 files dirty, level with origin/main, no gate stamp for 328b3de
 Resume with:     /factory-run 08
