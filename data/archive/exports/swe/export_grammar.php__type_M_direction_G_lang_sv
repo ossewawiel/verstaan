@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<title>UNLarium</title>
+<link rel="stylesheet" type="text/css" media="all" href="../../shared/default.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"  />
+<link rel="shortcut icon" href="../favicon.ico" type="image/x-icon" />
+</head>
+
+<body>
+<h1>Swedish Inflectional  Grammar for Natural Language Generation</h1>Version of September 11, 2026, 2:17 pm<br />Documentation available at <a href="http://www.unlarchive.org/wiki/index.php/Grammar" target="_blank">http://www.unlarchive.org/wiki/index.php/Grammar</a><br />Tagset available at <a href="../dictionary/export_tagset.php" target="_blank">Export UNDL Foundation tagset</a>.<br /><br />(%x,M2):=(%x,-M2,+FLX(SNG&NDEF:=0>"";SNG&DEF:=0>"n";PLR&NDEF:="a">"or";PLR&DEF:="a">"orna";));<br /><br />(%x,M3):=(%x,-M3,+FLX(SNG&NDEF:=0>"";SNG&DEF:=0>"n";PLR&NDEF:="e">"ar";PLR&DEF:="e">"arna";));<br /><br />(%x,M4):=(%x,-M4,+FLX(SNG&NDEF:=0>"";SNG&DEF:=0>"en";PLR&NDEF:=0>"er";PLR&DEF:=0>"erna";));<br /><br />(%x,M5):=(%x,-M5,+FLX(SNG&NDEF:=0>"";SNG&DEF:=0>"n";PLR&NDEF:=0>"r";PLR&DEF:=0>"rna";));<br /><br />(%x,M6):=(%x,-M6,+FLX(SNG&NDEF:=0>"";SNG&DEF:=0>"t";PLR&NDEF:=0>"n";PLR&DEF:=0>"na";));<br /><br />(%x,M7):=(%x,-M7,+FLX(SNG&NDEF:=0>"";SNG&DEF:=0>"et";PLR&NDEF:=0>"";PLR&DEF:=0>"en";));<br /><br />(%x,M8):=(%x,-M8,+FLX(SNG&NDEF:=0>"";SNG&DEF:=0>"en";PLR&NDEF:="a":"ä",0>"er";PLR&DEF:="a":"ä",0>"erna";));<br /><br />(%x,M9):=(%x,-M9,+FLX(SNG&NDEF:=0>"";SNG&DEF:=0>"en";PLR&NDEF:=0>"ar";PLR&DEF:=0>"arna";));<br /><br />(%x,M10):=(%x,-M10,+FLX(SNG&COM&NDEF:=0>"";
+SNG&NEU&NDEF:=0>"t";
+SNG&DEF:=0>"a";
+PLR:=0>"a";
+PST:=0>"are";
+SUP:=0>"ast";));<br /><br />(%x,M11):=(%x,-M11,+FLX(SNG&COM&NDEF:=0>"";
+SNG&NEU&NDEF:=0>"t";
+SNG&DEF:="m">"mma";
+PLR:="m">"mma";
+PST:=0>"mare";
+SUP:=0>"mast";));<br /><br />(%x,M12):=(%x,-M12,+FLX(SNG&COM&NDEF:=0>"";
+SNG&NEU&NDEF:="d">"t";
+SNG&DEF:=0>"e";
+PLR:=0>"e";));<br /><br />(%x,M13):=(%x,-M13,+FLX(SNG&COM&NDEF:=0>"";
+SNG&NEU&NDEF:=0>"tt";
+SNG&DEF:=0>"a";
+PLR:=0>"a";
+PST:=0>"are";
+SUP:=0>"ast";));<br /><br />(%x,M14):=(%x,-M14,+FLX(SNG&COM&NDEF:=0>"";SNG&NEU&NDEF:="n">"t";SNG&DEF:=0>"a";PLR:=0>"a";PST:=0>"are";
+SUP:=0>"ast";));<br /><br />(%x,M15):=(%x,-M15,+FLX(SNG&COM&NDEF:=0>"";SNG&NEU&NDEF:=0>"";SNG&DEF:=0>"a";PLR:=0>"a";PST:=0>"are";
+SUP:=0>"ast";));<br /><br />(%x,M16):=(%x,-M16,+FLX(INF:=0>"";PRS:=0>"r";PST:=0>"de";SPN:=0>"t";PTP&SNG&COM&NDEF:=0>"d";PTP&SNG&NEU&NDEF:=0>"t";PTP&SNG&DEF:=0>"de";PTP&PLR:=0>"de";));<br /><br />(%x,M17):=(%x,-M17,+FLX(INF:=0>"";PRS:="a">"er";PST:="a">"de";SPN:="a">"t";PTP&SNG&COM&NDEF:="a">"d";PTP&SNG&NEU&NDEF:="a">"t";PTP&SNG&DEF:="a">"da";PTP&PLR:="a">"da";));<br /><br />(%x,M18):=(%x,-M18,+FLX(INF:=0>"";PRS:="a">"er";PST:="a">"te";SPN:="a">"t";PTP&SNG&COM&NDEF:="a">"t";PTP&SNG&NEU&NDEF:="a">"t";PTP&SNG&DEF:="a">"ta";PTP&PLR:="a">"ta";));<br /><br />(%x,M19):=(%x,-M19,+FLX(INF:=0>"";PRS:=0>"r";PST:=0>"dde";SPN:=0>"tt";PTP&SNG&COM&NDEF:=0>"dd";PTP&SNG&NEU&NDEF:=0>"tt";PTP&SNG&DEF:=0>"dda";PTP&PLR:=0>"dda";));<br /><br />(%x,M20):=(%x,-M20,+FLX(INF:=0>"";PRS:="a">"er";PST:="ma">"";SPN:="a">"it";PTP&SNG&COM&NDEF:="a">"en";PTP&SNG&NEU&NDEF:="a">"et";PTP&SNG&DEF:=0>"nde";PTP&PLR:=0>"nde";));<br /><br />(%x,M21):=(%x,-M21,+FLX(SNG&NEU:=0>"";
+SNG&COM:=0>"t";
+PLR:=0>"a";));<br /><br />(%x,M22):=(%x,-M22,+FLX(SNG:=0>"";
+PLR:="on">"ra";));<br /><br />(%x,M23):=(%x,-M23,+FLX(SNG:=0>"";
+PLR:="ot">"ra";));<br /><br />(%x,M24):=(%x,-M24,+FLX(SNG:=0>"";
+PLR:=0>"a";));<br /><br />(%x,M25):=(%x,-M25,+FLX(SNG:=0>"";
+PLR:="en">"a";));<br /><br />(%x,M26):=(%x,-M26,+FLX(SNG:=0>"";
+PLR:="et">"a";));<br /><br />(%x,M27):=(%x,-M27,+FLX(SNG&COM:=0>"";
+SNG&NEU:="n">"tt";
+PLR:=0>"a";));<br /><br /></body>
+<html>

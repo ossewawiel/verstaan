@@ -1,0 +1,133 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<title>UNLarium</title>
+<link rel="stylesheet" type="text/css" media="all" href="../../shared/default.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"  />
+<link rel="shortcut icon" href="../favicon.ico" type="image/x-icon" />
+</head>
+
+<body>
+<h1>Swedish Inflectional  Grammar</h1>Version of September 11, 2026, 2:17 pm<br />Documentation available at <a href="http://www.unlarchive.org/wiki/index.php/Grammar" target="_blank">http://www.unlarchive.org/wiki/index.php/Grammar</a><br />Tagset available at <a href="../dictionary/export_tagset.php" target="_blank">Export UNDL Foundation tagset</a>.<br /><br /><b>M0</b><br />Invariant<br /><br /><b>M1</b><br />Irregular: rules are defined inside the entry in the dictionary<br /><br /><b>M2</b><br />1st declination (-or) (<i>flicka
+flickan
+flickor
+flickorna</i>)<br />SNG&NDEF:=0>"";<br />SNG&DEF:=0>"n";<br />PLR&NDEF:="a">"or";<br />PLR&DEF:="a">"orna";<br /><br /><b>M3</b><br />2nd declension (-ar) (<i>pojke
+pojken
+pojkar
+pojkarna</i>)<br />SNG&NDEF:=0>"";<br />SNG&DEF:=0>"n";<br />PLR&NDEF:="e">"ar";<br />PLR&DEF:="e">"arna";<br /><br /><b>M4</b><br />3rd declension (-er) (<i>rad
+raden
+rader
+raderna</i>)<br />SNG&NDEF:=0>"";<br />SNG&DEF:=0>"en";<br />PLR&NDEF:=0>"er";<br />PLR&DEF:=0>"erna";<br /><br /><b>M5</b><br />declension 4 (-r) (<i>ko
+kon
+kor
+korna</i>)<br />SNG&NDEF:=0>"";<br />SNG&DEF:=0>"n";<br />PLR&NDEF:=0>"r";<br />PLR&DEF:=0>"rna";<br /><br /><b>M6</b><br />5th declension (-n) (<i>äpple
+äpplet
+äpplen
+äpplena
+</i>)<br />SNG&NDEF:=0>"";<br />SNG&DEF:=0>"t";<br />PLR&NDEF:=0>"n";<br />PLR&DEF:=0>"na";<br /><br /><b>M7</b><br />6th declension (0) (<i>hus
+huset
+hus
+husen</i>)<br />SNG&NDEF:=0>"";<br />SNG&DEF:=0>"et";<br />PLR&NDEF:=0>"";<br />PLR&DEF:=0>"en";<br /><br /><b>M8</b><br />declension 3c (-er with a-ä umlaut) (<i>hand
+handen
+händer
+händerna</i>)<br />SNG&NDEF:=0>"";<br />SNG&DEF:=0>"en";<br />PLR&NDEF:="a":"ä",0>"er";<br />PLR&DEF:="a":"ä",0>"erna";<br /><br /><b>M9</b><br />2b declension (-ar) (<i>bil
+bilen
+bilar
+bilarna</i>)<br />SNG&NDEF:=0>"";<br />SNG&DEF:=0>"en";<br />PLR&NDEF:=0>"ar";<br />PLR&DEF:=0>"arna";<br /><br /><b>M10</b><br />default adjective inflection (<i>en dyr bil
+ett dyrt bord
+det dyra bordet
+flera dyra bord
+dyrare
+dyrast</i>)<br />SNG&COM&NDEF:=0>"";<br />
+SNG&NEU&NDEF:=0>"t";<br />
+SNG&DEF:=0>"a";<br />
+PLR:=0>"a";<br />
+PST:=0>"are";<br />
+SUP:=0>"ast";<br /><br /><b>M11</b><br />doubling of final consonant (<i>ensam
+ensamt
+ensamma
+ensamma</i>)<br />SNG&COM&NDEF:=0>"";<br />
+SNG&NEU&NDEF:=0>"t";<br />
+SNG&DEF:="m">"mma";<br />
+PLR:="m">"mma";<br />
+PST:=0>"mare";<br />
+SUP:=0>"mast";<br /><br /><b>M12</b><br />d-t change (<i>intresserad
+intresserat
+intresserade
+intresserade</i>)<br />SNG&COM&NDEF:=0>"";<br />
+SNG&NEU&NDEF:="d">"t";<br />
+SNG&DEF:=0>"e";<br />
+PLR:=0>"e";<br /><br /><b>M13</b><br />double-t addition (<i>ny
+nytt
+nya
+nya</i>)<br />SNG&COM&NDEF:=0>"";<br />
+SNG&NEU&NDEF:=0>"tt";<br />
+SNG&DEF:=0>"a";<br />
+PLR:=0>"a";<br />
+PST:=0>"are";<br />
+SUP:=0>"ast";<br /><br /><b>M14</b><br />removement of n (<i>sann
+sant
+sanna
+sanna</i>)<br />SNG&COM&NDEF:=0>"";<br />SNG&NEU&NDEF:="n">"t";<br />SNG&DEF:=0>"a";<br />PLR:=0>"a";<br />PST:=0>"are";<br />
+SUP:=0>"ast";<br /><br /><b>M15</b><br />neu and common same (<i>trist
+trist
+trista
+trista
+tristare
+tristast</i>)<br />SNG&COM&NDEF:=0>"";<br />SNG&NEU&NDEF:=0>"";<br />SNG&DEF:=0>"a";<br />PLR:=0>"a";<br />PST:=0>"are";<br />
+SUP:=0>"ast";<br /><br /><b>M16</b><br />conjugation 1 (<i>kalla
+kallar
+kallade
+kallat
+kallad
+kallat
+kallade</i>)<br />INF:=0>"";<br />PRS:=0>"r";<br />PST:=0>"de";<br />SPN:=0>"t";<br />PTP&SNG&COM&NDEF:=0>"d";<br />PTP&SNG&NEU&NDEF:=0>"t";<br />PTP&SNG&DEF:=0>"de";<br />PTP&PLR:=0>"de";<br /><br /><b>M17</b><br />conjugatin 2a (<i>stänga
+stänger
+stängde
+stängt
+stängd
+stängt
+stängda
+stängda</i>)<br />INF:=0>"";<br />PRS:="a">"er";<br />PST:="a">"de";<br />SPN:="a">"t";<br />PTP&SNG&COM&NDEF:="a">"d";<br />PTP&SNG&NEU&NDEF:="a">"t";<br />PTP&SNG&DEF:="a">"da";<br />PTP&PLR:="a">"da";<br /><br /><b>M18</b><br />conjugation 2b (<i>läsa
+läser
+läste
+läst
+läst
+läst
+lästa
+lästa</i>)<br />INF:=0>"";<br />PRS:="a">"er";<br />PST:="a">"te";<br />SPN:="a">"t";<br />PTP&SNG&COM&NDEF:="a">"t";<br />PTP&SNG&NEU&NDEF:="a">"t";<br />PTP&SNG&DEF:="a">"ta";<br />PTP&PLR:="a">"ta";<br /><br /><b>M19</b><br />conjugation 3 (<i>sy
+syr
+sydde
+sytt
+sydd
+sytt
+sydda
+sydda</i>)<br />INF:=0>"";<br />PRS:=0>"r";<br />PST:=0>"dde";<br />SPN:=0>"tt";<br />PTP&SNG&COM&NDEF:=0>"dd";<br />PTP&SNG&NEU&NDEF:=0>"tt";<br />PTP&SNG&DEF:=0>"dda";<br />PTP&PLR:=0>"dda";<br /><br /><b>M20</b><br />Irregular verb ending in -E
+Conjugation should be useful at least for a basis of ptp for other words (<i>komma
+kommer
+kom
+kommit
+kommen
+kommet
+kommande
+kommande</i>)<br />INF:=0>"";<br />PRS:="a">"er";<br />PST:="ma">"";<br />SPN:="a">"it";<br />PTP&SNG&COM&NDEF:="a">"en";<br />PTP&SNG&NEU&NDEF:="a">"et";<br />PTP&SNG&DEF:=0>"nde";<br />PTP&PLR:=0>"nde";<br /><br /><b>M21</b><br />default inflections for some indefinite pronouns like "sådan" (<i>sådan
+sådant
+sådana</i>)<br />SNG&NEU:=0>"";<br />
+SNG&COM:=0>"t";<br />
+PLR:=0>"a";<br /><br /><b>M22</b><br />For person-related pronouns (<i>någon
+några</i>)<br />SNG:=0>"";<br />
+PLR:="on">"ra";<br /><br /><b>M23</b><br />thing-related pronouns like något (<i>något
+några</i>)<br />SNG:=0>"";<br />
+PLR:="ot">"ra";<br /><br /><b>M24</b><br />words like "fler" (<i>fler
+flera</i>)<br />SNG:=0>"";<br />
+PLR:=0>"a";<br /><br /><b>M25</b><br />words like "ingen" (<i>ingen
+inga</i>)<br />SNG:=0>"";<br />
+PLR:="en">"a";<br /><br /><b>M26</b><br />words like "inget" (<i>inget
+inga</i>)<br />SNG:=0>"";<br />
+PLR:="et">"a";<br /><br /><b>M27</b><br />possesive pronouns (<i>min
+mitt
+mina</i>)<br />SNG&COM:=0>"";<br />
+SNG&NEU:="n">"tt";<br />
+PLR:=0>"a";<br /><br /></body>
+<html>

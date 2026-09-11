@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<title>UNLarium</title>
+<link rel="stylesheet" type="text/css" media="all" href="../../shared/default.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"  />
+<link rel="shortcut icon" href="../favicon.ico" type="image/x-icon" />
+</head>
+
+<body>
+<h1>Persian Subcategorization  Grammar for Natural Language Generation</h1>Version of September 11, 2026, 1:55 pm<br />Documentation available at <a href="http://www.unlarchive.org/wiki/index.php/Grammar" target="_blank">http://www.unlarchive.org/wiki/index.php/Grammar</a><br />Tagset available at <a href="../dictionary/export_tagset.php" target="_blank">Export UNDL Foundation tagset</a>.<br /><br /><b>Y0</b><br />AVALENT<br /><br /><b>Y1</b><br />NO SUBCATEGORIZATION FRAME: rules defined inside the entry in the dictionary<br /><br /><b>Y18</b><br />Requires a noun complement, which is a prepositional phrase headed by the preposition [از].   (<i>پیروی از عقاید عامه، استفتا از مراجع</i>)<br />NC(PH([از]));
+<br /><br /><b>Y19</b><br />Requires a noun complement, which is a prepositional phrase headed by the preposition [در].   (<i>مشارکت در امور خیریه</i>)<br />NC(PH([در]));
+<br /><br /><b>Y20</b><br />Requires a noun complement, which is a prepositional phrase headed by the preposition [به].   (<i>استناد به قانون</i>)<br />NC(PH([به]));
+<br /><br /><b>Y21</b><br />Requires a noun complement, which is a NP in Aj1 position and a noun complement, which is a prepositional phrase headed by the preposition [به] in Aj2 position.    (<i>انتقال مصدومین به بیمارستان
+
+</i>)<br />NC(NP,AJ1)NC(PH([به]),AJ2);
+<br /><br /><b>Y22</b><br />Requires a noun complement, which is a NP in Aj1 position and a noun complement, which is a prepositional phrase headed by the preposition [از] in Aj2 position.    (<i>استخراج مطالب از منابع موجود
+</i>)<br />NC(NP,AJ1)NC(PH([از],AJ2));
+<br /><br /><b>Y23</b><br />Requires a noun complement, which is a NP in Aj1 position and a noun complement, which is a prepositional phrase headed by the preposition [در] in Aj2 position.    (<i>حضور خبرنگاران در شورای شهر</i>)<br />NC(NP,AJ1)NC(PH([در]),AJ2);
+<br /><br /><b>Y24</b><br />Requires a noun complement, which is a prepositional phrase headed by the preposition [با].    (<i>توافق با روسای شرکت،
+تبانی با دشمن
+</i>)<br />NC(PH([با]));
+<br /><br /><b>Y25</b><br />Requires a noun complement, which is a NP in Aj1 position and a noun complement, which is a prepositional phrase headed by the preposition [با] in Aj2 position.    (<i>تشابه مرگ با تولد</i>)<br />NC(NP,AJ1)NC(PH([با]),AJ2);
+<br /><br /><b>Y26</b><br />Requires a noun complement, which is a prepositional phrase headed by the preposition [میان].    (<i>اختلاف میان مدیران،
+تمایز بین افراد</i>)<br />NC(PH({[میان]|[بین]}));
+<br /><br /><b>Y27</b><br />Requires a noun complement, which is a noun phrase. (<i>ایجاد فضای سبز،
+بازسازی شهر</i>)<br />NC(NP);
+<br /><br /><b>Y28</b><br />requires an adjective complement, which is a noun phrase.  (<i>گرفتار زن و فرزند، مشمول عفو، منکر موضوع</i>)<br />JC(NP);
+<br /><br /><b>Y29</b><br />requires an adjective complement, which is a prepositional phrase, headed by [با], (<i>موافق با پیشنهاد، هماهنگ با جمع، مطابق با مقررات</i>)<br />JC(PH([با]));
+<br /><br /><b>Y30</b><br />requires an adjective complement, which is a prepositional phrase, headed by [به], (<i>مزین به زیورآلات، ملزم به اطاعت</i>)<br />JC(PH([به]));
+<br /><br /><b>Y31</b><br />requires an adjective complement, which is a prepositional phrase, headed by [از], (<i>آگاه از ماجرا، آزاد از تعصبات، متنفر از تجملات، مملو از شادی</i>)<br />JC(PH([از]));
+<br /><br /><b>Y32</b><br />requires an adjective complement, which is a prepositional phrase, headed by [در], (<i>غوطه‌ور در افکار، مردد در تصمیم، متزلزل در عقیده</i>)<br />JC(PH([در]));
+<br /><br /><b>Y33</b><br />requires an adjective complement, which is a prepositional phrase, headed by [برای], (<i>آماده برای کار، مهیا برای خدمت</i>)<br />JC(PH([برای]));
+<br /><br /><b>Y34</b><br />requires an adjective complement, which is a prepositional phrase, headed by [بر] or [به], (<i>مشرف بر/به باغ، مبتنی بر/به حقیقت، متکی بر/به مالیات</i>)<br />JC(PH({[بر]|[به]}));
+<br /><br /><b>Y35</b><br />requires a verb specifier, which is a noun phrase,  (<i>مرد، رفت، خوابید</i>)<br />VS(NP);
+<br /><br /><b>Y36</b><br />requires a verb specifier, which is a noun phrase, and a verb complement, which is also a noun phrase, (<i>علی حسن را کشت،
+بچه غذا را خورد،</i>)<br />VS(NP)VC(NP);
+<br /><br /><b>Y37</b><br />requires a verb specifier, which is a noun phrase,  a verb complement, which is also a noun phrase and a verb complement which is a prepositional phrase headed by [به],  (<i>کتاب را به کتابخانه برگرداند، لباس را به مشتری فروخت،</i>)<br />VS(NP)VC(NP)VC(PH([به]));
+<br /><br /><b>Y38</b><br />requires a verb specifier, which is a noun phrase, and a verb complement, which is also a noun phrase and a verb complement which is a prepositional phrase headed by [از],  (<i>بچه را از مادر جدا کرد، گل را از شاخه چید،</i>)<br />VS(NP)VC(NP)VC(PH([از]));
+<br /><br /><b>Y39</b><br />requires a verb specifier, which is a noun phrase, and a verb complement, which is also a noun phrase and a verb complement which is a prepositional phrase headed by [روی],  (<i>لحاف را روی بچه کشید، گچ را روی دیوار مالید،</i>)<br />VS(NP)VC(NP)VC(PH([روی]));
+<br /><br /><b>Y40</b><br />requires a verb specifier, which is a noun phrase, and a verb complement which is a prepositional phrase headed by [از],  (<i>اشک از چشمش چکید، او از این محله رفت</i>)<br />VS(NP)VC(PH([از]));
+<br /><br /><b>Y41</b><br />requires a verb specifier, which is a noun phrase, and a verb complement which is a complementizer phrase,  (<i>وی گفت که...، ایشان افزودند که...، وی اشاره کرد که...</i>)<br />VS(NP)VC(CP);
+<br /><br /><b>Y42</b><br />requires a verb specifier, which is a noun phrase, and a verb complement which is a noun phrase, adjective phrase or prepositional phrase,  (<i>علی دانشجو است، مادرش بیمار است، او اهل همدان است،</i>)<br />VS(NP)VC({NP|JP|PP});
+<br /><br /><b>Y77</b><br />requires a verb specifier, which is a noun phrase and a verb complement which is a prepositional phrase headed by [با],  (<i>با او برخورد کرد، با دشمن مواجه شد</i>)<br />VS(NP)VC(PH([با]));
+<br /><br /><b>Y78</b><br />requires a verb specifier, which is a noun phrase, and a verb complement which is a prepositional phrase headed by [به],  (<i>او به خانه رسید
+او به خانه رفت</i>)<br />VS(NP)VC(PH([به]));
+<br /><br /><b>Y81</b><br />requires a verb specifier, which is a noun phrase, and a verb complement which is a prepositional phrase headed by [در],  (<i>او در کلاس شرکت کرد،
+او در مدرسه حضور یافت</i>)<br />VS(NP)VC(PH([در]));
+<br /><br /><b>Y82</b><br />requires a verb specifier, which is a noun phrase, and a verb complement which is a prepositional phrase headed by [درباره]or[درمورد]  (<i>او درمورد سیاست صحبت کرد،
+او درباره مذهب نوشت</i>)<br />VS(NP)VC(PH({[درباره]|[درمورد]}));
+<br /><br /><b>Y83</b><br />requires a verb specifier, which is a noun phrase, a verb complement, which is also a noun phrase and a verb complement which is a prepositional phrase headed by [در]or[زیر]or[کنار]or[داخل]or [بیرون] or [میان] or any spatial adposition (<i>علی کتاب را در کتابخانه گذاشت،او کتاب را کنار میز گذاشت</i>)<br />VS(NP)VC(NP)VC(PH({[در]|[زیر]|[میان]|[بیرون]|[کنار]|[داخل]}));
+<br /><br /><b>Y94</b><br />requires a verb specifier which is a noun phrase and  two verb complements which are either two noun phrases or one Noun Phrase in AJ1 and one Adjective phrase in AJ2 . (<i>او پسرش را نابغه می پندارد/می داند،
+آنها بچه را حسن نامیدند/صدامی‌زدند</i>)<br />VS(NP)VC(NP,AJ1)VC({NP|JP},AJ2);
+<br /><br /><b>Y95</b><br />Adjective requiring a complementizer phrase as complement. (<i>دولت موظف است زمینه را برای نواندیشی فکری دانشجویان مهیا کند</i>)<br />JC(CP);
+<br /><br /><b>Y96</b><br />Adverb requiring an adjective phrase and a complementizer phrase as complements  (<i>آنقدر زیبا که نمی توان تصورش را کرد.</i>)<br />AC(JP)AC(CP);
+<br /><br /><b>Y97</b><br />Adverb requiring a complementizer phrase as a complement.  (<i>پولش آنقدر نیست که بخشش کند.</i>)<br />AC(CP);
+<br /><br /><b>Y98</b><br />Requires a noun complement, which is a prepositional phrase.   (<i>اصرار بر / به / برای تسریع کار</i>)<br />NC(PP);
+<br /><br /><b>Y99</b><br />The complement in a prepositional phrase is a noun phrase.  (<i>او در خانه است.</i>)<br />PC(NP);
+<br /><br /><b>Y100</b><br />Requires a noun complement, which is a prepositional phrase headed by the prepositions [در باره]or[درمورد].   (<i>در مورد/درباره این موضوع تردید دارم</i>)<br />NC(PH({[در مورد]|[در باره]}));
+ 
+<br /><br /><b>Y101</b><br />The complement in a complementizer phrase is an Inflectional phrase.  (<i>چنانچه گزارش مجلس اینچنین باشد، جای بسی تاسف است.</i>)<br />CC(IP);
+<br /><br /><b>Y102</b><br />The complement in a prepositional phrase is a noun phrase or a complementizer phrase.  (<i>علی‌رغم هشدارهای پلیس/ علی‌رغم این که ...</i>)<br />PC({NP|CP});
+<br /><br /><b>Y103</b><br />The complement in an inflectional phrase is a verbal phrase (<i>او باید برود</i>)<br />IC(VP);
+<br /><br /><b>Y104</b><br />The complement in a prepositional phrase is a noun phrase or a prepositional phrase headed by [از].  (<i>پیش از او،
+بعد او، بعد از او،</i>)<br />PC({NP|PH([از])});
+<br /><br /><b>Y105</b><br />The complement in a prepositional phrase is a noun phrase or a personal pronoun.  (<i>آدمی چون تو، کشورهایی چون آمریکا</i>)<br />PC({NP|PPR});
+<br /><br /><b>Y106</b><br />Requires a noun complement, which is a prepositional phrase headed by [بر]or[به].   (<i>نظارت بر انتخابات
+نظارت  به قانون</i>)<br />NC(PH({[به]|[بر]}));
+<br /><br /><b>Y107</b><br />requires a verb specifier, which is a noun phrase, and a verb complement, which is an adjective phrase. (<i>او به نظر خسته می‌آمد، </i>)<br />VS(NP)VC(JP);
+<br /><br /><b>Y108</b><br />requires a verb specifier, which is a noun phrase, a verb complement, which is a verb complement headed by [به], and also a verb complement which is a complementizer phrase. (<i>او به ما دستور داد تا کار را شروع کنیم</i>)<br />VS(NP)VC(PH([به]))VC(CP);
+<br /><br /><b>Y110</b><br />requires a verb specifier, which is a noun phrase,  a verb complement, which is also a noun phrase and a verb complement which is a prepositional phrase headed by [با], (<i>من شما را با ایشان آشنا می کنم. او ما را با هم آشتی داد. </i>)<br />VS(NP)VC(NP)VC(PH([با]));
+<br /><br /><b>Y112</b><br />requires a verb specifier, which is a noun phrase, a verb complement, which is a NP, and also a verb complement which is a complementizer phrase.
+
+ (<i>او پسرش را آموزش می دهد تا روزی جانشینش شود</i>)<br />VS(NP)VC(NP)VC(CP);
+<br /><br /><b>Y113</b><br />requires a verb specifier, which is a noun phrase and a verb complement which is a prepositional phrase headed by [برای], 
+
+ (<i>برای خیریه اعانه جمع کردند </i>)<br />VS(NP)VC(PH([برای]));
+<br /><br /><b>Y117</b><br />requires a verb specifier, which is a noun phrase and a verb complement which is a prepositional phrase headed by [تو] or [داخل], (<i>با سر رفت توی بدبختی</i>)<br />VS(NP)VC(PH({[تو]|[داخل]}));
+<br /><br /><b>Y118</b><br />requires a verb specifier, which is a noun phrase and a verb complement which is a prepositional phrase headed by [روی], (<i>او روی قولش پاگذاشت، او روی فرش پاگذاشت</i>)<br />VS(NP)VC(PH([روی]));
+<br /><br /><b>Y119</b><br />requires a verb specifier, which is a noun phrase and a verb complement, which is a prepositional phrase headed by the preposition [بر] (<i>بر این مسئله پافشاری کرد،بر کار او نظارت کرد</i>)<br />VS(NP)VC(PH([بر]));
+<br /><br /><b>Y121</b><br />requires a verb specifier, which is a noun phrase, a verb complement, which is also a noun phrase and a verb complement which is a prepositional phrase headed by [در]or[توی] (<i>کتاب را توی کیفش چپاند.</i>)<br />VS(NP)VC(NP)VC(PH({[در]|[توی]}));
+<br /><br /><b>Y123</b><br />requires a verb specifier, which is a noun phrase and a verb complement which is a prepositional phrase headed by [برای] and a verb complement,which is a noun phrase. (<i>برای بچه ها غذا تهیه کردند.</i>)<br />VS(NP)VC(PH([برای]))VC(NP);
+<br /><br /><b>Y124</b><br />requires a verb specifier, which is a noun phrase, and a verb complement, which is also a noun phrase and a verb complement which is a prepositional phrase headed by [بر],  (<i>ظلم را بر ملت مسلط کردند.</i>)<br />VS(NP)VC(NP)VC(PH([بر]));
+<br /><br /><b>Y125</b><br />requires a verb specifier, which is a noun phrase, a verb complement, which is also a noun phrase and a verb complement which is a prepositional phrase headed by [در],  (<i>بچه را در دبستان ثبت نام کردند</i>)<br />VS(NP)VC(NP,AJ2)VC(PH([در]),AJ3);
+<br /><br /><b>Y126</b><br />requires a verb specifier which is a noun phrase and two verb complements which are a preposition phrase headed by [از] in AJ2 position and another preposition phrase headed by [به] in AJ3 position. (<i>از تهران به مشهد جابجا شدند.
+بچه از مدرسه به خانه برگشت.
+از اداره تا خانه را دوید.</i>)<br />VS(NP)VC(PH([از]),AJ2)VC(PH([به]),AJ3);
+<br /><br /><b>Y128</b><br />requires a verb specifier, which is a noun phrase, and a verb complement, which is an adjective phrase and a verb complement, which is a prepositional phrase headed by the preposition [با] (<i>با او بد رفتار کرد، با او خوب برخورد کرد</i>)<br />VS(NP)VC(JP)VC(PH([با]));
+<br /><br /><b>Y130</b><br />requires a verb specifier, which is a noun phrase,two verb complements, which are NP. (<i>جانش را فدای بچه‌هایش کرد.</i>)<br />VS(NP)VC(NP)VC(NP);
+<br /><br /><b>Y131</b><br />requires a verb specifier, which is a noun phrase, and a verb complement, which is also a noun phrase and a verb complement which is a prepositional phrase headed by [بین], (<i>این شایعه را بین مردم پخش کرد. غذا را بین آنها توزیع کرد.</i>)<br />VS(NP)VC(NP,AJ2)VC(PH([بین]),AJ3);
+<br /><br /><b>Y134</b><br />requires a verb specifier which is a noun phrase and two verb complements which are a preposition phrase headed by [از] in AJ2 position and another preposition phrase headed by [تا] in AJ3 position. (<i>گزینه های موجود از خیلی بد تا عالی متغییر است.از خانه تا مدرسه را دوید.</i>)<br />VS(NP)VC(PH([از]),AJ2)VC(PH([تا]),AJ3);
+<br /><br /></body>
+<html>

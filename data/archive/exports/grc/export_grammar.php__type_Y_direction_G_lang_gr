@@ -1,0 +1,17 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<title>UNLarium</title>
+<link rel="stylesheet" type="text/css" media="all" href="../../shared/default.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"  />
+<link rel="shortcut icon" href="../favicon.ico" type="image/x-icon" />
+</head>
+
+<body>
+<h1>Greek (Ancient) Subcategorization  Grammar for Natural Language Generation</h1>Version of September 11, 2026, 1:25 pm<br />Documentation available at <a href="http://www.unlarchive.org/wiki/index.php/Grammar" target="_blank">http://www.unlarchive.org/wiki/index.php/Grammar</a><br />Tagset available at <a href="../dictionary/export_tagset.php" target="_blank">Export UNDL Foundation tagset</a>.<br /><br /><b>Y0</b><br />AVALENT<br /><br /><b>Y1</b><br />NO SUBCATEGORIZATION FRAME: rules defined inside the entry in the dictionary<br /><br /><b>Y49</b><br />Nouns that need a complement in the genitive case. (<i>σύναξις λαοῦ</i>)<br />NC(NP,GNT);
+<br /><br /><b>Y50</b><br />Nouns that need a complement in the dative case. (<i>διάδοχος Κλεάνδρῳ</i>)<br />NC(NP,DAT);
+<br /><br /><b>Y51</b><br />Adjectives that require a complement in Genitive. (<i>πλήρης ἰχθύων</i>)<br />JC(NP,GNT);
+<br /><br /><b>Y52</b><br />Adjectives that require a complement in Dative. (<i>ταχύς ποσίν</i>)<br />JC(NP,DAT);
+<br /><br /></body>
+<html>

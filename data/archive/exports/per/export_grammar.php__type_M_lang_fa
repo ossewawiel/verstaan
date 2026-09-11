@@ -1,0 +1,300 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<title>UNLarium</title>
+<link rel="stylesheet" type="text/css" media="all" href="../../shared/default.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"  />
+<link rel="shortcut icon" href="../favicon.ico" type="image/x-icon" />
+</head>
+
+<body>
+<h1>Persian Inflectional  Grammar</h1>Version of September 11, 2026, 1:55 pm<br />Documentation available at <a href="http://www.unlarchive.org/wiki/index.php/Grammar" target="_blank">http://www.unlarchive.org/wiki/index.php/Grammar</a><br />Tagset available at <a href="../dictionary/export_tagset.php" target="_blank">Export UNDL Foundation tagset</a>.<br /><br /><b>M0</b><br />Invariant<br /><br /><b>M1</b><br />Irregular: rules are defined inside the entry in the dictionary<br /><br /><b>M2</b><br />to make plural by adding suffix "‌ها"; (<i>کاسه>کاسه‌ها; رادیو>رادیوها;</i>)<br />SNG:=0>"";<br />
+PLR:=0>"‌ها";<br />
+;<br /><br /><b>M3</b><br />to make plural by adding suffix "ان"; (<i> فرزند>فرزندان;</i>)<br />SNG:=0>"";<br />
+PLR:=0>"ان";<br />
+;<br /><br /><b>M4</b><br />to make plural by replacing ending "ه" with "گان". (<i> دیده>دیدگان;</i>)<br />SNG:=0>"";<br />
+PLR:="ه">"گان";<br />
+;<br /><br /><b>M5</b><br />to make plural by adding suffix "ات". (<i> اجتماع>اجتماعات;</i>)<br />SNG:=0>"";<br />
+PLR:=>"ات";<br />
+;<br /><br /><b>M6</b><br />To make irregular broken plural by adding one "ا" at the beginning and another "ا" before the last letter of the word; (<i>شخص>اشخاص; </i>)<br />SNG:=0>"";<br />
+PLR:="ا"<0,"ا"<[-1];<br />
+
+;<br /><br /><b>M10</b><br />to make irregular broken plural by adding "ا" on the left side of the second letter. (<i> مورد>موارد،</i>)<br />SNG:=0>"";<br />
+PLR:=[2]>"ا";<br />
+;<br /><br /><b>M11</b><br />to make irregular broken plural by adding "ا" on the left side of the second letter and omit the letter "ه" at the end (<i>منطقه>مناطق، </i>)<br />SNG:=0>"";<br />
+PLR:=[2]>"ا",1>"";<br />
+;<br /><br /><b>M12</b><br />to make plural by adding suffix "یان". (<i> آشنا>آشنایان</i>)<br />SNG:=0>"";<br />
+PLR:=0>"یان";<br />
+;<br /><br /><b>M15</b><br />To make past tense from infinitive.
+(past stem + past ending) (<i>رفتن:رفتم/رفتی/رفت/رفتیم/رفتید/رفتند
+خوردن:خوردم/خوردی/خورد/خوردیم/خوردید/خوردند</i>)<br />INF:=0>"";<br />
+PAS&PFV&1PS:="ن">"م";<br />
+PAS&PFV&2PS:="ن">"ی";<br />
+PAS&PFV&3PS:="ن">"";<br />
+PAS&PFV&1PP:="ن">"یم";<br />
+PAS&PFV&2PP:="ن">"ید";<br />
+PAS&PFV&3PP:="ن">"ند";<br />
+PAS&RES&1PS:="ن">"ه‌ام";<br />
+PAS&RES&2PS:="ن">"ه‌ای";<br />
+PAS&RES&3PS:="ن">"ه است";<br />
+PAS&RES&1PP:="ن">"ه‌ایم";<br />
+PAS&RES&2PP:="ن">"ه‌اید";<br />
+PAS&RES&3PP:="ن">"ه‌اند";<br />
+NPFV&PAS&1PS:= "می‌"<0,"ن">"م";<br />
+NPFV&PAS&2PS:="می‌"<0,"ن">"ی";<br />
+NPFV&PAS&3PS:="می‌"<0,"ن">"";<br />
+NPFV&PAS&1PP:="می‌"<0,"ن">"یم";<br />
+NPFV&PAS&2PP:="می‌"<0,"ن">"ید";<br />
+NPFV&PAS&3PP:="می‌"<0,"ن">"ند";<br />
+PTP:="ن">"ه‌";<br />
+;<br /><br /><b>M59</b><br />To make Present Continuative and Present Subjunctive  from Present IND 1PS by adding "می" / "ب" at the beginning and inflectional suffixes at the end (<i>روم> می‌روم> بروم> برو> نرو</i>)<br />1PS&PRS&IND:=0>"";<br />
+PRS&CTN&1PS:="می‌"<0;<br />
+PRS&CTN&2PS:="می‌"<0,"م">"ی";<br />
+PRS&CTN&3PS:="می‌"<0,"م">"د";<br />
+PRS&CTN&1PP:="می‌"<0,"م">"یم";<br />
+PRS&CTN&2PP:="می‌"<0,"م">"ید";<br />
+PRS&CTN&3PP:="می‌"<0,"م">"ند";<br />
+PRS&SUB&1PS:="ب"<0;<br />
+PRS&SUB&2PS:="ب"<0,"م">"ی";<br />
+PRS&SUB&3PS:="ب"<0,"م">"د";<br />
+PRS&SUB&1PP:="ب"<0,"م">"یم";<br />
+PRS&SUB&2PP:="ب"<0,"م">"ید";<br />
+PRS&SUB&3PP:="ب"<0,"م">"ند";<br />
+IMP&2PS:="ب"<0,"م">"";<br />
+IMP&2PP:="ب"<0,"م">"ید";<br />
+PHB&2PS:="ن"<0,"م">"";<br />
+PHB&2PP:="ن"<0,"م">"ید";<br />
+;<br /><br /><b>M60</b><br />to make plural form of multiword expressions by adding suffix "های". (<i>موش‌های(صحرایی), خرس‌های(قطبی)</i>)<br />SNG:=0>"";<br />
+PLR:=>"‌های";<br />
+;<br /><br /><b>M70</b><br />to make plural by adding suffix "ین". (<i>معلم>معلمین</i>)<br />SNG:=0>"";<br />
+PLR:=0>"ین";<br />
+;<br /><br /><b>M71</b><br />to add و on the left side of the first letter. (<i>ساحل>سواحل
+عامل>عوامل</i>)<br />SNG:=0>"";<br />
+PLR:=[1]>"و";<br />
+;<br /><br /><b>M73</b><br />to make plural by replacing the final "ه" with "ات". (<i>محاسبه>محاسبات، آلت>آلات</i>)<br />SNG:=0>"";<br />
+PLR:=1>"ات";<br />
+;<br /><br /><b>M74</b><br />to add و on the left side of the second letter. (<i>فصل>فصول
+قلب>قلوب
+سطح>سطوح</i>)<br />SNG:=0>"";<br />
+PLR:=[2]>"و";<br />
+;<br /><br /><b>M76</b><br />to add ی at the end of the singular form and add های at the end of the plural form. (<i>،کلیسای جامع،
+بنای یادبود</i>)<br />SNG:=0>"ی";<br />
+PLR:=0>"های";<br />
+
+;<br /><br /><b>M86</b><br />To delete "ن" at the end of infinitive form and add conjugational suffixes. (<i>هستم>هستی>است>هستیم>هستید>هستند</i>)<br />INF:=0>"";<br />
+PRS&PFV&1PS:="ن">"م";<br />
+PRS&PFV&2PS:="ن">"ی";<br />
+PRS&PFV&3PS:="است";<br />
+PRS&PFV&1PP:="ن">"یم";<br />
+PRS&PFV&2PP:="ن">"ید";<br />
+PRS&PFV&3PP:="ن">"ند";<br />
+PRS&SUB&1PS:="باشم";<br />
+PRS&SUB&2PS:="باشی";<br />
+PRS&SUB&3PS:="باشد";<br />
+PRS&SUB&1PP:="باشیم";<br />
+PRS&SUB&2PP:="باشید";<br />
+PRS&SUB&3PP:="باشند";<br />
+IMP&2PS:="باش";<br />
+IMP&2PP:="باشید";<br />
+PHB&2PS:="نباش";<br />
+PHB&2PP:="نباشید";<br />
+;<br /><br /><b>M90</b><br />To make Present Continuative and Present Subjunctive for verbs beginning with "ا". (<i>بیفتم>بیفتی>بیفت</i>)<br />1PS&PRS&IND:=0>"";<br />
+PRS&CTN&1PS:="می‌"<0;<br />
+PRS&CTN&2PS:="می‌"<0,"م">"ی";<br />
+PRS&CTN&3PS:="می‌"<0,"م">"د";<br />
+PRS&CTN&1PP:="می‌"<0,"م">"یم";<br />
+PRS&CTN&2PP:="می‌"<0,"م">"ید";<br />
+PRS&CTN&3PP:="می‌"<0,"م">"ند";<br />
+PRS&SUB&1PS:="ب"<0,[2]:"ی";<br />
+PRS&SUB&2PS:="ب"<0,"م">"ی",[2]:"ی";<br />
+PRS&SUB&3PS:="ب"<0,"م">"د",[2]:"ی";<br />
+PRS&SUB&1PP:="ب"<0,"م">"یم",[2]:"ی";<br />
+PRS&SUB&2PP:="ب"<0,"م">"ید",[2]:"ی";<br />
+PRS&SUB&3PP:="ب"<0,"م">"ند",[2]:"ی";<br />
+IMP&2PS:="ب"<0,"م">"",[2]:"ی";<br />
+IMP&2PP:="ب"<0,"م">"ید",[2]:"ی";<br />
+PHB&2PS:="ن"<0,"م">"",[2]:"ی";<br />
+PHB&2PP:="ن"<0,"م">"ید",[2]:"ی";<br />
+;<br /><br /><b>M91</b><br />To make Present Continuative and Present Subjunctive for verbs beginning with "آ". (<i>بیاورم>بیاوری>نیاور>بیاور</i>)<br />1PS&PRS&IND:=0>"";<br />
+PRS&CTN&1PS:="می‌"<0;<br />
+PRS&CTN&2PS:="می‌"<0,"م">"ی";<br />
+PRS&CTN&3PS:="می‌"<0,"م">"د";<br />
+PRS&CTN&1PP:="می‌"<0,"م">"یم";<br />
+PRS&CTN&2PP:="می‌"<0,"م">"ید";<br />
+PRS&CTN&3PP:="می‌"<0,"م">"ند";<br />
+PRS&SUB&1PS:="بی"<0,[3]:"ا";<br />
+PRS&SUB&2PS:="بی"<0,"م">"ی",[3]:"ا";<br />
+PRS&SUB&3PS:="بی"<0,"م">"د",[3]:"ا";<br />
+PRS&SUB&1PP:="بی"<0,"م">"یم",[3]:"ا";<br />
+PRS&SUB&2PP:="بی"<0,"م">"ید",[3]:"ا";<br />
+PRS&SUB&3PP:="بی"<0,"م">"ند",[3]:"ا";<br />
+IMP&2PS:="بی"<0,"م">"",[3]:"ا";<br />
+IMP&2PP:="بی"<0,"م">"ید",[3]:"ا";<br />
+PHB&2PS:="نی"<0,"م">"",[3]:"ا";<br />
+PHB&2PP:="نی"<0,"م">"ید",[3]:"ا";<br />
+;<br /><br /><b>M92</b><br />to add inflectional endings (<i>خواهم>خواهی>خواهد
+،شوم>شوی>شود
+گردم>گردی>گردد
+</i>)<br />INF:=0>"";<br />
+PRS&PFV&1PS:=0>"";<br />
+PRS&PFV&2PS:="م">"ی";<br />
+PRS&PFV&3PS:="م">"د";<br />
+PRS&PFV&1PP:="م">"یم";<br />
+PRS&PFV&2PP:="م">"ید";<br />
+PRS&PFV&3PP:="م">"ند";<br />
+PRS&CTN&1PS:="می‌"<0;<br />
+PRS&CTN&2PS:="می‌"<0,"م">"ی";<br />
+PRS&CTN&3PS:="می‌"<0,"م">"د";<br />
+PRS&CTN&1PP:="می‌"<0,"م">"یم";<br />
+PRS&CTN&2PP:="می‌"<0,"م">"ید";<br />
+PRS&CTN&3PP:="می‌"<0,"م">"ند";<br />
+IMP&2PS:=""<0,"م">"";<br />
+IMP&2PP:=""<0,"م">"ید";<br />
+PHB&2PS:="ن"<0,"م">"";<br />
+PHB&2PP:="ن"<0,"م">"ید";<br />
+
+;<br /><br /><b>M93</b><br />to add inflectional endings (<i>شدم>شدی>شد
+گشتم>گشتی>گشت</i>)<br />INF:=0>"";<br />
+PAS&PFV&1PS:="ن">"م";<br />
+PAS&PFV&2PS:="ن">"ی";<br />
+PAS&PFV&3PS:="ن">"";<br />
+PAS&PFV&1PP:="ن">"یم";<br />
+PAS&PFV&2PP:="ن">"ید";<br />
+PAS&PFV&3PP:="ن">"ند";<br />
+PAS&RES&1PS:="ن">"ه‌ام";<br />
+PAS&RES&2PS:="ن">"ه‌ای";<br />
+PAS&RES&3PS:="ن">"ه است";<br />
+PAS&RES&1PP:="ن">"ه‌ایم";<br />
+PAS&RES&2PP:="ن">"ه‌اید";<br />
+PAS&RES&3PP:="ن">"ه‌اند";<br />
+NPFV&PAS&1PS:= "می‌"<0,"ن">"م";<br />
+NPFV&PAS&2PS:="می‌"<0,"ن">"ی";<br />
+NPFV&PAS&3PS:="می‌"<0,"ن">"";<br />
+NPFV&PAS&1PP:="می‌"<0,"ن">"یم";<br />
+NPFV&PAS&2PP:="می‌"<0,"ن">"ید";<br />
+NPFV&PAS&3PP:="می‌"<0,"ن">"ند";<br />
+PTP:="ن">"ه‌";<br />
+;<br /><br /><b>M109</b><br />to delete the final "ه" and to add "و" to left side of the first character. (<i>ظابطه،طایفه</i>)<br />SNG:=0>"";<br />
+PLR:=[1]>"و",1>"";<br />
+;<br /><br /><b>M114</b><br />To make Present Continuative and Present Subjunctive from Present IND 1PS "دارم". (<i>از او انتظار دارم .</i>)<br />1PS&PRS&IND:=0>"";<br />
+ PRS&CTN&1PS:=0>"";<br />
+ PRS&CTN&2PS:="م">"ی";<br />
+ PRS&CTN&3PS:="م">"د";<br />
+ PRS&CTN&1PP:="م">"یم";<br />
+ PRS&CTN&2PP:="م">"ید";<br />
+ PRS&CTN&3PP:="م">"ند";<br />
+;<br /><br /><b>M115</b><br />To make Present Continuative and Present Subjunctive from Present IND 1PS of prefixal verbs like "بردارم" "بازگردم" etc. (<i>بر+دارم
+VC([بر],P,M0,IBEF);
+باز+گردم 
+VC([باز],P,M0,IBEF);</i>)<br />1PS&PRS&IND:=0>"";<br />
+PRS&CTN&1PS:="می‌"<0;<br />
+PRS&CTN&2PS:="می‌"<0,"م">"ی";<br />
+PRS&CTN&3PS:="می‌"<0,"م">"د";<br />
+PRS&CTN&1PP:="می‌"<0,"م">"یم";<br />
+PRS&CTN&2PP:="می‌"<0,"م">"ید";<br />
+PRS&CTN&3PP:="می‌"<0,"م">"ند";<br />
+PRS&SUB&1PS:= 0>"";<br />
+PRS&SUB&2PS:="م">"ی";<br />
+PRS&SUB&3PS:="م">"د";<br />
+PRS&SUB&1PP:="م">"یم";<br />
+PRS&SUB&2PP:="م">"ید";<br />
+PRS&SUB&3PP:="م">"ند";<br />
+IMP&2PS:="م">"";<br />
+IMP&2PP:="م">"ید";<br />
+PHB&2PS:="ن"<0,"م">"";<br />
+PHB&2PP:="ن"<0,"م">"ید";<br />
+;<br /><br /><b>M116</b><br />To make Present tenses from Copula "استن". (<i>امیدوارم، خوبی، قبول است</i>)<br />INF:=0>"";<br />
+PRS&PFV&1PS:="م";<br />
+PRS&PFV&2PS:="ی";<br />
+PRS&PFV&3PS:= "ن">"";<br />
+PRS&PFV&1PP:="یم";<br />
+PRS&PFV&2PP:="ید";<br />
+PRS&PFV&3PP:="ند";<br />
+PRS&SUB&1PS:="باشم ";<br />
+PRS&SUB&2PS:="باشی ";<br />
+PRS&SUB&3PS:="باشد ";<br />
+PRS&SUB&1PP:="باشیم ";<br />
+PRS&SUB&2PP:="باشید ";<br />
+PRS&SUB&3PP:="باشند ";<br />
+IMP&2PS:="باش ";<br />
+IMP&2PP:="باشید ";<br />
+PHB&2PS:="نباش ";<br />
+PHB&2PP:="نباشید ";<br />
+;<br /><br /><b>M122</b><br />To delete "ن" at the end of infinitive form and add conjugational suffixes. (past stem + past ending) (<i>،ترک برداشتن
+خدشه برداشتن</i>)<br />INF:=0>"";<br />
+PAS&PFV&1PS:="ن">"م";<br />
+PAS&PFV&2PS:="ن">"ی";<br />
+PAS&PFV&3PS:="ن">"";<br />
+PAS&PFV&1PP:="ن">"یم";<br />
+PAS&PFV&2PP:="ن">"ید";<br />
+PAS&PFV&3PP:="ن">"ند";<br />
+PAS&RES&1PS:="ن">"ه‌ام";<br />
+PAS&RES&2PS:="ن">"ه‌ای";<br />
+PAS&RES&3PS:="ن">"ه است";<br />
+PAS&RES&1PP:="ن">"ه‌ایم";<br />
+PAS&RES&2PP:="ن">"ه‌اید";<br />
+PAS&RES&3PP:="ن">"ه‌اند";<br />
+NPFV&PAS&1PS:= "می‌"<[3],"ن">"م";<br />
+NPFV&PAS&2PS:="می‌"<[3],"ن">"ی";<br />
+NPFV&PAS&3PS:="می‌"<[3],"ن">"";<br />
+NPFV&PAS&1PP:="می‌"<[3],"ن">"یم";<br />
+NPFV&PAS&2PP:="می‌"<[3],"ن">"ید";<br />
+NPFV&PAS&3PP:="می‌"<[3],"ن">"ند";<br />
+PTP:="ن">"ه‌";<br />
+;<br /><br /><b>M132</b><br />to make present forms for "شوم" or "کنم" (<i>غایب شو، غایب شوید،دعوت کن،دعوت کنید</i>)<br />1PS&PRS&IND:=0>"";<br />
+PRS&CTN&1PS:="می‌"<0;<br />
+PRS&CTN&2PS:="می‌"<0,"م">"ی";<br />
+PRS&CTN&3PS:="می‌"<0,"م">"د";<br />
+PRS&CTN&1PP:="می‌"<0,"م">"یم";<br />
+PRS&CTN&2PP:="می‌"<0,"م">"ید";<br />
+PRS&CTN&3PP:="می‌"<0,"م">"ند";<br />
+PRS&SUB&1PS:="ب"<0;<br />
+PRS&SUB&2PS:="ب"<0,"م">"ی";<br />
+PRS&SUB&3PS:="ب"<0,"م">"د";<br />
+PRS&SUB&1PP:="ب"<0,"م">"یم";<br />
+PRS&SUB&2PP:="ب"<0,"م">"ید";<br />
+PRS&SUB&3PP:="ب"<0,"م">"ند";<br />
+IMP&2PS:="ب"<0,"م">"";<br />
+IMP&2PP:="ب"<0,"م">"ید";<br />
+PHB&2PS:="ن"<0,"م">"";<br />
+PHB&2PP:="ن"<0,"م">"ید";<br />
+PRS&SUB&1PS&ALT:=""<0;<br />
+PRS&SUB&2PS&ALT:=""<0,"م">"ی";<br />
+PRS&SUB&3PS&ALT:=""<0,"م">"د";<br />
+PRS&SUB&1PP&ALT:=""<0,"م">"یم";<br />
+PRS&SUB&2PP&ALT:=""<0,"م">"ید";<br />
+PRS&SUB&3PP&ALT:=""<0,"م">"ند";<br />
+IMP&2PS&ALT:=""<0,"م">"";<br />
+IMP&2PP&ALT:=""<0,"م">"ید";<br />
+;<br /><br /><b>M133</b><br />to make present forms of "". (<i>کنم</i>)<br />1PS&PRS&IND:=0>"";<br />
+PRS&CTN&1PS:="می‌"<0;<br />
+PRS&CTN&2PS:="می‌"<0,"م">"ی";<br />
+PRS&CTN&3PS:="می‌"<0,"م">"د";<br />
+PRS&CTN&1PP:="می‌"<0,"م">"یم";<br />
+PRS&CTN&2PP:="می‌"<0,"م">"ید";<br />
+PRS&CTN&3PP:="می‌"<0,"م">"ند";<br />
+PRS&SUB&1PS:="ب"<0;<br />
+PRS&SUB&2PS:="ب"<0,"م">"ی";<br />
+PRS&SUB&3PS:="ب"<0,"م">"د";<br />
+PRS&SUB&1PP:="ب"<0,"م">"یم";<br />
+PRS&SUB&2PP:="ب"<0,"م">"ید";<br />
+PRS&SUB&3PP:="ب"<0,"م">"ند";<br />
+IMP&2PS:="ب"<0,"م">"";<br />
+IMP&2PP:="ب"<0,"م">"ید";<br />
+PHB&2PS:="ن"<0,"م">"";<br />
+PHB&2PP:="ن"<0,"م">"ید";<br />
+PRS&SUB&1PS&ALT:=""<0;<br />
+PRS&SUB&2PS&ALT:=""<0,"م">"ی";<br />
+PRS&SUB&3PS&ALT:=""<0,"م">"د";<br />
+PRS&SUB&1PP&ALT:=""<0,"م">"یم";<br />
+PRS&SUB&2PP&ALT:=""<0,"م">"ید";<br />
+PRS&SUB&3PP&ALT:=""<0,"م">"ند";<br />
+IMP&2PS&ALT:=""<0,"م">"";<br />
+IMP&2PP&ALT:=""<0,"م">"ید";<br />
+;<br /><br /><b>M135</b><br />add "‌ها" or "ان" in the end of the word; (<i>زن>زنان،زنها
+</i>)<br />SNG:=0>"";<br />
+PLR:=0>"‌ها";<br />
+ALT&PLR:=0>"ان";<br />
+;<br /><br /></body>
+<html>

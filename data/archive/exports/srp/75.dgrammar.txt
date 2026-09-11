@@ -1,0 +1,13 @@
+﻿; RuleSet:(MX)srp_unl_dgrammar
+; User:Sergiy Prots (prots)
+; Date:28.32.2013 at 11:32:13
+
+; "srp_unl_dgrammar"
+; MX
+(TEMP,^DIGIT,^W)(^BLK,^PUT,^STAIL)=0;
+(^BLK,^PUT,^SHEAD)(TEMP,^W)=0;
+(TEMP)(PUT)(TEMP)=0;
+(V)(BLK)(V,^INF)=0;
+#(P,att=@for)(BLK)(N,^ACC)=0;
+(P,rel=tim)(BLK)(N,LOC)=0;
+(P,att=@to)(BLK)(N,^LCT)=0;

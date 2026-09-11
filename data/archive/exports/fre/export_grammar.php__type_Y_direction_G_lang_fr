@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<title>UNLarium</title>
+<link rel="stylesheet" type="text/css" media="all" href="../../shared/default.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"  />
+<link rel="shortcut icon" href="../favicon.ico" type="image/x-icon" />
+</head>
+
+<body>
+<h1>French Subcategorization  Grammar for Natural Language Generation</h1>Version of September 11, 2026, 1:17 pm<br />Documentation available at <a href="http://www.unlarchive.org/wiki/index.php/Grammar" target="_blank">http://www.unlarchive.org/wiki/index.php/Grammar</a><br />Tagset available at <a href="../dictionary/export_tagset.php" target="_blank">Export UNDL Foundation tagset</a>.<br /><br /><b>Y0</b><br />AVALENT<br /><br /><b>Y1</b><br />NO SUBCATEGORIZATION FRAME: rules defined inside the entry in the dictionary<br /><br /><b>Y37</b><br />Verbes transitifs indirects dont COI est introduit par la préposition "de" (<i>abuser</i>)<br />VS(NP)VC(PH([de])); <br /><br /><b>Y49</b><br />Verbes intransitifs (<i>mourir</i>)<br />VS(NP);<br /><br /><b>Y50</b><br />Verbes transitifs directs (<i>prendre, manger, boire</i>)<br />VS(NP)VC(NP);<br /><br /><b>Y52</b><br />Verbes ditransitifs dont COI est une phrase introduite par la préposition "à" (<i>amener</i>)<br />VS(NP)VC(NP)VC(PH([à]));<br /><br /><b>Y54</b><br />Verbes semi-auxiliaires (<i>pouvoir</i>)<br />VS(NP)VC(VP);<br /><br /><b>Y62</b><br />Verbes ditransitifs dont COI est introduit par la préposition "à" (<i>mettre</i>)<br />VS(NP)VC(NP)VC(PH([à]));<br /><br /><b>Y152</b><br />Noms propres demandant un article défini (<i>la France, la Pologne, la Roumanie</i>)<br />NS(ART);<br /><br /><b>Y159</b><br />Verbes transitifs indirects dont COI est introduit par la préposition "sur" (<i>agir sur</i>)<br />VS(NP)VC(PH([sur]));<br /><br /><b>Y171</b><br />Verbes transitifs indirects dont COI est une phrase introduite par la préposition "à" et dont COD est introduit par la conjonction "que" (<i>informer à qqn que</i>)<br />VS(NP)VC(PH([à]))VC(CH([que]));<br /><br /><b>Y172</b><br />Verbes transitifs directs dont COD est une phrase introduite par la conjonction "que" (<i>sembler que</i>)<br />VS(NP)VC(CH([que]));<br /><br /><b>Y173</b><br />Verbes transitifs indirects dont COI est une phrase introduit par les prépositions "de" (<i>demander a qqn de  fqqch</i>)<br />VS(NP)VC(PH([à]))VC(PH([de]));<br /><br /><b>Y175</b><br />Verbes transitifs directs dont COD est une phrase (<i>faire qqn faire qqch</i>)<br />VS(NP)VC(NP)VC(CH([que]));<br /><br /><b>Y177</b><br />Verbes transitifs directs avec deux COD (<i>appeler qn qch</i>)<br />VS(NP)VC(NP)VC(NP);<br /><br /><b>Y178</b><br />Verbes intransitifs pronominaux (<i>se laver</i>)<br />VS(NP)VC(PPR);<br /><br /><b>Y183</b><br />Verbes ditransitifs dont COI est introduit par la préposition "de" (<i>exiger</i>)<br />VS(NP)VC(NP)VC(PH([de]));<br /><br /><b>Y245</b><br />Adjectifs dont le complément est introduit par la préposition "à" (<i>agréable</i>)<br />JC(PH([à]));<br /><br /><b>Y246</b><br />Adjectifs dont le complément est introduit par la préposition "de" (<i>plein, fier</i>)<br />JC(PH([de]));<br /><br /><b>Y247</b><br />Adjectifs dont le complément est introduit par la préposition "en" (<i>riche</i>)<br />JC(PH([en]));<br /><br /><b>Y248</b><br />Adjectifs dont le complément est introduit par la préposition "par" (<i>célèbre</i>)<br />JC(PH([par]));<br /><br /><b>Y249</b><br />Adjectifs dont le complément est introduit par la préposition "pour" (<i>renommé</i>)<br />JC(PH([pour]));<br /><br /><b>Y254</b><br />Verbes pronominaux dont le COI est introduit par la préposition "sur" (<i>se concentrer sur</i>)<br />VS(NP)VC(FPR)VC(PH([sur]));<br /><br /><b>Y255</b><br />Noms dont le complément est introduit par la préposition "de" (<i>prise</i>)<br />NC(PH([de]));
+<br /><br /><b>Y256</b><br />Verbes pronominaux dont le COI est introduit par la préposition "de" (<i>se plaindre de</i>)<br />VS(NP)VC(FPR)VC(PH([de]));<br /><br /><b>Y263</b><br />Verbes pronominaux dont le COI est introduit par la préposition "à" (<i>s'abaisser à</i>)<br />VS(NP)VC(FPR)VC(PH([à]));
+<br /><br /><b>Y267</b><br />Noms dont le complément est introduit par la préposition "à" (<i>atteinte</i>)<br />NC(PH([à]));
+<br /><br /><b>Y271</b><br />Adjectifs dont le complément est introduit par la préposition "contre" (<i>furieux, fâché, prévenu</i>)<br />JC(PH([contre]));
+<br /><br /><b>Y272</b><br />Verbes ditransitifs dont COI est introduit par la préposition "avec" (<i>aboucher</i>)<br />VS(NP)VC(NP)VC(PH([avec]));
+<br /><br /><b>Y273</b><br />Verbes ditransitifs dont COI est introduit par les prépositions "sur", "vers" ou "autour" (<i>axer</i>)<br />VS(NP)VC(NP)VC(PH({[sur]|[vers]|[autour]}));
+<br /><br /><b>Y274</b><br />Verbes ditransitifs dont COI est introduit par la préposition "contre" (<i>blottir</i>)<br />VS(NP)VC(NP)VC(PH([contre]));
+<br /><br /><b>Y275</b><br />Verbes ditransitifs dont COI est introduit
+ par la préposition "en" (<i>consister</i>)<br />VS(NP)VC(PH([en]));
+<br /><br /><b>Y276</b><br />Verbes ditransitifs dont COI est introduit
+ par la préposition "avec" (<i>copiner</i>)<br />VS(NP)VC(PH([avec]));
+<br /><br /><b>Y277</b><br />Verbes ditransitifs dont COI est introduit
+ par la préposition "pour" (<i>galérer</i>)<br />VS(NP)VC(PH([pour]));
+<br /><br /><b>Y278</b><br />Verbes pronominaux dont le COI est introduit par la préposition "pour" (<i>se débrouiller pour</i>)<br />VS(NP)VC(FPR)VC(PH([pour]));
+<br /><br /><b>Y279</b><br />Verbes pronominaux dont le COI est introduit par la préposition "dans" (<i>s'immiscer dans</i>)<br />VS(NP)VC(FPR)VC(PH([dans]));
+<br /><br /><b>Y280</b><br />Verbes pronominaux dont le COI est introduit par la préposition "contre" (<i>se liguer contre</i>)<br />VS(NP)VC(FPR)VC(PH([contre]));
+<br /><br /><b>Y282</b><br />Verbes ditransitifs dont COI est introduit par la préposition "dans" (<i>enfourner, enclore, embringuer</i>)<br />VS(NP)VC(NP)VC(PH([dans]));
+<br /><br /><b>Y283</b><br />Verbes ditransitifs dont COI est introduit par la préposition "en" (<i>muer</i>)<br />VS(NP)VC(NP)VC(PH([en]));
+<br /><br /><b>Y284</b><br />Verbes ditransitifs dont COI est introduit
+ par la préposition "dans" (<i>fourrager</i>)<br />VS(NP)VC(PH([dans]));
+<br /><br /><b>Y285</b><br />Adverbs dont le complément est introduit par la préposition "à" (<i>parallèlement</i>)<br />NC(PH([à]));
+<br /><br /><b>Y286</b><br />Noms avec deux compléments: un introduit par la préposition "de" et l'autre par la préposition "à" (<i>abouchement</i>)<br />NC(PH([de]))NC(PH([à]));
+<br /><br /></body>
+<html>

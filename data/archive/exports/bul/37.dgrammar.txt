@@ -1,0 +1,19 @@
+﻿(PPR)(BLK)(N)=0; "аз" преди N
+(QUA,att=@multal)(" ")(J,ADJ,PLR)=255;
+(SAV)(BLK)(J,ADJ,PLR)=0;
+(NPR)(BLK)(POD)=0;
+(POD,MCL)(BLK)(N,FEM)=0;
+(POD,DEF)(ART)=0;
+(SPR,DEF)(ART)=0;
+(ART)(" ")(V)=0;
+(V)(BLK)(ART)=0;
+(ART)(BLK)("се")=0;
+(ART)(BLK)(R,ACC)=0;
+(R,ACC)(BLK)(R,ACC)=0;
+(R,NOM)(BLK)(V)=100;
+(R,ACC)(BLK)("се")=0;
+(R,NPR)(BLK)(V)=50;
+(V)(BLK)(DEM)=0;
+(D)(BLK)(N)=50;
+(D)(BLK)(D)=50;
+(QUA)(" ")(N)=255;

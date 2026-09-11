@@ -1,0 +1,9 @@
+; RuleSet:(TD)d rule
+; User:Muhammad Zulhelmy Bin Mohd Rosman (helmy67)
+; Date:24.24.2013 at 01:24:08
+
+; "d rule"
+; TD
+/(agt|obj|aoj)/(;D)=0; (determiners cannot be arguments of relations, because they are always attributes
+pos(N;D)=0; determiner cannot occur after noun
+#pos(N;NOM)=0; determiner cannot occur after noun

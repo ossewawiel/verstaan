@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<title>UNLarium</title>
+<link rel="stylesheet" type="text/css" media="all" href="../../shared/default.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"  />
+<link rel="shortcut icon" href="../favicon.ico" type="image/x-icon" />
+</head>
+
+<body>
+<h1>Dutch Inflectional  Grammar for Natural Language Generation</h1>Version of September 11, 2026, 1:08 pm<br />Documentation available at <a href="http://www.unlarchive.org/wiki/index.php/Grammar" target="_blank">http://www.unlarchive.org/wiki/index.php/Grammar</a><br />Tagset available at <a href="../dictionary/export_tagset.php" target="_blank">Export UNDL Foundation tagset</a>.<br /><br />(%x,M2):=(%x,-M2,+FLX(SNG:=0>"";
+PLR:=0>"en";
+));<br /><br />(%x,M3):=(%x,-M3,+FLX(SNG:=0>"";
+PLR:=0>"n";
+));<br /><br />(%x,M4):=(%x,-M4,+FLX(SNG:=0>"";
+PLR:=0>"s";
+));<br /><br />(%x,M5):=(%x,-M5,+FLX(SNG:=0>"";
+PLR:="s">"zen";
+));<br /><br />(%x,M6):=(%x,-M6,+FLX(SNG:=0>"";
+PLR:="f">"ven";
+));<br /><br />(%x,M7):=(%x,-M7,+FLX(SNG:=0>"";
+PLR:=0>"s";
+PLR&ALT:=0>"n";
+));<br /><br />(%x,M8):=(%x,-M8,+FLX(SNG:=0>"";
+PLR:=0>"'s";
+));<br /><br />(%x,M9):=(%x,-M9,+FLX(SNG:=0>"";
+PLR:=0>"ën";
+));<br /><br />(%x,M10):=(%x,-M10,+FLX(SNG:=0>"";
+PLR:=0>"s";
+PLR&ALT:=0>"en";
+));<br /><br />(%x,M11):=(%x,-M11,+FLX(SNG:=0>"";
+PLR:=0>"eren";
+));<br /><br /></body>
+<html>

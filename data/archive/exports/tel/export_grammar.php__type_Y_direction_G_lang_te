@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<title>UNLarium</title>
+<link rel="stylesheet" type="text/css" media="all" href="../../shared/default.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"  />
+<link rel="shortcut icon" href="../favicon.ico" type="image/x-icon" />
+</head>
+
+<body>
+<h1>Telugu Subcategorization  Grammar for Natural Language Generation</h1>Version of September 11, 2026, 2:20 pm<br />Documentation available at <a href="http://www.unlarchive.org/wiki/index.php/Grammar" target="_blank">http://www.unlarchive.org/wiki/index.php/Grammar</a><br />Tagset available at <a href="../dictionary/export_tagset.php" target="_blank">Export UNDL Foundation tagset</a>.<br /><br /><b>Y0</b><br />AVALENT<br /><br /><b>Y1</b><br />NO SUBCATEGORIZATION FRAME: rules defined inside the entry in the dictionary<br /><br /><b>Y78</b><br />intransitive verb (<i>వచ్చు, ఉండు, పోవు</i>)<br />VS(NP,NOM);
+<br /><br /><b>Y79</b><br />direct transitive verb (<i>గుర్తించు, పూర్తిచేయు, వప్పుకొను</i>)<br />VS(NP,NOM)VC(NP,ACC);
+<br /><br /><b>Y80</b><br />ditransitive verb that takes two direct objects (<i>అనుమతించు, పిలువు</i>)<br />VS(NP,NOM)VC(NP,DAT)VC(NP,ACC);
+<br /><br /><b>Y82</b><br />సకర్మక క్రియ ద్యితీయావిభక్తితో (<i>కొట్టు, నెట్టు, తిట్టు</i>)<br />VS(NP,NOM)VC(NP,DAT);
+<br /><br /><b>Y83</b><br />నిష్పాదకాలు క్రియకి కర్తగా వ్యవహరించినపుడు (<i>జరుగు, మొదలు</i>)<br />VS(NP,NOM)VC(NP,DAT)VC(NP,LOC);
+<br /><br /><b>Y84</b><br />తృతీయావిభక్తితో (<i>రాయి, రాయు, కొయ్యి</i>)<br />VS(NP,NOM)VC(NP,INS);
+<br /><br /><b>Y85</b><br />సప్తమీవిభక్తితో (<i>పో, రావచ్చు</i>)<br />VS(NP,NOM)VC(NP,LOC);
+<br /><br /><b>Y88</b><br />ప్రధమా, తృతీయా విభక్తులతో నిష్పాదకాలు (<i>మొదలు, జరుగు</i>)<br />VS(NP,NOM)VC(NP,ABL)VC(NP,LOC);
+<br /><br /><b>Y89</b><br />ప్రధమా, చతుర్ధీ విభక్తులతో నిష్పాదకాలు (<i>జరుగు, మొదలు</i>)<br />VS(NP,NOM)VC(NP,ACC)VC(NP,INS);
+<br /><br /><b>Y90</b><br />ప్రధమా, పంచమీ విభక్తులతో నిష్పాదకాలు (<i>జరుగు, మొదలు</i>)<br />VS(NP,NOM)VC(NP,INS)VC(NP,DAT);
+<br /><br /><b>Y91</b><br />ప్రథమా, స్థల వాచకాలతో నిష్పాదకాలు (<i>జరుగు, మొదలు</i>)<br />VS(NP,NOM)VC(NP,NOM)VC(NP,INS);
+<br /><br /></body>
+<html>

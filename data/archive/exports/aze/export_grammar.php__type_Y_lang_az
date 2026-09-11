@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<title>UNLarium</title>
+<link rel="stylesheet" type="text/css" media="all" href="../../shared/default.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"  />
+<link rel="shortcut icon" href="../favicon.ico" type="image/x-icon" />
+</head>
+
+<body>
+<h1>Azerbaijani Subcategorization  Grammar</h1>Version of September 11, 2026, 12:47 pm<br />Documentation available at <a href="http://www.unlarchive.org/wiki/index.php/Grammar" target="_blank">http://www.unlarchive.org/wiki/index.php/Grammar</a><br />Tagset available at <a href="../dictionary/export_tagset.php" target="_blank">Export UNDL Foundation tagset</a>.<br /><br /><b>Y0</b><br />AVALENT<br /><br /><b>Y1</b><br />NO SUBCATEGORIZATION FRAME: rules defined inside the entry in the dictionary<br /><br /><b>Y42</b><br />requires a verb specifier, which is a noun phrase (<i>O güldü.</i>)<br />VS(NP);
+<br /><br /><b>Y43</b><br />requires a verb specifier, which is a noun phrase, and a verb complement, which is also a noun phrase (<i>O nahar(i) yeyir.</i>)<br />VS(NP)VC(NP);
+VS(NP)VC(NP,ACC);
+<br /><br /><b>Y44</b><br />requires a verb specifier, which is a noun phrase,two verb complements, which are accusative (-i) and dative (-a) NPs.
+ (<i>Mən kitabı sənə verdim</i>)<br />VS(NP)VC(NP,ACC)VC(NP,DAT);
+<br /><br /><b>Y45</b><br />requires a verb specifier, which is a noun phrase, and a verb complement which is a complementizer phrase headed by "ki" (<i>Mən dedim ki...</i>)<br />VS(NP)VC(CH([ki]));
+<br /><br /><b>Y46</b><br />requires a verb specifier, which is a noun phrase, and a verb complement which is a noun phrase, adjective phrase or prepositional phrase deaded by -da/-dan 
+
+ (<i>O tələbə dir, Evdə dir</i>)<br />VS(NP)VC({NP|JP|PH([{da|dan}])});
+<br /><br /><b>Y47</b><br />requires a verb specifier, which is a noun phrase, a verb complement, and also a verb complement which is a complementizer phrase headed by 'ki' (<i>O bizə əmr elədi ki...</i>)<br />VS(NP)VC(NP)VC(CH([ki]));
+<br /><br /><b>Y48</b><br />requires a verb specifier, which is a noun phrase, and a verb complement, which is an adjective phrase.
+
+
+
+ (<i>Mən yorğun görünürəm</i>)<br />VS(NP)VC(JP);
+<br /><br /><b>Y49</b><br />requires a verb specifier, which is a noun phrase, a verb complement which is a dative NP (-a), and also a verb complement which is an adjective phrase (<i>O Həsənə pis davrandı</i>)<br />VS(NP)VC(NP,DAT)VC(JP);
+<br /><br /><b>Y50</b><br />requires a verb specifier, which is an accusative noun phrase (-i),a verb complement, which is NP and also a verb complement which is a PP. (<i>kitabı qoydum masa üstünə</i>)<br />VS(NP)VC(NP,ACC)VC(PH([{ə|də|dən}]));
+<br /><br /><b>Y51</b><br />requires a verb specifier, which is a noun phrase, and a verb complement, which is a dative noun phrase (-a) (<i>arzulamaq</i>)<br />VS(NP)VC(NP,DAT);
+<br /><br /><b>Y52</b><br />requires a verb specifier, which is a noun phrase, and a verb complement, which is an accusative noun phrase (-i) (<i>aldatmaq</i>)<br />VS(NP)VC(NP,ACC);
+<br /><br /><b>Y53</b><br />requires a verb specifier, which is a noun phrase, and a verb complement, which is a  locative noun phrase (-da) (<i>çimmək</i>)<br />VS(NP)VC(NP,LOC);
+<br /><br /><b>Y54</b><br />requires a verb specifier, which is a noun phrase, and a verb complement, which is an ablative noun phrase (-dan) (<i>ayrılmaq</i>)<br />VS(NP)VC(NP,ABL);
+<br /><br /><b>Y56</b><br />requires a verb specifier, which is a noun phrase,two verb complements, which are accusative (-i) and ablative (-dan) NPs. \r\n\r\n (<i>Mən onu işdən kənar etdim</i>)<br />VS(NP)VC(NP,ACC)VC(NP,ABL);
+<br /><br /></body>
+<html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<title>UNLarium</title>
+<link rel="stylesheet" type="text/css" media="all" href="../../shared/default.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"  />
+<link rel="shortcut icon" href="../favicon.ico" type="image/x-icon" />
+</head>
+
+<body>
+<h1>English Inflectional  Grammar for Natural Language Generation</h1>Version of September 11, 2026, 1:11 pm<br />Documentation available at <a href="http://www.unlarchive.org/wiki/index.php/Grammar" target="_blank">http://www.unlarchive.org/wiki/index.php/Grammar</a><br />Tagset available at <a href="../dictionary/export_tagset.php" target="_blank">Export UNDL Foundation tagset</a>.<br /><br />(%x,M2):=(%x,-M2,+FLX(SNG:=0>"";
+PLR:=0>"s";));<br /><br />(%x,M3):=(%x,-M3,+FLX(SNG:=0>"";
+PLR:="y">"ies";));<br /><br />(%x,M4):=(%x,-M4,+FLX(SNG:=0>"";
+PLR:=0>"es";));<br /><br />(%x,M5):=(%x,-M5,+FLX(SNG:=0>"";
+PLR:="f">"ves";));<br /><br />(%x,M6):=(%x,-M6,+FLX(SNG:=0>"";
+PLR:="fe">"ves";));<br /><br />(%x,M7):=(%x,-M7,+FLX(SNG:=0>"";
+PLR:="man":"men";));<br /><br />(%x,M8):=(%x,-M8,+FLX(SNG:=0>"";
+PLR:="ouse">"ice";));<br /><br />(%x,M9):=(%x,-M9,+FLX(SNG:=0>"";
+PLR:="person":"people";));<br /><br />(%x,M10):=(%x,-M10,+FLX(SNG:=0>"";
+PLR:="tooth":"teeth";));<br /><br />(%x,M11):=(%x,-M11,+FLX(SNG:=0>"";
+PLR:="is">"es";));<br /><br />(%x,M12):=(%x,-M12,+FLX(SNG:=0>"";
+PLR:=2>"ices";));<br /><br />(%x,M13):=(%x,-M13,+FLX(SNG:=0>"";
+PLR:=2>"a";));<br /><br />(%x,M14):=(%x,-M14,+FLX(SNG:=0>"";
+PLR:="us">"i";));<br /><br />(%x,M15):=(%x,-M15,+FLX(PLR:=0>"'s";));<br /><br />(%x,M16):=(%x,-M16,+FLX(INF:=0>"";
+PAS:=0>"ed";
+PTP:=0>"ed";
+3PS&PRS:=0>"s";
+GER:=0>"ing";
+));<br /><br />(%x,M17):=(%x,-M17,+FLX(INF:=0>"";
+PAS:=0>"d";
+PTP:=0>"d";
+3PS&PRS:=0>"s";
+GER:=1>"ing";
+));<br /><br />(%x,M18):=(%x,-M18,+FLX(INF:=0>"";
+PAS:="y">"ied";
+PTP:="y">"ied";
+GER:=0>"ing";
+3PS&PRS:="y">"ies";
+));<br /><br />(%x,M19):=(%x,-M19,+FLX(INF:=0>"";
+PAS:=0>"ed";
+PTP:=0>"ed";
+3PS&PRS:=0>"es";
+GER:=0>"ing";
+));<br /><br />(%x,M20):=(%x,-M20,+FLX(INF:=0>"";
+PAS:=0>"ked";
+PTP:=0>"ked";
+3PS&PRS:=0>"";
+GER:=0>"king";
+));<br /><br />(%x,M21):=(%x,-M21,+FLX(INF:=0>"";
+PAS:=0>"";
+PTP:=0>"";
+GER:=0>"ing";
+3PS&PRS:=0>"s";
+));<br /><br />(%x,M22):=(%x,-M22,+FLX(INF:=0>"";
+GER:=0>"ing";
+3PS&PRS:=0>"s";
+));<br /><br />(%x,M256):=(%x,-M256,+FLX(INF:=0>"";
+1PS&PRS:="am";
+2PS&PRS:="are";
+3PS&PRS:="is";
+1PP&PRS:="are";
+2PP&PRS:="are";
+3PP&PRS:="are";
+1PS&PAS:="was";
+2PS&PAS:="were";
+3PS&PAS:="was";
+1PP&PAS:="were";
+2PP&PAS:="were";
+3PP&PAS:="were";
+PTP:="been";
+));<br /><br />(%x,M257):=(%x,-M257,+FLX(INF:=0>"";
+PAS:="had";
+PTP:="had";
+GER:=1>"ing";
+3PS&PRS:="has";
+));<br /><br />(%x,M258):=(%x,-M258,+FLX(SNG:=0>"";
+PLR:=0>"s";
+));<br /><br />(%x,M260):=(%x,-M260,+FLX(SNG:=0>"";
+PLR:="y">"ies";
+));<br /><br />(%x,M262):=(%x,-M262,+FLX(INF:=0>"";
+1PS&PRS:="am";
+2PS&PRS:="are";
+3PS&PRS:="is";
+1PP&PRS:="are";
+2PP&PRS:="are";
+3PP&PRS:="are";
+1PS&PAS:="was";
+2PS&PAS:="were";
+3PS&PAS:="was";
+1PP&PAS:="were";
+2PP&PAS:="were";
+3PP&PAS:="were";
+PTP:="been";
+));<br /><br />(%x,M263):=(%x,-M263,+FLX(INF:=0>"";
+PAS:="did";
+PTP:="done";
+GER:=0>"ing";
+3PS&PRS:="does";
+));<br /><br />(%x,M264):=(%x,-M264,+FLX(INF:=0>"";
+PAS:="did";
+PTP:="done";
+GER:=0>"ing";
+3PS&PRS:="does";
+));<br /><br /></body>
+<html>

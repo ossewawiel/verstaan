@@ -1,0 +1,3831 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<title>UNLarium</title>
+<link rel="stylesheet" type="text/css" media="all" href="../../shared/default.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"  />
+<link rel="shortcut icon" href="../favicon.ico" type="image/x-icon" />
+</head>
+
+<body>
+<h1>Spanish Inflectional  Grammar</h1>Version of September 11, 2026, 2:15 pm<br />Documentation available at <a href="http://www.unlarchive.org/wiki/index.php/Grammar" target="_blank">http://www.unlarchive.org/wiki/index.php/Grammar</a><br />Tagset available at <a href="../dictionary/export_tagset.php" target="_blank">Export UNDL Foundation tagset</a>.<br /><br /><b>M0</b><br />Invariant<br /><br /><b>M1</b><br />Irregular: rules are defined inside the entry in the dictionary<br /><br /><b>M2</b><br />Adjetivos de dos terminaciones (masculino en -o y femenino en -a) (<i>alto, bajo, guapo, bonito, rojo</i>)<br />MCL&SNG:=0>"";<br />
+FEM&SNG:="o">"a";<br />
+MCL&PLR:=0>"s";<br />
+FEM&PLR:="o">"as";<br /><br /><b>M3</b><br />Adjetivos de una sola terminación (plural en -s) (<i>inteligente, elegante, amable, homicida, hipócrita, rioplatense, caliente</i>)<br />SNG:=0>"";<br />
+PLR:=0>"s";<br /><br /><b>M4</b><br />Adjetivos de una sola terminación (plural en -es) (<i>tal, familiar, fácil, virgen</i>)<br />SNG:=0>"";<br />
+PLR:=0>"es";<br /><br /><b>M6</b><br />verbos terminados en -zar que, en algunos tiempos y personas,
+cambian la /e/ por el diptongo /ie/  (<i>comenzar, recomenzar, empezar</i>)<br />INF:=0>"";<br />GER:="r">"ndo";<br />
+PTP:="r">"do";<br />
+PTP&MCL&SNG:="r">"do";<br />
+PTP&MCL&PLR:="r">"dos";<br />
+PTP&FEM&SNG:="r">"da";<br />
+PTP&FEM&PLR:="r">"das";<br />
+
+1PS&PRS&IND:="e":"ie","ar">"o";<br />
+2PS&PRS&IND:="e":"ie","ar">"as";<br />
+3PS&PRS&IND:="e":"ie","ar">"a";<br />
+1PP&PRS&IND:="ar">"amos";<br />
+2PP&PRS&IND:="ar">"áis";<br />
+3PP&PRS&IND:="e":"ie","ar">"an";<br />
+
+1PS&PAS&NPFV&IND:="ar">"aba";<br />
+2PS&PAS&NPFV&IND:="ar">"abas";<br />
+3PS&PAS&NPFV&IND:="ar">"aba";<br />
+1PP&PAS&NPFV&IND:="ar">"ábamos";<br />
+2PP&PAS&NPFV&IND:="ar">"abais";<br />
+3PP&PAS&NPFV&IND:="ar">"aban";<br />
+
+1PS&PAS&PFV&IND:="zar">"cé";<br />
+2PS&PAS&PFV&IND:="ar">"aste";<br />
+3PS&PAS&PFV&IND:="ar">"ó";<br />
+1PP&PAS&PFV&IND:="ar">"amos";<br />
+2PP&PAS&PFV&IND:="ar">"asteis";<br />
+3PP&PAS&PFV&IND:="ar">"aron";<br />
+
+1PS&FUT&IND:=0>"é";<br />
+2PS&FUT&IND:=0>"ás";<br />
+3PS&FUT&IND:=0>"á";<br />
+1PP&FUT&IND:=0>"emos";<br />
+2PP&FUT&IND:=0>"éis";<br />
+3PP&PRS&IND:=0>"án";<br />
+
+1PS&PRS&CON:=0>"ía";<br />
+2PS&PRS&CON:=0>"ías";<br />
+3PS&PRS&CON:=0>"ía";<br />
+1PP&PRS&CON:=0>"íamos";<br />
+2PP&PRS&CON:=0>"íais";<br />
+3PP&PRS&CON:=0>"ían";<br />
+
+1PS&PRS&SUB:="e":"ie","zar">"ce";<br />
+2PS&PRS&SUB:="e":"ie","zar">"ces";<br />
+3PS&PRS&SUB:="e":"ie","zar">"ce";<br />
+1PP&PRS&SUB:="zar">"cemos";<br />
+2PP&PRS&SUB:="zar">"céis";<br />
+3PP&PRS&SUB:="e":"ie","zar">"cen";<br />
+
+1PS&PAS&NPFV&SUB:="ar">"ara";<br />
+2PS&PAS&NPFV&SUB:="ar">"aras";<br />
+3PS&PAS&NPFV&SUB:="ar">"ara";<br />
+1PP&PAS&NPFV&SUB:="ar">"áramos";<br />
+2PP&PAS&NPFV&SUB:="ar">"arais";<br />
+3PP&PAS&NPFV&SUB:="ar">"aran";<br />
+
+1PS&PAS&NPFV&SUB:="ar">"ase";<br />
+2PS&PAS&NPFV&SUB:="ar">"ases";<br />
+3PS&PAS&NPFV&SUB:="ar">"ase";<br />
+1PP&PAS&NPFV&SUB:="ar">"ásemos";<br />
+2PP&PAS&NPFV&SUB:="ar">"aseis";<br />
+3PP&PAS&NPFV&SUB:="ar">"asen";<br />
+
+2PS&PRS&IMP:="e":"ie","zar">"za";<br />
+3PS&PRS&IMP:="e":"ie","zar">"ce";<br />
+1PP&PRS&IMP:="zar">"cemos";<br />
+2PP&PRS&IMP:="r">"d";<br />
+3PP&PRS&IMP:="e":"ie","zar">"cen";<br /><br /><b>M7</b><br />Adjetivos de dos terminaciones (plurale tantum) (<i>ambos</i>)<br />MCL&PLR:=0>"";<br />
+FEM&PLR:="os">"as";<br /><br /><b>M8</b><br />Adjetivos de una sola terminación (singular en -az y plural en -aces) (<i>capaz</i>)<br />SNG:=0>"";<br />
+PLR:="z">"ces";<br /><br /><b>M9</b><br />Adjetivos de dos terminaciones (masculino en -és y femenino en -esa) (<i>francés, aragonés, leonés, inglés</i>)<br />MCL&SNG:=0>"";<br />
+FEM&SNG:="és">"esa";<br />FEM&PLR:="és">"esas";<br />MCL&PLR:="és">"eses";<br /><br /><b>M10</b><br />Adjetivos de dos terminaciones (masculino en -án y femenino en -ana) (<i>muslmán, </i>)<br />MCL&SNG:=0>"";<br />
+FEM&SNG:="án">"ana";<br />MCL&PLR:="án">"anes";<br />FEM&PLR:="án">"anas";<br /><br /><b>M11</b><br />Adjetivos de dos terminaciones (<i>trabajador, escritor, español, andaluz</i>)<br />MCL&SNG:=0>"";<br />
+FEM&SNG:=0>"a";<br />FEM&PLR:=0>"as";<br />MCL&PLR:=0>"es";<br /><br /><b>M12</b><br />Sustantivos terminados en -ón sin variación de género (<i>avión, sección</i>)<br />SNG:=0>"";<br />
+PLR:="ón">"ones";<br /><br /><b>M13</b><br />Sustantivos sin variación de género que forman el plural en -s (<i>historia</i>)<br />SNG:=0>"";<br />
+PLR:=0>"s";<br /><br /><b>M14</b><br />Sustantivos sin variación de género que forman el plural en -es (<i>amor</i>)<br />SNG:=0>"";<br />
+PLR:=0>"es";<br /><br /><b>M16</b><br />Sustantivos terminados em -imen com cambio de acento (<i>crimen</i>)<br />SNG:=0>"";<br />
+PLR:="imen">"ímenes";<br /><br /><b>M17</b><br />Sustantivos terminados en -o con variación de género (<i>amigo, chico, perro</i>)<br />MCL&SNG:=0>"";<br />
+FEM&SNG:="o">"a";<br />
+MCL&PLR:=0>"s";<br />
+FEM&PLR:="o">"as";<br /><br /><b>M18</b><br />Sustantivos terminados en -z sin variación de género (<i>paz</i>)<br />SNG:=0>"";<br />
+PLR:="z">"ces";<br />
+;<br /><br /><b>M19</b><br />Sustantivos terminados en -ín sin variación de género (<i>jardín</i>)<br />SNG:=0>"";<br />
+PLR:="ín">"ines";<br /><br /><b>M20</b><br />Sustantivos terminados en -án con variación de género (<i>musulmán, catalán</i>)<br />MCL&SNG:=0>"";<br />
+FEM&SNG:="án">"ana";<br /> MCL&PLR:="án">"anes";<br />FEM&PLR:="án">"anas";<br /><br /><b>M21</b><br />Sustantivos terminados en -és con variación de género (<i>francés</i>)<br />MCL&SNG:=0>"";<br />
+FEM&SNG:="és">"esa";<br /> FEM&PLR:="és">"esas";<br /> MCL&PLR:="és">"eses";<br /><br /><b>M22</b><br />Sustantivos terminados em -igen com cambio de acento (<i>origen</i>)<br />SNG:=0>"";<br />
+PLR:="igen">"ígenes";<br /><br /><b>M23</b><br />Sustantivos terminados en -ón con variación de género (<i>faraón</i>)<br />MCL&SNG:=0>"";<br />
+MCL&PLR:="ón">"ones";<br />
+FEM&SNG:="ón">"ona";<br />FEM&PLR:="ón">"onas";<br /><br /><b>M24</b><br />Sustantivos terminados en -is con plural en -es (<i>tesis</i>)<br />SNG:=0>"";<br />
+PLR:="is">"es";<br /><br /><b>M25</b><br />Sustantivos terminados em -oven com cambio de acento (<i>joven</i>)<br />SNG:=0>"";<br />
+PLR:="oven">"óvenes";<br /><br /><b>M27</b><br />Sustantivos terminados en -ín con variación de género (<i>bailarín</i>)<br />MCL&SNG:=0>"";<br />
+FEM&SNG:="ín">"ina";<br />FEM&PLR:="ín">"inas";<br />MCL&PLR:="ín">"ines";<br /><br /><b>M28</b><br />Sustantivos que forman el femenino en -a (<i>autor, escritor, dios</i>)<br />MCL&SNG:=0>"";<br />
+FEM&SNG:=0>"a";<br />FEM&PLR:=0>"as";<br />MCL&PLR:=0>"es";<br /><br /><b>M29</b><br />héroe (<i>héroe</i>)<br />MCL&SNG:=0>"";<br />
+MCL&PLR:=0>"s";<br />FEM&SNG:="éroe">"eroína";<br />
+FEM&PLR:="éroe">"eroínas";<br /><br /><b>M30</b><br />Sustantivos terminados em -ácter com cambio de acento (<i>carácter</i>)<br />SNG:=0>"";<br />
+PLR:="ácter">"acteres";<br /><br /><b>M31</b><br />verbos regulares terminados en -ar sin cambio en la raíz (<i>amar, cantar, cambiar, fracturar, fragmentar, incitar, incomodar, inmigrar</i>)<br />INF:=0>"";<br />GER:="r">"ndo";<br />
+PTP:="r">"do";<br />
+PTP&MCL&SNG:="r">"do";<br />
+PTP&MCL&PLR:="r">"dos";<br />
+PTP&FEM&SNG:="r">"da";<br />
+PTP&FEM&PLR:="r">"das";<br />
+
+1PS&PRS&IND:="ar">"o";<br />
+2PS&PRS&IND:="ar">"as";<br />
+3PS&PRS&IND:="ar">"a";<br />
+1PP&PRS&IND:="ar">"amos";<br />
+2PP&PRS&IND:="ar">"áis";<br />
+3PP&PRS&IND:="ar">"an";<br />
+
+1PS&PAS&NPFV&IND:="ar">"aba";<br />
+2PS&PAS&NPFV&IND:="ar">"abas";<br />
+3PS&PAS&NPFV&IND:="ar">"aba";<br />
+1PP&PAS&NPFV&IND:="ar">"ábamos";<br />
+2PP&PAS&NPFV&IND:="ar">"abais";<br />
+3PP&PAS&NPFV&IND:="ar">"aban";<br />
+
+1PS&PAS&PFV&IND:="ar">"é";<br />
+2PS&PAS&PFV&IND:="ar">"aste";<br />
+3PS&PAS&PFV&IND:="ar">"ó";<br />
+1PP&PAS&PFV&IND:="ar">"amos";<br />
+2PP&PAS&PFV&IND:="ar">"asteis";<br />
+3PP&PAS&PFV&IND:="ar">"aron";<br />
+
+1PS&FUT&IND:=0>"é";<br />
+2PS&FUT&IND:=0>"ás";<br />
+3PS&FUT&IND:=0>"á";<br />
+1PP&FUT&IND:=0>"emos";<br />
+2PP&FUT&IND:=0>"éis";<br />
+3PP&FUT&IND:=0>"án";<br />
+
+1PS&PRS&CON:=0>"ía";<br />
+2PS&PRS&CON:=0>"ías";<br />
+3PS&PRS&CON:=0>"ía";<br />
+1PP&PRS&CON:=0>"íamos";<br />
+2PP&PRS&CON:=0>"íais";<br />
+3PP&PRS&CON:=0>"ían";<br />
+
+1PS&PRS&SUB:="ar">"e";<br />
+2PS&PRS&SUB:="ar">"es";<br />
+3PS&PRS&SUB:="ar">"e";<br />
+1PP&PRS&SUB:="ar">"emos";<br />
+2PP&PRS&SUB:="ar">"éis";<br />
+3PP&PRS&SUB:="ar">"en";<br />
+
+1PS&PAS&NPFV&SUB:="ar">"ara";<br />
+2PS&PAS&NPFV&SUB:="ar">"aras";<br />
+3PS&PAS&NPFV&SUB:="ar">"ara";<br />
+1PP&PAS&NPFV&SUB:="ar">"áramos";<br />
+2PP&PAS&NPFV&SUB:="ar">"arais";<br />
+3PP&PAS&NPFV&SUB:="ar">"aran";<br />
+
+1PS&PAS&NPFV&SUB:="ar">"ase";<br />
+2PS&PAS&NPFV&SUB:="ar">"ases";<br />
+3PS&PAS&NPFV&SUB:="ar">"ase";<br />
+1PP&PAS&NPFV&SUB:="ar">"ásemos";<br />
+2PP&PAS&NPFV&SUB:="ar">"aseis";<br />
+3PP&PAS&NPFV&SUB:="ar">"asen";<br />
+
+2PS&PRS&IMP:="ar">"a";<br />
+3PS&PRS&IMP:="ar">"e";<br />
+1PP&PRS&IMP:="ar">"emos";<br />
+2PP&PRS&IMP:="ar">"ad";<br />
+3PP&PRS&IMP:="ar">"en";<br /><br /><b>M32</b><br />verbos regulares terminados en -er sin cambio en la raíz (<i>aprender, meter, reprender, temer</i>)<br />INF:=0>"";<br />GER:="er">"iendo";<br />
+PTP:="er">"ido";<br />
+PTP&MCL&SNG:="er">"ido";<br />
+PTP&MCL&PLR:="er">"idos";<br />
+PTP&FEM&SNG:="er">"ida";<br />
+PTP&FEM&PLR:="er">"idas";<br />
+
+1PS&PRS&IND:="er">"o";<br />
+2PS&PRS&IND:="er">"es";<br />
+3PS&PRS&IND:="er">"e";<br />
+1PP&PRS&IND:="er">"emos";<br />
+2PP&PRS&IND:="er">"éis";<br />
+3PP&PRS&IND:="er">"en";<br />
+
+1PS&PAS&NPFV&IND:="er">"ía";<br />
+2PS&PAS&NPFV&IND:="er">"ías";<br />
+3PS&PAS&NPFV&IND:="er">"ía";<br />
+1PP&PAS&NPFV&IND:="er">"íamos";<br />
+2PP&PAS&NPFV&IND:="er">"íais";<br />
+3PP&PAS&NPFV&IND:="er">"ían";<br />
+
+1PS&PAS&PFV&IND:="er">"í";<br />
+2PS&PAS&PFV&IND:="er">"iste";<br />
+3PS&PAS&PFV&IND:="er">"ió";<br />
+1PP&PAS&PFV&IND:="er">"imos";<br />
+2PP&PAS&PFV&IND:="er">"isteis";<br />
+3PP&PAS&PFV&IND:="er">"ieron";<br />
+
+1PS&FUT&IND:=0>"é";<br />
+2PS&FUT&IND:=0>"ás";<br />
+3PS&FUT&IND:=0>"á";<br />
+1PP&FUT&IND:=0>"emos";<br />
+2PP&FUT&IND:=0>"éis";<br />
+3PP&FUT&IND:=0>"án";<br />
+
+1PS&PRS&CON:=0>"ía";<br />
+2PS&PRS&CON:=0>"ías";<br />
+3PS&PRS&CON:=0>"ía";<br />
+1PP&PRS&CON:=0>"íamos";<br />
+2PP&PRS&CON:=0>"íais";<br />
+3PP&PRS&CON:=0>"ían";<br />
+
+1PS&PRS&SUB:="er">"a";<br />
+2PS&PRS&SUB:="er">"as";<br />
+3PS&PRS&SUB:="er">"a";<br />
+1PP&PRS&SUB:="er">"amos";<br />
+2PP&PRS&SUB:="er">"áis";<br />
+3PP&PRS&SUB:="er">"an";<br />
+
+1PS&PAS&NPFV&SUB:="er">"iera";<br />
+2PS&PAS&NPFV&SUB:="er">"ieras";<br />
+3PS&PAS&NPFV&SUB:="er">"iera";<br />
+1PP&PAS&NPFV&SUB:="er">"iéramos";<br />
+2PP&PAS&NPFV&SUB:="er">"ierais";<br />
+3PP&PAS&NPFV&SUB:="er">"ieran";<br />
+
+1PS&PAS&NPFV&SUB:="er">"iese";<br />
+2PS&PAS&NPFV&SUB:="er">"ieses";<br />
+3PS&PAS&NPFV&SUB:="er">"iese";<br />
+1PP&PAS&NPFV&SUB:="er">"iésemos";<br />
+2PP&PAS&NPFV&SUB:="er">"ieseis";<br />
+3PP&PAS&NPFV&SUB:="er">"iesen";<br />
+
+2PS&PRS&IMP:="er">"e";<br />
+3PS&PRS&IMP:="er">"a";<br />
+1PP&PRS&IMP:="er">"amos";<br />
+2PP&PRS&IMP:="er">"ed";<br />
+3PP&PRS&IMP:="er">"an";<br /><br /><b>M33</b><br />verbos regulares terminados en -ir sin cambio en la raíz (<i>subir, subsistir, suplir, suprimir, partir</i>)<br />INF:=0>"";<br />GER:="ir">"iendo";<br />
+PTP:="ir">"ido";<br />
+PTP&MCL&SNG:="ir">"ido";<br />
+PTP&MCL&PLR:="ir">"idos";<br />
+PTP&FEM&SNG:="ir">"ida";<br />
+PTP&FEM&PLR:="ir">"idas";<br />
+
+1PS&PRS&IND:="ir">"o";<br />
+2PS&PRS&IND:="ir">"es";<br />
+3PS&PRS&IND:="ir">"e";<br />
+1PP&PRS&IND:="ir">"imos";<br />
+2PP&PRS&IND:="ir">"ís";<br />
+3PP&PRS&IND:="ir">"en";<br />
+
+1PS&PAS&NPFV&IND:="ir">"ía";<br />
+2PS&PAS&NPFV&IND:="ir">"ías";<br />
+3PS&PAS&NPFV&IND:="ir">"ía";<br />
+1PP&PAS&NPFV&IND:="ir">"íamos";<br />
+2PP&PAS&NPFV&IND:="ir">"íais";<br />
+3PP&PAS&NPFV&IND:="ir">"ían";<br />
+
+1PS&PAS&PFV&IND:="ir">"í";<br />
+2PS&PAS&PFV&IND:="ir">"iste";<br />
+3PS&PAS&PFV&IND:="ir">"ió";<br />
+1PP&PAS&PFV&IND:="ir">"imos";<br />
+2PP&PAS&PFV&IND:="ir">"isteis";<br />
+3PP&PAS&PFV&IND:="ir">"ieron";<br />
+
+1PS&FUT&IND:=0>"é";<br />
+2PS&FUT&IND:=0>"ás";<br />
+3PS&FUT&IND:=0>"á";<br />
+1PP&FUT&IND:=0>"emos";<br />
+2PP&FUT&IND:=0>"éis";<br />
+3PP&FUT&IND:=0>"án";<br />
+
+1PS&PRS&CON:=0>"ía";<br /> 
+2PS&PRS&CON:=0>"ías";<br />
+3PS&PRS&CON:=0>"ía";<br />
+1PP&PRS&CON:=0>"íamos";<br />
+2PP&PRS&CON:=0>"íais";<br />
+3PP&PRS&CON:=0>"ían";<br />
+
+1PS&PRS&SUB:="ir">"a";<br />
+2PS&PRS&SUB:="ir">"as";<br />
+3PS&PRS&SUB:="ir">"a";<br />
+1PP&PRS&SUB:="ir">"amos";<br />
+2PP&PRS&SUB:="ir">"áis";<br />
+3PP&PRS&SUB:="ir">"an";<br />
+ 
+1PS&PAS&NPFV&SUB:="ir">"iera";<br />
+2PS&PAS&NPFV&SUB:="ir">"ieras";<br />
+3PS&PAS&NPFV&SUB:="ir">"iera";<br />
+1PP&PAS&NPFV&SUB:="ir">"iéramos";<br />
+2PP&PAS&NPFV&SUB:="ir">"ierais";<br />
+3PP&PAS&NPFV&SUB:="ir">"ieran";<br />
+
+1PS&PAS&NPFV&SUB:="ir">"iese";<br />
+2PS&PAS&NPFV&SUB:="ir">"ieses";<br />
+3PS&PAS&NPFV&SUB:="ir">"iese";<br />
+1PP&PAS&NPFV&SUB:="ir">"iésemos";<br />
+2PP&PAS&NPFV&SUB:="ir">"ieseis";<br />
+3PP&PAS&NPFV&SUB:="ir">"iesen";<br />
+
+2PS&PRS&IMP:="ir">"e";<br />
+3PS&PRS&IMP:="ir">"a";<br />
+1PP&PRS&IMP:="ir">"amos";<br />
+2PP&PRS&IMP:="ir">"id";<br />
+3PP&PRS&IMP:="ir">"an";<br /><br /><b>M34</b><br />Sustantivos terminados en -e con variación de género (<i>presidente</i>)<br />MCL&SNG:=0>"";<br />
+FEM&SNG:="e">"a";<br />MCL&PLR:=0>"s";<br />
+FEM&PLR:="e">"as";<br /><br /><b>M35</b><br />Sustantivos terminados em -umen com cambio de acento (<i>resumen</i>)<br />SNG:=0>"";<br />
+PLR:="umen">"úmenes";<br /><br /><b>M36</b><br />Sustantivos terminados en -én (<i>sostén</i>)<br />SNG:=0>"";<br />
+PLR:="én">"enes";<br /><br /><b>M38</b><br />verbo irregular (<i>decir, bendecir, maldecir, predecir</i>)<br />INF:=0>"";<br />GER:="ecir">"iciendo";<br />
+PTP:="ecir">"icho";<br />
+PTP&MCL&SNG:="ecir">"icho";<br />
+PTP&MCL&PLR:="ecir">"ichos";<br />
+PTP&FEM&SNG:="ecir">"icha";<br />
+PTP&FEM&PLR:="ecir">"ichas";<br />
+
+1PS&PRS&IND:="ecir">"igo";<br />
+2PS&PRS&IND:="ecir">"ices";<br />
+3PS&PRS&IND:="ecir">"ice";<br />
+1PP&PRS&IND:="ecir">"ecimos";<br />
+2PP&PRS&IND:="ecir">"ecís";<br />
+3PP&PRS&IND:="ecir">"icen";<br />
+
+1PS&PAS&NPFV&IND:="ecir">"ecía";<br />
+2PS&PAS&NPFV&IND:="ecir">"ecías";<br />
+3PS&PAS&NPFV&IND:="ecir">"ecía";<br />
+1PP&PAS&NPFV&IND:="ecir">"ecíamos";<br />
+2PP&PAS&NPFV&IND:="ecir">"ecíais";<br />
+3PP&PAS&NPFV&IND:="ecir">"ecían";<br />
+
+1PS&PAS&PFV&IND:="ecir">"ije";<br />
+2PS&PAS&PFV&IND:="ecir">"ijiste";<br />
+3PS&PAS&PFV&IND:="ecir">"ijo";<br />
+1PP&PAS&PFV&IND:="ecir">"ijimos";<br />
+2PP&PAS&PFV&IND:="ecir">"ijisteis";<br />
+3PP&PAS&PFV&IND:="ecir">"ijeron";<br />
+
+1PS&FUT&IND:="ecir">"iré";<br />
+2PS&FUT&IND:="ecir">"irás";<br />
+3PS&FUT&IND:="ecir">"irá";<br />
+1PP&FUT&IND:="ecir">"iremos";<br />
+2PP&FUT&IND:="ecir">"iréis";<br />
+3PP&PRS&IND:="ecir">"irán";<br />
+
+1PS&PRS&CON:="ecir">"iría";<br />
+2PS&PRS&CON:="ecir">"irías";<br />
+3PS&PRS&CON:="ecir">"iría";<br />
+1PP&PRS&CON:="ecir">"iríamos";<br />
+2PP&PRS&CON:="ecir">"iríais";<br />
+3PP&PRS&CON:="ecir">"irían";<br />
+
+1PS&PRS&SUB:="ecir">"iga";<br />
+2PS&PRS&SUB:="ecir">"igas";<br />
+3PS&PRS&SUB:="ecir">"iga";<br />
+1PP&PRS&SUB:="ecir">"igamos";<br />
+2PP&PRS&SUB:="ecir">"igáis";<br />
+3PP&PRS&SUB:="ecir">"igan";<br />
+
+1PS&PAS&NPFV&SUB:="ecir">"ijera";<br />
+2PS&PAS&NPFV&SUB:="ecir">"ijeras";<br />
+3PS&PAS&NPFV&SUB:="ecir">"ijera";<br />
+1PP&PAS&NPFV&SUB:="ecir">"ijéramos";<br />
+2PP&PAS&NPFV&SUB:="ecir">"ijerais";<br />
+3PP&PAS&NPFV&SUB:="ecir">"ijeran";<br />
+
+1PS&PAS&NPFV&SUB:="ecir">"ijese";<br />
+2PS&PAS&NPFV&SUB:="ecir">"ijeses";<br />
+3PS&PAS&NPFV&SUB:="ecir">"ijese";<br />
+1PP&PAS&NPFV&SUB:="ecir">"ijésemos";<br />
+2PP&PAS&NPFV&SUB:="ecir">"ijeseis";<br />
+3PP&PAS&NPFV&SUB:="ecir">"ijesen";<br />
+
+2PS&PRS&IMP:="ecir">"i";<br />
+3PS&PRS&IMP:="ecir">"iga";<br />
+1PP&PRS&IMP:="ecir">"igamos";<br />
+2PP&PRS&IMP:="ir">"id";<br />
+3PP&PRS&IMP:="ecir">"igan";<br /><br /><b>M39</b><br />verbo irregular (<i>querer, bienquerer, malquerer, requerer</i>)<br />INF:=0>"";<br />GER:="er">"iendo";<br />
+PTP:="er">"ido";<br />
+PTP&MCL&SNG:="er">"ido";<br />
+PTP&MCL&PLR:="er">"idos";<br />
+PTP&FEM&SNG:="er">"ida";<br />
+PTP&FEM&PLR:="er">"idas";<br />
+
+1PS&PRS&IND:="erer">"iero";<br />
+2PS&PRS&IND:="erer">"ieres";<br />
+3PS&PRS&IND:="erer">"iere";<br />
+1PP&PRS&IND:="er">"emos";<br />
+2PP&PRS&IND:="er">"éis";<br />
+3PP&PRS&IND:="erer">"ieren";<br />
+
+1PS&PAS&NPFV&IND:="er">"ía";<br />
+2PS&PAS&NPFV&IND:="er">"ías";<br />
+3PS&PAS&NPFV&IND:="er">"ía";<br />
+1PP&PAS&NPFV&IND:="er">"íamos";<br />
+2PP&PAS&NPFV&IND:="er">"íais";<br />
+3PP&PAS&NPFV&IND:="er">"ían";<br />
+
+1PS&PAS&PFV&IND:="erer">"ise";<br />
+2PS&PAS&PFV&IND:="erer">"isiste";<br />
+3PS&PAS&PFV&IND:="erer">"iso";<br />
+1PP&PAS&PFV&IND:="erer">"isimos";<br />
+2PP&PAS&PFV&IND:="erer">"isisteis";<br />
+3PP&PAS&PFV&IND:="erer">"isieron";<br />
+
+1PS&FUT&IND:="er">"ré";<br />
+2PS&FUT&IND:="er">"rás";<br />
+3PS&FUT&IND:="er">"rá";<br />
+1PP&FUT&IND:="er">"remos";<br />
+2PP&FUT&IND:="er">"réis";<br />
+3PP&FUT&IND:="er">"rán";<br />
+
+1PS&PRS&CON:="er">"ría";<br />
+2PS&PRS&CON:="er">"rías";<br />
+3PS&PRS&CON:="er">"ría";<br />
+1PP&PRS&CON:="er">"ríamos";<br />
+2PP&PRS&CON:="er">"ríais";<br />
+3PP&PRS&CON:="er">"rían";<br />
+
+1PS&PRS&SUB:="erer">"iera";<br />
+2PS&PRS&SUB:="erer">"ieras";<br />
+3PS&PRS&SUB:="erer">"iera";<br />
+1PP&PRS&SUB:="er">"amos";<br />
+2PP&PRS&SUB:="er">"áis";<br />
+3PP&PRS&SUB:="erer">"ieran";<br />
+
+1PS&PAS&NPFV&SUB:="erer">"isiera";<br />
+2PS&PAS&NPFV&SUB:="erer">"isieras";<br />
+3PS&PAS&NPFV&SUB:="erer">"isiera";<br />
+1PP&PAS&NPFV&SUB:="erer">"isiéramos";<br />
+2PP&PAS&NPFV&SUB:="erer">"isierais";<br />
+3PP&PAS&NPFV&SUB:="erer">"isieran";<br />
+
+1PS&PAS&NPFV&SUB:="erer">"isiese";<br />
+2PS&PAS&NPFV&SUB:="erer">"isieses";<br />
+3PS&PAS&NPFV&SUB:="erer">"isiese";<br />
+1PP&PAS&NPFV&SUB:="erer">"isiésemos";<br />
+2PP&PAS&NPFV&SUB:="erer">"isieseis";<br />
+3PP&PAS&NPFV&SUB:="erer">"isiesen";<br />
+
+2PS&PRS&IMP:="erer">"iere";<br />
+3PS&PRS&IMP:="erer">"iera";<br />
+1PP&PRS&IMP:="er">"amos";<br />
+2PP&PRS&IMP:="er">"ed";<br />
+3PP&PRS&IMP:="erer">"ieran";<br /><br /><b>M40</b><br />verbos regulares terminados en -cir (c>zc) (<i>conducir, traducir, aducir, deducir, inducir, introducir, producir, reconducir, reducir, reproducir, seducir</i>)<br />INF:=0>"";<br />GER:="ir">"iendo";<br />
+PTP:="ir">"ido";<br />
+PTP&MCL&SNG:="ir">"ido";<br />
+PTP&MCL&PLR:="ir">"idos";<br />
+PTP&FEM&SNG:="ir">"ida";<br />
+PTP&FEM&PLR:="ir">"idas";<br />
+
+1PS&PRS&IND:="cir">"zco";<br />
+2PS&PRS&IND:="ir">"es";<br />
+3PS&PRS&IND:="ir">"e";<br />
+1PP&PRS&IND:="ir">"imos";<br />
+2PP&PRS&IND:="ir">"ís";<br />
+3PP&PRS&IND:="ir">"en";<br />
+
+1PS&PAS&NPFV&IND:="ir">"ía";<br />
+2PS&PAS&NPFV&IND:="ir">"ías";<br />
+3PS&PAS&NPFV&IND:="ir">"ía";<br />
+1PP&PAS&NPFV&IND:="ir">"íamos";<br />
+2PP&PAS&NPFV&IND:="ir">"íais";<br />
+3PP&PAS&NPFV&IND:="ir">"ían";<br />
+
+1PS&PAS&PFV&IND:="cir">"je";<br />
+2PS&PAS&PFV&IND:="cir">"jiste";<br />
+3PS&PAS&PFV&IND:="cir">"jo";<br />
+1PP&PAS&PFV&IND:="cir">"jimos";<br />
+2PP&PAS&PFV&IND:="cir">"jisteis";<br />
+3PP&PAS&PFV&IND:="cir">"jeron";<br />
+
+1PS&FUT&IND:=0>"é";<br />
+2PS&FUT&IND:=0>"ás";<br />
+3PS&FUT&IND:=0>"á";<br />
+1PP&FUT&IND:=0>"emos";<br />
+2PP&FUT&IND:=0>"éis";<br />
+3PP&FUT&IND:=0>"án";<br />
+
+1PS&PRS&CON:=0>"ía";<br /> 
+2PS&PRS&CON:=0>"ías";<br />
+3PS&PRS&CON:=0>"ía";<br />
+1PP&PRS&CON:=0>"íamos";<br />
+2PP&PRS&CON:=0>"íais";<br />
+3PP&PRS&CON:=0>"ían";<br />
+
+1PS&PRS&SUB:="cir">"zca";<br />
+2PS&PRS&SUB:="cir">"zcas";<br />
+3PS&PRS&SUB:="cir">"zca";<br />
+1PP&PRS&SUB:="cir">"zcamos";<br />
+2PP&PRS&SUB:="cir">"zcáis";<br />
+3PP&PRS&SUB:="cir">"zcan";<br />
+ 
+1PS&PAS&NPFV&SUB:="cir">"jera";<br />
+2PS&PAS&NPFV&SUB:="cir">"jeras";<br />
+3PS&PAS&NPFV&SUB:="cir">"jera";<br />
+1PP&PAS&NPFV&SUB:="cir">"jéramos";<br />
+2PP&PAS&NPFV&SUB:="cir">"jerais";<br />
+3PP&PAS&NPFV&SUB:="cir">"jeran";<br />
+
+1PS&PAS&NPFV&SUB:="cir">"jese";<br />
+2PS&PAS&NPFV&SUB:="cir">"jeses";<br />
+3PS&PAS&NPFV&SUB:="cir">"jese";<br />
+1PP&PAS&NPFV&SUB:="cir">"jésemos";<br />
+2PP&PAS&NPFV&SUB:="cir">"jeseis";<br />
+3PP&PAS&NPFV&SUB:="cir">"jesen";<br />
+
+2PS&PRS&IMP:="ir">"e";<br />
+3PS&PRS&IMP:="cir">"zca";<br />
+1PP&PRS&IMP:="cir">"zcamos";<br />
+2PP&PRS&IMP:="ir">"id";<br />
+3PP&PRS&IMP:="cir">"zcan";<br /><br /><b>M41</b><br />verbo irregular (<i>poner, componer</i>)<br />INF:=0>"";<br />GER:="er">"iendo";<br />
+PTP:="puesto";<br />
+PTP&MCL&SNG:="puesto";<br />
+PTP&MCL&PLR:="puestos";<br />
+PTP&FEM&SNG:="puesta";<br />
+PTP&FEM&PLR:="puestas";<br />
+
+1PS&PRS&IND:="er">"go";<br />
+2PS&PRS&IND:="er">"es";<br />
+3PS&PRS&IND:="er">"e";<br />
+1PP&PRS&IND:="er">"emos";<br />
+2PP&PRS&IND:="er">"éis";<br />
+3PP&PRS&IND:="er">"en";<br />
+
+1PS&PAS&NPFV&IND:="er">"ía";<br />
+2PS&PAS&NPFV&IND:="er">"ías";<br />
+3PS&PAS&NPFV&IND:="er">"ía";<br />
+1PP&PAS&NPFV&IND:="er">"íamos";<br />
+2PP&PAS&NPFV&IND:="er">"íais";<br />
+3PP&PAS&NPFV&IND:="er">"ían";<br />
+
+1PS&PAS&PFV&IND:="oner">"use";<br />
+2PS&PAS&PFV&IND:="oner">"usiste";<br />
+3PS&PAS&PFV&IND:="oner">"uso";<br />
+1PP&PAS&PFV&IND:="oner">"usimos";<br />
+2PP&PAS&PFV&IND:="oner">"usisteis";<br />
+3PP&PAS&PFV&IND:="oner">"usieron";<br />
+
+1PS&FUT&IND:="er">"dré";<br />
+2PS&FUT&IND:="er">"drás";<br />
+3PS&FUT&IND:="er">"drá";<br />
+1PP&FUT&IND:="er">"dremos";<br />
+2PP&FUT&IND:="er">"dréis";<br />
+3PP&FUT&IND:="er">"drán";<br />
+
+1PS&PRS&CON:="er">"dría";<br />
+2PS&PRS&CON:="er">"drías";<br />
+3PS&PRS&CON:="er">"dría";<br />
+1PP&PRS&CON:="er">"dríamos";<br />
+2PP&PRS&CON:="er">"dríais";<br />
+3PP&PRS&CON:="er">"drían";<br />
+
+1PS&PRS&SUB:="er">"ga";<br />
+2PS&PRS&SUB:="er">"gas";<br />
+3PS&PRS&SUB:="er">"ga";<br />
+1PP&PRS&SUB:="er">"gamos";<br />
+2PP&PRS&SUB:="er">"gáis";<br />
+3PP&PRS&SUB:="er">"gan";<br />
+
+1PS&PAS&NPFV&SUB:="oner">"usiera";<br />
+2PS&PAS&NPFV&SUB:="oner">"usieras";<br />
+3PS&PAS&NPFV&SUB:="oner">"usiera";<br />
+1PP&PAS&NPFV&SUB:="oner">"usiéramos";<br />
+2PP&PAS&NPFV&SUB:="oner">"usierais";<br />
+3PP&PAS&NPFV&SUB:="oner">"usieran";<br />
+
+1PS&PAS&NPFV&SUB:="oner">"usiese";<br />
+2PS&PAS&NPFV&SUB:="oner">"usieses";<br />
+3PS&PAS&NPFV&SUB:="oner">"usiese";<br />
+1PP&PAS&NPFV&SUB:="oner">"usiésemos";<br />
+2PP&PAS&NPFV&SUB:="oner">"usieseis";<br />
+3PP&PAS&NPFV&SUB:="oner">"usiesen";<br />
+
+2PS&PRS&IMP:="ner">"n";<br />
+3PS&PRS&IMP:="ner">"ga";<br />
+1PP&PRS&IMP:="ner">"gamos";<br />
+2PP&PRS&IMP:="er">"ed";<br />
+3PP&PRS&IMP:="ner">"gan";<br /><br /><b>M44</b><br />verbos terminados en -guir que, en algunos tiempos y personas,
+cambian la /e/ por la /i/  (<i>seguir, conseguir, perseguir, proseguir, subseguir</i>)<br />INF:=0>"";<br />GER:="e":"i","ir">"iendo";<br />
+PTP:="ir">"ido";<br />
+PTP&MCL&SNG:="ir">"ido";<br />
+PTP&MCL&PLR:="ir">"idos";<br />
+PTP&FEM&SNG:="ir">"ida";<br />
+PTP&FEM&PLR:="ir">"idas";<br />
+
+1PS&PRS&IND:="e":"i","uir">"o";<br />
+2PS&PRS&IND:="e":"i","ir">"es";<br />
+3PS&PRS&IND:="e":"i","ir">"e";<br />
+1PP&PRS&IND:="ir">"imos";<br />
+2PP&PRS&IND:="ir">"ís";<br />
+3PP&PRS&IND:="e":"i","ir">"en";<br />
+
+1PS&PAS&NPFV&IND:="ir">"ía";<br />
+2PS&PAS&NPFV&IND:="ir">"ías";<br />
+3PS&PAS&NPFV&IND:="ir">"ía";<br />
+1PP&PAS&NPFV&IND:="ir">"íamos";<br />
+2PP&PAS&NPFV&IND:="ir">"íais";<br />
+3PP&PAS&NPFV&IND:="ir">"ían";<br />
+
+1PS&PAS&PFV&IND:="ir">"í";<br />
+2PS&PAS&PFV&IND:="ir">"iste";<br />
+3PS&PAS&PFV&IND:="e":"i","ir">"ió";<br />
+1PP&PAS&PFV&IND:="ir">"imos";<br />
+2PP&PAS&PFV&IND:="ir">"isteis";<br />
+3PP&PAS&PFV&IND:="e":"i","ir">"eron";<br />
+
+1PS&FUT&IND:=0>"é";<br />
+2PS&FUT&IND:=0>"ás";<br />
+3PS&FUT&IND:=0>"á";<br />
+1PP&FUT&IND:=0>"emos";<br />
+2PP&FUT&IND:=0>"éis";<br />
+3PP&FUT&IND:=0>"án";<br />
+
+1PS&PRS&CON:=0>"ía";<br /> 
+2PS&PRS&CON:=0>"ías";<br />
+3PS&PRS&CON:=0>"ía";<br />
+1PP&PRS&CON:=0>"íamos";<br />
+2PP&PRS&CON:=0>"íais";<br />
+3PP&PRS&CON:=0>"ían";<br />
+
+1PS&PRS&SUB:="e":"i","uir">"a";<br />
+2PS&PRS&SUB:="e":"i","uir">"as";<br />
+3PS&PRS&SUB:="e":"i","uir">"a";<br />
+1PP&PRS&SUB:="e":"i","uir">"amos";<br />
+2PP&PRS&SUB:="e":"i","uir">"áis";<br />
+3PP&PRS&SUB:="e":"i","uir">"an";<br />
+ 
+1PS&PAS&NPFV&SUB:="e":"i","ir">"iera";<br />
+2PS&PAS&NPFV&SUB:="e":"i","ir">"ieras";<br />
+3PS&PAS&NPFV&SUB:="e":"i","ir">"iera";<br />
+1PP&PAS&NPFV&SUB:="e":"i","ir">"iéramos";<br />
+2PP&PAS&NPFV&SUB:="e":"i","ir">"ierais";<br />
+3PP&PAS&NPFV&SUB:="e":"i","ir">"ieran";<br />
+
+1PS&PAS&NPFV&SUB:="e":"i","ir">"iese";<br />
+2PS&PAS&NPFV&SUB:="e":"i","ir">"ieses";<br />
+3PS&PAS&NPFV&SUB:="e":"i","ir">"iese";<br />
+1PP&PAS&NPFV&SUB:="e":"i","ir">"iésemos";<br />
+2PP&PAS&NPFV&SUB:="e":"i","ir">"ieseis";<br />
+3PP&PAS&NPFV&SUB:="e":"i","ir">"iesen";<br />
+
+2PS&PRS&IMP:="e":"i","ir">"e";<br />
+3PS&PRS&IMP:="e":"i","uir">"a";<br />
+1PP&PRS&IMP:="e":"i","uir">"amos";<br />
+2PP&PRS&IMP:="ir">"id";<br />
+3PP&PRS&IMP:="e":"i","uir">"an";<br /><br /><b>M45</b><br />verbos terminados en -ir que, en algunos tiempos y personas,
+cambian la /o/ por el diptongo /ue/  (<i>dormir</i>)<br />INF:=0>"";<br />GER:="o":"ue","ir">"iendo";<br />
+PTP:="ir">"ido";<br />
+PTP&PLR:="ir">"idos";<br />
+PTP&FEM:="ir">"ida";<br />
+PTP&FEM&PLR:="ir">"idas";<br />
+
+1PS&PRS&IND:="o":"ue","ir">"o";<br />
+2PS&PRS&IND:="o":"ue","ir">"es";<br />
+3PS&PRS&IND:="o":"ue","ir">"e";<br />
+1PP&PRS&IND:="ir">"imos";<br />
+2PP&PRS&IND:="ir">"ís";<br />
+3PP&PRS&IND:="o":"ue","ir">"en";<br />
+
+1PS&PAS&NPFV&IND:="ir">"ía";<br />
+2PS&PAS&NPFV&IND:="ir">"ías";<br />
+3PS&PAS&NPFV&IND:="ir">"ía";<br />
+1PP&PAS&NPFV&IND:="ir">"íamos";<br />
+2PP&PAS&NPFV&IND:="ir">"íais";<br />
+3PP&PAS&NPFV&IND:="ir">"ían";<br />
+
+1PS&PAS&PFV&IND:="ir">"í";<br />
+2PS&PAS&PFV&IND:="ir">"iste";<br />
+3PS&PAS&PFV&IND:="o":"ue","ir">"ió";<br />
+1PP&PAS&PFV&IND:="ir">"imos";<br />
+2PP&PAS&PFV&IND:="ir">"isteis";<br />
+3PP&PAS&PFV&IND:="o":"ue","ir">"ieron";<br />
+
+1PS&FUT&IND:=0>"é";<br />
+2PS&FUT&IND:=0>"ás";<br />
+3PS&FUT&IND:=0>"á";<br />
+1PP&FUT&IND:=0>"emos";<br />
+2PP&FUT&IND:=0>"éis";<br />
+3PP&FUT&IND:=0>"án";<br />
+
+1PS&PRS&CON:=0>"ía";<br /> 
+2PS&PRS&CON:=0>"ías";<br />
+3PS&PRS&CON:=0>"ía";<br />
+1PP&PRS&CON:=0>"íamos";<br />
+2PP&PRS&CON:=0>"íais";<br />
+3PP&PRS&CON:=0>"ían";<br />
+
+1PS&PRS&SUB:="o":"ue","ir">"a";<br />
+2PS&PRS&SUB:="o":"ue","ir">"as";<br />
+3PS&PRS&SUB:="o":"ue","ir">"a";<br />
+1PP&PRS&SUB:="o":"u","ir">"amos";<br />
+2PP&PRS&SUB:="o":"u","ir">"áis";<br />
+3PP&PRS&SUB:="o":"ue","ir">"an";<br />
+ 
+1PS&PAS&NPFV&SUB:="o":"u","ir">"iera";<br />
+2PS&PAS&NPFV&SUB:="o":"u","ir">"ieras";<br />
+3PS&PAS&NPFV&SUB:="o":"u","ir">"iera";<br />
+1PP&PAS&NPFV&SUB:="o":"u","ir">"iéramos";<br />
+2PP&PAS&NPFV&SUB:="o":"u","ir">"ierais";<br />
+3PP&PAS&NPFV&SUB:="o":"u","ir">"ieran";<br />
+
+1PS&PAS&NPFV&SUB:="o":"u","ir">"iese";<br />
+2PS&PAS&NPFV&SUB:="o":"u","ir">"ieses";<br />
+3PS&PAS&NPFV&SUB:="o":"u","ir">"iese";<br />
+1PP&PAS&NPFV&SUB:="o":"u","ir">"iésemos";<br />
+2PP&PAS&NPFV&SUB:="o":"u","ir">"ieseis";<br />
+3PP&PAS&NPFV&SUB:="o":"u","ir">"iesen";<br />
+
+2PS&PRS&IMP:="o":"ue","ir">"e";<br />
+3PS&PRS&IMP:="o":"ue","ir">"a";<br />
+1PP&PRS&IMP:="o":"u","ir">"amos";<br />
+2PP&PRS&IMP:="r">"d";<br />
+3PP&PRS&IMP:="o":"ue","ir">"an";<br /><br /><b>M46</b><br />Sustantivos terminados en -dor con femenino en -triz (<i>emperador</i>)<br />MCL&SNG:=0>"";<br />
+MCL&PLR:=0>"es";<br />FEM&SNG:="dor">"triz";<br />FEM&PLR:="dor">"trices";<br /><br /><b>M47</b><br />verbos terminados en -uir (<i>incluir, excluir, inmiscuir, afluir, atribuir, concluir, confluir, constituir, construir, contribuir, derruir, destituir, destruir, diluir, disminuir, distribuir, efluir, estatuir, fluir, gruir, imbuir, influir, instituir, instruir, intuir, obstruir, ocluir, prostituir, recluir, reconstituir, reconstruir, redistribuir, refluir, restituir, retribuir, substituir, sustituir</i>)<br />INF:=0>"";<br />GER:="ir">"yendo";<br />
+PTP:="ir">"ido";<br />
+PTP&MCL&SNG:="ir">"ido";<br />
+PTP&MCL&PLR:="ir">"idos";<br />
+PTP&FEM&SNG:="ir">"ida";<br />
+PTP&FEM&PLR:="ir">"idas";<br />
+
+1PS&PRS&IND:="ir">"yo";<br />
+2PS&PRS&IND:="ir">"yes";<br />
+3PS&PRS&IND:="ir">"ye";<br />
+1PP&PRS&IND:="ir">"imos";<br />
+2PP&PRS&IND:="ir">"ís";<br />
+3PP&PRS&IND:="ir">"yen";<br />
+
+1PS&PAS&NPFV&IND:="ir">"ía";<br />
+2PS&PAS&NPFV&IND:="ir">"ías";<br />
+3PS&PAS&NPFV&IND:="ir">"ía";<br />
+1PP&PAS&NPFV&IND:="ir">"íamos";<br />
+2PP&PAS&NPFV&IND:="ir">"íais";<br />
+3PP&PAS&NPFV&IND:="ir">"ían";<br />
+
+1PS&PAS&PFV&IND:="ir">"í";<br />
+2PS&PAS&PFV&IND:="ir">"iste";<br />
+3PS&PAS&PFV&IND:="ir">"yó";<br />
+1PP&PAS&PFV&IND:="ir">"imos";<br />
+2PP&PAS&PFV&IND:="ir">"isteis";<br />
+3PP&PAS&PFV&IND:="ir">"yeron";<br />
+
+1PS&FUT&IND:=0>"é";<br />
+2PS&FUT&IND:=0>"ás";<br />
+3PS&FUT&IND:=0>"á";<br />
+1PP&FUT&IND:=0>"emos";<br />
+2PP&FUT&IND:=0>"éis";<br />
+3PP&FUT&IND:=0>"án";<br />
+
+1PS&PRS&CON:=0>"ía";<br /> 
+2PS&PRS&CON:=0>"ías";<br />
+3PS&PRS&CON:=0>"ía";<br />
+1PP&PRS&CON:=0>"íamos";<br />
+2PP&PRS&CON:=0>"íais";<br />
+3PP&PRS&CON:=0>"ían";<br />
+
+1PS&PRS&SUB:="ir">"ya";<br />
+2PS&PRS&SUB:="ir">"yas";<br />
+3PS&PRS&SUB:="ir">"ya";<br />
+1PP&PRS&SUB:="ir">"yamos";<br />
+2PP&PRS&SUB:="ir">"yáis";<br />
+3PP&PRS&SUB:="ir">"yan";<br />
+ 
+1PS&PAS&NPFV&SUB:="ir">"yera";<br />
+2PS&PAS&NPFV&SUB:="ir">"yeras";<br />
+3PS&PAS&NPFV&SUB:="ir">"yera";<br />
+1PP&PAS&NPFV&SUB:="ir">"yéramos";<br />
+2PP&PAS&NPFV&SUB:="ir">"yerais";<br />
+3PP&PAS&NPFV&SUB:="ir">"yeran";<br />
+
+1PS&PAS&NPFV&SUB:="ir">"yese";<br />
+2PS&PAS&NPFV&SUB:="ir">"yeses";<br />
+3PS&PAS&NPFV&SUB:="ir">"yese";<br />
+1PP&PAS&NPFV&SUB:="ir">"yésemos";<br />
+2PP&PAS&NPFV&SUB:="ir">"yeseis";<br />
+3PP&PAS&NPFV&SUB:="ir">"yesen";<br />
+
+2PS&PRS&IMP:="ir">"ye";<br />
+3PS&PRS&IMP:="ir">"ya";<br />
+1PP&PRS&IMP:="ir">"yamos";<br />
+2PP&PRS&IMP:="ir">"id";<br />
+3PP&PRS&IMP:="ir">"yan";<br /><br /><b>M48</b><br />Sustantivos terminados en -án sin variación de género (<i>huracán</i>)<br />SNG:=0>"";<br />
+PLR:="án">"anes";<br /><br /><b>M49</b><br />Sustantivos terminados en -z con variación de género (<i>juez/jueces/jueza</i>)<br />MCL&PLR:="z">"ces";<br />FEM:=0>"a";<br />FEM&PLR:=0>"as";<br /><br /><b>M50</b><br />verbos terminados en -er que, en algunos tiempos y personas,
+cambian la /o/ por el diptongo /ue/ (<i>mover, promover, resolver, volver, morder</i>)<br />INF:=0>"";<br />GER:="er">"iendo";<br />
+PTP:="er">"ido";<br />
+PTP&MCL&SNG:="er">"ido";<br />
+PTP&MCL&PLR:="er">"idos";<br />
+PTP&FEM&SNG:="er">"ida";<br />
+PTP&FEM&PLR:="er">"idas";<br />
+
+1PS&PRS&IND:="o":"ue",2>"o";<br />
+2PS&PRS&IND:="o":"ue",2>"es";<br />
+3PS&PRS&IND:="o":"ue",2>"e";<br />
+1PP&PRS&IND:=2>"emos";<br />
+2PP&PRS&IND:=2>"éis";<br />
+3PP&PRS&IND:="o":"ue",2>"en";<br />
+
+1PS&PAS&NPFV&IND:=2>"ía";<br />
+2PS&PAS&NPFV&IND:=2>"ías";<br />
+3PS&PAS&NPFV&IND:=2>"ía";<br />
+1PP&PAS&NPFV&IND:=2>"íamos";<br />
+2PP&PAS&NPFV&IND:=2>"íais";<br />
+3PP&PAS&NPFV&IND:=2>"ían";<br />
+
+1PS&PAS&PFV&IND:=2>"í";<br />
+2PS&PAS&PFV&IND:=2>"iste";<br />
+3PS&PAS&PFV&IND:=2>"ió";<br />
+1PP&PAS&PFV&IND:=2>"imos";<br />
+2PP&PAS&PFV&IND:=2>"isteis";<br />
+3PP&PAS&PFV&IND:=2>"ieron";<br />
+
+1PS&FUT&IND:=2>"eré";<br />
+2PS&FUT&IND:=2>"erás";<br />
+3PS&FUT&IND:=2>"erá";<br />
+1PP&FUT&IND:=2>"eremos";<br />
+2PP&FUT&IND:=2>"eréis";<br />
+3PP&FUT&IND:=2>"erán";<br />
+
+1PS&PRS&CON:=2>"ería";<br />
+2PS&PRS&CON:=2>"erías";<br />
+3PS&PRS&CON:=2>"ería";<br />
+1PP&PRS&CON:=2>"eríamos";<br />
+2PP&PRS&CON:=2>"eríais";<br />
+3PP&PRS&CON:=2>"erían";<br />
+
+1PS&PRS&SUB:="o":"ue",2>"a";<br />
+2PS&PRS&SUB:="o":"ue",2>"as";<br />
+3PS&PRS&SUB:="o":"ue",2>"a";<br />
+1PP&PRS&SUB:=2>"amos";<br />
+2PP&PRS&SUB:=2>"áis";<br />
+3PP&PRS&SUB:="o":"ue",2>"an";<br />
+
+1PS&PAS&NPFV&SUB:=2>"iera";<br />
+2PS&PAS&NPFV&SUB:=2>"ieras";<br />
+3PS&PAS&NPFV&SUB:=2>"iera";<br />
+1PP&PAS&NPFV&SUB:=2>"iéramos";<br />
+2PP&PAS&NPFV&SUB:=2>"ierais";<br />
+3PP&PAS&NPFV&SUB:=2>"ieran";<br />
+
+1PS&PAS&NPFV&SUB:=2>"iese";<br />
+2PS&PAS&NPFV&SUB:=2>"ieses";<br />
+3PS&PAS&NPFV&SUB:=2>"iese";<br />
+1PP&PAS&NPFV&SUB:=2>"iésemos";<br />
+2PP&PAS&NPFV&SUB:=2>"ieseis";<br />
+3PP&PAS&NPFV&SUB:=2>"iesen";<br />
+
+2PS&PRS&IMP&PRS:="o":"ue",2>"e";<br />
+3PS&PRS&IMP&PRS:="o":"ue",2>"a";<br />
+1PP&PRS&IMP&PRS:=2>"amos";<br />
+2PP&PRS&IMP&PRS:=2>"ed";<br />
+3PP&PRS&IMP&PRS:="o":"ue",2>"an";<br /><br /><b>M51</b><br />verbos regulares terminados en -ger (<i>coger, escoger, encoger, acoger, emerger, proteger, sobrecoger</i>)<br />INF:=0>"";<br />GER:="er">"iendo";<br />
+PTP:="er">"ido";<br />
+PTP&MCL&SNG:="er">"ido";<br />
+PTP&MCL&PLR:="er">"idos";<br />
+PTP&FEM&SNG:="er">"ida";<br />
+PTP&FEM&PLR:="er">"idas";<br />
+
+1PS&PRS&IND:="ger">"jo";<br />
+2PS&PRS&IND:="er">"es";<br />
+3PS&PRS&IND:="er">"e";<br />
+1PP&PRS&IND:="er">"emos";<br />
+2PP&PRS&IND:="er">"éis";<br />
+3PP&PRS&IND:="er">"en";<br />
+
+1PS&PAS&NPFV&IND:="er">"ía";<br />
+2PS&PAS&NPFV&IND:="er">"ías";<br />
+3PS&PAS&NPFV&IND:="er">"ía";<br />
+1PP&PAS&NPFV&IND:="er">"íamos";<br />
+2PP&PAS&NPFV&IND:="er">"íais";<br />
+3PP&PAS&NPFV&IND:="er">"ían";<br />
+
+1PS&PAS&PFV&IND:="er">"í";<br />
+2PS&PAS&PFV&IND:="er">"iste";<br />
+3PS&PAS&PFV&IND:="er">"ió";<br />
+1PP&PAS&PFV&IND:="er">"imos";<br />
+2PP&PAS&PFV&IND:="er">"isteis";<br />
+3PP&PAS&PFV&IND:="er">"ieron";<br />
+
+1PS&FUT&IND:=0>"é";<br />
+2PS&FUT&IND:=0>"ás";<br />
+3PS&FUT&IND:=0>"á";<br />
+1PP&FUT&IND:=0>"emos";<br />
+2PP&FUT&IND:=0>"éis";<br />
+3PP&FUT&IND:=0>"án";<br />
+
+1PS&PRS&CON:=0>"ía";<br />
+2PS&PRS&CON:=0>"ías";<br />
+3PS&PRS&CON:=0>"ía";<br />
+1PP&PRS&CON:=0>"íamos";<br />
+2PP&PRS&CON:=0>"íais";<br />
+3PP&PRS&CON:=0>"ían";<br />
+
+1PS&PRS&SUB:="ger">"ja";<br />
+2PS&PRS&SUB:="ger">"jas";<br />
+3PS&PRS&SUB:="ger">"ja";<br />
+1PP&PRS&SUB:="ger">"jamos";<br />
+2PP&PRS&SUB:="ger">"jáis";<br />
+3PP&PRS&SUB:="ger">"jan";<br />
+
+1PS&PAS&NPFV&SUB:="er">"iera";<br />
+2PS&PAS&NPFV&SUB:="er">"ieras";<br />
+3PS&PAS&NPFV&SUB:="er">"iera";<br />
+1PP&PAS&NPFV&SUB:="er">"iéramos";<br /> 
+2PP&PAS&NPFV&SUB:="er">"ierais";<br />
+3PP&PAS&NPFV&SUB:="er">"ieran";<br />
+ 
+1PS&FUT&SUB:="er">"iere";<br />
+2PS&FUT&SUB:="er">"ieres";<br />
+3PS&FUT&SUB:="er">"iere";<br />
+1PP&FUT&SUB:="er">"iéremos";<br />
+2PP&FUT&SUB:="er">"iereis";<br />
+3PP&FUT&SUB:="er">"ieren";<br />
+
+2PS&PRS&IMP:="er">"e";<br />
+3PS&PRS&IMP:="ger">"ja";<br />
+1PP&PRS&IMP:="ger">"jamos";<br />
+2PP&PRS&IMP:="er">"ed";<br />
+3PP&PRS&IMP:="ger">"jan";<br /><br /><b>M52</b><br />verbos terminados en -ar que, en algunos tiempos y personas,
+cambian la /e/ por el diptongo /ie/  (<i>acertar, atestar, gobernar, sembrar</i>)<br />INF:=0>"";<br />GER:="r">"ndo";<br />
+PTP:="r">"do";<br />
+PTP&MCL&SNG:="r">"do";<br />
+PTP&MCL&PLR:="r">"dos";<br />
+PTP&FEM&SNG:="r">"da";<br />
+PTP&FEM&PLR:="r">"das";<br />
+
+1PS&PRS&IND:="e":"ie","ar">"o";<br />
+2PS&PRS&IND:="e":"ie","ar">"as";<br />
+3PS&PRS&IND:="e":"ie","ar">"a";<br />
+1PP&PRS&IND:="ar">"amos";<br />
+2PP&PRS&IND:="ar">"áis";<br />
+3PP&PRS&IND:="e":"ie","ar">"an";<br />
+
+1PS&PAS&NPFV&IND:="ar">"aba";<br />
+2PS&PAS&NPFV&IND:="ar">"abas";<br />
+3PS&PAS&NPFV&IND:="ar">"aba";<br />
+1PP&PAS&NPFV&IND:="ar">"ábamos";<br />
+2PP&PAS&NPFV&IND:="ar">"abais";<br />
+3PP&PAS&NPFV&IND:="ar">"aban";<br />
+
+1PS&PAS&PFV&IND:="ar">"é";<br />
+2PS&PAS&PFV&IND:="ar">"aste";<br />
+3PS&PAS&PFV&IND:="ar">"ó";<br />
+1PP&PAS&PFV&IND:="ar">"amos";<br />
+2PP&PAS&PFV&IND:="ar">"asteis";<br />
+3PP&PAS&PFV&IND:="ar">"aron";<br />
+
+1PS&FUT&IND:=0>"é";<br />
+2PS&FUT&IND:=0>"ás";<br />
+3PS&FUT&IND:=0>"á";<br />
+1PP&FUT&IND:=0>"emos";<br />
+2PP&FUT&IND:=0>"éis";<br />
+3PP&FUT&IND:=0>"án";<br />
+
+1PS&PRS&CON:=0>"ía";<br />
+2PS&PRS&CON:=0>"ías";<br />
+3PS&PRS&CON:=0>"ía";<br />
+1PP&PRS&CON:=0>"íamos";<br />
+2PP&PRS&CON:=0>"íais";<br />
+3PP&PRS&CON:=0>"ían";<br />
+
+1PS&PRS&SUB:="e":"ie","ar">"e";<br />
+2PS&PRS&SUB:="e":"ie","ar">"es";<br />
+3PS&PRS&SUB:="e":"ie","ar">"e";<br />
+1PP&PRS&SUB:="ar">"emos";<br />
+2PP&PRS&SUB:="ar">"éis";<br />
+3PP&PRS&SUB:="e":"ie","ar">"en";<br />
+
+1PS&PAS&NPFV&SUB:="ar">"ara";<br />
+2PS&PAS&NPFV&SUB:="ar">"aras";<br />
+3PS&PAS&NPFV&SUB:="ar">"ara";<br />
+1PP&PAS&NPFV&SUB:="ar">"áramos";<br />
+2PP&PAS&NPFV&SUB:="ar">"arais";<br />
+3PP&PAS&NPFV&SUB:="ar">"aran";<br />
+
+1PS&PAS&NPFV&SUB:="ar">"ase";<br />
+2PS&PAS&NPFV&SUB:="ar">"ases";<br />
+3PS&PAS&NPFV&SUB:="ar">"ase";<br />
+1PP&PAS&NPFV&SUB:="ar">"ásemos";<br />
+2PP&PAS&NPFV&SUB:="ar">"aseis";<br />
+3PP&PAS&NPFV&SUB:="ar">"asen";<br />
+
+2PS&PRS&IMP:="e":"ie","ar">"a";<br />
+3PS&PRS&IMP:="e":"ie","ar">"e";<br />
+1PP&PRS&IMP:="ar">"emos";<br />
+2PP&PRS&IMP:="ar">"ad";<br />
+3PP&PRS&IMP:="e":"ie","ar">"en";<br /><br /><b>M53</b><br />verbo irregular (<i>tener, retener, mantener, sostener, contener</i>)<br />INF:=0>"";<br />GER:="er">"iendo";<br />
+PTP:="er">"ido";<br />
+PTP&MCL&SNG:="er">"ido";<br />
+PTP&MCL&PLR:="er">"idos";<br />
+PTP&FEM&SNG:="er">"ida";<br />
+PTP&FEM&PLR:="er">"idas";<br />
+
+1PS&PRS&IND:="er">"go";<br />
+2PS&PRS&IND:="ener">"ienes";<br />
+3PS&PRS&IND:="ener">"iene";<br />
+1PP&PRS&IND:="er">"emos";<br />
+2PP&PRS&IND:="er">"éis";<br />
+3PP&PRS&IND:="ener">"ienen";<br />
+
+1PS&PAS&NPFV&IND:="er">"ía";<br />
+2PS&PAS&NPFV&IND:="er">"ías";<br />
+3PS&PAS&NPFV&IND:="er">"ía";<br />
+1PP&PAS&NPFV&IND:="er">"íamos";<br />
+2PP&PAS&NPFV&IND:="er">"íais";<br />
+3PP&PAS&NPFV&IND:="er">"ían";<br />
+
+1PS&PAS&PFV&IND:="ener">"uve";<br />
+2PS&PAS&PFV&IND:="ener">"uviste";<br />
+3PS&PAS&PFV&IND:="ener">"uvo";<br />
+1PP&PAS&PFV&IND:="ener">"uvimos";<br />
+2PP&PAS&PFV&IND:="ener">"uvisteis";<br />
+3PP&PAS&PFV&IND:="ener">"uvieron";<br />
+
+1PS&FUT&IND:="er">"dré";<br />
+2PS&FUT&IND:="er">"drás";<br />
+3PS&FUT&IND:="er">"drá";<br />
+1PP&FUT&IND:="er">"dremos";<br />
+2PP&FUT&IND:="er">"dréis";<br />
+3PP&FUT&IND:="er">"drán";<br />
+
+1PS&PRS&CON:="er">"dría";<br />
+2PS&PRS&CON:="er">"drías";<br />
+3PS&PRS&CON:="er">"dría";<br />
+1PP&PRS&CON:="er">"dríamos";<br />
+2PP&PRS&CON:="er">"dríais";<br />
+3PP&PRS&CON:="er">"drían";<br />
+
+1PS&PRS&SUB:="er">"ga";<br />
+2PS&PRS&SUB:="er">"gas";<br />
+3PS&PRS&SUB:="er">"ga";<br />
+1PP&PRS&SUB:="er">"gamos";<br />
+2PP&PRS&SUB:="er">"gáis";<br />
+3PP&PRS&SUB:="er">"gan";<br />
+
+1PS&PAS&NPFV&SUB:="ener">"uviera";<br />
+2PS&PAS&NPFV&SUB:="ener">"uvieras";<br />
+3PS&PAS&NPFV&SUB:="ener">"uviera";<br />
+1PP&PAS&NPFV&SUB:="ener">"uviéramos";<br />
+2PP&PAS&NPFV&SUB:="ener">"uvierais";<br />
+3PP&PAS&NPFV&SUB:="ener">"uvieran";<br />
+
+1PS&PAS&NPFV&SUB:="ener">"uviese";<br />
+2PS&PAS&NPFV&SUB:="ener">"uvieses";<br />
+3PS&PAS&NPFV&SUB:="ener">"uviese";<br />
+1PP&PAS&NPFV&SUB:="ener">"uviésemos";<br />
+2PP&PAS&NPFV&SUB:="ener">"uvieseis";<br />
+3PP&PAS&NPFV&SUB:="ener">"uviesen";<br />
+
+2PS&PRS&IMP:="ner">"n";<br />
+3PS&PRS&IMP:="ner">"nga";<br />
+1PP&PRS&IMP:="ner">"ngamos";<br />
+2PP&PRS&IMP:="ner">"ned";<br />
+3PP&PRS&IMP:="ner">"ngan";<br /><br /><b>M54</b><br />verbo irregular (<i>poder</i>)<br />INF:=0>"";<br />GER:="oder">"udiendo";<br />
+PTP:="er">"ido";<br />
+
+1PS&PRS&IND:="puedo";<br />
+2PS&PRS&IND:="puedes";<br />
+3PS&PRS&IND:="puede";<br />
+1PP&PRS&IND:="podemos";<br />
+2PP&PRS&IND:="podéis";<br />
+3PP&PRS&IND:="pueden";<br />
+
+1PS&PAS&NPFV&IND:="er">"ía";<br />
+2PS&PAS&NPFV&IND:="er">"ías";<br />
+3PS&PAS&NPFV&IND:="er">"ía";<br />
+1PP&PAS&NPFV&IND:="er">"íamos";<br />
+2PP&PAS&NPFV&IND:="er">"íais";<br />
+3PP&PAS&NPFV&IND:="er">"ían";<br />
+
+1PS&PAS&PFV&IND:="oder">"ude";<br />
+2PS&PAS&PFV&IND:="oder">"usiste";<br />
+3PS&PAS&PFV&IND:="oder">"uso";<br />
+1PP&PAS&PFV&IND:="oder">"usimos";<br />
+2PP&PAS&PFV&IND:="oder">"usisteis";<br />
+3PP&PAS&PFV&IND:="oder">"usieron";<br />
+
+1PS&FUT&IND:="er">"ré";<br />
+2PS&FUT&IND:="er">"rás";<br />
+3PS&FUT&IND:="er">"rá";<br />
+1PP&FUT&IND:="er">"remos";<br />
+2PP&FUT&IND:="er">"réis";<br />
+3PP&FUT&IND:="er">"rán";<br />
+
+1PS&PRS&CON:="er">"ría";<br />
+2PS&PRS&CON:="er">"rías";<br />
+3PS&PRS&CON:="er">"ría";<br />
+1PP&PRS&CON:="er">"ríamos";<br />
+2PP&PRS&CON:="er">"ríais";<br />
+3PP&PRS&CON:="er">"rían";<br />
+
+1PS&PRS&SUB:="pueda";<br />
+2PS&PRS&SUB:="puedas";<br />
+3PS&PRS&SUB:="pueda";<br />
+1PP&PRS&SUB:="podamos";<br />
+2PP&PRS&SUB:="podáis";<br />
+3PP&PRS&SUB:="puedan";<br />
+
+1PS&PAS&NPFV&SUB:="oder">"udiera";<br />
+2PS&PAS&NPFV&SUB:="oder">"udieras";<br />
+3PS&PAS&NPFV&SUB:="oder">"udiera";<br />
+1PP&PAS&NPFV&SUB:="oder">"udiéramos";<br />
+2PP&PAS&NPFV&SUB:="oder">"udierais";<br />
+3PP&PAS&NPFV&SUB:="oder">"udieran";<br />
+
+1PS&PAS&NPFV&SUB:="oder">"udiesea";<br />
+2PS&PAS&NPFV&SUB:="oder">"udieses";<br />
+3PS&PAS&NPFV&SUB:="oder">"udiese";<br />
+1PP&PAS&NPFV&SUB:="oder">"udiésemos";<br />
+2PP&PAS&NPFV&SUB:="oder">"udieseis";<br />
+3PP&PAS&NPFV&SUB:="oder">"udiesen";<br />
+
+2PS&PRS&IMP:="oder">"uede";<br />
+3PS&PRS&IMP:="oder">"ueda";<br />
+1PP&PRS&IMP:="oder">"odamos";<br />
+2PP&PRS&IMP:="oder">"oded";<br />
+3PP&PRS&IMP:="oder">"uedan";<br /><br /><b>M55</b><br />verbos regulares terminados en -gar sin cambio en la raíz (<i>interrogar, llegar, apagar</i>)<br />INF:=0>"";<br />GER:="r">"ndo";<br />
+PTP:="r">"do";<br />
+PTP&MCL&SNG:="r">"do";<br />
+PTP&MCL&PLR:="r">"dos";<br />
+PTP&FEM&SNG:="r">"da";<br />
+PTP&FEM&PLR:="r">"das";<br />
+
+1PS&PRS&IND:="ar">"o";<br />
+2PS&PRS&IND:="ar">"as";<br />
+3PS&PRS&IND:="ar">"a";<br />
+1PP&PRS&IND:="ar">"amos";<br />
+2PP&PRS&IND:="ar">"áis";<br />
+3PP&PRS&IND:="ar">"an";<br />
+
+1PS&PAS&NPFV&IND:="ar">"aba";<br />
+2PS&PAS&NPFV&IND:="ar">"abas";<br />
+3PS&PAS&NPFV&IND:="ar">"aba";<br />
+1PP&PAS&NPFV&IND:="ar">"ábamos";<br />
+2PP&PAS&NPFV&IND:="ar">"abais";<br />
+3PP&PAS&NPFV&IND:="ar">"aban";<br />
+
+1PS&PAS&PFV&IND:="ar">"ué";<br />
+2PS&PAS&PFV&IND:="ar">"aste";<br />
+3PS&PAS&PFV&IND:="ar">"ó";<br />
+1PP&PAS&PFV&IND:="ar">"amos";<br />
+2PP&PAS&PFV&IND:="ar">"asteis";<br />
+3PP&PAS&PFV&IND:="ar">"aron";<br />
+
+1PS&FUT&IND:=0>"é";<br />
+2PS&FUT&IND:=0>"ás";<br />
+3PS&FUT&IND:=0>"á";<br />
+1PP&FUT&IND:=0>"emos";<br />
+2PP&FUT&IND:=0>"éis";<br />
+3PP&FUT&IND:=0>"án";<br />
+
+1PS&PRS&CON:=0>"ía";<br />
+2PS&PRS&CON:=0>"ías";<br />
+3PS&PRS&CON:=0>"ía";<br />
+1PP&PRS&CON:=0>"íamos";<br />
+2PP&PRS&CON:=0>"íais";<br />
+3PP&PRS&CON:=0>"ían";<br />
+
+1PS&PRS&SUB:="ar">"ue";<br />
+2PS&PRS&SUB:="ar">"ues";<br />
+3PS&PRS&SUB:="ar">"ue";<br />
+1PP&PRS&SUB:="ar">"uemos";<br />
+2PP&PRS&SUB:="ar">"uéis";<br />
+3PP&PRS&SUB:="ar">"uen";<br />
+
+1PS&PAS&NPFV&SUB:="ar">"ara";<br />
+2PS&PAS&NPFV&SUB:="ar">"aras";<br />
+3PS&PAS&NPFV&SUB:="ar">"ara";<br />
+1PP&PAS&NPFV&SUB:="ar">"áramos";<br />
+2PP&PAS&NPFV&SUB:="ar">"arais";<br />
+3PP&PAS&NPFV&SUB:="ar">"aran";<br />
+
+1PS&PAS&NPFV&SUB:="ar">"ase";<br />
+2PS&PAS&NPFV&SUB:="ar">"ases";<br />
+3PS&PAS&NPFV&SUB:="ar">"ase";<br />
+1PP&PAS&NPFV&SUB:="ar">"ásemos";<br />
+2PP&PAS&NPFV&SUB:="ar">"aseis";<br />
+3PP&PAS&NPFV&SUB:="ar">"asen";<br />
+
+2PS&PRS&IMP:="ar">"a";<br />
+3PS&PRS&IMP:="ar">"ue";<br />
+1PP&PRS&IMP:="ar">"uemos";<br />
+2PP&PRS&IMP:="ar">"ad";<br />
+3PP&PRS&IMP:="ar">"uen";<br /><br /><b>M56</b><br />verbo irregular (<i>hacer, satisfacer, deshacer</i>)<br />INF:=0>"";<br />GER:="er">"iendo";<br />
+PTP:="acer">"echo";<br />
+PTP&MCL&SNG:="acer">"echo"
+PTP&MCL&PLR:="acer">"echos";<br />
+PTP&FEM&SNG:="acer">"echa";<br />
+PTP&FEM&PLR:="acer">"echas";<br />
+
+1PS&PRS&IND:="cer">"go";<br />
+2PS&PRS&IND:="er">"es";<br />
+3PS&PRS&IND:="er">"e";<br />
+1PP&PRS&IND:="er">"emos";<br />
+2PP&PRS&IND:="er">"éis";<br />
+3PP&PRS&IND:="er">"en";<br />
+
+1PS&PAS&NPFV&IND:="er">"ía";<br />
+2PS&PAS&NPFV&IND:="er">"ías";<br />
+3PS&PAS&NPFV&IND:="er">"ía";<br />
+1PP&PAS&NPFV&IND:="er">"íamos";<br />
+2PP&PAS&NPFV&IND:="er">"íais";<br />
+3PP&PAS&NPFV&IND:="er">"ían";<br />
+
+1PS&PAS&PFV&IND:="acer">"ice";<br />
+2PS&PAS&PFV&IND:="acer">"iciste";<br />
+3PS&PAS&PFV&IND:="acer">"izo";<br />
+1PP&PAS&PFV&IND:="acer">"icimos";<br />
+2PP&PAS&PFV&IND:="acer">"icisteis";<br />
+3PP&PAS&PFV&IND:="acer">"icieron";<br />
+
+1PS&FUT&IND:="cer">"ré";<br />
+2PS&FUT&IND:="cer">"rás";<br />
+3PS&FUT&IND:="cer">"rá";<br />
+1PP&FUT&IND:="cer">"remos";<br />
+2PP&FUT&IND:="cer">"réis";<br />
+3PP&FUT&IND:="cer">"rán";<br />
+
+1PS&PRS&CON:="cer">"ría";<br />
+2PS&PRS&CON:="cer">"rías";<br />
+3PS&PRS&CON:="cer">"ría";<br />
+1PP&PRS&CON:="cer">"ríamos";<br />
+2PP&PRS&CON:="cer">"ríais";<br />
+3PP&PRS&CON:="cer">"rían";<br />
+
+1PS&PRS&SUB:="cer">"ga";<br />
+2PS&PRS&SUB:="cer">"gas";<br />
+3PS&PRS&SUB:="cer">"ga";<br />
+1PP&PRS&SUB:="cer">"gamos";<br />
+2PP&PRS&SUB:="cer">"gáis";<br />
+3PP&PRS&SUB:="cer">"gan";<br />
+
+1PS&PAS&NPFV&SUB:="acer">"iciera";<br />
+2PS&PAS&NPFV&SUB:="acer">"icieras";<br />
+3PS&PAS&NPFV&SUB:="acer">"iciera";<br />
+1PP&PAS&NPFV&SUB:="acer">"iciéramos";<br />
+2PP&PAS&NPFV&SUB:="acer">"icierais";<br />
+3PP&PAS&NPFV&SUB:="acer">"icieran";<br />
+
+1PS&PAS&NPFV&SUB:="acer">"iciese";<br />
+2PS&PAS&NPFV&SUB:="acer">"icieses";<br />
+3PS&PAS&NPFV&SUB:="acer">"iciese";<br />
+1PP&PAS&NPFV&SUB:="acer">"iciésemos";<br />
+2PP&PAS&NPFV&SUB:="acer">"icieseis";<br />
+3PP&PAS&NPFV&SUB:="acer">"iciesen";<br />
+
+2PS&PRS&IMP:="cer">"z";<br />
+3PS&PRS&IMP:="cer">"ga";<br />
+1PP&PRS&IMP:="cer">"gamos";<br />
+2PP&PRS&IMP:="cer">"ced";<br />
+3PP&PRS&IMP:="cer">"gan";<br /><br /><b>M57</b><br />verbos regulares terminados en -eer  (<i>leer, poseer, desposeer, proveer, releer, sobreseer, creer</i>)<br />INF:=0>"";<br />GER:="er">"yendo";<br />
+PTP:="er">"ído";<br />
+PTP&MCL&SNG:="er">"ído";<br />
+PTP&MCL&PLR:="er">"ídos";<br />
+PTP&FEM&SNG:="er">"ída";<br />
+PTP&FEM&PLR:="er">"ídas";<br />
+
+1PS&PRS&IND:="er">"o";<br />
+2PS&PRS&IND:="er">"es";<br />
+3PS&PRS&IND:="er">"e";<br />
+1PP&PRS&IND:="er">"emos";<br />
+2PP&PRS&IND:="er">"éis";<br />
+3PP&PRS&IND:="er">"en";<br />
+
+1PS&PAS&NPFV&IND:="er">"ía";<br />
+2PS&PAS&NPFV&IND:="er">"ías";<br />
+3PS&PAS&NPFV&IND:="er">"ía";<br />
+1PP&PAS&NPFV&IND:="er">"íamos";<br />
+2PP&PAS&NPFV&IND:="er">"íais";<br />
+3PP&PAS&NPFV&IND:="er">"ían";<br />
+
+1PS&PAS&PFV&IND:="er">"í";<br />
+2PS&PAS&PFV&IND:="er">"íste";<br />
+3PS&PAS&PFV&IND:="er">"yó";<br />
+1PP&PAS&PFV&IND:="er">"ímos";<br />
+2PP&PAS&PFV&IND:="er">"ísteis";<br />
+3PP&PAS&PFV&IND:="er">"yeron";<br />
+
+1PS&FUT&IND:=0>"é";<br />
+2PS&FUT&IND:=0>"ás";<br />
+3PS&FUT&IND:=0>"á";<br />
+1PP&FUT&IND:=0>"emos";<br />
+2PP&FUT&IND:=0>"éis";<br />
+3PP&FUT&IND:=0>"án";<br />
+
+1PS&PRS&CON:=0>"ía";<br />
+2PS&PRS&CON:=0>"ías";<br />
+3PS&PRS&CON:=0>"ía";<br />
+1PP&PRS&CON:=0>"íamos";<br />
+2PP&PRS&CON:=0>"íais";<br />
+3PP&PRS&CON:=0>"ían";<br />
+
+1PS&PRS&SUB:="er">"a";<br />
+2PS&PRS&SUB:="er">"as";<br />
+3PS&PRS&SUB:="er">"a";<br />
+1PP&PRS&SUB:="er">"amos";<br />
+2PP&PRS&SUB:="er">"áis";<br />
+3PP&PRS&SUB:="er">"an";<br />
+
+1PS&PAS&NPFV&SUB:="er">"yera";<br />
+2PS&PAS&NPFV&SUB:="er">"yeras";<br />
+3PS&PAS&NPFV&SUB:="er">"yera";<br />
+1PP&PAS&NPFV&SUB:="er">"yéramos";<br />
+2PP&PAS&NPFV&SUB:="er">"yerais";<br />
+3PP&PAS&NPFV&SUB:="er">"yeran";<br />
+
+1PS&PAS&NPFV&SUB:="er">"yese";<br />
+2PS&PAS&NPFV&SUB:="er">"yeses";<br />
+3PS&PAS&NPFV&SUB:="er">"yese";<br />
+1PP&PAS&NPFV&SUB:="er">"yésemos";<br />
+2PP&PAS&NPFV&SUB:="er">"yeseis";<br />
+3PP&PAS&NPFV&SUB:="er">"yesen";<br />
+
+2PS&PRS&IMP:="er">"e";<br />
+3PS&PRS&IMP:="er">"a";<br />
+1PP&PRS&IMP:="er">"amos";<br />
+2PP&PRS&IMP:="er">"ed";<br />
+3PP&PRS&IMP:="er">"an";<br /><br /><b>M58</b><br />verbos regulares terminados en -cer (c>zc) (<i>abastecer, permanecer, comparecer</i>)<br />INF:=0>"";<br />GER:="er">"iendo";<br />
+PTP:="er">"ido";<br />
+PTP&MCL&SNG:="er">"ido";<br />
+PTP&MCL&PLR:="er">"idos";<br />
+PTP&FEM&SNG:="er">"ida";<br />
+PTP&FEM&PLR:="er">"idas";<br />
+
+1PS&PRS&IND:="cer">"zco";<br />
+2PS&PRS&IND:="er">"es";<br />
+3PS&PRS&IND:="er">"e";<br />
+1PP&PRS&IND:="er">"emos";<br />
+2PP&PRS&IND:="er">"éis";<br />
+3PP&PRS&IND:="er">"en";<br />
+
+1PS&PAS&NPFV&IND:="er">"ía";<br />
+2PS&PAS&NPFV&IND:="er">"ías";<br />
+3PS&PAS&NPFV&IND:="er">"ía";<br />
+1PP&PAS&NPFV&IND:="er">"íamos";<br />
+2PP&PAS&NPFV&IND:="er">"íais";<br />
+3PP&PAS&NPFV&IND:="er">"ían";<br />
+
+1PS&PAS&PFV&IND:="er">"í";<br />
+2PS&PAS&PFV&IND:="er">"iste";<br />
+3PS&PAS&PFV&IND:="er">"ió";<br />
+1PP&PAS&PFV&IND:="er">"imos";<br />
+2PP&PAS&PFV&IND:="er">"isteis";<br />
+3PP&PAS&PFV&IND:="er">"ieron";<br />
+
+1PS&FUT&IND:=0>"é";<br />
+2PS&FUT&IND:=0>"ás";<br />
+3PS&FUT&IND:=0>"á";<br />
+1PP&FUT&IND:=0>"emos";<br />
+2PP&FUT&IND:=0>"éis";<br />
+3PP&FUT&IND:=0>"án";<br />
+
+1PS&PRS&CON:=0>"ía";<br />
+2PS&PRS&CON:=0>"ías";<br />
+3PS&PRS&CON:=0>"ía";<br />
+1PP&PRS&CON:=0>"íamos";<br />
+2PP&PRS&CON:=0>"íais";<br />
+3PP&PRS&CON:=0>"ían";<br />
+
+1PS&PRS&SUB:="cer">"zca";<br />
+2PS&PRS&SUB:="cer">"zcas";<br />
+3PS&PRS&SUB:="cer">"zca";<br />
+1PP&PRS&SUB:="cer">"zcamos";<br />
+2PP&PRS&SUB:="cer">"zcáis";<br />
+3PP&PRS&SUB:="cer">"zcan";<br />
+
+1PS&PAS&NPFV&SUB:="er">"iera";<br />
+2PS&PAS&NPFV&SUB:="er">"ieras";<br />
+3PS&PAS&NPFV&SUB:="er">"iera";<br />
+1PP&PAS&NPFV&SUB:="er">"iéramos";<br />
+2PP&PAS&NPFV&SUB:="er">"ierais";<br />
+3PP&PAS&NPFV&SUB:="er">"ieran";<br />
+
+1PS&PAS&NPFV&SUB:="er">"iese";<br />
+2PS&PAS&NPFV&SUB:="er">"ieses";<br />
+3PS&PAS&NPFV&SUB:="er">"iese";<br />
+1PP&PAS&NPFV&SUB:="er">"iésemos";<br />
+2PP&PAS&NPFV&SUB:="er">"ieseis";<br />
+3PP&PAS&NPFV&SUB:="er">"iesen";<br />
+
+2PS&PRS&IMP:="er">"e";<br />
+3PS&PRS&IMP:="cer">"zca";<br />
+1PP&PRS&IMP:="cer">"zcamos";<br />
+2PP&PRS&IMP:="er">"ed";<br />
+3PP&PRS&IMP:="cer">"zcan";<br /><br /><b>M59</b><br />verbo irregular (<i>ver</i>)<br />INF:=0>"";<br />GER:="er">"iendo";<br />
+PTP:="ver">"visto";<br />
+PTP&MCL&SNG:="ver">"visto";<br />
+PTP&MCL&PLR:="ver">"vistos";<br />
+PTP&FEM&SNG:="ver">"vista";<br />
+PTP&FEM&PLR:="ver">"vistas";<br />
+
+1PS&PRS&IND:="r">"o";<br />
+2PS&PRS&IND:="er">"es";<br />
+3PS&PRS&IND:="er">"e";<br />
+1PP&PRS&IND:="er">"emos";<br />
+2PP&PRS&IND:="er">"eis";<br />
+3PP&PRS&IND:="er">"en";<br />
+
+1PS&PAS&NPFV&IND:="r">"ía";<br />
+2PS&PAS&NPFV&IND:="r">"ías";<br />
+3PS&PAS&NPFV&IND:="r">"ía";<br />
+1PP&PAS&NPFV&IND:="r">"íamos";<br />
+2PP&PAS&NPFV&IND:="r">"íais";<br />
+3PP&PAS&NPFV&IND:="r">"ían";<br />
+
+1PS&PAS&PFV&IND:="er">"i";<br />
+2PS&PAS&PFV&IND:="er">"iste";<br />
+3PS&PAS&PFV&IND:="er">"io";<br />
+1PP&PAS&PFV&IND:="er">"imos";<br />
+2PP&PAS&PFV&IND:="er">"isteis";<br />
+3PP&PAS&PFV&IND:="er">"ieron";<br />
+
+1PS&FUT&IND:=0>"é";<br />
+2PS&FUT&IND:=0>"ás";<br />
+3PS&FUT&IND:=0>"á";<br />
+1PP&FUT&IND:=0>"emos";<br />
+2PP&FUT&IND:=0>"éis";<br />
+3PP&FUT&IND:=0>"án";<br />
+
+1PS&PRS&CON:=0>"ía";<br />
+2PS&PRS&CON:=0>"ías";<br />
+3PS&PRS&CON:=0>"ía";<br />
+1PP&PRS&CON:=0>"íamos";<br />
+2PP&PRS&CON:=0>"íais";<br />
+3PP&PRS&CON:=0>"ían";<br />
+
+1PS&PRS&SUB:="r">"a";<br />
+2PS&PRS&SUB:="r">"as";<br />
+3PS&PRS&SUB:="r">"a";<br />
+1PP&PRS&SUB:="r">"amos";<br />
+2PP&PRS&SUB:="r">"áis";<br />
+3PP&PRS&SUB:="r">"an";<br />
+
+1PS&PAS&NPFV&SUB:="er">"iera";<br />
+2PS&PAS&NPFV&SUB:="er">"ieras";<br />
+3PS&PAS&NPFV&SUB:="er">"iera";<br />
+1PP&PAS&NPFV&SUB:="er">"iéramos";<br />
+2PP&PAS&NPFV&SUB:="er">"ierais";<br />
+3PP&PAS&NPFV&SUB:="er">"ieran";<br />
+
+1PS&PAS&NPFV&SUB:="er">"iese";<br />
+2PS&PAS&NPFV&SUB:="er">"ieses";<br />
+3PS&PAS&NPFV&SUB:="er">"iese";<br />
+1PP&PAS&NPFV&SUB:="er">"iésemos";<br />
+2PP&PAS&NPFV&SUB:="er">"ieseis";<br />
+3PP&PAS&NPFV&SUB:="er">"iesen";<br />
+
+2PS&PRS&IMP:="er">"e";<br />
+3PS&PRS&IMP:="r">"a";<br />
+1PP&PRS&IMP:="r">"amos";<br />
+2PP&PRS&IMP:="r">"d";<br />
+3PP&PRS&IMP:="r">"an";<br /><br /><b>M60</b><br />verbos terminados en -ar que, en algunos tiempos y personas,
+cambian la /o/ por el diptongo /ue/  (<i>recordar, acordar, concordar, desacordar, discordar</i>)<br />INF:=0>"";<br />GER:="r">"ndo";<br />
+PTP:="r">"do";<br />
+PTP&MCL&SNG:="r">"do";<br />
+PTP&MCL&PLR:="r">"dos";<br />
+PTP&FEM&SNG:="r">"da";<br />
+PTP&FEM&PLR:="r">"das";<br />
+
+1PS&PRS&IND:="o":"ue","ar">"o";<br />
+2PS&PRS&IND:="o":"ue","ar">"as";<br />
+3PS&PRS&IND:="o":"ue","ar">"a";<br />
+1PP&PRS&IND:="ar">"amos";<br />
+2PP&PRS&IND:="ar">"áis";<br />
+3PP&PRS&IND:="o":"ue","ar">"an";<br />
+
+1PS&PAS&NPFV&IND:="ar">"aba";<br />
+2PS&PAS&NPFV&IND:="ar">"abas";<br />
+3PS&PAS&NPFV&IND:="ar">"aba";<br />
+1PP&PAS&NPFV&IND:="ar">"ábamos";<br />
+2PP&PAS&NPFV&IND:="ar">"abais";<br />
+3PP&PAS&NPFV&IND:="ar">"aban";<br />
+
+1PS&PAS&PFV&IND:="ar">"é";<br />
+2PS&PAS&PFV&IND:="ar">"aste";<br />
+3PS&PAS&PFV&IND:="ar">"ó";<br />
+1PP&PAS&PFV&IND:="ar">"amos";<br />
+2PP&PAS&PFV&IND:="ar">"asteis";<br />
+3PP&PAS&PFV&IND:="ar">"aron";<br />
+
+1PS&FUT&IND:=0>"é";<br />
+2PS&FUT&IND:=0>"ás";<br />
+3PS&FUT&IND:=0>"á";<br />
+1PP&FUT&IND:=0>"emos";<br />
+2PP&FUT&IND:=0>"éis";<br />
+3PP&FUT&IND:=0>"án";<br />
+
+1PS&PRS&CON:=0>"ía";<br />
+2PS&PRS&CON:=0>"ías";<br />
+3PS&PRS&CON:=0>"ía";<br />
+1PP&PRS&CON:=0>"íamos";<br />
+2PP&PRS&CON:=0>"íais";<br />
+3PP&PRS&CON:=0>"ían";<br />
+
+1PS&PRS&SUB:="o":"ue","ar">"e";<br />
+2PS&PRS&SUB:="o":"ue","ar">"es";<br />
+3PS&PRS&SUB:="o":"ue","ar">"e";<br />
+1PP&PRS&SUB:="ar">"emos";<br />
+2PP&PRS&SUB:="ar">"éis";<br />
+3PP&PRS&SUB:="o":"ue","ar">"en";<br />
+
+1PS&PAS&NPFV&SUB:="ar">"ara";<br />
+2PS&PAS&NPFV&SUB:="ar">"aras";<br />
+3PS&PAS&NPFV&SUB:="ar">"ara";<br />
+1PP&PAS&NPFV&SUB:="ar">"áramos";<br />
+2PP&PAS&NPFV&SUB:="ar">"arais";<br />
+3PP&PAS&NPFV&SUB:="ar">"aran";<br />
+
+1PS&PAS&NPFV&SUB:="ar">"ase";<br />
+2PS&PAS&NPFV&SUB:="ar">"ases";<br />
+3PS&PAS&NPFV&SUB:="ar">"ase";<br />
+1PP&PAS&NPFV&SUB:="ar">"ásemos";<br />
+2PP&PAS&NPFV&SUB:="ar">"aseis";<br />
+3PP&PAS&NPFV&SUB:="ar">"asen";<br />
+
+2PS&PRS&IMP:="o":"ue","ar">"a";<br />
+3PS&PRS&IMP:="o":"ue","ar">"e";<br />
+1PP&PRS&IMP:="ar">"emos";<br />
+2PP&PRS&IMP:="ar">"ad";<br />
+3PP&PRS&IMP:="o":"ue","ar">"en";<br /><br /><b>M61</b><br />verbos terminados en -zar que, en algunos tiempos y personas,
+cambian la /o/ por el diptongo /ue/  (<i>almorzar, avergonzar, esforzar, forzar, reforzar</i>)<br />INF:=0>"";<br />GER:="r">"ndo";<br />
+PTP:="r">"do";<br />
+PTP&MCL&SNG:="r">"do";<br />
+PTP&MCL&PLR:="r">"dos";<br />
+PTP&FEM&SNG:="r">"da";<br />
+PTP&FEM&PLR:="r">"das";<br />
+
+1PS&PRS&IND:="o":"ue","ar">"o";<br />
+2PS&PRS&IND:="o":"ue","ar">"as";<br />
+3PS&PRS&IND:="o":"ue","ar">"a";<br />
+1PP&PRS&IND:="ar">"amos";<br />
+2PP&PRS&IND:="ar">"áis";<br />
+3PP&PRS&IND:="o":"ue","ar">"an";<br />
+
+1PS&PAS&NPFV&IND:="ar">"aba";<br />
+2PS&PAS&NPFV&IND:="ar">"abas";<br />
+3PS&PAS&NPFV&IND:="ar">"aba";<br />
+1PP&PAS&NPFV&IND:="ar">"ábamos";<br />
+2PP&PAS&NPFV&IND:="ar">"abais";<br />
+3PP&PAS&NPFV&IND:="ar">"aban";<br />
+
+1PS&PAS&PFV&IND:="zar">"cé";<br />
+2PS&PAS&PFV&IND:="ar">"aste";<br />
+3PS&PAS&PFV&IND:="ar">"ó";<br />
+1PP&PAS&PFV&IND:="ar">"amos";<br />
+2PP&PAS&PFV&IND:="ar">"asteis";<br />
+3PP&PAS&PFV&IND:="ar">"aron";<br />
+
+1PS&FUT&IND:=0>"é";<br />
+2PS&FUT&IND:=0>"ás";<br />
+3PS&FUT&IND:=0>"á";<br />
+1PP&FUT&IND:=0>"emos";<br />
+2PP&FUT&IND:=0>"éis";<br />
+3PP&PRS&IND:=0>"án";<br />
+
+1PS&PRS&CON:=0>"ía";<br />
+2PS&PRS&CON:=0>"ías";<br />
+3PS&PRS&CON:=0>"ía";<br />
+1PP&PRS&CON:=0>"íamos";<br />
+2PP&PRS&CON:=0>"íais";<br />
+3PP&PRS&CON:=0>"ían";<br />
+
+1PS&PRS&SUB:="o":"ue","zar">"ce";<br />
+2PS&PRS&SUB:="o":"ue","zar">"ces";<br />
+3PS&PRS&SUB:="o":"ue","zar">"ce";<br />
+1PP&PRS&SUB:="zar">"cemos";<br />
+2PP&PRS&SUB:="zar">"céis";<br />
+3PP&PRS&SUB:="o":"ue","zar">"cen";<br />
+
+1PS&PAS&NPFV&SUB:="ar">"ara";<br />
+2PS&PAS&NPFV&SUB:="ar">"aras";<br />
+3PS&PAS&NPFV&SUB:="ar">"ara";<br />
+1PP&PAS&NPFV&SUB:="ar">"áramos";<br />
+2PP&PAS&NPFV&SUB:="ar">"arais";<br />
+3PP&PAS&NPFV&SUB:="ar">"aran";<br />
+
+1PS&PAS&NPFV&SUB:="ar">"ase";<br />
+2PS&PAS&NPFV&SUB:="ar">"ases";<br />
+3PS&PAS&NPFV&SUB:="ar">"ase";<br />
+1PP&PAS&NPFV&SUB:="ar">"ásemos";<br />
+2PP&PAS&NPFV&SUB:="ar">"aseis";<br />
+3PP&PAS&NPFV&SUB:="ar">"asen";<br />
+
+2PS&PRS&IMP:="o":"ue","zar">"za";<br />
+3PS&PRS&IMP:="o":"ue","zar">"ce";<br />
+1PP&PRS&IMP:="zar">"cemos";<br />
+2PP&PRS&IMP:="r">"d";<br />
+3PP&PRS&IMP:="o":"ue","zar">"cen";<br /><br /><b>M62</b><br />verbos terminados en -gar que, en algunos tiempos y personas,
+cambian la /e/ por el diptongo /ie/  (<i>cegar, denegar, desplegar, plegar, regar, negar, segar, sosegar</i>)<br />INF:=0>"";<br />GER:="r">"ndo";<br />
+PTP:="r">"do";<br />
+PTP&MCL&SNG:="r">"do";<br />
+PTP&MCL&PLR:="r">"dos";<br />
+PTP&FEM&SNG:="r">"da";<br />
+PTP&FEM&PLR:="r">"das";<br />
+
+1PS&PRS&IND:="e":"ie","ar">"o";<br />
+2PS&PRS&IND:="e":"ie","ar">"as";<br />
+3PS&PRS&IND:="e":"ie","ar">"a";<br />
+1PP&PRS&IND:="ar">"amos";<br />
+2PP&PRS&IND:="ar">"áis";<br />
+3PP&PRS&IND:="e":"ie","ar">"an";<br />
+
+1PS&PAS&NPFV&IND:="ar">"aba";<br />
+2PS&PAS&NPFV&IND:="ar">"abas";<br />
+3PS&PAS&NPFV&IND:="ar">"aba";<br />
+1PP&PAS&NPFV&IND:="ar">"ábamos";<br />
+2PP&PAS&NPFV&IND:="ar">"abais";<br />
+3PP&PAS&NPFV&IND:="ar">"aban";<br />
+
+1PS&PAS&PFV&IND:="ar">"ué";<br />
+2PS&PAS&PFV&IND:="ar">"aste";<br />
+3PS&PAS&PFV&IND:="ar">"ó";<br />
+1PP&PAS&PFV&IND:="ar">"amos";<br />
+2PP&PAS&PFV&IND:="ar">"asteis";<br />
+3PP&PAS&PFV&IND:="ar">"aron";<br />
+
+1PS&FUT&IND:=0>"é";<br />
+2PS&FUT&IND:=0>"ás";<br />
+3PS&FUT&IND:=0>"á";<br />
+1PP&FUT&IND:=0>"emos";<br />
+2PP&FUT&IND:=0>"éis";<br />
+3PP&FUT&IND:=0>"án";<br />
+
+1PS&PRS&CON:=0>"ía";<br />
+2PS&PRS&CON:=0>"ías";<br />
+3PS&PRS&CON:=0>"ía";<br />
+1PP&PRS&CON:=0>"íamos";<br />
+2PP&PRS&CON:=0>"íais";<br />
+3PP&PRS&CON:=0>"ían";<br />
+
+1PS&PRS&SUB:="e":"ie","ar">"ue";<br />
+2PS&PRS&SUB:="e":"ie","ar">"ues";<br />
+3PS&PRS&SUB:="e":"ie","ar">"ue";<br />
+1PP&PRS&SUB:="ar">"uemos";<br />
+2PP&PRS&SUB:="ar">"uéis";<br />
+3PP&PRS&SUB:="e":"ie","ar">"uen";<br />
+
+1PS&PAS&NPFV&SUB:="ar">"ara";<br />
+2PS&PAS&NPFV&SUB:="ar">"aras";<br />
+3PS&PAS&NPFV&SUB:="ar">"ara";<br />
+1PP&PAS&NPFV&SUB:="ar">"áramos";<br />
+2PP&PAS&NPFV&SUB:="ar">"arais";<br />
+3PP&PAS&NPFV&SUB:="ar">"aran";<br />
+
+1PS&PAS&NPFV&SUB:="ar">"ase";<br />
+2PS&PAS&NPFV&SUB:="ar">"ases";<br />
+3PS&PAS&NPFV&SUB:="ar">"ase";<br />
+1PP&PAS&NPFV&SUB:="ar">"ásemos";<br />
+2PP&PAS&NPFV&SUB:="ar">"aseis";<br />
+3PP&PAS&NPFV&SUB:="ar">"asen";<br />
+
+2PS&PRS&IMP:="e":"ie","ar">"a";<br />
+3PS&PRS&IMP:="e":"ie","ar">"ue";<br />
+1PP&PRS&IMP:="ar">"uemos";<br />
+2PP&PRS&IMP:="ar">"ad";<br />
+3PP&PRS&IMP:="e":"ie","ar">"uen";<br /><br /><b>M63</b><br />verbos terminados en -ir que, en algunos tiempos y personas,
+cambian la /e/ por el diptongo /ie/  (<i>convertir, advertir, divertir, invertir, pervertir, reconvertir, reinvertir, revertir, subvertir, asentir, consentir, desmentir, disentir, mentir, presentir, resentir</i>)<br />INF:=0>"";<br />GER:="e":"ie","ir">"iendo";<br />
+PTP:="ir">"ido";<br />
+PTP&PLR:="ir">"idos";<br />
+PTP&FEM:="ir">"ida";<br />
+PTP&FEM&PLR:="ir">"idas";<br />
+
+1PS&PRS&IND:="e":"ie","ir">"o";<br />
+2PS&PRS&IND:="e":"ie","ir">"es";<br />
+3PS&PRS&IND:="e":"ie","ir">"e";<br />
+1PP&PRS&IND:="ir">"imos";<br />
+2PP&PRS&IND:="ir">"ís";<br />
+3PP&PRS&IND:="e":"ie","ir">"en";<br />
+
+1PS&PAS&NPFV&IND:="ir">"ía";<br />
+2PS&PAS&NPFV&IND:="ir">"ías";<br />
+3PS&PAS&NPFV&IND:="ir">"ía";<br />
+1PP&PAS&NPFV&IND:="ir">"íamos";<br />
+2PP&PAS&NPFV&IND:="ir">"íais";<br />
+3PP&PAS&NPFV&IND:="ir">"ían";<br />
+
+1PS&PAS&PFV&IND:="ir">"í";<br />
+2PS&PAS&PFV&IND:="ir">"iste";<br />
+3PS&PAS&PFV&IND:="e":"ie","ir">"ió";<br />
+1PP&PAS&PFV&IND:="ir">"imos";<br />
+2PP&PAS&PFV&IND:="ir">"isteis";<br />
+3PP&PAS&PFV&IND:="e":"ie","ir">"ieron";<br />
+
+1PS&FUT&IND:=0>"é";<br />
+2PS&FUT&IND:=0>"ás";<br />
+3PS&FUT&IND:=0>"á";<br />
+1PP&FUT&IND:=0>"emos";<br />
+2PP&FUT&IND:=0>"éis";<br />
+3PP&FUT&IND:=0>"án";<br />
+
+1PS&PRS&CON:=0>"ía";<br /> 
+2PS&PRS&CON:=0>"ías";<br />
+3PS&PRS&CON:=0>"ía";<br />
+1PP&PRS&CON:=0>"íamos";<br />
+2PP&PRS&CON:=0>"íais";<br />
+3PP&PRS&CON:=0>"ían";<br />
+
+1PS&PRS&SUB:="e":"ie","ir">"a";<br />
+2PS&PRS&SUB:="e":"ie","ir">"as";<br />
+3PS&PRS&SUB:="e":"ie","ir">"a";<br />
+1PP&PRS&SUB:="e":"i","ir">"amos";<br />
+2PP&PRS&SUB:="e":"i","ir">"áis";<br />
+3PP&PRS&SUB:="e":"ie","ir">"an";<br />
+ 
+1PS&PAS&NPFV&SUB:="e":"i","ir">"iera";<br />
+2PS&PAS&NPFV&SUB:="e":"i","ir">"ieras";<br />
+3PS&PAS&NPFV&SUB:="e":"i","ir">"iera";<br />
+1PP&PAS&NPFV&SUB:="e":"i","ir">"iéramos";<br />
+2PP&PAS&NPFV&SUB:="e":"i","ir">"ierais";<br />
+3PP&PAS&NPFV&SUB:="e":"i","ir">"ieran";<br />
+
+1PS&PAS&NPFV&SUB:="e":"i","ir">"iese";<br />
+2PS&PAS&NPFV&SUB:="e":"i","ir">"ieses";<br />
+3PS&PAS&NPFV&SUB:="e":"i","ir">"iese";<br />
+1PP&PAS&NPFV&SUB:="e":"i","ir">"iésemos";<br />
+2PP&PAS&NPFV&SUB:="e":"i","ir">"ieseis";<br />
+3PP&PAS&NPFV&SUB:="e":"i","ir">"iesen";<br />
+
+2PS&PRS&IMP:="e":"ie","ir">"e";<br />
+3PS&PRS&IMP:="e":"ie","ir">"a";<br />
+1PP&PRS&IMP:="ir">"amos";<br />
+2PP&PRS&IMP:="r">"d";<br />
+3PP&PRS&IMP:="e":"ie","ir">"an";<br /><br /><b>M64</b><br />verbos regulares terminados en -zar sin cambio en la raíz (<i>alcanzar, actualizar, armonizar, amortizar,  aromatizar, atemorizar, atenazar, aterrizar, cotizar, criogenizar, cristalizar, cristianizar, cruzar, culpabilizar,  culturizar, danzar, democratizar, desacralizar, desalinizar, desautorizar, desbrozar, descalzar,  descapitalizar
+</i>)<br />INF:=0>"";<br />GER:="r">"ndo";<br />
+PTP:="r">"do";<br />
+PTP&MCL&SNG:="r">"do";<br />
+PTP&MCL&PLR:="r">"dos";<br />
+PTP&FEM&SNG:="r">"da";<br />
+PTP&FEM&PLR:="r">"das";<br />
+
+1PS&PRS&IND:="ar">"o";<br />
+2PS&PRS&IND:="ar">"as";<br />
+3PS&PRS&IND:="ar">"a";<br />
+1PP&PRS&IND:="ar">"amos";<br />
+2PP&PRS&IND:="ar">"áis";<br />
+3PP&PRS&IND:="ar">"an";<br />
+
+1PS&PAS&NPFV&IND:="ar">"aba";<br />
+2PS&PAS&NPFV&IND:="ar">"abas";<br />
+3PS&PAS&NPFV&IND:="ar">"aba";<br />
+1PP&PAS&NPFV&IND:="ar">"ábamos";<br />
+2PP&PAS&NPFV&IND:="ar">"abais";<br />
+3PP&PAS&NPFV&IND:="ar">"aban";<br />
+
+1PS&PAS&PFV&IND:="zar">"cé";<br />
+2PS&PAS&PFV&IND:="ar">"aste";<br />
+3PS&PAS&PFV&IND:="ar">"ó";<br />
+1PP&PAS&PFV&IND:="ar">"amos";<br />
+2PP&PAS&PFV&IND:="ar">"asteis";<br />
+3PP&PAS&PFV&IND:="ar">"aron";<br />
+
+1PS&FUT&IND:=0>"é";<br />
+2PS&FUT&IND:=0>"ás";<br />
+3PS&FUT&IND:=0>"á";<br />
+1PP&FUT&IND:=0>"emos";<br />
+2PP&FUT&IND:=0>"éis";<br />
+3PP&PRS&IND:=0>"án";<br />
+
+1PS&PRS&CON:=0>"ía";<br />
+2PS&PRS&CON:=0>"ías";<br />
+3PS&PRS&CON:=0>"ía";<br />
+1PP&PRS&CON:=0>"íamos";<br />
+2PP&PRS&CON:=0>"íais";<br />
+3PP&PRS&CON:=0>"ían";<br />
+
+1PS&PRS&SUB:="zar">"ce";<br />
+2PS&PRS&SUB:="zar">"ces";<br />
+3PS&PRS&SUB:="zar">"ce";<br />
+1PP&PRS&SUB:="zar">"cemos";<br />
+2PP&PRS&SUB:="zar">"céis";<br />
+3PP&PRS&SUB:="zar">"cen";<br />
+
+1PS&PAS&NPFV&SUB:="ar">"ara";<br />
+2PS&PAS&NPFV&SUB:="ar">"aras";<br />
+3PS&PAS&NPFV&SUB:="ar">"ara";<br />
+1PP&PAS&NPFV&SUB:="ar">"áramos";<br />
+2PP&PAS&NPFV&SUB:="ar">"arais";<br />
+3PP&PAS&NPFV&SUB:="ar">"aran";<br />
+
+1PS&PAS&NPFV&SUB:="ar">"ase";<br />
+2PS&PAS&NPFV&SUB:="ar">"ases";<br />
+3PS&PAS&NPFV&SUB:="ar">"ase";<br />
+1PP&PAS&NPFV&SUB:="ar">"ásemos";<br />
+2PP&PAS&NPFV&SUB:="ar">"aseis";<br />
+3PP&PAS&NPFV&SUB:="ar">"asen";<br />
+
+2PS&PRS&IMP:="zar">"za";<br />
+3PS&PRS&IMP:="zar">"ce";<br />
+1PP&PRS&IMP:="zar">"cemos";<br />
+2PP&PRS&IMP:="r">"d";<br />
+3PP&PRS&IMP:="zar">"cen";<br /><br /><b>M70</b><br />uno > una (<i>uno,</i>)<br />PLR:=0>"s";<br /> FEM:="o">"a";<br /> FEM&PLR:="o">"as";<br /><br /><b>M71</b><br />Adjetivos de una sola terminación (singular en -ún y plural en -unes) (<i>común</i>)<br />SNG:=0>"";<br />PLR:="ún">"unes";<br /><br /><b>M79</b><br />verbos terminados en -gir (<i>afligir, convergir, dirigir, sumergir, fingir, infringir, transigir, </i>)<br />INF:=0>"";<br />GER:="ir">"iendo";<br />
+PTP:="ir">"ido";<br />
+PTP&MCL&SNG:="ir">"ido";<br />
+PTP&MCL&PLR:="ir">"idos";<br />
+PTP&FEM&SNG:="ir">"ida";<br />
+PTP&FEM&PLR:="ir">"idas";<br />
+
+1PS&PRS&IND:="gir">"jo";<br />
+2PS&PRS&IND:="ir">"es";<br />
+3PS&PRS&IND:="ir">"e";<br />
+1PP&PRS&IND:="ir">"imos";<br />
+2PP&PRS&IND:="ir">"ís";<br />
+3PP&PRS&IND:="ir">"en";<br />
+
+1PS&PAS&NPFV&IND:="ir">"ía";<br />
+2PS&PAS&NPFV&IND:="ir">"ías";<br />
+3PS&PAS&NPFV&IND:="ir">"ía";<br />
+1PP&PAS&NPFV&IND:="ir">"íamos";<br />
+2PP&PAS&NPFV&IND:="ir">"íais";<br />
+3PP&PAS&NPFV&IND:="ir">"ían";<br />
+
+1PS&PAS&PFV&IND:="ir">"í";<br />
+2PS&PAS&PFV&IND:="ir">"iste";<br />
+3PS&PAS&PFV&IND:="ir">"ió";<br />
+1PP&PAS&PFV&IND:="ir">"imos";<br />
+2PP&PAS&PFV&IND:="ir">"isteis";<br />
+3PP&PAS&PFV&IND:="ir">"ieron";<br />
+
+1PS&FUT&IND:=0>"é";<br />
+2PS&FUT&IND:=0>"ás";<br />
+3PS&FUT&IND:=0>"á";<br />
+1PP&FUT&IND:=0>"emos";<br />
+2PP&FUT&IND:=0>"éis";<br />
+3PP&FUT&IND:=0>"án";<br />
+
+1PS&PRS&CON:=0>"ía";<br /> 
+2PS&PRS&CON:=0>"ías";<br />
+3PS&PRS&CON:=0>"ía";<br />
+1PP&PRS&CON:=0>"íamos";<br />
+2PP&PRS&CON:=0>"íais";<br />
+3PP&PRS&CON:=0>"ían";<br />
+
+1PS&PRS&SUB:="gir">"ja";<br />
+2PS&PRS&SUB:="gir">"jas";<br />
+3PS&PRS&SUB:="gir">"ja";<br />
+1PP&PRS&SUB:="gir">"jamos";<br />
+2PP&PRS&SUB:="gir">"jáis";<br />
+3PP&PRS&SUB:="gir">"jan";<br />
+ 
+1PS&PAS&NPFV&SUB:="ir">"iera";<br />
+2PS&PAS&NPFV&SUB:="ir">"ieras";<br />
+3PS&PAS&NPFV&SUB:="ir">"iera";<br />
+1PP&PAS&NPFV&SUB:="ir">"iéramos";<br />
+2PP&PAS&NPFV&SUB:="ir">"ierais";<br />
+3PP&PAS&NPFV&SUB:="ir">"ieran";<br />
+
+1PS&PAS&NPFV&SUB:="ir">"iese";<br />
+2PS&PAS&NPFV&SUB:="ir">"ieses";<br />
+3PS&PAS&NPFV&SUB:="ir">"iese";<br />
+1PP&PAS&NPFV&SUB:="ir">"iésemos";<br />
+2PP&PAS&NPFV&SUB:="ir">"ieseis";<br />
+3PP&PAS&NPFV&SUB:="ir">"iesen";<br />
+
+2PS&PRS&IMP:="ir">"e";<br />
+3PS&PRS&IMP:="gir">"ja";<br />
+1PP&PRS&IMP:="gir">"jamos";<br />
+2PP&PRS&IMP:="ir">"id";<br />
+3PP&PRS&IMP:="gir">"jan";<br /><br /><b>M80</b><br />verbo irregular (<i>venir</i>)<br />INF:=0>"";<br />GER:="enir">"iniendo";<br />
+PTP:="ir">"ido";<br />
+PTP&MCL&SNG:="ir">"ido";<br />
+PTP&MCL&PLR:="ir">"idos";<br />
+PTP&FEM&SNG:="ir">"ida";<br />
+PTP&FEM&PLR:="ir">"idas";<br />
+
+1PS&PRS&IND:="ir">"go";<br />
+2PS&PRS&IND:="enir">"ienes";<br />
+3PS&PRS&IND:="enir">"iene";<br />
+1PP&PRS&IND:="ir">"imos";<br />
+2PP&PRS&IND:="ir">"ís";<br />
+3PP&PRS&IND:="enir">"ienen";<br />
+
+1PS&PAS&NPFV&IND:="ir">"ía";<br />
+2PS&PAS&NPFV&IND:="ir">"ías";<br />
+3PS&PAS&NPFV&IND:="ir">"ía";<br />
+1PP&PAS&NPFV&IND:="ir">"íamos";<br />
+2PP&PAS&NPFV&IND:="ir">"íais";<br />
+3PP&PAS&NPFV&IND:="ir">"ían";<br />
+
+1PS&PAS&PFV&IND:="enir">"ine";<br />
+2PS&PAS&PFV&IND:="enir">"iniste";<br />
+3PS&PAS&PFV&IND:="enir">"ino";<br />
+1PP&PAS&PFV&IND:="enir">"inimos";<br />
+2PP&PAS&PFV&IND:="enir">"inisteis";<br />
+3PP&PAS&PFV&IND:="enir">"inieron";<br />
+
+1PS&FUT&IND:="ir">"dré";<br />
+2PS&FUT&IND:="ir">"drás";<br />
+3PS&FUT&IND:="ir">"drá";<br />
+1PP&FUT&IND:="ir">"dremos";<br />
+2PP&FUT&IND:="ir">"dréis";<br />
+3PP&FUT&IND:="ir">"drán";<br />
+
+1PS&PRS&CON:="ir">"dría";<br /> 
+2PS&PRS&CON:="ir">"drías";<br />
+3PS&PRS&CON:="ir">"dría";<br />
+1PP&PRS&CON:="ir">"dríamos";<br />
+2PP&PRS&CON:="ir">"dríais";<br />
+3PP&PRS&CON:="ir">"drían";<br />
+
+1PS&PRS&SUB:="ir">"ga";<br />
+2PS&PRS&SUB:="ir">"gas";<br />
+3PS&PRS&SUB:="ir">"ga";<br />
+1PP&PRS&SUB:="ir">"gamos";<br />
+2PP&PRS&SUB:="ir">"gáis";<br />
+3PP&PRS&SUB:="ir">"gan";<br />
+ 
+1PS&PAS&NPFV&SUB:="enir">"iniera";<br />
+2PS&PAS&NPFV&SUB:="enir">"inieras";<br />
+3PS&PAS&NPFV&SUB:="enir">"iniera";<br />
+1PP&PAS&NPFV&SUB:="enir">"iniéramos";<br />
+2PP&PAS&NPFV&SUB:="enir">"inierais";<br />
+3PP&PAS&NPFV&SUB:="enir">"inieran";<br />
+
+1PS&PAS&NPFV&SUB:="enir">"iniese";<br />
+2PS&PAS&NPFV&SUB:="enir">"inieses";<br />
+3PS&PAS&NPFV&SUB:="enir">"iniese";<br />
+1PP&PAS&NPFV&SUB:="enir">"iniésemos";<br />
+2PP&PAS&NPFV&SUB:="enir">"inieseis";<br />
+3PP&PAS&NPFV&SUB:="enir">"iniesen";<br />
+
+2PS&PRS&IMP:="nir">"n";<br />
+3PS&PRS&IMP:="ir">"ga";<br />
+1PP&PRS&IMP:="ir">"gamos";<br />
+2PP&PRS&IMP:="r">"d";<br />
+3PP&PRS&IMP:="ir">"gan";<br /><br /><b>M81</b><br />verbo irregular (<i>ser</i>)<br />INF:=0>"";<br />GER:="er">"iendo";<br />
+PTP:="er">"ido";<br />
+
+1PS&PRS&IND:="soy";<br />
+2PS&PRS&IND:="eres";<br />
+3PS&PRS&IND:="es";<br />
+1PP&PRS&IND:="somos";<br />
+2PP&PRS&IND:="sois";<br />
+3PP&PRS&IND:="son";<br />
+
+1PS&PAS&NPFV&IND:="era";<br />
+2PS&PAS&NPFV&IND:="eras";<br />
+3PS&PAS&NPFV&IND:="era";<br />
+1PP&PAS&NPFV&IND:="éramos";<br />
+2PP&PAS&NPFV&IND:="erais";<br />
+3PP&PAS&NPFV&IND:="eran";<br />
+
+1PS&PAS&PFV&IND:="fui";<br />
+2PS&PAS&PFV&IND:="fuiste";<br />
+3PS&PAS&PFV&IND:=" fue";<br />
+1PP&PAS&PFV&IND:="fuimos";<br />
+2PP&PAS&PFV&IND:="fuisteis";<br />
+3PP&PAS&PFV&IND:="fueron";<br />
+
+1PS&FUT&IND:="seré";<br />
+2PS&FUT&IND:="serás";<br />
+3PS&FUT&IND:="será";<br />
+1PP&FUT&IND:="seremos";<br />
+2PP&FUT&IND:="seréis";<br />
+3PP&PRS&IND:="serán";<br />
+
+1PS&PRS&CON:="sería";<br />
+2PS&PRS&CON:="serías";<br />
+3PS&PRS&CON:="sería";<br />
+1PP&PRS&CON:="seríamos";<br />
+2PP&PRS&CON:="seríais";<br />
+3PP&PRS&CON:="serían";<br />
+
+1PS&PRS&SUB:="sea";<br />
+2PS&PRS&SUB:="seas";<br />
+3PS&PRS&SUB:="sea";<br />
+1PP&PRS&SUB:="seamos";<br />
+2PP&PRS&SUB:="seáis";<br />
+3PP&PRS&SUB:="sean";<br />
+
+1PS&PAS&NPFV&SUB:="fuera";<br />
+2PS&PAS&NPFV&SUB:="fueras";<br />
+3PS&PAS&NPFV&SUB:="fuera";<br />
+1PP&PAS&NPFV&SUB:="fuéramos";<br />
+2PP&PAS&NPFV&SUB:="fuerais";<br />
+3PP&PAS&NPFV&SUB:="fueran";<br />
+
+1PS&PAS&NPFV&SUB:="fuese";<br />
+2PS&PAS&NPFV&SUB:="fueses";<br />
+3PS&PAS&NPFV&SUB:="fuese";<br />
+1PP&PAS&NPFV&SUB:="fuésemos";<br />
+2PP&PAS&NPFV&SUB:="fueseis";<br />
+3PP&PAS&NPFV&SUB:="fuesen";<br />
+
+2PS&PRS&IMP:="er">"é";<br />
+3PS&PRS&IMP:="r">"a";<br />
+1PP&PRS&IMP:="r">"amos";<br />
+2PP&PRS&IMP:="r">"d";<br />
+3PP&PRS&IMP:="r">"an";<br /><br /><b>M83</b><br />verbo irregular (<i>estar</i>)<br />INF:=0>"";<br />GER:="r">"ndo";<br />
+PTP:="r">"do";<br />
+PTP&PLR:="r">"dos";<br />
+PTP&FEM:="r">"da";<br />
+PTP&FEM&PLR:="r">"das";<br />
+
+1PS&PRS&IND:="estoy";<br />
+2PS&PRS&IND:="estás";<br />
+3PS&PRS&IND:="está";<br />
+1PP&PRS&IND:="estamos";<br />
+2PP&PRS&IND:="estáis";<br />
+3PP&PRS&IND:="están";<br />
+
+1PS&PAS&NPFV&IND:="estaba";<br />
+2PS&PAS&NPFV&IND:="estabas";<br />
+3PS&PAS&NPFV&IND:="estaba";<br />
+1PP&PAS&NPFV&IND:="estábamos";<br />
+2PP&PAS&NPFV&IND:="estabais";<br />
+3PP&PAS&NPFV&IND:="estaban";<br />
+
+1PS&PAS&PFV&IND:="estuve";<br />
+2PS&PAS&PFV&IND:="estuviste";<br />
+3PS&PAS&PFV&IND:="estuvo";<br />
+1PP&PAS&PFV&IND:="estuvimos";<br />
+2PP&PAS&PFV&IND:="estuvisteis";<br />
+3PP&PAS&PFV&IND:="estuvieron";<br />
+1PS&FUT&IND:="estaré";<br />
+2PS&FUT&IND:="estarás";<br />
+3PS&FUT&IND:="estará";<br />
+1PP&FUT&IND:="estaremos";<br />
+2PP&FUT&IND:="estaréis";<br />
+3PP&PRS&IND:="estarán";<br />
+
+1PS&PRS&CON:="estaría";<br />
+2PS&PRS&CON:="estarías";<br />
+3PS&PRS&CON:="estaría";<br />
+1PP&PRS&CON:="estaríamos";<br />
+2PP&PRS&CON:="estaríais";<br />
+3PP&PRS&CON:="estarían";<br />
+
+1PS&PRS&SUB:="esté";<br />
+2PS&PRS&SUB:="estés";<br />
+3PS&PRS&SUB:="esté";<br />
+1PP&PRS&SUB:="estemos";<br />
+2PP&PRS&SUB:="estéis";<br />
+3PP&PRS&SUB:="estén";<br />
+
+1PS&PAS&NPFV&SUB:="estuviera";<br />
+2PS&PAS&NPFV&SUB:="estuvieras";<br />
+3PS&PAS&NPFV&SUB:="estuviera";<br />
+1PP&PAS&NPFV&SUB:="estuviéramos";<br />
+2PP&PAS&NPFV&SUB:="estuvierais";<br />
+3PP&PAS&NPFV&SUB:="estuvieran";<br />
+
+1PS&PAS&NPFV&SUB:="estuviese";<br />
+2PS&PAS&NPFV&SUB:="estuvieses";<br />
+3PS&PAS&NPFV&SUB:="estuviese";<br />
+1PP&PAS&NPFV&SUB:="estuviésemos";<br />
+2PP&PAS&NPFV&SUB:="estuvieseis";<br />
+3PP&PAS&NPFV&SUB:="estuviesen";<br />
+
+2PS&PRS&IMP:="ar">"á";<br />
+3PS&PRS&IMP:="ar">"é";<br />
+1PP&PRS&IMP:="ar">"emos";<br />
+2PP&PRS&IMP:="r">"d";<br />
+3PP&PRS&IMP:="ar">"én";<br /><br /><b>M84</b><br />La i que precede a la desinencia es tónica en las formas
+de este verbo que llevan el acento prosódico en la raíz. (<i>ampliar, aviar, biografiar, criar, enfriar, guiar, confiar, desafiar, fotografiar, inventariar, radiografiar, resfriar</i>)<br />INF:=0>"";<br />GER:="r">"ndo";<br />
+PTP:="r">"do";<br />
+PTP&MCL&SNG:="r">"do";<br />
+PTP&MCL&PLR:="r">"dos";<br />
+PTP&FEM&SNG:="r">"da";<br />
+PTP&FEM&PLR:="r">"das";<br />
+
+1PS&PRS&IND:="iar">"ío";<br />
+2PS&PRS&IND:="iar">"ías";<br />
+3PS&PRS&IND:="iar">"ía";<br />
+1PP&PRS&IND:="ar">"amos";<br />
+2PP&PRS&IND:="ar">"áis";<br />
+3PP&PRS&IND:="iar">"ían";<br />
+
+1PS&PAS&NPFV&IND:="ar">"aba";<br />
+2PS&PAS&NPFV&IND:="ar">"abas";<br />
+3PS&PAS&NPFV&IND:="ar">"aba";<br />
+1PP&PAS&NPFV&IND:="ar">"ábamos";<br />
+2PP&PAS&NPFV&IND:="ar">"abais";<br />
+3PP&PAS&NPFV&IND:="ar">"aban";<br />
+
+1PS&PAS&PFV&IND:="ar">"é";<br />
+2PS&PAS&PFV&IND:="ar">"aste";<br />
+3PS&PAS&PFV&IND:="ar">"ó";<br />
+1PP&PAS&PFV&IND:="ar">"amos";<br />
+2PP&PAS&PFV&IND:="ar">"asteis";<br />
+3PP&PAS&PFV&IND:="ar">"aron";<br />
+
+1PS&FUT&IND:=0>"é";<br />
+2PS&FUT&IND:=0>"ás";<br />
+3PS&FUT&IND:=0>"á";<br />
+1PP&FUT&IND:=0>"emos";<br />
+2PP&FUT&IND:=0>"éis";<br />
+3PP&PRS&IND:=0>"án";<br />
+
+1PS&PRS&CON:=0>"ía";<br />
+2PS&PRS&CON:=0>"ías";<br />
+3PS&PRS&CON:=0>"ía";<br />
+1PP&PRS&CON:=0>"íamos";<br />
+2PP&PRS&CON:=0>"íais";<br />
+3PP&PRS&CON:=0>"ían";<br />
+
+1PS&PRS&SUB:="iar">"íe";<br />
+2PS&PRS&SUB:="iar">"íes";<br />
+3PS&PRS&SUB:="iar">"íe";<br />
+1PP&PRS&SUB:="ar">"emos";<br />
+2PP&PRS&SUB:="ar">"éis";<br />
+3PP&PRS&SUB:="iar">"íen";<br />
+
+1PS&PAS&NPFV&SUB:="ar">"ara";<br />
+2PS&PAS&NPFV&SUB:="ar">"aras";<br />
+3PS&PAS&NPFV&SUB:="ar">"ara";<br />
+1PP&PAS&NPFV&SUB:="ar">"áramos";<br />
+2PP&PAS&NPFV&SUB:="ar">"arais";<br />
+3PP&PAS&NPFV&SUB:="ar">"aran";<br />
+
+1PS&PAS&NPFV&SUB:="ar">"ase";<br />
+2PS&PAS&NPFV&SUB:="ar">"ases";<br />
+3PS&PAS&NPFV&SUB:="ar">"ase";<br />
+1PP&PAS&NPFV&SUB:="ar">"ásemos";<br />
+2PP&PAS&NPFV&SUB:="ar">"aseis";<br />
+3PP&PAS&NPFV&SUB:="ar">"asen";<br />
+
+2PS&PRS&IMP:="iar">"ía";<br /> 
+3PS&PRS&IMP:="iar">"íe";<br />
+1PP&PRS&IMP:="ar">"emos";<br />
+2PP&PRS&IMP:="r">"d";<br />
+3PP&PRS&IMP:="iar">"íen";<br /><br /><b>M109</b><br />xxx (<i>xxx</i>)<br />1PS&PFV&CON:="habría"<"PTP";<br /><br /><b>M116</b><br />algún/algunos/algunas (<i>algún, algunos, alguna, </i>)<br />PLR:="ún">"unos";<br /> FEM:="ún">"una";<br /> FEM&PLR:="ún">"una";<br /><br /><b>M182</b><br />Tiempos compuestos comunes (<i>han ido</i>)<br />1PS&PAS&RPT&PFV&IND:=IC([había]:VP(PTP));<br />2PS&PAS&RPT&PFV&IND:=IC([habías]:VP(PTP));<br />3PS&PAS&RPT&PFV&IND:=IC([había]:VP(PTP));<br />1PP&PAS&RPT&PFV&IND:=IC([habíamos]:VP(PTP));<br />2PP&PAS&RPT&PFV&IND:=IC([habíais]:VP(PTP));<br />3PP&PAS&RPT&PFV&IND:=IC([habían]:VP(PTP));<br />1PS&FUT&RPT&IND:=IC([habré]:VP(PTP));<br />2PS&FUT&RPT&IND:=IC([habrás]:VP(PTP));<br />3PS&FUT&RPT&IND:=IC([habrá]:VP(PTP));<br />1PP&FUT&RPT&IND:=IC([habremos]:VP(PTP));<br />2PP&FUT&RPT&IND:=IC([habréis]:VP(PTP));<br />3PP&FUT&RPT&IND:=IC([habrán]:VP(PTP));<br />1PS&PFV&CON:=IC([habría]:VP(PTP));<br />2PS&PFV&CON:=IC([habrías]:VP(PTP));<br />3PS&PFV&CON:=IC([habría]:VP(PTP));<br />1PP&PFV&CON:=IC([habríamos]:VP(PTP));<br />2PP&PFV&CON:=IC([habríais]:VP(PTP));<br />3PP&PFV&CON:=IC([habrían]:VP(PTP));<br />1PS&PAS&PFV&SUB:=IC([haya]:VP(PTP));<br />2PS&PAS&PFV&SUB:=IC([hayas]:VP(PTP));<br />3PS&PAS&PFV&SUB:=IC([haya]:VP(PTP));<br />1PP&PAS&PFV&SUB:=IC([hayamos]:VP(PTP));<br />2PP&PAS&PFV&SUB:=IC([hayáis]:VP(PTP));<br />3PP&PAS&PFV&SUB:=IC([hayan]:VP(PTP));<br />1PS&PAS&RPT&PFV&SUB:=IC([hubiera]:VP(PTP));<br />2PS&PAS&RPT&PFV&SUB:=IC([hubieras]:VP(PTP));<br />3PS&PAS&RPT&PFV&SUB:=IC([hubiera]:VP(PTP));<br />1PP&PAS&RPT&PFV&SUB:=IC([hubiéramos]:VP(PTP));<br />2PP&PAS&RPT&PFV&SUB:=IC([hubierais]:VP(PTP));<br />3PP&PAS&RPT&PFV&SUB:=IC([hubieran]:VP(PTP));<br />1PS&FUT&RPT&PFV&SUB:=IC([hubiere]:VP(PTP));<br />2PS&FUT&RPT&PFV&SUB:=IC([hubieres]:VP(PTP));<br />3PS&FUT&RPT&PFV&SUB:=IC([hubiere]:VP(PTP));<br />1PP&FUT&RPT&PFV&SUB:=IC([hubiéremos]:VP(PTP));<br />2PP&FUT&RPT&PFV&SUB:=IC([hubiereis]:VP(PTP));<br />3PP&FUT&RPT&PFV&SUB:=IC([hubieren]:VP(PTP));<br /><br /><b>M211</b><br />Sustantivos terminados en -or con femenino en -riz (<i>actor, redactor</i>)<br />MCL&SNG:=0>"";<br />
+MCL&PLR:=0>"es";<br /> FEM&SNG:="or">"riz";<br /> FEM&PLR:="or">"rices";<br /><br /><b>M215</b><br />Sustantivos terminados en -és sin variación de género (<i>interés</i>)<br />SNG:=0>"";<br />
+PLR:="és">"eses";<br /><br /><b>M222</b><br />verbos terminados en -ir que, en algunos tiempos y personas,
+cambian la /e/ por la 
+/i/ (<i>medir, acomedir, comedir, despedir, expedir, impedir</i>)<br />INF:=0>"";<br />GER:="e":"i","ir">"iendo";<br />
+PTP:="ir">"ido";<br />
+PTP&MCL&SNG:="ir">"ido";<br />
+PTP&MCL&PLR:="ir">"idos";<br />
+PTP&FEM&SNG:="ir">"ida";<br />
+PTP&FEM&PLR:="ir">"idas";<br />
+
+1PS&PRS&IND:="e":"i","ir">"o";<br />
+2PS&PRS&IND:="e":"i","ir">"es";<br />
+3PS&PRS&IND:="e":"i","ir">"e";<br />
+1PP&PRS&IND:="ir">"imos";<br />
+2PP&PRS&IND:="ir">"ís";<br />
+3PP&PRS&IND:="e":"i","ir">"en";<br />
+
+1PS&PAS&NPFV&IND:="ir">"ía";<br />
+2PS&PAS&NPFV&IND:="ir">"ías";<br />
+3PS&PAS&NPFV&IND:="ir">"ía";<br />
+1PP&PAS&NPFV&IND:="ir">"íamos";<br />
+2PP&PAS&NPFV&IND:="ir">"íais";<br />
+3PP&PAS&NPFV&IND:="ir">"ían";<br />
+
+1PS&PAS&PFV&IND:="ir">"í";<br />
+2PS&PAS&PFV&IND:="ir">"iste";<br />
+3PS&PAS&PFV&IND:="e":"i","ir">"ió";<br />
+1PP&PAS&PFV&IND:="ir">"imos";<br />
+2PP&PAS&PFV&IND:="ir">"isteis";<br />
+3PP&PAS&PFV&IND:="e":"i","ir">"eron";<br />
+
+1PS&FUT&IND:=0>"é";<br />
+2PS&FUT&IND:=0>"ás";<br />
+3PS&FUT&IND:=0>"á";<br />
+1PP&FUT&IND:=0>"emos";<br />
+2PP&FUT&IND:=0>"éis";<br />
+3PP&FUT&IND:=0>"án";<br />
+
+1PS&PRS&CON:=0>"ía";<br /> 
+2PS&PRS&CON:=0>"ías";<br />
+3PS&PRS&CON:=0>"ía";<br />
+1PP&PRS&CON:=0>"íamos";<br />
+2PP&PRS&CON:=0>"íais";<br />
+3PP&PRS&CON:=0>"ían";<br />
+
+1PS&PRS&SUB:="e":"i","ir">"a";<br />
+2PS&PRS&SUB:="e":"i","ir">"as";<br />
+3PS&PRS&SUB:="e":"i","ir">"a";<br />
+1PP&PRS&SUB:="e":"i","ir">"amos";<br />
+2PP&PRS&SUB:="e":"i","ir">"áis";<br />
+3PP&PRS&SUB:="e":"i","ir">"an";<br />
+ 
+1PS&PAS&NPFV&SUB:="e":"i","ir">"iera";<br />
+2PS&PAS&NPFV&SUB:="e":"i","ir">"ieras";<br />
+3PS&PAS&NPFV&SUB:="e":"i","ir">"iera";<br />
+1PP&PAS&NPFV&SUB:="e":"i","ir">"iéramos";<br />
+2PP&PAS&NPFV&SUB:="e":"i","ir">"ierais";<br />
+3PP&PAS&NPFV&SUB:="e":"i","ir">"ieran";<br />
+
+1PS&PAS&NPFV&SUB:="e":"i","ir">"iese";<br />
+2PS&PAS&NPFV&SUB:="e":"i","ir">"ieses";<br />
+3PS&PAS&NPFV&SUB:="e":"i","ir">"iese";<br />
+1PP&PAS&NPFV&SUB:="e":"i","ir">"iésemos";<br />
+2PP&PAS&NPFV&SUB:="e":"i","ir">"ieseis";<br />
+3PP&PAS&NPFV&SUB:="e":"i","ir">"iesen";<br />
+
+2PS&PRS&IMP:="e":"i","ir">"e";<br />
+3PS&PRS&IMP:="e":"i","ir">"a";<br />
+1PP&PRS&IMP:="e":"i","ir">"amos";<br />
+2PP&PRS&IMP:="ir">"id";<br />
+3PP&PRS&IMP:="e":"i","ir">"an";<br /><br /><b>M223</b><br />verbos regulares terminados en -car (c>qu)  (<i>abanicar, abarcar, abdicar, abroncar, acercar	
+</i>)<br />INF:=0>"";<br />GER:="r">"ndo";<br />
+PTP:="r">"do";<br />
+PTP&MCL&SNG:="r">"do";<br />
+PTP&MCL&PLR:="r">"dos";<br />
+PTP&FEM&SNG:="r">"da";<br />
+PTP&FEM&PLR:="r">"das";<br />
+
+1PS&PRS&IND:=2>"o";<br />
+2PS&PRS&IND:=2>"as";<br />
+3PS&PRS&IND:=2>"a";<br />
+1PP&PRS&IND:=2>"amos";<br />
+2PP&PRS&IND:=2>"áis";<br />
+3PP&PRS&IND:=2>"an";<br />
+
+1PS&PAS&NPFV&IND:=2>"aba";<br />
+2PS&PAS&NPFV&IND:=2>"abas";<br />
+3PS&PAS&NPFV&IND:=2>"aba";<br />
+1PP&PAS&NPFV&IND:=2>"ábamos";<br />
+2PP&PAS&NPFV&IND:=2>"abais";<br />
+3PP&PAS&NPFV&IND:=2>"aban";<br />
+
+1PS&PAS&PFV&IND:=3>"qué";<br />
+2PS&PAS&PFV&IND:=2>"aste";<br />
+3PS&PAS&PFV&IND:=2>"ó";<br />
+1PP&PAS&PFV&IND:=2>"amos";<br />
+2PP&PAS&PFV&IND:=2>"asteis";<br />
+3PP&PAS&PFV&IND:=2>"aron";<br />
+
+1PS&FUT&IND:=2>"aré";<br />
+2PS&FUT&IND:=2>"arás";<br />
+3PS&FUT&IND:=2>"ará";<br />
+1PP&FUT&IND:=2>"aremos";<br />
+2PP&FUT&IND:=2>"aréis";<br />
+3PP&FUT&IND:=2>"arán";<br />
+
+1PS&PRS&CON:=2>"aría";<br />
+2PS&PRS&CON:=2>"arías";<br />
+3PS&PRS&CON:=2>"aría";<br />
+1PP&PRS&CON:=2>"aríamos";<br />
+2PP&PRS&CON:=2>"aríais";<br />
+3PP&PRS&CON:=2>"arían";<br />
+
+1PS&PRS&SUB:=3>"que";<br />
+2PS&PRS&SUB:=3>"ques";<br />
+3PS&PRS&SUB:=3>"que";<br />
+1PP&PRS&SUB:=3>"quemos";<br />
+2PP&PRS&SUB:=3>"quéis";<br />
+3PP&PRS&SUB:=3>"quen";<br />
+
+1PS&PAS&NPFV&SUB:=2>"ara";<br />
+2PS&PAS&NPFV&SUB:=2>"aras";<br />
+3PS&PAS&NPFV&SUB:=2>"ara";<br />
+1PP&PAS&NPFV&SUB:=2>"áramos";<br />
+2PP&PAS&NPFV&SUB:=2>"arais";<br />
+3PP&PAS&NPFV&SUB:=2>"aran";<br />
+
+1PS&PAS&NPFV&SUB:=2>"ase";<br />
+2PS&PAS&NPFV&SUB:=2>"ases";<br />
+3PS&PAS&NPFV&SUB:=2>"ase";<br />
+1PP&PAS&NPFV&SUB:=2>"ásemos";<br />
+2PP&PAS&NPFV&SUB:=2>"aseis";<br />
+3PP&PAS&NPFV&SUB:=2>"asen";<br />
+
+2PS&PRS&IMP&PRS:=2>"a";<br />
+3PS&PRS&IMP&PRS:=3>"que";<br />
+1PP&PRS&IMP&PRS:=3>"quemos";<br />
+2PP&PRS&IMP&PRS:=2>"ad";<br />
+3PP&PRS&IMP&PRS:=3>"quen";<br /><br /><b>M224</b><br />verbos regulares terminados en -cer (c>z) (<i>vencer</i>)<br />INF:=0>"";<br />GER:="er">"iendo";<br />
+PTP:="er">"ido";<br />
+PTP&MCL&SNG:="er">"ido";<br />
+PTP&MCL&PLR:="er">"idos";<br />
+PTP&FEM&SNG:="er">"ida";<br />
+PTP&FEM&PLR:="er">"idas";<br />
+
+1PS&PRS&IND:=3>"zo";<br />
+2PS&PRS&IND:=2>"es";<br />
+3PS&PRS&IND:=2>"e";<br />
+1PP&PRS&IND:=2>"emos";<br />
+2PP&PRS&IND:=2>"éis";<br />
+3PP&PRS&IND:=2>"en";<br />
+
+1PS&PAS&NPFV&IND:=2>"ía";<br />
+2PS&PAS&NPFV&IND:=2>"ías";<br />
+3PS&PAS&NPFV&IND:=2>"ía";<br />
+1PP&PAS&NPFV&IND:=2>"íamos";<br />
+2PP&PAS&NPFV&IND:=2>"íais";<br />
+3PP&PAS&NPFV&IND:=2>"ían";<br />
+
+1PS&PAS&PFV&IND:=2>"í";<br />
+2PS&PAS&PFV&IND:=2>"iste";<br />
+3PS&PAS&PFV&IND:=2>"ió";<br />
+1PP&PAS&PFV&IND:=2>"imos";<br />
+2PP&PAS&PFV&IND:=2>"isteis";<br />
+3PP&PAS&PFV&IND:=2>"ieron";<br />
+
+1PS&FUT&IND:=2>"eré";<br />
+2PS&FUT&IND:=2>"erás";<br />
+3PS&FUT&IND:=2>"erá";<br />
+1PP&FUT&IND:=2>"eremos";<br />
+2PP&FUT&IND:=2>"eréis";<br />
+3PP&FUT&IND:=2>"erán";<br />
+
+1PS&PRS&CON:=2>"ería";<br />
+2PS&PRS&CON:=2>"erías";<br />
+3PS&PRS&CON:=2>"ería";<br />
+1PP&PRS&CON:=2>"eríamos";<br />
+2PP&PRS&CON:=2>"eríais";<br />
+3PP&PRS&CON:=2>"erían";<br />
+
+1PS&PRS&SUB:=3>"za";<br />
+2PS&PRS&SUB:=3>"zas";<br />
+3PS&PRS&SUB:=3>"za";<br />
+1PP&PRS&SUB:=3>"zamos";<br />
+2PP&PRS&SUB:=3>"záis";<br />
+3PP&PRS&SUB:=3>"zan";<br />
+
+1PS&PAS&NPFV&SUB:=2>"iera";<br />
+2PS&PAS&NPFV&SUB:=2>"ieras";<br />
+3PS&PAS&NPFV&SUB:=2>"iera";<br />
+1PP&PAS&NPFV&SUB:=2>"iéramos";<br />
+2PP&PAS&NPFV&SUB:=2>"ierais";<br />
+3PP&PAS&NPFV&SUB:=2>"ieran";<br />
+
+1PS&PAS&NPFV&SUB:=2>"iese";<br />
+2PS&PAS&NPFV&SUB:=2>"ieses";<br />
+3PS&PAS&NPFV&SUB:=2>"iese";<br />
+1PP&PAS&NPFV&SUB:=2>"iésemos";<br />
+2PP&PAS&NPFV&SUB:=2>"ieseis";<br />
+3PP&PAS&NPFV&SUB:=2>"iesen";<br />
+
+2PS&PRS&IMP&PRS:=2>"e";<br />
+3PS&PRS&IMP&PRS:=3>"za";<br />
+1PP&PRS&IMP&PRS:=3>"zamos";<br />
+2PP&PRS&IMP&PRS:=2>"ed";<br />
+3PP&PRS&IMP&PRS:=3>"zan";<br />
+
+;<br /><br /><b>M225</b><br />verbos regulares terminados en -cir (c>z) (<i>zurcir</i>)<br />INF:=0>"";<br />GER:="ir">"iendo";<br />
+PTP:="ir">"ido";<br />
+PTP&MCL&SNG:="ir">"ido";<br />
+PTP&MCL&PLR:="ir">"idos";<br />
+PTP&FEM&SNG:="ir">"ida";<br />
+PTP&FEM&PLR:="ir">"idas";<br />
+
+1PS&PRS&IND:=3>"zo";<br />
+2PS&PRS&IND:=2>"es";<br />
+3PS&PRS&IND:=2>"e";<br />
+1PP&PRS&IND:=2>"imos";<br />
+2PP&PRS&IND:=2>"ís";<br />
+3PP&PRS&IND:=2>"en";<br />
+
+1PS&PAS&NPFV&IND:=2>"ía";<br />
+2PS&PAS&NPFV&IND:=2>"ías";<br />
+3PS&PAS&NPFV&IND:=2>"ía";<br />
+1PP&PAS&NPFV&IND:=2>"íamos";<br />
+2PP&PAS&NPFV&IND:=2>"íais";<br />
+3PP&PAS&NPFV&IND:=2>"ían";<br />
+
+1PS&PAS&PFV&IND:=2>"í";<br />
+2PS&PAS&PFV&IND:=2>"iste";<br />
+3PS&PAS&PFV&IND:=2>"ió";<br />
+1PP&PAS&PFV&IND:=2>"imos";<br />
+2PP&PAS&PFV&IND:=2>"isteis";<br />
+3PP&PAS&PFV&IND:=2>"ieron";<br />
+
+1PS&FUT&IND:=2>"iré";<br />
+2PS&FUT&IND:=2>"irás";<br />
+3PS&FUT&IND:=2>"irá";<br />
+1PP&FUT&IND:=2>"iremos";<br />
+2PP&FUT&IND:=2>"iréis";<br />
+3PP&FUT&IND:=2>"irán";<br />
+
+1PS&PRS&CON:=2>"iría";<br />
+2PS&PRS&CON:=2>"irías";<br />
+3PS&PRS&CON:=2>"iría";<br />
+1PP&PRS&CON:=2>"iríamos";<br />
+2PP&PRS&CON:=2>"iríais";<br />
+3PP&PRS&CON:=2>"irían";<br />
+
+1PS&PRS&SUB:=3>"za";<br />
+2PS&PRS&SUB:=3>"zas";<br />
+3PS&PRS&SUB:=3>"za";<br />
+1PP&PRS&SUB:=3>"zamos";<br />
+2PP&PRS&SUB:=3>"záis";<br />
+3PP&PRS&SUB:=3>"zan";<br />
+
+1PS&PAS&NPFV&SUB:=2>"iera";<br />
+2PS&PAS&NPFV&SUB:=2>"ieras";<br />
+3PS&PAS&NPFV&SUB:=2>"iera";<br />
+1PP&PAS&NPFV&SUB:=2>"iéramos";<br />
+2PP&PAS&NPFV&SUB:=2>"ierais";<br />
+3PP&PAS&NPFV&SUB:=2>"ieran";<br />
+
+1PS&PAS&NPFV&SUB:=2>"iese";<br />
+2PS&PAS&NPFV&SUB:=2>"ieses";<br />
+3PS&PAS&NPFV&SUB:=2>"iese";<br />
+1PP&PAS&NPFV&SUB:=2>"iésemos";<br />
+2PP&PAS&NPFV&SUB:=2>"ieseis";<br />
+3PP&PAS&NPFV&SUB:=2>"iesen";<br />
+
+2PS&PRS&IMP&PRS:=2>"e";<br />
+3PS&PRS&IMP&PRS:=3>"za";<br />
+1PP&PRS&IMP&PRS:=3>"zamos";<br />
+2PP&PRS&IMP&PRS:=2>"id";<br />
+3PP&PRS&IMP&PRS:=3>"zan";<br /><br /><b>M226</b><br />verbos terminados en -er que, en algunos tiempos y personas,
+cambian la /e/ por el diptongo /ie/  (<i>sobreentender, subentender, descender, defender, perder, verter	
+</i>)<br />INF:=0>"";<br />GER:="er">"iendo";<br />
+PTP:="er">"ido";<br />
+PTP&MCL&SNG:="er">"ido";<br />
+PTP&MCL&PLR:="er">"idos";<br />
+PTP&FEM&SNG:="er">"ida";<br />
+PTP&FEM&PLR:="er">"idas";<br />
+
+1PS&PRS&IND:="e":"ie",2>"o";<br />
+2PS&PRS&IND:="e":"ie",2>"es";<br />
+3PS&PRS&IND:="e":"ie",2>"e";<br />
+1PP&PRS&IND:=2>"emos";<br />
+2PP&PRS&IND:=2>"éis";<br />
+3PP&PRS&IND:="e":"ie",2>"en";<br />
+
+1PS&PAS&NPFV&IND:=2>"ía";<br />
+2PS&PAS&NPFV&IND:=2>"ías";<br />
+3PS&PAS&NPFV&IND:=2>"ía";<br />
+1PP&PAS&NPFV&IND:=2>"íamos";<br />
+2PP&PAS&NPFV&IND:=2>"íais";<br />
+3PP&PAS&NPFV&IND:=2>"ían";<br />
+
+1PS&PAS&PFV&IND:=2>"í";<br />
+2PS&PAS&PFV&IND:=2>"iste";<br />
+3PS&PAS&PFV&IND:=2>"ió";<br />
+1PP&PAS&PFV&IND:=2>"imos";<br />
+2PP&PAS&PFV&IND:=2>"isteis";<br />
+3PP&PAS&PFV&IND:=2>"ieron";<br />
+
+1PS&FUT&IND:=2>"eré";<br />
+2PS&FUT&IND:=2>"erás";<br />
+3PS&FUT&IND:=2>"erá";<br />
+1PP&FUT&IND:=2>"eremos";<br />
+2PP&FUT&IND:=2>"eréis";<br />
+3PP&FUT&IND:=2>"erán";<br />
+
+1PS&PRS&CON:=2>"ería";<br />
+2PS&PRS&CON:=2>"erías";<br />
+3PS&PRS&CON:=2>"ería";<br />
+1PP&PRS&CON:=2>"eríamos";<br />
+2PP&PRS&CON:=2>"eríais";<br />
+3PP&PRS&CON:=2>"erían";<br />
+
+1PS&PRS&SUB:="e":"ie",2>"a";<br />
+2PS&PRS&SUB:="e":"ie",2>"as";<br />
+3PS&PRS&SUB:="e":"ie",2>"a";<br />
+1PP&PRS&SUB:=2>"amos";<br />
+2PP&PRS&SUB:=2>"áis";<br />
+3PP&PRS&SUB:="e":"ie",2>"an";<br />
+
+1PS&PAS&NPFV&SUB:=2>"iera";<br />
+2PS&PAS&NPFV&SUB:=2>"ieras";<br />
+3PS&PAS&NPFV&SUB:=2>"iera";<br />
+1PP&PAS&NPFV&SUB:=2>"iéramos";<br />
+2PP&PAS&NPFV&SUB:=2>"ierais";<br />
+3PP&PAS&NPFV&SUB:=2>"ieran";<br />
+
+1PS&PAS&NPFV&SUB:=2>"iese";<br />
+2PS&PAS&NPFV&SUB:=2>"ieses";<br />
+3PS&PAS&NPFV&SUB:=2>"iese";<br />
+1PP&PAS&NPFV&SUB:=2>"iésemos";<br />
+2PP&PAS&NPFV&SUB:=2>"ieseis";<br />
+3PP&PAS&NPFV&SUB:=2>"iesen";<br />
+
+2PS&PRS&IMP&PRS:="e":"ie",2>"e";<br />
+3PS&PRS&IMP&PRS:="e":"ie",2>"a";<br />
+1PP&PRS&IMP&PRS:=2>"amos";<br />
+2PP&PRS&IMP&PRS:=2>"ed";<br />
+3PP&PRS&IMP&PRS:="e":"ie",2>"an";<br />
+
+;<br /><br /><b>M227</b><br />verbos terminados en -eír (<i>freír, sonreír	
+</i>)<br />INF:=0>"";<br />GER:="eir">"iendo";<br />
+PTP:="ir">"ído";<br />
+PTP&MCL&SNG:="ir">"ído";<br />
+PTP&MCL&PLR:="ir">"ídos";<br />
+PTP&FEM&SNG:="ir">"ída";<br />
+PTP&FEM&PLR:="ir">"ídas";<br />
+
+1PS&PRS&IND:=3>"ío";<br />
+2PS&PRS&IND:=3>"íes";<br />
+3PS&PRS&IND:=3>"íe";<br />
+1PP&PRS&IND:=2>"ímos";<br />
+2PP&PRS&IND:=2>"ís";<br />
+3PP&PRS&IND:=3>"íen";<br />
+
+1PS&PAS&NPFV&IND:=2>"ía";<br />
+2PS&PAS&NPFV&IND:=2>"ías";<br />
+3PS&PAS&NPFV&IND:=2>"ía";<br />
+1PP&PAS&NPFV&IND:=2>"íamos";<br />
+2PP&PAS&NPFV&IND:=2>"íais";<br />
+3PP&PAS&NPFV&IND:=2>"ían";<br />
+
+1PS&PAS&PFV&IND:=2>"í";<br />
+2PS&PAS&PFV&IND:=2>"íste";<br />
+3PS&PAS&PFV&IND:=3>"ió";<br />
+1PP&PAS&PFV&IND:=2>"ímos";<br />
+2PP&PAS&PFV&IND:=2>"ísteis";<br />
+3PP&PAS&PFV&IND:=3>"ieron";<br />
+
+1PS&FUT&IND:=2>"iré";<br />
+2PS&FUT&IND:=2>"irás";<br />
+3PS&FUT&IND:=2>"irá";<br />
+1PP&FUT&IND:=2>"iremos";<br />
+2PP&FUT&IND:=2>"iréis";<br />
+3PP&FUT&IND:=2>"irán";<br />
+
+1PS&PRS&CON:=2>"iría";<br />
+2PS&PRS&CON:=2>"irías";<br />
+3PS&PRS&CON:=2>"iría";<br />
+1PP&PRS&CON:=2>"iríamos";<br />
+2PP&PRS&CON:=2>"iríais";<br />
+3PP&PRS&CON:=2>"irían";<br />
+
+1PS&PRS&SUB:=3>"ía";<br />
+2PS&PRS&SUB:=3>"ías";<br />
+3PS&PRS&SUB:=3>"ía";<br />
+1PP&PRS&SUB:=3>"iamos";<br />
+2PP&PRS&SUB:=3>"iáis";<br />
+3PP&PRS&SUB:=3>"ían";<br />
+
+1PS&PAS&NPFV&SUB:=3>"iera";<br />
+2PS&PAS&NPFV&SUB:=3>"ieras";<br />
+3PS&PAS&NPFV&SUB:=3>"iera";<br />
+1PP&PAS&NPFV&SUB:=3>"iéramos";<br />
+2PP&PAS&NPFV&SUB:=3>"ierais";<br />
+3PP&PAS&NPFV&SUB:=3>"ieran";<br />
+
+1PS&PAS&NPFV&SUB:=3>"iese";<br />
+2PS&PAS&NPFV&SUB:=3>"ieses";<br />
+3PS&PAS&NPFV&SUB:=3>"iese";<br />
+1PP&PAS&NPFV&SUB:=3>"iésemos";<br />
+2PP&PAS&NPFV&SUB:=3>"ieseis";<br />
+3PP&PAS&NPFV&SUB:=3>"iesen";<br />
+2PS&PRS&IMP&PRS:=3>"íe";<br />
+3PS&PRS&IMP&PRS:=3>"ía";<br />
+
+1PP&PRS&IMP&PRS:=3>"iamos";<br />
+2PP&PRS&IMP&PRS:=2>"id";<br />
+3PP&PRS&IMP&PRS:=3>"ían";<br />
+;<br /><br /><b>M228</b><br />La u que precede a la desinencia es tónica en las formas
+de este verbo que llevan el acento prosódico en la raíz. (<i>acentuar, actuar, conceptuar, evaluar, tatuar	
+</i>)<br />INF:=0>"";<br />GER:="r">"ndo";<br />
+PTP:="r">"do";<br />
+PTP&MCL&SNG:="r">"do";<br />
+PTP&MCL&PLR:="r">"dos";<br />
+PTP&FEM&SNG:="r">"da";<br />
+PTP&FEM&PLR:="r">"das";<br />
+
+1PS&PRS&IND:=3>"úo";<br />
+2PS&PRS&IND:=3>"úas";<br />
+3PS&PRS&IND:=3>"úa";<br />
+1PP&PRS&IND:=2>"amos";<br />
+2PP&PRS&IND:=2>"áis";<br />
+3PP&PRS&IND:=3>"úan";<br />
+
+1PS&PAS&NPFV&IND:=2>"aba";<br />
+2PS&PAS&NPFV&IND:=2>"abas";<br />
+3PS&PAS&NPFV&IND:=2>"aba";<br />
+1PP&PAS&NPFV&IND:=2>"ábamos";<br />
+2PP&PAS&NPFV&IND:=2>"abais";<br />
+3PP&PAS&NPFV&IND:=2>"aban";<br />
+
+1PS&PAS&PFV&IND:=2>"é";<br />
+2PS&PAS&PFV&IND:=2>"aste";<br />
+3PS&PAS&PFV&IND:=2>"ó";<br />
+1PP&PAS&PFV&IND:=2>"amos";<br />
+2PP&PAS&PFV&IND:=2>"asteis";<br />
+3PP&PAS&PFV&IND:=2>"aron";<br />
+
+1PS&FUT&IND:=2>"aré";<br />
+2PS&FUT&IND:=2>"arás";<br />
+3PS&FUT&IND:=2>"ará";<br />
+1PP&FUT&IND:=2>"aremos";<br />
+2PP&FUT&IND:=2>"aréis";<br />
+3PP&FUT&IND:=2>"arán";<br />
+
+1PS&PRS&CON:=2>"aría";<br />
+2PS&PRS&CON:=2>"arías";<br />
+3PS&PRS&CON:=2>"aría";<br />
+1PP&PRS&CON:=2>"aríamos";<br />
+2PP&PRS&CON:=2>"aríais";<br />
+3PP&PRS&CON:=2>"arían";<br />
+
+1PS&PRS&SUB:=3>"úe";<br />
+2PS&PRS&SUB:=3>"úes";<br />
+3PS&PRS&SUB:=3>"úe";<br />
+1PP&PRS&SUB:=2>"emos";<br />
+2PP&PRS&SUB:=2>"éis";<br />
+3PP&PRS&SUB:=3>"úen";<br />
+
+1PS&PAS&NPFV&SUB:=2>"ara";<br />
+2PS&PAS&NPFV&SUB:=2>"aras";<br />
+3PS&PAS&NPFV&SUB:=2>"ara";<br />
+1PP&PAS&NPFV&SUB:=2>"áramos";<br />
+2PP&PAS&NPFV&SUB:=2>"arais";<br />
+3PP&PAS&NPFV&SUB:=2>"aran";<br />
+
+1PS&PAS&NPFV&SUB:=2>"ase";<br />
+2PS&PAS&NPFV&SUB:=2>"ases";<br />
+3PS&PAS&NPFV&SUB:=2>"ase";<br />
+1PP&PAS&NPFV&SUB:=2>"ásemos";<br />
+2PP&PAS&NPFV&SUB:=2>"aseis";<br />
+3PP&PAS&NPFV&SUB:=2>"asen";<br />
+
+2PS&PRS&IMP&PRS:=3>"úa";<br />
+3PS&PRS&IMP&PRS:=3>"úe";<br />
+1PP&PRS&IMP&PRS:=2>"emos";<br />
+2PP&PRS&IMP&PRS:=2>"ad";<br />
+3PP&PRS&IMP&PRS:=3>"úen";<br /><br /><b>M229</b><br />verbo irregular (<i>desandar</i>)<br />INF:=0>"";<br />1PS&PRS&IND:=2>"o";<br />
+2PS&PRS&IND:=2>"as";<br />
+3PS&PRS&IND:=2>"a";<br />
+1PP&PRS&IND:=2>"amos";<br />
+2PP&PRS&IND:=2>"áis";<br />
+3PP&PRS&IND:=2>"an";<br />
+1PS&PAS&NPFV&IND:=2>"aba";<br />
+2PS&PAS&NPFV&IND:=2>"abas";<br />
+3PS&PAS&NPFV&IND:=2>"aba";<br />
+1PP&PAS&NPFV&IND:=2>"ábamos";<br />
+2PP&PAS&NPFV&IND:=2>"abais";<br />
+3PP&PAS&NPFV&IND:=2>"aban";<br />
+1PS&PAS&PFV&IND:=2>"uve";<br />
+2PS&PAS&PFV&IND:=2>"uviste";<br />
+3PS&PAS&PFV&IND:=2>"uvo";<br />
+1PP&PAS&PFV&IND:=2>"uvimos";<br />
+2PP&PAS&PFV&IND:=2>"uvisteis";<br />
+3PP&PAS&PFV&IND:=2>"uvieron";<br />
+1PS&FUT&IND:=2>"aré";<br />
+2PS&FUT&IND:=2>"arás";<br />
+3PS&FUT&IND:=2>"ará";<br />
+1PP&FUT&IND:=2>"aremos";<br />
+2PP&FUT&IND:=2>"aréis";<br />
+3PP&FUT&IND:=2>"arán";<br />
+1PS&PRS&CON:=2>"aría";<br />
+2PS&PRS&CON:=2>"arías";<br />
+3PS&PRS&CON:=2>"aría";<br />
+1PP&PRS&CON:=2>"aríamos";<br />
+2PP&PRS&CON:=2>"aríais";<br />
+3PP&PRS&CON:=2>"arían";<br />
+1PS&PRS&SUB:=2>"e";<br />
+2PS&PRS&SUB:=2>"es";<br />
+3PS&PRS&SUB:=2>"e";<br />
+1PP&PRS&SUB:=2>"emos";<br />
+2PP&PRS&SUB:=2>"éis";<br />
+3PP&PRS&SUB:=2>"en";<br />
+1PS&PAS&NPFV&SUB:=2>"uviera";<br />
+2PS&PAS&NPFV&SUB:=2>"uvieras";<br />
+3PS&PAS&NPFV&SUB:=2>"uviera";<br />
+1PP&PAS&NPFV&SUB:=2>"uviéramos";<br />
+2PP&PAS&NPFV&SUB:=2>"uvierais";<br />
+3PP&PAS&NPFV&SUB:=2>"uvieran";<br />
+1PS&PAS&NPFV&SUB:=2>"uviese";<br />
+2PS&PAS&NPFV&SUB:=2>"uvieses";<br />
+3PS&PAS&NPFV&SUB:=2>"uviese";<br />
+1PP&PAS&NPFV&SUB:=2>"uviésemos";<br />
+2PP&PAS&NPFV&SUB:=2>"uvieseis";<br />
+3PP&PAS&NPFV&SUB:=2>"uviesen";<br />
+2PS&PRS&IMP&PRS:=2>"a";<br />
+3PS&PRS&IMP&PRS:=2>"e";<br />
+1PP&PRS&IMP&PRS:=2>"emos";<br />
+2PP&PRS&IMP&PRS:=2>"ad";<br />
+3PP&PRS&IMP&PRS:=2>"en";<br />
+GER:=2>"ando";<br />
+PTP:=2>"ado";<br />
+;<br /><br /><b>M230</b><br />verbo irregular (<i>raer, roer	
+</i>)<br />INF:=0>"";<br />1PS&PRS&IND:=2>"igo";<br />
+2PS&PRS&IND:=2>"es";<br />
+3PS&PRS&IND:=2>"e";<br />
+1PP&PRS&IND:=2>"emos";<br />
+2PP&PRS&IND:=2>"éis";<br />
+3PP&PRS&IND:=2>"en";<br />
+1PS&PAS&NPFV&IND:=2>"ía";<br />
+2PS&PAS&NPFV&IND:=2>"ías";<br />
+3PS&PAS&NPFV&IND:=2>"ía";<br />
+1PP&PAS&NPFV&IND:=2>"íamos";<br />
+2PP&PAS&NPFV&IND:=2>"íais";<br />
+3PP&PAS&NPFV&IND:=2>"ían";<br />
+1PS&PAS&PFV&IND:=2>"í";<br />
+2PS&PAS&PFV&IND:=2>"iste";<br />
+3PS&PAS&PFV&IND:=2>"yó";<br />
+1PP&PAS&PFV&IND:=2>"ímos";<br />
+2PP&PAS&PFV&IND:=2>"ísteis";<br />
+3PP&PAS&PFV&IND:=2>"yeron";<br />
+1PS&FUT&IND:=2>"eré";<br />
+2PS&FUT&IND:=2>"erás";<br />
+3PS&FUT&IND:=2>"erá";<br />
+1PP&FUT&IND:=2>"eremos";<br />
+2PP&FUT&IND:=2>"eréis";<br />
+3PP&FUT&IND:=2>"erán";<br />
+1PS&PRS&CON:=2>"ería";<br />
+2PS&PRS&CON:=2>"erías";<br />
+3PS&PRS&CON:=2>"ería";<br />
+1PP&PRS&CON:=2>"eríamos";<br />
+2PP&PRS&CON:=2>"eríais";<br />
+3PP&PRS&CON:=2>"erían";<br />
+1PS&PRS&SUB:=2>"iga";<br />
+2PS&PRS&SUB:=2>"igas";<br />
+3PS&PRS&SUB:=2>"iga";<br />
+1PP&PRS&SUB:=2>"igamos";<br />
+2PP&PRS&SUB:=2>"igáis";<br />
+3PP&PRS&SUB:=2>"igan";<br />
+1PS&PAS&NPFV&SUB:=2>"yera";<br />
+2PS&PAS&NPFV&SUB:=2>"yeras";<br />
+3PS&PAS&NPFV&SUB:=2>"yera";<br />
+1PP&PAS&NPFV&SUB:=2>"yéramos";<br />
+2PP&PAS&NPFV&SUB:=2>"yerais";<br />
+3PP&PAS&NPFV&SUB:=2>"yeran";<br />
+1PS&PAS&NPFV&SUB:=2>"yese";<br />
+2PS&PAS&NPFV&SUB:=2>"yeses";<br />
+3PS&PAS&NPFV&SUB:=2>"yese";<br />
+1PP&PAS&NPFV&SUB:=2>"yésemos";<br />
+2PP&PAS&NPFV&SUB:=2>"yeseis";<br />
+3PP&PAS&NPFV&SUB:=2>"yesen";<br />
+2PS&PRS&IMP&PRS:=2>"e";<br />
+3PS&PRS&IMP&PRS:=2>"iga";<br />
+1PP&PRS&IMP&PRS:=2>"igamos";<br />
+2PP&PRS&IMP&PRS:=2>"ed";<br />
+3PP&PRS&IMP&PRS:=2>"igan";<br />
+GER:=2>"yendo";<br />
+PTP:=2>"ído";<br />
+PTP&MCL&SNG:=2>"ido";<br />
+PTP&MCL&PLR:=2>"idos";<br />
+PTP&FEM&SNG:=2>"ida";<br />
+PTP&FEM&PLR:=2>"idas";<br />
+;<br /><br /><b>M231</b><br />verbo irregular (<i>haber</i>)<br />INF:=0>"";<br />1PS&PRS&IND:="he";<br />
+2PS&PRS&IND:="has";<br />
+3PS&PRS&IND:="ha";<br />
+1PP&PRS&IND:="hemos";<br />
+2PP&PRS&IND:="habéis";<br />
+3PP&PRS&IND:="han";<br />
+1PS&PAS&NPFV&IND:="había";<br />
+2PS&PAS&NPFV&IND:="habías";<br />
+3PS&PAS&NPFV&IND:="había";<br />
+1PP&PAS&NPFV&IND:="habíamos";<br />
+2PP&PAS&NPFV&IND:="habíais";<br />
+3PP&PAS&NPFV&IND:="habían";<br />
+1PS&PAS&PFV&IND:="hube";<br />
+2PS&PAS&PFV&IND:="hubiste";<br />
+3PS&PAS&PFV&IND:="hubo";<br />
+1PP&PAS&PFV&IND:="hubimos";<br />
+2PP&PAS&PFV&IND:="hubisteis";<br />
+3PP&PAS&PFV&IND:="hubieron";<br />
+1PS&FUT&IND:="habré";<br />
+2PS&FUT&IND:="habrás";<br />
+3PS&FUT&IND:="habrá";<br />
+1PP&FUT&IND:="habremos";<br />
+2PP&FUT&IND:="habréis";<br />
+3PP&FUT&IND:="habrán";<br />
+1PS&PRS&CON:="habría";<br />
+2PS&PRS&CON:="habrías";<br />
+3PS&PRS&CON:="habría";<br />
+1PP&PRS&CON:="habríamos";<br />
+2PP&PRS&CON:="habríais";<br />
+3PP&PRS&CON:="habrían";<br />
+1PS&PRS&SUB:="haya";<br />
+2PS&PRS&SUB:="hayas";<br />
+3PS&PRS&SUB:="haya";<br />
+1PP&PRS&SUB:="hayamos";<br />
+2PP&PRS&SUB:="hayáis";<br />
+3PP&PRS&SUB:="hayan";<br />
+1PS&PAS&NPFV&SUB:="hubiera";<br />
+2PS&PAS&NPFV&SUB:="hubieras";<br />
+3PS&PAS&NPFV&SUB:="hubiera";<br />
+1PP&PAS&NPFV&SUB:="hubiéramos";<br />
+2PP&PAS&NPFV&SUB:="hubierais";<br />
+3PP&PAS&NPFV&SUB:="hubieran";<br />
+1PS&PAS&NPFV&SUB:="hubiese";<br />
+2PS&PAS&NPFV&SUB:="hubieses";<br />
+3PS&PAS&NPFV&SUB:="hubiese";<br />
+1PP&PAS&NPFV&SUB:="hubiésemos";<br />
+2PP&PAS&NPFV&SUB:="hubieseis";<br />
+3PP&PAS&NPFV&SUB:="hubiesen";<br />
+2PS&PRS&IMP&PRS:=NULL;<br />
+3PS&PRS&IMP&PRS:=NULL;<br />
+1PP&PRS&IMP&PRS:=NULL;<br />
+2PP&PRS&IMP&PRS:=NULL;<br />
+3PP&PRS&IMP&PRS:=NULL;<br />
+GER:="habiendo";<br />
+PTP:="habido";<br />
+;<br /><br /><b>M232</b><br />verbo irregular (<i>caber</i>)<br />INF:=0>"";<br />1PS&PRS&IND:="quepo";<br />
+2PS&PRS&IND:="cabes";<br />
+3PS&PRS&IND:="cabe";<br />
+1PP&PRS&IND:="cabemos";<br />
+2PP&PRS&IND:="cabéis";<br />
+3PP&PRS&IND:="caben";<br />
+1PS&PAS&NPFV&IND:="cabía";<br />
+2PS&PAS&NPFV&IND:="cabías";<br />
+3PS&PAS&NPFV&IND:="cabía";<br />
+1PP&PAS&NPFV&IND:="cabíamos";<br />
+2PP&PAS&NPFV&IND:="cabíais";<br />
+3PP&PAS&NPFV&IND:="cabían";<br />
+1PS&PAS&PFV&IND:="cupe";<br />
+2PS&PAS&PFV&IND:="cupiste";<br />
+3PS&PAS&PFV&IND:="cupo";<br />
+1PP&PAS&PFV&IND:="cupimos";<br />
+2PP&PAS&PFV&IND:="cupisteis";<br />
+3PP&PAS&PFV&IND:="cupieron";<br />
+1PS&FUT&IND:="cabré";<br />
+2PS&FUT&IND:="cabrás";<br />
+3PS&FUT&IND:="cabrá";<br />
+1PP&FUT&IND:="cabremos";<br />
+2PP&FUT&IND:="cabréis";<br />
+3PP&FUT&IND:="cabrán";<br />
+1PS&PRS&CON:="cabría";<br />
+2PS&PRS&CON:="cabrías";<br />
+3PS&PRS&CON:="cabría";<br />
+1PP&PRS&CON:="cabríamos";<br />
+2PP&PRS&CON:="cabríais";<br />
+3PP&PRS&CON:="cabrían";<br />
+1PS&PRS&SUB:="quepa";<br />
+2PS&PRS&SUB:="quepas";<br />
+3PS&PRS&SUB:="quepa";<br />
+1PP&PRS&SUB:="quepamos";<br />
+2PP&PRS&SUB:="quepáis";<br />
+3PP&PRS&SUB:="quepan";<br />
+1PS&PAS&NPFV&SUB:="cupiera";<br />
+2PS&PAS&NPFV&SUB:="cupieras";<br />
+3PS&PAS&NPFV&SUB:="cupiera";<br />
+1PP&PAS&NPFV&SUB:="cupiéramos";<br />
+2PP&PAS&NPFV&SUB:="cupierais";<br />
+3PP&PAS&NPFV&SUB:="cupieran";<br />
+1PS&PAS&NPFV&SUB:="cupiese";<br />
+2PS&PAS&NPFV&SUB:="cupieses";<br />
+3PS&PAS&NPFV&SUB:="cupiese";<br />
+1PP&PAS&NPFV&SUB:="cupiésemos";<br />
+2PP&PAS&NPFV&SUB:="cupieseis";<br />
+3PP&PAS&NPFV&SUB:="cupiesen";<br />
+2PS&PRS&IMP&PRS:="cabe";<br />
+3PS&PRS&IMP&PRS:="quepa";<br />
+1PP&PRS&IMP&PRS:="quepamos";<br />
+2PP&PRS&IMP&PRS:="cabed";<br />
+3PP&PRS&IMP&PRS:="quepan";<br />
+GER:="cabiendo";<br />
+PTP:="cabido";<br />
+;<br /><br /><b>M233</b><br />verbo irregular (<i>dar</i>)<br />INF:=0>"";<br />1PS&PRS&IND:="doy";<br />
+2PS&PRS&IND:="das";<br />
+3PS&PRS&IND:="da";<br />
+1PP&PRS&IND:="damos";<br />
+2PP&PRS&IND:="dais";<br />
+3PP&PRS&IND:="dan";<br />
+1PS&PAS&NPFV&IND:="daba";<br />
+2PS&PAS&NPFV&IND:="dabas";<br />
+3PS&PAS&NPFV&IND:="daba";<br />
+1PP&PAS&NPFV&IND:="dábamos";<br />
+2PP&PAS&NPFV&IND:="dabais";<br />
+3PP&PAS&NPFV&IND:="daban";<br />
+1PS&PAS&PFV&IND:="di";<br />
+2PS&PAS&PFV&IND:="diste";<br />
+3PS&PAS&PFV&IND:="dio";<br />
+1PP&PAS&PFV&IND:="dimos";<br />
+2PP&PAS&PFV&IND:="disteis";<br />
+3PP&PAS&PFV&IND:="dieron";<br />
+1PS&FUT&IND:="daré";<br />
+2PS&FUT&IND:="darás";<br />
+3PS&FUT&IND:="dará";<br />
+1PP&FUT&IND:="daremos";<br />
+2PP&FUT&IND:="daréis";<br />
+3PP&FUT&IND:="darán";<br />
+1PS&PRS&CON:="daría";<br />
+2PS&PRS&CON:="darías";<br />
+3PS&PRS&CON:="daría";<br />
+1PP&PRS&CON:="daríamos";<br />
+2PP&PRS&CON:="daríais";<br />
+3PP&PRS&CON:="darían";<br />
+1PS&PRS&SUB:="dé";<br />
+2PS&PRS&SUB:="des";<br />
+3PS&PRS&SUB:="dé";<br />
+1PP&PRS&SUB:="demos";<br />
+2PP&PRS&SUB:="deis";<br />
+3PP&PRS&SUB:="den";<br />
+1PS&PAS&NPFV&SUB:="diera";<br />
+2PS&PAS&NPFV&SUB:="dieras";<br />
+3PS&PAS&NPFV&SUB:="diera";<br />
+1PP&PAS&NPFV&SUB:="diéramos";<br />
+2PP&PAS&NPFV&SUB:="dierais";<br />
+3PP&PAS&NPFV&SUB:="dieran";<br />
+1PS&PAS&NPFV&SUB:="diese";<br />
+2PS&PAS&NPFV&SUB:="dieses";<br />
+3PS&PAS&NPFV&SUB:="diese";<br />
+1PP&PAS&NPFV&SUB:="diésemos";<br />
+2PP&PAS&NPFV&SUB:="dieseis";<br />
+3PP&PAS&NPFV&SUB:="diesen";<br />
+2PS&PRS&IMP&PRS:="da";<br />
+3PS&PRS&IMP&PRS:="dé";<br />
+1PP&PRS&IMP&PRS:="demos";<br />
+2PP&PRS&IMP&PRS:="dad";<br />
+3PP&PRS&IMP&PRS:="den";<br />
+GER:="dando";<br />
+PTP:="dado";<br />
+PTP&MCL&SNG:="dado";<br />
+PTP&MCL&PLR:="dados";<br />
+PTP&FEM&SNG:="dada";<br />
+PTP&FEM&PLR:="dadas";<br />
+;<br /><br /><b>M234</b><br />verbo irregular (<i>erguir</i>)<br />INF:=0>"";<br />1PS&PRS&IND:="yergo";<br />
+2PS&PRS&IND:="yergues";<br />
+3PS&PRS&IND:="yergue";<br />
+1PP&PRS&IND:="erguimos";<br />
+2PP&PRS&IND:="erguís";<br />
+3PP&PRS&IND:="yerguen";<br />
+1PS&PAS&NPFV&IND:="erguía";<br />
+2PS&PAS&NPFV&IND:="erguías";<br />
+3PS&PAS&NPFV&IND:="erguía";<br />
+1PP&PAS&NPFV&IND:="erguíamos";<br />
+2PP&PAS&NPFV&IND:="erguíais";<br />
+3PP&PAS&NPFV&IND:="erguían";<br />
+1PS&PAS&PFV&IND:="erguí";<br />
+2PS&PAS&PFV&IND:="erguiste";<br />
+3PS&PAS&PFV&IND:="irguió";<br />
+1PP&PAS&PFV&IND:="erguimos";<br />
+2PP&PAS&PFV&IND:="erguisteis";<br />
+3PP&PAS&PFV&IND:="irguieron";<br />
+1PS&FUT&IND:="erguiré";<br />
+2PS&FUT&IND:="erguirás";<br />
+3PS&FUT&IND:="erguirás";<br />
+1PP&FUT&IND:="erguiremos";<br />
+2PP&FUT&IND:="erguiréis";<br />
+3PP&FUT&IND:="erguirán";<br />
+1PS&PRS&CON:="erguiría";<br />
+2PS&PRS&CON:="erguirías";<br />
+3PS&PRS&CON:="erguiría";<br />
+1PP&PRS&CON:="erguiríamos";<br />
+2PP&PRS&CON:="erguiríais";<br />
+3PP&PRS&CON:="erguirían";<br />
+1PS&PRS&SUB:="yerga";<br />
+2PS&PRS&SUB:="yergas";<br />
+3PS&PRS&SUB:="yerga";<br />
+1PP&PRS&SUB:="irgamos";<br />
+2PP&PRS&SUB:="irgáis";<br />
+3PP&PRS&SUB:="yergan";<br />
+1PS&PAS&NPFV&SUB:="irguiera";<br />
+2PS&PAS&NPFV&SUB:="irguieras";<br />
+3PS&PAS&NPFV&SUB:="irguiera";<br />
+1PP&PAS&NPFV&SUB:="irguiéramos";<br />
+2PP&PAS&NPFV&SUB:="irguierais";<br />
+3PP&PAS&NPFV&SUB:="irguieran";<br />
+1PS&PAS&NPFV&SUB:="irguiese";<br />
+2PS&PAS&NPFV&SUB:="irguieses";<br />
+3PS&PAS&NPFV&SUB:="irguiese";<br />
+1PP&PAS&NPFV&SUB:="irguiésemos";<br />
+2PP&PAS&NPFV&SUB:="irguieseis";<br />
+3PP&PAS&NPFV&SUB:="irguiesen";<br />
+2PS&PRS&IMP&PRS:="yergue";<br />
+3PS&PRS&IMP&PRS:="yerga";<br />
+1PP&PRS&IMP&PRS:="irgamos";<br />
+2PP&PRS&IMP&PRS:="erguid";<br />
+3PP&PRS&IMP&PRS:="yergan";<br />
+GER:="irguiendo";<br />
+PTP:="erguido";<br />
+PTP&MCL&SNG:="erguido";<br />
+PTP&MCL&PLR:="erguidos";<br />
+PTP&FEM&SNG:="erguida";<br />
+PTP&FEM&PLR:="erguidas";<br />
+;<br /><br /><b>M235</b><br />verbo irregular. (<i>ir</i>)<br />INF:=0>"";<br />1PS&PRS&IND:="voy";<br />
+2PS&PRS&IND:="vas";<br />
+3PS&PRS&IND:="va";<br />
+1PP&PRS&IND:="vamos";<br />
+2PP&PRS&IND:="vais";<br />
+3PP&PRS&IND:="van";<br />
+1PS&PAS&NPFV&IND:="iba";<br />
+2PS&PAS&NPFV&IND:="ibas";<br />
+3PS&PAS&NPFV&IND:="iba";<br />
+1PP&PAS&NPFV&IND:="íbamos";<br />
+2PP&PAS&NPFV&IND:="ibais";<br />
+3PP&PAS&NPFV&IND:="iban";<br />
+1PS&PAS&PFV&IND:="fui";<br />
+2PS&PAS&PFV&IND:="fuiste";<br />
+3PS&PAS&PFV&IND:="fue";<br />
+1PP&PAS&PFV&IND:="fuimos";<br />
+2PP&PAS&PFV&IND:="fuisteis";<br />
+3PP&PAS&PFV&IND:="fueron";<br />
+1PS&FUT&IND:="iré";<br />
+2PS&FUT&IND:="irás";<br />
+3PS&FUT&IND:="irá";<br />
+1PP&FUT&IND:="iremos";<br />
+2PP&FUT&IND:="iréis";<br />
+3PP&FUT&IND:="irán";<br />
+1PS&PRS&CON:="iría";<br />
+2PS&PRS&CON:="irías";<br />
+3PS&PRS&CON:="iría";<br />
+1PP&PRS&CON:="iríamos";<br />
+2PP&PRS&CON:="iríais";<br />
+3PP&PRS&CON:="irían";<br />
+1PS&PRS&SUB:="vaya";<br />
+2PS&PRS&SUB:="vayas";<br />
+3PS&PRS&SUB:="vaya";<br />
+1PP&PRS&SUB:="vayamos";<br />
+2PP&PRS&SUB:="vayáis";<br />
+3PP&PRS&SUB:="vayan";<br />
+1PS&PAS&NPFV&SUB:="fuera";<br />
+2PS&PAS&NPFV&SUB:="fueras";<br />
+3PS&PAS&NPFV&SUB:="fuera";<br />
+1PP&PAS&NPFV&SUB:="fuéramos";<br />
+2PP&PAS&NPFV&SUB:="fuerais";<br />
+3PP&PAS&NPFV&SUB:="fueran";<br />
+1PS&PAS&NPFV&SUB:="fuese";<br />
+2PS&PAS&NPFV&SUB:="fueses";<br />
+3PS&PAS&NPFV&SUB:="fuese";<br />
+1PP&PAS&NPFV&SUB:="fuésemos";<br />
+2PP&PAS&NPFV&SUB:="fueseis";<br />
+3PP&PAS&NPFV&SUB:="fuesen";<br />
+2PS&PRS&IMP&PRS:="ve";<br />
+3PS&PRS&IMP&PRS:="vaya";<br />
+1PP&PRS&IMP&PRS:="vayamos";<br />
+2PP&PRS&IMP&PRS:="id";<br />
+3PP&PRS&IMP&PRS:="vayan";<br />
+GER:="yendo";<br />
+PTP:="ido";<br />
+;<br /><br /><b>M236</b><br />verbo irregular (<i>oír</i>)<br />INF:=0>"";<br />1PS&PRS&IND:="oigo";<br />
+2PS&PRS&IND:="oyes";<br />
+3PS&PRS&IND:="oye";<br />
+1PP&PRS&IND:="oímos";<br />
+2PP&PRS&IND:="oís";<br />
+3PP&PRS&IND:="oyen";<br />
+1PS&PAS&NPFV&IND:="oía";<br />
+2PS&PAS&NPFV&IND:="oías";<br />
+3PS&PAS&NPFV&IND:="oía";<br />
+1PP&PAS&NPFV&IND:="oíamos";<br />
+2PP&PAS&NPFV&IND:="oíais";<br />
+3PP&PAS&NPFV&IND:="oían";<br />
+1PS&PAS&PFV&IND:="oí";<br />
+2PS&PAS&PFV&IND:="oíste";<br />
+3PS&PAS&PFV&IND:="oyó";<br />
+1PP&PAS&PFV&IND:="oímos";<br />
+2PP&PAS&PFV&IND:="oísteis";<br />
+3PP&PAS&PFV&IND:="oyeron";<br />
+1PS&FUT&IND:="oiré";<br />
+2PS&FUT&IND:="oirás";<br />
+3PS&FUT&IND:="oirá";<br />
+1PP&FUT&IND:="oiremos";<br />
+2PP&FUT&IND:="oiréis";<br />
+3PP&FUT&IND:="oirán";<br />
+1PS&PRS&CON:="oiría";<br />
+2PS&PRS&CON:="oirías";<br />
+3PS&PRS&CON:="oiría";<br />
+1PP&PRS&CON:="oiríamos";<br />
+2PP&PRS&CON:="oiríais";<br />
+3PP&PRS&CON:="oirían";<br />
+1PS&PRS&SUB:="oiga";<br />
+2PS&PRS&SUB:="oigas";<br />
+3PS&PRS&SUB:="oiga";<br />
+1PP&PRS&SUB:="oigamos";<br />
+2PP&PRS&SUB:="oigáis";<br />
+3PP&PRS&SUB:="oigan";<br />
+1PS&PAS&NPFV&SUB:="oyera";<br />
+2PS&PAS&NPFV&SUB:="oyeras";<br />
+3PS&PAS&NPFV&SUB:="oyera";<br />
+1PP&PAS&NPFV&SUB:="oyéramos";<br />
+2PP&PAS&NPFV&SUB:="oyerais";<br />
+3PP&PAS&NPFV&SUB:="oyeran";<br />
+1PS&PAS&NPFV&SUB:="oyese";<br />
+2PS&PAS&NPFV&SUB:="oyeses";<br />
+3PS&PAS&NPFV&SUB:="oyese";<br />
+1PP&PAS&NPFV&SUB:="oyésemos";<br />
+2PP&PAS&NPFV&SUB:="oyeseis";<br />
+3PP&PAS&NPFV&SUB:="oyesen";<br />
+2PS&PRS&IMP&PRS:="oye";<br />
+3PS&PRS&IMP&PRS:="oiga";<br />
+1PP&PRS&IMP&PRS:="oigamos";<br />
+2PP&PRS&IMP&PRS:="oíd";<br />
+3PP&PRS&IMP&PRS:="oigan";<br />
+GER:="oyendo";<br />
+PTP:="oído";<br />
+PTP&MCL&SNG:="oído"
+PTP&MCL&PLR:="oídos";<br />
+PTP&FEM&SNG:="oída";<br />
+PTP&FEM&PLR:="oídas";<br />
+;<br /><br /><b>M237</b><br />verbo irregular (<i>saber</i>)<br />INF:=0>"";<br />1PS&PRS&IND:="sé";<br />
+2PS&PRS&IND:="sabes";<br />
+3PS&PRS&IND:="sabe";<br />
+1PP&PRS&IND:="sabemos";<br />
+2PP&PRS&IND:="sabéis";<br />
+3PP&PRS&IND:="saben";<br />
+1PS&PAS&NPFV&IND:="sabía";<br />
+2PS&PAS&NPFV&IND:="sabías";<br />
+3PS&PAS&NPFV&IND:="sabía";<br />
+1PP&PAS&NPFV&IND:="sabíamos";<br />
+2PP&PAS&NPFV&IND:="sabíais";<br />
+3PP&PAS&NPFV&IND:="sabían";<br />
+1PS&PAS&PFV&IND:="supe";<br />
+2PS&PAS&PFV&IND:="supiste";<br />
+3PS&PAS&PFV&IND:="supo";<br />
+1PP&PAS&PFV&IND:="supimos";<br />
+2PP&PAS&PFV&IND:="supisteis";<br />
+3PP&PAS&PFV&IND:="supieron";<br />
+1PS&FUT&IND:="sabré";<br />
+2PS&FUT&IND:="sabrás";<br />
+3PS&FUT&IND:="sabrá";<br />
+1PP&FUT&IND:="sabremos";<br />
+2PP&FUT&IND:="sabréis";<br />
+3PP&FUT&IND:="sabrán";<br />
+1PS&PRS&CON:="sabría";<br />
+2PS&PRS&CON:="sabrías";<br />
+3PS&PRS&CON:="sabría";<br />
+1PP&PRS&CON:="sabríamos";<br />
+2PP&PRS&CON:="sabríais";<br />
+3PP&PRS&CON:="sabrían";<br />
+1PS&PRS&SUB:="sepa";<br />
+2PS&PRS&SUB:="sepas";<br />
+3PS&PRS&SUB:="sepa";<br />
+1PP&PRS&SUB:="sepamos";<br />
+2PP&PRS&SUB:="sepáis";<br />
+3PP&PRS&SUB:="sepan";<br />
+1PS&PAS&NPFV&SUB:="supiera";<br />
+2PS&PAS&NPFV&SUB:="supieras";<br />
+3PS&PAS&NPFV&SUB:="supiera";<br />
+1PP&PAS&NPFV&SUB:="supiéramos";<br />
+2PP&PAS&NPFV&SUB:="supierais";<br />
+3PP&PAS&NPFV&SUB:="supieran";<br />
+1PS&PAS&NPFV&SUB:="supiese";<br />
+2PS&PAS&NPFV&SUB:="supieses";<br />
+3PS&PAS&NPFV&SUB:="supiese";<br />
+1PP&PAS&NPFV&SUB:="supiésemos";<br />
+2PP&PAS&NPFV&SUB:="supieseis";<br />
+3PP&PAS&NPFV&SUB:="supiesen";<br />
+2PS&PRS&IMP&PRS:="sabe";<br />
+3PS&PRS&IMP&PRS:="sepa";<br />
+1PP&PRS&IMP&PRS:="sepamos";<br />
+2PP&PRS&IMP&PRS:="sabed";<br />
+3PP&PRS&IMP&PRS:="sepan";<br />
+GER:="sabiendo";<br />
+PTP:="sabido";<br />
+;<br /><br /><b>M238</b><br />verbo irregular do 3o. grupo. (<i>salir</i>)<br />INF:=0>"";<br />1PS&PRS&IND:="salgo";<br />
+2PS&PRS&IND:="sales";<br />
+3PS&PRS&IND:="sale";<br />
+1PP&PRS&IND:="salimos";<br />
+2PP&PRS&IND:="salís";<br />
+3PP&PRS&IND:="salen";<br />
+1PS&PAS&NPFV&IND:="salía";<br />
+2PS&PAS&NPFV&IND:="salías";<br />
+3PS&PAS&NPFV&IND:="salía";<br />
+1PP&PAS&NPFV&IND:="salíamos";<br />
+2PP&PAS&NPFV&IND:="salíais";<br />
+3PP&PAS&NPFV&IND:="salían";<br />
+1PS&PAS&PFV&IND:="salí";<br />
+2PS&PAS&PFV&IND:="saliste";<br />
+3PS&PAS&PFV&IND:="salió";<br />
+1PP&PAS&PFV&IND:="salimos";<br />
+2PP&PAS&PFV&IND:="salisteis";<br />
+3PP&PAS&PFV&IND:="salieron";<br />
+1PS&FUT&IND:="saldré";<br />
+2PS&FUT&IND:="saldrás";<br />
+3PS&FUT&IND:="saldrá";<br />
+1PP&FUT&IND:="saldremos";<br />
+2PP&FUT&IND:="saldréis";<br />
+3PP&FUT&IND:="saldrán";<br />
+1PS&PRS&CON:="saldría";<br />
+2PS&PRS&CON:="saldrías";<br />
+3PS&PRS&CON:="saldría";<br />
+1PP&PRS&CON:="saldríamos";<br />
+2PP&PRS&CON:="saldríais";<br />
+3PP&PRS&CON:="saldrían";<br />
+1PS&PRS&SUB:="salga";<br />
+2PS&PRS&SUB:="salgas";<br />
+3PS&PRS&SUB:="salga";<br />
+1PP&PRS&SUB:="salgamos";<br />
+2PP&PRS&SUB:="salgáis";<br />
+3PP&PRS&SUB:="salgan";<br />
+1PS&PAS&NPFV&SUB:="saliera";<br />
+2PS&PAS&NPFV&SUB:="salieras";<br />
+3PS&PAS&NPFV&SUB:="saliera";<br />
+1PP&PAS&NPFV&SUB:="saliéramos";<br />
+2PP&PAS&NPFV&SUB:="salierais";<br />
+3PP&PAS&NPFV&SUB:="salieran";<br />
+1PS&PAS&NPFV&SUB:="saliese";<br />
+2PS&PAS&NPFV&SUB:="salieses";<br />
+3PS&PAS&NPFV&SUB:="saliese";<br />
+1PP&PAS&NPFV&SUB:="saliésemos";<br />
+2PP&PAS&NPFV&SUB:="salieseis";<br />
+3PP&PAS&NPFV&SUB:="saliesen";<br />
+2PS&PRS&IMP&PRS:="sal";<br />
+3PS&PRS&IMP&PRS:="salga";<br />
+1PP&PRS&IMP&PRS:="salgamos";<br />
+2PP&PRS&IMP&PRS:="salid";<br />
+3PP&PRS&IMP&PRS:="salgan";<br />
+GER:="saliendo";<br />
+PTP:="salido";<br />
+;<br /><br /><b>M239</b><br />verbo irregular (<i>valer</i>)<br />INF:=0>"";<br />1PS&PRS&IND:="valgo";<br />
+2PS&PRS&IND:="vales";<br />
+3PS&PRS&IND:="vale";<br />
+1PP&PRS&IND:="valemos";<br />
+2PP&PRS&IND:="valéis";<br />
+3PP&PRS&IND:="valen";<br />
+1PS&PAS&NPFV&IND:="valía";<br />
+2PS&PAS&NPFV&IND:="valías";<br />
+3PS&PAS&NPFV&IND:="valía";<br />
+1PP&PAS&NPFV&IND:="valíamos";<br />
+2PP&PAS&NPFV&IND:="valíais";<br />
+3PP&PAS&NPFV&IND:="valían";<br />
+1PS&PAS&PFV&IND:="valí";<br />
+2PS&PAS&PFV&IND:="valiste";<br />
+3PS&PAS&PFV&IND:="valió";<br />
+1PP&PAS&PFV&IND:="valimos";<br />
+2PP&PAS&PFV&IND:="valisteis";<br />
+3PP&PAS&PFV&IND:="valieron";<br />
+1PS&FUT&IND:="valdré";<br />
+2PS&FUT&IND:="valdrás";<br />
+3PS&FUT&IND:="valdrá";<br />
+1PP&FUT&IND:="valdremos";<br />
+2PP&FUT&IND:="valdréis";<br />
+3PP&FUT&IND:="valdrán";<br />
+1PS&PRS&CON:="valdría";<br />
+2PS&PRS&CON:="valdrías";<br />
+3PS&PRS&CON:="valdría";<br />
+1PP&PRS&CON:="valdríamos";<br />
+2PP&PRS&CON:="valdríais";<br />
+3PP&PRS&CON:="valdrían";<br />
+1PS&PRS&SUB:="valga";<br />
+2PS&PRS&SUB:="valgas";<br />
+3PS&PRS&SUB:="valga";<br />
+1PP&PRS&SUB:="valgamos";<br />
+2PP&PRS&SUB:="valgáis";<br />
+3PP&PRS&SUB:="valgan";<br />
+1PS&PAS&NPFV&SUB:="valiera";<br />
+2PS&PAS&NPFV&SUB:="valieras";<br />
+3PS&PAS&NPFV&SUB:="valiera";<br />
+1PP&PAS&NPFV&SUB:="valiéramos";<br />
+2PP&PAS&NPFV&SUB:="valierais";<br />
+3PP&PAS&NPFV&SUB:="valieran";<br />
+1PS&PAS&NPFV&SUB:="valiese";<br />
+2PS&PAS&NPFV&SUB:="valieses";<br />
+3PS&PAS&NPFV&SUB:="valiese";<br />
+1PP&PAS&NPFV&SUB:="valiésemos";<br />
+2PP&PAS&NPFV&SUB:="valieseis";<br />
+3PP&PAS&NPFV&SUB:="valiesen";<br />
+2PS&PRS&IMP&PRS:="val";<br />
+3PS&PRS&IMP&PRS:="valga";<br />
+1PP&PRS&IMP&PRS:="valgamos";<br />
+2PP&PRS&IMP&PRS:="valed";<br />
+3PP&PRS&IMP&PRS:="valgan";<br />
+GER:="valiendo";<br />
+PTP:="valido";<br />
+;<br /><br /><b>M240</b><br />verbo irregular (<i>traer</i>)<br />INF:=0>"";<br />1PS&PRS&IND:="traigo";<br />
+2PS&PRS&IND:="traes";<br />
+3PS&PRS&IND:="trae";<br />
+1PP&PRS&IND:="traemos";<br />
+2PP&PRS&IND:="traéis";<br />
+3PP&PRS&IND:="traen";<br />
+1PS&PAS&NPFV&IND:="traía";<br />
+2PS&PAS&NPFV&IND:="traías";<br />
+3PS&PAS&NPFV&IND:="traía";<br />
+1PP&PAS&NPFV&IND:="traíamos";<br />
+2PP&PAS&NPFV&IND:="traíais";<br />
+3PP&PAS&NPFV&IND:="traían";<br />
+1PS&PAS&PFV&IND:="traje";<br />
+2PS&PAS&PFV&IND:="trajiste";<br />
+3PS&PAS&PFV&IND:="trajo";<br />
+1PP&PAS&PFV&IND:="trajimos";<br />
+2PP&PAS&PFV&IND:="trajisteis";<br />
+3PP&PAS&PFV&IND:="trajeron";<br />
+1PS&FUT&IND:="traeré";<br />
+2PS&FUT&IND:="traerás";<br />
+3PS&FUT&IND:="traerá";<br />
+1PP&FUT&IND:="traeremos";<br />
+2PP&FUT&IND:="traeréis";<br />
+3PP&FUT&IND:="traerán";<br />
+1PS&PRS&CON:="traería";<br />
+2PS&PRS&CON:="traerías";<br />
+3PS&PRS&CON:="traería";<br />
+1PP&PRS&CON:="traeríamos";<br />
+2PP&PRS&CON:="traeríais";<br />
+3PP&PRS&CON:="traerían";<br />
+1PS&PRS&SUB:="traiga";<br />
+2PS&PRS&SUB:="traigas";<br />
+3PS&PRS&SUB:="traiga";<br />
+1PP&PRS&SUB:="traigamos";<br />
+2PP&PRS&SUB:="traigáis";<br />
+3PP&PRS&SUB:="traigan";<br />
+1PS&PAS&NPFV&SUB:="trajera";<br />
+2PS&PAS&NPFV&SUB:="trajeras";<br />
+3PS&PAS&NPFV&SUB:="trajera";<br />
+1PP&PAS&NPFV&SUB:="trajéramos";<br />
+2PP&PAS&NPFV&SUB:="trajerais";<br />
+3PP&PAS&NPFV&SUB:="trajeran";<br />
+1PS&PAS&NPFV&SUB:="trajese";<br />
+2PS&PAS&NPFV&SUB:="trajeses";<br />
+3PS&PAS&NPFV&SUB:="trajese";<br />
+1PP&PAS&NPFV&SUB:="trajésemos";<br />
+2PP&PAS&NPFV&SUB:="trajeseis";<br />
+3PP&PAS&NPFV&SUB:="trajesen";<br />
+2PS&PRS&IMP&PRS:="trae";<br />
+3PS&PRS&IMP&PRS:="traiga";<br />
+1PP&PRS&IMP&PRS:="traigamos";<br />
+2PP&PRS&IMP&PRS:="traed";<br />
+3PP&PRS&IMP&PRS:="traigan";<br />
+GER:="trayendo";<br />
+PTP:="traído";<br />
+PTP&MCL&SNG:="traído";<br />
+PTP&MCL&PLR:="traídos";<br />
+PTP&FEM&SNG:="traída";<br />
+PTP&FEM&PLR:="traídas";<br />
+;<br /><br /><b>M241</b><br />verbo irregular (<i>yacer</i>)<br />INF:=0>"";<br />1PS&PRS&IND:="yazgo";<br />
+2PS&PRS&IND:="yaces";<br />
+3PS&PRS&IND:="yace";<br />
+1PP&PRS&IND:="yacemos";<br />
+2PP&PRS&IND:="yacéis";<br />
+3PP&PRS&IND:="yacen";<br />
+1PS&PAS&NPFV&IND:="yacía";<br />
+2PS&PAS&NPFV&IND:="yacías";<br />
+3PS&PAS&NPFV&IND:="yacía";<br />
+1PP&PAS&NPFV&IND:="yacíamos";<br />
+2PP&PAS&NPFV&IND:="yacíais";<br />
+3PP&PAS&NPFV&IND:="yacían";<br />
+1PS&PAS&PFV&IND:="yací";<br />
+2PS&PAS&PFV&IND:="yaciste";<br />
+3PS&PAS&PFV&IND:="yació";<br />
+1PP&PAS&PFV&IND:="yacimos";<br />
+2PP&PAS&PFV&IND:="yacisteis";<br />
+3PP&PAS&PFV&IND:="yacieron";<br />
+1PS&FUT&IND:="yaceré";<br />
+2PS&FUT&IND:="yacerás";<br />
+3PS&FUT&IND:="yacerá";<br />
+1PP&FUT&IND:="yaceremos";<br />
+2PP&FUT&IND:="yaceréis";<br />
+3PP&FUT&IND:="yacerán";<br />
+1PS&PRS&CON:="yacería";<br />
+2PS&PRS&CON:="yacerías";<br />
+3PS&PRS&CON:="yacería";<br />
+1PP&PRS&CON:="yaceríamos";<br />
+2PP&PRS&CON:="yaceríais";<br />
+3PP&PRS&CON:="yacerían";<br />
+1PS&PRS&SUB:="yazga";<br />
+2PS&PRS&SUB:="yazgas";<br />
+3PS&PRS&SUB:="yazga";<br />
+1PP&PRS&SUB:="yazgamos";<br />
+2PP&PRS&SUB:="yazgáis";<br />
+3PP&PRS&SUB:="yazgan";<br />
+1PS&PAS&NPFV&SUB:="yaciera";<br />
+2PS&PAS&NPFV&SUB:="yacieras";<br />
+3PS&PAS&NPFV&SUB:="yaciera";<br />
+1PP&PAS&NPFV&SUB:="yaciéramos";<br />
+2PP&PAS&NPFV&SUB:="yacierais";<br />
+3PP&PAS&NPFV&SUB:="yacieran";<br />
+1PS&PAS&NPFV&SUB:="yaciese";<br />
+2PS&PAS&NPFV&SUB:="yacieses";<br />
+3PS&PAS&NPFV&SUB:="yaciese";<br />
+1PP&PAS&NPFV&SUB:="yaciésemos";<br />
+2PP&PAS&NPFV&SUB:="yacieseis";<br />
+3PP&PAS&NPFV&SUB:="yaciesen";<br />
+2PS&PRS&IMP&PRS:="yace";<br />
+3PS&PRS&IMP&PRS:="yazga";<br />
+1PP&PRS&IMP&PRS:="yazgamos";<br />
+2PP&PRS&IMP&PRS:="yaced";<br />
+3PP&PRS&IMP&PRS:="yazgan";<br />
+GER:="yaciendo";<br />
+PTP:="yacido";<br />
+;<br /><br /><b>M242</b><br />Adjetivos de dos terminaciones (masculin en -ín y femenino en -ina) (<i>cantarín, saltarín</i>)<br />MCL&SNG:=0>"";<br />
+FEM&SNG:="ín">"ina";<br />
+MCL&PLR:="ín">"ines";<br />
+FEM&PLR:="ín">"inas";<br /><br /><b>M243</b><br />Adjetivos de dos terminaciones (masculino en -ón y femenino en -ona) (<i>pobretón, bribón</i>)<br />MCL&SNG:=0>"";<br />
+FEM&SNG:="ón">"ona";<br />
+MCL&PLR:="ón">"ones";<br />
+FEM&PLR:="ón">"onas";<br /><br /><b>M244</b><br />Sustantivos terminados en -ús (<i>autobús,obús</i>)<br />SNG:=0>"";<br />
+PLR:="ús">"uses";<br /><br /><b>M245</b><br />Sustantivos terminados en -ún (<i>atún</i>)<br />SNG:=0>"";<br />
+PLR:="ún">"unes";<br /><br /><b>M246</b><br />Verbos regulares terminados en -guar (<i>apaciguar</i>)<br />INF:=0>"";<br />GER:="r">"ndo";<br />
+PTP:="r">"do";<br />
+PTP&MCL&SNG:="r">"do";<br />
+PTP&MCL&PLR:="r">"dos";<br />
+PTP&FEM&SNG:="r">"da";<br />
+PTP&FEM&PLR:="r">"das";<br />
+
+1PS&PRS&IND:=2>"o";<br />
+2PS&PRS&IND:=2>"as";<br />
+3PS&PRS&IND:=2>"a";<br />
+1PP&PRS&IND:=2>"amos";<br />
+2PP&PRS&IND:=2>"áis";<br />
+3PP&PRS&IND:=2>"an";<br />
+
+1PS&PAS&NPFV&IND:=2>"aba";<br />
+2PS&PAS&NPFV&IND:=2>"abas";<br />
+3PS&PAS&NPFV&IND:=2>"aba";<br />
+1PP&PAS&NPFV&IND:=2>"ábamos";<br />
+2PP&PAS&NPFV&IND:=2>"abais";<br />
+3PP&PAS&NPFV&IND:=2>"aban";<br />
+
+1PS&PAS&PFV&IND:=3>"üé";<br />
+2PS&PAS&PFV&IND:=2>"aste";<br />
+3PS&PAS&PFV&IND:=2>"ó";<br />
+1PP&PAS&PFV&IND:=2>"amos";<br />
+2PP&PAS&PFV&IND:=2>"asteis";<br />
+3PP&PAS&PFV&IND:=2>"aron";<br />
+
+1PS&FUT&IND:=2>"aré";<br />
+2PS&FUT&IND:=2>"arás";<br />
+3PS&FUT&IND:=2>"ará";<br />
+1PP&FUT&IND:=2>"aremos";<br />
+2PP&FUT&IND:=2>"aréis";<br />
+3PP&FUT&IND:=2>"arán";<br />
+
+1PS&PRS&CON:=2>"aría";<br />
+2PS&PRS&CON:=2>"arías";<br />
+3PS&PRS&CON:=2>"aría";<br />
+1PP&PRS&CON:=2>"aríamos";<br />
+2PP&PRS&CON:=2>"aríais";<br />
+3PP&PRS&CON:=2>"arían";<br />
+
+1PS&PRS&SUB:=3>"üe";<br />
+2PS&PRS&SUB:=3>"ües";<br />
+3PS&PRS&SUB:=3>"üe";<br />
+1PP&PRS&SUB:=3>"üemos";<br />
+2PP&PRS&SUB:=3>"üéis";<br />
+3PP&PRS&SUB:=3>"üen";<br />
+
+1PS&PAS&NPFV&SUB:=2>"ara";<br />
+2PS&PAS&NPFV&SUB:=2>"aras";<br />
+3PS&PAS&NPFV&SUB:=2>"ara";<br />
+1PP&PAS&NPFV&SUB:=2>"áramos";<br />
+2PP&PAS&NPFV&SUB:=2>"arais";<br />
+3PP&PAS&NPFV&SUB:=2>"aran";<br />
+
+1PS&PAS&NPFV&SUB:=2>"ase";<br />
+2PS&PAS&NPFV&SUB:=2>"ases";<br />
+3PS&PAS&NPFV&SUB:=2>"ase";<br />
+1PP&PAS&NPFV&SUB:=2>"ásemos";<br />
+2PP&PAS&NPFV&SUB:=2>"aseis";<br />
+3PP&PAS&NPFV&SUB:=2>"asen";<br />
+
+2PS&PRS&IMP&PRS:=2>"a";<br />
+3PS&PRS&IMP&PRS:=3>"üe";<br />
+1PP&PRS&IMP&PRS:=3>"üemos";<br />
+2PP&PRS&IMP&PRS:=2>"ad";<br />
+3PP&PRS&IMP&PRS:=3>"üen";<br /><br /><b>M247</b><br />Verbos regulares terminados en -guir sin cambio en la raíz (<i>distinguir</i>)<br />INF:=0>"";<br />GER:="ir">"iendo";<br />
+PTP:="ir">"ido";<br />
+PTP&MCL&SNG:="ir">"ido";<br />
+PTP&MCL&PLR:="ir">"idos";<br />
+PTP&FEM&SNG:="ir">"ida";<br />
+PTP&FEM&PLR:="ir">"idas";<br />
+
+1PS&PRS&IND:="uir">"o";<br />
+2PS&PRS&IND:="ir">"es";<br />
+3PS&PRS&IND:="ir">"e";<br />
+1PP&PRS&IND:="ir">"imos";<br />
+2PP&PRS&IND:="ir">"ís";<br />
+3PP&PRS&IND:="ir">"en";<br /> 
+
+1PS&PAS&NPFV&IND:="ir">"ía";<br />
+2PS&PAS&NPFV&IND:="ir">"ías";<br />
+3PS&PAS&NPFV&IND:="ir">"ía";<br />
+1PP&PAS&NPFV&IND:="ir">"íamos";<br />
+2PP&PAS&NPFV&IND:="ir">"íais";<br />
+3PP&PAS&NPFV&IND:="ir">"ían";<br />
+
+1PS&PAS&PFV&IND:="ir">"í";<br />
+2PS&PAS&PFV&IND:="ir">"iste";<br />
+3PS&PAS&PFV&IND:="ir">"ió";<br />
+1PP&PAS&PFV&IND:="ir">"imos";<br />
+2PP&PAS&PFV&IND:="ir">"isteis";<br />
+3PP&PAS&PFV&IND:="ir">"ieron";<br />
+
+1PS&FUT&IND:=0>"é";<br />
+2PS&FUT&IND:=0>"ás";<br />
+3PS&FUT&IND:=0>"á";<br />
+1PP&FUT&IND:=0>"emos";<br />
+2PP&FUT&IND:=0>"éis";<br />
+3PP&FUT&IND:=0>"án";<br />
+
+1PS&PRS&CON:=0>"ía";<br />
+2PS&PRS&CON:=0>"ías";<br />
+3PS&PRS&CON:=0>"ía";<br />
+1PP&PRS&CON:=0>"íamos";<br />
+2PP&PRS&CON:=0>"íais";<br />
+3PP&PRS&CON:=0>"ían";<br />
+
+1PS&PRS&SUB:="uir">"a";<br />
+2PS&PRS&SUB:="uir">"as";<br />
+3PS&PRS&SUB:="uir">"a";<br />
+1PP&PRS&SUB:="uir">"amos";<br />
+2PP&PRS&SUB:="uir">"áis";<br />
+3PP&PRS&SUB:="uir">"an";<br /> 
+
+1PS&PAS&NPFV&SUB:="ir">"iera";<br />
+2PS&PAS&NPFV&SUB:="ir">"ieras";<br />
+3PS&PAS&NPFV&SUB:="ir">"iera";<br />
+1PP&PAS&NPFV&SUB:="ir">"iéramos";<br />
+2PP&PAS&NPFV&SUB:="ir">"ierais";<br />
+3PP&PAS&NPFV&SUB:="ir">"ieran";<br /> 
+
+1PS&PAS&NPFV&SUB:="ir">"iese";<br />
+2PS&PAS&NPFV&SUB:="ir">"ieses";<br />
+3PS&PAS&NPFV&SUB:="ir">"iese";<br />
+1PP&PAS&NPFV&SUB:="ir">"iésemos";<br />
+2PP&PAS&NPFV&SUB:="ir">"ieseis";<br />
+3PP&PAS&NPFV&SUB:="ir">"iesen";<br /> 
+
+2PS&PRS&IMP:="ir">"e";<br />
+3PS&PRS&IMP:="uir">"a";<br />
+1PP&PRS&IMP:="uir">"amos";<br />
+2PP&PRS&IMP:="ir">"id";<br />
+3PP&PRS&IMP:="uir">"an";<br /><br /><b>M248</b><br />Verbos terminados en -quir (<i>delinquir</i>)<br />INF:=0>"";<br />GER:="ir">"iendo";<br />
+PTP:="ir">"ido";<br />
+PTP&MCL&SNG:="ir">"ido";<br />
+PTP&MCL&PLR:="ir">"idos";<br />
+PTP&FEM&SNG:="ir">"ida";<br />
+PTP&FEM&PLR:="ir">"idas";<br />
+
+1PS&PRS&IND:="quir">"co";<br />
+2PS&PRS&IND:="ir">"es";<br />
+3PS&PRS&IND:="ir">"e";<br />
+1PP&PRS&IND:="ir">"imos";<br />
+2PP&PRS&IND:="ir">"ís";<br />
+3PP&PRS&IND:="ir">"en";<br /> 
+
+1PS&PAS&NPFV&IND:="ir">"ía";<br />
+2PS&PAS&NPFV&IND:="ir">"ías";<br />
+3PS&PAS&NPFV&IND:="ir">"ía";<br />
+1PP&PAS&NPFV&IND:="ir">"íamos";<br />
+2PP&PAS&NPFV&IND:="ir">"íais";<br />
+3PP&PAS&NPFV&IND:="ir">"ían";<br />
+
+1PS&PAS&PFV&IND:="ir">"í";<br />
+2PS&PAS&PFV&IND:="ir">"iste";<br />
+3PS&PAS&PFV&IND:="ir">"ió";<br />
+1PP&PAS&PFV&IND:="ir">"imos";<br />
+2PP&PAS&PFV&IND:="ir">"isteis";<br />
+3PP&PAS&PFV&IND:="ir">"ieron";<br />
+
+1PS&FUT&IND:=0>"é";<br />
+2PS&FUT&IND:=0>"ás";<br />
+3PS&FUT&IND:=0>"á";<br />
+1PP&FUT&IND:=0>"emos";<br />
+2PP&FUT&IND:=0>"éis";<br />
+3PP&FUT&IND:=0>"án";<br />
+
+1PS&PRS&CON:=0>"ía";<br />
+2PS&PRS&CON:=0>"ías";<br />
+3PS&PRS&CON:=0>"ía";<br />
+1PP&PRS&CON:=0>"íamos";<br />
+2PP&PRS&CON:=0>"íais";<br />
+3PP&PRS&CON:=0>"ían";<br />
+
+1PS&PRS&SUB:="quir">"ca";<br />
+2PS&PRS&SUB:="quir">"cas";<br />
+3PS&PRS&SUB:="quir">"ca";<br />
+1PP&PRS&SUB:="quir">"camos";<br />
+2PP&PRS&SUB:="quir">"cáis";<br />
+3PP&PRS&SUB:="quir">"can";<br /> 
+
+1PS&PAS&NPFV&SUB:="ir">"iera";<br />
+2PS&PAS&NPFV&SUB:="ir">"ieras";<br />
+3PS&PAS&NPFV&SUB:="ir">"iera";<br />
+1PP&PAS&NPFV&SUB:="ir">"iéramos";<br />
+2PP&PAS&NPFV&SUB:="ir">"ierais";<br />
+3PP&PAS&NPFV&SUB:="ir">"ieran";<br /> 
+
+1PS&PAS&NPFV&SUB:="ir">"iese";<br />
+2PS&PAS&NPFV&SUB:="ir">"ieses";<br />
+3PS&PAS&NPFV&SUB:="ir">"iese";<br />
+1PP&PAS&NPFV&SUB:="ir">"iésemos";<br />
+2PP&PAS&NPFV&SUB:="ir">"ieseis";<br />
+3PP&PAS&NPFV&SUB:="ir">"iesen";<br /> 
+
+2PS&PRS&IMP:="ir">"e";<br />
+3PS&PRS&IMP:="quir">"ca";<br />
+1PP&PRS&IMP:="quir">"camos";<br />
+2PP&PRS&IMP:="ir">"id";<br />
+3PP&PRS&IMP:="quir">"can";<br /><br /><b>M249</b><br />verbos terminados en -cer que, en algunos tiempos y personas,
+cambian la /o/ por el diptongo /ue/ (<i>cocer, torcer, retorcer</i>)<br />INF:=0>"";<br />GER:="er">"iendo";<br />
+PTP:="er">"ido";<br />
+PTP&MCL&SNG:="er">"ido";<br />
+PTP&MCL&PLR:="er">"idos";<br />
+PTP&FEM&SNG:="er">"ida";<br />
+PTP&FEM&PLR:="er">"idas";<br />
+
+1PS&PRS&IND:="o":"ue",3>"zo";<br />
+2PS&PRS&IND:="o":"ue",2>"es";<br />
+3PS&PRS&IND:="o":"ue",2>"e";<br />
+1PP&PRS&IND:=2>"emos";<br />
+2PP&PRS&IND:=2>"éis";<br />
+3PP&PRS&IND:="o":"ue",2>"en";<br />
+
+1PS&PAS&NPFV&IND:=2>"ía";<br />
+2PS&PAS&NPFV&IND:=2>"ías";<br />
+3PS&PAS&NPFV&IND:=2>"ía";<br />
+1PP&PAS&NPFV&IND:=2>"íamos";<br />
+2PP&PAS&NPFV&IND:=2>"íais";<br />
+3PP&PAS&NPFV&IND:=2>"ían";<br />
+
+1PS&PAS&PFV&IND:=2>"í";<br />
+2PS&PAS&PFV&IND:=2>"iste";<br />
+3PS&PAS&PFV&IND:=2>"ió";<br />
+1PP&PAS&PFV&IND:=2>"imos";<br />
+2PP&PAS&PFV&IND:=2>"isteis";<br />
+3PP&PAS&PFV&IND:=2>"ieron";<br />
+
+1PS&FUT&IND:=2>"eré";<br />
+2PS&FUT&IND:=2>"erás";<br />
+3PS&FUT&IND:=2>"erá";<br />
+1PP&FUT&IND:=2>"eremos";<br />
+2PP&FUT&IND:=2>"eréis";<br />
+3PP&FUT&IND:=2>"erán";<br />
+
+1PS&PRS&CON:=2>"ería";<br />
+2PS&PRS&CON:=2>"erías";<br />
+3PS&PRS&CON:=2>"ería";<br />
+1PP&PRS&CON:=2>"eríamos";<br />
+2PP&PRS&CON:=2>"eríais";<br />
+3PP&PRS&CON:=2>"erían";<br />
+
+1PS&PRS&SUB:="o":"ue",3>"za";<br />
+2PS&PRS&SUB:="o":"ue",3>"zas";<br />
+3PS&PRS&SUB:="o":"ue",3>"za";<br />
+1PP&PRS&SUB:=3>"zamos";<br />
+2PP&PRS&SUB:=3>"záis";<br />
+3PP&PRS&SUB:="o":"ue",3>"zan";<br />
+
+1PS&PAS&NPFV&SUB:=2>"iera";<br />
+2PS&PAS&NPFV&SUB:=2>"ieras";<br />
+3PS&PAS&NPFV&SUB:=2>"iera";<br />
+1PP&PAS&NPFV&SUB:=2>"iéramos";<br />
+2PP&PAS&NPFV&SUB:=2>"ierais";<br />
+3PP&PAS&NPFV&SUB:=2>"ieran";<br />
+
+1PS&PAS&NPFV&SUB:=2>"iese";<br />
+2PS&PAS&NPFV&SUB:=2>"ieses";<br />
+3PS&PAS&NPFV&SUB:=2>"iese";<br />
+1PP&PAS&NPFV&SUB:=2>"iésemos";<br />
+2PP&PAS&NPFV&SUB:=2>"ieseis";<br />
+3PP&PAS&NPFV&SUB:=2>"iesen";<br />
+
+2PS&PRS&IMP&PRS:="o":"ue",2>"e";<br />
+3PS&PRS&IMP&PRS:="o":"ue",3>"za";<br />
+1PP&PRS&IMP&PRS:=3>"zamos";<br />
+2PP&PRS&IMP&PRS:=2>"ed";<br />
+3PP&PRS&IMP&PRS:="o":"ue",3>"zan";<br /><br /><b>M250</b><br />verbos terminados en -gar que, en algunos tiempos y personas,
+cambian la /o/ por el diptongo /ue/  (<i>colgar, holgar, rogar</i>)<br />INF:=0>"";<br />GER:="r">"ndo";<br />
+PTP:="r">"do";<br />
+PTP&MCL&SNG:="r">"do";<br />
+PTP&MCL&PLR:="r">"dos";<br />
+PTP&FEM&SNG:="r">"da";<br />
+PTP&FEM&PLR:="r">"das";<br />
+
+1PS&PRS&IND:="o":"ue","ar">"o";<br />
+2PS&PRS&IND:="o":"ue","ar">"as";<br />
+3PS&PRS&IND:="o":"ue","ar">"a";<br />
+1PP&PRS&IND:="ar">"amos";<br />
+2PP&PRS&IND:="ar">"áis";<br />
+3PP&PRS&IND:="o":"ue","ar">"an";<br />
+
+1PS&PAS&NPFV&IND:="ar">"aba";<br />
+2PS&PAS&NPFV&IND:="ar">"abas";<br />
+3PS&PAS&NPFV&IND:="ar">"aba";<br />
+1PP&PAS&NPFV&IND:="ar">"ábamos";<br />
+2PP&PAS&NPFV&IND:="ar">"abais";<br />
+3PP&PAS&NPFV&IND:="ar">"aban";<br />
+
+1PS&PAS&PFV&IND:="ar">"ué";<br />
+2PS&PAS&PFV&IND:="ar">"aste";<br />
+3PS&PAS&PFV&IND:="ar">"ó";<br />
+1PP&PAS&PFV&IND:="ar">"amos";<br />
+2PP&PAS&PFV&IND:="ar">"asteis";<br />
+3PP&PAS&PFV&IND:="ar">"aron";<br />
+
+1PS&FUT&IND:=0>"é";<br />
+2PS&FUT&IND:=0>"ás";<br />
+3PS&FUT&IND:=0>"á";<br />
+1PP&FUT&IND:=0>"emos";<br />
+2PP&FUT&IND:=0>"éis";<br />
+3PP&FUT&IND:=0>"án";<br />
+
+1PS&PRS&CON:=0>"ía";<br />
+2PS&PRS&CON:=0>"ías";<br />
+3PS&PRS&CON:=0>"ía";<br />
+1PP&PRS&CON:=0>"íamos";<br />
+2PP&PRS&CON:=0>"íais";<br />
+3PP&PRS&CON:=0>"ían";<br />
+
+1PS&PRS&SUB:="o":"ue","ar">"ue";<br />
+2PS&PRS&SUB:="o":"ue","ar">"ues";<br />
+3PS&PRS&SUB:="o":"ue","ar">"ue";<br />
+1PP&PRS&SUB:="o":"ue","ar">"uemos";<br />
+2PP&PRS&SUB:="o":"ue","ar">"uéis";<br />
+3PP&PRS&SUB:="o":"ue","ar">"uen";<br />
+
+1PS&PAS&NPFV&SUB:="ar">"ara";<br />
+2PS&PAS&NPFV&SUB:="ar">"aras";<br />
+3PS&PAS&NPFV&SUB:="ar">"ara";<br />
+1PP&PAS&NPFV&SUB:="ar">"áramos";<br />
+2PP&PAS&NPFV&SUB:="ar">"arais";<br />
+3PP&PAS&NPFV&SUB:="ar">"aran";<br />
+
+1PS&PAS&NPFV&SUB:="ar">"ase";<br />
+2PS&PAS&NPFV&SUB:="ar">"ases";<br />
+3PS&PAS&NPFV&SUB:="ar">"ase";<br />
+1PP&PAS&NPFV&SUB:="ar">"ásemos";<br />
+2PP&PAS&NPFV&SUB:="ar">"aseis";<br />
+3PP&PAS&NPFV&SUB:="ar">"asen";<br />
+
+2PS&PRS&IMP:="o":"ue","ar">"a";<br />
+3PS&PRS&IMP:="o":"ue","ar">"ue";<br />
+1PP&PRS&IMP:="ar">"uemos";<br />
+2PP&PRS&IMP:="ar">"ad";<br />
+3PP&PRS&IMP:="o":"ue","ar">"uen";<br /><br /><b>M251</b><br />Verbos terminados en -gir que, en algunos tiempos y personas,
+cambian la /e/ por la /i/  (<i>elegir, reelegir, regir, corregir</i>)<br />INF:=0>"";<br />GER:="e":"i","ir">"iendo";<br />
+PTP:="ir">"ido";<br />
+PTP&MCL&SNG:="ir">"ido";<br />
+PTP&MCL&PLR:="ir">"idos";<br />
+PTP&FEM&SNG:="ir">"ida";<br />
+PTP&FEM&PLR:="ir">"idas";<br />
+
+1PS&PRS&IND:="e":"i","gir">"jo";<br />
+2PS&PRS&IND:="e":"i","ir">"es";<br />
+3PS&PRS&IND:="e":"i","ir">"e";<br />
+1PP&PRS&IND:="ir">"imos";<br />
+2PP&PRS&IND:="ir">"ís";<br />
+3PP&PRS&IND:="e":"i","ir">"en";<br />
+
+1PS&PAS&NPFV&IND:="ir">"ía";<br />
+2PS&PAS&NPFV&IND:="ir">"ías";<br />
+3PS&PAS&NPFV&IND:="ir">"ía";<br />
+1PP&PAS&NPFV&IND:="ir">"íamos";<br />
+2PP&PAS&NPFV&IND:="ir">"íais";<br />
+3PP&PAS&NPFV&IND:="ir">"ían";<br />
+
+1PS&PAS&PFV&IND:="ir">"í";<br />
+2PS&PAS&PFV&IND:="ir">"iste";<br />
+3PS&PAS&PFV&IND:="e":"i","ir">"ió";<br />
+1PP&PAS&PFV&IND:="ir">"imos";<br />
+2PP&PAS&PFV&IND:="ir">"isteis";<br />
+3PP&PAS&PFV&IND:="e":"i","ir">"eron";<br />
+
+1PS&FUT&IND:=0>"é";<br />
+2PS&FUT&IND:=0>"ás";<br />
+3PS&FUT&IND:=0>"á";<br />
+1PP&FUT&IND:=0>"emos";<br />
+2PP&FUT&IND:=0>"éis";<br />
+3PP&FUT&IND:=0>"án";<br />
+
+1PS&PRS&CON:=0>"ía";<br /> 
+2PS&PRS&CON:=0>"ías";<br />
+3PS&PRS&CON:=0>"ía";<br />
+1PP&PRS&CON:=0>"íamos";<br />
+2PP&PRS&CON:=0>"íais";<br />
+3PP&PRS&CON:=0>"ían";<br />
+
+1PS&PRS&SUB:="e":"i","gir">"ja";<br />
+2PS&PRS&SUB:="e":"i","gir">"jas";<br />
+3PS&PRS&SUB:="e":"i","gir">"ja";<br />
+1PP&PRS&SUB:="e":"i","gir">"jamos";<br />
+2PP&PRS&SUB:="e":"i","gir">"jáis";<br />
+3PP&PRS&SUB:="e":"i","gir">"jan";<br />
+ 
+1PS&PAS&NPFV&SUB:="e":"i","ir">"iera";<br />
+2PS&PAS&NPFV&SUB:="e":"i","ir">"ieras";<br />
+3PS&PAS&NPFV&SUB:="e":"i","ir">"iera";<br />
+1PP&PAS&NPFV&SUB:="e":"i","ir">"iéramos";<br />
+2PP&PAS&NPFV&SUB:="e":"i","ir">"ierais";<br />
+3PP&PAS&NPFV&SUB:="e":"i","ir">"ieran";<br />
+
+1PS&PAS&NPFV&SUB:="e":"i","ir">"iese";<br />
+2PS&PAS&NPFV&SUB:="e":"i","ir">"ieses";<br />
+3PS&PAS&NPFV&SUB:="e":"i","ir">"iese";<br />
+1PP&PAS&NPFV&SUB:="e":"i","ir">"iésemos";<br />
+2PP&PAS&NPFV&SUB:="e":"i","ir">"ieseis";<br />
+3PP&PAS&NPFV&SUB:="e":"i","ir">"iesen";<br />
+
+2PS&PRS&IMP:="e":"i","ir">"e";<br />
+3PS&PRS&IMP:="e":"i","gir">"ja";<br />
+1PP&PRS&IMP:="e":"i","gir">"jamos";<br />
+2PP&PRS&IMP:="ir">"id";<br />
+3PP&PRS&IMP:="e":"i","gir">"jan";<br /><br /><b>M252</b><br />verbos terminados en -car que, en algunos tiempos y personas,
+cambian la /o/ por el diptongo /ue/ (<i>revolcar, trocar, volcar</i>)<br />INF:=0>"";<br />GER:="r">"ndo";<br />
+PTP:="r">"do";<br />
+PTP&MCL&SNG:="r">"do";<br />
+PTP&MCL&PLR:="r">"dos";<br />
+PTP&FEM&SNG:="r">"da";<br />
+PTP&FEM&PLR:="r">"das";<br />
+
+1PS&PRS&IND:="o:"ue",2>"o";<br />
+2PS&PRS&IND:="o:"ue",2>"as";<br />
+3PS&PRS&IND:="o:"ue",2>"a";<br />
+1PP&PRS&IND:=2>"amos";<br />
+2PP&PRS&IND:=2>"áis";<br />
+3PP&PRS&IND:="o:"ue",2>"an";<br />
+
+1PS&PAS&NPFV&IND:=2>"aba";<br />
+2PS&PAS&NPFV&IND:=2>"abas";<br />
+3PS&PAS&NPFV&IND:=2>"aba";<br />
+1PP&PAS&NPFV&IND:=2>"ábamos";<br />
+2PP&PAS&NPFV&IND:=2>"abais";<br />
+3PP&PAS&NPFV&IND:=2>"aban";<br />
+
+1PS&PAS&PFV&IND:=3>"qué";<br />
+2PS&PAS&PFV&IND:=2>"aste";<br />
+3PS&PAS&PFV&IND:=2>"ó";<br />
+1PP&PAS&PFV&IND:=2>"amos";<br />
+2PP&PAS&PFV&IND:=2>"asteis";<br />
+3PP&PAS&PFV&IND:=2>"aron";<br />
+
+1PS&FUT&IND:=2>"aré";<br />
+2PS&FUT&IND:=2>"arás";<br />
+3PS&FUT&IND:=2>"ará";<br />
+1PP&FUT&IND:=2>"aremos";<br />
+2PP&FUT&IND:=2>"aréis";<br />
+3PP&FUT&IND:=2>"arán";<br />
+
+1PS&PRS&CON:=2>"aría";<br />
+2PS&PRS&CON:=2>"arías";<br />
+3PS&PRS&CON:=2>"aría";<br />
+1PP&PRS&CON:=2>"aríamos";<br />
+2PP&PRS&CON:=2>"aríais";<br />
+3PP&PRS&CON:=2>"arían";<br />
+
+1PS&PRS&SUB:="o:"ue",3>"que";<br />
+2PS&PRS&SUB:="o:"ue",3>"ques";<br />
+3PS&PRS&SUB:="o:"ue",3>"que";<br />
+1PP&PRS&SUB:=3>"quemos";<br />
+2PP&PRS&SUB:=3>"quéis";<br />
+3PP&PRS&SUB:="o:"ue",3>"quen";<br />
+
+1PS&PAS&NPFV&SUB:=2>"ara";<br />
+2PS&PAS&NPFV&SUB:=2>"aras";<br />
+3PS&PAS&NPFV&SUB:=2>"ara";<br />
+1PP&PAS&NPFV&SUB:=2>"áramos";<br />
+2PP&PAS&NPFV&SUB:=2>"arais";<br />
+3PP&PAS&NPFV&SUB:=2>"aran";<br />
+
+1PS&PAS&NPFV&SUB:=2>"ase";<br />
+2PS&PAS&NPFV&SUB:=2>"ases";<br />
+3PS&PAS&NPFV&SUB:=2>"ase";<br />
+1PP&PAS&NPFV&SUB:=2>"ásemos";<br />
+2PP&PAS&NPFV&SUB:=2>"aseis";<br />
+3PP&PAS&NPFV&SUB:=2>"asen";<br />
+
+2PS&PRS&IMP&PRS:="o:"ue",2>"a";<br />
+3PS&PRS&IMP&PRS:="o:"ue",3>"que";<br />
+1PP&PRS&IMP&PRS:=3>"quemos";<br />
+2PP&PRS&IMP&PRS:=2>"ad";<br />
+3PP&PRS&IMP&PRS:="o:"ue",3>"quen";<br />
+;<br /><br /><b>M256</b><br />Sustantivos sin variación de género que forman el plural en -s o en -es (<i>bisturí, esquí</i>)<br />SNG:=0>"";<br />
+PLR:=0>"es";<br />
+PLR&ALT:=0>"s";<br /><br /></body>
+<html>

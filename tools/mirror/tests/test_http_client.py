@@ -122,6 +122,53 @@ def test_5xx_response_is_retried():
     assert len(transport.calls) == 3
 
 
+def test_get_while_retries_a_still_pending_body_then_returns_the_real_one():
+    # UNLarium's "please wait…" placeholder, then the real export on the next try.
+    transport = FakeTransport()
+    responses = iter([HttpResponse(200, {}, b"please wait"), HttpResponse(200, {}, b"real body")])
+    transport.request = lambda url, headers: (
+        transport.calls.append((url, dict(headers))),
+        next(responses),
+    )[1]
+    client, clock = _client(transport, retries=3, retry_backoff_seconds=1.0)
+
+    response = client.get_while(
+        "https://unlarchive.org/dics/x.zip", lambda body: body == b"please wait"
+    )
+
+    assert response.body == b"real body"
+    assert len(transport.calls) == 2
+    # The same backoff formula as a transport-failure retry: `retry_backoff_seconds * attempt`.
+    assert clock.sleeps == [1.0]
+
+
+def test_get_while_gives_up_after_the_configured_retry_count():
+    transport = FakeTransport(
+        responses={"https://unlarchive.org/stuck": HttpResponse(200, {}, b"please wait")}
+    )
+    client, clock = _client(transport, retries=3, retry_backoff_seconds=1.0)
+
+    response = client.get_while("https://unlarchive.org/stuck", lambda body: body == b"please wait")
+
+    # Still pending after every attempt: the caller gets the last response back, not an
+    # exception — it decides how to record a body that never settled (issue 08).
+    assert response.body == b"please wait"
+    assert len(transport.calls) == 3
+    assert clock.sleeps == [1.0, 2.0]
+
+
+def test_get_while_does_not_retry_a_body_that_is_not_pending():
+    transport = FakeTransport(
+        responses={"https://unlarchive.org/ok": HttpResponse(200, {}, b"real body")}
+    )
+    client, _clock = _client(transport, retries=3, retry_backoff_seconds=1.0)
+
+    response = client.get_while("https://unlarchive.org/ok", lambda body: body == b"please wait")
+
+    assert response.body == b"real body"
+    assert len(transport.calls) == 1
+
+
 def test_a_4xx_or_php_error_response_is_returned_not_raised():
     # The broken export_dic.php answers 200 with a PHP fatal error in the body — the mirror must
     # get that body back to record it, not retry it to death or raise.

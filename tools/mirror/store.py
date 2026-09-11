@@ -37,6 +37,13 @@ def filename_for_url(url: str) -> str:
     return name
 
 
+def _rel_path(bucket: str, filename: str) -> str:
+    """`bucket/filename`, or just `filename` when `bucket` is empty (SPEC.md §3.1's
+    `data/archive/languages.json`, which sits at the archive root, not under a bucket dir).
+    """
+    return f"{bucket}/{filename}" if bucket else filename
+
+
 @dataclass
 class StoreResult:
     action: str  # "fetched" | "unchanged" | "error"
@@ -72,8 +79,9 @@ class Mirror:
         language: str | None = None,
         note: str | None = None,
         extra: dict | None = None,
+        status_override: str | None = None,
     ) -> StoreResult:
-        rel_path = f"{bucket}/{filename}"
+        rel_path = _rel_path(bucket, filename)
         prior = self._existing.get(rel_path)
 
         headers = {}
@@ -84,7 +92,8 @@ class Mirror:
 
         if response.status == 304:
             self.unchanged_count += 1
-            return StoreResult(action="unchanged", path=rel_path, sha256=prior.get("sha256"))
+            sha256 = prior.get("sha256") if prior else None
+            return StoreResult(action="unchanged", path=rel_path, sha256=sha256)
 
         etag = response.headers.get("ETag") or response.headers.get("Etag")
         return self._store_bytes(
@@ -99,6 +108,7 @@ class Mirror:
             note=note,
             extra=extra,
             etag=etag,
+            status_override=status_override,
         )
 
     def fetch_and_store_bytes(
@@ -115,13 +125,18 @@ class Mirror:
         note: str | None = None,
         extra: dict | None = None,
         etag: str | None = None,
+        status_override: str | None = None,
     ) -> StoreResult:
         """Same as `fetch_and_store`, for content already fetched — by the wiki API's two calls
         per page (`tools.mirror.wiki`), or by a page the caller had to fetch anyway to parse for
         links and licence (`tools.mirror.run.mirror_pages`). This only hashes, writes and
         manifests; it never calls `client.get` itself, so a page is never fetched twice.
+
+        `status_override`, when given, replaces the automatic error detection with a caller-known
+        status (SPEC.md §3.1, issue 08: a UNLarium export that answers "No grammar available" is
+        recorded `status: "empty"`, not `"error"` and not silently dropped).
         """
-        rel_path = f"{bucket}/{filename}"
+        rel_path = _rel_path(bucket, filename)
         prior = self._existing.get(rel_path)
         return self._store_bytes(
             rel_path=rel_path,
@@ -135,6 +150,7 @@ class Mirror:
             note=note,
             extra=extra,
             etag=etag,
+            status_override=status_override,
         )
 
     def _store_bytes(
@@ -151,9 +167,10 @@ class Mirror:
         note: str | None,
         extra: dict | None,
         etag: str | None,
+        status_override: str | None = None,
     ) -> StoreResult:
         sha256 = hashlib.sha256(body).hexdigest()
-        status = "error" if looks_like_server_error(body) else "ok"
+        status = status_override or ("error" if looks_like_server_error(body) else "ok")
         full_path = self.archive_root / rel_path
 
         content_matches_prior = (
@@ -182,9 +199,11 @@ class Mirror:
             "title": title,
             "language": language,
         }
-        if status != "ok":
+        if status == "error":
             entry["status"] = status
             entry["error"] = body.decode("utf-8", errors="replace")
+        elif status != "ok":
+            entry["status"] = status
         if etag:
             entry["etag"] = etag
         if note:
@@ -196,7 +215,7 @@ class Mirror:
         self._existing[rel_path] = entry
         self.fetch_count += 1
         return StoreResult(
-            action="error" if status != "ok" else "fetched", path=rel_path, sha256=sha256
+            action=status if status != "ok" else "fetched", path=rel_path, sha256=sha256
         )
 
     def flush(self) -> None:

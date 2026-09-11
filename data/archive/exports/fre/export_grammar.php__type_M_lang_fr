@@ -1,0 +1,3652 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<title>UNLarium</title>
+<link rel="stylesheet" type="text/css" media="all" href="../../shared/default.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"  />
+<link rel="shortcut icon" href="../favicon.ico" type="image/x-icon" />
+</head>
+
+<body>
+<h1>French Inflectional  Grammar</h1>Version of September 11, 2026, 1:17 pm<br />Documentation available at <a href="http://www.unlarchive.org/wiki/index.php/Grammar" target="_blank">http://www.unlarchive.org/wiki/index.php/Grammar</a><br />Tagset available at <a href="../dictionary/export_tagset.php" target="_blank">Export UNDL Foundation tagset</a>.<br /><br /><b>M0</b><br />Invariant<br /><br /><b>M1</b><br />Irregular: rules are defined inside the entry in the dictionary<br /><br /><b>M2</b><br />Adjectifs en -e (<i>typique, logique, chimique</i>)<br />SNG:=0>"";<br />
+PLR:=0>"s";<br /><br /><b>M3</b><br />Adjectifs en -n (<i>ancien, breton</i>)<br />MCL&SNG:=0>"";<br />
+FEM&SNG:=0>"ne";<br />
+MCL&PLR:=0>"s";<br />
+FEM&PLR:=0>"nes";<br /><br /><b>M4</b><br />Adjectifs en -au (<i>nouveau, beau</i>)<br />MCL&SNG:=0>"";<br />
+FEM&SNG:=2>"lle";<br />
+MCL&PLR:=0>"x";<br />
+FEM&PLR:=2>"lles";<br /><br /><b>M5</b><br />Féminin = +e (<i>vert, noir, légal, anglais</i>)<br />MCL&SNG:=0>"";<br />
+FEM&SNG:=0>"e";<br />
+MCL&PLR:=0>"s";<br />
+FEM&PLR:=0>"es";<br /><br /><b>M6</b><br />Adjectifs en -f (<i>éducatif, adjectif, juif</i>)<br />MCL&SNG:=0>"";<br />
+FEM&SNG:=1>"ve";<br />
+MCL&PLR:=0>"s";<br />
+FEM&PLR:=1>"ves";<br /><br /><b>M7</b><br />Adjectifs en -c (<i>grec</i>)<br />MCL&SNG:=0>"";<br />
+FEM&SNG:=1>"cque";<br />
+MCL&PLR:=0>"s";<br />
+FEM&PLR:=1>"cques";<br /><br /><b>M8</b><br />Adjectifs en -er (<i>premier</i>)<br />MCL&SNG:=0>"";<br />
+FEM&SNG:=2>"ère";<br />
+MCL&PLR:=0>"s";<br />
+FEM&PLR:=2>"ères";<br /><br /><b>M10</b><br />Adjectifs en -x (<i>religieux, dangereux, honteux, jaloux</i>)<br />MCL&SNG:=0>"";<br />
+FEM&SNG:=1>"se";<br />
+MCL&PLR:=0>"";<br />
+FEM&PLR:=1>"ses";<br /><br /><b>M12</b><br />Adjectifs en -al (<i>mondial, global, final</i>)<br />MCL&SNG:=0>"";<br />
+FEM&SNG:=0>"e";<br />
+MCL&PLR:=1>"ux";<br />
+FEM&PLR:=0>"es";<br /><br /><b>M13</b><br />Adjectifs en -el (<i>intellectuel</i>)<br />MCL&SNG:=0>"";<br />
+FEM&SNG:=0>"le";<br />
+MCL&PLR:=0>"s";<br />
+FEM&PLR:=0>"les";<br /><br /><b>M14</b><br />Adjectifs en -et (<i>secret</i>)<br />MCL&SNG:=0>"";<br />
+FEM&SNG:=2>"ète";<br />
+MCL&PLR:=0>"s";<br />
+FEM&PLR:=2>"ètes";<br /><br /><b>M15</b><br />Adjectifs en -ou (<i>andalou</i>)<br />MCL&SNG:=0>"";<br />
+FEM&SNG:=0>"se";<br />
+MCL&PLR:=0>"s";<br />
+FEM&PLR:=0>"ses";<br /><br /><b>M16</b><br />Adjectifs en -eur (<i>trompeur</i>)<br />MCL&SNG:=0>"";<br />
+FEM&SNG:=1>"se";<br />
+MCL&PLR:=0>"s";<br />
+FEM&PLR:=1>"ses";<br /><br /><b>M18</b><br />Adjectifs en -aux (<i>faux</i>)<br />MCL&SNG:=0>"";<br />
+FEM&SNG:=1>"sse";<br />
+MCL&PLR:=0>"";<br />
+FEM&PLR:=1>"sses";<br /><br /><b>M19</b><br />Adjectifs en -oux (<i>doux</i>)<br />MCL&SNG:=0>"";<br />
+FEM&SNG:=1>"ce";<br />
+MCL&PLR:=0>"";<br />
+PLR&FEM:=1>"ces";<br /><br /><b>M20</b><br />Pluriel en -s, sans flexion de genre (<i>histoire, chaise</i>)<br />SNG:=0>"";<br />
+PLR:=0>"s";<br /><br /><b>M21</b><br />Pluriel en -x, sans flexion de genre (<i>bateau, oiseau, noyau, cheveu, bijou</i>)<br />SNG:=0>"";<br />
+PLR:=0>"x";<br /><br /><b>M22</b><br />œil et mots dérivés (<i>œil</i>)<br />SNG:=0>"";<br />
+PLR:="œil":"yeux";<br /><br /><b>M25</b><br />1er groupe - aimer (<i>aimer, éradiquer, escalader, peupler</i>)<br />INF:=0>"";<br />
+GER:=2>"ant";<br />
+PTP&MCL&SNG:=2>"é";<br />
+PTP&MCL&PLR:=2>"és";<br />
+PTP&FEM&SNG:=2>"ée";<br />
+PTP&FEM&PLR:=2>"ées";<br />
+
+1PS&PRS&IND:=2>"e";<br />
+2PS&PRS&IND:=2>"es";<br />
+3PS&PRS&IND:=2>"e";<br />
+1PP&PRS&IND:=2>"ons";<br />
+2PP&PRS&IND:=2>"ez";<br />
+3PP&PRS&IND:=2>"ent";<br />
+
+1PS&PAS&NPFV&IND:=2>"ais";<br />
+2PS&PAS&NPFV&IND:=2>"ais";<br />
+3PS&PAS&NPFV&IND:=2>"ait";<br />
+1PP&PAS&NPFV&IND:=2>"ions";<br />
+2PP&PAS&NPFV&IND:=2>"iez";<br />
+3PP&PAS&NPFV&IND:=2>"aient";<br />
+
+1PS&PAS&PFV&IND:=2>"ai";<br />
+2PS&PAS&PFV&IND:=2>"as";<br />
+3PS&PAS&PFV&IND:=2>"as";<br />
+1PP&PAS&PFV&IND:=2>"âmes";<br />
+2PP&PAS&PFV&IND:=2>"âtes";<br />
+3PP&PAS&PFV&IND:=2>"èrent";<br />
+
+1PS&FUT&IND:=0>"ai";<br />
+2PS&FUT&IND:=0>"as";<br />
+3PS&FUT&IND:=0>"a";<br />
+1PP&FUT&IND:=0>"ons";<br />
+2PP&FUT&IND:=0>"ez";<br />
+3PP&FUT&IND:=0>"ont";<br />
+
+1PS&PRS&CON:=0>"ais";<br />
+2PS&PRS&CON:=0>"ais";<br />
+3PS&PRS&CON:=0>"ait";<br />
+1PP&PRS&CON:=0>"ions";<br />
+2PP&PRS&CON:=0>"iez";<br />
+3PP&PRS&CON:=0>"aient";<br />
+
+1PS&PRS&SUB:=2>"e";<br />
+2PS&PRS&SUB:=2>"es";<br />
+3PS&PRS&SUB:=2>"e";<br />
+1PP&PRS&SUB:=2>"ions";<br />
+2PP&PRS&SUB:=2>"iez";<br />
+3PP&PRS&SUB:=2>"ent";<br />
+
+1PS&PAS&NPFV&SUB:=2>"asse";<br />
+2PS&PAS&NPFV&SUB:=2>"asses";<br />
+3PS&PAS&NPFV&SUB:=2>"ât";<br />
+1PP&PAS&NPFV&SUB:=2>"assions";<br />
+2PP&PAS&NPFV&SUB:=2>"assiez";<br />
+3PP&PAS&NPFV&SUB:=2>"assent";<br />
+
+2PS&PRS&IMP:=2>"e";<br />
+1PP&PRS&IMP:=2>"ons";<br />
+2PP&PRS&IMP:=1>"z";<br />
+;<br /><br /><b>M26</b><br />1er groupe - placer (<i>placer, commencer, entrelacer, épicer</i>)<br />INF:=0>"";<br />
+GER:="cer">"çant";<br />
+PTP&MCL&SNG:="er">"é";<br />
+PTP&MCL&PLR:="er">"és";<br />
+PTP&FEM&SNG:="er">"ée";<br />
+PTP&FEM&PLR:="er">"ées";<br />
+
+1PS&PRS&IND:="er">"e";<br />
+2PS&PRS&IND:="er">"es";<br />
+3PS&PRS&IND:="er">"e";<br />
+1PP&PRS&IND:="cer">"çons";<br />
+2PP&PRS&IND:="er">"ez";<br />
+3PP&PRS&IND:="er">"ent";<br />
+
+1PS&PAS&NPFV&IND:="cer">"çais";<br />
+2PS&PAS&NPFV&IND:="cer">"çais";<br />
+3PS&PAS&NPFV&IND:="cer">"çait";<br />
+1PP&PAS&NPFV&IND:="er">"ions";<br />
+2PP&PAS&NPFV&IND:="er">"iez";<br />
+3PP&PAS&NPFV&IND:="cer">"çaient";<br />
+
+1PS&PAS&PFV&IND:="cer">"çai";<br />
+2PS&PAS&PFV&IND:="cer">"ças";<br />
+3PS&PAS&PFV&IND:="cer">"ças";<br />
+1PP&PAS&PFV&IND:="cer">"çâmes";<br />
+2PP&PAS&PFV&IND:="cer">"çâtes";<br />
+3PP&PAS&PFV&IND:="er">"èrent";<br />
+
+1PS&FUT&IND:=0>"ai";<br />
+2PS&FUT&IND:=0>"as";<br />
+3PS&FUT&IND:=0>"a";<br />
+1PP&FUT&IND:=0>"ons";<br />
+2PP&FUT&IND:=0>"ez";<br />
+3PP&FUT&IND:=0>"ont";<br />
+
+1PS&PRS&CON:="er">"ais";<br />
+2PS&PRS&CON:="er">"ais";<br />
+3PS&PRS&CON:="er">"ait";<br />
+1PP&PRS&CON:="er">"ions";<br />
+2PP&PRS&CON:="er">"iez";<br />
+3PP&PRS&CON:="er">"aient";<br />
+
+1PS&PRS&SUB:="er">"e";<br />
+2PS&PRS&SUB:="er">"es";<br />
+3PS&PRS&SUB:="er">"e";<br />
+1PP&PRS&SUB:="er">"ions";<br />
+2PP&PRS&SUB:="er">"iez";<br />
+3PP&PRS&SUB:="er">"ent";<br />
+
+1PS&PAS&NPFV&SUB:="cer">"çasse";<br />
+2PS&PAS&NPFV&SUB:="cer">"çasses";<br />
+3PS&PAS&NPFV&SUB:="cer">"çât";<br />
+1PP&PAS&NPFV&SUB:="cer">"çassions";<br />
+2PP&PAS&NPFV&SUB:="cer">"çassiez";<br />
+3PP&PAS&NPFV&SUB:="cer">"çassent";<br />
+
+2PS&PRS&IMP:="r">"";<br />
+1PP&PRS&IMP:="cer">"çons";<br />
+2PP&PRS&IMP:="r">"z";<br />
+;<br /><br /><b>M27</b><br />1er groupe - manger (<i>manger, ériger, essanger</i>)<br />INF:=0>"";<br />
+GER:="er">"eant";<br />
+PTP&MCL&SNG:="er">"é";<br />
+PTP&MCL&PLR:="er">"és";<br />
+PTP&FEM&SNG:="er">"ée";<br />
+PTP&FEM&PLR:="er">"ées";<br />
+
+1PS&PRS&IND:="er">"e";<br />
+2PS&PRS&IND:="er">"es";<br />
+3PS&PRS&IND:="er">"e";<br />
+1PP&PRS&IND:="er">"eons";<br />
+2PP&PRS&IND:="er">"ez";<br />
+3PP&PRS&IND:="er">"ent";<br />
+
+1PS&PAS&NPFV&IND:="er">"eais";<br />
+2PS&PAS&NPFV&IND:="er">"eais";<br />
+3PS&PAS&NPFV&IND:="er">"eait";<br />
+1PP&PAS&NPFV&IND:="er">"ions";<br />
+2PP&PAS&NPFV&IND:="er">"iez";<br />
+3PP&PAS&NPFV&IND:="er">"eaient";<br />
+
+1PS&PAS&PFV&IND:="er">"eai";<br />
+2PS&PAS&PFV&IND:="er">"eas";<br />
+3PS&PAS&PFV&IND:="er">"eas";<br />
+1PP&PAS&PFV&IND:="er">"eâmes";<br />
+2PP&PAS&PFV&IND:="er">"eâtes";<br />
+3PP&PAS&PFV&IND:="er">"èrent";<br />
+
+1PS&FUT&IND:=0>"ai";<br />
+2PS&FUT&IND:=0>"as";<br />
+3PS&FUT&IND:=0>"a";<br />
+1PP&FUT&IND:=0>"ons";<br />
+2PP&FUT&IND:=0>"ez";<br />
+3PP&FUT&IND:=0>"ont";<br />
+
+1PS&PRS&CON:=0>"ais";<br />
+2PS&PRS&CON:=0>"ais";<br />
+3PS&PRS&CON:=0>"ait";<br />
+1PP&PRS&CON:=0>"ions";<br />
+2PP&PRS&CON:=0>"iez";<br />
+3PP&PRS&CON:=0>"aient";<br />
+
+1PS&PRS&SUB:="er">"e";<br />
+2PS&PRS&SUB:="er">"es";<br />
+3PS&PRS&SUB:="er">"e";<br />
+1PP&PRS&SUB:="er">"ions";<br />
+2PP&PRS&SUB:="er">"iez";<br />
+3PP&PRS&SUB:="er">"ent";<br />
+
+1PS&PAS&NPFV&SUB:="er">"easse";<br />
+2PS&PAS&NPFV&SUB:="er">"easses";<br />
+3PS&PAS&NPFV&SUB:="er">"eât";<br />
+1PP&PAS&NPFV&SUB:="er">"eassions";<br />
+2PP&PAS&NPFV&SUB:="er">"eassiez";<br />
+3PP&PAS&NPFV&SUB:="er">"eassent";<br />
+
+2PS&PRS&IMP:="r">"";<br />
+1PP&PRS&IMP:="e">"ons";<br />
+2PP&PRS&IMP:="r">"z";<br />
+;<br /><br /><b>M28</b><br />2e groupe - finir (<i>finir, assouplir, bénir, brandir, convertir</i>)<br />INF:=0>"";<br />
+
+PTP&MCL&SNG:="r">"";<br />
+PTP&MCL&PLR:="r">"s";<br />
+PTP&FEM&SNG:="r">"e";<br />
+PTP&FEM&PLR:="r">"es";<br />
+
+1PS&PRS&IND:="r">"s";<br />
+2PS&PRS&IND:="r">"s";<br />
+3PS&PRS&IND:="r">"t";<br />
+1PP&PRS&IND:="r">"ssons";<br />
+2PP&PRS&IND:="r">"ssez";<br />
+3PP&PRS&IND:="r">"ssent";<br />
+
+1PS&PAS&NPFV&IND:="r">"ssais";<br />
+2PS&PAS&NPFV&IND:="r">"ssais";<br />
+3PS&PAS&NPFV&IND:="r">"ssait";<br />
+1PP&PAS&NPFV&IND:="r">"ssions";<br />
+2PP&PAS&NPFV&IND:="r">"ssiez";<br />
+3PP&PAS&NPFV&IND:="r">"ssaient";<br />
+
+1PS&PAS&IND:="r">"s";<br />
+2PS&PAS&IND:="r">"s";<br />
+3PS&PAS&IND:="r">"t";<br />
+1PP&PAS&IND:="ir">"îmes";<br />
+2PP&PAS&IND:="ir">"îtes";<br />
+3PP&PAS&IND:="ir">"irent";<br />
+
+1PS&FUT&IND:=0>"ai";<br />
+2PS&FUT&IND:=0>"as";<br />
+3PS&FUT&IND:=0>"a";<br />
+1PP&FUT&IND:=0>"ons";<br />
+2PP&FUT&IND:=0>"ez";<br />
+3PP&FUT&IND:=0>"ont";<br />
+
+1PS&PRS&CON:=0>"ais";<br />
+2PS&PRS&CON:=0>"ais";<br />
+3PS&PRS&CON:=0>"ait";<br />
+1PP&PRS&CON:=0>"ions";<br />
+2PP&PRS&CON:=0>"iez";<br />
+3PP&PRS&CON:=0>"aient";<br />
+
+1PS&PRS&SUB:="r">"sse";<br />
+2PS&PRS&SUB:="r">"sses";<br />
+3PS&PRS&SUB:="r">"sse";<br />
+1PP&PRS&SUB:="r">"ssions";<br />
+2PP&PRS&SUB:="r">"ssiez";<br />
+3PP&PRS&SUB:="r">"ssent";<br />
+
+1PS&PAS&NPFV&SUB:="r">"sse";<br />
+2PS&PAS&NPFV&SUB:="r">"sses";<br />
+3PS&PAS&NPFV&SUB:="ir">"ît";<br />
+1PP&PAS&NPFV&SUB:="r">"ssions";<br />
+2PP&PAS&NPFV&SUB:="r">"ssiez";<br />
+3PP&PAS&NPFV&SUB:="r">"ssent";<br />
+
+2PS&PRS&IMP:="r">"s";<br />
+1PP&PRS&IMP:="r">"ssons";<br />
+2PP&PRS&IMP:="r">"ssez";<br /><br /><b>M29</b><br />3e groupe - recevoir (<i>recevoir, percevoir</i>)<br />INF:=0>"";<br />
+
+PTP&MCL&SNG:=6>"çu";<br />
+PTP&MCL&PLR:=6>"çus";<br />
+PTP&FEM&SNG:=6>"çue";<br />
+PTP&FEM&PLR:=6>"çues";<br />
+
+1PS&PRS&IND:=6>"çois";<br />
+2PS&PRS&IND:=6>"çois";<br />
+3PS&PRS&IND:=6>"çoit";<br />
+1PP&PRS&IND:=2>"ns";<br />
+2PP&PRS&IND:=3>"ez";<br />
+3PP&PRS&IND:=6>"çoivent";<br />
+
+1PS&PAS&NPFV&IND:=3>"ais";<br />
+2PS&PAS&NPFV&IND:=3>"ais";<br />
+3PS&PAS&NPFV&IND:=3>"ait";<br />
+1PP&PAS&NPFV&IND:=3>"ions";<br />
+2PP&PAS&NPFV&IND:=3>"iez";<br />
+3PP&PAS&NPFV&IND:=3>"aient";<br />
+
+1PS&PAS&IND:=6>"çus";<br />
+2PS&PAS&IND:=6>"çus";<br />
+3PS&PAS&IND:=6>"çut";<br />
+1PP&PAS&IND:=6>"çûmes";<br />
+2PP&PAS&IND:=6>"çûtes";<br />
+3PP&PAS&IND:=6>"çurent";<br />
+
+1PS&FUT&IND:=3>"rai";<br />
+2PS&FUT&IND:=3>"ras";<br />
+3PS&FUT&IND:=3>"ra";<br />
+1PP&FUT&IND:=3>"rons";<br />
+2PP&FUT&IND:=3>"rez";<br />
+3PP&FUT&IND:=3>"ront";<br />
+
+1PS&PRS&CON:=3>"rais";<br />
+2PS&PRS&CON:=3>"rais";<br />
+3PS&PRS&CON:=3>"rait";<br />
+1PP&PRS&CON:=3>"rions";<br />
+2PP&PRS&CON:=3>"riez";<br />
+3PP&PRS&CON:=3>"raient";<br />
+
+1PS&PRS&SUB:=6>"çoive";<br />
+2PS&PRS&SUB:=6>"çoives";<br />
+3PS&PRS&SUB:=6>"çoive";<br />
+1PP&PRS&SUB:=3>"ions";<br />
+2PP&PRS&SUB:=3>"iez";<br />
+3PP&PRS&SUB:=6>"çoivent";<br />
+
+1PS&PAS&NPFV&SUB:=6>"çusse";<br />
+2PS&PAS&NPFV&SUB:=6>"çusses";<br />
+3PS&PAS&NPFV&SUB:=6>"çût";<br />
+1PP&PAS&NPFV&SUB:=6>"çussions";<br />
+2PP&PAS&NPFV&SUB:=6>"çussiez";<br />
+3PP&PAS&NPFV&SUB:=6>"çussent";<br />
+
+2PS&PRS&IMP:=6>"çois";<br />
+1PP&PRS&IMP:=2>"ns";<br />
+2PP&PRS&IMP:=3>"ez";<br /><br /><b>M31</b><br />3e groupe - écrire (<i>décrire, écrire, inscrire, prescrire, proscrire</i>)<br />INF:=0>"";<br />
+
+PTP&MCL&SNG:="re">"t";<br />
+PTP&MCL&PLR:="re">"ts";<br />
+PTP&FEM&SNG:="re">"te";<br />
+PTP&FEM&PLR:="re">"tes";<br />
+
+1PS&PRS&IND:="re">"s";<br />
+2PS&PRS&IND:="re">"s";<br />
+3PS&PRS&IND:="re">"t";<br />
+1PP&PRS&IND:="re">"vons";<br />
+2PP&PRS&IND:="re">"vez";<br />
+3PP&PRS&IND:="re">"vent";<br />
+
+1PS&PAS&NPFV&IND:="re">"vais";<br />
+2PS&PAS&NPFV&IND:="re">"vais";<br />
+3PS&PAS&NPFV&IND:="re">"vait";<br />
+1PP&PAS&NPFV&IND:="re">"vions";<br />
+2PP&PAS&NPFV&IND:="re">"viez";<br />
+3PP&PAS&NPFV&IND:="re">"vaient";<br />
+
+1PS&PAS&IND:="re">"vis";<br />
+2PS&PAS&IND:="re">"vis";<br />
+3PS&PAS&IND:="re">"vit";<br />
+1PP&PAS&IND:="re">"vîmes";<br />
+2PP&PAS&IND:="re">"vîtes";<br />
+3PP&PAS&IND:="re">"virent";<br />
+
+1PS&FUT&IND:="re">"rai";<br />
+2PS&FUT&IND:="re">"ras";<br />
+3PS&FUT&IND:="re">"ra";<br />
+1PP&FUT&IND:="re">"rons";<br />
+2PP&FUT&IND:="re">"rez";<br />
+3PP&FUT&IND:="re">"ront";<br />
+
+1PS&PRS&CON:="re">"rais";<br />
+2PS&PRS&CON:="re">"rais";<br />
+3PS&PRS&CON:="re">"rait";<br />
+1PP&PRS&CON:="re">"rions";<br />
+2PP&PRS&CON:="re">"riez";<br />
+3PP&PRS&CON:="re">"raient";<br />
+
+1PS&PRS&SUB:="re">"ve";<br />
+2PS&PRS&SUB:="re">"ves";<br />
+3PS&PRS&SUB:="re">"ve";<br />
+1PP&PRS&SUB:="re">"vions";<br />
+2PP&PRS&SUB:="re">"viez";<br />
+3PP&PRS&SUB:="re">"vent";<br />
+
+1PS&PAS&NPFV&SUB:="re">"visse";<br />
+2PS&PAS&NPFV&SUB:="re">"visses";<br />
+3PS&PAS&NPFV&SUB:="re">"vît";<br />
+1PP&PAS&NPFV&SUB:="re">"vissions";<br />
+2PP&PAS&NPFV&SUB:="re">"vissiez";<br />
+3PP&PAS&NPFV&SUB:="re">"vissent";<br />
+
+2PS&PRS&IMP:="re">"s";<br />
+1PP&PRS&IMP:="re">"vons";<br />
+2PP&PRS&IMP:="re">"vez";<br /><br /><b>M32</b><br />3e groupe - réduire (<i>cuire, réduire, construire</i>)<br />INF:=0>"";<br />
+
+PTP&MCL&SNG:="re">"t";<br />
+PTP&MCL&PLR:="re">"ts";<br />
+PTP&FEM&SNG:="re">"te";<br />
+PTP&FEM&PLR:="re">"tes";<br />
+
+1PS&PRS&IND:="re">"s";<br />
+2PS&PRS&IND:="re">"s";<br />
+3PS&PRS&IND:="re">"t";<br />
+1PP&PRS&IND:="re">"sons";<br />
+2PP&PRS&IND:="re">"sez";<br />
+3PP&PRS&IND:="re">"sent";<br />
+
+1PS&PAS&NPFV&IND:="re">"sais";<br />
+2PS&PAS&NPFV&IND:="re">"sais";<br />
+3PS&PAS&NPFV&IND:="re">"sait";<br />
+1PP&PAS&NPFV&IND:="re">"sions";<br />
+2PP&PAS&NPFV&IND:="re">"siez";<br />
+3PP&PAS&NPFV&IND:="re">"saient";<br />
+
+1PS&PAS&IND:="re">"sis";<br />
+2PS&PAS&IND:="re">"sis";<br />
+3PS&PAS&IND:="re">"sit";<br />
+1PP&PAS&IND:="re">"sîmes";<br />
+2PP&PAS&IND:="re">"sîtes";<br />
+3PP&PAS&IND:="re">"sirent";<br />
+
+1PS&FUT&IND:="re">"rai";<br />
+2PS&FUT&IND:="re">"ras";<br />
+3PS&FUT&IND:="re">"ra";<br />
+1PP&FUT&IND:="re">"rons";<br />
+2PP&FUT&IND:="re">"rez";<br />
+3PP&FUT&IND:="re">"ront";<br />
+
+1PS&PRS&CON:="re">"rais";<br />
+2PS&PRS&CON:="re">"rais";<br />
+3PS&PRS&CON:="re">"rait";<br />
+1PP&PRS&CON:="re">"rions";<br />
+2PP&PRS&CON:="re">"riez";<br />
+3PP&PRS&CON:="re">"raient";<br />
+
+1PS&PRS&SUB:="re">"se";<br />
+2PS&PRS&SUB:="re">"ses";<br />
+3PS&PRS&SUB:="re">"se";<br />
+1PP&PRS&SUB:="re">"sions";<br />
+2PP&PRS&SUB:="re">"siez";<br />
+3PP&PRS&SUB:="re">"sent";<br />
+
+1PS&PAS&NPFV&SUB:="re">"sisse";<br />
+2PS&PAS&NPFV&SUB:="re">"sisses";<br />
+3PS&PAS&NPFV&SUB:="re">"sît";<br />
+1PP&PAS&NPFV&SUB:="re">"sissions";<br />
+2PP&PAS&NPFV&SUB:="re">"sissiez";<br />
+3PP&PAS&NPFV&SUB:="re">"sissent";<br />
+
+2PS&PRS&IMP:="re">"s";<br />
+1PP&PRS&IMP:="re">"sons";<br />
+2PP&PRS&IMP:="re">"sez";<br /><br /><b>M33</b><br />3e - mettre (<i>mettre</i>)<br />INF:=0>"";<br />
+
+PTP&MCL&SNG:=5>"is";<br />
+PTP&MCL&PLR:=5>"is";<br />
+PTP&FEM&SNG:=5>"ise";<br />
+PTP&FEM&PLR:=5>"ises";<br />
+
+1PS&PRS&IND:=3>"s";<br />
+2PS&PRS&IND:=3>"s";<br />
+3PS&PRS&IND:=4>"t";<br />
+1PP&PRS&IND:=2>"ons";<br />
+2PP&PRS&IND:=2>"ez";<br />
+3PP&PRS&IND:=2>"ent";<br />
+
+1PS&PAS&NPFV&IND:=2>"ais";<br />
+2PS&PAS&NPFV&IND:=2>"ais";<br />
+3PS&PAS&NPFV&IND:=2>"ait";<br />
+1PP&PAS&NPFV&IND:=2>"ions";<br />
+2PP&PAS&NPFV&IND:=2>"iez";<br />
+3PP&PAS&NPFV&IND:=2>"aient";<br />
+
+1PS&PAS&IND:=5>"is";<br />
+2PS&PAS&IND:=5>"is";<br />
+3PS&PAS&IND:=5>"it";<br />
+1PP&PAS&IND:=5>"îmes";<br />
+2PP&PAS&IND:=5>"îtes";<br />
+3PP&PAS&IND:=5>"irent";<br />
+
+1PS&FUT&IND:=1>"ai";<br />
+2PS&FUT&IND:=1>"as";<br />
+3PS&FUT&IND:=1>"a";<br />
+1PP&FUT&IND:=1>"ons";<br />
+2PP&FUT&IND:=1>"ez";<br />
+3PP&FUT&IND:=1>"ont";<br />
+
+1PS&PRS&CON:=1>"ais";<br />
+2PS&PRS&CON:=1>"ais";<br />
+3PS&PRS&CON:=1>"ait";<br />
+1PP&PRS&CON:=1>"ions";<br />
+2PP&PRS&CON:=1>"iez";<br />
+3PP&PRS&CON:=1>"aient";<br />
+
+1PS&PRS&SUB:=2>"e";<br />
+2PS&PRS&SUB:=2>"es";<br />
+3PS&PRS&SUB:=2>"e";<br />
+1PP&PRS&SUB:=2>"ions";<br />
+2PP&PRS&SUB:=2>"iez";<br />
+3PP&PRS&SUB:=2>"ent";<br />
+
+1PS&PAS&NPFV&SUB:=5>"isse";<br />
+2PS&PAS&NPFV&SUB:=5>"isses";<br />
+3PS&PAS&NPFV&SUB:=5>"ît";<br />
+1PP&PAS&NPFV&SUB:=5>"issions";<br />
+2PP&PAS&NPFV&SUB:=5>"issiez";<br />
+3PP&PAS&NPFV&SUB:=5>"issent";<br />
+
+2PS&PRS&IMP:=3>"s";<br />
+1PP&PRS&IMP:=2>"ons";<br />
+2PP&PRS&IMP:=2>"ez";<br /><br /><b>M34</b><br />1er groupe - étudier (<i>apprécier, publier, justifier, intensifier</i>)<br />INF:=0>"";<br />
+GER:="er">"ant";<br />
+PTP&MCL&SNG:="er">"é";<br />
+PTP&MCL&PLR:="er">"és";<br />
+PTP&FEM&SNG:="er">"ée";<br />
+PTP&FEM&PLR:="er">"ées";<br />
+
+1PS&PRS&IND:="r">"";<br />
+2PS&PRS&IND:="r">"s";<br />
+3PS&PRS&IND:="r">"";<br />
+1PP&PRS&IND:="er">"ons";<br />
+2PP&PRS&IND:="r">"z";<br />
+3PP&PRS&IND:="r">"nt";<br />
+
+1PS&PAS&NPFV&IND:="er">"ais";<br />
+2PS&PAS&NPFV&IND:="er">"ais";<br />
+3PS&PAS&NPFV&IND:="er">"ait";<br />
+1PP&PAS&NPFV&IND:="er">"ions";<br />
+2PP&PAS&NPFV&IND:="er">"iez";<br />
+3PP&PAS&NPFV&IND:="er">"aient";<br />
+
+1PS&PAS&PFV&IND:="er">"ai";<br />
+2PS&PAS&PFV&IND:="er">"as";<br />
+3PS&PAS&PFV&IND:="er">"as";<br />
+1PP&PAS&PFV&IND:="er">"âmes";<br />
+2PP&PAS&PFV&IND:="er">"âtes";<br />
+3PP&PAS&PFV&IND:="er">"èrent";<br />
+
+1PS&FUT&IND:=0>"ai";<br />
+2PS&FUT&IND:=0>"as";<br />
+3PS&FUT&IND:=0>"a";<br />
+1PP&FUT&IND:=0>"ons";<br />
+2PP&FUT&IND:=0>"ez";<br />
+3PP&FUT&IND:=0>"ont";<br />
+
+1PS&PRS&CON:=0>"ais";<br />
+2PS&PRS&CON:=0>"ais";<br />
+3PS&PRS&CON:=0>"ait";<br />
+1PP&PRS&CON:=0>"ions";<br />
+2PP&PRS&CON:=0>"iez";<br />
+3PP&PRS&CON:=0>"aient";<br />
+
+1PS&PRS&SUB:="r">"";<br />
+2PS&PRS&SUB:="r">"s";<br />
+3PS&PRS&SUB:="r">"";<br />
+1PP&PRS&SUB:="er">"ions";<br />
+2PP&PRS&SUB:="er">"iez";<br />
+3PP&PRS&SUB:="r">"nt";<br />
+
+1PS&PAS&NPFV&SUB:="er">"asse";<br />
+2PS&PAS&NPFV&SUB:="er">"asses";<br />
+3PS&PAS&NPFV&SUB:="er">"ât";<br />
+1PP&PAS&NPFV&SUB:="er">"assions";<br />
+2PP&PAS&NPFV&SUB:="er">"assiez";<br />
+3PP&PAS&NPFV&SUB:="er">"assent";<br />
+
+2PS&PRS&IMP:="r">"";<br />
+1PP&PRS&IMP:="er">"ons";<br />
+2PP&PRS&IMP:="r">"z";<br />
+;<br /><br /><b>M35</b><br />3e groupe - venir (<i>venir, tenir, retenir, mantenir</i>)<br />INF:=0>"";<br />
+
+PTP&MCL&SNG:="ir">"u";<br />
+PTP&MCL&PLR:="ir">"us";<br />
+PTP&FEM&SNG:="ir">"ue";<br />
+PTP&FEM&PLR:="ir">"ues";<br />
+
+1PS&PRS&IND:="enir">"iens";<br />
+2PS&PRS&IND:="enir">"iens";<br />
+3PS&PRS&IND:="enir">"ient";<br />
+1PP&PRS&IND:="ir">"ons";<br />
+2PP&PRS&IND:="ir">"ez";<br />
+3PP&PRS&IND:="enir">"iennent";<br />
+
+1PS&PAS&NPFV&IND:="ir">"ais";<br />
+2PS&PAS&NPFV&IND:="ir">"ais";<br />
+3PS&PAS&NPFV&IND:="ir">"ait";<br />
+1PP&PAS&NPFV&IND:="ir">"ions";<br />
+2PP&PAS&NPFV&IND:="ir">"iez";<br />
+3PP&PAS&NPFV&IND:="ir">"aient";<br />
+
+1PS&PAS&PFV&IND:="enir">"ins";<br />
+2PS&PAS&PFV&IND:="enir">"ins";<br />
+3PS&PAS&PFV&IND:="enir">"int";<br />
+1PP&PAS&PFV&IND:="enir">"înmes";<br />
+2PP&PAS&PFV&IND:="enir">"întes";<br />
+3PP&PAS&PFV&IND:="enir">"inrent";<br />
+
+1PS&FUT&IND:="enir">"iendrai";<br />
+2PS&FUT&IND:="enir">"iendras";<br />
+3PS&FUT&IND:="enir">"iendra";<br />
+1PP&FUT&IND:="enir">"iendrons";<br />
+2PP&FUT&IND:="enir">"iendrez";<br />
+3PP&FUT&IND:="enir">"iendront";<br />
+
+1PS&PRS&CON:="enir">"iendrais";<br />
+2PS&PRS&CON:="enir">"iendrais";<br />
+3PS&PRS&CON:="enir">"iendrait";<br />
+1PP&PRS&CON:="enir">"iendrions";<br />
+2PP&PRS&CON:="enir">"iendriez";<br />
+3PP&PRS&CON:="enir">"iendraient";<br />
+
+1PS&PRS&SUB:="enir">"ienne";<br />
+2PS&PRS&SUB:="enir">"iennes";<br />
+3PS&PRS&SUB:="enir">"ienne";<br />
+1PP&PRS&SUB:="r">"ons";<br />
+2PP&PRS&SUB:="r">"ez";<br />
+3PP&PRS&SUB:="enir">"iennent";<br />
+
+1PS&PAS&NPFV&SUB:="enir">"insse";<br />
+2PS&PAS&NPFV&SUB:="enir">"insses";<br />
+3PS&PAS&NPFV&SUB:="enir">"înt";<br />
+1PP&PAS&NPFV&SUB:="enir">"inssions";<br />
+2PP&PAS&NPFV&SUB:="enir">"inssiez";<br />
+3PP&PAS&NPFV&SUB:="enir">"inssent";<br />
+
+2PS&PRS&IMP:="enir">"iens";<br />
+1PP&PRS&IMP:="ir">"ons";<br />
+2PP&PRS&IMP:="ir">"ez";<br /> ;<br /><br /><b>M36</b><br />3e groupe - rendre (<i>rendre, vendre, répondre, attendre, descendre</i>)<br />INF:=0>"";<br />
+
+PTP&MCL&SNG:="re">"u";<br />
+PTP&MCL&PLR:="re">"us";<br />
+PTP&FEM&SNG:="re">"ue";<br />
+PTP&FEM&PLR:="re">"ues";<br />
+
+1PS&PRS&IND:="re">"s";<br />
+2PS&PRS&IND:="re">"s";<br />
+3PS&PRS&IND:="re">"";<br />
+1PP&PRS&IND:="re">"ons";<br />
+2PP&PRS&IND:="re">"ez";<br />
+3PP&PRS&IND:="re">"ent";<br />
+
+1PS&PAS&NPFV&IND:="re">"ais";<br />
+2PS&PAS&NPFV&IND:="re">"ais";<br />
+3PS&PAS&NPFV&IND:="re">"ait";<br />
+1PP&PAS&NPFV&IND:="re">"ions";<br />
+2PP&PAS&NPFV&IND:="re">"iez";<br />
+3PP&PAS&NPFV&IND:="re">"aient";<br />
+
+1PS&PAS&IND:="re">"is";<br />
+2PS&PAS&IND:="re">"is";<br />
+3PS&PAS&IND:="re">"it";<br />
+1PP&PAS&IND:="re">"îmes";<br />
+2PP&PAS&IND:="re">"îtes";<br />
+3PP&PAS&IND:="re">"irent";<br />
+
+1PS&FUT&IND:="e">"ai";<br />
+2PS&FUT&IND:="e">"as";<br />
+3PS&FUT&IND:="e">"a";<br />
+1PP&FUT&IND:="e">"ons";<br />
+2PP&FUT&IND:="e">"ez";<br />
+3PP&FUT&IND:="e">"ont";<br />
+
+1PS&PRS&CON:="e">"ais";<br />
+2PS&PRS&CON:="e">"ais";<br />
+3PS&PRS&CON:="e">"ait";<br />
+1PP&PRS&CON:="e">"ions";<br />
+2PP&PRS&CON:="e">"iez";<br />
+3PP&PRS&CON:="e">"aient";<br />
+
+1PS&PRS&SUB:="re">"e";<br />
+2PS&PRS&SUB:="re">"es";<br />
+3PS&PRS&SUB:="re">"e";<br />
+1PP&PRS&SUB:="re">"ions";<br />
+2PP&PRS&SUB:="re">"iez";<br />
+3PP&PRS&SUB:="re">"ent";<br />
+
+1PS&PAS&NPFV&SUB:="re">"isse";<br />
+2PS&PAS&NPFV&SUB:="re">"isses";<br />
+3PS&PAS&NPFV&SUB:="re">"ît";<br />
+1PP&PAS&NPFV&SUB:="re">"issions";<br />
+2PP&PAS&NPFV&SUB:="re">"issiez";<br />
+3PP&PAS&NPFV&SUB:="re">"issent";<br />
+
+2PS&PRS&IMP:="re">"s";<br />
+1PP&PRS&IMP:="re">"ons";<br />
+2PP&PRS&IMP:="re">"ez";<br /><br /><b>M38</b><br />3e groupe - vivre (<i>vivre</i>)<br />INF:=0>"";<br />
+
+PTP&MCL&SNG:="ivre">"écu";<br />
+PTP&MCL&PLR:="ivre">"écus";<br />
+PTP&FEM&SNG:="ivre">"écue";<br />
+PTP&FEM&PLR:="ivre">"écues";<br />
+
+1PS&PRS&IND:="vre">"s";<br />
+2PS&PRS&IND:="vre">"s";<br />
+3PS&PRS&IND:="vre">"t";<br />
+1PP&PRS&IND:="re">"ons";<br />
+2PP&PRS&IND:="re">"ez";<br />
+3PP&PRS&IND:="re">"ent";<br />
+
+1PS&PAS&NPFV&IND:="re">"ais";<br />
+2PS&PAS&NPFV&IND:="re">"ais";<br />
+3PS&PAS&NPFV&IND:="re">"ait";<br />
+1PP&PAS&NPFV&IND:="re">"ions";<br />
+2PP&PAS&NPFV&IND:="re">"iez";<br />
+3PP&PAS&NPFV&IND:="re">"aient";<br />
+
+1PS&PAS&IND:="ivre">"écus";<br />
+2PS&PAS&IND:="ivre">"écus";<br />
+3PS&PAS&IND:="ivre">"écut";<br />
+1PP&PAS&IND:="ivre">"écûmes";<br />
+2PP&PAS&IND:="ivre">"écûtes";<br />
+3PP&PAS&IND:="ivre">"écurent";<br />
+
+1PS&FUT&IND:="e">"ai";<br />
+2PS&FUT&IND:="e">"as";<br />
+3PS&FUT&IND:="e">"a";<br />
+1PP&FUT&IND:="e">"ons";<br />
+2PP&FUT&IND:="e">"ez";<br />
+3PP&FUT&IND:="e">"ont";<br />
+
+1PS&PRS&CON:="e">"ais";<br />
+2PS&PRS&CON:="e">"ais";<br />
+3PS&PRS&CON:="e">"ait";<br />
+1PP&PRS&CON:="e">"ions";<br />
+2PP&PRS&CON:="e">"iez";<br />
+3PP&PRS&CON:="e">"aient";<br />
+
+1PS&PRS&SUB:="re">"e";<br />
+2PS&PRS&SUB:="re">"es";<br />
+3PS&PRS&SUB:="re">"e";<br />
+1PP&PRS&SUB:="re">"ions";<br />
+2PP&PRS&SUB:="re">"iez";<br />
+3PP&PRS&SUB:="re">"ent";<br />
+
+1PS&PAS&NPFV&SUB:="ivre">"écusse";<br />
+2PS&PAS&NPFV&SUB:="ivre">"écusses";<br />
+3PS&PAS&NPFV&SUB:="ivre">"écût";<br />
+1PP&PAS&NPFV&SUB:="ivre">"écussions";<br />
+2PP&PAS&NPFV&SUB:="ivre">"écussiez";<br />
+3PP&PAS&NPFV&SUB:="ivre">"écussent";<br />
+
+2PS&PRS&IMP:="vre">"s";<br />
+1PP&PRS&IMP:="re">"ons";<br />
+2PP&PRS&IMP:="re">"ez";<br />
+;<br /><br /><b>M40</b><br />Féminin en -e et pluriel en -s (<i>candidat, fiancé, martyr</i>)<br />MCL&SNG:=0>"";<br />
+FEM&SNG:=0>"e";<br />
+MCL&PLR:=0>"s";<br />
+FEM&PLR:=0>"es";<br />
+;<br /><br /><b>M41</b><br />3e groupe - ouvrir (<i>ouvrir, couvrir, offrir</i>)<br />INF:=0>"";<br />
+
+PTP&MCL&SNG:="rir">"ert";<br />
+PTP&MCL&PLR:="rir">"erts";<br />
+PTP&FEM&SNG:="rir">"erte";<br />
+PTP&FEM&PLR:="rir">"ertes";<br />
+
+1PS&PRS&IND:="ir">"e";<br />
+2PS&PRS&IND:="ir">"es";<br />
+3PS&PRS&IND:="ir">"e";<br />
+1PP&PRS&IND:="ir">"ons";<br />
+2PP&PRS&IND:="ir">"ez";<br />
+3PP&PRS&IND:="ir">"ent";<br />
+
+1PS&PAS&NPFV&IND:="ir">"ais";<br />
+2PS&PAS&NPFV&IND:="ir">"ais";<br />
+3PS&PAS&NPFV&IND:="ir">"ait";<br />
+1PP&PAS&NPFV&IND:="ir">"ions";<br />
+2PP&PAS&NPFV&IND:="ir">"iez";<br />
+3PP&PAS&NPFV&IND:="ir">"aient";<br />
+
+1PS&PAS&IND:="r">"s";<br />
+2PS&PAS&IND:="r">"s";<br />
+3PS&PAS&IND:="r">"t";<br />
+1PP&PAS&IND:="ir">"îmes";<br />
+2PP&PAS&IND:="ir">"îtes";<br />
+3PP&PAS&IND:="r">"rent";<br />
+
+1PS&FUT&IND:=0>"ai";<br />
+2PS&FUT&IND:=0>"as";<br />
+3PS&FUT&IND:=0>"a";<br />
+1PP&FUT&IND:=0>"ons";<br />
+2PP&FUT&IND:=0>"ez";<br />
+3PP&FUT&IND:=0>"ont";<br />
+
+1PS&PRS&CON:=0>"ais";<br />
+2PS&PRS&CON:=0>"ais";<br />
+3PS&PRS&CON:=0>"ait";<br />
+1PP&PRS&CON:=0>"ions";<br />
+2PP&PRS&CON:=0>"iez";<br />
+3PP&PRS&CON:=0>"aient";<br />
+
+1PS&PRS&SUB:="ir">"e";<br />
+2PS&PRS&SUB:="ir">"es";<br />
+3PS&PRS&SUB:="ir">"e";<br />
+1PP&PRS&SUB:="ir">"ions";<br />
+2PP&PRS&SUB:="ir">"iez";<br />
+3PP&PRS&SUB:="ir">"ent";<br />
+
+1PS&PAS&NPFV&SUB:="ir">"isse";<br />
+2PS&PAS&NPFV&SUB:="ir">"isses";<br />
+3PS&PAS&NPFV&SUB:="ir">"ît";<br />
+1PP&PAS&NPFV&SUB:="ir">"issions";<br />
+2PP&PAS&NPFV&SUB:="ir">"issiez";<br />
+3PP&PAS&NPFV&SUB:="ir">"issent";<br />
+
+2PS&PRS&IMP:="ir">"e";<br />
+1PP&PRS&IMP:="ir">"ons";<br />
+2PP&PRS&IMP:="ir">"ez";<br /><br /><b>M42</b><br />3e groupe - conclure (<i>conclure, inclure, exclure, occlure</i>)<br />INF:=0>"";<br />
+
+PTP&MCL&SNG:="re">"";<br />
+PTP&MCL&PLR:="re">"s";<br />
+PTP&FEM&SNG:="re">"e";<br />
+PTP&FEM&PLR:="re">"es";<br />
+
+1PS&PRS&IND:="re">"s";<br />
+2PS&PRS&IND:="re">"s";<br />
+3PS&PRS&IND:="re">"t";<br />
+1PP&PRS&IND:="re">"ons";<br />
+2PP&PRS&IND:="re">"ez";<br />
+3PP&PRS&IND:="re">"ent";<br />
+
+1PS&PAS&NPFV&IND:="re">"ais";<br />
+2PS&PAS&NPFV&IND:="re">"ais";<br />
+3PS&PAS&NPFV&IND:="re">"ait";<br />
+1PP&PAS&NPFV&IND:="re">"ions";<br />
+2PP&PAS&NPFV&IND:="re">"iez";<br />
+3PP&PAS&NPFV&IND:="re">"aient";<br />
+
+1PS&PAS&IND:="re">"s";<br />
+2PS&PAS&IND:="re">"s";<br />
+3PS&PAS&IND:="re">"t";<br />
+1PP&PAS&IND:="re">"ûmes";<br />
+2PP&PAS&IND:="re">"ûtes";<br />
+3PP&PAS&IND:="re">"rent";<br />
+
+1PS&FUT&IND:="e">"ai";<br />
+2PS&FUT&IND:="e">"as";<br />
+3PS&FUT&IND:="e">"a";<br />
+1PP&FUT&IND:="e">"ons";<br />
+2PP&FUT&IND:="e">"ez";<br />
+3PP&FUT&IND:="e">"ont";<br />
+
+1PS&PRS&CON:=0>"ais";<br />
+2PS&PRS&CON:=0>"ais";<br />
+3PS&PRS&CON:=0>"ait";<br />
+1PP&PRS&CON:=0>"ions";<br />
+2PP&PRS&CON:=0>"iez";<br />
+3PP&PRS&CON:=0>"aient";<br />
+
+1PS&PRS&SUB:="ir">"e";<br />
+2PS&PRS&SUB:="ir">"es";<br />
+3PS&PRS&SUB:="ir">"e";<br />
+1PP&PRS&SUB:="ir">"ions";<br />
+2PP&PRS&SUB:="ir">"iez";<br />
+3PP&PRS&SUB:="ir">"ent";<br />
+
+1PS&PAS&NPFV&SUB:="ir">"isse";<br />
+2PS&PAS&NPFV&SUB:="ir">"isses";<br />
+3PS&PAS&NPFV&SUB:="ir">"ît";<br />
+1PP&PAS&NPFV&SUB:="ir">"issions";<br />
+2PP&PAS&NPFV&SUB:="ir">"issiez";<br />
+3PP&PAS&NPFV&SUB:="ir">"issent";<br />
+
+2PS&PRS&IMP:="re">"s";<br />
+1PP&PRS&IMP:="re">"ons";<br />
+2PP&PRS&IMP:="re">"ez";<br /><br /><b>M43</b><br />Féminin en -e et pluriel en -s (<i>chien, espion, musicien</i>)<br />MCL&SNG:=0>"";<br />
+FEM&SNG:=0>"ne";<br /> 
+MCL&PLR:=0>"s";<br />
+FEM&PLR:=0>"nes";<br /> ;<br /><br /><b>M48</b><br />3e groupe - joindre (<i>joindre, rejoindre; craindre, plaindre</i>)<br />INF:=0>"";<br />
+
+PTP&MCL&SNG:=3>"t";<br />
+PTP&MCL&PLR:=3>"ts";<br />
+PTP&FEM&SNG:=3>"te";<br />
+PTP&FEM&PLR:=3>"tes";<br /> 
+
+1PS&PRS&IND:=3>"s";<br />
+2PS&PRS&IND:=3>"s";<br />
+3PS&PRS&IND:=3>"t";<br />
+1PP&PRS&IND:=4>"gnons";<br />
+2PP&PRS&IND:=4>"gnez";<br />
+3PP&PRS&IND:=4>"gnent";<br /> 
+
+1PS&PAS&NPFV&IND:=4>"gnais";<br />
+2PS&PAS&NPFV&IND:=4>"gnais";<br />
+3PS&PAS&NPFV&IND:=4>"gnait";<br />
+1PP&PAS&NPFV&IND:=4>"gnions";<br />
+2PP&PAS&NPFV&IND:=4>"gniez";<br /> 
+PP&PAS&NPFV&IND:=4>"gnaient";<br /> 
+
+1PS&PAS&IND:=4>"gnis";<br />
+2PS&PAS&IND:=4>"gnis";<br />
+3PS&PAS&IND:=4>"gnit";<br />
+1PP&PAS&IND:=4>"gnîmes";<br />
+2PP&PAS&IND:=4>"gnîtes";<br />
+3PP&PAS&IND:=4>"gnirent";<br />
+
+1PS&FUT&IND:=1>"ai";<br />
+2PS&FUT&IND:=1>"as";<br />
+3PS&FUT&IND:=1>"a";<br />
+1PP&FUT&IND:=1>"ons";<br />
+2PP&FUT&IND:=1>"ez";<br />
+3PP&FUT&IND:=1>"ont";<br />
+
+1PS&PRS&CON:=1>"ais";<br />
+2PS&PRS&CON:=1>"ais";<br />
+3PS&PRS&CON:=1>"ait";<br />
+1PP&PRS&CON:=1>"ions";<br />
+2PP&PRS&CON:=1>"iez";<br />
+3PP&PRS&CON:=1>"aient";<br />
+
+1PS&PRS&SUB:=4>"gne";<br />
+2PS&PRS&SUB:=4>"gnes";<br />
+3PS&PRS&SUB:=4>"gne";<br />
+1PP&PRS&SUB:=4>"gnions";<br />
+2PP&PRS&SUB:=4>"gniez";<br />
+3PP&PRS&SUB:=4>"gnent";<br /> 
+
+1PS&PAS&NPFV&SUB:=4>"gnisse";<br />
+2PS&PAS&NPFV&SUB:=4>"gnisses";<br />
+3PS&PAS&NPFV&SUB:=4>"gnît";<br />
+1PP&PAS&NPFV&SUB:=4>"gnissions";<br />
+2PP&PAS&NPFV&SUB:=4>"gnissiez";<br />
+3PP&PAS&NPFV&SUB:=4>"gnissent";<br /> 
+
+2PS&PRS&IMP:=3>"s";<br />
+1PP&PRS&IMP:=4>"gnons";<br />
+2PP&PRS&IMP:=4>"gnez";<br /><br /><b>M51</b><br />3e groupe - lire (<i>lire, élire, relire</i>)<br />INF:=0>"";<br />
+
+PTP&MCL&SNG:=3>"u";<br />
+PTP&MCL&PLR:=3>"us";<br />
+PTP&FEM&SNG:=3>"ue";<br />
+PTP&FEM&PLR:=3>"ues";<br />
+
+1PS&PRS&IND:=2>"s";<br />
+2PS&PRS&IND:=2>"s";<br />
+3PS&PRS&IND:=2>"t";<br />
+1PP&PRS&IND:=2>"sons";<br />
+2PP&PRS&IND:=2>"sez";<br />
+3PP&PRS&IND:=2>"sent";<br />
+
+1PS&PAS&NPFV&IND:=2>"sais";<br />
+2PS&PAS&NPFV&IND:=2>"sais";<br />
+3PS&PAS&NPFV&IND:=2>"sait";<br />
+1PP&PAS&NPFV&IND:=2>"sions";<br />
+2PP&PAS&NPFV&IND:=2>"siez";<br />
+3PP&PAS&NPFV&IND:=2>"saient";<br />
+
+1PS&PAS&IND:=3>"us";<br />
+2PS&PAS&IND:=3>"us";<br />
+3PS&PAS&IND:=3>"ut";<br />
+1PP&PAS&IND:=3>"ûmes";<br />
+2PP&PAS&IND:=3>"ûtes";<br />
+3PP&PAS&IND:=3>"urent";<br />
+
+1PS&FUT&IND:=1>"ai";<br />
+2PS&FUT&IND:=1>"as";<br />
+3PS&FUT&IND:=1>"a";<br />
+1PP&FUT&IND:=1>"ons";<br />
+2PP&FUT&IND:=1>"ez";<br />
+3PP&FUT&IND:=1>"ont";<br />
+
+1PS&PRS&CON:=1>"ais";<br />
+2PS&PRS&CON:=1>"ais";<br />
+3PS&PRS&CON:=1>"ait";<br />
+1PP&PRS&CON:=1>"ions";<br />
+2PP&PRS&CON:=1>"iez";<br />
+3PP&PRS&CON:=1>"aient";<br />
+
+1PS&PRS&SUB:=2>"se";<br />
+2PS&PRS&SUB:=2>"ses";<br />
+3PS&PRS&SUB:=2>"se";<br />
+1PP&PRS&SUB:=2>"sions";<br />
+2PP&PRS&SUB:=2>"siez";<br />
+3PP&PRS&SUB:=2>"sent";<br />
+
+1PS&PAS&NPFV&SUB:=3>"usse";<br />
+2PS&PAS&NPFV&SUB:=3>"usses";<br />
+3PS&PAS&NPFV&SUB:=3>"ût";<br />
+1PP&PAS&NPFV&SUB:=3>"ussions";<br />
+2PP&PAS&NPFV&SUB:=3>"ussiez";<br />
+3PP&PAS&NPFV&SUB:=3>"ussent";<br />
+
+2PS&PRS&IMP:=2>"s";<br />
+1PP&PRS&IMP:=2>"sons";<br />
+2PP&PRS&IMP:=2>"sez";<br />
+;<br /><br /><b>M53</b><br />3e groupe - pouvoir (<i>pouvoir</i>)<br />INF:=0>"";<br />
+
+PTP&MCL&SNG:=6>"u";<br />
+PTP&MCL&PLR:=6>"us";<br />
+PTP&FEM&SNG:=6>"ue";<br />
+PTP&FEM&PLR:=6>"ues";<br />
+
+1PS&PRS&IND:=6>"eux";<br />
+2PS&PRS&IND:=6>"eux";<br />
+3PS&PRS&IND:=6>"eut";<br />
+1PP&PRS&IND:=3>"ons";<br />
+2PP&PRS&IND:=3>"ez";<br />
+3PP&PRS&IND:=6>"euvent";<br />
+
+1PS&PAS&NPFV&IND:=3>"ais";<br />
+2PS&PAS&NPFV&IND:=3>"ais";<br />
+3PS&PAS&NPFV&IND:=3>"ait";<br />
+1PP&PAS&NPFV&IND:=3>"ions";<br />
+2PP&PAS&NPFV&IND:=3>"iez";<br />
+3PP&PAS&NPFV&IND:=3>"aient";<br />
+
+1PS&PAS&IND:=6>"us";<br />
+2PS&PAS&IND:=6>"us";<br />
+3PS&PAS&IND:=6>"ut";<br />
+1PP&PAS&IND:=6>"ûmes";<br />
+2PP&PAS&IND:=6>"ûtes";<br />
+3PP&PAS&IND:=6>"urent";<br />
+
+1PS&FUT&IND:=4>"rrai";<br />
+2PS&FUT&IND:=4>"rras";<br />
+3PS&FUT&IND:=4>"rra";<br />
+1PP&FUT&IND:=4>"rrons";<br />
+2PP&FUT&IND:=6>"rrez";<br />
+3PP&FUT&IND:=6>"rront";<br />
+
+1PS&PRS&CON:=3>"ais";<br />
+2PS&PRS&CON:=3>"ais";<br />
+3PS&PRS&CON:=3>"ait";<br />
+1PP&PRS&CON:=3>"ions";<br />
+2PP&PRS&CON:=3>"iez";<br />
+3PP&PRS&CON:=3>"aient";<br />
+
+1PS&PRS&SUB:=6>"uisse";<br />
+2PS&PRS&SUB:=6>"uisses";<br />
+3PS&PRS&SUB:=6>"uisse";<br />
+1PP&PRS&SUB:=6>"uissions";<br />
+2PP&PRS&SUB:=6>"uissiez";<br />
+3PP&PRS&SUB:=6>"uissent";<br />
+
+1PS&PAS&NPFV&SUB:=6>"usse";<br />
+2PS&PAS&NPFV&SUB:=6>"usses";<br />
+3PS&PAS&NPFV&SUB:=6>"ût";<br />
+1PP&PAS&NPFV&SUB:=6>"ussions";<br />
+2PP&PAS&NPFV&SUB:=6>"ussiez";<br />
+3PP&PAS&NPFV&SUB:=6>"ussent";<br /><br /><b>M55</b><br />3e groupe - mourir (<i>mourir</i>)<br />INF:=0>"";<br />
+
+PTP&MCL&SNG:="mort";<br />
+PTP&MCL&PLR:="morts";<br />
+PTP&FEM&SNG:="morte";<br />
+PTP&FEM&PLR:="mortes";<br />
+
+1PS&PRS&IND:=4>"eurs";<br />
+2PS&PRS&IND:=4>"eurs";<br />
+3PS&PRS&IND:=4>"eurt";<br />
+1PP&PRS&IND:=2>"ons";<br />
+2PP&PRS&IND:=2>"ez";<br />
+3PP&PRS&IND:=4>"eurent";<br />
+
+1PS&PAS&NPFV&IND:=2>"ais";<br />
+2PS&PAS&NPFV&IND:=2>"ais";<br />
+3PS&PAS&NPFV&IND:=2>"ait";<br />
+1PP&PAS&NPFV&IND:=2>"ions";<br />
+2PP&PAS&NPFV&IND:=2>"iez";<br />
+3PP&PAS&NPFV&IND:=2>"aient";<br />
+
+1PS&PAS&IND:=2>"us";<br />
+2PS&PAS&IND:=2>"us";<br />
+3PS&PAS&IND:=2>"ut";<br />
+1PP&PAS&IND:=2>"ûmes";<br />
+2PP&PAS&IND:=2>"ûtes";<br />
+3PP&PAS&IND:=2>"urent";<br />
+
+1PS&FUT&IND:=2>"rai";<br />
+2PS&FUT&IND:=2>"ras";<br />
+3PS&FUT&IND:=2>"ra";<br />
+1PP&FUT&IND:=2>"rons";<br />
+2PP&FUT&IND:=2>"rez";<br />
+3PP&FUT&IND:=2>"ront";<br />
+
+1PS&PRS&CON:=2>"ais";<br />
+2PS&PRS&CON:=2>"ais";<br />
+3PS&PRS&CON:=2>"ait";<br />
+1PP&PRS&CON:=2>"ions";<br />
+2PP&PRS&CON:=2>"iez";<br />
+3PP&PRS&CON:=2>"aient";<br />
+
+1PS&PRS&SUB:=4>"eure";<br />
+2PS&PRS&SUB:=4>"eures";<br />
+3PS&PRS&SUB:=4>"eure";<br />
+1PP&PRS&SUB:=4>"eurions";<br />
+2PP&PRS&SUB:=4>"euriez";<br />
+3PP&PRS&SUB:=4>"eurent";<br />
+
+1PS&PAS&NPFV&SUB:=2>"usse";<br />
+2PS&PAS&NPFV&SUB:=2>"usses";<br />
+3PS&PAS&NPFV&SUB:=2>"ût";<br />
+1PP&PAS&NPFV&SUB:=2>"ussions";<br />
+2PP&PAS&NPFV&SUB:=2>"ussiez";<br />
+3PP&PAS&NPFV&SUB:=2>"ussent";<br />
+
+2PS&IMP:="meurs";<br />
+1PP&IMP:="mourons";<br />
+2PP&IMP:="mourez";<br />
+;<br /><br /><b>M61</b><br />3e groupe - suivre (<i>suivre</i>)<br />INF:=0>"";<br />
+
+PTP&MCL&SNG:=2>"i";<br />
+PTP&MCL&PLR:=2>"is";<br />
+PTP&FEM&SNG:=2>"ie";<br />
+PTP&FEM&PLR:=2>"ies";<br />
+
+1PS&PRS&IND:=3>"s";<br />
+2PS&PRS&IND:=3>"s";<br />
+3PS&PRS&IND:=3>"t";<br />
+1PP&PRS&IND:=2>"ons";<br />
+2PP&PRS&IND:=2>"ez";<br />
+3PP&PRS&IND:=2>"ent";<br />
+
+1PS&PAS&NPFV&IND:=2>"ais";<br />
+2PS&PAS&NPFV&IND:=2>"ais";<br />
+3PS&PAS&NPFV&IND:=2>"ait";<br />
+1PP&PAS&NPFV&IND:=2>"ions";<br />
+2PP&PAS&NPFV&IND:=2>"iez";<br />
+3PP&PAS&NPFV&IND:=2>"aient";<br />
+
+1PS&PAS&IND:=2>"is";<br />
+2PS&PAS&IND:=2>"is";<br />
+3PS&PAS&IND:=2>"it";<br />
+1PP&PAS&IND:=2>"îmes";<br />
+2PP&PAS&IND:=2>"îtes";<br />
+3PP&PAS&IND:=2>"irent";<br />
+
+1PS&FUT&IND:=1>"ai";<br />
+2PS&FUT&IND:=1>"as";<br />
+3PS&FUT&IND:=1>"a";<br />
+1PP&FUT&IND:=1>"ons";<br />
+2PP&FUT&IND:=1>"ez";<br />
+3PP&FUT&IND:=1>"ont";<br />
+
+1PS&PRS&CON:=1>"ais";<br />
+2PS&PRS&CON:=1>"ais";<br />
+3PS&PRS&CON:=1>"ait";<br />
+1PP&PRS&CON:=1>"ions";<br />
+2PP&PRS&CON:=1>"iez";<br />
+3PP&PRS&CON:=1>"aient";<br />
+
+1PS&PRS&SUB:=2>"e";<br />
+2PS&PRS&SUB:=2>"es";<br />
+3PS&PRS&SUB:=2>"e";<br />
+1PP&PRS&SUB:=2>"ions";<br />
+2PP&PRS&SUB:=2>"iez";<br />
+3PP&PRS&SUB:=2>"ent";<br />
+
+1PS&PAS&NPFV&SUB:=2>"isse";<br />
+2PS&PAS&NPFV&SUB:=2>"isses";<br />
+3PS&PAS&NPFV&SUB:=2>"ît";<br />
+1PP&PAS&NPFV&SUB:=2>"issions";<br />
+2PP&PAS&NPFV&SUB:=2>"issiez";<br />
+3PP&PAS&NPFV&SUB:=2>"issent";<br />
+
+2PS&PRS&IMP:=3>"s";<br />
+1PP&PRS&IMP:=2>"ons";<br />
+2PP&PRS&IMP:=2>"ez";<br /><br /><b>M63</b><br />1er groupe - céder (<i>céder, accéder, accélérer, altérer, blasphémer, compléter</i>)<br />INF:=0>"";<br />
+GER:="er">"ant";<br />
+PTP&MCL&SNG:="er">"é";<br />
+PTP&MCL&PLR:="er">"és";<br />
+PTP&FEM&SNG:="er">"ée";<br />
+PTP&FEM&PLR:="er">"ées";<br />
+
+1PS&PRS&IND:=[-4]:"è","er">"e";<br />
+2PS&PRS&IND:=[-4]:"è","er">"es";<br />
+3PS&PRS&IND:=[-4]:"è","er">"e";<br />
+1PP&PRS&IND:="er">"ons";<br />
+2PP&PRS&IND:="er">"ez";<br />
+3PP&PRS&IND:=[-4]:"è","er">"ent";<br />
+
+1PS&PAS&NPFV&IND:="er">"ais";<br />
+2PS&PAS&NPFV&IND:="er">"ais";<br />
+3PS&PAS&NPFV&IND:="er">"ait";<br />
+1PP&PAS&NPFV&IND:="er">"ions";<br />
+2PP&PAS&NPFV&IND:="er">"iez";<br />
+3PP&PAS&NPFV&IND:="er">"aient";<br />
+
+1PS&PAS&PFV&IND:="er">"ai";<br />
+2PS&PAS&PFV&IND:="er">"as";<br />
+3PS&PAS&PFV&IND:="er">"a";<br />
+1PP&PAS&PFV&IND:="er">"âmes";<br />
+2PP&PAS&PFV&IND:="er">"âtes";<br />
+3PP&PAS&PFV&IND:="er">"èrent";<br />
+
+1PS&FUT&IND:=0>"ai";<br />
+2PS&FUT&IND:=0>"as";<br />
+3PS&FUT&IND:=0>"a";<br />
+1PP&FUT&IND:=0>"ons";<br />
+2PP&FUT&IND:=0>"ez";<br />
+3PP&FUT&IND:=0>"ont";<br />
+
+1PS&PRS&CON:=0>"ais";<br />
+2PS&PRS&CON:=0>"ais";<br />
+3PS&PRS&CON:=0>"ait";<br />
+1PP&PRS&CON:=0>"ions";<br />
+2PP&PRS&CON:=0>"iez";<br />
+3PP&PRS&CON:=0>"aient";<br />
+
+1PS&PRS&SUB:="er">"e";<br />
+2PS&PRS&SUB:="er">"es";<br />
+3PS&PRS&SUB:="er">"e";<br />
+1PP&PRS&SUB:="er">"ions";<br />
+2PP&PRS&SUB:="er">"iez";<br />
+3PP&PRS&SUB:="er">"ent";<br />
+
+1PS&PAS&NPFV&SUB:="er">"asse";<br />
+2PS&PAS&NPFV&SUB:="er">"asses";<br />
+3PS&PAS&NPFV&SUB:="er">"ât";<br />
+1PP&PAS&NPFV&SUB:="er">"assions";<br />
+2PP&PAS&NPFV&SUB:="er">"assiez";<br />
+3PP&PAS&NPFV&SUB:="er">"assent";<br />
+
+2PS&PRS&IMP:=[-4]:"è","er">"e";<br />
+1PP&PRS&IMP:="er">"ons";<br />
+2PP&PRS&IMP:="er">"ez";<br />
+;<br /><br /><b>M64</b><br />3e groupe - dire (<i>dire, interdire, prédire</i>)<br />INF:=0>"";<br />
+
+PTP&MCL&SNG:=2>"t";<br />
+PTP&MCL&PLR:=2>"ts";<br />
+PTP&FEM&SNG:=2>"te";<br />
+PTP&FEM&PLR:=2>"tes";<br />
+
+1PS&PRS&IND:=2>"s";<br />
+2PS&PRS&IND:=2>"s";<br />
+3PS&PRS&IND:=2>"t";<br />
+1PP&PRS&IND:=2>"sons";<br />
+2PP&PRS&IND:=2>"tes";<br />
+3PP&PRS&IND:=2>"sent";<br />
+
+1PS&PAS&NPFV&IND:=2>"sais";<br />
+2PS&PAS&NPFV&IND:=2>"sais";<br />
+3PS&PAS&NPFV&IND:=2>"sait";<br />
+1PP&PAS&NPFV&IND:=2>"sions";<br />
+2PP&PAS&NPFV&IND:=2>"siez";<br />
+3PP&PAS&NPFV&IND:=2>"saient";<br />
+
+1PS&PAS&IND:=3>"is";<br />
+2PS&PAS&IND:=3>"is";<br />
+3PS&PAS&IND:=3>"it";<br />
+1PP&PAS&IND:=3>"îmes";<br />
+2PP&PAS&IND:=3>"îtes";<br />
+3PP&PAS&IND:=3>"irent";<br />
+
+1PS&FUT&IND:=1>"ai";<br />
+2PS&FUT&IND:=1>"as";<br />
+3PS&FUT&IND:=1>"a";<br />
+1PP&FUT&IND:=1>"ons";<br />
+2PP&FUT&IND:=1>"ez";<br />
+3PP&PRS&IND:=1>"ont";<br />
+
+1PS&PRS&CON:=1>"ais";<br />
+2PS&PRS&CON:=1>"ais";<br />
+3PS&PRS&CON:=1>"ait";<br />
+1PP&PRS&CON:=1>"ions";<br />
+2PP&PRS&CON:=1>"iez";<br />
+3PP&PRS&CON:=1>"aient";<br />
+
+1PS&PRS&SUB:=2>"se";<br />
+2PS&PRS&SUB:=2>"ses";<br />
+3PS&PRS&SUB:=2>"se";<br />
+1PP&PRS&SUB:=2>"sions";<br />
+2PP&PRS&SUB:=2>"siez";<br />
+3PP&PRS&SUB:=2>"sent";<br />
+
+1PS&PAS&NPFV&SUB:=2>"sse";<br />
+2PS&PAS&NPFV&SUB:=2>"sses";<br />
+3PS&PAS&NPFV&SUB:=2>"ît";<br />
+1PP&PAS&NPFV&SUB:=2>"ssions";<br />
+2PP&PAS&NPFV&SUB:=2>"ssiez";<br />
+3PP&PAS&NPFV&SUB:=2>"ssent";<br />
+
+2PS&PRS&IMP:=2>"s";<br />
+1PP&PRS&IMP:=2>"sons";<br />
+2PP&PRS&IMP:=2>"tes";<br />
+;<br /><br /><b>M69</b><br />3e groupe - être (<i>être</i>)<br />INF:=0>"";<br />
+PTP:="été";<br />
+
+1PS&PRS&IND:="suis";<br />
+2PS&PRS&IND:="es";<br />
+3PS&PRS&IND:="est";<br />
+1PP&PRS&IND:="sommes";<br />
+2PP&PRS&IND:="êtes";<br />
+3PP&PRS&IND:="sont";<br />
+
+1PS&PAS&NPFV&IND:="étais";<br />
+2PS&PAS&NPFV&IND:="étais";<br />
+3PS&PAS&NPFV&IND:="était";<br />
+1PP&PAS&NPFV&IND:="étions";<br />
+2PP&PAS&NPFV&IND:="étiez";<br />
+3PP&PAS&NPFV&IND:="étaient";<br />
+
+1PS&PAS&IND:="fus";<br />
+2PS&PAS&IND:="fus";<br />
+3PS&PAS&IND:="fut";<br />
+1PP&PAS&IND:="fûmes";<br />
+2PP&PAS&IND:="fûtes";<br />
+3PP&PAS&IND:="furent";<br />
+
+1PS&FUT&IND:="serai";<br />
+2PS&FUT&IND:="seras";<br />
+3PS&FUT&IND:="sera";<br />
+1PP&FUT&IND:="serons";<br />
+2PP&FUT&IND:="serez";<br />
+3PP&FUT&IND:="seront";<br />
+
+1PS&PRS&CON:="serais";<br />
+2PS&PRS&CON:="serais";<br />
+3PS&PRS&CON:="serait";<br />
+1PP&PRS&CON:="serions";<br />
+2PP&PRS&CON:="seriez";<br />
+3PP&PRS&CON:="seraient";<br />
+
+1PS&PRS&SUB:="sois";<br />
+2PS&PRS&SUB:="sois";<br />
+3PS&PRS&SUB:="soit";<br />
+1PP&PRS&SUB:="soyons";<br />
+2PP&PRS&SUB:="soyez";<br />
+3PP&PRS&SUB:="soient";<br />
+
+1PS&PAS&NPFV&SUB:="fusse";<br />
+2PS&PAS&NPFV&SUB:="fusses";<br />
+3PS&PAS&NPFV&SUB:="fût";<br />
+1PP&PAS&NPFV&SUB:="fussions";<br />
+2PP&PAS&NPFV&SUB:="fussiez";<br />
+3PP&PAS&NPFV&SUB:="fussent";<br />
+
+2PS&PRS&IMP:="sois";<br />
+1PP&PRS&IMP:="soyons";<br />
+2PP&PRS&IMP:="soyez";<br /><br /><b>M144</b><br />Adjectifs en -et (<i>net</i>)<br />MCL&SNG:=0>"";<br />
+FEM&SNG:=0>"te";<br />
+MCL&PLR:=0>"s";<br />
+FEM&PLR:=0>"tes";<br /><br /><b>M147</b><br />Adjectifs en -s (<i>divers</i>)<br />MCL&SNG:=0>"";<br />
+FEM&SNG:=0>"e";<br />
+MCL&PLR:=0>"";<br />
+FEM&PLR:=0>"es";<br /><br /><b>M148</b><br />Adjectifs en -gu (<i>aigu, ambigu</i>)<br />MCL&SNG:=0>"";<br />
+FEM&SNG:=0>"ë";<br />
+MCL&PLR:=0>"s";<br />
+FEM&PLR:=0>"ës";<br /><br /><b>M149</b><br />Pluriel en -aux sans flexion de genre (<i>idéal, bocal, mal</i>)<br />SNG:=0>"";<br />
+PLR:="l">"ux";<br /><br /><b>M150</b><br />Pluriel en -aux sans flexion de genre (<i>travail, bail, vitrail</i>)<br />SNG:=0>"";<br />
+PLR:="il">"ux";<br /><br /><b>M153</b><br />3e groupe - avoir (<i>avoir</i>)<br />INF:=0>"";<br />PTP&MCL:="eu";<br /> PTP&MCL&PLR:="eus";<br /> PTP&FEM:="eue";<br /> PTP&FEM&PLR:="eues";<br /> 1PS&PRS&IND:=4>"i";<br /> 2PS&PRS&IND:=4>"s";<br /> 3PS&PRS&IND:=4>"";<br /> 1PP&PRS&IND:=3>"ons";<br /> 2PP&PRS&IND:=3>"ez";<br /> 3PP&PRS&IND:="ont";<br /> 1PS&PAS&NPFV&IND:=3>"ais";<br /> 2PS&PAS&NPFV&IND:=3>"ais";<br /> 3PS&PAS&NPFV&IND:=3>"ait";<br /> 1PP&PAS&NPFV&IND:=3>"ions";<br /> 2PP&PAS&NPFV&IND:=3>"iez";<br /> 3PP&PAS&NPFV&IND:=3>"aient";<br /> 1PS&PAS&IND:="eus";<br /> 2PS&PAS&IND:="eus";<br /> 3PS&PAS&IND:="eut";<br /> 1PP&PAS&IND:="eûmes";<br /> 2PP&PAS&IND:="eûtes";<br /> 3PP&PAS&IND:="eurent";<br /> 1PS&FUT&IND:=4>"urai";<br /> 2PS&FUT&IND:=4>"uras";<br /> 3PS&FUT&IND:=4>"ura";<br /> 1PP&FUT&IND:=4>"urons";<br /> 2PP&FUT&IND:=4>"urez";<br /> 3PP&PRS&IND:=4>"uront";<br /> 1PS&PRS&CON:=4>"urais";<br /> 2PS&PRS&CON:=4>"urais";<br /> 3PS&PRS&CON:=4>"urait";<br /> 1PP&PRS&CON:=4>"urions";<br /> 2PP&PRS&CON:=4>"uriez";<br /> 3PP&PRS&CON:=4>"uraient";<br /> 1PS&PRS&SUB:=4>"ie";<br /> 2PS&PRS&SUB:=4>"ies";<br /> 3PS&PRS&SUB:=4>"it";<br /> 1PP&PRS&SUB:=4>"yons";<br /> 2PP&PRS&SUB:=4>"yez";<br /> 3PP&PRS&SUB:=4>"ient";<br /> 1PS&PAS&NPFV&SUB:="eusse";<br /> 2PS&PAS&NPFV&SUB:="eusses";<br /> 3PS&PAS&NPFV&SUB:="eût";<br /> 1PP&PAS&NPFV&SUB:="eussions";<br /> 2PP&PAS&NPFV&SUB:="eussiez";<br /> 3PP&PAS&NPFV&SUB:="eussent";<br /> 2PS&PRS&IMP:=4>"ie";<br /> 1PP&PRS&IMP:=4>"yons";<br /> 2PP&PRS&IMP:=4>"yez";<br /><br /><b>M154</b><br />3e groupe - aller (<i>aller</i>)<br />INF:=0>"";<br />PTP&MCL:=2>"é";<br /> PTP&MCL&PLR:=2>"és";<br /> PTP&FEM:=2>"ée";<br /> PTP&FEM&PLR:=2>"ées";<br /> 1PS&PRS&IND:="vais";<br /> 2PS&PRS&IND:="vas";<br /> 3PS&PRS&IND:="va";<br /> 1PP&PRS&IND:=2>"ons";<br /> 2PP&PRS&IND:=2>"ez";<br /> 3PP&PRS&IND:="vont";<br /> 1PS&PAS&NPFV&IND:=2>"ais";<br /> 2PS&PAS&NPFV&IND:=2>"ais";<br /> 3PS&PAS&NPFV&IND:=2>"ait";<br /> 1PP&PAS&NPFV&IND:=2>"ions";<br /> 2PP&PAS&NPFV&IND:=2>"iez";<br /> 3PP&PAS&NPFV&IND:=2>"aient";<br /> 1PS&PAS&IND:=2>"ai";<br /> 2PS&PAS&IND:=2>"as";<br /> 3PS&PAS&IND:=2>"a";<br /> 1PP&PAS&IND:=2>"âmes";<br /> 2PP&PAS&IND:=2>"âtes";<br /> 3PP&PAS&IND:=2>"èrent";<br /> 1PS&FUT&IND:="irai";<br /> 2PS&FUT&IND:="iras";<br /> 3PS&FUT&IND:="ira";<br /> 1PP&FUT&IND:="irons";<br /> 2PP&FUT&IND:="irez";<br /> 3PP&PRS&IND:="iront";<br /> 1PS&PRS&CON:="irais";<br /> 2PS&PRS&CON:="irais";<br /> 3PS&PRS&CON:="irait";<br /> 1PP&PRS&CON:="irions";<br /> 2PP&PRS&CON:="iriez";<br /> 3PP&PRS&CON:="iraient";<br /> 1PS&PRS&SUB:="aille";<br /> 2PS&PRS&SUB:="ailles";<br /> 3PS&PRS&SUB:="aille";<br /> 1PP&PRS&SUB:=2>"ions";<br /> 2PP&PRS&SUB:=2>"iez";<br /> 3PP&PRS&SUB:="aillent";<br /> 1PS&PAS&NPFV&SUB:=2>"asse";<br /> 2PS&PAS&NPFV&SUB:=2>"asses";<br /> 3PS&PAS&NPFV&SUB:=2>"ât";<br /> 1PP&PAS&NPFV&SUB:=2>"assions";<br /> 2PP&PAS&NPFV&SUB:=2>"assiez";<br /> 3PP&PAS&NPFV&SUB:=2>"assent";<br /> 2PS&PRS&IMP:="va";<br /> 1PP&PRS&IMP:=2>"ons";<br /> 2PP&PRS&IMP:=1>"z";<br /><br /><b>M155</b><br />3e groupe - peindre (<i>peindre, atteindre, teindre</i>)<br />INF:=0>"";<br />PTP&MCL:=3>"t";<br /> PTP&MCL&PLR:=3>"ts";<br /> PTP&FEM:=3>"te";<br /> PTP&FEM&PLR:=3>"tes";<br /> 1PS&PRS&IND:=3>"s";<br /> 2PS&PRS&IND:=3>"s";<br /> 3PS&PRS&IND:=3>"t";<br /> 1PP&PRS&IND:=4>"gnons";<br /> 2PP&PRS&IND:=4>"gnez";<br /> 3PP&PRS&IND:=4>"gnent";<br /> 1PS&PAS&NPFV&IND:=4>"gnais";<br /> 2PS&PAS&NPFV&IND:=4>"gnais";<br /> 3PS&PAS&NPFV&IND:=4>"gnait";<br /> 1PP&PAS&NPFV&IND:=4>"gnions";<br /> 2PP&PAS&NPFV&IND:=4>"gniez";<br /> 3PP&PAS&NPFV&IND:=4>"gnaient";<br /> 1PS&PAS&IND:=4>"gnis";<br /> 2PS&PAS&IND:=4>"gnis";<br /> 3PS&PAS&IND:=4>"gnit";<br /> 1PP&PAS&IND:=4>"gnîmes";<br /> 2PP&PAS&IND:=4>"gnîtes";<br /> 3PP&PAS&IND:=4>"gnirent";<br /> 1PS&FUT&IND:=1>"ai";<br /> 2PS&FUT&IND:=1>"as";<br /> 3PS&FUT&IND:=1>"a";<br /> 1PP&FUT&IND:=1>"ons";<br /> 2PP&FUT&IND:=1>"ez";<br /> 3PP&PRS&IND:=1>"ont";<br /> 1PS&PRS&CON:=1>"ais";<br /> 2PS&PRS&CON:=1>"ais";<br /> 3PS&PRS&CON:=1>"ait";<br /> 1PP&PRS&CON:=1>"ions";<br /> 2PP&PRS&CON:=1>"iez";<br /> 3PP&PRS&CON:=1>"aient";<br /> 1PS&PRS&SUB:=4>"gne";<br /> 2PS&PRS&SUB:=4>"gnes";<br /> 3PS&PRS&SUB:=4>"gne";<br /> 1PP&PRS&SUB:=4>"gnions";<br /> 2PP&PRS&SUB:=4>"gniez";<br /> 3PP&PRS&SUB:=4>"gnent";<br /> 1PS&PAS&NPFV&SUB:=4>"gnisse";<br /> 2PS&PAS&NPFV&SUB:=4>"gnisses";<br /> 3PS&PAS&NPFV&SUB:=4>"gnît";<br /> 1PP&PAS&NPFV&SUB:=4>"gnissions";<br /> 2PP&PAS&NPFV&SUB:=4>"gnissiez";<br /> 3PP&PAS&NPFV&SUB:=4>"gnissent";<br /> 2PS&PRS&IMP:=3>"t";<br /> 1PP&PRS&IMP:=4>"gnons";<br /> 2PP&PRS&IMP:=4>"gnez";<br /><br /><b>M156</b><br />3e groupe - voir (<i>voir, revoir, entrevoir</i>)<br />INF:=0>"";<br />PTP&MCL:=3>"u";<br /> PTP&MCL&PLR:=3>"us";<br /> PTP&FEM:=3>"ue";<br /> PTP&FEM&PLR:=3>"ues";<br /> 1PS&PRS&IND:=1>"s";<br /> 2PS&PRS&IND:=1>"s";<br /> 3PS&PRS&IND:=1>"t";<br /> 1PP&PRS&IND:=2>"yons";<br /> 2PP&PRS&IND:=2>"yez";<br /> 3PP&PRS&IND:=1>"ent";<br /> 1PS&PAS&NPFV&IND:=2>"yais";<br /> 2PS&PAS&NPFV&IND:=2>"yais";<br /> 3PS&PAS&NPFV&IND:=2>"yait";<br /> 1PP&PAS&NPFV&IND:=2>"yions";<br /> 2PP&PAS&NPFV&IND:=2>"yiez";<br /> 3PP&PAS&NPFV&IND:=2>"yaient";<br /> 1PS&PAS&IND:="vis";<br /> 2PS&PAS&IND:="vis";<br /> 3PS&PAS&IND:="vit";<br /> 1PP&PAS&IND:="vîmes";<br /> 2PP&PAS&IND:="vîtes";<br /> 3PP&PAS&IND:="virent";<br /> 1PS&FUT&IND:="verrai";<br /> 2PS&FUT&IND:="verras";<br /> 3PS&FUT&IND:="verra";<br /> 1PP&FUT&IND:="verrons";<br /> 2PP&FUT&IND:="verrez";<br /> 3PP&PRS&IND:="verront";<br /> 1PS&PRS&CON:="verrais";<br /> 2PS&PRS&CON:="verrais";<br /> 3PS&PRS&CON:="verrait";<br /> 1PP&PRS&CON:="verrions";<br /> 2PP&PRS&CON:="verriez";<br /> 3PP&PRS&CON:="verraient";<br /> 1PS&PRS&SUB:=1>"e";<br /> 2PS&PRS&SUB:=1>"es";<br /> 3PS&PRS&SUB:=1>"e";<br /> 1PP&PRS&SUB:=2>"yions";<br /> 2PP&PRS&SUB:=2>"yiez";<br /> 3PP&PRS&SUB:=1>"ent";<br /> 1PS&PAS&NPFV&SUB:="visse";<br /> 2PS&PAS&NPFV&SUB:="isses";<br /> 3PS&PAS&NPFV&SUB:="vît";<br /> 1PP&PAS&NPFV&SUB:="vissions";<br /> 2PP&PAS&NPFV&SUB:="vissiez";<br /> 3PP&PAS&NPFV&SUB:="vissent";<br /> 2PS&PRS&IMP:=1>"s";<br /> 1PP&PRS&IMP:=2>"yons";<br /> 2PP&PRS&IMP:=2>"yez";<br /><br /><b>M157</b><br />3e groupe - prévoir (<i>prévoir</i>)<br />INF:=0>"";<br />PTP&MCL:=3>"u";<br /> PTP&MCL&PLR:=3>"us";<br /> PTP&FEM:=3>"ue";<br /> PTP&FEM&PLR:=3>"ues";<br /> 1PS&PRS&IND:=1>"s";<br /> 2PS&PRS&IND:=1>"s";<br /> 3PS&PRS&IND:=1>"t";<br /> 1PP&PRS&IND:=2>"yons";<br /> 2PP&PRS&IND:=2>"yez";<br /> 3PP&PRS&IND:=1>"ent";<br /> 1PS&PAS&NPFV&IND:=2>"yais";<br /> 2PS&PAS&NPFV&IND:=2>"yais";<br /> 3PS&PAS&NPFV&IND:=2>"yait";<br /> 1PP&PAS&NPFV&IND:=2>"yions";<br /> 2PP&PAS&NPFV&IND:=2>"yiez";<br /> 3PP&PAS&NPFV&IND:=2>"yaient";<br /> 1PS&PAS&IND:="vis";<br /> 2PS&PAS&IND:="vis";<br /> 3PS&PAS&IND:="vit";<br /> 1PP&PAS&IND:="vîmes";<br /> 2PP&PAS&IND:="vîtes";<br /> 3PP&PAS&IND:="virent";<br /> 1PS&FUT&IND:=0>"ai";<br /> 2PS&FUT&IND:=0>"as";<br /> 3PS&FUT&IND:=0>"a";<br /> 1PP&FUT&IND:=0>"ons";<br /> 2PP&FUT&IND:=0>"ez";<br /> 3PP&PRS&IND:=0>"ont";<br /> 1PS&PRS&CON:=0>"ais";<br /> 2PS&PRS&CON:=0>"ais";<br /> 3PS&PRS&CON:=0>"ait";<br /> 1PP&PRS&CON:=0>"ions";<br /> 2PP&PRS&CON:=0>"iez";<br /> 3PP&PRS&CON:=0>"aient";<br /> 1PS&PRS&SUB:=1>"e";<br /> 2PS&PRS&SUB:=1>"es";<br /> 3PS&PRS&SUB:=1>"e";<br /> 1PP&PRS&SUB:=2>"yions";<br /> 2PP&PRS&SUB:=2>"yiez";<br /> 3PP&PRS&SUB:=1>"ent";<br /> 1PS&PAS&NPFV&SUB:="visse";<br /> 2PS&PAS&NPFV&SUB:="isses";<br /> 3PS&PAS&NPFV&SUB:="vît";<br /> 1PP&PAS&NPFV&SUB:="vissions";<br /> 2PP&PAS&NPFV&SUB:="vissiez";<br /> 3PP&PAS&NPFV&SUB:="vissent";<br /> 2PS&PRS&IMP:=1>"s";<br /> 1PP&PRS&IMP:=2>"yons";<br /> 2PP&PRS&IMP:=2>"yez";<br /><br /><b>M158</b><br />3e groupe - connaître (<i>connaître, reconnaître paraître</i>)<br />INF:=0>"";<br />1PS&PRS&IND:=4>"is";<br /> 2PS&PRS&IND:=4>"is";<br /> 3PS&PRS&IND:=3>"t";<br /> 1PP&PRS&IND:=4>"issons";<br /> 2PP&PRS&IND:=4>"issez";<br /> 3PP&PRS&IND:=>"issent";<br /> 1PS&PAS&NPFV&IND:=4>"issais";<br /> 2PS&PAS&NPFV&IND:=4>"issais";<br /> 3PS&PAS&NPFV&IND:=4>"issait";<br /> 1PP&PAS&NPFV&IND:=4>"issions";<br /> 2PP&PAS&NPFV&IND:=4>"issiez";<br /> 3PP&PAS&NPFV&IND:=4>"issaient";<br /> 1PS&PAS&IND:=5>"us";<br /> 2PS&PAS&IND:=5>"us";<br /> 3PS&PAS&IND:=5>"ut";<br /> 1PP&PAS&IND:=5>"ûmes";<br /> 2PP&PAS&IND:=5>"ûtes";<br /> 3PP&PAS&IND:=5>"urent";<br /> 1PS&FUT&IND:=1>"ai";<br /> 2PS&FUT&IND:=1>"as";<br /> 3PS&FUT&IND:=1>"a";<br /> 1PP&FUT&IND:=1>"ons";<br /> 2PP&FUT&IND:=1>"ez";<br /> 3PP&PRS&IND:=1>"ont";<br /> 1PS&PRS&CON:=1>"ais";<br /> 2PS&PRS&CON:=1>"ais";<br /> 3PS&PRS&CON:=1>"ait";<br /> 1PP&PRS&CON:=1>"ions";<br /> 2PP&PRS&CON:=1>"iez";<br /> 3PP&PRS&CON:=1>"aient";<br /> 1PS&PRS&SUB:=4>"isse";<br /> 2PS&PRS&SUB:=4>"isses";<br /> 3PS&PRS&SUB:=4>"isse";<br /> 1PP&PRS&SUB:=4>"issions";<br /> 2PP&PRS&SUB:=4>"issiez";<br /> 3PP&PRS&SUB:=4>"issent";<br /> 1PS&PAS&NPFV&SUB:=5>"usse";<br /> 2PS&PAS&NPFV&SUB:=5>"usses";<br /> 3PS&PAS&NPFV&SUB:=5>"ût";<br /> 1PP&PAS&NPFV&SUB:=5>"ussions";<br /> 2PP&PAS&NPFV&SUB:=5>"ussiez";<br /> 3PP&PAS&NPFV&SUB:=5>"ussent";<br /> 2PS&PRS&IMP:=4>"is";<br /> 1PP&PRS&IMP:=4>"issons";<br /> 2PP&PRS&IMP:=4>"issez";<br /> PTP&MCL:=5>"u";<br /> PTP&MCL&PLR:=5>"us";<br /> PTP&FEM:=5>"ue";<br /> PTP&FEM&PLR:=5>"ues";<br /><br /><b>M161</b><br />1er groupe - envoyer (<i>envoyer, renvoyer</i>)<br />INF:=0>"";<br />
+GER:=2>"ant";<br />
+PTP&MCL&SNG:=2>"é";<br />
+PTP&MCL&PLR:=2>"és";<br />
+PTP&FEM&SNG:=2>"ée";<br />
+PTP&FEM&PLR:=2>"ées";<br />
+ 
+1PS&PRS&IND:=3>"ie";<br />
+2PS&PRS&IND:=3>"ies";<br />
+3PS&PRS&IND:=3>"ie";<br />
+1PP&PRS&IND:=2>"ons";<br />
+2PP&PRS&IND:=2>"ez";<br />
+3PP&PRS&IND:=2>"ient";<br />
+ 
+1PS&PAS&NPFV&IND:=2>"ais";<br />
+2PS&PAS&NPFV&IND:=2>"ais";<br />
+3PS&PAS&NPFV&IND:=2>"ait";<br />
+1PP&PAS&NPFV&IND:=2>"ions";<br />
+2PP&PAS&NPFV&IND:=2>"iez";<br />
+3PP&PAS&NPFV&IND:=2>"aient";<br />
+ 
+1PS&PAS&PFV&IND:=2>"ai";<br />
+2PS&PAS&PFV&IND:=2>"as";<br />
+3PS&PAS&PFV&IND:=2>"a";<br />
+1PP&PAS&PFV&IND:=2>"âmes";<br />
+2PP&PAS&PFV&IND:=2>"âtes";<br />
+3PP&PAS&PFV&IND:=2>"èrent";<br />
+ 
+1PS&FUT&IND:=4>"errai";<br />
+2PS&FUT&IND:=4>"erras";<br />
+3PS&FUT&IND:=4>"erra";<br />
+1PP&FUT&IND:=4>"errons";<br />
+2PP&FUT&IND:=4>"errez";<br />
+3PP&FUT&IND:=4>"erront";<br />
+ 
+1PS&PRS&CON:=4>"errais";<br />
+2PS&PRS&CON:=4>"errais";<br />
+3PS&PRS&CON:=4>"errait";<br />
+1PP&PRS&CON:=4>"errions";<br />
+2PP&PRS&CON:=4>"erriez";<br />
+3PP&PRS&CON:=4>"erraient";<br />
+ 
+1PS&PRS&SUB:=3>"ie";<br />
+2PS&PRS&SUB:=3>"ies";<br />
+3PS&PRS&SUB:=3>"ie";<br />
+1PP&PRS&SUB:=2>"ions";<br />
+2PP&PRS&SUB:=2>"iez";<br />
+3PP&PRS&SUB:=3>"ient";<br />
+ 
+1PS&PAS&NPFV&SUB:=2>"asse";<br />
+2PS&PAS&NPFV&SUB:=2>"asses";<br />
+3PS&PAS&NPFV&SUB:=2>"ât";<br />
+1PP&PAS&NPFV&SUB:=2>"assions";<br />
+2PP&PAS&NPFV&SUB:=2>"assiez";<br />
+3PP&PAS&NPFV&SUB:=2>"assent";<br />
+ 
+2PS&PRS&IMP:=3>"ie";<br />
+1PP&PRS&IMP:=2>"ons";<br />
+2PP&PRS&IMP:=1>"z";<br />
+;<br /><br /><b>M163</b><br />3e groupe - vouloir (<i>vouloir</i>)<br />INF:=0>"";<br />PTP&MCL:=3>"u";<br /> PTP&PLR:=3>"us";<br /> PTP&FEM:=3>"ue";<br /> PTP&FEM&PLR:=3>"ues";<br /> 1PS&PRS&IND:=6>"eux";<br /> 2PS&PRS&IND:=6>"eux";<br /> 3PS&PRS&IND:=6>"eut";<br /> 1PP&PRS&IND:=3>"ons";<br /> 2PP&PRS&IND:=3>"ez";<br /> 3PP&PRS&IND:=6>"euvent";<br /> 1PS&PAS&NPFV&IND:=3>"ais";<br /> 2PS&PAS&NPFV&IND:=3>"ais";<br /> 3PS&PAS&NPFV&IND:=3>"ait";<br /> 1PP&PAS&NPFV&IND:=3>"ions";<br /> 2PP&PAS&NPFV&IND:=3>"iez";<br /> 3PP&PAS&NPFV&IND:=3>"aient";<br /> 1PS&PAS&IND:=3>"us";<br /> 2PS&PAS&IND:=3>"us";<br /> 3PS&PAS&IND:=3>"ut";<br /> 1PP&PAS&IND:=3>"ûmes";<br /> 2PP&PAS&IND:=3>"ûtes";<br /> 3PP&PAS&IND:=3>"urent";<br /> 1PS&FUT&IND:=4>"drai";<br /> 2PS&FUT&IND:=4>"dras";<br /> 3PS&FUT&IND:=4>"dra";<br /> 1PP&FUT&IND:=4>"drons";<br /> 2PP&FUT&IND:=4>"drez";<br /> 3PP&PRS&IND:=4>"dront";<br /> 1PS&PRS&CON:=4>"dais";<br /> 2PS&PRS&CON:=4>"dais";<br /> 3PS&PRS&CON:=4>"dait";<br /> 1PP&PRS&CON:=4>"drions";<br /> 2PP&PRS&CON:=4>"driez";<br /> 3PP&PRS&CON:=4>"draient";<br /> 1PS&PRS&SUB:=6>"euille";<br /> 2PS&PRS&SUB:=6>"euilles";<br /> 3PS&PRS&SUB:=6>"euille";<br />1PP&PRS&SUB:=3>"ions";<br /> 2PP&PRS&SUB:=3>"iez";<br /> 3PP&PRS&SUB:=6>"euillent";<br /> 1PS&PAS&NPFV&SUB:=3>"usse";<br /> 2PS&PAS&NPFV&SUB:=3>"usses";<br /> 3PS&PAS&NPFV&SUB:=3>"ût";<br /> 1PP&PAS&NPFV&SUB:=3>"ussions";<br /> 2PP&PAS&NPFV&SUB:=3>"ussiez";<br /> 3PP&PAS&NPFV&SUB:=3>"ussent";<br /><br /><b>M164</b><br />3e groupe - résoudre (<i>résoudre</i>)<br />INF:=0>"";<br />PTP&MCL:=4>"lu";<br /> PTP&PLR:=4>"lus";<br /> PTP&FEM:=4>"lue";<br /> PTP&FEM&PLR:=4>"lues";<br /> 1PS&PRS&IND:=4>"lus";<br /> 2PS&PRS&IND:=4>"lus";<br /> 3PS&PRS&IND:=4>"lut";<br /> 1PP&PRS&IND:=4>"lvons";<br /> 2PP&PRS&IND:=4>"lvez";<br /> 3PP&PRS&IND:=4>"lvent";<br /> 1PS&PAS&NPFV&IND:=4>"lvais";<br /> 2PS&PAS&NPFV&IND:=4>"lvais";<br /> 3PS&PAS&NPFV&IND:=4>"lvait";<br /> 1PP&PAS&NPFV&IND:=4>"lvions";<br /> 2PP&PAS&NPFV&IND:=4>"lviez";<br /> 3PP&PAS&NPFV&IND:=4>"lvaient";<br /> 1PS&PAS&IND:=4>"lus";<br /> 2PS&PAS&IND:=4>"lus";<br /> 3PS&PAS&IND:=4>"lut";<br /> 1PP&PAS&IND:=4>"lûmes";<br /> 2PP&PAS&IND:=4>"lûtes";<br /> 3PP&PAS&IND:=4>"lurent";<br /> 1PS&FUT&IND:=1>"ai";<br /> 2PS&FUT&IND:=1>"as";<br /> 3PS&FUT&IND:=1>"a";<br /> 1PP&FUT&IND:=1>"ons";<br /> 2PP&FUT&IND:=1>"ez";<br /> 3PP&PRS&IND:=1>"ont";<br /> 1PS&PRS&CON:=1>"ais";<br /> 2PS&PRS&CON:=1>"ais";<br /> 3PS&PRS&CON:=1>"ait";<br /> 1PP&PRS&CON:=1>"ions";<br /> 2PP&PRS&CON:=1>"iez";<br /> 3PP&PRS&CON:=1>"aient";<br /> 1PS&PRS&SUB:=4>"lve";<br /> 2PS&PRS&SUB:=4>"lves";<br /> 3PS&PRS&SUB:=4>"lve";<br /> 1PP&PRS&SUB:=4>"lvions";<br /> 2PP&PRS&SUB:=4>"lviez";<br /> 3PP&PRS&SUB:=4>"lvent";<br /> 1PS&PAS&NPFV&SUB:=4>"lusse";<br /> 2PS&PAS&NPFV&SUB:=4>"lusses";<br /> 3PS&PAS&NPFV&SUB:=4>"lût";<br /> 1PP&PAS&NPFV&SUB:=4>"lussions";<br /> 2PP&PAS&NPFV&SUB:=4>"lussiez";<br /> 3PP&PAS&NPFV&SUB:=4>"lussent";<br /> 2PS&PRS&IMP:=4>"lus";<br /> 1PP&PRS&IMP:=4>"lvons";<br /> 2PP&PRS&IMP:=4>"lvez";<br /><br /><b>M165</b><br />3e groupe - devoir (<i>devoir, redevoir</i>)<br />INF:=0>"";<br />1PS&PRS&IND:="dois";<br /> 2PS&PRS&IND:="dois";<br /> 3PS&PRS&IND:="doit";<br /> 1PP&PRS&IND:=3>"ons";<br /> 2PP&PRS&IND:=3>"ez";<br /> 3PP&PRS&IND:="doivent";<br /> 1PS&PAS&NPFV&IND:=3>"ais";<br /> 2PS&PAS&NPFV&IND:=3>"ais";<br /> 3PS&PAS&NPFV&IND:=3>"ait";<br /> 1PP&PAS&NPFV&IND:=3>"ions";<br /> 2PP&PAS&NPFV&IND:=3>"iez";<br /> 3PP&PAS&NPFV&IND:=3>"aient";<br /> 1PS&PAS&IND:="dus";<br /> 2PS&PAS&IND:="dus";<br /> 3PS&PAS&IND:="dut";<br /> 1PP&PAS&IND:="dûmes";<br /> 2PP&PAS&IND:="dûtes";<br /> 3PP&PAS&IND:="durent";<br /> 1PS&FUT&IND:=3>"rai";<br /> 2PS&FUT&IND:=3>"ras";<br /> 3PS&FUT&IND:=3>"ra";<br /> 1PP&FUT&IND:=3>"rons";<br /> 2PP&FUT&IND:=3>"rez";<br /> 3PP&PRS&IND:=3>"ront";<br /> 1PS&PRS&CON:=3>"rais";<br /> 2PS&PRS&CON:=3>"rais";<br /> 3PS&PRS&CON:=3>"rait";<br /> 1PP&PRS&CON:=3>"rions";<br /> 2PP&PRS&CON:=3>"riez";<br /> 3PP&PRS&CON:=3>"raient";<br /> 1PS&PRS&SUB:="doive";<br /> 2PS&PRS&SUB:="doives";<br /> 3PS&PRS&SUB:="doive";<br /> 1PP&PRS&SUB:=3>"ions";<br /> 2PP&PRS&SUB:=3>"iez";<br /> 3PP&PRS&SUB:="doivent";<br /> 1PS&PAS&NPFV&SUB:="dusse";<br /> 2PS&PAS&NPFV&SUB:="dusses";<br /> 3PS&PAS&NPFV&SUB:="dût";<br /> 1PP&PAS&NPFV&SUB:="dussions";<br /> 2PP&PAS&NPFV&SUB:="dussiez";<br /> 3PP&PAS&NPFV&SUB:="dussent";<br /> 2PS&PRS&IMP:="dois";<br /> 1PP&PRS&IMP:=3>"ons";<br /> 2PP&PRS&IMP:=3>"ez";<br /> PTP&MCL:="dû";<br /> PTP&MCL&PLR:="dus";<br /> PTP&FEM:="due";<br /> PTP&FEM&PLR:="dues";<br /><br /><b>M166</b><br />1er groupe - peser (<i>peser, geler</i>)<br />INF:=0>"";<br />
+GER:=0>"ant";<br />
+PTP&MCL&SNG:=2>"é";<br />
+PTP&MCL&PLR:=2>"és";<br />
+PTP&FEM&SNG:=2>"ée";<br />
+PTP&FEM&PLR:=2>"ées";<br />
+
+1PS&PRS&IND:=[-4]:"è",2>"e";<br />
+2PS&PRS&IND:=[-4]:"è",2>"es";<br />
+3PS&PRS&IND:=[-4]:"è",2>"e";<br />
+1PP&PRS&IND:=2>"ons";<br />
+2PP&PRS&IND:=2>"ez";<br />
+3PP&PRS&IND:=[-4]:"è",2>"ent";<br />
+ 
+1PS&PAS&NPFV&IND:=2>"ais";<br />
+2PS&PAS&NPFV&IND:=2>"ais";<br />
+3PS&PAS&NPFV&IND:=2>"ait";<br />
+1PP&PAS&NPFV&IND:=2>"ions";<br />
+2PP&PAS&NPFV&IND:=2>"iez";<br />
+3PP&PAS&NPFV&IND:=2>"aient";<br />
+ 
+1PS&PAS&PFV&IND:=2>"ai";<br />
+2PS&PAS&PFV&IND:=2>"as";<br />
+3PS&PAS&PFV&IND:=2>"a";<br />
+1PP&PAS&PFV&IND:=2>"âmes";<br />
+2PP&PAS&PFV&IND:=2>"âtes";<br />
+3PP&PAS&PFV&IND:=2>"èrent";<br />
+
+1PS&FUT&IND:=[-4]:"è",2>"erai";<br />
+2PS&FUT&IND:=[-4]:"è",2>"eras";<br />
+3PS&FUT&IND:=[-4]:"è",2>"era";<br />
+1PP&FUT&IND:=[-4]:"è",2>"erons";<br />
+2PP&FUT&IND:=[-4]:"è",2>"erez";<br />
+3PP&FUT&IND:=[-4]:"è",2>"eront";<br />
+ 
+1PS&PRS&CON:=[-4]:"è",2>"erais";<br />
+2PS&PRS&CON:=[-4]:"è",2>"erais";<br />
+3PS&PRS&CON:=[-4]:"è",2>"erait";<br />
+1PP&PRS&CON:=[-4]:"è",2>"erions";<br />
+2PP&PRS&CON:=[-4]:"è",2>"eriez";<br />
+3PP&PRS&CON:=[-4]:"è",2>"eraient";<br />
+ 
+1PS&PRS&SUB:=[-4]:"è",2>"e";<br />
+2PS&PRS&SUB:=[-4]:"è",2>"es";<br />
+3PS&PRS&SUB:=[-4]:"è",2>"e";<br />
+1PP&PRS&SUB:=2>"ions";<br />
+2PP&PRS&SUB:=2>"iez";<br />
+3PP&PRS&SUB:=[-4]:"è",>"ent";<br />
+ 
+1PS&PAS&NPFV&SUB:=2>"asse";<br />
+2PS&PAS&NPFV&SUB:=2>"asses";<br />
+3PS&PAS&NPFV&SUB:=2>"ât";<br />
+1PP&PAS&NPFV&SUB:=2>"assions";<br />
+2PP&PAS&NPFV&SUB:=2>"assiez";<br />
+3PP&PAS&NPFV&SUB:=2>"assent";<br />
+ 
+2PS&PRS&IMP:=[-4]:"è",2>"e";<br />
+1PP&PRS&IMP:=2>"ons";<br />
+2PP&PRS&IMP:=2>"ez";<br />
+ 
+;<br /><br /><b>M167</b><br />3e groupe - faire (<i>faire</i>)<br />INF:=0>"";<br />1PS&PRS&IND:=2>"s";<br /> 2PS&PRS&IND:=2>"s";<br /> 3PS&PRS&IND:=2>"t";<br /> 1PP&PRS&IND:=2>"sons";<br /> 2PP&PRS&IND:=2>"tes";<br /> 3PP&PRS&IND:="font";<br /> 1PS&PAS&NPFV&IND:=2>"sais";<br /> 2PS&PAS&NPFV&IND:=2>"sais";<br /> 3PS&PAS&NPFV&IND:=2>"sait";<br /> 1PP&PAS&NPFV&IND:=2>"sions";<br /> 2PP&PAS&NPFV&IND:=2>"siez";<br /> 3PP&PAS&NPFV&IND:=2>"saient";<br /> 1PS&PAS&IND:=4>"is";<br /> 2PS&PAS&IND:=4>"is";<br /> 3PS&PAS&IND:=4>"it";<br /> 1PP&PAS&IND:=4>"îmes";<br /> 2PP&PAS&IND:=4>"îtes";<br /> 3PP&PAS&IND:=4>"irent";<br /> 1PS&FUT&IND:="ferai";<br /> 2PS&FUT&IND:="feras";<br /> 3PS&FUT&IND:="fera";<br /> 1PP&FUT&IND:="ferons";<br /> 2PP&FUT&IND:="ferez";<br /> 3PP&PRS&IND:="feront";<br /> 1PS&PRS&CON:="ferais";<br /> 2PS&PRS&CON:="ferais";<br /> 3PS&PRS&CON:="ferait";<br /> 1PP&PRS&CON:="ferions";<br /> 2PP&PRS&CON:="feriez";<br /> 3PP&PRS&CON:="feraient";<br /> 1PS&PRS&SUB:=3>"sse";<br /> 2PS&PRS&SUB:=3>"sses";<br /> 3PS&PRS&SUB:=3>"sse";<br /> 1PP&PRS&SUB:=3>"ssions";<br /> 2PP&PRS&SUB:=3>"ssiez";<br /> 3PP&PRS&SUB:=3>"ssent";<br /> 1PS&PAS&NPFV&SUB:=4>"isse";<br /> 2PS&PAS&NPFV&SUB:=4>"isses";<br /> 3PS&PAS&NPFV&SUB:=4>"ît";<br /> 1PP&PAS&NPFV&SUB:=4>"issions";<br /> 2PP&PAS&NPFV&SUB:=4>"issiez";<br /> 3PP&PAS&NPFV&SUB:=4>"issent";<br /> 2PS&PRS&IMP:=2>"s";<br /> 1PP&PRS&IMP:=2>"sons";<br /> 2PP&PRS&IMP:=2>"tes";<br /> PTP&MCL:=2>"t";<br /> PTP&MCL&PLR:=2>"ts";<br /> PTP&FEM:=2>"te";<br /> PTP&FEM&PLR:=2>"tes";<br /><br /><b>M168</b><br />3e groupe - savoir (<i>savoir</i>)<br />INF:=0>"";<br />PTP&MCL:="su";<br /> PTP&MCL&PLR:="sus";<br /> PTP&FEM:="sue";<br /> PTP&FEM&PLR:="sues";<br /> 1PS&PRS&IND:=4>"is";<br /> 2PS&PRS&IND:=4>"is";<br /> 3PS&PRS&IND:=4>"it";<br /> 1PP&PRS&IND:=3>"ons";<br /> 2PP&PRS&IND:=3>"ez";<br /> 3PP&PRS&IND:="ont";<br /> 1PS&PAS&NPFV&IND:=3>"ais";<br /> 2PS&PAS&NPFV&IND:=3>"ais";<br /> 3PS&PAS&NPFV&IND:=3>"ait";<br /> 1PP&PAS&NPFV&IND:=3>"ions";<br /> 2PP&PAS&NPFV&IND:=3>"iez";<br /> 3PP&PAS&NPFV&IND:=3>"aient";<br /> 1PS&PAS&IND:="sus";<br /> 2PS&PAS&IND:="sus";<br /> 3PS&PAS&IND:="sut";<br /> 1PP&PAS&IND:="sûmes";<br /> 2PP&PAS&IND:="sûtes";<br /> 3PP&PAS&IND:="surent";<br /> 1PS&FUT&IND:=4>"urai";<br /> 2PS&FUT&IND:=4>"uras";<br /> 3PS&FUT&IND:=4>"ura";<br /> 1PP&FUT&IND:=4>"urons";<br /> 2PP&FUT&IND:=4>"urez";<br /> 3PP&PRS&IND:=4>"uront";<br /> 1PS&PRS&CON:=4>"urais";<br /> 2PS&PRS&CON:=4>"urais";<br /> 3PS&PRS&CON:=4>"urait";<br /> 1PP&PRS&CON:=4>"urions";<br /> 2PP&PRS&CON:=4>"uriez";<br /> 3PP&PRS&CON:=4>"uraient";<br /> 1PS&PRS&SUB:="sache";<br /> 2PS&PRS&SUB:="saches";<br /> 3PS&PRS&SUB:=4>"sache";<br /> 1PP&PRS&SUB:=4>"sachions";<br /> 2PP&PRS&SUB:=4>"sachiez";<br /> 3PP&PRS&SUB:=4>"sachent";<br /> 1PS&PAS&NPFV&SUB:="susse";<br /> 2PS&PAS&NPFV&SUB:="susses";<br /> 3PS&PAS&NPFV&SUB:="sut";<br /> 1PP&PAS&NPFV&SUB:="sûmes";<br /> 2PP&PAS&NPFV&SUB:="sûtes";<br /> 3PP&PAS&NPFV&SUB:="surent";<br /> 2PS&PRS&IMP:="sache";<br /> 1PP&PRS&IMP:="sachons";<br /> 2PP&PRS&IMP:=4>"sachez";<br /><br /><b>M169</b><br />3e groupe - prendre (<i>prendre, comprendre</i>)<br />INF:=0>"";<br />
+
+1PS&PRS&IND:=2>"s";<br />
+2PS&PRS&IND:=2>"s";<br />
+3PS&PRS&IND:=2>"";<br />
+1PP&PRS&IND:=3>"ons";<br />
+2PP&PRS&IND:=3>"ez";<br />
+3PP&PRS&IND:=3>"nent";<br />
+
+1PS&PAS&NPFV&IND:=3>"ais";<br />
+2PS&PAS&NPFV&IND:=3>"ais";<br />
+3PS&PAS&NPFV&IND:=3>"ait";<br />
+1PP&PAS&NPFV&IND:=3>"ions";<br />
+2PP&PAS&NPFV&IND:=3>"iez";<br />
+3PP&PAS&NPFV&IND:=3>"aient";<br />
+
+1PS&PAS&PFV&IND:=5>"is";<br />
+2PS&PAS&PFV&IND:=5>"is";<br />
+3PS&PAS&PFV&IND:=5>"it";<br />
+1PP&PAS&PFV&IND:=5>"îmes";<br />
+2PP&PAS&PFV&IND:=5>"îtes";<br />
+3PP&PAS&PFV&IND:=5>"irent";<br />
+
+1PS&FUT&IND:=1>"ai";<br />
+2PS&FUT&IND:=1>"as";<br />
+3PS&FUT&IND:=1>"a";<br />
+1PP&FUT&IND:=1>"ons";<br />
+2PP&FUT&IND:=1>"ez";<br />
+3PP&FUT&IND:=1>"ont";<br />
+
+1PS&PRS&CON:=1>"ais";<br />
+2PS&PRS&CON:=1>"ais";<br />
+3PS&PRS&CON:=1>"ait";<br />
+1PP&PRS&CON:=1>"ions";<br />
+2PP&PRS&CON:=1>"iez";<br />
+3PP&PRS&CON:=1>"aient";<br />
+
+1PS&PRS&SUB:=3>"ne";<br />
+2PS&PRS&SUB:=3>"nes";<br />
+3PS&PRS&SUB:=3>"ne";<br />
+1PP&PRS&SUB:=3>"ions";<br />
+2PP&PRS&SUB:=3>"iez";<br />
+3PP&PRS&SUB:=3>"nent";<br />
+
+1PS&PAS&NPFV&SUB:=5>"isse";<br />
+2PS&PAS&NPFV&SUB:=5>"isses";<br />
+3PS&PAS&NPFV&SUB:=5>"ît";<br />
+1PP&PAS&NPFV&SUB:=5>"issions";<br />
+2PP&PAS&NPFV&SUB:=5>"issiez";<br />
+3PP&PAS&NPFV&SUB:=5>"issent";<br />
+
+2PS&PRS&IMP:=2>"s";<br />
+1PP&PRS&IMP:=3>"ons";<br />
+2PP&PRS&IMP:=3>"ez";<br />
+
+PTP&MCL&SNG:=5>"is";<br />
+PTP&MCL&PLR:=5>"is";<br />
+PTP&FEM&SNG:=5>"ise";<br />
+PTP&FEM&PLR:=5>"ises";<br /><br /><b>M170</b><br />Féminin en -euse et pluriel en -s (<i>danseur, travailleur, buveur</i>)<br />MCL&SNG:=0>"";<br />
+FEM&SNG:=1>"se";<br />
+MCL&PLR:=0>"s";<br />
+FEM&PLR:=1>"ses";<br /><br /><b>M174</b><br />Féminin en -ère et pluriel en -s (<i>hôtelier, boulanger, fermier</i>)<br />MCL&SNG:=0>"";<br />
+FEM&SNG:=2>"ère";<br />
+FEM&PLR:=2>"ères";<br />
+MCL&PLR:=0>"s";<br /> ;<br /><br /><b>M179</b><br />Verbes en -(rai)re (<i>traire</i>)<br />1PS&PRS&IND:=2>"s";<br />
+2PS&PRS&IND:=2>"s";<br />
+3PS&PRS&IND:=2>"t";<br />
+1PP&PRS&IND:=2>"yons";<br />
+2PP&PRS&IND:=3>"yez";<br />
+3PP&PRS&IND:=3>"aient";<br />
+
+1PS&PAS&NPFV&IND:=3>"yais";<br />
+2PS&PAS&NPFV&IND:=3>"yais";<br />
+3PS&PAS&NPFV&IND:=3>"yait";<br />
+1PP&PAS&NPFV&IND:=3>"yons";<br />
+2PP&PAS&NPFV&IND:=3>"yez";<br />
+3PP&PAS&NPFV&IND:=3>"yaient";<br />
+
+1PS&FUT&IND:=1>"ai";<br />
+2PS&FUT&IND:=1>"as";<br />
+3PS&FUT&IND:=1>"a";<br />
+1PP&FUT&IND:=1>"ons";<br />
+2PP&FUT&IND:=1>"ez";<br />
+3PP&FUT&IND:=1>"ont";<br />
+
+1PS&PRS&CON:=1>"ais";<br />
+2PS&PRS&CON:=1>"ais";<br />
+3PS&PRS&CON:=1>"ait";<br />
+1PP&PRS&CON:=1>"ions";<br />
+2PP&PRS&CON:=1>"iez";<br />
+3PP&PRS&CON:=1>"aient";<br />
+
+1PS&PRS&SUB:=2>"e";<br />
+2PS&PRS&SUB:=2>"es";<br />
+3PS&PRS&SUB:=2>"e";<br />
+1PP&PRS&SUB:=3>"yions";<br />
+2PP&PRS&SUB:=3>"yiez";<br />
+3PP&PRS&SUB:=2>"ent";<br />
+
+2PS&PRS&IMP:=2>"s";<br />
+1PP&PRS&IMP:=3>"yons";<br />
+2PP&PRS&IMP:=3>"yez";<br />
+
+PTP&MCL&SNG:=2>"t";<br />
+PTP&MCL&PLR:=2>"ts";<br />
+PTP&FEM&SNG:=2>"te";<br />
+PTP&FEM&PLR:=2>"tes";<br />
+;<br /><br /><b>M180</b><br />Verbes en -ir (<i>desservir</i>)<br />INF:=0>"";<br />PTP&MCL:=1>"";<br /> PTP&PLR:=1>"s";<br /> PTP&FEM:=1>"e";<br /> PTP&FEM&PLR:=1>"es";<br /> 1PS&PRS&IND:=3>"s";<br /> 2PS&PRS&IND:=3>"s";<br /> 3PS&PRS&IND:=3>"t";<br /> 1PP&PRS&IND:=2>"ons";<br /> 2PP&PRS&IND:=2>"ez";<br /> 3PP&PRS&IND:=2>"ent";<br /> 1PS&PAS&NPFV&IND:=2>"ais";<br /> 2PS&PAS&NPFV&IND:=2>"ais";<br /> 3PS&PAS&NPFV&IND:=2>"ait";<br /> 1PP&PAS&NPFV&IND:=2>"ions";<br /> 2PP&PAS&NPFV&IND:=2>"iez";<br /> 3PP&PAS&NPFV&IND:=2>"aient";<br /> 1PS&PAS&IND:=1>"s";<br /> 2PS&PAS&IND:=1>"s";<br /> 3PS&PAS&IND:=1>"t";<br /> 1PP&PAS&IND:=1>"îmes";<br /> 2PP&PAS&IND:=1>"îtes";<br /> 3PP&PAS&IND:=1>"irent";<br /> 1PS&FUT&IND:=0>"ai";<br /> 2PS&FUT&IND:=0>"as";<br /> 3PS&FUT&IND:=0>"a";<br /> 1PP&FUT&IND:=0>"ons";<br /> 2PP&FUT&IND:=0>"ez";<br /> 3PP&PRS&IND:=0>"ont";<br /> 1PS&PRS&CON:=0>"ais";<br /> 2PS&PRS&CON:=0>"ais";<br /> 3PS&PRS&CON:=0>"ait";<br /> 1PP&PRS&CON:=0>"ions";<br /> 2PP&PRS&CON:=0>"iez";<br /> 3PP&PRS&CON:=0>"aient";<br /> 1PS&PRS&SUB:=2>"e";<br /> 2PS&PRS&SUB:=2>"es";<br /> 3PS&PRS&SUB:=2>"e";<br /> 1PP&PRS&SUB:=2>"ions";<br /> 2PP&PRS&SUB:=2>"iez";<br /> 3PP&PRS&SUB:=2>"ent";<br /> 1PS&PAS&NPFV&SUB:=1>"sse";<br /> 2PS&PAS&NPFV&SUB:=1>"sses";<br /> 3PS&PAS&NPFV&SUB:=2>"ît";<br /> 1PP&PAS&NPFV&SUB:=1>"ssions";<br /> 2PP&PAS&NPFV&SUB:=1>"ssiez";<br /> 3PP&PAS&NPFV&SUB:=1>"ssent";<br /> 2PS&PRS&IMP:=3>"s";<br /> 1PP&PRS&IMP:=2>"ons";<br /> 2PP&PRS&IMP:=2>"ez";<br /><br /><b>M185</b><br />Verbes en -(oi)re (<i>croire</i>)<br />INF:=0>"";<br />PTP&MCL:=4>"u";<br /> PTP&MCL&PLR:=4>"us";<br /> PTP&FEM:=4>"ue";<br /> PTP&FEM&PLR:=4>"ues";<br /> 1PS&PRS&IND:=2>"s";<br /> 2PS&PRS&IND:=2>"s";<br /> 3PS&PRS&IND:=2>"t";<br /> 1PP&PRS&IND:=3>"yons";<br /> 2PP&PRS&IND:=3>"yez";<br /> 3PP&PRS&IND:=2>"ent";<br /> 1PS&PAS&NPFV&IND:=3>"yais";<br /> 2PS&PAS&NPFV&IND:=3>"yais";<br /> 3PS&PAS&NPFV&IND:=3>"yait";<br /> 1PP&PAS&NPFV&IND:=3>"yions";<br /> 2PP&PAS&NPFV&IND:=3>"yiez";<br /> 3PP&PAS&NPFV&IND:=3>"yaient";<br /> 1PS&PAS&IND:=4>"us";<br /> 2PS&PAS&IND:=4>"us";<br /> 3PS&PAS&IND:=4>"ut";<br /> 1PP&PAS&IND:=4>"ûmes";<br /> 2PP&PAS&IND:=4>"ûtes";<br /> 3PP&PAS&IND:=4>"urent";<br /> 1PS&FUT&IND:=1>"ai";<br /> 2PS&FUT&IND:=1>"as";<br /> 3PS&FUT&IND:=1>"a";<br /> 1PP&FUT&IND:=1>"ons";<br /> 2PP&FUT&IND:=1>"ez";<br /> 3PP&PRS&IND:=1>"ont";<br /> 1PS&PRS&CON:=1>"ais";<br /> 2PS&PRS&CON:=1>"ais";<br /> 3PS&PRS&CON:=1>"ait";<br /> 1PP&PRS&CON:=1>"ions";<br /> 2PP&PRS&CON:=1>"iez";<br /> 3PP&PRS&CON:=1>"aient";<br /> 1PS&PRS&SUB:=2>"e";<br /> 2PS&PRS&SUB:=2>"es";<br /> 3PS&PRS&SUB:=2>"e";<br /> 1PP&PRS&SUB:=3>"yions";<br /> 2PP&PRS&SUB:=3>"yiez";<br /> 3PP&PRS&SUB:=2>"ent";<br /> 1PS&PAS&NPFV&SUB:=4>"usse";<br /> 2PS&PAS&NPFV&SUB:=4>"usses";<br /> 3PS&PAS&NPFV&SUB:=4>"ût";<br /> 1PP&PAS&NPFV&SUB:=4>"ussions";<br /> 2PP&PAS&NPFV&SUB:=4>"ussiez";<br /> 3PP&PAS&NPFV&SUB:=4>"ussent";<br /> 2PS&PRS&IMP:=2>"s";<br /> 1PP&PRS&IMP:=3>"yons";<br /> 2PP&PRS&IMP:=3>"yez";<br /><br /><b>M189</b><br />Adjectifs en -g (<i>long, oblong</i>)<br />MCL&SNG:=0>"";<br />
+FEM&SNG:=0>"ue";<br />
+MCL&PLR:=0>"s";<br />
+FEM&PLR:=1>"ues";<br /><br /><b>M199</b><br />3e groupe - falloir (<i>falloir</i>)<br />1PS&PRS&IND:=NULL;<br />
+2PS&PRS&IND:=NULL;<br />
+3PS&PRS&IND:="faut";<br />
+1PP&PRS&IND:=NULL;<br />
+2PP&PRS&IND:=NULL;<br />
+3PP&PRS&IND:=NULL;<br />
+1PS&PAS&NPFV&IND:=NULL;<br />
+2PS&PAS&NPFV&IND:=NULL;<br />
+3PS&PAS&NPFV&IND:="fallait";<br />
+1PP&PAS&NPFV&IND:=NULL;<br />
+2PP&PAS&NPFV&IND:=NULL;<br />
+3PP&PAS&NPFV&IND:=NULL;<br />
+1PS&PAS&PFV&IND:=NULL;<br />
+2PS&PAS&PFV&IND:=NULL;<br />
+3PS&PAS&PFV&IND:="fallut";<br />
+1PP&PAS&PFV&IND:=NULL;<br />
+2PP&PAS&PFV&IND:=NULL;<br />
+3PP&PAS&PFV&IND:=NULL;<br />
+1PS&FUT&IND:=NULL;<br />
+2PS&FUT&IND:=NULL;<br />
+3PS&FUT&IND:="faudra";<br />
+1PP&FUT&IND:=NULL;<br />
+2PP&FUT&IND:=NULL;<br />
+3PP&FUT&IND:=NULL;<br />
+1PS&CON:=NULL;<br />
+2PS&CON:=NULL;<br />
+3PS&CON:="faudrait";<br />
+1PP&CON:=NULL;<br />
+2PP&CON:=NULL;<br />
+3PP&CON:=NULL;<br />
+INF:="falloir";<br />
+PTP&PRS:=NULL;<br />
+PTP&MCL&SNG:="fallu";<br />
+PTP&MCL&PLR:=NULL;<br />
+PTP&FEM&SNG:=NULL;<br />
+PTP&FEM&PLR:=NULL;<br />
+2PS&IMP&PRS:=NULL;<br />
+1PP&IMP&PRS:=NULL;<br />
+2PP&IMP&PRS:=NULL;<br />
+1PS&PRS&SUB:=NULL;<br />
+2PS&PRS&SUB:=NULL;<br />
+3PS&PRS&SUB:="faille";<br />
+1PP&PRS&SUB:=NULL;<br />
+2PP&PRS&SUB:=NULL;<br />
+3PP&PRS&SUB:=NULL;<br />
+1PS&PAS&NPFV&SUB:=NULL;<br />
+2PS&PAS&NPFV&SUB:=NULL;<br />
+3PS&PAS&NPFV&SUB:="fallût";<br />
+1PP&PAS&NPFV&SUB:=NULL;<br />
+2PP&PAS&NPFV&SUB:=NULL;<br />
+3PP&PAS&NPFV&SUB:=NULL;<br />
+;<br /><br /><b>M200</b><br />1er groupe - jouer (<i>accentuer, accouer, affluer, allouer, amadouer, atténuer, attribuer, avouer, bafouer, clouer, commuer, confluer, conspuer, constituer, continuer, contribuer, déclouer, dégluer, déjouer, dénouer, dénuer, dépolluer, désavouer, déséchouer, désembuer, déshabituer, destituer, dévaluer, dévouer, diluer, diminuer, douer, éberluer, ébrouer, échouer, écobuer, écrouer, effectuer, embuer, enclouer, engluer, enrouer, entre-tuer, éternuer, évacuer, évaluer, évertuer, évoluer,exténuer, flouer, fluctuer, fluer, frouer, graduer, habituer, houer, huer, infatuer, influer, insinuer, instituer, louer, muer, nouer, nuer, obstruer, ponctuer, prostituer, puer, rabrouer, reclouer, redistribuer, réévaluer, refluer, réhabituer, rejouer, relouer, remuer, renflouer, renouer, ressuer, rétribuer, rocouer, rouer, ruer, saluer, sinuer, situer, sous-évaluer, sous-louer, statuer, substituer, suer, surlouer, tabouer, tatouer, touer, transmuer, trouer, tuer	
+</i>)<br />INF:=0>"";<br />
+GER:=2>"ant";<br />
+PTP&MCL&SNG:=2>"é";<br />
+PTP&MCL&PLR:=2>"és";<br />
+PTP&FEM&SNG:=2>"ée";<br />
+PTP&FEM&PLR:=2>"ées";<br />
+
+1PS&PRS&IND:=2>"e";<br />
+2PS&PRS&IND:=2>"es";<br />
+3PS&PRS&IND:=2>"e";<br />
+1PP&PRS&IND:=2>"ons";<br />
+2PP&PRS&IND:=2>"ez";<br />
+3PP&PRS&IND:=2>"ent";<br />
+
+1PS&PAS&NPFV&IND:=2>"ais";<br />
+2PS&PAS&NPFV&IND:=2>"ais";<br />
+3PS&PAS&NPFV&IND:=2>"ait";<br />
+1PP&PAS&NPFV&IND:=2>"ions";<br />
+2PP&PAS&NPFV&IND:=2>"iez";<br />
+3PP&PAS&NPFV&IND:=2>"aient";<br />
+
+1PS&PAS&PFV&IND:=2>"ai";<br />
+2PS&PAS&PFV&IND:=2>"as";<br />
+3PS&PAS&PFV&IND:=2>"a";<br />
+1PP&PAS&PFV&IND:=2>"âmes";<br />
+2PP&PAS&PFV&IND:=2>"âtes";<br />
+3PP&PAS&PFV&IND:=2>"èrent";<br />
+
+1PS&FUT&IND:=2>"erai";<br />
+2PS&FUT&IND:=2>"eras";<br />
+3PS&FUT&IND:=2>"era";<br />
+1PP&FUT&IND:=2>"erons";<br />
+2PP&FUT&IND:=2>"erez";<br />
+3PP&FUT&IND:=2>"eront";<br />
+
+1PS&CON:=2>"erais";<br />
+2PS&CON:=2>"erais";<br />
+3PS&CON:=2>"erait";<br />
+1PP&CON:=2>"erions";<br />
+2PP&CON:=2>"eriez";<br />
+3PP&CON:=2>"eraient";<br />
+
+2PS&IMP&PRS:=2>"e";<br />
+1PP&IMP&PRS:=2>"ons";<br />
+2PP&IMP&PRS:=2>"ez";<br />
+
+1PS&PRS&SUB:=2>"e";<br />
+2PS&PRS&SUB:=2>"es";<br />
+3PS&PRS&SUB:=2>"e";<br />
+1PP&PRS&SUB:=2>"ions";<br />
+2PP&PRS&SUB:=2>"iez";<br />
+3PP&PRS&SUB:=2>"ent";<br />
+
+1PS&PAS&NPFV&SUB:=2>"asse";<br />
+2PS&PAS&NPFV&SUB:=2>"asses";<br />
+3PS&PAS&NPFV&SUB:=2>"ât";<br />
+1PP&PAS&NPFV&SUB:=2>"assions";<br />
+2PP&PAS&NPFV&SUB:=2>"assiez";<br />
+3PP&PAS&NPFV&SUB:=2>"assent";<br />
+;<br /><br /><b>M201</b><br />1er  groupe - créer (<i>agréer, béer, capéer, congréer, dégréer, délinéer, énucléer, gréer, guéer, maugréer, procréer, ragréer, recréer, récréer, réer, regréer, suppléer	
+</i>)<br />INF:=0>"";<br />
+GER:=2>"ant";<br />
+PTP&MCL&SNG:=2>"é";<br />
+PTP&MCL&PLR:=2>"és";<br />
+PTP&FEM&SNG:=2>"ée";<br />
+PTP&FEM&PLR:=2>"ées";<br />
+
+1PS&PRS&IND:=2>"e";<br />
+2PS&PRS&IND:=2>"es";<br />
+3PS&PRS&IND:=2>"e";<br />
+1PP&PRS&IND:=2>"ons";<br />
+2PP&PRS&IND:=2>"ez";<br />
+3PP&PRS&IND:=2>"ent";<br />
+
+1PS&PAS&NPFV&IND:=2>"ais";<br />
+2PS&PAS&NPFV&IND:=2>"ais";<br />
+3PS&PAS&NPFV&IND:=2>"ait";<br />
+1PP&PAS&NPFV&IND:=2>"ions";<br />
+2PP&PAS&NPFV&IND:=2>"iez";<br />
+3PP&PAS&NPFV&IND:=2>"aient";<br />
+
+1PS&PAS&PFV&IND:=2>"ai";<br />
+2PS&PAS&PFV&IND:=2>"as";<br />
+3PS&PAS&PFV&IND:=2>"a";<br />
+1PP&PAS&PFV&IND:=2>"âmes";<br />
+2PP&PAS&PFV&IND:=2>"âtes";<br />
+3PP&PAS&PFV&IND:=2>"èrent";<br />
+
+1PS&FUT&IND:=2>"erai";<br />
+2PS&FUT&IND:=2>"eras";<br />
+3PS&FUT&IND:=2>"era";<br />
+1PP&FUT&IND:=2>"erons";<br />
+2PP&FUT&IND:=2>"erez";<br />
+3PP&FUT&IND:=2>"eront";<br />
+
+1PS&CON:=2>"erais";<br />
+2PS&CON:=2>"erais";<br />
+3PS&CON:=2>"erait";<br />
+1PP&CON:=2>"erions";<br />
+2PP&CON:=2>"eriez";<br />
+3PP&CON:=2>"eraient";<br />
+
+2PS&IMP&PRS:=2>"e";<br />
+1PP&IMP&PRS:=2>"ons";<br />
+2PP&IMP&PRS:=2>"ez";<br />
+
+1PS&PRS&SUB:=2>"e";<br />
+2PS&PRS&SUB:=2>"es";<br />
+3PS&PRS&SUB:=2>"e";<br />
+1PP&PRS&SUB:=2>"ions";<br />
+2PP&PRS&SUB:=2>"iez";<br />
+3PP&PRS&SUB:=2>"ent";<br />
+
+1PS&PAS&NPFV&SUB:=2>"asse";<br />
+2PS&PAS&NPFV&SUB:=2>"asses";<br />
+3PS&PAS&NPFV&SUB:=2>"ât";<br />
+1PP&PAS&NPFV&SUB:=2>"assions";<br />
+2PP&PAS&NPFV&SUB:=2>"assiez";<br />
+3PP&PAS&NPFV&SUB:=2>"assent";<br />
+;<br /><br /><b>M202</b><br />1er groupe - protéger (<i>abréger, agréger, alléger, arpéger, assiéger, désagréger, siéger, surprotéger, rapiécer	
+</i>)<br />INF:=0>"";<br />
+GER:=2>"ant","ég":"ége","éc":"éç";<br />
+PTP&MCL&SNG:=2>"é";<br />
+PTP&MCL&PLR:=2>"és";<br />
+PTP&FEM&SNG:=2>"ée";<br />
+PTP&FEM&PLR:=2>"ées";<br />
+
+1PS&PRS&IND:=2>"e", "ég":"èg", "éc":"èc";<br />
+2PS&PRS&IND:=2>"es", "ég":"èg", "éc":"èc";<br />
+3PS&PRS&IND:=2>"e", "ég":"èg", "éc":"èc";<br />
+1PP&PRS&IND:=2>"ons","ég":"ége","éc":"éç";<br />
+2PP&PRS&IND:=2>"ez";<br />
+3PP&PRS&IND:=2>"ent", "ég":"èg", "éc":"èc";<br />
+
+1PS&PAS&NPFV&IND:=2>"ais", "ég":"ége","éc":"éç";<br />
+2PS&PAS&NPFV&IND:=2>"ais", "ég":"ége","éc":"éç";<br />
+3PS&PAS&NPFV&IND:=2>"ait", "ég":"ége","éc":"éç";<br />
+1PP&PAS&NPFV&IND:=2>"ions";<br />
+2PP&PAS&NPFV&IND:=2>"iez";<br />
+3PP&PAS&NPFV&IND:=2>"aient", "ég":"ége","éc":"éç";<br />
+
+1PS&PAS&PFV&IND:=2>"ai", "ég":"ége","éc":"éç";<br />
+2PS&PAS&PFV&IND:=2>"as", "ég":"ége","éc":"éç";<br />
+3PS&PAS&PFV&IND:=2>"a", "ég":"ége","éc":"éç";<br />
+1PP&PAS&PFV&IND:=2>"âmes", "ég":"ége","éc":"éç";<br />
+2PP&PAS&PFV&IND:=2>"âtes", "ég":"ége","éc":"éç";<br />
+3PP&PAS&PFV&IND:=2>"èrent";<br />
+
+1PS&FUT&IND:=2>"erai";<br />
+2PS&FUT&IND:=2>"eras";<br />
+3PS&FUT&IND:=2>"era";<br />
+1PP&FUT&IND:=2>"erons";<br />
+2PP&FUT&IND:=2>"erez";<br />
+3PP&FUT&IND:=2>"eront";<br />
+
+1PS&CON:=2>"erais";<br />
+2PS&CON:=2>"erais";<br />
+3PS&CON:=2>"erait";<br />
+1PP&CON:=2>"erions";<br />
+2PP&CON:=2>"eriez";<br />
+3PP&CON:=2>"eraient";<br />
+
+2PS&IMP&PRS:=2>"e", "ég":"èg", "éc":"èc";<br />
+1PP&IMP&PRS:=2>"ons", "ég":"ége","éc":"éç";<br />
+2PP&IMP&PRS:=2>"ez";<br />
+
+1PS&PRS&SUB:=2>"e", "ég":"èg", "éc":"èc";<br />
+2PS&PRS&SUB:=2>"es", "ég":"èg", "éc":"èc";<br />
+3PS&PRS&SUB:=2>"e", "ég":"èg", "éc":"èc";<br />
+1PP&PRS&SUB:=2>"ions";<br />
+2PP&PRS&SUB:=2>"iez";<br />
+3PP&PRS&SUB:=2>"ent", "ég":"èg", "éc":"èc";<br />
+
+1PS&PAS&NPFV&SUB:=2>"asse", "ég":"ége","éc":"éç";<br />
+2PS&PAS&NPFV&SUB:=2>"asses", "ég":"ége","éc":"éç";<br />
+3PS&PAS&NPFV&SUB:=2>"ât", "ég":"ége","éc":"éç";<br />
+1PP&PAS&NPFV&SUB:=2>"assions", "ég":"ége","éc":"éç";<br />
+2PP&PAS&NPFV&SUB:=2>"assiez", "ég":"ége","éc":"éç";<br />
+3PP&PAS&NPFV&SUB:=2>"assent", "ég":"ége","éc":"éç";<br />
+;<br /><br /><b>M203</b><br />1er groupe - appeler (<i>amonceler, anneler, atteler, bateler, bosseler, botteler, bretteler, capeler, carreler, chanceler, cordeler, craqueler, créneler, cuveler, débosseler, décapeler, décarreler, décerveler, déficeler, démuseler, déniveler, denteler, dépuceler, désensorceler,dételer, ébiseler, écheveler, enjaveler, ensorceler, épanneler, épeler, étinceler, fuseler, greneler, griveler, grommeler, grumeler, jumeler, morceler, museler, nickeler, niveler, oiseler, panteler, pommeler, rappeler, râteler, recarreler, renouveler, ressemeler, ruisseler, taveler	
+</i>)<br />INF:=0>"";<br />
+GER:=2>"ant";<br />
+PTP&MCL&SNG:=2>"é";<br />
+PTP&MCL&PLR:=2>"és";<br />
+PTP&FEM&SNG:=2>"ée";<br />
+PTP&FEM&PLR:=2>"ées";<br />
+
+1PS&PRS&IND:="eler">"elle";<br />
+2PS&PRS&IND:="eler">"elles";<br />
+3PS&PRS&IND:="eler">"elle";<br />
+1PP&PRS&IND:=2>"ons";<br />
+2PP&PRS&IND:=2>"ez";<br />
+3PP&PRS&IND:="eler">"ellent";<br />
+
+1PS&PAS&NPFV&IND:=2>"ais";<br />
+2PS&PAS&NPFV&IND:=2>"ais";<br />
+3PS&PAS&NPFV&IND:=2>"ait";<br />
+1PP&PAS&NPFV&IND:=2>"ions";<br />
+2PP&PAS&NPFV&IND:=2>"iez";<br />
+3PP&PAS&NPFV&IND:=2>"aient";<br />
+
+1PS&PAS&PFV&IND:=2>"ai";<br />
+2PS&PAS&PFV&IND:=2>"as";<br />
+3PS&PAS&PFV&IND:=2>"a";<br />
+1PP&PAS&PFV&IND:=2>"âmes";<br />
+2PP&PAS&PFV&IND:=2>"âtes";<br />
+3PP&PAS&PFV&IND:=2>"èrent";<br />
+
+1PS&FUT&IND:="eler">"ellerai";<br />
+2PS&FUT&IND:="eler">"elleras";<br />
+3PS&FUT&IND:="eler">"ellera";<br />
+1PP&FUT&IND:="eler">"ellerons";<br />
+2PP&FUT&IND:="eler">"ellerez";<br />
+3PP&FUT&IND:="eler">"elleront";<br />
+
+1PS&CON:="eler">"ellerais";<br />
+2PS&CON:="eler">"ellerais";<br />
+3PS&CON:="eler">"ellerait";<br />
+1PP&CON:="eler">"ellerions";<br />
+2PP&CON:="eler">"elleriez";<br />
+3PP&CON:="eler">"elleraient";<br />
+
+2PS&IMP&PRS:="eler">"elle";<br />
+1PP&IMP&PRS:=2>"ons";<br />
+2PP&IMP&PRS:=2>"ez";<br />
+
+1PS&PRS&SUB:="eler">"elle";<br />
+2PS&PRS&SUB:="eler">"elles";<br />
+3PS&PRS&SUB:="eler">"elle";<br />
+1PP&PRS&SUB:=2>"ions";<br />
+2PP&PRS&SUB:=2>"iez";<br />
+3PP&PRS&SUB:="eler">"ellent";<br />
+
+1PS&PAS&NPFV&SUB:=2>"asse";<br />
+2PS&PAS&NPFV&SUB:=2>"asses";<br />
+3PS&PAS&NPFV&SUB:=2>"ât";<br />
+1PP&PAS&NPFV&SUB:=2>"assions";<br />
+2PP&PAS&NPFV&SUB:=2>"assiez";<br />
+3PP&PAS&NPFV&SUB:=2>"assent";<br />
+;<br /><br /><b>M204</b><br />1er groupe - jeter (<i>banqueter, becqueter, breveter, briqueter, cacheter, caqueter, chevreter, claqueter, claveter, cliqueter, colleter, coqueter, craqueter, cureter, débecqueter, décacheter, déchiqueter, déclaveter, décliqueter, décolleter, déjeter, dépaqueter, dériveter, duveter, empaqueter, encliqueter, épinceter, épousseter, étiqueter, feuilleter, fleureter, forjeter, galeter, guillemeter, hoqueter, interjeter, jarreter, marqueter, moleter, moucheter, pailleter, parqueter, pelleter, piqueter, projeter, recacheter, surjeter, tacheter, trompeter, vigneter, violeter, voleter	
+</i>)<br />INF:=0>"";<br />
+GER:=2>"ant";<br />
+PTP&MCL&SNG:=2>"é";<br />
+PTP&MCL&PLR:=2>"és";<br />
+PTP&FEM&SNG:=2>"ée";<br />
+PTP&FEM&PLR:=2>"ées";<br />
+
+1PS&PRS&IND:="eter">"ette";<br />
+2PS&PRS&IND:="eter">"ettes";<br />
+3PS&PRS&IND:="eter">"ette";<br />
+1PP&PRS&IND:=2>"ons";<br />
+2PP&PRS&IND:=2>"ez";<br />
+3PP&PRS&IND:="eter">"ettent";<br />
+
+1PS&PAS&NPFV&IND:=2>"ais";<br />
+2PS&PAS&NPFV&IND:=2>"ais";<br />
+3PS&PAS&NPFV&IND:=2>"ait";<br />
+1PP&PAS&NPFV&IND:=2>"ions";<br />
+2PP&PAS&NPFV&IND:=2>"iez";<br />
+3PP&PAS&NPFV&IND:=2>"aient";<br />
+
+1PS&PAS&PFV&IND:=2>"ai";<br />
+2PS&PAS&PFV&IND:=2>"as";<br />
+3PS&PAS&PFV&IND:=2>"a";<br />
+1PP&PAS&PFV&IND:=2>"âmes";<br />
+2PP&PAS&PFV&IND:=2>"âtes";<br />
+3PP&PAS&PFV&IND:=2>"èrent";<br />
+
+1PS&FUT&IND:="eter">"etterai";<br />
+2PS&FUT&IND:="eter">"etteras";<br />
+3PS&FUT&IND:="eter">"ettera";<br />
+1PP&FUT&IND:="eter">"etterons";<br />
+2PP&FUT&IND:="eter">"etterez";<br />
+3PP&FUT&IND:="eter">"etteront";<br />
+
+1PS&CON:="eter">"etterais";<br />
+2PS&CON:="eter">"etterais";<br />
+3PS&CON:="eter">"etterait";<br />
+1PP&CON:="eter">"etterions";<br />
+2PP&CON:="eter">"etteriez";<br />
+3PP&CON:="eter">"etteraient";<br />
+
+2PS&IMP&PRS:="eter">"ette";<br />
+1PP&IMP&PRS:=2>"ons";<br />
+2PP&IMP&PRS:=2>"ez";<br />
+
+1PS&PRS&SUB:="eter">"ette";<br />
+2PS&PRS&SUB:="eter">"ettes";<br />
+3PS&PRS&SUB:="eter">"ette";<br />
+1PP&PRS&SUB:="eter">"ettions";<br />
+2PP&PRS&SUB:="eter">"ettiez";<br />
+3PP&PRS&SUB:="eter">"ettent";<br />
+
+1PS&PAS&NPFV&SUB:=2>"asse";<br />
+2PS&PAS&NPFV&SUB:=2>"asses";<br />
+3PS&PAS&NPFV&SUB:=2>"ât";<br />
+1PP&PAS&NPFV&SUB:=2>"assions";<br />
+2PP&PAS&NPFV&SUB:=2>"assiez";<br />
+3PP&PAS&NPFV&SUB:=2>"assent";<br />
+;<br /><br /><b>M205</b><br />1er groupe - acheter (<i>bégueter, béqueter, corseter, crocheter, débéqueter, fileter, fureter, haleter	
+</i>)<br />INF:=0>"";<br />
+GER:=2>"ant";<br />
+PTP&MCL&SNG:=2>"é";<br />
+PTP&MCL&PLR:=2>"és";<br />
+PTP&FEM&SNG:=2>"ée";<br />
+PTP&FEM&PLR:=2>"ées";<br />
+
+1PS&PRS&IND:="eter">"ète";<br />
+2PS&PRS&IND:="eter">"ètes";<br />
+3PS&PRS&IND:="eter">"ète";<br />
+1PP&PRS&IND:=2>"ons";<br />
+2PP&PRS&IND:=2>"ez";<br />
+3PP&PRS&IND:="eter">"ètent";<br />
+
+1PS&PAS&NPFV&IND:=2>"ais";<br />
+2PS&PAS&NPFV&IND:=2>"ais";<br />
+3PS&PAS&NPFV&IND:=2>"ait";<br />
+1PP&PAS&NPFV&IND:=2>"ions";<br />
+2PP&PAS&NPFV&IND:=2>"iez";<br />
+3PP&PAS&NPFV&IND:=2>"aient";<br />
+
+1PS&PAS&PFV&IND:=2>"ai";<br />
+2PS&PAS&PFV&IND:=2>"as";<br />
+3PS&PAS&PFV&IND:=2>"a";<br />
+1PP&PAS&PFV&IND:=2>"âmes";<br />
+2PP&PAS&PFV&IND:=2>"âtes";<br />
+3PP&PAS&PFV&IND:=2>"èrent";<br />
+
+1PS&FUT&IND:="eter">"èterai";<br />
+2PS&FUT&IND:="eter">"èteras";<br />
+3PS&FUT&IND:="eter">"ètera";<br />
+1PP&FUT&IND:="eter">"èterons";<br />
+2PP&FUT&IND:="eter">"èterez";<br />
+3PP&FUT&IND:="eter">"èteront";<br />
+
+1PS&CON:="eter">"èterais";<br />
+2PS&CON:="eter">"èterais";<br />
+3PS&CON:="eter">"èterait";<br />
+1PP&CON:="eter">"èterions";<br />
+2PP&CON:="eter">"èteriez";<br />
+3PP&CON:="eter">"èteraient";<br />
+
+2PS&IMP&PRS:="eter">"ète";<br />
+1PP&IMP&PRS:=2>"ons";<br />
+2PP&IMP&PRS:=2>"ez";<br />
+
+1PS&PRS&SUB:="eter">"ète";<br />
+2PS&PRS&SUB:="eter">"ètes";<br />
+3PS&PRS&SUB:="eter">"ète";<br />
+1PP&PRS&SUB:=2>"ions";<br />
+2PP&PRS&SUB:=2>"iez";<br />
+3PP&PRS&SUB:="eter">"ètent";<br />
+
+1PS&PAS&NPFV&SUB:=2>"asse";<br />
+2PS&PAS&NPFV&SUB:=2>"asses";<br />
+3PS&PAS&NPFV&SUB:=2>"ât";<br />
+1PP&PAS&NPFV&SUB:=2>"assions";<br />
+2PP&PAS&NPFV&SUB:=2>"assiez";<br />
+3PP&PAS&NPFV&SUB:=2>"assent";<br />
+;<br /><br /><b>M206</b><br />1er groupe - employer (<i>aboyer, apitoyer, bornoyer, broyer, carroyer, chatoyer, choyer, convoyer, corroyer, côtoyer, coudoyer, dénoyer, déployer, dévoyer, ennoyer, éployer, festoyer, flamboyer, fossoyer, foudroyer, fourvoyer, grossoyer, guerroyer, hongroyer, jointoyer, larmoyer, louvoyer, noyer, octroyer, ondoyer, paumoyer, ployer, poudroyer, redéployer, rejointoyer, remployer, reployer, rudoyer, soudoyer, toumoyer, tutoyer, verdoyer, vousoyer, voussoyer, vouvoyer 	
+</i>)<br />INF:=0>"";<br />
+GER:=2>"ant";<br />
+PTP&MCL&SNG:=2>"é";<br />
+PTP&MCL&PLR:=2>"és";<br />
+PTP&FEM&SNG:=2>"ée";<br />
+PTP&FEM&PLR:=2>"ées";<br />
+
+1PS&PRS&IND:="oyer">"oie";<br />
+2PS&PRS&IND:="oyer">"oies";<br />
+3PS&PRS&IND:="oyer">"oie";<br />
+1PP&PRS&IND:=2>"ons";<br />
+2PP&PRS&IND:=2>"ez";<br />
+3PP&PRS&IND:="oyer">"oient";<br />
+
+1PS&PAS&NPFV&IND:=2>"ais";<br />
+2PS&PAS&NPFV&IND:=2>"ais";<br />
+3PS&PAS&NPFV&IND:=2>"ait";<br />
+1PP&PAS&NPFV&IND:=2>"ions";<br />
+2PP&PAS&NPFV&IND:=2>"iez";<br />
+3PP&PAS&NPFV&IND:=2>"aient";<br />
+
+1PS&PAS&PFV&IND:=2>"ai";<br />
+2PS&PAS&PFV&IND:=2>"as";<br />
+3PS&PAS&PFV&IND:=2>"a";<br />
+1PP&PAS&PFV&IND:=2>"âmes";<br />
+2PP&PAS&PFV&IND:=2>"âtes";<br />
+3PP&PAS&PFV&IND:=2>"èrent";<br />
+
+1PS&FUT&IND:="oyer">"oierai";<br />
+2PS&FUT&IND:="oyer">"oieras";<br />
+3PS&FUT&IND:="oyer">"oiera";<br />
+1PP&FUT&IND:="oyer">"oierons";<br />
+2PP&FUT&IND:="oyer">"oierez";<br />
+3PP&FUT&IND:="oyer">"oieront";<br />
+
+1PS&CON:="oyer">"oierais";<br />
+2PS&CON:="oyer">"oierais";<br />
+3PS&CON:="oyer">"oierait";<br />
+1PP&CON:="oyer">"oierions";<br />
+2PP&CON:="oyer">"oieriez";<br />
+3PP&CON:="oyer">"oieraient";<br />
+
+2PS&IMP&PRS:=2>"e", "oy":"oi";<br />
+1PP&IMP&PRS:=2>"ons";<br />
+2PP&IMP&PRS:=2>"ez";<br />
+
+1PS&PRS&SUB:="oyer">"oie";<br />
+2PS&PRS&SUB:="oyer">"oies";<br />
+3PS&PRS&SUB:="oyer">"oie";<br />
+1PP&PRS&SUB:=2>"ions";<br />
+2PP&PRS&SUB:=2>"iez";<br />
+3PP&PRS&SUB:="oyer">"oient";<br />
+
+1PS&PAS&NPFV&SUB:=2>"asse";<br />
+2PS&PAS&NPFV&SUB:=2>"asses";<br />
+3PS&PAS&NPFV&SUB:=2>"ât";<br />
+1PP&PAS&NPFV&SUB:=2>"assions";<br />
+2PP&PAS&NPFV&SUB:=2>"assiez";<br />
+3PP&PAS&NPFV&SUB:=2>"assent";<br />
+;<br /><br /><b>M207</b><br />1er groupe - essuyer
+ (<i>désennuyer, ennuyer, ressuyer	
+</i>)<br />INF:=0>"";<br />
+PTP&PRS:=2>"ant";<br />
+PTP&MCL&SNG:=2>"é";<br />
+PTP&MCL&PLR:=2>"és";<br />
+PTP&FEM&SNG:=2>"ée";<br />
+PTP&FEM&PLR:=2>"ées";<br />
+
+1PS&PRS&IND:="uyer">"uie";<br />
+2PS&PRS&IND:="uyer">"uies";<br />
+3PS&PRS&IND:="uyer">"uie";<br />
+1PP&PRS&IND:=2>"ons";<br />
+2PP&PRS&IND:=2>"ez";<br />
+3PP&PRS&IND:="uyer">"uient";<br />
+
+1PS&PAS&NPFV&IND:=2>"ais";<br />
+2PS&PAS&NPFV&IND:=2>"ais";<br />
+3PS&PAS&NPFV&IND:=2>"ait";<br />
+1PP&PAS&NPFV&IND:=2>"ions";<br />
+2PP&PAS&NPFV&IND:=2>"iez";<br />
+3PP&PAS&NPFV&IND:=2>"aient";<br />
+
+1PS&PAS&PFV&IND:=2>"ai";<br />
+2PS&PAS&PFV&IND:=2>"as";<br />
+3PS&PAS&PFV&IND:=2>"a";<br />
+1PP&PAS&PFV&IND:=2>"âmes";<br />
+2PP&PAS&PFV&IND:=2>"âtes";<br />
+3PP&PAS&PFV&IND:=2>"èrent";<br />
+
+1PS&FUT&IND:="uyer">"uierai";<br />
+2PS&FUT&IND:="uyer">"uieras";<br />
+3PS&FUT&IND:="uyer">"uiera";<br />
+1PP&FUT&IND:="uyer">"uierons";<br />
+2PP&FUT&IND:="uyer">"uierez";<br />
+3PP&FUT&IND:="uyer">"uieront";<br />
+
+1PS&CON:="uyer">"uierais";<br />
+2PS&CON:="uyer">"uierais";<br />
+3PS&CON:="uyer">"uierait";<br />
+1PP&CON:="uyer">"uierions";<br />
+2PP&CON:="uyer">"uieriez";<br />
+3PP&CON:="uyer">"uieraient";<br />
+
+2PS&IMP&PRS:="uyer">"uie";<br />
+1PP&IMP&PRS:=2>"ons";<br />
+2PP&IMP&PRS:=2>"ez";<br />
+
+1PS&PRS&SUB:="uyer">"uie";<br />
+2PS&PRS&SUB:="uyer">"uies";<br />
+3PS&PRS&SUB:="uyer">"uie";<br />
+1PP&PRS&SUB:=2>"ions";<br />
+2PP&PRS&SUB:=2>"iez";<br />
+3PP&PRS&SUB:="uyer">"uient";<br />
+
+1PS&PAS&NPFV&SUB:=2>"asse";<br />
+2PS&PAS&NPFV&SUB:=2>"asses";<br />
+3PS&PAS&NPFV&SUB:=2>"ât";<br />
+1PP&PAS&NPFV&SUB:=2>"assions";<br />
+2PP&PAS&NPFV&SUB:=2>"assiez";<br />
+3PP&PAS&NPFV&SUB:=2>"assent";<br />
+;<br /><br /><b>M208</b><br />Verbes en -ir. (<i>débouillir	
+</i>)<br />1PS&PRS&IND:=5>"s";<br />
+2PS&PRS&IND:=5>"s";<br />
+3PS&PRS&IND:=5>"t";<br />
+1PP&PRS&IND:=2>"ons";<br />
+2PP&PRS&IND:=2>"ez";<br />
+3PP&PRS&IND:=2>"ent";<br />
+1PS&PAS&NPFV&IND:=2>"ais";<br />
+2PS&PAS&NPFV&IND:=2>"ais";<br />
+3PS&PAS&NPFV&IND:=2>"ait";<br />
+1PP&PAS&NPFV&IND:=2>"ions";<br />
+2PP&PAS&NPFV&IND:=2>"iez";<br />
+3PP&PAS&NPFV&IND:=2>"aient";<br />
+1PS&PAS&PFV&IND:=2>"is";<br />
+2PS&PAS&PFV&IND:=2>"is";<br />
+3PS&PAS&PFV&IND:=2>"it";<br />
+1PP&PAS&PFV&IND:=2>"îmes";<br />
+2PP&PAS&PFV&IND:=2>"îtes";<br />
+3PP&PAS&PFV&IND:=2>"irent";<br />
+1PS&FUT&IND:=2>"irai";<br />
+2PS&FUT&IND:=2>"iras";<br />
+3PS&FUT&IND:=2>"ira";<br />
+1PP&FUT&IND:=2>"irons";<br />
+2PP&FUT&IND:=2>"irez";<br />
+3PP&FUT&IND:=2>"iront";<br />
+1PS&CON:=2>"irais";<br />
+2PS&CON:=2>"irais";<br />
+3PS&CON:=2>"irait";<br />
+1PP&CON:=2>"irions";<br />
+2PP&CON:=2>"iriez";<br />
+3PP&CON:=2>"iraient";<br />
+INF:=0>"";<br />
+PTP&PRS:=2>"ant";<br />
+PTP&MCL&SNG:=2>"i";<br />
+PTP&MCL&PLR:=2>"is";<br />
+PTP&FEM&SNG:=2>"ie";<br />
+PTP&FEM&PLR:=2>"ies";<br />
+2PS&IMP&PRS:=5>"s";<br />
+1PP&IMP&PRS:=2>"ons";<br />
+2PP&IMP&PRS:=2>"ez";<br />
+1PS&PRS&SUB:=2>"e";<br />
+2PS&PRS&SUB:=2>"es";<br />
+3PS&PRS&SUB:=2>"e";<br />
+1PP&PRS&SUB:=2>"ions";<br />
+2PP&PRS&SUB:=2>"iez";<br />
+3PP&PRS&SUB:=2>"ent";<br />
+1PS&PAS&NPFV&SUB:=2>"isse";<br />
+2PS&PAS&NPFV&SUB:=2>"isses";<br />
+3PS&PAS&NPFV&SUB:=2>"ît";<br />
+1PP&PAS&NPFV&SUB:=2>"issions";<br />
+2PP&PAS&NPFV&SUB:=2>"issiez";<br />
+3PP&PAS&NPFV&SUB:=2>"issent";<br />
+;<br /><br /><b>M209</b><br />Verbes en -ir. (<i>enfuir	
+</i>)<br />1PS&PRS&IND:=2>"is";<br />
+2PS&PRS&IND:=2>"is";<br />
+3PS&PRS&IND:=2>"it";<br />
+1PP&PRS&IND:=2>"yons";<br />
+2PP&PRS&IND:=2>"yez";<br />
+3PP&PRS&IND:=2>"ient";<br />
+1PS&PAS&NPFV&IND:=2>"yais";<br />
+2PS&PAS&NPFV&IND:=2>"yais";<br />
+3PS&PAS&NPFV&IND:=2>"yait";<br />
+1PP&PAS&NPFV&IND:=2>"yions";<br />
+2PP&PAS&NPFV&IND:=2>"yiez";<br />
+3PP&PAS&NPFV&IND:=2>"yaient";<br />
+1PS&PAS&PFV&IND:=2>"is";<br />
+2PS&PAS&PFV&IND:=2>"is";<br />
+3PS&PAS&PFV&IND:=2>"it";<br />
+1PP&PAS&PFV&IND:=2>"îmes";<br />
+2PP&PAS&PFV&IND:=2>"îtes";<br />
+3PP&PAS&PFV&IND:=2>"irent";<br />
+1PS&FUT&IND:=2>"irai";<br />
+2PS&FUT&IND:=2>"iras";<br />
+3PS&FUT&IND:=2>"ira";<br />
+1PP&FUT&IND:=2>"irons";<br />
+2PP&FUT&IND:=2>"irez";<br />
+3PP&FUT&IND:=2>"iront";<br />
+1PS&CON:=2>"irais";<br />
+2PS&CON:=2>"irais";<br />
+3PS&CON:=2>"irait";<br />
+1PP&CON:=2>"irions";<br />
+2PP&CON:=2>"iriez";<br />
+3PP&CON:=2>"iraient";<br />
+INF:=0>"";<br />
+PTP&PRS:=2>"yant";<br />
+PTP&MCL&SNG:=2>"i";<br />
+PTP&MCL&PLR:=2>"is";<br />
+PTP&FEM&SNG:=2>"ie";<br />
+PTP&FEM&PLR:=2>"ies";<br />
+2PS&IMP&PRS:=2>"is";<br />
+1PP&IMP&PRS:=2>"yons";<br />
+2PP&IMP&PRS:=2>"yez";<br />
+1PS&PRS&SUB:=2>"ie";<br />
+2PS&PRS&SUB:=2>"ies";<br />
+3PS&PRS&SUB:=2>"ie";<br />
+1PP&PRS&SUB:=2>"yions";<br />
+2PP&PRS&SUB:=2>"yiez";<br />
+3PP&PRS&SUB:=2>"ient";<br />
+1PS&PAS&NPFV&SUB:=2>"isse";<br />
+2PS&PAS&NPFV&SUB:=2>"isses";<br />
+3PS&PAS&NPFV&SUB:=2>"ît";<br />
+1PP&PAS&NPFV&SUB:=2>"issions";<br />
+2PP&PAS&NPFV&SUB:=2>"issiez";<br />
+3PP&PAS&NPFV&SUB:=2>"issent";<br />
+;<br /><br /><b>M210</b><br />Verbes en -ir. (<i>dévêtir, revêtir	
+</i>)<br />1PS&PRS&IND:=2>"s";<br />
+2PS&PRS&IND:=2>"s";<br />
+3PS&PRS&IND:=2>"";<br />
+1PP&PRS&IND:=2>"ons";<br />
+2PP&PRS&IND:=2>"ez";<br />
+3PP&PRS&IND:=2>"ent";<br />
+1PS&PAS&NPFV&IND:=2>"ais";<br />
+2PS&PAS&NPFV&IND:=2>"ais";<br />
+3PS&PAS&NPFV&IND:=2>"ait";<br />
+1PP&PAS&NPFV&IND:=2>"ions";<br />
+2PP&PAS&NPFV&IND:=2>"iez";<br />
+3PP&PAS&NPFV&IND:=2>"aient";<br />
+1PS&PAS&PFV&IND:=2>"is";<br />
+2PS&PAS&PFV&IND:=2>"is";<br />
+3PS&PAS&PFV&IND:=2>"it";<br />
+1PP&PAS&PFV&IND:=2>"îmes";<br />
+2PP&PAS&PFV&IND:=2>"îtes";<br />
+3PP&PAS&PFV&IND:=2>"irent";<br />
+1PS&FUT&IND:=2>"irai";<br />
+2PS&FUT&IND:=2>"iras";<br />
+3PS&FUT&IND:=2>"ira";<br />
+1PP&FUT&IND:=2>"irons";<br />
+2PP&FUT&IND:=2>"irez";<br />
+3PP&FUT&IND:=2>"iront";<br />
+1PS&CON:=2>"irais";<br />
+2PS&CON:=2>"irais";<br />
+3PS&CON:=2>"irait";<br />
+1PP&CON:=2>"irions";<br />
+2PP&CON:=2>"iriez";<br />
+3PP&CON:=2>"iraient";<br />
+INF:=0>"";<br />
+PTP&PRS:=2>"ant";<br />
+PTP&MCL&SNG:=2>"u";<br />
+PTP&MCL&PLR:=2>"us";<br />
+PTP&FEM&SNG:=2>"ue";<br />
+PTP&FEM&PLR:=2>"ues";<br />
+2PS&IMP&PRS:=2>"s";<br />
+1PP&IMP&PRS:=2>"ons";<br />
+2PP&IMP&PRS:=2>"ez";<br />
+1PS&PRS&SUB:=2>"e";<br />
+2PS&PRS&SUB:=2>"es";<br />
+3PS&PRS&SUB:=2>"e";<br />
+1PP&PRS&SUB:=2>"ions";<br />
+2PP&PRS&SUB:=2>"iez";<br />
+3PP&PRS&SUB:=2>"ent";<br />
+1PS&PAS&NPFV&SUB:=2>"isse";<br />
+2PS&PAS&NPFV&SUB:=2>"isses";<br />
+3PS&PAS&NPFV&SUB:=2>"ît";<br />
+1PP&PAS&NPFV&SUB:=2>"issions";<br />
+2PP&PAS&NPFV&SUB:=2>"issiez";<br />
+3PP&PAS&NPFV&SUB:=2>"issent";<br />
+;<br /><br /><b>M211</b><br />Verbes en -ir. (<i>accourir, concourir, discourir, encourir, parcourir, recourir	
+</i>)<br />1PS&PRS&IND:=2>"s";<br />
+2PS&PRS&IND:=2>"s";<br />
+3PS&PRS&IND:=2>"t";<br />
+1PP&PRS&IND:=2>"ons";<br />
+2PP&PRS&IND:=2>"ez";<br />
+3PP&PRS&IND:=2>"ent";<br />
+1PS&PAS&NPFV&IND:=2>"ais";<br />
+2PS&PAS&NPFV&IND:=2>"ais";<br />
+3PS&PAS&NPFV&IND:=2>"ait";<br />
+1PP&PAS&NPFV&IND:=2>"ions";<br />
+2PP&PAS&NPFV&IND:=2>"iez";<br />
+3PP&PAS&NPFV&IND:=2>"aient";<br />
+1PS&PAS&PFV&IND:=2>"us";<br />
+2PS&PAS&PFV&IND:=2>"us";<br />
+3PS&PAS&PFV&IND:=2>"ut";<br />
+1PP&PAS&PFV&IND:=2>"ûmes";<br />
+2PP&PAS&PFV&IND:=2>"ûtes";<br />
+3PP&PAS&PFV&IND:=2>"urent";<br />
+1PS&FUT&IND:=2>"rai";<br />
+2PS&FUT&IND:=2>"ras";<br />
+3PS&FUT&IND:=2>"ra";<br />
+1PP&FUT&IND:=2>"rons";<br />
+2PP&FUT&IND:=2>"rez";<br />
+3PP&FUT&IND:=2>"ront";<br />
+1PS&CON:=2>"rais";<br />
+2PS&CON:=2>"rais";<br />
+3PS&CON:=2>"rait";<br />
+1PP&CON:=2>"rions";<br />
+2PP&CON:=2>"riez";<br />
+3PP&CON:=2>"raient";<br />
+INF:=0>"";<br />
+PTP&PRS:=2>"ant";<br />
+PTP&MCL&SNG:=2>"u";<br />
+PTP&MCL&PLR:=2>"us";<br />
+PTP&FEM&SNG:=2>"ue";<br />
+PTP&FEM&PLR:=2>"ues";<br />
+2PS&IMP&PRS:=2>"s";<br />
+1PP&IMP&PRS:=2>"ons";<br />
+2PP&IMP&PRS:=2>"ez";<br />
+1PS&PRS&SUB:=2>"e";<br />
+2PS&PRS&SUB:=2>"es";<br />
+3PS&PRS&SUB:=2>"e";<br />
+1PP&PRS&SUB:=2>"ions";<br />
+2PP&PRS&SUB:=2>"iez";<br />
+3PP&PRS&SUB:=2>"ent";<br />
+1PS&PAS&NPFV&SUB:=2>"usse";<br />
+2PS&PAS&NPFV&SUB:=2>"usses";<br />
+3PS&PAS&NPFV&SUB:=2>"ût";<br />
+1PP&PAS&NPFV&SUB:=2>"ussions";<br />
+2PP&PAS&NPFV&SUB:=2>"ussiez";<br />
+3PP&PAS&NPFV&SUB:=2>"ussent";<br />
+;<br /><br /><b>M212</b><br />Verbes en -ir. (<i>conquérir, enquérir, reconquérir, requérir, 	
+</i>)<br />1PS&PRS&IND:=2>"s", "ué":"uie";<br />
+2PS&PRS&IND:=2>"s", "ué":"uie";<br />
+3PS&PRS&IND:=2>"t", "ué":"uie";<br />
+1PP&PRS&IND:=2>"ons";<br />
+2PP&PRS&IND:=2>"ez";<br />
+3PP&PRS&IND:=2>"ent", "ué":"uiè";<br />
+1PS&PAS&NPFV&IND:=2>"ais";<br />
+2PS&PAS&NPFV&IND:=2>"ais";<br />
+3PS&PAS&NPFV&IND:=2>"ait";<br />
+1PP&PAS&NPFV&IND:=2>"ions";<br />
+2PP&PAS&NPFV&IND:=2>"iez";<br />
+3PP&PAS&NPFV&IND:=2>"aient";<br />
+1PS&PAS&PFV&IND:=4>"is";<br />
+2PS&PAS&PFV&IND:=4>"is";<br />
+3PS&PAS&PFV&IND:=4>"it";<br />
+1PP&PAS&PFV&IND:=4>"îmes";<br />
+2PP&PAS&PFV&IND:=4>"îtes";<br />
+3PP&PAS&PFV&IND:=4>"irent";<br />
+1PS&FUT&IND:=2>"rai", "ué":"ue";<br />
+2PS&FUT&IND:=2>"ras", "ué":"ue";<br />
+3PS&FUT&IND:=2>"ra", "ué":"ue";<br />
+1PP&FUT&IND:=2>"rons", "ué":"ue";<br />
+2PP&FUT&IND:=2>"rez", "ué":"ue";<br />
+3PP&FUT&IND:=2>"ront", "ué":"ue";<br />
+1PS&CON:=2>"rais", "ué":"ue";<br />
+2PS&CON:=2>"rais", "ué":"ue";<br />
+3PS&CON:=2>"rait", "ué":"ue";<br />
+1PP&CON:=2>"rions", "ué":"ue";<br />
+2PP&CON:=2>"riez", "ué":"ue";<br />
+3PP&CON:=2>"raient", "ué":"ue";<br />
+INF:=0>"";<br />
+PTP&PRS:=2>"ant";<br />
+PTP&MCL&SNG:=4>"is";<br />
+PTP&MCL&PLR:=4>"is";<br />
+PTP&FEM&SNG:=4>"ise";<br />
+PTP&FEM&PLR:=4>"ises";<br />
+2PS&IMP&PRS:=2>"s", "ué":"uie";<br />
+1PP&IMP&PRS:=2>"ons";<br />
+2PP&IMP&PRS:=2>"ez";<br />
+1PS&PRS&SUB:=2>"e", "ué":"uiè";<br />
+2PS&PRS&SUB:=2>"es", "ué":"uiè";<br />
+3PS&PRS&SUB:=2>"e", "ué":"uiè";<br />
+1PP&PRS&SUB:=2>"ions";<br />
+2PP&PRS&SUB:=2>"iez";<br />
+3PP&PRS&SUB:=2>"ent", "ué":"uiè";<br />
+1PS&PAS&NPFV&SUB:=4>"isse";<br />
+2PS&PAS&NPFV&SUB:=4>"isses";<br />
+3PS&PAS&NPFV&SUB:=4>"ît";<br />
+1PP&PAS&NPFV&SUB:=4>"issions";<br />
+2PP&PAS&NPFV&SUB:=4>"issiez";<br />
+3PP&PAS&NPFV&SUB:=4>"issent";<br />
+;<br /><br /><b>M213</b><br />Verbes en -ir. (<i>accueillir, recueillir	
+</i>)<br />1PS&PRS&IND:=2>"e";<br />
+2PS&PRS&IND:=2>"es";<br />
+3PS&PRS&IND:=2>"e";<br />
+1PP&PRS&IND:=2>"ons";<br />
+2PP&PRS&IND:=2>"ez";<br />
+3PP&PRS&IND:=2>"ent";<br />
+1PS&PAS&NPFV&IND:=2>"ais";<br />
+2PS&PAS&NPFV&IND:=2>"ais";<br />
+3PS&PAS&NPFV&IND:=2>"ait";<br />
+1PP&PAS&NPFV&IND:=2>"ions";<br />
+2PP&PAS&NPFV&IND:=2>"iez";<br />
+3PP&PAS&NPFV&IND:=2>"aient";<br />
+1PS&PAS&PFV&IND:=2>"is";<br />
+2PS&PAS&PFV&IND:=2>"is";<br />
+3PS&PAS&PFV&IND:=2>"it";<br />
+1PP&PAS&PFV&IND:=2>"îmes";<br />
+2PP&PAS&PFV&IND:=2>"îtes";<br />
+3PP&PAS&PFV&IND:=2>"irent";<br />
+1PS&FUT&IND:=2>"erai";<br />
+2PS&FUT&IND:=2>"eras";<br />
+3PS&FUT&IND:=2>"era";<br />
+1PP&FUT&IND:=2>"erons";<br />
+2PP&FUT&IND:=2>"erez";<br />
+3PP&FUT&IND:=2>"eront";<br />
+1PS&CON:=2>"erais";<br />
+2PS&CON:=2>"erais";<br />
+3PS&CON:=2>"erait";<br />
+1PP&CON:=2>"erions";<br />
+2PP&CON:=2>"eriez";<br />
+3PP&CON:=2>"eraient";<br />
+INF:=0>"";<br />
+PTP&PRS:=2>"ant";<br />
+PTP&MCL&SNG:=2>"i";<br />
+PTP&MCL&PLR:=2>"is";<br />
+PTP&FEM&SNG:=2>"ie";<br />
+PTP&FEM&PLR:=2>"ies";<br />
+2PS&IMP&PRS:=2>"e";<br />
+1PP&IMP&PRS:=2>"ons";<br />
+2PP&IMP&PRS:=2>"ez";<br />
+1PS&PRS&SUB:=2>"e";<br />
+2PS&PRS&SUB:=2>"es";<br />
+3PS&PRS&SUB:=2>"e";<br />
+1PP&PRS&SUB:=2>"ions";<br />
+2PP&PRS&SUB:=2>"iez";<br />
+3PP&PRS&SUB:=2>"ent";<br />
+1PS&PAS&NPFV&SUB:=2>"isse";<br />
+2PS&PAS&NPFV&SUB:=2>"isses";<br />
+3PS&PAS&NPFV&SUB:=2>"ît";<br />
+1PP&PAS&NPFV&SUB:=2>"issions";<br />
+2PP&PAS&NPFV&SUB:=2>"issiez";<br />
+3PP&PAS&NPFV&SUB:=2>"issent";<br />
+;<br /><br /><b>M214</b><br />Verbes en -ir. (<i>assaillir, faillir, tressaillir	
+</i>)<br />1PS&PRS&IND:=2>"e";<br />
+2PS&PRS&IND:=2>"es";<br />
+3PS&PRS&IND:=2>"e";<br />
+1PP&PRS&IND:=2>"ons";<br />
+2PP&PRS&IND:=2>"ez";<br />
+3PP&PRS&IND:=2>"ent";<br />
+1PS&PAS&NPFV&IND:=2>"ais";<br />
+2PS&PAS&NPFV&IND:=2>"ais";<br />
+3PS&PAS&NPFV&IND:=2>"ait";<br />
+1PP&PAS&NPFV&IND:=2>"ions";<br />
+2PP&PAS&NPFV&IND:=2>"iez";<br />
+3PP&PAS&NPFV&IND:=2>"aient";<br />
+1PS&PAS&PFV&IND:=2>"is";<br />
+2PS&PAS&PFV&IND:=2>"is";<br />
+3PS&PAS&PFV&IND:=2>"it";<br />
+1PP&PAS&PFV&IND:=2>"îmes";<br />
+2PP&PAS&PFV&IND:=2>"îtes";<br />
+3PP&PAS&PFV&IND:=2>"irent";<br />
+1PS&FUT&IND:=2>"irai";<br />
+2PS&FUT&IND:=2>"iras";<br />
+3PS&FUT&IND:=2>"ira";<br />
+1PP&FUT&IND:=2>"irons";<br />
+2PP&FUT&IND:=2>"irez";<br />
+3PP&FUT&IND:=2>"iront";<br />
+1PS&CON:=2>"irais";<br />
+2PS&CON:=2>"irais";<br />
+3PS&CON:=2>"irait";<br />
+1PP&CON:=2>"irions";<br />
+2PP&CON:=2>"iriez";<br />
+3PP&CON:=2>"iraient";<br />
+INF:=0>"";<br />
+PTP&PRS:=2>"ant";<br />
+PTP&MCL&SNG:=2>"i";<br />
+PTP&MCL&PLR:=NULL;<br />
+PTP&FEM&SNG:=NULL;<br />
+PTP&FEM&PLR:=NULL;<br />
+2PS&IMP&PRS:=2>"e";<br />
+1PP&IMP&PRS:=2>"ons";<br />
+2PP&IMP&PRS:=2>"ez";<br />
+1PS&PRS&SUB:=2>"e";<br />
+2PS&PRS&SUB:=2>"es";<br />
+3PS&PRS&SUB:=2>"e";<br />
+1PP&PRS&SUB:=2>"ions";<br />
+2PP&PRS&SUB:=2>"iez";<br />
+3PP&PRS&SUB:=2>"ent";<br />
+1PS&PAS&NPFV&SUB:=2>"isse";<br />
+2PS&PAS&NPFV&SUB:=2>"isses";<br />
+3PS&PAS&NPFV&SUB:=2>"ît";<br />
+1PP&PAS&NPFV&SUB:=2>"issions";<br />
+2PP&PAS&NPFV&SUB:=2>"issiez";<br />
+;<br /><br /><b>M215</b><br />Verbes en -oir (<i>équivaloir, revaloir, prévaloir	
+</i>)<br />1PS&PRS&IND:=4>"ux";<br />
+2PS&PRS&IND:=4>"ux";<br />
+3PS&PRS&IND:=4>"ut";<br />
+1PP&PRS&IND:=3>"ons";<br />
+2PP&PRS&IND:=3>"ez";<br />
+3PP&PRS&IND:=3>"ent";<br />
+1PS&PAS&NPFV&IND:=3>"ais";<br />
+2PS&PAS&NPFV&IND:=3>"ais";<br />
+3PS&PAS&NPFV&IND:=3>"ait";<br />
+1PP&PAS&NPFV&IND:=3>"ions";<br />
+2PP&PAS&NPFV&IND:=3>"iez";<br />
+3PP&PAS&NPFV&IND:=3>"aient";<br />
+1PS&PAS&PFV&IND:=3>"us";<br />
+2PS&PAS&PFV&IND:=3>"us";<br />
+3PS&PAS&PFV&IND:=3>"ut";<br />
+1PP&PAS&PFV&IND:=3>"ûmes";<br />
+2PP&PAS&PFV&IND:=3>"ûtes";<br />
+3PP&PAS&PFV&IND:=3>"urent";<br />
+1PS&FUT&IND:=3>"rai", "al":"aud";<br />
+2PS&FUT&IND:=3>"ras", "al":"aud";<br />
+3PS&FUT&IND:=3>"ra", "al":"aud";<br />
+1PP&FUT&IND:=3>"rons", "al":"aud";<br />
+2PP&FUT&IND:=3>"rez", "al":"aud";<br />
+3PP&FUT&IND:=3>"ront", "al":"aud";<br />
+1PS&CON:=3>"rais", "al":"aud";<br />
+2PS&CON:=3>"rais", "al":"aud";<br />
+3PS&CON:=3>"rait", "al":"aud";<br />
+1PP&CON:=3>"rions", "al":"aud";<br />
+2PP&CON:=3>"riez", "al":"aud";<br />
+3PP&CON:=3>"raient", "al":"aud";<br />
+INF:=0>"";<br />
+PTP&PRS:=3>"ant";<br />
+PTP&MCL&SNG:=3>"u";<br />
+PTP&MCL&PLR:=3>"us";<br />
+PTP&FEM&SNG:=3>"ue";<br />
+PTP&FEM&PLR:=3>"ues";<br />
+2PS&IMP&PRS:=4>"ux";<br />
+1PP&IMP&PRS:=3>"ons";<br />
+2PP&IMP&PRS:=3>"ez";<br />
+1PS&PRS&SUB:=3>"e", "al":"aill";<br />
+2PS&PRS&SUB:=3>"es", "al":"aill";<br />
+3PS&PRS&SUB:=3>"e", "al":"aill";<br />
+1PP&PRS&SUB:=3>"ions";<br />
+2PP&PRS&SUB:=3>"iez";<br />
+3PP&PRS&SUB:=3>"ent", "al":"aill";<br />
+1PS&PAS&NPFV&SUB:=3>"usse";<br />
+2PS&PAS&NPFV&SUB:=3>"usses";<br />
+3PS&PAS&NPFV&SUB:=3>"ût";<br />
+1PP&PAS&NPFV&SUB:=3>"ussions";<br />
+2PP&PAS&NPFV&SUB:=3>"ussiez";<br />
+3PP&PAS&NPFV&SUB:=3>"ussent";<br />
+;<br /><br /><b>M216</b><br />Verbes en -oir. (<i>mouvoir, promouvoir	
+</i>)<br />1PS&PRS&IND:=4>"s", "ou":"eu";<br />
+2PS&PRS&IND:=4>"s", "ou":"eu";<br />
+3PS&PRS&IND:=4>"t", "ou":"eu";<br />
+1PP&PRS&IND:=3>"ons";<br />
+2PP&PRS&IND:=3>"ez";<br />
+3PP&PRS&IND:=3>"ent", "ou":"eu";<br />
+1PS&PAS&NPFV&IND:=3>"ais";<br />
+2PS&PAS&NPFV&IND:=3>"ais";<br />
+3PS&PAS&NPFV&IND:=3>"ait";<br />
+1PP&PAS&NPFV&IND:=3>"ions";<br />
+2PP&PAS&NPFV&IND:=3>"iez";<br />
+3PP&PAS&NPFV&IND:=3>"aient";<br />
+1PS&PAS&PFV&IND:=6>"us";<br />
+2PS&PAS&PFV&IND:=6>"us";<br />
+3PS&PAS&PFV&IND:=6>"ut";<br />
+1PP&PAS&PFV&IND:=6>"ûmes";<br />
+2PP&PAS&PFV&IND:=6>"ûtes";<br />
+3PP&PAS&PFV&IND:=6>"urent";<br />
+1PS&FUT&IND:=3>"rai";<br />
+2PS&FUT&IND:=3>"ras";<br />
+3PS&FUT&IND:=3>"ra";<br />
+1PP&FUT&IND:=3>"rons";<br />
+2PP&FUT&IND:=3>"rez";<br />
+3PP&FUT&IND:=3>"ront";<br />
+1PS&CON:=3>"rais";<br />
+2PS&CON:=3>"rais";<br />
+3PS&CON:=3>"rait";<br />
+1PP&CON:=3>"rions";<br />
+2PP&CON:=3>"riez";<br />
+3PP&CON:=3>"raient";<br />
+INF:=0>"";<br />
+PTP&PRS:=3>"ant";<br />
+PTP&MCL&SNG:=6>"u";<br />
+PTP&MCL&PLR:=6>"us";<br />
+PTP&FEM&SNG:=6>"ue";<br />
+PTP&FEM&PLR:=6>"ues";<br />
+2PS&IMP&PRS:=4>"s", "ou":"eu";<br />
+1PP&IMP&PRS:=3>"ons";<br />
+2PP&IMP&PRS:=3>"ez";<br />
+1PS&PRS&SUB:=3>"e", "ou":"eu";<br />
+2PS&PRS&SUB:=3>"es", "ou":"eu";<br />
+3PS&PRS&SUB:=3>"e", "ou":"eu";<br />
+1PP&PRS&SUB:=3>"ions";<br />
+2PP&PRS&SUB:=3>"iez";<br />
+3PP&PRS&SUB:=3>"ent", "ou":"eu";<br />
+1PS&PAS&NPFV&SUB:=6>"usse";<br />
+2PS&PAS&NPFV&SUB:=6>"usses";<br />
+3PS&PAS&NPFV&SUB:=6>"ût";<br />
+1PP&PAS&NPFV&SUB:=6>"ussions";<br />
+2PP&PAS&NPFV&SUB:=6>"ussiez";<br />
+3PP&PAS&NPFV&SUB:=6>"ussent";<br />
+;<br /><br /><b>M217</b><br />Verbes en -oir (<i>s´asseoir	
+</i>)<br />1PS&PRS&IND:=2>"is", "eo":"o";<br />
+2PS&PRS&IND:=2>"is", "eo":"o";<br />
+3PS&PRS&IND:=2>"it", "eo":"o";<br />
+1PP&PRS&IND:=2>"yons", "eo":"o";<br />
+2PP&PRS&IND:=2>"yez", "eo":"o";<br />
+3PP&PRS&IND:=2>"ient", "eo":"o";<br />
+1PS&PAS&NPFV&IND:=2>"yais", "eo":"o";<br />
+2PS&PAS&NPFV&IND:=2>"yais", "eo":"o";<br />
+3PS&PAS&NPFV&IND:=2>"yait", "eo":"o";<br />
+1PP&PAS&NPFV&IND:=2>"yions", "eo":"o";<br />
+2PP&PAS&NPFV&IND:=2>"yiez", "eo":"o";<br />
+3PP&PAS&NPFV&IND:=2>"yaient", "eo":"o";<br />
+1PS&PAS&PFV&IND:=4>"is";<br />
+2PS&PAS&PFV&IND:=4>"is";<br />
+3PS&PAS&PFV&IND:=4>"it";<br />
+1PP&PAS&PFV&IND:=4>"îmes";<br />
+2PP&PAS&PFV&IND:=4>"îtes";<br />
+3PP&PAS&PFV&IND:=4>"irent";<br />
+1PS&FUT&IND:=2>"irai";<br />
+2PS&FUT&IND:=2>"iras";<br />
+3PS&FUT&IND:=2>"ira";<br />
+1PP&FUT&IND:=2>"irons";<br />
+2PP&FUT&IND:=2>"irez";<br />
+3PP&FUT&IND:=2>"iront";<br />
+1PS&CON:=2>"irais";<br />
+2PS&CON:=2>"irais";<br />
+3PS&CON:=2>"irait";<br />
+1PP&CON:=2>"irions";<br />
+2PP&CON:=2>"iriez";<br />
+3PP&CON:=2>"iraient";<br />
+INF:=0>"";<br />
+PTP&PRS:=2>"yant", "eo":"o";<br />
+PTP&MCL&SNG:=4>"is";<br />
+PTP&MCL&PLR:=4>"is";<br />
+PTP&FEM&SNG:=4>"ise";<br />
+PTP&FEM&PLR:=4>"ises";<br />
+2PS&IMP&PRS:=2>"is", "eo":"o";<br />
+1PP&IMP&PRS:=2>"yons", "eo":"o";<br />
+2PP&IMP&PRS:=2>"yez", "eo":"o";<br />
+1PS&PRS&SUB:=2>"ie", "eo":"o";<br />
+2PS&PRS&SUB:=2>"ies", "eo":"o";<br />
+3PS&PRS&SUB:=2>"ie", "eo":"o";<br />
+1PP&PRS&SUB:=2>"yions", "eo":"o";<br />
+2PP&PRS&SUB:=2>"yiez", "eo":"o";<br />
+3PP&PRS&SUB:=2>"ient", "eo":"o";<br />
+1PS&PAS&NPFV&SUB:=4>"isse";<br />
+2PS&PAS&NPFV&SUB:=4>"isses";<br />
+3PS&PAS&NPFV&SUB:=4>"ît";<br />
+1PP&PAS&NPFV&SUB:=4>"issions";<br />
+2PP&PAS&NPFV&SUB:=4>"issiez";<br />
+3PP&PAS&NPFV&SUB:=4>"issent";<br />
+;<br /><br /><b>M218</b><br />Verbes en -(p)re. (<i>corrompre, interrompre	
+</i>)<br />1PS&PRS&IND:=2>"s";<br />
+2PS&PRS&IND:=2>"s";<br />
+3PS&PRS&IND:=2>"", "mp":"mpt";<br />
+1PP&PRS&IND:=2>"ons";<br />
+2PP&PRS&IND:=2>"ez";<br />
+3PP&PRS&IND:=2>"ent";<br />
+1PS&PAS&NPFV&IND:=2>"ais";<br />
+2PS&PAS&NPFV&IND:=2>"ais";<br />
+3PS&PAS&NPFV&IND:=2>"ait";<br />
+1PP&PAS&NPFV&IND:=2>"ions";<br />
+2PP&PAS&NPFV&IND:=2>"iez";<br />
+3PP&PAS&NPFV&IND:=2>"aient";<br />
+1PS&PAS&PFV&IND:=2>"is";<br />
+2PS&PAS&PFV&IND:=2>"is";<br />
+3PS&PAS&PFV&IND:=2>"it";<br />
+1PP&PAS&PFV&IND:=2>"îmes";<br />
+2PP&PAS&PFV&IND:=2>"îtes";<br />
+3PP&PAS&PFV&IND:=2>"irent";<br />
+1PS&FUT&IND:=2>"rai";<br />
+2PS&FUT&IND:=2>"ras";<br />
+3PS&FUT&IND:=2>"ra";<br />
+1PP&FUT&IND:=2>"rons";<br />
+2PP&FUT&IND:=2>"rez";<br />
+3PP&FUT&IND:=2>"ront";<br />
+1PS&CON:=2>"rais";<br />
+2PS&CON:=2>"rais";<br />
+3PS&CON:=2>"rait";<br />
+1PP&CON:=2>"rions";<br />
+2PP&CON:=2>"riez";<br />
+3PP&CON:=2>"raient";<br />
+INF:=0>"";<br />
+PTP&PRS:=2>"ant";<br />
+PTP&MCL&SNG:=2>"u";<br />
+PTP&MCL&PLR:=2>"us";<br />
+PTP&FEM&SNG:=2>"ue";<br />
+PTP&FEM&PLR:=2>"ues";<br />
+2PS&IMP&PRS:=2>"s";<br />
+1PP&IMP&PRS:=2>"ons";<br />
+2PP&IMP&PRS:=2>"ez";<br />
+1PS&PRS&SUB:=2>"e";<br />
+2PS&PRS&SUB:=2>"es";<br />
+3PS&PRS&SUB:=2>"e";<br />
+1PP&PRS&SUB:=2>"ions";<br />
+2PP&PRS&SUB:=2>"iez";<br />
+3PP&PRS&SUB:=2>"ent";<br />
+1PS&PAS&NPFV&SUB:=2>"isse";<br />
+2PS&PAS&NPFV&SUB:=2>"isses";<br />
+3PS&PAS&NPFV&SUB:=2>"ît";<br />
+1PP&PAS&NPFV&SUB:=2>"issions";<br />
+2PP&PAS&NPFV&SUB:=2>"issiez";<br />
+3PP&PAS&NPFV&SUB:=2>"issent";<br />
+;<br /><br /><b>M219</b><br />Verbes en -(c)re (<i>convaincre	
+</i>)<br />1PS&PRS&IND:=2>"s";<br />
+2PS&PRS&IND:=2>"s";<br />
+3PS&PRS&IND:=2>"";<br />
+1PP&PRS&IND:=2>"ons","nc":"nqu";<br />
+2PP&PRS&IND:=2>"ez","nc":"nqu";<br />
+3PP&PRS&IND:=2>"ent","nc":"nqu";<br />
+1PS&PAS&NPFV&IND:=2>"ais","nc":"nqu";<br />
+2PS&PAS&NPFV&IND:=2>"ais","nc":"nqu";<br />
+3PS&PAS&NPFV&IND:=2>"ait","nc":"nqu";<br />
+1PP&PAS&NPFV&IND:=2>"ions","nc":"nqu";<br />
+2PP&PAS&NPFV&IND:=2>"iez","nc":"nqu";<br />
+3PP&PAS&NPFV&IND:=2>"aient","nc":"nqu";<br />
+1PS&PAS&PFV&IND:=2>"is","nc":"nqu";<br />
+2PS&PAS&PFV&IND:=2>"is","nc":"nqu";<br />
+3PS&PAS&PFV&IND:=2>"it","nc":"nqu";<br />
+1PP&PAS&PFV&IND:=2>"îmes","nc":"nqu";<br />
+2PP&PAS&PFV&IND:=2>"îtes","nc":"nqu";<br />
+3PP&PAS&PFV&IND:=2>"irent","nc":"nqu";<br />
+1PS&FUT&IND:=2>"rai";<br />
+2PS&FUT&IND:=2>"ras";<br />
+3PS&FUT&IND:=2>"ra";<br />
+1PP&FUT&IND:=2>"rons";<br />
+2PP&FUT&IND:=2>"rez";<br />
+3PP&FUT&IND:=2>"ront";<br />
+1PS&CON:=2>"rais";<br />
+2PS&CON:=2>"rais";<br />
+3PS&CON:=2>"rait";<br />
+1PP&CON:=2>"rions";<br />
+2PP&CON:=2>"riez";<br />
+3PP&CON:=2>"raient";<br />
+INF:=0>"";<br />
+PTP&PRS:=2>"ant","nc":"nqu";<br />
+PTP&MCL&SNG:=2>"u";<br />
+PTP&MCL&PLR:=2>"us";<br />
+PTP&FEM&SNG:=2>"ue";<br />
+PTP&FEM&PLR:=2>"ues";<br />
+2PS&IMP&PRS:=2>"s";<br />
+1PP&IMP&PRS:=2>"ons","nc":"nqu";<br />
+2PP&IMP&PRS:=2>"ez","nc":"nqu";<br />
+1PS&PRS&SUB:=2>"e","nc":"nqu";<br />
+2PS&PRS&SUB:=2>"es","nc":"nqu";<br />
+3PS&PRS&SUB:=2>"e","nc":"nqu";<br />
+1PP&PRS&SUB:=2>"ions","nc":"nqu";<br />
+2PP&PRS&SUB:=2>"iez","nc":"nqu";<br />
+3PP&PRS&SUB:=2>"ent","nc":"nqu";<br />
+1PS&PAS&NPFV&SUB:=2>"isse","nc":"nqu";<br />
+2PS&PAS&NPFV&SUB:=2>"isses","nc":"nqu";<br />
+3PS&PAS&NPFV&SUB:=2>"ît","nc":"nqu";<br />
+1PP&PAS&NPFV&SUB:=2>"issions","nc":"nqu";<br />
+2PP&PAS&NPFV&SUB:=2>"issiez","nc":"nqu";<br />
+3PP&PAS&NPFV&SUB:=2>"issent","nc":"nqu";<br />
+;<br /><br /><b>M220</b><br />Verbes en -(tt)re. (<i>abattre, combattre, débattre, ébattre, embattre, rabattre, rebattre	
+</i>)<br />1PS&PRS&IND:=3>"s";<br />
+2PS&PRS&IND:=3>"s";<br />
+3PS&PRS&IND:=3>"";<br />
+1PP&PRS&IND:=2>"ons";<br />
+2PP&PRS&IND:=2>"ez";<br />
+3PP&PRS&IND:=2>"ent";<br />
+1PS&PAS&NPFV&IND:=2>"ais";<br />
+2PS&PAS&NPFV&IND:=2>"ais";<br />
+3PS&PAS&NPFV&IND:=2>"ait";<br />
+1PP&PAS&NPFV&IND:=2>"ions";<br />
+2PP&PAS&NPFV&IND:=2>"iez";<br />
+3PP&PAS&NPFV&IND:=2>"aient";<br />
+1PS&PAS&PFV&IND:=2>"is";<br />
+2PS&PAS&PFV&IND:=2>"is";<br />
+3PS&PAS&PFV&IND:=2>"it";<br />
+1PP&PAS&PFV&IND:=2>"îmes";<br />
+2PP&PAS&PFV&IND:=2>"îtes";<br />
+3PP&PAS&PFV&IND:=2>"irent";<br />
+1PS&FUT&IND:=2>"rai";<br />
+2PS&FUT&IND:=2>"ras";<br />
+3PS&FUT&IND:=2>"ra";<br />
+1PP&FUT&IND:=2>"rons";<br />
+2PP&FUT&IND:=2>"rez";<br />
+3PP&FUT&IND:=2>"ront";<br />
+1PS&CON:=2>"rais";<br />
+2PS&CON:=2>"rais";<br />
+3PS&CON:=2>"rait";<br />
+1PP&CON:=2>"rions";<br />
+2PP&CON:=2>"riez";<br />
+3PP&CON:=2>"raient";<br />
+INF:=0>"";<br />
+PTP&PRS:=2>"ant";<br />
+PTP&MCL&SNG:=2>"u";<br />
+PTP&MCL&PLR:=2>"us";<br />
+PTP&FEM&SNG:=2>"ue";<br />
+PTP&FEM&PLR:=2>"ues";<br />
+2PS&IMP&PRS:=3>"s";<br />
+1PP&IMP&PRS:=2>"ons";<br />
+2PP&IMP&PRS:=2>"ez";<br />
+1PS&PRS&SUB:=2>"e";<br />
+2PS&PRS&SUB:=2>"es";<br />
+3PS&PRS&SUB:=2>"e";<br />
+1PP&PRS&SUB:=2>"ions";<br />
+2PP&PRS&SUB:=2>"iez";<br />
+3PP&PRS&SUB:=2>"ent";<br />
+1PS&PAS&NPFV&SUB:=2>"isse";<br />
+2PS&PAS&NPFV&SUB:=2>"isses";<br />
+3PS&PAS&NPFV&SUB:=2>"ît";<br />
+1PP&PAS&NPFV&SUB:=2>"issions";<br />
+2PP&PAS&NPFV&SUB:=2>"issiez";<br />
+3PP&PAS&NPFV&SUB:=2>"issent";<br />
+;<br /><br /><b>M221</b><br />Verbes en -(i)re. (<i>contredire, dédire, interdire, prédire	
+</i>)<br />1PS&PRS&IND:=2>"s";<br />
+2PS&PRS&IND:=2>"s";<br />
+3PS&PRS&IND:=2>"t";<br />
+1PP&PRS&IND:=2>"ons", "di":"dis";<br />
+2PP&PRS&IND:=2>"ez", "di":"dis";<br />
+3PP&PRS&IND:=2>"ent", "di":"dis";<br />
+1PS&PAS&NPFV&IND:=2>"ais", "di":"dis";<br />
+2PS&PAS&NPFV&IND:=2>"ais", "di":"dis";<br />
+3PS&PAS&NPFV&IND:=2>"ait", "di":"dis";<br />
+1PP&PAS&NPFV&IND:=2>"ions", "di":"dis";<br />
+2PP&PAS&NPFV&IND:=2>"iez", "di":"dis";<br />
+3PP&PAS&NPFV&IND:=2>"aient", "di":"dis";<br />
+1PS&PAS&PFV&IND:=2>"s";<br />
+2PS&PAS&PFV&IND:=2>"s";<br />
+3PS&PAS&PFV&IND:=2>"t";<br />
+1PP&PAS&PFV&IND:=3>"îmes";<br />
+2PP&PAS&PFV&IND:=3>"îtes";<br />
+3PP&PAS&PFV&IND:=2>"rent";<br />
+1PS&FUT&IND:=2>"rai";<br />
+2PS&FUT&IND:=2>"ras";<br />
+3PS&FUT&IND:=2>"ra";<br />
+1PP&FUT&IND:=2>"rons";<br />
+2PP&FUT&IND:=2>"rez";<br />
+3PP&FUT&IND:=2>"ront";<br />
+1PS&CON:=2>"rais";<br />
+2PS&CON:=2>"rais";<br />
+3PS&CON:=2>"rait";<br />
+1PP&CON:=2>"rions";<br />
+2PP&CON:=2>"riez";<br />
+3PP&CON:=2>"raient";<br />
+INF:=0>"";<br />
+PTP&PRS:=2>"ant", "di":"dis";<br />
+PTP&MCL&SNG:=2>"it";<br />
+PTP&MCL&PLR:=NULL;<br />
+PTP&FEM&SNG:=NULL;<br />
+PTP&FEM&PLR:=NULL;<br />
+2PS&IMP&PRS:=2>"s";<br />
+1PP&IMP&PRS:=2>"ons", "di":"dis";<br />
+2PP&IMP&PRS:=2>"ez", "di":"dis";<br />
+1PS&PRS&SUB:=2>"e", "di":"dis";<br />
+2PS&PRS&SUB:=2>"es", "di":"dis";<br />
+3PS&PRS&SUB:=2>"e", "di":"dis";<br />
+1PP&PRS&SUB:=2>"ions", "di":"dis";<br />
+2PP&PRS&SUB:=2>"iez", "di":"dis";<br />
+3PP&PRS&SUB:=2>"ent", "di":"dis";<br />
+1PS&PAS&NPFV&SUB:=3>"isse";<br />
+2PS&PAS&NPFV&SUB:=3>"isses";<br />
+3PS&PAS&NPFV&SUB:=3>"ît";<br />
+1PP&PAS&NPFV&SUB:=3>"issions";<br />
+2PP&PAS&NPFV&SUB:=3>"issiez";<br />
+3PP&PAS&NPFV&SUB:=3>"issent";<br />
+;<br /><br /><b>M222</b><br />Verbes en -(i)re (<i>sourire</i>)<br />1PS&PRS&IND:=2>"s";<br />
+2PS&PRS&IND:=2>"s";<br />
+3PS&PRS&IND:=2>"t";<br />
+1PP&PRS&IND:=2>"ons";<br />
+2PP&PRS&IND:=2>"ez";<br />
+3PP&PRS&IND:=2>"ent";<br />
+1PS&PAS&NPFV&IND:=2>"ais";<br />
+2PS&PAS&NPFV&IND:=2>"ais";<br />
+3PS&PAS&NPFV&IND:=2>"ait";<br />
+1PP&PAS&NPFV&IND:=2>"ions";<br />
+2PP&PAS&NPFV&IND:=2>"iez";<br />
+3PP&PAS&NPFV&IND:=2>"aient";<br />
+1PS&PAS&PFV&IND:=3>"is";<br />
+2PS&PAS&PFV&IND:=3>"is";<br />
+3PS&PAS&PFV&IND:=3>"it";<br />
+1PP&PAS&PFV&IND:=3>"îmes";<br />
+2PP&PAS&PFV&IND:=3>"îtes";<br />
+3PP&PAS&PFV&IND:=3>"irent";<br />
+1PS&FUT&IND:=2>"rai";<br />
+2PS&FUT&IND:=2>"ras";<br />
+3PS&FUT&IND:=2>"ra";<br />
+1PP&FUT&IND:=2>"rons";<br />
+2PP&FUT&IND:=2>"rez";<br />
+3PP&FUT&IND:=2>"ront";<br />
+1PS&CON:=2>"rais";<br />
+2PS&CON:=2>"rais";<br />
+3PS&CON:=2>"rait";<br />
+1PP&CON:=2>"rions";<br />
+2PP&CON:=2>"riez";<br />
+3PP&CON:=2>"raient";<br />
+INF:=0>"";<br />
+PTP&PRS:=2>"ant";<br />
+PTP&MCL&SNG:=2>"";<br />
+PTP&MCL&PLR:=NULL;<br />
+PTP&FEM&SNG:=NULL;<br />
+PTP&FEM&PLR:=NULL;<br />
+2PS&IMP&PRS:=2>"s";<br />
+1PP&IMP&PRS:=2>"ons";<br />
+2PP&IMP&PRS:=2>"ez";<br />
+1PS&PRS&SUB:=2>"e";<br />
+2PS&PRS&SUB:=2>"es";<br />
+3PS&PRS&SUB:=2>"e";<br />
+1PP&PRS&SUB:=2>"ions";<br />
+2PP&PRS&SUB:=2>"iez";<br />
+3PP&PRS&SUB:=2>"ent";<br />
+1PS&PAS&NPFV&SUB:=3>"isse";<br />
+2PS&PAS&NPFV&SUB:=3>"isses";<br />
+3PS&PAS&NPFV&SUB:=3>"ît";<br />
+1PP&PAS&NPFV&SUB:=3>"issions";<br />
+2PP&PAS&NPFV&SUB:=3>"issiez";<br />
+3PP&PAS&NPFV&SUB:=3>"issent";<br />
+;<br /><br /><b>M223</b><br />Verbes en -(oi)re. (<i>reboire	
+</i>)<br />1PS&PRS&IND:=2>"s";<br />
+2PS&PRS&IND:=2>"s";<br />
+3PS&PRS&IND:=2>"t";<br />
+1PP&PRS&IND:=2>"ons", "oi":"uv";<br />
+2PP&PRS&IND:=2>"ez", "oi":"uv";<br />
+3PP&PRS&IND:=2>"ent", "oi":"oiv";<br />
+1PS&PAS&NPFV&IND:=2>"ais", "oi":"uv";<br />
+2PS&PAS&NPFV&IND:=2>"ais", "oi":"uv";<br />
+3PS&PAS&NPFV&IND:=2>"ait", "oi":"uv";<br />
+1PP&PAS&NPFV&IND:=2>"ions", "oi":"uv";<br />
+2PP&PAS&NPFV&IND:=2>"iez", "oi":"uv";<br />
+3PP&PAS&NPFV&IND:=2>"aient", "oi":"uv";<br />
+1PS&PAS&PFV&IND:=4>"us";<br />
+2PS&PAS&PFV&IND:=4>"us";<br />
+3PS&PAS&PFV&IND:=4>"ut";<br />
+1PP&PAS&PFV&IND:=4>"ûmes";<br />
+2PP&PAS&PFV&IND:=4>"ûtes";<br />
+3PP&PAS&PFV&IND:=4>"urent";<br />
+1PS&FUT&IND:=2>"rai";<br />
+2PS&FUT&IND:=2>"ras";<br />
+3PS&FUT&IND:=2>"ra";<br />
+1PP&FUT&IND:=2>"rons";<br />
+2PP&FUT&IND:=2>"rez";<br />
+3PP&FUT&IND:=2>"ront";<br />
+1PS&CON:=2>"rais";<br />
+2PS&CON:=2>"rais";<br />
+3PS&CON:=2>"rait";<br />
+1PP&CON:=2>"rions";<br />
+2PP&CON:=2>"riez";<br />
+3PP&CON:=2>"raient";<br />
+INF:=0>"";<br />
+PTP&PRS:=2>"ant", "oi":"uv";<br />
+PTP&MCL&SNG:=4>"u";<br />
+PTP&MCL&PLR:=4>"us";<br />
+PTP&FEM&SNG:=4>"ue";<br />
+PTP&FEM&PLR:=4>"ues";<br />
+2PS&IMP&PRS:=2>"s";<br />
+1PP&IMP&PRS:=2>"ons", "oi":"uv";<br />
+2PP&IMP&PRS:=2>"ez", "oi":"uv";<br />
+1PS&PRS&SUB:=2>"ve";<br />
+2PS&PRS&SUB:=2>"ves";<br />
+3PS&PRS&SUB:=2>"ve";<br />
+1PP&PRS&SUB:=2>"ions", "oi":"uv";<br />
+2PP&PRS&SUB:=2>"iez", "oi":"uv";<br />
+3PP&PRS&SUB:=2>"ent", "oi":"oiv";<br />
+1PS&PAS&NPFV&SUB:=4>"usse";<br />
+2PS&PAS&NPFV&SUB:=4>"usses";<br />
+3PS&PAS&NPFV&SUB:=4>"ût";<br />
+1PP&PAS&NPFV&SUB:=4>"ussions";<br />
+2PP&PAS&NPFV&SUB:=4>"ussiez";<br />
+3PP&PAS&NPFV&SUB:=4>"ussent";<br />
+;<br /><br /><b>M224</b><br />Verbes en -(ai)re. (<i>complaire, déplaire, taire	
+</i>)<br />1PS&PRS&IND:=2>"s";<br />
+2PS&PRS&IND:=2>"s";<br />
+3PS&PRS&IND:=3>"ît";<br />
+1PP&PRS&IND:=2>"sons";<br />
+2PP&PRS&IND:=2>"sez";<br />
+3PP&PRS&IND:=2>"sent";<br />
+1PS&PAS&NPFV&IND:=2>"sais";<br />
+2PS&PAS&NPFV&IND:=2>"sais";<br />
+3PS&PAS&NPFV&IND:=2>"sait";<br />
+1PP&PAS&NPFV&IND:=2>"sions";<br />
+2PP&PAS&NPFV&IND:=2>"siez";<br />
+3PP&PAS&NPFV&IND:=2>"saient";<br />
+1PS&PAS&PFV&IND:=4>"us";<br />
+2PS&PAS&PFV&IND:=4>"us";<br />
+3PS&PAS&PFV&IND:=4>"ut";<br />
+1PP&PAS&PFV&IND:=4>"ûmes";<br />
+2PP&PAS&PFV&IND:=4>"ûtes";<br />
+3PP&PAS&PFV&IND:=4>"urent";<br />
+1PS&FUT&IND:=2>"rai";<br />
+2PS&FUT&IND:=2>"ras";<br />
+3PS&FUT&IND:=2>"ra";<br />
+1PP&FUT&IND:=2>"rons";<br />
+2PP&FUT&IND:=2>"rez";<br />
+3PP&FUT&IND:=2>"ront";<br />
+1PS&CON:=2>"rais";<br />
+2PS&CON:=2>"rais";<br />
+3PS&CON:=2>"rait";<br />
+1PP&CON:=2>"rions";<br />
+2PP&CON:=2>"riez";<br />
+3PP&CON:=2>"raient";<br />
+INF:=0>"";<br />
+PTP&PRS:=2>"sant";<br />
+PTP&MCL&SNG:=4>"u";<br />
+PTP&MCL&PLR:=NULL;<br />
+PTP&FEM&SNG:=NULL;<br />
+PTP&FEM&PLR:=NULL;<br />
+2PS&IMP&PRS:=2>"s";<br />
+1PP&IMP&PRS:=2>"sons";<br />
+2PP&IMP&PRS:=2>"sez";<br />
+1PS&PRS&SUB:=2>"se";<br />
+2PS&PRS&SUB:=2>"ses";<br />
+3PS&PRS&SUB:=2>"se";<br />
+1PP&PRS&SUB:=2>"sions";<br />
+2PP&PRS&SUB:=2>"siez";<br />
+3PP&PRS&SUB:=2>"sent";<br />
+1PS&PAS&NPFV&SUB:=4>"usse";<br />
+2PS&PAS&NPFV&SUB:=4>"usses";<br />
+3PS&PAS&NPFV&SUB:=4>"ût";<br />
+1PP&PAS&NPFV&SUB:=4>"ussions";<br />
+2PP&PAS&NPFV&SUB:=4>"ussiez";<br />
+3PP&PAS&NPFV&SUB:=4>"ussent";<br />
+;<br /><br /><b>M225</b><br />Verbes en -(oî)tre. (<i>décroître, recroître	
+</i>)<br />1PS&PRS&IND:=4>"is";<br />
+2PS&PRS&IND:=4>"is";<br />
+3PS&PRS&IND:=2>"";<br />
+1PP&PRS&IND:=4>"issons";<br />
+2PP&PRS&IND:=4>"issez";<br />
+3PP&PRS&IND:=4>"issent";<br />
+1PS&PAS&NPFV&IND:=4>"issais";<br />
+2PS&PAS&NPFV&IND:=4>"issais";<br />
+3PS&PAS&NPFV&IND:=4>"issait";<br />
+1PP&PAS&NPFV&IND:=4>"issions";<br />
+2PP&PAS&NPFV&IND:=4>"issiez";<br />
+3PP&PAS&NPFV&IND:=4>"issaient";<br />
+1PS&PAS&PFV&IND:=5>"us";<br />
+2PS&PAS&PFV&IND:=5>"us";<br />
+3PS&PAS&PFV&IND:=5>"ut";<br />
+1PP&PAS&PFV&IND:=5>"ûmes";<br />
+2PP&PAS&PFV&IND:=5>"ûtes";<br />
+3PP&PAS&PFV&IND:=5>"urent";<br />
+1PS&FUT&IND:=2>"rai";<br />
+2PS&FUT&IND:=2>"ras";<br />
+3PS&FUT&IND:=2>"ra";<br />
+1PP&FUT&IND:=2>"rons";<br />
+2PP&FUT&IND:=2>"rez";<br />
+3PP&FUT&IND:=2>"ront";<br />
+1PS&CON:=2>"rais";<br />
+2PS&CON:=2>"rais";<br />
+3PS&CON:=2>"rait";<br />
+1PP&CON:=2>"rions";<br />
+2PP&CON:=2>"riez";<br />
+3PP&CON:=2>"raient";<br />
+INF:=0>"";<br />
+PTP&PRS:=4>"issant";<br />
+PTP&MCL&SNG:=5>"u";<br />
+PTP&MCL&PLR:=5>"us";<br />
+PTP&FEM&SNG:=5>"ue";<br />
+PTP&FEM&PLR:=5>"ues";<br />
+2PS&IMP&PRS:=4>"is";<br />
+1PP&IMP&PRS:=4>"issons";<br />
+2PP&IMP&PRS:=4>"issez";<br />
+1PS&PRS&SUB:=4>"isse";<br />
+2PS&PRS&SUB:=4>"isses";<br />
+3PS&PRS&SUB:=4>"isse";<br />
+1PP&PRS&SUB:=4>"issions";<br />
+2PP&PRS&SUB:=4>"issiez";<br />
+3PP&PRS&SUB:=4>"issent";<br />
+1PS&PAS&NPFV&SUB:=5>"usse";<br />
+2PS&PAS&NPFV&SUB:=5>"usses";<br />
+3PS&PAS&NPFV&SUB:=5>"ût";<br />
+1PP&PAS&NPFV&SUB:=5>"ussions";<br />
+2PP&PAS&NPFV&SUB:=5>"ussiez";<br />
+3PP&PAS&NPFV&SUB:=5>"ussent";<br />
+;<br /><br /><b>M226</b><br />Verbes en -(ou)dre. (<i>découdre, recoudre	
+</i>)<br />1PS&PRS&IND:=2>"s";<br />
+2PS&PRS&IND:=2>"s";<br />
+3PS&PRS&IND:=2>"";<br />
+1PP&PRS&IND:=3>"sons";<br />
+2PP&PRS&IND:=3>"sez";<br />
+3PP&PRS&IND:=3>"sent";<br />
+1PS&PAS&NPFV&IND:=3>"sais";<br />
+2PS&PAS&NPFV&IND:=3>"sais";<br />
+3PS&PAS&NPFV&IND:=3>"sait";<br />
+1PP&PAS&NPFV&IND:=3>"sions";<br />
+2PP&PAS&NPFV&IND:=3>"siez";<br />
+3PP&PAS&NPFV&IND:=3>"saient";<br />
+1PS&PAS&PFV&IND:=3>"sis";<br />
+2PS&PAS&PFV&IND:=3>"sis";<br />
+3PS&PAS&PFV&IND:=3>"sit";<br />
+1PP&PAS&PFV&IND:=3>"sîmes";<br />
+2PP&PAS&PFV&IND:=3>"sîtes";<br />
+3PP&PAS&PFV&IND:=3>"sirent";<br />
+1PS&FUT&IND:=2>"rai";<br />
+2PS&FUT&IND:=2>"ras";<br />
+3PS&FUT&IND:=2>"ra";<br />
+1PP&FUT&IND:=2>"rons";<br />
+2PP&FUT&IND:=2>"rez";<br />
+3PP&FUT&IND:=2>"ront";<br />
+1PS&CON:=2>"rais";<br />
+2PS&CON:=2>"rais";<br />
+3PS&CON:=2>"rait";<br />
+1PP&CON:=2>"rions";<br />
+2PP&CON:=2>"riez";<br />
+3PP&CON:=2>"raient";<br />
+INF:=0>"";<br />
+PTP&PRS:=3>"sant";<br />
+PTP&MCL&SNG:=3>"su";<br />
+PTP&MCL&PLR:=3>"sus";<br />
+PTP&FEM&SNG:=3>"sue";<br />
+PTP&FEM&PLR:=3>"sues";<br />
+2PS&IMP&PRS:=2>"s";<br />
+1PP&IMP&PRS:=3>"sons";<br />
+2PP&IMP&PRS:=3>"sez";<br />
+1PS&PRS&SUB:=3>"se";<br />
+2PS&PRS&SUB:=3>"ses";<br />
+3PS&PRS&SUB:=3>"se";<br />
+1PP&PRS&SUB:=3>"sions";<br />
+2PP&PRS&SUB:=3>"siez";<br />
+3PP&PRS&SUB:=3>"sent";<br />
+1PS&PAS&NPFV&SUB:=3>"sisse";<br />
+2PS&PAS&NPFV&SUB:=3>"sisses";<br />
+3PS&PAS&NPFV&SUB:=3>"sît";<br />
+1PP&PAS&NPFV&SUB:=3>"sissions";<br />
+2PP&PAS&NPFV&SUB:=3>"sissiez";<br />
+3PP&PAS&NPFV&SUB:=3>"sissent";<br />
+;<br /><br /><b>M227</b><br />Verbes en -(o)re. (<i>déclore, éclore, enclore	
+</i>)<br />1PS&PRS&IND:=2>"s";<br />
+2PS&PRS&IND:=2>"s";<br />
+3PS&PRS&IND:=3>"ôt";<br />
+1PP&PRS&IND:=2>"sons";<br />
+2PP&PRS&IND:=2>"sez";<br />
+3PP&PRS&IND:=2>"sent";<br />
+1PS&PAS&NPFV&IND:=NULL;<br />
+2PS&PAS&NPFV&IND:=NULL;<br />
+3PS&PAS&NPFV&IND:=NULL;<br />
+1PP&PAS&NPFV&IND:=NULL;<br />
+2PP&PAS&NPFV&IND:=NULL;<br />
+3PP&PAS&NPFV&IND:=NULL;<br />
+1PS&PAS&PFV&IND:=NULL;<br />
+2PS&PAS&PFV&IND:=NULL;<br />
+3PS&PAS&PFV&IND:=NULL;<br />
+1PP&PAS&PFV&IND:=NULL;<br />
+2PP&PAS&PFV&IND:=NULL;<br />
+3PP&PAS&PFV&IND:=NULL;<br />
+1PS&FUT&IND:=2>"rai";<br />
+2PS&FUT&IND:=2>"ras";<br />
+3PS&FUT&IND:=2>"ra";<br />
+1PP&FUT&IND:=2>"rons";<br />
+2PP&FUT&IND:=2>"rez";<br />
+3PP&FUT&IND:=2>"ront";<br />
+1PS&CON:=2>"rais";<br />
+2PS&CON:=2>"rais";<br />
+3PS&CON:=2>"rait";<br />
+1PP&CON:=2>"rions";<br />
+2PP&CON:=2>"riez";<br />
+3PP&CON:=2>"raient";<br />
+INF:=0>"";<br />
+PTP&PRS:=2>"sant";<br />
+PTP&MCL&SNG:=2>"s";<br />
+PTP&MCL&PLR:=2>"s";<br />
+PTP&FEM&SNG:=2>"se";<br />
+PTP&FEM&PLR:=2>"ses";<br />
+2PS&IMP&PRS:=2>"s";<br />
+1PP&IMP&PRS:=NULL;<br />
+2PP&IMP&PRS:=NULL;<br />
+1PS&PRS&SUB:=2>"se";<br />
+2PS&PRS&SUB:=2>"ses";<br />
+3PS&PRS&SUB:=2>"se";<br />
+1PP&PRS&SUB:=2>"sions";<br />
+2PP&PRS&SUB:=2>"siez";<br />
+3PP&PRS&SUB:=2>"sent";<br />
+1PS&PAS&NPFV&SUB:=NULL;<br />
+2PS&PAS&NPFV&SUB:=NULL;<br />
+3PS&PAS&NPFV&SUB:=NULL;<br />
+1PP&PAS&NPFV&SUB:=NULL;<br />
+2PP&PAS&NPFV&SUB:=NULL;<br />
+3PP&PAS&NPFV&SUB:=NULL;<br />
+;<br /><br /><b>M228</b><br />Verbes en -(aî)tre (<i>paître</i>)<br />1PS&PRS&IND:=4>"is";<br />
+2PS&PRS&IND:=4>"is";<br />
+3PS&PRS&IND:=2>"";<br />
+1PP&PRS&IND:=4>"issons";<br />
+2PP&PRS&IND:=4>"issez";<br />
+3PP&PRS&IND:=4>"issent";<br />
+1PS&PAS&NPFV&IND:=4>"issais";<br />
+2PS&PAS&NPFV&IND:=4>"issais";<br />
+3PS&PAS&NPFV&IND:=4>"issait";<br />
+1PP&PAS&NPFV&IND:=4>"issions";<br />
+2PP&PAS&NPFV&IND:=4>"issiez";<br />
+3PP&PAS&NPFV&IND:=4>"issaient";<br />
+1PS&PAS&PFV&IND:=5>"us";<br />
+2PS&PAS&PFV&IND:=5>"us";<br />
+3PS&PAS&PFV&IND:=5>"ut";<br />
+1PP&PAS&PFV&IND:=5>"ûmes";<br />
+2PP&PAS&PFV&IND:=5>"ûtes";<br />
+3PP&PAS&PFV&IND:=5>"urent";<br />
+1PS&FUT&IND:=2>"rai";<br />
+2PS&FUT&IND:=2>"ras";<br />
+3PS&FUT&IND:=2>"ra";<br />
+1PP&FUT&IND:=2>"rons";<br />
+2PP&FUT&IND:=2>"rez";<br />
+3PP&FUT&IND:=2>"ront";<br />
+1PS&CON:=2>"rais";<br />
+2PS&CON:=2>"rais";<br />
+3PS&CON:=2>"rait";<br />
+1PP&CON:=2>"rions";<br />
+2PP&CON:=2>"riez";<br />
+3PP&CON:=2>"raient";<br />
+INF:=0>"";<br />
+PTP&PRS:=4>"issant";<br />
+PTP&MCL&SNG:=5>"u";<br />
+PTP&MCL&PLR:=5>"us";<br />
+PTP&FEM&SNG:=5>"ue";<br />
+PTP&FEM&PLR:=5>"ues";<br />
+2PS&IMP&PRS:=4>"is";<br />
+1PP&IMP&PRS:=4>"issons";<br />
+2PP&IMP&PRS:=4>"issez";<br />
+1PS&PRS&SUB:=4>"isse";<br />
+2PS&PRS&SUB:=4>"isses";<br />
+3PS&PRS&SUB:=4>"isse";<br />
+1PP&PRS&SUB:=4>"issions";<br />
+2PP&PRS&SUB:=4>"issiez";<br />
+3PP&PRS&SUB:=4>"issent";<br />
+1PS&PAS&NPFV&SUB:=5>"usse";<br />
+2PS&PAS&NPFV&SUB:=5>"usses";<br />
+3PS&PAS&NPFV&SUB:=5>"ût";<br />
+1PP&PAS&NPFV&SUB:=5>"ussions";<br />
+2PP&PAS&NPFV&SUB:=5>"ussiez";<br />
+3PP&PAS&NPFV&SUB:=5>"ussent";<br />
+;<br /><br /><b>M229</b><br />Verbes en -(ou)dre. (<i>remoudre	
+</i>)<br />1PS&PRS&IND:=2>"s";<br />
+2PS&PRS&IND:=2>"s";<br />
+3PS&PRS&IND:=2>"";<br />
+1PP&PRS&IND:=3>"lons";<br />
+2PP&PRS&IND:=3>"lez";<br />
+3PP&PRS&IND:=3>"lent";<br />
+1PS&PAS&NPFV&IND:=3>"lais";<br />
+2PS&PAS&NPFV&IND:=3>"lais";<br />
+3PS&PAS&NPFV&IND:=3>"lait";<br />
+1PP&PAS&NPFV&IND:=3>"lions";<br />
+2PP&PAS&NPFV&IND:=3>"liez";<br />
+3PP&PAS&NPFV&IND:=3>"laient";<br />
+1PS&PAS&PFV&IND:=3>"lus";<br />
+2PS&PAS&PFV&IND:=3>"lus";<br />
+3PS&PAS&PFV&IND:=3>"lut";<br />
+1PP&PAS&PFV&IND:=3>"lûmes";<br />
+2PP&PAS&PFV&IND:=3>"lûtes";<br />
+3PP&PAS&PFV&IND:=3>"lurent";<br />
+1PS&FUT&IND:=2>"rai";<br />
+2PS&FUT&IND:=2>"ras";<br />
+3PS&FUT&IND:=2>"ra";<br />
+1PP&FUT&IND:=2>"rons";<br />
+2PP&FUT&IND:=2>"rez";<br />
+3PP&FUT&IND:=2>"ront";<br />
+1PS&CON:=2>"rais";<br />
+2PS&CON:=2>"rais";<br />
+3PS&CON:=2>"rait";<br />
+1PP&CON:=2>"rions";<br />
+2PP&CON:=2>"riez";<br />
+3PP&CON:=2>"raient";<br />
+INF:=0>"";<br />
+PTP&PRS:=3>"lant";<br />
+PTP&MCL&SNG:=3>"lu";<br />
+PTP&MCL&PLR:=3>"lus";<br />
+PTP&FEM&SNG:=3>"lue";<br />
+PTP&FEM&PLR:=3>"lues";<br />
+2PS&IMP&PRS:=2>"s";<br />
+1PP&IMP&PRS:=3>"lons";<br />
+2PP&IMP&PRS:=3>"lez";<br />
+1PS&PRS&SUB:=3>"le";<br />
+2PS&PRS&SUB:=3>"les";<br />
+3PS&PRS&SUB:=3>"le";<br />
+1PP&PRS&SUB:=3>"lions";<br />
+2PP&PRS&SUB:=3>"liez";<br />
+3PP&PRS&SUB:=3>"lent";<br />
+1PS&PAS&NPFV&SUB:=3>"lusse";<br />
+2PS&PAS&NPFV&SUB:=3>"lusses";<br />
+3PS&PAS&NPFV&SUB:=3>"lût";<br />
+1PP&PAS&NPFV&SUB:=3>"lussions";<br />
+2PP&PAS&NPFV&SUB:=3>"lussiez";<br />
+3PP&PAS&NPFV&SUB:=3>"lussent";<br />
+;<br /><br /><b>M230</b><br />Verbes en -(i)re. (<i>circoncire, déconfire, frire	
+</i>)<br />1PS&PRS&IND:=2>"s";<br />
+2PS&PRS&IND:=2>"s";<br />
+3PS&PRS&IND:=2>"t";<br />
+1PP&PRS&IND:=2>"sons";<br />
+2PP&PRS&IND:=2>"sez";<br />
+3PP&PRS&IND:=2>"sent";<br />
+1PS&PAS&NPFV&IND:=2>"sais";<br />
+2PS&PAS&NPFV&IND:=2>"sais";<br />
+3PS&PAS&NPFV&IND:=2>"sait";<br />
+1PP&PAS&NPFV&IND:=2>"sions";<br />
+2PP&PAS&NPFV&IND:=2>"siez";<br />
+3PP&PAS&NPFV&IND:=2>"saient";<br />
+1PS&PAS&PFV&IND:=2>"s";<br />
+2PS&PAS&PFV&IND:=2>"s";<br />
+3PS&PAS&PFV&IND:=2>"t";<br />
+1PP&PAS&PFV&IND:=3>"îmes";<br />
+2PP&PAS&PFV&IND:=3>"îtes";<br />
+3PP&PAS&PFV&IND:=2>"rent";<br />
+1PS&FUT&IND:=2>"rai";<br />
+2PS&FUT&IND:=2>"ras";<br />
+3PS&FUT&IND:=2>"ra";<br />
+1PP&FUT&IND:=2>"rons";<br />
+2PP&FUT&IND:=2>"rez";<br />
+3PP&FUT&IND:=2>"ront";<br />
+1PS&CON:=2>"rais";<br />
+2PS&CON:=2>"rais";<br />
+3PS&CON:=2>"rait";<br />
+1PP&CON:=2>"rions";<br />
+2PP&CON:=2>"riez";<br />
+3PP&CON:=2>"raient";<br />
+INF:=0>"";<br />
+PTP&PRS:=2>"sant";<br />
+PTP&MCL&SNG:=2>"t";<br />
+PTP&MCL&PLR:=2>"ts";<br />
+PTP&FEM&SNG:=2>"te";<br />
+PTP&FEM&PLR:=2>"tes";<br />
+2PS&IMP&PRS:=2>"s";<br />
+1PP&IMP&PRS:=2>"sons";<br />
+2PP&IMP&PRS:=2>"sez";<br />
+1PS&PRS&SUB:=2>"se";<br />
+2PS&PRS&SUB:=2>"ses";<br />
+3PS&PRS&SUB:=2>"se";<br />
+1PP&PRS&SUB:=2>"sions";<br />
+2PP&PRS&SUB:=2>"siez";<br />
+3PP&PRS&SUB:=2>"sent";<br />
+1PS&PAS&NPFV&SUB:=2>"sse";<br />
+2PS&PAS&NPFV&SUB:=2>"sses";<br />
+3PS&PAS&NPFV&SUB:=3>"ît";<br />
+1PP&PAS&NPFV&SUB:=2>"ssions";<br />
+2PP&PAS&NPFV&SUB:=2>"ssiez";<br />
+3PP&PAS&NPFV&SUB:=2>"ssent";<br />
+;<br /><br /><b>M231</b><br />Adjectifs en -ou (<i>fou, mou</i>)<br />MCL&SNG:=0>"";<br />
+FEM&SNG:=1>"lle";<br />
+MCL&PLR:=0>"s";<br />
+FEM&PLR:=0>"lles";<br /><br /><b>M232</b><br />Adjectifs en -s (<i>bas, gras, las, épais, gros, métis</i>)<br />MCL&SNG:=0>"";<br />
+FEM&SNG:=0>"se";<br />
+MCL&PLR:=0>"";<br />
+FEM&PLR:=0>"ses";<br /><br /><b>M233</b><br />Adjectifs en -c (<i>blanc, franc</i>)<br />MCL&SNG:=0>"";<br />
+FEM&SNG:=0>"he";<br />
+MCL&PLR:=0>"s";<br />
+FEM&PLR:=0>"hes";<br /><br /><b>M234</b><br />Adjectifs en -c (<i>ammoniac, caduc, franc, public</i>)<br />MCL&SNG:=0>"";<br />
+FEM&SNG:=1>"que";<br />
+MCL&PLR:=0>"s";<br />
+FEM&PLR:=1>"ques";<br /><br /><b>M235</b><br />Adjectifs en -teur (<i>consolateur, destructeur</i>)<br />MCL&SNG:=0>"";<br />
+FEM&SNG:=3>"rice";<br />
+MCL&PLR:=0>"s";<br />
+FEM&PLR:=3>"rices";<br /><br /><b>M236</b><br />Adjectifs en -eur (<i>enchanteur, pécheur, vengeur</i>)<br />MCL&SNG:=0>"";<br />
+FEM&SNG:=3>"eresse";<br />
+MCL&PLR:=0>"s";<br />
+FEM&PLR:=3>"eresses";<br /><br /><b>M237</b><br />Féminin en -elle et pluriel en -s (<i>colonel</i>)<br />MCL&SNG:=0>"";<br />
+FEM&SNG:=0>"le";<br />
+MCL&PLR:=0>"s";<br />
+FEM&PLR:=0>"les";<br />
+;<br /><br /><b>M238</b><br />Féminin en -elle et pluriel en -x (masculin) et -s (féminin) (<i>jumeau</i>)<br />MCL&SNG:=0>"";<br />
+FEM&SNG:=2>"lle";<br />
+MCL&PLR:=0>"x";<br />
+FEM&PLR:=2>"lles";<br /><br /><b>M239</b><br />Féminin en -ette et pluriel en -s (<i>minet</i>)<br />MCL&SNG:=0>"";<br />
+FEM&SNG:=0>"te";<br />
+MCL&PLR:=0>"s";<br />
+FEM&PLR:=0>"tes";<br /><br /><b>M240</b><br />Féminin en -ve et pluriel en -s (<i>veuf, captif</i>)<br />MCL&SNG:=0>"";<br />
+FEM&SNG:=1>"ve";<br />
+MCL&PLR:=0>"s";<br />
+FEM&PLR:=1>"ves";<br /><br /><b>M241</b><br />Féminin en -se (<i>époux, envieux</i>)<br />MCL&SNG:=0>"";<br />
+FEM&SNG:=1>"se";<br />
+MCL&PLR:=0>"";<br />
+FEM&PLR:=1>"ses";<br /><br /><b>M242</b><br />Féminin en -que (<i>Franc, Turc</i>)<br />MCL&SNG:=0>"";<br />
+FEM&SNG:=1>"que";<br />
+MCL&PLR:=0>"s";<br />
+FEM&PLR:=1>"ques";<br /><br /><b>M243</b><br />Féminin en -trice (<i>aviateur, bienfaiteur, traducteur</i>)<br />MCL&SNG:=0>"";<br />
+FEM&SNG:=3>"rice";<br />
+MCL&PLR:=0>"s";<br />
+FEM&PLR:=3>"rices";<br /><br /><b>M244</b><br />Féminin en -esse (<i>âne, diable, mulâtre</i>)<br />MCL&SNG:=0>"";<br />
+FEM&SNG:=0>"sse";<br />
+MCL&PLR:=0>"s";<br />
+FEM&PLR:=0>"sses";<br /><br /><b>M253</b><br />Pluriel en -men sans flexion de genre (cameraman) (<i>cameraman</i>)<br />SNG:=0>"";<br />
+PLR:="man">"men";<br /><br /><b>M257</b><br />masculin singular and plural no form change (<i>écossais, suédois</i>)<br />MCL&SNG:=0>"";<br />
+FEM&SNG:=0>"e";<br />
+MCL&PLR:=0>"";<br />
+FEM&PLR:=0>"es";<br />
+;<br /><br /><b>M259</b><br />3e groupe - absoudre (<i>dissoudre</i>)<br />INF:=0>"";<br />PTP&MCL:=3>"s";<br /> PTP&MCL&PLR:=3>"s";<br /> PTP&FEM:=3>"te";<br /> PTP&FEM&PLR:=3>"tes";<br /> 1PS&PRS&IND:=3>"s";<br /> 2PS&PRS&IND:=3>"s";<br /> 3PS&PRS&IND:=3>"t";<br /> 1PP&PRS&IND:=4>"lvons";<br /> 2PP&PRS&IND:=4>"lvez";<br /> 3PP&PRS&IND:=4>"lvent";<br /> 1PS&PAS&NPFV&IND:=4>"lvais";<br /> 2PS&PAS&NPFV&IND:=4>"lvais";<br /> 3PS&PAS&NPFV&IND:=4>"lvait";<br /> 1PP&PAS&NPFV&IND:=4>"lvions";<br /> 2PP&PAS&NPFV&IND:=4>"lviez";<br /> 3PP&PAS&NPFV&IND:=4>"lvaient";<br /> 1PS&FUT&IND:=1>"ai";<br /> 2PS&FUT&IND:=1>"as";<br /> 3PS&FUT&IND:=1>"a";<br /> 1PP&FUT&IND:=1>"ons";<br /> 2PP&FUT&IND:=1>"ez";<br /> 3PP&PRS&IND:=1>"ont";<br /> 1PS&PRS&CON:=1>"ais";<br /> 2PS&PRS&CON:=1>"ais";<br /> 3PS&PRS&CON:=1>"ait";<br /> 1PP&PRS&CON:=1>"ions";<br /> 2PP&PRS&CON:=1>"iez";<br /> 3PP&PRS&CON:=1>"aient";<br /> 1PS&PRS&SUB:=4>"lve";<br /> 2PS&PRS&SUB:=4>"lves";<br /> 3PS&PRS&SUB:=4>"lve";<br /> 1PP&PRS&SUB:=4>"lvions";<br /> 2PP&PRS&SUB:=4>"lviez";<br /> 3PP&PRS&SUB:=4>"lvent";<br /> 2PS&PRS&IMP:=3>"s";<br /> 1PP&PRS&IMP:=4>"lvons";<br /> 2PP&PRS&IMP:=4>"lvez";<br /><br /><b>M260</b><br />3e groupe - advenir (<i>advenir</i>)<br />INF:=0>"";<br />
+
+3PS&PRS&IND:="enir">"ient";<br />
+3PP&PRS&IND:="enir">"iennent";<br />
+
+3PS&PAS&NPFV&IND:="ir">"ait";<br />
+3PP&PAS&NPFV&IND:="ir">"aient";<br />
+
+3PS&PAS&IND:="enir">"int";<br />
+3PP&PAS&IND:="enir">"inrent";<br />
+
+3PS&FUT&IND:="enir">"iendra";<br />
+3PP&PRS&IND:="enir">"iendront";<br />
+
+3PS&PRS&CON:="enir">"iendrait";<br />
+3PP&PRS&CON:="enir">"iendraient";<br />
+
+3PS&PRS&SUB:="enir">"ienne";<br />
+3PP&PRS&SUB:="enir">"iennent";<br />
+
+3PS&PAS&NPFV&SUB:="enir">"înt";<br />
+3PP&PAS&NPFV&SUB:="enir">"inssent";<br />
+
+PTP&MCL:="ir">"u";<br />
+PTP&PLR:="ir">"us";<br />
+PTP&FEM:="ir">"ue";<br />
+PTP&FEM&PLR:="ir">"ues";<br /><br /><b>M261</b><br />écossais, suédois (<i>anglais, français, ecossais</i>)<br />MCL&SNG:=0>"";<br />
+FEM&SNG:=0>"e";<br />
+MCL&PLR:=0>"";<br />
+FEM&PLR:=0>"es";<br />
+;<br /><br /><b>M264</b><br />1er groupe - régner (<i>régler,régner, célébrer, ébrécher</i>)<br />INF:=0>"";<br />
+GER:="er">"ant";<br />
+PTP&MCL&SNG:="er">"é";<br />
+PTP&MCL&PLR:="er">"és";<br />
+PTP&FEM&SNG:="er">"ée";<br />
+PTP&FEM&PLR:="er">"ées";<br />
+
+1PS&PRS&IND:=[-5]:"è","er">"e";<br />
+2PS&PRS&IND:=[-5]:"è","er">"es";<br />
+3PS&PRS&IND:=[-5]:"è","er">"e";<br />
+1PP&PRS&IND:="er">"ons";<br />
+2PP&PRS&IND:="er">"ez";<br />
+3PP&PRS&IND:=[-5]:"è","er">"ent";<br />
+
+1PS&PAS&NPFV&IND:="er">"ais";<br />
+2PS&PAS&NPFV&IND:="er">"ais";<br />
+3PS&PAS&NPFV&IND:="er">"ait";<br />
+1PP&PAS&NPFV&IND:="er">"ions";<br />
+2PP&PAS&NPFV&IND:="er">"iez";<br />
+3PP&PAS&NPFV&IND:="er">"aient";<br />
+
+1PS&PAS&PFV&IND:="er">"ai";<br />
+2PS&PAS&PFV&IND:="er">"as";<br />
+3PS&PAS&PFV&IND:="er">"a";<br />
+1PP&PAS&PFV&IND:="er">"âmes";<br />
+2PP&PAS&PFV&IND:="er">"âtes";<br />
+3PP&PAS&PFV&IND:="er">"èrent";<br />
+
+1PS&FUT&IND:=0>"ai";<br />
+2PS&FUT&IND:=0>"as";<br />
+3PS&FUT&IND:=0>"a";<br />
+1PP&FUT&IND:=0>"ons";<br />
+2PP&FUT&IND:=0>"ez";<br />
+3PP&FUT&IND:=0>"ont";<br />
+
+1PS&PRS&CON:=0>"ais";<br />
+2PS&PRS&CON:=0>"ais";<br />
+3PS&PRS&CON:=0>"ait";<br />
+1PP&PRS&CON:=0>"ions";<br />
+2PP&PRS&CON:=0>"iez";<br />
+3PP&PRS&CON:=0>"aient";<br />
+
+1PS&PRS&SUB:="er">"e";<br />
+2PS&PRS&SUB:="er">"es";<br />
+3PS&PRS&SUB:="er">"e";<br />
+1PP&PRS&SUB:="er">"ions";<br />
+2PP&PRS&SUB:="er">"iez";<br />
+3PP&PRS&SUB:="er">"ent";<br />
+
+1PS&PAS&NPFV&SUB:="er">"asse";<br />
+2PS&PAS&NPFV&SUB:="er">"asses";<br />
+3PS&PAS&NPFV&SUB:="er">"ât";<br />
+1PP&PAS&NPFV&SUB:="er">"assions";<br />
+2PP&PAS&NPFV&SUB:="er">"assiez";<br />
+3PP&PAS&NPFV&SUB:="er">"assent";<br />
+
+2PS&PRS&IMP:=[-5]:"è","er">"e";<br />
+1PP&PRS&IMP:="er">"ons";<br />
+2PP&PRS&IMP:="er">"ez";<br />
+;<br /><br /><b>M265</b><br />1er groupe - distinguer (<i>distinguer, domestiquer
+</i>)<br />INF:=0>"";<br />
+GER:=2>"ant";<br />
+PTP&MCL&SNG:=2>"é";<br />
+PTP&MCL&PLR:=2>"és";<br />
+PTP&FEM&SNG:=2>"ée";<br />
+PTP&FEM&PLR:=2>"ées";<br />
+
+1PS&PRS&IND:=2>"e";<br />
+2PS&PRS&IND:=2>"es";<br />
+3PS&PRS&IND:=2>"e";<br />
+1PP&PRS&IND:=2>"ons";<br />
+2PP&PRS&IND:=2>"ez";<br />
+3PP&PRS&IND:=2>"ent";<br />
+
+1PS&PAS&NPFV&IND:=2>"ais";<br />
+2PS&PAS&NPFV&IND:=2>"ais";<br />
+3PS&PAS&NPFV&IND:=2>"ait";<br />
+1PP&PAS&NPFV&IND:=2>"ions";<br />
+2PP&PAS&NPFV&IND:=2>"iez";<br />
+3PP&PAS&NPFV&IND:=2>"aient";<br />
+
+1PS&PAS&PFV&IND:=2>"ai";<br />
+2PS&PAS&PFV&IND:=2>"as";<br />
+3PS&PAS&PFV&IND:=2>"a";<br />
+1PP&PAS&PFV&IND:=2>"âmes";<br />
+2PP&PAS&PFV&IND:=2>"âtes";<br />
+3PP&PAS&PFV&IND:=2>"èrent";<br />
+
+1PS&FUT&IND:=2>"erai";<br />
+2PS&FUT&IND:=2>"eras";<br />
+3PS&FUT&IND:=2>"era";<br />
+1PP&FUT&IND:=2>"erons";<br />
+2PP&FUT&IND:=2>"erez";<br />
+3PP&FUT&IND:=2>"eront";<br />
+
+1PS&CON:=2>"erais";<br />
+2PS&CON:=2>"erais";<br />
+3PS&CON:=2>"erait";<br />
+1PP&CON:=2>"erions";<br />
+2PP&CON:=2>"eriez";<br />
+3PP&CON:=2>"eraient";<br />
+
+2PS&IMP&PRS:=2>"e";<br />
+1PP&IMP&PRS:=2>"ons";<br />
+2PP&IMP&PRS:=2>"ez";<br />
+
+1PS&PRS&SUB:=2>"e";<br />
+2PS&PRS&SUB:=2>"es";<br />
+3PS&PRS&SUB:=2>"e";<br />
+1PP&PRS&SUB:=2>"ions";<br />
+2PP&PRS&SUB:=2>"iez";<br />
+3PP&PRS&SUB:=2>"ent";<br />
+
+1PS&PAS&NPFV&SUB:=2>"asse";<br />
+2PS&PAS&NPFV&SUB:=2>"asses";<br />
+3PS&PAS&NPFV&SUB:=2>"ât";<br />
+1PP&PAS&NPFV&SUB:=2>"assions";<br />
+2PP&PAS&NPFV&SUB:=2>"assiez";<br />
+3PP&PAS&NPFV&SUB:=2>"assent";<br />
+;<br /><br /><b>M266</b><br />1er groupe - aimer (<i>payer, bégayer, enrayer</i>)<br />INF:=0>"";<br />
+GER:=2>"ant";<br />
+PTP&MCL&SNG:=2>"é";<br />
+PTP&MCL&PLR:=2>"és";<br />
+PTP&FEM&SNG:=2>"ée";<br />
+PTP&FEM&PLR:=2>"ées";<br />
+
+1PS&PRS&IND:=2>"e";<br />
+2PS&PRS&IND:=2>"es";<br />
+3PS&PRS&IND:=2>"e";<br />
+1PP&PRS&IND:=2>"ons";<br />
+2PP&PRS&IND:=2>"ez";<br />
+3PP&PRS&IND:=2>"ent";<br />
+1PS&PRS&IND&ALT:="ayer">"aie";<br />
+2PS&PRS&IND&ALT:="ayer">"aies";<br />
+3PS&PRS&IND&ALT:="ayer">"aie";<br />
+3PP&PRS&IND&ALT:="ayer">"aient";<br />
+
+1PS&PAS&NPFV&IND:=2>"ais";<br />
+2PS&PAS&NPFV&IND:=2>"ais";<br />
+3PS&PAS&NPFV&IND:=2>"ait";<br />
+1PP&PAS&NPFV&IND:=2>"ions";<br />
+2PP&PAS&NPFV&IND:=2>"iez";<br />
+3PP&PAS&NPFV&IND:=2>"aient";<br />
+
+1PS&PAS&PFV&IND:=2>"ai";<br />
+2PS&PAS&PFV&IND:=2>"as";<br />
+3PS&PAS&PFV&IND:=2>"as";<br />
+1PP&PAS&PFV&IND:=2>"âmes";<br />
+2PP&PAS&PFV&IND:=2>"âtes";<br />
+3PP&PAS&PFV&IND:=2>"èrent";<br />
+
+1PS&FUT&IND:=0>"ai";<br />
+2PS&FUT&IND:=0>"as";<br />
+3PS&FUT&IND:=0>"a";<br />
+1PP&FUT&IND:=0>"ons";<br />
+2PP&FUT&IND:=0>"ez";<br />
+3PP&FUT&IND:=0>"ont";<br />
+1PS&FUT&IND&ALT:="ayer">"aierai";<br />
+2PS&FUT&IND&ALT:="ayer">"aieras";<br />
+3PS&FUT&IND&ALT:="ayer">"aiera";<br />
+1PP&FUT&IND&ALT:="ayer">"aierons";<br />
+2PP&FUT&IND&ALT:="ayer">"aierez";<br />
+3PP&FUT&IND&ALT:="ayer">"aieront";<br />
+
+1PS&PRS&CON:=0>"ais";<br />
+2PS&PRS&CON:=0>"ais";<br />
+3PS&PRS&CON:=0>"ait";<br />
+1PP&PRS&CON:=0>"ions";<br />
+2PP&PRS&CON:=0>"iez";<br />
+3PP&PRS&CON:=0>"aient";<br />
+1PS&PRS&CON&ALT:="ayer">"aierais";<br />
+2PS&PRS&CON&ALT:="ayer">"aierais";<br />
+3PS&PRS&CON&ALT:="ayer">"aierait";<br />
+1PP&PRS&CON&ALT:="ayer">"aierions";<br />
+2PP&PRS&CON&ALT:="ayer">"aieriez";<br />
+3PP&PRS&CON&ALT:="ayer">"aieraient";<br />
+
+1PS&PRS&SUB:=2>"e";<br />
+2PS&PRS&SUB:=2>"es";<br />
+3PS&PRS&SUB:=2>"e";<br />
+1PP&PRS&SUB:=2>"ions";<br />
+2PP&PRS&SUB:=2>"iez";<br />
+3PP&PRS&SUB:=2>"ent";<br />
+1PS&PRS&SUB&ALT:="ayer">"aie";<br />
+2PS&PRS&SUB&ALT:="ayer">"aies";<br />
+3PS&PRS&SUB&ALT:="ayer">"aie";<br />
+3PP&PRS&SUB&ALT:="ayer">"aient";<br />
+
+1PS&PAS&NPFV&SUB:=2>"asse";<br />
+2PS&PAS&NPFV&SUB:=2>"asses";<br />
+3PS&PAS&NPFV&SUB:=2>"ât";<br />
+1PP&PAS&NPFV&SUB:=2>"assions";<br />
+2PP&PAS&NPFV&SUB:=2>"assiez";<br />
+3PP&PAS&NPFV&SUB:=2>"assent";<br />
+
+2PS&PRS&IMP:=2>"e";<br />
+2PS&PRS&IMP&ALT:="ayer">"aie";<br />
+1PP&PRS&IMP:=2>"ons";<br />
+2PP&PRS&IMP:=1>"z";<br />
+;<br /><br /><b>M268</b><br />Noms en -eur (<i>enchanteur, pécheur</i>)<br />MCL&SNG:=0>"";<br />
+FEM&SNG:="eur">"eresse";<br />
+MCL&PLR:=0>"s";<br />
+FEM&PLR:="eur">"eresses";<br />
+;<br /><br /><b>M270</b><br />Féminin en -ette et pluriel en -s (<i>préfet</i>)<br />MCL&SNG:=0>"";<br />
+FEM&SNG:=2>"ète";<br />
+MCL&PLR:=0>"s";<br />
+FEM&PLR:=2>"ètes";<br />
+;<br /><br /><b>M281</b><br />3e groupe - déchoir (<i>déchoir, choir</i>)<br />INF:=0>"";<br />
+
+PTP&MCL&SNG:=3>"u";<br />
+PTP&MCL&PLR:=3>"us";<br />
+PTP&FEM&SNG:=3>"ue";<br />
+PTP&FEM&PLR:=3>"ues";<br />
+
+1PS&PRS&IND:=3>"ois";<br />
+2PS&PRS&IND:=3>"ois";<br />
+3PS&PRS&IND:=3>"oit";<br />
+1PP&PRS&IND:=3>"oyons";<br />
+2PP&PRS&IND:=3>"oyez";<br />
+3PP&PRS&IND:=3>"oient";<br />
+
+1PS&PAS&NPFV&IND:=3>"usse";<br />
+2PS&PAS&NPFV&IND:=3>"oies";<br />
+3PS&PAS&NPFV&IND:=3>"ût";<br />
+1PP&PAS&NPFV&IND:=3>"ussions";<br />
+2PP&PAS&NPFV&IND:=3>"ussiez";<br />
+3PP&PAS&NPFV&IND:=3>"ussent";<br />
+
+1PS&PAS&PFV&IND:=3>"us";<br />
+2PS&PAS&PFV&IND:=3>"us";<br />
+3PS&PAS&PFV&IND:=3>"ut";<br />
+1PP&PAS&PFV&IND:=3>"ûmes";<br />
+2PP&PAS&PFV&IND:=3>"ûtes";<br />
+3PP&PAS&PFV&IND:=3>"urent";<br />
+
+1PS&FUT&IND:=3>"oirai";<br />
+2PS&FUT&IND:=3>"oiras";<br />
+3PS&FUT&IND:=3>"oira";<br />
+1PP&FUT&IND:=3>"oirons";<br />
+2PP&FUT&IND:=3>"oirez";<br />
+3PP&FUT&IND:=3>"oiront";<br />
+
+1PS&PRS&CON:=3>"oirais";<br />
+2PS&PRS&CON:=3>"oirais";<br />
+3PS&PRS&CON:=3>"oirait";<br />
+1PP&PRS&CON:=3>"oirions";<br />
+2PP&PRS&CON:=3>"oiriez";<br />
+3PP&PRS&CON:=3>"oiraient";<br />
+
+1PS&PRS&SUB:=3>"oie";<br />
+2PS&PRS&SUB:=3>"oies";<br />
+3PS&PRS&SUB:=3>"oie";<br />
+1PP&PRS&SUB:=3>"oyions";<br />
+2PP&PRS&SUB:=3>"oyiez";<br />
+3PP&PRS&SUB:=6>"oient";<br />
+
+1PS&PAS&NPFV&SUB:=3>"usse";<br />
+2PS&PAS&NPFV&SUB:=3>"usses";<br />
+3PS&PAS&NPFV&SUB:=3>"ût";<br />
+1PP&PAS&NPFV&SUB:=3>"ussions";<br />
+2PP&PAS&NPFV&SUB:=3>"ussiez";<br />
+3PP&PAS&NPFV&SUB:=3>"ussent";<br />
+;<br /><br /><b>M287</b><br />archinul (<i>archinul</i>)<br />MCL&SNG:=>"";<br />
+MCL&FEM:=>"le";<br />
+MCL&PLR:=>"s";<br />
+FEM&PLR:=>"les";<br />
+;<br /><br /></body>
+<html>

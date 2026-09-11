@@ -1,0 +1,67 @@
+﻿; RuleSet:(MX)TGrammer
+; User:Marsel Pretorius (wawiel)
+; Date:11.56.2013 at 01:56:47
+
+; "TGrammer"
+; MX
+agt(%x,V;%y,N):=VS(%x,PER=%y;%y,-CAS,+CAS=NOM); agt(kill,he) > VS(vermoor,hy)
+aoj(%x;%y,N):=VP(VB(?[is],?[[]],?LEX=V,?POS=COP,PER=%y,att=%x;%x,-CAS,+CAS=NOM);%y,-CAS,+CAS=NOM,DIS=BEF); aoj(beautiful,it) > VP(VB(is,mooi),dit)
+ben(%x;%y):=XA(%x;PC([vir],LEX=P,POS=PRE;%y,-CAS,+CAS=OBL)); ben(boek,John) > XA(boek,PC(vir,John))
+cnt(%x,N;%y,N):=NA(%x;PC([oor],LEX=P,POS=PRE;%y,-CAS,+CAS=OBL)); cnt(boek,Parys) > NA(boek,PC(omtrent,Parys))
+man(%x,J;%y,A):=XA(%x;%y,DIS=BEF); man(beautiful,extremely) > XA(beautiful,extremely)
+man(%x,V;%y,A):=XA(%x;%y); man(beautiful,extremely) > XA(beautiful,extremely)
+man(%x;%y,N,@with):=XA(%x;PC([met],LEX=P,POS=PRE;%y,-CAS,+CAS=OBL),+DIS=BEF); man(kill,knife) > XA(vermoor,PC(met,mes))
+mod(%x,N;%y,J):=NA(%x;%y,DIS=BEF,CAS=GEN); mod(beautiful,book) > NA(mooi,boek)
+mod(%x,N;%y,N):=NA(%x;PC([van],LEX=P,POS=PRE;%y)); mod(book,John) > NA(book,PC(van,John))
+obj(%x,V,{@past|@future};%y,N):=VC(%x;%y,-CAS,+CAS=OBL,+DIS=BEF); obj(kill,Mary) > VC(vermoor,Mary)
+obj(%x,V;%y,N):=VC(%x;%y,-CAS,+CAS=OBL); obj(kill,Mary) > VC(kill,Mary)
+plc(%x;%y,N,@behind):=XA(%x;PC([agter],LEX=P,POS=PRE;%y,-CAS,+CAS=OBL)); plc(book,table.@behind) > XA(boek,PC(agter,tafe))
+plc(%x;%y,N,@beside):=XA(%x;PC([langs],LEX=P,POS=PRE;%y,-CAS,+CAS=OBL)); plc(book,table.@beside) > XA(boek,PC(langs,tafe))
+plc(%x;%y,N,@far_from):=XA(%x;PC([ver van],LEX=P,POS=PRE;%y,-CAS,+CAS=OBL)); plc(book,table.@far_from) > XA(boek,PC(ver vanaf,tafel))
+plc(%x;%y,N,@from):=XA(%x;PC([vanaf],LEX=P,POS=PRE;%y,-CAS,+CAS=OBL)); plc(train,Paris.@from) > XA(trein,PC(vanaf,Parys))
+plc(%x;%y,N,@in_front_of):=XA(%x;PC([voor],LEX=P,POS=PRE;%y,-CAS,+CAS=OBL)); plc(book,table.@in_front_of) > XA(boek,PC(voor,tafel))
+plc(%x;%y,N,@near):=XA(%x;PC([naby],LEX=P,POS=PRE;%y,-CAS,+CAS=OBL)); plc(book,table.@near) > XA(boek,PC(naby,tafel))
+plc(%x;%y,N,@on):=XA(%x;PC([op],LEX=P,POS=PRE;%y,-CAS,+CAS=OBL)); plc(book,table.@on) > XA(boek,PC(op,tafel))
+plc(%x;%y,N,@to):=XA(%x;PC([na],LEX=P,POS=PRE;%y,-CAS,+CAS=OBL)); plc(train,Paris.@to) > XA(trein,PC(na,Parys))
+plc(%x;%y,N,@through):=XA(%x;PC([deur],LEX=P,POS=PRE;%y,-CAS,+CAS=OBL)); plc(train,Paris.@through) > XA(trein,PC(deur,Paris))
+plc(%x;%y,N,@under):=XA(%x;PC([onder],LEX=P,POS=PRE;%y,-CAS,+CAS=OBL)); plc(book,table.@under) > XA(boek,PC(onder,tafel))
+plc(%x;%y,N):=XA(%x;PC([in],LEX=P,POS=PRE;%y,-CAS,+CAS=OBL),+BEF); plc(kill,kitchen) > XA(vermoor,PC(in,kombuis))
+pos(%x,N;%y,R):=NS(%x;?POS=SPR,?PER=%y,?GEN=%y); pos(book,I) > NS(boek,my)
+pos(%x,N;%y,D):=NS(%x;%y); pos(book,my) > NS(boek,my)
+rsn(%x,V;%y,N):=VA(%x;PC([as gevolg van],LEX=P,POS=PRE;%y)); rsn(kill,Peter) > XA(vermoor,PC(as gevolg van,Peter))
+tim(%x;%y,N,@before):=XA(%x;PC([voor],LEX=P,POS=PRE;%y,-CAS,+CAS=OBL)); tim(minute,noon.@before) > XA(minute,PC(voor,twaalfuur))
+tim(%x;%y,N,@after):=XA(%x;PC([na],LEX=P,POS=PRE;%y,-CAS,+CAS=OBL)); tim(minute,noon.@after) > XA(minute,PC(na,twaalfuur))
+tim(%x;%y,N,@since):=XA(%x;PC([sedert],LEX=P,POS=PRE;%y,-CAS,+CAS=OBL)); tim(minute,noon.@since) > XA(minute,PC(sedert,twaalfuur))
+tim(%x;%y,N,@until):=XA(%x;PC([tot],LEX=P,POS=PRE;%y,-CAS,+CAS=OBL)); tim(minute,noon.@until) > XA(minute,PC(voor,twaalfuur))
+tim(%x;%y,N):=XA(%x;PC([om],LEX=P,POS=PRE;%y,-CAS,+CAS=OBL)); tim(minut,noon) > XA(minute,PC(om,twaalfuur))
+tim(%x,{@past|@future};%y,A):=XA(%x;%y,+DIS=BEF,+AJ3); tim(kill,yesterday) > XA(vermoor,gister)
+tim(%x;%y,A):=XA(%x;%y); tim(kill,yesterday) > XA(vermoor,gister)
+and(%x;%y):=((%y,+>BLK)([en],LEX=C,POS=CCJ,+>BLK)(%x,+>BLK),+LEX=%x);
+or(%x;%y):=((%y,+>BLK)([of],LEX=C,POS=CCJ,+>BLK)(%x,+>BLK),+LEX=%x);
+(%x,N,@def):=(NS(%x,-@def;%y,[die],+LEX=D,+POS=ART),+LEX=N); book.@def > NS(boek,die)
+(%x,N,@indef):=(NS(%x,-@indef;%y,['n],+LEX=D,+POS=ART),+LEX=N); book.@indef > NS(boek,'n)
+(%x,N,@all):=(NS(%x,-@all,-NUM,+NUM=PLR;%y,[alle],+LEX=D,+POS=QUA,+DIS=BEF),+LEX=N); book.@all > NA(boeke,alle)
+(%x,N,@other):=(NS(%x,-@other;%y,[ander],+LEX=D,+POS=DEM,+DIS=BEF),+LEX=N); book.@other > NA(boek,ander)
+(%x,N,@no):=(NS(%x,-@no;%y,[geen],+LEX=D,+POS=QUA),+LEX=N); book.@no > NS(boek,geen)
+(%x,N,@paucal):=(NS(%x,-@paucal,-NUM,+NUM=PLR;%y,[enkele],+LEX=D,+POS=QUA,+DIS=BEF),+LEX=N); book.@paucal > NA(boeke,enkele)
+(%x,N,@multal):=(NS(%x,-@multal,-NUM,+NUM=PLR;%y,[talle],+LEX=D,+POS=QUA,+DIS=BEF),+LEX=N); book.@multal > NA(boeke,talle)
+(%x,J,@plus):=(JS(%x,-@plus;%y,[baie],+LEX=A,+POS=SAV,+DIS=BEF),+LEX=J,+DIS=%x); beautiful.@plus > JS(mooi,baie)
+VS(%x,@reflexive,{@past|@future};%y):=+VC(%x,-@reflexive;?[[%y]],?POS=FPR,+BEF,-CAS,+CAS=OBL); VS(kill.@reflexive,he) > VS(vermoor,hy)VC(vermoor,homself)
+VS(%x,@reflexive;%y):=+VC(%x,-@reflexive;?[[%y]],?POS=FPR,-CAS,+CAS=OBL); VS(kill.@reflexive,he) > VS(vermoor,hy)VC(vermoor,homself)
+(%x,V,@past,@progressive):=+IC(%y,?[besig om te],?[[]],?LEX=I,?POS=AUX,+PER=%x,+ATE=PAS;%x,-@progressive,-@past,-ATE,-PER,+VBL=GER); arrive.@progressive > besig om te arriveer
+(%x,V,@future):=+IC(%y,[sal],+LEX=I,+POS=AUX,+ATE=FUT,+PER=%x,+att=%x;%x,-@future,-ATE,-PER,+VBL=INF); arriveer.@future > sal arriveer
+(%x,V,@past):=+IC(%y,?[het],?[[]],?LEX=I,?POS=AUX,+PER=%x,+ATE=%x,+att=%x;%x,-@past,-ATE,-PER,+VBL=PAS); arrive.@anterior > het gearriveer
+(%x,V,@anterior):=+IC(%y,?[het],?[[]],?LEX=I,?POS=AUX,+PER=%x,+ATE=%x,+att=%x;%x,-@anterior,-PER); arrive.@anterior > het gearriveer
+(%x,V,@anterior,@past):=+IC(%y,?[het],?[[]],?LEX=I,?POS=AUX,+PER=%x,+ATE=PAS,+att=%x;%x,-@anterior,-@past,+ATE=PAS,-PER); arrive.@anterior > het gearriveer
+(%x,V,@not):=(+LEX=V,VA(%x,-@not;%z,[nie],+LEX=A,+POS=SAV,+DIS=AFT)); arrive.@not > VA(arriveer,nie)
+(%x,J,ADJ,@not):=(+LEX=V,VA(%x,-@not;%z,[nie],+LEX=A,+POS=SAV,+DIS=AFT)); arrive.@not > VA(arriveer,nie)
+(%x,I,@not):=(VA(%x,-@not;%y,[nie],+LEX=A,+POS=SAV,+DIS=AFT),+LEX=v); arriveer.@not >  arriveer nie
+(%x,V,@present):=(%x,-@present,-VBL,+ATE=PRS);
+(%x,V,@progressive):=+IC(%y,?[besig om te],?[[]],?LEX=I,?POS=AUX,+PER=%x,+ATE=%x;%x,-@progressive,-ATE,-PER,+VBL=GER); arrive.@progressive > besig om te arriveer
+(%x,V,@obligation):=+IC(%y,[moet],+LEX=I,+POS=MOV;%x,-@obligation,-ATE,-PER,+VBL=INF); arrive.@obligation > moet arriveer
+(%x,@pl):=(%x,-@pl,-NUM,+NUM=PLR);
+(%x,@interrogative)(%y,{BLK|STAIL}):=(%x,-@interrogative)(%new,"?",PUT=EMARK)(%y);
+([en],%c1)(%x)({[en]|COMMA},%c2):=([,],",",+PUT=COMMA,+>BLK,$c3)(%x)(%c2);
+([of],%c1)(%x)({[of]|COMMA},%c2):=([,],",",+PUT=COMMA,+>BLK,$c3)(%x)(%c2);
+(D,%d)(BLK)([alle])(BLK)(N,%n):=("al")(BLK)(%d)(BLK)(%n); die alle boeke > al die boeke, my alle boeke > al my boeke
+(NOU)(BLK)([van])(BLK)(NOU):=(%05&%01);

@@ -1,0 +1,9 @@
+; RuleSet:(MX)English d-grammar
+; User:TENG WEI MIN (teng49)
+; Date:01.21.2013 at 01:21:21
+
+; "English d-grammar"
+; MX
+/(agt|obj|aoj)/(;D)=0; (determiners cannot be arguments of relations, because they are always attributes
+#(%x,V,^COP)([沒有])=1;
+#([沒有])(%x,{J|N})=0;

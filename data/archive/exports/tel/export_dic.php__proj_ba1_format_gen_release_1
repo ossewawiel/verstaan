@@ -1,0 +1,18 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<title>UNLarium</title>
+<link rel="stylesheet" type="text/css" media="all" href="../shared/default.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"  />
+<link rel="shortcut icon" href="../favicon.ico" type="image/x-icon" />
+</head>
+
+<body>
+<br />
+<b>Fatal error</b>:  Uncaught mysqli_sql_exception: Operation not permitted in /home/u965818192/domains/unlarchive.org/public_html/shared/connect.php:5
+Stack trace:
+#0 /home/u965818192/domains/unlarchive.org/public_html/shared/connect.php(5): mysqli_connect()
+#1 /home/u965818192/domains/unlarchive.org/public_html/unlarium/dictionary/export_dic.php(17): require_once('/home/u96581819...')
+#2 {main}
+  thrown in <b>/home/u965818192/domains/unlarchive.org/public_html/shared/connect.php</b> on line <b>5</b><br />

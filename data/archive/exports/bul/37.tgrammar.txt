@@ -1,0 +1,114 @@
+﻿(" "):=;  [the][ ][book]  [the][book]
+(BLK):=;  [the][ ][book]  [the][book]
+(%a,N,FEM,SNG)(%b,"та"):=(%a,att=%b); книгата  [the][book]  [book.@def]
+(%a,N,MCL,SNG)(%b,"ът"):=(%a,att=%b); влакът
+(%a,D,POD,FEM)(%b,"та"):=(%a,att=%b); моята
+(%a,R,SPR,FEM)(%b,"та"):=(%a,att=%b); моята
+(%a,D,DEM,FEM)(%b,"та"):=(%a,att=%b); другата
+(%a,SAV,att)(%b,J):=(%b,att=%a);  [very][beautiful]  [beautiful.@plus]
+(%a,N,PLR,^@pl):=(%a,+@pl);  [books]  [books.@pl]
+(%a,N,FEM,PLR)(%b,[те]):=(%a,att=%b); книгите
+(%a,DEM)(%c,POD)(%b,N):=(%c)(%b,att=%a); онази моя книга
+(%a,DEM)(%b,N):=(%b,att=%a); онази книга
+(%a,U)(%b,ART)(%c,N):=(%d,+N,qua(%c;%a,att=%b));   едната книга
+(%a,QUA)(%b,SPR)(%c,N):= (%f,+N,pos(%c,att=%a;%b));  двете ми книги
+(%a,QUA)(%b,N,PLR):=(%b,att=%a,-@pl,-PLR); всички книги (всички QUA)
+(%a,QUA)(%b,N):=(%b,att=%a); всички книги (всички QUA)
+(%a,QUA)(%x,POD)(%b,N,PLR):=(%x)(%b,att=%a,-@pl,-PLR); всички мои книги (всички QUA)
+(%a,QUA)(%x,POD)(%b,N):=(%x)(%b,att=%a); всички мои книги (всички QUA)
+(%a,SAV)(%b,ART):=(%a,att=%b); многото
+(%a,SAV)(%c,J,PLR)(%b,N):=(%c)(%b,att=%a); по-малко красиви книги (по-малко SAV)
+(%a,SAV)(%b,N):=(%b,att=%a); по-малко книги (по-малко SAV)
+(%a,AAV,att)(%b,N):=(%b,att=%a); повече книги (всички AAV)
+(%a,DEM)(%b,"от")(%c,N):=(%c,att=%a);  нито  една от книгите
+(%a,QUA)(%b,"от")(%c,N):=(%c,att=%a);  всяка от книгите
+(%a,SAV)(%b,"от")(%c,N):=(%c,att=%a);  много от книгите
+(%a,AAV)(%b,"от")(%c,N):=(%c,att=%a);  повечето от книгите
+(%a,U)(%b,"от")(%c,N):=(%d,+N,qua(%c;%a));  една от книгите
+(%a,IPR)(%b,"от")(%c,N):=(%d,+N,mod(%c;%a));  коя от книгите
+(%a,SAV)(%b,POD)(%c,N,PLR):=(%d,+N,pos(%c,att=%a,-PLR,-@pl;%b)); многото негови книги
+(%a,SAV)(%b,POD)(%c,N):=(%d,+N,pos(%c,att=%a;%b)); многото негови книги
+(%a,POD)(%b,N):=(%c,+N,pos(%b;%a));  моя книга [my][book]  [pos(book,my)]
+(%a,DEM)(%b,ART):=(%a,att=%b); същата
+(%a,QUA)(%b,ART):=(%a,att=%b); всичките
+(%a,J)(%b,ART):=(%a,att=%b); красивата
+(%a,NPR)(%b,ART):=(%a,att=%b); другата
+(%a,POD)(%b,ART):=(%a,att=%b); твоите
+(%a,IPR)(%b,N):=(%c,+N,mod(%b;%a)); каква книга
+(%a,NPR)(%b,N):=(%c,+N,mod(%b;%a)); друга книга
+(%a,N)(%b,"на")(%c,SPR):= (%d,+N,pos(%a;%c));  [book][of][mine]
+(%a,SPR)(%b,N):= (%c,+N,pos(%b;%a));  ... ми книга
+(%a,N)(%b,SPR):= (%c,+N,pos(%a;%b));   книга(та) ми
+(%a,"половина")(%b,"от")(%c,N):= (%d,+N,qua(%c;%a));  половината от книгите
+(%a,N)(%b,"на")(%c,PPN):= (%d,+N,pos(%a;%c));  [car][of][John]
+(%a,SAV,^att)(%b,J):=(%c,+J,qua(%b;%a));  [extremely][beautiful]  [qua(beautiful,extremely)]
+(%a,N)(%b,P,rel=ben,att)(%c,N):=(%d,+N,ben(%a;%c,att=%b)); книга за Джон
+(%a,N)(%b,P,rel=man,att)(%c,N):=(%d,+N,man(%a;%c,att=%b)); книга за коли
+(%a,N)(%b,P,rel=tim,att)(%c,N):=(%d,+N,plc(%a;%c,att=%b)); минута преди обяд
+(%a,N)(%b,",")(%c,N)(%d,"или")(%e,N):= (%a)("или")(%c)(%d)(%e); Иван, Петър или Мария
+(%a,N)(%b,",")(%c,N)(%d,"и")(%e,N):= (%a)("и")(%c)(%d)(%e); Иван, Петър и Мария
+(%a,N)(%b,"и")(%c,N):= (%d,and(%c;%a),+N); Иван и Мария
+(%a,PPR)(%b,"и")(%c,PPR):= (%d,+N,and(%c;%a)); теб и мен
+(%a,J)(%b,",")(%c,J)(%d,"и")(%e,J):= (%a)("и")(%c)(%d)(%e); голям, красив и умен
+(%a,J)(%b,"и")(%c,J):= (%d,+J,and(%c;%a)); красива и скъпа
+(%a,N)(%b,"или")(%c,N):= (%d,+N,or(%c;%a));  [John][or][Mary]  [or(Mary,John)]
+(%a,QUA)(%b,J)(%c,N):=(%d,+N,mod(%c,att=%a;%b));  всички налични книги
+(%a,J)(%b,N):=(%c,+N,mod(%b;%a));  [beautiful][car]  [mod(car,beautiful)]
+(%a,SAV,att)(%b,J)(%c,N):=(%b,att=%a)(%c);   много красива кола
+(%a,AUX,PRS):=(%a,att=@present,-PRS);
+(%a,"беше")(%b,V,^AUX,PTP,PFV):=(%b,att=@past.@perfective,-PTP,-PFV); беше пристигнал
+(%a,"ще")(%b,V,^AUX,PRS):=(%b,att=@future.@progressive,-PRS); ще пристига
+(%a,"ще")(%b,V,^AUX):=(%b,att=@fut); ще пристигне
+(%b,"да")(%c,V,^AUX):=(%c,att=@inf); да пристигне
+(%a,V,PAS):=(%a,att=@past,-PAS); пристигна
+(%a,V,PGS):=(%a,att=@progressive,-PGS); пристига
+(%a,V,PRS):=(%a,att=@present,-PRS); пристига
+(%a,V,PFV,^@perfective):=(%a,att=@perfective,-PFV); пристигнал
+(%a,AUX,att)(%b,PTP):=(%b,att=@past.@perfective,-PTP); е убил
+(%a,AUX,att)(%b,V):=(%b,att=%a);  [will][arrive]  [arrive.@future]
+(%a,AUX,att)(%c,"да")(%b,V):=(%b,att=%a,att=@fut); може да пристигне
+(%a,N)(%b,V,^AUX):=(%c,+V,agt(%b;%a));  [he][arrives]  [agt(arrives,he)]
+(%a,PPR,ACC)(%b,V,TSTD):=(obj(%b;%a),+V);  теб обичам
+(%a,AAV)(%b,V,^AUX):=(%d,+V,tim(%b;%a)); никога пристигне
+(%a,AAV,^att)(%b,N):=(NA(+N,mod(%b;%a)),+N,+NA); утре сутрин
+(%a,V,^AUX)(%b,NA):=(%d,+V,tim(%a;%b)); пристига утре сутрин
+(%a,V,^AUX)(%b,P,rel=plc,att)(%c,N):=(%d,+V,plc(%a;%c,att=%b)); пристига в Париж
+(%a,V,^AUX)(%b,P,rel=man,att)(%c,N):=(%d,+V,man(%a;%c,att=%b)); пристига с кола
+(%a,V,^AUX)(%b,AAV):=(%d,+V,tim(%a;%b)); пристига рано
+(%a,V,^AUX)(%c,"по")(%b,AAV):=(%d,+V,tim(%a;%b,att=%c)); пристига по обяд
+(%a,"би")(%b,V,^AUX,^MOV):=(%b,att=@past.@posterior); би пристигнал
+(%a,V,^AUX)(%b,P,rel=rsn,att)(%c,N):=(%d,+V,rsn(%a;%c,att=%b)); убих заради Петър
+(%a,V,TSTD)(%b,"себе си"):=(%a,att=%b); обичам себе си
+(%a,N)(%b,P,rel=plc,att)(%c,N):=(%d,+N,plc(%a;%c,att=%b)); книга от Париж
+(%a,A)(%b,COP)(%c,A):=(%d,+V,aoj(%c,att=%b;%a));  малко е повече
+(%a,SAV,att)(%b,V):=(%b,att=%a);  [not][arrive]  [arrive.@not]
+(%a,N)(%b,COP)(%c,J):=(%d,+V,aoj(%c,att=%b;%a));  [this][is][beautiful]  [aoj(beautiful,this)]
+(%a,J)(%b,"да")(%c,V):=(obj(%a;%c,att=%b),+V);  готов да тръгне
+(%a,N)(%b,COP)(%c,N):=(%d,+V,aoj(%c,att=%b;%a));  Иван е (по-красив от) Петър
+(%a,R)(%b,COP)(%c,J):=(%d,+V,aoj(%c;%a));  това е красиво [this][is][beautiful]  [aoj(beautiful,this)]
+(%a,POD)(%b,COP)(%c,J):=(%b)(%d,+V,pos(%c,att=%b;%a));  моят е красив
+(%a,D)(%b,COP)(%c,J):=(%d,+V,aoj(%c;%a));  онези са красиви
+(%a,COP)(%b,J):=(%c,+V,aoj(%d,DUM;%b,att=%a)); (не) е красиво
+(%b,J)(%a,COP):=(%c,+V,aoj(%d,DUM;%b,att=%a)); красиво е
+(%a,V,TSTD)(%b,NPR):=(obj(%a;%b),+V);  обича Иван/някой
+(%a,NPR)(%b,V,^AUX):=(agt(%b;%a),+V); Иван/някой обича (Мария/някой)
+(%a,V,^AUX)(%b,"се"):=(%a,att=%b); интересувам се
+(%a,"се")(%b,V,^AUX):=(%b,att=%a); се интересувам
+(%a,IPR)(%b,COP)(%c,R):=(%d,+V,aoj(%c,att=%b;%a));  кой е това
+(%a,IPR)(%b,COP)(%c,D):=(%d,+V,aoj(%c,att=%b;%a));  кой е този
+(%a,V,TSTD)(%b,PPR,ACC):=(obj(%a;%b),+V);   обичам теб
+(%a,V,^AUX)(%b,CPR):=(obj(%a;%b),+V); обичат един друг
+(%a,V,^AUX)(%b,SAV):=(qua(%a;%b),+V); имам малко
+(%a,QUA)(%b,V,^AUX):=(agt(%b;%a),+V); и двете имат
+(%a,V,^AUX)(%b,QUA):=(qua(%a;%b),+V); имам достатъчно
+(%a,CDN)(%b,V,^AUX):=(agt(%b;%a),+V); един има
+(%a,PPR,DAT)(%b,V,TST2):=(gol(%b;%a),+V);  й даде
+(%a,V,^AUX)(%b,P,rel=mod,att)(%c,PPR):=(%d,+V,man(%a;%c,att=%b)); даде на нея
+(%a,V,^AUX)(%b,N):=(obj(%a;%b),+V); даде книга
+(%a,PPR,^ACC,^DAT)(%b,V,^AUX)(%c,J):=((%b)(%d,+N,mod(%c;%a))); той пристига сам
+(%a,PPR,^ACC,^DAT)(%b,V,^AUX):=(%c,+V,agt(%b;%a)); той пристига
+(%a,D)(%b,R):=(%b,att=%a); "който и да е" това
+(%a,POD)(%b,COP)(%c,J):=(%b)(%d,+V,pos(%c;%a));  моят е красив
+(%a,IPR)(%b,V,^AUX):=(agt(%b,att=@interrogation;%a),+V);кой обича (Мария/някой)
+(%a,QUA,att)(%b,J)(%c,N,PLR):=(%b)(%c,att=%a);   много красиви коли
+(%a,"само")(%b,V,TSTD):=(%b);  самоубивам

@@ -1,0 +1,1435 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<title>UNLarium</title>
+<link rel="stylesheet" type="text/css" media="all" href="../../shared/default.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"  />
+<link rel="shortcut icon" href="../favicon.ico" type="image/x-icon" />
+</head>
+
+<body>
+<h1>Bulgarian Inflectional  Grammar for Natural Language Generation</h1>Version of September 11, 2026, 12:53 pm<br />Documentation available at <a href="http://www.unlarchive.org/wiki/index.php/Grammar" target="_blank">http://www.unlarchive.org/wiki/index.php/Grammar</a><br />Tagset available at <a href="../dictionary/export_tagset.php" target="_blank">Export UNDL Foundation tagset</a>.<br /><br />(%x,M2):=(%x,-M2,+FLX(SNG:=0>"";
+));<br /><br />(%x,M5):=(%x,-M5,+FLX(PLR:=0>"";
+
+));<br /><br />(%x,M7):=(%x,-M7,+FLX(SNG&NDEF:=0>"";
+SNG&DEF&SHO:="гърка";
+SNG&DEF&STR:="гъркът";
+PLR:="гърци";
+PAU:="гъркa";
+MUL:="гъркa";
+VOC:="гърко";
+));<br /><br />(%x,M8):=(%x,-M8,+FLX(SNG:=0>"";
+PLR:=3>"ци";
+VOC:=0>"о";
+));<br /><br />(%x,M9):=(%x,-M9,+FLX(SNG:=0>"";
+PLR:=2>"а";
+VOC:=0>"е";
+));<br /><br />(%x,M10):=(%x,-M10,+FLX(SNG:=0>"";
+PLR:=0>"илища";
+PAU:=0>"а";
+MUL:=0>"а";
+));<br /><br />(%x,M11):=(%x,-M11,+FLX(SNG:=0>"";
+PLR:=2>"ньове";
+PAU:=0>"я";
+MUL:=0>"я";
+));<br /><br />(%x,M12):=(%x,-M12,+FLX(SNG:=0>"";
+PLR:=1>"я";
+));<br /><br />(%x,M13):=(%x,-M13,+FLX(SNG:=0>"";
+PLR:=2>"ци";
+PAU:=0>"a";
+MUL:=0>"a";
+ ));<br /><br />(%x,M14):=(%x,-M14,+FLX(SNG:=0>"";
+PLR:=1>"ци";
+PAU:=0>"a";
+MUL:=0>"a";
+ ));<br /><br />(%x,M15):=(%x,-M15,+FLX(SNG:=0>"";
+PLR:=1>"ия";
+
+));<br /><br />(%x,M16):=(%x,-M16,+FLX(SNG:=0>"";
+PLR:=0>"я";
+VOC:=0>"e";
+));<br /><br />(%x,M17):=(%x,-M17,+FLX(SNG:=0>"";
+PLR:=0>"ове";
+PAU:=0>"а";
+MUL:=0>"а";
+VOC:=0>"е";
+));<br /><br />(%x,M19):=(%x,-M19,+FLX(SNG:=0>"";
+PLR:=3>"ълци";
+VOC:=0>"o";
+));<br /><br />(%x,M20):=(%x,-M20,+FLX(SNG:=0>"";
+PLR:="ър":"ри";
+PAU:=0>"а";
+MUL:=0>"а";
+VOC:="ър":"ре";
+));<br /><br />(%x,M21):=(%x,-M21,+FLX(SNG:=0>"";
+PLR:="ен":"ни","ел":"ли";
+VOC:="ен":"ньо","ел":"льо";
+PAU:=0>"а";
+MUL:=0>"а";
+));<br /><br />(%x,M22):=(%x,-M22,+FLX(SNG:=0>"";
+PLR:=2>"чи";
+
+));<br /><br />(%x,M23):=(%x,-M23,+FLX(SNG:=0>"";
+PLR:=3>"ъвци";
+VOC:=0>"о";
+));<br /><br />(%x,M24):=(%x,-M24,+FLX(SNG:=0>"";
+PLR:=2>"ца";
+
+));<br /><br />(%x,M25):=(%x,-M25,+FLX(SNG:=0>"";
+PLR:=1>"я";
+
+));<br /><br />(%x,M26):=(%x,-M26,+FLX(SNG:=0>"";
+PLR:=1>"и";
+
+));<br /><br />(%x,M27):=(%x,-M27,+FLX(SNG:=0>"";
+PLR:=1>"и";
+
+));<br /><br />(%x,M28):=(%x,-M28,+FLX(SNG:=0>"";
+PLR:=0>"а";
+PAU:=0>"a";
+MUL:=0>"a";
+ ));<br /><br />(%x,M29):=(%x,-M29,+FLX(SNG:=0>"";
+PLR:="ър":"рове";
+PAU:=0>"a";
+MUL:=0>"а";
+));<br /><br />(%x,M30):=(%x,-M30,+FLX(MCL&PST&NDEF&SNG:=0>"";
+MCL&CMP&NDEF&SNG:="по-"<0;
+MCL&SUP&NDEF&SNG:="най-"<0;
+MCL&PST&DEF&SNG&SHO:=0>"ия";
+MCL&DEF&CMP&SNG&SHO:="по-"<0,0>"ия";
+MCL&DEF&SUP&SNG&SHO:="най-"<0,0>"ия";
+MCL&PST&DEF&SNG&STR:=0>"ият";
+MCL&DEF&CMP&SNG&STR:="по-"<0,0>"ият";
+MCL&DEF&SUP&SNG&STR:="най-"<0,0>"ият";
+ 
+FEM&SNG:=0>"а";
+NEU&SNG:=0>"о";
+
+PLR:=0>"и";
+PAU:=0>"и";
+MUL:=0>"и";
+
+));<br /><br />(%x,M31):=(%x,-M31,+FLX(MCL&PST&NDEF&SNG:=0>"";
+MCL&CMP&NDEF&SNG:="по-"<0;
+MCL&SUP&NDEF&SNG:="най-"<0;
+MCL&PST&DEF&SNG&SHO:=0>"ия";
+MCL&DEF&CMP&SNG&SHO:="по-"<0,0>"ия";
+MCL&DEF&SUP&SNG&SHO:="най-"<0,0>"ия";
+MCL&PST&DEF&SNG&STR:=0>"ият";
+MCL&DEF&CMP&SNG&STR:="по-"<0,0>"ият";
+MCL&DEF&SUP&SNG&STR:="най-"<0,0>"ият";
+
+FEM&SNG:=0>"а";
+NEU&SNG:=0>"е";
+
+PLR:=0>"и";
+PAU:=0>"и";
+MUL:=0>"и";
+));<br /><br />(%x,M32):=(%x,-M32,+FLX(MCL&SNG:=0>"";
+FEM&SNG:=1>"а";
+NEU&SNG:=1>"о";
+PLR:=0>"";
+PAU:=0>"";
+MUL:=0>"";
+));<br /><br />(%x,M33):=(%x,-M33,+FLX(MCL&PST&NDEF&SNG:=0>"";
+MCL&CMP&NDEF&SNG:="по-"<0;
+MCL&SUP&NDEF&SNG:="най-"<0;
+MCL&SNG&DEF&SHO&PST:="ен">"ни",0>"я";
+MCL&DEF&CMP&SHO&SNG:="по-"<0,"ен">"ни",0>"я";
+MCL&DEF&SUP&SHO&SNG:="най-"<0,"ен">"ни",0>"я";
+MCL&SNG&DEF&STR&PST:="ен">"ни",0>"ят";
+MCL&DEF&CMP&STR&SNG:="по-"<0,"ен">"ни",0>"ят";
+MCL&DEF&SUP&STR&SNG:="най-"<0,"ен">"ни",0>"ят";
+
+FEM&SNG:="ен">"на";
+NEU&SNG:="ен">"но";
+
+PLR:="ен">"ни";
+PAU:="ен">"ни";
+MUL:="ен">"ни";
+));<br /><br />(%x,M34):=(%x,-M34,+FLX(MCL&PST&NDEF&SNG:=0>"";
+MCL&CMP&NDEF&SNG:="по-"<0;
+MCL&SUP&NDEF&SNG:="най-"<0;
+MCL&PST&DEF&SNG&SHO:="ъв">"ви","ър">"ри","ък">"ки","ъл">"ли","ъг">"ги",0>"я";
+MCL&DEF&CMP&SNG&SHO:="по-"<0,"ъв">"ви","ър">"ри","ък">"ки","ъл">"ли","ъг">"ги",0>"я";
+MCL&DEF&SUP&SNG&SHO:="най-"<0,"ъв">"ви","ър">"ри","ък">"ки","ъл">"ли","ъг">"ги",0>"я";
+MCL&PST&DEF&SNG&STR:="ъв">"ви","ър">"ри","ък">"ки","ъл">"ли","ъг">"ги",0>"ят";
+MCL&DEF&CMP&SNG&STR:="по-"<0,"ъв">"ви","ър">"ри","ък">"ки","ъл">"ли","ъг">"ги",0>"ят";
+MCL&DEF&SUP&SNG&STR:="най-"<0,"ъв">"ви","ър">"ри","ък">"ки","ъл">"ли","ъг">"ги",0>"ят";
+
+FEM&SNG:="ъв">"ва","ър">"ра","ък">"ка","ъл">"ла","ъг">"га";
+NEU&SNG:="ъв">"во","ър">"ро","ък">"ко","ъл">"ло","ъг">"го";
+
+PLR:="ъв">"ви","ър">"ри","ък">"ки","ъл">"ли","ъг">"ги";
+PAU:="ъв">"ви","ър">"ри","ък">"ки","ъл">"ли","ъг">"ги";
+MUL:="ъв">"ви","ър">"ри","ък">"ки","ъл">"ли","ъг">"ги";
+));<br /><br />(%x,M35):=(%x,-M35,+FLX(MCL&PST&NDEF&SNG:=0>"";
+MCL&CMP&NDEF&SNG:="по-"<0;
+MCL&SUP&NDEF&SNG:="най-"<0;
+MCL&DEF&PST&SNG&SHO:="яп">"епи","ям">"еми","ял">"ели","ян">"ени","як">"еки","яв">"еви",0>"я";
+MCL&DEF&PST&SNG&STR:="яп">"епи","ям">"еми","ял">"ели","ян">"ени","як">"еки","яв">"еви",0>"ят";
+MCL&DEF&CMP&SNG&SHO:="по-"<0,"яп">"епи","ям">"еми","ял">"ели","ян">"ени","як">"еки","яв">"еви",0>"я";
+MCL&DEF&CMP&SNG&STR:="по-"<0,"яп">"епи","ям">"еми","ял">"ели","ян">"ени","як">"еки","яв">"еви",0>"ят";
+MCL&DEF&SUP&SNG&SHO:="най-"<0,"яп">"епи","ям">"еми","ял">"ели","ян">"ени","як">"еки","яв">"еви",0>"я";
+MCL&DEF&SUP&SNG&STR:="най-"<0,"яп">"епи","ям">"еми","ял">"ели","ян">"ени","як">"еки","яв">"еви",0>"ят";
+
+FEM&SNG:=0>"а";
+NEU&SNG:=0>"о";
+
+PLR:="яп">"епи","ям">"еми","ял">"ели","ян">"ени","як">"еки","яв">"еви";
+PAU:="яп">"епи","ям">"еми","ял">"ели","ян">"ени","як">"еки","яв">"еви";
+MUL:="яп">"епи","ям">"еми","ял">"ели","ян">"ени","як">"еки","яв">"еви";
+));<br /><br />(%x,M36):=(%x,-M36,+FLX(MCL&PST&NDEF&SNG:=0>"";
+MCL&CMP&NDEF&SNG:="по-"<0;
+MCL&SUP&NDEF&SNG:="най-"<0;
+MCL&PST&DEF&SNG&SHO:="ръ":"ър",0>"ия";
+MCL&DEF&CMP&SNG&SHO:="по-"<0,"ръ":"ър",0>"ия";
+MCL&DEF&SUP&SNG&SHO:="най-"<0,"ръ":"ър",0>"ия";
+MCL&PST&DEF&SNG&STR:="ръ":"ър",0>"ият";
+MCL&DEF&CMP&SNG&STR:="по-"<0,"ръ":"ър",0>"ият";
+MCL&DEF&SUP&SNG&STR:="най-"<0,"ръ":"ър",0>"ият";
+ 
+FEM&SNG:="ръ":"ър",0>"а";
+NEU&SNG:="ръ":"ър",0>"о";
+
+PLR:="ръ":"ър",0>"и";
+PAU:="ръ":"ър",0>"и";
+MUL:="ръ":"ър",0>"и";
+));<br /><br />(%x,M37):=(%x,-M37,+FLX(MCL&PST&NDEF&SNG:=0>"";
+MCL&CMP&NDEF&SNG:="по-"<0;
+MCL&SUP&NDEF&SNG:="най-"<0;
+MCL&PST&DEF&SNG&SHO:="я":"е","ък":"ки",0>"я";
+MCL&DEF&CMP&SNG&SHO:="по-"<0,"я":"е","ък":"ки",0>"я";
+MCL&DEF&SUP&SNG&SHO:="най-"<0,"я":"е","ък":"ки",0>"я";
+MCL&PST&DEF&SNG&STR:="я":"е","ък":"ки",0>"ят";
+MCL&DEF&CMP&SNG&STR:="по-"<0,"я":"е","ък":"ки",0>"ят";
+MCL&DEF&SUP&SNG&STR:="най-"<0,"я":"е","ък":"ки",0>"ят";
+ 
+FEM&SNG:="ък":"ка";
+NEU&SNG:="ък":"ко";
+
+PLR:="я":"е","ък":"ки";
+PAU:="я":"е","ък":"ки";
+MUL:="я":"е","ък":"ки";
+));<br /><br />(%x,M38):=(%x,-M38,+FLX(MCL&PST&NDEF&SNG:=0>"";
+MCL&CMP&NDEF&SNG:="по-"<0;
+MCL&SUP&NDEF&SNG:="най-"<0;
+MCL&PST&DEF&SNG&SHO:="ен":"ни",0>"я";
+MCL&DEF&CMP&SNG&SHO:="по-"<0,"ен":"ни",0>"я";
+MCL&DEF&SUP&SNG&SHO:="най-"<0,"ен":"ни",0>"я";
+MCL&PST&DEF&SNG&STR:="ен":"ни",0>"ят";
+MCL&DEF&CMP&SNG&STR:="по-"<0,"ен":"ни",0>"ят";
+MCL&DEF&SUP&SNG&STR:="най-"<0,"ен":"ни",0>"ят";
+ 
+FEM&SNG:="ен":"на","е":"я";
+NEU&SNG:="ен":"но","е":"я";
+
+PLR:="ен":"ни";
+PAU:="ен":"ни";
+MUL:="ен":"ни";
+));<br /><br />(%x,M39):=(%x,-M39,+FLX(MCL&PST&NDEF&SNG:=0>"";
+MCL&CMP&NDEF&SNG:="по-"<0;
+MCL&SUP&NDEF&SNG:="най-"<0;
+MCL&PST&DEF&SNG&SHO:=2>"йни",0>"я";
+MCL&PST&DEF&SNG&STR:=2>"йни",0>"ят";
+MCL&CMP&DEF&SNG&SHO:="по-"<0,0>"я";
+MCL&SUP&DEF&SNG&SHO:="най-"<0,0>"я";
+MCL&CMP&DEF&SNG&STR:="по-"<0,0>"ят";
+MCL&SUP&DEF&SNG&STR:="най-"<0,0>"ят";
+ 
+FEM&SNG:=2>"йна";
+NEU&SNG:=2>"йно";
+
+PLR:=2>"йни";
+PAU:=2>"йни";
+MUL:=2>"йни";
+));<br /><br />(%x,M40):=(%x,-M40,+FLX(MCL&PST&NDEF&SNG:=0>"";
+MCL&CMP&NDEF&SNG:="по-"<0;
+MCL&SUP&NDEF&SNG:="най-"<0;
+MCL&PST&DEF&SNG&SHO:=0>"ия";
+MCL&DEF&CMP&SNG&SHO:="по-"<0,0>"ия";
+MCL&DEF&SUP&SNG&SHO:="най-"<0,0>"ия";
+MCL&PST&DEF&SNG&STR:=0>"ият";
+MCL&DEF&CMP&SNG&STR:="по-"<0,0>"ият";
+MCL&DEF&SUP&SNG&STR:="най-"<0,0>"ият";
+ 
+FEM&SNG:=0>"я";
+NEU&SNG:=0>"ьо";
+
+PLR:=0>"и";
+PAU:=0>"и";
+MUL:=0>"и";
+));<br /><br />(%x,M41):=(%x,-M41,+FLX(MCL&SNG:=0>"";
+FEM&SNG:=1>"а";
+NEU&SNG:=1>"е";
+
+PLR:=1>"и";
+PAU:=1>"и";
+MUL:=1>"и";
+));<br /><br />(%x,M42):=(%x,-M42,+FLX(MCL&SNG:=0>"";
+FEM&SNG:=1>"я";
+NEU&SNG:=1>"е";
+ 
+PLR:=1>"и";
+PAU:=1>"и";
+MUL:=1>"и";
+));<br /><br />(%x,M43):=(%x,-M43,+FLX(MCL&NDEF&SNG:=0>"";
+MCL&PST&DEF&SNG&SHO:=1>"я";
+MCL&PST&DEF&SNG&STR:=1>"ят";
+ 
+FEM&SNG:=2>"а";
+NEU&SNG:=2>"о";
+ 
+PLR:=1>"";
+ ));<br /><br />(%x,M45):=(%x,-M45,+FLX(SNG:=0>"";
+PLR:=0>"ове";
+PAU:=0>"а";
+MUL:=0>"а";
+));<br /><br />(%x,M46):=(%x,-M46,+FLX(SNG:=0>"";
+PLR:="я":"е",0>"ове";
+PAU:=0>"а";
+MUL:=0>"а";
+));<br /><br />(%x,M47):=(%x,-M47,+FLX(SNG:=0>"";
+PLR:="ръ":"ър",0>"ове";
+PAU:="ръ":"ър",0>"а";
+MUL:="ръ":"ър",0>"а";
+));<br /><br />(%x,M48):=(%x,-M48,+FLX(SNG:=0>"";
+PLR:="я":"е","ър":"р",0>"ове";
+PAU:=0>"а";
+MUL:=0>"а";
+));<br /><br />(%x,M49):=(%x,-M49,+FLX(SNG:=0>"";
+PLR:=0>"и";
+PAU:=0>"а";
+MUL:=0>"а";
+VOC:=0>"e";
+));<br /><br />(%x,M50):=(%x,-M50,+FLX(SNG:=0>"";
+PLR:=0>"и";
+PAU:=0>"а";
+MUL:=0>"а";
+));<br /><br />(%x,M51):=(%x,-M51,+FLX(SNG:=0>"";
+PLR:=2>"ц",0>"и";
+VOC:=0>"о";
+));<br /><br />(%x,M52):=(%x,-M52,+FLX(SNG:=0>"";
+PLR:=2>"ц",0>"и";
+PAU:=0>"а";
+MUL:=0>"a";
+));<br /><br />(%x,M53):=(%x,-M53,+FLX(PRS&1PS:=0>"";PRS&2PS:=2>"и";  
+PRS&3PS:="е";  
+PRS&1PP:=2>"ме";   
+PRS&2PP:=2>"те";   
+PRS&3PP:=2>"а";   
+
+PAS&PFV&1PS:="бях";    
+PAS&PFV&2PS:="бе";  
+PAS&PFV&3PS:="бе";  
+PAS&PFV&1PP:="бяхме";   
+PAS&PFV&2PP:="бяхте";   
+PAS&PFV&3PP:="бяха";   
+
+PAS&NPFV&1PS:="бях";    
+PAS&NPFV&2PS:="беше";  
+PAS&NPFV&3PS:="беше";  
+PAS&NPFV&1PP:="бяхме";   
+PAS&NPFV&2PP:="бяхте";   
+PAS&NPFV&3PP:="бяха";   
+
+));<br /><br />(%x,M54):=(%x,-M54,+FLX(PRS&1PS:=0>"";PRS&2PS:=1>"еш";  
+PRS&3PS:=1>"е";  
+PRS&1PP:=1>"ем";   
+PRS&2PP:=1>"ете";   
+PRS&3PP:=1>"ат";   
+
+PAS&PFV&1PS:=3>"их";    
+PAS&PFV&2PS:=3>"и";  
+PAS&PFV&3PS:=3>"и";  
+PAS&PFV&1PP:=3>"ихме";   
+PAS&PFV&2PP:=3>"ихте";   
+PAS&PFV&3PP:=3>"иха";   
+
+PAS&NPFV&1PS:=3>"ях";    
+PAS&NPFV&2PS:=3>"еше";  
+PAS&NPFV&3PS:=3>"еше";  
+PAS&NPFV&1PP:=3>"яхме";   
+PAS&NPFV&2PP:=3>"яхте";   
+PAS&NPFV&3PP:=3>"яха"; ));<br /><br />(%x,M55):=(%x,-M55,+FLX(PRS&1PS:=0>"";PRS&2PS:=1>"еш";  
+PRS&3PS:=1>"е";  
+PRS&1PP:=1>"ем";   
+PRS&2PP:=1>"ете";   
+PRS&3PP:=0>"т";   
+
+PAS&PFV&1PS:=1>"ях";    
+PAS&PFV&2PS:=1>"я";  
+PAS&PFV&3PS:=1>"я";  
+PAS&PFV&1PP:=1>"яхме";   
+PAS&PFV&2PP:=1>"яхте";   
+PAS&PFV&3PP:=1>"яха";   
+
+PAS&NPFV&1PS:=1>"ях";    
+PAS&NPFV&2PS:=1>"еше";  
+PAS&NPFV&3PS:=1>"еше";  
+PAS&NPFV&1PP:=1>"яхме";   
+PAS&NPFV&2PP:=1>"яхте";   
+PAS&NPFV&3PP:=1>"яха";   
+));<br /><br />(%x,M56):=(%x,-M56,+FLX(PRS&1PS:=0>"";PRS&2PS:= 1>"еш";  
+PRS&3PS:= 1>"е";  
+PRS&1PP:= 1>"ем";   
+PRS&2PP:= 1>"ете";   
+PRS&3PP:= 0>"т";   
+
+PAS&PFV&1PS:=1>"ох";    
+PAS&PFV&2PS:=1>"е";  
+PAS&PFV&3PS:=1>"е";  
+PAS&PFV&1PP:=1>"охме";   
+PAS&PFV&2PP:=1>"охте";   
+PAS&PFV&3PP:=1>"оха";   
+
+PAS&NPFV&1PS:=1>"ях";    
+PAS&NPFV&2PS:=1>"еше";  
+PAS&NPFV&3PS:=1>"еше";  
+PAS&NPFV&1PP:=1>"яхме";   
+PAS&NPFV&2PP:=1>"яхте";   
+PAS&NPFV&3PP:=1>"яха";   ));<br /><br />(%x,M57):=(%x,-M57,+FLX(PRS&1PS:=0>"";PRS&2PS:= 1>"еш";  
+PRS&3PS:= 1>"е";  
+PRS&1PP:= 1>"ем";   
+PRS&2PP:= 1>"ете";   
+PRS&3PP:= 0>"т";   
+
+PAS&PFV&1PS:=1>"ох";    
+PAS&PFV&2PS:=1>"е";  
+PAS&PFV&3PS:=1>"е";  
+PAS&PFV&1PP:=1>"охме";   
+PAS&PFV&2PP:=1>"охте";   
+PAS&PFV&3PP:=1>"оха";   
+
+PAS&NPFV&1PS:=1>"ех";    
+PAS&NPFV&2PS:=1>"еше";  
+PAS&NPFV&3PS:=1>"еше";  
+PAS&NPFV&1PP:=1>"ехме";   
+PAS&NPFV&2PP:=1>"ехте";   
+PAS&NPFV&3PP:=1>"еха";   
+));<br /><br />(%x,M58):=(%x,-M58,+FLX(PRS&1PS:=0>"";PRS&2PS:="я":"е",1>"еш";  
+PRS&3PS:="я":"е",1>"е";  
+PRS&1PP:="я":"е",1>"ем";   
+PRS&2PP:="я":"е",1>"ете";   
+PRS&3PP:=0>"т";   
+
+PAS&PFV&1PS:=1>"ох";    
+PAS&PFV&2PS:="я":"е",1>"е";  
+PAS&PFV&3PS:="я":"е",1>"е";  
+PAS&PFV&1PP:=1>"охме";   
+PAS&PFV&2PP:=1>"охте";   
+PAS&PFV&3PP:=1>"оха";   
+
+PAS&NPFV&1PS:="я":"е",1>"ех";    
+PAS&NPFV&2PS:="я":"е",1>"еше";  
+PAS&NPFV&3PS:="я":"е",1>"еше";  
+PAS&NPFV&1PP:="я":"е",1>"ехме";   
+PAS&NPFV&2PP:="я":"е",1>"ехте";   
+PAS&NPFV&3PP:="я":"е",1>"еха";   
+));<br /><br />(%x,M59):=(%x,-M59,+FLX(PRS&1PS:=0>"";PRS&2PS:="к":"ч",1>"еш";  
+PRS&3PS:= "к":"ч",1>"е";  
+PRS&1PP:= "к":"ч",1>"ем";   
+PRS&2PP:= "к":"ч",1>"ете";   
+PRS&3PP:= 0>"т";   
+
+PAS&PFV&1PS:=1>"ох";    
+PAS&PFV&2PS:="к":"ч",1>"е";  
+PAS&PFV&3PS:="к":"ч",1>"е";  
+PAS&PFV&1PP:=1>"охме";   
+PAS&PFV&2PP:=1>"охте";   
+PAS&PFV&3PP:=1>"оха";   
+
+PAS&NPFV&1PS:="к":"ч",1>"ех";    
+PAS&NPFV&2PS:="к":"ч",1>"еше";  
+PAS&NPFV&3PS:="к":"ч",1>"еше";  
+PAS&NPFV&1PP:="к":"ч",1>"ехме";   
+PAS&NPFV&2PP:="к":"ч",1>"ехте";   
+PAS&NPFV&3PP:="к":"ч",1>"еха";   
+));<br /><br />(%x,M60):=(%x,-M60,+FLX(PRS&1PS:=0>"";PRS&2PS:="к":"ч",1>"еш";  
+PRS&3PS:="к":"ч",1>"е";  
+PRS&1PP:="к":"ч",1>"ем";   
+PRS&2PP:="к":"ч",1>"ете";   
+PRS&3PP:=0>"т";   
+
+PAS&PFV&1PS:="е":"я",1>"ох";    
+PAS&PFV&2PS:="к":"ч",1>"е";  
+PAS&PFV&3PS:="к":"ч",1>"е";  
+PAS&PFV&1PP:="е":"я",1>"охме";   
+PAS&PFV&2PP:="е":"я",1>"охте";   
+PAS&PFV&3PP:="е":"я",1>"оха";   
+
+PAS&NPFV&1PS:="к":"ч",1>"ех";    
+PAS&NPFV&2PS:="к":"ч",1>"еше";  
+PAS&NPFV&3PS:="к":"ч",1>"еше";  
+PAS&NPFV&1PP:="к":"ч",1>"ехме";   
+PAS&NPFV&2PP:="к":"ч",1>"ехте";   
+PAS&NPFV&3PP:="к":"ч",1>"еха";   ));<br /><br />(%x,M61):=(%x,-M61,+FLX(PRS&1PS:=0>"";PRS&2PS:=1>"еш";  
+PRS&3PS:=1>"е";  
+PRS&1PP:=1>"ем";   
+PRS&2PP:=1>"ете";   
+PRS&3PP:=0>"т";   
+
+PAS&PFV&1PS:=1>"ях";    
+PAS&PFV&2PS:=1>"я";  
+PAS&PFV&3PS:=1>"я";  
+PAS&PFV&1PP:=1>"яхме";   
+PAS&PFV&2PP:=1>"яхте";   
+PAS&PFV&3PP:=1>"яха";   
+
+PAS&NPFV&1PS:=1>"ях";    
+PAS&NPFV&2PS:=1>"еше";  
+PAS&NPFV&3PS:=1>"еше";  
+PAS&NPFV&1PP:=1>"яхме";   
+PAS&NPFV&2PP:=1>"яхте";   
+PAS&NPFV&3PP:=1>"яха";   
+));<br /><br />(%x,M62):=(%x,-M62,+FLX(PRS&1PS:=0>"";PRS&2PS:=1>"еш";  
+PRS&3PS:=1>"е";  
+PRS&1PP:=1>"ем";   
+PRS&2PP:=1>"ете";   
+PRS&3PP:=0>"т";   
+
+PAS&PFV&1PS:=1>"ах";    
+PAS&PFV&2PS:=1>"а";  
+PAS&PFV&3PS:=1>"а";  
+PAS&PFV&1PP:=1>"ахме";   
+PAS&PFV&2PP:=1>"ахте";   
+PAS&PFV&3PP:=1>"аха";   
+
+PAS&NPFV&1PS:=1>"ях";    
+PAS&NPFV&2PS:=1>"еше";  
+PAS&NPFV&3PS:=1>"еше";  
+PAS&NPFV&1PP:=1>"яхме";   
+PAS&NPFV&2PP:=1>"яхте";   
+PAS&NPFV&3PP:=1>"яха";   
+));<br /><br />(%x,M63):=(%x,-M63,+FLX(SNG:=0>"";
+PLR:="ър">"р","ъл">"л","ъм">"м",0>"и";
+PAU:=0>"а";
+MUL:=0>"а";
+));<br /><br />(%x,M64):=(%x,-M64,+FLX(PRS&1PS:=0>"";PRS&2PS:=1>"еш";  
+PRS&3PS:=1>"е";  
+PRS&1PP:=1>"ем";   
+PRS&2PP:=1>"ете";   
+PRS&3PP:=0>"т";   
+
+PAS&PFV&1PS:=1>"ах";    
+PAS&PFV&2PS:=1>"а";  
+PAS&PFV&3PS:=1>"а";  
+PAS&PFV&1PP:=1>"ахме";   
+PAS&PFV&2PP:=1>"ахте";   
+PAS&PFV&3PP:=1>"аха";   
+
+PAS&NPFV&1PS:=1>"ех";    
+PAS&NPFV&2PS:=1>"еше";  
+PAS&NPFV&3PS:=1>"еше";  
+PAS&NPFV&1PP:=1>"ехме";   
+PAS&NPFV&2PP:=1>"ехте";   
+PAS&NPFV&3PP:=1>"еха";   ));<br /><br />(%x,M65):=(%x,-M65,+FLX(SNG:=0>"";
+PLR:="ър">"р","ъл">"л","ъм">"м",0>"и";
+PAU:="ър">"р","ъл">"л","ъм">"м",0>"а";
+MUL:="ър">"р","ъл">"л","ъм">"м",0>"а";
+));<br /><br />(%x,M66):=(%x,-M66,+FLX(SNG&NDEF:=0>"";
+SNG&DEF&SHO:="ъм">"м",0>"а";
+SNG&DEF&STR:="ъм">"м",0>"ът";
+PLR&NDEF:="ъм">"м",0>"и";
+PLR&DEF:="ъм">"м",0>"ите";
+PAU:="ъм">"м",0>"а";
+MUL:="ъм">"м",0>"а";
+));<br /><br />(%x,M67):=(%x,-M67,+FLX(PRS&1PS:=0>"";PRS&2PS:="я":"е",1>"еш";  
+PRS&3PS:="я":"е",1>"е";  
+PRS&1PP:="я":"е",1>"ем";   
+PRS&2PP:="я":"е",1>"ете";   
+PRS&3PP:=0>"т";   
+
+PAS&PFV&1PS:=1>"ах";    
+PAS&PFV&2PS:=1>"а";  
+PAS&PFV&3PS:=1>"а";  
+PAS&PFV&1PP:=1>"ахме";   
+PAS&PFV&2PP:=1>"ахте";   
+PAS&PFV&3PP:=1>"аха";   
+
+PAS&NPFV&1PS:="я":"е",1>"ех";    
+PAS&NPFV&2PS:="я":"е",1>"еше";  
+PAS&NPFV&3PS:="я":"е",1>"еше";  
+PAS&NPFV&1PP:="я":"е",1>"ехме";   
+PAS&NPFV&2PP:="я":"е",1>"ехте";   
+PAS&NPFV&3PP:="я":"е",1>"еха";   ));<br /><br />(%x,M68):=(%x,-M68,+FLX(PRS&1PS:=0>"";PRS&2PS:= 1>"еш";  
+PRS&3PS:= 1>"е";  
+PRS&1PP:= 1>"ем";   
+PRS&2PP:= 1>"ете";   
+PRS&3PP:=0>"т";   
+
+PAS&PFV&1PS:=1>"ах";    
+PAS&PFV&2PS:=1>"а";  
+PAS&PFV&3PS:=1>"а";  
+PAS&PFV&1PP:=1>"ахме";   
+PAS&PFV&2PP:=1>"ахте";   
+PAS&PFV&3PP:=1>"аха";   
+
+PAS&NPFV&1PS:=1>"ех";    
+PAS&NPFV&2PS:=1>"еше";  
+PAS&NPFV&3PS:=1>"еше";  
+PAS&NPFV&1PP:=1>"ехме";   
+PAS&NPFV&2PP:=1>"ехте";   
+PAS&NPFV&3PP:=1>"еха";   
+));<br /><br />(%x,M69):=(%x,-M69,+FLX(PRS&1PS:=0>"";PRS&2PS:= 1>"еш";  
+PRS&3PS:= 1>"е";  
+PRS&1PP:= 1>"ем";   
+PRS&2PP:= 1>"ете";   
+PRS&3PP:=0>"т";   
+
+PAS&PFV&1PS:="ч":"к",1>"ах";    
+PAS&PFV&2PS:="ч":"к",1>"а";  
+PAS&PFV&3PS:="ч":"к",1>"а";  
+PAS&PFV&1PP:="ч":"к",1>"ахме";   
+PAS&PFV&2PP:="ч":"к",1>"ахте";   
+PAS&PFV&3PP:="ч":"к",1>"аха";   
+
+PAS&NPFV&1PS:=1>"ех";    
+PAS&NPFV&2PS:=1>"еше";  
+PAS&NPFV&3PS:=1>"еше";  
+PAS&NPFV&1PP:=1>"ехме";   
+PAS&NPFV&2PP:=1>"ехте";   
+PAS&NPFV&3PP:=1>"еха";  ));<br /><br />(%x,M70):=(%x,-M70,+FLX(SNG:=0>"";
+PLR:="ец":"йци";
+VOC:=0>"o";
+));<br /><br />(%x,M71):=(%x,-M71,+FLX(PRS&1PS:=0>"";PRS&2PS:= 1>"еш";  
+PRS&3PS:= 1>"е";  
+PRS&1PP:= 1>"ем";   
+PRS&2PP:= 1>"ете";   
+PRS&3PP:=0>"т";   
+
+PAS&PFV&1PS:="ж":"з",1>"ах";    
+PAS&PFV&2PS:="ж":"з",1>"а";  
+PAS&PFV&3PS:="ж":"з",1>"а";  
+PAS&PFV&1PP:="ж":"з",1>"ахме";   
+PAS&PFV&2PP:="ж":"з",1>"ахте";   
+PAS&PFV&3PP:="ж":"з",1>"аха";   
+
+PAS&NPFV&1PS:=1>"ех";    
+PAS&NPFV&2PS:=1>"еше";  
+PAS&NPFV&3PS:=1>"еше";  
+PAS&NPFV&1PP:=1>"ехме";   
+PAS&NPFV&2PP:=1>"ехте";   
+PAS&NPFV&3PP:=1>"еха";   ));<br /><br />(%x,M72):=(%x,-M72,+FLX(PRS&1PS:=0>"";PRS&2PS:= 1>"еш";  
+PRS&3PS:= 1>"е";  
+PRS&1PP:= 1>"ем";   
+PRS&2PP:= 1>"ете";   
+PRS&3PP:=0>"т";   
+
+PAS&PFV&1PS:="е":"я","ж":"з",1>"ах";    
+PAS&PFV&2PS:="е":"я","ж":"з",1>"а";  
+PAS&PFV&3PS:="е":"я","ж":"з",1>"а";  
+PAS&PFV&1PP:="е":"я","ж":"з",1>"ахме";   
+PAS&PFV&2PP:="е":"я","ж":"з",1>"ахте";   
+PAS&PFV&3PP:="е":"я","ж":"з",1>"аха";   
+
+PAS&NPFV&1PS:=1>"ех";    
+PAS&NPFV&2PS:=1>"еше";  
+PAS&NPFV&3PS:=1>"еше";  
+PAS&NPFV&1PP:=1>"ехме";   
+PAS&NPFV&2PP:=1>"ехте";   
+PAS&NPFV&3PP:=1>"еха";   ));<br /><br />(%x,M73):=(%x,-M73,+FLX(SNG:=0>"";
+PLR:=1>"зи";
+PAU:=0>"a";
+MUL:=0>"a";
+));<br /><br />(%x,M74):=(%x,-M74,+FLX(SNG:=0>"";
+PLR:=1>"си";
+PAU:=0>"a";
+MUL:=0>"a";
+));<br /><br />(%x,M75):=(%x,-M75,+FLX(SNG:=0>"";
+PLR:=1>"ни";
+PAU:=0>"a";
+MUL:=0>"a";
+));<br /><br />(%x,M76):=(%x,-M76,+FLX(SNG:=0>"";
+PLR:="ин":"и";
+VOC:=0>"o";
+));<br /><br />(%x,M77):=(%x,-M77,+FLX(SNG:=0>"";
+PLR:=2>"овце";
+PAU:=0>"а";
+MUL:=0>"а";
+));<br /><br />(%x,M78):=(%x,-M78,+FLX(SNG&NDEF:=0>"";
+SNG&DEF&SHO:=1>"я";
+SNG&DEF&STR:=1>"ят";
+PLR&NDEF:=1>"еве";
+PLR&DEF:=1>"евете";
+PAU:=1>"я";
+MUL:=1>"я";
+));<br /><br />(%x,M79):=(%x,-M79,+FLX(SNG:=0>"";
+PLR:=0>"ьове";
+VOC&ALT1:=0>"ьо";
+VOC&ALT2:=0>"ко";
+));<br /><br />(%x,M80):=(%x,-M80,+FLX(SNG:=0>"";
+PLR:=0>"и";
+VOC:=0>"ю";
+));<br /><br />(%x,M81):=(%x,-M81,+FLX(SNG:=0>"";
+PLR:=0>"и";
+PAU:=0>"я";
+MUL:=0>"я";
+));<br /><br />(%x,M82):=(%x,-M82,+FLX(SNG:=0>"";
+PLR:=1>"и";
+VOC:=1>"ю";
+));<br /><br />(%x,M83):=(%x,-M83,+FLX(SNG:=0>"";
+PLR:=1>"и";
+PAU:=1>"я";
+MUL:=1>"я";
+));<br /><br />(%x,M84):=(%x,-M84,+FLX(SNG:=0>"";
+PLR:="ен":"ни";
+PAU:=0>"а";
+MUL:=0>"а";
+));<br /><br />(%x,M85):=(%x,-M85,+FLX(SNG:=0>"";
+PLR:="ът":"ти";
+PAU:=0>"я";
+MUL:=0>"я";
+));<br /><br />(%x,M86):=(%x,-M86,+FLX(PRS&1PS:=0>"";PRS&2PS:=1>"еш";  
+PRS&3PS:=1>"е";  
+PRS&1PP:=1>"ем";   
+PRS&2PP:=1>"ете";   
+PRS&3PP:=0>"т";   
+
+PAS&PFV&1PS:="ж":"г",0>"х";    
+PAS&PFV&2PS:="ж":"г";  
+PAS&PFV&3PS:="ж":"г";  
+PAS&PFV&1PP:="ж":"г",0>"хме";   
+PAS&PFV&2PP:="ж":"г",0>"хте";   
+PAS&PFV&3PP:="ж":"г",0>"ха";   
+
+PAS&NPFV&1PS:=1>"eх";    
+PAS&NPFV&2PS:=1>"еше";  
+PAS&NPFV&3PS:=1>"еше";  
+PAS&NPFV&1PP:=1>"ехме";   
+PAS&NPFV&2PP:=1>"ехте";   
+PAS&NPFV&3PP:=1>"еха";   ));<br /><br />(%x,M87):=(%x,-M87,+FLX(PRS&1PS:=0>"";PRS&2PS:=1>"еш";  
+PRS&3PS:=1>"е";  
+PRS&1PP:=1>"ем";   
+PRS&2PP:=1>"ете";   
+PRS&3PP:=0>"т";   
+
+PAS&PFV&1PS:="ш":"с",0>"х";    
+PAS&PFV&2PS:="ш":"с";  
+PAS&PFV&3PS:="ш":"с";  
+PAS&PFV&1PP:="ш":"с",0>"хме";   
+PAS&PFV&2PP:="ш":"с",0>"хте";   
+PAS&PFV&3PP:="ш":"с",0>"ха";   
+
+PAS&NPFV&1PS:=1>"eх";    
+PAS&NPFV&2PS:=1>"еше";  
+PAS&NPFV&3PS:=1>"еше";  
+PAS&NPFV&1PP:=1>"ехме";   
+PAS&NPFV&2PP:=1>"ехте";   
+PAS&NPFV&3PP:=1>"еха";   ));<br /><br />(%x,M88):=(%x,-M88,+FLX(PRS&1PS:=0>"";PRS&2PS:=1>"еш";  
+PRS&3PS:=1>"е";  
+PRS&1PP:=1>"ем";   
+PRS&2PP:=1>"ете";   
+PRS&3PP:=0>"т";   
+
+PAS&PFV&1PS:=2>"ях";    
+PAS&PFV&2PS:=2>"я";  
+PAS&PFV&3PS:=2>"я";  
+PAS&PFV&1PP:=2>"яхме";   
+PAS&PFV&2PP:=2>"яхте";   
+PAS&PFV&3PP:=2>"яха";   
+
+PAS&NPFV&1PS:=1>"eх";    
+PAS&NPFV&2PS:=1>"еше";  
+PAS&NPFV&3PS:=1>"еше";  
+PAS&NPFV&1PP:=1>"ехме";   
+PAS&NPFV&2PP:=1>"ехте";   
+PAS&NPFV&3PP:=1>"еха";   
+));<br /><br />(%x,M89):=(%x,-M89,+FLX(SNG:=0>"";
+PLR:=0>"е";
+VOC:=0>"ю";
+));<br /><br />(%x,M90):=(%x,-M90,+FLX(SNG:=0>"";
+PLR:=0>"е";
+PAU:=0>"я";
+MUL:=0>"я";
+VOC:=0>"ьо";
+));<br /><br />(%x,M91):=(%x,-M91,+FLX(SNG&NDEF:=0>"";
+SNG&DEF&SHO:=1>"я";
+SNG&DEF&STR:=1>"ят";
+PLR:=1>"ища";
+PAU:=1>"я";
+MUL:=1>"я";
+));<br /><br />(%x,M92):=(%x,-M92,+FLX(SNG:=0>"";
+PLR:=0>"ища";
+PAU:=0>"я";
+MUL:=0>"я";
+));<br /><br />(%x,M93):=(%x,-M93,+FLX(SNG:=0>"";
+PLR:=1>"и";
+
+));<br /><br />(%x,M94):=(%x,-M94,+FLX(SNG:=0>"";
+PLR:=0>"вци";
+));<br /><br />(%x,M95):=(%x,-M95,+FLX(PRS&1PS:=0>"";PRS&2PS:=1>"еш";  
+PRS&3PS:=1>"е";  
+PRS&1PP:=1>"ем";   
+PRS&2PP:=1>"ете";   
+PRS&3PP:=0>"т";   
+
+PAS&PFV&1PS:=1>"х";    
+PAS&PFV&2PS:=1>"";  
+PAS&PFV&3PS:=1>"";  
+PAS&PFV&1PP:=1>"хме";   
+PAS&PFV&2PP:=1>"хте";   
+PAS&PFV&3PP:=1>"ха";   
+
+PAS&NPFV&1PS:=1>"eх";    
+PAS&NPFV&2PS:=1>"еше";  
+PAS&NPFV&3PS:=1>"еше";  
+PAS&NPFV&1PP:=1>"ехме";   
+PAS&NPFV&2PP:=1>"ехте";   
+PAS&NPFV&3PP:=1>"еха";   ));<br /><br />(%x,M96):=(%x,-M96,+FLX(PRS&1PS:=0>"";PRS&2PS:=1>"еш";  
+PRS&3PS:=1>"е";  
+PRS&1PP:=1>"ем";   
+PRS&2PP:=1>"ете";   
+PRS&3PP:=0>"т";   
+
+PAS&PFV&1PS:=0>"х";    
+PAS&PFV&2PS:=0>"";  
+PAS&PFV&3PS:=0>"";  
+PAS&PFV&1PP:=0>"хме";   
+PAS&PFV&2PP:=0>"хте";   
+PAS&PFV&3PP:=0>"ха";   
+
+PAS&NPFV&1PS:=1>"eх";    
+PAS&NPFV&2PS:=1>"еше";  
+PAS&NPFV&3PS:=1>"еше";  
+PAS&NPFV&1PP:=1>"ехме";   
+PAS&NPFV&2PP:=1>"ехте";   
+PAS&NPFV&3PP:=1>"еха";   ));<br /><br />(%x,M97):=(%x,-M97,+FLX(PRS&1PS:=0>"";PRS&2PS:=1>"еш";  
+PRS&3PS:=1>"е";  
+PRS&1PP:=1>"ем";   
+PRS&2PP:=1>"ете";   
+PRS&3PP:=0>"т";   
+
+PAS&PFV&1PS:=1>"х";    
+PAS&PFV&2PS:=1>"";  
+PAS&PFV&3PS:=1>"";  
+PAS&PFV&1PP:=1>"хме";   
+PAS&PFV&2PP:=1>"хте";   
+PAS&PFV&3PP:=1>"ха";   
+
+PAS&NPFV&1PS:=1>"eх";    
+PAS&NPFV&2PS:=1>"еше";  
+PAS&NPFV&3PS:=1>"еше";  
+PAS&NPFV&1PP:=1>"ехме";   
+PAS&NPFV&2PP:=1>"ехте";   
+PAS&NPFV&3PP:=1>"еха";   
+));<br /><br />(%x,M98):=(%x,-M98,+FLX(PRS&1PS:=0>"";PRS&2PS:=1>"еш";  
+PRS&3PS:=1>"е";  
+PRS&1PP:=1>"ем";   
+PRS&2PP:=1>"ете";   
+PRS&3PP:=0>"т";   
+
+PAS&PFV&1PS:="е":"я",1>"х";    
+PAS&PFV&2PS:="е":"я",1>"";  
+PAS&PFV&3PS:="е":"я",1>"";  
+PAS&PFV&1PP:="е":"я",1>"хме";   
+PAS&PFV&2PP:="е":"я",1>"хте";   
+PAS&PFV&3PP:="е":"я",1>"ха";   
+
+PAS&NPFV&1PS:=1>"eх";    
+PAS&NPFV&2PS:=1>"еше";  
+PAS&NPFV&3PS:=1>"еше";  
+PAS&NPFV&1PP:=1>"ехме";   
+PAS&NPFV&2PP:=1>"ехте";   
+PAS&NPFV&3PP:=1>"еха";   
+));<br /><br />(%x,M99):=(%x,-M99,+FLX(PRS&1PS:=0>"";PRS&2PS:=1>"еш";  
+PRS&3PS:=1>"е";  
+PRS&1PP:=1>"ем";   
+PRS&2PP:=1>"ете";   
+PRS&3PP:=0>"т";   
+PAS&NPFV&1PS:=1>"eх";    
+PAS&NPFV&2PS:=1>"еше";  
+PAS&NPFV&3PS:=1>"еше";  
+PAS&NPFV&1PP:=1>"ехме";   
+PAS&NPFV&2PP:=1>"ехте";   
+PAS&NPFV&3PP:=1>"еха";   ));<br /><br />(%x,M100):=(%x,-M100,+FLX(PRS&1PS:=0>"";PRS&2PS:="г":"ж",1>"еш";  
+PRS&3PS:="г":"ж",1>"е";  
+PRS&1PP:="г":"ж",1>"ем";   
+PRS&2PP:="г":"ж",1>"ете";   
+PRS&3PP:=0>"т";   
+
+PAS&PFV&1PS:="г":"ж",0>"х";    
+PAS&PFV&2PS:="г":"ж";  
+PAS&PFV&3PS:="г":"ж";  
+PAS&PFV&1PP:="г":"ж",0>"хме";   
+PAS&PFV&2PP:="г":"ж",0>"хте";   
+PAS&PFV&3PP:="г":"ж",0>"ха";   
+
+PAS&NPFV&1PS:="г":"ж",1>"eх";    
+PAS&NPFV&2PS:="г":"ж",1>"еше";  
+PAS&NPFV&3PS:="г":"ж",1>"еше";  
+PAS&NPFV&1PP:="г":"ж",1>"ехме";   
+PAS&NPFV&2PP:="г":"ж",1>"ехте";   
+PAS&NPFV&3PP:="г":"ж",1>"еха";   
+
+));<br /><br />(%x,M101):=(%x,-M101,+FLX(PRS&1PS:=0>"";PRS&2PS:="к":"ч",1>"еш";  
+PRS&3PS:="к":"ч",1>"е";  
+PRS&1PP:="к":"ч",1>"ем";   
+PRS&2PP:="к":"ч",1>"ете";   
+PRS&3PP:=0>"т";   
+
+PAS&PFV&1PS:=0>"х";    
+PAS&PFV&2PS:=0>"";  
+PAS&PFV&3PS:=0>"";  
+PAS&PFV&1PP:=0>"хме";   
+PAS&PFV&2PP:=0>"хте";   
+PAS&PFV&3PP:=0>"ха";   
+
+PAS&NPFV&1PS:="к":"ч",1>"eх";    
+PAS&NPFV&2PS:="к":"ч",1>"еше";  
+PAS&NPFV&3PS:="к":"ч",1>"еше";  
+PAS&NPFV&1PP:="к":"ч",1>"ехме";   
+PAS&NPFV&2PP:="к":"ч",1>"ехте";   
+PAS&NPFV&3PP:="к":"ч",1>"еха"; ));<br /><br />(%x,M102):=(%x,-M102,+FLX(PRS&1PS:=0>"";PRS&2PS:=1>"деш";  
+PRS&3PS:=1>"де";  
+PRS&1PP:=1>"дем";   
+PRS&2PP:=1>"дете";   
+PRS&3PP:=1>"дат";   
+
+PAS&PFV&1PS:=1>"дох";    
+PAS&PFV&2PS:=1>"де";  
+PAS&PFV&3PS:=1>"де";  
+PAS&PFV&1PP:=1>"дохме";   
+PAS&PFV&2PP:=1>"дохте";   
+PAS&PFV&3PP:=1>"доха";   
+
+PAS&NPFV&1PS:=1>"дях";    
+PAS&NPFV&2PS:=1>"деше";  
+PAS&NPFV&3PS:=1>"деше";  
+PAS&NPFV&1PP:=1>"дяхме";   
+PAS&NPFV&2PP:=1>"дяхте";   
+PAS&NPFV&3PP:=1>"дяха";   
+));<br /><br />(%x,M103):=(%x,-M103,+FLX(PRS&1PS:=0>"";PRS&2PS:=1>"деш";  
+PRS&3PS:=1>"де";  
+PRS&1PP:=1>"дем";   
+PRS&2PP:=1>"дете";   
+PRS&3PP:=1>"дат";   
+
+PAS&PFV&1PS:=1>"дох";    
+PAS&PFV&2PS:=1>"де";  
+PAS&PFV&3PS:=1>"де";  
+PAS&PFV&1PP:=1>"дохме";   
+PAS&PFV&2PP:=1>"дохте";   
+PAS&PFV&3PP:=1>"доха";   
+
+PAS&NPFV&1PS:=1>"дях";    
+PAS&NPFV&2PS:=1>"деше";  
+PAS&NPFV&3PS:=1>"деше";  
+PAS&NPFV&1PP:=1>"дяхме";   
+PAS&NPFV&2PP:=1>"дяхте";   
+PAS&NPFV&3PP:=1>"дяха";   ));<br /><br />(%x,M104):=(%x,-M104,+FLX(PRS&1PS:=0>"";PRS&2PS:=1>"еш";  
+PRS&3PS:=1>"е";  
+PRS&1PP:=1>"ем";   
+PRS&2PP:=1>"ете";   
+PRS&3PP:=1>"ат";   
+
+PAS&PFV&1PS:="е":"",0>"х";    
+PAS&PFV&2PS:="е":"";  
+PAS&PFV&3PS:="е":"";  
+PAS&PFV&1PP:="е":"",0>"хме";   
+PAS&PFV&2PP:="е":"",0>"хте";   
+PAS&PFV&3PP:="е":"",0>"ха";   
+PAS&NPFV&1PS:=1>"ях";    
+PAS&NPFV&2PS:=1>"еше";  
+PAS&NPFV&3PS:=1>"еше";  
+PAS&NPFV&1PP:=1>"яхме";   
+PAS&NPFV&2PP:=1>"яхте";   
+PAS&NPFV&3PP:=1>"яха";   ));<br /><br />(%x,M105):=(%x,-M105,+FLX(PRS&1PS:=0>"";PRS&2PS:=1>"еш";  
+PRS&3PS:=1>"е";  
+PRS&1PP:=1>"ем";   
+PRS&2PP:=1>"ете";   
+PRS&3PP:=1>"ат";   
+PAS&PFV&1PS:=2>"х";    
+PAS&PFV&2PS:=2>"";  
+PAS&PFV&3PS:=2>"";  
+PAS&PFV&1PP:=2>"хме";   
+PAS&PFV&2PP:=2>"хте";   
+PAS&PFV&3PP:=2>"ха";  
+PAS&NPFV&1PS:=1>"ех";    
+PAS&NPFV&2PS:=1>"еше";  
+PAS&NPFV&3PS:=1>"еше";  
+PAS&NPFV&1PP:=1>"ехме";   
+PAS&NPFV&2PP:=1>"ехте";   
+PAS&NPFV&3PP:=1>"еха";  ));<br /><br />(%x,M106):=(%x,-M106,+FLX(PRS&1PS:=0>"";PRS&2PS:=1>"еш";  
+PRS&3PS:=1>"е";  
+PRS&1PP:=1>"ем";   
+PRS&2PP:=1>"ете";   
+PRS&3PP:=1>"ат";   
+PAS&PFV&1PS:="ъ":"",2>"ех";    
+PAS&PFV&2PS:="ъ":"",2>"е";  
+PAS&PFV&3PS:="ъ":"",2>"е";  
+PAS&PFV&1PP:="ъ":"",2>"ехме";   
+PAS&PFV&2PP:="ъ":"",2>"ехте";   
+PAS&PFV&3PP:="ъ":"",2>"еха";  
+PAS&NPFV&1PS:=1>"ех";    
+PAS&NPFV&2PS:=1>"еше";  
+PAS&NPFV&3PS:=1>"еше";  
+PAS&NPFV&1PP:=1>"ехме";   
+PAS&NPFV&2PP:=1>"ехте";   
+PAS&NPFV&3PP:=1>"еха";   ));<br /><br />(%x,M107):=(%x,-M107,+FLX(PRS&1PS:=0>"";PRS&2PS:=1>"иш";  
+PRS&3PS:=1>"и";  
+PRS&1PP:=1>"им";   
+PRS&2PP:=1>"ите";   
+PRS&3PP:=1>"ят";   
+
+PAS&PFV&1PS:=1>"их";    
+PAS&PFV&2PS:=1>"и";  
+PAS&PFV&3PS:=1>"и";  
+PAS&PFV&1PP:=1>"ихме";   
+PAS&PFV&2PP:=1>"ихте";   
+PAS&PFV&3PP:=1>"иха";   
+PAS&NPFV&1PS:=1>"ех";    
+PAS&NPFV&2PS:=1>"еше";  
+PAS&NPFV&3PS:=1>"еше";  
+PAS&NPFV&1PP:=1>"ехме";   
+PAS&NPFV&2PP:=1>"ехте";   
+PAS&NPFV&3PP:=1>"еха"; ));<br /><br />(%x,M108):=(%x,-M108,+FLX(PRS&1PS:=0>"";PRS&2PS:=1>"иш";  
+PRS&3PS:=1>"и";  
+PRS&1PP:=1>"им";   
+PRS&2PP:=1>"ите";   
+PRS&3PP:=1>"ят";   
+
+PAS&PFV&1PS:=1>"их";    
+PAS&PFV&2PS:=1>"и";  
+PAS&PFV&3PS:=1>"и";  
+PAS&PFV&1PP:=1>"ихме";   
+PAS&PFV&2PP:=1>"ихте";   
+PAS&PFV&3PP:=1>"иха";   
+
+PAS&NPFV&1PS:=1>"ях";    
+PAS&NPFV&2PS:=1>"еше";  
+PAS&NPFV&3PS:=1>"еше";  
+PAS&NPFV&1PP:=1>"яхме";   
+PAS&NPFV&2PP:=1>"яхте";   
+PAS&NPFV&3PP:=1>"яха";   
+));<br /><br />(%x,M109):=(%x,-M109,+FLX(PRS&1PS:=0>"";PRS&2PS:=1>"иш";  
+PRS&3PS:=1>"и";  
+PRS&1PP:=1>"им";   
+PRS&2PP:=1>"ите";   
+PRS&3PP:=1>"ят";   
+
+PAS&PFV&1PS:=1>"их";    
+PAS&PFV&2PS:=1>"и";  
+PAS&PFV&3PS:=1>"и";  
+PAS&PFV&1PP:=1>"ихме";   
+PAS&PFV&2PP:=1>"ихте";   
+PAS&PFV&3PP:=1>"иха";   
+
+PAS&NPFV&1PS:=1>"ях";    
+PAS&NPFV&2PS:=1>"еше";  
+PAS&NPFV&3PS:=1>"еше";  
+PAS&NPFV&1PP:=1>"яхме";   
+PAS&NPFV&2PP:=1>"яхте";   
+PAS&NPFV&3PP:=1>"яха";   ));<br /><br />(%x,M110):=(%x,-M110,+FLX(PRS&1PS:=0>"";PRS&2PS:=1>"иш";  
+PRS&3PS:=1>"и";  
+PRS&1PP:=1>"им";   
+PRS&2PP:=1>"ите";   
+PRS&3PP:=1>"ат";   
+
+PAS&PFV&1PS:=1>"их";    
+PAS&PFV&2PS:=1>"и";  
+PAS&PFV&3PS:=1>"и";  
+PAS&PFV&1PP:=1>"ихме";   
+PAS&PFV&2PP:=1>"ихте";   
+PAS&PFV&3PP:=1>"иха";   
+
+PAS&NPFV&1PS:=1>"ех";    
+PAS&NPFV&2PS:=1>"еше";  
+PAS&NPFV&3PS:=1>"еше";  
+PAS&NPFV&1PP:=1>"ехме";   
+PAS&NPFV&2PP:=1>"ехте";   
+PAS&NPFV&3PP:=1>"еха";   ));<br /><br />(%x,M111):=(%x,-M111,+FLX(PRS&1PS:=0>"";PRS&2PS:=1>"иш";  
+PRS&3PS:=1>"и";  
+PRS&1PP:=1>"им";   
+PRS&2PP:=1>"ите";   
+PRS&3PP:=1>"ят";   
+
+PAS&PFV&1PS:=1>"ях";    
+PAS&PFV&2PS:=1>"я";  
+PAS&PFV&3PS:=1>"я";  
+PAS&PFV&1PP:=1>"яхме";   
+PAS&PFV&2PP:=1>"яхте";   
+PAS&PFV&3PP:=1>"яха";   
+
+PAS&NPFV&1PS:=1>"ях";    
+PAS&NPFV&2PS:=1>"еше";  
+PAS&NPFV&3PS:=1>"еше";  
+PAS&NPFV&1PP:=1>"яхме";   
+PAS&NPFV&2PP:=1>"яхте";   
+PAS&NPFV&3PP:=1>"яха";   
+));<br /><br />(%x,M112):=(%x,-M112,+FLX(PRS&1PS:=0>"";
+PRS&2PS:=1>"иш";
+PRS&3PS:=1>"и";
+PRS&1PP:=1>"им";
+PRS&2PP:=1>"ите";
+PRS&3PP:=1>"ат";
+ 
+PAS&PFV&1PS:=1>"ах";
+PAS&PFV&2PS:=1>"а";
+PAS&PFV&3PS:=1>"а";
+PAS&PFV&1PP:=1>"ахме";
+PAS&PFV&2PP:=1>"ахте";
+PAS&PFV&3PP:=1>"аха";
+
+PAS&NPFV&1PS:=1>"ах";
+PAS&NPFV&2PS:=1>"еше";
+PAS&NPFV&3PS:=1>"еше";
+PAS&NPFV&1PP:=1>"ахме";
+PAS&NPFV&2PP:=1>"ахте";
+PAS&NPFV&3PP:=1>"аха";
+   ));<br /><br />(%x,M113):=(%x,-M113,+FLX(PRS&1PS:=0>"";PRS&2PS:=1>"иш";  
+PRS&3PS:=1>"и";  
+PRS&1PP:=1>"им";   
+PRS&2PP:=1>"ите";   
+PRS&3PP:=1>"ат";   
+
+PAS&PFV&1PS:=1>"ах";    
+PAS&PFV&2PS:=1>"а";  
+PAS&PFV&3PS:=1>"а";  
+PAS&PFV&1PP:=1>"ахме";   
+PAS&PFV&2PP:=1>"ахте";   
+PAS&PFV&3PP:=1>"аха";   
+
+PAS&NPFV&1PS:=1>"ех";    
+PAS&NPFV&2PS:=1>"еше";  
+PAS&NPFV&3PS:=1>"еше";  
+PAS&NPFV&1PP:=1>"ехме";   
+PAS&NPFV&2PP:=1>"ехте";   
+PAS&NPFV&3PP:=1>"еха"; ));<br /><br />(%x,M114):=(%x,-M114,+FLX(PRS&1PS:=0>"";PRS&2PS:=1>"иш";  
+PRS&3PS:=1>"и";  
+PRS&1PP:=1>"им";   
+PRS&2PP:=1>"ите";   
+PRS&3PP:=1>"ят";   
+
+PAS&PFV&1PS:=1>"ях";    
+PAS&PFV&2PS:=1>"я";  
+PAS&PFV&3PS:=1>"я";  
+PAS&PFV&1PP:=1>"яхме";   
+PAS&PFV&2PP:=1>"яхте";   
+PAS&PFV&3PP:=1>"яха";   
+
+PAS&NPFV&1PS:=1>"ях";    
+PAS&NPFV&2PS:=1>"еше";  
+PAS&NPFV&3PS:=1>"еше";  
+PAS&NPFV&1PP:=1>"яхме";   
+PAS&NPFV&2PP:=1>"яхте";   
+PAS&NPFV&3PP:=1>"яха";   ));<br /><br />(%x,M115):=(%x,-M115,+FLX(PRS&1PS:=0>"";PRS&2PS:=1>"иш";  
+PRS&3PS:=1>"и";  
+PRS&1PP:=1>"им";   
+PRS&2PP:=1>"ите";   
+PRS&3PP:=1>"ят";   
+
+PAS&PFV&1PS:=1>"ях";    
+PAS&PFV&2PS:=1>"я";  
+PAS&PFV&3PS:=1>"я";  
+PAS&PFV&1PP:=1>"яхме";   
+PAS&PFV&2PP:=1>"яхте";   
+PAS&PFV&3PP:=1>"яха";   
+
+PAS&NPFV&1PS:=1>"ех";    
+PAS&NPFV&2PS:=1>"еше";  
+PAS&NPFV&3PS:=1>"еше";  
+PAS&NPFV&1PP:=1>"ехме";   
+PAS&NPFV&2PP:=1>"ехте";   
+PAS&NPFV&3PP:=1>"еха";   ));<br /><br />(%x,M116):=(%x,-M116,+FLX(PRS&1PS:=0>"";PRS&2PS:=1>"иш";  
+PRS&3PS:=1>"и";  
+PRS&1PP:=1>"им";   
+PRS&2PP:=1>"ите";   
+PRS&3PP:=1>"ят";   
+
+PAS&PFV&1PS:=1>"ах";    
+PAS&PFV&2PS:=1>"а";  
+PAS&PFV&3PS:=1>"а";  
+PAS&PFV&1PP:=1>"ахме";   
+PAS&PFV&2PP:=1>"ахте";   
+PAS&PFV&3PP:=1>"аха";   
+
+PAS&NPFV&1PS:=1>"ях";    
+PAS&NPFV&2PS:=1>"еше";  
+PAS&NPFV&3PS:=1>"еше";  
+PAS&NPFV&1PP:=1>"яхме";   
+PAS&NPFV&2PP:=1>"яхте";   
+PAS&NPFV&3PP:=1>"яха";   ));<br /><br />(%x,M117):=(%x,-M117,+FLX(PRS&1PS:=0>"";PRS&2PS:=1>"иш";  
+PRS&3PS:=1>"и";  
+PRS&1PP:=1>"им";   
+PRS&2PP:=1>"ите";   
+PRS&3PP:=1>"ат";   
+PAS&PFV&1PS:=3>"язах";    
+PAS&PFV&2PS:=3>"яза";  
+PAS&PFV&3PS:=3>"яза";  
+PAS&PFV&1PP:=3>"язахме";   
+PAS&PFV&2PP:=3>"язахте";   
+PAS&PFV&3PP:=3>"язаха"; 
+PAS&NPFV&1PS:=1>"ех";    
+PAS&NPFV&2PS:=1>"еше";  
+PAS&NPFV&3PS:=1>"еше";  
+PAS&NPFV&1PP:=1>"ехме";   
+PAS&NPFV&2PP:=1>"ехте";   
+PAS&NPFV&3PP:=1>"еха"; ));<br /><br />(%x,M118):=(%x,-M118,+FLX(PRS&1PS:=0>"";PRS&2PS:=1>"иш";  
+PRS&3PS:=1>"и";  
+PRS&1PP:=1>"им";   
+PRS&2PP:=1>"ите";   
+PRS&3PP:=1>"ят";   
+
+PAS&PFV&1PS:="е":"",0>"х";    
+PAS&PFV&2PS:="е":"";  
+PAS&PFV&3PS:="е":"";  
+PAS&PFV&1PP:="е":"",1>"яхме";   
+PAS&PFV&2PP:="е":"",1>"яхте";   
+PAS&PFV&3PP:="е":"",1>"яха"; 
+PAS&NPFV&1PS:=1>"ех";    
+PAS&NPFV&2PS:=1>"еше";  
+PAS&NPFV&3PS:=1>"еше";  
+PAS&NPFV&1PP:=1>"ехме";   
+PAS&NPFV&2PP:=1>"ехте";   
+PAS&NPFV&3PP:=1>"еха";   ));<br /><br />(%x,M119):=(%x,-M119,+FLX(PRS&1PS:=0>"";PRS&2PS:=1>"иш";  
+PRS&3PS:=1>"и";  
+PRS&1PP:=1>"им";   
+PRS&2PP:=1>"ите";   
+PRS&3PP:=1>"ят";  
+PAS&PFV&1PS:="о":"",1>"ах";    
+PAS&PFV&2PS:="о":"",1>"а";  
+PAS&PFV&3PS:="о":"",1>"а"; 
+PAS&PFV&1PP:="о":"",1>"ахме";   
+PAS&PFV&2PP:="о":"",1>"ахте";   
+PAS&PFV&3PP:="о":"",1>"аха";   
+PAS&NPFV&1PS:=1>"ех";    
+PAS&NPFV&2PS:=1>"еше";  
+PAS&NPFV&3PS:=1>"еше";  
+PAS&NPFV&1PP:=1>"ехме";   
+PAS&NPFV&2PP:=1>"ехте";   
+PAS&NPFV&3PP:=1>"еха";));<br /><br />(%x,M120):=(%x,-M120,+FLX(PRS&1PS:=0>"";PRS&2PS:=1>"ш";  
+PRS&3PS:=1>"";  
+PRS&1PP:=1>"ме";   
+PRS&2PP:=1>"те";   
+PRS&3PP:=1>"т";   
+
+PAS&PFV&1PS:=1>"х";    
+PAS&PFV&2PS:=1>"";  
+PAS&PFV&3PS:=1>""; 
+PAS&PFV&1PP:=1>"хме";   
+PAS&PFV&2PP:=1>"хте";   
+PAS&PFV&3PP:=1>"ха";   
+
+PAS&NPFV&1PS:=1>"х";    
+PAS&NPFV&2PS:=1>"ше";  
+PAS&NPFV&3PS:=1>"ше";  
+PAS&NPFV&1PP:=1>"хме";   
+PAS&NPFV&2PP:=1>"хте";   
+PAS&NPFV&3PP:=1>"ха";   ));<br /><br />(%x,M121):=(%x,-M121,+FLX(PRS&1PS:=0>"";PRS&2PS:=1>"ш";  
+PRS&3PS:=1>"";  
+PRS&1PP:=1>"ме";   
+PRS&2PP:=1>"те";   
+PRS&3PP:=1>"т";   
+
+PAS&PFV&1PS:=1>"х";    
+PAS&PFV&2PS:=1>"";  
+PAS&PFV&3PS:=1>""; 
+PAS&PFV&1PP:=1>"хме";   
+PAS&PFV&2PP:=1>"хте";   
+PAS&PFV&3PP:=1>"ха";   
+
+PAS&NPFV&1PS:=1>"х";    
+PAS&NPFV&2PS:=1>"ше";  
+PAS&NPFV&3PS:=1>"ше";  
+PAS&NPFV&1PP:=1>"хме";   
+PAS&NPFV&2PP:=1>"хте";   
+PAS&NPFV&3PP:=1>"ха";   ));<br /><br />(%x,M125):=(%x,-M125,+FLX(SNG:=0>"";
+PLR:=1>"и";
+VOC:=1>"о";
+));<br /><br />(%x,M126):=(%x,-M126,+FLX(SNG:=0>"";
+PLR:=1>"и";
+
+));<br /><br />(%x,M127):=(%x,-M127,+FLX(SNG:=0>"";
+PLR:="я":"е",1>"и";
+
+));<br /><br />(%x,M128):=(%x,-M128,+FLX(SNG:=0>"";
+PLR:=1>"е";
+
+));<br /><br />(%x,M129):=(%x,-M129,+FLX(SNG:=0>"";
+PLR:=1>"и";
+VOC:=1>"ьо";
+));<br /><br />(%x,M130):=(%x,-M130,+FLX(SNG:=0>"";
+PLR:=1>"е";
+
+));<br /><br />(%x,M131):=(%x,-M131,+FLX(SNG:=0>"";
+PLR:=0>"и";
+));<br /><br />(%x,M132):=(%x,-M132,+FLX(SNG:=0>"";
+PLR:=2>"ни";
+));<br /><br />(%x,M133):=(%x,-M133,+FLX(SNG:=0>"";
+PLR:="ъл":"ли","ън":"ни";
+
+));<br /><br />(%x,M134):=(%x,-M134,+FLX(SNG&NDEF:=0>"";
+SNG&DEF:="я":"е",0>"та";
+PLR:=0>"и";
+
+));<br /><br />(%x,M135):=(%x,-M135,+FLX(SNG:=0>"";
+PLR:="ръ":"ър",0>"и";
+));<br /><br />(%x,M136):=(%x,-M136,+FLX(SNG:=0>"";
+PLR:=1>"а";
+
+));<br /><br />(%x,M137):=(%x,-M137,+FLX(SNG:=0>"";
+PLR:="я":"е",1>"а";
+
+));<br /><br />(%x,M138):=(%x,-M138,+FLX(SNG:=0>"";
+PLR:=0>"та";
+));<br /><br />(%x,M139):=(%x,-M139,+FLX(SNG:=0>"";
+PLR:=1>"а";
+
+));<br /><br />(%x,M140):=(%x,-M140,+FLX(SNG:=0>"";
+PLR:=0>"на";
+
+));<br /><br />(%x,M148):=(%x,-M148,+FLX(SNG:=0>"";
+PLR:=1>"ци";
+PAU:=0>"a";
+MUL:=0>"a";
+VOC:=0>"о";
+));<br /><br />(%x,M152):=(%x,-M152,+FLX(SNG:=0>"";
+PLR:=0>"и";
+PAU:=0>"а";
+MUL:=0>"а";
+VOC:=0>"о";
+));<br /><br />(%x,M153):=(%x,-M153,+FLX(SNG:=0>"";
+PLR:=1>"и";
+VOC:=1>"о";
+));<br /><br />(%x,M156):=(%x,-M156,+FLX(PRS&2PS:=1>"еш";
+PRS&3PS:=1>"е";
+PRS&1PP:=1>"ем";
+PRS&2PP:=1>"ете";
+PRS&3PP:=0>"т";
+PAS&PFV&1PS:=2>"ах";
+PAS&PFV&2PS:=2>"а";
+PAS&PFV&3PS:=2>"а";
+PAS&PFV&1PP:=2>"ахме";
+PAS&PFV&2PP:=2>"ахте";
+PAS&PFV&3PP:=2>"аха";
+PAS&NPFV&1PS:=1>"eх";
+PAS&NPFV&2PS:=1>"еше";
+PAS&NPFV&3PS:=1>"еше";
+PAS&NPFV&1PP:=1>"ехме";
+PAS&NPFV&2PP:=1>"ехте";
+PAS&NPFV&3PP:=1>"еха";));<br /><br />(%x,M162):=(%x,-M162,+FLX(PRS&2PS:=1>"еш"; PRS&3PS:=1>"е"; PRS&1PP:=1>"ем"; PRS&2PP:=1>"ете"; PRS&3PP:=0>"т"; PAS&PFV&1PS:=2>"ях"; PAS&PFV&2PS:=2>"я"; PAS&PFV&3PS:=2>"я"; PAS&PFV&1PP:=2>"яхме"; PAS&PFV&2PP:=2>"яхте"; PAS&PFV&3PP:=2>"яха"; PAS&NPFV&1PS:=1>"eх"; PAS&NPFV&2PS:=1>"еше"; PAS&NPFV&3PS:=1>"еше"; PAS&NPFV&1PP:=1>"ехме"; PAS&NPFV&2PP:=1>"ехте"; PAS&NPFV&3PP:=1>"еха";));<br /><br />(%x,M165):=(%x,-M165,+FLX(MCL&SNG&NDEF:=0>"";
+MCL&SNG&DEF&SHO:="й">"я";
+MCL&SNG&DEF&STR:="й">"ят";
+
+FEM&SNG:="й">"я";
+NEU&SNG:="й">"е";
+PLR:="й">"и";
+));<br /><br />(%x,M166):=(%x,-M166,+FLX(MCL&SNG&NDEF:=0>"";
+MCL&SNG&DEF&SHO:=0>"ия";
+MCL&SNG&DEF&STR:=0>"ият";
+
+FEM&SNG:=0>"а";
+NEU&SNG:=0>"е";
+PLR:=>"и";
+));<br /><br />(%x,M167):=(%x,-M167,+FLX(MCL&SNG&NDEF:=0>"";
+MCL&SNG&DEF&SHO:=0>"ия";
+MCL&SNG&DEF&STR:=0>"ият";
+
+FEM&SNG:=0>"а";
+NEU&SNG:=0>"о";
+PLR:=>"и";
+
+));<br /><br />(%x,M168):=(%x,-M168,+FLX(MCL&SNG&NDEF:=0>"";
+MCL&SNG&DEF&SHO:=>"ия","ин":"йн";
+MCL&SNG&DEF&STR:=>"ият","ин":"йн";
+
+FEM&SNG:=>"а","ин":"йн";
+NEU&SNG:=>"о","ин":"йн";
+PLR:=>"и","ин":"йн";
+));<br /><br />(%x,M169):=(%x,-M169,+FLX(MCL&SNG&NDEF:=0>"";
+MCL&SNG&DEF&SHO:="ен">"ния";
+MCL&SNG&DEF&STR:="ен">"ният";
+
+FEM&SNG:="ен">"на","е":"я";
+NEU&SNG:="ен">"но","е":"я";
+PLR:="ен">"ни";
+
+));<br /><br />(%x,M170):=(%x,-M170,+FLX(MCL&SNG:=0>"";
+FEM&SNG:=1>"а";
+NEU&SNG:=1>"о";
+PLR:=0>"";
+
+));<br /><br />(%x,M171):=(%x,-M171,+FLX(MCL&SNG&NDEF:=0>"";
+MCL&SNG&DEF&SHO:=0>"ия";
+MCL&SNG&DEF&STR:=0>"ият";
+
+FEM&SNG:="ин">"на";
+NEU&SNG:="ин">"но";
+PLR:="ин">"ни";
+));<br /><br />(%x,M172):=(%x,-M172,+FLX(MCL&SNG&NDEF:=0>"";
+MCL&SNG&DEF&SHO:=0>"ия";
+MCL&SNG&DEF&STR:=0>"ият";
+
+FEM&SNG:="ин-":"на-",0>"а";
+NEU&SNG:="ин-":"но-",0>"о";
+PLR:="ин-":"ни-",0>"и";
+));<br /><br />(%x,M173):=(%x,-M173,+FLX(DEF:=0>"та";
+));<br /><br />(%x,M174):=(%x,-M174,+FLX(DEF:=0>"те";
+));<br /><br />(%x,M175):=(%x,-M175,+FLX(DEF:=0>"то";
+));<br /><br />(%x,M176):=(%x,-M176,+FLX(MCL&SNG:=0>"";
+FEM&SNG:="й":"я";
+NEU&SNG:="й":"е";
+PLR:="й":"и";
+));<br /><br />(%x,M177):=(%x,-M177,+FLX(MCL&SNG:=0>"";
+FEM&SNG:=0>"а";
+NEU&SNG:=0>"о";
+PLR:=0>"и";
+));<br /><br />(%x,M178):=(%x,-M178,+FLX(MCL&SNG:="о">"";
+MCL&SNG&DEF&SHO:=1>"ия";
+MCL&SNG&DEF&STR:=1>"ият";
+ 
+FEM&SNG:="о">"а";
+PLR:=1>"и";
+
+));<br /><br />(%x,M179):=(%x,-M179,+FLX(PLR:="о">"и";
+
+));<br /><br />(%x,M180):=(%x,-M180,+FLX(MCL:=0>"";
+FEM:="е":"я","и">"a";
+NEU:="е":"я","и">"o";
+));<br /><br />(%x,M181):=(%x,-M181,+FLX(PRS&1PS:=0>"";PRS&2PS:=1>"ш"; PRS&3PS:=1>""; PRS&1PP:=1>"ме"; PRS&2PP:=1>"те"; PRS&3PP:=1>"т"; 
+PRS&PFV&1PS:=2>"на"; PRS&PFV&2PS:=2>"неш"; PRS&PFV&3PS:=2>"не"; PRS&PFV&1PP:=2>"нем"; PRS&PFV&2PP:=2>"нете"; PRS&PFV&3PP:=2>"нат"; 
+PAS&PFV&1PS:=2>"нах"; PAS&PFV&2PS:=2>"на"; PAS&PFV&3PS:=2>"на"; PAS&PFV&1PP:=2>"нахме"; PAS&PFV&2PP:=2>"нахте"; PAS&PFV&3PP:=2>"наха"; PAS&NPFV&1PS:=1>"х"; PAS&NPFV&2PS:=1>"ше"; PAS&NPFV&3PS:=1>"ше"; PAS&NPFV&1PP:=1>"хме"; PAS&NPFV&2PP:=1>"хте"; PAS&NPFV&3PP:=1>"ха"; ));<br /><br />(%x,M182):=(%x,-M182,+FLX(PRS&1PS:=0>"";PRS&2PS:=1>"ш";  
+PRS&3PS:=1>"";  
+PRS&1PP:=1>"ме";   
+PRS&2PP:=1>"те";   
+PRS&3PP:=1>"т";   
+
+PAS&PFV&1PS:=3>"х";    
+PAS&PFV&2PS:=3>"";  
+PAS&PFV&3PS:=3>""; 
+PAS&PFV&1PP:=3>"хме";   
+PAS&PFV&2PP:=3>"хте";   
+PAS&PFV&3PP:=3>"ха";   
+
+PAS&NPFV&1PS:=1>"х";    
+PAS&NPFV&2PS:=1>"ше";  
+PAS&NPFV&3PS:=1>"ше";  
+PAS&NPFV&1PP:=1>"хме";   
+PAS&NPFV&2PP:=1>"хте";   
+PAS&NPFV&3PP:=1>"ха";   ));<br /><br />(%x,M183):=(%x,-M183,+FLX(NEU:="две";
+MCL:="два";
+FEM:="две";
+
+));<br /><br />(%x,M184):=(%x,-M184,+FLX(FEM:=1>"а";
+NEU:=1>"о";
+PLR:=1>"и";
+
+MCL&DEF:=1>"ият";
+FEM&DEF:=1>"ата";
+NEU&DEF:=1>"ото";
+PLR&DEF:=1>"ите";));<br /><br />(%x,M186):=(%x,-M186,+FLX(SNG&NDEF:=0>"";
+SNG&DEF&SHO:=1>"я";
+SNG&DEF&STR:=1>"ят";
+PLR:=0>"ове";
+PAU:=1>"я";
+MUL:=1>"я";
+));<br /><br />(%x,M187):=(%x,-M187,+FLX(SNG:=0>"";
+PLR:=1>"и";
+VOC:=1>"е";
+));<br /><br />(%x,M188):=(%x,-M188,+FLX(SNG:=0>"";
+PLR:=1>"и";
+VOC:=1>"йо";
+));<br /><br /></body>
+<html>

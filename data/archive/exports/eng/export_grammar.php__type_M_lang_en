@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<title>UNLarium</title>
+<link rel="stylesheet" type="text/css" media="all" href="../../shared/default.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"  />
+<link rel="shortcut icon" href="../favicon.ico" type="image/x-icon" />
+</head>
+
+<body>
+<h1>English Inflectional  Grammar</h1>Version of September 11, 2026, 1:11 pm<br />Documentation available at <a href="http://www.unlarchive.org/wiki/index.php/Grammar" target="_blank">http://www.unlarchive.org/wiki/index.php/Grammar</a><br />Tagset available at <a href="../dictionary/export_tagset.php" target="_blank">Export UNDL Foundation tagset</a>.<br /><br /><b>M0</b><br />Invariant<br /><br /><b>M1</b><br />Irregular: rules are defined inside the entry in the dictionary<br /><br /><b>M2</b><br />Add "s" to form the plural (<i>table>tables; boy>boys; computer>computers;</i>)<br />SNG:=0>"";<br />
+PLR:=0>"s";<br /><br /><b>M3</b><br />Replace "y" by "ies" to form the plural (<i>baby>babies;</i>)<br />SNG:=0>"";<br />
+PLR:="y">"ies";<br /><br /><b>M4</b><br />Add "es" to form the plural (<i>church>churches; box>boxes;</i>)<br />SNG:=0>"";<br />
+PLR:=0>"es";<br /><br /><b>M5</b><br />Replace "f" by "ves" to form the plural (<i>thief>thieves; wolf>wolves;</i>)<br />SNG:=0>"";<br />
+PLR:="f">"ves";<br /><br /><b>M6</b><br />Replace "fe" by "ves" to form the plural (<i>life>lives; wife>wives;</i>)<br />SNG:=0>"";<br />
+PLR:="fe">"ves";<br /><br /><b>M7</b><br />Replace "man" by "men" to form the plural (<i>man>men; woman>women; airman>airmen;</i>)<br />SNG:=0>"";<br />
+PLR:="man":"men";<br /><br /><b>M8</b><br />Replace "ouse" by "ice" to form the plural (<i>mouse>mice; louse>lice;</i>)<br />SNG:=0>"";<br />
+PLR:="ouse">"ice";<br /><br /><b>M9</b><br />Replace "person" by "people" to form the plural (<i>person>people; religious person>religious people;</i>)<br />SNG:=0>"";<br />
+PLR:="person":"people";<br /><br /><b>M10</b><br />Replace "tooth" by "teeth" to form the plural (<i>tooth>teeth; front tooth>front teeth;</i>)<br />SNG:=0>"";<br />
+PLR:="tooth":"teeth";<br /><br /><b>M11</b><br />Replace "is" by "es" to form the plural (<i>axis>axes; analysis>analyses;</i>)<br />SNG:=0>"";<br />
+PLR:="is">"es";<br /><br /><b>M12</b><br />Replace the two last characters by "ices" to form the plural (<i>appendix>appendices; cortex>cortices;</i>)<br />SNG:=0>"";<br />
+PLR:=2>"ices";<br /><br /><b>M13</b><br />Replace the two last characters by "a" to form the plural (<i>bacterium>bacteria; phenomenon>phenomena;</i>)<br />SNG:=0>"";<br />
+PLR:=2>"a";<br /><br /><b>M14</b><br />Replace "us" by "i" to form the plural (<i>cactus>cacti;</i>)<br />SNG:=0>"";<br />
+PLR:="us">"i";<br /><br /><b>M15</b><br />Add "'s" to form the plural (<i>A>A's;</i>)<br />PLR:=0>"'s";<br /><br /><b>M16</b><br />Regular verbs (<i>kill > killed, killed, killing, kills</i>)<br />INF:=0>"";<br />
+PAS:=0>"ed";<br />
+PTP:=0>"ed";<br />
+3PS&PRS:=0>"s";<br />
+GER:=0>"ing";<br />
+;<br /><br /><b>M17</b><br />Regular verbs ending in -e (<i>vote > voted, voted, voting, votes</i>)<br />INF:=0>"";<br />
+PAS:=0>"d";<br />
+PTP:=0>"d";<br />
+3PS&PRS:=0>"s";<br />
+GER:=1>"ing";<br />
+;<br /><br /><b>M18</b><br />Regular verbs ending in -y (<i>unify > unified, unified, unifying, unifies</i>)<br />INF:=0>"";<br />
+PAS:="y">"ied";<br />
+PTP:="y">"ied";<br />
+GER:=0>"ing";<br />
+3PS&PRS:="y">"ies";<br />
+;<br /><br /><b>M19</b><br />Regular verbs ending in -s, -ch, -sh (<i>dress > dressed, dressed, dressing, dresses</i>)<br />INF:=0>"";<br />
+PAS:=0>"ed";<br />
+PTP:=0>"ed";<br />
+3PS&PRS:=0>"es";<br />
+GER:=0>"ing";<br />
+;<br /><br /><b>M20</b><br />Regular verbs ending in -c (<i>mimic > mimicked, mimicked, mimicking, mimics</i>)<br />INF:=0>"";<br />
+PAS:=0>"ked";<br />
+PTP:=0>"ked";<br />
+3PS&PRS:=0>"";<br />
+GER:=0>"king";<br />
+;<br /><br /><b>M21</b><br />Irregular verbs that do not vary in the past and past participle. Gerund is made by adding "ing". (<i>read > read, read, reading, reads</i>)<br />INF:=0>"";<br />
+PAS:=0>"";<br />
+PTP:=0>"";<br />
+GER:=0>"ing";<br />
+3PS&PRS:=0>"s";<br />
+;<br /><br /><b>M22</b><br />Verbs that are irregular in the past and in the past participle. The irregular behaviour is described in the inflectional rules. (<i>buy > buying, buys</i>)<br />INF:=0>"";<br />
+GER:=0>"ing";<br />
+3PS&PRS:=0>"s";<br />
+;<br /><br /><b>M256</b><br />Verb to be (<i>be, am, are, was, were, been</i>)<br />INF:=0>"";<br />
+1PS&PRS:="am";<br />
+2PS&PRS:="are";<br />
+3PS&PRS:="is";<br />
+1PP&PRS:="are";<br />
+2PP&PRS:="are";<br />
+3PP&PRS:="are";<br />
+1PS&PAS:="was";<br />
+2PS&PAS:="were";<br />
+3PS&PAS:="was";<br />
+1PP&PAS:="were";<br />
+2PP&PAS:="were";<br />
+3PP&PAS:="were";<br />
+PTP:="been";<br />
+;<br /><br /><b>M257</b><br />Verb to have (<i>have, has, had, having</i>)<br />INF:=0>"";<br />
+PAS:="had";<br />
+PTP:="had";<br />
+GER:=1>"ing";<br />
+3PS&PRS:="has";<br />
+;<br /><br /><b>M258</b><br />Plural in -s (<i>third>thirds, quarter>quarters</i>)<br />SNG:=0>"";<br />
+PLR:=0>"s";<br />
+;<br /><br /><b>M260</b><br />Plural in -ies (<i>century > centuries</i>)<br />SNG:=0>"";<br />
+PLR:="y">"ies";<br />
+;<br /><br /><b>M262</b><br />Auxiliary verb "to be" (<i>be</i>)<br />INF:=0>"";<br />
+1PS&PRS:="am";<br />
+2PS&PRS:="are";<br />
+3PS&PRS:="is";<br />
+1PP&PRS:="are";<br />
+2PP&PRS:="are";<br />
+3PP&PRS:="are";<br />
+1PS&PAS:="was";<br />
+2PS&PAS:="were";<br />
+3PS&PAS:="was";<br />
+1PP&PAS:="were";<br />
+2PP&PAS:="were";<br />
+3PP&PAS:="were";<br />
+PTP:="been";<br />
+;<br /><br /><b>M263</b><br />Verb to do (<i>do, did, done, doing, does</i>)<br />INF:=0>"";<br />
+PAS:="did";<br />
+PTP:="done";<br />
+GER:=0>"ing";<br />
+3PS&PRS:="does";<br />
+;<br /><br /><b>M264</b><br />Verb to do (<i>do, did, done, doing, does</i>)<br />INF:=0>"";<br />
+PAS:="did";<br />
+PTP:="done";<br />
+GER:=0>"ing";<br />
+3PS&PRS:="does";<br />
+;<br /><br /></body>
+<html>

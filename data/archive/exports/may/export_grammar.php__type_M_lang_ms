@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<title>UNLarium</title>
+<link rel="stylesheet" type="text/css" media="all" href="../../shared/default.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"  />
+<link rel="shortcut icon" href="../favicon.ico" type="image/x-icon" />
+</head>
+
+<body>
+<h1>Malay Inflectional  Grammar</h1>Version of September 11, 2026, 1:44 pm<br />Documentation available at <a href="http://www.unlarchive.org/wiki/index.php/Grammar" target="_blank">http://www.unlarchive.org/wiki/index.php/Grammar</a><br />Tagset available at <a href="../dictionary/export_tagset.php" target="_blank">Export UNDL Foundation tagset</a>.<br /><br /><b>M0</b><br />Invariant<br /><br /><b>M1</b><br />Irregular: rules are defined inside the entry in the dictionary<br /><br /><b>M3</b><br />add prefix "meng-" to words starting with a vowel or "k/g" to indicate active voice and transitivity
+
+add prefix "di-" to indicate passive voice. (<i>ajar > mengajar, ajar > diajar
+ekspor > mengekspor, ekspor > diekspor
+erang > mengerang, erang > dierang
+olah > mengolah, olah > diolah
+urus > mengurus, urus > diurus</i>)<br />ACV:=""<0;<br />
+ACV&TST:=""<"k","meng"<0;<br />
+PSV:="di"<0;<br />
+;<br /><br /><b>M4</b><br />add prefix "meng-" to words starting with b,p,f to indicate active voice and transitivity.
+add prefix  "di-" to indicate passive voice. (<i>beli>membeli, beli>dibeli
+pikir>memikir, pikir>dipikir
+fitnah>memfitnah, fitnah>difitnah
+
+</i>)<br />ACV:=0>"";<br /> 
+ACV&TST:=""<"p","mem"<0;<br />
+PSV:="di"<0;<br />
+;<br /><br /><b>M5</b><br />add prefix "men-" to words starting with [d,t,c,j,sy,z] to indicate active voice. 
+add prefix "di-" to indicate passive voice. (<i>dengar>mendengar, dengar> didengar
+tulis>menulis, tulis> ditulis
+cari>mencari, cari> dicari
+</i>)<br />ACV:=0>"";<br /> 
+ACV&TST:=""<"t","men"<0 ;<br />
+PSV:="di"<0;<br /><br /><b>M6</b><br />add prefix "meny-" to words starting with "s" to indicate active voice and transitivity. 
+add prefix "di-" to indicate passive voice. (<i>sewa>menyewa, sewa>disewa
+suara>menyuara, suara>disuara
+siram>menyiram, siram>disiram
+
+
+</i>)<br />ACV:=""<0;<br />
+ACV&TST:="meny"<"s";<br />
+PSV:="di"<0;<br /><br /><b>M7</b><br />add prefix "me-" to words starting with [l,r,m,n,w,y] to indicate active voice and transitivity. 
+add prefix "di-" to indicate passive voice. (<i>rasa > merasa, rasa > dirasa
+masak > memasak, masak>dimasak
+nanti > menanti, nanti> dinanti
+nyanyi > menyanyi, nyanyi > dinyayi
+
+</i>)<br />ACV:=""<0;<br />
+ACV&TST:="me"<0;<br />
+PSV:="di"<0;<br /><br /><b>M9</b><br />add prefix "menge-" to words with one syllable.
+ add prefix "di-" to indicate passive voice. (<i>cat > mengecat
+cip >mengecip</i>)<br />ACV:=""<0;<br />
+ACV&TST:="menge"<0;<br />
+PSV:="di"<0;<br />
+;<br /><br /><b>M11</b><br />add the prefix se- to indicate singular noun. (<i>biji > sebiji
+buah > sebuah</i>)<br />INV:=0>"";<br />
+SNG:="se"<0;<br /><br /><b>M94</b><br />add prefix "menye-" to words starting with "s" to indicate active voice and transitivity. 
+add prefix "di-" to indicate passive voice. (<i>sewa>menyewa, sewa>disewa
+suara>menyuara, suara>disuara
+siram>menyiram, siram>disiram
+
+
+</i>)<br />ACV:=""<0;<br />
+ACV&TST:="menye"<"";<br />
+PSV:="di"<0;<br /><br /></body>
+<html>

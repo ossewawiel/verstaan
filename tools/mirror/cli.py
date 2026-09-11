@@ -18,7 +18,9 @@ from pathlib import Path
 from tools.mirror import __version__
 from tools.mirror.config import load_config
 from tools.mirror.http_client import RateLimitedClient, UrllibTransport
+from tools.mirror.login import LoginError
 from tools.mirror.run import run_mirror
+from tools.mirror.unlarium import run_login_mirror
 
 # Argument spellings that would smuggle a credential onto the command line, and the literal
 # environment variable names themselves (`--flag=UNL_PASS` or a bare `UNL_USER=x` positional).
@@ -92,6 +94,28 @@ def build_parser() -> argparse.ArgumentParser:
         help="Path to manifest.jsonl (default: <archive-root>/manifest.jsonl).",
     )
 
+    login_parser = subparsers.add_parser(
+        "login",
+        help=(
+            "Sign in with UNL_USER/UNL_PASS and mirror the logged-in UNLarium exports for every "
+            "language: dictionaries, grammars, tagset, corpora, the owner's Files uploads "
+            "(SPEC.md §3.1, issue 08)."
+        ),
+    )
+    login_parser.add_argument(
+        "--config", default="mirror.toml", help="Path to mirror.toml (default: %(default)s)."
+    )
+    login_parser.add_argument(
+        "--archive-root",
+        default="data/archive",
+        help="Where mirrored files land (default: %(default)s).",
+    )
+    login_parser.add_argument(
+        "--manifest",
+        default=None,
+        help="Path to manifest.jsonl (default: <archive-root>/manifest.jsonl).",
+    )
+
     return parser
 
 
@@ -106,13 +130,13 @@ def main(argv: Sequence[str] | None = None) -> int:
     parser = build_parser()
     args = parser.parse_args(argv)
 
-    if getattr(args, "command", None) != "run":
+    command = getattr(args, "command", None)
+    if command not in ("run", "login"):
         # No subcommand: the M0 skeleton behaviour. `--help`/`--version` already exited above.
         return 0
 
     archive_root = Path(args.archive_root)
     manifest_path = Path(args.manifest) if args.manifest else archive_root / "manifest.jsonl"
-
     config = load_config(args.config)
     client = RateLimitedClient(
         UrllibTransport(),
@@ -122,7 +146,27 @@ def main(argv: Sequence[str] | None = None) -> int:
         retries=config.retries,
         retry_backoff_seconds=config.retry_backoff_seconds,
     )
-    report = run_mirror(config, client, archive_root, manifest_path)
+
+    if command == "run":
+        report = run_mirror(config, client, archive_root, manifest_path)
+        print(report.summary())
+        for note in report.notes:
+            print(f"note: {note}")
+        return 0
+
+    # command == "login"
+    username, password = read_credentials()
+    if not username or not password:
+        print(
+            "tools.mirror login: UNL_USER and UNL_PASS must both be set in the environment.",
+            file=sys.stderr,
+        )
+        return 3
+    try:
+        report = run_login_mirror(config, client, archive_root, manifest_path, username, password)
+    except LoginError as exc:
+        print(f"tools.mirror login: {exc}", file=sys.stderr)
+        return 1
     print(report.summary())
     for note in report.notes:
         print(f"note: {note}")

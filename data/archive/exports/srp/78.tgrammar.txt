@@ -1,0 +1,1477 @@
+﻿;============================================================================================
+;NORMALIZATION GRAMMAR
+;Documentation available at http://www.unlweb.net/wiki/Normalization_grammar
+;============================================================================================
+
+;============================================================================================
+;1 STANDARDIZATION
+;Represent isolated features in the format attribute=value
+;============================================================================================
+
+;Aspect (ASP)
+(CAU,^ASP):=(-CAU,+ASP=CAU);
+(PFV,^ASP):=(-PFV,+ASP=PFV);
+(NPFV,^ASP):=(-NPFV,+ASP=NPFV);
+(PFC,^ASP):=(-PFC,+ASP=PFC);
+(PPT,^ASP):=(-PPT,+ASP=PPT);
+(ICP,^ASP):=(-ICP,+ASP=ICP);
+(TER,^ASP):=(-TER,+ASP=TER);
+
+;Case (CAS)
+(ABE,^CAS):=(-ABE,+CAS=ABE);
+(ABL,^CAS):=(-ABL,+CAS=ABL);
+(ACC,^CAS):=(-ACC,+CAS=ACC);
+(ADE,^CAS):=(-ADE,+CAS=ADE);
+(ALL,^CAS):=(-ALL,+CAS=ALL);
+(ABS,^CAS):=(-ABS,+CAS=ABS);
+(BEN,^CAS):=(-BEN,+CAS=BEN);
+(CMT,^CAS):=(-CMT,+CAS=CMT);
+(DAT,^CAS):=(-DAT,+CAS=DAT);
+(DEL,^CAS):=(-DEL,+CAS=DEL);
+(ELA,^CAS):=(-ELA,+CAS=ELA);
+(EQU,^CAS):=(-EQU,+CAS=EQU);
+(ERG,^CAS):=(-ERG,+CAS=ERG);
+(ESS,^CAS):=(-ESS,+CAS=ESS);
+(GNT,^CAS):=(-GNT,+CAS=GNT);
+(HOR,^CAS):=(-HOR,+CAS=HOR);
+(ILL,^CAS):=(-ILL,+CAS=ILL);
+(INE,^CAS):=(-INE,+CAS=INE);
+(INS,^CAS):=(-INS,+CAS=INS);
+(LAT,^CAS):=(-LAT,+CAS=LAT);
+(LOC,^CAS):=(-LOC,+CAS=LOC);
+(NOM,^CAS):=(-NOM,+CAS=NOM);
+(OBL,^CAS):=(-OBL,+CAS=OBL);
+(PLT,^CAS):=(-PLT,+CAS=PLT);
+(PPL,^CAS):=(-PPL,+CAS=PPL);
+(PTT,^CAS):=(-PTT,+CAS=PTT);
+(SPE,^CAS):=(-SPE,+CAS=SPE);
+(TRM,^CAS):=(-TRM,+CAS=TRM);
+(TLT,^CAS):=(-TLT,+CAS=TLT);
+(VOC,^CAS):=(-VOC,+CAS=VOC);
+
+;Distribution (DIS)
+(AFT,^DIS):=(-AFT,+DIS=AFT);
+(BEF,^DIS):=(-BEF,+DIS=BEF);
+(END,^DIS):=(-END,+DIS=END);
+(FRE,^DIS):=(-FRE,+DIS=FRE);
+(FRT,^DIS):=(-FRT,+DIS=FRT);
+(IAFT,^DIS):=(-IAFT,+DIS=IAFT);
+(IBEF,^DIS):=(-IBEF,+DIS=IBEF);
+(MID,^DIS):=(-MID,+DIS=MID);
+
+;Gender (GEN)
+(FEM,^GEN):=(-FEM,+GEN=FEM);
+(MCL,^GEN):=(-MCL,+GEN=MCL);
+(NEU,^GEN):=(-NEU,+GEN=NEU);
+
+;Lexical category (LEX)
+(J,^LEX):=(-J,+LEX=J);
+(P,^LEX):=(-P,+LEX=P);
+(A,^LEX):=(-A,+LEX=A);
+(I,^LEX):=(-I,+LEX=I);
+(F,^LEX):=(-f,+LEX=F);
+(C,^LEX):=(-C,+LEX=C);
+(D,^LEX):=(-D,+LEX=D);
+(N,^LEX):=(-N,+LEX=N);
+(U,^LEX):=(-U,+LEX=U);
+(R,^LEX):=(-R,+LEX=R);
+(V,^LEX):=(-V,+LEX=V);
+(O,^LEX):=(-O,+LEX=O);
+
+;Mood (MOO)
+(AUM,^MOO):=(-AUM,+MOO=AUM);
+(CAU,^MOO):=(-CAU,+MOO=CAU);
+(CON,^MOO):=(-CON,+MOO=CON);
+(DEC,^MOO):=(-DEC,+MOO=DEC);
+(DED,^MOO):=(-DED,+MOO=DED);
+(DLB,^MOO):=(-DLB,+MOO=DLB);
+(DUB,^MOO):=(-DUB,+MOO=DUB);
+(HYP,^MOO):=(-HYP,+MOO=HYP);
+(IMP,^MOO):=(-IMP,+MOO=IMP);
+(IPC,^MOO):=(-IPC,+MOO=IPC);
+(IND,^MOO):=(-IND,+MOO=IND);
+(INT,^MOO):=(-INT,+MOO=INT);
+(JUS,^MOO):=(-JUS,+MOO=JUS);
+(OBM,^MOO):=(-OBM,+MOO=OBM);
+(OPT,^MOO):=(-OPT,+MOO=OPT);
+(PMS,^MOO):=(-PMS,+MOO=PMS);
+(POT,^MOO):=(-POT,+MOO=POT);
+(PCT,^MOO):=(-PCT,+MOO=PCT);
+(PHB,^MOO):=(-PHB,+MOO=PHB);
+(SPT,^MOO):=(-SPT,+MOO=SPT);
+(SUB,^MOO):=(-SUB,+MOO=SUB);
+
+;Number (NUM)
+(SNG,^NUM):=(-SNG,+NUM=SNG);
+(PLR,^NUM):=(-PLR,+NUM=PLR);
+
+;Part-of-speech (POS)
+(ADJ,^POS):=(-ADJ,+POS=ADJ);
+(PTP,^POS):=(-PTP,+POS=PTP);
+(CIR,^POS):=(-CIR,+POS=CIR);
+(PPS,^POS):=(-PPS,+POS=PPS);
+(PRE,^POS):=(-PRE,+POS=PRE);
+(SAV,^POS):=(-SAV,+POS=SAV);
+(AAV,^POS):=(-AAV,+POS=AAV);
+(CJT,^POS):=(-CJT,+POS=CJT);
+(DJT,^POS):=(-DJT,+POS=DJT);
+(CCX,^POS):=(-CCX,+POS=CCX);
+(IFX,^POS):=(-IFX,+POS=IFX);
+(PFX,^POS):=(-PFX,+POS=PFX);
+(SFX,^POS):=(-SFX,+POS=SFX);
+(CLA,^POS):=(-CLA,+POS=CLA);
+(COO,^POS):=(-COO,+POS=COO);
+(SCJ,^POS):=(-SCJ,+POS=SCJ);
+(ART,^POS):=(-ART,+POS=ART);
+(DEM,^POS):=(-DEM,+POS=DEM);
+(POD,^POS):=(-POD,+POS=POD);
+(QUA,^POS):=(-QUA,+POS=QUA);
+(ITJ,^POS):=(-ITJ,+POS=ITJ);
+(NOU,^POS):=(-NOU,+POS=NOU);
+(PPN,^POS):=(-PPN,+POS=PPN);
+(CDN,^POS):=(-CDN,+POS=CDN);
+(DTN,^POS):=(-DTN,+POS=DTN);
+(PTN,^POS):=(-PTN,+POS=PTN);
+(MLN,^POS):=(-MLN,+POS=MLN);
+(ORD,^POS):=(-ORD,+POS=ORD);
+(PTC,^POS):=(-PTC,+POS=PTC);
+(DEP,^POS):=(-DEP,+POS=DEP);
+(DUM,^POS):=(-DUM,+POS=DUM);
+(EPR,^POS):=(-EPR,+POS=EPR);
+(NPR,^POS):=(-NPR,+POS=NPR);
+(IPR,^POS):=(-IPR,+POS=IPR);
+(PPR,^POS):=(-PPR,+POS=PPR);
+(SPR,^POS):=(-SPR,+POS=SPR);
+(CPR,^POS):=(-CPR,+POS=CPR);
+(FPR,^POS):=(-FPR,+POS=FPR);
+(RPR,^POS):=(-RPR,+POS=RPR);
+(VER,^POS):=(-VER,+POS=VER);
+(AUX,^POS):=(-AUX,+POS=AUX);
+(MOV,^POS):=(-MOV,+POS=MOV);
+(COP,^POS):=(-COP,+POS=COP);
+
+;Person (PER)
+(1PP,^PER):=(-1PP,+PER=1PP);
+(1PS,^PER):=(-1PS,+PER=1PS);
+(2PP,^PER):=(-2PP,+PER=2PP);
+(2PS,^PER):=(-2PS,+PER=2PS);
+(3PP,^PER):=(-3PP,+PER=3PP);
+(3PS,^PER):=(-3PS,+PER=3PS);
+
+;Syntactic Roles (XB, XP)
+(NB,^XB):=(-NB,+XB=NB);
+(AB,^XB):=(-AB,+XB=AB);
+(JB,^XB):=(-JB,+XB=JB);
+(IB,^XB):=(-IB,+XB=IB);
+(CB,^XB):=(-CB,+XB=CB);
+(DB,^XB):=(-DB,+XB=DB);
+(VB,^XB):=(-VB,+XB=VB);
+(PB,^XB):=(-PB,+XB=PB);
+(NP,^XP):=(-NP,+XP=NP);
+(AP,^XP):=(-AP,+XP=AP);
+(JP,^XP):=(-JP,+XP=JP);
+(IP,^XP):=(-IP,+XP=IP);
+(CP,^XP):=(-CP,+XP=CP);
+(DP,^XP):=(-DP,+XP=DP);
+(VP,^XP):=(-VP,+XP=VP);
+(PP,^XP):=(-PP,+XP=PP);
+(XB,N,^NB):=(+XB=NB);
+(XB,A,^AB):=(+XB=AB);
+(XB,J,^JB):=(+XB=JB);
+(XB,I,^IB):=(+XB=IB);
+(XB,C,^CB):=(+XB=CB);
+(XB,D,^DB):=(+XB=DB);
+(XB,V,^VB):=(+XB=VB);
+(XB,P,^PB):=(+XB=PB);
+
+;Tense (ATE, RTE)
+(PRS,^ATE):=(-PRS,+ATE=PRS);
+(PAS,^ATE):=(-PAS,+ATE=PAS);
+(FUT,^ATE):=(-FUT,+ATE=FUT);
+(NPAS,^ATE):=(-NPAS,+ATE=NPAS);
+(NFUT,^ATE):=(-NFUT,+ATE=NFUT);
+(STL,^ATE):=(-STL,+ATE=STL);
+(NYET,^ATE):=(-NYET,+ATE=NYET);
+(RPT,^RTE):=(-RPT,+RTE=RPT);
+(NRPT,^RTE):=(-NRPT,+RTE=NRPT);
+(RPS,^RTE):=(-RPS,+RTE=RPS);
+(RFT,^RTE):=(-RFT,+RTE=RFT);
+(NRFT,^RTE):=(-NRFT,+RTE=NRFT);
+
+;Transitivity (TRA)
+(NTRA,^TRA):=(-NTRA,+TRA=NTRA);
+(TST,^TRA):=(-TST,+TRA=TST);
+(NTST,^TRA):=(-NTST,+TRA=NTST);
+
+;Voice (VOI)
+(ACV,^VOI):=(-ACV,+VOI=ACV);
+(MIV,^VOI):=(-MIV,+VOI=MIV);
+(PSV,^VOI):=(-PSV,+VOI=PSV);
+
+;Attributes (att)
+(@1,^att=@1):=(-@1,+att=@1,+PERA);
+(@2,^att=@2):=(-@2,+att=@2,+PERA);
+(@3,^att=@3):=(-@3,+att=@3,+PERA);
+(@ability,^att=@ability):=(-@ability,+att=@ability,+MODA);
+(@aboard,^att=@aboard):=(-@aboard,+att=@aboard,+WHERE);
+(@about,^att=@about):=(-@about,+att=@about,+WHICH);
+(@above,^att=@above):=(-@above,+att=@above,+WHERE);
+(@according_to,^att=@according_to):=(-@according_to,+att=@according_to,+HOW);
+(@across,^att=@across):=(-@across,+att=@across,+WHERE);
+(@active,^att=@active):=(-@active,+att=@active,+VOIA);
+(@adjective,^att=@adjective):=(-@adjective,+att=@adjective,+LEXA);
+(@adverb,^att=@adverb):=(-@adverb,+att=@adverb,+LEXA);
+(@advice,^att=@advice):=(-@advice,+att=@advice,+MODA);
+(@after,^att=@after):=(-@after,+att=@after,+WHEN);
+(@again,^att=@again):=(-@again,+att=@again,+DEGA);
+(@against,^att=@against):=(-@against,+att=@against,+HOW);
+(@agreement,^att=@agreement):=(-@agreement,+att=@agreement,+MODA);
+(@ahead_of,^att=@ahead_of):=(-@ahead_of,+att=@ahead_of,+WHERE);
+(@all,^att=@all):=(-@all,+att=@all,+QUAA);
+(@alliteration,^att=@alliteration):=(-@alliteration,+att=@alliteration,+FIGA);
+(@almost,^att=@almost):=(-@almost,+att=@almost,+DEGA);
+(@along,^att=@along):=(-@along,+att=@along,+WHERE);
+(@alongside,^att=@alongside):=(-@alongside,+att=@alongside,+WHERE);
+(@also,^att=@also):=(-@also,+att=@also,+DEGA);
+(@although,^att=@although):=(-@although,+att=@although,+HOW);
+(@amid,^att=@amid):=(-@amid,+att=@amid,+WHERE);
+(@among,^att=@among):=(-@among,+att=@among,+WHERE);
+(@anacoluthon,^att=@anacoluthon):=(-@anacoluthon,+att=@anacoluthon,+FIGA);
+(@anadiplosis,^att=@anadiplosis):=(-@anadiplosis,+att=@anadiplosis,+FIGA);
+(@anaphora,^att=@anaphora):=(-@anaphora,+att=@anaphora,+FIGA);
+(@anastrophe,^att=@anastrophe):=(-@anastrophe,+att=@anastrophe,+FIGA);
+(@and,^att=@and):=(-@and,+att=@and,+HOW);
+(@anger,^att=@anger):=(-@anger,+att=@anger,+FEEL);
+(@angle_bracket,^att=@angle_bracket):=(-@angle_bracket,+att=@angle_bracket,+SYNA);
+(@antanaclasis,^att=@antanaclasis):=(-@antanaclasis,+att=@antanaclasis,+FIGA);
+(@anterior,^att=@anterior):=(-@anterior,+att=@anterior,+WHEN);
+(@anthropomorphism,^att=@anthropomorphism):=(-@anthropomorphism,+att=@anthropomorphism,+FIGA);
+(@anticlimax,^att=@anticlimax):=(-@anticlimax,+att=@anticlimax,+FIGA);
+(@antimetabole,^att=@antimetabole):=(-@antimetabole,+att=@antimetabole,+FIGA);
+(@antiphrasis,^att=@antiphrasis):=(-@antiphrasis,+att=@antiphrasis,+FIGA);
+(@antithesis,^att=@antithesis):=(-@antithesis,+att=@antithesis,+FIGA);
+(@antonomasia,^att=@antonomasia):=(-@antonomasia,+att=@antonomasia,+FIGA);
+(@any,^att=@any):=(-@any,+att=@any,+QUAA);
+(@apart_from,^att=@apart_from):=(-@apart_from,+att=@apart_from,+WHERE);
+(@apposition,^att=@apposition):=(-@apposition,+att=@apposition,+FIGA);
+(@archaic,^att=@archaic):=(-@archaic,+att=@archaic,+REGA);
+(@around,^att=@around):=(-@around,+att=@around,+WHERE);
+(@as,^att=@as):=(-@as,+att=@as,+HOW);
+(@as_far_as,^att=@as_far_as):=(-@as_far_as,+att=@as_far_as,+HOW);
+(@as_of,^att=@as_of):=(-@as_of,+att=@as_of,+HOW);
+(@as_per,^att=@as_per):=(-@as_per,+att=@as_per,+HOW);
+(@as_regards,^att=@as_regards):=(-@as_regards,+att=@as_regards,+HOW);
+(@as_well_as,^att=@as_well_as):=(-@as_well_as,+att=@as_well_as,+HOW);
+(@as.@if,^att=@as.@if):=(-@as.@if,+att=@as.@if,+HOW);
+(@aside,^att=@aside):=(-@aside,+att=@aside,+WHERE);
+(@aside_from,^att=@aside_from):=(-@aside_from,+att=@aside_from,+WHERE);
+(@assertion,^att=@assertion):=(-@assertion,+att=@assertion,+MODA);
+(@assonance,^att=@assonance):=(-@assonance,+att=@assonance,+FIGA);
+(@assumption,^att=@assumption):=(-@assumption,+att=@assumption,+MODA);
+(@astride,^att=@astride):=(-@astride,+att=@astride,+WHERE);
+(@asyndeton,^att=@asyndeton):=(-@asyndeton,+att=@asyndeton,+FIGA);
+(@at,^att=@at):=(-@at,+att=@at,+WHERE);
+(@athwart,^att=@athwart):=(-@athwart,+att=@athwart,+WHERE);
+(@atop,^att=@atop):=(-@atop,+att=@atop,+WHERE);
+(@attention,^att=@attention):=(-@attention,+att=@attention,+FEEL);
+(@barring,^att=@barring):=(-@barring,+att=@barring,+HOW);
+(@because,^att=@because):=(-@because,+att=@because,+HOW);
+(@because_of,^att=@because_of):=(-@because_of,+att=@because_of,+HOW);
+(@before,^att=@before):=(-@before,+att=@before,+WHEN);
+(@behind,^att=@behind):=(-@behind,+att=@behind,+WHERE);
+(@belief,^att=@belief):=(-@belief,+att=@belief,+MODA);
+(@below,^att=@below):=(-@below,+att=@below,+WHERE);
+(@beneath,^att=@beneath):=(-@beneath,+att=@beneath,+WHERE);
+(@beside,^att=@beside):=(-@beside,+att=@beside,+WHERE);
+(@besides,^att=@besides):=(-@besides,+att=@besides,+HOW);
+(@between,^att=@between):=(-@between,+att=@between,+WHERE);
+(@beyond,^att=@beyond):=(-@beyond,+att=@beyond,+WHERE);
+(@both,^att=@both):=(-@both,+att=@both,+WHICH);
+(@brace,^att=@brace):=(-@brace,+att=@brace,+SYNA);
+(@brachylogia,^att=@brachylogia):=(-@brachylogia,+att=@brachylogia,+FIGA);
+(@but,^att=@but):=(-@but,+att=@but,+HOW);
+(@by,^att=@by):=(-@by,+att=@by,+HOW);
+(@by_means_of,^att=@by_means_of):=(-@by_means_of,+att=@by_means_of,+HOW);
+(@catachresis,^att=@catachresis):=(-@catachresis,+att=@catachresis,+FIGA);
+(@causative,^att=@causative):=(-@causative,+att=@causative,+ASPA);
+(@certain,^att=@certain):=(-@certain,+att=@certain,+WHICH);
+(@chiasmus,^att=@chiasmus):=(-@chiasmus,+att=@chiasmus,+FIGA);
+(@circa,^att=@circa):=(-@circa,+att=@circa,+WHICH);
+(@climax,^att=@climax):=(-@climax,+att=@climax,+FIGA);
+(@close_to,^att=@close_to):=(-@close_to,+att=@close_to,+WHERE);
+(@colloquial,^att=@colloquial):=(-@colloquial,+att=@colloquial,+REGA);
+(@command,^att=@command):=(-@command,+att=@command,+MODA);
+(@concerning,^att=@concerning):=(-@concerning,+att=@concerning,+HOW);
+(@conclusion,^att=@conclusion):=(-@conclusion,+att=@conclusion,+MODA);
+(@condition,^att=@condition):=(-@condition,+att=@condition,+MODA);
+(@confirmation,^att=@confirmation):=(-@confirmation,+att=@confirmation,+MODA);
+(@consent,^att=@consent):=(-@consent,+att=@consent,+FEEL);
+(@consequence,^att=@consequence):=(-@consequence,+att=@consequence,+MODA);
+(@consonance,^att=@consonance):=(-@consonance,+att=@consonance,+FIGA);
+(@contentment,^att=@contentment):=(-@contentment,+att=@contentment,+FEEL);
+(@continuative,^att=@continuative):=(-@continuative,+att=@continuative,+ASPA);
+(@conviction,^att=@conviction):=(-@conviction,+att=@conviction,+MODA);
+(@decision,^att=@decision):=(-@decision,+att=@decision,+MODA);
+(@deduction,^att=@deduction):=(-@deduction,+att=@deduction,+MODA);
+(@def,^att=@def):=(-@def,+att=@def,+WHICH);
+(@desire,^att=@desire):=(-@desire,+att=@desire,+MODA);
+(@despite,^att=@despite):=(-@despite,+att=@despite,+HOW);
+(@determination,^att=@determination):=(-@determination,+att=@determination,+MODA);
+(@dialect,^att=@dialect):=(-@dialect,+att=@dialect,+REGA);
+(@disagreement,^att=@disagreement):=(-@disagreement,+att=@disagreement,+FEEL);
+(@discontentment,^att=@discontentment):=(-@discontentment,+att=@discontentment,+FEEL);
+(@dissent,^att=@dissent):=(-@dissent,+att=@dissent,+FEEL);
+(@distal,^att=@distal):=(-@distal,+att=@distal,+WHICH);
+(@double_negative,^att=@double_negative):=(-@double_negative,+att=@double_negative,+FIGA);
+(@double_parenthesis,^att=@double_parenthesis):=(-@double_parenthesis,+att=@double_parenthesis,+SYNA);
+(@double_quote,^att=@double_quote):=(-@double_quote,+att=@double_quote,+SYNA);
+(@doubt,^att=@doubt):=(-@doubt,+att=@doubt,+MODA);
+(@down,^att=@down):=(-@down,+att=@down,+WHERE);
+(@dual,^att=@dual):=(-@dual,+att=@dual,+QUAA);
+(@due_to,^att=@due_to):=(-@due_to,+att=@due_to,+HOW);
+(@during,^att=@during):=(-@during,+att=@during,+WHEN);
+(@dysphemism,^att=@dysphemism):=(-@dysphemism,+att=@dysphemism,+FIGA);
+(@each,^att=@each):=(-@each,+att=@each,+WHICH);
+(@either,^att=@either):=(-@either,+att=@either,+WHICH);
+(@ellipsis,^att=@ellipsis):=(-@ellipsis,+att=@ellipsis,+FIGA);
+(@emphasis,^att=@emphasis):=(-@emphasis,+att=@emphasis,+SYNA);
+(@enough,^att=@enough):=(-@enough,+att=@enough,+DEGA);
+(@entry,^att=@entry):=(-@entry,+att=@entry,+SYNA);
+(@epanalepsis,^att=@epanalepsis):=(-@epanalepsis,+att=@epanalepsis,+FIGA);
+(@epanorthosis,^att=@epanorthosis):=(-@epanorthosis,+att=@epanorthosis,+FIGA);
+(@equal,^att=@equal):=(-@equal,+att=@equal,+DEGA);
+(@equivalent,^att=@equivalent):=(-@equivalent,+att=@equivalent,+SODA);
+(@euphemism,^att=@euphemism):=(-@euphemism,+att=@euphemism,+FIGA);
+(@even,^att=@even):=(-@even,+att=@even,+WHICH);
+(@even.@if,^att=@even.@if):=(-@even.@if,+att=@even.@if,+HOW);
+(@every,^att=@every):=(-@every,+att=@every,+QUAA);
+(@except,^att=@except):=(-@except,+att=@except,+HOW);
+(@except_for,^att=@except_for):=(-@except_for,+att=@except_for,+HOW);
+(@except.@if,^att=@except.@if):=(-@except.@if,+att=@except.@if,+HOW);
+(@exclamation,^att=@exclamation):=(-@exclamation,+att=@exclamation,+MODA);
+(@excluding,^att=@excluding):=(-@excluding,+att=@excluding,+HOW);
+(@exhortation,^att=@exhortation):=(-@exhortation,+att=@exhortation,+MODA);
+(@expectation,^att=@expectation):=(-@expectation,+att=@expectation,+MODA);
+(@experiential,^att=@experiential):=(-@experiential,+att=@experiential,+ASPA);
+(@extra,^att=@extra):=(-@extra,+att=@extra,+DEGA);
+(@failing,^att=@failing):=(-@failing,+att=@failing,+HOW);
+(@familiar,^att=@familiar):=(-@familiar,+att=@familiar,+SODA);
+(@far_from,^att=@far_from):=(-@far_from,+att=@far_from,+WHERE);
+(@fear,^att=@fear):=(-@fear,+att=@fear,+MODA);
+(@female,^att=@female):=(-@female,+att=@female,+GENA);
+(@following,^att=@following):=(-@following,+att=@following,+WHEN);
+(@for,^att=@for):=(-@for,+att=@for,+HOW);
+(@from,^att=@from):=(-@from,+att=@from,+WHERE);
+(@future,^att=@future):=(-@future,+att=@future,+WHEN);
+(@generic,^att=@generic):=(-@generic,+att=@generic,+QUAA);
+(@given,^att=@given):=(-@given,+att=@given,+HOW);
+(@habitual,^att=@habitual):=(-@habitual,+att=@habitual,+ASPA);
+(@hesitation,^att=@hesitation):=(-@hesitation,+att=@hesitation,+FEEL);
+(@hope,^att=@hope):=(-@hope,+att=@hope,+MODA);
+(@hyperbole,^att=@hyperbole):=(-@hyperbole,+att=@hyperbole,+FIGA);
+(@hypothesis,^att=@hypothesis):=(-@hypothesis,+att=@hypothesis,+MODA);
+(@if,^att=@if):=(-@if,+att=@if,+HOW);
+(@if.@only,^att=@if.@only):=(-@if.@only,+att=@if.@only,+HOW);
+(@imperfective,^att=@imperfective):=(-@imperfective,+att=@imperfective,+ASPA);
+(@in,^att=@in):=(-@in,+att=@in,+WHERE);
+(@in_accordance_with,^att=@in_accordance_with):=(-@in_accordance_with,+att=@in_accordance_with,+HOW);
+(@in_addition_to,^att=@in_addition_to):=(-@in_addition_to,+att=@in_addition_to,+HOW);
+(@in_case,^att=@in_case):=(-@in_case,+att=@in_case,+HOW);
+(@in_case_of,^att=@in_case_of):=(-@in_case_of,+att=@in_case_of,+HOW);
+(@in_front_of,^att=@in_front_of):=(-@in_front_of,+att=@in_front_of,+WHERE);
+(@in_place_of,^att=@in_place_of):=(-@in_place_of,+att=@in_place_of,+WHERE);
+(@in_spite_of,^att=@in_spite_of):=(-@in_spite_of,+att=@in_spite_of,+HOW);
+(@inceptive,^att=@inceptive):=(-@inceptive,+att=@inceptive,+ASPA);
+(@inchoative,^att=@inchoative):=(-@inchoative,+att=@inchoative,+ASPA);
+(@including,^att=@including):=(-@including,+att=@including,+HOW);
+(@indef,^att=@indef):=(-@indef,+att=@indef,+WHICH);
+(@inferior,^att=@inferior):=(-@inferior,+att=@inferior,+SODA);
+(@inside,^att=@inside):=(-@inside,+att=@inside,+WHERE);
+(@inside_of,^att=@inside_of):=(-@inside_of,+att=@inside_of,+WHERE);
+(@instead_of,^att=@instead_of):=(-@instead_of,+att=@instead_of,+HOW);
+(@intention,^att=@intention):=(-@intention,+att=@intention,+MODA);
+(@interrogation,^att=@interrogation):=(-@interrogation,+att=@interrogation,+MODA);
+(@intimate,^att=@intimate):=(-@intimate,+att=@intimate,+SODA);
+(@into,^att=@into):=(-@into,+att=@into,+WHERE);
+(@invitation,^att=@invitation):=(-@invitation,+att=@invitation,+MODA);
+(@irony,^att=@irony):=(-@irony,+att=@irony,+FIGA);
+(@iterative,^att=@iterative):=(-@iterative,+att=@iterative,+ASPA);
+(@jargon,^att=@jargon):=(-@jargon,+att=@jargon,+REGA);
+(@judgement,^att=@judgement):=(-@judgement,+att=@judgement,+MODA);
+(@least,^att=@least):=(-@least,+att=@least,+DEGA);
+(@less,^att=@less):=(-@less,+att=@less,+DEGA);
+(@like,^att=@like):=(-@like,+att=@like,+HOW);
+(@male,^att=@male):=(-@male,+att=@male,+GENA);
+(@maybe,^att=@maybe):=(-@maybe,+att=@maybe,+POLA);
+(@metaphor,^att=@metaphor):=(-@metaphor,+att=@metaphor,+FIGA);
+(@metonymy,^att=@metonymy):=(-@metonymy,+att=@metonymy,+FIGA);
+(@mid,^att=@mid):=(-@mid,+att=@mid,+WHERE);
+(@minus,^att=@minus):=(-@minus,+att=@minus,+DEGA);
+(@more,^att=@more):=(-@more,+att=@more,+DEGA);
+(@most,^att=@most):=(-@most,+att=@most,+DEGA);
+(@multal,^att=@multal):=(-@multal,+att=@multal,+QUAA);
+(@narrative,^att=@narrative):=(-@narrative,+att=@narrative,+MODA);
+(@near,^att=@near):=(-@near,+att=@near,+WHERE);
+(@near_to,^att=@near_to):=(-@near_to,+att=@near_to,+WHERE);
+(@necessity,^att=@necessity):=(-@necessity,+att=@necessity,+MODA);
+(@neither,^att=@neither):=(-@neither,+att=@neither,+WHICH);
+(@neutral,^att=@neutral):=(-@neutral,+att=@neutral,+GENA);
+(@next,^att=@next):=(-@next,+att=@next,+WHERE);
+(@next_to,^att=@next_to):=(-@next_to,+att=@next_to,+WHERE);
+(@no,^att=@no):=(-@no,+att=@no,+QUAA);
+(@not,^att=@not):=(-@not,+att=@not,+POLA);
+(@notwithstanding,^att=@notwithstanding):=(-@notwithstanding,+att=@notwithstanding,+HOW);
+(@noun,^att=@noun):=(-@noun,+att=@noun,+LEXA);
+(@obligation,^att=@obligation):=(-@obligation,+att=@obligation,+MODA);
+(@of,^att=@of):=(-@of,+att=@of,+HOW);
+(@off,^att=@off):=(-@off,+att=@off,+HOW);
+(@on,^att=@on):=(-@on,+att=@on,+WHERE);
+(@on_account_of,^att=@on_account_of):=(-@on_account_of,+att=@on_account_of,+HOW);
+(@on_behalf_of,^att=@on_behalf_of):=(-@on_behalf_of,+att=@on_behalf_of,+HOW);
+(@on_top_of,^att=@on_top_of):=(-@on_top_of,+att=@on_top_of,+WHERE);
+(@only,^att=@only):=(-@only,+att=@only,+WHICH);
+(@onomatopoeia,^att=@onomatopoeia):=(-@onomatopoeia,+att=@onomatopoeia,+FIGA);
+(@onto,^att=@onto):=(-@onto,+att=@onto,+WHERE);
+(@opinion,^att=@opinion):=(-@opinion,+att=@opinion,+MODA);
+(@opposite,^att=@opposite):=(-@opposite,+att=@opposite,+WHERE);
+(@or,^att=@or):=(-@or,+att=@or,+HOW);
+(@ordinal,^att=@ordinal):=(-@ordinal,+att=@ordinal,+WHICH);
+(@other,^att=@other):=(-@other,+att=@other,+WHICH);
+(@out,^att=@out):=(-@out,+att=@out,+WHERE);
+(@out_from,^att=@out_from):=(-@out_from,+att=@out_from,+WHERE);
+(@out_of,^att=@out_of):=(-@out_of,+att=@out_of,+WHERE);
+(@outside,^att=@outside):=(-@outside,+att=@outside,+WHERE);
+(@outside_of,^att=@outside_of):=(-@outside_of,+att=@outside_of,+WHERE);
+(@over,^att=@over):=(-@over,+att=@over,+WHERE);
+(@owing_to,^att=@owing_to):=(-@owing_to,+att=@owing_to,+HOW);
+(@own,^att=@own):=(-@own,+att=@own,+WHICH);
+(@oxymoron,^att=@oxymoron):=(-@oxymoron,+att=@oxymoron,+FIGA);
+(@pace,^att=@pace):=(-@pace,+att=@pace,+HOW);
+(@pain,^att=@pain):=(-@pain,+att=@pain,+FEEL);
+(@paradox,^att=@paradox):=(-@paradox,+att=@paradox,+FIGA);
+(@parallelism,^att=@parallelism):=(-@parallelism,+att=@parallelism,+FIGA);
+(@parenthesis,^att=@parenthesis):=(-@parenthesis,+att=@parenthesis,+SYNA);
+(@paronomasia,^att=@paronomasia):=(-@paronomasia,+att=@paronomasia,+FIGA);
+(@passive,^att=@passive):=(-@passive,+att=@passive,+VOIA);
+(@past,^att=@past):=(-@past,+att=@past,+WHEN);
+(@paucal,^att=@paucal):=(-@paucal,+att=@paucal,+QUAA);
+(@per,^att=@per):=(-@per,+att=@per,+HOW);
+(@perfective,^att=@perfective):=(-@perfective,+att=@perfective,+ASPA);
+(@periphrasis,^att=@periphrasis):=(-@periphrasis,+att=@periphrasis,+FIGA);
+(@permission,^att=@permission):=(-@permission,+att=@permission,+MODA);
+(@permissive,^att=@permissive):=(-@permissive,+att=@permissive,+ASPA);
+(@persistent,^att=@persistent):=(-@persistent,+att=@persistent,+ASPA);
+(@person,^att=@person):=(-@person,+att=@person,+ANIA);
+(@pl,^att=@pl):=(-@pl,+att=@pl,+QUAA);
+(@pleonasm,^att=@pleonasm):=(-@pleonasm,+att=@pleonasm,+FIGA);
+(@plus,^att=@plus):=(-@plus,+att=@plus,+DEGA);
+(@polite,^att=@polite):=(-@polite,+att=@polite,+SODA);
+(@polyptoton,^att=@polyptoton):=(-@polyptoton,+att=@polyptoton,+FIGA);
+(@polysyndeton,^att=@polysyndeton):=(-@polysyndeton,+att=@polysyndeton,+FIGA);
+(@possibility,^att=@possibility):=(-@possibility,+att=@possibility,+MODA);
+(@posterior,^att=@posterior):=(-@posterior,+att=@posterior,+WHEN);
+(@prediction,^att=@prediction):=(-@prediction,+att=@prediction,+MODA);
+(@present,^att=@present):=(-@present,+att=@present,+WHEN);
+(@presumption,^att=@presumption):=(-@presumption,+att=@presumption,+MODA);
+(@prior_to,^att=@prior_to):=(-@prior_to,+att=@prior_to,+WHEN);
+(@probability,^att=@probability):=(-@probability,+att=@probability,+MODA);
+(@progressive,^att=@progressive):=(-@progressive,+att=@progressive,+ASPA);
+(@prohibition,^att=@prohibition):=(-@prohibition,+att=@prohibition,+MODA);
+(@promise,^att=@promise):=(-@promise,+att=@promise,+MODA);
+(@prospective,^att=@prospective):=(-@prospective,+att=@prospective,+ASPA);
+(@proximal,^att=@proximal):=(-@proximal,+att=@proximal,+WHICH);
+(@pursuant_to,^att=@pursuant_to):=(-@pursuant_to,+att=@pursuant_to,+HOW);
+(@qua,^att=@qua):=(-@qua,+att=@qua,+HOW);
+(@quadrual,^att=@quadrual):=(-@quadrual,+att=@quadrual,+QUAA);
+(@recent,^att=@recent):=(-@recent,+att=@recent,+WHEN);
+(@reciprocal,^att=@reciprocal):=(-@reciprocal,+att=@reciprocal,+VOIA);
+(@reflexive,^att=@reflexive):=(-@reflexive,+att=@reflexive,+VOIA);
+(@regarding,^att=@regarding):=(-@regarding,+att=@regarding,+HOW);
+(@regardless_of,^att=@regardless_of):=(-@regardless_of,+att=@regardless_of,+HOW);
+(@regret,^att=@regret):=(-@regret,+att=@regret,+MODA);
+(@relative,^att=@relative):=(-@relative,+att=@relative,+SYNA);
+(@relief,^att=@relief):=(-@relief,+att=@relief,+FEEL);
+(@remote,^att=@remote):=(-@remote,+att=@remote,+WHEN);
+(@repetition,^att=@repetition):=(-@repetition,+att=@repetition,+FIGA);
+(@request,^att=@request):=(-@request,+att=@request,+MODA);
+(@result,^att=@result):=(-@result,+att=@result,+ASPA);
+(@reverential,^att=@reverential):=(-@reverential,+att=@reverential,+SODA);
+(@round,^att=@round):=(-@round,+att=@round,+HOW);
+(@same,^att=@same):=(-@same,+att=@same,+WHICH);
+(@save,^att=@save):=(-@save,+att=@save,+HOW);
+(@since,^att=@since):=(-@since,+att=@since,+WHEN);
+(@single_quote,^att=@single_quote):=(-@single_quote,+att=@single_quote,+SYNA);
+(@singular,^att=@singular):=(-@singular,+att=@singular,+QUAA);
+(@slang,^att=@slang):=(-@slang,+att=@slang,+REGA);
+(@so,^att=@so):=(-@so,+att=@so,+HOW);
+(@speculation,^att=@speculation):=(-@speculation,+att=@speculation,+MODA);
+(@speech,^att=@speech):=(-@speech,+att=@speech,+FIGA);
+(@square_bracket,^att=@square_bracket):=(-@square_bracket,+att=@square_bracket,+SYNA);
+(@subsequent_to,^att=@subsequent_to):=(-@subsequent_to,+att=@subsequent_to,+WHEN);
+(@such,^att=@such):=(-@such,+att=@such,+WHICH);
+(@suggestion,^att=@suggestion):=(-@suggestion,+att=@suggestion,+MODA);
+(@superior,^att=@superior):=(-@superior,+att=@superior,+SODA);
+(@surprise,^att=@surprise):=(-@surprise,+att=@surprise,+FEEL);
+(@symploce,^att=@symploce):=(-@symploce,+att=@symploce,+FIGA);
+(@synecdoche,^att=@synecdoche):=(-@synecdoche,+att=@synecdoche,+FIGA);
+(@synesthesia,^att=@synesthesia):=(-@synesthesia,+att=@synesthesia,+FIGA);
+(@taboo,^att=@taboo):=(-@taboo,+att=@taboo,+REGA);
+(@terminative,^att=@terminative):=(-@terminative,+att=@terminative,+ASPA);
+(@than,^att=@than):=(-@than,+att=@than,+HOW);
+(@thanks_to,^att=@thanks_to):=(-@thanks_to,+att=@thanks_to,+HOW);
+(@that_of,^att=@that_of):=(-@that_of,+att=@that_of,+HOW);
+(@thing,^att=@thing):=(-@thing,+att=@thing,+ANIA);
+(@threat,^att=@threat):=(-@threat,+att=@threat,+MODA);
+(@through,^att=@through):=(-@through,+att=@through,+WHERE);
+(@throughout,^att=@throughout):=(-@throughout,+att=@throughout,+WHERE);
+(@times,^att=@times):=(-@times,+att=@times,+QUAA);
+(@title,^att=@title):=(-@title,+att=@title,+SYNA);
+(@to,^att=@to):=(-@to,+att=@to,+WHERE);
+(@topic,^att=@topic):=(-@topic,+att=@topic,+SYNA);
+(@toward,^att=@toward):=(-@toward,+att=@toward,+WHERE);
+(@towards,^att=@towards):=(-@towards,+att=@towards,+WHERE);
+(@trial,^att=@trial):=(-@trial,+att=@trial,+QUAA);
+(@tuple,^att=@tuple):=(-@tuple,+att=@tuple,+QUAA);
+(@under,^att=@under):=(-@under,+att=@under,+WHERE);
+(@underneath,^att=@underneath):=(-@underneath,+att=@underneath,+WHERE);
+(@unless,^att=@unless):=(-@unless,+att=@unless,+HOW);
+(@unlike,^att=@unlike):=(-@unlike,+att=@unlike,+HOW);
+(@until,^att=@until):=(-@until,+att=@until,+WHEN);
+(@up,^att=@up):=(-@up,+att=@up,+WHERE);
+(@upon,^att=@upon):=(-@upon,+att=@upon,+HOW);
+(@verb,^att=@verb):=(-@verb,+att=@verb,+LEXA);
+(@versus,^att=@versus):=(-@versus,+att=@versus,+HOW);
+(@via,^att=@via):=(-@via,+att=@via,+WHERE);
+(@vocative,^att=@vocative):=(-@vocative,+att=@vocative,+SYNA);
+(@warning,^att=@warning):=(-@warning,+att=@warning,+MODA);
+(@weariness,^att=@weariness):=(-@weariness,+att=@weariness,+FEEL);
+(@wh,^att=@wh):=(-@wh,+att=@wh,+WHICH);
+(@when,^att=@when):=(-@when,+att=@when,+WHEN);
+(@whereas,^att=@whereas):=(-@whereas,+att=@whereas,+HOW);
+(@while,^att=@while):=(-@while,+att=@while,+WHEN);
+(@with,^att=@with):=(-@with,+att=@with,+HOW);
+(@with_regard_to,^att=@with_regard_to):=(-@with_regard_to,+att=@with_regard_to,+HOW);
+(@with_respect_to,^att=@with_respect_to):=(-@with_respect_to,+att=@with_respect_to,+HOW);
+(@within,^att=@within):=(-@within,+att=@within,+WHERE);
+(@without,^att=@without):=(-@without,+att=@without,+HOW);
+(@worth,^att=@worth):=(-@worth,+att=@worth,+HOW);
+(@yes,^att=@yes):=(-@yes,+att=@yes,+POLA);
+(@zoomorphism,^att=@zoomorphism):=(-@zoomorphism,+att=@zoomorphism,+FIGA);
+
+;============================================================================================
+;2 PROPAGATION
+;Propagates values from top categories
+;============================================================================================
+
+;Aspect (ASP)
+(CTN,^NPFV):=(-ASP,-CTN,+ASP=CTN,+ASP=NPFV);
+(PGS,^CTN,^NPFV):=(-ASP,-PGS,+ASP=PGS,+ASP=CTN,+ASP=NPFV);
+(HAB,^NPFV):=(-ASP,-HAB,+ASP=HAB,+ASP=NPFV);
+(ITE,^NPFV):=(-ASP,-ITE,+ASP=ITE,+ASP=NPFV);
+(EXP,^PFC):=(-ASP,-EXP,+ASP=EXP,+ASP=PFC);
+(PSS,^PFC):=(-ASP,-PSS,+ASP=PSS,+ASP=PFC);
+(PRP,^PFC):=(-ASP,-PRP,+ASP=PRP,+ASP=PFC);
+(RES,^PFC):=(-ASP,-RES,+ASP=RES,+ASP=PFC);
+
+;Gender (GEN)
+(COM,^MCL,^FEM):=(-GEN,-COM,+GEN=COM,+GEN=MCL,+GEN=FEM);
+(VAR,^MCL,^FEM,^NEU):=(-GEN,-VAR,+GEN=VAR,GEN=MCL,+GEN=FEM,+GEN=NEU);
+
+;Lexical category (LEX)
+({CIR|PPS|PRE},^P):=(-LEX,+LEX=P);
+({SAV|AAV|CJT|DJT},^A):=(-LEX,+LEX=A);
+({CCX|IFX|PFX|SFX},^F):=(-LEX,+LEX=F);
+({COO|SCJ},^C):=(-LEX,+LEX=C);
+({ART|DEM|POD|QUA},^D):=(-LEX,+LEX=D);
+({NOU|PPN},^N):=(-LEX,+LEX=N);
+({CDN|DTN|PTN|MLN|ORD},^U):=(-LEX,+LEX=U);
+({DEP|DUM|EPR|NPR|IPR|PPR|SPR|CPR|FPR|RPR},^R):=(-LEX,+LEX=R);
+(/X[BP]/(%x,N;%y),^N):=(+LEX=N);
+(/X[BP]/(%x,A;%y),^A):=(+LEX=A);
+(/X[BP]/(%x,J;%y),^J):=(+LEX=J);
+(/X[BP]/(%x,I;%y),^I):=(+LEX=I);
+(/X[BP]/(%x,C;%y),^C):=(+LEX=C);
+(/X[BP]/(%x,D;%y),^D):=(+LEX=D);
+(/X[BP]/(%x,V;%y),^V):=(+LEX=V);
+(/X[BP]/(%x,P;%y),^P):=(+LEX=P);
+
+;Number (NUM)
+(SNGT,^SNG):=(-NUM,-SGNT,+NUM=SNG,+NUM=SNGT); SNGT is also SNG
+(PLRT,^PLR):=(-NUM,-PLRT,+NUM=PLR,+NUM=PLRT); PLRT is also PLR
+(INV,^SNG,^PLR):=(-NUM,-INV,+NUM=SNG,+NUM=PLR,+NUM=INV); INV is both SNG and PLR
+(DUA,^PLR):=(-NUM,-DUA,+NUM=DUA,+NUM=PLR);
+(TRI,^PLR):=(-NUM,-TRI,+NUM=PLR,+NUM=TRI);
+(QDR,^PLR):=(-NUM,-QDR,+NUM=PLR,+NUM=QDR);
+(PAU,^PLR):=(-NUM,-PAU,+NUM=PLR,+NUM=PAU);
+(MUL,^PLR):=(-NUM,-MUL,+NUM=PLR,+NUM=MUL);
+
+;Part-of-speech (POS)
+(CRC,^COO):=(-POS,-CRC,+POS=CRC,+POS=COO);
+(AVR,^SCJ):=(-POS,-AVR,+POS=AVR,+POS=SCJ);
+(CMR,^SCJ):=(-POS,-CMR,+POS=CMR,+POS=SCJ);
+(RVZ,^SCJ):=(-POS,-RVZ,+POS=RVZ,+POS=SCJ);
+
+;Person (PER)
+(N,PLR,^R,^3PP):=(-PER,+PER=3PP); plural nouns are 3PP
+(N,SNG,^R,^3PS):=(-PER,+PER=3PS); singular nouns are 3PS
+
+;Tense (ATE)
+(PTR,^PAS):=(-ATE,-PTR,+ATE=PTR,+ATE=PAS);
+(HEP,^PAS):=(-ATE,-HEP,+ATE=HEP,+ATE=PAS);
+(PEP,^PAS):=(-ATE,-PEP,+ATE=PEP,+ATE=PAS);
+(HOP,^PAS):=(-ATE,-HOP,+ATE=HOP,+ATE=PAS);
+(POP,^PAS):=(-ATE,-POP,+ATE=POP,+ATE=PAS);
+(IPT,^PAS):=(-ATE,-IPT,+ATE=IPT,+ATE=PAS);
+(NRCP,^PAS):=(-ATE,-NRCP,+ATE=NRCP,+ATE=PAS);
+(RCP,^PAS):=(-ATE,-RCP,+ATE=RCP,+ATE=PAS);
+(NRMP,^PAS):=(-ATE,-NRMP,+ATE=NRMP,+ATE=PAS);
+(RMP,^PAS):=(-ATE,-RMP,+ATE=RMP,+ATE=PAS);
+(FUN,^FUT):=(-ATE,-FUN,+ATE=FUN,+ATE=FUT);
+(FUR,^FUT):=(-ATE,-FUR,+ATE=FUR,+ATE=FUT);
+
+;Transitivity (TRA)
+(TSTD,^TST):=(-TRA,-TSTD,+TRA=TSTD,+TRA=TST);
+(TSTI,^TST):=(-TRA,-TSTI,+TRA=TSTI,+TRA=TST);
+(TST2,^TST):=(-TRA,-TST2,+TRA=TST2,+TRA=TST);
+(TST3,^TST):=(-TRA,-TST3,+TRA=TST3,+TRA=TST);
+(NERG,^NTST):=(-TRA,-NERG,+TRA=NERG,+TRA=NTST);
+(NACC,^NTST):=(-TRA,-NACC,+TRA=NACC,+TRA=NTST);
+
+;Syntactic roles  (XB, XP)
+(XB(%x;%y),^XB,^XP):=(+XB); assigns the feature XB to the nodes containing intermediate projections
+(XP(%x;%y),^XP):=(+XP); assigns the feature XP to the nodes containing maximal projections
+
+;Relation (rel)
+(SEM=TME,^rel):=(+rel=tim);
+(SEM=MAN,^rel):=(+rel=man);
+(SEM=PLE,^rel):=(+rel=plc);
+
+;============================================================================================
+;3 Other normalization and propagation rules
+;============================================================================================
+
+;Temporary words
+(UW,TEMP):=(-TEMP); removes the feature TEMP from the words with the feature UW
+(TEMP,^LEX):=(+LEX=N,+POS=PPN); treats all temporary words as proper nouns
+
+;Other propagation rules
+(R,^N):=(+LEX=N); assigns the feature N to pronouns
+(PTN,^N):=(+LEX=N); assigns the feature N to partitive numbers
+({CDN|ORD},^J):=(+J); assigns the feature J to cardinals and ordinals
+({DTN|MLN},^A):=(+A); assigns the feature A to distributive ("in pairs") and multiplicative ("twice") numbers
+
+
+;============================================================================================
+;UNL-ENG TRANSFORMATION GRAMMAR FOR THE CORPUS UC-A1
+;Documentation available at http://www.unlweb.net/wiki/English_grammar
+;This grammar must be used with the UNL-NL Default Transformation Grammar (available at http://www.unlweb.net/wiki/Default_grammar)
+;============================================================================================
+
+;============================================================================================
+;============================================================================================
+;1. SEMANTIC ANALYSIS 
+;Converts the semantic network into a syntactic network
+;============================================================================================
+;============================================================================================
+
+;============================================================================================
+;1.1 RELATIONS
+;Converts semantic relations into syntactic relations
+;============================================================================================
+
+;Normalization
+(N,%x,@def):=(%x,-@def);
+(R,^1PS,^2PS,^1PP,^2PP,^PER,%x):=(%x,PER=3PER);
+(R,^1PS,^2PS,^1PP,^2PP,^NUM,%x):=(%x,NUM=SNG);
+(R,^GEN,%x):=(%x,GEN=NEU);
+(3PER,SNG,%x,^3PS):=(%x,3PS);
+(SCOPE,^CAS,%x):=(%x,CAS=NOM);
+(COP,^TNS,%x):=(%x,TNS=PRS);
+
+
+(%x,N,^CAS,^SCOPE):=(%x,+CAS=NOM);
+(%x,{J|D},^POL,^DFN):=(%x,+POL=PST,+DFN=NDEF);
+(%x,D,^POL,^DFN):=(%x,+POL=PST,+DFN=NDEF);
+;Number
+(%x,@pl,^D):=(%x,-@pl,-NUM,+NUM=PLR);
+(N,%x,^SNGT,{@all|@both|@most|@more},^@pl,^PLR):=(%x,-NUM,+NUM=PLR);
+
+qua(%x,N;%y,{"/(\d)*2/"|"/(\d)*3/"|"/(\d)*4/"|SCOPE}):=(%y)(" ")(%x,-CAS,+CAS=GNT,-NUM,+NUM=SNG); plc(kill,kitchen) > XA(kill,PC(in,kitchen))
+qua(%x,N;%y,{DIGIT|SCOPE}):=(%y)(" ")(%x,-CAS,+CAS=GNT,-NUM,+NUM=PLR);
+
+agt(%x,@interrogative,V;%y,IPR):=VS(%x,-@interrogative,PER=%y,NUM=%y,GEN=%y;%y); obj(kill,Mary) > VC(kill,Mary)
+agt(%x,V;%y,{N|SCOPE}):=VS(%x,PER=%y,NUM=%y,GEN=%y;%y,-CAS,+CAS=NOM); agt(kill,he) > VS(kill,he) pogledaj za sklone in št.
+adr(%x,V;%y,N):=VC(%x;%y,-CAS,+CAS=DAT);
+bas(%x,J,^@equal;%y,N):=JA(%x;PC([od],LEX=P,POS=PRE;%y,-CAS,+CAS=GNT));
+bas(%x,J,@equal;%y,N):=JA(%x;PC([kao],LEX=P,POS=PRE;%y,-CAS,+CAS=NOM));
+exp(%x,J;%y,N):=VS(VC(?[biti],?[[]],?LEX=V,?POS=COP,PER=%y,NUM=%y,GEN=%y,att=%x;%x,-CAS,+CAS=NOM,PER=%y,NUM=%y,GEN=%y);%y,-CAS,+CAS=NOM,DIS=BEF);
+exp(%x,V;%y,N):=VS(%x,PER=%y,NUM=%y,GEN=%y;%y,-CAS,+CAS=NOM); agt(kill,he) > VS(kill,he) pogledaj za sklone in št.
+aoj(%x,{J|SCOPE};%y,N):=VP(VB(?[biti],?[[]],?LEX=V,?POS=COP,PER=%y,NUM=%y,GEN=%y,att=%x;%x,-CAS,+CAS=NOM,PER=%y,NUM=%y,GEN=%y);%y,-CAS,+CAS=NOM,DIS=BEF); aoj(beautiful,it) > VP(VB(is,beautiful),it)
+aoj(%x,^J,%y,N):=VP(VB(?[biti],?[[]],?LEX=V,?POS=COP,PER=%y,NUM=%y,GEN=%y,att=%x;%x,-CAS,+CAS=NOM);%y,-CAS,+CAS=NOM,DIS=BEF); aoj(beautiful,it) > VP(VB(is,beautiful),it)
+ben(%x;%y):=XA(%x;PC([za],LEX=P,POS=PRE;%y,-CAS,+CAS=ACC)); ben(book,John) > XA(book,PC(for,John))
+cnt(%x,J;%y,N):=JC(%x;PC([za],LEX=P,POS=PRE;%y,-CAS,+CAS=ACC)); cnt(book,Paris) > NA(book,PC(about,Paris))
+cnt(%x,V;%y,N):=VC(%x;%y,-CAS,+CAS=ACC); cnt(book,Paris) > NA(book,PC(about,Paris))
+cnt(%x,N;%y,N):=NA(%x;PC([o],LEX=P,POS=PRE;%y,-CAS,+CAS=LOC)); cnt(book,Paris) > NA(book,PC(about,Paris))
+mod(%x,N,@def;%y,{J|SCOPE}):=NA(%x;%y,DIS=BEF,CAS=%x,NUM=%x,GEN=%x,-DFN,+DFN=DEF); mod(beautiful,book) > NA(beautiful,book)
+man(%x,J;%y,A):=JS(%x;%y,DIS=BEF); man(beautiful,extremely) > XA(beautiful,extremely)
+mod(%x,N,@multal;%y,{J|SCOPE}):=NS(%x;%y,DIS=BEF,CAS=%x,NUM=PLR,GEN=%x); mod(beautiful,book) > NA(beautiful,book)
+mod(%x,N,^@multal;%y,{J|SCOPE}):=NS(%x;%y,DIS=BEF,CAS=%x,NUM=%x,GEN=%x); mod(beautiful,book) > NA(beautiful,book)
+mod(%x,N;%y,N):=NA(%x;NX(%y,DIS=BEF,CAS=GNT;)); mod(beautiful,book) > NA(beautiful,book)
+man(%x,@interrogative,V;%y,IPR):=CC(%y,[kako],DIS=FRT;VX(%x,-@interrogative;)); obj(kill,Mary) > VC(kill,Mary)
+man(%x,V;%y,A):=XA(%x;%y); man(beautiful,extremely) > XA(beautiful,extremely)
+man(%x;%y,N,@against):=XA(%x;PC([protiv],-@against,LEX=P,POS=PRE;%y,-CAS,+CAS=GNT)); plc(book,table.@behind) > XA(book,PC(behind,table))
+man(%x;%y,N,@with):=XA(%x;%y,-CAS,+CAS=INS);
+man(%x;%y,N,@by):=XA(%x;%y,-CAS,+CAS=INS); plc(book,table.@behind) > XA(book,PC(behind,table))
+;man(%x;%y,N,@with):=XA(%x;PC([sa],LEX=P,POS=PRE;%y,-CAS,+CAS=INS)); plc(book,table.@behind) > XA(book,PC(behind,table))
+man(%x;%y,N,@without):=XA(%x;PC([bez],LEX=P,POS=PRE;%y,-CAS,+CAS=GNT)); plc(book,table.@behind) > XA(book,PC(behind,table))
+met(%x,V;%y,{N|SCOPE}):=VS(%x,PER=%y,NUM=%y,GEN=%y;%y,-CAS,+CAS=NOM);
+mod(%x;%y,DIGIT):=XA(%x;%y,+J,DIS=BEF,CAS=%x,NUM=%x,GEN=%x,-DFN,+DFN=DEF,PAR=M28,PST);
+mod(%x,N;%y,N):=NA(%x;PC([of],LEX=P,POS=PRE;%y)); mod(book,John) > NA(book,PC(of,John))
+obj(%x,@interrogative,V,^[reći];%y,IPR):=CC(%y,-CAS,+CAS=ACC,DIS=FRT;VX(%x,-@interrogative;)); obj(kill,Mary) > VC(kill,Mary)
+obj(%x,V,{[pobediti]|[pobeđivati]};%y):=VC(%x;+PC([u],LEX=P,POS=PRE,%k;%y,-CAS,+CAS=LOC)); obj(kill,Mary) > VC(kill,Mary)
+obj(%x,V,^[reći];%y,{N|SCOPE}):=VC(%x;%y,-CAS,+CAS=ACC); obj(kill,Mary) > VC(kill,Mary)
+plc(%x,@interrogative,V;%y,IPR):=CC(%y,[gde],DIS=FRT;VX(%x,-@interrogative;)); obj(kill,Mary) > VC(kill,Mary)
+plc(%x;%y,N,@above):=XA(%x;PC([iznad],-@above,LEX=P,POS=PRE;%y,-CAS,+CAS=GNT)); plc(book,table.@behind) > XA(book,PC(behind,table))
+plc(%x;%y,N,@among):=XA(%x;PC([među],LEX=P,POS=PRE;%y,-CAS,+CAS=INS,-NUM,+NUM=PLR)); plc(book,table.@behind) > XA(book,PC(behind,table))
+plc(%x;%y,N,@around):=XA(%x;PC([oko],LEX=P,POS=PRE;%y,-CAS,+CAS=GNT)); plc(book,table.@behind) > XA(book,PC(behind,table))
+plc(%x;%y,N,@at):=XA(%x;PC([na],LEX=P,POS=PRE;%y,-CAS,+CAS=LOC)); plc(book,table.@behind) > XA(book,PC(behind,table))
+plc(%x;%y,N,@by):=XA(%x;PC([pored],LEX=P,POS=PRE;%y,-CAS,+CAS=GNT)); plc(book,table.@behind) > XA(book,PC(behind,table))
+plc(%x;%y,N,@behind):=XA(%x;PC([iza],-@behind,LEX=P,POS=PRE;%y,-CAS,+CAS=GNT)); plc(book,table.@behind) > XA(book,PC(behind,table))
+plc(%x;%y,N,@below):=XA(%x;PC([pod],-@behind,LEX=P,POS=PRE;%y,-CAS,+CAS=INS)); plc(book,table.@behind) > XA(book,PC(behind,table))
+plc(%x;%y,N,@beneath):=XA(%x;PC([ispod],LEX=P,POS=PRE;%y,-CAS,+CAS=GNT)); plc(book,table.@behind) > XA(book,PC(behind,table))
+plc(%x;%y,N,@beside):=XA(%x;PC([pored],-@beside,LEX=P,POS=PRE;%y,-CAS,+CAS=GNT)); plc(book,table.@beside) > XA(book,PC(beside,table))
+plc(%x;%y,{N|SCOPE},@between):=XA(%x;PC([između],LEX=P,POS=PRE;%y,-CAS,+CAS=GNT)); plc(book,table.@beside) > XA(book,PC(beside,table))
+plc(%x;%y,N,@close_to):=XA(%x;PC([blizu],LEX=P,POS=PRE;%y,-CAS,+CAS=GNT)); plc(book,table.@beside) > XA(book,PC(beside,table))
+plc(%x;%y,N,@far_from):=XA(%x;PC([daleko od],-@far_from,LEX=P,POS=PRE;%y,-CAS,+CAS=GNT)); plc(book,table.@far_from) > XA(book,PC(far from,table))
+plc(%x;%y,N,@from):=XA(%x;PC([iz],LEX=P,POS=PRE;%y,-CAS,+CAS=GNT)); plc(train,Paris.@from) > XA(train,PC(from,Paris))
+plc(%x;%y,N,@in_front_of):=XA(%x;PC([ispred],LEX=P,POS=PRE;%y,-CAS,+CAS=GNT)); plc(book,table.@in_front_of) > XA(book,PC(in front of,table))
+plc(%x;%y,N,@inside):=XA(%x;PC([unutar],LEX=P,POS=PRE;%y,-CAS,+CAS=GNT)); plc(book,table.@in_front_of) > XA(book,PC(in front of,table))
+plc(%x;%y,N,@near):=XA(%x;PC([blizu],LEX=P,POS=PRE;%y,-CAS,+CAS=GNT)); plc(book,table.@near) > XA(book,PC(near,table))
+plc(%x;%y,N,@next_to):=XA(%x;PC([pored],LEX=P,POS=PRE;%y,-CAS,+CAS=GNT)); plc(book,table.@near) > XA(book,PC(near,table))
+plc(%x;%y,N,@on):=XA(%x;PC([na],LEX=P,POS=PRE;%y,-CAS,+CAS=LOC)); plc(book,table.@on) > XA(book,PC(on,table))
+plc(%x;%y,N,@out_of):=XA(%x;PC([iz],LEX=P,POS=PRE;%y,-CAS,+CAS=GNT)); plc(book,table.@on) > XA(book,PC(on,table))
+plc(%x;%y,N,@outside):=XA(%x;PC([izvan],LEX=P,POS=PRE;%y,-CAS,+CAS=GNT)); plc(book,table.@on) > XA(book,PC(on,table))
+plc(%x;%y,N,@to):=XA(%x;PC([u],LEX=P,POS=PRE;%y,-CAS,+CAS=ACC)); plc(train,Paris.@to) > XA(train,PC(to,Paris))
+plc(%x;%y,N,@through):=XA(%x;PC([kroz],LEX=P,POS=PRE;%y,-CAS,+CAS=ACC)); plc(train,Paris.@through) > XA(train,PC(through,Paris))
+plc(%x;%y,N,@under):=XA(%x;PC([ispod],LEX=P,POS=PRE;%y,-CAS,+CAS=GNT)); plc(book,table.@under) > XA(book,PC(under,table))
+plc(%x;%y,N,@underneath):=XA(%x;PC([ispod],LEX=P,POS=PRE;%y,-CAS,+CAS=GNT)); plc(book,table.@under) > XA(book,PC(under,table))
+plc(%x;%y,N,@within):=XA(%x;PC([unutar],LEX=P,POS=PRE;%y,-CAS,+CAS=GNT)); plc(book,table.@under) > XA(book,PC(under,table))
+plc(%x;%y,N):=XA(%x;PC([u],LEX=P,POS=PRE;%y,-CAS,+CAS=LOC)); plc(kill,kitchen) > XA(kill,PC(in,kitchen))
+rsn(%x,@interrogative,V;%y,IPR):=CC(%y,[zašto],DIS=FRT;VX(%x,-@interrogative;)); obj(kill,Mary) > VC(kill,Mary)
+rsn(%x,V;%y,N):=VA(%x;PC([zbog],LEX=P,POS=PRE;%y,-CAS,+CAS=GNT)); rsn(kill,Peter) > XA(kill,PC(because of,Peter))
+rsn(%x,V;%y,N):=VA(%x;PC([zbog],LEX=P,POS=PRE;%y,-CAS,+CAS=GNT)); rsn(kill,Peter) > XA(kill,PC(because of,Peter))
+tim(%x,@interrogative,V;%y,IPR):=CC(%y,[kada],DIS=FRT;VX(%x,-@interrogative;)); obj(kill,Mary) > VC(kill,Mary)
+tim(%x;%y,N,@before):=XA(%x;PC([pre],LEX=P,POS=PRE;%y,-CAS,+CAS=GNT)); tim(minute,noon.@before) > XA(minute,PC(before,noon))
+tim(%x;%y,N,@after):=XA(%x;PC([posle],LEX=P,POS=PRE;%y,-CAS,+CAS=GNT)); tim(minute,noon.@after) > XA(minute,PC(before,after))
+tim(%x;%y,N,@since):=XA(%x;PC([od],LEX=P,POS=PRE;%y,-CAS,+CAS=GNT)); tim(minute,noon.@since) > XA(minute,PC(before,since))
+tim(%x;%y,N,@until):=XA(%x;PC([do],LEX=P,POS=PRE;%y,-CAS,+CAS=GNT)); tim(minute,noon.@until) > XA(minute,PC(before,until))
+tim(%x;%y,N):=XA(%x;PC([u],LEX=P,POS=PRE;%y,-CAS,+CAS=ACC)); tim(minute,noon) > XA(minute,PC(at,noon))
+;Negative concord
+tim(%x,V;%y,[nikada]):=VA(%x,+@not;%y); tim(kill,yesterday) > XA(kill,yesterday)
+tim(%x;%y,A):=XA(%x;%y); tim(kill,yesterday) > XA(kill,yesterday)
+pos(%x,N,@multal;%y,R):=NS(%x;?POS=SPR,?PER=%y,?GEN=%y,CAS=%x); pos(book,I) > NS(book,my) 
+pos(%x,N,@multal;%y,D):=NS(%x;%y,CAS=%x,GEN=%x,NUM=PLR); pos(book,my) > NS(book,my)
+pos(%x,N,^@multal;%y,R):=NS(%x;?POS=SPR,?PER=%y,?GEN=%y,CAS=%x); pos(book,I) > NS(book,my) 
+pos(%x,N,^@multal;%y,D):=NS(%x;%y,CAS=%x,GEN=%x,NUM=%x); pos(book,my) > NS(book,my)
+
+(and(%x,^@but,J;%y,{J|SCOPE}),%a,SCOPE):=JA(%x,-CAS,+CAS=%a,GEN=%a,PER=%a,NUM=%a;CC([i],LEX=C,POS=CCJ;%y,-CAS,+CAS=%a,GEN=%a,PER=%a,NUM=%a));
+;and(%x,J,^JA,^SCOPE;%y,{J|SCOPE|JA}):=(JA(%x;CC([i],LEX=C,POS=CCJ;%y)),-NUM,+NUM=PLR);
+;(and(%x,J,@but;%y,{J|SCOPE}),%a,SCOPE):=JA(%x,-CAS,+CAS=%a,GEN=%a,PER=%a,NUM=%a;CC([ali],LEX=C,POS=CCJ;%y,-CAS,+CAS=%a,GEN=%a,PER=%a,NUM=%a));
+;and(%x,J,@but,^JA,^SCOPE;%y,{J|SCOPE|JA}):=(JA(%x;CC([ali],LEX=C,POS=CCJ;%y)),-NUM,+NUM=PLR);
+;(or(%x,J;%y,{J|SCOPE}),%a,SCOPE):=JA(%x,-CAS,+CAS=%a;CC([ili],LEX=C,POS=CCJ;%y,-CAS,+CAS=%a));
+;or(%x,J;%y,{J|SCOPE}):=JA(%x,-CAS,+CAS=%a;CC([ili],LEX=C,POS=CCJ;%y,-CAS,+CAS=%a));
+and(%x;%y):=((%y,+>BLK)([i],LEX=C,POS=CCJ,+>BLK)(%x,+>BLK),+LEX=%x);
+or(%x;%y):=((%y,+>BLK)([ili],LEX=C,POS=CCJ,+>BLK)(%x,+>BLK),+LEX=%x);
+;(and(%x,{N|NA|SCOPE|NP};%y,{N|SCOPE|NA|NP}),%a,SCOPE):=NA(%x,-CAS,+CAS=%a;CC([i],LEX=C,POS=CCJ;%y,-CAS,+CAS=%a));
+;and(%x,{N|NA|SCOPE|NP};%y,{N|SCOPE|NA|NP}):=(NA(%x;CC([i],LEX=C,POS=CCJ;%y)),-NUM,+NUM=PLR);
+;(or(%x,{N|NA|SCOPE|NP};%y,{N|SCOPE|NA|NP}),%a,SCOPE):=NA(%x,-CAS,+CAS=%a;CC([ili],LEX=C,POS=CCJ;%y,-CAS,+CAS=%a));
+;or(%x,{N|NA|SCOPE|NP};%y,{N|SCOPE|NA|NP}):=(NA(%x;CC([ili],LEX=C,POS=CCJ;%y)),-NUM,+NUM=PLR);
+;(and(%x,^@but,J;%y,{J|SCOPE}),%a,SCOPE):=JA(%x,-CAS,+CAS=%a,GEN=%a,PER=%a,NUM=%a;CC([i],LEX=C,POS=CCJ;%y,-CAS,+CAS=%a,GEN=%a,PER=%a,NUM=%a));
+;(and(%x,C;%y,{C|SCOPE}),%a,SCOPE):=CA(%x;CC([i],LEX=C,POS=CCJ;%y));
+;and(%x,C;%y,{C|SCOPE}):=CA(%x;CC([i],LEX=C,POS=CCJ;%y));
+;(or(%x,C;%y,{C|SCOPE}),%a,SCOPE):=CA(%x,-CAS,+CAS=%a;CC([ili],LEX=C,POS=CCJ;%y,-CAS,+CAS=%a));
+;or(%x,C;%y,{C|SCOPE}):=CA(%x,-CAS,+CAS=%a;CC([ili],LEX=C,POS=CCJ;%y,-CAS,+CAS=%a));
+;(and(%x,{I|IX};%y,{I|SCOPE|IX}),%a,SCOPE):=IA(%x;CC([i],LEX=C,POS=CCJ;%y));
+;and(%x,{I|IX};%y,{I|SCOPE|IX}):=IA(%x;CC([i],LEX=C,POS=CCJ;%y));
+;(and(%x,{V|VX};%y,{V|SCOPE|VX}),%a,SCOPE):=VA(%x;CC([i],LEX=C,POS=CCJ;%y));
+;and(%x,{V|VX};%y,{V|SCOPE|VX}):=VA(%x;CC([i],LEX=C,POS=CCJ;%y));
+
+
+
+
+
+obj(%x,V,[reći];%y):=VC(%x;+CC(?[da],?[[]],?LEX=C,?POS=SCJ;%y));
+
+;============================================================================================
+;============================================================================================
+;2. ATTRIBUTES
+;Converts semantic attributes into syntactic relations
+;============================================================================================
+;============================================================================================
+;Determiners
+
+(%x,N,SNGT,@paucal,^@less):=(NS(%x,-@paucal,-CAS,+CAS=GNT;%y,[nekoliko],+LEX=D,+POS=QUA,+DIS=BEF),+LEX=N,NUM=%x,CAS=%x,GEN=%x); book.@paucal > NA(books,few)
+(%x,N,@paucal,^@less):=(NS(%x,-@paucal,-NUM,+NUM=PLR,-CAS,+CAS=GNT;%y,[nekoliko],+LEX=D,+POS=QUA,+DIS=BEF),+LEX=N,NUM=%x,CAS=%x,GEN=%x); book.@paucal > NA(books,few)
+(%x,N,SNGT,@paucal,@less):=(NS(%x,-@paucal,-@less,-CAS,+CAS=GNT;%y,[manje],+LEX=D,+POS=QUA,+DIS=BEF),+LEX=N,NUM=%x,CAS=%x,GEN=%x); book.@paucal > NA(books,few)
+(%x,N,@paucal,@less):=(NS(%x,-@paucal,-@less,-NUM,+NUM=PLR,-CAS,+CAS=GNT;%y,[manje],+LEX=D,+POS=QUA,+DIS=BEF),+LEX=N,NUM=%x,CAS=%x,GEN=%x); book.@paucal > NA(books,few)
+(%x,N,SNGT,@less):=(NS(%x,-@less,-CAS,+CAS=GNT;%y,[manje],+LEX=D,+POS=QUA,+DIS=BEF),+LEX=N,NUM=%x,CAS=%x,GEN=%x); book.@paucal > NA(books,few)
+(%x,N,@less):=(NS(%x,-@less,-NUM,+NUM=PLR,-CAS,+CAS=GNT;%y,[manje],+LEX=D,+POS=QUA,+DIS=BEF),+LEX=N,NUM=%x,CAS=%x,GEN=%x); book.@paucal > NA(books,few)
+(%x,N,SNGT,@more):=(NS(%x,-@more,-CAS,+CAS=GNT;%y,[više],+LEX=D,+POS=QUA,+DIS=BEF),+LEX=N,NUM=%x,CAS=%x,GEN=%x); book.@paucal > NA(books,few)
+(%x,N,@more):=(NS(%x,-@more,-NUM,+NUM=PLR,-CAS,+CAS=GNT;%y,[više],+LEX=D,+POS=QUA,+DIS=BEF),+LEX=N,NUM=%x,CAS=%x,GEN=%x); book.@paucal > NA(books,few)
+(%x,N,SNGT,@most):=(NS(%x,-@most,-CAS,+CAS=GNT;%y,[najviše],+LEX=D,+POS=QUA,+DIS=BEF),+LEX=N,NUM=%x,CAS=%x,GEN=%x); book.@paucal > NA(books,few)
+(%x,N,@most):=(NS(%x,-@most,-NUM,+NUM=PLR,-CAS,+CAS=GNT;%y,[najviše],+LEX=D,+POS=QUA,+DIS=BEF),+LEX=N,NUM=%x,CAS=%x,GEN=%x); book.@paucal > NA(books,few)
+(%x,N,@multal):=(NS(%x,-@multal,-NUM,+NUM=PLR;%y,[mnogi],+LEX=D,+POS=DEM,+DIS=BEF,+PAR=M28,NUM=PLR,CAS=%x,GEN=%x),+LEX=N); book.@multal > NA(books,many)
+(%x,N,SNGT,@multal,^@extra):=(NS(%x,-@multal,-CAS,+CAS=GNT;%y,[mnogo],+LEX=D,+POS=QUA,+DIS=BEF),+LEX=N,NUM=%x,CAS=%x,GEN=%x); book.@multal > NA(books,many)
+(%x,N,@multal,^@extra):=(NS(%x,-@multal,-NUM,+NUM=PLR,-CAS,+CAS=GNT;%y,[mnogo],+LEX=D,+POS=QUA,+DIS=BEF),+LEX=N,NUM=%x,CAS=%x,GEN=%x); book.@multal > NA(books,many)
+(%x,N,SNGT,@multal,@extra):=(NS(%x,-@multal,-@extra,-CAS,+CAS=GNT;%y,[previše],+LEX=D,+POS=QUA,+DIS=BEF),+LEX=N,NUM=%x,CAS=%x,GEN=%x); book.@multal > NA(books,many)
+(%x,N,@multal,@extra):=(NS(%x,-@multal,-@extra,-NUM,+NUM=PLR,-CAS,+CAS=GNT;%y,[previše],+LEX=D,+POS=QUA,+DIS=BEF),+LEX=N,NUM=%x,CAS=%x,GEN=%x); book.@multal > NA(books,many)
+(%x,N,SNGT,@enough):=(NS(%x,-@enough,-NUM,+NUM=PLR,-CAS,+CAS=GNT;%y,[dovoljno],+LEX=D,+POS=QUA,+DIS=BEF),+LEX=N,NUM=%x,CAS=%x,GEN=%x); book.@multal > NA(books,many)
+(%x,N,@enough):=(NS(%x,-@enough,-NUM,+NUM=PLR,-CAS,+CAS=GNT;%y,[dovoljno],+LEX=D,+POS=QUA,+DIS=BEF),+LEX=N,NUM=%x,CAS=%x,GEN=%x); book.@multal > NA(books,many)
+(%x,N,@not,@all):=(NS(%x,-@all,-@not,-NUM,+NUM=PLR;%y,[ne sve],+LEX=D,+POS=QUA,+DIS=BEF),+LEX=N,NUM=%x,CAS=%x,GEN=%x); book.@all > NA(books,all)
+(%x,N,@all):=(NS(%x,-@all,-NUM,+NUM=PLR;%y,[sav],+LEX=D,+POS=QUA,+DIS=BEF,NUM=%x,CAS=%x,GEN=%x,PAR=M89),+LEX=N,NUM=%x,CAS=%x,GEN=%x); book.@all > NA(books,all)
+(%x,N,^R,@distal):=(NS(%x,-@distal;%y,[taj],+LEX=D,+POS=DEM,+DIS=BEF,NUM=%x,CAS=%x,GEN=%x,PAR=M92),+LEX=N,NUM=%x,CAS=%x,GEN=%x); book.@all > NA(books,all)
+(%x,N,^R,@proximal):=(NS(%x,-@proximal;%y,[ovaj],+LEX=D,+POS=DEM,+DIS=BEF,NUM=%x,CAS=%x,GEN=%x,PAR=M92),+LEX=N,NUM=%x,CAS=%x,GEN=%x); book.@all > NA(books,all)
+(%x,N,@other):=(NS(%x,-@other;%y,[drugi],+LEX=D,+POS=DEM,+DIS=BEF,+PAR=M28,NUM=%x,CAS=%x,GEN=%x),+LEX=N,NUM=%x,CAS=%x,GEN=%x); book.@other > NA(book,other)
+(%x,N,@each):=(NS(%x,-@each;%y,[svaki],+LEX=D,+POS=DEM,+DIS=BEF,+PAR=M28,NUM=%x,CAS=%x,GEN=%x),+LEX=N,NUM=%x,CAS=%x,GEN=%x,NUM=%x,CAS=%x,GEN=%x); book.@other > NA(book,other)
+(%x,N,@every):=(NS(%x,-@every;%y,[svaki],+LEX=D,+POS=DEM,+DIS=BEF,+PAR=M28,NUM=%x,CAS=%x,GEN=%x),+LEX=N,NUM=%x,CAS=%x,GEN=%x); book.@other > NA(book,other)
+(%x,N,@same):=(NS(%x,-@same;%y,[isti],+LEX=D,+POS=DEM,+DIS=BEF,+PAR=M28,NUM=%x,CAS=%x,GEN=%x),+LEX=N,NUM=%x,CAS=%x,GEN=%x); book.@other > NA(book,other)
+(%x,N,@such):=(NS(%x,-@such;%y,[takav],+LEX=D,+POS=DEM,+DIS=BEF,+PAR=M89,NUM=%x,CAS=%x,GEN=%x),+LEX=N,NUM=%x,CAS=%x,GEN=%x); book.@other > NA(book,other)
+(%x,N,^R,@wh):=(NS(%x,-@wh;%y,[koji],+LEX=D,+POS=DEM,+DIS=BEF,+PAR=M29,NUM=%x,CAS=%x,GEN=%x),+LEX=N,NUM=%x,CAS=%x,GEN=%x); book.@other > NA(book,other)
+(%x,N,@any):=(NS(%x,-@any;%y,[bilo koji],+LEX=D,+POS=DEM,+DIS=BEF,+PAR=M29,NUM=%x,CAS=%x,GEN=%x),+LEX=N,NUM=%x,CAS=%x,GEN=%x); book.@other > NA(book,other)
+(%x,N,@both):=(NS(%x,-@both,-NUM,+NUM=PLR;%y,[oba],+LEX=D,+POS=QUA,+DIS=BEF,NUM=%x,CAS=%x,GEN=%X,PAR=M99),+LEX=N,NUM=%x,CAS=%x,GEN=%x); book.@other > NA(book,other)
+(%x,N,@no):=(NS(%x,-@no;%y,[nijedan],+LEX=D,+POS=QUA,NUM=%x,CAS=%x,GEN=%x,+PAR=M26),+LEX=N,NUM=%x,CAS=%x,GEN=%x); book.@no > NS(book,no)
+
+
+
+
+;Adjectives
+(%x,J,@most):=(%x,-@most,-POL,+POL=SUP);
+(%x,J,@more):=(%x,-@more,-POL,+POL=CMP);
+(%x,J,@least):=man(%x,J-@least;%y,A,[najmanje]);
+(%x,J,@less):=man(%x,J,-@less;%y,A,[manje]);
+(%x,J,@equal):=man(%x,J,-@equal;%y,A,[jednako]);
+
+
+
+;Adverbs
+(%x,J,@plus):=(JS(%x,-@plus;%y,[veoma],+LEX=A,+POS=SAV,+DIS=BEF),+LEX=J,+DIS=%x); beautiful.@plus > JS(beautiful,very)
+(%x,V,^COP,@not,@past,^@recent):=(IC(%y,?[biti],?[[]],?LEX=I,+NEG,+PER=%x,+ATE=PRS,NUM=%x;%x,-@not,-@past,-ATE,-VBL,+VBL=PTP,-VOI,+VOI=ACV),+LEX=I);
+(%x,V,^COP,@not,^@future):=(VA(%x,-@not;%y,[ne],+LEX=A,+POS=SAV,+DIS=BEF),+LEX=V); arrive.@not > VA(arrive,not)
+(%x,V,COP,@not):=(%x,-@not,+NEG); arrive.@not 
+;Aspect
+(%x,V,@habitual,^TNS):=(%x,TNS=PRS);
+(%x,V,{@progressive|@habitual}):=(%x,?ASP=NPFV,-@progressive,-@habitual); arrive.@progressive > be arriving
+;Tense
+(%x,V,@future,@not):=+IC(%y,?[hteti],?[[]],?LEX=I,?POS=AUX,+ATE=PRS,+PER=%x,NUM=%x,NEG;%x,-@future,-@not,-ATE,+VBL=INF); arrive.@future > will arrive
+(%x,V,@future):=+IC(%y,?[hteti],?[[]],?LEX=I,?POS=AUX,+ATE=PRS,+PER=%x,NUM=%x;%x,-@future,-ATE,+VBL=INF); arrive.@future > will arrive
+(%x,V,@imminent):=+IC(%y,?[hteti],?[[]],?LEX=I,?POS=AUX,+ATE=PRS,+PER=%x,NUM=%x;VA(%x,-@imminent,-ATE,+VBL=INF;%z,[svakog trenutka],DIS=AFT)); arrive.@future > will arrive
+(%x,V,@present):=(%x,-@present,-VBL,+ATE=PRS);
+(%x,V,@past,@anterior):=+IC(%y,?[biti],?[[]],?LEX=I,?POS=AUX,+PER=%x,+ATE=PRS,NUM=%x;)+IC(%Z,?[biti],?[[]],?LEX=I,?POS=AUX,-PER,-ATE,-VBL,+VBL=PTP,-VOI,+VOI=ACV,+NUM=%x,+GEN=%x;%x,-@past,-@anterior,-ATE,-PER,+VBL=PTP,-VOI,+VOI=ACV); arrive.@anterior > have arrived
+(%x,V,@past,@recent):=+IC(%y,?[biti],?[[]],?LEX=I,?POS=AUX,+ATE=PRS,+PER=%x,NUM=%x;VA(%x,-ATE,-@past,-VBL,+VBL=PTP,-VOI,+VOI=ACV;[upravo],LEX=A,DIS=BEF));
+(%x,V,@past):=+IC(%y,?[biti],?[[]],?LEX=I,?POS=AUX,+ATE=PRS,+PER=%x,NUM=%x;%x,-ATE,-@past,-VBL,+VBL=PTP,-VOI,+VOI=ACV);
+;Modality
+(%x,V,{@ability|@possibility}):=+IC(%y,?[moći],?[[]],?LEX=I,?POS=MOV,+PER=%x,+NUM=%x,+VBL=%x;VA(%x,-@ability,-@possibility,-VBL,-ATE,+ATE=PRS;%z,[da],+LEX=C,+POS=SCJ,+POS=CMR,DIS=BEF)); arrive.@obligation > must arrive
+(%x,V,@obligation):=+IC(%y,?[morati],?[[]],?LEX=I,?POS=MOV,+PER=%x,+NUM=%x,+VBL=%x;VA(%x,-@obligation,-VBL,-ATE,+ATE=PRS;%z,[da],+LEX=C,+POS=SCJ,+POS=CMR,DIS=BEF)); arrive.@obligation > must arrive
+(%x,V,@probability):=+IC(%y,[treba],LEX=I,POS=MOV;VA(%x,-@probability,-VBL,-ATE,+ATE=PRS;%z,[da],+LEX=C,+POS=SCJ,+POS=CMR,DIS=BEF)); arrive.@obligation > must arrive
+;Voice
+VS(%x,@reflexive;%y):=+VC(%x,-@reflexive;?[[%y]],?POS=FPR,-CAS,+CAS=ACC); VS(kill.@reflexive,he) > VS(kill,he)VC(kill,himself)
+VS(%x,@reciprocal;%y):=+VC(%x,-@reciprocal;[jedan drugog],POS=CPR); VS(kill.@reflexive,he) > VS(kill,he)VC(kill,himself)
+;Interrogative
+(V,%x,@interrogative):=+CC([da li],%y,DIS=FRT;%x,-@interrogative);
+(%x,@interrogative)(%y,{BLK|STAIL}):=(%x,-@interrogative)(%new,"?",PUT=EMARK)(%y);
+
+;============================================================================================
+;============================================================================================
+;2. POST-PROCESSING
+;Normalizes the list output
+;============================================================================================
+;============================================================================================
+;Coordination
+([i],%c1)(%x)({[i]|COMMA},%c2):=([,],",",+PUT=COMMA,+>BLK,$c3)(%x)(%c2);
+([ili],%c1)(%x)({[ili]|COMMA},%c2):=([,],",",+PUT=COMMA,+>BLK,$c3)(%x)(%c2);
+;Determiners
+(D,%d)(POS=QUA,[sav],%all):=(%all)(%d); the all books > all the books, my all books > all my books
+;Case
+(%x,R,^CAS):=(%x,+CAS=NOM);
+
+
+;Hours
+
+(DIGIT,^"00",%x)(":",%y)(DIGIT,^"00",%z)(":",%m)(DIGIT,^"00",%n):=(%x)(%y," sati ")(%z)(%m," minuta ")(%n)(%k," sekundi ");
+(DIGIT,%x)(":",%y)(":",%m)(DIGIT,^"00",%n):=(%x)(%y," sati ")(%n)(%k," sekundi ");
+(":",%y)(DIGIT,^"00",%z)(":",%m)(DIGIT,^"00",%n):=(%z)(%m," minuta ")(%n, 0>" sekundi ");
+(DIGIT,^"00",%x)(":",%y)(DIGIT,^"00",%z)(":",%m):=(%x)(%y," sati ")(%z)(%m," minuta ");
+(DIGIT,^"00",%x)(":",%y)(":",%m):=(%x)(%y," sati ");
+(SHEAD)(":",%y)(DIGIT,^"00",%z)(":",%m)(STAIL):=(%z)(%m," minuta ");
+(":",%y)(":",%m)(DIGIT,^"00",%n):=(%n)(%k," sekundi ");
+
+("jedan",%x)(%y," sati "):=("jedan",%x)(%y," sat ");
+("jedan",%x)(%y," minuta "):=("jedan",%x)(%y," minut ");
+("jedan",%x)(%y," sekundi "):=("jedan",%x)(%y," sekund ");
+({"dva"|"tri"|"četiri"},%x)(%y," sati "):=(%x)(%y," sata ");
+({"dva"|"tri"|"četiri"},%x)(%y," sekundi "):=(%x)(%y," sekunde ");
+
+
+
+;Numbers
+
+("/\d\s\d\/\d/",%x):=(%x," i"<[-4]);
+("/0\./",%x):=("nula"<1,%x,1>" tačka ");
+
+
+
+("/[1-9]\d\d\d\d\d\d\d\d\d\d\d\d\d/",%x):=(" triliona "<[-12],%x);
+("0000000000000",%x):=;
+("/[1-9]\d\d\d\d\d\d\d\d\d\d\d\d/",%x):=(" triliona "<[-12],%x);
+("1000000000000",%x):=("trilion",%x);
+("/[1-9]\d\d\d\d\d\d\d\d\d\d\d\d/",%x):=(" triliona "<[-12],%x);
+("000000000000",%x):=;
+("/\d\d\d\d\d\d\d\d\d\d\d\d/",%x):=(" milijardi "<[-9],%x);
+("/[1-9]\d\d\d\d\d\d\d\d\d\d/",%x):=(" milijardi "<[-9],%x);
+("1000000000",%x):=("milijarda",%x);
+("0000000000"):=;
+("/1\d\d\d\d\d\d\d\d\d/",%x):=(" milijardu "<[-9],[1]:"",%x);
+("/2\d\d\d\d\d\d\d\d\d/",%x):=(" dve milijarde "<[-9],[1]:"",%x);
+("/3\d\d\d\d\d\d\d\d\d/",%x):=(" tri milijarde "<[-9],[1]:"",%x);
+("/4\d\d\d\d\d\d\d\d\d/",%x):=(" četiri milijarde "<[-9],[1]:"",%x);
+("/[5-9]\d\d\d\d\d\d\d\d\d/",%x):=(" milijardi "<[-9],%x);
+("000000000",%x):=;
+("1000000",%x):=("milion",%x);
+("/[1-9]\d\d\0\0\0\0\0\d/",%x):=(" miliona i "<[-6],%x);
+("/[1-9]\d\0\0\0\0\0\d/",%x):=(" miliona i "<[-6],%x);
+("/[1-9]\0\0\0\0\0\d/",%x):=(" miliona i "<[-6],%x);
+("/[1-9]\d\d\d\d\d\d\d\d/",%x):=(" miliona "<[-6],%x);
+("/[1-9]\d\d\d\d\d\d\d/",%x):=(" miliona "<[-6],%x);
+("/1\d\d\d\d\d\d/",%x):=("milion "<[-6],[1]:"",%x);
+("/[2-9]\d\d\d\d\d\d/",%x):=(" miliona "<[-6],%x);
+("000000",%x):=;
+("/[1-9]\d\d\d\d\d/",%x):=(" hiljada "<[-3],%x);
+("00000",%x):=;
+("/[1-9]\d\d\d\d/",%x):=(" hiljada "<[-3],%x);
+("0000",%x):=;
+("1000",%x):=("hiljadu",%x);
+("/1\d\d\d/",%x):=("hiljadu "<[-3],[1]:"",%x);
+("/2\d\d\d/",%x):=("dve hiljade "<[-3],[1]:"",%x);
+("/3\d\d\d/",%x):=("tri hiljade "<[-3],[1]:"",%x);
+("/4\d\d\d/",%x):=("četiri hiljade "<[-3],[1]:"",%x);
+("/5\d\d\d/",%x):=("pet hiljada "<[-3],[1]:"",%x);
+("/6\d\d\d/",%x):=("šest hiljada "<[-3],[1]:"",%x);
+("/7\d\d\d/",%x):=("sedam hiljada "<[-3],[1]:"",%x);
+("/8\d\d\d/",%x):=("osam hiljada "<[-3],[1]:"",%x);
+("/9\d\d\d/",%x):=("devet hiljada "<[-3],[1]:"",%x);
+("/10\d\d/",%x):=("hiljadu "<[-3],[1]:"",%x);
+("/20\d\d/",%x):=("dve hiljade "<[-3],[1]:"",%x);
+("/30\d\d/",%x):=("tri hiljade "<[-3],[1]:"",%x);
+("/40\d\d/",%x):=("četiri hiljade "<[-3],[1]:"",%x);
+("/50\d\d/",%x):=("pet hiljada "<[-3],[1]:"",%x);
+("/60\d\d/",%x):=("šest hiljada "<[-3],[1]:"",%x);
+("/70\d\d/",%x):=("sedam hiljada "<[-3],[1]:"",%x);
+("/80\d\d/",%x):=("osam hiljada "<[-3],[1]:"",%x);
+("/90\d\d/",%x):=("devet hiljada "<[-3],[1]:"",%x);
+("000",%x):=;
+("100",%x,@ordinal):=("stoti",%x,-@ordinal);
+("100",%x):=("sto",%x);
+("/1\d\d/",%x):=("sto "<1,%x);
+("/2\d\d/",%x):=("dvesta "<1,%x);
+("/3\d\d/",%x):=("trista "<1,%x);
+("/4\d\d/",%x):=("četiristo "<1,%x);
+("/[5-9]\d\d/",%x):=("sto "<[2],%x);
+("/10\d/",%x):=("sto "<1,[1]:"",%x);
+("/20\d/",%x):=("dvesta "<1,"0":"",%x);
+("/30\d/",%x):=("trista "<1,"0":"",%x);
+("/40\d/",%x):=("četristo "<1,"0":"",%x);
+("/[5-9]\0\d/",%x):=("sto "<[2],"0":"",%x);
+("/5([123456789]0)\d/",%x):=("petsto "<1,%x);
+("/6([123456789]0)\d/",%x):=("šeststo "<1,%x);
+("/7([123456789]0)\d/",%x):=("sedamsto "<1,%x);
+("/8([123456789]0)\d/",%x):=("osamsto "<1,%x);
+("/9([123456789]0)\d/",%x):=("devetsto "<1,%x);
+("00",%x):=;
+("/\d\d\./",%x):=(%x,1>" tačka ");
+("/2[123456789]/",%x):=("dvadeset "<1,%x);
+("/3[123456789]/",%x):=("trideset "<1,%x);
+("/4[123456789]/",%x):=("četrdeset "<1,%x);
+("/5[123456789]/",%x):=("pedeset "<1,%x);
+("/6[123456789]/",%x):=("šezdeset "<1,%x);
+("/7[123456789]/",%x):=("sedamdeset "<1,%x);
+("/8[123456789]/",%x):=("osamdeset "<1,%x);
+("/9[123456789]/",%x):=("devedeset "<1,%x);
+("10",%x):=("deset",%x);
+("11",%x):=("jedanaest",%x);
+("12",%x):=("dvanaest",%x);
+("13",%x):=("trinaest",%x);
+("14",%x):=("četrnaest",%x);
+("15",%x):=("petnaest",%x);
+("16",%x):=("šesnaest",%x);
+("17",%x):=("sedamnaest",%x);
+("18",%x):=("osamnaest",%x);
+("19",%x):=("devetnaest",%x);
+("20",%x):=("dvadeset",%x);
+("30",%x):=("trideset",%x);
+("40",%x):=("četrdeset",%x);
+("50",%x):=("pedeset",%x);
+("60",%x):=("šezdeset",%x);
+("70",%x):=("sedamdeset",%x);
+("80",%x):=("osamdeset",%x);
+("90",%x):=("devedeset",%x);
+("0",%x):=;
+("1",%x,@ordinal):=("prvi",-@ordinal,%x);
+("2",%x,@ordinal):=("drugi",%x,-@ordinal);
+("3",%x,@ordinal):=("treći",%x,-@ordinal);
+("4",%x,@ordinal):=("četvrti",%x,-@ordinal);
+("7",%x,@ordinal):=("sedmi",%x,-@ordinal);
+("8",%x,@ordinal):=("osmi",%x,-@ordinal);
+("/[1-9]\./",%x):=(%x,1>" tačka ");
+("1",%x):=("jedan",%x);
+("2",%x):=("dva",%x);
+("3",%x):=("tri",%x);
+("4",%x):=("četiri",%x);
+("5",%x):=("pet",%x);
+("6",%x):=("šest",%x);
+("7",%x):=("sedam",%x);
+("8",%x):=("osam",%x);
+("9",%x):=("devet",%x);
+("+",%x)(DIGIT,%y):=("plus ",%x)(%y);
+("-",%x)(DIGIT,%y):=("minus ",%x)(%y);
+
+
+
+
+
+;ordinals
+
+(@ordinal," ",%x)(STAIL,%y):=(%y);
+(@ordinal,%x)(STAIL,%y):=(0>"i",-@ordinal,%x);
+
+("/",%x)("dva",%y):=(%x," ")(%y,"polovina");
+("/",%x)("tri",%y):=(%x," ")(%y,"trećina");
+("/",%x)("četiri",%y):=(%x," ")(%y,"četvrtina");
+("/",%x)("pet",%y):=(%x," ")(%y,"petina");
+("/",%x)("šest",%y):=(%x," ")(%y,"šestina");
+("/",%x)("sedam",%y):=(%x," ")(%y,"sedmina");
+("/",%x)("osam",%y):=(%x," ")(%y,"osmina");
+("/",%x)("devet",%y):=(%x," ")(%y,"devetina");
+("/",%x)("deset",%y):=(%x," ")(%y,"desetina");
+
+("jedan",%z)(" ",%x)({"polovina"|"trećina"|"četvrtina"|"petina"|"šestina"|"sedmina"|"osmina"|"devetina"|"desetina"},%y):=("jedna",%z)(%x," ")(%y);
+("dva",%z)(" ",%x)({"polovina"|"trećina"|"četvrtina"|"petina"|"šestina"|"sedmina"|"osmina"|"devetina"|"desetina"},%y):=("dve",%z)(%x," ")(%y,1>"e");
+({"tri"|"četiri"},%z)(" ",%x)({"polovina"|"trećina"|"četvrtina"|"petina"|"šestina"|"sedmina"|"osmina"|"devetina"|"desetina"},%y):=(%z)(%x," ")(%y,1>"e");
+
+
+;Ordering
+("skupo",%x)(",")(" ")("novo")(" ")("i")(" ")("lepo",%z):=(%z)()()()()()()(%x);
+({"mora"|"može"},%x)("ne",%y):=(%y)(%x);
+("dva"%x)(FEM,%y):=("dve",%x)(%y);
+
+
+;Inflectional grammar
+
+(%x,M2):=(%x,-M2,+FLX(SNG&NOM:=0>""; SNG&GNT:=0>"a"; SNG&DAT:=0>"u"; SNG&ACC&ANM:=0>"a"; SNG&ACC&NANM:=0>""; SNG&VOC:=0>"e"; SNG&INS:=0>"om"; SNG&LOC:=0>"u"; PLR&NOM:=0>"i"; PLR&GNT:=0>"a"; PLR&DAT:=0>"ima"; PLR&ACC:=0>"e"; PLR&VOC:=0>"i"; PLR&INS:=0>"ima"; PLR&LOC:=0>"ima"; PAU:=0>"a";));
+
+(%x,M3):=(%x,-M3,+FLX(SNG&NOM:=0>""; SNG&GNT:=0>"a"; SNG&DAT:=0>"u"; SNG&ACC&ANM:=0>"a"; SNG&ACC&NANM:=0>""; SNG&VOC:=0>"e"; SNG&INS:=0>"om"; SNG&LOC:=0>"u"; PLR&NOM:=0>"ovi"; PLR&GNT:=0>"ova"; PLR&DAT:=0>"ovima"; PLR&ACC:=0>"ove"; PLR&VOC:=0>"ovi"; PLR&INS:=0>"ovima"; PLR&LOC:=0>"ovima"; PAU:=0>"a";));
+
+(%x,M4):=(%x,-M4,+FLX(SNG&NOM:=0>""; SNG&GNT:=0>"a"; SNG&DAT:=0>"u"; SNG&ACC&ANM:=0>"a"; SNG&ACC&NANM:=0>""; SNG&VOC:=0>"u"; SNG&INS:=0>"em"; SNG&LOC:=0>"u"; PLR&NOM:=0>"evi"; PLR&GNT:=0>"eva"; PLR&DAT:=0>"evima"; PLR&ACC:=0>"eve"; PLR&VOC:=0>"evi"; PLR&INS:=0>"evima"; PLR&LOC:=0>"evima"; PAU:=0>"a";));
+
+(%x,M5):=(%x,-M5,+FLX(SNG&NOM:=0>""; SNG&GNT:=0>"a"; SNG&DAT:=0>"u"; SNG&ACC&ANM:=0>"a"; SNG&ACC&NANM:=0>""; SNG&VOC:=0>"u"; SNG&INS:=0>"em"; SNG&LOC:=0>"u"; PLR&NOM:=0>"i"; PLR&GNT:=0>"a"; PLR&DAT:=0>"ima"; PLR&ACC:=0>"e"; PLR&VOC:=0>"i"; PLR&INS:=0>"ima"; PLR&LOC:=0>"ima"; PAU:=0>"a";));
+
+(%x,M6):=(%x,-M6,+FLX(SNG&NOM:=0>""; SNG&GNT:=0>"a"; SNG&DAT:=0>"u"; SNG&ACC&ANM:=0>"a"; SNG&ACC&NANM:=0>""; SNG&VOC:="k">"če"; SNG&INS:=0>"om"; SNG&LOC:=0>"u"; PLR&NOM:="k">"ci"; PLR&GNT:="">"a"; PLR&DAT:="k">"cima"; PLR&ACC:="">"e"; PLR&VOC:="k">"ci"; PLR&INS:="k">"cima"; PLR&LOC:="k">"cima"; PAU:=0>"a";));
+
+(%x,M7):=(%x,-M7,+FLX(SNG&NOM:=0>""; SNG&GNT:=0>"a"; SNG&DAT:=0>"u"; SNG&ACC&ANM:=0>"a"; SNG&ACC&NANM:=0>""; SNG&VOC:="g">"že"; SNG&INS:=0>"om"; SNG&LOC:=0>"u"; PLR&NOM:="g">"zi"; PLR&GNT:=0>"a"; PLR&DAT:="g">"zima"; PLR&ACC:=0>"e"; PLR&VOC:="g">"zi"; PLR&INS:="g">"zima"; PLR&LOC:="g">"zima"; PAU:=0>"a";));
+
+(%x,M8):=(%x,-M8,+FLX(SNG&NOM:=0>""; SNG&GNT:=0>"a"; SNG&DAT:=0>"u"; SNG&ACC&ANM:=0>"a"; SNG&ACC&NANM:=0>""; SNG&VOC:=1>"še"; SNG&INS:=0>"om"; SNG&LOC:=0>"u";PLR&NOM:=1>"si"; PLR&GNT:=0>"a"; PLR&DAT:=1>"sima"; PLR&ACC:=0>"e"; PLR&VOC:=1>"si"; PLR&INS:=1>"sima"; PLR&LOC:=1>"sima"; PAU:=0>"a";));
+
+(%x,M9):=(%x,-M9,+FLX(SNG&NOM:=0>""; SNG&GNT:="ac">"ca"; SNG&DAT:="ac">"cu"; SNG&ACC&ANM:="ac">"ca"; SNG&ACC&NANM:=0>""; SNG&VOC:= "ac">"če"; SNG&INS:="ac">"cem"; SNG&LOC:="ac">"cu";PLR&NOM:="ac">"ci"; PLR&GNT:=0>"a"; PLR&DAT:="ac">"cima"; PLR&ACC:="ac">"ce"; PLR&VOC:= "ac">"ci"; PLR&INS:="ac">"cima"; PLR&LOC:="ac">"cima"; PAU:="ac">"ca";));
+
+(%x,M10):=(%x,-M10,+FLX(SNG&NOM:=0>""; SNG&GNT:="lac">"oca"; SNG&DAT:="lac">"ocu"; SNG&ACC&ANM:="lac">"oca"; SNG&ACC&NANM:=0>""; SNG&VOC:="lac">"oče"; SNG&INS:="lac">"ocem"; SNG&LOC:="lac">"ocu"; PLR&NOM:="lac">"oci"; PLR&GNT:=>"a"; PLR&DAT:="lac">"ocima"; PLR&ACC:="lac">"oce"; PLR&VOC:= "lac">"oci"; PLR&INS:="lac">"ocima"; PLR&LOC:="lac">"ocima"; PAU:="lac">"oca";));
+
+(%x,M11):=(%x,-M11,+FLX(SNG&NOM:=>""; SNG&GNT:="ak">"ka"; SNG&DAT:="ak">"ku"; SNG&ACC&ANM:="ak">"ka"; SNG&ACC&NANM:=0>""; SNG&VOC:="tak">"če"; SNG&INS:="ak">"kom"; SNG&LOC:="tak">"tku"; PLR&NOM:="tak">"ci"; PLR&GNT:=0>"a"; PLR&DAT:="tak">"cima"; PLR&ACC:="ak">"ke"; PLR&VOC:= "tak">"ci"; PLR&INS:="tak">"cima"; PLR&LOC:="tak">"cima"; PAU:="ak">"ka";));
+
+(%x,M12):=(%x,-M12,+FLX(SNG&NOM:=0>""; SNG&GNT:=1>"a"; SNG&DAT:=1>"u"; SNG&ACC:=0>""; SNG&VOC:=0>""; SNG&INS:=0>"m"; SNG&LOC:=1>"u"; PLR&NOM:=1>"a"; PLR&GNT:=1>"a"; PLR&DAT:=1>"ima"; PLR&ACC:=1>"a"; PLR&VOC:=1>"a"; PLR&INS:=1>"ima"; PLR&LOC:=1>"ima"; PAU:=1>"a";));
+
+(%x,M13):=(%x,-M13,+FLX(SNG&NOM:=0>""; SNG&GNT:=1>"a"; SNG&DAT:=1>"u"; SNG&ACC:=0>""; SNG&VOC:=0>""; SNG&INS:=0>"m"; SNG&LOC:=1>"u"; PLR&NOM:=1>"a"; PLR&GNT:="a"<[-2],1>"a"; PLR&DAT:=1>"ima"; PLR&ACC:=1>"a"; PLR&VOC:=1>"a"; PLR&INS:=1>"ima"; PLR&LOC:=1>"ima"; PAU:=1>"a";));
+
+(%x,M14):=(%x,-M14,+FLX(SNG&NOM:=0>""; SNG&GNT:=0>"na"; SNG&DAT:=0>"nu"; SNG&ACC:=0>""; SNG&VOC:=0>""; SNG&INS:=0>"nom"; SNG&LOC:=0>"nu"; PLR&NOM:=0>"na"; PLR&GNT:=0>"na"; PLR&DAT:=0>"nima"; PLR&ACC:=0>"na"; PLR&VOC:=0>"na"; PLR&INS:=0>"nima"; PLR&LOC:=0>"nima"; PAU:=0>"na";));
+
+(%x,M15):=(%x,-M15,+FLX(SNG&NOM:=0>""; SNG&GNT:=1>"eta"; SNG&DAT:=1>"etu"; SNG&ACC:=0>""; SNG&VOC:=0>""; SNG&INS:=1>"etom"; SNG&LOC:=1>"etu"; PLR&NOM:=1>"eta"; PLR&GNT:=1>"eta"; PLR&DAT:=1>"etima"; PLR&ACC:=1>"eta"; PLR&VOC:=1>"eta"; PLR&INS:=1>"etima"; PLR&LOC:=1>"etima"; PAU:=1>"eta";));
+
+(%x,M16):=(%x,-M16,+FLX(SNG&NOM:=0>""; SNG&GNT:="a">"e"; SNG&DAT:="a">"i"; SNG&ACC:="a">"u"; SNG&VOC:="a">"o"; SNG&INS:="a">"om"; SNG&LOC:="a">"i"; PLR&NOM:="a">"e"; PLR&GNT:=0>""; PLR&DAT:=0>"ma"; PLR&ACC:="a">"e"; PLR&VOC:="a">"e"; PLR&INS:=0>"ma"; PLR&LOC:=0>"ma"; PAU:="a">"e";));
+
+(%x,M17):=(%x,-M17,+FLX(SNG&NOM:=0>""; SNG&GNT:="a">"e"; SNG&DAT:="a">"i"; SNG&ACC:="a">"u"; SNG&VOC:="a">"o"; SNG&INS:="a">"om"; SNG&LOC:="a">"i"; PLR&NOM:="a">"e"; PLR&GNT:="a"<[-2]; PLR&DAT:=0>"ma"; PLR&ACC:="a">"e"; PLR&VOC:="a">"e"; PLR&INS:=0>"ma"; PLR&LOC:=0>"ma"; PAU:="a">"e";));
+
+(%x,M18):=(%x,-M18,+FLX(SNG&NOM:=0>""; SNG&GNT:="a">"e"; SNG&DAT:="a">"i"; SNG&ACC:="a">"u"; SNG&VOC:="a">"e"; SNG&INS:="a">"om"; SNG&LOC:="a">"i"; PLR&NOM:="a">"e"; PLR&GNT:=0>""; PLR&DAT:=0>"ma"; PLR&ACC:="a">"e"; PLR&VOC:="a">"e"; PLR&INS:=0>"ma"; PLR&LOC:=0>"ma"; PAU:="a">"e";));
+
+(%x,M19):=(%x,-M19,+FLX(SNG&NOM:=0>""; SNG&GNT:="a">"e"; SNG&DAT:="ka">"ci"; SNG&ACC:="a">"u"; SNG&VOC:="a">"o"; SNG&INS:="a">"om"; SNG&LOC:="ka">"ci"; PLR&NOM:="a">"e"; PLR&GNT:=0>""; PLR&DAT:=0>"ma"; PLR&ACC:="a">"e"; PLR&VOC:="a">"e"; PLR&INS:=0>"ma"; PLR&LOC:=0>"ma"; PAU:="a">"e";));
+
+(%x,M20):=(%x,-M20,+FLX(SNG&NOM:=0>""; SNG&GNT:="a">"e"; SNG&DAT:="ga">"zi"; SNG&ACC:="a">"u"; SNG&VOC:="a">"o"; SNG&INS:="a">"om"; SNG&LOC:="ga">"zi"; PLR&NOM:="a">"e"; PLR&GNT:=>""; PLR&DAT:=0>"ma"; PLR&ACC:="a">"e"; PLR&VOC:="a">"e"; PLR&INS:=0>"ma"; PLR&LOC:=0>"ma"; PAU:="a">"e";));
+
+(%x,M21):=(%x,-M21,+FLX(SNG&NOM:=0>""; SNG&GNT:="a">"e"; SNG&DAT:="ha">"si"; SNG&ACC:="a">"u"; SNG&VOC:="a">"o"; SNG&INS:="a">"om"; SNG&LOC:="ha">"si"; PLR&NOM:="a">"e"; PLR&GNT:=0>""; PLR&DAT:=0>"ma"; PLR&ACC:="a">"e"; PLR&VOC:="a">"e"; PLR&INS:=0>"ma"; PLR&LOC:=0>"ma"; PAU:="a">"e";));
+
+(%x,M22):=(%x,-M22,+FLX(SNG&NOM:=0>""; SNG&GNT:=0>"i"; SNG&DAT:=0>"i"; SNG&ACC:=0>""; SNG&VOC:=0>"i"; SNG&INS:=0>"i"; SNG&LOC:=0>"i"; PLR&NOM:=0>"i"; PLR&GNT:=0>"i"; PLR&DAT:=0>"ima"; PLR&ACC:=0>"i"; PLR&VOC:=0>"i"; PLR&INS:=0>"ima"; PLR&LOC:=0>"ima"; PAU:=0>"i";));
+
+(%x,M23):=(%x,-M23,+FLX(PST&MCL&SNG&NOM&NDEF:=0>""; PST&MCL&SNG&GNT&NDEF:=2>"la"; PST&MCL&SNG&DAT&NDEF:=2>"lu"; PST&MCL&SNG&ACC&NANM&NDEF:=0>""; PST&MCL&SNG&ACC&ANM&NDEF:=2>"la"; PST&MCL&SNG&VOC&NDEF:=2>"li"; PST&MCL&SNG&INS&NDEF:=2>"lim"; PST&MCL&SNG&LOC&NDEF:=2>"lu"; PST&MCL&SNG&NOM&DEF:=2>"li"; PST&MCL&SNG&GNT&DEF:=2>"log"; PST&MCL&SNG&DAT&DEF:=2>"lom"; PST&MCL&SNG&ACC&NANM&DEF:=2>"li"; PST&MCL&SNG&ACC&ANM&DEF:=2>"log"; PST&MCL&SNG&VOC&DEF:=2>"li"; PST&MCL&SNG&INS&DEF:=2>"lim"; PST&MCL&SNG&LOC&DEF:=2>"lom"; PST&MCL&PLR&NOM:=2>"li"; PST&MCL&PLR&GNT:=2>"lih"; PST&MCL&PLR&DAT:=2>"lim"; PST&MCL&PLR&ACC:=2>"le"; PST&MCL&PLR&VOC:=2>"li"; PST&MCL&PLR&INS:=2>"lim"; PST&MCL&PLR&LOC:=2>"lim"; PST&FEM&SNG&NOM:=2>"la"; PST&FEM&SNG&GNT:=2>"le"; PST&FEM&SNG&DAT:=2>"loj"; PST&FEM&SNG&ACC:=2>"lu"; PST&FEM&SNG&VOC:=2>"la"; PST&FEM&SNG&INS:=2>"lom"; PST&FEM&SNG&LOC:=2>"loj"; PST&FEM&PLR&NOM:=2>"le"; PST&FEM&PLR&GNT:=2>"lih"; PST&FEM&PLR&DAT:=2>"lim"; PST&FEM&PLR&ACC:=2>"le"; PST&FEM&PLR&VOC:=2>"le"; PST&FEM&PLR&INS:=2>"lim"; PST&FEM&PLR&LOC:=2>"lim"; PST&NEU&SNG&NOM&NDEF:=2>"lo"; PST&NEU&SNG&GNT&NDEF:=2>"la"; PST&NEU&SNG&DAT&NDEF:=2>"lu"; PST&NEU&SNG&ACC&NDEF:=2>"lo"; PST&NEU&SNG&VOC&NDEF:=2>"lo"; PST&NEU&SNG&INS&NDEF:=2>"lim"; PST&NEU&SNG&LOC&NDEF:=2>"lu"; PST&NEU&SNG&NOM&DEF:=2>"lo"; PST&NEU&SNG&GNT&DEF:=2>"log"; PST&NEU&SNG&DAT&DEF:=2>"lom"; PST&NEU&SNG&ACC&DEF:=2>"lo"; PST&NEU&SNG&VOC&DEF:=2>"lo"; PST&NEU&SNG&INS&DEF:=2>"lim"; PST&NEU&SNG&LOC&DEF:=2>"lom"; PST&NEU&PLR&NOM:=2>"la"; PST&NEU&PLR&GNT:=2>"lih"; PST&NEU&PLR&DAT:=2>"lim"; PST&NEU&PLR&ACC:=2>"la"; PST&NEU&PLR&VOC:=2>"la"; PST&NEU&PLR&INS:=2>"lim"; PST&NEU&PLR&LOC:=2>"lim"; CMP&MCL&SNG&NOM:=2>"liji"; CMP&MCL&SNG&GNT:=2>"lijeg"; CMP&MCL&SNG&DAT:=2>"lijem"; CMP&MCL&SNG&ACC&NANM:=2>"liji"; CMP&MCL&SNG&ACC&ANM:=2>"lijeg"; CMP&MCL&SNG&VOC:=2>"liji"; CMP&MCL&SNG&INS:=2>"lijim"; CMP&MCL&SNG&LOC:=2>"lijem"; CMP&MCL&PLR&NOM:=2>"liji"; CMP&MCL&PLR&GNT:=2>"lijih"; CMP&MCL&PLR&DAT:=2>"lijim"; CMP&MCL&PLR&ACC:=2>"lije"; CMP&MCL&PLR&VOC:=2>"liji"; CMP&MCL&PLR&INS:=2>"lijim"; CMP&MCL&PLR&LOC:=2>"lijim"; CMP&FEM&SNG&NOM:=2>"lija"; CMP&FEM&SNG&GNT:=2>"lije"; CMP&FEM&SNG&DAT:=2>"lijoj"; CMP&FEM&SNG&ACC:=2>"liju"; CMP&FEM&SNG&VOC:=2>"lija"; CMP&FEM&SNG&INS:=2>"lijom"; CMP&FEM&SNG&LOC:=2>"lijoj"; CMP&FEM&PLR&NOM:=2>"lije"; CMP&FEM&PLR&GNT:=2>"lijih"; CMP&FEM&PLR&DAT:=2>"lijim"; CMP&FEM&PLR&ACC:=2>"lije"; CMP&FEM&PLR&VOC:=2>"lije"; CMP&FEM&PLR&INS:=2>"lijim"; CMP&FEM&PLR&LOC:=2>"lijim"; CMP&NEU&SNG&NOM:=2>"lije"; CMP&NEU&SNG&GNT:=2>"lijeg"; CMP&NEU&SNG&DAT:=2>"lijem"; CMP&NEU&SNG&ACC:=2>"lije"; CMP&NEU&SNG&VOC:=2>"lije"; CMP&NEU&SNG&INS:=2>"lijim"; CMP&NEU&SNG&LOC:=2>"lijem"; CMP&NEU&PLR&NOM:=2>"lija"; CMP&NEU&PLR&GNT:=2>"lijih"; CMP&NEU&PLR&DAT:=2>"lijim"; CMP&NEU&PLR&ACC:=2>"lija"; CMP&NEU&PLR&VOC:=2>"lija"; CMP&NEU&PLR&INS:=2>"lijim"; CMP&NEU&PLR&LOC:=2>"lijim"; SUP&MCL&SNG&NOM:="naj"<"",2>"liji"; SUP&MCL&SNG&GNT:="naj"<"",2>"lijeg"; SUP&MCL&SNG&DAT:="naj"<"",2>"lijem"; SUP&MCL&SNG&ACC&NANM:="naj"<"",2>"liji"; SUP&MCL&SNG&ACC&ANM:="naj"<"",2>"lijeg"; SUP&MCL&SNG&VOC:="naj"<"",2>"liji"; SUP&MCL&SNG&INS:="naj"<"",2>"lijim"; SUP&MCL&SNG&LOC:="naj"<"",2>"lijem"; SUP&MCL&PLR&NOM:="naj"<"",2>"liji"; SUP&MCL&PLR&GNT:="naj"<"",2>"lijih"; SUP&MCL&PLR&DAT:="naj"<"",2>"lijim"; SUP&MCL&PLR&ACC:="naj"<"",2>"lije"; SUP&MCL&PLR&VOC:="naj"<"",2>"liji"; SUP&MCL&PLR&INS:="naj"<"",2>"lijim"; SUP&MCL&PLR&LOC:="naj"<"",2>"lijim"; SUP&FEM&SNG&NOM:="naj"<"",2>"lija"; SUP&FEM&SNG&GNT:="naj"<"",2>"lije"; SUP&FEM&SNG&DAT:="naj"<"",2>"lijoj"; SUP&FEM&SNG&ACC:="naj"<"",2>"liju"; SUP&FEM&SNG&VOC:="naj"<"",2>"lija"; SUP&FEM&SNG&INS:="naj"<"",2>"lijom"; SUP&FEM&SNG&LOC:="naj"<"",2>"lijoj"; SUP&FEM&PLR&NOM:="naj"<"",2>"lije"; SUP&FEM&PLR&GNT:="naj"<"",2>"lijih"; SUP&FEM&PLR&DAT:="naj"<"",2>"lijim"; SUP&FEM&PLR&ACC:="naj"<"",2>"lije"; SUP&FEM&PLR&VOC:="naj"<"",2>"lije"; SUP&FEM&PLR&INS:="naj"<"",2>"lijim"; SUP&FEM&PLR&LOC:="naj"<"",2>"lijim";SUP&NEU&SNG&NOM:="naj"<"",2>"lije"; SUP&NEU&SNG&GNT:="naj"<"",2>"lijeg"; SUP&NEU&SNG&DAT:="naj"<"",2>"lijem"; SUP&NEU&SNG&ACC:="naj"<"",2>"lije"; SUP&NEU&SNG&VOC:="naj"<"",2>"lije"; SUP&NEU&SNG&INS:="naj"<"",2>"lijim"; SUP&NEU&SNG&LOC:="naj"<"",2>"lijem"; SUP&NEU&PLR&NOM:="naj"<"",2>"lija"; SUP&NEU&PLR&GNT:="naj"<"",2>"lijih"; SUP&NEU&PLR&DAT:="naj"<"",2>"lijim"; SUP&NEU&PLR&ACC:="naj"<"",2>"lija"; SUP&NEU&PLR&VOC:="naj"<"",2>"lija"; SUP&NEU&PLR&INS:="naj"<"",2>"lijim"; SUP&NEU&PLR&LOC:="naj"<"",2>"lijim"; PST&MCL&PAU:=2>"la"; CMP&MCL&PAU:=2>"lija"; SUP&MCL&PAU:="naj"<"",2>"lija"; PST&FEM&PAU:=2>"le"; CMP&FEM&PAU:=2>"lije"; SUP&FEM&PAU:="naj"<"",2>"lije"; PST&NEU&PAU:=2>"la"; CMP&NEU&PAU:=2>"lija"; SUP&NEU&PAU:="naj"<"",2>"lija";));
+
+(%x,M24):=(%x,-M24,+FLX(PST&MCL&SNG&NOM&NDEF:=0>""; PST&MCL&SNG&GNT&NDEF:=0>"a"; PST&MCL&SNG&DAT&NDEF:=0>"u"; PST&MCL&SNG&ACC&NANM&NDEF:=0>""; PST&MCL&SNG&ACC&ANM&NDEF:=0>"a"; PST&MCL&SNG&VOC&NDEF:=0>"i"; PST&MCL&SNG&INS&NDEF:=0>"im"; PST&MCL&SNG&LOC&NDEF:=0>"u"; PST&MCL&SNG&NOM&DEF:=0>"i"; PST&MCL&SNG&GNT&DEF:=0>"og"; PST&MCL&SNG&DAT&DEF:=0>"om"; PST&MCL&SNG&ACC&NANM&DEF:=0>"i"; PST&MCL&SNG&ACC&ANM&DEF:=0>"og"; PST&MCL&SNG&VOC&DEF:=0>"i"; PST&MCL&SNG&INS&DEF:=0>"im"; PST&MCL&SNG&LOC&DEF:=0>"om"; PST&MCL&PLR&NOM:=0>"i"; PST&MCL&PLR&GNT:=0>"ih"; PST&MCL&PLR&DAT:=0>"im"; PST&MCL&PLR&ACC:=0>"e"; PST&MCL&PLR&VOC:=0>"i"; PST&MCL&PLR&INS:=0>"im"; PST&MCL&PLR&LOC:=0>"im"; PST&FEM&SNG&NOM:=0>"a"; PST&FEM&SNG&GNT:=0>"e"; PST&FEM&SNG&DAT:=0>"oj"; PST&FEM&SNG&ACC:=0>"u"; PST&FEM&SNG&VOC:=0>"a"; PST&FEM&SNG&INS:=0>"om"; PST&FEM&SNG&LOC:=0>"oj"; PST&FEM&PLR&NOM:=0>"e"; PST&FEM&PLR&GNT:=0>"ih"; PST&FEM&PLR&DAT:=0>"im"; PST&FEM&PLR&ACC:=0>"e"; PST&FEM&PLR&VOC:=0>"e"; PST&FEM&PLR&INS:=0>"im"; PST&FEM&PLR&LOC:=0>"im"; PST&NEU&SNG&NOM&NDEF:=0>"o"; PST&NEU&SNG&GNT&NDEF:=0>"a"; PST&NEU&SNG&DAT&NDEF:=0>"u"; PST&NEU&SNG&ACC&NDEF:=0>"o"; PST&NEU&SNG&VOC&NDEF:=0>"o"; PST&NEU&SNG&INS&NDEF:=0>"im"; PST&NEU&SNG&LOC&NDEF:=0>"u"; PST&NEU&SNG&NOM&DEF:=0>"o"; PST&NEU&SNG&GNT&DEF:=0>"og"; PST&NEU&SNG&DAT&DEF:=0>"om"; PST&NEU&SNG&ACC&DEF:=0>"o"; PST&NEU&SNG&VOC&DEF:=0>"o"; PST&NEU&SNG&INS&DEF:=0>"im"; PST&NEU&SNG&LOC&DEF:=0>"om"; PST&NEU&PLR&NOM:=0>"a"; PST&NEU&PLR&GNT:=0>"ih"; PST&NEU&PLR&DAT:=0>"im"; PST&NEU&PLR&ACC:=0>"a"; PST&NEU&PLR&VOC:=0>"a"; PST&NEU&PLR&INS:=0>"im"; PST&NEU&PLR&LOC:=0>"im"; CMP&MCL&SNG&NOM:=0>"iji"; CMP&MCL&SNG&GNT:=0>"ijeg"; CMP&MCL&SNG&DAT:=0>"ijem"; CMP&MCL&SNG&ACC&NANM:=0>"iji"; CMP&MCL&SNG&ACC&ANM:=0>"ijeg"; CMP&MCL&SNG&VOC:=0>"iji"; CMP&MCL&SNG&INS:=0>"ijim"; CMP&MCL&SNG&LOC:=0>"ijem"; CMP&MCL&PLR&NOM:=0>"iji"; CMP&MCL&PLR&GNT:=0>"ijih"; CMP&MCL&PLR&DAT:=0>"ijim"; CMP&MCL&PLR&ACC:=0>"ije"; CMP&MCL&PLR&VOC:=0>"iji"; CMP&MCL&PLR&INS:=0>"ijim"; CMP&MCL&PLR&LOC:=0>"ijim"; CMP&FEM&SNG&NOM:=0>"ija"; CMP&FEM&SNG&GNT:=0>"ije"; CMP&FEM&SNG&DAT:=0>"ijoj"; CMP&FEM&SNG&ACC:=0>"iju"; CMP&FEM&SNG&VOC:=0>"ija"; CMP&FEM&SNG&INS:=0>"ijom"; CMP&FEM&SNG&LOC:=0>"ijoj"; CMP&FEM&PLR&NOM:=0>"ije"; CMP&FEM&PLR&GNT:=0>"ijih"; CMP&FEM&PLR&DAT:=0>"ijim"; CMP&FEM&PLR&ACC:=0>"ije"; CMP&FEM&PLR&VOC:=0>"ije"; CMP&FEM&PLR&INS:=0>"ijim"; CMP&FEM&PLR&LOC:=0>"ijim"; CMP&NEU&SNG&NOM:=0>"ije"; CMP&NEU&SNG&GNT:=0>"ijeg"; CMP&NEU&SNG&DAT:=0>"ijem"; CMP&NEU&SNG&ACC:=0>"ije"; CMP&NEU&SNG&VOC:=0>"ije"; CMP&NEU&SNG&INS:=0>"ijim"; CMP&NEU&SNG&LOC:=0>"ijem"; CMP&NEU&PLR&NOM:=0>"ija"; CMP&NEU&PLR&GNT:=0>"ijih"; CMP&NEU&PLR&DAT:=0>"ijim"; CMP&NEU&PLR&ACC:=0>"ija"; CMP&NEU&PLR&VOC:=0>"ija"; CMP&NEU&PLR&INS:=0>"ijim"; CMP&NEU&PLR&LOC:=0>"ijim"; SUP&MCL&SNG&NOM:="naj"<"",0>"iji"; SUP&MCL&SNG&GNT:="naj"<"",0>"ijeg"; SUP&MCL&SNG&DAT:="naj"<"",0>"ijem"; SUP&MCL&SNG&ACC&NANM:="naj"<"",0>"iji"; SUP&MCL&SNG&ACC&ANM:="naj"<"",0>"ijeg"; SUP&MCL&SNG&VOC:="naj"<"",0>"iji"; SUP&MCL&SNG&INS:="naj"<"",0>"ijim"; SUP&MCL&SNG&LOC:="naj"<"",0>"ijem"; SUP&MCL&PLR&NOM:="naj"<"",0>"iji"; SUP&MCL&PLR&GNT:="naj"<"",0>"ijih"; SUP&MCL&PLR&DAT:="naj"<"",0>"ijim"; SUP&MCL&PLR&ACC:="naj"<"",0>"ije"; SUP&MCL&PLR&VOC:="naj"<"",0>"iji"; SUP&MCL&PLR&INS:="naj"<"",0>"ijim"; SUP&MCL&PLR&LOC:="naj"<"",0>"ijim"; SUP&FEM&SNG&NOM:="naj"<"",0>"ija"; SUP&FEM&SNG&GNT:="naj"<"",0>"ije"; SUP&FEM&SNG&DAT:="naj"<"",0>"ijoj"; SUP&FEM&SNG&ACC:="naj"<"",0>"iju"; SUP&FEM&SNG&VOC:="naj"<"",0>"ija"; SUP&FEM&SNG&INS:="naj"<"",0>"ijom"; SUP&FEM&SNG&LOC:="naj"<"",0>"ijoj"; SUP&FEM&PLR&NOM:="naj"<"",0>"ije"; SUP&FEM&PLR&GNT:="naj"<"",0>"ijih"; SUP&FEM&PLR&DAT:="naj"<"",0>"ijim"; SUP&FEM&PLR&ACC:="naj"<"",0>"ije"; SUP&FEM&PLR&VOC:="naj"<"",0>"ije"; SUP&FEM&PLR&INS:="naj"<"",0>"ijim"; SUP&FEM&PLR&LOC:="naj"<"",0>"ijim";SUP&NEU&SNG&NOM:="naj"<"",0>"ije"; SUP&NEU&SNG&GNT:="naj"<"",0>"ijeg"; SUP&NEU&SNG&DAT:="naj"<"",0>"ijem"; SUP&NEU&SNG&ACC:="naj"<"",0>"ije"; SUP&NEU&SNG&VOC:="naj"<"",0>"ije"; SUP&NEU&SNG&INS:="naj"<"",0>"ijim"; SUP&NEU&SNG&LOC:="naj"<"",0>"ijem"; SUP&NEU&PLR&NOM:="naj"<"",0>"ija"; SUP&NEU&PLR&GNT:="naj"<"",0>"ijih"; SUP&NEU&PLR&DAT:="naj"<"",0>"ijim"; SUP&NEU&PLR&ACC:="naj"<"",0>"ija"; SUP&NEU&PLR&VOC:="naj"<"",0>"ija"; SUP&NEU&PLR&INS:="naj"<"",0>"ijim"; SUP&NEU&PLR&LOC:="naj"<"",0>"ijim"; PST&MCL&PAU:=0>"a"; CMP&MCL&PAU:=0>"ija"; SUP&MCL&PAU:="naj"<"",0>"ija"; PST&FEM&PAU:=0>"e"; CMP&FEM&PAU:=0>"ije"; SUP&FEM&PAU:="naj"<"",0>"ije"; PST&NEU&PAU:=0>"a"; CMP&NEU&PAU:=0>"ija"; SUP&NEU&PAU:="naj"<"",0>"ija";));
+
+(%x,M25):=(%x,-M25,+FLX(PST&MCL&SNG&NOM&NDEF:=0>""; PST&MCL&SNG&GNT&NDEF:=2>"ra"; PST&MCL&SNG&DAT&NDEF:=2>"ru"; PST&MCL&SNG&ACC&NANM&NDEF:=0>""; PST&MCL&SNG&ACC&ANM&NDEF:=2>"ra"; PST&MCL&SNG&VOC&NDEF:=2>"ri"; PST&MCL&SNG&INS&NDEF:=2>"rim"; PST&MCL&SNG&LOC&NDEF:=2>"ru"; PST&MCL&SNG&NOM&DEF:=2>"ri"; PST&MCL&SNG&GNT&DEF:=2>"rog"; PST&MCL&SNG&DAT&DEF:=2>"rom"; PST&MCL&SNG&ACC&NANM&DEF:=2>"ri"; PST&MCL&SNG&ACC&ANM&DEF:=2>"rog"; PST&MCL&SNG&VOC&DEF:=2>"ri"; PST&MCL&SNG&INS&DEF:=2>"rim"; PST&MCL&SNG&LOC&DEF:=2>"rom"; PST&MCL&PLR&NOM:=2>"ri"; PST&MCL&PLR&GNT:=2>"rih"; PST&MCL&PLR&DAT:=2>"rim"; PST&MCL&PLR&ACC:=2>"re"; PST&MCL&PLR&VOC:=2>"ri"; PST&MCL&PLR&INS:=2>"rim"; PST&MCL&PLR&LOC:=2>"rim"; PST&FEM&SNG&NOM:=2>"ra"; PST&FEM&SNG&GNT:=2>"re"; PST&FEM&SNG&DAT:=2>"roj"; PST&FEM&SNG&ACC:=2>"ru"; PST&FEM&SNG&VOC:=2>"ra"; PST&FEM&SNG&INS:=2>"rom"; PST&FEM&SNG&LOC:=2>"roj"; PST&FEM&PLR&NOM:=2>"re"; PST&FEM&PLR&GNT:=2>"rih"; PST&FEM&PLR&DAT:=2>"rim"; PST&FEM&PLR&ACC:=2>"re"; PST&FEM&PLR&VOC:=2>"re"; PST&FEM&PLR&INS:=2>"rim"; PST&FEM&PLR&LOC:=2>"rim"; PST&NEU&SNG&NOM&NDEF:=2>"ro"; PST&NEU&SNG&GNT&NDEF:=2>"ra"; PST&NEU&SNG&DAT&NDEF:=2>"ru"; PST&NEU&SNG&ACC&NDEF:=2>"ro"; PST&NEU&SNG&VOC&NDEF:=2>"ro"; PST&NEU&SNG&INS&NDEF:=2>"rim"; PST&NEU&SNG&LOC&NDEF:=2>"ru"; PST&NEU&SNG&NOM&DEF:=2>"ro"; PST&NEU&SNG&GNT&DEF:=2>"rog"; PST&NEU&SNG&DAT&DEF:=2>"rom"; PST&NEU&SNG&ACC&DEF:=2>"ro"; PST&NEU&SNG&VOC&DEF:=2>"ro"; PST&NEU&SNG&INS&DEF:=2>"rim"; PST&NEU&SNG&LOC&DEF:=2>"rom"; PST&NEU&PLR&NOM:=2>"ra"; PST&NEU&PLR&GNT:=2>"rih"; PST&NEU&PLR&DAT:=2>"rim"; PST&NEU&PLR&ACC:=2>"ra"; PST&NEU&PLR&VOC:=2>"ra"; PST&NEU&PLR&INS:=2>"rim"; PST&NEU&PLR&LOC:=2>"rim"; CMP&MCL&SNG&NOM:=2>"riji"; CMP&MCL&SNG&GNT:=2>"rijeg"; CMP&MCL&SNG&DAT:=2>"rijem"; CMP&MCL&SNG&ACC&NANM:=2>"riji"; CMP&MCL&SNG&ACC&ANM:=2>"rijeg"; CMP&MCL&SNG&VOC:=2>"riji"; CMP&MCL&SNG&INS:=2>"rijim"; CMP&MCL&SNG&LOC:=2>"rijem"; CMP&MCL&PLR&NOM:=2>"riji"; CMP&MCL&PLR&GNT:=2>"rijih"; CMP&MCL&PLR&DAT:=2>"rijim"; CMP&MCL&PLR&ACC:=2>"rije"; CMP&MCL&PLR&VOC:=2>"riji"; CMP&MCL&PLR&INS:=2>"rijim"; CMP&MCL&PLR&LOC:=2>"rijim"; CMP&FEM&SNG&NOM:=2>"rija"; CMP&FEM&SNG&GNT:=2>"rije"; CMP&FEM&SNG&DAT:=2>"rijoj"; CMP&FEM&SNG&ACC:=2>"riju"; CMP&FEM&SNG&VOC:=2>"rija"; CMP&FEM&SNG&INS:=2>"rijom"; CMP&FEM&SNG&LOC:=2>"rijoj"; CMP&FEM&PLR&NOM:=2>"rije"; CMP&FEM&PLR&GNT:=2>"rijih"; CMP&FEM&PLR&DAT:=2>"rijim"; CMP&FEM&PLR&ACC:=2>"rije"; CMP&FEM&PLR&VOC:=2>"rije"; CMP&FEM&PLR&INS:=2>"rijim"; CMP&FEM&PLR&LOC:=2>"rijim"; CMP&NEU&SNG&NOM:=2>"rije"; CMP&NEU&SNG&GNT:=2>"rijeg"; CMP&NEU&SNG&DAT:=2>"rijem"; CMP&NEU&SNG&ACC:=2>"rije"; CMP&NEU&SNG&VOC:=2>"rije"; CMP&NEU&SNG&INS:=2>"rijim"; CMP&NEU&SNG&LOC:=2>"rijem"; CMP&NEU&PLR&NOM:=2>"rija"; CMP&NEU&PLR&GNT:=2>"rijih"; CMP&NEU&PLR&DAT:=2>"rijim"; CMP&NEU&PLR&ACC:=2>"rija"; CMP&NEU&PLR&VOC:=2>"rija"; CMP&NEU&PLR&INS:=2>"rijim"; CMP&NEU&PLR&LOC:=2>"rijim"; SUP&MCL&SNG&NOM:="naj"<"",2>"riji"; SUP&MCL&SNG&GNT:="naj"<"",2>"rijeg"; SUP&MCL&SNG&DAT:="naj"<"",2>"rijem"; SUP&MCL&SNG&ACC&NANM:="naj"<"",2>"riji"; SUP&MCL&SNG&ACC&ANM:="naj"<"",2>"rijeg"; SUP&MCL&SNG&VOC:="naj"<"",2>"riji"; SUP&MCL&SNG&INS:="naj"<"",2>"rijim"; SUP&MCL&SNG&LOC:="naj"<"",2>"rijem"; SUP&MCL&PLR&NOM:="naj"<"",2>"riji"; SUP&MCL&PLR&GNT:="naj"<"",2>"rijih"; SUP&MCL&PLR&DAT:="naj"<"",2>"rijim"; SUP&MCL&PLR&ACC:="naj"<"",2>"rije"; SUP&MCL&PLR&VOC:="naj"<"",2>"riji"; SUP&MCL&PLR&INS:="naj"<"",2>"rijim"; SUP&MCL&PLR&LOC:="naj"<"",2>"rijim"; SUP&FEM&SNG&NOM:="naj"<"",2>"rija"; SUP&FEM&SNG&GNT:="naj"<"",2>"rije"; SUP&FEM&SNG&DAT:="naj"<"",2>"rijoj"; SUP&FEM&SNG&ACC:="naj"<"",2>"riju"; SUP&FEM&SNG&VOC:="naj"<"",2>"rija"; SUP&FEM&SNG&INS:="naj"<"",2>"rijom"; SUP&FEM&SNG&LOC:="naj"<"",2>"rijoj"; SUP&FEM&PLR&NOM:="naj"<"",2>"rije"; SUP&FEM&PLR&GNT:="naj"<"",2>"rijih"; SUP&FEM&PLR&DAT:="naj"<"",2>"rijim"; SUP&FEM&PLR&ACC:="naj"<"",2>"rije"; SUP&FEM&PLR&VOC:="naj"<"",2>"rije"; SUP&FEM&PLR&INS:="naj"<"",2>"rijim"; SUP&FEM&PLR&LOC:="naj"<"",2>"rijim";SUP&NEU&SNG&NOM:="naj"<"",2>"rije"; SUP&NEU&SNG&GNT:="naj"<"",2>"rijeg"; SUP&NEU&SNG&DAT:="naj"<"",2>"rijem"; SUP&NEU&SNG&ACC:="naj"<"",2>"rije"; SUP&NEU&SNG&VOC:="naj"<"",2>"rije"; SUP&NEU&SNG&INS:="naj"<"",2>"rijim"; SUP&NEU&SNG&LOC:="naj"<"",2>"rijem"; SUP&NEU&PLR&NOM:="naj"<"",2>"rija"; SUP&NEU&PLR&GNT:="naj"<"",2>"rijih"; SUP&NEU&PLR&DAT:="naj"<"",2>"rijim"; SUP&NEU&PLR&ACC:="naj"<"",2>"rija"; SUP&NEU&PLR&VOC:="naj"<"",2>"rija"; SUP&NEU&PLR&INS:="naj"<"",2>"rijim"; SUP&NEU&PLR&LOC:="naj"<"",2>"rijim"; PST&MCL&PAU:=2>"ra"; CMP&MCL&PAU:=2>"rija"; SUP&MCL&PAU:="naj"<"",2>"rija"; PST&FEM&PAU:=2>"re"; CMP&FEM&PAU:=2>"rije"; SUP&FEM&PAU:="naj"<"",2>"rije"; PST&NEU&PAU:=2>"ra"; CMP&NEU&PAU:=2>"rija"; SUP&NEU&PAU:="naj"<"",2>"rija";));
+
+(%x,M26):=(%x,-M26,+FLX(PST&MCL&SNG&NOM&NDEF:=0>""; PST&MCL&SNG&GNT&NDEF:=2>"na"; PST&MCL&SNG&DAT&NDEF:=2>"nu"; PST&MCL&SNG&ACC&NANM&NDEF:=0>""; PST&MCL&SNG&ACC&ANM&NDEF:=2>"na"; PST&MCL&SNG&VOC&NDEF:=2>"ni"; PST&MCL&SNG&INS&NDEF:=2>"nim"; PST&MCL&SNG&LOC&NDEF:=2>"nu"; PST&MCL&SNG&NOM&DEF:=2>"ni"; PST&MCL&SNG&GNT&DEF:=2>"nog"; PST&MCL&SNG&DAT&DEF:=2>"nom"; PST&MCL&SNG&ACC&NANM&DEF:=2>"ni"; PST&MCL&SNG&ACC&ANM&DEF:=2>"nog"; PST&MCL&SNG&VOC&DEF:=2>"ni"; PST&MCL&SNG&INS&DEF:=2>"nim"; PST&MCL&SNG&LOC&DEF:=2>"nom"; PST&MCL&PLR&NOM:=2>"ni"; PST&MCL&PLR&GNT:=2>"nih"; PST&MCL&PLR&DAT:=2>"nim"; PST&MCL&PLR&ACC:=2>"ne"; PST&MCL&PLR&VOC:=2>"ni"; PST&MCL&PLR&INS:=2>"nim"; PST&MCL&PLR&LOC:=2>"nim"; PST&FEM&SNG&NOM:=2>"na"; PST&FEM&SNG&GNT:=2>"ne"; PST&FEM&SNG&DAT:=2>"noj"; PST&FEM&SNG&ACC:=2>"nu"; PST&FEM&SNG&VOC:=2>"na"; PST&FEM&SNG&INS:=2>"nom"; PST&FEM&SNG&LOC:=2>"noj"; PST&FEM&PLR&NOM:=2>"ne"; PST&FEM&PLR&GNT:=2>"nih"; PST&FEM&PLR&DAT:=2>"nim"; PST&FEM&PLR&ACC:=2>"ne"; PST&FEM&PLR&VOC:=2>"ne"; PST&FEM&PLR&INS:=2>"nim"; PST&FEM&PLR&LOC:=2>"nim"; PST&NEU&SNG&NOM&NDEF:=2>"no"; PST&NEU&SNG&GNT&NDEF:=2>"na"; PST&NEU&SNG&DAT&NDEF:=2>"nu"; PST&NEU&SNG&ACC&NDEF:=2>"no"; PST&NEU&SNG&VOC&NDEF:=2>"no"; PST&NEU&SNG&INS&NDEF:=2>"nim"; PST&NEU&SNG&LOC&NDEF:=2>"nu"; PST&NEU&SNG&NOM&DEF:=2>"no"; PST&NEU&SNG&GNT&DEF:=2>"nog"; PST&NEU&SNG&DAT&DEF:=2>"nom"; PST&NEU&SNG&ACC&DEF:=2>"no"; PST&NEU&SNG&VOC&DEF:=2>"no"; PST&NEU&SNG&INS&DEF:=2>"nim"; PST&NEU&SNG&LOC&DEF:=2>"nom"; PST&NEU&PLR&NOM:=2>"na"; PST&NEU&PLR&GNT:=2>"nih"; PST&NEU&PLR&DAT:=2>"nim"; PST&NEU&PLR&ACC:=2>"na"; PST&NEU&PLR&VOC:=2>"na"; PST&NEU&PLR&INS:=2>"nim"; PST&NEU&PLR&LOC:=2>"nim"; CMP&MCL&SNG&NOM:=2>"niji"; CMP&MCL&SNG&GNT:=2>"nijeg"; CMP&MCL&SNG&DAT:=2>"nijem"; CMP&MCL&SNG&ACC&NANM:=2>"niji"; CMP&MCL&SNG&ACC&ANM:=2>"nijeg"; CMP&MCL&SNG&VOC:=2>"niji"; CMP&MCL&SNG&INS:=2>"nijim"; CMP&MCL&SNG&LOC:=2>"nijem"; CMP&MCL&PLR&NOM:=2>"niji"; CMP&MCL&PLR&GNT:=2>"nijih"; CMP&MCL&PLR&DAT:=2>"nijim"; CMP&MCL&PLR&ACC:=2>"nije"; CMP&MCL&PLR&VOC:=2>"niji"; CMP&MCL&PLR&INS:=2>"nijim"; CMP&MCL&PLR&LOC:=2>"nijim"; CMP&FEM&SNG&NOM:=2>"nija"; CMP&FEM&SNG&GNT:=2>"nije"; CMP&FEM&SNG&DAT:=2>"nijoj"; CMP&FEM&SNG&ACC:=2>"niju"; CMP&FEM&SNG&VOC:=2>"nija"; CMP&FEM&SNG&INS:=2>"nijom"; CMP&FEM&SNG&LOC:=2>"nijoj"; CMP&FEM&PLR&NOM:=2>"nije"; CMP&FEM&PLR&GNT:=2>"nijih"; CMP&FEM&PLR&DAT:=2>"nijim"; CMP&FEM&PLR&ACC:=2>"nije"; CMP&FEM&PLR&VOC:=2>"nije"; CMP&FEM&PLR&INS:=2>"nijim"; CMP&FEM&PLR&LOC:=2>"nijim"; CMP&NEU&SNG&NOM:=2>"nije"; CMP&NEU&SNG&GNT:=2>"nijeg"; CMP&NEU&SNG&DAT:=2>"nijem"; CMP&NEU&SNG&ACC:=2>"nije"; CMP&NEU&SNG&VOC:=2>"nije"; CMP&NEU&SNG&INS:=2>"nijim"; CMP&NEU&SNG&LOC:=2>"nijem"; CMP&NEU&PLR&NOM:=2>"nija"; CMP&NEU&PLR&GNT:=2>"nijih"; CMP&NEU&PLR&DAT:=2>"nijim"; CMP&NEU&PLR&ACC:=2>"nija"; CMP&NEU&PLR&VOC:=2>"nija"; CMP&NEU&PLR&INS:=2>"nijim"; CMP&NEU&PLR&LOC:=2>"nijim"; SUP&MCL&SNG&NOM:="naj"<"",2>"niji"; SUP&MCL&SNG&GNT:="naj"<"",2>"nijeg"; SUP&MCL&SNG&DAT:="naj"<"",2>"nijem"; SUP&MCL&SNG&ACC&NANM:="naj"<"",2>"niji"; SUP&MCL&SNG&ACC&ANM:="naj"<"",2>"nijeg"; SUP&MCL&SNG&VOC:="naj"<"",2>"niji"; SUP&MCL&SNG&INS:="naj"<"",2>"nijim"; SUP&MCL&SNG&LOC:="naj"<"",2>"nijem"; SUP&MCL&PLR&NOM:="naj"<"",2>"niji"; SUP&MCL&PLR&GNT:="naj"<"",2>"nijih"; SUP&MCL&PLR&DAT:="naj"<"",2>"nijim"; SUP&MCL&PLR&ACC:="naj"<"",2>"nije"; SUP&MCL&PLR&VOC:="naj"<"",2>"niji"; SUP&MCL&PLR&INS:="naj"<"",2>"nijim"; SUP&MCL&PLR&LOC:="naj"<"",2>"nijim"; SUP&FEM&SNG&NOM:="naj"<"",2>"nija"; SUP&FEM&SNG&GNT:="naj"<"",2>"nije"; SUP&FEM&SNG&DAT:="naj"<"",2>"nijoj"; SUP&FEM&SNG&ACC:="naj"<"",2>"niju"; SUP&FEM&SNG&VOC:="naj"<"",2>"nija"; SUP&FEM&SNG&INS:="naj"<"",2>"nijom"; SUP&FEM&SNG&LOC:="naj"<"",2>"nijoj"; SUP&FEM&PLR&NOM:="naj"<"",2>"nije"; SUP&FEM&PLR&GNT:="naj"<"",2>"nijih"; SUP&FEM&PLR&DAT:="naj"<"",2>"nijim"; SUP&FEM&PLR&ACC:="naj"<"",2>"nije"; SUP&FEM&PLR&VOC:="naj"<"",2>"nije"; SUP&FEM&PLR&INS:="naj"<"",2>"nijim"; SUP&FEM&PLR&LOC:="naj"<"",2>"nijim";SUP&NEU&SNG&NOM:="naj"<"",2>"nije"; SUP&NEU&SNG&GNT:="naj"<"",2>"nijeg"; SUP&NEU&SNG&DAT:="naj"<"",2>"nijem"; SUP&NEU&SNG&ACC:="naj"<"",2>"nije"; SUP&NEU&SNG&VOC:="naj"<"",2>"nije"; SUP&NEU&SNG&INS:="naj"<"",2>"nijim"; SUP&NEU&SNG&LOC:="naj"<"",2>"nijem"; SUP&NEU&PLR&NOM:="naj"<"",2>"nija"; SUP&NEU&PLR&GNT:="naj"<"",2>"nijih"; SUP&NEU&PLR&DAT:="naj"<"",2>"nijim"; SUP&NEU&PLR&ACC:="naj"<"",2>"nija"; SUP&NEU&PLR&VOC:="naj"<"",2>"nija"; SUP&NEU&PLR&INS:="naj"<"",2>"nijim"; SUP&NEU&PLR&LOC:="naj"<"",2>"nijim"; PST&MCL&PAU:=2>"na"; CMP&MCL&PAU:=2>"nija"; SUP&MCL&PAU:="naj"<"",2>"nija"; PST&FEM&PAU:=2>"ne"; CMP&FEM&PAU:=2>"nije"; SUP&FEM&PAU:="naj"<"",2>"nije"; PST&NEU&PAU:=2>"na"; CMP&NEU&PAU:=2>"nija"; SUP&NEU&PAU:="naj"<"",2>"nija";));
+
+(%x,M27):=(%x,-M27,+FLX(PST&MCL&SNG&NOM&NDEF:=0>""; PST&MCL&SNG&GNT&NDEF:=1>"la"; PST&MCL&SNG&DAT&NDEF:=1>"lu"; PST&MCL&SNG&ACC&NANM&NDEF:=0>""; PST&MCL&SNG&ACC&ANM&NDEF:=1>"la"; PST&MCL&SNG&VOC&NDEF:=1>"li"; PST&MCL&SNG&INS&NDEF:=1>"lim"; PST&MCL&SNG&LOC&NDEF:=1>"lu"; PST&MCL&SNG&NOM&DEF:=1>"li"; PST&MCL&SNG&GNT&DEF:=1>"log"; PST&MCL&SNG&DAT&DEF:=1>"lom"; PST&MCL&SNG&ACC&NANM&DEF:=1>"li"; PST&MCL&SNG&ACC&ANM&DEF:=1>"log"; PST&MCL&SNG&VOC&DEF:=1>"li"; PST&MCL&SNG&INS&DEF:=1>"lim"; PST&MCL&SNG&LOC&DEF:=1>"lom"; PST&MCL&PLR&NOM:=1>"li"; PST&MCL&PLR&GNT:=1>"lih"; PST&MCL&PLR&DAT:=1>"lim"; PST&MCL&PLR&ACC:=1>"le"; PST&MCL&PLR&VOC:=1>"li"; PST&MCL&PLR&INS:=1>"lim"; PST&MCL&PLR&LOC:=1>"lim"; PST&FEM&SNG&NOM:=1>"la"; PST&FEM&SNG&GNT:=1>"le"; PST&FEM&SNG&DAT:=1>"loj"; PST&FEM&SNG&ACC:=1>"lu"; PST&FEM&SNG&VOC:=1>"la"; PST&FEM&SNG&INS:=1>"lom"; PST&FEM&SNG&LOC:=1>"loj"; PST&FEM&PLR&NOM:=1>"le"; PST&FEM&PLR&GNT:=1>"lih"; PST&FEM&PLR&DAT:=1>"lim"; PST&FEM&PLR&ACC:=1>"le"; PST&FEM&PLR&VOC:=1>"le"; PST&FEM&PLR&INS:=1>"lim"; PST&FEM&PLR&LOC:=1>"lim"; PST&NEU&SNG&NOM&NDEF:=1>"lo"; PST&NEU&SNG&GNT&NDEF:=1>"la"; PST&NEU&SNG&DAT&NDEF:=1>"lu"; PST&NEU&SNG&ACC&NDEF:=1>"lo"; PST&NEU&SNG&VOC&NDEF:=1>"lo"; PST&NEU&SNG&INS&NDEF:=1>"lim"; PST&NEU&SNG&LOC&NDEF:=1>"lu"; PST&NEU&SNG&NOM&DEF:=1>"lo"; PST&NEU&SNG&GNT&DEF:=1>"log"; PST&NEU&SNG&DAT&DEF:=1>"lom"; PST&NEU&SNG&ACC&DEF:=1>"lo"; PST&NEU&SNG&VOC&DEF:=1>"lo"; PST&NEU&SNG&INS&DEF:=1>"lim"; PST&NEU&SNG&LOC&DEF:=1>"lom"; PST&NEU&PLR&NOM:=1>"la"; PST&NEU&PLR&GNT:=1>"lih"; PST&NEU&PLR&DAT:=1>"lim"; PST&NEU&PLR&ACC:=1>"la"; PST&NEU&PLR&VOC:=1>"la"; PST&NEU&PLR&INS:=1>"lim"; PST&NEU&PLR&LOC:=1>"lim"; CMP&MCL&SNG&NOM:=1>"liji"; CMP&MCL&SNG&GNT:=1>"lijeg"; CMP&MCL&SNG&DAT:=1>"lijem"; CMP&MCL&SNG&ACC&NANM:=1>"liji"; CMP&MCL&SNG&ACC&ANM:=1>"lijeg"; CMP&MCL&SNG&VOC:=1>"liji"; CMP&MCL&SNG&INS:=1>"lijim"; CMP&MCL&SNG&LOC:=1>"lijem"; CMP&MCL&PLR&NOM:=1>"liji"; CMP&MCL&PLR&GNT:=1>"lijih"; CMP&MCL&PLR&DAT:=1>"lijim"; CMP&MCL&PLR&ACC:=1>"lije"; CMP&MCL&PLR&VOC:=1>"liji"; CMP&MCL&PLR&INS:=1>"lijim"; CMP&MCL&PLR&LOC:=1>"lijim"; CMP&FEM&SNG&NOM:=1>"lija"; CMP&FEM&SNG&GNT:=1>"lije"; CMP&FEM&SNG&DAT:=1>"lijoj"; CMP&FEM&SNG&ACC:=1>"liju"; CMP&FEM&SNG&VOC:=1>"lija"; CMP&FEM&SNG&INS:=1>"lijom"; CMP&FEM&SNG&LOC:=1>"lijoj"; CMP&FEM&PLR&NOM:=1>"lije"; CMP&FEM&PLR&GNT:=1>"lijih"; CMP&FEM&PLR&DAT:=1>"lijim"; CMP&FEM&PLR&ACC:=1>"lije"; CMP&FEM&PLR&VOC:=1>"lije"; CMP&FEM&PLR&INS:=1>"lijim"; CMP&FEM&PLR&LOC:=1>"lijim"; CMP&NEU&SNG&NOM:=1>"lije"; CMP&NEU&SNG&GNT:=1>"lijeg"; CMP&NEU&SNG&DAT:=1>"lijem"; CMP&NEU&SNG&ACC:=1>"lije"; CMP&NEU&SNG&VOC:=1>"lije"; CMP&NEU&SNG&INS:=1>"lijim"; CMP&NEU&SNG&LOC:=1>"lijem"; CMP&NEU&PLR&NOM:=1>"lija"; CMP&NEU&PLR&GNT:=1>"lijih"; CMP&NEU&PLR&DAT:=1>"lijim"; CMP&NEU&PLR&ACC:=1>"lija"; CMP&NEU&PLR&VOC:=1>"lija"; CMP&NEU&PLR&INS:=1>"lijim"; CMP&NEU&PLR&LOC:=1>"lijim"; SUP&MCL&SNG&NOM:="naj"<"",1>"liji"; SUP&MCL&SNG&GNT:="naj"<"",1>"lijeg"; SUP&MCL&SNG&DAT:="naj"<"",1>"lijem"; SUP&MCL&SNG&ACC&NANM:="naj"<"",1>"liji"; SUP&MCL&SNG&ACC&ANM:="naj"<"",1>"lijeg"; SUP&MCL&SNG&VOC:="naj"<"",1>"liji"; SUP&MCL&SNG&INS:="naj"<"",1>"lijim"; SUP&MCL&SNG&LOC:="naj"<"",1>"lijem"; SUP&MCL&PLR&NOM:="naj"<"",1>"liji"; SUP&MCL&PLR&GNT:="naj"<"",1>"lijih"; SUP&MCL&PLR&DAT:="naj"<"",1>"lijim"; SUP&MCL&PLR&ACC:="naj"<"",1>"lije"; SUP&MCL&PLR&VOC:="naj"<"",1>"liji"; SUP&MCL&PLR&INS:="naj"<"",1>"lijim"; SUP&MCL&PLR&LOC:="naj"<"",1>"lijim"; SUP&FEM&SNG&NOM:="naj"<"",1>"lija"; SUP&FEM&SNG&GNT:="naj"<"",1>"lije"; SUP&FEM&SNG&DAT:="naj"<"",1>"lijoj"; SUP&FEM&SNG&ACC:="naj"<"",1>"liju"; SUP&FEM&SNG&VOC:="naj"<"",1>"lija"; SUP&FEM&SNG&INS:="naj"<"",1>"lijom"; SUP&FEM&SNG&LOC:="naj"<"",1>"lijoj"; SUP&FEM&PLR&NOM:="naj"<"",1>"lije"; SUP&FEM&PLR&GNT:="naj"<"",1>"lijih"; SUP&FEM&PLR&DAT:="naj"<"",1>"lijim"; SUP&FEM&PLR&ACC:="naj"<"",1>"lije"; SUP&FEM&PLR&VOC:="naj"<"",1>"lije"; SUP&FEM&PLR&INS:="naj"<"",1>"lijim"; SUP&FEM&PLR&LOC:="naj"<"",1>"lijim";SUP&NEU&SNG&NOM:="naj"<"",1>"lije"; SUP&NEU&SNG&GNT:="naj"<"",1>"lijeg"; SUP&NEU&SNG&DAT:="naj"<"",1>"lijem"; SUP&NEU&SNG&ACC:="naj"<"",1>"lije"; SUP&NEU&SNG&VOC:="naj"<"",1>"lije"; SUP&NEU&SNG&INS:="naj"<"",1>"lijim"; SUP&NEU&SNG&LOC:="naj"<"",1>"lijem"; SUP&NEU&PLR&NOM:="naj"<"",1>"lija"; SUP&NEU&PLR&GNT:="naj"<"",1>"lijih"; SUP&NEU&PLR&DAT:="naj"<"",1>"lijim"; SUP&NEU&PLR&ACC:="naj"<"",1>"lija"; SUP&NEU&PLR&VOC:="naj"<"",1>"lija"; SUP&NEU&PLR&INS:="naj"<"",1>"lijim"; SUP&NEU&PLR&LOC:="naj"<"",1>"lijim"; PST&MCL&PAU:=1>"la"; CMP&MCL&PAU:=1>"lija"; SUP&MCL&PAU:="naj"<"",1>"lija"; PST&FEM&PAU:=1>"le"; CMP&FEM&PAU:=1>"lije"; SUP&FEM&PAU:="naj"<"",1>"lije"; PST&NEU&PAU:=1>"la"; CMP&NEU&PAU:=1>"lija"; SUP&NEU&PAU:="naj"<"",1>"lija";));
+
+(%x,M28):=(%x,-M28,+FLX( PST&MCL&SNG&NOM:=0>""; PST&MCL&SNG&GNT:=1>"og"; PST&MCL&SNG&DAT:=1>"om"; PST&MCL&SNG&ACC&NANM:=1>"i"; PST&MCL&SNG&ACC&ANM:=1>"og"; PST&MCL&SNG&VOC:=1>"i"; PST&MCL&SNG&INS:=1>"im"; PST&MCL&SNG&LOC:=1>"om"; PST&MCL&PLR&NOM:=1>"i"; PST&MCL&PLR&GNT:=1>"ih"; PST&MCL&PLR&DAT:=1>"im"; PST&MCL&PLR&ACC:=1>"e"; PST&MCL&PLR&VOC:=1>"i"; PST&MCL&PLR&INS:=1>"im"; PST&MCL&PLR&LOC:=1>"im"; PST&FEM&SNG&NOM:=1>"a"; PST&FEM&SNG&GNT:=1>"e"; PST&FEM&SNG&DAT:=1>"oj"; PST&FEM&SNG&ACC:=1>"u"; PST&FEM&SNG&VOC:=1>"a"; PST&FEM&SNG&INS:=1>"om"; PST&FEM&SNG&LOC:=1>"oj"; PST&FEM&PLR&NOM:=1>"e"; PST&FEM&PLR&GNT:=1>"ih"; PST&FEM&PLR&DAT:=1>"im"; PST&FEM&PLR&ACC:=1>"e"; PST&FEM&PLR&VOC:=1>"e"; PST&FEM&PLR&INS:=1>"im"; PST&FEM&PLR&LOC:=1>"im"; PST&NEU&SNG&NOM:=1>"o"; PST&NEU&SNG&GNT:=1>"og"; PST&NEU&SNG&DAT:=1>"om"; PST&NEU&SNG&ACC:=1>"o"; PST&NEU&SNG&VOC:=1>"o"; PST&NEU&SNG&INS:=1>"im"; PST&NEU&SNG&LOC:=1>"om"; PST&NEU&PLR&NOM:=1>"a"; PST&NEU&PLR&GNT:=1>"ih"; PST&NEU&PLR&DAT:=1>"im"; PST&NEU&PLR&ACC:=1>"a"; PST&NEU&PLR&VOC:=1>"a"; PST&NEU&PLR&INS:=1>"im"; PST&NEU&PLR&LOC:=1>"im"; PST&MCL&PAU:=1>"a"; PST&FEM&PAU:=1>"e"; PST&NEU&PAU:=1>"a"; ));
+
+(%x,M29):=(%x,-M29,+FLX(MCL&SNG&NOM:=0>""; MCL&SNG&GNT:=1>"eg"; MCL&SNG&DAT:=1>"em"; MCL&SNG&ACC&NANM:=1>"i"; MCL&SNG&ACC&ANM:=1>"eg"; MCL&SNG&VOC:=1>"i"; MCL&SNG&INS:=1>"im"; MCL&SNG&LOC:=1>"em"; MCL&PLR&NOM:=1>"i"; MCL&PLR&GNT:=1>"ih"; MCL&PLR&DAT:=1>"im"; MCL&PLR&ACC:=1>"e"; MCL&PLR&VOC:=1>"i"; MCL&PLR&INS:=1>"im"; MCL&PLR&LOC:=1>"im"; FEM&SNG&NOM:=1>"a"; FEM&SNG&GNT:=1>"e"; FEM&SNG&DAT:=1>"oj"; FEM&SNG&ACC:=1>"u"; FEM&SNG&VOC:=1>"a"; FEM&SNG&INS:=1>"om"; FEM&SNG&LOC:=1>"oj"; FEM&PLR&NOM:=1>"e"; FEM&PLR&GNT:=1>"ih"; FEM&PLR&DAT:=1>"im"; FEM&PLR&ACC:=1>"e"; FEM&PLR&VOC:=1>"e"; FEM&PLR&INS:=1>"im"; FEM&PLR&LOC:=1>"im"; NEU&SNG&NOM:=1>"e"; NEU&SNG&GNT:=1>"eg"; NEU&SNG&DAT:=1>"em"; NEU&SNG&ACC:=1>"e"; NEU&SNG&VOC:=1>"e"; NEU&SNG&INS:=1>"im"; NEU&SNG&LOC:=1>"em"; NEU&PLR&NOM:=1>"a"; NEU&PLR&GNT:=1>"ih"; NEU&PLR&DAT:=1>"im"; NEU&PLR&ACC:=1>"a"; NEU&PLR&VOC:=1>"a"; NEU&PLR&INS:=1>"im"; NEU&PLR&LOC:=1>"im"; PST&MCL&PAU:=1>"a"; PST&FEM&PAU:=1>"e"; PST&NEU&PAU:=1>"a";));
+
+(%x,M30):=(%x,-M30,+FLX(SNG&NOM:=0>""; SNG&GNT:="a">"e"; SNG&DAT:="a">"i"; SNG&ACC:="a">"u"; SNG&VOC:="a">"o"; SNG&INS:="a">"om"; SNG&LOC:="a">"i"; PLR&NOM:="a">"e"; PLR&GNT:="a">"i"; PLR&DAT:=0>"ma"; PLR&ACC:="a">"e"; PLR&VOC:="a">"e"; PLR&INS:=0>"ma"; PLR&LOC:=0>"ma"; PAU:="a">"e";));
+
+(%x,M31):=(%x,-M31,+FLX(INF:="ti">"ti"; PRS&1PS:=2>"m"; PRS&2PS:=2>"š"; PRS&3PS:=2>""; PRS&1PP:=2>"mo"; PRS&2PP:=2>"te"; PRS&3PP:=2>"ju"; IMP&2PS:=2>"j"; IMP&1PP:=2>"jmo"; IMP&2PP:=2>"jte"; PTP&ACV&MCL&SNG:=2>"o"; PTP&ACV&FEM&SNG:=2>"la"; PTP&ACV&NEU&SNG:=2>"lo"; PTP&ACV&MCL&PLR:=2>"li"; PTP&ACV&FEM&PLR:=2>"le"; PTP&ACV&NEU&PLR:=2>"la"; PTP&PSV&MCL&SNG:=2>"n"; PTP&PSV&FEM&SNG:=2>"na"; PTP&PSV&NEU&SNG:=2>"no"; PTP&PSV&MCL&PLR:=2>"ni"; PTP&PSV&FEM&PLR:=2>"ne"; PTP&PSV&NEU&PLR:=2>"na"; PAS&PFV&1PS:=2>"h"; PAS&PFV&2PS:=2>""; PAS&PFV&3PS:=2>""; PAS&PFV&1PP:=2>"smo"; PAS&PFV&2PP:=2>"ste"; PAS&PFV&3PP:=2>"še"; PAS&NPFV&1PS:=2>"h"; PAS&NPFV&2PS:=2>"še"; PAS&NPFV&3PS:=2>"še"; PAS&NPFV&1PP:=2>"smo"; PAS&NPFV&2PP:=2>"ste"; PAS&NPFV&3PP:=2>"hu"; PRS&PTP:=2>"jući"; PAS&PTP:=2>"vši"; PAS&PTP&ARC:=2>"v";));
+
+(%x,M32):=(%x,-M32,+FLX(INF:="ti">"ti"; PRS&1PS:=5>"ujem"; PRS&2PS:=5>"uješ"; PRS&3PS:=5>"uje"; PRS&1PP:=5>"ujemo"; PRS&2PP:=5>"ujete"; PRS&3PP:=5>"uju"; IMP&2PS:=5>"uj"; IMP&1PP:=5>"ujmo"; IMP&2PP:=5>"ujte"; PTP&ACV&MCL&SNG:=2>"o"; PTP&ACV&FEM&SNG:=2>"la"; PTP&ACV&NEU&SNG:=2>"lo"; PTP&ACV&MCL&PLR:=2>"li"; PTP&ACV&FEM&PLR:=2>"le"; PTP&ACV&NEU&PLR:=2>"la"; PTP&PSV&MCL&SNG:=2>"n"; PTP&PSV&FEM&SNG:=2>"na"; PTP&PSV&NEU&SNG:=2>"no"; PTP&PSV&MCL&PLR:=2>"ni"; PTP&PSV&FEM&PLR:=2>"ne"; PTP&PSV&NEU&PLR:=2>"na"; PAS&PFV&1PS:=2>"h"; PAS&PFV&2PS:=2>""; PAS&PFV&3PS:=2>""; PAS&PFV&1PP:=2>"smo"; PAS&PFV&2PP:=2>"ste"; PAS&PFV&3PP:=2>"še"; PAS&NPFV&1PS:=2>"h"; PAS&NPFV&2PS:=2>"še"; PAS&NPFV&3PS:=2>"še"; PAS&NPFV&1PP:=2>"smo"; PAS&NPFV&2PP:=2>"ste"; PAS&NPFV&3PP:=2>"hu"; PRS&PTP:=5>"ujući"; PAS&PTP:=2>"vši"; PAS&PTP&ARC:=2>"v";));
+
+(%x,M33):=(%x,-M33,+FLX(INF:="ti">"ti"; PRS&1PS:=3>"im"; PRS&2PS:=3>"iš"; PRS&3PS:=3>"i"; PRS&1PP:=3>"imo"; PRS&2PP:=3>"ite"; PRS&3PP:=3>"e"; IMP&2PS:=3>"i"; IMP&1PP:=3>"imo"; IMP&2PP:=3>"ite"; PTP&ACV&MCL&SNG:=2>"o"; PTP&ACV&FEM&SNG:=2>"la"; PTP&ACV&NEU&SNG:=2>"lo"; PTP&ACV&MCL&PLR:=2>"li"; PTP&ACV&FEM&PLR:=2>"le"; PTP&ACV&NEU&PLR:=2>"la"; PTP&PSV&MCL&SNG:=2>"n"; PTP&PSV&FEM&SNG:=2>"na"; PTP&PSV&NEU&SNG:=2>"no"; PTP&PSV&MCL&PLR:=2>"ni"; PTP&PSV&FEM&PLR:=2>"ne"; PTP&PSV&NEU&PLR:=2>"na"; PAS&PFV&1PS:=2>"h"; PAS&PFV&2PS:=2>""; PAS&PFV&3PS:=2>""; PAS&PFV&1PP:=2>"smo"; PAS&PFV&2PP:=2>"ste"; PAS&PFV&3PP:=2>"še"; PAS&NPFV&1PS:=2>"h"; PAS&NPFV&2PS:=2>"še"; PAS&NPFV&3PS:=2>"še"; PAS&NPFV&1PP:=2>"smo"; PAS&NPFV&2PP:=2>"ste"; PAS&NPFV&3PP:=2>"hu"; PRS&PTP:=3>"eći"; PAS&PTP:=2>"vši"; PAS&PTP&ARC:=2>"v";));
+
+(%x,M34):=(%x,-M34,+FLX(INF:="ti">"ti"; PRS&1PS:=2>"m"; PRS&2PS:=2>"š"; PRS&3PS:=2>""; PRS&1PP:=2>"mo"; PRS&2PP:=2>"te"; PRS&3PP:=3>"e"; IMP&2PS:=2>""; IMP&1PP:=2>"mo"; IMP&2PP:=2>"te"; PTP&ACV&MCL&SNG:=2>"o"; PTP&ACV&FEM&SNG:=2>"la"; PTP&ACV&NEU&SNG:=2>"lo"; PTP&ACV&MCL&PLR:=2>"li"; PTP&ACV&FEM&PLR:=2>"le"; PTP&ACV&NEU&PLR:=2>"la"; PTP&PSV&MCL&SNG:=4>"šen"; PTP&PSV&FEM&SNG:=4>"šena"; PTP&PSV&NEU&SNG:=4>"šeno"; PTP&PSV&MCL&PLR:=4>"šeni"; PTP&PSV&FEM&PLR:=4>"šene"; PTP&PSV&NEU&PLR:=4>"šena"; PAS&PFV&1PS:=2>"h"; PAS&PFV&2PS:=2>""; PAS&PFV&3PS:=2>""; PAS&PFV&1PP:=2>"smo"; PAS&PFV&2PP:=2>"ste"; PAS&PFV&3PP:=2>"še"; PAS&NPFV&1PS:=4>"šah"; PAS&NPFV&2PS:=4>"šaše"; PAS&NPFV&3PS:=4>"šaše"; PAS&NPFV&1PP:=4>"šasmo"; PAS&NPFV&2PP:=4>"šaste"; PAS&NPFV&3PP:=4>"šahu"; PRS&PTP:=3>"eći"; PAS&PTP:=2>"vši"; PAS&PTP&ARC:=2>"v";));
+
+(%x,M35):=(%x,-M35,+FLX(INF:="ti">"ti"; PRS&1PS:=3>"im"; PRS&2PS:=3>"iš"; PRS&3PS:=2>""; PRS&1PP:=3>"imo"; PRS&2PP:=3>"ite"; PRS&3PP:=3>"e"; IMP&2PS:=3>"i"; IMP&1PP:=3>"imo"; IMP&2PP:=3>"ite"; PTP&ACV&MCL&SNG:=2>"o"; PTP&ACV&FEM&SNG:=2>"la"; PTP&ACV&NEU&SNG:=2>"lo"; PTP&ACV&MCL&PLR:=2>"li"; PTP&ACV&FEM&PLR:=2>"le"; PTP&ACV&NEU&PLR:=2>"la"; PTP&PSV&MCL&SNG:=4>"đen"; PTP&PSV&FEM&SNG:=4>"đena"; PTP&PSV&NEU&SNG:=4>"đeno"; PTP&PSV&MCL&PLR:=4>"đeni"; PTP&PSV&FEM&PLR:=4>"đene"; PTP&PSV&NEU&PLR:=4>"đena"; PAS&PFV&1PS:=2>"h"; PAS&PFV&2PS:=2>""; PAS&PFV&3PS:=2>""; PAS&PFV&1PP:=2>"smo"; PAS&PFV&2PP:=2>"ste"; PAS&PFV&3PP:=2>"še"; PAS&NPFV&1PS:=4>"đah"; PAS&NPFV&2PS:=4>"đaše"; PAS&NPFV&3PS:=4>"đaše"; PAS&NPFV&1PP:=4>"đasmo"; PAS&NPFV&2PP:=4>"đaste"; PAS&NPFV&3PP:=4>"đahu"; PRS&PTP:=3>"eći"; PAS&PTP:=2>"vši"; PAS&PTP&ARC:=2>"v"; ));
+
+(%x,M36):=(%x,-M36,+FLX(INF:="ti">"ti"; PRS&1PS:=4>"šem"; PRS&2PS:=4>"šeš"; PRS&3PS:=4>"še"; PRS&1PP:=4>"šemo"; PRS&2PP:=4>"šete"; PRS&3PP:=4>"šu"; IMP&2PS:=4>"ši"; IMP&1PP:=4>"šimo"; IMP&2PP:=4>"šite"; PTP&ACV&MCL&SNG:=2>"o"; PTP&ACV&FEM&SNG:=2>"la"; PTP&ACV&NEU&SNG:=2>"lo"; PTP&ACV&MCL&PLR:=2>"li"; PTP&ACV&FEM&PLR:=2>"le"; PTP&ACV&NEU&PLR:=2>"la"; PTP&PSV&MCL&SNG:=2>"n"; PTP&PSV&FEM&SNG:=2>"na"; PTP&PSV&NEU&SNG:=2>"no"; PTP&PSV&MCL&PLR:=2>"ni"; PTP&PSV&FEM&PLR:=2>"ne"; PTP&PSV&NEU&PLR:=2>"na"; PAS&PFV&1PS:=2>"h"; PAS&PFV&2PS:=2>""; PAS&PFV&3PS:=2>""; PAS&PFV&1PP:=2>"smo"; PAS&PFV&2PP:=2>"ste"; PAS&PFV&3PP:=2>"še"; PAS&NPFV&1PS:=2>"h"; PAS&NPFV&2PS:=2>"še"; PAS&NPFV&3PS:=2>"še"; PAS&NPFV&1PP:=2>"smo"; PAS&NPFV&2PP:=2>"ste"; PAS&NPFV&3PP:=2>"hu"; PRS&PTP:=4>"šući"; PAS&PTP:=2>"vši"; PAS&PTP&ARC:=2>"v"; ));
+
+(%x,M37):=(%x,-M37,+FLX(INF:="ti">"ti"; PRS&1PS:=4>"žem"; PRS&2PS:=4>"žeš"; PRS&3PS:=4>"že"; PRS&1PP:=4>"žemo"; PRS&2PP:=4>"žete"; PRS&3PP:=4>"žu"; IMP&2PS:=4>"ži"; IMP&1PP:=4>"žimo"; IMP&2PP:=4>"žite"; PTP&ACV&MCL&SNG:=2>"o"; PTP&ACV&FEM&SNG:=2>"la"; PTP&ACV&NEU&SNG:=2>"lo"; PTP&ACV&MCL&PLR:=2>"li"; PTP&ACV&FEM&PLR:=2>"le"; PTP&ACV&NEU&PLR:=2>"la"; PTP&PSV&MCL&SNG:=2>"n"; PTP&PSV&FEM&SNG:=2>"na"; PTP&PSV&NEU&SNG:=2>"no"; PTP&PSV&MCL&PLR:=2>"ni"; PTP&PSV&FEM&PLR:=2>"ne"; PTP&PSV&NEU&PLR:=2>"na"; PAS&PFV&1PS:=2>"h"; PAS&PFV&2PS:=2>""; PAS&PFV&3PS:=2>""; PAS&PFV&1PP:=2>"smo"; PAS&PFV&2PP:=2>"ste"; PAS&PFV&3PP:=2>"še"; PAS&NPFV&1PS:=2>"h"; PAS&NPFV&2PS:=2>"še"; PAS&NPFV&3PS:=2>"še"; PAS&NPFV&1PP:=2>"smo"; PAS&NPFV&2PP:=2>"ste"; PAS&NPFV&3PP:=2>"hu"; PRS&PTP:=4>"žući"; PAS&PTP:=2>"vši"; PAS&PTP&ARC:=2>"v";));
+
+(%x,M38):=(%x,-M38,+FLX(INF:="ti">"ti"; PRS&1PS:=3>"em"; PRS&2PS:=3>"eš"; PRS&3PS:=3>"e"; PRS&1PP:=3>"emo"; PRS&2PP:=3>"ete"; PRS&3PP:=3>"u"; IMP&2PS:=3>"i"; IMP&1PP:=3>"imo"; IMP&2PP:=3>"ite"; PTP&ACV&MCL&SNG:=2>"o"; PTP&ACV&FEM&SNG:=2>"la"; PTP&ACV&NEU&SNG:=2>"lo"; PTP&ACV&MCL&PLR:=2>"li"; PTP&ACV&FEM&PLR:=2>"le"; PTP&ACV&NEU&PLR:=2>"la"; PTP&PSV&MCL&SNG:=2>"t"; PTP&PSV&FEM&SNG:=2>"ta"; PTP&PSV&NEU&SNG:=2>"to"; PTP&PSV&MCL&PLR:=2>"ti"; PTP&PSV&FEM&PLR:=2>"te"; PTP&PSV&NEU&PLR:=2>"ta"; PAS&PFV&1PS:=2>"h"; PAS&PFV&2PS:=2>""; PAS&PFV&3PS:=2>""; PAS&PFV&1PP:=2>"smo"; PAS&PFV&2PP:=2>"ste"; PAS&PFV&3PP:=2>"še"; PAS&NPFV&1PS:=4>"njah"; PAS&NPFV&2PS:=4>"njaše"; PAS&NPFV&3PS:=4>"njaše"; PAS&NPFV&1PP:=4>"njasmo"; PAS&NPFV&2PP:=4>"njaste"; PAS&NPFV&3PP:=4>"njahu"; PRS&PTP:=2>"ći"; PAS&PTP:=2>"vši"; PAS&PTP&ARC:=2>"v"; ));
+
+(%x,M39):=(%x,-M39,+FLX(INF:="ti">"ti"; PRS&1PS:=4>"ćem"; PRS&2PS:=4>"ćeš"; PRS&3PS:=4>"će"; PRS&1PP:=4>"ćemo"; PRS&2PP:=4>"ćete"; PRS&3PP:=4>"ću"; IMP&2PS:=4>"ći"; IMP&1PP:=4>"ćimo"; IMP&2PP:=4>"ćite"; PTP&ACV&MCL&SNG:=2>"o"; PTP&ACV&FEM&SNG:=2>"la"; PTP&ACV&NEU&SNG:=2>"lo"; PTP&ACV&MCL&PLR:=2>"li"; PTP&ACV&FEM&PLR:=2>"le"; PTP&ACV&NEU&PLR:=2>"la"; PTP&PSV&MCL&SNG:=2>"n"; PTP&PSV&FEM&SNG:=2>"na"; PTP&PSV&NEU&SNG:=2>"no"; PTP&PSV&MCL&PLR:=2>"ni"; PTP&PSV&FEM&PLR:=2>"ne"; PTP&PSV&NEU&PLR:=2>"na"; PAS&PFV&1PS:=2>"h"; PAS&PFV&2PS:=2>""; PAS&PFV&3PS:=2>""; PAS&PFV&1PP:=2>"smo"; PAS&PFV&2PP:=2>"ste"; PAS&PFV&3PP:=2>"še"; PAS&NPFV&1PS:=2>"h"; PAS&NPFV&2PS:=2>"še"; PAS&NPFV&3PS:=2>"še"; PAS&NPFV&1PP:=2>"smo"; PAS&NPFV&2PP:=2>"ste"; PAS&NPFV&3PP:=2>"hu"; PRS&PTP:=4>"ćući"; PAS&PTP:=2>"vši"; PAS&PTP&ARC:=2>"v";));
+
+(%x,M44):=(%x,-M44,+FLX(INF:="ti">"ti"; PRS&1PS:=4>"jem"; PRS&2PS:=4>"ješ"; PRS&3PS:=4>"je"; PRS&1PP:=4>"jemo"; PRS&2PP:=4>"jete"; PRS&3PP:=4>"ju"; IMP&2PS:=4>"j"; IMP&1PP:=4>"jmo"; IMP&2PP:=4>"jte"; PTP&ACV&MCL&SNG:=2>"o"; PTP&ACV&FEM&SNG:=2>"la"; PTP&ACV&NEU&SNG:=2>"lo"; PTP&ACV&MCL&PLR:=2>"li"; PTP&ACV&FEM&PLR:=2>"le"; PTP&ACV&NEU&PLR:=2>"la"; PTP&PSV&MCL&SNG:=2>"n"; PTP&PSV&FEM&SNG:=2>"na"; PTP&PSV&NEU&SNG:=2>"no"; PTP&PSV&MCL&PLR:=2>"ni"; PTP&PSV&FEM&PLR:=2>"ne"; PTP&PSV&NEU&PLR:=2>"na"; PAS&PFV&1PS:=2>"h"; PAS&PFV&2PS:=2>""; PAS&PFV&3PS:=2>""; PAS&PFV&1PP:=2>"smo"; PAS&PFV&2PP:=2>"ste"; PAS&PFV&3PP:=2>"še"; PAS&NPFV&1PS:=2>"h"; PAS&NPFV&2PS:=2>"še"; PAS&NPFV&3PS:=2>"še"; PAS&NPFV&1PP:=2>"smo"; PAS&NPFV&2PP:=2>"ste"; PAS&NPFV&3PP:=2>"hu"; PRS&PTP:=4>"jući"; PAS&PTP:=2>"vši"; PAS&PTP&ARC:=2>"v"; ));
+
+(%x,M46):=(%x,-M46,+FLX(INF:="ti">"ti"; PRS&1PS:=4>"čem"; PRS&2PS:=4>"češ"; PRS&3PS:=4>"če"; PRS&1PP:=4>"čemo"; PRS&2PP:=4>"čete"; PRS&3PP:=4>"ču"; IMP&2PS:=4>"či"; IMP&1PP:=4>"čimo"; IMP&2PP:=4>"čite"; PTP&ACV&MCL&SNG:=2>"o"; PTP&ACV&FEM&SNG:=2>"la"; PTP&ACV&NEU&SNG:=2>"lo"; PTP&ACV&MCL&PLR:=2>"li"; PTP&ACV&FEM&PLR:=2>"le"; PTP&ACV&NEU&PLR:=2>"la"; PTP&PSV&MCL&SNG:=2>"n"; PTP&PSV&FEM&SNG:=2>"na"; PTP&PSV&NEU&SNG:=2>"no"; PTP&PSV&MCL&PLR:=2>"ni"; PTP&PSV&FEM&PLR:=2>"ne"; PTP&PSV&NEU&PLR:=2>"na"; PAS&PFV&1PS:=2>"h"; PAS&PFV&2PS:=2>""; PAS&PFV&3PS:=2>""; PAS&PFV&1PP:=2>"smo"; PAS&PFV&2PP:=2>"ste"; PAS&PFV&3PP:=2>"še"; PAS&NPFV&1PS:=2>"h"; PAS&NPFV&2PS:=2>"še"; PAS&NPFV&3PS:=2>"še"; PAS&NPFV&1PP:=2>"smo"; PAS&NPFV&2PP:=2>"ste"; PAS&NPFV&3PP:=2>"hu"; PRS&PTP:=4>"čući"; PAS&PTP:=2>"vši"; PAS&PTP&ARC:=2>"v";));
+
+(%x,M47):=(%x,-M47,+FLX(INF:="ti">"ti"; PRS&1PS:=2>"jem"; PRS&2PS:=2>"ješ"; PRS&3PS:=2>"je"; PRS&1PP:=2>"jemo"; PRS&2PP:=2>"jete"; PRS&3PP:=2>"ju"; IMP&2PS:=2>"j"; IMP&1PP:=2>"jmo"; IMP&2PP:=2>"jte"; PTP&ACV&MCL&SNG:=2>"o"; PTP&ACV&FEM&SNG:=2>"la"; PTP&ACV&NEU&SNG:=2>"lo"; PTP&ACV&MCL&PLR:=2>"li"; PTP&ACV&FEM&PLR:=2>"le"; PTP&ACV&NEU&PLR:=2>"la"; PTP&PSV&MCL&SNG:=2>"ven"; PTP&PSV&FEM&SNG:=2>"vena"; PTP&PSV&NEU&SNG:=2>"veno"; PTP&PSV&MCL&PLR:=2>"veni"; PTP&PSV&FEM&PLR:=2>"vene"; PTP&PSV&NEU&PLR:=2>"vena"; PAS&PFV&1PS:=2>"h"; PAS&PFV&2PS:=2>""; PAS&PFV&3PS:=2>""; PAS&PFV&1PP:=2>"smo"; PAS&PFV&2PP:=2>"ste"; PAS&PFV&3PP:=2>"še"; PAS&NPFV&1PS:=2>"jah"; PAS&NPFV&2PS:=2>"jaše"; PAS&NPFV&3PS:=2>"jaše"; PAS&NPFV&1PP:=2>"jasmo"; PAS&NPFV&2PP:=2>"jaste"; PAS&NPFV&3PP:=2>"jahu"; PRS&PTP:=2>"jući"; PAS&PTP:=2>"vši"; PAS&PTP&ARC:=2>"v"; ));
+
+(%x,M48):=(%x,-M48,+FLX(INF:="ći">"ći"; PRS&1PS:=2>"đem"; PRS&2PS:=2>"đeš"; PRS&3PS:=2>"đe"; PRS&1PP:=2>"đemo"; PRS&2PP:=2>"đete"; PRS&3PP:=2>"đu"; IMP&2PS:=2>"đi"; IMP&1PP:=2>"đimo"; IMP&2PP:=2>"đite"; PTP&ACV&MCL&SNG:=2>"šao"; PTP&ACV&FEM&SNG:=2>"šla"; PTP&ACV&NEU&SNG:=2>"šlo"; PTP&ACV&MCL&PLR:=2>"šli"; PTP&ACV&FEM&PLR:=2>"šle"; PTP&ACV&NEU&PLR:=2>"šla"; PTP&PSV&MCL&SNG:=2>"đen"; PTP&PSV&FEM&SNG:=2>"đena"; PTP&PSV&NEU&SNG:=2>"đeno"; PTP&PSV&MCL&PLR:=2>"đeni"; PTP&PSV&FEM&PLR:=2>"đene"; PTP&PSV&NEU&PLR:=2>"đena"; PAS&PFV&1PS:=2>"đoh"; PAS&PFV&2PS:=2>"đe"; PAS&PFV&3PS:=2>"đe"; PAS&PFV&1PP:=2>"đosmo"; PAS&PFV&2PP:=2>"đoste"; PAS&PFV&3PP:=2>"đoše"; PAS&NPFV&1PS:=2>"đah"; PAS&NPFV&2PS:=2>"đaše"; PAS&NPFV&3PS:=2>"đaše"; PAS&NPFV&1PP:=2>"đasmo"; PAS&NPFV&2PP:=2>"đaste"; PAS&NPFV&3PP:=2>"đahu"; PRS&PTP:=2>"đući"; PAS&PTP:=2>"šavši"; PAS&PTP&ARC:=2>"šav"; ));
+
+(%x,M52):=(%x,-M52,+FLX(INF:="ti">"ti"; PRS&1PS:=3>"im"; PRS&2PS:=3>"iš"; PRS&3PS:=3>"i"; PRS&1PP:=3>"imo"; PRS&2PP:=3>"ite"; PRS&3PP:=3>"e"; IMP&2PS:=3>"i"; IMP&1PP:=3>"imo"; IMP&2PP:=3>"ite"; PTP&ACV&MCL&SNG:=2>"o"; PTP&ACV&FEM&SNG:=2>"la"; PTP&ACV&NEU&SNG:=2>"lo"; PTP&ACV&MCL&PLR:=2>"li"; PTP&ACV&FEM&PLR:=2>"le"; PTP&ACV&NEU&PLR:=2>"la"; PTP&PSV&MCL&SNG:=4>"ćen"; PTP&PSV&FEM&SNG:=4>"ćena"; PTP&PSV&NEU&SNG:=4>"ćeno"; PTP&PSV&MCL&PLR:=4>"ćeni"; PTP&PSV&FEM&PLR:=4>"ćene"; PTP&PSV&NEU&PLR:=4>"ćena"; PAS&PFV&1PS:=2>"h"; PAS&PFV&2PS:=2>""; PAS&PFV&3PS:=2>""; PAS&PFV&1PP:=2>"smo"; PAS&PFV&2PP:=2>"ste"; PAS&PFV&3PP:=2>"še"; PAS&NPFV&1PS:=4>"ćah"; PAS&NPFV&2PS:=4>"ćaše"; PAS&NPFV&3PS:=4>"ćaše"; PAS&NPFV&1PP:=4>"ćasmo"; PAS&NPFV&2PP:=4>"ćaste"; PAS&NPFV&3PP:=4>"ćahu"; PRS&PTP:=3>"eći"; PAS&PTP:=2>"vši"; PAS&PTP&ARC:=2>"v";));
+
+(%x,M53):=(%x,-M53,+FLX(INF:="ti">"ti"; PRS&1PS:=2>"m"; PRS&2PS:=2>"š"; PRS&3PS:=2>""; PRS&1PP:=2>"mo"; PRS&2PP:=2>"te"; PRS&3PP:=3>"e"; IMP&2PS:=2>""; IMP&1PP:=2>"mo"; IMP&2PP:=2>"te"; PTP&ACV&MCL&SNG:=2>"o"; PTP&ACV&FEM&SNG:=2>"la"; PTP&ACV&NEU&SNG:=2>"lo"; PTP&ACV&MCL&PLR:=2>"li"; PTP&ACV&FEM&PLR:=2>"le"; PTP&ACV&NEU&PLR:=2>"la"; PTP&PSV&MCL&SNG:=4>"čen"; PTP&PSV&FEM&SNG:=4>"čena"; PTP&PSV&NEU&SNG:=4>"čeno"; PTP&PSV&MCL&PLR:=4>"čeni"; PTP&PSV&FEM&PLR:=4>"čene"; PTP&PSV&NEU&PLR:=4>"čena"; PAS&PFV&1PS:=2>"h"; PAS&PFV&2PS:=2>""; PAS&PFV&3PS:=2>""; PAS&PFV&1PP:=2>"smo"; PAS&PFV&2PP:=2>"ste"; PAS&PFV&3PP:=2>"še"; PAS&NPFV&1PS:=4>"čah"; PAS&NPFV&2PS:=4>"čaše"; PAS&NPFV&3PS:=4>"čaše"; PAS&NPFV&1PP:=4>"časmo"; PAS&NPFV&2PP:=4>"časte"; PAS&NPFV&3PP:=4>"čahu"; PRS&PTP:=3>"eći"; PAS&PTP:=2>"vši"; PAS&PTP&ARC:=2>"v"; ));
+
+(%x,M56):=(%x,-M56,+FLX(PST:=0>""; CMP:=1>"ije"; SUP:="naj"<0,1>"ije";));
+
+(%x,M57):=(%x,-M57,+FLX(INF:="ti">"ti"; PRS&1PS:=3>"im"; PRS&2PS:=3>"iš"; PRS&3PS:=3>"i"; PRS&1PP:=3>"imo"; PRS&2PP:=3>"ite"; PRS&3PP:=3>"e"; IMP&2PS:=3>"i"; IMP&1PP:=3>"imo"; IMP&2PP:=3>"ite"; PTP&ACV&MCL&SNG:=2>"o"; PTP&ACV&FEM&SNG:=2>"la"; PTP&ACV&NEU&SNG:=2>"lo"; PTP&ACV&MCL&PLR:=2>"li"; PTP&ACV&FEM&PLR:=2>"le"; PTP&ACV&NEU&PLR:=2>"la"; PTP&PSV&MCL&SNG:=3>"ljen"; PTP&PSV&FEM&SNG:=3>"ljena"; PTP&PSV&NEU&SNG:=3>"ljeno"; PTP&PSV&MCL&PLR:=3>"ljeni"; PTP&PSV&FEM&PLR:=3>"ljene"; PTP&PSV&NEU&PLR:=3>"ljena"; PAS&PFV&1PS:=2>"h"; PAS&PFV&2PS:=2>""; PAS&PFV&3PS:=2>""; PAS&PFV&1PP:=2>"smo"; PAS&PFV&2PP:=2>"ste"; PAS&PFV&3PP:=2>"še"; PAS&NPFV&1PS:=3>"ljah"; PAS&NPFV&2PS:=3>"ljaše"; PAS&NPFV&3PS:=3>"ljaše"; PAS&NPFV&1PP:=3>"ljasmo"; PAS&NPFV&2PP:=3>"ljaste"; PAS&NPFV&3PP:=3>"ljahu"; PRS&PTP:=3>"eći"; PAS&PTP:=2>"vši"; PAS&PTP&ARC:=2>"v";));
+
+(%x,M60):=(%x,-M60,+FLX(INF:="ti">"ti"; PRS&1PS:=2>"m"; PRS&2PS:=2>"š"; PRS&3PS:=2>""; PRS&1PP:=2>"mo"; PRS&2PP:=2>"te"; PRS&3PP:=3>"e"; IMP&2PS:=2>""; IMP&1PP:=2>"mo"; IMP&2PP:=2>"te"; PTP&ACV&MCL&SNG:=2>"o"; PTP&ACV&FEM&SNG:=2>"la"; PTP&ACV&NEU&SNG:=2>"lo"; PTP&ACV&MCL&PLR:=2>"li"; PTP&ACV&FEM&PLR:=2>"le"; PTP&ACV&NEU&PLR:=2>"la"; PTP&PSV&MCL&SNG:=4>"žen"; PTP&PSV&FEM&SNG:=4>"žena"; PTP&PSV&NEU&SNG:=4>"ženo"; PTP&PSV&MCL&PLR:=4>"ženi"; PTP&PSV&FEM&PLR:=4>"žene"; PTP&PSV&NEU&PLR:=4>"žena"; PAS&PFV&1PS:=2>"h"; PAS&PFV&2PS:=2>""; PAS&PFV&3PS:=2>""; PAS&PFV&1PP:=2>"smo"; PAS&PFV&2PP:=2>"ste"; PAS&PFV&3PP:=2>"še"; PAS&NPFV&1PS:=4>"žah"; PAS&NPFV&2PS:=4>"žaše"; PAS&NPFV&3PS:=4>"žaše"; PAS&NPFV&1PP:=4>"žasmo"; PAS&NPFV&2PP:=4>"žaste"; PAS&NPFV&3PP:=4>"žahu"; PRS&PTP:=3>"eći"; PAS&PTP:=2>"vši"; PAS&PTP&ARC:=2>"v"; ));
+
+(%x,M61):=(%x,-M61,+FLX(PST&MCL&SNG&NOM&NDEF:=0>""; PST&MCL&SNG&GNT&NDEF:=3>"na"; PST&MCL&SNG&DAT&NDEF:=3>"nu"; PST&MCL&SNG&ACC&NANM&NDEF:=0>""; PST&MCL&SNG&ACC&ANM&NDEF:=3>"na"; PST&MCL&SNG&VOC&NDEF:=3>"ni"; PST&MCL&SNG&INS&NDEF:=3>"nim"; PST&MCL&SNG&LOC&NDEF:=3>"nu"; PST&MCL&SNG&NOM&DEF:=3>"ni"; PST&MCL&SNG&GNT&DEF:=3>"nog"; PST&MCL&SNG&DAT&DEF:=3>"nom"; PST&MCL&SNG&ACC&NANM&DEF:=3>"ni"; PST&MCL&SNG&ACC&ANM&DEF:=3>"nog"; PST&MCL&SNG&VOC&DEF:=3>"ni"; PST&MCL&SNG&INS&DEF:=3>"nim"; PST&MCL&SNG&LOC&DEF:=3>"nom"; PST&MCL&PLR&NOM:=3>"ni"; PST&MCL&PLR&GNT:=3>"nih"; PST&MCL&PLR&DAT:=3>"nim"; PST&MCL&PLR&ACC:=3>"ne"; PST&MCL&PLR&VOC:=3>"ni"; PST&MCL&PLR&INS:=3>"nim"; PST&MCL&PLR&LOC:=3>"nim"; PST&FEM&SNG&NOM:=3>"na"; PST&FEM&SNG&GNT:=3>"ne"; PST&FEM&SNG&DAT:=3>"noj"; PST&FEM&SNG&ACC:=3>"nu"; PST&FEM&SNG&VOC:=3>"na"; PST&FEM&SNG&INS:=3>"nom"; PST&FEM&SNG&LOC:=3>"noj"; PST&FEM&PLR&NOM:=3>"ne"; PST&FEM&PLR&GNT:=3>"nih"; PST&FEM&PLR&DAT:=3>"nim"; PST&FEM&PLR&ACC:=3>"ne"; PST&FEM&PLR&VOC:=3>"ne"; PST&FEM&PLR&INS:=3>"nim"; PST&FEM&PLR&LOC:=3>"nim"; PST&NEU&SNG&NOM&NDEF:=3>"no"; PST&NEU&SNG&GNT&NDEF:=3>"na"; PST&NEU&SNG&DAT&NDEF:=3>"nu"; PST&NEU&SNG&ACC&NDEF:=3>"no"; PST&NEU&SNG&VOC&NDEF:=3>"no"; PST&NEU&SNG&INS&NDEF:=3>"nim"; PST&NEU&SNG&LOC&NDEF:=3>"nu"; PST&NEU&SNG&NOM&DEF:=3>"no"; PST&NEU&SNG&GNT&DEF:=3>"nog"; PST&NEU&SNG&DAT&DEF:=3>"nom"; PST&NEU&SNG&ACC&DEF:=3>"no"; PST&NEU&SNG&VOC&DEF:=3>"no"; PST&NEU&SNG&INS&DEF:=3>"nim"; PST&NEU&SNG&LOC&DEF:=3>"nom"; PST&NEU&PLR&NOM:=3>"na"; PST&NEU&PLR&GNT:=3>"nih"; PST&NEU&PLR&DAT:=3>"nim"; PST&NEU&PLR&ACC:=3>"na"; PST&NEU&PLR&VOC:=3>"na"; PST&NEU&PLR&INS:=3>"nim"; PST&NEU&PLR&LOC:=3>"nim"; CMP&MCL&SNG&NOM:=3>"niji"; CMP&MCL&SNG&GNT:=3>"nijeg"; CMP&MCL&SNG&DAT:=3>"nijem"; CMP&MCL&SNG&ACC&NANM:=3>"niji"; CMP&MCL&SNG&ACC&ANM:=3>"nijeg"; CMP&MCL&SNG&VOC:=3>"niji"; CMP&MCL&SNG&INS:=3>"nijim"; CMP&MCL&SNG&LOC:=3>"nijem"; CMP&MCL&PLR&NOM:=3>"niji"; CMP&MCL&PLR&GNT:=3>"nijih"; CMP&MCL&PLR&DAT:=3>"nijim"; CMP&MCL&PLR&ACC:=3>"nije"; CMP&MCL&PLR&VOC:=3>"niji"; CMP&MCL&PLR&INS:=3>"nijim"; CMP&MCL&PLR&LOC:=3>"nijim"; CMP&FEM&SNG&NOM:=3>"nija"; CMP&FEM&SNG&GNT:=3>"nije"; CMP&FEM&SNG&DAT:=3>"nijoj"; CMP&FEM&SNG&ACC:=3>"niju"; CMP&FEM&SNG&VOC:=3>"nija"; CMP&FEM&SNG&INS:=3>"nijom"; CMP&FEM&SNG&LOC:=3>"nijoj"; CMP&FEM&PLR&NOM:=3>"nije"; CMP&FEM&PLR&GNT:=3>"nijih"; CMP&FEM&PLR&DAT:=3>"nijim"; CMP&FEM&PLR&ACC:=3>"nije"; CMP&FEM&PLR&VOC:=3>"nije"; CMP&FEM&PLR&INS:=3>"nijim"; CMP&FEM&PLR&LOC:=3>"nijim"; CMP&NEU&SNG&NOM:=3>"nije"; CMP&NEU&SNG&GNT:=3>"nijeg"; CMP&NEU&SNG&DAT:=3>"nijem"; CMP&NEU&SNG&ACC:=3>"nije"; CMP&NEU&SNG&VOC:=3>"nije"; CMP&NEU&SNG&INS:=3>"nijim"; CMP&NEU&SNG&LOC:=3>"nijem"; CMP&NEU&PLR&NOM:=3>"nija"; CMP&NEU&PLR&GNT:=3>"nijih"; CMP&NEU&PLR&DAT:=3>"nijim"; CMP&NEU&PLR&ACC:=3>"nija"; CMP&NEU&PLR&VOC:=3>"nija"; CMP&NEU&PLR&INS:=3>"nijim"; CMP&NEU&PLR&LOC:=3>"nijim"; SUP&MCL&SNG&NOM:="naj"<"",3>"niji"; SUP&MCL&SNG&GNT:="naj"<"",3>"nijeg"; SUP&MCL&SNG&DAT:="naj"<"",3>"nijem"; SUP&MCL&SNG&ACC&NANM:="naj"<"",3>"niji"; SUP&MCL&SNG&ACC&ANM:="naj"<"",3>"nijeg"; SUP&MCL&SNG&VOC:="naj"<"",3>"niji"; SUP&MCL&SNG&INS:="naj"<"",3>"nijim"; SUP&MCL&SNG&LOC:="naj"<"",3>"nijem"; SUP&MCL&PLR&NOM:="naj"<"",3>"niji"; SUP&MCL&PLR&GNT:="naj"<"",3>"nijih"; SUP&MCL&PLR&DAT:="naj"<"",3>"nijim"; SUP&MCL&PLR&ACC:="naj"<"",3>"nije"; SUP&MCL&PLR&VOC:="naj"<"",3>"niji"; SUP&MCL&PLR&INS:="naj"<"",3>"nijim"; SUP&MCL&PLR&LOC:="naj"<"",3>"nijim"; SUP&FEM&SNG&NOM:="naj"<"",3>"nija"; SUP&FEM&SNG&GNT:="naj"<"",3>"nije"; SUP&FEM&SNG&DAT:="naj"<"",3>"nijoj"; SUP&FEM&SNG&ACC:="naj"<"",3>"niju"; SUP&FEM&SNG&VOC:="naj"<"",3>"nija"; SUP&FEM&SNG&INS:="naj"<"",3>"nijom"; SUP&FEM&SNG&LOC:="naj"<"",3>"nijoj"; SUP&FEM&PLR&NOM:="naj"<"",3>"nije"; SUP&FEM&PLR&GNT:="naj"<"",3>"nijih"; SUP&FEM&PLR&DAT:="naj"<"",3>"nijim"; SUP&FEM&PLR&ACC:="naj"<"",3>"nije"; SUP&FEM&PLR&VOC:="naj"<"",3>"nije"; SUP&FEM&PLR&INS:="naj"<"",3>"nijim"; SUP&FEM&PLR&LOC:="naj"<"",3>"nijim";SUP&NEU&SNG&NOM:="naj"<"",3>"nije"; SUP&NEU&SNG&GNT:="naj"<"",3>"nijeg"; SUP&NEU&SNG&DAT:="naj"<"",3>"nijem"; SUP&NEU&SNG&ACC:="naj"<"",3>"nije"; SUP&NEU&SNG&VOC:="naj"<"",3>"nije"; SUP&NEU&SNG&INS:="naj"<"",3>"nijim"; SUP&NEU&SNG&LOC:="naj"<"",3>"nijem"; SUP&NEU&PLR&NOM:="naj"<"",3>"nija"; SUP&NEU&PLR&GNT:="naj"<"",3>"nijih"; SUP&NEU&PLR&DAT:="naj"<"",3>"nijim"; SUP&NEU&PLR&ACC:="naj"<"",3>"nija"; SUP&NEU&PLR&VOC:="naj"<"",3>"nija"; SUP&NEU&PLR&INS:="naj"<"",3>"nijim"; SUP&NEU&PLR&LOC:="naj"<"",3>"nijim"; PST&MCL&PAU:=3>"na"; CMP&MCL&PAU:=3>"nija"; SUP&MCL&PAU:="naj"<"",3>"nija"; PST&FEM&PAU:=3>"ne"; CMP&FEM&PAU:=3>"nije"; SUP&FEM&PAU:="naj"<"",3>"nije"; PST&NEU&PAU:=3>"na"; CMP&NEU&PAU:=3>"nija"; SUP&NEU&PAU:="naj"<"",3>"nija";));
+
+(%x,M66):=(%x,-M66,+FLX(INF:="ti">"ti"; PRS&1PS:=3>"im"; PRS&2PS:=3>"iš"; PRS&3PS:=3>"i"; PRS&1PP:=3>"imo"; PRS&2PP:=3>"ite"; PRS&3PP:=3>"e"; IMP&2PS:=3>"i"; IMP&1PP:=3>"imo"; IMP&2PP:=3>"ite"; PTP&ACV&MCL&SNG:=2>"o"; PTP&ACV&FEM&SNG:=2>"la"; PTP&ACV&NEU&SNG:=2>"lo"; PTP&ACV&MCL&PLR:=2>"li"; PTP&ACV&FEM&PLR:=2>"le"; PTP&ACV&NEU&PLR:=2>"la"; PTP&PSV&MCL&SNG:=3>"jen"; PTP&PSV&FEM&SNG:=3>"jena"; PTP&PSV&NEU&SNG:=3>"jeno"; PTP&PSV&MCL&PLR:=3>"jeni"; PTP&PSV&FEM&PLR:=3>"jene"; PTP&PSV&NEU&PLR:=3>"jena"; PAS&PFV&1PS:=2>"h"; PAS&PFV&2PS:=2>""; PAS&PFV&3PS:=2>""; PAS&PFV&1PP:=2>"smo"; PAS&PFV&2PP:=2>"ste"; PAS&PFV&3PP:=2>"še"; PAS&NPFV&1PS:=3>"jah"; PAS&NPFV&2PS:=3>"jaše"; PAS&NPFV&3PS:=3>"jaše"; PAS&NPFV&1PP:=3>"jasmo"; PAS&NPFV&2PP:=3>"jaste"; PAS&NPFV&3PP:=3>"jahu"; PRS&PTP:=3>"eći"; PAS&PTP:=2>"vši"; PAS&PTP&ARC:=2>"v";));
+
+(%x,M68):=(%x,-M68,+FLX(SNG&NOM:=0>""; SNG&GNT:="ak">"ka"; SNG&DAT:="ak">"ku"; SNG&ACC&ANM:="ak">"ka"; SNG&ACC&NANM:=0>""; SNG&VOC:= "ak">"če"; SNG&INS:="ak">"kom"; SNG&LOC:="ak">"ku";PLR&NOM:="ak">"ci"; PLR&GNT:=0>"a"; PLR&DAT:="ak">"cima"; PLR&ACC:="ak">"ke"; PLR&VOC:= "ak">"ci"; PLR&INS:="ak">"cima"; PLR&LOC:="ak">"cima"; PAU:="ak">"ka";));
+
+(%x,M70):=(%x,-M70,+FLX(INF:="ti">"ti"; PRS&1PS:=2>"gnem"; PRS&2PS:=2>"gneš"; PRS&3PS:=2>"gne"; PRS&1PP:=2>"gnemo"; PRS&2PP:=2>"gnete"; PRS&3PP:=2>"gnu"; IMP&2PS:=2>"gni"; IMP&1PP:=2>"gnimo"; IMP&2PP:=2>"gnite"; PTP&ACV&MCL&SNG:=2>"gao"; PTP&ACV&FEM&SNG:=2>"gla"; PTP&ACV&NEU&SNG:=2>"glo"; PTP&ACV&MCL&PLR:=2>"gli"; PTP&ACV&FEM&PLR:=2>"gle"; PTP&ACV&NEU&PLR:=2>"gla"; PTP&PSV&MCL&SNG:=2>"gnut"; PTP&PSV&FEM&SNG:=2>"gnuta"; PTP&PSV&NEU&SNG:=2>"gnuto"; PTP&PSV&MCL&PLR:=2>"gnuti"; PTP&PSV&FEM&PLR:=2>"gnute"; PTP&PSV&NEU&PLR:=2>"gnuta"; PAS&PFV&1PS:=2>"goh"; PAS&PFV&2PS:=2>"že"; PAS&PFV&3PS:=2>"že"; PAS&PFV&1PP:=2>"gosmo"; PAS&PFV&2PP:=2>"goste"; PAS&PFV&3PP:=2>"goše"; PRS&PTP:=2>"gnući"; PAS&PTP:=2>"gnuvši"; PAS&PTP&ARC:=2>"gnuv"; ));
+
+(%x,M74):=(%x,-M74,+FLX(INF:="ti">"ti"; PRS&1PS:=2>"m"; PRS&2PS:=2>"š"; PRS&3PS:=2>""; PRS&1PP:=2>"mo"; PRS&2PP:=2>"te"; PRS&3PP:=3>"e"; IMP&2PS:=2>""; IMP&1PP:=2>"mo"; IMP&2PP:=2>"te"; PTP&ACV&MCL&SNG:=2>"o"; PTP&ACV&FEM&SNG:=2>"la"; PTP&ACV&NEU&SNG:=2>"lo"; PTP&ACV&MCL&PLR:=2>"li"; PTP&ACV&FEM&PLR:=2>"le"; PTP&ACV&NEU&PLR:=2>"la"; PTP&PSV&MCL&SNG:=3>"en"; PTP&PSV&FEM&SNG:=3>"ena"; PTP&PSV&NEU&SNG:=3>"eno"; PTP&PSV&MCL&PLR:=3>"eni"; PTP&PSV&FEM&PLR:=3>"ene"; PTP&PSV&NEU&PLR:=3>"ena"; PAS&PFV&1PS:=2>"h"; PAS&PFV&2PS:=2>""; PAS&PFV&3PS:=2>""; PAS&PFV&1PP:=2>"smo"; PAS&PFV&2PP:=2>"ste"; PAS&PFV&3PP:=2>"še"; PAS&NPFV&1PS:=3>"ah"; PAS&NPFV&2PS:=3>"aše"; PAS&NPFV&3PS:=3>"aše"; PAS&NPFV&1PP:=3>"asmo"; PAS&NPFV&2PP:=3>"aste"; PAS&NPFV&3PP:=3>"ahu"; PRS&PTP:=3>"eći"; PAS&PTP:=2>"vši"; PAS&PTP&ARC:=2>"v"; ));
+
+(%x,M76):=(%x,-M76,+FLX(INF:="ti">"ti"; PRS&1PS:=3>"em"; PRS&2PS:=3>"eš"; PRS&3PS:=3>"e"; PRS&1PP:=3>"emo"; PRS&2PP:=3>"ete"; PRS&3PP:=3>"u"; IMP&2PS:=3>"i"; IMP&1PP:=3>"imo"; IMP&2PP:=3>"ite"; PTP&ACV&MCL&SNG:=2>"o"; PTP&ACV&FEM&SNG:=2>"la"; PTP&ACV&NEU&SNG:=2>"lo"; PTP&ACV&MCL&PLR:=2>"li"; PTP&ACV&FEM&PLR:=2>"le"; PTP&ACV&NEU&PLR:=2>"la"; PTP&PSV&MCL&SNG:=2>"n"; PTP&PSV&FEM&SNG:=2>"na"; PTP&PSV&NEU&SNG:=2>"no"; PTP&PSV&MCL&PLR:=2>"ni"; PTP&PSV&FEM&PLR:=2>"ne"; PTP&PSV&NEU&PLR:=2>"na"; PAS&PFV&1PS:=2>"h"; PAS&PFV&2PS:=2>""; PAS&PFV&3PS:=2>""; PAS&PFV&1PP:=2>"smo"; PAS&PFV&2PP:=2>"ste"; PAS&PFV&3PP:=2>"še"; PAS&NPFV&1PS:=2>"h"; PAS&NPFV&2PS:=2>"še"; PAS&NPFV&3PS:=2>"še"; PAS&NPFV&1PP:=2>"smo"; PAS&NPFV&2PP:=2>"ste"; PAS&NPFV&3PP:=2>"hu"; PRS&PTP:=3>"ući"; PAS&PTP:=2>"vši"; PAS&PTP&ARC:=2>"v";));
+
+(%x,M78):=(%x,-M78,+FLX(INF:="ti">"ti"; PRS&1PS:=3>"im"; PRS&2PS:=3>"iš"; PRS&3PS:=3>"i"; PRS&1PP:=3>"imo"; PRS&2PP:=3>"ite"; PRS&3PP:=3>"e"; IMP&2PS:=3>"i"; IMP&1PP:=3>"imo"; IMP&2PP:=3>"ite"; PTP&ACV&MCL&SNG:=2>"o"; PTP&ACV&FEM&SNG:=2>"la"; PTP&ACV&NEU&SNG:=2>"lo"; PTP&ACV&MCL&PLR:=2>"li"; PTP&ACV&FEM&PLR:=2>"le"; PTP&ACV&NEU&PLR:=2>"la"; PTP&PSV&MCL&SNG:=5>"šten"; PTP&PSV&FEM&SNG:=5>"štena"; PTP&PSV&NEU&SNG:=5>"šteno"; PTP&PSV&MCL&PLR:=5>"šteni"; PTP&PSV&FEM&PLR:=5>"štene"; PTP&PSV&NEU&PLR:=5>"štena"; PAS&PFV&1PS:=2>"h"; PAS&PFV&2PS:=2>""; PAS&PFV&3PS:=2>""; PAS&PFV&1PP:=2>"smo"; PAS&PFV&2PP:=2>"ste"; PAS&PFV&3PP:=2>"še"; PAS&NPFV&1PS:=5>"štah"; PAS&NPFV&2PS:=5>"štaše"; PAS&NPFV&3PS:=5>"štaše"; PAS&NPFV&1PP:=5>"štasmo"; PAS&NPFV&2PP:=5>"štaste"; PAS&NPFV&3PP:=5>"štahu"; PRS&PTP:=3>"eći"; PAS&PTP:=2>"vši"; PAS&PTP&ARC:=2>"v"; ));
+
+(%x,M80):=(%x,-M80,+FLX(SNG&NOM:=0>""; SNG&GNT:=2>"la"; SNG&DAT:=2>"lu"; SNG&ACC&ANM:=2>"la"; SNG&ACC&NANM:=0>""; SNG&VOC:=2>"le"; SNG&INS:=2>"lom"; SNG&LOC:=2>"lu"; PLR&NOM:=2>"lovi"; PLR&GNT:=2>"lova"; PLR&DAT:=2>"lovima"; PLR&ACC:=2>"love"; PLR&VOC:=2>"lovi"; PLR&INS:=2>"lovima"; PLR&LOC:=2>"lovima"; PAU:=2>"la";));
+
+(%x,M83):=(%x,-M83,+FLX(INF:="ći">"ći"; PRS&1PS:=2>"čem"; PRS&2PS:=2>"češ"; PRS&3PS:=2>"če"; PRS&1PP:=2>"čemo"; PRS&2PP:=2>"čete"; PRS&3PP:=2>"ku"; IMP&2PS:=2>"ci"; IMP&1PP:=2>"cimo"; IMP&2PP:=2>"cite"; PTP&ACV&MCL&SNG:=2>"kao"; PTP&ACV&FEM&SNG:=2>"kla"; PTP&ACV&NEU&SNG:=2>"klo"; PTP&ACV&MCL&PLR:=2>"kli"; PTP&ACV&FEM&PLR:=2>"kle"; PTP&ACV&NEU&PLR:=2>"kla"; PTP&PSV&MCL&SNG:=2>"čen"; PTP&PSV&FEM&SNG:=2>"čena"; PTP&PSV&NEU&SNG:=2>"čeno"; PTP&PSV&MCL&PLR:=2>"čeni"; PTP&PSV&FEM&PLR:=2>"čene"; PTP&PSV&NEU&PLR:=2>"čena"; PAS&PFV&1PS:=2>"koh"; PAS&PFV&2PS:=2>"če"; PAS&PFV&3PS:=2>"če"; PAS&PFV&1PP:=2>"kosmo"; PAS&PFV&2PP:=2>"koste"; PAS&PFV&3PP:=2>"koše"; PAS&NPFV&1PS:=2>"čah"; PAS&NPFV&2PS:=2>"čaše"; PAS&NPFV&3PS:=2>"čaše"; PAS&NPFV&1PP:=2>"časmo"; PAS&NPFV&2PP:=2>"časte"; PAS&NPFV&3PP:=2>"čahu"; +PAS&NPFV&1PS:=2>"cijah"; +PAS&NPFV&2PS:=2>"cijaše"; +PAS&NPFV&3PS:=2>"cijaše"; +PAS&NPFV&1PP:=2>"cijasmo"; +PAS&NPFV&2PP:=2>"cijaste"; +PAS&NPFV&3PP:=2>"cijahu"; PRS&PTP:=2>"kući"; PAS&PTP:=2>"kavši"; PAS&PTP&ARC:=2>"kav";));
+
+(%x,M84):=(%x,-M84,+FLX(SNG&NOM:=>""; SNG&GNT:="zak">"ska"; SNG&DAT:="zak">"sku"; SNG&ACC&ANM:="zak">"ska"; SNG&ACC&NANM:=0>""; SNG&VOC:="zak">"šče"; SNG&INS:="zak">"skom"; SNG&LOC:="zak">"sku"; PLR&NOM:="zak">"sci"; PLR&GNT:=0>"a"; PLR&DAT:="zak">"scima"; PLR&ACC:="zak">"ske"; PLR&VOC:= "zak">"sci"; PLR&INS:="zak">"scima"; PLR&LOC:="zak">"scima"; PAU:="zak">"ska"; ));
+
+(%x,M85):=(%x,-M85,+FLX(SNG&NOM:=0>""; SNG&GNT:=0>"a"; SNG&DAT:=0>"u"; SNG&ACC&ANM:=0>"a"; SNG&ACC&NANM:=0>""; SNG&VOC:=0>"e"; SNG&INS:=0>"om"; SNG&LOC:=0>"u"; PLR&NOM:=0>"i"; PLR&GNT:="a"<[-1],0>"a"; PLR&DAT:=0>"ima"; PLR&ACC:=0>"e"; PLR&VOC:=0>"i"; PLR&INS:=0>"ima"; PLR&LOC:=0>"ima"; PAU:=0>"a";));
+
+(%x,M86):=(%x,-M86,+FLX(SNG&NOM:=>""; SNG&GNT:="dak">"tka"; SNG&DAT:="dak">"tku"; SNG&ACC&ANM:="dak">"tka"; SNG&ACC&NANM:=0>""; SNG&VOC:="dak">"če"; SNG&INS:="dak">"tkom"; SNG&LOC:="dak">"tku"; PLR&NOM:="dak">"ci"; PLR&GNT:=0>"a"; PLR&DAT:="dak">"cima"; PLR&ACC:="dak">"tke"; PLR&VOC:= "dak">"ci"; PLR&INS:="dak">"cima"; PLR&LOC:="dak">"cima"; PAU:="dak">"tka";));
+
+(%x,M89):=(%x,-M89,+FLX(PST&MCL&SNG&NOM:=0>""; PST&MCL&SNG&GNT:=2>"vega"; PST&MCL&SNG&DAT:=2>"vemu"; PST&MCL&SNG&ACC&NANM:=0>""; PST&MCL&SNG&ACC&ANM:=2>"vega"; PST&MCL&SNG&VOC:=0>""; PST&MCL&SNG&INS:=2>"vim"; PST&MCL&SNG&LOC:=2>"vemu"; PST&MCL&PLR&NOM:=2>"vi"; PST&MCL&PLR&GNT:=2>"vih"; PST&MCL&PLR&DAT:=2>"vim"; PST&MCL&PLR&ACC:=2>"ve"; PST&MCL&PLR&VOC:=2>"vi"; PST&MCL&PLR&INS:=2>"vim"; PST&MCL&PLR&LOC:=2>"vim"; PST&FEM&SNG&NOM:=2>"va"; PST&FEM&SNG&GNT:=2>"ve"; PST&FEM&SNG&DAT:=2>"voj"; PST&FEM&SNG&ACC:=2>"vu"; PST&FEM&SNG&VOC:=2>"va"; PST&FEM&SNG&INS:=2>"vom"; PST&FEM&SNG&LOC:=2>"voj"; PST&FEM&PLR&NOM:=2>"ve"; PST&FEM&PLR&GNT:=2>"vih"; PST&FEM&PLR&DAT:=2>"vim"; PST&FEM&PLR&ACC:=2>"ve"; PST&FEM&PLR&VOC:=2>"ve"; PST&FEM&PLR&INS:=2>"vim"; PST&FEM&PLR&LOC:=2>"vim"; PST&NEU&SNG&NOM:=2>"ve"; PST&NEU&SNG&GNT:=2>"veg"; PST&NEU&SNG&DAT:=2>"vem"; PST&NEU&SNG&ACC:=2>"ve"; PST&NEU&SNG&VOC:=2>"ve"; PST&NEU&SNG&INS:=2>"vim"; PST&NEU&SNG&LOC:=2>"vem"; PST&NEU&PLR&NOM:=2>"va"; PST&NEU&PLR&GNT:=2>"vih"; PST&NEU&PLR&DAT:=2>"vim"; PST&NEU&PLR&ACC:=2>"va"; PST&NEU&PLR&VOC:=2>"va"; PST&NEU&PLR&INS:=2>"vim"; PST&NEU&PLR&LOC:=2>"vim";));
+
+(%x,M90):=(%x,-M90,+FLX(INF:="biti">"biti"; PRS&1PS&NEG:="biti">"nisam"; PRS&2PS&NEG:="biti">"nisi"; PRS&3PS&NEG:="biti">"nije"; PRS&1PP&NEG:="biti">"nismo"; PRS&2PP&NEG:="biti">"niste"; PRS&3PP&NEG:="biti">"nisu"; PRS&1PS:="biti">"sam"; PRS&2PS:="biti">"si"; PRS&3PS:="biti">"je"; PRS&1PP:="biti">"smo"; PRS&2PP:="biti">"ste"; PRS&3PP:="biti">"su"; CON&1PS:="biti">"bih"; CON&2PS:="biti">"bi"; CON&3PS:="biti">"bi"; CON&1PP:="biti">"bismo"; CON&2PP:="biti">"biste"; CON&3PP:="biti">"bi"; IMP&2PS:="biti">"budi"; IMP&1PP:="biti">"budimo"; IMP&2PP:="biti">"budite"; PTP&ACV&MCL&SNG:="biti">"bio"; PTP&ACV&FEM&SNG:="biti">"bila"; PTP&ACV&NEU&SNG:="biti">"bilo"; PTP&ACV&MCL&PLR:="biti">"bili"; PTP&ACV&FEM&PLR:="biti">"bile"; PTP&ACV&NEU&PLR:="biti">"bila";));
+
+(%x,M91):=(%x,-M91,+FLX(INF:="hteti">"hteti"; PRS&1PS&NEG:="hteti">"neću"; PRS&2PS&NEG:="hteti">"nećeš"; PRS&3PS&NEG:="hteti">"neće"; PRS&1PP&NEG:="hteti">"nećemo"; PRS&2PP&NEG:="hteti">"nećete"; PRS&3PP&NEG:="hteti">"neće"; PRS&1PS:="hteti">"ću"; PRS&2PS:="hteti">"ćeš"; PRS&3PS:="hteti">"će"; PRS&1PP:="hteti">"ćemo"; PRS&2PP:="hteti">"ćete"; PRS&3PP:="hteti">"će"; ));
+
+(%x,M92):=(%x,-M92,+FLX(PST&MCL&SNG&NOM:=0>""; PST&MCL&SNG&GNT:=2>"og"; PST&MCL&SNG&DAT:=2>"om"; PST&MCL&SNG&ACC&NANM:=0>""; PST&MCL&SNG&ACC&ANM:=2>"og"; PST&MCL&SNG&VOC:=0>""; PST&MCL&SNG&INS:=2>"im"; PST&MCL&SNG&LOC:=2>"om"; PST&MCL&PLR&NOM:=2>"i"; PST&MCL&PLR&GNT:=2>"ih"; PST&MCL&PLR&DAT:=2>"im"; PST&MCL&PLR&ACC:=2>"e"; PST&MCL&PLR&VOC:=2>"i"; PST&MCL&PLR&INS:=2>"im"; PST&MCL&PLR&LOC:=2>"im"; PST&FEM&SNG&NOM:=2>"a"; PST&FEM&SNG&GNT:=2>"e"; PST&FEM&SNG&DAT:=2>"oj"; PST&FEM&SNG&ACC:=2>"u"; PST&FEM&SNG&VOC:=2>"a"; PST&FEM&SNG&INS:=2>"om"; PST&FEM&SNG&LOC:=2>"oj"; PST&FEM&PLR&NOM:=2>"e"; PST&FEM&PLR&GNT:=2>"ih"; PST&FEM&PLR&DAT:=2>"im"; PST&FEM&PLR&ACC:=2>"e"; PST&FEM&PLR&VOC:=2>"e"; PST&FEM&PLR&INS:=2>"im"; PST&FEM&PLR&LOC:=2>"im"; PST&NEU&SNG&NOM:=2>"o"; PST&NEU&SNG&GNT:=2>"og"; PST&NEU&SNG&DAT:=2>"om"; PST&NEU&SNG&ACC:=2>"o"; PST&NEU&SNG&VOC:=2>"o"; PST&NEU&SNG&INS:=2>"im"; PST&NEU&SNG&LOC:=2>"om"; PST&NEU&PLR&NOM:=2>"a"; PST&NEU&PLR&GNT:=2>"ih"; PST&NEU&PLR&DAT:=2>"im"; PST&NEU&PLR&ACC:=2>"a"; PST&NEU&PLR&VOC:=2>"a"; PST&NEU&PLR&INS:=2>"im"; PST&NEU&PLR&LOC:=2>"im";));
+
+(%x,M93):=(%x,-M93,+FLX(PST&MCL&SNG&NOM:=0>""; PST&MCL&SNG&GNT:=2>"og"; PST&MCL&SNG&DAT:=2>"om"; PST&MCL&SNG&ACC&NANM:=0>""; PST&MCL&SNG&ACC&ANM:=2>"og"; PST&MCL&SNG&VOC:=0>""; PST&MCL&SNG&INS:=0>"im"; PST&MCL&SNG&LOC:=1>"m"; PST&MCL&PLR&NOM:=0>"i"; PST&MCL&PLR&GNT:=0>"ih"; PST&MCL&PLR&DAT:=0>"im"; PST&MCL&PLR&ACC:=0>"e"; PST&MCL&PLR&VOC:=0>"i"; PST&MCL&PLR&INS:=0>"im"; PST&MCL&PLR&LOC:=0>"im"; PST&FEM&SNG&NOM:=0>"a"; PST&FEM&SNG&GNT:=0>"e"; PST&FEM&SNG&DAT:=0>"oj"; PST&FEM&SNG&ACC:=0>"u"; PST&FEM&SNG&VOC:=0>"a"; PST&FEM&SNG&INS:=0>"om"; PST&FEM&SNG&LOC:=0>"oj"; PST&FEM&PLR&NOM:=0>"e"; PST&FEM&PLR&GNT:=0>"ih"; PST&FEM&PLR&DAT:=0>"im"; PST&FEM&PLR&ACC:=0>"e"; PST&FEM&PLR&VOC:=0>"e"; PST&FEM&PLR&INS:=0>"im"; PST&FEM&PLR&LOC:=0>"im"; PST&NEU&SNG&NOM:=0>"e"; PST&NEU&SNG&GNT:=2>"og"; PST&NEU&SNG&DAT:=2>"om"; PST&NEU&SNG&ACC:=0>"e"; PST&NEU&SNG&VOC:=0>"e"; PST&NEU&SNG&INS:=0>"im"; PST&NEU&SNG&LOC:=2>"om"; PST&NEU&PLR&NOM:=0>"a"; PST&NEU&PLR&GNT:=0>"ih"; PST&NEU&PLR&DAT:=0>"im"; PST&NEU&PLR&ACC:=0>"a"; PST&NEU&PLR&VOC:=0>"a"; PST&NEU&PLR&INS:=0>"im"; PST&NEU&PLR&LOC:=0>"im";));
+
+(%x,M94):=(%x,-M94,+FLX(PST&MCL&SNG&NOM&NDEF:=0>""; PST&MCL&SNG&GNT&NDEF:=0>"a"; PST&MCL&SNG&DAT&NDEF:=0>"u"; PST&MCL&SNG&ACC&NANM&NDEF:=0>""; PST&MCL&SNG&ACC&ANM&NDEF:=0>"a"; PST&MCL&SNG&VOC&NDEF:=0>"i"; PST&MCL&SNG&INS&NDEF:=0>"im"; PST&MCL&SNG&LOC&NDEF:=0>"u"; PST&MCL&SNG&NOM&DEF:=0>"i"; PST&MCL&SNG&GNT&DEF:=0>"og"; PST&MCL&SNG&DAT&DEF:=0>"om"; PST&MCL&SNG&ACC&NANM&DEF:=0>"i"; PST&MCL&SNG&ACC&ANM&DEF:=0>"og"; PST&MCL&SNG&VOC&DEF:=0>"i"; PST&MCL&SNG&INS&DEF:=0>"im"; PST&MCL&SNG&LOC&DEF:=0>"om"; PST&MCL&PLR&NOM:=0>"i"; PST&MCL&PLR&GNT:=0>"ih"; PST&MCL&PLR&DAT:=0>"im"; PST&MCL&PLR&ACC:=0>"e"; PST&MCL&PLR&VOC:=0>"i"; PST&MCL&PLR&INS:=0>"im"; PST&MCL&PLR&LOC:=0>"im"; PST&FEM&SNG&NOM:=0>"a"; PST&FEM&SNG&GNT:=0>"e"; PST&FEM&SNG&DAT:=0>"oj"; PST&FEM&SNG&ACC:=0>"u"; PST&FEM&SNG&VOC:=0>"a"; PST&FEM&SNG&INS:=0>"om"; PST&FEM&SNG&LOC:=0>"oj"; PST&FEM&PLR&NOM:=0>"e"; PST&FEM&PLR&GNT:=0>"ih"; PST&FEM&PLR&DAT:=0>"im"; PST&FEM&PLR&ACC:=0>"e"; PST&FEM&PLR&VOC:=0>"e"; PST&FEM&PLR&INS:=0>"im"; PST&FEM&PLR&LOC:=0>"im"; PST&NEU&SNG&NOM&NDEF:=0>"o"; PST&NEU&SNG&GNT&NDEF:=0>"a"; PST&NEU&SNG&DAT&NDEF:=0>"u"; PST&NEU&SNG&ACC&NDEF:=0>"o"; PST&NEU&SNG&VOC&NDEF:=0>"o"; PST&NEU&SNG&INS&NDEF:=0>"im"; PST&NEU&SNG&LOC&NDEF:=0>"u"; PST&NEU&SNG&NOM&DEF:=0>"o"; PST&NEU&SNG&GNT&DEF:=0>"og"; PST&NEU&SNG&DAT&DEF:=0>"om"; PST&NEU&SNG&ACC&DEF:=0>"o"; PST&NEU&SNG&VOC&DEF:=0>"o"; PST&NEU&SNG&INS&DEF:=0>"im"; PST&NEU&SNG&LOC&DEF:=0>"om"; PST&NEU&PLR&NOM:=0>"a"; PST&NEU&PLR&GNT:=0>"ih"; PST&NEU&PLR&DAT:=0>"im"; PST&NEU&PLR&ACC:=0>"a"; PST&NEU&PLR&VOC:=0>"a"; PST&NEU&PLR&INS:=0>"im"; PST&NEU&PLR&LOC:=0>"im"; CMP&MCL&SNG&NOM:=0>"lji"; CMP&MCL&SNG&GNT:=0>"ljeg"; CMP&MCL&SNG&DAT:=0>"ljem"; CMP&MCL&SNG&ACC&NANM:=0>"lji"; CMP&MCL&SNG&ACC&ANM:=0>"ljeg"; CMP&MCL&SNG&VOC:=0>"lji"; CMP&MCL&SNG&INS:=0>"ljim"; CMP&MCL&SNG&LOC:=0>"ljem"; CMP&MCL&PLR&NOM:=0>"lji"; CMP&MCL&PLR&GNT:=0>"ljih"; CMP&MCL&PLR&DAT:=0>"ljim"; CMP&MCL&PLR&ACC:=0>"lje"; CMP&MCL&PLR&VOC:=0>"lji"; CMP&MCL&PLR&INS:=0>"ljim"; CMP&MCL&PLR&LOC:=0>"ljim"; CMP&FEM&SNG&NOM:=0>"lja"; CMP&FEM&SNG&GNT:=0>"lje"; CMP&FEM&SNG&DAT:=0>"ljoj"; CMP&FEM&SNG&ACC:=0>"lju"; CMP&FEM&SNG&VOC:=0>"lja"; CMP&FEM&SNG&INS:=0>"ljom"; CMP&FEM&SNG&LOC:=0>"ljoj"; CMP&FEM&PLR&NOM:=0>"lje"; CMP&FEM&PLR&GNT:=0>"ljih"; CMP&FEM&PLR&DAT:=0>"ljim"; CMP&FEM&PLR&ACC:=0>"lje"; CMP&FEM&PLR&VOC:=0>"lje"; CMP&FEM&PLR&INS:=0>"ljim"; CMP&FEM&PLR&LOC:=0>"ljim"; CMP&NEU&SNG&NOM:=0>"lje"; CMP&NEU&SNG&GNT:=0>"ljeg"; CMP&NEU&SNG&DAT:=0>"ljem"; CMP&NEU&SNG&ACC:=0>"lje"; CMP&NEU&SNG&VOC:=0>"lje"; CMP&NEU&SNG&INS:=0>"ljim"; CMP&NEU&SNG&LOC:=0>"ljem"; CMP&NEU&PLR&NOM:=0>"lja"; CMP&NEU&PLR&GNT:=0>"ljih"; CMP&NEU&PLR&DAT:=0>"ljim"; CMP&NEU&PLR&ACC:=0>"lja"; CMP&NEU&PLR&VOC:=0>"lja"; CMP&NEU&PLR&INS:=0>"ljim"; CMP&NEU&PLR&LOC:=0>"ljim"; SUP&MCL&SNG&NOM:="naj"<"",0>"lji"; SUP&MCL&SNG&GNT:="naj"<"",0>"ljeg"; SUP&MCL&SNG&DAT:="naj"<"",0>"ljem"; SUP&MCL&SNG&ACC&NANM:="naj"<"",0>"lji"; SUP&MCL&SNG&ACC&ANM:="naj"<"",0>"ljeg"; SUP&MCL&SNG&VOC:="naj"<"",0>"lji"; SUP&MCL&SNG&INS:="naj"<"",0>"ljim"; SUP&MCL&SNG&LOC:="naj"<"",0>"ljem"; SUP&MCL&PLR&NOM:="naj"<"",0>"lji"; SUP&MCL&PLR&GNT:="naj"<"",0>"ljih"; SUP&MCL&PLR&DAT:="naj"<"",0>"ljim"; SUP&MCL&PLR&ACC:="naj"<"",0>"lje"; SUP&MCL&PLR&VOC:="naj"<"",0>"lji"; SUP&MCL&PLR&INS:="naj"<"",0>"ljim"; SUP&MCL&PLR&LOC:="naj"<"",0>"ljim"; SUP&FEM&SNG&NOM:="naj"<"",0>"lja"; SUP&FEM&SNG&GNT:="naj"<"",0>"lje"; SUP&FEM&SNG&DAT:="naj"<"",0>"ljoj"; SUP&FEM&SNG&ACC:="naj"<"",0>"lju"; SUP&FEM&SNG&VOC:="naj"<"",0>"lja"; SUP&FEM&SNG&INS:="naj"<"",0>"ljom"; SUP&FEM&SNG&LOC:="naj"<"",0>"ljoj"; SUP&FEM&PLR&NOM:="naj"<"",0>"lje"; SUP&FEM&PLR&GNT:="naj"<"",0>"ljih"; SUP&FEM&PLR&DAT:="naj"<"",0>"ljim"; SUP&FEM&PLR&ACC:="naj"<"",0>"lje"; SUP&FEM&PLR&VOC:="naj"<"",0>"lje"; SUP&FEM&PLR&INS:="naj"<"",0>"ljim"; SUP&FEM&PLR&LOC:="naj"<"",0>"ljim";SUP&NEU&SNG&NOM:="naj"<"",0>"lje"; SUP&NEU&SNG&GNT:="naj"<"",0>"ljeg"; SUP&NEU&SNG&DAT:="naj"<"",0>"ljem"; SUP&NEU&SNG&ACC:="naj"<"",0>"lje"; SUP&NEU&SNG&VOC:="naj"<"",0>"lje"; SUP&NEU&SNG&INS:="naj"<"",0>"ljim"; SUP&NEU&SNG&LOC:="naj"<"",0>"ljem"; SUP&NEU&PLR&NOM:="naj"<"",0>"lja"; SUP&NEU&PLR&GNT:="naj"<"",0>"ljih"; SUP&NEU&PLR&DAT:="naj"<"",0>"ljim"; SUP&NEU&PLR&ACC:="naj"<"",0>"lja"; SUP&NEU&PLR&VOC:="naj"<"",0>"lja"; SUP&NEU&PLR&INS:="naj"<"",0>"ljim"; SUP&NEU&PLR&LOC:="naj"<"",0>"ljim"; PST&MCL&PAU:=0>"a"; CMP&MCL&PAU:=0>"lja"; SUP&MCL&PAU:="naj"<"",0>"lja"; PST&FEM&PAU:=0>"e"; CMP&FEM&PAU:=0>"lje"; SUP&FEM&PAU:="naj"<"",0>"lje"; PST&NEU&PAU:=0>"a"; CMP&NEU&PAU:=0>"lja"; SUP&NEU&PAU:="naj"<"",0>"lja"; ));
+
+(%x,M95):=(%x,-M95,+FLX(1PS&^INF:=2>"gu"; 2PS&^INF:=2>"žeš"; 3PS&^INF:=2>"že"; 1PP&^INF:=2>"žemo"; 2PP&^INF:=2>"žete"; 3PP&^INF:=2>"gu"; INF:="moći"; PTP&ACV&MCL&SNG:=2>"gao"; PTP&ACV&FEM&SNG:=2>"gla"; PTP&ACV&NEU&SNG:=2>"glo"; PTP&ACV&MCL&PLR:=2>"gli"; PTP&ACV&FEM&PLR:=2>"gle"; PTP&ACV&NEU&PLR:=2>"gla";));
+
+(%x,M96):=(%x,-M96,+FLX(INF:="morati";1PS:=2>"m"; 2PS:=2>"š"; 3PS:=2>""; 1PP:=2>"mo"; 2PP:=2>"te"; 3PP:=2>"ju"; PTP&ACV&MCL&SNG:=2>"o"; PTP&ACV&FEM&SNG:=2>"la"; PTP&ACV&NEU&SNG:=2>"lo"; PTP&ACV&MCL&PLR:=2>"li"; PTP&ACV&FEM&PLR:=2>"le"; PTP&ACV&NEU&PLR:=2>"la";));
+
+(%x,M98):=(%x,-M98,+FLX(PST&MCL&SNG&NOM&NDEF:=0>""; PST&MCL&SNG&GNT&NDEF:=0>"a"; PST&MCL&SNG&DAT&NDEF:=0>"u"; PST&MCL&SNG&ACC&NANM&NDEF:=0>""; PST&MCL&SNG&ACC&ANM&NDEF:=0>"a"; PST&MCL&SNG&VOC&NDEF:=0>"i"; PST&MCL&SNG&INS&NDEF:=0>"im"; PST&MCL&SNG&LOC&NDEF:=0>"u"; PST&MCL&SNG&NOM&DEF:=0>"i"; PST&MCL&SNG&GNT&DEF:=0>"og"; PST&MCL&SNG&DAT&DEF:=0>"om"; PST&MCL&SNG&ACC&NANM&DEF:=0>"i"; PST&MCL&SNG&ACC&ANM&DEF:=0>"og"; PST&MCL&SNG&VOC&DEF:=0>"i"; PST&MCL&SNG&INS&DEF:=0>"im"; PST&MCL&SNG&LOC&DEF:=0>"om"; PST&MCL&PLR&NOM:=0>"i"; PST&MCL&PLR&GNT:=0>"ih"; PST&MCL&PLR&DAT:=0>"im"; PST&MCL&PLR&ACC:=0>"e"; PST&MCL&PLR&VOC:=0>"i"; PST&MCL&PLR&INS:=0>"im"; PST&MCL&PLR&LOC:=0>"im"; PST&FEM&SNG&NOM:=0>"a"; PST&FEM&SNG&GNT:=0>"e"; PST&FEM&SNG&DAT:=0>"oj"; PST&FEM&SNG&ACC:=0>"u"; PST&FEM&SNG&VOC:=0>"a"; PST&FEM&SNG&INS:=0>"om"; PST&FEM&SNG&LOC:=0>"oj"; PST&FEM&PLR&NOM:=0>"e"; PST&FEM&PLR&GNT:=0>"ih"; PST&FEM&PLR&DAT:=0>"im"; PST&FEM&PLR&ACC:=0>"e"; PST&FEM&PLR&VOC:=0>"e"; PST&FEM&PLR&INS:=0>"im"; PST&FEM&PLR&LOC:=0>"im"; PST&NEU&SNG&NOM&NDEF:=0>"o"; PST&NEU&SNG&GNT&NDEF:=0>"a"; PST&NEU&SNG&DAT&NDEF:=0>"u"; PST&NEU&SNG&ACC&NDEF:=0>"o"; PST&NEU&SNG&VOC&NDEF:=0>"o"; PST&NEU&SNG&INS&NDEF:=0>"im"; PST&NEU&SNG&LOC&NDEF:=0>"u"; PST&NEU&SNG&NOM&DEF:=0>"o"; PST&NEU&SNG&GNT&DEF:=0>"og"; PST&NEU&SNG&DAT&DEF:=0>"om"; PST&NEU&SNG&ACC&DEF:=0>"o"; PST&NEU&SNG&VOC&DEF:=0>"o"; PST&NEU&SNG&INS&DEF:=0>"im"; PST&NEU&SNG&LOC&DEF:=0>"om"; PST&NEU&PLR&NOM:=0>"a"; PST&NEU&PLR&GNT:=0>"ih"; PST&NEU&PLR&DAT:=0>"im"; PST&NEU&PLR&ACC:=0>"a"; PST&NEU&PLR&VOC:=0>"a"; PST&NEU&PLR&INS:=0>"im"; PST&NEU&PLR&LOC:=0>"im"; CMP&MCL&SNG&NOM:=0>"ši"; CMP&MCL&SNG&GNT:=0>"šeg"; CMP&MCL&SNG&DAT:=0>"šem"; CMP&MCL&SNG&ACC&NANM:=0>"ši"; CMP&MCL&SNG&ACC&ANM:=0>"šeg"; CMP&MCL&SNG&VOC:=0>"ši"; CMP&MCL&SNG&INS:=0>"šim"; CMP&MCL&SNG&LOC:=0>"šem"; CMP&MCL&PLR&NOM:=0>"ši"; CMP&MCL&PLR&GNT:=0>"ših"; CMP&MCL&PLR&DAT:=0>"šim"; CMP&MCL&PLR&ACC:=0>"še"; CMP&MCL&PLR&VOC:=0>"ši"; CMP&MCL&PLR&INS:=0>"šim"; CMP&MCL&PLR&LOC:=0>"šim"; CMP&FEM&SNG&NOM:=0>"ša"; CMP&FEM&SNG&GNT:=0>"še"; CMP&FEM&SNG&DAT:=0>"šoj"; CMP&FEM&SNG&ACC:=0>"šu"; CMP&FEM&SNG&VOC:=0>"ša"; CMP&FEM&SNG&INS:=0>"šom"; CMP&FEM&SNG&LOC:=0>"šoj"; CMP&FEM&PLR&NOM:=0>"še"; CMP&FEM&PLR&GNT:=0>"ših"; CMP&FEM&PLR&DAT:=0>"šim"; CMP&FEM&PLR&ACC:=0>"še"; CMP&FEM&PLR&VOC:=0>"še"; CMP&FEM&PLR&INS:=0>"šim"; CMP&FEM&PLR&LOC:=0>"šim"; CMP&NEU&SNG&NOM:=0>"še"; CMP&NEU&SNG&GNT:=0>"šeg"; CMP&NEU&SNG&DAT:=0>"šem"; CMP&NEU&SNG&ACC:=0>"še"; CMP&NEU&SNG&VOC:=0>"še"; CMP&NEU&SNG&INS:=0>"šim"; CMP&NEU&SNG&LOC:=0>"šem"; CMP&NEU&PLR&NOM:=0>"ša"; CMP&NEU&PLR&GNT:=0>"ših"; CMP&NEU&PLR&DAT:=0>"šim"; CMP&NEU&PLR&ACC:=0>"ša"; CMP&NEU&PLR&VOC:=0>"ša"; CMP&NEU&PLR&INS:=0>"šim"; CMP&NEU&PLR&LOC:=0>"šim"; SUP&MCL&SNG&NOM:="naj"<"",0>"ši"; SUP&MCL&SNG&GNT:="naj"<"",0>"šeg"; SUP&MCL&SNG&DAT:="naj"<"",0>"šem"; SUP&MCL&SNG&ACC&NANM:="naj"<"",0>"ši"; SUP&MCL&SNG&ACC&ANM:="naj"<"",0>"šeg"; SUP&MCL&SNG&VOC:="naj"<"",0>"ši"; SUP&MCL&SNG&INS:="naj"<"",0>"šim"; SUP&MCL&SNG&LOC:="naj"<"",0>"šem"; SUP&MCL&PLR&NOM:="naj"<"",0>"ši"; SUP&MCL&PLR&GNT:="naj"<"",0>"ših"; SUP&MCL&PLR&DAT:="naj"<"",0>"šim"; SUP&MCL&PLR&ACC:="naj"<"",0>"še"; SUP&MCL&PLR&VOC:="naj"<"",0>"ši"; SUP&MCL&PLR&INS:="naj"<"",0>"šim"; SUP&MCL&PLR&LOC:="naj"<"",0>"šim"; SUP&FEM&SNG&NOM:="naj"<"",0>"ša"; SUP&FEM&SNG&GNT:="naj"<"",0>"še"; SUP&FEM&SNG&DAT:="naj"<"",0>"šoj"; SUP&FEM&SNG&ACC:="naj"<"",0>"šu"; SUP&FEM&SNG&VOC:="naj"<"",0>"ša"; SUP&FEM&SNG&INS:="naj"<"",0>"šom"; SUP&FEM&SNG&LOC:="naj"<"",0>"šoj"; SUP&FEM&PLR&NOM:="naj"<"",0>"še"; SUP&FEM&PLR&GNT:="naj"<"",0>"ših"; SUP&FEM&PLR&DAT:="naj"<"",0>"šim"; SUP&FEM&PLR&ACC:="naj"<"",0>"še"; SUP&FEM&PLR&VOC:="naj"<"",0>"še"; SUP&FEM&PLR&INS:="naj"<"",0>"šim"; SUP&FEM&PLR&LOC:="naj"<"",0>"šim";SUP&NEU&SNG&NOM:="naj"<"",0>"še"; SUP&NEU&SNG&GNT:="naj"<"",0>"šeg"; SUP&NEU&SNG&DAT:="naj"<"",0>"šem"; SUP&NEU&SNG&ACC:="naj"<"",0>"še"; SUP&NEU&SNG&VOC:="naj"<"",0>"še"; SUP&NEU&SNG&INS:="naj"<"",0>"šim"; SUP&NEU&SNG&LOC:="naj"<"",0>"šem"; SUP&NEU&PLR&NOM:="naj"<"",0>"ša"; SUP&NEU&PLR&GNT:="naj"<"",0>"ših"; SUP&NEU&PLR&DAT:="naj"<"",0>"šim"; SUP&NEU&PLR&ACC:="naj"<"",0>"ša"; SUP&NEU&PLR&VOC:="naj"<"",0>"ša"; SUP&NEU&PLR&INS:="naj"<"",0>"šim"; SUP&NEU&PLR&LOC:="naj"<"",0>"šim"; PST&MCL&PAU:=0>"a"; CMP&MCL&PAU:=0>"ša"; SUP&MCL&PAU:="naj"<"",0>"ša"; PST&FEM&PAU:=0>"e"; CMP&FEM&PAU:=0>"še"; SUP&FEM&PAU:="naj"<"",0>"še"; PST&NEU&PAU:=0>"a"; CMP&NEU&PAU:=0>"ša"; SUP&NEU&PAU:="naj"<"",0>"ša";));
+
+(%x,M99):=(%x,-M99,+FLX(MCL:="oba";FEM:="obe";NEU:="oba";));
+
+
+;============================================================================================
+;UNL-NL DEFAULT TRANSFORMATION GRAMMAR
+;Documentation available at http://www.unlweb.net/wiki/Default_grammar
+;============================================================================================
+
+;============================================================================================
+;============================================================================================
+;1. PRE-PROCESSING
+;Prepares the input sentence for processing
+;===========================================================================================
+;============================================================================================
+
+
+
+;============================================================================================
+;============================================================================================
+;2. ARBORIZATION
+;Converts the syntactic network into a tree
+;============================================================================================
+;============================================================================================
+
+;Generalization
+/[ACDIJNPVX]C/(%x;%y,^comp):=XB(%x;%y,+comp);
+/[ACDIJNPVX]A/(%x;%y,^adjt):=XB(%x;%y,+adjt);
+/[ACDIJNPV]S/(%x;%y,^spec):=XP(%x;%y,+spec);
+
+;Arborization
+XB(%x;%y,comp)XB(%x;%z):=XB(XB(%x;%y);%z);
+XB(%x;%y)XB(%x;%z):=XB(XB(%x;%y);%z);
+XP(%x;%y)XB(%x;%z):=XP(XB(%x;%z);%y);
+XB(XP(%x;%y);%z):=XP(XB(%x;%z);%y);
+IB(%x;%y)VB(%y;%z):=IB(%x;VB(%y;%z));
+
+;Labeling head-driven phrase structures
+XB(%x,A;%y,adjt):=AA(%x;%y);
+XB(%x,C;%y,adjt):=CA(%x;%y);
+XB(%x,D;%y,adjt):=DA(%x;%y);
+XB(%x,I;%y,adjt):=IA(%x;%y);
+XB(%x,J;%y,adjt):=JA(%x;%y);
+XB(%x,N;%y,adjt):=NA(%x;%y);
+XB(%x,P;%y,adjt):=PA(%x;%y);
+XB(%x,V;%y,adjt):=VA(%x;%y);
+
+XB(%x,A;%y,comp):=NC(%x;%y);
+XB(%x,C;%y,comp):=CC(%x;%y);
+XB(%x,D;%y,comp):=DC(%x;%y);
+XB(%x,I;%y,comp):=IC(%x;%y);
+XB(%x,J;%y,comp):=JC(%x;%y);
+XB(%x,N;%y,comp):=NC(%x;%y);
+XB(%x,P;%y,comp):=PC(%x;%y);
+XB(%x,V;%y,comp):=VC(%x;%y);
+
+XB(%x,A;%y):=AA(%x;%y);
+XB(%x,C;%y):=CA(%x;%y);
+XB(%x,D;%y):=DA(%x;%y);
+XB(%x,I;%y):=IA(%x;%y);
+XB(%x,J;%y):=JA(%x;%y);
+XB(%x,N;%y):=NA(%x;%y);
+XB(%x,P;%y):=PA(%x;%y);
+XB(%x,V;%y):=VA(%x;%y);
+
+XP(%x,A;%y):=AS(%x;%y);
+XP(%x,C;%y):=CS(%x;%y);
+XP(%x,D;%y):=DS(%x;%y);
+XP(%x,I;%y):=IS(%x;%y);
+XP(%x,J;%y):=JS(%x;%y);
+XP(%x,N;%y):=NS(%x;%y);
+XP(%x,P;%y):=PS(%x;%y);
+XP(%x,V;%y):=VS(%x;%y);
+
+;============================================================================================
+;2.1 Determiner Phrase (DP)
+;============================================================================================
+DB(%x;%y)DS(%x;%z):=DP(DB(%x;%y);%z);
+DB(%x;%y)DA(%x;%z):=DB(DB(%x;%y);%z);
+DB(%x;%y)DC(%x;%z):=DB(DB(%x;%y);%z);
+DC(%x;%y):=DB(%x;%y);
+DA(%x;%y):=DB(%x;%y);
+DS(%x;%y):=DP(%x;%y);
+
+;============================================================================================
+;2.2 Adjective Phrase (JP)
+;============================================================================================
+JB(%x;%y)JS(%x;%z):=JP(JB(%x;%y);%z);
+JB(%x;%y)JA(%x;%z):=JB(JB(%x;%y);%z);
+JB(%x;%y)JC(%x;%z):=JB(JB(%x;%y);%z);
+JC(%x;%y):=JB(%x;%y);
+JA(%x;%y):=JB(%x;%y);
+JS(%x;%y):=JP(%x;%y);
+
+;============================================================================================
+;2.3 Adverbial Phrase (AP)
+;===========================================================================================
+AB(%x;%y)AS(%x;%z):=AP(AB(%x;%y);%z);
+AB(%x;%y)AA(%x;%z):=AB(AB(%x;%y);%z);
+AB(%x;%y)AC(%x;%z):=AB(AB(%x;%y);%z);
+AC(%x;%y):=AB(%x;%y);
+AA(%x;%y):=AB(%x;%y);
+AS(%x;%y):=AP(%x;%y);
+
+;============================================================================================
+;2.4 Noun Phrase (NP)
+;============================================================================================
+NB(%x;%y)NS(%x;%z):=NP(NB(%x;%y);%z);
+NB(%x;%y)NC(%x;%z):=NB(NB(%x;%y);%z);
+NB(%x;%y)NA(%x;%z):=NB(NB(%x;%y);%z);
+NC(%x;%y):=NB(%x;%y);
+NA(%x;%y):=NB(%x;%y);
+NS(%x;%y):=NP(%x;%y);
+
+
+;============================================================================================
+;2.5 Prepositional Phrase (PP)
+;============================================================================================
+PB(%x;%y)PS(%x;%z):=PP(PB(%x;%y);%z);
+PB(%x;%y)PA(%x;%z):=PB(PB(%x;%y);%z);
+PB(%x;%y)PC(%x;%z):=PB(PB(%x;%y);%z);
+PC(%x;%y):=PB(%x;%y);
+PA(%x;%y):=PB(%x;%y);
+PS(%x;%y):=PP(%x;%y);
+
+;============================================================================================
+;2.6 Verbal Phrase (VP)
+;============================================================================================
+VB(%x;%y)VS(%x;%z):=VP(VB(%x;%y);%z);
+VB(%x;%y)VA(%x;%z):=VB(VB(%x;%y);%z);
+VB(%x;%y)VC(%x;%z):=VB(VB(%x;%y);%z);
+VC(%x;%y):=VB(%x;%y);
+VA(%x;%y):=VB(%x;%y);
+VS(%x;%y):=VP(%x;%y);
+
+;============================================================================================
+;2.7 Inflectional Phrase (IP)
+;============================================================================================
+IB(%x;%y)IS(%x;%z):=IP(IB(%x;%y);%z);
+IB(%x;%y)IA(%x;%z):=IB(IB(%x;%y);%z);
+IB(%x;%y)IC(%x;%z):=IB(IB(%x;%y);%z);
+IC(%x;%y):=IB(%x;%y);
+IA(%x;%y):=IB(%x;%y);
+IS(%x;%y):=IP(%x;%y);
+
+;============================================================================================
+;2.8 Complementizer Phrase (CP)
+;============================================================================================
+CB(%x;%y)CS(%x;%z):=CP(CB(%x;%y);%z);
+CB(%x;%y)CA(%x;%z):=CB(CB(%x;%y);%z);
+CB(%x;%y)CC(%x;%z):=CB(CB(%x;%y);%z);
+CC(%x;%y):=CB(%x;%y);
+CA(%x;%y):=CB(%x;%y);
+CS(%x;%y):=CP(%x;%y);
+
+;============================================================================================
+;============================================================================================
+;3. TRANSFORMATION
+;Converts the deep syntactic structure into the surface syntactic structure
+;============================================================================================
+;============================================================================================
+IB(%x;%y)VP(%y;%z,^e):=IB(%x;%y)IS(%x;%z)VP(%y;%new,+e); (moves the specifier of IP to the position of specifier of IP)
+
+;============================================================================================
+;============================================================================================
+;4. LINEARIZATION
+;Converts the tree structure into a list structure
+;============================================================================================
+;============================================================================================
+;Tree to List
+PP(%x;%y,BEF):=(%y,+>BLK)(%x,+>BLK);
+PP(%x;%y,IBEF):=(%y)(%x,+>BLK);
+PP(%x;%y,AFT):=(%x,+>BLK)(%y,+>BLK);
+PP(%x;%y,IAFT):=(%x)(%y,+>BLK);
+PP(%x;%y):=(%y,+>BLK)(%x,+>BLK);
+PB(%x;%y,BEF):=(%y,+>BLK)(%x,+>BLK);
+PB(%x;%y,IBEF):=(%y)(%x,+>BLK);
+PB(%x;%y,AFT):=(%x,+>BLK)(%y,+>BLK);
+PB(%x;%y,IAFT):=(%x)(%y,+>BLK);
+PB(%x;%y):=(%x,+>BLK)(%y,+>BLK);
+CP(%x;%y,BEF):=(%y,+>BLK)(%x,+>BLK);
+CP(%x;%y,IBEF):=(%y)(%x,+>BLK);
+CP(%x;%y,AFT):=(%x,+>BLK)(%y,+>BLK);
+CP(%x;%y,IAFT):=(%x)(%y,+>BLK);
+CP(%x;%y):=(%y,+>BLK)(%x,+>BLK);
+CB(%x;%y,BEF):=(%y,+>BLK)(%x,+>BLK);
+CB(%x;%y,IBEF):=(%y)(%x,+>BLK);
+CB(%x;%y,AFT):=(%x,+>BLK)(%y,+>BLK);
+CB(%x;%y,IAFT):=(%x)(%y,+>BLK);
+CB(%x;%y):=(%x,+>BLK)(%y,+>BLK);
+IP(%x;%y,BEF):=(%y,+>BLK)(%x,+>BLK);
+IP(%x;%y,IBEF):=(%y)(%x,+>BLK);
+IP(%x;%y,AFT):=(%x,+>BLK)(%y,+>BLK);
+IP(%x;%y,IAFT):=(%x)(%y,+>BLK);
+IP(%x;%y):=(%y,+>BLK)(%x,+>BLK);
+IB(%x;%y,BEF):=(%y,+>BLK)(%x,+>BLK);
+IB(%x;%y,IBEF):=(%y)(%x,+>BLK);
+IB(%x;%y,AFT):=(%x,+>BLK)(%y,+>BLK);
+IB(%x;%y,IAFT):=(%x)(%y,+>BLK);
+IB(%x;%y):=(%x,+>BLK)(%y,+>BLK);
+VP(%x;%y,BEF):=(%y,+>BLK)(%x,+>BLK);
+VP(%x;%y,IBEF):=(%y)(%x,+>BLK);
+VP(%x;%y,AFT):=(%x,+>BLK)(%y,+>BLK);
+VP(%x;%y,IAFT):=(%x)(%y,+>BLK);
+VP(%x;%y):=(%y,+>BLK)(%x,+>BLK);
+VB(%x;%y,BEF):=(%y,+>BLK)(%x,+>BLK);
+VB(%x;%y,IBEF):=(%y)(%x,+>BLK);
+VB(%x;%y,AFT):=(%x,+>BLK)(%y,+>BLK);
+VB(%x;%y,IAFT):=(%x)(%y,+>BLK);
+VB(%x;%y):=(%x,+>BLK)(%y,+>BLK);
+NP(%x;%y,BEF):=(%y,+>BLK)(%x,+>BLK);
+NP(%x;%y,IBEF):=(%y)(%x,+>BLK);
+NP(%x;%y,AFT):=(%x,+>BLK)(%y,+>BLK);
+NP(%x;%y,IAFT):=(%x)(%y,+>BLK);
+NP(%x;%y):=(%y,+>BLK)(%x,+>BLK);
+NB(%x;%y,BEF):=(%y,+>BLK)(%x,+>BLK);
+NB(%x;%y,IBEF):=(%y)(%x,+>BLK);
+NB(%x;%y,AFT):=(%x,+>BLK)(%y,+>BLK);
+NB(%x;%y,IAFT):=(%x)(%y,+>BLK);
+NB(%x;%y):=(%x,+>BLK)(%y,+>BLK);
+JP(%x;%y,BEF):=(%y,+>BLK)(%x,+>BLK);
+JP(%x;%y,AFT):=(%x,+>BLK)(%y,+>BLK);
+JP(%x;%y):=(%y,+>BLK)(%x,+>BLK);
+JB(%x;%y,BEF):=(%y,+>BLK)(%x,+>BLK);
+JB(%x;%y,AFT):=(%x,+>BLK)(%y,+>BLK);
+JB(%x;%y):=(%x,+>BLK)(%y,+>BLK);
+AP(%x;%y,BEF):=(%y,+>BLK)(%x,+>BLK);
+AP(%x;%y,IBEF):=(%y)(%x,+>BLK);
+AP(%x;%y,AFT):=(%x,+>BLK)(%y,+>BLK);
+AP(%x;%y,IAFT):=(%x)(%y,+>BLK);
+AP(%x;%y):=(%y,+>BLK)(%x,+>BLK);
+AB(%x;%y,BEF):=(%y,+>BLK)(%x,+>BLK);
+AB(%x;%y,IBEF):=(%y)(%x,+>BLK);
+AB(%x;%y,AFT):=(%x,+>BLK)(%y,+>BLK);
+AB(%x;%y,IAFT):=(%x)(%y,+>BLK);
+AB(%x;%y):=(%x,+>BLK)(%y,+>BLK);
+DP(%x;%y,BEF):=(%y,+>BLK)(%x,+>BLK);
+DP(%x;%y,IBEF):=(%y)(%x,+>BLK);
+DP(%x;%y,AFT):=(%x,+>BLK)(%y,+>BLK);
+DP(%x;%y,IAFT):=(%x)(%y,+>BLK);
+DP(%x;%y):=(%y,+>BLK)(%x,+>BLK);
+DB(%x;%y,BEF):=(%y,+>BLK)(%x,+>BLK);
+DB(%x;%y,IBEF):=(%y)(%x,+>BLK);
+DB(%x;%y,AFT):=(%x,+>BLK)(%y,+>BLK);
+DB(%x;%y,IAFT):=(%y)(%x,+>BLK);
+DB(%x;%y):=(%x,+>BLK)(%y,+>BLK);
+
+;============================================================================================
+;============================================================================================
+;5. MORPHOLOGICAL GENERATION
+;Generates the inflections
+;============================================================================================
+;============================================================================================
+;Inflections
+(%x,^inflected,FLX):=(%x,!FLX,+inflected);
+
+;============================================================================================
+;============================================================================================
+;6. POST-PROCESSING
+;Post-edits the list output
+;============================================================================================
+;============================================================================================
+;Resolving scopes
+((%x)(%y)(%z)(%w)):=(%x)(%y)(%z)(%w);
+((%x)(%y)(%z)):=(%x)(%y)(%z);
+((%x)(%y)):=(%x)(%y);
+;Resolving >BLK (inserting blank spaces)
+(%x,>BLK)(%y,^BLK,^PUT,^STAIL):=(%x,->BLK)(" ",+BLK)(%y);
+;Resolving >COMMA (inserting comma)
+(%x,>COMMA):=(%x,->COMMA)(",",PUT=COMMA,+>BLK);
+;Resolving EMARK
+(%x,EMARK)(%y,^STAIL):=(%y)(%x);
+
+

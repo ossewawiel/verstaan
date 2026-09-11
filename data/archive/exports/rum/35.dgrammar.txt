@@ -1,0 +1,9 @@
+﻿(TEMP,^DIGIT,^W)(^BLK,^PUT,^STAIL)=0;
+(^BLK,^PUT,^SHEAD)(TEMP,^W)=0;
+(TEMP)(PUT)(TEMP)=0;
+(D,^AFT)(BLK)({V|P|AAV})=0;
+(AUX)(BLK)(^V,^[nu])=0;
+(^[nu])(AUX)(BLK)(^V)=0;
+([nu])(BLK)(AUX)(BLK)(^V)=0;
+(P,[de la],att=@from)(BLK)(N,[prânz])=0;
+(V)([-])([o],D)=0;

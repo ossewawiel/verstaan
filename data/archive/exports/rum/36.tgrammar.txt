@@ -1,0 +1,13 @@
+﻿; RuleSet:(MX)UC A1  D-rules ron
+; User:MIHAELA ILIOAIA (ela_stef_81)
+; Date:14.58.2013 at 09:58:40
+
+; "UC A1  D-rules ron"
+; MX
+/(agt|obj|aoj)/(;D)=0;
+(N)(BLK)(ART)=0;
+pos(%x,N;%y,R)=0;
+(N,PPN)(şi)(N,PPN)(şi)(N,PPN)=0;
+(N)(J)([lui])(PPN)=0;
+(V)(BLK)([-o])=0;
+([cartea])([sale])=0;

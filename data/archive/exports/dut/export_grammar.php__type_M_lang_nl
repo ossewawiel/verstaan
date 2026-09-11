@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<title>UNLarium</title>
+<link rel="stylesheet" type="text/css" media="all" href="../../shared/default.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"  />
+<link rel="shortcut icon" href="../favicon.ico" type="image/x-icon" />
+</head>
+
+<body>
+<h1>Dutch Inflectional  Grammar</h1>Version of September 11, 2026, 1:08 pm<br />Documentation available at <a href="http://www.unlarchive.org/wiki/index.php/Grammar" target="_blank">http://www.unlarchive.org/wiki/index.php/Grammar</a><br />Tagset available at <a href="../dictionary/export_tagset.php" target="_blank">Export UNDL Foundation tagset</a>.<br /><br /><b>M0</b><br />Invariant<br /><br /><b>M1</b><br />Irregular: rules are defined inside the entry in the dictionary<br /><br /><b>M2</b><br />Plural formed by addition of -en (<i>deur</i>)<br />SNG:=0>"";<br />
+PLR:=0>"en";<br />
+;<br /><br /><b>M3</b><br />Plural formed by addition of -n (<i>oxide</i>)<br />SNG:=0>"";<br />
+PLR:=0>"n";<br />
+;<br /><br /><b>M4</b><br />Plural formed by addition of -s (<i>tante</i>)<br />SNG:=0>"";<br />
+PLR:=0>"s";<br />
+;<br /><br /><b>M5</b><br />Plural formed by replacement of "s" to "z" and addition of -en (<i>huis</i>)<br />SNG:=0>"";<br />
+PLR:="s">"zen";<br />
+;<br /><br /><b>M6</b><br />Plural formed by replacement of "f" to "v" and addition of -en (<i>dief</i>)<br />SNG:=0>"";<br />
+PLR:="f">"ven";<br />
+;<br /><br /><b>M7</b><br />Plural formed by addition of -n or -s (<i>bode</i>)<br />SNG:=0>"";<br />
+PLR:=0>"s";<br />
+PLR&ALT:=0>"n";<br />
+;<br /><br /><b>M8</b><br />Plural formed by addition of -'s (<i>baby</i>)<br />SNG:=0>"";<br />
+PLR:=0>"'s";<br />
+;<br /><br /><b>M9</b><br />Plural formed by addition of -ën (<i>ree</i>)<br />SNG:=0>"";<br />
+PLR:=0>"ën";<br />
+;<br /><br /><b>M10</b><br />Plural formed by addition of -s or -en (<i>appel</i>)<br />SNG:=0>"";<br />
+PLR:=0>"s";<br />
+PLR&ALT:=0>"en";<br />
+;<br /><br /><b>M11</b><br />Plural formed by addition of -eren (<i>ei</i>)<br />SNG:=0>"";<br />
+PLR:=0>"eren";<br />
+;<br /><br /></body>
+<html>

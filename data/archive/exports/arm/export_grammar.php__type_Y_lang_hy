@@ -1,0 +1,171 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<title>UNLarium</title>
+<link rel="stylesheet" type="text/css" media="all" href="../../shared/default.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"  />
+<link rel="shortcut icon" href="../favicon.ico" type="image/x-icon" />
+</head>
+
+<body>
+<h1>Armenian Subcategorization  Grammar</h1>Version of September 11, 2026, 12:44 pm<br />Documentation available at <a href="http://www.unlarchive.org/wiki/index.php/Grammar" target="_blank">http://www.unlarchive.org/wiki/index.php/Grammar</a><br />Tagset available at <a href="../dictionary/export_tagset.php" target="_blank">Export UNDL Foundation tagset</a>.<br /><br /><b>Y0</b><br />AVALENT<br /><br /><b>Y1</b><br />NO SUBCATEGORIZATION FRAME: rules defined inside the entry in the dictionary<br /><br /><b>Y116</b><br />միջև (<i>մեր միջև</i>)<br />PC(>NP,GNT);
+<br /><br /><b>Y117</b><br />մինչև (<i>մինչև զանգի հնչելը</i>)<br />PC(<NP,GNT);
+<br /><br /><b>Y118</b><br />միջով (<i>անտառի միջով</i>)<br />PC(>NP,GNT);
+<br /><br /><b>Y119</b><br />դեպի (<i>դեպի երեխան</i>)<br />PC(<NP,ACC);
+<br /><br /><b>Y120</b><br />առանց (<i>առանց տետրի</i>)<br />PC(<NP,GEN);
+<br /><br /><b>Y121</b><br />ինչպես (<i>ինչպես Արամը</i>)<br />PC(<NP,NOM);
+<br /><br /><b>Y122</b><br />համար (<i>կյանքի համար</i>)<br />PC(<NP,GNT);
+<br /><br /><b>Y135</b><br />առանց (<i>առանց նախաբանի
+առանց խոսելու
+</i>)<br />PC(>NP,GNT);
+PC(>VP,INF,GNT);
+<br /><br /><b>Y136</b><br />նկատմամբ (<i>անտարբեր տան նկատմամբ</i>)<br />JC(PP([նկատմամբ]));
+<br /><br /><b>Y137</b><br />քնել (<i>նա քնել է</i>)<br />VS(NP);
+<br /><br /><b>Y138</b><br />ուտել (<i>ուտել միրգ</i>)<br />VS(NP),VC(NP);
+<br /><br /><b>Y139</b><br />համաձայնվել ում/ինչի հետ (<i>համաձայնվել ում/ինչի հետ, (գործ ունենալ)
+
+</i>)<br />VS(NP),VC(NP,GEN,POS,PP([հետ]));
+<br /><br /><b>Y140</b><br />դառնալ (<i>դառնալ բժիշկ</i>)<br />VS(NP),VC(NP,ACC);
+<br /><br /><b>Y141</b><br />տալ (<i>տալ գիրքը Արամին</i>)<br />VS(NP),VC(NP,ACC),VC(NP,DAT);
+<br /><br /><b>Y142</b><br />հակառակ (<i>հակառակ նրա կամքի</i>)<br />NC(NP,GNT);
+<br /><br /><b>Y143</b><br />կառուցում (<i>շենքի կառուցում</i>)<br />NC(NP,GNT);
+<br /><br /><b>Y144</b><br />առանց (<i>առանց գրքի</i>)<br />PC(>NP,GNT);
+<br /><br /><b>Y145</b><br />մասին (<i>հեղինակի մասին</i>)<br />PC(>NP,GNT);
+<br /><br /><b>Y146</b><br />առաջ (<i>դասից առաջ</i>)<br />PC(>NP,ABL);
+<br /><br /><b>Y147</b><br />անց (<i>մեկ ժամ անց</i>)<br />PC(>NP,NOM);
+<br /><br /><b>Y148</b><br />առաջ (<i>մեկ օր առաջ</i>)<br />PC(>NP,NOM);
+<br /><br /><b>Y149</b><br />կրակել ում/ինչի վրա 
+
+ (<i>ուշադրություն դարձնել, </i>)<br />VS(NP),VC(NP,GEN,POS,PP([վրա]));
+<br /><br /><b>Y150</b><br />առջև (<i>տան առջև</i>)<br />PC(>NP,GNT);
+<br /><br /><b>Y151</b><br />հանել ինչը, ինչից (<i>հանել ինչը, ինչից, դուրս բերել, արտահանել 
+
+</i>)<br />VS(NP),VC(NP,ACC),VC(NP,ABL);
+<br /><br /><b>Y152</b><br />առընթեր (<i>կառավարությանն առընթեր</i>)<br />PC(>NP,DAT);
+<br /><br /><b>Y153</b><br />անկախ (<i>ինձնից անկախ</i>)<br />PC(>NP,ABL);
+<br /><br /><b>Y154</b><br />բացի (<i>բացի ինձնից</i>)<br />PC(<NP,ABL);
+<br /><br /><b>Y155</b><br />անկախ (<i>անկախ ինձնից</i>)<br />PC(<NP,ABL);
+<br /><br /><b>Y156</b><br />բացի (<i>ինձնից բացի </i>)<br />PC(>NP,ABL);
+<br /><br /><b>Y157</b><br />դեմ, տակ, օրոք, փոխարեն (<i>տան դեմ, տան տակ, տան օրոք, տան փոխարեն</i>)<br />PC(>NP,GNT);
+<br /><br /><b>Y158</b><br />դիմաց (<i>տան դիմաց</i>)<br />PC(>NP,GNT);
+<br /><br /><b>Y159</b><br />դուրս (<i>տնից դուրս </i>)<br />PC(>NP,ABL);
+<br /><br /><b>Y160</b><br />ըստ (<i>ըստ պայմանի</i>)<br />PC(<NP,GNT);
+<br /><br /><b>Y161</b><br />ընթացքում (<i>աշխատանքի ընթացքում</i>)<br />PC(>NP,GNT);
+<br /><br /><b>Y162</b><br />կապակցությամբ (<i>աշխատանքի կապակցությամբ</i>)<br />PC(>NP,GNT);
+<br /><br /><b>Y163</b><br />կապակցությամբ (<i>այդ կապակցությամբ</i>)<br />PC(>NP,NOM);
+<br /><br /><b>Y164</b><br />կից (<i>այգուն կից</i>)<br />PC(>NP,DAT);
+<br /><br /><b>Y165</b><br />հակառակ (<i>հակառակ ընկերոջ</i>)<br />PC(<NP,DAT);
+<br /><br /><b>Y166</b><br />հակառակ (<i>ընկերոջ հակառակ </i>)<br />PC(>NP,DAT);
+<br /><br /><b>Y167</b><br />հանդերձ  (<i>ընտանյոք հանդերձ </i>)<br />PC(>NP,INS);
+<br /><br /><b>Y168</b><br />համաձայն  (<i>համաձայն նրա</i>)<br />PC(<NP,GNT);
+<br /><br /><b>Y169</b><br />համաձայն (<i> նրա համաձայն</i>)<br />PC(>NP,GNT);
+<br /><br /><b>Y170</b><br />հետ (<i>Արամի հետ</i>)<br />PC(>NP,GNT);
+<br /><br /><b>Y171</b><br />հիման վրա (<i>գրքի հիման վրա</i>)<br />PC(>NP,GNT);
+<br /><br /><b>Y172</b><br />հավասար (<i>հողին հավասար</i>)<br />PC(>NP,GNT);
+<br /><br /><b>Y173</b><br />մոտ  (<i>սահմանի մոտ </i>)<br />PC(>NP,GNT);
+<br /><br /><b>Y174</b><br />նախքան (<i>նախքան զգուշացումը</i>)<br />PC(<NP,ACC);
+<br /><br /><b>Y175</b><br />ներառյալ (<i>ներառյալ գիրքը</i>)<br />PC(<NP,ACC);
+<br /><br /><b>Y176</b><br />ներառյալ (<i>գիրքը ներառյալ</i>)<br />PC(>NP,ACC);
+<br /><br /><b>Y177</b><br />ներս (<i>դռնից ներս</i>)<br />PC(>NP,ABL);
+<br /><br /><b>Y178</b><br />նման (<i>գրքի նման </i>)<br />PC(>NP,GNT);
+<br /><br /><b>Y179</b><br />ներքև (<i>տնից ներքև</i>)<br />PC(>NP,ABL);
+<br /><br /><b>Y180</b><br /> շնորհիվ (<i>Արամի շնորհիվ</i>)<br />PC(>NP,GNT);
+<br /><br /><b>Y181</b><br />շնորհիվ (<i>շնորհիվ Արամի</i>)<br />PC(<NP,GNT);
+<br /><br /><b>Y182</b><br />շուրջ (<i>հարցի շուրջ</i>)<br />PC(>NP,GNT);
+<br /><br /><b>Y183</b><br />պատվին (<i>հեղինակի պատվին</i>)<br />PC(>NP,GNT);
+<br /><br /><b>Y184</b><br />պես (<i>հարազատի պես</i>)<br />PC(>NP,GNT);
+<br /><br /><b>Y185</b><br />պատճառով (<i>հեղինակի պատճառով</i>)<br />PC(>NP,GNT);
+<br /><br /><b>Y186</b><br />պահին (<i>այդ պահին</i>)<br />PC(>NP,ACC);
+<br /><br /><b>Y187</b><br />պահին (<i>գործի պահին</i>)<br />PC(>NP,GNT);
+<br /><br /><b>Y188</b><br />սկզբում (<i>դասի սկզբում</i>)<br />PC(>NP,GNT);
+<br /><br /><b>Y189</b><br />սկզբում (<i>դասի սկզբում</i>)<br />PC(>NP,GNT);
+<br /><br /><b>Y190</b><br />ապահովել ում ինչով (<i>ապահովել տղային հացով</i>)<br />VS(NP),VC(NP,DAT),VC(NP,INS);
+<br /><br /><b>Y191</b><br />գրել ում, ինչ (<i>գրել նամակ Արամին</i>)<br />VS(NP),VC(NP,ACC),VC(NP,ACC);
+<br /><br /><b>Y193</b><br />միանալ ում, ինչին (<i>միանալ Արամին</i>)<br />VS(NP),VC(NP,DAT);
+<br /><br /><b>Y194</b><br />դատել ում, ինչի համար (<i>դատել ում, ինչի համար</i>)<br />VS(NP),VC(NP,ACC),VC(NP,GNT,PP([համար]));
+<br /><br /><b>Y195</b><br />պայքարել ինչի համար (<i>պայքարել խաղաղության համար</i>)<br />VS(NP),VC(NP,GNT,PP([համար]));
+<br /><br /><b>Y197</b><br />առաջնորդել ում դեպի ուր (<i>առաջնորդել Արամին դեպի տուն</i>)<br />VS(NP),VC(NP,ACC),VC(NP,PP([դեպի]),ACC);
+<br /><br /><b>Y198</b><br />իշխել երկրի վրա (<i>իշխել երկրի վրա</i>)<br />VS(NP),VC(NP,GNT,PP([վրա]));
+<br /><br /><b>Y199</b><br />թարգմանել (<i>թարգմանել գիրքը հայերենից ռուսերեն</i>)<br />VS(NP),VC(NP,ACC),VC(NP,ABL),VC(NP,ACC);
+<br /><br /><b>Y200</b><br />վախենալ ումից, ինչից (<i>վախենալ շնից</i>)<br />VS(NP),VC(NP,ABL);
+<br /><br /><b>Y203</b><br />շարժում (<i>մեքենայի շարժում</i>)<br />NC(NP,GNT);
+<br /><br /><b>Y204</b><br />թունավորում (<i>ուտելիքից թունավորում</i>)<br />NC(NP,ABL);
+<br /><br /><b>Y206</b><br />բռնություն (<i>բռնություն մեկի հանդեպ</i>)<br />NC(NP,GNT);
+PP("հանդեպ");
+<br /><br /><b>Y207</b><br />թարգմանություն (<i>բառի փոխակերպում, փոխակերպում մի ձևից մյուսը</i>)<br />NC(<NP,GNT);
+ NC(>NP,ABL);
+NC(>NP,ACC);
+<br /><br /><b>Y208</b><br />տեսակետ (<i>մտորումներ ինչ-որ բանի մասին
+հոգածություն
+տեսակետ</i>)<br />NC(>NP,GNT([մասին]PP));
+<br /><br /><b>Y209</b><br />առաջընթաց (<i>հաջողություն գործում</i>)<br />NC(>NP,LOC);
+<br /><br /><b>Y210</b><br />հատուցում (<i>պատասհանատվություն երեխայի համար</i>)<br />NC(>NP,GNT([համար],PP));
+<br /><br /><b>Y211</b><br />նամակ (<i>նամակ Արամի մասին
+նամակ Արամից
+նամակ Արամին</i>)<br />NC(>NP,GNT([մասին]PP));
+NC(>NP,ABL);
+NC(>NP,DAT);
+<br /><br /><b>Y248</b><br />նկար (<i>նկարել նկար վրձինով</i>)<br />VS(NP),VC(NP,ACC),VC(NP,INS);
+<br /><br /><b>Y249</b><br />հաշվետու (<i>պատասխանած</i>)<br />JC(>NP,DAT);
+<br /><br /><b>Y250</b><br />պատասխանած (<i>բացատրված</i>)<br />JC(>NP,DAT);
+<br /><br /><b>Y251</b><br />օրհնված (<i>շնորհված</i>)<br />JC(>NP,ABL),JC(>NP,INS);
+<br /><br /><b>Y252</b><br />ծնված (<i>ապրած, գտնված</i>)<br />JC(NP,LOC);
+<br /><br /><b>Y253</b><br />դյութված (<i>հմայված</i>)<br />JC(NP,INS);
+<br /><br /><b>Y254</b><br />բացատրված (<i>ուղարկված</i>)<br />JC(>NP,GNT);
+<br /><br /><b>Y255</b><br />լի (<i>լցված</i>)<br />JC(NP,INS);
+<br /><br /><b>Y256</b><br />մտահոգված (<i>ոգևորված</i>)<br />JC(>NP,INS);
+<br /><br /><b>Y257</b><br />հատուկ (<i>առանձնահատուկ</i>)<br />JC(NP,DAT);
+<br /><br /><b>Y258</b><br />նկարագրված (<i>բնութագրված</i>)<br />JC(NP,INS);
+<br /><br /><b>Y259</b><br />արգելված (<i>թույլատրված</i>)<br />JC(PP([կողմից])),JC(NP,INS);
+<br /><br /><b>Y260</b><br />ամուսնացած (<i>նշանված</i>)<br />JC(NP,GNT([հետ]));
+<br /><br /><b>Y261</b><br />ընտրված (<i>թողարկված</i>)<br />JC(NP,GNT([կողմից]));
+<br /><br /><b>Y262</b><br />գրված (<i>ուղարկված</i>)<br />JC(NP,GNT([կողմից])), JC(NP,DAT);
+<br /><br /><b>Y288</b><br />վախեցած (<i>սարսափած</i>)<br />JC(X:Y,NP,ABL);
+<br /><br /><b>Y300</b><br />հետաքրքրվել 
+
+ (<i>հետաքրքրվել  ինչո՞վ
+
+</i>)<br />VS(NP),VC(NP,INS);
+<br /><br /><b>Y301</b><br />հետաքրքրել, ապահովել 1.ու՞մ,  2.ինչո՞վ
+ (<i>հետաքրքրել, ապահովել 1.ու՞մ,  2.ինչո՞վ</i>)<br />VS(NP),VC(NP,ACC),VC(NP,INS);
+<br /><br /><b>Y302</b><br />մոտենալ  ու՞մ, ինչի՞ն
+
+ (<i>մոտենալ  ու՞մ, ինչի՞ն</i>)<br />VS(NP),VC(NP,DAT);
+<br /><br /><b>Y303</b><br />հիանալ ումո՞վ, ինչո՞վ
+VC(NP,INS);
+ (<i>հիանալ ումո՞վ, ինչո՞վ</i>)<br />VS(NP),VC(NP,INS);
+<br /><br /><b>Y304</b><br />մտածել ինչի՞ մասին
+
+ (<i>մտածել ինչի՞ մասին</i>)<br />VS(NP),VC(NP,GEN,PP([մասին]));
+<br /><br /><b>Y305</b><br />հրաժարվել ինչի՞ց
+
+ (<i>հրաժարվել ինչի՞ց</i>)<br />VS(NP),VC(NP,ABL);
+<br /><br /><b>Y309</b><br />հավասար լինել ինչի՞ (<i>հավասար լինել ինչի՞</i>)<br />VS(NP),VC(NP,GEN);
+<br /><br /><b>Y310</b><br />ենթարկել ինչը՞ ինչի՞ն (<i>ենթարկել ինչը՞ ինչի՞ն</i>)<br />VS(NP),VC(NP,ACC),VC(NP,DAT);
+<br /><br /><b>Y391</b><br />ի նպաստ մեր շահերի (<i>ի օգուտ</i>)<br />JC(NP,GNT);
+<br /><br /><b>Y399</b><br />հետաքրքրվել ինչով (<i>բացատրվել, պատճառաբանվել, ուրախանալ</i>)<br />VS(NP),VC(NP,INS);
+  
+<br /><br /><b>Y400</b><br />ներգրավել ում/ինչը, ինչի մեջ (<i>ներգրավել Արամին գործի մեջ</i>)<br />VS(NP),VC(NP,DAT),VC(NP,ACC,POS,PP([մեջ]));
+<br /><br /><b>Y401</b><br />ափսոսալ ում/ինչի համար (<i>ափսոսալ ում/ինչի համար, զղջալ, 
+
+</i>)<br />VS(NP),VC(NP,GEN,POS,PP([համար]));
+<br /><br /><b>Y402</b><br />դնել ում/ինչ, ուր/որտեղ/ինչի մեջ  (<i>գցել, տեղափոխել</i>)<br />VS(NP),VC(NP,ACC),VC(NP,LOC);
+ 
+<br /><br /><b>Y403</b><br />փորել ինչ,ինչով	
+
+ (<i>փորել հողը բահով
+ձանձրացնել ում, ումով/ինչով </i>)<br />VS(NP),VC(NP, ACC),VC(NP,INS);
+<br /><br /><b>Y404</b><br />մագլցել ուր/որտեղ   (գրանցվել)
+
+ (<i>գրանցվել, գնալ, ուղևորվել</i>)<br />VS(NP),VC(NP,LOC);
+<br /><br /><b>Y405</b><br />զրկել ում/ինչ, ումից/ինչից  
+
+ (<i>ազատել, հեռացնել</i>)<br />VS(NP),VC(NP,DAT),VC(NP,ABL);
+<br /><br /><b>Y406</b><br />խարդախել ում/ինչի դեմ
+
+ (<i>պայքարել, խարդախել ում/ինչի դեմ
+
+</i>)<br />VS(NP),VC(NP,GEN,POS,PP([դեմ]));
+<br /><br /></body>
+<html>

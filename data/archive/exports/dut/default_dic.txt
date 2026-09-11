@@ -1,0 +1,128 @@
+﻿;============================================================================================
+;DEFAULT DICTIONARY
+;This dictionary is language-independent and may be used by any language. 
+;It must be loaded after the language specific dictionaries.
+;Documentation available at http://www.unlweb.net/wiki/Default_dictionary
+;============================================================================================
+;BLANK SPACE (BLK)
+[ ]{}""(PUT=BLK)<def,0,0>;
+;PUNCTUATION (PUT)
+[‾]{}""(PUT=oline)<def,0,0>;
+[_]{}""(PUT=UNDERSCORE) <def,0,0>;
+[-]{}""(PUT=HYPHEN)<def,0,0>;
+[–]{}""(PUT=ndash)<def,0,0>;
+[—]{}""(PUT=mdash)<def,0,0>;
+[,]{}""(PUT=COMMA)<def,0,0>;
+[;]{}""(PUT=SEMICOLON)<def,0,0>;
+[:]{}""(PUT=COLON)<def,0,0>;
+[!]{}""(PUT=EMARK)<def,0,0>;
+[¡]{}""(PUT=iexcl)<def,0,0>;
+[?]{}""(PUT=QMARK)<def,0,0>;
+[¿]{}""(PUT=iquest)<def,0,0>;
+[؟]{}""(PUT=AQMARK)<def,0,0>;
+[‽]{}""(PUT=IBANG)<def,0,0>;
+[⸘]{}""(PUT=IIBANG)<def,0,0>;
+[…]{}""(PUT=hellip)<def,0,0>;
+[.]{}""(PUT=PERIOD)<def,0,0>;
+[·]{}""(PUT=middot)<def,0,0>;
+[']{}""(PUT=APOSTROPHE)<def,0,0>;
+[‘]{}""(PUT=lsquo)<def,0,0>;
+[’]{}""(PUT=rsquo)<def,0,0>;
+[‚]{}""(PUT=sbquo)<def,0,0>;
+[‹]{}""(PUT=lsaquo)<def,0,0>;
+[›]{}""(PUT=rsaquo)<def,0,0>;
+["]{}""(PUT=QUOTE)<def,0,0>;
+[“]{}""(PUT=ldquo)<def,0,0>;
+[”]{}""(PUT=rdquo)<def,0,0>;
+[„]{}""(PUT=bdquo)<def,0,0>;
+[«]{}""(PUT=laquo)<def,0,0>;
+[»]{}""(PUT=raquo)<def,0,0>;
+[(]{}""(PUT=OPARENTHESIS)<def,0,0>;
+[)]{}""(PUT=CPARENTHESIS)<def,0,0>;
+[[]{}""(PUT=OSBRACKET)<def,0,0>;
+[]]{}""(PUT=CSBRACKET)<def,0,0>;
+[{]{}""(PUT=OCBRACE)<def,0,0>;
+[}]{}""(PUT=CCBRACE)<def,0,0>;
+[@]{}""(PUT=AT)<def,0,0>;
+[*]{}""(PUT=ASTERISK)<def,0,0>;
+[/]{}""(PUT=FSLASH)<def,0,0>;
+[\]{}""(PUT=BSLASH)<def,0,0>;
+[&]{}""(PUT=amp)<def,0,0>;
+[#]{}""(PUT=HASH)<def,0,0>;
+[%]{}""(PUT=PERCENTAGE)<def,0,0>;
+[‰]{}""(PUT=permil)<def,0,0>;
+[†]{}""(PUT=dagger)<def,0,0>;
+[‡]{}""(PUT=Dagger)<def,0,0>;
+[`]{}""(PUT=GRAVE)<def,0,0>;
+[´]{}""(PUT=ACUTE)<def,0,0>;
+[^]{}""(PUT=CIRCUMFLEX)<def,0,0>;
+[¯]{}""(PUT=macr)<def,0,0>;
+[¨]{}""(PUT=uml)<def,0,0>;
+[¸]{}""(PUT=cedil)<def,0,0>;
+[§]{}""(PUT=sect)<def,0,0>;
+[¶]{}""(PUT=para)<def,0,0>;
+[©]{}""(PUT=copy)<def,0,0>;
+[®]{}""(PUT=reg)<def,0,0>;
+[°]{}""(PUT=deg)<def,0,0>;
+[←]{}""(PUT=larr)<def,0,0>;
+[→]{}""(PUT=rarr)<def,0,0>;
+[↑]{}""(PUT=uarr)<def,0,0>;
+[↓]{}""(PUT=darr)<def,0,0>;
+[+]{}""(PUT=PLUS)<def,0,0>;
+[±]{}""(PUT=plusmn)<def,0,0>;
+[÷]{}""(PUT=divide)<def,0,0>;
+[×]{}""(PUT=times)<def,0,0>;
+[<]{}""(PUT=lt)<def,0,0>;
+[=]{}""(PUT=EQUAL)<def,0,0>;
+[>]{}""(PUT=gt)<def,0,0>;
+[¬]{}""(PUT=not)<def,0,0>;
+[|]{}""(PUT=VERTICALBAR) )<def,0,0>;
+[¦]{}""(PUT=brvbar)<def,0,0>;
+[~]{}""(PUT=TILDE) )<def,0,0>;
+[♠]{}""(PUT=spades)<def,0,0>;
+[♣]{}""(PUT=clubs)<def,0,0>;
+[♥]{}""(PUT=hearts)<def,0,0>;
+[♦]{}""(PUT=diams)<def,0,0>;
+[¤]{}""(PUT=curren)<def,0,0>;
+[¢]{}""(PUT=cent)<def,0,0>;
+[$]{}""(PUT=DOLLAR)<def,0,0>;
+[£]{}""(PUT=pound)<def,0,0>;
+[¥]{}""(PUT=yen)<def,0,0>;
+[€]{}""(PUT=EURO)<def,0,0>;
+[¹]{}""(PUT=sup1)<def,0,0>;
+[½]{}""(PUT=frac12)<def,0,0>;
+[¼]{}""(PUT=frac14)<def,0,0>;
+[²]{}""(PUT=sup2)<def,0,0>;
+[³]{}""(PUT=sup3)<def,0,0>;
+[¾]{}""(PUT=frac34)<def,0,0>;
+[؛]{}""(PUT=SEMICOLON)<def,0,0>;
+[ـ]{}""(PUT=HYPHEN)<def,0,0>;
+[،]{}""(PUT=COMMA)<def,0,0>;
+[//]{}""(PUT=BSLASH)<def,0,0>;
+[((]{}""(PUT=OPARENTHESIS)<def,0,0>;
+[))]{}""(PUT=CPARENTHESIS)<def,0,0>;
+[٪]{}""(PUT=PERCENTAGE)<def,0,0>;
+;URL's and EMAIL ADDRESSES
+[/(?i)(http\:\/\/[^ ]+)/]{}""(TEMP,LEX=N,POS=PPN,URL)<def,0,0>;
+[/(?i)(https\:\/\/[^ ]+)/]{}""(TEMP,LEX=N,POS=PPN,URL)<def,0,0>;
+[/(?i)(ftp\:\/\/[^ ]+)/]{}""(TEMP,LEX=N,POS=PPN,URL)<def,0,0>;
+[/(?i)(www\.[^ ]+)/]{}""(TEMP,LEX=N,POS=PPN,URL)<def,0,0>;
+[/(?i)([^ ]+@[^ ]+)/]{}""(TEMP,LEX=N,POS=PPN,EMAIL)<def,0,0>;
+;DATES AND TIME
+[/(\d{1,2}\/)?\d{1,2}\/\d{2}(\d{2})?/]{}""(TEMP,LEX=N,POS=PPN,DATE)<def,0,0>;
+[/(\d{1,2}\-)?\d{1,2}\-\d{2}(\d{2})?/]{}""(TEMP,LEX=N,POS=PPN,DATE)<def,0,0>;
+[/(\d{1,2}\.)?\d{1,2}\.\d{2}(\d{2})?/]{}""(TEMP,LEX=N,POS=PPN,DATE)<def,0,0>;
+[/\d{1,2}\:\d{1,2}(\:\d{2})?/]{}""(TEMP,LEX=N,POS=PPN,TIME)<def,0,0>;
+[/(?i)(A\.?\s?M\.?)/]{}""(LEX=A,POS=AAV,TIME=AM)<def,0,0>;
+[/(?i)(P\.?\s?M\.?)/]{}""(LEX=A,POS=AAV,TIME=PM)<def,0,0>;
+;CURRENCY
+[/(\$|¢|£|¥|£|€)(\s)?\d+([.,]\d+)?/]{}""(TEMP,LEX=N,POS=PPN,CURRENCY)<def,0,0>;
+[/(AFN|ALL|ANG|ARS|AUD|AWG|AZN|BAM|BBD|BGN|BMD|BND|BOB|BRL|Bs|BSD|BWP|BYR|BZD|CAD|CHF|CHF|CLP|CNY|COP|CRC|CUP|CZK|DKK|DOP|EEK|EGP|EUR|FJD|FKP|GBP|GGP|GHC|GIP|GTQ|GYD|HKD|HNL|HRK|HUF|IDR|ILS|IMP|INR|IRR|ISK|JEP|JMD|JPY|KGS|KHR|KM|KPW|KRW|KYD|KZT|LAK|LBP|LKR|LRD|LTL|LVL|MKD|MNT|MT|MUR|MXN|MYR|MZN|NAD|NGN|NIO|NOK|NPR|NZD|OMR|PAB|PEN|PHP|PKR|PLN|PYG|QAR|RON|RSD|RUB|SAR|SBD|SCR|SEK|SGD|SHP|SOS|SRD|SVC|SYP|THB|TRL|TRY|TTD|TVD|TWD|UAH|USD|UYU|UZS|VEF|VND|XCD|YER|ZAR|ZWD)(\s)?\d+([.,]\d+)?/]{}""(TEMP,LEX=N,POS=PPN,CURRENCY)<def,0,0>;
+;ROMAN NUMBERS
+[/M{0,3}(C{1,3}|CD|DC{0,3}|CM)?(X{1,3}|XL|LX{0,3}|XC)?(I{1,3}|IV|VI{0,3}|IX)/]{}""(LEX=U,ROMAN)<def,0,0>;
+[/M{0,3}(C{1,3}|CD|DC{0,3}|CM)?(X{1,3}|XL|LX{0,3}|XC)/]{}""(LEX=U,ROMAN)<def,0,0>;
+[/M{0,3}(C{1,3}|CD|DC{0,3}|CM)/]{}""(LEX=U,ROMAN)<def,0,0>;
+;PHONE NUMBERS
+[/(((\(\+?\d{1,3}\))|(\+?\(\d{1,3}\))|(\+?\d{1,3}\s))?/s?((\(\d{2,3}\))|(\d{2,3}))\s?)?\d{3,4}(\-|\s)\d{4}/]{}""(TEMP,LEX=N,POS=PPN,PHONENUMBER)<def,0,0>;
+;FORMULA
+[/(\(*\s?[+-]?\d+([.,]\d+)?\s?\)*)(\s?[\+\-\*\/\=]\s?(\(*\s?[+-]?\d+([.,]\d+)?\s?\)*))+/]{}""(TEMP,LEX=N,POS=PPN,FORMULA)<def,0,0>;

@@ -1,0 +1,19 @@
+﻿; RuleSet:(MX)slv_unl_dgrammar
+; User:Sergiy Prots (prots)
+; Date:03.50.2013 at 10:50:04
+
+; "slv_unl_dgrammar"
+; MX
+(TEMP,^DIGIT,^W)(^BLK,^PUT,^STAIL)=0;
+(^BLK,^PUT,^SHEAD)(TEMP,^W)=0;
+(TEMP)(PUT)(TEMP)=0;
+(V)(BLK)(V,^INF)=0;
+#(P,att=@for)(BLK)(N,^ACC)=0;
+(P,rel=tim)(BLK)(N,LCT)=0;
+(P,rel=tim)(BLK)(N,ARF)=0;
+(P,att=@to)(BLK)(N,^LCT)=0;
+#(P,att=@to)(BLK)(N,^ACC)=0;
+(P , att = @behind , %01 ) (BLK , %02 ) (N , ^INS , %03 )  = 0;
+(V)(BLK)(I)(BLK)(V)=0;
+(VER)(BLK)(PPR)(BLK)(COP)=0;
+(VER)(BLK)(FPR)(BLK)(COP)=0;

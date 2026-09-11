@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<title>UNLarium</title>
+<link rel="stylesheet" type="text/css" media="all" href="../../shared/default.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"  />
+<link rel="shortcut icon" href="../favicon.ico" type="image/x-icon" />
+</head>
+
+<body>
+<h1>Dari Subcategorization  Grammar for Natural Language Generation</h1>Version of September 11, 2026, 1:06 pm<br />Documentation available at <a href="http://www.unlarchive.org/wiki/index.php/Grammar" target="_blank">http://www.unlarchive.org/wiki/index.php/Grammar</a><br />Tagset available at <a href="../dictionary/export_tagset.php" target="_blank">Export UNDL Foundation tagset</a>.<br /><br /><b>Y0</b><br />AVALENT<br /><br /><b>Y1</b><br />NO SUBCATEGORIZATION FRAME: rules defined inside the entry in the dictionary<br /><br /><b>Y34</b><br />requires a verb specifier, which is a noun phrase, 
+
+
+
+
+ (<i>او رفت</i>)<br />VS(NP);
+<br /><br /><b>Y35</b><br />requires a verb specifier, which is a noun phrase, and a verb complement, which is also a noun phrase,
+
+
+
+ (<i>علی حسن را کشت، بچه غذا را خورد،</i>)<br />VS(NP)VC(NP);
+<br /><br /><b>Y36</b><br />requires a verb specifier, which is a noun phrase, a verb complement, which is also a noun phrase and a verb complement which is a prepositional phrase headed by [به], 
+
+
+
+ (<i>کتاب را به کتابخانه برگرداند، لباس را به مشتری فروخت،
+</i>)<br />VS(NP)VC(NP)VC(PH([به]));
+<br /><br /><b>Y37</b><br />requires a verb specifier, which is a noun phrase, and a verb complement, which is also a noun phrase and a verb complement which is a prepositional phrase headed by [از], 
+
+
+
+ (<i>بچه را از مادر جدا کرد، گل را از شاخه چید،</i>)<br />VS(NP)VC(NP)VC(PH([از]));
+<br /><br /><b>Y38</b><br />requires a verb specifier, which is a noun phrase, and a verb complement, which is also a noun phrase and a verb complement which is a prepositional phrase headed by [روی], 
+
+
+
+
+ (<i>لحاف را روی بچه کشید، گچ را روی دیوار مالید،</i>)<br />VS(NP)VC(NP)VC(PH([روی]));
+<br /><br /><b>Y39</b><br />requires a verb specifier, which is a noun phrase, and a verb complement which is a complementizer phrase, 
+
+
+
+ (<i>وی گفت که...، ایشان افزودند که...، وی اشاره کرد که...
+</i>)<br />VS(NP)VC(CP);
+<br /><br /><b>Y40</b><br />   
+requires a verb specifier, which is a noun phrase, and a verb complement which is a noun phrase, adjective phrase or prepositional phrase, 
+
+
+
+
+ (<i>علی دانشجو است، مادرش بیمار است، او اهل همدان است،</i>)<br />VS(NP)VC({NP|JP|PP});
+<br /><br /><b>Y41</b><br />requires a verb specifier, which is a noun phrase and a verb complement which is a prepositional phrase headed by [با], 
+
+
+
+
+ (<i>با او برخورد کرد، با دشمن مواجه شد</i>)<br />VS(NP)VC(PH([با]));
+<br /><br /><b>Y42</b><br />requires a verb specifier, which is a noun phrase, and a verb complement which is a prepositional phrase headed by [به], 
+
+
+
+
+ (<i>او به خانه رسید او به خانه رفت</i>)<br />VS(NP)VC(PH([به]));
+<br /><br /><b>Y43</b><br />requires a verb specifier, which is a noun phrase, and a verb complement which is a prepositional phrase headed by [درباره]or[درمورد] 
+
+
+
+
+ (<i>او درمورد سیاست صحبت کرد، او درباره مذهب نوشت</i>)<br />VS(NP)VC(PH({[درباره]|[درمورد]}));
+<br /><br /><b>Y44</b><br />    
+requires a verb specifier, which is a noun phrase, a verb complement, which is also a noun phrase and a verb complement which is a prepositional phrase headed by [در]or[زیر]or[کنار]or[داخل]or [بیرون] or [میان] or any spatial adposition
+ (<i>علی کتاب را در کتابخانه گذاشت،او کتاب را کنار میز گذاشت
+</i>)<br />VS(NP)VC(NP)VC(PH({[در]|[زیر]|[میان]|[بیرون]|[کنار]|[داخل]}));
+<br /><br /><b>Y45</b><br />requires a verb specifier which is a noun phrase and two verb complements which are either two noun phrases or one Noun Phrase in AJ1 and one Adjective phrase in AJ2 .
+
+
+ (<i>او پسرش را نابغه می پندارد/می داند، آنها بچه را حسن نامیدند/صدامی‌زدند
+</i>)<br />VS(NP)VC(NP,AJ1)VC({NP|JP},AJ2);
+<br /><br /><b>Y46</b><br />requires a verb specifier, which is a noun phrase, and a verb complement, which is an adjective phrase.
+ 
+
+
+ (<i>او خسته به نظر می‌آمد،</i>)<br />VS(NP)VC(JP);
+<br /><br /><b>Y47</b><br />requires a verb specifier, which is a noun phrase, a verb complement, which is a verb complement headed by [به], and also a verb complement which is a complementizer phrase.
+
+
+ (<i>او به ما دستور داد کار را شروع کنیم
+</i>)<br />VS(NP)VC(PH([به]))VC(CP);
+<br /><br /><b>Y48</b><br />requires a verb specifier, which is a noun phrase and a verb complement which is a prepositional phrase headed by [برای], 
+
+
+
+ (<i>برای خیریه اعانه جمع کردند </i>)<br />VS(NP)VC(PH([برای]));
+<br /><br /><b>Y49</b><br />
+requires a verb specifier, which is a noun phrase and a verb complement which is a prepositional phrase headed by [روی],
+
+
+
+
+ (<i>او روی قولش پاگذاشت، او روی فرش پاگذاشت</i>)<br />VS(NP)VC(PH([روی]));
+<br /><br /><b>Y50</b><br />requires a verb specifier, which is a noun phrase, and a verb complement, which is an adjective phrase and a verb complement, which is a prepositional phrase headed by the preposition [با]
+
+
+
+
+ (<i>با او بد رفتار کرد، با او خوب برخورد کرد</i>)<br />VS(NP)VC(JP)VC(PH([با]));
+<br /><br /></body>
+<html>

@@ -1,0 +1,667 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<title>UNLarium</title>
+<link rel="stylesheet" type="text/css" media="all" href="../../shared/default.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"  />
+<link rel="shortcut icon" href="../favicon.ico" type="image/x-icon" />
+</head>
+
+<body>
+<h1>Romanian Inflectional  Grammar</h1>Version of September 11, 2026, 2:01 pm<br />Documentation available at <a href="http://www.unlarchive.org/wiki/index.php/Grammar" target="_blank">http://www.unlarchive.org/wiki/index.php/Grammar</a><br />Tagset available at <a href="../dictionary/export_tagset.php" target="_blank">Export UNDL Foundation tagset</a>.<br /><br /><b>M0</b><br />Invariant<br /><br /><b>M1</b><br />Irregular: rules are defined inside the entry in the dictionary<br /><br /><b>M2</b><br />Declination I (<i>cană</i>)<br />NOM&SNG:=0>"";<br />NOM&PLR:="a":"ă","ă">"i";<br />ACC&SNG:=0>"";<br />ACC&PLR:="a":"ă","ă">"i";<br />GNT&SNG:="a":"ă","ă">"ii";<br />GNT&PLR:="a":"ă","ă">"ilor";<br />DAT&SNG:="a":"ă","ă">"ii";<br />DAT&PLR:="a":"ă","ă">"ilor";<br />VOC&SNG:=0>"";<br />VOC&PLR:="a":"ă","ă">"i";<br /><br /><b>M3</b><br />Adjective with 4 forms (<i>adevărat</i>)<br />MCL&SNG:=0>"";<br />FEM&SNG:=0>"ă";<br />MCL&PLR:="t":"ţ",0>"i";<br />FEM&PLR:=0>"e";<br /><br /><b>M4</b><br />Adjective with 4 forms (frumos) (<i>frumos</i>)<br />MCL&SNG&NOM:=0>"";<br />
+MCL&SNG&ACC:=0>"";<br />
+MCL&SNG&GNT:=0>"";<br />
+MCL&SNG&DAT:=0>"";<br />
+MCL&SNG&VOC:=0>"";<br />MCL&PLR&NOM:=0>"i","s":"ş";<br />MCL&PLR&ACC:=0>"i","s":"ş";<br />MCL&PLR&GNT:=0>"i","s":"ş";<br />MCL&PLR&DAT:=0>"i","s":"ş";<br />MCL&PLR&VOC:=0>"i","s":"ş";<br />
+FEM&SNG&NOM:=0>"ă","o":"oa";<br />
+FEM&SNG&ACC:=0>"ă","o":"oa";<br />
+FEM&SNG&GNT:=0>"e","o":"oa";<br />
+FEM&SNG&DAT:=0>"e","o":"oa";<br />
+FEM&SNG&VOC:=0>"ă","o":"oa";<br />
+FEM&PLR&NOM:=0>"e","o":"oa";<br />
+FEM&PLR&ACC:=0>"e","o":"oa";<br />
+FEM&PLR&GNT:=0>"e","o":"oa";<br />
+FEM&PLR&DAT:=0>"e","o":"oa";<br />
+FEM&PLR&VOC:=0>"e","o":"oa";<br />
+;<br /><br /><b>M5</b><br />Adjective with 2 forms (<i>mare</i>)<br />MCL&SNG:=0>"";<br />FEM&SNG:=0>"";<br />MCL&PLR:="e">"i";<br />FEM&PLR:="e">"i";<br /><br /><b>M6</b><br />Adjective with 3 forms (<i>nou</i>)<br />MCL&SNG:=0>"";<br />FEM&SNG:=0>"ă";<br />MCL&PLR:="u">"i";<br />FEM&PLR:="u">"i";<br /><br /><b>M7</b><br />ban,bani (<i>ban</i>)<br />NOM&SNG:=0>"";<br />NOM&PLR:="0">"i";<br />ACC&SNG:=0>"";<br />ACC&PLR:="0">"i";<br />GNT&SNG:="0">"ului";<br />GNT&PLR:="0">"ilor";<br />DAT&SNG:="0">"ului";<br />DAT&PLR:="0">"ilor";<br />VOC&SNG:=0>"";<br />VOC&PLR:="0">"i";<br /><br /><b>M8</b><br />Bucătărie, bucătării (<i>bucătărie</i>)<br />NOM&SNG:=0>"";<br />NOM&PLR:="e":"i";<br />ACC&SNG:=0>"";<br />ACC&PLR:="e":"i";<br />GNT&SNG:="e">"ei";<br />GNT&PLR:="e">"ilor";<br />DAT&SNG:="e">"ei";<br />DAT&PLR:="e">"ilor";<br />VOC&SNG:=0>"";<br />VOC&PLR:="e":"i";<br /><br /><b>M9</b><br />carte,cărţi (<i>carte</i>)<br />NOM&SNG:=0>"";<br />NOM&PLR:="a":"ă","t":"ţ","e">"i";<br />ACC&SNG:=0>"";<br />ACC&PLR:="a":"ă","t":"ţ","e">"i";<br />GNT&SNG:="a":"ă","t":"ţ","e">"ii";<br />GNT&PLR:="a":"ă","t":"ţ","e">"ilor";<br />DAT&SNG:="a":"ă","t":"ţ","e">"ii";<br />DAT&PLR:="a":"ă","t":"ţ","e">"ilor";<br />VOC&SNG:=0>"";<br />VOC&PLR:="a":"ă","t":"ţ","e">"i";<br /><br /><b>M10</b><br />Neutral - cuţit (<i>cuţit</i>)<br />NOM&SNG:=0>"";<br />NOM&PLR:="0">"e";<br />ACC&SNG:=0>"";<br />ACC&PLR:="0">"e";<br />GNT&SNG:="0">"ului";<br />GNT&PLR:="0">"elor";<br />DAT&SNG:="0">"ului";<br />DAT&PLR:="0">"elor";<br />VOC&SNG:=0>"";<br />VOC&PLR:="0">"e";<br /><br /><b>M11</b><br />dimineaţă (<i>dimineaţă</i>)<br />NOM&SNG:=0>"";<br />NOM&PLR:="ea":"e","ă">"i";<br />ACC&SNG:=0>"";<br />ACC&PLR:="ea":"e","ă">"i";<br />GNT&SNG:="ea":"e","ă">"ii";<br />GNT&PLR:="ea":"e","ă">"ilor";<br />DAT&SNG:="ea":"e","ă">"ii";<br />DAT&PLR:="ea":"e","ă">"ilor";<br />VOC&SNG:=0>"";<br />VOC&PLR:="ea":"e","ă">"i";<br /><br /><b>M12</b><br />Fem noun -a, -ii (<i>Elveţia</i>)<br />NOM&SNG:=0>"";<br />NOM&PLR:="a">"ii";<br />ACC&SNG:=0>"";<br />ACC&PLR:="a">"ii";<br />GNT&SNG:="a">"ei";<br />GNT&PLR:="a">"ilor";<br />DAT&SNG:="a">"ei";<br />DAT&PLR:="a">"ilor";<br />VOC&SNG:=0>"";<br />VOC&PLR:="a">"ii";<br /><br /><b>M13</b><br />Fem noun -ă, -e (<i>fată</i>)<br />NOM&SNG:=0>"";<br />NOM&PLR:="a":"e","ă">"e";<br />ACC&SNG:=0>"";<br />ACC&PLR:="a":"e","ă">"e";<br />GNT&SNG:="a":"e","ă">"ei";<br />GNT&PLR:="a":"e","ă">"elor";<br />DAT&SNG:="a":"e","ă">"ei";<br />DAT&PLR:="a":"e","ă">"elor";<br />VOC&SNG:=0>"";<br />VOC&PLR:="a":"e","ă">"e";<br /><br /><b>M14</b><br />Neutral - prânz, -uri (<i>prânz</i>)<br />NOM&SNG:=0>"";<br />NOM&PLR:="0">"uri";<br />ACC&SNG:=0>"";<br />ACC&PLR:="0">"uri";<br />GNT&SNG:="0">"ului";<br />GNT&PLR:="0">"urilor";<br />DAT&SNG:="0">"ului";<br />DAT&PLR:="0">"urilor";<br />VOC&SNG:=0>"";<br />VOC&PLR:="0">"uri";<br /><br /><b>M15</b><br />Demonstr Pron Prox (<i>acesta</i>)<br />NOM&SNG:=0>"";<br />NOM&PLR:="s":"ş","a">"ia";<br />ACC&SNG:=0>"";<br />ACC&PLR:="s":"ş","a">"ia";<br />GNT&SNG:="a">"uia";<br />GNT&PLR:="a">"ora";<br />DAT&SNG:="a">"uia";<br />DAT&PLR:="a">"ora";<br />VOC&SNG:=0>"";<br />VOC&PLR:="s":"ş","a">"ia";<br /><br /><b>M16</b><br />Demonstr Pron Dist masc (<i>acela</i>)<br />NOM&SNG:=0>"";<br />NOM&PLR:="l":"i";<br />ACC&SNG:=0>"";<br />ACC&PLR:="l":"i";<br />GNT&SNG:="a">"uia";<br />GNT&PLR:="a">"ora";<br />DAT&SNG:="a">"uia";<br />DAT&PLR:="a">"ora";<br />VOC&SNG:=0>"";<br />VOC&PLR:="l":"i";<br /><br /><b>M17</b><br />Verb Conj 3 (<i>ajunge</i>)<br />PRS&1PS:="e">"";<br />PRS&2PS:="e":"i";<br />PRS&3PS:="0">"";<br />PRS&1PP:="0">"m";<br />PRS&2PP:="0">"ţi";<br />PRS&3PP:="e">"";<br />PAS&1PS:="0">"am";<br />PAS&2PS:="0">"ai";<br />PAS&3PS:="0">"a";<br />PAS&1PP:="0">"am";<br />PAS&2PP:="0">"aţi";<br />PAS&3PP:="0">"au";<br />
+NRMP&1PS:="ge">"sei";<br />
+NRMP&2PS:="ge">"seşi";<br />
+NRMP&3PS:="ge">"se";<br />
+NRMP&1PP:="ge">"serăm";<br />
+NRMP&2PP:="ge">"serăţi";<br />
+NRMP&3PP:="ge">"seră";<br />
+RMP&1PS:="ge">"sesem";<br />
+RMP&2PS:="ge">"seseşi";<br />
+RMP&3PS:="ge">"sese";<br />
+RMP&1PP:="ge">"seserăm";<br />
+RMP&2PP:="ge">"seserăţi";<br />
+RMP&3PP:="ge">"seseră";<br />
+SUB&PRS&1PS:="să ajung";<br />
+SUB&PRS&2PS:="să ajungi";<br />
+SUB&PRS&3PS:="să ajungă";<br />
+SUB&PRS&1PP:="să ajungem";<br />
+SUB&PRS&2PP:="să ajungeţi";<br />
+SUB&PRS&3PP:="să ajungă";<br />
+SUB&PAS&1PS:="să fi ajuns";<br />
+SUB&PAS&2PS:="să fi ajuns";<br />
+SUB&PAS&3PS:="să fi ajuns";<br />
+SUB&PAS&1PP:="să fi ajuns";<br />
+SUB&PAS&2PP:="să fi ajuns";<br />
+SUB&PAS&3PP:="să fi ajuns";<br />
+
+;<br /><br /><b>M18</b><br />Indef pron --cât (<i>cât</i>)<br />MCL&SNG:=0>"";<br />FEM&SNG:=0>"ă";<br />MCL&PLR:="t":"ţ",0>"i";<br />FEM&PLR:=0>"e";<br /><br /><b>M19</b><br />Indefinite pron cât (<i>cât</i>)<br />MCL&SNG:=0>"";<br />FEM&SNG:=0>"ă";<br />MCL&PLR:="t":"ţ",0>"i";<br />FEM&PLR:=0>"e";<br /><br /><b>M20</b><br />Interog pron CARE (<i>care</i>)<br />NOM&SNG&FEM:=0>"";<br />
+NOM&SNG&MCL:=0>"";<br />
+NOM&PLR&FEM:=0>"";<br />
+NOM&PLR&MCL:=0>"";<br />
+ACC&SNG&FEM:=0>"";<br />
+ACC&SNG&MCL:=0>"";<br />
+ACC&PLR&FEM:=0>"";<br />
+ACC&PLR&MCL:=0>"";<br />
+GNT&SNG&FEM:="a"<<0,[4-4]:"ă","e">"eia";<br />
+GNT&SNG&MCL:="a"<<0,[4-4]:"ă","e">"uia";<br />
+GNT&PLR&FEM:="a"<<0,[4-4]:"ă","e">"ora";<br />
+GNT&PLR&MCL:="a"<<0,[4-4]:"ă","e">"ora";<br />
+DAT&SNG&FEM:="a":"ă","e">"eia";<br />
+DAT&SNG&MCL:="a":"ă","e">"uia";<br />
+DAT&PLR&FEM:="a":"ă","e">"ora";<br />
+DAT&PLR&MCL:="a":"ă","e">"ora";<br />
+VOC&SNG&FEM:=0>"";<br />
+VOC&SNG&MCL:=0>"";<br />
+VOC&PLR&FEM:=0>"";<br />
+VOC&PLR&MCL:=0>"";<br />
+;<br /><br /><b>M21</b><br />Indef Pron - careva (<i>careva</i>)<br />NOM&SNG:=0>"";<br />
+NOM&PLR:=0>"";<br />
+ACC&SNG:=0>"";<br />
+ACC&PLR:=0>"";<br />
+GNT&SNG&FEM:="a cuiva";<br />
+GNT&PLR&FEM:="a cuiva";<br />
+DAT&SNG&FEM:="cuiva";<br />
+DAT&PLR&FEM:="cuiva";<br />
+VOC&SNG&FEM:=0>"";<br />
+VOC&PLR&FEM:=0>"";<br />
+;<br /><br /><b>M22</b><br />Determiner -Adj Pron inter/indef CARE (<i>care</i>)<br />NOM&SNG&FEM:=0>"";<br /> NOM&SNG&MCL:=0>"";<br /> NOM&PLR&FEM:=0>"";<br /> NOM&PLR&MCL:=0>"";<br /> ACC&SNG&FEM:=0>"";<br /> ACC&SNG&MCL:=0>"";<br /> ACC&PLR&FEM:=0>"";<br /> ACC&PLR&MCL:=0>"";<br /> GNT&SNG&FEM:="a"<<0,[4-4]:"ă","e":"ei";<br />
+GNT&SNG&MCL:="a"<<0,[4-4]:"ă","e":"ui";<br />
+GNT&PLR&FEM:="a"<<0,[4-4]:"ă","e":"or";<br />
+GNT&PLR&MCL:="a"<<0,[4-4]:"ă","e":"or";<br />
+DAT&SNG&FEM:="a":"ă","e":"ei";<br /> DAT&SNG&MCL:="a":"ă","e":"ui";<br /> DAT&PLR&FEM:="a":"ă","e":"or";<br /> DAT&PLR&MCL:="a":"ă","e":"or";<br /> 
+VOC&SNG&FEM:=0>"";<br /> VOC&SNG&MCL:=0>"";<br /> VOC&PLR&FEM:=0>"";<br /> VOC&PLR&MCL:=0>"";<br /> ;<br /><br /><b>M23</b><br />Noun : Type  sticlă/casă (sută, ) (<i>sticlă</i>)<br />NOM&SNG:=0>"";<br />
+NOM&PLR:="ă">"e";<br />
+ACC&SNG:=0>"";<br />
+ACC&PLR:="ă">"e";<br />
+GNT&SNG:="ă">"ei";<br />
+GNT&PLR:="ă">"elor";<br />
+DAT&SNG:="ă">"ei";<br />
+DAT&PLR:="ă">"elor";<br />
+VOC&SNG:=0>"";<br />
+VOC&PLR:="ă">"e";<br />
+;<br /><br /><b>M24</b><br />Indef Pron - celălalt,-ă,-ţi,-te (<i>celălalt</i>)<br />NOM&SNG&MCL:=0>"";<br />
+NOM&PLR&MCL:="lă":"i","t":"ţ",0>"i";<br /> 
+ACC&SNG&MCL:=0>"";<br /> 
+ACC&PLR&MCL:="lă":"i","t":"ţ",0>"i";<br /> 
+GNT&SNG&MCL:="ă":"ui";<br />
+GNT&PLR&MCL:="ă":"or","t":"ţ",0>"i";<br /> 
+DAT&SNG&MCL:="ă":"ui";<br />
+DAT&PLR&MCL:="ă":"or","t":"ţ",0>"i";<br />
+VOC&SNG&MCL:=0>"";<br /> 
+VOC&PLR&MCL:="lă":"i","t":"ţ",0>"i";<br />
+NOM&SNG&FEM:="elă":"ea",0>"ă";<br />
+NOM&PLR&FEM:="ă":"e",0>"e";<br />
+ACC&SNG&FEM:="elă":"ea",0>"ă";<br />
+ACC&PLR&FEM:="ă":"e",0>"e";<br />
+GNT&SNG&FEM:="ă":"ei",0>"e";<br />
+GNT&PLR&FEM:="ă":"or",0>"e";<br />
+DAT&SNG&FEM:="ă":"ei",0>"e";<br />
+DAT&PLR&FEM:="ă":"or",0>"e";<br />
+VOC&SNG&FEM:="elă":"ea",0>"ă";<br />
+VOC&PLR&FEM:="ă":"e",0>"e";<br />
+;<br /><br /><b>M25</b><br />Pron  interogatif - cine (<i>cine</i>)<br />NOM&SNG:=0>"";<br />
+NOM&PLR:=0>"";<br />
+ACC&SNG:=0>"";<br />
+ACC&PLR:=0>"";<br />
+GNT&SNG&FEM:="a cui";<br />
+GNT&PLR&FEM:="a cui";<br />
+DAT&SNG&FEM:="cui";<br />
+DAT&PLR&FEM:="cui";<br />
+VOC&SNG&FEM:=0>"";<br />
+VOC&PLR&FEM:=0>"";<br />
+;<br /><br /><b>M26</b><br />Pron  indef. cineva (<i>cineva</i>)<br />NOM&SNG:=0>"";<br />
+NOM&PLR:=0>"";<br />
+ACC&SNG:=0>"";<br />
+ACC&PLR:=0>"";<br />
+GNT&SNG&FEM:="a cuiva";<br />
+GNT&PLR&FEM:="a cuiva";<br />
+DAT&SNG&FEM:="cuiva";<br />
+DAT&PLR&FEM:="cuiva";<br />
+VOC&SNG&FEM:=0>"";<br />
+VOC&PLR&FEM:=0>"";<br />
+;<br /><br /><b>M27</b><br />Verb type  - a da (<i>a da</i>)<br />PRS&1PS:="dau";<br />
+PRS&2PS:="dai";<br />
+PRS&3PS:="dă";<br />
+PRS&1PP:="dăm";<br />
+PRS&2PP:="daţi";<br />
+PRS&3PP:="dau";<br />
+PAS&1PS:="dădeam";<br />
+PAS&2PS:="dădeai";<br />
+PAS&3PS:="dădea";<br />
+PAS&1PP:="dădeam";<br />
+PAS&2PP:="dădeaţi";<br />
+PAS&3PP:="dădeau";<br />
+PTP:="dat";<br />
+NRMP&1PS:="dădui";<br />  
+NRMP&2PS:="dăduşi";<br />   
+NRMP&3PS:="dădu";<br />
+NRMP&1PP:="dădurăm";<br />
+NRMP&2PP:="dădurăţi";<br />
+NRMP&3PP:="dădură";<br />
+RMP&1PS:="dădusem";<br />
+RMP&2PS:="dăduseşi";<br />
+RMP&3PS:="dăduse";<br />
+RMP&1PP:="dăduserăm";<br />
+RMP&2PP:="dăduserăţi";<br />
+RMP&3PP:="dăduseră";<br />
+SUB&PRS&1PS:="să dau";<br />
+SUB&PRS&2PS:="să dai";<br />
+SUB&PRS&3PS:="să dea";<br />
+SUB&PRS&1PP:="să dăm";<br />
+SUB&PRS&2PP:="să daţi";<br />
+SUB&PRS&3PP:="să dea";<br />
+SUB&PAS&1PS:="să fi dat";<br />
+SUB&PAS&2PS:="să fi dat";<br />
+SUB&PAS&3PS:="să fi dat";<br />
+SUB&PAS&1PP:="să fi dat";<br />
+SUB&PAS&2PP:="să fi dat";<br />
+SUB&PAS&3PP:="să fi dat";<br />
+
+;<br /><br /><b>M28</b><br />Pron pers  -eu (<i>eu</i>)<br />NOM&SNG:="eu";<br />
+ACC&SNG:="mine";<br />
+DAT&SNG:="mie";<br />
+;<br /><br /><b>M29</b><br />Pron pers - ea (<i>ea</i>)<br />NOM&SNG:="ea";<br />
+ACC&SNG:="ea";<br />
+GNT&SNG:="a ei";<br />
+DAT&SNG:="ei";<br />
+NOM&PLR:="ele";<br />
+ACC&PLR:="ele";<br />
+GNT&PLR:="a lor";<br />
+DAT&PLR:="lor";<br />
+;<br /><br /><b>M30</b><br />El -- pers pron (<i>el</i>)<br />NOM&SNG:="el";<br />
+ACC&SNG:="el";<br />
+GNT&SNG:="a lui";<br />
+DAT&SNG:="lui";<br />
+NOM&PLR:="ei";<br />
+ACC&PLR:="ei";<br />
+GNT&PLR:="a lor";<br />
+DAT&PLR:="lor";<br />
+;<br /><br /><b>M31</b><br />Verb type  - a exista (<i>exista</i>)<br />PRS&1PS:="exist";<br />
+PRS&2PS:="exişti";<br />
+PRS&3PS:="există";<br />
+PRS&1PP:="existăm";<br />
+PRS&2PP:="existaţi";<br />
+PRS&3PP:="există";<br />
+PAS&1PS:="existam";<br />
+PAS&2PS:="existai";<br />
+PAS&3PS:="exista";<br />
+PAS&1PP:="existam";<br />
+PAS&2PP:="existaţi";<br />
+PAS&3PP:="existau";<br />
+NRMP&1PS:="existai";<br />  
+NRMP&2PS:="existaşi";<br />  
+NRMP&3PS:="există";<br />
+NRMP&1PP:="existarăm";<br />
+NRMP&2PP:="existarăţi";<br />
+NRMP&3PP:="existară";<br />
+RMP&1PS:="existasem";<br />
+RMP&2PS:="existaseşi";<br />
+RMP&3PS:="existase";<br />
+RMP&1PP:="existaserăm";<br />
+RMP&2PP:="existaserăţi";<br />
+RMP&3PP:="existaseră";<br />
+PTP:="să fi existat";<br />
+SUB&PRS&1PS:="să exist";<br />
+SUB&PRS&2PS:="să exişti ";<br />
+SUB&PRS&3PS:="să existe ";<br />
+SUB&PRS&1PP:="să existăm";<br />
+SUB&PRS&2PP:="să existaţi";<br />
+SUB&PRS&3PP:="să existe";<br />
+SUB&PAS&1PS:="să fi existat";<br />
+SUB&PAS&2PS:="să fi existat";<br />
+SUB&PAS&3PS:="să fi existat ";<br />
+SUB&PAS&1PP:="să fi existat ";<br />
+SUB&PAS&2PP:="să fi existat ";<br />
+SUB&PAS&3PP:="să fi existat ";<br />
+
+
+;<br /><br /><b>M32</b><br />Type : a fi (<i>a fi </i>)<br />PRS&1PS :="sunt";<br />
+PRS&2PS :="eşti";<br />
+PRS&3PS :="este";<br />
+PRS&1PP:="suntem";<br />
+PRS&2PP:="sunteţi";<br />
+PRS&3PP :="sunt";<br />
+PAS&1PS :="eram";<br />
+PAS&2PS :="erai";<br />
+PAS&3PS :="era";<br />
+PAS&1PP :="eram";<br />
+PAS&2PP :="eraţi";<br />
+PAS&3PP :="erau";<br />
+NRMP&1PS:="fusei";<br /> 
+NRMP&2PS:="fuseşi";<br />
+NRMP&3PS:="fuse";<br />
+NRMP&1PP:="fuserăm";<br />
+NRMP&2PP:="fuserăţi";<br />
+NRMP&3PP:="fuseră";<br />
+RMP&1PS:="fusesem";<br />
+RMP&2PS:="fuseseşi";<br />
+RMP&3PS:="fusese";<br />
+RMP&1PP:="fuseserăm";<br />
+RMP&2PP:="fuseserăţi";<br />
+RMP&3PP:="fuseseră";<br />
+PTP:="fost";<br /><br /><b>M33</b><br />Indefinite pron - fiecare (<i>fiecare</i>)<br />NOM&SNG&FEM:=0>"";<br />
+NOM&SNG&MCL:=0>"";<br />
+NOM&PLR&FEM:=0>"";<br />
+NOM&PLR&MCL:=0>"";<br />
+ACC&SNG&FEM:=0>"";<br />
+ACC&SNG&MCL:=0>"";<br />
+ACC&PLR&FEM:=0>"";<br />
+ACC&PLR&MCL:=0>"";<br />
+GNT&SNG&FEM:="a"<<0,[7-7]:"ă",1>"eia";<br />
+GNT&SNG&MCL:=	"a"<<0,[7-7]:"ă",1>"uia";<br />
+GNT&PLR&FEM:= "a"<<0,[7-7]:"ă",1>"ora";<br />
+GNT&PLR&MCL:= "a"<<0,[7-7]:"ă",1>"ora";<br />
+DAT&SNG&FEM:="a":"ă",1>"eia";<br />  
+DAT&SNG&MCL:="a":"ă",1>"uia";<br />
+DAT&PLR&FEM:="a":"ă",1>"ora";<br />
+DAT&PLR&MCL:="a":"ă",1>"ora";<br />
+VOC&SNG&FEM:=0>"";<br /> VOC&SNG&MCL:=0>"";<br />
+VOC&PLR&FEM:=0>"";<br /> VOC&PLR&MCL:=0>"";<br />
+;<br /><br /><b>M34</b><br />Determiner -Adj Pron indef FIECARE (<i>fiecare</i>)<br />NOM&SNG&FEM:=0>"";<br /> NOM&SNG&MCL:=0>"";<br /> NOM&PLR&FEM:=0>"";<br /> NOM&PLR&MCL:=0>"";<br /> ACC&SNG&FEM:=0>"";<br /> ACC&SNG&MCL:=0>"";<br /> ACC&PLR&FEM:=0>"";<br /> ACC&PLR&MCL:=0>"";<br /> 
+GNT&SNG&FEM:="a":"ă",1>"ei";<br />
+GNT&SNG&MCL:="a":"ă",1>"ui";<br />
+GNT&PLR&FEM:="a":"ă",1>"or";<br />
+GNT&PLR&MCL:="a":"ă",1>"or";<br />
+DAT&SNG&FEM:="a":"ă",[1]:"ei";<br /> DAT&SNG&MCL:="a":"ă",[1]:"ui";<br /> DAT&PLR&FEM:="a":"ă",[1]:"or";<br /> DAT&PLR&MCL:="a":"ă",[1]:"or";<br /> 
+VOC&SNG&FEM:=0>"";<br /> VOC&SNG&MCL:=0>"";<br /> 
+VOC&PLR&FEM:=0>"";<br /> VOC&PLR&MCL:=0>"";<br />
+;<br /><br /><b>M35</b><br />Type a iubi (<i>a iubi</i>)<br />PRS&1PS:="iubesc";<br />
+PRS&2PS:="iubeşti";<br />
+PRS&3PS:="iubeşte";<br />
+PRS&1PP:="iubim";<br />
+PRS&2PP:="iubiţi";<br />
+PRS&3PP:=" iubesc ";<br />
+PAS&1PS:="iubeam";<br />
+PAS&2PS:="iubeai";<br />
+PAS&3PS:="iubea";<br />
+PAS&1PP:="iubeam";<br />
+PAS&2PP:="iubeaţi";<br />
+PAS&3PP:="iubeau";<br />
+NRMP&1PS:="iubii";<br />  
+NRMP&2PS:="iubişi";<br />   
+NRMP&3PS:="iubi";<br />
+NRMP&1PP:="iubirăm";<br />
+NRMP&2PP:="iubirăţi";<br />
+NRMP&3PP:="iubiră";<br />
+RMP&1PS:="iubisem";<br />
+RMP&2PS:="iubiseşi";<br />
+RMP&3PS:="iubise";<br />
+RMP&1PP:="iubiserăm";<br />
+RMP&2PP:="iubiserăţi";<br />
+RMP&3PP:="iubiseră";<br />
+PTP:="iubit";<br />
+SUB&PRS&1PS:="să iubesc";<br />
+SUB&PRS&2PS:="să iubeşti";<br />
+SUB&PRS&3PS:="să iubească";<br />
+SUB&PRS&1PP:="să iubim";<br />
+SUB&PRS&2PP:="să iubiţi";<br />
+SUB&PRS&3PP:="să iubească";<br />
+SUB&PAS&1PS:="să fi iubit";<br />
+SUB&PAS&2PS:="să fi iubit";<br />
+SUB&PAS&3PS:="să fi iubit";<br />
+SUB&PAS&1PP:="să fi iubit";<br />
+SUB&PAS&2PP:="să fi iubit";<br />
+SUB&PAS&3PP:="să fi iubit";<br />
+
+;<br /><br /><b>M36</b><br />Type: a merge  (<i>a merge</i>)<br />PRS&1PS:="merg";<br />
+PRS&2PS:="mergi";<br />
+PRS&3PS:="merge";<br />
+PRS&1PP:="mergem";<br />
+PRS&2PP:="mergeţi";<br />
+PRS&3PP:="merg ";<br />
+PAS&1PS:="mergeam";<br />
+PAS&2PS:="mergeai";<br />
+PAS&3PS:="mergea";<br />
+PAS&1PP:="mergeam";<br />
+PAS&2PP:="mergeaţi";<br />
+PAS&3PP:="mergeau";<br />
+NRMP&1PS:="mersei";<br />  
+NRMP&2PS:="merseşi";<br />   
+NRMP&3PS:="merse";<br />
+NRMP&1PP:="merserăm";<br />
+NRMP&2PP:="merserăţi";<br />
+NRMP&3PP:="merseră";<br />
+RMP&1PS:="mersesem";<br />
+RMP&2PS:="merseseşi";<br />
+RMP&3PS:="mersese";<br />
+RMP&1PP:="merseserăm";<br />
+RMP&2PP:="merseserăţi";<br />
+RMP&3PP:="merseseră";<br />
+PTP:="mers";<br />
+SUB&PRS&1PS:="să merg";<br />
+SUB&PRS&2PS:="să mergi";<br />
+SUB&PRS&3PS:="să meargă";<br />
+SUB&PRS&1PP:="să mergem";<br />
+SUB&PRS&2PP:="să mergeţi";<br />
+SUB&PRS&3PP:="să meargă";<br />
+SUB&PAS&1PS:="să fi mers";<br />
+SUB&PAS&2PS:="să fi mers";<br />
+SUB&PAS&3PS:="să fi mers";<br />
+SUB&PAS&1PP:="să fi mers";<br />
+SUB&PAS&2PP:="să fi mers";<br />
+SUB&PAS&3PP:="să fi mers";<br />
+
+;<br /><br /><b>M37</b><br /> Possesive pron  Meu --1P1Op (<i>meu</i>)<br />NOM&SNG&FEM:="a mea";<br /> NOM&SNG&MCL:="al meu";<br /> 
+ACC&SNG&FEM:="a mea";<br /> ACC&SNG&MCL:="al meu";<br /> 
+
+;<br /><br /><b>M38</b><br />Possesive pron  Meu / mei --1P2Op (<i>meu</i>)<br />NOM&PLR&FEM:="ale mele";<br /> NOM&PLR&MCL:="ai mei";<br /> 
+ACC&PLR&FEM:="ale mele";<br /> ACC&PLR&MCL:="ai mei";<br /> 
+;<br /><br /><b>M39</b><br />Possesive pron  Tău --1P1Op (<i>tău</i>)<br />NOM&SNG&FEM:="a ta";<br /> NOM&SNG&MCL:="al tău";<br /> 
+ACC&SNG&FEM:="a ta";<br /> ACC&SNG&MCL:=" al tău ";<br /> 
+;<br /><br /><b>M40</b><br />Possesive pron Tău / tăi --1P2Op (<i>tău</i>)<br />NOM&PLR&FEM:="ale tale";<br /> NOM&PLR&MCL:="ai tăi";<br /> 
+ACC&PLR&FEM:="ale tale";<br /> ACC&PLR&MCL:=" ai tăi ";<br /> 
+DAT&PLR&FEM:="alor tale";<br /> 
+DAT&PLR&MCL:="alor tăi";<br /> 
+;<br /><br /><b>M41</b><br />Possesive pron Său --1P1Op (<i>său</i>)<br />NOM&SNG&FEM:="a sa";<br /> NOM&SNG&MCL:="al său";<br /> 
+ACC&SNG&FEM:="a sa";<br /> ACC&SNG&MCL:=" al său ";<br /> 
+;<br /><br /><b>M42</b><br />Possesive pron Său / săi - -1P2Op  (<i>săi</i>)<br />NOM&PLR&FEM:="ale sale";<br /> NOM&PLR&MCL:="ai săi";<br /> 
+ACC&PLR&FEM:="ale sale";<br /> ACC&PLR&MCL:=" ai săi ";<br /> 
+DAT&PLR&FEM:="alor sale";<br /> 
+DAT&PLR&MCL:="alor săi";<br /> 
+;<br /><br /><b>M43</b><br />Possesive pron  --nostru  2P1Op (<i>nostru</i>)<br />
+NOM&SNG&FEM:="al nostru";<br /> NOM&SNG&MCL:="a noastră";<br /> 
+ACC&SNG&FEM:="al nostru";<br /> ACC&SNG&MCL:="a noastră";<br /> 
+;<br /><br /><b>M44</b><br />Possesive pron  -- noştri  2P2Op (<i>noştri</i>)<br />NOM&PLR&FEM:="ale noastre";<br /> 
+NOM&PLR&MCL:="ai noştri ";<br /> 
+ACC&PLR&FEM:="ale noastre";<br /> 
+ACC&PLR&MCL:="ai noştri ";<br /> 
+GNT&SNG&FEM:= "ale alor noastre";<br />
+GNT&SNG&MCL:= "ale alor noştri";<br />
+DAT&SNG&FEM:= "alor noastre";<br />
+DAT&SNG&MCL:= "alor noştri";<br /> 
+;<br /><br /><b>M45</b><br />Possesive pron  --vostru  2P1Op (<i>vostru</i>)<br />NOM&SNG&MCL:="al vostru";<br /> NOM&SNG&FEM:="a voastră";<br /> 
+ACC&SNG&MCL:="al vostru";<br /> ACC&SNG&FEM:="a voastră";<br /> 
+;<br /><br /><b>M46</b><br />Possesive pron  -- voştri  2P2Op (<i>voştri</i>)<br />NOM&PLR&FEM:="ale voastre";<br /> 
+NOM&PLR&MCL:="ai voştri ";<br /> 
+ACC&PLR&FEM:="ale voastre";<br /> 
+ACC&PLR&MCL:="ai voştri ";<br /> 
+GNT&SNG&FEM:= "ale alor voastre";<br />
+GNT&SNG&MCL:= "ale alor voştri";<br />
+DAT&SNG&FEM:= "alor voastre";<br />
+DAT&SNG&MCL:= "alor voştri";<br /> 
+;<br /><br /><b>M47</b><br />Possesive pron  -- lor  2P1Op (<i>lor</i>)<br />NOM&SNG&FEM:="a lor";<br /> NOM&SNG&MCL:="al lor";<br /> 
+ACC&SNG&FEM:="a lor";<br /> ACC&SNG&MCL:=" al lor ";<br /> 
+;<br /><br /><b>M48</b><br />Possesive pron  -- lor  2P2Op (<i>lor</i>)<br />NOM&PLR&FEM:="ale lor";<br /> NOM&PLR&MCL:="ai lor";<br /> 
+ACC&PLR&FEM:="ale lor";<br /> ACC&PLR&MCL:=" ai lor ";<br /> 
+DAT&PLR&FEM:="alor lor";<br />
+DAT&PLR&MCL:="alor lor";<br />
+;<br /><br /><b>M49</b><br />Reflexive Pron - sine  (<i>sine</i>)<br />NOM&SNG:="sine";<br />
+ACC&SNG:="sine";<br />
+GNT&SNG:="a sinelui";<br />
+DAT&SNG:="sinelui";<br />
+;<br /><br /><b>M50</b><br />Indef Pron oricare (<i>oricare</i>)<br />NOM&SNG&FEM:=0>"";<br />
+NOM&SNG&MCL:=0>"";<br />
+NOM&PLR&FEM:=0>"";<br />
+NOM&PLR&MCL:=0>"";<br />
+ACC&SNG&FEM:=0>"";<br />
+ACC&SNG&MCL:=0>"";<br />
+ACC&PLR&FEM:=0>"";<br />
+ACC&PLR&MCL:=0>"";<br />
+GNT&SNG&FEM:="a"<<0,[7-7]:"ă","e">"eia";<br />
+GNT&SNG&MCL:="a"<<0,[7-7]:"ă","e">"uia";<br />
+GNT&PLR&FEM:="a"<<0,[7-7]:"ă","e">"ora";<br />
+GNT&PLR&MCL:= "a"<<0,[7-7]:"ă","e">"ora";<br />
+DAT&SNG&FEM:="a":"ă","e">"eia";<br />
+DAT&SNG&MCL:="a":"ă","e">"uia";<br />
+DAT&PLR&FEM:="a":"ă","e">"ora";<br />
+DAT&PLR&MCL:="a":"ă","e">"ora";<br />
+VOC&SNG&FEM:=0>"";<br />
+VOC&SNG&MCL:=0>"";<br />
+VOC&PLR&FEM:=0>"";<br />
+VOC&PLR&MCL:=0>"";<br />
+;<br /><br /><b>M51</b><br />Determiner  Indef pron : ORICARE (<i>oricare</i>)<br />NOM&SNG&FEM:=0>"";<br /> NOM&SNG&MCL:=0>"";<br /> NOM&PLR&FEM:=0>"";<br /> NOM&PLR&MCL:=0>"";<br /> ACC&SNG&FEM:=0>"";<br /> ACC&SNG&MCL:=0>"";<br /> ACC&PLR&FEM:=0>"";<br /> ACC&PLR&MCL:=0>"";<br /> 
+GNT&SNG&FEM:="a"<<0,[7-7]:"ă","e":"ei";<br />
+GNT&SNG&MCL:="a"<<0,[7-7]:"ă","e":"ui";<br />
+GNT&PLR&FEM:="a"<<0,[7-7]:"ă","e":"or";<br />
+GNT&PLR&MCL:="a"<<0,[7-7]:"ă","e":"or";<br />
+DAT&SNG&FEM:="a":"ă","e":"ei";<br /> DAT&SNG&MCL:="a":"ă","e":"ui";<br /> DAT&PLR&FEM:="a":"ă","e":"or";<br /> DAT&PLR&MCL:="a":"ă","e":"or";<br /> 
+VOC&SNG&FEM:=0>"";<br /> VOC&SNG&MCL:=0>"";<br /> 
+VOC&PLR&FEM:=0>"";<br /> VOC&PLR&MCL:=0>"";<br />
+;<br /><br /><b>M52</b><br />Indef Pron oricine (<i>oricine</i>)<br />NOM&SNG:=0>"";<br />
+NOM&PLR:=0>"";<br />
+ACC&SNG:=0>"";<br />
+ACC&PLR:=0>"";<br />
+GNT&SNG&FEM:="a oricui";<br />
+GNT&PLR&FEM:="a oricui";<br />
+DAT&SNG&FEM:="oricui";<br />
+DAT&PLR&FEM:="oricui";<br />
+VOC&SNG&FEM:=0>"";<br />
+VOC&PLR&FEM:=0>"";<br />
+;<br /><br /><b>M53</b><br />Mult - indefinite pronoun (<i>mult</i>)<br />NOM&SNG&FEM:=0>"ă";<br />
+ NOM&SNG&MCL:=0>"";<br />
+ACC&SNG&FEM:=0>"ă";<br />
+ACC&SNG&MCL:=0>"";<br />
+GNT&SNG&FEM:=0>"ei";<br />
+GNT&SNG&MCL:=0>"ului";<br />
+DAT&SNG&FEM:=0>"ei";<br />
+DAT&SNG&MCL:=0>"ului";<br />
+NOM&PLR&FEM:=0>"e";<br /> 
+NOM&PLR&MCL:= "t":"ţ",0>"i";<br />
+ACC&PLR&FEM:= 0>"e";<br /> 
+ACC&PLR&MCL:="t":"ţ",0>"i";<br />
+GNT&PLR&FEM:= 0>"ora";<br />
+GNT&PLR&MCL:= 0>"ora";<br />
+DAT&PLR&FEM:= 0>"ora";<br />
+DAT&PLR&MCL:= 0>"ora";<br />
+;<br /><br /><b>M54</b><br />Possesive pron  "de-al meu"  (<i>meu</i>)<br />NOM&SNG&FEM:="de-a mea";<br /> NOM&SNG&MCL:="de-al meu";<br /> 
+ACC&SNG&FEM:="de-a mea";<br /> ACC&SNG&MCL:="de-al meu";<br /> 
+NOM&PLR&FEM:="de-ale mele";<br /> NOM&PLR&MCL:="de-ai mei";<br /> 
+ACC&PLR&FEM:="de-ale mele";<br /> ACC&PLR&MCL:="de-ai mei";<br /> 
+;<br /><br /><b>M55</b><br />Possesive pron   De-al tău 1P1Op (<i>tău</i>)<br />NOM&SNG&FEM:="de-a ta";<br /> NOM&SNG&MCL:="de-al tău";<br /> 
+ACC&SNG&FEM:="de-a ta";<br /> ACC&SNG&MCL:=" de-al tău";<br /> NOM&PLR&FEM:="de-ale tale";<br /> NOM&PLR&MCL:="de-ai tăi";<br /> 
+ACC&PLR&FEM:="de-ale tale";<br /> ACC&PLR&MCL:=" de-ai tăi ";<br /> 
+;<br /><br /><b>M56</b><br />Possesive pron   De-al Său 1P1Op (<i>său </i>)<br />NOM&SNG&FEM:="de-a sa";<br /> NOM&SNG&MCL:="de-al său";<br /> 
+ACC&SNG&FEM:="de-a sa";<br /> ACC&SNG&MCL:=" de-al său ";<br /> NOM&PLR&FEM:="de-ale sale";<br /> NOM&PLR&MCL:="de-ai săi";<br /> 
+ACC&PLR&FEM:="de-ale sale";<br /> ACC&PLR&MCL:="de-ai săi";<br /> 
+;<br /><br /><b>M57</b><br />Possesive pron   De-al Său 2P1Op- 2P2Op (<i>nostru</i>)<br />NOM&SNG&FEM:="de-a noastră ";<br /> NOM&SNG&MCL:="de-al nostru";<br /> ACC&SNG&FEM:="de-a noastră";<br /> ACC&SNG&MCL:="de-al nostru";<br /> 
+NOM&PLR&FEM:="de-ale noastre";<br /> NOM&PLR&MCL:="de-ai noştri ";<br /> 
+ACC&PLR&FEM:="de-ale noastre";<br /> ACC&PLR&MCL:="de-ai noştri ";<br /> 
+;<br /><br /><b>M58</b><br />Possesive pron   De-al nostru   2P1Op  (<i>nostru</i>)<br />NOM&SNG&FEM:="de-a noastră ";<br /> NOM&SNG&MCL:="de-al nostru";<br /> ACC&SNG&FEM:="de-a noastră";<br /> ACC&SNG&MCL:="de-al nostru";<br /> 
+NOM&PLR&FEM:="de-ale noastre";<br /> NOM&PLR&MCL:="de-ai noştri ";<br /> 
+ACC&PLR&FEM:="de-ale noastre";<br /> ACC&PLR&MCL:="de-ai noştri ";<br /> 
+;<br /><br /><b>M59</b><br />Possesive pron   De-al vostru 2P1Op- 2P2Op (<i>vostru</i>)<br />NOM&SNG&MCL:="de-al vostru";<br /> NOM&SNG&FEM:="de-a voastră";<br /> 
+ACC&SNG&MCL:="de-al vostru";<br /> ACC&SNG&FEM:="de-a voastră";<br /> 
+NOM&PLR&FEM:="de-ale voastre";<br /> NOM&PLR&MCL:="de-ai voştri ";<br /> 
+ACC&PLR&FEM:="de-ale voastre";<br /> ACC&PLR&MCL:="de-ai voştri ";<br /> 
+;<br /><br /><b>M60</b><br />Possesive pron   De-al Său 2P1Op- 2P2Op (<i>său</i>)<br />NOM&SNG&FEM:="de-a lor";<br /> NOM&SNG&MCL:="de-al lor";<br /> 
+ACC&SNG&FEM:="de-a lor";<br /> ACC&SNG&MCL:=" de-al lor ";<br /> 
+NOM&PLR&FEM:="de-ale lor";<br /> NOM&PLR&MCL:="de-ai lor";<br /> 
+ACC&PLR&FEM:="de-ale lor";<br /> ACC&PLR&MCL:=" de-ai lor ";<br /> 
+;<br /><br /><b>M61</b><br />Type a ucide (<i>ucide</i>)<br />PRS&1PS:="ucid";<br />
+PRS&2PS:="ucizi";<br />
+PRS&3PS:="ucide";<br />
+PRS&1PP:="ucidem";<br />
+PRS&2PP:="ucideţi";<br />
+PRS&3PP:="ucid ";<br />
+PAS&1PS:="ucideam";<br />
+PAS&2PS:="ucideai";<br />
+PAS&3PS:="ucidea";<br />
+PAS&1PP:="ucideam";<br />
+PAS&2PP:="ucideaţi";<br />
+PAS&3PP:="ucideau";<br />
+NRMP&1PS:="ucisei";<br />  
+NRMP&2PS:="uciseşi";<br />   
+NRMP&3PS:="ucise";<br />
+NRMP&1PP:="uciserăm";<br />
+NRMP&2PP:="uciserăţi";<br />
+NRMP&3PP:="uciseră";<br />
+RMP&1PS:="ucisesem";<br />
+RMP&2PS:="uciseseşi";<br />
+RMP&3PS:="ucisese";<br />
+RMP&1PP:="uciseserăm";<br />
+RMP&2PP:="uciseserăţi";<br />
+RMP&3PP:="uciseseră";<br />
+PTP:="ucis";<br />
+SUB&PRS&1PS:="să ucid";<br />
+SUB&PRS&2PS:="să ucizi";<br />
+SUB&PRS&3PS:="să ucidă";<br />
+SUB&PRS&1PP:="să ucidem";<br />
+SUB&PRS&2PP:="să ucideţi";<br />
+SUB&PRS&3PP:="să ucidă";<br />
+SUB&PAS&1PS:="să fi ucis";<br />
+SUB&PAS&2PS:="să fi ucis ";<br />
+SUB&PAS&3PS:="să fi ucis ";<br />
+SUB&PAS&1PP:="să fi ucis ";<br />
+SUB&PAS&2PP:="să fi ucis ";<br />
+SUB&PAS&3PP:="să fi ucis ";<br />
+
+;<br /><br /><b>M62</b><br />Type a spune (<i>spune</i>)<br />PRS&1PS:="spun";<br />
+PRS&2PS:="spui";<br />
+PRS&3PS:="spune";<br />
+PRS&1PP:="spunem";<br />
+PRS&2PP:="spuneţi";<br />
+PRS&3PP:="spun ";<br />
+PAS&1PS:="spuneam";<br />
+PAS&2PS:="spuneai";<br />
+PAS&3PS:="spunea";<br />
+PAS&1PP:="spuneam";<br />
+PAS&2PP:="spuneaţi";<br />
+PAS&3PP:="spuneau";<br />
+NRMP&1PS:="spusei";<br />  
+NRMP&2PS:="spuseşi";<br />   
+NRMP&3PS:="spuse";<br />
+NRMP&1PP:="spuserăm";<br />
+NRMP&2PP:="spuserăţi";<br />
+NRMP&3PP:="spuseră";<br />
+RMP&1PS:="spusesem";<br />
+RMP&2PS:="spuseseşi";<br />
+RMP&3PS:="spusese";<br />
+RMP&1PP:="spuseserăm";<br />
+RMP&2PP:="spuseserăţi";<br />
+RMP&3PP:="spuseseră";<br />
+PTP:="spus";<br /><br /><b>M63</b><br />Type a ploua  (<i>ploua</i>)<br />PRS&3PS:="plouă";<br />
+PAS&3PS:="ploua";<br />
+NRMP&3PS:="plouă";<br />
+RMP&3PS:="plouase";<br />
+PTP:="plouat";<br />
+;<br /><br /><b>M64</b><br />Type : a avea (<i>avea</i>)<br />PRS&1PS:="am";<br />
+PRS&2PS:="ai";<br />
+PRS&3PS:="are";<br />
+PRS&1PP:="avem";<br />
+PRS&2PP:="aveţi";<br />
+PRS&3PP:="au";<br />
+PAS&1PS:="aveam";<br />
+PAS&2PS:="aveai";<br />
+PAS&3PS:="avea";<br />
+PAS&1PP:="aveam";<br />
+PAS&2PP:="aveaţi";<br />
+PAS&3PP:="aveau";<br />
+NRMP&1PS:="avusei";<br />
+NRMP&2PS:="avuseşi";<br />
+NRMP&3PS:="avu";<br />
+NRMP&1PP:="avurăm";<br />
+NRMP&2PP:="avurăţi";<br />
+NRMP&3PP:="avură";<br />
+RMP&1PS:="avusem";<br />
+RMP&2PS:="avuseşi";<br />
+RMP&3PS:="avuse";<br />
+RMP&1PP:="avuserăm";<br />
+RMP&2PP:="avuserăţi";<br />
+RMP&3PP:="avuseră";<br />
+PTP:="avut";<br />
+;<br /><br /><b>M65</b><br />Type : A TREBUI (<i>trebuie</i>)<br />PRS&1PS:="trebuie";<br />
+PRS&2PS:="trebuie";<br />
+PRS&3PS:="trebuie";<br />
+PRS&1PP:="trebuie";<br />
+PRS&2PP:="trebuie";<br />
+PRS&3PP:="trebuie";<br />
+PAS&1PS:="trebuia";<br />
+PAS&2PS:="trebuia";<br />
+PAS&3PS:="trebuia";<br />
+PAS&1PP:="trebuia";<br />
+PAS&2PP:="trebuia";<br />
+PAS&3PP:="trebuiau";<br />
+PTP:="trebuit";<br />
+;<br /><br /><b>M66</b><br />Type A SE SINUCIDE (<i>sinucide</i>)<br />PRS&1PS:="mă sinucid";<br />
+PRS&2PS:="te sinucizi";<br />
+PRS&3PS:="se sinucide";<br />
+PRS&1PP:="ne sinucidem";<br />
+PRS&2PP:="vă sinucideţi";<br />
+PRS&3PP:="se sinucid ";<br />
+PAS&1PS:="mă sinucideam";<br />
+PAS&2PS:="te sinucideai";<br />
+PAS&3PS:="se sinucidea";<br />
+PAS&1PP:="ne sinucideam";<br />
+PAS&2PP:="vă sinucideaţi";<br />
+PAS&3PP:="se sinucideau";<br />
+NRMP&1PS:="mă sinucisei";<br />  
+NRMP&2PS:="te sinuciseşi";<br />   
+NRMP&3PS:="se sinucise";<br />
+NRMP&1PP:="ne sinuciserăm";<br />
+NRMP&2PP:="vă sinuciserăţi";<br />
+NRMP&3PP:="se sinuciseră";<br />
+RMP&1PS:="mă sinucisesem";<br />
+RMP&2PS:="te sinuciseseşi";<br />
+RMP&3PS:="se sinucisese";<br />
+RMP&1PP:="ne sinuciseserăm";<br />
+RMP&2PP:="vă sinuciseserăţi";<br />
+RMP&3PP:="se sinuciseseră";<br />
+PTP:="sinucis";<br /> 
+SUB&PRS&1PS:="să mă sinucid";<br />
+SUB&PRS&2PS:="să te sinucizi";<br />
+SUB&PRS&3PS:="să se sinucidă";<br />
+SUB&PRS&1PP:="să ne sinucidem";<br />
+SUB&PRS&2PP:="să vă sinucideţi";<br />
+SUB&PRS&3PP:="să se sinucidă";<br />
+SUB&PAS&1PS:="să mă fi sinucis";<br />
+SUB&PAS&2PS:="să te fi sinucis ";<br />
+SUB&PAS&3PS:="să se fi sinucis ";<br />
+SUB&PAS&1PP:="să ne fi sinucis ";<br />
+SUB&PAS&2PP:="să vă fi sinucis ";<br />
+SUB&PAS&3PP:="să se fi sinucis ";<br />
+
+;<br /><br /><b>M67</b><br />Type A SOSI (<i>sosi</i>)<br />PRS&1PS:="sosesc";<br />
+PRS&2PS:="soseşti";<br />
+PRS&3PS:="soseşte";<br />
+PRS&1PP:="sosim";<br />
+PRS&2PP:="sosiţi";<br />
+PRS&3PP:=" sosesc ";<br />
+PAS&1PS:="soseam";<br />
+PAS&2PS:="soseai";<br />
+PAS&3PS:="sosea";<br />
+PAS&1PP:="soseam";<br />
+PAS&2PP:="soseaţi";<br />
+PAS&3PP:="soseau";<br />
+NRMP&1PS:="sosii";<br />  
+NRMP&2PS:="sosişi";<br />   
+NRMP&3PS:="sosi";<br />
+NRMP&1PP:="sosirăm";<br />
+NRMP&2PP:="sosirăţi";<br />
+NRMP&3PP:="sosiră";<br />
+RMP&1PS:="sosisem";<br />
+RMP&2PS:="sosiseşi";<br />
+RMP&3PS:="sosise";<br />
+RMP&1PP:="sosiserăm";<br />
+RMP&2PP:="sosiserăţi";<br />
+RMP&3PP:="sosiseră";<br />
+PTP:="sosit";<br />
+SUB&PRS&1PS:="să sosesc";<br />
+SUB&PRS&2PS:="să soseşti";<br />
+SUB&PRS&3PS:="să sosească";<br />
+SUB&PRS&1PP:="să sosim";<br />
+SUB&PRS&2PP:="să sosiţi";<br />
+SUB&PRS&3PP:="să sosească";<br />
+SUB&PAS&1PS:="să fi sosit";<br />
+SUB&PAS&2PS:="să fi sosit";<br />
+SUB&PAS&3PS:="să fi sosit";<br />
+SUB&PAS&1PP:="să fi sosit";<br />
+SUB&PAS&2PP:="să fi sosit";<br />
+SUB&PAS&3PP:="să fi sosit";<br />
+;<br /><br /></body>
+<html>

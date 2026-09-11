@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<title>UNLarium</title>
+<link rel="stylesheet" type="text/css" media="all" href="../../shared/default.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"  />
+<link rel="shortcut icon" href="../favicon.ico" type="image/x-icon" />
+</head>
+
+<body>
+<h1>German Subcategorization  Grammar</h1>Version of September 11, 2026, 1:23 pm<br />Documentation available at <a href="http://www.unlarchive.org/wiki/index.php/Grammar" target="_blank">http://www.unlarchive.org/wiki/index.php/Grammar</a><br />Tagset available at <a href="../dictionary/export_tagset.php" target="_blank">Export UNDL Foundation tagset</a>.<br /><br /><b>Y0</b><br />AVALENT<br /><br /><b>Y1</b><br />NO SUBCATEGORIZATION FRAME: rules defined inside the entry in the dictionary<br /><br /><b>Y159</b><br />Intransitive verbs (<i>laufen, lächeln</i>)<br />VS(NOM);<br /><br /><b>Y160</b><br />Transitive verbs with accusative case (<i>küssen, hören</i>)<br />VS(NOM)VC(ACC);<br /><br /><b>Y161</b><br />Transitive verbs with dative case (<i>gratulieren</i>)<br />VS(NOM)VC(DAT);<br /><br /><b>Y162</b><br />Transitive verbs with genitive case (<i>bedürfen</i>)<br />VS(NOM)VC(GNT);<br /><br /><b>Y163</b><br />Transitive verbs with the preposition "aus" (<i>bestehen</i>)<br />VS(NOM)VC(PH([aus]));<br /><br /><b>Y164</b><br />Linking verbs (<i>aussehen, finden</i>)<br />VS(NOM)VC(NOM);<br /><br /><b>Y165</b><br />Ditransitive verbs with accusative and dative (<i>geben, angehen</i>)<br />VS(NOM)VC(ACC)VC(DAT);<br /><br /><b>Y166</b><br />Ditransitive verbs with accusative and genitive (<i>beschuldigen</i>)<br />VS(NOM)VC(ACC)VC(GNT);<br /><br /><b>Y167</b><br />Reflexive verbs (<i>sich setzen, sich erkälten</i>)<br />VS(NOM)VC(FPR);<br /><br /><b>Y181</b><br />von (<i>Besitz</i>)<br />NC(PH([von]));
+<br /><br /><b>Y186</b><br />Nouns requiring a complement in genitive (<i>Abschiebung; Abschätzung</i>)<br />NC(GNT);
+<br /><br /><b>Y187</b><br />Nouns requiring a complement preceded by \"für\" or in genitive (<i>Abonnement</i>)<br />NC(PH([für]));NC(NP,GNT);<br /><br /><b>Y188</b><br />mit (<i>Ähnlichkeit</i>)<br />NC(PH([mit]));
+<br /><br /><b>Y189</b><br />von (<i>Akquisition; Akquirierung;</i>)<br />NC(PH([von]));NC(NP,GNT);<br /><br /><b>Y190</b><br />vor (<i>Zuflucht</i>)<br />NC(PH([vor]));
+<br /><br /><b>Y191</b><br />auf (<i>Wette</i>)<br />NC(PH([auf]));
+<br /><br /><b>Y192</b><br />für (<i>Zuspruch</i>)<br />NC(PH([für]));
+<br /><br /><b>Y195</b><br />an (<i>Assimilation</i>)<br />NC(PH([an]));
+<br /><br /><b>Y196</b><br />über (<i>Berichtchen</i>)<br />NC(PH([über]));
+<br /><br /><b>Y200</b><br />um (<i>Brimborium</i>)<br />NC(PH([um]));
+<br /><br /><b>Y204</b><br />Nouns requiring a complement preceded by "nach" or "zu" (<i>Dienstreise</i>)<br />NC(PH({[nach]|[zu]}));
+<br /><br /><b>Y205</b><br />in (<i>Eindringen</i>)<br />NC(PH([in]));
+<br /><br /><b>Y216</b><br />abhängig von (<i>abhängig</i>)<br />JC(PH([von]));
+<br /><br /><b>Y217</b><br />angeklagt GNT (<i>angeklagt</i>)<br />JC(NP,GNT);<br /><br /><b>Y218</b><br />empfänglich für (<i>empfänglich</i>)<br />JC(PH([für]));
+<br /><br /><b>Y221</b><br />erpricht auf (<i>erpricht</i>)<br />JC(PH([auf]));
+<br /><br /><b>Y222</b><br />eschäftigt mit
+ (<i>eschäftigt</i>)<br />JC(PH([mit]));
+<br /><br /><b>Y223</b><br />A preposition that takes a noun phrase in the dative case as complement (<i>ab, von</i>)<br />PC(DAT);
+<br /><br /><b>Y228</b><br />Adjectives requiring a complement introduced by the preposition "nach" (<i>verrückt</i>)<br />JC(PH([nach]));
+<br /><br /><b>Y229</b><br />Adjectives requiring a complement introduced by the preposition "in" (<i>verliebt</i>)<br />JC(PH([nach]));
+<br /><br /><b>Y230</b><br />Adjectives requiring a complement introduced by the preposition "zu" (<i>verurteilt</i>)<br />JC(PH([zu]));
+<br /><br /><b>Y231</b><br />Adjectives requiring a complement in the dative case (<i>vorgesetzt</i>)<br />JC(NP,DAT);
+<br /><br /><b>Y232</b><br />Adjectives requiring a complement introduced by the preposition "aus" or "von" (<i>vertriebe</i>)<br />JC(PH({[aus]|[von]}));
+<br /><br /></body>
+<html>
