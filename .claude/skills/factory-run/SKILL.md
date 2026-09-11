@@ -72,24 +72,41 @@ All of this runs inside the issue's worktree, `.worktrees/<branch>`.
     credential), and say where the work is sitting, using step 9's facts. No file-by-file
     inventory, no flag lists, no wall of headings. Then put the shipping options to the developer
     with `AskUserQuestion`, and carry out the one they pick. Their choice is the sign-off: run the
-    push, the PR and the merge without asking again. The four options:
+    push, the PR and the merge without asking again. The options come from the branch prefix.
+
+    For a `side-*` or `quest-*` branch, the four options:
 
     | Option | What you run |
     |---|---|
-    | Gate, PR, merge | `/gate`, push, `gh pr create`, wait for the `gate` check, `gh pr merge`, then `cd` to the root tree and `git pull --ff-only`; if the branch is `side-*` or `quest-*`, `git worktree remove .worktrees/<branch> && git branch -d <branch>` |
+    | Gate, PR, merge | `/gate`, push, `gh pr create`, wait for the `gate` check, `gh pr merge --squash --delete-branch`, then `cd` to the root tree and `git pull --ff-only`, `git worktree remove .worktrees/<branch> && git branch -D <branch>` |
     | Gate and PR, then stop | the same, stopping once the PR is open and its check is green |
     | Push only | `git push -u origin <branch>`, nothing else |
     | Hold | nothing reaches GitHub |
 
-    `/gate` is what stamps HEAD, and `require_gate.sh` refuses `gh pr ready` and `gh pr merge`
-    without that stamp, so every option above "push only" runs it first.
+    For an `m*-*` branch, merge is never one of the options: the branch's close-out issue is the
+    only thing that merges it, per `docs/factory/git-workflow.md` "Finishing a milestone". Three
+    options:
+
+    | Option | What you run |
+    |---|---|
+    | Gate, push, open or keep the draft PR | `/gate`, push, `gh pr create --draft --base main --head <branch>` if no pull request exists yet, otherwise nothing further — the pull request stays a draft |
+    | Push only | `git push -u origin <branch>`, nothing else |
+    | Hold | nothing reaches GitHub |
+
+    `/gate` stamps HEAD. `require_gate.sh` refuses a non-draft `gh pr create`, `gh pr ready` and
+    `gh pr merge` without that stamp; it exempts `gh pr create --draft`, so the milestone table's
+    only gh command needs no stamp, and `/gate` still runs there for the record the report carries.
 
 For a `side-*` or `quest-*` branch, "Gate, PR, merge" removes the tree in the same step: once
 `git pull --ff-only` in the root tree has caught up, `git worktree remove .worktrees/<branch>`
-and `git branch -d <branch>` run there, because no close-out issue ever runs for that branch. A
-milestone branch, `m1-mirror` say, is the exception: several issues share its tree, so the tree
-stays until the milestone's close-out issue removes it once every issue on the branch has landed
-(`docs/factory/git-workflow.md` "Worktrees").
+and `git branch -D <branch>` run there (`-D`, not `-d` — a squash merge never makes the branch tip
+an ancestor of `main`), because no close-out issue ever runs for that branch. `gh pr merge
+--squash --delete-branch` already removed the branch from `origin` in the same call as the merge;
+do not also run `git push origin --delete <branch>`, it races the same delete. A milestone
+branch, `m1-mirror` say, is the exception: several issues share its tree and its pull request
+never merges mid-milestone, so the tree stays, and the branch stays on `origin`, until the
+milestone's close-out issue merges the draft and removes the tree once every issue on the branch
+has landed (`docs/factory/git-workflow.md` "Worktrees", "Finishing a milestone").
 
 ## Writing a quest
 
@@ -116,8 +133,8 @@ If the issue's `checkpoint:` is set, stop after step 10 and do not start the nex
 it found in the hand-off — a reviewer catching a real mistake is worth a sentence, not a section.
 
 A checkpoint changes what happens *after* the hand-off, never the hand-off itself: step 10's
-plain-language report and its four options still run. The developer picking an option there is the
-sign-off; the stop is about not starting the next issue.
+plain-language report and its shipping options still run. The developer picking an option there
+is the sign-off; the stop is about not starting the next issue.
 
 ## When a gate fails
 

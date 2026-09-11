@@ -2,7 +2,7 @@
 issue: 113
 title: "A milestone branch merges once, at its close-out, and a merged branch leaves origin"
 milestone: Side
-status: open
+status: in-progress
 depends_on: [97, 109]
 agent: implementer
 agents: [implementer]
@@ -10,7 +10,7 @@ model: sonnet
 effort: medium
 checkpoint: 4
 commit: null
-worktree: null
+worktree: .worktrees/side-113-milestone-merges-once
 github_issue: 66
 ---
 

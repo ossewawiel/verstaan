@@ -77,11 +77,11 @@ in the same change and say so in its `## What` with one sentence.
 
    | Written | Where the file goes |
    |---|---|
-   | on its own | worktree `.worktrees/quest-NN-<slug>` on branch `quest-NN-<slug>` from `main`; one commit `docs(#NN): quest`; `python -m tools.factory.mirror_github` with `GH_TOKEN` set, so `github_issue:` is filled, in a second commit; push; draft PR. Then `/gate` in that worktree, `gh pr ready`, merge, `git pull --ff-only` in the root, then `git worktree remove .worktrees/quest-NN-<slug> && git branch -d quest-NN-<slug>` — a quest-file branch never gets a close-out issue of its own, so the merge path removes its tree, the same rule `.claude/skills/factory-run/SKILL.md` step 10 follows for a `side-*`/`quest-*` branch (`docs/factory/git-workflow.md` "Worktrees"). |
+   | on its own | worktree `.worktrees/quest-NN-<slug>` on branch `quest-NN-<slug>` from `main`; one commit `docs(#NN): quest`; `python -m tools.factory.mirror_github` with `GH_TOKEN` set, so `github_issue:` is filled, in a second commit; push; a normal, non-draft PR (`docs/factory/git-workflow.md` "Pull requests"). Then `/gate` in that worktree, `gh pr merge --squash --delete-branch`, `git pull --ff-only` in the root, then `git worktree remove .worktrees/quest-NN-<slug> && git branch -D quest-NN-<slug>` — a quest-file branch never gets a close-out issue of its own, so the merge path removes its tree, the same rule `.claude/skills/factory-run/SKILL.md` step 10 follows for a `side-*`/`quest-*` branch (`docs/factory/git-workflow.md` "Worktrees"). |
    | inside a planning quest already running (issue 12's shape) | in that quest's worktree, uncommitted; its work commit carries every file it wrote |
 
 4. Hand over as a person: what the quest is in one sentence, its number, kind, loadout and what
-   it waits on, where the file sits, and the next command: `/gate` if the PR is still a draft,
+   it waits on, where the file sits, and the next command: `/gate` if the PR has not merged yet,
    `/factory-run NN` once the file is on `main`.
 
 ## What this skill never does
