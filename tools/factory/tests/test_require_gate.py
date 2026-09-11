@@ -333,3 +333,167 @@ def test_command_with_escaped_quote_and_trailing_field_is_still_gated(repo):
     result = run_hook_raw(repo["root"], payload)
     assert result.returncode == 2
     assert "no gate stamp for somebranch" in result.stderr
+
+
+# Issue 97: `require_gate.sh` runs as a PreToolUse hook in the session's own working directory,
+# which since issue 92 is a worktree, never the root tree. The exemption above was decided from
+# that working directory instead of the tree the command actually acts on, so `cd <root> &&
+# git merge --ff-only origin/main` issued from a worktree session was refused even though the
+# root tree was on `main`, clean, and level with its own upstream. Every case below runs the hook
+# from `repo["wt"]`, a tree that is not the one the command targets -- the exact shape issue 97
+# proves.
+
+
+def test_root_tree_can_fast_forward_from_a_worktree_session(repo_with_upstream):
+    root = str(repo_with_upstream["root"])
+    result = run_hook(repo_with_upstream["wt"], f"cd {root} && git merge --ff-only origin/main")
+    assert result.returncode == 0
+
+
+def test_no_ff_merge_into_main_is_still_refused_via_cd_from_a_worktree_session(repo):
+    root = str(repo["root"])
+    result = run_hook(repo["wt"], f"cd {root} && git merge --no-ff feature")
+    assert result.returncode == 2
+    assert "gh pr merge" in result.stderr
+
+
+# `git -C <path> merge` and `git -C <path> pull` named the tree explicitly instead of relying on
+# a prior `cd`. Issue 96's segment matcher did not recognise this form at all, so it passed
+# through unexamined -- a real unstamped merge into `main` written this way was never refused.
+
+
+def test_merge_no_ff_via_git_dash_c_into_main_is_refused(repo):
+    root = str(repo["root"])
+    result = run_hook(repo["wt"], f"git -C {root} merge --no-ff feature")
+    assert result.returncode == 2
+    assert "gh pr merge" in result.stderr
+
+
+def test_merge_ff_only_via_git_dash_c_of_mains_own_upstream_is_allowed(repo_with_upstream):
+    root = str(repo_with_upstream["root"])
+    result = run_hook(repo_with_upstream["wt"], f"git -C {root} merge --ff-only origin/main")
+    assert result.returncode == 0
+
+
+def test_pull_via_git_dash_c_is_gated_on_the_named_tree(repo):
+    wt = str(repo["wt"])
+    result = run_hook(repo["root"], f"git -C {wt} pull")
+    assert result.returncode == 2
+    stamp(repo["wt"], "HEAD")
+    result = run_hook(repo["root"], f"git -C {wt} pull")
+    assert result.returncode == 0
+
+
+# `last_positional` took a shell redirection as the ref because `2>&1` is not a flag by the `-*`
+# test, so it won the "last positional" slot ahead of the real ref.
+
+
+def test_merge_ref_ignores_a_trailing_redirection(repo):
+    git(repo["root"], "checkout", "-q", "-b", "not-main")
+    stamp(repo["wt"], "HEAD")
+    result = run_hook(repo["root"], "git merge --no-ff feature 2>&1")
+    assert result.returncode == 0
+
+
+def test_merge_of_unknown_ref_with_redirection_still_names_the_real_ref(repo):
+    git(repo["root"], "checkout", "-q", "-b", "not-main")
+    result = run_hook(repo["root"], "git merge --no-ff nope 2>&1")
+    assert result.returncode == 2
+    assert "'nope'" in result.stderr
+
+
+# A gated command quoted inside a heredoc body is input data to whatever reads the heredoc, not a
+# command bash will ever run. Splitting the payload on `&&` without heredoc awareness turned a
+# quoted line into a synthetic segment that matched the "git merge" pattern for real.
+
+
+def test_gated_command_inside_heredoc_body_does_not_trigger(repo):
+    stamp(repo["root"], "HEAD")
+    command = (
+        "gh pr create --body-file - <<'EOF'\n"
+        "See the failure below:\n"
+        "cd /nonexistent/repo && git merge --ff-only origin/main\n"
+        "EOF"
+    )
+    result = run_hook(repo["root"], command)
+    assert result.returncode == 0
+
+
+def test_gated_command_inside_heredoc_body_is_refused_when_the_real_command_is_unstamped(repo):
+    command = (
+        "gh pr create --body-file - <<'EOF'\n"
+        "cd /nonexistent/repo && git merge --ff-only origin/main\n"
+        "EOF"
+    )
+    result = run_hook(repo["root"], command)
+    assert result.returncode == 2
+    assert "no gate stamp for HEAD" in result.stderr
+
+
+# A gated command quoted inside a single-argument string is the other half of this finding: the
+# matcher splits on `&&`, `||`, `;` and `|` without knowing which of those characters sit inside a
+# quoted span. `echo 'run cd /repo && git merge --ff-only origin/main to catch up'` is one
+# command, not two, but the old split turned the quoted advice into a second, phantom segment
+# that matched "git merge" for real. Caught in review of this very issue.
+
+
+def test_words_inside_a_single_quoted_string_with_and_do_not_trigger(repo):
+    command = "echo 'run cd /repo && git merge --ff-only origin/main to catch up'"
+    assert run_hook(repo["root"], command).returncode == 0
+
+
+def test_words_inside_a_double_quoted_string_with_semicolon_do_not_trigger(repo):
+    command = 'echo "note: git merge --no-ff feature ; then push"'
+    assert run_hook(repo["root"], command).returncode == 0
+
+
+def test_words_inside_a_quoted_string_with_pipe_do_not_trigger(repo):
+    command = "echo 'first | git merge --no-ff feature'"
+    assert run_hook(repo["root"], command).returncode == 0
+
+
+def test_cd_with_a_quoted_path_containing_spaces_then_merge_into_main_is_still_refused(repo):
+    # Neutralising a separator inside a quoted span must not blind `cd` path extraction: the
+    # quotes are kept, not stripped outright, so a `cd "<path with spaces>"` ahead of a real gated
+    # command still resolves its target and the command behind it is still examined.
+    root = str(repo["root"])
+    result = run_hook(repo["wt"], f'cd "{root}" && git merge --no-ff feature')
+    assert result.returncode == 2
+    assert "gh pr merge" in result.stderr
+
+
+def test_unbalanced_quote_does_not_hide_a_real_merge(repo):
+    # An unterminated quote means the hook cannot tell what is really quoted from here on, so it
+    # must not assume everything after it is safely inside a string -- that would let a real
+    # gated command slip through unexamined, which is worse than the false positive this fix
+    # exists to remove.
+    git(repo["root"], "checkout", "-q", "-b", "not-main")
+    command = 'echo "start && git merge --no-ff feature'
+    result = run_hook(repo["root"], command)
+    assert result.returncode == 2
+    assert "no gate stamp for feature" in result.stderr
+
+
+# This hook runs on every Bash tool call, not only on git commands, so its cost has to stay flat
+# in the size of the command text. A `gh pr create --body-file - <<EOF` with a real pull request
+# body reaches tens of kilobytes routinely. A per-character bash accumulator (`out="${out}${ch}"`)
+# reallocates and copies the whole growing string on every character, which is quadratic in the
+# input length: doubling the payload roughly quadruples the cost. Pinned here so that regression
+# cannot come back silently. 20 KB of filler padding, one real quoted `&&` in the middle, wrapped
+# in `printf` so the whole thing is a single quoted argument the hook must not mistake for two
+# commands (the same shape `test_words_inside_a_single_quoted_string_with_and_do_not_trigger`
+# checks correctness for, at a size large enough to expose quadratic cost). A correct, flat-cost
+# implementation finishes in tens of milliseconds; two seconds is real headroom over that, not a
+# tight bound tuned to just barely pass.
+
+
+def test_large_payload_completes_within_a_flat_time_budget(repo):
+    import time
+
+    padding = "x" * 20_000
+    command = f"printf 'start {padding} && git merge --ff-only origin/main end'"
+    start = time.monotonic()
+    result = run_hook(repo["root"], command)
+    elapsed = time.monotonic() - start
+    assert elapsed < 2.0, f"hook took {elapsed:.2f}s on a 20 KB payload, budget is 2s"
+    assert result.returncode == 0
