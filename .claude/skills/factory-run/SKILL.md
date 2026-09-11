@@ -42,6 +42,10 @@ Run this from the root tree, on `main`. It never works there past step 6.
 Model and effort come from the issue frontmatter. Do not raise them silently; if the issue looks
 mis-sized, say so and continue at the stated level.
 
+Whenever the sequence includes the test-writer, its hand-off ends with its own commit in the
+worktree, `git add -A && git commit -m "test(#NN): <title>"`, before the implementer starts. The
+work commit made in step 3 below then carries the implementation only, never the tests.
+
 ## While the agent works
 
 - The agent gets: the issue file path, the SPEC sections named above, and nothing else. It reads
@@ -56,6 +60,8 @@ All of this runs inside the issue's worktree, `.worktrees/<branch>`.
    and `python -m tools.validate --changed`. Fix nothing yourself; send failures back to the agent.
 2. Check every "Done when" line in the issue file against the diff. Unchecked → back to the agent.
 3. `git add -A && git commit` with `<type>(#NN): <title>` and the session's attribution trailer.
+   When the test-writer ran, its `test(#NN): <title>` commit already exists (see "Routing"
+   above); this commit carries the implementation only, not the tests.
 4. Edit the issue file: `status: done`, `commit: <hash>`, `worktree: null`.
 5. `git commit -am "chore(#NN): close"`.
 6. `python -m tools.factory.mirror_github` (needs `GH_TOKEN` in the environment; if it is not set,

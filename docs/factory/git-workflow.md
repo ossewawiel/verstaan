@@ -110,7 +110,9 @@ no extra step is needed for the root's console to catch up.
 ## Commits
 
 - One work commit per issue: `feat(#NN): <title>`, `fix(#NN): <title>`, `data(#NN): <title>`,
-  `docs(#NN): <title>`, `chore(#NN): <title>`. Scope is the issue number.
+  `docs(#NN): <title>`, `chore(#NN): <title>`. Scope is the issue number. The one exception: when
+  a test-writer pass ran, one `test(#NN): <title>` commit precedes the work commit, carrying the
+  red suite on its own; the work commit then carries the implementation only.
 - After the work commit, a `chore(#NN): close` commit flips `status: done` and fills `commit:` in
   the issue file with the work commit's hash.
 - Right after the close commit, `python -m tools.factory.mirror_github` runs (`GH_TOKEN` from the

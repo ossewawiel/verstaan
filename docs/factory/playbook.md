@@ -16,8 +16,8 @@ waits for them.
 
 ## An encounter, start to finish
 
-An encounter is one issue file becoming one commit. Here is what happens when you type
-`/factory-run 07`.
+An encounter is one issue file becoming one work commit, plus a red `test` commit before it when
+a test-writer pass ran. Here is what happens when you type `/factory-run 07`.
 
 1. **The check.** The factory reads `git status`. A dirty tree stops it before anything else,
    because a half-finished encounter must not be mixed into a new one.
@@ -33,8 +33,9 @@ An encounter is one issue file becoming one commit. Here is what happens when yo
    stop, shows the output, and writes one line to the ledger.
 5. **The count.** The factory runs the fast gate once more by hand, then checks every "Done when"
    line in the issue against the diff. Anything unticked goes back to the agent.
-6. **The commit.** One work commit, `feat(#07): title`. Then the issue file flips to
-   `status: done` with the commit hash, in a second commit, `chore(#07): close`.
+6. **The commit.** One work commit, `feat(#07): title`. When a test-writer pass ran, its
+   `test(#07): title` commit already sits before it, carrying the red suite on its own. Then the
+   issue file flips to `status: done` with the commit hash, in a second commit, `chore(#07): close`.
 7. **The next move.** `/factory-status` regenerates `STATE.md` and the console and prints the
    next command. If the issue carried a checkpoint, the factory stops here and waits for you.
 
