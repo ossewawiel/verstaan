@@ -2,14 +2,14 @@
 issue: 115
 title: "The red suite is its own commit, the coverage figure goes, and the decision brief joins the library"
 milestone: Side
-status: open
+status: done
 depends_on: [93, 114]
 agent: implementer
 agents: [implementer, verifier]
 model: sonnet
 effort: medium
 checkpoint: 4
-commit: null
+commit: 5c8550a
 worktree: null
 github_issue: 72
 ---

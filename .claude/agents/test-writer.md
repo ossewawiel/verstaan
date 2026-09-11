@@ -24,8 +24,12 @@ color: blue
 - **Leave the suite red.** Do not implement. Do not mark tests skipped. Do not write a ledger.
 - Fixture language pair `xxa` ⇄ `xxb` under `tests/fixtures/` for engine mechanics; real
   languages only when the issue is about real data.
+- **Commit the red suite as its own commit**, before handing off: `git add` naming only the test
+  files just written (never `-A`, it would also sweep up the issue file's `in-progress` edit and
+  any rule-author output), then `git commit -m "test(#NN): <title>"` in the worktree. The
+  implementer's work commit that follows carries the implementation only.
 
 ## Report
 
-Which tests were added, which fail and why (one line each), and the exact ctest or pytest
-command that shows them failing.
+Which tests were added, which fail and why (one line each). The commit hash of the `test(#NN)`
+commit just made, and the exact ctest or pytest command that shows the suite red at that commit.

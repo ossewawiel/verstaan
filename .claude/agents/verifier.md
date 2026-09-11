@@ -17,8 +17,14 @@ Then `git diff main...HEAD --stat` and the full diff.
 1. **Non-negotiables.** Any hand edit under `engine/generated/` or `data/archive/`? Any credential,
    e-mail address or personal name outside `CONTRIBUTORS.md`? Any generated file included
    directly by engine source?
-2. **Gates.** Did each closed issue's tests exist before its implementation commit? `git log
-   --follow` on the test files. A test born green is a finding.
+2. **Gates.** Scope every command in this check to `main...HEAD`, this branch's own commits, never
+   the full history. For each closed issue on the branch whose `agent:` sent a test-writer (an
+   engine or grammar issue), does `git log --format=%s main...HEAD -- <the test paths it touched>`
+   show a `test(#NN)` commit before the `feat(#NN)` commit? Check out the `test` commit and run
+   the suite: is it red there? A `feat`, `fix`, `data` or `chore` commit in `main...HEAD` that adds
+   or edits a test file for such an issue, with no preceding `test(#NN)` commit for the same
+   issue, is a finding. A tooling issue (`agent: implementer` alone) never sends a test-writer;
+   its tests land in the one work commit, and that is not a finding.
 3. **Edge cases.** For every new rule or parser branch: what input breaks it? Write the input.
    Run it if a CLI exists. Redo any arithmetic yourself; watching something pass tells you nothing.
 4. **Docs and code agree.** Does `SPEC.md` still describe what the code does? Does every store

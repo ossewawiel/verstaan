@@ -187,6 +187,7 @@ export function readLibrary(): { group: string; blurb: string; docs: LibDoc[] }[
 export function readArtefacts(): { title: string; path: string; blurb: string }[] {
   const list = [
     { title: 'Interrogation brief', path: 'docs/decisions/2026-09-08-verstaan/interrogation.html', blurb: 'The five-turn interrogation that produced the plan.' },
+    { title: 'Decision brief: testing cycle', path: 'docs/decisions/2026-09-11-agentic-testing-cycle/brief.html', blurb: 'Found the red commit and the coverage figure missing from the testing cycle.' },
     { title: 'Lessons ledger', path: 'docs/factory/lessons.jsonl', blurb: 'One line per fast-gate failure.' },
   ];
   return list.filter((a) => existsSync(join(REPO, a.path)));
