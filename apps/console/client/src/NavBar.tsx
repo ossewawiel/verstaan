@@ -8,6 +8,7 @@ const ROOMS: { to: string; label: string }[] = [
   { to: '/playbook', label: 'Playbook' },
   { to: '/library', label: 'Library' },
   { to: '/glossary', label: 'Glossary' },
+  { to: '/jobs', label: 'Jobs' },
 ];
 
 export function NavBar() {

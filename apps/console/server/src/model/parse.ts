@@ -66,6 +66,10 @@ export interface Issue {
   commit: unknown;
   what: string;
   doneWhen: { total: number; ticked: number };
+  /** The mirrored GitHub issue number (SPEC.md §6, `tools/factory/mirror_github.py`), or null
+   * before the first mirror run writes it back. Read here only so the client can build the
+   * `issue` opener's URL (issue 100) without re-parsing frontmatter itself. */
+  githubIssue: number | null;
 }
 
 /** files: [{name, content}] -> issues sorted by number. */
@@ -93,6 +97,7 @@ export function parseIssues(files: DocFile[]): Issue[] {
       commit: fm.commit ?? null,
       what: what ? what[1].trim().split(/\r?\n/)[0] : '',
       doneWhen: { total: done.length, ticked: done.filter((d) => d[1] === 'x').length },
+      githubIssue: typeof fm.github_issue === 'number' ? fm.github_issue : null,
     });
   }
   issues.sort((a, b) => a.n - b.n);

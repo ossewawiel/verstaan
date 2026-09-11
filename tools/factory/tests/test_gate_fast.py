@@ -132,3 +132,85 @@ def test_unrelated_tool_without_a_tests_directory_is_skipped(repo):
     result = run_hook(repo, "{}")
     assert result.returncode == 0
     assert lessons(repo) == []
+
+
+def _stub_cmake_argv_capture(stub_dir: Path, log: Path) -> None:
+    """A `cmake` and a `ctest` on `stub_dir` that each append their own argv to `log` (one line
+    per call) and exit 0, so the `engine`/`apps`/`tests` branch of gate_fast.sh can run to
+    completion without a real build -- this pins which `--preset` name it chose, not whether a
+    real compiler exists."""
+    for name in ("cmake", "ctest"):
+        script = stub_dir / name
+        script.write_text(
+            f'#!/usr/bin/env bash\nprintf \'%s %s\\n\' "{name}" "$*" >> "{log}"\nexit 0\n',
+            encoding="utf-8",
+        )
+        script.chmod(0o755)
+
+
+def _stub_uname(stub_dir: Path, kernel_name: str) -> None:
+    """A `uname` on `stub_dir` that always answers `kernel_name` to `-s`, so the platform switch
+    in gate_fast.sh/gate_full.sh can be driven to either branch without needing a second real OS
+    to test on."""
+    script = stub_dir / "uname"
+    script.write_text(f"#!/usr/bin/env bash\nprintf '%s\\n' \"{kernel_name}\"\n", encoding="utf-8")
+    script.chmod(0o755)
+
+
+def _run_with_engine_change(
+    repo: Path, stub_dir: Path, log: Path
+) -> subprocess.CompletedProcess[str]:
+    (repo / "engine").mkdir(parents=True, exist_ok=True)
+    (repo / "engine" / "dummy.cpp").write_text("// throwaway\n", encoding="utf-8")
+    git(repo, "add", "engine")
+    env = dict(os.environ)
+    env["PYTHON"] = sys.executable
+    env["PATH"] = os.pathsep.join([str(stub_dir), env.get("PATH", "")])
+    assert BASH, "bash is required to run the hook"
+    hook = repo / "tools" / "factory" / "hooks" / "gate_fast.sh"
+    return subprocess.run(
+        [BASH, str(hook)],
+        cwd=repo,
+        input="{}",
+        capture_output=True,
+        text=True,
+        check=False,
+        env=env,
+    )
+
+
+def test_engine_change_picks_linux_gcc_on_linux(repo, tmp_path: Path) -> None:
+    """The branch the original hardcoded-msvc-debug bug lived in, on the platform it actually
+    breaks on: a real `uname` (this test host's own, expected to say `Linux` in CI and in every
+    dev sandbox this suite runs in) must steer gate_fast.sh to the `linux-gcc` preset, never the
+    Windows-only `msvc-debug` one."""
+    stub_dir = tmp_path / "stub-bin"
+    stub_dir.mkdir()
+    log = tmp_path / "cmake-calls.log"
+    _stub_cmake_argv_capture(stub_dir, log)
+
+    result = _run_with_engine_change(repo, stub_dir, log)
+    assert result.returncode == 0, result.stderr
+
+    calls = log.read_text(encoding="utf-8")
+    assert "--preset linux-gcc" in calls
+    assert "msvc-debug" not in calls
+
+
+def test_engine_change_picks_msvc_debug_when_uname_is_not_linux_or_darwin(
+    repo, tmp_path: Path
+) -> None:
+    """`uname` stubbed to answer neither `Linux` nor `Darwin` (a stand-in for Windows, where the
+    real presets are MSVC-only) must steer gate_fast.sh to `msvc-debug`, not `linux-gcc`."""
+    stub_dir = tmp_path / "stub-bin"
+    stub_dir.mkdir()
+    log = tmp_path / "cmake-calls.log"
+    _stub_cmake_argv_capture(stub_dir, log)
+    _stub_uname(stub_dir, "MINGW64_NT-not-a-real-linux-or-darwin")
+
+    result = _run_with_engine_change(repo, stub_dir, log)
+    assert result.returncode == 0, result.stderr
+
+    calls = log.read_text(encoding="utf-8")
+    assert "--preset msvc-debug" in calls
+    assert "linux-gcc" not in calls

@@ -18,6 +18,7 @@ export interface Issue {
   commit: unknown;
   what: string;
   doneWhen: { total: number; ticked: number };
+  githubIssue: number | null;
 }
 
 export interface IssueDetail extends Issue {
@@ -75,10 +76,39 @@ export interface LibraryGroup {
   docs: string[];
 }
 
+export type JobStatus = 'queued' | 'running' | 'done' | 'failed' | 'killed';
+
+export interface JobSummary {
+  id: string;
+  kind: string;
+  tree: string;
+  args: Record<string, unknown>;
+  status: JobStatus;
+  exitCode: number | null;
+  createdAt: number;
+  startedAt: number | null;
+  endedAt: number | null;
+  durationMs: number | null;
+  queuedReason: string | null;
+}
+
+export interface JobLine {
+  stream: 'stdout' | 'stderr' | 'meta';
+  text: string;
+  ts: number;
+}
+
 async function getJson<T>(url: string): Promise<T> {
   const res = await fetch(url);
   if (!res.ok) throw new Error(`${url}: ${res.status}`);
   return res.json() as Promise<T>;
+}
+
+async function postJson<T>(url: string, body: unknown): Promise<T> {
+  const res = await fetch(url, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(body) });
+  const json = await res.json();
+  if (!res.ok) throw new Error((json as { error?: string }).error ?? `${url}: ${res.status}`);
+  return json as T;
 }
 
 export const api = {
@@ -89,4 +119,19 @@ export const api = {
   library: () => getJson<LibraryGroup[]>('/api/library'),
   worktrees: () => getJson<WorktreeSummary[]>('/api/worktrees'),
   ledger: () => getJson<{ lessons: StateModel['lessons']; reviews: StateModel['reviews'] }>('/api/ledger'),
+  jobs: {
+    list: () => getJson<JobSummary[]>('/api/jobs'),
+    get: (id: string) => getJson<JobSummary>(`/api/jobs/${id}`),
+    create: (kind: string, tree: string, args: Record<string, unknown> = {}) =>
+      postJson<{ id: string }>('/api/jobs', { kind, tree, args }),
+    kill: async (id: string) => {
+      const res = await fetch(`/api/jobs/${id}`, { method: 'DELETE' });
+      if (!res.ok && res.status !== 204) throw new Error(`kill ${id}: ${res.status}`);
+    },
+  },
+  open: async (what: string, params: Record<string, string | number> = {}): Promise<string> => {
+    const qs = new URLSearchParams({ what, ...Object.fromEntries(Object.entries(params).map(([k, v]) => [k, String(v)])) });
+    const { url } = await getJson<{ url: string }>(`/api/open?${qs.toString()}`);
+    return url;
+  },
 };

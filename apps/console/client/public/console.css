@@ -241,3 +241,125 @@ select:focus-visible,
 .skip-link:focus-visible {
   outline: 2px solid #000;
 }
+
+/* Actions (issue 100): the rail, per-quest actions, the confirm-armed state, and the Jobs room. */
+.action-button {
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid var(--plate-edge);
+  padding: 0.32rem 0.7rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+}
+.action-button:hover:not(:disabled) {
+  border-color: var(--amber-dim);
+  color: var(--amber);
+}
+.action-button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+.action-button--armed {
+  border-color: var(--st-open, #c0392b);
+  color: var(--st-open, #c0392b);
+}
+
+.actions-rail__buttons,
+.job-detail__actions,
+.story-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-top: 0.4rem;
+}
+
+.status-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+.status-row__item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.jobs-layout {
+  display: grid;
+  grid-template-columns: minmax(220px, 320px) 1fr;
+  gap: 1.2rem;
+  align-items: start;
+}
+.job-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+.job-list__item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  border: 1px solid var(--plate-edge);
+  color: var(--ink);
+  padding: 0.4rem 0.6rem;
+  cursor: pointer;
+  font-size: 0.8rem;
+}
+.job-list__item--selected {
+  border-color: var(--amber);
+}
+.job-list__kind {
+  font-weight: 600;
+}
+.job-list__status {
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  color: var(--ink-dim);
+}
+.job-list__item--failed .job-list__status {
+  color: var(--st-open, #c0392b);
+}
+.job-list__item--done .job-list__status {
+  color: var(--st-done, #2e7d32);
+}
+.job-list__queued {
+  font-style: italic;
+  color: var(--ink-dim);
+}
+
+.job-stream {
+  background: #0d1210;
+  color: #d8ded9;
+  padding: 0.8rem;
+  max-height: 60vh;
+  overflow: auto;
+  font-size: 0.8rem;
+  line-height: 1.4;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+.job-stream__line--stderr {
+  color: #ff8a80;
+}
+.job-stream__line--meta {
+  color: var(--amber-dim);
+}
+
+.artifact-frame {
+  width: 100%;
+  min-height: 70vh;
+  border: 1px solid var(--plate-edge);
+  background: #fff;
+}
+.artifact-text {
+  white-space: pre-wrap;
+  word-break: break-word;
+}

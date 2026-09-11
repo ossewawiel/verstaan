@@ -7,6 +7,8 @@ import { QuestsRoom } from './rooms/QuestsRoom';
 import { PlaybookRoom } from './rooms/PlaybookRoom';
 import { LibraryRoom } from './rooms/LibraryRoom';
 import { GlossaryRoom } from './rooms/GlossaryRoom';
+import { JobsRoom } from './rooms/JobsRoom';
+import { ArtifactPage } from './rooms/ArtifactPage';
 
 export function App() {
   useChangeStream();
@@ -23,6 +25,9 @@ export function App() {
           <Route path="/library" element={<LibraryRoom />} />
           <Route path="/library/*" element={<LibraryRoom />} />
           <Route path="/glossary" element={<GlossaryRoom />} />
+          <Route path="/jobs" element={<JobsRoom />} />
+          <Route path="/jobs/:id" element={<JobsRoom />} />
+          <Route path="/artifacts/*" element={<ArtifactPage />} />
         </Routes>
       </main>
     </>

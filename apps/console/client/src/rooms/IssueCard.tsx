@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: MPL-2.0
 import { memo } from 'react';
-import type { Issue } from '../api/client';
+import { useNavigate } from 'react-router-dom';
+import { api, type Issue } from '../api/client';
+import { ActionButton } from '../components/ActionButton';
 
 const GLYPH: Record<Issue['status'], string> = { done: '●', 'in-progress': '◐', open: '○' };
 const LABEL: Record<Issue['status'], string> = { done: 'done', 'in-progress': 'in progress', open: 'open' };
@@ -66,6 +68,33 @@ interface Props {
 /** One quest card. `React.memo` keeps a card that has not changed from re-rendering at all when
  * a sibling's data does (issue 99's flicker proof): the list re-renders on every SSE-driven
  * refetch, but a card whose own `issue` object is referentially unchanged bails out here. */
+/** The three per-card actions issue 100 asks for. A quest with no worktree yet (never started)
+ * cannot run its tests or open its tree, so those two are disabled rather than hidden -- a
+ * keyboard user tabbing through the card still lands on a predictable set of controls. */
+function QuestActions({ issue }: { issue: Issue }) {
+  const navigate = useNavigate();
+  const tree = issue.worktree ?? '.';
+  const runTests = async () => {
+    const { id } = await api.jobs.create('pytest', tree, { path: 'tools/factory' });
+    navigate(`/jobs/${id}`);
+  };
+  const openTree = async () => {
+    const url = await api.open('tree', { path: tree });
+    window.location.href = url;
+  };
+  const openPr = async () => {
+    const url = await api.open('pr', { search: `${issue.n} in:body` });
+    window.open(url, '_blank', 'noopener');
+  };
+  return (
+    <div className="story-actions" onClick={(e) => e.stopPropagation()} onKeyDown={(e) => e.stopPropagation()}>
+      <ActionButton label="Run its tests" disabled={!issue.worktree} onRun={runTests} />
+      <ActionButton label="Open its tree" disabled={!issue.worktree} onRun={openTree} />
+      <ActionButton label="Open its PR" onRun={openPr} />
+    </div>
+  );
+}
+
 function IssueCardImpl({ issue, links, expanded, onToggle }: Props) {
   const id = String(issue.n).padStart(2, '0');
   const loadout = loadoutOf(issue);
@@ -111,6 +140,7 @@ function IssueCardImpl({ issue, links, expanded, onToggle }: Props) {
       {expanded && (
         <div className="story-detail" id={`quest-detail-${id}`} role="region" aria-labelledby={`quest-summary-${id}`}>
           <p className="story-detail__what">{issue.what}</p>
+          <QuestActions issue={issue} />
           <dl className="deflist">
             <dt>Milestone</dt>
             <dd>{issue.milestone}</dd>

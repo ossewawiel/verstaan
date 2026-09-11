@@ -29,14 +29,22 @@ changed=$(git status --porcelain | awk '{print $2}')
 fail() { bash "$cap" "$1" "$2" "$3"; printf '%s\n' "$3" >&2; exit 2; }
 
 if printf '%s\n' "$changed" | grep -qE '^(engine|apps|tests)/'; then
-  cmake --preset msvc-debug >/dev/null 2>&1 || cmake --preset msvc-debug
-  out=$(cmake --build --preset msvc-debug --target verstaan_core 2>&1) || fail build compile-failed "gate-fast: build failed. Fix before stopping.
+  # Preset choice is platform-driven, not hardcoded: the tracked CMakePresets.json presets are
+  # MSVC-only, built for the project's Windows dev machines. A Linux worktree adds `linux-gcc`
+  # in the gitignored CMakeUserPresets.json (docs/factory/issues/100-the-console-acts.md, "Linux
+  # gate presets"). Mirrors the same `uname` switch in gate_full.sh.
+  case "$(uname -s 2>/dev/null)" in
+    Linux|Darwin) preset=linux-gcc ;;
+    *) preset=msvc-debug ;;
+  esac
+  cmake --preset "$preset" >/dev/null 2>&1 || cmake --preset "$preset"
+  out=$(cmake --build --preset "$preset" --target verstaan_core 2>&1) || fail build compile-failed "gate-fast: build failed. Fix before stopping.
 $(printf '%s' "$out" | tail -n 30)"
   # The library alone is not enough: ctest only runs binaries that are already built, it does not
   # build them. Build everything (the library plus the fast test executables) before ctest runs.
-  out=$(cmake --build --preset msvc-debug 2>&1) || fail build compile-failed "gate-fast: build failed. Fix before stopping.
+  out=$(cmake --build --preset "$preset" 2>&1) || fail build compile-failed "gate-fast: build failed. Fix before stopping.
 $(printf '%s' "$out" | tail -n 30)"
-  out=$(ctest --preset msvc-debug -L fast --output-on-failure 2>&1) || fail test fast-tests-red "gate-fast: fast tests failed.
+  out=$(ctest --preset "$preset" -L fast --output-on-failure 2>&1) || fail test fast-tests-red "gate-fast: fast tests failed.
 $(printf '%s' "$out" | tail -n 40)"
 fi
 
