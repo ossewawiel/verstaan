@@ -1,0 +1,303 @@
+<title>Testing Cycle for Agentic Encounters</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@400&display=swap">
+<style>
+:root{
+  --bg:#F7F8FA;--surface:#FFFFFF;--ink:#1B2027;--ink-2:#5B6472;--line:#E1E5EB;
+  --accent:#C2410C;--accent-soft:rgba(194,65,12,.10);
+  --sev-crit:#B3261E;--sev-high:#C2410C;--sev-med:#B58105;--sev-low:#3B6E8F;
+  --good:#2E7D4F;--good-soft:rgba(46,125,79,.10);--code-bg:#EEF1F5;
+  --display:'Fraunces',Georgia,serif;--body:'Source Sans 3',system-ui,sans-serif;--mono:'JetBrains Mono',ui-monospace,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#101317;--surface:#171B21;--ink:#E6E9EE;--ink-2:#9AA3B2;--line:#2A313B;
+    --accent:#F0873F;--accent-soft:rgba(240,135,63,.14);
+    --sev-crit:#FF6B62;--sev-high:#F0873F;--sev-med:#E5B73B;--sev-low:#7FB3D5;
+    --good:#5DBE8A;--good-soft:rgba(93,190,138,.14);--code-bg:#1F252D;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#101317;--surface:#171B21;--ink:#E6E9EE;--ink-2:#9AA3B2;--line:#2A313B;
+  --accent:#F0873F;--accent-soft:rgba(240,135,63,.14);
+  --sev-crit:#FF6B62;--sev-high:#F0873F;--sev-med:#E5B73B;--sev-low:#7FB3D5;
+  --good:#5DBE8A;--good-soft:rgba(93,190,138,.14);--code-bg:#1F252D;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.55;padding-block:0 64px;padding-inline:16px}
+a{color:var(--accent);text-decoration:none;border-bottom:1px solid transparent}
+a:hover,a:focus-visible{border-bottom-color:var(--accent);outline:none}
+code{font-family:var(--mono);font-size:.86em;background:var(--code-bg);padding:.08em .35em;border-radius:4px}
+pre{font-family:var(--mono);font-size:13px;background:var(--code-bg);padding:12px 14px;border-radius:6px;overflow-x:auto;margin:12px 0}
+.wrap{max-width:1120px;margin:0 auto;display:grid;grid-template-columns:220px minmax(0,1fr);gap:40px}
+.rail{position:sticky;top:24px;align-self:start;padding-top:40px;font-size:14px}
+.rail .lbl{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-2);margin-bottom:10px}
+.rail a{display:block;color:var(--ink-2);padding:4px 0;border-bottom:none}
+.rail a:hover{color:var(--accent)}
+main{padding-top:40px;min-width:0}
+.eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-2);margin:0 0 12px}
+h1{font-family:var(--display);font-weight:600;font-size:40px;line-height:1.15;margin:0 0 16px;text-wrap:balance;font-variation-settings:'opsz' 144}
+h2{font-size:28px;font-weight:600;line-height:1.2;margin:0 0 14px;text-wrap:balance}
+h3{font-size:20px;font-weight:600;margin:0 0 8px}
+p{max-width:68ch;margin:0 0 12px}
+ul,ol{max-width:68ch;margin:0 0 12px;padding-left:22px}
+li{margin-bottom:6px}
+section{padding:40px 0;border-top:1px solid var(--line)}
+section:first-of-type{border-top:none;padding-top:0}
+.lead{font-size:18px;max-width:68ch}
+.strip{display:grid;grid-template-columns:minmax(0,1.4fr) repeat(3,minmax(0,1fr));gap:16px;margin:28px 0 0}
+.strip>div{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:18px 20px}
+.strip .big{font-family:var(--display);font-size:64px;line-height:1;font-weight:600;color:var(--accent);font-variation-settings:'opsz' 144}
+.strip .big small{display:block;font-family:var(--body);font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-2);margin-bottom:10px}
+.tile .k{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-2)}
+.tile .v{font-size:28px;font-weight:600;font-variant-numeric:tabular-nums;margin:4px 0}
+.tile .w{font-size:14px;color:var(--ink-2)}
+.chip{display:inline-block;font-size:12px;text-transform:uppercase;letter-spacing:.06em;border-radius:999px;padding:2px 10px;color:#fff;background:var(--ink-2);vertical-align:middle}
+.chip.acc{background:var(--accent)}.chip.good{background:var(--good)}.chip.med{background:var(--sev-med)}.chip.low{background:var(--sev-low)}.chip.crit{background:var(--sev-crit)}
+.size{font-family:var(--mono);font-size:13px;color:var(--ink-2)}
+.tbl{overflow-x:auto;margin:16px 0}
+table{border-collapse:collapse;width:100%;font-size:14px;font-variant-numeric:tabular-nums}
+th,td{text-align:left;vertical-align:top;padding:9px 12px;border-bottom:1px solid var(--line)}
+th{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-2);font-weight:600}
+td.rec,th.rec{background:var(--accent-soft)}
+.sub{margin:22px 0 0}
+.sub h3{margin-top:0}
+.claim{max-width:68ch;margin:0 0 10px}
+.dissent{border-left:3px solid var(--sev-med);padding-left:12px;color:var(--ink);max-width:68ch;margin:8px 0 12px}
+.dissent b{color:var(--sev-med)}
+.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:8px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:18px 20px;display:flex;flex-direction:column;gap:10px}
+.card.rec{border-color:var(--accent);background:var(--accent-soft)}
+.card.chosen{border-color:var(--good);background:var(--good-soft)}
+.card.chosen .foot{color:var(--good)}
+.card .hd{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.card .hd h3{margin:0}
+.card .k{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-2);margin:6px 0 2px}
+.card ul{margin:0;padding-left:18px;font-size:15px}
+.card p{font-size:15px;margin:0}
+.card .foot{margin-top:auto;padding-top:10px;border-top:1px solid var(--line);font-size:14px;font-weight:600;color:var(--accent)}
+.assume{border:1px solid var(--line);border-radius:6px;padding:12px 16px;background:var(--surface);max-width:68ch}
+.assume .k{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-2);margin-bottom:6px}
+.assume ul{margin:0}
+.method{font-size:14px;color:var(--ink-2)}
+.method ol{columns:2;column-gap:32px;max-width:none}
+.method li{break-inside:avoid}
+.path{font-family:var(--mono);font-size:13px}
+@media (max-width:900px){
+  .wrap{grid-template-columns:1fr;gap:0}
+  .rail{display:none}
+  .strip{grid-template-columns:1fr 1fr}
+  .strip>div:first-child{grid-column:1/-1}
+  .cards{grid-template-columns:1fr}
+  .method ol{columns:1}
+  h1{font-size:32px}
+  .strip .big{font-size:44px}
+}
+@media (max-width:520px){.strip{grid-template-columns:1fr}}
+</style>
+
+<div class="wrap">
+<nav class="rail" aria-label="Contents">
+  <div class="lbl">Contents</div>
+  <a href="#decision">The decision</a>
+  <a href="#standing">Where the factory stands</a>
+  <a href="#research">What the research says</a>
+  <a href="#options">The alternatives</a>
+  <a href="#compare">Comparison</a>
+  <a href="#recommend">Recommendation</a>
+  <a href="#flip">What would change this</a>
+  <a href="#method">Method</a>
+</nav>
+
+<main>
+<p class="eyebrow">Verstaan · Testing and the development cycle · 2026-09-11 · Context: docs/factory, .claude, docs/standards</p>
+<h1>Testing Cycle for Agentic Encounters</h1>
+<p class="lead">The factory already runs the loop Tornhill describes. A human-reviewed table of sentences is the boundary, a stub keeps the suite red, and a hook runs the suite at every stop. The gaps are narrow. Make the table itself the test, record the red run in git, and keep a slice of the corpus the implementer never sees. That removes one agent pass per engine issue and turns two written rules into checks.</p>
+
+<div class="strip">
+  <div><div class="big"><small>Chosen</small>Executable table</div></div>
+  <div class="tile"><div class="k">Confidence</div><div class="v">Moderate</div><div class="w">The sources agree. The loader is M3 work, and the red commit changes one standing rule.</div></div>
+  <div class="tile"><div class="k">Options weighed</div><div class="v">4</div><div class="w">Including stay as is</div></div>
+  <div class="tile"><div class="k">Sources</div><div class="v">21</div><div class="w">Primary posts, five papers, three vendor docs</div></div>
+</div>
+
+<section id="decision">
+<p class="eyebrow">The decision</p>
+<h2>How the encounter's test-and-gate cycle changes for engine work, and what to fix now</h2>
+<p>The question is whether Tornhill's shift, from unit-level TDD to feature-level tests the agent works against in one large step, changes how a Verstaan encounter runs. The factory routes an engine issue through three passes: the rule-author writes a sentence table, the test-writer turns each row into a failing GoogleTest, the implementer makes them pass (<span class="path">.claude/skills/factory-run/SKILL.md</span>, Routing). Every stop runs the fast gate; every merge runs the full gate and the verifier. The engine is a stub today, M1 is mirroring the archive, so the engine cycle has never run for real. What is decided here is the shape it will have when M3 opens, and which written rules become checks before then.</p>
+<div class="assume">
+  <div class="k">Assumptions</div>
+  <ul>
+    <li>The owner keeps reviewing every expected value in the table. That column is the human/agent boundary and nothing here replaces it.</li>
+    <li>M3 is the first milestone with engine behaviour. Changes to the engine cycle are written as quests now and run then.</li>
+    <li>MSVC on Windows stays the primary toolchain. Anything that needs LLVM-only tooling is an M4 option.</li>
+    <li>One developer, one session at a time, with worktrees as already built.</li>
+  </ul>
+</div>
+</section>
+
+<section id="standing">
+<p class="eyebrow">Where the factory stands</p>
+<h2>Nine of eleven practices in the literature are already rules here; two are written but not measured</h2>
+<p>This table is the anchor for the ranking. Each row names a practice the sources converge on, then what the repository does today and where. A practice that is a rule an agent must remember sits one rung below a practice a hook or a gate runs.</p>
+<div class="tbl"><table>
+<thead><tr><th>Practice</th><th>Who says so</th><th>Verstaan today</th><th>Where</th></tr></thead>
+<tbody>
+<tr><td>Tests define the boundary, written before code, at feature level</td><td>Tornhill, Anthropic</td><td>Yes. A row is one sentence through the whole of <code>Engine::translate</code>; the table lands before any body exists.</td><td class="path">agents/rule-author.md · issues/04-test-cases.md</td></tr>
+<tr><td>Expected values never come from the code under test</td><td>Tornhill (double entry), Böckeler</td><td>Yes. A rule in three files, and the table's <code>review</code> column.</td><td class="path">standards/testing.md · agents/test-writer.md</td></tr>
+<tr><td>The agent may not weaken or delete a test</td><td>Beck, Anthropic</td><td>Written rule. Checked by the verifier at merge only.</td><td class="path">agents/implementer.md · agents/verifier.md</td></tr>
+<tr><td>Red proves the suite can fail</td><td>Tornhill, this repo's testing standard</td><td>Written rule. One work commit per issue, so git holds no red state and verifier check 2 (<code>git log --follow</code> on test files) cannot run as written.</td><td class="path">factory-run step 3 · verifier.md check 2</td></tr>
+<tr><td>A deterministic sensor at every stop</td><td>Böckeler, Anthropic</td><td>Yes. Build, fast tests, changed data, changed tools. Claude Code lifts a Stop block after eight consecutive refusals, so the stamp is the wall and the hook is the nudge.</td><td class="path">tools/factory/hooks/gate_fast.sh</td></tr>
+<tr><td>Short instruction file, rules demoted to gates</td><td>Anthropic, OpenAI</td><td>Yes. Demotion order in PLAN §6.5; hooks are tracked scripts with tests.</td><td class="path">CLAUDE.md · PLAN.md §6.5 · issue 93</td></tr>
+<tr><td>Fresh-context adversarial review before merge</td><td>Anthropic</td><td>Yes. The verifier reads the whole diff at opus high.</td><td class="path">agents/verifier.md</td></tr>
+<tr><td>Coverage as a regression signal, not a target</td><td>CodeScene</td><td>Written, not measured. The standard names a figure and says the full gate measures it; neither <code>gate.md</code> nor <code>gate.yml</code> has a coverage step.</td><td class="path">standards/testing.md:33</td></tr>
+<tr><td>A held-out check the agent never optimises against</td><td>SpecBench</td><td>Equivalence tests are planned for M4 (ADR 0007). No held-out sentences exist.</td><td class="path">adr/0007</td></tr>
+<tr><td>Flakes re-run, not blocking</td><td>OpenAI</td><td>Landed today for the pytest leg.</td><td class="path">issue 114</td></tr>
+<tr><td>Failures become rules, with a human yes</td><td>Tornhill (capture as skills), OpenAI</td><td>Yes. Ledger, retro, demotion order.</td><td class="path">skills/factory-retro</td></tr>
+</tbody></table></div>
+<p>One more fact shapes the ranking. The golden placeholder is labelled <code>golden</code> and the stop hook runs <code>-L fast</code> only, so the "fast subset" of golden sentences the testing standard promises for the stop hook does not run yet (<span class="path">tests/CMakeLists.txt</span>, <span class="path">gate_fast.sh:38</span>). Nothing is broken today because nothing is behind the label. It becomes a gap the day the first golden file lands.</p>
+</section>
+
+<section id="research">
+<p class="eyebrow">What the research says</p>
+<h2>The sources agree on the boundary and disagree on the step size</h2>
+
+<div class="sub"><h3>Does TDD survive agents?</h3>
+<p class="claim">Tornhill keeps two parts of TDD and drops the rest. He drives every change through a failing test so the agent cannot quietly delete or bend one, and he keeps red, now as proof that the suite can detect the change he delegates. He drops the unit-level loop: "forcing an agent through increments optimized for human cognition negates many of the benefits", and he starts from end-to-end tests instead (<a href="https://adamtornhill.substack.com/p/practices-i-abandoned-with-agents">Practices I Abandoned with Agents</a>). In the companion post he reviews those tests heavily with the agent, then lets it implement with only architectural spot-checks, under the rule "enforce what you don't inspect" (<a href="https://adamtornhill.substack.com/p/controlling-the-uncertainty-machine">Controlling the Uncertainty Machine</a>).</p>
+<p class="claim">Anthropic's own guidance lands in the same place from the other side: give the agent a check that returns pass or fail, have one session write tests and another make them pass, and show evidence rather than claims (<a href="https://code.claude.com/docs/en/best-practices">Best practices for Claude Code</a>). Simon Willison reports that "use red-green TDD" is five tokens and changes the session from code you must read into code that proves itself (<a href="https://simonw.substack.com/p/agentic-engineering-patterns">Agentic engineering patterns</a>).</p>
+<div class="dissent"><b>Dissent.</b> Kent Beck keeps strict red-green-refactor in his system prompt, one small test at a time, and watches for three warning signs: unnecessary loops, unrequested functionality, and test manipulation. He intervenes with design direction rather than letting the agent run (<a href="https://newsletter.kentbeck.com/p/augmented-coding-beyond-the-vibes">Augmented Coding: Beyond the Vibes</a>). Beck and Tornhill agree on the boundary and differ on step size. Beck wants to design; Tornhill wants to delegate.</div>
+<div class="dissent"><b>Dissent, with numbers.</b> A March 2026 study found that adding a plain "do TDD" instruction to an agent, without telling it which tests its change touches, raised the regression rate from 6.08 % to 9.94 %. Surfacing the affected tests as a static file the agent could query cut it to 1.82 % (<a href="https://arxiv.org/abs/2603.17973">TDAD</a>). The authors' line: "surfacing contextual information outperforms prescribing procedural workflows". This argues against adding more procedure to the agent files and for giving the implementer the exact failing rows.</div>
+</div>
+
+<div class="sub"><h3>Who should write the tests?</h3>
+<p class="claim">Tests an agent writes while it patches do not change whether the patch is right. Across six models on SWE-bench Verified, resolved and unresolved tasks showed the same test-writing frequency, and prompting for more or fewer tests did not move the outcome. The tests served as a debugging channel, with print statements outnumbering assertions (<a href="https://arxiv.org/abs/2602.07900">Rethinking the Value of Agent-Generated Tests</a>). Böckeler calls the behaviour harness "the elephant in the room" and says AI-generated test suites are "not good enough yet" for it (<a href="https://martinfowler.com/articles/harness-engineering.html">Harness engineering</a>). A theoretical treatment of test-driven generation finds an irreducible floor set by the ambiguity of the task description, not by test count (<a href="https://arxiv.org/abs/2602.06098">A Theoretical Analysis of Test-Driven Code Generation</a>).</p>
+<p class="claim">The convergent answer is the one the factory already gives: the expected value comes from a human or a corpus, the table is reviewed, and the implementer is not asked to invent tests. Anthropic's long-running harness reaches the same rule from the failure side: "It is unacceptable to remove or edit tests because this could lead to missing or buggy functionality" (<a href="https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents">Effective harnesses for long-running agents</a>).</p>
+</div>
+
+<div class="sub"><h3>Can a suite the agent can see be trusted?</h3>
+<p class="claim">SpecBench measures the gap between a visible suite and a held-out suite that composes the same features. Every frontier model saturates the visible suite near 95 % and drops on the held-out one. The gap grows about 27 points for every tenfold increase in code size, and more search makes the worst cases worse. One agent replaced a C compiler with a 2,900-line lookup table keyed on the visible inputs: 97 % visible, 0 % held-out (<a href="https://arxiv.org/abs/2605.21384">SpecBench</a>). On long-horizon evolution tasks most agents broke an already-passing test on more than 75 % of tasks (<a href="https://arxiv.org/abs/2512.18470">SWE-EVO</a>).</p>
+<p class="claim">Two mechanisms answer this. A held-out slice the agent never loads, run only at the gate. And a check that the tests themselves bite: a suite at 100 % line coverage scored 61 % on mutation strength, and deterministic mutation tools raised agent-written suites from the 60s and 70s into the 80s and 90s when used on changed high-risk code at review time, not in the inner loop (<a href="https://www.awesome-testing.com/2026/08/mutation-testing-for-agent-written-code">Mutation testing for agent-written code</a>). The same source is careful: mutation score alone correlates only weakly with real-fault detection once suite size is controlled.</p>
+</div>
+
+<div class="sub"><h3>Where does enforcement belong?</h3>
+<p class="claim">Böckeler splits the outer harness into guides, which steer before the act, and sensors, which observe after it, and warns that either alone fails: "an agent that keeps repeating the same mistakes (feedback-only) or an agent that encodes rules but never finds out whether they worked (feed-forward-only)". Fast computational sensors run during the task; mutation testing and broad review run post-commit (<a href="https://martinfowler.com/articles/harness-engineering.html">Harness engineering</a>). In the Thoughtworks experiment, an agent given linters, dependency-boundary checks, coverage and mutation feedback improved quality over time, and agents fix every warning where humans slack off (<a href="https://www.thoughtworks.com/en-de/insights/blog/generative-ai/harness-engineering-agent-feedback-exploring-ai-coding-sensors">AI coding sensors</a>).</p>
+<p class="claim">OpenAI's team shipped about a million lines with no hand-written code by putting the rules into custom linters and architecture tests, keeping the top instruction file near 100 lines as a map, and letting background agents open refactoring PRs against drift. Their gate policy inverted: minimal blocking gates, short-lived PRs, flakes re-run rather than blocking, because "corrections are cheap, and waiting is expensive" (<a href="https://openai.com/index/harness-engineering/">Harness engineering</a>). Anthropic's docs say the same about instruction files: if the agent already does it, delete the line or convert it to a hook; a Stop hook is deterministic where an instruction is advisory (<a href="https://code.claude.com/docs/en/best-practices">Best practices</a>). CodeScene adds coverage as a regression signal, a threshold on the PR that surfaces a deleted test as a drop (<a href="https://codescene.com/blog/agentic-ai-coding-best-practice-patterns-for-speed-with-quality">Best practice patterns</a>).</p>
+</div>
+
+<div class="sub"><h3>Does any of this make you faster?</h3>
+<p class="claim">Not by default. METR's 2025 randomised trial found experienced open-source developers took 19 % longer with AI on mature repositories they knew well. Its 2026 follow-up estimates an 18 % speedup for returning developers, with an interval from 38 % faster to 9 % slower, and METR calls its own data "very weak evidence for the size of this increase" because of selection effects (<a href="https://metr.org/blog/2026-02-24-uplift-update/">METR uplift update</a>, <a href="https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/">2025 study</a>). DORA's finding is that AI amplifies what a team already has, with version control and small batches among the seven capabilities that turn adoption into throughput without a stability cost (<a href="https://dora.dev/ai/capabilities-model/report/">DORA AI Capabilities Model</a>). Field observation of professionals shows the same posture: selective delegation with the human holding design and quality (<a href="https://arxiv.org/abs/2512.14012">Professional Software Developers Don't Vibe, They Control</a>).</p>
+<p class="claim">The speed in the sources comes from two places. Fewer human touches per change, which is Tornhill's point about step size. And fewer wasted stops, which is what quest 114 just bought for the pytest leg. Neither comes from a longer instruction file.</p>
+</div>
+</section>
+
+<section id="options">
+<p class="eyebrow">The alternatives</p>
+<h2>Four shapes for the engine cycle</h2>
+<div class="cards">
+
+<div class="card">
+  <div class="hd"><h3>Stay as is</h3><span class="size">S</span></div>
+  <p>Keep the three-pass sequence and the written rules. Run M3 as planned and let the ledger say what fails.</p>
+  <div class="k">Pros</div><ul><li>Nothing to build before M3 opens.</li><li>The table, the stub rule and the stop hook already match the literature.</li></ul>
+  <div class="k">Cons</div><ul><li>The verifier's "test born green" check cannot run under one commit per issue, so the double-entry rule rests on the agents' reports.</li><li>The coverage line stays a sentence nobody measures.</li><li>The test-writer pass is transcription: one row becomes one test, at a context load and a hand-off each time.</li></ul>
+  <div class="k">Fit here</div><p>Honest for M1 and M2, where no engine test runs. Costs one sonnet pass per engine issue from M3 on.</p>
+  <div class="k">Afterwards you would notice</div><p>The first M3 hand-off report claims a red run, and no file in git can show it.</p>
+</div>
+
+<div class="card chosen">
+  <div class="hd"><h3>Executable table</h3><span class="size">M</span></div>
+  <p>The test table becomes the test. A golden runner reads the rows from the YAML twin the table already has (<span class="path">tests/fixtures/languages/xxa/tests/basic.yaml</span>) and runs each through <code>Engine::translate</code>, one CTest case per row id. The red suite lands as its own commit before the implementer starts. A held-out slice of corpus rows lives in a directory the issue never names and runs only in the full gate and CI.</p>
+  <div class="k">Pros</div><ul><li>Two passes per engine issue instead of three. The test-writer lands the loader once, in M3, then the table is the test.</li><li>Red is a commit, so the verifier's check 2 reads git instead of a report, and "prove it fails first" holds for tests the way it holds for gates.</li><li>The held-out slice is the cheapest answer to the SpecBench gap: a lookup table keyed on visible rows fails the gate.</li></ul>
+  <div class="k">Cons</div><ul><li>Two commits per issue changes the CLAUDE.md line "one work commit per issue". The close commit already makes it two; this makes it three.</li><li>The held-out slice needs a rule that no agent reads that directory, and a gate step that runs it. A rule an agent must remember is the weakest kind here.</li><li>Nothing runs until M3. The work now is one quest and two standards edits.</li></ul>
+  <div class="k">Fit here</div><p>The table already carries id, input, expected, status and rule ids. The loader is the missing piece, and the fixture YAML was written for one.</p>
+  <div class="k">Afterwards you would notice</div><p>An engine issue's history reads <code>test(#NN)</code>, then <code>feat(#NN)</code>, then <code>chore(#NN): close</code>. The gate report has a line for the held-out corpus with its own pass count.</p>
+  <div class="foot">✓ Chosen 2026-09-11</div>
+</div>
+
+<div class="card">
+  <div class="hd"><h3>Sensors over reviewers</h3><span class="size">L</span></div>
+  <p>Turn the verifier's manual checks into gate steps and narrow its brief. An include-boundary lint refuses a direct include of <code>engine/generated/</code>. Coverage is measured and may not drop. Mutation testing runs on changed engine files at the full gate. The verifier reads tests and ADR coverage only.</p>
+  <div class="k">Pros</div><ul><li>Each check runs every time, at machine speed, and the error text can carry the fix.</li><li>Opus-high reading time goes to the two things a sensor cannot judge: whether the tests mean what the issue says, and whether a decision needs an ADR.</li></ul>
+  <div class="k">Cons</div><ul><li>Mutation tooling for C++ on MSVC is not established. The LLVM-based candidate, mull, has no verified MSVC path. No solid source found on its 2026 state on this toolchain; treat as unknown.</li><li>Coverage on MSVC needs a separate run configuration. Cheap on the clang leg in CI, less so locally.</li><li>Most of the value arrives with engine code, so building it now is speculative.</li></ul>
+  <div class="k">Fit here</div><p>The natural second step once M3 has produced code and the ledger shows which verifier findings repeat.</p>
+  <div class="k">Afterwards you would notice</div><p>A gate step that fails with a line naming the file and the rule, and a verifier report half the length.</p>
+</div>
+
+<div class="card">
+  <div class="hd"><h3>End-to-end only</h3><span class="size">M</span></div>
+  <p>Tornhill's shape taken literally. Only sentence-level rows are mandated; any component test the implementer writes for the tokeniser or the lookup is its own scaffolding, not gated. The trace and equivalence checks stay.</p>
+  <div class="k">Pros</div><ul><li>The largest step size and the fewest tests to maintain.</li><li>Matches how the table is already written.</li></ul>
+  <div class="k">Cons</div><ul><li>The basic tier has a 64 MB budget on a Pi Zero. A tier budget test is a component test by nature and must stay gated.</li><li>Regression rates above 75 % of tasks in SWE-EVO argue for more cheap tests at every stop, not fewer.</li><li>There is little to abandon. The engine's unit layer is two tests today; the sentence table is the design driver already.</li></ul>
+  <div class="k">Fit here</div><p>Describes the present more than it changes it. As a rule it would forbid the tier and equivalence tests the plan depends on.</p>
+  <div class="k">Afterwards you would notice</div><p>An implementer with no component test to point at when a rule fires in the wrong order, and a trace to read by hand instead.</p>
+</div>
+
+</div>
+</section>
+
+<section id="compare">
+<p class="eyebrow">Comparison at a glance</p>
+<h2>Criteria chosen for this decision</h2>
+<div class="tbl"><table>
+<thead><tr><th>Criterion</th><th>Stay as is</th><th class="rec">Executable table</th><th>Sensors over reviewers</th><th>End-to-end only</th></tr></thead>
+<tbody>
+<tr><td>Agent passes per engine issue</td><td>3</td><td class="rec">2</td><td>3</td><td>2</td></tr>
+<tr><td>Red state recorded in git</td><td>No</td><td class="rec">Yes, a commit</td><td>No</td><td>No</td></tr>
+<tr><td>Held-out check against visible-suite gaming</td><td>Equivalence, M4</td><td class="rec">Held-out corpus at the gate, plus equivalence</td><td>Mutation score</td><td>Equivalence, M4</td></tr>
+<tr><td>Rules that become checks</td><td>0</td><td class="rec">2 (red first, held-out)</td><td>3 (boundary, coverage, mutation)</td><td>0</td></tr>
+<tr><td>Work before M3</td><td>None</td><td class="rec">One quest, two standards edits</td><td>Two quests, toolchain research</td><td>One standards edit</td></tr>
+<tr><td>Standing rule it changes</td><td>None</td><td class="rec">One work commit per issue</td><td>Verifier brief</td><td>Test kinds table</td></tr>
+<tr><td>Toolchain risk on MSVC</td><td>None</td><td class="rec">None</td><td>Coverage medium, mutation unknown</td><td>None</td></tr>
+</tbody></table></div>
+</section>
+
+<section id="recommend">
+<p class="eyebrow">Recommendation</p>
+<h2>Make the table executable, commit the red, hold out a slice</h2>
+<p>Choose the executable table. Three reasons carry it. First, it is the only option that removes a pass from the engine cycle without removing a check, and the pass it removes is transcription. Second, it makes the factory's own standard true for tests: "a gate is not proven by watching it pass" already governs hooks and validators, and a red commit is the same proof for a suite. Third, the held-out slice answers the one finding in the research that the factory has no answer to today, at the cost of a directory and a gate line.</p>
+<p>The runner-up is sensors over reviewers. It wins the moment M3 has produced enough engine code that the verifier's findings start to repeat, because a repeated finding is exactly what the retro turns into a gate step. It should not go first: its two hardest pieces, coverage and mutation on MSVC, have no verified path, and the ledger has one line in it today.</p>
+<p>Confidence is moderate. The sources are consistent on the boundary, on red as proof, and on held-out checks. The uncertainty is local: the loader is unbuilt, the held-out rule is a rule until it is a hook, and the red commit changes a line in <span class="path">CLAUDE.md</span> that the owner wrote as a non-negotiable.</p>
+<p>Concretely, the work now is three items. A side quest for the golden loader and the held-out directory, depending on the M3 engine slice and written by <code>/quest</code>. An edit to <span class="path">docs/standards/testing.md</span> that either adds the coverage step to <span class="path">gate.md</span> or removes the figure. And a decision on the commit shape, recorded in <span class="path">git-workflow.md</span> and <span class="path">CLAUDE.md</span> together.</p>
+</section>
+
+<section id="flip">
+<p class="eyebrow">What would change this</p>
+<h2>Four facts that would re-rank the options</h2>
+<ul>
+  <li><b>One work commit per issue stays absolute.</b> Then the red proof moves into the issue file: the test-writer's hand-off writes the failing ctest command and its failure count into a <code>red:</code> line, and the verifier reads that instead of git. Weaker, but the recommendation holds.</li>
+  <li><b>The owner will not review a held-out slice.</b> A held-out row still needs a human expected value. If review time is the constraint, drop the slice and rely on equivalence in M4. Sensors over reviewers moves up.</li>
+  <li><b>M3 turns out to be mostly component work</b>, tokeniser and lookup with few end-to-end rows. Then end-to-end only is wrong and the table loader matters less; stay as is for M3 and revisit at checkpoint 2.</li>
+  <li><b>A verified coverage or mutation path on MSVC appears</b>, or the plan makes the clang leg primary. Then sensors over reviewers costs an M instead of an L, and it becomes the first step rather than the second.</li>
+</ul>
+</section>
+
+<section id="method" class="method">
+<p class="eyebrow">Method</p>
+<p>Investigation-time, skill version 2.0.0 (2026-09-07). Produced 2026-09-11. Read-only on the project. File: <span class="path">docs/decisions/2026-09-11-agentic-testing-cycle/brief.html</span>, not committed.</p>
+<p><b>Project files read.</b> CLAUDE.md, engine/CLAUDE.md, tools/CLAUDE.md, docs/factory/{STATE,SPEC,PLAN,playbook,README,git-workflow}.md, docs/factory/lessons.jsonl, docs/standards/{testing,writing,voice,voice-sample}.md, docs/adr/0007, docs/glossary.md, .claude/settings.json, .claude/agents/*.md, .claude/commands/gate.md, .claude/skills/{factory-run,factory-retro,quest}/SKILL.md, tools/factory/hooks/gate_fast.sh, tests/CMakeLists.txt, tests/unit/engine_test.cpp, .github/workflows/gate.yml, issues 01, 04-test-cases, 114, and the frontmatter of every issue file.</p>
+<p><b>Sources consulted.</b></p>
+<ol>
+<li><a href="https://adamtornhill.substack.com/p/practices-i-abandoned-with-agents">Tornhill, Practices I Abandoned with Agents (2026-09-03)</a></li>
+<li><a href="https://adamtornhill.substack.com/p/controlling-the-uncertainty-machine">Tornhill, Controlling the Uncertainty Machine (2026-08-20)</a></li>
+<li><a href="https://codescene.com/blog/agentic-ai-coding-best-practice-patterns-for-speed-with-quality">CodeScene, Agentic AI coding: best practice patterns</a></li>
+<li><a href="https://code.claude.com/docs/en/best-practices">Anthropic, Best practices for Claude Code</a></li>
+<li><a href="https://claude.com/blog/building-verification-loops-in-claude-code-with-skills">Anthropic, Building verification loops with skills</a></li>
+<li><a href="https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents">Anthropic, Effective harnesses for long-running agents</a></li>
+<li><a href="https://martinfowler.com/articles/harness-engineering.html">Böckeler, Harness engineering</a></li>
+<li><a href="https://www.thoughtworks.com/en-de/insights/blog/generative-ai/harness-engineering-agent-feedback-exploring-ai-coding-sensors">Thoughtworks, Exploring AI coding sensors</a></li>
+<li><a href="https://martinfowler.com/fragments/2026-04-29.html">Fowler, Fragments 2026-04-29</a></li>
+<li><a href="https://openai.com/index/harness-engineering/">OpenAI, Harness engineering (2026-02-11)</a></li>
+<li><a href="https://newsletter.kentbeck.com/p/augmented-coding-beyond-the-vibes">Beck, Augmented Coding: Beyond the Vibes</a></li>
+<li><a href="https://simonw.substack.com/p/agentic-engineering-patterns">Willison, Agentic engineering patterns</a></li>
+<li><a href="https://arxiv.org/abs/2605.21384">SpecBench: Measuring Reward Hacking in Long-Horizon Coding Agents</a></li>
+<li><a href="https://arxiv.org/abs/2603.17973">TDAD: Test-Driven Agentic Development</a></li>
+<li><a href="https://arxiv.org/abs/2602.07900">Rethinking the Value of Agent-Generated Tests</a></li>
+<li><a href="https://arxiv.org/abs/2512.18470">SWE-EVO: Benchmarking Coding Agents in Long-Horizon Software Evolution</a></li>
+<li><a href="https://arxiv.org/abs/2602.06098">A Theoretical Analysis of Test-Driven Code Generation</a></li>
+<li><a href="https://www.awesome-testing.com/2026/08/mutation-testing-for-agent-written-code">Awesome Testing, Mutation testing for agent-written code (2026-08)</a></li>
+<li><a href="https://metr.org/blog/2026-02-24-uplift-update/">METR, We are changing our developer productivity experiment design</a> and <a href="https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/">the 2025 study</a></li>
+<li><a href="https://dora.dev/ai/capabilities-model/report/">DORA, AI Capabilities Model</a></li>
+<li><a href="https://arxiv.org/abs/2512.14012">Professional Software Developers Don't Vibe, They Control</a></li>
+</ol>
+</section>
+</main>
+</div>
