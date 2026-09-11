@@ -2,7 +2,7 @@
 issue: 116
 title: "The console's cut corners carry the border line: every snub card is framed on all six edges"
 milestone: Side
-status: open
+status: in-progress
 depends_on: [99]
 agent: implementer
 agents: [implementer]
@@ -10,7 +10,7 @@ model: sonnet
 effort: medium
 checkpoint: null
 commit: null
-worktree: null
+worktree: .worktrees/side-116-snub-corner-borders
 github_issue: 81
 ---
 ## What
