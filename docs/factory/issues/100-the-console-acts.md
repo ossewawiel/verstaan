@@ -2,15 +2,15 @@
 issue: 100
 title: "The console acts: run gates and tests, start and stop services, sync GitHub, open anything"
 milestone: Side
-status: in-progress
+status: done
 depends_on: [99]
 agent: implementer
 agents: [implementer, docs-writer, verifier]
 model: sonnet
 effort: high
 checkpoint: 4
-commit: null
-worktree: .worktrees/side-100-console-acts
+commit: 188c5b3
+worktree: null
 github_issue: 32
 ---
 ## What
