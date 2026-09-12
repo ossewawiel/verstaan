@@ -2,14 +2,14 @@
 issue: 133
 title: "Drain the stuck exports one language at a time: Ukrainian next"
 milestone: Side
-status: open
+status: done
 depends_on: [132]
 agent: implementer
 agents: [implementer]
 model: sonnet
 effort: medium
 checkpoint: null
-commit: null
+commit: 2a72812
 worktree: null
 github_issue: 132
 ---
@@ -53,7 +53,7 @@ the console.
 
 ## Done when
 
-- [ ] Ukrainian is drained as far as three passes allow: each pass's summary line and the
+- [x] Ukrainian is drained as far as three passes allow: each pass's summary line and the
       Ukrainian `stuck` count before and after are in the report, and the landed zips are in the
       work commit.
 - [ ] Issue 134 for the next language is on `main`, or the report records that `stuck --next`
