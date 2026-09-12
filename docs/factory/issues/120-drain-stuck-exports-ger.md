@@ -2,7 +2,7 @@
 issue: 120
 title: "Drain the stuck exports one language at a time: German next"
 milestone: Side
-status: open
+status: in-progress
 depends_on: [119]
 agent: implementer
 agents: [implementer]
@@ -10,7 +10,7 @@ model: sonnet
 effort: medium
 checkpoint: null
 commit: null
-worktree: null
+worktree: .worktrees/quest-120-drain-stuck-exports-ger
 github_issue: 92
 ---
 ## What
