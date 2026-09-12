@@ -2,5 +2,5 @@
 
 Last completed:  #118 — Drain the stuck exports one language at a time: English first, and the close writes the quest for the next language (Side), commit dd38d6c
 Next up:         #09 — Agent-readable UNL reference: the specifications (M1)
-Branch / PR:     main, https://github.com/ossewawiel/verstaan.git, 0 files dirty, no gate stamp for 0af857a
+Branch / PR:     main, https://github.com/ossewawiel/verstaan.git, 0 files dirty, no gate stamp for 6213511d593e1740634e33cd09ab179332478e88
 Resume with:     /factory-run 09
