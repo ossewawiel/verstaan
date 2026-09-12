@@ -2,7 +2,7 @@
 issue: 129
 title: "Drain the stuck exports one language at a time: Persian next"
 milestone: Side
-status: open
+status: in-progress
 depends_on: [128]
 agent: implementer
 agents: [implementer]
@@ -10,7 +10,7 @@ model: sonnet
 effort: medium
 checkpoint: null
 commit: null
-worktree: null
+worktree: .worktrees/quest-129-drain-stuck-exports-per
 github_issue: 120
 ---
 ## What
