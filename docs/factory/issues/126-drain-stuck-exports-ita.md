@@ -2,15 +2,15 @@
 issue: 126
 title: "Drain the stuck exports one language at a time: Italian next"
 milestone: Side
-status: in-progress
+status: done
 depends_on: [125]
 agent: implementer
 agents: [implementer]
 model: sonnet
 effort: medium
 checkpoint: null
-commit: null
-worktree: .worktrees/quest-126-drain-stuck-exports-ita
+commit: 25ba57d
+worktree: null
 github_issue: 111
 ---
 ## What
@@ -53,7 +53,7 @@ the console.
 
 ## Done when
 
-- [ ] Italian is drained as far as three passes allow: each pass's summary line and the Italian
+- [x] Italian is drained as far as three passes allow: each pass's summary line and the Italian
       `stuck` count before and after are in the report, and the landed zips are in the work
       commit.
 - [ ] Issue 127 for the next language is on `main`, or the report records that `stuck --next`
