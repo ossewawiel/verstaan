@@ -58,3 +58,7 @@ apps/console/blob-report/
 
 # Git worktrees, one per branch (side quest 92)
 .worktrees/
+
+# Static dictionary zips unzipped by hand for a look inside (issue 118); the zip is the mirror
+data/archive/exports/*/*_ucl/
+data/archive/exports/*/*_ucn/
