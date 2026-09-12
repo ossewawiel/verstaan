@@ -2,15 +2,15 @@
 issue: 118
 title: "Drain the stuck exports one language at a time: English first, and the close writes the quest for the next language"
 milestone: Side
-status: in-progress
+status: done
 depends_on: [117]
 agent: implementer
 agents: [implementer]
 model: sonnet
 effort: medium
 checkpoint: null
-commit: null
-worktree: .worktrees/side-118-drain-stuck-exports-eng
+commit: dd38d6c
+worktree: null
 github_issue: 87
 ---
 ## What
