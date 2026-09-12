@@ -31,6 +31,11 @@ def test_pages_source_links_cc_by_sa_4_0():
     assert "4.0" in config.pages.licence_url
 
 
+def test_retry_priority_lists_the_developer_named_languages_english_first():
+    config = load_config(_MIRROR_TOML)
+    assert config.retry_priority == ("eng", "dut", "ger", "fre")
+
+
 def test_missing_required_source_raises(tmp_path):
     bad = tmp_path / "mirror.toml"
     bad.write_text('[mirror]\nhost = "unlarchive.org"\n', encoding="utf-8")

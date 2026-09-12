@@ -46,12 +46,14 @@ class MirrorConfig:
     wiki: WikiSource
     linked_static: LinkedStaticSource
     raw_sources: tuple[dict, ...] = field(default_factory=tuple)
+    retry_priority: tuple[str, ...] = field(default_factory=tuple)
 
 
 def load_config(path: str | Path) -> MirrorConfig:
     """Parse `mirror.toml`. Raises `ValueError` if a required source is missing."""
     data = tomllib.loads(Path(path).read_text(encoding="utf-8"))
     mirror = data.get("mirror", {})
+    retry = data.get("retry", {})
     sources = {s["name"]: s for s in data.get("source", [])}
 
     for required in ("pages", "wiki", "unlarium"):
@@ -92,4 +94,5 @@ def load_config(path: str | Path) -> MirrorConfig:
             path_pattern_allow=tuple(static_raw.get("path_pattern_allow", [])),
         ),
         raw_sources=tuple(data.get("source", [])),
+        retry_priority=tuple(retry.get("priority", [])),
     )

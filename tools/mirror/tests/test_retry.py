@@ -171,6 +171,49 @@ def _seed_three_timeouts(manifest_path, urls):
     )
 
 
+def test_run_retry_restricts_to_the_named_languages_timeout_paths(tmp_path):
+    """`retry --language dut` requests only `dut`'s `timeout` paths, never `ger`'s, even though
+    the fake site holds a landable response for both (issue 118)."""
+    config = load_config(_MIRROR_TOML)
+    archive_root = tmp_path / "archive"
+    manifest_path = archive_root / "manifest.jsonl"
+    dut_url = f"{_ROOT}/dics/du_ana_a_c_ucl.zip"
+    ger_url = f"{_ROOT}/dics/de_ana_a_c_ucl.zip"
+    append_entries(
+        manifest_path,
+        [
+            {
+                "path": "exports/dut/du_ana_a_c_ucl.zip",
+                "url": dut_url,
+                "status": "timeout",
+                "language": "dut",
+                "licence": "CC BY-SA 2.5 CH",
+                "licence_url": "http://creativecommons.org/licenses/by-sa/2.5/ch/",
+                "sha256": "0" * 64,
+            },
+            {
+                "path": "exports/ger/de_ana_a_c_ucl.zip",
+                "url": ger_url,
+                "status": "timeout",
+                "language": "ger",
+                "licence": "CC BY-SA 2.5 CH",
+                "licence_url": "http://creativecommons.org/licenses/by-sa/2.5/ch/",
+                "sha256": "1" * 64,
+            },
+        ],
+    )
+    site = FakeSite(
+        {
+            dut_url: HttpResponse(200, {}, _ZIP_BYTES),
+            ger_url: HttpResponse(200, {}, _ZIP_BYTES),
+        }
+    )
+
+    run_retry(config, site, archive_root, manifest_path, "wawiel", "hunter2", language="dut")
+
+    assert site.get_urls == [dut_url]
+
+
 def test_run_retry_stops_at_a_429_and_reports_rate_limited(tmp_path, capsys):
     """unlarchive.org's CDN 429s after about thirty zips (issue 117): the run must stop right
     there, keep everything already landed, and never request what comes after."""
@@ -242,6 +285,106 @@ def test_a_run_that_raises_mid_way_keeps_the_manifest_line_already_stored(tmp_pa
 
 def test_summary_line_reports_attempted_landed_stuck_and_bytes():
     assert RetryReport().summary() == "attempted: 0, landed: 0, still stuck: 0, bytes: 0"
+
+
+def test_run_retry_for_language_sleeps_through_a_429_and_finishes_on_the_next_pass(tmp_path):
+    """A pass that hits a 429 stops early, sleeps `pause_seconds` through a fake clock, and the
+    next pass retries only what is still `timeout` — at most `passes` passes total (issue 118)."""
+    config = load_config(_MIRROR_TOML)
+    archive_root = tmp_path / "archive"
+    manifest_path = archive_root / "manifest.jsonl"
+    url_a = f"{_ROOT}/dics/a.zip"
+    url_b = f"{_ROOT}/dics/b.zip"
+    url_c = f"{_ROOT}/dics/c.zip"
+    append_entries(
+        manifest_path,
+        [
+            {
+                "path": f"exports/dut/{name}.zip",
+                "url": url,
+                "status": "timeout",
+                "language": "dut",
+                "licence": "CC BY-SA 2.5 CH",
+                "licence_url": "http://creativecommons.org/licenses/by-sa/2.5/ch/",
+                "sha256": f"{i}" * 64,
+            }
+            for i, (name, url) in enumerate({"a": url_a, "b": url_b, "c": url_c}.items())
+        ],
+    )
+
+    site = FakeSite(
+        {
+            url_a: HttpResponse(200, {}, _ZIP_BYTES),
+            url_b: [HttpResponse(429, {}, b""), HttpResponse(200, {}, _ZIP_BYTES)],
+            url_c: HttpResponse(200, {}, _ZIP_BYTES),
+        }
+    )
+    sleeps: list[float] = []
+
+    from tools.mirror.retry import run_retry_for_language
+
+    report = run_retry_for_language(
+        config,
+        site,
+        archive_root,
+        manifest_path,
+        "wawiel",
+        "hunter2",
+        language="dut",
+        passes=3,
+        pause_seconds=600.0,
+        sleep=sleeps.append,
+    )
+
+    assert site.get_urls == [url_a, url_b, url_b, url_c]
+    assert sleeps == [600.0]
+    assert report.passes_used == 2
+    assert report.landed == 3
+    assert report.still_stuck == 0
+    assert len(report.pass_summaries) == 2
+
+
+def test_run_retry_for_language_stops_after_the_passes_budget_is_spent(tmp_path):
+    """Every pass 429s: the run gives up after exactly `passes` passes, still stuck."""
+    config = load_config(_MIRROR_TOML)
+    archive_root = tmp_path / "archive"
+    manifest_path = archive_root / "manifest.jsonl"
+    url_a = f"{_ROOT}/dics/a.zip"
+    append_entries(
+        manifest_path,
+        [
+            {
+                "path": "exports/dut/a.zip",
+                "url": url_a,
+                "status": "timeout",
+                "language": "dut",
+                "licence": "CC BY-SA 2.5 CH",
+                "licence_url": "http://creativecommons.org/licenses/by-sa/2.5/ch/",
+                "sha256": "0" * 64,
+            }
+        ],
+    )
+    site = FakeSite({url_a: HttpResponse(429, {}, b"")})
+    sleeps: list[float] = []
+
+    from tools.mirror.retry import run_retry_for_language
+
+    report = run_retry_for_language(
+        config,
+        site,
+        archive_root,
+        manifest_path,
+        "wawiel",
+        "hunter2",
+        language="dut",
+        passes=2,
+        pause_seconds=600.0,
+        sleep=sleeps.append,
+    )
+
+    assert report.passes_used == 2
+    assert report.still_stuck == 1
+    assert sleeps == [600.0]  # only between passes, never after the last one
 
 
 def test_poll_attempts_spans_the_max_wait_budget():

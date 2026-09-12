@@ -22,7 +22,8 @@ landed.
 from __future__ import annotations
 
 import sys
-from dataclasses import dataclass
+import time
+from dataclasses import dataclass, field
 from pathlib import Path
 
 from tools.mirror.config import MirrorConfig
@@ -68,10 +69,13 @@ def run_retry(
     manifest_path: str | Path,
     username: str,
     password: str,
+    *,
+    language: str | None = None,
 ) -> RetryReport:
     """Sign in, then re-fetch every `status: timeout` export named by the manifest. `client`
     already carries the poll cadence for `get_while`; this function never sleeps or times
-    anything itself.
+    anything itself. `language`, when given, restricts the worklist to that language's `timeout`
+    paths only (issue 118's `retry --language`).
 
     Stops at the first 429: nothing is stored for that path, every path after it is never
     requested, and the returned report's `rate_limited` is set so `cli.py` can exit with a
@@ -85,7 +89,7 @@ def run_retry(
     store = Mirror(client=client, archive_root=Path(archive_root), manifest_path=manifest_path)
     login_report = LoginReport()
 
-    stuck = timeout_paths(manifest_path)
+    stuck = timeout_paths(manifest_path, language=language)
     paths = sorted(stuck)
     attempted = 0
     rate_limited = False
@@ -126,4 +130,72 @@ def run_retry(
         still_stuck=login_report.exports_timeout,
         total_bytes=login_report.total_bytes,
         rate_limited=rate_limited,
+    )
+
+
+@dataclass
+class LanguageRetryReport:
+    """The outcome of draining one language across up to `passes` runs (issue 118)."""
+
+    language: str | None
+    passes_used: int = 0
+    landed: int = 0
+    still_stuck: int = 0
+    pass_summaries: list[str] = field(default_factory=list)
+
+    def final_summary(self) -> str:
+        lang = self.language or "all"
+        return (
+            f"language: {lang}, passes: {self.passes_used}, landed: {self.landed}, "
+            f"still stuck: {self.still_stuck}"
+        )
+
+
+def run_retry_for_language(
+    config: MirrorConfig,
+    client: RateLimitedClient,
+    archive_root: str | Path,
+    manifest_path: str | Path,
+    username: str,
+    password: str,
+    *,
+    language: str | None = None,
+    passes: int = 3,
+    pause_seconds: float = 600.0,
+    sleep=time.sleep,
+) -> LanguageRetryReport:
+    """Drain `language`'s `timeout` paths across up to `passes` runs of `run_retry` (issue 118).
+
+    A pass that meets a 429 stops early (`run_retry`'s own rule); this function then sleeps
+    `pause_seconds` — unlarchive.org's CDN clears its refusal roughly ten minutes after polling
+    stops — and starts the next pass, which re-reads the manifest and so only ever asks for what
+    is still `timeout`. Stops as soon as a pass finishes without a 429 (nothing left to retry, or
+    everything already landed), or once `passes` runs are spent. Never sleeps after the last pass.
+    """
+    manifest_path = Path(manifest_path)
+    pass_summaries: list[str] = []
+    total_landed = 0
+    passes_used = 0
+
+    for pass_number in range(1, passes + 1):
+        if not timeout_paths(manifest_path, language=language):
+            break
+        passes_used = pass_number
+        report = run_retry(
+            config, client, archive_root, manifest_path, username, password, language=language
+        )
+        total_landed += report.landed
+        pass_summaries.append(f"pass {pass_number}: {report.summary()}")
+        if not report.rate_limited:
+            break
+        if pass_number < passes:
+            sleep(pause_seconds)
+
+    still_stuck = len(timeout_paths(manifest_path, language=language))
+    return LanguageRetryReport(
+        language=language,
+        passes_used=passes_used,
+        landed=total_landed,
+        still_stuck=still_stuck,
+        pass_summaries=pass_summaries,
     )
