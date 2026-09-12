@@ -2,5 +2,5 @@
 
 Last completed:  #117 — The exports that did not make it: list them, and retry the stuck ones with a longer poll (Side), commit 532ea22
 Next up:         #09 — Agent-readable UNL reference: the specifications (M1)
-Branch / PR:     main, https://github.com/ossewawiel/verstaan.git, 3 files dirty, no gate stamp for 91de09b
+Branch / PR:     main, https://github.com/ossewawiel/verstaan.git, 0 files dirty, no gate stamp for adcab4c
 Resume with:     /factory-run 09
