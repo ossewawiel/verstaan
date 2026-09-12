@@ -2,7 +2,7 @@
 issue: 127
 title: "Drain the stuck exports one language at a time: Chinese next"
 milestone: Side
-status: open
+status: in-progress
 depends_on: [126]
 agent: implementer
 agents: [implementer]
@@ -10,7 +10,7 @@ model: sonnet
 effort: medium
 checkpoint: null
 commit: null
-worktree: null
+worktree: .worktrees/quest-127-drain-stuck-exports-chi
 github_issue: 114
 ---
 ## What
