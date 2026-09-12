@@ -2,7 +2,7 @@
 issue: 132
 title: "Drain the stuck exports one language at a time: Azerbaijani next"
 milestone: Side
-status: open
+status: in-progress
 depends_on: [131]
 agent: implementer
 agents: [implementer]
@@ -10,7 +10,7 @@ model: sonnet
 effort: medium
 checkpoint: null
 commit: null
-worktree: null
+worktree: .worktrees/quest-132-drain-stuck-exports-aze
 github_issue: 129
 ---
 ## What
