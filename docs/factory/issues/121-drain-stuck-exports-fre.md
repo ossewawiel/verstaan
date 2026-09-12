@@ -2,7 +2,7 @@
 issue: 121
 title: "Drain the stuck exports one language at a time: French next"
 milestone: Side
-status: open
+status: in-progress
 depends_on: [120]
 agent: implementer
 agents: [implementer]
@@ -10,7 +10,7 @@ model: sonnet
 effort: medium
 checkpoint: null
 commit: null
-worktree: null
+worktree: .worktrees/quest-121-drain-stuck-exports-fre
 github_issue: 96
 ---
 ## What
