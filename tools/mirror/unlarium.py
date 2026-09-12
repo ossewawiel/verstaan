@@ -79,7 +79,7 @@ def looks_like_generating_placeholder(body: bytes) -> bool:
     return bool(_PLEASE_WAIT_RE.search(body)) and not _CLOSING_HTML_RE.search(body)
 
 
-def _is_still_pending(body: bytes) -> bool:
+def is_still_pending(body: bytes) -> bool:
     """True for a response `get_while` should retry: no body at all (a zip export UNLarium has
     not materialised yet — the same "still generating" state, just wordless), or the "please
     wait…" placeholder page (issue 08)."""
@@ -177,7 +177,7 @@ def _discover_and_fetch(
         path_pattern_allow=_EXPORT_PATTERNS,
     )
     for url in sorted(set(links) - skip_urls):
-        response = client.get_while(url, _is_still_pending)
+        response = client.get_while(url, is_still_pending)
         _store_export(
             store,
             report,
@@ -187,7 +187,7 @@ def _discover_and_fetch(
             licence=licence,
             licence_url=licence_url,
             language=language,
-            still_pending=_is_still_pending(response.body),
+            still_pending=is_still_pending(response.body),
         )
 
 
@@ -232,7 +232,7 @@ def _mirror_tagset(
     """The UNDL Foundation tagset: one file, the same for every language, fetched once."""
     static = config.linked_static
     url = f"{_root(config)}/unlarium/dictionary/export_tagset.php"
-    response = client.get_while(url, _is_still_pending)
+    response = client.get_while(url, is_still_pending)
     _store_export(
         store,
         report,
@@ -242,7 +242,7 @@ def _mirror_tagset(
         licence=static.licence,
         licence_url=static.licence_url,
         language=None,
-        still_pending=_is_still_pending(response.body),
+        still_pending=is_still_pending(response.body),
     )
     return url
 
@@ -285,7 +285,7 @@ def _mirror_files(
         path_pattern_allow=(),
     )
     for url in sorted(set(links)):
-        response = client.get_while(url, _is_still_pending)
+        response = client.get_while(url, is_still_pending)
         _store_export(
             store,
             report,
@@ -295,7 +295,7 @@ def _mirror_files(
             licence=static.licence,
             licence_url=static.licence_url,
             language=None,
-            still_pending=_is_still_pending(response.body),
+            still_pending=is_still_pending(response.body),
         )
 
 

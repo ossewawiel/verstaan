@@ -2,14 +2,14 @@
 issue: 117
 title: "The exports that did not make it: list them, and retry the stuck ones with a longer poll"
 milestone: Side
-status: open
+status: done
 depends_on: [8]
 agent: implementer
 agents: [implementer]
 model: sonnet
 effort: medium
 checkpoint: null
-commit: null
+commit: 532ea22
 worktree: null
 github_issue: 83
 ---
