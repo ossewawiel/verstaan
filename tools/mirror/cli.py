@@ -19,9 +19,9 @@ from tools.mirror import __version__
 from tools.mirror.config import load_config
 from tools.mirror.http_client import RateLimitedClient, UrllibTransport
 from tools.mirror.login import LoginError
-from tools.mirror.retry import poll_attempts, run_retry
+from tools.mirror.retry import poll_attempts, run_retry_for_language
 from tools.mirror.run import run_mirror
-from tools.mirror.stuck import find_stuck, format_stuck_report
+from tools.mirror.stuck import find_next_stuck, find_stuck, format_stuck_report
 from tools.mirror.unlarium import run_login_mirror
 
 # Argument spellings that would smuggle a credential onto the command line, and the literal
@@ -135,6 +135,23 @@ def build_parser() -> argparse.ArgumentParser:
         default=None,
         help="Path to manifest.jsonl (default: <archive-root>/manifest.jsonl).",
     )
+    stuck_parser.add_argument(
+        "--config", default="mirror.toml", help="Path to mirror.toml (default: %(default)s)."
+    )
+    stuck_parser.add_argument(
+        "--languages",
+        default=None,
+        help="Path to languages.json (default: <archive-root>/languages.json).",
+    )
+    stuck_parser.add_argument(
+        "--next",
+        action="store_true",
+        help=(
+            "Print only the next language to drain (issue 118): the first language in "
+            "mirror.toml's [retry] priority that still has a timeout path, else the stuck "
+            "language with the most base forms. Prints nothing and exits 1 if none is stuck."
+        ),
+    )
 
     retry_parser = subparsers.add_parser(
         "retry",
@@ -168,6 +185,30 @@ def build_parser() -> argparse.ArgumentParser:
         default=300.0,
         help="Seconds to keep polling one export before giving up (default: %(default)s).",
     )
+    retry_parser.add_argument(
+        "--language",
+        default=None,
+        help="Restrict retries to this ISO3 language's timeout paths only (issue 118).",
+    )
+    retry_parser.add_argument(
+        "--passes",
+        type=int,
+        default=3,
+        help=(
+            "How many passes to run: a pass that meets a 429 stops early, the run sleeps "
+            "--pause-seconds, and the next pass retries only what is still timeout "
+            "(default: %(default)s)."
+        ),
+    )
+    retry_parser.add_argument(
+        "--pause-seconds",
+        type=float,
+        default=600.0,
+        help=(
+            "Seconds to sleep between a 429-stopped pass and the next (default: %(default)s); "
+            "unlarchive.org's CDN clears its refusal roughly ten minutes after polling stops."
+        ),
+    )
 
     return parser
 
@@ -192,7 +233,18 @@ def main(argv: Sequence[str] | None = None) -> int:
     manifest_path = Path(args.manifest) if args.manifest else archive_root / "manifest.jsonl"
 
     if command == "stuck":
-        # Manifest only: no config, no client, no request (issue 117).
+        # Manifest only: no client, no request (issue 117). `--next` also reads mirror.toml's
+        # [retry] priority and languages.json's base_forms counts (issue 118) — still no client.
+        if args.next:
+            languages_path = (
+                Path(args.languages) if args.languages else archive_root / "languages.json"
+            )
+            priority = load_config(args.config).retry_priority
+            next_language = find_next_stuck(manifest_path, languages_path, priority)
+            if next_language is None:
+                return 1
+            print(next_language)
+            return 0
         print(format_stuck_report(find_stuck(manifest_path)))
         return 0
 
@@ -252,12 +304,24 @@ def main(argv: Sequence[str] | None = None) -> int:
         )
         return 3
     try:
-        report = run_retry(config, client, archive_root, manifest_path, username, password)
+        report = run_retry_for_language(
+            config,
+            client,
+            archive_root,
+            manifest_path,
+            username,
+            password,
+            language=args.language,
+            passes=args.passes,
+            pause_seconds=args.pause_seconds,
+        )
     except LoginError as exc:
         print(f"tools.mirror retry: {exc}", file=sys.stderr)
         return 1
-    print(report.summary())
-    if report.rate_limited:
+    for line in report.pass_summaries:
+        print(line)
+    print(report.final_summary())
+    if report.still_stuck:
         return 4
     return 0
 

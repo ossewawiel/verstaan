@@ -4,12 +4,28 @@ issue 117). No client, no request — every test here works from a fixture manif
 
 from __future__ import annotations
 
+import json
+from pathlib import Path
+
 from tools.mirror.manifest import append_entries
-from tools.mirror.stuck import StuckEntry, find_stuck, format_stuck_report, timeout_paths
+from tools.mirror.stuck import (
+    StuckEntry,
+    find_next_stuck,
+    find_stuck,
+    format_stuck_report,
+    timeout_paths,
+)
+
+_PRIORITY = ("eng", "dut", "ger", "fre")
 
 
 def _write(path, entries):
     append_entries(path, entries)
+
+
+def _write_languages(path, rows):
+    """A `languages.json`-shaped fixture: a list of `{"iso3": ..., "base_forms": ...}` rows."""
+    Path(path).write_text(json.dumps(rows), encoding="utf-8")
 
 
 def test_find_stuck_lists_timeout_and_error_but_not_ok_or_empty(tmp_path):
@@ -68,6 +84,29 @@ def test_timeout_paths_holds_only_timeout_entries_with_their_full_record(tmp_pat
     assert result["exports/afr/a.zip"]["url"] == "https://unlarchive.org/dics/af_ana_a_c_ucl.zip"
 
 
+def test_timeout_paths_filters_to_one_language_when_asked(tmp_path):
+    path = tmp_path / "manifest.jsonl"
+    _write(
+        path,
+        [
+            {
+                "path": "exports/dut/a.zip",
+                "status": "timeout",
+                "language": "dut",
+                "url": "https://unlarchive.org/dics/dut_a.zip",
+            },
+            {
+                "path": "exports/ger/a.zip",
+                "status": "timeout",
+                "language": "ger",
+                "url": "https://unlarchive.org/dics/ger_a.zip",
+            },
+        ],
+    )
+    assert set(timeout_paths(path, language="dut")) == {"exports/dut/a.zip"}
+    assert set(timeout_paths(path)) == {"exports/dut/a.zip", "exports/ger/a.zip"}
+
+
 def test_format_stuck_report_groups_by_language_with_counts_and_a_total():
     entries = [
         StuckEntry(path="exports/afr/a.zip", status="timeout", language="afr"),
@@ -87,3 +126,73 @@ def test_format_stuck_report_groups_by_language_with_counts_and_a_total():
 
 def test_format_stuck_report_of_no_entries_is_just_the_total_line():
     assert format_stuck_report([]) == "total: 0 timeout, 0 error"
+
+
+def test_find_next_stuck_returns_the_first_priority_language_still_stuck(tmp_path):
+    manifest = tmp_path / "manifest.jsonl"
+    languages = tmp_path / "languages.json"
+    _write(
+        manifest,
+        [
+            {"path": "exports/eng/a.zip", "status": "timeout", "language": "eng"},
+            {"path": "exports/dut/a.zip", "status": "timeout", "language": "dut"},
+        ],
+    )
+    _write_languages(
+        languages, [{"iso3": "eng", "base_forms": 1}, {"iso3": "dut", "base_forms": 2}]
+    )
+
+    assert find_next_stuck(manifest, languages, _PRIORITY) == "eng"
+
+
+def test_find_next_stuck_falls_through_to_the_next_priority_language_once_the_first_is_drained(
+    tmp_path,
+):
+    manifest = tmp_path / "manifest.jsonl"
+    languages = tmp_path / "languages.json"
+    _write(
+        manifest,
+        [
+            {"path": "exports/eng/a.zip", "language": "eng"},  # landed: no longer stuck
+            {"path": "exports/dut/a.zip", "status": "timeout", "language": "dut"},
+        ],
+    )
+    _write_languages(
+        languages, [{"iso3": "eng", "base_forms": 1}, {"iso3": "dut", "base_forms": 2}]
+    )
+
+    assert find_next_stuck(manifest, languages, _PRIORITY) == "dut"
+
+
+def test_find_next_stuck_falls_back_to_the_most_base_forms_once_priority_is_drained(tmp_path):
+    manifest = tmp_path / "manifest.jsonl"
+    languages = tmp_path / "languages.json"
+    _write(
+        manifest,
+        [
+            {"path": "exports/eng/a.zip", "language": "eng"},  # landed
+            {"path": "exports/dut/a.zip", "language": "dut"},  # landed
+            {"path": "exports/ger/a.zip", "language": "ger"},  # landed
+            {"path": "exports/fre/a.zip", "language": "fre"},  # landed
+            {"path": "exports/spa/a.zip", "status": "timeout", "language": "spa"},
+            {"path": "exports/zul/a.zip", "status": "timeout", "language": "zul"},
+        ],
+    )
+    _write_languages(
+        languages,
+        [
+            {"iso3": "spa", "base_forms": 500},
+            {"iso3": "zul", "base_forms": 9000},
+        ],
+    )
+
+    assert find_next_stuck(manifest, languages, _PRIORITY) == "zul"
+
+
+def test_find_next_stuck_prints_nothing_when_no_language_is_stuck(tmp_path):
+    manifest = tmp_path / "manifest.jsonl"
+    languages = tmp_path / "languages.json"
+    _write(manifest, [{"path": "exports/eng/a.zip", "language": "eng"}])
+    _write_languages(languages, [{"iso3": "eng", "base_forms": 1}])
+
+    assert find_next_stuck(manifest, languages, _PRIORITY) is None

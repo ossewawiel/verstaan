@@ -2,14 +2,14 @@
 issue: 118
 title: "Drain the stuck exports one language at a time: English first, and the close writes the quest for the next language"
 milestone: Side
-status: open
+status: done
 depends_on: [117]
 agent: implementer
 agents: [implementer]
 model: sonnet
 effort: medium
 checkpoint: null
-commit: null
+commit: dd38d6c
 worktree: null
 github_issue: 87
 ---
@@ -76,11 +76,11 @@ content; the language table already carries the counts. Showing the chain in the
 
 ## Done when
 
-- [ ] `stuck --next`, `retry --language`, `--passes` and `--pause-seconds` land with every new
+- [x] `stuck --next`, `retry --language`, `--passes` and `--pause-seconds` land with every new
       test proven failing first.
-- [ ] English is drained as far as three passes allow: each pass's summary line and the English
+- [x] English is drained as far as three passes allow: each pass's summary line and the English
       `stuck` count before and after are in the report, and the landed zips are in the work
       commit.
-- [ ] Issue 119 for the next language is on `main`, or the report records that `stuck --next`
+- [x] Issue 119 for the next language is on `main`, or the report records that `stuck --next`
       printed nothing and the chain has ended.
 - [ ] PR merged through the gate check.

@@ -13,6 +13,12 @@ rate_limit_seconds = 1.0
 retries = 3
 retry_backoff_seconds = 1.0
 
+# The order `stuck --next` and the side-quest chain drain the 44 stuck languages in (issue 118):
+# the developer's named priorities first, then whichever remaining stuck language has the most
+# base forms in data/archive/languages.json.
+[retry]
+priority = ["eng", "dut", "ger", "fre"]
+
 # The public, unauthenticated pages (`index.php?unlweb=<name>`). This list is the fixed menu the
 # home page links; the mirror re-derives it from the home page's own links on every run and only
 # falls back to this list if that discovery finds nothing.
