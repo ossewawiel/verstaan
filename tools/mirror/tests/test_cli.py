@@ -209,16 +209,18 @@ _REPO_ROOT = Path(__file__).resolve().parents[3]
 
 def test_stuck_next_prints_a_priority_language_against_the_real_manifest(capsys, monkeypatch):
     """`stuck --next` against the current repository manifest names a `mirror.toml`
-    `[retry] priority` language (issue 118). This quest's own live run drains English, so the
-    exact answer moves down the list rather than staying pinned to `eng` forever — the fixture
-    tests in `test_stuck.py` prove the ordering rule itself; this one proves the wiring reads the
-    real files."""
+    `[retry] priority` language (issue 118), or falls back to the stuck language with the most
+    base forms once the priority list is drained (issue 121's own prediction). Issues 118-121's
+    live runs drained every priority language in turn — eng, dut, ger, fre — of its `timeout`
+    paths, so the fallback rule now correctly names `lat` (Latin) against the real manifest. The
+    fixture tests in `test_stuck.py` prove the ordering and fallback rules themselves; this one
+    proves the wiring reads the real files."""
     monkeypatch.chdir(_REPO_ROOT)
 
     exit_code = main(["stuck", "--next"])
 
     assert exit_code == 0
-    assert capsys.readouterr().out.strip() in ("eng", "dut", "ger", "fre")
+    assert capsys.readouterr().out.strip() == "lat"
 
 
 def _write_fixture_mirror_toml(path, priority):
