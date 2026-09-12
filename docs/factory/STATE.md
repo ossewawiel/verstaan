@@ -2,5 +2,5 @@
 
 Last completed:  #120 — Drain the stuck exports one language at a time: German next (Side), commit ae8f466
 Next up:         #09 — Agent-readable UNL reference: the specifications (M1)
-Branch / PR:     main, https://github.com/ossewawiel/verstaan.git, 0 files dirty, no gate stamp for 0c6423bd9b505a11c73ee0d8701b0e1797221fd5
+Branch / PR:     main, https://github.com/ossewawiel/verstaan.git, 0 files dirty, no gate stamp for f9e56246e0b8a1c0cb49f0879f45e47764f5015e
 Resume with:     /factory-run 09
