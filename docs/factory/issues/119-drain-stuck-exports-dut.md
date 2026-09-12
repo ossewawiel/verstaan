@@ -2,15 +2,15 @@
 issue: 119
 title: "Drain the stuck exports one language at a time: Dutch next"
 milestone: Side
-status: in-progress
+status: done
 depends_on: [118]
 agent: implementer
 agents: [implementer]
 model: sonnet
 effort: medium
 checkpoint: null
-commit: null
-worktree: .worktrees/side-119-drain-stuck-exports-dut
+commit: 75baa2c
+worktree: null
 github_issue: 89
 ---
 ## What
@@ -50,9 +50,9 @@ schedule; each quest is one `/factory-run`. Showing the chain in the console.
 
 ## Done when
 
-- [ ] Dutch is drained as far as three passes allow: each pass's summary line and the Dutch
+- [x] Dutch is drained as far as three passes allow: each pass's summary line and the Dutch
       `stuck` count before and after are in the report, and the landed zips are in the work
       commit.
-- [ ] Issue 120 for the next language is on `main`, or the report records that `stuck --next`
+- [x] Issue 120 for the next language is on `main`, or the report records that `stuck --next`
       printed nothing and the chain has ended.
 - [ ] PR merged through the gate check.
