@@ -2,15 +2,15 @@
 issue: 120
 title: "Drain the stuck exports one language at a time: German next"
 milestone: Side
-status: in-progress
+status: done
 depends_on: [119]
 agent: implementer
 agents: [implementer]
 model: sonnet
 effort: medium
 checkpoint: null
-commit: null
-worktree: .worktrees/quest-120-drain-stuck-exports-ger
+commit: ae8f466
+worktree: null
 github_issue: 92
 ---
 ## What
@@ -50,7 +50,7 @@ schedule; each quest is one `/factory-run`. Showing the chain in the console.
 
 ## Done when
 
-- [ ] German is drained as far as three passes allow: each pass's summary line and the German
+- [x] German is drained as far as three passes allow: each pass's summary line and the German
       `stuck` count before and after are in the report, and the landed zips are in the work
       commit.
 - [ ] Issue 121 for the next language is on `main`, or the report records that `stuck --next`
