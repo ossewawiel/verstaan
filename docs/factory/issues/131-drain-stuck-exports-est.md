@@ -2,7 +2,7 @@
 issue: 131
 title: "Drain the stuck exports one language at a time: Estonian next"
 milestone: Side
-status: open
+status: in-progress
 depends_on: [130]
 agent: implementer
 agents: [implementer]
@@ -10,7 +10,7 @@ model: sonnet
 effort: medium
 checkpoint: null
 commit: null
-worktree: null
+worktree: .worktrees/quest-131-drain-stuck-exports-est
 github_issue: 126
 ---
 ## What
