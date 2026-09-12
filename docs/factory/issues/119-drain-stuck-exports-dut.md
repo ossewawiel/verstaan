@@ -2,7 +2,7 @@
 issue: 119
 title: "Drain the stuck exports one language at a time: Dutch next"
 milestone: Side
-status: open
+status: in-progress
 depends_on: [118]
 agent: implementer
 agents: [implementer]
@@ -10,7 +10,7 @@ model: sonnet
 effort: medium
 checkpoint: null
 commit: null
-worktree: null
+worktree: .worktrees/side-119-drain-stuck-exports-dut
 github_issue: 89
 ---
 ## What
