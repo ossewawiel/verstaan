@@ -2,15 +2,15 @@
 issue: 125
 title: "Drain the stuck exports one language at a time: Russian next"
 milestone: Side
-status: in-progress
+status: done
 depends_on: [124]
 agent: implementer
 agents: [implementer]
 model: sonnet
 effort: medium
 checkpoint: null
-commit: null
-worktree: .worktrees/quest-125-drain-stuck-exports-rus
+commit: 1f01fc2
+worktree: null
 github_issue: 108
 ---
 ## What
@@ -53,7 +53,7 @@ the console.
 
 ## Done when
 
-- [ ] Russian is drained as far as three passes allow: each pass's summary line and the Russian
+- [x] Russian is drained as far as three passes allow: each pass's summary line and the Russian
       `stuck` count before and after are in the report, and the landed zips are in the work
       commit.
 - [ ] Issue 126 for the next language is on `main`, or the report records that `stuck --next`
