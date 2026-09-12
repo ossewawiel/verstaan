@@ -2,15 +2,15 @@
 issue: 123
 title: "Drain the stuck exports one language at a time: Spanish next"
 milestone: Side
-status: in-progress
+status: done
 depends_on: [122]
 agent: implementer
 agents: [implementer]
 model: sonnet
 effort: medium
 checkpoint: null
-commit: null
-worktree: .worktrees/quest-123-drain-stuck-exports-spa
+commit: 7a485e4
+worktree: null
 github_issue: 102
 ---
 ## What
@@ -51,7 +51,7 @@ the chain in the console.
 
 ## Done when
 
-- [ ] Spanish is drained as far as three passes allow: each pass's summary line and the Spanish
+- [x] Spanish is drained as far as three passes allow: each pass's summary line and the Spanish
       `stuck` count before and after are in the report, and the landed zips are in the work
       commit.
 - [ ] Issue 124 for the next language is on `main`, or the report records that `stuck --next`
