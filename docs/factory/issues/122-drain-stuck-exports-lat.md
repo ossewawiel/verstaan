@@ -2,15 +2,15 @@
 issue: 122
 title: "Drain the stuck exports one language at a time: Latin next"
 milestone: Side
-status: in-progress
+status: done
 depends_on: [121]
 agent: implementer
 agents: [implementer]
 model: sonnet
 effort: medium
 checkpoint: null
-commit: null
-worktree: .worktrees/quest-122-drain-stuck-exports-lat
+commit: 8d1b40a
+worktree: null
 github_issue: 99
 ---
 ## What
@@ -52,7 +52,7 @@ the chain in the console.
 
 ## Done when
 
-- [ ] Latin is drained as far as three passes allow: each pass's summary line and the Latin
+- [x] Latin is drained as far as three passes allow: each pass's summary line and the Latin
       `stuck` count before and after are in the report, and the landed zips are in the work
       commit.
 - [ ] Issue 123 for the next language is on `main`, or the report records that `stuck --next`
