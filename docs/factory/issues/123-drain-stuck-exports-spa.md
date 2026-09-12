@@ -2,7 +2,7 @@
 issue: 123
 title: "Drain the stuck exports one language at a time: Spanish next"
 milestone: Side
-status: open
+status: in-progress
 depends_on: [122]
 agent: implementer
 agents: [implementer]
@@ -10,7 +10,7 @@ model: sonnet
 effort: medium
 checkpoint: null
 commit: null
-worktree: null
+worktree: .worktrees/quest-123-drain-stuck-exports-spa
 github_issue: 102
 ---
 ## What
