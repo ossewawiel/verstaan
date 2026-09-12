@@ -2,7 +2,7 @@
 issue: 117
 title: "The exports that did not make it: list them, and retry the stuck ones with a longer poll"
 milestone: Side
-status: open
+status: in-progress
 depends_on: [8]
 agent: implementer
 agents: [implementer]
@@ -10,7 +10,7 @@ model: sonnet
 effort: medium
 checkpoint: null
 commit: null
-worktree: null
+worktree: .worktrees/side-117-retry-stuck-exports
 github_issue: 83
 ---
 ## What

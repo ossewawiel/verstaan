@@ -169,6 +169,21 @@ def test_get_while_does_not_retry_a_body_that_is_not_pending():
     assert len(transport.calls) == 1
 
 
+def test_get_while_stops_on_a_4xx_status_without_retrying_or_sleeping():
+    # unlarchive.org's CDN answers a rate-limited zip request with an empty 429 body (issue 117);
+    # `still_pending` would read that as "still building" forever, so a 4xx must win regardless.
+    transport = FakeTransport(
+        responses={"https://unlarchive.org/dics/x.zip": HttpResponse(429, {}, b"")}
+    )
+    client, clock = _client(transport, retries=3, retry_backoff_seconds=1.0)
+
+    response = client.get_while("https://unlarchive.org/dics/x.zip", lambda body: not body)
+
+    assert response.status == 429
+    assert len(transport.calls) == 1
+    assert clock.sleeps == []
+
+
 def test_a_4xx_or_php_error_response_is_returned_not_raised():
     # The broken export_dic.php answers 200 with a PHP fatal error in the body — the mirror must
     # get that body back to record it, not retry it to death or raise.

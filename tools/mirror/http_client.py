@@ -71,6 +71,11 @@ def _same_host(url: str, host: str) -> bool:
     return netloc == host or netloc.endswith("." + host)
 
 
+def _is_client_error(response: HttpResponse) -> bool:
+    """True for a 4xx status (issue 117): a settled answer, never "still pending"."""
+    return 400 <= response.status < 500
+
+
 class RateLimitedClient:
     """One GET at a time, at most one per `rate_limit_seconds`, never off `host`, retried."""
 
@@ -113,10 +118,15 @@ class RateLimitedClient:
         placeholder page, or a zip export not yet materialised). Gives up after the same number
         of attempts as any other retry and returns the last response, pending or not — the caller
         decides how to record a still-pending body, this method never raises for one.
+
+        A 4xx status is never treated as pending, no matter what `still_pending` says about its
+        body — it is a settled answer (issue 117: unlarchive.org's CDN answers a rate-limited zip
+        request with an empty 429 body, which `still_pending` would otherwise read as "still
+        building" and poll for the full budget). Returned immediately, with no extra sleep.
         """
         response = self.get(url, extra_headers=extra_headers)
         for attempt in range(1, self._retries):
-            if not still_pending(response.body):
+            if _is_client_error(response) or not still_pending(response.body):
                 return response
             self._sleep(self._retry_backoff_seconds * attempt)
             response = self.get(url, extra_headers=extra_headers)

@@ -19,7 +19,9 @@ from tools.mirror import __version__
 from tools.mirror.config import load_config
 from tools.mirror.http_client import RateLimitedClient, UrllibTransport
 from tools.mirror.login import LoginError
+from tools.mirror.retry import poll_attempts, run_retry
 from tools.mirror.run import run_mirror
+from tools.mirror.stuck import find_stuck, format_stuck_report
 from tools.mirror.unlarium import run_login_mirror
 
 # Argument spellings that would smuggle a credential onto the command line, and the literal
@@ -116,6 +118,57 @@ def build_parser() -> argparse.ArgumentParser:
         help="Path to manifest.jsonl (default: <archive-root>/manifest.jsonl).",
     )
 
+    stuck_parser = subparsers.add_parser(
+        "stuck",
+        help=(
+            "List every export whose latest manifest line is 'timeout' or 'error' (issue 117). "
+            "Reads the manifest only: no credential, no request."
+        ),
+    )
+    stuck_parser.add_argument(
+        "--archive-root",
+        default="data/archive",
+        help="Where mirrored files land (default: %(default)s).",
+    )
+    stuck_parser.add_argument(
+        "--manifest",
+        default=None,
+        help="Path to manifest.jsonl (default: <archive-root>/manifest.jsonl).",
+    )
+
+    retry_parser = subparsers.add_parser(
+        "retry",
+        help=(
+            "Sign in with UNL_USER/UNL_PASS and re-fetch every export left 'status: timeout' by "
+            "a prior 'login' run, polling longer than 'login' does (issue 117)."
+        ),
+    )
+    retry_parser.add_argument(
+        "--config", default="mirror.toml", help="Path to mirror.toml (default: %(default)s)."
+    )
+    retry_parser.add_argument(
+        "--archive-root",
+        default="data/archive",
+        help="Where mirrored files land (default: %(default)s).",
+    )
+    retry_parser.add_argument(
+        "--manifest",
+        default=None,
+        help="Path to manifest.jsonl (default: <archive-root>/manifest.jsonl).",
+    )
+    retry_parser.add_argument(
+        "--poll-seconds",
+        type=float,
+        default=15.0,
+        help="Seconds between polls of a still-pending export (default: %(default)s).",
+    )
+    retry_parser.add_argument(
+        "--max-wait-seconds",
+        type=float,
+        default=300.0,
+        help="Seconds to keep polling one export before giving up (default: %(default)s).",
+    )
+
     return parser
 
 
@@ -131,21 +184,37 @@ def main(argv: Sequence[str] | None = None) -> int:
     args = parser.parse_args(argv)
 
     command = getattr(args, "command", None)
-    if command not in ("run", "login"):
+    if command not in ("run", "login", "stuck", "retry"):
         # No subcommand: the M0 skeleton behaviour. `--help`/`--version` already exited above.
         return 0
 
     archive_root = Path(args.archive_root)
     manifest_path = Path(args.manifest) if args.manifest else archive_root / "manifest.jsonl"
+
+    if command == "stuck":
+        # Manifest only: no config, no client, no request (issue 117).
+        print(format_stuck_report(find_stuck(manifest_path)))
+        return 0
+
     config = load_config(args.config)
-    client = RateLimitedClient(
-        UrllibTransport(),
-        host=config.host,
-        user_agent=config.user_agent,
-        rate_limit_seconds=config.rate_limit_seconds,
-        retries=config.retries,
-        retry_backoff_seconds=config.retry_backoff_seconds,
-    )
+    if command == "retry":
+        client = RateLimitedClient(
+            UrllibTransport(),
+            host=config.host,
+            user_agent=config.user_agent,
+            rate_limit_seconds=args.poll_seconds,
+            retries=poll_attempts(args.poll_seconds, args.max_wait_seconds),
+            retry_backoff_seconds=0.0,
+        )
+    else:
+        client = RateLimitedClient(
+            UrllibTransport(),
+            host=config.host,
+            user_agent=config.user_agent,
+            rate_limit_seconds=config.rate_limit_seconds,
+            retries=config.retries,
+            retry_backoff_seconds=config.retry_backoff_seconds,
+        )
 
     if command == "run":
         report = run_mirror(config, client, archive_root, manifest_path)
@@ -154,22 +223,42 @@ def main(argv: Sequence[str] | None = None) -> int:
             print(f"note: {note}")
         return 0
 
-    # command == "login"
+    if command == "login":
+        username, password = read_credentials()
+        if not username or not password:
+            print(
+                "tools.mirror login: UNL_USER and UNL_PASS must both be set in the environment.",
+                file=sys.stderr,
+            )
+            return 3
+        try:
+            report = run_login_mirror(
+                config, client, archive_root, manifest_path, username, password
+            )
+        except LoginError as exc:
+            print(f"tools.mirror login: {exc}", file=sys.stderr)
+            return 1
+        print(report.summary())
+        for note in report.notes:
+            print(f"note: {note}")
+        return 0
+
+    # command == "retry"
     username, password = read_credentials()
     if not username or not password:
         print(
-            "tools.mirror login: UNL_USER and UNL_PASS must both be set in the environment.",
+            "tools.mirror retry: UNL_USER and UNL_PASS must both be set in the environment.",
             file=sys.stderr,
         )
         return 3
     try:
-        report = run_login_mirror(config, client, archive_root, manifest_path, username, password)
+        report = run_retry(config, client, archive_root, manifest_path, username, password)
     except LoginError as exc:
-        print(f"tools.mirror login: {exc}", file=sys.stderr)
+        print(f"tools.mirror retry: {exc}", file=sys.stderr)
         return 1
     print(report.summary())
-    for note in report.notes:
-        print(f"note: {note}")
+    if report.rate_limited:
+        return 4
     return 0
 
 
