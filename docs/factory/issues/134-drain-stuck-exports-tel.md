@@ -2,7 +2,7 @@
 issue: 134
 title: "Drain the stuck exports one language at a time: Telugu next"
 milestone: Side
-status: open
+status: in-progress
 depends_on: [133]
 agent: implementer
 agents: [implementer]
@@ -10,7 +10,7 @@ model: sonnet
 effort: medium
 checkpoint: null
 commit: null
-worktree: null
+worktree: .worktrees/quest-134-drain-stuck-exports-tel
 github_issue: 135
 ---
 ## What
