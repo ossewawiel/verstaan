@@ -2,15 +2,15 @@
 issue: 137
 title: "Drain the stuck exports one language at a time: Croatian next"
 milestone: Side
-status: in-progress
+status: done
 depends_on: [136]
 agent: implementer
 agents: [implementer]
 model: sonnet
 effort: medium
 checkpoint: null
-commit: null
-worktree: .worktrees/quest-137-drain-stuck-exports-hrv
+commit: acfe346
+worktree: null
 github_issue: 143
 ---
 ## What
