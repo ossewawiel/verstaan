@@ -2,7 +2,7 @@
 issue: 149
 title: "Drain the stuck exports one language at a time: Romanian next"
 milestone: Side
-status: open
+status: in-progress
 depends_on: [148]
 agent: implementer
 agents: [implementer]
@@ -10,7 +10,7 @@ model: sonnet
 effort: medium
 checkpoint: null
 commit: null
-worktree: null
+worktree: .worktrees/side-149-drain-stuck-exports-rum
 github_issue: 175
 ---
 ## What
