@@ -2,15 +2,15 @@
 issue: 141
 title: "Drain the stuck exports one language at a time: Nepali next"
 milestone: Side
-status: in-progress
+status: done
 depends_on: [140]
 agent: implementer
 agents: [implementer]
 model: sonnet
 effort: medium
 checkpoint: null
-commit: null
-worktree: .worktrees/quest-141-drain-stuck-exports-nep
+commit: 35a9649
+worktree: null
 github_issue: 151
 ---
 ## What
