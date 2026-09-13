@@ -2,15 +2,15 @@
 issue: 143
 title: "Drain the stuck exports one language at a time: Serbian next"
 milestone: Side
-status: in-progress
+status: done
 depends_on: [142]
 agent: implementer
 agents: [implementer]
 model: sonnet
 effort: medium
 checkpoint: null
-commit: null
-worktree: .worktrees/quest-143-drain-stuck-exports-srp
+commit: d4a11e9
+worktree: null
 github_issue: 157
 ---
 ## What
