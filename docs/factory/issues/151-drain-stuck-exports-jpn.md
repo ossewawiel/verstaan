@@ -2,7 +2,7 @@
 issue: 151
 title: "Drain the stuck exports one language at a time: Japanese next"
 milestone: Side
-status: open
+status: in-progress
 depends_on: [150]
 agent: implementer
 agents: [implementer]
@@ -10,7 +10,7 @@ model: sonnet
 effort: medium
 checkpoint: null
 commit: null
-worktree: null
+worktree: .worktrees/side-151-drain-stuck-exports-jpn
 github_issue: 181
 ---
 ## What
