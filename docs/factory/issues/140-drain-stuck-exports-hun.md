@@ -1,50 +1,50 @@
 ---
-issue: 139
-title: "Drain the stuck exports one language at a time: Georgian next"
+issue: 140
+title: "Drain the stuck exports one language at a time: Hungarian next"
 milestone: Side
-status: done
-depends_on: [138]
+status: open
+depends_on: [139]
 agent: implementer
 agents: [implementer]
 model: sonnet
 effort: medium
 checkpoint: null
-commit: 800a08e
+commit: null
 worktree: null
-github_issue: 147
+github_issue: 149
 ---
 ## What
 
-Issue 138 drained Punjabi: `python -m tools.mirror retry --language pan` landed every `pan`
+Issue 139 drained Georgian: `python -m tools.mirror retry --language geo` landed every `geo`
 export the archive would give up in a single pass. `python -m tools.mirror stuck --next` now
-names `geo` (Georgian), the next answer from its fallback rule once the stuck language ahead of
+names `hun` (Hungarian), the next answer from its fallback rule once the stuck language ahead of
 it drains. The developer's ask from 2026-09-12 still holds: work through whatever `stuck --next`
 names, one language, one quest, one PR at a time, until no language has a stuck export left —
 the chain is not bounded to any fixed list, only to what the manifest says is stuck right now.
 
-After this quest, Georgian is drained the same way Punjabi was: `python -m tools.mirror retry
---language geo --passes 3 --pause-seconds 600` runs against the live archive until `geo` has no
+After this quest, Hungarian is drained the same way Georgian was: `python -m tools.mirror retry
+--language hun --passes 3 --pause-seconds 600` runs against the live archive until `hun` has no
 `timeout` path left or the passes run out, its landed zips and manifest lines are in the work
-commit, and the report carries every pass's summary line and the Georgian `stuck` count before
-and after. At its close, `/quest` writes issue 140 for whatever language `stuck --next` names
+commit, and the report carries every pass's summary line and the Hungarian `stuck` count before
+and after. At its close, `/quest` writes issue 141 for whatever language `stuck --next` names
 next, in this same shape, or the report says `stuck --next` printed nothing and the chain has
 ended.
 
 ## Acceptance criteria
 
-- `python -m tools.mirror stuck --next`, run before the live retry, prints `geo`.
-- One live `retry --language geo` run, using the `stuck --next`, `retry --language`,
+- `python -m tools.mirror stuck --next`, run before the live retry, prints `hun`.
+- One live `retry --language hun` run, using the `stuck --next`, `retry --language`,
   `--passes` and `--pause-seconds` machinery issue 118 built, with the report giving every
-  pass's summary line and the Georgian `stuck` count before and after.
+  pass's summary line and the Hungarian `stuck` count before and after.
 - The zips that landed and their manifest lines are in the work commit.
-- Issue 140 exists for the language `stuck --next` names after the live run, written with
+- Issue 141 exists for the language `stuck --next` names after the live run, written with
   `/quest`, with this quest in its `depends_on` and this section's shape — or the report
   records that `stuck --next` printed nothing and the chain has ended.
 - `/gate` and CI green.
 
 ## Not in scope
 
-Retrying `error` paths. Any language other than Georgian in this quest's live run. Changing
+Retrying `error` paths. Any language other than Hungarian in this quest's live run. Changing
 the `stuck --next` or `retry` machinery itself; issue 118 built it and this quest only runs it.
 Editing `tools/mirror/tests/test_cli.py`'s `stuck --next` wiring test; issue 122 already made it
 tolerant of the answer moving, so it needs no more updates as the chain continues. Running the
@@ -53,9 +53,9 @@ the console.
 
 ## Done when
 
-- [ ] Georgian is drained as far as three passes allow: each pass's summary line and the
-      Georgian `stuck` count before and after are in the report, and the landed zips are in
+- [ ] Hungarian is drained as far as three passes allow: each pass's summary line and the
+      Hungarian `stuck` count before and after are in the report, and the landed zips are in
       the work commit.
-- [ ] Issue 140 for the next language is on `main`, or the report records that `stuck --next`
+- [ ] Issue 141 for the next language is on `main`, or the report records that `stuck --next`
       printed nothing and the chain has ended.
 - [ ] PR merged through the gate check.
