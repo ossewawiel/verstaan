@@ -2,7 +2,7 @@
 issue: 143
 title: "Drain the stuck exports one language at a time: Serbian next"
 milestone: Side
-status: open
+status: in-progress
 depends_on: [142]
 agent: implementer
 agents: [implementer]
@@ -10,7 +10,7 @@ model: sonnet
 effort: medium
 checkpoint: null
 commit: null
-worktree: null
+worktree: .worktrees/quest-143-drain-stuck-exports-srp
 github_issue: 157
 ---
 ## What
@@ -53,9 +53,9 @@ the console.
 
 ## Done when
 
-- [ ] Serbian is drained as far as three passes allow: each pass's summary line and the
+- [x] Serbian is drained as far as three passes allow: each pass's summary line and the
       Serbian `stuck` count before and after are in the report, and the landed zips are in
       the work commit.
-- [ ] Issue 144 for the next language is on `main`, or the report records that `stuck --next`
+- [x] Issue 144 for the next language is on `main`, or the report records that `stuck --next`
       printed nothing and the chain has ended.
 - [ ] PR merged through the gate check.
