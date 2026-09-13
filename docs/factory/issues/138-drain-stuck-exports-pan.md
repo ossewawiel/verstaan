@@ -2,15 +2,15 @@
 issue: 138
 title: "Drain the stuck exports one language at a time: Punjabi next"
 milestone: Side
-status: in-progress
+status: done
 depends_on: [137]
 agent: implementer
 agents: [implementer]
 model: sonnet
 effort: medium
 checkpoint: null
-commit: null
-worktree: .worktrees/quest-138-drain-stuck-exports-pan
+commit: a9f912f
+worktree: null
 github_issue: 145
 ---
 ## What
