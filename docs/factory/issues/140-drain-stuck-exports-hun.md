@@ -2,15 +2,15 @@
 issue: 140
 title: "Drain the stuck exports one language at a time: Hungarian next"
 milestone: Side
-status: in-progress
+status: done
 depends_on: [139]
 agent: implementer
 agents: [implementer]
 model: sonnet
 effort: medium
 checkpoint: null
-commit: null
-worktree: .worktrees/quest-140-drain-stuck-exports-hun
+commit: 9258527ebea76d9a0e959d88b276537e8578351e
+worktree: null
 github_issue: 149
 ---
 ## What
