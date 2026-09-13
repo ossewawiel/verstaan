@@ -2,7 +2,7 @@
 issue: 150
 title: "Drain the stuck exports one language at a time: Swedish next"
 milestone: Side
-status: open
+status: in-progress
 depends_on: [149]
 agent: implementer
 agents: [implementer]
@@ -10,7 +10,7 @@ model: sonnet
 effort: medium
 checkpoint: null
 commit: null
-worktree: null
+worktree: .worktrees/side-150-drain-stuck-exports-swe
 github_issue: 178
 ---
 ## What
