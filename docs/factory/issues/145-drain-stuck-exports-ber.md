@@ -2,15 +2,15 @@
 issue: 145
 title: "Drain the stuck exports one language at a time: Berber next"
 milestone: Side
-status: in-progress
+status: done
 depends_on: [144]
 agent: implementer
 agents: [implementer]
 model: sonnet
 effort: medium
 checkpoint: null
-commit: null
-worktree: .worktrees/side-145-drain-stuck-exports-ber
+commit: c62b1d476485824bf401951e59c163bd0618004c
+worktree: null
 github_issue: 163
 ---
 ## What
