@@ -2,7 +2,7 @@
 issue: 154
 title: "Drain the stuck exports one language at a time: Catalan next"
 milestone: Side
-status: open
+status: in-progress
 depends_on: [153]
 agent: implementer
 agents: [implementer]
@@ -10,7 +10,7 @@ model: sonnet
 effort: medium
 checkpoint: null
 commit: null
-worktree: null
+worktree: .worktrees/side-154-drain-stuck-exports-cat
 github_issue: 190
 ---
 ## What
