@@ -2,7 +2,7 @@
 issue: 140
 title: "Drain the stuck exports one language at a time: Hungarian next"
 milestone: Side
-status: open
+status: in-progress
 depends_on: [139]
 agent: implementer
 agents: [implementer]
@@ -10,7 +10,7 @@ model: sonnet
 effort: medium
 checkpoint: null
 commit: null
-worktree: null
+worktree: .worktrees/quest-140-drain-stuck-exports-hun
 github_issue: 149
 ---
 ## What
@@ -53,9 +53,9 @@ the console.
 
 ## Done when
 
-- [ ] Hungarian is drained as far as three passes allow: each pass's summary line and the
+- [x] Hungarian is drained as far as three passes allow: each pass's summary line and the
       Hungarian `stuck` count before and after are in the report, and the landed zips are in
       the work commit.
-- [ ] Issue 141 for the next language is on `main`, or the report records that `stuck --next`
+- [x] Issue 141 for the next language is on `main`, or the report records that `stuck --next`
       printed nothing and the chain has ended.
 - [ ] PR merged through the gate check.
