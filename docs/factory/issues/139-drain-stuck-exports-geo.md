@@ -2,15 +2,15 @@
 issue: 139
 title: "Drain the stuck exports one language at a time: Georgian next"
 milestone: Side
-status: in-progress
+status: done
 depends_on: [138]
 agent: implementer
 agents: [implementer]
 model: sonnet
 effort: medium
 checkpoint: null
-commit: null
-worktree: .worktrees/quest-139-drain-stuck-exports-geo
+commit: 800a08e
+worktree: null
 github_issue: 147
 ---
 ## What
