@@ -2,7 +2,7 @@
 issue: 153
 title: "Drain the stuck exports one language at a time: Somali next"
 milestone: Side
-status: open
+status: in-progress
 depends_on: [152]
 agent: implementer
 agents: [implementer]
@@ -10,7 +10,7 @@ model: sonnet
 effort: medium
 checkpoint: null
 commit: null
-worktree: null
+worktree: .worktrees/side-153-drain-stuck-exports-som
 github_issue: 187
 ---
 ## What
