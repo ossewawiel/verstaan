@@ -2,14 +2,14 @@
 issue: 148
 title: "Drain the stuck exports one language at a time: Slovak next"
 milestone: Side
-status: open
+status: done
 depends_on: [147]
 agent: implementer
 agents: [implementer]
 model: sonnet
 effort: medium
 checkpoint: null
-commit: null
+commit: 01532d78093ae229bc9919fccfb227fc24d2bad8
 worktree: null
 github_issue: 172
 ---
