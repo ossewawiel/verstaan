@@ -2,15 +2,15 @@
 issue: 136
 title: "Drain the stuck exports one language at a time: Malay next"
 milestone: Side
-status: in-progress
+status: done
 depends_on: [135]
 agent: implementer
 agents: [implementer]
 model: sonnet
 effort: medium
 checkpoint: null
-commit: null
-worktree: .worktrees/quest-136-drain-stuck-exports-may
+commit: 2575e8b
+worktree: null
 github_issue: 141
 ---
 ## What
