@@ -2,15 +2,15 @@
 issue: 146
 title: "Drain the stuck exports one language at a time: Czech next"
 milestone: Side
-status: in-progress
+status: done
 depends_on: [145]
 agent: implementer
 agents: [implementer]
 model: sonnet
 effort: medium
 checkpoint: null
-commit: null
-worktree: .worktrees/side-146-drain-stuck-exports-cze
+commit: faba46245848d84deeb60deb48d9c606488051ba
+worktree: null
 github_issue: 166
 ---
 ## What
