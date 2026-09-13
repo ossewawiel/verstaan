@@ -2,14 +2,14 @@
 issue: 147
 title: "Drain the stuck exports one language at a time: Khmer next"
 milestone: Side
-status: open
+status: done
 depends_on: [146]
 agent: implementer
 agents: [implementer]
 model: sonnet
 effort: medium
 checkpoint: null
-commit: null
+commit: 8f71a91794ce3ae47f70558737c5349b798f0c0e
 worktree: null
 github_issue: 169
 ---
