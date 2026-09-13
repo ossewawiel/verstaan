@@ -2,15 +2,15 @@
 issue: 142
 title: "Drain the stuck exports one language at a time: Thai next"
 milestone: Side
-status: in-progress
+status: done
 depends_on: [141]
 agent: implementer
 agents: [implementer]
 model: sonnet
 effort: medium
 checkpoint: null
-commit: null
-worktree: .worktrees/quest-142-drain-stuck-exports-tha
+commit: a5e3c90
+worktree: null
 github_issue: 154
 ---
 ## What
