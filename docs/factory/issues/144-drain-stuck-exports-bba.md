@@ -2,15 +2,15 @@
 issue: 144
 title: "Drain the stuck exports one language at a time: Baatonum next"
 milestone: Side
-status: in-progress
+status: done
 depends_on: [143]
 agent: implementer
 agents: [implementer]
 model: sonnet
 effort: medium
 checkpoint: null
-commit: null
-worktree: .worktrees/side-144-drain-stuck-exports-bba
+commit: efdfe2f08aaf686a52fd94a6e818e8e87a7a4ba3
+worktree: null
 github_issue: 160
 ---
 ## What
