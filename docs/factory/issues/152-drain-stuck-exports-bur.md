@@ -2,14 +2,14 @@
 issue: 152
 title: "Drain the stuck exports one language at a time: Burmese next"
 milestone: Side
-status: open
+status: done
 depends_on: [151]
 agent: implementer
 agents: [implementer]
 model: sonnet
 effort: medium
 checkpoint: null
-commit: null
+commit: bbe6e59c884ffbe0b57eeb6a587570a72a6b70b0
 worktree: null
 github_issue: 184
 ---
