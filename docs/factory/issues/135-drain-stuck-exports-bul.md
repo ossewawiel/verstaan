@@ -2,15 +2,15 @@
 issue: 135
 title: "Drain the stuck exports one language at a time: Bulgarian next"
 milestone: Side
-status: in-progress
+status: done
 depends_on: [134]
 agent: implementer
 agents: [implementer]
 model: sonnet
 effort: medium
 checkpoint: null
-commit: null
-worktree: .worktrees/quest-135-drain-stuck-exports-bul
+commit: 3f84f6f
+worktree: null
 github_issue: 138
 ---
 ## What
@@ -53,7 +53,7 @@ the console.
 
 ## Done when
 
-- [ ] Bulgarian is drained as far as three passes allow: each pass's summary line and the
+- [x] Bulgarian is drained as far as three passes allow: each pass's summary line and the
       Bulgarian `stuck` count before and after are in the report, and the landed zips are in
       the work commit.
 - [ ] Issue 136 for the next language is on `main`, or the report records that `stuck --next`
