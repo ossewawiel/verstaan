@@ -2,7 +2,7 @@
 issue: 14
 title: "Build the dictionary importer"
 milestone: M2
-status: open
+status: in-progress
 depends_on: [13]
 agent: implementer
 agents: [implementer]
@@ -10,7 +10,7 @@ model: sonnet
 effort: medium
 checkpoint: null
 commit: null
-worktree: null
+worktree: .worktrees/m2-store
 github_issue: 223
 ---
 ## What
@@ -48,8 +48,17 @@ zip member or file and 1-based line number the entry came from.
 - Running the importer on `af_ana_u_c_ucn.zip` produces `data/languages/afr/dictionary/a.yaml`
   containing an entry for `aan` matching the worked example in `dictionary.md` field for field
   (`id: 22319`, `uw: "400068368"`, `features.LEX: A`, `lang: afr`, `frequency: 2`, `priority: 0`).
+  Met, with one correction: the archive's `_ucn`/`_ucl` filename suffixes are swapped from what
+  they claim — `_ucl` holds the opaque UW code the schema wants, `_ucn` holds the readable string —
+  verified against the raw zip bytes before writing any code. The importer reads `af_ana_u_c_ucl.zip`
+  / `af_gen_u_c_ucl.zip` accordingly; the `aan` entry still matches field for field.
 - The English run produces an entry for `aboard` (`id: 516110`, `uw: "534001"`, `lang: eng`)
-  matching `dictionary.md`'s English worked example.
+  matching `dictionary.md`'s English worked example. **Not met as written, by owner decision**: those
+  exact values exist only in `data/archive/exports/eng/export_cc.php`, which this issue places out
+  of scope (`tools/validate/tests/test_schema.py`'s own `ENGLISH_ENTRIES` fixture sources the same
+  example from that file). The in-scope AD/GD pair's `aboard` is a different sense
+  (`id: 273038`, `uw: "400249878"`); `test_english_aboard_entry_from_the_ad_zip` asserts that real
+  value instead, with the discrepancy documented in the module and test docstrings.
 - Every entry validates against `tools/validate/schema/dictionary-entry.schema.json` (issue 13);
   `pytest tools/importer/test_dictionary.py -k schema` checks this on both languages' output.
 - A line the parser cannot match the grammar for is appended to
@@ -68,6 +77,6 @@ keeps the UCN, per ADR-worthy note in issue 13.
 
 ## Done when
 
-- [ ] `tools/importer/dictionary.py` runs on both `afr` and `eng` exports named above.
-- [ ] `data/languages/afr/dictionary/` and `data/languages/eng/dictionary/` exist, sharded a-z.
-- [ ] `pytest tools/importer/test_dictionary.py` passes, including the unparsed-line count check.
+- [x] `tools/importer/dictionary.py` runs on both `afr` and `eng` exports named above.
+- [x] `data/languages/afr/dictionary/` and `data/languages/eng/dictionary/` exist, sharded a-z.
+- [x] `pytest tools/importer/test_dictionary.py` passes, including the unparsed-line count check.
