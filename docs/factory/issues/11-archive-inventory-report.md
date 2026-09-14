@@ -2,14 +2,15 @@
 issue: 11
 title: "Archive inventory: what exists, what is usable, what is missing"
 milestone: M1
-status: open
+status: done
 depends_on: [8, 10]
 agent: implementer
 agents: [implementer, docs-writer]
 model: sonnet
 effort: medium
 checkpoint: 2
-commit: null
+commit: 6b78eb7744c6974e0f46817e3c27091c62ef60b3
+worktree: null
 github_issue: 11
 ---
 ## What
