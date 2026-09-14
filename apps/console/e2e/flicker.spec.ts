@@ -23,7 +23,9 @@ test('changing one issue mutates fewer than 20 DOM nodes and leaves an open card
     });
   });
 
-  await page.goto('/quests');
+  // Explicit All: the room defaults to Status: Open (issue 159), and this test moves quest 07
+  // to in-progress, which would otherwise drop it out of the filtered list entirely.
+  await page.goto('/quests?status=');
   await page.waitForFunction(() => (window as unknown as { __sseOpen?: boolean }).__sseOpen === true);
   // By id, not by accessible name: since issue 104 a card that blocks #08 also carries the
   // text "#08" on its summary row, so a name match would resolve to two buttons.

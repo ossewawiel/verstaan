@@ -2,7 +2,7 @@
 issue: 159
 title: "The Quests page opens to Status: Open, not Status: All"
 milestone: Side
-status: open
+status: in-progress
 depends_on: []
 agent: implementer
 agents: [implementer]
@@ -10,7 +10,7 @@ model: sonnet
 effort: medium
 checkpoint: null
 commit: null
-worktree: null
+worktree: .worktrees/side-159-quests-default-open
 github_issue: 205
 ---
 ## What
@@ -41,8 +41,8 @@ including a deliberate `status=` (All).
 
 ## Done when
 
-- [ ] `apps/console/client/src/rooms/QuestsRoom.tsx` defaults `status` to `'open'` when the URL
+- [x] `apps/console/client/src/rooms/QuestsRoom.tsx` defaults `status` to `'open'` when the URL
       carries no `status` parameter.
-- [ ] A test (existing or new, under `apps/console/e2e/` or the client's own suite) covers the
+- [x] A test (existing or new, under `apps/console/e2e/` or the client's own suite) covers the
       default-to-open case and the explicit-All case.
-- [ ] `npm run test:e2e` (or the client suite it runs) passes.
+- [x] `npm run test:e2e` (or the client suite it runs) passes.

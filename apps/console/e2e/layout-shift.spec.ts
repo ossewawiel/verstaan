@@ -20,7 +20,9 @@ test('an SSE-driven status change produces zero layout-shift entries', async ({ 
     });
   });
 
-  await page.goto('/quests');
+  // Explicit All: the room defaults to Status: Open (issue 159), and this test moves quest 06
+  // to in-progress, which would otherwise drop it out of the filtered list entirely.
+  await page.goto('/quests?status=');
   await page.waitForFunction(() => (window as unknown as { __sseOpen?: boolean }).__sseOpen === true);
   // `:not([hidden])`, not `.status-label` alone: all three status labels are always in the DOM
   // (see console.css and IssueCard.tsx), one visible per status, so the raw class matches three

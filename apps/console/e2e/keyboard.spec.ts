@@ -26,7 +26,9 @@ test('Escape collapses an expanded card and focus stays visible', async ({ page 
 });
 
 test('Tab reaches a quest card and Enter expands it', async ({ page }) => {
-  await page.goto('/quests');
+  // Quest 01 is done; the room defaults to Status: Open (issue 159), so this needs the explicit
+  // All filter to see it at all.
+  await page.goto('/quests?status=');
   await page.locator('#quest-summary-01').focus();
   await page.keyboard.press('Enter');
   await expect(page.locator('#quest-detail-01')).toBeVisible();
