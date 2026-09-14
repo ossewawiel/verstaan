@@ -2,15 +2,15 @@
 issue: 157
 title: "Drain the stuck exports one language at a time: Kannada next"
 milestone: Side
-status: in-progress
+status: done
 depends_on: [156]
 agent: implementer
 agents: [implementer]
 model: sonnet
 effort: medium
 checkpoint: null
-commit: null
-worktree: .worktrees/side-157-drain-stuck-exports-kan
+commit: 729b8113278f99cad138fff4e4a2801732bd5acf
+worktree: null
 github_issue: 199
 ---
 ## What
