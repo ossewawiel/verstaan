@@ -2,15 +2,15 @@
 issue: 159
 title: "The Quests page opens to Status: Open, not Status: All"
 milestone: Side
-status: in-progress
+status: done
 depends_on: []
 agent: implementer
 agents: [implementer]
 model: sonnet
 effort: medium
 checkpoint: null
-commit: null
-worktree: .worktrees/side-159-quests-default-open
+commit: 225b082
+worktree: null
 github_issue: 205
 ---
 ## What
