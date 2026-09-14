@@ -18,7 +18,7 @@ github_issue: 224
 `tools/importer/grammar.py` reads a language's transformation-grammar, inflection and
 subcategorisation exports and writes `data/languages/<iso3>/grammar/{analysis,generation,
 inflection,subcategorisation,disambiguation}.yaml`, one record per rule per
-`tools/schema/grammar-rule.schema.json` (issue 13). Every record keeps `{id, kind, lhs, rhs,
+`tools/validate/schema/grammar-rule.schema.json` (issue 13). Every record keeps `{id, kind, lhs, rhs,
 conditions, comment, source}`; `id` is assigned sequentially per file since the archive's own rule
 text carries no stable id.
 
@@ -66,7 +66,7 @@ Per-language files, named exactly, per language:
   `data/archive/exports/afr/export_grammar.php__type_M_lang_af`.
 - `Y38`, `Y42` and `Y259` from `docs/unl-reference/formats/subcategorisation.md` appear in
   `data/languages/eng/grammar/subcategorisation.yaml` with `kind: subcategorisation`.
-- Every record validates against `tools/schema/grammar-rule.schema.json`;
+- Every record validates against `tools/validate/schema/grammar-rule.schema.json`;
   `pytest tools/importer/test_grammar.py -k schema` checks both languages.
 - `data/languages/afr/grammar/disambiguation.yaml` holds records parsed from
   `44.dgrammar.txt` and `47.dgrammar.txt`. `data/languages/eng/grammar/disambiguation.yaml` holds

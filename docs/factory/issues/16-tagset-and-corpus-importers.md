@@ -42,7 +42,7 @@ siblings so a rule-author can read the `unl` field directly without a UW lookup)
   same sentence count, read from `export_corpus.php__project_ugoa1_lang_af_unl_ucl` and
   `..._lang_en_unl_ucl` respectively; a test asserts `len(afr_corpus) == len(eng_corpus)` as the
   parallel-corpus check.
-- Every tagset entry validates against a `tools/schema/tagset-entry.schema.json` added alongside
+- Every tagset entry validates against a `tools/validate/schema/tagset-entry.schema.json` added alongside
   issue 13's other schema files (or added here if issue 13 did not anticipate it — note the gap in
   this issue's `## Verifier` section if so).
 - Every corpus entry's `source` names the project and the 1-based line number it came from.

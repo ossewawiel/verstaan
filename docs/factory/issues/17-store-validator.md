@@ -16,7 +16,7 @@ github_issue: 226
 ## What
 
 `tools/validate` (a `python -m tools.validate` CLI, per `SPEC.md` §5's gate table) checks a
-language store against `tools/schema/` (issue 13) and against the store's own cross-references,
+language store against `tools/validate/schema/` (issue 13) and against the store's own cross-references,
 per `SPEC.md` §3.3's validate bullet: schema, feature values against `tagset.yaml`, UW references
 resolve, every rule has at least one test sentence. Warning, not error, at M2; `SPEC.md` says this
 tier of check becomes an error only from M3.
@@ -24,7 +24,7 @@ tier of check becomes an error only from M3.
 Four checks, each a separate function so a failing one names itself in the report:
 
 - **Schema.** Every YAML record in `dictionary/`, `grammar/`, `corpus/` and `tagset.yaml` matches
-  its `tools/schema/*.schema.json` file.
+  its `tools/validate/schema/*.schema.json` file.
 - **Feature values.** Every value in a dictionary entry's `features` map (e.g. `POS=NOU`) or a
   grammar rule's `lhs`/`rhs` that names an attribute-value pair resolves to a row in that
   language's `tagset.yaml`. A value like `SEM=REL` (the wiki's spelling, not the export's `RLT`,

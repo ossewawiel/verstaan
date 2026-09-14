@@ -17,7 +17,7 @@ github_issue: 223
 
 `tools/importer/dictionary.py` reads a language's Analysis Dictionary (AD) and Generation
 Dictionary (GD) exports and writes `data/languages/<iso3>/dictionary/<a-z>.yaml`, one file per
-first letter of `headword` per `tools/schema/dictionary-entry.schema.json` (issue 13). It parses
+first letter of `headword` per `tools/validate/schema/dictionary-entry.schema.json` (issue 13). It parses
 the line grammar `docs/unl-reference/formats/dictionary.md` documents, against the real files, not
 the wiki's formal syntax where the two disagree.
 
@@ -50,7 +50,7 @@ zip member or file and 1-based line number the entry came from.
   (`id: 22319`, `uw: "400068368"`, `features.LEX: A`, `lang: afr`, `frequency: 2`, `priority: 0`).
 - The English run produces an entry for `aboard` (`id: 516110`, `uw: "534001"`, `lang: eng`)
   matching `dictionary.md`'s English worked example.
-- Every entry validates against `tools/schema/dictionary-entry.schema.json` (issue 13);
+- Every entry validates against `tools/validate/schema/dictionary-entry.schema.json` (issue 13);
   `pytest tools/importer/test_dictionary.py -k schema` checks this on both languages' output.
 - A line the parser cannot match the grammar for is appended to
   `data/languages/<iso3>/_unparsed.txt` with the raw line and a one-sentence reason. Zero entries

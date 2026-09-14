@@ -59,7 +59,7 @@
           "const": ["headword", "id", "uw", "features", "lang", "frequency", "priority", "source"]
         }
       },
-      "description": "Entries sharded by first letter of headword. Item shape: tools/schema/dictionary-entry.schema.json."
+      "description": "Entries sharded by first letter of headword. Item shape: tools/validate/schema/dictionary-entry.schema.json."
     },
     "grammarFile": {
       "type": "object",
@@ -70,7 +70,7 @@
           "const": ["id", "kind", "lhs", "rhs", "conditions", "comment", "source"]
         }
       },
-      "description": "Transformation, inflection, subcategorisation or disambiguation rules. Item shape: tools/schema/grammar-rule.schema.json."
+      "description": "Transformation, inflection, subcategorisation or disambiguation rules. Item shape: tools/validate/schema/grammar-rule.schema.json."
     },
     "tagsetFile": {
       "type": "object",

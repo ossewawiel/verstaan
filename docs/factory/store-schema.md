@@ -1,10 +1,10 @@
 # Store schema
 
 Every field `SPEC.md` §3.2 and §3.3 name, one row each, with the schema that checks it
-(`tools/schema/`) and what the archive gives `afr` and `eng` for it. Nothing else appears here.
+(`tools/validate/schema/`) and what the archive gives `afr` and `eng` for it. Nothing else appears here.
 `archive: none` rows cite the search or reference page that found the gap.
 
-## Dictionary entry (`tools/schema/dictionary-entry.schema.json`)
+## Dictionary entry (`tools/validate/schema/dictionary-entry.schema.json`)
 
 One record in `dictionary/<a-z>.yaml`.
 
@@ -19,7 +19,7 @@ One record in `dictionary/<a-z>.yaml`.
 | `priority` | integer, 0-255 | present | Archive `PRI` field. |
 | `source` | object | computed, not archive-sourced | The importer writes `archive_path` and `line` as it reads each line. No archive field carries this; losing it is a validation error (`docs/standards/data.md`, "Provenance"). |
 
-## Grammar rule (`tools/schema/grammar-rule.schema.json`)
+## Grammar rule (`tools/validate/schema/grammar-rule.schema.json`)
 
 One record in `grammar/<kind>.yaml`.
 
@@ -29,7 +29,7 @@ One record in `grammar/<kind>.yaml`.
 | `kind` | string, enum | derived, not a line field | `analysis \| generation \| inflection \| subcategorisation \| disambiguation \| default`. The importer derives it from which export a rule came from, not from anything written on the line. |
 | `lhs` | string | present | The rule's left-hand side (`α`), exactly as the archive writes it — including any condition, since the archive never separates the two. |
 | `rhs` | string | present, empty for frames | The rule's right-hand side (`β`). Empty string for a subcategorisation frame, which declares an argument structure and has no right side. |
-| `conditions` | array of string | **embedded in lhs, importer must split** | The archive's own T-grammar syntax (`docs/unl-reference/formats/transformation-grammar.md`) embeds negation (`^`) and disjunction (`{a\|b}`) inside the left-hand `<NODE>` list; it never states a pattern and a condition on that pattern as two fields. **Open question for a rule-author, not decided by this schema**: split by node-level negation/disjunction, or keep `conditions` empty and leave everything in `lhs`. This schema's worked examples all use the second option, as a placeholder, not a decision. |
+| `conditions` | array of string | **embedded in lhs; empty at M2** | The archive's own T-grammar syntax (`docs/unl-reference/formats/transformation-grammar.md`) embeds negation (`^`) and disjunction (`{a\|b}`) inside the left-hand `<NODE>` list; it never states a pattern and a condition on that pattern as two fields. Decided (owner, 2026-09-14): the importer writes `conditions: []` and keeps `lhs` verbatim. The M3 rule interpreter decides whether it needs a split; if it does, a rule-author fills `conditions` from `lhs` in one deterministic pass. `SPEC.md` §3.2 carries the rule. |
 | `comment` | string | present for T-rules; absent per-line for M/Y | T-rules carry a free-text comment after `;`. Paradigm (`M`) and frame (`Y`) catalogue entries carry no per-rule comment; the importer writes one from the paradigm's or frame's own description. |
 | `source` | object | computed, not archive-sourced | Same shape and same reasoning as the dictionary entry's `source`. |
 
@@ -50,7 +50,7 @@ page exists yet, only a wiki page not yet turned into a reference
 (`data/archive/wiki/English_Disambiguation_Grammar.wikitext`). Issue 15, the grammar importer,
 reads the `*.dgrammar.txt` files directly rather than skip them.
 
-## Store file layout (`tools/schema/store-layout.schema.json`)
+## Store file layout (`tools/validate/schema/store-layout.schema.json`)
 
 One row per file `SPEC.md` §3.3 names.
 
@@ -78,14 +78,15 @@ One row per file `SPEC.md` §3.3 names.
 | `counts` | **none, computed by the importer after import, not mirrored** | `languages.json` gives the archive's own base forms, word forms, paradigms and frames — counts read from the archive's language table, not a count of records the importer actually wrote. No single count-per-store-type endpoint exists in the archive; checked by reading `data/archive/languages.json` field names directly. |
 | `last_import` | none, computed at import time | Not an archive concept; the importer stamps this the moment it finishes writing the store. |
 
-## Flagged, not decided here
+## Decided after close
 
-- **`conditions` / `lhs` split.** See the grammar rule table above. This is a rule-author decision
-  (issue 15's scope), not a schema decision. The schema keeps `conditions` as an array so either
-  answer fits it without a migration.
-- **`tools/schema/` as a package name.** `tools/CLAUDE.md` names four canonical tool packages:
-  `mirror`, `importer`, `compiler`, `validate`. `tools/schema/` is a fifth name and holds no
-  Python package (`tools.schema`), only JSON Schema files and one pytest file — it does not run
-  as `python -m tools.schema`. This needs either an ADR admitting a fifth package, or a move to
-  fit an existing one (e.g. `tools/validate/schema/`). Flagged for the owner; this issue does not
-  rename it.
+Both items issue 13 flagged were decided by the owner on 2026-09-14.
+
+- **`conditions` / `lhs` split.** `conditions` stays empty at M2; `lhs` holds the archive's
+  left-hand side verbatim. The archive is the source of truth and the split boundary is the rule
+  interpreter's to choose, so M3 decides whether it wants one. The schema keeps `conditions` as an
+  array, so filling it later needs no migration. `SPEC.md` §3.2 carries the rule.
+- **Where the schemas live.** `tools/validate/schema/`, not a fifth top-level package. The
+  validator is the schema's only runtime consumer; the importers produce store files and do not
+  load the schema. The test lives with the validator's other tests,
+  `tools/validate/tests/test_schema.py`. No ADR: a folder of JSON Schema files is not a package.

@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: MPL-2.0
-"""Validates tools/schema/*.schema.json against hand-converted worked examples.
+"""Validates tools/validate/schema/*.schema.json against hand-converted worked examples.
 
 Every example below is copied by hand from an archive line quoted in
 docs/unl-reference/formats/dictionary.md, transformation-grammar.md, inflection.md or
@@ -19,7 +19,7 @@ from pathlib import Path
 import pytest
 from jsonschema import Draft202012Validator, ValidationError, validate
 
-SCHEMA_DIR = Path(__file__).parent
+SCHEMA_DIR = Path(__file__).parent.parent / "schema"
 
 
 def _load_schema(name: str) -> dict:

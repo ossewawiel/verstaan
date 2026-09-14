@@ -46,6 +46,9 @@ context, dialect, tier, runtime tables, generated tables, trace, partial.
   ```
 - Grammar rule becomes `{id, kind, lhs, rhs, conditions, comment, source}`. `kind` ∈
   `analysis | generation | inflection | subcategorisation | disambiguation | default`.
+- `lhs` holds the archive's left-hand side verbatim. `conditions` is `[]` at M2: the archive
+  embeds every condition inside `lhs`, and the M3 rule interpreter decides whether it needs them
+  split out. Schemas: `tools/validate/schema/`, owned by `tools/validate`.
 - Every record keeps `source`. Losing provenance is a validation error.
 - Unparseable lines go to `data/languages/<iso3>/_unparsed.txt` with the reason. Never dropped silently.
 

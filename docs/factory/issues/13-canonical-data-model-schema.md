@@ -16,7 +16,7 @@ github_issue: 222
 ## What
 
 Write the schema every M2 importer and the validator (`tools/validate`) read: a JSON Schema file
-per record type under `tools/schema/`, plus `docs/factory/store-schema.md` describing each field
+per record type under `tools/validate/schema/`, plus `docs/factory/store-schema.md` describing each field
 in prose. The schema names every field `SPEC.md` §3.2 and §3.3 list for a dictionary entry, a
 grammar rule and a store file, and nothing else. Where `docs/architecture/archive-inventory.md`
 shows the archive has no data behind a field for `afr` or `eng`, the schema keeps the field
@@ -46,27 +46,28 @@ Fields to mark, found while writing this issue:
   disjunction `{a|b}` — inside the left-hand `<NODE>` list; it never separates "the pattern" from
   "the conditions on the pattern" as two fields. Mark `conditions` `archive: embedded in lhs,
   importer must split` and flag for a rule-author: split by node-level negation/disjunction only,
-  or keep `conditions` empty and leave everything in `lhs`. Open question, not decided here.
-- `tools/schema/` as a package name: `tools/CLAUDE.md` names four canonical tool packages —
-  `mirror`, `importer`, `compiler`, `validate`. `tools/schema/` is a fifth name and does not fit
-  that list. This needs either an ADR admitting a fifth package, or a rename to fit an existing
-  one (e.g. `tools/validate/schema/`). Flagged for the owner, not decided here.
+  or keep `conditions` empty and leave everything in `lhs`. Decided after close (owner,
+  2026-09-14): `conditions` stays empty at M2 and `lhs` holds the archive string verbatim; the
+  M3 rule interpreter decides whether it needs the split. Recorded in `SPEC.md` §3.2.
+- Schema location: the schemas first landed as `tools/schema/`, a fifth top-level name beside
+  `tools/CLAUDE.md`'s four packages. Decided after close (owner, 2026-09-14): moved to
+  `tools/validate/schema/`, because the validator is the schema's only runtime consumer.
 
 ## Acceptance criteria
 
-- `tools/schema/dictionary-entry.schema.json` validates the three worked Afrikaans lines and the
+- `tools/validate/schema/dictionary-entry.schema.json` validates the three worked Afrikaans lines and the
   three worked English lines from `docs/unl-reference/formats/dictionary.md`, hand-converted to the
   YAML shape `SPEC.md` §3.2 gives, with `jsonschema` (`pip install jsonschema`) run as a doctest.
-- `tools/schema/grammar-rule.schema.json` validates the three worked rules from
+- `tools/validate/schema/grammar-rule.schema.json` validates the three worked rules from
   `docs/unl-reference/formats/transformation-grammar.md`, hand-converted the same way, for one
   `kind` each: `analysis`, `inflection` (the `M2` example from `inflection.md`), `subcategorisation`
   (the `Y38` example from `subcategorisation.md`).
-- `tools/schema/store-layout.schema.json` lists every file `SPEC.md` §3.3's tree names, including
+- `tools/validate/schema/store-layout.schema.json` lists every file `SPEC.md` §3.3's tree names, including
   `grammar/disambiguation.yaml`, `tagset.yaml`, `corpus/<name>.yaml`, `tests/<name>.yaml` and
   `meta.yaml`, each with its required top-level keys.
 - `docs/factory/store-schema.md` has one row per field with `archive:` status for `afr` and `eng`;
   every `none` row cites the manifest search or reference page that found the gap.
-- `pytest tools/schema/test_schema.py` runs the three validations above and fails loudly if a
+- `pytest tools/validate/tests/test_schema.py` runs the three validations above and fails loudly if a
   hand-converted example is missing a required key.
 
 ## Not in scope
@@ -76,6 +77,6 @@ rule-author, not resolved here.
 
 ## Done when
 
-- [x] Three schema files exist under `tools/schema/` and validate the worked examples above.
+- [x] Three schema files exist under `tools/validate/schema/` and validate the worked examples above.
 - [x] `docs/factory/store-schema.md` exists with every field marked, `none` rows cited.
-- [x] `pytest tools/schema/test_schema.py` passes.
+- [x] `pytest tools/validate/tests/test_schema.py` passes.
