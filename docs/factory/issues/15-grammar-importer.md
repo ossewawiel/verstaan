@@ -2,15 +2,15 @@
 issue: 15
 title: "Build the grammar importer"
 milestone: M2
-status: in-progress
+status: done
 depends_on: [13]
 agent: implementer
 agents: [implementer]
 model: sonnet
 effort: high
 checkpoint: null
-commit: null
-worktree: .worktrees/m2-store
+commit: fe59d98
+worktree: null
 github_issue: 224
 ---
 ## What
