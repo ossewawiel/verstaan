@@ -2,15 +2,15 @@
 issue: 161
 title: "Drain the stuck exports one language at a time: Polish next"
 milestone: Side
-status: in-progress
+status: done
 depends_on: [160]
 agent: implementer
 agents: [implementer]
 model: sonnet
 effort: medium
 checkpoint: null
-commit: null
-worktree: .worktrees/side-161-drain-stuck-exports-pol
+commit: 6cd27bc6601a92047016e88fb70711627b02a0f1
+worktree: null
 github_issue: 211
 ---
 ## What
