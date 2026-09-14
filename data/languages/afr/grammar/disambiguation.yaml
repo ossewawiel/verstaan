@@ -1,0 +1,92 @@
+# Licence: CC BY-SA 4.0. Source: UNL Archive, see data/archive/manifest.jsonl
+- id: "1"
+  kind: disambiguation
+  lhs: "(TEMP,^DIGIT,^W)(^BLK,^PUT,^STAIL)"
+  rhs: "0"
+  conditions: []
+  comment: "there must be a blank, a punctuation sign or the end of the sentence after a temporary word, i.e., a temporary word cannot be followed by other word, except for digits, as in \"1st\""
+  source: {archive_path: exports/afr/44.dgrammar.txt, line: 7}
+- id: "2"
+  kind: disambiguation
+  lhs: "(^BLK,^PUT,^SHEAD)(TEMP,^W)"
+  rhs: "0"
+  conditions: []
+  comment: "there must be a blank, a punctuation sign or the beginning of the sentence before a temporary word, i.e., a temporary word cannot be preceded by other word"
+  source: {archive_path: exports/afr/44.dgrammar.txt, line: 8}
+- id: "3"
+  kind: disambiguation
+  lhs: (TEMP)(PUT)(TEMP)
+  rhs: "0"
+  conditions: []
+  comment: there cannot be two temporary words separated by punctuation mark
+  source: {archive_path: exports/afr/44.dgrammar.txt, line: 9}
+- id: "4"
+  kind: disambiguation
+  lhs: "(D,^AFT)({PUT,^BLK|STAIL})"
+  rhs: "0"
+  conditions: []
+  comment: "determiners may not come at the end of the sentence or before a punctuation mark, except if their distribution is AFT, like \"enough\""
+  source: {archive_path: exports/afr/44.dgrammar.txt, line: 10}
+- id: "5"
+  kind: disambiguation
+  lhs: "(D,^AFT)(BLK)({V|P|AAV})"
+  rhs: "0"
+  conditions: []
+  comment: "determiners may not be precede verbs, prepositions or adjunct adverbs, except if their distribution is AFT"
+  source: {archive_path: exports/afr/44.dgrammar.txt, line: 11}
+- id: "6"
+  kind: disambiguation
+  lhs: "(AUX)(BLK)(^V,^[nie])"
+  rhs: "0"
+  conditions: []
+  comment: an auxiliary verb must be followed by a verb or the words "not" or "to"
+  source: {archive_path: exports/afr/44.dgrammar.txt, line: 12}
+- id: "7"
+  kind: disambiguation
+  lhs: "(AUX)(BLK)([nie])(BLK)(^V)"
+  rhs: "0"
+  conditions: []
+  comment: "if followed by \"not\", the auxiliary must be followed by a verb"
+  source: {archive_path: exports/afr/44.dgrammar.txt, line: 13}
+- id: "8"
+  kind: disambiguation
+  lhs: "(P,rel=plc)(BLK)(N,TIM)"
+  rhs: "0"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/44.dgrammar.txt, line: 14}
+- id: "9"
+  kind: disambiguation
+  lhs: "(P,rel=plc)(BLK)(D)(BLK)(N,SEM=TIM)"
+  rhs: "0"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/44.dgrammar.txt, line: 15}
+- id: "10"
+  kind: disambiguation
+  lhs: "(P,rel=tim )(BLK )(N,SEM=LCT)"
+  rhs: "0"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/44.dgrammar.txt, line: 16}
+- id: "11"
+  kind: disambiguation
+  lhs: "(P,rel=tim )(BLK )(D)(BLK)(N,LCT)"
+  rhs: "0"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/44.dgrammar.txt, line: 17}
+- id: "12"
+  kind: disambiguation
+  lhs: "(A,SAV)(BLK)(N)"
+  rhs: "0"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/44.dgrammar.txt, line: 18}
+- id: "13"
+  kind: disambiguation
+  lhs: "(TEMP)(^BLK,^PUT,^STAIL)"
+  rhs: "0"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/47.dgrammar.txt, line: 7}

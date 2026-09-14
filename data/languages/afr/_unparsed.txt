@@ -5085,3 +5085,931 @@ exports/afr/af_gen_u_c_ucl/af_gen_u_c_ucl_1.txt:13732: empty UW field; schema re
 
 exports/afr/af_gen_u_c_ucl/af_gen_u_c_ucl_1.txt:13736: empty UW field; schema requires uw minLength 1 (e.g. punctuation entries)
     [wyk]{14856}""(LEMMA=wyk,BF=wyk,LEX=V,POS=VER)<af,0,0>;
+
+; --- tools/importer/grammar.py: grammar _unparsed.txt lines below ---
+exports/afr/nl_unl_tgrammar.txt:1: archive header/comment line (starts with ';'), not a grammar rule
+    ;============================================================================================
+
+exports/afr/nl_unl_tgrammar.txt:2: archive header/comment line (starts with ';'), not a grammar rule
+    ;NL-UNL DEFAULT TRANSFORMATION GRAMMAR
+
+exports/afr/nl_unl_tgrammar.txt:3: archive header/comment line (starts with ';'), not a grammar rule
+    ;Documentation available at http://www.unlweb.net/wiki/Default_grammar
+
+exports/afr/nl_unl_tgrammar.txt:4: archive header/comment line (starts with ';'), not a grammar rule
+    ;============================================================================================
+
+exports/afr/nl_unl_tgrammar.txt:5: blank line
+    
+
+exports/afr/nl_unl_tgrammar.txt:6: archive header/comment line (starts with ';'), not a grammar rule
+    ;============================================================================================
+
+exports/afr/nl_unl_tgrammar.txt:7: archive header/comment line (starts with ';'), not a grammar rule
+    ;============================================================================================
+
+exports/afr/nl_unl_tgrammar.txt:8: archive header/comment line (starts with ';'), not a grammar rule
+    ;1. PRE-PROCESSING
+
+exports/afr/nl_unl_tgrammar.txt:9: archive header/comment line (starts with ';'), not a grammar rule
+    ;Prepares the input sentence for processing
+
+exports/afr/nl_unl_tgrammar.txt:10: archive header/comment line (starts with ';'), not a grammar rule
+    ;===========================================================================================
+
+exports/afr/nl_unl_tgrammar.txt:11: archive header/comment line (starts with ';'), not a grammar rule
+    ;============================================================================================
+
+exports/afr/nl_unl_tgrammar.txt:12: blank line
+    
+
+exports/afr/nl_unl_tgrammar.txt:13: archive header/comment line (starts with ';'), not a grammar rule
+    ;Punctuation
+
+exports/afr/nl_unl_tgrammar.txt:17: blank line
+    
+
+exports/afr/nl_unl_tgrammar.txt:18: archive header/comment line (starts with ';'), not a grammar rule
+    ;Merge (used when the feature MERGE> or <MERGE is assigned)
+
+exports/afr/nl_unl_tgrammar.txt:21: blank line
+    
+
+exports/afr/nl_unl_tgrammar.txt:22: archive header/comment line (starts with ';'), not a grammar rule
+    ;Expressions of time 
+
+exports/afr/nl_unl_tgrammar.txt:35: blank line
+    
+
+exports/afr/nl_unl_tgrammar.txt:36: blank line
+    
+
+exports/afr/nl_unl_tgrammar.txt:37: archive header/comment line (starts with ';'), not a grammar rule
+    ;============================================================================================
+
+exports/afr/nl_unl_tgrammar.txt:38: archive header/comment line (starts with ';'), not a grammar rule
+    ;============================================================================================
+
+exports/afr/nl_unl_tgrammar.txt:39: archive header/comment line (starts with ';'), not a grammar rule
+    ;2. PARSING (ARBORIZATION)
+
+exports/afr/nl_unl_tgrammar.txt:40: archive header/comment line (starts with ';'), not a grammar rule
+    ;Converts the input list structure into a tree
+
+exports/afr/nl_unl_tgrammar.txt:41: archive header/comment line (starts with ';'), not a grammar rule
+    ;============================================================================================
+
+exports/afr/nl_unl_tgrammar.txt:42: archive header/comment line (starts with ';'), not a grammar rule
+    ;============================================================================================
+
+exports/afr/nl_unl_tgrammar.txt:43: blank line
+    
+
+exports/afr/nl_unl_tgrammar.txt:44: archive header/comment line (starts with ';'), not a grammar rule
+    ;Intermediate projection (XB): complementation 
+
+exports/afr/nl_unl_tgrammar.txt:45: archive header/comment line (starts with ';'), not a grammar rule
+    ;XB + COMP > XB (right complementation)
+
+exports/afr/nl_unl_tgrammar.txt:53: archive header/comment line (starts with ';'), not a grammar rule
+    ;COMP + XB > XB (left complementation)
+
+exports/afr/nl_unl_tgrammar.txt:55: blank line
+    
+
+exports/afr/nl_unl_tgrammar.txt:56: archive header/comment line (starts with ';'), not a grammar rule
+    ;Intermediate projection (XB): adjunction 
+
+exports/afr/nl_unl_tgrammar.txt:57: archive header/comment line (starts with ';'), not a grammar rule
+    ;XB + ADJT > XB (right adjunction)
+
+exports/afr/nl_unl_tgrammar.txt:62: archive header/comment line (starts with ';'), not a grammar rule
+    ;ADJT + XB > XB (left adjunction)
+
+exports/afr/nl_unl_tgrammar.txt:65: blank line
+    
+
+exports/afr/nl_unl_tgrammar.txt:66: archive header/comment line (starts with ';'), not a grammar rule
+    ;Maximal projection (XP): specification 
+
+exports/afr/nl_unl_tgrammar.txt:67: archive header/comment line (starts with ';'), not a grammar rule
+    ;SPEC + XB > XP  (left specification)
+
+exports/afr/nl_unl_tgrammar.txt:75: blank line
+    
+
+exports/afr/nl_unl_tgrammar.txt:76: archive header/comment line (starts with ';'), not a grammar rule
+    ;Maximal projection (XP): general rule (XB > XP)
+
+exports/afr/nl_unl_tgrammar.txt:87: blank line
+    
+
+exports/afr/nl_unl_tgrammar.txt:88: archive header/comment line (starts with ';'), not a grammar rule
+    ;Intermediate projection: general rule (X > XB)
+
+exports/afr/nl_unl_tgrammar.txt:97: blank line
+    
+
+exports/afr/nl_unl_tgrammar.txt:98: archive header/comment line (starts with ';'), not a grammar rule
+    ;============================================================================================
+
+exports/afr/nl_unl_tgrammar.txt:99: archive header/comment line (starts with ';'), not a grammar rule
+    ;============================================================================================
+
+exports/afr/nl_unl_tgrammar.txt:100: archive header/comment line (starts with ';'), not a grammar rule
+    ;3. TRANSFORMATION
+
+exports/afr/nl_unl_tgrammar.txt:101: archive header/comment line (starts with ';'), not a grammar rule
+    ;Converts the surface syntactic structure into the deep syntactic structure
+
+exports/afr/nl_unl_tgrammar.txt:102: archive header/comment line (starts with ';'), not a grammar rule
+    ;============================================================================================
+
+exports/afr/nl_unl_tgrammar.txt:103: archive header/comment line (starts with ';'), not a grammar rule
+    ;============================================================================================
+
+exports/afr/nl_unl_tgrammar.txt:104: blank line
+    
+
+exports/afr/nl_unl_tgrammar.txt:105: archive header/comment line (starts with ';'), not a grammar rule
+    ;Moving the subject from IP to VP
+
+exports/afr/nl_unl_tgrammar.txt:107: archive header/comment line (starts with ';'), not a grammar rule
+    ;De-topicalization
+
+exports/afr/nl_unl_tgrammar.txt:110: blank line
+    
+
+exports/afr/nl_unl_tgrammar.txt:111: blank line
+    
+
+exports/afr/nl_unl_tgrammar.txt:112: archive header/comment line (starts with ';'), not a grammar rule
+    ;============================================================================================
+
+exports/afr/nl_unl_tgrammar.txt:113: archive header/comment line (starts with ';'), not a grammar rule
+    ;============================================================================================
+
+exports/afr/nl_unl_tgrammar.txt:114: archive header/comment line (starts with ';'), not a grammar rule
+    ;4. DEARBORIZATION
+
+exports/afr/nl_unl_tgrammar.txt:115: archive header/comment line (starts with ';'), not a grammar rule
+    ;Convers the syntactic tree into a syntactic network
+
+exports/afr/nl_unl_tgrammar.txt:116: archive header/comment line (starts with ';'), not a grammar rule
+    ;============================================================================================
+
+exports/afr/nl_unl_tgrammar.txt:117: archive header/comment line (starts with ';'), not a grammar rule
+    ;============================================================================================
+
+exports/afr/nl_unl_tgrammar.txt:118: blank line
+    
+
+exports/afr/nl_unl_tgrammar.txt:119: archive header/comment line (starts with ';'), not a grammar rule
+    ;Generalization
+
+exports/afr/nl_unl_tgrammar.txt:122: blank line
+    
+
+exports/afr/nl_unl_tgrammar.txt:123: archive header/comment line (starts with ';'), not a grammar rule
+    ;Moving the attributes from outer nodes to inner nodes
+
+exports/afr/nl_unl_tgrammar.txt:126: blank line
+    
+
+exports/afr/nl_unl_tgrammar.txt:127: archive header/comment line (starts with ';'), not a grammar rule
+    ;Moving the relations from outer nodes to inner nodes
+
+exports/afr/nl_unl_tgrammar.txt:130: blank line
+    
+
+exports/afr/nl_unl_tgrammar.txt:131: archive header/comment line (starts with ';'), not a grammar rule
+    ;Converting trees into head-driven phrase structures
+
+exports/afr/nl_unl_tgrammar.txt:138: blank line
+    
+
+exports/afr/nl_unl_tgrammar.txt:139: archive header/comment line (starts with ';'), not a grammar rule
+    ;Deletion of empty categories
+
+exports/afr/nl_unl_tgrammar.txt:143: blank line
+    
+
+exports/afr/nl_unl_tgrammar.txt:144: archive header/comment line (starts with ';'), not a grammar rule
+    ;Labeling head-driven phrase structures
+
+exports/afr/nl_unl_tgrammar.txt:153: blank line
+    
+
+exports/afr/nl_unl_tgrammar.txt:162: blank line
+    
+
+exports/afr/nl_unl_tgrammar.txt:171: blank line
+    
+
+exports/afr/nl_unl_tgrammar.txt:180: blank line
+    
+
+exports/afr/nl_unl_tgrammar.txt:181: archive header/comment line (starts with ';'), not a grammar rule
+    ;============================================================================================
+
+exports/afr/nl_unl_tgrammar.txt:182: archive header/comment line (starts with ';'), not a grammar rule
+    ;============================================================================================
+
+exports/afr/nl_unl_tgrammar.txt:183: archive header/comment line (starts with ';'), not a grammar rule
+    ;5. INTERPRETATION
+
+exports/afr/nl_unl_tgrammar.txt:184: archive header/comment line (starts with ';'), not a grammar rule
+    ;Converts the syntactic network into a semantic network
+
+exports/afr/nl_unl_tgrammar.txt:185: archive header/comment line (starts with ';'), not a grammar rule
+    ;============================================================================================
+
+exports/afr/nl_unl_tgrammar.txt:186: archive header/comment line (starts with ';'), not a grammar rule
+    ;============================================================================================
+
+exports/afr/nl_unl_tgrammar.txt:187: archive header/comment line (starts with ';'), not a grammar rule
+    ;Relations
+
+exports/afr/nl_unl_tgrammar.txt:232: blank line
+    
+
+exports/afr/nl_unl_tgrammar.txt:233: archive header/comment line (starts with ';'), not a grammar rule
+    ;Default
+
+exports/afr/nl_unl_tgrammar.txt:240: blank line
+    
+
+exports/afr/nl_unl_tgrammar.txt:241: archive header/comment line (starts with ';'), not a grammar rule
+    ;============================================================================================
+
+exports/afr/nl_unl_tgrammar.txt:242: archive header/comment line (starts with ';'), not a grammar rule
+    ;============================================================================================
+
+exports/afr/nl_unl_tgrammar.txt:243: archive header/comment line (starts with ';'), not a grammar rule
+    ;6. POST-PROCESSING
+
+exports/afr/nl_unl_tgrammar.txt:244: archive header/comment line (starts with ';'), not a grammar rule
+    ;Post-edits the semantic network 
+
+exports/afr/nl_unl_tgrammar.txt:245: archive header/comment line (starts with ';'), not a grammar rule
+    ;============================================================================================
+
+exports/afr/nl_unl_tgrammar.txt:246: archive header/comment line (starts with ';'), not a grammar rule
+    ;============================================================================================
+
+exports/afr/47.tgrammar.txt:1: archive header/comment line (starts with ';'), not a grammar rule
+    ; RuleSet:(MX)TGrammer
+
+exports/afr/47.tgrammar.txt:2: archive header/comment line (starts with ';'), not a grammar rule
+    ; User:Marsel Pretorius (wawiel)
+
+exports/afr/47.tgrammar.txt:3: archive header/comment line (starts with ';'), not a grammar rule
+    ; Date:11.56.2013 at 01:56:47
+
+exports/afr/47.tgrammar.txt:4: blank line
+    
+
+exports/afr/47.tgrammar.txt:5: archive header/comment line (starts with ';'), not a grammar rule
+    ; "TGrammer"
+
+exports/afr/47.tgrammar.txt:6: archive header/comment line (starts with ';'), not a grammar rule
+    ; MX
+
+exports/afr/unl_nl_tgrammar.txt:1: archive header/comment line (starts with ';'), not a grammar rule
+    ;============================================================================================
+
+exports/afr/unl_nl_tgrammar.txt:2: archive header/comment line (starts with ';'), not a grammar rule
+    ;UNL-NL DEFAULT TRANSFORMATION GRAMMAR
+
+exports/afr/unl_nl_tgrammar.txt:3: archive header/comment line (starts with ';'), not a grammar rule
+    ;Documentation available at http://www.unlweb.net/wiki/Default_grammar
+
+exports/afr/unl_nl_tgrammar.txt:4: archive header/comment line (starts with ';'), not a grammar rule
+    ;============================================================================================
+
+exports/afr/unl_nl_tgrammar.txt:5: blank line
+    
+
+exports/afr/unl_nl_tgrammar.txt:6: archive header/comment line (starts with ';'), not a grammar rule
+    ;============================================================================================
+
+exports/afr/unl_nl_tgrammar.txt:7: archive header/comment line (starts with ';'), not a grammar rule
+    ;============================================================================================
+
+exports/afr/unl_nl_tgrammar.txt:8: archive header/comment line (starts with ';'), not a grammar rule
+    ;1. PRE-PROCESSING
+
+exports/afr/unl_nl_tgrammar.txt:9: archive header/comment line (starts with ';'), not a grammar rule
+    ;Prepares the input sentence for processing
+
+exports/afr/unl_nl_tgrammar.txt:10: archive header/comment line (starts with ';'), not a grammar rule
+    ;===========================================================================================
+
+exports/afr/unl_nl_tgrammar.txt:11: archive header/comment line (starts with ';'), not a grammar rule
+    ;============================================================================================
+
+exports/afr/unl_nl_tgrammar.txt:12: blank line
+    
+
+exports/afr/unl_nl_tgrammar.txt:13: blank line
+    
+
+exports/afr/unl_nl_tgrammar.txt:14: blank line
+    
+
+exports/afr/unl_nl_tgrammar.txt:15: archive header/comment line (starts with ';'), not a grammar rule
+    ;============================================================================================
+
+exports/afr/unl_nl_tgrammar.txt:16: archive header/comment line (starts with ';'), not a grammar rule
+    ;============================================================================================
+
+exports/afr/unl_nl_tgrammar.txt:17: archive header/comment line (starts with ';'), not a grammar rule
+    ;2. ARBORIZATION
+
+exports/afr/unl_nl_tgrammar.txt:18: archive header/comment line (starts with ';'), not a grammar rule
+    ;Converts the syntactic network into a tree
+
+exports/afr/unl_nl_tgrammar.txt:19: archive header/comment line (starts with ';'), not a grammar rule
+    ;============================================================================================
+
+exports/afr/unl_nl_tgrammar.txt:20: archive header/comment line (starts with ';'), not a grammar rule
+    ;============================================================================================
+
+exports/afr/unl_nl_tgrammar.txt:21: blank line
+    
+
+exports/afr/unl_nl_tgrammar.txt:22: archive header/comment line (starts with ';'), not a grammar rule
+    ;Generalization
+
+exports/afr/unl_nl_tgrammar.txt:26: blank line
+    
+
+exports/afr/unl_nl_tgrammar.txt:27: archive header/comment line (starts with ';'), not a grammar rule
+    ;Arborization
+
+exports/afr/unl_nl_tgrammar.txt:33: blank line
+    
+
+exports/afr/unl_nl_tgrammar.txt:34: archive header/comment line (starts with ';'), not a grammar rule
+    ;Labeling head-driven phrase structures
+
+exports/afr/unl_nl_tgrammar.txt:43: blank line
+    
+
+exports/afr/unl_nl_tgrammar.txt:52: blank line
+    
+
+exports/afr/unl_nl_tgrammar.txt:61: blank line
+    
+
+exports/afr/unl_nl_tgrammar.txt:70: blank line
+    
+
+exports/afr/unl_nl_tgrammar.txt:71: archive header/comment line (starts with ';'), not a grammar rule
+    ;============================================================================================
+
+exports/afr/unl_nl_tgrammar.txt:72: archive header/comment line (starts with ';'), not a grammar rule
+    ;2.1 Determiner Phrase (DP)
+
+exports/afr/unl_nl_tgrammar.txt:73: archive header/comment line (starts with ';'), not a grammar rule
+    ;============================================================================================
+
+exports/afr/unl_nl_tgrammar.txt:80: blank line
+    
+
+exports/afr/unl_nl_tgrammar.txt:81: archive header/comment line (starts with ';'), not a grammar rule
+    ;============================================================================================
+
+exports/afr/unl_nl_tgrammar.txt:82: archive header/comment line (starts with ';'), not a grammar rule
+    ;2.2 Adjective Phrase (JP)
+
+exports/afr/unl_nl_tgrammar.txt:83: archive header/comment line (starts with ';'), not a grammar rule
+    ;============================================================================================
+
+exports/afr/unl_nl_tgrammar.txt:90: blank line
+    
+
+exports/afr/unl_nl_tgrammar.txt:91: archive header/comment line (starts with ';'), not a grammar rule
+    ;============================================================================================
+
+exports/afr/unl_nl_tgrammar.txt:92: archive header/comment line (starts with ';'), not a grammar rule
+    ;2.3 Adverbial Phrase (AP)
+
+exports/afr/unl_nl_tgrammar.txt:93: archive header/comment line (starts with ';'), not a grammar rule
+    ;===========================================================================================
+
+exports/afr/unl_nl_tgrammar.txt:100: blank line
+    
+
+exports/afr/unl_nl_tgrammar.txt:101: archive header/comment line (starts with ';'), not a grammar rule
+    ;============================================================================================
+
+exports/afr/unl_nl_tgrammar.txt:102: archive header/comment line (starts with ';'), not a grammar rule
+    ;2.4 Noun Phrase (NP)
+
+exports/afr/unl_nl_tgrammar.txt:103: archive header/comment line (starts with ';'), not a grammar rule
+    ;============================================================================================
+
+exports/afr/unl_nl_tgrammar.txt:110: blank line
+    
+
+exports/afr/unl_nl_tgrammar.txt:111: blank line
+    
+
+exports/afr/unl_nl_tgrammar.txt:112: archive header/comment line (starts with ';'), not a grammar rule
+    ;============================================================================================
+
+exports/afr/unl_nl_tgrammar.txt:113: archive header/comment line (starts with ';'), not a grammar rule
+    ;2.5 Prepositional Phrase (PP)
+
+exports/afr/unl_nl_tgrammar.txt:114: archive header/comment line (starts with ';'), not a grammar rule
+    ;============================================================================================
+
+exports/afr/unl_nl_tgrammar.txt:121: blank line
+    
+
+exports/afr/unl_nl_tgrammar.txt:122: archive header/comment line (starts with ';'), not a grammar rule
+    ;============================================================================================
+
+exports/afr/unl_nl_tgrammar.txt:123: archive header/comment line (starts with ';'), not a grammar rule
+    ;2.6 Verbal Phrase (VP)
+
+exports/afr/unl_nl_tgrammar.txt:124: archive header/comment line (starts with ';'), not a grammar rule
+    ;============================================================================================
+
+exports/afr/unl_nl_tgrammar.txt:131: blank line
+    
+
+exports/afr/unl_nl_tgrammar.txt:132: archive header/comment line (starts with ';'), not a grammar rule
+    ;============================================================================================
+
+exports/afr/unl_nl_tgrammar.txt:133: archive header/comment line (starts with ';'), not a grammar rule
+    ;2.7 Inflectional Phrase (IP)
+
+exports/afr/unl_nl_tgrammar.txt:134: archive header/comment line (starts with ';'), not a grammar rule
+    ;============================================================================================
+
+exports/afr/unl_nl_tgrammar.txt:141: blank line
+    
+
+exports/afr/unl_nl_tgrammar.txt:142: archive header/comment line (starts with ';'), not a grammar rule
+    ;============================================================================================
+
+exports/afr/unl_nl_tgrammar.txt:143: archive header/comment line (starts with ';'), not a grammar rule
+    ;2.8 Complementizer Phrase (CP)
+
+exports/afr/unl_nl_tgrammar.txt:144: archive header/comment line (starts with ';'), not a grammar rule
+    ;============================================================================================
+
+exports/afr/unl_nl_tgrammar.txt:151: blank line
+    
+
+exports/afr/unl_nl_tgrammar.txt:152: archive header/comment line (starts with ';'), not a grammar rule
+    ;============================================================================================
+
+exports/afr/unl_nl_tgrammar.txt:153: archive header/comment line (starts with ';'), not a grammar rule
+    ;============================================================================================
+
+exports/afr/unl_nl_tgrammar.txt:154: archive header/comment line (starts with ';'), not a grammar rule
+    ;3. TRANSFORMATION
+
+exports/afr/unl_nl_tgrammar.txt:155: archive header/comment line (starts with ';'), not a grammar rule
+    ;Converts the deep syntactic structure into the surface syntactic structure
+
+exports/afr/unl_nl_tgrammar.txt:156: archive header/comment line (starts with ';'), not a grammar rule
+    ;============================================================================================
+
+exports/afr/unl_nl_tgrammar.txt:157: archive header/comment line (starts with ';'), not a grammar rule
+    ;============================================================================================
+
+exports/afr/unl_nl_tgrammar.txt:159: blank line
+    
+
+exports/afr/unl_nl_tgrammar.txt:160: archive header/comment line (starts with ';'), not a grammar rule
+    ;============================================================================================
+
+exports/afr/unl_nl_tgrammar.txt:161: archive header/comment line (starts with ';'), not a grammar rule
+    ;============================================================================================
+
+exports/afr/unl_nl_tgrammar.txt:162: archive header/comment line (starts with ';'), not a grammar rule
+    ;4. LINEARIZATION
+
+exports/afr/unl_nl_tgrammar.txt:163: archive header/comment line (starts with ';'), not a grammar rule
+    ;Converts the tree structure into a list structure
+
+exports/afr/unl_nl_tgrammar.txt:164: archive header/comment line (starts with ';'), not a grammar rule
+    ;============================================================================================
+
+exports/afr/unl_nl_tgrammar.txt:165: archive header/comment line (starts with ';'), not a grammar rule
+    ;============================================================================================
+
+exports/afr/unl_nl_tgrammar.txt:166: archive header/comment line (starts with ';'), not a grammar rule
+    ;Tree to List
+
+exports/afr/unl_nl_tgrammar.txt:243: blank line
+    
+
+exports/afr/unl_nl_tgrammar.txt:244: archive header/comment line (starts with ';'), not a grammar rule
+    ;============================================================================================
+
+exports/afr/unl_nl_tgrammar.txt:245: archive header/comment line (starts with ';'), not a grammar rule
+    ;============================================================================================
+
+exports/afr/unl_nl_tgrammar.txt:246: archive header/comment line (starts with ';'), not a grammar rule
+    ;5. MORPHOLOGICAL GENERATION
+
+exports/afr/unl_nl_tgrammar.txt:247: archive header/comment line (starts with ';'), not a grammar rule
+    ;Generates the inflections
+
+exports/afr/unl_nl_tgrammar.txt:248: archive header/comment line (starts with ';'), not a grammar rule
+    ;============================================================================================
+
+exports/afr/unl_nl_tgrammar.txt:249: archive header/comment line (starts with ';'), not a grammar rule
+    ;============================================================================================
+
+exports/afr/unl_nl_tgrammar.txt:250: archive header/comment line (starts with ';'), not a grammar rule
+    ;Inflections
+
+exports/afr/unl_nl_tgrammar.txt:252: blank line
+    
+
+exports/afr/unl_nl_tgrammar.txt:253: archive header/comment line (starts with ';'), not a grammar rule
+    ;============================================================================================
+
+exports/afr/unl_nl_tgrammar.txt:254: archive header/comment line (starts with ';'), not a grammar rule
+    ;============================================================================================
+
+exports/afr/unl_nl_tgrammar.txt:255: archive header/comment line (starts with ';'), not a grammar rule
+    ;6. POST-PROCESSING
+
+exports/afr/unl_nl_tgrammar.txt:256: archive header/comment line (starts with ';'), not a grammar rule
+    ;Post-edits the list output
+
+exports/afr/unl_nl_tgrammar.txt:257: archive header/comment line (starts with ';'), not a grammar rule
+    ;============================================================================================
+
+exports/afr/unl_nl_tgrammar.txt:258: archive header/comment line (starts with ';'), not a grammar rule
+    ;============================================================================================
+
+exports/afr/unl_nl_tgrammar.txt:259: archive header/comment line (starts with ';'), not a grammar rule
+    ;Resolving scopes
+
+exports/afr/unl_nl_tgrammar.txt:263: archive header/comment line (starts with ';'), not a grammar rule
+    ;Resolving >BLK (inserting blank spaces)
+
+exports/afr/unl_nl_tgrammar.txt:265: archive header/comment line (starts with ';'), not a grammar rule
+    ;Resolving >COMMA (inserting comma)
+
+exports/afr/unl_nl_tgrammar.txt:267: archive header/comment line (starts with ';'), not a grammar rule
+    ;Resolving EMARK
+
+exports/afr/unl_nl_tgrammar.txt:269: blank line
+    
+
+exports/afr/44.tgrammar.txt:1: no rule syntax found
+    asfsdfdfdsf
+
+exports/afr/44.tgrammar.txt:2: no rule syntax found
+    asfsdfdfdsf asfsdfdfdsf
+
+exports/afr/44.tgrammar.txt:3: no rule syntax found
+    asfsdfdfdsf asfsdfdfdsf asfsdfdfdsf
+
+exports/afr/44.tgrammar.txt:4: no rule syntax found
+    http://www.undlfoundation.org
+
+exports/afr/44.tgrammar.txt:5: no rule syntax found
+    ftp://www.undlfoundation.org
+
+exports/afr/44.tgrammar.txt:6: no rule syntax found
+    boek
+
+exports/afr/44.tgrammar.txt:7: no rule syntax found
+    'n boek
+
+exports/afr/44.tgrammar.txt:8: no rule syntax found
+    die boek
+
+exports/afr/44.tgrammar.txt:9: no rule syntax found
+    die boeke
+
+exports/afr/44.tgrammar.txt:10: no rule syntax found
+    ander boek
+
+exports/afr/44.tgrammar.txt:11: no rule syntax found
+    alle boeke
+
+exports/afr/44.tgrammar.txt:12: no rule syntax found
+    paar boeke
+
+exports/afr/44.tgrammar.txt:13: no rule syntax found
+    baie boeke
+
+exports/afr/44.tgrammar.txt:14: no rule syntax found
+    geen boek
+
+exports/afr/44.tgrammar.txt:15: no rule syntax found
+    al die boeke
+
+exports/afr/44.tgrammar.txt:16: no rule syntax found
+    my boek
+
+exports/afr/44.tgrammar.txt:17: no rule syntax found
+    jou boek
+
+exports/afr/44.tgrammar.txt:18: no rule syntax found
+    haar boek
+
+exports/afr/44.tgrammar.txt:19: no rule syntax found
+    sy boek
+
+exports/afr/44.tgrammar.txt:20: no rule syntax found
+    sy boek
+
+exports/afr/44.tgrammar.txt:21: no rule syntax found
+    ons boek
+
+exports/afr/44.tgrammar.txt:22: no rule syntax found
+    hul boek
+
+exports/afr/44.tgrammar.txt:23: no rule syntax found
+    al my boeke
+
+exports/afr/44.tgrammar.txt:24: no rule syntax found
+    sy baie boeke
+
+exports/afr/44.tgrammar.txt:25: no rule syntax found
+    my ander boek
+
+exports/afr/44.tgrammar.txt:26: no rule syntax found
+    die boek op die tafel
+
+exports/afr/44.tgrammar.txt:27: no rule syntax found
+    die boek onder die tafel
+
+exports/afr/44.tgrammar.txt:28: no rule syntax found
+    die boek agter die tafel
+
+exports/afr/44.tgrammar.txt:29: no rule syntax found
+    die boek in die voorkant van die tafel
+
+exports/afr/44.tgrammar.txt:30: no rule syntax found
+    die boek langs die tafel
+
+exports/afr/44.tgrammar.txt:31: no rule syntax found
+    die boek naby die tafel
+
+exports/afr/44.tgrammar.txt:32: no rule syntax found
+    die boek ver van die tafel
+
+exports/afr/44.tgrammar.txt:33: no rule syntax found
+    die boek oor Johannes
+
+exports/afr/44.tgrammar.txt:34: no rule syntax found
+    die boek van Johannes
+
+exports/afr/44.tgrammar.txt:35: no rule syntax found
+    die boek vir Johannes
+
+exports/afr/44.tgrammar.txt:36: no rule syntax found
+    die trein vanaf Parys
+
+exports/afr/44.tgrammar.txt:37: no rule syntax found
+    die trein na Parys
+
+exports/afr/44.tgrammar.txt:38: no rule syntax found
+    die trein deur Parys
+
+exports/afr/44.tgrammar.txt:39: no rule syntax found
+    die trein vanaf Parys na Genève
+
+exports/afr/44.tgrammar.txt:40: no rule syntax found
+    die trein vanaf Rome na Parys deur Genève
+
+exports/afr/44.tgrammar.txt:41: no rule syntax found
+    paar minute na die middag
+
+exports/afr/44.tgrammar.txt:42: no rule syntax found
+    paar minute voor die middag
+
+exports/afr/44.tgrammar.txt:43: no rule syntax found
+    paar minute sedert die middag
+
+exports/afr/44.tgrammar.txt:44: no rule syntax found
+    paar minute tot die middag
+
+exports/afr/44.tgrammar.txt:45: no rule syntax found
+    paar minute op die middag
+
+exports/afr/44.tgrammar.txt:46: no rule syntax found
+    Johannes en Maria
+
+exports/afr/44.tgrammar.txt:47: no rule syntax found
+    Maria en Johannes
+
+exports/afr/44.tgrammar.txt:48: no rule syntax found
+    Johannes, Maria en Petrus
+
+exports/afr/44.tgrammar.txt:49: no rule syntax found
+    Johannes, Maria, Petrus en Paulus
+
+exports/afr/44.tgrammar.txt:50: no rule syntax found
+    Johannes, Maria, Petrus, Paulus en Bill
+
+exports/afr/44.tgrammar.txt:51: no rule syntax found
+    Johannes of Maria
+
+exports/afr/44.tgrammar.txt:52: no rule syntax found
+    Maria of Johannes
+
+exports/afr/44.tgrammar.txt:53: no rule syntax found
+    Johannes, Maria of Petrus
+
+exports/afr/44.tgrammar.txt:54: no rule syntax found
+    Johannes, Maria, Petrus of Paulus
+
+exports/afr/44.tgrammar.txt:55: no rule syntax found
+    Johannes, Maria, Petrus, Paulus of Bill
+
+exports/afr/44.tgrammar.txt:56: no rule syntax found
+    mooi motor
+
+exports/afr/44.tgrammar.txt:57: no rule syntax found
+    die mooi motor
+
+exports/afr/44.tgrammar.txt:58: no rule syntax found
+    die nuwe mooi motor
+
+exports/afr/44.tgrammar.txt:59: no rule syntax found
+    die nuwe mooi duur motor
+
+exports/afr/44.tgrammar.txt:60: no rule syntax found
+    baie nuwe mooi duur motors
+
+exports/afr/44.tgrammar.txt:61: no rule syntax found
+    glas beker
+
+exports/afr/44.tgrammar.txt:62: no rule syntax found
+    die glas beker
+
+exports/afr/44.tgrammar.txt:63: no rule syntax found
+    die mooi glas beker
+
+exports/afr/44.tgrammar.txt:64: no rule syntax found
+    die nuwe mooi glas beker
+
+exports/afr/44.tgrammar.txt:65: no rule syntax found
+    die nuwe mooi duur glas beker
+
+exports/afr/44.tgrammar.txt:66: no rule syntax found
+    die nuwe mooi duur motor van Johannes
+
+exports/afr/44.tgrammar.txt:67: no rule syntax found
+    'n nuwe mooi motor van Switserland en 'n baie duur boek vir Johannes
+
+exports/afr/44.tgrammar.txt:68: no rule syntax found
+    'n baie mooi motor
+
+exports/afr/44.tgrammar.txt:69: no rule syntax found
+    'n uiters mooi motor
+
+exports/afr/44.tgrammar.txt:70: no rule syntax found
+    mooi en duur motors
+
+exports/afr/44.tgrammar.txt:71: no rule syntax found
+    'n mooi en duur motor
+
+exports/afr/44.tgrammar.txt:72: no rule syntax found
+    'n mooi motor en 'n duur boek
+
+exports/afr/44.tgrammar.txt:73: no rule syntax found
+    'n nuwe mooi motor en 'n nuwe duur boek
+
+exports/afr/44.tgrammar.txt:74: no rule syntax found
+    'n mooi motor, 'n duur boek en 'n nuwe beker
+
+exports/afr/44.tgrammar.txt:75: no rule syntax found
+    'n baie mooi motor, 'n uiters duur boek en 'n nuwe glas beker
+
+exports/afr/44.tgrammar.txt:76: no rule syntax found
+    hy het aangekom
+
+exports/afr/44.tgrammar.txt:77: no rule syntax found
+    hy kom aan
+
+exports/afr/44.tgrammar.txt:78: no rule syntax found
+    hy sal aankom
+
+exports/afr/44.tgrammar.txt:79: no rule syntax found
+    hy het aangekom
+
+exports/afr/44.tgrammar.txt:80: no rule syntax found
+    hy kom aan
+
+exports/afr/44.tgrammar.txt:81: no rule syntax found
+    hy het aangekom
+
+exports/afr/44.tgrammar.txt:82: no rule syntax found
+    hy moet aankom
+
+exports/afr/44.tgrammar.txt:83: no rule syntax found
+    hy het nie aangekom nie 
+
+exports/afr/44.tgrammar.txt:84: no rule syntax found
+    hy kom nie aan nie
+
+exports/afr/44.tgrammar.txt:85: no rule syntax found
+    hy sal nie aankom nie
+
+exports/afr/44.tgrammar.txt:86: no rule syntax found
+    hy vermoor Maria
+
+exports/afr/44.tgrammar.txt:87: no rule syntax found
+    hy vermoor haar
+
+exports/afr/44.tgrammar.txt:88: no rule syntax found
+    hy het homself vermoor
+
+exports/afr/44.tgrammar.txt:89: no rule syntax found
+    hy vermoor haar gister
+
+exports/afr/44.tgrammar.txt:90: no rule syntax found
+    hy vermoor haar met 'n mes
+
+exports/afr/44.tgrammar.txt:91: no rule syntax found
+    hy vermoor haar in die kombuis
+
+exports/afr/44.tgrammar.txt:92: no rule syntax found
+    hy vermoor haar as gevolg van Petrus
+
+exports/afr/44.tgrammar.txt:93: no rule syntax found
+    hy vermoor haar met 'n mes in die kombuis gister
+
+exports/afr/44.tgrammar.txt:94: no rule syntax found
+    hy vermoor haar met 'n mes in die kombuis gister as gevolg van Petrus
+
+exports/afr/44.tgrammar.txt:95: no rule syntax found
+    wie vermoor Maria?
+
+exports/afr/44.tgrammar.txt:96: no rule syntax found
+    dit is mooi
+
+exports/afr/44.tgrammar.txt:97: no rule syntax found
+    dit is baie mooi
+
+exports/afr/44.tgrammar.txt:98: no rule syntax found
+    dit is nie mooi nie
+
+exports/afr/44.tgrammar.txt:99: no rule syntax found
+    dit is mooi en duur
+
+exports/afr/44.tgrammar.txt:100: no rule syntax found
+    dit is mooi, nuut en duur
+
+exports/afr/export_grammar.php__type_M_lang_af:M0: catalogue entry has no (<i>examples</i>) rule body (e.g. an invariant paradigm or a dictionary-inline placeholder)
+    M0
+
+exports/afr/export_grammar.php__type_M_lang_af:M1: catalogue entry has no (<i>examples</i>) rule body (e.g. an invariant paradigm or a dictionary-inline placeholder)
+    M1
+
+exports/afr/export_grammar.php__type_Y_lang_af:Y0: catalogue entry has no (<i>examples</i>) rule body (e.g. an invariant paradigm or a dictionary-inline placeholder)
+    Y0
+
+exports/afr/export_grammar.php__type_Y_lang_af:Y1: catalogue entry has no (<i>examples</i>) rule body (e.g. an invariant paradigm or a dictionary-inline placeholder)
+    Y1
+
+exports/afr/44.dgrammar.txt:1: archive header/comment line (starts with ';'), not a disambiguation rule
+    ; RuleSet:(MX)afr_unl_dgrammar
+
+exports/afr/44.dgrammar.txt:2: archive header/comment line (starts with ';'), not a disambiguation rule
+    ; User:Sergiy Prots (prots)
+
+exports/afr/44.dgrammar.txt:3: archive header/comment line (starts with ';'), not a disambiguation rule
+    ; Date:26.24.2013 at 04:24:46
+
+exports/afr/44.dgrammar.txt:4: blank line
+    
+
+exports/afr/44.dgrammar.txt:5: archive header/comment line (starts with ';'), not a disambiguation rule
+    ; "afr_unl_dgrammar"
+
+exports/afr/44.dgrammar.txt:6: archive header/comment line (starts with ';'), not a disambiguation rule
+    ; MX
+
+exports/afr/47.dgrammar.txt:1: archive header/comment line (starts with ';'), not a disambiguation rule
+    ; RuleSet:(MX)AfrDRules
+
+exports/afr/47.dgrammar.txt:2: archive header/comment line (starts with ';'), not a disambiguation rule
+    ; User:Marsel Pretorius (wawiel)
+
+exports/afr/47.dgrammar.txt:3: archive header/comment line (starts with ';'), not a disambiguation rule
+    ; Date:11.27.2013 at 02:27:18
+
+exports/afr/47.dgrammar.txt:4: blank line
+    
+
+exports/afr/47.dgrammar.txt:5: archive header/comment line (starts with ';'), not a disambiguation rule
+    ; "AfrDRules"
+
+exports/afr/47.dgrammar.txt:6: archive header/comment line (starts with ';'), not a disambiguation rule
+    ; MX

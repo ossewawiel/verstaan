@@ -2,7 +2,7 @@
 issue: 15
 title: "Build the grammar importer"
 milestone: M2
-status: open
+status: in-progress
 depends_on: [13]
 agent: implementer
 agents: [implementer]
@@ -10,7 +10,7 @@ model: sonnet
 effort: high
 checkpoint: null
 commit: null
-worktree: null
+worktree: .worktrees/m2-store
 github_issue: 224
 ---
 ## What
@@ -82,8 +82,8 @@ is nothing to import.
 
 ## Done when
 
-- [ ] `tools/importer/grammar.py` runs on every file named above for `afr` and `eng`.
-- [ ] Five grammar files per language exist; `afr`'s `disambiguation.yaml` holds records from
+- [x] `tools/importer/grammar.py` runs on every file named above for `afr` and `eng`.
+- [x] Five grammar files per language exist; `afr`'s `disambiguation.yaml` holds records from
       `44.dgrammar.txt`/`47.dgrammar.txt`, `eng`'s is empty with its `archive: none for eng` comment
       (no `*.dgrammar.txt` export exists for `eng` in the manifest).
-- [ ] `pytest tools/importer/test_grammar.py` passes, including the unparsed-line count check.
+- [x] `pytest tools/importer/test_grammar.py` passes, including the unparsed-line count check.

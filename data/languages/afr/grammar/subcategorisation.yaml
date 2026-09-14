@@ -1,0 +1,50 @@
+# Licence: CC BY-SA 4.0. Source: UNL Archive, see data/archive/manifest.jsonl
+- id: Y8
+  kind: subcategorisation
+  lhs: "NC(PH([van]))"
+  rhs: ""
+  conditions: []
+  comment: "Noun requiring a complement introduced by \"van\" (vriend, aanbod, begin, einde,)"
+  source: {archive_path: exports/afr/export_grammar.php__type_Y_lang_af, line: Y8}
+- id: Y9
+  kind: subcategorisation
+  lhs: "NC(PH([tot]))"
+  rhs: ""
+  conditions: []
+  comment: "Noun requiring a complement introduced by \"tot\" (toegang, lasbrief,)"
+  source: {archive_path: exports/afr/export_grammar.php__type_Y_lang_af, line: Y9}
+- id: Y10
+  kind: subcategorisation
+  lhs: "NC(PH([vir]))"
+  rhs: ""
+  conditions: []
+  comment: "Noun requiring a complement introduced by \"vir\" (aanspreeklikheid, agting, hoop, kompliment)"
+  source: {archive_path: exports/afr/export_grammar.php__type_Y_lang_af, line: Y10}
+- id: Y11
+  kind: subcategorisation
+  lhs: "NC(PH([op]))"
+  rhs: ""
+  conditions: []
+  comment: "Noun requiring a complement introduced by \"op\" (kenner, aanval, uitwerking, invloed)"
+  source: {archive_path: exports/afr/export_grammar.php__type_Y_lang_af, line: Y11}
+- id: Y12
+  kind: subcategorisation
+  lhs: "NC(PH([in]))"
+  rhs: ""
+  conditions: []
+  comment: "Noun requiring a complement introduced by \"in\" (daling, styging, vertraging, verskil)"
+  source: {archive_path: exports/afr/export_grammar.php__type_Y_lang_af, line: Y12}
+- id: Y13
+  kind: subcategorisation
+  lhs: "NC(PH([tussen]))"
+  rhs: ""
+  conditions: []
+  comment: "Noun requiring a complement introduced by \"tussen\" (verskil, verhouding, stand, ooreenkoms)"
+  source: {archive_path: exports/afr/export_grammar.php__type_Y_lang_af, line: Y13}
+- id: Y14
+  kind: subcategorisation
+  lhs: "NC(PH([met]))"
+  rhs: ""
+  conditions: []
+  comment: "Noun requiring a complement introduced by \"met\" (verhouding, assosiasie, teenstelling)"
+  source: {archive_path: exports/afr/export_grammar.php__type_Y_lang_af, line: Y14}

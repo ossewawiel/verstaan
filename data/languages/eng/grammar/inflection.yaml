@@ -1,0 +1,197 @@
+# Licence: CC BY-SA 4.0. Source: UNL Archive, see data/archive/manifest.jsonl
+- id: M2
+  kind: inflection
+  lhs: ""
+  rhs: "SNG:=0>\"\";PLR:=0>\"s\";"
+  conditions: []
+  comment: Add "s" to form the plural (table>tables; boy>boys; computer>computers;)
+  source: {archive_path: exports/eng/export_grammar.php__type_M_lang_en, line: M2}
+- id: M3
+  kind: inflection
+  lhs: ""
+  rhs: "SNG:=0>\"\";PLR:=\"y\">\"ies\";"
+  conditions: []
+  comment: Replace "y" by "ies" to form the plural (baby>babies;)
+  source: {archive_path: exports/eng/export_grammar.php__type_M_lang_en, line: M3}
+- id: M4
+  kind: inflection
+  lhs: ""
+  rhs: "SNG:=0>\"\";PLR:=0>\"es\";"
+  conditions: []
+  comment: Add "es" to form the plural (church>churches; box>boxes;)
+  source: {archive_path: exports/eng/export_grammar.php__type_M_lang_en, line: M4}
+- id: M5
+  kind: inflection
+  lhs: ""
+  rhs: "SNG:=0>\"\";PLR:=\"f\">\"ves\";"
+  conditions: []
+  comment: Replace "f" by "ves" to form the plural (thief>thieves; wolf>wolves;)
+  source: {archive_path: exports/eng/export_grammar.php__type_M_lang_en, line: M5}
+- id: M6
+  kind: inflection
+  lhs: ""
+  rhs: "SNG:=0>\"\";PLR:=\"fe\">\"ves\";"
+  conditions: []
+  comment: Replace "fe" by "ves" to form the plural (life>lives; wife>wives;)
+  source: {archive_path: exports/eng/export_grammar.php__type_M_lang_en, line: M6}
+- id: M7
+  kind: inflection
+  lhs: ""
+  rhs: "SNG:=0>\"\";PLR:=\"man\":\"men\";"
+  conditions: []
+  comment: Replace "man" by "men" to form the plural (man>men; woman>women; airman>airmen;)
+  source: {archive_path: exports/eng/export_grammar.php__type_M_lang_en, line: M7}
+- id: M8
+  kind: inflection
+  lhs: ""
+  rhs: "SNG:=0>\"\";PLR:=\"ouse\">\"ice\";"
+  conditions: []
+  comment: Replace "ouse" by "ice" to form the plural (mouse>mice; louse>lice;)
+  source: {archive_path: exports/eng/export_grammar.php__type_M_lang_en, line: M8}
+- id: M9
+  kind: inflection
+  lhs: ""
+  rhs: "SNG:=0>\"\";PLR:=\"person\":\"people\";"
+  conditions: []
+  comment: Replace "person" by "people" to form the plural (person>people; religious person>religious people;)
+  source: {archive_path: exports/eng/export_grammar.php__type_M_lang_en, line: M9}
+- id: M10
+  kind: inflection
+  lhs: ""
+  rhs: "SNG:=0>\"\";PLR:=\"tooth\":\"teeth\";"
+  conditions: []
+  comment: Replace "tooth" by "teeth" to form the plural (tooth>teeth; front tooth>front teeth;)
+  source: {archive_path: exports/eng/export_grammar.php__type_M_lang_en, line: M10}
+- id: M11
+  kind: inflection
+  lhs: ""
+  rhs: "SNG:=0>\"\";PLR:=\"is\">\"es\";"
+  conditions: []
+  comment: Replace "is" by "es" to form the plural (axis>axes; analysis>analyses;)
+  source: {archive_path: exports/eng/export_grammar.php__type_M_lang_en, line: M11}
+- id: M12
+  kind: inflection
+  lhs: ""
+  rhs: "SNG:=0>\"\";PLR:=2>\"ices\";"
+  conditions: []
+  comment: Replace the two last characters by "ices" to form the plural (appendix>appendices; cortex>cortices;)
+  source: {archive_path: exports/eng/export_grammar.php__type_M_lang_en, line: M12}
+- id: M13
+  kind: inflection
+  lhs: ""
+  rhs: "SNG:=0>\"\";PLR:=2>\"a\";"
+  conditions: []
+  comment: Replace the two last characters by "a" to form the plural (bacterium>bacteria; phenomenon>phenomena;)
+  source: {archive_path: exports/eng/export_grammar.php__type_M_lang_en, line: M13}
+- id: M14
+  kind: inflection
+  lhs: ""
+  rhs: "SNG:=0>\"\";PLR:=\"us\">\"i\";"
+  conditions: []
+  comment: Replace "us" by "i" to form the plural (cactus>cacti;)
+  source: {archive_path: exports/eng/export_grammar.php__type_M_lang_en, line: M14}
+- id: M15
+  kind: inflection
+  lhs: ""
+  rhs: "PLR:=0>\"'s\";"
+  conditions: []
+  comment: Add "'s" to form the plural (A>A's;)
+  source: {archive_path: exports/eng/export_grammar.php__type_M_lang_en, line: M15}
+- id: M16
+  kind: inflection
+  lhs: ""
+  rhs: "INF:=0>\"\";PAS:=0>\"ed\";PTP:=0>\"ed\";3PS&PRS:=0>\"s\";GER:=0>\"ing\";"
+  conditions: []
+  comment: "Regular verbs (kill > killed, killed, killing, kills)"
+  source: {archive_path: exports/eng/export_grammar.php__type_M_lang_en, line: M16}
+- id: M17
+  kind: inflection
+  lhs: ""
+  rhs: "INF:=0>\"\";PAS:=0>\"d\";PTP:=0>\"d\";3PS&PRS:=0>\"s\";GER:=1>\"ing\";"
+  conditions: []
+  comment: "Regular verbs ending in -e (vote > voted, voted, voting, votes)"
+  source: {archive_path: exports/eng/export_grammar.php__type_M_lang_en, line: M17}
+- id: M18
+  kind: inflection
+  lhs: ""
+  rhs: "INF:=0>\"\";PAS:=\"y\">\"ied\";PTP:=\"y\">\"ied\";GER:=0>\"ing\";3PS&PRS:=\"y\">\"ies\";"
+  conditions: []
+  comment: "Regular verbs ending in -y (unify > unified, unified, unifying, unifies)"
+  source: {archive_path: exports/eng/export_grammar.php__type_M_lang_en, line: M18}
+- id: M19
+  kind: inflection
+  lhs: ""
+  rhs: "INF:=0>\"\";PAS:=0>\"ed\";PTP:=0>\"ed\";3PS&PRS:=0>\"es\";GER:=0>\"ing\";"
+  conditions: []
+  comment: "Regular verbs ending in -s, -ch, -sh (dress > dressed, dressed, dressing, dresses)"
+  source: {archive_path: exports/eng/export_grammar.php__type_M_lang_en, line: M19}
+- id: M20
+  kind: inflection
+  lhs: ""
+  rhs: "INF:=0>\"\";PAS:=0>\"ked\";PTP:=0>\"ked\";3PS&PRS:=0>\"\";GER:=0>\"king\";"
+  conditions: []
+  comment: "Regular verbs ending in -c (mimic > mimicked, mimicked, mimicking, mimics)"
+  source: {archive_path: exports/eng/export_grammar.php__type_M_lang_en, line: M20}
+- id: M21
+  kind: inflection
+  lhs: ""
+  rhs: "INF:=0>\"\";PAS:=0>\"\";PTP:=0>\"\";GER:=0>\"ing\";3PS&PRS:=0>\"s\";"
+  conditions: []
+  comment: "Irregular verbs that do not vary in the past and past participle. Gerund is made by adding \"ing\". (read > read, read, reading, reads)"
+  source: {archive_path: exports/eng/export_grammar.php__type_M_lang_en, line: M21}
+- id: M22
+  kind: inflection
+  lhs: ""
+  rhs: "INF:=0>\"\";GER:=0>\"ing\";3PS&PRS:=0>\"s\";"
+  conditions: []
+  comment: "Verbs that are irregular in the past and in the past participle. The irregular behaviour is described in the inflectional rules. (buy > buying, buys)"
+  source: {archive_path: exports/eng/export_grammar.php__type_M_lang_en, line: M22}
+- id: M256
+  kind: inflection
+  lhs: ""
+  rhs: "INF:=0>\"\";1PS&PRS:=\"am\";2PS&PRS:=\"are\";3PS&PRS:=\"is\";1PP&PRS:=\"are\";2PP&PRS:=\"are\";3PP&PRS:=\"are\";1PS&PAS:=\"was\";2PS&PAS:=\"were\";3PS&PAS:=\"was\";1PP&PAS:=\"were\";2PP&PAS:=\"were\";3PP&PAS:=\"were\";PTP:=\"been\";"
+  conditions: []
+  comment: "Verb to be (be, am, are, was, were, been)"
+  source: {archive_path: exports/eng/export_grammar.php__type_M_lang_en, line: M256}
+- id: M257
+  kind: inflection
+  lhs: ""
+  rhs: "INF:=0>\"\";PAS:=\"had\";PTP:=\"had\";GER:=1>\"ing\";3PS&PRS:=\"has\";"
+  conditions: []
+  comment: "Verb to have (have, has, had, having)"
+  source: {archive_path: exports/eng/export_grammar.php__type_M_lang_en, line: M257}
+- id: M258
+  kind: inflection
+  lhs: ""
+  rhs: "SNG:=0>\"\";PLR:=0>\"s\";"
+  conditions: []
+  comment: "Plural in -s (third>thirds, quarter>quarters)"
+  source: {archive_path: exports/eng/export_grammar.php__type_M_lang_en, line: M258}
+- id: M260
+  kind: inflection
+  lhs: ""
+  rhs: "SNG:=0>\"\";PLR:=\"y\">\"ies\";"
+  conditions: []
+  comment: Plural in -ies (century > centuries)
+  source: {archive_path: exports/eng/export_grammar.php__type_M_lang_en, line: M260}
+- id: M262
+  kind: inflection
+  lhs: ""
+  rhs: "INF:=0>\"\";1PS&PRS:=\"am\";2PS&PRS:=\"are\";3PS&PRS:=\"is\";1PP&PRS:=\"are\";2PP&PRS:=\"are\";3PP&PRS:=\"are\";1PS&PAS:=\"was\";2PS&PAS:=\"were\";3PS&PAS:=\"was\";1PP&PAS:=\"were\";2PP&PAS:=\"were\";3PP&PAS:=\"were\";PTP:=\"been\";"
+  conditions: []
+  comment: Auxiliary verb "to be" (be)
+  source: {archive_path: exports/eng/export_grammar.php__type_M_lang_en, line: M262}
+- id: M263
+  kind: inflection
+  lhs: ""
+  rhs: "INF:=0>\"\";PAS:=\"did\";PTP:=\"done\";GER:=0>\"ing\";3PS&PRS:=\"does\";"
+  conditions: []
+  comment: "Verb to do (do, did, done, doing, does)"
+  source: {archive_path: exports/eng/export_grammar.php__type_M_lang_en, line: M263}
+- id: M264
+  kind: inflection
+  lhs: ""
+  rhs: "INF:=0>\"\";PAS:=\"did\";PTP:=\"done\";GER:=0>\"ing\";3PS&PRS:=\"does\";"
+  conditions: []
+  comment: "Verb to do (do, did, done, doing, does)"
+  source: {archive_path: exports/eng/export_grammar.php__type_M_lang_en, line: M264}

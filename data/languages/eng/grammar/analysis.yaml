@@ -1,0 +1,1268 @@
+# Licence: CC BY-SA 4.0. Source: UNL Archive, see data/archive/manifest.jsonl
+- id: "1"
+  kind: analysis
+  lhs: "(N,PLR,^@pl,^@multal,^@paucal,^@all)"
+  rhs: (+att=@pl)
+  conditions: []
+  comment: books > book.@pl
+  source: {archive_path: grammars/eng_unl_tgrammar.txt, line: 17}
+- id: "2"
+  kind: analysis
+  lhs: "(AUX,%x)(GER,%y)"
+  rhs: "(%y,+att=@progressive,+att=%x)"
+  conditions: []
+  comment: is.@present killing > killing.@progressive.@present
+  source: {archive_path: grammars/eng_unl_tgrammar.txt, line: 24}
+- id: "3"
+  kind: analysis
+  lhs: "(AUX,%x)(V,%y)"
+  rhs: "(%y,+att=%x)"
+  conditions: []
+  comment: will.@future kill > kill.@future
+  source: {archive_path: grammars/eng_unl_tgrammar.txt, line: 25}
+- id: "4"
+  kind: analysis
+  lhs: "(^AUX,^BLK,^[not],^[n't])(V,{^AUX|COP},PRS,^@present)"
+  rhs: ()(+att=@present)
+  conditions: []
+  comment: kill > kill.@present
+  source: {archive_path: grammars/eng_unl_tgrammar.txt, line: 26}
+- id: "5"
+  kind: analysis
+  lhs: "(^AUX,^BLK,^[not],^[n't])(V,{^AUX|COP},PAS,^@past)"
+  rhs: ()(+att=@past)
+  conditions: []
+  comment: killed < kill.@past
+  source: {archive_path: grammars/eng_unl_tgrammar.txt, line: 27}
+- id: "6"
+  kind: analysis
+  lhs: "(MOV,%x)(V,%y)"
+  rhs: "(%y,+att=%x)"
+  conditions: []
+  comment: must.@obligation kill > kill.@obligation
+  source: {archive_path: grammars/eng_unl_tgrammar.txt, line: 29}
+- id: "7"
+  kind: analysis
+  lhs: "([not])([to],%x)(V,%y)"
+  rhs: "(%x)(+att=@not,%y)"
+  conditions: []
+  comment: not to do > do.@not
+  source: {archive_path: grammars/eng_unl_tgrammar.txt, line: 31}
+- id: "8"
+  kind: analysis
+  lhs: "({[not]|[n't]})({V,^AUX|J|N|A|D},%x)"
+  rhs: "(+att=@not,%x)"
+  conditions: []
+  comment: not kill > kill.@not
+  source: {archive_path: grammars/eng_unl_tgrammar.txt, line: 32}
+- id: "9"
+  kind: analysis
+  lhs: "(VB,%x)(FPR)"
+  rhs: "(%x,+att=@reflexive)"
+  conditions: []
+  comment: kill himself > kill.@reflexive
+  source: {archive_path: grammars/eng_unl_tgrammar.txt, line: 34}
+- id: "10"
+  kind: analysis
+  lhs: "(N,%x)(NB,%y)({XP,^D,^J|PUT|STAIL|CTAIL},%right)"
+  rhs: "(NB(%y,+proj;%x,+adjt),+XB=NB,+LEX=N,%new)(%right)"
+  conditions: []
+  comment: "glass mug > NB(mug, glass)"
+  source: {archive_path: grammars/eng_unl_tgrammar.txt, line: 46}
+- id: "11"
+  kind: analysis
+  lhs: "(POD,%x)(NB,%y)({^N|PUT|STAIL|CTAIL},%right)"
+  rhs: "(NB(%y;%x,+adjt,+pos),+LEX=N,+XB=NB,%new)(%right)"
+  conditions: []
+  comment: "my book > NB(book,I)"
+  source: {archive_path: grammars/eng_unl_tgrammar.txt, line: 48}
+- id: "12"
+  kind: analysis
+  lhs: "(D,att,%x)(NB,%y)({^N|PUT|STAIL|CTAIL},%right)"
+  rhs: "(%y,+att=%x)(%right)"
+  conditions: []
+  comment: the.@def book > book.@def
+  source: {archive_path: grammars/eng_unl_tgrammar.txt, line: 50}
+- id: "13"
+  kind: analysis
+  lhs: "(SAV,att,%x)({AB|JB|DB},%y)"
+  rhs: "(%y,+att=%x)"
+  conditions: []
+  comment: very.@plus beautiful > beautiful.@plus
+  source: {archive_path: grammars/eng_unl_tgrammar.txt, line: 57}
+- id: "14"
+  kind: analysis
+  lhs: "(SAV,^att,%x)({AB|JB|DB},%y)"
+  rhs: "(XB(%y;%x,+spec,+man),+LEX=%y,+XB=%y)"
+  conditions: []
+  comment: "extremely beautiful > XB(beautiful,extremely)"
+  source: {archive_path: grammars/eng_unl_tgrammar.txt, line: 58}
+- id: "15"
+  kind: analysis
+  lhs: "(P,^PP,%x)(XP,^DP,^PP,%y)({XP|PUT|STAIL|CTAIL},%z)"
+  rhs: "(%y,-LEX,-XP,+LEX=P,+XP=PP,+adjt,+rel=%x,+att=%x)(%z)"
+  conditions: []
+  comment: from Paris > Paris.@from
+  source: {archive_path: grammars/eng_unl_tgrammar.txt, line: 65}
+- id: "16"
+  kind: analysis
+  lhs: "(XP,%x)(COMMA,%c)(XP=%x,rel=and,%y)"
+  rhs: "(%x)([and],+W,%new)(%y)"
+  conditions: []
+  comment: "John, Mary and Peter > John and Mary and Peter"
+  source: {archive_path: grammars/eng_unl_tgrammar.txt, line: 73}
+- id: "17"
+  kind: analysis
+  lhs: "(XP,%x)(COMMA,%c)(XP=%x,rel=or,%y)"
+  rhs: "(%x)([or],+W,%new)(%y)"
+  conditions: []
+  comment: "John, Mary or Peter > John or Mary or Peter"
+  source: {archive_path: grammars/eng_unl_tgrammar.txt, line: 74}
+- id: "18"
+  kind: analysis
+  lhs: "(XP,%x)([and])(XP=%x,%y)"
+  rhs: "(and(%y;%x),+LEX=%x,+XP=%x,+rel=and,%new)"
+  conditions: []
+  comment: "John and Mary > and(Mary,John)"
+  source: {archive_path: grammars/eng_unl_tgrammar.txt, line: 75}
+- id: "19"
+  kind: analysis
+  lhs: "(XP,%x)([or])(XP=%x,%y)"
+  rhs: "(or(%y;%x),+LEX=%x,+XP=%x,+rel=or,%new)"
+  conditions: []
+  comment: "John or Mary > or(Mary,John)"
+  source: {archive_path: grammars/eng_unl_tgrammar.txt, line: 76}
+- id: "20"
+  kind: analysis
+  lhs: "(VP,%x)(QMARK)"
+  rhs: "(%x,att=@interrogative)"
+  conditions: []
+  comment: who killed Mary? > who killed.@interrogative Mary
+  source: {archive_path: grammars/eng_unl_tgrammar.txt, line: 82}
+- id: "21"
+  kind: default
+  lhs: "(TEMP,%x)(BLK,%y)(TEMP,%z)"
+  rhs: "(%x&%y&%z,-BLK)"
+  conditions: []
+  comment: merges temporary words
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 14}
+- id: "22"
+  kind: default
+  lhs: "(PPN,%x)(BLK,%y)(PPN,%z)"
+  rhs: "(%x&%y&%z,+TEMP,-BLK)"
+  conditions: []
+  comment: merges sequences of proper names
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 15}
+- id: "23"
+  kind: default
+  lhs: (BLK)
+  rhs: ""
+  conditions: []
+  comment: deletes the blank space (this rule applies only if the blank space is in the dictionary)
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 16}
+- id: "24"
+  kind: default
+  lhs: "(%x,MERGE>)(%y)"
+  rhs: "(%x&%y,-MERGE>)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 19}
+- id: "25"
+  kind: default
+  lhs: "(%x)(%y,<MERGE)(%y)"
+  rhs: "(%x&%y,-<MERGE)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 20}
+- id: "26"
+  kind: default
+  lhs: "(TIME,^\"/\\d\\d\\:\\d\\d\\:\\d\\d/\")"
+  rhs: "(-TIME,+TEMP)"
+  conditions: []
+  comment: "analyze expressions of time that don't follow the syntax HH:MM:SS"
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 23}
+- id: "27"
+  kind: default
+  lhs: "(HOUR,%h)(MINUTE,%m)"
+  rhs: "(%h)(\":\")(%m)"
+  conditions: []
+  comment: "introduces a colon between the hour and the minute, if not any"
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 24}
+- id: "28"
+  kind: default
+  lhs: "(MINUTE,%m)(SECOND,%s)"
+  rhs: "(%m)(\":\")(%s)"
+  conditions: []
+  comment: "introduces a colon between the minute and the second, if not any"
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 25}
+- id: "29"
+  kind: default
+  lhs: "(DIGIT,^HOUR,%h)(\":\",%a)(DIGIT,^MINUTE,%m)(\":\",%b)(DIGIT,^SECOND,%s)"
+  rhs: "(%h,+HOUR)(%a)(%m,+MINUTE)(%b)(%s,+SECOND)"
+  conditions: []
+  comment: "by default DD:DD:DD = HH:MM:SS"
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 26}
+- id: "30"
+  kind: default
+  lhs: "(DIGIT,^HOUR,^MINUTE,%h)(\":\",%a)(DIGIT,^MINUTE,^SECOND,%m)"
+  rhs: "(%h,+HOUR)(%a)(%m,+MINUTE)"
+  conditions: []
+  comment: "by default DD:DD = HH:MM"
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 27}
+- id: "31"
+  kind: default
+  lhs: "({\"/\\d/\"|[[/\\d/]]},^DOZEN,{SECOND|MINUTE|HOUR},%x)({^BLK|STAIL|CTAIL},%y)"
+  rhs: "([0],[[0]],MERGE>)(%x)(%y)"
+  conditions: []
+  comment: "normalize orphan digits: 1 > 01"
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 28}
+- id: "32"
+  kind: default
+  lhs: "(HOUR,%h)(\":\",%a)(MINUTE,%m)({STAIL|CTAIL|^\":\"},%rc)"
+  rhs: "(%h)(%a)(%m)(\":\")([[00]],+DIGIT,+SECOND)(%rc)"
+  conditions: []
+  comment: "[HH]:[MM] > [HH]:[MM]:[00]"
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 29}
+- id: "33"
+  kind: default
+  lhs: "(MINUTE,%m)({STAIL|CTAIL|^SECOND,^DIGIT,^BLK,^\":\"},%rc)"
+  rhs: "(%m)(\":\")([[00]],+DIGIT,+SECOND)(%rc)"
+  conditions: []
+  comment: "[MM] > [MM]:[00]"
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 30}
+- id: "34"
+  kind: default
+  lhs: "({SHEAD|CHEAD|^MINUTE,^DIGIT,^BLK,^\":\"},%lc)(SECOND,%s)"
+  rhs: "(%lc)([[00]],+DIGIT,+MINUTE)(\":\")(%s)"
+  conditions: []
+  comment: "[SS] > [00]:[SS]"
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 31}
+- id: "35"
+  kind: default
+  lhs: "(HOUR,%h)({STAIL|CTAIL|^MINUTE,^DIGIT,^BLK,^\":\"},%rc)"
+  rhs: "(%h)(\":\")([[00]],+DIGIT,+MINUTE)(%rc)"
+  conditions: []
+  comment: "[HH] > [HH]:[00]"
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 32}
+- id: "36"
+  kind: default
+  lhs: "({SHEAD|CHEAD|^HOUR,^DIGIT,^BLK,^\":\"},%lc)(MINUTE,%y)"
+  rhs: "(%lc)([[00]],+DIGIT,+HOUR)(\":\")(%y)"
+  conditions: []
+  comment: "[MM] > [00]:[MM]"
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 33}
+- id: "37"
+  kind: default
+  lhs: "(HOUR,%h)(\":\",%a)(MINUTE,%m)(\":\",%b)(SECOND,%s)"
+  rhs: "(%h&%a&%m&%b&%s,+TIME,-HOUR,-MINUTE,-SECOND)"
+  conditions: []
+  comment: "[HH][:][MM][:][SS] > [HH:MM:SS]"
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 34}
+- id: "38"
+  kind: default
+  lhs: "(VB,%vb)({NP|PP|JP},%xp)"
+  rhs: "(VB(%vb,+proj;%xp,+comp,+proj),+XB=VB,+LEX=V,%new)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 46}
+- id: "39"
+  kind: default
+  lhs: "(PB,%pb)({NP|VP|JP},%xp)"
+  rhs: "(PB(%pb,+proj;%xp,+comp,+proj),+XB=PB,+LEX=P,%new)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 47}
+- id: "40"
+  kind: default
+  lhs: "(JB,%jb)(PP,%pp)"
+  rhs: "(JB(%jb,+proj;%pp,+comp,+proj),+XB=JB,+LEX=J,%new)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 48}
+- id: "41"
+  kind: default
+  lhs: "(AB,%ab)(PP,%pp)"
+  rhs: "(AB(%ab,+proj;%pp,+comp,+proj),+XB=AB,+LEX=A,%new)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 49}
+- id: "42"
+  kind: default
+  lhs: "(IB,%ib)(VP,%vp)"
+  rhs: "(IB(%ib,+proj;%vp,+comp,+proj),+XB=IB,+LEX=I,%new)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 50}
+- id: "43"
+  kind: default
+  lhs: "({XP,^IP|SHEAD|CHEAD|PUT},%left)(VP,^proj,%v)"
+  rhs: "(%left)(IB(e,+proj;%v,+comp,+proj),+XB=IB,+LEX=I)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 51}
+- id: "44"
+  kind: default
+  lhs: "(CB,%cb)(IP,%ip)"
+  rhs: "(CB(%cb,+proj;%ip,+proj),+XB=CB,+LEX=C,%new)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 52}
+- id: "45"
+  kind: default
+  lhs: "(PPR,NP,^NOM,%np)(VB,%vb)"
+  rhs: "(VB(%vb,+proj;%np,+comp,+proj),+XB=VB,+LEX=V,%new)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 54}
+- id: "46"
+  kind: default
+  lhs: "(VB,%vb)({PP|JP|AP},%xp)"
+  rhs: "(VB(%vb,+proj;%xp,+adjt,+proj),+XB=VB,+LEX=V,%new)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 58}
+- id: "47"
+  kind: default
+  lhs: "(NB,%nb)(JP,%jp)"
+  rhs: "(NB(%nb,+proj;%jp,+adjt,+proj),+XB=NB,+LEX=N,%new)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 59}
+- id: "48"
+  kind: default
+  lhs: "({SHEAD|CHEAD|PUT|^P,^V},%left)(NB,%nb)(PP,%xp)"
+  rhs: "(%left)(NB(%nb,+proj;%xp,+adjt,+proj),+XB=NB,+LEX=N,%new)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 60}
+- id: "49"
+  kind: default
+  lhs: "(JB,%jb)(AP,%xp)"
+  rhs: "(JB(%jb,+proj;%xp,+adjt,+proj),+XB=JB,+LEX=J,%new)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 61}
+- id: "50"
+  kind: default
+  lhs: "(JP,%jp)(NB,%nb)({XP|PUT|STAIL|CTAIL},%right)"
+  rhs: "(NB(%nb,+proj;%jp,+adjt,+proj),+XB=NB,+LEX=N,%new)(%right)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 63}
+- id: "51"
+  kind: default
+  lhs: "(AP,%ap)(VB,%vb)({XP|PUT|STAIL|CTAIL},%right)"
+  rhs: "(VB(%vb,+proj;%ap,+adjt,+proj),+XB=VB,+LEX=V,+POS=%x,%new)(%right)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 64}
+- id: "52"
+  kind: default
+  lhs: "(AP,%ap)(AB,%ab)({^P|PUT|STAIL|CTAIL},%right)"
+  rhs: "(AP(%ab,+proj;%ap,+spec,+proj),+XP=AP,+LEX=A,%new)(%right)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 68}
+- id: "53"
+  kind: default
+  lhs: "(AP,%ap)(JB,%jb)({^P|PUT|STAIL|CTAIL},%right)"
+  rhs: "(JP(%jb,+proj;%ap,+spec,+proj),+XP=JP,+LEX=J,%new)(%right)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 69}
+- id: "54"
+  kind: default
+  lhs: "(DP,%dp)(NB,%nb)({^D,^J,^N,^P|PUT|STAIL|CTAIL},%right)"
+  rhs: "(NP(%nb,+proj;%dp,+spec,+proj),+XP=NP,+LEX=N,%new)(%right)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 70}
+- id: "55"
+  kind: default
+  lhs: "(NP,%np)(VB,%vb)({^A,^J,^N,^P|PUT|STAIL|CTAIL},%right)"
+  rhs: "(VP(%vb,+proj;%np,+spec,+proj),+XP=VP,+LEX=V,%new)(%right)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 71}
+- id: "56"
+  kind: default
+  lhs: "(AP,%ap)(PB,%pb)({^A,^J,^N,^V|PUT|STAIL|CTAIL},%right)"
+  rhs: "(PP(%pb,+proj;%ap,+spec,+proj),+XP=PP,+LEX=P,%new)(%right)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 72}
+- id: "57"
+  kind: default
+  lhs: "(NP,%np)(IB,%ib)(XP,^VP,%right)"
+  rhs: "(IP(%ib,+proj;%np,+spec,+proj),+XP=IP,+LEX=I,%new)(%right)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 73}
+- id: "58"
+  kind: default
+  lhs: "(XP,%xp)(CB,%cb)(XP,^IP,%right)"
+  rhs: "(CP(%cb,+proj;%xp,+spec,+proj),+XP=CP,+LEX=C,%new)(%right)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 74}
+- id: "59"
+  kind: default
+  lhs: "({^A|SHEAD|CHEAD|PUT})(AB,^proj,^XP)"
+  rhs: "()(-XB,-AB,+XP=AP,+proj)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 77}
+- id: "60"
+  kind: default
+  lhs: "({^A|SHEAD|CHEAD|PUT})(DB,^proj,^XP)"
+  rhs: "()(-XB,-DB,+XP=DP,+proj)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 78}
+- id: "61"
+  kind: default
+  lhs: "({^A|SHEAD|CHEAD|PUT})(JB,^proj,^XP)({^P|PUT|STAIL|CTAIL})"
+  rhs: "()(-XB,-JB,+XP=JP,+proj)()"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 79}
+- id: "62"
+  kind: default
+  lhs: "({^D,^J,^N|SHEAD|CHEAD|PUT})(NB,^proj,^XP)({^D,^J,^P|PUT|STAIL|CTAIL})"
+  rhs: "()(-XB,-NB,+XP=NP,+proj)()"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 80}
+- id: "63"
+  kind: default
+  lhs: "({^A,^N|SHEAD|CHEAD|PUT})(VB,^proj,^XP)({^A,^J,^N,^P|PUT|STAIL|CTAIL})"
+  rhs: "()(-XB,-VB,+XP=VP,+proj)()"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 81}
+- id: "64"
+  kind: default
+  lhs: "({^A|SHEAD|CHEAD|PUT})(PB,^proj,^XP,%pb)({PUT|STAIL|CTAIL})"
+  rhs: "()(-XB,-PB,+XP=PP,+proj)()"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 82}
+- id: "65"
+  kind: default
+  lhs: "({XP,^NP|SHEAD|CHEAD|PUT},%left)(IB,^proj,^XP,%ib)(XP,^VP,%right)"
+  rhs: "(%left)(IP(%ib,+proj;+e),+XP=IP,+LEX=I,%new)(%right)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 83}
+- id: "66"
+  kind: default
+  lhs: "({XP|SHEAD|CHEAD|PUT},%left)(CB,^CCJ,^proj,^XP,%cb)(XP,^IP,%right)"
+  rhs: "(%left)(CP(%cb,+proj;+e),+XP=CP,+LEX=C,%new)(%right)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 84}
+- id: "67"
+  kind: default
+  lhs: "(R,^XP,^proj)"
+  rhs: "(+XP=NP,+proj)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 85}
+- id: "68"
+  kind: default
+  lhs: "(C,CCJ,^XP,^proj)"
+  rhs: "(+XP=CP,+proj)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 86}
+- id: "69"
+  kind: default
+  lhs: "(A,^proj,^XB,^XP)"
+  rhs: (+XB=AB)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 89}
+- id: "70"
+  kind: default
+  lhs: "(D,^proj,^XB,^XP)"
+  rhs: (+XB=DB)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 90}
+- id: "71"
+  kind: default
+  lhs: "(J,^proj,^XB,^XP)"
+  rhs: (+XB=JB)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 91}
+- id: "72"
+  kind: default
+  lhs: "(N,^proj,^XB,^XP)"
+  rhs: (+XB=NB)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 92}
+- id: "73"
+  kind: default
+  lhs: "(P,^proj,^XB,^XP)"
+  rhs: (+XB=PB)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 93}
+- id: "74"
+  kind: default
+  lhs: "(V,^proj,^XB,^XP)"
+  rhs: (+XB=VB)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 94}
+- id: "75"
+  kind: default
+  lhs: "(I,^proj,^XB,^XP)"
+  rhs: (+XB=IB)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 95}
+- id: "76"
+  kind: default
+  lhs: "(C,^proj,^XB,^XP)"
+  rhs: (+XB=CB)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 96}
+- id: "77"
+  kind: default
+  lhs: "IP(IB(;VP(;e));%s,^e)"
+  rhs: "IP(IB(;VP(;%s));%e,+e)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 106}
+- id: "78"
+  kind: default
+  lhs: "CP(CB(;IP(IB(;VP(VB(;e);));));%a,^e)"
+  rhs: "CP(CB(;IP(IB(;VP(VB(;%a);));));%e,+e)"
+  conditions: []
+  comment: (moving spec of CP to adjt of VP - position available)
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 108}
+- id: "79"
+  kind: default
+  lhs: "CP(CB(;IP(IB(;VP(VB(;^e),%vb;));));%a,^e)"
+  rhs: "CP(CB(;IP(IB(;VP(VB(VB(%vb;%a))));));%e,+e)"
+  conditions: []
+  comment: (moving spec of CP to adjt of VP - position non-available)
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 109}
+- id: "80"
+  kind: default
+  lhs: "/[ACDIJNPV]B/(%x;%y)"
+  rhs: XB(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 120}
+- id: "81"
+  kind: default
+  lhs: "/[ACDIJNPV]P/(%x;%y)"
+  rhs: XP(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 121}
+- id: "82"
+  kind: default
+  lhs: "(XB(%x;%y),%w,att)"
+  rhs: "(XB(%x,+att=%w;%y),%w,-att)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 124}
+- id: "83"
+  kind: default
+  lhs: "(XP(%x;%y),%w,att)"
+  rhs: "(XP(%x,+att=%w;%y),%w,-att)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 125}
+- id: "84"
+  kind: default
+  lhs: "(XB(%x;%y),%w,rel)"
+  rhs: "(XB(%x,+rel=%w;%y),%w,-rel)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 128}
+- id: "85"
+  kind: default
+  lhs: "(XP(%x;%y),%w,rel)"
+  rhs: "(XP(%x,+rel=%w;%y),%w,-rel)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 129}
+- id: "86"
+  kind: default
+  lhs: XP(XB(%x;%y);%z)
+  rhs: XB(%x;%y)XS(%x;%z)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 132}
+- id: "87"
+  kind: default
+  lhs: XB(XB(%x;%y);%z)
+  rhs: XB(%x;%y)XB(%x;%z)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 133}
+- id: "88"
+  kind: default
+  lhs: XS(XB(%x;%y);%z)
+  rhs: XB(%x;%y)XS(%x;%z)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 134}
+- id: "89"
+  kind: default
+  lhs: XS(%x;XB(%y;%z))
+  rhs: XS(%x;%y)XB(%y;%z)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 135}
+- id: "90"
+  kind: default
+  lhs: XB(%z;XB(%x;%y))
+  rhs: XB(%x;%y)XB(%z;%x)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 136}
+- id: "91"
+  kind: default
+  lhs: XP(%x;%y)
+  rhs: XS(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 137}
+- id: "92"
+  kind: default
+  lhs: XB(%x;e)
+  rhs: (%x)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 140}
+- id: "93"
+  kind: default
+  lhs: XS(%x;e)
+  rhs: (%x)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 141}
+- id: "94"
+  kind: default
+  lhs: (e)
+  rhs: ""
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 142}
+- id: "95"
+  kind: default
+  lhs: "XB(%x,A;%y,adjt)"
+  rhs: AA(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 145}
+- id: "96"
+  kind: default
+  lhs: "XB(%x,C;%y,adjt)"
+  rhs: CA(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 146}
+- id: "97"
+  kind: default
+  lhs: "XB(%x,D;%y,adjt)"
+  rhs: DA(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 147}
+- id: "98"
+  kind: default
+  lhs: "XB(%x,I;%y,adjt)"
+  rhs: IA(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 148}
+- id: "99"
+  kind: default
+  lhs: "XB(%x,J;%y,adjt)"
+  rhs: JA(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 149}
+- id: "100"
+  kind: default
+  lhs: "XB(%x,N;%y,adjt)"
+  rhs: NA(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 150}
+- id: "101"
+  kind: default
+  lhs: "XB(%x,P;%y,adjt)"
+  rhs: PA(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 151}
+- id: "102"
+  kind: default
+  lhs: "XB(%x,V;%y,adjt)"
+  rhs: VA(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 152}
+- id: "103"
+  kind: default
+  lhs: "XB(%x,A;%y,comp)"
+  rhs: NC(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 154}
+- id: "104"
+  kind: default
+  lhs: "XB(%x,C;%y,comp)"
+  rhs: CC(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 155}
+- id: "105"
+  kind: default
+  lhs: "XB(%x,D;%y,comp)"
+  rhs: DC(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 156}
+- id: "106"
+  kind: default
+  lhs: "XB(%x,I;%y,comp)"
+  rhs: IC(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 157}
+- id: "107"
+  kind: default
+  lhs: "XB(%x,J;%y,comp)"
+  rhs: JC(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 158}
+- id: "108"
+  kind: default
+  lhs: "XB(%x,N;%y,comp)"
+  rhs: NC(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 159}
+- id: "109"
+  kind: default
+  lhs: "XB(%x,P;%y,comp)"
+  rhs: PC(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 160}
+- id: "110"
+  kind: default
+  lhs: "XB(%x,V;%y,comp)"
+  rhs: VC(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 161}
+- id: "111"
+  kind: default
+  lhs: "XB(%x,A;%y)"
+  rhs: AA(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 163}
+- id: "112"
+  kind: default
+  lhs: "XB(%x,C;%y)"
+  rhs: CA(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 164}
+- id: "113"
+  kind: default
+  lhs: "XB(%x,D;%y)"
+  rhs: DA(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 165}
+- id: "114"
+  kind: default
+  lhs: "XB(%x,I;%y)"
+  rhs: IA(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 166}
+- id: "115"
+  kind: default
+  lhs: "XB(%x,J;%y)"
+  rhs: JA(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 167}
+- id: "116"
+  kind: default
+  lhs: "XB(%x,N;%y)"
+  rhs: NA(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 168}
+- id: "117"
+  kind: default
+  lhs: "XB(%x,P;%y)"
+  rhs: PA(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 169}
+- id: "118"
+  kind: default
+  lhs: "XB(%x,V;%y)"
+  rhs: VA(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 170}
+- id: "119"
+  kind: default
+  lhs: "XS(%x,A;%y)"
+  rhs: AS(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 172}
+- id: "120"
+  kind: default
+  lhs: "XS(%x,C;%y)"
+  rhs: CS(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 173}
+- id: "121"
+  kind: default
+  lhs: "XS(%x,D;%y)"
+  rhs: DS(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 174}
+- id: "122"
+  kind: default
+  lhs: "XS(%x,I;%y)"
+  rhs: IS(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 175}
+- id: "123"
+  kind: default
+  lhs: "XS(%x,J;%y)"
+  rhs: JS(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 176}
+- id: "124"
+  kind: default
+  lhs: "XS(%x,N;%y)"
+  rhs: NS(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 177}
+- id: "125"
+  kind: default
+  lhs: "XS(%x,P;%y)"
+  rhs: PS(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 178}
+- id: "126"
+  kind: default
+  lhs: "XS(%x,V;%y)"
+  rhs: VS(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 179}
+- id: "127"
+  kind: default
+  lhs: "/[ACDIJNPV][ACS]/(%x;%y,adr)"
+  rhs: adr(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 188}
+- id: "128"
+  kind: default
+  lhs: "/[ACDIJNPV][ACS]/(%x;%y,agt)"
+  rhs: agt(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 189}
+- id: "129"
+  kind: default
+  lhs: "/[ACDIJNPV][ACS]/(%x;%y,ant)"
+  rhs: ant(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 190}
+- id: "130"
+  kind: default
+  lhs: "/[ACDIJNPV][ACS]/(%x;%y,aoj)"
+  rhs: aoj(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 191}
+- id: "131"
+  kind: default
+  lhs: "/[ACDIJNPV][ACS]/(%x;%y,ben)"
+  rhs: ben(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 192}
+- id: "132"
+  kind: default
+  lhs: "/[ACDIJNPV][ACS]/(%x;%y,bas)"
+  rhs: bas(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 193}
+- id: "133"
+  kind: default
+  lhs: "/[ACDIJNPV][ACS]/(%x;%y,cag)"
+  rhs: cag(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 194}
+- id: "134"
+  kind: default
+  lhs: "/[ACDIJNPV][ACS]/(%x;%y,cnt)"
+  rhs: cnt(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 195}
+- id: "135"
+  kind: default
+  lhs: "/[ACDIJNPV][ACS]/(%x;%y,con)"
+  rhs: con(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 196}
+- id: "136"
+  kind: default
+  lhs: "/[ACDIJNPV][ACS]/(%x;%y,cob)"
+  rhs: cob(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 197}
+- id: "137"
+  kind: default
+  lhs: "/[ACDIJNPV][ACS]/(%x;%y,coo)"
+  rhs: coo(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 198}
+- id: "138"
+  kind: default
+  lhs: "/[ACDIJNPV][ACS]/(%x;%y,dur)"
+  rhs: dur(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 199}
+- id: "139"
+  kind: default
+  lhs: "/[ACDIJNPV][ACS]/(%x;%y,equ)"
+  rhs: equ(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 200}
+- id: "140"
+  kind: default
+  lhs: "/[ACDIJNPV][ACS]/(%x;%y,exp)"
+  rhs: exp(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 201}
+- id: "141"
+  kind: default
+  lhs: "/[ACDIJNPV][ACS]/(%x;%y,fld)"
+  rhs: fld(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 202}
+- id: "142"
+  kind: default
+  lhs: "/[ACDIJNPV][ACS]/(%x;%y,frm)"
+  rhs: frm(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 203}
+- id: "143"
+  kind: default
+  lhs: "/[ACDIJNPV][ACS]/(%x;%y,gol)"
+  rhs: gol(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 204}
+- id: "144"
+  kind: default
+  lhs: "/[ACDIJNPV][ACS]/(%x;%y,icl)"
+  rhs: icl(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 205}
+- id: "145"
+  kind: default
+  lhs: "/[ACDIJNPV][ACS]/(%x;%y,ins)"
+  rhs: ins(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 206}
+- id: "146"
+  kind: default
+  lhs: "/[ACDIJNPV][ACS]/(%x;%y,iof)"
+  rhs: iof(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 207}
+- id: "147"
+  kind: default
+  lhs: "/[ACDIJNPV][ACS]/(%x;%y,man)"
+  rhs: man(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 208}
+- id: "148"
+  kind: default
+  lhs: "/[ACDIJNPV][ACS]/(%x;%y,mat)"
+  rhs: mat(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 209}
+- id: "149"
+  kind: default
+  lhs: "/[ACDIJNPV][ACS]/(%x;%y,met)"
+  rhs: met(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 210}
+- id: "150"
+  kind: default
+  lhs: "/[ACDIJNPV][ACS]/(%x;%y,mod)"
+  rhs: mod(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 211}
+- id: "151"
+  kind: default
+  lhs: "/[ACDIJNPV][ACS]/(%x;%y,nam)"
+  rhs: nam(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 212}
+- id: "152"
+  kind: default
+  lhs: "/[ACDIJNPV][ACS]/(%x;%y,obj)"
+  rhs: obj(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 213}
+- id: "153"
+  kind: default
+  lhs: "/[ACDIJNPV][ACS]/(%x;%y,per)"
+  rhs: per(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 214}
+- id: "154"
+  kind: default
+  lhs: "/[ACDIJNPV][ACS]/(%x;%y,plc)"
+  rhs: plc(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 215}
+- id: "155"
+  kind: default
+  lhs: "/[ACDIJNPV][ACS]/(%x;%y,plf)"
+  rhs: plf(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 216}
+- id: "156"
+  kind: default
+  lhs: "/[ACDIJNPV][ACS]/(%x;%y,plt)"
+  rhs: plt(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 217}
+- id: "157"
+  kind: default
+  lhs: "/[ACDIJNPV][ACS]/(%x;%y,pof)"
+  rhs: pof(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 218}
+- id: "158"
+  kind: default
+  lhs: "/[ACDIJNPV][ACS]/(%x;%y,pos)"
+  rhs: pos(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 219}
+- id: "159"
+  kind: default
+  lhs: "/[ACDIJNPV][ACS]/(%x;%y,ptn)"
+  rhs: ptn(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 220}
+- id: "160"
+  kind: default
+  lhs: "/[ACDIJNPV][ACS]/(%x;%y,pur)"
+  rhs: pur(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 221}
+- id: "161"
+  kind: default
+  lhs: "/[ACDIJNPV][ACS]/(%x;%y,qua)"
+  rhs: qua(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 222}
+- id: "162"
+  kind: default
+  lhs: "/[ACDIJNPV][ACS]/(%x;%y,rsn)"
+  rhs: rsn(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 223}
+- id: "163"
+  kind: default
+  lhs: "/[ACDIJNPV][ACS]/(%x;%y,scn)"
+  rhs: scn(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 224}
+- id: "164"
+  kind: default
+  lhs: "/[ACDIJNPV][ACS]/(%x;%y,seq)"
+  rhs: seq(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 225}
+- id: "165"
+  kind: default
+  lhs: "/[ACDIJNPV][ACS]/(%x;%y,src)"
+  rhs: src(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 226}
+- id: "166"
+  kind: default
+  lhs: "/[ACDIJNPV][ACS]/(%x;%y,tim)"
+  rhs: tim(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 227}
+- id: "167"
+  kind: default
+  lhs: "/[ACDIJNPV][ACS]/(%x;%y,tmf)"
+  rhs: tmf(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 228}
+- id: "168"
+  kind: default
+  lhs: "/[ACDIJNPV][ACS]/(%x;%y,tmt)"
+  rhs: tmt(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 229}
+- id: "169"
+  kind: default
+  lhs: "/[ACDIJNPV][ACS]/(%x;%y,to)"
+  rhs: to(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 230}
+- id: "170"
+  kind: default
+  lhs: "/[ACDIJNPV][ACS]/(%x;%y,via)"
+  rhs: via(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 231}
+- id: "171"
+  kind: default
+  lhs: "NA(%x;%y,DIGIT,^ORD)"
+  rhs: qua(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 234}
+- id: "172"
+  kind: default
+  lhs: NA(%x;%y)
+  rhs: mod(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 235}
+- id: "173"
+  kind: default
+  lhs: "/[ACDIJPV]A/(%x;%y)"
+  rhs: man(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 236}
+- id: "174"
+  kind: default
+  lhs: "/[ACDIJNPV]C/(%x;%y)"
+  rhs: obj(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 237}
+- id: "175"
+  kind: default
+  lhs: VS(%x;%y)
+  rhs: agt(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 238}
+- id: "176"
+  kind: default
+  lhs: "/[ACDIJNP]S/(%x;%y)"
+  rhs: mod(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 239}
+- id: "177"
+  kind: default
+  lhs: "(@pl,{@multal|@paucal|@all|@both})"
+  rhs: (-@pl)
+  conditions: []
+  comment: eliminates the redundancy of @pl
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 247}
+- id: "178"
+  kind: default
+  lhs: "agt(%x,COP;%y)obj(%x;%z)"
+  rhs: "aoj(%z,+att=%x;%y)"
+  conditions: []
+  comment: eliminates the copula
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 248}
+- id: "179"
+  kind: default
+  lhs: "agt(%x;%y,N)obj(%x;%z,J)"
+  rhs: agt(%x;%y)aoj(%z;%y)
+  conditions: []
+  comment: transforms the predicate of the object into the predicate of the subject
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 249}
+- id: "180"
+  kind: default
+  lhs: "or(%a;and(%b1;%b2),%b)"
+  rhs: "or(%a;or(%b1;%b2),%b)"
+  conditions: []
+  comment: propagates or to its internal conjunctions
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 250}
+- id: "181"
+  kind: default
+  lhs: "aoj(%x,SPR;%y)"
+  rhs: pos(%y;%x)
+  conditions: []
+  comment: replaces aoj by pos when the first argument of the aoj is a possesive pronoun
+  source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 251}

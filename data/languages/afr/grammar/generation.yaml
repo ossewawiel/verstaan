@@ -1,0 +1,1632 @@
+# Licence: CC BY-SA 4.0. Source: UNL Archive, see data/archive/manifest.jsonl
+- id: "1"
+  kind: generation
+  lhs: "agt(%x,V;%y,N)"
+  rhs: "VS(%x,PER=%y;%y,-CAS,+CAS=NOM)"
+  conditions: []
+  comment: "agt(kill,he) > VS(vermoor,hy)"
+  source: {archive_path: exports/afr/47.tgrammar.txt, line: 7}
+- id: "2"
+  kind: generation
+  lhs: "aoj(%x;%y,N)"
+  rhs: "VP(VB(?[is],?[[]],?LEX=V,?POS=COP,PER=%y,att=%x;%x,-CAS,+CAS=NOM);%y,-CAS,+CAS=NOM,DIS=BEF)"
+  conditions: []
+  comment: "aoj(beautiful,it) > VP(VB(is,mooi),dit)"
+  source: {archive_path: exports/afr/47.tgrammar.txt, line: 8}
+- id: "3"
+  kind: generation
+  lhs: ben(%x;%y)
+  rhs: "XA(%x;PC([vir],LEX=P,POS=PRE;%y,-CAS,+CAS=OBL))"
+  conditions: []
+  comment: "ben(boek,John) > XA(boek,PC(vir,John))"
+  source: {archive_path: exports/afr/47.tgrammar.txt, line: 9}
+- id: "4"
+  kind: generation
+  lhs: "cnt(%x,N;%y,N)"
+  rhs: "NA(%x;PC([oor],LEX=P,POS=PRE;%y,-CAS,+CAS=OBL))"
+  conditions: []
+  comment: "cnt(boek,Parys) > NA(boek,PC(omtrent,Parys))"
+  source: {archive_path: exports/afr/47.tgrammar.txt, line: 10}
+- id: "5"
+  kind: generation
+  lhs: "man(%x,J;%y,A)"
+  rhs: "XA(%x;%y,DIS=BEF)"
+  conditions: []
+  comment: "man(beautiful,extremely) > XA(beautiful,extremely)"
+  source: {archive_path: exports/afr/47.tgrammar.txt, line: 11}
+- id: "6"
+  kind: generation
+  lhs: "man(%x,V;%y,A)"
+  rhs: XA(%x;%y)
+  conditions: []
+  comment: "man(beautiful,extremely) > XA(beautiful,extremely)"
+  source: {archive_path: exports/afr/47.tgrammar.txt, line: 12}
+- id: "7"
+  kind: generation
+  lhs: "man(%x;%y,N,@with)"
+  rhs: "XA(%x;PC([met],LEX=P,POS=PRE;%y,-CAS,+CAS=OBL),+DIS=BEF)"
+  conditions: []
+  comment: "man(kill,knife) > XA(vermoor,PC(met,mes))"
+  source: {archive_path: exports/afr/47.tgrammar.txt, line: 13}
+- id: "8"
+  kind: generation
+  lhs: "mod(%x,N;%y,J)"
+  rhs: "NA(%x;%y,DIS=BEF,CAS=GEN)"
+  conditions: []
+  comment: "mod(beautiful,book) > NA(mooi,boek)"
+  source: {archive_path: exports/afr/47.tgrammar.txt, line: 14}
+- id: "9"
+  kind: generation
+  lhs: "mod(%x,N;%y,N)"
+  rhs: "NA(%x;PC([van],LEX=P,POS=PRE;%y))"
+  conditions: []
+  comment: "mod(book,John) > NA(book,PC(van,John))"
+  source: {archive_path: exports/afr/47.tgrammar.txt, line: 15}
+- id: "10"
+  kind: generation
+  lhs: "obj(%x,V,{@past|@future};%y,N)"
+  rhs: "VC(%x;%y,-CAS,+CAS=OBL,+DIS=BEF)"
+  conditions: []
+  comment: "obj(kill,Mary) > VC(vermoor,Mary)"
+  source: {archive_path: exports/afr/47.tgrammar.txt, line: 16}
+- id: "11"
+  kind: generation
+  lhs: "obj(%x,V;%y,N)"
+  rhs: "VC(%x;%y,-CAS,+CAS=OBL)"
+  conditions: []
+  comment: "obj(kill,Mary) > VC(kill,Mary)"
+  source: {archive_path: exports/afr/47.tgrammar.txt, line: 17}
+- id: "12"
+  kind: generation
+  lhs: "plc(%x;%y,N,@behind)"
+  rhs: "XA(%x;PC([agter],LEX=P,POS=PRE;%y,-CAS,+CAS=OBL))"
+  conditions: []
+  comment: "plc(book,table.@behind) > XA(boek,PC(agter,tafe))"
+  source: {archive_path: exports/afr/47.tgrammar.txt, line: 18}
+- id: "13"
+  kind: generation
+  lhs: "plc(%x;%y,N,@beside)"
+  rhs: "XA(%x;PC([langs],LEX=P,POS=PRE;%y,-CAS,+CAS=OBL))"
+  conditions: []
+  comment: "plc(book,table.@beside) > XA(boek,PC(langs,tafe))"
+  source: {archive_path: exports/afr/47.tgrammar.txt, line: 19}
+- id: "14"
+  kind: generation
+  lhs: "plc(%x;%y,N,@far_from)"
+  rhs: "XA(%x;PC([ver van],LEX=P,POS=PRE;%y,-CAS,+CAS=OBL))"
+  conditions: []
+  comment: "plc(book,table.@far_from) > XA(boek,PC(ver vanaf,tafel))"
+  source: {archive_path: exports/afr/47.tgrammar.txt, line: 20}
+- id: "15"
+  kind: generation
+  lhs: "plc(%x;%y,N,@from)"
+  rhs: "XA(%x;PC([vanaf],LEX=P,POS=PRE;%y,-CAS,+CAS=OBL))"
+  conditions: []
+  comment: "plc(train,Paris.@from) > XA(trein,PC(vanaf,Parys))"
+  source: {archive_path: exports/afr/47.tgrammar.txt, line: 21}
+- id: "16"
+  kind: generation
+  lhs: "plc(%x;%y,N,@in_front_of)"
+  rhs: "XA(%x;PC([voor],LEX=P,POS=PRE;%y,-CAS,+CAS=OBL))"
+  conditions: []
+  comment: "plc(book,table.@in_front_of) > XA(boek,PC(voor,tafel))"
+  source: {archive_path: exports/afr/47.tgrammar.txt, line: 22}
+- id: "17"
+  kind: generation
+  lhs: "plc(%x;%y,N,@near)"
+  rhs: "XA(%x;PC([naby],LEX=P,POS=PRE;%y,-CAS,+CAS=OBL))"
+  conditions: []
+  comment: "plc(book,table.@near) > XA(boek,PC(naby,tafel))"
+  source: {archive_path: exports/afr/47.tgrammar.txt, line: 23}
+- id: "18"
+  kind: generation
+  lhs: "plc(%x;%y,N,@on)"
+  rhs: "XA(%x;PC([op],LEX=P,POS=PRE;%y,-CAS,+CAS=OBL))"
+  conditions: []
+  comment: "plc(book,table.@on) > XA(boek,PC(op,tafel))"
+  source: {archive_path: exports/afr/47.tgrammar.txt, line: 24}
+- id: "19"
+  kind: generation
+  lhs: "plc(%x;%y,N,@to)"
+  rhs: "XA(%x;PC([na],LEX=P,POS=PRE;%y,-CAS,+CAS=OBL))"
+  conditions: []
+  comment: "plc(train,Paris.@to) > XA(trein,PC(na,Parys))"
+  source: {archive_path: exports/afr/47.tgrammar.txt, line: 25}
+- id: "20"
+  kind: generation
+  lhs: "plc(%x;%y,N,@through)"
+  rhs: "XA(%x;PC([deur],LEX=P,POS=PRE;%y,-CAS,+CAS=OBL))"
+  conditions: []
+  comment: "plc(train,Paris.@through) > XA(trein,PC(deur,Paris))"
+  source: {archive_path: exports/afr/47.tgrammar.txt, line: 26}
+- id: "21"
+  kind: generation
+  lhs: "plc(%x;%y,N,@under)"
+  rhs: "XA(%x;PC([onder],LEX=P,POS=PRE;%y,-CAS,+CAS=OBL))"
+  conditions: []
+  comment: "plc(book,table.@under) > XA(boek,PC(onder,tafel))"
+  source: {archive_path: exports/afr/47.tgrammar.txt, line: 27}
+- id: "22"
+  kind: generation
+  lhs: "plc(%x;%y,N)"
+  rhs: "XA(%x;PC([in],LEX=P,POS=PRE;%y,-CAS,+CAS=OBL),+BEF)"
+  conditions: []
+  comment: "plc(kill,kitchen) > XA(vermoor,PC(in,kombuis))"
+  source: {archive_path: exports/afr/47.tgrammar.txt, line: 28}
+- id: "23"
+  kind: generation
+  lhs: "pos(%x,N;%y,R)"
+  rhs: "NS(%x;?POS=SPR,?PER=%y,?GEN=%y)"
+  conditions: []
+  comment: "pos(book,I) > NS(boek,my)"
+  source: {archive_path: exports/afr/47.tgrammar.txt, line: 29}
+- id: "24"
+  kind: generation
+  lhs: "pos(%x,N;%y,D)"
+  rhs: NS(%x;%y)
+  conditions: []
+  comment: "pos(book,my) > NS(boek,my)"
+  source: {archive_path: exports/afr/47.tgrammar.txt, line: 30}
+- id: "25"
+  kind: generation
+  lhs: "rsn(%x,V;%y,N)"
+  rhs: "VA(%x;PC([as gevolg van],LEX=P,POS=PRE;%y))"
+  conditions: []
+  comment: "rsn(kill,Peter) > XA(vermoor,PC(as gevolg van,Peter))"
+  source: {archive_path: exports/afr/47.tgrammar.txt, line: 31}
+- id: "26"
+  kind: generation
+  lhs: "tim(%x;%y,N,@before)"
+  rhs: "XA(%x;PC([voor],LEX=P,POS=PRE;%y,-CAS,+CAS=OBL))"
+  conditions: []
+  comment: "tim(minute,noon.@before) > XA(minute,PC(voor,twaalfuur))"
+  source: {archive_path: exports/afr/47.tgrammar.txt, line: 32}
+- id: "27"
+  kind: generation
+  lhs: "tim(%x;%y,N,@after)"
+  rhs: "XA(%x;PC([na],LEX=P,POS=PRE;%y,-CAS,+CAS=OBL))"
+  conditions: []
+  comment: "tim(minute,noon.@after) > XA(minute,PC(na,twaalfuur))"
+  source: {archive_path: exports/afr/47.tgrammar.txt, line: 33}
+- id: "28"
+  kind: generation
+  lhs: "tim(%x;%y,N,@since)"
+  rhs: "XA(%x;PC([sedert],LEX=P,POS=PRE;%y,-CAS,+CAS=OBL))"
+  conditions: []
+  comment: "tim(minute,noon.@since) > XA(minute,PC(sedert,twaalfuur))"
+  source: {archive_path: exports/afr/47.tgrammar.txt, line: 34}
+- id: "29"
+  kind: generation
+  lhs: "tim(%x;%y,N,@until)"
+  rhs: "XA(%x;PC([tot],LEX=P,POS=PRE;%y,-CAS,+CAS=OBL))"
+  conditions: []
+  comment: "tim(minute,noon.@until) > XA(minute,PC(voor,twaalfuur))"
+  source: {archive_path: exports/afr/47.tgrammar.txt, line: 35}
+- id: "30"
+  kind: generation
+  lhs: "tim(%x;%y,N)"
+  rhs: "XA(%x;PC([om],LEX=P,POS=PRE;%y,-CAS,+CAS=OBL))"
+  conditions: []
+  comment: "tim(minut,noon) > XA(minute,PC(om,twaalfuur))"
+  source: {archive_path: exports/afr/47.tgrammar.txt, line: 36}
+- id: "31"
+  kind: generation
+  lhs: "tim(%x,{@past|@future};%y,A)"
+  rhs: "XA(%x;%y,+DIS=BEF,+AJ3)"
+  conditions: []
+  comment: "tim(kill,yesterday) > XA(vermoor,gister)"
+  source: {archive_path: exports/afr/47.tgrammar.txt, line: 37}
+- id: "32"
+  kind: generation
+  lhs: "tim(%x;%y,A)"
+  rhs: XA(%x;%y)
+  conditions: []
+  comment: "tim(kill,yesterday) > XA(vermoor,gister)"
+  source: {archive_path: exports/afr/47.tgrammar.txt, line: 38}
+- id: "33"
+  kind: generation
+  lhs: and(%x;%y)
+  rhs: "((%y,+>BLK)([en],LEX=C,POS=CCJ,+>BLK)(%x,+>BLK),+LEX=%x)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/47.tgrammar.txt, line: 39}
+- id: "34"
+  kind: generation
+  lhs: or(%x;%y)
+  rhs: "((%y,+>BLK)([of],LEX=C,POS=CCJ,+>BLK)(%x,+>BLK),+LEX=%x)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/47.tgrammar.txt, line: 40}
+- id: "35"
+  kind: generation
+  lhs: "(%x,N,@def)"
+  rhs: "(NS(%x,-@def;%y,[die],+LEX=D,+POS=ART),+LEX=N)"
+  conditions: []
+  comment: "book.@def > NS(boek,die)"
+  source: {archive_path: exports/afr/47.tgrammar.txt, line: 41}
+- id: "36"
+  kind: generation
+  lhs: "(%x,N,@indef)"
+  rhs: "(NS(%x,-@indef;%y,['n],+LEX=D,+POS=ART),+LEX=N)"
+  conditions: []
+  comment: "book.@indef > NS(boek,'n)"
+  source: {archive_path: exports/afr/47.tgrammar.txt, line: 42}
+- id: "37"
+  kind: generation
+  lhs: "(%x,N,@all)"
+  rhs: "(NS(%x,-@all,-NUM,+NUM=PLR;%y,[alle],+LEX=D,+POS=QUA,+DIS=BEF),+LEX=N)"
+  conditions: []
+  comment: "book.@all > NA(boeke,alle)"
+  source: {archive_path: exports/afr/47.tgrammar.txt, line: 43}
+- id: "38"
+  kind: generation
+  lhs: "(%x,N,@other)"
+  rhs: "(NS(%x,-@other;%y,[ander],+LEX=D,+POS=DEM,+DIS=BEF),+LEX=N)"
+  conditions: []
+  comment: "book.@other > NA(boek,ander)"
+  source: {archive_path: exports/afr/47.tgrammar.txt, line: 44}
+- id: "39"
+  kind: generation
+  lhs: "(%x,N,@no)"
+  rhs: "(NS(%x,-@no;%y,[geen],+LEX=D,+POS=QUA),+LEX=N)"
+  conditions: []
+  comment: "book.@no > NS(boek,geen)"
+  source: {archive_path: exports/afr/47.tgrammar.txt, line: 45}
+- id: "40"
+  kind: generation
+  lhs: "(%x,N,@paucal)"
+  rhs: "(NS(%x,-@paucal,-NUM,+NUM=PLR;%y,[enkele],+LEX=D,+POS=QUA,+DIS=BEF),+LEX=N)"
+  conditions: []
+  comment: "book.@paucal > NA(boeke,enkele)"
+  source: {archive_path: exports/afr/47.tgrammar.txt, line: 46}
+- id: "41"
+  kind: generation
+  lhs: "(%x,N,@multal)"
+  rhs: "(NS(%x,-@multal,-NUM,+NUM=PLR;%y,[talle],+LEX=D,+POS=QUA,+DIS=BEF),+LEX=N)"
+  conditions: []
+  comment: "book.@multal > NA(boeke,talle)"
+  source: {archive_path: exports/afr/47.tgrammar.txt, line: 47}
+- id: "42"
+  kind: generation
+  lhs: "(%x,J,@plus)"
+  rhs: "(JS(%x,-@plus;%y,[baie],+LEX=A,+POS=SAV,+DIS=BEF),+LEX=J,+DIS=%x)"
+  conditions: []
+  comment: "beautiful.@plus > JS(mooi,baie)"
+  source: {archive_path: exports/afr/47.tgrammar.txt, line: 48}
+- id: "43"
+  kind: generation
+  lhs: "VS(%x,@reflexive,{@past|@future};%y)"
+  rhs: "+VC(%x,-@reflexive;?[[%y]],?POS=FPR,+BEF,-CAS,+CAS=OBL)"
+  conditions: []
+  comment: "VS(kill.@reflexive,he) > VS(vermoor,hy)VC(vermoor,homself)"
+  source: {archive_path: exports/afr/47.tgrammar.txt, line: 49}
+- id: "44"
+  kind: generation
+  lhs: "VS(%x,@reflexive;%y)"
+  rhs: "+VC(%x,-@reflexive;?[[%y]],?POS=FPR,-CAS,+CAS=OBL)"
+  conditions: []
+  comment: "VS(kill.@reflexive,he) > VS(vermoor,hy)VC(vermoor,homself)"
+  source: {archive_path: exports/afr/47.tgrammar.txt, line: 50}
+- id: "45"
+  kind: generation
+  lhs: "(%x,V,@past,@progressive)"
+  rhs: "+IC(%y,?[besig om te],?[[]],?LEX=I,?POS=AUX,+PER=%x,+ATE=PAS;%x,-@progressive,-@past,-ATE,-PER,+VBL=GER)"
+  conditions: []
+  comment: arrive.@progressive > besig om te arriveer
+  source: {archive_path: exports/afr/47.tgrammar.txt, line: 51}
+- id: "46"
+  kind: generation
+  lhs: "(%x,V,@future)"
+  rhs: "+IC(%y,[sal],+LEX=I,+POS=AUX,+ATE=FUT,+PER=%x,+att=%x;%x,-@future,-ATE,-PER,+VBL=INF)"
+  conditions: []
+  comment: arriveer.@future > sal arriveer
+  source: {archive_path: exports/afr/47.tgrammar.txt, line: 52}
+- id: "47"
+  kind: generation
+  lhs: "(%x,V,@past)"
+  rhs: "+IC(%y,?[het],?[[]],?LEX=I,?POS=AUX,+PER=%x,+ATE=%x,+att=%x;%x,-@past,-ATE,-PER,+VBL=PAS)"
+  conditions: []
+  comment: arrive.@anterior > het gearriveer
+  source: {archive_path: exports/afr/47.tgrammar.txt, line: 53}
+- id: "48"
+  kind: generation
+  lhs: "(%x,V,@anterior)"
+  rhs: "+IC(%y,?[het],?[[]],?LEX=I,?POS=AUX,+PER=%x,+ATE=%x,+att=%x;%x,-@anterior,-PER)"
+  conditions: []
+  comment: arrive.@anterior > het gearriveer
+  source: {archive_path: exports/afr/47.tgrammar.txt, line: 54}
+- id: "49"
+  kind: generation
+  lhs: "(%x,V,@anterior,@past)"
+  rhs: "+IC(%y,?[het],?[[]],?LEX=I,?POS=AUX,+PER=%x,+ATE=PAS,+att=%x;%x,-@anterior,-@past,+ATE=PAS,-PER)"
+  conditions: []
+  comment: arrive.@anterior > het gearriveer
+  source: {archive_path: exports/afr/47.tgrammar.txt, line: 55}
+- id: "50"
+  kind: generation
+  lhs: "(%x,V,@not)"
+  rhs: "(+LEX=V,VA(%x,-@not;%z,[nie],+LEX=A,+POS=SAV,+DIS=AFT))"
+  conditions: []
+  comment: "arrive.@not > VA(arriveer,nie)"
+  source: {archive_path: exports/afr/47.tgrammar.txt, line: 56}
+- id: "51"
+  kind: generation
+  lhs: "(%x,J,ADJ,@not)"
+  rhs: "(+LEX=V,VA(%x,-@not;%z,[nie],+LEX=A,+POS=SAV,+DIS=AFT))"
+  conditions: []
+  comment: "arrive.@not > VA(arriveer,nie)"
+  source: {archive_path: exports/afr/47.tgrammar.txt, line: 57}
+- id: "52"
+  kind: generation
+  lhs: "(%x,I,@not)"
+  rhs: "(VA(%x,-@not;%y,[nie],+LEX=A,+POS=SAV,+DIS=AFT),+LEX=v)"
+  conditions: []
+  comment: arriveer.@not >  arriveer nie
+  source: {archive_path: exports/afr/47.tgrammar.txt, line: 58}
+- id: "53"
+  kind: generation
+  lhs: "(%x,V,@present)"
+  rhs: "(%x,-@present,-VBL,+ATE=PRS)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/47.tgrammar.txt, line: 59}
+- id: "54"
+  kind: generation
+  lhs: "(%x,V,@progressive)"
+  rhs: "+IC(%y,?[besig om te],?[[]],?LEX=I,?POS=AUX,+PER=%x,+ATE=%x;%x,-@progressive,-ATE,-PER,+VBL=GER)"
+  conditions: []
+  comment: arrive.@progressive > besig om te arriveer
+  source: {archive_path: exports/afr/47.tgrammar.txt, line: 60}
+- id: "55"
+  kind: generation
+  lhs: "(%x,V,@obligation)"
+  rhs: "+IC(%y,[moet],+LEX=I,+POS=MOV;%x,-@obligation,-ATE,-PER,+VBL=INF)"
+  conditions: []
+  comment: arrive.@obligation > moet arriveer
+  source: {archive_path: exports/afr/47.tgrammar.txt, line: 61}
+- id: "56"
+  kind: generation
+  lhs: "(%x,@pl)"
+  rhs: "(%x,-@pl,-NUM,+NUM=PLR)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/47.tgrammar.txt, line: 62}
+- id: "57"
+  kind: generation
+  lhs: "(%x,@interrogative)(%y,{BLK|STAIL})"
+  rhs: "(%x,-@interrogative)(%new,\"?\",PUT=EMARK)(%y)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/47.tgrammar.txt, line: 63}
+- id: "58"
+  kind: generation
+  lhs: "([en],%c1)(%x)({[en]|COMMA},%c2)"
+  rhs: "([,],\",\",+PUT=COMMA,+>BLK,$c3)(%x)(%c2)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/47.tgrammar.txt, line: 64}
+- id: "59"
+  kind: generation
+  lhs: "([of],%c1)(%x)({[of]|COMMA},%c2)"
+  rhs: "([,],\",\",+PUT=COMMA,+>BLK,$c3)(%x)(%c2)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/47.tgrammar.txt, line: 65}
+- id: "60"
+  kind: generation
+  lhs: "(D,%d)(BLK)([alle])(BLK)(N,%n)"
+  rhs: ("al")(BLK)(%d)(BLK)(%n)
+  conditions: []
+  comment: "die alle boeke > al die boeke, my alle boeke > al my boeke"
+  source: {archive_path: exports/afr/47.tgrammar.txt, line: 66}
+- id: "61"
+  kind: generation
+  lhs: "(NOU)(BLK)([van])(BLK)(NOU)"
+  rhs: (%05&%01)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/47.tgrammar.txt, line: 67}
+- id: "62"
+  kind: default
+  lhs: "/[ACDIJNPVX]C/(%x;%y,^comp)"
+  rhs: "XB(%x;%y,+comp)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 23}
+- id: "63"
+  kind: default
+  lhs: "/[ACDIJNPVX]A/(%x;%y,^adjt)"
+  rhs: "XB(%x;%y,+adjt)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 24}
+- id: "64"
+  kind: default
+  lhs: "/[ACDIJNPV]S/(%x;%y,^spec)"
+  rhs: "XP(%x;%y,+spec)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 25}
+- id: "65"
+  kind: default
+  lhs: "XB(%x;%y,comp)XB(%x;%z)"
+  rhs: XB(XB(%x;%y);%z)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 28}
+- id: "66"
+  kind: default
+  lhs: XB(%x;%y)XB(%x;%z)
+  rhs: XB(XB(%x;%y);%z)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 29}
+- id: "67"
+  kind: default
+  lhs: XP(%x;%y)XB(%x;%z)
+  rhs: XP(XB(%x;%z);%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 30}
+- id: "68"
+  kind: default
+  lhs: XB(XP(%x;%y);%z)
+  rhs: XP(XB(%x;%z);%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 31}
+- id: "69"
+  kind: default
+  lhs: IB(%x;%y)VB(%y;%z)
+  rhs: IB(%x;VB(%y;%z))
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 32}
+- id: "70"
+  kind: default
+  lhs: "XB(%x,A;%y,adjt)"
+  rhs: AA(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 35}
+- id: "71"
+  kind: default
+  lhs: "XB(%x,C;%y,adjt)"
+  rhs: CA(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 36}
+- id: "72"
+  kind: default
+  lhs: "XB(%x,D;%y,adjt)"
+  rhs: DA(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 37}
+- id: "73"
+  kind: default
+  lhs: "XB(%x,I;%y,adjt)"
+  rhs: IA(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 38}
+- id: "74"
+  kind: default
+  lhs: "XB(%x,J;%y,adjt)"
+  rhs: JA(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 39}
+- id: "75"
+  kind: default
+  lhs: "XB(%x,N;%y,adjt)"
+  rhs: NA(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 40}
+- id: "76"
+  kind: default
+  lhs: "XB(%x,P;%y,adjt)"
+  rhs: PA(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 41}
+- id: "77"
+  kind: default
+  lhs: "XB(%x,V;%y,adjt)"
+  rhs: VA(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 42}
+- id: "78"
+  kind: default
+  lhs: "XB(%x,A;%y,comp)"
+  rhs: NC(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 44}
+- id: "79"
+  kind: default
+  lhs: "XB(%x,C;%y,comp)"
+  rhs: CC(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 45}
+- id: "80"
+  kind: default
+  lhs: "XB(%x,D;%y,comp)"
+  rhs: DC(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 46}
+- id: "81"
+  kind: default
+  lhs: "XB(%x,I;%y,comp)"
+  rhs: IC(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 47}
+- id: "82"
+  kind: default
+  lhs: "XB(%x,J;%y,comp)"
+  rhs: JC(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 48}
+- id: "83"
+  kind: default
+  lhs: "XB(%x,N;%y,comp)"
+  rhs: NC(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 49}
+- id: "84"
+  kind: default
+  lhs: "XB(%x,P;%y,comp)"
+  rhs: PC(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 50}
+- id: "85"
+  kind: default
+  lhs: "XB(%x,V;%y,comp)"
+  rhs: VC(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 51}
+- id: "86"
+  kind: default
+  lhs: "XB(%x,A;%y)"
+  rhs: AA(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 53}
+- id: "87"
+  kind: default
+  lhs: "XB(%x,C;%y)"
+  rhs: CA(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 54}
+- id: "88"
+  kind: default
+  lhs: "XB(%x,D;%y)"
+  rhs: DA(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 55}
+- id: "89"
+  kind: default
+  lhs: "XB(%x,I;%y)"
+  rhs: IA(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 56}
+- id: "90"
+  kind: default
+  lhs: "XB(%x,J;%y)"
+  rhs: JA(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 57}
+- id: "91"
+  kind: default
+  lhs: "XB(%x,N;%y)"
+  rhs: NA(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 58}
+- id: "92"
+  kind: default
+  lhs: "XB(%x,P;%y)"
+  rhs: PA(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 59}
+- id: "93"
+  kind: default
+  lhs: "XB(%x,V;%y)"
+  rhs: VA(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 60}
+- id: "94"
+  kind: default
+  lhs: "XP(%x,A;%y)"
+  rhs: AS(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 62}
+- id: "95"
+  kind: default
+  lhs: "XP(%x,C;%y)"
+  rhs: CS(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 63}
+- id: "96"
+  kind: default
+  lhs: "XP(%x,D;%y)"
+  rhs: DS(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 64}
+- id: "97"
+  kind: default
+  lhs: "XP(%x,I;%y)"
+  rhs: IS(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 65}
+- id: "98"
+  kind: default
+  lhs: "XP(%x,J;%y)"
+  rhs: JS(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 66}
+- id: "99"
+  kind: default
+  lhs: "XP(%x,N;%y)"
+  rhs: NS(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 67}
+- id: "100"
+  kind: default
+  lhs: "XP(%x,P;%y)"
+  rhs: PS(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 68}
+- id: "101"
+  kind: default
+  lhs: "XP(%x,V;%y)"
+  rhs: VS(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 69}
+- id: "102"
+  kind: default
+  lhs: DB(%x;%y)DS(%x;%z)
+  rhs: DP(DB(%x;%y);%z)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 74}
+- id: "103"
+  kind: default
+  lhs: DB(%x;%y)DA(%x;%z)
+  rhs: DB(DB(%x;%y);%z)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 75}
+- id: "104"
+  kind: default
+  lhs: DB(%x;%y)DC(%x;%z)
+  rhs: DB(DB(%x;%y);%z)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 76}
+- id: "105"
+  kind: default
+  lhs: DC(%x;%y)
+  rhs: DB(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 77}
+- id: "106"
+  kind: default
+  lhs: DA(%x;%y)
+  rhs: DB(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 78}
+- id: "107"
+  kind: default
+  lhs: DS(%x;%y)
+  rhs: DP(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 79}
+- id: "108"
+  kind: default
+  lhs: JB(%x;%y)JS(%x;%z)
+  rhs: JP(JB(%x;%y);%z)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 84}
+- id: "109"
+  kind: default
+  lhs: JB(%x;%y)JA(%x;%z)
+  rhs: JB(JB(%x;%y);%z)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 85}
+- id: "110"
+  kind: default
+  lhs: JB(%x;%y)JC(%x;%z)
+  rhs: JB(JB(%x;%y);%z)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 86}
+- id: "111"
+  kind: default
+  lhs: JC(%x;%y)
+  rhs: JB(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 87}
+- id: "112"
+  kind: default
+  lhs: JA(%x;%y)
+  rhs: JB(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 88}
+- id: "113"
+  kind: default
+  lhs: JS(%x;%y)
+  rhs: JP(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 89}
+- id: "114"
+  kind: default
+  lhs: AB(%x;%y)AS(%x;%z)
+  rhs: AP(AB(%x;%y);%z)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 94}
+- id: "115"
+  kind: default
+  lhs: AB(%x;%y)AA(%x;%z)
+  rhs: AB(AB(%x;%y);%z)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 95}
+- id: "116"
+  kind: default
+  lhs: AB(%x;%y)AC(%x;%z)
+  rhs: AB(AB(%x;%y);%z)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 96}
+- id: "117"
+  kind: default
+  lhs: AC(%x;%y)
+  rhs: AB(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 97}
+- id: "118"
+  kind: default
+  lhs: AA(%x;%y)
+  rhs: AB(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 98}
+- id: "119"
+  kind: default
+  lhs: AS(%x;%y)
+  rhs: AP(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 99}
+- id: "120"
+  kind: default
+  lhs: NB(%x;%y)NS(%x;%z)
+  rhs: NP(NB(%x;%y);%z)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 104}
+- id: "121"
+  kind: default
+  lhs: NB(%x;%y)NC(%x;%z)
+  rhs: NB(NB(%x;%y);%z)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 105}
+- id: "122"
+  kind: default
+  lhs: NB(%x;%y)NA(%x;%z)
+  rhs: NB(NB(%x;%y);%z)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 106}
+- id: "123"
+  kind: default
+  lhs: NC(%x;%y)
+  rhs: NB(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 107}
+- id: "124"
+  kind: default
+  lhs: NA(%x;%y)
+  rhs: NB(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 108}
+- id: "125"
+  kind: default
+  lhs: NS(%x;%y)
+  rhs: NP(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 109}
+- id: "126"
+  kind: default
+  lhs: PB(%x;%y)PS(%x;%z)
+  rhs: PP(PB(%x;%y);%z)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 115}
+- id: "127"
+  kind: default
+  lhs: PB(%x;%y)PA(%x;%z)
+  rhs: PB(PB(%x;%y);%z)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 116}
+- id: "128"
+  kind: default
+  lhs: PB(%x;%y)PC(%x;%z)
+  rhs: PB(PB(%x;%y);%z)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 117}
+- id: "129"
+  kind: default
+  lhs: PC(%x;%y)
+  rhs: PB(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 118}
+- id: "130"
+  kind: default
+  lhs: PA(%x;%y)
+  rhs: PB(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 119}
+- id: "131"
+  kind: default
+  lhs: PS(%x;%y)
+  rhs: PP(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 120}
+- id: "132"
+  kind: default
+  lhs: VB(%x;%y)VS(%x;%z)
+  rhs: VP(VB(%x;%y);%z)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 125}
+- id: "133"
+  kind: default
+  lhs: VB(%x;%y)VA(%x;%z)
+  rhs: VB(VB(%x;%y);%z)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 126}
+- id: "134"
+  kind: default
+  lhs: VB(%x;%y)VC(%x;%z)
+  rhs: VB(VB(%x;%y);%z)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 127}
+- id: "135"
+  kind: default
+  lhs: VC(%x;%y)
+  rhs: VB(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 128}
+- id: "136"
+  kind: default
+  lhs: VA(%x;%y)
+  rhs: VB(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 129}
+- id: "137"
+  kind: default
+  lhs: VS(%x;%y)
+  rhs: VP(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 130}
+- id: "138"
+  kind: default
+  lhs: IB(%x;%y)IS(%x;%z)
+  rhs: IP(IB(%x;%y);%z)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 135}
+- id: "139"
+  kind: default
+  lhs: IB(%x;%y)IA(%x;%z)
+  rhs: IB(IB(%x;%y);%z)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 136}
+- id: "140"
+  kind: default
+  lhs: IB(%x;%y)IC(%x;%z)
+  rhs: IB(IB(%x;%y);%z)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 137}
+- id: "141"
+  kind: default
+  lhs: IC(%x;%y)
+  rhs: IB(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 138}
+- id: "142"
+  kind: default
+  lhs: IA(%x;%y)
+  rhs: IB(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 139}
+- id: "143"
+  kind: default
+  lhs: IS(%x;%y)
+  rhs: IP(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 140}
+- id: "144"
+  kind: default
+  lhs: CB(%x;%y)CS(%x;%z)
+  rhs: CP(CB(%x;%y);%z)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 145}
+- id: "145"
+  kind: default
+  lhs: CB(%x;%y)CA(%x;%z)
+  rhs: CB(CB(%x;%y);%z)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 146}
+- id: "146"
+  kind: default
+  lhs: CB(%x;%y)CC(%x;%z)
+  rhs: CB(CB(%x;%y);%z)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 147}
+- id: "147"
+  kind: default
+  lhs: CC(%x;%y)
+  rhs: CB(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 148}
+- id: "148"
+  kind: default
+  lhs: CA(%x;%y)
+  rhs: CB(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 149}
+- id: "149"
+  kind: default
+  lhs: CS(%x;%y)
+  rhs: CP(%x;%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 150}
+- id: "150"
+  kind: default
+  lhs: "IB(%x;%y)VP(%y;%z,^e)"
+  rhs: "IB(%x;%y)IS(%x;%z)VP(%y;%new,+e)"
+  conditions: []
+  comment: (moves the specifier of IP to the position of specifier of IP)
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 158}
+- id: "151"
+  kind: default
+  lhs: "PP(%x;%y,BEF)"
+  rhs: "(%y,+>BLK)(%x,+>BLK)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 167}
+- id: "152"
+  kind: default
+  lhs: "PP(%x;%y,IBEF)"
+  rhs: "(%y)(%x,+>BLK)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 168}
+- id: "153"
+  kind: default
+  lhs: "PP(%x;%y,AFT)"
+  rhs: "(%x,+>BLK)(%y,+>BLK)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 169}
+- id: "154"
+  kind: default
+  lhs: "PP(%x;%y,IAFT)"
+  rhs: "(%x)(%y,+>BLK)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 170}
+- id: "155"
+  kind: default
+  lhs: PP(%x;%y)
+  rhs: "(%y,+>BLK)(%x,+>BLK)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 171}
+- id: "156"
+  kind: default
+  lhs: "PB(%x;%y,BEF)"
+  rhs: "(%y,+>BLK)(%x,+>BLK)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 172}
+- id: "157"
+  kind: default
+  lhs: "PB(%x;%y,IBEF)"
+  rhs: "(%y)(%x,+>BLK)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 173}
+- id: "158"
+  kind: default
+  lhs: "PB(%x;%y,AFT)"
+  rhs: "(%x,+>BLK)(%y,+>BLK)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 174}
+- id: "159"
+  kind: default
+  lhs: "PB(%x;%y,IAFT)"
+  rhs: "(%x)(%y,+>BLK)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 175}
+- id: "160"
+  kind: default
+  lhs: PB(%x;%y)
+  rhs: "(%x,+>BLK)(%y,+>BLK)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 176}
+- id: "161"
+  kind: default
+  lhs: "CP(%x;%y,BEF)"
+  rhs: "(%y,+>BLK)(%x,+>BLK)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 177}
+- id: "162"
+  kind: default
+  lhs: "CP(%x;%y,IBEF)"
+  rhs: "(%y)(%x,+>BLK)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 178}
+- id: "163"
+  kind: default
+  lhs: "CP(%x;%y,AFT)"
+  rhs: "(%x,+>BLK)(%y,+>BLK)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 179}
+- id: "164"
+  kind: default
+  lhs: "CP(%x;%y,IAFT)"
+  rhs: "(%x)(%y,+>BLK)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 180}
+- id: "165"
+  kind: default
+  lhs: CP(%x;%y)
+  rhs: "(%y,+>BLK)(%x,+>BLK)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 181}
+- id: "166"
+  kind: default
+  lhs: "CB(%x;%y,BEF)"
+  rhs: "(%y,+>BLK)(%x,+>BLK)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 182}
+- id: "167"
+  kind: default
+  lhs: "CB(%x;%y,IBEF)"
+  rhs: "(%y)(%x,+>BLK)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 183}
+- id: "168"
+  kind: default
+  lhs: "CB(%x;%y,AFT)"
+  rhs: "(%x,+>BLK)(%y,+>BLK)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 184}
+- id: "169"
+  kind: default
+  lhs: "CB(%x;%y,IAFT)"
+  rhs: "(%x)(%y,+>BLK)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 185}
+- id: "170"
+  kind: default
+  lhs: CB(%x;%y)
+  rhs: "(%x,+>BLK)(%y,+>BLK)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 186}
+- id: "171"
+  kind: default
+  lhs: "IP(%x;%y,BEF)"
+  rhs: "(%y,+>BLK)(%x,+>BLK)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 187}
+- id: "172"
+  kind: default
+  lhs: "IP(%x;%y,IBEF)"
+  rhs: "(%y)(%x,+>BLK)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 188}
+- id: "173"
+  kind: default
+  lhs: "IP(%x;%y,AFT)"
+  rhs: "(%x,+>BLK)(%y,+>BLK)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 189}
+- id: "174"
+  kind: default
+  lhs: "IP(%x;%y,IAFT)"
+  rhs: "(%x)(%y,+>BLK)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 190}
+- id: "175"
+  kind: default
+  lhs: IP(%x;%y)
+  rhs: "(%y,+>BLK)(%x,+>BLK)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 191}
+- id: "176"
+  kind: default
+  lhs: "IB(%x;%y,BEF)"
+  rhs: "(%y,+>BLK)(%x,+>BLK)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 192}
+- id: "177"
+  kind: default
+  lhs: "IB(%x;%y,IBEF)"
+  rhs: "(%y)(%x,+>BLK)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 193}
+- id: "178"
+  kind: default
+  lhs: "IB(%x;%y,AFT)"
+  rhs: "(%x,+>BLK)(%y,+>BLK)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 194}
+- id: "179"
+  kind: default
+  lhs: "IB(%x;%y,IAFT)"
+  rhs: "(%x)(%y,+>BLK)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 195}
+- id: "180"
+  kind: default
+  lhs: IB(%x;%y)
+  rhs: "(%x,+>BLK)(%y,+>BLK)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 196}
+- id: "181"
+  kind: default
+  lhs: "VP(%x;%y,BEF)"
+  rhs: "(%y,+>BLK)(%x,+>BLK)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 197}
+- id: "182"
+  kind: default
+  lhs: "VP(%x;%y,IBEF)"
+  rhs: "(%y)(%x,+>BLK)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 198}
+- id: "183"
+  kind: default
+  lhs: "VP(%x;%y,AFT)"
+  rhs: "(%x,+>BLK)(%y,+>BLK)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 199}
+- id: "184"
+  kind: default
+  lhs: "VP(%x;%y,IAFT)"
+  rhs: "(%x)(%y,+>BLK)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 200}
+- id: "185"
+  kind: default
+  lhs: VP(%x;%y)
+  rhs: "(%y,+>BLK)(%x,+>BLK)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 201}
+- id: "186"
+  kind: default
+  lhs: "VB(%x;%y,BEF)"
+  rhs: "(%y,+>BLK)(%x,+>BLK)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 202}
+- id: "187"
+  kind: default
+  lhs: "VB(%x;%y,IBEF)"
+  rhs: "(%y)(%x,+>BLK)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 203}
+- id: "188"
+  kind: default
+  lhs: "VB(%x;%y,AFT)"
+  rhs: "(%x,+>BLK)(%y,+>BLK)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 204}
+- id: "189"
+  kind: default
+  lhs: "VB(%x;%y,IAFT)"
+  rhs: "(%x)(%y,+>BLK)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 205}
+- id: "190"
+  kind: default
+  lhs: VB(%x;%y)
+  rhs: "(%x,+>BLK)(%y,+>BLK)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 206}
+- id: "191"
+  kind: default
+  lhs: "NP(%x;%y,BEF)"
+  rhs: "(%y,+>BLK)(%x,+>BLK)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 207}
+- id: "192"
+  kind: default
+  lhs: "NP(%x;%y,IBEF)"
+  rhs: "(%y)(%x,+>BLK)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 208}
+- id: "193"
+  kind: default
+  lhs: "NP(%x;%y,AFT)"
+  rhs: "(%x,+>BLK)(%y,+>BLK)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 209}
+- id: "194"
+  kind: default
+  lhs: "NP(%x;%y,IAFT)"
+  rhs: "(%x)(%y,+>BLK)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 210}
+- id: "195"
+  kind: default
+  lhs: NP(%x;%y)
+  rhs: "(%y,+>BLK)(%x,+>BLK)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 211}
+- id: "196"
+  kind: default
+  lhs: "NB(%x;%y,BEF)"
+  rhs: "(%y,+>BLK)(%x,+>BLK)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 212}
+- id: "197"
+  kind: default
+  lhs: "NB(%x;%y,IBEF)"
+  rhs: "(%y)(%x,+>BLK)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 213}
+- id: "198"
+  kind: default
+  lhs: "NB(%x;%y,AFT)"
+  rhs: "(%x,+>BLK)(%y,+>BLK)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 214}
+- id: "199"
+  kind: default
+  lhs: "NB(%x;%y,IAFT)"
+  rhs: "(%x)(%y,+>BLK)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 215}
+- id: "200"
+  kind: default
+  lhs: NB(%x;%y)
+  rhs: "(%x,+>BLK)(%y,+>BLK)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 216}
+- id: "201"
+  kind: default
+  lhs: "JP(%x;%y,BEF)"
+  rhs: "(%y,+>BLK)(%x,+>BLK)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 217}
+- id: "202"
+  kind: default
+  lhs: "JP(%x;%y,AFT)"
+  rhs: "(%x,+>BLK)(%y,+>BLK)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 218}
+- id: "203"
+  kind: default
+  lhs: JP(%x;%y)
+  rhs: "(%y,+>BLK)(%x,+>BLK)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 219}
+- id: "204"
+  kind: default
+  lhs: "JB(%x;%y,BEF)"
+  rhs: "(%y,+>BLK)(%x,+>BLK)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 220}
+- id: "205"
+  kind: default
+  lhs: "JB(%x;%y,AFT)"
+  rhs: "(%x,+>BLK)(%y,+>BLK)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 221}
+- id: "206"
+  kind: default
+  lhs: JB(%x;%y)
+  rhs: "(%x,+>BLK)(%y,+>BLK)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 222}
+- id: "207"
+  kind: default
+  lhs: "AP(%x;%y,BEF)"
+  rhs: "(%y,+>BLK)(%x,+>BLK)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 223}
+- id: "208"
+  kind: default
+  lhs: "AP(%x;%y,IBEF)"
+  rhs: "(%y)(%x,+>BLK)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 224}
+- id: "209"
+  kind: default
+  lhs: "AP(%x;%y,AFT)"
+  rhs: "(%x,+>BLK)(%y,+>BLK)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 225}
+- id: "210"
+  kind: default
+  lhs: "AP(%x;%y,IAFT)"
+  rhs: "(%x)(%y,+>BLK)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 226}
+- id: "211"
+  kind: default
+  lhs: AP(%x;%y)
+  rhs: "(%y,+>BLK)(%x,+>BLK)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 227}
+- id: "212"
+  kind: default
+  lhs: "AB(%x;%y,BEF)"
+  rhs: "(%y,+>BLK)(%x,+>BLK)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 228}
+- id: "213"
+  kind: default
+  lhs: "AB(%x;%y,IBEF)"
+  rhs: "(%y)(%x,+>BLK)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 229}
+- id: "214"
+  kind: default
+  lhs: "AB(%x;%y,AFT)"
+  rhs: "(%x,+>BLK)(%y,+>BLK)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 230}
+- id: "215"
+  kind: default
+  lhs: "AB(%x;%y,IAFT)"
+  rhs: "(%x)(%y,+>BLK)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 231}
+- id: "216"
+  kind: default
+  lhs: AB(%x;%y)
+  rhs: "(%x,+>BLK)(%y,+>BLK)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 232}
+- id: "217"
+  kind: default
+  lhs: "DP(%x;%y,BEF)"
+  rhs: "(%y,+>BLK)(%x,+>BLK)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 233}
+- id: "218"
+  kind: default
+  lhs: "DP(%x;%y,IBEF)"
+  rhs: "(%y)(%x,+>BLK)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 234}
+- id: "219"
+  kind: default
+  lhs: "DP(%x;%y,AFT)"
+  rhs: "(%x,+>BLK)(%y,+>BLK)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 235}
+- id: "220"
+  kind: default
+  lhs: "DP(%x;%y,IAFT)"
+  rhs: "(%x)(%y,+>BLK)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 236}
+- id: "221"
+  kind: default
+  lhs: DP(%x;%y)
+  rhs: "(%y,+>BLK)(%x,+>BLK)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 237}
+- id: "222"
+  kind: default
+  lhs: "DB(%x;%y,BEF)"
+  rhs: "(%y,+>BLK)(%x,+>BLK)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 238}
+- id: "223"
+  kind: default
+  lhs: "DB(%x;%y,IBEF)"
+  rhs: "(%y)(%x,+>BLK)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 239}
+- id: "224"
+  kind: default
+  lhs: "DB(%x;%y,AFT)"
+  rhs: "(%x,+>BLK)(%y,+>BLK)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 240}
+- id: "225"
+  kind: default
+  lhs: "DB(%x;%y,IAFT)"
+  rhs: "(%y)(%x,+>BLK)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 241}
+- id: "226"
+  kind: default
+  lhs: DB(%x;%y)
+  rhs: "(%x,+>BLK)(%y,+>BLK)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 242}
+- id: "227"
+  kind: default
+  lhs: "(%x,^inflected,FLX)"
+  rhs: "(%x,!FLX,+inflected)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 251}
+- id: "228"
+  kind: default
+  lhs: ((%x)(%y)(%z)(%w))
+  rhs: (%x)(%y)(%z)(%w)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 260}
+- id: "229"
+  kind: default
+  lhs: ((%x)(%y)(%z))
+  rhs: (%x)(%y)(%z)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 261}
+- id: "230"
+  kind: default
+  lhs: ((%x)(%y))
+  rhs: (%x)(%y)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 262}
+- id: "231"
+  kind: default
+  lhs: "(%x,>BLK)(%y,^BLK,^PUT,^STAIL)"
+  rhs: "(%x,->BLK)(\" \",+BLK)(%y)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 264}
+- id: "232"
+  kind: default
+  lhs: "(%x,>COMMA)"
+  rhs: "(%x,->COMMA)(\",\",PUT=COMMA,+>BLK)"
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 266}
+- id: "233"
+  kind: default
+  lhs: "(%x,EMARK)(%y,^STAIL)"
+  rhs: (%y)(%x)
+  conditions: []
+  comment: ""
+  source: {archive_path: exports/afr/unl_nl_tgrammar.txt, line: 268}
