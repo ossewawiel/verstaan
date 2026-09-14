@@ -102,5 +102,7 @@ tier has been compiled yet; `fixture` is a hand-written stand-in, not a real tie
 
 ## Related pages
 
-- `docs/architecture/archive-inventory.md`, produced by issue 11.
+- [`docs/architecture/archive-inventory.md`](archive-inventory.md): every mirrored language, a
+  readiness grade, and the reference set for drafting Afrikaans and English rules. Produced by
+  `python -m tools.mirror inventory` (issue 11).
 - `docs/unl-reference/`, produced by issues 09 and 10.

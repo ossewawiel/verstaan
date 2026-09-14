@@ -18,6 +18,7 @@ from pathlib import Path
 from tools.mirror import __version__
 from tools.mirror.config import load_config
 from tools.mirror.http_client import RateLimitedClient, UrllibTransport
+from tools.mirror.inventory import write_report
 from tools.mirror.login import LoginError
 from tools.mirror.retry import poll_attempts, run_retry_for_language
 from tools.mirror.run import run_mirror
@@ -210,6 +211,35 @@ def build_parser() -> argparse.ArgumentParser:
         ),
     )
 
+    inventory_parser = subparsers.add_parser(
+        "inventory",
+        help=(
+            "Read manifest.jsonl and languages.json and write "
+            "docs/architecture/archive-inventory.md: export files present, a first-pass line "
+            "count, which grammar exports are non-empty, and a readiness grade (issue 11)."
+        ),
+    )
+    inventory_parser.add_argument(
+        "--archive-root",
+        default="data/archive",
+        help="Where mirrored files live (default: %(default)s).",
+    )
+    inventory_parser.add_argument(
+        "--manifest",
+        default=None,
+        help="Path to manifest.jsonl (default: <archive-root>/manifest.jsonl).",
+    )
+    inventory_parser.add_argument(
+        "--languages",
+        default=None,
+        help="Path to languages.json (default: <archive-root>/languages.json).",
+    )
+    inventory_parser.add_argument(
+        "--out",
+        default="docs/architecture/archive-inventory.md",
+        help="Where to write the report (default: %(default)s).",
+    )
+
     return parser
 
 
@@ -225,7 +255,7 @@ def main(argv: Sequence[str] | None = None) -> int:
     args = parser.parse_args(argv)
 
     command = getattr(args, "command", None)
-    if command not in ("run", "login", "stuck", "retry"):
+    if command not in ("run", "login", "stuck", "retry", "inventory"):
         # No subcommand: the M0 skeleton behaviour. `--help`/`--version` already exited above.
         return 0
 
@@ -246,6 +276,13 @@ def main(argv: Sequence[str] | None = None) -> int:
             print(next_language)
             return 0
         print(format_stuck_report(find_stuck(manifest_path)))
+        return 0
+
+    if command == "inventory":
+        languages_path = Path(args.languages) if args.languages else archive_root / "languages.json"
+        out_path = Path(args.out)
+        count = write_report(archive_root, manifest_path, languages_path, out_path)
+        print(f"tools.mirror inventory: wrote {count} language rows to {out_path}")
         return 0
 
     config = load_config(args.config)
