@@ -2,15 +2,15 @@
 issue: 13
 title: "Write the canonical data model as a schema"
 milestone: M2
-status: in-progress
+status: done
 depends_on: [12]
 agent: implementer
 agents: [implementer, docs-writer]
 model: sonnet
 effort: medium
 checkpoint: null
-commit: null
-worktree: .worktrees/m2-store
+commit: 70093b7
+worktree: null
 github_issue: 222
 ---
 ## What
