@@ -56,7 +56,7 @@ import html
 import re
 import sys
 from collections.abc import Sequence
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from pathlib import Path
 
 from tools.importer.dictionary import _format_flow_mapping, _yaml_scalar
