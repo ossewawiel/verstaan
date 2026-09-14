@@ -85,6 +85,17 @@ export class JobManager {
     return this.jobs.get(id);
   }
 
+  /** The one job running anywhere, across every tree, or null. `POST /api/restart` (issue 162)
+   * refuses while this is non-null: restarting the server kills whatever it is running, and a
+   * killed job leaves no exit code -- the reason belongs in the refusal, not silently dropped. */
+  runningJob(): { id: string; tree: string; kind: string } | null {
+    for (const [tree, id] of this.runningByTree) {
+      const job = this.jobs.get(id);
+      if (job) return { id, tree, kind: job.kind };
+    }
+    return null;
+  }
+
   /** Validates kind and args, resolves the tree, and either starts the job immediately or queues
    * it behind whatever else is running in the same tree. Throws `JobRejected` for anything the
    * route must answer 400 to (issue 100: "any other kind is 400 with the allowed kinds named"). */

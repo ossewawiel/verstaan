@@ -41,8 +41,17 @@ def fake_node(tmp_path: Path) -> tuple[Path, Path]:
     stub_dir = tmp_path / "stub-bin"
     stub_dir.mkdir()
     log = tmp_path / "node-calls.log"
+    # Three shapes of `node` call now cross this stub: the health probe (`-e`, answered by
+    # FAKE_HEALTH), the synchronous build-if-stale check console.sh now runs before it ever
+    # backgrounds anything (scripts/build-if-stale.mjs -- exits 0 immediately, faithfully: the
+    # fixture repo below has no client/src or server/src, so the real script would find nothing
+    # stale and return just as fast), and the actual server start, which is the one call this
+    # test cares about timing and logging.
     (stub_dir / "node").write_text(
-        'case " $* " in *" -e "*) exit "${FAKE_HEALTH:-1}";; esac\n'
+        'case " $* " in\n'
+        '  *" -e "*) exit "${FAKE_HEALTH:-1}";;\n'
+        '  *"build-if-stale.mjs"*) exit 0;;\n'
+        "esac\n"
         'printf \'%s\\n\' "$*" >> "$FAKE_LOG"\nsleep 5\nexit 0\n',
         encoding="utf-8",
     )

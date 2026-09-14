@@ -2,14 +2,14 @@
 issue: 162
 title: "The console can restart itself: a button for structural changes style hot-reload never picks up"
 milestone: Side
-status: open
+status: done
 depends_on: [100, 102]
 agent: implementer
 agents: [implementer]
 model: sonnet
 effort: medium
 checkpoint: 4
-commit: null
+commit: 9e36dcd35034245969fead28cab7ba7f8530ea8f
 worktree: null
 github_issue: 213
 ---
@@ -62,9 +62,9 @@ already cover those. Remote access to this endpoint — loopback only, same as e
 
 ## Done when
 
-- [ ] `POST /api/restart` rebuilds only when stale, relaunches detached, and the old process
+- [x] `POST /api/restart` rebuilds only when stale, relaunches detached, and the old process
       exits only after the new one is spawned.
-- [ ] The Restart control is on the Console room, keyboard-armed, refused while a job is running.
-- [ ] Both proofs (structural change picked up; failed rebuild reported, not a dead tab) are in
+- [x] The Restart control is on the Console room, keyboard-armed, refused while a job is running.
+- [x] Both proofs (structural change picked up; failed rebuild reported, not a dead tab) are in
       the report.
 - [ ] PR merged through the gate check.
