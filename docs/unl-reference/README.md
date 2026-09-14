@@ -14,10 +14,14 @@ and ends with a `Source:` line naming the manifest entry it was rewritten from.
 | `spec/universal-relations.md` | The full relation hierarchy and a table of every relation: label, meaning, one UNL example, one English gloss. |
 | `spec/universal-attributes.md` | The full attribute list by category (aspect, degree, time, voice, and the rest), and what `@entry` marks. |
 | `spec/unl2010-changes.md` | Which relations UNL2010 dropped, folded, replaced or reintroduced from earlier spec versions, and the `and`/`or` argument-order change. |
+| `formats/dictionary.md` | The dictionary entry line format, every field named, checked against real Afrikaans and English exports. |
+| `formats/transformation-grammar.md` | The seven transformation-rule types and their formal syntax, checked against a real English grammar file. |
+| `formats/tagset.md` | The feature tags dictionary entries and grammar rules use, checked against the archive's live tagset export. |
+| `formats/inflection.md` | Inflectional paradigms and inflectional rules, checked against the real English paradigm export. |
+| `formats/subcategorisation.md` | Subcategorisation frames and rules, checked against the real English frame export. |
+| `formats/default-grammar.md` | The language-independent default transformation grammar, checked against the real shared grammar file. |
 
 ## What is not here yet
 
-- Dictionary entry format, tagsets and grammar rule formats. That is issue 10's scope, not this
-  one: `docs/unl-reference/formats/` (planned).
 - Anything about how Verstaan's own compiler, importer or engine use these specs. That lives in
   `docs/factory/SPEC.md`, not here. These pages describe the UNL specification only.

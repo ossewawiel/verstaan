@@ -2,7 +2,7 @@
 issue: 10
 title: "Agent-readable UNL reference: dictionary, grammar and tagset formats"
 milestone: M1
-status: open
+status: in-progress
 depends_on: [8, 9]
 agent: docs-writer
 agents: [docs-writer]
@@ -10,6 +10,7 @@ model: sonnet
 effort: medium
 checkpoint: null
 commit: null
+worktree: .worktrees/m1-mirror
 github_issue: 10
 ---
 ## What
