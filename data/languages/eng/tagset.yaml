@@ -1,0 +1,4103 @@
+# Licence: CC BY-SA 4.0. Source: UNL Archive, see data/archive/manifest.jsonl
+123PP:
+  tag: 123PP
+  meaning: first person plural
+  description: "including the listener Deictic reference that refers to both the speaker, the listener and referents grouped with the speaker."
+  examples: [memu (Telugu)]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: 123PP}
+13PP:
+  tag: 13PP
+  meaning: first person plural
+  description: "excluding the listener Deictic reference that refers to both the speaker and referents grouped with the speaker, excluding the listener."
+  examples: [memu (Telugu)]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: 13PP}
+1PER:
+  tag: 1PER
+  meaning: first person
+  description: Deictic reference that refers to the speaker
+  examples: [I (en), we (en)]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: 1PER}
+1PP:
+  tag: 1PP
+  meaning: first person plural
+  description: Deictic reference that refers to both the speaker and referents grouped with the speaker.
+  examples: [we (en), us (en), nous (fr), nós (pt), nosotros (es), wir (de)]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: 1PP}
+1PS:
+  tag: 1PS
+  meaning: first person singular
+  description: Deictic reference that refers to the speaker.
+  examples: [I (en), je (fr), eu (pt), you (es), ich (de)]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: 1PS}
+2PER:
+  tag: 2PER
+  meaning: second person
+  description: Deictic reference to the addressee.
+  examples: [you (en)]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: 2PER}
+2PP:
+  tag: 2PP
+  meaning: second person plural
+  description: Deictic reference to more than one referent identified as addressee.
+  examples: [vous (fr), vós (pt), vosotros (es), ihr (de)]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: 2PP}
+2PS:
+  tag: 2PS
+  meaning: second person singular
+  description: Deictic reference to a single referent identified as addressee.
+  examples: [tu (fr), tu (pt), tú (es), du (de)]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: 2PS}
+3PER:
+  tag: 3PER
+  meaning: third person
+  description: Deictic reference to a referent not identified as the speaker or addressee.
+  examples: [sie (de)]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: 3PER}
+3PP:
+  tag: 3PP
+  meaning: third person plural
+  description: Deictic reference to more than one referent not identified as the speaker or addressee.
+  examples: [they (en), ils (fr), elles (fr), eles (pt), elas (pt), ellos (es), ellas (es)]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: 3PP}
+3PS:
+  tag: 3PS
+  meaning: third person singular
+  description: Deictic reference to a single referent not identified as the speaker or addressee.
+  examples: [he (en), she (en), il (fr), elle (fr), ele (pt), ela (pt), él (es), ella (es), ello (es), er (de), es (de)]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: 3PS}
+A:
+  tag: A
+  meaning: adverb
+  description: Modifiers of verbs and other constituent classes.
+  examples: [beautifully]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: A}
+AA:
+  tag: AA
+  meaning: adjunct in an adverbial phrase
+  description: An optional constituent of an adverbial phrase.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: AA}
+AAV:
+  tag: AAV
+  meaning: adverb
+  description: adjunct Adverb used to indicate circumstance.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: AAV}
+AB:
+  tag: AB
+  meaning: adverbial phrase
+  description: intermediate projection Adverbial-bar phrase (intermediate projection)
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: AB}
+ABB:
+  tag: ABB
+  meaning: abbreviation
+  description: Abbreviation of a word form
+  examples: [Dr.]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: ABB}
+ABE:
+  tag: ABE
+  meaning: abessive
+  description: A case that expresses the lack or absence of the referent of the noun it marks.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: ABE}
+ABL:
+  tag: ABL
+  meaning: ablative
+  description: "A case that indicates movement from something, and/or cause."
+  examples: [rosa, rosis (la)]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: ABL}
+ABN:
+  tag: ABN
+  meaning: abstractness
+  description: Materiality of the referent
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: ABN}
+ABS:
+  tag: ABS
+  meaning: absolutive
+  description: Case of nouns in ergative-absolutive languages that would generally be the subjects of intransitive verbs or the objects of transitive verbs in the translational equivalents of nominative-accusative languages such as English.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: ABS}
+ABT:
+  tag: ABT
+  meaning: abstract
+  description: Nonmaterial referent
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: ABT}
+AC:
+  tag: AC
+  meaning: complement in an adverbial phrase
+  description: A phrasal or clausal category which is selected (subcategorized) by the head of a phrase.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: AC}
+ACAS:
+  tag: ACAS
+  meaning: assigns case
+  description: Used to indicate case agreement.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: ACAS}
+ACC:
+  tag: ACC
+  meaning: accusative
+  description: A case that indicates the direct object of a verb.
+  examples: [rosam, rosas (la)]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: ACC}
+ACR:
+  tag: ACR
+  meaning: acronym
+  description: Abbreviations that are formed using the initial components in a phrase or name
+  examples: [UNL]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: ACR}
+ACT:
+  tag: ACT
+  meaning: act or action
+  description: Nouns denoting acts or actions.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: ACT}
+ACV:
+  tag: ACV
+  meaning: active voice
+  description: A voice that indicates that the subject is the agent or actor of the verb.
+  examples: [build]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: ACV}
+ADE:
+  tag: ADE
+  meaning: adessive
+  description: "A locative case with the basic meaning of \"on\" used in Uralic languages. "
+  examples: ["laual (et: on the table)"]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: ADE}
+ADJ:
+  tag: ADJ
+  meaning: adjective
+  description: Modifiers of nouns.
+  examples: [beautiful]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: ADJ}
+AFF:
+  tag: AFF
+  meaning: affix
+  description: Affix (either inflectional or derivational)
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: AFF}
+AFM:
+  tag: AFM
+  meaning: affirmative
+  description: Affirmative polarity.
+  examples: [always]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: AFM}
+AFT:
+  tag: AFT
+  meaning: after
+  description: "At the right side, after a blank space."
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: AFT}
+AGE:
+  tag: AGE
+  meaning: age
+  description: adjectives that denote age
+  examples: [new, old, young]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: AGE}
+AGEN:
+  tag: AGEN
+  meaning: assigns gender
+  description: Used to indicate gender agreement.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: AGEN}
+AGR:
+  tag: AGR
+  meaning: agreement
+  description: "A traditional term used in grammatical theory and description to refer to a formal relationship between elements, whereby a form of one word requires a corresponding form of another."
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: AGR}
+AH:
+  tag: AH
+  meaning: head of an adverbial phrase
+  description: Head of an adverbial phrase
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: AH}
+AJ0:
+  tag: AJ0
+  meaning: immediate
+  description: The constituent is actually a (inseparable) part of the head (as in inseparable phrasal verbs).
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: AJ0}
+AJ1:
+  tag: AJ1
+  meaning: nearest
+  description: "The constituent has the highest precedence over other constituents (i.e., it is necessarily the nearest to the head)."
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: AJ1}
+AJ2:
+  tag: AJ2
+  meaning: near
+  description: "The constituent has high precedence over other constituents, but it is not  necessarily the nearest to the head (i.e., there may be other constituents nearer to the head)"
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: AJ2}
+AJ3:
+  tag: AJ3
+  meaning: distant
+  description: "The constituent has low precedence over other constituents but it is not necessarily the most distant from the head (i.e, there may be other constituents farther from the head)"
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: AJ3}
+AJ4:
+  tag: AJ4
+  meaning: most distant
+  description: "The constituent has the lowest precedence over other constituents (i.e., it is necessarily the most distant from the head)"
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: AJ4}
+AJC:
+  tag: AJC
+  meaning: adjacency
+  description: Distance between two branches in a tree structure.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: AJC}
+ALE:
+  tag: ALE
+  meaning: alethic
+  description: Modality that connotes the speaker's estimation of the logical necessity or possibility of the proposition expressed by his utterance.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: ALE}
+ALI:
+  tag: ALI
+  meaning: alienable
+  description: "Not permanently or necessarily 
+
+possessed"
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: ALI}
+ALL:
+  tag: ALL
+  meaning: allative
+  description: A case that expresses motion to or toward the referent of the noun it marks.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: ALL}
+ALT:
+  tag: ALT
+  meaning: alternative form
+  description: Alternative form (to be used when there is only one alternative form available for a given inflection)
+  examples: ["PLR:=\"fish\";
+PLR&ALT:=\"fishes\";"]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: ALT}
+ALT1:
+  tag: ALT1
+  meaning: alternative form 1
+  description: Alternative form (to be used when there is more than one alternative form available for a given inflection)
+  examples: [The word 'elephant', in Arabic, has three plural forms, "as indicated below:
+PLR:=فِيَلة;
+PLR&ALT1:=فُيُول;
+PLR&ALT2:=أفْيال;"]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: ALT1}
+ALT2:
+  tag: ALT2
+  meaning: alternative form 2
+  description: Alternative form (to be used when a given inflection may have more than two alternative forms)
+  examples: [The word 'elephant', in Arabic, has three plural forms, "as indicated below:
+PLR:=فِيَلة;
+PLR&ALT1:=فُيُول;
+PLR&ALT2:=أفْيال;"]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: ALT2}
+ALT3:
+  tag: ALT3
+  meaning: alternative form 3
+  description: Alternative form (to be used when a given inflection has more than three alternative forms)
+  examples: [The word 'elephant', in Arabic, has three plural forms, "as indicated below:
+PLR:=فِيَلة;
+PLR&ALT1:=فُيُول;
+PLR&ALT2:=أفْيال;"]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: ALT3}
+ALY:
+  tag: ALY
+  meaning: alienability
+  description: Permanence or obligation of possession
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: ALY}
+AMPERSAND:
+  tag: AMPERSAND
+  meaning: ampersand
+  description: Ampersand
+  examples: ["&"]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: AMPERSAND}
+ANI:
+  tag: ANI
+  meaning: animacy
+  description: Grammatical and/or semantic category of nouns based on how sentient or alive the referent of the noun is.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: ANI}
+ANIA:
+  tag: ANIA
+  meaning: animacy
+  description: Attributes that express animacy
+  examples: ["@thing", "@person"]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: ANIA}
+ANL:
+  tag: ANL
+  meaning: animal
+  description: Nouns denoting animals.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: ANL}
+ANM:
+  tag: ANM
+  meaning: animate
+  description: Indicates an animate reference.
+  examples: [he, she]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: ANM}
+ANUM:
+  tag: ANUM
+  meaning: assigns number
+  description: Used to indicate number agreement.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: ANUM}
+AOR:
+  tag: AOR
+  meaning: aorist
+  description: "A form of a verb in some languages, such as Classical Greek, that expresses action without indicating its completion or continuation, or that,  in the indicative mood, expresses past action."
+  examples: [μενσα]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: AOR}
+AP:
+  tag: AP
+  meaning: adverbial phrase
+  description: maximal projection Adverbial-bar-bar phrase (maximal projection)
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: AP}
+APER:
+  tag: APER
+  meaning: assigns person
+  description: Used to indicate person agreement.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: APER}
+APOSTROPHE:
+  tag: APOSTROPHE
+  meaning: apostrophe
+  description: Apostrophe
+  examples: ["'"]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: APOSTROPHE}
+ARC:
+  tag: ARC
+  meaning: archaism
+  description: A word that is no longer used.
+  examples: [thou (= you)]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: ARC}
+ARF:
+  tag: ARF
+  meaning: artifact
+  description: Nouns denoting man-made objects.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: ARF}
+ART:
+  tag: ART
+  meaning: article
+  description: "Determiner that identifies a noun's definite or indefinite reference, and new or given status."
+  examples: [the]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: ART}
+AS:
+  tag: AS
+  meaning: specifier of an adverbial phrase
+  description: Specifier of an adverbial phrase.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: AS}
+ASP:
+  tag: ASP
+  meaning: aspect
+  description: Defines the temporal flow (or lack thereof) in the described event or state.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: ASP}
+ASPA:
+  tag: ASPA
+  meaning: aspect
+  description: Attributes that express aspect
+  examples: ["@progressive", "@causative"]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: ASPA}
+ASTERISK:
+  tag: ASTERISK
+  meaning: asterisk
+  description: Asterisk
+  examples: ["*"]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: ASTERISK}
+ATE:
+  tag: ATE
+  meaning: absolute tense
+  description: A tense that refers to a time in relation to the moment of utterance.
+  examples: [past, present, future]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: ATE}
+ATNS:
+  tag: ATNS
+  meaning: assigns tense
+  description: Used in tense agreement.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: ATNS}
+ATR:
+  tag: ATR
+  meaning: attribute
+  description: Nouns denoting attributes of people and objects. Used to map attributes to empty UW's
+  examples: ["[the]{}\"\"(LEX=D,POS=ART,att=@def);"]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: ATR}
+AUG:
+  tag: AUG
+  meaning: augmentative
+  description: "A morphological form of a word which expresses greater intensity, often in size, but also in other attributes. It is the opposite of a diminutive."
+  examples: [overlord, grandmaster, supermarket, megastar]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: AUG}
+AUM:
+  tag: AUM
+  meaning: assumptive
+  description: Assumptive mood is an epistemic mode that signals the speaker's belief that his statement is based on facts about what is usually the case in such circumstances.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: AUM}
+AUX:
+  tag: AUX
+  meaning: verb
+  description: "auxiliary A verb which accompanies the lexical verb of a verb phrase, and expresses grammatical distinctions not carried by the lexical verb."
+  examples: [will]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: AUX}
+AVR:
+  tag: AVR
+  meaning: conjunction
+  description: "adverbializer Subordinating conjunction that  links a subordinate clause to a main clause, and  indicates that the subordinate clause has an \"adverbial\" or interpropositional relation to the main clause, indicating purpose, condition, time, and location."
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: AVR}
+BEF:
+  tag: BEF
+  meaning: before
+  description: "At the left side, before a blank space."
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: BEF}
+BEN:
+  tag: BEN
+  meaning: benefactive
+  description: A case that expresses that the referent of the noun it marks receives the benefit of the situation expressed by the clause.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: BEN}
+BF:
+  tag: BF
+  meaning: base form
+  description: Form used to generate all variants of a given lexeme.
+  examples: ["table (>table,>tables)"]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: BF}
+BLK:
+  tag: BLK
+  meaning: blank
+  description: blank space
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: BLK}
+BON:
+  tag: BON
+  meaning: body part
+  description: Nouns denoting body parts.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: BON}
+BOV:
+  tag: BOV
+  meaning: body action
+  description: "Verbs of grooming, dressing and bodily care."
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: BOV}
+BSLASH:
+  tag: BSLASH
+  meaning: back slash
+  description: Back slash
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: BSLASH}
+C:
+  tag: C
+  meaning: conjunction
+  description: "Word that syntactically links words or larger constituents, and expresses a semantic relationship between them."
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: C}
+CA:
+  tag: CA
+  meaning: adjunct in a complementizer phrase
+  description: An optional constituent of a complementizer phrase.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: CA}
+CAR:
+  tag: CAR
+  meaning: cardinality
+  description: Number of the elements of the set
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: CAR}
+CAS:
+  tag: CAS
+  meaning: case
+  description: The case of a noun or pronoun indicates its grammatical function in a greater phrase or clause such as the role of subject or of direct object.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: CAS}
+CAU:
+  tag: CAU
+  meaning: causative
+  description: A case which expresses that the referent of the noun it marks is the cause of the situation expressed by the clause.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: CAU}
+CB:
+  tag: CB
+  meaning: complementizer phrase
+  description: intermediate projection Conjunction-bar phrase (intermediate projection)
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: CB}
+CC:
+  tag: CC
+  meaning: complement in a complementizer phrase
+  description: A phrasal or clausal category which is selected (subcategorized) by the head of a phrase.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: CC}
+CCBRACE:
+  tag: CCBRACE
+  meaning: closing curly brace
+  description: Closing curly brace
+  examples: ["}"]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: CCBRACE}
+CCT:
+  tag: CCT
+  meaning: concrete
+  description: Material referent
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: CCT}
+CCX:
+  tag: CCX
+  meaning: affix
+  description: circumfix Affix made up of two separate parts which surround and attach to a root or stem.
+  examples: [from .. on (from now on)]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: CCX}
+CDN:
+  tag: CDN
+  meaning: numeral
+  description: "cardinal A numeral of the class whose members are considered basic in form, are used in counting, and in expressing how many objects are referred to."
+  examples: [two]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: CDN}
+CGN:
+  tag: CGN
+  meaning: cognitive noun
+  description: Nouns denoting cognitive processes and contents.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: CGN}
+CGV:
+  tag: CGV
+  meaning: cognitive verb
+  description: "Verbs of thinking, judging, analyzing, doubting."
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: CGV}
+CH:
+  tag: CH
+  meaning: head of a complementizer phrase
+  description: Head of a complementizer phrase
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: CH}
+CHA:
+  tag: CHA
+  meaning: change
+  description: "Verbs of size, temperature change, intensifying, etc."
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: CHA}
+CHEAD:
+  tag: CHEAD
+  meaning: scope head
+  description: the beginning of a scope
+  examples: [Peter said that <chead> John had left <ctail>]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: CHEAD}
+CIR:
+  tag: CIR
+  meaning: adposition
+  description: circumposition An adposition that surronds the phrase.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: CIR}
+CJT:
+  tag: CJT
+  meaning: adverb
+  description: conjunct conjunct
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: CJT}
+CLA:
+  tag: CLA
+  meaning: classifier
+  description: A word or affix that expresses the classification of a noun.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: CLA}
+CLI:
+  tag: CLI
+  meaning: clitic
+  description: A word fused with an adjacent word
+  examples: ["la (it: mangiarla)"]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: CLI}
+CLQ:
+  tag: CLQ
+  meaning: colloquialism
+  description: A word that is not used in formal speech.
+  examples: [wanna (= want to)]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: CLQ}
+CMN:
+  tag: CMN
+  meaning: communication noun
+  description: Nouns denoting communicative processes and contents.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: CMN}
+CMP:
+  tag: CMP
+  meaning: comparative
+  description: An adjective or adverb that compares the quality with that of another of its kind.
+  examples: [better]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: CMP}
+CMR:
+  tag: CMR
+  meaning: conjunction
+  description: complementizer A complementizer is a conjunction which marks a complement clause.
+  examples: [that (I know that he will come)]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: CMR}
+CMS:
+  tag: CMS
+  meaning: commissive
+  description: "Commissive modality is a deontic modality that connotes the speaker's expressed commitment, as a promise or threat, to bring about the proposition expressed by the utterance."
+  examples: [All elections shall take place on schedule.]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: CMS}
+CMT:
+  tag: CMT
+  meaning: comitative
+  description: A case expressing accompaniment.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: CMT}
+CMV:
+  tag: CMV
+  meaning: communication verb
+  description: "Verbs of telling, asking, ordering, singing."
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: CMV}
+COL:
+  tag: COL
+  meaning: collective
+  description: "The concept denotes a group seen as a 
+
+unity"
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: COL}
+COLON:
+  tag: COLON
+  meaning: colon
+  description: colon
+  examples: [":"]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: COLON}
+COM:
+  tag: COM
+  meaning: common
+  description: Common gender
+  examples: [pianiste (fr)]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: COM}
+COMMA:
+  tag: COMMA
+  meaning: comma
+  description: comma
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: COMMA}
+CON:
+  tag: CON
+  meaning: conditional
+  description: "Mood used in conditional sentences to refer to a hypothetical state of affairs, or an uncertain event that is contingent on another set of circumstances."
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: CON}
+COO:
+  tag: COO
+  meaning: conjunction
+  description: coordinating A conjunction that links constituents without syntactically subordinating one to the other.
+  examples: [and]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: COO}
+COP:
+  tag: COP
+  meaning: verb
+  description: "copula An intransitive verb which links a subject  to a noun phrase adjective, or other constituent which expresses the predicate."
+  examples: [be (to be)]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: COP}
+COR:
+  tag: COR
+  meaning: color
+  description: adjectives that denote colors
+  examples: [black, white, red]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: COR}
+CP:
+  tag: CP
+  meaning: complementizer phrase
+  description: intermediate projection Conjunction-bar-bar phrase (maximal projection) Closing parenthesis
+  examples: [)]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: CP}
+CPR:
+  tag: CPR
+  meaning: pronoun
+  description: reciprocal Pronoun that expresses a mutual feeling or action among the referents of a plural subject.
+  examples: [each other]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: CPR}
+CPT:
+  tag: CPT
+  meaning: competition
+  description: "Verbs of fighting, athletic activities."
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: CPT}
+CRC:
+  tag: CRC
+  meaning: conjunction
+  description: "correlative Either of a pair of coordinating conjunctions used in ordered fashion. Typically, one is used immediately before each member of a pair of constituents."
+  examples: [both ... and ...]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: CRC}
+CRE:
+  tag: CRE
+  meaning: creation
+  description: "Verbs of sewing, baking, painting, performing."
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: CRE}
+CS:
+  tag: CS
+  meaning: specifier of a complementizer phrase
+  description: Specifier of a conjunctional phrase.ci
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: CS}
+CSBRACKET:
+  tag: CSBRACKET
+  meaning: closing square bracket
+  description: Closing square bracket
+  examples: ["]"]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: CSBRACKET}
+CSM:
+  tag: CSM
+  meaning: consumption
+  description: Verbs of eating and drinking.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: CSM}
+CTAIL:
+  tag: CTAIL
+  meaning: scope tail
+  description: the end of a scope
+  examples: [Peter said that <chead> John had left <ctail>]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: CTAIL}
+CTB:
+  tag: CTB
+  meaning: countable
+  description: "The concept denotes a countable number 
+
+of referents"
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: CTB}
+CTC:
+  tag: CTC
+  meaning: contact
+  description: "Verbs of touching, hitting, tying, digging."
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: CTC}
+CTN:
+  tag: CTN
+  meaning: continuative
+  description: "An imperfective aspect that expresses an ongoing, but not habitual, occurrence of the state or event expressed by the verb."
+  examples: [I am still eating.]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: CTN}
+CTS:
+  tag: CTS
+  meaning: construct state
+  description: "The construct state or status constructus is a noun form occurring in Afro-Asiatic languages. "
+  examples: [Taddart n urgaz (Berber);]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: CTS}
+CTT:
+  tag: CTT
+  meaning: contraction
+  description: "Shortening of a word, syllable, or word group by omission of internal letters."
+  examples: [don't]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: CTT}
+D:
+  tag: D
+  meaning: determiner
+  description: "Word or affix that belongs to a class of noun modifiers that expresses the reference, including quantity, of a noun."
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: D}
+DA:
+  tag: DA
+  meaning: adjunct in a determiner phrase
+  description: An optional constituent of a determiner phrase.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: DA}
+DAT:
+  tag: DAT
+  meaning: dative
+  description: A case that indicates the indirect object of a verb
+  examples: [rosae, rosis (la)]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: DAT}
+DAX:
+  tag: DAX
+  meaning: affix
+  description: derivational An affix by means of which one word is formed (derived) from another.
+  examples: ["-er (writ-er)"]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: DAX}
+DB:
+  tag: DB
+  meaning: determiner phrase
+  description: intermediate projection Determiner-bar phrase (intermediate projection)
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: DB}
+DC:
+  tag: DC
+  meaning: complement in a determiner phrase
+  description: A phrasal or clausal category which is selected (subcategorized) by the head of a phrase.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: DC}
+DEC:
+  tag: DEC
+  meaning: declarative
+  description: Declarative mood is an epistemic mood that signals that the proposition expressed by a speaker's utterance is offered as an unqualified statement of fact.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: DEC}
+DED:
+  tag: DED
+  meaning: deductive
+  description: Deductive mood is an epistemic mood that signals that the speaker judges from other facts that the proposition expressed by his utterance is probably true.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: DED}
+DEF:
+  tag: DEF
+  meaning: definite
+  description: Indicates that an expression's referent(s) is in some way identifiable to both speaker and addressee.
+  examples: [the]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: DEF}
+DEG:
+  tag: DEG
+  meaning: degree
+  description: Describes the relational value of one thing with something in another clause of a sentence.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: DEG}
+DEGA:
+  tag: DEGA
+  meaning: degree
+  description: Attributes that express degree
+  examples: ["@more", "@less", "@equal"]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: DEGA}
+DEL:
+  tag: DEL
+  meaning: delative
+  description: A case which expresses motion downward from the referent of the noun it marks.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: DEL}
+DEM:
+  tag: DEM
+  meaning: determiner
+  description: "demonstrative A determiner that is used deictically to indicate a referent's spatial, temporal, or discourse location."
+  examples: [this (house)]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: DEM}
+DEO:
+  tag: DEO
+  meaning: deontic
+  description: "Modality that connotes the speaker's degree of requirement of desire for, or commitment to the realization of the proposition expressed by the utterance."
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: DEO}
+DEP:
+  tag: DEP
+  meaning: pronoun
+  description: demonstrative
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: DEP}
+DFN:
+  tag: DFN
+  meaning: defineteness
+  description: ""
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: DFN}
+DGR:
+  tag: DGR
+  meaning: degree
+  description: adverbs that denote degree
+  examples: [extremely, rather]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: DGR}
+DH:
+  tag: DH
+  meaning: head of a determiner phrase
+  description: Head of a determiner phrase
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: DH}
+DIA:
+  tag: DIA
+  meaning: dialect
+  description: A regional speech pattern.
+  examples: [wee (= small)]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: DIA}
+DIGIT:
+  tag: DIGIT
+  meaning: DIGIT
+  description: Digits (used when the UW is a digit)
+  examples: [one, hundred, thousand]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: DIGIT}
+DIM:
+  tag: DIM
+  meaning: diminutive
+  description: "A formation of a word used to convey a slight degree of the root meaning, smallness of the object or quality named, encapsulation, intimacy, or endearment."
+  examples: [Brötchen (de), Männlein (de); fillette (fr), fiston (fr); finestrella (it), poveretto (it);  homunculus (la), libellus (la); cebollita (es), cafecito (es);]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: DIM}
+DIS:
+  tag: DIS
+  meaning: distribution
+  description: Distribution (word order)
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: DIS}
+DJT:
+  tag: DJT
+  meaning: adverb
+  description: disjunct disjunct
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: DJT}
+DLB:
+  tag: DLB
+  meaning: deliberative
+  description: Deliberative mood is a directive mood which signals the speaker's request for instruction from the addressee as to whether to do the proposition expressed in the utterance.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: DLB}
+DMS:
+  tag: DMS
+  meaning: dimension
+  description: adjectives that denote dimensions
+  examples: [big, large, little, small; long, short; wide, narrow; thick, fat, thin]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: DMS}
+DOLLAR:
+  tag: DOLLAR
+  meaning: dollar
+  description: Dollar
+  examples: [$]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: DOLLAR}
+DOZEN:
+  tag: DOZEN
+  meaning: digit
+  description: dozen numeral used to express dozens
+  examples: [twenty, thirty]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: DOZEN}
+DP:
+  tag: DP
+  meaning: determiner phrase
+  description: maximal projection Determiner-bar-bar phrase (maximal projection)
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: DP}
+DRT:
+  tag: DRT
+  meaning: directive
+  description: Directive modality is a deontic modality that connotes the speaker's degree of requirement of conformity to the proposition expressed by an utterance.
+  examples: [Stop!]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: DRT}
+DS:
+  tag: DS
+  meaning: specifier of a determiner phrase
+  description: Specifier of a determiner phrase.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: DS}
+DTN:
+  tag: DTN
+  meaning: numeral
+  description: distributive A distributive numeral is a numeral which expresses a group of the number specified.
+  examples: [by the dozen, in pairs]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: DTN}
+DUA:
+  tag: DUA
+  meaning: dual
+  description: Number which refers to two members of the class identified by the noun.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: DUA}
+DUB:
+  tag: DUB
+  meaning: dubitative
+  description: Dubitative mood is an epistemic mood which signals a speaker's reservation about the accuracy of his or her statement.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: DUB}
+DUM:
+  tag: DUM
+  meaning: pronoun
+  description: "dummy A grammatical unit that has no meaning, but completes a sentence to make it grammatical."
+  examples: [it (is raining)]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: DUM}
+E:
+  tag: E
+  meaning: proper noun
+  description: proper nouns
+  examples: [Peter, New York, France]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: E}
+ELA:
+  tag: ELA
+  meaning: elative
+  description: A case expressing motion out of or away from the referent of the noun it marks.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: ELA}
+EMARK:
+  tag: EMARK
+  meaning: exclamation mark
+  description: Exclamation mark
+  examples: ["!"]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: EMARK}
+EMO:
+  tag: EMO
+  meaning: emotion
+  description: Verbs of feeling.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: EMO}
+END:
+  tag: END
+  meaning: end position
+  description: At the end of the sentence
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: END}
+EPI:
+  tag: EPI
+  meaning: epistemic
+  description: Modality that connotes how much certainty or evidence a speaker has for the proposition expressed by his or her utterance.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: EPI}
+EPR:
+  tag: EPR
+  meaning: pronoun
+  description: emphatic A personal pronoun that is used to emphasize its referent.
+  examples: ["moi (, je sui français)"]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: EPR}
+EQU:
+  tag: EQU
+  meaning: equative
+  description: A case that expresses likeness or identity to the referent of the noun it marks.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: EQU}
+EQUAL:
+  tag: EQUAL
+  meaning: equal
+  description: Equal
+  examples: ["="]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: EQUAL}
+ERG:
+  tag: ERG
+  meaning: ergative
+  description: The case of nouns in ergative-absolutive languages that would generally be the subjects of transitive verbs in the translation equivalents of nominative-accusative languages such as English.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: ERG}
+ESS:
+  tag: ESS
+  meaning: essive
+  description: A case that expresses the temporary state of the referent specified by a noun.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: ESS}
+EURO:
+  tag: EURO
+  meaning: euro
+  description: Euro
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: EURO}
+EVI:
+  tag: EVI
+  meaning: evidentiality
+  description: Evidentiality is an epistemic modality that connotes the speaker's assessment of the evidence for his or her statement.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: EVI}
+EVL:
+  tag: EVL
+  meaning: equivalent
+  description: Social deixis that expresses equality of status.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: EVL}
+EXP:
+  tag: EXP
+  meaning: experiential perfect
+  description: "Grammaticalization of the current relevance, at the moment of utterance, of an event or state that occurred prior to the moment of utterance. The event or state is expressed as an experience which happened at least once, without respect to a particular location in time, and which is repeatable."
+  examples: [Bill has been to America.]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: EXP}
+F:
+  tag: F
+  meaning: affix
+  description: A bound morpheme which adds lexical or syntactic information to a root or stem.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: F}
+FAM:
+  tag: FAM
+  meaning: familiar
+  description: Social deixis that expresses a high degree of solidarity between the speaker and addressee.
+  examples: [tu (fr)]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: FAM}
+FEE:
+  tag: FEE
+  meaning: feeling
+  description: Nouns denoting feelings and emotions.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: FEE}
+FEEL:
+  tag: FEEL
+  meaning: emotion
+  description: Attributes that express emotions
+  examples: ["@fear", "@pain"]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: FEEL}
+FEM:
+  tag: FEM
+  meaning: feminine
+  description: "A grammatical gender that marks nouns that have human or animal female referents, and often marks nouns that have referents that do not carry distinctions of sex."
+  examples: [table (fr)]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: FEM}
+FIGA:
+  tag: FIGA
+  meaning: figure
+  description: Attributes that express figures of speech
+  examples: ["@anthropomorphism", "@hyperbole"]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: FIGA}
+FLASH:
+  tag: FLASH
+  meaning: forward slash
+  description: Forward slash
+  examples: [/]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: FLASH}
+FLX:
+  tag: FLX
+  meaning: inflectional rules
+  description: Used to trigger inflectional rules
+  examples: ["FLX(PLR:=0>\"s\")"]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: FLX}
+FOC:
+  tag: FOC
+  meaning: focus
+  description: "Phonologically prominent element of a sentence, usually marked by heavy stress or nuclear pitch accent, normally used to encode information that is new or contrary to the presuppositions of the interlocutor."
+  examples: [Baatonum]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: FOC}
+FOO:
+  tag: FOO
+  meaning: food
+  description: Nouns denoting foods and drinks.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: FOO}
+FOR:
+  tag: FOR
+  meaning: formal
+  description: A form that is used only in formal register.
+  examples: [commence (= begin), ascertain (= find out), pursuant to (= in accordance with)]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: FOR}
+FPR:
+  tag: FPR
+  meaning: pronoun
+  description: reflexive Pronoun that has coreference with the subject.
+  examples: [himself (he prides himself)]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: FPR}
+FRA:
+  tag: FRA
+  meaning: subcategorization frame
+  description: "Subcategorization frame number, to be defined in the grammar."
+  examples: [Y02]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: FRA}
+FRE:
+  tag: FRE
+  meaning: free order
+  description: free order
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: FRE}
+FRT:
+  tag: FRT
+  meaning: front position
+  description: At the beginning of the sentence
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: FRT}
+FUN:
+  tag: FUN
+  meaning: future
+  description: near Absolute tense that refers to a time right after the moment of utterance.
+  examples: [He is coming tomorrow.]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: FUN}
+FUR:
+  tag: FUR
+  meaning: future
+  description: remote Absolute tense that refers to a distant future.
+  examples: [He will come.]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: FUR}
+FUT:
+  tag: FUT
+  meaning: future
+  description: Absolute tense that refers to a time after the moment of utterance.
+  examples: [will be (I will be here)]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: FUT}
+GDV:
+  tag: GDV
+  meaning: gerundive
+  description: A non-finite verb form.
+  examples: [delendam]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: GDV}
+GEN:
+  tag: GEN
+  meaning: gender
+  description: "A noun class system, composed of two or three classes, whose nouns that have human male and female referents tend to be in separate classes."
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: GEN}
+GENA:
+  tag: GENA
+  meaning: gender
+  description: Attributes that express gender
+  examples: ["@male", "@female", "@neutral"]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: GENA}
+GER:
+  tag: GER
+  meaning: gerund
+  description: A non-finite verb form.
+  examples: [sleeping]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: GER}
+GNR:
+  tag: GNR
+  meaning: generic
+  description: "A noun or noun phrase that refers to a whole class, or any member of a class as a representative of its class."
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: GNR}
+GNT:
+  tag: GNT
+  meaning: genitive
+  description: A case in which the referent of the marked noun is the possessor of the referent of another noun.
+  examples: ["'s (en); rosae", rosarum (la)]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: GNT}
+GOV:
+  tag: GOV
+  meaning: subcategorization rule
+  description: Used to deal with subcategorization rules
+  examples: [GOV(VS("the"));]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: GOV}
+GRO:
+  tag: GRO
+  meaning: group
+  description: Nouns denoting groupings of people or objects.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: GRO}
+GTHAN:
+  tag: GTHAN
+  meaning: greater than
+  description: Greater than
+  examples: [">"]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: GTHAN}
+HAB:
+  tag: HAB
+  meaning: habitual
+  description: An imperfective aspect that expresses the occurrence of an event or state as characteristic of a period of time.
+  examples: [I used to walk.]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: HAB}
+HASH:
+  tag: HASH
+  meaning: hash
+  description: Hash
+  examples: ["#"]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: HASH}
+HEP:
+  tag: HEP
+  meaning: past
+  description: hesternal Past tense that refers to a time that is located somewhere in the span beginning with the period defined culturally as "yesterday" and extends back through some period that is considered nonremote.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: HEP}
+HOP:
+  tag: HOP
+  meaning: past
+  description: hodiernal Past tense that refers to a time as located before the moment of utterance within the span culturally defined as "today".
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: HOP}
+HOR:
+  tag: HOR
+  meaning: hortative
+  description: The hortative is a group of deontic moods that are used to encourage or to urge.
+  examples: [let's]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: HOR}
+HOW:
+  tag: HOW
+  meaning: manner
+  description: Manner attributes
+  examples: ["@according_to", "@against"]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: HOW}
+HPP:
+  tag: HPP
+  meaning: human propensity
+  description: adjectives that denote human-related values
+  examples: [jealous, happy, kind, clever, generous, gay, cruel, rude, proud, wicked]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: HPP}
+HUM:
+  tag: HUM
+  meaning: person
+  description: Nouns denoting people.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: HUM}
+HUNDRED:
+  tag: HUNDRED
+  meaning: digit
+  description: hundred Used to deal with hundreds
+  examples: [hundred, duzentos]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: HUNDRED}
+HYP:
+  tag: HYP
+  meaning: hypothetical
+  description: "Hypothetical mood is an epistemic mood that signals that the speaker evaluates a proposition as counterfactual, but otherwise possible."
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: HYP}
+HYPHEN:
+  tag: HYPHEN
+  meaning: hyphen
+  description: Hyphen
+  examples: ["-"]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: HYPHEN}
+I:
+  tag: I
+  meaning: inflection
+  description: A word used to add functional or grammatical content to the information expressed by another word
+  examples: [auxiliary and modal verbs]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: I}
+IA:
+  tag: IA
+  meaning: adjunct in an inflectional phrase
+  description: An optional constituent of an inflectional phrase.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: IA}
+IAFT:
+  tag: IAFT
+  meaning: immediately after
+  description: "At the right side, without any blank space."
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: IAFT}
+IAX:
+  tag: IAX
+  meaning: affix
+  description: inflectional Affix that expresses a grammatical contrast that is obligatory for its stem's word class in some given grammatical context.
+  examples: ["-s (writer-s)"]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: IAX}
+IB:
+  tag: IB
+  meaning: inflectional phrase
+  description: intermediate projection Inflectional-bar phrase (intermediate projection)
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: IB}
+IBEF:
+  tag: IBEF
+  meaning: immediately before
+  description: "At the left side, without any blank space."
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: IBEF}
+IC:
+  tag: IC
+  meaning: complement in an inflectional phrase
+  description: A phrasal or clausal category which is selected (subcategorized) by the head of a phrase.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: IC}
+ICP:
+  tag: ICP
+  meaning: inceptive
+  description: Aspect that expresses the beginning of an event or state.
+  examples: [I started eating.]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: ICP}
+IFS:
+  tag: IFS
+  meaning: inferior
+  description: Social deixis that encodes a low degree of status.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: IFS}
+IFX:
+  tag: IFX
+  meaning: affix
+  description: infix Affix that is inserted within a root or stem.
+  examples: [vincō]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: IFX}
+IH:
+  tag: IH
+  meaning: head of an inflectional phrase
+  description: Head of an inflectional phrase
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: IH}
+ILL:
+  tag: ILL
+  meaning: illative
+  description: A case that expresses motion into or direction toward the referent of the noun it marks.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: ILL}
+IMP:
+  tag: IMP
+  meaning: imperative
+  description: "Imperative mood is mood that signals directive modality, especially in commands. Its use may be extended to signal permission."
+  examples: [Do that!]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: IMP}
+IND:
+  tag: IND
+  meaning: indicative
+  description: Mood used for factual statements and positive beliefs.
+  examples: [I'll do that.]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: IND}
+INE:
+  tag: INE
+  meaning: inessive
+  description: A case that expresses a location within the referent of the noun it marks.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: INE}
+INF:
+  tag: INF
+  meaning: infinitive
+  description: A non-finite verb form.
+  examples: [be (to be)]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: INF}
+INFR:
+  tag: INFR
+  meaning: inferential mood
+  description: "The inferential mood is used to report a nonwitnessed event without confirming it, but the same forms also function as admiratives in the Balkan languages in which they occur. The inferential mood is used in some languages such as Turkish to convey information about events, which were not directly observed or were inferred by the speaker. When referring to Bulgarian and other Balkan languages, it is often called renarrative mood; when referring to Estonian, it is called oblique mood."
+  examples: [Той щял да ме набие (bul), O zenginmiş! (tur)]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: INFR}
+INS:
+  tag: INS
+  meaning: instrumental
+  description: A case indicating that the referent of the noun it marks is the means of the accomplishment of the action expressed by the clause.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: INS}
+INT:
+  tag: INT
+  meaning: interrogative
+  description: An interrogative mood is an epistemic mood that signals that the speaker wishes to elicit information concerning the content of his or her utterance from the addressee.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: INT}
+INV:
+  tag: INV
+  meaning: invariant
+  description: "The word does not vary in number, i.e., it has the same form in singular and in plural."
+  examples: [series]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: INV}
+IP:
+  tag: IP
+  meaning: inflectional phrase
+  description: maximal projection Inflectional-bar-bar phrase (maximal projection)
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: IP}
+IPC:
+  tag: IPC
+  meaning: imprecative
+  description: Imprecative mood is a volitive mood that signals the speaker's wish that an unfavorable proposition will come about.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: IPC}
+IPR:
+  tag: IPR
+  meaning: pronoun
+  description: interrogative A pro-form that is used in questions to stand for the item questioned.
+  examples: ["who (are you?)"]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: IPR}
+IPT:
+  tag: IPT
+  meaning: past
+  description: immediate Past tense that refers to a time considered very recent in relation to the moment of utterance.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: IPT}
+IS:
+  tag: IS
+  meaning: specifier of an inflectional phrase
+  description: Specifier of an inflectional phrase.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: IS}
+ISTA:
+  tag: ISTA
+  meaning: information structure
+  description: "The way in which information is formally packaged within a sentence, often focusing on the ways in which topic-comment structures are used to make particular parts of information stand out as particularly salient in relation to others"
+  examples: ["@focus", "@topic", "@comment"]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: ISTA}
+ITE:
+  tag: ITE
+  meaning: iterative
+  description: Aspect that expresses the repetition of an event or state.
+  examples: [I ate it again and again.]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: ITE}
+ITJ:
+  tag: ITJ
+  meaning: interjection
+  description: "Form, typically brief, such as one syllable or word, which is used most often as an exclamation or part of an exclamation."
+  examples: [hello]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: ITJ}
+ITM:
+  tag: ITM
+  meaning: intimate
+  description: Social deixis that expresses a very high degree of solidarity between the speaker and the addressee.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: ITM}
+J:
+  tag: J
+  meaning: adjective
+  description: Adjective form
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: J}
+JA:
+  tag: JA
+  meaning: adjunct in an adjective phrase
+  description: An optional constituent of an adjective phrase.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: JA}
+JB:
+  tag: JB
+  meaning: adjective phrase
+  description: intermediate projection Adjective-bar phrase (intermediate projection)
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: JB}
+JC:
+  tag: JC
+  meaning: complement in an adjective phrase
+  description: A phrasal or clausal category which is selected (subcategorized) by the head of a phrase.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: JC}
+JDG:
+  tag: JDG
+  meaning: judgment
+  description: "Judgment modality is an epistemic modality that connotes the speaker's strength of inference, or degree of confidence in the reality of the proposition expressed by his or her utterance."
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: JDG}
+JGN:
+  tag: JGN
+  meaning: jargon
+  description: Technical vocabulary of a particular profession
+  examples: [canis (= dog)]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: JGN}
+JH:
+  tag: JH
+  meaning: head of an adjective phrase
+  description: Head of an adjective phrase
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: JH}
+JP:
+  tag: JP
+  meaning: adjective phrase
+  description: maximal projection Adjective-bar-bar phrase (maximal projection)
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: JP}
+JS:
+  tag: JS
+  meaning: specifier of an adjective phrase
+  description: Specifier of an adjectival phrase.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: JS}
+JUS:
+  tag: JUS
+  meaning: jussive
+  description: "Jussive mood is a directive mood that signals a speaker's command, permission, or agreement that the proposition expressed by his or her utterance be brought about."
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: JUS}
+LAT:
+  tag: LAT
+  meaning: lative
+  description: "A case that expresses motion up to the location of, or as far as the referent of the noun it marks."
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: LAT}
+LCT:
+  tag: LCT
+  meaning: location
+  description: Nouns denoting spatial position.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: LCT}
+LEX:
+  tag: LEX
+  meaning: lexical category
+  description: Semantic category of the UW.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: LEX}
+LEXA:
+  tag: LEXA
+  meaning: part of speech
+  description: Attributes that indicate part of speech
+  examples: ["@adjective", "@verb", "@noun", "@adverb"]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: LEXA}
+LIT:
+  tag: LIT
+  meaning: literary
+  description: "Literary words and expressions are used to create a special effect in poems or novels, and are not usually used in ordinary speech or writing."
+  examples: [awaken; waken]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: LIT}
+LOA:
+  tag: LOA
+  meaning: loanword
+  description: A word borrowed from a donor language and not fully incorporated into a recipient language.
+  examples: [café (en), meeting (fr)]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: LOA}
+LOC:
+  tag: LOC
+  meaning: locative
+  description: A case that expresses location at the referent of the noun it marks.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: LOC}
+LST:
+  tag: LST
+  meaning: lexical structure
+  description: Structure of a word.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: LST}
+LTHAN:
+  tag: LTHAN
+  meaning: less than
+  description: Less than
+  examples: [<]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: LTHAN}
+MAN:
+  tag: MAN
+  meaning: manner
+  description: Manner adverbs.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: MAN}
+MCL:
+  tag: MCL
+  meaning: masculine
+  description: Includes most words that refer to males.
+  examples: [livre (fr)]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: MCL}
+MID:
+  tag: MID
+  meaning: middle
+  description: Coming in the middle position.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: MID}
+MIV:
+  tag: MIV
+  meaning: middle voice
+  description: "A voice that indicates that the subject is the actor and acts upon himself or herself reflexively, or for his or her own benefit."
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: MIV}
+MLN:
+  tag: MLN
+  meaning: numeral
+  description: multiplicative A numeral that expresses how many fold or how many times.
+  examples: [twice]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: MLN}
+MOD:
+  tag: MOD
+  meaning: modality
+  description: "Facet of illocutionary force, signaled by grammatical devices (that is, moods), that expresses The illocutionary point or general intent of a speaker, or a speaker's degree of commitment to the expressed proposition's believability, obligatoriness, desirability, or reality."
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: MOD}
+MODA:
+  tag: MODA
+  meaning: modality
+  description: Attributes that express modality
+  examples: ["@ability", "@obligation"]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: MODA}
+MOO:
+  tag: MOO
+  meaning: mood
+  description: A set of distinctive forms that are used to signal modality
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: MOO}
+MOR:
+  tag: MOR
+  meaning: morphology
+  description: Type of morpheme.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: MOR}
+MOT:
+  tag: MOT
+  meaning: motion
+  description: "Verbs of walking, flying, swimming."
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: MOT}
+MOV:
+  tag: MOV
+  meaning: verb
+  description: modal A type of auxiliary verb that is used to indicate modality.
+  examples: [can, must, may, might, have to]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: MOV}
+MTV:
+  tag: MTV
+  meaning: motive
+  description: Nouns denoting goals.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: MTV}
+MTW:
+  tag: MTW
+  meaning: multiword expression
+  description: A free morpheme comprising more than one stem.
+  examples: [United States of America]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: MTW}
+MUL:
+  tag: MUL
+  meaning: multal
+  description: Number which refers to two members of the class identified by the noun.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: MUL}
+N:
+  tag: N
+  meaning: noun
+  description: Nouns and nominals.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: N}
+NA:
+  tag: NA
+  meaning: adjunct in a noun phrase
+  description: An optional constituent of a noun phrase.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: NA}
+NACC:
+  tag: NACC
+  meaning: intransitive
+  description: unaccusative An intransitive verb whose subject is not the agent.
+  examples: [fall]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: NACC}
+NALI:
+  tag: NALI
+  meaning: inalienable
+  description: "Permanently or necessarily 
+
+possessed"
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: NALI}
+NANM:
+  tag: NANM
+  meaning: inanimate
+  description: Indicates an inanimate reference.
+  examples: [it]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: NANM}
+NAT:
+  tag: NAT
+  meaning: natural process
+  description: Nouns denoting natural processes.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: NAT}
+NB:
+  tag: NB
+  meaning: noun phrase
+  description: intermediate projection Nominal-bar phrase (intermediate projection)
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: NB}
+NC:
+  tag: NC
+  meaning: complement in a noun phrase
+  description: A phrasal or clausal category which is selected (subcategorized) by the head of a phrase.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: NC}
+NCTB:
+  tag: NCTB
+  meaning: uncountable
+  description: "The concept denotes an uncountable 
+
+number of referents"
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: NCTB}
+NDEF:
+  tag: NDEF
+  meaning: indefinite
+  description: Indicates that the referent(s) of an expression are not presumed to be identifiable.
+  examples: [a]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: NDEF}
+NEG:
+  tag: NEG
+  meaning: negative
+  description: Negative polarity.
+  examples: [never]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: NEG}
+NEO:
+  tag: NEO
+  meaning: neologism
+  description: "A newly coined term, word, or phrase, that may be in the process of entering common use, but has not yet been accepted into mainstream language."
+  examples: [to google]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: NEO}
+NERG:
+  tag: NERG
+  meaning: intransitive
+  description: unergative An intransitive verb whose subject is  the agent.
+  examples: [run]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: NERG}
+NEU:
+  tag: NEU
+  meaning: neuter
+  description: Includes mostly words that do not refer to males or females.
+  examples: [Kind (de)]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: NEU}
+NEV:
+  tag: NEV
+  meaning: natural event
+  description: Nouns denoting natural events.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: NEV}
+NFUT:
+  tag: NFUT
+  meaning: nonfuture
+  description: "Absolute tense that refers to a time at or before the moment of utterance, and contrasts with a future tense."
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: NFUT}
+NH:
+  tag: NH
+  meaning: head of a noun phrase
+  description: Head of a noun phrase
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: NH}
+NOB:
+  tag: NOB
+  meaning: natural object
+  description: Nouns denoting natural objects (not man-made).
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: NOB}
+NOM:
+  tag: NOM
+  meaning: nominative
+  description: A case that indicates the subject of a finite verb.
+  examples: [I (en); rosa, rosae (la)]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: NOM}
+NOU:
+  tag: NOU
+  meaning: noun
+  description: "common Member of a syntactic class that includes words which refer to people, places, things, ideas, or concepts; whose members may act as any of the following: subjects of the verb, objects of the verb, indirect object of the verb, or object of a preposition (or postposition), and most of whose members have inherently determined grammatical gender (in languages which inflect for gender)."
+  examples: [beauty]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: NOU}
+NOUA:
+  tag: NOUA
+  meaning: nominal attributes
+  description: nominal attributes
+  examples: ["@about", "@of"]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: NOUA}
+NP:
+  tag: NP
+  meaning: noun phrase
+  description: maximal projection Nominal-bar-bar phrase (maximal projection)
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: NP}
+NPAS:
+  tag: NPAS
+  meaning: nonpast
+  description: "Absolute tense that refers to a time at or after the moment of utterance, and contrasts with a past tense."
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: NPAS}
+NPER:
+  tag: NPER
+  meaning: impersonal
+  description: impersonal
+  examples: [chover (pt), llover (es)]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: NPER}
+NPFV:
+  tag: NPFV
+  meaning: imperfective
+  description: An event in the process of unfolding (often a repeated or habitual event).
+  examples: [I was swimming.]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: NPFV}
+NPR:
+  tag: NPR
+  meaning: pronoun
+  description: indefinite A pronoun that belongs to a class whose members indicate indefinite reference.
+  examples: [anybody, one, somebody]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: NPR}
+NRCP:
+  tag: NRCP
+  meaning: past
+  description: nonrecent Past tense that refers to a time before the range of a contrasting recent past tense.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: NRCP}
+NREA:
+  tag: NREA
+  meaning: irrealis
+  description: Modality that connotes that the proposition with which it is associated is nonactual or nonfactual.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: NREA}
+NRFT:
+  tag: NRFT
+  meaning: relative nonfuture
+  description: "Relative tense that refers to a time simultaneous to, or before, a contextually determined temporal reference point, regardless of the latter's relation to the moment of utterance."
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: NRFT}
+NRMP:
+  tag: NRMP
+  meaning: past
+  description: "nonremote Past tense that refers to a time considered not more than a few days ago, in contrast to a remote past tense."
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: NRMP}
+NRPT:
+  tag: NRPT
+  meaning: relative nonpast
+  description: "Relative tense that refers to a time simultaneous to, or after, a contextually determined temporal reference point, regardless of the latter's relation to the moment of utterance."
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: NRPT}
+NS:
+  tag: NS
+  meaning: specifier of a noun phrase
+  description: Specifier of a noun phrase.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: NS}
+NSPC:
+  tag: NSPC
+  meaning: nonspecified
+  description: Indicates that the speaker presumably does not know the identity of the referent(s).
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: NSPC}
+NTRA:
+  tag: NTRA
+  meaning: without transitivity
+  description: A verb (such as copula) with no transitivity
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: NTRA}
+NTST:
+  tag: NTST
+  meaning: intransitive
+  description: A verb that does not take an object.
+  examples: [fall]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: NTST}
+NUM:
+  tag: NUM
+  meaning: number
+  description: "A grammatical category of nouns, pronouns, and adjective and verb agreement that expresses count distinctions."
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: NUM}
+NYET:
+  tag: NYET
+  meaning: not-yet
+  description: Absolute tense that refers to times at and before the moment of utterance in asserting the present and past nonoccurrence of an event or state. It tends to imply that the event or state is expected to occur in the future.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: NYET}
+O:
+  tag: O
+  meaning: other
+  description: Other lexical categories categories
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: O}
+OBL:
+  tag: OBL
+  meaning: oblique
+  description: Oblique case
+  examples: [me (en)]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: OBL}
+OBM:
+  tag: OBM
+  meaning: obligative
+  description: Obligative mood is a directive mood that signals the speaker's estimation of the necessity that the proposition expressed in his or her utterance be brought about.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: OBM}
+OCBRACE:
+  tag: OCBRACE
+  meaning: opening curly brace
+  description: Opening curly brace
+  examples: ["{"]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: OCBRACE}
+ONE:
+  tag: ONE
+  meaning: unique
+  description: "The concept always denotes a single 
+
+referent (proper reference) Opening parenthesis"
+  examples: [(]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: ONE}
+OPT:
+  tag: OPT
+  meaning: optative
+  description: Optative mood is a volitive mood that signals wishing or hoping.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: OPT}
+ORD:
+  tag: ORD
+  meaning: numeral
+  description: ordinal A numeral belonging to a class whose members designate positions in a sequence.
+  examples: [second]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: ORD}
+OSBRACKET:
+  tag: OSBRACKET
+  meaning: opening square bracket
+  description: Opening square bracket
+  examples: ["["]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: OSBRACKET}
+P:
+  tag: P
+  meaning: adposition
+  description: "Cover term for prepositions and postpositions. It is a member of a closed set of items that occur before or after a complement composed of a noun phrase, noun, pronoun, or clause that functions as a noun phrase, and form a single structure with the complement to express its grammatical and semantic relation to another unit within a clause."
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: P}
+PA:
+  tag: PA
+  meaning: adjunct in a prepositional phrase
+  description: An optional constituent of a prepositional phrase.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: PA}
+PAR:
+  tag: PAR
+  meaning: inflectional paradigm
+  description: "Inflectional paradigm number, to be defined in the grammar."
+  examples: [M02]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: PAR}
+PAS:
+  tag: PAS
+  meaning: past
+  description: Absolute tense that refers to a time before the moment of utterance.
+  examples: [was (I was here)]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: PAS}
+PAU:
+  tag: PAU
+  meaning: paucal
+  description: Number which refers to few members of the class identified by the noun.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: PAU}
+PB:
+  tag: PB
+  meaning: prepositional phrase
+  description: intermediate projection Prepositional-bar phrase (intermediate projection)
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: PB}
+PC:
+  tag: PC
+  meaning: complement in a prepositional phrase
+  description: A phrasal or clausal category which is selected (subcategorized) by the head of a phrase.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: PC}
+PCP:
+  tag: PCP
+  meaning: perception
+  description: "Verbs of seeing, hearing, feeling."
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: PCP}
+PCT:
+  tag: PCT
+  meaning: precative
+  description: Precative mood is a directive mood that signals that the utterance is a request.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: PCT}
+PEJ:
+  tag: PEJ
+  meaning: pejorative
+  description: "Words having an unpleasant or disparaging connotation, but which are not taboo."
+  examples: [nitwit; scalawag]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: PEJ}
+PEP:
+  tag: PEP
+  meaning: past
+  description: prehesternal Past tense that refers to a time in some span before that of an opposing hesternal past tense.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: PEP}
+PER:
+  tag: PER
+  meaning: person
+  description: "A deictic reference to a participant in an event, such as the speaker, the addressee, or others."
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: PER}
+PERA:
+  tag: PERA
+  meaning: person
+  description: Attributes that express person
+  examples: ["@1", "@2", "@3"]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: PERA}
+PERCENTAGE:
+  tag: PERCENTAGE
+  meaning: percentage
+  description: Percentage
+  examples: ["%"]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: PERCENTAGE}
+PERIOD:
+  tag: PERIOD
+  meaning: period
+  description: Period
+  examples: [.]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: PERIOD}
+PFC:
+  tag: PFC
+  meaning: perfect
+  description: "Grammaticalization of the current relevance, at the moment of utterance, of an event or state that occurred prior to the moment of utterance."
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: PFC}
+PFV:
+  tag: PFV
+  meaning: perfective
+  description: A single event conceived as a unit.
+  examples: [I swam.]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: PFV}
+PFX:
+  tag: PFX
+  meaning: affix
+  description: prefix Affix that is joined before a root or stem.
+  examples: [un (-do)]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: PFX}
+PGS:
+  tag: PGS
+  meaning: progressive
+  description: "Continuous aspect that expresses processes, not states."
+  examples: [I am eating.]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: PGS}
+PH:
+  tag: PH
+  meaning: head of a prepositional phrase
+  description: Head of a prepositional phrase
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: PH}
+PHB:
+  tag: PHB
+  meaning: prohibitive
+  description: "Prohibitive mood is a directive mood that signals a prohibition. It is distinguished by the use of a negated imperative sentence that employs a negative marker distinct from that used in declarative sentences, or a verb form different from that of the imperative."
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: PHB}
+PHE:
+  tag: PHE
+  meaning: natural phenomena
+  description: Nouns denoting natural phenomena.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: PHE}
+PHY:
+  tag: PHY
+  meaning: physical property
+  description: adjectives that denote physical properties
+  examples: [hard, soft; heavy, light; rough, smooth; hot, cold; sweet, sour]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: PHY}
+PLA:
+  tag: PLA
+  meaning: plant
+  description: Nouns denoting plants.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: PLA}
+PLC:
+  tag: PLC
+  meaning: place
+  description: Nouns denoting places.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: PLC}
+PLE:
+  tag: PLE
+  meaning: place
+  description: adverbs that denote place
+  examples: [here, there, around]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: PLE}
+PLN:
+  tag: PLN
+  meaning: polite
+  description: Social deixis that expresses a low degree of solidarity between the speaker and the addressee.
+  examples: [vous (fr)]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: PLN}
+PLR:
+  tag: PLR
+  meaning: plural
+  description: "Number that expresses reference to a quantity greater than that expressed by the largest specific number category in a language, such as \"more than one\" in English, and \"more than two\" in some other languages."
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: PLR}
+PLRT:
+  tag: PLRT
+  meaning: plurale tantum
+  description: Used only in plural.
+  examples: [clothes]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: PLRT}
+PLT:
+  tag: PLT
+  meaning: prolative
+  description: A case that expresses motion along or by the referent of the noun it marks.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: PLT}
+PLU:
+  tag: PLU
+  meaning: plural
+  description: "The concept always denotes more than one 
+
+referent"
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: PLU}
+PLUS:
+  tag: PLUS
+  meaning: plus
+  description: Plus sign
+  examples: [+]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: PLUS}
+PMS:
+  tag: PMS
+  meaning: permissive
+  description: Permissive mood is a directive mood that signals the speaker's act of giving permission.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: PMS}
+POD:
+  tag: POD
+  meaning: determiner
+  description: possessive A possessive pronoun used as a determiner.
+  examples: [my (house)]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: POD}
+POL:
+  tag: POL
+  meaning: polarity
+  description: The system of positive/negative contrastivity found in a language.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: POL}
+POLA:
+  tag: POLA
+  meaning: polarity
+  description: Attributes that express polarity
+  examples: ["@yes", "@not", "@maybe"]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: POLA}
+PON:
+  tag: PON
+  meaning: possession noun
+  description: Nouns denoting possession and transfer of possession.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: PON}
+POP:
+  tag: POP
+  meaning: past
+  description: prehodiernal Past tense that refers to a time in some span before that of a contrasting hodiernal past tense.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: POP}
+POS:
+  tag: POS
+  meaning: part of speech
+  description: Grammatical class of words.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: POS}
+POT:
+  tag: POT
+  meaning: potential
+  description: "A mood of probability indicating that, in the opinion of the speaker, the action or occurrence is considered likely"
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: POT}
+POV:
+  tag: POV
+  meaning: possession verb
+  description: "Verbs of buying, selling, owning."
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: POV}
+PP:
+  tag: PP
+  meaning: prepositional phrase
+  description: maximal projection Prepositional-bar-bar phrase (maximal projection)
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: PP}
+PPL:
+  tag: PPL
+  meaning: prepositional
+  description: A case that indicates the complement of a preposition.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: PPL}
+PPN:
+  tag: PPN
+  meaning: noun
+  description: "proper Noun that is the name of a specific individual, place, or object."
+  examples: [Geneva]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: PPN}
+PPR:
+  tag: PPR
+  meaning: pronoun
+  description: personal A pronoun that expresses a distinction of person deixis.
+  examples: [I, he, she, it, we]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: PPR}
+PPS:
+  tag: PPS
+  meaning: adposition
+  description: postposition Adposition that occurs after its complement.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: PPS}
+PPT:
+  tag: PPT
+  meaning: prospective
+  description: Aspect that expresses the imminence of an event or state.
+  examples: [I am about to eat.]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: PPT}
+PRE:
+  tag: PRE
+  meaning: adposition
+  description: preposition Adposition that occurs before its complement.
+  examples: [against]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: PRE}
+PRP:
+  tag: PRP
+  meaning: perfect of recent past
+  description: "Grammaticalization of the current relevance of a state or event, occurring before the moment of utterance, which is relevant due to its proximity in time to the moment of utterance."
+  examples: [He has just arrived.]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: PRP}
+PRS:
+  tag: PRS
+  meaning: present
+  description: Absolute tense that refers to the moment of utterance
+  examples: [am (I am here)]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: PRS}
+PS:
+  tag: PS
+  meaning: specifier of a prepositional phrase
+  description: Specifier of a prepositional phrase.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: PS}
+PSS:
+  tag: PSS
+  meaning: perfect of persistent situation
+  description: "Grammaticalization of the current relevance of a state or event begun prior to the moment of utterance, which is relevant because of its continuation until the moment of utterance."
+  examples: [I have been waiting for three days.]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: PSS}
+PST:
+  tag: PST
+  meaning: positive
+  description: No comparative quality.
+  examples: [good]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: PST}
+PSV:
+  tag: PSV
+  meaning: passive voice
+  description: "A voice that indicates that the subject is the patient, target or undergoer of the action."
+  examples: [was built]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: PSV}
+PTC:
+  tag: PTC
+  meaning: particle
+  description: "A word that does not belong to one of the main classes of words  is invariable in form, and typically has grammatical or pragmatic meaning."
+  examples: [to (to be or not to be)]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: PTC}
+PTL:
+  tag: PTL
+  meaning: participle
+  description: "A lexical item, derived from a verb, that has some of the characteristics and functions of both verbs and adjectives."
+  examples: [done]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: PTL}
+PTN:
+  tag: PTN
+  meaning: numeral
+  description: partitive A numeral that expresses a fraction.
+  examples: [two thirds]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: PTN}
+PTP:
+  tag: PTP
+  meaning: participle
+  description: Participle
+  examples: [been]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: PTP}
+PTR:
+  tag: PTR
+  meaning: preterit
+  description: Simple past tense not marked for aspect or modality.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: PTR}
+PTT:
+  tag: PTT
+  meaning: partitive
+  description: "A case that expresses the partial nature of the referent of the noun it marks, as opposed to expressing the whole unit or class of which the referent is a part."
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: PTT}
+PUT:
+  tag: PUT
+  meaning: punctuation
+  description: Punctuation mark
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: PUT}
+QDR:
+  tag: QDR
+  meaning: quadrual
+  description: Number which refers to four members of the class identified by the noun.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: QDR}
+QMARK:
+  tag: QMARK
+  meaning: question mark
+  description: Question mark
+  examples: ["?"]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: QMARK}
+QTT:
+  tag: QTT
+  meaning: quantity
+  description: Nouns denoting quantities and units of measure.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: QTT}
+QUA:
+  tag: QUA
+  meaning: determiner
+  description: quantifier A determiner that expresses a referent's definite or indefinite number or amount.
+  examples: [every]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: QUA}
+QUAA:
+  tag: QUAA
+  meaning: quantification
+  description: Attributes that express quantities
+  examples: ["@dual", "@pl", "@singular"]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: QUAA}
+QUOTE:
+  tag: QUOTE
+  meaning: quote
+  description: Quote
+  examples: ["\""]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: QUOTE}
+R:
+  tag: R
+  meaning: pronoun
+  description: A pro-form which functions like a noun and substitutes for a noun or noun phrase.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: R}
+RCAS:
+  tag: RCAS
+  meaning: receives case
+  description: Used in case agreement.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: RCAS}
+RCP:
+  tag: RCP
+  meaning: past
+  description: "recent Past tense that refers to a time, culturally and situationally defined, within the span ranging from yesterday to a week or a few months previous."
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: RCP}
+REA:
+  tag: REA
+  meaning: realis
+  description: Modality that connotes the factuality of a proposition.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: REA}
+REG:
+  tag: REG
+  meaning: register
+  description: Variety of language defined according to its use in social situations.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: REG}
+REGA:
+  tag: REGA
+  meaning: register
+  description: Attributes that express register
+  examples: ["@archaic", "@taboo", "@slang</i><br />rel = relation (Used to map relations to empty UW's): <i>[of]{}\"\"(LEX=P,POS=PRE,rel=mod)"]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: REGA}
+RES:
+  tag: RES
+  meaning: perfect of result
+  description: "Grammaticalization of the current relevance of a state or event, occurring before the moment of utterance, which is relevant because of a resulting state at the moment of utterance."
+  examples: [John has arrived.]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: RES}
+REV:
+  tag: REV
+  meaning: reverential
+  description: Social deixis that encodes very high status.
+  examples: [Mr.]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: REV}
+RFT:
+  tag: RFT
+  meaning: relative future
+  description: "Relative tense that refers to a time located after a contextually determined temporal reference point, regardless of the latter's relation to the moment of utterance."
+  examples: [would had been (I would had been there)]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: RFT}
+RGEN:
+  tag: RGEN
+  meaning: receives gender
+  description: Used in gender agreement.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: RGEN}
+RHE:
+  tag: RHE
+  meaning: rheme
+  description: "comment, or what is being said about the topic in a clause"
+  examples: [As for the little girl, "[the dog bit] her."]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: RHE}
+RLT:
+  tag: RLT
+  meaning: relation
+  description: Nouns denoting relations between people or things or ideas.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: RLT}
+RMP:
+  tag: RMP
+  meaning: past
+  description: remote Past tense that refers to a time considered more than a few days ago.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: RMP}
+RNUM:
+  tag: RNUM
+  meaning: receives number
+  description: Used in number agreement.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: RNUM}
+ROO:
+  tag: ROO
+  meaning: root
+  description: "The primary lexical unit of a word, which carries the most significant aspects of semantic content and cannot be reduced into smaller constituents."
+  examples: [write]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: ROO}
+RPER:
+  tag: RPER
+  meaning: receives person
+  description: Used in person agreement.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: RPER}
+RPR:
+  tag: RPR
+  meaning: pronoun
+  description: "relative Pronoun that marks a relative clause, functions grammatically within the relative clause, and is coreferential to the word modified by the relative clause."
+  examples: [who (the man who comes next)]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: RPR}
+RPS:
+  tag: RPS
+  meaning: relative present
+  description: Relative tense that refers to a time that is simultaneous with some contextually determined temporal reference point.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: RPS}
+RPT:
+  tag: RPT
+  meaning: relative past
+  description: Relative tense that refers to a time located before that of a contextually determined temporal reference point.
+  examples: [had been (I had been here)]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: RPT}
+RTE:
+  tag: RTE
+  meaning: relative tense
+  description: "A tense that refers to a time in relation to a contextually determined temporal reference point, regardless of the latter"
+  examples: [anterior, posterior]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: RTE}
+RTNS:
+  tag: RTNS
+  meaning: receives tense
+  description: Used in tense agreement.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: RTNS}
+RVZ:
+  tag: RVZ
+  meaning: conjunction
+  description: relativizer Subordinating conjunction that links a relative clause to its head noun. It is distinguishable from a relative pronoun in that it does not have a nominal function within the relative clause.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: RVZ}
+SAV:
+  tag: SAV
+  meaning: adverb
+  description: specifier Adverb used to indicate degree.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: SAV}
+SBS:
+  tag: SBS
+  meaning: substance
+  description: Nouns denoting substances.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: SBS}
+SBW:
+  tag: SBW
+  meaning: subword
+  description: "A bound morpheme (a root, a stem, an inflection)."
+  examples: [chrono-]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: SBW}
+SCJ:
+  tag: SCJ
+  meaning: conjunction
+  description: subordinating Conjunction that links constructions by making one of them a constituent of another.
+  examples: [if]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: SCJ}
+SCOPE:
+  tag: SCOPE
+  meaning: scope
+  description: scope
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: SCOPE}
+SEM:
+  tag: SEM
+  meaning: semantic class
+  description: Semantic typology of UWs.
+  examples: [animal, plant, person, place]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: SEM}
+SEMICOLON:
+  tag: SEMICOLON
+  meaning: semicolon
+  description: Semicolon
+  examples: [;]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: SEMICOLON}
+SFR:
+  tag: SFR
+  meaning: semantic frame
+  description: "Semantic frame number, to be defined in the UNL grammar."
+  examples: [K02]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: SFR}
+SFX:
+  tag: SFX
+  meaning: affix
+  description: suffix Affix that is attached to the end of a root or stem.
+  examples: ["-s (book-s)"]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: SFX}
+SHA:
+  tag: SHA
+  meaning: shape
+  description: Nouns denoting two and three dimensional shapes.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: SHA}
+SHEAD:
+  tag: SHEAD
+  meaning: sentence head
+  description: the beginning of a sentence
+  examples: [<SHEAD> Peter said that <CHEAD> John had left <CTAIL> <STAIL>]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: SHEAD}
+SHO:
+  tag: SHO
+  meaning: short form
+  description: "A form that is used when the word has no stress (weak form), or that is shorter than the usual (short form)"
+  examples: [занята (ru)]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: SHO}
+SLG:
+  tag: SLG
+  meaning: slang
+  description: Used by a specific social group.
+  examples: [ajax (= attractive)]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: SLG}
+SNG:
+  tag: SNG
+  meaning: singular
+  description: Number that refers to one member of a designated class.
+  examples: [book]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: SNG}
+SNGT:
+  tag: SNGT
+  meaning: singulare tantum
+  description: Used only in singular.
+  examples: [furniture]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: SNGT}
+SOC:
+  tag: SOC
+  meaning: social
+  description: Verbs of political and social activities and events.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: SOC}
+SOD:
+  tag: SOD
+  meaning: social deixis
+  description: "Category that indicates the social characteristics of, or distinctions between, the participants or referents in a speech event."
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: SOD}
+SODA:
+  tag: SODA
+  meaning: social deixis
+  description: Attributes that express solidarity or status
+  examples: ["@intimate", "@polite", "@inferior", "@superior"]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: SODA}
+SOL:
+  tag: SOL
+  meaning: solidarity
+  description: Like-mindedness or similarity of behavioral disposition between a speaker and addressee.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: SOL}
+SPC:
+  tag: SPC
+  meaning: specificied
+  description: Indicates that the speaker presumably knows the identity of the referent(s).
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: SPC}
+SPD:
+  tag: SPD
+  meaning: speed
+  description: adjectives that denote speed
+  examples: [fast, slow, quick]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: SPD}
+SPE:
+  tag: SPE
+  meaning: superessive
+  description: A case that expresses location on the referent of the noun it marks.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: SPE}
+SPEC:
+  tag: SPEC
+  meaning: specifier
+  description: Attributes that express specification
+  examples: ["@def", "@indef"]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: SPEC}
+SPN:
+  tag: SPN
+  meaning: supine
+  description: A non-finite verb form.
+  examples: [pugnatum]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: SPN}
+SPR:
+  tag: SPR
+  meaning: pronoun
+  description: "possessive A pronoun that expresses ownership and relationships like ownership, such as kinship, and other forms of association."
+  examples: [mine]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: SPR}
+SPS:
+  tag: SPS
+  meaning: superior
+  description: Social deixis that encodes high status.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: SPS}
+SPT:
+  tag: SPT
+  meaning: speculative
+  description: Speculative mood is an epistemic mood that signals that the speaker judges from certain facts that the proposition expressed by his or her utterance is possibly true.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: SPT}
+STA:
+  tag: STA
+  meaning: state
+  description: Nouns denoting stable states of affairs.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: STA}
+STAIL:
+  tag: STAIL
+  meaning: sentence tail
+  description: the end of a sentence
+  examples: [<SHEAD> Peter said that <CHEAD> John had left <CTAIL> <STAIL>]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: STAIL}
+STE:
+  tag: STE
+  meaning: stem
+  description: The base part of a word not including inflectional morphemes.
+  examples: [rewrite]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: STE}
+STL:
+  tag: STL
+  meaning: still
+  description: Absolute tense carrying the presupposition that an event or state held before the moment of utterance.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: STL}
+STR:
+  tag: STR
+  meaning: long form
+  description: A form used when the word is stressed (strong form).
+  examples: [занятая (ru)]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: STR}
+STS:
+  tag: STS
+  meaning: status
+  description: Scale of social standing that is often realized in differing socially deictic linguistic forms
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: STS}
+STT:
+  tag: STT
+  meaning: stative
+  description: "Verbs of being, having, spatial relations."
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: STT}
+SUB:
+  tag: SUB
+  meaning: subjunctive
+  description: "Subjunctive mood is a mood that typically signals irrealis meanings, such as potentiality 
+uncertainty, prediction, obligation, and desire.  It most typically occurs in a subordinate clause, but may occur outside of one."
+  examples: [If I did it, I would be happier.]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: SUB}
+SUP:
+  tag: SUP
+  meaning: superlative
+  description: An adjective or adverb that compares the quality with many or all others of its kind.
+  examples: [best]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: SUP}
+SUPA:
+  tag: SUPA
+  meaning: absolute superlative
+  description: "A superlative that cannot be exceeded, having the sense “as ... as possible”."
+  examples: ["-issimo (Italian)", "-isimo (Spanish)", "-íssimo (Portuguese)", "-érrimo (Portuguese)", "-imo (Catalan)", or -íssim (Catalan)]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: SUPA}
+SUPR:
+  tag: SUPR
+  meaning: comparative superlative
+  description: The superlative form of an adjective when it is used in a grammatically comparative situation.
+  examples: [the most beautiful]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: SUPR}
+SYN:
+  tag: SYN
+  meaning: syntactic roles
+  description: Category that indicates the roles played by words in a sentence.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: SYN}
+SYNA:
+  tag: SYNA
+  meaning: syntax
+  description: Attributes that express syntactic structures
+  examples: ["@relative", "@entry", "@topicalization"]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: SYNA}
+TAB:
+  tag: TAB
+  meaning: taboo word
+  description: Offensive language
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: TAB}
+TEMP:
+  tag: TEMP
+  meaning: temporary entry
+  description: A temporary entry
+  examples: [www.undlfoundation.org]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: TEMP}
+TER:
+  tag: TER
+  meaning: terminative
+  description: Aspect that expresses the cessation of an event or state.
+  examples: [I finished eating.]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: TER}
+THE:
+  tag: THE
+  meaning: theme
+  description: the phrase in a clause that the rest of the clause is understood to be about
+  examples: ["As for the [little girl]", the dog bit her]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: THE}
+TIM:
+  tag: TIM
+  meaning: time
+  description: Nouns denoting time and temporal relations.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: TIM}
+TLT:
+  tag: TLT
+  meaning: translative
+  description: "A case indicating that the referent of the noun, or the quality of the adjective, that it marks is the result of a process of change."
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: TLT}
+TME:
+  tag: TME
+  meaning: time
+  description: adverbs that denote time
+  examples: [now, often, sometimes, yesterday]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: TME}
+TNS:
+  tag: TNS
+  meaning: tense
+  description: "Category used in the grammatical description of verbs (along with aspect and mood), referring primarily to the way the grammar marks the time at which the action denoted by the verb took place."
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: TNS}
+TRA:
+  tag: TRA
+  meaning: transitivity
+  description: A property of verbs that relates to whether a verb can take direct objects.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: TRA}
+TRACE:
+  tag: TRACE
+  meaning: trace
+  description: Indicates syntactic vestiges of a moved syntactic element
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: TRACE}
+TRE:
+  tag: TRE
+  meaning: trial
+  description: "The concept always denotes three 
+
+referents"
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: TRE}
+TRI:
+  tag: TRI
+  meaning: trial
+  description: A number that refers to three members of the designated class.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: TRI}
+TRM:
+  tag: TRM
+  meaning: terminative
+  description: A case specifying a limit in space and time and used also to convey the goal or target of an action
+  examples: ["jõeni (et: \"to the river\")"]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: TRM}
+TST:
+  tag: TST
+  meaning: transitive
+  description: A transitive verb
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: TST}
+TST2:
+  tag: TST2
+  meaning: transitive
+  description: ditransitive A verb which takes a subject and two objects.
+  examples: [give]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: TST2}
+TST3:
+  tag: TST3
+  meaning: transitive
+  description: tritransitive A verb which takes a subject and three objects.
+  examples: [trade]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: TST3}
+TSTD:
+  tag: TSTD
+  meaning: transitive
+  description: direct A verb which takes a subject and a single direct object.
+  examples: [kiss]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: TSTD}
+TSTI:
+  tag: TSTI
+  meaning: transitive
+  description: indirect A verb which takes a subject and a single indirect object.
+  examples: [depend]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: TSTI}
+TWO:
+  tag: TWO
+  meaning: dual
+  description: "The concept always denotes a pair of 
+
+referents"
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: TWO}
+TXTA:
+  tag: TXTA
+  meaning: text structure
+  description: Text structure attributes
+  examples: ["@entry", "@title", "@topic"]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: TXTA}
+U:
+  tag: U
+  meaning: numeral
+  description: "A word, functioning most typically as an adjective or pronoun, that expresses a number or
+relation to the number."
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: U}
+V:
+  tag: V
+  meaning: verb
+  description: "Member of the syntactic class of words that typically signal events and actions; constitute, singly or in a phrase, a minimal predicate in a clause; govern the number and types of other constituents which may occur in the clause, and in inflectional languages, may be inflected."
+  examples: [buy]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: V}
+VA:
+  tag: VA
+  meaning: adjunct in a verbal phrase
+  description: An optional constituent of a verbal phrase.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: VA}
+VAL:
+  tag: VAL
+  meaning: valency
+  description: Verb valency or valence refers to the number of arguments controlled by a verbal predicate.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: VAL}
+VAL0:
+  tag: VAL0
+  meaning: avalent
+  description: A predicate without syntactic arguments.
+  examples: [house]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: VAL0}
+VAL1:
+  tag: VAL1
+  meaning: monovalent
+  description: A predicate with one syntactic rgument.
+  examples: [sleep]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: VAL1}
+VAL2:
+  tag: VAL2
+  meaning: divalent
+  description: A predicate with two syntactic arguments.
+  examples: [eat]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: VAL2}
+VAL3:
+  tag: VAL3
+  meaning: trivalent
+  description: A predicate with three syntactic arguments.
+  examples: [give]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: VAL3}
+VAL4:
+  tag: VAL4
+  meaning: tetravalent
+  description: A predicate with four syntactic arguments.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: VAL4}
+VAR:
+  tag: VAR
+  meaning: variable
+  description: Variable gender
+  examples: [arbre (fr)]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: VAR}
+VB:
+  tag: VB
+  meaning: verbal phrase
+  description: intermediate projection Verbal-bar phrase (intermediate projection)
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: VB}
+VBL:
+  tag: VBL
+  meaning: verbal
+  description: The set of non-finite verb forms.
+  examples: [to go, gone, going]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: VBL}
+VC:
+  tag: VC
+  meaning: complement in a verbal phrase
+  description: A phrasal or clausal category which is selected (subcategorized) by the head of a phrase.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: VC}
+VER:
+  tag: VER
+  meaning: verb
+  description: The head of a verbal phrase
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: VER}
+VH:
+  tag: VH
+  meaning: head of a verbal phrase
+  description: Head of a verbal phrase
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: VH}
+VLE:
+  tag: VLE
+  meaning: value
+  description: adjectives that denote values
+  examples: [good, bad, proper, perfect, pure, excellent, fine, delicious, atrocious, poor]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: VLE}
+VLT:
+  tag: VLT
+  meaning: volitive
+  description: "Volitive modality is a deontic modality that expresses the speaker's attitude of hope, wish, or fear concerning the proposition expressed by the utterance."
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: VLT}
+VOC:
+  tag: VOC
+  meaning: vocative
+  description: A case that marks a noun whose referent is being addressed.
+  examples: [rosa, rosae (la)]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: VOC}
+VOI:
+  tag: VOI
+  meaning: voice
+  description: "The voice (also called diathesis) of a verb describes the relationship between the action (or state) that the verb expresses and the participants identified by its arguments (subject, object, etc.)."
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: VOI}
+VOIA:
+  tag: VOIA
+  meaning: voice
+  description: Attributes that express voice
+  examples: ["@active", "@passive"]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: VOIA}
+VP:
+  tag: VP
+  meaning: verbal phrase
+  description: maximal projection Verbal-bar-bar phrase (maximal projection)
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: VP}
+VS:
+  tag: VS
+  meaning: specifier of a verbal phrase
+  description: Specifier of a verbal phrase.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: VS}
+WEA:
+  tag: WEA
+  meaning: weather
+  description: "Verbs of raining, snowing, thawing, thundering."
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: WEA}
+WFO:
+  tag: WFO
+  meaning: word form
+  description: "Any of the several possibilities of a lexeme, i.e., the combination of roots, derivational affixes and inflectional affixes."
+  examples: [rewrites]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: WFO}
+WHEN:
+  tag: WHEN
+  meaning: time
+  description: Time attributes
+  examples: ["@after", "@before"]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: WHEN}
+WHERE:
+  tag: WHERE
+  meaning: place
+  description: Place attributes
+  examples: ["@aboard", "@above", "@inside"]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: WHERE}
+WHICH:
+  tag: WHICH
+  meaning: specification
+  description: Specification attributes
+  examples: ["@def", "@indef"]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: WHICH}
+WRD:
+  tag: WRD
+  meaning: regular word
+  description: A single-stem free morpheme.
+  examples: [table]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: WRD}
+X:
+  tag: X
+  meaning: X
+  description: Any head
+  examples: [nouns, verbs, adjectives, adverbs, etc.]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: X}
+XA:
+  tag: XA
+  meaning: adjunct
+  description: Adjunct in a syntactic structure.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: XA}
+XB:
+  tag: XB
+  meaning: intermediate projection
+  description: Intermediate projection in a X-bar structure.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: XB}
+XC:
+  tag: XC
+  meaning: complement
+  description: Complement in a syntactic structure.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: XC}
+XH:
+  tag: XH
+  meaning: head
+  description: Head in a syntactic phrase.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: XH}
+XP:
+  tag: XP
+  meaning: maximal projection
+  description: Maximal projection in a X-bar structure.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: XP}
+XS:
+  tag: XS
+  meaning: specifier
+  description: Specifier in a syntactic structure.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: XS}
+XXX:
+  tag: XXX
+  meaning: others
+  description: Other semantic classes.
+  examples: [integers, fractions, quantifiers, demontrastive, pronouns, etc.]
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: XXX}

@@ -50,6 +50,70 @@ page exists yet, only a wiki page not yet turned into a reference
 (`data/archive/wiki/English_Disambiguation_Grammar.wikitext`). Issue 15, the grammar importer,
 reads the `*.dgrammar.txt` files directly rather than skip them.
 
+## Tagset entry (`tools/validate/schema/tagset-entry.schema.json`)
+
+One value in `tagset.yaml`, an object keyed by tag mnemonic (`store-layout.schema.json`'s
+`tagsetFile` def: shape `object`, no fixed key set).
+
+| Field | Type | Archive (afr, eng) | Note |
+|---|---|---|---|
+| `tag` | string | present | The tag mnemonic itself (`RLT`, `FOR`, `LEX`, ...), identical to the record's own key. |
+| `meaning` | string | present | The export's short expansion before the tag's first parenthesis (`relation` for `RLT`). |
+| `description` | string | present, empty for one tag | The export's longer description, from inside the parenthesis (or parentheses -- `123PP` carries two top-level groups, joined with a space). Empty string for `DFN` ("defineteness"), which the export gives no parenthetical at all. |
+| `examples` | array of string | present, empty when the export gives none | The export's `<i>...</i>` list, split on top-level commas. |
+| `category` | string or null | **none** | Always `null`. See "The category/parent gap" below. |
+| `parent` | string or null | **none** | Always `null`, same gap. |
+| `source` | object | computed, not archive-sourced | `archive_path` is always `exports/export_tagset.php` (one export, shared archive-wide). `line` is the tag's own mnemonic, an importer-assigned locator: the export has no per-tag physical line grain (below), the same allowance the dictionary/grammar `source` field already documents for a paradigm or frame catalogue number. |
+
+### The category/parent gap
+
+Issue 16 asks the importer to write "one entry per tag with its category, its parent attribute if
+any, and its meaning". `docs/unl-reference/formats/tagset.md` describes the tagset as a tree (an
+attribute like `LEX` sits above its own values, `A`/`N`/`V`/...), matching the wiki's hand-drawn
+`Tagset.wikitext` page. The live export this importer reads
+(`data/archive/exports/export_tagset.php`) draws no such tree: it is 509 `TAG = meaning
+(description): <i>examples</i>` entries in one flat alphabetical run, with no field anywhere
+stating that `A` is a `LEX` value or that a given tag is itself an attribute rather than a value.
+Building `category`/`parent` from the wiki tree instead would use the source `tagset.md` itself
+names as non-authoritative next to the live export (its own "Where the export adds tags the wiki
+tree does not define" section). Decided: `tagset.py` writes `category: null` and `parent: null`
+for every tag, a documented gap rather than a value invented from a source the issue's own
+reference page has already moved past. The fields stay in the schema so a future pass that
+recovers the link (the wiki tree, cross-checked against the live tagset) needs no migration.
+
+### Tagset is archive-wide, not per-language
+
+`SPEC.md` §3.3 lists `tagset.yaml` under the per-language tree, `data/languages/<iso3>/`. The
+archive serves one export, shared by every language
+(`store-layout.schema.json`'s own `tagsetFile` note: "one export, not per-language"). `tagset.py`
+therefore writes the identical parsed table to both `data/languages/afr/tagset.yaml` and
+`data/languages/eng/tagset.yaml`; a test diffs the two files byte-for-byte.
+
+## Corpus entry (`corpus/<name>.yaml`, `{sentence, unl, source}`)
+
+One record in `corpus/<name>.yaml`. `SPEC.md` §3.3 fixes the three keys; the notes below are the
+interpretive calls the importer makes reading the real `ugoa1` export, not a schema (no
+`corpus-entry.schema.json` exists: the three-key shape needs no further per-field constraint).
+
+- **One record per source sentence ID, not per candidate translation.** A single `[S:ID]` block in
+  the archive's UCL export can carry more than one natural-language rendering of the same UNL
+  graph (`{af}...{/af}` appears twice for 24 of 248 `ugoa1`/`af` sentences). Writing one record per
+  candidate would make `len(afr_corpus) != len(eng_corpus)` purely from how many alternate phrasings
+  each language's translators happened to type in. Decided: the importer keeps the first candidate
+  only, so every `[S:ID]` block becomes exactly one record in both language files.
+- **English's fallback.** Every real `ugoa1`/`en` `[S:ID]` block carries an `{org:en}` block (248 of
+  248); only some also carry a `{en}` block (108 of 248). The importer prefers `{en}` (the
+  language's own designated tag, matching how `af` reads `{af}`) and falls back to `{org:en}` when
+  absent.
+- **`source.line` is a 1-based sequential count of `[S:ID]` blocks, not the archive's own sentence
+  ID.** The export gives no physical per-sentence line: the whole corpus, past nine header lines,
+  sits on essentially one physical line. Counting `[S:ID]` blocks in file order gives a real,
+  checkable 1-based number, the same kind of importer-assigned unit the HTML grammar catalogues
+  already use.
+- **A permissive brace-balance check, not a UNL parser**, per issue 16's own instruction: the
+  assembled `unl` text's `(`/`)` count must balance, or the sentence goes to `_unparsed.txt`. No
+  real `ugoa1` `af`/`en` sentence fails this; it is exercised by a hand-built fixture.
+
 ## Store file layout (`tools/validate/schema/store-layout.schema.json`)
 
 One row per file `SPEC.md` §3.3 names.

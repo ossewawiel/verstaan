@@ -1,0 +1,745 @@
+# Licence: CC BY-SA 4.0. Source: UNL Archive, see data/archive/manifest.jsonl
+- sentence: book
+  unl: "102870092"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 1}
+- sentence: the book
+  unl: 102870092.@def
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 2}
+- sentence: a book
+  unl: 102870092.@indef
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 3}
+- sentence: this book
+  unl: 102870092.@proximal
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 4}
+- sentence: that book
+  unl: 102870092.@medial
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 5}
+- sentence: that book
+  unl: 102870092.@distal
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 6}
+- sentence: another book
+  unl: 102870092.@other
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 7}
+- sentence: same book
+  unl: 102870092.@same
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 8}
+- sentence: a certain book
+  unl: 102870092.@certain
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 9}
+- sentence: books
+  unl: 102870092.@pl
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 10}
+- sentence: a pair of books
+  unl: 102870092.@dual
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 11}
+- sentence: one or two books
+  unl: 102870092.@paucal
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 12}
+- sentence: several books
+  unl: 102870092.@multal
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 13}
+- sentence: every book
+  unl: 102870092.@all
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 14}
+- sentence: any book
+  unl: 102870092.@any
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 15}
+- sentence: each book
+  unl: 102870092.@each
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 16}
+- sentence: whole book
+  unl: 102870092.@entire
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 17}
+- sentence: books
+  unl: 102870092.@generic
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 18}
+- sentence: no book
+  unl: 102870092.@no
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 19}
+- sentence: both books
+  unl: 102870092.@both
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 20}
+- sentence: more books
+  unl: 102870092.@more
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 21}
+- sentence: less books
+  unl: 102870092.@less
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 22}
+- sentence: most of the book
+  unl: 102870092.@most
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 23}
+- sentence: books enough
+  unl: 102870092.@enough
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 24}
+- sentence: what book
+  unl: 102870092.@wh
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 25}
+- sentence: some water
+  unl: 114845743.@paucal
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 26}
+- sentence: much water
+  unl: 114845743.@multal
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 27}
+- sentence: water
+  unl: 114845743.@generic
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 28}
+- sentence: male teacher
+  unl: 110694258.@male
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 29}
+- sentence: female teacher
+  unl: 110694258.@female
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 30}
+- sentence: the books
+  unl: 102870092.@def.@pl
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 31}
+- sentence: these books
+  unl: 102870092.@proximal.@pl
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 32}
+- sentence: those books
+  unl: 102870092.@distal.@pl
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 33}
+- sentence: certain books
+  unl: 102870092.@certain.@pl
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 34}
+- sentence: all the books
+  unl: 102870092.@all.@def
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 35}
+- sentence: all these books
+  unl: 102870092.@all.@proximal
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 36}
+- sentence: several other books
+  unl: 102870092.@multal.@other
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 37}
+- sentence: some of these books
+  unl: 102870092.@paucal.@proximal
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 38}
+- sentence: too many books
+  unl: 102870092.@extra.@multal
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 39}
+- sentence: most books
+  unl: 102870092.@most.@pl
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 40}
+- sentence: 1st book
+  unl: "mod(102870092, \"1\".@ordinal)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 41}
+- sentence: 2nd book
+  unl: "mod(102870092, \"2\".@ordinal)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 42}
+- sentence: 3rd book
+  unl: "mod(102870092, \"3\".@ordinal)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 43}
+- sentence: 4th book
+  unl: "mod(102870092, \"4\".@ordinal)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 44}
+- sentence: 5th book
+  unl: "mod(102870092, \"5\".@ordinal)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 45}
+- sentence: 6th book
+  unl: "mod(102870092, \"6\".@ordinal)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 46}
+- sentence: 7th book
+  unl: "mod(102870092, \"7\".@ordinal)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 47}
+- sentence: 8th book
+  unl: "mod(102870092, \"8\".@ordinal)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 48}
+- sentence: 9th book
+  unl: "mod(102870092, \"9\".@ordinal)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 49}
+- sentence: 10th book
+  unl: "mod(102870092, \"10\".@ordinal)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 50}
+- sentence: book of mine
+  unl: "pos(102870092, 00.@1)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 51}
+- sentence: book of yours
+  unl: "pos(102870092, 00.@2)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 52}
+- sentence: its book
+  unl: "pos(102870092, 00.@3)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 53}
+- sentence: book of his
+  unl: "pos(102870092, 00.@3.@male)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 54}
+- sentence: book of hers
+  unl: "pos(102870092, 00.@3.@female)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 55}
+- sentence: its book
+  unl: "pos(102870092, 00.@3.@neuter)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 56}
+- sentence: book of ours
+  unl: "pos(102870092, 00.@1.@pl)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 57}
+- sentence: book of yours
+  unl: "pos(102870092, 00.@2.@pl)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 58}
+- sentence: book of theirs
+  unl: "pos(102870092, 00.@3.@pl)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 59}
+- sentence: book of theirs
+  unl: "pos(102870092, 00.@3.@male.@pl)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 60}
+- sentence: book of theirs
+  unl: "pos(102870092, 00.@3.@female.@pl)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 61}
+- sentence: book of theirs
+  unl: "pos(102870092, 00.@3.@neuter.@pl)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 62}
+- sentence: all my books
+  unl: "pos(102870092.@all, 00.@1)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 63}
+- sentence: his several books
+  unl: "pos(102870092.@multal, 00.@3.@male)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 64}
+- sentence: my other book
+  unl: "pos(102870092.@other, 00.@1)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 65}
+- sentence: my own book
+  unl: "pos(102870092.@own, 00.@1)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 66}
+- sentence: both of my books
+  unl: "pos(102870092.@both, 00.@1)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 67}
+- sentence: some of his books
+  unl: "pos(102870092.@paucal, 00.@3.@male)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 68}
+- sentence: not all his books
+  unl: "pos(102870092.@all.@not, 00.@3.@male)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 69}
+- sentence: few of our books
+  unl: "pos(102870092.@paucal, 00.@1.@pl)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 70}
+- sentence: a book about me
+  unl: "cnt(102870092.@indef, 00.@1)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 71}
+- sentence: a book about you
+  unl: "cnt(102870092.@indef, 00.@2)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 72}
+- sentence: a book about him
+  unl: "cnt(102870092.@indef, 00.@3)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 73}
+- sentence: a book about him
+  unl: "cnt(102870092.@indef, 00.@3.@male)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 74}
+- sentence: a book about her
+  unl: "cnt(102870092.@indef, 00.@3.@female)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 75}
+- sentence: a book about it
+  unl: "cnt(102870092.@indef, 00.@3.@neuter)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 76}
+- sentence: a book about us
+  unl: "cnt(102870092.@indef, 00.@1.@pl)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 77}
+- sentence: a book about you
+  unl: "cnt(102870092.@indef, 00.@2.@pl)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 78}
+- sentence: a book about them
+  unl: "cnt(102870092.@indef, 00.@3.@pl)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 79}
+- sentence: a book about them
+  unl: "cnt(102870092.@indef, 00.@3.@male.@pl)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 80}
+- sentence: a book about them
+  unl: "cnt(102870092.@indef, 00.@3.@female.@pl)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 81}
+- sentence: a book about them
+  unl: "cnt(102870092.@indef, 00.@3.@neuter.@pl)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 82}
+- sentence: a book about anyone
+  unl: "cnt(102870092.@indef, 00.@any.@person)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 83}
+- sentence: a book about anything
+  unl: "cnt(102870092.@indef, 00.@any.@thing)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 84}
+- sentence: a book about everyone
+  unl: "cnt(102870092.@indef, 00.@all.@person)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 85}
+- sentence: a book about everything
+  unl: "cnt(102870092.@indef, 00.@all.@thing)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 86}
+- sentence: a book about no one
+  unl: "cnt(102870092.@indef, 00.@no.@person)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 87}
+- sentence: a book about nothing
+  unl: "cnt(102870092.@indef, 00.@no.@thing)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 88}
+- sentence: a book about someone
+  unl: "cnt(102870092.@indef, 00.@person)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 89}
+- sentence: a book about something
+  unl: "cnt(102870092.@indef, 00.@thing)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 90}
+- sentence: a book in a box
+  unl: "plc(102870092.@indef, 102883344.@indef)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 91}
+- sentence: a book over a box
+  unl: "plc(102870092.@indef, 102883344.@indef.@above)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 92}
+- sentence: a book among boxes
+  unl: "plc(102870092.@indef, 102883344.@indef.@among.@pl)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 93}
+- sentence: a book at a box
+  unl: "plc(102870092.@indef, 102883344.@indef.@contact)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 94}
+- sentence: a book behind a box
+  unl: "plc(102870092.@indef, 102883344.@indef.@behind)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 95}
+- sentence: a book below a box
+  unl: "plc(102870092.@indef, 102883344.@indef.@below)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 96}
+- sentence: a book beside a box
+  unl: "plc(102870092.@indef, 102883344.@indef.@beside)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 97}
+- sentence: a book between boxes
+  unl: "plc(102870092.@indef, 102883344.@indef.@between.@pl)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 98}
+- sentence: a book beyond a box
+  unl: "plc(102870092.@indef, 102883344.@indef.@beyond)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 99}
+- sentence: a book far from a box
+  unl: "plc(102870092.@indef, 102883344.@indef.@far)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 100}
+- sentence: a book in front of a box
+  unl: "plc(102870092.@indef, 102883344.@indef.@front)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 101}
+- sentence: a book into a box
+  unl: "plc(102870092.@indef, 102883344.@indef.@to)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 102}
+- sentence: a book within a box
+  unl: "plc(102870092.@indef, 102883344.@indef.@inside)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 103}
+- sentence: a book close to a box
+  unl: "plc(102870092.@indef, 102883344.@indef.@near)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 104}
+- sentence: a book on a box
+  unl: "plc(102870092.@indef, 102883344.@indef.@on)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 105}
+- sentence: a book opposite a box
+  unl: "plc(102870092.@indef, 102883344.@indef.@opposite)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 106}
+- sentence: a book out of a box
+  unl: "plc(102870092.@indef, 102883344.@indef.@from.@inside)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 107}
+- sentence: a book outside a box
+  unl: "plc(102870092.@indef, 102883344.@indef.@outside)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 108}
+- sentence: a book under a box
+  unl: "plc(102870092.@indef, 102883344.@indef.@under)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 109}
+- sentence: books around a box
+  unl: "plc(102870092.@indef.@pl, 102883344.@indef.@around)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 110}
+- sentence: a train in Paris
+  unl: "plc(104468005.@indef, 500003943)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 111}
+- sentence: a train from Paris
+  unl: "plc(104468005.@indef, 500003943.@from)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 112}
+- sentence: a train from Paris
+  unl: "src(104468005.@indef, 500003943)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 113}
+- sentence: a train to Paris
+  unl: "plc(104468005.@indef, 500003943.@to)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 114}
+- sentence: a train to Paris
+  unl: "gol(104468005.@indef, 500003943)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 115}
+- sentence: a train through Paris
+  unl: "plc(104468005.@indef, 500003943.@through)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 116}
+- sentence: a train across Paris
+  unl: "plc(104468005.@indef, 500003943.@across)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 117}
+- sentence: a train through Paris
+  unl: "via(104468005.@indef, 500003943)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 118}
+- sentence: several trains from Paris
+  unl: "plc(104468005.@multal, 500003943.@from)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 119}
+- sentence: several other trains from Paris
+  unl: "plc(104468005.@multal.@other, 500003943.@from)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 120}
+- sentence: a beautiful book
+  unl: "mod(102870092.@indef, 300217728)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 121}
+- sentence: a book of quality
+  unl: "mod(102870092.@indef, 104728068)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 122}
+- sentence: a book with pictures
+  unl: "mod(102870092.@indef, 106999436.@generic)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 123}
+- sentence: a book with pictures
+  unl: "mod(102870092.@indef, 106999436.@generic.@with)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 124}
+- sentence: a book without pictures
+  unl: "mod(102870092.@indef, 106999436.@generic.@without)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 125}
+- sentence: a book in English
+  unl: "mod(102870092.@indef, 500001556.@in)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 126}
+- sentence: a book of matches
+  unl: "qua(103728437, 102870526.@indef)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 127}
+- sentence: a book about Geneva
+  unl: "cnt(102870092.@indef, 500004419)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 128}
+- sentence: a book about love
+  unl: "cnt(102870092.@indef, 107543288)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 129}
+- sentence: a book against John
+  unl: "cnt(102870092.@indef, \"John\".@against)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 130}
+- sentence: a book of Mathematics
+  unl: "fld(102870092.@indef, 106000644)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 131}
+- sentence: a book from the library
+  unl: "pof(102870092.@indef, 103661043.@def)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 132}
+- sentence: a book from the past
+  unl: "src(102870092.@indef, 115120823.@def)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 133}
+- sentence: a book from the library
+  unl: "src(102870092.@indef, 103661043.@def)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 134}
+- sentence: a book made of stone
+  unl: "mat(102870092.@indef, 104326084)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 135}
+- sentence: a book from the past
+  unl: "tim(102870092.@indef, 115120823.@def)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 136}
+- sentence: a book for John
+  unl: "ben(102870092.@indef, \"John\")"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 137}
+- sentence: John's book
+  unl: "pos(102870092.@indef, \"John\")"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 138}
+- sentence: a book to study
+  unl: "pur(102870092.@indef, 200607114)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 139}
+- sentence: the book "Le Petit Prince"
+  unl: "nam(102870092.@def, \"Le Petit Prince\")"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 140}
+- sentence: some days in the summer
+  unl: "tim(115155220.@paucal, 115237250.@def)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 141}
+- sentence: some days after the summer
+  unl: "tim(115155220.@paucal, 115237250.@def.@after)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 142}
+- sentence: some days before the summer
+  unl: "tim(115155220.@paucal, 115237250.@def.@before)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 143}
+- sentence: some days since the summer
+  unl: "tim(115155220.@paucal, 115237250.@def.@from)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 144}
+- sentence: some days until the summer
+  unl: "tim(115155220.@paucal, 115237250.@def.@to)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 145}
+- sentence: a few days during the summer
+  unl: "dur(115155220.@paucal, 115237250.@def)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 146}
+- sentence: a few days since the summer
+  unl: "tmf(115155220.@paucal, 115237250.@def)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 147}
+- sentence: a few days until the summer
+  unl: "tmt(115155220.@paucal, 115237250.@def)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 148}
+- sentence: some minutes on Monday
+  unl: "tim(115234764.@paucal, 115163979)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 149}
+- sentence: some minutes at noon
+  unl: "tim(115234764.@paucal, 115165490)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 150}
+- sentence: arrival of John
+  unl: "agt(100048374, \"John\")"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 151}
+- sentence: the plays by Shakespeare
+  unl: "agt(107007945.@def.@pl, 500009156)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 152}
+- sentence: translation by machine
+  unl: "agt(106536389, 103699975)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 153}
+- sentence: act of kindness
+  unl: "cnt(100030358, 104840011)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 154}
+- sentence: a brand of shampoo
+  unl: "cnt(201588876.@indef, 104183516)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 155}
+- sentence: change of place
+  unl: "cnt(100191142, 108621598)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 156}
+- sentence: idea of love
+  unl: "cnt(105833840, 107543288)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 157}
+- sentence: love towards horses
+  unl: "cnt(107543288, 102374451.@generic)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 158}
+- sentence: love symbol
+  unl: "cnt(105765415, 107543288)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 159}
+- sentence: smell of roses
+  unl: "cnt(105713737, 112620196.@generic)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 160}
+- sentence: threat to peace
+  unl: "exp(114543231, 113970236)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 161}
+- sentence: visit to Africa
+  unl: "gol(101233156, 500005179)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 162}
+- sentence: woman in a party
+  unl: "lpl(110787470, 107447641.@indef)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 163}
+- sentence: silk dress
+  unl: "mat(103236735, 104219424)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 164}
+- sentence: mug of glass
+  unl: "mat(103797390, 114881303)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 165}
+- sentence: stone walls
+  unl: "mat(104546855.@pl, 104326084)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 166}
+- sentence: possible changes
+  unl: "mod(100191142.@pl, 301821266)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 167}
+- sentence: main part
+  unl: "mod(113809207, 301512527)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 168}
+- sentence: person of honor
+  unl: "mod(100007846, 104869106)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 169}
+- sentence: master plan
+  unl: "mod(105728678, 301277426)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 170}
+- sentence: city of Prague
+  unl: "nam(108524735, 500003213)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 171}
+- sentence: Atlantic Ocean
+  unl: "nam(109376198, 500005233)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 172}
+- sentence: government of India
+  unl: "obj(108050678, 500003815)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 173}
+- sentence: payment of debts
+  unl: "obj(101120448, 106773347.@pl)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 174}
+- sentence: chair in office
+  unl: "plc(103001627, 103841666)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 175}
+- sentence: north Europe
+  unl: "plc(108561081, 500005395)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 176}
+- sentence: a coat sleeve
+  unl: "pof(103057021.@indef, 104236377)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 177}
+- sentence: document preamble
+  unl: "pof(106470073.@indef, 106398090)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 178}
+- sentence: week day
+  unl: "pof(115136147, 115155220)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 179}
+- sentence: day to rest
+  unl: "pur(115155220, 200014405)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 180}
+- sentence: table for picnic
+  unl: "pur(104379243, 107576438)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 181}
+- sentence: $70 coat
+  unl: "per(103057021, \"$70\")"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 182}
+- sentence: a group of friends
+  unl: "qua(110112591.@pl, 100031264)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 183}
+- sentence: basket of groceries
+  unl: "qua(103461119, 102801938)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 184}
+- sentence: 1 book
+  unl: "qua(102870092, \"1\")"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 185}
+- sentence: 2 books
+  unl: "qua(102870092, \"2\")"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 186}
+- sentence: a set of books
+  unl: "qua(102870092, 107996689.@indef)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 187}
+- sentence: drop of water
+  unl: "qua(114845743, 113771404)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 188}
+- sentence: death from tuberculosis
+  unl: "rsn(107355491, 114143415)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 189}
+- sentence: construction of a bridge
+  unl: "res(100911048, 102898711.@indef)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 190}
+- sentence: beautiful
+  unl: "300217728"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 191}
+- sentence: very beautiful
+  unl: 300217728.@plus
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 192}
+- sentence: quite beautiful
+  unl: 300217728.@minus
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 193}
+- sentence: more beautiful
+  unl: 300217728.@more
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 194}
+- sentence: less beautiful
+  unl: 300217728.@less
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 195}
+- sentence: not beautiful
+  unl: 300217728.@not
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 196}
+- sentence: beautiful enough
+  unl: 300217728.@enough
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 197}
+- sentence: extremely beautiful
+  unl: 300217728.@extra
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 198}
+- sentence: most beautiful
+  unl: 300217728.@most
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 199}
+- sentence: least beautiful
+  unl: 300217728.@least
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 200}
+- sentence: more beautiful than Paris
+  unl: "per(300217728.@more, 500003943)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 201}
+- sentence: less beautiful than Paris
+  unl: "per(300217728.@less, 500003943)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 202}
+- sentence: as beautiful as Paris
+  unl: "per(300217728.@equal, 500003943)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 203}
+- sentence: most beautiful of Paris
+  unl: "per(300217728.@most, 500003943)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 204}
+- sentence: least beautiful of Paris
+  unl: "per(300217728.@least, 500003943)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 205}
+- sentence: good for John
+  unl: "ben(301166413, \"John\")"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 206}
+- sentence: loyal to the queen
+  unl: "gol(300961392, 110499355.@def)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 207}
+- sentence: absurdly difficult
+  unl: "qua(300744916, 400301039)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 208}
+- sentence: the beautiful car
+  unl: "mod(102958343.@def, 300217728)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 209}
+- sentence: a very beautiful car
+  unl: "mod(102958343.@indef, 300217728.@plus)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 210}
+- sentence: an extremely beautiful car
+  unl: "mod(102958343.@indef, 300217728) man(300217728, 400046299)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 211}
+- sentence: the most expensive car
+  unl: "mod(102958343.@def, 300933154.@most)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 212}
+- sentence: the beautiful new car
+  unl: "mod(102958343.@def, 300217728) mod(102958343.@def, 301640850)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 213}
+- sentence: the new expensive beautiful car
+  unl: "mod(102958343.@def, 300217728) mod(102958343.@def, 300933154) mod(102958343.@def, 301640850)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 214}
+- sentence: many new expensive beautiful cars
+  unl: "mod(102958343.@multal, 300217728) mod(102958343.@multal, 300933154) mod(102958343.@multal, 301640850)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 215}
+- sentence: the new expensive beautiful car of John
+  unl: "pos(102958343.@def, \"John\") mod(102958343.@def, 300217728) mod(102958343.@def, 300933154) mod(102958343.@def, 301640850)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 216}
+- sentence: a train to Geneva from Paris
+  unl: "src(104468005.@indef, 500003943) gol(104468005.@indef, 500004419)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 217}
+- sentence: a train to Paris from Rome through Geneva
+  unl: "src(104468005.@indef, 500003428) gol(104468005.@indef, 500003943) via(104468005.@indef, 500004419)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 218}
+- sentence: John and Mary
+  unl: "and(\"John\", \"Mary\")"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 219}
+- sentence: Mary and John
+  unl: "and(\"Mary\", \"John\")"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 220}
+- sentence: "John, Mary and Peter"
+  unl: "and(\"John\", :01) and:01(\"Mary\", \"Peter\")"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 221}
+- sentence: "John, Mary, Peter and Paul"
+  unl: "and(\"John\", :01) and:01(\"Mary\", :02) and:02(\"Peter\", \"Paul\")"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 222}
+- sentence: "John, Mary, Peter, Paul and Bill"
+  unl: "and(\"John\", :01) and:01(\"Mary\", :02) and:02(\"Peter\", :03) and:03(\"Paul\", \"Bill\")"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 223}
+- sentence: John or Mary
+  unl: "or(\"John\", \"Mary\")"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 224}
+- sentence: Mary or John
+  unl: "or(\"Mary\", \"John\")"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 225}
+- sentence: "John, Mary or Peter"
+  unl: "or(\"John\", :01) or:01(\"Mary\", \"Peter\")"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 226}
+- sentence: "John, Mary, Peter or Paul"
+  unl: "or(\"John\", :01) or:01(\"Mary\", :02) or:02(\"Peter\", \"Paul\")"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 227}
+- sentence: "John, Mary, Peter, Paul or Bill"
+  unl: "or(\"John\", :01) or:01(\"Mary\", :02) or:02(\"Peter\", :03) or:03(\"Paul\", \"Bill\")"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 228}
+- sentence: a car and a book
+  unl: "and(102958343.@indef, 102870092.@indef)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 229}
+- sentence: "a car, a book and a mug"
+  unl: "and(102958343.@indef, :01) and:01(102870092.@indef, 103797390.@indef)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 230}
+- sentence: a beautiful car and an expensive book
+  unl: "and(:01, :02) mod:01(102958343.@indef, 300217728) mod:02(102870092.@indef, 300933154)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 231}
+- sentence: a very beautiful car and a fairly expensive book
+  unl: "and(:01, :02) mod:01(102958343.@indef, 300217728.@plus) mod:02(102870092.@indef, 300933154.@minus)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 232}
+- sentence: beautiful and expensive cars
+  unl: "mod(102958343.@pl, :01) and:01(300217728, 300933154)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 233}
+- sentence: "beautiful, expensive and new cars"
+  unl: "mod(102958343.@pl, :01) and:01(300217728, :02) and:02(300933154, 301640850)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 234}
+- sentence: a beautiful car from Switzerland and a very expensive book for John
+  unl: "and(:01, :02) plc:01(102958343.@indef, 500004416.@from) mod:01(102958343.@indef, 300217728) ben:02(102870092.@indef, \"John\".@for) mod:02(102870092.@indef, 300933154.@plus)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 235}
+- sentence: "a beautiful car, an expensive book and a new mug"
+  unl: "and(:01, :02) and:02(:03, :04) mod:01(102958343.@indef, 300217728) mod:03(102870092.@indef, 300933154) mod:04(103797390.@indef, 301640850)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 236}
+- sentence: "a very beautiful car, an extremely expensive book and a new mug of glass"
+  unl: "and(:01, :02) and:02(:03, :04) mod:01(102958343.@indef, 300217728.@plus) mod:03(102870092.@indef, 300933154) man:03(300933154, 400046299) mod:04(103797390.@indef, 301640850) mat:04(103797390.@indef, 114881303)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 237}
+- sentence: "a very beautiful car from Switzerland, an extremely expensive book about Paris and a new mug of glass for John"
+  unl: "and(:01, :02) and:02(:03, :04) mod:01(102958343.@indef, 300217728.@plus) src:01(102958343.@indef, 500004416) mod:03(102870092.@indef, 300933154) cnt:03(102870092.@indef, 500003943) man:03(300933154, 400046299) mod:04(103797390.@indef, 301640850) mat:04(103797390.@indef, 114881303) ben:04(103797390.@indef, \"John\")"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 238}
+- sentence: all the available books
+  unl: "mod(102870092.@def.@all, 300183053)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 239}
+- sentence: 6 large books
+  unl: "qua(102870092.@pl, \"6\":01) mod(102870092.@pl, 301382086:03)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 240}
+- sentence: my 2 books
+  unl: "pos(102870092.@pl, 00.@1) qua(102870092.@pl, \"2\":03)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 241}
+- sentence: my other two books
+  unl: "pos(102870092.@pl.@other, 00.@1) qua(102870092.@pl.@other, \"2\":03)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 242}
+- sentence: my last two books
+  unl: "mod(102870092.@pl, 301013279:03) pos(102870092.@pl, 00.@1) qua(102870092.@pl, \"2\":05)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 243}
+- sentence: the book between the box and the table
+  unl: "plc(102870092.@def, :01.@between) and:01(102883344.@def, 104379243.@def)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 244}
+- sentence: the book about Paris on the table
+  unl: "plc(102870092.@def, 104379243.@def.@top.@contact) cnt(102870092.@def, 500003943)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 245}
+- sentence: the book about Paris without pictures on the table
+  unl: "plc(102870092.@def, 104379243.@def.@top.@contact) cnt(102870092.@def, 500003943) mod(102870092.@def, 106999436.@generic.@without)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 246}
+- sentence: the beautiful book about Paris without pictures on the table
+  unl: "plc(102870092.@def, 104379243.@def.@top.@contact) mod(102870092.@def, 300217728) cnt(102870092.@def, 500003943) mod(102870092.@def, 106999436.@generic.@without)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 247}
+- sentence: the beautiful book about the city of Paris without pictures and photos on the table
+  unl: "plc(102870092.@def, 104379243.@def.@top.@contact) mod(102870092.@def, 300217728) cnt(102870092.@def, 108524735.@def) nam(108524735.@def, 500003943) mod(102870092.@def, :01.@without) and:01(106999436.@generic, 103925226.@generic)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl, line: 248}

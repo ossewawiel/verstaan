@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://verstaan.org/schema/tagset-entry.schema.json",
+  "title": "Tagset entry",
+  "description": "One value in data/languages/<iso3>/tagset.yaml, an object keyed by tag mnemonic (tools/validate/schema/store-layout.schema.json's tagsetFile def). Field names from issue 16: 'one entry per tag with its category, its parent attribute if any, and its meaning'. category and parent are always null: the archive's live export (exports/export_tagset.php) is a flat alphabetical list with no field linking a value tag to the attribute it belongs under, unlike the wiki's hand-drawn Tagset.wikitext tree (docs/factory/store-schema.md, 'Tagset entry'; docs/unl-reference/formats/tagset.md, 'Where the export adds tags the wiki tree does not define').",
+  "type": "object",
+  "required": [
+    "tag",
+    "meaning",
+    "description",
+    "examples",
+    "category",
+    "parent",
+    "source"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "tag": {
+      "type": "string",
+      "minLength": 1,
+      "description": "The tag mnemonic itself (e.g. RLT, FOR, LEX), identical to this record's own key in tagset.yaml."
+    },
+    "meaning": {
+      "type": "string",
+      "minLength": 1,
+      "description": "The short expansion the export gives the tag before its first parenthesis (e.g. 'relation' for RLT, 'formal' for FOR)."
+    },
+    "description": {
+      "type": "string",
+      "description": "The export's longer description, from inside the tag's parenthesis (or parentheses -- some entries, e.g. 123PP, carry more than one top-level group, joined with a space). Empty string when the export gives no description at all (e.g. DFN, 'defineteness', an archive typo kept verbatim)."
+    },
+    "examples": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "The export's own <i>...</i> example list for the tag, split on top-level commas, or empty when the export gives none."
+    },
+    "category": {
+      "type": ["string", "null"],
+      "description": "The attribute this tag's value sits under (e.g. LEX for A), per SPEC.md's tree model. Always null: the archive's live export never states this link (see this schema's own description). Kept as a field, not dropped, so a future pass that recovers the link (e.g. from the wiki tree, cross-checked against the live tagset) needs no migration."
+    },
+    "parent": {
+      "type": ["string", "null"],
+      "description": "Same gap as category, for a tag that is itself a value of another value (a rarer case the wiki tree draws in places). Always null today, same reason."
+    },
+    "source": {
+      "$ref": "#/$defs/source"
+    }
+  },
+  "$defs": {
+    "source": {
+      "type": "object",
+      "required": ["archive_path", "line"],
+      "additionalProperties": false,
+      "properties": {
+        "archive_path": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Path under data/archive/ the record was read from: exports/export_tagset.php for every tag, since the export is one file shared by every language store (SPEC.md §3.3)."
+        },
+        "line": {
+          "type": ["integer", "string"],
+          "description": "The tag's own mnemonic, used as an importer-assigned locator: the export gives no per-tag physical line (docs/factory/store-schema.md, 'Tagset entry'), the same allowance dictionary-entry.schema.json and grammar-rule.schema.json already document for a paradigm or frame catalogue number."
+        }
+      }
+    }
+  }
+}

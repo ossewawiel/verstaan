@@ -1,0 +1,745 @@
+# Licence: CC BY-SA 4.0. Source: UNL Archive, see data/archive/manifest.jsonl
+- sentence: boek
+  unl: "102870092"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 1}
+- sentence: die boek
+  unl: 102870092.@def
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 2}
+- sentence: "'n boek"
+  unl: 102870092.@indef
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 3}
+- sentence: hierdie boek
+  unl: 102870092.@proximal
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 4}
+- sentence: daardie boek
+  unl: 102870092.@medial
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 5}
+- sentence: daardie boek
+  unl: 102870092.@distal
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 6}
+- sentence: ander boek
+  unl: 102870092.@other
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 7}
+- sentence: dieselfde boek
+  unl: 102870092.@same
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 8}
+- sentence: "'n sekere boek"
+  unl: 102870092.@certain
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 9}
+- sentence: boeke
+  unl: 102870092.@pl
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 10}
+- sentence: "'n paar boeke"
+  unl: 102870092.@dual
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 11}
+- sentence: "'n paar boeke"
+  unl: 102870092.@paucal
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 12}
+- sentence: etlike boeke
+  unl: 102870092.@multal
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 13}
+- sentence: alle boeke
+  unl: 102870092.@all
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 14}
+- sentence: enige boek
+  unl: 102870092.@any
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 15}
+- sentence: elke boek
+  unl: 102870092.@each
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 16}
+- sentence: hele boek
+  unl: 102870092.@entire
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 17}
+- sentence: boeke
+  unl: 102870092.@generic
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 18}
+- sentence: geen boek
+  unl: 102870092.@no
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 19}
+- sentence: beide boeke
+  unl: 102870092.@both
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 20}
+- sentence: meer boeke
+  unl: 102870092.@more
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 21}
+- sentence: minder boeke
+  unl: 102870092.@less
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 22}
+- sentence: meeste van die boek
+  unl: 102870092.@most
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 23}
+- sentence: genoeg boeke
+  unl: 102870092.@enough
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 24}
+- sentence: watter boek
+  unl: 102870092.@wh
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 25}
+- sentence: bietjie water
+  unl: 114845743.@paucal
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 26}
+- sentence: heelwat water
+  unl: 114845743.@multal
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 27}
+- sentence: water
+  unl: 114845743.@generic
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 28}
+- sentence: onderwyser
+  unl: 110694258.@male
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 29}
+- sentence: onderwyseres
+  unl: 110694258.@female
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 30}
+- sentence: die boeke
+  unl: 102870092.@def.@pl
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 31}
+- sentence: hierdie boeke
+  unl: 102870092.@proximal.@pl
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 32}
+- sentence: daardie boeke
+  unl: 102870092.@distal.@pl
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 33}
+- sentence: sekere boeke
+  unl: 102870092.@certain.@pl
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 34}
+- sentence: al die boeke
+  unl: 102870092.@all.@def
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 35}
+- sentence: al hierdie boeke
+  unl: 102870092.@all.@proximal
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 36}
+- sentence: vele ander boeke
+  unl: 102870092.@multal.@other
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 37}
+- sentence: hierdie paar boeke
+  unl: 102870092.@paucal.@proximal
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 38}
+- sentence: te veel boeke
+  unl: 102870092.@extra.@multal
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 39}
+- sentence: meeste boeke
+  unl: 102870092.@most.@pl
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 40}
+- sentence: eerste boek
+  unl: "mod(102870092, \"1\".@ordinal)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 41}
+- sentence: tweede boek
+  unl: "mod(102870092, \"2\".@ordinal)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 42}
+- sentence: derde boek
+  unl: "mod(102870092, \"3\".@ordinal)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 43}
+- sentence: vierde boek
+  unl: "mod(102870092, \"4\".@ordinal)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 44}
+- sentence: vyfde boek
+  unl: "mod(102870092, \"5\".@ordinal)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 45}
+- sentence: sesde boek
+  unl: "mod(102870092, \"6\".@ordinal)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 46}
+- sentence: sewende boek
+  unl: "mod(102870092, \"7\".@ordinal)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 47}
+- sentence: agtste boek
+  unl: "mod(102870092, \"8\".@ordinal)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 48}
+- sentence: negende boek
+  unl: "mod(102870092, \"9\".@ordinal)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 49}
+- sentence: tiende boek
+  unl: "mod(102870092, \"10\".@ordinal)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 50}
+- sentence: my boek
+  unl: "pos(102870092, 00.@1)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 51}
+- sentence: jou boek
+  unl: "pos(102870092, 00.@2)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 52}
+- sentence: sy boek
+  unl: "pos(102870092, 00.@3)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 53}
+- sentence: sy boek
+  unl: "pos(102870092, 00.@3.@male)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 54}
+- sentence: haar boek
+  unl: "pos(102870092, 00.@3.@female)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 55}
+- sentence: sy boek
+  unl: "pos(102870092, 00.@3.@neuter)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 56}
+- sentence: ons boek
+  unl: "pos(102870092, 00.@1.@pl)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 57}
+- sentence: julle boek
+  unl: "pos(102870092, 00.@2.@pl)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 58}
+- sentence: hulle boek
+  unl: "pos(102870092, 00.@3.@pl)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 59}
+- sentence: hulle boek
+  unl: "pos(102870092, 00.@3.@male.@pl)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 60}
+- sentence: hulle boek
+  unl: "pos(102870092, 00.@3.@female.@pl)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 61}
+- sentence: hulle boek
+  unl: "pos(102870092, 00.@3.@neuter.@pl)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 62}
+- sentence: al my boeke
+  unl: "pos(102870092.@all, 00.@1)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 63}
+- sentence: heelwat van sy boeke
+  unl: "pos(102870092.@multal, 00.@3.@male)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 64}
+- sentence: my ander boek
+  unl: "pos(102870092.@other, 00.@1)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 65}
+- sentence: my eie boek
+  unl: "pos(102870092.@own, 00.@1)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 66}
+- sentence: albei my boeke
+  unl: "pos(102870092.@both, 00.@1)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 67}
+- sentence: sekere van sy boeke
+  unl: "pos(102870092.@paucal, 00.@3.@male)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 68}
+- sentence: nie al sy boeke nie
+  unl: "pos(102870092.@all.@not, 00.@3.@male)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 69}
+- sentence: "'n paar van ons boeke"
+  unl: "pos(102870092.@paucal, 00.@1.@pl)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 70}
+- sentence: "'n boek oor my"
+  unl: "cnt(102870092.@indef, 00.@1)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 71}
+- sentence: "'n boek oor jou"
+  unl: "cnt(102870092.@indef, 00.@2)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 72}
+- sentence: "'n boek oor dit"
+  unl: "cnt(102870092.@indef, 00.@3)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 73}
+- sentence: "'n boek oor hom"
+  unl: "cnt(102870092.@indef, 00.@3.@male)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 74}
+- sentence: "'n boek oor haar"
+  unl: "cnt(102870092.@indef, 00.@3.@female)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 75}
+- sentence: "'n boek oor dit"
+  unl: "cnt(102870092.@indef, 00.@3.@neuter)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 76}
+- sentence: "'n boek oor ons"
+  unl: "cnt(102870092.@indef, 00.@1.@pl)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 77}
+- sentence: "'n boek oor julle"
+  unl: "cnt(102870092.@indef, 00.@2.@pl)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 78}
+- sentence: "'n boek oor hulle"
+  unl: "cnt(102870092.@indef, 00.@3.@pl)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 79}
+- sentence: "'n boek oor hulle"
+  unl: "cnt(102870092.@indef, 00.@3.@male.@pl)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 80}
+- sentence: "'n boek oor hulle"
+  unl: "cnt(102870092.@indef, 00.@3.@female.@pl)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 81}
+- sentence: "'n boek oor hulle"
+  unl: "cnt(102870092.@indef, 00.@3.@neuter.@pl)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 82}
+- sentence: "'n boek oor enigeen"
+  unl: "cnt(102870092.@indef, 00.@any.@person)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 83}
+- sentence: "'n boek oor enige iets"
+  unl: "cnt(102870092.@indef, 00.@any.@thing)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 84}
+- sentence: "'n boek oor almal"
+  unl: "cnt(102870092.@indef, 00.@all.@person)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 85}
+- sentence: "'n boek oor alles"
+  unl: "cnt(102870092.@indef, 00.@all.@thing)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 86}
+- sentence: "'n boek oor niemand"
+  unl: "cnt(102870092.@indef, 00.@no.@person)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 87}
+- sentence: "'n boek oor niks"
+  unl: "cnt(102870092.@indef, 00.@no.@thing)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 88}
+- sentence: "'n boek oor iemand"
+  unl: "cnt(102870092.@indef, 00.@person)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 89}
+- sentence: "'n boek oor iets"
+  unl: "cnt(102870092.@indef, 00.@thing)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 90}
+- sentence: "'n boek in 'n doos"
+  unl: "plc(102870092.@indef, 102883344.@indef)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 91}
+- sentence: "'n boek bo 'n doos"
+  unl: "plc(102870092.@indef, 102883344.@indef.@above)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 92}
+- sentence: "'n boek tussen dose"
+  unl: "plc(102870092.@indef, 102883344.@indef.@among.@pl)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 93}
+- sentence: "'n boek by 'n doos"
+  unl: "plc(102870092.@indef, 102883344.@indef.@contact)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 94}
+- sentence: "'n boek agter 'n doos"
+  unl: "plc(102870092.@indef, 102883344.@indef.@behind)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 95}
+- sentence: "'n boek onder 'n doos"
+  unl: "plc(102870092.@indef, 102883344.@indef.@below)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 96}
+- sentence: "'n boek langs 'n doos"
+  unl: "plc(102870092.@indef, 102883344.@indef.@beside)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 97}
+- sentence: "'n boek tussen dose"
+  unl: "plc(102870092.@indef, 102883344.@indef.@between.@pl)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 98}
+- sentence: "'n boek aan die ander kant van 'n doos"
+  unl: "plc(102870092.@indef, 102883344.@indef.@beyond)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 99}
+- sentence: "'n boek ver van 'n doos"
+  unl: "plc(102870092.@indef, 102883344.@indef.@far)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 100}
+- sentence: "'n boek voor 'n doos"
+  unl: "plc(102870092.@indef, 102883344.@indef.@front)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 101}
+- sentence: "'n boek in 'n doos in"
+  unl: "plc(102870092.@indef, 102883344.@indef.@to)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 102}
+- sentence: "'n boek binne 'n doos"
+  unl: "plc(102870092.@indef, 102883344.@indef.@inside)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 103}
+- sentence: "'n boek naby 'n doos"
+  unl: "plc(102870092.@indef, 102883344.@indef.@near)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 104}
+- sentence: "'n boek bo op 'n doos"
+  unl: "plc(102870092.@indef, 102883344.@indef.@on)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 105}
+- sentence: "'n boek oorkant 'n doos"
+  unl: "plc(102870092.@indef, 102883344.@indef.@opposite)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 106}
+- sentence: "'n boek uit 'n doos uit"
+  unl: "plc(102870092.@indef, 102883344.@indef.@from.@inside)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 107}
+- sentence: "'n boek buite 'n doos"
+  unl: "plc(102870092.@indef, 102883344.@indef.@outside)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 108}
+- sentence: "'n boek onder 'n doos"
+  unl: "plc(102870092.@indef, 102883344.@indef.@under)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 109}
+- sentence: boeke rondom 'n doos
+  unl: "plc(102870092.@indef.@pl, 102883344.@indef.@around)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 110}
+- sentence: "'n trein in Parys"
+  unl: "plc(104468005.@indef, 500003943)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 111}
+- sentence: "'n trein vanaf Parys"
+  unl: "plc(104468005.@indef, 500003943.@from)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 112}
+- sentence: "'n trein van Parys"
+  unl: "src(104468005.@indef, 500003943)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 113}
+- sentence: "'n trein na Parys"
+  unl: "plc(104468005.@indef, 500003943.@to)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 114}
+- sentence: "'n trein na Parys"
+  unl: "gol(104468005.@indef, 500003943)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 115}
+- sentence: "'n trein deur Parys"
+  unl: "plc(104468005.@indef, 500003943.@through)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 116}
+- sentence: "'n trein regoor Parys"
+  unl: "plc(104468005.@indef, 500003943.@across)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 117}
+- sentence: "'n trein deur Parys"
+  unl: "via(104468005.@indef, 500003943)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 118}
+- sentence: treine vanaf Parys
+  unl: "plc(104468005.@multal, 500003943.@from)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 119}
+- sentence: ander treine vanaf Parys
+  unl: "plc(104468005.@multal.@other, 500003943.@from)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 120}
+- sentence: "'n mooi boek"
+  unl: "mod(102870092.@indef, 300217728)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 121}
+- sentence: "'n kwaliteit boek"
+  unl: "mod(102870092.@indef, 104728068)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 122}
+- sentence: "'n prenteboek"
+  unl: "mod(102870092.@indef, 106999436.@generic)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 123}
+- sentence: "'n boek met prente"
+  unl: "mod(102870092.@indef, 106999436.@generic.@with)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 124}
+- sentence: "'n boek sonder prente"
+  unl: "mod(102870092.@indef, 106999436.@generic.@without)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 125}
+- sentence: "'n boek in Engels"
+  unl: "mod(102870092.@indef, 500001556.@in)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 126}
+- sentence: "'n vuurhoutjieplakkie"
+  unl: "qua(103728437, 102870526.@indef)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 127}
+- sentence: "'n boek oor Genève"
+  unl: "cnt(102870092.@indef, 500004419)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 128}
+- sentence: "'n boek oor liefde"
+  unl: "cnt(102870092.@indef, 107543288)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 129}
+- sentence: "'n boek teen John"
+  unl: "cnt(102870092.@indef, \"John\".@against)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 130}
+- sentence: "'n Wiskundeboek"
+  unl: "fld(102870092.@indef, 106000644)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 131}
+- sentence: "'n biblioteekboek"
+  unl: "pof(102870092.@indef, 103661043.@def)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 132}
+- sentence: "'n boek uit die verlede"
+  unl: "src(102870092.@indef, 115120823.@def)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 133}
+- sentence: "'n boek uit die biblioteek"
+  unl: "src(102870092.@indef, 103661043.@def)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 134}
+- sentence: "'n boek van klip"
+  unl: "mat(102870092.@indef, 104326084)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 135}
+- sentence: "'n boek uit die verlede"
+  unl: "tim(102870092.@indef, 115120823.@def)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 136}
+- sentence: "'n boek vir John"
+  unl: "ben(102870092.@indef, \"John\")"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 137}
+- sentence: "'n boek van John"
+  unl: "pos(102870092.@indef, \"John\")"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 138}
+- sentence: "'n boek vir studie"
+  unl: "pur(102870092.@indef, 200607114)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 139}
+- sentence: die boek "Le Petit Prince"
+  unl: "nam(102870092.@def, \"Le Petit Prince\")"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 140}
+- sentence: "'n paar somersdae"
+  unl: "tim(115155220.@paucal, 115237250.@def)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 141}
+- sentence: "'n paar dae na somer"
+  unl: "tim(115155220.@paucal, 115237250.@def.@after)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 142}
+- sentence: "'n paar dae voor die somer"
+  unl: "tim(115155220.@paucal, 115237250.@def.@before)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 143}
+- sentence: "'n paar dae sedert die somer"
+  unl: "tim(115155220.@paucal, 115237250.@def.@from)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 144}
+- sentence: "'n paar dae tot die somer"
+  unl: "tim(115155220.@paucal, 115237250.@def.@to)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 145}
+- sentence: "'n paar dae gedurende die somer"
+  unl: "dur(115155220.@paucal, 115237250.@def)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 146}
+- sentence: "'n paar dae seder somer"
+  unl: "tmf(115155220.@paucal, 115237250.@def)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 147}
+- sentence: "'n paar dae tot met somer"
+  unl: "tmt(115155220.@paucal, 115237250.@def)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 148}
+- sentence: "'n paar minute op Maandag"
+  unl: "tim(115234764.@paucal, 115163979)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 149}
+- sentence: "'n paar minute om twaalfuur"
+  unl: "tim(115234764.@paucal, 115165490)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 150}
+- sentence: John se aankoms
+  unl: "agt(100048374, \"John\")"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 151}
+- sentence: Shakespeare se toneelstukke
+  unl: "agt(107007945.@def.@pl, 500009156)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 152}
+- sentence: masjienvertaling
+  unl: "agt(106536389, 103699975)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 153}
+- sentence: "'n daad van welwillendheid"
+  unl: "cnt(100030358, 104840011)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 154}
+- sentence: "'n sjampoesoort"
+  unl: "cnt(201588876.@indef, 104183516)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 155}
+- sentence: verandering van plek
+  unl: "cnt(100191142, 108621598)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 156}
+- sentence: idee van liefde
+  unl: "cnt(105833840, 107543288)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 157}
+- sentence: liefde vir perde
+  unl: "cnt(107543288, 102374451.@generic)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 158}
+- sentence: simbool van liefde
+  unl: "cnt(105765415, 107543288)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 159}
+- sentence: reuk van rose
+  unl: "cnt(105713737, 112620196.@generic)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 160}
+- sentence: bedreiging van vrede
+  unl: "exp(114543231, 113970236)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 161}
+- sentence: besoek aan Afrika
+  unl: "gol(101233156, 500005179)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 162}
+- sentence: vrou in 'n party
+  unl: "lpl(110787470, 107447641.@indef)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 163}
+- sentence: syrok
+  unl: "mat(103236735, 104219424)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 164}
+- sentence: glasbeker
+  unl: "mat(103797390, 114881303)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 165}
+- sentence: klipmure
+  unl: "mat(104546855.@pl, 104326084)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 166}
+- sentence: moontlike veranderinge
+  unl: "mod(100191142.@pl, 301821266)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 167}
+- sentence: hoofgedeelte
+  unl: "mod(113809207, 301512527)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 168}
+- sentence: erepersoon
+  unl: "mod(100007846, 104869106)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 169}
+- sentence: meesterplan
+  unl: "mod(105728678, 301277426)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 170}
+- sentence: stad van Praag
+  unl: "nam(108524735, 500003213)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 171}
+- sentence: Atlantiese Oseaan
+  unl: "nam(109376198, 500005233)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 172}
+- sentence: regering van Indië
+  unl: "obj(108050678, 500003815)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 173}
+- sentence: betaling van skuld
+  unl: "obj(101120448, 106773347.@pl)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 174}
+- sentence: kantoorstoel
+  unl: "plc(103001627, 103841666)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 175}
+- sentence: noorde van Europa
+  unl: "plc(108561081, 500005395)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 176}
+- sentence: baadjiemou
+  unl: "pof(103057021.@indef, 104236377)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 177}
+- sentence: inleiding van 'n dokument
+  unl: "pof(106470073.@indef, 106398090)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 178}
+- sentence: weeksdag
+  unl: "pof(115136147, 115155220)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 179}
+- sentence: rusdag
+  unl: "pur(115155220, 200014405)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 180}
+- sentence: piekniektafel
+  unl: "pur(104379243, 107576438)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 181}
+- sentence: baadjie van $70
+  unl: "per(103057021, \"$70\")"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 182}
+- sentence: "'n groep van vriende"
+  unl: "qua(110112591.@pl, 100031264)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 183}
+- sentence: sak inkopies
+  unl: "qua(103461119, 102801938)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 184}
+- sentence: een boek
+  unl: "qua(102870092, \"1\")"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 185}
+- sentence: twee boeke
+  unl: "qua(102870092, \"2\")"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 186}
+- sentence: "'n stel boeke"
+  unl: "qua(102870092, 107996689.@indef)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 187}
+- sentence: druppel water
+  unl: "qua(114845743, 113771404)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 188}
+- sentence: dood van tuberkulose
+  unl: "rsn(107355491, 114143415)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 189}
+- sentence: brugkonstruksie
+  unl: "res(100911048, 102898711.@indef)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 190}
+- sentence: mooi
+  unl: "300217728"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 191}
+- sentence: baie mooi
+  unl: 300217728.@plus
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 192}
+- sentence: nogal mooi
+  unl: 300217728.@minus
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 193}
+- sentence: mooier
+  unl: 300217728.@more
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 194}
+- sentence: minder mooi
+  unl: 300217728.@less
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 195}
+- sentence: nie mooi nie
+  unl: 300217728.@not
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 196}
+- sentence: mooi genoeg
+  unl: 300217728.@enough
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 197}
+- sentence: te mooi
+  unl: 300217728.@extra
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 198}
+- sentence: mooiste
+  unl: 300217728.@most
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 199}
+- sentence: minste mooi
+  unl: 300217728.@least
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 200}
+- sentence: mooier as Parys
+  unl: "per(300217728.@more, 500003943)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 201}
+- sentence: minder mooi as Parys
+  unl: "per(300217728.@less, 500003943)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 202}
+- sentence: so mooi soos Parys
+  unl: "per(300217728.@equal, 500003943)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 203}
+- sentence: mooiste van Parys
+  unl: "per(300217728.@most, 500003943)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 204}
+- sentence: minder mooi van Parys
+  unl: "per(300217728.@least, 500003943)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 205}
+- sentence: goed vir John
+  unl: "ben(301166413, \"John\")"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 206}
+- sentence: aan die koningin getrou wees
+  unl: "gol(300961392, 110499355.@def)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 207}
+- sentence: belaglik moeilik
+  unl: "qua(300744916, 400301039)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 208}
+- sentence: die mooi kar
+  unl: "mod(102958343.@def, 300217728)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 209}
+- sentence: "'n baie mooi kar"
+  unl: "mod(102958343.@indef, 300217728.@plus)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 210}
+- sentence: "'n uiters mooi kar"
+  unl: "mod(102958343.@indef, 300217728) man(300217728, 400046299)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 211}
+- sentence: die duurste kar
+  unl: "mod(102958343.@def, 300933154.@most)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 212}
+- sentence: die nuwe mooi kar
+  unl: "mod(102958343.@def, 300217728) mod(102958343.@def, 301640850)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 213}
+- sentence: die nuwe mooi duur kar
+  unl: "mod(102958343.@def, 300217728) mod(102958343.@def, 300933154) mod(102958343.@def, 301640850)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 214}
+- sentence: heelwat nuwe mooi duur karre
+  unl: "mod(102958343.@multal, 300217728) mod(102958343.@multal, 300933154) mod(102958343.@multal, 301640850)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 215}
+- sentence: John se nuwe mooi duur kar
+  unl: "pos(102958343.@def, \"John\") mod(102958343.@def, 300217728) mod(102958343.@def, 300933154) mod(102958343.@def, 301640850)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 216}
+- sentence: "'n trein vanuit Parys na Genève"
+  unl: "src(104468005.@indef, 500003943) gol(104468005.@indef, 500004419)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 217}
+- sentence: "'n trein vanaf Rome na Parys deur Genève"
+  unl: "src(104468005.@indef, 500003428) gol(104468005.@indef, 500003943) via(104468005.@indef, 500004419)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 218}
+- sentence: John en Mary
+  unl: "and(\"John\", \"Mary\")"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 219}
+- sentence: Mary en John
+  unl: "and(\"Mary\", \"John\")"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 220}
+- sentence: "John, Mary en Peter"
+  unl: "and(\"John\", :01) and:01(\"Mary\", \"Peter\")"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 221}
+- sentence: "John, Mary, Peter en Paul"
+  unl: "and(\"John\", :01) and:01(\"Mary\", :02) and:02(\"Peter\", \"Paul\")"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 222}
+- sentence: "John, Mary, Peter, Paul en Bill"
+  unl: "and(\"John\", :01) and:01(\"Mary\", :02) and:02(\"Peter\", :03) and:03(\"Paul\", \"Bill\")"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 223}
+- sentence: John of Mary
+  unl: "or(\"John\", \"Mary\")"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 224}
+- sentence: Mary of John
+  unl: "or(\"Mary\", \"John\")"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 225}
+- sentence: "John, Mary of Peter"
+  unl: "or(\"John\", :01) or:01(\"Mary\", \"Peter\")"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 226}
+- sentence: "John, Mary, Peter of Paul"
+  unl: "or(\"John\", :01) or:01(\"Mary\", :02) or:02(\"Peter\", \"Paul\")"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 227}
+- sentence: "John, Mary, Peter, Paul of Bill"
+  unl: "or(\"John\", :01) or:01(\"Mary\", :02) or:02(\"Peter\", :03) or:03(\"Paul\", \"Bill\")"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 228}
+- sentence: "'n kar en 'n boek"
+  unl: "and(102958343.@indef, 102870092.@indef)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 229}
+- sentence: "'n kar, 'n boek en 'n beker"
+  unl: "and(102958343.@indef, :01) and:01(102870092.@indef, 103797390.@indef)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 230}
+- sentence: "'n mooi kar en 'n duur boek"
+  unl: "and(:01, :02) mod:01(102958343.@indef, 300217728) mod:02(102870092.@indef, 300933154)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 231}
+- sentence: "'n baie mooi kar en 'n redelike duur boek"
+  unl: "and(:01, :02) mod:01(102958343.@indef, 300217728.@plus) mod:02(102870092.@indef, 300933154.@minus)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 232}
+- sentence: mooi en duur karre
+  unl: "mod(102958343.@pl, :01) and:01(300217728, 300933154)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 233}
+- sentence: "mooi, duur en nuwe karre"
+  unl: "mod(102958343.@pl, :01) and:01(300217728, :02) and:02(300933154, 301640850)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 234}
+- sentence: "'n mooi kar uit Switserland en 'n baie duur boek vir John"
+  unl: "and(:01, :02) plc:01(102958343.@indef, 500004416.@from) mod:01(102958343.@indef, 300217728) ben:02(102870092.@indef, \"John\".@for) mod:02(102870092.@indef, 300933154.@plus)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 235}
+- sentence: "'n mooi kar, 'n duur boek en 'n nuwe beker"
+  unl: "and(:01, :02) and:02(:03, :04) mod:01(102958343.@indef, 300217728) mod:03(102870092.@indef, 300933154) mod:04(103797390.@indef, 301640850)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 236}
+- sentence: "'n baie mooi kar, 'n uiters duur boek en 'n nuwe glasbeker"
+  unl: "and(:01, :02) and:02(:03, :04) mod:01(102958343.@indef, 300217728.@plus) mod:03(102870092.@indef, 300933154) man:03(300933154, 400046299) mod:04(103797390.@indef, 301640850) mat:04(103797390.@indef, 114881303)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 237}
+- sentence: "'n baie mooi kar uit Switserland, 'n uiters duur boek oor Parys en 'n nuwe glasbeker vir John"
+  unl: "and(:01, :02) and:02(:03, :04) mod:01(102958343.@indef, 300217728.@plus) src:01(102958343.@indef, 500004416) mod:03(102870092.@indef, 300933154) cnt:03(102870092.@indef, 500003943) man:03(300933154, 400046299) mod:04(103797390.@indef, 301640850) mat:04(103797390.@indef, 114881303) ben:04(103797390.@indef, \"John\")"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 238}
+- sentence: al die beskikbare boeke
+  unl: "mod(102870092.@def.@all, 300183053)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 239}
+- sentence: ses groot boeke
+  unl: "qua(102870092.@pl, \"6\":01) mod(102870092.@pl, 301382086:03)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 240}
+- sentence: my twee boeke
+  unl: "pos(102870092.@pl, 00.@1) qua(102870092.@pl, \"2\":03)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 241}
+- sentence: my ander twee boeke
+  unl: "pos(102870092.@pl.@other, 00.@1) qua(102870092.@pl.@other, \"2\":03)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 242}
+- sentence: my laaste twee boeke
+  unl: "mod(102870092.@pl, 301013279:03) pos(102870092.@pl, 00.@1) qua(102870092.@pl, \"2\":05)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 243}
+- sentence: die boek tussen die doos en die tafel
+  unl: "plc(102870092.@def, :01.@between) and:01(102883344.@def, 104379243.@def)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 244}
+- sentence: die boek op die tafel oor Parys
+  unl: "plc(102870092.@def, 104379243.@def.@top.@contact) cnt(102870092.@def, 500003943)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 245}
+- sentence: die boek op die tafel met foto's van Parys
+  unl: "plc(102870092.@def, 104379243.@def.@top.@contact) cnt(102870092.@def, 500003943) mod(102870092.@def, 106999436.@generic.@without)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 246}
+- sentence: die mooi boek oor Parys sonder foto's op die tafel
+  unl: "plc(102870092.@def, 104379243.@def.@top.@contact) mod(102870092.@def, 300217728) cnt(102870092.@def, 500003943) mod(102870092.@def, 106999436.@generic.@without)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 247}
+- sentence: die mooi boek op die tafel oor Parys die stad sonder prente en foto's
+  unl: "plc(102870092.@def, 104379243.@def.@top.@contact) mod(102870092.@def, 300217728) cnt(102870092.@def, 108524735.@def) nam(108524735.@def, 500003943) mod(102870092.@def, :01.@without) and:01(106999436.@generic, 103925226.@generic)"
+  source: {archive_path: exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_af_unl_ucl, line: 248}

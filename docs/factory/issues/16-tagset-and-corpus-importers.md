@@ -2,7 +2,7 @@
 issue: 16
 title: "Build the tagset and corpus importers"
 milestone: M2
-status: open
+status: in-progress
 depends_on: [13]
 agent: implementer
 agents: [implementer]
@@ -10,7 +10,7 @@ model: sonnet
 effort: medium
 checkpoint: null
 commit: null
-worktree: null
+worktree: .worktrees/m2-store
 github_issue: 225
 ---
 ## What
@@ -58,6 +58,6 @@ specifically, not because it's English-only.
 
 ## Done when
 
-- [ ] `tools/importer/tagset.py` and `tools/importer/corpus.py` run for `afr` and `eng`.
-- [ ] `tagset.yaml` and `corpus/ugoa1.yaml` exist under both language directories.
-- [ ] `pytest tools/importer/test_tagset.py tools/importer/test_corpus.py` passes.
+- [x] `tools/importer/tagset.py` and `tools/importer/corpus.py` run for `afr` and `eng`.
+- [x] `tagset.yaml` and `corpus/ugoa1.yaml` exist under both language directories.
+- [x] `pytest tools/importer/test_tagset.py tools/importer/test_corpus.py` passes.
