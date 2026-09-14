@@ -441,14 +441,11 @@ def render_markdown(rows: list[LanguageInventory], retrieved_range: tuple[str, s
             afr_infl_gen = row.grammar_status("inflectional", "generation")
             if afr_infl_gen.non_empty:
                 lines.append(
-                    '  The interrogation record also said, in prose, "the Afrikaans generation '
-                    'grammar has to be written; the English one can be studied as the model." '
-                    "This mirror, retrieved 2026-09-11, shows the Afrikaans "
-                    "inflectional-generation export with "
-                    f"{afr_infl_gen.rule_count} rule markers past the two defaults — real rules, "
-                    "not the empty state the interrogation found. The gap is three days; the "
-                    "Afrikaans author (the archive account behind this mirror) most likely wrote "
-                    "it in that window."
+                    "  The interrogation record found the Afrikaans inflectional-generation "
+                    "export empty (the two default rules only) on 2026-09-08. This mirror, "
+                    f"retrieved 2026-09-11, shows {afr_infl_gen.rule_count} rule markers past "
+                    "the two defaults. The two counts differ; the cause is not investigated "
+                    "further here."
                 )
     lines.append("")
 
@@ -471,20 +468,37 @@ def render_markdown(rows: list[LanguageInventory], retrieved_range: tuple[str, s
     )
     lines.append("")
     grade_a_others = [r for r in rows if r.grade == "A" and r.iso3 not in ("eng", "afr")]
-    for row in grade_a_others[:6]:
+    for row in grade_a_others:
         lines.append(
             f"- **{row.name}** (`{row.iso3}`, grade A): {row.base_forms:,} base forms, all four "
             "grammar exports non-empty."
         )
     lines.append("")
-    lines.append(
-        "French, Spanish, Russian, Arabic and German were named as this reference set in the "
-        "2026-09-08 interrogation, before the archive was mirrored; the grades above confirm all "
-        "five still qualify. Arabic's dictionary zip is also the largest one this mirror has "
-        "actually downloaded, at 1,919,869 lines, which makes it the most useful for checking "
-        "the importer against real UNLarium dictionary syntax, not just the grammar exports."
-    )
+    if grade_a_others:
+        names_sentence = ", ".join(row.name for row in grade_a_others)
+        lines.append(
+            f"By that measure, {names_sentence} are the current candidates, ranked by "
+            "dictionary base forms."
+        )
+    else:
+        lines.append(
+            "No language besides eng and afr grades A in this mirror yet; there is no "
+            "candidate to list."
+        )
     lines.append("")
+    largest_dictionary_row = max(
+        (row for row in rows if row.dictionary.filename is not None),
+        key=lambda row: row.dictionary.line_count,
+        default=None,
+    )
+    if largest_dictionary_row is not None:
+        lines.append(
+            f"**{largest_dictionary_row.name}**'s dictionary export is the largest one this "
+            f"mirror has actually downloaded, at {largest_dictionary_row.dictionary.line_count:,} "
+            "lines, which makes it the most useful for checking the importer against real "
+            "UNLarium dictionary syntax, not just the grammar exports."
+        )
+        lines.append("")
 
     lines.append("## Languages")
     lines.append("")

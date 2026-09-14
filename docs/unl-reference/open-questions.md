@@ -15,12 +15,19 @@ translate it to its UNL2010 replacement or treat the source as out of scope. Thi
 resolve that; `unl2010-changes.md`'s table gives the mapping, but which mirrored artefacts still
 carry the old labels has not been surveyed.
 
-## 2. No other version contradiction found
+## 2. `plf` and `plt` are in the 2010 comparison table but missing from the mirrored relations page
 
-Beyond the relation set covered in question 1, the wiki pages mirrored for this reference
-(document structure, sentence structure, Universal Words, Universal Relations, Universal
-Attributes) describe one consistent UNL2010 picture. The attribute list carries no version
-markers in the archive's own tree diagram, so no attribute-level contradiction across spec
-versions was found. If a future mirror pass adds pre-2010 attribute material, it should be
-checked against `spec/universal-attributes.md` for the same kind of drift found in the
-relations table.
+`data/archive/wiki/UNL_Specs_comparison.wikitext` marks `plf` (initial place) and `plt` (final
+place) as present in its 2010 column. Neither relation appears in
+`docs/unl-reference/spec/universal-relations.md`'s 38-row table, otherwise verified correct
+against the wiki. A rule-author who meets `plf` or `plt` in a corpus should know this gap exists,
+rather than assume the mirrored relations page is fully consistent with the 2010 spec.
+
+## 3. No other version contradiction found
+
+Beyond the relation gaps covered in questions 1 and 2, the wiki pages mirrored for this reference
+(document structure, sentence structure, Universal Words, Universal Attributes) describe one
+consistent UNL2010 picture. The attribute list carries no version markers in the archive's own
+tree diagram, so no attribute-level contradiction across spec versions was found. If a future
+mirror pass adds pre-2010 attribute material, it should be checked against
+`spec/universal-attributes.md` for the same kind of drift found in the relations table.

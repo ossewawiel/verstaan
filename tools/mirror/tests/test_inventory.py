@@ -275,6 +275,75 @@ def test_dictionary_line_count_reads_the_largest_non_empty_zip(archive: Path) ->
     assert wel.dictionary.line_count == 3
 
 
+def test_dictionary_export_picks_the_largest_variant_not_the_smallest(tmp_path: Path) -> None:
+    root = tmp_path / "archive"
+    export_dir = root / "exports" / "wel"
+    export_dir.mkdir(parents=True)
+    small = export_dir / "we_ana_a_c_ucl.zip"
+    with zipfile.ZipFile(small, "w") as archive:
+        archive.writestr("we_ana_a_c_ucl_1.txt", "one\n")
+    large = export_dir / "we_gen_a_e_ucn.zip"
+    with zipfile.ZipFile(large, "w") as archive:
+        archive.writestr("we_gen_a_e_ucn_1.txt", "one\ntwo\nthree\nfour\nfive\n")
+    assert small.stat().st_size < large.stat().st_size
+
+    from tools.mirror.inventory import _pick_dictionary_export
+
+    dictionary = _pick_dictionary_export(export_dir, "we")
+    assert dictionary.filename == "we_gen_a_e_ucn.zip"
+    assert dictionary.line_count == 5
+
+
+def test_grammar_cell_says_not_mirrored_for_a_genuinely_absent_export(tmp_path: Path) -> None:
+    """A language whose inflectional-generation export file was never downloaded at all (as
+    opposed to downloaded but empty) must render as `not mirrored`, not `no (... default
+    rules)` and not `yes`.
+    """
+    root = tmp_path / "archive"
+    languages = [
+        {
+            "iso1": "sp",
+            "iso3": "spa",
+            "name": "Sparish",
+            "users": 1,
+            "base_forms": 100,
+            "word_forms": 100,
+            "paradigms": 1,
+            "frames": 1,
+            "dict_level": "A0",
+            "grammar_level": "A0",
+        }
+    ]
+    languages_path = root / "languages.json"
+    languages_path.parent.mkdir(parents=True, exist_ok=True)
+    languages_path.write_text(json.dumps(languages), encoding="utf-8")
+
+    manifest_path = root / "manifest.jsonl"
+    _write_manifest(manifest_path, ["spa"])
+
+    export_dir = root / "exports" / "spa"
+    export_dir.mkdir(parents=True)
+    # Only the inflectional-analysis export was ever mirrored; the other three files are
+    # genuinely absent from disk, not empty-but-present.
+    (export_dir / "export_grammar.php__type_M_lang_sp").write_text(
+        _analysis_grammar("M", "Inflectional Grammar", [2, 3])
+    )
+
+    rows = build_inventory(root, manifest_path, languages_path)
+    spa = next(row for row in rows if row.iso3 == "spa")
+    infl_gen = spa.grammar_status("inflectional", "generation")
+    assert not infl_gen.present
+
+    markdown = render_markdown(rows, None)
+    spa_row_line = next(line for line in markdown.splitlines() if line.startswith("| Sparish "))
+    cells = [cell.strip() for cell in spa_row_line.split("|")]
+    # Columns: | Language | ISO3 | Base forms | Word forms | Dict level | Grammar level |
+    # Inflectional (analysis) | Inflectional (generation) | Subcategorisation (analysis) |
+    # Subcategorisation (generation) | Dictionary export sampled | Grade |
+    infl_generation_cell = cells[8]
+    assert infl_generation_cell == "not mirrored"
+
+
 def test_subcategorisation_generation_reuses_analysis_when_not_given(archive: Path) -> None:
     rows = build_inventory(archive, archive / "manifest.jsonl", archive / "languages.json")
     wel = next(row for row in rows if row.iso3 == "wel")

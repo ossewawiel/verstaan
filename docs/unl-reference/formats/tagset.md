@@ -11,7 +11,7 @@ importer reads from.
 
 ## Categories and the values each real export uses
 
-The table below groups the 365 tags this reference checked into the categories the wiki's own
+The table below groups the 501 tags this reference checked into the categories the wiki's own
 `Tagset.wikitext` page defines, then lists every value both the Afrikaans and the English exports
 actually assign to real dictionary entries or reference in a real grammar file (not merely every
 value the wiki's tree enumerates as theoretically possible).
@@ -28,19 +28,19 @@ value the wiki's tree enumerates as theoretically possible).
 | Lemma and base form | `LEMMA`, `BF` — attribute names, not values, that carry the string headword directly rather than a tagset code |
 | Language, frequency, priority | `af`, `en` — the two-letter codes the exports actually use, see the disagreement in `dictionary.md` |
 
-This is a sample, not the whole 365-tag inventory: the two dictionary exports checked for this
+This is a sample, not the whole 501-tag inventory: the two dictionary exports checked for this
 issue are single alphabetic runs (Afrikaans adverbs starting `aan`-`anders`; English prepositions
 starting `aboard`-`above`) and do not exercise every category the canonical tagset export defines
 — no entry in either sample carries a case tag, a mood tag, or a register tag, for instance. The
-canonical list below is the full inventory the archive's tagset export actually serves, checked
-tag-for-tag against the wiki's tree.
+canonical list below is the full inventory the archive's tagset export actually serves.
 
 ## Where the export adds tags the wiki tree does not define
 
 The wiki's `Tagset.wikitext` page draws a tree of attributes and values, by hand. The archive also
 serves a live, generated export of the same tagset
 (`unlarium/dictionary/export_tagset.php`), and the two do not fully agree. Four disagreements,
-found by checking every one of the export's 365 tags against the wiki's tree:
+found while comparing the two sources, are documented below. A full tag-by-tag audit of all 501
+export tags against the wiki tree is still open work.
 
 - **`RLT`, not `REL`, for the nominal class "relation".** The wiki tree lists the nominal concept
   category "relations between people or things or ideas" under the code `REL`. The real export

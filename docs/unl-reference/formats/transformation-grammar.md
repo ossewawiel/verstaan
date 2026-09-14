@@ -53,8 +53,8 @@ an N-rule for normalisation, an S-rule for syntactic structure (see
 
 ## Worked example: three real English rules
 
-From the archive's English analysis transformation grammar for corpus UC-A1, section 1.2
-(verb morphology):
+From the archive's English analysis transformation grammar for corpus UC-A1 (Rule 1 from section
+1.1, nouns; Rules 2 and 3 from section 1.2, verbs):
 
 **Rule 1 — mark plural nouns:**
 ```

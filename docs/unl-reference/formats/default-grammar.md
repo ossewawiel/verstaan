@@ -35,15 +35,16 @@ structures in the opposite order:
 | 5 | Morphological generation | `LL` | Triggers every inflectional rule the word's dictionary entry or paradigm carries, via the `!<ATTRIBUTE>` operand (see `docs/unl-reference/formats/inflection.md`). |
 | 6 | Post-processing | `LL` | Removes leftover scopes, inserts blank spaces and commas, capitalises the sentence-initial word. |
 
-## Worked example: three real rules from the shared analysis default grammar
+## Worked example: three real rules from the shared default grammar
 
-From `nl_unl_tgrammar.txt`, the file both the Afrikaans and English mirrors serve, byte-identical
-(same SHA-256 in the manifest for both languages — confirming it truly is one shared file, not two
-copies that happen to agree today):
+The first two rules are from `nl_unl_tgrammar.txt`, the analysis default grammar both the
+Afrikaans and English mirrors serve, byte-identical (same SHA-256 in the manifest for both
+languages — confirming it truly is one shared file, not two copies that happen to agree today).
+The third is from `unl_nl_tgrammar.txt`, the generation default grammar, equally shared.
 
 **Pre-processing — merge a broken time expression:**
 ```
-(DIGIT,^HOUR,%h)(":",%a)(DIGIT,^MINUTE,%m):=(%h,+HOUR)(%a)(%m,+MINUTE); by default DD:DD = HH:MM
+(DIGIT,^HOUR,^MINUTE,%h)(":",%a)(DIGIT,^MINUTE,^SECOND,%m):=(%h,+HOUR)(%a)(%m,+MINUTE); by default DD:DD = HH:MM
 ```
 An `LL` rule: two digit nodes separated by a colon, neither yet tagged `HOUR` or `MINUTE`, are
 tagged as such by default, so "9:30" is read as 9 hours 30 minutes unless a language grammar has
@@ -59,6 +60,8 @@ phrase `%xp` (matched by the `{NP|PP|JP}` disjunction) combines into a new verba
 "killed" plus "Mary" into the intermediate projection "killed Mary".
 
 **Morphological generation — the one rule that triggers every inflection:**
+
+From `unl_nl_tgrammar.txt`, the generation-direction default grammar:
 ```
 (%x,^inflected,FLX):=(%x,!FLX,+inflected);
 ```

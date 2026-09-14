@@ -72,8 +72,14 @@ GER:=0>"ing";
 ```
 Five branches, one attribute condition each (`INF`, `PAS`, `PTP`, the hyper-attribute `3PS&PRS`
 for third-person-singular present, `GER`), each appending a fixed suffix at the end of the base
-form. This is the paradigm the Afrikaans and English dictionaries both point at from thousands of
-regular verb entries via `PAR=M16`, rather than writing five affixation rules per entry.
+form. This is the paradigm English dictionary entries point at from thousands of regular verb
+entries via `PAR=M16`, rather than writing five affixation rules per entry.
+
+Paradigm numbers are assigned per language, not shared across the archive: the same number can
+mean unrelated things in different languages' exports. Afrikaans `M16` is not a verb paradigm at
+all — it is "add 's at the end of the word for the plural" (*pa's, video's, avokado's*), a noun
+rule (`data/archive/exports/afr/export_grammar.php__type_M_lang_af`). A rule-author reading
+`PAR=M16` in a dictionary entry must check which language's export defines it.
 
 ## Inflection or agglutination
 
