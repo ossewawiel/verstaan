@@ -2,5 +2,5 @@
 
 Last completed:  #157 — Drain the stuck exports one language at a time: Kannada next (Side), commit 729b811
 Next up:         #09 — Agent-readable UNL reference: the specifications (M1)
-Branch / PR:     main, https://github.com/ossewawiel/verstaan.git, 0 files dirty, no gate stamp for 79d9660
+Branch / PR:     main, https://github.com/ossewawiel/verstaan.git, 0 files dirty, no gate stamp for 3270071
 Resume with:     /factory-run 09
