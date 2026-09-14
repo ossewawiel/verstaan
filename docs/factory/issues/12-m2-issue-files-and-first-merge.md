@@ -2,15 +2,15 @@
 issue: 12
 title: "Write the M2 issue files from the inventory, gate and merge M1"
 milestone: M1
-status: in-progress
+status: done
 depends_on: [11]
 agent: docs-writer
 agents: [docs-writer, verifier]
 model: sonnet
 effort: low
 checkpoint: 4
-commit: null
-worktree: .worktrees/m1-mirror
+commit: 8156c23329bbe37a6c8099028e0d1de467aa1d09
+worktree: null
 github_issue: 12
 ---
 ## What
