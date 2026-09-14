@@ -2,15 +2,15 @@
 issue: 16
 title: "Build the tagset and corpus importers"
 milestone: M2
-status: in-progress
+status: done
 depends_on: [13]
 agent: implementer
 agents: [implementer]
 model: sonnet
 effort: medium
 checkpoint: null
-commit: null
-worktree: .worktrees/m2-store
+commit: 0b9358a
+worktree: null
 github_issue: 225
 ---
 ## What
