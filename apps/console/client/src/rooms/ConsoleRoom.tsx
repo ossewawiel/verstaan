@@ -2,19 +2,44 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-import { useStateQuery, useWorktreesQuery } from '../api/queries';
+import { useIssuesQuery, useJobsQuery, useStateQuery, useWorktreesQuery } from '../api/queries';
 import { loadoutOf } from './IssueCard';
 import { ActionsRail } from '../components/ActionsRail';
 import { ActionButton } from '../components/ActionButton';
 import { RestartControl } from '../components/RestartControl';
 import { api } from '../api/client';
 
+/** mm:ss, or hh:mm:ss once an hour has passed. Elapsed time only ever grows while a job runs, so
+ * there is no zero-padding edge case to chase beyond the usual two digits per field. */
+function formatElapsed(ms: number): string {
+  const total = Math.max(0, Math.floor(ms / 1000));
+  const h = Math.floor(total / 3600);
+  const m = Math.floor((total % 3600) / 60);
+  const s = total % 60;
+  const pad = (n: number) => String(n).padStart(2, '0');
+  return h > 0 ? `${h}:${pad(m)}:${pad(s)}` : `${pad(m)}:${pad(s)}`;
+}
+
 export function ConsoleRoom() {
   const { data: model, isLoading } = useStateQuery();
   const { data: worktrees } = useWorktreesQuery();
+  const { data: issues } = useIssuesQuery();
+  // Only fetched while at least one quest is in flight (below): the active-encounter hero's
+  // elapsed-time read-out needs the job runner's own `startedAt`, which `/api/state` does not
+  // carry (issue 164's "Not in scope": no new field added to the state model for this quest).
+  const { data: jobs } = useJobsQuery();
   const navigate = useNavigate();
   const prevMetrics = useRef<Map<string, string>>(new Map());
   const [pulsing, setPulsing] = useState<Set<string>>(new Set());
+  const [now, setNow] = useState(() => Date.now());
+
+  // Ticks once a second only so the elapsed-time read-out advances; it touches no other state
+  // and nothing it renders is watched by the flicker or layout-shift proofs (those run on the
+  // Quests room, not here).
+  useEffect(() => {
+    const t = setInterval(() => setNow(Date.now()), 1000);
+    return () => clearInterval(t);
+  }, []);
 
   // A changed tile pulses only its own metric (issue 99: "no layout shift on update"). The pulse
   // class is added for one animation cycle and then removed, so it never accumulates.
@@ -35,6 +60,21 @@ export function ConsoleRoom() {
 
   if (isLoading || !model) return <p className="muted">Loading the console…</p>;
 
+  // The active encounter's elapsed time and party member (DESIGN.md "The one bold element"):
+  // the job runner's own tree argument is the quest's `worktree:` frontmatter path (see
+  // `IssueCard`'s `QuestActions` and the Actions rail below, both of which pass `issue.worktree
+  // ?? '.'` the same way), not the branch name `inProgress[].tree` carries — so the match is done
+  // against the issue file's own worktree path, read from `useIssuesQuery`, not the state model's
+  // `inProgress` shape. No match (no running job for that tree, or the issues query still
+  // loading) simply omits the read-out — the brief asks for it "if the job runner has one".
+  const encounterMeta = (q: (typeof model.inProgress)[number]) => {
+    const issue = issues?.find((i) => i.n === q.n);
+    const job = issue ? jobs?.find((j) => j.tree === (issue.worktree ?? '.') && j.status === 'running' && j.startedAt != null) : undefined;
+    const elapsed = job ? formatElapsed(now - job.startedAt!) : null;
+    const station = model.party.find((p) => p.name === q.agent);
+    return { elapsed, station };
+  };
+
   return (
     <section>
       <p className="altitude__band">CIC · combat information centre</p>
@@ -52,14 +92,23 @@ export function ConsoleRoom() {
             <span className="nn-row__text">Nothing in progress</span>
           ) : (
             <ul className="nn-row__text nn-row__list">
-              {model.inProgress.map((q) => (
-                <li key={q.n}>
-                  <Link to={`/quests/${String(q.n).padStart(2, '0')}`}>
-                    #{String(q.n).padStart(2, '0')} {q.title}
-                  </Link>{' '}
-                  — {q.tree ?? '(this tree)'}
-                </li>
-              ))}
+              {model.inProgress.map((q) => {
+                const { elapsed, station } = encounterMeta(q);
+                const loadout = loadoutOf(q);
+                return (
+                  <li key={q.n}>
+                    <Link className="encounter__title" to={`/quests/${String(q.n).padStart(2, '0')}`}>
+                      #{String(q.n).padStart(2, '0')} {q.title}
+                    </Link>
+                    {elapsed ? <span className="encounter__elapsed"> {elapsed}</span> : null}
+                    <span className="encounter__meta">
+                      tree {q.tree ?? '(this tree)'} ·{' '}
+                      <span className={`story__loadout${loadout.complete ? '' : ' story__loadout--missing'}`}>{loadout.text}</span>
+                      {station ? <span className="encounter__station"> · on station: {station.name}</span> : null}
+                    </span>
+                  </li>
+                );
+              })}
             </ul>
           )}
         </div>
@@ -130,15 +179,20 @@ export function ConsoleRoom() {
         <RestartControl />
       </div>
 
-      <div className="tiles">
-        {model.milestones.map((m) => (
-          <Link key={m.name} to={`/quests?milestone=${encodeURIComponent(m.name)}`} className="tile snub">
-            <span className="tile__corner" />
-            <p className="tile__title">{m.name}</p>
-            <p className="tile__blurb">{m.won} of {m.total} won</p>
-            <span className={`tile__metric${pulsing.has(m.name) ? ' tile__metric--pulse' : ''}`}>{m.won}/{m.total}</span>
-          </Link>
-        ))}
+      <div className="xp-grid">
+        {model.milestones.map((m) => {
+          const pct = m.total > 0 ? Math.round((m.won / m.total) * 100) : 0;
+          return (
+            <Link key={m.name} to={`/quests?milestone=${encodeURIComponent(m.name)}`} className="tile snub xp">
+              <span className="tile__corner" />
+              <p className="xp__title">{m.name}</p>
+              <div className="xp__bar" role="progressbar" aria-valuenow={pct} aria-valuemin={0} aria-valuemax={100} aria-label={`${m.name} progress`}>
+                <div className="xp__fill" style={{ width: `${pct}%` }} />
+              </div>
+              <span className={`xp__figure${pulsing.has(m.name) ? ' xp__figure--pulse' : ''}`}>{m.won} / {m.total} won</span>
+            </Link>
+          );
+        })}
       </div>
 
       <div className="panel">
@@ -166,10 +220,11 @@ export function ConsoleRoom() {
 
       <div className="panel">
         <p className="panel__title">Party</p>
-        <ul className="storylist">
+        <ul className="party-row">
           {model.party.map((p) => (
-            <li key={p.name}>
-              <strong>{p.name}</strong> — {p.model}, effort {p.effort}. {p.role}
+            <li key={p.name} className="party-tag" title={p.role}>
+              <span className="party-tag__name">{p.name}</span>
+              <span className="party-tag__loadout">{p.model} / {p.effort}</span>
             </li>
           ))}
         </ul>

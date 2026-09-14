@@ -2,7 +2,7 @@
 issue: 164
 title: "The console looks like a CIC and reports like a quest log: one design system, the Console and Quests rooms, and half-screen done properly"
 milestone: Side
-status: open
+status: in-progress
 depends_on: [99, 104, 116, 162]
 agent: implementer
 agents: [implementer]
@@ -10,7 +10,7 @@ model: sonnet
 effort: high
 checkpoint: null
 commit: null
-worktree: null
+worktree: .worktrees/side-164-console-cic-redesign
 github_issue: 229
 ---
 ## What

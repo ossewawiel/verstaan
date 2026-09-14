@@ -8,6 +8,21 @@ const GLYPH: Record<Issue['status'], string> = { done: '●', 'in-progress': '�
 const LABEL: Record<Issue['status'], string> = { done: 'done', 'in-progress': 'in progress', open: 'open' };
 const STATUSES: Issue['status'][] = ['done', 'in-progress', 'open'];
 
+/** Rarity tier, from the quest's own loadout (DESIGN.md "The one bold element" / issue 164's
+ * "four game devices"): sonnet/low common, sonnet/medium uncommon, sonnet/high rare, opus/high
+ * legendary. A loadout the brief never named (missing, or a combination outside the four) reads
+ * as common until a future quest names it — never blank, and never a fifth colour: the edge
+ * treatment escalates by weight and style, the text label always says which. */
+export type Tier = 'common' | 'uncommon' | 'rare' | 'legendary';
+export const TIERS: Tier[] = ['common', 'uncommon', 'rare', 'legendary'];
+export function tierOf(issue: Pick<Issue, 'model' | 'effort'>): Tier {
+  const key = `${issue.model ?? ''}/${issue.effort ?? ''}`;
+  if (key === 'opus/high') return 'legendary';
+  if (key === 'sonnet/high') return 'rare';
+  if (key === 'sonnet/medium') return 'uncommon';
+  return 'common';
+}
+
 /** The loadout: who takes the quest, at which model and effort (SPEC.md §6, playbook "Resource
  * rules"). It is the armour and weapons the quest is embarked with, so it sits on the summary
  * row, visible without opening the card, the way the file console's meta line showed it. A quest
@@ -98,8 +113,9 @@ function QuestActions({ issue }: { issue: Issue }) {
 function IssueCardImpl({ issue, links, expanded, onToggle }: Props) {
   const id = String(issue.n).padStart(2, '0');
   const loadout = loadoutOf(issue);
+  const tier = tierOf(issue);
   return (
-    <li className={`story story--${issue.status}`}>
+    <li className={`story story--${issue.status} story--tier-${tier}`}>
       <button
         type="button"
         className="story__summary"
@@ -111,7 +127,10 @@ function IssueCardImpl({ issue, links, expanded, onToggle }: Props) {
           if (e.key === 'Escape' && expanded) onToggle(issue.n);
         }}
       >
-        <span className="story__id">#{id}</span>
+        <span className="story__id">
+          #{id}
+          <span className={`story__tier story__tier--${tier}`}>{tier}</span>
+        </span>
         <span className="story__title">
           {issue.title}
           <span className={`story__loadout${loadout.complete ? '' : ' story__loadout--missing'}`}>{loadout.text}</span>
