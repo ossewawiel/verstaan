@@ -2,14 +2,14 @@
 issue: 156
 title: "Drain the stuck exports one language at a time: Turkish next"
 milestone: Side
-status: open
+status: done
 depends_on: [155]
 agent: implementer
 agents: [implementer]
 model: sonnet
 effort: medium
 checkpoint: null
-commit: null
+commit: 053f4fdb738b9c1b5cab756b5d52d95dd2883a26
 worktree: null
 github_issue: 196
 ---
