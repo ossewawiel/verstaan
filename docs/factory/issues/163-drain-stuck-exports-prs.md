@@ -2,14 +2,14 @@
 issue: 163
 title: "Drain the stuck exports one language at a time: Dari next"
 milestone: Side
-status: open
+status: done
 depends_on: [161]
 agent: implementer
 agents: [implementer]
 model: sonnet
 effort: medium
 checkpoint: null
-commit: null
+commit: 8be97f1b971a61aa7d035fbaab3d6e185a345725
 worktree: null
 github_issue: 216
 ---

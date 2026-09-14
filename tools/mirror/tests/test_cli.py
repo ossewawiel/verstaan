@@ -210,17 +210,22 @@ _REPO_ROOT = Path(__file__).resolve().parents[3]
 def test_stuck_next_prints_a_priority_language_against_the_real_manifest(capsys, monkeypatch):
     """`stuck --next` against the current repository manifest names a `mirror.toml`
     `[retry] priority` language (issue 118), or falls back to the stuck language with the most
-    base forms once the priority list is drained. Issues 118-122's live runs have drained one
-    language after another — the exact answer keeps moving as later quests run, so this test
-    only proves the wiring reads the real files and prints something, not which language. The
-    fixture tests in `test_stuck.py` prove the ordering and fallback rules themselves against a
-    manifest that does not move."""
+    base forms once the priority list is drained. Issues 118-163's live runs drained one
+    language after another until issue 163 (Dari) emptied the manifest of `timeout` paths
+    entirely, so this test tolerates either outcome: a language name (exit 0, something printed),
+    or the drained chain's own documented end state (exit 1, nothing printed) — never a crash or
+    an unexpected exit code. The fixture tests in `test_stuck.py` prove the ordering and fallback
+    rules themselves against a manifest that does not move."""
     monkeypatch.chdir(_REPO_ROOT)
 
     exit_code = main(["stuck", "--next"])
 
-    assert exit_code == 0
-    assert capsys.readouterr().out.strip()
+    output = capsys.readouterr().out.strip()
+    if exit_code == 0:
+        assert output
+    else:
+        assert exit_code == 1
+        assert not output
 
 
 def _write_fixture_mirror_toml(path, priority):
