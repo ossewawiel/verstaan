@@ -4,8 +4,8 @@ Last completed:  #164 — The console looks like a CIC and reports like a quest 
                  system, the Console and Quests rooms, and half-screen done properly (Side),
                  commit 303bfa9
 Next up:         #13 — Write the canonical data model as a schema (M2)
-Branch / PR:     side-164-console-cic-redesign, https://github.com/ossewawiel/verstaan.git,
-                 0 files dirty, no gate stamp for e0c7bf1
+Branch / PR:     main, https://github.com/ossewawiel/verstaan.git, 0 files dirty, no gate stamp
+                 for c371b1d
 Resume with:     /factory-run 13
 
 Note: #13 already shows `status: done` (commit 70093b7) on the `m2-store` milestone tree, which
