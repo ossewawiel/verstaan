@@ -2,7 +2,7 @@
 issue: 160
 title: "Drain the stuck exports one language at a time: Marathi next"
 milestone: Side
-status: open
+status: in-progress
 depends_on: [158]
 agent: implementer
 agents: [implementer]
@@ -10,7 +10,7 @@ model: sonnet
 effort: medium
 checkpoint: null
 commit: null
-worktree: null
+worktree: .worktrees/side-160-drain-stuck-exports-mar
 github_issue: 207
 ---
 ## What
