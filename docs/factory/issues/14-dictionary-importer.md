@@ -2,15 +2,15 @@
 issue: 14
 title: "Build the dictionary importer"
 milestone: M2
-status: in-progress
+status: done
 depends_on: [13]
 agent: implementer
 agents: [implementer]
 model: sonnet
 effort: medium
 checkpoint: null
-commit: null
-worktree: .worktrees/m2-store
+commit: 342d617
+worktree: null
 github_issue: 223
 ---
 ## What
