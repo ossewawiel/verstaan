@@ -6,7 +6,9 @@ import { test, expect } from '@playwright/test';
 import { setIssueStatus } from './fixture-repo';
 
 test('a quest card shows agent / model / effort without being opened', async ({ page }) => {
-  await page.goto('/quests');
+  // Explicit All: the room defaults to Status: Open (issue 159), and flicker.spec.ts leaves
+  // quest 07 in-progress, which would otherwise drop it out of the default filtered list.
+  await page.goto('/quests?status=');
   const card = page.locator('#quest-summary-07');
   await expect(card).toContainText('implementer / sonnet / low');
   await expect(page.locator('#quest-detail-07')).toHaveCount(0);

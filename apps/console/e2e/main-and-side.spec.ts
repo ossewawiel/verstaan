@@ -26,7 +26,9 @@ test('a main quest waiting on a side quest is marked as crossing the line', asyn
 });
 
 test('a done dependency blocks nothing', async ({ page }) => {
-  await page.goto('/quests');
+  // Quest 01 is done; the room defaults to Status: Open (issue 159), so this needs the explicit
+  // All filter to see it at all.
+  await page.goto('/quests?status=');
   await expect(page.locator('#quest-summary-01')).not.toContainText('blocks');
   await expect(page.locator('#quest-summary-01')).not.toContainText('blocked by');
 });

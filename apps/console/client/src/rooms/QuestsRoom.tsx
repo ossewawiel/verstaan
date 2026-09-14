@@ -57,7 +57,9 @@ export function QuestsRoom() {
   }, [deepLinkN]);
 
   const milestone = params.get('milestone') ?? '';
-  const status = params.get('status') ?? '';
+  // A bare `/quests` visit (no `status` param at all) defaults to Open; an explicit
+  // `status=` (All) or a deliberate "All" pick from the dropdown must stay All (issue 159).
+  const status = params.has('status') ? (params.get('status') ?? '') : 'open';
   const agent = params.get('agent') ?? '';
 
   const links = useMemo(() => linksOf(issues ?? []), [issues]);
@@ -102,7 +104,11 @@ export function QuestsRoom() {
 
   const setFilter = (key: string, value: string) => {
     const next = new URLSearchParams(params);
+    // `status` keeps an explicit empty value in the URL for "All" so it never re-defaults to
+    // Open on a later render (issue 159); milestone/agent default to All already, so they
+    // still delete on empty.
     if (value) next.set(key, value);
+    else if (key === 'status') next.set(key, '');
     else next.delete(key);
     setParams(next);
   };
