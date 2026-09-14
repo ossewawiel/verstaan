@@ -9,7 +9,7 @@ agents: [implementer]
 model: sonnet
 effort: medium
 checkpoint: 4
-commit: 9e36dcd35034245969fead28cab7ba7f8530ea8f
+commit: 06b5d6bc1edf4bf6df1847c076c74feca1b70de9
 worktree: null
 github_issue: 213
 ---
