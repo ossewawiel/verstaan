@@ -2,15 +2,15 @@
 issue: 155
 title: "Drain the stuck exports one language at a time: Mongolian next"
 milestone: Side
-status: in-progress
+status: done
 depends_on: [154]
 agent: implementer
 agents: [implementer]
 model: sonnet
 effort: medium
 checkpoint: null
-commit: null
-worktree: .worktrees/side-155-drain-stuck-exports-mon
+commit: 32dd3520ecdd8016878e87615b6a53d89e3fd442
+worktree: null
 github_issue: 193
 ---
 ## What
