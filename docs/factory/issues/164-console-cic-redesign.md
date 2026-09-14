@@ -2,14 +2,14 @@
 issue: 164
 title: "The console looks like a CIC and reports like a quest log: one design system, the Console and Quests rooms, and half-screen done properly"
 milestone: Side
-status: open
+status: done
 depends_on: [99, 104, 116, 162]
 agent: implementer
 agents: [implementer]
 model: sonnet
 effort: high
 checkpoint: null
-commit: null
+commit: 303bfa9
 worktree: null
 github_issue: 229
 ---
@@ -110,13 +110,13 @@ list, item 1). `console.cmd` and `console.ps1`.
 
 ## Done when
 
-- [ ] `apps/console/DESIGN.md` holds the design plan, written before the code, with the
+- [x] `apps/console/DESIGN.md` holds the design plan, written before the code, with the
       revision paragraph.
-- [ ] Two typefaces bundled and named, the type scale in the tokens, case decided, and the
+- [x] Two typefaces bundled and named, the type scale in the tokens, case decided, and the
       all-caps-everywhere rule gone from `theme.css`.
-- [ ] Console room: active-encounter hero, experience bars, party as a row, no stray "— .".
-- [ ] Quests room: rarity tier on every card with label and edge, tier filter, loot log in the
+- [x] Console room: active-encounter hero, experience bars, party as a row, no stray "— .".
+- [x] Quests room: rarity tier on every card with label and edge, tier filter, loot log in the
       empty side-quest half.
-- [ ] `e2e/widths.spec.ts` green at 1440, 960 and 720 for both rooms; every prior spec green.
+- [x] `e2e/widths.spec.ts` green at 1440, 960 and 720 for both rooms; every prior spec green.
 - [ ] Six screenshots in the PR, one sentence each.
 - [ ] PR merged through the gate check.

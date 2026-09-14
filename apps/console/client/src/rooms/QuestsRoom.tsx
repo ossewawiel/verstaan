@@ -1,9 +1,22 @@
 // SPDX-License-Identifier: MPL-2.0
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { useNavigate, useParams, useSearchParams } from 'react-router-dom';
+import { Link, useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import { useIssuesQuery } from '../api/queries';
-import { IssueCard, type Links } from './IssueCard';
+import { IssueCard, tierOf, TIERS, type Links, type Tier } from './IssueCard';
 import type { Issue } from '../api/client';
+
+/** The ledger's loot log (DESIGN.md "Layout concept" / issue 164): the last five landed quests,
+ * newest first. `Issue` carries no landing timestamp, so recency is read off the quest number —
+ * the backlog is numbered in the order quests are filed and, in practice, in the order they
+ * land, which is the closest proxy the model carries without a server change (see DESIGN.md's
+ * "Revised after reviewing the plan against the brief" for why the lesson line itself is cut). */
+function lootLog(issues: Issue[]): Issue[] {
+  return issues
+    .filter((i) => i.status === 'done')
+    .slice()
+    .sort((a, b) => b.n - a.n)
+    .slice(0, 5);
+}
 
 /** The same rule the server uses (`SIDE` in server/src/model/parse.ts): a side quest is any
  * quest whose milestone is `Side` or `Post-M6`; everything else is on the main quest line. */
@@ -31,6 +44,30 @@ export function linksOf(issues: Issue[]): Map<number, Links> {
     }
   }
   return out;
+}
+
+/** The loot log: what the party dropped, most recently, standing in for a side-quest half a
+ * filter has emptied out (issue 164 acceptance criteria: "not 'None match the filter.'"). */
+function LootLog({ issues }: { issues: Issue[] }) {
+  const drops = lootLog(issues);
+  if (drops.length === 0) return <p className="muted">None match the filter.</p>;
+  return (
+    <div className="loot-log">
+      <p className="loot-log__lede">No side quest is open here. The last five landed:</p>
+      <ul className="loot-log__list">
+        {drops.map((d) => (
+          <li key={d.n} className="loot-log__item">
+            <span className="loot-log__title">
+              <Link to={`/quests/${String(d.n).padStart(2, '0')}`}>
+                #{String(d.n).padStart(2, '0')} {d.title}
+              </Link>
+            </span>
+            <span className="loot-log__commit">{d.commit != null ? String(d.commit) : 'no commit recorded'}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
 }
 
 export function QuestsRoom() {
@@ -61,15 +98,20 @@ export function QuestsRoom() {
   // `status=` (All) or a deliberate "All" pick from the dropdown must stay All (issue 159).
   const status = params.has('status') ? (params.get('status') ?? '') : 'open';
   const agent = params.get('agent') ?? '';
+  const tier = (params.get('tier') ?? '') as Tier | '';
 
   const links = useMemo(() => linksOf(issues ?? []), [issues]);
 
   const filtered = useMemo(() => {
     if (!issues) return [] as Issue[];
     return issues.filter(
-      (i) => (!milestone || i.milestone === milestone) && (!status || i.status === status) && (!agent || i.agents.includes(agent)),
+      (i) =>
+        (!milestone || i.milestone === milestone) &&
+        (!status || i.status === status) &&
+        (!agent || i.agents.includes(agent)) &&
+        (!tier || tierOf(i) === tier),
     );
-  }, [issues, milestone, status, agent]);
+  }, [issues, milestone, status, agent, tier]);
 
   // Two halves of the room (issue 104): the main quest line, grouped by milestone in first-seen
   // order, and the side quests. A quest never appears in both.
@@ -157,6 +199,17 @@ export function QuestsRoom() {
             ))}
           </select>
         </label>
+        <label>
+          Tier
+          <select value={tier} onChange={(e) => setFilter('tier', e.target.value)}>
+            <option value="">All</option>
+            {TIERS.map((t) => (
+              <option key={t} value={t}>
+                {t}
+              </option>
+            ))}
+          </select>
+        </label>
       </form>
 
       <section className="quest-half" aria-labelledby="main-quests-heading">
@@ -180,7 +233,7 @@ export function QuestsRoom() {
         <h2 className="quest-half__title" id="side-quests-heading">
           Side quests
         </h2>
-        {side.length === 0 ? <p className="muted">None match the filter.</p> : null}
+        {side.length === 0 ? <LootLog issues={issues ?? []} /> : null}
         <ul className="storylist" aria-label="Side quests">
           {side.map((issue) => (
             <IssueCard key={issue.n} issue={issue} links={links.get(issue.n)!} expanded={expanded.has(issue.n)} onToggle={toggle} />

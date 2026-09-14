@@ -17,9 +17,9 @@
   text-decoration: none;
   padding: 0.35rem 0.8rem;
   border: 1px solid var(--plate-edge);
-  text-transform: uppercase;
-  font-size: 0.74rem;
-  letter-spacing: 0.12em;
+  font-size: var(--step-1);
+  letter-spacing: 0.02em;
+  white-space: nowrap;
 }
 .cic-bar__link:hover,
 .cic-bar__link:focus-visible {
@@ -30,6 +30,30 @@
   color: var(--amber);
   border-color: var(--amber-dim);
   background: rgba(255, 176, 0, 0.08);
+}
+
+/* The nav is the one place a second, finer rule sits on top of the shared breakpoint (DESIGN.md
+   "Grid"): at narrow widths it stops wrapping into a ragged second row (issue 164's bug — the
+   clock left orphaned on its own line) and instead stays one row, scrolling internally. Every
+   link is still in the DOM and in tab order; a keyboard user's focus still scrolls it into view. */
+@media (max-width: 900px) {
+  .cic-bar__nav {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    justify-content: flex-start;
+    max-width: 100%;
+  }
+  .cic-bar {
+    flex-wrap: wrap;
+  }
+  .cic-bar__nav {
+    order: 3;
+    flex-basis: 100%;
+  }
+  .cic-bar__clock {
+    order: 2;
+    margin-left: auto;
+  }
 }
 
 .tile__metric--pulse {
@@ -94,7 +118,7 @@
      lengths, and an `auto` column resizes the row (and so the title column beside it) when the
      label changes on an SSE-driven update, producing a measurable layout-shift entry (issue 99
      acceptance criteria: zero layout shift on update). */
-  grid-template-columns: 4rem 1fr 7rem;
+  grid-template-columns: 4.8rem 1fr 7rem;
   gap: 0.8rem;
   /* `center`, not `baseline`: the status glyph swaps between ● and ◐, two characters with
      slightly different ascent/descent in most fonts, and a baseline-aligned row shifts by a
@@ -175,10 +199,10 @@
   margin-top: 1.6rem;
 }
 .quest-half__title {
-  font-size: 1.05rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--accent, #ffb000);
+  font-family: var(--font-display);
+  font-size: var(--step-4);
+  letter-spacing: 0.02em;
+  color: var(--amber);
   margin: 0 0 0.3rem;
   padding-bottom: 0.3rem;
   border-bottom: 2px solid var(--plate-edge);
@@ -188,9 +212,8 @@
 }
 .quest-group__title {
   margin: 0;
-  font-size: 0.78rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+  font-size: var(--step-1);
+  letter-spacing: 0.04em;
   color: var(--ink-dim);
 }
 .story-detail {
@@ -362,4 +385,216 @@ select:focus-visible,
 .artifact-text {
   white-space: pre-wrap;
   word-break: break-word;
+}
+
+/* ---- the active-encounter hero (issue 164 "Console room") ---------------------------------
+ * `.nn-row--now` is styled here, on top of theme.css's plain `.nn-row`, without changing its
+ * markup: `now-row.spec.ts` and `loadout.spec.ts` both find it by the exact-text "Now" span and
+ * read its parent's own text content, so the DOM shape (one label span, one text span) stays the
+ * one theme.css already draws; only the look on top of it changes. */
+.nn-row--now {
+  border: 1px solid var(--amber-dim);
+  background: linear-gradient(160deg, rgba(255, 176, 0, 0.08), transparent 70%);
+  padding: 0.9rem 1rem;
+  display: grid;
+  grid-template-columns: 6rem 1fr;
+  gap: 0.8rem;
+}
+.nn-row--now .nn-row__text {
+  font-size: var(--step-3);
+  color: var(--ink);
+}
+.encounter__title {
+  font-family: var(--font-display);
+  color: var(--amber);
+  font-size: var(--step-4);
+  text-shadow: 0 0 14px rgba(255, 176, 0, 0.3);
+  text-decoration: none;
+  display: inline-block;
+  margin-bottom: 0.3rem;
+}
+.encounter__title:hover,
+.encounter__title:focus-visible {
+  color: var(--amber);
+  text-decoration: underline;
+}
+.encounter__meta {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: var(--step-1);
+  color: var(--ink-dim);
+  letter-spacing: 0.02em;
+}
+.encounter__elapsed {
+  font-variant-numeric: tabular-nums;
+  color: var(--st-in-progress);
+  letter-spacing: 0.04em;
+}
+.encounter__station {
+  color: var(--ink-faint);
+}
+
+/* ---- milestones as experience bars, not a tile repeating its own figure twice -------------- */
+.xp-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.1rem;
+  margin-bottom: 2rem;
+}
+.xp {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  padding: 1rem 1.2rem 1.1rem;
+}
+a.xp:hover,
+a.xp:focus {
+  background-color: var(--amber);
+  outline: none;
+}
+a.xp:hover .xp__title,
+a.xp:hover .xp__figure {
+  color: #1a1408;
+}
+.xp__title {
+  color: var(--amber);
+  font-size: var(--step-3);
+  margin: 0 0 0.6rem;
+  letter-spacing: 0.01em;
+}
+.xp__bar {
+  height: 0.5rem;
+  background: var(--hull-2);
+  border: 1px solid var(--plate-edge);
+  overflow: hidden;
+}
+.xp__fill {
+  height: 100%;
+  background: var(--amber);
+  transition: width 0.3s ease;
+}
+.xp__figure {
+  display: inline-block;
+  margin-top: 0.6rem;
+  color: var(--ink-dim);
+  font-size: var(--step-1);
+  letter-spacing: 0.04em;
+  font-variant-numeric: tabular-nums;
+}
+.xp__figure--pulse {
+  animation: tile-pulse 0.9s ease-out;
+}
+@media (prefers-reduced-motion: reduce) {
+  .xp__fill {
+    transition: none;
+  }
+  .xp__figure--pulse {
+    animation: none;
+  }
+}
+
+/* ---- the Party, a row of name-tags with a loadout, not five paragraphs (issue 164) ---------- */
+.party-row {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+}
+.party-tag {
+  border: 1px solid var(--plate-edge);
+  background: linear-gradient(160deg, var(--plate), var(--hull-2));
+  padding: 0.5rem 0.8rem;
+  min-width: 9rem;
+}
+.party-tag__name {
+  display: block;
+  color: var(--amber);
+  font-size: var(--step-2);
+  letter-spacing: 0.01em;
+}
+.party-tag__loadout {
+  display: block;
+  color: var(--ink-dim);
+  font-size: var(--step-0);
+  letter-spacing: 0.02em;
+}
+
+/* ---- rarity tier: an edge treatment plus a text label, never hue alone (issue 164) ----------
+ * From the quest's own loadout: sonnet/low common, sonnet/medium uncommon, sonnet/high rare,
+ * opus/high legendary. Width, style and glow escalate with the tier so the difference reads even
+ * without colour; the label (`.story__tier`) carries the name in text either way. */
+.story--tier-common {
+  border-left: 2px solid var(--ink-faint);
+}
+.story--tier-uncommon {
+  border-left: 3px solid var(--st-in-progress);
+}
+.story--tier-rare {
+  border-left: 3px double var(--amber-dim);
+}
+.story--tier-legendary {
+  border-left: 4px solid var(--amber);
+  box-shadow: inset 6px 0 10px -8px rgba(255, 176, 0, 0.7);
+}
+.story__tier {
+  display: block;
+  white-space: normal;
+  font-size: 0.62rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  margin-top: 0.15rem;
+}
+.story__tier--common {
+  color: var(--ink-faint);
+}
+.story__tier--uncommon {
+  color: var(--st-in-progress);
+}
+.story__tier--rare {
+  color: var(--amber-dim);
+}
+.story__tier--legendary {
+  color: var(--amber);
+  font-weight: 700;
+}
+
+/* ---- the loot log: the empty side-quest half becomes a ledger, not a flat "none" (issue 164) */
+.loot-log {
+  border-left: 3px solid var(--amber-dim);
+  padding: 0.7rem 1rem 0.9rem;
+  background: rgba(255, 176, 0, 0.04);
+}
+.loot-log__lede {
+  color: var(--ink-dim);
+  font-size: var(--step-1);
+  margin: 0 0 0.7rem;
+}
+.loot-log__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.loot-log__item {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.8rem;
+  border-bottom: 1px dashed var(--plate-edge);
+  padding-bottom: 0.4rem;
+  flex-wrap: wrap;
+}
+.loot-log__title {
+  color: var(--ink);
+}
+.loot-log__title a {
+  color: var(--ink);
+}
+.loot-log__commit {
+  color: var(--st-done);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
 }
