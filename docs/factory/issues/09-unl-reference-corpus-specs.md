@@ -2,7 +2,7 @@
 issue: 9
 title: "Agent-readable UNL reference: the specifications"
 milestone: M1
-status: open
+status: in-progress
 depends_on: [7]
 agent: docs-writer
 agents: [docs-writer]
@@ -10,6 +10,7 @@ model: sonnet
 effort: medium
 checkpoint: null
 commit: null
+worktree: .worktrees/m1-mirror
 github_issue: 9
 ---
 ## What
