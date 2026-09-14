@@ -2,5 +2,5 @@
 
 Last completed:  #163 — Drain the stuck exports one language at a time: Dari next (Side), commit 8be97f1
 Next up:         #13 — Write the canonical data model as a schema (M2)
-Branch / PR:     main, https://github.com/ossewawiel/verstaan.git, 0 files dirty, no gate stamp for f0e3be6
+Branch / PR:     main, https://github.com/ossewawiel/verstaan.git, 0 files dirty, no gate stamp for 9ecbfdf
 Resume with:     /factory-run 13
