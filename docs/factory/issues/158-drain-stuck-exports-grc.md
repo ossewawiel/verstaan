@@ -2,7 +2,7 @@
 issue: 158
 title: "Drain the stuck exports one language at a time: Ancient Greek next"
 milestone: Side
-status: open
+status: in-progress
 depends_on: [157]
 agent: implementer
 agents: [implementer]
@@ -10,7 +10,7 @@ model: sonnet
 effort: medium
 checkpoint: null
 commit: null
-worktree: null
+worktree: .worktrees/side-158-drain-stuck-exports-grc
 github_issue: 202
 ---
 ## What
