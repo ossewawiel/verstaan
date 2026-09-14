@@ -6,6 +6,7 @@ import type { FastifyInstance } from 'fastify';
 import { JobManager, JobRejected } from './runner.js';
 import { namesConsole } from './kinds.js';
 import { resolveOpenUrl, repoSlug, OpenError, type OpenRequest } from './open.js';
+import { RestartGate } from '../restart-gate.js';
 
 export interface RouteDeps {
   jobs: JobManager;
@@ -15,6 +16,11 @@ export interface RouteDeps {
    * resolve into this list; nothing else is a legal target (safety: "the allow-list is the only
    * way to run anything" covers the tree as much as the kind). */
   treeRoots: () => string[];
+  /** Shared with `registerRestartRoute` (issue 162, checkpoint-4 review finding 3): set for the
+   * whole restart, so a job started partway through a rebuild is never left running unrefused,
+   * only to be killed with no exit code the moment the old process exits. Defaults to a fresh,
+   * always-inactive gate so existing callers/tests that do not pass one keep working unchanged. */
+  restartGate?: RestartGate;
 }
 
 /** True when the request's own `Host` header names this server's own loopback address (issue
@@ -25,7 +31,7 @@ export interface RouteDeps {
  * header would only ever stop a browser that already sent the request -- the job would already be
  * running. Checking `Host` against the port this server itself is bound to rejects the request
  * before anything else happens, the same way a CSRF-token check would, without needing one. */
-function isLoopbackHost(hostHeader: string | undefined, port: number): boolean {
+export function isLoopbackHost(hostHeader: string | undefined, port: number): boolean {
   if (!hostHeader) return false;
   const host = hostHeader.split(':')[0];
   return (host === '127.0.0.1' || host === 'localhost') && hostHeader === `${host}:${port}`;
@@ -55,11 +61,18 @@ function jobJson(job: import('./runner.js').Job) {
 }
 
 export function registerJobRoutes(app: FastifyInstance, deps: RouteDeps): void {
-  const { jobs, repoRoot, port } = deps;
+  const { jobs, repoRoot, port, restartGate = new RestartGate() } = deps;
 
   app.post('/api/jobs', async (req, reply) => {
     if (!isLoopbackHost(req.headers.host, port)) {
       return reply.code(400).send({ error: 'refused: Host header does not name this server' });
+    }
+    // Finding 3 (checkpoint-4 review): a restart's own build can run for several seconds; a job
+    // started partway through it is never refused by `jobs.runningJob()` alone (that check is
+    // POST /api/restart's own, run once, before the build even starts) and gets killed with no
+    // exit code the instant the old process exits once the build finishes.
+    if (restartGate.isActive()) {
+      return reply.code(409).send({ error: 'refused: a restart is in progress; wait for it to finish, then retry.' });
     }
     const body = (req.body ?? {}) as { kind?: string; tree?: string; args?: unknown };
     const kind = body.kind;

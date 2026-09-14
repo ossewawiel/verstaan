@@ -7,7 +7,9 @@ import { mkdtempSync, mkdirSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import type { FSWatcher } from 'node:fs';
-import { debounce, watchPaths, watchDirectory, shouldIgnoreGitEcho } from '../src/index.js';
+import Fastify from 'fastify';
+import { writeFileSync } from 'node:fs';
+import { debounce, watchPaths, watchDirectory, shouldIgnoreGitEcho, spaFallbackHandler } from '../src/index.js';
 
 describe('debounce', () => {
   beforeEach(() => vi.useFakeTimers());
@@ -151,5 +153,56 @@ describe('shouldIgnoreGitEcho', () => {
     expect(shouldIgnoreGitEcho('docs', 0)).toBe(false);
     expect(shouldIgnoreGitEcho('state', 0)).toBe(false);
     expect(shouldIgnoreGitEcho('party', 0)).toBe(false);
+  });
+});
+
+// Checkpoint-4 review (third pass), finding 4: `dist/index.html` can be briefly missing mid a
+// restart's own rebuild (vite's `emptyOutDir: true` clears `dist/` before rewriting it). A page
+// load or refresh landing in that window must get a clean 503, not a raw ENOENT stack trace.
+describe('spaFallbackHandler', () => {
+  const buildApp = (distDir: string) => {
+    const app = Fastify({ logger: false });
+    app.setNotFoundHandler(spaFallbackHandler(distDir));
+    return app;
+  };
+
+  it('serves index.html for an ordinary GET when it exists', async () => {
+    const dir = mkdtempSync(join(tmpdir(), 'verstaan-console-spa-'));
+    try {
+      writeFileSync(join(dir, 'index.html'), '<html>ok</html>');
+      const app = buildApp(dir);
+      const res = await app.inject({ method: 'GET', url: '/quests/07' });
+      expect(res.statusCode).toBe(200);
+      expect(res.body).toBe('<html>ok</html>');
+    } finally {
+      rmSync(dir, { recursive: true, force: true });
+    }
+  });
+
+  it('responds 503 with a plain message, not a raw ENOENT stack trace, when index.html is missing', async () => {
+    const dir = mkdtempSync(join(tmpdir(), 'verstaan-console-spa-'));
+    try {
+      // Deliberately no index.html written: reproduces the mid-rebuild window where vite's
+      // `emptyOutDir: true` has cleared `dist/` but not yet rewritten it.
+      const app = buildApp(dir);
+      const res = await app.inject({ method: 'GET', url: '/quests/07' });
+      expect(res.statusCode).toBe(503);
+      expect(res.body).not.toMatch(/ENOENT/);
+      expect(res.body).not.toMatch(dir);
+      expect(res.body).toBe('console: rebuilding, try again in a moment');
+    } finally {
+      rmSync(dir, { recursive: true, force: true });
+    }
+  });
+
+  it('still 404s an /api/* or /events GET even when index.html is missing', async () => {
+    const dir = mkdtempSync(join(tmpdir(), 'verstaan-console-spa-'));
+    try {
+      const app = buildApp(dir);
+      const res = await app.inject({ method: 'GET', url: '/api/does-not-exist' });
+      expect(res.statusCode).toBe(404);
+    } finally {
+      rmSync(dir, { recursive: true, force: true });
+    }
   });
 });

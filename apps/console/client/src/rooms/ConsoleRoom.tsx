@@ -6,6 +6,7 @@ import { useStateQuery, useWorktreesQuery } from '../api/queries';
 import { loadoutOf } from './IssueCard';
 import { ActionsRail } from '../components/ActionsRail';
 import { ActionButton } from '../components/ActionButton';
+import { RestartControl } from '../components/RestartControl';
 import { api } from '../api/client';
 
 export function ConsoleRoom() {
@@ -126,6 +127,7 @@ export function ConsoleRoom() {
             }}
           />
         </div>
+        <RestartControl />
       </div>
 
       <div className="tiles">

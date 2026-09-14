@@ -11,6 +11,7 @@
     "skipLibCheck": true,
     "resolveJsonModule": true,
     "declaration": false,
+    "noEmitOnError": true,
     "types": ["node"]
   },
   "include": ["src/**/*.ts", "../server/src/**/*.ts"]
