@@ -1,0 +1,117 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://verstaan.org/schema/store-layout.schema.json",
+  "title": "Store layout",
+  "description": "Describes the tree data/languages/<iso3>/ names in SPEC.md §3.3, one entry per file or file group, and the top-level shape (array of records, or an object with named keys) each one holds. This schema validates a manifest object that lists the files a store directory has, keyed by the SPEC.md path; it does not validate a directory on disk directly (tools/validate does that at import and build time).",
+  "type": "object",
+  "required": [
+    "dictionary/<a-z>.yaml",
+    "grammar/analysis.yaml",
+    "grammar/generation.yaml",
+    "grammar/inflection.yaml",
+    "grammar/subcategorisation.yaml",
+    "grammar/disambiguation.yaml",
+    "tagset.yaml",
+    "corpus/<name>.yaml",
+    "tests/<name>.yaml",
+    "meta.yaml"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "dictionary/<a-z>.yaml": {
+      "$ref": "#/$defs/dictionaryFile"
+    },
+    "grammar/analysis.yaml": {
+      "$ref": "#/$defs/grammarFile"
+    },
+    "grammar/generation.yaml": {
+      "$ref": "#/$defs/grammarFile"
+    },
+    "grammar/inflection.yaml": {
+      "$ref": "#/$defs/grammarFile"
+    },
+    "grammar/subcategorisation.yaml": {
+      "$ref": "#/$defs/grammarFile"
+    },
+    "grammar/disambiguation.yaml": {
+      "$ref": "#/$defs/grammarFile"
+    },
+    "tagset.yaml": {
+      "$ref": "#/$defs/tagsetFile"
+    },
+    "corpus/<name>.yaml": {
+      "$ref": "#/$defs/corpusFile"
+    },
+    "tests/<name>.yaml": {
+      "$ref": "#/$defs/testsFile"
+    },
+    "meta.yaml": {
+      "$ref": "#/$defs/metaFile"
+    }
+  },
+  "$defs": {
+    "dictionaryFile": {
+      "type": "object",
+      "required": ["shape", "required_keys"],
+      "properties": {
+        "shape": { "const": "array" },
+        "required_keys": {
+          "const": ["headword", "id", "uw", "features", "lang", "frequency", "priority", "source"]
+        }
+      },
+      "description": "Entries sharded by first letter of headword. Item shape: tools/schema/dictionary-entry.schema.json."
+    },
+    "grammarFile": {
+      "type": "object",
+      "required": ["shape", "required_keys"],
+      "properties": {
+        "shape": { "const": "array" },
+        "required_keys": {
+          "const": ["id", "kind", "lhs", "rhs", "conditions", "comment", "source"]
+        }
+      },
+      "description": "Transformation, inflection, subcategorisation or disambiguation rules. Item shape: tools/schema/grammar-rule.schema.json."
+    },
+    "tagsetFile": {
+      "type": "object",
+      "required": ["shape"],
+      "properties": {
+        "shape": { "const": "object" },
+        "required_keys": {
+          "const": [],
+          "description": "No fixed key set: top-level keys are the feature names themselves (e.g. LEX, POS, NUM), each mapping to its allowed values. Source: exports/export_tagset.php (one export, not per-language)."
+        }
+      },
+      "description": "Feature names and allowed values, checked against by tools/validate for every dictionary entry's features and every rule's lhs/rhs/conditions."
+    },
+    "corpusFile": {
+      "type": "object",
+      "required": ["shape", "required_keys"],
+      "properties": {
+        "shape": { "const": "array" },
+        "required_keys": { "const": ["sentence", "unl", "source"] }
+      },
+      "description": "One sentence, its UNL graph, and its source, per SPEC.md §3.3. One file per named corpus."
+    },
+    "testsFile": {
+      "type": "object",
+      "required": ["shape", "required_keys"],
+      "properties": {
+        "shape": { "const": "array" },
+        "required_keys": { "const": ["input", "expected", "direction", "tier", "register"] }
+      },
+      "description": "Test sentences: input, expected output, direction (analysis or generation), tier and register. Authored, not mirrored from the archive."
+    },
+    "metaFile": {
+      "type": "object",
+      "required": ["shape", "required_keys"],
+      "properties": {
+        "shape": { "const": "object" },
+        "required_keys": {
+          "const": ["iso1", "iso3", "name", "licence", "counts", "last_import"]
+        }
+      },
+      "description": "iso1 and name come from languages.json (issue 11); iso3 is the store folder name; licence is fixed per language by the archive's page; counts and last_import are computed by the importer at import time, never mirrored."
+    }
+  }
+}

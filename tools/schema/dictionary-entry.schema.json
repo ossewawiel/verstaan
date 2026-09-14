@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://verstaan.org/schema/dictionary-entry.schema.json",
+  "title": "Dictionary entry",
+  "description": "One record in data/languages/<iso3>/dictionary/<a-z>.yaml. Field names and shape from SPEC.md §3.2. Not a schema for the archive line itself; see docs/unl-reference/formats/dictionary.md for that.",
+  "type": "object",
+  "required": [
+    "headword",
+    "id",
+    "uw",
+    "features",
+    "lang",
+    "frequency",
+    "priority",
+    "source"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "headword": {
+      "type": "string",
+      "minLength": 1,
+      "description": "The natural-language word (archive NLW field), without the [brackets]."
+    },
+    "id": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "The entry's primary key (archive ID field). One NLW may hold several IDs, one per sense."
+    },
+    "uw": {
+      "type": "string",
+      "minLength": 1,
+      "description": "The Universal Word (archive UW field), a UCL string or a UCN numeric code, kept exactly as the archive writes it. Empty-UW entries (e.g. punctuation) are out of scope for this schema's minLength; revisit if one is imported."
+    },
+    "features": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "type": "string"
+      },
+      "description": "The feature list (archive FEATURE LIST field) as attribute-value pairs, e.g. LEX, POS, LST, PAR, FRA. Values come from tagset.yaml; this schema does not itself check tagset membership (tools/validate does)."
+    },
+    "lang": {
+      "type": "string",
+      "pattern": "^[a-z]{2,3}$",
+      "description": "Archive: two-letter (FLG, e.g. af, en). The importer translates to iso3 for the store folder name; whether this field itself is rewritten to iso3 is open, see docs/factory/store-schema.md."
+    },
+    "frequency": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 255,
+      "description": "Archive FRE field. Used for analysis: which NL word to prefer for a surface form."
+    },
+    "priority": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 255,
+      "description": "Archive PRI field. Used for generation: which NL word to prefer for a UW."
+    },
+    "source": {
+      "$ref": "#/$defs/source"
+    }
+  },
+  "$defs": {
+    "source": {
+      "type": "object",
+      "required": [
+        "archive_path",
+        "line"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "archive_path": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Path under data/archive/ the record was read from."
+        },
+        "line": {
+          "type": [
+            "integer",
+            "string"
+          ],
+          "description": "Line number in archive_path, or a descriptive locator (e.g. a paradigm or frame catalogue number) when the archive export has no per-line grain."
+        }
+      }
+    }
+  }
+}

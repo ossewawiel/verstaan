@@ -2,7 +2,7 @@
 issue: 13
 title: "Write the canonical data model as a schema"
 milestone: M2
-status: open
+status: in-progress
 depends_on: [12]
 agent: implementer
 agents: [implementer, docs-writer]
@@ -10,7 +10,7 @@ model: sonnet
 effort: medium
 checkpoint: null
 commit: null
-worktree: null
+worktree: .worktrees/m2-store
 github_issue: 222
 ---
 ## What
@@ -76,6 +76,6 @@ rule-author, not resolved here.
 
 ## Done when
 
-- [ ] Three schema files exist under `tools/schema/` and validate the worked examples above.
-- [ ] `docs/factory/store-schema.md` exists with every field marked, `none` rows cited.
-- [ ] `pytest tools/schema/test_schema.py` passes.
+- [x] Three schema files exist under `tools/schema/` and validate the worked examples above.
+- [x] `docs/factory/store-schema.md` exists with every field marked, `none` rows cited.
+- [x] `pytest tools/schema/test_schema.py` passes.
