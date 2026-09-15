@@ -5,6 +5,6 @@ Last completed:  #164 — The console looks like a CIC and reports like a quest 
                  commit 303bfa9
 Next up:         #26 — The test table is the test: a golden loader runs every row, and a held-out
                  slice runs only at the gate (M3)
-Branch / PR:     m2-store, https://github.com/ossewawiel/verstaan.git, 0 files dirty, gate stamp
-                 pending for the merge commit
+Branch / PR:     main, https://github.com/ossewawiel/verstaan.git, 0 files dirty, no gate stamp
+                 for 7d5600f
 Resume with:     /factory-run 26
