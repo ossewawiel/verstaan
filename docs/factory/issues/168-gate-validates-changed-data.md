@@ -44,6 +44,11 @@ present failure, because it looks like coverage. The gate needs the files this b
 *against its merge base*, so the mode this quest adds compares against a base ref and the
 existing working-tree behaviour stays available for a local run.
 
+A second thing will bite. `gate.yml`'s build job checks out at line 126 with no `fetch-depth`,
+so `actions/checkout` clones one commit. A merge base against `origin/main` cannot resolve in
+that tree, and the base-ref mode will either error or silently fall back to nothing. The job
+needs the history fetched, the way the job at line 352 already asks for `fetch-depth: 0`.
+
 Checkpoint 4: this changes the merge path.
 
 ## Acceptance criteria
