@@ -51,6 +51,17 @@ context, dialect, tier, runtime tables, generated tables, trace, partial.
   split out. Schemas: `tools/validate/schema/`, owned by `tools/validate`.
 - Every record keeps `source`. Losing provenance is a validation error.
 - Unparseable lines go to `data/languages/<iso3>/_unparsed.txt` with the reason. Never dropped silently.
+- `tools/importer/test_dictionary.py`, `test_grammar.py`, `test_corpus.py` and `test_tagset.py`
+  read fixture-sized copies of the real archive under `tests/fixtures/archive/`, not
+  `data/archive/` itself (issue 166: the real English AD/GD zips took 780s to import and blew the
+  gate's 15-minute build cap). `tests/fixtures/archive/manifest.jsonl` names the source zip,
+  licence, retrieval date and line range for every fixture file. Proving a full import against the
+  real archive is an owner-run step, not part of the gate: run
+  `python -m tools.importer.dictionary --iso3 <afr|eng> --ad <zip> --gd <zip>` (and the
+  `tools.importer.grammar`/`corpus`/`tagset` equivalents) against `data/archive/`, writing to a
+  scratch `--store-root`, then diff that output against the committed `data/languages/` tree. Run
+  this after `data/archive/` changes for afr or eng, or after an importer change the fixtures do
+  not exercise.
 
 ### 3.3 Store (`data/languages/<iso3>/`)
 

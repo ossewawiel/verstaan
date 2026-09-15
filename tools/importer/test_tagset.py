@@ -1,13 +1,16 @@
 # SPDX-License-Identifier: MPL-2.0
 """tools/importer/tagset.py: issue 16.
 
-Runs the real importer against the real global tagset export this session found under
-`data/archive/exports/export_tagset.php` (SPEC.md §3.1 wrote it; nothing here re-derives an
-expected value from this importer's own output -- docs/standards/testing.md). Every literal value
-asserted below (`RLT`, `FOR`, `NEO`, `LOA`, `TXTA`, `NOUA`, `X`, `XXX` and their meanings) was read
-directly off the raw export bytes with a throwaway script before this file was written, and cross-
-checked against `docs/unl-reference/formats/tagset.md`'s "Where the export adds tags the wiki tree
-does not define" table, not derived by running `tools.importer.tagset` and trusting its output.
+Runs the real importer against `tests/fixtures/archive/exports/export_tagset.php` (issue 166), a
+whole-file copy of the real global tagset export this session found under
+`data/archive/exports/export_tagset.php`: the real file is already small (58 KB), so the fixture
+carries every tag, not a carved subset (SPEC.md §3.1 wrote the real file; nothing here re-derives
+an expected value from this importer's own output -- docs/standards/testing.md). Every literal
+value asserted below (`RLT`, `FOR`, `NEO`, `LOA`, `TXTA`, `NOUA`, `X`, `XXX` and their meanings)
+was read directly off the raw export bytes with a throwaway script before this file was written,
+and cross-checked against `docs/unl-reference/formats/tagset.md`'s "Where the export adds tags the
+wiki tree does not define" table, not derived by running `tools.importer.tagset` and trusting its
+output. `tests/fixtures/archive/manifest.jsonl` names the source path and licence.
 """
 
 from __future__ import annotations
@@ -28,15 +31,10 @@ from tools.importer.tagset import (
 )
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
-ARCHIVE_ROOT = REPO_ROOT / "data" / "archive"
+ARCHIVE_ROOT = REPO_ROOT / "tests" / "fixtures" / "archive"
 SCHEMA_PATH = REPO_ROOT / "tools" / "validate" / "schema" / "tagset-entry.schema.json"
 
 TAGSET_PATH = ARCHIVE_ROOT / TAGSET_EXPORT
-
-pytestmark = pytest.mark.skipif(
-    not TAGSET_PATH.is_file(),
-    reason="exports/export_tagset.php not present under data/archive/ in this tree",
-)
 
 
 @dataclass

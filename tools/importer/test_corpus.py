@@ -1,12 +1,15 @@
 # SPDX-License-Identifier: MPL-2.0
 """tools/importer/corpus.py: issue 16.
 
-Runs the real importer against the real `ugoa1` corpus exports this session found under
-`data/archive/exports/corpus/ugoa1/` (SPEC.md §3.1 wrote them; nothing here re-derives an expected
-value from this importer's own output -- docs/standards/testing.md). Every literal value asserted
-below (sentence counts, sentence text, UNL text, source line numbers) was read directly off the
-raw export bytes with a throwaway script before this file was written, never derived by running
-`tools.importer.corpus` and trusting its own output.
+Runs the real importer against `tests/fixtures/archive/` (issue 166), a whole-file copy of the
+real `ugoa1` corpus exports this session found under `data/archive/exports/corpus/ugoa1/`: each
+file is already small (60 KB, 14 physical lines carrying 248 `[S:ID]` blocks), so the fixture
+carries every sentence, not a carved subset (SPEC.md §3.1 wrote the real files; nothing here
+re-derives an expected value from this importer's own output -- docs/standards/testing.md). Every
+literal value asserted below (sentence counts, sentence text, UNL text, source line numbers) was
+read directly off the raw export bytes with a throwaway script before this file was written, never
+derived by running `tools.importer.corpus` and trusting its own output.
+`tests/fixtures/archive/manifest.jsonl` names the source path and licence for every fixture file.
 
 **Known gap, flagged rather than guessed around**: the corpus importer picks the first candidate
 translation per source sentence ID (module docstring, `tools/importer/corpus.py`), so a corpus
@@ -32,27 +35,7 @@ from tools.importer.corpus import (
 )
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
-ARCHIVE_ROOT = REPO_ROOT / "data" / "archive"
-
-AFR_UGOA1 = (
-    ARCHIVE_ROOT
-    / "exports"
-    / "corpus"
-    / "ugoa1"
-    / "export_corpus.php__project_ugoa1_lang_af_unl_ucl"
-)
-ENG_UGOA1 = (
-    ARCHIVE_ROOT
-    / "exports"
-    / "corpus"
-    / "ugoa1"
-    / "export_corpus.php__project_ugoa1_lang_en_unl_ucl"
-)
-
-pytestmark = pytest.mark.skipif(
-    not (AFR_UGOA1.is_file() and ENG_UGOA1.is_file()),
-    reason="ugoa1 af/en corpus exports not present under data/archive/ in this tree",
-)
+ARCHIVE_ROOT = REPO_ROOT / "tests" / "fixtures" / "archive"
 
 
 @dataclass
