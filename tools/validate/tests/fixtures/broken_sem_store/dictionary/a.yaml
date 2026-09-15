@@ -1,0 +1,15 @@
+# Licence: CC BY-SA 4.0. Source: invented fixture for tools/validate/tests (issue 17), not the
+# UNL Archive.
+# Deliberately broken: the SEM=REL vs SEM=RLT fixture from docs/unl-reference/formats/tagset.md,
+# "Where the export adds tags the wiki tree does not define". The wiki spells the nominal class
+# "relation" as REL; the live export (and this fixture's own tagset.yaml, copied from it) spells
+# it RLT. REL does not appear in the export at all, so tools.validate.store.check_feature_values
+# must fail on it.
+- headword: aunt
+  id: 1
+  uw: "123456"
+  features: {LEX: N, POS: NOU, SEM: REL}
+  lang: eng
+  frequency: 0
+  priority: 0
+  source: {archive_path: exports/eng/export_cc.php, line: 1}

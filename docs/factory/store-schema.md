@@ -154,3 +154,79 @@ Both items issue 13 flagged were decided by the owner on 2026-09-14.
   validator is the schema's only runtime consumer; the importers produce store files and do not
   load the schema. The test lives with the validator's other tests,
   `tools/validate/tests/test_schema.py`. No ADR: a folder of JSON Schema files is not a package.
+
+## Feature values the validator does not check
+
+`tools/validate/store.py`'s `check_feature_values` (issue 17) checks that every dictionary
+entry's `features` pair, and every grammar rule's `lhs`/`rhs` attribute=value pair, resolves to a
+row in `tagset.yaml`. Seven attributes are exempt: `LEMMA`, `BF`, `PAR`, `FRA`, `SFR`, `FLX`,
+`DIGIT`.
+
+Decided (this issue, 2026-09-15): running the naive check against the real `afr` store first —
+checking every `features` value, no exceptions — flagged 30,591 hits on `LEMMA` alone, plus tens
+of thousands more on `BF`, `PAR` and `FRA`. Reading the flagged values shows why: `LEMMA` and `BF`
+hold the entry's own lemma or base-form text (`aunt`, `maag`), not a tag; `PAR`, `FRA` and `SFR`
+hold a paradigm, frame or subframe catalogue number (`M17`, `Y12`, `K702`) the grammar defines,
+not a member of the flat, closed tagset. `tagset.yaml`'s own entries for `PAR`, `FRA` and `SFR`
+say as much — "to be defined in the grammar" — and `LEMMA` is not even a `tagset.yaml` key, the
+plainest signal it is not a categorical feature at all. `FLX` (an inflection-rule reference) and
+`DIGIT` (a literal digit string) are the same shape. Checking these seven against `tagset.yaml`
+would flag every real lemma, base form and catalogue reference as an "unresolved" value; excluding
+them by name, not by a syntactic heuristic (a mnemonic-shaped value like `M2` or `K702` cannot be
+told apart from a real tag by shape alone), keeps the check aimed at the class of bug it exists to
+catch — a mistyped or wiki-sourced tag mnemonic like `POS=NOUN` or `SEM=REL`.
+
+The same run also surfaced a handful of dictionary entries (`data/languages/afr/dictionary/b.yaml`
+and `d.yaml`) whose `features` map carries extra keys taken verbatim from a multi-word headword's
+comma-separated alternates (e.g. `Bok, bok, staan styf` produces feature keys `bok` and
+`staan styf`, each mapping to itself). These are not exempted: they are a real importer artifact
+from issue 14, out of scope for this issue to fix, and `check_feature_values` correctly reports
+them as unresolved attributes.
+
+## Rule coverage: the `rules` field and an empty tests/ directory
+
+`check_rule_coverage` (issue 17) checks that every grammar rule's `id` appears in at least one
+`tests/<name>.yaml` entry naming it. Two things this needs are not yet fixed anywhere else:
+
+- **The field name.** `SPEC.md` §3.3 and `tools/validate/schema/store-layout.schema.json`'s
+  `testsFile` def fix only five keys for a test row — `input`, `expected`, `direction`, `tier`,
+  `register` — because no rule-author or test-writer pass has run yet
+  (`tools/fixtures/languages/tests/basic.yaml`, the one example that exists, predates issue 13's
+  real schemas and carries no rule-coverage field either). Decided (this issue): a test row names
+  the rules it exercises in a `rules` field, e.g. `rules: [xxa-ana-01, M2]`. This is additive, not
+  a change to the five required keys, so a test-writer filling it in later needs no migration.
+- **A store with no `tests/` directory at all.** This is the real case for both `afr` and `eng`
+  today — issue 16 ends before a test-writer pass starts. Decided: an absent or empty `tests/`
+  directory is not a reason to skip the check. Every rule counts as uncovered, and the report
+  prints that count as a warning, not a failure — exactly the number `SPEC.md`'s M3 gate (where
+  coverage becomes an error) needs as its starting point.
+
+## Two real archive gaps this check found
+
+Running `check_feature_values` against the real `afr` store (2026-09-15) found two more
+tagset/export disagreements of the same shape as `SEM=REL`/`SEM=RLT` (`docs/unl-reference/formats
+/tagset.md`), neither fixed by this issue (it validates the store; it does not edit it):
+
+- `SEM=ATT` appears in real `afr` dictionary entries (997 of them); the live tagset has no `ATT`
+  tag, only `ATR` ("attribute"). Almost certainly the same wiki-vs-export mismatch pattern as
+  `REL`/`RLT`, one letter off.
+- `POS=CCJ` appears in `afr/grammar/generation.yaml` (rules 33 and 34, "coordinating
+  conjunction"); `CCJ` does not appear in `exports/export_tagset.php` at all.
+
+## `python -m tools.validate --all` exit code on the real stores (known M2 finding)
+
+`--all` exits 1 against the real `afr`/`eng` stores, not 0: schema errors are 0 for both, but
+`check_feature_values` and `check_uw_references` are real errors at M2 (only `check_rule_coverage`
+is a warning, per `SPEC.md` §3.3), and the real archive-derived data has genuine defects of both
+kinds. Counts from the 2026-09-15 run:
+
+| | schema | feature-value | UW | uncovered rules (warning) |
+|---|---|---|---|---|
+| `afr` | 0 | 1234 | 2 | 431 |
+| `eng` | 0 | 47679 | 324 | 442 |
+
+This is the validator doing its job against data issues 14 and 16 imported, not a defect in
+issue 17 itself; the M2 gate was stamped over this nonzero exit on the owner's call (2026-09-15),
+treating `--all` as a reporting step here rather than a blocking one until a later issue fixes the
+underlying `afr`/`eng` data (the `SEM=ATT`/`POS=CCJ` gaps above are two confirmed examples; the
+bulk of the 1234/47679 figure is not yet triaged tag-by-tag).

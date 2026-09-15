@@ -1,0 +1,10 @@
+# Licence: CC BY-SA 4.0. Source: invented fixture for tools/validate/tests (issue 17), not the
+# UNL Archive.
+- headword: aunt
+  id: 1
+  uw: "123456"
+  features: {LEX: N, POS: NOU, SEM: RLT}
+  lang: eng
+  frequency: 0
+  priority: 0
+  source: {archive_path: exports/eng/export_cc.php, line: 1}
