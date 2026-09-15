@@ -11,7 +11,7 @@ effort: medium
 checkpoint: 4
 commit: null
 worktree: null
-github_issue: null
+github_issue: 232
 ---
 
 ## What
@@ -62,6 +62,7 @@ quest for that reason.
 - `docs/factory/PLAN.md` §7's Branch column reads `m<K>-NN-<slug>` per issue. `docs/factory/playbook.md`
   step 2, `.claude/commands/gate.md`, `.github/PULL_REQUEST_TEMPLATE.md` and the comment in
   `tools/factory/hooks/require_gate.sh` no longer speak of a milestone branch or a draft.
+  `CLAUDE.md`'s non-negotiable reads "its commit is on `main`", not "on the milestone branch".
 - `docs/factory/issues/18-m2-close-out.md` no longer merges `m2-store` or removes its tree; it
   tags `main` with `m2` and writes the M3 issue files.
 - `docs/adr/0012-one-pull-request-per-issue.md` records the decision: one branch and one
@@ -94,8 +95,8 @@ quest for that reason.
       `gh pr merge --merge --delete-branch` as the merge.
 - [ ] `/factory-status` writes `STATE.md` only in the root tree; the merge path commits it on
       `main` after the fast-forward.
-- [ ] `git-workflow.md`, `PLAN.md` §7's Branch column, `playbook.md`, `gate.md`, the PR template
-      and the `require_gate.sh` comment agree with the skill.
+- [ ] `git-workflow.md`, `PLAN.md` §7's Branch column, `playbook.md`, `gate.md`, the PR template,
+      `CLAUDE.md` and the `require_gate.sh` comment agree with the skill.
 - [ ] Issue 18's close-out merges nothing and tags `main`.
 - [ ] One ADR records the decision.
 - [ ] Pull request #228 merged with a merge commit, `m2-store` tree and branch removed, the
