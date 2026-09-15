@@ -3,7 +3,7 @@ issue: 17
 title: "Build the store validator"
 milestone: M2
 status: open
-depends_on: [14, 15, 16]
+depends_on: [14, 15, 16, 165]
 agent: implementer
 agents: [implementer, test-writer]
 model: sonnet
@@ -14,6 +14,9 @@ worktree: null
 github_issue: 226
 ---
 ## What
+
+This issue waits on side quest 165: issues 14 to 16 sit on `m2-store`, and 165 merges that
+branch so this one can branch from `main` under the one-pull-request-per-issue rule.
 
 `tools/validate` (a `python -m tools.validate` CLI, per `SPEC.md` §5's gate table) checks a
 language store against `tools/schema/` (issue 13) and against the store's own cross-references,
