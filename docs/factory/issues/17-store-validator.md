@@ -2,15 +2,15 @@
 issue: 17
 title: "Build the store validator"
 milestone: M2
-status: in-progress
+status: done
 depends_on: [14, 15, 16, 165]
 agent: implementer
 agents: [implementer, test-writer]
 model: sonnet
 effort: medium
 checkpoint: null
-commit: null
-worktree: .worktrees/m2-17-store-validator
+commit: 74b3a58
+worktree: null
 github_issue: 226
 ---
 ## What
