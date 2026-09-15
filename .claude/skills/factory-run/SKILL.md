@@ -113,8 +113,8 @@ before the body (playbook "The quest giver"):
   first, main or side. If this side quest is what a main quest is waiting for, put this number in
   that main quest's `depends_on` as well, so the main quest's card shows the block. The console
   draws "blocked by" and "blocks" from `depends_on` and nothing else; a cross-line block is marked
-  on both cards. `python -m tools.validate --all` refuses a number that names no quest, so the
-  gate catches a typo here.
+  on both cards. `python -m tools.validate --changed` refuses a number that names no quest the
+  moment the quest file itself is in the diff, so the gate catches a typo here.
 
 Every quest carries its loadout, `agent`, `model` and `effort` (issue 103); the same validator
 refuses one without.

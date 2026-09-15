@@ -67,8 +67,9 @@ in the same change and say so in its `## What` with one sentence.
 
 ## 4. Prove the file, then hand over
 
-1. `python -m tools.validate --all` exits 0. It refuses a missing loadout, a `depends_on` that
-   names no quest, and a self-dependency; fix the file, never the validator.
+1. `python -m tools.validate --changed` exits 0. It refuses a missing loadout, a `depends_on`
+   that names no quest, and a self-dependency, the moment the new or edited quest file shows up
+   in `git status`; fix the file, never the validator.
 2. `node tools/console/src/generate.mjs` so the file console shows the quest; the web console
    sees the file on its own.
 3. The file reaches `main` before the work starts: `/factory-run` reads the issue file from

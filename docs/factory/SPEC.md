@@ -130,7 +130,13 @@ every rule has at least one test sentence that exercises it (warning at M2, erro
 |---|---|---|
 | Auto-fix | `clang-format -i`, `ruff format` | never block |
 | Fast | `cmake --build build --target verstaan_core && ctest --test-dir build -L fast` and `python -m tools.validate --changed` | pass before the session may stop |
-| Full | `/gate`: fast + `ctest` all + `clang-tidy` + equivalence + all tiers configure and build + `python -m tools.validate --all` + pytest | pass before a PR; writes the stamp |
+| Full | `/gate`: fast + `ctest` all + `clang-tidy` + equivalence + all tiers configure and build + `python -m tools.validate --changed --base origin/main` + pytest | pass before a PR; writes the stamp |
+
+`--changed` finds the files a branch touched, then validates every store one of those files sits
+in, whole — touching one file in a store validates every file beside it, not the touched file
+alone. `--all`, the full sweep of every store, is not a gate step. It is run by hand for
+deliberate data work; the archive is CC BY-SA data, not generated code, and is not a merge
+blocker for a branch that never touches it (issue 168).
 
 Never pipe a gate into `head`, `tail` or `grep` and then read the exit code.
 Prove a gate fails before trusting it (`docs/standards/testing.md`).

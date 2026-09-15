@@ -123,7 +123,11 @@ jobs:
     runs-on: ${{ matrix.os }}
     timeout-minutes: 15
     steps:
+      # fetch-depth: 0, not the default single-commit clone: the data step below diffs against
+      # the PR's recorded base SHA (issue 168), and a merge base cannot resolve in a shallow clone.
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - uses: actions/setup-python@v5
         with:
@@ -296,11 +300,21 @@ jobs:
           npx playwright install --with-deps chromium
           npm run test:e2e
 
-      - name: Validate changed/all data
+      # Only the data files this branch changed since it diverged from origin/main -- never a
+      # full sweep of the archive (issue 168). The archive is data, CC BY-SA, and out of scope
+      # for every side quest that does not touch it; --all stays in the CLI for deliberate data
+      # work (quest #169) but is run by no workflow and no gate step.
+      #
+      # Runs on pull_request only. On a push to main, HEAD is already origin/main, so the
+      # three-dot diff against origin/main is always empty and this step would go green having
+      # checked nothing -- a step that always passes is not coverage. The PR run is the one that
+      # matters: it diffs the branch against the ref it recorded as its base (below).
+      - name: Validate changed data
+        if: github.event_name == 'pull_request'
         shell: bash
         run: |
           if [ -d tools/validate ]; then
-            python -m tools.validate --all
+            python -m tools.validate --changed --base "${{ github.event.pull_request.base.sha }}"
           else
             echo "tools/validate does not exist yet (issue 3) -- skipping"
           fi

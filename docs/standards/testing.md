@@ -17,7 +17,14 @@ exactly this for the whole ladder.
 | Equivalence, runtime vs generated | `tests/equivalence/` | `equivalence` | `/gate` |
 | Tier budget | `tests/tier/` | `tier` | `/gate`, M4 onward |
 | Tooling | `tools/*/tests/` | pytest | Stop hook for changed tools, `/gate` all |
-| Data validation | `tools/validate` | — | Stop hook for changed files, `/gate` all |
+| Data validation | `tools/validate` | — | Stop hook for changed files, `/gate` for what the branch changed against `origin/main` |
+
+`--changed` validates every store a changed file sits in, whole, not the changed file alone: it
+maps each file the branch touched to its `data/languages/<iso3>/` store, then runs the full store
+check on it. The archive is data, not generated code: a branch that never touches
+`data/languages/` merges without the archive's own errors blocking it (issue 168). `--all`, the
+full sweep of every store, runs by hand for deliberate data work, never in a gate step or a
+workflow.
 
 ## Rules
 

@@ -46,9 +46,9 @@ Rules in full at `SPEC.md` §5. What actually runs, proven in issue 01:
 | Tier | Hook | Trigger | Must |
 |---|---|---|---|
 | Auto-fix | `.claude/hooks/fast-format.sh` | `PostToolUse` on `Edit`\|`Write`\|`MultiEdit` | Format the one file just written with `clang-format` or `ruff format`; never block. Prints to stderr, does not fail, when the formatter is missing. |
-| Fast | `.claude/hooks/gate-fast.sh` | `Stop` | Build `verstaan_core`, build the fast test binaries, run `ctest -L fast`, validate changed data, run pytest for changed tools. Exit 2 blocks the stop and shows the failing output. Logs every failure to `lessons.jsonl`. Checks `stop_hook_active` first so a failure can never loop the Stop hook. |
+| Fast | `.claude/hooks/gate-fast.sh` | `Stop` | Build `verstaan_core`, build the fast test binaries, run `ctest -L fast`, validate every store a changed data file sits in, whole, run pytest for changed tools. Exit 2 blocks the stop and shows the failing output. Logs every failure to `lessons.jsonl`. Checks `stop_hook_active` first so a failure can never loop the Stop hook. |
 | Gate stamp | `.claude/hooks/require-gate.sh` | `PreToolUse` on `Bash`\|`PowerShell` | Refuse `git merge`, `gh pr create` (non-draft) and `gh pr merge` unless the gate stamp matches `HEAD` on a clean tree. `gh pr create --draft` is exempt (a draft cannot merge on its own); nothing in this factory opens one any more, but the hook still allows it. The stamp is written only by `/gate`. |
-| Full | `/gate` | manual, before a PR | Fast + `ctest` all labels + `clang-tidy` + equivalence + all tiers configure and build + `python -m tools.validate --all` + pytest all. Writes the gate stamp. |
+| Full | `/gate` | manual, before a PR | Fast + `ctest` all labels + `clang-tidy` + equivalence + all tiers configure and build + `python -m tools.validate --changed --base origin/main` + pytest all. Writes the gate stamp. |
 
 ## A session, start to finish
 

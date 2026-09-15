@@ -5,6 +5,14 @@
 run the store checks (issue 17, SPEC.md §3.3) grouped by which language store each file falls
 under. `--lang <iso3>` runs the same checks against one store directly and prints its report.
 
+`--changed` alone reads `git status --porcelain`, the uncommitted working tree -- right for a
+local run, empty (and so a silent no-op) for a CI runner or any branch whose work is already
+committed. `--changed --base <ref>` reads `git diff --name-only <ref>...HEAD` instead: the files
+committed since the branch diverged from `ref`. That is the mode the gate and CI use (issue 168):
+the archive is 69 tracked files and about 49,000 rows across two stores, and a branch that never
+touches `data/languages/` must not have to pay for the whole archive to merge. `--all` still
+validates every store; it stays in the CLI for deliberate data work, but no gate step calls it.
+
 `--licences` is also real: it checks the SPDX and CC BY-SA headers issue 5 requires, plus
 `apps/cli/NOTICE`. It is a fourth, independent mode -- it has nothing to do with `data/languages/`.
 """
@@ -16,6 +24,7 @@ import re
 import subprocess
 import sys
 from collections.abc import Callable, Sequence
+from functools import partial
 from pathlib import Path
 
 from tools.validate import __version__
@@ -71,6 +80,37 @@ def git_changed_paths(repo_root: Path) -> list[str]:
     for line in result.stdout.splitlines():
         # Porcelain format: two status columns, one space, then the path.
         path = line[3:].strip()
+        if path:
+            paths.append(path.replace("\\", "/"))
+    return paths
+
+
+def git_diff_against_base(repo_root: Path, base_ref: str) -> list[str]:
+    """Paths (repo-relative, forward slashes) this branch changed since it diverged from
+    `base_ref` -- `git diff --name-only <base_ref>...HEAD`, the three-dot form that diffs
+    against the merge base rather than `base_ref`'s tip. Unlike `git_changed_paths`, this reads
+    committed history, not the uncommitted working tree, so it is what a CI runner (nothing
+    uncommitted) or an already-committed branch needs (issue 168). This does not raise on an
+    empty diff -- a shallow clone where `base_ref` still resolves and equals `HEAD` legitimately
+    produces no changed paths, and `[]` is the correct answer there. What it does raise on is a
+    resolution failure: `git diff` itself failing, most often because `base_ref` cannot be found
+    at all (too little history fetched, or the ref does not exist). That failure must not read as
+    "nothing changed" and let the gate pass having checked nothing (issue 168's stated trap)."""
+    result = subprocess.run(
+        ["git", "diff", "--name-only", "--no-renames", f"{base_ref}...HEAD"],
+        cwd=repo_root,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    if result.returncode != 0:
+        raise RuntimeError(
+            f"git diff against base ref '{base_ref}' failed (is the clone shallow? "
+            f"fetch-depth: 0 is needed to resolve a merge base): {result.stderr.strip()}"
+        )
+    paths = []
+    for line in result.stdout.splitlines():
+        path = line.strip()
         if path:
             paths.append(path.replace("\\", "/"))
     return paths
@@ -331,8 +371,21 @@ def run(
             print(error, file=sys.stderr)
         return 1 if errors else 0
 
+    # mode == "changed": the only files this quest lets a merge depend on (issue 168) are the
+    # ones the branch itself touched under data/languages/ -- never the whole archive.
+    all_changed = changed_paths(repo_root)
     files = list_changed_language_files(repo_root, changed_paths)
     errors = validate_files(files)
+    # The two issue-file checks (issue 103, issue 104) read docs/factory/issues/, never
+    # data/languages/, so they are not part of the archive sweep above and run only when the
+    # diff itself names an issue file. Unconditional here would break the Stop hook
+    # (tools/factory/hooks/gate_fast.sh runs --changed on every Stop): a session writing C++
+    # would get blocked by an unrelated, half-written quest file it never touched. Gating on the
+    # diff keeps the CI coverage this pair was added for -- a quest merged without its loadout or
+    # with a dangling dependency still fails -- while leaving an engine-only session alone.
+    if any("docs/factory/issues/" in path for path in all_changed):
+        errors += check_issue_loadouts(repo_root)
+        errors += check_issue_dependencies(repo_root)
     for error in errors:
         print(error, file=sys.stderr)
     return 1 if errors else 0
@@ -372,6 +425,14 @@ def build_parser() -> argparse.ArgumentParser:
         metavar="ISO3",
         help="validate one language store, e.g. --lang afr (issue 17)",
     )
+    parser.add_argument(
+        "--base",
+        metavar="REF",
+        help=(
+            "with --changed, diff committed history against this ref's merge base instead of "
+            "the uncommitted working tree, e.g. --base origin/main (issue 168, the CI gate)"
+        ),
+    )
     return parser
 
 
@@ -380,7 +441,13 @@ def main(argv: Sequence[str] | None = None) -> int:
     parser = build_parser()
     args = parser.parse_args(argv)
     mode = "lang" if args.lang else args.mode
-    return run(mode, find_repo_root(), lang=args.lang)
+    if args.base and mode != "changed":
+        parser.error("--base only applies to --changed")
+    changed_paths: Callable[[Path], list[str]] = git_changed_paths
+    if args.base:
+        changed_paths = partial(git_diff_against_base, base_ref=args.base)
+
+    return run(mode, find_repo_root(), changed_paths=changed_paths, lang=args.lang)
 
 
 if __name__ == "__main__":
