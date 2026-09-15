@@ -2,7 +2,8 @@
 
 Last completed:  #165 — Every issue gets its own branch, pull request and gate run (Side),
                  commit 8ac4da4
-Next up:         #18 — M2 close-out: gate, verifier, tag m2 (M2)
+Next up:         #166 — Fixture-sized importer tests: the gate stops importing the real
+                 archive (Side); #18 waits on it
 Branch / PR:     main, https://github.com/ossewawiel/verstaan.git, 0 files dirty, no gate stamp
-                 for c6df94c
-Resume with:     /factory-run 18
+                 for 0d1d654
+Resume with:     /factory-run 166
