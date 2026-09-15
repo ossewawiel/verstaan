@@ -251,7 +251,7 @@ jobs:
         shell: bash
         run: |
           if git ls-files 'tools/**/test_*.py' 'tools/**/*_test.py' | grep -q .; then
-            python -m pytest tools/ -q
+            python -m pytest tools/ -q --durations=15
           else
             echo "no Python tests exist on this ref yet -- skipping pytest"
           fi

@@ -1,15 +1,18 @@
 # SPDX-License-Identifier: MPL-2.0
 """tools/importer/dictionary.py: issue 14.
 
-Runs the real importer against the real archive zips this session picked (see the session
-report): `af_ana_u_c_ucl.zip` / `af_gen_u_c_ucl.zip` for `afr`, `en_ana_u_c_ucl.zip` /
-`en_gen_u_c_ucl.zip` for `eng`. Not the `_ucn`-named zips the issue text names: this importer
-found, by inspecting the raw bytes (never by running its own parser on them and trusting the
-result -- docs/standards/testing.md), that the archive's `_ucl`-named export holds the opaque
-UCN numeric code the schema wants in `uw`, and the matching `_ucn`-named export holds the
-human-readable UCL string instead. Every literal value asserted below (`400068368`, `400249878`,
-...) was read directly out of the zip bytes with a throwaway script before this file was
-written, never derived by running `tools.importer.dictionary` and trusting its own output.
+Runs the real importer against fixture-sized AD/GD zips under `tests/fixtures/archive/` (issue
+166): a few hundred lines carved verbatim from the real `af_ana_u_c_ucl.zip` / `af_gen_u_c_ucl.zip`
+(`afr`) and `en_ana_u_c_ucl.zip` / `en_gen_u_c_ucl.zip` (`eng`) exports, never the full 6 MB `eng`
+zips (issue 166: those took 780s to import and blew the gate's 15-minute build cap). Not the
+`_ucn`-named zips the issue text names: this importer found, by inspecting the raw bytes (never by
+running its own parser on them and trusting the result -- docs/standards/testing.md), that the
+archive's `_ucl`-named export holds the opaque UCN numeric code the schema wants in `uw`, and the
+matching `_ucn`-named export holds the human-readable UCL string instead. Every literal value
+asserted below (`400068368`, `400249878`, ...) was read directly out of the real zip bytes with a
+throwaway script before the fixtures were carved, never derived by running
+`tools.importer.dictionary` and trusting its own output. `tests/fixtures/archive/manifest.jsonl`
+names the exact source zip, member, line and licence for every fixture line.
 
 **Known gap, reported rather than guessed around**: the issue's acceptance criteria ask for an
 `aboard` entry with `id: 516110, uw: "534001"`, matching dictionary.md's English worked example.
@@ -21,9 +24,17 @@ sense (adverb, not preposition) under different ids. `test_english_aboard_entry_
 below asserts the values this importer can actually produce in scope, independently confirmed
 against the raw zip bytes; it is not the same entry dictionary.md's English worked example names.
 
-Every shard is read off disk exactly once per language (`yaml.safe_load` over ~30k afr / ~576k
-eng entries is the expensive step, not parsing or importing): the `afr_store`/`eng_store`
-fixtures are module-scoped and every test below shares their one in-memory result.
+**Second known gap, issue 166**: the acceptance criteria's YAML-ambiguous-headword list includes
+`Off` (title case). No archived English AD/GD export (`_u_c_ucl`, `_a_c_ucl` or the `_e_`-suffixed
+variants) carries a headword `Off` -- checked across every zip under `data/archive/exports/eng/`
+before the fixture was carved. `test_yaml_scalar_quotes_a_headword_that_is_a_yaml_bool_or_null_word`
+below still covers `Off` with a hand-built `format_entry` input (unit-level, no archive file), the
+same way it already covered every headword in that list before this fixture existed; the fixture's
+own AD/GD content carries the seven headwords the real archive does have (`off`, `no`, `on`, `yes`,
+`null`, `true`, `false`), not `Off`.
+
+Every shard is read off the fixture-sized store exactly once per language: the `afr_store`/
+`eng_store` fixtures are module-scoped and every test below shares their one in-memory result.
 """
 
 from __future__ import annotations
@@ -46,7 +57,7 @@ from tools.importer.dictionary import (
 )
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
-ARCHIVE_ROOT = REPO_ROOT / "data" / "archive"
+ARCHIVE_ROOT = REPO_ROOT / "tests" / "fixtures" / "archive"
 SCHEMA_PATH = REPO_ROOT / "tools" / "validate" / "schema" / "dictionary-entry.schema.json"
 FIXTURES_DIR = Path(__file__).parent / "fixtures"
 
@@ -54,11 +65,6 @@ AFR_AD = ARCHIVE_ROOT / "exports" / "afr" / "af_ana_u_c_ucl.zip"
 AFR_GD = ARCHIVE_ROOT / "exports" / "afr" / "af_gen_u_c_ucl.zip"
 ENG_AD = ARCHIVE_ROOT / "exports" / "eng" / "en_ana_u_c_ucl.zip"
 ENG_GD = ARCHIVE_ROOT / "exports" / "eng" / "en_gen_u_c_ucl.zip"
-
-pytestmark = pytest.mark.skipif(
-    not (AFR_AD.is_file() and AFR_GD.is_file() and ENG_AD.is_file() and ENG_GD.is_file()),
-    reason="afr/eng AD+GD zips not present under data/archive/exports/ in this tree",
-)
 
 
 def _records(path: Path) -> list[dict]:

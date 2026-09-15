@@ -2,7 +2,7 @@
 issue: 166
 title: "Fixture-sized importer tests: the gate stops importing the real archive"
 milestone: Side
-status: open
+status: in-progress
 depends_on: [14, 15, 16]
 agent: implementer
 agents: [implementer]
@@ -10,7 +10,7 @@ model: sonnet
 effort: medium
 checkpoint: null
 commit: null
-worktree: null
+worktree: .worktrees/side-166-fixture-sized-importer-tests
 github_issue: 236
 ---
 ## What

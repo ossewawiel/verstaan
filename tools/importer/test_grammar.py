@@ -1,12 +1,15 @@
 # SPDX-License-Identifier: MPL-2.0
 """tools/importer/grammar.py: issue 15.
 
-Runs the real importer against the real archive files data/archive/ already mirrors for afr and
-eng (SPEC.md §3.1 wrote them; nothing here re-derives an expected value from this importer's own
-output -- docs/standards/testing.md). Every literal value asserted below (rule text, paradigm
-affixation strings, frame bodies) was read directly out of the archive files, or copied verbatim
-from `docs/unl-reference/formats/transformation-grammar.md`, `inflection.md` and
+Runs the real importer against `tests/fixtures/archive/` (issue 166), a whole-file copy of every
+grammar export `import_language` reads for afr and eng: each is already small on the real archive
+(18-269 lines), so the fixture carries every line, not a carved subset. SPEC.md §3.1 wrote the
+real files this mirrors; nothing here re-derives an expected value from this importer's own output
+(docs/standards/testing.md). Every literal value asserted below (rule text, paradigm affixation
+strings, frame bodies) was read directly out of the archive files, or copied verbatim from
+`docs/unl-reference/formats/transformation-grammar.md`, `inflection.md` and
 `subcategorisation.md`'s own worked examples, before this file was written.
+`tests/fixtures/archive/manifest.jsonl` names the source path and licence for every fixture file.
 
 **Known gap, flagged rather than guessed around**: the disambiguation (`D`-rule) line grammar is
 undocumented anywhere under `docs/unl-reference/formats/` (see `tools/importer/grammar.py`'s
@@ -42,11 +45,13 @@ from tools.importer.grammar import (
 )
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
-ARCHIVE_ROOT = REPO_ROOT / "data" / "archive"
+ARCHIVE_ROOT = REPO_ROOT / "tests" / "fixtures" / "archive"
 SCHEMA_PATH = REPO_ROOT / "tools" / "validate" / "schema" / "grammar-rule.schema.json"
 
 GRAMMAR_KINDS = ("analysis", "generation", "inflection", "subcategorisation", "disambiguation")
 
+# Every file `import_language` reads for afr/eng, copied whole into tests/fixtures/archive/ (issue
+# 166): each is already small (18-269 lines) on the real archive, so nothing needed carving.
 REQUIRED_FILES = [
     ARCHIVE_ROOT / "grammars" / "eng_unl_tgrammar.txt",
     ARCHIVE_ROOT / "exports" / "afr" / "47.tgrammar.txt",
@@ -62,11 +67,6 @@ REQUIRED_FILES = [
     ARCHIVE_ROOT / "exports" / "afr" / "44.dgrammar.txt",
     ARCHIVE_ROOT / "exports" / "afr" / "47.dgrammar.txt",
 ]
-
-pytestmark = pytest.mark.skipif(
-    not all(p.is_file() for p in REQUIRED_FILES),
-    reason="afr/eng grammar exports not present under data/archive/ in this tree",
-)
 
 
 @dataclass
