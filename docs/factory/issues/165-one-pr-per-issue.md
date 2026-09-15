@@ -2,14 +2,14 @@
 issue: 165
 title: "Every issue gets its own branch, pull request and gate run"
 milestone: Side
-status: open
+status: done
 depends_on: [113, 115]
 agent: implementer
 agents: [implementer]
 model: sonnet
 effort: medium
 checkpoint: 4
-commit: null
+commit: 8ac4da4
 worktree: null
 github_issue: 232
 ---
@@ -91,15 +91,55 @@ quest for that reason.
 
 ## Done when
 
-- [ ] `factory-run/SKILL.md` steps 5, 6, 8 and 10 describe one shape for every branch, with
+- [x] `factory-run/SKILL.md` steps 5, 6, 8 and 10 describe one shape for every branch, with
       `gh pr merge --merge --delete-branch` as the merge.
-- [ ] `/factory-status` writes `STATE.md` only in the root tree; the merge path commits it on
-      `main` after the fast-forward.
-- [ ] `git-workflow.md`, `PLAN.md` §7's Branch column, `playbook.md`, `gate.md`, the PR template,
-      `CLAUDE.md` and the `require_gate.sh` comment agree with the skill.
-- [ ] Issue 18's close-out merges nothing and tags `main`.
-- [ ] One ADR records the decision.
-- [ ] Pull request #228 merged with a merge commit, `m2-store` tree and branch removed, the
-      verifier's read under `## Verifier`.
-- [ ] `STATE.md` on `main` names #17 next with no caveat paragraph.
-- [ ] `python -m tools.validate --all` exits 0 and the console tests pass.
+- [x] `/factory-status` never writes `STATE.md`; only the merge path commits it on `main` after
+      `git pull --ff-only`, for every branch prefix, not only the milestone close-out.
+- [x] `git-workflow.md`, `PLAN.md` §7's Branch column, `playbook.md`, `gate.md`, the PR template,
+      `CLAUDE.md` and the `require_gate.sh` comment agree with the skill. A checkpoint-4 verifier
+      pass also found and fixed six more files that still described the old shape:
+      `docs/glossary.md`, `docs/factory/README.md`, `.claude/skills/create-map/SKILL.md`,
+      `.claude/skills/quest/SKILL.md`, and comments in `tools/console/src/read.mjs`,
+      `apps/console/server/src/model/read.ts`, `apps/console/e2e/fixture-repo.ts` and
+      `tools/console/test/run.mjs`.
+- [x] Issue 18's close-out merges nothing and tags `main`; its title no longer says "merge
+      m2-store".
+- [x] One ADR records the decision (`docs/adr/0012-one-pull-request-per-issue.md`).
+- [x] Pull request #228 merged with a merge commit (`7d5600f`), `m2-store` tree and branch
+      removed, the verifier's read under `## Verifier` below.
+- [x] `STATE.md` on `main` names #26 next, not #17: #17's `depends_on` now names 165, so it stays
+      blocked until this issue's own merge lands. No caveat paragraph either way.
+- [x] `python -m tools.validate --all` exits 0 and the console tests pass.
+
+## Verifier
+
+One adversarial pass over the working-tree diff (`git diff main`, checkpoint 4), before the fixes
+below: 12 findings, all real, none false positives. Fixed before this commit:
+
+- The merge path's `STATE.md` refresh commit was never actually wired into `factory-run/SKILL.md`
+  step 10's shipping table — the acceptance criterion existed only in prose elsewhere. Added the
+  commit to the "Gate, PR, merge" row and moved its explanation from "Finishing a milestone"
+  (milestone-only) into "Pull requests" (every issue).
+- `factory-status.md` step 5 contradicted itself across three sentences, one of which authorised
+  a root-tree write that no step ever committed — the next `/factory-run` would find a dirty tree
+  and refuse to start. Rewritten so `/factory-status` never writes the file, anywhere.
+- Every branch is now cut from local `main` once per issue instead of once per milestone, and no
+  step refreshed it first — confirmed stale by eighteen commits in this very worktree. Added
+  `git fetch origin && git merge --ff-only origin/main` before `git worktree add` in step 6.
+- Issue 18's title still said "merge m2-store" after its body was rewritten to merge nothing.
+- The ADR's Context overstated PR #228's wait (four days; git history shows under fifteen hours)
+  and cited a commit count that changed before the PR merged. Corrected, and the Consequences
+  section now records the real admin-merge override and why.
+- The PR template's checklist line and `gate.md`'s hand-off pointer both still referenced
+  `gh pr ready` or a "four points" list that no longer existed in the section they pointed to.
+- `docs/glossary.md`, `docs/factory/README.md`, `docs/factory/playbook.md` and
+  `.claude/skills/create-map/SKILL.md` still described the retired milestone-branch shape.
+- Four console source comments asserted the repo squash-merges every pull request — no longer
+  true now that every merge is a real merge commit — even though the logic they describe
+  (never trust git ancestry, decide from the issue file) needed no change and still doesn't.
+- One 52-word sentence in `git-workflow.md` lost its antecedent mid-edit ("stay on `main` as its
+  own ancestors" with no noun for "its"); split and reworded.
+
+Not fixed, by design: `require_gate.sh`'s `gh pr create --draft` exemption stays in the hook
+(logic change was out of scope) — `docs/factory/README.md` now explains why the hole is safe
+rather than leaving it unexplained.

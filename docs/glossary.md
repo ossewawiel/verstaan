@@ -55,7 +55,7 @@ term here instead, with the file that defines it.
 |---|---|---|
 | Factory | The agents, commands, hooks and files that build Verstaan. | `docs/factory/PLAN.md` §6 |
 | Map | The repository and its milestones. Explored ground is merged code. | `PLAN.md` §6.6 |
-| Main quest | The current milestone branch. | `PLAN.md` §7 |
+| Main quest | The current milestone's next issue. | `PLAN.md` §7 |
 | Side quest | An open issue whose milestone is `Side` or `Post-M6` and whose dependencies are met. | `PLAN.md` §6.6 |
 | Encounter | One issue and its one work commit. The archive of encounters is the git history. | `docs/factory/git-workflow.md` |
 | Quest giver | Interrogation or investigation work that decides what to do next. | `docs/decisions/` |

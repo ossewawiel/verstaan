@@ -1,7 +1,7 @@
 <!--
-docs/factory/git-workflow.md: a milestone branch opens a draft PR at its first push, using this
-template. `gh pr ready` stays behind the `require-gate` hook: it refuses unless the gate stamp
-equals HEAD and the tree is clean.
+docs/factory/git-workflow.md: every branch opens one normal pull request at its first push, using
+this template. `gh pr merge` stays behind the `require-gate` hook: it refuses unless the gate
+stamp equals HEAD and the tree is clean.
 -->
 
 ## Summary
@@ -24,7 +24,7 @@ equals HEAD and the tree is clean.
 ## Checklist
 
 - [ ] Every "Done when" line in each closed issue file is ticked against the diff.
-- [ ] `/gate` passed and the stamp equals HEAD (`require-gate` will refuse `gh pr ready` otherwise).
+- [ ] `/gate` passed and the stamp equals HEAD (`require-gate` will refuse `gh pr merge` otherwise).
 - [ ] No generated file under `engine/generated/` was hand-edited.
 - [ ] No credential, token or personal data was added to the repository.
 - [ ] Each closed issue file says `status: done` with its commit hash, in its own `chore(#NN): close` commit.

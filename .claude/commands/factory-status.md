@@ -8,7 +8,11 @@ description: Regenerate docs/factory/STATE.md from the issue files and report ex
 4. Branch / PR = `git branch --show-current`, `git status --porcelain | wc -l` dirty files,
    `git remote -v` (say "no remote" if empty), and whether
    `$(git rev-parse --path-format=absolute --git-common-dir)/verstaan-gate-stamps/$(git rev-parse HEAD)` exists.
-5. Rewrite `docs/factory/STATE.md` in the four-field shape it has now, keeping the first-line comment.
+5. Never rewrite `docs/factory/STATE.md` here, root tree or not. Read the file as it stands and
+   print it as is. Only the merge path writes it, in its own commit
+   `chore: refresh STATE.md after merging #NN into main`, made in the root tree right after
+   `git pull --ff-only` (`.claude/skills/factory-run/SKILL.md` step 10,
+   `docs/factory/git-workflow.md` "Pull requests").
 6. Print STATE.md, then one line: `Resume with: /factory-run NN`.
 6a. Run `node tools/console/src/generate.mjs` so `docs/factory/console/index.html` matches. If node
     is missing, say so in one line and carry on; the console is a rendering, not the state.

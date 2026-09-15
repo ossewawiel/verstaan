@@ -34,8 +34,8 @@ human-facing files carry the mechanism. Rules in `docs/standards/voice.md`, samp
 
 - **Data is the source of truth; code is generated from it.** Never hand-edit generated C++ under
   `engine/generated/`. Fix the data or the compiler.
-- **One work commit per issue, never on `main`.** An issue is done when its commit is on the
-  milestone branch and the issue file says `status: done`. The git history is a deliverable. The
+- **One work commit per issue, never on `main`.** An issue is done when its commit is on `main`,
+  via merge, and the issue file says `status: done`. The git history is a deliverable. The
   one exception: a `test(#NN): <title>` commit precedes the work commit when a test-writer pass
   ran, carrying the red suite on its own.
 - **A gate is not proven by watching it pass.** Prove it fails first. See `docs/standards/testing.md`.

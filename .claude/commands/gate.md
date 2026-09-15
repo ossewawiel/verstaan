@@ -62,5 +62,5 @@ the root. `tools/factory/hooks/require_gate.sh` is what reads it.
 
 A failed gate leaves no stamp, which is what keeps the merge shut. Report each step's command,
 exit code and time. Then hand over as `.claude/skills/factory-run/SKILL.md` step 10 says: the
-four points in `docs/factory/git-workflow.md` "Finishing a milestone" for an `m*-*` branch, the
-same four right after "Pull requests" merges for a `side-*` or `quest-*` branch.
+four points `docs/factory/git-workflow.md` "Pull requests" lists, once the merge lands and
+`STATE.md` is refreshed, whatever the branch prefix.

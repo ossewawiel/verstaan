@@ -187,7 +187,7 @@ check('readWorktrees reports a detached root tree as branch null, detached true'
 
 // finished (issue 112): a non-root tree is finished when no in-progress issue file names it and
 // its working tree is clean. No ancestry: a tree that has not started and a tree whose work has
-// landed via a squash merge are the same shape in git, so `finished` never asks git that question.
+// landed and merged are the same shape in git, so `finished` never asks git that question.
 const cleanRows = readWorktrees({ shFn: fakeListShFn, shInFn: () => '' });
 check('readWorktrees marks a clean tree with no in-progress issue file as finished (issue 112)',
   cleanRows.find((r) => r.path === '.worktrees/side-92-worktrees')?.finished, true);

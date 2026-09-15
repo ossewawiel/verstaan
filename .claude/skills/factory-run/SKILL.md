@@ -17,18 +17,21 @@ Run this from the root tree, on `main`. It never works there past step 6.
 4. Check the chosen issue's `status`. If it is `in-progress` and `--resume` was not given, stop:
    report the issue number and the tree named in its `worktree:` field, and do not proceed. With
    `--resume`, continue in that same tree instead of creating a new one (skip step 6).
-5. Work happens on a branch, never on `main`: the milestone branch from `docs/factory/PLAN.md` §7
-   for a main-quest issue, or `side-NN-<slug>` for a side quest.
-6. Create that branch's tree if it is not already checked out:
-   `git worktree add .worktrees/<branch> <branch>` if the branch exists, else
-   `git worktree add -b <branch> .worktrees/<branch> main`. From here on, every command in this
-   skill runs with `.worktrees/<branch>` as the working directory, not the root tree.
+5. Work happens on a branch, never on `main`: `m<K>-NN-<slug>` for a main-quest issue in
+   milestone K, cut from `main`, or `side-NN-<slug>` for a side quest.
+6. `git fetch origin && git merge --ff-only origin/main` in the root tree first: every issue now
+   cuts its own branch, so a stale local `main` costs a whole issue's worth of missed merges, not
+   a milestone's worth. Then create a fresh tree for this issue, every time: `git worktree add -b
+   <branch> .worktrees/<branch> main`. Every issue gets its own branch and its own tree; no branch
+   is shared across issues any more. From here on, every command in this skill runs with
+   `.worktrees/<branch>` as the working directory, not the root tree.
 7. In the worktree, edit the issue file: `status: in-progress`, `worktree: .worktrees/<branch>`.
    Leave this uncommitted; it lands in the work commit at the end. The root console still sees it,
    because it reads each tree's issue files straight off disk (`readWorktrees()` in
    `tools/console/src/read.mjs`), not through git.
 8. Read `docs/factory/SPEC.md` §2, §3 for the component the issue touches, and the standards
-   file for the file types it will change.
+   file for the file types it will change. `/factory-status` never writes `docs/factory/STATE.md`,
+   in this tree or the root tree. Only the merge path writes it, in step 10 below.
 
 ## Routing
 
@@ -78,41 +81,25 @@ All of this runs inside the issue's worktree, `.worktrees/<branch>`.
     credential), and say where the work is sitting, using step 9's facts. No file-by-file
     inventory, no flag lists, no wall of headings. Then put the shipping options to the developer
     with `AskUserQuestion`, and carry out the one they pick. Their choice is the sign-off: run the
-    push, the PR and the merge without asking again. The options come from the branch prefix.
-
-    For a `side-*` or `quest-*` branch, the four options:
+    push, the PR and the merge without asking again. Every branch, `m*-*` or `side-*`/`quest-*`,
+    gets the same four options:
 
     | Option | What you run |
     |---|---|
-    | Gate, PR, merge | `/gate`, push, `gh pr create`, wait for the `gate` check, `gh pr merge --squash --delete-branch`, then `cd` to the root tree and `git pull --ff-only`, `git worktree remove .worktrees/<branch> && git branch -D <branch>` |
+    | Gate, PR, merge | `/gate`, push, `gh pr create`, wait for the `gate` check, `gh pr merge --merge --delete-branch`, then `cd` to the root tree, `git pull --ff-only`, `/factory-status`'s steps to compute the four fields fresh, commit the result as `chore: refresh STATE.md after merging #NN into main`, then `git worktree remove .worktrees/<branch> && git branch -D <branch>` |
     | Gate and PR, then stop | the same, stopping once the PR is open and its check is green |
     | Push only | `git push -u origin <branch>`, nothing else |
     | Hold | nothing reaches GitHub |
 
-    For an `m*-*` branch, merge is never one of the options: the branch's close-out issue is the
-    only thing that merges it, per `docs/factory/git-workflow.md` "Finishing a milestone". Three
-    options:
+    `/gate` stamps HEAD. `require_gate.sh` refuses `gh pr create`, `gh pr ready` and `gh pr merge`
+    without that stamp on the tree they act on.
 
-    | Option | What you run |
-    |---|---|
-    | Gate, push, open or keep the draft PR | `/gate`, push, `gh pr create --draft --base main --head <branch>` if no pull request exists yet, otherwise nothing further — the pull request stays a draft |
-    | Push only | `git push -u origin <branch>`, nothing else |
-    | Hold | nothing reaches GitHub |
-
-    `/gate` stamps HEAD. `require_gate.sh` refuses a non-draft `gh pr create`, `gh pr ready` and
-    `gh pr merge` without that stamp; it exempts `gh pr create --draft`, so the milestone table's
-    only gh command needs no stamp, and `/gate` still runs there for the record the report carries.
-
-For a `side-*` or `quest-*` branch, "Gate, PR, merge" removes the tree in the same step: once
-`git pull --ff-only` in the root tree has caught up, `git worktree remove .worktrees/<branch>`
-and `git branch -D <branch>` run there (`-D`, not `-d` — a squash merge never makes the branch tip
-an ancestor of `main`), because no close-out issue ever runs for that branch. `gh pr merge
---squash --delete-branch` already removed the branch from `origin` in the same call as the merge;
-do not also run `git push origin --delete <branch>`, it races the same delete. A milestone
-branch, `m1-mirror` say, is the exception: several issues share its tree and its pull request
-never merges mid-milestone, so the tree stays, and the branch stays on `origin`, until the
-milestone's close-out issue merges the draft and removes the tree once every issue on the branch
-has landed (`docs/factory/git-workflow.md` "Worktrees", "Finishing a milestone").
+"Gate, PR, merge" removes the tree in the same step, for every branch: once `git pull --ff-only`
+in the root tree has caught up, `git worktree remove .worktrees/<branch>` and `git branch -D
+<branch>` run there. `gh pr merge --merge --delete-branch` already removed the branch from
+`origin` in the same call as the merge; do not also run `git push origin --delete <branch>`, it
+races the same delete. A milestone's close-out issue merges nothing: it only tags `main` with
+`m<K>` and writes the next map (`docs/factory/git-workflow.md` "Finishing a milestone").
 
 ## Writing a quest
 
