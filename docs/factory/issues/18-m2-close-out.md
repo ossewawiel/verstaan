@@ -2,15 +2,15 @@
 issue: 18
 title: "M2 close-out: gate, verifier, tag m2"
 milestone: M2
-status: in-progress
+status: done
 depends_on: [17, 166]
 agent: docs-writer
 agents: [docs-writer, verifier]
 model: sonnet
 effort: low
 checkpoint: 4
-commit: null
-worktree: .worktrees/m2-18-close-out
+commit: 6af4f9d
+worktree: null
 github_issue: 227
 ---
 ## What
