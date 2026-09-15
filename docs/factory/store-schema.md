@@ -212,3 +212,21 @@ tagset/export disagreements of the same shape as `SEM=REL`/`SEM=RLT` (`docs/unl-
   `REL`/`RLT`, one letter off.
 - `POS=CCJ` appears in `afr/grammar/generation.yaml` (rules 33 and 34, "coordinating
   conjunction"); `CCJ` does not appear in `exports/export_tagset.php` at all.
+
+## `python -m tools.validate --all` exit code on the real stores (known M2 finding)
+
+`--all` exits 1 against the real `afr`/`eng` stores, not 0: schema errors are 0 for both, but
+`check_feature_values` and `check_uw_references` are real errors at M2 (only `check_rule_coverage`
+is a warning, per `SPEC.md` §3.3), and the real archive-derived data has genuine defects of both
+kinds. Counts from the 2026-09-15 run:
+
+| | schema | feature-value | UW | uncovered rules (warning) |
+|---|---|---|---|---|
+| `afr` | 0 | 1234 | 2 | 431 |
+| `eng` | 0 | 47679 | 324 | 442 |
+
+This is the validator doing its job against data issues 14 and 16 imported, not a defect in
+issue 17 itself; the M2 gate was stamped over this nonzero exit on the owner's call (2026-09-15),
+treating `--all` as a reporting step here rather than a blocking one until a later issue fixes the
+underlying `afr`/`eng` data (the `SEM=ATT`/`POS=CCJ` gaps above are two confirmed examples; the
+bulk of the 1234/47679 figure is not yet triaged tag-by-tag).
