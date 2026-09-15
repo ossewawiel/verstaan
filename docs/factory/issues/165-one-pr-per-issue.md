@@ -2,15 +2,15 @@
 issue: 165
 title: "Every issue gets its own branch, pull request and gate run"
 milestone: Side
-status: in-progress
+status: done
 depends_on: [113, 115]
 agent: implementer
 agents: [implementer]
 model: sonnet
 effort: medium
 checkpoint: 4
-commit: null
-worktree: .worktrees/side-165-one-pr-per-issue
+commit: 8ac4da4
+worktree: null
 github_issue: 232
 ---
 
