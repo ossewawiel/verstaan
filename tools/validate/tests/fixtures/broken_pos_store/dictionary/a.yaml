@@ -1,0 +1,13 @@
+# Licence: CC BY-SA 4.0. Source: invented fixture for tools/validate/tests (issue 17), not the
+# UNL Archive.
+# Deliberately broken: docs/standards/testing.md's "prove the gate fails first" fixture.
+# POS=NOUN is not a tagset value; the real tagset (and this fixture's own tagset.yaml) spells
+# the noun part of speech POS=NOU. tools.validate.store.check_feature_values must fail on this.
+- headword: aunt
+  id: 1
+  uw: "123456"
+  features: {LEX: N, POS: NOUN, SEM: RLT}
+  lang: eng
+  frequency: 0
+  priority: 0
+  source: {archive_path: exports/eng/export_cc.php, line: 1}

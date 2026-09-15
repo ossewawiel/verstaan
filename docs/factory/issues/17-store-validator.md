@@ -2,7 +2,7 @@
 issue: 17
 title: "Build the store validator"
 milestone: M2
-status: open
+status: in-progress
 depends_on: [14, 15, 16, 165]
 agent: implementer
 agents: [implementer, test-writer]
@@ -10,7 +10,7 @@ model: sonnet
 effort: medium
 checkpoint: null
 commit: null
-worktree: null
+worktree: .worktrees/m2-17-store-validator
 github_issue: 226
 ---
 ## What
@@ -62,6 +62,6 @@ Making rule coverage a hard error — that is M3. Resolving a UW string to a UCL
 
 ## Done when
 
-- [ ] `tools/validate` runs against the `afr` and `eng` stores issues 14 to 16 produced.
-- [ ] The broken-fixture tests prove each of the four checks can fail.
-- [ ] `pytest tools/validate/test_validate.py` passes.
+- [x] `tools/validate` runs against the `afr` and `eng` stores issues 14 to 16 produced.
+- [x] The broken-fixture tests prove each of the four checks can fail.
+- [x] `pytest tools/validate/test_validate.py` passes.

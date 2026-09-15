@@ -1,0 +1,51 @@
+# Licence: CC BY-SA 4.0. Source: invented fixture for tools/validate/tests (issue 17), not the
+# UNL Archive. A small, correctly-spelled slice of the real tagset, shaped like
+# tools/validate/schema/tagset-entry.schema.json.
+LEX:
+  tag: LEX
+  meaning: lexical category
+  description: Grammatical class of words.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: LEX}
+N:
+  tag: N
+  meaning: noun
+  description: Nominal lexical category.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: N}
+POS:
+  tag: POS
+  meaning: part of speech
+  description: Grammatical class of words.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: POS}
+NOU:
+  tag: NOU
+  meaning: noun
+  description: Part of speech, common noun.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: NOU}
+SEM:
+  tag: SEM
+  meaning: semantic class
+  description: Semantic typology of UWs.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: SEM}
+RLT:
+  tag: RLT
+  meaning: relation
+  description: Nouns denoting relations between people or things or ideas.
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: exports/export_tagset.php, line: RLT}

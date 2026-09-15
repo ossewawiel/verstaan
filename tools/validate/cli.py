@@ -1,13 +1,12 @@
 # SPDX-License-Identifier: MPL-2.0
 """Command line entry point for `python -m tools.validate`.
 
-`--changed` and `--all` are real: they find the language files each mode covers under
-`data/languages/`. There is no schema to check against yet (SPEC.md §3.3 arrives with the
-importer, M1), so both modes exit 0 once they have found their file list -- including the empty
-list an empty `data/languages/` produces.
+`--changed` and `--all` find the language files each mode covers under `data/languages/`, then
+run the store checks (issue 17, SPEC.md §3.3) grouped by which language store each file falls
+under. `--lang <iso3>` runs the same checks against one store directly and prints its report.
 
 `--licences` is also real: it checks the SPDX and CC BY-SA headers issue 5 requires, plus
-`apps/cli/NOTICE`. It is a third, independent mode -- it has nothing to do with `data/languages/`.
+`apps/cli/NOTICE`. It is a fourth, independent mode -- it has nothing to do with `data/languages/`.
 """
 
 from __future__ import annotations
@@ -20,6 +19,7 @@ from collections.abc import Callable, Sequence
 from pathlib import Path
 
 from tools.validate import __version__
+from tools.validate.store import StoreReport, format_report, validate_store
 
 LANGUAGES_DIR_NAME = "data/languages"
 
@@ -88,9 +88,29 @@ def list_changed_language_files(
     return sorted(matches)
 
 
+def _store_roots(paths: Sequence[Path]) -> list[Path]:
+    """The distinct `data/languages/<iso3>/` directories a file list touches, derived from each
+    path itself (the ancestor directory right after a `languages` segment) so this needs no
+    `repo_root` argument."""
+    roots: set[Path] = set()
+    for path in paths:
+        parts = path.parts
+        for index, part in enumerate(parts):
+            if part == "languages" and index + 1 < len(parts):
+                roots.add(Path(*parts[: index + 2]))
+                break
+    return sorted(roots)
+
+
 def validate_files(paths: Sequence[Path]) -> list[str]:
-    """Schema and tagset checks (SPEC.md §3.3). Always empty until the importer exists (M1)."""
-    return []
+    """Schema, feature-value and UW errors (SPEC.md §3.3) for every language store a path in
+    `paths` falls under. Rule coverage is a warning, not an error at M2 (SPEC.md §3.3), so it is
+    never in this list -- `run`'s `--lang`/`--all` modes print its count separately via
+    `tools.validate.store.format_report`."""
+    errors: list[str] = []
+    for store_root in _store_roots(paths):
+        errors += validate_store(store_root).errors
+    return errors
 
 
 # --------------------------------------------------------------------------------------------
@@ -274,6 +294,7 @@ def run(
     mode: str,
     repo_root: Path,
     changed_paths: Callable[[Path], list[str]] = git_changed_paths,
+    lang: str | None = None,
 ) -> int:
     if mode == "licences":
         errors = check_licences(repo_root)
@@ -281,15 +302,37 @@ def run(
             print(error, file=sys.stderr)
         return 1 if errors else 0
 
-    if mode == "all":
-        files = list_all_language_files(languages_dir(repo_root))
-    else:
-        files = list_changed_language_files(repo_root, changed_paths)
+    if mode == "lang":
+        assert lang is not None  # build_parser only sets mode="lang" when --lang has a value
+        store_root = languages_dir(repo_root) / lang
+        if not store_root.is_dir():
+            print(f"no store: data/languages/{lang}", file=sys.stderr)
+            return 1
+        report = validate_store(store_root)
+        print(format_report(report))
+        for error in report.errors:
+            print(error, file=sys.stderr)
+        return 1 if report.errors else 0
 
-    errors = validate_files(files)
     if mode == "all":
+        root = languages_dir(repo_root)
+        store_roots = sorted(p for p in root.glob("*") if p.is_dir()) if root.is_dir() else []
+        reports: list[StoreReport] = []
+        errors: list[str] = []
+        for store_root in store_roots:
+            report = validate_store(store_root)
+            reports.append(report)
+            errors += report.errors
+        for report in reports:
+            print(format_report(report))
         errors += check_issue_loadouts(repo_root)
         errors += check_issue_dependencies(repo_root)
+        for error in errors:
+            print(error, file=sys.stderr)
+        return 1 if errors else 0
+
+    files = list_changed_language_files(repo_root, changed_paths)
+    errors = validate_files(files)
     for error in errors:
         print(error, file=sys.stderr)
     return 1 if errors else 0
@@ -323,6 +366,12 @@ def build_parser() -> argparse.ArgumentParser:
         const="licences",
         help="check SPDX and CC BY-SA headers, and apps/cli/NOTICE (issue 5)",
     )
+    mode.add_argument(
+        "--lang",
+        dest="lang",
+        metavar="ISO3",
+        help="validate one language store, e.g. --lang afr (issue 17)",
+    )
     return parser
 
 
@@ -330,7 +379,8 @@ def main(argv: Sequence[str] | None = None) -> int:
     argv = list(sys.argv[1:] if argv is None else argv)
     parser = build_parser()
     args = parser.parse_args(argv)
-    return run(args.mode, find_repo_root())
+    mode = "lang" if args.lang else args.mode
+    return run(mode, find_repo_root(), lang=args.lang)
 
 
 if __name__ == "__main__":
