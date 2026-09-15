@@ -2,7 +2,7 @@
 issue: 168
 title: "The gate validates the data the branch changed, not the whole archive"
 milestone: Side
-status: open
+status: in-progress
 depends_on: [17, 94]
 agent: implementer
 agents: [implementer, docs-writer]
@@ -10,7 +10,7 @@ model: sonnet
 effort: medium
 checkpoint: 4
 commit: null
-worktree: null
+worktree: .worktrees/quest-168-tagset-feature-mismatch
 github_issue: 240
 ---
 ## What
@@ -30,8 +30,11 @@ The developer's instruction, 2026-09-15: "the dictionaries are data. they are no
 side quest or in any other code generation. why are they involved now?"
 
 After this quest, the gate validates the data the branch touched and nothing else. A docs branch
-validates no data. A branch that edits `data/languages/eng/dictionary/e.yaml` validates that
-file, and its store's tagset with it. The full sweep stops being automatic: `--all` stays in the
+validates no data. A branch that edits `data/languages/eng/dictionary/e.yaml` validates the whole
+`eng` store, not that file alone: `validate_files` maps each touched file to its store root and
+runs the full store check there, tagset included, so a branch that touches one file in a store
+pays for and is answerable for the whole store. The full sweep stops being automatic: `--all`
+stays in the
 CLI, and it is run deliberately during data work, never as a merge blocker. The 49,000 errors in
 the `afr` and `eng` stores are real and are quest #169's business; they stop standing between a
 commit and `main` today.
@@ -79,12 +82,13 @@ Checkpoint 4: this changes the merge path.
 
 ## Done when
 
-- [ ] `tools/validate` can list the changed data files against a base ref, not only the
+- [x] `tools/validate` can list the changed data files against a base ref, not only the
       uncommitted working tree.
-- [ ] `gate.yml`'s data step and `/gate` step 3 both validate only what the branch changed.
-- [ ] A test proves the empty case validates nothing and exits 0.
-- [ ] A test proves a broken value in a touched file still fails, and it was seen to fail first.
-- [ ] `--all` is absent from every workflow and every gate step, and present in the CLI.
-- [ ] `docs/standards/testing.md` or `.claude/skills/gate/SKILL.md` records in one line that
+- [x] `gate.yml`'s data step and `/gate` step 3 both validate only what the branch changed.
+- [x] A test proves the empty case validates nothing and exits 0.
+- [x] A test proves a broken value in a touched file still fails, and it was seen to fail first.
+- [x] `--all` is absent from every workflow and every gate step, and present in the CLI.
+- [x] `docs/standards/testing.md` or `.claude/skills/gate/SKILL.md` records in one line that
       archive data is not a merge blocker, and why.
-- [ ] `python -m pytest tools/` passes and CI on this branch is green.
+- [ ] `python -m pytest tools/` passes and CI on this branch is green. (pytest passes locally;
+      CI green is unverified here -- it needs a pushed branch/PR, outside an implementer pass.)

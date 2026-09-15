@@ -45,7 +45,13 @@ the one part of the repository allowed dependencies of its own): `npm ci`, then 
 shipped, so it is excluded; a high or critical advisory in a dependency that *is* shipped fails
 this step). Playwright (`npm run test:e2e`) is not part of this local step — it runs in CI, on
 `ubuntu-latest`, with its own bundled Chromium — but run it by hand after touching
-`apps/console/client/` or `apps/console/server/`. Then `python -m tools.validate --all`.
+`apps/console/client/` or `apps/console/server/`. Then
+`python -m tools.validate --changed --base origin/main`. It finds the files this branch changed
+against its merge base with `main`, then validates every store one of those files sits in, whole
+— not the changed files alone (issue 168). A branch that never touches `data/languages/`
+validates no store; the archive is CC BY-SA data, not code this quest generates, and it is not a
+merge blocker for a branch that never touches it. `--all`, the full sweep of every store, stays
+available for deliberate data work but is not part of this gate.
 
 Step 4, tidy. `clang-tidy -p build/<clang preset> $(git ls-files 'engine/**/*.cpp')`. Warnings are errors.
 

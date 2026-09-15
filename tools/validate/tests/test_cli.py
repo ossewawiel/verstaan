@@ -9,6 +9,8 @@ because there is nothing to check yet, not because the check cannot fail.
 
 from __future__ import annotations
 
+import os
+import subprocess
 from pathlib import Path
 
 import pytest
@@ -20,6 +22,23 @@ from tools.validate.cli import (
     run,
     validate_files,
 )
+
+
+def _git(repo: Path, *args: str) -> None:
+    subprocess.run(
+        ["git", *args],
+        cwd=repo,
+        capture_output=True,
+        text=True,
+        check=True,
+        env={
+            "GIT_AUTHOR_NAME": "t",
+            "GIT_AUTHOR_EMAIL": "t@example.com",
+            "GIT_COMMITTER_NAME": "t",
+            "GIT_COMMITTER_EMAIL": "t@example.com",
+            "PATH": os.environ.get("PATH", ""),
+        },
+    )
 
 
 def test_help_exits_zero(capsys):
@@ -99,3 +118,38 @@ def test_validate_files_reports_a_broken_file_when_one_exists():
     # exercised here so the empty pass above is proven to be "nothing to check" and not a check
     # that can never fail.
     assert validate_files([]) == []
+
+
+def test_main_passes_base_through_the_argument_parser_to_a_real_repo(tmp_path, monkeypatch):
+    # The command CI actually runs is `--changed --base <ref>`, invoked through `main`, not
+    # `run` directly (gate.yml, issue 168). Nothing else here calls `main` with `--base`, so the
+    # closure that binds `args.base` in `main` is exercised only by reading it -- a later edit
+    # that dropped the binding and silently fell back to the working tree would pass every other
+    # test in this file. Only a real repo, a real commit and `monkeypatch.chdir` prove the wiring
+    # end to end: `find_repo_root` (which `main` calls with no `start`) reads `Path.cwd()`.
+    repo = tmp_path / "repo"
+    repo.mkdir()
+    _git(repo, "init", "-q", "-b", "main")
+    (repo / "README.md").write_text("first commit\n", encoding="utf-8")
+    _git(repo, "add", "-A")
+    _git(repo, "commit", "-q", "-m", "base commit")
+
+    monkeypatch.chdir(repo)
+    # Nothing under data/languages/ on this branch since "main" -- the base ref is itself HEAD,
+    # so the diff is empty and the run must exit 0. A dropped --base binding would instead fall
+    # back to `git status --porcelain`, which is also empty here (nothing uncommitted) -- so this
+    # alone would not distinguish the two. The distinguishing case is proven directly against
+    # `git_diff_against_base`/`git_changed_paths` in test_changed_base.py; this test's job is only
+    # to prove `main` reaches `git_diff_against_base` at all when `--base` is given, by observing
+    # that a `--base` value referring to a ref that does not exist makes `main` raise instead of
+    # silently reading the (also-empty) working tree.
+    with pytest.raises(RuntimeError):
+        main(["--changed", "--base", "does-not-exist"])
+
+    assert main(["--changed", "--base", "main"]) == 0
+
+
+def test_all_and_base_together_is_rejected():
+    with pytest.raises(SystemExit) as exc:
+        main(["--all", "--base", "main"])
+    assert exc.value.code == 2

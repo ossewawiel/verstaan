@@ -71,3 +71,35 @@ def test_run_all_exits_nonzero_on_a_dangling_dependency(tmp_path: Path, capsys):
 
 def test_run_all_exits_zero_when_every_dependency_resolves(tmp_path: Path):
     assert run("all", _tree(tmp_path)) == 0
+
+
+def test_run_changed_also_exits_nonzero_on_a_dangling_dependency_when_an_issue_file_is_in_the_diff(
+    tmp_path: Path, capsys
+):
+    # Issue 168: --all stopped running in every gate step, so --changed is now the only mode CI
+    # calls. It must still catch a dangling depends_on (issue 104) -- but only when the diff
+    # itself names an issue file (issue 168's fix-round follow-up), so an engine-only branch that
+    # never touches docs/factory/issues/ is not blocked by an unrelated quest file.
+    root = _tree(tmp_path)
+    (root / "docs" / "factory" / "issues" / "98-side.md").write_text(
+        _issue(98, "Side", "[7, 500]"), encoding="utf-8"
+    )
+    assert (
+        run(
+            "changed",
+            root,
+            changed_paths=lambda _r: ["docs/factory/issues/98-side.md"],
+        )
+        == 1
+    )
+    assert "500" in capsys.readouterr().err
+
+
+def test_run_changed_skips_the_dependency_check_when_no_issue_file_is_in_the_diff(tmp_path: Path):
+    # The other half: a diff that never names anything under docs/factory/issues/ must not run
+    # this check at all, even with a dangling dependency sitting untouched in the tree.
+    root = _tree(tmp_path)
+    (root / "docs" / "factory" / "issues" / "98-side.md").write_text(
+        _issue(98, "Side", "[7, 500]"), encoding="utf-8"
+    )
+    assert run("changed", root, changed_paths=lambda _r: ["engine/src/parser.cpp"]) == 0

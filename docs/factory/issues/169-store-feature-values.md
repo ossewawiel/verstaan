@@ -19,6 +19,10 @@ github_issue: 241
 all of one shape: `feature value SEM='ATT' is not in tagset.yaml`. Quest #168 takes this off the
 merge path, so it blocks nothing. It is still wrong, and the data is a deliverable.
 
+Because the gate validates a touched store whole (#168), a branch that edits any file under
+`data/languages/eng/` must leave the `eng` store fully valid, so this quest cannot land in pieces
+against a store still carrying its own feature-value errors.
+
 The check is not at fault. Issue 17 built it deliberately and proved it with two broken-store
 fixtures: `POS=NOUN` must fail because the real tagset says `POS=NOU`. Three separate causes sit
 behind the one message. Counts are from the full sweep on `dd2bdea`, over 3,968 distinct

@@ -70,3 +70,36 @@ def test_run_all_exits_nonzero_without_a_loadout(tmp_path: Path, capsys):
 
 def test_run_all_exits_zero_with_every_loadout(tmp_path: Path):
     assert run("all", _tree(tmp_path)) == 0
+
+
+def test_run_changed_also_exits_nonzero_without_a_loadout_when_an_issue_file_is_in_the_diff(
+    tmp_path: Path, capsys
+):
+    # Issue 168: --all stopped running in every gate step, so --changed is now the only mode CI
+    # calls. It must still catch a quest merged without its loadout (issue 103) -- but only when
+    # the diff itself names an issue file (issue 168's fix-round follow-up), so an engine-only
+    # branch that never touches docs/factory/issues/ is not blocked by an unrelated quest file.
+    root = _tree(tmp_path)
+    (root / "docs" / "factory" / "issues" / "07-seven.md").write_text(
+        FULL.replace("effort: medium\n", ""), encoding="utf-8"
+    )
+    assert (
+        run(
+            "changed",
+            root,
+            changed_paths=lambda _r: ["docs/factory/issues/07-seven.md"],
+        )
+        == 1
+    )
+    assert "effort" in capsys.readouterr().err
+
+
+def test_run_changed_skips_the_loadout_check_when_no_issue_file_is_in_the_diff(tmp_path: Path):
+    # The other half: a diff that never names anything under docs/factory/issues/ must not run
+    # this check at all, even with a broken loadout sitting untouched in the tree -- otherwise a
+    # session that only wrote engine code gets blocked by a quest file it never touched.
+    root = _tree(tmp_path)
+    (root / "docs" / "factory" / "issues" / "07-seven.md").write_text(
+        FULL.replace("effort: medium\n", ""), encoding="utf-8"
+    )
+    assert run("changed", root, changed_paths=lambda _r: ["engine/src/parser.cpp"]) == 0
