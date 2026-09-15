@@ -26,8 +26,8 @@ the ADRs and the first issue files. Phase B is the loop you are in now:
                                      checkpoint? stop, ask the human
 ```
 
-One issue becomes one commit on the milestone branch. When the milestone's issues are all done,
-`/gate` runs the full ladder, the verifier reads the whole diff, and the branch merges.
+One issue becomes one commit on that issue's own branch. `/gate` runs the full ladder, the
+verifier reads the diff, and the branch merges on its own, per issue.
 
 ## The three rules that make it resumable
 
@@ -47,7 +47,7 @@ Rules in full at `SPEC.md` §5. What actually runs, proven in issue 01:
 |---|---|---|---|
 | Auto-fix | `.claude/hooks/fast-format.sh` | `PostToolUse` on `Edit`\|`Write`\|`MultiEdit` | Format the one file just written with `clang-format` or `ruff format`; never block. Prints to stderr, does not fail, when the formatter is missing. |
 | Fast | `.claude/hooks/gate-fast.sh` | `Stop` | Build `verstaan_core`, build the fast test binaries, run `ctest -L fast`, validate changed data, run pytest for changed tools. Exit 2 blocks the stop and shows the failing output. Logs every failure to `lessons.jsonl`. Checks `stop_hook_active` first so a failure can never loop the Stop hook. |
-| Gate stamp | `.claude/hooks/require-gate.sh` | `PreToolUse` on `Bash`\|`PowerShell` | Refuse `git merge`, `gh pr create` (non-draft) and `gh pr ready` unless the gate stamp matches `HEAD` on a clean tree. The stamp is written only by `/gate`. |
+| Gate stamp | `.claude/hooks/require-gate.sh` | `PreToolUse` on `Bash`\|`PowerShell` | Refuse `git merge`, `gh pr create` (non-draft) and `gh pr merge` unless the gate stamp matches `HEAD` on a clean tree. `gh pr create --draft` is exempt (a draft cannot merge on its own); nothing in this factory opens one any more, but the hook still allows it. The stamp is written only by `/gate`. |
 | Full | `/gate` | manual, before a PR | Fast + `ctest` all labels + `clang-tidy` + equivalence + all tiers configure and build + `python -m tools.validate --all` + pytest all. Writes the gate stamp. |
 
 ## A session, start to finish

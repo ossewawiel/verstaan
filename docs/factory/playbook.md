@@ -6,9 +6,9 @@ those win. Terms are from `docs/glossary.md`.
 
 ## The map
 
-The map is the repository. Each milestone in `PLAN.md` §7 is a region, and each region is a
-branch. A region is explored when its branch has merged into `main`. The console's Map panel
-draws the regions in order, with a bar for how much of each is won.
+The map is the repository. Each milestone in `PLAN.md` §7 is a region, made up of its issues,
+each on its own branch. A region is explored once every issue in it has merged into `main`. The
+console's Map panel draws the regions in order, with a bar for how much of each is won.
 
 You are always in one region: the main quest. Side quests sit off the path and can be taken
 whenever their dependencies are met. They never block the main quest, and the main quest never
@@ -22,7 +22,7 @@ a test-writer pass ran. Here is what happens when you type `/factory-run 07`.
 1. **The check.** The factory reads `git status`. A dirty tree stops it before anything else,
    because a half-finished encounter must not be mixed into a new one.
 2. **The brief.** It reads the issue file whole, checks that every issue in `depends_on` is done,
-   and checks out the milestone branch, cutting it from `main` if it does not exist yet.
+   and creates the issue's own branch and tree, cut fresh from `main`.
 3. **The party is chosen.** The issue's `agent` field names who goes first. A tooling issue sends
    the implementer alone. An engine or grammar issue sends the rule-author first, who writes the
    test table and stubs, then the test-writer, who lands failing tests, then the implementer, who
@@ -61,7 +61,7 @@ prints `Resume with: /factory-run 09`.
 | Full | `/gate`, before a merge | everything, all presets, tidy, equivalence, tiers, regenerate and diff | minutes |
 
 The full gate writes the stamp: the commit hash it passed on. A hook refuses `git merge` and
-`gh pr ready` unless the stamp equals HEAD and the tree is clean. That is what keeps the merge
+`gh pr merge` unless the stamp equals HEAD and the tree is clean. That is what keeps the merge
 shut without anyone remembering to check.
 
 The first thing the factory ever does, issue 01, is break each gate on purpose and watch it

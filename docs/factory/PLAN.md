@@ -102,7 +102,7 @@ tests/                        engine tests, golden files, equivalence tests
 | Tooling | Python 3.13, `uv` or venv, pytest, ruff | Fast to iterate on parsers and the compiler |
 | Data | YAML in git; SQLite index built on demand for the management UI later | Reviewable in pull requests |
 | CI | Local hook gates from day one; GitHub Actions matrix (windows, ubuntu; arm from M4) running the same gate steps, added by side quest 91 | The gate ladder is the CI on day one, and the remote runs the same ladder |
-| Source control | Git, single repository, milestone branches, one commit per issue; GitHub milestones, labels and pull requests as a mirror of the issue files, never the other way round (side quest 91) | The history is a deliverable; the files stay the only truth |
+| Source control | Git, single repository, one branch and one pull request per issue; GitHub milestones, labels and pull requests as a mirror of the issue files, never the other way round (side quest 91, side quest 165) | The history is a deliverable; the files stay the only truth |
 | Console | Node 20+, Fastify, TypeScript server; React 19, TypeScript, Vite client; TanStack Query; React Router; plain CSS (side quest 99, ADR 0010) | The one part of the repository allowed dependencies of its own — it never sits on the translation path (ADR 0008 keeps the engine and the Python tools at zero) |
 
 ## 6. The code factory
@@ -170,7 +170,7 @@ then CLAUDE.md as a last resort.
 ### 6.6 The game and the console
 
 The factory plays as an exploration: the map is the repository and the milestones, a main quest
-is the current milestone branch, a side quest is an unblocked out-of-order issue, an encounter is
+is the current milestone's next issue, a side quest is an unblocked out-of-order issue, an encounter is
 one issue and its commit, the party is the five agents costed to a model and effort each, and
 levelling is a lesson promoted to a rule by the retro. The quest giver is the interrogation and
 investigation work that decides what to do next. The console is a small Node/React app
@@ -192,14 +192,17 @@ Issues are `docs/factory/issues/NN-kebab-title.md`. The numbers below are the pl
 
 | Milestone | Branch | Goal | Issues |
 |---|---|---|---|
-| M0 Foundation | `m0-foundation` | Repo, licences, factory, CMake and Python skeletons, gates proven to fail | 01–06 |
-| M1 Mirror | `m1-mirror` | Every language exported, manifest complete, UNL reference corpus readable by agents, inventory report | 07–12 |
-| M2 Store | `m2-store` | Canonical data model; importer for dictionaries, grammars, tagset, corpora; validator | 13–18 |
-| M3 Engine slice | `m3-engine` | Tokeniser, dictionary lookup, rule interpreter on runtime tables, English → UNL → Afrikaans for a fixed sentence set, golden tests | 19–26 |
-| M4 Compiler and tiers | `m4-compiler` | Generated tables per tier, equivalence tests, basic tier cross-built and run on a Pi Zero, Argos benchmark beside it | 27–32 |
-| M5 Applications | `m5-apps` | CLI translator, register and context selection, first desktop shell | 33–38 |
-| M6 Growth | `m6-growth` | Rule-author workflow for Afrikaans grammar growth, Dutch seeded from German and English references, CLA check, project site | 39–44 |
+| M0 Foundation | `m0-NN-<slug>` | Repo, licences, factory, CMake and Python skeletons, gates proven to fail | 01–06 |
+| M1 Mirror | `m1-NN-<slug>` | Every language exported, manifest complete, UNL reference corpus readable by agents, inventory report | 07–12 |
+| M2 Store | `m2-NN-<slug>` | Canonical data model; importer for dictionaries, grammars, tagset, corpora; validator | 13–18 |
+| M3 Engine slice | `m3-NN-<slug>` | Tokeniser, dictionary lookup, rule interpreter on runtime tables, English → UNL → Afrikaans for a fixed sentence set, golden tests | 19–26 |
+| M4 Compiler and tiers | `m4-NN-<slug>` | Generated tables per tier, equivalence tests, basic tier cross-built and run on a Pi Zero, Argos benchmark beside it | 27–32 |
+| M5 Applications | `m5-NN-<slug>` | CLI translator, register and context selection, first desktop shell | 33–38 |
+| M6 Growth | `m6-NN-<slug>` | Rule-author workflow for Afrikaans grammar growth, Dutch seeded from German and English references, CLA check, project site | 39–44 |
 | Post-M6 | — | Neural fallback trigger, service tier, dashboards, bob harvest into a C++ project type | later |
+
+Each row's branch column names the pattern its issues use, `m<K>-NN-<slug>` — one branch per
+issue, not one shared branch for the milestone (issue 165).
 
 The M0 and M1 issue files exist now. Later milestones get their issue files at the checkpoint
 that opens them, written from this table and from what M1 finds in the archive.

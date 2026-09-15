@@ -54,7 +54,7 @@ export function setIssueStatus(n: number, status: string): void {
 // A second, real working tree of FIXTURE_REPO, checked out at `main`'s own current commit — no
 // commit ahead, none behind — proving issue 112: a fresh tree with no work of its own yet is
 // exactly as "merged" to `git merge-base --is-ancestor` as a tree whose work has already landed
-// by squash merge, so the Now row must decide from the issue file, never from ancestry.
+// and merged, so the Now row must decide from the issue file, never from ancestry.
 const HEAD_TREE_REL = '.worktrees/head-quest';
 const HEAD_TREE_ABS = join(FIXTURE_REPO, HEAD_TREE_REL);
 export const HEAD_QUEST_N = 11;

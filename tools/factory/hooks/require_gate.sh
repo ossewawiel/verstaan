@@ -32,7 +32,7 @@
 # The stamp is tree-independent: `/gate` writes an empty file named after the commit hash under
 # `$(git rev-parse --git-common-dir)/verstaan-gate-stamps/`, only when every step passed in a
 # clean tree. "Commit X passed the gate" is then a fact any tree can check, which is what lets the
-# root tree (on `main`) merge a milestone branch that was gated inside its own worktree.
+# root tree (on `main`) merge an issue's branch that was gated inside its own worktree.
 # `git merge <ref>` checks the stamp of <ref>; every other gated command checks HEAD.
 #
 # Matches only at the start of a command segment (after &&, ||, ;, | or a newline), so the words

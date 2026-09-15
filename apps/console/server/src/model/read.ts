@@ -140,9 +140,10 @@ export function readWorktrees({
     // 109)? Answered from the same two facts every other field here already needs — no
     // in-progress issue file names this tree, and its working tree is clean — never from git
     // ancestry (issue 112). Ancestry cannot tell a tree that has not started work from one whose
-    // work has landed: the repo squash-merges every pull request, so a landed branch's commits
-    // are never ancestors of `main`, and an untouched branch's HEAD always is. The root tree
-    // always reports false: the root is never a candidate for removal.
+    // work has landed: an untouched branch's HEAD is already an ancestor of `main` (it was cut
+    // from `main`), the same shape a landed merge-commit branch ends up in once it lands, so
+    // ancestry alone cannot tell the two apart. The root tree always reports false: the root is
+    // never a candidate for removal.
     const finished = !isRoot && dirty === 0 && !issue;
     return { path: rel, branch: w.branch, detached: w.detached, head: w.head, isRoot, dirty, stampMatches, finished, issue };
   });

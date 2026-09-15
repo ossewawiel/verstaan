@@ -60,7 +60,8 @@ Stop. Show every ADR title and its one-line decision. Wait for the owner's yes b
 
 ## 3. Map
 
-Propose new rows for `PLAN.md` §7: name, branch, goal, issue range. One row per milestone.
+Propose new rows for `PLAN.md` §7: name, branch pattern (`m<K>-NN-<slug>`), goal, issue range.
+One row per milestone.
 Default placement is appended after the last milestone; interleaving an earlier position needs
 the owner's explicit yes on that row, not just on the stage.
 
