@@ -3,7 +3,7 @@ issue: 18
 title: "M2 close-out: gate, verifier, tag m2"
 milestone: M2
 status: open
-depends_on: [17]
+depends_on: [17, 166]
 agent: docs-writer
 agents: [docs-writer, verifier]
 model: sonnet
@@ -14,6 +14,9 @@ worktree: null
 github_issue: 227
 ---
 ## What
+
+This issue also waits on side quest 166, which stops the gate's build job importing the real
+archive, so this issue's own pull request merges through a gate that can pass.
 
 Once issues 13 to 17 have each merged on their own branch (issue 165), run `/factory-retro`,
 then tag `main` with `m2`. This close-out merges nothing: every issue in M2 already merged
