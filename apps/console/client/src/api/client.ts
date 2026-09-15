@@ -134,4 +134,18 @@ export const api = {
     const { url } = await getJson<{ url: string }>(`/api/open?${qs.toString()}`);
     return url;
   },
+  // POST /api/restart (issue 162). A 202 body carries the new process's pid, for the record only;
+  // a non-2xx body carries `error` -- either "refused" (a job is running) or the rebuild's own
+  // output (a syntax error in server/src), and `postJson` already turns that into a thrown Error.
+  restart: () => postJson<{ ok: true; pid: number }>('/api/restart', {}),
+  // GET /health as text ("ok <pid>"), for the client-side poll that waits for a new pid to answer
+  // after a restart. Rejects on any non-2xx or network failure -- the expected shape while the
+  // old process has exited and the new one has not bound yet.
+  health: async (): Promise<{ pid: number }> => {
+    const res = await fetch('/health');
+    if (!res.ok) throw new Error(`/health: ${res.status}`);
+    const text = await res.text();
+    const pid = Number(text.trim().split(/\s+/)[1]);
+    return { pid: Number.isFinite(pid) ? pid : -1 };
+  },
 };

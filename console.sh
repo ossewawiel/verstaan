@@ -45,16 +45,17 @@ if [ ! -d "$app/node_modules" ]; then
   (cd "$app" && npm ci)
 fi
 
-# Rebuild when the build output is missing or any source file is newer than it.
-need_build=0
-dist="$app/dist/index.html"
-[ -f "$dist" ] && [ -f "$app/dist-server/server/src/index.js" ] || need_build=1
-if [ "$need_build" = 0 ] && [ -n "$(find "$app/client/src" "$app/server/src" -type f -newer "$dist" -print -quit)" ]; then
-  need_build=1
-fi
-if [ "$need_build" = 1 ]; then
-  echo "console: building..."
-  (cd "$app" && npm run build)
+# Rebuild when stale: dist is missing, or client/src or server/src holds a file newer than it.
+# Shared with POST /api/restart (issue 162), which must make exactly this same decision from a
+# detached Node process -- apps/console/server/scripts/build-if-stale.mjs is the one place that
+# rule is written, so console.sh and the restart endpoint can never drift apart on it. Lives
+# under server/, not apps/console/scripts/ directly: a relative import reaching up two directory
+# levels from server/test/ triggered a reproducible Vitest/Windows "Invalid or unexpected token"
+# parse failure (checkpoint-4 review) -- one level up, matching every other cross-directory
+# import in this app, does not.
+if ! node "$app/server/scripts/build-if-stale.mjs" "$app"; then
+  echo "console: build failed; see above." >&2
+  exit 1
 fi
 
 log="$(git rev-parse --path-format=absolute --git-common-dir)/console-serve.log"

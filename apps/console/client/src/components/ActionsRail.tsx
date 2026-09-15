@@ -40,7 +40,7 @@ export function ActionsRail({ tree, actions = DEFAULT_ACTIONS }: { tree: string;
 
   return (
     <div className="panel actions-rail" aria-label="Actions">
-      <p className="panel__title">Actions — {tree}</p>
+      <p className="panel__title">{tree === '.' ? 'Actions' : `Actions — ${tree}`}</p>
       <div className="actions-rail__buttons">
         {actions.map((a) => (
           <ActionButton key={a.kind} label={a.label} armedLabel={a.armedLabel} destructive={a.destructive} onRun={() => run(a)} />

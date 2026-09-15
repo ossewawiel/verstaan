@@ -13,6 +13,7 @@ import { buildApp, PORT } from '../src/index.js';
 import type { RepoModel } from '../src/model/parse.js';
 import { JobManager } from '../src/jobs/runner.js';
 import { registerJobRoutes } from '../src/jobs/routes.js';
+import { RestartGate } from '../src/restart-gate.js';
 
 
 // Every POST/DELETE now checks Host (issue 100, finding 08): app.inject's simulated request
@@ -243,5 +244,54 @@ describe.skipIf(process.platform === 'win32')('gate: missing CMakeUserPresets.js
     } finally {
       rmSync(tmp, { recursive: true, force: true });
     }
+  });
+});
+
+// Checkpoint-4 review, finding 3: `jobs.runningJob()` alone only refuses a job already running
+// *before* a restart began; it is checked once, before `POST /api/restart` even starts the
+// build. A job that starts partway through the build is never caught by it, and gets killed with
+// no exit code the moment the old process exits. The shared `RestartGate` (also `restart.ts`'s
+// own dependency) is the fix: held for the whole restart, checked on every `POST /api/jobs`.
+describe('POST /api/jobs: refused while a restart is in progress (checkpoint-4 review, finding 3)', () => {
+  it('a job kind that would otherwise be accepted is refused with 409, and never created', async () => {
+    const jobs = new JobManager();
+    const app = Fastify({ logger: false });
+    const restartGate = new RestartGate();
+    restartGate.begin();
+    registerJobRoutes(app, { jobs, repoRoot: process.cwd(), port: 7864, treeRoots: () => [process.cwd()], restartGate });
+    const res = await app.inject({
+      method: 'POST',
+      url: '/api/jobs',
+      headers: LOOPBACK_HOST,
+      payload: { kind: 'gate', tree: '.', args: {} },
+    });
+    expect(res.statusCode).toBe(409);
+    expect(res.json().error).toMatch(/restart is in progress/);
+    expect(jobs.list()).toHaveLength(0);
+    await app.close();
+  });
+
+  it('once the restart gate clears, the same request is accepted again', async () => {
+    const jobs = new JobManager();
+    const app = Fastify({ logger: false });
+    const restartGate = new RestartGate();
+    restartGate.begin();
+    registerJobRoutes(app, { jobs, repoRoot: process.cwd(), port: 7864, treeRoots: () => [process.cwd()], restartGate });
+    const refused = await app.inject({
+      method: 'POST',
+      url: '/api/jobs',
+      headers: LOOPBACK_HOST,
+      payload: { kind: 'gate', tree: '.', args: {} },
+    });
+    expect(refused.statusCode).toBe(409);
+    restartGate.end();
+    const accepted = await app.inject({
+      method: 'POST',
+      url: '/api/jobs',
+      headers: LOOPBACK_HOST,
+      payload: { kind: 'gate', tree: '.', args: {} },
+    });
+    expect(accepted.statusCode).toBe(201);
+    await app.close();
   });
 });
