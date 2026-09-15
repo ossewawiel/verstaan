@@ -198,10 +198,9 @@ def _zip_member_lines(zip_path: Path) -> Iterator[tuple[str, int, str]]:
                     yield member, line_no, raw.decode("utf-8").rstrip("\r\n")
 
 
-def _archive_path(zip_path: Path, archive_root: Path, member: str) -> str:
+def _archive_path(zip_rel: Path, member: str) -> str:
     """`exports/<lang>/<zip-stem>/<member>`, relative to `data/archive/` -- the exact zip member,
     named as `tools/validate/tests/test_schema.py`'s hand-built worked examples name it."""
-    zip_rel = zip_path.resolve().relative_to(archive_root.resolve())
     return f"{zip_rel.with_suffix('').as_posix()}/{member}"
 
 
@@ -217,8 +216,9 @@ def import_zip(
     """Every line of `zip_path` (an AD or GD export), parsed into store-shaped entries."""
     imported: list[ImportedEntry] = []
     unparsed: list[UnparsedLine] = []
+    zip_rel = zip_path.resolve().relative_to(archive_root.resolve())
     for member, line_no, raw in _zip_member_lines(zip_path):
-        archive_path = _archive_path(zip_path, archive_root, member)
+        archive_path = _archive_path(zip_rel, member)
         parsed, reason = parse_line(raw)
         if parsed is None:
             unparsed.append(UnparsedLine(archive_path, line_no, raw, reason or "unparseable"))
