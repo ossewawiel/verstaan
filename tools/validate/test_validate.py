@@ -207,9 +207,37 @@ def test_check_uw_references_passes_on_an_empty_uw(tmp_path):
     assert check_uw_references(store) == []
 
 
-def test_check_uw_references_fails_on_a_non_digit_uw(tmp_path):
+def test_check_uw_references_passes_on_a_ucl_string(tmp_path):
+    # dictionary.md's own grammar: `<UW> ::= <text> | <REGULAR EXPRESSION>`. A UCL string is a
+    # real, documented shape (issue 18, 2026-09-15: eng/dictionary/z.yaml's real "zero" entries).
     entry = dict(VALID_DICTIONARY_ENTRY)
-    entry["uw"] = "book(icl>publication)"  # a UCL string, not the UCN this check expects.
+    entry["uw"] = "book(icl>publication)"
+    store = _build_store(tmp_path / "store", dictionary_entry=entry)
+    assert check_uw_references(store) == []
+
+
+def test_check_uw_references_passes_on_a_placeholder_regular_expression(tmp_path):
+    # Real pronoun entries hold this shape (e.g. eng/dictionary/y.yaml's "you"/"your" family).
+    entry = dict(VALID_DICTIONARY_ENTRY)
+    entry["uw"] = "00.@2.@dual.@female"
+    store = _build_store(tmp_path / "store", dictionary_entry=entry)
+    assert check_uw_references(store) == []
+
+
+def test_check_uw_references_fails_on_a_non_ascii_uw(tmp_path):
+    entry = dict(VALID_DICTIONARY_ENTRY)
+    entry["uw"] = "café"  # not printable ASCII text; no real store entry has ever needed this.
+    store = _build_store(tmp_path / "store", dictionary_entry=entry)
+    errors = check_uw_references(store)
+    assert errors
+    assert any("uw" in error for error in errors)
+
+
+def test_check_uw_references_fails_on_a_trailing_newline(tmp_path):
+    # re.match's `$` matches before a trailing "\n"; this check must use fullmatch (or `\Z`) so a
+    # hand-edited store file with a stray newline in the scalar still fails.
+    entry = dict(VALID_DICTIONARY_ENTRY)
+    entry["uw"] = "123456\n"
     store = _build_store(tmp_path / "store", dictionary_entry=entry)
     errors = check_uw_references(store)
     assert errors

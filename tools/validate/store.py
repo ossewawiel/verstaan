@@ -91,11 +91,14 @@ FEATURE_PATTERN = re.compile(r"\b([A-Z][A-Z0-9]*)=([A-Z][A-Z0-9]*)\b")
 # docs/factory/store-schema.md, "Feature values the validator does not check".
 REFERENCE_VALUED_ATTRIBUTES = frozenset({"LEMMA", "BF", "PAR", "FRA", "SFR", "FLX", "DIGIT"})
 
-# A UW is a UCN (digits only) in every real afr/eng sample seen so far, or the empty string for an
-# entry that carries none (docs/unl-reference/formats/dictionary.md, "Disagreement": the exports
-# hold a UCN, not the UCL string their own filename promises). Resolving it to a UW-to-UCL gloss
-# is out of scope (issue 17, "Not in scope").
-UW_PATTERN = re.compile(r"^[0-9]*$")
+# dictionary.md's own formal grammar: `<UW> ::= <text> | <REGULAR EXPRESSION>` — a UW is not
+# digits-only. Real afr/eng entries confirm this at scale (2026-09-15, issue 18): pronoun entries
+# hold placeholder regex forms (`00.@2.@dual.@female`), and some entries hold a UCL string
+# (`zero(equ>no)`) rather than the UCN the "Disagreement" section's narrow sample found. This
+# check can therefore only catch a UW that is not text at all (wrong type, or a raw control
+# character/newline a hand-edited store file should never carry) — not a shape it does not
+# recognise. Resolving a UW to a UW-to-UCL gloss stays out of scope (issue 17, "Not in scope").
+UW_PATTERN = re.compile(r"^[\x20-\x7E]*$")
 
 # Decided (2026-09-15, this issue): a tests/<name>.yaml entry names the grammar rule ids it
 # exercises in a `rules` field, e.g. `rules: [xxa-ana-01, M2]`. SPEC.md §3.3 and
@@ -259,13 +262,16 @@ def check_feature_values(store_root: Path) -> list[str]:
 
 
 # --------------------------------------------------------------------------------------------
-# 3. UW references: digits only, or the empty string.
+# 3. UW references: printable text (a UCN, a UCL string, or a placeholder regex), never a
+#    control character or a wrong type.
 # --------------------------------------------------------------------------------------------
 
 
 def check_uw_references(store_root: Path) -> list[str]:
-    """Every dictionary entry's `uw` is well-formed: digits only, or empty (issue 17, "Not in
-    scope": resolving it to a UCL gloss is a separate, future check)."""
+    """Every dictionary entry's `uw` is well-formed text (issue 18, 2026-09-15: `dictionary.md`'s
+    own grammar is `<UW> ::= <text> | <REGULAR EXPRESSION>`, not digits-only; this check can only
+    catch a wrong type or a stray control character/newline, not a shape it does not recognise).
+    Resolving `uw` to a UCL gloss stays out of scope (issue 17, "Not in scope")."""
     errors: list[str] = []
     dict_dir = store_root / "dictionary"
     if not dict_dir.is_dir():
@@ -276,10 +282,10 @@ def check_uw_references(store_root: Path) -> list[str]:
                 continue
             uw = entry.get("uw")
             headword = entry.get("headword", f"entry {index}")
-            if not isinstance(uw, str) or not UW_PATTERN.match(uw):
+            if not isinstance(uw, str) or not UW_PATTERN.fullmatch(uw):
                 errors.append(
                     f"{_rel(store_root, path)}[{index}] {headword!r}: uw {uw!r} is not "
-                    "digits-only or empty"
+                    "printable text without control characters"
                 )
     return errors
 

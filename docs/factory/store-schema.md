@@ -12,7 +12,7 @@ One record in `dictionary/<a-z>.yaml`.
 |---|---|---|---|
 | `headword` | string | present | Archive `NLW` field, without the `[brackets]`. |
 | `id` | integer | present | Archive `ID` field, the entry's primary key. |
-| `uw` | string | present, wrong format label | Archive `UW` field. Both samples hold a UCN (a numeric code), not the UCL string the export filename and header promise (`docs/unl-reference/formats/dictionary.md`, "Where the exports disagree with the wiki"). |
+| `uw` | string | present, more than one shape | Archive `UW` field. The narrow sample `dictionary.md`'s "Where the exports disagree with the wiki" section checked held only a UCN (a numeric code), not the UCL string the export filename and header promise — but at scale (issue 18, 2026-09-15) real entries also hold a UCL string (`zero(equ>no)`) and a pronoun placeholder regex (`00.@2.@dual.@female`), matching `dictionary.md`'s own formal grammar (`<UW> ::= <text> \| <REGULAR EXPRESSION>`). The validator checks printable text, not a digit shape. |
 | `features` | object | present | Archive `FEATURE LIST` field, as attribute-value pairs. |
 | `lang` | string | two-letter | Archive `FLG` is two letters (`af`, `en`), not the ISO 639-3 the wiki's formal syntax names. The importer translates to iso3 for the store folder; whether the field itself is rewritten is not decided here (`docs/unl-reference/formats/dictionary.md`, "Where the exports disagree with the wiki"). |
 | `frequency` | integer, 0-255 | present | Archive `FRE` field. |
@@ -201,32 +201,54 @@ them as unresolved attributes.
   prints that count as a warning, not a failure — exactly the number `SPEC.md`'s M3 gate (where
   coverage becomes an error) needs as its starting point.
 
-## Two real archive gaps this check found
+## Real archive gaps this check found, now fully triaged (issue 18, 2026-09-15)
 
-Running `check_feature_values` against the real `afr` store (2026-09-15) found two more
-tagset/export disagreements of the same shape as `SEM=REL`/`SEM=RLT` (`docs/unl-reference/formats
-/tagset.md`), neither fixed by this issue (it validates the store; it does not edit it):
+Running `check_feature_values` and `check_uw_references` against the real `afr`/`eng` stores
+found the 1234/47679 feature-value total below is not one gap but two, plus a validator bug the
+UW column was hiding:
 
-- `SEM=ATT` appears in real `afr` dictionary entries (997 of them); the live tagset has no `ATT`
-  tag, only `ATR` ("attribute"). Almost certainly the same wiki-vs-export mismatch pattern as
-  `REL`/`RLT`, one letter off.
-- `POS=CCJ` appears in `afr/grammar/generation.yaml` (rules 33 and 34, "coordinating
-  conjunction"); `CCJ` does not appear in `exports/export_tagset.php` at all.
+- **`check_uw_references` was too strict, fixed in issue 18.** `dictionary.md`'s own grammar is
+  `<UW> ::= <text> | <REGULAR EXPRESSION>`, not digits-only; the check enforced digits-only and
+  flagged 326 real, valid entries (UCL strings like `zero(equ>no)`, pronoun placeholder regexes
+  like `00.@2.@dual.@female`). Widened to printable text. UW errors are now 0 for both languages.
+- **31304 lines (issue 167, Side, open): `SEM=ATT`/`SOV`/`REL`, an archive-internal vintage
+  mismatch, not a store or importer bug.** `tagset.yaml` faithfully mirrors the *live* tagset
+  export, which no longer defines these three codes; the *dictionary* exports (a decade older)
+  still use them. `REL`→`RLT` is a known 1:1 rename (already documented below); `ATT` and `SOV`
+  are two more of the same phenomenon, at far larger scale (15940 and 13214 occurrences), and
+  `SOV` has no obvious replacement in the current export.
+- **17609 lines (issue 168, Side, open): a real importer bug, plus three small tagset gaps.**
+  17072 are one cause: the importer flattens `dictionary.md`'s `"#" <SUBNLWID> <FEATURE LIST>`
+  compound sub-word feature lists into a bogus flat attribute (`"#01": "LEMMA=zero in,BF=zero,..."`)
+  instead of parsing them. The rest: `GOV`'s value still gets checked though its attribute name is
+  already exempt (250), `PER='3PE'` vs the export's `3PER` (100), and `POS=CCJ` (2, first found
+  here, before the two vintage-mismatch tags below were confirmed to be the same pattern).
+
+`REL` and `ATT`, for the record — `REL` is the first-found, already-documented case; `ATT` is the
+second:
+
+- `SEM=REL` appears in real dictionary entries (2150 across both languages); the live tagset
+  has no `REL` tag, only `RLT` ("relation") — documented in
+  `docs/unl-reference/formats/tagset.md`, "Where the export adds tags".
+- `SEM=ATT` appears in real dictionary entries (15940 across both languages); the live tagset has
+  no `ATT` tag, only `ATR` ("attribute"). Same wiki/export-vintage mismatch pattern as `REL`/`RLT`,
+  one letter off, not yet mapped (issue 167).
 
 ## `python -m tools.validate --all` exit code on the real stores (known M2 finding)
 
 `--all` exits 1 against the real `afr`/`eng` stores, not 0: schema errors are 0 for both, but
-`check_feature_values` and `check_uw_references` are real errors at M2 (only `check_rule_coverage`
-is a warning, per `SPEC.md` §3.3), and the real archive-derived data has genuine defects of both
-kinds. Counts from the 2026-09-15 run:
+`check_feature_values` is a real error at M2 (only `check_rule_coverage` is a warning, per
+`SPEC.md` §3.3), and the real archive-derived data has genuine defects issues 167 and 168 above
+now fully account for. Counts from the 2026-09-15 run, after issue 18's UW-check fix:
 
 | | schema | feature-value | UW | uncovered rules (warning) |
 |---|---|---|---|---|
-| `afr` | 0 | 1234 | 2 | 431 |
-| `eng` | 0 | 47679 | 324 | 442 |
+| `afr` | 0 | 1234 | 0 | 431 |
+| `eng` | 0 | 47679 | 0 | 442 |
 
 This is the validator doing its job against data issues 14 and 16 imported, not a defect in
 issue 17 itself; the M2 gate was stamped over this nonzero exit on the owner's call (2026-09-15),
-treating `--all` as a reporting step here rather than a blocking one until a later issue fixes the
-underlying `afr`/`eng` data (the `SEM=ATT`/`POS=CCJ` gaps above are two confirmed examples; the
-bulk of the 1234/47679 figure is not yet triaged tag-by-tag).
+treating `--all` as a reporting step here rather than a blocking one, with both root causes now
+tracked as issues 167 (the `SEM` vintage mismatch, 31304 lines) and 168 (the importer's
+compound-feature-list bug plus three small tagset gaps, 17609 lines) — 31304 + 17609 = 48913, the
+full 1234 + 47679 total, with nothing left untriaged.
