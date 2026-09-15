@@ -2,15 +2,15 @@
 issue: 166
 title: "Fixture-sized importer tests: the gate stops importing the real archive"
 milestone: Side
-status: in-progress
+status: done
 depends_on: [14, 15, 16]
 agent: implementer
 agents: [implementer]
 model: sonnet
 effort: medium
 checkpoint: null
-commit: null
-worktree: .worktrees/side-166-fixture-sized-importer-tests
+commit: c1e56fe
+worktree: null
 github_issue: 236
 ---
 ## What
@@ -78,10 +78,10 @@ real stores, held by issue 18. Importer speed. The 15-minute cap itself stays as
 
 ## Done when
 
-- [ ] `tests/fixtures/archive/` holds the afr and eng AD, GD, grammar, corpus and tagset
+- [x] `tests/fixtures/archive/` holds the afr and eng AD, GD, grammar, corpus and tagset
       fixtures with a `manifest.jsonl` line per file.
-- [ ] The four importer test modules read the fixture folder and have no archive `skipif`.
-- [ ] `python -m pytest tools/ -q --durations=15` passes in under 60 seconds locally.
-- [ ] `gate.yml`'s pytest step carries `--durations=15`.
-- [ ] The owner-run full-archive regenerate-and-diff step is documented.
+- [x] The four importer test modules read the fixture folder and have no archive `skipif`.
+- [x] `python -m pytest tools/ -q --durations=15` passes in under 60 seconds locally.
+- [x] `gate.yml`'s pytest step carries `--durations=15`.
+- [x] The owner-run full-archive regenerate-and-diff step is documented.
 - [ ] The pull request's gate run is green on all three build legs without an admin override.
