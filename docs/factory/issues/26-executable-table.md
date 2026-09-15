@@ -3,7 +3,7 @@ issue: 26
 title: "The test table is the test: a golden loader runs every row, and a held-out slice runs only at the gate"
 milestone: M3
 status: open
-depends_on: [12, 115]
+depends_on: [12, 115, 24]
 agent: test-writer
 agents: [test-writer, implementer]
 model: sonnet
@@ -32,9 +32,12 @@ After this quest the YAML twin is the test. One CTest case, labelled `golden`, r
 test-writer lands the loader once, here, and from then on an engine issue is two passes:
 rule-author, implementer. A second directory, `tests/held-out/`, carries rows in the same shape
 that no issue file names and no agent brief loads; it runs under the `held-out` label in
-`/gate` and CI only. The M3 engine-slice quests, 19 to 25, are not written yet; the M3 planning
-pass adds the ones this loader needs to `depends_on`. Quest 115 settles the commit shape first,
-so the loader's own red state is a commit.
+`/gate` and CI only. The M3 planning pass (issue 18) wrote the engine-slice quests, 19 to 25:
+19 tokeniser, 20 dictionary lookup, 21 disambiguation format and eng-gap decision, 22 rule
+interpreter, 23 `Options`/`Result`/`Status`/`Trace`, 24 this loader's own fixture table (fifteen
+rows from the shared `ugoa1` corpus, added to `depends_on` above), 25 the end-to-end pipeline
+issue 24's rows exercise ahead of this loader generalising the harness. Quest 115 settles the
+commit shape first, so the loader's own red state is a commit.
 
 ## Acceptance criteria
 
