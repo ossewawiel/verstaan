@@ -2,15 +2,15 @@
 issue: 168
 title: "The gate validates the data the branch changed, not the whole archive"
 milestone: Side
-status: in-progress
+status: done
 depends_on: [17, 94]
 agent: implementer
 agents: [implementer, docs-writer]
 model: sonnet
 effort: medium
 checkpoint: 4
-commit: null
-worktree: .worktrees/quest-168-tagset-feature-mismatch
+commit: 242bf71
+worktree: null
 github_issue: 240
 ---
 ## What
