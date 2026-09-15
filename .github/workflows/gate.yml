@@ -40,7 +40,7 @@ jobs:
           python-version: "3.13"
 
       - name: Install Python tooling
-        run: pip install ruff pytest pyyaml
+        run: pip install ruff pytest pyyaml jsonschema
 
       - name: Step 0 -- no stub left outside tests/
         shell: bash
@@ -130,7 +130,7 @@ jobs:
           python-version: "3.13"
 
       - name: Install Python tooling
-        run: pip install ruff pytest pyyaml
+        run: pip install ruff pytest pyyaml jsonschema
 
       # Issue 95's acceptance criteria promise Node 20 or later. The runner image ships some
       # Node already, but that version is whatever the image happens to carry, not a pin -- so
