@@ -3,8 +3,7 @@
 Last completed:  #164 — The console looks like a CIC and reports like a quest log: one design
                  system, the Console and Quests rooms, and half-screen done properly (Side),
                  commit 303bfa9
-Next up:         #26 — The test table is the test: a golden loader runs every row, and a held-out
-                 slice runs only at the gate (M3)
+Next up:         #17 — Build the store validator (M2)
 Branch / PR:     main, https://github.com/ossewawiel/verstaan.git, 0 files dirty, no gate stamp
-                 for 7d5600f
-Resume with:     /factory-run 26
+                 for 18e0a65
+Resume with:     /factory-run 17
