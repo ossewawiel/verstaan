@@ -3,14 +3,8 @@
 Last completed:  #164 — The console looks like a CIC and reports like a quest log: one design
                  system, the Console and Quests rooms, and half-screen done properly (Side),
                  commit 303bfa9
-Next up:         #13 — Write the canonical data model as a schema (M2)
-Branch / PR:     main, https://github.com/ossewawiel/verstaan.git, 0 files dirty, no gate stamp
-                 for c371b1d
-Resume with:     /factory-run 13
-
-Note: #13 already shows `status: done` (commit 70093b7) on the `m2-store` milestone tree, which
-is ahead of `main`. This worktree branches from `main`, where #13 still reads `status: open`, so
-`/factory-status` here still names #13 next up. Not a data problem — `m2-store` is a shared
-milestone tree per the "Finishing a milestone" workflow; it merges to `main` only at its
-close-out issue. Run `/factory-run` from `m2-store` (or after it merges) to pick up real next-up
-state for that milestone.
+Next up:         #26 — The test table is the test: a golden loader runs every row, and a held-out
+                 slice runs only at the gate (M3)
+Branch / PR:     m2-store, https://github.com/ossewawiel/verstaan.git, 0 files dirty, gate stamp
+                 pending for the merge commit
+Resume with:     /factory-run 26

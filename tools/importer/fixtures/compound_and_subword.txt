@@ -1,0 +1,7 @@
+;Hand-built fixture, not from the UNL Archive. One compound NLW entry and one #01(...)/#02(...)
+;sub-word scoped entry, built by hand from docs/unl-reference/formats/dictionary.md's formal
+;syntax (issue 14 acceptance criteria), proving the parser accepts both shapes without erroring.
+;Consumed only by tools/importer/test_dictionary.py; never imported into data/languages/.
+
+[[appear] [to be]]{900001}"400000001"(LEMMA=appear to be,BF=appear,LEX=I,POS=MOV,LST=MTW)<en,1,0>;
+[[begin] [to]]{900002}"400000002"(LEMMA=begin to,BF=begin,LEX=I,POS=MOV,LST=MTW,#01(LEMMA=begin,BF=begin,LEX=I,POS=MOV),#02(BF=to,LEX=P))<en,1,0>;

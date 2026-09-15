@@ -3,6 +3,11 @@ name = "verstaan-tools"
 version = "0.0.0"
 requires-python = ">=3.13"
 description = "Python tooling that builds the data and the generated code. Not on the translation path."
+# jsonschema: tools/validate/tests/test_schema.py validates the three schema files against worked
+# examples with it (issue 13). pyyaml: tools/importer/dictionary.py writes and reads store YAML
+# (issue 14), and reuses PyYAML's own implicit-scalar resolver to decide when a value needs
+# quoting; tools/validate's tests already import it too, previously undeclared here.
+dependencies = ["jsonschema>=4", "pyyaml>=6"]
 
 [tool.ruff]
 line-length = 100

@@ -1,0 +1,428 @@
+# Licence: CC BY-SA 4.0. Source: UNL Archive, see data/archive/manifest.jsonl
+- id: Y31
+  kind: subcategorisation
+  lhs: VS(NP)
+  rhs: ""
+  conditions: []
+  comment: "Intransitive verb (calcify, bifurcate, dissolve)"
+  source: {archive_path: exports/eng/export_grammar.php__type_Y_lang_en, line: Y31}
+- id: Y32
+  kind: subcategorisation
+  lhs: VS(NP)
+  rhs: ""
+  conditions: []
+  comment: "Intransitive verb (walk away, make peace, kill oneself)"
+  source: {archive_path: exports/eng/export_grammar.php__type_Y_lang_en, line: Y32}
+- id: Y33
+  kind: subcategorisation
+  lhs: VS(DUM)
+  rhs: ""
+  conditions: []
+  comment: "Intransitive verb whose subject is a dummy pronoun (snow, thunder)"
+  source: {archive_path: exports/eng/export_grammar.php__type_Y_lang_en, line: Y33}
+- id: Y34
+  kind: subcategorisation
+  lhs: VS(NP)VC(VH(INF))VC(PP)
+  rhs: ""
+  conditions: []
+  comment: "Indirect transitive verb (begin, contribute)"
+  source: {archive_path: exports/eng/export_grammar.php__type_Y_lang_en, line: Y34}
+- id: Y35
+  kind: subcategorisation
+  lhs: VS(NP)VC(NP)VC(NP); VS(NP)VC(NP)VC(JP)
+  rhs: ""
+  conditions: []
+  comment: Direct transitive verb with a complement (make (me happy))
+  source: {archive_path: exports/eng/export_grammar.php__type_Y_lang_en, line: Y35}
+- id: Y36
+  kind: subcategorisation
+  lhs: VS(NP)VC(NP); VS(NP)VC(JP)
+  rhs: ""
+  conditions: []
+  comment: Intransitive verb with a complement (drive (crazy))
+  source: {archive_path: exports/eng/export_grammar.php__type_Y_lang_en, line: Y36}
+- id: Y37
+  kind: subcategorisation
+  lhs: VS(NP)VC(JP)
+  rhs: ""
+  conditions: []
+  comment: Intransitive verb with a complement (think (big))
+  source: {archive_path: exports/eng/export_grammar.php__type_Y_lang_en, line: Y37}
+- id: Y38
+  kind: subcategorisation
+  lhs: VS(NP)VC(NP)
+  rhs: ""
+  conditions: []
+  comment: "Direct transitive verb (accept, accomplish, acknowledge)"
+  source: {archive_path: exports/eng/export_grammar.php__type_Y_lang_en, line: Y38}
+- id: Y39
+  kind: subcategorisation
+  lhs: VS(NP)VC(NP)
+  rhs: ""
+  conditions: []
+  comment: "Direct transitive verb (importune, impress, intimidate)"
+  source: {archive_path: exports/eng/export_grammar.php__type_Y_lang_en, line: Y39}
+- id: Y40
+  kind: subcategorisation
+  lhs: VS(NP)VC(NP)
+  rhs: ""
+  conditions: []
+  comment: "Direct transitive verb (rejuvenate, scare, strike)"
+  source: {archive_path: exports/eng/export_grammar.php__type_Y_lang_en, line: Y40}
+- id: Y41
+  kind: subcategorisation
+  lhs: VS(NP)VC(NP)
+  rhs: ""
+  conditions: []
+  comment: "Direct transitive verb (account for, add, assimilate)"
+  source: {archive_path: exports/eng/export_grammar.php__type_Y_lang_en, line: Y41}
+- id: Y42
+  kind: subcategorisation
+  lhs: "VS(NP)VC(PH([to]))"
+  rhs: ""
+  conditions: []
+  comment: "Indirect transitive verb that selects the preposition \"to\" (appeal, pertain)"
+  source: {archive_path: exports/eng/export_grammar.php__type_Y_lang_en, line: Y42}
+- id: Y43
+  kind: subcategorisation
+  lhs: "VS(NP)VC(PH([on]))"
+  rhs: ""
+  conditions: []
+  comment: "Indirect transitive verb that selects the preposition \"on\" (concentrate, focus)"
+  source: {archive_path: exports/eng/export_grammar.php__type_Y_lang_en, line: Y43}
+- id: Y44
+  kind: subcategorisation
+  lhs: VS(NP)VC(NP)VC(NP)
+  rhs: ""
+  conditions: []
+  comment: "Ditransitive verb that takes two direct objects (address, allow, call)"
+  source: {archive_path: exports/eng/export_grammar.php__type_Y_lang_en, line: Y44}
+- id: Y45
+  kind: subcategorisation
+  lhs: "VS(NP)VC(NP)VC(PH([to]))"
+  rhs: ""
+  conditions: []
+  comment: "Ditransitive verb whose indirect object is introduced by \"to\" (commit, give)"
+  source: {archive_path: exports/eng/export_grammar.php__type_Y_lang_en, line: Y45}
+- id: Y46
+  kind: subcategorisation
+  lhs: "VS(NP)VC(NP)VC(PH([from]))"
+  rhs: ""
+  conditions: []
+  comment: "Ditransitive verb whose indirect object is introduced by \"from\" (extort, keep back)"
+  source: {archive_path: exports/eng/export_grammar.php__type_Y_lang_en, line: Y46}
+- id: Y47
+  kind: subcategorisation
+  lhs: "VS(NP)VC(NP)VC(PH([with]))"
+  rhs: ""
+  conditions: []
+  comment: "Ditransitive verb whose indirect object is introduced by \"with\" (empower, familiarise)"
+  source: {archive_path: exports/eng/export_grammar.php__type_Y_lang_en, line: Y47}
+- id: Y48
+  kind: subcategorisation
+  lhs: "VS(NP)VC(NP)VC(PH([of]))"
+  rhs: ""
+  conditions: []
+  comment: "Ditransitive verb whose indirect object is introduced by \"of\" (absolve, deprive)"
+  source: {archive_path: exports/eng/export_grammar.php__type_Y_lang_en, line: Y48}
+- id: Y49
+  kind: subcategorisation
+  lhs: "VS(NP)VC(NP)VC(PH([on]))"
+  rhs: ""
+  conditions: []
+  comment: "Ditransitive verb whose indirect object is introduced by \"on\" (impose, inflict)"
+  source: {archive_path: exports/eng/export_grammar.php__type_Y_lang_en, line: Y49}
+- id: Y50
+  kind: subcategorisation
+  lhs: VS(NP)VC(NP)VC(PP)
+  rhs: ""
+  conditions: []
+  comment: "Ditransitive verb whose indirect object is introduced by a preposition (accustom, compensate)"
+  source: {archive_path: exports/eng/export_grammar.php__type_Y_lang_en, line: Y50}
+- id: Y51
+  kind: subcategorisation
+  lhs: VS(NP)VC(NP)VC(PP)
+  rhs: ""
+  conditions: []
+  comment: "Ditransitive verb whose indirect object is introduced by a preposition (classify, conciliate, place)"
+  source: {archive_path: exports/eng/export_grammar.php__type_Y_lang_en, line: Y51}
+- id: Y52
+  kind: subcategorisation
+  lhs: VS(NP)VC(PP)
+  rhs: ""
+  conditions: []
+  comment: "Indirect transitive verb (come, cope, deal)"
+  source: {archive_path: exports/eng/export_grammar.php__type_Y_lang_en, line: Y52}
+- id: Y53
+  kind: subcategorisation
+  lhs: VS(NP)
+  rhs: ""
+  conditions: []
+  comment: "Intransitive verb (suppurate, necrose)"
+  source: {archive_path: exports/eng/export_grammar.php__type_Y_lang_en, line: Y53}
+- id: Y54
+  kind: subcategorisation
+  lhs: "VS(NP)VC(NP)VC(PC([to]; VH(INF)))"
+  rhs: ""
+  conditions: []
+  comment: "Ditransitive verb whose indirect object is a clause (designate, exhort)"
+  source: {archive_path: exports/eng/export_grammar.php__type_Y_lang_en, line: Y54}
+- id: Y55
+  kind: subcategorisation
+  lhs: VS(NP)VC(NP)VC(VH(INF))
+  rhs: ""
+  conditions: []
+  comment: "Ditransitive verb whose indirect object is a clause (induce, invite)"
+  source: {archive_path: exports/eng/export_grammar.php__type_Y_lang_en, line: Y55}
+- id: Y56
+  kind: subcategorisation
+  lhs: "VS(NP)VC(CH([that]))"
+  rhs: ""
+  conditions: []
+  comment: "Direct transitive verb whose object is a clause (anticipate, argue, ascertain)"
+  source: {archive_path: exports/eng/export_grammar.php__type_Y_lang_en, line: Y56}
+- id: Y57
+  kind: subcategorisation
+  lhs: "VS(NP)VC(PH([to]))"
+  rhs: ""
+  conditions: []
+  comment: "Indirect transitive verb that selects the preposition \"to\" (submit, give in)"
+  source: {archive_path: exports/eng/export_grammar.php__type_Y_lang_en, line: Y57}
+- id: Y58
+  kind: subcategorisation
+  lhs: "VS(NP)VC(PH([to]; VH(INF)))"
+  rhs: ""
+  conditions: []
+  comment: "Indirect itransitive verb whose indirect object is a clause (come close, fail)"
+  source: {archive_path: exports/eng/export_grammar.php__type_Y_lang_en, line: Y58}
+- id: Y59
+  kind: subcategorisation
+  lhs: "VS(NP)VC(CC([whether]; VH(INF)))"
+  rhs: ""
+  conditions: []
+  comment: "Direct transitive verb whose object is a clause (check, wonder)"
+  source: {archive_path: exports/eng/export_grammar.php__type_Y_lang_en, line: Y59}
+- id: Y60
+  kind: subcategorisation
+  lhs: "VS(NP)VC(NP)VC(PC([into]; VH(GER)))"
+  rhs: ""
+  conditions: []
+  comment: "Ditransitive verb whose indirect object is a clause introduced by \"into\" (persuade, shame)"
+  source: {archive_path: exports/eng/export_grammar.php__type_Y_lang_en, line: Y60}
+- id: Y61
+  kind: subcategorisation
+  lhs: "VS(NP)VC(NP)VC(PH([with]))"
+  rhs: ""
+  conditions: []
+  comment: "Ditransitive verb whose indirect object is introduced by \"with\" (combine, unite)"
+  source: {archive_path: exports/eng/export_grammar.php__type_Y_lang_en, line: Y61}
+- id: Y62
+  kind: subcategorisation
+  lhs: VS(NP)VC(VH(INF))
+  rhs: ""
+  conditions: []
+  comment: "Direct transitive verb whose object is a clause (dare, presume)"
+  source: {archive_path: exports/eng/export_grammar.php__type_Y_lang_en, line: Y62}
+- id: Y63
+  kind: subcategorisation
+  lhs: VS(NP)VC(VH(GER))
+  rhs: ""
+  conditions: []
+  comment: "Direct transitive verb whose object is a clause (avoid, go along)"
+  source: {archive_path: exports/eng/export_grammar.php__type_Y_lang_en, line: Y63}
+- id: Y64
+  kind: subcategorisation
+  lhs: "VS(DUM)VC(CH([that]))"
+  rhs: ""
+  conditions: []
+  comment: "Direct transitive verb whose object is a clause and the subject is a dummy pronoun (appear, seem)"
+  source: {archive_path: exports/eng/export_grammar.php__type_Y_lang_en, line: Y64}
+- id: Y65
+  kind: subcategorisation
+  lhs: VS(NP)VC(VH(INF))
+  rhs: ""
+  conditions: []
+  comment: "Indirect itransitive verb whose indirect object is a clause (allow, let)"
+  source: {archive_path: exports/eng/export_grammar.php__type_Y_lang_en, line: Y65}
+- id: Y76
+  kind: subcategorisation
+  lhs: "NC(PH([of]))"
+  rhs: ""
+  conditions: []
+  comment: "Noun requiring a complement introduced by \"of\" (intention, lack, result, smell, taste)"
+  source: {archive_path: exports/eng/export_grammar.php__type_Y_lang_en, line: Y76}
+- id: Y78
+  kind: subcategorisation
+  lhs: "JC(PH([to]))"
+  rhs: ""
+  conditions: []
+  comment: Adjective requiring complement introduced by "to" (according > according to)
+  source: {archive_path: exports/eng/export_grammar.php__type_Y_lang_en, line: Y78}
+- id: Y79
+  kind: subcategorisation
+  lhs: "JC(PH([with]))"
+  rhs: ""
+  conditions: []
+  comment: Adjective requiring complement introduced by "with" (consistent > consistent with)
+  source: {archive_path: exports/eng/export_grammar.php__type_Y_lang_en, line: Y79}
+- id: Y80
+  kind: subcategorisation
+  lhs: "JC(PH([for]))"
+  rhs: ""
+  conditions: []
+  comment: Adjective requiring complement introduced by "for" (hungry > hungry for)
+  source: {archive_path: exports/eng/export_grammar.php__type_Y_lang_en, line: Y80}
+- id: Y81
+  kind: subcategorisation
+  lhs: "JC(PH([from]))"
+  rhs: ""
+  conditions: []
+  comment: Adjective requiring complement introduced by "from" (distinct > distinct from)
+  source: {archive_path: exports/eng/export_grammar.php__type_Y_lang_en, line: Y81}
+- id: Y82
+  kind: subcategorisation
+  lhs: "JC(PH([of]))"
+  rhs: ""
+  conditions: []
+  comment: Adjective requiring complement introduced by "of" (capable > capable of)
+  source: {archive_path: exports/eng/export_grammar.php__type_Y_lang_en, line: Y82}
+- id: Y83
+  kind: subcategorisation
+  lhs: AC(NP)
+  rhs: ""
+  conditions: []
+  comment: Adverb requiring a noun phrase as complement (a.k.a.)
+  source: {archive_path: exports/eng/export_grammar.php__type_Y_lang_en, line: Y83}
+- id: Y84
+  kind: subcategorisation
+  lhs: AC(CP)
+  rhs: ""
+  conditions: []
+  comment: Adverb requiring a complementizer phrase as complement (much as)
+  source: {archive_path: exports/eng/export_grammar.php__type_Y_lang_en, line: Y84}
+- id: Y86
+  kind: subcategorisation
+  lhs: "AC(PH([with]))"
+  rhs: ""
+  conditions: []
+  comment: Adverb requiring complement introduced by "with" (along > along with)
+  source: {archive_path: exports/eng/export_grammar.php__type_Y_lang_en, line: Y86}
+- id: Y87
+  kind: subcategorisation
+  lhs: "AC(PH([for]))"
+  rhs: ""
+  conditions: []
+  comment: Adverb requiring complement introduced by "for" (in return > in return for)
+  source: {archive_path: exports/eng/export_grammar.php__type_Y_lang_en, line: Y87}
+- id: Y88
+  kind: subcategorisation
+  lhs: "JC(PH([on]))"
+  rhs: ""
+  conditions: []
+  comment: Adverb requiring complement introduced by "on" (up > up on)
+  source: {archive_path: exports/eng/export_grammar.php__type_Y_lang_en, line: Y88}
+- id: Y197
+  kind: subcategorisation
+  lhs: "AC(PH([to]))"
+  rhs: ""
+  conditions: []
+  comment: "The adverb requires a complement introduced by \"to\" (fortunately [to him])"
+  source: {archive_path: exports/eng/export_grammar.php__type_Y_lang_en, line: Y197}
+- id: Y206
+  kind: subcategorisation
+  lhs: CC(IP)
+  rhs: ""
+  conditions: []
+  comment: "The complement in a complementizer phrase is an inflectional phrase (if [John comes])"
+  source: {archive_path: exports/eng/export_grammar.php__type_Y_lang_en, line: Y206}
+- id: Y208
+  kind: subcategorisation
+  lhs: IS(NP)IC(VP)
+  rhs: ""
+  conditions: []
+  comment: "The specifier in an inflectional phrase is a noun phrase and the complement in an inflectional phrase is a verbal phrase ([Mary] will [kiss Peter])"
+  source: {archive_path: exports/eng/export_grammar.php__type_Y_lang_en, line: Y208}
+- id: Y210
+  kind: subcategorisation
+  lhs: "NC(PH([of]))"
+  rhs: ""
+  conditions: []
+  comment: "The complement in a noun phrase is a prepositional phrase (construction [of Babel])"
+  source: {archive_path: exports/eng/export_grammar.php__type_Y_lang_en, line: Y210}
+- id: Y247
+  kind: subcategorisation
+  lhs: "NC(PH([to]))"
+  rhs: ""
+  conditions: []
+  comment: "Noun requiring a complement introduced by \"to\" (access, alternative, exception, invitation, solution)"
+  source: {archive_path: exports/eng/export_grammar.php__type_Y_lang_en, line: Y247}
+- id: Y248
+  kind: subcategorisation
+  lhs: "NC(PH([for]))"
+  rhs: ""
+  conditions: []
+  comment: "Noun requiring a complement introduced by \"for\" (admiration, credit, desire, hope)"
+  source: {archive_path: exports/eng/export_grammar.php__type_Y_lang_en, line: Y248}
+- id: Y249
+  kind: subcategorisation
+  lhs: "NC(PH([on]))"
+  rhs: ""
+  conditions: []
+  comment: "Noun requiring a complement introduced by \"on\" (attack, authority, effect, expert, influence)"
+  source: {archive_path: exports/eng/export_grammar.php__type_Y_lang_en, line: Y249}
+- id: Y250
+  kind: subcategorisation
+  lhs: "NC(PH([in]))"
+  rhs: ""
+  conditions: []
+  comment: "Noun requiring a complement introduced by \"in\" (decrease, delay, difficulty, experience)"
+  source: {archive_path: exports/eng/export_grammar.php__type_Y_lang_en, line: Y250}
+- id: Y251
+  kind: subcategorisation
+  lhs: "NC(PH([between]))"
+  rhs: ""
+  conditions: []
+  comment: "Noun requiring a complement introduced by \"between\" (comparison, connection, difference)"
+  source: {archive_path: exports/eng/export_grammar.php__type_Y_lang_en, line: Y251}
+- id: Y252
+  kind: subcategorisation
+  lhs: "NC(PH([with]))"
+  rhs: ""
+  conditions: []
+  comment: "Noun requiring a complement introduced by \"with\" (association, contrast, link, relationship)"
+  source: {archive_path: exports/eng/export_grammar.php__type_Y_lang_en, line: Y252}
+- id: Y253
+  kind: subcategorisation
+  lhs: "NC(PH([towards]))"
+  rhs: ""
+  conditions: []
+  comment: Noun requiring a complement introduced by "towards" (cruelty)
+  source: {archive_path: exports/eng/export_grammar.php__type_Y_lang_en, line: Y253}
+- id: Y254
+  kind: subcategorisation
+  lhs: "NC(PH([about]))"
+  rhs: ""
+  conditions: []
+  comment: "Noun requiring a complement introduced by \"about\" (information, opinion)"
+  source: {archive_path: exports/eng/export_grammar.php__type_Y_lang_en, line: Y254}
+- id: Y255
+  kind: subcategorisation
+  lhs: "NC(PH([from]))"
+  rhs: ""
+  conditions: []
+  comment: Noun requiring a complement introduced by "from" (protection)
+  source: {archive_path: exports/eng/export_grammar.php__type_Y_lang_en, line: Y255}
+- id: Y259
+  kind: subcategorisation
+  lhs: PC(NP)
+  rhs: ""
+  conditions: []
+  comment: "The complement in a prepositional phrase is a noun phrase (book of [Peter]; book about [Peter])"
+  source: {archive_path: exports/eng/export_grammar.php__type_Y_lang_en, line: Y259}
+- id: Y261
+  kind: subcategorisation
+  lhs: CC(NP)
+  rhs: ""
+  conditions: []
+  comment: "The complement in a complementizer phrase is a noun phrase (as well as, along with)"
+  source: {archive_path: exports/eng/export_grammar.php__type_Y_lang_en, line: Y261}

@@ -1,0 +1,120 @@
+# Licence: CC BY-SA 4.0. Source: UNL Archive, see data/archive/manifest.jsonl
+- id: M2
+  kind: inflection
+  lhs: ""
+  rhs: "SNG:=0>\"\";PLR:=0>\"s\";"
+  conditions: []
+  comment: "Add s at the end of the word for plural (bessies, kersies)"
+  source: {archive_path: exports/afr/export_grammar.php__type_M_lang_af, line: M2}
+- id: M3
+  kind: inflection
+  lhs: ""
+  rhs: "SNG:=0>\"\";PLR:=0>\"e\";"
+  conditions: []
+  comment: "Add an e at the end of a noun to create the plural form (berge, perde, honde)"
+  source: {archive_path: exports/afr/export_grammar.php__type_M_lang_af, line: M3}
+- id: M4
+  kind: inflection
+  lhs: ""
+  rhs: "SNG:=0>\"\";PLR:=\"eid\">\"ede\";"
+  conditions: []
+  comment: "Replece 'eid' at the end of the noun with 'ede' to form the plural (wreedhede, reinhede)"
+  source: {archive_path: exports/afr/export_grammar.php__type_M_lang_af, line: M4}
+- id: M5
+  kind: inflection
+  lhs: ""
+  rhs: "SNG:=0>\"\";PLR:=[-2]:\"\",0>\"e\";"
+  conditions: []
+  comment: "For the plural form, add 'e' at the end an remove one letter from the long vokal (ale, male, pale, sale)"
+  source: {archive_path: exports/afr/export_grammar.php__type_M_lang_af, line: M5}
+- id: M6
+  kind: inflection
+  lhs: ""
+  rhs: "SNG:=0>\"\";PLR:=0>\"te\";"
+  conditions: []
+  comment: "Add 'te' at the end of the word for plural (kunste, angste)"
+  source: {archive_path: exports/afr/export_grammar.php__type_M_lang_af, line: M6}
+- id: M7
+  kind: inflection
+  lhs: ""
+  rhs: "SNG:=0>\"\";PLR:=[-1]:\"e\";"
+  conditions: []
+  comment: "Plural: In general if a word ends in 'g' after a short 'a', or in some cases if it ends with a 'd', replace 'g' and 'd' with 'e' (dae, aanslae, kruie, tye)"
+  source: {archive_path: exports/afr/export_grammar.php__type_M_lang_af, line: M7}
+- id: M16
+  kind: inflection
+  lhs: ""
+  rhs: "SNG:=>\"\";PLR:=>\"'s\";"
+  conditions: []
+  comment: "Add a 's at the end of the word for the plural form (pa's, video's, ma's)"
+  source: {archive_path: exports/afr/export_grammar.php__type_M_lang_af, line: M16}
+- id: M17
+  kind: inflection
+  lhs: ""
+  rhs: "SNG:=>\"\";PLR:=[-1]+,>\"e\";"
+  conditions: []
+  comment: "Double the consonant and add an e at the end to get the plural form (balle, denne, katte)"
+  source: {archive_path: exports/afr/export_grammar.php__type_M_lang_af, line: M17}
+- id: M18
+  kind: inflection
+  lhs: ""
+  rhs: "SNG:=>\"\";PLR:=1>\"we\";"
+  conditions: []
+  comment: "Replace the the consonant at the end of the word if 'f' with 'we' for the plural form. (briewe, skywe, hoewe)"
+  source: {archive_path: exports/afr/export_grammar.php__type_M_lang_af, line: M18}
+- id: M19
+  kind: inflection
+  lhs: ""
+  rhs: "SNG:=>\"\";PLR:=>\"ë\";"
+  conditions: []
+  comment: "Add an 'ë' at the end of some words ending in 'ie' to get the plural form. (kopieë, porieë)"
+  source: {archive_path: exports/afr/export_grammar.php__type_M_lang_af, line: M19}
+- id: M20
+  kind: inflection
+  lhs: ""
+  rhs: "SNG:=>\"\";PLR:=1>\"ë\";"
+  conditions: []
+  comment: "Replace the last letter of some words ending in 'e' or 'g' with 'ë' to get the plural form (weë, treë, oorloë)"
+  source: {archive_path: exports/afr/export_grammar.php__type_M_lang_af, line: M20}
+- id: M21
+  kind: inflection
+  lhs: ""
+  rhs: "SNG:=>\"\";PLR:=2>\"e\";"
+  conditions: []
+  comment: "Words ending with 'g' preceded by 'aa' have the last 'ag' replaced by 'e' for the plural form. (maag => mae, vraag => vrae)"
+  source: {archive_path: exports/afr/export_grammar.php__type_M_lang_af, line: M21}
+- id: M22
+  kind: inflection
+  lhs: ""
+  rhs: "SNG:=>\"\";PLR:=1>\"aie\";"
+  conditions: []
+  comment: "Some words ending with 'ad' or 'ap' gets the consonant at the end removed and 'aie' added for the plural form. (blad => blaaie, pad => paaie)"
+  source: {archive_path: exports/afr/export_grammar.php__type_M_lang_af, line: M22}
+- id: M23
+  kind: inflection
+  lhs: ""
+  rhs: "SNG:=>\"\";PLR:=2>\"we\";"
+  conditions: []
+  comment: "Some words ending with 'f' preceded by a long vowel gets the last vowel and 'f' removed and 'we' added for the plural. (staaf => stawe, kreef => krewe)"
+  source: {archive_path: exports/afr/export_grammar.php__type_M_lang_af, line: M23}
+- id: M24
+  kind: inflection
+  lhs: ""
+  rhs: "SNG:=>\"\";PLR:=2>\"ë\";"
+  conditions: []
+  comment: "Replace the last two letters of the word with 'ë' to get the plural form. (oog => oë, verhoog => verhoë)"
+  source: {archive_path: exports/afr/export_grammar.php__type_M_lang_af, line: M24}
+- id: M25
+  kind: inflection
+  lhs: ""
+  rhs: "SNG:=>\"\";PLR:=1>\"wwe\";"
+  conditions: []
+  comment: "Replace the 'f' at the end with 'wwe' to get the plural form. (gif => giwwe, rif => riwwe)"
+  source: {archive_path: exports/afr/export_grammar.php__type_M_lang_af, line: M25}
+- id: M26
+  kind: inflection
+  lhs: ""
+  rhs: "INF:=>\"\";PAS:=\"ge\"<0;PTP:=\"ge\"<0;"
+  conditions: []
+  comment: Add "ge" to the beginning of the word for the past tenses. (gery gepraat gegee)
+  source: {archive_path: exports/afr/export_grammar.php__type_M_lang_af, line: M26}

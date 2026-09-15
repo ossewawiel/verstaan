@@ -1,0 +1,82 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://verstaan.org/schema/grammar-rule.schema.json",
+  "title": "Grammar rule",
+  "description": "One record in data/languages/<iso3>/grammar/<kind>.yaml. Field names and shape from SPEC.md §3.2: 'Grammar rule becomes {id, kind, lhs, rhs, conditions, comment, source}'. The archive's own rule syntax never separates a pattern from a condition on that pattern (docs/unl-reference/formats/transformation-grammar.md); conditions here starts empty, with everything on lhs, until issue 15 decides the split (flagged, not decided by this schema).",
+  "type": "object",
+  "required": [
+    "id",
+    "kind",
+    "lhs",
+    "rhs",
+    "conditions",
+    "comment",
+    "source"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "description": "The rule's identifier: a catalogue number where the archive has one (M2, Y38), or an importer-assigned sequential id where it does not (T-rules and D-rules carry no number in the archive)."
+    },
+    "kind": {
+      "type": "string",
+      "enum": [
+        "analysis",
+        "generation",
+        "inflection",
+        "subcategorisation",
+        "disambiguation",
+        "default"
+      ],
+      "description": "Which grammar/<kind>.yaml file the rule belongs to. Not itself an archive field; the importer derives it from which export the rule came from."
+    },
+    "lhs": {
+      "type": "string",
+      "description": "The left-hand side (α) of the rule: the pattern the rule matches, exactly as the archive writes it, including any embedded conditions (negation ^, disjunction {a|b}) until issue 15 splits them out."
+    },
+    "rhs": {
+      "type": "string",
+      "description": "The right-hand side (β) of the rule: the rewrite the rule performs. Empty string for a rule shape that has no right side in the archive (e.g. a subcategorisation frame, which declares an argument structure, not a rewrite)."
+    },
+    "conditions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Conditions split out of lhs. Archive: embedded in lhs; the archive's own grammar syntax never separates them (docs/unl-reference/formats/transformation-grammar.md). The split policy is an open question for a rule-author (see docs/factory/store-schema.md); this array is empty until that question is resolved."
+    },
+    "comment": {
+      "type": "string",
+      "description": "What the rule does, in one line, in the writing voice (docs/standards/data.md). Archive: present as free trailing text after ';' for T-rules; absent per-line for M/Y catalogue entries, where the importer writes the comment from the paradigm's or frame's own catalogue description."
+    },
+    "source": {
+      "$ref": "#/$defs/source"
+    }
+  },
+  "$defs": {
+    "source": {
+      "type": "object",
+      "required": [
+        "archive_path",
+        "line"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "archive_path": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Path under data/archive/ the record was read from."
+        },
+        "line": {
+          "type": [
+            "integer",
+            "string"
+          ],
+          "description": "Line number in archive_path, or a descriptive locator (e.g. a paradigm or frame catalogue number) when the archive export has no per-line grain."
+        }
+      }
+    }
+  }
+}

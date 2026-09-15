@@ -2,14 +2,14 @@
 issue: 14
 title: "Build the dictionary importer"
 milestone: M2
-status: open
+status: done
 depends_on: [13]
 agent: implementer
 agents: [implementer]
 model: sonnet
 effort: medium
 checkpoint: null
-commit: null
+commit: 342d617
 worktree: null
 github_issue: 223
 ---
@@ -17,7 +17,7 @@ github_issue: 223
 
 `tools/importer/dictionary.py` reads a language's Analysis Dictionary (AD) and Generation
 Dictionary (GD) exports and writes `data/languages/<iso3>/dictionary/<a-z>.yaml`, one file per
-first letter of `headword` per `tools/schema/dictionary-entry.schema.json` (issue 13). It parses
+first letter of `headword` per `tools/validate/schema/dictionary-entry.schema.json` (issue 13). It parses
 the line grammar `docs/unl-reference/formats/dictionary.md` documents, against the real files, not
 the wiki's formal syntax where the two disagree.
 
@@ -48,9 +48,18 @@ zip member or file and 1-based line number the entry came from.
 - Running the importer on `af_ana_u_c_ucn.zip` produces `data/languages/afr/dictionary/a.yaml`
   containing an entry for `aan` matching the worked example in `dictionary.md` field for field
   (`id: 22319`, `uw: "400068368"`, `features.LEX: A`, `lang: afr`, `frequency: 2`, `priority: 0`).
+  Met, with one correction: the archive's `_ucn`/`_ucl` filename suffixes are swapped from what
+  they claim — `_ucl` holds the opaque UW code the schema wants, `_ucn` holds the readable string —
+  verified against the raw zip bytes before writing any code. The importer reads `af_ana_u_c_ucl.zip`
+  / `af_gen_u_c_ucl.zip` accordingly; the `aan` entry still matches field for field.
 - The English run produces an entry for `aboard` (`id: 516110`, `uw: "534001"`, `lang: eng`)
-  matching `dictionary.md`'s English worked example.
-- Every entry validates against `tools/schema/dictionary-entry.schema.json` (issue 13);
+  matching `dictionary.md`'s English worked example. **Not met as written, by owner decision**: those
+  exact values exist only in `data/archive/exports/eng/export_cc.php`, which this issue places out
+  of scope (`tools/validate/tests/test_schema.py`'s own `ENGLISH_ENTRIES` fixture sources the same
+  example from that file). The in-scope AD/GD pair's `aboard` is a different sense
+  (`id: 273038`, `uw: "400249878"`); `test_english_aboard_entry_from_the_ad_zip` asserts that real
+  value instead, with the discrepancy documented in the module and test docstrings.
+- Every entry validates against `tools/validate/schema/dictionary-entry.schema.json` (issue 13);
   `pytest tools/importer/test_dictionary.py -k schema` checks this on both languages' output.
 - A line the parser cannot match the grammar for is appended to
   `data/languages/<iso3>/_unparsed.txt` with the raw line and a one-sentence reason. Zero entries
@@ -68,6 +77,6 @@ keeps the UCN, per ADR-worthy note in issue 13.
 
 ## Done when
 
-- [ ] `tools/importer/dictionary.py` runs on both `afr` and `eng` exports named above.
-- [ ] `data/languages/afr/dictionary/` and `data/languages/eng/dictionary/` exist, sharded a-z.
-- [ ] `pytest tools/importer/test_dictionary.py` passes, including the unparsed-line count check.
+- [x] `tools/importer/dictionary.py` runs on both `afr` and `eng` exports named above.
+- [x] `data/languages/afr/dictionary/` and `data/languages/eng/dictionary/` exist, sharded a-z.
+- [x] `pytest tools/importer/test_dictionary.py` passes, including the unparsed-line count check.

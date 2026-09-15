@@ -1,0 +1,41 @@
+# Licence: CC BY-SA 4.0. Source: UNL Archive, see data/archive/manifest.jsonl
+- headword: Q
+  id: 13227
+  uw: "106832896"
+  features: {LEMMA: Q, BF: Q, LEX: N, POS: NOU, ANI: NANM, SEM: CMN}
+  lang: afr
+  frequency: 0
+  priority: 0
+  source: {archive_path: exports/afr/af_ana_u_c_ucl/af_ana_u_c_ucl_1.txt, line: 11865}
+- headword: Q
+  id: 13227
+  uw: "106832896"
+  features: {LEMMA: Q, BF: Q, LEX: N, POS: NOU, ANI: NANM, SEM: CMN}
+  lang: afr
+  frequency: 0
+  priority: 0
+  source: {archive_path: exports/afr/af_gen_u_c_ucl/af_gen_u_c_ucl_1.txt, line: 9015}
+- headword: quadriceps
+  id: 17403
+  uw: "105294819"
+  features: {LEMMA: quadriceps, BF: quadriceps, LEX: N, POS: NOU, LST: WRD, NUM: SNG, REG: JGN, PAR: M3, FRA: Y0, ABN: CCT, ALY: NALI, ANI: NANM, CAR: CTB, SEM: BON, SFR: K0}
+  lang: afr
+  frequency: 4
+  priority: 2
+  source: {archive_path: exports/afr/af_gen_u_c_ucl/af_gen_u_c_ucl_1.txt, line: 9016}
+- headword: quadriceps
+  id: 19171
+  uw: "105294819"
+  features: {LEMMA: quadriceps, BF: quadriceps, LEX: N, POS: NOU, LST: WRD, NUM: SNG, REG: JGN, PAR: M3, FRA: Y0, ABN: CCT, ALY: NALI, ANI: NANM, CAR: CTB, SEM: BON, SFR: K0}
+  lang: afr
+  frequency: 4
+  priority: 2
+  source: {archive_path: exports/afr/af_ana_u_c_ucl/af_ana_u_c_ucl_1.txt, line: 11866}
+- headword: quadricepse
+  id: 19172
+  uw: "105294819"
+  features: {LEMMA: quadriceps, BF: quadriceps, LEX: N, POS: NOU, LST: WRD, NUM: PLR, REG: JGN, PAR: M3, FRA: Y0, ABN: CCT, ALY: NALI, ANI: NANM, CAR: CTB, SEM: BON, SFR: K0}
+  lang: afr
+  frequency: 4
+  priority: 2
+  source: {archive_path: exports/afr/af_ana_u_c_ucl/af_ana_u_c_ucl_1.txt, line: 11867}

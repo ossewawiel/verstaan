@@ -2,14 +2,14 @@
 issue: 16
 title: "Build the tagset and corpus importers"
 milestone: M2
-status: open
+status: done
 depends_on: [13]
 agent: implementer
 agents: [implementer]
 model: sonnet
 effort: medium
 checkpoint: null
-commit: null
+commit: 0b9358a
 worktree: null
 github_issue: 225
 ---
@@ -42,7 +42,7 @@ siblings so a rule-author can read the `unl` field directly without a UW lookup)
   same sentence count, read from `export_corpus.php__project_ugoa1_lang_af_unl_ucl` and
   `..._lang_en_unl_ucl` respectively; a test asserts `len(afr_corpus) == len(eng_corpus)` as the
   parallel-corpus check.
-- Every tagset entry validates against a `tools/schema/tagset-entry.schema.json` added alongside
+- Every tagset entry validates against a `tools/validate/schema/tagset-entry.schema.json` added alongside
   issue 13's other schema files (or added here if issue 13 did not anticipate it — note the gap in
   this issue's `## Verifier` section if so).
 - Every corpus entry's `source` names the project and the 1-based line number it came from.
@@ -58,6 +58,6 @@ specifically, not because it's English-only.
 
 ## Done when
 
-- [ ] `tools/importer/tagset.py` and `tools/importer/corpus.py` run for `afr` and `eng`.
-- [ ] `tagset.yaml` and `corpus/ugoa1.yaml` exist under both language directories.
-- [ ] `pytest tools/importer/test_tagset.py tools/importer/test_corpus.py` passes.
+- [x] `tools/importer/tagset.py` and `tools/importer/corpus.py` run for `afr` and `eng`.
+- [x] `tagset.yaml` and `corpus/ugoa1.yaml` exist under both language directories.
+- [x] `pytest tools/importer/test_tagset.py tools/importer/test_corpus.py` passes.

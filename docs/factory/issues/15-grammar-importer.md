@@ -2,14 +2,14 @@
 issue: 15
 title: "Build the grammar importer"
 milestone: M2
-status: open
+status: done
 depends_on: [13]
 agent: implementer
 agents: [implementer]
 model: sonnet
 effort: high
 checkpoint: null
-commit: null
+commit: fe59d98
 worktree: null
 github_issue: 224
 ---
@@ -18,7 +18,7 @@ github_issue: 224
 `tools/importer/grammar.py` reads a language's transformation-grammar, inflection and
 subcategorisation exports and writes `data/languages/<iso3>/grammar/{analysis,generation,
 inflection,subcategorisation,disambiguation}.yaml`, one record per rule per
-`tools/schema/grammar-rule.schema.json` (issue 13). Every record keeps `{id, kind, lhs, rhs,
+`tools/validate/schema/grammar-rule.schema.json` (issue 13). Every record keeps `{id, kind, lhs, rhs,
 conditions, comment, source}`; `id` is assigned sequentially per file since the archive's own rule
 text carries no stable id.
 
@@ -66,7 +66,7 @@ Per-language files, named exactly, per language:
   `data/archive/exports/afr/export_grammar.php__type_M_lang_af`.
 - `Y38`, `Y42` and `Y259` from `docs/unl-reference/formats/subcategorisation.md` appear in
   `data/languages/eng/grammar/subcategorisation.yaml` with `kind: subcategorisation`.
-- Every record validates against `tools/schema/grammar-rule.schema.json`;
+- Every record validates against `tools/validate/schema/grammar-rule.schema.json`;
   `pytest tools/importer/test_grammar.py -k schema` checks both languages.
 - `data/languages/afr/grammar/disambiguation.yaml` holds records parsed from
   `44.dgrammar.txt` and `47.dgrammar.txt`. `data/languages/eng/grammar/disambiguation.yaml` holds
@@ -82,8 +82,8 @@ is nothing to import.
 
 ## Done when
 
-- [ ] `tools/importer/grammar.py` runs on every file named above for `afr` and `eng`.
-- [ ] Five grammar files per language exist; `afr`'s `disambiguation.yaml` holds records from
+- [x] `tools/importer/grammar.py` runs on every file named above for `afr` and `eng`.
+- [x] Five grammar files per language exist; `afr`'s `disambiguation.yaml` holds records from
       `44.dgrammar.txt`/`47.dgrammar.txt`, `eng`'s is empty with its `archive: none for eng` comment
       (no `*.dgrammar.txt` export exists for `eng` in the manifest).
-- [ ] `pytest tools/importer/test_grammar.py` passes, including the unparsed-line count check.
+- [x] `pytest tools/importer/test_grammar.py` passes, including the unparsed-line count check.
