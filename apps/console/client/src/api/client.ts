@@ -135,6 +135,29 @@ export interface ShipSystemsModel {
   playbookLane: PlaybookStation[];
 }
 
+export interface CodexIntelItem {
+  kind: 'adr' | 'glossary';
+  text: string;
+  href: string;
+}
+
+export interface Codex {
+  n: number;
+  title: string;
+  objective: string;
+  intel: CodexIntelItem[];
+  loadout: { agent: string | null; model: string | null; effort: string | null; checkpoint: unknown };
+  orders: { acceptanceCriteria: string; notInScope: string };
+  afterAction: { doneWhen: { total: number; ticked: number }; commit: unknown; verifier: string | null };
+}
+
+export interface DebriefGroup {
+  sig: string;
+  count: number;
+  last: string;
+  detail: string;
+}
+
 export type JobStatus = 'queued' | 'running' | 'done' | 'failed' | 'killed';
 
 export interface JobSummary {
@@ -180,6 +203,8 @@ export const api = {
   ledger: () => getJson<{ lessons: StateModel['lessons']; reviews: StateModel['reviews'] }>('/api/ledger'),
   events: () => getJson<EventItem[]>('/api/events'),
   shipSystems: () => getJson<ShipSystemsModel>('/api/ship-systems'),
+  codex: (n: number) => getJson<Codex>(`/api/codex/${String(n).padStart(2, '0')}`),
+  debrief: () => getJson<DebriefGroup[]>('/api/debrief'),
   githubStatus: () => getJson<GithubStatus>('/api/github-status'),
   jobs: {
     list: () => getJson<JobSummary[]>('/api/jobs'),

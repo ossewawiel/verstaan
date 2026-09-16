@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MPL-2.0
 import { memo } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { api, type Issue } from '../api/client';
 import { ActionButton } from '../components/ActionButton';
 import { BoardingPass } from '../components/BoardingPass';
@@ -111,6 +111,9 @@ function QuestActions({ issue }: { issue: Issue }) {
       <ActionButton label="Run its tests" disabled={!issue.worktree} onRun={runTests} />
       <ActionButton label="Open its tree" disabled={!issue.worktree} onRun={openTree} />
       <ActionButton label="Open its PR" onRun={openPr} />
+      <Link to={`/codex/${id}`} className="action-button">
+        Open its codex
+      </Link>
     </div>
   );
 }

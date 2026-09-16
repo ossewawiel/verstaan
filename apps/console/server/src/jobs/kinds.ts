@@ -5,8 +5,9 @@
 // `spawn` is either a literal from this table or a value that passed its kind's own validator, so
 // there is no way for a request body to smuggle in an extra flag or a second command (the ADR
 // under docs/adr/ names this the rule).
-import { existsSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
+import { REPO } from '../model/read.js';
 
 export type Stream = 'stdout' | 'stderr';
 
@@ -116,6 +117,55 @@ function gatePrecheck(treeAbsPath: string): string | null {
   return null;
 }
 
+// The same allowed shapes tools/factory/retro_promote.py enforces on its own write (issue 176,
+// decision 2) -- checked again here, before a process is ever spawned, so a request this table
+// cannot see coming never reaches even the precheck stage. Kept in sync by hand with
+// retro_promote.py's own `_ALLOWED_TARGET_GLOBS`/`_ALLOWED_TARGET_EXACT`: two different runtimes
+// (Node here, Python there), so neither can import the other's list.
+const LESSON_PROMOTE_TARGET_GLOBS = [/^docs\/standards\/[^/]+\.md$/, /^docs\/adr\/[^/]+\.md$/, /^\.claude\/agents\/[^/]+\.md$/, /^\.claude\/skills\/[^/]+\/SKILL\.md$/];
+
+export function lessonPromoteTargetAllowed(target: string): boolean {
+  if (target.includes('..')) return false;
+  if (target === 'CLAUDE.md') return true;
+  return LESSON_PROMOTE_TARGET_GLOBS.some((re) => re.test(target));
+}
+
+/** True when `sig` is a signature the given `docs/factory/lessons.jsonl` text actually carries.
+ * Takes the ledger's own file path so a test can point it at a throwaway fixture instead of this
+ * checkout's real, ever-changing ledger; the real kind (`validateLessonPromoteArgs`, no second
+ * argument) always reads the real one, fresh on every call, never cached. */
+export function lessonSigPresent(sig: string, lessonsPath: string = join(REPO, 'docs', 'factory', 'lessons.jsonl')): boolean {
+  if (!existsSync(lessonsPath)) return false;
+  for (const line of readFileSync(lessonsPath, 'utf8').split(/\r?\n/)) {
+    if (!line.trim()) continue;
+    try {
+      if (JSON.parse(line)?.sig === sig) return true;
+    } catch {
+      continue;
+    }
+  }
+  return false;
+}
+
+/** Refuses (before any process spawns) unless: `target` is one of the allowed rule-file shapes,
+ * `sig` is really in the ledger, `rule` is non-empty, and `approved` is literally `true` -- the
+ * owner's explicit approval of the one group on screen, and the only thing that ever lets this
+ * kind spawn a write (issue 176 acceptance: "writes nothing until the owner approves"). The target
+ * shape is checked first: it needs no IO, so a bad target is refused the same way whatever `sig`
+ * says, and a test can prove that refusal without depending on the real ledger's own content. */
+export function validateLessonPromoteArgs(args: unknown, lessonsPath?: string): Record<string, unknown> {
+  const sig = requireString(args, 'sig');
+  const target = requireString(args, 'target');
+  const rule = requireString(args, 'rule');
+  if (!lessonPromoteTargetAllowed(target)) {
+    throw new JobArgsError(`target '${target}' is not an allowed rule file (docs/standards/*.md, docs/adr/*.md, .claude/agents/*.md, .claude/skills/*/SKILL.md, CLAUDE.md)`);
+  }
+  if (!lessonSigPresent(sig, lessonsPath)) throw new JobArgsError(`sig '${sig}' is not in docs/factory/lessons.jsonl`);
+  const approved = (args as Record<string, unknown> | null | undefined)?.approved;
+  if (approved !== true) throw new JobArgsError('approved must be true; this kind never spawns without the owner\'s explicit approval');
+  return { sig, target, rule, approved: true };
+}
+
 export const JOB_KINDS: Record<string, JobKindDef> = {
   'gate-fast': {
     kind: 'gate-fast',
@@ -211,6 +261,17 @@ export const JOB_KINDS: Record<string, JobKindDef> = {
       const { cmd, args: argv } = questStartArgv(process.platform, model, `/factory-run ${issue}`);
       return { cmd, args: argv, cwd: tree };
     },
+  },
+  'lesson-promote': {
+    kind: 'lesson-promote',
+    label: 'lesson-promote (/factory-retro)',
+    treeScoped: true,
+    validateArgs: validateLessonPromoteArgs,
+    build: (tree, args) => ({
+      cmd: 'python',
+      args: ['-m', 'tools.factory.retro_promote', '--sig', String(args.sig), '--target', String(args.target), '--rule', String(args.rule)],
+      cwd: tree,
+    }),
   },
   'worktree-list': {
     kind: 'worktree-list',

@@ -319,6 +319,59 @@ describe('quest-start: argv templates, validation and refusal (issue 174)', () =
   });
 });
 
+// Issue 176, decision 2: `lesson-promote` never spawns a write unless the signature is really in
+// the ledger, the target is an allowed rule-file shape, and the owner's `approved: true` flag is
+// present -- all three checked in `validateArgs`, before `JobManager.create` ever reaches
+// `build()`/`spawn`. The sig check reads a throwaway fixture ledger (`validateLessonPromoteArgs`'s
+// own optional second argument), not this checkout's real, ever-changing `lessons.jsonl` --
+// keeping this file's own truth stable regardless of what a later retro run promotes or logs.
+describe('lesson-promote: validateArgs refuses before any process spawns (issue 176)', () => {
+  const fixtureLessons = join(mkdtempSync(join(tmpdir(), 'verstaan-lesson-promote-')), 'lessons.jsonl');
+  writeFileSync(fixtureLessons, '{"sig":"fast-tests-red","ts":"2026-01-01T00:00:00Z"}\n');
+
+  it('refuses a sig not present in the ledger', async () => {
+    const { validateLessonPromoteArgs, JobArgsError } = await import('../src/jobs/kinds.js');
+    expect(() =>
+      validateLessonPromoteArgs({ sig: 'not-a-real-signature-xyz', target: 'docs/standards/testing.md', rule: 'x', approved: true }, fixtureLessons),
+    ).toThrow(JobArgsError);
+  });
+
+  it('refuses a target outside the allowed rule-file shapes, whatever sig is given', async () => {
+    const { validateLessonPromoteArgs, JobArgsError } = await import('../src/jobs/kinds.js');
+    expect(() => validateLessonPromoteArgs({ sig: 'fast-tests-red', target: 'docs/glossary.md', rule: 'x', approved: true }, fixtureLessons)).toThrow(JobArgsError);
+  });
+
+  it('refuses when approved is not literally true', async () => {
+    const { validateLessonPromoteArgs, JobArgsError } = await import('../src/jobs/kinds.js');
+    expect(() =>
+      validateLessonPromoteArgs({ sig: 'fast-tests-red', target: 'docs/standards/testing.md', rule: 'x', approved: 'yes' }, fixtureLessons),
+    ).toThrow(JobArgsError);
+    expect(() => validateLessonPromoteArgs({ sig: 'fast-tests-red', target: 'docs/standards/testing.md', rule: 'x' }, fixtureLessons)).toThrow(JobArgsError);
+  });
+
+  it('accepts a real sig, an allowed target and approved: true, and builds the retro_promote argv', async () => {
+    const { validateLessonPromoteArgs, JOB_KINDS } = await import('../src/jobs/kinds.js');
+    const args = validateLessonPromoteArgs({ sig: 'fast-tests-red', target: 'docs/standards/testing.md', rule: 'A new rule.', approved: true }, fixtureLessons);
+    const spawn = JOB_KINDS['lesson-promote'].build('.', args);
+    expect(spawn.cmd).toBe('python');
+    expect(spawn.args).toEqual(['-m', 'tools.factory.retro_promote', '--sig', 'fast-tests-red', '--target', 'docs/standards/testing.md', '--rule', 'A new rule.']);
+  });
+
+  it('POST /api/jobs refuses lesson-promote without approval, before any process spawns (using this checkout\'s own ledger)', async () => {
+    const { app } = buildApp({ readRepoFn: fixtureRepo });
+    const res = await app.inject({
+      method: 'POST',
+      url: '/api/jobs',
+      headers: LOOPBACK_HOST,
+      payload: { kind: 'lesson-promote', tree: '.', args: { sig: 'anything', target: 'docs/glossary.md', rule: 'x' } },
+    });
+    // Refused twice over here (bad target shape, no approval) -- either is enough for 400, and
+    // this assertion only needs that no process ever spawns.
+    expect(res.statusCode).toBe(400);
+    await app.close();
+  });
+});
+
 // Checkpoint-4 review, finding 3: `jobs.runningJob()` alone only refuses a job already running
 // *before* a restart began; it is checked once, before `POST /api/restart` even starts the
 // build. A job that starts partway through the build is never caught by it, and gets killed with

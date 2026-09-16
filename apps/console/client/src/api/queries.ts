@@ -15,6 +15,12 @@ export const useEventsQuery = () => useQuery({ queryKey: ['events'], queryFn: ap
 // Ship systems (issue 175): agents, skills, commands, hooks-vs-events and the playbook lane, all
 // one read-only response, so the room needs one query, not five.
 export const useShipSystemsQuery = () => useQuery({ queryKey: ['ship-systems'], queryFn: api.shipSystems });
+// The Codex briefing (issue 176): one quest's issue file, read at briefing density. Keyed by
+// number, same shape as useIssueQuery, so a deep link to /codex/:nn only ever fetches its own row.
+export const useCodexQuery = (n: number) => useQuery({ queryKey: ['codex', n], queryFn: () => api.codex(n), enabled: Number.isFinite(n) });
+// The Debrief room (issue 176): lessons.jsonl grouped by sig. Lives under the same `state`
+// section the ledger's own side task already watches (docs/factory/lessons.jsonl).
+export const useDebriefQuery = () => useQuery({ queryKey: ['debrief'], queryFn: api.debrief });
 // GitHub is a live dependency (ADR 0014), not a file the change stream watches, so this polls on
 // its own timer rather than waiting for an SSE section that never fires for it. Thirty seconds:
 // often enough that a login regained mid-session is noticed soon, rare enough it never competes

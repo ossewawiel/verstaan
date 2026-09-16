@@ -14,6 +14,10 @@ import {
   crossReferenceHooks,
   playbookLane,
   buildShipSystems,
+  parseGlossaryTerms,
+  codexIntel,
+  buildCodex,
+  debriefGroups,
   type Issue,
   type WorktreeSummary,
 } from '../src/model/parse.js';
@@ -312,5 +316,156 @@ describe('buildShipSystems', () => {
     expect(model.hooks.files).toEqual([{ file: 'a.sh', referencedByEvents: ['Stop'] }]);
     expect(model.playbookLane).toEqual([{ name: 'The map' }]);
     expect(model.generated).toBe('2026-09-16T00:00:00Z');
+  });
+});
+
+describe('parseGlossaryTerms (issue 176, decision 1)', () => {
+  const GLOSSARY = [
+    '# Glossary',
+    '',
+    'One term, one meaning.',
+    '',
+    '## UNL and language',
+    '',
+    '| Term | Meaning | Defined in |',
+    '|---|---|---|',
+    '| UNL | Universal Networking Language. | `docs/unl-reference/spec/` |',
+    '| UNL graph | The set of relations and attributes for one sentence. | `SPEC.md` |',
+    '',
+    '## System',
+    '',
+    '| Term | Meaning | Defined in |',
+    '|---|---|---|',
+    '| Archive | The UNL Archive. | ADR 0004 |',
+  ].join('\n');
+
+  it('collects every table row\'s first cell, across every category, skipping header and divider rows', () => {
+    expect(parseGlossaryTerms(GLOSSARY)).toEqual(['UNL', 'UNL graph', 'Archive']);
+  });
+
+  it('strips backticks so a term with inline code formatting still matches plain prose', () => {
+    const text = '| Term | Meaning | Defined in |\n|---|---|---|\n| `UW` | Universal Word. | UNL specs |\n';
+    expect(parseGlossaryTerms(text)).toEqual(['UW']);
+  });
+});
+
+describe('codexIntel (issue 176)', () => {
+  const ADR_PATHS = ['docs/adr/0004-mirror-every-language-in-the-archive.md', 'docs/adr/0011-console-actions-run-only-allow-listed-scripts.md'];
+  const TERMS = ['UNL', 'UNL graph', 'Archive'];
+
+  it('links an ADR NNNN citation to the matching docs/adr/NNNN-*.md file', () => {
+    const intel = codexIntel('This cites ADR 0011 for the allow-list rule.', ADR_PATHS, TERMS);
+    expect(intel).toEqual([{ kind: 'adr', text: 'ADR 0011', href: '/library/docs/adr/0011-console-actions-run-only-allow-listed-scripts.md' }]);
+  });
+
+  it('an ADR number with no matching file is silently skipped, not linked to nothing', () => {
+    const intel = codexIntel('ADR 9999 does not exist.', ADR_PATHS, TERMS);
+    expect(intel).toEqual([]);
+  });
+
+  it('links a glossary term, preferring the longer match over a shorter one it contains', () => {
+    const intel = codexIntel('This quest touches the UNL graph directly.', ADR_PATHS, TERMS);
+    expect(intel).toEqual([{ kind: 'glossary', text: 'UNL graph', href: '/glossary' }]);
+  });
+
+  it('finds both an ADR citation and a glossary term in the same text', () => {
+    const intel = codexIntel('Mirrors the Archive per ADR 0004.', ADR_PATHS, TERMS);
+    expect(intel).toContainEqual({ kind: 'adr', text: 'ADR 0004', href: '/library/docs/adr/0004-mirror-every-language-in-the-archive.md' });
+    expect(intel).toContainEqual({ kind: 'glossary', text: 'Archive', href: '/glossary' });
+  });
+});
+
+describe('buildCodex (issue 176)', () => {
+  const ISSUE: Issue = {
+    n: 176,
+    file: '176-x.md',
+    title: 'Codex and debrief',
+    milestone: 'M7',
+    status: 'in-progress',
+    worktree: '.worktrees/m7-176',
+    dependsOn: [175],
+    agent: 'implementer',
+    agents: ['implementer'],
+    model: 'sonnet',
+    effort: 'medium',
+    checkpoint: null,
+    commit: null,
+    what: 'The Quests room reads an issue file as a table row.',
+    doneWhen: { total: 5, ticked: 2 },
+    githubIssue: 261,
+  };
+  const CONTENT = [
+    '## What',
+    '',
+    'Some backstory paragraph naming ADR 0011.',
+    '',
+    'The outcome sentence: after this quest, the codex renders a briefing.',
+    '',
+    '## Acceptance criteria',
+    '',
+    '- One criterion.',
+    '',
+    '## Not in scope',
+    '',
+    'The atlas.',
+    '',
+    '## Done when',
+    '',
+    '- [x] One.',
+    '- [ ] Two.',
+    '',
+    '## Verifier (checkpoint 2)',
+    '',
+    'Read the diff whole. Verdict: ship.',
+  ].join('\n');
+
+  it('objective is the What section\'s second paragraph, not parseIssues\' own first-line summary', () => {
+    const codex = buildCodex(ISSUE, CONTENT, [], []);
+    expect(codex.objective).toBe('The outcome sentence: after this quest, the codex renders a briefing.');
+  });
+
+  it('orders carries acceptance criteria and not-in-scope, read as instructions', () => {
+    const codex = buildCodex(ISSUE, CONTENT, [], []);
+    expect(codex.orders.acceptanceCriteria).toContain('One criterion.');
+    expect(codex.orders.notInScope).toBe('The atlas.');
+  });
+
+  it('after-action carries done-when against the issue and the Verifier section, suffix and all', () => {
+    const codex = buildCodex(ISSUE, CONTENT, [], []);
+    expect(codex.afterAction.doneWhen).toEqual({ total: 5, ticked: 2 });
+    expect(codex.afterAction.verifier).toContain('Verdict: ship.');
+  });
+
+  it('an issue file with no Verifier section reads as null, not an empty string or a crash', () => {
+    const noVerifier = CONTENT.split('\n## Verifier')[0];
+    const codex = buildCodex(ISSUE, noVerifier, [], []);
+    expect(codex.afterAction.verifier).toBeNull();
+  });
+
+  it('loadout reuses the issue\'s own agent/model/effort/checkpoint fields, no new field invented', () => {
+    const codex = buildCodex(ISSUE, CONTENT, [], []);
+    expect(codex.loadout).toEqual({ agent: 'implementer', model: 'sonnet', effort: 'medium', checkpoint: null });
+  });
+
+  it('intel resolves the ADR citation in What against the given adrPaths', () => {
+    const codex = buildCodex(ISSUE, CONTENT, ['docs/adr/0011-console-actions-run-only-allow-listed-scripts.md'], []);
+    expect(codex.intel).toContainEqual({ kind: 'adr', text: 'ADR 0011', href: '/library/docs/adr/0011-console-actions-run-only-allow-listed-scripts.md' });
+  });
+});
+
+describe('debriefGroups (issue 176)', () => {
+  it('groups by sig, newest group first, with a count per group', () => {
+    const text = [
+      '{"sig":"a","ts":"2026-01-01T00:00:00Z","detail":"first a"}',
+      '{"sig":"b","ts":"2026-01-05T00:00:00Z","detail":"only b"}',
+      '{"sig":"a","ts":"2026-01-03T00:00:00Z","detail":"second a"}',
+    ].join('\n');
+    const groups = debriefGroups(text);
+    expect(groups.map((g) => g.sig)).toEqual(['b', 'a']);
+    expect(groups.find((g) => g.sig === 'a')).toMatchObject({ count: 2, last: '2026-01-03T00:00:00Z', detail: 'second a' });
+  });
+
+  it('an empty ledger groups to nothing', () => {
+    expect(debriefGroups('')).toEqual([]);
   });
 });

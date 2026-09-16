@@ -211,6 +211,12 @@ export function ConsoleRoom() {
               navigate(url);
             }}
           />
+          {/* Debrief (issue 176): lessons.jsonl grouped by sig, newest first -- not in the nav bar
+              itself (an eighth link wraps the bar at 720/960px, widths.spec.ts's own proof), so
+              this is the one door into it. */}
+          <Link to="/debrief" className="action-button">
+            Open the debrief
+          </Link>
         </div>
         <div className="status-row__item">
           <p className="panel__title">GitHub</p>

@@ -104,6 +104,111 @@ export function parseIssues(files: DocFile[]): Issue[] {
   return issues;
 }
 
+function escapeRegExp(s: string): string {
+  return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+/** `docs/glossary.md` text -> every term a row's first cell names (issue 176, decision 1: the
+ * glossary has no per-term heading, only five category headings, so "a term is linkable" is
+ * defined against the real structure -- a row in one of the glossary's own tables, not a
+ * heading). Backticks in a term (e.g. `` `UW` ``) are stripped, matching the plain word a citing
+ * issue file would actually use. The header row ("Term") and a table's divider row are excluded
+ * by the same test any other row fails: neither is a term any issue file could ever cite. */
+export function parseGlossaryTerms(text: string): string[] {
+  const terms = new Set<string>();
+  for (const line of text.split(/\r?\n/)) {
+    const m = /^\s*\|(.+)\|\s*$/.exec(line);
+    if (!m) continue;
+    const first = m[1].split('|')[0]?.trim() ?? '';
+    if (!first || first === 'Term' || /^:?-{2,}:?$/.test(first)) continue;
+    terms.add(first.replace(/`/g, ''));
+  }
+  return [...terms];
+}
+
+export interface CodexIntelItem {
+  kind: 'adr' | 'glossary';
+  text: string;
+  href: string;
+}
+
+export interface Codex {
+  n: number;
+  title: string;
+  objective: string;
+  intel: CodexIntelItem[];
+  loadout: { agent: string | null; model: string | null; effort: string | null; checkpoint: unknown };
+  orders: { acceptanceCriteria: string; notInScope: string };
+  afterAction: { doneWhen: { total: number; ticked: number }; commit: unknown; verifier: string | null };
+}
+
+/** One markdown `##` section's body, from `## <heading>...` (whatever follows the heading word on
+ * its own line, e.g. "## Verifier (checkpoint 4)") up to the next `## ` heading or the end of the
+ * file. Null when the heading is not present at all -- an issue file that carries no `## Verifier`
+ * is the ordinary case (Codex's after-action section, issue 176), not a parse failure. */
+function sectionBody(content: string, heading: string): string | null {
+  const re = new RegExp(`^## ${escapeRegExp(heading)}\\b[^\\n]*\\r?\\n+([\\s\\S]*?)(?:\\r?\\n## |\\s*$)`, 'm');
+  const m = re.exec(content);
+  return m ? m[1].trim() : null;
+}
+
+/** Intel (issue 176): every `ADR NNNN` citation in `## What`, matched against the ADR files the
+ * library already knows (`adrPaths`, `docs/adr/NNNN-*.md`), and every glossary term `## What`
+ * cites, matched against `parseGlossaryTerms`'s own list -- longest term first, so "UNL graph"
+ * wins over a bare "UNL" inside it, and a term already found is not listed twice. */
+export function codexIntel(whatText: string, adrPaths: string[], glossaryTerms: string[]): CodexIntelItem[] {
+  const intel: CodexIntelItem[] = [];
+  const seenAdr = new Set<string>();
+  for (const m of whatText.matchAll(/\bADR\s?0*(\d{1,4})\b/gi)) {
+    const num = m[1].padStart(4, '0');
+    if (seenAdr.has(num)) continue;
+    const path = adrPaths.find((p) => p.startsWith(`docs/adr/${num}-`));
+    if (!path) continue;
+    seenAdr.add(num);
+    intel.push({ kind: 'adr', text: `ADR ${num}`, href: `/library/${path}` });
+  }
+  const sortedTerms = [...glossaryTerms].sort((a, b) => b.length - a.length);
+  const accepted: string[] = [];
+  for (const term of sortedTerms) {
+    const key = term.toLowerCase();
+    // A shorter term already covered by a longer one just accepted ("UNL" inside an already-found
+    // "UNL graph") is not listed again -- the longer match is the more specific citation.
+    if (accepted.some((a) => a.toLowerCase().includes(key))) continue;
+    if (new RegExp(`\\b${escapeRegExp(term)}\\b`, 'i').test(whatText)) {
+      accepted.push(term);
+      intel.push({ kind: 'glossary', text: term, href: '/glossary' });
+    }
+  }
+  return intel;
+}
+
+/** Assembles one quest's Codex briefing (issue 176) straight off its issue file's own headings
+ * and front matter -- no field this schema does not already carry. `objective` is `## What`'s
+ * second paragraph (the outcome sentence), not the first line `parseIssues`'s own `what` field
+ * already extracts for the Quests room's summary row. */
+export function buildCodex(issue: Issue, content: string, adrPaths: string[], glossaryTerms: string[]): Codex {
+  const whatMatch = /## What\r?\n+([\s\S]*?)(?:\r?\n## |\s*$)/.exec(content);
+  const whatText = whatMatch ? whatMatch[1].trim() : '';
+  const paragraphs = whatText.split(/\r?\n\s*\r?\n/).map((p) => p.trim()).filter(Boolean);
+  const objective = paragraphs[1] ?? paragraphs[0] ?? '';
+  return {
+    n: issue.n,
+    title: issue.title,
+    objective,
+    intel: codexIntel(whatText, adrPaths, glossaryTerms),
+    loadout: { agent: issue.agent, model: issue.model, effort: issue.effort, checkpoint: issue.checkpoint },
+    orders: {
+      acceptanceCriteria: sectionBody(content, 'Acceptance criteria') ?? '',
+      notInScope: sectionBody(content, 'Not in scope') ?? '',
+    },
+    afterAction: {
+      doneWhen: issue.doneWhen,
+      commit: issue.commit,
+      verifier: sectionBody(content, 'Verifier'),
+    },
+  };
+}
+
 const SIDE = new Set(['Side', 'Post-M6']);
 
 /** The same rule /factory-status uses: lowest open issue whose dependencies are all done. */
@@ -182,9 +287,21 @@ export interface LessonsSummary {
   ripe: string[];
 }
 
-/** lessons.jsonl text -> {total, bySig: [{sig, count, last}], ripe: [sig...]} */
-export function parseLessons(text: string): LessonsSummary {
-  const by = new Map<string, { sig: string; count: number; last: string }>();
+interface LessonGroup {
+  sig: string;
+  count: number;
+  last: string;
+  detail: string;
+}
+
+/** `lessons.jsonl` text -> one group per `sig`, unsorted, `last` the most recent `ts` seen and
+ * `detail` the failure text that came with it. Shared by `parseLessons` (sorted by count, for the
+ * ledger's "ripe at three" side task) and `debriefGroups` (sorted by recency, for the Debrief
+ * room, issue 176) so the two callers can never disagree about what one group even is. A line
+ * that is not valid JSON is skipped, the same "visible gap, not a crash" shape the rest of this
+ * parser family uses. */
+function groupLessonRows(text: string): { total: number; groups: LessonGroup[] } {
+  const by = new Map<string, LessonGroup>();
   let total = 0;
   for (const line of text.split(/\r?\n/)) {
     if (!line.trim()) continue;
@@ -195,13 +312,32 @@ export function parseLessons(text: string): LessonsSummary {
       continue;
     }
     total += 1;
-    const cur = by.get(o.sig) ?? { sig: o.sig, count: 0, last: '' };
+    const cur = by.get(o.sig) ?? { sig: o.sig, count: 0, last: '', detail: '' };
     cur.count += 1;
-    if (String(o.ts ?? '') > cur.last) cur.last = String(o.ts ?? '');
+    const ts = String(o.ts ?? '');
+    if (ts >= cur.last) {
+      cur.last = ts;
+      cur.detail = String(o.detail ?? '');
+    }
     by.set(o.sig, cur);
   }
-  const bySig = [...by.values()].sort((a, b) => b.count - a.count);
+  return { total, groups: [...by.values()] };
+}
+
+/** lessons.jsonl text -> {total, bySig: [{sig, count, last}], ripe: [sig...]} */
+export function parseLessons(text: string): LessonsSummary {
+  const { total, groups } = groupLessonRows(text);
+  const bySig = groups
+    .map(({ sig, count, last }) => ({ sig, count, last }))
+    .sort((a, b) => b.count - a.count);
   return { total, bySig, ripe: bySig.filter((s) => s.count >= 3).map((s) => s.sig) };
+}
+
+/** The Debrief room's own grouping (issue 176): every `sig` in `lessons.jsonl`, newest group
+ * first (by its most recent entry's `ts`), each carrying its count and the detail text of that
+ * most recent entry -- so a repeated failure signature reads as one group, not scattered rows. */
+export function debriefGroups(text: string): LessonGroup[] {
+  return groupLessonRows(text).groups.sort((a, b) => (a.last < b.last ? 1 : a.last > b.last ? -1 : 0));
 }
 
 export interface PartyMember {
