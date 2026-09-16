@@ -225,6 +225,11 @@ Copy-paste blocks for a cold session.
 issue files for M2 in the shape of `docs/factory/issues/07-*.md`, one per row, with acceptance
 criteria that a test can check. Do not start any of them."
 
+**Prompt 6, open the console-as-CIC map.** `/create-map The console-as-CIC line. Stage 1 is
+done: read docs/decisions/2026-09-16-console-as-cic/handoff.md, then the interrogation.html it
+names, and start at stage 2.` — the brief and the handoff carry the six quests, the three ADRs,
+the §7 row and the glossary terms.
+
 ## 9. Things only the owner can do
 
 - Change the UNL Archive password. It was pasted into a chat on 2026-09-08.
