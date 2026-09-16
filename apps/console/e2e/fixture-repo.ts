@@ -108,6 +108,24 @@ function writeLessonsFixture(): void {
   writeFileSync(join(dir, 'lessons.jsonl'), `${lines.map((l) => JSON.stringify(l)).join('\n')}\n`);
 }
 
+// The atlas (ADR 0015, issue 177): one region, one tile per fixture issue (1-10). None of the
+// fixture's `done` issues (1-5) carries a `commit:` field, so every tile here paints contact --
+// "lit" needs a real, resolvable commit ancestry, which server/test/atlas.test.ts and
+// server/test/server.test.ts already prove against an injected `isOnMain`, without needing a
+// second real git history built just for Playwright. What this fixture proves is the shape
+// atlas.spec.ts and atlas-offline.spec.ts check: tiles render from map.yaml, and GitHub
+// unreachable leaves the cleared-for-jump tier empty.
+function writeMapYamlFixture(): void {
+  const tiles = Array.from({ length: 10 }, (_, i) => {
+    const n = i + 1;
+    const col = i % 5;
+    const row = Math.floor(i / 5);
+    return `  - {id: '${String(n).padStart(2, '0')}', region: m0, title: "Fixture quest ${n}", x: ${col * 60 + 20}, y: ${row * 60 + 60}, size: 24}`;
+  }).join('\n');
+  const doc = `regions:\n  - {id: m0, name: Fixture, goal: g, x: 0, y: 0, size: 400}\ntiles:\n${tiles}\n`;
+  writeFileSync(join(FIXTURE_REPO, 'docs', 'factory', 'map.yaml'), doc);
+}
+
 export function buildFixtureRepo(): void {
   mkdirSync(join(FIXTURE_REPO, 'docs', 'factory', 'issues'), { recursive: true });
   mkdirSync(join(FIXTURE_REPO, '.claude', 'agents'), { recursive: true });
@@ -121,6 +139,7 @@ export function buildFixtureRepo(): void {
   );
   writeShipSystemsFixtures();
   writeLessonsFixture();
+  writeMapYamlFixture();
 }
 
 export function setIssueStatus(n: number, status: string): void {

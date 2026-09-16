@@ -807,3 +807,87 @@ a.xp:hover .xp__figure {
   letter-spacing: 0.06em;
   font-size: var(--step-0);
 }
+
+/* ---- the atlas: docs/factory/map.yaml, painted under d3-zoom (ADR 0015, issue 177) --------- */
+.atlas-legend {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 0.6rem 0 1rem;
+  padding: 0;
+  font-size: var(--step-1);
+  color: var(--ink-dim);
+}
+.atlas-legend__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.atlas-swatch {
+  display: inline-block;
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 50%;
+}
+.atlas-swatch--lit {
+  background: var(--st-done);
+}
+.atlas-swatch--cleared-for-jump {
+  background: var(--st-in-progress);
+}
+.atlas-swatch--contact {
+  background: var(--st-todo);
+}
+.atlas-swatch--fogged {
+  background: var(--st-folded);
+  border-radius: 2px;
+}
+.atlas-frame {
+  border: 1px solid var(--plate-edge);
+  background: var(--hull-2);
+  /* Fixed viewport height; d3-zoom's own transform does the panning/zooming inside it, so this
+     frame never grows with the atlas's own coordinate space. */
+  height: min(70vh, 640px);
+  overflow: hidden;
+}
+.atlas-frame svg {
+  width: 100%;
+  height: 100%;
+  cursor: grab;
+  touch-action: none;
+}
+.atlas-region {
+  fill: var(--plate);
+  stroke: var(--plate-edge);
+  stroke-width: 2;
+}
+.atlas-region--fogged {
+  fill: var(--hull);
+  stroke: var(--st-folded);
+  stroke-dasharray: 6 6;
+}
+.atlas-region__name {
+  fill: var(--ink-dim);
+  font-family: var(--font-display);
+  font-size: 22px;
+  letter-spacing: 0.04em;
+}
+.atlas-tile {
+  stroke: var(--hull);
+  stroke-width: 2;
+  cursor: pointer;
+}
+.atlas-tile:focus-visible {
+  outline: 2px solid var(--amber);
+  outline-offset: 2px;
+}
+.atlas-tile--lit {
+  fill: var(--st-done);
+}
+.atlas-tile--cleared-for-jump {
+  fill: var(--st-in-progress);
+}
+.atlas-tile--contact {
+  fill: var(--st-todo);
+}

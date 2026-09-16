@@ -2,7 +2,7 @@
 issue: 177
 title: "The atlas: a hand-drawn map.yaml, one tile per issue, fog of war and a gate validator"
 milestone: M7
-status: open
+status: in-progress
 depends_on: [176]
 agent: implementer
 agents: [implementer]
@@ -10,7 +10,7 @@ model: sonnet
 effort: high
 checkpoint: 4
 commit: null
-worktree: null
+worktree: .worktrees/m7-177-atlas
 github_issue: 262
 ---
 ## What

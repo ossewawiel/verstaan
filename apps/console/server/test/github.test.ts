@@ -2,7 +2,7 @@
 // ADR 0014: GitHub down shows comms-lost, never an error. Every case here proves `false` on
 // failure, not a thrown error, and proves the network is never touched without a token first.
 import { describe, it, expect, vi } from 'vitest';
-import { ghAuthToken, checkGithubReachable, isGithubReachable } from '../src/github.js';
+import { ghAuthToken, checkGithubReachable, isGithubReachable, openPullRequestGateStates } from '../src/github.js';
 
 describe('ghAuthToken', () => {
   it('returns the trimmed token on success', () => {
@@ -63,5 +63,62 @@ describe('isGithubReachable', () => {
     const reachable = await isGithubReachable({ tokenFn: () => null, fetchFn: fetchFn as unknown as typeof fetch });
     expect(reachable).toBe(false);
     expect(fetchFn).not.toHaveBeenCalled();
+  });
+});
+
+// The atlas's cleared-for-jump read (ADR 0015, issue 177). Every case is injectable-fetch, the
+// same seam as checkGithubReachable's own tests: no case here ever needs a real network call.
+describe('openPullRequestGateStates', () => {
+  function jsonResponse(body: unknown, ok = true): Response {
+    return { ok, json: async () => body } as unknown as Response;
+  }
+
+  it('returns an empty map without ever calling fetch when there is no token', async () => {
+    const fetchFn = vi.fn();
+    const result = await openPullRequestGateStates({ token: null, fetchFn: fetchFn as unknown as typeof fetch });
+    expect(result.size).toBe(0);
+    expect(fetchFn).not.toHaveBeenCalled();
+  });
+
+  it('maps an open PR on a milestone branch to its gate check-run conclusion', async () => {
+    const fetchFn = vi
+      .fn()
+      .mockResolvedValueOnce(jsonResponse([{ head: { ref: 'm7-177-atlas', sha: 'deadbeef' } }]))
+      .mockResolvedValueOnce(jsonResponse({ check_runs: [{ name: 'gate', conclusion: 'success' }] }));
+    const result = await openPullRequestGateStates({ token: 'tok', fetchFn: fetchFn as unknown as typeof fetch });
+    expect(result.get(177)).toBe(true);
+  });
+
+  it('maps a side-quest branch too, and reads a non-success conclusion as not cleared', async () => {
+    const fetchFn = vi
+      .fn()
+      .mockResolvedValueOnce(jsonResponse([{ head: { ref: 'side-91-source-control', sha: 'cafef00d' } }]))
+      .mockResolvedValueOnce(jsonResponse({ check_runs: [{ name: 'gate', conclusion: 'failure' }] }));
+    const result = await openPullRequestGateStates({ token: 'tok', fetchFn: fetchFn as unknown as typeof fetch });
+    expect(result.get(91)).toBe(false);
+  });
+
+  it('skips a PR whose branch does not name an issue, and one still missing a gate check-run', async () => {
+    const fetchFn = vi
+      .fn()
+      .mockResolvedValueOnce(
+        jsonResponse([{ head: { ref: 'renovate/deps', sha: 'x' } }, { head: { ref: 'm7-178-harness', sha: 'y' } }]),
+      )
+      .mockResolvedValueOnce(jsonResponse({ check_runs: [{ name: 'lint', conclusion: 'success' }] }));
+    const result = await openPullRequestGateStates({ token: 'tok', fetchFn: fetchFn as unknown as typeof fetch });
+    expect(result.size).toBe(1);
+    expect(result.get(178)).toBe(false);
+  });
+
+  it('returns an empty map, not a thrown error, on a non-2xx reply from the pull list', async () => {
+    const fetchFn = vi.fn().mockResolvedValueOnce(jsonResponse([], false));
+    const result = await openPullRequestGateStates({ token: 'tok', fetchFn: fetchFn as unknown as typeof fetch });
+    expect(result.size).toBe(0);
+  });
+
+  it('returns an empty map, not a thrown error, when fetch itself rejects (network gone)', async () => {
+    const fetchFn = vi.fn().mockRejectedValueOnce(new Error('ENOTFOUND api.github.com'));
+    const result = await openPullRequestGateStates({ token: 'tok', fetchFn: fetchFn as unknown as typeof fetch });
+    expect(result.size).toBe(0);
   });
 });

@@ -219,6 +219,15 @@ export function ConsoleRoom() {
           </Link>
         </div>
         <div className="status-row__item">
+          <p className="panel__title">Atlas</p>
+          <p className="panel__ctx">Known space, fog of war</p>
+          {/* The atlas (issue 177): same reasoning as the debrief link above -- a nav bar full at
+              seven rooms already wraps at 720/960px with an eighth, so this is its one door in. */}
+          <Link to="/atlas" className="action-button">
+            Open the atlas
+          </Link>
+        </div>
+        <div className="status-row__item">
           <p className="panel__title">GitHub</p>
           <p className={`panel__ctx status-chip${githubStatus?.reachable ? ' status-chip--ok' : ' status-chip--lost'}`}>
             {githubLoading ? 'checking…' : githubStatus?.reachable ? 'reachable' : 'comms-lost'}

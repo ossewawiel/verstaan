@@ -26,6 +26,10 @@ export const useDebriefQuery = () => useQuery({ queryKey: ['debrief'], queryFn: 
 // often enough that a login regained mid-session is noticed soon, rare enough it never competes
 // with the jobs poll's one-request-a-second budget.
 export const useGithubStatusQuery = () => useQuery({ queryKey: ['github-status'], queryFn: api.githubStatus, refetchInterval: 30_000 });
+// The atlas (issue 177): map.yaml plus each tile's state. GitHub is live (ADR 0014), so this
+// polls on the same 30s timer as the bridge's own GitHub chip, rather than waiting on a change
+// stream section that never fires for a pull request or a check run.
+export const useAtlasQuery = () => useQuery({ queryKey: ['atlas'], queryFn: api.atlas, refetchInterval: 30_000 });
 // Jobs are not part of the change stream (issue 100 is its own room, running commands the file
 // watcher never sees start or end), so this polls instead: a job typically runs for seconds to
 // minutes, and one request per second is cheap next to the process it is watching.

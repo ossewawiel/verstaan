@@ -23,6 +23,7 @@ function fixtureRepo(): RepoModel {
     hookFiles: [],
     settingsJsonText: '',
     playbookText: '',
+    mapYamlText: '',
   };
 }
 
@@ -246,6 +247,60 @@ describe('GET /api/github-status (issue 173, ADR 0014)', () => {
     const res = await app.inject({ method: 'GET', url: '/api/github-status' });
     expect(res.statusCode).toBe(200);
     expect(res.json()).toEqual({ reachable: false });
+    await app.close();
+  });
+});
+
+describe('GET /api/atlas (ADR 0015, issue 177)', () => {
+  function repoWithMap(): RepoModel {
+    return {
+      ...fixtureRepo(),
+      mapYamlText:
+        'regions:\n' +
+        '  - {id: m0, name: M0, goal: g, x: 0, y: 0, size: 100}\n' +
+        '  - {id: m1, name: M1, goal: g, x: 200, y: 0, size: 100}\n' +
+        'tiles:\n' +
+        // issue 1: done, commit abc1111 (fixtureRepo). issue 2: open, no PR.
+        "  - {id: '01', region: m0, title: A, x: 0, y: 0, size: 10}\n" +
+        "  - {id: '02', region: m1, title: B, x: 200, y: 0, size: 10}\n",
+    };
+  }
+
+  it('paints lit and contact from the issue files alone when GitHub is unreachable, and leaves cleared-for-jump empty', async () => {
+    const repo = repoWithMap();
+    const { app } = buildApp({
+      readRepoFn: () => repo,
+      githubReachableFn: async () => false,
+      // fixtureRepo's issue 1 carries commit: 'abc1111' -- present here as "on main".
+      mainAncestorShasFn: () => new Set(['abc1111']),
+      // Proves the GitHub round trip is skipped outright when unreachable, not just ignored.
+      openPullRequestGateStatesFn: async () => {
+        throw new Error('must not be called when GitHub is unreachable');
+      },
+    });
+    const res = await app.inject({ method: 'GET', url: '/api/atlas' });
+    expect(res.statusCode).toBe(200);
+    const body = res.json();
+    expect(body.githubReachable).toBe(false);
+    expect(body.tiles.find((t: { id: string }) => t.id === '01').state).toBe('lit');
+    expect(body.tiles.find((t: { id: string }) => t.id === '02').state).toBe('contact');
+    expect(body.tiles.some((t: { state: string }) => t.state === 'cleared-for-jump')).toBe(false);
+    await app.close();
+  });
+
+  it('adds cleared-for-jump only when GitHub is reachable and a gate check answers', async () => {
+    const repo = repoWithMap();
+    const { app } = buildApp({
+      readRepoFn: () => repo,
+      githubReachableFn: async () => true,
+      mainAncestorShasFn: () => new Set(),
+      ghAuthTokenFn: () => 'tok',
+      openPullRequestGateStatesFn: async () => new Map([[2, true]]),
+    });
+    const res = await app.inject({ method: 'GET', url: '/api/atlas' });
+    const body = res.json();
+    expect(body.githubReachable).toBe(true);
+    expect(body.tiles.find((t: { id: string }) => t.id === '02').state).toBe('cleared-for-jump');
     await app.close();
   });
 });

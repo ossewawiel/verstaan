@@ -117,6 +117,28 @@ every rule has at least one test sentence that exercises it (warning at M2, erro
 - `apps/cli`: `verstaan --from eng --to afr [--register formal] [--context medical] [--trace] [--tier basic] "text"`.
   Exit 0 on `ok`, 2 on `partial`, 3 on `no_parse`.
 
+### 3.7 Atlas (`docs/factory/map.yaml`)
+
+- Hand-authored, never generated (ADR 0015). The owner places every region and every tile.
+- One region per `PLAN.md` §7 milestone row, eight in total (`m0`-`m7`): `{id, name, goal, x, y,
+  size}`. ADR 0015 says "seven"; it was written the same day as `PLAN.md`'s M7 row, before that
+  row existed. Each milestone keeps its own region, `m6` included, so an unbuilt milestone stays
+  genuinely empty, and so fogged, independent of how much work another region has landed (the
+  whole point ADR 0015's "Consequences" names: "a milestone nobody has built has no node to fog").
+- `id` is always a YAML string, quoted when it would otherwise parse as a number (`'08'`, not
+  `08`) -- PyYAML (the validator) and the `yaml` npm package (the server) resolve an unquoted
+  leading-zero scalar differently, and an unquoted numeric id silently drops its own issue
+  prefix's leading zero on one side of that split.
+- One tile per issue-number prefix under `docs/factory/issues/`: `{id, region, title, x, y, size}`.
+  `id` matches the prefix exactly, e.g. `"04"` for both `04-fixture-language-pair.md` and
+  `04-test-cases.md`. `region` names one region's `id`.
+- Tile state is never stored here; the console computes it from issue front matter and, for
+  cleared-for-jump only, a GitHub read (ADR 0014, ADR 0015).
+- `tools/factory/validate_map.py` refuses an issue prefix with no tile, a tile with no matching
+  issue file, a tile naming an unknown region, a duplicate tile or region `id`, a region/tile
+  whose `id` is not a string, or a region/tile missing `x`, `y`, `size` or (tile only) `title`.
+  Wired into `python -m tools.validate --all` and `--changed` (issue 177).
+
 ## 4. Data rules
 
 - YAML, UTF-8, LF, two-space indent, keys sorted as in §3.3, one entry per list item.

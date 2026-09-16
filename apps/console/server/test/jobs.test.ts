@@ -37,6 +37,7 @@ function fixtureRepo(): RepoModel {
     hookFiles: [],
     settingsJsonText: '',
     playbookText: '',
+    mapYamlText: '',
   };
 }
 

@@ -73,6 +73,37 @@ export interface GithubStatus {
   reachable: boolean;
 }
 
+// The atlas (ADR 0015, issue 177): docs/factory/map.yaml, painted with each tile's state already
+// decided server-side (model/atlas.ts) -- the client never computes a state, only renders one.
+export type TileState = 'lit' | 'cleared-for-jump' | 'contact';
+
+export interface AtlasRegion {
+  id: string;
+  name: string;
+  goal: string;
+  x: number;
+  y: number;
+  size: number;
+  fogged: boolean;
+}
+
+export interface AtlasTile {
+  id: string;
+  region: string;
+  title: string;
+  x: number;
+  y: number;
+  size: number;
+  issueN: number;
+  state: TileState;
+}
+
+export interface Atlas {
+  regions: AtlasRegion[];
+  tiles: AtlasTile[];
+  githubReachable: boolean;
+}
+
 export interface DocPage {
   path: string;
   title: string;
@@ -206,6 +237,7 @@ export const api = {
   codex: (n: number) => getJson<Codex>(`/api/codex/${String(n).padStart(2, '0')}`),
   debrief: () => getJson<DebriefGroup[]>('/api/debrief'),
   githubStatus: () => getJson<GithubStatus>('/api/github-status'),
+  atlas: () => getJson<Atlas>('/api/atlas'),
   jobs: {
     list: () => getJson<JobSummary[]>('/api/jobs'),
     get: (id: string) => getJson<JobSummary>(`/api/jobs/${id}`),

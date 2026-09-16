@@ -711,6 +711,9 @@ export interface RepoModel {
   hookFiles: DocFile[];
   settingsJsonText: string;
   playbookText: string;
+  // The atlas (issue 177): docs/factory/map.yaml's raw text, parsed by model/atlas.ts, not here
+  // -- this module stays IO-free and YAML-shape-free both.
+  mapYamlText: string;
 }
 
 export interface BuiltModel {
