@@ -177,9 +177,15 @@ investigation work that decides what to do next. The console is a small Node/Rea
 (`apps/console/`, side quest 99, ADR 0010): a Fastify server with a read-only JSON API over the
 issue files, git, the gate stamp and the ledger, and a React client that renders five rooms —
 Console, Quests, Playbook, Library, Glossary — as real routes and diffs its own DOM on every
-change instead of reloading. It never invents state and never writes to the repository; that is
-quest 100. Its top panel is always one next move to type and one side task under ten minutes that
-only the owner can do. A zero-dependency file-based copy stays under `tools/console/` for a
+change instead of reloading. It never invents state. Since quest 100 it acts through one typed
+table of job kinds behind a Host check (ADR 0011), never a shell string; it still writes no issue
+file and no code. The console-as-CIC line (ADR 0014, 0015, 0016, brief under
+`docs/decisions/2026-09-16-console-as-cic/`) adds four rooms above the chassis: a bridge that
+lands, a hand-drawn atlas with fog of war read from `docs/factory/map.yaml`, a codex that renders
+an issue as a briefing, and a ship-systems room that shows the party, the skills and the hooks.
+Under it the server runs a quest as an Agent SDK session and shows each checkpoint as a card.
+GitHub and the model are live dependencies; the files stay the truth. Its top panel is always one
+next move to type and one side task under ten minutes that only the owner can do. A zero-dependency file-based copy stays under `tools/console/` for a
 `file://` reader with no service running (`node tools/console/src/generate.mjs`). Skin: the
 Colonial CIC theme from bob's docsite, amber phosphor on hull grey, cut-corner panels, status
 carried by glyph and label as well as colour. Voice: `docs/standards/voice.md`, no cheering. The

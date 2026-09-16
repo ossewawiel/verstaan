@@ -60,6 +60,18 @@ term here instead, with the file that defines it.
 | Encounter | One issue and its one work commit. The archive of encounters is the git history. | `docs/factory/git-workflow.md` |
 | Quest giver | Interrogation or investigation work that decides what to do next. | `docs/decisions/` |
 | Party | The five agents, each costed to a model and an effort. | `.claude/agents/` |
+| Bridge | The console's landing room: the next quest, the last events, one status line. Plays one boot sequence per load. | `docs/decisions/2026-09-16-console-as-cic/` |
+| Atlas | The console's map room, painted from `docs/factory/map.yaml`. Regions are milestones; tiles are issue prefixes. | ADR 0015 |
+| Tile | One issue prefix on the atlas, with an x, a y and a size. Lit, cleared for jump, or a contact. | ADR 0015 |
+| Fog | The cover over a region with no lit tile. Lifts when the first issue in it is done on `main`. | ADR 0015 |
+| Contact | An open issue with no pull request. Shows on the edge of a fogged region. | ADR 0015 |
+| Cleared for jump | An issue with an open pull request and `gate.yml` green. Read from GitHub; unpainted when GitHub is out of reach. | ADR 0014, 0015 |
+| Boarding pass | The launch line the console composes from an issue's front matter, `claude --model <m> "/factory-run NN"`, copied for a terminal. | ADR 0016 |
+| Orders awaiting | A checkpoint held in `canUseTool`, shown in the Jobs room as a card with a text box. | ADR 0016 |
+| Debrief | The codex panel that groups the ledger by signature, counts repeats, and offers Promote, which runs the retro. | `.claude/skills/factory-retro/SKILL.md` |
+| Crew | The ship-systems room's view of the party: each agent file with its tools, model and the issues it has run. | `.claude/agents/` |
+| Station | A skill or command as the ship-systems room shows it: one line of purpose and the last time it ran. | `.claude/skills/`, `.claude/commands/` |
+| Flight plan | The encounter path from `playbook.md` drawn as a lane, with the current quest's position on it. | `docs/factory/playbook.md` |
 | Skill | A named procedure the party uses: the TDD sequence, the gates, the retro. | `.claude/skills/` |
 | Gate | A check the build enforces. Three tiers: auto-fix, fast, full. | `SPEC.md` §5 |
 | Stamp | An empty file `<git-common-dir>/verstaan-gate-stamps/<sha>`, one per commit the full gate passed on. Shared by every worktree. | `.claude/commands/gate.md` |
