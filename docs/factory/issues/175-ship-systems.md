@@ -2,15 +2,15 @@
 issue: 175
 title: "Ship systems: a read-only room that shows the factory's own agents, skills, hooks and encounter path"
 milestone: M7
-status: in-progress
+status: done
 depends_on: [173]
 agent: implementer
 agents: [implementer]
 model: sonnet
 effort: medium
 checkpoint: null
-commit: null
-worktree: .worktrees/m7-175-ship-systems
+commit: b7969965f9d2f8bc510d8acade92e57f12dca723
+worktree: null
 github_issue: 260
 ---
 ## What
