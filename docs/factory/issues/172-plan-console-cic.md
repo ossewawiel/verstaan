@@ -2,14 +2,14 @@
 issue: 172
 title: "Write the M7 Console CIC issue files from the interrogation brief and ADR 0014–0016"
 milestone: M7
-status: open
+status: done
 depends_on: [164, 165]
 agent: docs-writer
 agents: [docs-writer]
 model: sonnet
 effort: low
 checkpoint: null
-commit: null
+commit: 6b25321
 worktree: null
 github_issue: 256
 ---
@@ -60,7 +60,7 @@ work.
 
 ## Done when
 
-- [ ] Six new issue files, 173 to 178, each written through one `/quest` call.
-- [ ] `python -m tools.validate --changed` exits 0.
-- [ ] `STATE.md` shows #173 as next.
-- [ ] `python -m tools.factory.mirror_github` has filled `github_issue:` on all seven files.
+- [x] Six new issue files, 173 to 178, each written through one `/quest` call.
+- [x] `python -m tools.validate --changed` exits 0.
+- [x] `STATE.md` shows #173 as next.
+- [x] `python -m tools.factory.mirror_github` has filled `github_issue:` on all seven files.
