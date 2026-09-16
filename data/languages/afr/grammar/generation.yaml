@@ -226,14 +226,14 @@
 - id: "33"
   kind: generation
   lhs: and(%x;%y)
-  rhs: "((%y,+>BLK)([en],LEX=C,POS=CCJ,+>BLK)(%x,+>BLK),+LEX=%x)"
+  rhs: "((%y,+>BLK)([en],LEX=C,POS=COO,+>BLK)(%x,+>BLK),+LEX=%x)"
   conditions: []
   comment: ""
   source: {archive_path: exports/afr/47.tgrammar.txt, line: 39}
 - id: "34"
   kind: generation
   lhs: or(%x;%y)
-  rhs: "((%y,+>BLK)([of],LEX=C,POS=CCJ,+>BLK)(%x,+>BLK),+LEX=%x)"
+  rhs: "((%y,+>BLK)([of],LEX=C,POS=COO,+>BLK)(%x,+>BLK),+LEX=%x)"
   conditions: []
   comment: ""
   source: {archive_path: exports/afr/47.tgrammar.txt, line: 40}

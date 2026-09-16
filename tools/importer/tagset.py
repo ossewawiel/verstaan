@@ -73,6 +73,23 @@ class TagsetEntry:
     meaning: str
     description: str
     examples: list[str]
+    source_archive_path: str = TAGSET_EXPORT
+    source_line: str | int | None = None  # None means "use the tag itself" (see format below)
+
+
+# The live export dropped two catch-all tags the wiki tree still defines and a real dictionary
+# entry still uses: `JJJ` ("other adjectives") and `AAA` ("other adverbs"). Issue 171, full
+# reasoning in docs/unl-reference/formats/tagset.md, "A second pass...": no rename works for
+# either (the entries under them share no semantic class), so both are kept verbatim as a
+# wiki-only addendum, merged in after the live export is parsed, so a re-import reproduces the
+# same two rows rather than silently dropping them again. Minimal and hardcoded on purpose: this
+# is not a general extensibility mechanism, just the two rows issue 171 hand-added. Line numbers
+# are `data/archive/wiki/Tagset.wikitext`'s own "Adjective concepts"/"Adverbial concepts" lines,
+# matching the hand-added `data/languages/{afr,eng}/tagset.yaml` rows exactly.
+_WIKI_ONLY_ADDENDUM: list[TagsetEntry] = [
+    TagsetEntry("JJJ", "other adjectives", "", [], "wiki/Tagset.wikitext", 485),
+    TagsetEntry("AAA", "other adverbs", "", [], "wiki/Tagset.wikitext", 491),
+]
 
 
 def _parse_segment(tag: str, segment: str) -> TagsetEntry:
@@ -165,7 +182,8 @@ def _format_examples(examples: list[str]) -> str:
 
 
 def format_tagset_record(entry: TagsetEntry) -> str:
-    source = _format_flow_mapping([("archive_path", TAGSET_EXPORT), ("line", entry.tag)])
+    line = entry.source_line if entry.source_line is not None else entry.tag
+    source = _format_flow_mapping([("archive_path", entry.source_archive_path), ("line", line)])
     lines = [
         f"{_yaml_scalar(entry.tag)}:",
         f"  tag: {_yaml_scalar(entry.tag)}",
@@ -190,6 +208,7 @@ def entry_as_record(entry: TagsetEntry) -> dict:
     """`TagsetEntry` as the plain dict `tools/validate/schema/tagset-entry.schema.json` checks
     (used by tests and by `tools.validate`, not by the YAML writer above, which formats fields
     itself to keep the flow-mapping style)."""
+    line = entry.source_line if entry.source_line is not None else entry.tag
     return {
         "tag": entry.tag,
         "meaning": entry.meaning,
@@ -197,7 +216,7 @@ def entry_as_record(entry: TagsetEntry) -> dict:
         "examples": entry.examples,
         "category": None,
         "parent": None,
-        "source": {"archive_path": TAGSET_EXPORT, "line": entry.tag},
+        "source": {"archive_path": entry.source_archive_path, "line": line},
     }
 
 
@@ -206,7 +225,7 @@ def import_tagset(iso3: str, archive_root: Path, store_root: Path) -> list[Tagse
     tagset.yaml`: SPEC.md §3.3 gives every language its own file, but the export is shared, so
     `afr` and `eng` (and any other language store this runs for) receive the identical table."""
     text = _read(archive_root / TAGSET_EXPORT)
-    entries = parse_tagset(text)
+    entries = parse_tagset(text) + _WIKI_ONLY_ADDENDUM
     write_tagset_file(store_root / iso3 / "tagset.yaml", entries)
     return entries
 

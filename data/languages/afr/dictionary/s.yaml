@@ -42,7 +42,7 @@
 - headword: SO
   id: 19207
   uw: "113832841"
-  features: {LEMMA: SO, BF: SO, LEX: N, POS: NOU, LST: ABB, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ANI: NANM, SEM: REL}
+  features: {LEMMA: SO, BF: SO, LEX: N, POS: NOU, LST: ABB, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ANI: NANM, SEM: RLT}
   lang: afr
   frequency: 2
   priority: 0
@@ -66,7 +66,7 @@
 - headword: SO
   id: 22434
   uw: "113832841"
-  features: {LEMMA: SO, BF: SO, LEX: N, POS: NOU, LST: ABB, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ANI: NANM, SEM: REL}
+  features: {LEMMA: SO, BF: SO, LEX: N, POS: NOU, LST: ABB, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ANI: NANM, SEM: RLT}
   lang: afr
   frequency: 2
   priority: 0
@@ -354,7 +354,7 @@
 - headword: Seevlak
   id: 13493
   uw: "105132340"
-  features: {LEMMA: Seevlak, BF: Seevlak, LEX: N, POS: NOU, ABN: ABT, ANI: NANM, SEM: ATT}
+  features: {LEMMA: Seevlak, BF: Seevlak, LEX: N, POS: NOU, ABN: ABT, ANI: NANM, SEM: ATR}
   lang: afr
   frequency: 0
   priority: 0
@@ -362,7 +362,7 @@
 - headword: Seevlak
   id: 13493
   uw: "105132340"
-  features: {LEMMA: Seevlak, BF: Seevlak, LEX: N, POS: NOU, ABN: ABT, ANI: NANM, SEM: ATT}
+  features: {LEMMA: Seevlak, BF: Seevlak, LEX: N, POS: NOU, ABN: ABT, ANI: NANM, SEM: ATR}
   lang: afr
   frequency: 0
   priority: 0
@@ -434,7 +434,7 @@
 - headword: Selfbeskikking
   id: 13289
   uw: "105199151"
-  features: {LEMMA: Selfbeskikking, BF: Selfbeskikking, LEX: N, POS: NOU, ABN: ABT, ANI: NANM, SEM: ATT}
+  features: {LEMMA: Selfbeskikking, BF: Selfbeskikking, LEX: N, POS: NOU, ABN: ABT, ANI: NANM, SEM: ATR}
   lang: afr
   frequency: 0
   priority: 0
@@ -442,7 +442,7 @@
 - headword: Selfbeskikking
   id: 13289
   uw: "105199151"
-  features: {LEMMA: Selfbeskikking, BF: Selfbeskikking, LEX: N, POS: NOU, ABN: ABT, ANI: NANM, SEM: ATT}
+  features: {LEMMA: Selfbeskikking, BF: Selfbeskikking, LEX: N, POS: NOU, ABN: ABT, ANI: NANM, SEM: ATR}
   lang: afr
   frequency: 0
   priority: 0
@@ -594,7 +594,7 @@
 - headword: Siaan
   id: 12943
   uw: "104968619"
-  features: {LEMMA: Siaan, BF: Siaan, LEX: N, POS: NOU, ABN: ABT, ANI: NANM, SEM: ATT}
+  features: {LEMMA: Siaan, BF: Siaan, LEX: N, POS: NOU, ABN: ABT, ANI: NANM, SEM: ATR}
   lang: afr
   frequency: 0
   priority: 0
@@ -602,7 +602,7 @@
 - headword: Siaan
   id: 12943
   uw: "104968619"
-  features: {LEMMA: Siaan, BF: Siaan, LEX: N, POS: NOU, ABN: ABT, ANI: NANM, SEM: ATT}
+  features: {LEMMA: Siaan, BF: Siaan, LEX: N, POS: NOU, ABN: ABT, ANI: NANM, SEM: ATR}
   lang: afr
   frequency: 0
   priority: 0
@@ -1490,7 +1490,7 @@
 - headword: Spoed
   id: 13282
   uw: "105058140"
-  features: {LEMMA: Spoed, BF: Spoed, LEX: N, POS: NOU, ABN: ABT, ALY: ALI, ANI: NANM, CAR: NCTB, SEM: ATT, SFR: K0}
+  features: {LEMMA: Spoed, BF: Spoed, LEX: N, POS: NOU, ABN: ABT, ALY: ALI, ANI: NANM, CAR: NCTB, SEM: ATR, SFR: K0}
   lang: afr
   frequency: 0
   priority: 0
@@ -1498,7 +1498,7 @@
 - headword: Spoed
   id: 13282
   uw: "105058140"
-  features: {LEMMA: Spoed, BF: Spoed, LEX: N, POS: NOU, ABN: ABT, ALY: ALI, ANI: NANM, CAR: NCTB, SEM: ATT, SFR: K0}
+  features: {LEMMA: Spoed, BF: Spoed, LEX: N, POS: NOU, ABN: ABT, ALY: ALI, ANI: NANM, CAR: NCTB, SEM: ATR, SFR: K0}
   lang: afr
   frequency: 0
   priority: 0
@@ -1762,7 +1762,7 @@
 - headword: Stoigiometrie
   id: 13280
   uw: "113825840"
-  features: {LEMMA: Stoigiometrie, BF: Stoigiometrie, LEX: N, POS: NOU, ABN: ABT, ANI: NANM, SEM: REL}
+  features: {LEMMA: Stoigiometrie, BF: Stoigiometrie, LEX: N, POS: NOU, ABN: ABT, ANI: NANM, SEM: RLT}
   lang: afr
   frequency: 0
   priority: 0
@@ -1770,7 +1770,7 @@
 - headword: Stoigiometrie
   id: 13280
   uw: "113825840"
-  features: {LEMMA: Stoigiometrie, BF: Stoigiometrie, LEX: N, POS: NOU, ABN: ABT, ANI: NANM, SEM: REL}
+  features: {LEMMA: Stoigiometrie, BF: Stoigiometrie, LEX: N, POS: NOU, ABN: ABT, ANI: NANM, SEM: RLT}
   lang: afr
   frequency: 0
   priority: 0
@@ -2266,7 +2266,7 @@
 - headword: saaiheid
   id: 11442
   uw: "104740326"
-  features: {LEMMA: saaiheid, BF: saaiheid, LEX: N, POS: NOU, LST: WRD, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATT}
+  features: {LEMMA: saaiheid, BF: saaiheid, LEX: N, POS: NOU, LST: WRD, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATR}
   lang: afr
   frequency: 2
   priority: 3
@@ -2274,7 +2274,7 @@
 - headword: saaiheid
   id: 11442
   uw: "104740326"
-  features: {LEMMA: saaiheid, BF: saaiheid, LEX: N, POS: NOU, LST: WRD, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATT}
+  features: {LEMMA: saaiheid, BF: saaiheid, LEX: N, POS: NOU, LST: WRD, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATR}
   lang: afr
   frequency: 2
   priority: 3
@@ -3914,7 +3914,7 @@
 - headword: sedelikheid
   id: 11223
   uw: "104846770"
-  features: {LEMMA: sedelikheid, BF: sedelikheid, LEX: N, POS: NOU, LST: WRD, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATT}
+  features: {LEMMA: sedelikheid, BF: sedelikheid, LEX: N, POS: NOU, LST: WRD, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATR}
   lang: afr
   frequency: 2
   priority: 0
@@ -3922,7 +3922,7 @@
 - headword: sedelikheid
   id: 11223
   uw: "104846770"
-  features: {LEMMA: sedelikheid, BF: sedelikheid, LEX: N, POS: NOU, LST: WRD, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATT}
+  features: {LEMMA: sedelikheid, BF: sedelikheid, LEX: N, POS: NOU, LST: WRD, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATR}
   lang: afr
   frequency: 2
   priority: 0
@@ -6178,7 +6178,7 @@
 - headword: sesde
   id: 23601
   uw: "600000228"
-  features: {LEMMA: sesde, BF: sesde, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M2, FRA: Y0, ABN: ABT, ANI: NANM, SEM: "QTT, DIGIT, TEMP"}
+  features: {LEMMA: sesde, BF: sesde, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M2, FRA: Y0, ABN: ABT, ANI: NANM, SEM: QTT, DIGIT: DIGIT, TEMP: TEMP}
   lang: afr
   frequency: 255
   priority: 255
@@ -6202,7 +6202,7 @@
 - headword: sesde
   id: 28298
   uw: "600000228"
-  features: {LEMMA: sesde, BF: sesde, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M2, FRA: Y0, ABN: ABT, ANI: NANM, SEM: "QTT, DIGIT, TEMP"}
+  features: {LEMMA: sesde, BF: sesde, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M2, FRA: Y0, ABN: ABT, ANI: NANM, SEM: QTT, DIGIT: DIGIT, TEMP: TEMP}
   lang: afr
   frequency: 255
   priority: 255
@@ -6218,7 +6218,7 @@
 - headword: sesdes
   id: 28300
   uw: "600000228"
-  features: {LEMMA: sesde, BF: sesde, LEX: N, POS: NOU, LST: WRD, NUM: PLR, PAR: M2, FRA: Y0, ABN: ABT, ANI: NANM, SEM: "QTT, DIGIT, TEMP"}
+  features: {LEMMA: sesde, BF: sesde, LEX: N, POS: NOU, LST: WRD, NUM: PLR, PAR: M2, FRA: Y0, ABN: ABT, ANI: NANM, SEM: QTT, DIGIT: DIGIT, TEMP: TEMP}
   lang: afr
   frequency: 255
   priority: 255
@@ -8138,7 +8138,7 @@
 - headword: skade
   id: 21408
   uw: "105162985"
-  features: {LEMMA: skade, BF: skade, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M2, FRA: Y0, ABN: ABT, ALY: ALI, ANI: NANM, CAR: CTB, SEM: ATT, SFR: K0}
+  features: {LEMMA: skade, BF: skade, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M2, FRA: Y0, ABN: ABT, ALY: ALI, ANI: NANM, CAR: CTB, SEM: ATR, SFR: K0}
   lang: afr
   frequency: 5
   priority: 0
@@ -8170,7 +8170,7 @@
 - headword: skade
   id: 25297
   uw: "105162985"
-  features: {LEMMA: skade, BF: skade, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M2, FRA: Y0, ABN: ABT, ALY: ALI, ANI: NANM, CAR: CTB, SEM: ATT, SFR: K0}
+  features: {LEMMA: skade, BF: skade, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M2, FRA: Y0, ABN: ABT, ALY: ALI, ANI: NANM, CAR: CTB, SEM: ATR, SFR: K0}
   lang: afr
   frequency: 5
   priority: 0
@@ -8202,7 +8202,7 @@
 - headword: skades
   id: 25301
   uw: "105162985"
-  features: {LEMMA: skade, BF: skade, LEX: N, POS: NOU, LST: WRD, NUM: PLR, PAR: M2, FRA: Y0, ABN: ABT, ALY: ALI, ANI: NANM, CAR: CTB, SEM: ATT, SFR: K0}
+  features: {LEMMA: skade, BF: skade, LEX: N, POS: NOU, LST: WRD, NUM: PLR, PAR: M2, FRA: Y0, ABN: ABT, ALY: ALI, ANI: NANM, CAR: CTB, SEM: ATR, SFR: K0}
   lang: afr
   frequency: 5
   priority: 0
@@ -8258,7 +8258,7 @@
 - headword: skakel
   id: 18073
   uw: "113792692"
-  features: {LEMMA: skakel, BF: skakel, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M2, FRA: Y0, ABN: ABT, ALY: NALI, ANI: NANM, CAR: CTB, SEM: REL, SFR: K0}
+  features: {LEMMA: skakel, BF: skakel, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M2, FRA: Y0, ABN: ABT, ALY: NALI, ANI: NANM, CAR: CTB, SEM: RLT, SFR: K0}
   lang: afr
   frequency: 5
   priority: 0
@@ -8314,7 +8314,7 @@
 - headword: skakel
   id: 20431
   uw: "113792692"
-  features: {LEMMA: skakel, BF: skakel, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M2, FRA: Y0, ABN: ABT, ALY: NALI, ANI: NANM, CAR: CTB, SEM: REL, SFR: K0}
+  features: {LEMMA: skakel, BF: skakel, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M2, FRA: Y0, ABN: ABT, ALY: NALI, ANI: NANM, CAR: CTB, SEM: RLT, SFR: K0}
   lang: afr
   frequency: 5
   priority: 0
@@ -8370,7 +8370,7 @@
 - headword: skakels
   id: 20438
   uw: "113792692"
-  features: {LEMMA: skakel, BF: skakel, LEX: N, POS: NOU, LST: WRD, NUM: PLR, PAR: M2, FRA: Y0, ABN: ABT, ALY: NALI, ANI: NANM, CAR: CTB, SEM: REL, SFR: K0}
+  features: {LEMMA: skakel, BF: skakel, LEX: N, POS: NOU, LST: WRD, NUM: PLR, PAR: M2, FRA: Y0, ABN: ABT, ALY: NALI, ANI: NANM, CAR: CTB, SEM: RLT, SFR: K0}
   lang: afr
   frequency: 5
   priority: 0
@@ -12146,7 +12146,7 @@
 - headword: skoonheid
   id: 15845
   uw: "104683814"
-  features: {LEMMA: skoonheid, BF: skoonheid, LEX: N, POS: NOU, LST: WRD, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ALY: NALI, ANI: NANM, CAR: NCTB, SEM: ATT, SFR: K0}
+  features: {LEMMA: skoonheid, BF: skoonheid, LEX: N, POS: NOU, LST: WRD, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ALY: NALI, ANI: NANM, CAR: NCTB, SEM: ATR, SFR: K0}
   lang: afr
   frequency: 4
   priority: 1
@@ -12154,7 +12154,7 @@
 - headword: skoonheid
   id: 16224
   uw: "104683814"
-  features: {LEMMA: skoonheid, BF: skoonheid, LEX: N, POS: NOU, LST: WRD, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ALY: NALI, ANI: NANM, CAR: NCTB, SEM: ATT, SFR: K0}
+  features: {LEMMA: skoonheid, BF: skoonheid, LEX: N, POS: NOU, LST: WRD, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ALY: NALI, ANI: NANM, CAR: NCTB, SEM: ATR, SFR: K0}
   lang: afr
   frequency: 4
   priority: 1
@@ -13882,7 +13882,7 @@
 - headword: skuld
   id: 20708
   uw: "104669692"
-  features: {LEMMA: skuld, BF: skuld, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M3, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATT}
+  features: {LEMMA: skuld, BF: skuld, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M3, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATR}
   lang: afr
   frequency: 2
   priority: 0
@@ -13938,7 +13938,7 @@
 - headword: skuld
   id: 24378
   uw: "104669692"
-  features: {LEMMA: skuld, BF: skuld, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M3, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATT}
+  features: {LEMMA: skuld, BF: skuld, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M3, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATR}
   lang: afr
   frequency: 2
   priority: 0
@@ -13994,7 +13994,7 @@
 - headword: skulde
   id: 24385
   uw: "104669692"
-  features: {LEMMA: skuld, BF: skuld, LEX: N, POS: NOU, LST: WRD, NUM: PLR, PAR: M3, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATT}
+  features: {LEMMA: skuld, BF: skuld, LEX: N, POS: NOU, LST: WRD, NUM: PLR, PAR: M3, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATR}
   lang: afr
   frequency: 2
   priority: 0
@@ -14282,7 +14282,7 @@
 - headword: skyn
   id: 11226
   uw: "104953954"
-  features: {LEMMA: skyn, BF: skyn, LEX: N, POS: NOU, LST: WRD, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATT}
+  features: {LEMMA: skyn, BF: skyn, LEX: N, POS: NOU, LST: WRD, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATR}
   lang: afr
   frequency: 2
   priority: 2
@@ -14290,7 +14290,7 @@
 - headword: skyn
   id: 11226
   uw: "104953954"
-  features: {LEMMA: skyn, BF: skyn, LEX: N, POS: NOU, LST: WRD, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATT}
+  features: {LEMMA: skyn, BF: skyn, LEX: N, POS: NOU, LST: WRD, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATR}
   lang: afr
   frequency: 2
   priority: 2
@@ -14618,7 +14618,7 @@
 - headword: slae
   id: 18019
   uw: "105157274"
-  features: {LEMMA: slag, BF: slag, LEX: N, POS: NOU, LST: WRD, NUM: PLR, PAR: M7, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATT}
+  features: {LEMMA: slag, BF: slag, LEX: N, POS: NOU, LST: WRD, NUM: PLR, PAR: M7, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATR}
   lang: afr
   frequency: 2
   priority: 0
@@ -14682,7 +14682,7 @@
 - headword: slag
   id: 16787
   uw: "105157274"
-  features: {LEMMA: slag, BF: slag, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M7, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATT}
+  features: {LEMMA: slag, BF: slag, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M7, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATR}
   lang: afr
   frequency: 2
   priority: 0
@@ -14746,7 +14746,7 @@
 - headword: slag
   id: 18011
   uw: "105157274"
-  features: {LEMMA: slag, BF: slag, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M7, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATT}
+  features: {LEMMA: slag, BF: slag, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M7, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATR}
   lang: afr
   frequency: 2
   priority: 0
@@ -16514,7 +16514,7 @@
 - headword: snoei
   id: 14182
   uw: "202509552"
-  features: {LEMMA: snoei, BF: snoei, LEX: V, POS: VER, LST: WRD, TRA: TST, PAR: M0, FRA: Y0, SEM: SOV}
+  features: {LEMMA: snoei, BF: snoei, LEX: V, POS: VER, LST: WRD, TRA: TST, PAR: M0, FRA: Y0, SEM: SOC}
   lang: afr
   frequency: 4
   priority: 1
@@ -16522,7 +16522,7 @@
 - headword: snoei
   id: 14182
   uw: "202509552"
-  features: {LEMMA: snoei, BF: snoei, LEX: V, POS: VER, LST: WRD, TRA: TST, PAR: M0, FRA: Y0, SEM: SOV}
+  features: {LEMMA: snoei, BF: snoei, LEX: V, POS: VER, LST: WRD, TRA: TST, PAR: M0, FRA: Y0, SEM: SOC}
   lang: afr
   frequency: 4
   priority: 1
@@ -18322,7 +18322,7 @@
 - headword: soort
   id: 18515
   uw: "104746262"
-  features: {LEMMA: soort, BF: soort, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M3, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATT}
+  features: {LEMMA: soort, BF: soort, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M3, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATR}
   lang: afr
   frequency: 2
   priority: 0
@@ -18402,7 +18402,7 @@
 - headword: soort
   id: 21269
   uw: "104746262"
-  features: {LEMMA: soort, BF: soort, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M3, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATT}
+  features: {LEMMA: soort, BF: soort, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M3, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATR}
   lang: afr
   frequency: 2
   priority: 0
@@ -18482,7 +18482,7 @@
 - headword: soorte
   id: 21279
   uw: "104746262"
-  features: {LEMMA: soort, BF: soort, LEX: N, POS: NOU, LST: WRD, NUM: PLR, PAR: M3, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATT}
+  features: {LEMMA: soort, BF: soort, LEX: N, POS: NOU, LST: WRD, NUM: PLR, PAR: M3, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATR}
   lang: afr
   frequency: 2
   priority: 0
@@ -19546,7 +19546,7 @@
 - headword: speel
   id: 14710
   uw: "202418686"
-  features: {LEMMA: speel, BF: speel, LEX: V, POS: VER, LST: WRD, TRA: NTST, PAR: M0, FRA: Y0, SEM: SOV}
+  features: {LEMMA: speel, BF: speel, LEX: V, POS: VER, LST: WRD, TRA: NTST, PAR: M0, FRA: Y0, SEM: SOC}
   lang: afr
   frequency: 2
   priority: 1
@@ -19554,7 +19554,7 @@
 - headword: speel
   id: 14710
   uw: "202418686"
-  features: {LEMMA: speel, BF: speel, LEX: V, POS: VER, LST: WRD, TRA: NTST, PAR: M0, FRA: Y0, SEM: SOV}
+  features: {LEMMA: speel, BF: speel, LEX: V, POS: VER, LST: WRD, TRA: NTST, PAR: M0, FRA: Y0, SEM: SOC}
   lang: afr
   frequency: 2
   priority: 1
@@ -22482,7 +22482,7 @@
 - headword: staanhouding
   id: 10260
   uw: "105082507"
-  features: {LEMMA: staanhouding, BF: staanhouding, LEX: N, POS: NOU, LST: MTW, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ALY: NALI, ANI: NANM, CAR: CTB, SEM: ATT, SFR: K0}
+  features: {LEMMA: staanhouding, BF: staanhouding, LEX: N, POS: NOU, LST: MTW, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ALY: NALI, ANI: NANM, CAR: CTB, SEM: ATR, SFR: K0}
   lang: afr
   frequency: 4
   priority: 0
@@ -22490,7 +22490,7 @@
 - headword: staanhouding
   id: 10260
   uw: "105082507"
-  features: {LEMMA: staanhouding, BF: staanhouding, LEX: N, POS: NOU, LST: MTW, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ALY: NALI, ANI: NANM, CAR: CTB, SEM: ATT, SFR: K0}
+  features: {LEMMA: staanhouding, BF: staanhouding, LEX: N, POS: NOU, LST: MTW, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ALY: NALI, ANI: NANM, CAR: CTB, SEM: ATR, SFR: K0}
   lang: afr
   frequency: 4
   priority: 0
@@ -22522,7 +22522,7 @@
 - headword: staanposisie
   id: 10261
   uw: "105082507"
-  features: {LEMMA: staanposisie, BF: staanposisie, LEX: N, POS: NOU, LST: MTW, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ALY: NALI, ANI: NANM, CAR: CTB, SEM: ATT, SFR: K0}
+  features: {LEMMA: staanposisie, BF: staanposisie, LEX: N, POS: NOU, LST: MTW, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ALY: NALI, ANI: NANM, CAR: CTB, SEM: ATR, SFR: K0}
   lang: afr
   frequency: 4
   priority: 2
@@ -22530,7 +22530,7 @@
 - headword: staanposisie
   id: 10261
   uw: "105082507"
-  features: {LEMMA: staanposisie, BF: staanposisie, LEX: N, POS: NOU, LST: MTW, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ALY: NALI, ANI: NANM, CAR: CTB, SEM: ATT, SFR: K0}
+  features: {LEMMA: staanposisie, BF: staanposisie, LEX: N, POS: NOU, LST: MTW, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ALY: NALI, ANI: NANM, CAR: CTB, SEM: ATR, SFR: K0}
   lang: afr
   frequency: 4
   priority: 2
@@ -22882,7 +22882,7 @@
 - headword: stadium
   id: 21102
   uw: "104676540"
-  features: {LEMMA: stadium, BF: stadium, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M2, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATT}
+  features: {LEMMA: stadium, BF: stadium, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M2, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATR}
   lang: afr
   frequency: 2
   priority: 0
@@ -22930,7 +22930,7 @@
 - headword: stadium
   id: 24897
   uw: "104676540"
-  features: {LEMMA: stadium, BF: stadium, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M2, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATT}
+  features: {LEMMA: stadium, BF: stadium, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M2, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATR}
   lang: afr
   frequency: 2
   priority: 0
@@ -22978,7 +22978,7 @@
 - headword: stadiums
   id: 24902
   uw: "104676540"
-  features: {LEMMA: stadium, BF: stadium, LEX: N, POS: NOU, LST: WRD, NUM: PLR, PAR: M2, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATT}
+  features: {LEMMA: stadium, BF: stadium, LEX: N, POS: NOU, LST: WRD, NUM: PLR, PAR: M2, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATR}
   lang: afr
   frequency: 2
   priority: 0
@@ -23162,7 +23162,7 @@
 - headword: stand
   id: 18421
   uw: "105093890"
-  features: {LEMMA: stand, BF: stand, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M3, FRA: Y0, ABN: ABT, ALY: ALI, ANI: NANM, CAR: CTB, SEM: ATT, SFR: K0}
+  features: {LEMMA: stand, BF: stand, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M3, FRA: Y0, ABN: ABT, ALY: ALI, ANI: NANM, CAR: CTB, SEM: ATR, SFR: K0}
   lang: afr
   frequency: 6
   priority: 3
@@ -23178,7 +23178,7 @@
 - headword: stand
   id: 18423
   uw: "105079866"
-  features: {LEMMA: stand, BF: stand, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M3, FRA: Y0, ABN: ABT, ALY: ALI, ANI: NANM, CAR: CTB, SEM: ATT, SFR: K0}
+  features: {LEMMA: stand, BF: stand, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M3, FRA: Y0, ABN: ABT, ALY: ALI, ANI: NANM, CAR: CTB, SEM: ATR, SFR: K0}
   lang: afr
   frequency: 5
   priority: 0
@@ -23226,7 +23226,7 @@
 - headword: stand
   id: 18429
   uw: "104813540"
-  features: {LEMMA: stand, BF: stand, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M3, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATT}
+  features: {LEMMA: stand, BF: stand, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M3, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATR}
   lang: afr
   frequency: 2
   priority: 0
@@ -23258,7 +23258,7 @@
 - headword: stand
   id: 18433
   uw: "104676540"
-  features: {LEMMA: stand, BF: stand, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M3, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATT}
+  features: {LEMMA: stand, BF: stand, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M3, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATR}
   lang: afr
   frequency: 2
   priority: 0
@@ -23274,7 +23274,7 @@
 - headword: stand
   id: 18435
   uw: "105082507"
-  features: {LEMMA: stand, BF: stand, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M3, FRA: Y0, ABN: ABT, ALY: NALI, ANI: NANM, CAR: CTB, SEM: ATT, SFR: K0}
+  features: {LEMMA: stand, BF: stand, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M3, FRA: Y0, ABN: ABT, ALY: NALI, ANI: NANM, CAR: CTB, SEM: ATR, SFR: K0}
   lang: afr
   frequency: 4
   priority: 0
@@ -23290,7 +23290,7 @@
 - headword: stand
   id: 21089
   uw: "105093890"
-  features: {LEMMA: stand, BF: stand, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M3, FRA: Y0, ABN: ABT, ALY: ALI, ANI: NANM, CAR: CTB, SEM: ATT, SFR: K0}
+  features: {LEMMA: stand, BF: stand, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M3, FRA: Y0, ABN: ABT, ALY: ALI, ANI: NANM, CAR: CTB, SEM: ATR, SFR: K0}
   lang: afr
   frequency: 6
   priority: 3
@@ -23306,7 +23306,7 @@
 - headword: stand
   id: 21091
   uw: "105079866"
-  features: {LEMMA: stand, BF: stand, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M3, FRA: Y0, ABN: ABT, ALY: ALI, ANI: NANM, CAR: CTB, SEM: ATT, SFR: K0}
+  features: {LEMMA: stand, BF: stand, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M3, FRA: Y0, ABN: ABT, ALY: ALI, ANI: NANM, CAR: CTB, SEM: ATR, SFR: K0}
   lang: afr
   frequency: 5
   priority: 0
@@ -23354,7 +23354,7 @@
 - headword: stand
   id: 21097
   uw: "104813540"
-  features: {LEMMA: stand, BF: stand, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M3, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATT}
+  features: {LEMMA: stand, BF: stand, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M3, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATR}
   lang: afr
   frequency: 2
   priority: 0
@@ -23386,7 +23386,7 @@
 - headword: stand
   id: 21101
   uw: "104676540"
-  features: {LEMMA: stand, BF: stand, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M3, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATT}
+  features: {LEMMA: stand, BF: stand, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M3, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATR}
   lang: afr
   frequency: 2
   priority: 0
@@ -23402,7 +23402,7 @@
 - headword: stand
   id: 21103
   uw: "105082507"
-  features: {LEMMA: stand, BF: stand, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M3, FRA: Y0, ABN: ABT, ALY: NALI, ANI: NANM, CAR: CTB, SEM: ATT, SFR: K0}
+  features: {LEMMA: stand, BF: stand, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M3, FRA: Y0, ABN: ABT, ALY: NALI, ANI: NANM, CAR: CTB, SEM: ATR, SFR: K0}
   lang: afr
   frequency: 4
   priority: 0
@@ -23450,7 +23450,7 @@
 - headword: standaard
   id: 22698
   uw: "113854101"
-  features: {LEMMA: standaard, BF: standaard, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M3, FRA: Y0, ABN: ABT, ANI: NANM, SEM: REL}
+  features: {LEMMA: standaard, BF: standaard, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M3, FRA: Y0, ABN: ABT, ANI: NANM, SEM: RLT}
   lang: afr
   frequency: 2
   priority: 0
@@ -23490,7 +23490,7 @@
 - headword: standaard
   id: 27061
   uw: "113854101"
-  features: {LEMMA: standaard, BF: standaard, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M3, FRA: Y0, ABN: ABT, ANI: NANM, SEM: REL}
+  features: {LEMMA: standaard, BF: standaard, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M3, FRA: Y0, ABN: ABT, ANI: NANM, SEM: RLT}
   lang: afr
   frequency: 2
   priority: 0
@@ -23530,7 +23530,7 @@
 - headword: standaarde
   id: 27066
   uw: "113854101"
-  features: {LEMMA: standaard, BF: standaard, LEX: N, POS: NOU, LST: WRD, NUM: PLR, PAR: M3, FRA: Y0, ABN: ABT, ANI: NANM, SEM: REL}
+  features: {LEMMA: standaard, BF: standaard, LEX: N, POS: NOU, LST: WRD, NUM: PLR, PAR: M3, FRA: Y0, ABN: ABT, ANI: NANM, SEM: RLT}
   lang: afr
   frequency: 2
   priority: 0
@@ -23562,7 +23562,7 @@
 - headword: stande
   id: 21105
   uw: "105093890"
-  features: {LEMMA: stand, BF: stand, LEX: N, POS: NOU, LST: WRD, NUM: PLR, PAR: M3, FRA: Y0, ABN: ABT, ALY: ALI, ANI: NANM, CAR: CTB, SEM: ATT, SFR: K0}
+  features: {LEMMA: stand, BF: stand, LEX: N, POS: NOU, LST: WRD, NUM: PLR, PAR: M3, FRA: Y0, ABN: ABT, ALY: ALI, ANI: NANM, CAR: CTB, SEM: ATR, SFR: K0}
   lang: afr
   frequency: 6
   priority: 3
@@ -23578,7 +23578,7 @@
 - headword: stande
   id: 21107
   uw: "105079866"
-  features: {LEMMA: stand, BF: stand, LEX: N, POS: NOU, LST: WRD, NUM: PLR, PAR: M3, FRA: Y0, ABN: ABT, ALY: ALI, ANI: NANM, CAR: CTB, SEM: ATT, SFR: K0}
+  features: {LEMMA: stand, BF: stand, LEX: N, POS: NOU, LST: WRD, NUM: PLR, PAR: M3, FRA: Y0, ABN: ABT, ALY: ALI, ANI: NANM, CAR: CTB, SEM: ATR, SFR: K0}
   lang: afr
   frequency: 5
   priority: 0
@@ -23626,7 +23626,7 @@
 - headword: stande
   id: 21113
   uw: "104813540"
-  features: {LEMMA: stand, BF: stand, LEX: N, POS: NOU, LST: WRD, NUM: PLR, PAR: M3, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATT}
+  features: {LEMMA: stand, BF: stand, LEX: N, POS: NOU, LST: WRD, NUM: PLR, PAR: M3, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATR}
   lang: afr
   frequency: 2
   priority: 0
@@ -23658,7 +23658,7 @@
 - headword: stande
   id: 21117
   uw: "104676540"
-  features: {LEMMA: stand, BF: stand, LEX: N, POS: NOU, LST: WRD, NUM: PLR, PAR: M3, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATT}
+  features: {LEMMA: stand, BF: stand, LEX: N, POS: NOU, LST: WRD, NUM: PLR, PAR: M3, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATR}
   lang: afr
   frequency: 2
   priority: 0
@@ -23674,7 +23674,7 @@
 - headword: stande
   id: 21119
   uw: "105082507"
-  features: {LEMMA: stand, BF: stand, LEX: N, POS: NOU, LST: WRD, NUM: PLR, PAR: M3, FRA: Y0, ABN: ABT, ALY: NALI, ANI: NANM, CAR: CTB, SEM: ATT, SFR: K0}
+  features: {LEMMA: stand, BF: stand, LEX: N, POS: NOU, LST: WRD, NUM: PLR, PAR: M3, FRA: Y0, ABN: ABT, ALY: NALI, ANI: NANM, CAR: CTB, SEM: ATR, SFR: K0}
   lang: afr
   frequency: 4
   priority: 0
@@ -24818,7 +24818,7 @@
 - headword: stem
   id: 18417
   uw: "104981941"
-  features: {LEMMA: stem, BF: stem, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M17, FRA: Y0, ABN: ABT, ALY: NALI, ANI: NANM, CAR: NCTB, SEM: ATT, SFR: K0}
+  features: {LEMMA: stem, BF: stem, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M17, FRA: Y0, ABN: ABT, ALY: NALI, ANI: NANM, CAR: NCTB, SEM: ATR, SFR: K0}
   lang: afr
   frequency: 5
   priority: 0
@@ -24850,7 +24850,7 @@
 - headword: stem
   id: 21081
   uw: "104981941"
-  features: {LEMMA: stem, BF: stem, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M17, FRA: Y0, ABN: ABT, ALY: NALI, ANI: NANM, CAR: NCTB, SEM: ATT, SFR: K0}
+  features: {LEMMA: stem, BF: stem, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M17, FRA: Y0, ABN: ABT, ALY: NALI, ANI: NANM, CAR: NCTB, SEM: ATR, SFR: K0}
   lang: afr
   frequency: 5
   priority: 0
@@ -24898,7 +24898,7 @@
 - headword: stemme
   id: 21085
   uw: "104981941"
-  features: {LEMMA: stem, BF: stem, LEX: N, POS: NOU, LST: WRD, NUM: PLR, PAR: M17, FRA: Y0, ABN: ABT, ALY: NALI, ANI: NANM, CAR: NCTB, SEM: ATT, SFR: K0}
+  features: {LEMMA: stem, BF: stem, LEX: N, POS: NOU, LST: WRD, NUM: PLR, PAR: M17, FRA: Y0, ABN: ABT, ALY: NALI, ANI: NANM, CAR: NCTB, SEM: ATR, SFR: K0}
   lang: afr
   frequency: 5
   priority: 0
@@ -25754,7 +25754,7 @@
 - headword: steun
   id: 23926
   uw: "105142641"
-  features: {LEMMA: steun, BF: steun, LEX: N, POS: NOU, LST: WRD, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ALY: ALI, ANI: NANM, CAR: CTB, SEM: ATT, SFR: K0}
+  features: {LEMMA: steun, BF: steun, LEX: N, POS: NOU, LST: WRD, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ALY: ALI, ANI: NANM, CAR: CTB, SEM: ATR, SFR: K0}
   lang: afr
   frequency: 5
   priority: 0
@@ -25818,7 +25818,7 @@
 - headword: steun
   id: 28692
   uw: "105142641"
-  features: {LEMMA: steun, BF: steun, LEX: N, POS: NOU, LST: WRD, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ALY: ALI, ANI: NANM, CAR: CTB, SEM: ATT, SFR: K0}
+  features: {LEMMA: steun, BF: steun, LEX: N, POS: NOU, LST: WRD, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ALY: ALI, ANI: NANM, CAR: CTB, SEM: ATR, SFR: K0}
   lang: afr
   frequency: 5
   priority: 0
@@ -26186,7 +26186,7 @@
 - headword: stig
   id: 14553
   uw: "202427103"
-  features: {LEMMA: stig, BF: stig, LEX: V, POS: VER, LST: WRD, TRA: TSTD, PAR: M0, FRA: Y0, SEM: SOV}
+  features: {LEMMA: stig, BF: stig, LEX: V, POS: VER, LST: WRD, TRA: TSTD, PAR: M0, FRA: Y0, SEM: SOC}
   lang: afr
   frequency: 3
   priority: 3
@@ -26194,7 +26194,7 @@
 - headword: stig
   id: 14553
   uw: "202427103"
-  features: {LEMMA: stig, BF: stig, LEX: V, POS: VER, LST: WRD, TRA: TSTD, PAR: M0, FRA: Y0, SEM: SOV}
+  features: {LEMMA: stig, BF: stig, LEX: V, POS: VER, LST: WRD, TRA: TSTD, PAR: M0, FRA: Y0, SEM: SOC}
   lang: afr
   frequency: 3
   priority: 3
@@ -26618,7 +26618,7 @@
 - headword: stilswye
   id: 10949
   uw: "104651974"
-  features: {LEMMA: stilswye, BF: stilswye, LEX: N, POS: NOU, LST: MTW, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ALY: ALI, ANI: NANM, CAR: NCTB, SEM: ATT, SFR: K0}
+  features: {LEMMA: stilswye, BF: stilswye, LEX: N, POS: NOU, LST: MTW, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ALY: ALI, ANI: NANM, CAR: NCTB, SEM: ATR, SFR: K0}
   lang: afr
   frequency: 5
   priority: 2
@@ -26626,7 +26626,7 @@
 - headword: stilswye
   id: 10949
   uw: "104651974"
-  features: {LEMMA: stilswye, BF: stilswye, LEX: N, POS: NOU, LST: MTW, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ALY: ALI, ANI: NANM, CAR: NCTB, SEM: ATT, SFR: K0}
+  features: {LEMMA: stilswye, BF: stilswye, LEX: N, POS: NOU, LST: MTW, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ALY: ALI, ANI: NANM, CAR: NCTB, SEM: ATR, SFR: K0}
   lang: afr
   frequency: 5
   priority: 2
@@ -26634,7 +26634,7 @@
 - headword: stilte
   id: 10858
   uw: "104982207"
-  features: {LEMMA: stilte, BF: stilte, LEX: N, POS: NOU, LST: WRD, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ALY: ALI, ANI: NANM, CAR: NCTB, SEM: ATT, SFR: K0}
+  features: {LEMMA: stilte, BF: stilte, LEX: N, POS: NOU, LST: WRD, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ALY: ALI, ANI: NANM, CAR: NCTB, SEM: ATR, SFR: K0}
   lang: afr
   frequency: 5
   priority: 1
@@ -26642,7 +26642,7 @@
 - headword: stilte
   id: 10858
   uw: "104982207"
-  features: {LEMMA: stilte, BF: stilte, LEX: N, POS: NOU, LST: WRD, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ALY: ALI, ANI: NANM, CAR: NCTB, SEM: ATT, SFR: K0}
+  features: {LEMMA: stilte, BF: stilte, LEX: N, POS: NOU, LST: WRD, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ALY: ALI, ANI: NANM, CAR: NCTB, SEM: ATR, SFR: K0}
   lang: afr
   frequency: 5
   priority: 1
@@ -26650,7 +26650,7 @@
 - headword: stilte
   id: 10859
   uw: "104651974"
-  features: {LEMMA: stilte, BF: stilte, LEX: N, POS: NOU, LST: WRD, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ALY: ALI, ANI: NANM, CAR: NCTB, SEM: ATT, SFR: K0}
+  features: {LEMMA: stilte, BF: stilte, LEX: N, POS: NOU, LST: WRD, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ALY: ALI, ANI: NANM, CAR: NCTB, SEM: ATR, SFR: K0}
   lang: afr
   frequency: 5
   priority: 0
@@ -26658,7 +26658,7 @@
 - headword: stilte
   id: 10859
   uw: "104651974"
-  features: {LEMMA: stilte, BF: stilte, LEX: N, POS: NOU, LST: WRD, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ALY: ALI, ANI: NANM, CAR: NCTB, SEM: ATT, SFR: K0}
+  features: {LEMMA: stilte, BF: stilte, LEX: N, POS: NOU, LST: WRD, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ALY: ALI, ANI: NANM, CAR: NCTB, SEM: ATR, SFR: K0}
   lang: afr
   frequency: 5
   priority: 0
@@ -27258,7 +27258,7 @@
 - headword: straal
   id: 16631
   uw: "105102101"
-  features: {LEMMA: straal, BF: straal, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M5, FRA: Y0, ABN: ABT, ALY: ALI, ANI: NANM, CAR: CTB, SEM: ATT, SFR: K0}
+  features: {LEMMA: straal, BF: straal, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M5, FRA: Y0, ABN: ABT, ALY: ALI, ANI: NANM, CAR: CTB, SEM: ATR, SFR: K0}
   lang: afr
   frequency: 4
   priority: 2
@@ -27282,7 +27282,7 @@
 - headword: straal
   id: 17735
   uw: "105102101"
-  features: {LEMMA: straal, BF: straal, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M5, FRA: Y0, ABN: ABT, ALY: ALI, ANI: NANM, CAR: CTB, SEM: ATT, SFR: K0}
+  features: {LEMMA: straal, BF: straal, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M5, FRA: Y0, ABN: ABT, ALY: ALI, ANI: NANM, CAR: CTB, SEM: ATR, SFR: K0}
   lang: afr
   frequency: 4
   priority: 2
@@ -27682,7 +27682,7 @@
 - headword: strale
   id: 17738
   uw: "105102101"
-  features: {LEMMA: straal, BF: straal, LEX: N, POS: NOU, LST: WRD, NUM: PLR, PAR: M5, FRA: Y0, ABN: ABT, ALY: ALI, ANI: NANM, CAR: CTB, SEM: ATT, SFR: K0}
+  features: {LEMMA: straal, BF: straal, LEX: N, POS: NOU, LST: WRD, NUM: PLR, PAR: M5, FRA: Y0, ABN: ABT, ALY: ALI, ANI: NANM, CAR: CTB, SEM: ATR, SFR: K0}
   lang: afr
   frequency: 4
   priority: 2
@@ -29586,7 +29586,7 @@
 - headword: styging
   id: 22562
   uw: "105110408"
-  features: {LEMMA: styging, BF: styging, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M2, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATT}
+  features: {LEMMA: styging, BF: styging, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M2, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATR}
   lang: afr
   frequency: 2
   priority: 0
@@ -29634,7 +29634,7 @@
 - headword: styging
   id: 22568
   uw: "105108947"
-  features: {LEMMA: styging, BF: styging, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M2, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATT}
+  features: {LEMMA: styging, BF: styging, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M2, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATR}
   lang: afr
   frequency: 2
   priority: 0
@@ -29666,7 +29666,7 @@
 - headword: styging
   id: 22572
   uw: "105068716"
-  features: {LEMMA: styging, BF: styging, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M2, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATT}
+  features: {LEMMA: styging, BF: styging, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M2, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATR}
   lang: afr
   frequency: 2
   priority: 0
@@ -29690,7 +29690,7 @@
 - headword: styging
   id: 26869
   uw: "105110408"
-  features: {LEMMA: styging, BF: styging, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M2, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATT}
+  features: {LEMMA: styging, BF: styging, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M2, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATR}
   lang: afr
   frequency: 2
   priority: 0
@@ -29738,7 +29738,7 @@
 - headword: styging
   id: 26875
   uw: "105108947"
-  features: {LEMMA: styging, BF: styging, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M2, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATT}
+  features: {LEMMA: styging, BF: styging, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M2, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATR}
   lang: afr
   frequency: 2
   priority: 0
@@ -29770,7 +29770,7 @@
 - headword: styging
   id: 26879
   uw: "105068716"
-  features: {LEMMA: styging, BF: styging, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M2, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATT}
+  features: {LEMMA: styging, BF: styging, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M2, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATR}
   lang: afr
   frequency: 2
   priority: 0
@@ -29794,7 +29794,7 @@
 - headword: stygings
   id: 26882
   uw: "105110408"
-  features: {LEMMA: styging, BF: styging, LEX: N, POS: NOU, LST: WRD, NUM: PLR, PAR: M2, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATT}
+  features: {LEMMA: styging, BF: styging, LEX: N, POS: NOU, LST: WRD, NUM: PLR, PAR: M2, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATR}
   lang: afr
   frequency: 2
   priority: 0
@@ -29842,7 +29842,7 @@
 - headword: stygings
   id: 26888
   uw: "105108947"
-  features: {LEMMA: styging, BF: styging, LEX: N, POS: NOU, LST: WRD, NUM: PLR, PAR: M2, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATT}
+  features: {LEMMA: styging, BF: styging, LEX: N, POS: NOU, LST: WRD, NUM: PLR, PAR: M2, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATR}
   lang: afr
   frequency: 2
   priority: 0
@@ -29874,7 +29874,7 @@
 - headword: stygings
   id: 26892
   uw: "105068716"
-  features: {LEMMA: styging, BF: styging, LEX: N, POS: NOU, LST: WRD, NUM: PLR, PAR: M2, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATT}
+  features: {LEMMA: styging, BF: styging, LEX: N, POS: NOU, LST: WRD, NUM: PLR, PAR: M2, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATR}
   lang: afr
   frequency: 2
   priority: 0
@@ -29906,7 +29906,7 @@
 - headword: styl
   id: 19004
   uw: "104812871"
-  features: {LEMMA: styl, BF: styl, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M3, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATT}
+  features: {LEMMA: styl, BF: styl, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M3, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATR}
   lang: afr
   frequency: 2
   priority: 0
@@ -29930,7 +29930,7 @@
 - headword: styl
   id: 19007
   uw: "104928903"
-  features: {LEMMA: styl, BF: styl, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M3, FRA: Y0, ABN: ABT, ALY: ALI, ANI: NANM, CAR: NCTB, SEM: ATT, SFR: K0}
+  features: {LEMMA: styl, BF: styl, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M3, FRA: Y0, ABN: ABT, ALY: ALI, ANI: NANM, CAR: NCTB, SEM: ATR, SFR: K0}
   lang: afr
   frequency: 9
   priority: 0
@@ -29994,7 +29994,7 @@
 - headword: styl
   id: 22162
   uw: "104812871"
-  features: {LEMMA: styl, BF: styl, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M3, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATT}
+  features: {LEMMA: styl, BF: styl, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M3, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATR}
   lang: afr
   frequency: 2
   priority: 0
@@ -30018,7 +30018,7 @@
 - headword: styl
   id: 22165
   uw: "104928903"
-  features: {LEMMA: styl, BF: styl, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M3, FRA: Y0, ABN: ABT, ALY: ALI, ANI: NANM, CAR: NCTB, SEM: ATT, SFR: K0}
+  features: {LEMMA: styl, BF: styl, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M3, FRA: Y0, ABN: ABT, ALY: ALI, ANI: NANM, CAR: NCTB, SEM: ATR, SFR: K0}
   lang: afr
   frequency: 9
   priority: 0
@@ -30082,7 +30082,7 @@
 - headword: style
   id: 22173
   uw: "104812871"
-  features: {LEMMA: styl, BF: styl, LEX: N, POS: NOU, LST: WRD, NUM: PLR, PAR: M3, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATT}
+  features: {LEMMA: styl, BF: styl, LEX: N, POS: NOU, LST: WRD, NUM: PLR, PAR: M3, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATR}
   lang: afr
   frequency: 2
   priority: 0
@@ -30106,7 +30106,7 @@
 - headword: style
   id: 22176
   uw: "104928903"
-  features: {LEMMA: styl, BF: styl, LEX: N, POS: NOU, LST: WRD, NUM: PLR, PAR: M3, FRA: Y0, ABN: ABT, ALY: ALI, ANI: NANM, CAR: NCTB, SEM: ATT, SFR: K0}
+  features: {LEMMA: styl, BF: styl, LEX: N, POS: NOU, LST: WRD, NUM: PLR, PAR: M3, FRA: Y0, ABN: ABT, ALY: ALI, ANI: NANM, CAR: NCTB, SEM: ATR, SFR: K0}
   lang: afr
   frequency: 9
   priority: 0
@@ -30162,7 +30162,7 @@
 - headword: suid
   id: 17036
   uw: "113833375"
-  features: {LEMMA: suid, BF: suid, LEX: N, POS: NOU, LST: WRD, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ALY: NALI, ANI: NANM, CAR: NCTB, SEM: REL, SFR: K0}
+  features: {LEMMA: suid, BF: suid, LEX: N, POS: NOU, LST: WRD, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ALY: NALI, ANI: NANM, CAR: NCTB, SEM: RLT, SFR: K0}
   lang: afr
   frequency: 4
   priority: 1
@@ -30178,7 +30178,7 @@
 - headword: suid
   id: 18500
   uw: "113833375"
-  features: {LEMMA: suid, BF: suid, LEX: N, POS: NOU, LST: WRD, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ALY: NALI, ANI: NANM, CAR: NCTB, SEM: REL, SFR: K0}
+  features: {LEMMA: suid, BF: suid, LEX: N, POS: NOU, LST: WRD, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ALY: NALI, ANI: NANM, CAR: NCTB, SEM: RLT, SFR: K0}
   lang: afr
   frequency: 4
   priority: 1
@@ -31738,7 +31738,7 @@
 - headword: swak
   id: 20353
   uw: "105040275"
-  features: {LEMMA: swak, BF: swak, LEX: N, POS: NOU, LST: WRD, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATT}
+  features: {LEMMA: swak, BF: swak, LEX: N, POS: NOU, LST: WRD, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATR}
   lang: afr
   frequency: 2
   priority: 0
@@ -31978,7 +31978,7 @@
 - headword: swak
   id: 23898
   uw: "105040275"
-  features: {LEMMA: swak, BF: swak, LEX: N, POS: NOU, LST: WRD, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATT}
+  features: {LEMMA: swak, BF: swak, LEX: N, POS: NOU, LST: WRD, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATR}
   lang: afr
   frequency: 2
   priority: 0
@@ -32066,7 +32066,7 @@
 - headword: swart
   id: 18942
   uw: "104960277"
-  features: {LEMMA: swart, BF: swart, LEX: N, POS: NOU, LST: WRD, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATT}
+  features: {LEMMA: swart, BF: swart, LEX: N, POS: NOU, LST: WRD, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATR}
   lang: afr
   frequency: 2
   priority: 0
@@ -32170,7 +32170,7 @@
 - headword: swart
   id: 22045
   uw: "104960277"
-  features: {LEMMA: swart, BF: swart, LEX: N, POS: NOU, LST: WRD, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATT}
+  features: {LEMMA: swart, BF: swart, LEX: N, POS: NOU, LST: WRD, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATR}
   lang: afr
   frequency: 2
   priority: 0
@@ -32714,7 +32714,7 @@
 - headword: syfer
   id: 18796
   uw: "105121418"
-  features: {LEMMA: syfer, BF: syfer, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M2, FRA: Y0, ABN: ABT, ALY: NALI, ANI: NANM, CAR: CTB, SEM: ATT, SFR: K0}
+  features: {LEMMA: syfer, BF: syfer, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M2, FRA: Y0, ABN: ABT, ALY: NALI, ANI: NANM, CAR: CTB, SEM: ATR, SFR: K0}
   lang: afr
   frequency: 6
   priority: 3
@@ -32746,7 +32746,7 @@
 - headword: syfer
   id: 21810
   uw: "105121418"
-  features: {LEMMA: syfer, BF: syfer, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M2, FRA: Y0, ABN: ABT, ALY: NALI, ANI: NANM, CAR: CTB, SEM: ATT, SFR: K0}
+  features: {LEMMA: syfer, BF: syfer, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M2, FRA: Y0, ABN: ABT, ALY: NALI, ANI: NANM, CAR: CTB, SEM: ATR, SFR: K0}
   lang: afr
   frequency: 6
   priority: 3
@@ -32778,7 +32778,7 @@
 - headword: syfers
   id: 21814
   uw: "105121418"
-  features: {LEMMA: syfer, BF: syfer, LEX: N, POS: NOU, LST: WRD, NUM: PLR, PAR: M2, FRA: Y0, ABN: ABT, ALY: NALI, ANI: NANM, CAR: CTB, SEM: ATT, SFR: K0}
+  features: {LEMMA: syfer, BF: syfer, LEX: N, POS: NOU, LST: WRD, NUM: PLR, PAR: M2, FRA: Y0, ABN: ABT, ALY: NALI, ANI: NANM, CAR: CTB, SEM: ATR, SFR: K0}
   lang: afr
   frequency: 6
   priority: 3

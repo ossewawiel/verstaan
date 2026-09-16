@@ -1642,7 +1642,7 @@
 - headword: "[queen] [over]"
   id: 455208
   uw: "202593551"
-  features: {LEMMA: queen it over, BF: over, LEX: V, POS: VER, LST: MTW, TRA: NTST, PAR: M16, FRA: Y32, SEM: SOV}
+  features: {LEMMA: queen it over, BF: over, LEX: V, POS: VER, LST: MTW, TRA: NTST, PAR: M16, FRA: Y32, SEM: SOC}
   lang: eng
   frequency: 1
   priority: 0
@@ -4218,7 +4218,7 @@
 - headword: quaintness
   id: 343352
   uw: "104798700"
-  features: {LEMMA: quaintness, BF: quaintness, LEX: N, POS: NOU, LST: WRD, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATT}
+  features: {LEMMA: quaintness, BF: quaintness, LEX: N, POS: NOU, LST: WRD, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATR}
   lang: eng
   frequency: 1
   priority: 0
@@ -4226,7 +4226,7 @@
 - headword: quaintness
   id: 343353
   uw: "104926038"
-  features: {LEMMA: quaintness, BF: quaintness, LEX: N, POS: NOU, LST: WRD, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATT}
+  features: {LEMMA: quaintness, BF: quaintness, LEX: N, POS: NOU, LST: WRD, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATR}
   lang: eng
   frequency: 1
   priority: 0
@@ -4234,7 +4234,7 @@
 - headword: quaintness
   id: 372194
   uw: "104798700"
-  features: {LEMMA: quaintness, BF: quaintness, LEX: N, POS: NOU, MOR: STE, LST: WRD, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATT}
+  features: {LEMMA: quaintness, BF: quaintness, LEX: N, POS: NOU, MOR: STE, LST: WRD, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATR}
   lang: eng
   frequency: 1
   priority: 0
@@ -4242,7 +4242,7 @@
 - headword: quaintness
   id: 372195
   uw: "104926038"
-  features: {LEMMA: quaintness, BF: quaintness, LEX: N, POS: NOU, MOR: STE, LST: WRD, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATT}
+  features: {LEMMA: quaintness, BF: quaintness, LEX: N, POS: NOU, MOR: STE, LST: WRD, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATR}
   lang: eng
   frequency: 1
   priority: 0
@@ -4426,7 +4426,7 @@
 - headword: qualification
   id: 356839
   uw: "104717139"
-  features: {LEMMA: qualification, BF: qualification, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M2, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATT}
+  features: {LEMMA: qualification, BF: qualification, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M2, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATR}
   lang: eng
   frequency: 9
   priority: 7
@@ -4450,7 +4450,7 @@
 - headword: qualification
   id: 396874
   uw: "104717139"
-  features: {LEMMA: qualification, BF: qualification, LEX: N, POS: NOU, MOR: STE, LST: WRD, NUM: SNG, PAR: M2, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATT}
+  features: {LEMMA: qualification, BF: qualification, LEX: N, POS: NOU, MOR: STE, LST: WRD, NUM: SNG, PAR: M2, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATR}
   lang: eng
   frequency: 9
   priority: 7
@@ -4474,7 +4474,7 @@
 - headword: qualifications
   id: 396877
   uw: "104717139"
-  features: {LEMMA: qualification, BF: qualification, LEX: N, POS: NOU, MOR: STE, LST: WRD, NUM: PLR, PAR: M2, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATT}
+  features: {LEMMA: qualification, BF: qualification, LEX: N, POS: NOU, MOR: STE, LST: WRD, NUM: PLR, PAR: M2, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATR}
   lang: eng
   frequency: 9
   priority: 7
@@ -4906,7 +4906,7 @@
 - headword: qualifying
   id: 414902
   uw: "113800801"
-  features: {LEMMA: qualifying, BF: qualifying, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M2, FRA: Y0, ABN: ABT, ANI: NANM, SEM: REL}
+  features: {LEMMA: qualifying, BF: qualifying, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M2, FRA: Y0, ABN: ABT, ANI: NANM, SEM: RLT}
   lang: eng
   frequency: 1
   priority: 0
@@ -4922,7 +4922,7 @@
 - headword: qualifying
   id: 502301
   uw: "113800801"
-  features: {LEMMA: qualifying, BF: qualifying, LEX: N, POS: NOU, MOR: STE, LST: WRD, NUM: SNG, PAR: M2, FRA: Y0, ABN: ABT, ANI: NANM, SEM: REL}
+  features: {LEMMA: qualifying, BF: qualifying, LEX: N, POS: NOU, MOR: STE, LST: WRD, NUM: SNG, PAR: M2, FRA: Y0, ABN: ABT, ANI: NANM, SEM: RLT}
   lang: eng
   frequency: 1
   priority: 0
@@ -5018,7 +5018,7 @@
 - headword: qualifyings
   id: 502303
   uw: "113800801"
-  features: {LEMMA: qualifying, BF: qualifying, LEX: N, POS: NOU, MOR: STE, LST: WRD, NUM: PLR, PAR: M2, FRA: Y0, ABN: ABT, ANI: NANM, SEM: REL}
+  features: {LEMMA: qualifying, BF: qualifying, LEX: N, POS: NOU, MOR: STE, LST: WRD, NUM: PLR, PAR: M2, FRA: Y0, ABN: ABT, ANI: NANM, SEM: RLT}
   lang: eng
   frequency: 1
   priority: 0
@@ -5098,7 +5098,7 @@
 - headword: qualities
   id: 372712
   uw: "104987620"
-  features: {LEMMA: quality, BF: quality, LEX: N, POS: NOU, MOR: STE, LST: WRD, NUM: PLR, REG: JGN, PAR: M3, FRA: Y0, ABN: ABT, ALY: ALI, ANI: NANM, CAR: CTB, SEM: ATT, SFR: K0}
+  features: {LEMMA: quality, BF: quality, LEX: N, POS: NOU, MOR: STE, LST: WRD, NUM: PLR, REG: JGN, PAR: M3, FRA: Y0, ABN: ABT, ALY: ALI, ANI: NANM, CAR: CTB, SEM: ATR, SFR: K0}
   lang: eng
   frequency: 20
   priority: 12
@@ -5106,7 +5106,7 @@
 - headword: qualities
   id: 372713
   uw: "104723816"
-  features: {LEMMA: quality, BF: quality, LEX: N, POS: NOU, MOR: STE, LST: WRD, NUM: PLR, REG: JGN, PAR: M3, FRA: Y0, ABN: ABT, ALY: NALI, ANI: NANM, CAR: CTB, SEM: ATT, SFR: K0}
+  features: {LEMMA: quality, BF: quality, LEX: N, POS: NOU, MOR: STE, LST: WRD, NUM: PLR, REG: JGN, PAR: M3, FRA: Y0, ABN: ABT, ALY: NALI, ANI: NANM, CAR: CTB, SEM: ATR, SFR: K0}
   lang: eng
   frequency: 43
   priority: 12
@@ -5114,7 +5114,7 @@
 - headword: qualities
   id: 505426
   uw: "104723816"
-  features: {LEMMA: quality, BF: quality, LEX: N, POS: NOU, MOR: STE, LST: WRD, NUM: PLR, PAR: M3, FRA: Y0, ABN: ABT, ALY: NALI, ANI: NANM, CAR: CTB, SEM: ATT, SFR: K0}
+  features: {LEMMA: quality, BF: quality, LEX: N, POS: NOU, MOR: STE, LST: WRD, NUM: PLR, PAR: M3, FRA: Y0, ABN: ABT, ALY: NALI, ANI: NANM, CAR: CTB, SEM: ATR, SFR: K0}
   lang: eng
   frequency: 43
   priority: 12
@@ -5122,7 +5122,7 @@
 - headword: qualities
   id: 505427
   uw: "104728068"
-  features: {LEMMA: quality, BF: quality, LEX: N, POS: NOU, MOR: STE, LST: WRD, NUM: PLR, PAR: M3, FRA: Y0, ABN: ABT, ALY: ALI, ANI: NANM, CAR: NCTB, SEM: ATT, SFR: K0}
+  features: {LEMMA: quality, BF: quality, LEX: N, POS: NOU, MOR: STE, LST: WRD, NUM: PLR, PAR: M3, FRA: Y0, ABN: ABT, ALY: ALI, ANI: NANM, CAR: NCTB, SEM: ATR, SFR: K0}
   lang: eng
   frequency: 20
   priority: 12
@@ -5178,7 +5178,7 @@
 - headword: quality
   id: 343697
   uw: "104987620"
-  features: {LEMMA: quality, BF: quality, LEX: N, POS: NOU, LST: WRD, NUM: SNG, REG: JGN, PAR: M3, FRA: Y0, ABN: ABT, ALY: ALI, ANI: NANM, CAR: CTB, SEM: ATT, SFR: K0}
+  features: {LEMMA: quality, BF: quality, LEX: N, POS: NOU, LST: WRD, NUM: SNG, REG: JGN, PAR: M3, FRA: Y0, ABN: ABT, ALY: ALI, ANI: NANM, CAR: CTB, SEM: ATR, SFR: K0}
   lang: eng
   frequency: 20
   priority: 12
@@ -5186,7 +5186,7 @@
 - headword: quality
   id: 343698
   uw: "104723816"
-  features: {LEMMA: quality, BF: quality, LEX: N, POS: NOU, LST: WRD, NUM: SNG, REG: JGN, PAR: M3, FRA: Y0, ABN: ABT, ALY: NALI, ANI: NANM, CAR: CTB, SEM: ATT, SFR: K0}
+  features: {LEMMA: quality, BF: quality, LEX: N, POS: NOU, LST: WRD, NUM: SNG, REG: JGN, PAR: M3, FRA: Y0, ABN: ABT, ALY: NALI, ANI: NANM, CAR: CTB, SEM: ATR, SFR: K0}
   lang: eng
   frequency: 43
   priority: 12
@@ -5194,7 +5194,7 @@
 - headword: quality
   id: 372710
   uw: "104987620"
-  features: {LEMMA: quality, BF: quality, LEX: N, POS: NOU, MOR: STE, LST: WRD, NUM: SNG, REG: JGN, PAR: M3, FRA: Y0, ABN: ABT, ALY: ALI, ANI: NANM, CAR: CTB, SEM: ATT, SFR: K0}
+  features: {LEMMA: quality, BF: quality, LEX: N, POS: NOU, MOR: STE, LST: WRD, NUM: SNG, REG: JGN, PAR: M3, FRA: Y0, ABN: ABT, ALY: ALI, ANI: NANM, CAR: CTB, SEM: ATR, SFR: K0}
   lang: eng
   frequency: 20
   priority: 12
@@ -5202,7 +5202,7 @@
 - headword: quality
   id: 372711
   uw: "104723816"
-  features: {LEMMA: quality, BF: quality, LEX: N, POS: NOU, MOR: STE, LST: WRD, NUM: SNG, REG: JGN, PAR: M3, FRA: Y0, ABN: ABT, ALY: NALI, ANI: NANM, CAR: CTB, SEM: ATT, SFR: K0}
+  features: {LEMMA: quality, BF: quality, LEX: N, POS: NOU, MOR: STE, LST: WRD, NUM: SNG, REG: JGN, PAR: M3, FRA: Y0, ABN: ABT, ALY: NALI, ANI: NANM, CAR: CTB, SEM: ATR, SFR: K0}
   lang: eng
   frequency: 43
   priority: 12
@@ -5210,7 +5210,7 @@
 - headword: quality
   id: 416493
   uw: "104723816"
-  features: {LEMMA: quality, BF: quality, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M3, FRA: Y0, ABN: ABT, ALY: NALI, ANI: NANM, CAR: CTB, SEM: ATT, SFR: K0}
+  features: {LEMMA: quality, BF: quality, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M3, FRA: Y0, ABN: ABT, ALY: NALI, ANI: NANM, CAR: CTB, SEM: ATR, SFR: K0}
   lang: eng
   frequency: 43
   priority: 12
@@ -5218,7 +5218,7 @@
 - headword: quality
   id: 416494
   uw: "104728068"
-  features: {LEMMA: quality, BF: quality, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M3, FRA: Y0, ABN: ABT, ALY: ALI, ANI: NANM, CAR: NCTB, SEM: ATT, SFR: K0}
+  features: {LEMMA: quality, BF: quality, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M3, FRA: Y0, ABN: ABT, ALY: ALI, ANI: NANM, CAR: NCTB, SEM: ATR, SFR: K0}
   lang: eng
   frequency: 20
   priority: 12
@@ -5242,7 +5242,7 @@
 - headword: quality
   id: 505422
   uw: "104723816"
-  features: {LEMMA: quality, BF: quality, LEX: N, POS: NOU, MOR: STE, LST: WRD, NUM: SNG, PAR: M3, FRA: Y0, ABN: ABT, ALY: NALI, ANI: NANM, CAR: CTB, SEM: ATT, SFR: K0}
+  features: {LEMMA: quality, BF: quality, LEX: N, POS: NOU, MOR: STE, LST: WRD, NUM: SNG, PAR: M3, FRA: Y0, ABN: ABT, ALY: NALI, ANI: NANM, CAR: CTB, SEM: ATR, SFR: K0}
   lang: eng
   frequency: 43
   priority: 12
@@ -5250,7 +5250,7 @@
 - headword: quality
   id: 505423
   uw: "104728068"
-  features: {LEMMA: quality, BF: quality, LEX: N, POS: NOU, MOR: STE, LST: WRD, NUM: SNG, PAR: M3, FRA: Y0, ABN: ABT, ALY: ALI, ANI: NANM, CAR: NCTB, SEM: ATT, SFR: K0}
+  features: {LEMMA: quality, BF: quality, LEX: N, POS: NOU, MOR: STE, LST: WRD, NUM: SNG, PAR: M3, FRA: Y0, ABN: ABT, ALY: ALI, ANI: NANM, CAR: NCTB, SEM: ATR, SFR: K0}
   lang: eng
   frequency: 20
   priority: 12
@@ -5730,7 +5730,7 @@
 - headword: quantifiabilities
   id: 375398
   uw: "105209822"
-  features: {LEMMA: quantifiability, BF: quantifiability, LEX: N, POS: NOU, MOR: STE, LST: WRD, NUM: PLR, PAR: M3, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATT}
+  features: {LEMMA: quantifiability, BF: quantifiability, LEX: N, POS: NOU, MOR: STE, LST: WRD, NUM: PLR, PAR: M3, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATR}
   lang: eng
   frequency: 1
   priority: 0
@@ -5738,7 +5738,7 @@
 - headword: quantifiability
   id: 345385
   uw: "105209822"
-  features: {LEMMA: quantifiability, BF: quantifiability, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M3, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATT}
+  features: {LEMMA: quantifiability, BF: quantifiability, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M3, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATR}
   lang: eng
   frequency: 1
   priority: 0
@@ -5746,7 +5746,7 @@
 - headword: quantifiability
   id: 375397
   uw: "105209822"
-  features: {LEMMA: quantifiability, BF: quantifiability, LEX: N, POS: NOU, MOR: STE, LST: WRD, NUM: SNG, PAR: M3, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATT}
+  features: {LEMMA: quantifiability, BF: quantifiability, LEX: N, POS: NOU, MOR: STE, LST: WRD, NUM: SNG, PAR: M3, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATR}
   lang: eng
   frequency: 1
   priority: 0
@@ -6178,7 +6178,7 @@
 - headword: quantitative relation
   id: 414692
   uw: "113815152"
-  features: {LEMMA: quantitative relation, BF: quantitative relation, LEX: N, POS: NOU, LST: MTW, NUM: SNG, PAR: M2, FRA: Y0, ABN: ABT, ANI: NANM, SEM: REL}
+  features: {LEMMA: quantitative relation, BF: quantitative relation, LEX: N, POS: NOU, LST: MTW, NUM: SNG, PAR: M2, FRA: Y0, ABN: ABT, ANI: NANM, SEM: RLT}
   lang: eng
   frequency: 1
   priority: 0
@@ -6186,7 +6186,7 @@
 - headword: quantitative relation
   id: 501886
   uw: "113815152"
-  features: {LEMMA: quantitative relation, BF: quantitative relation, LEX: N, POS: NOU, MOR: STE, LST: MTW, NUM: SNG, PAR: M2, FRA: Y0, ABN: ABT, ANI: NANM, SEM: REL}
+  features: {LEMMA: quantitative relation, BF: quantitative relation, LEX: N, POS: NOU, MOR: STE, LST: MTW, NUM: SNG, PAR: M2, FRA: Y0, ABN: ABT, ANI: NANM, SEM: RLT}
   lang: eng
   frequency: 1
   priority: 0
@@ -6194,7 +6194,7 @@
 - headword: quantitative relations
   id: 501887
   uw: "113815152"
-  features: {LEMMA: quantitative relation, BF: quantitative relation, LEX: N, POS: NOU, MOR: STE, LST: MTW, NUM: PLR, PAR: M2, FRA: Y0, ABN: ABT, ANI: NANM, SEM: REL}
+  features: {LEMMA: quantitative relation, BF: quantitative relation, LEX: N, POS: NOU, MOR: STE, LST: MTW, NUM: PLR, PAR: M2, FRA: Y0, ABN: ABT, ANI: NANM, SEM: RLT}
   lang: eng
   frequency: 1
   priority: 0
@@ -6226,7 +6226,7 @@
 - headword: quantities
   id: 385675
   uw: "105108740"
-  features: {LEMMA: quantity, BF: quantity, LEX: N, POS: NOU, MOR: STE, LST: WRD, NUM: PLR, PAR: M3, FRA: Y0, ABN: ABT, ALY: ALI, ANI: NANM, CAR: CTB, SEM: ATT, SFR: K0}
+  features: {LEMMA: quantity, BF: quantity, LEX: N, POS: NOU, MOR: STE, LST: WRD, NUM: PLR, PAR: M3, FRA: Y0, ABN: ABT, ALY: ALI, ANI: NANM, CAR: CTB, SEM: ATR, SFR: K0}
   lang: eng
   frequency: 8
   priority: 7
@@ -6250,7 +6250,7 @@
 - headword: quantity
   id: 350925
   uw: "105108740"
-  features: {LEMMA: quantity, BF: quantity, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M3, FRA: Y0, ABN: ABT, ALY: ALI, ANI: NANM, CAR: CTB, SEM: ATT, SFR: K0}
+  features: {LEMMA: quantity, BF: quantity, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M3, FRA: Y0, ABN: ABT, ALY: ALI, ANI: NANM, CAR: CTB, SEM: ATR, SFR: K0}
   lang: eng
   frequency: 8
   priority: 7
@@ -6274,7 +6274,7 @@
 - headword: quantity
   id: 385672
   uw: "105108740"
-  features: {LEMMA: quantity, BF: quantity, LEX: N, POS: NOU, MOR: STE, LST: WRD, NUM: SNG, PAR: M3, FRA: Y0, ABN: ABT, ALY: ALI, ANI: NANM, CAR: CTB, SEM: ATT, SFR: K0}
+  features: {LEMMA: quantity, BF: quantity, LEX: N, POS: NOU, MOR: STE, LST: WRD, NUM: SNG, PAR: M3, FRA: Y0, ABN: ABT, ALY: ALI, ANI: NANM, CAR: CTB, SEM: ATR, SFR: K0}
   lang: eng
   frequency: 8
   priority: 7
@@ -7082,7 +7082,7 @@
 - headword: quarrelsomeness
   id: 339401
   uw: "104643979"
-  features: {LEMMA: quarrelsomeness, BF: quarrelsomeness, LEX: N, POS: NOU, LST: WRD, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATT}
+  features: {LEMMA: quarrelsomeness, BF: quarrelsomeness, LEX: N, POS: NOU, LST: WRD, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATR}
   lang: eng
   frequency: 1
   priority: 0
@@ -7090,7 +7090,7 @@
 - headword: quarrelsomeness
   id: 365599
   uw: "104643979"
-  features: {LEMMA: quarrelsomeness, BF: quarrelsomeness, LEX: N, POS: NOU, MOR: STE, LST: WRD, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATT}
+  features: {LEMMA: quarrelsomeness, BF: quarrelsomeness, LEX: N, POS: NOU, MOR: STE, LST: WRD, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATR}
   lang: eng
   frequency: 1
   priority: 0
@@ -7458,7 +7458,7 @@
 - headword: quarter
   id: 431535
   uw: "113830166"
-  features: {LEMMA: quarter, BF: quarter, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M2, FRA: Y0, ABN: ABT, ANI: NANM, SEM: REL}
+  features: {LEMMA: quarter, BF: quarter, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M2, FRA: Y0, ABN: ABT, ANI: NANM, SEM: RLT}
   lang: eng
   frequency: 1
   priority: 9
@@ -7506,7 +7506,7 @@
 - headword: quarter
   id: 454012
   uw: "202483564"
-  features: {LEMMA: quarter, BF: quarter, LEX: V, POS: VER, LST: WRD, TRA: TST, PAR: M16, FRA: Y39, SEM: SOV}
+  features: {LEMMA: quarter, BF: quarter, LEX: V, POS: VER, LST: WRD, TRA: TST, PAR: M16, FRA: Y39, SEM: SOC}
   lang: eng
   frequency: 1
   priority: 0
@@ -7602,7 +7602,7 @@
 - headword: quarter
   id: 529368
   uw: "113830166"
-  features: {LEMMA: quarter, BF: quarter, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M2, FRA: Y0, ABN: ABT, ANI: NANM, SEM: REL}
+  features: {LEMMA: quarter, BF: quarter, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M2, FRA: Y0, ABN: ABT, ANI: NANM, SEM: RLT}
   lang: eng
   frequency: 1
   priority: 9
@@ -7650,7 +7650,7 @@
 - headword: quarter
   id: 636633
   uw: "202483564"
-  features: {LEMMA: quarter, BF: quarter, LEX: V, POS: VER, LST: WRD, MOO: INF, TRA: TST, PAR: M16, FRA: Y39, SEM: SOV}
+  features: {LEMMA: quarter, BF: quarter, LEX: V, POS: VER, LST: WRD, MOO: INF, TRA: TST, PAR: M16, FRA: Y39, SEM: SOC}
   lang: eng
   frequency: 1
   priority: 0
@@ -8258,7 +8258,7 @@
 - headword: quartered
   id: 636634
   uw: "202483564"
-  features: {LEMMA: quarter, BF: quarter, LEX: V, POS: VER, LST: WRD, ATE: PAS, TRA: TST, PAR: M16, FRA: Y39, SEM: SOV}
+  features: {LEMMA: quarter, BF: quarter, LEX: V, POS: VER, LST: WRD, ATE: PAS, TRA: TST, PAR: M16, FRA: Y39, SEM: SOC}
   lang: eng
   frequency: 1
   priority: 0
@@ -8266,7 +8266,7 @@
 - headword: quartered
   id: 636635
   uw: "202483564"
-  features: {LEMMA: quarter, BF: quarter, LEX: V, POS: VER, LST: WRD, MOO: PTP, TRA: TST, PAR: M16, FRA: Y39, SEM: SOV}
+  features: {LEMMA: quarter, BF: quarter, LEX: V, POS: VER, LST: WRD, MOO: PTP, TRA: TST, PAR: M16, FRA: Y39, SEM: SOC}
   lang: eng
   frequency: 1
   priority: 0
@@ -8378,7 +8378,7 @@
 - headword: quartering
   id: 636637
   uw: "202483564"
-  features: {LEMMA: quarter, BF: quarter, LEX: V, POS: VER, LST: WRD, MOO: GER, TRA: TST, PAR: M16, FRA: Y39, SEM: SOV}
+  features: {LEMMA: quarter, BF: quarter, LEX: V, POS: VER, LST: WRD, MOO: GER, TRA: TST, PAR: M16, FRA: Y39, SEM: SOC}
   lang: eng
   frequency: 1
   priority: 0
@@ -8658,7 +8658,7 @@
 - headword: quarters
   id: 529380
   uw: "113830166"
-  features: {LEMMA: quarter, BF: quarter, LEX: N, POS: NOU, LST: WRD, NUM: PLR, PAR: M2, FRA: Y0, ABN: ABT, ANI: NANM, SEM: REL}
+  features: {LEMMA: quarter, BF: quarter, LEX: N, POS: NOU, LST: WRD, NUM: PLR, PAR: M2, FRA: Y0, ABN: ABT, ANI: NANM, SEM: RLT}
   lang: eng
   frequency: 1
   priority: 9
@@ -8706,7 +8706,7 @@
 - headword: quarters
   id: 636636
   uw: "202483564"
-  features: {LEMMA: quarter, BF: quarter, LEX: V, POS: VER, LST: WRD, PER: 3PS, ATE: PRS, TRA: TST, PAR: M16, FRA: Y39, SEM: SOV}
+  features: {LEMMA: quarter, BF: quarter, LEX: V, POS: VER, LST: WRD, PER: 3PS, ATE: PRS, TRA: TST, PAR: M16, FRA: Y39, SEM: SOC}
   lang: eng
   frequency: 1
   priority: 0
@@ -9034,7 +9034,7 @@
 - headword: quarto
   id: 344712
   uw: "105096820"
-  features: {LEMMA: quarto, BF: quarto, LEX: N, POS: NOU, LST: WRD, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATT}
+  features: {LEMMA: quarto, BF: quarto, LEX: N, POS: NOU, LST: WRD, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATR}
   lang: eng
   frequency: 1
   priority: 0
@@ -9042,7 +9042,7 @@
 - headword: quarto
   id: 374328
   uw: "105096820"
-  features: {LEMMA: quarto, BF: quarto, LEX: N, POS: NOU, LST: WRD, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATT}
+  features: {LEMMA: quarto, BF: quarto, LEX: N, POS: NOU, LST: WRD, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATR}
   lang: eng
   frequency: 1
   priority: 0
@@ -9298,7 +9298,7 @@
 - headword: quash
   id: 454283
   uw: "202424128"
-  features: {LEMMA: quash, BF: quash, LEX: V, POS: VER, LST: WRD, TRA: TST, PAR: M19, FRA: Y38, SEM: SOV}
+  features: {LEMMA: quash, BF: quash, LEX: V, POS: VER, LST: WRD, TRA: TST, PAR: M19, FRA: Y38, SEM: SOC}
   lang: eng
   frequency: 7
   priority: 0
@@ -9306,7 +9306,7 @@
 - headword: quash
   id: 454284
   uw: "202478059"
-  features: {LEMMA: quash, BF: quash, LEX: V, POS: VER, LST: WRD, TRA: TST, PAR: M19, FRA: Y38, SEM: SOV}
+  features: {LEMMA: quash, BF: quash, LEX: V, POS: VER, LST: WRD, TRA: TST, PAR: M19, FRA: Y38, SEM: SOC}
   lang: eng
   frequency: 2
   priority: 0
@@ -9314,7 +9314,7 @@
 - headword: quash
   id: 637997
   uw: "202424128"
-  features: {LEMMA: quash, BF: quash, LEX: V, POS: VER, LST: WRD, MOO: INF, TRA: TST, PAR: M19, FRA: Y38, SEM: SOV}
+  features: {LEMMA: quash, BF: quash, LEX: V, POS: VER, LST: WRD, MOO: INF, TRA: TST, PAR: M19, FRA: Y38, SEM: SOC}
   lang: eng
   frequency: 7
   priority: 0
@@ -9322,7 +9322,7 @@
 - headword: quash
   id: 637998
   uw: "202478059"
-  features: {LEMMA: quash, BF: quash, LEX: V, POS: VER, LST: WRD, MOO: INF, TRA: TST, PAR: M19, FRA: Y38, SEM: SOV}
+  features: {LEMMA: quash, BF: quash, LEX: V, POS: VER, LST: WRD, MOO: INF, TRA: TST, PAR: M19, FRA: Y38, SEM: SOC}
   lang: eng
   frequency: 2
   priority: 0
@@ -9330,7 +9330,7 @@
 - headword: quashed
   id: 637999
   uw: "202424128"
-  features: {LEMMA: quash, BF: quash, LEX: V, POS: VER, LST: WRD, ATE: PAS, TRA: TST, PAR: M19, FRA: Y38, SEM: SOV}
+  features: {LEMMA: quash, BF: quash, LEX: V, POS: VER, LST: WRD, ATE: PAS, TRA: TST, PAR: M19, FRA: Y38, SEM: SOC}
   lang: eng
   frequency: 7
   priority: 0
@@ -9338,7 +9338,7 @@
 - headword: quashed
   id: 638000
   uw: "202478059"
-  features: {LEMMA: quash, BF: quash, LEX: V, POS: VER, LST: WRD, ATE: PAS, TRA: TST, PAR: M19, FRA: Y38, SEM: SOV}
+  features: {LEMMA: quash, BF: quash, LEX: V, POS: VER, LST: WRD, ATE: PAS, TRA: TST, PAR: M19, FRA: Y38, SEM: SOC}
   lang: eng
   frequency: 2
   priority: 0
@@ -9346,7 +9346,7 @@
 - headword: quashed
   id: 638001
   uw: "202424128"
-  features: {LEMMA: quash, BF: quash, LEX: V, POS: VER, LST: WRD, MOO: PTP, TRA: TST, PAR: M19, FRA: Y38, SEM: SOV}
+  features: {LEMMA: quash, BF: quash, LEX: V, POS: VER, LST: WRD, MOO: PTP, TRA: TST, PAR: M19, FRA: Y38, SEM: SOC}
   lang: eng
   frequency: 7
   priority: 0
@@ -9354,7 +9354,7 @@
 - headword: quashed
   id: 638002
   uw: "202478059"
-  features: {LEMMA: quash, BF: quash, LEX: V, POS: VER, LST: WRD, MOO: PTP, TRA: TST, PAR: M19, FRA: Y38, SEM: SOV}
+  features: {LEMMA: quash, BF: quash, LEX: V, POS: VER, LST: WRD, MOO: PTP, TRA: TST, PAR: M19, FRA: Y38, SEM: SOC}
   lang: eng
   frequency: 2
   priority: 0
@@ -9362,7 +9362,7 @@
 - headword: quashes
   id: 638003
   uw: "202424128"
-  features: {LEMMA: quash, BF: quash, LEX: V, POS: VER, LST: WRD, PER: 3PS, ATE: PRS, TRA: TST, PAR: M19, FRA: Y38, SEM: SOV}
+  features: {LEMMA: quash, BF: quash, LEX: V, POS: VER, LST: WRD, PER: 3PS, ATE: PRS, TRA: TST, PAR: M19, FRA: Y38, SEM: SOC}
   lang: eng
   frequency: 7
   priority: 0
@@ -9370,7 +9370,7 @@
 - headword: quashes
   id: 638004
   uw: "202478059"
-  features: {LEMMA: quash, BF: quash, LEX: V, POS: VER, LST: WRD, PER: 3PS, ATE: PRS, TRA: TST, PAR: M19, FRA: Y38, SEM: SOV}
+  features: {LEMMA: quash, BF: quash, LEX: V, POS: VER, LST: WRD, PER: 3PS, ATE: PRS, TRA: TST, PAR: M19, FRA: Y38, SEM: SOC}
   lang: eng
   frequency: 2
   priority: 0
@@ -9378,7 +9378,7 @@
 - headword: quashing
   id: 638005
   uw: "202424128"
-  features: {LEMMA: quash, BF: quash, LEX: V, POS: VER, LST: WRD, MOO: GER, TRA: TST, PAR: M19, FRA: Y38, SEM: SOV}
+  features: {LEMMA: quash, BF: quash, LEX: V, POS: VER, LST: WRD, MOO: GER, TRA: TST, PAR: M19, FRA: Y38, SEM: SOC}
   lang: eng
   frequency: 7
   priority: 0
@@ -9386,7 +9386,7 @@
 - headword: quashing
   id: 638006
   uw: "202478059"
-  features: {LEMMA: quash, BF: quash, LEX: V, POS: VER, LST: WRD, MOO: GER, TRA: TST, PAR: M19, FRA: Y38, SEM: SOV}
+  features: {LEMMA: quash, BF: quash, LEX: V, POS: VER, LST: WRD, MOO: GER, TRA: TST, PAR: M19, FRA: Y38, SEM: SOC}
   lang: eng
   frequency: 2
   priority: 0
@@ -10042,7 +10042,7 @@
 - headword: queasiness
   id: 341083
   uw: "104625284"
-  features: {LEMMA: queasiness, BF: queasiness, LEX: N, POS: NOU, LST: WRD, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATT}
+  features: {LEMMA: queasiness, BF: queasiness, LEX: N, POS: NOU, LST: WRD, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATR}
   lang: eng
   frequency: 1
   priority: 0
@@ -10050,7 +10050,7 @@
 - headword: queasiness
   id: 368749
   uw: "104625284"
-  features: {LEMMA: queasiness, BF: queasiness, LEX: N, POS: NOU, MOR: STE, LST: WRD, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATT}
+  features: {LEMMA: queasiness, BF: queasiness, LEX: N, POS: NOU, MOR: STE, LST: WRD, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATR}
   lang: eng
   frequency: 1
   priority: 0
@@ -10314,7 +10314,7 @@
 - headword: queen
   id: 455211
   uw: "202593790"
-  features: {LEMMA: queen, BF: queen, LEX: V, POS: VER, LST: WRD, TRA: TST, PAR: M16, FRA: Y38, SEM: SOV}
+  features: {LEMMA: queen, BF: queen, LEX: V, POS: VER, LST: WRD, TRA: TST, PAR: M16, FRA: Y38, SEM: SOC}
   lang: eng
   frequency: 1
   priority: 0
@@ -10330,7 +10330,7 @@
 - headword: queen
   id: 642637
   uw: "202593790"
-  features: {LEMMA: queen, BF: queen, LEX: V, POS: VER, LST: WRD, MOO: INF, TRA: TST, PAR: M16, FRA: Y38, SEM: SOV}
+  features: {LEMMA: queen, BF: queen, LEX: V, POS: VER, LST: WRD, MOO: INF, TRA: TST, PAR: M16, FRA: Y38, SEM: SOC}
   lang: eng
   frequency: 1
   priority: 0
@@ -10410,7 +10410,7 @@
 - headword: queen it over
   id: 642622
   uw: "202593551"
-  features: {LEMMA: queen it over, BF: queen, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: INF, TRA: NTST, PAR: M16, FRA: Y32, SEM: SOV}
+  features: {LEMMA: queen it over, BF: queen, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: INF, TRA: NTST, PAR: M16, FRA: Y32, SEM: SOC}
   lang: eng
   frequency: 1
   priority: 0
@@ -10666,7 +10666,7 @@
 - headword: queened
   id: 642638
   uw: "202593790"
-  features: {LEMMA: queen, BF: queen, LEX: V, POS: VER, LST: WRD, ATE: PAS, TRA: TST, PAR: M16, FRA: Y38, SEM: SOV}
+  features: {LEMMA: queen, BF: queen, LEX: V, POS: VER, LST: WRD, ATE: PAS, TRA: TST, PAR: M16, FRA: Y38, SEM: SOC}
   lang: eng
   frequency: 1
   priority: 0
@@ -10674,7 +10674,7 @@
 - headword: queened
   id: 642639
   uw: "202593790"
-  features: {LEMMA: queen, BF: queen, LEX: V, POS: VER, LST: WRD, MOO: PTP, TRA: TST, PAR: M16, FRA: Y38, SEM: SOV}
+  features: {LEMMA: queen, BF: queen, LEX: V, POS: VER, LST: WRD, MOO: PTP, TRA: TST, PAR: M16, FRA: Y38, SEM: SOC}
   lang: eng
   frequency: 1
   priority: 0
@@ -10682,7 +10682,7 @@
 - headword: queened it over
   id: 642623
   uw: "202593551"
-  features: {LEMMA: queen it over, BF: queen, LEX: V, POS: VER, MOR: STE, LST: MTW, ATE: PAS, TRA: NTST, PAR: M16, FRA: Y32, SEM: SOV}
+  features: {LEMMA: queen it over, BF: queen, LEX: V, POS: VER, MOR: STE, LST: MTW, ATE: PAS, TRA: NTST, PAR: M16, FRA: Y32, SEM: SOC}
   lang: eng
   frequency: 1
   priority: 0
@@ -10690,7 +10690,7 @@
 - headword: queened it over
   id: 642624
   uw: "202593551"
-  features: {LEMMA: queen it over, BF: queen, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: PTP, TRA: NTST, PAR: M16, FRA: Y32, SEM: SOV}
+  features: {LEMMA: queen it over, BF: queen, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: PTP, TRA: NTST, PAR: M16, FRA: Y32, SEM: SOC}
   lang: eng
   frequency: 1
   priority: 0
@@ -10730,7 +10730,7 @@
 - headword: queening
   id: 642641
   uw: "202593790"
-  features: {LEMMA: queen, BF: queen, LEX: V, POS: VER, LST: WRD, MOO: GER, TRA: TST, PAR: M16, FRA: Y38, SEM: SOV}
+  features: {LEMMA: queen, BF: queen, LEX: V, POS: VER, LST: WRD, MOO: GER, TRA: TST, PAR: M16, FRA: Y38, SEM: SOC}
   lang: eng
   frequency: 1
   priority: 0
@@ -10738,7 +10738,7 @@
 - headword: queening it over
   id: 642626
   uw: "202593551"
-  features: {LEMMA: queen it over, BF: queen, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: GER, TRA: NTST, PAR: M16, FRA: Y32, SEM: SOV}
+  features: {LEMMA: queen it over, BF: queen, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: GER, TRA: NTST, PAR: M16, FRA: Y32, SEM: SOC}
   lang: eng
   frequency: 1
   priority: 0
@@ -10874,7 +10874,7 @@
 - headword: queens
   id: 642640
   uw: "202593790"
-  features: {LEMMA: queen, BF: queen, LEX: V, POS: VER, LST: WRD, PER: 3PS, ATE: PRS, TRA: TST, PAR: M16, FRA: Y38, SEM: SOV}
+  features: {LEMMA: queen, BF: queen, LEX: V, POS: VER, LST: WRD, PER: 3PS, ATE: PRS, TRA: TST, PAR: M16, FRA: Y38, SEM: SOC}
   lang: eng
   frequency: 1
   priority: 0
@@ -10882,7 +10882,7 @@
 - headword: queens it over
   id: 642625
   uw: "202593551"
-  features: {LEMMA: queen it over, BF: queen, LEX: V, POS: VER, MOR: STE, LST: MTW, PER: 3PS, ATE: PRS, TRA: NTST, PAR: M16, FRA: Y32, SEM: SOV}
+  features: {LEMMA: queen it over, BF: queen, LEX: V, POS: VER, MOR: STE, LST: MTW, PER: 3PS, ATE: PRS, TRA: NTST, PAR: M16, FRA: Y32, SEM: SOC}
   lang: eng
   frequency: 1
   priority: 0
@@ -10986,7 +10986,7 @@
 - headword: queer
   id: 455656
   uw: "202558172"
-  features: {LEMMA: queer, BF: queer, LEX: V, POS: VER, LST: WRD, TRA: TST, PAR: M16, FRA: Y38, SEM: SOV}
+  features: {LEMMA: queer, BF: queer, LEX: V, POS: VER, LST: WRD, TRA: TST, PAR: M16, FRA: Y38, SEM: SOC}
   lang: eng
   frequency: 13
   priority: 0
@@ -11002,7 +11002,7 @@
 - headword: queer
   id: 644858
   uw: "202558172"
-  features: {LEMMA: queer, BF: queer, LEX: V, POS: VER, LST: WRD, MOO: INF, TRA: TST, PAR: M16, FRA: Y38, SEM: SOV}
+  features: {LEMMA: queer, BF: queer, LEX: V, POS: VER, LST: WRD, MOO: INF, TRA: TST, PAR: M16, FRA: Y38, SEM: SOC}
   lang: eng
   frequency: 13
   priority: 0
@@ -11066,7 +11066,7 @@
 - headword: queered
   id: 644860
   uw: "202558172"
-  features: {LEMMA: queer, BF: queer, LEX: V, POS: VER, LST: WRD, ATE: PAS, TRA: TST, PAR: M16, FRA: Y38, SEM: SOV}
+  features: {LEMMA: queer, BF: queer, LEX: V, POS: VER, LST: WRD, ATE: PAS, TRA: TST, PAR: M16, FRA: Y38, SEM: SOC}
   lang: eng
   frequency: 13
   priority: 0
@@ -11082,7 +11082,7 @@
 - headword: queered
   id: 644862
   uw: "202558172"
-  features: {LEMMA: queer, BF: queer, LEX: V, POS: VER, LST: WRD, MOO: PTP, TRA: TST, PAR: M16, FRA: Y38, SEM: SOV}
+  features: {LEMMA: queer, BF: queer, LEX: V, POS: VER, LST: WRD, MOO: PTP, TRA: TST, PAR: M16, FRA: Y38, SEM: SOC}
   lang: eng
   frequency: 13
   priority: 0
@@ -11098,7 +11098,7 @@
 - headword: queering
   id: 644866
   uw: "202558172"
-  features: {LEMMA: queer, BF: queer, LEX: V, POS: VER, LST: WRD, MOO: GER, TRA: TST, PAR: M16, FRA: Y38, SEM: SOV}
+  features: {LEMMA: queer, BF: queer, LEX: V, POS: VER, LST: WRD, MOO: GER, TRA: TST, PAR: M16, FRA: Y38, SEM: SOC}
   lang: eng
   frequency: 13
   priority: 0
@@ -11154,7 +11154,7 @@
 - headword: queerness
   id: 341964
   uw: "104797824"
-  features: {LEMMA: queerness, BF: queerness, LEX: N, POS: NOU, LST: WRD, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATT}
+  features: {LEMMA: queerness, BF: queerness, LEX: N, POS: NOU, LST: WRD, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATR}
   lang: eng
   frequency: 2
   priority: 0
@@ -11162,7 +11162,7 @@
 - headword: queerness
   id: 370104
   uw: "104797824"
-  features: {LEMMA: queerness, BF: queerness, LEX: N, POS: NOU, MOR: STE, LST: WRD, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATT}
+  features: {LEMMA: queerness, BF: queerness, LEX: N, POS: NOU, MOR: STE, LST: WRD, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATR}
   lang: eng
   frequency: 2
   priority: 0
@@ -11194,7 +11194,7 @@
 - headword: queers
   id: 644864
   uw: "202558172"
-  features: {LEMMA: queer, BF: queer, LEX: V, POS: VER, LST: WRD, PER: 3PS, ATE: PRS, TRA: TST, PAR: M16, FRA: Y38, SEM: SOV}
+  features: {LEMMA: queer, BF: queer, LEX: V, POS: VER, LST: WRD, PER: 3PS, ATE: PRS, TRA: TST, PAR: M16, FRA: Y38, SEM: SOC}
   lang: eng
   frequency: 13
   priority: 0
@@ -11426,7 +11426,7 @@
 - headword: quench
   id: 453061
   uw: "202422967"
-  features: {LEMMA: quench, BF: quench, LEX: V, POS: VER, LST: WRD, TRA: TST, PAR: M19, FRA: Y38, SEM: SOV}
+  features: {LEMMA: quench, BF: quench, LEX: V, POS: VER, LST: WRD, TRA: TST, PAR: M19, FRA: Y38, SEM: SOC}
   lang: eng
   frequency: 1
   priority: 0
@@ -11474,7 +11474,7 @@
 - headword: quench
   id: 631854
   uw: "202422967"
-  features: {LEMMA: quench, BF: quench, LEX: V, POS: VER, LST: WRD, MOO: INF, TRA: TST, PAR: M19, FRA: Y38, SEM: SOV}
+  features: {LEMMA: quench, BF: quench, LEX: V, POS: VER, LST: WRD, MOO: INF, TRA: TST, PAR: M19, FRA: Y38, SEM: SOC}
   lang: eng
   frequency: 1
   priority: 0
@@ -11554,7 +11554,7 @@
 - headword: quenched
   id: 631860
   uw: "202422967"
-  features: {LEMMA: quench, BF: quench, LEX: V, POS: VER, LST: WRD, ATE: PAS, TRA: TST, PAR: M19, FRA: Y38, SEM: SOV}
+  features: {LEMMA: quench, BF: quench, LEX: V, POS: VER, LST: WRD, ATE: PAS, TRA: TST, PAR: M19, FRA: Y38, SEM: SOC}
   lang: eng
   frequency: 1
   priority: 0
@@ -11602,7 +11602,7 @@
 - headword: quenched
   id: 631866
   uw: "202422967"
-  features: {LEMMA: quench, BF: quench, LEX: V, POS: VER, LST: WRD, MOO: PTP, TRA: TST, PAR: M19, FRA: Y38, SEM: SOV}
+  features: {LEMMA: quench, BF: quench, LEX: V, POS: VER, LST: WRD, MOO: PTP, TRA: TST, PAR: M19, FRA: Y38, SEM: SOC}
   lang: eng
   frequency: 1
   priority: 0
@@ -11666,7 +11666,7 @@
 - headword: quenches
   id: 631872
   uw: "202422967"
-  features: {LEMMA: quench, BF: quench, LEX: V, POS: VER, LST: WRD, PER: 3PS, ATE: PRS, TRA: TST, PAR: M19, FRA: Y38, SEM: SOV}
+  features: {LEMMA: quench, BF: quench, LEX: V, POS: VER, LST: WRD, PER: 3PS, ATE: PRS, TRA: TST, PAR: M19, FRA: Y38, SEM: SOC}
   lang: eng
   frequency: 1
   priority: 0
@@ -11730,7 +11730,7 @@
 - headword: quenching
   id: 631878
   uw: "202422967"
-  features: {LEMMA: quench, BF: quench, LEX: V, POS: VER, LST: WRD, MOO: GER, TRA: TST, PAR: M19, FRA: Y38, SEM: SOV}
+  features: {LEMMA: quench, BF: quench, LEX: V, POS: VER, LST: WRD, MOO: GER, TRA: TST, PAR: M19, FRA: Y38, SEM: SOC}
   lang: eng
   frequency: 1
   priority: 0
@@ -11970,7 +11970,7 @@
 - headword: querulousness
   id: 340995
   uw: "104642980"
-  features: {LEMMA: querulousness, BF: querulousness, LEX: N, POS: NOU, LST: WRD, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATT}
+  features: {LEMMA: querulousness, BF: querulousness, LEX: N, POS: NOU, LST: WRD, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATR}
   lang: eng
   frequency: 1
   priority: 0
@@ -11978,7 +11978,7 @@
 - headword: querulousness
   id: 368620
   uw: "104642980"
-  features: {LEMMA: querulousness, BF: querulousness, LEX: N, POS: NOU, MOR: STE, LST: WRD, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATT}
+  features: {LEMMA: querulousness, BF: querulousness, LEX: N, POS: NOU, MOR: STE, LST: WRD, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATR}
   lang: eng
   frequency: 1
   priority: 0
@@ -12426,7 +12426,7 @@
 - headword: question
   id: 360533
   uw: "104757522"
-  features: {LEMMA: question, BF: question, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M2, FRA: Y0, ABN: ABT, ALY: ALI, ANI: NANM, CAR: CTB, SEM: ATT, SFR: K0}
+  features: {LEMMA: question, BF: question, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M2, FRA: Y0, ABN: ABT, ALY: ALI, ANI: NANM, CAR: CTB, SEM: ATR, SFR: K0}
   lang: eng
   frequency: 13
   priority: 18
@@ -12474,7 +12474,7 @@
 - headword: question
   id: 404116
   uw: "104757522"
-  features: {LEMMA: question, BF: question, LEX: N, POS: NOU, MOR: STE, LST: WRD, NUM: SNG, PAR: M2, FRA: Y0, ABN: ABT, ALY: ALI, ANI: NANM, CAR: CTB, SEM: ATT, SFR: K0}
+  features: {LEMMA: question, BF: question, LEX: N, POS: NOU, MOR: STE, LST: WRD, NUM: SNG, PAR: M2, FRA: Y0, ABN: ABT, ALY: ALI, ANI: NANM, CAR: CTB, SEM: ATR, SFR: K0}
   lang: eng
   frequency: 13
   priority: 18
@@ -13050,7 +13050,7 @@
 - headword: questions
   id: 404122
   uw: "104757522"
-  features: {LEMMA: question, BF: question, LEX: N, POS: NOU, MOR: STE, LST: WRD, NUM: PLR, PAR: M2, FRA: Y0, ABN: ABT, ALY: ALI, ANI: NANM, CAR: CTB, SEM: ATT, SFR: K0}
+  features: {LEMMA: question, BF: question, LEX: N, POS: NOU, MOR: STE, LST: WRD, NUM: PLR, PAR: M2, FRA: Y0, ABN: ABT, ALY: ALI, ANI: NANM, CAR: CTB, SEM: ATR, SFR: K0}
   lang: eng
   frequency: 13
   priority: 18
@@ -14746,7 +14746,7 @@
 - headword: quickness
   id: 344223
   uw: "105059132"
-  features: {LEMMA: quickness, BF: quickness, LEX: N, POS: NOU, LST: WRD, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATT}
+  features: {LEMMA: quickness, BF: quickness, LEX: N, POS: NOU, LST: WRD, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATR}
   lang: eng
   frequency: 3
   priority: 0
@@ -14770,7 +14770,7 @@
 - headword: quickness
   id: 373517
   uw: "105059132"
-  features: {LEMMA: quickness, BF: quickness, LEX: N, POS: NOU, MOR: STE, LST: WRD, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATT}
+  features: {LEMMA: quickness, BF: quickness, LEX: N, POS: NOU, MOR: STE, LST: WRD, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATR}
   lang: eng
   frequency: 3
   priority: 0
@@ -15554,7 +15554,7 @@
 - headword: quiet
   id: 425042
   uw: "104904352"
-  features: {LEMMA: quiet, BF: quiet, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M2, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATT}
+  features: {LEMMA: quiet, BF: quiet, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M2, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATR}
   lang: eng
   frequency: 4
   priority: 0
@@ -15562,7 +15562,7 @@
 - headword: quiet
   id: 425043
   uw: "104982207"
-  features: {LEMMA: quiet, BF: quiet, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M2, FRA: Y0, ABN: ABT, ALY: ALI, ANI: NANM, CAR: NCTB, SEM: ATT, SFR: K0}
+  features: {LEMMA: quiet, BF: quiet, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M2, FRA: Y0, ABN: ABT, ALY: ALI, ANI: NANM, CAR: NCTB, SEM: ATR, SFR: K0}
   lang: eng
   frequency: 12
   priority: 0
@@ -15602,7 +15602,7 @@
 - headword: quiet
   id: 521229
   uw: "104904352"
-  features: {LEMMA: quiet, BF: quiet, LEX: N, POS: NOU, MOR: ROO, LST: WRD, NUM: SNG, PAR: M2, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATT}
+  features: {LEMMA: quiet, BF: quiet, LEX: N, POS: NOU, MOR: ROO, LST: WRD, NUM: SNG, PAR: M2, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATR}
   lang: eng
   frequency: 4
   priority: 0
@@ -15610,7 +15610,7 @@
 - headword: quiet
   id: 521230
   uw: "104982207"
-  features: {LEMMA: quiet, BF: quiet, LEX: N, POS: NOU, MOR: ROO, LST: WRD, NUM: SNG, PAR: M2, FRA: Y0, ABN: ABT, ALY: ALI, ANI: NANM, CAR: NCTB, SEM: ATT, SFR: K0}
+  features: {LEMMA: quiet, BF: quiet, LEX: N, POS: NOU, MOR: ROO, LST: WRD, NUM: SNG, PAR: M2, FRA: Y0, ABN: ABT, ALY: ALI, ANI: NANM, CAR: NCTB, SEM: ATR, SFR: K0}
   lang: eng
   frequency: 12
   priority: 0
@@ -15986,7 +15986,7 @@
 - headword: quietness
   id: 343824
   uw: "104982856"
-  features: {LEMMA: quietness, BF: quietness, LEX: N, POS: NOU, LST: WRD, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATT}
+  features: {LEMMA: quietness, BF: quietness, LEX: N, POS: NOU, LST: WRD, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATR}
   lang: eng
   frequency: 3
   priority: 0
@@ -16002,7 +16002,7 @@
 - headword: quietness
   id: 372906
   uw: "104982856"
-  features: {LEMMA: quietness, BF: quietness, LEX: N, POS: NOU, MOR: STE, LST: WRD, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATT}
+  features: {LEMMA: quietness, BF: quietness, LEX: N, POS: NOU, MOR: STE, LST: WRD, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATR}
   lang: eng
   frequency: 3
   priority: 0
@@ -16026,7 +16026,7 @@
 - headword: quiets
   id: 521233
   uw: "104904352"
-  features: {LEMMA: quiet, BF: quiet, LEX: N, POS: NOU, MOR: ROO, LST: WRD, NUM: PLR, PAR: M2, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATT}
+  features: {LEMMA: quiet, BF: quiet, LEX: N, POS: NOU, MOR: ROO, LST: WRD, NUM: PLR, PAR: M2, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATR}
   lang: eng
   frequency: 4
   priority: 0
@@ -16034,7 +16034,7 @@
 - headword: quiets
   id: 521234
   uw: "104982207"
-  features: {LEMMA: quiet, BF: quiet, LEX: N, POS: NOU, MOR: ROO, LST: WRD, NUM: PLR, PAR: M2, FRA: Y0, ABN: ABT, ALY: ALI, ANI: NANM, CAR: NCTB, SEM: ATT, SFR: K0}
+  features: {LEMMA: quiet, BF: quiet, LEX: N, POS: NOU, MOR: ROO, LST: WRD, NUM: PLR, PAR: M2, FRA: Y0, ABN: ABT, ALY: ALI, ANI: NANM, CAR: NCTB, SEM: ATR, SFR: K0}
   lang: eng
   frequency: 12
   priority: 0
@@ -17650,7 +17650,7 @@
 - headword: quirk
   id: 341966
   uw: "104797824"
-  features: {LEMMA: quirk, BF: quirk, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M2, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATT}
+  features: {LEMMA: quirk, BF: quirk, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M2, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATR}
   lang: eng
   frequency: 2
   priority: 0
@@ -17666,7 +17666,7 @@
 - headword: quirk
   id: 370106
   uw: "104797824"
-  features: {LEMMA: quirk, BF: quirk, LEX: N, POS: NOU, MOR: ROO, LST: WRD, NUM: SNG, PAR: M2, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATT}
+  features: {LEMMA: quirk, BF: quirk, LEX: N, POS: NOU, MOR: ROO, LST: WRD, NUM: SNG, PAR: M2, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATR}
   lang: eng
   frequency: 2
   priority: 0
@@ -17778,7 +17778,7 @@
 - headword: quirkiness
   id: 341967
   uw: "104797824"
-  features: {LEMMA: quirkiness, BF: quirkiness, LEX: N, POS: NOU, LST: WRD, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATT}
+  features: {LEMMA: quirkiness, BF: quirkiness, LEX: N, POS: NOU, LST: WRD, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATR}
   lang: eng
   frequency: 2
   priority: 0
@@ -17786,7 +17786,7 @@
 - headword: quirkiness
   id: 370109
   uw: "104797824"
-  features: {LEMMA: quirkiness, BF: quirkiness, LEX: N, POS: NOU, MOR: STE, LST: WRD, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATT}
+  features: {LEMMA: quirkiness, BF: quirkiness, LEX: N, POS: NOU, MOR: STE, LST: WRD, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATR}
   lang: eng
   frequency: 2
   priority: 0
@@ -17810,7 +17810,7 @@
 - headword: quirks
   id: 370108
   uw: "104797824"
-  features: {LEMMA: quirk, BF: quirk, LEX: N, POS: NOU, MOR: ROO, LST: WRD, NUM: PLR, PAR: M2, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATT}
+  features: {LEMMA: quirk, BF: quirk, LEX: N, POS: NOU, MOR: ROO, LST: WRD, NUM: PLR, PAR: M2, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATR}
   lang: eng
   frequency: 2
   priority: 0
@@ -17922,7 +17922,7 @@
 - headword: quit
   id: 452084
   uw: "202382367"
-  features: {LEMMA: quit, BF: quit, LEX: V, POS: VER, LST: WRD, TRA: NTST, PAR: M1, FRA: Y32, FLX: "INF:=0>\"\";PAS:=0>\"ted\";PAS:=0>\"\";PTP:=0>\"ted\";PTP:=0>\"\";GER:=0>\"ting\";3PS&PRS:=0>\"s\";", SEM: SOV}
+  features: {LEMMA: quit, BF: quit, LEX: V, POS: VER, LST: WRD, TRA: NTST, PAR: M1, FRA: Y32, FLX: "INF:=0>\"\";PAS:=0>\"ted\";PAS:=0>\"\";PTP:=0>\"ted\";PTP:=0>\"\";GER:=0>\"ting\";3PS&PRS:=0>\"s\";", SEM: SOC}
   lang: eng
   frequency: 3
   priority: 6
@@ -17978,7 +17978,7 @@
 - headword: quit
   id: 626989
   uw: "202382367"
-  features: {LEMMA: quit, BF: quit, LEX: V, POS: VER, MOR: ROO, LST: WRD, MOO: INF, TRA: NTST, PAR: M1, FRA: Y32, SEM: SOV}
+  features: {LEMMA: quit, BF: quit, LEX: V, POS: VER, MOR: ROO, LST: WRD, MOO: INF, TRA: NTST, PAR: M1, FRA: Y32, SEM: SOC}
   lang: eng
   frequency: 3
   priority: 6
@@ -17986,7 +17986,7 @@
 - headword: quit
   id: 626990
   uw: "202382367"
-  features: {LEMMA: quit, BF: quit, LEX: V, POS: VER, MOR: ROO, LST: WRD, ATE: PAS, TRA: NTST, PAR: M1, FRA: Y32, SEM: SOV}
+  features: {LEMMA: quit, BF: quit, LEX: V, POS: VER, MOR: ROO, LST: WRD, ATE: PAS, TRA: NTST, PAR: M1, FRA: Y32, SEM: SOC}
   lang: eng
   frequency: 3
   priority: 6
@@ -17994,7 +17994,7 @@
 - headword: quit
   id: 626991
   uw: "202382367"
-  features: {LEMMA: quit, BF: quit, LEX: V, POS: VER, MOR: ROO, LST: WRD, MOO: PTP, TRA: NTST, PAR: M1, FRA: Y32, SEM: SOV}
+  features: {LEMMA: quit, BF: quit, LEX: V, POS: VER, MOR: ROO, LST: WRD, MOO: PTP, TRA: NTST, PAR: M1, FRA: Y32, SEM: SOC}
   lang: eng
   frequency: 3
   priority: 6
@@ -18266,7 +18266,7 @@
 - headword: quits
   id: 626993
   uw: "202382367"
-  features: {LEMMA: quit, BF: quit, LEX: V, POS: VER, MOR: ROO, LST: WRD, PER: 3PS, ATE: PRS, TRA: NTST, PAR: M1, FRA: Y32, SEM: SOV}
+  features: {LEMMA: quit, BF: quit, LEX: V, POS: VER, MOR: ROO, LST: WRD, PER: 3PS, ATE: PRS, TRA: NTST, PAR: M1, FRA: Y32, SEM: SOC}
   lang: eng
   frequency: 3
   priority: 6
@@ -18378,7 +18378,7 @@
 - headword: quitting
   id: 626992
   uw: "202382367"
-  features: {LEMMA: quit, BF: quit, LEX: V, POS: VER, MOR: ROO, LST: WRD, MOO: GER, TRA: NTST, PAR: M1, FRA: Y32, SEM: SOV}
+  features: {LEMMA: quit, BF: quit, LEX: V, POS: VER, MOR: ROO, LST: WRD, MOO: GER, TRA: NTST, PAR: M1, FRA: Y32, SEM: SOC}
   lang: eng
   frequency: 3
   priority: 6
@@ -18730,7 +18730,7 @@
 - headword: quixotism
   id: 344842
   uw: "105153037"
-  features: {LEMMA: quixotism, BF: quixotism, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M2, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATT}
+  features: {LEMMA: quixotism, BF: quixotism, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M2, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATR}
   lang: eng
   frequency: 2
   priority: 0
@@ -18738,7 +18738,7 @@
 - headword: quixotism
   id: 374525
   uw: "105153037"
-  features: {LEMMA: quixotism, BF: quixotism, LEX: N, POS: NOU, MOR: STE, LST: WRD, NUM: SNG, PAR: M2, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATT}
+  features: {LEMMA: quixotism, BF: quixotism, LEX: N, POS: NOU, MOR: STE, LST: WRD, NUM: SNG, PAR: M2, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATR}
   lang: eng
   frequency: 2
   priority: 0
@@ -18746,7 +18746,7 @@
 - headword: quixotisms
   id: 374526
   uw: "105153037"
-  features: {LEMMA: quixotism, BF: quixotism, LEX: N, POS: NOU, MOR: STE, LST: WRD, NUM: PLR, PAR: M2, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATT}
+  features: {LEMMA: quixotism, BF: quixotism, LEX: N, POS: NOU, MOR: STE, LST: WRD, NUM: PLR, PAR: M2, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATR}
   lang: eng
   frequency: 2
   priority: 0
@@ -19186,7 +19186,7 @@
 - headword: quotabilities
   id: 370442
   uw: "104807489"
-  features: {LEMMA: quotability, BF: quotability, LEX: N, POS: NOU, MOR: STE, LST: WRD, NUM: PLR, PAR: M3, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATT}
+  features: {LEMMA: quotability, BF: quotability, LEX: N, POS: NOU, MOR: STE, LST: WRD, NUM: PLR, PAR: M3, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATR}
   lang: eng
   frequency: 1
   priority: 0
@@ -19194,7 +19194,7 @@
 - headword: quotability
   id: 342176
   uw: "104807489"
-  features: {LEMMA: quotability, BF: quotability, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M3, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATT}
+  features: {LEMMA: quotability, BF: quotability, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M3, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATR}
   lang: eng
   frequency: 1
   priority: 0
@@ -19202,7 +19202,7 @@
 - headword: quotability
   id: 370441
   uw: "104807489"
-  features: {LEMMA: quotability, BF: quotability, LEX: N, POS: NOU, MOR: STE, LST: WRD, NUM: SNG, PAR: M3, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATT}
+  features: {LEMMA: quotability, BF: quotability, LEX: N, POS: NOU, MOR: STE, LST: WRD, NUM: SNG, PAR: M3, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATR}
   lang: eng
   frequency: 1
   priority: 0
@@ -19666,7 +19666,7 @@
 - headword: quotient
   id: 415230
   uw: "113824815"
-  features: {LEMMA: quotient, BF: quotient, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M2, FRA: Y0, ABN: ABT, ANI: NANM, SEM: REL}
+  features: {LEMMA: quotient, BF: quotient, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M2, FRA: Y0, ABN: ABT, ANI: NANM, SEM: RLT}
   lang: eng
   frequency: 1
   priority: 0
@@ -19682,7 +19682,7 @@
 - headword: quotient
   id: 502927
   uw: "113824815"
-  features: {LEMMA: quotient, BF: quotient, LEX: N, POS: NOU, MOR: STE, LST: WRD, NUM: SNG, PAR: M2, FRA: Y0, ABN: ABT, ANI: NANM, SEM: REL}
+  features: {LEMMA: quotient, BF: quotient, LEX: N, POS: NOU, MOR: STE, LST: WRD, NUM: SNG, PAR: M2, FRA: Y0, ABN: ABT, ANI: NANM, SEM: RLT}
   lang: eng
   frequency: 1
   priority: 0
@@ -19722,7 +19722,7 @@
 - headword: quotients
   id: 502929
   uw: "113824815"
-  features: {LEMMA: quotient, BF: quotient, LEX: N, POS: NOU, MOR: STE, LST: WRD, NUM: PLR, PAR: M2, FRA: Y0, ABN: ABT, ANI: NANM, SEM: REL}
+  features: {LEMMA: quotient, BF: quotient, LEX: N, POS: NOU, MOR: STE, LST: WRD, NUM: PLR, PAR: M2, FRA: Y0, ABN: ABT, ANI: NANM, SEM: RLT}
   lang: eng
   frequency: 1
   priority: 0

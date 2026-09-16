@@ -103,6 +103,17 @@ AA:
   category: null
   parent: null
   source: {archive_path: exports/export_tagset.php, line: AA}
+# AAA and JJJ are the two tagset values the wiki tree defines and the live export omits
+# (docs/unl-reference/formats/tagset.md, "Where the export adds tags the wiki tree does not
+# define"; issue 171). Defined by data/archive/wiki/Tagset.wikitext, "Adverbial concepts".
+AAA:
+  tag: AAA
+  meaning: other adverbs
+  description: ""
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: wiki/Tagset.wikitext, line: 491}
 AAV:
   tag: AAV
   meaning: adverb
@@ -2039,6 +2050,16 @@ JH:
   category: null
   parent: null
   source: {archive_path: exports/export_tagset.php, line: JH}
+# Defined by data/archive/wiki/Tagset.wikitext, "Adjective concepts"; absent from the live
+# export, same gap as AAA above (issue 171).
+JJJ:
+  tag: JJJ
+  meaning: other adjectives
+  description: ""
+  examples: []
+  category: null
+  parent: null
+  source: {archive_path: wiki/Tagset.wikitext, line: 485}
 JP:
   tag: JP
   meaning: adjective phrase

@@ -1578,7 +1578,7 @@
 - headword: Kelvin scale
   id: 415493
   uw: "113853002"
-  features: {LEMMA: Kelvin scale, BF: Kelvin scale, LEX: N, POS: NOU, LST: MTW, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ANI: NANM, SEM: REL}
+  features: {LEMMA: Kelvin scale, BF: Kelvin scale, LEX: N, POS: NOU, LST: MTW, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ANI: NANM, SEM: RLT}
   lang: eng
   frequency: 1
   priority: 0
@@ -1586,7 +1586,7 @@
 - headword: Kelvin scale
   id: 503429
   uw: "113853002"
-  features: {LEMMA: Kelvin scale, BF: Kelvin scale, LEX: N, POS: NOU, MOR: STE, LST: MTW, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ANI: NANM, SEM: REL}
+  features: {LEMMA: Kelvin scale, BF: Kelvin scale, LEX: N, POS: NOU, MOR: STE, LST: MTW, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ANI: NANM, SEM: RLT}
   lang: eng
   frequency: 1
   priority: 0
@@ -4290,7 +4290,7 @@
 - headword: Kronecker delta
   id: 414995
   uw: "113784763"
-  features: {LEMMA: Kronecker delta, BF: Kronecker delta, LEX: N, POS: NOU, LST: MTW, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ANI: NANM, SEM: REL}
+  features: {LEMMA: Kronecker delta, BF: Kronecker delta, LEX: N, POS: NOU, LST: MTW, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ANI: NANM, SEM: RLT}
   lang: eng
   frequency: 1
   priority: 0
@@ -4298,7 +4298,7 @@
 - headword: Kronecker delta
   id: 502482
   uw: "113784763"
-  features: {LEMMA: Kronecker delta, BF: Kronecker delta, LEX: N, POS: NOU, MOR: STE, LST: MTW, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ANI: NANM, SEM: REL}
+  features: {LEMMA: Kronecker delta, BF: Kronecker delta, LEX: N, POS: NOU, MOR: STE, LST: MTW, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ANI: NANM, SEM: RLT}
   lang: eng
   frequency: 1
   priority: 0
@@ -4850,7 +4850,7 @@
 - headword: "[keep] [an eye]"
   id: 453411
   uw: "202455407"
-  features: {LEMMA: keep an eye on, BF: an eye, LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M22, FRA: Y49, FLX: "PAS:=\"kept\";PTP:=\"kept\";", SEM: SOV}
+  features: {LEMMA: keep an eye on, BF: an eye, LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M22, FRA: Y49, FLX: "PAS:=\"kept\";PTP:=\"kept\";", SEM: SOC}
   lang: eng
   frequency: 74
   priority: 0
@@ -4866,7 +4866,7 @@
 - headword: "[keep] [away]"
   id: 454518
   uw: "202451113"
-  features: {LEMMA: keep away, BF: away, LEX: V, POS: VER, LST: MTW, TRA: TSTD, PAR: M22, FRA: Y46, FLX: "PAS:=\"kept\";PTP:=\"kept\";", SEM: SOV}
+  features: {LEMMA: keep away, BF: away, LEX: V, POS: VER, LST: MTW, TRA: TSTD, PAR: M22, FRA: Y46, FLX: "PAS:=\"kept\";PTP:=\"kept\";", SEM: SOC}
   lang: eng
   frequency: 3
   priority: 0
@@ -4890,7 +4890,7 @@
 - headword: "[keep] [back]"
   id: 453054
   uw: "202422663"
-  features: {LEMMA: keep back, BF: back, LEX: V, POS: VER, LST: MTW, TRA: TSTD, PAR: M22, FRA: Y39, FLX: "PAS:=\"kept\";PTP:=\"kept\";", SEM: SOV}
+  features: {LEMMA: keep back, BF: back, LEX: V, POS: VER, LST: MTW, TRA: TSTD, PAR: M22, FRA: Y39, FLX: "PAS:=\"kept\";PTP:=\"kept\";", SEM: SOC}
   lang: eng
   frequency: 15
   priority: 0
@@ -4930,7 +4930,7 @@
 - headword: "[keep] [down]"
   id: 453955
   uw: "202424128"
-  features: {LEMMA: keep down, BF: down, LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M22, FRA: Y38, FLX: "PAS:=\"kept\";PTP:=\"kept\";", SEM: SOV}
+  features: {LEMMA: keep down, BF: down, LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M22, FRA: Y38, FLX: "PAS:=\"kept\";PTP:=\"kept\";", SEM: SOC}
   lang: eng
   frequency: 7
   priority: 0
@@ -4962,7 +4962,7 @@
 - headword: "[keep] [guard]"
   id: 453760
   uw: "202455159"
-  features: {LEMMA: keep guard, BF: guard, LEX: V, POS: VER, LST: MTW, TRA: TSTI, PAR: M22, FRA: Y32, FLX: "PAS:=\"kept\";PTP:=\"kept\";", SEM: SOV}
+  features: {LEMMA: keep guard, BF: guard, LEX: V, POS: VER, LST: MTW, TRA: TSTI, PAR: M22, FRA: Y32, FLX: "PAS:=\"kept\";PTP:=\"kept\";", SEM: SOC}
   lang: eng
   frequency: 6
   priority: 0
@@ -4978,7 +4978,7 @@
 - headword: "[keep] [in]"
   id: 454928
   uw: "202496388"
-  features: {LEMMA: keep in, BF: in, LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M22, FRA: Y38, FLX: "PAS:=\"kept\";PTP:=\"kept\";", SEM: SOV}
+  features: {LEMMA: keep in, BF: in, LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M22, FRA: Y38, FLX: "PAS:=\"kept\";PTP:=\"kept\";", SEM: SOC}
   lang: eng
   frequency: 3
   priority: 0
@@ -5034,7 +5034,7 @@
 - headword: "[keep] [on]"
   id: 452915
   uw: "202410175"
-  features: {LEMMA: keep on, BF: "on", LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M22, FRA: Y39, FLX: "PAS:=\"kept\";PTP:=\"kept\";", SEM: SOV}
+  features: {LEMMA: keep on, BF: "on", LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M22, FRA: Y39, FLX: "PAS:=\"kept\";PTP:=\"kept\";", SEM: SOC}
   lang: eng
   frequency: 8
   priority: 0
@@ -5066,7 +5066,7 @@
 - headword: "[keep] [out]"
   id: 454503
   uw: "202449340"
-  features: {LEMMA: keep out, BF: out, LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M22, FRA: Y39, FLX: "PAS:=\"kept\";PTP:=\"kept\";", SEM: SOV}
+  features: {LEMMA: keep out, BF: out, LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M22, FRA: Y39, FLX: "PAS:=\"kept\";PTP:=\"kept\";", SEM: SOC}
   lang: eng
   frequency: 15
   priority: 0
@@ -5122,7 +5122,7 @@
 - headword: "[keep] [tabs]"
   id: 453412
   uw: "202455861"
-  features: {LEMMA: keep tabs on, BF: tabs, LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M22, FRA: Y49, FLX: "PAS:=\"kept\";PTP:=\"kept\";", SEM: SOV}
+  features: {LEMMA: keep tabs on, BF: tabs, LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M22, FRA: Y49, FLX: "PAS:=\"kept\";PTP:=\"kept\";", SEM: SOC}
   lang: eng
   frequency: 1
   priority: 0
@@ -5130,7 +5130,7 @@
 - headword: "[keep] [to the grindstone]"
   id: 453668
   uw: "202415573"
-  features: {LEMMA: keep <person>'s nose to the grindstone, BF: to the grindstone, LEX: A, POS: VER, LST: MTW, TRA: TSTI, PAR: M0, FRA: Y32, FLX: "PAS:=\"kept\";PTP:=\"kept\";", SEM: SOV}
+  features: {LEMMA: keep <person>'s nose to the grindstone, BF: to the grindstone, LEX: A, POS: VER, LST: MTW, TRA: TSTI, PAR: M0, FRA: Y32, FLX: "PAS:=\"kept\";PTP:=\"kept\";", SEM: SOC}
   lang: eng
   frequency: 2
   priority: 0
@@ -5138,7 +5138,7 @@
 - headword: "[keep] [to the wheel]"
   id: 453669
   uw: "202415573"
-  features: {LEMMA: keep <person>'s shoulder to the wheel, BF: to the wheel, LEX: A, POS: VER, LST: MTW, TRA: TSTI, PAR: M0, FRA: Y32, FLX: "PAS:=\"kept\";PTP:=\"kept\";", SEM: SOV}
+  features: {LEMMA: keep <person>'s shoulder to the wheel, BF: to the wheel, LEX: A, POS: VER, LST: MTW, TRA: TSTI, PAR: M0, FRA: Y32, FLX: "PAS:=\"kept\";PTP:=\"kept\";", SEM: SOC}
   lang: eng
   frequency: 2
   priority: 0
@@ -5154,7 +5154,7 @@
 - headword: "[keep] [to]"
   id: 451204
   uw: "202371352"
-  features: {LEMMA: keep to oneself, BF: to, LEX: V, POS: VER, LST: MTW, TRA: NTST, PAR: M22, FRA: Y32, FLX: "PAS:=\"kept\";PTP:=\"kept\";", SEM: SOV}
+  features: {LEMMA: keep to oneself, BF: to, LEX: V, POS: VER, LST: MTW, TRA: NTST, PAR: M22, FRA: Y32, FLX: "PAS:=\"kept\";PTP:=\"kept\";", SEM: SOC}
   lang: eng
   frequency: 2
   priority: 0
@@ -5234,7 +5234,7 @@
 - headword: "[kick] [around]"
   id: 454386
   uw: "202516978"
-  features: {LEMMA: kick around, BF: around, LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M16, FRA: Y39, SEM: SOV}
+  features: {LEMMA: kick around, BF: around, LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M16, FRA: Y39, SEM: SOC}
   lang: eng
   frequency: 1
   priority: 0
@@ -5274,7 +5274,7 @@
 - headword: "[kick] [downstairs]"
   id: 452910
   uw: "202399331"
-  features: {LEMMA: kick downstairs, BF: downstairs, LEX: V, POS: VER, LST: MTW, TRA: TSTD, PAR: M16, FRA: Y39, SEM: SOV}
+  features: {LEMMA: kick downstairs, BF: downstairs, LEX: V, POS: VER, LST: MTW, TRA: TSTD, PAR: M16, FRA: Y39, SEM: SOC}
   lang: eng
   frequency: 4
   priority: 0
@@ -5314,7 +5314,7 @@
 - headword: "[kick] [off]"
   id: 453598
   uw: "202395782"
-  features: {LEMMA: kick off, BF: "off", LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M16, FRA: Y38, SEM: SOV}
+  features: {LEMMA: kick off, BF: "off", LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M16, FRA: Y38, SEM: SOC}
   lang: eng
   frequency: 4
   priority: 0
@@ -5322,7 +5322,7 @@
 - headword: "[kick] [out]"
   id: 453873
   uw: "202401809"
-  features: {LEMMA: kick out, BF: out, LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M16, FRA: Y39, SEM: SOV}
+  features: {LEMMA: kick out, BF: out, LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M16, FRA: Y39, SEM: SOC}
   lang: eng
   frequency: 7
   priority: 0
@@ -5330,7 +5330,7 @@
 - headword: "[kick] [out]"
   id: 453874
   uw: "202501738"
-  features: {LEMMA: kick out, BF: out, LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M16, FRA: Y39, SEM: SOV}
+  features: {LEMMA: kick out, BF: out, LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M16, FRA: Y39, SEM: SOC}
   lang: eng
   frequency: 7
   priority: 0
@@ -5362,7 +5362,7 @@
 - headword: "[kick] [upstairs]"
   id: 453620
   uw: "202397637"
-  features: {LEMMA: kick upstairs, BF: upstairs, LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M16, FRA: Y39, SEM: SOV}
+  features: {LEMMA: kick upstairs, BF: upstairs, LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M16, FRA: Y39, SEM: SOC}
   lang: eng
   frequency: 9
   priority: 0
@@ -5602,7 +5602,7 @@
 - headword: "[knuckle] [down]"
   id: 453039
   uw: "202421199"
-  features: {LEMMA: knuckle down, BF: down, LEX: V, POS: VER, LST: MTW, TRA: NTST, PAR: M17, FRA: Y32, SEM: SOV}
+  features: {LEMMA: knuckle down, BF: down, LEX: V, POS: VER, LST: MTW, TRA: NTST, PAR: M17, FRA: Y32, SEM: SOC}
   lang: eng
   frequency: 2
   priority: 0
@@ -9490,7 +9490,7 @@
 - headword: keenness
   id: 341536
   uw: "104705324"
-  features: {LEMMA: keenness, BF: keenness, LEX: N, POS: NOU, LST: WRD, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATT}
+  features: {LEMMA: keenness, BF: keenness, LEX: N, POS: NOU, LST: WRD, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATR}
   lang: eng
   frequency: 1
   priority: 0
@@ -9514,7 +9514,7 @@
 - headword: keenness
   id: 369441
   uw: "104705324"
-  features: {LEMMA: keenness, BF: keenness, LEX: N, POS: NOU, MOR: STE, LST: WRD, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATT}
+  features: {LEMMA: keenness, BF: keenness, LEX: N, POS: NOU, MOR: STE, LST: WRD, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATR}
   lang: eng
   frequency: 1
   priority: 0
@@ -9602,7 +9602,7 @@
 - headword: keep
   id: 453053
   uw: "202422663"
-  features: {LEMMA: keep, BF: keep, LEX: V, POS: VER, LST: WRD, TRA: TSTD, PAR: M22, FRA: Y39, FLX: "PAS:=\"kept\";PTP:=\"kept\";", SEM: SOV}
+  features: {LEMMA: keep, BF: keep, LEX: V, POS: VER, LST: WRD, TRA: TSTD, PAR: M22, FRA: Y39, FLX: "PAS:=\"kept\";PTP:=\"kept\";", SEM: SOC}
   lang: eng
   frequency: 15
   priority: 22
@@ -9610,7 +9610,7 @@
 - headword: keep
   id: 454517
   uw: "202450505"
-  features: {LEMMA: keep, BF: keep, LEX: V, POS: VER, LST: WRD, TRA: TSTD, PAR: M22, FRA: Y50, FLX: "PAS:=\"kept\";PTP:=\"kept\";", SEM: SOV}
+  features: {LEMMA: keep, BF: keep, LEX: V, POS: VER, LST: WRD, TRA: TSTD, PAR: M22, FRA: Y50, FLX: "PAS:=\"kept\";PTP:=\"kept\";", SEM: SOC}
   lang: eng
   frequency: 63
   priority: 22
@@ -9698,7 +9698,7 @@
 - headword: keep
   id: 456125
   uw: "202578510"
-  features: {LEMMA: keep, BF: keep, LEX: V, POS: VER, LST: WRD, TRA: TST, PAR: M22, FRA: Y38, FLX: "PAS:=\"kept\";PTP:=\"kept\";", SEM: SOV}
+  features: {LEMMA: keep, BF: keep, LEX: V, POS: VER, LST: WRD, TRA: TST, PAR: M22, FRA: Y38, FLX: "PAS:=\"kept\";PTP:=\"kept\";", SEM: SOC}
   lang: eng
   frequency: 17
   priority: 22
@@ -9706,7 +9706,7 @@
 - headword: keep
   id: 456126
   uw: "202578872"
-  features: {LEMMA: keep, BF: keep, LEX: V, POS: VER, LST: WRD, TRA: TST, PAR: M22, FRA: Y38, FLX: "PAS:=\"kept\";PTP:=\"kept\";", SEM: SOV}
+  features: {LEMMA: keep, BF: keep, LEX: V, POS: VER, LST: WRD, TRA: TST, PAR: M22, FRA: Y38, FLX: "PAS:=\"kept\";PTP:=\"kept\";", SEM: SOC}
   lang: eng
   frequency: 11
   priority: 22
@@ -9746,7 +9746,7 @@
 - headword: keep
   id: 457849
   uw: "202410175"
-  features: {LEMMA: keep, BF: keep, LEX: V, POS: VER, LST: WRD, TRA: TST, PAR: M22, FRA: Y39, FLX: "PAS:=\"kept\";PTP:=\"kept\";", SEM: SOV}
+  features: {LEMMA: keep, BF: keep, LEX: V, POS: VER, LST: WRD, TRA: TST, PAR: M22, FRA: Y39, FLX: "PAS:=\"kept\";PTP:=\"kept\";", SEM: SOC}
   lang: eng
   frequency: 8
   priority: 22
@@ -9802,7 +9802,7 @@
 - headword: keep
   id: 631834
   uw: "202422663"
-  features: {LEMMA: keep, BF: keep, LEX: V, POS: VER, MOR: ROO, LST: WRD, MOO: INF, TRA: TSTD, PAR: M22, FRA: Y39, SEM: SOV}
+  features: {LEMMA: keep, BF: keep, LEX: V, POS: VER, MOR: ROO, LST: WRD, MOO: INF, TRA: TSTD, PAR: M22, FRA: Y39, SEM: SOC}
   lang: eng
   frequency: 15
   priority: 22
@@ -9810,7 +9810,7 @@
 - headword: keep
   id: 639167
   uw: "202450505"
-  features: {LEMMA: keep, BF: keep, LEX: V, POS: VER, MOR: ROO, LST: WRD, MOO: INF, TRA: TSTD, PAR: M22, FRA: Y50, SEM: SOV}
+  features: {LEMMA: keep, BF: keep, LEX: V, POS: VER, MOR: ROO, LST: WRD, MOO: INF, TRA: TSTD, PAR: M22, FRA: Y50, SEM: SOC}
   lang: eng
   frequency: 63
   priority: 22
@@ -9898,7 +9898,7 @@
 - headword: keep
   id: 647176
   uw: "202578510"
-  features: {LEMMA: keep, BF: keep, LEX: V, POS: VER, MOR: ROO, LST: WRD, MOO: INF, TRA: TST, PAR: M22, FRA: Y38, SEM: SOV}
+  features: {LEMMA: keep, BF: keep, LEX: V, POS: VER, MOR: ROO, LST: WRD, MOO: INF, TRA: TST, PAR: M22, FRA: Y38, SEM: SOC}
   lang: eng
   frequency: 17
   priority: 22
@@ -9906,7 +9906,7 @@
 - headword: keep
   id: 647177
   uw: "202578872"
-  features: {LEMMA: keep, BF: keep, LEX: V, POS: VER, MOR: ROO, LST: WRD, MOO: INF, TRA: TST, PAR: M22, FRA: Y38, SEM: SOV}
+  features: {LEMMA: keep, BF: keep, LEX: V, POS: VER, MOR: ROO, LST: WRD, MOO: INF, TRA: TST, PAR: M22, FRA: Y38, SEM: SOC}
   lang: eng
   frequency: 11
   priority: 22
@@ -9946,7 +9946,7 @@
 - headword: keep
   id: 655913
   uw: "202410175"
-  features: {LEMMA: keep, BF: keep, LEX: V, POS: VER, MOR: ROO, LST: WRD, MOO: INF, TRA: TST, PAR: M22, FRA: Y39, SEM: SOV}
+  features: {LEMMA: keep, BF: keep, LEX: V, POS: VER, MOR: ROO, LST: WRD, MOO: INF, TRA: TST, PAR: M22, FRA: Y39, SEM: SOC}
   lang: eng
   frequency: 8
   priority: 22
@@ -9978,7 +9978,7 @@
 - headword: keep an eye
   id: 633624
   uw: "202455407"
-  features: {LEMMA: keep an eye on, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: INF, TRA: TST, PAR: M22, FRA: Y49, SEM: SOV}
+  features: {LEMMA: keep an eye on, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: INF, TRA: TST, PAR: M22, FRA: Y49, SEM: SOC}
   lang: eng
   frequency: 74
   priority: 0
@@ -9994,7 +9994,7 @@
 - headword: keep away
   id: 639172
   uw: "202451113"
-  features: {LEMMA: keep away, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: INF, TRA: TSTD, PAR: M22, FRA: Y46, SEM: SOV}
+  features: {LEMMA: keep away, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: INF, TRA: TSTD, PAR: M22, FRA: Y46, SEM: SOC}
   lang: eng
   frequency: 3
   priority: 0
@@ -10018,7 +10018,7 @@
 - headword: keep back
   id: 631839
   uw: "202422663"
-  features: {LEMMA: keep back, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: INF, TRA: TSTD, PAR: M22, FRA: Y39, SEM: SOV}
+  features: {LEMMA: keep back, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: INF, TRA: TSTD, PAR: M22, FRA: Y39, SEM: SOC}
   lang: eng
   frequency: 15
   priority: 0
@@ -10058,7 +10058,7 @@
 - headword: keep down
   id: 636340
   uw: "202424128"
-  features: {LEMMA: keep down, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: INF, TRA: TST, PAR: M22, FRA: Y38, SEM: SOV}
+  features: {LEMMA: keep down, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: INF, TRA: TST, PAR: M22, FRA: Y38, SEM: SOC}
   lang: eng
   frequency: 7
   priority: 0
@@ -10122,7 +10122,7 @@
 - headword: keep guard
   id: 635369
   uw: "202455159"
-  features: {LEMMA: keep guard, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: INF, TRA: TSTI, PAR: M22, FRA: Y32, SEM: SOV}
+  features: {LEMMA: keep guard, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: INF, TRA: TSTI, PAR: M22, FRA: Y32, SEM: SOC}
   lang: eng
   frequency: 6
   priority: 0
@@ -10138,7 +10138,7 @@
 - headword: keep in
   id: 641222
   uw: "202496388"
-  features: {LEMMA: keep in, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: INF, TRA: TST, PAR: M22, FRA: Y38, SEM: SOV}
+  features: {LEMMA: keep in, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: INF, TRA: TST, PAR: M22, FRA: Y38, SEM: SOC}
   lang: eng
   frequency: 3
   priority: 0
@@ -10170,7 +10170,7 @@
 - headword: keep nose to the grindstone
   id: 634909
   uw: "202415573"
-  features: {LEMMA: keep <person>'s nose to the grindstone, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: INF, TRA: TSTI, PAR: M22, FRA: Y32, SEM: SOV}
+  features: {LEMMA: keep <person>'s nose to the grindstone, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: INF, TRA: TSTI, PAR: M22, FRA: Y32, SEM: SOC}
   lang: eng
   frequency: 2
   priority: 0
@@ -10202,7 +10202,7 @@
 - headword: keep on
   id: 631144
   uw: "202410175"
-  features: {LEMMA: keep on, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: INF, TRA: TST, PAR: M22, FRA: Y39, SEM: SOV}
+  features: {LEMMA: keep on, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: INF, TRA: TST, PAR: M22, FRA: Y39, SEM: SOC}
   lang: eng
   frequency: 8
   priority: 0
@@ -10226,7 +10226,7 @@
 - headword: keep out
   id: 639097
   uw: "202449340"
-  features: {LEMMA: keep out, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: INF, TRA: TST, PAR: M22, FRA: Y39, SEM: SOV}
+  features: {LEMMA: keep out, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: INF, TRA: TST, PAR: M22, FRA: Y39, SEM: SOC}
   lang: eng
   frequency: 15
   priority: 0
@@ -10250,7 +10250,7 @@
 - headword: keep shoulder to the wheel
   id: 634914
   uw: "202415573"
-  features: {LEMMA: keep <person>'s shoulder to the wheel, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: INF, TRA: TSTI, PAR: M22, FRA: Y32, SEM: SOV}
+  features: {LEMMA: keep <person>'s shoulder to the wheel, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: INF, TRA: TSTI, PAR: M22, FRA: Y32, SEM: SOC}
   lang: eng
   frequency: 2
   priority: 0
@@ -10266,7 +10266,7 @@
 - headword: keep tabs
   id: 633629
   uw: "202455861"
-  features: {LEMMA: keep tabs on, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: INF, TRA: TST, PAR: M22, FRA: Y49, SEM: SOV}
+  features: {LEMMA: keep tabs on, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: INF, TRA: TST, PAR: M22, FRA: Y49, SEM: SOC}
   lang: eng
   frequency: 1
   priority: 0
@@ -10282,7 +10282,7 @@
 - headword: keep to
   id: 622575
   uw: "202371352"
-  features: {LEMMA: keep to oneself, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: INF, TRA: NTST, PAR: M22, FRA: Y32, SEM: SOV}
+  features: {LEMMA: keep to oneself, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: INF, TRA: NTST, PAR: M22, FRA: Y32, SEM: SOC}
   lang: eng
   frequency: 2
   priority: 0
@@ -10434,7 +10434,7 @@
 - headword: keeping
   id: 631835
   uw: "202422663"
-  features: {LEMMA: keep, BF: keep, LEX: V, POS: VER, MOR: ROO, LST: WRD, MOO: GER, TRA: TSTD, PAR: M22, FRA: Y39, SEM: SOV}
+  features: {LEMMA: keep, BF: keep, LEX: V, POS: VER, MOR: ROO, LST: WRD, MOO: GER, TRA: TSTD, PAR: M22, FRA: Y39, SEM: SOC}
   lang: eng
   frequency: 15
   priority: 22
@@ -10442,7 +10442,7 @@
 - headword: keeping
   id: 639168
   uw: "202450505"
-  features: {LEMMA: keep, BF: keep, LEX: V, POS: VER, MOR: ROO, LST: WRD, MOO: GER, TRA: TSTD, PAR: M22, FRA: Y50, SEM: SOV}
+  features: {LEMMA: keep, BF: keep, LEX: V, POS: VER, MOR: ROO, LST: WRD, MOO: GER, TRA: TSTD, PAR: M22, FRA: Y50, SEM: SOC}
   lang: eng
   frequency: 63
   priority: 22
@@ -10530,7 +10530,7 @@
 - headword: keeping
   id: 647190
   uw: "202578510"
-  features: {LEMMA: keep, BF: keep, LEX: V, POS: VER, MOR: ROO, LST: WRD, MOO: GER, TRA: TST, PAR: M22, FRA: Y38, SEM: SOV}
+  features: {LEMMA: keep, BF: keep, LEX: V, POS: VER, MOR: ROO, LST: WRD, MOO: GER, TRA: TST, PAR: M22, FRA: Y38, SEM: SOC}
   lang: eng
   frequency: 17
   priority: 22
@@ -10538,7 +10538,7 @@
 - headword: keeping
   id: 647191
   uw: "202578872"
-  features: {LEMMA: keep, BF: keep, LEX: V, POS: VER, MOR: ROO, LST: WRD, MOO: GER, TRA: TST, PAR: M22, FRA: Y38, SEM: SOV}
+  features: {LEMMA: keep, BF: keep, LEX: V, POS: VER, MOR: ROO, LST: WRD, MOO: GER, TRA: TST, PAR: M22, FRA: Y38, SEM: SOC}
   lang: eng
   frequency: 11
   priority: 22
@@ -10578,7 +10578,7 @@
 - headword: keeping
   id: 655916
   uw: "202410175"
-  features: {LEMMA: keep, BF: keep, LEX: V, POS: VER, MOR: ROO, LST: WRD, MOO: GER, TRA: TST, PAR: M22, FRA: Y39, SEM: SOV}
+  features: {LEMMA: keep, BF: keep, LEX: V, POS: VER, MOR: ROO, LST: WRD, MOO: GER, TRA: TST, PAR: M22, FRA: Y39, SEM: SOC}
   lang: eng
   frequency: 8
   priority: 22
@@ -10610,7 +10610,7 @@
 - headword: keeping an eye
   id: 633625
   uw: "202455407"
-  features: {LEMMA: keep an eye on, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: GER, TRA: TST, PAR: M22, FRA: Y49, SEM: SOV}
+  features: {LEMMA: keep an eye on, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: GER, TRA: TST, PAR: M22, FRA: Y49, SEM: SOC}
   lang: eng
   frequency: 74
   priority: 0
@@ -10626,7 +10626,7 @@
 - headword: keeping away
   id: 639173
   uw: "202451113"
-  features: {LEMMA: keep away, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: GER, TRA: TSTD, PAR: M22, FRA: Y46, SEM: SOV}
+  features: {LEMMA: keep away, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: GER, TRA: TSTD, PAR: M22, FRA: Y46, SEM: SOC}
   lang: eng
   frequency: 3
   priority: 0
@@ -10650,7 +10650,7 @@
 - headword: keeping back
   id: 631840
   uw: "202422663"
-  features: {LEMMA: keep back, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: GER, TRA: TSTD, PAR: M22, FRA: Y39, SEM: SOV}
+  features: {LEMMA: keep back, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: GER, TRA: TSTD, PAR: M22, FRA: Y39, SEM: SOC}
   lang: eng
   frequency: 15
   priority: 0
@@ -10690,7 +10690,7 @@
 - headword: keeping down
   id: 636343
   uw: "202424128"
-  features: {LEMMA: keep down, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: GER, TRA: TST, PAR: M22, FRA: Y38, SEM: SOV}
+  features: {LEMMA: keep down, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: GER, TRA: TST, PAR: M22, FRA: Y38, SEM: SOC}
   lang: eng
   frequency: 7
   priority: 0
@@ -10754,7 +10754,7 @@
 - headword: keeping guard
   id: 635370
   uw: "202455159"
-  features: {LEMMA: keep guard, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: GER, TRA: TSTI, PAR: M22, FRA: Y32, SEM: SOV}
+  features: {LEMMA: keep guard, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: GER, TRA: TSTI, PAR: M22, FRA: Y32, SEM: SOC}
   lang: eng
   frequency: 6
   priority: 0
@@ -10770,7 +10770,7 @@
 - headword: keeping in
   id: 641223
   uw: "202496388"
-  features: {LEMMA: keep in, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: GER, TRA: TST, PAR: M22, FRA: Y38, SEM: SOV}
+  features: {LEMMA: keep in, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: GER, TRA: TST, PAR: M22, FRA: Y38, SEM: SOC}
   lang: eng
   frequency: 3
   priority: 0
@@ -10802,7 +10802,7 @@
 - headword: keeping nose to the grindstone
   id: 634910
   uw: "202415573"
-  features: {LEMMA: keep <person>'s nose to the grindstone, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: GER, TRA: TSTI, PAR: M22, FRA: Y32, SEM: SOV}
+  features: {LEMMA: keep <person>'s nose to the grindstone, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: GER, TRA: TSTI, PAR: M22, FRA: Y32, SEM: SOC}
   lang: eng
   frequency: 2
   priority: 0
@@ -10834,7 +10834,7 @@
 - headword: keeping on
   id: 631145
   uw: "202410175"
-  features: {LEMMA: keep on, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: GER, TRA: TST, PAR: M22, FRA: Y39, SEM: SOV}
+  features: {LEMMA: keep on, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: GER, TRA: TST, PAR: M22, FRA: Y39, SEM: SOC}
   lang: eng
   frequency: 8
   priority: 0
@@ -10858,7 +10858,7 @@
 - headword: keeping out
   id: 639098
   uw: "202449340"
-  features: {LEMMA: keep out, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: GER, TRA: TST, PAR: M22, FRA: Y39, SEM: SOV}
+  features: {LEMMA: keep out, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: GER, TRA: TST, PAR: M22, FRA: Y39, SEM: SOC}
   lang: eng
   frequency: 15
   priority: 0
@@ -10882,7 +10882,7 @@
 - headword: keeping shoulder to the wheel
   id: 634915
   uw: "202415573"
-  features: {LEMMA: keep <person>'s shoulder to the wheel, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: GER, TRA: TSTI, PAR: M22, FRA: Y32, SEM: SOV}
+  features: {LEMMA: keep <person>'s shoulder to the wheel, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: GER, TRA: TSTI, PAR: M22, FRA: Y32, SEM: SOC}
   lang: eng
   frequency: 2
   priority: 0
@@ -10898,7 +10898,7 @@
 - headword: keeping tabs
   id: 633630
   uw: "202455861"
-  features: {LEMMA: keep tabs on, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: GER, TRA: TST, PAR: M22, FRA: Y49, SEM: SOV}
+  features: {LEMMA: keep tabs on, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: GER, TRA: TST, PAR: M22, FRA: Y49, SEM: SOC}
   lang: eng
   frequency: 1
   priority: 0
@@ -10914,7 +10914,7 @@
 - headword: keeping to
   id: 622576
   uw: "202371352"
-  features: {LEMMA: keep to oneself, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: GER, TRA: NTST, PAR: M22, FRA: Y32, SEM: SOV}
+  features: {LEMMA: keep to oneself, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: GER, TRA: NTST, PAR: M22, FRA: Y32, SEM: SOC}
   lang: eng
   frequency: 2
   priority: 0
@@ -11026,7 +11026,7 @@
 - headword: keeps
   id: 631836
   uw: "202422663"
-  features: {LEMMA: keep, BF: keep, LEX: V, POS: VER, MOR: ROO, LST: WRD, PER: 3PS, ATE: PRS, TRA: TSTD, PAR: M22, FRA: Y39, SEM: SOV}
+  features: {LEMMA: keep, BF: keep, LEX: V, POS: VER, MOR: ROO, LST: WRD, PER: 3PS, ATE: PRS, TRA: TSTD, PAR: M22, FRA: Y39, SEM: SOC}
   lang: eng
   frequency: 15
   priority: 22
@@ -11034,7 +11034,7 @@
 - headword: keeps
   id: 639169
   uw: "202450505"
-  features: {LEMMA: keep, BF: keep, LEX: V, POS: VER, MOR: ROO, LST: WRD, PER: 3PS, ATE: PRS, TRA: TSTD, PAR: M22, FRA: Y50, SEM: SOV}
+  features: {LEMMA: keep, BF: keep, LEX: V, POS: VER, MOR: ROO, LST: WRD, PER: 3PS, ATE: PRS, TRA: TSTD, PAR: M22, FRA: Y50, SEM: SOC}
   lang: eng
   frequency: 63
   priority: 22
@@ -11122,7 +11122,7 @@
 - headword: keeps
   id: 647204
   uw: "202578510"
-  features: {LEMMA: keep, BF: keep, LEX: V, POS: VER, MOR: ROO, LST: WRD, PER: 3PS, ATE: PRS, TRA: TST, PAR: M22, FRA: Y38, SEM: SOV}
+  features: {LEMMA: keep, BF: keep, LEX: V, POS: VER, MOR: ROO, LST: WRD, PER: 3PS, ATE: PRS, TRA: TST, PAR: M22, FRA: Y38, SEM: SOC}
   lang: eng
   frequency: 17
   priority: 22
@@ -11130,7 +11130,7 @@
 - headword: keeps
   id: 647205
   uw: "202578872"
-  features: {LEMMA: keep, BF: keep, LEX: V, POS: VER, MOR: ROO, LST: WRD, PER: 3PS, ATE: PRS, TRA: TST, PAR: M22, FRA: Y38, SEM: SOV}
+  features: {LEMMA: keep, BF: keep, LEX: V, POS: VER, MOR: ROO, LST: WRD, PER: 3PS, ATE: PRS, TRA: TST, PAR: M22, FRA: Y38, SEM: SOC}
   lang: eng
   frequency: 11
   priority: 22
@@ -11170,7 +11170,7 @@
 - headword: keeps
   id: 655919
   uw: "202410175"
-  features: {LEMMA: keep, BF: keep, LEX: V, POS: VER, MOR: ROO, LST: WRD, PER: 3PS, ATE: PRS, TRA: TST, PAR: M22, FRA: Y39, SEM: SOV}
+  features: {LEMMA: keep, BF: keep, LEX: V, POS: VER, MOR: ROO, LST: WRD, PER: 3PS, ATE: PRS, TRA: TST, PAR: M22, FRA: Y39, SEM: SOC}
   lang: eng
   frequency: 8
   priority: 22
@@ -11202,7 +11202,7 @@
 - headword: keeps an eye
   id: 633626
   uw: "202455407"
-  features: {LEMMA: keep an eye on, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, PER: 3PS, ATE: PRS, TRA: TST, PAR: M22, FRA: Y49, SEM: SOV}
+  features: {LEMMA: keep an eye on, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, PER: 3PS, ATE: PRS, TRA: TST, PAR: M22, FRA: Y49, SEM: SOC}
   lang: eng
   frequency: 74
   priority: 0
@@ -11218,7 +11218,7 @@
 - headword: keeps away
   id: 639174
   uw: "202451113"
-  features: {LEMMA: keep away, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, PER: 3PS, ATE: PRS, TRA: TSTD, PAR: M22, FRA: Y46, SEM: SOV}
+  features: {LEMMA: keep away, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, PER: 3PS, ATE: PRS, TRA: TSTD, PAR: M22, FRA: Y46, SEM: SOC}
   lang: eng
   frequency: 3
   priority: 0
@@ -11242,7 +11242,7 @@
 - headword: keeps back
   id: 631841
   uw: "202422663"
-  features: {LEMMA: keep back, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, PER: 3PS, ATE: PRS, TRA: TSTD, PAR: M22, FRA: Y39, SEM: SOV}
+  features: {LEMMA: keep back, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, PER: 3PS, ATE: PRS, TRA: TSTD, PAR: M22, FRA: Y39, SEM: SOC}
   lang: eng
   frequency: 15
   priority: 0
@@ -11282,7 +11282,7 @@
 - headword: keeps down
   id: 636346
   uw: "202424128"
-  features: {LEMMA: keep down, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, PER: 3PS, ATE: PRS, TRA: TST, PAR: M22, FRA: Y38, SEM: SOV}
+  features: {LEMMA: keep down, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, PER: 3PS, ATE: PRS, TRA: TST, PAR: M22, FRA: Y38, SEM: SOC}
   lang: eng
   frequency: 7
   priority: 0
@@ -11346,7 +11346,7 @@
 - headword: keeps guard
   id: 635371
   uw: "202455159"
-  features: {LEMMA: keep guard, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, PER: 3PS, ATE: PRS, TRA: TSTI, PAR: M22, FRA: Y32, SEM: SOV}
+  features: {LEMMA: keep guard, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, PER: 3PS, ATE: PRS, TRA: TSTI, PAR: M22, FRA: Y32, SEM: SOC}
   lang: eng
   frequency: 6
   priority: 0
@@ -11362,7 +11362,7 @@
 - headword: keeps in
   id: 641224
   uw: "202496388"
-  features: {LEMMA: keep in, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, PER: 3PS, ATE: PRS, TRA: TST, PAR: M22, FRA: Y38, SEM: SOV}
+  features: {LEMMA: keep in, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, PER: 3PS, ATE: PRS, TRA: TST, PAR: M22, FRA: Y38, SEM: SOC}
   lang: eng
   frequency: 3
   priority: 0
@@ -11394,7 +11394,7 @@
 - headword: keeps nose to the grindstone
   id: 634911
   uw: "202415573"
-  features: {LEMMA: keep <person>'s nose to the grindstone, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, PER: 3PS, ATE: PRS, TRA: TSTI, PAR: M22, FRA: Y32, SEM: SOV}
+  features: {LEMMA: keep <person>'s nose to the grindstone, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, PER: 3PS, ATE: PRS, TRA: TSTI, PAR: M22, FRA: Y32, SEM: SOC}
   lang: eng
   frequency: 2
   priority: 0
@@ -11426,7 +11426,7 @@
 - headword: keeps on
   id: 631146
   uw: "202410175"
-  features: {LEMMA: keep on, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, PER: 3PS, ATE: PRS, TRA: TST, PAR: M22, FRA: Y39, SEM: SOV}
+  features: {LEMMA: keep on, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, PER: 3PS, ATE: PRS, TRA: TST, PAR: M22, FRA: Y39, SEM: SOC}
   lang: eng
   frequency: 8
   priority: 0
@@ -11450,7 +11450,7 @@
 - headword: keeps out
   id: 639099
   uw: "202449340"
-  features: {LEMMA: keep out, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, PER: 3PS, ATE: PRS, TRA: TST, PAR: M22, FRA: Y39, SEM: SOV}
+  features: {LEMMA: keep out, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, PER: 3PS, ATE: PRS, TRA: TST, PAR: M22, FRA: Y39, SEM: SOC}
   lang: eng
   frequency: 15
   priority: 0
@@ -11474,7 +11474,7 @@
 - headword: keeps shoulder to the wheel
   id: 634916
   uw: "202415573"
-  features: {LEMMA: keep <person>'s shoulder to the wheel, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, PER: 3PS, ATE: PRS, TRA: TSTI, PAR: M22, FRA: Y32, SEM: SOV}
+  features: {LEMMA: keep <person>'s shoulder to the wheel, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, PER: 3PS, ATE: PRS, TRA: TSTI, PAR: M22, FRA: Y32, SEM: SOC}
   lang: eng
   frequency: 2
   priority: 0
@@ -11490,7 +11490,7 @@
 - headword: keeps tabs
   id: 633631
   uw: "202455861"
-  features: {LEMMA: keep tabs on, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, PER: 3PS, ATE: PRS, TRA: TST, PAR: M22, FRA: Y49, SEM: SOV}
+  features: {LEMMA: keep tabs on, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, PER: 3PS, ATE: PRS, TRA: TST, PAR: M22, FRA: Y49, SEM: SOC}
   lang: eng
   frequency: 1
   priority: 0
@@ -11506,7 +11506,7 @@
 - headword: keeps to
   id: 622577
   uw: "202371352"
-  features: {LEMMA: keep to oneself, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, PER: 3PS, ATE: PRS, TRA: NTST, PAR: M22, FRA: Y32, SEM: SOV}
+  features: {LEMMA: keep to oneself, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, PER: 3PS, ATE: PRS, TRA: NTST, PAR: M22, FRA: Y32, SEM: SOC}
   lang: eng
   frequency: 2
   priority: 0
@@ -12082,7 +12082,7 @@
 - headword: kennel
   id: 453461
   uw: "202459799"
-  features: {LEMMA: kennel, BF: kennel, LEX: V, POS: VER, LST: WRD, TRA: TST, PAR: M16, FRA: Y38, SEM: SOV}
+  features: {LEMMA: kennel, BF: kennel, LEX: V, POS: VER, LST: WRD, TRA: TST, PAR: M16, FRA: Y38, SEM: SOC}
   lang: eng
   frequency: 1
   priority: 0
@@ -12090,7 +12090,7 @@
 - headword: kennel
   id: 633874
   uw: "202459799"
-  features: {LEMMA: kennel, BF: kennel, LEX: V, POS: VER, LST: WRD, MOO: INF, TRA: TST, PAR: M16, FRA: Y38, SEM: SOV}
+  features: {LEMMA: kennel, BF: kennel, LEX: V, POS: VER, LST: WRD, MOO: INF, TRA: TST, PAR: M16, FRA: Y38, SEM: SOC}
   lang: eng
   frequency: 1
   priority: 0
@@ -12098,7 +12098,7 @@
 - headword: kenneled
   id: 633875
   uw: "202459799"
-  features: {LEMMA: kennel, BF: kennel, LEX: V, POS: VER, LST: WRD, ATE: PAS, TRA: TST, PAR: M16, FRA: Y38, SEM: SOV}
+  features: {LEMMA: kennel, BF: kennel, LEX: V, POS: VER, LST: WRD, ATE: PAS, TRA: TST, PAR: M16, FRA: Y38, SEM: SOC}
   lang: eng
   frequency: 1
   priority: 0
@@ -12106,7 +12106,7 @@
 - headword: kenneled
   id: 633876
   uw: "202459799"
-  features: {LEMMA: kennel, BF: kennel, LEX: V, POS: VER, LST: WRD, MOO: PTP, TRA: TST, PAR: M16, FRA: Y38, SEM: SOV}
+  features: {LEMMA: kennel, BF: kennel, LEX: V, POS: VER, LST: WRD, MOO: PTP, TRA: TST, PAR: M16, FRA: Y38, SEM: SOC}
   lang: eng
   frequency: 1
   priority: 0
@@ -12114,7 +12114,7 @@
 - headword: kenneling
   id: 633878
   uw: "202459799"
-  features: {LEMMA: kennel, BF: kennel, LEX: V, POS: VER, LST: WRD, MOO: GER, TRA: TST, PAR: M16, FRA: Y38, SEM: SOV}
+  features: {LEMMA: kennel, BF: kennel, LEX: V, POS: VER, LST: WRD, MOO: GER, TRA: TST, PAR: M16, FRA: Y38, SEM: SOC}
   lang: eng
   frequency: 1
   priority: 0
@@ -12130,7 +12130,7 @@
 - headword: kennels
   id: 633877
   uw: "202459799"
-  features: {LEMMA: kennel, BF: kennel, LEX: V, POS: VER, LST: WRD, PER: 3PS, ATE: PRS, TRA: TST, PAR: M16, FRA: Y38, SEM: SOV}
+  features: {LEMMA: kennel, BF: kennel, LEX: V, POS: VER, LST: WRD, PER: 3PS, ATE: PRS, TRA: TST, PAR: M16, FRA: Y38, SEM: SOC}
   lang: eng
   frequency: 1
   priority: 0
@@ -12274,7 +12274,7 @@
 - headword: kept
   id: 631837
   uw: "202422663"
-  features: {LEMMA: keep, BF: keep, LEX: V, POS: VER, MOR: ROO, LST: WRD, ATE: PAS, TRA: TSTD, PAR: M22, FRA: Y39, SEM: SOV}
+  features: {LEMMA: keep, BF: keep, LEX: V, POS: VER, MOR: ROO, LST: WRD, ATE: PAS, TRA: TSTD, PAR: M22, FRA: Y39, SEM: SOC}
   lang: eng
   frequency: 15
   priority: 22
@@ -12282,7 +12282,7 @@
 - headword: kept
   id: 631838
   uw: "202422663"
-  features: {LEMMA: keep, BF: keep, LEX: V, POS: VER, MOR: ROO, LST: WRD, MOO: PTP, TRA: TSTD, PAR: M22, FRA: Y39, SEM: SOV}
+  features: {LEMMA: keep, BF: keep, LEX: V, POS: VER, MOR: ROO, LST: WRD, MOO: PTP, TRA: TSTD, PAR: M22, FRA: Y39, SEM: SOC}
   lang: eng
   frequency: 15
   priority: 22
@@ -12290,7 +12290,7 @@
 - headword: kept
   id: 639170
   uw: "202450505"
-  features: {LEMMA: keep, BF: keep, LEX: V, POS: VER, MOR: ROO, LST: WRD, ATE: PAS, TRA: TSTD, PAR: M22, FRA: Y50, SEM: SOV}
+  features: {LEMMA: keep, BF: keep, LEX: V, POS: VER, MOR: ROO, LST: WRD, ATE: PAS, TRA: TSTD, PAR: M22, FRA: Y50, SEM: SOC}
   lang: eng
   frequency: 63
   priority: 22
@@ -12298,7 +12298,7 @@
 - headword: kept
   id: 639171
   uw: "202450505"
-  features: {LEMMA: keep, BF: keep, LEX: V, POS: VER, MOR: ROO, LST: WRD, MOO: PTP, TRA: TSTD, PAR: M22, FRA: Y50, SEM: SOV}
+  features: {LEMMA: keep, BF: keep, LEX: V, POS: VER, MOR: ROO, LST: WRD, MOO: PTP, TRA: TSTD, PAR: M22, FRA: Y50, SEM: SOC}
   lang: eng
   frequency: 63
   priority: 22
@@ -12386,7 +12386,7 @@
 - headword: kept
   id: 647218
   uw: "202578510"
-  features: {LEMMA: keep, BF: keep, LEX: V, POS: VER, MOR: ROO, LST: WRD, ATE: PAS, TRA: TST, PAR: M22, FRA: Y38, SEM: SOV}
+  features: {LEMMA: keep, BF: keep, LEX: V, POS: VER, MOR: ROO, LST: WRD, ATE: PAS, TRA: TST, PAR: M22, FRA: Y38, SEM: SOC}
   lang: eng
   frequency: 17
   priority: 22
@@ -12394,7 +12394,7 @@
 - headword: kept
   id: 647219
   uw: "202578872"
-  features: {LEMMA: keep, BF: keep, LEX: V, POS: VER, MOR: ROO, LST: WRD, ATE: PAS, TRA: TST, PAR: M22, FRA: Y38, SEM: SOV}
+  features: {LEMMA: keep, BF: keep, LEX: V, POS: VER, MOR: ROO, LST: WRD, ATE: PAS, TRA: TST, PAR: M22, FRA: Y38, SEM: SOC}
   lang: eng
   frequency: 11
   priority: 22
@@ -12498,7 +12498,7 @@
 - headword: kept
   id: 647232
   uw: "202578510"
-  features: {LEMMA: keep, BF: keep, LEX: V, POS: VER, MOR: ROO, LST: WRD, MOO: PTP, TRA: TST, PAR: M22, FRA: Y38, SEM: SOV}
+  features: {LEMMA: keep, BF: keep, LEX: V, POS: VER, MOR: ROO, LST: WRD, MOO: PTP, TRA: TST, PAR: M22, FRA: Y38, SEM: SOC}
   lang: eng
   frequency: 17
   priority: 22
@@ -12506,7 +12506,7 @@
 - headword: kept
   id: 647233
   uw: "202578872"
-  features: {LEMMA: keep, BF: keep, LEX: V, POS: VER, MOR: ROO, LST: WRD, MOO: PTP, TRA: TST, PAR: M22, FRA: Y38, SEM: SOV}
+  features: {LEMMA: keep, BF: keep, LEX: V, POS: VER, MOR: ROO, LST: WRD, MOO: PTP, TRA: TST, PAR: M22, FRA: Y38, SEM: SOC}
   lang: eng
   frequency: 11
   priority: 22
@@ -12554,7 +12554,7 @@
 - headword: kept
   id: 655922
   uw: "202410175"
-  features: {LEMMA: keep, BF: keep, LEX: V, POS: VER, MOR: ROO, LST: WRD, ATE: PAS, TRA: TST, PAR: M22, FRA: Y39, SEM: SOV}
+  features: {LEMMA: keep, BF: keep, LEX: V, POS: VER, MOR: ROO, LST: WRD, ATE: PAS, TRA: TST, PAR: M22, FRA: Y39, SEM: SOC}
   lang: eng
   frequency: 8
   priority: 22
@@ -12578,7 +12578,7 @@
 - headword: kept
   id: 655925
   uw: "202410175"
-  features: {LEMMA: keep, BF: keep, LEX: V, POS: VER, MOR: ROO, LST: WRD, MOO: PTP, TRA: TST, PAR: M22, FRA: Y39, SEM: SOV}
+  features: {LEMMA: keep, BF: keep, LEX: V, POS: VER, MOR: ROO, LST: WRD, MOO: PTP, TRA: TST, PAR: M22, FRA: Y39, SEM: SOC}
   lang: eng
   frequency: 8
   priority: 22
@@ -12626,7 +12626,7 @@
 - headword: kept an eye
   id: 633627
   uw: "202455407"
-  features: {LEMMA: keep an eye on, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, ATE: PAS, TRA: TST, PAR: M22, FRA: Y49, SEM: SOV}
+  features: {LEMMA: keep an eye on, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, ATE: PAS, TRA: TST, PAR: M22, FRA: Y49, SEM: SOC}
   lang: eng
   frequency: 74
   priority: 0
@@ -12634,7 +12634,7 @@
 - headword: kept an eye
   id: 633628
   uw: "202455407"
-  features: {LEMMA: keep an eye on, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: PTP, TRA: TST, PAR: M22, FRA: Y49, SEM: SOV}
+  features: {LEMMA: keep an eye on, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: PTP, TRA: TST, PAR: M22, FRA: Y49, SEM: SOC}
   lang: eng
   frequency: 74
   priority: 0
@@ -12658,7 +12658,7 @@
 - headword: kept away
   id: 639175
   uw: "202451113"
-  features: {LEMMA: keep away, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, ATE: PAS, TRA: TSTD, PAR: M22, FRA: Y46, SEM: SOV}
+  features: {LEMMA: keep away, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, ATE: PAS, TRA: TSTD, PAR: M22, FRA: Y46, SEM: SOC}
   lang: eng
   frequency: 3
   priority: 0
@@ -12666,7 +12666,7 @@
 - headword: kept away
   id: 639176
   uw: "202451113"
-  features: {LEMMA: keep away, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: PTP, TRA: TSTD, PAR: M22, FRA: Y46, SEM: SOV}
+  features: {LEMMA: keep away, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: PTP, TRA: TSTD, PAR: M22, FRA: Y46, SEM: SOC}
   lang: eng
   frequency: 3
   priority: 0
@@ -12706,7 +12706,7 @@
 - headword: kept back
   id: 631842
   uw: "202422663"
-  features: {LEMMA: keep back, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, ATE: PAS, TRA: TSTD, PAR: M22, FRA: Y39, SEM: SOV}
+  features: {LEMMA: keep back, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, ATE: PAS, TRA: TSTD, PAR: M22, FRA: Y39, SEM: SOC}
   lang: eng
   frequency: 15
   priority: 0
@@ -12714,7 +12714,7 @@
 - headword: kept back
   id: 631843
   uw: "202422663"
-  features: {LEMMA: keep back, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: PTP, TRA: TSTD, PAR: M22, FRA: Y39, SEM: SOV}
+  features: {LEMMA: keep back, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: PTP, TRA: TSTD, PAR: M22, FRA: Y39, SEM: SOC}
   lang: eng
   frequency: 15
   priority: 0
@@ -12770,7 +12770,7 @@
 - headword: kept down
   id: 636349
   uw: "202424128"
-  features: {LEMMA: keep down, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, ATE: PAS, TRA: TST, PAR: M22, FRA: Y38, SEM: SOV}
+  features: {LEMMA: keep down, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, ATE: PAS, TRA: TST, PAR: M22, FRA: Y38, SEM: SOC}
   lang: eng
   frequency: 7
   priority: 0
@@ -12794,7 +12794,7 @@
 - headword: kept down
   id: 636352
   uw: "202424128"
-  features: {LEMMA: keep down, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: PTP, TRA: TST, PAR: M22, FRA: Y38, SEM: SOV}
+  features: {LEMMA: keep down, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: PTP, TRA: TST, PAR: M22, FRA: Y38, SEM: SOC}
   lang: eng
   frequency: 7
   priority: 0
@@ -12914,7 +12914,7 @@
 - headword: kept guard
   id: 635372
   uw: "202455159"
-  features: {LEMMA: keep guard, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, ATE: PAS, TRA: TSTI, PAR: M22, FRA: Y32, SEM: SOV}
+  features: {LEMMA: keep guard, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, ATE: PAS, TRA: TSTI, PAR: M22, FRA: Y32, SEM: SOC}
   lang: eng
   frequency: 6
   priority: 0
@@ -12922,7 +12922,7 @@
 - headword: kept guard
   id: 635373
   uw: "202455159"
-  features: {LEMMA: keep guard, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: PTP, TRA: TSTI, PAR: M22, FRA: Y32, SEM: SOV}
+  features: {LEMMA: keep guard, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: PTP, TRA: TSTI, PAR: M22, FRA: Y32, SEM: SOC}
   lang: eng
   frequency: 6
   priority: 0
@@ -12946,7 +12946,7 @@
 - headword: kept in
   id: 641225
   uw: "202496388"
-  features: {LEMMA: keep in, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, ATE: PAS, TRA: TST, PAR: M22, FRA: Y38, SEM: SOV}
+  features: {LEMMA: keep in, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, ATE: PAS, TRA: TST, PAR: M22, FRA: Y38, SEM: SOC}
   lang: eng
   frequency: 3
   priority: 0
@@ -12954,7 +12954,7 @@
 - headword: kept in
   id: 641226
   uw: "202496388"
-  features: {LEMMA: keep in, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: PTP, TRA: TST, PAR: M22, FRA: Y38, SEM: SOV}
+  features: {LEMMA: keep in, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: PTP, TRA: TST, PAR: M22, FRA: Y38, SEM: SOC}
   lang: eng
   frequency: 3
   priority: 0
@@ -13010,7 +13010,7 @@
 - headword: kept nose to the grindstone
   id: 634912
   uw: "202415573"
-  features: {LEMMA: keep <person>'s nose to the grindstone, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, ATE: PAS, TRA: TSTI, PAR: M22, FRA: Y32, SEM: SOV}
+  features: {LEMMA: keep <person>'s nose to the grindstone, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, ATE: PAS, TRA: TSTI, PAR: M22, FRA: Y32, SEM: SOC}
   lang: eng
   frequency: 2
   priority: 0
@@ -13018,7 +13018,7 @@
 - headword: kept nose to the grindstone
   id: 634913
   uw: "202415573"
-  features: {LEMMA: keep <person>'s nose to the grindstone, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: PTP, TRA: TSTI, PAR: M22, FRA: Y32, SEM: SOV}
+  features: {LEMMA: keep <person>'s nose to the grindstone, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: PTP, TRA: TSTI, PAR: M22, FRA: Y32, SEM: SOC}
   lang: eng
   frequency: 2
   priority: 0
@@ -13074,7 +13074,7 @@
 - headword: kept on
   id: 631147
   uw: "202410175"
-  features: {LEMMA: keep on, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, ATE: PAS, TRA: TST, PAR: M22, FRA: Y39, SEM: SOV}
+  features: {LEMMA: keep on, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, ATE: PAS, TRA: TST, PAR: M22, FRA: Y39, SEM: SOC}
   lang: eng
   frequency: 8
   priority: 0
@@ -13082,7 +13082,7 @@
 - headword: kept on
   id: 631148
   uw: "202410175"
-  features: {LEMMA: keep on, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: PTP, TRA: TST, PAR: M22, FRA: Y39, SEM: SOV}
+  features: {LEMMA: keep on, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: PTP, TRA: TST, PAR: M22, FRA: Y39, SEM: SOC}
   lang: eng
   frequency: 8
   priority: 0
@@ -13122,7 +13122,7 @@
 - headword: kept out
   id: 639100
   uw: "202449340"
-  features: {LEMMA: keep out, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, ATE: PAS, TRA: TST, PAR: M22, FRA: Y39, SEM: SOV}
+  features: {LEMMA: keep out, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, ATE: PAS, TRA: TST, PAR: M22, FRA: Y39, SEM: SOC}
   lang: eng
   frequency: 15
   priority: 0
@@ -13130,7 +13130,7 @@
 - headword: kept out
   id: 639101
   uw: "202449340"
-  features: {LEMMA: keep out, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: PTP, TRA: TST, PAR: M22, FRA: Y39, SEM: SOV}
+  features: {LEMMA: keep out, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: PTP, TRA: TST, PAR: M22, FRA: Y39, SEM: SOC}
   lang: eng
   frequency: 15
   priority: 0
@@ -13170,7 +13170,7 @@
 - headword: kept shoulder to the wheel
   id: 634917
   uw: "202415573"
-  features: {LEMMA: keep <person>'s shoulder to the wheel, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, ATE: PAS, TRA: TSTI, PAR: M22, FRA: Y32, SEM: SOV}
+  features: {LEMMA: keep <person>'s shoulder to the wheel, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, ATE: PAS, TRA: TSTI, PAR: M22, FRA: Y32, SEM: SOC}
   lang: eng
   frequency: 2
   priority: 0
@@ -13178,7 +13178,7 @@
 - headword: kept shoulder to the wheel
   id: 634918
   uw: "202415573"
-  features: {LEMMA: keep <person>'s shoulder to the wheel, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: PTP, TRA: TSTI, PAR: M22, FRA: Y32, SEM: SOV}
+  features: {LEMMA: keep <person>'s shoulder to the wheel, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: PTP, TRA: TSTI, PAR: M22, FRA: Y32, SEM: SOC}
   lang: eng
   frequency: 2
   priority: 0
@@ -13202,7 +13202,7 @@
 - headword: kept tabs
   id: 633632
   uw: "202455861"
-  features: {LEMMA: keep tabs on, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, ATE: PAS, TRA: TST, PAR: M22, FRA: Y49, SEM: SOV}
+  features: {LEMMA: keep tabs on, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, ATE: PAS, TRA: TST, PAR: M22, FRA: Y49, SEM: SOC}
   lang: eng
   frequency: 1
   priority: 0
@@ -13210,7 +13210,7 @@
 - headword: kept tabs
   id: 633633
   uw: "202455861"
-  features: {LEMMA: keep tabs on, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: PTP, TRA: TST, PAR: M22, FRA: Y49, SEM: SOV}
+  features: {LEMMA: keep tabs on, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: PTP, TRA: TST, PAR: M22, FRA: Y49, SEM: SOC}
   lang: eng
   frequency: 1
   priority: 0
@@ -13234,7 +13234,7 @@
 - headword: kept to
   id: 622578
   uw: "202371352"
-  features: {LEMMA: keep to oneself, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, ATE: PAS, TRA: NTST, PAR: M22, FRA: Y32, SEM: SOV}
+  features: {LEMMA: keep to oneself, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, ATE: PAS, TRA: NTST, PAR: M22, FRA: Y32, SEM: SOC}
   lang: eng
   frequency: 2
   priority: 0
@@ -13242,7 +13242,7 @@
 - headword: kept to
   id: 622579
   uw: "202371352"
-  features: {LEMMA: keep to oneself, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: PTP, TRA: NTST, PAR: M22, FRA: Y32, SEM: SOV}
+  features: {LEMMA: keep to oneself, BF: keep, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: PTP, TRA: NTST, PAR: M22, FRA: Y32, SEM: SOC}
   lang: eng
   frequency: 2
   priority: 0
@@ -15586,7 +15586,7 @@
 - headword: key
   id: 413878
   uw: "104986147"
-  features: {LEMMA: key, BF: key, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M2, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATT}
+  features: {LEMMA: key, BF: key, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M2, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATR}
   lang: eng
   frequency: 3
   priority: 8
@@ -15746,7 +15746,7 @@
 - headword: key
   id: 500319
   uw: "104986147"
-  features: {LEMMA: key, BF: key, LEX: N, POS: NOU, MOR: ROO, LST: WRD, NUM: SNG, PAR: M2, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATT}
+  features: {LEMMA: key, BF: key, LEX: N, POS: NOU, MOR: ROO, LST: WRD, NUM: SNG, PAR: M2, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATR}
   lang: eng
   frequency: 3
   priority: 8
@@ -16802,7 +16802,7 @@
 - headword: keys
   id: 500332
   uw: "104986147"
-  features: {LEMMA: key, BF: key, LEX: N, POS: NOU, MOR: ROO, LST: WRD, NUM: PLR, PAR: M2, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATT}
+  features: {LEMMA: key, BF: key, LEX: N, POS: NOU, MOR: ROO, LST: WRD, NUM: PLR, PAR: M2, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATR}
   lang: eng
   frequency: 3
   priority: 8
@@ -17834,7 +17834,7 @@
 - headword: kibosh
   id: 455698
   uw: "202559752"
-  features: {LEMMA: kibosh, BF: kibosh, LEX: V, POS: VER, LST: WRD, TRA: TST, PAR: M19, FRA: Y38, SEM: SOV}
+  features: {LEMMA: kibosh, BF: kibosh, LEX: V, POS: VER, LST: WRD, TRA: TST, PAR: M19, FRA: Y38, SEM: SOC}
   lang: eng
   frequency: 31
   priority: 0
@@ -17842,7 +17842,7 @@
 - headword: kibosh
   id: 645072
   uw: "202559752"
-  features: {LEMMA: kibosh, BF: kibosh, LEX: V, POS: VER, LST: WRD, MOO: INF, TRA: TST, PAR: M19, FRA: Y38, SEM: SOV}
+  features: {LEMMA: kibosh, BF: kibosh, LEX: V, POS: VER, LST: WRD, MOO: INF, TRA: TST, PAR: M19, FRA: Y38, SEM: SOC}
   lang: eng
   frequency: 31
   priority: 0
@@ -17850,7 +17850,7 @@
 - headword: kiboshed
   id: 645073
   uw: "202559752"
-  features: {LEMMA: kibosh, BF: kibosh, LEX: V, POS: VER, LST: WRD, ATE: PAS, TRA: TST, PAR: M19, FRA: Y38, SEM: SOV}
+  features: {LEMMA: kibosh, BF: kibosh, LEX: V, POS: VER, LST: WRD, ATE: PAS, TRA: TST, PAR: M19, FRA: Y38, SEM: SOC}
   lang: eng
   frequency: 31
   priority: 0
@@ -17858,7 +17858,7 @@
 - headword: kiboshed
   id: 645074
   uw: "202559752"
-  features: {LEMMA: kibosh, BF: kibosh, LEX: V, POS: VER, LST: WRD, MOO: PTP, TRA: TST, PAR: M19, FRA: Y38, SEM: SOV}
+  features: {LEMMA: kibosh, BF: kibosh, LEX: V, POS: VER, LST: WRD, MOO: PTP, TRA: TST, PAR: M19, FRA: Y38, SEM: SOC}
   lang: eng
   frequency: 31
   priority: 0
@@ -17866,7 +17866,7 @@
 - headword: kiboshes
   id: 645075
   uw: "202559752"
-  features: {LEMMA: kibosh, BF: kibosh, LEX: V, POS: VER, LST: WRD, PER: 3PS, ATE: PRS, TRA: TST, PAR: M19, FRA: Y38, SEM: SOV}
+  features: {LEMMA: kibosh, BF: kibosh, LEX: V, POS: VER, LST: WRD, PER: 3PS, ATE: PRS, TRA: TST, PAR: M19, FRA: Y38, SEM: SOC}
   lang: eng
   frequency: 31
   priority: 0
@@ -17874,7 +17874,7 @@
 - headword: kiboshing
   id: 645076
   uw: "202559752"
-  features: {LEMMA: kibosh, BF: kibosh, LEX: V, POS: VER, LST: WRD, MOO: GER, TRA: TST, PAR: M19, FRA: Y38, SEM: SOV}
+  features: {LEMMA: kibosh, BF: kibosh, LEX: V, POS: VER, LST: WRD, MOO: GER, TRA: TST, PAR: M19, FRA: Y38, SEM: SOC}
   lang: eng
   frequency: 31
   priority: 0
@@ -18122,7 +18122,7 @@
 - headword: kick around
   id: 638512
   uw: "202516978"
-  features: {LEMMA: kick around, BF: kick, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: INF, TRA: TST, PAR: M16, FRA: Y39, SEM: SOV}
+  features: {LEMMA: kick around, BF: kick, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: INF, TRA: TST, PAR: M16, FRA: Y39, SEM: SOC}
   lang: eng
   frequency: 1
   priority: 0
@@ -18162,7 +18162,7 @@
 - headword: kick downstairs
   id: 631119
   uw: "202399331"
-  features: {LEMMA: kick downstairs, BF: kick, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: INF, TRA: TSTD, PAR: M16, FRA: Y39, SEM: SOV}
+  features: {LEMMA: kick downstairs, BF: kick, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: INF, TRA: TSTD, PAR: M16, FRA: Y39, SEM: SOC}
   lang: eng
   frequency: 4
   priority: 0
@@ -18218,7 +18218,7 @@
 - headword: kick off
   id: 634559
   uw: "202395782"
-  features: {LEMMA: kick off, BF: kick, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: INF, TRA: TST, PAR: M16, FRA: Y38, SEM: SOV}
+  features: {LEMMA: kick off, BF: kick, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: INF, TRA: TST, PAR: M16, FRA: Y38, SEM: SOC}
   lang: eng
   frequency: 4
   priority: 0
@@ -18226,7 +18226,7 @@
 - headword: kick out
   id: 635934
   uw: "202401809"
-  features: {LEMMA: kick out, BF: kick, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: INF, TRA: TST, PAR: M16, FRA: Y39, SEM: SOV}
+  features: {LEMMA: kick out, BF: kick, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: INF, TRA: TST, PAR: M16, FRA: Y39, SEM: SOC}
   lang: eng
   frequency: 7
   priority: 0
@@ -18234,7 +18234,7 @@
 - headword: kick out
   id: 635935
   uw: "202501738"
-  features: {LEMMA: kick out, BF: kick, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: INF, TRA: TST, PAR: M16, FRA: Y39, SEM: SOV}
+  features: {LEMMA: kick out, BF: kick, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: INF, TRA: TST, PAR: M16, FRA: Y39, SEM: SOC}
   lang: eng
   frequency: 7
   priority: 0
@@ -18386,7 +18386,7 @@
 - headword: kick upstairs
   id: 634669
   uw: "202397637"
-  features: {LEMMA: kick upstairs, BF: kick, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: INF, TRA: TST, PAR: M16, FRA: Y39, SEM: SOV}
+  features: {LEMMA: kick upstairs, BF: kick, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: INF, TRA: TST, PAR: M16, FRA: Y39, SEM: SOC}
   lang: eng
   frequency: 9
   priority: 0
@@ -18626,7 +18626,7 @@
 - headword: kicked around
   id: 638513
   uw: "202516978"
-  features: {LEMMA: kick around, BF: kick, LEX: V, POS: VER, MOR: STE, LST: MTW, ATE: PAS, TRA: TST, PAR: M16, FRA: Y39, SEM: SOV}
+  features: {LEMMA: kick around, BF: kick, LEX: V, POS: VER, MOR: STE, LST: MTW, ATE: PAS, TRA: TST, PAR: M16, FRA: Y39, SEM: SOC}
   lang: eng
   frequency: 1
   priority: 0
@@ -18634,7 +18634,7 @@
 - headword: kicked around
   id: 638514
   uw: "202516978"
-  features: {LEMMA: kick around, BF: kick, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: PTP, TRA: TST, PAR: M16, FRA: Y39, SEM: SOV}
+  features: {LEMMA: kick around, BF: kick, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: PTP, TRA: TST, PAR: M16, FRA: Y39, SEM: SOC}
   lang: eng
   frequency: 1
   priority: 0
@@ -18706,7 +18706,7 @@
 - headword: kicked downstairs
   id: 631120
   uw: "202399331"
-  features: {LEMMA: kick downstairs, BF: kick, LEX: V, POS: VER, MOR: STE, LST: MTW, ATE: PAS, TRA: TSTD, PAR: M16, FRA: Y39, SEM: SOV}
+  features: {LEMMA: kick downstairs, BF: kick, LEX: V, POS: VER, MOR: STE, LST: MTW, ATE: PAS, TRA: TSTD, PAR: M16, FRA: Y39, SEM: SOC}
   lang: eng
   frequency: 4
   priority: 0
@@ -18714,7 +18714,7 @@
 - headword: kicked downstairs
   id: 631121
   uw: "202399331"
-  features: {LEMMA: kick downstairs, BF: kick, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: PTP, TRA: TSTD, PAR: M16, FRA: Y39, SEM: SOV}
+  features: {LEMMA: kick downstairs, BF: kick, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: PTP, TRA: TSTD, PAR: M16, FRA: Y39, SEM: SOC}
   lang: eng
   frequency: 4
   priority: 0
@@ -18786,7 +18786,7 @@
 - headword: kicked off
   id: 634560
   uw: "202395782"
-  features: {LEMMA: kick off, BF: kick, LEX: V, POS: VER, MOR: STE, LST: MTW, ATE: PAS, TRA: TST, PAR: M16, FRA: Y38, SEM: SOV}
+  features: {LEMMA: kick off, BF: kick, LEX: V, POS: VER, MOR: STE, LST: MTW, ATE: PAS, TRA: TST, PAR: M16, FRA: Y38, SEM: SOC}
   lang: eng
   frequency: 4
   priority: 0
@@ -18794,7 +18794,7 @@
 - headword: kicked off
   id: 634561
   uw: "202395782"
-  features: {LEMMA: kick off, BF: kick, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: PTP, TRA: TST, PAR: M16, FRA: Y38, SEM: SOV}
+  features: {LEMMA: kick off, BF: kick, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: PTP, TRA: TST, PAR: M16, FRA: Y38, SEM: SOC}
   lang: eng
   frequency: 4
   priority: 0
@@ -18802,7 +18802,7 @@
 - headword: kicked out
   id: 635936
   uw: "202401809"
-  features: {LEMMA: kick out, BF: kick, LEX: V, POS: VER, MOR: STE, LST: MTW, ATE: PAS, TRA: TST, PAR: M16, FRA: Y39, SEM: SOV}
+  features: {LEMMA: kick out, BF: kick, LEX: V, POS: VER, MOR: STE, LST: MTW, ATE: PAS, TRA: TST, PAR: M16, FRA: Y39, SEM: SOC}
   lang: eng
   frequency: 7
   priority: 0
@@ -18810,7 +18810,7 @@
 - headword: kicked out
   id: 635937
   uw: "202501738"
-  features: {LEMMA: kick out, BF: kick, LEX: V, POS: VER, MOR: STE, LST: MTW, ATE: PAS, TRA: TST, PAR: M16, FRA: Y39, SEM: SOV}
+  features: {LEMMA: kick out, BF: kick, LEX: V, POS: VER, MOR: STE, LST: MTW, ATE: PAS, TRA: TST, PAR: M16, FRA: Y39, SEM: SOC}
   lang: eng
   frequency: 7
   priority: 0
@@ -18818,7 +18818,7 @@
 - headword: kicked out
   id: 635938
   uw: "202401809"
-  features: {LEMMA: kick out, BF: kick, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: PTP, TRA: TST, PAR: M16, FRA: Y39, SEM: SOV}
+  features: {LEMMA: kick out, BF: kick, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: PTP, TRA: TST, PAR: M16, FRA: Y39, SEM: SOC}
   lang: eng
   frequency: 7
   priority: 0
@@ -18826,7 +18826,7 @@
 - headword: kicked out
   id: 635939
   uw: "202501738"
-  features: {LEMMA: kick out, BF: kick, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: PTP, TRA: TST, PAR: M16, FRA: Y39, SEM: SOV}
+  features: {LEMMA: kick out, BF: kick, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: PTP, TRA: TST, PAR: M16, FRA: Y39, SEM: SOC}
   lang: eng
   frequency: 7
   priority: 0
@@ -18882,7 +18882,7 @@
 - headword: kicked upstairs
   id: 634670
   uw: "202397637"
-  features: {LEMMA: kick upstairs, BF: kick, LEX: V, POS: VER, MOR: STE, LST: MTW, ATE: PAS, TRA: TST, PAR: M16, FRA: Y39, SEM: SOV}
+  features: {LEMMA: kick upstairs, BF: kick, LEX: V, POS: VER, MOR: STE, LST: MTW, ATE: PAS, TRA: TST, PAR: M16, FRA: Y39, SEM: SOC}
   lang: eng
   frequency: 9
   priority: 0
@@ -18890,7 +18890,7 @@
 - headword: kicked upstairs
   id: 634671
   uw: "202397637"
-  features: {LEMMA: kick upstairs, BF: kick, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: PTP, TRA: TST, PAR: M16, FRA: Y39, SEM: SOV}
+  features: {LEMMA: kick upstairs, BF: kick, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: PTP, TRA: TST, PAR: M16, FRA: Y39, SEM: SOC}
   lang: eng
   frequency: 9
   priority: 0
@@ -19034,7 +19034,7 @@
 - headword: kicking around
   id: 638516
   uw: "202516978"
-  features: {LEMMA: kick around, BF: kick, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: GER, TRA: TST, PAR: M16, FRA: Y39, SEM: SOV}
+  features: {LEMMA: kick around, BF: kick, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: GER, TRA: TST, PAR: M16, FRA: Y39, SEM: SOC}
   lang: eng
   frequency: 1
   priority: 0
@@ -19074,7 +19074,7 @@
 - headword: kicking downstairs
   id: 631123
   uw: "202399331"
-  features: {LEMMA: kick downstairs, BF: kick, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: GER, TRA: TSTD, PAR: M16, FRA: Y39, SEM: SOV}
+  features: {LEMMA: kick downstairs, BF: kick, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: GER, TRA: TSTD, PAR: M16, FRA: Y39, SEM: SOC}
   lang: eng
   frequency: 4
   priority: 0
@@ -19114,7 +19114,7 @@
 - headword: kicking off
   id: 634563
   uw: "202395782"
-  features: {LEMMA: kick off, BF: kick, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: GER, TRA: TST, PAR: M16, FRA: Y38, SEM: SOV}
+  features: {LEMMA: kick off, BF: kick, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: GER, TRA: TST, PAR: M16, FRA: Y38, SEM: SOC}
   lang: eng
   frequency: 4
   priority: 0
@@ -19122,7 +19122,7 @@
 - headword: kicking out
   id: 635942
   uw: "202401809"
-  features: {LEMMA: kick out, BF: kick, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: GER, TRA: TST, PAR: M16, FRA: Y39, SEM: SOV}
+  features: {LEMMA: kick out, BF: kick, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: GER, TRA: TST, PAR: M16, FRA: Y39, SEM: SOC}
   lang: eng
   frequency: 7
   priority: 0
@@ -19130,7 +19130,7 @@
 - headword: kicking out
   id: 635943
   uw: "202501738"
-  features: {LEMMA: kick out, BF: kick, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: GER, TRA: TST, PAR: M16, FRA: Y39, SEM: SOV}
+  features: {LEMMA: kick out, BF: kick, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: GER, TRA: TST, PAR: M16, FRA: Y39, SEM: SOC}
   lang: eng
   frequency: 7
   priority: 0
@@ -19162,7 +19162,7 @@
 - headword: kicking upstairs
   id: 634673
   uw: "202397637"
-  features: {LEMMA: kick upstairs, BF: kick, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: GER, TRA: TST, PAR: M16, FRA: Y39, SEM: SOV}
+  features: {LEMMA: kick upstairs, BF: kick, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: GER, TRA: TST, PAR: M16, FRA: Y39, SEM: SOC}
   lang: eng
   frequency: 9
   priority: 0
@@ -19386,7 +19386,7 @@
 - headword: kicks around
   id: 638515
   uw: "202516978"
-  features: {LEMMA: kick around, BF: kick, LEX: V, POS: VER, MOR: STE, LST: MTW, PER: 3PS, ATE: PRS, TRA: TST, PAR: M16, FRA: Y39, SEM: SOV}
+  features: {LEMMA: kick around, BF: kick, LEX: V, POS: VER, MOR: STE, LST: MTW, PER: 3PS, ATE: PRS, TRA: TST, PAR: M16, FRA: Y39, SEM: SOC}
   lang: eng
   frequency: 1
   priority: 0
@@ -19426,7 +19426,7 @@
 - headword: kicks downstairs
   id: 631122
   uw: "202399331"
-  features: {LEMMA: kick downstairs, BF: kick, LEX: V, POS: VER, MOR: STE, LST: MTW, PER: 3PS, ATE: PRS, TRA: TSTD, PAR: M16, FRA: Y39, SEM: SOV}
+  features: {LEMMA: kick downstairs, BF: kick, LEX: V, POS: VER, MOR: STE, LST: MTW, PER: 3PS, ATE: PRS, TRA: TSTD, PAR: M16, FRA: Y39, SEM: SOC}
   lang: eng
   frequency: 4
   priority: 0
@@ -19474,7 +19474,7 @@
 - headword: kicks off
   id: 634562
   uw: "202395782"
-  features: {LEMMA: kick off, BF: kick, LEX: V, POS: VER, MOR: STE, LST: MTW, PER: 3PS, ATE: PRS, TRA: TST, PAR: M16, FRA: Y38, SEM: SOV}
+  features: {LEMMA: kick off, BF: kick, LEX: V, POS: VER, MOR: STE, LST: MTW, PER: 3PS, ATE: PRS, TRA: TST, PAR: M16, FRA: Y38, SEM: SOC}
   lang: eng
   frequency: 4
   priority: 0
@@ -19482,7 +19482,7 @@
 - headword: kicks out
   id: 635940
   uw: "202401809"
-  features: {LEMMA: kick out, BF: kick, LEX: V, POS: VER, MOR: STE, LST: MTW, PER: 3PS, ATE: PRS, TRA: TST, PAR: M16, FRA: Y39, SEM: SOV}
+  features: {LEMMA: kick out, BF: kick, LEX: V, POS: VER, MOR: STE, LST: MTW, PER: 3PS, ATE: PRS, TRA: TST, PAR: M16, FRA: Y39, SEM: SOC}
   lang: eng
   frequency: 7
   priority: 0
@@ -19490,7 +19490,7 @@
 - headword: kicks out
   id: 635941
   uw: "202501738"
-  features: {LEMMA: kick out, BF: kick, LEX: V, POS: VER, MOR: STE, LST: MTW, PER: 3PS, ATE: PRS, TRA: TST, PAR: M16, FRA: Y39, SEM: SOV}
+  features: {LEMMA: kick out, BF: kick, LEX: V, POS: VER, MOR: STE, LST: MTW, PER: 3PS, ATE: PRS, TRA: TST, PAR: M16, FRA: Y39, SEM: SOC}
   lang: eng
   frequency: 7
   priority: 0
@@ -19522,7 +19522,7 @@
 - headword: kicks upstairs
   id: 634672
   uw: "202397637"
-  features: {LEMMA: kick upstairs, BF: kick, LEX: V, POS: VER, MOR: STE, LST: MTW, PER: 3PS, ATE: PRS, TRA: TST, PAR: M16, FRA: Y39, SEM: SOV}
+  features: {LEMMA: kick upstairs, BF: kick, LEX: V, POS: VER, MOR: STE, LST: MTW, PER: 3PS, ATE: PRS, TRA: TST, PAR: M16, FRA: Y39, SEM: SOC}
   lang: eng
   frequency: 9
   priority: 0
@@ -20578,7 +20578,7 @@
 - headword: kill
   id: 454758
   uw: "202473688"
-  features: {LEMMA: kill, BF: kill, LEX: V, POS: VER, LST: WRD, TRA: TST, PAR: M16, FRA: Y38, SEM: SOV}
+  features: {LEMMA: kill, BF: kill, LEX: V, POS: VER, LST: WRD, TRA: TST, PAR: M16, FRA: Y38, SEM: SOC}
   lang: eng
   frequency: 8
   priority: 11
@@ -20706,7 +20706,7 @@
 - headword: kill
   id: 640336
   uw: "202473688"
-  features: {LEMMA: kill, BF: kill, LEX: V, POS: VER, MOR: ROO, LST: WRD, MOO: INF, TRA: TST, PAR: M16, FRA: Y38, SEM: SOV}
+  features: {LEMMA: kill, BF: kill, LEX: V, POS: VER, MOR: ROO, LST: WRD, MOO: INF, TRA: TST, PAR: M16, FRA: Y38, SEM: SOC}
   lang: eng
   frequency: 8
   priority: 11
@@ -20962,7 +20962,7 @@
 - headword: killed
   id: 640346
   uw: "202473688"
-  features: {LEMMA: kill, BF: kill, LEX: V, POS: VER, MOR: ROO, LST: WRD, ATE: PAS, TRA: TST, PAR: M16, FRA: Y38, SEM: SOV}
+  features: {LEMMA: kill, BF: kill, LEX: V, POS: VER, MOR: ROO, LST: WRD, ATE: PAS, TRA: TST, PAR: M16, FRA: Y38, SEM: SOC}
   lang: eng
   frequency: 8
   priority: 11
@@ -21042,7 +21042,7 @@
 - headword: killed
   id: 640356
   uw: "202473688"
-  features: {LEMMA: kill, BF: kill, LEX: V, POS: VER, MOR: ROO, LST: WRD, MOO: PTP, TRA: TST, PAR: M16, FRA: Y38, SEM: SOV}
+  features: {LEMMA: kill, BF: kill, LEX: V, POS: VER, MOR: ROO, LST: WRD, MOO: PTP, TRA: TST, PAR: M16, FRA: Y38, SEM: SOC}
   lang: eng
   frequency: 8
   priority: 11
@@ -21498,7 +21498,7 @@
 - headword: killing
   id: 640376
   uw: "202473688"
-  features: {LEMMA: kill, BF: kill, LEX: V, POS: VER, MOR: ROO, LST: WRD, MOO: GER, TRA: TST, PAR: M16, FRA: Y38, SEM: SOV}
+  features: {LEMMA: kill, BF: kill, LEX: V, POS: VER, MOR: ROO, LST: WRD, MOO: GER, TRA: TST, PAR: M16, FRA: Y38, SEM: SOC}
   lang: eng
   frequency: 8
   priority: 11
@@ -21762,7 +21762,7 @@
 - headword: kills
   id: 640366
   uw: "202473688"
-  features: {LEMMA: kill, BF: kill, LEX: V, POS: VER, MOR: ROO, LST: WRD, PER: 3PS, ATE: PRS, TRA: TST, PAR: M16, FRA: Y38, SEM: SOV}
+  features: {LEMMA: kill, BF: kill, LEX: V, POS: VER, MOR: ROO, LST: WRD, PER: 3PS, ATE: PRS, TRA: TST, PAR: M16, FRA: Y38, SEM: SOC}
   lang: eng
   frequency: 8
   priority: 11
@@ -23058,7 +23058,7 @@
 - headword: kindliness
   id: 342598
   uw: "104841664"
-  features: {LEMMA: kindliness, BF: kindliness, LEX: N, POS: NOU, LST: WRD, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATT}
+  features: {LEMMA: kindliness, BF: kindliness, LEX: N, POS: NOU, LST: WRD, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATR}
   lang: eng
   frequency: 1
   priority: 0
@@ -23066,7 +23066,7 @@
 - headword: kindliness
   id: 371076
   uw: "104841664"
-  features: {LEMMA: kindliness, BF: kindliness, LEX: N, POS: NOU, MOR: STE, LST: WRD, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATT}
+  features: {LEMMA: kindliness, BF: kindliness, LEX: N, POS: NOU, MOR: STE, LST: WRD, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATR}
   lang: eng
   frequency: 1
   priority: 0
@@ -23194,7 +23194,7 @@
 - headword: kindness
   id: 304835
   uw: "104840011"
-  features: {LEMMA: kindness, BF: kindness, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M4, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATT}
+  features: {LEMMA: kindness, BF: kindness, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M4, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATR}
   lang: eng
   frequency: 1
   priority: 0
@@ -23210,7 +23210,7 @@
 - headword: kindness
   id: 305422
   uw: "104840011"
-  features: {LEMMA: kindness, BF: kindness, LEX: N, POS: NOU, MOR: STE, LST: WRD, NUM: SNG, PAR: M4, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATT}
+  features: {LEMMA: kindness, BF: kindness, LEX: N, POS: NOU, MOR: STE, LST: WRD, NUM: SNG, PAR: M4, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATR}
   lang: eng
   frequency: 1
   priority: 0
@@ -23218,7 +23218,7 @@
 - headword: kindness
   id: 342822
   uw: "104829764"
-  features: {LEMMA: kindness, BF: kindness, LEX: N, POS: NOU, LST: WRD, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATT}
+  features: {LEMMA: kindness, BF: kindness, LEX: N, POS: NOU, LST: WRD, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATR}
   lang: eng
   frequency: 1
   priority: 0
@@ -23226,7 +23226,7 @@
 - headword: kindness
   id: 342823
   uw: "104840011"
-  features: {LEMMA: kindness, BF: kindness, LEX: N, POS: NOU, LST: WRD, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATT}
+  features: {LEMMA: kindness, BF: kindness, LEX: N, POS: NOU, LST: WRD, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATR}
   lang: eng
   frequency: 1
   priority: 0
@@ -23234,7 +23234,7 @@
 - headword: kindness
   id: 371402
   uw: "104829764"
-  features: {LEMMA: kindness, BF: kindness, LEX: N, POS: NOU, MOR: STE, LST: WRD, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATT}
+  features: {LEMMA: kindness, BF: kindness, LEX: N, POS: NOU, MOR: STE, LST: WRD, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATR}
   lang: eng
   frequency: 1
   priority: 0
@@ -23242,7 +23242,7 @@
 - headword: kindness
   id: 371403
   uw: "104840011"
-  features: {LEMMA: kindness, BF: kindness, LEX: N, POS: NOU, MOR: STE, LST: WRD, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATT}
+  features: {LEMMA: kindness, BF: kindness, LEX: N, POS: NOU, MOR: STE, LST: WRD, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATR}
   lang: eng
   frequency: 1
   priority: 0
@@ -23258,7 +23258,7 @@
 - headword: kindnesses
   id: 305424
   uw: "104840011"
-  features: {LEMMA: kindness, BF: kindness, LEX: N, POS: NOU, MOR: STE, LST: WRD, NUM: PLR, PAR: M4, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATT}
+  features: {LEMMA: kindness, BF: kindness, LEX: N, POS: NOU, MOR: STE, LST: WRD, NUM: PLR, PAR: M4, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATR}
   lang: eng
   frequency: 1
   priority: 0
@@ -25922,7 +25922,7 @@
 - headword: kinship
   id: 414450
   uw: "113811410"
-  features: {LEMMA: kinship, BF: kinship, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M2, FRA: Y0, ABN: ABT, ANI: NANM, SEM: REL}
+  features: {LEMMA: kinship, BF: kinship, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M2, FRA: Y0, ABN: ABT, ANI: NANM, SEM: RLT}
   lang: eng
   frequency: 3
   priority: 0
@@ -25930,7 +25930,7 @@
 - headword: kinship
   id: 415124
   uw: "113812607"
-  features: {LEMMA: kinship, BF: kinship, LEX: N, POS: NOU, LST: WRD, NUM: SNG, REG: JGN, PAR: M2, FRA: Y0, ABN: ABT, ANI: NANM, SEM: REL}
+  features: {LEMMA: kinship, BF: kinship, LEX: N, POS: NOU, LST: WRD, NUM: SNG, REG: JGN, PAR: M2, FRA: Y0, ABN: ABT, ANI: NANM, SEM: RLT}
   lang: eng
   frequency: 2
   priority: 0
@@ -25938,7 +25938,7 @@
 - headword: kinship
   id: 501432
   uw: "113811410"
-  features: {LEMMA: kinship, BF: kinship, LEX: N, POS: NOU, MOR: STE, LST: WRD, NUM: SNG, PAR: M2, FRA: Y0, ABN: ABT, ANI: NANM, SEM: REL}
+  features: {LEMMA: kinship, BF: kinship, LEX: N, POS: NOU, MOR: STE, LST: WRD, NUM: SNG, PAR: M2, FRA: Y0, ABN: ABT, ANI: NANM, SEM: RLT}
   lang: eng
   frequency: 3
   priority: 0
@@ -25946,7 +25946,7 @@
 - headword: kinship
   id: 502721
   uw: "113812607"
-  features: {LEMMA: kinship, BF: kinship, LEX: N, POS: NOU, MOR: STE, LST: WRD, NUM: SNG, REG: JGN, PAR: M2, FRA: Y0, ABN: ABT, ANI: NANM, SEM: REL}
+  features: {LEMMA: kinship, BF: kinship, LEX: N, POS: NOU, MOR: STE, LST: WRD, NUM: SNG, REG: JGN, PAR: M2, FRA: Y0, ABN: ABT, ANI: NANM, SEM: RLT}
   lang: eng
   frequency: 2
   priority: 0
@@ -26002,7 +26002,7 @@
 - headword: kinships
   id: 501433
   uw: "113811410"
-  features: {LEMMA: kinship, BF: kinship, LEX: N, POS: NOU, MOR: STE, LST: WRD, NUM: PLR, PAR: M2, FRA: Y0, ABN: ABT, ANI: NANM, SEM: REL}
+  features: {LEMMA: kinship, BF: kinship, LEX: N, POS: NOU, MOR: STE, LST: WRD, NUM: PLR, PAR: M2, FRA: Y0, ABN: ABT, ANI: NANM, SEM: RLT}
   lang: eng
   frequency: 3
   priority: 0
@@ -26010,7 +26010,7 @@
 - headword: kinships
   id: 502722
   uw: "113812607"
-  features: {LEMMA: kinship, BF: kinship, LEX: N, POS: NOU, MOR: STE, LST: WRD, NUM: PLR, REG: JGN, PAR: M2, FRA: Y0, ABN: ABT, ANI: NANM, SEM: REL}
+  features: {LEMMA: kinship, BF: kinship, LEX: N, POS: NOU, MOR: STE, LST: WRD, NUM: PLR, REG: JGN, PAR: M2, FRA: Y0, ABN: ABT, ANI: NANM, SEM: RLT}
   lang: eng
   frequency: 2
   priority: 0
@@ -30738,7 +30738,7 @@
 - headword: knife-edge
   id: 344652
   uw: "105124404"
-  features: {LEMMA: knife-edge, BF: knife-edge, LEX: N, POS: NOU, LST: MTW, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATT}
+  features: {LEMMA: knife-edge, BF: knife-edge, LEX: N, POS: NOU, LST: MTW, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATR}
   lang: eng
   frequency: 1
   priority: 0
@@ -30746,7 +30746,7 @@
 - headword: knife-edge
   id: 374225
   uw: "105124404"
-  features: {LEMMA: knife-edge, BF: knife-edge, LEX: N, POS: NOU, MOR: STE, LST: MTW, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATT}
+  features: {LEMMA: knife-edge, BF: knife-edge, LEX: N, POS: NOU, MOR: STE, LST: MTW, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATR}
   lang: eng
   frequency: 1
   priority: 0
@@ -30906,7 +30906,7 @@
 - headword: knight
   id: 452683
   uw: "202399185"
-  features: {LEMMA: knight, BF: knight, LEX: V, POS: VER, LST: WRD, TRA: TST, PAR: M16, FRA: Y39, SEM: SOV}
+  features: {LEMMA: knight, BF: knight, LEX: V, POS: VER, LST: WRD, TRA: TST, PAR: M16, FRA: Y39, SEM: SOC}
   lang: eng
   frequency: 1
   priority: 0
@@ -30914,7 +30914,7 @@
 - headword: knight
   id: 629984
   uw: "202399185"
-  features: {LEMMA: knight, BF: knight, LEX: V, POS: VER, LST: WRD, MOO: INF, TRA: TST, PAR: M16, FRA: Y39, SEM: SOV}
+  features: {LEMMA: knight, BF: knight, LEX: V, POS: VER, LST: WRD, MOO: INF, TRA: TST, PAR: M16, FRA: Y39, SEM: SOC}
   lang: eng
   frequency: 1
   priority: 0
@@ -30970,7 +30970,7 @@
 - headword: knight errantries
   id: 374524
   uw: "105153037"
-  features: {LEMMA: knight errantry, BF: knight errantry, LEX: N, POS: NOU, MOR: STE, LST: MTW, NUM: PLR, PAR: M3, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATT}
+  features: {LEMMA: knight errantry, BF: knight errantry, LEX: N, POS: NOU, MOR: STE, LST: MTW, NUM: PLR, PAR: M3, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATR}
   lang: eng
   frequency: 2
   priority: 0
@@ -30986,7 +30986,7 @@
 - headword: knight errantry
   id: 344841
   uw: "105153037"
-  features: {LEMMA: knight errantry, BF: knight errantry, LEX: N, POS: NOU, LST: MTW, NUM: SNG, PAR: M3, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATT}
+  features: {LEMMA: knight errantry, BF: knight errantry, LEX: N, POS: NOU, LST: MTW, NUM: SNG, PAR: M3, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATR}
   lang: eng
   frequency: 2
   priority: 0
@@ -31002,7 +31002,7 @@
 - headword: knight errantry
   id: 374523
   uw: "105153037"
-  features: {LEMMA: knight errantry, BF: knight errantry, LEX: N, POS: NOU, MOR: STE, LST: MTW, NUM: SNG, PAR: M3, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATT}
+  features: {LEMMA: knight errantry, BF: knight errantry, LEX: N, POS: NOU, MOR: STE, LST: MTW, NUM: SNG, PAR: M3, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATR}
   lang: eng
   frequency: 2
   priority: 0
@@ -31082,7 +31082,7 @@
 - headword: knighted
   id: 629985
   uw: "202399185"
-  features: {LEMMA: knight, BF: knight, LEX: V, POS: VER, LST: WRD, ATE: PAS, TRA: TST, PAR: M16, FRA: Y39, SEM: SOV}
+  features: {LEMMA: knight, BF: knight, LEX: V, POS: VER, LST: WRD, ATE: PAS, TRA: TST, PAR: M16, FRA: Y39, SEM: SOC}
   lang: eng
   frequency: 1
   priority: 0
@@ -31090,7 +31090,7 @@
 - headword: knighted
   id: 629986
   uw: "202399185"
-  features: {LEMMA: knight, BF: knight, LEX: V, POS: VER, LST: WRD, MOO: PTP, TRA: TST, PAR: M16, FRA: Y39, SEM: SOV}
+  features: {LEMMA: knight, BF: knight, LEX: V, POS: VER, LST: WRD, MOO: PTP, TRA: TST, PAR: M16, FRA: Y39, SEM: SOC}
   lang: eng
   frequency: 1
   priority: 0
@@ -31122,7 +31122,7 @@
 - headword: knighting
   id: 629988
   uw: "202399185"
-  features: {LEMMA: knight, BF: knight, LEX: V, POS: VER, LST: WRD, MOO: GER, TRA: TST, PAR: M16, FRA: Y39, SEM: SOV}
+  features: {LEMMA: knight, BF: knight, LEX: V, POS: VER, LST: WRD, MOO: GER, TRA: TST, PAR: M16, FRA: Y39, SEM: SOC}
   lang: eng
   frequency: 1
   priority: 0
@@ -31202,7 +31202,7 @@
 - headword: knights
   id: 629987
   uw: "202399185"
-  features: {LEMMA: knight, BF: knight, LEX: V, POS: VER, LST: WRD, PER: 3PS, ATE: PRS, TRA: TST, PAR: M16, FRA: Y39, SEM: SOV}
+  features: {LEMMA: knight, BF: knight, LEX: V, POS: VER, LST: WRD, PER: 3PS, ATE: PRS, TRA: TST, PAR: M16, FRA: Y39, SEM: SOC}
   lang: eng
   frequency: 1
   priority: 0
@@ -33818,7 +33818,7 @@
 - headword: knot
   id: 415328
   uw: "104948905"
-  features: {LEMMA: knot, BF: knot, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M2, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATT}
+  features: {LEMMA: knot, BF: knot, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M2, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATR}
   lang: eng
   frequency: 1
   priority: 6
@@ -33898,7 +33898,7 @@
 - headword: knot
   id: 503108
   uw: "104948905"
-  features: {LEMMA: knot, BF: knot, LEX: N, POS: NOU, MOR: ROO, LST: WRD, NUM: SNG, PAR: M2, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATT}
+  features: {LEMMA: knot, BF: knot, LEX: N, POS: NOU, MOR: ROO, LST: WRD, NUM: SNG, PAR: M2, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATR}
   lang: eng
   frequency: 1
   priority: 6
@@ -34018,7 +34018,7 @@
 - headword: knots
   id: 503114
   uw: "104948905"
-  features: {LEMMA: knot, BF: knot, LEX: N, POS: NOU, MOR: ROO, LST: WRD, NUM: PLR, PAR: M2, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATT}
+  features: {LEMMA: knot, BF: knot, LEX: N, POS: NOU, MOR: ROO, LST: WRD, NUM: PLR, PAR: M2, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATR}
   lang: eng
   frequency: 1
   priority: 6
@@ -34178,7 +34178,7 @@
 - headword: knottiness
   id: 341270
   uw: "104766620"
-  features: {LEMMA: knottiness, BF: knottiness, LEX: N, POS: NOU, LST: WRD, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATT}
+  features: {LEMMA: knottiness, BF: knottiness, LEX: N, POS: NOU, LST: WRD, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATR}
   lang: eng
   frequency: 1
   priority: 0
@@ -34186,7 +34186,7 @@
 - headword: knottiness
   id: 369023
   uw: "104766620"
-  features: {LEMMA: knottiness, BF: knottiness, LEX: N, POS: NOU, MOR: STE, LST: WRD, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATT}
+  features: {LEMMA: knottiness, BF: knottiness, LEX: N, POS: NOU, MOR: STE, LST: WRD, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATR}
   lang: eng
   frequency: 1
   priority: 0
@@ -34994,7 +34994,7 @@
 - headword: knowledgeabilities
   id: 371518
   uw: "104890546"
-  features: {LEMMA: knowledgeability, BF: knowledgeability, LEX: N, POS: NOU, MOR: STE, LST: WRD, NUM: PLR, PAR: M3, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATT}
+  features: {LEMMA: knowledgeability, BF: knowledgeability, LEX: N, POS: NOU, MOR: STE, LST: WRD, NUM: PLR, PAR: M3, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATR}
   lang: eng
   frequency: 1
   priority: 0
@@ -35002,7 +35002,7 @@
 - headword: knowledgeability
   id: 342898
   uw: "104890546"
-  features: {LEMMA: knowledgeability, BF: knowledgeability, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M3, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATT}
+  features: {LEMMA: knowledgeability, BF: knowledgeability, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M3, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATR}
   lang: eng
   frequency: 1
   priority: 0
@@ -35010,7 +35010,7 @@
 - headword: knowledgeability
   id: 371517
   uw: "104890546"
-  features: {LEMMA: knowledgeability, BF: knowledgeability, LEX: N, POS: NOU, MOR: STE, LST: WRD, NUM: SNG, PAR: M3, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATT}
+  features: {LEMMA: knowledgeability, BF: knowledgeability, LEX: N, POS: NOU, MOR: STE, LST: WRD, NUM: SNG, PAR: M3, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATR}
   lang: eng
   frequency: 1
   priority: 0
@@ -35066,7 +35066,7 @@
 - headword: knowledgeableness
   id: 342899
   uw: "104890546"
-  features: {LEMMA: knowledgeableness, BF: knowledgeableness, LEX: N, POS: NOU, LST: WRD, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATT}
+  features: {LEMMA: knowledgeableness, BF: knowledgeableness, LEX: N, POS: NOU, LST: WRD, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATR}
   lang: eng
   frequency: 1
   priority: 0
@@ -35074,7 +35074,7 @@
 - headword: knowledgeableness
   id: 371519
   uw: "104890546"
-  features: {LEMMA: knowledgeableness, BF: knowledgeableness, LEX: N, POS: NOU, MOR: STE, LST: WRD, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATT}
+  features: {LEMMA: knowledgeableness, BF: knowledgeableness, LEX: N, POS: NOU, MOR: STE, LST: WRD, NUM: SNGT, PAR: M0, FRA: Y0, ABN: ABT, ANI: NANM, SEM: ATR}
   lang: eng
   frequency: 1
   priority: 0
@@ -35386,7 +35386,7 @@
 - headword: knuckle down
   id: 631764
   uw: "202421199"
-  features: {LEMMA: knuckle down, BF: knuckle, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: INF, TRA: NTST, PAR: M17, FRA: Y32, SEM: SOV}
+  features: {LEMMA: knuckle down, BF: knuckle, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: INF, TRA: NTST, PAR: M17, FRA: Y32, SEM: SOC}
   lang: eng
   frequency: 2
   priority: 0
@@ -35546,7 +35546,7 @@
 - headword: knuckled down
   id: 631765
   uw: "202421199"
-  features: {LEMMA: knuckle down, BF: knuckle, LEX: V, POS: VER, MOR: STE, LST: MTW, ATE: PAS, TRA: NTST, PAR: M17, FRA: Y32, SEM: SOV}
+  features: {LEMMA: knuckle down, BF: knuckle, LEX: V, POS: VER, MOR: STE, LST: MTW, ATE: PAS, TRA: NTST, PAR: M17, FRA: Y32, SEM: SOC}
   lang: eng
   frequency: 2
   priority: 0
@@ -35554,7 +35554,7 @@
 - headword: knuckled down
   id: 631766
   uw: "202421199"
-  features: {LEMMA: knuckle down, BF: knuckle, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: PTP, TRA: NTST, PAR: M17, FRA: Y32, SEM: SOV}
+  features: {LEMMA: knuckle down, BF: knuckle, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: PTP, TRA: NTST, PAR: M17, FRA: Y32, SEM: SOC}
   lang: eng
   frequency: 2
   priority: 0
@@ -35666,7 +35666,7 @@
 - headword: knuckles down
   id: 631767
   uw: "202421199"
-  features: {LEMMA: knuckle down, BF: knuckle, LEX: V, POS: VER, MOR: STE, LST: MTW, PER: 3PS, ATE: PRS, TRA: NTST, PAR: M17, FRA: Y32, SEM: SOV}
+  features: {LEMMA: knuckle down, BF: knuckle, LEX: V, POS: VER, MOR: STE, LST: MTW, PER: 3PS, ATE: PRS, TRA: NTST, PAR: M17, FRA: Y32, SEM: SOC}
   lang: eng
   frequency: 2
   priority: 0
@@ -35698,7 +35698,7 @@
 - headword: knuckling down
   id: 631768
   uw: "202421199"
-  features: {LEMMA: knuckle down, BF: knuckle, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: GER, TRA: NTST, PAR: M17, FRA: Y32, SEM: SOV}
+  features: {LEMMA: knuckle down, BF: knuckle, LEX: V, POS: VER, MOR: STE, LST: MTW, MOO: GER, TRA: NTST, PAR: M17, FRA: Y32, SEM: SOC}
   lang: eng
   frequency: 2
   priority: 0
