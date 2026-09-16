@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: MPL-2.0
-// ADR 0014: GitHub is a live dependency, and the bridge shows one chip for whether it answers.
-// This is the only new GitHub call issue 173 adds -- the reachability check ADR 0014 already
-// names, never anything that reads issue state, milestones or labels (the mirror owns that
-// direction, one way, per the ADR's own "Decision").
+// ADR 0014: GitHub is a live dependency. Two calls live here: the bridge's reachability chip
+// (issue 173), and the atlas's cleared-for-jump read (issue 177) -- open pull requests and each
+// one's `gate.yml` check-run conclusion. Neither reads issue state, milestones or labels; the
+// mirror owns that direction, one way, per the ADR's own "Decision".
 import { execFileSync } from 'node:child_process';
 
 export const GITHUB_REACHABILITY_TIMEOUT_MS = 3000;
@@ -66,4 +66,61 @@ export async function isGithubReachable({
   timeoutMs?: number;
 } = {}): Promise<boolean> {
   return checkGithubReachable({ token: tokenFn(), fetchFn, timeoutMs });
+}
+
+export const DEFAULT_REPO_SLUG = 'ossewawiel/verstaan';
+
+// A pull request's head branch names its issue by SPEC.md §7's own pattern, `m<K>-NN-<slug>`
+// for a milestone issue or `side-NN-<slug>` for a side quest (issue 165, one branch per issue).
+const BRANCH_ISSUE_RE = /^(?:m\d+|side)-(\d+)-/;
+
+/** Every open pull request whose `gate.yml` check run named `gate` has concluded, keyed by the
+ * issue number its branch name carries. A PR whose branch does not match the naming pattern, or
+ * whose check runs have not resolved yet, is left out -- absence reads as "not cleared", the
+ * same as a `false`. Returns an empty map on no token, on any non-2xx reply, on a timeout, or on
+ * the network being gone outright: the atlas's cleared-for-jump tier degrades to nothing, never
+ * an error (ADR 0014's "Consequences"). Injectable `fetchFn`, same seam as `checkGithubReachable`,
+ * so a test never needs a real network call. */
+export async function openPullRequestGateStates({
+  token,
+  repo = DEFAULT_REPO_SLUG,
+  fetchFn = fetch,
+  timeoutMs = GITHUB_REACHABILITY_TIMEOUT_MS,
+}: {
+  token: string | null;
+  repo?: string;
+  fetchFn?: typeof fetch;
+  timeoutMs?: number;
+}): Promise<Map<number, boolean>> {
+  const gateGreenByIssue = new Map<number, boolean>();
+  if (!token) return gateGreenByIssue;
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), timeoutMs);
+  const headers = { authorization: `Bearer ${token}`, accept: 'application/vnd.github+json' };
+  try {
+    const prsRes = await fetchFn(`https://api.github.com/repos/${repo}/pulls?state=open&per_page=100`, {
+      headers,
+      signal: controller.signal,
+    });
+    if (!prsRes.ok) return gateGreenByIssue;
+    const prs = (await prsRes.json()) as { head?: { ref?: string; sha?: string } }[];
+    for (const pr of prs) {
+      const match = BRANCH_ISSUE_RE.exec(pr.head?.ref ?? '');
+      const sha = pr.head?.sha;
+      if (!match || !sha) continue;
+      const checksRes = await fetchFn(`https://api.github.com/repos/${repo}/commits/${sha}/check-runs`, {
+        headers,
+        signal: controller.signal,
+      });
+      if (!checksRes.ok) continue;
+      const checks = (await checksRes.json()) as { check_runs?: { name?: string; conclusion?: string | null }[] };
+      const gateRun = (checks.check_runs ?? []).find((run) => run.name === 'gate');
+      gateGreenByIssue.set(Number(match[1]), gateRun?.conclusion === 'success');
+    }
+    return gateGreenByIssue;
+  } catch {
+    return new Map();
+  } finally {
+    clearTimeout(timer);
+  }
 }

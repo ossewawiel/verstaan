@@ -27,6 +27,7 @@ from collections.abc import Callable, Sequence
 from functools import partial
 from pathlib import Path
 
+from tools.factory.validate_map import check_map as check_map_tiles
 from tools.validate import __version__
 from tools.validate.store import StoreReport, format_report, validate_store
 
@@ -367,6 +368,7 @@ def run(
             print(format_report(report))
         errors += check_issue_loadouts(repo_root)
         errors += check_issue_dependencies(repo_root)
+        errors += check_map_tiles(repo_root)
         for error in errors:
             print(error, file=sys.stderr)
         return 1 if errors else 0
@@ -386,6 +388,13 @@ def run(
     if any("docs/factory/issues/" in path for path in all_changed):
         errors += check_issue_loadouts(repo_root)
         errors += check_issue_dependencies(repo_root)
+    # docs/factory/map.yaml (issue 177) is checked whenever the branch touches either side of the
+    # one-to-one rule it holds: the atlas itself, or an issue file that could add or drop a prefix.
+    if any(
+        path == "docs/factory/map.yaml" or path.startswith("docs/factory/issues/")
+        for path in all_changed
+    ):
+        errors += check_map_tiles(repo_root)
     for error in errors:
         print(error, file=sys.stderr)
     return 1 if errors else 0

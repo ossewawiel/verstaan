@@ -9,14 +9,21 @@ import { execSync } from 'node:child_process';
 import Fastify from 'fastify';
 import fastifyStatic from '@fastify/static';
 import fastifyCompress from '@fastify/compress';
-import { REPO, readRepo, resolveRootPath, readWorktrees, msSinceLastGitCommand } from './model/read.js';
+import { REPO, readRepo, resolveRootPath, readWorktrees, msSinceLastGitCommand, isCommitOnMain, mainAncestorShas } from './model/read.js';
 import { buildModel, buildShipSystems, lastEvents, buildCodex, debriefGroups, parseGlossaryTerms } from './model/parse.js';
 import { render, titleOf, splitFrontmatter } from './model/markdown.js';
+import { parseMapYaml, buildAtlas } from './model/atlas.js';
 import { JobManager } from './jobs/runner.js';
 import { registerJobRoutes } from './jobs/routes.js';
 import { registerRestartRoute } from './restart.js';
 import { RestartGate } from './restart-gate.js';
-import { isGithubReachable } from './github.js';
+import { isGithubReachable, ghAuthToken, openPullRequestGateStates } from './github.js';
+
+// Test-only seam (e2e/atlas-offline.spec.ts): forces the atlas's GitHub read to read as
+// unreachable, the same shape a missing `gh` login or a dead network produces, so a Playwright
+// run can prove the offline behaviour ADR 0014 asks for without depending on this machine's own
+// `gh` login state (issue 177). Unset in every other path, including console.cmd and the gate.
+const FORCE_GITHUB_UNREACHABLE = process.env.VERSTAAN_CONSOLE_FORCE_GITHUB_UNREACHABLE === '1';
 
 const args = process.argv.slice(2);
 const portFlag = args.indexOf('--port');
@@ -149,8 +156,18 @@ type Client = { write: (chunk: string) => void };
 export function buildApp({
   readRepoFn = readRepo,
   appDir = process.cwd(),
-  githubReachableFn = isGithubReachable,
-}: { readRepoFn?: typeof readRepo; appDir?: string; githubReachableFn?: typeof isGithubReachable } = {}) {
+  githubReachableFn = FORCE_GITHUB_UNREACHABLE ? async () => false : isGithubReachable,
+  mainAncestorShasFn = mainAncestorShas,
+  ghAuthTokenFn = ghAuthToken,
+  openPullRequestGateStatesFn = openPullRequestGateStates,
+}: {
+  readRepoFn?: typeof readRepo;
+  appDir?: string;
+  githubReachableFn?: typeof isGithubReachable;
+  mainAncestorShasFn?: typeof mainAncestorShas;
+  ghAuthTokenFn?: typeof ghAuthToken;
+  openPullRequestGateStatesFn?: typeof openPullRequestGateStates;
+} = {}) {
   const app = Fastify({ logger: false });
   // gzip/brotli the built client and the JSON API (issue 99: cold load under 250 KB
   // transferred). SSE is excluded: compressing a stream that must flush per-event would buffer
@@ -303,6 +320,31 @@ export function buildApp({
   app.get('/api/github-status', async (_req, reply) => {
     const reachable = await githubReachableFn();
     reply.type('application/json').send({ reachable });
+  });
+
+  // The atlas (ADR 0015, issue 177): docs/factory/map.yaml painted, computing nothing itself.
+  // Lit is decided against every `done` issue's own commit, checked against the set of commits
+  // `main` can reach -- one `git rev-list main` call per request (mainAncestorShasFn), not one
+  // `git` subprocess per issue (105 done issues measured ~628ms before this, and each of those
+  // calls also reset the git-echo-suppression window read.ts's own msSinceLastGitCommand()
+  // drives, swallowing real change-stream events for 1.5s apiece). Cleared-for-jump only when
+  // GitHub answers (ADR 0014) -- a comms-lost machine still paints every lit and contact tile,
+  // and simply skips the one GitHub round trip below.
+  app.get('/api/atlas', async (_req, reply) => {
+    const { repo, model } = getModel();
+    const mapDoc = parseMapYaml(repo.mapYamlText);
+    const reachable = await githubReachableFn();
+    const gateGreenByIssue = reachable
+      ? await openPullRequestGateStatesFn({ token: ghAuthTokenFn() })
+      : new Map<number, boolean>();
+    const mainShas = mainAncestorShasFn();
+    const doneOnMain = new Set(
+      model.issues
+        .filter((i) => i.status === 'done' && isCommitOnMain(typeof i.commit === 'string' ? i.commit : null, mainShas))
+        .map((i) => i.n),
+    );
+    const atlas = buildAtlas({ mapDoc, issues: model.issues, isOnMain: (n) => doneOnMain.has(n), gateGreenByIssue });
+    reply.type('application/json').send({ ...atlas, githubReachable: reachable });
   });
 
   // Ship systems (issue 175): the factory's own machinery, read-only -- agents, skills, commands,

@@ -23,6 +23,18 @@ def _issue(n: int, ms: str, deps: str) -> str:
     return f"---\nissue: {n}\n" + HEAD.format(ms=ms, deps=deps)
 
 
+MAP_YAML = (
+    "regions:\n"
+    "- {id: m0, name: M0, goal: g, x: 0, y: 0, size: 10}\n"
+    "- {id: m1, name: M1, goal: g, x: 20, y: 0, size: 10}\n"
+    "tiles:\n"
+    "- {id: '06', region: m0, title: T, x: 0, y: 0, size: 5}\n"
+    "- {id: '07', region: m1, title: T, x: 20, y: 0, size: 5}\n"
+    "- {id: '08', region: m1, title: T, x: 40, y: 0, size: 5}\n"
+    "- {id: '98', region: m1, title: T, x: 60, y: 0, size: 5}\n"
+)
+
+
 def _tree(tmp_path: Path) -> Path:
     root = tmp_path / "repo"
     issues = root / "docs" / "factory" / "issues"
@@ -32,6 +44,9 @@ def _tree(tmp_path: Path) -> Path:
     # A side quest may block a main quest and the other way round; both directions resolve here.
     (issues / "98-side.md").write_text(_issue(98, "Side", "[7]"), encoding="utf-8")
     (issues / "08-eight.md").write_text(_issue(8, "M1", "[7, 98]"), encoding="utf-8")
+    # docs/factory/map.yaml (issue 177): one tile per issue prefix, so run("all", ...) also
+    # satisfies tools/factory/validate_map.py and this fixture stays about dependencies alone.
+    (root / "docs" / "factory" / "map.yaml").write_text(MAP_YAML, encoding="utf-8")
     (root / "data" / "languages").mkdir(parents=True)
     return root
 

@@ -20,6 +20,16 @@ FULL = (
 )
 
 
+MAP_YAML = (
+    "regions:\n"
+    "- {id: m0, name: M0, goal: g, x: 0, y: 0, size: 10}\n"
+    "- {id: m1, name: M1, goal: g, x: 20, y: 0, size: 10}\n"
+    "tiles:\n"
+    "- {id: '04', region: m0, title: T, x: 0, y: 0, size: 5}\n"
+    "- {id: '07', region: m1, title: T, x: 20, y: 0, size: 5}\n"
+)
+
+
 def _tree(tmp_path: Path) -> Path:
     root = tmp_path / "repo"
     issues = root / "docs" / "factory" / "issues"
@@ -27,6 +37,9 @@ def _tree(tmp_path: Path) -> Path:
     (issues / "07-seven.md").write_text(FULL, encoding="utf-8")
     # A test-cases companion carries no frontmatter and is not a quest (the console skips it too).
     (issues / "04-test-cases.md").write_text("# Issue 04 — test cases\n", encoding="utf-8")
+    # docs/factory/map.yaml (issue 177): one tile per issue prefix, so run("all", ...) also
+    # satisfies tools/factory/validate_map.py and this fixture stays about loadouts alone.
+    (root / "docs" / "factory" / "map.yaml").write_text(MAP_YAML, encoding="utf-8")
     (root / "data" / "languages").mkdir(parents=True)
     return root
 

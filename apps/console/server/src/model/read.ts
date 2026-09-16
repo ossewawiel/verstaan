@@ -3,7 +3,7 @@
 // knows where the truth lives.
 import { readFileSync, readdirSync, existsSync, statSync } from 'node:fs';
 import { join, resolve, relative, sep } from 'node:path';
-import { execSync } from 'node:child_process';
+import { execSync, execFileSync } from 'node:child_process';
 import {
   parseWorktreePorcelain,
   parseFrontmatter,
@@ -138,6 +138,48 @@ export function readStamp(gitHead: string, { shFn = sh, cwd = REPO }: { shFn?: (
   return { present: true, matches: gitHead !== 'none' && !!full && existsSync(join(dir, full)) };
 }
 
+// A `commit:` value is untrusted, unvalidated front-matter text (parse.ts types it `unknown`),
+// read from every worktree's issue files, not just this one (mergeIssuesAcrossWorktrees). A full
+// sha or its usual abbreviations, nothing else -- refused before it is ever compared, let alone
+// reaches a subprocess. `isCommitOnMain` below never calls `git` at all: a shell string built
+// from this text was a command injection the checkpoint-4 verifier reproduced live (`HEAD; touch
+// /tmp/pwned; echo`); the fix here is not "quote it better", it is "this value never leaves JS".
+const COMMIT_SHA_RE = /^[0-9a-f]{7,40}$/;
+
+/** Every commit `main` can reach -- `git rev-list main`, the literal ref, no untrusted input --
+ * called once per `/api/atlas` request (ADR 0015's "lit" test), not once per done issue. A
+ * missing `main`, a shallow clone, or any other `git` failure fails closed to an empty set,
+ * which reads every issue as not-yet-landed, never as merged: the safer of the two wrong
+ * answers. */
+export function mainAncestorShas({
+  execFileSyncFn = execFileSync,
+  cwd = REPO,
+}: { execFileSyncFn?: typeof execFileSync; cwd?: string } = {}): Set<string> {
+  try {
+    const out = execFileSyncFn('git', ['rev-list', 'main'], { cwd, stdio: ['ignore', 'pipe', 'ignore'] }).toString();
+    return new Set(out.split('\n').map((line) => line.trim()).filter(Boolean));
+  } catch {
+    return new Set();
+  }
+}
+
+/** ADR 0015's "lit" test: is `commit` an ancestor of `main`, i.e. already merged into it. A
+ * missing, blank or malformed commit (the ordinary case for an issue not yet done, or untrusted
+ * front matter) fails closed to `false` before `reachable` is ever consulted. Pure: `reachable`
+ * is `mainAncestorShas()`'s own output, computed once per request and shared across every issue,
+ * not one `git` call apiece (measured at ~628ms across 105 done issues before this change). An
+ * abbreviated sha is resolved by prefix against the full-length set, the same rule `git` itself
+ * uses to expand one. */
+export function isCommitOnMain(commit: string | null | undefined, reachable: ReadonlySet<string>): boolean {
+  if (!commit || typeof commit !== 'string' || !COMMIT_SHA_RE.test(commit)) return false;
+  if (reachable.has(commit)) return true;
+  if (commit.length === 40) return false; // already checked as a full sha above
+  for (const sha of reachable) {
+    if (sha.startsWith(commit)) return true;
+  }
+  return false;
+}
+
 function inProgressIssueOf(treeAbsPath: string, treeRelPath: string): { n: number; title: string } | null {
   const dir = join(treeAbsPath, 'docs', 'factory', 'issues');
   if (!existsSync(dir)) return null;
@@ -254,6 +296,7 @@ export function readRepo(): RepoModel {
   const lessonsPath = join(REPO, 'docs', 'factory', 'lessons.jsonl');
   const settingsJsonPath = join(REPO, '.claude', 'settings.json');
   const playbookPath = join(REPO, 'docs', 'factory', 'playbook.md');
+  const mapYamlPath = join(REPO, 'docs', 'factory', 'map.yaml');
   return {
     issueFiles: mergeIssuesAcrossWorktrees(localIssueFiles, otherIssueFiles),
     agentFiles: readDir(join(REPO, '.claude', 'agents')),
@@ -269,5 +312,6 @@ export function readRepo(): RepoModel {
     hookFiles: readDirAll(join(REPO, '.claude', 'hooks')),
     settingsJsonText: existsSync(settingsJsonPath) ? readFileSync(settingsJsonPath, 'utf8') : '',
     playbookText: existsSync(playbookPath) ? readFileSync(playbookPath, 'utf8') : '',
+    mapYamlText: existsSync(mapYamlPath) ? readFileSync(mapYamlPath, 'utf8') : '',
   };
 }

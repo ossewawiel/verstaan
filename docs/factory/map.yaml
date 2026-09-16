@@ -1,0 +1,770 @@
+# The atlas (ADR 0015). Hand-authored, never generated: fix a position here, not in a script.
+# Regions are PLAN.md Section 7's milestones; one tile per issue-number prefix under
+# docs/factory/issues/. tools/factory/validate_map.py checks prefix and tile match one to one.
+# Tile state (lit, cleared for jump, contact, fogged) is computed by the console, never stored
+# here. Schema: SPEC.md Section 3.7.
+#
+# Eight regions, one per PLAN.md Section 7 milestone row (M0-M7): ADR 0015 says "seven",
+# written before the M7 row existed; SPEC.md Section 3.7 carries the correction. m6 (Growth,
+# issues 39-44) has no tiles yet and stays fogged -- the factory/console infrastructure that
+# built toward the console-as-CIC line sits under m7 instead, alongside the milestone's own
+# 172-178, so a real M6 issue landing later does not appear inside an already-lit region.
+#
+# Laid out 4 across, 2 down (not one long row): a canvas close to square renders far more
+# legibly than a 9840-wide, 1200-tall strip (checkpoint-4 finding: real on-screen tile size).
+regions:
+- id: m0
+  name: M0 Foundation
+  goal: Repo, licences, factory, CMake and Python skeletons, gates proven to fail.
+  x: 0
+  y: 0
+  size: 1200
+- id: m1
+  name: M1 Mirror
+  goal: Every language exported, manifest complete, UNL reference corpus readable by agents, inventory
+    report.
+  x: 1440
+  y: 0
+  size: 1200
+- id: m2
+  name: M2 Store
+  goal: Canonical data model; importer for dictionaries, grammars, tagset, corpora; validator.
+  x: 2880
+  y: 0
+  size: 1200
+- id: m3
+  name: M3 Engine slice
+  goal: Tokeniser, dictionary lookup, rule interpreter on runtime tables, English to UNL to Afrikaans
+    for a fixed sentence set, golden tests.
+  x: 4320
+  y: 0
+  size: 1200
+- id: m4
+  name: M4 Compiler and tiers
+  goal: Generated tables per tier, equivalence tests, basic tier cross-built and run on a Pi Zero, Argos
+    benchmark beside it.
+  x: 0
+  y: 1440
+  size: 1200
+- id: m5
+  name: M5 Applications
+  goal: CLI translator, register and context selection, first desktop shell.
+  x: 1440
+  y: 1440
+  size: 1200
+- id: m6
+  name: M6 Growth
+  goal: Rule-author workflow for Afrikaans grammar growth, Dutch seeded from German and English references,
+    CLA check, project site.
+  x: 2880
+  y: 1440
+  size: 1200
+- id: m7
+  name: M7 Console CIC
+  goal: Bridge that lands, staged flight deck, ship-systems room, codex and debrief, hand-drawn atlas
+    with fog of war, console as Agent SDK harness (ADR 0014-0016), plus the factory/console infrastructure
+    side quests that built toward it.
+  x: 4320
+  y: 1440
+  size: 1200
+tiles:
+- id: '01'
+  region: m0
+  title: Prove the gate ladder fails before trusting it
+  x: 96
+  y: 96
+  size: 32
+- id: '02'
+  region: m0
+  title: CMake, vcpkg and preset skeleton for engine, apps and tests
+  x: 160
+  y: 96
+  size: 32
+- id: '03'
+  region: m0
+  title: 'Python tooling skeleton: mirror, importer, compiler, validate packages'
+  x: 224
+  y: 96
+  size: 32
+- id: '04'
+  region: m0
+  title: Fixture language pair xxa and xxb for engine tests
+  x: 96
+  y: 160
+  size: 32
+- id: '05'
+  region: m0
+  title: NOTICE files, licence headers and a header check
+  x: 160
+  y: 160
+  size: 32
+- id: '06'
+  region: m0
+  title: Architecture overview, sub-tree CLAUDE.md files, and the first gated merge
+  x: 224
+  y: 160
+  size: 32
+- id: '07'
+  region: m1
+  title: Mirror the public pages, the wiki and the static grammar files
+  x: 1536
+  y: 96
+  size: 32
+- id: '08'
+  region: m1
+  title: Mirror the logged-in UNLarium exports for every language
+  x: 1600
+  y: 96
+  size: 32
+- id: '09'
+  region: m1
+  title: 'Agent-readable UNL reference: the specifications'
+  x: 1664
+  y: 96
+  size: 32
+- id: '10'
+  region: m1
+  title: 'Agent-readable UNL reference: dictionary, grammar and tagset formats'
+  x: 1728
+  y: 96
+  size: 32
+- id: '11'
+  region: m1
+  title: 'Archive inventory: what exists, what is usable, what is missing'
+  x: 1792
+  y: 96
+  size: 32
+- id: '12'
+  region: m1
+  title: Write the M2 issue files from the inventory, gate and merge M1
+  x: 1856
+  y: 96
+  size: 32
+- id: '117'
+  region: m1
+  title: 'The exports that did not make it: list them, and retry the stuck ones with a longer poll'
+  x: 1920
+  y: 96
+  size: 32
+- id: '118'
+  region: m1
+  title: 'Drain the stuck exports one language at a time: English first, and the close writes the quest
+    for the next language'
+  x: 1984
+  y: 96
+  size: 32
+- id: '119'
+  region: m1
+  title: 'Drain the stuck exports one language at a time: Dutch next'
+  x: 1536
+  y: 160
+  size: 32
+- id: '120'
+  region: m1
+  title: 'Drain the stuck exports one language at a time: German next'
+  x: 1600
+  y: 160
+  size: 32
+- id: '121'
+  region: m1
+  title: 'Drain the stuck exports one language at a time: French next'
+  x: 1664
+  y: 160
+  size: 32
+- id: '122'
+  region: m1
+  title: 'Drain the stuck exports one language at a time: Latin next'
+  x: 1728
+  y: 160
+  size: 32
+- id: '123'
+  region: m1
+  title: 'Drain the stuck exports one language at a time: Spanish next'
+  x: 1792
+  y: 160
+  size: 32
+- id: '124'
+  region: m1
+  title: 'Drain the stuck exports one language at a time: Portuguese next'
+  x: 1856
+  y: 160
+  size: 32
+- id: '125'
+  region: m1
+  title: 'Drain the stuck exports one language at a time: Russian next'
+  x: 1920
+  y: 160
+  size: 32
+- id: '126'
+  region: m1
+  title: 'Drain the stuck exports one language at a time: Italian next'
+  x: 1984
+  y: 160
+  size: 32
+- id: '127'
+  region: m1
+  title: 'Drain the stuck exports one language at a time: Chinese next'
+  x: 1536
+  y: 224
+  size: 32
+- id: '128'
+  region: m1
+  title: 'Drain the stuck exports one language at a time: Greek next'
+  x: 1600
+  y: 224
+  size: 32
+- id: '129'
+  region: m1
+  title: 'Drain the stuck exports one language at a time: Persian next'
+  x: 1664
+  y: 224
+  size: 32
+- id: '130'
+  region: m1
+  title: 'Drain the stuck exports one language at a time: Slovenian next'
+  x: 1728
+  y: 224
+  size: 32
+- id: '131'
+  region: m1
+  title: 'Drain the stuck exports one language at a time: Estonian next'
+  x: 1792
+  y: 224
+  size: 32
+- id: '132'
+  region: m1
+  title: 'Drain the stuck exports one language at a time: Azerbaijani next'
+  x: 1856
+  y: 224
+  size: 32
+- id: '133'
+  region: m1
+  title: 'Drain the stuck exports one language at a time: Ukrainian next'
+  x: 1920
+  y: 224
+  size: 32
+- id: '134'
+  region: m1
+  title: 'Drain the stuck exports one language at a time: Telugu next'
+  x: 1984
+  y: 224
+  size: 32
+- id: '135'
+  region: m1
+  title: 'Drain the stuck exports one language at a time: Bulgarian next'
+  x: 1536
+  y: 288
+  size: 32
+- id: '136'
+  region: m1
+  title: 'Drain the stuck exports one language at a time: Malay next'
+  x: 1600
+  y: 288
+  size: 32
+- id: '137'
+  region: m1
+  title: 'Drain the stuck exports one language at a time: Croatian next'
+  x: 1664
+  y: 288
+  size: 32
+- id: '138'
+  region: m1
+  title: 'Drain the stuck exports one language at a time: Punjabi next'
+  x: 1728
+  y: 288
+  size: 32
+- id: '139'
+  region: m1
+  title: 'Drain the stuck exports one language at a time: Georgian next'
+  x: 1792
+  y: 288
+  size: 32
+- id: '140'
+  region: m1
+  title: 'Drain the stuck exports one language at a time: Hungarian next'
+  x: 1856
+  y: 288
+  size: 32
+- id: '141'
+  region: m1
+  title: 'Drain the stuck exports one language at a time: Nepali next'
+  x: 1920
+  y: 288
+  size: 32
+- id: '142'
+  region: m1
+  title: 'Drain the stuck exports one language at a time: Thai next'
+  x: 1984
+  y: 288
+  size: 32
+- id: '143'
+  region: m1
+  title: 'Drain the stuck exports one language at a time: Serbian next'
+  x: 1536
+  y: 352
+  size: 32
+- id: '144'
+  region: m1
+  title: 'Drain the stuck exports one language at a time: Baatonum next'
+  x: 1600
+  y: 352
+  size: 32
+- id: '145'
+  region: m1
+  title: 'Drain the stuck exports one language at a time: Berber next'
+  x: 1664
+  y: 352
+  size: 32
+- id: '146'
+  region: m1
+  title: 'Drain the stuck exports one language at a time: Czech next'
+  x: 1728
+  y: 352
+  size: 32
+- id: '147'
+  region: m1
+  title: 'Drain the stuck exports one language at a time: Khmer next'
+  x: 1792
+  y: 352
+  size: 32
+- id: '148'
+  region: m1
+  title: 'Drain the stuck exports one language at a time: Slovak next'
+  x: 1856
+  y: 352
+  size: 32
+- id: '149'
+  region: m1
+  title: 'Drain the stuck exports one language at a time: Romanian next'
+  x: 1920
+  y: 352
+  size: 32
+- id: '150'
+  region: m1
+  title: 'Drain the stuck exports one language at a time: Swedish next'
+  x: 1984
+  y: 352
+  size: 32
+- id: '151'
+  region: m1
+  title: 'Drain the stuck exports one language at a time: Japanese next'
+  x: 1536
+  y: 416
+  size: 32
+- id: '152'
+  region: m1
+  title: 'Drain the stuck exports one language at a time: Burmese next'
+  x: 1600
+  y: 416
+  size: 32
+- id: '153'
+  region: m1
+  title: 'Drain the stuck exports one language at a time: Somali next'
+  x: 1664
+  y: 416
+  size: 32
+- id: '154'
+  region: m1
+  title: 'Drain the stuck exports one language at a time: Catalan next'
+  x: 1728
+  y: 416
+  size: 32
+- id: '155'
+  region: m1
+  title: 'Drain the stuck exports one language at a time: Mongolian next'
+  x: 1792
+  y: 416
+  size: 32
+- id: '156'
+  region: m1
+  title: 'Drain the stuck exports one language at a time: Turkish next'
+  x: 1856
+  y: 416
+  size: 32
+- id: '157'
+  region: m1
+  title: 'Drain the stuck exports one language at a time: Kannada next'
+  x: 1920
+  y: 416
+  size: 32
+- id: '158'
+  region: m1
+  title: 'Drain the stuck exports one language at a time: Ancient Greek next'
+  x: 1984
+  y: 416
+  size: 32
+- id: '160'
+  region: m1
+  title: 'Drain the stuck exports one language at a time: Marathi next'
+  x: 1536
+  y: 480
+  size: 32
+- id: '161'
+  region: m1
+  title: 'Drain the stuck exports one language at a time: Polish next'
+  x: 1600
+  y: 480
+  size: 32
+- id: '163'
+  region: m1
+  title: 'Drain the stuck exports one language at a time: Dari next'
+  x: 1664
+  y: 480
+  size: 32
+- id: '13'
+  region: m2
+  title: Write the canonical data model as a schema
+  x: 2976
+  y: 96
+  size: 32
+- id: '14'
+  region: m2
+  title: Build the dictionary importer
+  x: 3040
+  y: 96
+  size: 32
+- id: '15'
+  region: m2
+  title: Build the grammar importer
+  x: 3104
+  y: 96
+  size: 32
+- id: '16'
+  region: m2
+  title: Build the tagset and corpus importers
+  x: 3168
+  y: 96
+  size: 32
+- id: '17'
+  region: m2
+  title: Build the store validator
+  x: 2976
+  y: 160
+  size: 32
+- id: '18'
+  region: m2
+  title: 'M2 close-out: gate, verifier, tag m2'
+  x: 3040
+  y: 160
+  size: 32
+- id: '166'
+  region: m2
+  title: 'Fixture-sized importer tests: the gate stops importing the real archive'
+  x: 3104
+  y: 160
+  size: 32
+- id: '167'
+  region: m2
+  title: Resolve the SEM=ATT/SOV/REL archive vintage mismatch
+  x: 3168
+  y: 160
+  size: 32
+- id: '168'
+  region: m2
+  title: The gate validates the data the branch changed, not the whole archive
+  x: 2976
+  y: 224
+  size: 32
+- id: '169'
+  region: m2
+  title: 'The dictionary importer splits compound feature strings wrong: 4,269 bogus attributes'
+  x: 3040
+  y: 224
+  size: 32
+- id: '171'
+  region: m2
+  title: Resolve the remaining afr/eng vintage-drift and parse-artifact feature errors
+  x: 3104
+  y: 224
+  size: 32
+- id: '19'
+  region: m3
+  title: Build the tokeniser for the fixed sentence set
+  x: 4416
+  y: 96
+  size: 32
+- id: '20'
+  region: m3
+  title: Dictionary lookup against the runtime store
+  x: 4480
+  y: 96
+  size: 32
+- id: '21'
+  region: m3
+  title: Document the disambiguation rule format and decide the eng gap
+  x: 4544
+  y: 96
+  size: 32
+- id: '22'
+  region: m3
+  title: Rule interpreter on runtime tables
+  x: 4416
+  y: 160
+  size: 32
+- id: '23'
+  region: m3
+  title: Wire Options, Result, Status and the --trace flag
+  x: 4480
+  y: 160
+  size: 32
+- id: '24'
+  region: m3
+  title: Write the fixed sentence set's test table and fixture YAML
+  x: 4544
+  y: 160
+  size: 32
+- id: '25'
+  region: m3
+  title: Wire the English to UNL to Afrikaans pipeline for the fixed sentence set
+  x: 4416
+  y: 224
+  size: 32
+- id: '26'
+  region: m3
+  title: 'The test table is the test: a golden loader runs every row, and a held-out slice runs only at
+    the gate'
+  x: 4480
+  y: 224
+  size: 32
+- id: '90'
+  region: m7
+  title: 'The console: a local CIC page rendered from the issue files'
+  x: 4416
+  y: 1536
+  size: 32
+- id: '91'
+  region: m7
+  title: 'Source control and CI: a GitHub remote that mirrors the issue files'
+  x: 4480
+  y: 1536
+  size: 32
+- id: '92'
+  region: m7
+  title: 'Worktree architecture: one tree per quest, never two sessions in one tree'
+  x: 4544
+  y: 1536
+  size: 32
+- id: '93'
+  region: m7
+  title: 'Hooks as tracked scripts: logic under tools/factory/hooks/, one-line wrappers under .claude/'
+  x: 4608
+  y: 1536
+  size: 32
+- id: '94'
+  region: m7
+  title: CI parity with /gate, then GitHub becomes the only merge path
+  x: 4672
+  y: 1536
+  size: 32
+- id: '95'
+  region: m7
+  title: 'The console as a local service: one URL, every tree, live'
+  x: 4736
+  y: 1536
+  size: 32
+- id: '96'
+  region: m7
+  title: require-gate blocks the root tree from ever catching up with origin/main
+  x: 4800
+  y: 1536
+  size: 32
+- id: '97'
+  region: m7
+  title: require-gate decides the branch from the session's tree, not the command's
+  x: 4416
+  y: 1600
+  size: 32
+- id: '98'
+  region: m7
+  title: 'The console updates in place: no flicker, open cards and scroll survive'
+  x: 4480
+  y: 1600
+  size: 32
+- id: '99'
+  region: m7
+  title: 'The console as a web app: a Node service and a React client that grow with the project'
+  x: 4544
+  y: 1600
+  size: 32
+- id: '100'
+  region: m7
+  title: 'The console acts: run gates and tests, start and stop services, sync GitHub, open anything'
+  x: 4608
+  y: 1600
+  size: 32
+- id: '101'
+  region: m7
+  title: 'One entry per procedure: the factory-run and factory-retro wrappers fold into their skills'
+  x: 4672
+  y: 1600
+  size: 32
+- id: '102'
+  region: m7
+  title: 'The console runs on Linux and macOS: console.sh, and the SessionStart starter that issue 95
+    promised'
+  x: 4736
+  y: 1600
+  size: 32
+- id: '103'
+  region: m7
+  title: 'The loadout on every quest: the card shows agent, model and effort, and the validator refuses
+    a quest without them'
+  x: 4800
+  y: 1600
+  size: 32
+- id: '104'
+  region: m7
+  title: Main quests and side quests apart, and a block that crosses the line is marked on both cards
+  x: 4416
+  y: 1664
+  size: 32
+- id: '105'
+  region: m7
+  title: 'The quest giver as a skill: /quest plans one quest with the developer and writes its issue file'
+  x: 4480
+  y: 1664
+  size: 32
+- id: '106'
+  region: m7
+  title: 'The create-map skill: a new map is a new line of main quests, planned through interrogation,
+    ADRs and PLAN §7 before any quest is written'
+  x: 4544
+  y: 1664
+  size: 32
+- id: '107'
+  region: m7
+  title: 'Playwright as an MCP plugin: a Claude Code session in this repo can drive a real browser'
+  x: 4608
+  y: 1664
+  size: 32
+- id: '108'
+  region: m7
+  title: Console prose and doc-rail links don't fit the amber theme
+  x: 4672
+  y: 1664
+  size: 32
+- id: '109'
+  region: m7
+  title: A merged quest tree is removed by the merge path, and the console marks any tree whose branch
+    is already on main
+  x: 4736
+  y: 1664
+  size: 32
+- id: '110'
+  region: m7
+  title: The console's Now row shows the quest in flight, and clears when none is
+  x: 4800
+  y: 1664
+  size: 32
+- id: '111'
+  region: m7
+  title: Console has no base link colour, so every unstyled anchor falls back to browser blue
+  x: 4416
+  y: 1728
+  size: 32
+- id: '112'
+  region: m7
+  title: The Now row trusts the issue file, and the merged label stops guessing from ancestry
+  x: 4480
+  y: 1728
+  size: 32
+- id: '113'
+  region: m7
+  title: A milestone branch merges once, at its close-out, and a merged branch leaves origin
+  x: 4544
+  y: 1728
+  size: 32
+- id: '114'
+  region: m7
+  title: The fast gate re-runs a tooling suite once before it blocks, and records a flake as a flake
+  x: 4608
+  y: 1728
+  size: 32
+- id: '115'
+  region: m7
+  title: The red suite is its own commit, the coverage figure goes, and the decision brief joins the library
+  x: 4672
+  y: 1728
+  size: 32
+- id: '116'
+  region: m7
+  title: 'The console''s cut corners carry the border line: every snub card is framed on all six edges'
+  x: 4736
+  y: 1728
+  size: 32
+- id: '159'
+  region: m7
+  title: 'The Quests page opens to Status: Open, not Status: All'
+  x: 4800
+  y: 1728
+  size: 32
+- id: '162'
+  region: m7
+  title: 'The console can restart itself: a button for structural changes style hot-reload never picks
+    up'
+  x: 4416
+  y: 1792
+  size: 32
+- id: '164'
+  region: m7
+  title: 'The console looks like a CIC and reports like a quest log: one design system, the Console and
+    Quests rooms, and half-screen done properly'
+  x: 4480
+  y: 1792
+  size: 32
+- id: '165'
+  region: m7
+  title: Every issue gets its own branch, pull request and gate run
+  x: 4544
+  y: 1792
+  size: 32
+- id: '170'
+  region: m7
+  title: 'Verstaan Console as a desktop app: one launcher entry starts the service and opens its own window'
+  x: 4608
+  y: 1792
+  size: 32
+- id: '172'
+  region: m7
+  title: Write the M7 Console CIC issue files from the interrogation brief and ADR 0014–0016
+  x: 4672
+  y: 1792
+  size: 32
+- id: '173'
+  region: m7
+  title: 'The bridge: a landing room that names the next quest and the ship''s status at a glance'
+  x: 4736
+  y: 1792
+  size: 32
+- id: '174'
+  region: m7
+  title: 'The flight deck, staged: the boarding pass first, the terminal spawn second'
+  x: 4800
+  y: 1792
+  size: 32
+- id: '175'
+  region: m7
+  title: 'Ship systems: a read-only room that shows the factory''s own agents, skills, hooks and encounter
+    path'
+  x: 4416
+  y: 1856
+  size: 32
+- id: '176'
+  region: m7
+  title: 'Codex and debrief: issue files as briefings, lessons grouped for promotion'
+  x: 4480
+  y: 1856
+  size: 32
+- id: '177'
+  region: m7
+  title: 'The atlas: a hand-drawn map.yaml, one tile per issue, fog of war and a gate validator'
+  x: 4544
+  y: 1856
+  size: 32
+- id: '178'
+  region: m7
+  title: 'The harness: quest-run holds an Agent SDK session, checkpoints as Jobs cards, resumed across
+    a restart'
+  x: 4608
+  y: 1856
+  size: 32
