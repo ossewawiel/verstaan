@@ -205,6 +205,7 @@ Issues are `docs/factory/issues/NN-kebab-title.md`. The numbers below are the pl
 | M4 Compiler and tiers | `m4-NN-<slug>` | Generated tables per tier, equivalence tests, basic tier cross-built and run on a Pi Zero, Argos benchmark beside it | 27–32 |
 | M5 Applications | `m5-NN-<slug>` | CLI translator, register and context selection, first desktop shell | 33–38 |
 | M6 Growth | `m6-NN-<slug>` | Rule-author workflow for Afrikaans grammar growth, Dutch seeded from German and English references, CLA check, project site | 39–44 |
+| M7 Console CIC | `m7-NN-<slug>` | Bridge that lands, staged flight deck, ship-systems room, codex and debrief, hand-drawn atlas with fog of war, console as Agent SDK harness (ADR 0014–0016) | 172–178 |
 | Post-M6 | — | Neural fallback trigger, service tier, dashboards, bob harvest into a C++ project type | later |
 
 Each row's branch column names the pattern its issues use, `m<K>-NN-<slug>` — one branch per
