@@ -6186,7 +6186,7 @@
 - headword: "[vamp] [up]"
   id: 446474
   uw: "201590389"
-  features: {LEMMA: vamp up, BF: vamp, LEX: V, POS: VER, LST: MTW, TRA: TST, "#01": "LEMMA=vamp up,BF=vamp,LEX=V,POS=VER,PAR=M16,FRA=Y38", "#02": BF=up, SEM: CTC}
+  features: {LEMMA: vamp up, BF: up, LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M16, FRA: Y38, SEM: CTC}
   lang: eng
   frequency: 1
   priority: 0
@@ -6194,7 +6194,7 @@
 - headword: "[vamp] [up]"
   id: 446475
   uw: "201739545"
-  features: {LEMMA: vamp up, BF: vamp, LEX: V, POS: VER, LST: MTW, TRA: TST, "#01": "LEMMA=vamp up,BF=vamp,LEX=V,POS=VER,PAR=M16,FRA=Y38", "#02": BF=up, SEM: CRE}
+  features: {LEMMA: vamp up, BF: up, LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M16, FRA: Y38, SEM: CRE}
   lang: eng
   frequency: 1
   priority: 0
@@ -6202,7 +6202,7 @@
 - headword: "[vege] [out]"
   id: 433258
   uw: "200026734"
-  features: {LEMMA: vege out, BF: vege, LEX: V, POS: VER, LST: MTW, TRA: NTST, "#01": "LEMMA=vege out,BF=vege,LEX=V,POS=VER,PAR=M17,FRA=Y32", "#02": BF=out, SEM: BOV}
+  features: {LEMMA: vege out, BF: out, LEX: V, POS: VER, LST: MTW, TRA: NTST, PAR: M17, FRA: Y32, SEM: BOV}
   lang: eng
   frequency: 1
   priority: 0
@@ -6210,7 +6210,7 @@
 - headword: "[view] [as]"
   id: 437927
   uw: "200693780"
-  features: {LEMMA: view as, BF: view, LEX: V, POS: VER, LST: MTW, TRA: TST, "#01": "LEMMA=view as,BF=view,LEX=V,POS=VER,PAR=M16,FRA=Y35", "#02": BF=as, SEM: CGV}
+  features: {LEMMA: view as, BF: as, LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M16, FRA: Y35, SEM: CGV}
   lang: eng
   frequency: 49
   priority: 0
@@ -6218,7 +6218,7 @@
 - headword: "[vomit] [up]"
   id: 434097
   uw: "200076400"
-  features: {LEMMA: vomit up, BF: vomit, LEX: V, POS: VER, LST: MTW, TRA: TST, "#01": "LEMMA=vomit up,BF=vomit,LEX=V,POS=VER,PAR=M16,FRA=Y32", "#02": BF=up, SEM: BOV}
+  features: {LEMMA: vomit up, BF: up, LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M16, FRA: Y32, SEM: BOV}
   lang: eng
   frequency: 4
   priority: 0
@@ -6226,7 +6226,7 @@
 - headword: "[vote] [down]"
   id: 454601
   uw: "202462030"
-  features: {LEMMA: vote down, BF: vote, LEX: V, POS: VER, LST: MTW, TRA: TSTI, "#01": "LEMMA=vote down,BF=vote,LEX=V,POS=VER,PAR=M17,FRA=Y52", "#02": BF=down, SEM: SOV}
+  features: {LEMMA: vote down, BF: down, LEX: V, POS: VER, LST: MTW, TRA: TSTI, PAR: M17, FRA: Y52, SEM: SOV}
   lang: eng
   frequency: 1
   priority: 0
@@ -6234,7 +6234,7 @@
 - headword: "[vote] [down]"
   id: 454763
   uw: "202473688"
-  features: {LEMMA: vote down, BF: vote, LEX: V, POS: VER, LST: MTW, TRA: TST, "#01": "LEMMA=vote down,BF=vote,LEX=V,POS=VER,PAR=M17,FRA=Y38", "#02": BF=down, SEM: SOV}
+  features: {LEMMA: vote down, BF: down, LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M17, FRA: Y38, SEM: SOV}
   lang: eng
   frequency: 8
   priority: 0
@@ -6242,7 +6242,7 @@
 - headword: "[vote] [in]"
   id: 453644
   uw: "202400637"
-  features: {LEMMA: vote in, BF: vote, LEX: V, POS: VER, LST: MTW, TRA: TST, "#01": "LEMMA=vote in,BF=vote,LEX=V,POS=VER,PAR=M17,FRA=Y38", "#02": BF=in, SEM: SOV}
+  features: {LEMMA: vote in, BF: in, LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M17, FRA: Y38, SEM: SOV}
   lang: eng
   frequency: 2
   priority: 0
@@ -6250,7 +6250,7 @@
 - headword: "[vote] [out]"
   id: 454764
   uw: "202473688"
-  features: {LEMMA: vote out, BF: vote, LEX: V, POS: VER, LST: MTW, TRA: TST, "#01": "LEMMA=vote out,BF=vote,LEX=V,POS=VER,PAR=M17,FRA=Y38", "#02": BF=out, SEM: SOV}
+  features: {LEMMA: vote out, BF: out, LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M17, FRA: Y38, SEM: SOV}
   lang: eng
   frequency: 8
   priority: 0

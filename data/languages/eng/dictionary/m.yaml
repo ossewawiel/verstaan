@@ -24978,7 +24978,7 @@
 - headword: "[mail] [out]"
   id: 443849
   uw: "201437725"
-  features: {LEMMA: mail out, BF: mail, LEX: V, POS: VER, LST: MTW, TRA: TSTD, "#01": "LEMMA=mail out,BF=mail,LEX=V,POS=VER,PAR=M16,FRA=Y38", "#02": BF=out, SEM: CTC}
+  features: {LEMMA: mail out, BF: out, LEX: V, POS: VER, LST: MTW, TRA: TSTD, PAR: M16, FRA: Y38, SEM: CTC}
   lang: eng
   frequency: 2
   priority: 0
@@ -24986,7 +24986,7 @@
 - headword: "[make] [a clean breast]"
   id: 438396
   uw: "200817909"
-  features: {LEMMA: make a clean breast of, BF: make, LEX: V, POS: VER, LST: MTW, TRA: NTST, "#01": "LEMMA=make a clean breast of,BF=make,LEX=V,POS=VER,PAR=M1,FRA=Y48,FLX(INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";)", "#02": BF=a clean breast, SEM: CMV}
+  features: {LEMMA: make a clean breast of, BF: a clean breast, LEX: V, POS: VER, LST: MTW, TRA: NTST, PAR: M1, FRA: Y48, FLX: "INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";", SEM: CMV}
   lang: eng
   frequency: 1
   priority: 0
@@ -24994,7 +24994,7 @@
 - headword: "[make] [a face]"
   id: 433155
   uw: "200034288"
-  features: {LEMMA: make a face, BF: make, LEX: V, POS: VER, LST: MTW, TRA: NTST, "#01": "LEMMA=make a face,BF=make,LEX=V,POS=VER,PAR=M1,FRA=Y32,FLX(INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";)", "#02": BF=a face, SEM: BOV}
+  features: {LEMMA: make a face, BF: a face, LEX: V, POS: VER, LST: MTW, TRA: NTST, PAR: M1, FRA: Y32, FLX: "INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";", SEM: BOV}
   lang: eng
   frequency: 3
   priority: 0
@@ -25002,7 +25002,7 @@
 - headword: "[make] [a motion]"
   id: 439491
   uw: "200879356"
-  features: {LEMMA: make a motion, BF: make, LEX: V, POS: VER, LST: MTW, TRA: TSTI, "#01": "LEMMA=make a motion,BF=make,LEX=V,POS=VER,PAR=M1,FRA=Y43,FLX(INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";)", "#02": BF=a motion, SEM: CMV}
+  features: {LEMMA: make a motion, BF: a motion, LEX: V, POS: VER, LST: MTW, TRA: TSTI, PAR: M1, FRA: Y43, FLX: "INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";", SEM: CMV}
   lang: eng
   frequency: 1
   priority: 0
@@ -25010,7 +25010,7 @@
 - headword: "[make] [a point]"
   id: 455242
   uw: "202595234"
-  features: {LEMMA: make a point, BF: make, LEX: V, POS: VER, LST: MTW, TRA: TSTI, "#01": "LEMMA=make a point,BF=make,LEX=V,POS=VER,PAR=M1,FRA=Y52,FLX(INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";)", "#02": BF=a point, SEM: SOV}
+  features: {LEMMA: make a point, BF: a point, LEX: V, POS: VER, LST: MTW, TRA: TSTI, PAR: M1, FRA: Y52, FLX: "INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";", SEM: SOV}
   lang: eng
   frequency: 6
   priority: 0
@@ -25018,7 +25018,7 @@
 - headword: "[make] [a stink]"
   id: 439822
   uw: "200910654"
-  features: {LEMMA: make a stink, BF: make, LEX: V, POS: VER, LST: MTW, TRA: NTST, "#01": "LEMMA=make a stink,BF=make,LEX=V,POS=VER,PAR=M1,FRA=Y32,FLX(INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";)", "#02": BF=a stink, SEM: CMV}
+  features: {LEMMA: make a stink, BF: a stink, LEX: V, POS: VER, LST: MTW, TRA: NTST, PAR: M1, FRA: Y32, FLX: "INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";", SEM: CMV}
   lang: eng
   frequency: 2
   priority: 0
@@ -25026,7 +25026,7 @@
 - headword: "[make] [as if]"
   id: 433815
   uw: "200107468"
-  features: {LEMMA: make as if, BF: make, LEX: V, POS: VER, LST: MTW, TRA: TSTI, "#01": "LEMMA=make as if,BF=make,LEX=V,POS=VER,PAR=M1,FRA=Y58,FLX(INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";)", "#02": BF=as if, SEM: BOV}
+  features: {LEMMA: make as if, BF: as if, LEX: V, POS: VER, LST: MTW, TRA: TSTI, PAR: M1, FRA: Y58, FLX: "INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";", SEM: BOV}
   lang: eng
   frequency: 1
   priority: 0
@@ -25034,7 +25034,7 @@
 - headword: "[make] [believe]"
   id: 438801
   uw: "200838524"
-  features: {LEMMA: make believe, BF: make, LEX: V, POS: VER, LST: MTW, TRA: TST, "#01": "LEMMA=make believe,BF=make,LEX=V,POS=VER,PAR=M1,FRA=Y56,FLX(INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";)", "#02": BF=believe, SEM: CMV}
+  features: {LEMMA: make believe, BF: believe, LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M1, FRA: Y56, FLX: "INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";", SEM: CMV}
   lang: eng
   frequency: 1
   priority: 0
@@ -25042,7 +25042,7 @@
 - headword: "[make] [bold]"
   id: 453370
   uw: "202374924"
-  features: {LEMMA: make bold, BF: make, LEX: V, POS: VER, LST: MTW, TRA: TST, "#01": "LEMMA=make bold,BF=make,LEX=V,POS=VER,PAR=M1,FRA=Y62,FLX(INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";)", "#02": BF=bold, SEM: SOV}
+  features: {LEMMA: make bold, BF: bold, LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M1, FRA: Y62, FLX: "INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";", SEM: SOV}
   lang: eng
   frequency: 13
   priority: 0
@@ -25050,7 +25050,7 @@
 - headword: "[make] [clean]"
   id: 443492
   uw: "201532589"
-  features: {LEMMA: make clean, BF: make, LEX: V, POS: VER, LST: MTW, TRA: TST, "#01": "LEMMA=make clean,BF=make,LEX=V,POS=VER,PAR=M1,FRA=Y38,FLX(INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";)", "#02": BF=clean, SEM: CTC}
+  features: {LEMMA: make clean, BF: clean, LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M1, FRA: Y38, FLX: "INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";", SEM: CTC}
   lang: eng
   frequency: 17
   priority: 0
@@ -25058,7 +25058,7 @@
 - headword: "[make] [do]"
   id: 455155
   uw: "202587532"
-  features: {LEMMA: make do, BF: make, LEX: V, POS: VER, LST: MTW, TRA: TSTI, "#01": "LEMMA=make do,BF=make,LEX=V,POS=VER,PAR=M1,FRA=Y52,FLX(INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";)", "#02": BF=do, SEM: SOV}
+  features: {LEMMA: make do, BF: do, LEX: V, POS: VER, LST: MTW, TRA: TSTI, PAR: M1, FRA: Y52, FLX: "INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";", SEM: SOV}
   lang: eng
   frequency: 27
   priority: 0
@@ -25066,7 +25066,7 @@
 - headword: "[make] [for]"
   id: 445331
   uw: "201629589"
-  features: {LEMMA: make for, BF: make, LEX: V, POS: VER, LST: MTW, TRA: TST, "#01": "LEMMA=make for,BF=make,LEX=V,POS=VER,PAR=M1,FRA=Y38,FLX(INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";)", "#02": BF=for, SEM: CRE}
+  features: {LEMMA: make for, BF: for, LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M1, FRA: Y38, FLX: "INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";", SEM: CRE}
   lang: eng
   frequency: 49
   priority: 0
@@ -25074,7 +25074,7 @@
 - headword: "[make] [full]"
   id: 436249
   uw: "200452512"
-  features: {LEMMA: make full, BF: make, LEX: V, POS: VER, LST: MTW, TRA: TST, "#01": "LEMMA=make full,BF=make,LEX=V,POS=VER,PAR=M1,FRA=Y38,FLX(INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";)", "#02": BF=full, SEM: CHA}
+  features: {LEMMA: make full, BF: full, LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M1, FRA: Y38, FLX: "INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";", SEM: CHA}
   lang: eng
   frequency: 64
   priority: 0
@@ -25082,7 +25082,7 @@
 - headword: "[make] [fun]"
   id: 439309
   uw: "200851933"
-  features: {LEMMA: make fun, BF: make, LEX: V, POS: VER, LST: MTW, TRA: TST, "#01": "LEMMA=make fun,BF=make,LEX=V,POS=VER,PAR=M1,FRA=Y38,FLX(INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";)", "#02": BF=fun, SEM: CMV}
+  features: {LEMMA: make fun, BF: fun, LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M1, FRA: Y38, FLX: "INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";", SEM: CMV}
   lang: eng
   frequency: 16
   priority: 0
@@ -25090,7 +25090,7 @@
 - headword: "[make] [good]"
   id: 455551
   uw: "202579140"
-  features: {LEMMA: make good, BF: make, LEX: V, POS: VER, LST: MTW, TRA: TST, "#01": "LEMMA=make good,BF=make,LEX=V,POS=VER,PAR=M1,FRA=Y38,FLX(INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";)", "#02": BF=good, SEM: SOV}
+  features: {LEMMA: make good, BF: good, LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M1, FRA: Y38, FLX: "INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";", SEM: SOV}
   lang: eng
   frequency: 2
   priority: 0
@@ -25098,7 +25098,7 @@
 - headword: "[make] [grow]"
   id: 435122
   uw: "200253761"
-  features: {LEMMA: make grow, BF: make, LEX: V, POS: VER, LST: MTW, TRA: TST, "#01": "LEMMA=make grow,BF=make,LEX=V,POS=VER,PAR=M1,FRA=Y38,FLX(INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";)", "#02": BF=grow, SEM: CHA}
+  features: {LEMMA: make grow, BF: grow, LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M1, FRA: Y38, FLX: "INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";", SEM: CHA}
   lang: eng
   frequency: 4
   priority: 0
@@ -25106,7 +25106,7 @@
 - headword: "[make] [happy]"
   id: 454866
   uw: "202491383"
-  features: {LEMMA: make happy, BF: make, LEX: V, POS: VER, LST: MTW, TRA: NTST, "#01": "LEMMA=make happy,BF=make,LEX=V,POS=VER,PAR=M1,FRA=Y32,FLX(INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";)", "#02": BF=happy, SEM: SOV}
+  features: {LEMMA: make happy, BF: happy, LEX: V, POS: VER, LST: MTW, TRA: NTST, PAR: M1, FRA: Y32, FLX: "INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";", SEM: SOV}
   lang: eng
   frequency: 3
   priority: 0
@@ -25114,7 +25114,7 @@
 - headword: "[make] [hay]"
   id: 438445
   uw: "201163197"
-  features: {LEMMA: make hay, BF: make, LEX: V, POS: VER, LST: MTW, TRA: TSTI, "#01": "LEMMA=make hay,BF=make,LEX=V,POS=VER,PAR=M1,FRA=Y52,FLX(INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";)", "#02": BF=hay, SEM: CSM}
+  features: {LEMMA: make hay, BF: hay, LEX: V, POS: VER, LST: MTW, TRA: TSTI, PAR: M1, FRA: Y52, FLX: "INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";", SEM: CSM}
   lang: eng
   frequency: 1
   priority: 0
@@ -25122,7 +25122,7 @@
 - headword: "[make] [headway]"
   id: 440998
   uw: "201111028"
-  features: {LEMMA: make headway, BF: make, LEX: V, POS: VER, LST: MTW, TRA: NTST, "#01": "LEMMA=make headway,BF=make,LEX=V,POS=VER,PAR=M1,FRA=Y31,FLX(INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";)", "#02": BF=headway, SEM: CPT}
+  features: {LEMMA: make headway, BF: headway, LEX: V, POS: VER, LST: MTW, TRA: NTST, PAR: M1, FRA: Y31, FLX: "INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";", SEM: CPT}
   lang: eng
   frequency: 12
   priority: 0
@@ -25130,7 +25130,7 @@
 - headword: "[make] [it]"
   id: 455134
   uw: "202585860"
-  features: {LEMMA: make it, BF: make, LEX: V, POS: VER, LST: MTW, TRA: TSTI, "#01": "LEMMA=make it,BF=make,LEX=V,POS=VER,PAR=M1,FRA=Y32,FLX(INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";)", "#02": BF=it, SEM: SOV}
+  features: {LEMMA: make it, BF: it, LEX: V, POS: VER, LST: MTW, TRA: TSTI, PAR: M1, FRA: Y32, FLX: "INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";", SEM: SOV}
   lang: eng
   frequency: 8
   priority: 0
@@ -25138,7 +25138,7 @@
 - headword: "[make] [it]"
   id: 456390
   uw: "202525044"
-  features: {LEMMA: make it, BF: make, LEX: V, POS: VER, LST: MTW, TRA: NTST, "#01": "LEMMA=make it,BF=make,LEX=V,POS=VER,PAR=M1,FRA=Y32,FLX(INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";)", "#02": BF=it, SEM: SOV}
+  features: {LEMMA: make it, BF: it, LEX: V, POS: VER, LST: MTW, TRA: NTST, PAR: M1, FRA: Y32, FLX: "INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";", SEM: SOV}
   lang: eng
   frequency: 3
   priority: 0
@@ -25146,7 +25146,7 @@
 - headword: "[make] [it]"
   id: 456391
   uw: "202619924"
-  features: {LEMMA: make it, BF: make, LEX: V, POS: VER, LST: MTW, TRA: NTST, "#01": "LEMMA=make it,BF=make,LEX=V,POS=VER,PAR=M1,FRA=Y32,FLX(INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";)", "#02": BF=it, SEM: STT}
+  features: {LEMMA: make it, BF: it, LEX: V, POS: VER, LST: MTW, TRA: NTST, PAR: M1, FRA: Y32, FLX: "INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";", SEM: STT}
   lang: eng
   frequency: 16
   priority: 0
@@ -25154,7 +25154,7 @@
 - headword: "[make] [love]"
   id: 443661
   uw: "201426397"
-  features: {LEMMA: make love, BF: make, LEX: V, POS: VER, LST: MTW, "#01": "LEMMA=make love,BF=make,LEX=V,POS=VER,PAR=M1,FRA=Y0,FLX(INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";)", "#02": BF=love, SEM: CTC}
+  features: {LEMMA: make love, BF: love, LEX: V, POS: VER, LST: MTW, PAR: M1, FRA: Y0, FLX: "INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";", SEM: CTC}
   lang: eng
   frequency: 5
   priority: 0
@@ -25162,7 +25162,7 @@
 - headword: "[make] [merry]"
   id: 454865
   uw: "202491383"
-  features: {LEMMA: make merry, BF: make, LEX: V, POS: VER, LST: MTW, TRA: NTST, "#01": "LEMMA=make merry,BF=make,LEX=V,POS=VER,PAR=M1,FRA=Y32,FLX(INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";)", "#02": BF=merry, SEM: SOV}
+  features: {LEMMA: make merry, BF: merry, LEX: V, POS: VER, LST: MTW, TRA: NTST, PAR: M1, FRA: Y32, FLX: "INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";", SEM: SOV}
   lang: eng
   frequency: 3
   priority: 0
@@ -25170,7 +25170,7 @@
 - headword: "[make] [no bones]"
   id: 438395
   uw: "200817752"
-  features: {LEMMA: make no bones about, BF: make, LEX: V, POS: VER, LST: MTW, TRA: TSTI, "#01": "LEMMA=make no bones about,BF=make,LEX=V,POS=VER,PAR=M1,FRA=Y52,FLX(INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";),GOV(VA(PP([about]));)", "#02": BF=no bones, SEM: CMV}
+  features: {LEMMA: make no bones about, BF: no bones, LEX: V, POS: VER, LST: MTW, TRA: TSTI, PAR: M1, FRA: Y52, FLX: "INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";", GOV: "VA(PP([about]));", SEM: CMV}
   lang: eng
   frequency: 1
   priority: 0
@@ -25178,7 +25178,7 @@
 - headword: "[make] [noise]"
   id: 450819
   uw: "202172888"
-  features: {LEMMA: make noise, BF: make, LEX: V, POS: VER, LST: MTW, TRA: NTST, "#01": "LEMMA=make noise,BF=make,LEX=V,POS=VER,PAR=M1,FRA=Y31,FLX(INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";)", "#02": BF=noise, SEM: PCP}
+  features: {LEMMA: make noise, BF: noise, LEX: V, POS: VER, LST: MTW, TRA: NTST, PAR: M1, FRA: Y31, FLX: "INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";", SEM: PCP}
   lang: eng
   frequency: 3
   priority: 0
@@ -25186,7 +25186,7 @@
 - headword: "[make] [off]"
   id: 450028
   uw: "202073714"
-  features: {LEMMA: make off, BF: make, LEX: V, POS: VER, LST: MTW, TRA: TSTI, "#01": "LEMMA=make off,BF=make,LEX=V,POS=VER,PAR=M1,FRA=Y32,FLX(INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";)", "#02": BF=off, SEM: MOT}
+  features: {LEMMA: make off, BF: "off", LEX: V, POS: VER, LST: MTW, TRA: TSTI, PAR: M1, FRA: Y32, FLX: "INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";", SEM: MOT}
   lang: eng
   frequency: 7
   priority: 0
@@ -25194,7 +25194,7 @@
 - headword: "[make] [out]"
   id: 436381
   uw: "200757056"
-  features: {LEMMA: make out, BF: make, LEX: V, POS: VER, LST: MTW, TRA: TST, "#01": "LEMMA=make out,BF=make,LEX=V,POS=VER,PAR=M1,FRA=Y64,FLX(INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";)", "#02": BF=out, SEM: CMV}
+  features: {LEMMA: make out, BF: out, LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M1, FRA: Y64, FLX: "INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";", SEM: CMV}
   lang: eng
   frequency: 1
   priority: 0
@@ -25202,7 +25202,7 @@
 - headword: "[make] [out]"
   id: 443656
   uw: "201426153"
-  features: {LEMMA: make out, BF: make, LEX: V, POS: VER, LST: MTW, TRA: TST, "#01": "LEMMA=make out,BF=make,LEX=V,POS=VER,PAR=M1,FRA=Y39,FLX(INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";)", "#02": BF=out, SEM: CTC}
+  features: {LEMMA: make out, BF: out, LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M1, FRA: Y39, FLX: "INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";", SEM: CTC}
   lang: eng
   frequency: 1
   priority: 0
@@ -25210,7 +25210,7 @@
 - headword: "[make] [out]"
   id: 443660
   uw: "201426397"
-  features: {LEMMA: make out, BF: make, LEX: V, POS: VER, LST: MTW, "#01": "LEMMA=make out,BF=make,LEX=V,POS=VER,PAR=M1,FRA=Y0,FLX(INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";)", "#02": BF=out, SEM: CTC}
+  features: {LEMMA: make out, BF: out, LEX: V, POS: VER, LST: MTW, PAR: M1, FRA: Y0, FLX: "INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";", SEM: CTC}
   lang: eng
   frequency: 5
   priority: 0
@@ -25218,7 +25218,7 @@
 - headword: "[make] [out]"
   id: 449714
   uw: "200626300"
-  features: {LEMMA: make out, BF: make, LEX: V, POS: VER, LST: MTW, TRA: TST, "#01": "LEMMA=make out,BF=make,LEX=V,POS=VER,PAR=M1,FRA=Y38,FLX(INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";)", "#02": BF=out, SEM: CGV}
+  features: {LEMMA: make out, BF: out, LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M1, FRA: Y38, FLX: "INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";", SEM: CGV}
   lang: eng
   frequency: 3
   priority: 0
@@ -25226,7 +25226,7 @@
 - headword: "[make] [out]"
   id: 449715
   uw: "200931085"
-  features: {LEMMA: make out, BF: make, LEX: V, POS: VER, LST: MTW, TRA: TST, "#01": "LEMMA=make out,BF=make,LEX=V,POS=VER,PAR=M1,FRA=Y38,FLX(INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";)", "#02": BF=out, SEM: CMV}
+  features: {LEMMA: make out, BF: out, LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M1, FRA: Y38, FLX: "INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";", SEM: CMV}
   lang: eng
   frequency: 1
   priority: 0
@@ -25234,7 +25234,7 @@
 - headword: "[make] [out]"
   id: 449716
   uw: "201020731"
-  features: {LEMMA: make out, BF: make, LEX: V, POS: VER, LST: MTW, TRA: TST, "#01": "LEMMA=make out,BF=make,LEX=V,POS=VER,PAR=M1,FRA=Y38,FLX(INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";)", "#02": BF=out, SEM: CMV}
+  features: {LEMMA: make out, BF: out, LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M1, FRA: Y38, FLX: "INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";", SEM: CMV}
   lang: eng
   frequency: 7
   priority: 0
@@ -25242,7 +25242,7 @@
 - headword: "[make] [out]"
   id: 449717
   uw: "201064799"
-  features: {LEMMA: make out, BF: make, LEX: V, POS: VER, LST: MTW, TRA: TST, "#01": "LEMMA=make out,BF=make,LEX=V,POS=VER,PAR=M1,FRA=Y38,FLX(INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";)", "#02": BF=out, SEM: CMV}
+  features: {LEMMA: make out, BF: out, LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M1, FRA: Y38, FLX: "INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";", SEM: CMV}
   lang: eng
   frequency: 5
   priority: 0
@@ -25250,7 +25250,7 @@
 - headword: "[make] [out]"
   id: 449718
   uw: "202193194"
-  features: {LEMMA: make out, BF: make, LEX: V, POS: VER, LST: MTW, TRA: TST, "#01": "LEMMA=make out,BF=make,LEX=V,POS=VER,PAR=M1,FRA=Y38,FLX(INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";)", "#02": BF=out, SEM: PCP}
+  features: {LEMMA: make out, BF: out, LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M1, FRA: Y38, FLX: "INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";", SEM: PCP}
   lang: eng
   frequency: 50
   priority: 0
@@ -25258,7 +25258,7 @@
 - headword: "[make] [out]"
   id: 450257
   uw: "202617567"
-  features: {LEMMA: make out, BF: make, LEX: V, POS: VER, LST: MTW, TRA: TSTI, "#01": "LEMMA=make out,BF=make,LEX=V,POS=VER,PAR=M1,FRA=Y36,FLX(INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";)", "#02": BF=out, SEM: STT}
+  features: {LEMMA: make out, BF: out, LEX: V, POS: VER, LST: MTW, TRA: TSTI, PAR: M1, FRA: Y36, FLX: "INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";", SEM: STT}
   lang: eng
   frequency: 65
   priority: 0
@@ -25266,7 +25266,7 @@
 - headword: "[make] [out]"
   id: 455154
   uw: "202587532"
-  features: {LEMMA: make out, BF: make, LEX: V, POS: VER, LST: MTW, TRA: TSTI, "#01": "LEMMA=make out,BF=make,LEX=V,POS=VER,PAR=M1,FRA=Y52,FLX(INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";)", "#02": BF=out, SEM: SOV}
+  features: {LEMMA: make out, BF: out, LEX: V, POS: VER, LST: MTW, TRA: TSTI, PAR: M1, FRA: Y52, FLX: "INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";", SEM: SOV}
   lang: eng
   frequency: 27
   priority: 0
@@ -25274,7 +25274,7 @@
 - headword: "[make] [over]"
   id: 444807
   uw: "201669285"
-  features: {LEMMA: make over, BF: make, LEX: V, POS: VER, LST: MTW, TRA: TST, "#01": "LEMMA=make over,BF=make,LEX=V,POS=VER,PAR=M1,FRA=Y38,FLX(INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";)", "#02": BF=over, SEM: CRE}
+  features: {LEMMA: make over, BF: over, LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M1, FRA: Y38, FLX: "INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";", SEM: CRE}
   lang: eng
   frequency: 2
   priority: 0
@@ -25282,7 +25282,7 @@
 - headword: "[make] [over]"
   id: 444808
   uw: "201619725"
-  features: {LEMMA: make over, BF: make, LEX: V, POS: VER, LST: MTW, TRA: TST, "#01": "LEMMA=make over,BF=make,LEX=V,POS=VER,PAR=M1,FRA=Y38,FLX(INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";)", "#02": BF=over, SEM: CRE}
+  features: {LEMMA: make over, BF: over, LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M1, FRA: Y38, FLX: "INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";", SEM: CRE}
   lang: eng
   frequency: 5
   priority: 0
@@ -25290,7 +25290,7 @@
 - headword: "[make] [pass]"
   id: 447951
   uw: "202052476"
-  features: {LEMMA: make pass, BF: make, LEX: V, POS: VER, LST: MTW, TRA: TST, "#01": "LEMMA=make pass,BF=make,LEX=V,POS=VER,PAR=M1,FRA=Y38,FLX(INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";)", "#02": BF=pass, SEM: MOT}
+  features: {LEMMA: make pass, BF: pass, LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M1, FRA: Y38, FLX: "INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";", SEM: MOT}
   lang: eng
   frequency: 1
   priority: 0
@@ -25298,7 +25298,7 @@
 - headword: "[make] [peace]"
   id: 440085
   uw: "201093587"
-  features: {LEMMA: make peace, BF: make, LEX: V, POS: VER, LST: MTW, TRA: NTST, "#01": "LEMMA=make peace,BF=make,LEX=V,POS=VER,PAR=M1,FRA=Y32,FLX(INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";)", "#02": BF=peace, SEM: CPT}
+  features: {LEMMA: make peace, BF: peace, LEX: V, POS: VER, LST: MTW, TRA: NTST, PAR: M1, FRA: Y32, FLX: "INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";", SEM: CPT}
   lang: eng
   frequency: 2
   priority: 0
@@ -25306,7 +25306,7 @@
 - headword: "[make] [pure]"
   id: 436521
   uw: "200475183"
-  features: {LEMMA: make pure, BF: make, LEX: V, POS: VER, LST: MTW, TRA: TST, "#01": "LEMMA=make pure,BF=make,LEX=V,POS=VER,PAR=M1,FRA=Y38,FLX(INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";)", "#02": BF=pure, SEM: CHA}
+  features: {LEMMA: make pure, BF: pure, LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M1, FRA: Y38, FLX: "INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";", SEM: CHA}
   lang: eng
   frequency: 6
   priority: 0
@@ -25314,7 +25314,7 @@
 - headword: "[make] [relaxed]"
   id: 433573
   uw: "200025654"
-  features: {LEMMA: make relaxed, BF: make, LEX: V, POS: VER, LST: MTW, TRA: TST, "#01": "LEMMA=make relaxed,BF=make,LEX=V,POS=VER,PAR=M1,FRA=Y38,FLX(INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";)", "#02": BF=relaxed, SEM: BOV}
+  features: {LEMMA: make relaxed, BF: relaxed, LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M1, FRA: Y38, FLX: "INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";", SEM: BOV}
   lang: eng
   frequency: 2
   priority: 0
@@ -25322,7 +25322,7 @@
 - headword: "[make] [sense]"
   id: 456068
   uw: "202619612"
-  features: {LEMMA: make sense, BF: make, LEX: V, POS: VER, LST: MTW, TRA: TSTI, "#01": "LEMMA=make sense,BF=make,LEX=V,POS=VER,PAR=M1,FRA=Y31,FLX(INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";)", "#02": BF=sense, SEM: STT}
+  features: {LEMMA: make sense, BF: sense, LEX: V, POS: VER, LST: MTW, TRA: TSTI, PAR: M1, FRA: Y31, FLX: "INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";", SEM: STT}
   lang: eng
   frequency: 10
   priority: 0
@@ -25330,7 +25330,7 @@
 - headword: "[make] [sure]"
   id: 455243
   uw: "202595234"
-  features: {LEMMA: make sure, BF: make, LEX: V, POS: VER, LST: MTW, TRA: TSTI, "#01": "LEMMA=make sure,BF=make,LEX=V,POS=VER,PAR=M1,FRA=Y52,FLX(INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";)", "#02": BF=sure, SEM: SOV}
+  features: {LEMMA: make sure, BF: sure, LEX: V, POS: VER, LST: MTW, TRA: TSTI, PAR: M1, FRA: Y52, FLX: "INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";", SEM: SOV}
   lang: eng
   frequency: 6
   priority: 0
@@ -25338,7 +25338,7 @@
 - headword: "[make] [unnecessary]"
   id: 437000
   uw: "200549552"
-  features: {LEMMA: make unnecessary, BF: make, LEX: V, POS: VER, LST: MTW, TRA: TST, "#01": "LEMMA=make unnecessary,BF=make,LEX=V,POS=VER,PAR=M1,FRA=Y41,FLX(INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";)", "#02": BF=unnecessary, SEM: CHA}
+  features: {LEMMA: make unnecessary, BF: unnecessary, LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M1, FRA: Y41, FLX: "INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";", SEM: CHA}
   lang: eng
   frequency: 5
   priority: 0
@@ -25346,7 +25346,7 @@
 - headword: "[make] [up]"
   id: 433404
   uw: "200040928"
-  features: {LEMMA: make up, BF: make, LEX: V, POS: VER, LST: MTW, TRA: TST, "#01": "LEMMA=make up,BF=make,LEX=V,POS=VER,PAR=M1,FRA=Y32,FLX(INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";)", "#02": BF=up, SEM: BOV}
+  features: {LEMMA: make up, BF: up, LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M1, FRA: Y32, FLX: "INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";", SEM: BOV}
   lang: eng
   frequency: 1
   priority: 0
@@ -25354,7 +25354,7 @@
 - headword: "[make] [up]"
   id: 437460
   uw: "200764902"
-  features: {LEMMA: make up, BF: make, LEX: V, POS: VER, LST: MTW, TRA: NTST, "#01": "LEMMA=make up,BF=make,LEX=V,POS=VER,PAR=M1,FRA=Y32,FLX(INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";)", "#02": BF=up, SEM: CMV}
+  features: {LEMMA: make up, BF: up, LEX: V, POS: VER, LST: MTW, TRA: NTST, PAR: M1, FRA: Y32, FLX: "INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";", SEM: CMV}
   lang: eng
   frequency: 7
   priority: 0
@@ -25362,7 +25362,7 @@
 - headword: "[make] [up]"
   id: 447163
   uw: "202253456"
-  features: {LEMMA: make up, BF: make, LEX: V, POS: VER, LST: MTW, TRA: TSTD, "#01": "LEMMA=make up,BF=make,LEX=V,POS=VER,PAR=M1,FRA=Y50,FLX(INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";)", "#02": BF=up, SEM: POV}
+  features: {LEMMA: make up, BF: up, LEX: V, POS: VER, LST: MTW, TRA: TSTD, PAR: M1, FRA: Y50, FLX: "INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";", SEM: POV}
   lang: eng
   frequency: 11
   priority: 0
@@ -25370,7 +25370,7 @@
 - headword: "[make] [up]"
   id: 456411
   uw: "200276068"
-  features: {LEMMA: make up, BF: make, LEX: V, POS: VER, LST: MTW, TRA: TST, "#01": "LEMMA=make up,BF=make,LEX=V,POS=VER,PAR=M1,FRA=Y38,FLX(INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";)", "#02": BF=up, SEM: CHA}
+  features: {LEMMA: make up, BF: up, LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M1, FRA: Y38, FLX: "INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";", SEM: CHA}
   lang: eng
   frequency: 4
   priority: 0
@@ -25378,7 +25378,7 @@
 - headword: "[make] [up]"
   id: 456412
   uw: "201634424"
-  features: {LEMMA: make up, BF: make, LEX: V, POS: VER, LST: MTW, TRA: TST, "#01": "LEMMA=make up,BF=make,LEX=V,POS=VER,PAR=M1,FRA=Y38,FLX(INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";)", "#02": BF=up, SEM: CRE}
+  features: {LEMMA: make up, BF: up, LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M1, FRA: Y38, FLX: "INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";", SEM: CRE}
   lang: eng
   frequency: 8
   priority: 0
@@ -25386,7 +25386,7 @@
 - headword: "[make] [up]"
   id: 456413
   uw: "201753465"
-  features: {LEMMA: make up, BF: make, LEX: V, POS: VER, LST: MTW, TRA: TST, "#01": "LEMMA=make up,BF=make,LEX=V,POS=VER,PAR=M1,FRA=Y38,FLX(INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";)", "#02": BF=up, SEM: CRE}
+  features: {LEMMA: make up, BF: up, LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M1, FRA: Y38, FLX: "INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";", SEM: CRE}
   lang: eng
   frequency: 5
   priority: 0
@@ -25394,7 +25394,7 @@
 - headword: "[make] [up]"
   id: 456414
   uw: "202520730"
-  features: {LEMMA: make up, BF: make, LEX: V, POS: VER, LST: MTW, TRA: TST, "#01": "LEMMA=make up,BF=make,LEX=V,POS=VER,PAR=M1,FRA=Y38,FLX(INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";)", "#02": BF=up, SEM: SOV}
+  features: {LEMMA: make up, BF: up, LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M1, FRA: Y38, FLX: "INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";", SEM: SOV}
   lang: eng
   frequency: 4
   priority: 0
@@ -25402,7 +25402,7 @@
 - headword: "[make] [up]"
   id: 456415
   uw: "202620587"
-  features: {LEMMA: make up, BF: make, LEX: V, POS: VER, LST: MTW, TRA: TST, "#01": "LEMMA=make up,BF=make,LEX=V,POS=VER,PAR=M1,FRA=Y38,FLX(INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";)", "#02": BF=up, SEM: STT}
+  features: {LEMMA: make up, BF: up, LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M1, FRA: Y38, FLX: "INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";", SEM: STT}
   lang: eng
   frequency: 246
   priority: 0
@@ -25410,7 +25410,7 @@
 - headword: "[make] [up]"
   id: 457066
   uw: "202672540"
-  features: {LEMMA: make up, BF: make, LEX: V, POS: VER, LST: MTW, TRA: TST, "#01": "LEMMA=make up,BF=make,LEX=V,POS=VER,PAR=M1,FRA=Y41,FLX(INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";)", "#02": BF=up, SEM: STT}
+  features: {LEMMA: make up, BF: up, LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M1, FRA: Y41, FLX: "INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";", SEM: STT}
   lang: eng
   frequency: 7
   priority: 0
@@ -25418,7 +25418,7 @@
 - headword: "[make] [up] [mind]"
   id: 437944
   uw: "200697589"
-  features: {LEMMA: make up <person>'s mind, BF: make, LEX: V, POS: VER, LST: MTW, TRA: TST, "#01": "LEMMA=make up <person>'s mind,BF=make,LEX=V,POS=VER,PAR=M1,FRA=Y38,FLX(INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";)", "#02": BF=up, "#03": BF=mind, SEM: CGV}
+  features: {LEMMA: make up <person>'s mind, BF: mind, LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M1, FRA: Y38, FLX: "INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";", SEM: CGV}
   lang: eng
   frequency: 4
   priority: 0
@@ -25426,7 +25426,7 @@
 - headword: "[make] [vibrant sounds]"
   id: 440780
   uw: "201052936"
-  features: {LEMMA: make vibrant sounds, BF: make, LEX: V, POS: VER, LST: MTW, TRA: NTST, "#01": "LEMMA=make vibrant sounds,BF=make,LEX=V,POS=VER,PAR=M1,FRA=Y31,FLX(INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";)", "#02": BF=vibrant sounds, SEM: CMV}
+  features: {LEMMA: make vibrant sounds, BF: vibrant sounds, LEX: V, POS: VER, LST: MTW, TRA: NTST, PAR: M1, FRA: Y31, FLX: "INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";", SEM: CMV}
   lang: eng
   frequency: 1
   priority: 0
@@ -25434,7 +25434,7 @@
 - headword: "[make] [water]"
   id: 434208
   uw: "200072012"
-  features: {LEMMA: make water, BF: make, LEX: V, POS: VER, LST: MTW, TRA: NTST, "#01": "LEMMA=make water,BF=make,LEX=V,POS=VER,PAR=M1,FRA=Y31,FLX(INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";)", "#02": BF=water, SEM: BOV}
+  features: {LEMMA: make water, BF: water, LEX: V, POS: VER, LST: MTW, TRA: NTST, PAR: M1, FRA: Y31, FLX: "INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";", SEM: BOV}
   lang: eng
   frequency: 4
   priority: 0
@@ -25442,7 +25442,7 @@
 - headword: "[make] [way]"
   id: 449582
   uw: "202098332"
-  features: {LEMMA: make way, BF: make, LEX: V, POS: VER, LST: MTW, TRA: NTST, "#01": "LEMMA=make way,BF=make,LEX=V,POS=VER,PAR=M1,FRA=Y32,FLX(INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";)", "#02": BF=way, SEM: MOT}
+  features: {LEMMA: make way, BF: way, LEX: V, POS: VER, LST: MTW, TRA: NTST, PAR: M1, FRA: Y32, FLX: "INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";", SEM: MOT}
   lang: eng
   frequency: 4
   priority: 0
@@ -25450,7 +25450,7 @@
 - headword: "[make] [whoopie]"
   id: 454864
   uw: "202491383"
-  features: {LEMMA: make whoopie, BF: make, LEX: V, POS: VER, LST: MTW, TRA: NTST, "#01": "LEMMA=make whoopie,BF=make,LEX=V,POS=VER,PAR=M1,FRA=Y32,FLX(INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";)", "#02": BF=whoopie, SEM: SOV}
+  features: {LEMMA: make whoopie, BF: whoopie, LEX: V, POS: VER, LST: MTW, TRA: NTST, PAR: M1, FRA: Y32, FLX: "INF:=0>\"\";PAS:=\"make\">\"made\";PTP:=\"make\">\"made\";GER:=1>\"ing\";3PS&PRS:=0>\"s\";", SEM: SOV}
   lang: eng
   frequency: 3
   priority: 0
@@ -25458,7 +25458,7 @@
 - headword: "[map] [out]"
   id: 446638
   uw: "201756149"
-  features: {LEMMA: map out, BF: map, LEX: V, POS: VER, LST: MTW, TRA: TST, "#01": "LEMMA=map out,BF=map,LEX=V,POS=VER,PAR=M1,FRA=Y38,FLX(INF:=0>\"\";PAS:=0>\"ped\";PTP:=0>\"ped\";GER:=0>\"ping\";3PS&PRS:=0>\"s\";)", "#02": BF=out, SEM: CRE}
+  features: {LEMMA: map out, BF: out, LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M1, FRA: Y38, FLX: "INF:=0>\"\";PAS:=0>\"ped\";PTP:=0>\"ped\";GER:=0>\"ping\";3PS&PRS:=0>\"s\";", SEM: CRE}
   lang: eng
   frequency: 2
   priority: 0
@@ -25466,7 +25466,7 @@
 - headword: "[march] [on]"
   id: 448243
   uw: "201992503"
-  features: {LEMMA: march on, BF: march, LEX: V, POS: VER, LST: MTW, TRA: NTST, "#01": "LEMMA=march on,BF=march,LEX=V,POS=VER,PAR=M19,FRA=Y31", "#02": BF=on, SEM: MOT}
+  features: {LEMMA: march on, BF: "on", LEX: V, POS: VER, LST: MTW, TRA: NTST, PAR: M19, FRA: Y31, SEM: MOT}
   lang: eng
   frequency: 46
   priority: 0
@@ -25474,7 +25474,7 @@
 - headword: "[march] [out]"
   id: 450091
   uw: "202083923"
-  features: {LEMMA: march out, BF: march, LEX: V, POS: VER, LST: MTW, TRA: TSTI, "#01": "LEMMA=march out,BF=march,LEX=V,POS=VER,PAR=M19,FRA=Y31", "#02": BF=out, SEM: MOT}
+  features: {LEMMA: march out, BF: out, LEX: V, POS: VER, LST: MTW, TRA: TSTI, PAR: M19, FRA: Y31, SEM: MOT}
   lang: eng
   frequency: 1
   priority: 0
@@ -25482,7 +25482,7 @@
 - headword: "[mark] [down]"
   id: 452419
   uw: "202320078"
-  features: {LEMMA: mark down, BF: mark, LEX: V, POS: VER, LST: MTW, TRA: TST, "#01": "LEMMA=mark down,BF=mark,LEX=V,POS=VER,PAR=M16,FRA=Y38", "#02": BF=down, SEM: POV}
+  features: {LEMMA: mark down, BF: down, LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M16, FRA: Y38, SEM: POV}
   lang: eng
   frequency: 1
   priority: 0
@@ -25490,7 +25490,7 @@
 - headword: "[mark] [off]"
   id: 437513
   uw: "200234725"
-  features: {LEMMA: mark off, BF: mark, LEX: V, POS: VER, LST: MTW, TRA: TST, "#01": "LEMMA=mark off,BF=mark,LEX=V,POS=VER,PAR=M16,FRA=Y38", "#02": BF=off, SEM: CHA}
+  features: {LEMMA: mark off, BF: "off", LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M16, FRA: Y38, SEM: CHA}
   lang: eng
   frequency: 2
   priority: 0
@@ -25498,7 +25498,7 @@
 - headword: "[mark] [off]"
   id: 437514
   uw: "200662182"
-  features: {LEMMA: mark off, BF: mark, LEX: V, POS: VER, LST: MTW, TRA: TST, "#01": "LEMMA=mark off,BF=mark,LEX=V,POS=VER,PAR=M16,FRA=Y38", "#02": BF=off, SEM: CGV}
+  features: {LEMMA: mark off, BF: "off", LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M16, FRA: Y38, SEM: CGV}
   lang: eng
   frequency: 2
   priority: 0
@@ -25506,7 +25506,7 @@
 - headword: "[mark] [out]"
   id: 434826
   uw: "200234725"
-  features: {LEMMA: mark out, BF: mark, LEX: V, POS: VER, LST: MTW, TRA: TST, "#01": "LEMMA=mark out,BF=mark,LEX=V,POS=VER,PAR=M16,FRA=Y38", "#02": BF=out, SEM: CHA}
+  features: {LEMMA: mark out, BF: out, LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M16, FRA: Y38, SEM: CHA}
   lang: eng
   frequency: 2
   priority: 0
@@ -25514,7 +25514,7 @@
 - headword: "[mark] [up]"
   id: 452417
   uw: "202319824"
-  features: {LEMMA: mark up, BF: mark, LEX: V, POS: VER, LST: MTW, TRA: TST, "#01": "LEMMA=mark up,BF=mark,LEX=V,POS=VER,PAR=M16,FRA=Y38", "#02": BF=up, SEM: POV}
+  features: {LEMMA: mark up, BF: up, LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M16, FRA: Y38, SEM: POV}
   lang: eng
   frequency: 1
   priority: 0
@@ -25522,7 +25522,7 @@
 - headword: "[mat] [up]"
   id: 436393
   uw: "200565592"
-  features: {LEMMA: mat up, BF: mat, LEX: V, POS: VER, LST: MTW, TRA: NTST, "#01": "LEMMA=mat up,BF=mat,LEX=V,POS=VER,PAR=M1,FRA=Y31,FLX(INF:=0>\"\";PAS:=0>\"ted\";PTP:=0>\"ted\";GER:=0>\"ting\";3PS&PRS:=0>\"s\";)", "#02": BF=up, SEM: CHA}
+  features: {LEMMA: mat up, BF: up, LEX: V, POS: VER, LST: MTW, TRA: NTST, PAR: M1, FRA: Y31, FLX: "INF:=0>\"\";PAS:=0>\"ted\";PTP:=0>\"ted\";GER:=0>\"ting\";3PS&PRS:=0>\"s\";", SEM: CHA}
   lang: eng
   frequency: 1
   priority: 0
@@ -25530,7 +25530,7 @@
 - headword: "[matt] [up]"
   id: 436394
   uw: "200565592"
-  features: {LEMMA: matt-up, BF: matt, LEX: V, POS: VER, LST: MTW, TRA: NTST, "#01": "LEMMA=matt-up,BF=matt,LEX=V,POS=VER,PAR=M16,FRA=Y31", "#02": BF=up, SEM: CHA}
+  features: {LEMMA: matt-up, BF: up, LEX: V, POS: VER, LST: MTW, TRA: NTST, PAR: M16, FRA: Y31, SEM: CHA}
   lang: eng
   frequency: 1
   priority: 0
@@ -25538,7 +25538,7 @@
 - headword: "[matte] [up]"
   id: 436395
   uw: "200565592"
-  features: {LEMMA: matte up, BF: matte, LEX: V, POS: VER, LST: MTW, TRA: NTST, "#01": "LEMMA=matte up,BF=matte,LEX=V,POS=VER,PAR=M17,FRA=Y31", "#02": BF=up, SEM: CHA}
+  features: {LEMMA: matte up, BF: up, LEX: V, POS: VER, LST: MTW, TRA: NTST, PAR: M17, FRA: Y31, SEM: CHA}
   lang: eng
   frequency: 1
   priority: 0
@@ -25546,7 +25546,7 @@
 - headword: "[matter] [to]"
   id: 457220
   uw: "202678663"
-  features: {LEMMA: matter to, BF: matter, LEX: V, POS: VER, LST: MTW, TRA: TST, "#01": "LEMMA=matter to,BF=matter,LEX=V,POS=VER,PAR=M16,FRA=Y40", "#02": BF=to, SEM: STT}
+  features: {LEMMA: matter to, BF: to, LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M16, FRA: Y40, SEM: STT}
   lang: eng
   frequency: 6
   priority: 0
@@ -25554,7 +25554,7 @@
 - headword: "[max] [out]"
   id: 448375
   uw: "202007111"
-  features: {LEMMA: max out, BF: max, LEX: V, POS: VER, LST: MTW, TRA: NTST, "#01": "LEMMA=max out,BF=max,LEX=V,POS=VER,PAR=M19,FRA=Y31", "#02": BF=out, SEM: MOT}
+  features: {LEMMA: max out, BF: out, LEX: V, POS: VER, LST: MTW, TRA: NTST, PAR: M19, FRA: Y31, SEM: MOT}
   lang: eng
   frequency: 1
   priority: 0
@@ -25562,7 +25562,7 @@
 - headword: "[measure] [out]"
   id: 437716
   uw: "200647094"
-  features: {LEMMA: measure out, BF: measure, LEX: V, POS: VER, LST: MTW, TRA: TST, "#01": "LEMMA=measure out,BF=measure,LEX=V,POS=VER,PAR=M17,FRA=Y38", "#02": BF=out, SEM: CGV}
+  features: {LEMMA: measure out, BF: out, LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M17, FRA: Y38, SEM: CGV}
   lang: eng
   frequency: 36
   priority: 0
@@ -25570,7 +25570,7 @@
 - headword: "[measure] [up]"
   id: 457227
   uw: "202679012"
-  features: {LEMMA: measure up, BF: measure, LEX: V, POS: VER, LST: MTW, TRA: NTST, "#01": "LEMMA=measure up,BF=measure,LEX=V,POS=VER,PAR=M17,FRA=Y31", "#02": BF=up, SEM: STT}
+  features: {LEMMA: measure up, BF: up, LEX: V, POS: VER, LST: MTW, TRA: NTST, PAR: M17, FRA: Y31, SEM: STT}
   lang: eng
   frequency: 16
   priority: 0
@@ -25578,7 +25578,7 @@
 - headword: "[meet] [up]"
   id: 449479
   uw: "202022977"
-  features: {LEMMA: meet up with, BF: meet, LEX: V, POS: VER, LST: MTW, TRA: TST, "#01": "LEMMA=meet up with,BF=meet,LEX=V,POS=VER,PAR=M22,FRA=Y39,FLX(PAS:=\"met\";PTP:=\"met\";),GOV(VC(PP([with]));)", "#02": BF=up, SEM: MOT}
+  features: {LEMMA: meet up with, BF: up, LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M22, FRA: Y39, FLX: "PAS:=\"met\";PTP:=\"met\";", GOV: "VC(PP([with]));", SEM: MOT}
   lang: eng
   frequency: 3
   priority: 0
@@ -25586,7 +25586,7 @@
 - headword: "[mellow] [out]"
   id: 435128
   uw: "200254486"
-  features: {LEMMA: mellow out, BF: mellow, LEX: V, POS: VER, LST: MTW, TRA: NTST, "#01": "LEMMA=mellow out,BF=mellow,LEX=V,POS=VER,PAR=M16,FRA=Y31", "#02": BF=out, SEM: CHA}
+  features: {LEMMA: mellow out, BF: out, LEX: V, POS: VER, LST: MTW, TRA: NTST, PAR: M16, FRA: Y31, SEM: CHA}
   lang: eng
   frequency: 3
   priority: 0
@@ -25594,7 +25594,7 @@
 - headword: "[melt] [down]"
   id: 433767
   uw: "200444629"
-  features: {LEMMA: melt down, BF: melt, LEX: V, POS: VER, LST: MTW, TRA: TST, "#01": "LEMMA=melt down,BF=melt,LEX=V,POS=VER,PAR=M16,FRA=Y31", "#02": BF=down, SEM: CHA}
+  features: {LEMMA: melt down, BF: down, LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M16, FRA: Y31, SEM: CHA}
   lang: eng
   frequency: 4
   priority: 0
@@ -25602,7 +25602,7 @@
 - headword: "[melt] [off]"
   id: 433866
   uw: "200045817"
-  features: {LEMMA: melt off, BF: melt, LEX: V, POS: VER, LST: MTW, TRA: NTST, "#01": "LEMMA=melt off,BF=melt,LEX=V,POS=VER,PAR=M16,FRA=Y32", "#02": BF=off, SEM: BOV}
+  features: {LEMMA: melt off, BF: "off", LEX: V, POS: VER, LST: MTW, TRA: NTST, PAR: M16, FRA: Y32, SEM: BOV}
   lang: eng
   frequency: 3
   priority: 0
@@ -25610,7 +25610,7 @@
 - headword: "[mess] [about]"
   id: 456574
   uw: "202639075"
-  features: {LEMMA: mess about, BF: mess, LEX: V, POS: VER, LST: MTW, TRA: TSTI, "#01": "LEMMA=mess about,BF=mess,LEX=V,POS=VER,PAR=M19,FRA=Y32", "#02": BF=about, SEM: STT}
+  features: {LEMMA: mess about, BF: about, LEX: V, POS: VER, LST: MTW, TRA: TSTI, PAR: M19, FRA: Y32, SEM: STT}
   lang: eng
   frequency: 14
   priority: 0
@@ -25618,7 +25618,7 @@
 - headword: "[mess] [around]"
   id: 443894
   uw: "201473346"
-  features: {LEMMA: mess around, BF: mess, LEX: V, POS: VER, LST: MTW, TRA: TSTI, "#01": "LEMMA=mess around,BF=mess,LEX=V,POS=VER,PAR=M19,FRA=Y32", "#02": BF=around, SEM: CTC}
+  features: {LEMMA: mess around, BF: around, LEX: V, POS: VER, LST: MTW, TRA: TSTI, PAR: M19, FRA: Y32, SEM: CTC}
   lang: eng
   frequency: 5
   priority: 0
@@ -25626,7 +25626,7 @@
 - headword: "[mess] [up]"
   id: 442837
   uw: "200276214"
-  features: {LEMMA: mess up, BF: mess, LEX: V, POS: VER, LST: MTW, TRA: TST, "#01": "LEMMA=mess up,BF=mess,LEX=V,POS=VER,PAR=M19,FRA=Y38", "#02": BF=up, SEM: CHA}
+  features: {LEMMA: mess up, BF: up, LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M19, FRA: Y38, SEM: CHA}
   lang: eng
   frequency: 1
   priority: 0
@@ -25634,7 +25634,7 @@
 - headword: "[mess] [up]"
   id: 442838
   uw: "201387493"
-  features: {LEMMA: mess up, BF: mess, LEX: V, POS: VER, LST: MTW, TRA: TST, "#01": "LEMMA=mess up,BF=mess,LEX=V,POS=VER,PAR=M19,FRA=Y38", "#02": BF=up, SEM: CTC}
+  features: {LEMMA: mess up, BF: up, LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M19, FRA: Y38, SEM: CTC}
   lang: eng
   frequency: 1
   priority: 0
@@ -25642,7 +25642,7 @@
 - headword: "[mess] [up]"
   id: 451299
   uw: "202527651"
-  features: {LEMMA: mess up, BF: mess, LEX: V, POS: VER, LST: MTW, TRA: TST, "#01": "LEMMA=mess up,BF=mess,LEX=V,POS=VER,PAR=M19,FRA=Y32", "#02": BF=up, SEM: SOV}
+  features: {LEMMA: mess up, BF: up, LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M19, FRA: Y32, SEM: SOV}
   lang: eng
   frequency: 11
   priority: 0
@@ -25650,7 +25650,7 @@
 - headword: "[mete] [out]"
   id: 452258
   uw: "202294436"
-  features: {LEMMA: mete out, BF: mete, LEX: V, POS: VER, LST: MTW, TRA: TSTD, "#01": "LEMMA=mete out,BF=mete,LEX=V,POS=VER,PAR=M17,FRA=Y38", "#02": BF=out, SEM: POV}
+  features: {LEMMA: mete out, BF: out, LEX: V, POS: VER, LST: MTW, TRA: TSTD, PAR: M17, FRA: Y38, SEM: POV}
   lang: eng
   frequency: 24
   priority: 0
@@ -25658,7 +25658,7 @@
 - headword: "[mill] [about]"
   id: 447074
   uw: "201902126"
-  features: {LEMMA: mill about, BF: mill, LEX: V, POS: VER, LST: MTW, TRA: NTST, "#01": "LEMMA=mill about,BF=mill,LEX=V,POS=VER,PAR=M16,FRA=Y31", "#02": BF=about, SEM: MOT}
+  features: {LEMMA: mill about, BF: about, LEX: V, POS: VER, LST: MTW, TRA: NTST, PAR: M16, FRA: Y31, SEM: MOT}
   lang: eng
   frequency: 2
   priority: 0
@@ -25666,7 +25666,7 @@
 - headword: "[mill] [about]"
   id: 456580
   uw: "202639075"
-  features: {LEMMA: mill about, BF: mill, LEX: V, POS: VER, LST: MTW, TRA: TSTI, "#01": "LEMMA=mill about,BF=mill,LEX=V,POS=VER,PAR=M16,FRA=Y32", "#02": BF=about, SEM: STT}
+  features: {LEMMA: mill about, BF: about, LEX: V, POS: VER, LST: MTW, TRA: TSTI, PAR: M16, FRA: Y32, SEM: STT}
   lang: eng
   frequency: 14
   priority: 0
@@ -25674,7 +25674,7 @@
 - headword: "[mill] [around]"
   id: 447075
   uw: "201902126"
-  features: {LEMMA: mill around, BF: mill, LEX: V, POS: VER, LST: MTW, TRA: NTST, "#01": "LEMMA=mill around,BF=mill,LEX=V,POS=VER,PAR=M16,FRA=Y31", "#02": BF=around, SEM: MOT}
+  features: {LEMMA: mill around, BF: around, LEX: V, POS: VER, LST: MTW, TRA: NTST, PAR: M16, FRA: Y31, SEM: MOT}
   lang: eng
   frequency: 2
   priority: 0
@@ -25682,7 +25682,7 @@
 - headword: "[mill] [around]"
   id: 456581
   uw: "202639075"
-  features: {LEMMA: mill around, BF: mill, LEX: V, POS: VER, LST: MTW, TRA: TSTI, "#01": "LEMMA=mill around,BF=mill,LEX=V,POS=VER,PAR=M16,FRA=Y32", "#02": BF=around, SEM: STT}
+  features: {LEMMA: mill around, BF: around, LEX: V, POS: VER, LST: MTW, TRA: TSTI, PAR: M16, FRA: Y32, SEM: STT}
   lang: eng
   frequency: 14
   priority: 0
@@ -25690,7 +25690,7 @@
 - headword: "[mist] [over]"
   id: 435773
   uw: "200361495"
-  features: {LEMMA: mist over, BF: mist, LEX: V, POS: VER, LST: MTW, TRA: NTST, "#01": "LEMMA=mist over,BF=mist,LEX=V,POS=VER,PAR=M16,FRA=Y31", "#02": BF=over, SEM: CHA}
+  features: {LEMMA: mist over, BF: over, LEX: V, POS: VER, LST: MTW, TRA: NTST, PAR: M16, FRA: Y31, SEM: CHA}
   lang: eng
   frequency: 2
   priority: 0
@@ -25698,7 +25698,7 @@
 - headword: "[mix] [in]"
   id: 436068
   uw: "200184117"
-  features: {LEMMA: mix in, BF: mix, LEX: V, POS: VER, LST: MTW, TRA: TST, "#01": "LEMMA=mix in,BF=mix,LEX=V,POS=VER,PAR=M19,FRA=Y38", "#02": BF=in, SEM: CHA}
+  features: {LEMMA: mix in, BF: in, LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M19, FRA: Y38, SEM: CHA}
   lang: eng
   frequency: 2
   priority: 0
@@ -25706,7 +25706,7 @@
 - headword: "[mix] [in]"
   id: 436069
   uw: "200396035"
-  features: {LEMMA: mix in, BF: mix, LEX: V, POS: VER, LST: MTW, TRA: TST, "#01": "LEMMA=mix in,BF=mix,LEX=V,POS=VER,PAR=M19,FRA=Y38", "#02": BF=in, SEM: CHA}
+  features: {LEMMA: mix in, BF: in, LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M19, FRA: Y38, SEM: CHA}
   lang: eng
   frequency: 3
   priority: 0
@@ -25714,7 +25714,7 @@
 - headword: "[mix] [up]"
   id: 437326
   uw: "200620379"
-  features: {LEMMA: mix up, BF: mix, LEX: V, POS: VER, LST: MTW, TRA: TST, "#01": "LEMMA=mix up,BF=mix,LEX=V,POS=VER,PAR=M19,FRA=Y40", "#02": BF=up, SEM: CGV}
+  features: {LEMMA: mix up, BF: up, LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M19, FRA: Y40, SEM: CGV}
   lang: eng
   frequency: 2
   priority: 0
@@ -25722,7 +25722,7 @@
 - headword: "[mix] [up]"
   id: 445948
   uw: "201657254"
-  features: {LEMMA: mix up, BF: mix, LEX: V, POS: VER, LST: MTW, TRA: TST, "#01": "LEMMA=mix up,BF=mix,LEX=V,POS=VER,PAR=M19,FRA=Y38", "#02": BF=up, SEM: CRE}
+  features: {LEMMA: mix up, BF: up, LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M19, FRA: Y38, SEM: CRE}
   lang: eng
   frequency: 1
   priority: 0
@@ -25730,7 +25730,7 @@
 - headword: "[mock] [up]"
   id: 446198
   uw: "201697406"
-  features: {LEMMA: mock up, BF: mock, LEX: V, POS: VER, LST: MTW, TRA: TST, "#01": "LEMMA=mock up,BF=mock,LEX=V,POS=VER,PAR=M16,FRA=Y38", "#02": BF=up, SEM: CRE}
+  features: {LEMMA: mock up, BF: up, LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M16, FRA: Y38, SEM: CRE}
   lang: eng
   frequency: 1
   priority: 0
@@ -25738,7 +25738,7 @@
 - headword: "[monkey] [around]"
   id: 443897
   uw: "201473346"
-  features: {LEMMA: monkey around, BF: monkey, LEX: V, POS: VER, LST: MTW, TRA: TSTI, "#01": "LEMMA=monkey around,BF=monkey,LEX=V,POS=VER,PAR=M16,FRA=Y32", "#02": BF=around, SEM: CTC}
+  features: {LEMMA: monkey around, BF: around, LEX: V, POS: VER, LST: MTW, TRA: TSTI, PAR: M16, FRA: Y32, SEM: CTC}
   lang: eng
   frequency: 5
   priority: 0
@@ -25746,7 +25746,7 @@
 - headword: "[moon] [about]"
   id: 447249
   uw: "201805247"
-  features: {LEMMA: moon about, BF: moon, LEX: V, POS: VER, LST: MTW, TRA: NTST, "#01": "LEMMA=moon about,BF=moon,LEX=V,POS=VER,PAR=M16,FRA=Y32", "#02": BF=about, SEM: EMO}
+  features: {LEMMA: moon about, BF: about, LEX: V, POS: VER, LST: MTW, TRA: NTST, PAR: M16, FRA: Y32, SEM: EMO}
   lang: eng
   frequency: 1
   priority: 0
@@ -25754,7 +25754,7 @@
 - headword: "[moon] [around]"
   id: 453903
   uw: "201805247"
-  features: {LEMMA: moon around, BF: moon, LEX: V, POS: VER, LST: MTW, TRA: NTST, "#01": "LEMMA=moon around,BF=moon,LEX=V,POS=VER,PAR=M16,FRA=Y32", "#02": BF=around, SEM: EMO}
+  features: {LEMMA: moon around, BF: around, LEX: V, POS: VER, LST: MTW, TRA: NTST, PAR: M16, FRA: Y32, SEM: EMO}
   lang: eng
   frequency: 1
   priority: 0
@@ -25762,7 +25762,7 @@
 - headword: "[moon] [around]"
   id: 453904
   uw: "202417908"
-  features: {LEMMA: moon around, BF: moon, LEX: V, POS: VER, LST: MTW, TRA: NTST, "#01": "LEMMA=moon around,BF=moon,LEX=V,POS=VER,PAR=M16,FRA=Y32", "#02": BF=around, SEM: SOV}
+  features: {LEMMA: moon around, BF: around, LEX: V, POS: VER, LST: MTW, TRA: NTST, PAR: M16, FRA: Y32, SEM: SOV}
   lang: eng
   frequency: 2
   priority: 0
@@ -25770,7 +25770,7 @@
 - headword: "[moon] [on]"
   id: 453905
   uw: "202417908"
-  features: {LEMMA: moon on, BF: moon, LEX: V, POS: VER, LST: MTW, TRA: NTST, "#01": "LEMMA=moon on,BF=moon,LEX=V,POS=VER,PAR=M16,FRA=Y32", "#02": BF=on, SEM: SOV}
+  features: {LEMMA: moon on, BF: "on", LEX: V, POS: VER, LST: MTW, TRA: NTST, PAR: M16, FRA: Y32, SEM: SOV}
   lang: eng
   frequency: 2
   priority: 0
@@ -25778,7 +25778,7 @@
 - headword: "[mop] [up]"
   id: 442628
   uw: "200484892"
-  features: {LEMMA: mop up, BF: mop, LEX: V, POS: VER, LST: MTW, TRA: TST, "#01": "LEMMA=mop up,BF=mop,LEX=V,POS=VER,PAR=M1,FRA=Y38,FLX(INF:=0>\"\";PAS:=0>\"ped\";PTP:=0>\"ped\";GER:=0>\"ping\";3PS&PRS:=0>\"s\";)", "#02": BF=up, SEM: CHA}
+  features: {LEMMA: mop up, BF: up, LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M1, FRA: Y38, FLX: "INF:=0>\"\";PAS:=0>\"ped\";PTP:=0>\"ped\";GER:=0>\"ping\";3PS&PRS:=0>\"s\";", SEM: CHA}
   lang: eng
   frequency: 8
   priority: 0
@@ -25786,7 +25786,7 @@
 - headword: "[mop] [up]"
   id: 442629
   uw: "201102997"
-  features: {LEMMA: mop up, BF: mop, LEX: V, POS: VER, LST: MTW, TRA: TST, "#01": "LEMMA=mop up,BF=mop,LEX=V,POS=VER,PAR=M1,FRA=Y38,FLX(INF:=0>\"\";PAS:=0>\"ped\";PTP:=0>\"ped\";GER:=0>\"ping\";3PS&PRS:=0>\"s\";)", "#02": BF=up, SEM: CPT}
+  features: {LEMMA: mop up, BF: up, LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M1, FRA: Y38, FLX: "INF:=0>\"\";PAS:=0>\"ped\";PTP:=0>\"ped\";GER:=0>\"ping\";3PS&PRS:=0>\"s\";", SEM: CPT}
   lang: eng
   frequency: 5
   priority: 0
@@ -25794,7 +25794,7 @@
 - headword: "[mop] [up]"
   id: 442630
   uw: "201393339"
-  features: {LEMMA: mop up, BF: mop, LEX: V, POS: VER, LST: MTW, TRA: TST, "#01": "LEMMA=mop up,BF=mop,LEX=V,POS=VER,PAR=M1,FRA=Y38,FLX(INF:=0>\"\";PAS:=0>\"ped\";PTP:=0>\"ped\";GER:=0>\"ping\";3PS&PRS:=0>\"s\";)", "#02": BF=up, SEM: CTC}
+  features: {LEMMA: mop up, BF: up, LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M1, FRA: Y38, FLX: "INF:=0>\"\";PAS:=0>\"ped\";PTP:=0>\"ped\";GER:=0>\"ping\";3PS&PRS:=0>\"s\";", SEM: CTC}
   lang: eng
   frequency: 6
   priority: 0
@@ -25802,7 +25802,7 @@
 - headword: "[mope] [around]"
   id: 448112
   uw: "201918669"
-  features: {LEMMA: mope around, BF: mope, LEX: V, POS: VER, LST: MTW, TRA: TSTI, "#01": "LEMMA=mope around,BF=mope,LEX=V,POS=VER,PAR=M17,FRA=Y32", "#02": BF=around, SEM: MOT}
+  features: {LEMMA: mope around, BF: around, LEX: V, POS: VER, LST: MTW, TRA: TSTI, PAR: M17, FRA: Y32, SEM: MOT}
   lang: eng
   frequency: 1
   priority: 0
@@ -25810,7 +25810,7 @@
 - headword: "[mound] [over]"
   id: 445990
   uw: "201607871"
-  features: {LEMMA: mound over, BF: mound, LEX: V, POS: VER, LST: MTW, TRA: TST, "#01": "LEMMA=mound over,BF=mound,LEX=V,POS=VER,PAR=M16,FRA=Y38", "#02": BF=over, SEM: CTC}
+  features: {LEMMA: mound over, BF: over, LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M16, FRA: Y38, SEM: CTC}
   lang: eng
   frequency: 2
   priority: 0
@@ -25818,7 +25818,7 @@
 - headword: "[mound] [over]"
   id: 445991
   uw: "201660547"
-  features: {LEMMA: mound over, BF: mound, LEX: V, POS: VER, LST: MTW, TRA: TST, "#01": "LEMMA=mound over,BF=mound,LEX=V,POS=VER,PAR=M16,FRA=Y38", "#02": BF=over, SEM: CRE}
+  features: {LEMMA: mound over, BF: over, LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M16, FRA: Y38, SEM: CRE}
   lang: eng
   frequency: 1
   priority: 0
@@ -25826,7 +25826,7 @@
 - headword: "[mount] [up]"
   id: 447790
   uw: "201923414"
-  features: {LEMMA: mount up, BF: mount, LEX: V, POS: VER, LST: MTW, TRA: TST, "#01": "LEMMA=mount up,BF=mount,LEX=V,POS=VER,PAR=M16,FRA=Y38", "#02": BF=up, SEM: MOT}
+  features: {LEMMA: mount up, BF: up, LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M16, FRA: Y38, SEM: MOT}
   lang: eng
   frequency: 9
   priority: 0
@@ -25834,7 +25834,7 @@
 - headword: "[mouth] [off]"
   id: 440734
   uw: "201051956"
-  features: {LEMMA: mouth off, BF: mouth, LEX: V, POS: VER, LST: MTW, TRA: TSTI, "#01": "LEMMA=mouth off,BF=mouth,LEX=V,POS=VER,PAR=M16,FRA=Y32", "#02": BF=off, SEM: CMV}
+  features: {LEMMA: mouth off, BF: "off", LEX: V, POS: VER, LST: MTW, TRA: TSTI, PAR: M16, FRA: Y32, SEM: CMV}
   lang: eng
   frequency: 4
   priority: 0
@@ -25842,7 +25842,7 @@
 - headword: "[move] [around]"
   id: 448321
   uw: "201909812"
-  features: {LEMMA: move around, BF: move, LEX: V, POS: VER, LST: MTW, TRA: TST, "#01": "LEMMA=move around,BF=move,LEX=V,POS=VER,PAR=M17,FRA=Y38", "#02": BF=around, SEM: MOT}
+  features: {LEMMA: move around, BF: around, LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M17, FRA: Y38, SEM: MOT}
   lang: eng
   frequency: 7
   priority: 0
@@ -25850,7 +25850,7 @@
 - headword: "[move] [around]"
   id: 449604
   uw: "202102002"
-  features: {LEMMA: move around, BF: move, LEX: V, POS: VER, LST: MTW, TRA: NTST, "#01": "LEMMA=move around,BF=move,LEX=V,POS=VER,PAR=M17,FRA=Y32", "#02": BF=around, SEM: MOT}
+  features: {LEMMA: move around, BF: around, LEX: V, POS: VER, LST: MTW, TRA: NTST, PAR: M17, FRA: Y32, SEM: MOT}
   lang: eng
   frequency: 1
   priority: 0
@@ -25858,7 +25858,7 @@
 - headword: "[move] [back and forth]"
   id: 447676
   uw: "201876530"
-  features: {LEMMA: move back and forth, BF: move, LEX: V, POS: VER, LST: MTW, TRA: TSTI, "#01": "LEMMA=move back and forth,BF=move,LEX=V,POS=VER,PAR=M17,FRA=Y31", "#02": BF=back and forth, SEM: MOT}
+  features: {LEMMA: move back and forth, BF: back and forth, LEX: V, POS: VER, LST: MTW, TRA: TSTI, PAR: M17, FRA: Y31, SEM: MOT}
   lang: eng
   frequency: 1
   priority: 0
@@ -25866,7 +25866,7 @@
 - headword: "[move] [back]"
   id: 449082
   uw: "201994442"
-  features: {LEMMA: move back, BF: move, LEX: V, POS: VER, LST: MTW, TRA: TST, "#01": "LEMMA=move back,BF=move,LEX=V,POS=VER,PAR=M17,FRA=Y31", "#02": BF=back, SEM: MOT}
+  features: {LEMMA: move back, BF: back, LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M17, FRA: Y31, SEM: MOT}
   lang: eng
   frequency: 40
   priority: 0
@@ -25874,7 +25874,7 @@
 - headword: "[move] [in]"
   id: 447633
   uw: "201855982"
-  features: {LEMMA: move in, BF: move, LEX: V, POS: VER, LST: MTW, TRA: NTST, "#01": "LEMMA=move in,BF=move,LEX=V,POS=VER,PAR=M17,FRA=Y32", "#02": BF=in, SEM: MOT}
+  features: {LEMMA: move in, BF: in, LEX: V, POS: VER, LST: MTW, TRA: NTST, PAR: M17, FRA: Y32, SEM: MOT}
   lang: eng
   frequency: 1
   priority: 0
@@ -25882,7 +25882,7 @@
 - headword: "[move] [in]"
   id: 448839
   uw: "201856096"
-  features: {LEMMA: move in, BF: move, LEX: V, POS: VER, LST: MTW, TRA: NTST, "#01": "LEMMA=move in,BF=move,LEX=V,POS=VER,PAR=M17,FRA=Y31", "#02": BF=in, SEM: MOT}
+  features: {LEMMA: move in, BF: in, LEX: V, POS: VER, LST: MTW, TRA: NTST, PAR: M17, FRA: Y31, SEM: MOT}
   lang: eng
   frequency: 5
   priority: 0
@@ -25890,7 +25890,7 @@
 - headword: "[move] [in]"
   id: 448840
   uw: "202015384"
-  features: {LEMMA: move in, BF: move, LEX: V, POS: VER, LST: MTW, TRA: NTST, "#01": "LEMMA=move in,BF=move,LEX=V,POS=VER,PAR=M17,FRA=Y31", "#02": BF=in, SEM: MOT}
+  features: {LEMMA: move in, BF: in, LEX: V, POS: VER, LST: MTW, TRA: NTST, PAR: M17, FRA: Y31, SEM: MOT}
   lang: eng
   frequency: 2
   priority: 0
@@ -25898,7 +25898,7 @@
 - headword: "[move] [in]"
   id: 454172
   uw: "202019175"
-  features: {LEMMA: move in on, BF: move, LEX: V, POS: VER, LST: MTW, TRA: TST, "#01": "LEMMA=move in on,BF=move,LEX=V,POS=VER,PAR=M17,FRA=Y43", "#02": BF=in, SEM: MOT}
+  features: {LEMMA: move in on, BF: in, LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M17, FRA: Y43, SEM: MOT}
   lang: eng
   frequency: 2
   priority: 0
@@ -25906,7 +25906,7 @@
 - headword: "[move] [in]"
   id: 454173
   uw: "202440914"
-  features: {LEMMA: move in on, BF: move, LEX: V, POS: VER, LST: MTW, TRA: TST, "#01": "LEMMA=move in on,BF=move,LEX=V,POS=VER,PAR=M17,FRA=Y43", "#02": BF=in, SEM: SOV}
+  features: {LEMMA: move in on, BF: in, LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M17, FRA: Y43, SEM: SOV}
   lang: eng
   frequency: 1
   priority: 0
@@ -25914,7 +25914,7 @@
 - headword: "[move] [into]"
   id: 449427
   uw: "202016523"
-  features: {LEMMA: move into, BF: move, LEX: V, POS: VER, LST: MTW, TRA: TST, "#01": "LEMMA=move into,BF=move,LEX=V,POS=VER,PAR=M17,FRA=Y31", "#02": BF=into, SEM: MOT}
+  features: {LEMMA: move into, BF: into, LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M17, FRA: Y31, SEM: MOT}
   lang: eng
   frequency: 211
   priority: 0
@@ -25922,7 +25922,7 @@
 - headword: "[move] [involuntarily]"
   id: 433245
   uw: "200010054"
-  features: {LEMMA: move involuntarily, BF: move, LEX: V, POS: VER, LST: MTW, TRA: TSTI, "#01": "LEMMA=move involuntarily,BF=move,LEX=V,POS=VER,PAR=M17,FRA=Y32", "#02": BF=involuntarily, SEM: BOV}
+  features: {LEMMA: move involuntarily, BF: involuntarily, LEX: V, POS: VER, LST: MTW, TRA: TSTI, PAR: M17, FRA: Y32, SEM: BOV}
   lang: eng
   frequency: 1
   priority: 0
@@ -25930,7 +25930,7 @@
 - headword: "[move] [on]"
   id: 448242
   uw: "201992503"
-  features: {LEMMA: move on, BF: move, LEX: V, POS: VER, LST: MTW, TRA: NTST, "#01": "LEMMA=move on,BF=move,LEX=V,POS=VER,PAR=M17,FRA=Y31", "#02": BF=on, SEM: MOT}
+  features: {LEMMA: move on, BF: "on", LEX: V, POS: VER, LST: MTW, TRA: NTST, PAR: M17, FRA: Y31, SEM: MOT}
   lang: eng
   frequency: 46
   priority: 0
@@ -25938,7 +25938,7 @@
 - headword: "[move] [out]"
   id: 447634
   uw: "201856211"
-  features: {LEMMA: move out, BF: move, LEX: V, POS: VER, LST: MTW, TRA: NTST, "#01": "LEMMA=move out,BF=move,LEX=V,POS=VER,PAR=M17,FRA=Y32", "#02": BF=out, SEM: MOT}
+  features: {LEMMA: move out, BF: out, LEX: V, POS: VER, LST: MTW, TRA: NTST, PAR: M17, FRA: Y32, SEM: MOT}
   lang: eng
   frequency: 1
   priority: 0
@@ -25946,7 +25946,7 @@
 - headword: "[move] [out]"
   id: 451642
   uw: "202404904"
-  features: {LEMMA: move out, BF: move, LEX: V, POS: VER, LST: MTW, TRA: TST, "#01": "LEMMA=move out,BF=move,LEX=V,POS=VER,PAR=M17,FRA=Y38", "#02": BF=out, SEM: SOV}
+  features: {LEMMA: move out, BF: out, LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M17, FRA: Y38, SEM: SOV}
   lang: eng
   frequency: 11
   priority: 0
@@ -25954,7 +25954,7 @@
 - headword: "[move] [over]"
   id: 447615
   uw: "201848465"
-  features: {LEMMA: move over, BF: move, LEX: V, POS: VER, LST: MTW, TRA: NTST, "#01": "LEMMA=move over,BF=move,LEX=V,POS=VER,PAR=M17,FRA=Y31", "#02": BF=over, SEM: MOT}
+  features: {LEMMA: move over, BF: over, LEX: V, POS: VER, LST: MTW, TRA: NTST, PAR: M17, FRA: Y31, SEM: MOT}
   lang: eng
   frequency: 16
   priority: 0
@@ -25962,7 +25962,7 @@
 - headword: "[move] [reflexively]"
   id: 433246
   uw: "200010054"
-  features: {LEMMA: move reflexively, BF: move, LEX: V, POS: VER, LST: MTW, TRA: TSTI, "#01": "LEMMA=move reflexively,BF=move,LEX=V,POS=VER,PAR=M17,FRA=Y32", "#02": BF=reflexively, SEM: BOV}
+  features: {LEMMA: move reflexively, BF: reflexively, LEX: V, POS: VER, LST: MTW, TRA: TSTI, PAR: M17, FRA: Y32, SEM: BOV}
   lang: eng
   frequency: 1
   priority: 0
@@ -25970,7 +25970,7 @@
 - headword: "[move] [through]"
   id: 448099
   uw: "201915365"
-  features: {LEMMA: move through, BF: move, LEX: V, POS: VER, LST: MTW, TRA: TSTI, "#01": "LEMMA=move through,BF=move,LEX=V,POS=VER,PAR=M17,FRA=Y34", "#02": BF=through, SEM: MOT}
+  features: {LEMMA: move through, BF: through, LEX: V, POS: VER, LST: MTW, TRA: TSTI, PAR: M17, FRA: Y34, SEM: MOT}
   lang: eng
   frequency: 20
   priority: 0
@@ -25978,7 +25978,7 @@
 - headword: "[move] [up]"
   id: 448366
   uw: "201968569"
-  features: {LEMMA: move up, BF: move, LEX: V, POS: VER, LST: MTW, TRA: NTST, "#01": "LEMMA=move up,BF=move,LEX=V,POS=VER,PAR=M17,FRA=Y31", "#02": BF=up, SEM: MOT}
+  features: {LEMMA: move up, BF: up, LEX: V, POS: VER, LST: MTW, TRA: NTST, PAR: M17, FRA: Y31, SEM: MOT}
   lang: eng
   frequency: 54
   priority: 0
@@ -25986,7 +25986,7 @@
 - headword: "[move] [up]"
   id: 448974
   uw: "201969779"
-  features: {LEMMA: move up, BF: move, LEX: V, POS: VER, LST: MTW, TRA: TSTI, "#01": "LEMMA=move up,BF=move,LEX=V,POS=VER,PAR=M17,FRA=Y31", "#02": BF=up, SEM: MOT}
+  features: {LEMMA: move up, BF: up, LEX: V, POS: VER, LST: MTW, TRA: TSTI, PAR: M17, FRA: Y31, SEM: MOT}
   lang: eng
   frequency: 8
   priority: 0
@@ -25994,7 +25994,7 @@
 - headword: "[mow] [down]"
   id: 436590
   uw: "200479176"
-  features: {LEMMA: mow down, BF: mow, LEX: V, POS: VER, LST: MTW, TRA: TST, "#01": "LEMMA=mow down,BF=mow,LEX=V,POS=VER,PAR=M16,FRA=Y39", "#02": BF=down, SEM: CHA}
+  features: {LEMMA: mow down, BF: down, LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M16, FRA: Y39, SEM: CHA}
   lang: eng
   frequency: 4
   priority: 0
@@ -26002,7 +26002,7 @@
 - headword: "[muck] [about]"
   id: 443898
   uw: "201473346"
-  features: {LEMMA: muck about, BF: muck, LEX: V, POS: VER, LST: MTW, TRA: TSTI, "#01": "LEMMA=muck about,BF=muck,LEX=V,POS=VER,PAR=M16,FRA=Y32", "#02": BF=about, SEM: CTC}
+  features: {LEMMA: muck about, BF: about, LEX: V, POS: VER, LST: MTW, TRA: TSTI, PAR: M16, FRA: Y32, SEM: CTC}
   lang: eng
   frequency: 5
   priority: 0
@@ -26010,7 +26010,7 @@
 - headword: "[muck] [around]"
   id: 443899
   uw: "201473346"
-  features: {LEMMA: muck around, BF: muck, LEX: V, POS: VER, LST: MTW, TRA: TSTI, "#01": "LEMMA=muck around,BF=muck,LEX=V,POS=VER,PAR=M16,FRA=Y32", "#02": BF=around, SEM: CTC}
+  features: {LEMMA: muck around, BF: around, LEX: V, POS: VER, LST: MTW, TRA: TSTI, PAR: M16, FRA: Y32, SEM: CTC}
   lang: eng
   frequency: 5
   priority: 0
@@ -26018,7 +26018,7 @@
 - headword: "[muck] [up]"
   id: 443673
   uw: "201534745"
-  features: {LEMMA: muck up, BF: muck, LEX: V, POS: VER, LST: MTW, TRA: TST, "#01": "LEMMA=muck up,BF=muck,LEX=V,POS=VER,PAR=M16,FRA=Y38", "#02": BF=up, SEM: CTC}
+  features: {LEMMA: muck up, BF: up, LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M16, FRA: Y38, SEM: CTC}
   lang: eng
   frequency: 1
   priority: 0
@@ -26026,7 +26026,7 @@
 - headword: "[muck] [up]"
   id: 451288
   uw: "202527651"
-  features: {LEMMA: muck up, BF: muck, LEX: V, POS: VER, LST: MTW, TRA: TST, "#01": "LEMMA=muck up,BF=muck,LEX=V,POS=VER,PAR=M16,FRA=Y32", "#02": BF=up, SEM: SOV}
+  features: {LEMMA: muck up, BF: up, LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M16, FRA: Y32, SEM: SOV}
   lang: eng
   frequency: 11
   priority: 0
@@ -26034,7 +26034,7 @@
 - headword: "[muddy] [up]"
   id: 441587
   uw: "201252875"
-  features: {LEMMA: muddy up, BF: muddy, LEX: V, POS: VER, LST: MTW, TRA: TST, "#01": "LEMMA=muddy up,BF=muddy,LEX=V,POS=VER,PAR=M18,FRA=Y38", "#02": BF=up, SEM: CTC}
+  features: {LEMMA: muddy up, BF: up, LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M18, FRA: Y38, SEM: CTC}
   lang: eng
   frequency: 1
   priority: 0
@@ -26042,7 +26042,7 @@
 - headword: "[mug] [up]"
   id: 433785
   uw: "200605783"
-  features: {LEMMA: mug up, BF: mug, LEX: V, POS: VER, LST: MTW, TRA: TSTD, "#01": "LEMMA=mug up,BF=mug,LEX=V,POS=VER,PAR=M1,FRA=Y32,FLX(INF:=0>\"\";PAS:=0>\"ged\";PTP:=0>\"ged\";GER:=0>\"ging\";3PS&PRS:=0>\"s\";)", "#02": BF=up, SEM: CGV}
+  features: {LEMMA: mug up, BF: up, LEX: V, POS: VER, LST: MTW, TRA: TSTD, PAR: M1, FRA: Y32, FLX: "INF:=0>\"\";PAS:=0>\"ged\";PTP:=0>\"ged\";GER:=0>\"ging\";3PS&PRS:=0>\"s\";", SEM: CGV}
   lang: eng
   frequency: 1
   priority: 0
@@ -26050,7 +26050,7 @@
 - headword: "[mull] [over]"
   id: 437536
   uw: "200630380"
-  features: {LEMMA: mull over, BF: mull, LEX: V, POS: VER, LST: MTW, TRA: TSTI, "#01": "LEMMA=mull over,BF=mull,LEX=V,POS=VER,PAR=M16,FRA=Y52", "#02": BF=over, SEM: CGV, SFR: K0}
+  features: {LEMMA: mull over, BF: over, LEX: V, POS: VER, LST: MTW, TRA: TSTI, PAR: M16, FRA: Y52, SEM: CGV, SFR: K0}
   lang: eng
   frequency: 49
   priority: 0
@@ -26058,7 +26058,7 @@
 - headword: "[muscle] [into]"
   id: 447654
   uw: "201873417"
-  features: {LEMMA: muscle into, BF: muscle, LEX: V, POS: VER, LST: MTW, TRA: TSTI, "#01": "LEMMA=muscle into,BF=muscle,LEX=V,POS=VER,PAR=M17,FRA=Y52", "#02": BF=into, SEM: MOT}
+  features: {LEMMA: muscle into, BF: into, LEX: V, POS: VER, LST: MTW, TRA: TSTI, PAR: M17, FRA: Y52, SEM: MOT}
   lang: eng
   frequency: 2
   priority: 0
@@ -26066,7 +26066,7 @@
 - headword: "[muster] [in]"
   id: 440109
   uw: "201097500"
-  features: {LEMMA: muster in, BF: muster, LEX: V, POS: VER, LST: MTW, TRA: TST, "#01": "LEMMA=muster in,BF=muster,LEX=V,POS=VER,PAR=M16,FRA=Y39", "#02": BF=in, SEM: CPT}
+  features: {LEMMA: muster in, BF: in, LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M16, FRA: Y39, SEM: CPT}
   lang: eng
   frequency: 4
   priority: 0
@@ -26074,7 +26074,7 @@
 - headword: "[muster] [out]"
   id: 440110
   uw: "201097743"
-  features: {LEMMA: muster out, BF: muster, LEX: V, POS: VER, LST: MTW, TRA: TST, "#01": "LEMMA=muster out,BF=muster,LEX=V,POS=VER,PAR=M16,FRA=Y39", "#02": BF=out, SEM: CPT}
+  features: {LEMMA: muster out, BF: out, LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M16, FRA: Y39, SEM: CPT}
   lang: eng
   frequency: 1
   priority: 0
@@ -26082,7 +26082,7 @@
 - headword: "[muster] [up]"
   id: 443129
   uw: "201381549"
-  features: {LEMMA: muster up, BF: muster, LEX: V, POS: VER, LST: MTW, TRA: TST, "#01": "LEMMA=muster up,BF=muster,LEX=V,POS=VER,PAR=M16,FRA=Y38", "#02": BF=up, SEM: CTC}
+  features: {LEMMA: muster up, BF: up, LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M16, FRA: Y38, SEM: CTC}
   lang: eng
   frequency: 6
   priority: 0

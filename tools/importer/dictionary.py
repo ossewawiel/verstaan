@@ -104,33 +104,66 @@ def _split_top_level(text: str) -> list[str]:
 def parse_feature_list(text: str) -> dict[str, str] | None:
     """The `FEATURE LIST` field as an attribute-value map, or `None` if it is empty.
 
-    `#01(...)` and `#02(...)` (sub-word scope) become a feature keyed `#01` / `#02`, whose value
-    is the inner feature list, kept as one raw string rather than recursively decomposed: the
-    schema's `features` map holds strings (`tools/validate/schema/dictionary-entry.schema.json`),
-    and nothing downstream of issue 14 needs the sub-word features split further yet. A rule-list
-    feature (`FLX(...)`) becomes `{"FLX": "<inner>"}` the same way. A bare `ATTRIBUTE=VALUE`
-    feature becomes `{ATTRIBUTE: VALUE}`. A feature with neither `=` nor a trailing `(...)` (the
-    formal syntax's bare `<VALUE>` alternative, not seen in any real AD/GD line this importer was
-    built against) becomes `{VALUE: VALUE}`, so it is never lost.
+    `#01(...)` and `#02(...)` (sub-word scope, `dictionary.md`'s `"#" <SUBNLWID> <FEATURE LIST>`)
+    hold a nested feature list of their own, recursively parsed by this same function and merged
+    straight into the result -- never kept as a bogus `#01`/`#02` attribute (issue 169: that
+    placeholder key is not in any tagset and the archive never means it as one). A later sub-word
+    can legitimately overwrite an earlier one's attribute (`#02(BF=up)` overwrites the compound's
+    own top-level `BF` with the second word's base form); `features` is a flat map
+    (`tools/validate/schema/dictionary-entry.schema.json`), so this is the only lossless place
+    left to put it once the placeholder key is gone. A rule-list feature (`FLX(...)`) becomes
+    `{"FLX": "<inner>"}`. A bare `ATTRIBUTE=VALUE` feature becomes `{ATTRIBUTE: VALUE}`.
+
+    A `VALUE` can itself contain a literal comma the archive never escapes -- some headwords do,
+    e.g. `[Bouillon, België]`'s `LEMMA=Bouillon, België`. `_split_top_level` cannot tell that
+    comma from a separator between features (it is outside every paren, same as a real
+    separator), so it splits the value in two; the second half, `België`, then matches no
+    feature shape at all. Issue 169: rather than drop it or treat it as a bare feature -- the old
+    behaviour, which put the headword text `België`/`bok`/`Iowa`/`Louisiana` in the *attribute*
+    slot -- a shapeless token straight after an `ATTRIBUTE=VALUE` token is glued back onto that
+    value with `", "`, reconstructing the original comma exactly.
+
+    A feature with neither `=` nor a trailing `(...)` (the formal syntax's bare `<VALUE>`
+    alternative, not seen in any real AD/GD line this importer was built against, and not
+    reachable right after an `ATTRIBUTE=VALUE` token now that case is claimed above) becomes
+    `{VALUE: VALUE}`, so it is never lost.
     """
     features: dict[str, str] = {}
+    pending_attr: str | None = None
+    pending_parts: list[str] = []
+
+    def flush_pending() -> None:
+        nonlocal pending_attr, pending_parts
+        if pending_attr is not None:
+            features[pending_attr] = ", ".join(pending_parts)
+            pending_attr = None
+            pending_parts = []
+
     for token in _split_top_level(text):
         token = token.strip()
         if not token:
             continue
         match = _SUBWORD_RE.match(token)
         if match:
-            features[f"#{match.group('subid')}"] = match.group("inner").strip()
+            flush_pending()
+            features.update(parse_feature_list(match.group("inner")) or {})
             continue
         match = _RULE_LIST_RE.match(token)
         if match:
+            flush_pending()
             features[match.group("name")] = match.group("inner").strip()
             continue
         match = _ATTR_VALUE_RE.match(token)
         if match:
-            features[match.group("attr")] = match.group("value").strip()
+            flush_pending()
+            pending_attr = match.group("attr")
+            pending_parts = [match.group("value").strip()]
+            continue
+        if pending_attr is not None:
+            pending_parts.append(token)
             continue
         features[token] = token
+    flush_pending()
     return features or None
 
 

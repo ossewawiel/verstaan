@@ -89,7 +89,10 @@ FEATURE_PATTERN = re.compile(r"\b([A-Z][A-Z0-9]*)=([A-Z][A-Z0-9]*)\b")
 # form or an inflection-rule reference; DIGIT holds a digit string. LEMMA is not even a tagset
 # key, the plainest signal it is not a categorical feature. Documented in
 # docs/factory/store-schema.md, "Feature values the validator does not check".
-REFERENCE_VALUED_ATTRIBUTES = frozenset({"LEMMA", "BF", "PAR", "FRA", "SFR", "FLX", "DIGIT"})
+# `GOV` (issue 169): dictionary.md/tagset.md, "Subcategorization rule, inline in the entry" --
+# an S-rule pattern like `VC(PP([with]))`, not a tagset mnemonic, the same reason `FLX` (an
+# inline A-rule) sits here rather than in tagset.yaml.
+REFERENCE_VALUED_ATTRIBUTES = frozenset({"LEMMA", "BF", "PAR", "FRA", "SFR", "FLX", "DIGIT", "GOV"})
 
 # dictionary.md's own formal grammar: `<UW> ::= <text> | <REGULAR EXPRESSION>` — a UW is not
 # digits-only. Real afr/eng entries confirm this at scale (2026-09-15, issue 18): pronoun entries

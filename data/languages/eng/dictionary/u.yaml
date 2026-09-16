@@ -3346,7 +3346,7 @@
 - headword: "[urge] [on]"
   id: 437467
   uw: "200765649"
-  features: {LEMMA: urge on, BF: urge, LEX: V, POS: VER, LST: MTW, TRA: TSTD, "#01": "LEMMA=urge on,BF=urge,LEX=V,POS=VER,PAR=M17,FRA=Y54", "#02": BF=on, SEM: CMV}
+  features: {LEMMA: urge on, BF: "on", LEX: V, POS: VER, LST: MTW, TRA: TSTD, PAR: M17, FRA: Y54, SEM: CMV}
   lang: eng
   frequency: 44
   priority: 0
@@ -3354,7 +3354,7 @@
 - headword: "[urge] [on]"
   id: 439192
   uw: "200858781"
-  features: {LEMMA: urge on, BF: urge, LEX: V, POS: VER, LST: MTW, TRA: TST, "#01": "LEMMA=urge on,BF=urge,LEX=V,POS=VER,PAR=M17,FRA=Y39", "#02": BF=on, SEM: CMV}
+  features: {LEMMA: urge on, BF: "on", LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M17, FRA: Y39, SEM: CMV}
   lang: eng
   frequency: 4
   priority: 0
@@ -3362,7 +3362,7 @@
 - headword: "[use] [up]"
   id: 451954
   uw: "201157517"
-  features: {LEMMA: use up, BF: use, LEX: V, POS: VER, LST: MTW, TRA: TST, "#01": "LEMMA=use up,BF=use,LEX=V,POS=VER,PAR=M17,FRA=Y38", "#02": BF=up, SEM: CSM}
+  features: {LEMMA: use up, BF: up, LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M17, FRA: Y38, SEM: CSM}
   lang: eng
   frequency: 10
   priority: 0
@@ -3370,7 +3370,7 @@
 - headword: "[use] [up]"
   id: 451955
   uw: "202267989"
-  features: {LEMMA: use up, BF: use, LEX: V, POS: VER, LST: MTW, TRA: TST, "#01": "LEMMA=use up,BF=use,LEX=V,POS=VER,PAR=M17,FRA=Y38", "#02": BF=up, SEM: POV}
+  features: {LEMMA: use up, BF: up, LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M17, FRA: Y38, SEM: POV}
   lang: eng
   frequency: 76
   priority: 0
@@ -3378,7 +3378,7 @@
 - headword: "[usher] [in]"
   id: 434674
   uw: "200349592"
-  features: {LEMMA: usher in, BF: usher, LEX: V, POS: VER, LST: MTW, TRA: TST, "#01": "LEMMA=usher in,BF=usher,LEX=V,POS=VER,PAR=M16,FRA=Y41", "#02": BF=in, SEM: CHA}
+  features: {LEMMA: usher in, BF: in, LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M16, FRA: Y41, SEM: CHA}
   lang: eng
   frequency: 2
   priority: 0
@@ -3386,7 +3386,7 @@
 - headword: "[usher] [out]"
   id: 439531
   uw: "200900728"
-  features: {LEMMA: usher out, BF: usher, LEX: V, POS: VER, LST: MTW, TRA: TST, "#01": "LEMMA=usher out,BF=usher,LEX=V,POS=VER,PAR=M16,FRA=Y39", "#02": BF=out, SEM: CMV}
+  features: {LEMMA: usher out, BF: out, LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M16, FRA: Y39, SEM: CMV}
   lang: eng
   frequency: 1
   priority: 0

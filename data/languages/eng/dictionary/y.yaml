@@ -1442,7 +1442,7 @@
 - headword: "[yack] [away]"
   id: 440629
   uw: "201037498"
-  features: {LEMMA: yack away, BF: yack, LEX: V, POS: VER, LST: MTW, TRA: NTST, "#01": "LEMMA=yack away,BF=yack,LEX=V,POS=VER,PAR=M16,FRA=Y32", "#02": BF=away, SEM: CMV}
+  features: {LEMMA: yack away, BF: away, LEX: V, POS: VER, LST: MTW, TRA: NTST, PAR: M16, FRA: Y32, SEM: CMV}
   lang: eng
   frequency: 2
   priority: 0
@@ -1450,7 +1450,7 @@
 - headword: "[yap] [away]"
   id: 440631
   uw: "201037498"
-  features: {LEMMA: yap away, BF: yap, LEX: V, POS: VER, LST: MTW, TRA: NTST, "#01": "LEMMA=yap away,BF=yap,LEX=V,POS=VER,PAR=M1,FRA=Y32,FLX(INF:=0>\"\";PAS:=0>\"ped\";PTP:=0>\"ped\";GER:=0>\"ping\";3PS&PRS:=0>\"s\";)", "#02": BF=away, SEM: CMV}
+  features: {LEMMA: yap away, BF: away, LEX: V, POS: VER, LST: MTW, TRA: NTST, PAR: M1, FRA: Y32, FLX: "INF:=0>\"\";PAS:=0>\"ped\";PTP:=0>\"ped\";GER:=0>\"ping\";3PS&PRS:=0>\"s\";", SEM: CMV}
   lang: eng
   frequency: 2
   priority: 0
@@ -1458,7 +1458,7 @@
 - headword: "[yield] [up]"
   id: 450777
   uw: "202235549"
-  features: {LEMMA: yield up, BF: yield, LEX: V, POS: VER, LST: MTW, TRA: TST, "#01": "LEMMA=yield up,BF=yield,LEX=V,POS=VER,PAR=M16,FRA=Y38", "#02": BF=up, SEM: POV}
+  features: {LEMMA: yield up, BF: up, LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M16, FRA: Y38, SEM: POV}
   lang: eng
   frequency: 2
   priority: 0

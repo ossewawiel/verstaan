@@ -8882,7 +8882,7 @@
 - headword: "[ice] [over]"
   id: 457774
   uw: "202758581"
-  features: {LEMMA: ice over, BF: ice, LEX: V, POS: VER, LST: MTW, TRA: TSTI, "#01": "LEMMA=ice over,BF=ice,LEX=V,POS=VER,PAR=M17,FRA=Y31", "#02": BF=over, SEM: WEA}
+  features: {LEMMA: ice over, BF: over, LEX: V, POS: VER, LST: MTW, TRA: TSTI, PAR: M17, FRA: Y31, SEM: WEA}
   lang: eng
   frequency: 1
   priority: 0
@@ -8890,7 +8890,7 @@
 - headword: "[ice] [up]"
   id: 457772
   uw: "202758581"
-  features: {LEMMA: ice up, BF: ice, LEX: V, POS: VER, LST: MTW, TRA: TSTI, "#01": "LEMMA=ice up,BF=ice,LEX=V,POS=VER,PAR=M17,FRA=Y31", "#02": BF=up, SEM: WEA}
+  features: {LEMMA: ice up, BF: up, LEX: V, POS: VER, LST: MTW, TRA: TSTI, PAR: M17, FRA: Y31, SEM: WEA}
   lang: eng
   frequency: 1
   priority: 0
@@ -8898,7 +8898,7 @@
 - headword: "[impinge] [on]"
   id: 441316
   uw: "201236164"
-  features: {LEMMA: impinge on, BF: impinge, LEX: V, POS: VER, LST: MTW, TRA: TST, "#01": "LEMMA=impinge on,BF=impinge,LEX=V,POS=VER,PAR=M17,FRA=Y38", "#02": BF=on, SEM: CTC}
+  features: {LEMMA: impinge on, BF: "on", LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M17, FRA: Y38, SEM: CTC}
   lang: eng
   frequency: 40
   priority: 0
@@ -8906,7 +8906,7 @@
 - headword: "[inhere] [in]"
   id: 457267
   uw: "202705535"
-  features: {LEMMA: inhere in, BF: inhere, LEX: V, POS: VER, LST: MTW, TRA: TST, "#01": "LEMMA=inhere in,BF=inhere,LEX=V,POS=VER,PAR=M17,FRA=Y41", "#02": BF=in, SEM: STT}
+  features: {LEMMA: inhere in, BF: in, LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M17, FRA: Y41, SEM: STT}
   lang: eng
   frequency: 1
   priority: 0
@@ -8914,7 +8914,7 @@
 - headword: "[intrude] [on]"
   id: 449453
   uw: "202019716"
-  features: {LEMMA: intrude on, BF: intrude, LEX: V, POS: VER, LST: MTW, TRA: TST, "#01": "LEMMA=intrude on,BF=intrude,LEX=V,POS=VER,PAR=M17,FRA=Y38", "#02": BF=on, SEM: MOT}
+  features: {LEMMA: intrude on, BF: "on", LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M17, FRA: Y38, SEM: MOT}
   lang: eng
   frequency: 7
   priority: 0
@@ -8922,7 +8922,7 @@
 - headword: "[invite] [out]"
   id: 452741
   uw: "202486693"
-  features: {LEMMA: invite out, BF: invite, LEX: V, POS: VER, LST: MTW, TRA: TST, "#01": "LEMMA=invite out,BF=invite,LEX=V,POS=VER,PAR=M17,FRA=Y39", "#02": BF=out, SEM: SOV}
+  features: {LEMMA: invite out, BF: out, LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M17, FRA: Y39, SEM: SOV}
   lang: eng
   frequency: 3
   priority: 0
@@ -8930,7 +8930,7 @@
 - headword: "[iron] [out]"
   id: 442365
   uw: "200208055"
-  features: {LEMMA: iron out, BF: iron, LEX: V, POS: VER, LST: MTW, TRA: TST, "#01": "LEMMA=iron out,BF=iron,LEX=V,POS=VER,PAR=M16,FRA=Y38", "#02": BF=out, SEM: CHA}
+  features: {LEMMA: iron out, BF: out, LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M16, FRA: Y38, SEM: CHA}
   lang: eng
   frequency: 4
   priority: 0
@@ -8938,7 +8938,7 @@
 - headword: "[iron] [out]"
   id: 442366
   uw: "201390833"
-  features: {LEMMA: iron out, BF: iron, LEX: V, POS: VER, LST: MTW, TRA: TST, "#01": "LEMMA=iron out,BF=iron,LEX=V,POS=VER,PAR=M16,FRA=Y38", "#02": BF=out, SEM: CTC}
+  features: {LEMMA: iron out, BF: out, LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M16, FRA: Y38, SEM: CTC}
   lang: eng
   frequency: 3
   priority: 0
@@ -8946,7 +8946,7 @@
 - headword: "[issue] [forth]"
   id: 457277
   uw: "202743921"
-  features: {LEMMA: issue forth, BF: issue, LEX: V, POS: VER, LST: MTW, TRA: TSTI, "#01": "LEMMA=issue forth,BF=issue,LEX=V,POS=VER,PAR=M17,FRA=Y31", "#02": BF=forth, SEM: STT}
+  features: {LEMMA: issue forth, BF: forth, LEX: V, POS: VER, LST: MTW, TRA: TSTI, PAR: M17, FRA: Y31, SEM: STT}
   lang: eng
   frequency: 10
   priority: 0

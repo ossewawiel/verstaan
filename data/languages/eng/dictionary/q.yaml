@@ -1634,7 +1634,7 @@
 - headword: "[quail] [at]"
   id: 445581
   uw: "201782432"
-  features: {LEMMA: quail at, BF: quail, LEX: V, POS: VER, LST: MTW, TRA: TST, "#01": "LEMMA=quail at,BF=quail,LEX=V,POS=VER,PAR=M16,FRA=Y38", "#02": BF=at, SEM: EMO}
+  features: {LEMMA: quail at, BF: at, LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M16, FRA: Y38, SEM: EMO}
   lang: eng
   frequency: 1
   priority: 0
@@ -1642,7 +1642,7 @@
 - headword: "[queen] [over]"
   id: 455208
   uw: "202593551"
-  features: {LEMMA: queen it over, BF: queen, LEX: V, POS: VER, LST: MTW, TRA: NTST, "#01": "LEMMA=queen it over,BF=queen,LEX=V,POS=VER,PAR=M16,FRA=Y32", "#02": BF=over, SEM: SOV}
+  features: {LEMMA: queen it over, BF: over, LEX: V, POS: VER, LST: MTW, TRA: NTST, PAR: M16, FRA: Y32, SEM: SOV}
   lang: eng
   frequency: 1
   priority: 0
@@ -1650,7 +1650,7 @@
 - headword: "[quest] [after]"
   id: 442708
   uw: "201317533"
-  features: {LEMMA: quest after, BF: quest, LEX: V, POS: VER, LST: MTW, TRA: TST, "#01": "LEMMA=quest after,BF=quest,LEX=V,POS=VER,PAR=M16,FRA=Y38", "#02": BF=after, SEM: CTC}
+  features: {LEMMA: quest after, BF: after, LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M16, FRA: Y38, SEM: CTC}
   lang: eng
   frequency: 8
   priority: 0
@@ -1658,7 +1658,7 @@
 - headword: "[quest] [for]"
   id: 442707
   uw: "201317533"
-  features: {LEMMA: quest for, BF: quest, LEX: V, POS: VER, LST: MTW, TRA: TST, "#01": "LEMMA=quest for,BF=quest,LEX=V,POS=VER,PAR=M16,FRA=Y38", "#02": BF=for, SEM: CTC}
+  features: {LEMMA: quest for, BF: for, LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M16, FRA: Y38, SEM: CTC}
   lang: eng
   frequency: 8
   priority: 0
@@ -1666,7 +1666,7 @@
 - headword: "[queue] [up]"
   id: 449154
   uw: "202036755"
-  features: {LEMMA: queue up, BF: queue, LEX: V, POS: VER, LST: MTW, TRA: NTST, "#01": "LEMMA=queue up,BF=queue,LEX=V,POS=VER,PAR=M17,FRA=Y32", "#02": BF=up, SEM: MOT}
+  features: {LEMMA: queue up, BF: up, LEX: V, POS: VER, LST: MTW, TRA: NTST, PAR: M17, FRA: Y32, SEM: MOT}
   lang: eng
   frequency: 2
   priority: 0
@@ -1674,7 +1674,7 @@
 - headword: "[quiet] [down]"
   id: 450937
   uw: "202190188"
-  features: {LEMMA: quiet down, BF: quiet, LEX: V, POS: VER, LST: MTW, TRA: NTST, "#01": "LEMMA=quiet down,BF=quiet,LEX=V,POS=VER,PAR=M16,FRA=Y31", "#02": BF=down, SEM: PCP}
+  features: {LEMMA: quiet down, BF: down, LEX: V, POS: VER, LST: MTW, TRA: NTST, PAR: M16, FRA: Y31, SEM: PCP}
   lang: eng
   frequency: 3
   priority: 0

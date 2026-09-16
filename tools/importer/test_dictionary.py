@@ -255,8 +255,16 @@ def test_compound_and_subword_fixture_parses_without_error():
     subword, reason = parse_line(entry_lines[1])
     assert reason is None, reason
     assert subword["headword"] == "[begin] [to]"
-    assert subword["features"]["#01"] == "LEMMA=begin,BF=begin,LEX=I,POS=MOV"
-    assert subword["features"]["#02"] == "BF=to,LEX=P"
+    # issue 169: #01(...)/#02(...) sub-word scopes are parsed and merged, not kept as a bogus
+    # `#01`/`#02` attribute holding the inner list as one raw string.
+    assert "#01" not in subword["features"]
+    assert "#02" not in subword["features"]
+    assert subword["features"]["LEMMA"] == "begin"
+    assert subword["features"]["LEX"] == "P"  # #02's LEX=P, the later sub-word, wins
+    assert subword["features"]["POS"] == "MOV"
+    # #02(BF=to,LEX=P) overwrites #01(...)'s BF=begin: the compound's own top-level features
+    # carry no BF at all in this fixture, so the last sub-word to set it wins (issue 169).
+    assert subword["features"]["BF"] == "to"
 
 
 def test_compound_and_subword_fixture_accounts_for_every_line():
@@ -324,6 +332,62 @@ def test_parse_feature_list_handles_a_rule_list_feature():
 def test_parse_feature_list_returns_none_when_empty():
     assert parse_feature_list("") is None
     assert parse_feature_list("   ") is None
+
+
+def test_parse_feature_list_flattens_a_subword_scope_instead_of_a_placeholder_attribute():
+    """Issue 169: a `#02(...)` sub-word scope used to become a bogus attribute named `#02`,
+    holding its whole inner feature list as one raw string value, e.g. `#02` -> `"BF=up"` (the
+    real `en_gen_u_c_ucl` `earth up` entry, `[[earth] [up]]`, id 443140). Correctly parsed, that
+    inner list is itself an attribute-value pair: attribute `BF`, value `up`.
+    """
+    features = parse_feature_list(
+        "LEMMA=earth up,BF=earth,LEX=V,POS=VER,LST=MTW,TRA=TST,"
+        "#01(LEMMA=earth up,BF=earth,LEX=V,POS=VER,PAR=M16,FRA=Y38),#02(BF=up),SEM=CTC"
+    )
+    assert "#01" not in features
+    assert "#02" not in features
+    assert features["LEMMA"] == "earth up"
+    assert features["LST"] == "MTW"
+    assert features["TRA"] == "TST"
+    assert features["SEM"] == "CTC"
+    assert features["PAR"] == "M16"  # only #01 sets this; nothing at top level to collide with
+    assert features["FRA"] == "Y38"
+    # #02(BF=up) is parsed after #01(...): its BF=up overwrites #01's (and the top-level's)
+    # BF=earth, the one place this flat feature map can still put a later sub-word's own value.
+    assert features["BF"] == "up"
+
+
+def test_parse_feature_list_glues_a_comma_split_headword_back_onto_its_value():
+    """Issue 169: some headwords hold a literal comma, e.g. `[Bouillon, België]`
+    (`af_ana_u_c_ucl`, id 13637). The archive's own feature list then reads
+    `LEMMA=Bouillon, België,BF=Bouillon, België,LEX=N,...` -- the same comma the archive uses to
+    separate features. Split naively, `België` (after `LEMMA=Bouillon`) matches no feature shape
+    and used to become a bogus attribute `België` -> `België`. Correctly parsed, it is the second
+    half of `LEMMA`'s own value, reconstructed exactly.
+    """
+    features = parse_feature_list(
+        "LEMMA=Bouillon, België,BF=Bouillon, België,LEX=N,POS=NOU,LST=MTW,ABN=CCT,ANI=NANM,SEM=FOO"
+    )
+    assert features["LEMMA"] == "Bouillon, België"
+    assert features["BF"] == "Bouillon, België"
+    assert "België" not in features
+    assert features["LEX"] == "N"
+    assert features["POS"] == "NOU"
+
+
+def test_parse_feature_list_glues_a_headword_split_across_two_commas():
+    """The same shape as above, but the comma-holding value splits into three parts
+    (`af_ana_u_c_ucl`, `[Bok, bok, staan styf]`, id 13649): every shapeless part after the
+    `ATTRIBUTE=VALUE` token glues back on, not only the first.
+    """
+    features = parse_feature_list(
+        "LEMMA=Bok, bok, staan styf,BF=Bok, bok, staan styf,LEX=N,POS=NOU,"
+        "LST=MTW,ABN=ABT,ANI=NANM,SEM=ACT"
+    )
+    assert features["LEMMA"] == "Bok, bok, staan styf"
+    assert features["BF"] == "Bok, bok, staan styf"
+    assert "bok" not in features
+    assert "staan styf" not in features
 
 
 def test_shard_letter_skips_a_leading_non_letter():

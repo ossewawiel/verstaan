@@ -2,7 +2,7 @@
 issue: 169
 title: "The dictionary importer splits compound feature strings wrong: 4,269 bogus attributes"
 milestone: Side
-status: open
+status: in-progress
 depends_on: [14, 17, 168]
 agent: implementer
 agents: [implementer, test-writer]
@@ -10,7 +10,7 @@ model: sonnet
 effort: medium
 checkpoint: null
 commit: null
-worktree: null
+worktree: .worktrees/side-169-importer-compound-features
 github_issue: 241
 ---
 ## What

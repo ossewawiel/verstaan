@@ -2146,7 +2146,7 @@
 - headword: "[zero] [in]"
   id: 435269
   uw: "200297333"
-  features: {LEMMA: zero in, BF: zero, LEX: V, POS: VER, LST: MTW, TRA: TST, "#01": "LEMMA=zero in,BF=zero,LEX=V,POS=VER,PAR=M19,FRA=Y38", "#02": BF=in, SEM: CHA}
+  features: {LEMMA: zero in, BF: in, LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M19, FRA: Y38, SEM: CHA}
   lang: eng
   frequency: 1
   priority: 0
@@ -2154,7 +2154,7 @@
 - headword: "[zero] [in]"
   id: 441595
   uw: "201153007"
-  features: {LEMMA: zero in, BF: zero, LEX: V, POS: VER, LST: MTW, TRA: TSTI, "#01": "LEMMA=zero in,BF=zero,LEX=V,POS=VER,PAR=M19,FRA=Y52", "#02": BF=in, SEM: CPT}
+  features: {LEMMA: zero in, BF: in, LEX: V, POS: VER, LST: MTW, TRA: TSTI, PAR: M19, FRA: Y52, SEM: CPT}
   lang: eng
   frequency: 2
   priority: 0
@@ -2162,7 +2162,7 @@
 - headword: "[zip] [by]"
   id: 447958
   uw: "202053829"
-  features: {LEMMA: zip by, BF: zip, LEX: V, POS: VER, LST: MTW, TRA: NTST, "#01": "LEMMA=zip by,BF=zip,LEX=V,POS=VER,PAR=M1,FRA=Y31,FLX(INF:=0>\"\";PAS:=0>\"ped\";PTP:=0>\"ped\";GER:=0>\"ping\";3PS&PRS:=0>\"s\";)", "#02": BF=by, SEM: MOT}
+  features: {LEMMA: zip by, BF: by, LEX: V, POS: VER, LST: MTW, TRA: NTST, PAR: M1, FRA: Y31, FLX: "INF:=0>\"\";PAS:=0>\"ped\";PTP:=0>\"ped\";GER:=0>\"ping\";3PS&PRS:=0>\"s\";", SEM: MOT}
   lang: eng
   frequency: 2
   priority: 0
@@ -2170,7 +2170,7 @@
 - headword: "[zip] [up]"
   id: 442348
   uw: "201353670"
-  features: {LEMMA: zip up, BF: zip, LEX: V, POS: VER, LST: MTW, TRA: TST, "#01": "LEMMA=zip up,BF=zip,LEX=V,POS=VER,PAR=M1,FRA=Y38,FLX(INF:=0>\"\";PAS:=0>\"ped\";PTP:=0>\"ped\";GER:=0>\"ping\";3PS&PRS:=0>\"s\";)", "#02": BF=up, SEM: CTC}
+  features: {LEMMA: zip up, BF: up, LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M1, FRA: Y38, FLX: "INF:=0>\"\";PAS:=0>\"ped\";PTP:=0>\"ped\";GER:=0>\"ping\";3PS&PRS:=0>\"s\";", SEM: CTC}
   lang: eng
   frequency: 2
   priority: 0
@@ -2178,7 +2178,7 @@
 - headword: "[zonk] [out]"
   id: 433546
   uw: "200016855"
-  features: {LEMMA: zonk out, BF: zonk, LEX: V, POS: VER, LST: MTW, TRA: NTST, "#01": "LEMMA=zonk out,BF=zonk,LEX=V,POS=VER,PAR=M16,FRA=Y32", "#02": BF=out, SEM: BOV}
+  features: {LEMMA: zonk out, BF: out, LEX: V, POS: VER, LST: MTW, TRA: NTST, PAR: M16, FRA: Y32, SEM: BOV}
   lang: eng
   frequency: 1
   priority: 0
@@ -2186,7 +2186,7 @@
 - headword: "[zonk] [out]"
   id: 433547
   uw: "200023868"
-  features: {LEMMA: zonk out, BF: zonk, LEX: V, POS: VER, LST: MTW, TRA: NTST, "#01": "LEMMA=zonk out,BF=zonk,LEX=V,POS=VER,PAR=M16,FRA=Y32", "#02": BF=out, SEM: BOV}
+  features: {LEMMA: zonk out, BF: out, LEX: V, POS: VER, LST: MTW, TRA: NTST, PAR: M16, FRA: Y32, SEM: BOV}
   lang: eng
   frequency: 2
   priority: 0
@@ -2194,7 +2194,7 @@
 - headword: "[zoom] [along]"
   id: 447297
   uw: "202055521"
-  features: {LEMMA: zoom along, BF: zoom, LEX: V, POS: VER, LST: MTW, TRA: TSTI, "#01": "LEMMA=zoom along,BF=zoom,LEX=V,POS=VER,PAR=M16,FRA=Y34", "#02": BF=along, SEM: MOT}
+  features: {LEMMA: zoom along, BF: along, LEX: V, POS: VER, LST: MTW, TRA: TSTI, PAR: M16, FRA: Y34, SEM: MOT}
   lang: eng
   frequency: 3
   priority: 0
@@ -2202,7 +2202,7 @@
 - headword: "[zoom] [in]"
   id: 447116
   uw: "202153253"
-  features: {LEMMA: zoom in, BF: zoom, LEX: V, POS: VER, LST: MTW, TRA: TSTI, "#01": "LEMMA=zoom in,BF=zoom,LEX=V,POS=VER,PAR=M16,FRA=Y52", "#02": BF=in, SEM: PCP}
+  features: {LEMMA: zoom in, BF: in, LEX: V, POS: VER, LST: MTW, TRA: TSTI, PAR: M16, FRA: Y52, SEM: PCP}
   lang: eng
   frequency: 1
   priority: 0

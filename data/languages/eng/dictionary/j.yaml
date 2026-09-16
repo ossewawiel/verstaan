@@ -7058,7 +7058,7 @@
 - headword: "[jack] [off]"
   id: 443799
   uw: "201430633"
-  features: {LEMMA: jack off, BF: jack, LEX: V, POS: VER, LST: MTW, TRA: TST, "#01": "LEMMA=jack off,BF=jack,LEX=V,POS=VER,PAR=M16,FRA=Y32", "#02": BF=off, SEM: CTC}
+  features: {LEMMA: jack off, BF: "off", LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M16, FRA: Y32, SEM: CTC}
   lang: eng
   frequency: 1
   priority: 0
@@ -7066,7 +7066,7 @@
 - headword: "[jack] [up]"
   id: 441932
   uw: "201219544"
-  features: {LEMMA: jack up, BF: jack, LEX: V, POS: VER, LST: MTW, TRA: TST, "#01": "LEMMA=jack up,BF=jack,LEX=V,POS=VER,PAR=M16,FRA=Y38", "#02": BF=up, SEM: CTC}
+  features: {LEMMA: jack up, BF: up, LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M16, FRA: Y38, SEM: CTC}
   lang: eng
   frequency: 1
   priority: 0
@@ -7074,7 +7074,7 @@
 - headword: "[jar] [against]"
   id: 441325
   uw: "201240308"
-  features: {LEMMA: jar against, BF: jar, LEX: V, POS: VER, LST: MTW, TRA: TST, "#01": "LEMMA=jar against,BF=jar,LEX=V,POS=VER,PAR=M1,FRA=Y38,FLX(INF:=0>\"\";PAS:=0>\"red\";PTP:=0>\"red\";GER:=0>\"ring\";3PS&PRS:=0>\"s\";)", "#02": BF=against, SEM: CTC}
+  features: {LEMMA: jar against, BF: against, LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M1, FRA: Y38, FLX: "INF:=0>\"\";PAS:=0>\"red\";PTP:=0>\"red\";GER:=0>\"ring\";3PS&PRS:=0>\"s\";", SEM: CTC}
   lang: eng
   frequency: 4
   priority: 0
@@ -7082,7 +7082,7 @@
 - headword: "[jazz] [around]"
   id: 447980
   uw: "201882689"
-  features: {LEMMA: jazz around, BF: jazz, LEX: V, POS: VER, LST: MTW, TRA: NTST, "#01": "LEMMA=jazz around,BF=jazz,LEX=V,POS=VER,PAR=M19,FRA=Y32", "#02": BF=around, SEM: MOT}
+  features: {LEMMA: jazz around, BF: around, LEX: V, POS: VER, LST: MTW, TRA: NTST, PAR: M19, FRA: Y32, SEM: MOT}
   lang: eng
   frequency: 1
   priority: 0
@@ -7090,7 +7090,7 @@
 - headword: "[jazz] [up]"
   id: 434686
   uw: "200192659"
-  features: {LEMMA: jazz up, BF: jazz, LEX: V, POS: VER, LST: MTW, TRA: TST, "#01": "LEMMA=jazz up,BF=jazz,LEX=V,POS=VER,PAR=M19,FRA=Y38", "#02": BF=up, SEM: CHA}
+  features: {LEMMA: jazz up, BF: up, LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M19, FRA: Y38, SEM: CHA}
   lang: eng
   frequency: 1
   priority: 0
@@ -7098,7 +7098,7 @@
 - headword: "[jerk] [off]"
   id: 443800
   uw: "201430633"
-  features: {LEMMA: jerk off, BF: jerk, LEX: V, POS: VER, LST: MTW, TRA: TST, "#01": "LEMMA=jerk off,BF=jerk,LEX=V,POS=VER,PAR=M16,FRA=Y32", "#02": BF=off, SEM: CTC}
+  features: {LEMMA: jerk off, BF: "off", LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M16, FRA: Y32, SEM: CTC}
   lang: eng
   frequency: 1
   priority: 0
@@ -7106,7 +7106,7 @@
 - headword: "[jest] [at]"
   id: 439308
   uw: "200851933"
-  features: {LEMMA: jest at, BF: jest, LEX: V, POS: VER, LST: MTW, TRA: TST, "#01": "LEMMA=jest at,BF=jest,LEX=V,POS=VER,PAR=M16,FRA=Y38", "#02": BF=at, SEM: CMV}
+  features: {LEMMA: jest at, BF: at, LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M16, FRA: Y38, SEM: CMV}
   lang: eng
   frequency: 16
   priority: 0
@@ -7114,7 +7114,7 @@
 - headword: "[join] [battle]"
   id: 441165
   uw: "201091160"
-  features: {LEMMA: join battle, BF: join, LEX: V, POS: VER, LST: MTW, TRA: NTST, "#01": "LEMMA=join battle,BF=join,LEX=V,POS=VER,PAR=M16,FRA=Y32", "#02": BF=battle, SEM: CPT}
+  features: {LEMMA: join battle, BF: battle, LEX: V, POS: VER, LST: MTW, TRA: NTST, PAR: M16, FRA: Y32, SEM: CPT}
   lang: eng
   frequency: 1
   priority: 0
@@ -7122,7 +7122,7 @@
 - headword: "[join] [forces]"
   id: 453677
   uw: "202416278"
-  features: {LEMMA: join forces, BF: join, LEX: V, POS: VER, LST: MTW, TRA: TSTI, "#01": "LEMMA=join forces,BF=join,LEX=V,POS=VER,PAR=M16,FRA=Y32", "#02": BF=forces, SEM: SOV}
+  features: {LEMMA: join forces, BF: forces, LEX: V, POS: VER, LST: MTW, TRA: TSTI, PAR: M16, FRA: Y32, SEM: SOV}
   lang: eng
   frequency: 33
   priority: 0
@@ -7130,7 +7130,7 @@
 - headword: "[jolly] [along]"
   id: 439355
   uw: "200859325"
-  features: {LEMMA: jolly along, BF: jolly, LEX: V, POS: VER, LST: MTW, TRA: TST, "#01": "LEMMA=jolly along,BF=jolly,LEX=V,POS=VER,PAR=M18,FRA=Y39", "#02": BF=along, SEM: CMV}
+  features: {LEMMA: jolly along, BF: along, LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M18, FRA: Y39, SEM: CMV}
   lang: eng
   frequency: 1
   priority: 0
@@ -7138,7 +7138,7 @@
 - headword: "[jolly] [up]"
   id: 439356
   uw: "200859325"
-  features: {LEMMA: jolly up, BF: jolly, LEX: V, POS: VER, LST: MTW, TRA: TST, "#01": "LEMMA=jolly up,BF=jolly,LEX=V,POS=VER,PAR=M18,FRA=Y39", "#02": BF=up, SEM: CMV}
+  features: {LEMMA: jolly up, BF: up, LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M18, FRA: Y39, SEM: CMV}
   lang: eng
   frequency: 1
   priority: 0
@@ -7146,7 +7146,7 @@
 - headword: "[jot] [down]"
   id: 440056
   uw: "201006056"
-  features: {LEMMA: jot down, BF: jot, LEX: V, POS: VER, LST: MTW, TRA: TSTD, "#01": "LEMMA=jot down,BF=jot,LEX=V,POS=VER,PAR=M1,FRA=Y38,FLX(INF:=0>\"\";PAS:=0>\"ted\";PTP:=0>\"ted\";GER:=0>\"ting\";3PS&PRS:=0>\"s\";)", "#02": BF=down, SEM: CMV}
+  features: {LEMMA: jot down, BF: down, LEX: V, POS: VER, LST: MTW, TRA: TSTD, PAR: M1, FRA: Y38, FLX: "INF:=0>\"\";PAS:=0>\"ted\";PTP:=0>\"ted\";GER:=0>\"ting\";3PS&PRS:=0>\"s\";", SEM: CMV}
   lang: eng
   frequency: 2
   priority: 0
@@ -7154,7 +7154,7 @@
 - headword: "[juice] [up]"
   id: 434687
   uw: "200192659"
-  features: {LEMMA: juice up, BF: juice, LEX: V, POS: VER, LST: MTW, TRA: TST, "#01": "LEMMA=juice up,BF=juice,LEX=V,POS=VER,PAR=M17,FRA=Y38", "#02": BF=up, SEM: CHA}
+  features: {LEMMA: juice up, BF: up, LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M17, FRA: Y38, SEM: CHA}
   lang: eng
   frequency: 1
   priority: 0
@@ -7162,7 +7162,7 @@
 - headword: "[jump] [for joy]"
   id: 447098
   uw: "201813668"
-  features: {LEMMA: jump for joy, BF: jump, LEX: V, POS: VER, LST: MTW, TRA: NTST, "#01": "LEMMA=jump for joy,BF=jump,LEX=V,POS=VER,PAR=M16,FRA=Y32", "#02": BF=for joy, SEM: EMO}
+  features: {LEMMA: jump for joy, BF: for joy, LEX: V, POS: VER, LST: MTW, TRA: NTST, PAR: M16, FRA: Y32, SEM: EMO}
   lang: eng
   frequency: 2
   priority: 0
@@ -7170,7 +7170,7 @@
 - headword: "[jump] [off]"
   id: 435657
   uw: "200347104"
-  features: {LEMMA: jump off, BF: jump, LEX: V, POS: VER, LST: MTW, TRA: NTST, "#01": "LEMMA=jump off,BF=jump,LEX=V,POS=VER,PAR=M16,FRA=Y31", "#02": BF=off, SEM: CHA}
+  features: {LEMMA: jump off, BF: "off", LEX: V, POS: VER, LST: MTW, TRA: NTST, PAR: M16, FRA: Y31, SEM: CHA}
   lang: eng
   frequency: 2
   priority: 0
@@ -7178,7 +7178,7 @@
 - headword: "[jump] [off]"
   id: 450184
   uw: "202105082"
-  features: {LEMMA: jump off, BF: jump, LEX: V, POS: VER, LST: MTW, TRA: NTST, "#01": "LEMMA=jump off,BF=jump,LEX=V,POS=VER,PAR=M16,FRA=Y32", "#02": BF=off, SEM: MOT}
+  features: {LEMMA: jump off, BF: "off", LEX: V, POS: VER, LST: MTW, TRA: NTST, PAR: M16, FRA: Y32, SEM: MOT}
   lang: eng
   frequency: 1
   priority: 0
@@ -7186,7 +7186,7 @@
 - headword: "[jump] [on]"
   id: 447791
   uw: "201923414"
-  features: {LEMMA: jump on, BF: jump, LEX: V, POS: VER, LST: MTW, TRA: TST, "#01": "LEMMA=jump on,BF=jump,LEX=V,POS=VER,PAR=M16,FRA=Y38", "#02": BF=on, SEM: MOT}
+  features: {LEMMA: jump on, BF: "on", LEX: V, POS: VER, LST: MTW, TRA: TST, PAR: M16, FRA: Y38, SEM: MOT}
   lang: eng
   frequency: 9
   priority: 0
@@ -7194,7 +7194,7 @@
 - headword: "[jump] [out]"
   id: 457098
   uw: "202674564"
-  features: {LEMMA: jump out, BF: jump, LEX: V, POS: VER, LST: MTW, TRA: TSTI, "#01": "LEMMA=jump out,BF=jump,LEX=V,POS=VER,PAR=M16,FRA=Y31", "#02": BF=out, SEM: STT}
+  features: {LEMMA: jump out, BF: out, LEX: V, POS: VER, LST: MTW, TRA: TSTI, PAR: M16, FRA: Y31, SEM: STT}
   lang: eng
   frequency: 7
   priority: 0
@@ -7202,7 +7202,7 @@
 - headword: "[jut] [out]"
   id: 457040
   uw: "202713372"
-  features: {LEMMA: jut out, BF: jut, LEX: V, POS: VER, LST: MTW, TRA: TSTI, "#01": "LEMMA=jut out,BF=jut,LEX=V,POS=VER,PAR=M1,FRA=Y31,FLX(INF:=0>\"\";PAS:=0>\"ted\";PTP:=0>\"ted\";GER:=0>\"ting\";3PS&PRS:=0>\"s\";)", "#02": BF=out, SEM: STT}
+  features: {LEMMA: jut out, BF: out, LEX: V, POS: VER, LST: MTW, TRA: TSTI, PAR: M1, FRA: Y31, FLX: "INF:=0>\"\";PAS:=0>\"ted\";PTP:=0>\"ted\";GER:=0>\"ting\";3PS&PRS:=0>\"s\";", SEM: STT}
   lang: eng
   frequency: 16
   priority: 0
