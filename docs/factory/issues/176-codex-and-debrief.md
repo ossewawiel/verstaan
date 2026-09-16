@@ -2,15 +2,15 @@
 issue: 176
 title: "Codex and debrief: issue files as briefings, lessons grouped for promotion"
 milestone: M7
-status: in-progress
+status: done
 depends_on: [175]
 agent: implementer
 agents: [implementer]
 model: sonnet
 effort: medium
 checkpoint: null
-commit: null
-worktree: .worktrees/m7-176-codex-and-debrief
+commit: 31dfc8d
+worktree: null
 github_issue: 261
 ---
 ## What
