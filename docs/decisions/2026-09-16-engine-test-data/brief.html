@@ -1,0 +1,409 @@
+<title>Test Data for the Engine Gate</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@400&display=swap">
+<style>
+:root{
+  --bg:#F7F8FA;--surface:#FFFFFF;--ink:#1B2027;--ink-2:#5B6472;--line:#E1E5EB;
+  --accent:#C2410C;--accent-soft:rgba(194,65,12,.10);
+  --sev-crit:#B3261E;--sev-high:#C2410C;--sev-med:#B58105;--sev-low:#3B6E8F;
+  --good:#2E7D4F;--good-soft:rgba(46,125,79,.10);--code-bg:#EEF1F5;
+  --display:'Fraunces',Georgia,serif;--body:'Source Sans 3',system-ui,sans-serif;--mono:'JetBrains Mono',ui-monospace,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#101317;--surface:#171B21;--ink:#E6E9EE;--ink-2:#9AA3B2;--line:#2A313B;
+    --accent:#F0873F;--accent-soft:rgba(240,135,63,.14);
+    --sev-crit:#FF6B62;--sev-high:#F0873F;--sev-med:#E5B73B;--sev-low:#7FB3D5;
+    --good:#5DBE8A;--good-soft:rgba(93,190,138,.14);--code-bg:#1F252D;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#101317;--surface:#171B21;--ink:#E6E9EE;--ink-2:#9AA3B2;--line:#2A313B;
+  --accent:#F0873F;--accent-soft:rgba(240,135,63,.14);
+  --sev-crit:#FF6B62;--sev-high:#F0873F;--sev-med:#E5B73B;--sev-low:#7FB3D5;
+  --good:#5DBE8A;--good-soft:rgba(93,190,138,.14);--code-bg:#1F252D;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.55;padding-block:0 64px;padding-inline:16px}
+a{color:var(--accent);text-decoration:none;border-bottom:1px solid transparent}
+a:hover,a:focus-visible{border-bottom-color:var(--accent);outline:none}
+code{font-family:var(--mono);font-size:.86em;background:var(--code-bg);padding:.08em .35em;border-radius:4px}
+pre{font-family:var(--mono);font-size:13px;background:var(--code-bg);padding:12px 14px;border-radius:6px;overflow-x:auto;margin:12px 0;line-height:1.5}
+.wrap{max-width:1120px;margin:0 auto;display:grid;grid-template-columns:220px minmax(0,1fr);gap:40px}
+.rail{position:sticky;top:24px;align-self:start;padding-top:40px;font-size:14px}
+.rail .lbl{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-2);margin-bottom:10px}
+.rail a{display:block;color:var(--ink-2);padding:4px 0;border-bottom:none}
+.rail a:hover{color:var(--accent)}
+main{padding-top:40px;min-width:0}
+.eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-2);margin:0 0 12px}
+h1{font-family:var(--display);font-weight:600;font-size:40px;line-height:1.15;margin:0 0 16px;text-wrap:balance;font-variation-settings:'opsz' 144}
+h2{font-size:28px;font-weight:600;line-height:1.2;margin:0 0 14px;text-wrap:balance}
+h3{font-size:20px;font-weight:600;margin:0 0 8px}
+p{max-width:68ch;margin:0 0 12px}
+ul,ol{max-width:68ch;margin:0 0 12px;padding-left:22px}
+li{margin-bottom:6px}
+section{padding:40px 0;border-top:1px solid var(--line)}
+section:first-of-type{border-top:none;padding-top:0}
+.lead{font-size:18px;max-width:68ch}
+.strip{display:grid;grid-template-columns:minmax(0,1.4fr) repeat(3,minmax(0,1fr));gap:16px;margin:28px 0 0}
+.strip>div{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:18px 20px}
+.strip .big{font-family:var(--display);font-size:64px;line-height:1;font-weight:600;color:var(--accent);font-variation-settings:'opsz' 144}
+.strip .big small{display:block;font-family:var(--body);font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-2);margin-bottom:10px}
+.tile .k{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-2)}
+.tile .v{font-size:28px;font-weight:600;font-variant-numeric:tabular-nums;margin:4px 0}
+.tile .w{font-size:14px;color:var(--ink-2)}
+.chip{display:inline-block;font-size:12px;text-transform:uppercase;letter-spacing:.06em;border-radius:999px;padding:2px 10px;color:#fff;background:var(--ink-2);vertical-align:middle}
+.chip.acc{background:var(--accent)}.chip.good{background:var(--good)}.chip.med{background:var(--sev-med)}.chip.low{background:var(--sev-low)}.chip.crit{background:var(--sev-crit)}
+.size{font-family:var(--mono);font-size:13px;color:var(--ink-2)}
+.tbl{overflow-x:auto;margin:16px 0}
+table{border-collapse:collapse;width:100%;font-size:14px;font-variant-numeric:tabular-nums}
+th,td{text-align:left;vertical-align:top;padding:9px 12px;border-bottom:1px solid var(--line)}
+th{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-2);font-weight:600}
+td.num,th.num{text-align:right}
+td.rec,th.rec{background:var(--accent-soft)}
+.sub{margin:22px 0 0}
+.sub h3{margin-top:0}
+.claim{max-width:68ch;margin:0 0 10px}
+.dissent{border-left:3px solid var(--sev-med);padding-left:12px;color:var(--ink);max-width:68ch;margin:8px 0 12px}
+.dissent b{color:var(--sev-med)}
+.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:8px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:18px 20px;display:flex;flex-direction:column;gap:10px}
+.card.rec{border-color:var(--accent);background:var(--accent-soft)}
+.card.chosen{border-color:var(--good);background:var(--good-soft)}
+.card.chosen .foot{color:var(--good)}
+.card .hd{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.card .hd h3{margin:0}
+.card .k{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-2);margin:6px 0 2px}
+.card ul{margin:0;padding-left:18px;font-size:15px}
+.card p{font-size:15px;margin:0}
+.card .foot{margin-top:auto;padding-top:10px;border-top:1px solid var(--line);font-size:14px;font-weight:600;color:var(--accent)}
+.assume{border:1px solid var(--line);border-radius:6px;padding:12px 16px;background:var(--surface);max-width:68ch}
+.assume .k{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-2);margin-bottom:6px}
+.assume ul{margin:0}
+.method{font-size:14px;color:var(--ink-2)}
+.method ol{columns:2;column-gap:32px;max-width:none}
+.method li{break-inside:avoid}
+.path{font-family:var(--mono);font-size:13px}
+.flow{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:16px 0}
+.flow>div{border:1px solid var(--line);border-radius:6px;background:var(--surface);padding:12px 14px;font-size:14px}
+.flow .k{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-2);margin-bottom:4px}
+.flow .k.good{color:var(--good)}.flow .k.crit{color:var(--sev-crit)}.flow .k.med{color:var(--sev-med)}
+@media (max-width:900px){
+  .wrap{grid-template-columns:1fr;gap:0}
+  .rail{display:none}
+  .strip{grid-template-columns:1fr 1fr}
+  .strip>div:first-child{grid-column:1/-1}
+  .cards{grid-template-columns:1fr}
+  .flow{grid-template-columns:1fr}
+  .method ol{columns:1}
+  h1{font-size:32px}
+  .strip .big{font-size:44px}
+}
+@media (max-width:520px){.strip{grid-template-columns:1fr}}
+</style>
+
+<div class="wrap">
+<nav class="rail" aria-label="Contents">
+  <div class="lbl">Contents</div>
+  <a href="#decision">The decision</a>
+  <a href="#research">What the research says</a>
+  <a href="#options">The alternatives</a>
+  <a href="#compare">Comparison</a>
+  <a href="#recommend">Recommendation</a>
+  <a href="#flip">What would change this</a>
+  <a href="#method">Method</a>
+</nav>
+
+<main>
+<p class="eyebrow">Verstaan · Engine test data and the gate · 2026-09-16 · Context: gate.yml, docs/factory/issues 19–26, docs/standards/testing.md, ADR 0003 and 0007, local timings</p>
+<h1>Test Data for the Engine Gate</h1>
+<p class="lead">The premise holds in two places today and in four issue files tomorrow. The CI gate stopped importing the archive on 2026-09-15 and reads a store only on a branch that changed it, but it then reads that store on all three legs, and the local gate script still runs the full sweep that the same day's decision removed. Ahead of that, the M3 issue files send the engine's own GoogleTests to <span class="path">data/languages/eng</span>, a 175 MB store of 574,846 entries, and the gate table plans to build every tier from that store at M4. Carve a fixture store per real language from the fifteen fixed sentences, point issues 19, 20, 22 and 23 at it, and let the whole store be read once, on one leg, only when a branch changes data or the tools that read it.</p>
+
+<div class="strip">
+  <div><div class="big"><small>Recommended</small>Carved store fixtures</div></div>
+  <div class="tile"><div class="k">Confidence</div><div class="v">High</div><div class="w">The store sizes and the validator run are measured. The C++ load cost is an estimate, because no loader exists yet.</div></div>
+  <div class="tile"><div class="k">Options weighed</div><div class="v">5</div><div class="w">Including stay as is</div></div>
+  <div class="tile"><div class="k">Sources</div><div class="v">14</div><div class="w">Project files and timings, GitHub docs, CMake docs, two compiler-time posts, Google and Apertium testing practice</div></div>
+</div>
+
+<section id="decision">
+<p class="eyebrow">The decision</p>
+<h2>Which data the engine's tests, the fixture data library and the gate's tier builds read</h2>
+<p>The owner asked why the gates test and build with the real dictionary and grammar data, and what the better alternatives are. The question has two halves, and they have different answers.</p>
+<p>The first half is the gate as it runs now. On 2026-09-15 the owner asked the same question about the importer tests, and the "Gate Time Budget" brief of that day answered it: the pytest step imported the 6 MB English zips and took ten to fourteen minutes, so the owner chose fixture-sized imports, issue 166. The same afternoon issue 168 stopped the validator sweeping both stores on every branch. Today the CI gate reads a real store in one place, <code>tools.validate --changed --base</code>, and only when the branch changed a file inside that store. A docs, engine or console branch reads no store at all. Two leftovers remain, and the research section measures them: the step runs on all three legs, and the local <span class="path">gate_full.sh</span> still calls <code>--all</code>.</p>
+<p>The second half is what comes next. The M3 issue files, written at the M2 close-out, name the real store as the test input for the engine. Issue 20 says <span class="path">engine/src/dictionary_lookup.cpp</span> reads <span class="path">data/languages/eng/dictionary/*.yaml</span> and its GoogleTest looks up every token of the fifteen sentences there. Issue 22 says the rule interpreter reads the five English and two Afrikaans grammar files from the store. Issue 23 picks its missing word against the real English dictionary. And SPEC.md §5 lists "all tiers configure and build" and step 6 "regenerate and diff" in the full gate, which at M4 means running the compiler over the whole store and compiling its output on every pull request. This brief decides the rule for that half before the first of those issues runs.</p>
+<div class="assume">
+  <div class="k">Assumptions</div>
+  <ul>
+    <li>M3 keeps its scope: English → UNL → Afrikaans for the fifteen <code>ugoa1</code> sentences issue 24 selects. The 248-sentence corpus is an M4 equivalence subject.</li>
+    <li>The runtime-tables back end of ADR 0007 needs a YAML reader somewhere. The engine has none today: <span class="path">vcpkg.json</span> lists only gtest, and <span class="path">engine/CLAUDE.md</span> forbids I/O under <span class="path">src/</span>. Where that reader lives is an M3 design call this brief does not make; the data question is the same wherever it lands.</li>
+    <li>The owner's 2026-09-15 decision stands: <code>validate --all</code> runs by hand during data work, never on a timer. Nothing below adds a scheduled run.</li>
+    <li>Free public-repository runners, four vCPU and 16 GB, three build legs, a fifteen-minute build cap.</li>
+  </ul>
+</div>
+</section>
+
+<section id="research">
+<p class="eyebrow">What the research says</p>
+<h2>The gate is clean today; the M3 files reopen the cost the owner just closed</h2>
+
+<div class="sub">
+<h3>Why the real data is there at all</h3>
+<p class="claim">Four reasons put the real store into the plan, and only one of them is still a reason to read it per pull request. First, the standard forbids inventing expected values: "the golden text for a sentence comes from the owner or from the archive corpus, never from the engine" (<span class="path">docs/standards/testing.md</span>). Second, the M3 milestone is defined as real English into real Afrikaans, so the issue files reached for the real files as the shortest path to "real". Third, a branch that edits a store must answer for the whole store, which is why <code>--changed</code> validates every file beside the touched one (issue 168). Fourth, ADR 0006 says every tier build produces its own golden set "from the same corpus", which reads as the full corpus at M4.</p>
+<p class="claim">The first reason is satisfied by a slice as well as by the whole, as long as the slice holds real lines verbatim with a manifest naming their source. That is exactly the shape issue 166 built for the archive zips. The second reason is a milestone claim, proven once at close-out, not a property of every fast-gate run. The third reason is right and stays. The fourth is a compiler contract and can be met from a fixture store too.</p>
+</div>
+
+<div class="sub">
+<h3>What the store weighs</h3>
+<p class="claim">The English store is not "some YAML". The measurements below are from this machine, an i7-1065G7 with eight threads, on the committed <span class="path">data/languages/</span> tree.</p>
+<div class="tbl"><table>
+<tr><th>Item</th><th class="num">Size</th><th class="num">Entries or lines</th><th>Measured cost</th></tr>
+<tr><td><span class="path">data/languages/eng/</span> store</td><td class="num">175 MB</td><td class="num">574,846 entries · 4,598,794 lines · 26 shards</td><td><code>validate --lang eng</code>: 5 min 10 s, libyaml C loader</td></tr>
+<tr><td>Largest English shard, <span class="path">s.yaml</span></td><td class="num">22 MB</td><td class="num">—</td><td>one shard is bigger than the whole Afrikaans store</td></tr>
+<tr><td><span class="path">data/languages/afr/</span> store</td><td class="num">9.8 MB</td><td class="num">30,591 entries</td><td><code>validate --lang afr</code>: 12 s</td></tr>
+<tr><td>Grammar, both languages</td><td class="num">—</td><td class="num">6,123 lines in 10 files</td><td>small; the dictionary is the weight</td></tr>
+<tr><td>Corpus <span class="path">ugoa1.yaml</span>, each language</td><td class="num">—</td><td class="num">248 sentences</td><td>M3 uses fifteen of them</td></tr>
+<tr><td>Fixture pair <span class="path">tests/fixtures/languages/xxa, xxb</span></td><td class="num">76 KB + 64 KB</td><td class="num">ten entries each</td><td>loads in milliseconds</td></tr>
+<tr><td><span class="path">engine/generated/fixture/</span> data library</td><td class="num">26 lines</td><td class="num">—</td><td>hand-written stand-in for compiler output</td></tr>
+<tr><td>Gate run on <code>main</code>, 2026-09-15 18:29 UTC, no data touched</td><td class="num">—</td><td class="num">—</td><td>build legs 1 min 25 s (gcc), 1 min 49 s (clang), 4 min 3 s (MSVC); only <code>mirror-check</code> red, unrelated</td></tr>
+<tr><td>Gate run on side quest 169, 2026-09-16 06:45 UTC, English store touched</td><td class="num">—</td><td class="num">—</td><td>"Validate changed data" 3 min 29 s (clang), 4 min 47 s (gcc), 3 min 58 s (MSVC); build legs 5 min 31 s to 7 min 34 s</td></tr>
+<tr><td><span class="path">gate_full.sh</span> line 80, <code>validate --all</code>, local</td><td class="num">185 MB</td><td class="num">both stores</td><td>352 s, exit 1, on every local <code>/gate</code></td></tr>
+</table></div>
+</div>
+
+<div class="sub">
+<h3>Two places still read the whole store today</h3>
+<p class="claim">The local full gate is the first. <span class="path">tools/factory/hooks/gate_full.sh</span> line 80 runs <code>python -m tools.validate --all</code> and fails the gate when it exits non-zero. <span class="path">.claude/commands/gate.md</span>, SPEC.md §5 and <span class="path">testing.md</span> all say <code>--all</code> is never a gate step, since issue 168. The script did not follow. On this machine that line costs 352 seconds and exits 1, because the real stores still carry the feature-value errors quest 169 is clearing. So every local <code>/gate</code> run reads 185 MB of YAML for six minutes and then reports a failure the owner has already decided not to block on.</p>
+<p class="claim">The CI build matrix is the second. Picture this morning's run on the importer branch, side quest 169, at 06:45 UTC. The branch touches the English store, so <code>--changed</code> correctly validates the whole of it. It does so on the clang leg for 3 min 29 s, on the gcc leg for 4 min 47 s, and on the MSVC leg for 3 min 58 s, in parallel, reading the same OS-independent YAML three times to learn one fact. The C++ build and ctest on each leg took under a minute. The 2026-09-15 brief named this: "the data is OS-independent … running them on Windows, gcc and clang three times proves nothing the Linux run does not".</p>
+<p class="claim">Neither leftover needs a decision. The first is a one-line drift from a rule already written. The second is the data job described below, which the earlier brief held back until the store checks outgrew the build legs; a data branch now spends more time in the validator than in everything else together.</p>
+</div>
+
+<div class="sub">
+<h3>The store's shape, for a fixture</h3>
+<p class="claim">The homograph shape matters for a fixture. English <code>bank</code> carries 36 entries in <span class="path">b.yaml</span>, and the single letter <code>A</code> carries 12 in <span class="path">a.yaml</span>. A slice that keeps every entry for a chosen headword keeps the real fan-out; the lookup test in issue 20 sees the same 36 candidates it would see in the whole store.</p>
+</div>
+
+<div class="sub">
+<h3>What the M3 files cost if they run as written</h3>
+<p class="claim">This is the point in the flow where the cost arrives. Issue 20's test process opens the English shards, parses them and builds lookup structures before its first assertion. The fastest C++ YAML parser in common use, rapidyaml, reports about 150 MB/s on Linux and about 100 MB/s on Windows, so the parse alone is one to two seconds per process and the tree it builds for 4.6 million lines sits at several hundred megabytes (<a href="https://rapidyaml.readthedocs.io/v0.7.2/sphinx_is_it_rapid.html">rapidyaml, "Is it rapid?"</a>). yaml-cpp, the parser most C++ projects reach for first, is reported at ten to seventy times slower on the same benchmarks, which puts the parse at twenty seconds to two minutes (<a href="https://github.com/biojppm/rapidyaml">rapidyaml README</a>). The Python validator with libyaml's C loader takes five minutes for the same store, and that is the only measured "read the English store" figure the project has today.</p>
+<p class="claim">The multiplier is CTest. Issue 26 asks for <code>gtest_discover_tests</code> so that <code>ctest -R A09</code> runs one row. That module registers "a separate CTest test for each Google Test test case" and runs the executable once per case (<a href="https://cmake.org/cmake/help/latest/module/GoogleTest.html">CMake, GoogleTest module</a>). Every case then loads the store again. Fifteen golden rows plus the lookup, interpreter and status tests make forty or more processes, each paying the parse and the memory. On the owner's laptop <code>ctest -j8</code> would hold eight copies of the store in memory at once. The Stop hook runs the fast label at every session stop, so this cost lands on every encounter, not only on the pull request.</p>
+<p class="claim">Google's test-size rules name the line being crossed. A small test "must run in a single process", has no file-system access and is capped at sixty seconds; a test that reads files is at least medium, capped at five minutes, and is not what a pre-commit gate is built from (<a href="https://testing.googleblog.com/2010/12/test-sizes.html">Google Testing Blog, Test Sizes</a>). The project's own standard says the same in one line: "domain tests are pure: no file I/O … fixture data lives in <span class="path">tests/fixtures/</span>" (<span class="path">docs/standards/testing.md</span>). ADR 0003 promised that "the engine builds and its tests run against a tiny fixture data library, so engine work does not wait on the compiler". Issues 19, 20, 22 and 23 drift from all three.</p>
+<div class="dissent"><b>Dissent.</b> The issue files are not wrong about what M3 must prove. Fifteen real English sentences through real dictionaries and real rules is the milestone. The disagreement is about where that proof runs: once, when the store or the engine changes, or on every fast gate and every pull request.</div>
+</div>
+
+<div class="sub">
+<h3>What M4 adds if the gate keeps the whole store</h3>
+<p class="claim">The compiler emits <span class="path">engine/generated/&lt;tier&gt;/tables.cpp</span> and the gate builds every tier (SPEC.md §3.5, §5). The <code>phone</code> and <code>connected</code> tiers carry the full dictionary, so their tables hold 574,846 entries as a C++ initializer. Large table initializers are a known compile-time hazard. Unity measured one descriptor table at 92 seconds for a single file in Release, cut to 10 seconds by moving the table to global scope and dropping the enum operators (<a href="https://aras-p.info/blog/2017/10/24/Slow-to-Compile-Table-Initializers/">Aras Pranckevičius, Slow to Compile Table Initializers</a>). Clang has taken over ten seconds on a 40-million-element array that GCC compiled in under a tenth of a second (<a href="https://cor3ntin.github.io/posts/arrays/">cor3ntin, Very Large Arrays in Clang</a>), and MSVC has a filed case of compile time growing with the square of a large static initializer (<a href="https://developercommunity.visualstudio.com/content/problem/36254/compile-times-crazy-for-large-initializers-static.html">Visual Studio Developer Community</a>). Three compilers, three legs, one fifteen-minute cap. Step 6's regenerate-and-diff adds a Python pass over the 175 MB store per pull request, which the validator's five minutes already prices. And ADR 0003 commits the generated output, so every data change lands a tens-of-megabytes diff in git.</p>
+<p class="claim">None of that is decided yet; the M4 quests do not exist. It is listed here because the rule this brief sets should carry to M4 without a third investigation.</p>
+</div>
+
+<div class="sub">
+<h3>How other rule-based translators split it</h3>
+<p class="claim">Apertium, the largest open rule-based machine translation project, keeps two kinds of test. Regression tests translate a small fixed set of phrases and compare against expected output; they are "deterministic, in the sense that they either pass or fail". Corpus tests translate a whole corpus and diff against the last run, "very useful if you want to change a rule or word and want to get an overview of the consequences on real-life text" (<a href="https://wiki.apertium.org/wiki/Corpus_test">Apertium wiki, Corpus test</a>; <a href="https://wiki.apertium.org/wiki/Apertium-regtest">Apertium-regtest</a>). The small set is the gate; the corpus run is the data tool. Verstaan already has both halves named: the golden label and the held-out slice for the first, the equivalence label and <code>validate --all</code> for the second.</p>
+</div>
+
+<div class="sub">
+<h3>What the platform offers for the real-store proof</h3>
+<p class="claim">A workflow can run only when named paths change: with <code>on.pull_request.paths</code>, "if any path names do not match patterns in paths-ignore … the workflow will run", and the filters apply to push and pull request events (<a href="https://docs.github.com/actions/using-workflows/workflow-syntax-for-github-actions">GitHub Docs, workflow syntax</a>). The aggregator job already treats a skipped <code>cla</code> job as a pass, so a path-filtered data job fits the existing shape. <code>workflow_dispatch</code> gives the same job a button for an on-demand run without a schedule (<a href="https://docs.github.com/actions/using-workflows/triggering-a-workflow">GitHub Docs, triggering a workflow</a>). Public-repository runners are free and the job cap is a repository choice up to 360 minutes (<a href="https://docs.github.com/en/actions/reference/actions-limits">GitHub Docs, Actions limits</a>), so a twenty-minute data job costs nothing but wall time on the branches that need it. The 2026-09-15 brief listed this as "Skip data when data is untouched" and called it a refinement for later; M3 is when it is needed.</p>
+</div>
+</section>
+
+<section id="options">
+<p class="eyebrow">The alternatives</p>
+<h2>Five ways to feed the engine's tests, one of which the standard already asks for</h2>
+<div class="cards">
+
+<div class="card rec">
+  <div class="hd"><h3>Carved store fixtures</h3><span class="size">M</span></div>
+  <p>Cut a fixture store per real language, <span class="path">tests/fixtures/languages/eng/</span> and <span class="path">afr/</span>, in the same §3.3 layout as the real one. It holds every dictionary entry, every sense, for every token of the fifteen sentences, the rules issues 21 and 22 name, the whole tagset, one heavy headword such as <code>bank</code>, and one word deliberately absent. A small carve tool under <span class="path">tools/</span> reads the sentence table and the real store and writes the slice, so the fixture is regenerated, not hand-kept, and a manifest line names the source shard and line of every entry.</p>
+  <div class="k">Pros</div>
+  <ul>
+    <li>Every engine test loads a store of a few hundred entries in milliseconds, on every leg and at every Stop hook.</li>
+    <li>Expected values and entries are still archive bytes, verbatim, so the golden rule in <span class="path">testing.md</span> holds.</li>
+    <li>The compiler at M4 runs over the same fixture store, which gives the fixture data library and the equivalence test a real, cheap subject.</li>
+  </ul>
+  <div class="k">Cons</div>
+  <ul>
+    <li>The whole-store run moves out of the pull-request gate; a data job or an owner-run step carries it.</li>
+    <li>Four issue files change their input paths before they run, and the carve tool is a small new quest.</li>
+    <li>A defect that only the whole store shows, such as a shard that no longer parses, is caught by the data job, not by an engine branch.</li>
+  </ul>
+  <div class="k">Fit here</div>
+  <p>Issue 24 already writes <span class="path">tests/fixtures/languages/eng/tests/basic.yaml</span>, so the folder and the shape exist. Issue 166 already built the manifest pattern for carved archive zips. This is the same move one layer up.</p>
+  <div class="k">Afterwards</div>
+  <p><code>ctest -L fast</code> and <code>-L golden</code> finish in seconds. <span class="path">tests/fixtures/archive/manifest.jsonl</span> gains sibling lines for the store slice. A pull request that touches <span class="path">data/languages/</span> shows one more check, <code>data</code>, and every other pull request shows it skipped, in grey.</p>
+  <div class="foot">★ Recommended</div>
+</div>
+
+<div class="card">
+  <div class="hd"><h3>Stay as is</h3><span class="size">S</span></div>
+  <p>Run issues 19 to 25 as written. The engine's tests open <span class="path">data/languages/eng</span> and <span class="path">afr</span> directly, and the M4 gate builds every tier from the whole store.</p>
+  <div class="k">Pros</div>
+  <ul>
+    <li>Nothing to carve and nothing to regenerate; the test reads what ships.</li>
+    <li>The milestone's claim and the test's input are the same files.</li>
+  </ul>
+  <div class="k">Cons</div>
+  <ul>
+    <li>Each test process parses 175 MB before its first assertion, and CTest runs one process per case.</li>
+    <li>Breaks three written rules: no file I/O in domain tests, fixtures under <span class="path">tests/fixtures/</span>, and ADR 0003's tiny fixture library.</li>
+    <li>The cost scales with the store: Dutch at M6 and the 248-sentence corpus at M4 grow it again, the way the importer step grew until the cap cancelled it.</li>
+  </ul>
+  <div class="k">Fit here</div>
+  <p>This is the shape the owner rejected on 2026-09-15 for the importer, now at the engine layer, and with a C++ parser the project has not chosen yet.</p>
+  <div class="k">Afterwards</div>
+  <p>The Stop hook's fast gate takes minutes. <code>--output-on-failure</code> logs open with a load time. The build job's cap is back in play at M4.</p>
+</div>
+
+<div class="card">
+  <div class="hd"><h3>Fast loader, once per binary</h3><span class="size">M</span></div>
+  <p>Keep the real store as the test input but make the read cheap. Add rapidyaml to <span class="path">vcpkg.json</span>, load the store once per test executable through a GoogleTest <code>Environment</code>, and register one CTest case per binary instead of per test case.</p>
+  <div class="k">Pros</div>
+  <ul>
+    <li>The parse drops to one to two seconds per binary on Linux; the whole store is exercised on every run.</li>
+    <li>No fixture to carve; the homograph fan-out and the shard layout are the real ones.</li>
+  </ul>
+  <div class="k">Cons</div>
+  <ul>
+    <li>A new engine dependency, and a YAML reader the "no I/O under <span class="path">src/</span>" rule has to house somewhere.</li>
+    <li>Several hundred megabytes per process, slower on MSVC Debug, and <code>ctest -R A09</code> no longer runs one row.</li>
+    <li>Still reads the store three times per pull request and at every Stop hook, and still grows with every language added.</li>
+  </ul>
+  <div class="k">Fit here</div>
+  <p>The right tool for the data job's whole-store runs, and a reasonable choice for the runtime-tables reader itself. Not a reason to put the whole store in the fast gate.</p>
+  <div class="k">Afterwards</div>
+  <p>A <code>ryml</code> port in <span class="path">vcpkg.json</span>, one <code>LoadStore</code> line at the top of each test log, and a fast gate that takes ten seconds on a good day.</p>
+</div>
+
+<div class="card">
+  <div class="hd"><h3>Real store in a data job only</h3><span class="size">M</span></div>
+  <p>Label every test that reads <span class="path">data/languages/</span> as <code>store</code>. The three build legs run everything else against <span class="path">xxa</span> and <span class="path">xxb</span>. A fourth job on <span class="path">ubuntu-latest</span>, triggered by a path filter on <span class="path">data/**</span> and the tooling packages, runs the <code>store</code> label, <code>validate --lang</code> for the touched stores, and the M4 regenerate-and-diff.</p>
+  <div class="k">Pros</div>
+  <ul>
+    <li>The real store is read once per run, on the fastest runner, and only when something that can change its meaning changed.</li>
+    <li>No fixture for real languages to maintain.</li>
+  </ul>
+  <div class="k">Cons</div>
+  <ul>
+    <li>The fifteen-sentence golden tests are the engine's own regression suite, and an engine branch would never run them.</li>
+    <li>The invented pair cannot express an English homograph or an Afrikaans inflection paradigm, so M3's behaviour has no fast test at all.</li>
+    <li>A new reader of the store outside the filtered paths goes unchecked.</li>
+  </ul>
+  <div class="k">Fit here</div>
+  <p>The job is the right home for the whole-store proofs. On its own it leaves the M3 slice without a fast regression test, which is the wrong trade.</p>
+  <div class="k">Afterwards</div>
+  <p>A grey "skipped" data check on most pull requests, and a green fast gate that proves nothing about English.</p>
+</div>
+
+<div class="card">
+  <div class="hd"><h3>Cached compiled snapshot</h3><span class="size">L</span></div>
+  <p>Pull the M4 compiler forward: turn the store into a compact binary or the generated tables once, cache the result with <code>actions/cache</code> keyed on <code>hashFiles('data/languages/**')</code>, and let every test process load that in milliseconds.</p>
+  <div class="k">Pros</div>
+  <ul>
+    <li>Real coverage per pull request with a fast load, once the cache is warm.</li>
+    <li>The same artefact serves the tier builds later.</li>
+  </ul>
+  <div class="k">Cons</div>
+  <ul>
+    <li>A cache miss, on every data change and on every fresh branch, pays the full five-minute-plus regeneration inside the build job.</li>
+    <li>The local gate and the Stop hook have no cache; the owner's machine pays every time.</li>
+    <li>It is M4's compiler built before the M3 interpreter it must reproduce, which inverts ADR 0007's order.</li>
+  </ul>
+  <div class="k">Fit here</div>
+  <p>A shape to revisit at M4 for the tier builds themselves. Not an M3 answer.</p>
+  <div class="k">Afterwards</div>
+  <p>A "Cache restored from key" line in the job log on most runs, and a slow run whenever it says "Cache not found".</p>
+</div>
+
+</div>
+</section>
+
+<section id="compare">
+<p class="eyebrow">Comparison at a glance</p>
+<h2>Criteria that separate the five, taken from the standard and the gate</h2>
+<div class="tbl"><table>
+<tr><th>Criterion</th><th class="rec">Carved store fixtures</th><th>Stay as is</th><th>Fast loader, once</th><th>Data job only</th><th>Cached snapshot</th></tr>
+<tr><td>Bytes each engine test process reads</td><td class="rec">tens of KB</td><td>175 MB</td><td>175 MB, once per binary</td><td>0 on build legs</td><td>a few MB, after a cache hit</td></tr>
+<tr><td>Load per process, estimated</td><td class="rec">milliseconds</td><td>1–2 s rapidyaml, 20 s–2 min yaml-cpp, per CTest case</td><td>1–2 s, per binary</td><td>none on build legs</td><td>milliseconds; 5+ min on a miss</td></tr>
+<tr><td>Memory per process</td><td class="rec">negligible</td><td>hundreds of MB</td><td>hundreds of MB</td><td>negligible</td><td>tens of MB</td></tr>
+<tr><td>Fast gate proves M3 behaviour on real words</td><td class="rec">yes, on a real slice</td><td>yes</td><td>yes</td><td>no</td><td>yes</td></tr>
+<tr><td>Whole store proven per pull request</td><td class="rec">only on data branches</td><td>yes, three times</td><td>yes, three times</td><td>only on data branches</td><td>yes, when warm</td></tr>
+<tr><td>Matches testing.md and ADR 0003</td><td class="rec">yes</td><td>no</td><td>no</td><td>partly</td><td>partly</td></tr>
+<tr><td>Grows with the archive</td><td class="rec">no</td><td>yes</td><td>yes</td><td>only the data job</td><td>regeneration does</td></tr>
+<tr><td>New engine dependency</td><td class="rec">none for tests; the reader is a separate call</td><td>a YAML parser</td><td>rapidyaml</td><td>none</td><td>compiler output format</td></tr>
+<tr><td>Files touched before M3 starts</td><td class="rec">issues 19, 20, 22, 23; one carve quest; gate.yml data job</td><td>none</td><td>vcpkg.json, tests/CMakeLists.txt, issue 26</td><td>gate.yml, four issue files</td><td>compiler quests pulled forward</td></tr>
+<tr><td>Carries to M4 tier builds</td><td class="rec">yes: tiers compile from the fixture store in the gate, from the real store in the data job</td><td>no; the cap returns</td><td>partly</td><td>yes</td><td>yes</td></tr>
+</table></div>
+</section>
+
+<section id="recommend">
+<p class="eyebrow">Recommendation</p>
+<h2>Carve the store the fifteen sentences need, and let only data branches read the whole one</h2>
+<p>Three reasons carry it. Every assertion in issues 19 to 25 is about a token, an entry, a rule or a row, not about the size of the store, so a slice that holds those entries verbatim proves the same things. It is what the standard, ADR 0003 and the owner's 2026-09-15 decision already ask for, applied one layer up from the importer. And it stops the growth: the engine's suite stops scaling with the archive, so Dutch at M6 and the full corpus at M4 do not put the fifteen-minute cap back in play.</p>
+<p>Two small repairs come first and need no new decision. Replace <code>--all</code> with <code>--changed --base origin/main</code> at <span class="path">gate_full.sh</span> line 80, so the local gate matches the three documents that describe it. And move the CI validate step out of the three-leg matrix into the data job below, so a data branch reads its store once.</p>
+<p>The work, in outline, before <code>/factory-run 24</code> and never on <code>main</code>:</p>
+<pre># 0. Two repairs, one side quest
+#    tools/factory/hooks/gate_full.sh:80   --all  ->  --changed --base origin/main   (issue 168's rule)
+#    gate.yml: "Validate changed data" leaves the build matrix and joins the data job below
+
+# 1. A side quest: the carve tool and the fixture store
+python -m tools.fixture carve --lang eng --sentences tests/fixtures/languages/eng/tests/basic.yaml \
+    --keep bank --absent &lt;word issue 24 names&gt;      # writes tests/fixtures/languages/eng/{dictionary,grammar,tagset.yaml}
+python -m tools.fixture carve --lang afr --sentences ... # same for afr; every entry keeps its source shard and line
+# tests/fixtures/archive/manifest.jsonl gains one line per carved file: store path, commit, line ranges
+
+# 2. Four issue files change one phrase each
+#    19, 20, 22, 23: "data/languages/&lt;iso3&gt;/..."  ->  "tests/fixtures/languages/&lt;iso3&gt;/..."
+#    26: the golden loader reads tests/fixtures/languages/*/tests/*.yaml, as it already says
+
+# 3. gate.yml: one job, `data`, needed by the aggregator, skipped-means-pass like `cla`
+on: pull_request: paths: [data/languages/**, tools/importer/**, tools/validate/**, tools/compiler/**, tests/fixtures/**]
+    workflow_dispatch:
+jobs: data: runs-on: ubuntu-latest, timeout-minutes: 30
+      - python -m tools.validate --changed --base ${{ github.event.pull_request.base.sha }}
+      - python -m tools.fixture carve ... &amp;&amp; git diff --exit-code tests/fixtures/languages/   # the slice is current
+      - ctest -L store   # the real-store label, when M3 gives it content
+
+# 4. SPEC.md §5 and testing.md, one line each
+#    "The pull-request build legs read no file under data/languages/. Engine tests read tests/fixtures/.
+#     Whole-store checks run in the data job, on branches that change data or the tools that read it."</pre>
+<p>The carve step's diff check is what keeps the slice honest. When a data branch changes an entry the fifteen sentences use, the fixture goes stale, the data job's diff fails, and the branch regenerates the slice in the same pull request. The slice and the store cannot drift apart without a red check.</p>
+<p>The runner-up is the fast loader, once per binary. It wins if the owner decides that the milestone's proof must run on every pull request rather than on every data change. Then rapidyaml goes into the engine build, the store loads once per test executable, and the fixture slice is not needed. The price is a fast gate measured in seconds rather than milliseconds, a memory footprint of several hundred megabytes per process, and a suite that grows with every language.</p>
+<p>Confidence is high. The store sizes and the validator's five minutes are measured. The C++ load figures are estimates from published parser throughput, because the project has not chosen a parser yet; a factor of two either way does not change the ranking.</p>
+</section>
+
+<section id="flip">
+<p class="eyebrow">What would change this</p>
+<h2>Four facts that would re-rank the options</h2>
+<ul>
+  <li><b>The runtime tables are built by Python, not by a C++ reader.</b> If the M3 design has the tooling emit runtime tables from the store and the engine loads a compact file, the parse cost moves to the tools and the engine tests read a small artefact. The carved slice still wins for the fast gate, but the fast loader option disappears and the cached snapshot becomes the M4 shape.</li>
+  <li><b>The owner wants the whole English store proven on every engine pull request.</b> Then the fast loader is the answer for the golden label, and the data job carries only the validator and the regenerate-and-diff.</li>
+  <li><b>The M4 equivalence test must run all 248 corpus sentences through both back ends.</b> The carve tool then takes the corpus as input instead of the fifteen-row table, and the slice grows to a few thousand entries. Still milliseconds.</li>
+  <li><b>A whole-store defect class appears that a slice cannot show.</b> A shard that stops parsing, a tier that exceeds its memory budget, a homograph fan-out that only a rare headword has. Those are the data job's and <span class="path">tests/tier/</span>'s business, measured on the real store, and they do not argue for reading it per test case.</li>
+</ul>
+</section>
+
+<section id="method">
+<p class="eyebrow">Method</p>
+<div class="method">
+<p>Read: <span class="path">.github/workflows/gate.yml</span>, <span class="path">.claude/commands/gate.md</span>, <span class="path">docs/factory/SPEC.md</span> §3.2–3.5, §5, §7, <span class="path">docs/standards/testing.md</span>, ADR 0003, 0006, 0007, issues 04, 20, 22, 24, 25, 26, 166, 168, <span class="path">engine/CLAUDE.md</span>, <span class="path">vcpkg.json</span>, <span class="path">tests/CMakeLists.txt</span>, <span class="path">engine/generated/CMakeLists.txt</span>, the 2026-09-15 "Gate Time Budget" brief. Measured: <code>du</code> and line counts on <span class="path">data/languages/</span>, <code>python -m tools.validate --lang afr</code>, <code>--lang eng</code> and <code>--all</code> on this machine, <code>gh run view</code> on runs 35007838399 and 35065144540 for step timings, <span class="path">tools/factory/hooks/gate_full.sh</span> line 80. An Explore agent mapped every CMake, test and hook file that names <span class="path">data/</span>.</p>
+<ol>
+  <li><a href="https://testing.googleblog.com/2010/12/test-sizes.html">Google Testing Blog — Test Sizes</a></li>
+  <li><a href="https://wiki.apertium.org/wiki/Corpus_test">Apertium wiki — Corpus test</a></li>
+  <li><a href="https://wiki.apertium.org/wiki/Apertium-regtest">Apertium wiki — Apertium-regtest</a></li>
+  <li><a href="https://rapidyaml.readthedocs.io/v0.7.2/sphinx_is_it_rapid.html">rapidyaml — Is it rapid?</a></li>
+  <li><a href="https://github.com/biojppm/rapidyaml">rapidyaml — README, comparison with yaml-cpp</a></li>
+  <li><a href="https://cmake.org/cmake/help/latest/module/GoogleTest.html">CMake — GoogleTest module, gtest_discover_tests</a></li>
+  <li><a href="https://aras-p.info/blog/2017/10/24/Slow-to-Compile-Table-Initializers/">Aras Pranckevičius — Slow to Compile Table Initializers</a></li>
+  <li><a href="https://cor3ntin.github.io/posts/arrays/">cor3ntin — Very Large Arrays in Clang</a></li>
+  <li><a href="https://developercommunity.visualstudio.com/content/problem/36254/compile-times-crazy-for-large-initializers-static.html">Visual Studio Developer Community — compile times for large static initializers</a></li>
+  <li><a href="https://docs.github.com/actions/using-workflows/workflow-syntax-for-github-actions">GitHub Docs — workflow syntax, paths and paths-ignore</a></li>
+  <li><a href="https://docs.github.com/actions/using-workflows/triggering-a-workflow">GitHub Docs — triggering a workflow</a></li>
+  <li><a href="https://docs.github.com/en/actions/reference/actions-limits">GitHub Docs — Actions limits</a></li>
+  <li><a href="https://github.com/actions/cache">actions/cache — README</a></li>
+  <li>Verstaan decision brief, 2026-09-15, "Gate Time Budget" (scratchpad of that session; option "Fixture-sized imports" chosen)</li>
+</ol>
+<p>Skill: investigation-time 2.0.0 (2026-09-07) · house style voice.md / design.md · 2026-09-16 · turn 1</p>
+</div>
+</section>
+</main>
+</div>
