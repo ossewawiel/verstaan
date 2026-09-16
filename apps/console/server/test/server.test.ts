@@ -7,7 +7,7 @@ import type { RepoModel } from '../src/model/parse.js';
 function fixtureRepo(): RepoModel {
   return {
     issueFiles: [
-      { name: '01-a.md', content: '---\nissue: 1\ntitle: "A"\nmilestone: M1\nstatus: done\ndepends_on: []\n---\n## What\nDo A\n' },
+      { name: '01-a.md', content: '---\nissue: 1\ntitle: "A"\nmilestone: M1\nstatus: done\ndepends_on: []\ncommit: abc1111\n---\n## What\nDo A\n' },
       { name: '02-b.md', content: '---\nissue: 2\ntitle: "B"\nmilestone: M1\nstatus: open\ndepends_on: [1]\n---\n## What\nDo B\n' },
     ],
     agentFiles: [],
@@ -86,5 +86,37 @@ describe('GET /health', () => {
   it('answers ok with a pid', async () => {
     const res = await app.inject({ method: 'GET', url: '/health' });
     expect(res.payload).toMatch(/^ok \d+$/);
+  });
+});
+
+describe('GET /api/events (issue 173)', () => {
+  const repo = fixtureRepo();
+  const { app } = buildApp({ readRepoFn: () => repo });
+  afterAll(() => app.close());
+
+  it('lists the done issues, newest first, with their commit', async () => {
+    const res = await app.inject({ method: 'GET', url: '/api/events' });
+    expect(res.statusCode).toBe(200);
+    expect(res.json()).toEqual([{ n: 1, title: 'A', commit: 'abc1111' }]);
+  });
+});
+
+describe('GET /api/github-status (issue 173, ADR 0014)', () => {
+  it('reports reachable: true when the injected check succeeds', async () => {
+    const repo = fixtureRepo();
+    const { app } = buildApp({ readRepoFn: () => repo, githubReachableFn: async () => true });
+    const res = await app.inject({ method: 'GET', url: '/api/github-status' });
+    expect(res.statusCode).toBe(200);
+    expect(res.json()).toEqual({ reachable: true });
+    await app.close();
+  });
+
+  it('reports reachable: false, not a 5xx, when the injected check fails -- comms-lost, never an error page', async () => {
+    const repo = fixtureRepo();
+    const { app } = buildApp({ readRepoFn: () => repo, githubReachableFn: async () => false });
+    const res = await app.inject({ method: 'GET', url: '/api/github-status' });
+    expect(res.statusCode).toBe(200);
+    expect(res.json()).toEqual({ reachable: false });
+    await app.close();
   });
 });

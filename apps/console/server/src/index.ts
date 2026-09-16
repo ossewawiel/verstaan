@@ -10,12 +10,13 @@ import Fastify from 'fastify';
 import fastifyStatic from '@fastify/static';
 import fastifyCompress from '@fastify/compress';
 import { REPO, readRepo, resolveRootPath, readWorktrees, msSinceLastGitCommand } from './model/read.js';
-import { buildModel } from './model/parse.js';
+import { buildModel, lastEvents } from './model/parse.js';
 import { render, titleOf, splitFrontmatter } from './model/markdown.js';
 import { JobManager } from './jobs/runner.js';
 import { registerJobRoutes } from './jobs/routes.js';
 import { registerRestartRoute } from './restart.js';
 import { RestartGate } from './restart-gate.js';
+import { isGithubReachable } from './github.js';
 
 const args = process.argv.slice(2);
 const portFlag = args.indexOf('--port');
@@ -140,7 +141,8 @@ type Client = { write: (chunk: string) => void };
 export function buildApp({
   readRepoFn = readRepo,
   appDir = process.cwd(),
-}: { readRepoFn?: typeof readRepo; appDir?: string } = {}) {
+  githubReachableFn = isGithubReachable,
+}: { readRepoFn?: typeof readRepo; appDir?: string; githubReachableFn?: typeof isGithubReachable } = {}) {
   const app = Fastify({ logger: false });
   // gzip/brotli the built client and the JSON API (issue 99: cold load under 250 KB
   // transferred). SSE is excluded: compressing a stream that must flush per-event would buffer
@@ -234,6 +236,21 @@ export function buildApp({
   app.get('/api/ledger', async (_req, reply) => {
     const { model } = getModel();
     reply.type('application/json').send({ lessons: model.lessons, reviews: model.reviews });
+  });
+
+  // The bridge's last-five events (issue 173): the last five landed quests, newest first, sorted
+  // over every done issue before it is ever sliced (see lastEvents's own comment).
+  app.get('/api/events', async (_req, reply) => {
+    const { model } = getModel();
+    reply.type('application/json').send(lastEvents(model.issues));
+  });
+
+  // The bridge's GitHub-reachable chip (ADR 0014): the one GitHub call this quest adds, and the
+  // only one it may add ("Not in scope"). Never blocks the rest of `/api/state` or any other
+  // route -- a bad network degrades this one chip, never the page.
+  app.get('/api/github-status', async (_req, reply) => {
+    const reachable = await githubReachableFn();
+    reply.type('application/json').send({ reachable });
   });
 
   const jobs = new JobManager();

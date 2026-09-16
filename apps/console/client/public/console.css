@@ -598,3 +598,76 @@ a.xp:hover .xp__figure {
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
 }
+
+/* ---- the bridge's status chip: reachable/comms-lost, never an error colour (ADR 0014) ------ */
+.status-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: var(--step-0);
+}
+.status-chip::before {
+  content: '';
+  display: inline-block;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: currentColor;
+}
+.status-chip--ok {
+  color: var(--st-done);
+}
+.status-chip--lost {
+  /* Comms-lost is a degraded tier, not a failure: the same muted hue the design system already
+     uses for an untouched/parked status, never the alarm read a red would imply. */
+  color: var(--ink-faint);
+}
+
+/* ---- the bridge's boot sequence: chrome over already-rendered content, never a gate --------- */
+.boot-sequence {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Never intercepts a click or a Tab stop: the room underneath is fully interactive from the
+     first frame (issue 173 -- the boot sequence is chrome, not a loading gate). */
+  pointer-events: none;
+  background: rgba(13, 15, 14, 0.82);
+}
+.boot-sequence__lines {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-mono);
+  font-size: var(--step-2);
+  letter-spacing: 0.04em;
+  text-align: left;
+}
+.boot-sequence__line {
+  color: var(--amber);
+  text-shadow: 0 0 10px rgba(255, 176, 0, 0.5);
+  opacity: 0;
+  animation: boot-line-in 0.5s ease-out forwards;
+}
+@keyframes boot-line-in {
+  from {
+    opacity: 0;
+    transform: translateY(0.3em);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  /* Belt and braces: BootSequence.tsx never renders this markup at all when the media query
+     matches (no animation frame spent), but a stale build's cached component tree stays inert
+     either way if this rule is ever the only thing that loads. */
+  .boot-sequence {
+    display: none;
+  }
+}

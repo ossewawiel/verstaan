@@ -6,12 +6,12 @@ import { useEffect } from 'react';
 import { useQueryClient } from '@tanstack/react-query';
 
 const SECTION_KEYS: Record<string, string[][]> = {
-  issues: [['issues'], ['state']],
+  issues: [['issues'], ['state'], ['events']],
   docs: [['docs'], ['library']],
   party: [['state']],
   git: [['state'], ['worktrees']],
   worktrees: [['worktrees'], ['state']],
-  state: [['state'], ['issues'], ['worktrees'], ['ledger']],
+  state: [['state'], ['issues'], ['worktrees'], ['ledger'], ['events']],
 };
 
 export function useChangeStream(): void {

@@ -2,11 +2,12 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-import { useIssuesQuery, useJobsQuery, useStateQuery, useWorktreesQuery } from '../api/queries';
+import { useEventsQuery, useGithubStatusQuery, useIssuesQuery, useJobsQuery, useStateQuery, useWorktreesQuery } from '../api/queries';
 import { loadoutOf } from './IssueCard';
 import { ActionsRail } from '../components/ActionsRail';
 import { ActionButton } from '../components/ActionButton';
 import { RestartControl } from '../components/RestartControl';
+import { BootSequence } from '../components/BootSequence';
 import { api } from '../api/client';
 
 /** mm:ss, or hh:mm:ss once an hour has passed. Elapsed time only ever grows while a job runs, so
@@ -28,6 +29,8 @@ export function ConsoleRoom() {
   // elapsed-time read-out needs the job runner's own `startedAt`, which `/api/state` does not
   // carry (issue 164's "Not in scope": no new field added to the state model for this quest).
   const { data: jobs } = useJobsQuery();
+  const { data: events } = useEventsQuery();
+  const { data: githubStatus, isLoading: githubLoading } = useGithubStatusQuery();
   const navigate = useNavigate();
   const prevMetrics = useRef<Map<string, string>>(new Map());
   const [pulsing, setPulsing] = useState<Set<string>>(new Set());
@@ -75,8 +78,16 @@ export function ConsoleRoom() {
     return { elapsed, station };
   };
 
+  // The next quest's milestone (issue 173 acceptance criteria: "milestone, agent, model and
+  // effort" -- `model.next` already carries the last three straight from the issue file's own
+  // front matter via /api/state's buildModel(); milestone is read the same way, from the same
+  // issue's own row in /api/issues, joined by the number /api/state already named -- never a
+  // hardcoded quest number).
+  const nextIssue = model.next ? issues?.find((i) => i.n === model.next!.n) : undefined;
+
   return (
     <section>
+      <BootSequence />
       <p className="altitude__band">CIC · combat information centre</p>
       <h1 className="headline">Verstaan</h1>
       <p className="lede">
@@ -124,6 +135,8 @@ export function ConsoleRoom() {
                 <Link to={`/quests/${String(model.next.n).padStart(2, '0')}`}>
                   #{String(model.next.n).padStart(2, '0')} {model.next.title}
                 </Link>{' '}
+                {nextIssue ? <span className="story__loadout">{nextIssue.milestone}</span> : null}
+                {' '}
                 <span className={`story__loadout${loadoutOf(model.next).complete ? '' : ' story__loadout--missing'}`}>{loadoutOf(model.next).text}</span>
                 {' '}· <code>{model.next.command}</code>
               </>
@@ -136,6 +149,26 @@ export function ConsoleRoom() {
           <span className="nn-row__label">Side task</span>
           <span className="nn-row__text">{model.sideTask.text}</span>
         </div>
+      </div>
+
+      <div className="panel">
+        <p className="panel__title">Recent events</p>
+        {events && events.length === 0 ? (
+          <p className="muted">No quest has landed yet.</p>
+        ) : (
+          <ul className="loot-log__list">
+            {(events ?? []).map((e) => (
+              <li key={e.n} className="loot-log__item">
+                <span className="loot-log__title">
+                  <Link to={`/quests/${String(e.n).padStart(2, '0')}`}>
+                    #{String(e.n).padStart(2, '0')} {e.title}
+                  </Link>
+                </span>
+                <span className="loot-log__commit">{e.commit != null ? String(e.commit) : 'no commit recorded'}</span>
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
 
       <ActionsRail tree="." />
@@ -175,6 +208,12 @@ export function ConsoleRoom() {
               navigate(url);
             }}
           />
+        </div>
+        <div className="status-row__item">
+          <p className="panel__title">GitHub</p>
+          <p className={`panel__ctx status-chip${githubStatus?.reachable ? ' status-chip--ok' : ' status-chip--lost'}`}>
+            {githubLoading ? 'checking…' : githubStatus?.reachable ? 'reachable' : 'comms-lost'}
+          </p>
         </div>
         <RestartControl />
       </div>
