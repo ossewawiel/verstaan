@@ -272,6 +272,27 @@ export function sideTask({ issues, lessons, reviews }: { issues: Issue[]; lesson
   return { kind: 'none', text: 'No side task under ten minutes is open.', command: null };
 }
 
+export interface EventItem {
+  n: number;
+  title: string;
+  commit: unknown;
+}
+
+/** The last `limit` landed quests, newest first (issue 173's bridge, `GET /api/events`). `Issue`
+ * carries no landing timestamp, so recency is read off the quest number, the same proxy
+ * `QuestsRoom`'s own loot log uses client-side (issue 164's DESIGN.md) -- the backlog is numbered
+ * in the order quests are filed and, in practice, in the order they land. The full `done` list is
+ * sorted before it is ever sliced, so a caller can never see fewer than `limit` rows when more
+ * exist (issue 173 acceptance criteria: "no client-side truncation bug"). */
+export function lastEvents(issues: Issue[], limit = 5): EventItem[] {
+  return issues
+    .filter((i) => i.status === 'done')
+    .slice()
+    .sort((a, b) => b.n - a.n)
+    .slice(0, limit)
+    .map((i) => ({ n: i.n, title: i.title, commit: i.commit }));
+}
+
 export interface WorktreeRow {
   path: string;
   head: string;

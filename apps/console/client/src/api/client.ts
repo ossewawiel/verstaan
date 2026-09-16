@@ -63,6 +63,16 @@ export interface WorktreeSummary {
   issue: { n: number; title: string } | null;
 }
 
+export interface EventItem {
+  n: number;
+  title: string;
+  commit: unknown;
+}
+
+export interface GithubStatus {
+  reachable: boolean;
+}
+
 export interface DocPage {
   path: string;
   title: string;
@@ -119,6 +129,8 @@ export const api = {
   library: () => getJson<LibraryGroup[]>('/api/library'),
   worktrees: () => getJson<WorktreeSummary[]>('/api/worktrees'),
   ledger: () => getJson<{ lessons: StateModel['lessons']; reviews: StateModel['reviews'] }>('/api/ledger'),
+  events: () => getJson<EventItem[]>('/api/events'),
+  githubStatus: () => getJson<GithubStatus>('/api/github-status'),
   jobs: {
     list: () => getJson<JobSummary[]>('/api/jobs'),
     get: (id: string) => getJson<JobSummary>(`/api/jobs/${id}`),

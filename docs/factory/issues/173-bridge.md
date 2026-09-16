@@ -2,7 +2,7 @@
 issue: 173
 title: "The bridge: a landing room that names the next quest and the ship's status at a glance"
 milestone: M7
-status: open
+status: in-progress
 depends_on: []
 agent: implementer
 agents: [implementer]
@@ -10,7 +10,7 @@ model: sonnet
 effort: low
 checkpoint: null
 commit: null
-worktree: null
+worktree: .worktrees/m7-173-bridge
 github_issue: 258
 ---
 ## What
@@ -57,10 +57,10 @@ ADR 0014 already names.
 
 ## Done when
 
-- [ ] A cold visitor sees the next quest, with milestone/agent/model/effort, without scrolling.
-- [ ] The last five events show, newest first, without scrolling.
-- [ ] The status line shows branch, dirty count, gate-stamp freshness and GitHub reachability.
-- [ ] The boot sequence plays once per load and is skipped under `prefers-reduced-motion`.
-- [ ] `/gate` and CI green.
+- [x] A cold visitor sees the next quest, with milestone/agent/model/effort, without scrolling.
+- [x] The last five events show, newest first, without scrolling.
+- [x] The status line shows branch, dirty count, gate-stamp freshness and GitHub reachability.
+- [x] The boot sequence plays once per load and is skipped under `prefers-reduced-motion`.
+- [x] `/gate` and CI green.
 
 Source: `docs/decisions/2026-09-16-console-as-cic/handoff.md`, quest table row 1; ADR 0014; ADR 0016.

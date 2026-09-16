@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MPL-2.0
 import { describe, it, expect } from 'vitest';
-import { parseFrontmatter, parseIssues, buildModel, parseWorktreePorcelain, parseLessons, inProgressQuests, type Issue, type WorktreeSummary } from '../src/model/parse.js';
+import { parseFrontmatter, parseIssues, buildModel, parseWorktreePorcelain, parseLessons, inProgressQuests, lastEvents, type Issue, type WorktreeSummary } from '../src/model/parse.js';
 
 describe('parseFrontmatter', () => {
   it('parses scalars, null and simple lists', () => {
@@ -121,6 +121,48 @@ describe('inProgressQuests (issue 110)', () => {
       [mkTree({ path: '.', branch: 'main', isRoot: true, issue: { n: 50, title: 'A' } })],
     );
     expect(rows).toEqual([{ n: 50, title: 'A', agent: null, model: null, effort: null, tree: null }]);
+  });
+});
+
+describe('lastEvents (issue 173)', () => {
+  const mkIssue = (n: number, status: Issue['status'], commit: unknown = null): Issue => ({
+    n,
+    file: `${n}-x.md`,
+    title: `Quest ${n}`,
+    milestone: 'M1',
+    status,
+    worktree: null,
+    dependsOn: [],
+    agent: null,
+    agents: [],
+    model: null,
+    effort: null,
+    checkpoint: null,
+    commit,
+    what: '',
+    doneWhen: { total: 0, ticked: 0 },
+    githubIssue: null,
+  });
+
+  it('returns the done issues, newest first', () => {
+    const issues = [mkIssue(1, 'done', 'a1'), mkIssue(2, 'open'), mkIssue(3, 'done', 'c3')];
+    expect(lastEvents(issues)).toEqual([
+      { n: 3, title: 'Quest 3', commit: 'c3' },
+      { n: 1, title: 'Quest 1', commit: 'a1' },
+    ]);
+  });
+
+  it('never returns fewer than `limit` rows when more than `limit` exist, regardless of input order', () => {
+    // Deliberately out of number order: a truncation bug that slices before sorting would drop
+    // #7 here (issue 173 acceptance criteria: "no client-side truncation bug").
+    const issues = [mkIssue(7, 'done'), mkIssue(1, 'done'), mkIssue(2, 'done'), mkIssue(3, 'done'), mkIssue(4, 'done'), mkIssue(5, 'done'), mkIssue(6, 'done')];
+    const events = lastEvents(issues, 5);
+    expect(events).toHaveLength(5);
+    expect(events.map((e) => e.n)).toEqual([7, 6, 5, 4, 3]);
+  });
+
+  it('returns fewer than `limit` rows only when fewer than `limit` quests have actually landed', () => {
+    expect(lastEvents([mkIssue(1, 'done'), mkIssue(2, 'open')], 5)).toHaveLength(1);
   });
 });
 
