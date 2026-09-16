@@ -2,15 +2,15 @@
 issue: 173
 title: "The bridge: a landing room that names the next quest and the ship's status at a glance"
 milestone: M7
-status: in-progress
+status: done
 depends_on: []
 agent: implementer
 agents: [implementer]
 model: sonnet
 effort: low
 checkpoint: null
-commit: null
-worktree: .worktrees/m7-173-bridge
+commit: 8520a606fa9f39014ff694733950c3e9b736f87e
+worktree: null
 github_issue: 258
 ---
 ## What
