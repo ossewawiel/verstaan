@@ -2,15 +2,15 @@
 issue: 172
 title: "Write the M7 Console CIC issue files from the interrogation brief and ADR 0014–0016"
 milestone: M7
-status: in-progress
+status: done
 depends_on: [164, 165]
 agent: docs-writer
 agents: [docs-writer]
 model: sonnet
 effort: low
 checkpoint: null
-commit: null
-worktree: .worktrees/m7-172-plan-console-cic
+commit: 6b25321
+worktree: null
 github_issue: 256
 ---
 ## What
