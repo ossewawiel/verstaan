@@ -4,15 +4,20 @@
 # in the browser. The twin of console.cmd and console.ps1 (issue 102). Run it from any terminal
 # with an optional port: ./console.sh 7900. Safe to run twice. The first run installs the app's
 # dependencies and builds it; every later run rebuilds only when the client or server source is
-# newer than the last build. Pass --no-browser to start without opening a tab.
+# newer than the last build. Pass --no-browser to start without opening a tab. Pass --app-window to
+# start without a tab, wait for /health, then open the console in its own Chromium app window
+# instead of a browser tab -- what tools/console/install-desktop-entry.sh's launcher entry uses
+# (issue 170).
 set -eu
 cd "$(dirname "$0")"
 
 port=7864
 browser=1
+app_window=0
 for arg in "$@"; do
   case "$arg" in
     --no-browser) browser=0 ;;
+    --app-window) browser=1; app_window=1 ;;
     *) port="$arg" ;;
   esac
 done
@@ -27,15 +32,49 @@ open_tab() {
   fi
 }
 
+# Chromium's --app mode: no tab strip, no address bar, its own taskbar entry. Tried in this order
+# so the first chromium-class browser on PATH wins; none of these ship together, so this is never
+# an actual choice on a real machine. A window opened this way reports the app_id
+# "chrome-127.0.0.1__<port>-Default" to the window manager, which is why
+# tools/console/install-desktop-entry.sh's entry sets StartupWMClass to exactly that string.
+open_app_window() {
+  [ "$browser" = 1 ] || return 0
+  for bin in chromium chromium-browser google-chrome google-chrome-stable brave-browser brave microsoft-edge microsoft-edge-stable; do
+    if command -v "$bin" >/dev/null 2>&1; then
+      "$bin" --app="$url/" >/dev/null 2>&1 &
+      return 0
+    fi
+  done
+  echo "console: no chromium-class browser on PATH; opening a normal tab instead" >&2
+  open_tab
+}
+
+open_console() {
+  if [ "$app_window" = 1 ]; then open_app_window; else open_tab; fi
+}
+
 # Health probe with node itself, so this works where curl is absent. A wedged service must not
 # hang the launcher, so the probe gives up after two seconds.
 healthy() {
   node -e "const r=require('http').get('$url/health',r=>process.exit(r.statusCode===200?0:1));r.setTimeout(2000,()=>process.exit(1));r.on('error',()=>process.exit(1))" >/dev/null 2>&1
 }
 
+# Polled only for --app-window: a Chromium window opened before the server answers just shows a
+# connection-refused page, and nothing then reloads it for the user. The plain-tab path keeps its
+# older, looser "sleep 1 and hope" timing below, unchanged, so existing behaviour does not shift.
+wait_healthy() {
+  i=0
+  while [ "$i" -lt 30 ]; do
+    healthy && return 0
+    i=$((i + 1))
+    sleep 0.2
+  done
+  return 1
+}
+
 if healthy; then
   echo "console: already running at $url"
-  open_tab
+  open_console
   exit 0
 fi
 
@@ -67,6 +106,10 @@ log="$(git rev-parse --path-format=absolute --git-common-dir)/console-serve.log"
   cd "$app" || exit 1
   VERSTAAN_CONSOLE_PORT="$port" nohup node dist-server/server/src/index.js --port "$port" >"$log" 2>&1 </dev/null &
 )
-sleep 1
+if [ "$app_window" = 1 ]; then
+  wait_healthy || echo "console: service did not answer /health in time" >&2
+else
+  sleep 1
+fi
 echo "console: started at $url (log: $log)"
-open_tab
+open_console

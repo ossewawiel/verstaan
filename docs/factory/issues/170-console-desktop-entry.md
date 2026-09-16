@@ -2,7 +2,7 @@
 issue: 170
 title: "Verstaan Console as a desktop app: one launcher entry starts the service and opens its own window"
 milestone: Side
-status: open
+status: in-progress
 depends_on: [102]
 agent: implementer
 agents: [implementer]
@@ -10,7 +10,7 @@ model: sonnet
 effort: medium
 checkpoint: null
 commit: null
-worktree: null
+worktree: .worktrees/side-170-console-desktop-entry
 github_issue: 250
 ---
 ## What
@@ -67,14 +67,14 @@ to GitHub. The number moved, nothing else did.
 
 ## Done when
 
-- [ ] `console.sh` accepts a flag that starts the service without a browser, waits for `/health`,
+- [x] `console.sh` accepts a flag that starts the service without a browser, waits for `/health`,
       then opens the console in a Chromium app window, falling back to the first browser it finds
       among the chromium-class ones on `PATH`.
-- [ ] An icon file for the console is tracked in the repo and named by the desktop entry.
-- [ ] `tools/console/install-desktop-entry.sh` writes the entry, is idempotent, and resolves the
+- [x] An icon file for the console is tracked in the repo and named by the desktop entry.
+- [x] `tools/console/install-desktop-entry.sh` writes the entry, is idempotent, and resolves the
       repository path itself rather than hard-coding one.
-- [ ] The entry sets `StartupWMClass` so Hyprland matches the app window to the icon.
-- [ ] A test under `tools/factory/tests/` covers the installer: the file is written, it is valid,
+- [x] The entry sets `StartupWMClass` so Hyprland matches the app window to the icon.
+- [x] A test under `tools/factory/tests/` covers the installer: the file is written, it is valid,
       and a second run leaves it unchanged.
-- [ ] `README` or `docs/factory/playbook.md` names the installer in one line, next to `console.sh`.
+- [x] `README` or `docs/factory/playbook.md` names the installer in one line, next to `console.sh`.
 - [ ] The gate passes on the branch.

@@ -60,9 +60,15 @@ def fake_node(tmp_path: Path) -> tuple[Path, Path]:
 
 
 def run_launcher(repo: Path, path: str, env: dict[str, str]) -> subprocess.CompletedProcess[str]:
+    return run_launcher_args(repo, path, env, "7911", "--no-browser")
+
+
+def run_launcher_args(
+    repo: Path, path: str, env: dict[str, str], *args: str
+) -> subprocess.CompletedProcess[str]:
     assert BASH, "bash is required"
     return subprocess.run(
-        [BASH, "console.sh", "7911", "--no-browser"],
+        [BASH, "console.sh", *args],
         cwd=repo,
         capture_output=True,
         text=True,
@@ -70,6 +76,19 @@ def run_launcher(repo: Path, path: str, env: dict[str, str]) -> subprocess.Compl
         env={**os.environ, **env, "PATH": path},
         timeout=4,
     )
+
+
+def fake_chromium(tmp_path: Path, name: str = "chromium") -> tuple[Path, Path]:
+    """A stand-in for a chromium-class browser: records its own argv, so a test can tell an
+    app-window launch from the plain-tab fallback without ever opening a real window."""
+    stub_dir = tmp_path / "chromium-stub-bin"
+    stub_dir.mkdir()
+    log = tmp_path / "chromium-calls.log"
+    (stub_dir / name).write_text(
+        'printf \'%s\\n\' "$*" >> "$CHROMIUM_LOG"\nexit 0\n', encoding="utf-8"
+    )
+    (stub_dir / name).chmod(0o755)
+    return stub_dir, log
 
 
 def test_running_service_is_left_alone(repo, tmp_path):
@@ -94,3 +113,55 @@ def test_starts_the_built_server_and_returns_while_it_runs(repo, tmp_path):
             break
         time.sleep(0.1)
     assert "--port 7911" in log.read_text(encoding="utf-8")
+
+
+def test_app_window_opens_a_chromium_class_browser_not_a_tab(repo, tmp_path):
+    """--app-window on an already-running service opens the chromium-class stub with --app=<url>,
+    not a plain tab: proves the flag is additive and does not fall back to xdg-open just because a
+    browser was requested (issue 170)."""
+    node_stub, node_log = fake_node(tmp_path)
+    chromium_stub, chromium_log = fake_chromium(tmp_path)
+    path = hermetic_tool_path(tmp_path, NEEDED, node_stub, chromium_stub)
+    result = run_launcher_args(
+        repo,
+        path,
+        {"FAKE_LOG": str(node_log), "FAKE_HEALTH": "0", "CHROMIUM_LOG": str(chromium_log)},
+        "7911",
+        "--app-window",
+    )
+    assert result.returncode == 0, result.stderr
+    assert "already running at http://127.0.0.1:7911" in result.stdout
+    for _ in range(20):
+        if chromium_log.exists():
+            break
+        time.sleep(0.1)
+    assert chromium_log.exists(), "chromium stub was never invoked"
+    assert "--app=http://127.0.0.1:7911/" in chromium_log.read_text(encoding="utf-8")
+
+
+def test_app_window_falls_back_to_a_tab_with_no_chromium_class_browser_on_path(repo, tmp_path):
+    """No chromium, chromium-browser, google-chrome, etc. on PATH: --app-window must still open
+    something rather than silently do nothing, so it falls back to the plain-tab opener."""
+    node_stub, node_log = fake_node(tmp_path)
+    xdg_stub = tmp_path / "xdg-stub-bin"
+    xdg_stub.mkdir()
+    xdg_log = tmp_path / "xdg-open-calls.log"
+    (xdg_stub / "xdg-open").write_text(
+        'printf \'%s\\n\' "$*" >> "$XDG_LOG"\nexit 0\n', encoding="utf-8"
+    )
+    (xdg_stub / "xdg-open").chmod(0o755)
+    path = hermetic_tool_path(tmp_path, NEEDED, node_stub, xdg_stub)
+    result = run_launcher_args(
+        repo,
+        path,
+        {"FAKE_LOG": str(node_log), "FAKE_HEALTH": "0", "XDG_LOG": str(xdg_log)},
+        "7911",
+        "--app-window",
+    )
+    assert result.returncode == 0, result.stderr
+    assert "no chromium-class browser on PATH" in result.stderr
+    for _ in range(20):
+        if xdg_log.exists():
+            break
+        time.sleep(0.1)
+    assert xdg_log.exists(), "xdg-open fallback was never invoked"
