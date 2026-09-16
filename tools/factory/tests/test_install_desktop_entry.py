@@ -70,6 +70,17 @@ def entry_path(home: Path) -> Path:
     return home / ".local" / "share" / "applications" / "verstaan-console.desktop"
 
 
+def bash_path(p: Path) -> str:
+    """The path as Git Bash's own `pwd` reports it: `C:\\Users\\x` becomes `/c/Users/x`, not the
+    `C:/Users/x` that `Path.as_posix()` alone gives. `install-desktop-entry.sh` resolves its own
+    location with `pwd`, so this is the form the written .desktop entry actually contains. A no-op
+    on Linux and macOS, where `Path.as_posix()` already has no drive letter to rewrite."""
+    s = p.as_posix()
+    if len(s) > 1 and s[1] == ":":
+        s = "/" + s[0].lower() + s[2:]
+    return s
+
+
 def test_writes_the_entry_and_exits_zero(checkout, home):
     result = run_installer(checkout, home)
     assert result.returncode == 0, result.stderr
@@ -79,8 +90,8 @@ def test_writes_the_entry_and_exits_zero(checkout, home):
     assert "Name=Verstaan Console" in text
     assert "StartupWMClass=chrome-127.0.0.1__7864-Default" in text
     # Resolves this checkout's own path -- not a path baked into the installer script.
-    assert str(checkout / "console.sh") in text
-    assert str(checkout / "tools" / "console" / "verstaan-console.svg") in text
+    assert bash_path(checkout / "console.sh") in text
+    assert bash_path(checkout / "tools" / "console" / "verstaan-console.svg") in text
 
 
 def test_second_run_leaves_the_file_unchanged(checkout, home):
@@ -111,12 +122,12 @@ def test_two_checkouts_name_two_different_console_sh_paths(tmp_path, home):
 
     run_installer(first_root, home)
     first_text = entry_path(home).read_text(encoding="utf-8")
-    assert str(first_root / "console.sh") in first_text
+    assert bash_path(first_root / "console.sh") in first_text
 
     run_installer(second_root, home)
     second_text = entry_path(home).read_text(encoding="utf-8")
-    assert str(second_root / "console.sh") in second_text
-    assert str(first_root / "console.sh") not in second_text
+    assert bash_path(second_root / "console.sh") in second_text
+    assert bash_path(first_root / "console.sh") not in second_text
 
 
 @pytest.mark.skipif(
