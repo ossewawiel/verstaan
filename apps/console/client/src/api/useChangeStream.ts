@@ -6,13 +6,18 @@ import { useEffect } from 'react';
 import { useQueryClient } from '@tanstack/react-query';
 
 const SECTION_KEYS: Record<string, string[][]> = {
-  issues: [['issues'], ['state'], ['events']],
-  docs: [['docs'], ['library']],
+  // 'codex' (issue 176): a quest's briefing is the same issue file at a higher density, so it
+  // invalidates on the same section that touches the issue file itself; 'docs' also invalidates
+  // it -- an ADR or glossary edit changes what a citation in `## What` should link to.
+  issues: [['issues'], ['state'], ['events'], ['codex']],
+  docs: [['docs'], ['library'], ['codex']],
   party: [['state']],
   git: [['state'], ['worktrees']],
   worktrees: [['worktrees'], ['state']],
   'ship-systems': [['ship-systems']],
-  state: [['state'], ['issues'], ['worktrees'], ['ledger'], ['events']],
+  // 'state' (docs/factory) also carries docs/factory/lessons.jsonl -- the Debrief room's own
+  // source (issue 176).
+  state: [['state'], ['issues'], ['worktrees'], ['ledger'], ['events'], ['debrief']],
 };
 
 export function useChangeStream(): void {

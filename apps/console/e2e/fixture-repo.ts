@@ -95,6 +95,19 @@ export function addFixtureAgent(name: string): void {
   );
 }
 
+// Debrief (issue 176): two signatures, one repeated with a later `ts` than the other's only
+// entry, so the room's own "newest group first, with a count" claim has something to prove.
+function writeLessonsFixture(): void {
+  const dir = join(FIXTURE_REPO, 'docs', 'factory');
+  mkdirSync(dir, { recursive: true });
+  const lines = [
+    { sig: 'fixture-sig-old', ts: '2026-01-01T00:00:00Z', detail: 'An old, one-off failure.' },
+    { sig: 'fixture-sig-new', ts: '2026-01-05T00:00:00Z', detail: 'A newer, repeated failure.' },
+    { sig: 'fixture-sig-new', ts: '2026-01-06T00:00:00Z', detail: 'The same failure again.' },
+  ];
+  writeFileSync(join(dir, 'lessons.jsonl'), `${lines.map((l) => JSON.stringify(l)).join('\n')}\n`);
+}
+
 export function buildFixtureRepo(): void {
   mkdirSync(join(FIXTURE_REPO, 'docs', 'factory', 'issues'), { recursive: true });
   mkdirSync(join(FIXTURE_REPO, '.claude', 'agents'), { recursive: true });
@@ -107,6 +120,7 @@ export function buildFixtureRepo(): void {
     '# Playbook\n\nHow the game is played.\n\n## The map\n\nFixture map text.\n\n## An encounter, start to finish\n\nFixture encounter text.\n\n## The gate ladder\n\nFixture ladder text.\n',
   );
   writeShipSystemsFixtures();
+  writeLessonsFixture();
 }
 
 export function setIssueStatus(n: number, status: string): void {

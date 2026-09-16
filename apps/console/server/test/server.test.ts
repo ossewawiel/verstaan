@@ -67,6 +67,83 @@ describe('GET /api/issues/:nn', () => {
   });
 });
 
+describe('GET /api/codex/:nn (issue 176)', () => {
+  const repo = fixtureRepo();
+  repo.issueFiles = [
+    {
+      name: '03-c.md',
+      content: [
+        '---',
+        'issue: 3',
+        'title: "C"',
+        'milestone: M1',
+        'status: open',
+        'depends_on: []',
+        'agent: implementer',
+        'model: sonnet',
+        'effort: medium',
+        'checkpoint: null',
+        '---',
+        '## What',
+        '',
+        'Backstory citing ADR 0011.',
+        '',
+        'The outcome sentence.',
+        '',
+        '## Acceptance criteria',
+        '',
+        '- One.',
+        '',
+        '## Not in scope',
+        '',
+        'Nothing else.',
+        '',
+        '## Done when',
+        '',
+        '- [ ] One.',
+        '',
+      ].join('\n'),
+    },
+  ];
+  repo.library = [
+    { group: 'Start here', blurb: 'x', docs: [{ path: 'docs/glossary.md', content: '| Term | Meaning | Defined in |\n|---|---|---|\n| ADR | An architecture decision record. | docs/adr/ |\n' }] },
+    { group: 'Decisions', blurb: 'x', docs: [{ path: 'docs/adr/0011-console-actions-run-only-allow-listed-scripts.md', content: '# 0011' }] },
+  ];
+  const { app } = buildApp({ readRepoFn: () => repo });
+  afterAll(() => app.close());
+
+  it('returns the objective, intel, loadout, orders and after-action, sourced from the issue file', async () => {
+    const res = await app.inject({ method: 'GET', url: '/api/codex/03' });
+    expect(res.statusCode).toBe(200);
+    const body = res.json();
+    expect(body.objective).toBe('The outcome sentence.');
+    expect(body.intel).toContainEqual({ kind: 'adr', text: 'ADR 0011', href: '/library/docs/adr/0011-console-actions-run-only-allow-listed-scripts.md' });
+    expect(body.loadout).toEqual({ agent: 'implementer', model: 'sonnet', effort: 'medium', checkpoint: null });
+    expect(body.orders).toEqual({ acceptanceCriteria: '- One.', notInScope: 'Nothing else.' });
+    expect(body.afterAction).toEqual({ doneWhen: { total: 1, ticked: 0 }, commit: null, verifier: null });
+  });
+
+  it('404s for an issue that does not exist', async () => {
+    const res = await app.inject({ method: 'GET', url: '/api/codex/99' });
+    expect(res.statusCode).toBe(404);
+  });
+});
+
+describe('GET /api/debrief (issue 176)', () => {
+  const repo = fixtureRepo();
+  repo.lessonsText = ['{"sig":"a","ts":"2026-01-01T00:00:00Z"}', '{"sig":"b","ts":"2026-01-05T00:00:00Z"}', '{"sig":"a","ts":"2026-01-03T00:00:00Z"}'].join('\n');
+  const { app } = buildApp({ readRepoFn: () => repo });
+  afterAll(() => app.close());
+
+  it('groups lessons.jsonl by sig, newest group first, with a count per group', async () => {
+    const res = await app.inject({ method: 'GET', url: '/api/debrief' });
+    expect(res.statusCode).toBe(200);
+    const body = res.json();
+    expect(body.map((g: { sig: string }) => g.sig)).toEqual(['b', 'a']);
+    expect(body.find((g: { sig: string }) => g.sig === 'a').count).toBe(2);
+  });
+});
+
 describe('GET /api/docs/*', () => {
   const repo = fixtureRepo();
   const { app } = buildApp({ readRepoFn: () => repo });

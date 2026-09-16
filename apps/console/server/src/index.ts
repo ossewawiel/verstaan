@@ -10,7 +10,7 @@ import Fastify from 'fastify';
 import fastifyStatic from '@fastify/static';
 import fastifyCompress from '@fastify/compress';
 import { REPO, readRepo, resolveRootPath, readWorktrees, msSinceLastGitCommand } from './model/read.js';
-import { buildModel, buildShipSystems, lastEvents } from './model/parse.js';
+import { buildModel, buildShipSystems, lastEvents, buildCodex, debriefGroups, parseGlossaryTerms } from './model/parse.js';
 import { render, titleOf, splitFrontmatter } from './model/markdown.js';
 import { JobManager } from './jobs/runner.js';
 import { registerJobRoutes } from './jobs/routes.js';
@@ -163,6 +163,8 @@ export function buildApp({
     model: ReturnType<typeof buildModel>;
     allDocs: { path: string; content: string }[];
     shipSystems: ReturnType<typeof buildShipSystems>;
+    adrPaths: string[];
+    glossaryTerms: string[];
   };
   let cache: Cache | null = null;
   const getModel = (): Cache => {
@@ -170,6 +172,11 @@ export function buildApp({
     const repo = readRepoFn();
     const model = buildModel(repo);
     const allDocs = repo.library.flatMap((g) => g.docs);
+    // Codex intel (issue 176): the ADR files the library already walks (docs/adr/*.md) and the
+    // glossary's own term list, read once here rather than reparsed on every /api/codex/:nn call.
+    const adrPaths = (repo.library.find((g) => g.group === 'Decisions')?.docs ?? []).map((d) => d.path);
+    const glossaryDoc = allDocs.find((d) => d.path === 'docs/glossary.md');
+    const glossaryTerms = parseGlossaryTerms(glossaryDoc?.content ?? '');
     // The playbook lane's stations (issue 175) come from the same heading extraction every doc
     // page already uses (model/markdown.ts's render()), not a second parser -- frontmatter is
     // stripped first, the same way /api/docs/* does it, so a stray `---` in the front matter block
@@ -184,7 +191,7 @@ export function buildApp({
       playbookHeadings,
       generated: repo.generated,
     });
-    const fresh: Cache = { repo, model, allDocs, shipSystems };
+    const fresh: Cache = { repo, model, allDocs, shipSystems, adrPaths, glossaryTerms };
     cache = fresh;
     return fresh;
   };
@@ -222,6 +229,24 @@ export function buildApp({
     const { repo } = getModel();
     const file = repo.issueFiles.find((f) => f.name === issue.file);
     reply.type('application/json').send({ ...issue, content: file?.content ?? '' });
+  });
+
+  // The Codex briefing (issue 176): the same issue file read at a higher density -- objective,
+  // intel, loadout, orders, after-action -- sourced from its own headings and front matter, no
+  // new field invented. Read-only, same as the Quests room's own /api/issues/:nn.
+  app.get('/api/codex/:nn', async (req, reply) => {
+    const { model, repo, adrPaths, glossaryTerms } = getModel();
+    const n = Number((req.params as { nn: string }).nn);
+    const issue = model.issues.find((i) => i.n === n);
+    if (!issue) return reply.code(404).send({ error: 'issue not found' });
+    const file = repo.issueFiles.find((f) => f.name === issue.file);
+    reply.type('application/json').send(buildCodex(issue, file?.content ?? '', adrPaths, glossaryTerms));
+  });
+
+  // The Debrief room (issue 176): lessons.jsonl grouped by sig, newest group first.
+  app.get('/api/debrief', async (_req, reply) => {
+    const { repo } = getModel();
+    reply.type('application/json').send(debriefGroups(repo.lessonsText));
   });
 
   app.get('/api/docs/*', async (req, reply) => {

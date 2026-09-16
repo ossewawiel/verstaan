@@ -10,6 +10,8 @@ import { GlossaryRoom } from './rooms/GlossaryRoom';
 import { JobsRoom } from './rooms/JobsRoom';
 import { ArtifactPage } from './rooms/ArtifactPage';
 import { ShipSystemsRoom } from './rooms/ShipSystemsRoom';
+import { CodexRoom } from './rooms/CodexRoom';
+import { DebriefRoom } from './rooms/DebriefRoom';
 
 export function App() {
   useChangeStream();
@@ -29,6 +31,8 @@ export function App() {
           <Route path="/jobs" element={<JobsRoom />} />
           <Route path="/jobs/:id" element={<JobsRoom />} />
           <Route path="/ship-systems" element={<ShipSystemsRoom />} />
+          <Route path="/codex/:nn" element={<CodexRoom />} />
+          <Route path="/debrief" element={<DebriefRoom />} />
           <Route path="/artifacts/*" element={<ArtifactPage />} />
         </Routes>
       </main>
