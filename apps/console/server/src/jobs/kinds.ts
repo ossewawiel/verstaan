@@ -63,6 +63,38 @@ function validatePytestPath(p: string): string {
   return p;
 }
 
+// The two models any quest's front matter ever names today (`grep -h '^model:' docs/factory/issues/*.md`).
+// An allowlist, not a blocklist (ADR 0011): a quest naming a model this list has not caught up
+// with is a data problem to fix in the issue file or here, never a string to let through unchecked
+// into an argv slot that opens a real terminal.
+const QUEST_MODELS = ['sonnet', 'opus'];
+
+function validateQuestStartArgs(args: unknown): Record<string, unknown> {
+  const model = requireString(args, 'model');
+  if (!QUEST_MODELS.includes(model)) throw new JobArgsError(`model must be one of ${QUEST_MODELS.join(', ')}`);
+  const raw = (args as Record<string, unknown> | null | undefined)?.issue;
+  const issue = typeof raw === 'number' ? raw : Number(raw);
+  if (!Number.isInteger(issue) || issue <= 0) throw new JobArgsError('issue must be a positive integer');
+  return { model, issue };
+}
+
+/** The one argv template per platform (issue 174 L2): a real terminal, opened with the same line
+ * the boarding pass copies already queued as its argv, never as a string handed to a shell.
+ * `platform` is a parameter, not read from `process.platform` here, so both templates are provable
+ * in one test run on one machine -- `build` (below) is the only caller that ever supplies the real
+ * platform. Windows: `cmd /c start` opens a new console window running `claude` directly (`cmd`
+ * itself is the one program `start` needs to hand the rest of argv to as its own arguments, not a
+ * shell parsing them further). POSIX: `console.sh`/`console.cmd` open a browser tab, not a
+ * terminal, so there is no existing terminal-launch convention to match here (checked, per the
+ * issue's own instruction) -- `x-terminal-emulator -e` is Debian's (and so most desktop Linux's)
+ * standard alternative for "the user's chosen terminal emulator". */
+export function questStartArgv(platform: NodeJS.Platform, model: string, questLine: string): { cmd: string; args: string[] } {
+  if (platform === 'win32') {
+    return { cmd: 'cmd', args: ['/c', 'start', 'Verstaan quest', 'claude', '--model', model, questLine] };
+  }
+  return { cmd: 'x-terminal-emulator', args: ['-e', 'claude', '--model', model, questLine] };
+}
+
 function pickCmakePreset(kind: 'debug' | 'tidy' = 'debug'): string {
   if (process.platform === 'win32') return kind === 'tidy' ? 'clang-release' : 'msvc-debug';
   return kind === 'tidy' ? 'linux-clang' : 'linux-gcc';
@@ -166,6 +198,18 @@ export const JOB_KINDS: Record<string, JobKindDef> = {
     validateArgs: (args) => ({ name: requireString(args, 'name') }),
     build: (tree, args) => {
       throw new Error(`service-stop: no local service named '${String(args.name)}' is registered`);
+    },
+  },
+  'quest-start': {
+    kind: 'quest-start',
+    label: 'quest-start (open a terminal)',
+    treeScoped: true,
+    validateArgs: validateQuestStartArgs,
+    build: (tree, args) => {
+      const model = String(args.model);
+      const issue = String(args.issue).padStart(2, '0');
+      const { cmd, args: argv } = questStartArgv(process.platform, model, `/factory-run ${issue}`);
+      return { cmd, args: argv, cwd: tree };
     },
   },
   'worktree-list': {

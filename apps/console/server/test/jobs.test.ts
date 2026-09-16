@@ -247,6 +247,73 @@ describe.skipIf(process.platform === 'win32')('gate: missing CMakeUserPresets.js
   });
 });
 
+// Issue 174 (L2): the terminal spawn. `questStartArgv` is a pure function of platform, model and
+// the already-padded quest line, so both platform templates are provable here in one run, on
+// whichever OS this test happens to execute on -- `build`'s own call to it (kinds.ts) is the only
+// place that ever supplies the real `process.platform`.
+describe('quest-start: argv templates, validation and refusal (issue 174)', () => {
+  it('the Windows template opens a new console window running claude directly, one argv per slot', async () => {
+    const { questStartArgv } = await import('../src/jobs/kinds.js');
+    const spawn = questStartArgv('win32', 'sonnet', '/factory-run 06');
+    expect(spawn.cmd).toBe('cmd');
+    expect(spawn.args).toEqual(['/c', 'start', 'Verstaan quest', 'claude', '--model', 'sonnet', '/factory-run 06']);
+  });
+
+  it('the POSIX template runs x-terminal-emulator -e claude, one argv per slot', async () => {
+    const { questStartArgv } = await import('../src/jobs/kinds.js');
+    const spawn = questStartArgv('linux', 'opus', '/factory-run 12');
+    expect(spawn.cmd).toBe('x-terminal-emulator');
+    expect(spawn.args).toEqual(['-e', 'claude', '--model', 'opus', '/factory-run 12']);
+  });
+
+  it('validateArgs refuses a model outside the allow-list', async () => {
+    const { JOB_KINDS, JobArgsError } = await import('../src/jobs/kinds.js');
+    expect(() => JOB_KINDS['quest-start'].validateArgs({ model: 'gpt-5', issue: 6 })).toThrow(JobArgsError);
+  });
+
+  it('validateArgs refuses a non-integer issue', async () => {
+    const { JOB_KINDS, JobArgsError } = await import('../src/jobs/kinds.js');
+    expect(() => JOB_KINDS['quest-start'].validateArgs({ model: 'sonnet', issue: 'six' })).toThrow(JobArgsError);
+  });
+
+  it('build() pads the issue number and composes the same "/factory-run NN" line the boarding pass copies', async () => {
+    const { JOB_KINDS } = await import('../src/jobs/kinds.js');
+    const spawn = JOB_KINDS['quest-start'].build('.', { model: 'sonnet', issue: 6 });
+    expect(spawn.args.at(-1)).toBe('/factory-run 06');
+    expect(spawn.args).not.toContain(undefined);
+  });
+
+  it('POST /api/jobs refuses an unknown model before any process spawns', async () => {
+    const { app } = buildApp({ readRepoFn: fixtureRepo });
+    const res = await app.inject({
+      method: 'POST',
+      url: '/api/jobs',
+      headers: LOOPBACK_HOST,
+      payload: { kind: 'quest-start', tree: '.', args: { model: 'gpt-5', issue: 6 } },
+    });
+    expect(res.statusCode).toBe(400);
+    await app.close();
+  });
+
+  it('is refused with 409 and a stated reason while a restart is in progress', async () => {
+    const jobs = new JobManager();
+    const app = Fastify({ logger: false });
+    const restartGate = new RestartGate();
+    restartGate.begin();
+    registerJobRoutes(app, { jobs, repoRoot: process.cwd(), port: 7864, treeRoots: () => [process.cwd()], restartGate });
+    const res = await app.inject({
+      method: 'POST',
+      url: '/api/jobs',
+      headers: LOOPBACK_HOST,
+      payload: { kind: 'quest-start', tree: '.', args: { model: 'sonnet', issue: 6 } },
+    });
+    expect(res.statusCode).toBe(409);
+    expect(res.json().error).toMatch(/restart is in progress/);
+    expect(jobs.list()).toHaveLength(0);
+    await app.close();
+  });
+});
+
 // Checkpoint-4 review, finding 3: `jobs.runningJob()` alone only refuses a job already running
 // *before* a restart began; it is checked once, before `POST /api/restart` even starts the
 // build. A job that starts partway through the build is never caught by it, and gets killed with

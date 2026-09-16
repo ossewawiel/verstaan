@@ -20,6 +20,10 @@ export default defineConfig({
   reporter: [['list']],
   use: {
     baseURL: `http://127.0.0.1:${PORT}`,
+    // The boarding pass (issue 174) writes to the clipboard on click; Chromium refuses both
+    // `navigator.clipboard.writeText` and `.readText()` without this, even against a page it
+    // itself navigated to.
+    permissions: ['clipboard-read', 'clipboard-write'],
   },
   webServer: {
     command: `node dist-server/server/src/index.js --port ${PORT}`,

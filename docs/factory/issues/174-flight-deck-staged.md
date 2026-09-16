@@ -2,7 +2,7 @@
 issue: 174
 title: "The flight deck, staged: the boarding pass first, the terminal spawn second"
 milestone: M7
-status: open
+status: in-progress
 depends_on: [173]
 agent: implementer
 agents: [implementer]
@@ -10,7 +10,7 @@ model: sonnet
 effort: medium
 checkpoint: null
 commit: null
-worktree: null
+worktree: .worktrees/m7-174-flight-deck-staged
 github_issue: 259
 ---
 ## What

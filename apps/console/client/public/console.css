@@ -297,6 +297,19 @@ select:focus-visible,
   margin-top: 0.4rem;
 }
 
+/* The boarding pass (issue 174): a plain action button plus a toast that confirms the copy,
+   removed a moment later -- never part of the button's own label, so the label stays "Launch"
+   throughout and a screen reader hears the toast once, via its own `role="status"`. */
+.boarding-pass {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.boarding-pass__toast {
+  font-size: 0.78rem;
+  color: var(--amber);
+}
+
 .status-row {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));

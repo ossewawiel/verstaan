@@ -3,6 +3,7 @@ import { memo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { api, type Issue } from '../api/client';
 import { ActionButton } from '../components/ActionButton';
+import { BoardingPass } from '../components/BoardingPass';
 
 const GLYPH: Record<Issue['status'], string> = { done: '●', 'in-progress': '◐', open: '○' };
 const LABEL: Record<Issue['status'], string> = { done: 'done', 'in-progress': 'in progress', open: 'open' };
@@ -89,6 +90,7 @@ interface Props {
 function QuestActions({ issue }: { issue: Issue }) {
   const navigate = useNavigate();
   const tree = issue.worktree ?? '.';
+  const id = String(issue.n).padStart(2, '0');
   const runTests = async () => {
     const { id } = await api.jobs.create('pytest', tree, { path: 'tools/factory' });
     navigate(`/jobs/${id}`);
@@ -103,6 +105,9 @@ function QuestActions({ issue }: { issue: Issue }) {
   };
   return (
     <div className="story-actions" onClick={(e) => e.stopPropagation()} onKeyDown={(e) => e.stopPropagation()}>
+      {/* The flight deck's own launch path (issue 174, L1): one per open quest, never on a quest
+          already in progress or done -- there is nothing left to launch there. */}
+      {issue.status === 'open' ? <BoardingPass model={issue.model} command={`/factory-run ${id}`} /> : null}
       <ActionButton label="Run its tests" disabled={!issue.worktree} onRun={runTests} />
       <ActionButton label="Open its tree" disabled={!issue.worktree} onRun={openTree} />
       <ActionButton label="Open its PR" onRun={openPr} />
