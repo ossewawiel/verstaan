@@ -2,15 +2,15 @@
 issue: 170
 title: "Verstaan Console as a desktop app: one launcher entry starts the service and opens its own window"
 milestone: Side
-status: in-progress
+status: done
 depends_on: [102]
 agent: implementer
 agents: [implementer]
 model: sonnet
 effort: medium
 checkpoint: null
-commit: null
-worktree: .worktrees/side-170-console-desktop-entry
+commit: e96fbb0
+worktree: null
 github_issue: 250
 ---
 ## What
