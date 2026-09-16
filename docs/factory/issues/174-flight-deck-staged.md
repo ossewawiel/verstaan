@@ -2,15 +2,15 @@
 issue: 174
 title: "The flight deck, staged: the boarding pass first, the terminal spawn second"
 milestone: M7
-status: in-progress
+status: done
 depends_on: [173]
 agent: implementer
 agents: [implementer]
 model: sonnet
 effort: medium
 checkpoint: null
-commit: null
-worktree: .worktrees/m7-174-flight-deck-staged
+commit: a32898f
+worktree: null
 github_issue: 259
 ---
 ## What
@@ -55,11 +55,11 @@ Editing an issue file from the console (quest 99's road list, item 1, still out 
 
 ## Done when
 
-- [ ] L1: Launch composes and copies `claude --model <m> "/factory-run NN"` from a quest's front
+- [x] L1: Launch composes and copies `claude --model <m> "/factory-run NN"` from a quest's front
       matter.
-- [ ] L2: `quest-start` in `kinds.ts`, one argv template per platform, `shell: false`.
-- [ ] `quest-start` is refused during a restart with a stated reason.
-- [ ] A test proves an unknown job kind returns 400.
+- [x] L2: `quest-start` in `kinds.ts`, one argv template per platform, `shell: false`.
+- [x] `quest-start` is refused during a restart with a stated reason.
+- [x] A test proves an unknown job kind returns 400.
 - [ ] `/gate` and CI green.
 
 Source: `docs/decisions/2026-09-16-console-as-cic/handoff.md`, quest table row 2; ADR 0014; ADR 0016.
