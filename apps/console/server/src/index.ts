@@ -10,7 +10,7 @@ import Fastify from 'fastify';
 import fastifyStatic from '@fastify/static';
 import fastifyCompress from '@fastify/compress';
 import { REPO, readRepo, resolveRootPath, readWorktrees, msSinceLastGitCommand } from './model/read.js';
-import { buildModel, lastEvents } from './model/parse.js';
+import { buildModel, buildShipSystems, lastEvents } from './model/parse.js';
 import { render, titleOf, splitFrontmatter } from './model/markdown.js';
 import { JobManager } from './jobs/runner.js';
 import { registerJobRoutes } from './jobs/routes.js';
@@ -66,6 +66,14 @@ export function watchPaths(
   add(join(root, 'docs', 'factory'), 'state');
   add(join(root, 'docs'), 'docs', true);
   add(join(root, '.claude', 'agents'), 'party');
+  // Ship systems (issue 175): the three remaining folders the room reads, plus settings.json's
+  // own file (not a directory, so it needs its own `add()`, same as `commonDir` below). All four
+  // share one section name -- a change to any of them invalidates the same query client-side
+  // (SECTION_KEYS's `ship-systems` entry).
+  add(join(root, '.claude', 'skills'), 'ship-systems', true);
+  add(join(root, '.claude', 'commands'), 'ship-systems');
+  add(join(root, '.claude', 'hooks'), 'ship-systems');
+  add(join(root, '.claude', 'settings.json'), 'ship-systems');
   // The directory that *contains* every worktree, not any one tree's own files. `/factory-run`
   // creates `.worktrees/side-NN-<slug>` mid-run; a change here is the earliest local signal that
   // a new tree exists, well before that tree's own `docs/factory/issues` has anything watchable
@@ -150,14 +158,33 @@ export function buildApp({
   app.register(fastifyCompress, { global: true, encodings: ['br', 'gzip', 'deflate'] });
   const clients = new Set<Client>();
 
-  type Cache = { repo: ReturnType<typeof readRepo>; model: ReturnType<typeof buildModel>; allDocs: { path: string; content: string }[] };
+  type Cache = {
+    repo: ReturnType<typeof readRepo>;
+    model: ReturnType<typeof buildModel>;
+    allDocs: { path: string; content: string }[];
+    shipSystems: ReturnType<typeof buildShipSystems>;
+  };
   let cache: Cache | null = null;
   const getModel = (): Cache => {
     if (cache) return cache;
     const repo = readRepoFn();
     const model = buildModel(repo);
     const allDocs = repo.library.flatMap((g) => g.docs);
-    const fresh: Cache = { repo, model, allDocs };
+    // The playbook lane's stations (issue 175) come from the same heading extraction every doc
+    // page already uses (model/markdown.ts's render()), not a second parser -- frontmatter is
+    // stripped first, the same way /api/docs/* does it, so a stray `---` in the front matter block
+    // is never mistaken for a heading.
+    const { headings: playbookHeadings } = render(splitFrontmatter(repo.playbookText).body, {});
+    const shipSystems = buildShipSystems({
+      agentFiles: repo.agentFiles,
+      skillFiles: repo.skillFiles,
+      commandFiles: repo.commandFiles,
+      hookFileNames: repo.hookFiles.map((f) => f.name),
+      settingsJsonText: repo.settingsJsonText,
+      playbookHeadings,
+      generated: repo.generated,
+    });
+    const fresh: Cache = { repo, model, allDocs, shipSystems };
     cache = fresh;
     return fresh;
   };
@@ -251,6 +278,14 @@ export function buildApp({
   app.get('/api/github-status', async (_req, reply) => {
     const reachable = await githubReachableFn();
     reply.type('application/json').send({ reachable });
+  });
+
+  // Ship systems (issue 175): the factory's own machinery, read-only -- agents, skills, commands,
+  // hooks cross-referenced against settings.json's events, and the playbook's own encounter lane.
+  // No job-runner call, no mutation surface (the issue's "Not in scope").
+  app.get('/api/ship-systems', async (_req, reply) => {
+    const { shipSystems } = getModel();
+    reply.type('application/json').send(shipSystems);
   });
 
   const jobs = new JobManager();

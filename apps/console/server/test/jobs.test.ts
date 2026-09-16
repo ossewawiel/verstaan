@@ -32,6 +32,11 @@ function fixtureRepo(): RepoModel {
     stamp: { present: false, matches: false },
     worktrees: [],
     generated: '2026-09-09T00:00:00Z',
+    skillFiles: [],
+    commandFiles: [],
+    hookFiles: [],
+    settingsJsonText: '',
+    playbookText: '',
   };
 }
 

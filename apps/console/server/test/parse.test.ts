@@ -1,6 +1,22 @@
 // SPDX-License-Identifier: MPL-2.0
 import { describe, it, expect } from 'vitest';
-import { parseFrontmatter, parseIssues, buildModel, parseWorktreePorcelain, parseLessons, inProgressQuests, lastEvents, type Issue, type WorktreeSummary } from '../src/model/parse.js';
+import {
+  parseFrontmatter,
+  parseIssues,
+  buildModel,
+  parseWorktreePorcelain,
+  parseLessons,
+  inProgressQuests,
+  lastEvents,
+  parseAgentDetails,
+  parseSkills,
+  parseCommands,
+  crossReferenceHooks,
+  playbookLane,
+  buildShipSystems,
+  type Issue,
+  type WorktreeSummary,
+} from '../src/model/parse.js';
 
 describe('parseFrontmatter', () => {
   it('parses scalars, null and simple lists', () => {
@@ -179,5 +195,122 @@ describe('buildModel', () => {
     expect(model.totals).toEqual({ issues: 1, done: 0 });
     expect(model.next?.n).toBe(1);
     expect(model.inProgress).toEqual([]);
+  });
+});
+
+// Issue 175: Ship systems.
+describe('parseAgentDetails', () => {
+  it('reads name, description, model, effort, tools and colour from agent front matter', () => {
+    const files = [
+      {
+        name: 'implementer.md',
+        content:
+          '---\nname: implementer\ndescription: Makes tests pass. Use for any tooling issue.\ntools: Read, Write, Edit, Grep, Glob, Bash\nmodel: sonnet\neffort: medium\ncolor: green\n---\n## Read first\n',
+      },
+    ];
+    const [agent] = parseAgentDetails(files);
+    expect(agent).toEqual({
+      name: 'implementer',
+      description: 'Makes tests pass. Use for any tooling issue.',
+      model: 'sonnet',
+      effort: 'medium',
+      tools: ['Read', 'Write', 'Edit', 'Grep', 'Glob', 'Bash'],
+      color: 'green',
+    });
+  });
+
+  // The whole point of this acceptance criterion (issue 175): a fixture agent file added to
+  // `.claude/agents/`, with no console code change, appears in parseAgentDetails' own output on
+  // the next call -- proven here by calling it twice, the second time with one more file, exactly
+  // what a fresh `readDir()` would return after a file lands mid-session.
+  it('lists a newly added agent file with no code change, on the next call', () => {
+    const before = [{ name: 'implementer.md', content: '---\nname: implementer\nmodel: sonnet\neffort: medium\n---\n' }];
+    const after = [...before, { name: 'scout.md', content: '---\nname: scout\ndescription: Finds things.\nmodel: haiku\neffort: low\ntools: Read\n---\n' }];
+    expect(parseAgentDetails(before).map((a) => a.name)).toEqual(['implementer']);
+    expect(parseAgentDetails(after).map((a) => a.name)).toEqual(['implementer', 'scout']);
+    expect(parseAgentDetails(after).find((a) => a.name === 'scout')).toMatchObject({ description: 'Finds things.', model: 'haiku', tools: ['Read'] });
+  });
+});
+
+describe('parseSkills', () => {
+  it('reads name, description and argument-hint, falling back to the directory name', () => {
+    const files = [
+      { name: 'create-map/SKILL.md', content: '---\nname: create-map\ndescription: Plans a new map.\nargument-hint: [a seed]\n---\nbody' },
+      { name: 'no-name/SKILL.md', content: '---\ndescription: Has no name field.\n---\nbody' },
+    ];
+    const skills = parseSkills(files);
+    // parseFrontmatter's generic [a, b]-list rule reads a bracketed, comma-free phrase as a
+    // one-item array (its outer brackets stripped); parseSkills normalises that back to a plain
+    // string, so the room reads "a seed", not a stray array or the raw "[a seed]".
+    expect(skills).toEqual([
+      { name: 'create-map', description: 'Plans a new map.', argumentHint: 'a seed' },
+      { name: 'no-name', description: 'Has no name field.', argumentHint: null },
+    ]);
+  });
+});
+
+describe('parseCommands', () => {
+  it('names a command from its file name, since command front matter carries no name field', () => {
+    const files = [{ name: 'factory-status.md', content: '---\ndescription: Regenerate STATE.md.\n---\n1. Do it.\n' }];
+    expect(parseCommands(files)).toEqual([{ name: 'factory-status', description: 'Regenerate STATE.md.' }]);
+  });
+});
+
+describe('crossReferenceHooks', () => {
+  const settingsJson = JSON.stringify({
+    hooks: {
+      PostToolUse: [{ matcher: 'Edit|Write', hooks: [{ type: 'command', command: 'bash "${CLAUDE_PROJECT_DIR}/.claude/hooks/fast-format.sh"' }] }],
+      Stop: [{ hooks: [{ type: 'command', command: 'bash "${CLAUDE_PROJECT_DIR}/.claude/hooks/gate-fast.sh"' }] }],
+    },
+  });
+
+  it('marks a hook file referenced by an event, and one not referenced by any event, as a visible gap', () => {
+    const { events, files } = crossReferenceHooks(['fast-format.sh', 'gate-fast.sh', '_env.sh'], settingsJson);
+    expect(files.find((f) => f.file === 'fast-format.sh')?.referencedByEvents).toEqual(['PostToolUse']);
+    expect(files.find((f) => f.file === '_env.sh')?.referencedByEvents).toEqual([]);
+    expect(events.find((e) => e.event === 'PostToolUse')?.hooks).toEqual([{ command: expect.stringContaining('fast-format.sh'), file: 'fast-format.sh', exists: true }]);
+  });
+
+  it('marks an event whose command names a missing hook file as a visible gap', () => {
+    const { events } = crossReferenceHooks(['gate-fast.sh'], settingsJson);
+    const postToolUse = events.find((e) => e.event === 'PostToolUse');
+    expect(postToolUse?.hooks[0]).toEqual({ command: expect.stringContaining('fast-format.sh'), file: 'fast-format.sh', exists: false });
+  });
+
+  it('reads no events from malformed JSON, instead of throwing', () => {
+    expect(crossReferenceHooks(['a.sh'], 'not json').events).toEqual([]);
+  });
+});
+
+describe('playbookLane', () => {
+  it('takes station names from the level-2 headings, in file order', () => {
+    const headings = [
+      { level: 1, text: 'Playbook' },
+      { level: 2, text: 'The map' },
+      { level: 3, text: 'A sub-point' },
+      { level: 2, text: 'An encounter, start to finish' },
+      { level: 2, text: 'The gate ladder' },
+    ];
+    expect(playbookLane(headings)).toEqual([{ name: 'The map' }, { name: 'An encounter, start to finish' }, { name: 'The gate ladder' }]);
+  });
+});
+
+describe('buildShipSystems', () => {
+  it('assembles agents, skills, commands, hooks and the playbook lane from raw repo inputs', () => {
+    const model = buildShipSystems({
+      agentFiles: [{ name: 'implementer.md', content: '---\nname: implementer\nmodel: sonnet\neffort: medium\ntools: Read\n---\n' }],
+      skillFiles: [{ name: 'quest/SKILL.md', content: '---\nname: quest\ndescription: Plans a quest.\n---\n' }],
+      commandFiles: [{ name: 'gate.md', content: '---\ndescription: The full local gate.\n---\n' }],
+      hookFileNames: ['a.sh'],
+      settingsJsonText: JSON.stringify({ hooks: { Stop: [{ hooks: [{ command: '.claude/hooks/a.sh' }] }] } }),
+      playbookHeadings: [{ level: 2, text: 'The map' }],
+      generated: '2026-09-16T00:00:00Z',
+    });
+    expect(model.agents.map((a) => a.name)).toEqual(['implementer']);
+    expect(model.skills.map((s) => s.name)).toEqual(['quest']);
+    expect(model.commands.map((c) => c.name)).toEqual(['gate']);
+    expect(model.hooks.files).toEqual([{ file: 'a.sh', referencedByEvents: ['Stop'] }]);
+    expect(model.playbookLane).toEqual([{ name: 'The map' }]);
+    expect(model.generated).toBe('2026-09-16T00:00:00Z');
   });
 });

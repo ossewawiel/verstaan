@@ -86,6 +86,55 @@ export interface LibraryGroup {
   docs: string[];
 }
 
+export interface AgentDetail {
+  name: string;
+  description: string;
+  model: string;
+  effort: string;
+  tools: string[];
+  color: string | null;
+}
+
+export interface SkillDoc {
+  name: string;
+  description: string;
+  argumentHint: string | null;
+}
+
+export interface CommandDoc {
+  name: string;
+  description: string;
+}
+
+export interface HookEventEntry {
+  event: string;
+  matcher: string | null;
+  hooks: { command: string; file: string | null; exists: boolean }[];
+}
+
+export interface HookFileEntry {
+  file: string;
+  referencedByEvents: string[];
+}
+
+export interface HooksCrossReference {
+  events: HookEventEntry[];
+  files: HookFileEntry[];
+}
+
+export interface PlaybookStation {
+  name: string;
+}
+
+export interface ShipSystemsModel {
+  generated: string;
+  agents: AgentDetail[];
+  skills: SkillDoc[];
+  commands: CommandDoc[];
+  hooks: HooksCrossReference;
+  playbookLane: PlaybookStation[];
+}
+
 export type JobStatus = 'queued' | 'running' | 'done' | 'failed' | 'killed';
 
 export interface JobSummary {
@@ -130,6 +179,7 @@ export const api = {
   worktrees: () => getJson<WorktreeSummary[]>('/api/worktrees'),
   ledger: () => getJson<{ lessons: StateModel['lessons']; reviews: StateModel['reviews'] }>('/api/ledger'),
   events: () => getJson<EventItem[]>('/api/events'),
+  shipSystems: () => getJson<ShipSystemsModel>('/api/ship-systems'),
   githubStatus: () => getJson<GithubStatus>('/api/github-status'),
   jobs: {
     list: () => getJson<JobSummary[]>('/api/jobs'),

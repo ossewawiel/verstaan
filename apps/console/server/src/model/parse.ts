@@ -227,6 +227,220 @@ export function parseAgents(files: DocFile[]): PartyMember[] {
     .sort((a, b) => a.name.localeCompare(b.name));
 }
 
+export interface AgentDetail {
+  name: string;
+  description: string;
+  model: string;
+  effort: string;
+  tools: string[];
+  color: string | null;
+}
+
+/** agent files [{name, content}] -> full detail (issue 175's Ship systems room), every field the
+ * Party panel's parseAgents trims away for its one-line card: the whole description, and the
+ * tools list. Kept as its own function rather than widening PartyMember, so the Party panel's
+ * one-clause role summary is untouched. */
+export function parseAgentDetails(files: DocFile[]): AgentDetail[] {
+  return files
+    .filter((f) => /\.md$/.test(f.name))
+    .map((f) => {
+      const fm = parseFrontmatter(f.content) ?? {};
+      const toolsRaw = fm.tools;
+      const tools = Array.isArray(toolsRaw)
+        ? toolsRaw.map(String)
+        : typeof toolsRaw === 'string'
+          ? toolsRaw.split(',').map((t) => t.trim()).filter(Boolean)
+          : [];
+      return {
+        name: String(fm.name ?? f.name.replace(/\.md$/, '')),
+        description: String(fm.description ?? ''),
+        model: String(fm.model ?? '?'),
+        effort: String(fm.effort ?? '?'),
+        tools,
+        color: (fm.color as string) ?? null,
+      };
+    })
+    .sort((a, b) => a.name.localeCompare(b.name));
+}
+
+export interface SkillDoc {
+  name: string;
+  description: string;
+  argumentHint: string | null;
+}
+
+/** skill files [{name: "<dir>/SKILL.md", content}] -> one row per skill, name from the file's own
+ * front matter, falling back to the directory name (the same fallback shape parseAgentDetails and
+ * parseCommands use for a file that carries no `name:` field). `argument-hint` is a bracketed
+ * phrase (`[issue-number] [--resume]`) -- `parseFrontmatter`'s generic `[a, b]`-list rule reads
+ * any value shaped `[...]` as a list, not a special case for this one key, so the raw value can
+ * come back as a one-item array here; both shapes are normalised to a single string. */
+export function parseSkills(files: DocFile[]): SkillDoc[] {
+  return files
+    .filter((f) => /SKILL\.md$/.test(f.name))
+    .map((f) => {
+      const fm = parseFrontmatter(f.content) ?? {};
+      const dirName = f.name.replace(/\/SKILL\.md$/, '');
+      const hint = fm['argument-hint'];
+      return {
+        name: String(fm.name ?? dirName),
+        description: String(fm.description ?? ''),
+        argumentHint: hint == null ? null : Array.isArray(hint) ? hint.map(String).join(', ') : String(hint),
+      };
+    })
+    .sort((a, b) => a.name.localeCompare(b.name));
+}
+
+export interface CommandDoc {
+  name: string;
+  description: string;
+}
+
+/** command files [{name, content}] -> one row per command. `.claude/commands/*.md` front matter
+ * carries no `name:` field (issue 175's brief), so the command's name is always the file name,
+ * the way the owner types it (`/factory-status`, `/gate`). */
+export function parseCommands(files: DocFile[]): CommandDoc[] {
+  return files
+    .filter((f) => /\.md$/.test(f.name))
+    .map((f) => {
+      const fm = parseFrontmatter(f.content) ?? {};
+      return {
+        name: f.name.replace(/\.md$/, ''),
+        description: String(fm.description ?? ''),
+      };
+    })
+    .sort((a, b) => a.name.localeCompare(b.name));
+}
+
+export interface HookEventEntry {
+  event: string;
+  matcher: string | null;
+  hooks: { command: string; file: string | null; exists: boolean }[];
+}
+
+export interface HookFileEntry {
+  file: string;
+  referencedByEvents: string[];
+}
+
+export interface HooksCrossReference {
+  events: HookEventEntry[];
+  files: HookFileEntry[];
+}
+
+const HOOK_FILE_RE = /\.claude\/hooks\/([^"'\s]+)/;
+
+/** One command string from `.claude/settings.json` -> the hook file name it names, or null if the
+ * command does not reference `.claude/hooks/` at all (a command is free-form shell, in principle;
+ * every command this repo actually registers does name a file there, but this stays honest about
+ * the pattern being read out of a string, not a structural guarantee). */
+function hookFileOf(command: string): string | null {
+  const m = HOOK_FILE_RE.exec(command);
+  return m ? m[1] : null;
+}
+
+/** `.claude/settings.json` text -> `{event, matcher, commands}[]`, one row per matcher group
+ * under one event. Malformed or missing JSON reads as no events registered, the same "visible
+ * gap, not a crash" shape the rest of this parser family uses for a missing frontmatter block. */
+function parseHookEvents(settingsJsonText: string): { event: string; matcher: string | null; commands: string[] }[] {
+  let parsed: unknown;
+  try {
+    parsed = JSON.parse(settingsJsonText);
+  } catch {
+    return [];
+  }
+  const hooks = (parsed as { hooks?: Record<string, unknown> } | null)?.hooks;
+  if (!hooks || typeof hooks !== 'object') return [];
+  const out: { event: string; matcher: string | null; commands: string[] }[] = [];
+  for (const [event, groups] of Object.entries(hooks)) {
+    if (!Array.isArray(groups)) continue;
+    for (const group of groups) {
+      const g = group as { matcher?: string; hooks?: { command?: string }[] };
+      const commands = Array.isArray(g.hooks) ? g.hooks.map((h) => String(h.command ?? '')).filter(Boolean) : [];
+      out.push({ event, matcher: g.matcher ?? null, commands });
+    }
+  }
+  return out;
+}
+
+/** `.claude/hooks/*` file names, cross-referenced against the hook events named in
+ * `.claude/settings.json` (issue 175): every event names the hook file(s) it fires, flagged
+ * `exists: false` when that file is not among `hookFileNames` (an event pointing at nothing); and
+ * every hook file names the events that reference it, an empty list meaning the file sits in the
+ * directory unreferenced by anything `settings.json` registers. Both directions are gaps this
+ * function surfaces, never silently drops. */
+export function crossReferenceHooks(hookFileNames: string[], settingsJsonText: string): HooksCrossReference {
+  const known = new Set(hookFileNames);
+  const rawEvents = parseHookEvents(settingsJsonText);
+  const referencedBy = new Map<string, Set<string>>();
+  const events: HookEventEntry[] = rawEvents.map(({ event, matcher, commands }) => {
+    const hooks = commands.map((command) => {
+      const file = hookFileOf(command);
+      if (file) {
+        if (!referencedBy.has(file)) referencedBy.set(file, new Set());
+        referencedBy.get(file)!.add(event);
+      }
+      return { command, file, exists: file != null && known.has(file) };
+    });
+    return { event, matcher, hooks };
+  });
+  const files: HookFileEntry[] = hookFileNames
+    .slice()
+    .sort()
+    .map((file) => ({ file, referencedByEvents: [...(referencedBy.get(file) ?? new Set())].sort() }));
+  return { events, files };
+}
+
+export interface PlaybookStation {
+  name: string;
+}
+
+/** `render()`'s own `##` headings, in file order -> the playbook lane's stations (issue 175):
+ * station names come straight from the file, never hardcoded, so a heading renamed or reordered
+ * in playbook.md moves the lane with it on the next load. */
+export function playbookLane(headings: { level: number; text: string }[]): PlaybookStation[] {
+  return headings.filter((h) => h.level === 2).map((h) => ({ name: h.text }));
+}
+
+export interface ShipSystemsModel {
+  generated: string;
+  agents: AgentDetail[];
+  skills: SkillDoc[];
+  commands: CommandDoc[];
+  hooks: HooksCrossReference;
+  playbookLane: PlaybookStation[];
+}
+
+/** Assembles the whole Ship systems room's model (issue 175) from the four folders it reads plus
+ * the playbook's own headings, already rendered by model/markdown.ts's render() (so this stays a
+ * pure function of already-read text, like buildModel()). */
+export function buildShipSystems({
+  agentFiles,
+  skillFiles,
+  commandFiles,
+  hookFileNames,
+  settingsJsonText,
+  playbookHeadings,
+  generated,
+}: {
+  agentFiles: DocFile[];
+  skillFiles: DocFile[];
+  commandFiles: DocFile[];
+  hookFileNames: string[];
+  settingsJsonText: string;
+  playbookHeadings: { level: number; text: string }[];
+  generated: string;
+}): ShipSystemsModel {
+  return {
+    generated,
+    agents: parseAgentDetails(agentFiles),
+    skills: parseSkills(skillFiles),
+    commands: parseCommands(commandFiles),
+    hooks: crossReferenceHooks(hookFileNames, settingsJsonText),
+    playbookLane: playbookLane(playbookHeadings),
+  };
+}
+
 export interface Reviews {
   count: number;
   where: { file: string; count: number }[];
@@ -352,6 +566,15 @@ export interface RepoModel {
   stamp: StampInfo;
   worktrees: WorktreeSummary[];
   generated: string;
+  // Ship systems (issue 175): the four folders the room reads, plus settings.json's raw text
+  // (cross-referenced against hookFiles) and playbook.md's raw text (its `##` headings become the
+  // lane's stations, read via model/markdown.ts's render() where this is used, not here -- this
+  // module stays IO-free).
+  skillFiles: DocFile[];
+  commandFiles: DocFile[];
+  hookFiles: DocFile[];
+  settingsJsonText: string;
+  playbookText: string;
 }
 
 export interface BuiltModel {

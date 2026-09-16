@@ -9,6 +9,7 @@ const ROOMS: { to: string; label: string }[] = [
   { to: '/library', label: 'Library' },
   { to: '/glossary', label: 'Glossary' },
   { to: '/jobs', label: 'Jobs' },
+  { to: '/ship-systems', label: 'Ship systems' },
 ];
 
 export function NavBar() {
