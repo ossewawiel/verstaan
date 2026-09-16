@@ -94,6 +94,16 @@ Number), the machine-readable form the wiki's own `Dictionary.wikitext` page als
 the content is UCN. A rule-author reading these exports resolves the UW field as an opaque numeric
 key into a separate UW-to-UCL lookup, not as a parseable UCL string.
 
+**A compound `NLW`'s `#01(...)`/`#02(...)` sub-word scope holds its own nested `FEATURE LIST`,
+comma-separated like the outer one, and a `VALUE` inside that outer list can itself hold a
+literal comma the archive never escapes.** Real example, `en_gen_u_c_ucl`, `[[earth] [up]]`,
+id 443140: `(LEMMA=earth up,BF=earth,LEX=V,POS=VER,LST=MTW,TRA=TST,#01(LEMMA=earth
+up,BF=earth,LEX=V,POS=VER,PAR=M16,FRA=Y38),#02(BF=up),SEM=CTC)`. `#02`'s own list is one
+attribute-value pair, `BF=up`, describing the second sub-word ("up"), not a feature named `#02`.
+Issue 169 fixes the importer to parse both shapes: `#NN(...)` recursively, and a comma inside an
+unparenthesised value (e.g. the headword `[Bouillon, België]`'s `LEMMA=Bouillon, België`) as part
+of that value, not a new feature.
+
 Source: UNL Archive, data/archive/wiki/Dictionary.wikitext,
 https://unlarchive.org/wiki/api.php?action=query&prop=revisions&titles=Dictionary, CC BY-SA 4.0.
 Checked against data/archive/exports/afr/af_ana_u_c_ucl/af_ana_u_c_ucl_1.txt (from

@@ -2,14 +2,14 @@
 issue: 169
 title: "The dictionary importer splits compound feature strings wrong: 4,269 bogus attributes"
 milestone: Side
-status: open
+status: done
 depends_on: [14, 17, 168]
 agent: implementer
 agents: [implementer, test-writer]
 model: sonnet
 effort: medium
 checkpoint: null
-commit: null
+commit: c927186
 worktree: null
 github_issue: 241
 ---
@@ -70,12 +70,12 @@ or the two run as one branch.
 
 ## Done when
 
-- [ ] The dictionary importer parses multi-part feature strings correctly, and a re-import leaves
+- [x] The dictionary importer parses multi-part feature strings correctly, and a re-import leaves
       no `#01`/`#02` attribute and no headword-as-attribute.
-- [ ] `GOV` is resolved: on the skip list with a one-line reason, or checked by shape.
-- [ ] No `tagset.yaml` row is added or edited.
-- [ ] `tools/validate/test_validate.py` keeps both broken-store fixtures and gains a test for the
+- [x] `GOV` is resolved: on the skip list with a one-line reason, or checked by shape.
+- [x] No `tagset.yaml` row is added or edited.
+- [x] `tools/validate/test_validate.py` keeps both broken-store fixtures and gains a test for the
       split-feature shape.
-- [ ] `docs/unl-reference/formats/dictionary.md` records the compound feature-list shape the
+- [x] `docs/unl-reference/formats/dictionary.md` records the compound feature-list shape the
       importer now handles, with one real example.
-- [ ] The gate passes on the branch.
+- [x] The gate passes on the branch.

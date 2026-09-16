@@ -255,8 +255,16 @@ def test_compound_and_subword_fixture_parses_without_error():
     subword, reason = parse_line(entry_lines[1])
     assert reason is None, reason
     assert subword["headword"] == "[begin] [to]"
-    assert subword["features"]["#01"] == "LEMMA=begin,BF=begin,LEX=I,POS=MOV"
-    assert subword["features"]["#02"] == "BF=to,LEX=P"
+    # issue 169: #01(...)/#02(...) sub-word scopes are parsed and merged, not kept as a bogus
+    # `#01`/`#02` attribute holding the inner list as one raw string.
+    assert "#01" not in subword["features"]
+    assert "#02" not in subword["features"]
+    assert subword["features"]["LEMMA"] == "begin"
+    assert subword["features"]["LEX"] == "P"  # #02's LEX=P, the later sub-word, wins
+    assert subword["features"]["POS"] == "MOV"
+    # #02(BF=to,LEX=P) overwrites #01(...)'s BF=begin: the compound's own top-level features
+    # carry no BF at all in this fixture, so the last sub-word to set it wins (issue 169).
+    assert subword["features"]["BF"] == "to"
 
 
 def test_compound_and_subword_fixture_accounts_for_every_line():
@@ -315,6 +323,62 @@ def test_parse_line_frequency_priority_order_is_flg_frequency_priority():
     assert entry["priority"] == 0
 
 
+def test_parse_line_rewrites_a_vintage_sem_code():
+    # Issue 167: the 2016 dictionary export's SEM=ATT no longer exists in the live tagset export;
+    # the importer rewrites it to the current code, SEM=ATR.
+    entry, reason = parse_line('[aandag]{1}"1"(LEX=N,POS=NOU,SEM=ATT)<af,0,0>;')
+    assert reason is None
+    assert entry["features"]["SEM"] == "ATR"
+
+
+def test_parse_line_leaves_sem_jjj_and_sem_aaa_unrewritten():
+    # Issue 171: unlike ATT/SOV/REL (issue 167) or 3PE/2PE, SEM=JJJ and SEM=AAA are not a vintage
+    # rename. The live export drops both catch-all codes entirely and defines no replacement
+    # (docs/unl-reference/formats/tagset.md, "A second pass..."); the fix is a hand-added
+    # tagset.yaml row for each (already done), not an importer rewrite. The importer must leave
+    # both values exactly as the archive writes them.
+    entry, reason = parse_line('[loud]{1}"1"(LEX=A,POS=ADJ,SEM=JJJ)<en,0,0>;')
+    assert reason is None
+    assert entry["features"]["SEM"] == "JJJ"
+    entry, reason = parse_line('[just]{2}"2"(LEX=A,POS=ADV,SEM=AAA)<en,0,0>;')
+    assert reason is None
+    assert entry["features"]["SEM"] == "AAA"
+
+
+def test_parse_line_rewrites_vintage_per_codes():
+    # Issue 171: the live tagset's number-neutral person tags are four characters (2PER, 3PER);
+    # the 2016 export truncates them to three. Only PER's value changes, not the attribute name.
+    entry, reason = parse_line('[you]{1}"1"(LEX=R,POS=SPR,PER=2PE)<en,0,0>;')
+    assert reason is None
+    assert entry["features"]["PER"] == "2PER"
+    entry, reason = parse_line('[their]{2}"2"(LEX=R,POS=SPR,PER=3PE)<en,0,0>;')
+    assert reason is None
+    assert entry["features"]["PER"] == "3PER"
+
+
+def test_parse_feature_list_drops_the_bare_00_serialiser_echo():
+    # Issue 171, docs/unl-reference/formats/tagset.md, "`00` is not a tag": a bare `00` token at
+    # the end of a feature list is the entry's own uw field, echoed a second time by the export's
+    # serialiser (a 7/7 correlation in the real en_ana_u_c_ucl.zip data). The real archive line
+    # for `one`, id 531286: `(LEMMA=one,BF=one,LEX=R,POS=NPR,LST=WRD,NUM=SNGT,PER=3PS,PAR=M0,
+    # FRA=Y0,00)`. Dropped, not kept as a bogus `{"00": "00"}` feature.
+    features = parse_feature_list(
+        "LEMMA=one,BF=one,LEX=R,POS=NPR,LST=WRD,NUM=SNGT,PER=3PS,PAR=M0,FRA=Y0,00"
+    )
+    assert "00" not in features
+    assert features["LEMMA"] == "one"
+    assert features["FRA"] == "Y0"
+
+
+def test_parse_line_leaves_unrelated_sem_and_lowercase_att_alone():
+    # Only the SEM attribute's exact-match vintage codes are rewritten. A lowercase `att` tag
+    # (a distinct attribute) and a SEM value outside the three vintage codes must not change.
+    entry, reason = parse_line('[x]{1}"1"(LEX=N,POS=NOU,SEM=OBJ,att=1)<af,0,0>;')
+    assert reason is None
+    assert entry["features"]["SEM"] == "OBJ"
+    assert entry["features"]["att"] == "1"
+
+
 def test_parse_feature_list_handles_a_rule_list_feature():
     features = parse_feature_list('LEMMA=bad,FLX(SNG:=>"";PLR:=>"dens";)')
     assert features["LEMMA"] == "bad"
@@ -324,6 +388,74 @@ def test_parse_feature_list_handles_a_rule_list_feature():
 def test_parse_feature_list_returns_none_when_empty():
     assert parse_feature_list("") is None
     assert parse_feature_list("   ") is None
+
+
+def test_parse_feature_list_flattens_a_subword_scope_instead_of_a_placeholder_attribute():
+    """Issue 169: a `#02(...)` sub-word scope used to become a bogus attribute named `#02`,
+    holding its whole inner feature list as one raw string value, e.g. `#02` -> `"BF=up"` (the
+    real `en_gen_u_c_ucl` `earth up` entry, `[[earth] [up]]`, id 443140). Correctly parsed, that
+    inner list is itself an attribute-value pair: attribute `BF`, value `up`.
+    """
+    features = parse_feature_list(
+        "LEMMA=earth up,BF=earth,LEX=V,POS=VER,LST=MTW,TRA=TST,"
+        "#01(LEMMA=earth up,BF=earth,LEX=V,POS=VER,PAR=M16,FRA=Y38),#02(BF=up),SEM=CTC"
+    )
+    assert "#01" not in features
+    assert "#02" not in features
+    assert features["LEMMA"] == "earth up"
+    assert features["LST"] == "MTW"
+    assert features["TRA"] == "TST"
+    assert features["SEM"] == "CTC"
+    assert features["PAR"] == "M16"  # only #01 sets this; nothing at top level to collide with
+    assert features["FRA"] == "Y38"
+    # #02(BF=up) is parsed after #01(...): its BF=up overwrites #01's (and the top-level's)
+    # BF=earth, the one place this flat feature map can still put a later sub-word's own value.
+    assert features["BF"] == "up"
+
+
+def test_parse_feature_list_glues_a_comma_split_headword_back_onto_its_value():
+    """Issue 169: some headwords hold a literal comma, e.g. `[Bouillon, België]`
+    (`af_ana_u_c_ucl`, id 13637). The archive's own feature list then reads
+    `LEMMA=Bouillon, België,BF=Bouillon, België,LEX=N,...` -- the same comma the archive uses to
+    separate features. Split naively, `België` (after `LEMMA=Bouillon`) matches no feature shape
+    and used to become a bogus attribute `België` -> `België`. Correctly parsed, it is the second
+    half of `LEMMA`'s own value, reconstructed exactly.
+    """
+    features = parse_feature_list(
+        "LEMMA=Bouillon, België,BF=Bouillon, België,LEX=N,POS=NOU,LST=MTW,ABN=CCT,ANI=NANM,SEM=FOO"
+    )
+    assert features["LEMMA"] == "Bouillon, België"
+    assert features["BF"] == "Bouillon, België"
+    assert "België" not in features
+    assert features["LEX"] == "N"
+    assert features["POS"] == "NOU"
+
+
+def test_parse_feature_list_glues_a_headword_split_across_two_commas():
+    """The same shape as above, but the comma-holding value splits into three parts
+    (`af_ana_u_c_ucl`, `[Bok, bok, staan styf]`, id 13649): every shapeless part after the
+    `ATTRIBUTE=VALUE` token glues back on, not only the first.
+    """
+    features = parse_feature_list(
+        "LEMMA=Bok, bok, staan styf,BF=Bok, bok, staan styf,LEX=N,POS=NOU,"
+        "LST=MTW,ABN=ABT,ANI=NANM,SEM=ACT"
+    )
+    assert features["LEMMA"] == "Bok, bok, staan styf"
+    assert features["BF"] == "Bok, bok, staan styf"
+    assert "bok" not in features
+    assert "staan styf" not in features
+
+
+def test_parse_feature_list_keeps_bare_tags_after_a_tagset_attribute_separate():
+    """`SEM=QTT,DIGIT, TEMP` (`af_gen_u_c_ucl`, 'sesde', id 23601) is three features: `SEM=QTT`
+    plus the bare tags `DIGIT` and `TEMP`. Only `LEMMA`/`BF` hold free text a literal comma can
+    split; `SEM` is a tagset mnemonic, so a bare token after it is its own feature, not a
+    continuation of `SEM`'s value.
+    """
+    features = parse_feature_list("LEX=N,POS=NOU,SEM=QTT,DIGIT, TEMP")
+    assert features["SEM"] == "QTT"
+    assert features["DIGIT"] == "DIGIT"
+    assert features["TEMP"] == "TEMP"
 
 
 def test_shard_letter_skips_a_leading_non_letter():

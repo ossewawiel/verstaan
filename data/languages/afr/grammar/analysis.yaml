@@ -316,7 +316,7 @@
   source: {archive_path: exports/afr/nl_unl_tgrammar.txt, line: 83}
 - id: "46"
   kind: default
-  lhs: "({XP|SHEAD|CHEAD|PUT},%left)(CB,^CCJ,^proj,^XP,%cb)(XP,^IP,%right)"
+  lhs: "({XP|SHEAD|CHEAD|PUT},%left)(CB,^COO,^proj,^XP,%cb)(XP,^IP,%right)"
   rhs: "(%left)(CP(%cb,+proj;+e),+XP=CP,+LEX=C,%new)(%right)"
   conditions: []
   comment: ""
@@ -330,7 +330,7 @@
   source: {archive_path: exports/afr/nl_unl_tgrammar.txt, line: 85}
 - id: "48"
   kind: default
-  lhs: "(C,CCJ,^XP,^proj)"
+  lhs: "(C,COO,^XP,^proj)"
   rhs: "(+XP=CP,+proj)"
   conditions: []
   comment: ""

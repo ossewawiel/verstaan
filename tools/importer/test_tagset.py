@@ -179,10 +179,29 @@ def test_tagset_file_starts_with_the_licence_header(afr_store: Store):
     )
 
 
+# Issue 171: `AAA` and `JJJ` are a hardcoded wiki-only addendum (module docstring's "wiki-only
+# addendum" mechanism, tools/importer/tagset.py), not part of the live export. Their source
+# points at the wiki page and its own line number, not at the export and the tag's own name.
+_WIKI_ONLY_TAGS = {"AAA": 491, "JJJ": 485}
+
+
 def test_every_record_keeps_source(afr_store: Store):
     for tag, record in afr_store.records.items():
+        if tag in _WIKI_ONLY_TAGS:
+            assert record["source"]["archive_path"] == "wiki/Tagset.wikitext"
+            assert record["source"]["line"] == _WIKI_ONLY_TAGS[tag]
+            continue
         assert record["source"]["archive_path"] == "exports/export_tagset.php"
         assert record["source"]["line"] == tag
+
+
+def test_wiki_only_addendum_tags_are_present_and_documented(afr_store: Store, eng_store: Store):
+    # Issue 171, docs/unl-reference/formats/tagset.md, "A second pass...": the live export drops
+    # these two catch-all tags; a real dictionary entry still uses them, so the importer re-adds
+    # them on every run instead of relying on a hand-edit a future re-import would silently drop.
+    for tag, meaning in (("AAA", "other adverbs"), ("JJJ", "other adjectives")):
+        assert afr_store.records[tag]["meaning"] == meaning
+        assert eng_store.records[tag]["meaning"] == meaning
 
 
 # --------------------------------------------------------------------------------------------

@@ -446,6 +446,31 @@ def test_parse_t_rule_line_rejects_a_line_with_no_assign_operator():
     assert "T-rule" in reason
 
 
+def test_parse_t_rule_line_rewrites_ccj_to_coo_attributed_and_bare():
+    # Issue 171, docs/unl-reference/formats/tagset.md, "A second pass...": the live tagset has
+    # no CCJ conjunction class; COO is the current spelling. Rewritten wherever CCJ stands as a
+    # whole token, attributed (POS=CCJ, the real afr 47.tgrammar.txt rule 33) or bare (the real
+    # afr/eng nl_unl_tgrammar.txt rule, `(C,CCJ,^XP,^proj)`).
+    entry, reason = parse_t_rule_line(
+        "and(%x;%y):=((%y,+>BLK)([en],LEX=C,POS=CCJ,+>BLK)(%x,+>BLK),+LEX=%x);"
+    )
+    assert reason is None
+    assert "POS=COO" in entry["rhs"]
+    assert "CCJ" not in entry["rhs"]
+
+    entry, reason = parse_t_rule_line("(C,CCJ,^XP,^proj):=(+XP=CP,+proj);")
+    assert reason is None
+    assert entry["lhs"] == "(C,COO,^XP,^proj)"
+
+
+def test_parse_t_rule_line_does_not_rewrite_ccj_as_part_of_a_longer_token():
+    # Word-boundary safety: CCJ must be rewritten only as a whole token, never as a substring of
+    # a longer one.
+    entry, reason = parse_t_rule_line("(C,XCCJY,^XP,^proj):=(+XP=CP,+proj);")
+    assert reason is None
+    assert entry["lhs"] == "(C,XCCJY,^XP,^proj)"
+
+
 def test_parse_d_rule_line_splits_on_top_level_equals_only():
     entry, reason = parse_d_rule_line("(P,rel=plc)(BLK)(N,TIM)=0;")
     assert reason is None

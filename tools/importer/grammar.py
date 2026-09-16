@@ -101,6 +101,18 @@ def _read(path: Path) -> str:
 _OPEN = frozenset("([{")
 _CLOSE = frozenset(")]}")
 
+# The 2016 grammar exports write `POS=CCJ` (rules 33/34, generation.yaml) and bare `CCJ`
+# (analysis.yaml, e.g. `(C,CCJ,^XP,^proj)`) for the coordinating conjunction. The live tagset
+# defines six conjunction classes and `CCJ` is not one of them; `COO` ("conjunction
+# (coordinating)") is. Issue 171, full reasoning in docs/unl-reference/formats/tagset.md, "A
+# second pass...". Rewritten wherever `CCJ` stands as a whole token, attributed or bare, in
+# either `lhs` or `rhs`: one tag deserves one spelling inside one store.
+_CCJ_TOKEN_RE = re.compile(r"(?<![A-Za-z0-9_])CCJ(?![A-Za-z0-9_])")
+
+
+def _rewrite_ccj(text: str) -> str:
+    return _CCJ_TOKEN_RE.sub("COO", text)
+
 
 def _find_top_level(text: str, target: str, start: int = 0) -> int:
     """The index of `target`'s first occurrence in `text` at bracket depth 0, or -1."""
@@ -153,7 +165,7 @@ def parse_t_rule_line(raw: str) -> tuple[dict | None, str | None]:
     lhs, rhs, comment = result
     if not lhs:
         return None, "empty left-hand side before ':='"
-    return {"lhs": lhs, "rhs": rhs, "comment": comment}, None
+    return {"lhs": _rewrite_ccj(lhs), "rhs": _rewrite_ccj(rhs), "comment": comment}, None
 
 
 def parse_d_rule_line(raw: str) -> tuple[dict | None, str | None]:

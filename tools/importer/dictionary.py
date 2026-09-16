@@ -52,6 +52,18 @@ _RULE_LIST_RE = re.compile(r"^(?P<name>[A-Za-z][A-Za-z0-9]*)\((?P<inner>.*)\)$",
 # `ATTRIBUTE=VALUE`.
 _ATTR_VALUE_RE = re.compile(r"^(?P<attr>[A-Za-z][A-Za-z0-9]*)=(?P<value>.*)$", re.DOTALL)
 
+# The 2016 dictionary exports are a decade older than the live tagset export. These three `SEM`
+# codes were renamed since; the live tagset no longer defines the old value. Issue 167, full
+# reasoning in docs/unl-reference/formats/tagset.md, "Where the export adds tags".
+_SEM_VINTAGE_RENAME = {"ATT": "ATR", "SOV": "SOC", "REL": "RLT"}
+
+# Same vintage mismatch, on `PER`: the live tagset's number-neutral person tags are four
+# characters (`3PER`, `2PER`), the 2016 export truncates them to three. Only the attribute's
+# value changes; `PER` itself is not renamed. Issue 171, full reasoning in
+# docs/unl-reference/formats/tagset.md, "A second pass: three more renames, two wiki-only tags,
+# one export artifact".
+_PER_VINTAGE_RENAME = {"2PE": "2PER", "3PE": "3PER"}
+
 _ASCII_LOWER = "abcdefghijklmnopqrstuvwxyz"
 
 
@@ -104,33 +116,80 @@ def _split_top_level(text: str) -> list[str]:
 def parse_feature_list(text: str) -> dict[str, str] | None:
     """The `FEATURE LIST` field as an attribute-value map, or `None` if it is empty.
 
-    `#01(...)` and `#02(...)` (sub-word scope) become a feature keyed `#01` / `#02`, whose value
-    is the inner feature list, kept as one raw string rather than recursively decomposed: the
-    schema's `features` map holds strings (`tools/validate/schema/dictionary-entry.schema.json`),
-    and nothing downstream of issue 14 needs the sub-word features split further yet. A rule-list
-    feature (`FLX(...)`) becomes `{"FLX": "<inner>"}` the same way. A bare `ATTRIBUTE=VALUE`
-    feature becomes `{ATTRIBUTE: VALUE}`. A feature with neither `=` nor a trailing `(...)` (the
-    formal syntax's bare `<VALUE>` alternative, not seen in any real AD/GD line this importer was
-    built against) becomes `{VALUE: VALUE}`, so it is never lost.
+    `#01(...)` and `#02(...)` (sub-word scope, `dictionary.md`'s `"#" <SUBNLWID> <FEATURE LIST>`)
+    hold a nested feature list of their own, recursively parsed by this same function and merged
+    straight into the result -- never kept as a bogus `#01`/`#02` attribute (issue 169: that
+    placeholder key is not in any tagset and the archive never means it as one). A later sub-word
+    can legitimately overwrite an earlier one's attribute (`#02(BF=up)` overwrites the compound's
+    own top-level `BF` with the second word's base form); `features` is a flat map
+    (`tools/validate/schema/dictionary-entry.schema.json`), so this is the only lossless place
+    left to put it once the placeholder key is gone. A rule-list feature (`FLX(...)`) becomes
+    `{"FLX": "<inner>"}`. A bare `ATTRIBUTE=VALUE` feature becomes `{ATTRIBUTE: VALUE}`.
+
+    A `VALUE` can itself contain a literal comma the archive never escapes -- some headwords do,
+    e.g. `[Bouillon, België]`'s `LEMMA=Bouillon, België` (and its `BF=Bouillon, België`, the same
+    text again). `_split_top_level` cannot tell that comma from a separator between features (it
+    is outside every paren, same as a real separator), so it splits the value in two; the second
+    half, `België`, then matches no feature shape at all. Issue 169: rather than drop it or treat
+    it as a bare feature -- the old behaviour, which put the headword text
+    `België`/`bok`/`Iowa`/`Louisiana` in the *attribute* slot -- a shapeless token straight after
+    `LEMMA=...` or `BF=...` is glued back onto that value with `", "`, reconstructing the original
+    comma exactly. `LEMMA` and `BF` are the only attributes that ever hold literal headword text
+    (`SPEC.md` §3.2); every other attribute is a tagset mnemonic, where a bare token after it is a
+    separate feature, not a continuation -- `SEM=QTT,DIGIT, TEMP` (a real AD/GD line) is three
+    features, `SEM=QTT` plus the two bare tags `DIGIT` and `TEMP`, and gluing them onto `SEM`
+    would silently invent a `SEM` value the tagset does not define.
+
+    A feature with neither `=` nor a trailing `(...)` (the formal syntax's bare `<VALUE>`
+    alternative) becomes `{VALUE: VALUE}`, so it is never lost.
     """
+    _COMMA_CONTINUES = {"LEMMA", "BF"}
     features: dict[str, str] = {}
+    pending_attr: str | None = None
+    pending_parts: list[str] = []
+
+    def flush_pending() -> None:
+        nonlocal pending_attr, pending_parts
+        if pending_attr is not None:
+            features[pending_attr] = ", ".join(pending_parts)
+            pending_attr = None
+            pending_parts = []
+
     for token in _split_top_level(text):
         token = token.strip()
         if not token:
             continue
         match = _SUBWORD_RE.match(token)
         if match:
-            features[f"#{match.group('subid')}"] = match.group("inner").strip()
+            flush_pending()
+            features.update(parse_feature_list(match.group("inner")) or {})
             continue
         match = _RULE_LIST_RE.match(token)
         if match:
+            flush_pending()
             features[match.group("name")] = match.group("inner").strip()
             continue
         match = _ATTR_VALUE_RE.match(token)
         if match:
-            features[match.group("attr")] = match.group("value").strip()
+            flush_pending()
+            attr = match.group("attr")
+            if attr in _COMMA_CONTINUES:
+                pending_attr = attr
+                pending_parts = [match.group("value").strip()]
+            else:
+                features[attr] = match.group("value").strip()
+            continue
+        if pending_attr is not None:
+            pending_parts.append(token)
+            continue
+        # A bare `00` is not a tag: it is the entry's own `uw` field, echoed a second time by the
+        # export's serialiser (issue 171, docs/unl-reference/formats/tagset.md, "`00` is not a
+        # tag" -- a 7/7 correlation between a trailing bare `,00)` and `uw: "00"` on the same
+        # line). Dropped here, not kept as a bare `00` feature: the entry and its `uw` stay untouched.
+        if token == "00":
             continue
         features[token] = token
+    flush_pending()
     return features or None
 
 
@@ -153,6 +212,12 @@ def parse_line(raw: str) -> tuple[dict | None, str | None]:
     features = parse_feature_list(match.group("features"))
     if features is None:
         return None, "no features found; schema requires at least one feature"
+    sem = features.get("SEM")
+    if sem in _SEM_VINTAGE_RENAME:
+        features["SEM"] = _SEM_VINTAGE_RENAME[sem]
+    per = features.get("PER")
+    if per in _PER_VINTAGE_RENAME:
+        features["PER"] = _PER_VINTAGE_RENAME[per]
     flg = match.group("flg").lower()
     if flg not in FLG_TO_ISO3:
         return None, f"FLG '{flg}' has no iso3 mapping in this importer (FLG_TO_ISO3)"
