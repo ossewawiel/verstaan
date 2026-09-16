@@ -75,7 +75,10 @@ to start it by hand and open `http://127.0.0.1:7864`: the first run installs dep
 only when the client or server source is newer than the last build. Start it from the root tree:
 the server reads the tree its own files sit in, so `console.cmd` double-clicked inside a worktree
 binds the Library, Playbook and Glossary rooms to that worktree's docs instead of the root's. Only
-issue status merges across every tree regardless of where the server runs. React Router gives
+issue status merges across every tree regardless of where the server runs. On Linux,
+`tools/console/install-desktop-entry.sh` writes a launcher entry once, so SUPER+SPACE finds
+"Verstaan Console" and starts it, waits for `/health`, and opens it in its own Chromium app window
+via `console.sh --app-window`, with no tab strip and no address bar. React Router gives
 every room a real path (`/quests/07`, `/library/docs/factory/PLAN.md`); the SSE change stream
 invalidates only the data a room is showing, so an open card, scroll position and focus survive a
 change instead of the page reloading. The watch on `docs/` is recursive on Windows and macOS, so a
