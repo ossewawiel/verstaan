@@ -1,0 +1,774 @@
+<title>Console as CIC</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@400&display=swap">
+<style>
+  :root{
+    --bg:#F7F8FA; --surface:#FFFFFF; --ink:#1B2027; --ink-2:#5B6472;
+    --line:#E1E5EB; --accent:#C2410C; --accent-soft:rgba(194,65,12,.10);
+    --sev-crit:#B3261E; --sev-high:#C2410C; --sev-med:#B58105; --sev-low:#3B6E8F;
+    --good:#2E7D4F; --good-soft:rgba(46,125,79,.10); --code-bg:#EEF1F5;
+    --f-display:'Fraunces',Georgia,serif;
+    --f-body:'Source Sans 3',system-ui,sans-serif;
+    --f-mono:'JetBrains Mono',ui-monospace,monospace;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#101317; --surface:#171B21; --ink:#E6E9EE; --ink-2:#9AA3B2;
+      --line:#2A313B; --accent:#F0873F; --accent-soft:rgba(240,135,63,.14);
+      --sev-crit:#FF6B62; --sev-high:#F0873F; --sev-med:#E5B73B; --sev-low:#7FB3D5;
+      --good:#5DBE8A; --good-soft:rgba(93,190,138,.14); --code-bg:#1F252D;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#101317; --surface:#171B21; --ink:#E6E9EE; --ink-2:#9AA3B2;
+    --line:#2A313B; --accent:#F0873F; --accent-soft:rgba(240,135,63,.14);
+    --sev-crit:#FF6B62; --sev-high:#F0873F; --sev-med:#E5B73B; --sev-low:#7FB3D5;
+    --good:#5DBE8A; --good-soft:rgba(93,190,138,.14); --code-bg:#1F252D;
+  }
+  body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.55;margin:0}
+  .page{display:grid;grid-template-columns:220px 1fr;gap:48px;max-width:1120px;margin:0 auto;padding-block:56px;padding-inline:24px}
+  @media (max-width:900px){.page{grid-template-columns:1fr;gap:24px}.rail{display:none}}
+  .rail{position:sticky;top:32px;align-self:start;font-size:13px;color:var(--ink-2);display:flex;flex-direction:column;gap:6px}
+  .rail a{color:var(--ink-2);text-decoration:none;padding:4px 0;border-left:2px solid transparent;padding-left:10px}
+  .rail a:hover{color:var(--accent);border-left-color:var(--accent)}
+  .rail .rail-h{font-family:var(--f-mono);font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink);margin-bottom:4px}
+  main{min-width:0}
+  .eyebrow{font-family:var(--f-mono);font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-2)}
+  h1{font-family:var(--f-display);font-weight:600;font-size:40px;line-height:1.1;text-wrap:balance;margin:8px 0 20px}
+  h2{font-family:var(--f-body);font-weight:600;font-size:20px;margin:0 0 12px;text-wrap:balance}
+  h3{font-family:var(--f-body);font-weight:600;font-size:16px;margin:0 0 6px}
+  p{max-width:68ch}
+  section{margin-top:56px}
+  .eyebrow-h{display:block;margin-bottom:6px}
+  .verdict-strip{margin-top:32px;padding:24px;border:1px solid var(--line);border-radius:6px;background:var(--surface);display:grid;grid-template-columns:auto 1fr;gap:32px;align-items:center}
+  .verdict-figure{font-family:var(--f-display);font-weight:600;font-size:64px;line-height:1;color:var(--accent)}
+  .verdict-figure small{display:block;font-family:var(--f-mono);font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-2);margin-top:6px}
+  .tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:16px}
+  .tile{border-left:2px solid var(--line);padding:2px 0 2px 12px}
+  .tile .n{font-family:var(--f-mono);font-size:20px;color:var(--ink)}
+  .tile .l{font-family:var(--f-mono);font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-2)}
+  .assumptions{list-style:none;padding:0;margin:12px 0 0}
+  .assumptions li{padding:6px 0;border-bottom:1px solid var(--line);font-size:15px}
+  .assumptions li:last-child{border-bottom:0}
+  .assumptions li b{font-family:var(--f-mono);font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-2);margin-right:8px}
+  .group-h{font-family:var(--f-mono);font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-2);margin:24px 0 12px}
+  .q{border:1px solid var(--line);border-radius:6px;background:var(--surface);padding:20px;margin-bottom:16px}
+  .q-head{display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin-bottom:12px}
+  .q-num{font-family:var(--f-mono);font-size:13px;color:var(--ink-2)}
+  .q-title{font-family:var(--f-body);font-weight:600;font-size:17px;color:var(--ink);flex:1}
+  .chip{font-family:var(--f-mono);font-size:11px;text-transform:uppercase;letter-spacing:.06em;padding:3px 8px;border-radius:999px;color:#fff;white-space:nowrap}
+  .chip.med{background:var(--sev-med)}
+  .chip.open{background:var(--sev-med)}
+  .chip.alive{background:var(--good)}
+  .chip.tag{background:transparent;color:var(--ink-2);border:1px solid var(--line)}
+  .q-row{display:grid;grid-template-columns:120px 1fr;gap:12px;font-size:14px;padding:6px 0;border-top:1px solid var(--line)}
+  .q-row .lab{font-family:var(--f-mono);font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-2);padding-top:2px}
+  .q-row .val{color:var(--ink)}
+  .q-row .val.empty{color:var(--ink-2);font-style:italic}
+  .opt{border:1px solid var(--line);border-radius:6px;background:var(--surface);padding:20px;margin-bottom:16px}
+  .opt-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:8px}
+  .opt-name{font-family:var(--f-body);font-weight:600;font-size:18px}
+  .opt-size{font-family:var(--f-mono);font-size:12px;color:var(--ink-2);text-transform:uppercase;letter-spacing:.06em}
+  .opt-desc{color:var(--ink);margin:0 0 12px}
+  .opt-list{margin:0;padding:0;list-style:none;font-size:14px}
+  .opt-list li{padding:4px 0 4px 18px;position:relative}
+  .opt-list li:before{content:"·";position:absolute;left:6px;color:var(--ink-2)}
+  .opt-block{margin-top:10px}
+  .opt-block .lab{font-family:var(--f-mono);font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-2);display:block;margin-bottom:4px}
+  .src{border-left:2px solid var(--line);padding:8px 0 8px 14px;margin-bottom:16px;font-size:14px}
+  .src h4{margin:0 0 4px;font-family:var(--f-body);font-weight:600;font-size:15px}
+  .src a{color:var(--accent);word-break:break-all}
+  .src .claim{color:var(--ink);margin:0 0 4px}
+  .src .cite{font-family:var(--f-mono);font-size:12px;color:var(--ink-2)}
+  .narrow-list{padding-left:20px;margin:12px 0}
+  .narrow-list li{margin-bottom:6px}
+  footer{margin-top:72px;padding-top:24px;border-top:1px solid var(--line);color:var(--ink-2);font-size:13px;font-family:var(--f-mono)}
+  footer p{max-width:none;margin:4px 0}
+  .dradis{width:100%;max-width:520px;margin:20px 0;display:block}
+  code{font-family:var(--f-mono);font-size:13px;background:var(--code-bg);padding:1px 5px;border-radius:3px}
+</style>
+
+<div class="page">
+  <aside class="rail" aria-label="Contents">
+    <div class="rail-h">Sections</div>
+    <a href="#restated">1 · What is being asked</a>
+    <a href="#questions">2 · Questions</a>
+    <a href="#options">3 · Options</a>
+    <a href="#recommendation">4 · Recommendation</a>
+    <a href="#research">5 · Research</a>
+    <a href="#narrow">6 · Closing</a>
+  </aside>
+
+  <main>
+    <span class="eyebrow eyebrow-h">Verstaan · Console-as-CIC · 2026-09-16 · Turn 6 · Recommendation</span>
+    <h1>The console as a CIC, the repo as a fleet</h1>
+    <p>The console keeps its amber-on-hull chassis and gains four things above it: a bridge that lands, a hand-drawn atlas with fog of war, a codex that turns issue files into briefings, and a ship-systems room that shows the crew, the stations, and the flight plans the factory runs on. Under it, the console's own server becomes the harness that runs a quest as an Agent SDK session and renders each checkpoint as orders awaiting. Six quests, in the order below.</p>
+
+    <div class="verdict-strip" role="group" aria-label="Verdict strip">
+      <div class="verdict-figure" style="font-size:44px">E · M1 · L4<small>Recommended · six quests</small></div>
+      <div class="tiles">
+        <div class="tile"><div class="n">●●○</div><div class="l">Confidence</div></div>
+        <div class="tile"><div class="n">15</div><div class="l">Answers received</div></div>
+        <div class="tile"><div class="n">20</div><div class="l">Primary sources</div></div>
+        <div class="tile"><div class="n">3</div><div class="l">Defaults carried</div></div>
+      </div>
+    </div>
+
+    <section id="restated">
+      <span class="eyebrow eyebrow-h">Section 1</span>
+      <h2>What I think you're really asking</h2>
+      <p>The console is the only surface Verstaan shows to its one developer. The factory writes STATE.md and issue files; the console reads them and paints them. The developer wants that surface to feel like operating a Battlestar-class capital ship playing an open-world RPG: a bridge, a DRADIS sweep, a mission log, a codex, a chart of known space and unmapped space. The mechanics of the project — issues, quests, retros, gates, factory runs — should present as encounters, patrols, jumps, and after-action reports. The console must inform first and entertain second, but the entertainment is not decoration; it is what keeps a solo multi-year project going.</p>
+      <p style="margin-top:12px"><b class="eyebrow">In scope.</b> A web/UI architecture decision under an existing React + Vite console with a pinned design system, backed by files on disk under <code>docs/factory/</code>. This is inside interrogation-time's remit.</p>
+      <ul class="assumptions">
+        <li><b>A1</b>The chassis (amber-on-hull, Orbitron, JetBrains Mono, snub-rectangle panels) is not up for renegotiation — quest 164 pinned it. This interrogation runs above the chassis.</li>
+        <li><b>A2</b>Source of truth stays the files on disk: <code>docs/factory/STATE.md</code>, <code>docs/factory/issues/*.md</code>, <code>docs/adr/*.md</code>, git history. The console does not own state.</li>
+        <li><b>A3</b>Audience is one developer, running a local service at <code>127.0.0.1:7864</code>. Not a team dashboard. Not a public shrine.</li>
+        <li><b>A4</b><s>The console runs offline; every asset ships with it.</s> Revised on turn 5 (Q16): the console needs the network. Fonts and libraries still ship with it; GitHub and the model are live dependencies, and the bridge says so when either is out of reach.</li>
+        <li><b>A5</b>The BSG name is a mood, not a licence. Colonial Fleet vernacular is used the way a genre paints itself, without Universal's logos, character names, or marks.</li>
+        <li><b>A6</b>Added on turn 6 at the developer's request: the factory itself is part of what the console shows — the five agents under <code>.claude/agents/</code>, the four project skills and two commands, the eight hooks and the four hook events in <code>settings.json</code>, and the paths in <code>playbook.md</code> an encounter follows from quest to merge. "the skills and pipelines and paths to follow for development testing quest creation code reviewing etc … how the claude universe is put together for this project."</li>
+      </ul>
+    </section>
+
+    <section id="questions">
+      <span class="eyebrow eyebrow-h">Section 2</span>
+      <h2>Questions that change the answer</h2>
+
+      <div class="group-h">Scope &amp; scale</div>
+
+      <div class="q">
+        <div class="q-head">
+          <span class="q-num">01</span>
+          <span class="q-title">Does the console ever write back to the repo, or is it strictly a read-only viewer?</span>
+          <span class="chip alive">Answered</span>
+        </div>
+        <div class="q-row"><span class="lab">Why it matters</span><span class="val">A read-only console needs no auth, no queues, no conflict rules. A writing console needs all of that and inherits the file-is-truth invariant from CLAUDE.md.</span></div>
+        <div class="q-row"><span class="lab">Eliminates</span><span class="val">Kills <b>Amber skin</b>. Turns the bridge into a flight deck. Opens Q12 (how a quest launches) and Q13 (how artifact answers reach a session).</span></div>
+        <div class="q-row"><span class="lab">Answer</span><span class="val">"Hmm how about it start a quest by opening the console in claude with the correct model settings and supply the correct prompt to kick it of. say the pc rebooted, the dev starts up the console. also if artefacts are generated and feedback is needed in the artefact? restarting certain services. kicking of thests. running some of the apps etc. can be done from the console. management and kicking testing etc."</span></div>
+        <div class="q-row"><span class="lab">What exists</span><span class="val">Most of this already runs. <code>POST /api/jobs</code> takes a <code>kind</code> from a typed allow-list — <code>gate</code>, <code>gate-fast</code>, <code>ctest</code>, <code>pytest</code>, <code>console-tests</code>, <code>validate</code>, <code>mirror</code>, <code>service-start</code>, <code>service-stop</code> — and spawns with <code>shell: false</code> (ADR 0011). A Host-header check refuses a POST from any page that is not the console itself. What does not exist: a kind that opens a Claude session, and any path from an artifact back to a running session.</span></div>
+      </div>
+
+      <div class="q">
+        <div class="q-head">
+          <span class="q-num">02</span>
+          <span class="q-title">How many new panels are you willing to maintain, and who maintains them when you are not there?</span>
+          <span class="chip alive">Answered</span>
+        </div>
+        <div class="q-row"><span class="lab">Why it matters</span><span class="val">Every panel is a JSX room, a data path, and a Playwright test. A CIC that carries eight instruments is eight rooms of upkeep against a factory that shifts weekly.</span></div>
+        <div class="q-row"><span class="lab">Eliminates</span><span class="val">A budget of ≤ 2 new rooms kills <b>Open-world map</b> and <b>Hybrid</b> on cost. A budget of ≥ 4 keeps them alive.</span></div>
+        <div class="q-row"><span class="lab">Answer</span><span class="val">"I like to go with a combo of B, C and D." — Read as: three rooms at minimum (bridge, map, mission board / codex). Kills <b>A</b>. Keeps <b>C</b> alive at full size, not the light orrery.</span></div>
+      </div>
+
+      <div class="group-h">Existing system</div>
+
+      <div class="q">
+        <div class="q-head">
+          <span class="q-num">03</span>
+          <span class="q-title">When you say "map", is it a literal 2D navigable region, a graph of modules, or a stylised chart of known space?</span>
+          <span class="chip alive">Answered</span>
+        </div>
+        <div class="q-row"><span class="lab">Why it matters</span><span class="val">A literal map needs coordinates and tiles; a module graph reads the file tree; a chart of known space is a diagram the console paints once per push. The three cost an order of magnitude apart.</span></div>
+        <div class="q-row"><span class="lab">Eliminates</span><span class="val">Fixes <b>C</b> at its full size: pan, zoom, tiles, fog. Forces Q11 (where positions come from) and Q14 (what lifts the fog).</span></div>
+        <div class="q-row"><span class="lab">Answer</span><span class="val">"Lets go for the 2D navigatable region with fog of war."</span></div>
+      </div>
+
+      <div class="q">
+        <div class="q-head">
+          <span class="q-num">04</span>
+          <span class="q-title">What layer do quests live on — the file tree, the archive language, the pipeline, or all three?</span>
+          <span class="chip open">Open</span>
+        </div>
+        <div class="q-row"><span class="lab">Why it matters</span><span class="val">Quest 21 sits in "engine/M3/disambiguation". Is that a coordinate on one map, a pin in three maps, or a route between them? The answer picks how "you have been here" is drawn. Sharpened on turn 3: the candidate axes are the seven milestone rows in PLAN.md §7 (M0 Foundation … M6 Growth), the top-level folders (<code>engine/ tools/ data/ apps/ docs/</code>), and the archive languages. Milestones are the only axis that has names for places nobody has built yet, which fog of war needs.</span></div>
+        <div class="q-row"><span class="lab">Eliminates</span><span class="val">"Milestones are the regions" makes fog of war a one-line rule and folds Q11 into map option M3. "Folders are the regions" leaves the unbuilt milestones nowhere to sit.</span></div>
+        <div class="q-row"><span class="lab">Answer</span><span class="val empty">— pending —</span></div>
+      </div>
+
+      <div class="group-h">Success criteria</div>
+
+      <div class="q">
+        <div class="q-head">
+          <span class="q-num">05</span>
+          <span class="q-title">What does "engaging" have to earn before it becomes procrastination?</span>
+          <span class="chip alive">Answered</span>
+        </div>
+        <div class="q-row"><span class="lab">Why it matters</span><span class="val">A HUD with a radar sweep and a comms chime pulls attention every few seconds. That is the point on a bridge and the enemy at a desk. Naming the failure mode picks the motion budget.</span></div>
+        <div class="q-row"><span class="lab">Eliminates</span><span class="val">Kills ambient motion. The bridge plays one boot sequence, then holds still. The map pans and zooms only under the hand. Every animation honours <code>prefers-reduced-motion</code>.</span></div>
+        <div class="q-row"><span class="lab">Answer</span><span class="val">"one orchestrated moment on launch."</span></div>
+      </div>
+
+      <div class="q">
+        <div class="q-head">
+          <span class="q-num">06</span>
+          <span class="q-title">Does the console need to raise density (facts per screen) or lower it (one big signal per screen)?</span>
+          <span class="chip open">Open</span>
+        </div>
+        <div class="q-row"><span class="lab">Why it matters</span><span class="val">Game HUDs run low density; PM dashboards run high. The console today lives at the middle. Moving in either direction picks a different top-level room shape.</span></div>
+        <div class="q-row"><span class="lab">Eliminates</span><span class="val">"Higher density" favours <b>Codex + missions</b>. "Lower density, one signal" favours <b>CIC dashboard</b>.</span></div>
+        <div class="q-row"><span class="lab">Answer</span><span class="val empty">— pending —</span></div>
+      </div>
+
+      <div class="q">
+        <div class="q-head">
+          <span class="q-num">07</span>
+          <span class="q-title">Self-learning — is it a cosmetic dashboard of past retros, or a real telemetry pipeline that feeds the next factory run?</span>
+          <span class="chip alive">Answered</span>
+        </div>
+        <div class="q-row"><span class="lab">Why it matters</span><span class="val">Cosmetic self-learning is a page that reads <code>lessons.jsonl</code> and charts it. Real self-learning is a rule that a retro can promote into a gate, which factory-retro already does with human approval. The console can display either; only the second changes behaviour.</span></div>
+        <div class="q-row"><span class="lab">Eliminates</span><span class="val">Real. Adds a debrief room that reads <code>docs/factory/lessons.jsonl</code> (today: <code>sig</code>, <code>stage</code>, <code>issue</code>, <code>ts</code>, <code>detail</code>) and a job kind that promotes one lesson, which is what <code>/factory-retro</code> does with human approval.</span></div>
+        <div class="q-row"><span class="lab">Answer</span><span class="val">Answered under Q9: "lessons learned can be shown and if needed button to make it permanent or incorporate it where and when needed."</span></div>
+      </div>
+
+      <div class="group-h">Constraints</div>
+
+      <div class="q">
+        <div class="q-head">
+          <span class="q-num">08</span>
+          <span class="q-title">How close to the show may the language get — Colonial Fleet vernacular, or open Space Opera?</span>
+          <span class="chip open">Open</span>
+        </div>
+        <div class="q-row"><span class="lab">Why it matters</span><span class="val">"DRADIS", "FTL", "CIC" are terms the show made distinctive; some carry trademark risk if the console ships or screenshots go public. "Sensors", "jump drive", "bridge" carry the mood at zero risk.</span></div>
+        <div class="q-row"><span class="lab">Eliminates</span><span class="val">"Zero risk" strips a few labels from every option but changes none of the shapes.</span></div>
+        <div class="q-row"><span class="lab">Answer</span><span class="val empty">— pending —</span></div>
+      </div>
+
+      <div class="q">
+        <div class="q-head">
+          <span class="q-num">09</span>
+          <span class="q-title">Do RPG mechanics — XP, levels, achievements, loot rarity — earn their space, or are they cosmetic?</span>
+          <span class="chip alive">Answered</span>
+        </div>
+        <div class="q-row"><span class="lab">Why it matters</span><span class="val">Quest 164 already ships four rarity tiers by weight and edge, not by hue. Adding XP and levels needs a scoring rule that survives a retro. Achievements without rules read as stickers.</span></div>
+        <div class="q-row"><span class="lab">Eliminates</span><span class="val">Kills XP-per-commit. "Experience" is the agent's, not the player's: a repeated <code>sig</code> in <code>lessons.jsonl</code> is a skill point waiting to be spent, and spending it is promoting the lesson into a gate, a skill note, or a standards line. The rarity tiers stay as they are.</span></div>
+        <div class="q-row"><span class="lab">Answer</span><span class="val">"Self learning and experience has to do with the coding agent and sub agents picking up repetative problems and learn from that. it is about the coding agent self improving paradigm to be built in. so yes lessons learned can be shown and if needed button to make it permanent or incorporate it where and when needed."</span></div>
+      </div>
+
+      <div class="q">
+        <div class="q-head">
+          <span class="q-num">10</span>
+          <span class="q-title">What is the one screen you want a first-time visitor to see, before they know what any of it means?</span>
+          <span class="chip alive">Answered</span>
+        </div>
+        <div class="q-row"><span class="lab">Why it matters</span><span class="val">The landing frame carries the whole thesis. A DRADIS sweep, a mission board, a fleet chart and a codex spine all fit the mood; only one can be first.</span></div>
+        <div class="q-row"><span class="lab">Eliminates</span><span class="val">The bridge lands. Build order follows: bridge first, then the flight deck on it, then the codex, then the map.</span></div>
+        <div class="q-row"><span class="lab">Answer</span><span class="val">"yes it is the landing frame."</span></div>
+      </div>
+
+      <div class="q">
+        <div class="q-head">
+          <span class="q-num">11</span>
+          <span class="q-title">When the repo restructures, does the map follow by itself, or does someone move the tiles by hand?</span>
+          <span class="chip alive">Answered</span>
+        </div>
+        <div class="q-row"><span class="lab">The problem, plainly</span><span class="val">A map is a set of things with positions. The repo has things — folders, issue files, milestones — but nothing in it carries an x and a y. So the console must get positions from somewhere. There are two sources, and they fail in opposite ways. <b>Hand-authored</b>: a file such as <code>docs/factory/map.yaml</code> says "M3 Engine slice sits at (400, 120), 300 wide". A human reads it, the map looks like a place, and a returning developer remembers "engine is top-right". It rots: the day <code>engine/</code> splits into <code>engine/core</code> and <code>engine/rules</code>, someone must edit the file or the map lies. <b>Derived</b>: a layout algorithm reads the tree and the issue files and computes positions on every load. It never rots. It also never looks like a place — a force layout re-shuffles when a node is added, so nothing stays top-right, and the visitor cannot build a memory of the terrain. Fog of war makes the choice sharper: an unbuilt milestone has no folder, so a derived layout has nothing to place. Only a hand-named region can stand for a place the project has not been to.</span></div>
+        <div class="q-row"><span class="lab">Why it matters</span><span class="val">This is not a detail. It decides whether the map is a chart the developer maintains (a data file, a validator, a gate) or a view the console computes (no file, no memory of terrain). The three shapes are laid out as map options M1–M3 below.</span></div>
+        <div class="q-row"><span class="lab">Eliminates</span><span class="val">"Never by hand" kills M1 and M3 and with them fog of war. "A small file is fine" keeps M3 alive, which is the only shape where fog of war and self-updating contents coexist.</span></div>
+        <div class="q-row"><span class="lab">Answer</span><span class="val">Turn 3: "Not sure what is best and why this is an issue. clear it up for me." Turn 4: "hand drawn atlas. but what about using github as source as well. it can give you ag good idea of what is in store and what was done. bring that into the game." — M1 chosen; M2 and M3 struck. The GitHub half opens Q16.</span></div>
+      </div>
+
+      <div class="group-h">Opened by turn 3 answers</div>
+
+      <div class="q">
+        <div class="q-head">
+          <span class="q-num">12</span>
+          <span class="q-title">How does a quest launch — a terminal the console opens, a headless run, or a boarding pass the developer types?</span>
+          <span class="chip alive">Answered</span>
+        </div>
+        <div class="q-row"><span class="lab">Why it matters</span><span class="val">A factory run stops at checkpoints and waits for the developer. A headless <code>claude -p</code> run has no one to wait for and either skips checkpoints or dies at the first one. An interactive run needs a terminal window, which a Node server can open only per operating system. A boarding pass — the console composes the exact command and copies it — needs no new process at all.</span></div>
+        <div class="q-row"><span class="lab">Eliminates</span><span class="val">"Stretch it" is L4, not L3. The headless docs do not say what <code>-p</code> does when the model asks a question, and <code>--permission-prompts none</code> removes the ask tool outright. The Agent SDK is the documented way: <code>query()</code> with a <code>canUseTool</code> callback intercepts AskUserQuestion, and <code>resume: sessionId</code> picks a run up after a console restart. L3 struck. L1 and L2 stay alive as the staging steps to L4.</span></div>
+        <div class="q-row"><span class="lab">Answer</span><span class="val">"lets see how far we can stretch it."</span></div>
+      </div>
+
+      <div class="q">
+        <div class="q-head">
+          <span class="q-num">13</span>
+          <span class="q-title">When an artifact asks a question, does the answer reach the session that is running now, or the next one?</span>
+          <span class="chip alive">Answered</span>
+        </div>
+        <div class="q-row"><span class="lab">Why it matters</span><span class="val">Reaching a running session needs a channel the session watches — a file it polls, or an MCP server the console exposes that the session calls. Reaching the next session is a file the console writes and the next run reads, which is how <code>lessons.jsonl</code> already works. The first is a real-time comms link; the second is a mailbox.</span></div>
+        <div class="q-row"><span class="lab">Eliminates</span><span class="val">The developer is right, with one condition the docs state: a comment sent to Claude reaches the session that published the artifact only when that session is interactive or an SDK main loop — never a subagent, a background task, or a <code>-p</code> run. So the live channel exists for free in L2 and L4 and does not exist in L3. That is the second strike on L3. What is still open is <em>which</em> artifact — Q15.</span></div>
+        <div class="q-row"><span class="lab">Answer</span><span class="val">"claude code do have access to the artifacts and can read answers within it if i am correct. the artifacts just needs to be generated correctly."</span></div>
+      </div>
+
+      <div class="q">
+        <div class="q-head">
+          <span class="q-num">15</span>
+          <span class="q-title">Which artifact carries the question — a page hosted on claude.ai, or a local HTML file the console renders?</span>
+          <span class="chip alive">Answered</span>
+        </div>
+        <div class="q-row"><span class="lab">Why it matters</span><span class="val">Today the session publishes briefs like this one to claude.ai, and the console's ArtifactPage renders local HTML under <code>docs/decisions/</code> from disk. They are two different things with the same name. A claude.ai page wakes the session on "Send to Claude" with nothing to build, needs the network, and (no primary source found — treat as unknown) may refuse to load inside a console iframe. A local page is the console's own; its answer box posts to the console server, and under L4 the server hands the answer straight into <code>canUseTool</code>. Under L2 the local page has no path to the terminal session at all.</span></div>
+        <div class="q-row"><span class="lab">Eliminates</span><span class="val">Read as: claude.ai-hosted. The two scenes named — pick one option per card, and comment on a drawn layout the way Claude Design allows — are what a published artifact does already: a page with the <code>db</code> capability keeps the selection, and a comment sent to Claude wakes the run. The console's ArtifactPage is not the feedback surface; the console links out and shows the answered state when the run reads it back. Text-only decisions stay in the session. Kills the local-file branch and the need for any publishing skill to learn a second shape.</span></div>
+        <div class="q-row"><span class="lab">Answer</span><span class="val">"i am not yet sure what type of artifacts will do that. we will have a planning session, or a layout of different options for different things pros cons etc with the developer selecting the option for each but that can happen in here as well. i think more where graphical stuff is involved and the artifact can show it properly the developer can choose options and give feedback like with claude-design like commenting and feedback."</span></div>
+      </div>
+
+      <div class="q">
+        <div class="q-head">
+          <span class="q-num">17</span>
+          <span class="q-title">Under L4, whose credentials run the session, and is that the same bill?</span>
+          <span class="chip alive">Answered</span>
+        </div>
+        <div class="q-row"><span class="lab">Why it matters</span><span class="val">An interactive <code>claude</code> in a terminal runs under the developer's login. A Node server calling the Agent SDK runs under whatever credential the process finds. Whether an SDK run from the console draws on the same subscription as the terminal, or on API-key metered billing, is the difference between "free with the plan" and "a bill per quest". No primary source found on this in the docs read — treat as unknown until verified against the account.</span></div>
+        <div class="q-row"><span class="lab">Eliminates</span><span class="val">L4 is cleared as the target. The developer's statement stands as the answer; the first SDK run from the console should still show its cost line once, so the claim is seen and not only believed.</span></div>
+        <div class="q-row"><span class="lab">Answer</span><span class="val">"same plan as terminal"</span></div>
+      </div>
+
+      <div class="q">
+        <div class="q-head">
+          <span class="q-num">14</span>
+          <span class="q-title">What lifts the fog from a tile — an issue reaching <code>done</code>, a commit touching the folder, or a gate stamp?</span>
+          <span class="chip alive">Answered</span>
+        </div>
+        <div class="q-row"><span class="lab">Why it matters</span><span class="val">"Issue done" reads the issue files the server already parses, and a tile lifts the moment STATE.md regenerates. "Commit touching folder" needs git log per region on every load and lifts fog on unmerged work. "Gate stamp" lifts only proven ground and leaves a merged-but-unstamped region grey.</span></div>
+        <div class="q-row"><span class="lab">Eliminates</span><span class="val">"Gated" and "done on main" are the same rule here. The merge hook refuses <code>git merge</code> and <code>gh pr merge</code> unless the stamp equals HEAD (playbook.md:63), so a commit cannot be on main without a stamp. The tile lifts when the issue file says <code>status: done</code> and its <code>commit:</code> is reachable from main. No new data path. A second, softer state is available from GitHub: a PR open with gate.yml green is "cleared for jump" — not lit, but no longer fogged.</span></div>
+        <div class="q-row"><span class="lab">Answer</span><span class="val">"i think when it is ready, gated."</span></div>
+      </div>
+
+      <div class="q">
+        <div class="q-head">
+          <span class="q-num">16</span>
+          <span class="q-title">Must the console still work with no network, or may GitHub become a live source for the map?</span>
+          <span class="chip alive">Answered</span>
+        </div>
+        <div class="q-row"><span class="lab">Why it matters</span><span class="val">The mirror runs one way: the issue files write GitHub issues, milestones, and labels (<code>tools/factory/mirror_github.py</code>). Reading them back adds nothing the files do not have. What GitHub alone knows: pull-request state and review comments, the gate.yml check runs on each PR, and one view across both of the developer's machines — the Windows tree at <code>D:/SourceCode</code> and this Linux tree see only their own worktrees. That is the "what is in store and what was done" the developer named. It is also the first data the console cannot read from disk. Assumption A4 says the console runs offline.</span></div>
+        <div class="q-row"><span class="lab">Eliminates</span><span class="val">GitHub becomes a live source. PR state and check runs paint the "cleared for jump" tier on tiles directly. The server takes its token from <code>gh auth token</code> at start, the same way the mirror does, and never from a file in the repo. A4 is revised. When GitHub is unreachable the tiles still paint from files and the bridge shows a comms-lost chip; nothing else degrades.</span></div>
+        <div class="q-row"><span class="lab">Answer</span><span class="val">"no it then needs the network."</span></div>
+      </div>
+    </section>
+
+    <section id="options">
+      <span class="eyebrow eyebrow-h">Section 3</span>
+      <h2>Candidate options — early read</h2>
+      <p>Five shapes, all built on the existing chassis. Sizes are engineering effort against today's console, not screen count. On turn 2 the developer chose B + C + D; A is eliminated, E is the chosen shape with the full map instead of the light orrery, and B, C, D stay as its components.</p>
+
+      <div class="opt" style="opacity:.55">
+        <div class="opt-head"><span class="opt-name">A · Amber skin</span><span class="opt-size">S · Eliminated</span></div>
+        <p style="color:var(--sev-crit);font-size:14px;margin:0 0 10px">Struck on turn 2 — the developer wants a map and a bridge; a label-only reskin has no surface for either.</p>
+        <p class="opt-desc">Keep every existing room. Rewrite headings, empty states, and status labels in Colonial Fleet vernacular. Add one ambient element: a slow amber scanline on the hero. Nothing structural changes.</p>
+        <div class="opt-block"><span class="lab">Pros</span>
+          <ul class="opt-list"><li>One PR, one week. No new rooms, no new data paths.</li><li>Zero risk of drifting from the file-is-truth invariant.</li><li>The chassis quests already did most of the work.</li></ul>
+        </div>
+        <div class="opt-block"><span class="lab">Cons</span>
+          <ul class="opt-list"><li>No map. The "where you have been" idea has no surface.</li><li>Reads as an easter egg, not as the console-as-game the developer described.</li></ul>
+        </div>
+        <div class="opt-block"><span class="lab">Fit here</span><span> If Q2 says ≤ 1 new room, and Q3 says a stylised chart or none at all.</span></div>
+        <div class="opt-block"><span class="lab">Afterwards</span><span> The empty state on Jobs reads "No hostiles on DRADIS" instead of "No jobs running", and nothing else moves.</span></div>
+      </div>
+
+      <div class="opt">
+        <div class="opt-head"><span class="opt-name">B · CIC dashboard</span><span class="opt-size">M · Alive</span></div>
+        <p class="opt-desc">Rebuild the ConsoleRoom landing as a bridge. One primary instrument (a DRADIS sweep painting active work), one comms tray (factory events, gate stamps, retro alerts), one jump status (last landed / next up), one status line (branch, dirty files, uptime). Everything else stays where it is.</p>
+        <div class="opt-block"><span class="lab">Pros</span>
+          <ul class="opt-list"><li>One room does the whole thesis on landing. New visitors get it in one look.</li><li>The state it needs (STATE.md + recent commits + jobs) already flows in.</li><li>Motion is one sweep, capped by <code>prefers-reduced-motion</code>.</li></ul>
+        </div>
+        <div class="opt-block"><span class="lab">Cons</span>
+          <ul class="opt-list"><li>Density drops on the landing; some data moves a click deeper.</li><li>The sweep animates by default. A dev at a desk sees it in peripheral vision every few seconds.</li></ul>
+        </div>
+        <div class="opt-block"><span class="lab">Fit here</span><span> If Q5 tolerates one orchestrated moment on launch and Q6 says lower density on the landing, higher density inside rooms.</span></div>
+        <div class="opt-block"><span class="lab">Afterwards</span><span> Opening <code>127.0.0.1:7864</code> shows a bridge that names one active quest, one comms line, one countdown, and nothing else above the fold.</span></div>
+      </div>
+
+      <div class="opt">
+        <div class="opt-head"><span class="opt-name">C · Open-world map</span><span class="opt-size">L · Alive</span></div>
+        <p class="opt-desc">A dedicated MapRoom paints the codebase as regions on a chart: engine, tools, data, apps, docs. Quests are pins. Merged work fills in a tile. Unbuilt milestones sit under fog of war. Portals (new features into existing regions) draw as edges between pins. Zoom in and a region opens its own map of files.</p>
+        <div class="opt-block"><span class="lab">Pros</span>
+          <ul class="opt-list"><li>The "where you have been" idea gets a real surface, not a label.</li><li>Fog of war is a truthful signal — it names milestones that PLAN.md §7 has not covered yet.</li><li>A player who has been away for two weeks sees what moved.</li></ul>
+        </div>
+        <div class="opt-block"><span class="lab">Cons</span>
+          <ul class="opt-list"><li>A regional layout has to be authored; the file tree alone is not readable as a map.</li><li>Every restructure of the repo needs an update to the map layout.</li><li>SVG or Canvas budget, pan and zoom, keyboard access. A month of work, not a week.</li></ul>
+        </div>
+        <div class="opt-block"><span class="lab">Fit here</span><span> If Q2 allows a large new room and Q3 says "literal 2D navigable" or "module graph".</span></div>
+        <div class="opt-block"><span class="lab">Afterwards</span><span> The MapRoom shows the docs region full and lit, the engine region half-lit with three quest pins, and the apps region under fog with a milestone label.</span></div>
+      </div>
+
+      <div class="opt">
+        <div class="opt-head"><span class="opt-name">D · Codex + missions</span><span class="opt-size">M · Alive</span></div>
+        <p class="opt-desc">Every issue renders as a mission briefing: objective, intel (linked ADRs and glossary terms), loadout (subagent, model, effort), orders (the /factory-run command), after-action (the gate stamp, the retro line). QuestsRoom becomes the mission board. A CodexRoom collects the developer's growing lore about the project — one page per system.</p>
+        <div class="opt-block"><span class="lab">Pros</span>
+          <ul class="opt-list"><li>Turns dry issue files into pages the developer will re-read.</li><li>Depth over breadth. Every mechanic (retros, ADRs, playbook, standards) has a home.</li><li>Reuses the file-is-truth invariant end to end — the console renders, it does not store.</li></ul>
+        </div>
+        <div class="opt-block"><span class="lab">Cons</span>
+          <ul class="opt-list"><li>No map, still. Progress reads as a scrolling list.</li><li>Rich rendering means a real markdown pipeline and cross-linking rules.</li></ul>
+        </div>
+        <div class="opt-block"><span class="lab">Fit here</span><span> If Q6 says higher density and Q9 says the mechanic surface is content, not scoring.</span></div>
+        <div class="opt-block"><span class="lab">Afterwards</span><span> Clicking quest 21 opens a full briefing, cross-linked into ADR 0003 and the disambiguation glossary entry, with the last after-action from a prior quest at the bottom.</span></div>
+      </div>
+
+      <div class="opt" style="border-color:var(--good);background:var(--good-soft)">
+        <div class="opt-head"><span class="opt-name">★ E · Hybrid — bridge, map, codex, ship systems</span><span class="opt-size" style="color:var(--good)">L · Recommended</span></div>
+        <p class="opt-desc">B as the landing (bridge), C as the navigable chart of known space, D as the quest surface (codex). Three rooms, one identity. Each room does one job well and points at the next. The developer chose this on turn 2 with the full map, not the light orrery; Q3 and Q11 now decide how heavy the map is.</p>
+        <div class="opt-block"><span class="lab">Pros</span>
+          <ul class="opt-list"><li>Covers landing, drill-in, and orientation without one room doing all three.</li><li>The orrery can be a stylised chart (not a literal map), which brings C's cost down.</li></ul>
+        </div>
+        <div class="opt-block"><span class="lab">Cons</span>
+          <ul class="opt-list"><li>The biggest option in maintenance terms. Three rooms to keep aligned.</li><li>Risks the "everything is a room" trap Q2 warns about.</li></ul>
+        </div>
+        <div class="opt-block"><span class="lab">Fit here</span><span> If Q2 allows four or more rooms and Q10 does not pick a single landing frame.</span></div>
+        <div class="opt-block"><span class="lab">Afterwards</span><span> A first-time visitor lands on a bridge, clicks one pin, reads a mission briefing, and one keystroke opens the orrery to see what else is unmapped.</span></div>
+      </div>
+
+      <div class="group-h">Sizing the map — where positions come from (Q11)</div>
+
+      <div class="opt" style="border-color:var(--good);background:var(--good-soft)">
+        <div class="opt-head"><span class="opt-name">M1 · Hand-drawn atlas</span><span class="opt-size" style="color:var(--good)">M · Chosen</span></div>
+        <p class="opt-desc">A <code>docs/factory/map.yaml</code> names every region and every tile with an x, a y, and a size. The console paints exactly that. Issues pin onto tiles by a path prefix or a milestone tag in the issue's front matter.</p>
+        <div class="opt-block"><span class="lab">Pros</span><ul class="opt-list"><li>Looks like a place. Terrain is stable across loads and across months.</li><li>Fog of war is trivial: a tile with no done issue is fogged.</li><li>One file, one validator, one schema line in SPEC.md.</li></ul></div>
+        <div class="opt-block"><span class="lab">Cons</span><ul class="opt-list"><li>Every folder split or milestone rename needs a hand edit or the map lies.</li><li>The developer becomes the cartographer for a repo of a few hundred files.</li></ul></div>
+        <div class="opt-block"><span class="lab">Fit here</span><span> If Q11 says "a small file is fine" and the developer wants to own the terrain.</span></div>
+        <div class="opt-block"><span class="lab">Afterwards</span><span> A gate refuses a merge that adds an issue whose path prefix matches no tile in <code>map.yaml</code>.</span></div>
+      </div>
+
+      <div class="opt" style="opacity:.55">
+        <div class="opt-head"><span class="opt-name">M2 · Derived graph</span><span class="opt-size">M · Eliminated</span></div>
+        <p style="color:var(--sev-crit);font-size:14px;margin:0 0 10px">Struck on turn 4 — the developer chose the hand-drawn atlas; a derived layout has no fog of war.</p>
+        <p class="opt-desc">No layout file. The server reads the tree and the issue files; a deterministic layout (a seeded force simulation, or a treemap by path) places every node on load. Pan and zoom under the hand.</p>
+        <div class="opt-block"><span class="lab">Pros</span><ul class="opt-list"><li>Never rots. A folder split appears on the next load.</li><li>No new data file; nothing for a gate to check.</li></ul></div>
+        <div class="opt-block"><span class="lab">Cons</span><ul class="opt-list"><li>Not a place. A new node shifts its neighbours; nothing stays top-right.</li><li>No fog of war: an unbuilt milestone has no folder and no node.</li><li>A treemap by path is stable but reads as a disk-usage chart, not a chart of known space.</li></ul></div>
+        <div class="opt-block"><span class="lab">Fit here</span><span> If Q11 says "never by hand" and fog of war is given up.</span></div>
+        <div class="opt-block"><span class="lab">Afterwards</span><span> The map is a treemap with amber for done and grey for open, and the developer stops calling it a map within a week.</span></div>
+      </div>
+
+      <div class="opt" style="opacity:.55">
+        <div class="opt-head"><span class="opt-name">M3 · Regions by hand, tiles derived</span><span class="opt-size">M · Eliminated</span></div>
+        <p style="color:var(--sev-crit);font-size:14px;margin:0 0 10px">Struck on turn 4 — the developer chose M1. Its tile rule (issue files carry the milestone prefix) survives inside M1 as the way pins find their tile.</p>
+        <p class="opt-desc">The seven PLAN.md §7 milestone rows are the regions, and a short file places each region once. Inside a region, tiles are the issue files that carry that milestone's prefix (<code>m3-NN-</code>), laid out on a fixed grid in issue order. The tree is never read for layout.</p>
+        <div class="opt-block"><span class="lab">Pros</span><ul class="opt-list"><li>Seven positions by hand, then nothing. A new issue appears as a new tile in its region on the next load.</li><li>Fog of war falls out of the issue files: a region with no done issue is fogged; a fogged region with open issues shows contacts on the edge.</li><li>Issue ids already carry the milestone — no new field, no new validator.</li></ul></div>
+        <div class="opt-block"><span class="lab">Cons</span><ul class="opt-list"><li>A milestone is a region even when its code spans three folders. "Where the code is" and "where the quest is" diverge.</li><li>Side quests (<code>side-NNN</code>) need a home region or a wandering-fleet lane.</li></ul></div>
+        <div class="opt-block"><span class="lab">Fit here</span><span> If Q4 says milestones are the layer and Q14 says issue status lifts the fog.</span></div>
+        <div class="opt-block"><span class="lab">Afterwards</span><span> Opening the map after a merge shows one new lit tile in M3 and the M4 region still under fog with six grey contacts on its border.</span></div>
+      </div>
+
+      <div class="group-h">Sizing the launch — how a quest opens a Claude session (Q12)</div>
+
+      <div class="opt">
+        <div class="opt-head"><span class="opt-name">L1 · Boarding pass</span><span class="opt-size">S · Alive</span></div>
+        <p class="opt-desc">The flight deck composes the exact line — <code>claude --model &lt;m&gt; "/factory-run 21"</code> with the effort and permission flags the issue's front matter asks for — and copies it. The developer pastes it into any terminal. The server spawns nothing.</p>
+        <div class="opt-block"><span class="lab">Pros</span><ul class="opt-list"><li>Client-only. No new job kind, no OS branch.</li><li>The session runs in the developer's own terminal, with every checkpoint intact.</li></ul></div>
+        <div class="opt-block"><span class="lab">Cons</span><ul class="opt-list"><li>One paste per quest. The "PC rebooted, press launch" scene has a manual step in it.</li></ul></div>
+        <div class="opt-block"><span class="lab">Fit here</span><span> If Q13 says mailbox, or as the first cut before L2.</span></div>
+        <div class="opt-block"><span class="lab">Afterwards</span><span> A Launch button changes to "Copied" and the developer's terminal has the line on the clipboard.</span></div>
+      </div>
+
+      <div class="opt">
+        <div class="opt-head"><span class="opt-name">L2 · Terminal spawn</span><span class="opt-size">M · Alive</span></div>
+        <p class="opt-desc">A new job kind <code>quest-start</code> in <code>kinds.ts</code> spawns a terminal emulator with the same line as L1 inside it. The kind picks the emulator per platform: <code>wt.exe</code> on Windows, the configured terminal on Linux. The session is interactive; checkpoints work as today.</p>
+        <div class="opt-block"><span class="lab">Pros</span><ul class="opt-list"><li>One click. The reboot scene has no paste.</li><li>Stays inside ADR 0011: a fixed argv template, <code>shell: false</code>, kind-validated args.</li></ul></div>
+        <div class="opt-block"><span class="lab">Cons</span><ul class="opt-list"><li>One argv template per OS and per terminal. Linux has no single "open a terminal with this command" call.</li><li>The console loses sight of the session once the window opens; job status is "launched", not "running".</li></ul></div>
+        <div class="opt-block"><span class="lab">Fit here</span><span> If Q12 says "one click" and Q13 says mailbox.</span></div>
+        <div class="opt-block"><span class="lab">Afterwards</span><span> Pressing Launch on quest 21 opens a terminal window with <code>/factory-run 21</code> already running, and the Jobs room shows one <code>quest-start</code> entry with exit code 0.</span></div>
+      </div>
+
+      <div class="opt" style="opacity:.55">
+        <div class="opt-head"><span class="opt-name">L3 · Headless run, checkpoints in the console</span><span class="opt-size">L · Eliminated</span></div>
+        <p style="color:var(--sev-crit);font-size:14px;margin:0 0 10px">Struck on turn 4 — the headless docs do not define what <code>-p</code> does at a question, and a print session cannot hold an artifact watch. Its goal survives as L4.</p>
+        <p class="opt-desc">The server spawns <code>claude -p</code> with the prompt and streams its output into the Jobs room, the way <code>gate</code> already streams. Every checkpoint becomes a question the console renders, and the answer goes back through a channel the session watches (Q13 live).</p>
+        <div class="opt-block"><span class="lab">Pros</span><ul class="opt-list"><li>The console sees the whole run. Progress, cost, and checkpoints all live in one room.</li><li>The artifact-feedback scene in Q1 becomes native: the artifact and its answer box are the same page.</li></ul></div>
+        <div class="opt-block"><span class="lab">Cons</span><ul class="opt-list"><li>Needs the live channel from Q13 first, or the run blocks at checkpoint 1 forever.</li><li>Moves the whole factory's human loop into a web page. A broken console means no quests run.</li><li>Largest surface: a job that runs for an hour, holds a model session, and must survive a console restart (the restart gate today kills running jobs).</li></ul></div>
+        <div class="opt-block"><span class="lab">Fit here</span><span> Only if Q13 says live channel and the developer accepts the console as the only cockpit.</span></div>
+        <div class="opt-block"><span class="lab">Afterwards</span><span> The Jobs room shows quest 21 at checkpoint 2 with an amber "awaiting orders" chip, and the terminal is closed.</span></div>
+      </div>
+
+      <div class="opt" style="border-color:var(--good);background:var(--good-soft)">
+        <div class="opt-head"><span class="opt-name">L4 · Console as harness</span><span class="opt-size" style="color:var(--good)">L · Chosen target</span></div>
+        <p class="opt-desc">The console server imports <code>@anthropic-ai/claude-agent-sdk</code> and calls <code>query()</code> with the quest's prompt, model, and effort from the issue's front matter. A <code>canUseTool</code> callback catches every AskUserQuestion, renders it in the console as orders awaiting, and returns the developer's answer as the tool result. The session id is written to the job record; after a console restart, <code>resume: sessionId</code> continues the same run. Streaming input lets the console send a follow-up mid-run.</p>
+        <div class="opt-block"><span class="lab">Pros</span><ul class="opt-list"><li>Every documented piece exists: <code>canUseTool</code> for the question, <code>resume</code> for the restart, streaming input for a mid-run order.</li><li>The console sees the whole run — progress, cost, checkpoints — as one job, and the artifact-feedback scene from Q1 is native.</li><li>The SDK main loop holds an artifact watch, so a claude.ai brief still wakes the run on "Send to Claude".</li></ul></div>
+        <div class="opt-block"><span class="lab">Cons</span><ul class="opt-list"><li>The console becomes the only cockpit. A broken console blocks every quest until it is fixed from a terminal.</li><li>Credentials and billing under a server process are unverified (Q17).</li><li>The restart gate today kills running jobs; a quest job must be exempt and resumed, which is a change to <code>restart.ts</code> as well as <code>kinds.ts</code>.</li></ul></div>
+        <div class="opt-block"><span class="lab">Fit here</span><span> Cleared on turn 5 (Q17). L1 and L2 stay alive as the staging steps so the flight deck works the week the map does not exist yet.</span></div>
+        <div class="opt-block"><span class="lab">Afterwards</span><span> Pressing Launch on quest 21 shows a session id under the tile, a token counter climbing, and after twenty minutes an amber card asking checkpoint 2's question with a text box under it.</span></div>
+      </div>
+    </section>
+
+    <section id="recommendation">
+      <span class="eyebrow eyebrow-h">Section 4</span>
+      <h2>Recommendation</h2>
+      <p>Build E on M1 with L4, in six quests, bridge first and harness last. Every room reads the files the factory already writes; the only new file is the atlas. Every action the console takes goes through the kind table in <code>kinds.ts</code> or the SDK call, never a shell string. After the six quests, a rebooted machine opens to a bridge that names the next quest, one click starts it, the map shows what is lit and what is fogged, a checkpoint lands as a card with a text box, and the crew roster shows which agent ran and what it cost.</p>
+
+      <figure style="margin:24px 0">
+        <svg viewBox="0 0 900 400" role="img" aria-label="Data flows from disk and GitHub into the console server, which paints five rooms; the flight deck starts an SDK session whose checkpoints and artifact answers loop back through the server." style="width:100%;max-width:900px;height:auto;display:block;color:var(--ink);font-family:var(--f-mono);font-size:12px">
+          <defs>
+            <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="currentColor"/></marker>
+            <marker id="ar-acc" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="var(--accent)"/></marker>
+          </defs>
+          <!-- sources -->
+          <g>
+            <rect x="20" y="30" width="180" height="56" rx="4" fill="var(--surface)" stroke="currentColor"/>
+            <text x="110" y="52" text-anchor="middle" fill="currentColor">docs/factory/</text>
+            <text x="110" y="70" text-anchor="middle" fill="var(--ink-2)">issues · STATE · lessons</text>
+            <rect x="20" y="106" width="180" height="56" rx="4" fill="var(--surface)" stroke="currentColor"/>
+            <text x="110" y="128" text-anchor="middle" fill="currentColor">.claude/</text>
+            <text x="110" y="146" text-anchor="middle" fill="var(--ink-2)">agents · skills · hooks</text>
+            <rect x="20" y="182" width="180" height="56" rx="4" fill="var(--surface)" stroke="currentColor"/>
+            <text x="110" y="204" text-anchor="middle" fill="currentColor">map.yaml</text>
+            <text x="110" y="222" text-anchor="middle" fill="var(--ink-2)">regions · tiles (new)</text>
+            <rect x="20" y="258" width="180" height="56" rx="4" fill="var(--surface)" stroke="currentColor" stroke-dasharray="4 3"/>
+            <text x="110" y="280" text-anchor="middle" fill="currentColor">GitHub</text>
+            <text x="110" y="298" text-anchor="middle" fill="var(--ink-2)">PRs · check runs</text>
+          </g>
+          <!-- server -->
+          <rect x="320" y="30" width="220" height="284" rx="4" fill="var(--surface)" stroke="currentColor"/>
+          <text x="430" y="56" text-anchor="middle" fill="currentColor" font-weight="600">console server</text>
+          <text x="430" y="76" text-anchor="middle" fill="var(--ink-2)">127.0.0.1:7864</text>
+          <rect x="340" y="96" width="180" height="40" rx="3" fill="var(--code-bg)" stroke="none"/>
+          <text x="430" y="120" text-anchor="middle" fill="currentColor">GET /api/* · /events</text>
+          <rect x="340" y="150" width="180" height="40" rx="3" fill="var(--code-bg)" stroke="none"/>
+          <text x="430" y="174" text-anchor="middle" fill="currentColor">POST /api/jobs · kinds.ts</text>
+          <rect x="340" y="204" width="180" height="40" rx="3" fill="var(--accent-soft)" stroke="var(--accent)"/>
+          <text x="430" y="228" text-anchor="middle" fill="var(--accent)">SDK query() · canUseTool</text>
+          <text x="430" y="290" text-anchor="middle" fill="var(--ink-2)">reads every 2 s · Host check on POST</text>
+          <!-- source arrows -->
+          <line x1="200" y1="58" x2="318" y2="106" stroke="currentColor" marker-end="url(#ar)"/>
+          <line x1="200" y1="134" x2="318" y2="116" stroke="currentColor" marker-end="url(#ar)"/>
+          <line x1="200" y1="210" x2="318" y2="126" stroke="currentColor" marker-end="url(#ar)"/>
+          <line x1="200" y1="286" x2="318" y2="136" stroke="currentColor" stroke-dasharray="4 3" marker-end="url(#ar)"/>
+          <text x="250" y="200" text-anchor="middle" fill="var(--ink-2)" transform="rotate(-24 250 200)">reads</text>
+          <!-- rooms -->
+          <g>
+            <rect x="660" y="30" width="220" height="36" rx="4" fill="var(--surface)" stroke="currentColor"/>
+            <text x="770" y="53" text-anchor="middle" fill="currentColor">Bridge · landing, flight deck</text>
+            <rect x="660" y="76" width="220" height="36" rx="4" fill="var(--surface)" stroke="currentColor"/>
+            <text x="770" y="99" text-anchor="middle" fill="currentColor">Atlas · regions, fog, pins</text>
+            <rect x="660" y="122" width="220" height="36" rx="4" fill="var(--surface)" stroke="currentColor"/>
+            <text x="770" y="145" text-anchor="middle" fill="currentColor">Codex · briefings, debrief</text>
+            <rect x="660" y="168" width="220" height="36" rx="4" fill="var(--surface)" stroke="currentColor"/>
+            <text x="770" y="191" text-anchor="middle" fill="currentColor">Ship systems · crew, stations</text>
+            <rect x="660" y="214" width="220" height="36" rx="4" fill="var(--surface)" stroke="currentColor"/>
+            <text x="770" y="237" text-anchor="middle" fill="currentColor">Jobs · runs, orders awaiting</text>
+          </g>
+          <line x1="540" y1="116" x2="658" y2="116" stroke="currentColor" marker-end="url(#ar)"/>
+          <text x="600" y="108" text-anchor="middle" fill="var(--ink-2)">paints</text>
+          <line x1="658" y1="48" x2="540" y2="170" stroke="currentColor" marker-end="url(#ar)"/>
+          <text x="620" y="150" text-anchor="middle" fill="var(--ink-2)">launch</text>
+          <!-- session loop -->
+          <rect x="320" y="340" width="220" height="44" rx="4" fill="var(--surface)" stroke="var(--accent)"/>
+          <text x="430" y="358" text-anchor="middle" fill="var(--accent)">Claude session · /factory-run NN</text>
+          <text x="430" y="375" text-anchor="middle" fill="var(--ink-2)">sessionId kept · resume on restart</text>
+          <line x1="400" y1="244" x2="400" y2="338" stroke="var(--accent)" marker-end="url(#ar-acc)"/>
+          <text x="392" y="296" text-anchor="end" fill="var(--accent)">prompt, model, effort</text>
+          <line x1="460" y1="338" x2="460" y2="246" stroke="var(--accent)" marker-end="url(#ar-acc)"/>
+          <text x="468" y="296" text-anchor="start" fill="var(--accent)">AskUserQuestion → card</text>
+          <rect x="660" y="340" width="220" height="44" rx="4" fill="var(--surface)" stroke="currentColor" stroke-dasharray="4 3"/>
+          <text x="770" y="358" text-anchor="middle" fill="currentColor">claude.ai artifact</text>
+          <text x="770" y="375" text-anchor="middle" fill="var(--ink-2)">options via db · comments</text>
+          <line x1="540" y1="355" x2="658" y2="355" stroke="currentColor" marker-end="url(#ar)"/>
+          <text x="600" y="348" text-anchor="middle" fill="var(--ink-2)">publishes</text>
+          <line x1="658" y1="370" x2="540" y2="370" stroke="currentColor" marker-end="url(#ar)"/>
+          <text x="600" y="384" text-anchor="middle" fill="var(--ink-2)">send to Claude wakes</text>
+          <line x1="770" y1="338" x2="770" y2="252" stroke="currentColor" stroke-dasharray="4 3" marker-end="url(#ar)"/>
+          <text x="778" y="300" text-anchor="start" fill="var(--ink-2)">link out</text>
+        </svg>
+        <figcaption style="font-size:13px;color:var(--ink-2);margin-top:8px">The server reads disk and GitHub and paints five rooms. Launch goes through the kind table (L2) or the SDK call (L4, amber). A checkpoint returns through <code>canUseTool</code> as a card in Jobs; an artifact question returns through claude.ai and wakes the same session. Dashed edges need the network.</figcaption>
+      </figure>
+
+      <div class="group-h">Best path — six quests, in this order</div>
+
+      <div class="opt">
+        <div class="opt-head"><span class="opt-name">1 · Bridge</span><span class="opt-size">S</span></div>
+        <p class="opt-desc">Rebuild ConsoleRoom as the landing. One instrument: the next quest from STATE.md, with its milestone, agent, model and effort read from the issue's front matter. One comms line: the last five events from <code>/events</code>. One status line: branch, dirty count, stamp against HEAD, GitHub reachable or not. The boot sequence plays once, honours <code>prefers-reduced-motion</code>, and never repeats.</p>
+        <div class="opt-block"><span class="lab">Done when</span><span> A cold visitor names the next quest and the last event without scrolling. Playwright asserts the boot sequence runs once per load.</span></div>
+      </div>
+
+      <div class="opt">
+        <div class="opt-head"><span class="opt-name">2 · Flight deck, staged</span><span class="opt-size">M</span></div>
+        <p class="opt-desc">First the boarding pass (L1): the Launch button composes <code>claude --model &lt;m&gt; "/factory-run NN"</code> from the front matter and copies it. Then <code>quest-start</code> in <code>kinds.ts</code> (L2): one argv template per platform, <code>shell: false</code>, refused while the restart gate is active. The Jobs room lists it as launched, not running.</p>
+        <div class="opt-block"><span class="lab">Done when</span><span> Pressing Launch on the bridge opens a terminal with the factory run in it on both machines. A test proves a kind not in the table is refused with 400.</span></div>
+      </div>
+
+      <div class="opt">
+        <div class="opt-head"><span class="opt-name">3 · Ship systems</span><span class="opt-size">M</span></div>
+        <p class="opt-desc">A read-only room the server fills from <code>.claude/</code> and <code>playbook.md</code>. Crew: the five agent files, each with its tools, model and the issues it has run, from front matter and <code>lessons.jsonl</code>. Stations: the four skills and two commands, each with its one-line description and the last time it ran. Automated systems: the eight hooks under their four events. Flight plans: the encounter path from playbook.md drawn as a lane — quest, rule-author, test-writer, implementer, verifier, gate, merge — with the current quest's position on it.</p>
+        <div class="opt-block"><span class="lab">Done when</span><span> Adding an agent file appears in the room on the next load with no console change. The lane shows quest 21 at the stage its issue file says.</span></div>
+      </div>
+
+      <div class="opt">
+        <div class="opt-head"><span class="opt-name">4 · Codex and debrief</span><span class="opt-size">M</span></div>
+        <p class="opt-desc">QuestsRoom renders an issue as a briefing: objective, intel (ADRs and glossary terms the body links), loadout (agent, model, effort), orders (the launch line), after-action (commit, stamp, the lessons with that issue number). A Debrief panel groups <code>lessons.jsonl</code> by <code>sig</code>, counts repeats, and offers Promote, which is a job kind that runs <code>/factory-retro</code> for that signature and stops at its approval.</p>
+        <div class="opt-block"><span class="lab">Done when</span><span> A <code>sig</code> seen three times shows a count of three and a Promote button; pressing it starts a job and writes nothing until the retro is approved.</span></div>
+      </div>
+
+      <div class="opt">
+        <div class="opt-head"><span class="opt-name">5 · Atlas</span><span class="opt-size">L</span></div>
+        <p class="opt-desc"><code>docs/factory/map.yaml</code> names the seven milestone regions and one tile per issue prefix, with x, y and size; a validator under <code>tools/factory/</code> refuses an issue file whose prefix matches no tile, and a gate step runs it. The room draws regions and tiles in SVG under d3-zoom; fog is a rect over any region with no lit tile. A tile is lit when its issue is <code>done</code> with a commit on main; cleared-for-jump when GitHub shows an open PR with gate.yml green; a contact when open with no PR. Pins link into the codex.</p>
+        <div class="opt-block"><span class="lab">Done when</span><span> After a merge the tile lights on the next load. With GitHub unreachable every tile still paints and the bridge shows the comms-lost chip. The validator fails on a prefix with no tile.</span></div>
+      </div>
+
+      <div class="opt">
+        <div class="opt-head"><span class="opt-name">6 · Harness</span><span class="opt-size">L</span></div>
+        <p class="opt-desc">A job kind <code>quest-run</code> that calls <code>query()</code> from <code>@anthropic-ai/claude-agent-sdk</code> with the same line the boarding pass composes. <code>canUseTool</code> intercepts AskUserQuestion, stores the question on the job, and resolves when the Jobs room posts an answer. The session id is written to the job record; the restart gate exempts <code>quest-run</code> and the server resumes it by id after a rebuild. The first run prints its cost line to the job log.</p>
+        <div class="opt-block"><span class="lab">Done when</span><span> A quest reaches checkpoint 1, the Jobs room shows the question, the answer continues the run, and a console restart mid-run resumes it. The cost line matches the terminal's.</span></div>
+      </div>
+
+      <div class="group-h">Why this path</div>
+      <ul class="opt-list" style="font-size:15px">
+        <li>The bridge and the ship-systems room ship on data the server already parses or can parse with one loader each. The developer sees the game in two quests, before any map exists.</li>
+        <li>Staging the flight deck (L1, then L2, then L4) means every quest from quest 2 onwards is launched from the console, and the harness is the last thing built, not the first thing depended on.</li>
+        <li>The atlas is the only new data file. Its validator runs in the gate, so a tile that rots fails a merge instead of lying on a screen.</li>
+        <li>Every action stays inside ADR 0011's shape. <code>quest-start</code>, <code>lesson-promote</code>, and <code>quest-run</code> are rows in the same table, behind the same Host check.</li>
+      </ul>
+
+      <div class="group-h">Runner-up, and when it wins</div>
+      <p><b>E on M1 with L2 only.</b> Stop after quest 5; the terminal stays the cockpit and the console never holds a session. It wins if the first <code>quest-run</code> shows a cost line the terminal does not, if exempting a job from the restart gate proves fragile, or if the developer finds the terminal's checkpoint prompt faster than a card. The console loses in-run visibility and the artifact-answer loop; it keeps everything else.</p>
+
+      <div class="group-h">Confidence and what would change this</div>
+      <p><b>●●○.</b> The SDK pieces — <code>canUseTool</code>, <code>resume</code>, the artifact watch on a main loop — are documented but have not run in this repo. Billing under the server process is the developer's statement, not a measurement. Three things would change the path: a cost line that differs from the terminal (drop to the runner-up); <code>map.yaml</code> needing a hand edit more than once per milestone (switch the tile rule to M3's derived tiles inside hand-placed regions); the restart gate exemption leaving a session orphaned twice (move <code>quest-run</code> out of process, under its own launcher, the way <code>restart.ts</code> already spawns one).</p>
+
+      <div class="group-h">Records to write first</div>
+      <ul class="opt-list" style="font-size:15px">
+        <li>ADR: the console needs the network; GitHub and the model are live dependencies (revises the offline premise in ADR 0009 and 0010).</li>
+        <li>ADR: the atlas is a hand-authored file with a validator in the gate.</li>
+        <li>ADR: the console runs a quest as an Agent SDK session, and every checkpoint passes through <code>canUseTool</code>.</li>
+        <li>PLAN.md §7: a new milestone row for the console-as-CIC line; the six quests above through <code>/quest</code>, or the line through <code>/create-map</code> since §7 does not name it yet.</li>
+        <li>Glossary: bridge, atlas, tile, fog, contact, cleared for jump, boarding pass, orders awaiting, debrief, crew, station. One term, one meaning.</li>
+      </ul>
+    </section>
+
+    <section id="research">
+      <span class="eyebrow eyebrow-h">Section 5</span>
+      <h2>Primary-source research</h2>
+
+      <div class="group-h">Sci-fi HUD grammar — what actually reads as a bridge</div>
+
+      <div class="src">
+        <h4>The BSG DRADIS is a distance-and-vector radar, not a mini-map</h4>
+        <p class="claim">The reimagined series treats the DRADIS as a top-down and side-view stack showing bearing, range, and threat class — not the ship's location on a world map. That distinction matters if the console adopts the metaphor: a DRADIS-shaped panel names <em>what is happening now</em>, not <em>where in the codebase we are</em>. The map question (Q3) is independent of the sweep question.</p>
+        <p class="cite">Battlestar Wiki, DRADIS entry · <a href="https://en.battlestarwiki.org/wiki/DRADIS">en.battlestarwiki.org/wiki/DRADIS</a></p>
+      </div>
+
+      <div class="src">
+        <h4>Naturalistic sci-fi: no beeps, corners cut, wires visible</h4>
+        <p class="claim">Ronald D. Moore's series bible for the reimagined BSG explicitly rejects the "clean" instrument aesthetic in favour of chunky handset phones, hull plating, and analogue-feeling readouts. The console's amber-on-hull look is faithful to this; a chrome or glassmorphic reskin would break the mood at the level of grammar, not palette.</p>
+        <p class="cite">Ronald D. Moore's "Naturalistic Science Fiction" bible for Battlestar Galactica, reproduced widely; primary URL uncertain — treat as secondary. A canonical excerpt is preserved at <a href="https://web.archive.org/web/*/battlestargalactica-bible">web.archive.org (Battlestar Galactica bible)</a>.</p>
+      </div>
+
+      <div class="src">
+        <h4>Ash Thorp on sci-fi HUDs: type, motion, and negative space carry the read</h4>
+        <p class="claim">Working notes and talks from Ash Thorp (Prometheus, Ender's Game, Call of Duty title sequences) argue that the fictional HUD reads only when three things hold: monospace or engraved type in one weight, motion that is short and self-terminating, and generous negative space around the one instrument that matters. The CIC option (B) is a straight application of this.</p>
+        <p class="cite">Ash Thorp portfolio and talks · <a href="https://www.ashthorp.com">ashthorp.com</a></p>
+      </div>
+
+      <div class="src">
+        <h4>Kit Fui Ong / HUDs+GUIs — a working archive of fictional interfaces</h4>
+        <p class="claim">HUDs+GUIs collects and dissects fictional-UI stills from film and games. Common patterns across the sample: labels sit outside the drawing (not on it); the accent is one hue against a near-monochrome ground; typographic scale is short (three sizes) not long. Every option here is compatible with that grammar; option A leaves the least room to break it.</p>
+        <p class="cite">HUDs and GUIs archive · <a href="https://www.hudsandguis.com/">hudsandguis.com</a></p>
+      </div>
+
+      <div class="group-h">Info-density on game HUDs vs PM dashboards</div>
+
+      <div class="src">
+        <h4>Nielsen Norman: dashboards fail when they compete for the eye</h4>
+        <p class="claim">NN/g's dashboard writing argues one focal signal per view, with supporting numbers arranged by proximity, not by symmetry. That is the case for the CIC landing (B) over an eight-panel bridge. A denser landing is not more informative; it is harder to scan.</p>
+        <p class="cite">Nielsen Norman Group, "Dashboards: Making Charts and Graphs Easier to Understand" · <a href="https://www.nngroup.com/articles/dashboards-preattentive/">nngroup.com/articles/dashboards-preattentive</a></p>
+      </div>
+
+      <div class="src">
+        <h4>Tufte on dashboards: minimise chartjunk, maximise data-ink</h4>
+        <p class="claim">Tufte's rule generalises: every mark that is not data pays rent. On the console, a scanline that is not tied to a state (running / idle / gate armed) is chartjunk. A scanline whose speed encodes the current job's progress is not.</p>
+        <p class="cite">Edward Tufte, "The Visual Display of Quantitative Information", 2nd ed. Cited from the author's site · <a href="https://www.edwardtufte.com/tufte/books_vdqi">edwardtufte.com/tufte/books_vdqi</a></p>
+      </div>
+
+      <div class="group-h">Gamification — where it earns, where it backfires</div>
+
+      <div class="src">
+        <h4>Deterding et al. — gamification works when the game elements come from the domain</h4>
+        <p class="claim">The 2011 CHI paper "From Game Design Elements to Gamefulness" argues that XP, points, and badges succeed when they encode signals the user already tracks. Verstaan already tracks quest-tier rarity, ADR count, gate stamps, and retro lines. XP built on those is honest; XP invented on top of them (arbitrary points per commit) reads as decoration and stops working within weeks.</p>
+        <p class="cite">Deterding, Dixon, Khaled, Nacke, MindTrek 2011 · <a href="https://dl.acm.org/doi/10.1145/2181037.2181040">dl.acm.org/doi/10.1145/2181037.2181040</a></p>
+      </div>
+
+      <div class="group-h">The map — derived vs authored layout</div>
+
+      <div class="src">
+        <h4>Force-directed graphs of a codebase are legible for orientation, not for place</h4>
+        <p class="claim">d3-force lays out nodes by simulated repulsion and link tension; positions are not stable between runs and carry no meaning of their own. A dev returning after two weeks cannot say "the engine region is top-left" because it may not be. That rules a pure force layout out as the <em>map</em> and leaves it fit for a zoomed-in region view where nodes are few and labels are read, not remembered.</p>
+        <p class="cite">d3-force reference, Mike Bostock · <a href="https://d3js.org/d3-force">d3js.org/d3-force</a></p>
+      </div>
+
+      <div class="src">
+        <h4>Pan and zoom is a solved transform; the cost is in what you draw, not how you move it</h4>
+        <p class="claim">d3-zoom applies one affine transform (translate + scale) to a container and emits it on wheel, drag and pinch; it works the same on SVG groups and on a Canvas 2D context. MDN's canvas guidance adds the rule that matters for a fogged map: pre-render static layers (terrain, fog) to an offscreen canvas and composite only the moving layer per frame. A few hundred tiles in SVG is fine; a few thousand wants Canvas.</p>
+        <p class="cite">d3-zoom · <a href="https://d3js.org/d3-zoom">d3js.org/d3-zoom</a> · MDN, Optimizing canvas · <a href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Optimizing_canvas">developer.mozilla.org/…/Optimizing_canvas</a></p>
+      </div>
+
+      <div class="group-h">The launch and the channel</div>
+
+      <div class="src">
+        <h4>Claude Code runs headless with <code>-p</code> and takes a model flag; an interactive session needs a terminal</h4>
+        <p class="claim">The CLI reference documents <code>claude -p "&lt;prompt&gt;"</code> for non-interactive runs (output to stdout, exit when done) and <code>--model</code> for the model per invocation. Slash commands such as <code>/factory-run 21</code> are accepted as the prompt in either mode. What <code>-p</code> does not give is a human at a checkpoint: a prompt that waits for the user in an interactive session has no one to wait for in print mode. That is the whole difference between L2 and L3.</p>
+        <p class="cite">Claude Code CLI reference · <a href="https://code.claude.com/docs/en/cli-reference">code.claude.com/docs/en/cli-reference</a></p>
+      </div>
+
+      <div class="src">
+        <h4>A JSON POST to localhost is a "simple request": the browser never preflights it</h4>
+        <p class="claim">Per the Fetch standard, a POST with <code>Content-Type: application/json</code> is not CORS-safelisted, but a cross-origin page can still send it as a no-cors request without a preflight; the response is opaque, but the server has already acted. ADR 0011 handles this today by refusing any POST whose <code>Host</code> header is not the console's own loopback address and port. Every new job kind — <code>quest-start</code>, <code>lesson-promote</code> — inherits that check for free by living in <code>kinds.ts</code>. A kind added anywhere else does not.</p>
+        <p class="cite">Fetch Standard, CORS-safelisted method and header · <a href="https://fetch.spec.whatwg.org/#cors-safelisted-method">fetch.spec.whatwg.org/#cors-safelisted-method</a> · Verstaan ADR 0011 · <code>docs/adr/0011-console-actions-run-only-allow-listed-scripts.md</code></p>
+      </div>
+
+      <div class="src">
+        <h4>Print mode does not define what happens at a question; the SDK does</h4>
+        <p class="claim">The headless page says AskUserQuestion and permission prompts are "handled in-loop" and stops there; with <code>--permission-prompts none</code> the ask tool is removed and any call to it is denied. The Agent SDK's <code>canUseTool</code> option receives <code>(toolName, input)</code> for every tool call, including AskUserQuestion, and returns <code>{ behavior: "allow", updatedInput }</code> — which is where a host program supplies the developer's answer. <code>query({ resume: sessionId })</code> continues a run by id; a streaming <code>prompt</code> of <code>SDKUserMessage</code>s sends new input mid-run.</p>
+        <p class="cite">Headless mode · <a href="https://code.claude.com/docs/en/headless">code.claude.com/docs/en/headless</a> · SDK user input · <a href="https://code.claude.com/docs/en/agent-sdk/user-input">code.claude.com/docs/en/agent-sdk/user-input</a> · SDK sessions · <a href="https://code.claude.com/docs/en/agent-sdk/sessions">code.claude.com/docs/en/agent-sdk/sessions</a> · streaming vs single · <a href="https://code.claude.com/docs/en/agent-sdk/streaming-vs-single-mode">code.claude.com/docs/en/agent-sdk/streaming-vs-single-mode</a></p>
+      </div>
+
+      <div class="src">
+        <h4>An artifact comment wakes only an interactive or SDK main-loop session</h4>
+        <p class="claim">The artifacts page states it: a comment sent to Claude reaches the publishing session right away, and only an interactive or SDK main-loop session holds that watch — not a subagent, teammate, background, or print session. L2 and L4 qualify; L3 never did.</p>
+        <p class="cite">Claude Code artifacts, "Let Claude reply to comments on its own" · <a href="https://code.claude.com/docs/en/artifacts">code.claude.com/docs/en/artifacts</a></p>
+      </div>
+
+      <div class="src">
+        <h4>A published page can keep a selection and take a comment without any new protocol</h4>
+        <p class="claim">The artifacts docs describe two things the Q15 scene needs: a runtime <code>db</code> capability that lets a page store what viewers change, shared across viewers and readable back by the session with <code>read_db</code>; and comment threads a viewer sends to Claude, which reach the publishing session while it is interactive or an SDK main loop. A pros-and-cons page with one radio group per decision, plus a comment box, is the whole feedback surface. The <code>/design</code> canvas is the drawn-layout case of the same mechanism.</p>
+        <p class="cite">Claude Code artifacts · <a href="https://code.claude.com/docs/en/artifacts">code.claude.com/docs/en/artifacts</a></p>
+      </div>
+
+      <div class="src">
+        <h4>A blocking MCP tool is allowed, but the main loop backgrounds it after two minutes</h4>
+        <p class="claim">An MCP tool may block for as long as it likes; the limits are a per-server <code>timeout</code> in <code>.mcp.json</code>, <code>MCP_TOOL_TIMEOUT</code>, and an idle timeout (<code>CLAUDE_CODE_MCP_TOOL_IDLE_TIMEOUT</code>, 30 min on stdio). The catch for a checkpoint: a main-conversation call is moved to the background after 2 minutes (<code>CLAUDE_CODE_MCP_AUTO_BACKGROUND_MS</code>), so the model continues without the answer. That is why the checkpoint belongs in <code>canUseTool</code>, which blocks by design, and not in a blocking MCP tool.</p>
+        <p class="cite">MCP servers · <a href="https://code.claude.com/docs/en/mcp-servers">code.claude.com/docs/en/mcp-servers</a></p>
+      </div>
+
+      <div class="src">
+        <h4>MCP is the documented way to hand a running Claude session a tool the console owns</h4>
+        <p class="claim">The Model Context Protocol lets a local server expose tools and resources over stdio or HTTP; Claude Code loads them from <code>.mcp.json</code>, which this repo already uses for Playwright. A console MCP server with one tool — <code>await_orders(checkpoint)</code> that blocks until the developer answers on the artifact page — is the live channel Q13 names. It needs no polling and no shared file, and it is the only shape in which L3's checkpoints can live in the console.</p>
+        <p class="cite">Model Context Protocol specification · <a href="https://modelcontextprotocol.io/specification/latest">modelcontextprotocol.io/specification/latest</a> · Claude Code MCP docs · <a href="https://code.claude.com/docs/en/mcp">code.claude.com/docs/en/mcp</a></p>
+      </div>
+
+      <div class="src">
+        <h4>Reduced motion is a media query the boot sequence must read</h4>
+        <p class="claim"><code>@media (prefers-reduced-motion: reduce)</code> reports the OS setting. The one orchestrated launch moment from Q5 plays in full when the query is false and collapses to a fade when it is true. This is a CSS rule, not a toggle the console invents.</p>
+        <p class="cite">MDN, prefers-reduced-motion · <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion">developer.mozilla.org/…/prefers-reduced-motion</a></p>
+      </div>
+
+      <div class="group-h">The console's own record</div>
+
+      <div class="src">
+        <h4>The mirror already puts one GitHub milestone per region and one issue per file</h4>
+        <p class="claim"><code>tools/factory/mirror_github.py</code> writes one GitHub milestone per distinct <code>milestone:</code> value, one issue per file, and labels <code>milestone:&lt;m&gt;</code> and <code>checkpoint:&lt;n&gt;</code>; the issue's front matter records the result in <code>github_issue:</code>. The flow is one way, local to remote. Reading GitHub back for issue state returns what the files already say. Reading it for pull requests and check runs returns what the files cannot say: <code>GET /repos/{owner}/{repo}/commits/{ref}/check-runs</code> gives gate.yml's verdict per commit; the authenticated REST limit is 5 000 requests per hour, unauthenticated 60.</p>
+        <p class="cite">Verstaan repo · <code>tools/factory/mirror_github.py</code> · GitHub REST, check runs · <a href="https://docs.github.com/en/rest/checks/runs">docs.github.com/en/rest/checks/runs</a> · rate limits · <a href="https://docs.github.com/en/rest/using-the-rest-api/rate-limits-for-the-rest-api">docs.github.com/en/rest/using-the-rest-api/rate-limits-for-the-rest-api</a></p>
+      </div>
+
+      <div class="src">
+        <h4>The lessons file already has the shape a debrief room needs</h4>
+        <p class="claim"><code>docs/factory/lessons.jsonl</code> carries one JSON object per line with <code>sig</code> (a stable signature such as <code>fast-tests-red</code>), <code>stage</code>, <code>issue</code>, <code>ts</code>, and <code>detail</code>. A repeated <code>sig</code> across issues is the "repetitive problem" the developer named in Q9; counting them per <code>sig</code> is one group-by. <code>/factory-retro</code> is the existing promote path and requires human approval, so a Promote button is a job kind that runs it, not a new write.</p>
+        <p class="cite">Verstaan repo · <code>docs/factory/lessons.jsonl</code> (2 lines on 2026-09-16) · <code>~/.claude/skills/factory-retro/</code></p>
+      </div>
+
+      <div class="src">
+        <h4>Quest 164 already pinned the design system</h4>
+        <p class="claim">The console's DESIGN.md declares the BSG CIC + Diablo loot log as the identity, with palette, type, six-step scale, and one breakpoint. Any option this brief lands on inherits these tokens. The interrogation is above the chassis, not against it.</p>
+        <p class="cite">Verstaan repo · <code>apps/console/DESIGN.md</code></p>
+      </div>
+    </section>
+
+    <section id="narrow">
+      <span class="eyebrow eyebrow-h">Section 6</span>
+      <h2>Closing</h2>
+      <p>The interrogation is over. Q4, Q6 and Q8 carry their defaults into the recommendation: milestones as the atlas's regions, low density on the bridge and high in the codex, open Space Opera vocabulary with the Colonial terms reserved for chrome. This brief is not committed; the developer decides whether it lives under <code>docs/decisions/</code>. The next step is a fresh session and <code>/create-map</code>, since PLAN.md §7 has no row for this line yet.</p>
+    </section>
+
+    <footer>
+      <p>Sources: 20 primary, 1 marked unknown. Project files read: <code>apps/console/DESIGN.md</code>, <code>apps/console/client/src/rooms/</code>, <code>apps/console/server/src/jobs/{routes,kinds}.ts</code>, <code>docs/adr/0011-*.md</code>, <code>docs/factory/lessons.jsonl</code>, <code>docs/factory/PLAN.md §7</code>, <code>docs/factory/playbook.md</code>, <code>docs/factory/issues/121-*.md</code> (front matter shape), <code>tools/factory/mirror_github.py</code>, <code>.github/workflows/gate.yml</code>, <code>docs/factory/STATE.md</code>, <code>CLAUDE.md</code>, <code>~/.claude/skills/house-style/</code>.</p>
+      <p>Produced by /interrogation-time · v2.0.0 (2026-09-07) · HTML brief in the shared house style.</p>
+      <p>Turn history — 2026-09-16 · Turn 1 · 10 questions opened, 5 options sketched, 7 sources cited.</p>
+      <p>2026-09-16 · Turn 2 · Developer chose B + C + D. Q2 answered, A eliminated, E marked chosen shape. Q11 added on map layout upkeep. One source added.</p>
+      <p>2026-09-16 · Turn 3 · Q1, Q3, Q5, Q7, Q9, Q10 answered. Q11 explained. Q12–Q14 opened. Map options M1–M3 and launch options L1–L3 added. Six sources added, including the console's own ADR 0011 and lessons file.</p>
+      <p>2026-09-16 · Turn 4 · Q11–Q14 answered. M1 chosen; M2, M3 struck. L3 struck on the headless and artifact-watch docs; L4 (console as harness via the Agent SDK) added as the stretch target. Q15–Q17 opened. Five sources added after a docs check.</p>
+      <p>2026-09-16 · Turn 5 · Q15–Q17 answered. A4 revised: the console needs the network. L4 marked chosen target. One source added. Interrogation complete; awaiting the word for the recommendation.</p>
+      <p>2026-09-16 · Turn 6 · Developer added the factory itself (agents, skills, hooks, pipelines) as a room (A6) and asked for the recommendation. Recommendation section added: six quests, runner-up, confidence ●●○, records to write first. Interrogation stopped.</p>
+    </footer>
+  </main>
+</div>
