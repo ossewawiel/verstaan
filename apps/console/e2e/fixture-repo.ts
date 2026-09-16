@@ -37,6 +37,64 @@ function issueMd(n: number, title: string, status: string): string {
   return `---\nissue: ${n}\ntitle: "${title}"\nmilestone: ${milestone}\nstatus: ${status}\ndepends_on: ${deps}\nagent: implementer\n${loadout}---\n## What\n\nFixture issue ${n} for the console's own e2e suite.\n\n## Done when\n\n- [ ] one\n`;
 }
 
+// Ship systems fixtures (issue 175): one agent, one skill, one command, two hooks (one referenced
+// by an event, one not -- a visible gap in each direction), and a settings.json whose one event
+// names a hook file that does not exist on disk (the other direction's gap).
+export const SHIP_SYSTEMS_FIXTURE_AGENT = 'fixture-agent';
+
+function writeShipSystemsFixtures(): void {
+  const claude = join(FIXTURE_REPO, '.claude');
+  mkdirSync(join(claude, 'agents'), { recursive: true });
+  mkdirSync(join(claude, 'skills', 'fixture-skill'), { recursive: true });
+  mkdirSync(join(claude, 'commands'), { recursive: true });
+  mkdirSync(join(claude, 'hooks'), { recursive: true });
+
+  writeFileSync(
+    join(claude, 'agents', `${SHIP_SYSTEMS_FIXTURE_AGENT}.md`),
+    '---\nname: fixture-agent\ndescription: A fixture agent for the console e2e suite.\ntools: Read, Grep\nmodel: sonnet\neffort: low\ncolor: green\n---\n## Read first\n',
+  );
+  writeFileSync(
+    join(claude, 'skills', 'fixture-skill', 'SKILL.md'),
+    '---\nname: fixture-skill\ndescription: A fixture skill for the console e2e suite.\nargument-hint: [a seed]\n---\nFixture skill body.\n',
+  );
+  writeFileSync(
+    join(claude, 'commands', 'fixture-command.md'),
+    '---\ndescription: A fixture command for the console e2e suite.\n---\n1. Do the fixture thing.\n',
+  );
+  writeFileSync(join(claude, 'hooks', 'fixture-referenced.sh'), '#!/bin/sh\necho referenced\n');
+  writeFileSync(join(claude, 'hooks', 'fixture-orphan.sh'), '#!/bin/sh\necho orphan\n');
+  writeFileSync(
+    join(claude, 'settings.json'),
+    JSON.stringify(
+      {
+        hooks: {
+          PostToolUse: [
+            {
+              hooks: [
+                { type: 'command', command: 'bash "${CLAUDE_PROJECT_DIR}/.claude/hooks/fixture-referenced.sh"' },
+                { type: 'command', command: 'bash "${CLAUDE_PROJECT_DIR}/.claude/hooks/fixture-missing.sh"' },
+              ],
+            },
+          ],
+        },
+      },
+      null,
+      2,
+    ),
+  );
+}
+
+/** Adds a second fixture agent file after the fact (issue 175 acceptance criteria: "adding an
+ * agent file appears on next load with no console code change"). Never called by
+ * `buildFixtureRepo()` itself -- only the one e2e test that proves this needs it, so every other
+ * spec's agent list stays exactly the one `writeShipSystemsFixtures()` wrote. */
+export function addFixtureAgent(name: string): void {
+  writeFileSync(
+    join(FIXTURE_REPO, '.claude', 'agents', `${name}.md`),
+    `---\nname: ${name}\ndescription: A second fixture agent, added mid-suite.\ntools: Read\nmodel: haiku\neffort: low\n---\n## Read first\n`,
+  );
+}
+
 export function buildFixtureRepo(): void {
   mkdirSync(join(FIXTURE_REPO, 'docs', 'factory', 'issues'), { recursive: true });
   mkdirSync(join(FIXTURE_REPO, '.claude', 'agents'), { recursive: true });
@@ -44,7 +102,11 @@ export function buildFixtureRepo(): void {
     writeFileSync(issuePath(n), issueMd(n, `Fixture quest ${n}`, n <= 5 ? 'done' : 'open'));
   }
   writeFileSync(join(FIXTURE_REPO, 'docs', 'glossary.md'), '# Glossary\n\nOne term, one meaning.\n');
-  writeFileSync(join(FIXTURE_REPO, 'docs', 'factory', 'playbook.md'), '# Playbook\n\nHow the game is played.\n');
+  writeFileSync(
+    join(FIXTURE_REPO, 'docs', 'factory', 'playbook.md'),
+    '# Playbook\n\nHow the game is played.\n\n## The map\n\nFixture map text.\n\n## An encounter, start to finish\n\nFixture encounter text.\n\n## The gate ladder\n\nFixture ladder text.\n',
+  );
+  writeShipSystemsFixtures();
 }
 
 export function setIssueStatus(n: number, status: string): void {

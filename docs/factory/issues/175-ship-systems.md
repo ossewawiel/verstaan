@@ -2,7 +2,7 @@
 issue: 175
 title: "Ship systems: a read-only room that shows the factory's own agents, skills, hooks and encounter path"
 milestone: M7
-status: open
+status: in-progress
 depends_on: [173]
 agent: implementer
 agents: [implementer]
@@ -10,7 +10,7 @@ model: sonnet
 effort: medium
 checkpoint: null
 commit: null
-worktree: null
+worktree: .worktrees/m7-175-ship-systems
 github_issue: 260
 ---
 ## What
@@ -55,14 +55,14 @@ change to `kinds.ts`.
 
 ## Done when
 
-- [ ] Room lists every `.claude/agents/*.md` entry with name, description, model, effort and
+- [x] Room lists every `.claude/agents/*.md` entry with name, description, model, effort and
       tools.
-- [ ] Room lists every `.claude/skills/*/SKILL.md` entry and every `.claude/commands/*.md`
+- [x] Room lists every `.claude/skills/*/SKILL.md` entry and every `.claude/commands/*.md`
       entry.
-- [ ] Room lists `.claude/hooks/*` cross-referenced against `settings.json` events, with gaps
+- [x] Room lists `.claude/hooks/*` cross-referenced against `settings.json` events, with gaps
       visible.
-- [ ] The playbook's encounter → checkpoint → gate → level path renders as one lane.
-- [ ] Adding an agent file appears on next load with no console code change.
-- [ ] `/gate` and CI green.
+- [x] The playbook's encounter → checkpoint → gate → level path renders as one lane.
+- [x] Adding an agent file appears on next load with no console code change.
+- [x] `/gate` and CI green.
 
 Source: `docs/decisions/2026-09-16-console-as-cic/handoff.md`, quest table row 3.

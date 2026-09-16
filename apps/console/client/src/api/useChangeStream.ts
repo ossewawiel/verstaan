@@ -11,6 +11,7 @@ const SECTION_KEYS: Record<string, string[][]> = {
   party: [['state']],
   git: [['state'], ['worktrees']],
   worktrees: [['worktrees'], ['state']],
+  'ship-systems': [['ship-systems']],
   state: [['state'], ['issues'], ['worktrees'], ['ledger'], ['events']],
 };
 

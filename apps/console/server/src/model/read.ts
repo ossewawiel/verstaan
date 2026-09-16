@@ -36,6 +36,33 @@ function readDir(dir: string): DocFile[] {
     .map((name) => ({ name, content: readFileSync(join(dir, name), 'utf8') }));
 }
 
+/** Every plain file directly in `dir`, any extension, name unfiltered (issue 175's `.claude/hooks/`
+ * listing needs the shell scripts themselves, not just `.md`). A subdirectory is skipped, same as
+ * `readDir`. Exported for `read.test.ts`'s own fixture-directory coverage (issue 175 acceptance
+ * criteria: a file added to a scratch directory shows up on the next call, no code change). */
+export function readDirAll(dir: string): DocFile[] {
+  if (!existsSync(dir)) return [];
+  return readdirSync(dir)
+    .filter((n) => statSync(join(dir, n)).isFile())
+    .map((name) => ({ name, content: readFileSync(join(dir, name), 'utf8') }));
+}
+
+/** `.claude/skills/<name>/SKILL.md`, one level deeper than `readDir` -- each skill is its own
+ * directory. Named `<dir>/SKILL.md` so parseSkills can fall back to the directory name when the
+ * file's own front matter carries no `name:`. Exported for the same reason as `readDirAll`. */
+export function readSkillFiles(dir: string): DocFile[] {
+  if (!existsSync(dir)) return [];
+  const out: DocFile[] = [];
+  for (const n of readdirSync(dir)) {
+    if (!statSync(join(dir, n)).isDirectory()) continue;
+    const skillPath = join(dir, n, 'SKILL.md');
+    if (existsSync(skillPath) && statSync(skillPath).isFile()) {
+      out.push({ name: `${n}/SKILL.md`, content: readFileSync(skillPath, 'utf8') });
+    }
+  }
+  return out;
+}
+
 // The last time this process itself ran a `git` command. `git status` (and friends) write to
 // `.git/index`, `.git/worktrees/<name>/index` and similar files that live directly under the
 // common dir the server watches for real changes (branch switches, new commits). Without this,
@@ -225,6 +252,8 @@ export function readRepo(): RepoModel {
     .filter((w) => resolve(rootPath, w.path) !== resolve(REPO))
     .map((w) => readDir(join(resolve(rootPath, w.path), 'docs', 'factory', 'issues')));
   const lessonsPath = join(REPO, 'docs', 'factory', 'lessons.jsonl');
+  const settingsJsonPath = join(REPO, '.claude', 'settings.json');
+  const playbookPath = join(REPO, 'docs', 'factory', 'playbook.md');
   return {
     issueFiles: mergeIssuesAcrossWorktrees(localIssueFiles, otherIssueFiles),
     agentFiles: readDir(join(REPO, '.claude', 'agents')),
@@ -235,5 +264,10 @@ export function readRepo(): RepoModel {
     stamp: readStamp(git.head),
     worktrees,
     generated: new Date().toISOString().replace(/\.\d+Z$/, 'Z'),
+    skillFiles: readSkillFiles(join(REPO, '.claude', 'skills')),
+    commandFiles: readDir(join(REPO, '.claude', 'commands')),
+    hookFiles: readDirAll(join(REPO, '.claude', 'hooks')),
+    settingsJsonText: existsSync(settingsJsonPath) ? readFileSync(settingsJsonPath, 'utf8') : '',
+    playbookText: existsSync(playbookPath) ? readFileSync(playbookPath, 'utf8') : '',
   };
 }

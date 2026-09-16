@@ -12,6 +12,9 @@ export const useLibraryQuery = () => useQuery({ queryKey: ['library'], queryFn: 
 export const useWorktreesQuery = () => useQuery({ queryKey: ['worktrees'], queryFn: api.worktrees });
 export const useLedgerQuery = () => useQuery({ queryKey: ['ledger'], queryFn: api.ledger });
 export const useEventsQuery = () => useQuery({ queryKey: ['events'], queryFn: api.events });
+// Ship systems (issue 175): agents, skills, commands, hooks-vs-events and the playbook lane, all
+// one read-only response, so the room needs one query, not five.
+export const useShipSystemsQuery = () => useQuery({ queryKey: ['ship-systems'], queryFn: api.shipSystems });
 // GitHub is a live dependency (ADR 0014), not a file the change stream watches, so this polls on
 // its own timer rather than waiting for an SSE section that never fires for it. Thirty seconds:
 // often enough that a login regained mid-session is noticed soon, rare enough it never competes

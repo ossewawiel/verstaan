@@ -18,6 +18,11 @@ function fixtureRepo(): RepoModel {
     stamp: { present: false, matches: false },
     worktrees: [],
     generated: '2026-09-09T00:00:00Z',
+    skillFiles: [],
+    commandFiles: [],
+    hookFiles: [],
+    settingsJsonText: '',
+    playbookText: '',
   };
 }
 
@@ -76,6 +81,53 @@ describe('GET /api/docs/*', () => {
   it('404s for an unknown document', async () => {
     const res = await app.inject({ method: 'GET', url: '/api/docs/docs/nope.md' });
     expect(res.statusCode).toBe(404);
+  });
+});
+
+describe('GET /api/ship-systems (issue 175)', () => {
+  const repo = fixtureRepo();
+  repo.agentFiles = [{ name: 'implementer.md', content: '---\nname: implementer\ndescription: Makes tests pass.\nmodel: sonnet\neffort: medium\ntools: Read, Write\ncolor: green\n---\n' }];
+  repo.skillFiles = [{ name: 'quest/SKILL.md', content: '---\nname: quest\ndescription: Plans a quest.\n---\n' }];
+  repo.commandFiles = [{ name: 'gate.md', content: '---\ndescription: The full local gate.\n---\n' }];
+  repo.hookFiles = [{ name: 'fast-format.sh', content: '' }, { name: '_env.sh', content: '' }];
+  repo.settingsJsonText = JSON.stringify({ hooks: { PostToolUse: [{ hooks: [{ command: '.claude/hooks/fast-format.sh' }] }] } });
+  repo.playbookText = '# Playbook\n\n## The map\n\ntext\n\n## An encounter, start to finish\n\ntext\n';
+  const { app, invalidate } = buildApp({ readRepoFn: () => repo });
+  afterAll(() => app.close());
+
+  it('lists every agent, skill and command file with the fields the room needs', async () => {
+    const res = await app.inject({ method: 'GET', url: '/api/ship-systems' });
+    expect(res.statusCode).toBe(200);
+    const body = res.json();
+    expect(body.agents).toEqual([{ name: 'implementer', description: 'Makes tests pass.', model: 'sonnet', effort: 'medium', tools: ['Read', 'Write'], color: 'green' }]);
+    expect(body.skills).toEqual([{ name: 'quest', description: 'Plans a quest.', argumentHint: null }]);
+    expect(body.commands).toEqual([{ name: 'gate', description: 'The full local gate.' }]);
+  });
+
+  it('cross-references hooks against settings.json events, keeping the unreferenced file visible', async () => {
+    const res = await app.inject({ method: 'GET', url: '/api/ship-systems' });
+    const { hooks } = res.json();
+    expect(hooks.files.find((f: { file: string }) => f.file === '_env.sh').referencedByEvents).toEqual([]);
+    expect(hooks.files.find((f: { file: string }) => f.file === 'fast-format.sh').referencedByEvents).toEqual(['PostToolUse']);
+  });
+
+  it('renders the playbook lane from the file\'s own level-2 headings, in order', async () => {
+    const res = await app.inject({ method: 'GET', url: '/api/ship-systems' });
+    expect(res.json().playbookLane).toEqual([{ name: 'The map' }, { name: 'An encounter, start to finish' }]);
+  });
+
+  // The acceptance criterion, proven at the whole-route level: an agent file added to the folder
+  // (simulated here the same way the real file watcher tells the server to look again --
+  // `invalidate()`, no other code touched) appears in the very next response.
+  it('lists a newly added agent file on the next load, with no code change', async () => {
+    const before = await app.inject({ method: 'GET', url: '/api/ship-systems' });
+    expect(before.json().agents.map((a: { name: string }) => a.name)).toEqual(['implementer']);
+
+    repo.agentFiles = [...repo.agentFiles, { name: 'scout.md', content: '---\nname: scout\ndescription: Finds things.\nmodel: haiku\neffort: low\n---\n' }];
+    invalidate();
+
+    const after = await app.inject({ method: 'GET', url: '/api/ship-systems' });
+    expect(after.json().agents.map((a: { name: string }) => a.name)).toEqual(['implementer', 'scout']);
   });
 });
 
