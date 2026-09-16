@@ -8,6 +8,7 @@ import { ActionsRail } from '../components/ActionsRail';
 import { ActionButton } from '../components/ActionButton';
 import { RestartControl } from '../components/RestartControl';
 import { BootSequence } from '../components/BootSequence';
+import { BoardingPass } from '../components/BoardingPass';
 import { api } from '../api/client';
 
 /** mm:ss, or hh:mm:ss once an hour has passed. Elapsed time only ever grows while a job runs, so
@@ -139,6 +140,8 @@ export function ConsoleRoom() {
                 {' '}
                 <span className={`story__loadout${loadoutOf(model.next).complete ? '' : ' story__loadout--missing'}`}>{loadoutOf(model.next).text}</span>
                 {' '}· <code>{model.next.command}</code>
+                {' '}
+                <BoardingPass model={model.next.model} command={model.next.command} />
               </>
             ) : (
               'None open'
