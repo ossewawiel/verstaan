@@ -3,12 +3,20 @@ include(GoogleTest)
 
 # Engine unit tests. Label `fast` (docs/standards/testing.md).
 add_executable(verstaan_tests
+  unit/dictionary_lookup_test.cpp
   unit/engine_test.cpp
   unit/tokeniser_test.cpp
 )
 target_link_libraries(verstaan_tests PRIVATE verstaan_core GTest::gtest GTest::gtest_main)
 target_compile_features(verstaan_tests PRIVATE cxx_std_20)
 verstaan_set_warnings(verstaan_tests)
+
+# dictionary_lookup_test.cpp reads the real data/languages/eng and data/languages/afr stores
+# (issue 20's acceptance criteria: only the real, sharded store can prove a wrong shard or a wrong
+# iso3 translation), so it needs the checkout root at compile time.
+target_compile_definitions(verstaan_tests PRIVATE
+  VERSTAAN_REPO_ROOT="${CMAKE_SOURCE_DIR}"
+)
 
 gtest_discover_tests(verstaan_tests
   PROPERTIES LABELS fast

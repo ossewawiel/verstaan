@@ -2,14 +2,14 @@
 issue: 20
 title: "Dictionary lookup against the runtime store"
 milestone: M3
-status: open
+status: done
 depends_on: [19, 24]
 agent: implementer
 agents: [rule-author, implementer]
 model: sonnet
 effort: medium
 checkpoint: null
-commit: null
+commit: a74a2b1
 worktree: null
 github_issue: 243
 ---
@@ -49,5 +49,5 @@ Sense disambiguation (issue 22 reads `grammar/disambiguation.yaml` for that). In
 
 ## Done when
 
-- [ ] `engine/src/dictionary_lookup.cpp` and its test exist.
-- [ ] `ctest -R dictionary_lookup` is green against the fixed set.
+- [x] `engine/src/dictionary_lookup.cpp` and its test exist.
+- [x] `ctest -R dictionary_lookup` is green against the fixed set.
