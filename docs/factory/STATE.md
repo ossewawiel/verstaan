@@ -2,7 +2,7 @@
 
 Last completed:  #179 — The restart installs what a merge added: npm ci when the lockfile moved,
                  not only on the first run (Side), commit 58999e3
-Next up:         #19 — Build the tokeniser for the fixed sentence set (M3)
+Next up:         #20 — Dictionary lookup against the runtime store (M3)
 Branch / PR:     main, https://github.com/ossewawiel/verstaan.git, 0 files dirty, no gate stamp
-                 for dc43a80
-Resume with:     /factory-run 19
+                 for 22a0c25
+Resume with:     /factory-run 20
