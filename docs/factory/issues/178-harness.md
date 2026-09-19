@@ -2,15 +2,15 @@
 issue: 178
 title: "The harness: quest-run holds an Agent SDK session, checkpoints as Jobs cards, resumed across a restart"
 milestone: M7
-status: in-progress
+status: done
 depends_on: [174, 177]
 agent: implementer
 agents: [implementer]
 model: sonnet
 effort: high
 checkpoint: 4
-commit: null
-worktree: .worktrees/m7-178-harness
+commit: f04519c
+worktree: null
 github_issue: 263
 ---
 ## What
