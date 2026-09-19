@@ -2,14 +2,14 @@
 issue: 21
 title: "Document the disambiguation rule format and decide the eng gap"
 milestone: M3
-status: open
+status: done
 depends_on: [15]
 agent: docs-writer
 agents: [docs-writer, rule-author]
 model: sonnet
 effort: low
 checkpoint: null
-commit: null
+commit: 68031cf
 worktree: null
 github_issue: 244
 ---
@@ -54,5 +54,5 @@ only settles the format and the fallback decision issue 22 then codes against.
 
 ## Done when
 
-- [ ] `docs/unl-reference/formats/disambiguation.md` exists with the `Source:` line.
-- [ ] The `eng`-empty fallback decision is stated in one sentence issue 22 can implement.
+- [x] `docs/unl-reference/formats/disambiguation.md` exists with the `Source:` line.
+- [x] The `eng`-empty fallback decision is stated in one sentence issue 22 can implement.
