@@ -2,7 +2,9 @@
 <#
 .SYNOPSIS
   Start the Verstaan console (apps/console) if it is not running, then open it in the browser.
-  Installs dependencies and builds it on the first run, or after its source changes (issue 99).
+  apps/console/server/scripts/build-if-stale.mjs decides both the install and the build: it
+  installs when node_modules is missing or the lockfile moved since the last known-good install,
+  and rebuilds when the client or server source changes (issues 99 and 179).
 .EXAMPLE
   .\console.ps1
 .EXAMPLE
@@ -29,27 +31,12 @@ if ($running) {
 
 $appDir = Join-Path $PSScriptRoot 'apps\console'
 
-if (-not (Test-Path (Join-Path $appDir 'node_modules'))) {
-  Write-Host 'console: installing dependencies (first run only)...'
-  Push-Location $appDir
-  npm ci
-  Pop-Location
-}
-
-$distIndex = Join-Path $appDir 'dist\index.html'
-$distServer = Join-Path $appDir 'dist-server\server\src\index.js'
-$needBuild = -not (Test-Path $distIndex) -or -not (Test-Path $distServer)
-if (-not $needBuild) {
-  $distTime = (Get-Item $distIndex).LastWriteTimeUtc
-  $newestSource = Get-ChildItem -Recurse (Join-Path $appDir 'client\src'), (Join-Path $appDir 'server\src') -File |
-    Sort-Object LastWriteTimeUtc -Descending | Select-Object -First 1
-  if ($newestSource -and $newestSource.LastWriteTimeUtc -gt $distTime) { $needBuild = $true }
-}
-if ($needBuild) {
-  Write-Host 'console: building...'
-  Push-Location $appDir
-  npm run build
-  Pop-Location
+# Install, then rebuild, when either is stale -- the one decision console.sh and POST
+# /api/restart also make through this same script (issues 162 and 179), so no launcher can drift
+# from another on when an install or a build is due.
+node (Join-Path $appDir 'server\scripts\build-if-stale.mjs') $appDir
+if ($LASTEXITCODE -ne 0) {
+  Write-Error 'console: install or build failed; see above.'
 }
 
 $env:VERSTAAN_CONSOLE_PORT = "$Port"

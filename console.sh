@@ -2,9 +2,11 @@
 # SPDX-License-Identifier: MPL-2.0
 # Verstaan console on Linux and macOS: start the local service if it is not running, then open it
 # in the browser. The twin of console.cmd and console.ps1 (issue 102). Run it from any terminal
-# with an optional port: ./console.sh 7900. Safe to run twice. The first run installs the app's
-# dependencies and builds it; every later run rebuilds only when the client or server source is
-# newer than the last build. Pass --no-browser to start without opening a tab. Pass --app-window to
+# with an optional port: ./console.sh 7900. Safe to run twice. apps/console/server/scripts/
+# build-if-stale.mjs decides both the install and the build: it installs when node_modules is
+# missing or the lockfile moved since the last known-good install, and rebuilds when the client or
+# server source is newer than the last build (issue 179 -- this script no longer tests for
+# node_modules itself). Pass --no-browser to start without opening a tab. Pass --app-window to
 # start without a tab, wait for /health, then open the console in its own Chromium app window
 # instead of a browser tab -- what tools/console/install-desktop-entry.sh's launcher entry uses
 # (issue 170).
@@ -79,21 +81,19 @@ if healthy; then
 fi
 
 app=apps/console
-if [ ! -d "$app/node_modules" ]; then
-  echo "console: installing dependencies (first run only)..."
-  (cd "$app" && npm ci)
-fi
 
-# Rebuild when stale: dist is missing, or client/src or server/src holds a file newer than it.
-# Shared with POST /api/restart (issue 162), which must make exactly this same decision from a
-# detached Node process -- apps/console/server/scripts/build-if-stale.mjs is the one place that
-# rule is written, so console.sh and the restart endpoint can never drift apart on it. Lives
-# under server/, not apps/console/scripts/ directly: a relative import reaching up two directory
-# levels from server/test/ triggered a reproducible Vitest/Windows "Invalid or unexpected token"
-# parse failure (checkpoint-4 review) -- one level up, matching every other cross-directory
-# import in this app, does not.
+# Install, then rebuild, when either is stale: node_modules is missing or the lockfile moved since
+# the last known-good install; dist is missing, or client/src or server/src holds a file newer
+# than the last known-good build. Shared with POST /api/restart (issues 162 and 179), which must
+# make exactly these same two decisions from a detached Node process --
+# apps/console/server/scripts/build-if-stale.mjs is the one place both rules are written, so
+# console.sh and the restart endpoint can never drift apart on either. Lives under server/, not
+# apps/console/scripts/ directly: a relative import reaching up two directory levels from
+# server/test/ triggered a reproducible Vitest/Windows "Invalid or unexpected token" parse failure
+# (checkpoint-4 review) -- one level up, matching every other cross-directory import in this app,
+# does not.
 if ! node "$app/server/scripts/build-if-stale.mjs" "$app"; then
-  echo "console: build failed; see above." >&2
+  echo "console: install or build failed; see above." >&2
   exit 1
 fi
 

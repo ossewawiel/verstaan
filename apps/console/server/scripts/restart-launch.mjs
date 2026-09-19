@@ -1,9 +1,10 @@
 #!/usr/bin/env node
 // SPDX-License-Identifier: MPL-2.0
-// The detached launcher `POST /api/restart` spawns (issue 162). Rebuilds only if stale (the same
-// rule as console.sh, shared via build-if-stale.mjs), then starts a new server on the same port
-// as a further detached process, and prints exactly one marker line so the still-running old
-// server can learn the outcome before it decides whether to exit.
+// The detached launcher `POST /api/restart` spawns (issue 162). Installs and rebuilds only if
+// stale (the same rule as console.sh, shared via build-if-stale.mjs -- issue 179 added the install
+// half, in front of the build), then starts a new server on the same port as a further detached
+// process, and prints exactly one marker line so the still-running old server can learn the
+// outcome before it decides whether to exit.
 //
 // This process is itself detached from the old server the moment it is spawned (routes/restart.ts
 // passes `detached: true` and calls `unref()`), so a build that takes a while never risks being
@@ -71,10 +72,14 @@ function fail(message) {
 try {
   ensureBuilt(appDir);
 } catch (e) {
-  // A failed build never spawns a new server: nothing here has touched the port, and the old
-  // process (still reading this stdout) is the only thing there is to answer the client with.
-  // Crucially, `BUILD_OK_MARKER` is never printed on this path, so the old process never closes
-  // its own listening socket either -- it is still the only thing serving the port, unchanged.
+  // A failed install or a failed build never spawns a new server: nothing here has touched the
+  // port, and the old process (still reading this stdout) is the only thing there is to answer
+  // the client with. Crucially, `BUILD_OK_MARKER` is never printed on this path, so the old
+  // process never closes its own listening socket either -- it is still the only thing serving
+  // the port, unchanged. `ensureBuilt`'s own error message already distinguishes the two: a
+  // failed `npm ci` carries the install's own stdout+stderr (npm's own "npm ERR!" lines), a
+  // failed build carries the compiler's or bundler's own error text -- neither is generic, so the
+  // client sees which one failed without this script needing to guess or relabel it.
   fail(e instanceof Error ? e.message : String(e));
 }
 
