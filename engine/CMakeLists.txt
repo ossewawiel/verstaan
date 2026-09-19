@@ -1,6 +1,7 @@
 # verstaan_core: the engine library (SPEC.md §3.4). No port dependency (docs/standards/cpp.md).
 add_library(verstaan_core STATIC
   src/engine.cpp
+  src/tokeniser.cpp
 )
 
 target_include_directories(verstaan_core PUBLIC

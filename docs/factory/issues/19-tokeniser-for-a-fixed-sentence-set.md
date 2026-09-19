@@ -2,14 +2,14 @@
 issue: 19
 title: "Build the tokeniser for the fixed sentence set"
 milestone: M3
-status: open
+status: done
 depends_on: [12, 16, 24]
 agent: implementer
 agents: [rule-author, implementer]
 model: sonnet
 effort: medium
 checkpoint: null
-commit: null
+commit: 54d7280
 worktree: null
 github_issue: 242
 ---
@@ -48,5 +48,5 @@ set is one sentence per row already).
 
 ## Done when
 
-- [ ] `engine/src/tokeniser.cpp` and its test exist.
-- [ ] `ctest -R tokeniser` is green against the fixed set.
+- [x] `engine/src/tokeniser.cpp` and its test exist.
+- [x] `ctest -R tokeniser` is green against the fixed set.
