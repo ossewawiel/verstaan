@@ -2,15 +2,15 @@
 issue: 23
 title: "Wire Options, Result, Status and the --trace flag"
 milestone: M3
-status: in-progress
+status: done
 depends_on: [22, 24]
 agent: implementer
 agents: [implementer]
 model: sonnet
 effort: medium
 checkpoint: null
-commit: null
-worktree: .worktrees/m3-23-options-result-status-and-trace
+commit: af388b0
+worktree: null
 github_issue: 246
 ---
 ## What
