@@ -2,15 +2,15 @@
 issue: 19
 title: "Build the tokeniser for the fixed sentence set"
 milestone: M3
-status: in-progress
+status: done
 depends_on: [12, 16, 24]
 agent: implementer
 agents: [rule-author, implementer]
 model: sonnet
 effort: medium
 checkpoint: null
-commit: null
-worktree: .worktrees/m3-19-tokeniser-fixed-sentence-set
+commit: 54d7280
+worktree: null
 github_issue: 242
 ---
 ## What
