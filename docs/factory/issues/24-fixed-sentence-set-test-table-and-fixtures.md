@@ -2,15 +2,15 @@
 issue: 24
 title: "Write the fixed sentence set's test table and fixture YAML"
 milestone: M3
-status: in-progress
+status: done
 depends_on: [16]
 agent: rule-author
 agents: [rule-author]
 model: sonnet
 effort: medium
 checkpoint: null
-commit: null
-worktree: .worktrees/m3-24-fixed-sentence-set
+commit: a3f920a
+worktree: null
 github_issue: 247
 ---
 ## What
