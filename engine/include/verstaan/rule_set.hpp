@@ -67,16 +67,26 @@ class RuleSet {
   [[nodiscard]] const std::vector<GrammarRule>& generation() const { return generation_; }
   [[nodiscard]] const std::vector<GrammarRule>& to_inflection() const { return to_inflection_; }
 
+  // The store roots `load()` read its grammar from, so `Engine::translate` (issue 23) can open the
+  // matching `dictionary/` shards without `Engine::load` needing its own store-root parameter
+  // (SPEC.md §3.4 fixes that signature to `const RuleSet&` alone). Empty for a `from_rules()`
+  // RuleSet: no store backs it, so there is nothing to reopen.
+  [[nodiscard]] std::string_view from_store_root() const { return from_store_root_; }
+  [[nodiscard]] std::string_view to_store_root() const { return to_store_root_; }
+
  private:
   RuleSet(std::vector<GrammarRule> disambiguation, std::vector<GrammarRule> analysis,
           std::vector<GrammarRule> from_inflection, std::vector<GrammarRule> subcategorisation,
-          std::vector<GrammarRule> generation, std::vector<GrammarRule> to_inflection)
+          std::vector<GrammarRule> generation, std::vector<GrammarRule> to_inflection,
+          std::string from_store_root = {}, std::string to_store_root = {})
       : disambiguation_(std::move(disambiguation)),
         analysis_(std::move(analysis)),
         from_inflection_(std::move(from_inflection)),
         subcategorisation_(std::move(subcategorisation)),
         generation_(std::move(generation)),
-        to_inflection_(std::move(to_inflection)) {}
+        to_inflection_(std::move(to_inflection)),
+        from_store_root_(std::move(from_store_root)),
+        to_store_root_(std::move(to_store_root)) {}
 
   std::vector<GrammarRule> disambiguation_;
   std::vector<GrammarRule> analysis_;
@@ -84,6 +94,8 @@ class RuleSet {
   std::vector<GrammarRule> subcategorisation_;
   std::vector<GrammarRule> generation_;
   std::vector<GrammarRule> to_inflection_;
+  std::string from_store_root_;
+  std::string to_store_root_;
 };
 
 }  // namespace verstaan

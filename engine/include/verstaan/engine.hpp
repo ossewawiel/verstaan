@@ -3,8 +3,10 @@
 
 // Public API. SPEC.md §3.4. Changing this file needs an ADR (engine/CLAUDE.md).
 //
-// M0 status: every Engine method returns Status::not_implemented (docs/standards/testing.md).
-// No translation behaviour lands until later issues make these bodies real.
+// M0 status: every Engine method returned Status::not_implemented (docs/standards/testing.md).
+// Issue 23 retires that stub for the runtime-tables back end (Engine::load(RuleSet)); a plain
+// eng-to-afr, neutral-register, no-context call now returns a real Status. Engine::generated
+// (the compiled-tables back end, ADR 0007) stays the M0 stub until M4.
 
 #include <cstddef>
 #include <cstdint>
@@ -96,12 +98,18 @@ class Engine {
 
  private:
   Engine() = default;
-  explicit Engine(RuleSet rules) : rules_(std::move(rules)) {}
+  explicit Engine(RuleSet rules) : rules_(std::move(rules)), is_runtime_backed_(true) {}
 
   // The runtime tables this Engine was built from (empty for Engine::generated and the M0
-  // default). Not read by `translate()` yet -- issue 23 wires `Engine::translate` against it,
-  // per SPEC.md §3.4's `not_implemented` note ("every real Engine method retires it").
+  // default). `translate()` reads it (issue 23): `rules_.from_store_root()`/`to_store_root()`
+  // reopen the matching dictionary shards, and RuleInterpreter (verstaan/rule_interpreter.hpp)
+  // reads `rules_` itself.
   RuleSet rules_;
+
+  // True only for an Engine built by `load()`. `translate()` reads this before touching `rules_`
+  // so `generated()` (the compiled-tables back end, M4, ADR 0007) keeps its own M0 stub status
+  // untouched by issue 23 -- "Not in scope" on that issue's own file names it explicitly.
+  bool is_runtime_backed_ = false;
 };
 
 }  // namespace verstaan
