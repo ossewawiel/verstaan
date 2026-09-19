@@ -191,6 +191,16 @@ export interface DebriefGroup {
 
 export type JobStatus = 'queued' | 'running' | 'done' | 'failed' | 'killed';
 
+// Issue 178 (ADR 0016): the harness's own checkpoint. `input` is the `AskUserQuestion` tool's raw
+// payload -- rendered as-is, never interpreted client-side, the same "no room here decides what a
+// question means" boundary ADR 0016 leaves to the model and the owner reading it.
+export interface JobQuestion {
+  toolUseId: string;
+  toolName: string;
+  input: Record<string, unknown>;
+  askedAt: number;
+}
+
 export interface JobSummary {
   id: string;
   kind: string;
@@ -203,6 +213,9 @@ export interface JobSummary {
   endedAt: number | null;
   durationMs: number | null;
   queuedReason: string | null;
+  // Issue 178: only a `quest-run` job ever carries these; every other kind's are always null.
+  sessionId: string | null;
+  question: JobQuestion | null;
 }
 
 export interface JobLine {
@@ -246,6 +259,19 @@ export const api = {
     kill: async (id: string) => {
       const res = await fetch(`/api/jobs/${id}`, { method: 'DELETE' });
       if (!res.ok && res.status !== 204) throw new Error(`kill ${id}: ${res.status}`);
+    },
+    // Issue 178: the Jobs-room answer endpoint. Resolves the promise `canUseTool`'s own
+    // `AskUserQuestion` interception is blocked on (server/src/jobs/runner.ts's `answerQuestion`).
+    answer: async (id: string, answer: string) => {
+      const res = await fetch(`/api/jobs/${id}/answer`, {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ answer }),
+      });
+      if (!res.ok && res.status !== 204) {
+        const body = await res.json().catch(() => ({}) as { error?: string });
+        throw new Error(body.error ?? `answer ${id}: ${res.status}`);
+      }
     },
   },
   open: async (what: string, params: Record<string, string | number> = {}): Promise<string> => {

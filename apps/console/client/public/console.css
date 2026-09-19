@@ -389,6 +389,37 @@ select:focus-visible,
   color: var(--amber-dim);
 }
 
+/* The harness's own checkpoint card (issue 178, ADR 0016): a plain form, no options UI beyond a
+   text box on purpose -- "Not in scope: redesigning the Jobs room beyond the question card". */
+.job-question {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  border-color: var(--amber-dim);
+}
+.job-question__prompt {
+  white-space: pre-wrap;
+  word-break: break-word;
+  font-size: 0.8rem;
+  background: #0d1210;
+  color: #d8ded9;
+  padding: 0.6rem;
+  margin: 0;
+}
+.job-question__input {
+  font: inherit;
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid var(--plate-edge);
+  padding: 0.4rem;
+  resize: vertical;
+}
+.job-question__error {
+  color: var(--st-open, #c0392b);
+  font-size: 0.78rem;
+  margin: 0;
+}
+
 /* ---- Codex and Debrief (issue 176) --------------------------------------------------------- */
 .codex-orders {
   white-space: pre-wrap;

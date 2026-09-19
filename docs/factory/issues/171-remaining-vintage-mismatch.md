@@ -7,7 +7,7 @@ depends_on: [14, 17, 167, 169]
 agent: rule-author
 agents: [rule-author, implementer]
 model: sonnet
-effort: small
+effort: medium
 checkpoint: null
 commit: 3aca3a1
 worktree: null

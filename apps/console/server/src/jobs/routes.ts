@@ -57,6 +57,12 @@ function jobJson(job: import('./runner.js').Job) {
     endedAt: job.endedAt,
     durationMs: job.startedAt ? (job.endedAt ?? Date.now()) - job.startedAt : null,
     queuedReason: job.queuedReason,
+    // Issue 178 (ADR 0016): the harness's own two additions. `sessionId` lets a rebuilt server
+    // (and a developer reading the Jobs room) tell a `quest-run` job apart from one that never
+    // opened a session at all; `question`, when non-null, is what tells the Jobs room to render
+    // the checkpoint card instead of plain log lines.
+    sessionId: job.sessionId,
+    question: job.question,
   };
 }
 
@@ -113,6 +119,24 @@ export function registerJobRoutes(app: FastifyInstance, deps: RouteDeps): void {
     const job = jobs.get((req.params as { id: string }).id);
     if (!job) return reply.code(404).send({ error: 'job not found' });
     reply.type('application/json').send(jobJson(job));
+  });
+
+  // Issue 178 (ADR 0016): the Jobs-room answer endpoint. Posting here is the only way
+  // `startSdkSession`'s `onQuestion` promise (runner.ts) ever resolves -- there is no timeout, the
+  // same shape a real interactive checkpoint already has. `Host` is checked exactly like every
+  // other mutating route (ADR 0011 finding 08): a page that could answer a checkpoint on someone
+  // else's behalf is the same class of problem as a page that could start or kill a job.
+  app.post('/api/jobs/:id/answer', async (req, reply) => {
+    if (!isLoopbackHost(req.headers.host, port)) {
+      return reply.code(400).send({ error: 'refused: Host header does not name this server' });
+    }
+    const body = (req.body ?? {}) as { answer?: unknown };
+    if (typeof body.answer !== 'string' || body.answer.length === 0) {
+      return reply.code(400).send({ error: 'answer must be a non-empty string' });
+    }
+    const ok = jobs.answerQuestion((req.params as { id: string }).id, body.answer);
+    if (!ok) return reply.code(404).send({ error: 'job not found, or it has no open question' });
+    reply.code(204).send();
   });
 
   app.delete('/api/jobs/:id', async (req, reply) => {

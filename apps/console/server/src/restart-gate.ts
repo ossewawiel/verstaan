@@ -14,6 +14,12 @@
 // concurrent job starts, which this mirrors in shape but not in scope. A separate module (not a
 // method on `JobManager` or a field on `restart.ts`'s own state) so `jobs/routes.ts` and
 // `restart.ts` can both import it without importing each other.
+//
+// Issue 178 (ADR 0016): `quest-run` is the one kind exempt from the "no job may run across a
+// restart" rule this flag exists to enforce. That exemption lives in `JobManager.runningJob()`
+// (`jobs/runner.ts`) -- the one thing `POST /api/restart` (`restart.ts`) actually asks before it
+// ever touches this flag -- not here: this class only ever tracks "is a restart currently in
+// flight", the same way regardless of which kinds are running.
 export class RestartGate {
   private active = false;
 

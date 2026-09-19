@@ -55,6 +55,8 @@ apps/console/dist-server/
 apps/console/test-results/
 apps/console/playwright-report/
 apps/console/blob-report/
+# quest-run's own session persistence (issue 178, ADR 0016): runtime state, never committed.
+apps/console/.data/
 
 # Git worktrees, one per branch (side quest 92)
 .worktrees/

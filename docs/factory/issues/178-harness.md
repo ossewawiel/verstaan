@@ -2,7 +2,7 @@
 issue: 178
 title: "The harness: quest-run holds an Agent SDK session, checkpoints as Jobs cards, resumed across a restart"
 milestone: M7
-status: open
+status: in-progress
 depends_on: [174, 177]
 agent: implementer
 agents: [implementer]
@@ -10,7 +10,7 @@ model: sonnet
 effort: high
 checkpoint: 4
 commit: null
-worktree: null
+worktree: .worktrees/m7-178-harness
 github_issue: 263
 ---
 ## What
@@ -65,12 +65,13 @@ room beyond the question card.
 
 ## Done when
 
-- [ ] `quest-run` job kind calls `query()` with prompt, model and effort from the quest's front
+- [x] `quest-run` job kind calls `query()` with prompt, model and effort from the quest's front
       matter.
-- [ ] `canUseTool` intercepts `AskUserQuestion` into a Jobs-room card with a text box.
-- [ ] The job record carries the session id.
-- [ ] The restart gate exempts `quest-run` and resumes the session by id after a rebuild.
-- [ ] The first run's cost line appears in the job log.
+- [x] `canUseTool` intercepts `AskUserQuestion` into a Jobs-room card with a text box.
+- [x] The job record carries the session id.
+- [x] The restart gate exempts `quest-run` and resumes the session by id after a rebuild.
+- [x] The first run's cost line appears in the job log (proven against a stubbed SDK; the first
+      real `quest-run` against the live SDK is a manual owner verification step, see hand-off).
 - [ ] `/gate` and CI green.
 
 Source: `docs/decisions/2026-09-16-console-as-cic/handoff.md`, quest table row 6; ADR 0016.
