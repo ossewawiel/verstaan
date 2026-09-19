@@ -2,7 +2,7 @@
 
 Last completed:  #179 — The restart installs what a merge added: npm ci when the lockfile moved,
                  not only on the first run (Side), commit 58999e3
-Next up:         #21 — Document the disambiguation rule format and decide the eng gap (M3)
+Next up:         #24 — Write the fixed sentence set's test table and fixture YAML (M3)
 Branch / PR:     main, https://github.com/ossewawiel/verstaan.git, 0 files dirty, no gate stamp
-                 for 5deeb39
-Resume with:     /factory-run 21
+                 for 42220b0
+Resume with:     /factory-run 24
