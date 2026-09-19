@@ -2,15 +2,15 @@
 issue: 179
 title: "The restart installs what a merge added: npm ci when the lockfile moved, not only on the first run"
 milestone: Side
-status: in-progress
+status: done
 depends_on: [102, 162, 178]
 agent: implementer
 agents: [implementer]
 model: sonnet
 effort: medium
 checkpoint: null
-commit: null
-worktree: .worktrees/side-179-restart-installs-deps
+commit: 58999e3
+worktree: null
 github_issue: 271
 ---
 ## What
@@ -70,10 +70,10 @@ bound to the port, and the error it reports names the install.
 
 ## Done when
 
-- [ ] `build-if-stale.mjs` owns the install decision beside the build decision, with its own stamp.
-- [ ] A restart after a lockfile change installs, builds, and comes back on the same port.
-- [ ] A failed install leaves the old server up and names the install in its output.
-- [ ] `console.sh`, `console.cmd` and `console.ps1` no longer decide the install themselves.
-- [ ] Unit tests cover a missing `node_modules`, a moved lockfile and an up-to-date tree, with no
+- [x] `build-if-stale.mjs` owns the install decision beside the build decision, with its own stamp.
+- [x] A restart after a lockfile change installs, builds, and comes back on the same port.
+- [x] A failed install leaves the old server up and names the install in its output.
+- [x] `console.sh`, `console.cmd` and `console.ps1` no longer decide the install themselves.
+- [x] Unit tests cover a missing `node_modules`, a moved lockfile and an up-to-date tree, with no
       real `npm ci` in the suite.
 - [ ] `/gate` and CI green.
