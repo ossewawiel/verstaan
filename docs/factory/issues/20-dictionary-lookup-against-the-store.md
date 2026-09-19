@@ -2,7 +2,7 @@
 issue: 20
 title: "Dictionary lookup against the runtime store"
 milestone: M3
-status: open
+status: in-progress
 depends_on: [19, 24]
 agent: implementer
 agents: [rule-author, implementer]
@@ -10,7 +10,7 @@ model: sonnet
 effort: medium
 checkpoint: null
 commit: null
-worktree: null
+worktree: .worktrees/m3-20-dictionary-lookup
 github_issue: 243
 ---
 ## What
