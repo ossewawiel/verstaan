@@ -5,9 +5,11 @@
 // `spawn` is either a literal from this table or a value that passed its kind's own validator, so
 // there is no way for a request body to smuggle in an extra flag or a second command (the ADR
 // under docs/adr/ names this the rule).
-import { existsSync, readFileSync } from 'node:fs';
+import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
+import type { EffortLevel } from '@anthropic-ai/claude-agent-sdk';
 import { REPO } from '../model/read.js';
+import { parseFrontmatter } from '../model/parse.js';
 
 export type Stream = 'stdout' | 'stderr';
 
@@ -37,6 +39,12 @@ export interface JobKindDef {
   validateArgs: (args: unknown) => Record<string, unknown>;
   precheck?: Precheck;
   build: (treeAbsPath: string, args: Record<string, unknown>) => Spawn;
+  /** Issue 178 (ADR 0016): true for exactly one row, `quest-run`. `JobManager.start()` branches
+   * on this before it ever calls `build`/`spawn` -- this kind opens an Agent SDK session
+   * (`query()`), the second spawn site in the codebase, and never a child process that ends. Its
+   * own `build` is never called; it exists only so the table's own shape (every kind owns a
+   * `build`) stays uniform and a stray call fails loudly instead of silently doing nothing. */
+  sdkSession?: boolean;
 }
 
 export class JobArgsError extends Error {}
@@ -77,6 +85,74 @@ function validateQuestStartArgs(args: unknown): Record<string, unknown> {
   const issue = typeof raw === 'number' ? raw : Number(raw);
   if (!Number.isInteger(issue) || issue <= 0) throw new JobArgsError('issue must be a positive integer');
   return { model, issue };
+}
+
+// The real `effort:` values docs/factory/issues/*.md carries today (`grep -h '^effort:'
+// docs/factory/issues/*.md`) -- an allowlist, the same reasoning as QUEST_MODELS above: a quest
+// naming an effort this list has not caught up with is a data problem to fix in the issue file or
+// here, never a string passed straight through to `query()`'s own `effort` option unchecked.
+// Typed as `readonly EffortLevel[]` (checkpoint-4 review, finding 4), the SDK's own scale
+// (sdk.d.ts) -- not `string[]`: a value here that `Options['effort']` cannot actually accept is
+// now a compile error in this file, not a runtime cast (`sdk-runner.ts`'s `params.effort as
+// Options['effort']`) silently papering over the mismatch. `docs/factory/issues/171-...md` used
+// to carry `effort: small`, not a real `EffortLevel` at all; fixed to `medium` (issue 171's own
+// checkpoint and agent count matched a medium-effort quest of that era, not a small one) rather
+// than widening this allowlist to cover a typo.
+const QUEST_EFFORTS: readonly EffortLevel[] = ['low', 'medium', 'high'];
+
+/** The one issue file (issue 178, ADR 0016) a `quest-run` request names, read fresh from disk --
+ * never the cached, already-parsed `Issue` the rest of the app builds from `readRepo()`, because
+ * `quest-run`'s own validator must see the file as it is the instant a job is requested, not as it
+ * was the last time `/api/state` rebuilt its cache. `issuesDir` is a parameter (defaulting to this
+ * checkout's real `docs/factory/issues`) so a test can point it at a throwaway fixture, the same
+ * seam `lessonSigPresent` (below) already uses for its own ledger file. Returns null when no file
+ * in the directory starts with `<issue>-` (zero-padded or not -- every issue file below 10 is
+ * zero-padded on disk, `01-...md`, checkpoint-4 review finding 7) or the file carries no
+ * parseable front matter at all; `validateQuestRunArgs` turns that into the 400 a request must
+ * get before any session opens. */
+export function findQuestIssueFile(
+  issue: number,
+  issuesDir: string = join(REPO, 'docs', 'factory', 'issues'),
+): { file: string; model: string; effort: string; status: string } | null {
+  if (!existsSync(issuesDir)) return null;
+  for (const name of readdirSync(issuesDir)) {
+    if (!new RegExp(`^0*${issue}-.*\\.md$`).test(name) || /-test-cases\.md$/.test(name)) continue;
+    const content = readFileSync(join(issuesDir, name), 'utf8');
+    const fm = parseFrontmatter(content);
+    if (!fm) return null;
+    return {
+      file: name,
+      model: typeof fm.model === 'string' ? fm.model : '',
+      effort: typeof fm.effort === 'string' ? fm.effort : '',
+      status: typeof fm.status === 'string' ? fm.status : '',
+    };
+  }
+  return null;
+}
+
+/** Refuses (before any Agent SDK session ever opens) unless the quest number names a real issue
+ * file, that file's own `status:` is `open` (a quest already running or already landed is not one
+ * `quest-run` may start a second time), and its `model:`/`effort:` are both values this table
+ * already knows (issue 178 acceptance: "checking the quest number resolves to an open issue file
+ * with a model and effort in front matter"). Unlike `quest-start`, the model and effort are never
+ * taken from the client's own request body -- they come only from the issue file itself, read
+ * here, so a request cannot ask the harness to run one quest under another quest's loadout. */
+export function validateQuestRunArgs(args: unknown, issuesDir?: string): Record<string, unknown> {
+  const raw = (args as Record<string, unknown> | null | undefined)?.issue;
+  const issue = typeof raw === 'number' ? raw : Number(raw);
+  if (!Number.isInteger(issue) || issue <= 0) throw new JobArgsError('issue must be a positive integer');
+  const found = findQuestIssueFile(issue, issuesDir);
+  if (!found) throw new JobArgsError(`issue ${issue}: no issue file found under docs/factory/issues`);
+  if (found.status !== 'open') throw new JobArgsError(`issue ${issue}: front matter status is '${found.status || '(none)'}', not 'open'`);
+  if (!QUEST_MODELS.includes(found.model)) throw new JobArgsError(`issue ${issue}: front matter model '${found.model || '(none)'}' is not one of ${QUEST_MODELS.join(', ')}`);
+  // `found.effort` is a plain `string` (front matter is untyped text); the cast here is only ever
+  // used for this one membership check, never to smuggle an unchecked value past it -- the `if`
+  // itself is what proves `found.effort` really is one of `QUEST_EFFORTS`'s own `EffortLevel`
+  // values before anything downstream ever treats it as one (checkpoint-4 review, finding 4).
+  if (!(QUEST_EFFORTS as readonly string[]).includes(found.effort)) {
+    throw new JobArgsError(`issue ${issue}: front matter effort '${found.effort || '(none)'}' is not one of ${QUEST_EFFORTS.join(', ')}`);
+  }
+  return { issue, model: found.model, effort: found.effort, file: found.file };
 }
 
 /** The one argv template per platform (issue 174 L2): a real terminal, opened with the same line
@@ -260,6 +336,16 @@ export const JOB_KINDS: Record<string, JobKindDef> = {
       const issue = String(args.issue).padStart(2, '0');
       const { cmd, args: argv } = questStartArgv(process.platform, model, `/factory-run ${issue}`);
       return { cmd, args: argv, cwd: tree };
+    },
+  },
+  'quest-run': {
+    kind: 'quest-run',
+    label: 'quest-run (Agent SDK session)',
+    treeScoped: true,
+    validateArgs: validateQuestRunArgs,
+    sdkSession: true,
+    build: () => {
+      throw new Error('quest-run: runs an Agent SDK session, never a spawned process; JobManager.start() must branch on sdkSession before calling build()');
     },
   },
   'lesson-promote': {

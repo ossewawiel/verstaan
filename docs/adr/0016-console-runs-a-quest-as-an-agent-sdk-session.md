@@ -70,3 +70,20 @@ terminal." That statement is unverified.
   after two minutes, so the checkpoint would not block.
 - **Terminal spawn only, stop there.** The runner-up. It wins on any of the three signals above.
   It loses in-run visibility and the artifact-answer loop; it keeps everything else.
+
+## Addendum (2026-09-19, issue 178) — `canUseTool` auto-approves every tool but `AskUserQuestion`
+
+The harness (issue 178) sets no `permissionMode` and returns `{ behavior: 'allow' }` from
+`canUseTool` for every tool call except `AskUserQuestion`. This decision was never made explicit
+above; it fell out of the implementation and a checkpoint-4 review named it. Recording it now,
+deliberately, rather than leaving it as an unstated default.
+
+A terminal `/factory-run` stops at whatever this repo's own Claude settings do not already allow.
+A console-launched `quest-run` does not stop at all, for any tool but the one this ADR already
+names. This is broader than terminal parity, not equal to it: "the party gains no new member"
+describes which agents run, not what they may do unprompted once running.
+
+The owner's call: ship it this way. A quest that would misbehave from the terminal would misbehave
+from the console too — the harness does not grant a quest any capability the terminal session
+lacks, it only removes a human's chance to catch a bad tool call before it runs. Revisit if a
+console-launched quest ever does something a terminal session's own settings would have stopped.

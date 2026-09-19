@@ -6,6 +6,12 @@
 // job-runner kind: it never goes through `JobManager`/`JOB_KINDS`, so it adds no allow-list entry
 // and `service stop` naming the console stays refused exactly as issue 100 left it (kinds.ts,
 // namesConsole).
+// Issue 178 (ADR 0016): the resume-on-start half of `quest-run`'s restart story lives in
+// `JobManager`'s own constructor (`jobs/runner.ts`'s `restoreQuestRunJobs`), not here -- a fresh
+// `JobManager` is constructed the moment the new process this file's own launcher
+// (`scripts/restart-launch.mjs`) spawns starts up, well before this route is ever registered
+// again, and that is the one place a `quest-run` job with a `sessionId` and no terminal status
+// calls `query({ resume: sessionId, ... })` to pick its session back up.
 import { spawn } from 'node:child_process';
 import { resolve } from 'node:path';
 import type { FastifyInstance } from 'fastify';

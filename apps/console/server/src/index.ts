@@ -160,6 +160,12 @@ export function buildApp({
   mainAncestorShasFn = mainAncestorShas,
   ghAuthTokenFn = ghAuthToken,
   openPullRequestGateStatesFn = openPullRequestGateStates,
+  // Issue 178 (ADR 0016): where `quest-run` jobs are written back to disk so a restart can find
+  // them again (JobManager.restoreQuestRunJobs). Undefined by default -- every existing test and
+  // every dev/e2e caller of `buildApp` that never sets this keeps the old, in-memory-only
+  // behaviour, and never touches this checkout's filesystem for it. Only the real production
+  // entrypoint (`isMain`, below) supplies one.
+  questRunStorePath,
 }: {
   readRepoFn?: typeof readRepo;
   appDir?: string;
@@ -167,6 +173,7 @@ export function buildApp({
   mainAncestorShasFn?: typeof mainAncestorShas;
   ghAuthTokenFn?: typeof ghAuthToken;
   openPullRequestGateStatesFn?: typeof openPullRequestGateStates;
+  questRunStorePath?: string;
 } = {}) {
   const app = Fastify({ logger: false });
   // gzip/brotli the built client and the JSON API (issue 99: cold load under 250 KB
@@ -355,7 +362,7 @@ export function buildApp({
     reply.type('application/json').send(shipSystems);
   });
 
-  const jobs = new JobManager();
+  const jobs = new JobManager(undefined, undefined, questRunStorePath);
   const rootPath = resolveRootPath();
   // Shared between the two routes below (issue 162, checkpoint-4 review findings 3 and 4): the
   // one flag that gates a job start and a second restart, both, for the whole time a restart's
@@ -476,12 +483,16 @@ export function spaFallbackHandler(distDir: string) {
 
 const isMain = !!process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1])).href;
 if (isMain) {
-  const { app, onChange } = buildApp();
-
   // Serve the built client, if it exists (npm run build). Old room URLs from the file console
   // redirect to the new app's routes (issue 99 "Done when"). Resolved from process.cwd(), the
   // same reasoning as REPO in model/read.ts: every launcher runs this server from apps/console.
   const appDir = process.cwd();
+  // Issue 178 (ADR 0016): a `quest-run` job's own persistence, so a restart can find it again
+  // (JobManager.restoreQuestRunJobs). Lives under apps/console, the one directory that stays the
+  // same shape across a restart (see REPO's own comment above); apps/console/.data/ is gitignored,
+  // the same way dist/ and dist-server/ already are -- generated/runtime state, never committed.
+  const questRunStorePath = resolve(appDir, '.data', 'quest-run-jobs.json');
+  const { app, onChange } = buildApp({ questRunStorePath });
   const distDir = resolve(appDir, 'dist');
   const REDIRECTS: Record<string, string> = {
     '/index.html': '/',
