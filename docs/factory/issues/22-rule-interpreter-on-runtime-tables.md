@@ -2,15 +2,15 @@
 issue: 22
 title: "Rule interpreter on runtime tables"
 milestone: M3
-status: in-progress
+status: done
 depends_on: [20, 21]
 agent: implementer
 agents: [rule-author, implementer]
 model: sonnet
 effort: high
 checkpoint: null
-commit: null
-worktree: .worktrees/m3-22-rule-interpreter-on-runtime-tables
+commit: 197c7fe
+worktree: null
 github_issue: 245
 ---
 ## What
@@ -50,6 +50,6 @@ ADR 0007. Deciding the disambiguation format (issue 21, already closed by the ti
 
 ## Done when
 
-- [ ] `engine/src/rule_interpreter.cpp` implements `Engine::load(RuleSet)` against all five
+- [x] `engine/src/rule_interpreter.cpp` implements `Engine::load(RuleSet)` against all five
       grammar files per language.
-- [ ] `ctest -R rule_interpreter` is green, including the disambiguation and fallback cases.
+- [x] `ctest -R rule_interpreter` is green, including the disambiguation and fallback cases.
