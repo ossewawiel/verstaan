@@ -2,15 +2,15 @@
 issue: 21
 title: "Document the disambiguation rule format and decide the eng gap"
 milestone: M3
-status: in-progress
+status: done
 depends_on: [15]
 agent: docs-writer
 agents: [docs-writer, rule-author]
 model: sonnet
 effort: low
 checkpoint: null
-commit: null
-worktree: .worktrees/m3-21-disambiguation-format
+commit: 68031cf
+worktree: null
 github_issue: 244
 ---
 ## What
