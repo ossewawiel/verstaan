@@ -11,6 +11,7 @@
 
 #include <algorithm>
 #include <charconv>
+#include <cstdint>
 #include <fstream>
 #include <ios>
 #include <optional>
@@ -160,6 +161,11 @@ std::vector<GrammarRule> read_grammar_file(const std::string& path) {
   return rules;
 }
 
+// `store_root` and `file_name` are never interchangeable in practice -- every call site passes a
+// `data/languages/<iso3>` path and a grammar-file literal ("analysis.yaml", ...) -- but they share
+// a type, so clang-tidy cannot see that; NOLINT rather than a single-use wrapper type for two
+// call-site-only parameters.
+// NOLINTNEXTLINE(bugprone-easily-swappable-parameters)
 std::string grammar_path(std::string_view store_root, std::string_view file_name) {
   std::string path(store_root);
   path += "/grammar/";
@@ -170,12 +176,12 @@ std::string grammar_path(std::string_view store_root, std::string_view file_name
 }  // namespace
 
 RuleSet RuleSet::load(std::string_view from_store_root, std::string_view to_store_root) {
-  return RuleSet(read_grammar_file(grammar_path(from_store_root, "disambiguation.yaml")),
-                 read_grammar_file(grammar_path(from_store_root, "analysis.yaml")),
-                 read_grammar_file(grammar_path(from_store_root, "inflection.yaml")),
-                 read_grammar_file(grammar_path(from_store_root, "subcategorisation.yaml")),
-                 read_grammar_file(grammar_path(to_store_root, "generation.yaml")),
-                 read_grammar_file(grammar_path(to_store_root, "inflection.yaml")));
+  return {read_grammar_file(grammar_path(from_store_root, "disambiguation.yaml")),
+          read_grammar_file(grammar_path(from_store_root, "analysis.yaml")),
+          read_grammar_file(grammar_path(from_store_root, "inflection.yaml")),
+          read_grammar_file(grammar_path(from_store_root, "subcategorisation.yaml")),
+          read_grammar_file(grammar_path(to_store_root, "generation.yaml")),
+          read_grammar_file(grammar_path(to_store_root, "inflection.yaml"))};
 }
 
 RuleSet RuleSet::from_rules(std::vector<GrammarRule> disambiguation,
@@ -184,8 +190,8 @@ RuleSet RuleSet::from_rules(std::vector<GrammarRule> disambiguation,
                             std::vector<GrammarRule> subcategorisation,
                             std::vector<GrammarRule> generation,
                             std::vector<GrammarRule> to_inflection) {
-  return RuleSet(std::move(disambiguation), std::move(analysis), std::move(from_inflection),
-                 std::move(subcategorisation), std::move(generation), std::move(to_inflection));
+  return {std::move(disambiguation),    std::move(analysis),   std::move(from_inflection),
+          std::move(subcategorisation), std::move(generation), std::move(to_inflection)};
 }
 
 namespace {
@@ -203,7 +209,7 @@ namespace {
 //                         files, 2026-09-19); the node matches if any one `alt` fully matches. ---
 
 struct SimpleTerm {
-  enum class Kind { Tag, FeatureValue, Literal } kind = Kind::Tag;
+  enum class Kind : std::uint8_t { Tag, FeatureValue, Literal } kind = Kind::Tag;
   bool negate = false;
   std::string key;
   std::string value;  // FeatureValue only
@@ -369,7 +375,7 @@ bool node_matches(const NodePattern& pattern, const Candidate& node) {
 // (docs/unl-reference/formats/transformation-grammar.md: "conservation" the other way). ---
 
 struct RhsItem {
-  enum class Kind { CaptureRef, AddLiteralAttribute, AddCapturedAttributes } kind;
+  enum class Kind : std::uint8_t { CaptureRef, AddLiteralAttribute, AddCapturedAttributes } kind;
   std::string name;  // capture name, or the literal attribute for AddLiteralAttribute
 };
 
@@ -379,14 +385,72 @@ RhsItem parse_rhs_item(std::string_view raw) {
   if (raw.starts_with(kAttPrefix)) {
     const std::string_view value = raw.substr(kAttPrefix.size());
     if (value.starts_with('%')) {
-      return RhsItem{RhsItem::Kind::AddCapturedAttributes, std::string(value.substr(1))};
+      return RhsItem{.kind = RhsItem::Kind::AddCapturedAttributes,
+                     .name = std::string(value.substr(1))};
     }
-    return RhsItem{RhsItem::Kind::AddLiteralAttribute, std::string(value)};
+    return RhsItem{.kind = RhsItem::Kind::AddLiteralAttribute, .name = std::string(value)};
   }
   if (raw.starts_with('%')) {
-    return RhsItem{RhsItem::Kind::CaptureRef, std::string(raw.substr(1))};
+    return RhsItem{.kind = RhsItem::Kind::CaptureRef, .name = std::string(raw.substr(1))};
   }
-  return RhsItem{RhsItem::Kind::CaptureRef, std::string()};  // unrecognised item: ignored
+  return RhsItem{.kind = RhsItem::Kind::CaptureRef,
+                 .name = std::string()};  // unrecognised: ignored
+}
+
+using Captures = std::vector<std::pair<std::string, std::size_t>>;
+
+// The node bound to capture `name`, or nullptr when no capture in this window used that name.
+const Candidate* find_capture(const Captures& captures, const std::vector<Candidate>& nodes,
+                              std::string_view name) {
+  for (const auto& [capture_name, index] : captures) {
+    if (capture_name == name) {
+      return &nodes[index];
+    }
+  }
+  return nullptr;
+}
+
+// One RHS group's base node: the node a bare `%x` item in `items` names, or (with no such item)
+// the left-side node at this group's own position -- rule 1's `(+att=@pl)`, matching
+// `(N,PLR,...)` positionally, one node, one group.
+const Candidate* find_rhs_group_base(const std::vector<std::string_view>& items,
+                                     const Captures& captures, const std::vector<Candidate>& nodes,
+                                     std::size_t start, std::size_t group_index,
+                                     const std::vector<NodePattern>& pattern) {
+  for (const std::string_view raw_item : items) {
+    if (raw_item.empty()) {
+      continue;
+    }
+    const RhsItem item = parse_rhs_item(raw_item);
+    if (item.kind == RhsItem::Kind::CaptureRef && !item.name.empty()) {
+      if (const Candidate* base = find_capture(captures, nodes, item.name)) {
+        return base;
+      }
+    }
+  }
+  if (group_index < pattern.size()) {
+    return &nodes[start + group_index];
+  }
+  return nullptr;
+}
+
+// Applies every `+att=...` item in `items` to `result`, in item order.
+void apply_rhs_group_attributes(Candidate& result, const std::vector<std::string_view>& items,
+                                const Captures& captures, const std::vector<Candidate>& nodes) {
+  for (const std::string_view raw_item : items) {
+    if (raw_item.empty()) {
+      continue;
+    }
+    const RhsItem item = parse_rhs_item(raw_item);
+    if (item.kind == RhsItem::Kind::AddLiteralAttribute) {
+      result.attributes.push_back(item.name);
+    } else if (item.kind == RhsItem::Kind::AddCapturedAttributes) {
+      if (const Candidate* source = find_capture(captures, nodes, item.name)) {
+        result.attributes.insert(result.attributes.end(), source->attributes.begin(),
+                                 source->attributes.end());
+      }
+    }
+  }
 }
 
 // Applies one rule's RHS to the window `nodes[start, start+pattern.size())`, given the captures
@@ -394,54 +458,18 @@ RhsItem parse_rhs_item(std::string_view raw) {
 // replacement sequence for the window, in RHS group order.
 std::vector<Candidate> apply_rhs(std::string_view rhs, const std::vector<Candidate>& nodes,
                                  std::size_t start, const std::vector<NodePattern>& pattern,
-                                 const std::vector<std::pair<std::string, std::size_t>>& captures) {
-  const auto lookup_capture = [&](std::string_view name) -> const Candidate* {
-    for (const auto& [capture_name, index] : captures) {
-      if (capture_name == name) {
-        return &nodes[index];
-      }
-    }
-    return nullptr;
-  };
-
+                                 const Captures& captures) {
   std::vector<Candidate> output;
   std::size_t group_index = 0;
   for (const std::string_view group : split_groups(rhs)) {
     const std::vector<std::string_view> items = split_top_level(group, ',');
-    const Candidate* base = nullptr;
-    for (const std::string_view raw_item : items) {
-      if (raw_item.empty()) {
-        continue;
-      }
-      const RhsItem item = parse_rhs_item(raw_item);
-      if (item.kind == RhsItem::Kind::CaptureRef && !item.name.empty()) {
-        base = lookup_capture(item.name);
-      }
+    const Candidate* base =
+        find_rhs_group_base(items, captures, nodes, start, group_index, pattern);
+    if (base != nullptr) {
+      Candidate result = *base;
+      apply_rhs_group_attributes(result, items, captures, nodes);
+      output.push_back(std::move(result));
     }
-    if (base == nullptr && group_index < pattern.size()) {
-      base = &nodes[start + group_index];
-    }
-    if (base == nullptr) {
-      ++group_index;
-      continue;
-    }
-
-    Candidate result = *base;
-    for (const std::string_view raw_item : items) {
-      if (raw_item.empty()) {
-        continue;
-      }
-      const RhsItem item = parse_rhs_item(raw_item);
-      if (item.kind == RhsItem::Kind::AddLiteralAttribute) {
-        result.attributes.push_back(item.name);
-      } else if (item.kind == RhsItem::Kind::AddCapturedAttributes) {
-        if (const Candidate* source = lookup_capture(item.name)) {
-          result.attributes.insert(result.attributes.end(), source->attributes.begin(),
-                                   source->attributes.end());
-        }
-      }
-    }
-    output.push_back(std::move(result));
     ++group_index;
   }
   return output;
@@ -567,7 +595,7 @@ void apply_disambiguation_rule(const GrammarRule& rule, std::vector<Position>& p
 //                         `1PS&PRS:="am"`). ---
 
 struct AffixSpec {
-  enum class Kind { AppendAtPosition, Replace, WholeForm } kind = Kind::WholeForm;
+  enum class Kind : std::uint8_t { AppendAtPosition, Replace, WholeForm } kind = Kind::WholeForm;
   int position = 0;
   std::string find;
   std::string replace;
@@ -691,6 +719,11 @@ std::vector<Candidate> RuleInterpreter::analyse(std::vector<Candidate> nodes, Tr
   return nodes;
 }
 
+// `paradigm_id`, `attribute` and `base_form` are all std::string_view but never interchangeable in
+// practice (a paradigm id like "M2", a tag like "PLR", and a word); the public header
+// (verstaan/rule_interpreter.hpp) already names and documents each parameter, so a wrapper type
+// here would duplicate that without adding real safety.
+// NOLINTNEXTLINE(bugprone-easily-swappable-parameters)
 std::string RuleInterpreter::inflect(std::string_view paradigm_id, std::string_view attribute,
                                      std::string_view base_form, bool from_language,
                                      Trace& trace) const {
