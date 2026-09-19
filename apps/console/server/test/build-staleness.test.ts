@@ -1,10 +1,11 @@
 // SPDX-License-Identifier: MPL-2.0
-// Tests for the staleness rule console.sh and POST /api/restart both run through
-// scripts/build-if-stale.mjs (issue 162), so they can never disagree about when a rebuild is
-// needed. ensureBuilt takes an injectable spawnFn, mirroring restart.ts's own spawnFn injection
-// for runLauncher, so these tests can drive a fake npm run build outcome without ever shelling
-// out to a real one; a real build is covered by the report manual proofs, which need a real,
-// buildable apps/console tree.
+// Tests for the staleness rule console.sh, console.cmd, console.ps1 and POST /api/restart all run
+// through scripts/build-if-stale.mjs (issues 162 and 179), so they can never disagree about when
+// an install or a rebuild is needed. ensureBuilt and ensureInstalled both take an injectable
+// spawnFn, mirroring restart.ts's own spawnFn injection for runLauncher, so these tests can drive
+// a fake npm ci / npm run build outcome without ever shelling out to a real one; a real install
+// and build is covered by the report manual proofs, which need a real, buildable apps/console
+// tree.
 import { describe, it, expect, vi, beforeAll } from 'vitest';
 import { mkdtempSync, mkdirSync, writeFileSync, rmSync, utimesSync, existsSync } from 'node:fs';
 import { tmpdir } from 'node:os';
@@ -25,13 +26,26 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 const buildIfStaleUrl = pathToFileURL(resolve(dirname(fileURLToPath(import.meta.url)), '../scripts/build-if-stale.mjs')).href;
 let isStale: typeof import('../scripts/build-if-stale.mjs').isStale;
 let ensureBuilt: typeof import('../scripts/build-if-stale.mjs').ensureBuilt;
+let isInstallStale: typeof import('../scripts/build-if-stale.mjs').isInstallStale;
+let ensureInstalled: typeof import('../scripts/build-if-stale.mjs').ensureInstalled;
 beforeAll(async () => {
-  ({ isStale, ensureBuilt } = await import(/* @vite-ignore */ buildIfStaleUrl));
+  ({ isStale, ensureBuilt, isInstallStale, ensureInstalled } = await import(/* @vite-ignore */ buildIfStaleUrl));
 });
+
+/** Marks `dir` as "already installed successfully through ensureInstalled" -- `node_modules`
+ * present with a stamp no `package.json`/`package-lock.json` in these fixtures is ever newer
+ * than. Called by every fixture below that is not itself testing the install decision, so those
+ * tests exercise the build decision in isolation, the way they did before issue 179 added the
+ * install decision in front of it. */
+function withFreshInstall(dir: string): void {
+  mkdirSync(join(dir, 'node_modules'), { recursive: true });
+  writeFileSync(join(dir, 'node_modules', '.install-stamp'), '0');
+}
 
 /** A fixture with `dist`/`dist-server` already present *and* a build stamp already written, i.e.
  * "already built successfully through ensureBuilt" -- the state `isStale` must read as fresh
- * when nothing has changed since. */
+ * when nothing has changed since. Also already installed (see `withFreshInstall`), so tests using
+ * this fixture exercise only the build decision. */
 function fixture(): string {
   const dir = mkdtempSync(join(tmpdir(), 'verstaan-build-if-stale-'));
   mkdirSync(join(dir, 'dist'), { recursive: true });
@@ -39,6 +53,7 @@ function fixture(): string {
   writeFileSync(join(dir, 'dist', 'index.html'), '<!doctype html>\n');
   writeFileSync(join(dir, 'dist-server', 'server', 'src', 'index.js'), '// stub\n');
   writeFileSync(join(dir, 'dist-server', '.build-stamp'), '0');
+  withFreshInstall(dir);
   return dir;
 }
 
@@ -121,7 +136,7 @@ describe('ensureBuilt', () => {
     const dir = fixture();
     const spawnFn = vi.fn();
     try {
-      expect(ensureBuilt(dir, spawnFn)).toEqual({ built: false });
+      expect(ensureBuilt(dir, spawnFn)).toEqual({ installed: false, built: false });
       expect(spawnFn).not.toHaveBeenCalled();
     } finally {
       rmSync(dir, { recursive: true, force: true });
@@ -135,6 +150,7 @@ describe('ensureBuilt', () => {
   it('a failed build writes no stamp, so the tree is still read as stale afterwards', () => {
     const dir = mkdtempSync(join(tmpdir(), 'verstaan-build-if-stale-'));
     try {
+      withFreshInstall(dir);
       mkdirSync(join(dir, 'server', 'src'), { recursive: true });
       writeFileSync(join(dir, 'server', 'src', 'index.ts'), '// source, present from the start\n');
       expect(isStale(dir)).toBe(true); // no dist at all yet
@@ -160,6 +176,16 @@ describe('ensureBuilt', () => {
       const secondAttempt = vi.fn(() => ({ status: 1, stdout: '', stderr: 'still broken' }));
       expect(() => ensureBuilt(dir, secondAttempt)).toThrow(/still broken/);
       expect(secondAttempt).toHaveBeenCalledTimes(1);
+
+      // A failed build is tagged "build", not "install" -- ensureInstalled already succeeded
+      // (withFreshInstall, above) before this build ever ran, so the tag must name the phase that
+      // actually failed.
+      try {
+        ensureBuilt(dir, secondAttempt);
+        throw new Error('expected ensureBuilt to throw');
+      } catch (e) {
+        expect((e as Error & { phase?: string }).phase).toBe('build');
+      }
     } finally {
       rmSync(dir, { recursive: true, force: true });
     }
@@ -168,6 +194,7 @@ describe('ensureBuilt', () => {
   it('a successful build writes the stamp, so a later call with an unchanged source is not stale', () => {
     const dir = mkdtempSync(join(tmpdir(), 'verstaan-build-if-stale-'));
     try {
+      withFreshInstall(dir);
       mkdirSync(join(dir, 'server', 'src'), { recursive: true });
       writeFileSync(join(dir, 'server', 'src', 'index.ts'), '// source\n');
 
@@ -179,12 +206,12 @@ describe('ensureBuilt', () => {
         return { status: 0, stdout: '', stderr: '' };
       });
 
-      expect(ensureBuilt(dir, succeedingBuild)).toEqual({ built: true });
+      expect(ensureBuilt(dir, succeedingBuild)).toEqual({ installed: false, built: true });
       expect(existsSync(join(dir, 'dist-server', '.build-stamp'))).toBe(true);
       expect(isStale(dir)).toBe(false);
 
       const shouldNotRun = vi.fn();
-      expect(ensureBuilt(dir, shouldNotRun)).toEqual({ built: false });
+      expect(ensureBuilt(dir, shouldNotRun)).toEqual({ installed: false, built: false });
       expect(shouldNotRun).not.toHaveBeenCalled();
     } finally {
       rmSync(dir, { recursive: true, force: true });
@@ -219,11 +246,170 @@ describe('ensureBuilt', () => {
   it('reports a clear timeout error, not "exited null", when spawnSync times out', () => {
     const dir = mkdtempSync(join(tmpdir(), 'verstaan-build-if-stale-'));
     try {
+      withFreshInstall(dir);
       mkdirSync(join(dir, 'server', 'src'), { recursive: true });
       writeFileSync(join(dir, 'server', 'src', 'index.ts'), '// source\n');
       const timedOutBuild = vi.fn(() => ({ status: null, signal: 'SIGTERM', stdout: '', stderr: '' }));
       expect(() => ensureBuilt(dir, timedOutBuild)).toThrow(/did not finish within.*SIGTERM/);
       expect(existsSync(join(dir, 'dist-server', '.build-stamp'))).toBe(false);
+    } finally {
+      rmSync(dir, { recursive: true, force: true });
+    }
+  });
+
+  // Issue 179's own repro: a merge lands a new dependency in package.json/package-lock.json, but
+  // the tree's own node_modules is unchanged until an install runs. ensureBuilt must run that
+  // install before it ever asks whether the build itself is stale.
+  it('installs before building when node_modules is missing, in that order', () => {
+    const dir = fixture();
+    try {
+      rmSync(join(dir, 'node_modules'), { recursive: true, force: true });
+      const calls: string[][] = [];
+      const spawnFn = vi.fn((_cmd: string, args: string[]) => {
+        calls.push(args);
+        if (args[0] === 'ci') {
+          mkdirSync(join(dir, 'node_modules'), { recursive: true });
+        }
+        return { status: 0, stdout: '', stderr: '' };
+      });
+      expect(ensureBuilt(dir, spawnFn)).toEqual({ installed: true, built: false }); // build itself is still fresh
+      expect(calls).toEqual([['ci']]);
+      expect(existsSync(join(dir, 'node_modules', '.install-stamp'))).toBe(true);
+    } finally {
+      rmSync(dir, { recursive: true, force: true });
+    }
+  });
+});
+
+describe('isInstallStale', () => {
+  it('is stale when node_modules is missing', () => {
+    const dir = mkdtempSync(join(tmpdir(), 'verstaan-build-if-stale-'));
+    try {
+      expect(isInstallStale(dir)).toBe(true);
+    } finally {
+      rmSync(dir, { recursive: true, force: true });
+    }
+  });
+
+  it('is stale when node_modules exists but no install stamp does (never installed through ensureInstalled)', () => {
+    const dir = mkdtempSync(join(tmpdir(), 'verstaan-build-if-stale-'));
+    try {
+      mkdirSync(join(dir, 'node_modules'), { recursive: true });
+      expect(isInstallStale(dir)).toBe(true);
+    } finally {
+      rmSync(dir, { recursive: true, force: true });
+    }
+  });
+
+  it('is not stale when the install stamp is newer than package.json and package-lock.json', () => {
+    const dir = mkdtempSync(join(tmpdir(), 'verstaan-build-if-stale-'));
+    try {
+      const old = new Date('2020-01-01');
+      writeFileSync(join(dir, 'package.json'), '{}\n');
+      writeFileSync(join(dir, 'package-lock.json'), '{}\n');
+      utimesSync(join(dir, 'package.json'), old, old);
+      utimesSync(join(dir, 'package-lock.json'), old, old);
+      mkdirSync(join(dir, 'node_modules'), { recursive: true });
+      writeFileSync(join(dir, 'node_modules', '.install-stamp'), '0');
+      expect(isInstallStale(dir)).toBe(false);
+    } finally {
+      rmSync(dir, { recursive: true, force: true });
+    }
+  });
+
+  // The acceptance criteria's own scenario (issue 179): a merge lands a moved lockfile after the
+  // last known-good install.
+  it('is stale when package-lock.json is newer than the install stamp', () => {
+    const dir = mkdtempSync(join(tmpdir(), 'verstaan-build-if-stale-'));
+    try {
+      mkdirSync(join(dir, 'node_modules'), { recursive: true });
+      writeFileSync(join(dir, 'node_modules', '.install-stamp'), '0');
+      const future = new Date(Date.now() + 60_000);
+      writeFileSync(join(dir, 'package-lock.json'), '{}\n');
+      utimesSync(join(dir, 'package-lock.json'), future, future);
+      expect(isInstallStale(dir)).toBe(true);
+    } finally {
+      rmSync(dir, { recursive: true, force: true });
+    }
+  });
+
+  it('is stale when package.json is newer than the install stamp', () => {
+    const dir = mkdtempSync(join(tmpdir(), 'verstaan-build-if-stale-'));
+    try {
+      mkdirSync(join(dir, 'node_modules'), { recursive: true });
+      writeFileSync(join(dir, 'node_modules', '.install-stamp'), '0');
+      const future = new Date(Date.now() + 60_000);
+      writeFileSync(join(dir, 'package.json'), '{}\n');
+      utimesSync(join(dir, 'package.json'), future, future);
+      expect(isInstallStale(dir)).toBe(true);
+    } finally {
+      rmSync(dir, { recursive: true, force: true });
+    }
+  });
+});
+
+describe('ensureInstalled', () => {
+  it('does nothing and reports installed:false when nothing is stale', () => {
+    const dir = mkdtempSync(join(tmpdir(), 'verstaan-build-if-stale-'));
+    try {
+      withFreshInstall(dir);
+      const spawnFn = vi.fn();
+      expect(ensureInstalled(dir, spawnFn)).toEqual({ installed: false });
+      expect(spawnFn).not.toHaveBeenCalled();
+    } finally {
+      rmSync(dir, { recursive: true, force: true });
+    }
+  });
+
+  it('runs npm ci and writes the stamp on a verified zero exit, never a real npm ci', () => {
+    const dir = mkdtempSync(join(tmpdir(), 'verstaan-build-if-stale-'));
+    try {
+      const spawnFn = vi.fn((cmd: string, args: string[]) => {
+        expect(cmd).toBe('npm');
+        expect(args).toEqual(['ci']);
+        mkdirSync(join(dir, 'node_modules'), { recursive: true });
+        return { status: 0, stdout: '', stderr: '' };
+      });
+      expect(ensureInstalled(dir, spawnFn)).toEqual({ installed: true });
+      expect(spawnFn).toHaveBeenCalledTimes(1);
+      expect(existsSync(join(dir, 'node_modules', '.install-stamp'))).toBe(true);
+
+      const shouldNotRun = vi.fn();
+      expect(ensureInstalled(dir, shouldNotRun)).toEqual({ installed: false });
+      expect(shouldNotRun).not.toHaveBeenCalled();
+    } finally {
+      rmSync(dir, { recursive: true, force: true });
+    }
+  });
+
+  // Mirrors ensureBuilt's own "a failed build writes no stamp" case: a failed npm ci must never
+  // read as a good install afterwards.
+  it('a failed install writes no stamp, so the tree is still read as stale afterwards', () => {
+    const dir = mkdtempSync(join(tmpdir(), 'verstaan-build-if-stale-'));
+    try {
+      mkdirSync(join(dir, 'node_modules'), { recursive: true }); // partially written, as a failed npm ci leaves it
+      const failingInstall = vi.fn(() => ({ status: 1, stdout: '', stderr: 'npm ERR! network timeout' }));
+      expect(() => ensureInstalled(dir, failingInstall)).toThrow(/network timeout/);
+      expect(existsSync(join(dir, 'node_modules', '.install-stamp'))).toBe(false);
+      expect(isInstallStale(dir)).toBe(true);
+    } finally {
+      rmSync(dir, { recursive: true, force: true });
+    }
+  });
+
+  // A failed install must be reported as an install failure, not a generic "build failed" --
+  // restart-launch.mjs and the build-if-stale.mjs CLI entry point both read this tag to name the
+  // install specifically (issue 179's own acceptance criteria).
+  it('tags its thrown error with phase "install", not "build"', () => {
+    const dir = mkdtempSync(join(tmpdir(), 'verstaan-build-if-stale-'));
+    try {
+      const failingInstall = vi.fn(() => ({ status: 1, stdout: '', stderr: 'npm ERR! network timeout' }));
+      try {
+        ensureInstalled(dir, failingInstall);
+        throw new Error('expected ensureInstalled to throw');
+      } catch (e) {
+        expect((e as Error & { phase?: string }).phase).toBe('install');
+      }
     } finally {
       rmSync(dir, { recursive: true, force: true });
     }

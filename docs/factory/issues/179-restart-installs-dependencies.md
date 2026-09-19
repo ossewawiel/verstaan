@@ -2,7 +2,7 @@
 issue: 179
 title: "The restart installs what a merge added: npm ci when the lockfile moved, not only on the first run"
 milestone: Side
-status: open
+status: in-progress
 depends_on: [102, 162, 178]
 agent: implementer
 agents: [implementer]
@@ -10,7 +10,7 @@ model: sonnet
 effort: medium
 checkpoint: null
 commit: null
-worktree: null
+worktree: .worktrees/side-179-restart-installs-deps
 github_issue: 271
 ---
 ## What

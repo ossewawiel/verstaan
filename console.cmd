@@ -1,8 +1,11 @@
 @echo off
 rem Verstaan console: start the local service if it is not running, then open it in the browser.
 rem Double-click this file, or run it from any terminal with an optional port: console.cmd 7900.
-rem Safe to run twice. The console is now a Node/React app under apps/console (issue 99); this
-rem script installs its dependencies and builds it the first time, then just starts it.
+rem Safe to run twice. The console is now a Node/React app under apps/console (issue 99);
+rem apps\console\server\scripts\build-if-stale.mjs decides both the install and the build: it
+rem installs when node_modules is missing or the lockfile moved since the last known-good install,
+rem and rebuilds when the client or server source is newer than the last build (issue 179 -- this
+rem script no longer tests for node_modules or the build itself).
 setlocal enabledelayedexpansion
 cd /d "%~dp0"
 set "PORT=%~1"
@@ -17,31 +20,14 @@ if %errorlevel%==0 (
   exit /b 0
 )
 
-if not exist "apps\console\node_modules" (
-  echo console: installing dependencies (first run only)...
-  pushd apps\console
-  call npm ci
-  popd
-)
-
-rem Rebuild whenever the client or server source is newer than the last build. forfiles' /D +1
-rem only compares whole days, so this instead compares the dist folder's own timestamp against
-rem the newest source file with a small PowerShell one-liner -- still no extra dependency.
-set "NEED_BUILD=0"
-if not exist "apps\console\dist\index.html" set "NEED_BUILD=1"
-if not exist "apps\console\dist-server\server\src\index.js" set "NEED_BUILD=1"
-if "%NEED_BUILD%"=="0" (
-  for /f %%r in ('powershell -NoProfile -Command "$dist = (Get-Item 'apps\console\dist\index.html').LastWriteTimeUtc; $newest = (Get-ChildItem -Recurse 'apps\console\client\src','apps\console\server\src' -File | Sort-Object LastWriteTimeUtc -Descending | Select-Object -First 1).LastWriteTimeUtc; if ($newest -gt $dist) { 'stale' } else { 'fresh' }"') do set "BUILD_STATE=%%r"
-  rem enabledelayedexpansion (above) makes !BUILD_STATE! read the value the `for` just set, in
-  rem this same parenthesised block; %BUILD_STATE% would have been expanded at parse time,
-  rem before the `for` ran, and always empty -- this branch would never fire.
-  if "!BUILD_STATE!"=="stale" set "NEED_BUILD=1"
-)
-if "%NEED_BUILD%"=="1" (
-  echo console: building...
-  pushd apps\console
-  call npm run build
-  popd
+rem Install, then rebuild, when either is stale -- the one decision console.sh and POST
+rem /api/restart also make through this same script (issues 162 and 179), so no launcher can drift
+rem from another on when an install or a build is due.
+node apps\console\server\scripts\build-if-stale.mjs apps\console
+if errorlevel 1 (
+  echo console: install or build failed; see above. 1>&2
+  endlocal
+  exit /b 1
 )
 
 start "Verstaan console" /min cmd /c "cd apps\console && node dist-server\server\src\index.js --port %PORT%"
