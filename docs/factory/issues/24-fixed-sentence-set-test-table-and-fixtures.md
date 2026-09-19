@@ -2,14 +2,14 @@
 issue: 24
 title: "Write the fixed sentence set's test table and fixture YAML"
 milestone: M3
-status: open
+status: done
 depends_on: [16]
 agent: rule-author
 agents: [rule-author]
 model: sonnet
 effort: medium
 checkpoint: null
-commit: null
+commit: a3f920a
 worktree: null
 github_issue: 247
 ---
@@ -63,6 +63,6 @@ Running the rows through the engine (issue 25, and issue 26's loader). Afrikaans
 
 ## Done when
 
-- [ ] `docs/factory/issues/24-test-cases.md` and `tests/fixtures/languages/eng/tests/basic.yaml`
+- [x] `docs/factory/issues/24-test-cases.md` and `tests/fixtures/languages/eng/tests/basic.yaml`
       both exist with the same fifteen rows.
-- [ ] Every acceptance criterion above is checkable by reading the two files.
+- [x] Every acceptance criterion above is checkable by reading the two files.
