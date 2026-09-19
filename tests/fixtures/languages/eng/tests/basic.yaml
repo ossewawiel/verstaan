@@ -1,0 +1,129 @@
+# Licence: CC BY-SA 4.0. Source: UNL Archive, see data/archive/manifest.jsonl
+# Rows of block A in docs/factory/issues/24-test-cases.md. That file is the source of truth;
+# if the two disagree, it wins and this file is corrected to match it.
+# `input` is copied verbatim from data/languages/eng/corpus/ugoa1.yaml `sentence`.
+# `expected` is copied from data/languages/afr/corpus/ugoa1.yaml, from the row with the same
+# `source.line`, with any word neither dictionary reaches wrapped in the SPEC.md §3.4 mark.
+# `id` and `status` are additions to the SPEC §3.3 key list, so a test can name its row and
+# assert the Status of SPEC §3.4 without a second lookup.
+# `source.line` is the `ugoa1` line number both language files share.
+- id: A01
+  input: "book"
+  expected: "boek"
+  direction: eng-afr
+  status: ok
+  tier: basic
+  register: neutral
+  source: {origin: ugoa1, line: 1, issue: 24}
+- id: A02
+  input: "the book"
+  expected: "die boek"
+  direction: eng-afr
+  status: ok
+  tier: basic
+  register: neutral
+  source: {origin: ugoa1, line: 2, issue: 24}
+- id: A03
+  input: "a book"
+  expected: "'n boek"
+  direction: eng-afr
+  status: ok
+  tier: basic
+  register: neutral
+  source: {origin: ugoa1, line: 3, issue: 24}
+- id: A04
+  input: "books"
+  expected: "boeke"
+  direction: eng-afr
+  status: ok
+  tier: basic
+  register: neutral
+  source: {origin: ugoa1, line: 10, issue: 24}
+- id: A05
+  input: "the books"
+  expected: "die boeke"
+  direction: eng-afr
+  status: ok
+  tier: basic
+  register: neutral
+  source: {origin: ugoa1, line: 31, issue: 24}
+- id: A06
+  input: "all the books"
+  expected: "al die boeke"
+  direction: eng-afr
+  status: ok
+  tier: basic
+  register: neutral
+  source: {origin: ugoa1, line: 35, issue: 24}
+- id: A07
+  input: "a book in a box"
+  expected: "'n boek in 'n doos"
+  direction: eng-afr
+  status: ok
+  tier: basic
+  register: neutral
+  source: {origin: ugoa1, line: 91, issue: 24}
+- id: A08
+  input: "a beautiful book"
+  expected: "'n mooi boek"
+  direction: eng-afr
+  status: ok
+  tier: basic
+  register: neutral
+  source: {origin: ugoa1, line: 121, issue: 24}
+- id: A09
+  input: "a book about Geneva"
+  expected: "'n boek oor ⟦Geneva⟧"
+  direction: eng-afr
+  status: partial
+  tier: basic
+  register: neutral
+  source: {origin: ugoa1, line: 128, issue: 24}
+- id: A10
+  input: "some days before the summer"
+  expected: "'n paar dae voor die somer"
+  direction: eng-afr
+  status: ok
+  tier: basic
+  register: neutral
+  source: {origin: ugoa1, line: 143, issue: 24}
+- id: A11
+  input: "the beautiful car"
+  expected: "die mooi kar"
+  direction: eng-afr
+  status: ok
+  tier: basic
+  register: neutral
+  source: {origin: ugoa1, line: 209, issue: 24}
+- id: A12
+  input: "a very beautiful car"
+  expected: "'n baie mooi kar"
+  direction: eng-afr
+  status: ok
+  tier: basic
+  register: neutral
+  source: {origin: ugoa1, line: 210, issue: 24}
+- id: A13
+  input: "John and Mary"
+  expected: "John en Mary"
+  direction: eng-afr
+  status: ok
+  tier: basic
+  register: neutral
+  source: {origin: ugoa1, line: 219, issue: 24}
+- id: A14
+  input: "a car, a book and a mug"
+  expected: "'n kar, 'n boek en 'n beker"
+  direction: eng-afr
+  status: ok
+  tier: basic
+  register: neutral
+  source: {origin: ugoa1, line: 230, issue: 24}
+- id: A15
+  input: "the beautiful book about the city of Paris without pictures and photos on the table"
+  expected: "die mooi boek op die tafel oor ⟦Paris⟧ die stad sonder prente en foto's"
+  direction: eng-afr
+  status: partial
+  tier: basic
+  register: neutral
+  source: {origin: ugoa1, line: 248, issue: 24}
