@@ -2,6 +2,7 @@
 add_library(verstaan_core STATIC
   src/dictionary_lookup.cpp
   src/engine.cpp
+  src/rule_interpreter.cpp
   src/tokeniser.cpp
 )
 
