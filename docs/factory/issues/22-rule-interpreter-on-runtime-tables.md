@@ -2,7 +2,7 @@
 issue: 22
 title: "Rule interpreter on runtime tables"
 milestone: M3
-status: open
+status: in-progress
 depends_on: [20, 21]
 agent: implementer
 agents: [rule-author, implementer]
@@ -10,7 +10,7 @@ model: sonnet
 effort: high
 checkpoint: null
 commit: null
-worktree: null
+worktree: .worktrees/m3-22-rule-interpreter-on-runtime-tables
 github_issue: 245
 ---
 ## What

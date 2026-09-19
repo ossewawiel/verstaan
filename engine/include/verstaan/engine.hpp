@@ -10,7 +10,10 @@
 #include <cstdint>
 #include <string>
 #include <string_view>
+#include <utility>
 #include <vector>
+
+#include "verstaan/rule_set.hpp"
 
 namespace verstaan {
 
@@ -77,9 +80,8 @@ struct Result {
   Status status = Status::not_implemented;
 };
 
-// Runtime rule table, built by a later issue. Forward-declared here: `Engine::load` takes it by
-// reference without needing its definition.
-class RuleSet;
+// Runtime rule table (verstaan/rule_set.hpp, issue 22). `Engine::load` takes it by reference and
+// keeps its own copy.
 
 // Const after construction and safe to call from many threads (docs/standards/cpp.md).
 class Engine {
@@ -94,6 +96,12 @@ class Engine {
 
  private:
   Engine() = default;
+  explicit Engine(RuleSet rules) : rules_(std::move(rules)) {}
+
+  // The runtime tables this Engine was built from (empty for Engine::generated and the M0
+  // default). Not read by `translate()` yet -- issue 23 wires `Engine::translate` against it,
+  // per SPEC.md §3.4's `not_implemented` note ("every real Engine method retires it").
+  RuleSet rules_;
 };
 
 }  // namespace verstaan
