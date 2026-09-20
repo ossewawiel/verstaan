@@ -2,7 +2,7 @@
 
 Last completed:  #179 — The restart installs what a merge added: npm ci when the lockfile moved,
                  not only on the first run (Side), commit 58999e3
-Next up:         #23 — Wire Options, Result, Status and the --trace flag (M3)
+Next up:         #25 — Wire the English to UNL to Afrikaans pipeline for the fixed sentence set (M3)
 Branch / PR:     main, https://github.com/ossewawiel/verstaan.git, 0 files dirty, no gate stamp
-                 for eebc331
-Resume with:     /factory-run 23
+                 for c940f2c
+Resume with:     /factory-run 25
