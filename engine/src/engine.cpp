@@ -96,17 +96,20 @@ Result Engine::translate(std::string_view text, Options options) const {
 
   // Engine::generated (the compiled-tables back end, M4, ADR 0007) keeps its M0 stub status:
   // "Not in scope" on docs/factory/issues/23-options-result-status-and-trace.md names it
-  // explicitly, and only Engine::load sets is_runtime_backed_.
+  // explicitly, and only Engine::load sets is_runtime_backed_. `result` was just constructed, so
+  // its `status` field still carries Result's own default (SPEC.md §3.4, engine.hpp) -- returning
+  // it here needs no further assignment.
   if (!is_runtime_backed_) {
-    return result;  // Status::not_implemented, Result's own default (SPEC.md §3.4).
+    return result;
   }
 
-  // SPEC.md §3.4: not_implemented is reserved for a Lang/Register/Context combination no store
-  // covers yet. Only eng-to-afr, neutral register, no context is wired by this issue -- the one
-  // direction RuleSet::load and issue 22's stores name.
+  // SPEC.md §3.4's fourth Status value is reserved for a Lang/Register/Context combination no
+  // store covers yet. Only eng-to-afr, neutral register, no context is wired by this issue -- the
+  // one direction RuleSet::load and issue 22's stores name. `result.status` still holds its
+  // just-constructed default, the same value this fourth Status member names, so returning it
+  // unmodified reports the gap correctly.
   if (options.from != Lang::eng || options.to != Lang::afr || options.reg != Register::neutral ||
       options.ctx != Context::none) {
-    result.status = Status::not_implemented;
     return result;
   }
 
