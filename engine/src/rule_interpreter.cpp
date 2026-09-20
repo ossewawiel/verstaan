@@ -181,7 +181,9 @@ RuleSet RuleSet::load(std::string_view from_store_root, std::string_view to_stor
           read_grammar_file(grammar_path(from_store_root, "inflection.yaml")),
           read_grammar_file(grammar_path(from_store_root, "subcategorisation.yaml")),
           read_grammar_file(grammar_path(to_store_root, "generation.yaml")),
-          read_grammar_file(grammar_path(to_store_root, "inflection.yaml"))};
+          read_grammar_file(grammar_path(to_store_root, "inflection.yaml")),
+          std::string(from_store_root),
+          std::string(to_store_root)};
 }
 
 RuleSet RuleSet::from_rules(std::vector<GrammarRule> disambiguation,

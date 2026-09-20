@@ -4,6 +4,7 @@ include(GoogleTest)
 # Engine unit tests. Label `fast` (docs/standards/testing.md).
 add_executable(verstaan_tests
   unit/dictionary_lookup_test.cpp
+  unit/engine_status_test.cpp
   unit/engine_test.cpp
   unit/rule_interpreter_test.cpp
   unit/tokeniser_test.cpp

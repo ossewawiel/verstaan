@@ -2,14 +2,14 @@
 issue: 23
 title: "Wire Options, Result, Status and the --trace flag"
 milestone: M3
-status: open
+status: done
 depends_on: [22, 24]
 agent: implementer
 agents: [implementer]
 model: sonnet
 effort: medium
 checkpoint: null
-commit: null
+commit: af388b0
 worktree: null
 github_issue: 246
 ---
@@ -53,6 +53,6 @@ share one semantics, so this issue's decisions bind M4 too, but M4 implements th
 
 ## Done when
 
-- [ ] `Engine::translate` returns real `Status` values for the runtime-tables back end.
-- [ ] `--trace` prints `Result.trace` for a fixed sentence.
-- [ ] `ctest -R engine_status` is green.
+- [x] `Engine::translate` returns real `Status` values for the runtime-tables back end.
+- [x] `--trace` prints `Result.trace` for a fixed sentence.
+- [x] `ctest -R engine_status` is green.

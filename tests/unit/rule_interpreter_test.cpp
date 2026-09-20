@@ -314,13 +314,13 @@ TEST(rule_interpreter, DisambiguationTraceComesBeforeAnalysisTraceAndFeedsItsRes
   EXPECT_FALSE(HasAttribute(analysed_wrong[0], "@pl"));
 }
 
-// --- Engine::load(RuleSet) is real: it keeps the RuleSet it was given rather than discarding it
-// (issue 23 is the one that wires Engine::translate to read it back). ---
+// --- Engine::load(RuleSet) is real: it keeps the RuleSet it was given and Engine::translate reads
+// it back (issue 23, tests/unit/engine_status_test.cpp carries the full Status/Trace coverage). ---
 
-TEST(rule_interpreter, EngineLoadAcceptsARealRuleSetAndStillReturnsAResult) {
+TEST(rule_interpreter, EngineLoadAcceptsARealRuleSetAndTranslateReadsItBack) {
   const Engine engine = Engine::load(EngToAfrRuleSet());
   const Result result = engine.translate("book", Options{.from = Lang::eng, .to = Lang::afr});
-  EXPECT_EQ(result.status, Status::not_implemented);  // translate() itself is issue 23's job.
+  EXPECT_EQ(result.status, Status::ok);  // "book" is dictionary-resolved; no rule needs to fire.
 }
 
 }  // namespace
