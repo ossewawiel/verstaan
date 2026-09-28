@@ -18,6 +18,7 @@ Nothing is silently dropped (SPEC.md §3.2).
 from __future__ import annotations
 
 import argparse
+import html
 import re
 import sys
 import zipfile
@@ -63,6 +64,28 @@ _SEM_VINTAGE_RENAME = {"ATT": "ATR", "SOV": "SOC", "REL": "RLT"}
 # docs/unl-reference/formats/tagset.md, "A second pass: three more renames, two wiki-only tags,
 # one export artifact".
 _PER_VINTAGE_RENAME = {"2PE": "2PER", "3PE": "3PER"}
+
+# Same vintage mismatch again, on `DIS` (distribution/word-order): the live tagset's "immediately
+# before" tag is four characters (`IBEF`); `export_cc.php`'s `ante-`/`anti-` entries (id 515731,
+# 515838, `DIS=IBE`) carry the 2016-vintage three-character truncation, the same shape issue 171
+# found on `PER`. No prior DIS-vintage entry had ever been imported before issue 184 added
+# `export_cc.php` as a source, so this rename did not exist until now. Confirmed against
+# `data/archive/exports/export_tagset.php`: `"IBEF = immediately before (At the left side,
+# without any blank space.)"`, no separate `IBE` tag defined anywhere in the live export.
+_DIS_VINTAGE_RENAME = {"IBE": "IBEF"}
+
+# Issue 184: an entry with an empty UW is a closed-class record, not an unparsed line, when its
+# `LEX` marks it as one of the archive's grammatical (function-word) categories rather than a
+# lexical (content-word) one. Scoped to the three `LEX` values the real empty-UW lines and the
+# tagset's own descriptions support: `C` (conjunction), `D` (determiner) and `P` (adposition --
+# tagset.yaml's own text calls it "a member of a closed set of items"). Every empty-UW `the`/`a`/
+# `of`/`on`/`and`/`without`/`die`/`'n`/`en` line carries one of these three (SPEC.md §3.2's own
+# tagset worked examples: `[the]{}""(LEX=D,POS=ART,att=@def);`, `[of]{}""(LEX=P,POS=PRE,rel=mod)`).
+# Real empty-UW lines also exist with `LEX=N` or `LEX=V` (e.g. `af_ana_u_c_ucl_1.txt` line 3139,
+# `[aandeelprys]{12804}""(...,LEX=N,POS=NOU)<af,0,0>;`) -- unfinished dictionary stubs for open
+# lexical classes, not closed-class function words, and this importer keeps routing those to
+# `_unparsed.txt` rather than importing a noun or verb with no concept attached.
+_CLOSED_CLASS_LEX = frozenset({"C", "D", "P"})
 
 _ASCII_LOWER = "abcdefghijklmnopqrstuvwxyz"
 
@@ -193,6 +216,80 @@ def parse_feature_list(text: str) -> dict[str, str] | None:
     return features or None
 
 
+def _top_level_lex(text: str) -> str | None:
+    """The entry's own top-level `LEX` value, straight out of `text`'s top-level tokens, never a
+    sub-word's. `#01(...)`/`#02(...)` blocks are skipped whole, not recursed into.
+
+    A multi-word entry's `#NN(...)` sub-word scope can carry its own `LEX`, and
+    `parse_feature_list` merges every sub-word's features over the top-level ones -- "last
+    sub-word wins" (issue 169), the only lossless shape for a flat `features` dict. That is right
+    for a display value like `BF`, but wrong for the closed-class empty-UW gate (issue 184): a
+    multi-word idiom such as `begin to` (id 275437, `en_gen_u_c_ucl_1.txt` line 5900) carries
+    `LEX=I` at the top level -- an idiom/auxiliary chain, an open-class entry -- and only its
+    trailing `#02(...)` sub-word (the bare preposition "to") carries `LEX=P`. Checking the
+    flattened `features["LEX"]` there reads `P` and wrongly imports the idiom as a fake
+    closed-class preposition with a blank concept. This function reads the same top-level `LEX`
+    the entry's own grammar puts before any `#NN(...)` block, so the gate judges the entry's real
+    class, not its last sub-word's.
+    """
+    for token in _split_top_level(text):
+        token = token.strip()
+        if not token or _SUBWORD_RE.match(token):
+            continue
+        match = _ATTR_VALUE_RE.match(token)
+        if match and match.group("attr") == "LEX":
+            return match.group("value").strip()
+    return None
+
+
+def _finish_entry(
+    nlw: str, id_text: str, uw: str, features_text: str, flg_text: str, fre_text: str, pri_text: str
+) -> tuple[dict | None, str | None]:
+    """The shared tail of `parse_line` and `parse_cc_entry`, past the two formats' different entry
+    delimiters: feature parsing, the closed-class empty-UW rule (issue 184), the vintage SEM/PER
+    renames, the FLG-to-iso3 mapping, and the FRE/PRI range check."""
+    features = parse_feature_list(features_text)
+    if features is None:
+        return None, "no features found; schema requires at least one feature"
+    if not uw and _top_level_lex(features_text) not in _CLOSED_CLASS_LEX:
+        return None, (
+            "empty UW field on a non-closed-class entry; schema requires uw minLength 1 unless "
+            "LEX marks it closed-class (SPEC.md §3.2, e.g. punctuation entries)"
+        )
+    sem = features.get("SEM")
+    if sem in _SEM_VINTAGE_RENAME:
+        features["SEM"] = _SEM_VINTAGE_RENAME[sem]
+    per = features.get("PER")
+    if per in _PER_VINTAGE_RENAME:
+        features["PER"] = _PER_VINTAGE_RENAME[per]
+    dis = features.get("DIS")
+    if dis in _DIS_VINTAGE_RENAME:
+        features["DIS"] = _DIS_VINTAGE_RENAME[dis]
+    flg = flg_text.lower()
+    if flg not in FLG_TO_ISO3:
+        return None, f"FLG '{flg}' has no iso3 mapping in this importer (FLG_TO_ISO3)"
+    frequency = int(fre_text)
+    priority = int(pri_text)
+    # dictionary.md: "FRE ::= 0-255", "PRI ::= 0-255"; the schema encodes the same bound. A real
+    # line can still exceed it (`[acquire]{452200}...<en,270,8>;`, en_gen_u_c_ucl_2.txt line
+    # 69077: FRE 270) -- an archive data-entry slip, not a grammar disagreement -- so this is
+    # caught here rather than left for the schema validator to reject downstream.
+    if not (0 <= frequency <= 255):
+        return None, f"frequency {frequency} is outside the archive's declared 0-255 range"
+    if not (0 <= priority <= 255):
+        return None, f"priority {priority} is outside the archive's declared 0-255 range"
+    entry = {
+        "headword": nlw,
+        "id": int(id_text),
+        "uw": uw,
+        "features": features,
+        "flg": flg,
+        "frequency": frequency,
+        "priority": priority,
+    }
+    return entry, None
+
+
 def parse_line(raw: str) -> tuple[dict | None, str | None]:
     """One archive dictionary line, into a partial entry (`nlw, id, uw, features, flg, fre, pri`)
     or `(None, reason)`. Does not know its own `source` or the store's `lang`; the caller adds
@@ -206,41 +303,15 @@ def parse_line(raw: str) -> tuple[dict | None, str | None]:
     match = _ENTRY_RE.match(text)
     if not match:
         return None, "line does not match the archive entry grammar (dictionary.md)"
-    uw = match.group("uw")
-    if not uw:
-        return None, "empty UW field; schema requires uw minLength 1 (e.g. punctuation entries)"
-    features = parse_feature_list(match.group("features"))
-    if features is None:
-        return None, "no features found; schema requires at least one feature"
-    sem = features.get("SEM")
-    if sem in _SEM_VINTAGE_RENAME:
-        features["SEM"] = _SEM_VINTAGE_RENAME[sem]
-    per = features.get("PER")
-    if per in _PER_VINTAGE_RENAME:
-        features["PER"] = _PER_VINTAGE_RENAME[per]
-    flg = match.group("flg").lower()
-    if flg not in FLG_TO_ISO3:
-        return None, f"FLG '{flg}' has no iso3 mapping in this importer (FLG_TO_ISO3)"
-    frequency = int(match.group("fre"))
-    priority = int(match.group("pri"))
-    # dictionary.md: "FRE ::= 0-255", "PRI ::= 0-255"; the schema encodes the same bound. A real
-    # line can still exceed it (`[acquire]{452200}...<en,270,8>;`, en_gen_u_c_ucl_2.txt line
-    # 69077: FRE 270) -- an archive data-entry slip, not a grammar disagreement -- so this is
-    # caught here rather than left for the schema validator to reject downstream.
-    if not (0 <= frequency <= 255):
-        return None, f"frequency {frequency} is outside the archive's declared 0-255 range"
-    if not (0 <= priority <= 255):
-        return None, f"priority {priority} is outside the archive's declared 0-255 range"
-    entry = {
-        "headword": match.group("nlw"),
-        "id": int(match.group("id")),
-        "uw": uw,
-        "features": features,
-        "flg": flg,
-        "frequency": frequency,
-        "priority": priority,
-    }
-    return entry, None
+    return _finish_entry(
+        match.group("nlw"),
+        match.group("id"),
+        match.group("uw"),
+        match.group("features"),
+        match.group("flg"),
+        match.group("fre"),
+        match.group("pri"),
+    )
 
 
 def shard_letter(headword: str) -> str | None:
@@ -275,6 +346,31 @@ class ImportedEntry:
     shard: str | None
 
 
+def _to_imported_entry(
+    parsed: dict, archive_path: str, locator: int, iso3: str
+) -> ImportedEntry | None:
+    """`parsed` (a `parse_line`/`_finish_entry` result) into an `ImportedEntry`, or `None` if its
+    headword has no ASCII a-z character to shard by (SPEC.md §3.3) -- the caller routes `None` to
+    `_unparsed.txt` itself, since only it knows the raw text to record alongside the reason."""
+    letter = shard_letter(parsed["headword"])
+    if letter is None:
+        return None
+    record = {
+        "headword": parsed["headword"],
+        "id": parsed["id"],
+        "uw": parsed["uw"],
+        "features": parsed["features"],
+        "lang": iso3,
+        "frequency": parsed["frequency"],
+        "priority": parsed["priority"],
+        "source": {"archive_path": archive_path, "line": locator},
+    }
+    return ImportedEntry(record, letter)
+
+
+_NO_SHARD_REASON = "headword has no ASCII a-z character to shard by (SPEC.md §3.3)"
+
+
 def import_zip(
     zip_path: Path, archive_root: Path, iso3: str
 ) -> tuple[list[ImportedEntry], list[UnparsedLine]]:
@@ -288,28 +384,71 @@ def import_zip(
         if parsed is None:
             unparsed.append(UnparsedLine(archive_path, line_no, raw, reason or "unparseable"))
             continue
-        letter = shard_letter(parsed["headword"])
-        if letter is None:
-            unparsed.append(
-                UnparsedLine(
-                    archive_path,
-                    line_no,
-                    raw,
-                    "headword has no ASCII a-z character to shard by (SPEC.md §3.3)",
-                )
-            )
+        imported_entry = _to_imported_entry(parsed, archive_path, line_no, iso3)
+        if imported_entry is None:
+            unparsed.append(UnparsedLine(archive_path, line_no, raw, _NO_SHARD_REASON))
             continue
-        record = {
-            "headword": parsed["headword"],
-            "id": parsed["id"],
-            "uw": parsed["uw"],
-            "features": parsed["features"],
-            "lang": iso3,
-            "frequency": parsed["frequency"],
-            "priority": parsed["priority"],
-            "source": {"archive_path": archive_path, "line": line_no},
-        }
-        imported.append(ImportedEntry(record, letter))
+        imported.append(imported_entry)
+    return imported, unparsed
+
+
+# `[NLW] {ID} "UW" (FEATURE LIST) <FLG, FRE, PRI>;`, matched against the HTML-unescaped text of
+# `export_cc.php` (issue 184; see `import_cc_export`'s docstring for why this differs from
+# `_ENTRY_RE`). No compound `NLW` (`[[a][b]]`) and no nested rule-list/sub-word feature
+# (`FLX(...)`, `#01(...)`) appears anywhere in either language's real `export_cc.php`, checked
+# across all 954 (eng) / 242 (afr) entries before this pattern was written, so `nlw` and
+# `features` need not tolerate nested brackets the way `_ENTRY_RE`'s `.*` greedily does.
+_CC_ENTRY_RE = re.compile(
+    r"\[(?P<nlw>[^\[\]]*)\]\s*\{(?P<id>\d+)\}\s*"
+    r'"(?P<uw>[^"]*)"\s*'
+    r"\((?P<features>[^()]*)\)\s*"
+    r"<\s*(?P<flg>[A-Za-z]{2,3})\s*,\s*(?P<fre>\d+)\s*,\s*(?P<pri>\d+)\s*>;"
+)
+
+
+def import_cc_export(
+    php_path: Path, archive_root: Path, iso3: str
+) -> tuple[list[ImportedEntry], list[UnparsedLine]]:
+    """Every closed-class entry in one language's `export_cc.php` (issue 184): a rendered HTML
+    page (`UNLarium`'s progress-bar template), not a zip of plain-text lines like `import_zip`
+    reads. Each entry is the same `[NLW]{ID}"UW"(FEATURE LIST)<FLG,FRE,PRI>;` grammar
+    `dictionary.md` describes, but HTML-entity-escaped in the raw file (`&quot;`, `&lt;`, `&gt;`,
+    `&#039;`) and interleaved with `<br />` and `<script>...innerHTML="NNN registers
+    processed"...</script>` progress-bar markup between entries. This function unescapes the
+    whole file once (`html.unescape`, matching `docs/unl-reference/formats/dictionary.md`'s own
+    worked example, which quotes the decoded form), then matches every entry in document order
+    with `_CC_ENTRY_RE`.
+
+    The markup between entries carries no dictionary content of its own, so it is discarded
+    rather than tracked in `_unparsed.txt`: the one-entry-per-physical-line accounting SPEC.md
+    §3.2 promises for the AD/GD zip format assumes a line-oriented export, and this rendered-HTML
+    page has no per-line grain to account for. `source.line` here is each entry's 1-based ordinal
+    position in the file instead, per the schema's own "a descriptive locator... when the archive
+    export has no per-line grain" allowance.
+    """
+    imported: list[ImportedEntry] = []
+    unparsed: list[UnparsedLine] = []
+    archive_path = php_path.resolve().relative_to(archive_root.resolve()).as_posix()
+    text = html.unescape(php_path.read_text(encoding="utf-8"))
+    for ordinal, match in enumerate(_CC_ENTRY_RE.finditer(text), start=1):
+        raw = match.group(0)
+        parsed, reason = _finish_entry(
+            match.group("nlw"),
+            match.group("id"),
+            match.group("uw"),
+            match.group("features"),
+            match.group("flg"),
+            match.group("fre"),
+            match.group("pri"),
+        )
+        if parsed is None:
+            unparsed.append(UnparsedLine(archive_path, ordinal, raw, reason or "unparseable"))
+            continue
+        imported_entry = _to_imported_entry(parsed, archive_path, ordinal, iso3)
+        if imported_entry is None:
+            unparsed.append(UnparsedLine(archive_path, ordinal, raw, _NO_SHARD_REASON))
+            continue
+        imported.append(imported_entry)
     return imported, unparsed
 
 
@@ -410,16 +549,25 @@ def import_language(
     gd_zip: Path,
     archive_root: Path,
     store_root: Path,
+    cc_export: Path | None = None,
 ) -> ImportStats:
-    """Read `ad_zip` (Analysis Dictionary) and `gd_zip` (Generation Dictionary) for one language
-    and write `store_root/<iso3>/dictionary/<a-z>.yaml` plus `_unparsed.txt` (SPEC.md §3.2)."""
+    """Read `ad_zip` (Analysis Dictionary) and `gd_zip` (Generation Dictionary) for one language,
+    plus `cc_export` (`export_cc.php`, issue 184) if given, and write
+    `store_root/<iso3>/dictionary/<a-z>.yaml` plus `_unparsed.txt` (SPEC.md §3.2)."""
     stats = ImportStats()
     shards: dict[str, list[dict]] = {}
     unparsed: list[UnparsedLine] = []
-    for zip_path in (ad_zip, gd_zip):
-        imported, bad = import_zip(zip_path, archive_root, iso3)
+    sources: list[tuple[Path, bool]] = [(ad_zip, True), (gd_zip, True)]
+    if cc_export is not None:
+        sources.append((cc_export, False))
+    for source_path, is_zip in sources:
+        imported, bad = (
+            import_zip(source_path, archive_root, iso3)
+            if is_zip
+            else import_cc_export(source_path, archive_root, iso3)
+        )
         for item in imported:
-            assert item.shard is not None  # import_zip routes shardless headwords to `bad`
+            assert item.shard is not None  # both importers route shardless headwords to `bad`
             shards.setdefault(item.shard, []).append(item.record)
         unparsed.extend(bad)
         stats.input_lines += len(imported) + len(bad)
@@ -445,6 +593,9 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--ad", required=True, type=Path, help="Analysis Dictionary zip")
     parser.add_argument("--gd", required=True, type=Path, help="Generation Dictionary zip")
     parser.add_argument(
+        "--cc", type=Path, default=None, help="closed-class export_cc.php (issue 184), optional"
+    )
+    parser.add_argument(
         "--archive-root", type=Path, default=Path("data/archive"), help="default data/archive"
     )
     parser.add_argument(
@@ -456,7 +607,9 @@ def build_parser() -> argparse.ArgumentParser:
 def main(argv: Sequence[str] | None = None) -> int:
     argv = list(sys.argv[1:] if argv is None else argv)
     args = build_parser().parse_args(argv)
-    stats = import_language(args.iso3, args.ad, args.gd, args.archive_root, args.store_root)
+    stats = import_language(
+        args.iso3, args.ad, args.gd, args.archive_root, args.store_root, cc_export=args.cc
+    )
     print(
         f"{args.iso3}: {stats.parsed_entries} entries across {len(stats.shards_written)} shards, "
         f"{stats.unparsed_lines} unparsed lines, {stats.input_lines} input lines"

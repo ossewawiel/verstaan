@@ -10783,6 +10783,30 @@
   frequency: 2
   priority: 0
   source: {archive_path: exports/eng/en_ana_u_c_ucl/en_ana_u_c_ucl_4.txt, line: 23832}
+- headword: keeping in mind
+  id: 432336
+  uw: ""
+  features: {LEMMA: keeping in mind, BF: keeping in mind, LEX: P, POS: PRE, LST: MTW, PAR: M0, FRA: Y0, SEM: XXX, SFR: K0, rel: man, att: "@considering"}
+  lang: eng
+  frequency: 255
+  priority: 7
+  source: {archive_path: exports/eng/en_gen_u_c_ucl/en_gen_u_c_ucl_2.txt, line: 64026}
+- headword: keeping in mind
+  id: 517446
+  uw: "534149"
+  features: {LEMMA: keeping in mind, BF: keeping in mind, LEX: P, POS: PRE, LST: MTW, PAR: M0, FRA: Y0}
+  lang: eng
+  frequency: 0
+  priority: 0
+  source: {archive_path: exports/eng/export_cc.php, line: 437}
+- headword: keeping in mind
+  id: 530913
+  uw: ""
+  features: {LEMMA: keeping in mind, BF: keeping in mind, LEX: P, POS: PRE, LST: MTW, PAR: M0, FRA: Y0, SEM: XXX, SFR: K0, rel: man, att: "@considering"}
+  lang: eng
+  frequency: 255
+  priority: 7
+  source: {archive_path: exports/eng/en_ana_u_c_ucl/en_ana_u_c_ucl_3.txt, line: 62103}
 - headword: keeping mouth shut
   id: 565221
   uw: "200937619"
@@ -21839,6 +21863,14 @@
   frequency: 1
   priority: 0
   source: {archive_path: exports/eng/en_ana_u_c_ucl/en_ana_u_c_ucl_2.txt, line: 46788}
+- headword: kilo-
+  id: 214344
+  uw: "108010"
+  features: {LEMMA: kilo-, BF: kilo, LEX: F, POS: PFX, LST: SBW, PAR: M0, FRA: Y0}
+  lang: eng
+  frequency: 0
+  priority: 0
+  source: {archive_path: exports/eng/export_cc.php, line: 438}
 - headword: kilobit
   id: 412297
   uw: "113627810"

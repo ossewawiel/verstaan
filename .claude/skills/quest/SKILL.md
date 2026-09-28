@@ -37,7 +37,7 @@ One `AskUserQuestion` round, at most four questions, each with the proposal firs
 | Number | `max(existing) + 1`; a main quest inside its milestone's range only if a number there is still free | never; say which number and why |
 | `depends_on` | every open or done quest whose output the work needs, read from their titles and What sections | a candidate is a judgement call |
 | Cross-line block | if this is a side quest and an open main quest needs it, add this number to that main quest's `depends_on` too | always confirm, it edits another file |
-| Loadout | `agent` from the routing table (design → `rule-author`, tests first → `test-writer`, prose → `docs-writer`, else `implementer`); `model` and `effort` from that agent's file, raised one step only for engine core or a public API change | the seed touches two agents' work |
+| Loadout | `agent` from the routing table (design → `rule-author`, tests first → `test-writer`, prose → `docs-writer`, else `implementer`); `model` and `effort` from that agent's file, raised one step only for engine core or a public API change; a repeat of an already-done quest with one parameter changed (a drain-stuck-exports sweep, an ISO-code swap) proposes `haiku`, `low` instead | the seed touches two agents' work |
 | Checkpoint | `4` if it changes `engine/include/`, a public API or a merge path; else `null` | never; state it |
 
 Keep the "why now" in the developer's own words, dated, the way issues 98 and 102 quote the

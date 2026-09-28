@@ -4879,6 +4879,14 @@
   frequency: 1
   priority: 0
   source: {archive_path: exports/eng/en_ana_u_c_ucl/en_ana_u_c_ucl_1.txt, line: 31842}
+- headword: ultra-
+  id: 515868
+  uw: "120394"
+  features: {LEMMA: ultra-, BF: ultra, LEX: F, POS: PFX, LST: SBW, PAR: M0, FRA: Y0}
+  lang: eng
+  frequency: 0
+  priority: 0
+  source: {archive_path: exports/eng/export_cc.php, line: 873}
 - headword: ultracentrifugation
   id: 411578
   uw: "113570923"
@@ -20783,6 +20791,30 @@
   frequency: 3
   priority: 0
   source: {archive_path: exports/eng/en_ana_u_c_ucl/en_ana_u_c_ucl_1.txt, line: 32392}
+- headword: under
+  id: 432581
+  uw: ""
+  features: {LEMMA: under, BF: under, LEX: P, POS: PRE, LST: WRD, PAR: M0, FRA: Y259, SEM: XXX, SFR: K0, rel: plc, att: "@under"}
+  lang: eng
+  frequency: 255
+  priority: 255
+  source: {archive_path: exports/eng/en_gen_u_c_ucl/en_gen_u_c_ucl_2.txt, line: 64134}
+- headword: under
+  id: 515768
+  uw: "118780"
+  features: {LEMMA: under, BF: under, LEX: P, POS: PRE, LST: WRD, PAR: M0, FRA: Y259}
+  lang: eng
+  frequency: 0
+  priority: 0
+  source: {archive_path: exports/eng/export_cc.php, line: 874}
+- headword: under
+  id: 531158
+  uw: ""
+  features: {LEMMA: under, BF: under, LEX: P, POS: PRE, LST: WRD, PAR: M0, FRA: Y259, SEM: XXX, SFR: K0, rel: plc, att: "@under"}
+  lang: eng
+  frequency: 255
+  priority: 255
+  source: {archive_path: exports/eng/en_ana_u_c_ucl/en_ana_u_c_ucl_3.txt, line: 62211}
 - headword: under arms
   id: 272833
   uw: "400387455"
@@ -20927,6 +20959,14 @@
   frequency: 1
   priority: 0
   source: {archive_path: exports/eng/en_ana_u_c_ucl/en_ana_u_c_ucl_1.txt, line: 32397}
+- headword: under-
+  id: 515774
+  uw: "118780"
+  features: {LEMMA: under-, BF: under, LEX: F, POS: PFX, LST: SBW, PAR: M0, FRA: Y0}
+  lang: eng
+  frequency: 0
+  priority: 0
+  source: {archive_path: exports/eng/export_cc.php, line: 875}
 - headword: under-the-counter
   id: 283511
   uw: "301404482"
@@ -24479,6 +24519,30 @@
   frequency: 1
   priority: 6
   source: {archive_path: exports/eng/en_ana_u_c_ucl/en_ana_u_c_ucl_1.txt, line: 5166}
+- headword: underneath
+  id: 432431
+  uw: ""
+  features: {LEMMA: underneath, BF: underneath, LEX: P, POS: PRE, LST: WRD, PAR: M0, FRA: Y259, SEM: XXX, SFR: K0, rel: plc, att: "@under"}
+  lang: eng
+  frequency: 255
+  priority: 255
+  source: {archive_path: exports/eng/en_gen_u_c_ucl/en_gen_u_c_ucl_2.txt, line: 64135}
+- headword: underneath
+  id: 515771
+  uw: "118780"
+  features: {LEMMA: underneath, BF: underneath, LEX: P, POS: PRE, LST: WRD, PAR: M0, FRA: Y259}
+  lang: eng
+  frequency: 0
+  priority: 0
+  source: {archive_path: exports/eng/export_cc.php, line: 876}
+- headword: underneath
+  id: 531008
+  uw: ""
+  features: {LEMMA: underneath, BF: underneath, LEX: P, POS: PRE, LST: WRD, PAR: M0, FRA: Y259, SEM: XXX, SFR: K0, rel: plc, att: "@under"}
+  lang: eng
+  frequency: 255
+  priority: 255
+  source: {archive_path: exports/eng/en_ana_u_c_ucl/en_ana_u_c_ucl_3.txt, line: 62212}
 - headword: undernourish
   id: 441534
   uw: "201179276"
@@ -47199,6 +47263,30 @@
   frequency: 3
   priority: 0
   source: {archive_path: exports/eng/en_ana_u_c_ucl/en_ana_u_c_ucl_3.txt, line: 49379}
+- headword: unless
+  id: 275166
+  uw: ""
+  features: {LEMMA: unless, BF: unless, LEX: C, POS: AVR, LST: WRD, PAR: M0, FRA: Y206, SEM: XXX, SFR: K0, rel: con, att: "@not"}
+  lang: eng
+  frequency: 255
+  priority: 255
+  source: {archive_path: exports/eng/en_gen_u_c_ucl/en_gen_u_c_ucl_1.txt, line: 5674}
+- headword: unless
+  id: 275666
+  uw: ""
+  features: {LEMMA: unless, BF: unless, LEX: C, POS: AVR, LST: WRD, PAR: M0, FRA: Y206, SEM: XXX, SFR: K0, rel: con, att: "@not"}
+  lang: eng
+  frequency: 255
+  priority: 255
+  source: {archive_path: exports/eng/en_ana_u_c_ucl/en_ana_u_c_ucl_1.txt, line: 5674}
+- headword: unless
+  id: 515827
+  uw: "119497"
+  features: {LEMMA: unless, BF: unless, LEX: C, POS: AVR, LST: WRD, PAR: M0, FRA: Y206}
+  lang: eng
+  frequency: 0
+  priority: 0
+  source: {archive_path: exports/eng/export_cc.php, line: 877}
 - headword: unlettered
   id: 285443
   uw: "300831225"
@@ -47375,6 +47463,30 @@
   frequency: 8
   priority: 6
   source: {archive_path: exports/eng/en_ana_u_c_ucl/en_ana_u_c_ucl_1.txt, line: 33063}
+- headword: unlike
+  id: 432539
+  uw: ""
+  features: {LEMMA: unlike, BF: unlike, LEX: P, POS: PRE, LST: WRD, PAR: M0, FRA: Y259, SEM: XXX, SFR: K0, rel: bas, att: "@unlike"}
+  lang: eng
+  frequency: 255
+  priority: 255
+  source: {archive_path: exports/eng/en_gen_u_c_ucl/en_gen_u_c_ucl_2.txt, line: 64136}
+- headword: unlike
+  id: 515897
+  uw: "122142"
+  features: {LEMMA: unlike, BF: unlike, LEX: P, POS: PRE, LST: WRD, PAR: M0, FRA: Y259}
+  lang: eng
+  frequency: 0
+  priority: 0
+  source: {archive_path: exports/eng/export_cc.php, line: 878}
+- headword: unlike
+  id: 531116
+  uw: ""
+  features: {LEMMA: unlike, BF: unlike, LEX: P, POS: PRE, LST: WRD, PAR: M0, FRA: Y259, SEM: XXX, SFR: K0, rel: bas, att: "@unlike"}
+  lang: eng
+  frequency: 255
+  priority: 255
+  source: {archive_path: exports/eng/en_ana_u_c_ucl/en_ana_u_c_ucl_3.txt, line: 62213}
 - headword: unlikeable
   id: 296239
   uw: "301461680"
@@ -66487,6 +66599,30 @@
   frequency: 1
   priority: 0
   source: {archive_path: exports/eng/en_ana_u_c_ucl/en_ana_u_c_ucl_4.txt, line: 82471}
+- headword: until
+  id: 432368
+  uw: ""
+  features: {LEMMA: until, BF: until, LEX: P, POS: PRE, LST: WRD, PAR: M0, FRA: Y259, SEM: XXX, SFR: K0, rel: tim, att: "@until"}
+  lang: eng
+  frequency: 255
+  priority: 255
+  source: {archive_path: exports/eng/en_gen_u_c_ucl/en_gen_u_c_ucl_2.txt, line: 64137}
+- headword: until
+  id: 515964
+  uw: "126604"
+  features: {LEMMA: until, BF: until, LEX: P, POS: PRE, LST: WRD, PAR: M0, FRA: Y259}
+  lang: eng
+  frequency: 0
+  priority: 249
+  source: {archive_path: exports/eng/export_cc.php, line: 879}
+- headword: until
+  id: 530945
+  uw: ""
+  features: {LEMMA: until, BF: until, LEX: P, POS: PRE, LST: WRD, PAR: M0, FRA: Y259, SEM: XXX, SFR: K0, rel: tim, att: "@until"}
+  lang: eng
+  frequency: 255
+  priority: 255
+  source: {archive_path: exports/eng/en_ana_u_c_ucl/en_ana_u_c_ucl_3.txt, line: 62214}
 - headword: until now
   id: 270363
   uw: "400027918"
@@ -66695,6 +66831,30 @@
   frequency: 1
   priority: 0
   source: {archive_path: exports/eng/en_ana_u_c_ucl/en_ana_u_c_ucl_1.txt, line: 33866}
+- headword: unto
+  id: 432513
+  uw: ""
+  features: {LEMMA: unto, BF: unto, LEX: P, POS: PRE, LST: WRD, PAR: M0, FRA: Y259, SEM: XXX, SFR: K0, rel: tim, att: "@until"}
+  lang: eng
+  frequency: 255
+  priority: 255
+  source: {archive_path: exports/eng/en_gen_u_c_ucl/en_gen_u_c_ucl_2.txt, line: 64138}
+- headword: unto
+  id: 515968
+  uw: "126604"
+  features: {LEMMA: unto, BF: unto, LEX: P, POS: PRE, LST: WRD, PAR: M0, FRA: Y259}
+  lang: eng
+  frequency: 0
+  priority: 0
+  source: {archive_path: exports/eng/export_cc.php, line: 880}
+- headword: unto
+  id: 531090
+  uw: ""
+  features: {LEMMA: unto, BF: unto, LEX: P, POS: PRE, LST: WRD, PAR: M0, FRA: Y259, SEM: XXX, SFR: K0, rel: tim, att: "@until"}
+  lang: eng
+  frequency: 255
+  priority: 255
+  source: {archive_path: exports/eng/en_ana_u_c_ucl/en_ana_u_c_ucl_3.txt, line: 62215}
 - headword: untoasted
   id: 279899
   uw: "300619873"
@@ -71080,6 +71240,14 @@
   priority: 0
   source: {archive_path: exports/eng/en_ana_u_c_ucl/en_ana_u_c_ucl_1.txt, line: 34024}
 - headword: up
+  id: 432516
+  uw: ""
+  features: {LEMMA: up, BF: up, LEX: P, POS: PRE, LST: WRD, PAR: M0, FRA: Y259, SEM: XXX, SFR: K0, rel: plc, att: "@upwards"}
+  lang: eng
+  frequency: 255
+  priority: 255
+  source: {archive_path: exports/eng/en_gen_u_c_ucl/en_gen_u_c_ucl_2.txt, line: 64139}
+- headword: up
   id: 434575
   uw: "200154966"
   features: {LEMMA: up, BF: up, LEX: V, POS: VER, LST: WRD, TRA: TST, PAR: M1, FRA: Y38, FLX: "INF:=0>\"\";PAS:=0>\"ped\";PTP:=0>\"ped\";GER:=0>\"ping\";3PS&PRS:=0>\"s\";", SEM: CHA}
@@ -71088,6 +71256,22 @@
   priority: 0
   source: {archive_path: exports/eng/en_gen_u_c_ucl/en_gen_u_c_ucl_2.txt, line: 88849}
 - headword: up
+  id: 515960
+  uw: "124984"
+  features: {LEMMA: up, BF: up, LEX: P, POS: PRE, LST: WRD, PAR: M0, FRA: Y259}
+  lang: eng
+  frequency: 0
+  priority: 253
+  source: {archive_path: exports/eng/export_cc.php, line: 881}
+- headword: up
+  id: 531093
+  uw: ""
+  features: {LEMMA: up, BF: up, LEX: P, POS: PRE, LST: WRD, PAR: M0, FRA: Y259, SEM: XXX, SFR: K0, rel: plc, att: "@upwards"}
+  lang: eng
+  frequency: 255
+  priority: 255
+  source: {archive_path: exports/eng/en_ana_u_c_ucl/en_ana_u_c_ucl_3.txt, line: 62216}
+- headword: up
   id: 539295
   uw: "200154966"
   features: {LEMMA: up, BF: up, LEX: V, POS: VER, MOR: ROO, LST: WRD, MOO: INF, TRA: TST, PAR: M1, FRA: Y38, SEM: CHA}
@@ -71095,6 +71279,30 @@
   frequency: 3
   priority: 0
   source: {archive_path: exports/eng/en_ana_u_c_ucl/en_ana_u_c_ucl_4.txt, line: 82558}
+- headword: up against
+  id: 432504
+  uw: ""
+  features: {LEMMA: up against, BF: up against, LEX: P, POS: PRE, LST: MTW, PAR: M0, FRA: Y259, SEM: XXX, SFR: K0, rel: plc, att: "@front"}
+  lang: eng
+  frequency: 255
+  priority: 255
+  source: {archive_path: exports/eng/en_gen_u_c_ucl/en_gen_u_c_ucl_2.txt, line: 64140}
+- headword: up against
+  id: 516064
+  uw: "134120"
+  features: {LEMMA: up against, BF: up against, LEX: P, POS: PRE, LST: MTW, PAR: M0, FRA: Y259}
+  lang: eng
+  frequency: 0
+  priority: 0
+  source: {archive_path: exports/eng/export_cc.php, line: 882}
+- headword: up against
+  id: 531081
+  uw: ""
+  features: {LEMMA: up against, BF: up against, LEX: P, POS: PRE, LST: MTW, PAR: M0, FRA: Y259, SEM: XXX, SFR: K0, rel: plc, att: "@front"}
+  lang: eng
+  frequency: 255
+  priority: 255
+  source: {archive_path: exports/eng/en_ana_u_c_ucl/en_ana_u_c_ucl_3.txt, line: 62217}
 - headword: up and down
   id: 272143
   uw: "400076512"
@@ -71263,6 +71471,30 @@
   frequency: 4
   priority: 0
   source: {archive_path: exports/eng/en_ana_u_c_ucl/en_ana_u_c_ucl_1.txt, line: 34036}
+- headword: up to
+  id: 432367
+  uw: ""
+  features: {LEMMA: up to, BF: up to, LEX: P, POS: PRE, LST: MTW, PAR: M0, FRA: Y259, SEM: XXX, SFR: K0, rel: tim, att: "@until"}
+  lang: eng
+  frequency: 255
+  priority: 255
+  source: {archive_path: exports/eng/en_gen_u_c_ucl/en_gen_u_c_ucl_2.txt, line: 64141}
+- headword: up to
+  id: 515966
+  uw: "126604"
+  features: {LEMMA: up to, BF: up to, LEX: P, POS: PRE, LST: MTW, PAR: M0, FRA: Y259}
+  lang: eng
+  frequency: 0
+  priority: 0
+  source: {archive_path: exports/eng/export_cc.php, line: 883}
+- headword: up to
+  id: 530944
+  uw: ""
+  features: {LEMMA: up to, BF: up to, LEX: P, POS: PRE, LST: MTW, PAR: M0, FRA: Y259, SEM: XXX, SFR: K0, rel: tim, att: "@until"}
+  lang: eng
+  frequency: 255
+  priority: 255
+  source: {archive_path: exports/eng/en_ana_u_c_ucl/en_ana_u_c_ucl_3.txt, line: 62218}
 - headword: up to her neck
   id: 286135
   uw: "301516605"
@@ -71391,6 +71623,30 @@
   frequency: 1
   priority: 0
   source: {archive_path: exports/eng/en_ana_u_c_ucl/en_ana_u_c_ucl_1.txt, line: 34042}
+- headword: up until
+  id: 432514
+  uw: ""
+  features: {LEMMA: up until, BF: up until, LEX: P, POS: PRE, LST: MTW, PAR: M0, FRA: Y259, SEM: XXX, SFR: K0, rel: tim, att: "@until"}
+  lang: eng
+  frequency: 255
+  priority: 255
+  source: {archive_path: exports/eng/en_gen_u_c_ucl/en_gen_u_c_ucl_2.txt, line: 64142}
+- headword: up until
+  id: 515967
+  uw: "126604"
+  features: {LEMMA: up until, BF: up until, LEX: P, POS: PRE, LST: MTW, PAR: M0, FRA: Y259}
+  lang: eng
+  frequency: 0
+  priority: 0
+  source: {archive_path: exports/eng/export_cc.php, line: 884}
+- headword: up until
+  id: 531091
+  uw: ""
+  features: {LEMMA: up until, BF: up until, LEX: P, POS: PRE, LST: MTW, PAR: M0, FRA: Y259, SEM: XXX, SFR: K0, rel: tim, att: "@until"}
+  lang: eng
+  frequency: 255
+  priority: 255
+  source: {archive_path: exports/eng/en_ana_u_c_ucl/en_ana_u_c_ucl_3.txt, line: 62219}
 - headword: up-and-coming
   id: 280430
   uw: "300885099"
@@ -73711,6 +73967,62 @@
   frequency: 2
   priority: 0
   source: {archive_path: exports/eng/en_ana_u_c_ucl/en_ana_u_c_ucl_1.txt, line: 34059}
+- headword: upon
+  id: 432370
+  uw: ""
+  features: {LEMMA: upon, BF: upon, LEX: P, POS: PRE, LST: WRD, PAR: M0, FRA: Y259, SEM: XXX, SFR: K0, rel: tim}
+  lang: eng
+  frequency: 255
+  priority: 5
+  source: {archive_path: exports/eng/en_gen_u_c_ucl/en_gen_u_c_ucl_2.txt, line: 64145}
+- headword: upon
+  id: 432371
+  uw: ""
+  features: {LEMMA: upon, BF: upon, LEX: P, POS: PRE, LST: WRD, PAR: M0, FRA: Y259, SEM: XXX, SFR: K0, rel: cnt, att: "@about"}
+  lang: eng
+  frequency: 255
+  priority: 255
+  source: {archive_path: exports/eng/en_gen_u_c_ucl/en_gen_u_c_ucl_2.txt, line: 64143}
+- headword: upon
+  id: 432372
+  uw: ""
+  features: {LEMMA: upon, BF: upon, LEX: P, POS: PRE, LST: WRD, PAR: M0, FRA: Y259, SEM: XXX, SFR: K0, rel: plc, att: "@upwards"}
+  lang: eng
+  frequency: 255
+  priority: 255
+  source: {archive_path: exports/eng/en_gen_u_c_ucl/en_gen_u_c_ucl_2.txt, line: 64144}
+- headword: upon
+  id: 515961
+  uw: "124984"
+  features: {LEMMA: upon, BF: upon, LEX: P, POS: PRE, LST: WRD, PAR: M0, FRA: Y259}
+  lang: eng
+  frequency: 0
+  priority: 252
+  source: {archive_path: exports/eng/export_cc.php, line: 885}
+- headword: upon
+  id: 530947
+  uw: ""
+  features: {LEMMA: upon, BF: upon, LEX: P, POS: PRE, LST: WRD, PAR: M0, FRA: Y259, SEM: XXX, SFR: K0, rel: tim}
+  lang: eng
+  frequency: 255
+  priority: 5
+  source: {archive_path: exports/eng/en_ana_u_c_ucl/en_ana_u_c_ucl_3.txt, line: 62220}
+- headword: upon
+  id: 530948
+  uw: ""
+  features: {LEMMA: upon, BF: upon, LEX: P, POS: PRE, LST: WRD, PAR: M0, FRA: Y259, SEM: XXX, SFR: K0, rel: cnt, att: "@about"}
+  lang: eng
+  frequency: 255
+  priority: 255
+  source: {archive_path: exports/eng/en_ana_u_c_ucl/en_ana_u_c_ucl_3.txt, line: 62221}
+- headword: upon
+  id: 530949
+  uw: ""
+  features: {LEMMA: upon, BF: upon, LEX: P, POS: PRE, LST: WRD, PAR: M0, FRA: Y259, SEM: XXX, SFR: K0, rel: plc, att: "@upwards"}
+  lang: eng
+  frequency: 255
+  priority: 255
+  source: {archive_path: exports/eng/en_ana_u_c_ucl/en_ana_u_c_ucl_3.txt, line: 62222}
 - headword: upon one's guard
   id: 276848
   uw: "300162661"
@@ -77191,6 +77503,30 @@
   frequency: 1
   priority: 6
   source: {archive_path: exports/eng/en_ana_u_c_ucl/en_ana_u_c_ucl_1.txt, line: 5372}
+- headword: upwards
+  id: 432515
+  uw: ""
+  features: {LEMMA: upwards, BF: upwards, LEX: P, POS: PRE, LST: WRD, PAR: M0, FRA: Y259, SEM: XXX, SFR: K0, rel: plc, att: "@upwards"}
+  lang: eng
+  frequency: 255
+  priority: 255
+  source: {archive_path: exports/eng/en_gen_u_c_ucl/en_gen_u_c_ucl_2.txt, line: 64146}
+- headword: upwards
+  id: 515962
+  uw: "124984"
+  features: {LEMMA: upwards, BF: upwards, LEX: P, POS: PRE, LST: WRD, PAR: M0, FRA: Y259}
+  lang: eng
+  frequency: 0
+  priority: 0
+  source: {archive_path: exports/eng/export_cc.php, line: 886}
+- headword: upwards
+  id: 531092
+  uw: ""
+  features: {LEMMA: upwards, BF: upwards, LEX: P, POS: PRE, LST: WRD, PAR: M0, FRA: Y259, SEM: XXX, SFR: K0, rel: plc, att: "@upwards"}
+  lang: eng
+  frequency: 255
+  priority: 255
+  source: {archive_path: exports/eng/en_ana_u_c_ucl/en_ana_u_c_ucl_3.txt, line: 62223}
 - headword: upwind
   id: 271246
   uw: "400094893"
@@ -80640,6 +80976,14 @@
   priority: 255
   source: {archive_path: exports/eng/en_gen_u_c_ucl/en_gen_u_c_ucl_2.txt, line: 64284}
 - headword: us
+  id: 515651
+  uw: "117700"
+  features: {LEMMA: us, BF: us, LEX: R, POS: PPR, LST: WRD, NUM: PLRT, CAS: OBL, PER: 3PP, PAR: M0, FRA: Y0}
+  lang: eng
+  frequency: 0
+  priority: 0
+  source: {archive_path: exports/eng/export_cc.php, line: 887}
+- headword: us
   id: 531302
   uw: 00.@1.@pl
   features: {LEMMA: us, BF: us, LEX: R, POS: PPR, LST: WRD, NUM: PLRT, CAS: OBL, PER: 3PP, PAR: M0, FRA: Y0, SEM: XXX, SFR: K0}
@@ -81335,6 +81679,14 @@
   frequency: 14
   priority: 0
   source: {archive_path: exports/eng/en_gen_u_c_ucl/en_gen_u_c_ucl_1.txt, line: 34040}
+- headword: used to
+  id: 517455
+  uw: "534158"
+  features: {LEMMA: used to, BF: used to, LEX: I, POS: MOV, LST: MTW, PAR: M0, FRA: Y0}
+  lang: eng
+  frequency: 0
+  priority: 0
+  source: {archive_path: exports/eng/export_cc.php, line: 888}
 - headword: used up
   id: 626341
   uw: "201157517"

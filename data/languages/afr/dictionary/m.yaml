@@ -1568,6 +1568,30 @@
   priority: 2
   source: {archive_path: exports/afr/af_gen_u_c_ucl/af_gen_u_c_ucl_1.txt, line: 7428}
 - headword: maar
+  id: 5716
+  uw: ""
+  features: {LEMMA: maar, BF: maar, LEX: C}
+  lang: afr
+  frequency: 0
+  priority: 0
+  source: {archive_path: exports/afr/export_cc.php, line: 111}
+- headword: maar
+  id: 10053
+  uw: ""
+  features: {LEMMA: maar, BF: maar, LEX: C}
+  lang: afr
+  frequency: 0
+  priority: 0
+  source: {archive_path: exports/afr/af_ana_u_c_ucl/af_ana_u_c_ucl_1.txt, line: 906}
+- headword: maar
+  id: 10053
+  uw: ""
+  features: {LEMMA: maar, BF: maar, LEX: C}
+  lang: afr
+  frequency: 0
+  priority: 0
+  source: {archive_path: exports/afr/af_gen_u_c_ucl/af_gen_u_c_ucl_1.txt, line: 906}
+- headword: maar
   id: 19122
   uw: "109344724"
   features: {LEMMA: maar, BF: maar, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M5, FRA: Y0, ABN: CCT, ANI: NANM, SEM: NOB}
@@ -4840,6 +4864,22 @@
   priority: 0
   source: {archive_path: exports/afr/af_ana_u_c_ucl/af_ana_u_c_ucl_1.txt, line: 472}
 - headword: meeste
+  id: 10099
+  uw: ""
+  features: {LEMMA: meeste, BF: meeste, LEX: D, SEM: XXX, SFR: K0, att: "@majority"}
+  lang: afr
+  frequency: 255
+  priority: 255
+  source: {archive_path: exports/afr/af_ana_u_c_ucl/af_ana_u_c_ucl_1.txt, line: 942}
+- headword: meeste
+  id: 10099
+  uw: ""
+  features: {LEMMA: meeste, BF: meeste, LEX: D, SEM: XXX, SFR: K0, att: "@majority"}
+  lang: afr
+  frequency: 255
+  priority: 255
+  source: {archive_path: exports/afr/af_gen_u_c_ucl/af_gen_u_c_ucl_1.txt, line: 942}
+- headword: meeste
   id: 19857
   uw: "302343517"
   features: {LEMMA: meeste, BF: meeste, LEX: J, POS: ADJ, LST: WRD, DEG: SUP, PAR: M0, FRA: Y0}
@@ -4847,6 +4887,14 @@
   frequency: 2
   priority: 0
   source: {archive_path: exports/afr/af_gen_u_c_ucl/af_gen_u_c_ucl_1.txt, line: 2044}
+- headword: meeste
+  id: 22759
+  uw: "118368"
+  features: {LEMMA: meeste, BF: meeste, LEX: D}
+  lang: afr
+  frequency: 0
+  priority: 0
+  source: {archive_path: exports/afr/export_cc.php, line: 116}
 - headword: meeste
   id: 23217
   uw: "302343517"
@@ -5839,6 +5887,30 @@
   frequency: 4
   priority: 2
   source: {archive_path: exports/afr/af_ana_u_c_ucl/af_ana_u_c_ucl_1.txt, line: 9792}
+- headword: met
+  id: 5675
+  uw: ""
+  features: {LEMMA: met, BF: met, LEX: P, POS: PRE}
+  lang: afr
+  frequency: 0
+  priority: 0
+  source: {archive_path: exports/afr/export_cc.php, line: 120}
+- headword: met
+  id: 13984
+  uw: ""
+  features: {LEMMA: met, BF: met, LEX: P, POS: PRE}
+  lang: afr
+  frequency: 0
+  priority: 0
+  source: {archive_path: exports/afr/af_ana_u_c_ucl/af_ana_u_c_ucl_1.txt, line: 17435}
+- headword: met
+  id: 13984
+  uw: ""
+  features: {LEMMA: met, BF: met, LEX: P, POS: PRE}
+  lang: afr
+  frequency: 0
+  priority: 0
+  source: {archive_path: exports/afr/af_gen_u_c_ucl/af_gen_u_c_ucl_1.txt, line: 12628}
 - headword: met
   id: 19092
   uw: "400117082"
@@ -6864,6 +6936,14 @@
   priority: 0
   source: {archive_path: exports/afr/af_ana_u_c_ucl/af_ana_u_c_ucl_1.txt, line: 9870}
 - headword: miljard
+  id: 6254
+  uw: "108014"
+  features: {LEMMA: miljard, BF: miljard, LEX: U}
+  lang: afr
+  frequency: 0
+  priority: 0
+  source: {archive_path: exports/afr/export_cc.php, line: 122}
+- headword: miljard
   id: 20313
   uw: "113752033"
   features: {LEMMA: miljard, BF: miljard, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M3, FRA: Y0, ABN: ABT, ANI: NANM, SEM: QTT}
@@ -6887,6 +6967,14 @@
   frequency: 2
   priority: 0
   source: {archive_path: exports/afr/af_ana_u_c_ucl/af_ana_u_c_ucl_1.txt, line: 9872}
+- headword: miljoen
+  id: 3959
+  uw: "108013"
+  features: {LEMMA: miljoen, BF: miljoen, LEX: U, LST: WRD, NUM: SNG, PAR: M0, FRA: Y0}
+  lang: afr
+  frequency: 0
+  priority: 0
+  source: {archive_path: exports/afr/export_cc.php, line: 123}
 - headword: milliliter
   id: 10680
   uw: "113623636"
@@ -7007,6 +7095,14 @@
   frequency: 2
   priority: 0
   source: {archive_path: exports/afr/af_ana_u_c_ucl/af_ana_u_c_ucl_1.txt, line: 9878}
+- headword: min
+  id: 22816
+  uw: "118915"
+  features: {LEMMA: min, LEX: D}
+  lang: afr
+  frequency: 0
+  priority: 0
+  source: {archive_path: exports/afr/export_cc.php, line: 124}
 - headword: mineraal
   id: 12063
   uw: "114662574"

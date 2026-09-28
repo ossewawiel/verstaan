@@ -92,7 +92,17 @@ FEATURE_PATTERN = re.compile(r"\b([A-Z][A-Z0-9]*)=([A-Z][A-Z0-9]*)\b")
 # `GOV` (issue 169): dictionary.md/tagset.md, "Subcategorization rule, inline in the entry" --
 # an S-rule pattern like `VC(PP([with]))`, not a tagset mnemonic, the same reason `FLX` (an
 # inline A-rule) sits here rather than in tagset.yaml.
-REFERENCE_VALUED_ATTRIBUTES = frozenset({"LEMMA", "BF", "PAR", "FRA", "SFR", "FLX", "DIGIT", "GOV"})
+# `rel`/`att` (issue 184): the same lower-case UNL relation/attribute labels `FEATURE_PATTERN`'s
+# own comment above already calls out for the grammar side (`docs/unl-reference/formats/
+# dictionary.md`: "rel = relation (Used to map relations to empty UW's)"), now real dictionary
+# `features` keys too -- every closed-class entry this issue imports carries one, e.g.
+# `[of]{}""(LEX=P,POS=PRE,rel=mod)` (`tagset.yaml`'s own worked example). Their values (`mod`,
+# `man`, `@def`, `@contrast`, ...) are relation/attribute labels from
+# `docs/unl-reference/formats/transformation-grammar.md`'s vocabulary, not `tagset.yaml` mnemonics,
+# so both the attribute name and its value are exempt, the same shape as `GOV`.
+REFERENCE_VALUED_ATTRIBUTES = frozenset(
+    {"LEMMA", "BF", "PAR", "FRA", "SFR", "FLX", "DIGIT", "GOV", "rel", "att"}
+)
 
 # dictionary.md's own formal grammar: `<UW> ::= <text> | <REGULAR EXPRESSION>` — a UW is not
 # digits-only. Real afr/eng entries confirm this at scale (2026-09-15, issue 18): pronoun entries

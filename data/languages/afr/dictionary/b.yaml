@@ -1736,6 +1736,14 @@
   priority: 1
   source: {archive_path: exports/afr/af_gen_u_c_ucl/af_gen_u_c_ucl_1.txt, line: 3537}
 - headword: baie
+  id: 5773
+  uw: "119236"
+  features: {LEMMA: baie, BF: baie, LEX: R, LST: WRD, NUM: SNGT, PAR: M0, FRA: Y0}
+  lang: afr
+  frequency: 0
+  priority: 0
+  source: {archive_path: exports/afr/export_cc.php, line: 20}
+- headword: baie
   id: 14024
   uw: 00.@more
   features: {LEMMA: baie, BF: baie, LEX: R, LST: WRD, NUM: SNGT, PAR: M0, FRA: Y0}
@@ -5119,6 +5127,30 @@
   frequency: 5
   priority: 1
   source: {archive_path: exports/afr/af_gen_u_c_ucl/af_gen_u_c_ucl_1.txt, line: 12812}
+- headword: behalwe
+  id: 7167
+  uw: ""
+  features: {LEMMA: behalwe, BF: behalwe, LEX: C}
+  lang: afr
+  frequency: 0
+  priority: 0
+  source: {archive_path: exports/afr/export_cc.php, line: 21}
+- headword: behalwe
+  id: 10082
+  uw: ""
+  features: {LEMMA: behalwe, BF: behalwe, LEX: C}
+  lang: afr
+  frequency: 0
+  priority: 0
+  source: {archive_path: exports/afr/af_ana_u_c_ucl/af_ana_u_c_ucl_1.txt, line: 895}
+- headword: behalwe
+  id: 10082
+  uw: ""
+  features: {LEMMA: behalwe, BF: behalwe, LEX: C}
+  lang: afr
+  frequency: 0
+  priority: 0
+  source: {archive_path: exports/afr/af_gen_u_c_ucl/af_gen_u_c_ucl_1.txt, line: 895}
 - headword: behandel
   id: 14559
   uw: "202514187"
@@ -7407,6 +7439,30 @@
   frequency: 4
   priority: 0
   source: {archive_path: exports/afr/af_ana_u_c_ucl/af_ana_u_c_ucl_1.txt, line: 4052}
+- headword: benewens
+  id: 7147
+  uw: ""
+  features: {LEMMA: benewens, BF: benewens, LEX: P, POS: PRE}
+  lang: afr
+  frequency: 0
+  priority: 0
+  source: {archive_path: exports/afr/export_cc.php, line: 22}
+- headword: benewens
+  id: 14007
+  uw: ""
+  features: {LEMMA: benewens, BF: benewens, LEX: P, POS: PRE}
+  lang: afr
+  frequency: 0
+  priority: 0
+  source: {archive_path: exports/afr/af_ana_u_c_ucl/af_ana_u_c_ucl_1.txt, line: 17426}
+- headword: benewens
+  id: 14007
+  uw: ""
+  features: {LEMMA: benewens, BF: benewens, LEX: P, POS: PRE}
+  lang: afr
+  frequency: 0
+  priority: 0
+  source: {archive_path: exports/afr/af_gen_u_c_ucl/af_gen_u_c_ucl_1.txt, line: 12619}
 - headword: benodig
   id: 14375
   uw: "201188725"
@@ -13088,6 +13144,30 @@
   priority: 2
   source: {archive_path: exports/afr/af_ana_u_c_ucl/af_ana_u_c_ucl_1.txt, line: 4354}
 - headword: binne
+  id: 6073
+  uw: ""
+  features: {LEMMA: binne, BF: binne, LEX: P, POS: PRE}
+  lang: afr
+  frequency: 0
+  priority: 0
+  source: {archive_path: exports/afr/export_cc.php, line: 23}
+- headword: binne
+  id: 13994
+  uw: ""
+  features: {LEMMA: binne, BF: binne, LEX: P, POS: PRE}
+  lang: afr
+  frequency: 0
+  priority: 0
+  source: {archive_path: exports/afr/af_ana_u_c_ucl/af_ana_u_c_ucl_1.txt, line: 17427}
+- headword: binne
+  id: 13994
+  uw: ""
+  features: {LEMMA: binne, BF: binne, LEX: P, POS: PRE}
+  lang: afr
+  frequency: 0
+  priority: 0
+  source: {archive_path: exports/afr/af_gen_u_c_ucl/af_gen_u_c_ucl_1.txt, line: 12620}
+- headword: binne
   id: 19883
   uw: "400501990"
   features: {LEMMA: binne, BF: binne, LEX: A, POS: AAV, LST: WRD, PAR: M0, FRA: Y0, SEM: PLC}
@@ -15504,6 +15584,30 @@
   priority: 0
   source: {archive_path: exports/afr/af_ana_u_c_ucl/af_ana_u_c_ucl_1.txt, line: 4475}
 - headword: bo
+  id: 6478
+  uw: ""
+  features: {LEMMA: bo, BF: bo, LEX: P, POS: PRE}
+  lang: afr
+  frequency: 0
+  priority: 0
+  source: {archive_path: exports/afr/export_cc.php, line: 25}
+- headword: bo
+  id: 14001
+  uw: ""
+  features: {LEMMA: bo, BF: bo, LEX: P, POS: PRE}
+  lang: afr
+  frequency: 0
+  priority: 0
+  source: {archive_path: exports/afr/af_ana_u_c_ucl/af_ana_u_c_ucl_1.txt, line: 17428}
+- headword: bo
+  id: 14001
+  uw: ""
+  features: {LEMMA: bo, BF: bo, LEX: P, POS: PRE}
+  lang: afr
+  frequency: 0
+  priority: 0
+  source: {archive_path: exports/afr/af_gen_u_c_ucl/af_gen_u_c_ucl_1.txt, line: 12621}
+- headword: bo
   id: 20795
   uw: "400047239"
   features: {LEMMA: bo, BF: bo, LEX: A, POS: AAV, LST: WRD, PAR: M0, FRA: Y0, SEM: MAN}
@@ -16919,6 +17023,30 @@
   frequency: 4
   priority: 0
   source: {archive_path: exports/afr/af_gen_u_c_ucl/af_gen_u_c_ucl_1.txt, line: 4097}
+- headword: boonop
+  id: 6625
+  uw: ""
+  features: {LEMMA: boonop, BF: boonop, LEX: P, POS: PRE}
+  lang: afr
+  frequency: 0
+  priority: 0
+  source: {archive_path: exports/afr/export_cc.php, line: 26}
+- headword: boonop
+  id: 14003
+  uw: ""
+  features: {LEMMA: boonop, BF: boonop, LEX: P, POS: PRE}
+  lang: afr
+  frequency: 0
+  priority: 0
+  source: {archive_path: exports/afr/af_ana_u_c_ucl/af_ana_u_c_ucl_1.txt, line: 17429}
+- headword: boonop
+  id: 14003
+  uw: ""
+  features: {LEMMA: boonop, BF: boonop, LEX: P, POS: PRE}
+  lang: afr
+  frequency: 0
+  priority: 0
+  source: {archive_path: exports/afr/af_gen_u_c_ucl/af_gen_u_c_ucl_1.txt, line: 12622}
 - headword: boonop
   id: 21170
   uw: "400029367"
@@ -20032,6 +20160,14 @@
   priority: 1
   source: {archive_path: exports/afr/af_ana_u_c_ucl/af_ana_u_c_ucl_1.txt, line: 4801}
 - headword: buite
+  id: 6122
+  uw: ""
+  features: {LEMMA: buite, BF: buite, LEX: P, POS: PRE}
+  lang: afr
+  frequency: 0
+  priority: 0
+  source: {archive_path: exports/afr/export_cc.php, line: 27}
+- headword: buite
   id: 10194
   uw: "108613593"
   features: {LEMMA: buite, BF: buite, LEX: N, POS: NOU, LST: WRD, NUM: SNGT, PAR: M0, FRA: Y0, ABN: CCT, ALY: NALI, ANI: NANM, CAR: CTB, SEM: LCT, SFR: K0}
@@ -20047,6 +20183,22 @@
   frequency: 4
   priority: 2
   source: {archive_path: exports/afr/af_gen_u_c_ucl/af_gen_u_c_ucl_1.txt, line: 4247}
+- headword: buite
+  id: 13995
+  uw: ""
+  features: {LEMMA: buite, BF: buite, LEX: P, POS: PRE}
+  lang: afr
+  frequency: 0
+  priority: 0
+  source: {archive_path: exports/afr/af_ana_u_c_ucl/af_ana_u_c_ucl_1.txt, line: 17430}
+- headword: buite
+  id: 13995
+  uw: ""
+  features: {LEMMA: buite, BF: buite, LEX: P, POS: PRE}
+  lang: afr
+  frequency: 0
+  priority: 0
+  source: {archive_path: exports/afr/af_gen_u_c_ucl/af_gen_u_c_ucl_1.txt, line: 12623}
 - headword: buite
   id: 19962
   uw: "400110659"

@@ -8296,6 +8296,30 @@
   priority: 2
   source: {archive_path: exports/afr/af_ana_u_c_ucl/af_ana_u_c_ucl_1.txt, line: 12396}
 - headword: rond
+  id: 6337
+  uw: ""
+  features: {LEMMA: rond, BF: rond, LEX: P, POS: PRE}
+  lang: afr
+  frequency: 0
+  priority: 0
+  source: {archive_path: exports/afr/export_cc.php, line: 159}
+- headword: rond
+  id: 14000
+  uw: ""
+  features: {LEMMA: rond, BF: rond, LEX: P, POS: PRE}
+  lang: afr
+  frequency: 0
+  priority: 0
+  source: {archive_path: exports/afr/af_ana_u_c_ucl/af_ana_u_c_ucl_1.txt, line: 17444}
+- headword: rond
+  id: 14000
+  uw: ""
+  features: {LEMMA: rond, BF: rond, LEX: P, POS: PRE}
+  lang: afr
+  frequency: 0
+  priority: 0
+  source: {archive_path: exports/afr/af_gen_u_c_ucl/af_gen_u_c_ucl_1.txt, line: 12637}
+- headword: rond
   id: 20548
   uw: "302040652"
   features: {LEMMA: rond, BF: rond, LEX: J, POS: ADJ, LST: ABB, PAR: M0, FRA: Y0}

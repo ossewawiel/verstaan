@@ -172,6 +172,17 @@ Issue 167's closing rule needs one qualification after this. Where a 2016 entry 
 tagset name the same class differently, the tagset wins. Where the tagset never mentions the code
 at all, there is nothing to win against, and the wiki definition stands.
 
+### A third rename, found by issue 184: `DIS=IBE`
+
+Issue 184 read `export_cc.php` as a dictionary source for the first time (issues 14 and 171 both
+left it out of scope). Two of its entries, `ante-` and `anti-` (id 515731, 515838), carry
+`DIS=IBE`. The live tagset export defines no `IBE` tag; it defines `IBEF` — "immediately before
+(At the left side, without any blank space.)" — the same three-characters-in-the-2016-export,
+four-characters-in-the-live-export shape issue 171 found on `PER=3PE`/`PER=2PE`. No prior
+`export_cc.php`-sourced or AD/GD-sourced entry had ever carried a `DIS` value this validator
+flagged, so the gap sat undiscovered until issue 184 imported these two. The importer renames
+`DIS=IBE` to `DIS=IBEF`; the attribute stays `DIS`, only the value changes.
+
 ### `00` is not a tag
 
 Fourteen English entries carry a feature written `00`, with no attribute and no `=`: `one`,

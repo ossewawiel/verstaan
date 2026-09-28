@@ -3023,6 +3023,30 @@
   frequency: 1
   priority: 0
   source: {archive_path: exports/eng/en_ana_u_c_ucl/en_ana_u_c_ucl_2.txt, line: 97929}
+- headword: quadrillion
+  id: 131993
+  uw: "73612"
+  features: {LEMMA: quadrillion, BF: quadrillion, LEX: U, POS: CDN, MOR: STE, LST: WRD, PAR: M2, FRA: Y0}
+  lang: eng
+  frequency: 0
+  priority: 0
+  source: {archive_path: exports/eng/export_cc.php, line: 655}
+- headword: quadrillionth
+  id: 132319
+  uw: "73536"
+  features: {LEMMA: quadrillionth, BF: quadrillionth, LEX: U, POS: ORD, MOR: STE, LST: WRD, PAR: M2, FRA: Y0}
+  lang: eng
+  frequency: 0
+  priority: 0
+  source: {archive_path: exports/eng/export_cc.php, line: 657}
+- headword: quadrillionth
+  id: 186329
+  uw: "108110"
+  features: {LEMMA: quadrillionth, BF: quadrillionth, LEX: U, POS: ORD, MOR: STE, LST: WRD, PAR: M0, FRA: Y0}
+  lang: eng
+  frequency: 0
+  priority: 0
+  source: {archive_path: exports/eng/export_cc.php, line: 656}
 - headword: quadripara
   id: 383841
   uw: "110497373"
@@ -7520,6 +7544,14 @@
   priority: 0
   source: {archive_path: exports/eng/en_gen_u_c_ucl/en_gen_u_c_ucl_2.txt, line: 82887}
 - headword: quarter
+  id: 516183
+  uw: "73515"
+  features: {LEMMA: quarter, BF: quarter, LEX: U, POS: PTN, LST: WRD, PAR: M0, FRA: Y0}
+  lang: eng
+  frequency: 0
+  priority: 0
+  source: {archive_path: exports/eng/export_cc.php, line: 658}
+- headword: quarter
   id: 529234
   uw: "115258450"
   features: {LEMMA: quarter, BF: quarter, LEX: N, POS: NOU, LST: WRD, NUM: SNG, REG: JGN, PAR: M2, FRA: Y0, ABN: ABT, ANI: NANM, SEM: TIM}
@@ -8559,6 +8591,14 @@
   frequency: 1
   priority: 0
   source: {archive_path: exports/eng/en_ana_u_c_ucl/en_ana_u_c_ucl_2.txt, line: 98231}
+- headword: quartern
+  id: 131903
+  uw: "73515"
+  features: {LEMMA: quartern, BF: quartern, LEX: U, POS: PTN, MOR: STE, LST: WRD, NUM: SNG, PAR: M2, FRA: Y0}
+  lang: eng
+  frequency: 0
+  priority: 0
+  source: {archive_path: exports/eng/export_cc.php, line: 659}
 - headword: quarters
   id: 333871
   uw: "103679384"
@@ -17255,6 +17295,30 @@
   frequency: 1
   priority: 0
   source: {archive_path: exports/eng/en_ana_u_c_ucl/en_ana_u_c_ucl_2.txt, line: 98727}
+- headword: quintillion
+  id: 131994
+  uw: "108017"
+  features: {LEMMA: quintillion, BF: quintillion, LEX: U, POS: CDN, MOR: STE, LST: WRD, PAR: M0, FRA: Y0}
+  lang: eng
+  frequency: 0
+  priority: 0
+  source: {archive_path: exports/eng/export_cc.php, line: 662}
+- headword: quintillionth
+  id: 132321
+  uw: "73537"
+  features: {LEMMA: quintillionth, BF: quintillionth, LEX: U, POS: ORD, MOR: STE, LST: WRD, PAR: M2, FRA: Y0}
+  lang: eng
+  frequency: 0
+  priority: 0
+  source: {archive_path: exports/eng/export_cc.php, line: 664}
+- headword: quintillionth
+  id: 186330
+  uw: "108111"
+  features: {LEMMA: quintillionth, BF: quintillionth, LEX: U, POS: ORD, MOR: STE, LST: WRD, PAR: M0, FRA: Y0}
+  lang: eng
+  frequency: 0
+  priority: 0
+  source: {archive_path: exports/eng/export_cc.php, line: 663}
 - headword: quintipara
   id: 383895
   uw: "110501747"
@@ -18223,6 +18287,54 @@
   frequency: 0
   priority: 0
   source: {archive_path: exports/eng/en_ana_u_c_ucl/en_ana_u_c_ucl_1.txt, line: 3983}
+- headword: quite a few
+  id: 275316
+  uw: ""
+  features: {LEMMA: quite a few, BF: quite a few, LEX: D, POS: QUA, LST: MTW, PAR: M0, FRA: Y0, POL: AFM, SEM: XXX, SFR: K0, att: "@several"}
+  lang: eng
+  frequency: 0
+  priority: 0
+  source: {archive_path: exports/eng/en_gen_u_c_ucl/en_gen_u_c_ucl_1.txt, line: 5800}
+- headword: quite a few
+  id: 275816
+  uw: ""
+  features: {LEMMA: quite a few, BF: quite a few, LEX: D, POS: QUA, LST: MTW, PAR: M0, FRA: Y0, POL: AFM, SEM: XXX, SFR: K0, att: "@several"}
+  lang: eng
+  frequency: 0
+  priority: 0
+  source: {archive_path: exports/eng/en_ana_u_c_ucl/en_ana_u_c_ucl_1.txt, line: 5800}
+- headword: quite a few
+  id: 517343
+  uw: "107219"
+  features: {LEMMA: quite a few, BF: quite a few, LEX: D, POS: QUA, LST: MTW, PAR: M0, FRA: Y0}
+  lang: eng
+  frequency: 0
+  priority: 0
+  source: {archive_path: exports/eng/export_cc.php, line: 666}
+- headword: quite a little
+  id: 132861
+  uw: "117869"
+  features: {LEMMA: quite a little, BF: quite a little, LEX: D, POS: QUA, MOR: STE, LST: MTW, PAR: M0, FRA: Y0}
+  lang: eng
+  frequency: 0
+  priority: 0
+  source: {archive_path: exports/eng/export_cc.php, line: 667}
+- headword: quite a little
+  id: 275264
+  uw: ""
+  features: {LEMMA: quite a little, BF: quite a little, LEX: D, POS: QUA, LST: MTW, PAR: M0, FRA: Y0, SEM: XXX, SFR: K0, att: "@multal"}
+  lang: eng
+  frequency: 62
+  priority: 0
+  source: {archive_path: exports/eng/en_gen_u_c_ucl/en_gen_u_c_ucl_1.txt, line: 5801}
+- headword: quite a little
+  id: 275764
+  uw: ""
+  features: {LEMMA: quite a little, BF: quite a little, LEX: D, POS: QUA, MOR: STE, LST: MTW, PAR: M0, FRA: Y0, SEM: XXX, SFR: K0, att: "@multal"}
+  lang: eng
+  frequency: 62
+  priority: 0
+  source: {archive_path: exports/eng/en_ana_u_c_ucl/en_ana_u_c_ucl_1.txt, line: 5801}
 - headword: quite an
   id: 269816
   uw: "400018918"

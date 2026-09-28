@@ -2080,6 +2080,14 @@
   priority: 0
   source: {archive_path: exports/afr/af_ana_u_c_ucl/af_ana_u_c_ucl_1.txt, line: 191}
 - headword: eerste
+  id: 5784
+  uw: "108022"
+  features: {LEMMA: eerste, BF: eerste, LEX: U}
+  lang: afr
+  frequency: 0
+  priority: 0
+  source: {archive_path: exports/afr/export_cc.php, line: 53}
+- headword: eerste
   id: 19233
   uw: "400102736"
   features: {LEMMA: eerste, BF: eerste, LEX: A, POS: AAV, LST: WRD, PAR: M0, FRA: Y0, SEM: MAN}
@@ -2696,6 +2704,30 @@
   priority: 2
   source: {archive_path: exports/afr/af_gen_u_c_ucl/af_gen_u_c_ucl_1.txt, line: 4780}
 - headword: effens
+  id: 7203
+  uw: "118915"
+  features: {LEMMA: effens, BF: effens, LEX: D, LST: WRD, PAR: M0, FRA: Y0}
+  lang: afr
+  frequency: 0
+  priority: 0
+  source: {archive_path: exports/afr/export_cc.php, line: 54}
+- headword: effens
+  id: 10088
+  uw: ""
+  features: {LEMMA: effens, BF: effens, LEX: D, LST: WRD, PAR: M0, FRA: Y0, SEM: XXX, SFR: K0, att: "@paucal"}
+  lang: afr
+  frequency: 5
+  priority: 0
+  source: {archive_path: exports/afr/af_ana_u_c_ucl/af_ana_u_c_ucl_1.txt, line: 940}
+- headword: effens
+  id: 10088
+  uw: ""
+  features: {LEMMA: effens, BF: effens, LEX: D, LST: WRD, PAR: M0, FRA: Y0, SEM: XXX, SFR: K0, att: "@paucal"}
+  lang: afr
+  frequency: 5
+  priority: 0
+  source: {archive_path: exports/afr/af_gen_u_c_ucl/af_gen_u_c_ucl_1.txt, line: 940}
+- headword: effens
   id: 22630
   uw: "400036291"
   features: {LEMMA: effens, BF: effens, LEX: A, POS: SAV, LST: WRD, PAR: M0, FRA: Y0, SEM: MAN}
@@ -2863,6 +2895,30 @@
   frequency: 4
   priority: 0
   source: {archive_path: exports/afr/af_gen_u_c_ucl/af_gen_u_c_ucl_1.txt, line: 4785}
+- headword: egter
+  id: 5840
+  uw: ""
+  features: {LEMMA: egter, BF: egter, LEX: C}
+  lang: afr
+  frequency: 0
+  priority: 0
+  source: {archive_path: exports/afr/export_cc.php, line: 55}
+- headword: egter
+  id: 10063
+  uw: ""
+  features: {LEMMA: egter, BF: egter, LEX: C}
+  lang: afr
+  frequency: 0
+  priority: 0
+  source: {archive_path: exports/afr/af_ana_u_c_ucl/af_ana_u_c_ucl_1.txt, line: 901}
+- headword: egter
+  id: 10063
+  uw: ""
+  features: {LEMMA: egter, BF: egter, LEX: C}
+  lang: afr
+  frequency: 0
+  priority: 0
+  source: {archive_path: exports/afr/af_gen_u_c_ucl/af_gen_u_c_ucl_1.txt, line: 901}
 - headword: ei
   id: 15904
   uw: "101460457"
@@ -5296,6 +5352,30 @@
   priority: 0
   source: {archive_path: exports/afr/af_gen_u_c_ucl/af_gen_u_c_ucl_1.txt, line: 4894}
 - headword: en
+  id: 5651
+  uw: ""
+  features: {LEMMA: en, BF: en, LEX: C}
+  lang: afr
+  frequency: 0
+  priority: 0
+  source: {archive_path: exports/afr/export_cc.php, line: 59}
+- headword: en
+  id: 10046
+  uw: ""
+  features: {LEMMA: en, BF: en, LEX: C}
+  lang: afr
+  frequency: 0
+  priority: 0
+  source: {archive_path: exports/afr/af_ana_u_c_ucl/af_ana_u_c_ucl_1.txt, line: 902}
+- headword: en
+  id: 10046
+  uw: ""
+  features: {LEMMA: en, BF: en, LEX: C}
+  lang: afr
+  frequency: 0
+  priority: 0
+  source: {archive_path: exports/afr/af_gen_u_c_ucl/af_gen_u_c_ucl_1.txt, line: 902}
+- headword: en
   id: 19085
   uw: "106832572"
   features: {LEMMA: en, BF: en, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M17, FRA: Y0, ANI: NANM, SEM: CMN}
@@ -5383,6 +5463,14 @@
   frequency: 2
   priority: 0
   source: {archive_path: exports/afr/af_gen_u_c_ucl/af_gen_u_c_ucl_1.txt, line: 213}
+- headword: enig
+  id: 22814
+  uw: "118125"
+  features: {LEMMA: enig, LEX: D}
+  lang: afr
+  frequency: 0
+  priority: 0
+  source: {archive_path: exports/afr/export_cc.php, line: 60}
 - headword: enig
   id: 23120
   uw: "301862697"
@@ -5631,6 +5719,14 @@
   frequency: 2
   priority: 0
   source: {archive_path: exports/afr/af_gen_u_c_ucl/af_gen_u_c_ucl_1.txt, line: 216}
+- headword: enkel
+  id: 22815
+  uw: ""
+  features: {LEMMA: enkel, LEX: D}
+  lang: afr
+  frequency: 0
+  priority: 0
+  source: {archive_path: exports/afr/export_cc.php, line: 63}
 - headword: enkel
   id: 24733
   uw: "300493460"
