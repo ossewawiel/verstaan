@@ -435,6 +435,12 @@ tiles:
   x: 3168
   y: 96
   size: 32
+- id: '186'
+  region: m2
+  title: gate_full.sh validates the stores the branch changed, not every store
+  x: 3168
+  y: 224
+  size: 32
 - id: '17'
   region: m2
   title: Build the store validator
@@ -549,6 +555,30 @@ tiles:
   title: Wire the English to UNL to Afrikaans pipeline for the fixed sentence set
   x: 4544
   y: 288
+  size: 32
+- id: '184'
+  region: m3
+  title: Import the closed-class words the archive exports without a UW
+  x: 4416
+  y: 352
+  size: 32
+- id: '185'
+  region: m3
+  title: 'The fixture file records each row''s review, and the owner confirms the fixed set'
+  x: 4480
+  y: 352
+  size: 32
+- id: '187'
+  region: m3
+  title: 'Complete the afr and eng stores: meta.yaml, tests/, and rule references that must resolve'
+  x: 4544
+  y: 352
+  size: 32
+- id: '188'
+  region: m3
+  title: 'M3 close-out: retro, verifier, tag m3, write the M4 quests'
+  x: 4416
+  y: 416
   size: 32
 - id: '90'
   region: m7

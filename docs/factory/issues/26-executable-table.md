@@ -3,7 +3,7 @@ issue: 26
 title: "The test table is the test: a golden loader runs every row, and a held-out slice runs only at the gate"
 milestone: M3
 status: open
-depends_on: [12, 115, 24, 183]
+depends_on: [12, 115, 24, 183, 185]
 agent: test-writer
 agents: [test-writer, implementer]
 model: sonnet
@@ -42,7 +42,12 @@ commit shape first, so the loader's own red state is a commit.
 Issue 25 closed without writing that one-off harness: it assumed stages that did not exist, and
 was superseded by issues 180, 181, 182 and 183 (2026-09-28). This quest now waits on 183, the
 issue that actually writes the end-to-end harness this loader generalises, added to `depends_on`
-above.
+above. It also waits on 185, which puts the `review` key into the fixture YAML; the loader reads
+`review` from there.
+
+The stub this quest planned to prove itself against is gone. Issue 23 retired `not_implemented`
+from `Engine::translate`, and after 183 the confirmed rows pass. So the red proof is a row built to
+fail, not the stub (2026-09-28).
 
 ## Acceptance criteria
 
@@ -63,21 +68,21 @@ above.
 - `.claude/skills/factory-run/SKILL.md` "Routing" for `rule-author` reads rule-author then
   implementer, with the test-writer named only when an issue needs a test the table cannot
   express.
-- The loader is proven red first: the `test(#26)` commit runs the fixture rows against the stub
-  engine and every row fails with `not_implemented`.
+- The loader is proven red first: the `test(#26)` commit adds a copy of one confirmed row with its
+  `expected` altered, and that row fails with its trace printed. The work commit removes the copy.
 - `/gate` and CI green.
 
 ## Not in scope
 
-Any engine behaviour; the rows go red against the stub and stay red until the M3 slice quests
-make them pass. Mutation testing or coverage. The equivalence label, which ADR 0007 gives to
+Any engine behaviour; issues 180 to 183 make the confirmed rows pass before this quest starts. Mutation testing or coverage. The equivalence label, which ADR 0007 gives to
 M4. Moving the markdown table out of `NN-test-cases.md`; it stays the human-reviewed source
 and the YAML stays its twin.
 
 ## Done when
 
-- [ ] `ctest -L golden` runs one case per fixture row and `ctest -L held-out` runs the held-out
-      rows, both red against the stub, both in the report with their commands.
+- [ ] `ctest -L golden` runs one case per fixture row, green for every confirmed row, and the
+      `test(#26)` commit shows an altered row going red. `ctest -L held-out` runs the held-out
+      rows. Both appear in the report with their commands.
 - [ ] The routing table names two passes for an engine issue.
 - [ ] `tests/held-out/` is named in no issue file other than this one, and in no agent file.
 - [ ] PR merged through the gate check.

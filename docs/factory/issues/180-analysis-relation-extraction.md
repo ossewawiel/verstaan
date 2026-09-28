@@ -3,7 +3,7 @@ issue: 180
 title: "Extract UNL relations from the flat analysed node list"
 milestone: M3
 status: open
-depends_on: [22]
+depends_on: [22, 184]
 agent: rule-author
 agents: [rule-author, test-writer, implementer]
 model: opus
@@ -27,6 +27,12 @@ relations to translate at all: `mod` (A08, A11, A12), `plc` (A07, A15), `cnt` (A
 edges for English input, built from the archive's `NN`/`TN` network-construction rules the same
 way `RuleInterpreter::analyse` already reads the archive's `LL` attribute rules.
 
+This quest waits on issue 184, which imports the closed-class words (`the`, `of`, `on`, `and`,
+`without`). Those records carry features and no UW. They reach analysis as nodes that the
+attribute rules fold away (`eng-ana-12` turns `the` into `@def`) and never become graph nodes of
+their own. The `eng` grammar holds one rule each for `cnt`, `plc` and `nam`. If a row needs a rule
+the store lacks, the rule-author pass writes it here, with a test sentence.
+
 ## Acceptance criteria
 
 - `Result::unl.relations` is non-empty for A07 through A15 when translated with
@@ -34,8 +40,8 @@ way `RuleInterpreter::analyse` already reads the archive's `LL` attribute rules.
   that row.
 - Every relation carries the UW pair and the relation label (`agt`, `obj`, `mod`, `plc`, `cnt`,
   `nam`, `and`) it was built from, so `--trace` can show why it fired.
-- `ctest -L fast` and the existing `pipeline_fixed_set` harness (issue 25's one-off runner, or its
-  successor) still pass for every row that passed before this quest.
+- A closed-class node from issue 184 never appears in `Result::unl` as a UW node.
+- `ctest -L fast` still passes. No end-to-end harness exists yet; issue 183 writes it.
 - `python -m tools.validate --changed` exits 0.
 
 ## Not in scope

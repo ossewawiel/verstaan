@@ -3,7 +3,7 @@ issue: 183
 title: "Wire the English to UNL to Afrikaans pipeline for the fixed sentence set"
 milestone: M3
 status: open
-depends_on: [180, 181, 182]
+depends_on: [180, 181, 182, 185]
 agent: implementer
 agents: [implementer]
 model: sonnet
@@ -26,6 +26,10 @@ and fixes whichever stage still drops a row that issue 24 expected to pass.
 
 This issue supersedes issue 25, which is closed with a pointer here rather than carried forward,
 since its "What" no longer describes the engine's state.
+
+This issue also waits on issue 185. Before 185, the fixture YAML carries no `review` key, so a
+harness cannot tell a confirmed row from a pending one. After 185, the owner has confirmed the rows
+this issue must pass.
 
 ## Acceptance criteria
 
