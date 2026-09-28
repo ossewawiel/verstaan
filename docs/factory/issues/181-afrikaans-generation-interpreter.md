@@ -3,7 +3,7 @@ issue: 181
 title: "Tree-based generation interpreter for Afrikaans, wired into Engine::translate"
 milestone: M3
 status: open
-depends_on: [22, 180]
+depends_on: [22, 180, 184]
 agent: rule-author
 agents: [rule-author, test-writer, implementer]
 model: opus
@@ -54,3 +54,8 @@ side — issue 180, a dependency of this quest. Closing issue 25 — issue 183.
 - [ ] `afr-dis-5` fires correctly on the homograph rows and not on the must-not-fire rows.
 - [ ] Inflection paradigms M2, M3, M7, M16 apply where the fixture rows require them.
 - [ ] Every row named in "Acceptance criteria" above matches its `expected` field exactly.
+- [ ] `die`, `'n` and `en` come from the Afrikaans closed-class records issue 184 imports, not
+      from string literals in engine code.
+- [ ] No comment in `engine/` names issue 25 as the place future work lands
+      (`engine/src/engine.cpp`, `engine/include/verstaan/dictionary.hpp`,
+      `engine/include/verstaan/rule_set.hpp`). Each names the issue that owns the work now.
