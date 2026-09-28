@@ -2,15 +2,15 @@
 issue: 184
 title: "Import the closed-class words the archive exports without a UW"
 milestone: M3
-status: in-progress
+status: done
 depends_on: [14]
 agent: implementer
 agents: [implementer]
 model: sonnet
 effort: medium
 checkpoint: null
-commit: null
-worktree: .worktrees/m3-184-import-closed-class-words
+commit: 6c41ea3
+worktree: null
 github_issue: 285
 ---
 ## What
