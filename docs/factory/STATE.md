@@ -2,7 +2,7 @@
 
 Last completed:  #179 — The restart installs what a merge added: npm ci when the lockfile moved,
                  not only on the first run (Side), commit 58999e3
-Next up:         #180 — Extract UNL relations from the flat analysed node list (M3)
+Next up:         #184 — Import the closed-class words the archive exports without a UW (M3)
 Branch / PR:     main, https://github.com/ossewawiel/verstaan.git, 0 files dirty, no gate stamp
-                 for 144193c
-Resume with:     /factory-run 180
+                 for 7bf05c2
+Resume with:     /factory-run 184
