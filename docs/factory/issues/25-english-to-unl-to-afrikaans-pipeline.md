@@ -1,8 +1,8 @@
 ---
 issue: 25
-title: "Wire the English to UNL to Afrikaans pipeline for the fixed sentence set"
+title: "Superseded — Wire the English to UNL to Afrikaans pipeline for the fixed sentence set"
 milestone: M3
-status: open
+status: done
 depends_on: [22, 23, 24]
 agent: implementer
 agents: [implementer]
@@ -15,35 +15,36 @@ github_issue: 248
 ---
 ## What
 
-`Engine::translate` (issue 23) already returns real `Status` values against the runtime-tables
-back end (issue 22); this issue is the integration pass that runs the full pipeline — tokenise
-(19), look up (20), disambiguate and apply grammar (22) — end to end for `Options{Lang::eng,
-Lang::afr}` on every row issue 24 wrote, and fixes whichever stage drops a row that issue 24
-expected to pass.
+This issue assumed `Engine::translate` (issue 23) already ran the full pipeline against the
+runtime-tables back end (issue 22) and only needed row-level fixes to translate the fifteen rows
+in `tests/fixtures/languages/eng/tests/basic.yaml`. The implementer routed here (2026-09-28) found
+that was not true: `Engine::translate` only tokenised English, disambiguated a flat node list, and
+echoed English surface forms back with `⟦word⟧` for unresolved ones. It never populated
+`Graph::relations`, never looked up the Afrikaans dictionary, never applied
+`data/languages/afr/grammar/generation.yaml`, never applied Afrikaans disambiguation or inflection.
+The implementer stopped without writing code rather than either building an unscoped subsystem or
+gaming the acceptance gate (all fifteen rows are still `review: pending`, so "every confirmed row
+passes" was vacuously true).
 
-This issue reads the same store files issues 19–22 each name, plus
-`tests/fixtures/languages/eng/tests/basic.yaml` (issue 24) as its own acceptance fixture — it does
-not read the corpus files directly, since issue 24 already extracted the fifteen rows from them.
+This issue is closed with `commit: null`, deliberately: no work landed under it. It is superseded
+by three quests that build the missing stages, and a fourth that replaces this one as the true
+integration pass:
+
+- Issue 180 — relation extraction on the English analysis side.
+- Issue 181 — the Afrikaans generation interpreter, dictionary lookup, disambiguation and
+  inflection wiring.
+- Issue 182 — three documented `generation.yaml` divergences from the corpus, and a missing `nam`
+  handler.
+- Issue 183 — the integration pass this issue's title describes, once 180–182 are real.
 
 ## Acceptance criteria
 
-- Every row in `tests/fixtures/languages/eng/tests/basic.yaml` marked `status: ok` and `review:
-  confirmed` translates through `Engine::translate` to a `text` that matches its `expected` field
-  exactly.
-- Every row marked `status: partial` returns `Status::partial` with the word named in its `note`
-  column wrapped `⟦word⟧`.
-- A row marked `review: pending` still runs (per issue 26's loader rule) and is reported as
-  pending, not silently skipped, in this issue's own test output ahead of issue 26 landing the
-  shared loader.
-- `ctest -R pipeline_fixed_set` runs green for every `confirmed` row.
+None — this issue does no further work. See issue 183.
 
 ## Not in scope
 
-The golden loader itself (issue 26, which generalises this issue's one-off harness into the
-shared `ctest -L golden` mechanism). Afrikaans → English (not in the fixed set, per issue 24).
-The generated-tables back end (M4).
+Everything. See issues 180, 181, 182, 183.
 
 ## Done when
 
-- [ ] Every `confirmed` row in `tests/fixtures/languages/eng/tests/basic.yaml` passes end to end.
-- [ ] `ctest -R pipeline_fixed_set` is green.
+- [x] Superseded by issues 180, 181, 182 and 183.
