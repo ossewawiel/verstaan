@@ -3,7 +3,7 @@ issue: 26
 title: "The test table is the test: a golden loader runs every row, and a held-out slice runs only at the gate"
 milestone: M3
 status: open
-depends_on: [12, 115, 24]
+depends_on: [12, 115, 24, 183]
 agent: test-writer
 agents: [test-writer, implementer]
 model: sonnet
@@ -38,6 +38,11 @@ interpreter, 23 `Options`/`Result`/`Status`/`Trace`, 24 this loader's own fixtur
 rows from the shared `ugoa1` corpus, added to `depends_on` above), 25 the end-to-end pipeline
 issue 24's rows exercise ahead of this loader generalising the harness. Quest 115 settles the
 commit shape first, so the loader's own red state is a commit.
+
+Issue 25 closed without writing that one-off harness: it assumed stages that did not exist, and
+was superseded by issues 180, 181, 182 and 183 (2026-09-28). This quest now waits on 183, the
+issue that actually writes the end-to-end harness this loader generalises, added to `depends_on`
+above.
 
 ## Acceptance criteria
 
