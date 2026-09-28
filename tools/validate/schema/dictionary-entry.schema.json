@@ -28,8 +28,7 @@
     },
     "uw": {
       "type": "string",
-      "minLength": 1,
-      "description": "The Universal Word (archive UW field), a UCL string or a UCN numeric code, kept exactly as the archive writes it. Empty-UW entries (e.g. punctuation) are out of scope for this schema's minLength; revisit if one is imported."
+      "description": "The Universal Word (archive UW field), a UCL string or a UCN numeric code, kept exactly as the archive writes it. Empty for a closed-class entry (SPEC.md §3.2: an entry with an empty UW is a closed-class record, not an unparsed line); every other entry needs at least one character. The closed-class rule itself is the top-level allOf/if/then below, keyed on features.LEX."
     },
     "features": {
       "type": "object",
@@ -60,6 +59,31 @@
       "$ref": "#/$defs/source"
     }
   },
+  "allOf": [
+    {
+      "$comment": "SPEC.md §3.2, issue 184: an entry with an empty UW is a closed-class record, not an unparsed line, only when features.LEX names one of the archive's grammatical (function-word) categories -- C (conjunction), D (determiner), P (adposition). Every other entry, closed-class LEX or not, needs a non-empty uw.",
+      "if": {
+        "properties": {
+          "features": {
+            "properties": {
+              "LEX": {
+                "enum": ["C", "D", "P"]
+              }
+            },
+            "required": ["LEX"]
+          }
+        }
+      },
+      "then": {},
+      "else": {
+        "properties": {
+          "uw": {
+            "minLength": 1
+          }
+        }
+      }
+    }
+  ],
   "$defs": {
     "source": {
       "type": "object",

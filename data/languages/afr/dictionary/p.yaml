@@ -1456,6 +1456,14 @@
   priority: 0
   source: {archive_path: exports/afr/af_gen_u_c_ucl/af_gen_u_c_ucl_1.txt, line: 8460}
 - headword: paar
+  id: 22812
+  uw: "118915"
+  features: {LEMMA: paar, LEX: D}
+  lang: afr
+  frequency: 0
+  priority: 0
+  source: {archive_path: exports/afr/export_cc.php, line: 152}
+- headword: paar
   id: 22937
   uw: "115704834"
   features: {LEMMA: paar, BF: paar, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M5, FRA: Y0, ABN: ABT, ALY: ALI, ANI: NANM, CAR: CTB, SEM: GRO, SFR: K0}
@@ -4263,6 +4271,30 @@
   frequency: 0
   priority: 1
   source: {archive_path: exports/afr/af_gen_u_c_ucl/af_gen_u_c_ucl_1.txt, line: 8613}
+- headword: per
+  id: 5904
+  uw: ""
+  features: {LEMMA: per, BF: per, LEX: P, POS: PRE}
+  lang: afr
+  frequency: 0
+  priority: 0
+  source: {archive_path: exports/afr/export_cc.php, line: 154}
+- headword: per
+  id: 13988
+  uw: ""
+  features: {LEMMA: per, BF: per, LEX: P, POS: PRE}
+  lang: afr
+  frequency: 0
+  priority: 0
+  source: {archive_path: exports/afr/af_ana_u_c_ucl/af_ana_u_c_ucl_1.txt, line: 17442}
+- headword: per
+  id: 13988
+  uw: ""
+  features: {LEMMA: per, BF: per, LEX: P, POS: PRE}
+  lang: afr
+  frequency: 0
+  priority: 0
+  source: {archive_path: exports/afr/af_gen_u_c_ucl/af_gen_u_c_ucl_1.txt, line: 12635}
 - headword: perd
   id: 15459
   uw: "102374451"
@@ -6991,6 +7023,30 @@
   frequency: 4
   priority: 0
   source: {archive_path: exports/afr/af_ana_u_c_ucl/af_ana_u_c_ucl_1.txt, line: 11434}
+- headword: plus
+  id: 7417
+  uw: ""
+  features: {LEMMA: plus, BF: plus, LEX: P, POS: PRE}
+  lang: afr
+  frequency: 0
+  priority: 0
+  source: {archive_path: exports/afr/export_cc.php, line: 155}
+- headword: plus
+  id: 14011
+  uw: ""
+  features: {LEMMA: plus, BF: plus, LEX: P, POS: PRE}
+  lang: afr
+  frequency: 0
+  priority: 0
+  source: {archive_path: exports/afr/af_ana_u_c_ucl/af_ana_u_c_ucl_1.txt, line: 17443}
+- headword: plus
+  id: 14011
+  uw: ""
+  features: {LEMMA: plus, BF: plus, LEX: P, POS: PRE}
+  lang: afr
+  frequency: 0
+  priority: 0
+  source: {archive_path: exports/afr/af_gen_u_c_ucl/af_gen_u_c_ucl_1.txt, line: 12636}
 - headword: plus
   id: 23113
   uw: "100872107"

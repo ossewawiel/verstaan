@@ -2799,6 +2799,14 @@
   frequency: 35
   priority: 8
   source: {archive_path: exports/eng/en_ana_u_c_ucl/en_ana_u_c_ucl_3.txt, line: 60696}
+- headword: yard
+  id: 516145
+  uw: "108010"
+  features: {LEMMA: yard, BF: yard, LEX: U, POS: CDN, LST: WRD, PAR: M0, FRA: Y0}
+  lang: eng
+  frequency: 0
+  priority: 0
+  source: {archive_path: exports/eng/export_cc.php, line: 938}
 - headword: yard bird
   id: 381574
   uw: "109962966"
@@ -10383,6 +10391,30 @@
   frequency: 1
   priority: 17
   source: {archive_path: exports/eng/en_ana_u_c_ucl/en_ana_u_c_ucl_1.txt, line: 5592}
+- headword: yet
+  id: 275220
+  uw: ""
+  features: {LEMMA: yet, BF: yet, LEX: C, POS: SCJ, LST: WRD, PAR: M0, FRA: Y206, SEM: XXX, SFR: K0, rel: man, att: "@contrast"}
+  lang: eng
+  frequency: 255
+  priority: 255
+  source: {archive_path: exports/eng/en_gen_u_c_ucl/en_gen_u_c_ucl_1.txt, line: 5686}
+- headword: yet
+  id: 275720
+  uw: ""
+  features: {LEMMA: yet, BF: yet, LEX: C, POS: SCJ, LST: WRD, PAR: M0, FRA: Y206, SEM: XXX, SFR: K0, rel: man, att: "@contrast"}
+  lang: eng
+  frequency: 255
+  priority: 255
+  source: {archive_path: exports/eng/en_ana_u_c_ucl/en_ana_u_c_ucl_1.txt, line: 5686}
+- headword: yet
+  id: 515716
+  uw: "117967"
+  features: {LEMMA: yet, BF: yet, LEX: C, POS: SCJ, LST: WRD, PAR: M0, FRA: Y206}
+  lang: eng
+  frequency: 0
+  priority: 0
+  source: {archive_path: exports/eng/export_cc.php, line: 939}
 - headword: yeti
   id: 373768
   uw: "109487252"
@@ -11711,6 +11743,14 @@
   frequency: 5
   priority: 0
   source: {archive_path: exports/eng/en_ana_u_c_ucl/en_ana_u_c_ucl_3.txt, line: 61253}
+- headword: yocto-
+  id: 297189
+  uw: "73613"
+  features: {LEMMA: yocto-, BF: yocto, LEX: F, POS: PFX, LST: SBW, PAR: M0, FRA: Y0}
+  lang: eng
+  frequency: 0
+  priority: 0
+  source: {archive_path: exports/eng/export_cc.php, line: 940}
 - headword: yodel
   id: 358990
   uw: "107123710"
@@ -12583,6 +12623,14 @@
   frequency: 1
   priority: 0
   source: {archive_path: exports/eng/en_ana_u_c_ucl/en_ana_u_c_ucl_3.txt, line: 61301}
+- headword: yotta-
+  id: 297185
+  uw: "73613"
+  features: {LEMMA: yotta-, BF: yotta, LEX: F, POS: PFX, LST: SBW, PAR: M0, FRA: Y0}
+  lang: eng
+  frequency: 0
+  priority: 0
+  source: {archive_path: exports/eng/export_cc.php, line: 941}
 - headword: yottabit
   id: 410693
   uw: "113632461"
@@ -12735,6 +12783,14 @@
   frequency: 0
   priority: 1
   source: {archive_path: exports/eng/en_gen_u_c_ucl/en_gen_u_c_ucl_2.txt, line: 64307}
+- headword: you
+  id: 515925
+  uw: "533973"
+  features: {LEMMA: you, BF: you, LEX: R, POS: PPR, LST: WRD, PER: 2PER, PAR: M0, FRA: Y0}
+  lang: eng
+  frequency: 0
+  priority: 255
+  source: {archive_path: exports/eng/export_cc.php, line: 942}
 - headword: you
   id: 531345
   uw: 00.@2.@dual.@female
@@ -13448,6 +13504,22 @@
   priority: 255
   source: {archive_path: exports/eng/en_gen_u_c_ucl/en_gen_u_c_ucl_2.txt, line: 64311}
 - headword: your
+  id: 515926
+  uw: "123905"
+  features: {LEMMA: your, BF: your, LEX: R, POS: SPR, LST: WRD, PER: 3PER, PAR: M0, FRA: Y0}
+  lang: eng
+  frequency: 0
+  priority: 0
+  source: {archive_path: exports/eng/export_cc.php, line: 943}
+- headword: your
+  id: 517475
+  uw: "536435"
+  features: {LEMMA: your, BF: your, LEX: R, POS: PPR, LST: WRD, PAR: M0, FRA: Y0}
+  lang: eng
+  frequency: 0
+  priority: 0
+  source: {archive_path: exports/eng/export_cc.php, line: 944}
+- headword: your
   id: 531204
   uw: 00.@2.@male.@singular
   features: {LEMMA: your, BF: your, LEX: R, POS: PPR, LST: WRD, PAR: M0, FRA: Y0, SEM: XXX, SFR: K0}
@@ -13608,6 +13680,22 @@
   priority: 255
   source: {archive_path: exports/eng/en_gen_u_c_ucl/en_gen_u_c_ucl_2.txt, line: 64321}
 - headword: yours
+  id: 515927
+  uw: "123905"
+  features: {LEMMA: yours, BF: yours, LEX: R, POS: SPR, LST: WRD, PER: 3PER, PAR: M0, FRA: Y0}
+  lang: eng
+  frequency: 0
+  priority: 0
+  source: {archive_path: exports/eng/export_cc.php, line: 945}
+- headword: yours
+  id: 517476
+  uw: "536437"
+  features: {LEMMA: yours, BF: yours, LEX: R, POS: PPR, LST: WRD, PAR: M0, FRA: Y0}
+  lang: eng
+  frequency: 0
+  priority: 0
+  source: {archive_path: exports/eng/export_cc.php, line: 946}
+- headword: yours
   id: 531210
   uw: 00.@2.@male.@pl
   features: {LEMMA: yours, BF: yours, LEX: R, POS: PPR, LST: WRD, PAR: M0, FRA: Y0, SEM: XXX, SFR: K0}
@@ -13704,6 +13792,22 @@
   priority: 255
   source: {archive_path: exports/eng/en_gen_u_c_ucl/en_gen_u_c_ucl_2.txt, line: 64329}
 - headword: yourself
+  id: 516077
+  uw: "533707"
+  features: {LEMMA: yourself, BF: yourself, LEX: R, POS: FPR, LST: WRD, NUM: SNGT, CAS: OBL, PER: 2PS, PAR: M0, FRA: Y0}
+  lang: eng
+  frequency: 0
+  priority: 0
+  source: {archive_path: exports/eng/export_cc.php, line: 947}
+- headword: yourself
+  id: 516093
+  uw: "533977"
+  features: {LEMMA: yourself, BF: yourself, LEX: R, POS: EPR, LST: WRD, NUM: SNGT, CAS: NOM, PER: 2PS, PAR: M0, FRA: Y0}
+  lang: eng
+  frequency: 0
+  priority: 0
+  source: {archive_path: exports/eng/export_cc.php, line: 948}
+- headword: yourself
   id: 531222
   uw: 00.@2.@emphasis.@singular
   features: {LEMMA: yourself, BF: yourself, LEX: R, POS: EPR, LST: WRD, NUM: SNGT, CAS: NOM, PER: 2PS, PAR: M0, FRA: Y0, SEM: XXX, SFR: K0}
@@ -13735,6 +13839,22 @@
   frequency: 255
   priority: 255
   source: {archive_path: exports/eng/en_gen_u_c_ucl/en_gen_u_c_ucl_2.txt, line: 64331}
+- headword: yourselves
+  id: 516078
+  uw: "533708"
+  features: {LEMMA: yourselves, BF: yourselves, LEX: R, POS: FPR, LST: WRD, NUM: PLRT, CAS: OBL, PER: 2PP, PAR: M0, FRA: Y0}
+  lang: eng
+  frequency: 0
+  priority: 0
+  source: {archive_path: exports/eng/export_cc.php, line: 949}
+- headword: yourselves
+  id: 516087
+  uw: "533970"
+  features: {LEMMA: yourselves, BF: yourselves, LEX: R, POS: EPR, LST: WRD, NUM: PLRT, CAS: NOM, PER: 2PP, PAR: M0, FRA: Y0}
+  lang: eng
+  frequency: 0
+  priority: 0
+  source: {archive_path: exports/eng/export_cc.php, line: 950}
 - headword: yourselves
   id: 531226
   uw: 00.@2.@emphasis.@pl

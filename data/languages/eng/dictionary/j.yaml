@@ -36679,6 +36679,30 @@
   frequency: 3
   priority: 0
   source: {archive_path: exports/eng/en_ana_u_c_ucl/en_ana_u_c_ucl_1.txt, line: 2749}
+- headword: just as
+  id: 275189
+  uw: ""
+  features: {LEMMA: just as, BF: just as, LEX: C, POS: AVR, LST: MTW, PAR: M0, FRA: Y206, SEM: XXX, SFR: K0, rel: bas}
+  lang: eng
+  frequency: 255
+  priority: 255
+  source: {archive_path: exports/eng/en_gen_u_c_ucl/en_gen_u_c_ucl_1.txt, line: 5646}
+- headword: just as
+  id: 275689
+  uw: ""
+  features: {LEMMA: just as, BF: just as, LEX: C, POS: AVR, LST: MTW, PAR: M0, FRA: Y206, SEM: XXX, SFR: K0, rel: bas}
+  lang: eng
+  frequency: 255
+  priority: 255
+  source: {archive_path: exports/eng/en_ana_u_c_ucl/en_ana_u_c_ucl_1.txt, line: 5646}
+- headword: just as
+  id: 516030
+  uw: "126866"
+  features: {LEMMA: just as, BF: just as, LEX: C, POS: AVR, LST: MTW, PAR: M0, FRA: Y206}
+  lang: eng
+  frequency: 0
+  priority: 0
+  source: {archive_path: exports/eng/export_cc.php, line: 436}
 - headword: just deserts
   id: 361614
   uw: "107294907"

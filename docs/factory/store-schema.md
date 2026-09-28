@@ -183,6 +183,17 @@ comma-separated alternates (e.g. `Bok, bok, staan styf` produces feature keys `b
 from issue 14, out of scope for this issue to fix, and `check_feature_values` correctly reports
 them as unresolved attributes.
 
+**`rel`/`att`, added issue 184.** Every closed-class entry issue 184 imports (an empty-UW record,
+`features.LEX` one of `C`/`D`/`P`) carries one or both: `tagset.yaml`'s own worked example is
+`[of]{}""(LEX=P,POS=PRE,rel=mod)`. `rel` is the UNL relation, `att` the UNL attribute, the archive
+maps onto the concept slot a real UW would otherwise fill (`docs/unl-reference/formats/
+dictionary.md`, "rel = relation (Used to map relations to empty UW's)"). Their values (`mod`,
+`man`, `@def`, `@contrast`, ...) are relation/attribute labels from
+`docs/unl-reference/formats/transformation-grammar.md`'s vocabulary, not `tagset.yaml` mnemonics --
+the same shape as `GOV`, and the exact lower-case-attribute reasoning `FEATURE_PATTERN`'s own
+comment in `store.py` already gives for the grammar side, now also true of a dictionary entry's
+own `features`.
+
 ## Rule coverage: the `rules` field and an empty tests/ directory
 
 `check_rule_coverage` (issue 17) checks that every grammar rule's `id` appears in at least one

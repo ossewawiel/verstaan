@@ -50,6 +50,7 @@ from jsonschema import Draft202012Validator
 from tools.importer.dictionary import (
     FLG_TO_ISO3,
     ImportStats,
+    import_cc_export,
     import_language,
     parse_feature_list,
     parse_line,
@@ -65,6 +66,8 @@ AFR_AD = ARCHIVE_ROOT / "exports" / "afr" / "af_ana_u_c_ucl.zip"
 AFR_GD = ARCHIVE_ROOT / "exports" / "afr" / "af_gen_u_c_ucl.zip"
 ENG_AD = ARCHIVE_ROOT / "exports" / "eng" / "en_ana_u_c_ucl.zip"
 ENG_GD = ARCHIVE_ROOT / "exports" / "eng" / "en_gen_u_c_ucl.zip"
+AFR_CC = ARCHIVE_ROOT / "exports" / "afr" / "export_cc.php"
+ENG_CC = ARCHIVE_ROOT / "exports" / "eng" / "export_cc.php"
 
 
 def _records(path: Path) -> list[dict]:
@@ -83,8 +86,8 @@ class Store:
         return [entry for shard in self.shards.values() for entry in shard]
 
 
-def _load_store(iso3: str, ad: Path, gd: Path, store_root: Path) -> Store:
-    stats = import_language(iso3, ad, gd, ARCHIVE_ROOT, store_root)
+def _load_store(iso3: str, ad: Path, gd: Path, store_root: Path, cc: Path | None = None) -> Store:
+    stats = import_language(iso3, ad, gd, ARCHIVE_ROOT, store_root, cc_export=cc)
     shards = {
         shard.stem: _records(shard)
         for shard in sorted((store_root / iso3 / "dictionary").glob("*.yaml"))
@@ -100,6 +103,18 @@ def afr_store(tmp_path_factory: pytest.TempPathFactory) -> Store:
 @pytest.fixture(scope="module")
 def eng_store(tmp_path_factory: pytest.TempPathFactory) -> Store:
     return _load_store("eng", ENG_AD, ENG_GD, tmp_path_factory.mktemp("eng-store"))
+
+
+@pytest.fixture(scope="module")
+def afr_store_with_cc(tmp_path_factory: pytest.TempPathFactory) -> Store:
+    """Issue 184: `afr_store` plus the fixture-sized `export_cc.php` second source."""
+    return _load_store("afr", AFR_AD, AFR_GD, tmp_path_factory.mktemp("afr-store-cc"), cc=AFR_CC)
+
+
+@pytest.fixture(scope="module")
+def eng_store_with_cc(tmp_path_factory: pytest.TempPathFactory) -> Store:
+    """Issue 184: `eng_store` plus the fixture-sized `export_cc.php` second source."""
+    return _load_store("eng", ENG_AD, ENG_GD, tmp_path_factory.mktemp("eng-store-cc"), cc=ENG_CC)
 
 
 # --------------------------------------------------------------------------------------------
@@ -356,6 +371,15 @@ def test_parse_line_rewrites_vintage_per_codes():
     assert entry["features"]["PER"] == "3PER"
 
 
+def test_parse_line_rewrites_vintage_dis_code():
+    # Issue 184, docs/unl-reference/formats/tagset.md "A third rename, found by issue 184": the
+    # real export_cc.php `ante-`/`anti-` entries carry DIS=IBE, the 2016-vintage truncation of the
+    # live tagset's DIS=IBEF ("immediately before"). Only DIS's value changes.
+    entry, reason = parse_line('[ante-]{515731}"118288"(LEX=F,POS=PFX,DIS=IBE)<en,0,0>;')
+    assert reason is None
+    assert entry["features"]["DIS"] == "IBEF"
+
+
 def test_parse_feature_list_drops_the_bare_00_serialiser_echo():
     # Issue 171, docs/unl-reference/formats/tagset.md, "`00` is not a tag": a bare `00` token at
     # the end of a feature list is the entry's own uw field, echoed a second time by the export's
@@ -518,3 +542,160 @@ def test_parse_line_rejects_a_frequency_above_255():
     entry, reason = parse_line('[acquire]{452200}"202210855"(LEX=V)<en,270,8>;')
     assert entry is None
     assert "frequency" in reason and "255" in reason
+
+
+# --------------------------------------------------------------------------------------------
+# Issue 184: an entry with an empty UW is a closed-class record, not an unparsed line, when
+# features.LEX marks it closed-class (C, D, P). Both sources this issue adds: the AD/GD zips'
+# own empty-UW lines, and the second source, export_cc.php.
+# --------------------------------------------------------------------------------------------
+
+
+@pytest.mark.parametrize("lex", ["C", "D", "P"])
+def test_parse_line_accepts_an_empty_uw_on_a_closed_class_lex(lex: str):
+    entry, reason = parse_line(f'[x]{{1}}""(LEX={lex})<af,0,0>;')
+    assert reason is None, reason
+    assert entry["uw"] == ""
+    assert entry["features"]["LEX"] == lex
+
+
+def test_parse_line_still_rejects_an_empty_uw_on_an_open_class_lex():
+    # LEX=N (noun): a real but unfinished dictionary stub, e.g. af_ana_u_c_ucl_1.txt line 3139,
+    # `[aandeelprys]{12804}""(LEMMA=aandeelprys,BF=aandeelprys,LEX=N,POS=NOU)<af,0,0>;` -- not a
+    # closed-class function word, so it must still route to _unparsed.txt.
+    entry, reason = parse_line(
+        '[aandeelprys]{12804}""(LEMMA=aandeelprys,BF=aandeelprys,LEX=N,POS=NOU)<af,0,0>;'
+    )
+    assert entry is None
+    assert "empty UW" in reason
+    assert "non-closed-class" in reason
+
+
+def test_parse_line_rejects_empty_uw_when_only_a_subword_lex_is_closed_class():
+    """A multi-word idiom whose *sub-word* carries a closed-class `LEX`, but whose own top-level
+    `LEX` is open-class, must still route to `_unparsed.txt` -- the closed-class gate judges the
+    entry, not its last sub-word.
+
+    Real shape, `en_gen_u_c_ucl_1.txt` line 5900, id 275437 (`begin to`):
+    `[[begin] [to]]{275437}""(LEMMA=begin to,BF=begin,LEX=I,POS=MOV,LST=MTW,#01(...,LEX=I,...),
+    #02(PAR=M0,BF=to,LEX=P),SEM=XXX,SFR=K0,att=@inceptive)<en,255,2>;`. Top-level `LEX=I`
+    (idiom/auxiliary chain, open-class); only `#02`'s trailing "to" carries `LEX=P`.
+    `parse_feature_list`'s "last sub-word wins" flattening (issue 169) leaves the merged
+    `features["LEX"]` as `P`, which would wrongly pass the closed-class gate if it read that
+    flattened value. The regression: before the fix, this returned an entry with `LEX: P` and a
+    blank `uw`, a fabricated closed-class preposition.
+    """
+    entry, reason = parse_line(
+        '[[begin] [to]]{275437}""(LEMMA=begin to,BF=begin,LEX=I,POS=MOV,LST=MTW,'
+        "#01(LEMMA=begin to,BF=begin,LEX=I,POS=MOV,PAR=M1,FRA=Y0,"
+        'FLX(INF:="begin";PAS:="began";PTP:="begun";GER:="beginning";3PS&PRS:="begins";)),'
+        "#02(PAR=M0,BF=to,LEX=P),SEM=XXX,SFR=K0,att=@inceptive)<en,255,2>;"
+    )
+    assert entry is None
+    assert "empty UW" in reason
+    assert "non-closed-class" in reason
+
+
+def test_english_albeit_a_real_closed_class_empty_uw_line_now_imports(eng_store: Store):
+    """`en_ana_u_c_ucl_1.txt` line 5603, id 275673: `LEX=C` (conjunction), empty UW. Before issue
+    184 this line went to `_unparsed.txt` ("empty UW field..."); it is fixtured into the eng AD
+    zip already (`tests/fixtures/archive/manifest.jsonl`, the `en_ana_u_c_ucl.zip` entry, "line 62
+    the real empty-UW line id 275673 ('albeit')"), so no new fixture was needed for this case.
+    """
+    albeit = next(e for e in eng_store.entries if e["headword"] == "albeit" and e["id"] == 275673)
+    assert albeit["uw"] == ""
+    assert albeit["features"]["LEX"] == "C"
+    assert albeit["lang"] == "eng"
+    assert albeit["source"]["archive_path"] == "exports/eng/en_ana_u_c_ucl/en_ana_u_c_ucl_1.txt"
+    # 62, not the real archive's 5603: the fixture zip carves out this one line, verbatim, at
+    # its own position (tests/fixtures/archive/manifest.jsonl's en_ana_u_c_ucl.zip entry).
+    assert albeit["source"]["line"] == 62
+
+
+# --------------------------------------------------------------------------------------------
+# import_cc_export: the second source, export_cc.php, issue 184.
+# --------------------------------------------------------------------------------------------
+
+
+def test_import_cc_export_unescapes_html_entities_and_counts_ordinals():
+    """Unit-level, no fixture file: a two-entry HTML fragment shaped like the real export
+    (`&quot;`, `&lt;`/`&gt;`, `<br /><script>...</script>` markup between entries), proving the
+    HTML-unescape and 1-based ordinal `source.line` logic without depending on file content.
+    """
+    html_text = (
+        "<body>[the] {1} &quot;10&quot; (LEMMA=the,BF=the,LEX=D,POS=ART) &lt;en, 0, 0&gt;;"
+        '<br /><script>document.getElementById("x").innerHTML="1 registers processed";</script>'
+        "[cat] {2} &quot;&quot; (LEMMA=cat,BF=cat,LEX=N,POS=NOU) &lt;en, 0, 0&gt;;</body>"
+    )
+    path = FIXTURES_DIR / "_scratch_cc.php"
+    path.write_text(html_text, encoding="utf-8")
+    try:
+        imported, unparsed = import_cc_export(path, FIXTURES_DIR, "eng")
+    finally:
+        path.unlink()
+    assert len(imported) == 1
+    assert imported[0].record["headword"] == "the"
+    assert imported[0].record["uw"] == "10"
+    assert imported[0].record["source"] == {"archive_path": "_scratch_cc.php", "line": 1}
+    assert len(unparsed) == 1
+    assert unparsed[0].line == 2
+    assert "non-closed-class" in unparsed[0].reason
+    assert unparsed[0].raw.startswith("[cat]")  # unescaped, not the raw &quot;/&lt; form
+
+
+def test_afrikaans_export_cc_php_empty_uw_closed_class_words(afr_store_with_cc: Store):
+    for headword, entry_id, lex in [("'n", 5658, "D"), ("die", 5647, "D"), ("en", 5651, "C")]:
+        entry = next(
+            e
+            for e in afr_store_with_cc.entries
+            if e["headword"] == headword and e["id"] == entry_id
+        )
+        assert entry["uw"] == ""
+        assert entry["features"]["LEX"] == lex
+        assert entry["lang"] == "afr"
+        assert entry["source"]["archive_path"] == "exports/afr/export_cc.php"
+
+
+def test_afrikaans_export_cc_php_non_closed_class_empty_uw_stays_unparsed(afr_store_with_cc: Store):
+    # `twee` (id 5749, LEX=U, a numeral): closed in the everyday sense, but not one of the three
+    # LEX values this importer treats as closed-class, so it still routes to _unparsed.txt.
+    text = (afr_store_with_cc.root / "afr" / "_unparsed.txt").read_text(encoding="utf-8")
+    assert "twee" in text
+    assert "non-closed-class" in text
+    assert not any(e["headword"] == "twee" for e in afr_store_with_cc.entries)
+
+
+def test_english_export_cc_php_worked_example_words(eng_store_with_cc: Store):
+    """`dictionary.md`'s own worked example (aboard/about/above) plus the issue's acceptance
+    words, all sourced from the fixture-sized `export_cc.php` (`tests/fixtures/archive/
+    manifest.jsonl`'s `exports/eng/export_cc.php` entry)."""
+    words = {
+        "aboard": (516110, "534001", "P"),
+        "about": (515821, "119402", "P"),
+        "above": (515753, "118441", "P"),
+        "the": (516101, "533993", "D"),
+        "a": (516052, "130092", "D"),
+        "of": (515832, "534003", "P"),
+        "on": (515754, "118441", "P"),
+        "and": (515796, "119040", "C"),
+    }
+    for headword, (entry_id, uw, lex) in words.items():
+        entry = next(
+            e
+            for e in eng_store_with_cc.entries
+            if e["headword"] == headword and e["id"] == entry_id
+        )
+        assert entry["uw"] == uw
+        assert entry["features"]["LEX"] == lex
+        assert entry["lang"] == "eng"
+        assert entry["source"]["archive_path"] == "exports/eng/export_cc.php"
+
+
+def test_english_export_cc_php_without_both_senses(eng_store_with_cc: Store):
+    # `without` carries two real senses in export_cc.php: id 517447 (LEX=P) and id 515831 (LEX=C).
+    senses = {
+        e["id"]: e["features"]["LEX"]
+        for e in eng_store_with_cc.entries
+        if e["headword"] == "without"
+    }
+    assert senses == {517447: "P", 515831: "C"}

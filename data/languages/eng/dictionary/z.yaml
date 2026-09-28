@@ -3471,6 +3471,22 @@
   frequency: 1
   priority: 0
   source: {archive_path: exports/eng/en_ana_u_c_ucl/en_ana_u_c_ucl_3.txt, line: 61575}
+- headword: zepto-
+  id: 297188
+  uw: "73615"
+  features: {LEMMA: zepto-, BF: zepto, LEX: F, POS: PFX, LST: SBW, PAR: M0, FRA: Y0}
+  lang: eng
+  frequency: 0
+  priority: 0
+  source: {archive_path: exports/eng/export_cc.php, line: 951}
+- headword: zero
+  id: 197518
+  uw: "107886"
+  features: {LEMMA: zero, BF: zero, LEX: U, POS: CDN, MOR: ROO, LST: WRD, PAR: M0, FRA: Y0}
+  lang: eng
+  frequency: 0
+  priority: 0
+  source: {archive_path: exports/eng/export_cc.php, line: 952}
 - headword: zero
   id: 414298
   uw: "104614505"
@@ -3959,6 +3975,14 @@
   frequency: 2
   priority: 0
   source: {archive_path: exports/eng/en_ana_u_c_ucl/en_ana_u_c_ucl_4.txt, line: 88219}
+- headword: zeroth
+  id: 192663
+  uw: "108020"
+  features: {LEMMA: zeroth, BF: zeroth, LEX: U, POS: ORD, LST: WRD, PAR: M0, FRA: Y0}
+  lang: eng
+  frequency: 0
+  priority: 0
+  source: {archive_path: exports/eng/export_cc.php, line: 953}
 - headword: zeroth law of thermodynamics
   id: 350364
   uw: "105883473"
@@ -4199,6 +4223,14 @@
   frequency: 1
   priority: 0
   source: {archive_path: exports/eng/en_ana_u_c_ucl/en_ana_u_c_ucl_3.txt, line: 61607}
+- headword: zetta-
+  id: 297187
+  uw: "73615"
+  features: {LEMMA: zetta-, BF: zetta, LEX: F, POS: PFX, LST: SBW, PAR: M0, FRA: Y0}
+  lang: eng
+  frequency: 0
+  priority: 0
+  source: {archive_path: exports/eng/export_cc.php, line: 954}
 - headword: zettabit
   id: 411814
   uw: "113631845"

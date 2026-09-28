@@ -118407,6 +118407,14 @@
   frequency: 1
   priority: 6
   source: {archive_path: exports/eng/en_ana_u_c_ucl/en_ana_u_c_ucl_2.txt, line: 23402}
+- headword: giga-
+  id: 212899
+  uw: "108014"
+  features: {LEMMA: giga-, BF: giga, LEX: F, POS: PFX, LST: SBW, PAR: M0, FRA: Y0}
+  lang: eng
+  frequency: 0
+  priority: 0
+  source: {archive_path: exports/eng/export_cc.php, line: 326}
 - headword: gigabit
   id: 412324
   uw: "113629132"
@@ -123920,6 +123928,22 @@
   priority: 0
   source: {archive_path: exports/eng/en_ana_u_c_ucl/en_ana_u_c_ucl_2.txt, line: 23689}
 - headword: given
+  id: 275161
+  uw: ""
+  features: {LEMMA: given, BF: given, LEX: C, POS: AVR, LST: WRD, PAR: M0, FRA: Y206, SEM: XXX, SFR: K0, rel: con}
+  lang: eng
+  frequency: 255
+  priority: 255
+  source: {archive_path: exports/eng/en_gen_u_c_ucl/en_gen_u_c_ucl_1.txt, line: 5631}
+- headword: given
+  id: 275661
+  uw: ""
+  features: {LEMMA: given, BF: given, LEX: C, POS: AVR, LST: WRD, PAR: M0, FRA: Y206, SEM: XXX, SFR: K0, rel: con}
+  lang: eng
+  frequency: 255
+  priority: 255
+  source: {archive_path: exports/eng/en_ana_u_c_ucl/en_ana_u_c_ucl_1.txt, line: 5631}
+- headword: given
   id: 275712
   uw: "300028280"
   features: {LEMMA: given, BF: given, LEX: J, POS: ADJ, LST: WRD, PAR: M0, FRA: Y0}
@@ -123967,6 +123991,38 @@
   frequency: 5
   priority: 0
   source: {archive_path: exports/eng/en_ana_u_c_ucl/en_ana_u_c_ucl_2.txt, line: 23692}
+- headword: given
+  id: 432319
+  uw: ""
+  features: {LEMMA: given, BF: given, LEX: P, POS: PRE, LST: WRD, PAR: M0, FRA: Y0, SEM: XXX, SFR: K0, rel: man, att: "@considering"}
+  lang: eng
+  frequency: 255
+  priority: 2
+  source: {archive_path: exports/eng/en_gen_u_c_ucl/en_gen_u_c_ucl_2.txt, line: 63977}
+- headword: given
+  id: 515893
+  uw: "121555"
+  features: {LEMMA: given, BF: given, LEX: C, POS: AVR, LST: WRD, PAR: M0, FRA: Y206}
+  lang: eng
+  frequency: 0
+  priority: 0
+  source: {archive_path: exports/eng/export_cc.php, line: 327}
+- headword: given
+  id: 517441
+  uw: "534149"
+  features: {LEMMA: given, BF: given, LEX: P, POS: PRE, LST: WRD, PAR: M0, FRA: Y0}
+  lang: eng
+  frequency: 0
+  priority: 0
+  source: {archive_path: exports/eng/export_cc.php, line: 328}
+- headword: given
+  id: 530896
+  uw: ""
+  features: {LEMMA: given, BF: given, LEX: P, POS: PRE, LST: WRD, PAR: M0, FRA: Y0, SEM: XXX, SFR: K0, rel: man, att: "@considering"}
+  lang: eng
+  frequency: 255
+  priority: 2
+  source: {archive_path: exports/eng/en_ana_u_c_ucl/en_ana_u_c_ucl_3.txt, line: 62054}
 - headword: given
   id: 553587
   uw: "200771806"
@@ -124615,6 +124671,46 @@
   frequency: 19
   priority: 0
   source: {archive_path: exports/eng/en_ana_u_c_ucl/en_ana_u_c_ucl_4.txt, line: 12293}
+- headword: given that
+  id: 275197
+  uw: ""
+  features: {LEMMA: given that, BF: given that, LEX: C, POS: AVR, LST: MTW, PAR: M0, FRA: Y206, SEM: XXX, SFR: K0, rel: con}
+  lang: eng
+  frequency: 255
+  priority: 255
+  source: {archive_path: exports/eng/en_gen_u_c_ucl/en_gen_u_c_ucl_1.txt, line: 5632}
+- headword: given that
+  id: 275198
+  uw: ""
+  features: {LEMMA: given that, BF: given that, LEX: C, POS: AVR, LST: MTW, PAR: M0, FRA: Y206, SEM: XXX, SFR: K0, rel: man, att: "@assumption"}
+  lang: eng
+  frequency: 255
+  priority: 255
+  source: {archive_path: exports/eng/en_gen_u_c_ucl/en_gen_u_c_ucl_1.txt, line: 5633}
+- headword: given that
+  id: 275697
+  uw: ""
+  features: {LEMMA: given that, BF: given that, LEX: C, POS: AVR, LST: MTW, PAR: M0, FRA: Y206, SEM: XXX, SFR: K0, rel: con}
+  lang: eng
+  frequency: 255
+  priority: 255
+  source: {archive_path: exports/eng/en_ana_u_c_ucl/en_ana_u_c_ucl_1.txt, line: 5632}
+- headword: given that
+  id: 275698
+  uw: ""
+  features: {LEMMA: given that, BF: given that, LEX: C, POS: AVR, LST: MTW, PAR: M0, FRA: Y206, SEM: XXX, SFR: K0, rel: man, att: "@assumption"}
+  lang: eng
+  frequency: 255
+  priority: 255
+  source: {archive_path: exports/eng/en_ana_u_c_ucl/en_ana_u_c_ucl_1.txt, line: 5633}
+- headword: given that
+  id: 515892
+  uw: "121555"
+  features: {LEMMA: given that, BF: given that, LEX: C, POS: AVR, LST: MTW, PAR: M0, FRA: Y206}
+  lang: eng
+  frequency: 0
+  priority: 0
+  source: {archive_path: exports/eng/export_cc.php, line: 329}
 - headword: given the axe
   id: 544906
   uw: "200353639"
@@ -143663,6 +143759,30 @@
   frequency: 4
   priority: 0
   source: {archive_path: exports/eng/en_ana_u_c_ucl/en_ana_u_c_ucl_2.txt, line: 24541}
+- headword: gobs of
+  id: 132784
+  uw: "117869"
+  features: {LEMMA: gobs of, BF: gobs of, LEX: D, POS: QUA, MOR: WFO, LST: MTW, PAR: M0, FRA: Y0}
+  lang: eng
+  frequency: 0
+  priority: 0
+  source: {archive_path: exports/eng/export_cc.php, line: 330}
+- headword: gobs of
+  id: 275253
+  uw: ""
+  features: {LEMMA: gobs of, BF: gobs of, LEX: D, POS: QUA, LST: MTW, PAR: M0, FRA: Y0, SEM: XXX, SFR: K0, att: "@multal"}
+  lang: eng
+  frequency: 255
+  priority: 0
+  source: {archive_path: exports/eng/en_gen_u_c_ucl/en_gen_u_c_ucl_1.txt, line: 5759}
+- headword: gobs of
+  id: 275753
+  uw: ""
+  features: {LEMMA: gobs of, BF: gobs of, LEX: D, POS: QUA, MOR: WFO, LST: MTW, PAR: M0, FRA: Y0, SEM: XXX, SFR: K0, att: "@multal"}
+  lang: eng
+  frequency: 255
+  priority: 0
+  source: {archive_path: exports/eng/en_ana_u_c_ucl/en_ana_u_c_ucl_1.txt, line: 5759}
 - headword: gobsmacked
   id: 295281
   uw: "302358650"
@@ -152239,6 +152359,30 @@
   frequency: 3
   priority: 0
   source: {archive_path: exports/eng/en_ana_u_c_ucl/en_ana_u_c_ucl_1.txt, line: 16693}
+- headword: gone
+  id: 432428
+  uw: ""
+  features: {LEMMA: gone, BF: gone, LEX: P, POS: PRE, LST: WRD, PAR: M0, FRA: Y259, SEM: XXX, SFR: K0, rel: tim, att: "@post"}
+  lang: eng
+  frequency: 255
+  priority: 255
+  source: {archive_path: exports/eng/en_gen_u_c_ucl/en_gen_u_c_ucl_2.txt, line: 63978}
+- headword: gone
+  id: 515794
+  uw: "119001"
+  features: {LEMMA: gone, BF: gone, LEX: P, POS: PRE, LST: WRD, PAR: M0, FRA: Y259}
+  lang: eng
+  frequency: 0
+  priority: 0
+  source: {archive_path: exports/eng/export_cc.php, line: 331}
+- headword: gone
+  id: 531005
+  uw: ""
+  features: {LEMMA: gone, BF: gone, LEX: P, POS: PRE, LST: WRD, PAR: M0, FRA: Y259, SEM: XXX, SFR: K0, rel: tim, att: "@post"}
+  lang: eng
+  frequency: 255
+  priority: 255
+  source: {archive_path: exports/eng/en_ana_u_c_ucl/en_ana_u_c_ucl_3.txt, line: 62055}
 - headword: gone
   id: 547846
   uw: "200676267"

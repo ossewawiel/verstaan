@@ -44,6 +44,8 @@ context, dialect, tier, runtime tables, generated tables, trace, partial.
     priority: 3
     source: {archive_path: "uploads/656.txt", line: 1}
   ```
+- An entry with an empty UW is a closed-class record (`features.LEX` one of `C`, `D`, `P`), not an
+  unparsed line.
 - Grammar rule becomes `{id, kind, lhs, rhs, conditions, comment, source}`. `kind` ∈
   `analysis | generation | inflection | subcategorisation | disambiguation | default`.
 - `lhs` holds the archive's left-hand side verbatim. `conditions` is `[]` at M2: the archive

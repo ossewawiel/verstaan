@@ -2,7 +2,7 @@
 issue: 184
 title: "Import the closed-class words the archive exports without a UW"
 milestone: M3
-status: open
+status: in-progress
 depends_on: [14]
 agent: implementer
 agents: [implementer]
@@ -10,7 +10,7 @@ model: sonnet
 effort: medium
 checkpoint: null
 commit: null
-worktree: null
+worktree: .worktrees/m3-184-import-closed-class-words
 github_issue: 285
 ---
 ## What
@@ -50,8 +50,8 @@ mismatches issue 169 fixed.
 
 ## Done when
 
-- [ ] Both stores hold their closed-class words with features and provenance.
-- [ ] The schema accepts a UW-less record only when it is closed-class.
-- [ ] Neither `_unparsed.txt` has an `empty UW field` line.
-- [ ] Importer tests cover both sources.
-- [ ] `SPEC.md` §3.2 states the rule.
+- [x] Both stores hold their closed-class words with features and provenance.
+- [x] The schema accepts a UW-less record only when it is closed-class.
+- [x] Neither `_unparsed.txt` has an `empty UW field` line.
+- [x] Importer tests cover both sources.
+- [x] `SPEC.md` §3.2 states the rule.
