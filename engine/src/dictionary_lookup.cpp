@@ -358,14 +358,20 @@ void record_tagset_warnings(const DictionaryEntry& entry,
       continue;
     }
     if (!tagset_has(tagset_keys, attribute)) {
-      warnings.push_back(TagsetWarning{.headword = entry.headword,
-                                       .id = entry.id,
-                                       .attribute = attribute,
-                                       .value = std::string()});
+      warnings.push_back(TagsetWarning{
+          .headword = entry.headword,
+          .id = entry.id,
+          .attribute = attribute,
+          .value = std::string(),
+      });
     }
     if (!tagset_has(tagset_keys, value)) {
       warnings.push_back(TagsetWarning{
-          .headword = entry.headword, .id = entry.id, .attribute = attribute, .value = value});
+          .headword = entry.headword,
+          .id = entry.id,
+          .attribute = attribute,
+          .value = value,
+      });
     }
   }
 }
