@@ -29,7 +29,9 @@ export function issuePath(n: number): string {
 
 function issueMd(n: number, title: string, status: string): string {
   // Issue 9 alone has no loadout, so the suite can prove the card flags a quest file that lacks one.
-  const loadout = n === 9 ? '' : 'model: sonnet\neffort: low\n';
+  // Issue 10 is the one opus quest (issue 191), so the suite can prove the pass boards at sonnet
+  // whatever the quest's own model.
+  const loadout = n === 9 ? '' : n === 10 ? 'model: opus\neffort: high\n' : 'model: sonnet\neffort: low\n';
   // Issues 9 and 10 are side quests (issue 104). 10 waits on main quest 7; main quest 8 waits on
   // side quest 9: one cross-divide block in each direction for the suite to find on the cards.
   const milestone = n >= 9 ? 'Side' : 'Fixture';

@@ -305,6 +305,12 @@ select:focus-visible,
   align-items: center;
   gap: 0.5rem;
 }
+.boarding-pass__lines {
+  display: inline-flex;
+  flex-direction: column;
+  font-size: 0.78rem;
+  line-height: 1.25;
+}
 .boarding-pass__toast {
   font-size: 0.78rem;
   color: var(--amber);

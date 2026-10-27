@@ -141,7 +141,7 @@ export function ConsoleRoom() {
                 <span className={`story__loadout${loadoutOf(model.next).complete ? '' : ' story__loadout--missing'}`}>{loadoutOf(model.next).text}</span>
                 {' '}· <code>{model.next.command}</code>
                 {' '}
-                <BoardingPass model={model.next.model} command={model.next.command} />
+                <BoardingPass agent={model.next.agent} model={model.next.model} effort={model.next.effort} command={model.next.command} />
               </>
             ) : (
               'None open'

@@ -79,26 +79,64 @@ function validatePytestPath(p: string): string {
 // into an argv slot that opens a real terminal.
 export const QUEST_MODELS = ['haiku', 'sonnet', 'opus'];
 
+// Issue 191 (ADR 0016 amendment, flight plan D2): the model the console opens every `/factory-run`
+// session at, whatever the quest's own `model:`. The session reads status, runs gates, commits and
+// mirrors; none of that is design, so it does not need the quest's loadout. The quest's loadout
+// goes to the first pass instead, through the prompt (`composeQuestPrompt`).
+export const ORCHESTRATOR_MODEL = 'sonnet';
+// The session's effort is fixed too: the SDK defaults to 'high', and an orchestrator's work does
+// not need it. The quest's own effort goes to the first pass.
+export const ORCHESTRATOR_EFFORT: EffortLevel = 'medium';
+
+// One shape for an agent name wherever it enters a prompt line: `quest-start`'s args, a quest's
+// front matter (`findQuestIssueFile`). Mirrored by the boarding pass in the client.
+const AGENT_NAME = /^[a-z][a-z0-9-]*$/;
+
+/** The quest's loadout for its first pass (issue 191): `agent` is optional because a quest file
+ * may omit it; `model` and `effort` are always present by the time a quest is validated. */
+export interface FirstPass {
+  agent?: string;
+  model: string;
+  effort?: string;
+}
+
+/** The `/factory-run` prompt both boarding paths send (issue 191). One line: the command, then the
+ * first pass's loadout as `key=value` pairs after a fixed `first pass:` marker, so a test (and the
+ * skill) can read each value back out with one regex. Example:
+ * `/factory-run 06 first pass: agent=implementer model=opus effort=high`. */
+export function composeQuestPrompt(command: string, firstPass: FirstPass): string {
+  const parts = [firstPass.agent ? `agent=${firstPass.agent}` : null, `model=${firstPass.model}`, firstPass.effort ? `effort=${firstPass.effort}` : null];
+  return `${command} first pass: ${parts.filter(Boolean).join(' ')}`;
+}
+
 function validateQuestStartArgs(args: unknown): Record<string, unknown> {
   const model = requireString(args, 'model');
   if (!QUEST_MODELS.includes(model)) throw new JobArgsError(`model must be one of ${QUEST_MODELS.join(', ')}`);
+  const optional = (args as Record<string, unknown> | null | undefined) ?? {};
+  const out: Record<string, unknown> = { model };
+  if (optional.effort !== undefined) {
+    const effort = requireString(args, 'effort');
+    if (!(QUEST_EFFORTS as readonly string[]).includes(effort)) throw new JobArgsError(`effort must be one of ${QUEST_EFFORTS.join(', ')}`);
+    out.effort = effort;
+  }
+  if (optional.agent !== undefined) {
+    const agent = requireString(args, 'agent');
+    // An agent name becomes part of a prompt line, so it is held to the shape agent files use.
+    if (!AGENT_NAME.test(agent)) throw new JobArgsError('agent must be a lowercase agent file name');
+    out.agent = agent;
+  }
   const raw = (args as Record<string, unknown> | null | undefined)?.issue;
   const issue = typeof raw === 'number' ? raw : Number(raw);
   if (!Number.isInteger(issue) || issue <= 0) throw new JobArgsError('issue must be a positive integer');
-  return { model, issue };
+  return { ...out, issue };
 }
 
 // The five `effort:` values `docs/factory/loadouts.json` lists (a server test pins this list to
 // that file, issue 189) -- an allowlist, the same reasoning as QUEST_MODELS above: a quest
 // naming an effort this list has not caught up with is a data problem to fix in the issue file or
-// here, never a string passed straight through to `query()`'s own `effort` option unchecked.
-// Typed as `readonly EffortLevel[]` (checkpoint-4 review, finding 4), the SDK's own scale
-// (sdk.d.ts) -- not `string[]`: a value here that `Options['effort']` cannot actually accept is
-// now a compile error in this file, not a runtime cast (`sdk-runner.ts`'s `params.effort as
-// Options['effort']`) silently papering over the mismatch. `docs/factory/issues/171-...md` used
-// to carry `effort: small`, not a real `EffortLevel` at all; fixed to `medium` (issue 171's own
-// checkpoint and agent count matched a medium-effort quest of that era, not a small one) rather
-// than widening this allowlist to cover a typo.
+// here, never a string put unchecked into a prompt line (`composeQuestPrompt`) that the session
+// reads. Typed as `readonly EffortLevel[]`, the SDK's own scale (sdk.d.ts), so a value the SDK
+// cannot accept is a compile error here. `ORCHESTRATOR_EFFORT` is a member of this scale too.
 export const QUEST_EFFORTS: readonly EffortLevel[] = ['low', 'medium', 'high', 'xhigh', 'max'];
 
 /** The one issue file (issue 178, ADR 0016) a `quest-run` request names, read fresh from disk --
@@ -114,7 +152,7 @@ export const QUEST_EFFORTS: readonly EffortLevel[] = ['low', 'medium', 'high', '
 export function findQuestIssueFile(
   issue: number,
   issuesDir: string = join(REPO, 'docs', 'factory', 'issues'),
-): { file: string; model: string; effort: string; status: string } | null {
+): { file: string; agent: string; model: string; effort: string; status: string } | null {
   if (!existsSync(issuesDir)) return null;
   for (const name of readdirSync(issuesDir)) {
     if (!new RegExp(`^0*${issue}-.*\\.md$`).test(name) || /-test-cases\.md$/.test(name)) continue;
@@ -123,6 +161,7 @@ export function findQuestIssueFile(
     if (!fm) return null;
     return {
       file: name,
+      agent: typeof fm.agent === 'string' ? fm.agent : Array.isArray(fm.agent) ? '[list]' : '',
       model: typeof fm.model === 'string' ? fm.model : '',
       effort: typeof fm.effort === 'string' ? fm.effort : '',
       status: typeof fm.status === 'string' ? fm.status : '',
@@ -153,7 +192,12 @@ export function validateQuestRunArgs(args: unknown, issuesDir?: string): Record<
   if (!(QUEST_EFFORTS as readonly string[]).includes(found.effort)) {
     throw new JobArgsError(`issue ${issue}: front matter effort '${found.effort || '(none)'}' is not one of ${QUEST_EFFORTS.join(', ')}`);
   }
-  return { issue, model: found.model, effort: found.effort, file: found.file };
+  // The agent name lands in the prompt line, so it is held to the same shape as `quest-start`'s.
+  // A quest with no `agent:` at all is allowed (empty); a list or a malformed name is refused.
+  if (found.agent !== '' && !AGENT_NAME.test(found.agent)) {
+    throw new JobArgsError(`issue ${issue}: front matter agent '${found.agent}' is not a lowercase agent file name`);
+  }
+  return { issue, agent: found.agent, model: found.model, effort: found.effort, file: found.file };
 }
 
 /** The one argv template per platform (issue 174 L2): a real terminal, opened with the same line
@@ -165,12 +209,13 @@ export function validateQuestRunArgs(args: unknown, issuesDir?: string): Record<
  * shell parsing them further). POSIX: `console.sh`/`console.cmd` open a browser tab, not a
  * terminal, so there is no existing terminal-launch convention to match here (checked, per the
  * issue's own instruction) -- `x-terminal-emulator -e` is Debian's (and so most desktop Linux's)
- * standard alternative for "the user's chosen terminal emulator". */
-export function questStartArgv(platform: NodeJS.Platform, model: string, questLine: string): { cmd: string; args: string[] } {
+ * standard alternative for "the user's chosen terminal emulator". The session model is always
+ * `ORCHESTRATOR_MODEL` (issue 191); the quest's own model rides inside `questLine`. */
+export function questStartArgv(platform: NodeJS.Platform, questLine: string): { cmd: string; args: string[] } {
   if (platform === 'win32') {
-    return { cmd: 'cmd', args: ['/c', 'start', 'Verstaan quest', 'claude', '--model', model, questLine] };
+    return { cmd: 'cmd', args: ['/c', 'start', 'Verstaan quest', 'claude', '--model', ORCHESTRATOR_MODEL, questLine] };
   }
-  return { cmd: 'x-terminal-emulator', args: ['-e', 'claude', '--model', model, questLine] };
+  return { cmd: 'x-terminal-emulator', args: ['-e', 'claude', '--model', ORCHESTRATOR_MODEL, questLine] };
 }
 
 function pickCmakePreset(kind: 'debug' | 'tidy' = 'debug'): string {
@@ -333,9 +378,13 @@ export const JOB_KINDS: Record<string, JobKindDef> = {
     treeScoped: true,
     validateArgs: validateQuestStartArgs,
     build: (tree, args) => {
-      const model = String(args.model);
       const issue = String(args.issue).padStart(2, '0');
-      const { cmd, args: argv } = questStartArgv(process.platform, model, `/factory-run ${issue}`);
+      const questLine = composeQuestPrompt(`/factory-run ${issue}`, {
+        agent: args.agent === undefined ? undefined : String(args.agent),
+        model: String(args.model),
+        effort: args.effort === undefined ? undefined : String(args.effort),
+      });
+      const { cmd, args: argv } = questStartArgv(process.platform, questLine);
       return { cmd, args: argv, cwd: tree };
     },
   },

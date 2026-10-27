@@ -1,10 +1,12 @@
 ---
 name: factory-run
 description: Phase B of the Verstaan code factory. Regenerates STATE.md, picks the next open issue or a given one, routes it to the right subagents at the right model and effort, runs the gates, and stops at checkpoints. Use when /factory-run is invoked or when resuming work on docs/factory/issues/.
-argument-hint: [issue-number] [--resume]
+argument-hint: [issue-number] [first pass: agent=<a> model=<m> effort=<e>] [--resume]
 ---
 
-Issue: `$ARGUMENTS` (empty means the next open one). One issue, one work commit, one
+Issue: `$ARGUMENTS` (empty means the next open one). The console adds the first pass after the
+number: `<NN> first pass: agent=<a> model=<m> effort=<e>`. When that and the issue file disagree,
+the issue file wins. One issue, one work commit, one
 `chore(#NN): close` commit. Then stop and print the next command.
 
 ## Every run starts the same way
@@ -44,8 +46,10 @@ Run this from the root tree, on `main`. It never works there past step 6.
 | `docs-writer` | docs-writer → done. May run in parallel with any of the above. |
 | `test-writer` | test-writer → implementer |
 
-The quest's `model` and `effort` set the first pass, the one named in `agent:`. Every later pass
-takes its own agent file's `model` and `effort`. Every Agent call passes `model` and `effort`
+The session model is Sonnet, at medium effort, when the console boards the quest. The quest's
+`model` and `effort` belong to the first pass, not to the session, and arrive in the prompt as
+`first pass: agent=<a> model=<m> effort=<e>`. They set the first pass, the one named in `agent:`.
+Every later pass takes its own agent file's `model` and `effort`. Every Agent call passes `model` and `effort`
 explicitly. The lists of valid values live in `docs/factory/loadouts.json`. Do not raise a level
 silently; if the issue looks mis-sized, say so and continue at the stated level.
 
