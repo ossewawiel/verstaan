@@ -2,15 +2,15 @@
 issue: 194
 title: "Tree interpreter for analysis rules, run in the archive's order, with its ADR"
 milestone: M3
-status: in-progress
+status: done
 depends_on: [22, 184]
 agent: rule-author
 agents: [rule-author, test-writer, implementer]
 model: opus
 effort: xhigh
 checkpoint: 4
-commit: null
-worktree: .worktrees/m3-194-tree-interpreter
+commit: 5ecee6e
+worktree: null
 github_issue: 302
 ---
 ## What
@@ -57,9 +57,9 @@ Scoped relations (`and:01`): issue 197. Tree generation for Afrikaans: issue 181
 
 ## Done when
 
-- [ ] The ADR exists and names the run order and the node shape.
-- [ ] `194-test-cases.md` traces A08 and A11 rule by rule.
-- [ ] The tree interpreter runs rules 38 to 176 in the archive's order.
-- [ ] A test finds rule 172's `mod` edge for A08.
-- [ ] A self-matching rule stops at the cap with a trace entry.
-- [ ] `ctest -L fast` and `python -m tools.validate --changed` are green.
+- [x] The ADR exists and names the run order and the node shape.
+- [x] `194-test-cases.md` traces A08 and A11 rule by rule.
+- [x] The tree interpreter runs rules 38 to 176 in the archive's order.
+- [x] A test finds rule 172's `mod` edge for A08.
+- [x] A self-matching rule stops at the cap with a trace entry.
+- [x] `ctest -L fast` and `python -m tools.validate --changed` are green.
