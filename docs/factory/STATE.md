@@ -2,7 +2,8 @@
 
 Last completed:  #193 — Engine initializer lists carry the trailing comma LLVM 23's clang-tidy
                  requires (Side), commit 0b05e89
-Next up:         #180 — Extract UNL relations from the flat analysed node list (M3)
+Next up:         #185 — The fixture file records each row's review, and the owner confirms the fixed
+                 set (M3)
 Branch / PR:     main, https://github.com/ossewawiel/verstaan.git, 0 files dirty, no gate stamp for
-                 c5a22d5
-Resume with:     /factory-run 180
+                 05a96c5
+Resume with:     /factory-run 185
