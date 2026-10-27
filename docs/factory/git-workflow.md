@@ -144,8 +144,9 @@ still reads them from git. Its own `--delete-branch` flag removes the branch fro
 the same call. Do not also run `git push origin --delete <branch>`: `--delete-branch` already
 covers it, and the two commands race on the same delete.
 
-Once any issue's merge lands, `git pull --ff-only` in the root tree, then `/factory-status`'s
-steps compute `STATE.md`'s four fields fresh and commit the result there, in one commit
+Once any issue's merge lands, `git pull --ff-only` in the root tree, then
+`python -m tools.factory.status --write` computes `STATE.md`'s four fields fresh and writes
+`docs/factory/STATE.md`, and that one file is committed there, in one commit
 `chore: refresh STATE.md after merging #NN into main` — never inside a work branch, so no pull
 request can conflict on it (`.claude/skills/factory-run/SKILL.md` step 10). Then tell the
 developer, in this order:

@@ -12,7 +12,8 @@ Issue: `$ARGUMENTS` (empty means the next open one). One issue, one work commit,
 Run this from the root tree, on `main`. It never works there past step 6.
 
 1. `git status --porcelain` in the root tree. Not empty → stop, show it, ask.
-2. Run the `/factory-status` steps. Read the chosen issue file whole.
+2. Run `python -m tools.factory.status` (the `/factory-status` command's step 1; it picks the next
+   issue by script, not by reading frontmatter). Read the chosen issue file whole.
 3. Check `depends_on` are all `status: done`. If not → stop and say which.
 4. Check the chosen issue's `status`. If it is `in-progress` and `--resume` was not given, stop:
    report the issue number and the tree named in its `worktree:` field, and do not proceed. With
@@ -80,7 +81,8 @@ All of this runs inside the issue's worktree, `.worktrees/<branch>`.
 6. `python -m tools.factory.mirror_github` (needs `GH_TOKEN` in the environment; if it is not set,
    say so and continue — the `mirror-check` CI job will catch the resulting drift on the next push).
 7. Append nothing to `lessons.jsonl` yourself; the hooks do that.
-8. Run the `/factory-status` steps again. Print STATE.md.
+8. Run `python -m tools.factory.status` again in the worktree. It prints only; the worktree never
+   writes STATE.md. Print its output.
 9. **Check the battlefield, not just the kill.** A closed issue is not a shipped one. Run:
    `git ls-remote --heads origin <branch>` (does the branch exist on origin at all, and does it
    match local HEAD) and `git log origin/main..main --oneline` (is `main` itself ahead of
@@ -100,7 +102,7 @@ All of this runs inside the issue's worktree, `.worktrees/<branch>`.
 
     | Option | What you run |
     |---|---|
-    | Gate, PR, merge | `/gate`, push, `gh pr create`, wait for the `gate` check, `gh pr merge --merge --delete-branch`, then `cd` to the root tree, `git pull --ff-only`, `/factory-status`'s steps to compute the four fields fresh, commit the result as `chore: refresh STATE.md after merging #NN into main`, then `git worktree remove .worktrees/<branch> && git branch -D <branch>` |
+    | Gate, PR, merge | `/gate`, push, `gh pr create`, wait for the `gate` check, `gh pr merge --merge --delete-branch`, then `cd` to the root tree, `git pull --ff-only`, `python -m tools.factory.status --write` to compute the four fields fresh and write `docs/factory/STATE.md`, commit that one file as `chore: refresh STATE.md after merging #NN into main`, then `git worktree remove .worktrees/<branch> && git branch -D <branch>` |
     | Gate and PR, then stop | the same, stopping once the PR is open and its check is green |
     | Push only | `git push -u origin <branch>`, nothing else |
     | Hold | nothing reaches GitHub |

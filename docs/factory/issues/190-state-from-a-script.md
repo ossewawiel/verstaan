@@ -2,14 +2,14 @@
 issue: 190
 title: "/factory-status computes STATE.md with a script, not a model"
 milestone: Side
-status: open
+status: done
 depends_on: [189]
 agent: implementer
 agents: [implementer]
 model: haiku
 effort: medium
 checkpoint: null
-commit: null
+commit: a2e9a4c
 worktree: null
 github_issue: 293
 ---
@@ -51,7 +51,7 @@ its own code. Rendering `docs/factory/console/index.html`, which `generate.mjs` 
 
 ## Done when
 
-- [ ] `tools.factory.status` prints the STATE fields and writes them with `--write`.
-- [ ] A test proves the script and `parse.mjs` agree on the fixture repo.
-- [ ] The script reports the two data faults the command reports today.
-- [ ] `/factory-status`, `factory-run` and `git-workflow.md` call the script.
+- [x] `tools.factory.status` prints the STATE fields and writes them with `--write`.
+- [x] A test proves the script and `parse.mjs` agree on the fixture repo.
+- [x] The script reports the two data faults the command reports today.
+- [x] `/factory-status`, `factory-run` and `git-workflow.md` call the script.
