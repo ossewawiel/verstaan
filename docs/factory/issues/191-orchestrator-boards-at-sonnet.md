@@ -2,7 +2,7 @@
 issue: 191
 title: "The /factory-run session boards at Sonnet; the quest's loadout goes to its first pass"
 milestone: Side
-status: open
+status: in-progress
 depends_on: [189]
 agent: implementer
 agents: [implementer, docs-writer]
@@ -10,7 +10,7 @@ model: sonnet
 effort: medium
 checkpoint: 4
 commit: null
-worktree: null
+worktree: .worktrees/side-191-orchestrator-boards-at-sonnet
 github_issue: 294
 ---
 ## What
@@ -51,8 +51,8 @@ the session's own choice. Per-pass overrides inside one quest file, which no que
 
 ## Done when
 
-- [ ] Both boarding paths open the session at Sonnet.
-- [ ] The quest's loadout reaches the first pass through the prompt.
-- [ ] The boarding pass shows both lines, and an e2e case checks them.
-- [ ] ADR 0016 carries the amendment.
-- [ ] `factory-run` names the session model.
+- [x] Both boarding paths open the session at Sonnet.
+- [x] The quest's loadout reaches the first pass through the prompt.
+- [x] The boarding pass shows both lines, and an e2e case checks them.
+- [x] ADR 0016 carries the amendment.
+- [x] `factory-run` names the session model.

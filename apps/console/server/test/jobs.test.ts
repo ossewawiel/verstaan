@@ -253,23 +253,44 @@ describe.skipIf(process.platform === 'win32')('gate: missing CMakeUserPresets.js
   });
 });
 
-// Issue 174 (L2): the terminal spawn. `questStartArgv` is a pure function of platform, model and
-// the already-padded quest line, so both platform templates are provable here in one run, on
+// Issue 174 (L2): the terminal spawn. `questStartArgv` is a pure function of platform and the
+// already-padded quest line (issue 191: the model is always sonnet), so both platform templates are provable here in one run, on
 // whichever OS this test happens to execute on -- `build`'s own call to it (kinds.ts) is the only
 // place that ever supplies the real `process.platform`.
 describe('quest-start: argv templates, validation and refusal (issue 174)', () => {
   it('the Windows template opens a new console window running claude directly, one argv per slot', async () => {
     const { questStartArgv } = await import('../src/jobs/kinds.js');
-    const spawn = questStartArgv('win32', 'sonnet', '/factory-run 06');
+    const spawn = questStartArgv('win32', '/factory-run 06');
     expect(spawn.cmd).toBe('cmd');
     expect(spawn.args).toEqual(['/c', 'start', 'Verstaan quest', 'claude', '--model', 'sonnet', '/factory-run 06']);
   });
 
   it('the POSIX template runs x-terminal-emulator -e claude, one argv per slot', async () => {
     const { questStartArgv } = await import('../src/jobs/kinds.js');
-    const spawn = questStartArgv('linux', 'opus', '/factory-run 12');
+    const spawn = questStartArgv('linux', '/factory-run 12');
     expect(spawn.cmd).toBe('x-terminal-emulator');
-    expect(spawn.args).toEqual(['-e', 'claude', '--model', 'opus', '/factory-run 12']);
+    expect(spawn.args).toEqual(['-e', 'claude', '--model', 'sonnet', '/factory-run 12']);
+  });
+
+  // Issue 191: the session boards at Sonnet whatever the quest's model; the quest's loadout rides
+  // in the prompt as the first pass's. Expected values are written out by hand, not derived.
+  it('an opus quest still opens the session at sonnet, and the prompt carries the quest\'s model and effort', async () => {
+    const { JOB_KINDS } = await import('../src/jobs/kinds.js');
+    const args = JOB_KINDS['quest-start'].validateArgs({ model: 'opus', issue: 6, effort: 'high', agent: 'implementer' });
+    const spawn = JOB_KINDS['quest-start'].build('.', args);
+    const modelAt = spawn.args.indexOf('--model');
+    expect(spawn.args[modelAt + 1]).toBe('sonnet');
+    expect(spawn.args).not.toContain('opus');
+    const prompt = spawn.args.at(-1) ?? '';
+    expect(prompt).toMatch(/^\/factory-run 06 first pass: /);
+    expect(prompt.match(/model=(\S+)/)?.[1]).toBe('opus');
+    expect(prompt.match(/effort=(\S+)/)?.[1]).toBe('high');
+    expect(prompt.match(/agent=(\S+)/)?.[1]).toBe('implementer');
+  });
+
+  it('validateArgs refuses an effort outside the allow-list', async () => {
+    const { JOB_KINDS, JobArgsError } = await import('../src/jobs/kinds.js');
+    expect(() => JOB_KINDS['quest-start'].validateArgs({ model: 'opus', issue: 6, effort: 'small' })).toThrow(JobArgsError);
   });
 
   it('validateArgs refuses a model outside the allow-list', async () => {
@@ -282,10 +303,10 @@ describe('quest-start: argv templates, validation and refusal (issue 174)', () =
     expect(() => JOB_KINDS['quest-start'].validateArgs({ model: 'sonnet', issue: 'six' })).toThrow(JobArgsError);
   });
 
-  it('build() pads the issue number and composes the same "/factory-run NN" line the boarding pass copies', async () => {
+  it('build() pads the issue number and composes the "/factory-run NN first pass: ..." line the boarding pass copies', async () => {
     const { JOB_KINDS } = await import('../src/jobs/kinds.js');
     const spawn = JOB_KINDS['quest-start'].build('.', { model: 'sonnet', issue: 6 });
-    expect(spawn.args.at(-1)).toBe('/factory-run 06');
+    expect(spawn.args.at(-1)).toBe('/factory-run 06 first pass: model=sonnet');
     expect(spawn.args).not.toContain(undefined);
   });
 

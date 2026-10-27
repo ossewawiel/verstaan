@@ -8,7 +8,7 @@ import { spawn, execFileSync, type ChildProcess } from 'node:child_process';
 import { randomUUID } from 'node:crypto';
 import { existsSync, mkdirSync, readFileSync, renameSync, writeFileSync } from 'node:fs';
 import { dirname } from 'node:path';
-import { JOB_KINDS, JobArgsError, type JobKindDef } from './kinds.js';
+import { JOB_KINDS, JobArgsError, ORCHESTRATOR_MODEL, ORCHESTRATOR_EFFORT, composeQuestPrompt, type JobKindDef } from './kinds.js';
 import { runQuestSession, KILLED_SENTINEL, type QuestSessionHandle, type SdkRunnerFn } from './sdk-runner.js';
 
 // Checkpoint-4 review, finding 2: how long a rebuilt process waits before resuming a `quest-run`
@@ -293,14 +293,15 @@ export class JobManager {
     const issue = String(job.args.issue).padStart(2, '0');
     const model = String(job.args.model);
     const effort = String(job.args.effort);
+    const agent = job.args.agent ? String(job.args.agent) : undefined;
     const resume = job.sessionId ?? undefined;
     this.pushLine(
       job,
       'meta',
-      `quest-run: opening an Agent SDK session for /factory-run ${issue} (${model}/${effort})${resume ? ` — resuming ${resume}` : ''}`,
+      `quest-run: opening an Agent SDK session for /factory-run ${issue} at ${ORCHESTRATOR_MODEL}/${ORCHESTRATOR_EFFORT}, first pass ${model}/${effort}${resume ? ` — resuming ${resume}` : ''}`,
     );
     const handle = this.sdkRunnerFn(
-      { prompt: `/factory-run ${issue}`, model, effort, cwd: job.tree, resume },
+      { prompt: composeQuestPrompt(`/factory-run ${issue}`, { agent, model, effort }), cwd: job.tree, resume },
       {
         onLine: (stream, text) => this.pushLine(job, stream, text),
         onSessionId: (sessionId) => {

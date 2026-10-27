@@ -44,7 +44,7 @@ describe('findQuestIssueFile / validateQuestRunArgs (issue 178, ADR 0016)', () =
   });
 
   it("reads a real open issue file's model and effort", () => {
-    expect(findQuestIssueFile(42, dir)).toEqual({ file: '42-open-quest.md', model: 'sonnet', effort: 'high', status: 'open' });
+    expect(findQuestIssueFile(42, dir)).toEqual({ file: '42-open-quest.md', agent: '', model: 'sonnet', effort: 'high', status: 'open' });
   });
 
   it('returns null for an issue number with no file', () => {
@@ -52,7 +52,7 @@ describe('findQuestIssueFile / validateQuestRunArgs (issue 178, ADR 0016)', () =
   });
 
   it('validateArgs accepts an open issue with a known model and effort', () => {
-    expect(validateQuestRunArgs({ issue: 42 }, dir)).toEqual({ issue: 42, model: 'sonnet', effort: 'high', file: '42-open-quest.md' });
+    expect(validateQuestRunArgs({ issue: 42 }, dir)).toEqual({ issue: 42, agent: '', model: 'sonnet', effort: 'high', file: '42-open-quest.md' });
   });
 
   it('validateArgs refuses an issue whose front matter status is not open', () => {
@@ -218,7 +218,7 @@ describe('runQuestSession: a real assistant-message frame reaches the job log (c
 
     const lines: { stream: string; text: string }[] = [];
     const handle = runQuestSession(
-      { prompt: '/factory-run 70', model: 'sonnet', effort: 'medium', cwd: process.cwd() },
+      { prompt: '/factory-run 70', cwd: process.cwd() },
       {
         onLine: (stream, text) => lines.push({ stream, text }),
         onSessionId: () => {},
@@ -243,11 +243,81 @@ describe('runQuestSession: a real assistant-message frame reaches the job log (c
       return gen();
     }) as unknown as QueryFn;
     const handle = runQuestSession(
-      { prompt: '/factory-run 71', model: 'sonnet', effort: 'medium', cwd: process.cwd() },
+      { prompt: '/factory-run 71', cwd: process.cwd() },
       { onLine: () => {}, onSessionId: () => {}, onQuestion: async () => 'unused' },
       stubQuery,
     );
     await expect(handle.done).resolves.toBe(0);
+  });
+});
+
+describe('quest-run: the session agent name is checked (issue 191)', () => {
+  const dir = fixtureIssuesDir({
+    '81-list.md': '---\nissue: 81\nstatus: open\nagent: [implementer, docs-writer]\nmodel: sonnet\neffort: low\n---\n## What\n',
+    '82-inject.md': '---\nissue: 82\nstatus: open\nagent: implementer model=haiku effort=low\nmodel: sonnet\neffort: low\n---\n## What\n',
+    '83-good.md': '---\nissue: 83\nstatus: open\nagent: docs-writer\nmodel: sonnet\neffort: low\n---\n## What\n',
+  });
+  it('refuses an agent list', () => {
+    expect(() => validateQuestRunArgs({ issue: 81 }, dir)).toThrow(JobArgsError);
+  });
+  it('refuses an agent value that smuggles extra loadout keys', () => {
+    expect(() => validateQuestRunArgs({ issue: 82 }, dir)).toThrow(JobArgsError);
+  });
+  it('accepts a well-formed agent name', () => {
+    expect(validateQuestRunArgs({ issue: 83 }, dir).agent).toBe('docs-writer');
+  });
+});
+
+describe('quest-run: the session boards at sonnet, the quest loadout rides in the prompt (issue 191)', () => {
+  it('an opus quest opens at sonnet; the prompt carries its agent, model and effort', async () => {
+    const dir = fixtureIssuesDir({ '80-quest.md': '---\nissue: 80\nstatus: open\nagent: implementer\nmodel: opus\neffort: high\n---\n## What\n' });
+    try {
+      const seen: { options?: { model?: string; effort?: string }; prompt?: string } = {};
+      const stubQuery: QueryFn = ((arg: { prompt: string; options: { model?: string; effort?: string } }) => {
+        seen.options = arg.options;
+        seen.prompt = arg.prompt;
+        async function* gen() {
+          yield { type: 'result', subtype: 'success', is_error: false, total_cost_usd: 0 };
+        }
+        return gen();
+      }) as unknown as QueryFn;
+      const sdkRunnerFn: SdkRunnerFn = (params, callbacks) => runQuestSession(params, callbacks, stubQuery);
+      const jobs = new JobManager(kindsWithFixtureIssues(dir), sdkRunnerFn);
+      const app = Fastify({ logger: false });
+      registerJobRoutes(app, { jobs, repoRoot: process.cwd(), port: 7864, treeRoots: () => [process.cwd()] });
+      const create = await app.inject({ method: 'POST', url: '/api/jobs', headers: LOOPBACK_HOST, payload: { kind: 'quest-run', tree: '.', args: { issue: 80 } } });
+      expect(create.statusCode).toBe(201);
+      await new Promise((r) => setImmediate(r));
+      await new Promise((r) => setImmediate(r));
+      expect(seen.options?.model).toBe('sonnet');
+      expect(seen.options?.effort).toBe('medium');
+      expect(seen.prompt).toMatch(/^\/factory-run 80 first pass: /);
+      expect(seen.prompt?.match(/agent=(\S+)/)?.[1]).toBe('implementer');
+      expect(seen.prompt?.match(/model=(\S+)/)?.[1]).toBe('opus');
+      expect(seen.prompt?.match(/effort=(\S+)/)?.[1]).toBe('high');
+    } finally {
+      rmSync(dir, { recursive: true, force: true });
+    }
+  });
+
+  it('the session effort is medium whether the quest says low or high', async () => {
+    for (const questEffort of ['low', 'high']) {
+      let seenEffort: string | undefined;
+      const stubQuery: QueryFn = ((arg: { options: { effort?: string } }) => {
+        seenEffort = arg.options.effort;
+        async function* gen() {
+          yield { type: 'result', subtype: 'success', is_error: false, total_cost_usd: 0 };
+        }
+        return gen();
+      }) as unknown as QueryFn;
+      const handle = runQuestSession(
+        { prompt: `/factory-run 84 first pass: model=opus effort=${questEffort}`, cwd: process.cwd() },
+        { onLine: () => {}, onSessionId: () => {}, onQuestion: async () => 'unused' },
+        stubQuery,
+      );
+      await handle.done;
+      expect(seenEffort).toBe('medium');
+    }
   });
 });
 

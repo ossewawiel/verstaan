@@ -107,7 +107,7 @@ function QuestActions({ issue }: { issue: Issue }) {
     <div className="story-actions" onClick={(e) => e.stopPropagation()} onKeyDown={(e) => e.stopPropagation()}>
       {/* The flight deck's own launch path (issue 174, L1): one per open quest, never on a quest
           already in progress or done -- there is nothing left to launch there. */}
-      {issue.status === 'open' ? <BoardingPass model={issue.model} command={`/factory-run ${id}`} /> : null}
+      {issue.status === 'open' ? <BoardingPass agent={issue.agent} model={issue.model} effort={issue.effort} command={`/factory-run ${id}`} /> : null}
       <ActionButton label="Run its tests" disabled={!issue.worktree} onRun={runTests} />
       <ActionButton label="Open its tree" disabled={!issue.worktree} onRun={openTree} />
       <ActionButton label="Open its PR" onRun={openPr} />

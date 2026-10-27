@@ -66,7 +66,7 @@ term here instead, with the file that defines it.
 | Fog | The cover over a region with no lit tile. Lifts when the first issue in it is done on `main`. | ADR 0015 |
 | Contact | An open issue with no pull request. Shows on the edge of a fogged region. | ADR 0015 |
 | Cleared for jump | An issue with an open pull request and `gate.yml` green. Read from GitHub; unpainted when GitHub is out of reach. | ADR 0014, 0015 |
-| Boarding pass | The launch line the console composes from an issue's front matter, `claude --model <m> "/factory-run NN"`, copied for a terminal. | ADR 0016 |
+| Boarding pass | The launch line the console composes from an issue's front matter, `claude --model sonnet "/factory-run NN first pass: agent=<a> model=<m> effort=<e>"`, copied for a terminal. The session is the orchestrator at Sonnet; the quest's loadout is the first pass's. | ADR 0016 |
 | Orders awaiting | A checkpoint held in `canUseTool`, shown in the Jobs room as a card with a text box. | ADR 0016 |
 | Debrief | The codex panel that groups the ledger by signature, counts repeats, and offers Promote, which runs the retro. | `.claude/skills/factory-retro/SKILL.md` |
 | Crew | The ship-systems room's view of the party: each agent file with its tools, model and the issues it has run. | `.claude/agents/` |

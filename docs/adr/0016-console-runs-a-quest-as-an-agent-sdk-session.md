@@ -87,3 +87,24 @@ The owner's call: ship it this way. A quest that would misbehave from the termin
 from the console too — the harness does not grant a quest any capability the terminal session
 lacks, it only removes a human's chance to catch a bad tool call before it runs. Revisit if a
 console-launched quest ever does something a terminal session's own settings would have stopped.
+
+## Amendment (2026-10-27, issue 191) — the console boards every quest's session at Sonnet
+
+The decision above says `query()` takes "model and effort from the issue's front matter". That
+changes. The console opens every quest's session at `sonnet`, whatever the issue's `model:` says.
+This holds for both boarding paths: the `quest-start` terminal spawn and the `quest-run` SDK
+session. The owner chose it as flight-plan D2, "Sonnet orchestrator".
+
+The quest's `model` and `effort` do not vanish. They travel in the `/factory-run` prompt as the
+first pass's loadout, and the first pass is the agent named in `agent:`. Every later pass keeps the
+loadout its own agent file sets.
+
+The session effort is fixed at medium, because the SDK would otherwise default to high.
+
+The reason is cost. The session is the orchestrator. It reads status, runs gates, commits, mirrors
+and writes the hand-off. None of that is design. Quest 180 runs four passes and three gate rounds.
+Under the old rule, an Opus quest passed every gate log through an Opus context at twice the Sonnet
+price, and the orchestrator made no decision that needed it.
+
+A terminal `/factory-run` that the owner types by hand is unchanged. The session model there stays
+the owner's choice.

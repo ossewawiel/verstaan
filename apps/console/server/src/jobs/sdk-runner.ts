@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MPL-2.0
 // The harness (issue 178, ADR 0016): opens one Agent SDK session for a `quest-run` job with the
-// same prompt, model and effort the boarding pass (`quest-start`, issue 174) composes. Every tool
+// same prompt the boarding pass (`quest-start`, issue 174) composes, at the orchestrator model (issue 191). Every tool
 // call passes through `canUseTool`; `AskUserQuestion` is the one interception point ADR 0016
 // names -- every other tool is auto-approved, unaltered, so the harness runs the same agents the
 // terminal runs and gains no new member. This is the second spawn site in the codebase besides
@@ -8,6 +8,7 @@
 // process that ends (`kinds.ts`'s own `sdkSession` flag is what tells `JobManager.start()` to
 // come here instead).
 import { query, type Options, type Query } from '@anthropic-ai/claude-agent-sdk';
+import { ORCHESTRATOR_MODEL, ORCHESTRATOR_EFFORT } from './kinds.js';
 
 /** The one shape `JobManager` needs back from a session, independent of the real SDK's own
  * message union -- kept narrow on purpose so a test can stub `queryFn` with a handful of plain
@@ -30,10 +31,10 @@ export interface SdkSessionCallbacks {
 }
 
 export interface QuestRunParams {
-  /** The same `/factory-run NN` line `quest-start`'s `questStartArgv` composes (kinds.ts). */
+  /** The same prompt `quest-start` sends (kinds.ts `composeQuestPrompt`): `/factory-run NN` plus
+   * the quest's loadout for its first pass. The session itself always opens at
+   * `ORCHESTRATOR_MODEL` (issue 191), so the quest's model and effort are not params here (the session effort is `ORCHESTRATOR_EFFORT`). */
   prompt: string;
-  model: string;
-  effort: string;
   cwd: string;
   /** Set only when resuming a session that already has an id (restart-gate.ts, issue 178
    * acceptance: "resumes via query({ resume: sessionId, ... })"). */
@@ -101,11 +102,9 @@ function assistantText(message: Record<string, unknown>): string[] {
 export function runQuestSession(params: QuestRunParams, callbacks: SdkSessionCallbacks, queryFn: QueryFn = query): QuestSessionHandle {
   let interrupted = false;
   const options: Options = {
-    model: params.model,
-    // Options.effort (sdk.d.ts): the same low/medium/high scale the issue's own front matter
-    // names, validated against this repo's real values in kinds.ts's QUEST_EFFORTS before this
-    // function is ever called.
-    effort: params.effort as Options['effort'],
+    model: ORCHESTRATOR_MODEL,
+    // Fixed, not the quest's: the SDK defaults to 'high' (issue 191).
+    effort: ORCHESTRATOR_EFFORT,
     cwd: params.cwd,
     resume: params.resume,
     canUseTool: async (toolName, input, toolOptions) => {
