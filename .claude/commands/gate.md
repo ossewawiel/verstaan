@@ -59,7 +59,9 @@ Step 4, tidy. `clang-tidy -p build/<clang preset> $(git ls-files 'engine/**/*.cp
 Step 5, equivalence and tiers (M4 onward). `ctest --preset clang-release -L equivalence` and
 `ctest --preset clang-release -L tier`.
 
-Step 6, regenerate. `python -m tools.compiler --all-tiers && git diff --exit-code engine/generated/`.
+Step 6, regenerate. `python -m tools.compiler --all-tiers` when the compiler's `--help` names that flag,
+else bare `python -m tools.compiler` (M0's compiler is a skeleton until M1 adds the flag, the same
+rule `tools/factory/hooks/gate_full.sh` applies). Then `git diff --exit-code engine/generated/`.
 A diff means someone edited generated code by hand or the compiler changed without regenerating.
 
 Only if every step passed, and `git status --porcelain` is empty:
