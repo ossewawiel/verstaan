@@ -2,7 +2,7 @@
 issue: 190
 title: "/factory-status computes STATE.md with a script, not a model"
 milestone: Side
-status: open
+status: in-progress
 depends_on: [189]
 agent: implementer
 agents: [implementer]
@@ -10,7 +10,7 @@ model: haiku
 effort: medium
 checkpoint: null
 commit: null
-worktree: null
+worktree: .worktrees/side-190-state-from-a-script
 github_issue: 293
 ---
 ## What
