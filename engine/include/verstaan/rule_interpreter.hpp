@@ -84,7 +84,7 @@ struct Forest {
 // the pass then runs no rule and returns the forest unchanged (ADR 0017).
 struct TreeResult {
   Forest forest;
-  Status status = Status::not_implemented;
+  Status status = Status::no_parse;
 };
 
 // The hand-over from disambiguation to the tree pass (ADR 0017). Wraps the disambiguated list in
