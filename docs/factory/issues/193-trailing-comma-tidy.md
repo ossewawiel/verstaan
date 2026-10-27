@@ -2,14 +2,14 @@
 issue: 193
 title: "Engine initializer lists carry the trailing comma LLVM 23's clang-tidy requires"
 milestone: Side
-status: open
+status: done
 depends_on: [6]
 agent: implementer
 agents: [implementer]
 model: haiku
 effort: low
 checkpoint: null
-commit: null
+commit: 0b05e89
 worktree: null
 github_issue: null
 ---
@@ -41,6 +41,6 @@ before a branch does.
 
 ## Done when
 
-- [ ] The eight initializer lists end in a trailing comma.
-- [ ] clang-tidy and clang-format pass on the engine sources.
-- [ ] The engine builds and every test passes.
+- [x] The eight initializer lists end in a trailing comma.
+- [x] clang-tidy and clang-format pass on the engine sources.
+- [x] The engine builds and every test passes.
