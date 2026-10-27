@@ -511,7 +511,7 @@ void apply_analysis_rule(const GrammarRule& rule, std::vector<Candidate>& nodes,
       continue;
     }
     std::vector<Candidate> replacement = apply_rhs(rule.rhs, nodes, start, pattern, captures);
-    trace.entries.push_back(TraceEntry{rule.id});
+    trace.entries.push_back(TraceEntry{.rule = rule.id});
     const auto first = nodes.begin() + static_cast<std::ptrdiff_t>(start);
     const auto last = first + static_cast<std::ptrdiff_t>(pattern.size());
     nodes.erase(first, last);
@@ -575,7 +575,7 @@ void apply_disambiguation_rule(const GrammarRule& rule, std::vector<Position>& p
   if (to_delete.empty()) {
     return;
   }
-  trace.entries.push_back(TraceEntry{rule.id});
+  trace.entries.push_back(TraceEntry{.rule = rule.id});
 
   // Group deletions by position, highest candidate index first, so erasing does not shift an
   // index still pending deletion at the same position.
@@ -750,7 +750,7 @@ std::string RuleInterpreter::inflect(std::string_view paradigm_id, std::string_v
         continue;
       }
       const std::string result = apply_affix(parse_affix(a_rule), base_form);
-      trace.entries.push_back(TraceEntry{std::string(paradigm_id)});
+      trace.entries.push_back(TraceEntry{.rule = std::string(paradigm_id)});
       return result;
     }
     return std::string(base_form);

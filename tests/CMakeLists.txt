@@ -8,6 +8,7 @@ add_executable(verstaan_tests
   unit/engine_test.cpp
   unit/rule_interpreter_test.cpp
   unit/tokeniser_test.cpp
+  unit/tree_pass_test.cpp
 )
 target_link_libraries(verstaan_tests PRIVATE verstaan_core GTest::gtest GTest::gtest_main)
 target_compile_features(verstaan_tests PRIVATE cxx_std_20)

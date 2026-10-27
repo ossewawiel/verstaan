@@ -4,6 +4,7 @@ add_library(verstaan_core STATIC
   src/engine.cpp
   src/rule_interpreter.cpp
   src/tokeniser.cpp
+  src/tree_pass.cpp
 )
 
 target_include_directories(verstaan_core PUBLIC
