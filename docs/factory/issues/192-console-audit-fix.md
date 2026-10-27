@@ -2,14 +2,14 @@
 issue: 192
 title: "The console's shipped dependencies clear npm audit at high"
 milestone: Side
-status: open
+status: done
 depends_on: [99]
 agent: implementer
 agents: [implementer]
 model: haiku
 effort: low
 checkpoint: null
-commit: null
+commit: f01dfb8
 worktree: null
 github_issue: null
 ---
@@ -41,6 +41,6 @@ audit that catches the next advisory before a branch does, which is a quest of i
 
 ## Done when
 
-- [ ] The audit step passes at high.
-- [ ] Only the lockfile changed.
-- [ ] The console builds and its tests pass.
+- [x] The audit step passes at high.
+- [x] Only the lockfile changed.
+- [x] The console builds and its tests pass.
