@@ -45,7 +45,8 @@ this issue must pass.
 
 The golden loader itself (issue 26). Afrikaans → English (not in the fixed set, per issue 24). The
 generated-tables back end (M4). Any remaining `generation.yaml` divergence not already listed in
-issue 182 — if one turns up here, it is a new quest, not a silent patch.
+issue 182 — if one turns up here, it is a new quest, not a silent patch. A14 and A15 exact text: both need the scope issue 197
+decides, and no quest builds it yet; their tests report them as deferred, not as failures.
 
 ## Done when
 

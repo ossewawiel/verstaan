@@ -1,9 +1,9 @@
 ---
 issue: 180
-title: "Extract UNL relations from the flat analysed node list"
+title: "Write the mod relation into the UNL graph for A08 and A11"
 milestone: M3
 status: open
-depends_on: [22, 184]
+depends_on: [22, 184, 194, 195, 196]
 agent: rule-author
 agents: [rule-author, test-writer, implementer]
 model: opus
@@ -15,45 +15,40 @@ github_issue: 280
 ---
 ## What
 
-`RuleInterpreter::analyse` (issue 22) rewrites a flat list of nodes with attributes, `@pl`,
-`@def`, `@plus`, and the like. It never builds a relation. `Graph::relations` is declared in
-`engine/include/verstaan/engine.hpp` and never written: no code anywhere assigns to it. The
-implementer working issue 25 confirmed this by grep, zero hits, before stopping issue 25 as
-unbuildable without this quest.
+`Graph::relations` is declared in `engine/include/verstaan/engine.hpp` and never written: no code
+anywhere assigns to it. The implementer working issue 25 confirmed this by grep before stopping
+issue 25. The first rule-author pass on this quest stopped on 2026-09-28 on five blockers, B1 to
+B5. The owner split it on 2026-10-27, flight plan answer D1: "shrink 180 to mod on A08/A11, the
+closed-class negative test and the rule id in Trace." Issue 194 builds the tree interpreter
+(B3), issue 195 the English D-rules (B2), issue 196 the name literals (B5), and issue 197 the
+scopes ADR (B4). Issue 198 takes `plc`, `cnt` and `and`.
 
-Five of the fifteen rows in `tests/fixtures/languages/eng/tests/basic.yaml` (issue 24) need real
-relations to translate at all: `mod` (A08, A11, A12), `plc` (A07, A15), `cnt` (A09, A15), `nam`
-(A15), `and` (A15). After this quest, `Engine::translate` populates `Graph::relations` with these
-edges for English input, built from the archive's `NN`/`TN` network-construction rules the same
-way `RuleInterpreter::analyse` already reads the archive's `LL` attribute rules.
-
-This quest waits on issue 184, which imports the closed-class words (`the`, `of`, `on`, `and`,
-`without`). Those records carry features and no UW. They reach analysis as nodes that the
-attribute rules fold away (`eng-ana-12` turns `the` into `@def`) and never become graph nodes of
-their own. The `eng` grammar holds one rule each for `cnt`, `plc` and `nam`. If a row needs a rule
-the store lacks, the rule-author pass writes it here, with a test sentence.
+After this quest, `Engine::translate` copies the `mod` edge the tree interpreter builds into
+`Result::unl.relations` for A08, `a beautiful book`, and A11, `the beautiful car`. The rule that
+built the edge appears in `Result::trace`. The closed-class words issue 184 imports fold into
+attributes and never appear as graph nodes.
 
 ## Acceptance criteria
 
-- `Result::unl.relations` is non-empty for A07 through A15 when translated with
-  `Options{Lang::eng, Lang::afr}`, one entry per relation named in issue 24's rule-id column for
-  that row.
-- Every relation carries the UW pair and the relation label (`agt`, `obj`, `mod`, `plc`, `cnt`,
-  `nam`, `and`) it was built from, so `--trace` can show why it fired.
-- A closed-class node from issue 184 never appears in `Result::unl` as a UW node.
-- `ctest -L fast` still passes. No end-to-end harness exists yet; issue 183 writes it.
-- `python -m tools.validate --changed` exits 0.
+- `Engine::translate` with `Options{Lang::eng, Lang::afr}` returns exactly one relation for A08,
+  `mod(book;beautiful)`, and one for A11, `mod(car;beautiful)`.
+- Each `Relation` carries its label and the indices of the two nodes it joins.
+- `Result::trace` names the rule that built each `mod` edge.
+- A test shows no node in `Result::unl.nodes` for `the`, `a` or `of`, on A02, A08 and A11.
+- A02, `the book`, returns no relation.
+- `ctest -L fast` passes. `python -m tools.validate --changed` exits 0.
 
 ## Not in scope
 
-Generation from these relations into Afrikaans surface text — issue 181. Afrikaans-side
-disambiguation or inflection — issue 181. Closing issue 25 itself — issue 183, once this quest,
-181 and 182 have landed.
+`plc`, `cnt` and `and` on A07, A09 and A13: issue 198. A12's degree adverb on the modifier:
+issue 181 checks it through generation. A14 and A15: they need the scope issue 197 decides.
+`agt` and `obj`: no fixed-set row has a verb yet (B1). Generation into Afrikaans: issue 181.
+Closing issue 25: issue 183.
 
 ## Done when
 
-- [ ] `Graph::relations` is populated for `agt`, `obj`, `mod`, `plc`, `cnt`, `nam`, `and` from
-      English input.
-- [ ] A test exercises each relation kind against a row from `tests/fixtures/languages/eng/tests/basic.yaml`.
-- [ ] `ctest -L fast` is green.
-- [ ] `python -m tools.validate --changed` is green.
+- [ ] `Result::unl.relations` holds the `mod` edge for A08 and A11.
+- [ ] The building rule's id appears in `Result::trace` for each edge.
+- [ ] The closed-class negative test passes.
+- [ ] A02 returns no relation.
+- [ ] `ctest -L fast` and `python -m tools.validate --changed` are green.

@@ -534,7 +534,7 @@ tiles:
   size: 32
 - id: '180'
   region: m3
-  title: Extract UNL relations from the flat analysed node list
+  title: Write the mod relation into the UNL graph for A08 and A11
   x: 4544
   y: 224
   size: 32
@@ -579,6 +579,36 @@ tiles:
   title: 'M3 close-out: retro, verifier, tag m3, write the M4 quests'
   x: 4416
   y: 416
+  size: 32
+- id: '194'
+  region: m3
+  title: Tree interpreter for analysis rules, run in the archive's order, with its ADR
+  x: 4480
+  y: 416
+  size: 32
+- id: '195'
+  region: m3
+  title: English disambiguation rules for in, on and about
+  x: 4544
+  y: 416
+  size: 32
+- id: '196'
+  region: m3
+  title: A capitalised name with no dictionary entry enters the graph as a quoted literal
+  x: 4416
+  y: 480
+  size: 32
+- id: '197'
+  region: m3
+  title: 'ADR: how the UNL graph holds a scope, so A14 and A15 can carry and:01'
+  x: 4480
+  y: 480
+  size: 32
+- id: '198'
+  region: m3
+  title: The plc, cnt and and relations on A07, A09 and A13
+  x: 4544
+  y: 480
   size: 32
 - id: '90'
   region: m7

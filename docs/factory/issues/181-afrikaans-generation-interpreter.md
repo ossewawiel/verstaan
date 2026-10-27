@@ -3,7 +3,7 @@ issue: 181
 title: "Tree-based generation interpreter for Afrikaans, wired into Engine::translate"
 milestone: M3
 status: open
-depends_on: [22, 180, 184]
+depends_on: [22, 180, 184, 198]
 agent: rule-author
 agents: [rule-author, test-writer, implementer]
 model: opus
@@ -30,6 +30,10 @@ resolves each UW against the Afrikaans dictionary, runs it through the `NN → N
 homograph), applies inflection through the existing `RuleInterpreter::inflect`, and linearises the
 result into `Result::text`.
 
+On 2026-10-27 the owner split issue 180, so the graph this quest reads comes from issue 180
+(`mod`) and issue 198 (`plc`, `cnt`, `and`). A14 needs a scoped `and`, which issue 197 only
+decides, so A14 leaves this quest's exact-match list.
+
 ## Acceptance criteria
 
 - `Engine::translate` with `Options{Lang::eng, Lang::afr}` resolves every UW in the graph against
@@ -38,14 +42,15 @@ result into `Result::text`.
   must-not-fire rows issue 24 names).
 - Inflection paradigms M2, M3, M7 and M16 apply where the fixture rows require them (A02–A05,
   A10, A15).
-- `A01` through `A08`, `A10` through `A14` (the rows with no documented `generation.yaml`
-  divergence) produce `text` matching their `expected` field exactly.
+- `A01` through `A08`, `A10` through `A13` (the rows with no documented `generation.yaml`
+  divergence and no scoped relation) produce `text` matching their `expected` field exactly.
 
 ## Not in scope
 
 Fixing the three documented divergences between `generation.yaml` and the corpus (afr-gen-4,
 afr-gen-40, afr-gen-22, the missing `nam` handler) — issue 182. Relation extraction on the English
 side — issue 180, a dependency of this quest. Closing issue 25 — issue 183.
+A14 and A15, which need the scope issue 197 decides.
 
 ## Done when
 
