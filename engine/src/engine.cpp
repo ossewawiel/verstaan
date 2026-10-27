@@ -67,9 +67,11 @@ std::vector<Position> build_positions(const std::vector<Token>& tokens,
       for (const DictionaryEntry& entry : lookups[i].entries) {
         std::vector<Feature> features = entry.features;
         features.emplace_back(std::string(kUwFeatureKey), entry.uw);
-        position.candidates.push_back(Candidate{.surface = std::string(tokens[i].surface),
-                                                .features = std::move(features),
-                                                .attributes = {}});
+        position.candidates.push_back(Candidate{
+            .surface = std::string(tokens[i].surface),
+            .features = std::move(features),
+            .attributes = {},
+        });
       }
     } else {
       position.candidates.push_back(

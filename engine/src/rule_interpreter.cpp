@@ -387,16 +387,20 @@ RhsItem parse_rhs_item(std::string_view raw) {
   if (raw.starts_with(kAttPrefix)) {
     const std::string_view value = raw.substr(kAttPrefix.size());
     if (value.starts_with('%')) {
-      return RhsItem{.kind = RhsItem::Kind::AddCapturedAttributes,
-                     .name = std::string(value.substr(1))};
+      return RhsItem{
+          .kind = RhsItem::Kind::AddCapturedAttributes,
+          .name = std::string(value.substr(1)),
+      };
     }
     return RhsItem{.kind = RhsItem::Kind::AddLiteralAttribute, .name = std::string(value)};
   }
   if (raw.starts_with('%')) {
     return RhsItem{.kind = RhsItem::Kind::CaptureRef, .name = std::string(raw.substr(1))};
   }
-  return RhsItem{.kind = RhsItem::Kind::CaptureRef,
-                 .name = std::string()};  // unrecognised: ignored
+  return RhsItem{
+      .kind = RhsItem::Kind::CaptureRef,
+      .name = std::string(),
+  };  // unrecognised: ignored
 }
 
 using Captures = std::vector<std::pair<std::string, std::size_t>>;
@@ -630,23 +634,29 @@ AffixSpec parse_affix(std::string_view spec) {
     }
   }
   if (op_pos == std::string_view::npos) {
-    return AffixSpec{.kind = AffixSpec::Kind::WholeForm,
-                     .position = 0,
-                     .find = {},
-                     .replace = parse_scalar(spec)};
+    return AffixSpec{
+        .kind = AffixSpec::Kind::WholeForm,
+        .position = 0,
+        .find = {},
+        .replace = parse_scalar(spec),
+    };
   }
   const std::string_view lhs_part = trim(spec.substr(0, op_pos));
   const std::string replace_value = parse_scalar(trim(spec.substr(op_pos + 1)));
   if (!lhs_part.empty() && lhs_part.front() == '"') {
-    return AffixSpec{.kind = AffixSpec::Kind::Replace,
-                     .position = 0,
-                     .find = parse_scalar(lhs_part),
-                     .replace = replace_value};
+    return AffixSpec{
+        .kind = AffixSpec::Kind::Replace,
+        .position = 0,
+        .find = parse_scalar(lhs_part),
+        .replace = replace_value,
+    };
   }
-  return AffixSpec{.kind = AffixSpec::Kind::AppendAtPosition,
-                   .position = parse_position(lhs_part),
-                   .find = {},
-                   .replace = replace_value};
+  return AffixSpec{
+      .kind = AffixSpec::Kind::AppendAtPosition,
+      .position = parse_position(lhs_part),
+      .find = {},
+      .replace = replace_value,
+  };
 }
 
 std::string apply_affix(const AffixSpec& spec, std::string_view base) {
