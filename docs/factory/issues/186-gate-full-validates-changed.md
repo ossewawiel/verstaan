@@ -2,15 +2,15 @@
 issue: 186
 title: "gate_full.sh validates the stores the branch changed, not every store"
 milestone: Side
-status: in-progress
+status: done
 depends_on: [168, 189]
 agent: implementer
 agents: [implementer]
 model: haiku
 effort: low
 checkpoint: null
-commit: null
-worktree: .worktrees/side-186-gate-full-validates-changed
+commit: 782acb6
+worktree: null
 github_issue: 287
 ---
 ## What
