@@ -2,14 +2,14 @@
 issue: 189
 title: "The party, the validator and the console speak the 5.5 model line"
 milestone: Side
-status: open
+status: done
 depends_on: [103, 178]
 agent: implementer
 agents: [implementer]
 model: sonnet
 effort: medium
 checkpoint: 4
-commit: null
+commit: c7f90a8
 worktree: null
 github_issue: 292
 ---
@@ -74,13 +74,13 @@ for older models. Moving any open quest to Haiku, which each quest's own run dec
 
 ## Done when
 
-- [ ] `loadouts.json` exists, and the validator refuses a value outside it.
-- [ ] The console boards `haiku` and accepts `xhigh` and `max`, and a test pins the console lists
+- [x] `loadouts.json` exists, and the validator refuses a value outside it.
+- [x] The console boards `haiku` and accepts `xhigh` and `max`, and a test pins the console lists
       to `loadouts.json`.
-- [ ] `factory-run` states the per-pass loadout rule.
-- [ ] `factory-run` and the implementer pick the preset by platform, and a new worktree gets the
+- [x] `factory-run` states the per-pass loadout rule.
+- [x] `factory-run` and the implementer pick the preset by platform, and a new worktree gets the
       user presets.
-- [ ] `scout.md` exists, and `factory-run` routes it before every rule-author pass.
-- [ ] `/gate` is pinned to Sonnet.
-- [ ] `factory-run` step 10 carries the D4 lane.
-- [ ] PLAN.md §6, the playbook, the quest skill and SPEC.md §6 agree with the above.
+- [x] `scout.md` exists, and `factory-run` routes it before every rule-author pass.
+- [x] `/gate` is pinned to Sonnet.
+- [x] `factory-run` step 10 carries the D4 lane.
+- [x] PLAN.md §6, the playbook, the quest skill and SPEC.md §6 agree with the above.

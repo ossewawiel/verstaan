@@ -1,4 +1,5 @@
 ---
+model: sonnet
 description: The full local gate before a pull request or merge — format check, all tier builds, all tests, clang-tidy, equivalence, data validation, tooling tests — run for real, not assumed.
 ---
 

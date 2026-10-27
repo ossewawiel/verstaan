@@ -67,3 +67,6 @@ apps/console/.data/
 # Static dictionary zips unzipped by hand for a look inside (issue 118); the zip is the mirror
 data/archive/exports/*/*_ucl/
 data/archive/exports/*/*_ucn/
+
+# Scout digests, one per rule-author pass (issue 189)
+.scout/

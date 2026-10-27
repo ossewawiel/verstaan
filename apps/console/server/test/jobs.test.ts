@@ -4,7 +4,7 @@
 // does, against a throwaway fixture repo so nothing here ever touches this checkout's own git
 // state or spawns a real gate.
 import { describe, it, expect, afterAll, beforeAll } from 'vitest';
-import { mkdtempSync, writeFileSync, mkdirSync, rmSync } from 'node:fs';
+import { mkdtempSync, writeFileSync, mkdirSync, rmSync, readFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { execFileSync } from 'node:child_process';
@@ -299,6 +299,37 @@ describe('quest-start: argv templates, validation and refusal (issue 174)', () =
     });
     expect(res.statusCode).toBe(400);
     await app.close();
+  });
+
+  it('QUEST_MODELS and QUEST_EFFORTS equal docs/factory/loadouts.json (issue 189)', async () => {
+    const { QUEST_MODELS, QUEST_EFFORTS } = await import('../src/jobs/kinds.js');
+    const { REPO } = await import('../src/model/read.js');
+    const file = JSON.parse(readFileSync(join(REPO, 'docs', 'factory', 'loadouts.json'), 'utf8'));
+    expect([...QUEST_MODELS]).toEqual(file.models);
+    expect([...QUEST_EFFORTS]).toEqual(file.efforts);
+  });
+
+  it('POST /api/jobs boards a haiku quest-start with 201 (issue 189)', async () => {
+    const { JOB_KINDS } = await import('../src/jobs/kinds.js');
+    // The real validateArgs, a harmless build: the real build opens a terminal.
+    const kinds = {
+      'quest-start': { ...JOB_KINDS['quest-start'], build: (tree: string) => ({ cmd: 'node', args: ['-e', ''], cwd: tree }) },
+    };
+    const app = Fastify({ logger: false });
+    registerJobRoutes(app, { jobs: new JobManager(kinds as never), repoRoot: process.cwd(), port: 7864, treeRoots: () => [process.cwd()] });
+    const res = await app.inject({
+      method: 'POST',
+      url: '/api/jobs',
+      headers: LOOPBACK_HOST,
+      payload: { kind: 'quest-start', tree: '.', args: { model: 'haiku', issue: 6 } },
+    });
+    expect(res.statusCode).toBe(201);
+    await app.close();
+  });
+
+  it('validateArgs accepts haiku (issue 189)', async () => {
+    const { JOB_KINDS } = await import('../src/jobs/kinds.js');
+    expect(JOB_KINDS['quest-start'].validateArgs({ model: 'haiku', issue: 6 })).toEqual({ model: 'haiku', issue: 6 });
   });
 
   it('is refused with 409 and a stated reason while a restart is in progress', async () => {

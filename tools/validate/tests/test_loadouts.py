@@ -116,3 +116,40 @@ def test_run_changed_skips_the_loadout_check_when_no_issue_file_is_in_the_diff(t
         FULL.replace("effort: medium\n", ""), encoding="utf-8"
     )
     assert run("changed", root, changed_paths=lambda _r: ["engine/src/parser.cpp"]) == 0
+
+
+def test_an_effort_outside_loadouts_json_is_named(tmp_path: Path, capsys):
+    # Issue 189: issue 171 once carried `effort: small` and passed the gate.
+    root = _tree(tmp_path)
+    (root / "docs" / "factory" / "issues" / "07-seven.md").write_text(
+        FULL.replace("effort: medium", "effort: small"), encoding="utf-8"
+    )
+    errors = check_issue_loadouts(root)
+    assert len(errors) == 1, errors
+    assert "docs/factory/issues/07-seven.md" in errors[0]
+    assert "small" in errors[0]
+    assert run("all", root) == 1
+    assert "small" in capsys.readouterr().err
+
+
+def test_a_model_outside_loadouts_json_is_named(tmp_path: Path, capsys):
+    root = _tree(tmp_path)
+    (root / "docs" / "factory" / "issues" / "07-seven.md").write_text(
+        FULL.replace("model: sonnet", "model: gpt"), encoding="utf-8"
+    )
+    errors = check_issue_loadouts(root)
+    assert len(errors) == 1, errors
+    assert "docs/factory/issues/07-seven.md" in errors[0]
+    assert "gpt" in errors[0]
+    assert run("all", root) == 1
+    assert "gpt" in capsys.readouterr().err
+
+
+def test_haiku_with_xhigh_passes(tmp_path: Path):
+    root = _tree(tmp_path)
+    (root / "docs" / "factory" / "issues" / "07-seven.md").write_text(
+        FULL.replace("model: sonnet", "model: haiku").replace("effort: medium", "effort: xhigh"),
+        encoding="utf-8",
+    )
+    assert check_issue_loadouts(root) == []
+    assert run("all", root) == 0
