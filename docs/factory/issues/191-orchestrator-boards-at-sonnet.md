@@ -2,15 +2,15 @@
 issue: 191
 title: "The /factory-run session boards at Sonnet; the quest's loadout goes to its first pass"
 milestone: Side
-status: in-progress
+status: done
 depends_on: [189]
 agent: implementer
 agents: [implementer, docs-writer]
 model: sonnet
 effort: medium
 checkpoint: 4
-commit: null
-worktree: .worktrees/side-191-orchestrator-boards-at-sonnet
+commit: 2512f03
+worktree: null
 github_issue: 294
 ---
 ## What
