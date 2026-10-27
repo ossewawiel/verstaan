@@ -131,6 +131,7 @@ Copied in shape from `timewarp`, adapted for C++ and data work. Three principles
 | `rule-author` | `.claude/agents/` | Drafts grammar rules and dictionary entries against the reference languages, with test sentences. Opus, high. |
 | `docs-writer` | `.claude/agents/` | Prose documentation and the UNL reference corpus. Sonnet, low. |
 | `verifier` | `.claude/agents/` | One adversarial read of the diff before a pull request. Opus, high, read-only. |
+| `scout` | `.claude/agents/` | Digests reference rules before a rule-author pass and a failing gate log before a retry. Haiku, low, read-only. |
 | Hooks | `.claude/hooks/` | `fast-format`, `gate-fast` (Stop), `require-gate` (PreToolUse), `capture-failure`. |
 
 ### 6.2 Routing
@@ -142,9 +143,16 @@ Copied in shape from `timewarp`, adapted for C++ and data work. Three principles
 | Grammar and dictionary growth | rule-author, then test-writer | opus high, sonnet medium |
 | Documentation, reference corpus | docs-writer, in parallel with the above | sonnet / low |
 | Pre-PR | verifier | opus / high |
+| Reference digest, gate-log digest | scout | haiku / low |
 
 The three-pass sequence is expensive. Use it for engine core issues and rule design. Tooling
 issues take one implementer pass.
+
+The quest's `model` and `effort` set its first pass, the one named in `agent:`. Every later pass
+takes its own agent file's `model` and `effort`. `docs/factory/loadouts.json` lists the three
+models (haiku, sonnet, opus) and five efforts (low to max); the validator and the console both
+enforce it. The scout runs before every rule-author pass. A tooling quest with no checkpoint, one
+implementer and a green `/gate` ships without the shipping question (the D4 lane).
 
 ### 6.3 Checkpoints
 

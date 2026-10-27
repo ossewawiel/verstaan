@@ -72,11 +72,12 @@ function validatePytestPath(p: string): string {
   return p;
 }
 
-// The two models any quest's front matter ever names today (`grep -h '^model:' docs/factory/issues/*.md`).
+// The three models a quest's front matter may name. Pinned to `docs/factory/loadouts.json` by a
+// server test (issue 189); the validator reads the same file.
 // An allowlist, not a blocklist (ADR 0011): a quest naming a model this list has not caught up
 // with is a data problem to fix in the issue file or here, never a string to let through unchecked
 // into an argv slot that opens a real terminal.
-const QUEST_MODELS = ['sonnet', 'opus'];
+export const QUEST_MODELS = ['haiku', 'sonnet', 'opus'];
 
 function validateQuestStartArgs(args: unknown): Record<string, unknown> {
   const model = requireString(args, 'model');
@@ -87,8 +88,8 @@ function validateQuestStartArgs(args: unknown): Record<string, unknown> {
   return { model, issue };
 }
 
-// The real `effort:` values docs/factory/issues/*.md carries today (`grep -h '^effort:'
-// docs/factory/issues/*.md`) -- an allowlist, the same reasoning as QUEST_MODELS above: a quest
+// The five `effort:` values `docs/factory/loadouts.json` lists (a server test pins this list to
+// that file, issue 189) -- an allowlist, the same reasoning as QUEST_MODELS above: a quest
 // naming an effort this list has not caught up with is a data problem to fix in the issue file or
 // here, never a string passed straight through to `query()`'s own `effort` option unchecked.
 // Typed as `readonly EffortLevel[]` (checkpoint-4 review, finding 4), the SDK's own scale
@@ -98,7 +99,7 @@ function validateQuestStartArgs(args: unknown): Record<string, unknown> {
 // to carry `effort: small`, not a real `EffortLevel` at all; fixed to `medium` (issue 171's own
 // checkpoint and agent count matched a medium-effort quest of that era, not a small one) rather
 // than widening this allowlist to cover a typo.
-const QUEST_EFFORTS: readonly EffortLevel[] = ['low', 'medium', 'high'];
+export const QUEST_EFFORTS: readonly EffortLevel[] = ['low', 'medium', 'high', 'xhigh', 'max'];
 
 /** The one issue file (issue 178, ADR 0016) a `quest-run` request names, read fresh from disk --
  * never the cached, already-parsed `Issue` the rest of the app builds from `readRepo()`, because

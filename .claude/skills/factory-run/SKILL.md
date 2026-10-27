@@ -23,7 +23,8 @@ Run this from the root tree, on `main`. It never works there past step 6.
    cuts its own branch, so a stale local `main` costs a whole issue's worth of missed merges, not
    a milestone's worth. Then create a fresh tree for this issue, every time: `git worktree add -b
    <branch> .worktrees/<branch> main`. Every issue gets its own branch and its own tree; no branch
-   is shared across issues any more. From here on, every command in this skill runs with
+   is shared across issues any more. When the root tree has a `CMakeUserPresets.json` (gitignored,
+   it holds the `linux-gcc` preset), copy it into the new worktree. From here on, every command in this skill runs with
    `.worktrees/<branch>` as the working directory, not the root tree.
 7. In the worktree, edit the issue file: `status: in-progress`, `worktree: .worktrees/<branch>`.
    Leave this uncommitted; it lands in the work commit at the end. The root console still sees it,
@@ -42,8 +43,15 @@ Run this from the root tree, on `main`. It never works there past step 6.
 | `docs-writer` | docs-writer → done. May run in parallel with any of the above. |
 | `test-writer` | test-writer → implementer |
 
-Model and effort come from the issue frontmatter. Do not raise them silently; if the issue looks
-mis-sized, say so and continue at the stated level.
+The quest's `model` and `effort` set the first pass, the one named in `agent:`. Every later pass
+takes its own agent file's `model` and `effort`. Every Agent call passes `model` and `effort`
+explicitly. The lists of valid values live in `docs/factory/loadouts.json`. Do not raise a level
+silently; if the issue looks mis-sized, say so and continue at the stated level.
+
+Before every rule-author pass, run the `scout` agent (haiku, read-only) on the reference rules the
+issue touches. Save its digest to `.scout/NN.md` in the worktree (NN is the issue number) (`.scout/` is gitignored) and name
+that path in the rule-author's brief. Before a retry after a failed gate, the scout may digest the
+failing log the same way.
 
 Whenever the sequence includes the test-writer, its hand-off ends with its own commit in the
 worktree, `git add -A && git commit -m "test(#NN): <title>"`, before the implementer starts. The
@@ -59,7 +67,9 @@ work commit made in step 3 below then carries the implementation only, never the
 
 All of this runs inside the issue's worktree, `.worktrees/<branch>`.
 
-1. Run the fast gate by hand once: `cmake --build --preset msvc-debug && ctest --preset msvc-debug -L fast`
+1. Run the fast gate by hand once, with the preset the platform picks, the same `uname` switch as
+   `tools/factory/hooks/gate_fast.sh` (`linux-gcc` on Linux and Darwin, `msvc-debug` otherwise):
+   `cmake --build --preset <preset> && ctest --preset <preset> -L fast`
    and `python -m tools.validate --changed`. Fix nothing yourself; send failures back to the agent.
 2. Check every "Done when" line in the issue file against the diff. Unchecked → back to the agent.
 3. `git add -A && git commit` with `<type>(#NN): <title>` and the session's attribution trailer.
@@ -81,7 +91,11 @@ All of this runs inside the issue's worktree, `.worktrees/<branch>`.
     credential), and say where the work is sitting, using step 9's facts. No file-by-file
     inventory, no flag lists, no wall of headings. Then put the shipping options to the developer
     with `AskUserQuestion`, and carry out the one they pick. Their choice is the sign-off: run the
-    push, the PR and the merge without asking again. Every branch, `m*-*` or `side-*`/`quest-*`,
+    push, the PR and the merge without asking again. **The D4 lane:** a quest with
+    `checkpoint: null` and `agents: [implementer]` only skips the question. Run `/gate` first. If it
+    is red, send the failure back to the agent and ship nothing. If it is green, run "Gate, PR,
+    merge" at once. The hand-off note is still written. Any other quest asks. Every branch,
+    `m*-*` or `side-*`/`quest-*`,
     gets the same four options:
 
     | Option | What you run |

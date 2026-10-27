@@ -20,6 +20,7 @@ validates every store; it stays in the CLI for deliberate data work, but no gate
 from __future__ import annotations
 
 import argparse
+import json
 import re
 import subprocess
 import sys
@@ -265,12 +266,23 @@ def issue_files(root: Path) -> list[Path]:
     )
 
 
+def _load_loadouts(root: Path) -> dict[str, list[str]]:
+    """`docs/factory/loadouts.json`: the one list of models and efforts a quest may name
+    (issue 189). The console server reads the same file in its tests. A tree without its own copy
+    (a test fixture) falls back to this checkout's file."""
+    path = root / "docs" / "factory" / "loadouts.json"
+    if not path.is_file():
+        path = Path(__file__).resolve().parents[2] / "docs" / "factory" / "loadouts.json"
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
 def check_issue_loadouts(root: Path) -> list[str]:
     """Issue 103. Every quest file names its loadout, the `agent`, `model` and `effort` it is
     embarked with (SPEC.md §6; playbook "Resource rules"). The console shows the three on the
     card, and a quest without them cannot be routed. A file with no frontmatter block at all is
     not a quest and is left alone."""
     errors: list[str] = []
+    allowed = _load_loadouts(root)
     for path in issue_files(root):
         match = _FRONTMATTER_RE.match(path.read_text(encoding="utf-8"))
         if not match:
@@ -283,6 +295,14 @@ def check_issue_loadouts(root: Path) -> list[str]:
         missing = [f for f in LOADOUT_FIELDS if not present.get(f) or present[f] == "null"]
         if missing:
             errors.append(f"{_rel(root, path)}: no loadout: {', '.join(missing)} missing")
+        # Issue 189: a value outside loadouts.json is as unroutable as a missing one.
+        for field, key in (("model", "models"), ("effort", "efforts")):
+            value = present.get(field)
+            if value and value != "null" and value not in allowed[key]:
+                errors.append(
+                    f"{_rel(root, path)}: {field}: {value} is not one of "
+                    f"{', '.join(allowed[key])} (docs/factory/loadouts.json)"
+                )
     return errors
 
 

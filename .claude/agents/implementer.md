@@ -27,8 +27,10 @@ color: green
 ## Commands you may run
 
 ```
-cmake --preset msvc-debug && cmake --build --preset msvc-debug
-ctest --preset msvc-debug -L fast --output-on-failure
+# <preset> is linux-gcc on Linux and Darwin, msvc-debug otherwise (uname -s), as in
+# tools/factory/hooks/gate_fast.sh
+cmake --preset <preset> && cmake --build --preset <preset>
+ctest --preset <preset> -L fast --output-on-failure
 python -m pytest tools/<tool>/tests -q
 python -m tools.validate --changed
 ```

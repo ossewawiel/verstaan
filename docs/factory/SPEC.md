@@ -176,6 +176,7 @@ status: open            # open | in-progress | done
 depends_on: [6]         # every number must be an existing issue; may cross main and side (issue 104)
 agent: implementer
 agents: [implementer, docs-writer]
+# model and effort take values from docs/factory/loadouts.json; the validator refuses others
 model: sonnet
 effort: medium
 checkpoint: null        # 1..4 or null

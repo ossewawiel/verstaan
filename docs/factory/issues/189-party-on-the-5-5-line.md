@@ -2,7 +2,7 @@
 issue: 189
 title: "The party, the validator and the console speak the 5.5 model line"
 milestone: Side
-status: open
+status: in-progress
 depends_on: [103, 178]
 agent: implementer
 agents: [implementer]
@@ -10,7 +10,7 @@ model: sonnet
 effort: medium
 checkpoint: 4
 commit: null
-worktree: null
+worktree: .worktrees/side-189-party-on-the-5-5-line
 github_issue: 292
 ---
 ## What

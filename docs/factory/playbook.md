@@ -110,6 +110,13 @@ three-pass sequence (rule-author at opus high, then two sonnet passes) is for en
 rule design only. Tooling takes one implementer pass. The verifier is opus and read-only, and
 runs once per merge. Do not raise a level to get past a failure; report the failure instead.
 
+The quest's loadout sets its first pass, the one named in `agent:`. Every later pass takes its own
+agent file's loadout. `docs/factory/loadouts.json` lists the valid values: three models, haiku
+included, and five efforts, `xhigh` and `max` included. The validator refuses a value outside it,
+and so does the console. The read-only `scout` runs at Haiku before every rule-author pass and
+saves its digest to `.scout/NN.md`. A tooling quest with no checkpoint, one implementer and a
+green `/gate` ships without the shipping question: the D4 lane.
+
 ## The quest giver
 
 New work does not appear from nowhere. `/quest` is the quest giver's tool: it plans one quest
