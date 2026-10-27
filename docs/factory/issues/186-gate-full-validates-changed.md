@@ -2,7 +2,7 @@
 issue: 186
 title: "gate_full.sh validates the stores the branch changed, not every store"
 milestone: Side
-status: open
+status: in-progress
 depends_on: [168, 189]
 agent: implementer
 agents: [implementer]
@@ -10,7 +10,7 @@ model: haiku
 effort: low
 checkpoint: null
 commit: null
-worktree: null
+worktree: .worktrees/side-186-gate-full-validates-changed
 github_issue: 287
 ---
 ## What
@@ -41,5 +41,5 @@ from the same brief, which the M3 close-out (issue 188) decides.
 
 ## Done when
 
-- [ ] `gate_full.sh` validates changed stores only.
-- [ ] A test pins the command.
+- [x] `gate_full.sh` validates changed stores only.
+- [x] A test pins the command.

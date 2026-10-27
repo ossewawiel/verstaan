@@ -34,3 +34,9 @@ def test_missing_presets_fails_before_any_cmake_call(tmp_path: Path) -> None:
     common_dir = git(repo, "rev-parse", "--path-format=absolute", "--git-common-dir").strip()
     stamp_dir = Path(common_dir) / "verstaan-gate-stamps"
     assert not stamp_dir.exists()
+
+
+def test_gate_full_validates_changed_stores_not_all() -> None:
+    text = (HOOKS_DIR / "gate_full.sh").read_text(encoding="utf-8")
+    assert "tools.validate --all" not in text
+    assert "tools.validate --changed --base origin/main" in text

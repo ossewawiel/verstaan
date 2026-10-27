@@ -77,7 +77,7 @@ fi
   npm test || exit 1
   npm audit --omit=dev --audit-level=high || exit 1
 ) || fail "step 3: apps/console failed"
-"$PYTHON" -m tools.validate --all || fail "step 3: tools.validate --all failed"
+"$PYTHON" -m tools.validate --changed --base origin/main || fail "step 3: tools.validate --changed failed"
 
 echo "gate: step 4, tidy"
 # clang-tidy is a hard requirement on every platform this runs on, not silently skippable: an
