@@ -4,5 +4,5 @@ Last completed:  #193 — Engine initializer lists carry the trailing comma LLVM
                  requires (Side), commit 0b05e89
 Next up:         #180 — Extract UNL relations from the flat analysed node list (M3)
 Branch / PR:     main, https://github.com/ossewawiel/verstaan.git, 0 files dirty, no gate stamp for
-                 16f466a
+                 54f82a4
 Resume with:     /factory-run 180
