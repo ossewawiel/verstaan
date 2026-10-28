@@ -2,7 +2,7 @@
 issue: 199
 title: "The analysis graph for A06, A07, A10 and A12 matches the corpus graph"
 milestone: M3
-status: open
+status: in-progress
 depends_on: [181]
 agent: rule-author
 agents: [rule-author, test-writer, implementer]
@@ -10,7 +10,7 @@ model: opus
 effort: high
 checkpoint: null
 commit: null
-worktree: null
+worktree: .worktrees/m3-199-analysis-graph-gaps
 github_issue: 315
 ---
 ## What
@@ -55,9 +55,9 @@ decides. Generation itself: issue 181.
 
 ## Done when
 
-- [ ] A06, A07, A10 and A12 each carry the corpus graph in `Result::unl`.
-- [ ] A06, A07 and A12 match their `expected` text exactly.
-- [ ] A10's text ends with ` dae voor die somer`.
-- [ ] `book Geneva` builds the `mod` relation with the noun as head.
-- [ ] Each attribute and relation's rule id appears in `Result::trace`.
-- [ ] `ctest -L fast` and `python -m tools.validate --changed` are green.
+- [x] A06, A07, A10 and A12 each carry the corpus graph in `Result::unl`.
+- [x] A06, A07 and A12 match their `expected` text exactly.
+- [x] A10's text ends with ` dae voor die somer`.
+- [x] `book Geneva` builds the `mod` relation with the noun as head.
+- [x] Each attribute and relation's rule id appears in `Result::trace`.
+- [x] `ctest -L fast` and `python -m tools.validate --changed` are green.
