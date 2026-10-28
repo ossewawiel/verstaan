@@ -2,15 +2,15 @@
 issue: 185
 title: "The fixture file records each row's review, and the owner confirms the fixed set"
 milestone: M3
-status: in-progress
+status: done
 depends_on: [24]
 agent: implementer
 agents: [implementer]
 model: sonnet
 effort: medium
 checkpoint: null
-commit: null
-worktree: .worktrees/m3-185-fixture-review-status
+commit: 43fe9f2
+worktree: null
 github_issue: 286
 ---
 ## What
@@ -45,6 +45,6 @@ golden loader, issue 26. The store's own `tests/` directory, issue 187.
 
 ## Done when
 
-- [ ] Every fixture row carries `review`, and the validator refuses a missing or unknown value.
-- [ ] A test fails when the table and the YAML disagree.
-- [ ] The owner has confirmed or rejected each of the fifteen rows in this branch.
+- [x] Every fixture row carries `review`, and the validator refuses a missing or unknown value.
+- [x] A test fails when the table and the YAML disagree.
+- [x] The owner has confirmed or rejected each of the fifteen rows in this branch.
