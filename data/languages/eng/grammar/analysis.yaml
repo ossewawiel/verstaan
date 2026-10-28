@@ -1,11 +1,11 @@
 # Licence: CC BY-SA 4.0. Source: UNL Archive, see data/archive/manifest.jsonl
 - id: "1"
   kind: analysis
-  lhs: "(N,PLR,^@pl,^@multal,^@paucal,^@all)"
+  lhs: "(N,PLR,^@pl,^@multal,^@paucal,^@all,^@both)"
   rhs: (+att=@pl)
   conditions: []
-  comment: books > book.@pl
-  source: {archive_path: grammars/eng_unl_tgrammar.txt, line: 17}
+  comment: "books > book.@pl; a plural that already carries @both keeps @both alone"
+  source: {archive_path: original, line: "issue 180; adapted from grammars/eng_unl_tgrammar.txt line 17, adds ^@both to match rule 177's set"}
 - id: "2"
   kind: analysis
   lhs: "(AUX,%x)(GER,%y)"

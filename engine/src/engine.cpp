@@ -33,18 +33,6 @@ bool is_punctuation_token(std::string_view surface) {
   return kPunctuationBytes.find(surface.front()) != std::string_view::npos;
 }
 
-// The UW attached to a resolved candidate, carried through `features` under the reserved key
-// `kUwFeatureKey` (verstaan/rule_interpreter.hpp; Candidate has no dedicated UW field) rather
-// than a new public struct member.
-std::string find_uw(const std::vector<Feature>& features) {
-  for (const Feature& feature : features) {
-    if (feature.first == kUwFeatureKey) {
-      return feature.second;
-    }
-  }
-  return {};
-}
-
 // SPEC.md §3.4's fall-through mark: "⟦word⟧".
 std::string mark_untranslated(std::string_view surface) {
   std::string marked = "⟦";
@@ -148,14 +136,12 @@ std::vector<Position> build_positions(const std::vector<Token>& tokens,
 }  // namespace
 
 // Runtime-tables back end (issue 22's RuleInterpreter). Tokenises (issue 19), looks every token up
-// against the `from` dictionary (issue 20, `rules_.from_store_root()`), disambiguates and analyses
-// (issue 22) and reports a real Status. `data/languages/afr/grammar/generation.yaml` is a UNL
-// relational tree grammar -- a different shape from the LL-rule sequences RuleInterpreter::analyse
-// applies to a flat node list -- and RuleInterpreter carries no method that applies it
-// (docs/factory/issues/25-english-to-unl-to-afrikaans-pipeline.md is where that back end lands).
-// Until then, `text` echoes each resolved token's own surface form and marks every unresolved one
-// with SPEC.md §3.4's `⟦word⟧`, so Status::partial's contract holds without this issue claiming a
-// generation step it does not implement.
+// against the `from` dictionary (issue 20, `rules_.from_store_root()`), disambiguates, runs the
+// tree pass (issue 180, ADR 0017: make_forest, analyse_tree, read_graph) and reports a real Status.
+// `data/languages/afr/grammar/generation.yaml` is a UNL relational tree grammar and no method
+// applies it yet (docs/factory/issues/181 owns generation). Until then, `text` echoes each resolved
+// token's own surface form and marks every unresolved one with SPEC.md §3.4's `⟦word⟧`, so
+// Status::partial's contract holds without claiming a generation step it does not implement.
 Result Engine::translate(std::string_view text, Options options) const {
   Result result;
 
@@ -199,7 +185,11 @@ Result Engine::translate(std::string_view text, Options options) const {
   for (Position& position : positions) {
     nodes.push_back(std::move(position.candidates.front()));
   }
-  const std::vector<Candidate> analysed = interpreter.analyse(std::move(nodes), result.trace);
+  TreeResult tree = interpreter.analyse_tree(make_forest(std::move(nodes)), result.trace);
+  // Unreachable today: make_forest builds a readable forest. Guards a later change to the tree
+  // pass.
+  const bool no_parse =
+      tree.status == Status::no_parse || read_graph(tree.forest, result.unl) == Status::no_parse;
 
   bool any_unresolved = false;
   std::string rendered;
@@ -216,10 +206,11 @@ Result Engine::translate(std::string_view text, Options options) const {
   }
 
   result.text = std::move(rendered);
-  result.status = any_unresolved ? Status::partial : Status::ok;
-  result.unl.nodes.reserve(analysed.size());
-  for (const Candidate& node : analysed) {
-    result.unl.nodes.push_back(Node{.uw = find_uw(node.features), .attributes = node.attributes});
+  if (no_parse) {
+    result.status = Status::no_parse;
+    result.unl = Graph{};
+  } else {
+    result.status = any_unresolved ? Status::partial : Status::ok;
   }
   return result;
 }

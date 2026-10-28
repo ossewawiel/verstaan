@@ -31,6 +31,8 @@ Applies to `data/` and to anything that writes it.
 - A rule's `comment` says what it does in one line, in the writing voice. Not what it is.
 - Never delete an archive-derived record to fix a bug. Mark it `deprecated: <reason>` and add the
   corrected one. The archive line stays traceable.
+  - Exception: a grammar rule has no `deprecated` field. Edit it in place and set
+    `archive_path: original`. See ADR 0020.
 
 ## Credentials and privacy
 

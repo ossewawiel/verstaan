@@ -5,7 +5,16 @@
 
 namespace verstaan::cli {
 
-// Issue 180 stub: rows G40 to G43 of docs/factory/issues/180-test-cases.md fail on it.
-std::string trace_line(const TraceEntry& /*entry*/) { return {}; }
+std::string trace_line(const TraceEntry& entry) {
+  switch (entry.event) {
+    case TraceEvent::fired:
+      return entry.rule;
+    case TraceEvent::capped:
+      return entry.rule + " capped";
+    case TraceEvent::unsupported:
+      return entry.rule + " unsupported";
+  }
+  return entry.rule;
+}
 
 }  // namespace verstaan::cli

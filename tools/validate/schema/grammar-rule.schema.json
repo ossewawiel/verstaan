@@ -67,7 +67,7 @@
         "archive_path": {
           "type": "string",
           "minLength": 1,
-          "description": "Path under data/archive/ the record was read from."
+          "description": "Path under data/archive/ the record was read from, or `original` for a record the project wrote or changed (ADR 0020)."
         },
         "line": {
           "type": [

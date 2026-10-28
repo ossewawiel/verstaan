@@ -1200,7 +1200,34 @@ TreeResult RuleInterpreter::analyse_tree(Forest forest, Trace& trace) const {
   return TreeResult{.forest = std::move(forest), .status = Status::ok};
 }
 
-// Issue 180 stub: rows G20 to G30 of docs/factory/issues/180-test-cases.md fail on it.
-Status read_graph(const Forest& /*forest*/, Graph& /*graph*/) { return Status::not_implemented; }
+Status read_graph(const Forest& forest, Graph& graph) {
+  graph = Graph{};
+  if (!readable(forest)) {
+    return Status::no_parse;
+  }
+  constexpr auto kNone = static_cast<std::size_t>(-1);
+  std::vector<std::size_t> index(forest.nodes.size(), kNone);
+  for (std::size_t i = 0; i < forest.nodes.size(); ++i) {
+    const TreeNode& node = forest.nodes[i];
+    if (node.deleted) {
+      continue;
+    }
+    const std::optional<std::string> uw = first_value(node, kUwFeatureKey);
+    if (!uw || uw->empty()) {
+      continue;
+    }
+    index[i] = graph.nodes.size();
+    graph.nodes.push_back(Node{.uw = *uw, .attributes = node.attributes});
+  }
+  for (const Link& link : forest.links) {
+    if (link.label.empty() || link.label.front() < 'a' || link.label.front() > 'z' ||
+        index[link.from] == kNone || index[link.to] == kNone) {
+      continue;
+    }
+    graph.relations.push_back(
+        Relation{.label = link.label, .from = index[link.from], .to = index[link.to]});
+  }
+  return Status::ok;
+}
 
 }  // namespace verstaan

@@ -142,7 +142,8 @@ class RuleInterpreter {
   //
   // The flat pass. It cannot build a tree, and it reads a link term such as `NA(%x;%y)` as a
   // one-node pattern, so it appends trace entries for rules 80 to 176 that change nothing. The
-  // analysis pipeline moves to `analyse_tree` in issue 180 (ADR 0017).
+  // analysis pipeline runs `analyse_tree` since issue 180 (ADR 0017); this flat pass stays for its
+  // own tests.
   [[nodiscard]] std::vector<Candidate> analyse(std::vector<Candidate> nodes, Trace& trace) const;
 
   // The tree pass (ADR 0017). Runs every rule of grammar/analysis.yaml over `forest` in the

@@ -11,7 +11,7 @@ this file records where Verstaan is stricter.
   line naming the missing compiler. An ARM preset is M4 scope (issue 02).
 - `-Wall -Wextra -Werror -Wpedantic` (MSVC: `/W4 /WX /permissive-`).
 - vcpkg manifest mode. The engine target depends on no port. Tests depend on `gtest`.
-- One library target per component: `verstaan_core`, `verstaan_data_<tier>`, `verstaan_cli`.
+- One library target per component: `verstaan_core`, `verstaan_data_<tier>`, `verstaan_cli`, `verstaan_cli_trace` (the CLI's trace-line formatter, linked by `verstaan_cli` and the tests).
 
 ## Code
 
