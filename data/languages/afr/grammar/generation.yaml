@@ -146,6 +146,13 @@
   conditions: []
   comment: "plc(book,table.@under) > XA(boek,PC(onder,tafel))"
   source: {archive_path: exports/afr/47.tgrammar.txt, line: 27}
+- id: "234"
+  kind: generation
+  lhs: "plc(%x,N;%y,N)"
+  rhs: "NA(%x;PC([in],LEX=P,POS=PRE;%y,-CAS,+CAS=OBL))"
+  conditions: []
+  comment: "A place phrase on a noun follows the noun: plc(boek,boks) > NA(boek,PC(in,boks)), 'n boek in 'n boks"
+  source: {archive_path: original, line: "issue 181; adapted from exports/afr/47.tgrammar.txt line 28 (rule 22) without its +BEF, in the NA shape of line 10 (rule 4)"}
 - id: "22"
   kind: generation
   lhs: "plc(%x;%y,N)"

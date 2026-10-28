@@ -10,11 +10,14 @@
 // against it. A token with more than one matching entry (a homograph) carries every entry
 // forward; picking one sense is issue 22's job (the rule interpreter reads
 // `grammar/disambiguation.yaml`), not this file's. A token with zero matching entries carries no
-// entry and is not an error -- issue 25's pipeline reports `Status::partial` for it later.
+// entry and is not an error -- `Engine::translate` marks it with
+// `⟦word⟧` and reports `Status::partial` (issues 23 and 181).
 
+#include <cstddef>
 #include <cstdint>
 #include <string>
 #include <string_view>
+#include <unordered_map>
 #include <utility>
 #include <vector>
 
@@ -43,7 +46,8 @@ struct DictionaryEntry {
 // only, not a case fold of the whole word: a capitalised token such as "John" never matches the
 // lower-case common-noun entry "john" that sits in the same shard (docs/factory/issues/
 // 24-test-cases.md, row A13). An empty `entries` marks the token unresolved: not an error, just
-// nothing to carry forward (issue 20's "Not in scope"; issue 25 turns this into `Status::partial`).
+// nothing to carry forward (issue 20's "Not in scope"; `Engine::translate` turns this into
+// `Status::partial`, issues 23 and 181).
 struct LookupEntry {
   std::string_view surface;
   std::vector<DictionaryEntry> entries;
@@ -77,8 +81,9 @@ class Dictionary {
   static Dictionary load(std::string_view store_root, Lang lang);
 
   // Every entry whose headword exactly matches `surface`, from the shard keyed by `surface`'s
-  // lower-cased first byte. Empty when `surface` starts with a byte no shard is keyed on (for
-  // example punctuation, or a lone apostrophe) or when nothing in that shard matches.
+  // first ASCII letter, lower-cased (`tools/importer`'s `shard_letter`, so `'n` is in `n.yaml`).
+  // Empty when `surface` holds no ASCII letter (for example punctuation) or when nothing in that
+  // shard matches.
   [[nodiscard]] std::vector<DictionaryEntry> lookup(std::string_view surface) const;
 
   // One `LookupEntry` per token, in the same order, each `LookupEntry::surface` the matching
@@ -87,9 +92,8 @@ class Dictionary {
 
   // Issue 181, ADR 0023: every entry whose `uw` equals `uw` exactly, across every shard, in store
   // order -- shard `a` to `z`, file order within a shard. Generation's lexical choice reads this
-  // (docs/factory/issues/181-test-cases.md, rows N46 and N47). Empty for an empty `uw`: a
+  // (docs/factory/issues/181-test-cases.md, rows N48 to N50). Empty for an empty `uw`: a
   // closed-class record is found by headword, never by UW.
-  // Stub: returns no entry until issue 181's implementer fills the body.
   [[nodiscard]] std::vector<DictionaryEntry> lookup_uw(std::string_view uw) const;
 
   // Every `features` pair a looked-up entry carried that used an attribute or a value
@@ -99,6 +103,15 @@ class Dictionary {
 
  private:
   Dictionary(std::string store_root, Lang lang, std::vector<std::string> tagset_keys);
+
+  // One entry's place in the store: shard 0-25 and the byte offset of its `- headword:` line.
+  struct UwLocation {
+    int shard = 0;
+    std::size_t offset = 0;
+  };
+
+  // The shard's text, read the first time it is asked for and cached.
+  [[nodiscard]] const std::string& shard_text(int index) const;
 
   std::string store_root_;
   Lang lang_;
@@ -116,6 +129,9 @@ class Dictionary {
   mutable std::vector<std::int64_t> warned_ids_;  // entry ids already counted in warnings_, so a
                                                   // word looked up twice does not warn twice.
   mutable std::vector<TagsetWarning> warnings_;
+
+  mutable std::unordered_map<std::string, std::vector<UwLocation>> uw_index_;  // built by the
+  mutable bool uw_indexed_ = false;  // first lookup_uw(); every entry with a non-empty uw.
 };
 
 }  // namespace verstaan

@@ -44,7 +44,7 @@ class RuleSet {
 
   // `from_store_root` and `to_store_root` are `data/languages/<iso3>` (no trailing slash), e.g.
   // "data/languages/eng" and "data/languages/afr" for the eng-to-afr pipeline SPEC.md §3.4 and
-  // issue 25 target.
+  // issue 183 closes.
   static RuleSet load(std::string_view from_store_root, std::string_view to_store_root);
 
   // Programmatic construction, skipping the store-reading `load()` path: a domain test builds a
@@ -66,7 +66,6 @@ class RuleSet {
   }
   // Issue 181, ADR 0021: the same six lists plus `to_store_root`'s `grammar/disambiguation.yaml`,
   // the generation-side disambiguation grammar (afr-dis-5 and its twelve siblings).
-  // Stub: drops `to_disambiguation` until issue 181's implementer fills the body.
   static RuleSet from_rules(std::vector<GrammarRule> disambiguation,
                             std::vector<GrammarRule> analysis,
                             std::vector<GrammarRule> from_inflection,
@@ -79,7 +78,6 @@ class RuleSet {
   [[nodiscard]] const std::vector<GrammarRule>& to_inflection() const { return to_inflection_; }
   // `to_store_root`'s `grammar/disambiguation.yaml` (issue 181, ADR 0021). `disambiguation()`
   // stays the `from_store_root` file. Empty for a RuleSet built by the six-list `from_rules`.
-  // Stub: always empty until issue 181's implementer makes `load()` read the file.
   [[nodiscard]] const std::vector<GrammarRule>& to_disambiguation() const {
     return to_disambiguation_;
   }

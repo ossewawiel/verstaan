@@ -3,7 +3,7 @@ issue: 182
 title: "Fix three afr/grammar/generation.yaml divergences from the fixed sentence set"
 milestone: M3
 status: open
-depends_on: [181]
+depends_on: [181, 199]
 agent: rule-author
 agents: [rule-author, test-writer]
 model: opus
@@ -23,6 +23,9 @@ match the corpus's Afrikaans text, and one relation with no generation rule at a
 - `afr-gen-22` (`plc(%x;%y,N)`) writes `in`; A15's corpus line needs `op`, because the graph
   carries `@top.@contact` and no generation rule keys on that attribute pair.
 - No generation rule handles the `nam` relation at all, needed by A15.
+
+Issue 199 builds A10's corpus graph (`tim`, `@paucal`), so this quest waits on it as well as on
+issue 181 (owner decision, 2026-10-28).
 
 After this quest, `generation.yaml`'s output matches the corpus for A09, A10 and A15, and a
 `nam` relation produces the name it attaches, unquoted, in its Afrikaans position.

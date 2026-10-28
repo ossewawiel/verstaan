@@ -119,7 +119,7 @@ inline constexpr std::string_view kUwFeatureKey = "$uw";
 struct GenerationResult {
   Forest forest;
   std::string text;
-  Status status = Status::not_implemented;
+  Status status = Status::ok;
 };
 
 // Applies one RuleSet's disambiguation and analysis rules, and one paradigm at a time from either
@@ -194,7 +194,6 @@ class RuleInterpreter {
   // text ADR 0025's fall-through mark holds; a missing entry marks the node with its UW.
   // Every trace entry it appends carries ADR 0024's qualified id, `<iso3>-gen-<id>`,
   // `<iso3>-dis-<id>` or `<iso3>-inf-<id>`, with `<iso3>` from `target_language`.
-  // Stub: returns a GenerationResult with Status::not_implemented and appends nothing.
   [[nodiscard]] GenerationResult generate(const Graph& graph, const Dictionary& target,
                                           const std::vector<std::string>& source_surfaces,
                                           Lang target_language, Trace& trace) const;
@@ -203,7 +202,6 @@ class RuleInterpreter {
   // for the generated word list (issue 181, ADR 0021). Appends one `<iso3>-dis-<id>` entry per
   // rule that deleted at least one candidate (ADR 0024). An empty `to_disambiguation()` leaves
   // every position as it stands.
-  // Stub: changes nothing and appends nothing.
   void disambiguate_target(std::vector<Position>& positions, Lang target_language,
                            Trace& trace) const;
 
