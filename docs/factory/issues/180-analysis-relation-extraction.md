@@ -2,15 +2,15 @@
 issue: 180
 title: "Write the mod relation into the UNL graph for A08 and A11"
 milestone: M3
-status: in-progress
+status: done
 depends_on: [22, 184, 194, 195, 196]
 agent: rule-author
 agents: [rule-author, test-writer, implementer]
 model: opus
 effort: high
 checkpoint: 4
-commit: null
-worktree: .worktrees/m3-180-mod-relation
+commit: e71100b
+worktree: null
 github_issue: 280
 ---
 ## What
@@ -47,11 +47,11 @@ Closing issue 25: issue 183.
 
 ## Done when
 
-- [ ] `Result::unl.relations` holds the `mod` edge for A08 and A11.
-- [ ] The building rule's id appears in `Result::trace` for each edge.
-- [ ] The closed-class negative test passes.
-- [ ] A02 returns no relation.
-- [ ] `ctest -L fast` and `python -m tools.validate --changed` are green.
+- [x] `Result::unl.relations` holds the `mod` edge for A08 and A11.
+- [x] The building rule's id appears in `Result::trace` for each edge.
+- [x] The closed-class negative test passes.
+- [x] A02 returns no relation.
+- [x] `ctest -L fast` and `python -m tools.validate --changed` are green.
 
 ## Notes for the rule-author
 
