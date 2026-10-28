@@ -2,15 +2,15 @@
 issue: 181
 title: "Tree-based generation interpreter for Afrikaans, wired into Engine::translate"
 milestone: M3
-status: in-progress
+status: done
 depends_on: [22, 180, 184, 198]
 agent: rule-author
 agents: [rule-author, test-writer, implementer]
 model: opus
 effort: high
 checkpoint: 4
-commit: null
-worktree: .worktrees/m3-181-afrikaans-generation-interpreter
+commit: fc46e45
+worktree: null
 github_issue: 281
 ---
 ## What
@@ -66,13 +66,13 @@ A12 — issue 199.
 
 ## Done when
 
-- [ ] `Engine::translate` looks up the Afrikaans dictionary and applies `generation.yaml`'s
+- [x] `Engine::translate` looks up the Afrikaans dictionary and applies `generation.yaml`'s
       `NN`/`NT`/`TT`/`TL` passes.
-- [ ] `afr-dis-5` fires on the hand-built generated lists and not on A02, A03 or A07.
-- [ ] Inflection paradigms M2, M3, M7, M16 apply on the rows `181-test-cases.md` names.
-- [ ] Every row named in "Acceptance criteria" above matches its `expected` field exactly.
-- [ ] `die`, `'n` and `en` come from the Afrikaans closed-class records issue 184 imports, not
+- [x] `afr-dis-5` fires on the hand-built generated lists and not on A02, A03 or A07.
+- [x] Inflection paradigms M2, M3, M7, M16 apply on the rows `181-test-cases.md` names.
+- [x] Every row named in "Acceptance criteria" above matches its `expected` field exactly.
+- [x] `die`, `'n` and `en` come from the Afrikaans closed-class records issue 184 imports, not
       from string literals in engine code.
-- [ ] No comment in `engine/` names issue 25 as the place future work lands
+- [x] No comment in `engine/` names issue 25 as the place future work lands
       (`engine/src/engine.cpp`, `engine/include/verstaan/dictionary.hpp`,
       `engine/include/verstaan/rule_set.hpp`). Each names the issue that owns the work now.
