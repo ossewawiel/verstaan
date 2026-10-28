@@ -2,15 +2,15 @@
 issue: 199
 title: "The analysis graph for A06, A07, A10 and A12 matches the corpus graph"
 milestone: M3
-status: in-progress
+status: done
 depends_on: [181]
 agent: rule-author
 agents: [rule-author, test-writer, implementer]
 model: opus
 effort: high
 checkpoint: null
-commit: null
-worktree: .worktrees/m3-199-analysis-graph-gaps
+commit: 8713df6
+worktree: null
 github_issue: 315
 ---
 ## What
