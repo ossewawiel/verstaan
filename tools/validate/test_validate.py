@@ -22,6 +22,7 @@ from tools.validate.cli import run
 from tools.validate.store import (
     check_feature_values,
     check_rule_coverage,
+    check_rule_references,
     check_schema,
     check_uw_references,
     validate_store,
@@ -286,14 +287,77 @@ def test_check_rule_coverage_treats_a_missing_tests_directory_as_fully_uncovered
     assert len(warnings) == 2
 
 
-def test_check_rule_coverage_never_fails_the_exit_code_at_m2(tmp_path):
-    # SPEC.md §3.3: a warning at M2, an error only from M3. validate_store must keep it out of
-    # .errors even when every rule is uncovered.
+def test_check_rule_coverage_never_fails_the_exit_code_at_m3(tmp_path):
+    # SPEC.md §3.3 (issue 187, owner ruling 2026-09-28): an uncovered rule stays a warning at M3.
+    # validate_store must keep it out of .errors even when every rule is uncovered.
     store = _build_store(tmp_path / "store")
     _write_yaml(store / "grammar" / "analysis.yaml", [VALID_RULE])
     report = validate_store(store)
     assert report.coverage_warnings
     assert report.errors == []
+
+
+# --- 5. Rule references (issue 187) -----------------------------------------------------------
+
+
+def _test_row(rules):
+    return {
+        "input": "x",
+        "expected": "y",
+        "direction": "a->b",
+        "tier": "basic",
+        "register": "neutral",
+        "rules": rules,
+    }
+
+
+def _two_stores(root):
+    """An `eng` store with bare archive-style ids and an `afr` one, side by side."""
+    eng = _build_store(root / "eng")
+    afr = _build_store(root / "afr")
+    _write_yaml(eng / "grammar" / "analysis.yaml", [dict(VALID_RULE, id="12")])
+    _write_yaml(afr / "grammar" / "generation.yaml", [dict(VALID_RULE, id="4", kind="generation")])
+    return eng, afr
+
+
+def test_rule_reference_resolves_qualified_ids_in_own_and_sibling_store(tmp_path):
+    eng, afr = _two_stores(tmp_path)
+    _write_yaml(eng / "tests" / "basic.yaml", [_test_row(["eng-ana-12", "afr-gen-4"])])
+    assert check_rule_references(eng) == []
+    assert validate_store(eng).errors == []
+    # and the same entries cover the rules they name, in both stores
+    assert check_rule_coverage(eng) == []
+    assert check_rule_coverage(afr) == []
+
+
+def test_rule_reference_to_a_missing_rule_is_an_error_and_fails_the_exit_code(tmp_path):
+    eng, _afr = _two_stores(tmp_path)
+    _write_yaml(eng / "tests" / "basic.yaml", [_test_row(["eng-ana-12", "eng-ana-9999"])])
+    errors = check_rule_references(eng)
+    assert len(errors) == 1
+    assert "eng-ana-9999" in errors[0]
+    assert validate_store(eng).errors == errors
+
+
+def test_rule_reference_names_a_missing_rule_in_the_sibling_store(tmp_path):
+    eng, _afr = _two_stores(tmp_path)
+    _write_yaml(eng / "tests" / "basic.yaml", [_test_row(["afr-gen-5"])])
+    assert len(check_rule_references(eng)) == 1
+
+
+def test_rule_reference_rejects_a_bare_id_and_an_unknown_store_prefix(tmp_path):
+    eng, _afr = _two_stores(tmp_path)
+    _write_yaml(eng / "tests" / "basic.yaml", [_test_row(["12", "zzz-ana-12"])])
+    assert len(check_rule_references(eng)) == 2
+
+
+def test_uncovered_rule_warns_but_does_not_error_when_references_are_valid(tmp_path):
+    eng, _afr = _two_stores(tmp_path)
+    _write_yaml(eng / "tests" / "basic.yaml", [_test_row(["eng-ana-12"])])
+    report = validate_store(eng)
+    assert report.errors == []
+    assert report.coverage_warnings == []
+    assert len(validate_store(tmp_path / "afr").coverage_warnings) == 1
 
 
 # --- validate_store / CLI wiring --------------------------------------------------------------
@@ -353,3 +417,32 @@ def test_run_all_mode_exits_zero_with_uncovered_rules_only(tmp_path, capsys):
     out = capsys.readouterr()
     assert exit_code == 0
     assert "uncovered rules: 1" in out.out
+
+
+def test_cli_lang_run_exits_nonzero_on_a_missing_rule_id_and_zero_on_a_warning(tmp_path, capsys):
+    languages = tmp_path / "data" / "languages"
+    eng, _afr = _two_stores(languages)
+    _write_yaml(eng / "tests" / "basic.yaml", [_test_row(["eng-ana-12"])])
+    assert run("lang", tmp_path, lang="afr") == 0  # afr-gen-4 uncovered: a warning only
+    assert "uncovered rules: 1" in capsys.readouterr().out
+    _write_yaml(eng / "tests" / "basic.yaml", [_test_row(["eng-ana-12", "eng-ana-9999"])])
+    assert run("lang", tmp_path, lang="eng") == 1
+    assert "eng-ana-9999" in capsys.readouterr().err
+
+
+def test_check_schema_rejects_a_meta_file_missing_a_key_or_with_the_wrong_iso3(tmp_path):
+    store = _build_store(tmp_path / "eng")
+    meta = {
+        "iso1": "en",
+        "iso3": "eng",
+        "name": "English",
+        "licence": "CC BY-SA 4.0",
+        "counts": {},
+        "last_import": "2026-10-28",
+    }
+    _write_yaml(store / "meta.yaml", meta)
+    assert check_schema(store) == []
+    _write_yaml(store / "meta.yaml", {k: v for k, v in meta.items() if k != "counts"})
+    assert any("missing counts" in e for e in check_schema(store))
+    _write_yaml(store / "meta.yaml", dict(meta, iso3="afr"))
+    assert any("iso3" in e for e in check_schema(store))

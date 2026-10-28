@@ -60,6 +60,7 @@ from dataclasses import dataclass
 from pathlib import Path
 
 from tools.importer.dictionary import _format_flow_mapping, _yaml_scalar
+from tools.importer.meta import refresh_meta
 
 LICENCE_HEADER = "# Licence: CC BY-SA 4.0. Source: UNL Archive, see data/archive/manifest.jsonl\n"
 
@@ -296,6 +297,7 @@ def import_language(iso3: str, archive_root: Path, store_root: Path) -> ImportSt
         stats.input_units += len(records) + len(unparsed)
     write_unparsed(store_root / iso3 / "_unparsed.txt", all_unparsed)
     stats.unparsed_lines = len(all_unparsed)
+    refresh_meta(iso3, archive_root, store_root)
     return stats
 
 

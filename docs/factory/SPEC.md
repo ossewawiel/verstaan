@@ -81,7 +81,12 @@ meta.yaml                  iso1, iso3, name, licence, counts, last_import
 ```
 
 `tools/validate` checks: schema, feature values against `tagset.yaml`, UW references resolve,
-every rule has at least one test sentence that exercises it (warning at M2, error from M3).
+test rows name real rules, and rule coverage. A `rules` entry on a test row is a qualified id,
+`<iso3>-<kind>-<id>` (`eng-ana-12`, `afr-gen-4`). An entry that names no rule in the store its
+prefix points at is an error. A rule that no test row names is a warning, at M3 and after (owner
+ruling 2026-09-28; writing those test sentences is the M6 rule-author workflow). Each store's
+`meta.yaml` `counts` come from `python -m tools.importer.meta`, which every importer also calls at
+the end of a run.
 
 ### 3.4 Engine (`engine/`)
 

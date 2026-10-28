@@ -28,6 +28,8 @@ from pathlib import Path
 
 import yaml
 
+from tools.importer.meta import refresh_meta
+
 LICENCE_HEADER = "# Licence: CC BY-SA 4.0. Source: UNL Archive, see data/archive/manifest.jsonl\n"
 
 # docs/unl-reference/formats/dictionary.md, "Where the exports disagree with the wiki": the
@@ -581,6 +583,7 @@ def import_language(
 
     write_unparsed(lang_dir / "_unparsed.txt", unparsed)
     stats.unparsed_lines = len(unparsed)
+    refresh_meta(iso3, archive_root, store_root)
     return stats
 
 

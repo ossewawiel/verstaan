@@ -1,11 +1,11 @@
 # SPDX-License-Identifier: MPL-2.0
 """Store checks: schema, feature values, UW references, rule coverage (issue 17, SPEC.md §3.3).
 
-Four independent functions, one per check, so a failing one names itself in the report:
-`check_schema`, `check_feature_values`, `check_uw_references`, `check_rule_coverage`. Each takes
-a language store root (`data/languages/<iso3>/`) and returns a list of strings: an error for the
-first three, a warning for the fourth (SPEC.md: the coverage check is a warning at M2, an error
-from M3). `validate_store` runs all four and returns a `StoreReport`.
+Five independent functions, one per check, so a failing one names itself in the report:
+`check_schema`, `check_feature_values`, `check_uw_references`, `check_rule_references`,
+`check_rule_coverage`. Each takes a language store root (`data/languages/<iso3>/`) and returns a
+list of strings: an error for the first four, a warning for the last (SPEC.md §3.3: an uncovered rule warns; a `rules` entry
+that names no rule is an error, issue 187). `validate_store` runs all five and returns a `StoreReport`.
 
 Two judgment calls this module makes, both documented in `docs/factory/store-schema.md`:
 
@@ -70,6 +70,10 @@ CORPUS_REQUIRED_KEYS = tuple(
 )
 TESTS_REQUIRED_KEYS = tuple(
     STORE_LAYOUT_SCHEMA["$defs"]["testsFile"]["properties"]["required_keys"]["const"]
+)
+
+META_REQUIRED_KEYS = tuple(
+    STORE_LAYOUT_SCHEMA["$defs"]["metaFile"]["properties"]["required_keys"]["const"]
 )
 
 # SPEC.md §3.3: the five grammar/<kind>.yaml files.
@@ -204,6 +208,21 @@ def check_schema(store_root: Path) -> list[str]:
                         f"{_rel(store_root, path)}[{index}]: missing {', '.join(missing)}"
                     )
 
+    meta_path = store_root / "meta.yaml"
+    if meta_path.is_file():
+        meta = _load_yaml(meta_path)
+        if not isinstance(meta, dict):
+            errors.append(f"{_rel(store_root, meta_path)}: not an object")
+        else:
+            missing = [key for key in META_REQUIRED_KEYS if key not in meta]
+            if missing:
+                errors.append(f"{_rel(store_root, meta_path)}: missing {', '.join(missing)}")
+            elif meta["iso3"] != store_root.name:
+                errors.append(
+                    f"{_rel(store_root, meta_path)}: iso3 {meta['iso3']!r} is not the store "
+                    f"folder {store_root.name!r}"
+                )
+
     return errors
 
 
@@ -304,42 +323,126 @@ def check_uw_references(store_root: Path) -> list[str]:
 
 
 # --------------------------------------------------------------------------------------------
-# 4. Rule coverage: every rule id in at least one tests/<name>.yaml entry's `rules` list.
-#    Warning at M2, not counted in exit status (SPEC.md §3.3: "error from M3").
+# 4. Rule references and rule coverage (issue 187, owner ruling 2026-09-28).
+#    A `rules` entry that names no rule is an error. A rule no test names is a warning.
 # --------------------------------------------------------------------------------------------
 
+# The prefix each grammar kind takes in a qualified rule name, `<iso3>-<abbr>-<id>`. Archive rule
+# ids restart at 1 in every grammar file, so a bare `12` names four rules; the qualified name
+# (`eng-ana-12`) names one (docs/factory/issues/24-test-cases.md, "How to read the rule ids").
+KIND_ABBREVIATIONS = {
+    "analysis": "ana",
+    "generation": "gen",
+    "inflection": "inf",
+    "subcategorisation": "sub",
+    "disambiguation": "dis",
+}
 
-def check_rule_coverage(store_root: Path) -> list[str]:
-    """Every grammar rule id appears in some tests/<name>.yaml entry's `rules` list. A missing or
-    empty tests/ directory (the real case for afr and eng at M2: no test-writer pass has run) is
-    not a bug in this check -- it means every rule counts as uncovered, which is exactly the
-    starting number M3's stricter gate needs (docs/factory/store-schema.md, "Rule coverage")."""
+
+def _rule_names(store_root: Path) -> list[tuple[str, set[str]]]:
+    """Per grammar rule, as (kind, names): every name a test row may use for it. The qualified
+    name always counts. The raw id counts too when it holds a hyphen, because a hand-written
+    store (the xxa/xxb fixtures) writes full ids such as `xxa-ana-01`. A bare id never counts: it
+    is ambiguous across kinds and stores."""
+    result: list[tuple[str, set[str]]] = []
     grammar_dir = store_root / "grammar"
-    rule_ids: list[tuple[str, str]] = []
     for kind in GRAMMAR_KINDS:
         path = grammar_dir / f"{kind}.yaml"
         if not path.is_file():
             continue
         for rule in _load_yaml_list(path):
             if isinstance(rule, dict) and "id" in rule:
-                rule_ids.append((kind, rule["id"]))
+                raw = str(rule["id"])
+                names = {f"{store_root.name}-{KIND_ABBREVIATIONS[kind]}-{raw}"}
+                if "-" in raw:
+                    names.add(raw)
+                result.append((kind, names))
+    return result
 
-    covered: set[Any] = set()
+
+def _test_rule_entries(store_root: Path) -> list[tuple[str, int, Any]]:
+    """Every `rules` entry in `store_root/tests/*.yaml` as (file label, row index, entry)."""
+    entries: list[tuple[str, int, Any]] = []
     tests_dir = store_root / "tests"
-    if tests_dir.is_dir():
-        for path in sorted(tests_dir.glob("*.yaml")):
-            for entry in _load_yaml_list(path):
-                if not isinstance(entry, dict):
-                    continue
-                for rule_id in entry.get(RULE_COVERAGE_FIELD) or []:
-                    covered.add(rule_id)
+    if not tests_dir.is_dir():
+        return entries
+    for path in sorted(tests_dir.glob("*.yaml")):
+        for index, row in enumerate(_load_yaml_list(path)):
+            if not isinstance(row, dict):
+                continue
+            listed = row.get(RULE_COVERAGE_FIELD) or []
+            if not isinstance(listed, list):
+                entries.append((_rel(store_root, path), index, listed))
+                continue
+            for entry in listed:
+                entries.append((_rel(store_root, path), index, entry))
+    return entries
 
-    return [
-        f"grammar/{kind}.yaml: rule {rule_id!r} has no covering test in tests/ "
-        "(warning at M2, error from M3)"
-        for kind, rule_id in rule_ids
-        if rule_id not in covered
-    ]
+
+def _all_names(store_root: Path) -> set[str]:
+    return {name for _kind, names in _rule_names(store_root) for name in names}
+
+
+def check_rule_references(store_root: Path) -> list[str]:
+    """Every `rules` entry in this store's tests/ names a rule that exists in the store its
+    prefix points at: `eng-ana-12` in `eng`, `afr-gen-4` in `afr`. A test in one store may name
+    a rule of a sibling store under `data/languages/`, because an `eng -> afr` row exercises both
+    grammars. An entry that resolves nowhere is an error: the test cannot be exercising it."""
+    errors: list[str] = []
+    own = _all_names(store_root)
+    siblings: dict[str, set[str]] = {}
+    for file_label, index, entry in _test_rule_entries(store_root):
+        label = f"{file_label}[{index}]"
+        if not isinstance(entry, str):
+            errors.append(f"{label}: rules entry {entry!r} is not a rule id")
+            continue
+        if entry in own:
+            continue
+        prefix = entry.split("-", 1)[0]
+        sibling_root = store_root.parent / prefix
+        if prefix != store_root.name and sibling_root.is_dir():
+            if prefix not in siblings:
+                siblings[prefix] = _all_names(sibling_root)
+            if entry in siblings[prefix]:
+                continue
+        errors.append(
+            f"{label}: rules entry {entry!r} names no rule in the store its prefix points at"
+        )
+    return errors
+
+
+def check_rule_coverage(store_root: Path) -> list[str]:
+    """Every grammar rule is named by some tests/<name>.yaml entry's `rules` list, in this store
+    or a sibling store. An uncovered rule is a warning, never an error (issue 187: about 430 afr
+    and 440 eng rules have no test sentence yet, and writing them is M6's rule-author workflow).
+    A missing or empty tests/ directory means every rule is uncovered
+    (docs/factory/store-schema.md, "Rule coverage")."""
+    covered: set[str] = set()
+    parent = store_root.parent
+    siblings = sorted(p for p in parent.iterdir() if p.is_dir()) if parent.is_dir() else []
+    for candidate in siblings:
+        for _file, _index, entry in _test_rule_entries(candidate):
+            if isinstance(entry, str):
+                covered.add(entry)
+
+    warnings: list[str] = []
+    for kind in GRAMMAR_KINDS:
+        path = store_root / "grammar" / f"{kind}.yaml"
+        if not path.is_file():
+            continue
+        for rule in _load_yaml_list(path):
+            if not (isinstance(rule, dict) and "id" in rule):
+                continue
+            raw = str(rule["id"])
+            names = {f"{store_root.name}-{KIND_ABBREVIATIONS[kind]}-{raw}"}
+            if "-" in raw:
+                names.add(raw)
+            if not names & covered:
+                warnings.append(
+                    f"grammar/{kind}.yaml: rule {rule['id']!r} has no covering test in tests/ "
+                    "(warning only)"
+                )
+    return warnings
 
 
 # --------------------------------------------------------------------------------------------
@@ -353,13 +456,14 @@ class StoreReport:
     schema_errors: list[str] = field(default_factory=list)
     feature_errors: list[str] = field(default_factory=list)
     uw_errors: list[str] = field(default_factory=list)
+    rule_errors: list[str] = field(default_factory=list)
     coverage_warnings: list[str] = field(default_factory=list)
 
     @property
     def errors(self) -> list[str]:
-        """Schema, feature-value and UW failures: real errors at M2. Coverage is a warning
+        """Schema, feature-value, UW and rule-reference failures. Coverage is a warning
         (SPEC.md §3.3) and is never in this list."""
-        return [*self.schema_errors, *self.feature_errors, *self.uw_errors]
+        return [*self.schema_errors, *self.feature_errors, *self.uw_errors, *self.rule_errors]
 
 
 def validate_store(store_root: Path) -> StoreReport:
@@ -369,6 +473,7 @@ def validate_store(store_root: Path) -> StoreReport:
         schema_errors=check_schema(store_root),
         feature_errors=check_feature_values(store_root),
         uw_errors=check_uw_references(store_root),
+        rule_errors=check_rule_references(store_root),
         coverage_warnings=check_rule_coverage(store_root),
     )
 
@@ -381,7 +486,8 @@ def format_report(report: StoreReport) -> str:
             f"[{report.iso3}] schema errors: {len(report.schema_errors)}",
             f"[{report.iso3}] feature-value errors: {len(report.feature_errors)}",
             f"[{report.iso3}] UW errors: {len(report.uw_errors)}",
+            f"[{report.iso3}] rule reference errors: {len(report.rule_errors)}",
             f"[{report.iso3}] uncovered rules: {len(report.coverage_warnings)} "
-            + "(warning, not a failure at M2)",
+            + "(warning, not a failure)",
         ]
     )
