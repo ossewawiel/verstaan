@@ -980,5 +980,39 @@ TEST(tree_pass, R22_rule_182_leaves_a_word_with_no_temp_tag) {
   EXPECT_TRUE(run.trace.entries.empty());
 }
 
+// --- Issue 199, rows K40 and K41 (docs/factory/issues/199-test-cases.md): rule 183 makes the common
+// noun the head of a name that follows it. Hand-built, record 183 alone. ---
+
+RuleSet Rule183Alone() { return OnlyRules({FindRule(RealRules().analysis(), "183")}); }
+
+TEST(tree_pass, K40_rule_183_makes_the_common_noun_the_head_of_the_name) {
+  const Outcome run = RunTree(
+      Rule183Alone(),
+      make_forest({Bare("book", {{"$uw", "102870092"}, {"LEX", "N"}, {"XB", "NB"}}),
+                   Bare("Geneva", {{"$uw", "\"Geneva\""}, {"TEMP", ""}, {"LEX", "N"},
+                                   {"POS", "PPN"}, {"XB", "NB"}})}));
+  ASSERT_EQ(run.result.status, Status::ok);
+  ASSERT_EQ(run.trace.entries.size(), 1U);
+  EXPECT_EQ(run.trace.entries[0].rule, "183");
+  EXPECT_EQ(run.trace.entries[0].event, TraceEvent::fired);
+  ASSERT_EQ(run.result.forest.links.size(), 1U);
+  const Link& link = run.result.forest.links[0];
+  EXPECT_EQ(link.label, "NB");
+  EXPECT_EQ(link.from, 1U);
+  EXPECT_EQ(link.to, 2U);
+  EXPECT_EQ(link.built_by, "183");
+}
+
+TEST(tree_pass, K41_rule_183_leaves_two_names_alone) {
+  const Outcome run = RunTree(
+      Rule183Alone(),
+      make_forest({Bare("book", {{"$uw", "102870092"}, {"TEMP", ""}, {"LEX", "N"}, {"XB", "NB"}}),
+                   Bare("Geneva", {{"$uw", "\"Geneva\""}, {"TEMP", ""}, {"LEX", "N"},
+                                   {"POS", "PPN"}, {"XB", "NB"}})}));
+  ASSERT_EQ(run.result.status, Status::ok);
+  EXPECT_TRUE(run.trace.entries.empty());
+  EXPECT_TRUE(run.result.forest.links.empty());
+}
+
 }  // namespace
 }  // namespace verstaan

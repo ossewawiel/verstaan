@@ -214,5 +214,29 @@ TEST(dictionary_lookup, AfrikaansMooiHomographHasMultipleSenses) {
   EXPECT_TRUE(HasId(entries, 20866));
 }
 
+// --- Issue 199, row K50 (docs/factory/issues/199-test-cases.md): `very` gains one project-written
+// record, id 900001, that carries `att: @plus`, after the six archive records, in store order. ---
+
+TEST(dictionary_lookup, K50_very_has_seven_entries_the_last_is_the_plus_intensifier) {
+  const std::vector<DictionaryEntry> entries = EnglishDictionary().lookup("very");
+  const std::vector<std::int64_t> expected = {270891, 271391, 292276, 292277, 292863, 292864, 900001};
+  ASSERT_EQ(entries.size(), expected.size());
+  for (std::size_t i = 0; i < expected.size(); ++i) {
+    EXPECT_EQ(entries[i].id, expected[i]) << i;
+  }
+  const DictionaryEntry& last = entries.back();
+  EXPECT_EQ(last.uw, "400031899");
+  EXPECT_EQ(last.frequency, 255);
+  EXPECT_EQ(last.priority, 44);
+  const auto has = [&](const char* key, const char* value) {
+    return std::ranges::any_of(last.features, [&](const Feature& f) {
+      return f.first == key && f.second == value;
+    });
+  };
+  EXPECT_TRUE(has("LEX", "A"));
+  EXPECT_TRUE(has("POS", "SAV"));
+  EXPECT_TRUE(has("att", "@plus"));
+}
+
 }  // namespace
 }  // namespace verstaan
