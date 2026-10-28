@@ -27,7 +27,8 @@ Applies to `data/` and to anything that writes it.
 
 ## Rules
 
-- A grammar rule without a test sentence is a warning at M2 and an error from M3.
+- A grammar rule without a test sentence is a warning. A test row whose `rules` entry names no
+  rule is an error (SPEC.md §3.3, issue 187).
 - A rule's `comment` says what it does in one line, in the writing voice. Not what it is.
 - Never delete an archive-derived record to fix a bug. Mark it `deprecated: <reason>` and add the
   corrected one. The archive line stays traceable.

@@ -1,0 +1,155 @@
+# Licence: CC BY-SA 4.0. Source: UNL Archive, see data/archive/manifest.jsonl
+# The fixed sentence set, rows A01 to A15 of docs/factory/issues/24-test-cases.md (that file wins
+# on any disagreement). Each row repeats tests/fixtures/languages/eng/tests/basic.yaml and adds
+# `rules`: qualified rule ids, `<iso3>-<kind>-<id>`, a reading of the rule text and not a recording
+# of a run. `afr-gen-4` is a rule of the afr store. tools/validate fails on an id that names no rule.
+- id: A01
+  input: "book"
+  expected: "boek"
+  direction: eng-afr
+  status: ok
+  tier: basic
+  register: neutral
+  review: confirmed
+  rules: []
+  source: {origin: ugoa1, line: 1, issue: 24}
+- id: A02
+  input: "the book"
+  expected: "die boek"
+  direction: eng-afr
+  status: ok
+  tier: basic
+  register: neutral
+  review: confirmed
+  rules: [eng-ana-12, afr-gen-35, afr-gen-125, afr-gen-231]
+  source: {origin: ugoa1, line: 2, issue: 24}
+- id: A03
+  input: "a book"
+  expected: "'n boek"
+  direction: eng-afr
+  status: ok
+  tier: basic
+  register: neutral
+  review: confirmed
+  rules: [eng-ana-12, afr-gen-36, afr-gen-125, afr-gen-231]
+  source: {origin: ugoa1, line: 3, issue: 24}
+- id: A04
+  input: "books"
+  expected: "boeke"
+  direction: eng-afr
+  status: ok
+  tier: basic
+  register: neutral
+  review: confirmed
+  rules: [eng-ana-1, afr-gen-56, afr-gen-227, afr-inf-M3]
+  source: {origin: ugoa1, line: 10, issue: 24}
+- id: A05
+  input: "the books"
+  expected: "die boeke"
+  direction: eng-afr
+  status: ok
+  tier: basic
+  register: neutral
+  review: confirmed
+  rules: [eng-ana-1, eng-ana-12, afr-gen-35, afr-gen-56, afr-gen-227, afr-inf-M3]
+  source: {origin: ugoa1, line: 31, issue: 24}
+- id: A06
+  input: "all the books"
+  expected: "al die boeke"
+  direction: eng-afr
+  status: ok
+  tier: basic
+  register: neutral
+  review: confirmed
+  rules: [eng-ana-12, afr-gen-35, afr-gen-37, afr-gen-60, afr-inf-M3]
+  source: {origin: ugoa1, line: 35, issue: 24}
+- id: A07
+  input: "a book in a box"
+  expected: "'n boek in 'n boks"
+  direction: eng-afr
+  status: ok
+  tier: basic
+  register: neutral
+  review: confirmed
+  rules: [eng-ana-12, eng-ana-15, afr-gen-22, afr-gen-36, afr-gen-129]
+  source: {origin: ugoa1, line: 91, issue: 24}
+- id: A08
+  input: "a beautiful book"
+  expected: "'n mooi boek"
+  direction: eng-afr
+  status: ok
+  tier: basic
+  register: neutral
+  review: confirmed
+  rules: [eng-ana-12, eng-ana-50, afr-gen-8, afr-gen-36, afr-gen-124, afr-dis-5]
+  source: {origin: ugoa1, line: 121, issue: 24}
+- id: A09
+  input: "a book about Geneva"
+  expected: "'n boek oor ⟦Geneva⟧"
+  direction: eng-afr
+  status: partial
+  tier: basic
+  register: neutral
+  review: confirmed
+  rules: [eng-ana-12, eng-ana-15, afr-gen-4, afr-gen-36]
+  source: {origin: ugoa1, line: 128, issue: 24}
+- id: A10
+  input: "some days before the summer"
+  expected: "'n paar dae voor die somer"
+  direction: eng-afr
+  status: ok
+  tier: basic
+  register: neutral
+  review: confirmed
+  rules: [eng-ana-12, eng-ana-15, afr-gen-26, afr-gen-35, afr-gen-40, afr-gen-227, afr-inf-M2, afr-inf-M7]
+  source: {origin: ugoa1, line: 143, issue: 24}
+- id: A11
+  input: "the beautiful car"
+  expected: "die mooi motor"
+  direction: eng-afr
+  status: ok
+  tier: basic
+  register: neutral
+  review: confirmed
+  rules: [eng-ana-12, eng-ana-50, afr-gen-8, afr-gen-35, afr-gen-124, afr-dis-5]
+  source: {origin: ugoa1, line: 209, issue: 24}
+- id: A12
+  input: "a very beautiful car"
+  expected: "'n baie mooi motor"
+  direction: eng-afr
+  status: ok
+  tier: basic
+  register: neutral
+  review: confirmed
+  rules: [eng-ana-12, eng-ana-13, eng-ana-50, afr-gen-8, afr-gen-36, afr-gen-42]
+  source: {origin: ugoa1, line: 210, issue: 24}
+- id: A13
+  input: "John and Mary"
+  expected: "John en Mary"
+  direction: eng-afr
+  status: ok
+  tier: basic
+  register: neutral
+  review: confirmed
+  rules: [eng-ana-18, afr-gen-33]
+  source: {origin: ugoa1, line: 219, issue: 24}
+- id: A14
+  input: "a car, a book and a mug"
+  expected: "'n kar, 'n boek en 'n beker"
+  direction: eng-afr
+  status: ok
+  tier: basic
+  register: neutral
+  review: confirmed
+  rules: [eng-ana-12, eng-ana-16, eng-ana-18, afr-gen-33, afr-gen-36, afr-gen-58, afr-inf-M2]
+  source: {origin: ugoa1, line: 230, issue: 24}
+- id: A15
+  input: "the beautiful book about the city of Paris without pictures and photos on the table"
+  expected: "die mooi boek op die tafel oor ⟦Paris⟧ die stad sonder prente en foto's"
+  direction: eng-afr
+  status: partial
+  tier: basic
+  register: neutral
+  review: confirmed
+  rules: [eng-ana-12, eng-ana-15, eng-ana-18, eng-ana-50, afr-gen-4, afr-gen-8, afr-gen-22, afr-gen-33, afr-gen-35, afr-gen-227, afr-inf-M3, afr-inf-M16]
+  source: {origin: ugoa1, line: 248, issue: 24}

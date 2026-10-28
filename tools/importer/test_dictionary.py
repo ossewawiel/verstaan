@@ -699,3 +699,11 @@ def test_english_export_cc_php_without_both_senses(eng_store_with_cc: Store):
         if e["headword"] == "without"
     }
     assert senses == {517447: "P", 515831: "C"}
+
+
+def test_import_writes_meta_with_the_dictionary_count(afr_store: Store):
+    """Issue 187: the importer ends a run by writing meta.yaml; the count is the entries written."""
+    meta = yaml.safe_load((afr_store.root / "afr" / "meta.yaml").read_text(encoding="utf-8"))
+    assert meta["iso3"] == "afr"
+    assert meta["counts"]["dictionary_entries"] == afr_store.stats.parsed_entries
+    assert meta["counts"]["dictionary_entries"] > 0

@@ -2,14 +2,14 @@
 issue: 187
 title: "Complete the afr and eng stores: meta.yaml, tests/, and rule references that must resolve"
 milestone: M3
-status: open
+status: done
 depends_on: [17, 185]
 agent: implementer
 agents: [implementer]
 model: sonnet
 effort: medium
 checkpoint: null
-commit: null
+commit: d3f2662
 worktree: null
 github_issue: 288
 ---

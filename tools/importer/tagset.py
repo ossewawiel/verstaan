@@ -44,6 +44,7 @@ from dataclasses import dataclass
 from pathlib import Path
 
 from tools.importer.dictionary import _format_flow_mapping, _split_top_level, _yaml_scalar
+from tools.importer.meta import refresh_meta
 
 LICENCE_HEADER = "# Licence: CC BY-SA 4.0. Source: UNL Archive, see data/archive/manifest.jsonl\n"
 
@@ -227,6 +228,7 @@ def import_tagset(iso3: str, archive_root: Path, store_root: Path) -> list[Tagse
     text = _read(archive_root / TAGSET_EXPORT)
     entries = parse_tagset(text) + _WIKI_ONLY_ADDENDUM
     write_tagset_file(store_root / iso3 / "tagset.yaml", entries)
+    refresh_meta(iso3, archive_root, store_root)
     return entries
 
 
