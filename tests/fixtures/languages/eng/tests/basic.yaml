@@ -4,7 +4,8 @@
 # `input` is copied verbatim from data/languages/eng/corpus/ugoa1.yaml `sentence`.
 # `expected` is copied from data/languages/afr/corpus/ugoa1.yaml, from the row with the same
 # `source.line`, with any word neither dictionary reaches wrapped in the SPEC.md §3.4 mark.
-# `id` and `status` are additions to the SPEC §3.3 key list, so a test can name its row and
+# `id`, `status` and `review` are additions to the SPEC §3.3 key list. `review` is `pending` or
+# `confirmed`, the owner's mark (issue 185); `id` and `status` let a test name its row and
 # assert the Status of SPEC §3.4 without a second lookup.
 # `source.line` is the `ugoa1` line number both language files share.
 - id: A01
@@ -14,6 +15,7 @@
   status: ok
   tier: basic
   register: neutral
+  review: confirmed
   source: {origin: ugoa1, line: 1, issue: 24}
 - id: A02
   input: "the book"
@@ -22,6 +24,7 @@
   status: ok
   tier: basic
   register: neutral
+  review: confirmed
   source: {origin: ugoa1, line: 2, issue: 24}
 - id: A03
   input: "a book"
@@ -30,6 +33,7 @@
   status: ok
   tier: basic
   register: neutral
+  review: confirmed
   source: {origin: ugoa1, line: 3, issue: 24}
 - id: A04
   input: "books"
@@ -38,6 +42,7 @@
   status: ok
   tier: basic
   register: neutral
+  review: confirmed
   source: {origin: ugoa1, line: 10, issue: 24}
 - id: A05
   input: "the books"
@@ -46,6 +51,7 @@
   status: ok
   tier: basic
   register: neutral
+  review: confirmed
   source: {origin: ugoa1, line: 31, issue: 24}
 - id: A06
   input: "all the books"
@@ -54,6 +60,7 @@
   status: ok
   tier: basic
   register: neutral
+  review: confirmed
   source: {origin: ugoa1, line: 35, issue: 24}
 - id: A07
   input: "a book in a box"
@@ -62,6 +69,7 @@
   status: ok
   tier: basic
   register: neutral
+  review: confirmed
   source: {origin: ugoa1, line: 91, issue: 24}
 - id: A08
   input: "a beautiful book"
@@ -70,6 +78,7 @@
   status: ok
   tier: basic
   register: neutral
+  review: confirmed
   source: {origin: ugoa1, line: 121, issue: 24}
 - id: A09
   input: "a book about Geneva"
@@ -78,6 +87,7 @@
   status: partial
   tier: basic
   register: neutral
+  review: confirmed
   source: {origin: ugoa1, line: 128, issue: 24}
 - id: A10
   input: "some days before the summer"
@@ -86,6 +96,7 @@
   status: ok
   tier: basic
   register: neutral
+  review: confirmed
   source: {origin: ugoa1, line: 143, issue: 24}
 - id: A11
   input: "the beautiful car"
@@ -94,6 +105,7 @@
   status: ok
   tier: basic
   register: neutral
+  review: confirmed
   source: {origin: ugoa1, line: 209, issue: 24}
 - id: A12
   input: "a very beautiful car"
@@ -102,6 +114,7 @@
   status: ok
   tier: basic
   register: neutral
+  review: confirmed
   source: {origin: ugoa1, line: 210, issue: 24}
 - id: A13
   input: "John and Mary"
@@ -110,6 +123,7 @@
   status: ok
   tier: basic
   register: neutral
+  review: confirmed
   source: {origin: ugoa1, line: 219, issue: 24}
 - id: A14
   input: "a car, a book and a mug"
@@ -118,6 +132,7 @@
   status: ok
   tier: basic
   register: neutral
+  review: confirmed
   source: {origin: ugoa1, line: 230, issue: 24}
 - id: A15
   input: "the beautiful book about the city of Paris without pictures and photos on the table"
@@ -126,4 +141,5 @@
   status: partial
   tier: basic
   register: neutral
+  review: confirmed
   source: {origin: ugoa1, line: 248, issue: 24}

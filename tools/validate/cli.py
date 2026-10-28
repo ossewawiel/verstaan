@@ -28,11 +28,14 @@ from collections.abc import Callable, Sequence
 from functools import partial
 from pathlib import Path
 
+import yaml
+
 from tools.factory.validate_map import check_map as check_map_tiles
 from tools.validate import __version__
 from tools.validate.store import StoreReport, format_report, validate_store
 
 LANGUAGES_DIR_NAME = "data/languages"
+FIXTURE_LANGUAGES_DIR_NAME = "tests/fixtures/languages"
 
 # docs/factory/issues/05-notice-files-and-licence-headers.md; SPEC.md §3.5 for the generated line.
 SPDX_CPP_LINE = "// SPDX-License-Identifier: MPL-2.0"
@@ -341,6 +344,44 @@ def check_issue_dependencies(root: Path) -> list[str]:
     return errors
 
 
+# --------------------------------------------------------------------------------------------
+# Fixture review (issue 185). The fixed sentence set under tests/fixtures/languages/<iso3>/tests/
+# carries the owner's mark on every row. Issues 183 and 26 pass on "every row confirmed", so a row
+# with no mark, or a mark of another spelling, would be silently skipped. The invented pair
+# (xxa, xxb, issue 04) is not archive-derived and has no reviewer, so it is exempt.
+# --------------------------------------------------------------------------------------------
+
+REVIEW_VALUES = ("pending", "confirmed")
+INVENTED_FIXTURE_PREFIX = "xx"
+
+
+def check_fixture_reviews(root: Path) -> list[str]:
+    """Every row of every reviewed fixture tests file has `review: pending` or `confirmed`."""
+    errors: list[str] = []
+    base = root / FIXTURE_LANGUAGES_DIR_NAME
+    if not base.is_dir():
+        return errors
+    for lang_dir in sorted(p for p in base.iterdir() if p.is_dir()):
+        if lang_dir.name.startswith(INVENTED_FIXTURE_PREFIX):
+            continue
+        for path in sorted((lang_dir / "tests").glob("*.yaml")):
+            rows = yaml.safe_load(path.read_text(encoding="utf-8")) or []
+            for index, row in enumerate(rows):
+                label = f"{_rel(root, path)}[{index}]"
+                if isinstance(row, dict) and row.get("id") is not None:
+                    label += f" ({row['id']})"
+                if not isinstance(row, dict):
+                    errors.append(f"{label}: not an object")
+                elif "review" not in row:
+                    errors.append(f"{label}: missing review")
+                elif row["review"] not in REVIEW_VALUES:
+                    errors.append(
+                        f"{label}: review is {row['review']!r}, "
+                        f"expected one of {', '.join(REVIEW_VALUES)}"
+                    )
+    return errors
+
+
 def check_licences(root: Path) -> list[str]:
     """Every check `--licences` runs, in order."""
     errors: list[str] = []
@@ -389,6 +430,7 @@ def run(
         errors += check_issue_loadouts(repo_root)
         errors += check_issue_dependencies(repo_root)
         errors += check_map_tiles(repo_root)
+        errors += check_fixture_reviews(repo_root)
         for error in errors:
             print(error, file=sys.stderr)
         return 1 if errors else 0
@@ -415,6 +457,8 @@ def run(
         for path in all_changed
     ):
         errors += check_map_tiles(repo_root)
+    if any(path.startswith(f"{FIXTURE_LANGUAGES_DIR_NAME}/") for path in all_changed):
+        errors += check_fixture_reviews(repo_root)
     for error in errors:
         print(error, file=sys.stderr)
     return 1 if errors else 0
