@@ -2,15 +2,15 @@
 issue: 195
 title: "English disambiguation rules for in, on and about"
 milestone: M3
-status: open
+status: in-progress
 depends_on: [21, 22]
 agent: rule-author
-agents: [rule-author, test-writer, implementer]
+agents: [rule-author, test-writer, implementer, docs-writer]
 model: opus
 effort: high
 checkpoint: null
 commit: null
-worktree: null
+worktree: .worktrees/m3-195-english-disambiguation-rules
 github_issue: 303
 ---
 ## What
@@ -27,6 +27,14 @@ of `in`, `on` and `about` before a noun phrase. Each rule carries a comment that
 serves, and `source` provenance that marks it as project-written, not archived. The empty-list
 fallback still applies to every word these rules do not reach.
 
+The rule-author pass on 2026-10-28 found that the D-rule matcher cannot run these rules
+(`195-test-cases.md`, "Blocker"). B1: `collect_disambiguation_deletions` marks one reading once
+per matching combination, and the erase by index then removes the readings next to it. On A07 the
+duplicates erase all 13 preposition readings of `in` and keep only the adverb. B2: the matcher
+also prunes the context word, so `a` loses its article readings. The archive's cure is
+`#PREFERRED` (`data/archive/wiki/D-rule.wikitext` lines 154–155). The owner chose on 2026-10-28
+to fix both inside this quest. A new ADR records the two matcher rules.
+
 ## Acceptance criteria
 
 - `data/languages/eng/grammar/disambiguation.yaml` holds at least one rule per word, in the format
@@ -36,6 +44,11 @@ fallback still applies to every word these rules do not reach.
 - A test shows `in` on A07 and `about` on A09 leave `disambiguate` as `P`, not as the adverb.
 - A test shows `on` in A15 leaves as `P`.
 - A test shows a sentence with an adverbial `in`, for example `come in`, keeps the adverb.
+- `RuleInterpreter::disambiguate` deletes a reading once per rule, however many combinations
+  matched it. A test pins this.
+- A `#PREFERRED` term in a D-rule node always matches, and the matcher never prunes a position
+  whose node carries it. A test pins this. No public engine name changes.
+- `docs/adr/NNNN-*.md`, the next free number, states both matcher rules.
 - `ctest -L fast` passes. `python -m tools.validate --changed` exits 0.
 
 ## Not in scope
@@ -45,7 +58,9 @@ named above. A D-rule import for English, since the archive has none to import.
 
 ## Done when
 
-- [ ] `eng/grammar/disambiguation.yaml` holds rules for `in`, `on` and `about`.
-- [ ] Each rule has a firing row and a must-not-fire row in `195-test-cases.md`.
-- [ ] The tests for A07, A09, A15 and the adverbial case pass.
-- [ ] `ctest -L fast` and `python -m tools.validate --changed` are green.
+- [x] `eng/grammar/disambiguation.yaml` holds rules for `in`, `on` and `about`.
+- [x] Each rule has a firing row and a must-not-fire row in `195-test-cases.md`.
+- [x] The tests for A07, A09, A15 and the adverbial case pass.
+- [x] The matcher deletes each reading once and never prunes a `#PREFERRED` node, and tests pin both.
+- [x] The ADR exists and names both matcher rules.
+- [x] `ctest -L fast` and `python -m tools.validate --changed` are green.

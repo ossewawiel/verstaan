@@ -211,7 +211,7 @@ namespace {
 //                         files, 2026-09-19); the node matches if any one `alt` fully matches. ---
 
 struct SimpleTerm {
-  enum class Kind : std::uint8_t { Tag, FeatureValue, Literal } kind = Kind::Tag;
+  enum class Kind : std::uint8_t { Tag, FeatureValue, Literal, Preferred } kind = Kind::Tag;
   bool negate = false;
   std::string key;
   std::string value;  // FeatureValue only
@@ -258,6 +258,10 @@ SimpleTerm parse_simple_term(std::string_view raw) {
   if (raw.size() >= 2 && raw.front() == '[' && raw.back() == ']') {
     term.kind = SimpleTerm::Kind::Literal;
     term.key = std::string(raw.substr(1, raw.size() - 2));
+    return term;
+  }
+  if (raw == "#PREFERRED") {
+    term.kind = SimpleTerm::Kind::Preferred;
     return term;
   }
   const std::size_t eq = raw.find('=');
@@ -335,6 +339,8 @@ std::vector<NodePattern> parse_lhs(std::string_view lhs) {
 bool simple_term_matches(const SimpleTerm& term, const Candidate& node) {
   bool result = false;
   switch (term.kind) {
+    case SimpleTerm::Kind::Preferred:
+      return true;  // ADR 0018: always matches, adds no test
     case SimpleTerm::Kind::Literal:
       result = (node.surface == term.key);
       break;
@@ -360,6 +366,16 @@ bool term_matches(const Term& term, const Candidate& node) {
   return std::ranges::any_of(term.alternatives, [&](const std::vector<SimpleTerm>& alt) {
     return std::ranges::all_of(
         alt, [&](const SimpleTerm& simple) { return simple_term_matches(simple, node); });
+  });
+}
+
+// True when the node carries a `#PREFERRED` term (ADR 0018): its position is never pruned.
+bool node_is_preferred(const NodePattern& pattern) {
+  return std::ranges::any_of(pattern, [](const Term& term) {
+    return std::ranges::any_of(term.alternatives, [](const std::vector<SimpleTerm>& alt) {
+      return std::ranges::any_of(
+          alt, [](const SimpleTerm& simple) { return simple.kind == SimpleTerm::Kind::Preferred; });
+    });
   });
 }
 
@@ -540,7 +556,7 @@ void collect_disambiguation_deletions(const std::vector<NodePattern>& pattern,
       }
     }
     for (std::size_t i = 0; i < pattern.size(); ++i) {
-      if (positions[start + i].candidates.size() > 1) {
+      if (positions[start + i].candidates.size() > 1 && !node_is_preferred(pattern[i])) {
         to_delete.emplace_back(start + i, chosen[i]);
       }
     }
@@ -582,6 +598,8 @@ void apply_disambiguation_rule(const GrammarRule& rule, std::vector<Position>& p
   std::ranges::sort(to_delete, [](const auto& a, const auto& b) {
     return a.first != b.first ? a.first < b.first : a.second > b.second;
   });
+  // ADR 0018: a reading is deleted once, however many combinations matched it.
+  to_delete.erase(std::ranges::unique(to_delete).begin(), to_delete.end());
   for (const auto& [position_index, candidate_index] : to_delete) {
     std::vector<Candidate>& candidates = positions[position_index].candidates;
     if (candidate_index < candidates.size() && candidates.size() > 1) {
