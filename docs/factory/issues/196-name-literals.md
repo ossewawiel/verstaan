@@ -2,7 +2,7 @@
 issue: 196
 title: "A capitalised name with no dictionary entry enters the graph as a quoted literal"
 milestone: M3
-status: open
+status: in-progress
 depends_on: [19, 20]
 agent: implementer
 agents: [implementer]
@@ -10,7 +10,7 @@ model: sonnet
 effort: medium
 checkpoint: null
 commit: null
-worktree: null
+worktree: .worktrees/m3-196-name-literals
 github_issue: 304
 ---
 ## What
