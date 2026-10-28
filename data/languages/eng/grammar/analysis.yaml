@@ -181,6 +181,13 @@
   conditions: []
   comment: "analyze expressions of time that don't follow the syntax HH:MM:SS"
   source: {archive_path: exports/eng/nl_unl_tgrammar.txt, line: 23}
+- id: "182"
+  kind: analysis
+  lhs: "(TEMP,^LEX)"
+  rhs: "(+LEX=N,+POS=PPN)"
+  conditions: []
+  comment: "A name the dictionary does not hold is a proper noun: John > John (LEX=N,POS=PPN)"
+  source: {archive_path: original, line: "issue 198; adapted from wiki/English_grammar_Temporary_entries.wikitext lines 4 and 50, a TEMP entry carries LEX=N,POS=PPN"}
 - id: "27"
   kind: default
   lhs: "(HOUR,%h)(MINUTE,%m)"

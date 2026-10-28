@@ -83,11 +83,11 @@ bool HasFeature(const Candidate& node, std::string_view key, std::string_view va
 
 TEST(rule_interpreter, RuleSetLoadsAllFiveGrammarKindsFromTheRealStores) {
   const RuleSet& rules = EngToAfrRuleSet();
-  // Issue 195 test D14 (195-test-cases.md): eng's disambiguation.yaml holds four project-written
-  // records, ids 1 to 4, in file order, each kind `disambiguation`, each rhs `0`.
-  ASSERT_EQ(rules.disambiguation().size(), 4u);
-  const char* const kExpectedIds[] = {"1", "2", "3", "4"};
-  for (std::size_t i = 0; i < 4; ++i) {
+  // Issue 198 test R17 (198-test-cases.md, replacing 195 D14): eng's disambiguation.yaml holds five
+  // project-written records, ids 1 to 5, in file order, each kind `disambiguation`, each rhs `0`.
+  ASSERT_EQ(rules.disambiguation().size(), 5u);
+  const char* const kExpectedIds[] = {"1", "2", "3", "4", "5"};
+  for (std::size_t i = 0; i < 5; ++i) {
     EXPECT_EQ(rules.disambiguation()[i].id, kExpectedIds[i]);
     EXPECT_EQ(rules.disambiguation()[i].kind, "disambiguation");
     EXPECT_EQ(rules.disambiguation()[i].rhs, "0");
@@ -433,11 +433,29 @@ void ExpectAllKept(const DisambiguationRun& run) {
 const char* const kA15 =
     "the beautiful book about the city of Paris without pictures and photos on the table";
 
+// Expects position `i` to hold exactly the readings of the lookup that carry rel=plc, in order.
+void ExpectOnlyPlace(const DisambiguationRun& run, std::size_t i) {
+  ASSERT_LT(i, run.after.size());
+  std::vector<Candidate> expected;
+  std::ranges::copy_if(run.before[i].candidates, std::back_inserter(expected),
+                       [](const Candidate& c) { return HasFeature(c, "rel", "plc"); });
+  ASSERT_EQ(expected.size(), 4u);
+  EXPECT_TRUE(SameReadings(run.after[i].candidates, expected))
+      << "position " << i << " holds " << run.after[i].candidates.size()
+      << " readings, expected the " << expected.size() << " place readings";
+}
+
+// R10 (198-test-cases.md, replacing 195 D01): rule 1 strikes the non-prepositions, rule 5 the
+// non-place prepositions.
 TEST(rule_interpreter, D01RuleOneKeepsThePrepositionOfInInABookInABox) {
   const DisambiguationRun run = RunEng("a book in a box");
   ASSERT_EQ(run.after.size(), 5u);
-  ExpectOnlyPreposition(run, 2);
-  EXPECT_EQ(FiredIds(run.trace), Ids({"1"}));
+  ExpectOnlyPlace(run, 2);
+  ExpectKept(run, 0);
+  ExpectKept(run, 1);
+  ExpectKept(run, 3);
+  ExpectKept(run, 4);
+  EXPECT_EQ(FiredIds(run.trace), Ids({"1", "5"}));
 }
 
 TEST(rule_interpreter, D02RuleOneLeavesTheArticleAfterInWithAllFourReadings) {
@@ -517,6 +535,104 @@ TEST(rule_interpreter, D08RuleOneKeepsThePrepositionOfInBeforeADefiniteArticle) 
   ExpectOnlyPreposition(run, 2);
   ExpectKept(run, 3);
   EXPECT_EQ(FiredIds(run.trace), Ids({"1"}));
+}
+
+TEST(rule_interpreter, R11RuleFiveLeavesInBeforeATemporalNounWhole) {
+  const DisambiguationRun run = RunEng("some days in the summer");
+  ASSERT_EQ(run.after.size(), 5u);
+  ExpectOnlyPreposition(run, 2);
+  ExpectKept(run, 3);
+  ExpectKept(run, 4);
+  EXPECT_EQ(FiredIds(run.trace), Ids({"1"}));
+}
+
+TEST(rule_interpreter, R12RuleFiveFiresOnALocationNoun) {
+  const DisambiguationRun run = RunEng("water in the region");
+  ASSERT_EQ(run.after.size(), 4u);
+  ExpectOnlyPlace(run, 1);
+  ExpectKept(run, 0);
+  ExpectKept(run, 2);
+  ExpectKept(run, 3);
+  EXPECT_EQ(FiredIds(run.trace), Ids({"1", "5"}));
+}
+
+TEST(rule_interpreter, R13RuleFiveLeavesInBeforeANounWithNoArtefactOrLocationReading) {
+  const DisambiguationRun run = RunEng("woman in a party");
+  ASSERT_EQ(run.after.size(), 4u);
+  ExpectOnlyPreposition(run, 1);
+  ExpectKept(run, 2);
+  ExpectKept(run, 3);
+  EXPECT_EQ(FiredIds(run.trace), Ids({"1"}));
+}
+
+// R14 to R16: rule 5 alone, hand-built, no I/O. The rule is the real record, extracted by id.
+Candidate Reading(const char* surface, std::vector<Feature> features) {
+  return Candidate{.surface = surface, .features = std::move(features), .attributes = {}};
+}
+
+std::vector<Candidate> InReadings(const char* surface) {
+  return {Reading(surface, {{"LEX", "P"}, {"POS", "PRE"}, {"rel", "tim"}}),
+          Reading(surface, {{"LEX", "P"}, {"POS", "PRE"}, {"rel", "man"}}),
+          Reading(surface, {{"LEX", "P"}, {"POS", "PRE"}, {"rel", "plc"}})};
+}
+
+std::vector<Candidate> ArticleReadings() {
+  return {Reading("a", {{"LEX", "D"}, {"POS", "ART"}}), Reading("a", {{"LEX", "N"}, {"POS", "NOU"}})};
+}
+
+std::vector<Position> HandBuilt(const char* first, std::vector<Candidate> box) {
+  return {Position{.candidates = InReadings(first)}, Position{.candidates = ArticleReadings()},
+          Position{.candidates = std::move(box)}};
+}
+
+TEST(rule_interpreter, R14RuleFiveAloneKeepsThePlaceReadingAndBothPreferredPositions) {
+  const RuleSet isolated =
+      RuleSet::from_rules({FindRule(EngToAfrRuleSet().disambiguation(), "5")}, {}, {}, {}, {}, {});
+  const RuleInterpreter interpreter(isolated);
+  const std::vector<Candidate> box = {Reading("box", {{"LEX", "N"}, {"SEM", "ACT"}}),
+                                      Reading("box", {{"LEX", "N"}, {"SEM", "ARF"}})};
+  std::vector<Position> positions = HandBuilt("in", box);
+  Trace trace;
+  interpreter.disambiguate(positions, trace);
+  ASSERT_EQ(positions[0].candidates.size(), 1u);
+  EXPECT_TRUE(HasFeature(positions[0].candidates[0], "rel", "plc"));
+  EXPECT_TRUE(SameReadings(positions[1].candidates, ArticleReadings()));
+  EXPECT_TRUE(SameReadings(positions[2].candidates, box));
+  EXPECT_EQ(FiredIds(trace), Ids({"5"}));
+}
+
+TEST(rule_interpreter, R15RuleFiveAloneDoesNotFireWithoutAnArtefactOrLocationReading) {
+  const RuleSet isolated =
+      RuleSet::from_rules({FindRule(EngToAfrRuleSet().disambiguation(), "5")}, {}, {}, {}, {}, {});
+  const RuleInterpreter interpreter(isolated);
+  const std::vector<Candidate> box = {Reading("box", {{"LEX", "N"}, {"SEM", "ACT"}}),
+                                      Reading("box", {{"LEX", "N"}, {"SEM", "TIM"}})};
+  std::vector<Position> positions = HandBuilt("in", box);
+  const std::vector<Position> before = positions;
+  Trace trace;
+  interpreter.disambiguate(positions, trace);
+  ASSERT_EQ(positions.size(), 3u);
+  for (std::size_t i = 0; i < 3; ++i) {
+    EXPECT_TRUE(SameReadings(positions[i].candidates, before[i].candidates)) << i;
+  }
+  EXPECT_TRUE(trace.entries.empty());
+}
+
+TEST(rule_interpreter, R16RuleFiveAloneReadsTheSurfaceInOnly) {
+  const RuleSet isolated =
+      RuleSet::from_rules({FindRule(EngToAfrRuleSet().disambiguation(), "5")}, {}, {}, {}, {}, {});
+  const RuleInterpreter interpreter(isolated);
+  const std::vector<Candidate> box = {Reading("box", {{"LEX", "N"}, {"SEM", "ACT"}}),
+                                      Reading("box", {{"LEX", "N"}, {"SEM", "ARF"}})};
+  std::vector<Position> positions = HandBuilt("on", box);
+  const std::vector<Position> before = positions;
+  Trace trace;
+  interpreter.disambiguate(positions, trace);
+  ASSERT_EQ(positions.size(), 3u);
+  for (std::size_t i = 0; i < 3; ++i) {
+    EXPECT_TRUE(SameReadings(positions[i].candidates, before[i].candidates)) << i;
+  }
+  EXPECT_TRUE(trace.entries.empty());
 }
 
 TEST(rule_interpreter, D09AdverbialInInComeInKeepsEveryReadingAndTheAdverbFirst) {
