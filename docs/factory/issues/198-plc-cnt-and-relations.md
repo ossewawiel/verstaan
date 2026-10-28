@@ -2,15 +2,15 @@
 issue: 198
 title: "The plc, cnt and and relations on A07, A09 and A13"
 milestone: M3
-status: in-progress
+status: done
 depends_on: [180, 195, 196]
 agent: rule-author
 agents: [rule-author, test-writer, implementer]
 model: opus
 effort: high
 checkpoint: null
-commit: null
-worktree: .worktrees/m3-198-plc-cnt-and-relations
+commit: 7a69eef
+worktree: null
 github_issue: 306
 ---
 ## What
@@ -42,7 +42,7 @@ issue 181.
 
 ## Done when
 
-- [ ] A07, A09 and A13 each carry their one relation in `Result::unl`.
-- [ ] Each relation's rule id appears in `Result::trace`.
-- [ ] Must-not-fire tests pass for all three relations.
-- [ ] `ctest -L fast` and `python -m tools.validate --changed` are green.
+- [x] A07, A09 and A13 each carry their one relation in `Result::unl`.
+- [x] Each relation's rule id appears in `Result::trace`.
+- [x] Must-not-fire tests pass for all three relations.
+- [x] `ctest -L fast` and `python -m tools.validate --changed` are green.
