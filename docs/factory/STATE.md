@@ -2,7 +2,8 @@
 
 Last completed:  #196 — A capitalised name with no dictionary entry enters the graph as a quoted
                  literal (M3), commit ee6d3c1
-Next up:         #180 — Write the mod relation into the UNL graph for A08 and A11 (M3)
+Next up:         #187 — Complete the afr and eng stores: meta.yaml, tests/, and rule references that
+                 must resolve (M3)
 Branch / PR:     main, https://github.com/ossewawiel/verstaan.git, 0 files dirty, no gate stamp for
-                 7414c8f
-Resume with:     /factory-run 180
+                 28e64b6
+Resume with:     /factory-run 187
