@@ -1,3 +1,31 @@
 # Licence: CC BY-SA 4.0. Source: UNL Archive, see data/archive/manifest.jsonl
-# archive: none for eng
-[]
+# archive: none for eng. Every record below is project-written (issue 195):
+# source.archive_path "original" marks it, and source.line names the archive rule it adapts.
+- id: "1"
+  kind: disambiguation
+  lhs: "([in],^POS=PRE)(POS=ART,#PREFERRED)"
+  rhs: "0"
+  conditions: []
+  comment: "Strikes every reading of in but the preposition when an article follows, as in A07 a book in a box; the article keeps its readings"
+  source: {archive_path: original, line: "issue 195; adapted from exports/ger/49.dgrammar.txt line 14 and wiki/D-rule.wikitext line 155"}
+- id: "2"
+  kind: disambiguation
+  lhs: "([on],^POS=PRE)(POS=ART,#PREFERRED)"
+  rhs: "0"
+  conditions: []
+  comment: "Strikes every reading of on but the preposition when an article follows, as in A15 on the table; the article keeps its readings"
+  source: {archive_path: original, line: "issue 195; adapted from exports/ger/49.dgrammar.txt line 14 and wiki/D-rule.wikitext line 155"}
+- id: "3"
+  kind: disambiguation
+  lhs: "([about],^POS=PRE)(POS=ART,#PREFERRED)"
+  rhs: "0"
+  conditions: []
+  comment: "Strikes every reading of about but the preposition when an article follows, as in A15 about the city; the article keeps its readings"
+  source: {archive_path: original, line: "issue 195; adapted from exports/ger/49.dgrammar.txt line 14 and wiki/D-rule.wikitext line 155"}
+- id: "4"
+  kind: disambiguation
+  lhs: "([about],^POS=PRE)(^LEX,^[.],^[,],^[!],^[?],^[;],^[:])"
+  rhs: "0"
+  conditions: []
+  comment: "Strikes every reading of about but the preposition when a word the dictionary does not hold follows, as in A09 about Geneva; a punctuation mark does not count"
+  source: {archive_path: original, line: "issue 195; adapted from exports/ger/49.dgrammar.txt line 14 and wiki/English_Disambiguation_Grammar.wikitext line 21"}

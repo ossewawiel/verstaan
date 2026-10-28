@@ -37,6 +37,7 @@ needs them split out.
 | `(A)(B)` | Adjacency: `A` immediately followed by `B` in the word list. | `44.dgrammar.txt` line 7 |
 | `feature=value` | Feature-value pair, not a bare flag. | `44.dgrammar.txt` line 14, `rel=plc` |
 | `,` | Conjunction inside one node: every listed feature (or its negation) must hold. | `44.dgrammar.txt` line 7 |
+| `#PREFERRED` | Always matches. The archive uses it to try replacing the other nodes first; this project only keeps the node from being pruned (ADR 0018), as in `(R)(N,#PREFERRED)=0;`. | `D-rule.wikitext` lines 154–155 |
 
 ### Negation (`^`)
 

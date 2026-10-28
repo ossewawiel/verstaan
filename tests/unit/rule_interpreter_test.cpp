@@ -27,11 +27,16 @@
 #include <gtest/gtest.h>
 
 #include <algorithm>
+#include <cstddef>
+#include <initializer_list>
+#include <iterator>
 #include <string>
 #include <vector>
 
+#include "verstaan/dictionary.hpp"
 #include "verstaan/engine.hpp"
 #include "verstaan/rule_set.hpp"
+#include "verstaan/tokeniser.hpp"
 
 namespace verstaan {
 namespace {
@@ -78,9 +83,15 @@ bool HasFeature(const Candidate& node, std::string_view key, std::string_view va
 
 TEST(rule_interpreter, RuleSetLoadsAllFiveGrammarKindsFromTheRealStores) {
   const RuleSet& rules = EngToAfrRuleSet();
-  // eng's disambiguation.yaml is the literal "[]" (docs/unl-reference/formats/disambiguation.md,
-  // "Where eng has no export"): reading it correctly means an empty list, not a missing one.
-  EXPECT_TRUE(rules.disambiguation().empty());
+  // Issue 195 test D14 (195-test-cases.md): eng's disambiguation.yaml holds four project-written
+  // records, ids 1 to 4, in file order, each kind `disambiguation`, each rhs `0`.
+  ASSERT_EQ(rules.disambiguation().size(), 4u);
+  const char* const kExpectedIds[] = {"1", "2", "3", "4"};
+  for (std::size_t i = 0; i < 4; ++i) {
+    EXPECT_EQ(rules.disambiguation()[i].id, kExpectedIds[i]);
+    EXPECT_EQ(rules.disambiguation()[i].kind, "disambiguation");
+    EXPECT_EQ(rules.disambiguation()[i].rhs, "0");
+  }
   EXPECT_GT(rules.analysis().size(), 0u);
   EXPECT_GT(rules.from_inflection().size(), 0u);
   EXPECT_GT(rules.subcategorisation().size(), 0u);
@@ -238,15 +249,13 @@ TEST(rule_interpreter, AfrDRuleEightPrunesThePlaceReadingBeforeATemporalNoun) {
   EXPECT_EQ(trace.entries[0].rule, "8");
 }
 
-// --- The eng-empty fallback (issue 21) resolves a homograph with no covering D-rule, not by
-// crash or silent drop. ---
+// --- The empty-list fallback (issue 21) resolves a homograph with no covering D-rule, not by
+// crash or silent drop. Issue 195 test D13: hand-built, no I/O, because the real eng list is no
+// longer empty. ---
 
-TEST(rule_interpreter, EngEmptyDisambiguationFallsBackToFirstCandidate) {
-  // data/languages/eng/grammar/disambiguation.yaml is "[]": no D-rule exists to cover any eng
-  // homograph, so RuleInterpreter::disambiguate must fall back rather than leave the position
-  // untouched or crash (docs/unl-reference/formats/disambiguation.md, "Where eng has no export").
-  ASSERT_TRUE(EngToAfrRuleSet().disambiguation().empty());
-  const RuleInterpreter interpreter(EngToAfrRuleSet());
+TEST(rule_interpreter, D13EmptyDisambiguationListFallsBackToFirstCandidate) {
+  const RuleSet empty = RuleSet::from_rules({}, {}, {}, {}, {}, {});
+  const RuleInterpreter interpreter(empty);
 
   std::vector<Position> positions = {Position{
       .candidates = {
@@ -257,6 +266,7 @@ TEST(rule_interpreter, EngEmptyDisambiguationFallsBackToFirstCandidate) {
 
   ASSERT_EQ(positions[0].candidates.size(), 1u);
   EXPECT_TRUE(HasFeature(positions[0].candidates[0], "sense", "financial"));
+  EXPECT_TRUE(trace.entries.empty());
 }
 
 // --- Disambiguation runs before analysis, not after: a purely in-memory RuleSet
@@ -312,6 +322,270 @@ TEST(rule_interpreter, DisambiguationTraceComesBeforeAnalysisTraceAndFeedsItsRes
   EXPECT_TRUE(trace_if_skipped.entries.empty());
   ASSERT_EQ(analysed_wrong.size(), 1u);
   EXPECT_FALSE(HasAttribute(analysed_wrong[0], "@pl"));
+}
+
+// --- Issue 195 (195-test-cases.md, block D): English D-rules for in, on and about. ---
+
+const Dictionary& EngDictionary() {
+  static const Dictionary dictionary = Dictionary::load(EngStoreRoot(), Lang::eng);
+  return dictionary;
+}
+
+// Builds positions the way build_positions in engine/src/engine.cpp does: every dictionary entry
+// one reading in shard order, a token with no entry one reading with its surface and no features.
+// The `$uw` feature engine.cpp adds is added here too, so a reading is the one the engine sees.
+std::vector<Position> BuildEngPositions(const std::string& text) {
+  const std::vector<Token> tokens = tokenise(text);
+  const std::vector<LookupEntry> lookups = EngDictionary().lookup_tokens(tokens);
+  std::vector<Position> positions;
+  for (std::size_t i = 0; i < tokens.size(); ++i) {
+    Position position;
+    if (lookups[i].resolved()) {
+      for (const DictionaryEntry& entry : lookups[i].entries) {
+        std::vector<Feature> features = entry.features;
+        features.emplace_back("$uw", entry.uw);
+        position.candidates.push_back(
+            Candidate{.surface = std::string(tokens[i].surface), .features = features, .attributes = {}});
+      }
+    } else {
+      position.candidates.push_back(Candidate{.surface = std::string(tokens[i].surface), .features = {}, .attributes = {}});
+    }
+    positions.push_back(std::move(position));
+  }
+  return positions;
+}
+
+bool IsPreposition(const Candidate& c) { return HasFeature(c, "POS", "PRE"); }
+
+bool SameReadings(const std::vector<Candidate>& a, const std::vector<Candidate>& b) {
+  if (a.size() != b.size()) {
+    return false;
+  }
+  for (std::size_t i = 0; i < a.size(); ++i) {
+    if (a[i].surface != b[i].surface || a[i].features != b[i].features ||
+        a[i].attributes != b[i].attributes) {
+      return false;
+    }
+  }
+  return true;
+}
+
+// The readings of `before` that carry POS=PRE, in order.
+std::vector<Candidate> PrepositionReadings(const std::vector<Candidate>& before) {
+  std::vector<Candidate> out;
+  std::ranges::copy_if(before, std::back_inserter(out), IsPreposition);
+  return out;
+}
+
+std::vector<std::string> FiredIds(const Trace& trace) {
+  std::vector<std::string> ids;
+  for (const TraceEntry& entry : trace.entries) {
+    EXPECT_EQ(entry.event, TraceEvent::fired);
+    ids.push_back(entry.rule);
+  }
+  return ids;
+}
+
+std::vector<std::string> Ids(std::initializer_list<const char*> ids) {
+  return std::vector<std::string>(ids.begin(), ids.end());
+}
+
+// Runs the real eng rule set's disambiguate on `text`. `before` receives the lookup positions.
+struct DisambiguationRun {
+  std::vector<Position> before;
+  std::vector<Position> after;
+  Trace trace;
+};
+
+DisambiguationRun RunEng(const std::string& text) {
+  DisambiguationRun run;
+  run.before = BuildEngPositions(text);
+  run.after = run.before;
+  const RuleInterpreter interpreter(EngToAfrRuleSet());
+  interpreter.disambiguate(run.after, run.trace);
+  return run;
+}
+
+// Expects position `i` to hold exactly the preposition readings the lookup gave, in order.
+void ExpectOnlyPreposition(const DisambiguationRun& run, std::size_t i) {
+  ASSERT_LT(i, run.after.size());
+  const std::vector<Candidate> expected = PrepositionReadings(run.before[i].candidates);
+  ASSERT_FALSE(expected.empty());
+  EXPECT_TRUE(SameReadings(run.after[i].candidates, expected))
+      << "position " << i << " holds " << run.after[i].candidates.size() << " readings, expected "
+      << expected.size() << " preposition readings";
+}
+
+void ExpectKept(const DisambiguationRun& run, std::size_t i) {
+  ASSERT_LT(i, run.after.size());
+  EXPECT_TRUE(SameReadings(run.after[i].candidates, run.before[i].candidates))
+      << "position " << i << " holds " << run.after[i].candidates.size()
+      << " readings, the lookup gave " << run.before[i].candidates.size();
+}
+
+void ExpectAllKept(const DisambiguationRun& run) {
+  ASSERT_EQ(run.after.size(), run.before.size());
+  for (std::size_t i = 0; i < run.before.size(); ++i) {
+    ExpectKept(run, i);
+  }
+}
+
+const char* const kA15 =
+    "the beautiful book about the city of Paris without pictures and photos on the table";
+
+TEST(rule_interpreter, D01RuleOneKeepsThePrepositionOfInInABookInABox) {
+  const DisambiguationRun run = RunEng("a book in a box");
+  ASSERT_EQ(run.after.size(), 5u);
+  ExpectOnlyPreposition(run, 2);
+  EXPECT_EQ(FiredIds(run.trace), Ids({"1"}));
+}
+
+TEST(rule_interpreter, D02RuleOneLeavesTheArticleAfterInWithAllFourReadings) {
+  const DisambiguationRun run = RunEng("a book in a box");
+  ASSERT_EQ(run.after.size(), 5u);
+  ASSERT_EQ(run.before[3].candidates.size(), 4u);
+  ExpectKept(run, 3);
+  EXPECT_TRUE(HasFeature(run.after[3].candidates.front(), "POS", "ART"));
+  EXPECT_TRUE(HasFeature(run.after[3].candidates.front(), "att", "@indef"));
+  ExpectKept(run, 4);
+  ExpectKept(run, 0);
+  ExpectKept(run, 1);
+}
+
+TEST(rule_interpreter, D03RuleFourKeepsThePrepositionOfAboutBeforeAnUnknownWord) {
+  const DisambiguationRun run = RunEng("a book about Geneva");
+  ASSERT_EQ(run.after.size(), 4u);
+  ExpectOnlyPreposition(run, 2);
+  ASSERT_EQ(run.after[3].candidates.size(), 1u);
+  EXPECT_EQ(run.after[3].candidates[0].surface, "Geneva");
+  EXPECT_TRUE(run.after[3].candidates[0].features.empty());
+  EXPECT_EQ(FiredIds(run.trace), Ids({"4"}));
+}
+
+TEST(rule_interpreter, D04RulesTwoAndThreeKeepThePrepositionsInA15) {
+  const DisambiguationRun run = RunEng(kA15);
+  ASSERT_EQ(run.after.size(), 15u);
+  ExpectOnlyPreposition(run, 3);   // about
+  ExpectOnlyPreposition(run, 12);  // on
+  EXPECT_EQ(FiredIds(run.trace), Ids({"2", "3"}));
+}
+
+TEST(rule_interpreter, D05RulesTwoAndThreeLeaveTheArticlesAndNounsOfA15Whole) {
+  const DisambiguationRun run = RunEng(kA15);
+  ASSERT_EQ(run.after.size(), 15u);
+  ASSERT_EQ(run.before[4].candidates.size(), 3u);
+  ASSERT_EQ(run.before[13].candidates.size(), 3u);
+  ExpectKept(run, 4);   // the
+  ExpectKept(run, 13);  // the
+  ExpectKept(run, 5);   // city
+  ExpectKept(run, 14);  // table
+}
+
+// D06: one test per basic.yaml row that holds no in, on or about.
+#define D06_ROW(NAME, TEXT)                                      \
+  TEST(rule_interpreter, D06##NAME##NoEnglishDRuleFires) {       \
+    const DisambiguationRun run = RunEng(TEXT);                  \
+    ExpectAllKept(run);                                          \
+    EXPECT_TRUE(run.trace.entries.empty());                      \
+  }
+
+D06_ROW(A01, "book")
+D06_ROW(A02, "the book")
+D06_ROW(A03, "a book")
+D06_ROW(A04, "books")
+D06_ROW(A05, "the books")
+D06_ROW(A06, "all the books")
+D06_ROW(A08, "a beautiful book")
+D06_ROW(A10, "some days before the summer")
+D06_ROW(A11, "the beautiful car")
+D06_ROW(A12, "a very beautiful car")
+D06_ROW(A13, "John and Mary")
+D06_ROW(A14, "a car, a book and a mug")
+#undef D06_ROW
+
+TEST(rule_interpreter, D07RuleTwoKeepsThePrepositionOfOnInABookOnABox) {
+  const DisambiguationRun run = RunEng("a book on a box");
+  ASSERT_EQ(run.after.size(), 5u);
+  ExpectOnlyPreposition(run, 2);
+  ExpectKept(run, 3);
+  EXPECT_EQ(FiredIds(run.trace), Ids({"2"}));
+}
+
+TEST(rule_interpreter, D08RuleOneKeepsThePrepositionOfInBeforeADefiniteArticle) {
+  const DisambiguationRun run = RunEng("some days in the summer");
+  ASSERT_EQ(run.after.size(), 5u);
+  ExpectOnlyPreposition(run, 2);
+  ExpectKept(run, 3);
+  EXPECT_EQ(FiredIds(run.trace), Ids({"1"}));
+}
+
+TEST(rule_interpreter, D09AdverbialInInComeInKeepsEveryReadingAndTheAdverbFirst) {
+  const DisambiguationRun run = RunEng("come in");
+  ASSERT_EQ(run.after.size(), 2u);
+  ExpectKept(run, 1);
+  const Candidate& front = run.after[1].candidates.front();
+  EXPECT_TRUE(HasFeature(front, "LEX", "A"));
+  EXPECT_TRUE(HasFeature(front, "POS", "AAV"));
+  EXPECT_TRUE(run.trace.entries.empty());
+}
+
+TEST(rule_interpreter, D10AdverbialOnInTheTortoiseWentOnKeepsEveryReadingAndTheAdverbFirst) {
+  const DisambiguationRun run = RunEng(
+      "The Tortoise went on with a slow but steady pace straight to the end of the course.");
+  ASSERT_GT(run.after.size(), 3u);
+  EXPECT_EQ(run.after[3].candidates.front().surface, "on");
+  ExpectKept(run, 3);
+  const Candidate& front = run.after[3].candidates.front();
+  EXPECT_TRUE(HasFeature(front, "LEX", "A"));
+  EXPECT_TRUE(HasFeature(front, "POS", "AAV"));
+  EXPECT_TRUE(run.trace.entries.empty());
+}
+
+TEST(rule_interpreter, D11AdverbialAboutBeforeAFullStopKeepsEveryReadingAndTheAdverbFirst) {
+  const DisambiguationRun run = RunEng("he walked about.");
+  ASSERT_EQ(run.after.size(), 4u);
+  EXPECT_EQ(run.after[2].candidates.front().surface, "about");
+  EXPECT_EQ(run.after[3].candidates.front().surface, ".");
+  ExpectKept(run, 2);
+  const Candidate& front = run.after[2].candidates.front();
+  EXPECT_TRUE(HasFeature(front, "LEX", "A"));
+  EXPECT_TRUE(HasFeature(front, "POS", "AAV"));
+  EXPECT_TRUE(run.trace.entries.empty());
+}
+
+// D12: B1 (one deletion per reading) and B2 (a #PREFERRED node is never pruned) at the smallest
+// size. Hand-built, no I/O. Today's matcher leaves position 0 with only `tim`.
+TEST(rule_interpreter, D12ARuleDeletesAReadingOnceAndNeverPrunesAPreferredNode) {
+  const GrammarRule rule_one{
+      .id = "1",
+      .kind = "disambiguation",
+      .lhs = "([in],^POS=PRE)(POS=ART,#PREFERRED)",
+      .rhs = "0",
+      .comment = "test-only copy of eng-dis-1"};
+  const RuleSet isolated = RuleSet::from_rules({rule_one}, {}, {}, {}, {}, {});
+  const RuleInterpreter interpreter(isolated);
+
+  const Candidate adverb{.surface = "in", .features = {{"LEX", "A"}, {"POS", "AAV"}}, .attributes = {}};
+  const Candidate adjective{.surface = "in", .features = {{"LEX", "J"}, {"POS", "ADJ"}}, .attributes = {}};
+  const Candidate plc{.surface = "in",
+                      .features = {{"LEX", "P"}, {"POS", "PRE"}, {"rel", "plc"}}, .attributes = {}};
+  const Candidate tim{.surface = "in",
+                      .features = {{"LEX", "P"}, {"POS", "PRE"}, {"rel", "tim"}}, .attributes = {}};
+  const Candidate art1{.surface = "a", .features = {{"LEX", "D"}, {"POS", "ART"}}, .attributes = {}};
+  const Candidate art2{.surface = "a", .features = {{"LEX", "D"}, {"POS", "ART"}}, .attributes = {}};
+  const Candidate noun{.surface = "a", .features = {{"LEX", "N"}, {"POS", "NOU"}}, .attributes = {}};
+
+  std::vector<Position> positions = {Position{.candidates = {adverb, adjective, plc, tim}},
+                                     Position{.candidates = {art1, art2, noun}}};
+  Trace trace;
+  interpreter.disambiguate(positions, trace);
+
+  ASSERT_EQ(positions[0].candidates.size(), 2u);
+  EXPECT_TRUE(HasFeature(positions[0].candidates[0], "rel", "plc"));
+  EXPECT_TRUE(HasFeature(positions[0].candidates[1], "rel", "tim"));
+  ASSERT_EQ(positions[1].candidates.size(), 3u);
+  EXPECT_TRUE(SameReadings(positions[1].candidates, {art1, art2, noun}));
+  EXPECT_EQ(FiredIds(trace), Ids({"1"}));
 }
 
 // --- Engine::load(RuleSet) is real: it keeps the RuleSet it was given and Engine::translate reads
