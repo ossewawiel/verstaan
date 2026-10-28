@@ -1200,4 +1200,7 @@ TreeResult RuleInterpreter::analyse_tree(Forest forest, Trace& trace) const {
   return TreeResult{.forest = std::move(forest), .status = Status::ok};
 }
 
+// Issue 180 stub: rows G20 to G30 of docs/factory/issues/180-test-cases.md fail on it.
+Status read_graph(const Forest& /*forest*/, Graph& /*graph*/) { return Status::not_implemented; }
+
 }  // namespace verstaan

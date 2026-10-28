@@ -2,7 +2,7 @@
 issue: 180
 title: "Write the mod relation into the UNL graph for A08 and A11"
 milestone: M3
-status: open
+status: in-progress
 depends_on: [22, 184, 194, 195, 196]
 agent: rule-author
 agents: [rule-author, test-writer, implementer]
@@ -10,7 +10,7 @@ model: opus
 effort: high
 checkpoint: 4
 commit: null
-worktree: null
+worktree: .worktrees/m3-180-mod-relation
 github_issue: 280
 ---
 ## What

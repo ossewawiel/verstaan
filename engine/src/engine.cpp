@@ -33,11 +33,9 @@ bool is_punctuation_token(std::string_view surface) {
   return kPunctuationBytes.find(surface.front()) != std::string_view::npos;
 }
 
-// The UW attached to a resolved candidate, carried through `features` under a reserved key
-// (Candidate's shape, verstaan/rule_interpreter.hpp, has no dedicated UW field) rather than a new
-// public struct member.
-constexpr std::string_view kUwFeatureKey = "$uw";
-
+// The UW attached to a resolved candidate, carried through `features` under the reserved key
+// `kUwFeatureKey` (verstaan/rule_interpreter.hpp; Candidate has no dedicated UW field) rather
+// than a new public struct member.
 std::string find_uw(const std::vector<Feature>& features) {
   for (const Feature& feature : features) {
     if (feature.first == kUwFeatureKey) {
