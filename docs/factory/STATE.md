@@ -5,5 +5,5 @@ Last completed:  #196 — A capitalised name with no dictionary entry enters the
 Next up:         #187 — Complete the afr and eng stores: meta.yaml, tests/, and rule references that
                  must resolve (M3)
 Branch / PR:     main, https://github.com/ossewawiel/verstaan.git, 0 files dirty, no gate stamp for
-                 28e64b6
+                 76c67d0
 Resume with:     /factory-run 187
