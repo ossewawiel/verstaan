@@ -17,6 +17,7 @@
 #include <gtest/gtest.h>
 
 #include <algorithm>
+#include <initializer_list>
 #include <string>
 #include <string_view>
 #include <vector>
@@ -158,9 +159,16 @@ Result TranslateEng(const char* text) {
   return EngToAfrEngine().translate(text, Options{.from = Lang::eng, .to = Lang::afr});
 }
 
+// Issue 181 (ADR 0024): generation appends entries whose rule starts with `afr-`. The analysis
+// assertions below read the entries before the first of those.
+bool IsGenerationEntry(const TraceEntry& entry) { return entry.rule.starts_with("afr-"); }
+
 std::vector<std::string> FiredIds(const Trace& trace) {
   std::vector<std::string> ids;
   for (const TraceEntry& entry : trace.entries) {
+    if (IsGenerationEntry(entry)) {
+      break;
+    }
     ids.push_back(entry.rule + (entry.event == TraceEvent::fired ? "" : " other"));
   }
   return ids;
@@ -172,8 +180,9 @@ std::size_t CountRule(const Trace& trace, std::string_view rule_id) {
 }
 
 bool AnyNotFired(const Trace& trace) {
-  return std::ranges::any_of(
-      trace.entries, [](const TraceEntry& entry) { return entry.event != TraceEvent::fired; });
+  return std::ranges::any_of(trace.entries, [](const TraceEntry& entry) {
+    return !IsGenerationEntry(entry) && entry.event != TraceEvent::fired;
+  });
 }
 
 void ExpectBeautiful(const Result& result, std::string_view noun_uw, std::string_view article,
@@ -278,7 +287,8 @@ TEST(engine_status, G09_a06_all_the_books_copies_no_link_with_a_closed_class_end
 
 // --- Issue 198, rows R01 to R09 (docs/factory/issues/198-test-cases.md): the plc, cnt and and
 // relations on A07, A09 and A13. Expected values transcribed from that table. A trace is asserted
-// by containment. Node UWs and attributes the table marks as findings (F1, F2, F3) are not asserted.
+// by containment. Node UWs and attributes the table marks as findings (F1, F2, F3) are not
+// asserted.
 // ---
 
 bool TraceStartsWith(const Trace& trace, const std::vector<std::string>& ids) {
@@ -306,7 +316,7 @@ std::size_t CountLabel(const Result& result, std::string_view label) {
 
 TEST(engine_status, R01_a07_a_book_in_a_box_has_the_plc_relation) {
   const Result result = TranslateEng("a book in a box");
-  EXPECT_EQ(result.status, Status::ok);
+  // The status claim moved to issue 199 (A07's exact match): `box` is partial under ADR 0025.
   ASSERT_EQ(result.unl.nodes.size(), 2U);
   EXPECT_EQ(result.unl.nodes[0].uw, "102870092");
   EXPECT_EQ(result.unl.nodes[0].attributes, std::vector<std::string>{"@indef"});
@@ -405,6 +415,163 @@ TEST(engine_status, R09_a_non_initial_capital_gets_the_temp_tag_and_rule_182_fir
   ASSERT_GE(result.unl.nodes.size(), 2U);
   EXPECT_EQ(result.unl.nodes[1].uw, "\"John\"");
   EXPECT_EQ(CountFired(result.trace, "182"), 1U);
+}
+
+// --- Issue 181, rows N01 to N19 and N55 (docs/factory/issues/181-test-cases.md): generation runs
+// inside Engine::translate. Texts transcribed from that table. A trace is asserted by containment
+// of fired entries. ---
+
+bool Fired(const Result& result, std::string_view rule_id) {
+  return CountFired(result.trace, rule_id) > 0;
+}
+
+void ExpectFired(const Result& result, std::initializer_list<std::string_view> ids) {
+  for (std::string_view id : ids) {
+    EXPECT_TRUE(Fired(result, id)) << "missing " << id;
+  }
+}
+
+void ExpectNotFired(const Result& result, std::initializer_list<std::string_view> ids) {
+  for (std::string_view id : ids) {
+    EXPECT_FALSE(Fired(result, id)) << "unexpected " << id;
+  }
+}
+
+TEST(engine_status, N01_a01_book_is_boek) {
+  const Result result = TranslateEng("book");
+  EXPECT_EQ(result.text, "boek");
+  EXPECT_EQ(result.status, Status::ok);
+  ExpectFired(result, {"afr-gen-227", "afr-inf-M3"});
+  ExpectNotFired(result, {"afr-gen-35", "afr-gen-36", "afr-gen-56", "afr-gen-195", "afr-gen-231"});
+}
+
+TEST(engine_status, N02_a02_the_book_is_die_boek) {
+  const Result result = TranslateEng("the book");
+  EXPECT_EQ(result.text, "die boek");
+  EXPECT_EQ(result.status, Status::ok);
+  ExpectFired(result, {"afr-gen-35", "afr-gen-125", "afr-gen-195", "afr-gen-230", "afr-gen-231",
+                       "afr-inf-M3"});
+  ExpectNotFired(result, {"afr-gen-33", "afr-gen-36", "afr-gen-67", "afr-gen-196", "afr-gen-229",
+                          "afr-dis-5"});
+}
+
+TEST(engine_status, N03_a03_a_book_is_n_boek) {
+  const Result result = TranslateEng("a book");
+  EXPECT_EQ(result.text, "'n boek");
+  EXPECT_EQ(result.status, Status::ok);
+  ExpectFired(result, {"afr-gen-36", "afr-gen-195", "afr-gen-231"});
+  ExpectNotFired(result, {"afr-gen-35", "afr-dis-5"});
+}
+
+TEST(engine_status, N04_a04_books_is_boeke) {
+  const Result result = TranslateEng("books");
+  EXPECT_EQ(result.text, "boeke");
+  EXPECT_EQ(result.status, Status::ok);
+  ExpectFired(result, {"afr-gen-56", "afr-gen-227", "afr-inf-M3"});
+  ExpectNotFired(result, {"afr-gen-35", "afr-gen-36", "afr-gen-40", "afr-gen-231", "afr-inf-M2",
+                          "afr-inf-M7", "afr-inf-M16"});
+}
+
+TEST(engine_status, N05_a05_the_books_is_die_boeke) {
+  const Result result = TranslateEng("the books");
+  EXPECT_EQ(result.text, "die boeke");
+  EXPECT_EQ(result.status, Status::ok);
+  ExpectFired(result, {"afr-gen-35", "afr-gen-56", "afr-inf-M3"});
+  ExpectNotFired(result, {"afr-gen-37", "afr-gen-60"});
+}
+
+TEST(engine_status, N08_a08_a_beautiful_book_is_n_mooi_boek) {
+  const Result result = TranslateEng("a beautiful book");
+  EXPECT_EQ(result.text, "'n mooi boek");
+  EXPECT_EQ(result.status, Status::ok);
+  ExpectFired(result, {"afr-gen-8", "afr-gen-36", "afr-gen-67", "afr-gen-124", "afr-gen-196"});
+  ExpectNotFired(result, {"afr-gen-9", "afr-gen-26", "afr-gen-35", "afr-gen-42", "afr-gen-234"});
+}
+
+TEST(engine_status, N10_a11_the_beautiful_car_is_die_mooi_motor) {
+  const Result result = TranslateEng("the beautiful car");
+  EXPECT_EQ(result.text, "die mooi motor");
+  EXPECT_EQ(result.status, Status::ok);
+  ExpectFired(result, {"afr-gen-8", "afr-gen-35", "afr-gen-67", "afr-gen-196"});
+  ExpectNotFired(result, {"afr-gen-36"});
+}
+
+TEST(engine_status, N12_a13_john_and_mary_is_john_en_mary) {
+  const Result result = TranslateEng("John and Mary");
+  EXPECT_EQ(result.text, "John en Mary");
+  EXPECT_EQ(result.status, Status::ok);
+  ExpectFired(result, {"afr-gen-33", "afr-gen-229"});
+  ExpectNotFired(result, {"afr-gen-34", "afr-gen-58", "afr-gen-227", "afr-inf-M3"});
+}
+
+TEST(engine_status, N15_determiner_disambiguation_stays_silent_on_a02_a03_a07) {
+  for (const char* text : {"the book", "a book", "a book in a box"}) {
+    ExpectNotFired(TranslateEng(text), {"afr-dis-5"});
+  }
+}
+
+TEST(engine_status, N16_a09_a_book_about_geneva_appends_the_mark) {
+  const Result result = TranslateEng("a book about Geneva");
+  EXPECT_EQ(result.status, Status::partial);
+  EXPECT_TRUE(result.text.starts_with("'n boek "));
+  const std::string mark = "⟦Geneva⟧";
+  const std::size_t first = result.text.find(mark);
+  ASSERT_NE(first, std::string::npos);
+  EXPECT_EQ(result.text.find(mark, first + 1), std::string::npos);
+  EXPECT_TRUE(Fired(result, "afr-gen-36"));
+}
+
+TEST(engine_status, N17_book_xyzzy_appends_the_unknown_word) {
+  const Result result = TranslateEng("book xyzzy");
+  EXPECT_EQ(result.text, "boek ⟦xyzzy⟧");
+  EXPECT_EQ(result.status, Status::partial);
+}
+
+TEST(engine_status, N18_book_geneva_appends_the_name) {
+  const Result result = TranslateEng("book Geneva");
+  EXPECT_EQ(result.text, "boek ⟦Geneva⟧");
+  EXPECT_EQ(result.status, Status::partial);
+  ExpectNotFired(result, {"afr-gen-8", "afr-gen-9"});
+}
+
+TEST(engine_status, N19_a_closed_class_word_alone_gives_empty_ok_text) {
+  const Result result = TranslateEng("the");
+  EXPECT_TRUE(result.text.empty());
+  EXPECT_EQ(result.status, Status::ok);
+  EXPECT_TRUE(result.unl.nodes.empty());
+}
+
+TEST(engine_status, N55_a02_trace_is_analysis_entries_then_qualified_generation_entries) {
+  const Result result = TranslateEng("the book");
+  std::size_t first = 0;
+  while (first < result.trace.entries.size() && !IsGenerationEntry(result.trace.entries[first])) {
+    ++first;
+  }
+  ASSERT_LT(first, result.trace.entries.size());
+  std::vector<std::string> before;
+  for (std::size_t i = 0; i < first; ++i) {
+    before.push_back(result.trace.entries[i].event == TraceEvent::fired
+                         ? result.trace.entries[i].rule
+                         : result.trace.entries[i].rule + " other");
+  }
+  EXPECT_EQ(before, (std::vector<std::string>{"70", "60", "72", "12", "62"}));
+  for (std::size_t i = first; i < result.trace.entries.size(); ++i) {
+    const std::string& rule = result.trace.entries[i].rule;
+    EXPECT_TRUE(rule.starts_with("afr-gen-") || rule.starts_with("afr-inf-") ||
+                rule.starts_with("afr-dis-"))
+        << rule;
+  }
+}
+
+TEST(engine_status, N65_directions_puts_no_grammar_quote_into_the_text) {
+  const Result result = TranslateEng("directions");
+  EXPECT_EQ(result.text.find('"'), std::string::npos) << result.text;
+}
+
+TEST(engine_status, N66_the_book_and_john_is_die_boek_en_john) {
+  const Result result = TranslateEng("the book and John");
+  EXPECT_EQ(result.text, "die boek en John");
+  EXPECT_EQ(result.status, Status::ok);
 }
 
 }  // namespace

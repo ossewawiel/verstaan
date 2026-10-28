@@ -139,11 +139,11 @@ std::vector<Position> build_positions(const std::vector<Token>& tokens,
 
 // Runtime-tables back end (issue 22's RuleInterpreter). Tokenises (issue 19), looks every token up
 // against the `from` dictionary (issue 20, `rules_.from_store_root()`), disambiguates, runs the
-// tree pass (issue 180, ADR 0017: make_forest, analyse_tree, read_graph) and reports a real Status.
-// `data/languages/afr/grammar/generation.yaml` is a UNL relational tree grammar and no method
-// applies it yet (docs/factory/issues/181 owns generation). Until then, `text` echoes each resolved
-// token's own surface form and marks every unresolved one with SPEC.md §3.4's `⟦word⟧`, so
-// Status::partial's contract holds without claiming a generation step it does not implement.
+// tree pass (issue 180, ADR 0017: make_forest, analyse_tree, read_graph) and then the generation
+// pass (issue 181, ADR 0021: `RuleInterpreter::generate`) against the `to` dictionary
+// (`rules_.to_store_root()`). `text` is the generated text, then SPEC.md §3.4's `⟦word⟧` mark for
+// every source token that has no dictionary entry and is no name (ADR 0025); `Status::partial`
+// when `text` holds a mark.
 Result Engine::translate(std::string_view text, Options options) const {
   Result result;
 
@@ -193,27 +193,36 @@ Result Engine::translate(std::string_view text, Options options) const {
   const bool no_parse =
       tree.status == Status::no_parse || read_graph(tree.forest, result.unl) == Status::no_parse;
 
-  bool any_unresolved = false;
-  std::string rendered;
-  for (std::size_t i = 0; i < tokens.size(); ++i) {
-    if (!rendered.empty()) {
-      rendered += ' ';
-    }
-    if (lookups[i].resolved() || is_punctuation_token(tokens[i].surface)) {
-      rendered += tokens[i].surface;
-    } else {
-      any_unresolved = true;
-      rendered += mark_untranslated(tokens[i].surface);
-    }
-  }
-
-  result.text = std::move(rendered);
   if (no_parse) {
     result.status = Status::no_parse;
     result.unl = Graph{};
-  } else {
-    result.status = any_unresolved ? Status::partial : Status::ok;
+    return result;
   }
+
+  // One source surface per graph node, in `read_graph`'s order (ADR 0025).
+  std::vector<std::string> surfaces;
+  for (const TreeNode& node : tree.forest.nodes) {
+    const auto uw = std::ranges::find_if(
+        node.features, [](const Feature& feature) { return feature.first == kUwFeatureKey; });
+    if (!node.deleted && uw != node.features.end() && !uw->second.empty()) {
+      surfaces.push_back(node.surface);
+    }
+  }
+  const Dictionary to_dictionary = Dictionary::load(rules_.to_store_root(), options.to);
+  GenerationResult generated =
+      interpreter.generate(result.unl, to_dictionary, surfaces, options.to, result.trace);
+
+  result.text = std::move(generated.text);
+  for (std::size_t i = 0; i < tokens.size(); ++i) {
+    if (lookups[i].resolved() || literal[i] || is_punctuation_token(tokens[i].surface)) {
+      continue;
+    }
+    if (!result.text.empty()) {
+      result.text += ' ';
+    }
+    result.text += mark_untranslated(tokens[i].surface);
+  }
+  result.status = result.text.find("⟦") != std::string::npos ? Status::partial : Status::ok;
   return result;
 }
 

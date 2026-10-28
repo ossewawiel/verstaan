@@ -3,7 +3,7 @@ issue: 183
 title: "Wire the English to UNL to Afrikaans pipeline for the fixed sentence set"
 milestone: M3
 status: open
-depends_on: [180, 181, 182, 185]
+depends_on: [180, 181, 182, 185, 199]
 agent: implementer
 agents: [implementer]
 model: sonnet

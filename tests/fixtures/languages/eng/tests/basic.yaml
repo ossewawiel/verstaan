@@ -64,7 +64,7 @@
   source: {origin: ugoa1, line: 35, issue: 24}
 - id: A07
   input: "a book in a box"
-  expected: "'n boek in 'n doos"
+  expected: "'n boek in 'n boks"
   direction: eng-afr
   status: ok
   tier: basic
@@ -100,7 +100,7 @@
   source: {origin: ugoa1, line: 143, issue: 24}
 - id: A11
   input: "the beautiful car"
-  expected: "die mooi kar"
+  expected: "die mooi motor"
   direction: eng-afr
   status: ok
   tier: basic
@@ -109,7 +109,7 @@
   source: {origin: ugoa1, line: 209, issue: 24}
 - id: A12
   input: "a very beautiful car"
-  expected: "'n baie mooi kar"
+  expected: "'n baie mooi motor"
   direction: eng-afr
   status: ok
   tier: basic

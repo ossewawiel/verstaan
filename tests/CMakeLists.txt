@@ -7,6 +7,7 @@ add_executable(verstaan_tests
   unit/dictionary_lookup_test.cpp
   unit/engine_status_test.cpp
   unit/engine_test.cpp
+  unit/generation_test.cpp
   unit/read_graph_test.cpp
   unit/rule_interpreter_test.cpp
   unit/tokeniser_test.cpp

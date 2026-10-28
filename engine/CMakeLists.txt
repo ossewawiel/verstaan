@@ -2,9 +2,11 @@
 add_library(verstaan_core STATIC
   src/dictionary_lookup.cpp
   src/engine.cpp
+  src/generation.cpp
   src/rule_interpreter.cpp
   src/tokeniser.cpp
   src/tree_pass.cpp
+  src/tree_syntax.cpp
 )
 
 target_include_directories(verstaan_core PUBLIC

@@ -268,16 +268,16 @@ constexpr int kFieldsAfterHeadword = 7;
 // One shard per lower-case letter, 'a' through 'z' (SPEC.md §3.3).
 constexpr int kShardCount = 26;
 
+// The shard of a headword: its first ASCII letter, lower-cased, as `tools/importer`'s
+// `shard_letter` keys it (ADR 0022), so the apostrophe article `'n` is in `n.yaml`.
 int shard_index(std::string_view surface) {
-  if (surface.empty()) {
-    return -1;
-  }
-  const char first = surface.front();
-  if (first >= 'a' && first <= 'z') {
-    return first - 'a';
-  }
-  if (first >= 'A' && first <= 'Z') {
-    return first - 'A';
+  for (const char c : surface) {
+    if (c >= 'a' && c <= 'z') {
+      return c - 'a';
+    }
+    if (c >= 'A' && c <= 'Z') {
+      return c - 'A';
+    }
   }
   return -1;
 }
@@ -376,6 +376,30 @@ void record_tagset_warnings(const DictionaryEntry& entry,
   }
 }
 
+// Every non-empty `uw` of a shard with the byte offset of its entry's `- headword:` line, in file
+// order.
+std::vector<std::pair<std::string, std::size_t>> scan_uws(std::string_view content) {
+  static constexpr std::string_view kHeadwordPrefix = "- headword: ";
+  static constexpr std::string_view kUwPrefix = "  uw: ";
+  std::vector<std::pair<std::string, std::size_t>> found;
+  std::size_t entry_offset = 0;
+  std::size_t pos = 0;
+  while (pos < content.size()) {
+    const std::size_t eol = content.find('\n', pos);
+    const std::string_view line = strip_cr(content.substr(pos, eol - pos));
+    if (line.starts_with(kHeadwordPrefix)) {
+      entry_offset = pos;
+    } else if (line.starts_with(kUwPrefix)) {
+      std::string entry_uw = parse_scalar(line.substr(kUwPrefix.size()));
+      if (!entry_uw.empty()) {
+        found.emplace_back(std::move(entry_uw), entry_offset);
+      }
+    }
+    pos = (eol == std::string_view::npos) ? content.size() : eol + 1;
+  }
+  return found;
+}
+
 }  // namespace
 
 Dictionary::Dictionary(std::string store_root, Lang lang, std::vector<std::string> tagset_keys)
@@ -393,6 +417,15 @@ Dictionary Dictionary::load(std::string_view store_root, Lang lang) {
   return {std::string(store_root), lang, std::move(tagset_keys)};
 }
 
+const std::string& Dictionary::shard_text(int index) const {
+  const auto shard = static_cast<std::size_t>(index);
+  if (!shard_loaded_[shard]) {
+    shard_cache_[shard] = read_file(shard_path(store_root_, index)).value_or(std::string());
+    shard_loaded_[shard] = true;
+  }
+  return shard_cache_[shard];
+}
+
 std::vector<DictionaryEntry> Dictionary::lookup(std::string_view surface) const {
   std::vector<DictionaryEntry> results;
   const int index = shard_index(surface);
@@ -400,12 +433,7 @@ std::vector<DictionaryEntry> Dictionary::lookup(std::string_view surface) const 
     return results;
   }
 
-  const auto shard = static_cast<std::size_t>(index);
-  if (!shard_loaded_[shard]) {
-    shard_cache_[shard] = read_file(shard_path(store_root_, index)).value_or(std::string());
-    shard_loaded_[shard] = true;
-  }
-  const std::string& content = shard_cache_[shard];
+  const std::string& content = shard_text(index);
   if (content.empty()) {
     return results;
   }
@@ -437,6 +465,39 @@ std::vector<DictionaryEntry> Dictionary::lookup(std::string_view surface) const 
     results.push_back(std::move(entry));
   }
 
+  return results;
+}
+
+std::vector<DictionaryEntry> Dictionary::lookup_uw(std::string_view uw) const {
+  std::vector<DictionaryEntry> results;
+  if (uw.empty()) {
+    return results;
+  }
+  // The first call walks every shard once and records where each non-empty UW sits.
+  if (!uw_indexed_) {
+    for (int index = 0; index < kShardCount; ++index) {
+      for (auto& [entry_uw, offset] : scan_uws(shard_text(index))) {
+        uw_index_[std::move(entry_uw)].push_back(UwLocation{.shard = index, .offset = offset});
+      }
+    }
+    uw_indexed_ = true;
+  }
+
+  static constexpr std::string_view kHeadwordPrefix = "- headword: ";
+  const auto found = uw_index_.find(std::string(uw));
+  if (found == uw_index_.end()) {
+    return results;
+  }
+  for (const UwLocation& location : found->second) {
+    std::string_view remaining =
+        std::string_view(shard_text(location.shard)).substr(location.offset);
+    DictionaryEntry entry;
+    entry.headword = parse_scalar(next_line(remaining).substr(kHeadwordPrefix.size()));
+    entry.lang = lang_;
+    read_entry_fields(remaining, true, entry);
+    record_tagset_warnings(entry, tagset_keys_, warned_ids_, warnings_);
+    results.push_back(std::move(entry));
+  }
   return results;
 }
 

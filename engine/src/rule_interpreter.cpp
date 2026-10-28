@@ -20,6 +20,7 @@
 #include <utility>
 #include <vector>
 
+#include "inflection_syntax.hpp"
 #include "verstaan/rule_set.hpp"
 
 namespace verstaan {
@@ -176,14 +177,16 @@ std::string grammar_path(std::string_view store_root, std::string_view file_name
 }  // namespace
 
 RuleSet RuleSet::load(std::string_view from_store_root, std::string_view to_store_root) {
-  return {read_grammar_file(grammar_path(from_store_root, "disambiguation.yaml")),
-          read_grammar_file(grammar_path(from_store_root, "analysis.yaml")),
-          read_grammar_file(grammar_path(from_store_root, "inflection.yaml")),
-          read_grammar_file(grammar_path(from_store_root, "subcategorisation.yaml")),
-          read_grammar_file(grammar_path(to_store_root, "generation.yaml")),
-          read_grammar_file(grammar_path(to_store_root, "inflection.yaml")),
-          std::string(from_store_root),
-          std::string(to_store_root)};
+  RuleSet rules{read_grammar_file(grammar_path(from_store_root, "disambiguation.yaml")),
+                read_grammar_file(grammar_path(from_store_root, "analysis.yaml")),
+                read_grammar_file(grammar_path(from_store_root, "inflection.yaml")),
+                read_grammar_file(grammar_path(from_store_root, "subcategorisation.yaml")),
+                read_grammar_file(grammar_path(to_store_root, "generation.yaml")),
+                read_grammar_file(grammar_path(to_store_root, "inflection.yaml")),
+                std::string(from_store_root),
+                std::string(to_store_root)};
+  rules.to_disambiguation_ = read_grammar_file(grammar_path(to_store_root, "disambiguation.yaml"));
+  return rules;
 }
 
 RuleSet RuleSet::from_rules(std::vector<GrammarRule> disambiguation,
@@ -194,6 +197,20 @@ RuleSet RuleSet::from_rules(std::vector<GrammarRule> disambiguation,
                             std::vector<GrammarRule> to_inflection) {
   return {std::move(disambiguation),    std::move(analysis),   std::move(from_inflection),
           std::move(subcategorisation), std::move(generation), std::move(to_inflection)};
+}
+
+RuleSet RuleSet::from_rules(std::vector<GrammarRule> disambiguation,
+                            std::vector<GrammarRule> analysis,
+                            std::vector<GrammarRule> from_inflection,
+                            std::vector<GrammarRule> subcategorisation,
+                            std::vector<GrammarRule> generation,
+                            std::vector<GrammarRule> to_inflection,
+                            std::vector<GrammarRule> to_disambiguation) {
+  RuleSet rules =
+      from_rules(std::move(disambiguation), std::move(analysis), std::move(from_inflection),
+                 std::move(subcategorisation), std::move(generation), std::move(to_inflection));
+  rules.to_disambiguation_ = std::move(to_disambiguation);
+  return rules;
 }
 
 namespace {
@@ -577,8 +594,10 @@ void collect_disambiguation_deletions(const std::vector<NodePattern>& pattern,
   }
 }
 
+// `id_prefix` qualifies the trace id (ADR 0024): empty for the analysis-side grammar, `afr-dis-`
+// for the target grammar.
 void apply_disambiguation_rule(const GrammarRule& rule, std::vector<Position>& positions,
-                               Trace& trace) {
+                               Trace& trace, std::string_view id_prefix) {
   const std::vector<NodePattern> pattern = parse_lhs(rule.lhs);
   if (pattern.empty()) {
     return;
@@ -591,7 +610,7 @@ void apply_disambiguation_rule(const GrammarRule& rule, std::vector<Position>& p
   if (to_delete.empty()) {
     return;
   }
-  trace.entries.push_back(TraceEntry{.rule = rule.id});
+  trace.entries.push_back(TraceEntry{.rule = std::string(id_prefix) + rule.id});
 
   // Group deletions by position, highest candidate index first, so erasing does not shift an
   // index still pending deletion at the same position.
@@ -615,11 +634,19 @@ void apply_disambiguation_rule(const GrammarRule& rule, std::vector<Position>& p
 //   `"find":"replace"`   the same, the archive's other spelling for it (seen on M7's `"man":
 //                         "men"`; both operators behave the same way here, undistinguished, since
 //                         no rule this module is asked to run needs them told apart).
+//   `[N]:"y"`            replace character N with `y`: N counts from the end when negative
+//                         (`[-1]` is the last letter; wiki/A-rule.wikitext, Replacement), from 1
+//                         when positive.
 //   `"literal"`           replace the whole form with `literal` (no operator at all, e.g. M256's
 //                         `1PS&PRS:="am"`). ---
 
 struct AffixSpec {
-  enum class Kind : std::uint8_t { AppendAtPosition, Replace, WholeForm } kind = Kind::WholeForm;
+  enum class Kind : std::uint8_t {
+    AppendAtPosition,
+    Replace,
+    ReplaceCharacter,
+    WholeForm,
+  } kind = Kind::WholeForm;
   int position = 0;
   std::string find;
   std::string replace;
@@ -638,8 +665,25 @@ int parse_position(std::string_view raw) {
   return value;
 }
 
-AffixSpec parse_affix(std::string_view spec) {
+// An a-rule this module does not apply: a comma-joined action list (M5, M17), a prefix `"x"<n`
+// (M26) or a duplication `[N]+`. `inflect` leaves the base form alone for these.
+bool is_unsupported_affix(std::string_view spec) {
+  bool in_quotes = false;
+  for (const char c : spec) {
+    if (c == '"') {
+      in_quotes = !in_quotes;
+    } else if (!in_quotes && (c == ',' || c == '<' || c == '+')) {
+      return true;
+    }
+  }
+  return false;
+}
+
+std::optional<AffixSpec> parse_affix(std::string_view spec) {
   spec = trim(spec);
+  if (is_unsupported_affix(spec)) {
+    return std::nullopt;
+  }
   bool in_quotes = false;
   std::size_t op_pos = std::string_view::npos;
   for (std::size_t i = 0; i < spec.size(); ++i) {
@@ -659,6 +703,7 @@ AffixSpec parse_affix(std::string_view spec) {
         .replace = parse_scalar(spec),
     };
   }
+  const char op = spec[op_pos];
   const std::string_view lhs_part = trim(spec.substr(0, op_pos));
   const std::string replace_value = parse_scalar(trim(spec.substr(op_pos + 1)));
   if (!lhs_part.empty() && lhs_part.front() == '"') {
@@ -666,6 +711,14 @@ AffixSpec parse_affix(std::string_view spec) {
         .kind = AffixSpec::Kind::Replace,
         .position = 0,
         .find = parse_scalar(lhs_part),
+        .replace = replace_value,
+    };
+  }
+  if (op == ':' && !lhs_part.empty() && lhs_part.front() == '[') {
+    return AffixSpec{
+        .kind = AffixSpec::Kind::ReplaceCharacter,
+        .position = parse_position(lhs_part),
+        .find = {},
         .replace = replace_value,
     };
   }
@@ -687,6 +740,15 @@ std::string apply_affix(const AffixSpec& spec, std::string_view base) {
         return std::string(base.substr(0, base.size() - spec.find.size())) + spec.replace;
       }
       return std::string(base);
+    case AffixSpec::Kind::ReplaceCharacter: {
+      const auto size = static_cast<long>(base.size());
+      const long index = spec.position < 0 ? size + spec.position : spec.position - 1;
+      if (index < 0 || index >= size) {
+        return std::string(base);
+      }
+      const auto at = static_cast<std::size_t>(index);
+      return std::string(base.substr(0, at)) + spec.replace + std::string(base.substr(at + 1));
+    }
     case AffixSpec::Kind::AppendAtPosition: {
       const std::size_t remove =
           spec.position > 0 ? std::min(static_cast<std::size_t>(spec.position), base.size()) : 0;
@@ -696,9 +758,11 @@ std::string apply_affix(const AffixSpec& spec, std::string_view base) {
   return std::string(base);
 }
 
+}  // namespace
+
 // Splits a paradigm's rhs, `VALUE:=a-rule;VALUE:=a-rule;...`, into (VALUE, a-rule) pairs, quote-
 // aware so a `;` or `:=` inside a quoted find/replace string never splits early.
-std::vector<std::pair<std::string_view, std::string_view>> split_inflection_branches(
+std::vector<std::pair<std::string_view, std::string_view>> detail::split_inflection_branches(
     std::string_view rhs) {
   std::vector<std::pair<std::string_view, std::string_view>> branches;
   bool in_quotes = false;
@@ -723,8 +787,6 @@ std::vector<std::pair<std::string_view, std::string_view>> split_inflection_bran
   return branches;
 }
 
-}  // namespace
-
 void RuleInterpreter::disambiguate(std::vector<Position>& positions, Trace& trace) const {
   const std::vector<GrammarRule>& rules = rules_.disambiguation();
   if (rules.empty()) {
@@ -738,7 +800,15 @@ void RuleInterpreter::disambiguate(std::vector<Position>& positions, Trace& trac
     return;
   }
   for (const GrammarRule& rule : rules) {
-    apply_disambiguation_rule(rule, positions, trace);
+    apply_disambiguation_rule(rule, positions, trace, "");
+  }
+}
+
+void RuleInterpreter::disambiguate_target(std::vector<Position>& positions, Lang target_language,
+                                          Trace& trace) const {
+  const std::string prefix = std::string(detail::language_code(target_language)) + "-dis-";
+  for (const GrammarRule& rule : rules_.to_disambiguation()) {
+    apply_disambiguation_rule(rule, positions, trace, prefix);
   }
 }
 
@@ -763,11 +833,15 @@ std::string RuleInterpreter::inflect(std::string_view paradigm_id, std::string_v
     if (paradigm.id != paradigm_id) {
       continue;
     }
-    for (const auto& [value, a_rule] : split_inflection_branches(paradigm.rhs)) {
+    for (const auto& [value, a_rule] : detail::split_inflection_branches(paradigm.rhs)) {
       if (value != attribute) {
         continue;
       }
-      const std::string result = apply_affix(parse_affix(a_rule), base_form);
+      const std::optional<AffixSpec> affix = parse_affix(a_rule);
+      if (!affix) {
+        return std::string(base_form);
+      }
+      const std::string result = apply_affix(*affix, base_form);
       trace.entries.push_back(TraceEntry{.rule = std::string(paradigm_id)});
       return result;
     }
