@@ -874,5 +874,80 @@ TEST(tree_pass, T47_a_rule_that_does_not_parse_retires_as_unsupported) {
   EXPECT_EQ(CountFeature(run.result.forest.nodes[1], "B", ""), 1U);
 }
 
+// --- Issue 180, rows G11 to G14 (docs/factory/issues/180-test-cases.md): the edited eng rule 1.
+// ---
+
+RuleSet RuleOneAlone() { return OnlyRules({FindRule(RealRules().analysis(), "1")}); }
+
+RuleSet RuleOneThen177() {
+  return OnlyRules(
+      {FindRule(RealRules().analysis(), "1"), FindRule(RealRules().analysis(), "177")});
+}
+
+Forest BooksForest(bool with_both) {
+  std::vector<Feature> features = {{"LEX", "N"}, {"NUM", "PLR"}};
+  if (with_both) {
+    features.emplace_back("att", "@both");
+  }
+  return make_forest({Bare("books", std::move(features))});
+}
+
+TEST(tree_pass, G11_rule_one_marks_a_plural_noun_pl) {
+  const Outcome run = RunTree(RuleOneAlone(), BooksForest(false));
+  ASSERT_EQ(run.result.status, Status::ok);
+  ASSERT_EQ(run.trace.entries.size(), 1U);
+  EXPECT_EQ(run.trace.entries[0].rule, "1");
+  EXPECT_EQ(run.trace.entries[0].event, TraceEvent::fired);
+  ASSERT_GE(run.result.forest.nodes.size(), 2U);
+  EXPECT_EQ(run.result.forest.nodes[1].attributes, std::vector<std::string>{"@pl"});
+}
+
+TEST(tree_pass, G12_rule_one_leaves_a_plural_that_carries_both_alone) {
+  const Outcome run = RunTree(RuleOneAlone(), BooksForest(true));
+  ASSERT_EQ(run.result.status, Status::ok);
+  EXPECT_TRUE(run.trace.entries.empty());
+  ASSERT_GE(run.result.forest.nodes.size(), 2U);
+  EXPECT_EQ(run.result.forest.nodes[1].attributes, std::vector<std::string>{"@both"});
+}
+
+TEST(tree_pass, G13_rules_one_and_177_do_not_loop_on_both) {
+  const Outcome run = RunTree(RuleOneThen177(), BooksForest(true));
+  ASSERT_EQ(run.result.status, Status::ok);
+  EXPECT_TRUE(run.trace.entries.empty());
+  EXPECT_FALSE(AnyEvent(run.trace, TraceEvent::capped));
+  ASSERT_GE(run.result.forest.nodes.size(), 2U);
+  EXPECT_EQ(run.result.forest.nodes[1].attributes, std::vector<std::string>{"@both"});
+}
+
+TEST(tree_pass, G14_control_the_archive_rule_one_with_177_loops_to_the_cap) {
+  const RuleSet rules = OnlyRules({Rule("1", "(N,PLR,^@pl,^@multal,^@paucal,^@all)", "(+att=@pl)"),
+                                   FindRule(RealRules().analysis(), "177")});
+  const Outcome run = RunTree(rules, BooksForest(true));
+  ASSERT_EQ(run.result.status, Status::ok);
+  std::size_t fired1 = 0;
+  std::size_t fired177 = 0;
+  std::size_t capped1 = 0;
+  std::size_t capped177 = 0;
+  for (const TraceEntry& e : run.trace.entries) {
+    if (e.rule == "1" && e.event == TraceEvent::fired) {
+      ++fired1;
+    } else if (e.rule == "177" && e.event == TraceEvent::fired) {
+      ++fired177;
+    } else if (e.rule == "1" && e.event == TraceEvent::capped) {
+      ++capped1;
+    } else if (e.rule == "177" && e.event == TraceEvent::capped) {
+      ++capped177;
+    }
+  }
+  EXPECT_EQ(fired1, kTreePassRuleCap);
+  EXPECT_EQ(fired177, kTreePassRuleCap);
+  EXPECT_EQ(capped1, 1U);
+  EXPECT_EQ(capped177, 1U);
+  EXPECT_EQ(run.trace.entries.size(), 2 * kTreePassRuleCap + 2);
+  ASSERT_FALSE(run.trace.entries.empty());
+  EXPECT_EQ(run.trace.entries.back().rule, "177");
+  EXPECT_EQ(run.trace.entries.back().event, TraceEvent::capped);
+}
+
 }  // namespace
 }  // namespace verstaan

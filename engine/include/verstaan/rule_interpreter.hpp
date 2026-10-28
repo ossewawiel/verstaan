@@ -92,6 +92,25 @@ struct TreeResult {
 // feature value into that node's `attributes`. Makes no link.
 [[nodiscard]] Forest make_forest(std::vector<Candidate> nodes);
 
+// The feature key under which `Engine::translate` carries a word's UW through a Candidate and a
+// TreeNode: `{"$uw", "102870092"}`. A closed-class word carries `{"$uw", ""}`; a word with no
+// dictionary entry and no name literal carries no `$uw` feature. No grammar rule reads it.
+inline constexpr std::string_view kUwFeatureKey = "$uw";
+
+// The hand-over from the tree pass to the UNL graph (issue 180,
+// docs/factory/issues/180-test-cases.md). Clears `graph`, then fills it from `forest`:
+//   - `graph.nodes`: one Node per graph node, in arena order. A graph node is a live forest node
+//     whose `$uw` feature is present and not empty. Its Node takes that UW and the node's
+//     `attributes`, in order. A closed-class word, a sentinel, a hyper-node and a word with no
+//     UW are not graph nodes.
+//   - `graph.relations`: one Relation per UNL link, in graph order. A UNL link is a link whose
+//     label starts with a lower-case letter `a` to `z` (`mod`, `or`, `to`) and whose `from` and
+//     `to` both name graph nodes. `Relation::from` is the head, `Relation::to` the dependent, both
+//     as indices into `graph.nodes`. Any other link is not copied.
+// Returns `Status::ok`. Returns `Status::no_parse`, and leaves `graph` empty, when `forest` fails
+// ADR 0017's readability check.
+[[nodiscard]] Status read_graph(const Forest& forest, Graph& graph);
+
 // Applies one RuleSet's disambiguation and analysis rules, and one paradigm at a time from either
 // of its inflection lists, against hand-built input. Read-only over its RuleSet; the RuleSet
 // outlives every RuleInterpreter built from it.
@@ -123,7 +142,8 @@ class RuleInterpreter {
   //
   // The flat pass. It cannot build a tree, and it reads a link term such as `NA(%x;%y)` as a
   // one-node pattern, so it appends trace entries for rules 80 to 176 that change nothing. The
-  // analysis pipeline moves to `analyse_tree` in issue 180 (ADR 0017).
+  // analysis pipeline runs `analyse_tree` since issue 180 (ADR 0017); this flat pass stays for its
+  // own tests.
   [[nodiscard]] std::vector<Candidate> analyse(std::vector<Candidate> nodes, Trace& trace) const;
 
   // The tree pass (ADR 0017). Runs every rule of grammar/analysis.yaml over `forest` in the

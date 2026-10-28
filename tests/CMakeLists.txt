@@ -3,14 +3,16 @@ include(GoogleTest)
 
 # Engine unit tests. Label `fast` (docs/standards/testing.md).
 add_executable(verstaan_tests
+  unit/cli_trace_line_test.cpp
   unit/dictionary_lookup_test.cpp
   unit/engine_status_test.cpp
   unit/engine_test.cpp
+  unit/read_graph_test.cpp
   unit/rule_interpreter_test.cpp
   unit/tokeniser_test.cpp
   unit/tree_pass_test.cpp
 )
-target_link_libraries(verstaan_tests PRIVATE verstaan_core GTest::gtest GTest::gtest_main)
+target_link_libraries(verstaan_tests PRIVATE verstaan_core verstaan_cli_trace GTest::gtest GTest::gtest_main)
 target_compile_features(verstaan_tests PRIVATE cxx_std_20)
 verstaan_set_warnings(verstaan_tests)
 

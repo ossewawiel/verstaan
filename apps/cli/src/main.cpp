@@ -14,6 +14,7 @@
 #include <string_view>
 #include <vector>
 
+#include "trace_line.hpp"
 #include "verstaan/engine.hpp"
 #include "verstaan/rule_set.hpp"
 
@@ -152,7 +153,7 @@ int main(int argc, char** argv) {
 
   if (trace_requested) {
     for (const auto& entry : result.trace.entries) {
-      std::puts(entry.rule.c_str());
+      std::puts(verstaan::cli::trace_line(entry).c_str());
     }
   }
   std::puts(result.text.c_str());

@@ -50,6 +50,8 @@ term here instead, with the file that defines it.
 | Forest | The tree pass's structure: an arena of nodes, the top-level list, and every link. | ADR 0017 |
 | Hyper-node | A forest node that holds links. A right-side group around a link term makes one. The archive's term. | ADR 0017 |
 | Link | A labelled edge between two forest nodes: a syntactic link such as `NB` or `NA`, or, once relabelled, a UNL relation such as `mod`. | ADR 0017 |
+| Graph node | A live forest node with a non-empty UW. Only graph nodes enter the UNL graph. | ADR 0019 |
+| UNL link | A link whose label starts with a lower-case letter and whose two ends are graph nodes. `read_graph` copies it into the graph as a relation. | ADR 0019 |
 | Sentinel | `SHEAD` or `STAIL`, the system node at each end of a forest's list. | ADR 0017 |
 | Visit order | The tree pass's match order for a one-node pattern: the list left to right, each hyper-node's contents top-down, then any other live node in arena order. | ADR 0017 |
 | Link order | The tree pass's match order for a link term: by the scope's place in visit order, then graph order. | ADR 0017 |
