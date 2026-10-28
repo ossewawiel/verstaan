@@ -196,6 +196,19 @@ RuleSet RuleSet::from_rules(std::vector<GrammarRule> disambiguation,
           std::move(subcategorisation), std::move(generation), std::move(to_inflection)};
 }
 
+// Stub (issue 181, docs/standards/testing.md): drops `to_disambiguation` until the implementer
+// fills the body, so `to_disambiguation()` stays empty.
+RuleSet RuleSet::from_rules(std::vector<GrammarRule> disambiguation,
+                            std::vector<GrammarRule> analysis,
+                            std::vector<GrammarRule> from_inflection,
+                            std::vector<GrammarRule> subcategorisation,
+                            std::vector<GrammarRule> generation,
+                            std::vector<GrammarRule> to_inflection,
+                            std::vector<GrammarRule> /*to_disambiguation*/) {
+  return from_rules(std::move(disambiguation), std::move(analysis), std::move(from_inflection),
+                    std::move(subcategorisation), std::move(generation), std::move(to_inflection));
+}
+
 namespace {
 
 // --- LHS pattern parsing. One `<LL RULE>` left side (transformation-grammar.md) is a sequence of

@@ -111,6 +111,17 @@ inline constexpr std::string_view kUwFeatureKey = "$uw";
 // ADR 0017's readability check.
 [[nodiscard]] Status read_graph(const Forest& forest, Graph& graph);
 
+// What `RuleInterpreter::generate` returns (issue 181, ADR 0021). `forest` is the forest as the
+// generation pass left it: `forest.list` is the final word list, SHEAD first, STAIL last, with
+// the blank nodes rule afr-gen-231 inserted. `text` joins the surfaces of that list, sentinels
+// left out, then every fall-through mark ADR 0025 appends. `status` is `ok`, or `partial` when
+// `text` holds a mark.
+struct GenerationResult {
+  Forest forest;
+  std::string text;
+  Status status = Status::not_implemented;
+};
+
 // Applies one RuleSet's disambiguation and analysis rules, and one paradigm at a time from either
 // of its inflection lists, against hand-built input. Read-only over its RuleSet; the RuleSet
 // outlives every RuleInterpreter built from it.
@@ -174,6 +185,27 @@ class RuleInterpreter {
   [[nodiscard]] std::string inflect(std::string_view paradigm_id, std::string_view attribute,
                                     std::string_view base_form, bool from_language,
                                     Trace& trace) const;
+
+  // The generation pass (issue 181, ADR 0021). Builds a forest from `graph`: one word node per
+  // graph node, its afr reading chosen from `target` by ADR 0023, and one link per relation. Runs
+  // every rule of `generation()` over it as one first-match loop (ADR 0017's run order, file order
+  // encoding NN, NT, TT, TL and the list rules), then `to_disambiguation()` over the final list,
+  // and returns the text. `source_surfaces[i]` is graph node `i`'s source-language surface, the
+  // text ADR 0025's fall-through mark holds; a missing entry marks the node with its UW.
+  // Every trace entry it appends carries ADR 0024's qualified id, `<iso3>-gen-<id>`,
+  // `<iso3>-dis-<id>` or `<iso3>-inf-<id>`, with `<iso3>` from `target_language`.
+  // Stub: returns a GenerationResult with Status::not_implemented and appends nothing.
+  [[nodiscard]] GenerationResult generate(const Graph& graph, const Dictionary& target,
+                                          const std::vector<std::string>& source_surfaces,
+                                          Lang target_language, Trace& trace) const;
+
+  // `to_disambiguation()` applied to `positions` by `disambiguate()`'s own algorithm (ADR 0018),
+  // for the generated word list (issue 181, ADR 0021). Appends one `<iso3>-dis-<id>` entry per
+  // rule that deleted at least one candidate (ADR 0024). An empty `to_disambiguation()` leaves
+  // every position as it stands.
+  // Stub: changes nothing and appends nothing.
+  void disambiguate_target(std::vector<Position>& positions, Lang target_language,
+                           Trace& trace) const;
 
  private:
   const RuleSet& rules_;

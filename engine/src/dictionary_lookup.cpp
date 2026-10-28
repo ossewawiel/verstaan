@@ -440,6 +440,9 @@ std::vector<DictionaryEntry> Dictionary::lookup(std::string_view surface) const 
   return results;
 }
 
+// Stub (issue 181, docs/standards/testing.md): no entry until the implementer fills the body.
+std::vector<DictionaryEntry> Dictionary::lookup_uw(std::string_view /*uw*/) const { return {}; }
+
 std::vector<LookupEntry> Dictionary::lookup_tokens(const std::vector<Token>& tokens) const {
   std::vector<LookupEntry> results;
   results.reserve(tokens.size());

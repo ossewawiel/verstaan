@@ -344,11 +344,12 @@ std::vector<Position> BuildEngPositions(const std::string& text) {
       for (const DictionaryEntry& entry : lookups[i].entries) {
         std::vector<Feature> features = entry.features;
         features.emplace_back("$uw", entry.uw);
-        position.candidates.push_back(
-            Candidate{.surface = std::string(tokens[i].surface), .features = features, .attributes = {}});
+        position.candidates.push_back(Candidate{
+            .surface = std::string(tokens[i].surface), .features = features, .attributes = {}});
       }
     } else {
-      position.candidates.push_back(Candidate{.surface = std::string(tokens[i].surface), .features = {}, .attributes = {}});
+      position.candidates.push_back(
+          Candidate{.surface = std::string(tokens[i].surface), .features = {}, .attributes = {}});
     }
     positions.push_back(std::move(position));
   }
@@ -500,11 +501,11 @@ TEST(rule_interpreter, D05RulesTwoAndThreeLeaveTheArticlesAndNounsOfA15Whole) {
 }
 
 // D06: one test per basic.yaml row that holds no in, on or about.
-#define D06_ROW(NAME, TEXT)                                      \
-  TEST(rule_interpreter, D06##NAME##NoEnglishDRuleFires) {       \
-    const DisambiguationRun run = RunEng(TEXT);                  \
-    ExpectAllKept(run);                                          \
-    EXPECT_TRUE(run.trace.entries.empty());                      \
+#define D06_ROW(NAME, TEXT)                                \
+  TEST(rule_interpreter, D06##NAME##NoEnglishDRuleFires) { \
+    const DisambiguationRun run = RunEng(TEXT);            \
+    ExpectAllKept(run);                                    \
+    EXPECT_TRUE(run.trace.entries.empty());                \
   }
 
 D06_ROW(A01, "book")
@@ -577,7 +578,8 @@ std::vector<Candidate> InReadings(const char* surface) {
 }
 
 std::vector<Candidate> ArticleReadings() {
-  return {Reading("a", {{"LEX", "D"}, {"POS", "ART"}}), Reading("a", {{"LEX", "N"}, {"POS", "NOU"}})};
+  return {Reading("a", {{"LEX", "D"}, {"POS", "ART"}}),
+          Reading("a", {{"LEX", "N"}, {"POS", "NOU"}})};
 }
 
 std::vector<Position> HandBuilt(const char* first, std::vector<Candidate> box) {
@@ -646,8 +648,8 @@ TEST(rule_interpreter, D09AdverbialInInComeInKeepsEveryReadingAndTheAdverbFirst)
 }
 
 TEST(rule_interpreter, D10AdverbialOnInTheTortoiseWentOnKeepsEveryReadingAndTheAdverbFirst) {
-  const DisambiguationRun run = RunEng(
-      "The Tortoise went on with a slow but steady pace straight to the end of the course.");
+  const DisambiguationRun run =
+      RunEng("The Tortoise went on with a slow but steady pace straight to the end of the course.");
   ASSERT_GT(run.after.size(), 3u);
   EXPECT_EQ(run.after[3].candidates.front().surface, "on");
   ExpectKept(run, 3);
@@ -672,24 +674,30 @@ TEST(rule_interpreter, D11AdverbialAboutBeforeAFullStopKeepsEveryReadingAndTheAd
 // D12: B1 (one deletion per reading) and B2 (a #PREFERRED node is never pruned) at the smallest
 // size. Hand-built, no I/O. Today's matcher leaves position 0 with only `tim`.
 TEST(rule_interpreter, D12ARuleDeletesAReadingOnceAndNeverPrunesAPreferredNode) {
-  const GrammarRule rule_one{
-      .id = "1",
-      .kind = "disambiguation",
-      .lhs = "([in],^POS=PRE)(POS=ART,#PREFERRED)",
-      .rhs = "0",
-      .comment = "test-only copy of eng-dis-1"};
+  const GrammarRule rule_one{.id = "1",
+                             .kind = "disambiguation",
+                             .lhs = "([in],^POS=PRE)(POS=ART,#PREFERRED)",
+                             .rhs = "0",
+                             .comment = "test-only copy of eng-dis-1"};
   const RuleSet isolated = RuleSet::from_rules({rule_one}, {}, {}, {}, {}, {});
   const RuleInterpreter interpreter(isolated);
 
-  const Candidate adverb{.surface = "in", .features = {{"LEX", "A"}, {"POS", "AAV"}}, .attributes = {}};
-  const Candidate adjective{.surface = "in", .features = {{"LEX", "J"}, {"POS", "ADJ"}}, .attributes = {}};
+  const Candidate adverb{
+      .surface = "in", .features = {{"LEX", "A"}, {"POS", "AAV"}}, .attributes = {}};
+  const Candidate adjective{
+      .surface = "in", .features = {{"LEX", "J"}, {"POS", "ADJ"}}, .attributes = {}};
   const Candidate plc{.surface = "in",
-                      .features = {{"LEX", "P"}, {"POS", "PRE"}, {"rel", "plc"}}, .attributes = {}};
+                      .features = {{"LEX", "P"}, {"POS", "PRE"}, {"rel", "plc"}},
+                      .attributes = {}};
   const Candidate tim{.surface = "in",
-                      .features = {{"LEX", "P"}, {"POS", "PRE"}, {"rel", "tim"}}, .attributes = {}};
-  const Candidate art1{.surface = "a", .features = {{"LEX", "D"}, {"POS", "ART"}}, .attributes = {}};
-  const Candidate art2{.surface = "a", .features = {{"LEX", "D"}, {"POS", "ART"}}, .attributes = {}};
-  const Candidate noun{.surface = "a", .features = {{"LEX", "N"}, {"POS", "NOU"}}, .attributes = {}};
+                      .features = {{"LEX", "P"}, {"POS", "PRE"}, {"rel", "tim"}},
+                      .attributes = {}};
+  const Candidate art1{
+      .surface = "a", .features = {{"LEX", "D"}, {"POS", "ART"}}, .attributes = {}};
+  const Candidate art2{
+      .surface = "a", .features = {{"LEX", "D"}, {"POS", "ART"}}, .attributes = {}};
+  const Candidate noun{
+      .surface = "a", .features = {{"LEX", "N"}, {"POS", "NOU"}}, .attributes = {}};
 
   std::vector<Position> positions = {Position{.candidates = {adverb, adjective, plc, tim}},
                                      Position{.candidates = {art1, art2, noun}}};
@@ -711,6 +719,132 @@ TEST(rule_interpreter, EngineLoadAcceptsARealRuleSetAndTranslateReadsItBack) {
   const Engine engine = Engine::load(EngToAfrRuleSet());
   const Result result = engine.translate("book", Options{.from = Lang::eng, .to = Lang::afr});
   EXPECT_EQ(result.status, Status::ok);  // "book" is dictionary-resolved; no rule needs to fire.
+}
+
+// --- Issue 181, rows N43 and N56 to N60 (docs/factory/issues/181-test-cases.md). ---
+
+TEST(rule_interpreter, N43_inflect_m7_replaces_the_last_letter_of_dag) {
+  Trace trace;
+  const RuleInterpreter interpreter(EngToAfrRuleSet());
+  EXPECT_EQ(interpreter.inflect("M7", "PLR", "dag", /*from_language=*/false, trace), "dae");
+  ASSERT_EQ(trace.entries.size(), 1u);
+  EXPECT_EQ(trace.entries[0].rule, "M7");
+  EXPECT_EQ(trace.entries[0].event, TraceEvent::fired);
+}
+
+TEST(rule_interpreter, N64_inflect_m5_leaves_an_unsupported_action_list_unchanged) {
+  Trace trace;
+  const RuleInterpreter interpreter(EngToAfrRuleSet());
+  EXPECT_EQ(interpreter.inflect("M5", "PLR", "bestuur", /*from_language=*/false, trace), "bestuur");
+  EXPECT_TRUE(trace.entries.empty());
+}
+
+TEST(rule_interpreter, N56_rule_set_load_reads_the_target_disambiguation_grammar) {
+  const RuleSet& rules = EngToAfrRuleSet();
+  ASSERT_EQ(rules.to_disambiguation().size(), 13u);
+  for (std::size_t i = 0; i < 13; ++i) {
+    EXPECT_EQ(rules.to_disambiguation()[i].id, std::to_string(i + 1));
+    EXPECT_EQ(rules.to_disambiguation()[i].kind, "disambiguation");
+    EXPECT_EQ(rules.to_disambiguation()[i].rhs, "0");
+  }
+  if (rules.to_disambiguation().size() >= 5) {
+    EXPECT_EQ(rules.to_disambiguation()[4].lhs, "(D,^AFT)(BLK)({V|P|AAV})");
+  }
+  EXPECT_EQ(rules.disambiguation().size(), 5u);
+}
+
+TEST(rule_interpreter, N57_from_rules_keeps_all_seven_lists) {
+  auto one = [](const char* id) {
+    GrammarRule rule;
+    rule.id = id;
+    return std::vector<GrammarRule>{rule};
+  };
+  const RuleSet rules =
+      RuleSet::from_rules(one("d"), one("a"), one("fi"), one("s"), one("g"), one("ti"), one("td"));
+  ASSERT_EQ(rules.disambiguation().size(), 1u);
+  EXPECT_EQ(rules.disambiguation()[0].id, "d");
+  ASSERT_EQ(rules.analysis().size(), 1u);
+  EXPECT_EQ(rules.analysis()[0].id, "a");
+  ASSERT_EQ(rules.from_inflection().size(), 1u);
+  EXPECT_EQ(rules.from_inflection()[0].id, "fi");
+  ASSERT_EQ(rules.subcategorisation().size(), 1u);
+  EXPECT_EQ(rules.subcategorisation()[0].id, "s");
+  ASSERT_EQ(rules.generation().size(), 1u);
+  EXPECT_EQ(rules.generation()[0].id, "g");
+  ASSERT_EQ(rules.to_inflection().size(), 1u);
+  EXPECT_EQ(rules.to_inflection()[0].id, "ti");
+  ASSERT_EQ(rules.to_disambiguation().size(), 1u);
+  EXPECT_EQ(rules.to_disambiguation()[0].id, "td");
+}
+
+Candidate Cand(std::string surface, std::vector<Feature> features) {
+  return Candidate{std::move(surface), std::move(features), {}};
+}
+
+std::vector<Position> GeneratedList(const Candidate& determiner, std::vector<Candidate> word) {
+  std::vector<Position> positions(3);
+  positions[0].candidates = {determiner};
+  positions[1].candidates = {Cand(" ", {{"BLK", ""}})};
+  positions[2].candidates = std::move(word);
+  return positions;
+}
+
+const std::vector<Candidate> kMooiReadings = {
+    Cand("mooi", {{"LEX", "A"}, {"POS", "AAV"}, {"SEM", "MAN"}}),
+    Cand("mooi", {{"LEX", "J"}, {"POS", "ADJ"}})};
+
+RuleSet DisRuleFive() {
+  // Record 5 of data/languages/afr/grammar/disambiguation.yaml, verbatim.
+  GrammarRule rule;
+  rule.id = "5";
+  rule.kind = "disambiguation";
+  rule.lhs = "(D,^AFT)(BLK)({V|P|AAV})";
+  rule.rhs = "0";
+  return RuleSet::from_rules({}, {}, {}, {}, {}, {}, {rule});
+}
+
+TEST(rule_interpreter, N58_afr_dis_5_prunes_the_adverb_reading_after_a_determiner) {
+  const RuleSet isolated = DisRuleFive();
+  const RuleInterpreter interpreter(isolated);
+  std::vector<Position> positions =
+      GeneratedList(Cand("'n", {{"LEX", "D"}, {"POS", "ART"}}), kMooiReadings);
+  Trace trace;
+  interpreter.disambiguate_target(positions, Lang::afr, trace);
+  ASSERT_EQ(positions[2].candidates.size(), 1u);
+  EXPECT_TRUE(HasFeature(positions[2].candidates[0], "POS", "ADJ"));
+  EXPECT_EQ(positions[0].candidates.size(), 1u);
+  EXPECT_EQ(positions[1].candidates.size(), 1u);
+  ASSERT_EQ(trace.entries.size(), 1u);
+  EXPECT_EQ(trace.entries[0].rule, "afr-dis-5");
+  EXPECT_EQ(trace.entries[0].event, TraceEvent::fired);
+}
+
+TEST(rule_interpreter, N59_afr_dis_5_leaves_a_noun_after_a_determiner) {
+  const RuleSet isolated = DisRuleFive();
+  const RuleInterpreter interpreter(isolated);
+  std::vector<Position> positions =
+      GeneratedList(Cand("die", {{"LEX", "D"}, {"POS", "ART"}}),
+                    {Cand("boek", {{"LEX", "N"}, {"POS", "NOU"}}),
+                     Cand("boek", {{"LEX", "N"}, {"POS", "NOU"}, {"NUM", "PLR"}})});
+  Trace trace;
+  interpreter.disambiguate_target(positions, Lang::afr, trace);
+  EXPECT_EQ(positions[0].candidates.size(), 1u);
+  EXPECT_EQ(positions[1].candidates.size(), 1u);
+  EXPECT_EQ(positions[2].candidates.size(), 2u);
+  EXPECT_TRUE(trace.entries.empty());
+}
+
+TEST(rule_interpreter, N60_afr_dis_5_spares_a_determiner_that_may_stand_after) {
+  const RuleSet isolated = DisRuleFive();
+  const RuleInterpreter interpreter(isolated);
+  std::vector<Position> positions =
+      GeneratedList(Cand("'n", {{"LEX", "D"}, {"POS", "QUA"}, {"AFT", ""}}), kMooiReadings);
+  Trace trace;
+  interpreter.disambiguate_target(positions, Lang::afr, trace);
+  EXPECT_EQ(positions[0].candidates.size(), 1u);
+  EXPECT_EQ(positions[1].candidates.size(), 1u);
+  EXPECT_EQ(positions[2].candidates.size(), 2u);
+  EXPECT_TRUE(trace.entries.empty());
 }
 
 }  // namespace

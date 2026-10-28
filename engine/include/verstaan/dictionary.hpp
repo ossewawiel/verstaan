@@ -85,6 +85,13 @@ class Dictionary {
   // `Token::surface` (SPEC.md §3.4, issue 19's `verstaan/tokeniser.hpp`).
   [[nodiscard]] std::vector<LookupEntry> lookup_tokens(const std::vector<Token>& tokens) const;
 
+  // Issue 181, ADR 0023: every entry whose `uw` equals `uw` exactly, across every shard, in store
+  // order -- shard `a` to `z`, file order within a shard. Generation's lexical choice reads this
+  // (docs/factory/issues/181-test-cases.md, rows N46 and N47). Empty for an empty `uw`: a
+  // closed-class record is found by headword, never by UW.
+  // Stub: returns no entry until issue 181's implementer fills the body.
+  [[nodiscard]] std::vector<DictionaryEntry> lookup_uw(std::string_view uw) const;
+
   // Every `features` pair a looked-up entry carried that used an attribute or a value
   // `tagset.yaml` does not define, one entry the first time `lookup()` returns it. Grows as
   // `lookup()` is called; empty until something is looked up.

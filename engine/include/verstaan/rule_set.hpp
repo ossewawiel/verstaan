@@ -64,8 +64,25 @@ class RuleSet {
   [[nodiscard]] const std::vector<GrammarRule>& subcategorisation() const {
     return subcategorisation_;
   }
+  // Issue 181, ADR 0021: the same six lists plus `to_store_root`'s `grammar/disambiguation.yaml`,
+  // the generation-side disambiguation grammar (afr-dis-5 and its twelve siblings).
+  // Stub: drops `to_disambiguation` until issue 181's implementer fills the body.
+  static RuleSet from_rules(std::vector<GrammarRule> disambiguation,
+                            std::vector<GrammarRule> analysis,
+                            std::vector<GrammarRule> from_inflection,
+                            std::vector<GrammarRule> subcategorisation,
+                            std::vector<GrammarRule> generation,
+                            std::vector<GrammarRule> to_inflection,
+                            std::vector<GrammarRule> to_disambiguation);
+
   [[nodiscard]] const std::vector<GrammarRule>& generation() const { return generation_; }
   [[nodiscard]] const std::vector<GrammarRule>& to_inflection() const { return to_inflection_; }
+  // `to_store_root`'s `grammar/disambiguation.yaml` (issue 181, ADR 0021). `disambiguation()`
+  // stays the `from_store_root` file. Empty for a RuleSet built by the six-list `from_rules`.
+  // Stub: always empty until issue 181's implementer makes `load()` read the file.
+  [[nodiscard]] const std::vector<GrammarRule>& to_disambiguation() const {
+    return to_disambiguation_;
+  }
 
   // The store roots `load()` read its grammar from, so `Engine::translate` (issue 23) can open the
   // matching `dictionary/` shards without `Engine::load` needing its own store-root parameter
@@ -94,6 +111,7 @@ class RuleSet {
   std::vector<GrammarRule> subcategorisation_;
   std::vector<GrammarRule> generation_;
   std::vector<GrammarRule> to_inflection_;
+  std::vector<GrammarRule> to_disambiguation_;
   std::string from_store_root_;
   std::string to_store_root_;
 };
