@@ -172,6 +172,9 @@ holds.
 
 Fourteen rows. Each rule has a firing row and a must-not-fire row:
 
+Issue 198 adds rule 5 and replaces two rows. D01 is now `198-test-cases.md` R10, and D14 is R17.
+Where this file and that one disagree on those two rows, that one wins.
+
 | Rule | Fires | Must not fire |
 |---|---|---|
 | eng-dis-1 | D01, D08, D12 | D04 (`without`), D06, D09 |

@@ -276,5 +276,136 @@ TEST(engine_status, G09_a06_all_the_books_copies_no_link_with_a_closed_class_end
   }
 }
 
+// --- Issue 198, rows R01 to R09 (docs/factory/issues/198-test-cases.md): the plc, cnt and and
+// relations on A07, A09 and A13. Expected values transcribed from that table. A trace is asserted
+// by containment. Node UWs and attributes the table marks as findings (F1, F2, F3) are not asserted.
+// ---
+
+bool TraceStartsWith(const Trace& trace, const std::vector<std::string>& ids) {
+  if (trace.entries.size() < ids.size()) {
+    return false;
+  }
+  for (std::size_t i = 0; i < ids.size(); ++i) {
+    if (trace.entries[i].rule != ids[i]) {
+      return false;
+    }
+  }
+  return true;
+}
+
+std::size_t CountFired(const Trace& trace, std::string_view rule_id) {
+  return static_cast<std::size_t>(std::ranges::count_if(trace.entries, [&](const TraceEntry& e) {
+    return e.rule == rule_id && e.event == TraceEvent::fired;
+  }));
+}
+
+std::size_t CountLabel(const Result& result, std::string_view label) {
+  return static_cast<std::size_t>(std::ranges::count_if(
+      result.unl.relations, [&](const Relation& r) { return r.label == label; }));
+}
+
+TEST(engine_status, R01_a07_a_book_in_a_box_has_the_plc_relation) {
+  const Result result = TranslateEng("a book in a box");
+  EXPECT_EQ(result.status, Status::ok);
+  ASSERT_EQ(result.unl.nodes.size(), 2U);
+  EXPECT_EQ(result.unl.nodes[0].uw, "102870092");
+  EXPECT_EQ(result.unl.nodes[0].attributes, std::vector<std::string>{"@indef"});
+  EXPECT_EQ(result.unl.nodes[1].attributes, std::vector<std::string>{"@indef"});
+  ASSERT_EQ(result.unl.relations.size(), 1U);
+  EXPECT_EQ(result.unl.relations[0].label, "plc");
+  EXPECT_EQ(result.unl.relations[0].from, 0U);
+  EXPECT_EQ(result.unl.relations[0].to, 1U);
+  EXPECT_TRUE(TraceStartsWith(result.trace, {"1", "5"}));
+  EXPECT_EQ(CountFired(result.trace, "154"), 1U);
+  EXPECT_EQ(CountRule(result.trace, "166"), 0U);
+}
+
+TEST(engine_status, R02_a07_carries_no_cnt_and_no_tim) {
+  const Result result = TranslateEng("a book in a box");
+  EXPECT_EQ(CountLabel(result, "cnt"), 0U);
+  EXPECT_EQ(CountLabel(result, "tim"), 0U);
+  EXPECT_EQ(CountRule(result.trace, "134"), 0U);
+  EXPECT_EQ(CountRule(result.trace, "166"), 0U);
+}
+
+TEST(engine_status, R03_a08_carries_no_plc_and_rules_five_and_154_stay_silent) {
+  const Result result = TranslateEng("a beautiful book");
+  ASSERT_EQ(result.unl.relations.size(), 1U);
+  EXPECT_EQ(result.unl.relations[0].label, "mod");
+  EXPECT_EQ(result.unl.relations[0].from, 1U);
+  EXPECT_EQ(result.unl.relations[0].to, 0U);
+  EXPECT_EQ(CountRule(result.trace, "5"), 0U);
+  EXPECT_EQ(CountRule(result.trace, "154"), 0U);
+}
+
+TEST(engine_status, R04_a09_a_book_about_geneva_has_the_cnt_relation) {
+  const Result result = TranslateEng("a book about Geneva");
+  EXPECT_EQ(result.status, Status::partial);
+  ASSERT_EQ(result.unl.nodes.size(), 2U);
+  EXPECT_EQ(result.unl.nodes[0].uw, "102870092");
+  EXPECT_EQ(result.unl.nodes[0].attributes, std::vector<std::string>{"@indef"});
+  EXPECT_EQ(result.unl.nodes[1].uw, "\"Geneva\"");
+  ASSERT_EQ(result.unl.relations.size(), 1U);
+  EXPECT_EQ(result.unl.relations[0].label, "cnt");
+  EXPECT_EQ(result.unl.relations[0].from, 0U);
+  EXPECT_EQ(result.unl.relations[0].to, 1U);
+  EXPECT_TRUE(TraceStartsWith(result.trace, {"4"}));
+  EXPECT_EQ(CountFired(result.trace, "182"), 1U);
+  EXPECT_EQ(CountFired(result.trace, "134"), 1U);
+}
+
+TEST(engine_status, R05_a13_john_and_mary_has_the_and_relation) {
+  const Result result = TranslateEng("John and Mary");
+  ASSERT_EQ(result.unl.nodes.size(), 2U);
+  EXPECT_EQ(result.unl.nodes[0].uw, "\"John\"");
+  EXPECT_TRUE(result.unl.nodes[0].attributes.empty());
+  EXPECT_EQ(result.unl.nodes[1].uw, "\"Mary\"");
+  EXPECT_TRUE(result.unl.nodes[1].attributes.empty());
+  ASSERT_EQ(result.unl.relations.size(), 1U);
+  EXPECT_EQ(result.unl.relations[0].label, "and");
+  EXPECT_EQ(result.unl.relations[0].from, 1U);
+  EXPECT_EQ(result.unl.relations[0].to, 0U);
+  EXPECT_EQ(CountFired(result.trace, "182"), 2U);
+  EXPECT_EQ(CountFired(result.trace, "18"), 1U);
+}
+
+TEST(engine_status, R06_a13_carries_exactly_one_and_and_no_or) {
+  const Result result = TranslateEng("John and Mary");
+  EXPECT_EQ(CountLabel(result, "and"), 1U);
+  EXPECT_EQ(CountLabel(result, "or"), 0U);
+  EXPECT_EQ(CountFired(result.trace, "18"), 1U);
+  EXPECT_EQ(CountRule(result.trace, "16"), 0U);
+  EXPECT_EQ(CountRule(result.trace, "19"), 0U);
+}
+
+TEST(engine_status, R07_mary_and_john_puts_the_later_conjunct_at_the_head) {
+  const Result result = TranslateEng("Mary and John");
+  ASSERT_EQ(result.unl.nodes.size(), 2U);
+  EXPECT_EQ(result.unl.nodes[0].uw, "\"Mary\"");
+  EXPECT_EQ(result.unl.nodes[1].uw, "\"John\"");
+  ASSERT_EQ(result.unl.relations.size(), 1U);
+  EXPECT_EQ(result.unl.relations[0].label, "and");
+  EXPECT_EQ(result.unl.relations[0].from, 1U);
+  EXPECT_EQ(result.unl.relations[0].to, 0U);
+  EXPECT_EQ(CountFired(result.trace, "18"), 1U);
+}
+
+TEST(engine_status, R08_rule_182_stays_silent_without_a_name_literal) {
+  for (const char* text : {"The book", "john", "book xyzzy"}) {
+    const Result result = TranslateEng(text);
+    EXPECT_EQ(CountRule(result.trace, "182"), 0U) << text;
+    if (std::string_view(text) == "book xyzzy") {
+      EXPECT_EQ(result.status, Status::partial) << text;
+    }
+  }
+}
+
+TEST(engine_status, R09_a_non_initial_capital_gets_the_temp_tag_and_rule_182_fires_once) {
+  const Result result = TranslateEng("book John");
+  ASSERT_GE(result.unl.nodes.size(), 2U);
+  EXPECT_EQ(result.unl.nodes[1].uw, "\"John\"");
+  EXPECT_EQ(CountFired(result.trace, "182"), 1U);
+}
+
 }  // namespace
 }  // namespace verstaan

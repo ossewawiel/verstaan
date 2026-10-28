@@ -949,5 +949,36 @@ TEST(tree_pass, G14_control_the_archive_rule_one_with_177_loops_to_the_cap) {
   EXPECT_EQ(run.trace.entries.back().event, TraceEvent::capped);
 }
 
+// --- Issue 198, rows R20 to R22 (docs/factory/issues/198-test-cases.md): rule 182 turns a TEMP word
+// into a proper noun. Hand-built, record 182 alone. ---
+
+RuleSet Rule182Alone() { return OnlyRules({FindRule(RealRules().analysis(), "182")}); }
+
+TEST(tree_pass, R20_rule_182_makes_a_temp_name_a_proper_noun) {
+  const Outcome run =
+      RunTree(Rule182Alone(), make_forest({Bare("John", {{"$uw", "\"John\""}, {"TEMP", ""}})}));
+  ASSERT_EQ(run.result.status, Status::ok);
+  ASSERT_EQ(run.trace.entries.size(), 1U);
+  EXPECT_EQ(run.trace.entries[0].rule, "182");
+  EXPECT_EQ(run.trace.entries[0].event, TraceEvent::fired);
+  ASSERT_GE(run.result.forest.nodes.size(), 2U);
+  EXPECT_TRUE(HasFeature(run.result.forest.nodes[1], "LEX", "N"));
+  EXPECT_TRUE(HasFeature(run.result.forest.nodes[1], "POS", "PPN"));
+}
+
+TEST(tree_pass, R21_rule_182_leaves_a_temp_word_that_already_has_a_part_of_speech) {
+  const Outcome run = RunTree(
+      Rule182Alone(),
+      make_forest({Bare("John", {{"$uw", "\"John\""}, {"TEMP", ""}, {"LEX", "N"}})}));
+  ASSERT_EQ(run.result.status, Status::ok);
+  EXPECT_TRUE(run.trace.entries.empty());
+}
+
+TEST(tree_pass, R22_rule_182_leaves_a_word_with_no_temp_tag) {
+  const Outcome run = RunTree(Rule182Alone(), make_forest({Bare("xyzzy", {})}));
+  ASSERT_EQ(run.result.status, Status::ok);
+  EXPECT_TRUE(run.trace.entries.empty());
+}
+
 }  // namespace
 }  // namespace verstaan
