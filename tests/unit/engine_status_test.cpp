@@ -76,6 +76,48 @@ TEST(engine_status, SentenceWithAMissingDictionaryWordIsPartialAndMarksThatWord)
                                                              // itself marked.
 }
 
+// --- Issue 196: a capitalised name enters the graph as a quoted literal. ---
+
+bool has_uw(const Result& result, std::string_view uw) {
+  return std::ranges::any_of(result.unl.nodes, [&](const Node& node) { return node.uw == uw; });
+}
+
+TEST(engine_status, A13NamesEnterTheGraphAsQuotedLiterals) {
+  const Result result =
+      EngToAfrEngine().translate("John and Mary", Options{.from = Lang::eng, .to = Lang::afr});
+  EXPECT_TRUE(has_uw(result, "\"John\""));
+  EXPECT_TRUE(has_uw(result, "\"Mary\""));
+}
+
+TEST(engine_status, A09GenevaIsALiteralAndTheRowKeepsStatusPartial) {
+  const Result result = EngToAfrEngine().translate("a book about Geneva",
+                                                   Options{.from = Lang::eng, .to = Lang::afr});
+  EXPECT_TRUE(has_uw(result, "\"Geneva\""));
+  EXPECT_EQ(result.status, Status::partial);
+}
+
+TEST(engine_status, SentenceInitialTheStillResolvesThroughTheDictionary) {
+  const Result result =
+      EngToAfrEngine().translate("The book", Options{.from = Lang::eng, .to = Lang::afr});
+  EXPECT_FALSE(has_uw(result, "\"The\""));
+  EXPECT_EQ(result.status, Status::ok);
+  EXPECT_EQ(result.text.find("⟦"), std::string::npos);
+}
+
+TEST(engine_status, LowerCaseJohnStillResolvesToTheCommonNoun) {
+  const Result result =
+      EngToAfrEngine().translate("john", Options{.from = Lang::eng, .to = Lang::afr});
+  EXPECT_FALSE(has_uw(result, "\"john\""));
+  EXPECT_FALSE(has_uw(result, "\"John\""));
+  EXPECT_EQ(result.status, Status::ok);
+}
+
+TEST(engine_status, CapitalisedNameAfterALowerCaseWordIsALiteralNotTheCommonNoun) {
+  const Result result =
+      EngToAfrEngine().translate("book John", Options{.from = Lang::eng, .to = Lang::afr});
+  EXPECT_TRUE(has_uw(result, "\"John\""));
+}
+
 // --- A malformed input the tokeniser cannot segment into any token at all: empty text produces
 // no candidate reading, so no graph -- not even a partial one -- can be built from it. ---
 
