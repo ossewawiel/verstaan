@@ -45,6 +45,14 @@ term here instead, with the file that defines it.
 | Runtime tables | Rules loaded from the store at run time, for authoring and tests. | ADR 0007 |
 | Generated tables | Rules compiled into `engine/generated/<tier>/`, for shipping. | ADR 0003 |
 | Equivalence test | A test that runs one sentence through both back ends and diffs the result. | ADR 0007 |
+| Flat pass | `RuleInterpreter::analyse`: each analysis rule once, in file order, over a flat word list. Builds no tree. | ADR 0017 |
+| Tree pass | `RuleInterpreter::analyse_tree`: every analysis rule over a forest; the first rule that matches fires, then the scan starts again from rule one. | ADR 0017 |
+| Forest | The tree pass's structure: an arena of nodes, the top-level list, and every link. | ADR 0017 |
+| Hyper-node | A forest node that holds links. A right-side group around a link term makes one. The archive's term. | ADR 0017 |
+| Link | A labelled edge between two forest nodes: a syntactic link such as `NB` or `NA`, or, once relabelled, a UNL relation such as `mod`. | ADR 0017 |
+| Sentinel | `SHEAD` or `STAIL`, the system node at each end of a forest's list. | ADR 0017 |
+| Visit order | The tree pass's match order for a one-node pattern: the list left to right, each hyper-node's contents top-down, then any other live node in arena order. | ADR 0017 |
+| Link order | The tree pass's match order for a link term: by the scope's place in visit order, then graph order. | ADR 0017 |
 | Tier | A compile-time build profile: `basic`, `phone`, `connected`. | ADR 0006 |
 | Fixture pair | `xxa` and `xxb`, two invented languages used only for engine tests. | `docs/standards/testing.md` |
 | Reference set | The well-resourced archive languages used as models when drafting rules: eng first, then deu, fra, spa. | `.claude/agents/rule-author.md` |

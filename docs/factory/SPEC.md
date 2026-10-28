@@ -103,6 +103,8 @@ every rule has at least one test sentence that exercises it (warning at M2, erro
   every real `Engine` method retires; never guess. Never confuse this four-member enum with
   `Result`'s four fields (`text, unl, trace, status`) — the counts match by coincidence.
 - `Trace` lists every rule fired in order. The CLI `--trace` flag prints it. This is the audit trail.
+  `TraceEntry::event` is `fired` for a firing; the tree pass also writes `capped` and
+  `unsupported` entries (ADR 0017).
 - Two rule back ends, one semantics (ADR 0007). `tests/equivalence/` runs every corpus sentence
   through both and diffs `text` and `unl`.
 

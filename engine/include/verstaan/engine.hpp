@@ -66,9 +66,17 @@ struct Graph {
   std::vector<Relation> relations;
 };
 
+// Why one TraceEntry exists (ADR 0017). `fired`: the rule fired once. `capped`: the tree pass
+// stopped the rule after kTreePassRuleCap firings and retired it for the rest of the pass.
+// `unsupported`: the tree pass matched the rule's left side but cannot apply its right side yet,
+// and retired it for the rest of the pass.
+enum class TraceEvent : std::uint8_t { fired, capped, unsupported };
+
 // One rule firing, in order. SPEC.md §3.4: the audit trail behind the CLI `--trace` flag.
+// `event` defaults to `fired`, so `TraceEntry{rule.id}` still means one firing.
 struct TraceEntry {
   std::string rule;
+  TraceEvent event = TraceEvent::fired;
 };
 
 struct Trace {
