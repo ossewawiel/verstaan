@@ -2,15 +2,15 @@
 issue: 196
 title: "A capitalised name with no dictionary entry enters the graph as a quoted literal"
 milestone: M3
-status: in-progress
+status: done
 depends_on: [19, 20]
 agent: implementer
 agents: [implementer]
 model: sonnet
 effort: medium
 checkpoint: null
-commit: null
-worktree: .worktrees/m3-196-name-literals
+commit: ee6d3c1
+worktree: null
 github_issue: 304
 ---
 ## What
@@ -42,7 +42,7 @@ Afrikaans generation of a literal: issue 181.
 
 ## Done when
 
-- [ ] A13's names enter the graph as quoted literals.
-- [ ] A09's `Geneva` enters as a literal.
-- [ ] Sentence-initial `The` and lower-case `john` still resolve through the dictionary.
-- [ ] `ctest -L fast` and `python -m tools.validate --changed` are green.
+- [x] A13's names enter the graph as quoted literals.
+- [x] A09's `Geneva` enters as a literal.
+- [x] Sentence-initial `The` and lower-case `john` still resolve through the dictionary.
+- [x] `ctest -L fast` and `python -m tools.validate --changed` are green.
