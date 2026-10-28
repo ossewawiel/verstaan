@@ -2,15 +2,15 @@
 issue: 195
 title: "English disambiguation rules for in, on and about"
 milestone: M3
-status: in-progress
+status: done
 depends_on: [21, 22]
 agent: rule-author
 agents: [rule-author, test-writer, implementer, docs-writer]
 model: opus
 effort: high
 checkpoint: null
-commit: null
-worktree: .worktrees/m3-195-english-disambiguation-rules
+commit: 5e91048
+worktree: null
 github_issue: 303
 ---
 ## What
