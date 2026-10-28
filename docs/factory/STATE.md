@@ -2,8 +2,8 @@
 
 Last completed:  #194 — Tree interpreter for analysis rules, run in the archive's order, with its
                  ADR (M3), commit 5ecee6e
-Next up:         #185 — The fixture file records each row's review, and the owner confirms the fixed
-                 set (M3)
+Next up:         #187 — Complete the afr and eng stores: meta.yaml, tests/, and rule references that
+                 must resolve (M3)
 Branch / PR:     main, https://github.com/ossewawiel/verstaan.git, 0 files dirty, no gate stamp for
-                 6500d08
-Resume with:     /factory-run 185
+                 cacc7e6
+Resume with:     /factory-run 187
