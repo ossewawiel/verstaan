@@ -2,7 +2,7 @@
 issue: 185
 title: "The fixture file records each row's review, and the owner confirms the fixed set"
 milestone: M3
-status: open
+status: in-progress
 depends_on: [24]
 agent: implementer
 agents: [implementer]
@@ -10,7 +10,7 @@ model: sonnet
 effort: medium
 checkpoint: null
 commit: null
-worktree: null
+worktree: .worktrees/m3-185-fixture-review-status
 github_issue: 286
 ---
 ## What
