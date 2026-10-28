@@ -2,7 +2,7 @@
 issue: 198
 title: "The plc, cnt and and relations on A07, A09 and A13"
 milestone: M3
-status: open
+status: in-progress
 depends_on: [180, 195, 196]
 agent: rule-author
 agents: [rule-author, test-writer, implementer]
@@ -10,7 +10,7 @@ model: opus
 effort: high
 checkpoint: null
 commit: null
-worktree: null
+worktree: .worktrees/m3-198-plc-cnt-and-relations
 github_issue: 306
 ---
 ## What

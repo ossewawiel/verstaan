@@ -123,6 +123,8 @@ std::vector<Position> build_positions(const std::vector<Token>& tokens,
       quoted += '"';
       Candidate name{.surface = std::string(tokens[i].surface), .features = {}, .attributes = {}};
       name.features.emplace_back(std::string(kUwFeatureKey), std::move(quoted));
+      // Bare tag: lets a grammar rule's (TEMP) test find a name literal (issue 198, rule 182).
+      name.features.emplace_back("TEMP", "");
       position.candidates.push_back(std::move(name));
     } else {
       position.candidates.push_back(

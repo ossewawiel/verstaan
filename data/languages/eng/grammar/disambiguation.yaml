@@ -1,5 +1,5 @@
 # Licence: CC BY-SA 4.0. Source: UNL Archive, see data/archive/manifest.jsonl
-# archive: none for eng. Every record below is project-written (issue 195):
+# archive: none for eng. Every record below is project-written (issues 195 and 198):
 # source.archive_path "original" marks it, and source.line names the archive rule it adapts.
 - id: "1"
   kind: disambiguation
@@ -29,3 +29,10 @@
   conditions: []
   comment: "Strikes every reading of about but the preposition when a word the dictionary does not hold follows, as in A09 about Geneva; a punctuation mark does not count"
   source: {archive_path: original, line: "issue 195; adapted from exports/ger/49.dgrammar.txt line 14 and wiki/English_Disambiguation_Grammar.wikitext line 21"}
+- id: "5"
+  kind: disambiguation
+  lhs: "([in],^rel=plc)(D,#PREFERRED)(N,{SEM=ARF|SEM=LCT},#PREFERRED)"
+  rhs: "0"
+  conditions: []
+  comment: "Strikes every reading of in but the place readings when a determiner and a noun with an artefact or location reading follow, as in A07 a book in a box; the determiner and the noun keep their readings"
+  source: {archive_path: original, line: "issue 198; adapted from exports/afr/44.dgrammar.txt line 17 and exports/slv/72.dgrammar.txt line 13"}
