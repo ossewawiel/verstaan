@@ -5,5 +5,5 @@ Last completed:  #199 — The analysis graph for A06, A07, A10 and A12 matches t
 Next up:         #182 — Fix three afr/grammar/generation.yaml divergences from the fixed sentence
                  set (M3)
 Branch / PR:     main, https://github.com/ossewawiel/verstaan.git, 0 files dirty, no gate stamp for
-                 25895fd
+                 f5a97e7
 Resume with:     /factory-run 182
