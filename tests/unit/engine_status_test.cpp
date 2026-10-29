@@ -20,6 +20,8 @@
 #include <initializer_list>
 #include <string>
 #include <string_view>
+#include <tuple>
+#include <utility>
 #include <vector>
 
 #include "verstaan/engine.hpp"
@@ -217,7 +219,8 @@ TEST(engine_status, G03_a02_the_book_has_no_relation) {
   EXPECT_EQ(result.unl.nodes[0].uw, "102870092");
   EXPECT_EQ(result.unl.nodes[0].attributes, std::vector<std::string>{"@def"});
   EXPECT_TRUE(result.unl.relations.empty());
-  EXPECT_EQ(FiredIds(result.trace), (std::vector<std::string>{"70", "60", "72", "12", "62"}));
+  // Issue 199 (199-test-cases.md, "Existing tests"): eng-dis-10 now fires first.
+  EXPECT_EQ(FiredIds(result.trace), (std::vector<std::string>{"10", "70", "60", "72", "12", "62"}));
   EXPECT_EQ(CountRule(result.trace, "172"), 0U);
 }
 
@@ -554,7 +557,8 @@ TEST(engine_status, N55_a02_trace_is_analysis_entries_then_qualified_generation_
                          ? result.trace.entries[i].rule
                          : result.trace.entries[i].rule + " other");
   }
-  EXPECT_EQ(before, (std::vector<std::string>{"70", "60", "72", "12", "62"}));
+  // Issue 199 (199-test-cases.md, "Existing tests"): eng-dis-10 now fires first.
+  EXPECT_EQ(before, (std::vector<std::string>{"10", "70", "60", "72", "12", "62"}));
   for (std::size_t i = first; i < result.trace.entries.size(); ++i) {
     const std::string& rule = result.trace.entries[i].rule;
     EXPECT_TRUE(rule.starts_with("afr-gen-") || rule.starts_with("afr-inf-") ||
@@ -572,6 +576,200 @@ TEST(engine_status, N66_the_book_and_john_is_die_boek_en_john) {
   const Result result = TranslateEng("the book and John");
   EXPECT_EQ(result.text, "die boek en John");
   EXPECT_EQ(result.status, Status::ok);
+}
+
+// --- Issue 199, rows K01 to K14 (docs/factory/issues/199-test-cases.md, block K): the analysis
+// graph of A06, A07, A10 and A12 matches the corpus graph. Graphs transcribed from
+// data/languages/eng/corpus/ugoa1.yaml at the lines the table names. ---
+
+std::vector<std::string> Sorted(std::vector<std::string> v) {
+  std::ranges::sort(v);
+  return v;
+}
+
+// Attributes compared as a set (finding F4).
+void ExpectAttributeSet(const Node& node, std::vector<std::string> expected) {
+  EXPECT_EQ(Sorted(node.attributes), Sorted(std::move(expected)));
+}
+
+void ExpectRelations(const Result& result,
+                     const std::vector<std::tuple<std::string, std::size_t, std::size_t>>& expected) {
+  ASSERT_EQ(result.unl.relations.size(), expected.size());
+  for (std::size_t i = 0; i < expected.size(); ++i) {
+    EXPECT_EQ(result.unl.relations[i].label, std::get<0>(expected[i])) << i;
+    EXPECT_EQ(result.unl.relations[i].from, std::get<1>(expected[i])) << i;
+    EXPECT_EQ(result.unl.relations[i].to, std::get<2>(expected[i])) << i;
+  }
+}
+
+// The first `ids.size()` trace entries are fired entries with these rule ids.
+void ExpectTraceStarts(const Result& result, const std::vector<std::string>& ids) {
+  ASSERT_GE(result.trace.entries.size(), ids.size());
+  for (std::size_t i = 0; i < ids.size(); ++i) {
+    EXPECT_EQ(result.trace.entries[i].rule, ids[i]) << "entry " << i;
+  }
+}
+
+TEST(engine_status, K01_a06_all_the_books_carries_the_corpus_graph) {
+  const Result result = TranslateEng("all the books");
+  EXPECT_EQ(result.status, Status::ok);
+  ASSERT_EQ(result.unl.nodes.size(), 1U);
+  EXPECT_EQ(result.unl.nodes[0].uw, "102870092");
+  ExpectAttributeSet(result.unl.nodes[0], {"@all", "@def"});
+  ExpectRelations(result, {});
+  ExpectTraceStarts(result, {"6", "10"});
+  EXPECT_EQ(CountRule(result.trace, "1"), 1U);
+  EXPECT_EQ(CountRule(result.trace, "12"), 2U);
+  EXPECT_EQ(CountRule(result.trace, "177"), 1U);
+  EXPECT_EQ(CountRule(result.trace, "14"), 0U);
+  EXPECT_EQ(CountRule(result.trace, "176"), 0U);
+}
+
+TEST(engine_status, K02_a06_all_the_books_is_al_die_boeke) {
+  const Result result = TranslateEng("all the books");
+  EXPECT_EQ(result.text, "al die boeke");
+  EXPECT_EQ(result.status, Status::ok);
+  ExpectFired(result, {"afr-gen-35", "afr-gen-37", "afr-gen-60"});
+  ExpectNotFired(result, {"afr-gen-56"});
+}
+
+TEST(engine_status, K03_a07_a_book_in_a_box_carries_the_corpus_graph) {
+  const Result result = TranslateEng("a book in a box");
+  EXPECT_EQ(result.status, Status::ok);
+  ASSERT_EQ(result.unl.nodes.size(), 2U);
+  EXPECT_EQ(result.unl.nodes[0].uw, "102870092");
+  EXPECT_EQ(result.unl.nodes[0].attributes, std::vector<std::string>{"@indef"});
+  EXPECT_EQ(result.unl.nodes[1].uw, "102883344");
+  EXPECT_EQ(result.unl.nodes[1].attributes, std::vector<std::string>{"@indef"});
+  ExpectRelations(result, {{"plc", 0, 1}});
+  ExpectTraceStarts(result, {"1", "5", "10"});
+  EXPECT_EQ(CountRule(result.trace, "12"), 2U);
+  EXPECT_EQ(CountRule(result.trace, "15"), 1U);
+  EXPECT_EQ(CountRule(result.trace, "154"), 1U);
+  EXPECT_EQ(CountRule(result.trace, "134"), 0U);
+  EXPECT_EQ(CountRule(result.trace, "166"), 0U);
+}
+
+TEST(engine_status, K04_a07_a_book_in_a_box_is_n_boek_in_n_boks) {
+  const Result result = TranslateEng("a book in a box");
+  EXPECT_EQ(result.text, "'n boek in 'n boks");
+  EXPECT_EQ(result.status, Status::ok);
+  ExpectFired(result, {"afr-gen-234"});
+  EXPECT_EQ(CountFired(result.trace, "afr-gen-36"), 2U);
+  ExpectNotFired(result, {"afr-gen-22", "afr-dis-5"});
+}
+
+TEST(engine_status, K05_a10_some_days_before_the_summer_carries_the_corpus_graph) {
+  const Result result = TranslateEng("some days before the summer");
+  EXPECT_EQ(result.status, Status::ok);
+  ASSERT_EQ(result.unl.nodes.size(), 2U);
+  EXPECT_EQ(result.unl.nodes[0].uw, "115155220");
+  ExpectAttributeSet(result.unl.nodes[0], {"@paucal"});
+  EXPECT_EQ(result.unl.nodes[1].uw, "115237250");
+  ExpectAttributeSet(result.unl.nodes[1], {"@def", "@before"});
+  ExpectRelations(result, {{"tim", 0, 1}});
+  ExpectTraceStarts(result, {"7", "8", "10"});
+  EXPECT_EQ(CountRule(result.trace, "1"), 1U);
+  EXPECT_EQ(CountRule(result.trace, "12"), 2U);
+  EXPECT_EQ(CountRule(result.trace, "15"), 1U);
+  EXPECT_EQ(CountRule(result.trace, "166"), 1U);
+  EXPECT_EQ(CountRule(result.trace, "177"), 1U);
+  EXPECT_EQ(CountRule(result.trace, "154"), 0U);
+}
+
+TEST(engine_status, K06_a10_text_ends_with_dae_voor_die_somer) {
+  const Result result = TranslateEng("some days before the summer");
+  EXPECT_EQ(result.status, Status::ok);
+  EXPECT_TRUE(std::string_view(result.text).ends_with(" dae voor die somer")) << result.text;
+  ExpectFired(result, {"afr-gen-26"});
+}
+
+TEST(engine_status, K07_a12_a_very_beautiful_car_carries_the_corpus_graph) {
+  const Result result = TranslateEng("a very beautiful car");
+  EXPECT_EQ(result.status, Status::ok);
+  ASSERT_EQ(result.unl.nodes.size(), 2U);
+  EXPECT_EQ(result.unl.nodes[0].uw, "300217728");
+  EXPECT_EQ(result.unl.nodes[0].attributes, std::vector<std::string>{"@plus"});
+  EXPECT_EQ(result.unl.nodes[1].uw, "102958343");
+  EXPECT_EQ(result.unl.nodes[1].attributes, std::vector<std::string>{"@indef"});
+  ExpectRelations(result, {{"mod", 1, 0}});
+  ExpectTraceStarts(result, {"9"});
+  EXPECT_EQ(CountRule(result.trace, "13"), 1U);
+  EXPECT_EQ(CountRule(result.trace, "12"), 1U);
+  EXPECT_EQ(CountRule(result.trace, "172"), 1U);
+  EXPECT_EQ(CountRule(result.trace, "14"), 0U);
+  EXPECT_EQ(CountRule(result.trace, "53"), 0U);
+  EXPECT_EQ(CountRule(result.trace, "176"), 0U);
+}
+
+TEST(engine_status, K08_a12_a_very_beautiful_car_is_n_baie_mooi_motor) {
+  const Result result = TranslateEng("a very beautiful car");
+  EXPECT_EQ(result.text, "'n baie mooi motor");
+  EXPECT_EQ(result.status, Status::ok);
+  ExpectFired(result, {"afr-gen-8", "afr-gen-36", "afr-gen-42", "afr-gen-201"});
+}
+
+TEST(engine_status, K09_book_geneva_makes_the_noun_the_head_of_mod) {
+  const Result result = TranslateEng("book Geneva");
+  ASSERT_EQ(result.unl.nodes.size(), 2U);
+  EXPECT_EQ(result.unl.nodes[0].uw, "102870092");
+  EXPECT_TRUE(result.unl.nodes[0].attributes.empty());
+  EXPECT_EQ(result.unl.nodes[1].uw, "\"Geneva\"");
+  EXPECT_TRUE(result.unl.nodes[1].attributes.empty());
+  ExpectRelations(result, {{"mod", 0, 1}});
+  EXPECT_EQ(CountRule(result.trace, "182"), 1U);
+  EXPECT_EQ(CountRule(result.trace, "183"), 1U);
+  EXPECT_EQ(CountRule(result.trace, "172"), 1U);
+  EXPECT_EQ(CountRule(result.trace, "10"), 0U);
+  EXPECT_EQ(result.status, Status::partial);
+  EXPECT_EQ(result.text, "boek ⟦Geneva⟧");
+}
+
+TEST(engine_status, K10_book_john_makes_the_noun_the_head_of_mod) {
+  const Result result = TranslateEng("book John");
+  ASSERT_EQ(result.unl.nodes.size(), 2U);
+  EXPECT_EQ(result.unl.nodes[1].uw, "\"John\"");
+  ExpectRelations(result, {{"mod", 0, 1}});
+  EXPECT_EQ(CountRule(result.trace, "183"), 1U);
+}
+
+TEST(engine_status, K11_a_glass_mug_keeps_the_second_noun_as_head) {
+  const Result result = TranslateEng("a glass mug");
+  ASSERT_EQ(result.unl.nodes.size(), 2U);
+  EXPECT_EQ(result.unl.nodes[1].uw, "103797390");
+  EXPECT_EQ(result.unl.nodes[1].attributes, std::vector<std::string>{"@indef"});
+  ExpectRelations(result, {{"mod", 1, 0}});
+  EXPECT_EQ(CountRule(result.trace, "183"), 0U);
+  ExpectTraceStarts(result, {"10"});
+  EXPECT_EQ(CountRule(result.trace, "10"), 2U);
+}
+
+TEST(engine_status, K12_rule_183_stays_silent_on_two_names) {
+  EXPECT_EQ(CountRule(TranslateEng("John and Mary").trace, "183"), 0U);
+}
+
+TEST(engine_status, K12_rule_183_stays_silent_on_a_word_with_no_temp_tag) {
+  EXPECT_EQ(CountRule(TranslateEng("book xyzzy").trace, "183"), 0U);
+}
+
+TEST(engine_status, K12_rule_183_stays_silent_on_a_name_after_a_preposition) {
+  EXPECT_EQ(CountRule(TranslateEng("a book about Geneva").trace, "183"), 0U);
+}
+
+TEST(engine_status, K13_very_beautiful_is_one_node_with_plus) {
+  const Result result = TranslateEng("very beautiful");
+  EXPECT_EQ(result.status, Status::ok);
+  ASSERT_EQ(result.unl.nodes.size(), 1U);
+  EXPECT_EQ(result.unl.nodes[0].uw, "300217728");
+  EXPECT_EQ(result.unl.nodes[0].attributes, std::vector<std::string>{"@plus"});
+  ExpectRelations(result, {});
+  ExpectTraceStarts(result, {"9"});
+}
+
+TEST(engine_status, K14_rules_9_and_13_stay_silent_when_no_adjective_follows_very) {
+  const Result result = TranslateEng("the very book");
+  EXPECT_EQ(CountRule(result.trace, "9"), 0U);
+  EXPECT_EQ(CountRule(result.trace, "13"), 0U);
 }
 
 }  // namespace

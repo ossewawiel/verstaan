@@ -35143,6 +35143,14 @@
   frequency: 24
   priority: 8
   source: {archive_path: exports/eng/en_ana_u_c_ucl/en_ana_u_c_ucl_1.txt, line: 34369}
+- headword: very
+  id: 900001
+  uw: "400031899"
+  features: {LEMMA: very, BF: very, LEX: A, POS: SAV, LST: WRD, PAR: M0, FRA: Y0, POL: AFM, SEM: MAN, SFR: K0, att: "@plus"}
+  lang: eng
+  frequency: 255
+  priority: 44
+  source: {archive_path: original, line: "issue 199; adapted from exports/eng/en_gen_u_c_ucl/en_gen_u_c_ucl_1.txt line 5407 (frequency 269 clamped to 255, POS AAV to SAV) and grammars/eng_unl_tgrammar.txt line 57, very.@plus"}
 - headword: very fast
   id: 270686
   uw: "400165906"

@@ -83,11 +83,11 @@ bool HasFeature(const Candidate& node, std::string_view key, std::string_view va
 
 TEST(rule_interpreter, RuleSetLoadsAllFiveGrammarKindsFromTheRealStores) {
   const RuleSet& rules = EngToAfrRuleSet();
-  // Issue 198 test R17 (198-test-cases.md, replacing 195 D14): eng's disambiguation.yaml holds five
-  // project-written records, ids 1 to 5, in file order, each kind `disambiguation`, each rhs `0`.
-  ASSERT_EQ(rules.disambiguation().size(), 5u);
-  const char* const kExpectedIds[] = {"1", "2", "3", "4", "5"};
-  for (std::size_t i = 0; i < 5; ++i) {
+  // Issue 199 test K55 (199-test-cases.md, replacing 198 R17): eng's disambiguation.yaml holds ten
+  // project-written records, ids 1 to 10, in file order, each kind `disambiguation`, each rhs `0`.
+  ASSERT_EQ(rules.disambiguation().size(), 10u);
+  const char* const kExpectedIds[] = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"};
+  for (std::size_t i = 0; i < 10; ++i) {
     EXPECT_EQ(rules.disambiguation()[i].id, kExpectedIds[i]);
     EXPECT_EQ(rules.disambiguation()[i].kind, "disambiguation");
     EXPECT_EQ(rules.disambiguation()[i].rhs, "0");
@@ -431,6 +431,37 @@ void ExpectAllKept(const DisambiguationRun& run) {
   }
 }
 
+// Issue 199 helpers (199-test-cases.md, "How to read the rows").
+bool HasFeatureKey(const Candidate& c, std::string_view key) {
+  return std::ranges::any_of(c.features, [&](const Feature& f) { return f.first == key; });
+}
+
+// countable: the lookup's readings minus every reading with LEX=N and no CAR feature, in order.
+void ExpectCountable(const DisambiguationRun& run, std::size_t i) {
+  ASSERT_LT(i, run.after.size());
+  std::vector<Candidate> expected;
+  std::ranges::copy_if(run.before[i].candidates, std::back_inserter(expected), [](const Candidate& c) {
+    return !(HasFeature(c, "LEX", "N") && !HasFeatureKey(c, "CAR"));
+  });
+  ASSERT_FALSE(expected.empty());
+  EXPECT_TRUE(SameReadings(run.after[i].candidates, expected))
+      << "position " << i << " holds " << run.after[i].candidates.size()
+      << " readings, expected the " << expected.size() << " countable ones";
+}
+
+// `key=value` only: the lookup's readings whose feature `key` is `value`, in order.
+void ExpectOnlyFeature(const DisambiguationRun& run, std::size_t i, std::string_view key,
+                       std::string_view value) {
+  ASSERT_LT(i, run.after.size());
+  std::vector<Candidate> expected;
+  std::ranges::copy_if(run.before[i].candidates, std::back_inserter(expected),
+                       [&](const Candidate& c) { return HasFeature(c, key, value); });
+  ASSERT_FALSE(expected.empty());
+  EXPECT_TRUE(SameReadings(run.after[i].candidates, expected))
+      << "position " << i << " holds " << run.after[i].candidates.size()
+      << " readings, expected the " << expected.size() << " with " << key << "=" << value;
+}
+
 const char* const kA15 =
     "the beautiful book about the city of Paris without pictures and photos on the table";
 
@@ -446,17 +477,18 @@ void ExpectOnlyPlace(const DisambiguationRun& run, std::size_t i) {
       << " readings, expected the " << expected.size() << " place readings";
 }
 
-// R10 (198-test-cases.md, replacing 195 D01): rule 1 strikes the non-prepositions, rule 5 the
-// non-place prepositions.
+// R10 (198-test-cases.md, replacing 195 D01), amended by 199 (199-test-cases.md, "Existing tests"):
+// rule 1 strikes the non-prepositions, rule 5 the non-place prepositions, rule 10 the uncountable
+// nouns after a determiner.
 TEST(rule_interpreter, D01RuleOneKeepsThePrepositionOfInInABookInABox) {
   const DisambiguationRun run = RunEng("a book in a box");
   ASSERT_EQ(run.after.size(), 5u);
   ExpectOnlyPlace(run, 2);
   ExpectKept(run, 0);
-  ExpectKept(run, 1);
+  ExpectCountable(run, 1);
   ExpectKept(run, 3);
-  ExpectKept(run, 4);
-  EXPECT_EQ(FiredIds(run.trace), Ids({"1", "5"}));
+  ExpectCountable(run, 4);
+  EXPECT_EQ(FiredIds(run.trace), Ids({"1", "5", "10"}));
 }
 
 TEST(rule_interpreter, D02RuleOneLeavesTheArticleAfterInWithAllFourReadings) {
@@ -466,9 +498,9 @@ TEST(rule_interpreter, D02RuleOneLeavesTheArticleAfterInWithAllFourReadings) {
   ExpectKept(run, 3);
   EXPECT_TRUE(HasFeature(run.after[3].candidates.front(), "POS", "ART"));
   EXPECT_TRUE(HasFeature(run.after[3].candidates.front(), "att", "@indef"));
-  ExpectKept(run, 4);
+  ExpectCountable(run, 4);
   ExpectKept(run, 0);
-  ExpectKept(run, 1);
+  ExpectCountable(run, 1);
 }
 
 TEST(rule_interpreter, D03RuleFourKeepsThePrepositionOfAboutBeforeAnUnknownWord) {
@@ -478,7 +510,7 @@ TEST(rule_interpreter, D03RuleFourKeepsThePrepositionOfAboutBeforeAnUnknownWord)
   ASSERT_EQ(run.after[3].candidates.size(), 1u);
   EXPECT_EQ(run.after[3].candidates[0].surface, "Geneva");
   EXPECT_TRUE(run.after[3].candidates[0].features.empty());
-  EXPECT_EQ(FiredIds(run.trace), Ids({"4"}));
+  EXPECT_EQ(FiredIds(run.trace), Ids({"4", "10"}));  // 199: rule 10 strikes `book`'s uncountable readings
 }
 
 TEST(rule_interpreter, D04RulesTwoAndThreeKeepThePrepositionsInA15) {
@@ -486,7 +518,7 @@ TEST(rule_interpreter, D04RulesTwoAndThreeKeepThePrepositionsInA15) {
   ASSERT_EQ(run.after.size(), 15u);
   ExpectOnlyPreposition(run, 3);   // about
   ExpectOnlyPreposition(run, 12);  // on
-  EXPECT_EQ(FiredIds(run.trace), Ids({"2", "3"}));
+  EXPECT_EQ(FiredIds(run.trace), Ids({"2", "3", "10"}));  // 199: rule 10 after a determiner
 }
 
 TEST(rule_interpreter, D05RulesTwoAndThreeLeaveTheArticlesAndNounsOfA15Whole) {
@@ -496,74 +528,180 @@ TEST(rule_interpreter, D05RulesTwoAndThreeLeaveTheArticlesAndNounsOfA15Whole) {
   ASSERT_EQ(run.before[13].candidates.size(), 3u);
   ExpectKept(run, 4);   // the
   ExpectKept(run, 13);  // the
-  ExpectKept(run, 5);   // city
-  ExpectKept(run, 14);  // table
+  ExpectCountable(run, 5);   // city (199: rule 10)
+  ExpectCountable(run, 14);  // table (199: rule 10)
 }
 
-// D06: one test per basic.yaml row that holds no in, on or about.
-#define D06_ROW(NAME, TEXT)                                \
-  TEST(rule_interpreter, D06##NAME##NoEnglishDRuleFires) { \
+// K28 (199-test-cases.md): the basic.yaml rows no D-rule touches. These are 195 D06's A01, A04, A08,
+// A11 and A13 lines, unchanged. Must-not row for eng-dis-6 to eng-dis-10.
+#define K28_ROW(NAME, TEXT)                                \
+  TEST(rule_interpreter, K28##NAME##NoEnglishDRuleFires) { \
     const DisambiguationRun run = RunEng(TEXT);            \
     ExpectAllKept(run);                                    \
     EXPECT_TRUE(run.trace.entries.empty());                \
   }
 
-D06_ROW(A01, "book")
-D06_ROW(A02, "the book")
-D06_ROW(A03, "a book")
-D06_ROW(A04, "books")
-D06_ROW(A05, "the books")
-D06_ROW(A06, "all the books")
-D06_ROW(A08, "a beautiful book")
-D06_ROW(A10, "some days before the summer")
-D06_ROW(A11, "the beautiful car")
-D06_ROW(A12, "a very beautiful car")
-D06_ROW(A13, "John and Mary")
-D06_ROW(A14, "a car, a book and a mug")
-#undef D06_ROW
+K28_ROW(A01, "book")
+K28_ROW(A04, "books")
+K28_ROW(A08, "a beautiful book")
+K28_ROW(A11, "the beautiful car")
+K28_ROW(A13, "John and Mary")
+#undef K28_ROW
 
-TEST(rule_interpreter, D07RuleTwoKeepsThePrepositionOfOnInABookOnABox) {
-  const DisambiguationRun run = RunEng("a book on a box");
-  ASSERT_EQ(run.after.size(), 5u);
-  ExpectOnlyPreposition(run, 2);
-  ExpectKept(run, 3);
-  EXPECT_EQ(FiredIds(run.trace), Ids({"2"}));
+// K20: replaces 195 D06's A06 line.
+TEST(rule_interpreter, K20RulesSixAndTenOnAllTheBooks) {
+  const DisambiguationRun run = RunEng("all the books");
+  ASSERT_EQ(run.after.size(), 3u);
+  ExpectOnlyFeature(run, 0, "att", "@all");
+  ExpectKept(run, 1);
+  ExpectCountable(run, 2);
+  EXPECT_EQ(FiredIds(run.trace), Ids({"6", "10"}));
 }
 
+// K21: must-not row for eng-dis-6, no determiner follows.
+TEST(rule_interpreter, K21RuleSixDoesNotFireOnAllBooks) {
+  const DisambiguationRun run = RunEng("all books");
+  ASSERT_EQ(run.after.size(), 2u);
+  ExpectKept(run, 0);
+  ExpectCountable(run, 1);
+  EXPECT_EQ(FiredIds(run.trace), Ids({"10"}));
+}
+
+// K22: replaces 195 D06's A10 line.
+TEST(rule_interpreter, K22RulesSevenEightAndTenOnA10) {
+  const DisambiguationRun run = RunEng("some days before the summer");
+  ASSERT_EQ(run.after.size(), 5u);
+  ExpectOnlyFeature(run, 0, "att", "@paucal");
+  ExpectCountable(run, 1);
+  ExpectOnlyFeature(run, 2, "rel", "tim");
+  ExpectKept(run, 3);
+  ExpectCountable(run, 4);
+  EXPECT_EQ(FiredIds(run.trace), Ids({"7", "8", "10"}));
+}
+
+// K23: must-not row for eng-dis-7, `of` is no noun.
+TEST(rule_interpreter, K23RuleSevenDoesNotFireOnSomeOfTheseBooks) {
+  const DisambiguationRun run = RunEng("some of these books");
+  ASSERT_GT(run.after.size(), 0u);
+  ExpectKept(run, 0);
+  EXPECT_EQ(FiredIds(run.trace), Ids({"10"}));
+}
+
+// K24: must-not row for eng-dis-8, no `box` reading is SEM=TIM.
+TEST(rule_interpreter, K24RuleEightDoesNotFireOnABookBeforeABox) {
+  const DisambiguationRun run = RunEng("a book before a box");
+  ASSERT_EQ(run.after.size(), 5u);
+  ExpectKept(run, 2);
+  EXPECT_EQ(FiredIds(run.trace), Ids({"10"}));
+}
+
+// K25: replaces 195 D08 and 198 R11, one body for both. Corpus line 141.
 TEST(rule_interpreter, D08RuleOneKeepsThePrepositionOfInBeforeADefiniteArticle) {
   const DisambiguationRun run = RunEng("some days in the summer");
   ASSERT_EQ(run.after.size(), 5u);
   ExpectOnlyPreposition(run, 2);
+  ExpectOnlyFeature(run, 0, "att", "@paucal");
+  ExpectCountable(run, 1);
   ExpectKept(run, 3);
-  EXPECT_EQ(FiredIds(run.trace), Ids({"1"}));
+  ExpectCountable(run, 4);
+  EXPECT_EQ(FiredIds(run.trace), Ids({"1", "7", "10"}));
 }
 
 TEST(rule_interpreter, R11RuleFiveLeavesInBeforeATemporalNounWhole) {
   const DisambiguationRun run = RunEng("some days in the summer");
   ASSERT_EQ(run.after.size(), 5u);
   ExpectOnlyPreposition(run, 2);
+  ExpectOnlyFeature(run, 0, "att", "@paucal");
+  ExpectCountable(run, 1);
   ExpectKept(run, 3);
-  ExpectKept(run, 4);
-  EXPECT_EQ(FiredIds(run.trace), Ids({"1"}));
+  ExpectCountable(run, 4);
+  EXPECT_EQ(FiredIds(run.trace), Ids({"1", "7", "10"}));
+}
+
+// K26: replaces 195 D06's A12 line. Rule 10 is silent: an adjective stands between `a` and `car`.
+TEST(rule_interpreter, K26RuleNineOnAVeryBeautifulCar) {
+  const DisambiguationRun run = RunEng("a very beautiful car");
+  ASSERT_EQ(run.after.size(), 4u);
+  ExpectKept(run, 0);
+  ASSERT_EQ(run.after[1].candidates.size(), 1u);
+  EXPECT_TRUE(HasFeature(run.after[1].candidates[0], "POS", "SAV"));
+  EXPECT_TRUE(HasFeature(run.after[1].candidates[0], "att", "@plus"));
+  EXPECT_TRUE(HasFeature(run.after[1].candidates[0], "$uw", "400031899"));
+  ExpectOnlyFeature(run, 1, "att", "@plus");
+  ExpectKept(run, 2);
+  ExpectKept(run, 3);
+  EXPECT_EQ(FiredIds(run.trace), Ids({"9"}));
+}
+
+// K27: replaces 195 D06's A02, A03, A05 and A14 lines, 195 D07 and 198 R12; one test per input.
+TEST(rule_interpreter, K27_the_book) {
+  const DisambiguationRun run = RunEng("the book");
+  ASSERT_EQ(run.after.size(), 2u);
+  ExpectKept(run, 0);
+  ExpectCountable(run, 1);
+  EXPECT_EQ(FiredIds(run.trace), Ids({"10"}));
+}
+
+TEST(rule_interpreter, K27_a_book) {
+  const DisambiguationRun run = RunEng("a book");
+  ASSERT_EQ(run.after.size(), 2u);
+  ExpectKept(run, 0);
+  ExpectCountable(run, 1);
+  EXPECT_EQ(FiredIds(run.trace), Ids({"10"}));
+}
+
+TEST(rule_interpreter, K27_the_books) {
+  const DisambiguationRun run = RunEng("the books");
+  ASSERT_EQ(run.after.size(), 2u);
+  ExpectKept(run, 0);
+  ExpectCountable(run, 1);
+  EXPECT_EQ(FiredIds(run.trace), Ids({"10"}));
+}
+
+TEST(rule_interpreter, K27_a_car_a_book_and_a_mug) {
+  const DisambiguationRun run = RunEng("a car, a book and a mug");
+  ASSERT_EQ(run.after.size(), 8u);
+  for (std::size_t i = 0; i < run.after.size(); ++i) {
+    if (i == 1 || i == 4 || i == 7) {
+      ExpectCountable(run, i);
+    } else {
+      ExpectKept(run, i);
+    }
+  }
+  EXPECT_EQ(FiredIds(run.trace), Ids({"10"}));
+}
+
+TEST(rule_interpreter, D07RuleTwoKeepsThePrepositionOfOnInABookOnABox) {
+  // K27: 195 D07 amended, trace [2, 10].
+  const DisambiguationRun run = RunEng("a book on a box");
+  ASSERT_EQ(run.after.size(), 5u);
+  ExpectOnlyPreposition(run, 2);
+  ExpectKept(run, 3);
+  ExpectKept(run, 0);
+  ExpectCountable(run, 1);
+  ExpectCountable(run, 4);
+  EXPECT_EQ(FiredIds(run.trace), Ids({"2", "10"}));
 }
 
 TEST(rule_interpreter, R12RuleFiveFiresOnALocationNoun) {
+  // K27: `water in the region`, region@3 countable, trace [1, 5, 10].
   const DisambiguationRun run = RunEng("water in the region");
   ASSERT_EQ(run.after.size(), 4u);
   ExpectOnlyPlace(run, 1);
   ExpectKept(run, 0);
   ExpectKept(run, 2);
-  ExpectKept(run, 3);
-  EXPECT_EQ(FiredIds(run.trace), Ids({"1", "5"}));
+  ExpectCountable(run, 3);
+  EXPECT_EQ(FiredIds(run.trace), Ids({"1", "5", "10"}));
 }
 
 TEST(rule_interpreter, R13RuleFiveLeavesInBeforeANounWithNoArtefactOrLocationReading) {
+  // 198 R13 amended by 199: party@3 countable, a@2 kept, trace [1, 10].
   const DisambiguationRun run = RunEng("woman in a party");
   ASSERT_EQ(run.after.size(), 4u);
   ExpectOnlyPreposition(run, 1);
   ExpectKept(run, 2);
-  ExpectKept(run, 3);
-  EXPECT_EQ(FiredIds(run.trace), Ids({"1"}));
+  ExpectCountable(run, 3);
+  EXPECT_EQ(FiredIds(run.trace), Ids({"1", "10"}));
 }
 
 // R14 to R16: rule 5 alone, hand-built, no I/O. The rule is the real record, extracted by id.
@@ -656,7 +794,7 @@ TEST(rule_interpreter, D10AdverbialOnInTheTortoiseWentOnKeepsEveryReadingAndTheA
   const Candidate& front = run.after[3].candidates.front();
   EXPECT_TRUE(HasFeature(front, "LEX", "A"));
   EXPECT_TRUE(HasFeature(front, "POS", "AAV"));
-  EXPECT_TRUE(run.trace.entries.empty());
+  EXPECT_EQ(FiredIds(run.trace), Ids({"10"}));  // 199: rule 10 fires elsewhere in the sentence
 }
 
 TEST(rule_interpreter, D11AdverbialAboutBeforeAFullStopKeepsEveryReadingAndTheAdverbFirst) {
@@ -750,7 +888,8 @@ TEST(rule_interpreter, N56_rule_set_load_reads_the_target_disambiguation_grammar
   if (rules.to_disambiguation().size() >= 5) {
     EXPECT_EQ(rules.to_disambiguation()[4].lhs, "(D,^AFT)(BLK)({V|P|AAV})");
   }
-  EXPECT_EQ(rules.disambiguation().size(), 5u);
+  // Issue 199 (199-test-cases.md, K55): eng now holds ten disambiguation records.
+  EXPECT_EQ(rules.disambiguation().size(), 10u);
 }
 
 TEST(rule_interpreter, N57_from_rules_keeps_all_seven_lists) {
@@ -845,6 +984,114 @@ TEST(rule_interpreter, N60_afr_dis_5_spares_a_determiner_that_may_stand_after) {
   EXPECT_EQ(positions[1].candidates.size(), 1u);
   EXPECT_EQ(positions[2].candidates.size(), 2u);
   EXPECT_TRUE(trace.entries.empty());
+}
+
+
+// K30 to K34: rules 10 and 9 alone, hand-built, no I/O. Each rule is the real record, by id.
+RuleSet IsolatedDisambiguation(const char* id) {
+  return RuleSet::from_rules({FindRule(EngToAfrRuleSet().disambiguation(), id)}, {}, {}, {}, {}, {});
+}
+
+void ExpectSamePositions(const std::vector<Position>& actual, const std::vector<Position>& expected) {
+  ASSERT_EQ(actual.size(), expected.size());
+  for (std::size_t i = 0; i < expected.size(); ++i) {
+    EXPECT_TRUE(SameReadings(actual[i].candidates, expected[i].candidates)) << i;
+  }
+}
+
+std::vector<Candidate> DeterminerReadings() {
+  return {Reading("a", {{"LEX", "D"}, {"POS", "ART"}}), Reading("a", {{"LEX", "N"}, {"POS", "NOU"}})};
+}
+
+TEST(rule_interpreter, K30RuleTenAloneStrikesTheNounWithNoCardinalityAfterADeterminer) {
+  const RuleSet isolated = IsolatedDisambiguation("10");
+  const RuleInterpreter interpreter(isolated);
+  const Candidate countable = Reading("box", {{"LEX", "N"}, {"SEM", "ARF"}, {"CAR", "CTB"}});
+  const Candidate verb = Reading("box", {{"LEX", "V"}, {"POS", "VER"}});
+  std::vector<Position> positions = {
+      Position{.candidates = DeterminerReadings()},
+      Position{.candidates = {Reading("box", {{"LEX", "N"}, {"SEM", "ACT"}}), countable, verb}}};
+  Trace trace;
+  interpreter.disambiguate(positions, trace);
+  ExpectSamePositions(positions, {Position{.candidates = DeterminerReadings()},
+                                  Position{.candidates = {countable, verb}}});
+  EXPECT_EQ(FiredIds(trace), Ids({"10"}));
+}
+
+TEST(rule_interpreter, K31RuleTenAloneKeepsEveryNounReadingThatCarriesCardinality) {
+  const RuleSet isolated = IsolatedDisambiguation("10");
+  const RuleInterpreter interpreter(isolated);
+  const std::vector<Position> before = {
+      Position{.candidates = DeterminerReadings()},
+      Position{.candidates = {Reading("box", {{"LEX", "N"}, {"CAR", "CTB"}}),
+                              Reading("box", {{"LEX", "N"}, {"CAR", "NCTB"}})}}};
+  std::vector<Position> positions = before;
+  Trace trace;
+  interpreter.disambiguate(positions, trace);
+  ExpectSamePositions(positions, before);
+  EXPECT_TRUE(trace.entries.empty());
+}
+
+TEST(rule_interpreter, K32RuleTenAloneDoesNotFireWithoutADeterminerReading) {
+  const RuleSet isolated = IsolatedDisambiguation("10");
+  const RuleInterpreter interpreter(isolated);
+  const std::vector<Position> before = {
+      Position{.candidates = {Reading("a", {{"LEX", "P"}, {"POS", "PRE"}}),
+                              Reading("a", {{"LEX", "A"}, {"POS", "AAV"}})}},
+      Position{.candidates = {Reading("box", {{"LEX", "N"}, {"SEM", "ACT"}}),
+                              Reading("box", {{"LEX", "N"}, {"SEM", "ARF"}, {"CAR", "CTB"}}),
+                              Reading("box", {{"LEX", "V"}, {"POS", "VER"}})}}};
+  std::vector<Position> positions = before;
+  Trace trace;
+  interpreter.disambiguate(positions, trace);
+  ExpectSamePositions(positions, before);
+  EXPECT_TRUE(trace.entries.empty());
+}
+
+std::vector<Candidate> VeryReadings() {
+  return {Reading("very", {{"LEX", "A"}, {"POS", "AAV"}}),
+          Reading("very", {{"LEX", "J"}, {"POS", "ADJ"}}),
+          Reading("very", {{"LEX", "A"}, {"POS", "SAV"}, {"att", "@plus"}})};
+}
+
+TEST(rule_interpreter, K33RuleNineAloneKeepsThePlusReadingBeforeAnAdjective) {
+  const RuleSet isolated = IsolatedDisambiguation("9");
+  const RuleInterpreter interpreter(isolated);
+  const std::vector<Candidate> beautiful = {Reading("beautiful", {{"LEX", "J"}, {"POS", "ADJ"}}),
+                                            Reading("beautiful", {{"LEX", "J"}, {"POS", "ADJ"}, {"MOR", "STE"}})};
+  std::vector<Position> positions = {Position{.candidates = VeryReadings()},
+                                     Position{.candidates = beautiful}};
+  Trace trace;
+  interpreter.disambiguate(positions, trace);
+  ExpectSamePositions(positions, {Position{.candidates = {VeryReadings()[2]}},
+                                  Position{.candidates = beautiful}});
+  EXPECT_EQ(FiredIds(trace), Ids({"9"}));
+}
+
+TEST(rule_interpreter, K34RuleNineAloneDoesNotFireBeforeANoun) {
+  const RuleSet isolated = IsolatedDisambiguation("9");
+  const RuleInterpreter interpreter(isolated);
+  const std::vector<Position> before = {
+      Position{.candidates = VeryReadings()},
+      Position{.candidates = {Reading("book", {{"LEX", "N"}, {"POS", "NOU"}})}}};
+  std::vector<Position> positions = before;
+  Trace trace;
+  interpreter.disambiguate(positions, trace);
+  ExpectSamePositions(positions, before);
+  EXPECT_TRUE(trace.entries.empty());
+}
+
+// K56: the file order rule 183 needs.
+TEST(rule_interpreter, K56_analysis_rule_183_stands_directly_before_rule_10) {
+  const std::vector<GrammarRule>& analysis = EngToAfrRuleSet().analysis();
+  const auto at = [&](std::string_view id) {
+    return std::ranges::find_if(analysis, [&](const GrammarRule& r) { return r.id == id; });
+  };
+  const auto r183 = at("183");
+  const auto r10 = at("10");
+  ASSERT_NE(r183, analysis.end());
+  ASSERT_NE(r10, analysis.end());
+  EXPECT_EQ(r183 + 1, r10);
 }
 
 }  // namespace
