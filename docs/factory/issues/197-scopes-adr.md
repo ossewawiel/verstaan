@@ -2,7 +2,7 @@
 issue: 197
 title: "ADR: how the UNL graph holds a scope, so A14 and A15 can carry and:01"
 milestone: M3
-status: open
+status: in-progress
 depends_on: [12]
 agent: docs-writer
 agents: [docs-writer]
@@ -10,7 +10,7 @@ model: sonnet
 effort: low
 checkpoint: null
 commit: null
-worktree: null
+worktree: .worktrees/m3-197-scopes-adr
 github_issue: 305
 ---
 ## What
@@ -43,7 +43,7 @@ ADR is accepted. Tests for A14 and A15. The tree interpreter: issue 194.
 
 ## Done when
 
-- [ ] The ADR exists under `docs/adr/` with A14 worked through.
-- [ ] Rejected options carry their reasons.
-- [ ] The header change is named and no code changes.
-- [ ] `python -m tools.validate --changed` is green.
+- [x] The ADR exists under `docs/adr/` with A14 worked through.
+- [x] Rejected options carry their reasons.
+- [x] The header change is named and no code changes.
+- [x] `python -m tools.validate --changed` is green.
