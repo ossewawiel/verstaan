@@ -2,15 +2,15 @@
 issue: 197
 title: "ADR: how the UNL graph holds a scope, so A14 and A15 can carry and:01"
 milestone: M3
-status: in-progress
+status: done
 depends_on: [12]
 agent: docs-writer
 agents: [docs-writer]
 model: sonnet
 effort: low
 checkpoint: null
-commit: null
-worktree: .worktrees/m3-197-scopes-adr
+commit: 7ef6a6f
+worktree: null
 github_issue: 305
 ---
 ## What
