@@ -8,6 +8,7 @@ add_executable(verstaan_tests
   unit/engine_status_test.cpp
   unit/engine_test.cpp
   unit/generation_test.cpp
+  unit/pipeline_fixed_set_test.cpp
   unit/read_graph_test.cpp
   unit/rule_interpreter_test.cpp
   unit/tokeniser_test.cpp
