@@ -47,3 +47,18 @@ not a graph node (ADR 0019).
   on these rows stay green.
 - An appended word stands at the end, out of place. The mark makes that visible.
 - Punctuation tokens are not graph nodes and leave `text`. A14's comma is issue 197's.
+
+## Amendment (2026-11-03, issue 182) — A09 translates to `'n boek oor Geneva`, status `ok`
+
+The Consequences above leave A09 to the owner "when issue 182 gives a literal a noun reading". That
+moment has come, and the owner has ruled. A09, `a book about Geneva`, translates to
+`'n boek oor Geneva`, with status `ok`.
+
+The mechanism follows the first Decision bullet. Issue 182 widens the dependent of `afr-gen-4` to
+`{N|^LEX}`. Rule 4 now accepts a name literal under `cnt`, places it after `oor`, and the pass has
+nothing left to append. A placed literal shows as itself, unmarked, so `Geneva` loses its `⟦ ⟧` and
+`partial` turns `ok`.
+
+The fixture row for A09 changes to the new text and status. Three engine tests that pinned
+`'n boek ⟦Geneva⟧` change with it. The original Decision and Consequences stand as written. The
+`partial` result was true until issue 182 landed.

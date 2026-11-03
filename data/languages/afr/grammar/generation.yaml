@@ -22,11 +22,11 @@
   source: {archive_path: exports/afr/47.tgrammar.txt, line: 9}
 - id: "4"
   kind: generation
-  lhs: "cnt(%x,N;%y,N)"
+  lhs: "cnt(%x,N;%y,{N|^LEX})"
   rhs: "NA(%x;PC([oor],LEX=P,POS=PRE;%y,-CAS,+CAS=OBL))"
   conditions: []
-  comment: "cnt(boek,Parys) > NA(boek,PC(omtrent,Parys))"
-  source: {archive_path: exports/afr/47.tgrammar.txt, line: 10}
+  comment: "A content phrase on a noun follows the noun with oor, also for a name or an unknown word: cnt(boek,Genève) > NA(boek,PC(oor,Genève)), 'n boek oor Genève"
+  source: {archive_path: original, line: "issue 182; adapted from exports/afr/47.tgrammar.txt line 10 (rule 4): the dependent may also carry no LEX, a name literal or a UW with no afr entry; the archive comment's omtrent corrected to the rhs's oor"}
 - id: "5"
   kind: generation
   lhs: "man(%x,J;%y,A)"
@@ -62,6 +62,13 @@
   conditions: []
   comment: "mod(book,John) > NA(book,PC(van,John))"
   source: {archive_path: exports/afr/47.tgrammar.txt, line: 15}
+- id: "236"
+  kind: generation
+  lhs: "nam(%x,N;%y,{N|^LEX})"
+  rhs: "((%y,+>BLK)(%x,+>BLK),+LEX=%x)"
+  conditions: []
+  comment: "A name goes before the noun phrase it names: nam(stad,Parys) > (Parys)(die stad), Parys die stad"
+  source: {archive_path: original, line: "issue 182; the group shape of exports/afr/47.tgrammar.txt line 39 (rule 33, and), word order per the ugoa1 corpus line 248"}
 - id: "10"
   kind: generation
   lhs: "obj(%x,V,{@past|@future};%y,N)"
@@ -146,6 +153,13 @@
   conditions: []
   comment: "plc(book,table.@under) > XA(boek,PC(onder,tafel))"
   source: {archive_path: exports/afr/47.tgrammar.txt, line: 27}
+- id: "235"
+  kind: generation
+  lhs: "plc(%x;%y,N,@top,@contact)"
+  rhs: "XA(%x;PC([op],LEX=P,POS=PRE;%y,-CAS,+CAS=OBL))"
+  conditions: []
+  comment: "A place on top of and touching takes op: plc(boek,tafel.@top.@contact) > XA(boek,PC(op,tafel)), die boek op die tafel"
+  source: {archive_path: original, line: "issue 182; adapted from exports/afr/47.tgrammar.txt line 24 (rule 18, @on), keyed on the attribute pair @top.@contact of the ugoa1 corpus lines 245 to 248"}
 - id: "234"
   kind: generation
   lhs: "plc(%x,N;%y,N)"
@@ -282,10 +296,10 @@
 - id: "40"
   kind: generation
   lhs: "(%x,N,@paucal)"
-  rhs: "(NS(%x,-@paucal,-NUM,+NUM=PLR;%y,[enkele],+LEX=D,+POS=QUA,+DIS=BEF),+LEX=N)"
+  rhs: "(NS(%x,-@paucal,-NUM,+NUM=PLR;%y,['n paar],+LEX=D,+POS=QUA,+DIS=BEF),+LEX=N)"
   conditions: []
-  comment: "book.@paucal > NA(boeke,enkele)"
-  source: {archive_path: exports/afr/47.tgrammar.txt, line: 46}
+  comment: "A paucal noun takes 'n paar and the plural: day.@paucal > NS(dae,'n paar), 'n paar dae"
+  source: {archive_path: original, line: "issue 182; exports/afr/47.tgrammar.txt line 46 (rule 40) with ['n paar] for [enkele], per the ugoa1 corpus lines 141 to 144"}
 - id: "41"
   kind: generation
   lhs: "(%x,N,@multal)"

@@ -2,7 +2,7 @@
 issue: 182
 title: "Fix three afr/grammar/generation.yaml divergences from the fixed sentence set"
 milestone: M3
-status: open
+status: in-progress
 depends_on: [181, 199]
 agent: rule-author
 agents: [rule-author, test-writer]
@@ -10,7 +10,7 @@ model: opus
 effort: medium
 checkpoint: null
 commit: null
-worktree: null
+worktree: .worktrees/m3-182-fix-generation-rule-divergences
 github_issue: 282
 ---
 ## What
@@ -44,11 +44,14 @@ After this quest, `generation.yaml`'s output matches the corpus for A09, A10 and
 The generation interpreter itself — issue 181, a dependency of this quest. The undictionaried
 `Geneva`/`Paris` proper nouns that keep A09 and A15 `partial` regardless of this fix — out of
 scope for the fixed sentence set (issue 24's "Not in scope").
+A15 end to end: its analysis graph lacks `cnt`, `nam`, `mod`, `@top.@contact` and the scope, so
+the owner split it into issue 201 on 2026-11-03 (blocker B1). Here A15 is tested on its corpus
+graph, and the end-to-end test is skipped with a pointer to 201.
 
 ## Done when
 
-- [ ] `afr-gen-4` produces `oor`, not `omtrent`.
-- [ ] `afr-gen-40` produces `'n paar`, not `enkele`.
-- [ ] `afr-gen-22` or a new rule produces `op` when the graph carries `@top.@contact`.
-- [ ] A generation rule handles the `nam` relation, with a test sentence exercising it.
-- [ ] `python -m tools.validate --changed` is green.
+- [x] `afr-gen-4` produces `oor`, not `omtrent`.
+- [x] `afr-gen-40` produces `'n paar`, not `enkele`.
+- [x] `afr-gen-22` or a new rule produces `op` when the graph carries `@top.@contact`.
+- [x] A generation rule handles the `nam` relation, with a test sentence exercising it.
+- [x] `python -m tools.validate --changed` is green.
