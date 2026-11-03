@@ -2,15 +2,15 @@
 issue: 182
 title: "Fix three afr/grammar/generation.yaml divergences from the fixed sentence set"
 milestone: M3
-status: in-progress
+status: done
 depends_on: [181, 199]
 agent: rule-author
 agents: [rule-author, test-writer]
 model: opus
 effort: medium
 checkpoint: null
-commit: null
-worktree: .worktrees/m3-182-fix-generation-rule-divergences
+commit: 676b19e
+worktree: null
 github_issue: 282
 ---
 ## What
