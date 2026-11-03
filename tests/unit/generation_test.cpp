@@ -189,6 +189,131 @@ TEST(generation, N30_line_143_some_days_before_the_summer) {
   ExpectNotFired(g.trace, {"afr-gen-30"});
 }
 
+// --- Issue 182, block P (docs/factory/issues/182-test-cases.md). Expected values come from the
+// table, the corpus and the fixture rows A09, A10, A15, never from the engine. ---
+
+Graph CorpusA09(const char* dependent) {
+  return MakeGraph({{"102870092", {"@indef"}}, {dependent, {}}}, {{"cnt", 0, 1}});
+}
+
+TEST(generation, P01_a09_corpus_graph_gives_oor) {
+  const Generated g = Generate(CorpusA09("500004419"), {"book", "Geneva"});
+  ExpectText(g, "'n boek oor ⟦Geneva⟧", Status::partial);
+  ExpectFired(g.trace, {"afr-gen-4", "afr-gen-36"});
+  EXPECT_EQ(g.result.text.find("omtrent"), std::string::npos);
+}
+
+TEST(generation, P02_rule_4_on_a_noun_dependent) {
+  const Generated g = Generate(CorpusA09("107543288"), {"book", "love"});
+  ExpectText(g, "'n boek oor liefde");
+  ExpectFired(g.trace, {"afr-gen-4"});
+}
+
+TEST(generation, P03_rule_4_does_not_fire_on_an_adjective) {
+  const Generated g = Generate(MakeGraph({{"102870092", {}}, {"300217728", {}}}, {{"cnt", 0, 1}}),
+                               {"book", "beautiful"});
+  ExpectNotFired(g.trace, {"afr-gen-4"});
+  EXPECT_EQ(g.result.text.find("oor"), std::string::npos) << g.result.text;
+}
+
+TEST(generation, P05_a10_corpus_graph_gives_n_paar) {
+  const Generated g = Generate(CorpusA10(), {"days", "summer"});
+  ExpectText(g, "'n paar dae voor die somer");
+  ExpectFired(g.trace, {"afr-gen-40", "afr-gen-26"});
+  ExpectNotFired(g.trace, {"afr-gen-30"});
+}
+
+TEST(generation, P07_n_paar_is_one_literal_node) {
+  const Generated g = Generate(MakeGraph({{"115155220", {"@paucal"}}}), {"days"});
+  EXPECT_EQ(g.result.text, "'n paar dae");
+  ExpectFired(g.trace, {"afr-gen-40"});
+  const TreeNode* node = ListNode(g.result, "'n paar");
+  ASSERT_NE(node, nullptr);
+  EXPECT_TRUE(HasFeature(*node, "LEX", "D"));
+  EXPECT_TRUE(HasFeature(*node, "POS", "QUA"));
+  EXPECT_FALSE(HasKey(*node, "UW"));
+}
+
+TEST(generation, P08_rule_40_does_not_fire_on_multal) {
+  const Generated g = Generate(MakeGraph({{"102870092", {"@multal"}}}), {"books"});
+  ExpectFired(g.trace, {"afr-gen-41"});
+  ExpectNotFired(g.trace, {"afr-gen-40"});
+  EXPECT_EQ(g.result.text.find("paar"), std::string::npos) << g.result.text;
+}
+
+Graph PlcGraph(std::vector<std::string> head, std::vector<std::string> place) {
+  return MakeGraph({{"102870092", std::move(head)}, {"104379243", std::move(place)}},
+                   {{"plc", 0, 1}});
+}
+
+TEST(generation, P09_top_contact_gives_op) {
+  const Generated g = Generate(PlcGraph({"@def"}, {"@def", "@top", "@contact"}), {"book", "table"});
+  ExpectText(g, "die boek op die tafel");
+  ExpectFired(g.trace, {"afr-gen-235"});
+  ExpectNotFired(g.trace, {"afr-gen-234", "afr-gen-22", "afr-gen-18"});
+}
+
+TEST(generation, P10_place_phrase_comes_before_content_phrase) {
+  const Generated g = Generate(
+      MakeGraph({{"102870092", {"@def"}}, {"104379243", {"@def", "@top", "@contact"}},
+                 {"500003943", {}}},
+                {{"plc", 0, 1}, {"cnt", 0, 2}}),
+      {"book", "table", "Paris"});
+  ExpectText(g, "die boek op die tafel oor ⟦Paris⟧", Status::partial);
+  ExpectFired(g.trace, {"afr-gen-235", "afr-gen-4"});
+}
+
+TEST(generation, P11_contact_alone_does_not_fire_rule_235) {
+  const Generated g = Generate(PlcGraph({"@indef"}, {"@indef", "@contact"}), {"book", "box"});
+  ExpectNotFired(g.trace, {"afr-gen-235"});
+  EXPECT_EQ(g.result.text.find("op"), std::string::npos) << g.result.text;
+}
+
+TEST(generation, P12_top_alone_does_not_fire_rule_235) {
+  const Generated g = Generate(PlcGraph({}, {"@top"}), {"book", "table"});
+  ExpectNotFired(g.trace, {"afr-gen-235"});
+  EXPECT_EQ(g.result.text.find("op"), std::string::npos) << g.result.text;
+}
+
+TEST(generation, P13_nam_puts_the_name_before_the_noun_phrase) {
+  const Generated g = Generate(
+      MakeGraph({{"108524735", {"@def"}}, {"500003943", {}}}, {{"nam", 0, 1}}),
+      {"city", "Paris"});
+  ExpectText(g, "⟦Paris⟧ die stad", Status::partial);
+  ExpectFired(g.trace, {"afr-gen-236", "afr-gen-35"});
+}
+
+TEST(generation, P14_nam_shows_a_name_literal_unquoted) {
+  const Generated g = Generate(
+      MakeGraph({{"108524735", {"@def"}}, {"\"Paris\"", {}}}, {{"nam", 0, 1}}),
+      {"city", "Paris"});
+  ExpectText(g, "Paris die stad");
+  ExpectFired(g.trace, {"afr-gen-236"});
+}
+
+TEST(generation, P15_no_nam_link_leaves_rule_236_silent) {
+  const Generated g = Generate(
+      MakeGraph({{"102870092", {"@def"}}, {"104379243", {"@def", "@top", "@contact"}},
+                 {"500003943", {}}},
+                {{"plc", 0, 1}, {"cnt", 0, 2}}),
+      {"book", "table", "Paris"});
+  ExpectNotFired(g.trace, {"afr-gen-236"});
+}
+
+TEST(generation, P16_a15_corpus_graph_without_the_scoped_part) {
+  const Generated g = Generate(
+      MakeGraph({{"102870092", {"@def"}},
+                 {"104379243", {"@def", "@top", "@contact"}},
+                 {"300217728", {}},
+                 {"108524735", {"@def"}},
+                 {"500003943", {}}},
+                {{"plc", 0, 1}, {"mod", 0, 2}, {"cnt", 0, 3}, {"nam", 3, 4}}),
+      {"book", "table", "beautiful", "city", "Paris"});
+  ExpectText(g, "die mooi boek op die tafel oor ⟦Paris⟧ die stad", Status::partial);
+  ExpectFired(g.trace, {"afr-gen-4", "afr-gen-8", "afr-gen-35", "afr-gen-235", "afr-gen-236"});
+  ExpectNotFired(g.trace, {"afr-gen-22", "afr-gen-234"});
+}
+
 TEST(generation, N31_line_209_the_beautiful_car) {
   const Generated g = Generate(CarMod({"@def"}, {}), {"car", "beautiful"});
   ExpectText(g, "die mooi motor");
