@@ -94,11 +94,11 @@ TEST(engine_status, A13NamesEnterTheGraphAsQuotedLiterals) {
   EXPECT_TRUE(has_uw(result, "\"Mary\""));
 }
 
-TEST(engine_status, A09GenevaIsALiteralAndTheRowKeepsStatusPartial) {
+TEST(engine_status, A09GenevaIsALiteralAndTheRowIsOk) {
   const Result result = EngToAfrEngine().translate("a book about Geneva",
                                                    Options{.from = Lang::eng, .to = Lang::afr});
   EXPECT_TRUE(has_uw(result, "\"Geneva\""));
-  EXPECT_EQ(result.status, Status::partial);
+  EXPECT_EQ(result.status, Status::ok);
 }
 
 TEST(engine_status, SentenceInitialTheStillResolvesThroughTheDictionary) {
@@ -353,7 +353,7 @@ TEST(engine_status, R03_a08_carries_no_plc_and_rules_five_and_154_stay_silent) {
 
 TEST(engine_status, R04_a09_a_book_about_geneva_has_the_cnt_relation) {
   const Result result = TranslateEng("a book about Geneva");
-  EXPECT_EQ(result.status, Status::partial);
+  EXPECT_EQ(result.status, Status::ok);
   ASSERT_EQ(result.unl.nodes.size(), 2U);
   EXPECT_EQ(result.unl.nodes[0].uw, "102870092");
   EXPECT_EQ(result.unl.nodes[0].attributes, std::vector<std::string>{"@indef"});
@@ -513,15 +513,36 @@ TEST(engine_status, N15_determiner_disambiguation_stays_silent_on_a02_a03_a07) {
   }
 }
 
-TEST(engine_status, N16_a09_a_book_about_geneva_appends_the_mark) {
+TEST(engine_status, N16_a09_a_book_about_geneva_writes_oor_and_the_name_unmarked) {
+  // Owner ruling D1, 2026-11-03: A09 end to end is `'n boek oor Geneva`, status ok.
   const Result result = TranslateEng("a book about Geneva");
-  EXPECT_EQ(result.status, Status::partial);
-  EXPECT_TRUE(result.text.starts_with("'n boek "));
-  const std::string mark = "⟦Geneva⟧";
-  const std::size_t first = result.text.find(mark);
-  ASSERT_NE(first, std::string::npos);
-  EXPECT_EQ(result.text.find(mark, first + 1), std::string::npos);
+  EXPECT_EQ(result.status, Status::ok);
+  EXPECT_EQ(result.text, "'n boek oor Geneva");
+  EXPECT_EQ(result.text.find("⟦"), std::string::npos);
   EXPECT_TRUE(Fired(result, "afr-gen-36"));
+}
+
+// P04 (docs/factory/issues/182-test-cases.md), owner ruling D1: A09 end to end.
+TEST(engine_status, P04_a09_a_book_about_geneva_gives_oor_and_status_ok) {
+  const Result result = TranslateEng("a book about Geneva");
+  EXPECT_EQ(result.text, "'n boek oor Geneva");
+  EXPECT_EQ(result.status, Status::ok);
+  ExpectFired(result, {"afr-gen-4", "afr-gen-36"});
+}
+
+// P06: A10 end to end.
+TEST(engine_status, P06_a10_some_days_before_the_summer_gives_n_paar) {
+  const Result result = TranslateEng("some days before the summer");
+  EXPECT_EQ(result.text, "'n paar dae voor die somer");
+  EXPECT_EQ(result.status, Status::ok);
+  ExpectFired(result, {"afr-gen-40", "afr-gen-26"});
+}
+
+// P17: A15 end to end. Blocked: the analysis does not build A15's graph and Graph has no scope
+// (ADR 0026). Split into issue 201 by owner ruling, 2026-11-03.
+TEST(engine_status, P17_a15_end_to_end_gives_the_fixture_text) {
+  GTEST_SKIP() << "blocked on issue 201 (scopes for A14 and A15): analysis builds no cnt, nam, "
+                  "mod or scope for A15";
 }
 
 TEST(engine_status, N17_book_xyzzy_appends_the_unknown_word) {

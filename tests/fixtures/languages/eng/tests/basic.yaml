@@ -82,9 +82,9 @@
   source: {origin: ugoa1, line: 121, issue: 24}
 - id: A09
   input: "a book about Geneva"
-  expected: "'n boek oor ⟦Geneva⟧"
+  expected: "'n boek oor Geneva"
   direction: eng-afr
-  status: partial
+  status: ok
   tier: basic
   register: neutral
   review: confirmed
