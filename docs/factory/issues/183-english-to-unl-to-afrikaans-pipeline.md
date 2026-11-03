@@ -2,15 +2,15 @@
 issue: 183
 title: "Wire the English to UNL to Afrikaans pipeline for the fixed sentence set"
 milestone: M3
-status: in-progress
+status: done
 depends_on: [180, 181, 182, 185, 199]
 agent: implementer
 agents: [implementer]
 model: sonnet
 effort: medium
 checkpoint: null
-commit: null
-worktree: .worktrees/m3-183-english-to-unl-to-afrikaans-pipeline
+commit: 86b0b53
+worktree: null
 github_issue: 283
 ---
 ## What
