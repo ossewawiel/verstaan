@@ -2,8 +2,8 @@
 
 Last completed:  #199 — The analysis graph for A06, A07, A10 and A12 matches the corpus graph (M3),
                  commit 8713df6
-Next up:         #182 — Fix three afr/grammar/generation.yaml divergences from the fixed sentence
-                 set (M3)
+Next up:         #183 — Wire the English to UNL to Afrikaans pipeline for the fixed sentence set
+                 (M3)
 Branch / PR:     main, https://github.com/ossewawiel/verstaan.git, 0 files dirty, no gate stamp for
-                 f5a97e7
-Resume with:     /factory-run 182
+                 04a941d
+Resume with:     /factory-run 183
