@@ -2,15 +2,15 @@
 issue: 188
 title: "M3 close-out: retro, verifier, tag m3, write the M4 quests"
 milestone: M3
-status: in-progress
+status: done
 depends_on: [26, 183, 184, 185, 187, 202]
 agent: docs-writer
 agents: [docs-writer, verifier]
 model: sonnet
 effort: low
 checkpoint: 4
-commit: null
-worktree: .worktrees/m3-188-close-out
+commit: 617c810
+worktree: null
 github_issue: 289
 ---
 ## What
@@ -63,7 +63,7 @@ Starting any M4 quest. M5 quests: they wait on the desktop UI technology, an ope
 - [x] The retro and verifier results are recorded under `## Verifier`.
 - [x] The M4 quest files exist, with a tile each, and `STATE.md` names the first one next.
 - [x] The carved-fixture, sensors, M7 close-out and xxa/xxb decisions are recorded.
-- [ ] `main` carries the tag `m3`.
+- [x] `main` carries the tag `m3`, tagged after this issue's own commit merges.
 
 ## Verifier
 
