@@ -3,7 +3,7 @@ issue: 32
 title: "Three tiers build, their budgets are measured, and arm-basic cross-builds"
 milestone: M4
 status: open
-depends_on: [29, 30, 212]
+depends_on: [29, 30, 212, 218]
 agent: implementer
 agents: [implementer]
 model: sonnet
@@ -24,7 +24,8 @@ After this quest, the three tiers configure and build, each in the way quest 27'
 under the label `tier` measure peak resident memory after load and across the golden rows, and
 fail over budget. `arm-basic` cross-builds, and `gate_full.sh:24` lists it. ADR 0027 records that
 the budget is measured on x86-64 only, so a Pi's allocator and page size are not in the figure.
-Quest 212 comes first because finding F8 tied the cost bound to the budget work. The checkpoint
+Quest 212 comes first because finding F8 tied the cost bound to the budget work. Quest 218 comes
+first because it builds `verstaan_cli_basic`, the binary this quest cross-builds. The checkpoint
 is 4 because the presets are a build contract.
 
 ## Acceptance criteria
@@ -37,7 +38,7 @@ is 4 because the presets are a build contract.
   T91 to T94 on all three tiers and names the result in its hand-off.
 - `tests/tier/` under label `tier` replaces the placeholder and fails over budget.
 - Red proof: a budget set below the measured figure fails the test. Paste the failure.
-- `arm-basic` cross-builds, and `file` on the binary prints `ARM aarch64`.
+- `arm-basic` cross-builds, and `file` on `verstaan_cli_basic` prints `ARM aarch64`.
 - `tools/factory/hooks/gate_full.sh` lists `arm-basic`.
 - The budget figures are recorded under `## Verifier` in this issue.
 - `ctest --preset linux-gcc -L fast` passes.
@@ -52,7 +53,7 @@ Running on a Pi: quest 205. The CI leg: quest 203.
 - [ ] The three tiers configure and build.
 - [ ] `tier` tests measure and enforce each budget.
 - [ ] The red proof is pasted.
-- [ ] `arm-basic` cross-builds and `file` prints `ARM aarch64`.
+- [ ] `arm-basic` cross-builds and `file` on `verstaan_cli_basic` prints `ARM aarch64`.
 - [ ] `gate_full.sh` lists `arm-basic`.
 - [ ] The budget figures are recorded under `## Verifier`.
 - [ ] `ctest --preset linux-gcc -L fast` and `python -m tools.validate --changed` are green.
