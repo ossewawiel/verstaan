@@ -2,8 +2,7 @@
 
 Last completed:  #199 — The analysis graph for A06, A07, A10 and A12 matches the corpus graph (M3),
                  commit 8713df6
-Next up:         #26 — The test table is the test: a golden loader runs every row, and a held-out
-                 slice runs only at the gate (M3)
+Next up:         #188 — M3 close-out: retro, verifier, tag m3, write the M4 quests (M3)
 Branch / PR:     main, https://github.com/ossewawiel/verstaan.git, 0 files dirty, no gate stamp for
-                 e838789
-Resume with:     /factory-run 26
+                 6c89cd1
+Resume with:     /factory-run 188

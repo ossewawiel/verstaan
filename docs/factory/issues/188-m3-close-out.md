@@ -3,7 +3,7 @@ issue: 188
 title: "M3 close-out: retro, verifier, tag m3, write the M4 quests"
 milestone: M3
 status: open
-depends_on: [26, 183, 184, 185, 187]
+depends_on: [26, 183, 184, 185, 187, 202]
 agent: docs-writer
 agents: [docs-writer, verifier]
 model: sonnet
@@ -30,6 +30,9 @@ It also promises:
 - The basic tier cross-built and run on a Pi Zero 2 W with the Argos benchmark beside it.
 - Gate steps 5 and 6.
 
+This quest also waits on side quest 202, which proves the golden loader's
+deferred and pending paths before the verifier reads M3 (owner, 2026-11-04).
+
 ## Acceptance criteria
 
 - `/factory-retro` has run, and its proposals are listed under `## Verifier` with the owner's
@@ -38,12 +41,15 @@ It also promises:
   Each finding is fixed, or has its own quest.
 - The M4 quest files exist with loadouts, `depends_on` and Done-when lines a test can check. They
   cover every M4 promise above, and `docs/factory/map.yaml` has a tile for each.
-- Three decisions are recorded, each as a quest or a written "no" with its reason:
+- Four decisions are recorded, each as a quest or a written "no" with its reason:
   - the 2026-09-16 engine-test-data brief (carve small store fixtures, so engine tests stop
     reading the 175 MB store); the owner deferred it to this quest on 2026-09-28;
   - the sensors quest issue 115 promised once M3 had engine code (an include-boundary lint, a
     coverage floor, mutation testing on changed engine files);
-  - an M7 close-out and an `m7` tag; M7's quests 172 to 178 are done and it has neither.
+  - an M7 close-out and an `m7` tag; M7's quests 172 to 178 are done and it has neither;
+  - the xxa/xxb fixture rows: either M4 gives the engine languages loaded from data, so those
+    rows run, or they leave the golden glob and serve only the validator tests. Side quest 202
+    registers them as skipped until this decision lands.
 - `PLAN.md` §9 no longer asks the owner to schedule side quests 91 and 92, which are done.
 - `main` is tagged `m3` after this issue's own commit merges: `git tag m3 main && git push origin m3`.
 
@@ -56,5 +62,5 @@ Starting any M4 quest. M5 quests: they wait on the desktop UI technology, an ope
 
 - [ ] The retro and verifier results are recorded under `## Verifier`.
 - [ ] The M4 quest files exist, with a tile each, and `STATE.md` names the first one next.
-- [ ] The carved-fixture, sensors and M7 close-out decisions are recorded.
+- [ ] The carved-fixture, sensors, M7 close-out and xxa/xxb decisions are recorded.
 - [ ] `main` carries the tag `m3`.
