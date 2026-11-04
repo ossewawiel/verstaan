@@ -22,3 +22,4 @@ be defined no earlier than M5 and recorded as its own ADR.
 - M4 must cross-build `basic` for ARM and run it on a real Pi Zero, with Argos beside it.
 - Every tier build produces its own golden test set from the same corpus.
 - "Last resort" stays honest because nothing below `connected` can call out.
+- The Pi Zero run and the Argos benchmark moved to Post-M6 on 2026-11-04. See ADR 0027.

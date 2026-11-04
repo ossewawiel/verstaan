@@ -8,8 +8,8 @@
 //     `<file stem>_L<line>`. An optional `# direction: eng-afr` comment sets the direction
 //     (default eng-afr). Status is `partial` when expected holds a ⟦ mark, else `ok`.
 // Only directions the engine's Lang enum can express run (eng-afr). Rows of other directions,
-// such as the invented xxa/xxb pair, are registered as skipped cases (issue 202; issue 188 decides
-// whether they ever run).
+// such as the invented xxa/xxb pair, are registered as skipped cases (issue 202; issue 28 runs
+// these rows).
 
 #pragma once
 

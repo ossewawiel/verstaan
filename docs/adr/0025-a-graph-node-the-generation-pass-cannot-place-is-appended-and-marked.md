@@ -62,3 +62,18 @@ nothing left to append. A placed literal shows as itself, unmarked, so `Geneva` 
 The fixture row for A09 changes to the new text and status. Three engine tests that pinned
 `'n boek ⟦Geneva⟧` change with it. The original Decision and Consequences stand as written. The
 `partial` result was true until issue 182 landed.
+
+## Amendment (2026-11-04, issue 188)
+
+The owner reversed the 2026-11-03 ruling: "Geneva should follow this rule as well actually it was a
+mistake to pass it". A09, `a book about Geneva`, is `'n boek oor ⟦Geneva⟧`, status `partial`.
+
+A13 stays `John en Mary`, status `ok`. A person's name has no Afrikaans form to lack.
+
+Many places do. The owner's 2026-10-29 ruling: most old-world cities, countries, regions and
+languages have an Afrikaans name (look at the Dutch; Geneva to Genève, Paris to Parys). New-world
+cities, regions and rivers keep their own (New York, Brisbane). Where the store holds no record of
+the Afrikaans name, the mark shows the gap. Quest 207 decides how each case shows.
+
+Quest 207 builds the rule that tells the two apart. Until it lands, the engine still prints bare
+`Geneva`, and golden row A09 carries `deferred: 207`.

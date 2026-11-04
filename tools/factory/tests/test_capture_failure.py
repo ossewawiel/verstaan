@@ -79,3 +79,19 @@ def test_appends_rather_than_overwrites(repo):
     assert len(entries) == 2
     assert entries[0]["detail"] == "first"
     assert entries[1]["detail"] == "second"
+
+
+@pytest.mark.parametrize(
+    ("branch", "expected"),
+    [
+        ("m3-194-tree-interpreter", "194"),
+        ("side-202-prove-loader-paths", "202"),
+        ("quest-202-prove-loader-paths", "202"),
+        ("some-other-branch", "185"),
+    ],
+)
+def test_the_branch_names_the_issue_and_state_md_is_the_fallback(repo, branch, expected):
+    (repo / "docs" / "factory" / "STATE.md").write_text("Next up: #185 x\n", encoding="utf-8")
+    subprocess.run(["git", "checkout", "-q", "-b", branch], cwd=repo, check=True)
+    run_hook(repo, "test", "fast-tests-red", "detail")
+    assert lessons(repo)[0]["issue"] == expected

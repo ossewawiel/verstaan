@@ -41,8 +41,7 @@ regions:
   size: 1200
 - id: m4
   name: M4 Compiler and tiers
-  goal: Generated tables per tier, equivalence tests, basic tier cross-built and run on a Pi Zero, Argos
-    benchmark beside it.
+  goal: Generated tables per tier, equivalence tests, basic tier cross-built for ARM.
   x: 0
   y: 1440
   size: 1200
@@ -633,6 +632,126 @@ tiles:
   title: Prove the golden loader's deferred and pending paths, and count the xxa/xxb rows as skipped
   x: 4608
   y: 544
+  size: 32
+- id: '27'
+  region: m4
+  title: Decide the generated table shape and write tiers.toml
+  x: 96
+  y: 1536
+  size: 32
+- id: '28'
+  region: m4
+  title: The engine takes its languages from data, and the xxa/xxb rows run
+  x: 160
+  y: 1536
+  size: 32
+- id: '29'
+  region: m4
+  title: The compiler writes engine/generated/<tier>/ from the store and tiers.toml
+  x: 224
+  y: 1536
+  size: 32
+- id: '30'
+  region: m4
+  title: Engine::generated(Tier) runs the compiled tables
+  x: 288
+  y: 1536
+  size: 32
+- id: '31'
+  region: m4
+  title: The equivalence suite diffs both back ends
+  x: 96
+  y: 1600
+  size: 32
+- id: '32'
+  region: m4
+  title: Three tiers build, their budgets are measured, and arm-basic cross-builds
+  x: 160
+  y: 1600
+  size: 32
+- id: '203'
+  region: m4
+  title: Gate steps 5 and 6 run for real, and CI gains an ARM leg
+  x: 224
+  y: 1600
+  size: 32
+- id: '204'
+  region: m4
+  title: 'M4 close-out: retro, verifier, tag m4, write the next quests'
+  x: 288
+  y: 1600
+  size: 32
+- id: '205'
+  region: m4
+  title: Run the basic tier on a Pi Zero 2 W with Argos beside it
+  x: 96
+  y: 1664
+  size: 32
+- id: '206'
+  region: m4
+  title: An include-boundary lint and a coverage floor join the gate
+  x: 160
+  y: 1664
+  size: 32
+- id: '207'
+  region: m3
+  title: A place name with no record is marked and a person's name is not
+  x: 4416
+  y: 608
+  size: 32
+- id: '208'
+  region: m3
+  title: A word the pass drops, or a rule cap it hits, shows in the status
+  x: 4480
+  y: 608
+  size: 32
+- id: '209'
+  region: m3
+  title: M1, M5 and M17 plurals inflect, and an a-rule shape the engine refuses shows in the trace
+  x: 4544
+  y: 608
+  size: 32
+- id: '210'
+  region: m3
+  title: Engine::load reads the store once and reports a failure
+  x: 4608
+  y: 608
+  size: 32
+- id: '211'
+  region: m3
+  title: The validator refuses a store the engine's reader cannot read
+  x: 4416
+  y: 672
+  size: 32
+- id: '212'
+  region: m3
+  title: Translation cost has a bound
+  x: 4480
+  y: 672
+  size: 32
+- id: '213'
+  region: m3
+  title: Docs and code agree on the M3 engine
+  x: 4544
+  y: 672
+  size: 32
+- id: '214'
+  region: m3
+  title: Golden loader, D-rule and byte-level edges
+  x: 4608
+  y: 672
+  size: 32
+- id: '215'
+  region: m3
+  title: Write the A15 generation rules
+  x: 4416
+  y: 736
+  size: 32
+- id: '216'
+  region: m3
+  title: Next up names the lowest open blocker, and Last completed names the latest close
+  x: 4480
+  y: 736
   size: 32
 - id: '90'
   region: m7

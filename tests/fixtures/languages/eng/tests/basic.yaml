@@ -4,6 +4,7 @@
 # `input` is copied verbatim from data/languages/eng/corpus/ugoa1.yaml `sentence`.
 # `expected` is copied from data/languages/afr/corpus/ugoa1.yaml, from the row with the same
 # `source.line`, with any word neither dictionary reaches wrapped in the SPEC.md §3.4 mark.
+# A09, A14 and A15 differ from the corpus by owner ruling of 2026-11-04, recorded in 24-test-cases.md.
 # `id`, `status` and `review` are additions to the SPEC §3.3 key list. `review` is `pending` or
 # `confirmed`, the owner's mark (issue 185); `id` and `status` let a test name its row and
 # assert the Status of SPEC §3.4 without a second lookup.
@@ -85,12 +86,13 @@
   source: {origin: ugoa1, line: 121, issue: 24}
 - id: A09
   input: "a book about Geneva"
-  expected: "'n boek oor Geneva"
+  expected: "'n boek oor ⟦Geneva⟧"
   direction: eng-afr
-  status: ok
+  status: partial
   tier: basic
   register: neutral
   review: confirmed
+  deferred: 207
   source: {origin: ugoa1, line: 128, issue: 24}
 - id: A10
   input: "some days before the summer"
@@ -130,7 +132,7 @@
   source: {origin: ugoa1, line: 219, issue: 24}
 - id: A14
   input: "a car, a book and a mug"
-  expected: "'n kar, 'n boek en 'n beker"
+  expected: "'n motor, 'n boek en 'n beker"
   direction: eng-afr
   status: ok
   tier: basic
@@ -140,11 +142,11 @@
   source: {origin: ugoa1, line: 230, issue: 24}
 - id: A15
   input: "the beautiful book about the city of Paris without pictures and photos on the table"
-  expected: "die mooi boek op die tafel oor ⟦Paris⟧ die stad sonder prente en foto's"
+  expected: "die mooi boek op die tafel oor ⟦Paris⟧ die stad sonder beelde en foto's"
   direction: eng-afr
   status: partial
   tier: basic
   register: neutral
   review: confirmed
-  deferred: 201
+  deferred: 215
   source: {origin: ugoa1, line: 248, issue: 24}

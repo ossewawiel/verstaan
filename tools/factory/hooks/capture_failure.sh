@@ -5,13 +5,15 @@
 # (`tools/factory/tests/test_capture_failure.py`); the wrapper under `.claude/` almost never changes.
 #
 # Called by gate-fast.sh: capture_failure.sh <stage> <signature> <detail...>
-# Appends one JSON line to docs/factory/lessons.jsonl. Issue number comes from STATE.md "Next up".
+# Appends one JSON line to docs/factory/lessons.jsonl. Issue number comes from the branch name
+# (m3-194-slug, side-202-slug, quest-202-slug), else from STATE.md "Next up".
 set -u
 # shellcheck source=_env.sh
 . "$(dirname "$0")/_env.sh"
 root=$(repo_root)
 stage=$1; sig=$2; shift 2; detail="$*"
-issue=$(sed -n 's/^Next up:[[:space:]]*#\([0-9]*\).*/\1/p' "$root/docs/factory/STATE.md" 2>/dev/null | head -1)
+issue=$(git -C "$root" branch --show-current 2>/dev/null | sed -nE 's/^(m[0-9]+|side|quest)-([0-9]+)-.*/\2/p')
+[ -n "$issue" ] || issue=$(sed -n 's/^Next up:[[:space:]]*#\([0-9]*\).*/\1/p' "$root/docs/factory/STATE.md" 2>/dev/null | head -1)
 ts=$(date -u +%Y-%m-%dT%H:%M:%SZ)
 esc() { printf '%s' "$1" | sed 's/\\/\\\\/g; s/"/\\"/g' | tr '\n' ' '; }
 printf '{"sig":"%s","stage":"%s","issue":"%s","ts":"%s","detail":"%s"}\n' \

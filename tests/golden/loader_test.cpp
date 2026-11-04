@@ -19,7 +19,7 @@ class skipped_row : public testing::TestWithParam<Row> {};
 
 TEST_P(skipped_row, Row) {
   GTEST_SKIP() << "no Lang for direction " << GetParam().direction
-               << "; issue 188 decides whether these rows ever run";
+               << "; issue 28 runs these rows";
 }
 
 INSTANTIATE_TEST_SUITE_P(Table, skipped_row, testing::ValuesIn(load_skipped_rows()),
