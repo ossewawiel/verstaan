@@ -33,8 +33,7 @@ analysis builds the corpus graph for both rows:
   :01.@without) and:01(106999436.@generic, 103925226.@generic)`.
 
 The effort is `xhigh`, one step above the rule-author's default, and the checkpoint is 4, because
-the scope changes the public `Graph` type in `engine/include/`. ADR 0026 is `Proposed`. The
-rule-author confirms the owner has accepted it before any engine change.
+the scope changes the public `Graph` type in `engine/include/`. The owner accepted ADR 0026, as amended, on 2026-11-04. Its amendment is what lets a relation end on a scope, as both corpus graphs above do.
 
 A15 ends `sonder beelde en foto's`. `pictures` follows the corpus UW 106999436, which the afr store
 maps to `beeld` and `beelde`. Today the engine picks `skilderye`. The name's node in A15's graph
@@ -52,9 +51,9 @@ generation rules and takes A15's `deferred` key.
 - `Engine::translate` with `Options{Lang::eng, Lang::afr}` builds the corpus graph above in
   `Result::unl` for A14 and for A15: the same UWs, attributes, relations and scopes.
 - A14's `text` matches its `expected` field exactly: `'n motor, 'n boek en 'n beker`.
-- A15's `Result::unl` equals the corpus graph above, except the name's node. That node follows
-  quest 207's ADR. The eng store holds `Paris` as `112469372` with `SEM: PLA`, and afr has no
-  record; UW `500003943` appears only in the two corpus files.
+- A15's `Result::unl` equals the corpus graph above, except the name's node. By owner ruling of
+  2026-11-04 a capitalised word with an English record uses that record, so the node is
+  `112469372`, not the corpus's `500003943`, which is in no dictionary.
 - `Result::trace` names the analysis rule that builds each attribute, relation and scope.
 - `ctest -L fast` passes. `python -m tools.validate --changed` exits 0.
 
@@ -62,8 +61,7 @@ generation rules and takes A15's `deferred` key.
 
 The generation rules A15 needs up to `die stad`: issue 182. The words after it, `sonder` for
 `@without`, and `by` for `@contact` alone: issue 182's findings F1 and F3, now quest 215. A15's
-words, its `text`, its `deferred` key and issue 182's skipped P17 test: quest 215. Accepting
-ADR 0026: the owner.
+words, its `text`, its `deferred` key and issue 182's skipped P17 test: quest 215.
 
 ## Done when
 

@@ -49,11 +49,14 @@ quest 210's.
 
 ## Owner rulings
 
-The ruling on F10.6 is recorded here, with its date. Not yet ruled.
+2026-11-04, the owner: **any change under `engine/include/`, additions included, is named in an ADR.**
+One quest's ADR may cover all its changes, so the cost is a line, not a file. This quest writes one ADR
+for `dictionary.hpp`, `rule_set.hpp`, `tokeniser.hpp` and `rule_interpreter.hpp`, which landed without
+one, and removes the comments that say additions need none.
 
 ## Acceptance criteria
 
-- The owner has ruled on F10.6 before the ADR sentence changes.
+- The owner ruled on F10.6 on 2026-11-04.
 - `grep -n "id\b" docs/factory/SPEC.md` shows SPEC §3.3 listing `id`, `status`, `review` and `source`.
 - `grep -n "not_implemented" docs/factory/SPEC.md` finds a sentence that matches `engine.cpp`.
 - `$V --register formal "a book"` and SPEC §3.6 agree on the output and exit code, in a test.
@@ -78,5 +81,5 @@ The load-failure API and the I/O in `src/`: quest 210.
 - [ ] An unknown CLI flag exits with a usage error, in a test.
 - [ ] `meta.yaml` counts match the store, and the validator compares them, in a pytest.
 - [ ] Issue 183 has no unchecked box and no deleted test name.
-- [ ] The ADR sentence reads one way in all three files (`grep` above).
+- [ ] The ADR sentence reads one way in all three files (`grep` above), and one ADR covers the four headers.
 - [ ] `ctest --preset linux-gcc -L fast` and `python -m tools.validate --changed` are green.
