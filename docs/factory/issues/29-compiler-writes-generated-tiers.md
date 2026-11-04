@@ -16,8 +16,8 @@ github_issue: 345
 ## What
 
 `tools/compiler/cli.py` is a skeleton. `engine/generated/fixture/` is a hand-written stand-in. SPEC
-§3.5 is the contract: `{tables.cpp, tables.hpp, rules.cpp}` under `engine/generated/<tier>/`,
-`tests/golden/<tier>/*.txt`, a header, and a static library `verstaan_data_<tier>`. Quest 27's ADR
+§3.5 is the contract: one file per array under `engine/generated/<tier>/` (ADR 0028),
+`tests/golden/<tier>/*.txt` for a committed tier, a header, and a static library `verstaan_data_<tier>`. Quest 27's ADR
 says what the tables hold and which words a tier keeps. Quest 211 makes the validator refuse any
 store the compiler's reader would read differently from the engine's. Quest 207 may add a store
 file the compiler must carry.
@@ -42,12 +42,27 @@ grows.
 
 - Two runs of the compiler give byte-identical output.
 - The header carries the store's `last_import` or no date, and SPEC §3.5 says which.
-- `gate_full.sh` step 6 compiles what quest 27's ADR says a branch compiles.
+- `gate_full.sh` step 6 and `.claude/commands/gate.md:3,64-67` compile what quest 27's ADR says a branch
+  compiles: `python -m tools.compiler --changed --base origin/main`, then `git status --porcelain
+  engine/generated/ tests/golden/` must be empty.
+- `--tier <name>` writes one tier, `--all-tiers` writes the fixture build and `basic` only, and
+  `--changed --base nosuchref` exits non-zero and writes nothing.
+- Output takes the form in SPEC §3.5: one file per array, per language. Table files compile one at a time,
+  in a Ninja pool of depth 1.
+- `.gitignore` lists `engine/generated/phone/` and `engine/generated/connected/`. The compiler writes
+  `tests/golden/<tier>/` only for a committed tier.
+- CMake takes `VERSTAAN_TIERS`, default `fixture;basic`. Configure fails, naming the `--tier` command, when a
+  named tier's files are absent.
+- The compiler reads the store with the fixed-line reader quest 211's ADR makes the contract. Its tokens
+  equal the table in `19-test-cases.md`.
+- `docs/standards/testing.md` defines the label `data` and the `tests/golden/<tier>/` rule.
+- The hand-off states the MSVC figure for `basic`. If MSVC exhausts its heap or passes the 15-minute
+  timeout, its leg sets `VERSTAAN_TIERS=fixture`, and the Linux legs still build `basic` (owner's ruling, ADR 0028).
 - A pytest proves a changed store entry changes the output.
 - A pytest proves the top-N tie-break from quest 27's ADR.
 - Every generated file carries the header SPEC §3.5 lists.
 - The hand-off lists which rows go to `tests/golden/<tier>/` and how their ids stay unique.
-- `27-test-cases.md` is turned into tests.
+- The rows of `27-test-cases.md` with quest 29 are turned into tests.
 - `verstaan_data_<tier>` builds for each committed tier.
 - The hand-off states the repository size the output adds.
 - `ctest --preset linux-gcc -L fast` passes.
@@ -64,6 +79,9 @@ Loading the tables: quest 30. Memory budgets: quest 32. The CI leg and the `data
 - [ ] `verstaan_data_<tier>` builds.
 - [ ] The hand-written `engine/generated/fixture/` is gone.
 - [ ] Gate step 6 follows quest 27's rule, and SPEC §3.5 matches.
+- [ ] `git check-ignore engine/generated/phone/tables.cpp engine/generated/connected/tables.cpp` exits 0.
+- [ ] `python -m tools.compiler --changed --base nosuchref` exits non-zero.
+- [ ] `grep -n 'git diff --exit-code engine/generated' tools/factory/hooks/gate_full.sh .claude/commands/gate.md` finds nothing.
 - [ ] The golden text rows and their ids are stated and tested.
 - [ ] The repository size added is stated in the hand-off.
 - [ ] `ctest --preset linux-gcc -L fast` and `python -m tools.validate --changed` are green.

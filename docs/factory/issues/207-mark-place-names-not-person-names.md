@@ -101,6 +101,8 @@ quoted literals. So the store decides, not the corpus's shape.
 - The tests at `tests/unit/engine_status_test.cpp:97-102`, `:355-356` and `:517-528` assert the old
   ruling and change here.
 - SPEC §3.3 matches if a store file is added.
+- The engine's capital test and the capital pin in SPEC §3.5 (first character Unicode `Lu`, no space; ADR
+  0028) agree. The ADR names any difference, and SPEC §3.5 follows it.
 - `ctest --preset linux-gcc -L fast` passes.
 - `python -m tools.validate --changed` exits 0.
 

@@ -33,7 +33,16 @@ once. Quest 206 comes first, so the include-boundary lint guards ADR 0003 while 
   status as the runtime tables.
 - `grep -rn generated/ engine/src engine/include` finds no direct include.
 - A test shows no allocation after load in `basic`, to the scope quest 27's ADR gives.
-- `27-test-cases.md` is turned into tests.
+- The rows of `27-test-cases.md` with quest 30 are turned into tests.
+- Rule parsing moves out of `translate`, into load, for both back ends.
+- `engine/include/verstaan/generated_tables.hpp` holds the row structs and declares `generated_tables()`.
+  The data library implements it. `Engine::generated` sits in its own source file, so `verstaan_cli`,
+  which never calls it, links no data library.
+- `tests/unit/engine_test.cpp:13` no longer pins the stub. `verstaan_tests` links the fixture library, or the test moves.
+- Asking for a tier the binary did not link is a load failure, in the form quest 210's ADR gives. No
+  `not_implemented` is written in `engine/src`.
+- The table reader and `generated_tables.hpp` join `compile_when_changed` in `tiers.toml`.
+- `engine/CLAUDE.md:9` says to reach tables through `generated_tables.hpp`.
 - The stub is gone.
 - `ctest --preset linux-gcc -L fast` passes.
 - `python -m tools.validate --changed` exits 0.
@@ -48,4 +57,6 @@ The equivalence diff of text, graph and trace: quest 31. Memory budgets: quest 3
 - [ ] The golden rows pass on the generated back end.
 - [ ] A test shows no allocation after load in `basic`, to quest 27's ADR scope.
 - [ ] The grep above finds no direct include.
+- [ ] `grep -n 'generated_tables' tiers.toml` finds the header.
+- [ ] `nm -u build/linux-gcc/apps/cli/verstaan_cli` lists no `generated_tables`.
 - [ ] `ctest --preset linux-gcc -L fast` and `python -m tools.validate --changed` are green.

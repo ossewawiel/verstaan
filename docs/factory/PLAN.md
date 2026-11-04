@@ -27,7 +27,7 @@ Each one has an ADR under `docs/adr/`. The one-line versions:
 | 0004 | Phase 1 mirrors every language in the UNL Archive, with a manifest of source, licence and date. |
 | 0005 | We write our own tools from the UNL specs, wiki and archive pages; the archived tool source is not available. |
 | 0006 | Three compile-time tiers: basic comms, phone, connected. The first two are rules-only. |
-| 0007 | One engine, two rule back ends: tables loaded at run time for authoring, generated code for shipping. Both must produce identical output. |
+| 0007 | One engine, two rule back ends: tables loaded at run time for authoring, generated tables for shipping (ADR 0028). Both must produce identical output. |
 | 0008 | Rule compiler and mirror tooling in Python; engine in C++20 with CMake and vcpkg. |
 
 ## 3. Architecture
@@ -66,10 +66,10 @@ Key shapes, in the order the data flows:
   `grammar/{analysis,generation,inflection,subcategorisation,disambiguation}.yaml`, `tagset.yaml`,
   `corpus/*.yaml`, `tests/*.yaml`. Diffable, reviewable, agent-friendly.
 - **Engine** (`engine/`): C++20, no runtime dependencies. Loads rules either from runtime tables
-  (YAML converted to a binary blob at build time) or from generated code. Same rule semantics
-  either way, tested for equivalence.
-- **Compiler** (`tools/compiler`): Python. Reads the store, emits C++ tables and dispatch code per
-  tier, plus the golden test vectors.
+  or from generated tables that hold the same rule text (ADR 0028). Same rule semantics either way,
+  tested for equivalence.
+- **Compiler** (`tools/compiler`): Python. Reads the store, emits C++ tables per tier, plus the golden
+  test vectors for each committed tier.
 - **Applications** (`apps/`): CLI first, then desktop, then service.
 
 ## 4. Repository layout
@@ -158,7 +158,7 @@ implementer and a green `/gate` ships without the shipping question (the D4 lane
 
 The factory stops and waits for a human at four points: after the first issue of each milestone
 lands (checkpoint 1), when a grammar rule set for a language first parses a whole test corpus
-(checkpoint 2), before the compiler's generated code first replaces runtime tables in a build
+(checkpoint 2), before the compiler's generated tables first replace runtime tables in a build
 (checkpoint 3), and before every pull request (checkpoint 4, the verifier runs here).
 
 ### 6.4 Gate ladder

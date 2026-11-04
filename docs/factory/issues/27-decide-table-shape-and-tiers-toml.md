@@ -2,14 +2,14 @@
 issue: 27
 title: "Decide the generated table shape and write tiers.toml"
 milestone: M4
-status: open
+status: done
 depends_on: []
 agent: rule-author
 agents: [rule-author]
 model: opus
 effort: high
 checkpoint: 4
-commit: null
+commit: f52adf8
 worktree: null
 github_issue: 343
 ---
@@ -66,8 +66,8 @@ Writing the compiler: quest 29. Loading the tables: quest 30. Measuring memory: 
 
 ## Done when
 
-- [ ] The ADR is accepted by the owner.
-- [ ] `tiers.toml` parses in a pytest.
-- [ ] `27-test-cases.md` is written.
-- [ ] SPEC §3.4, §3.5 and §7 match the ADR.
-- [ ] `ctest --preset linux-gcc -L fast` and `python -m tools.validate --changed` are green.
+- [x] The ADR is accepted by the owner.
+- [x] `tiers.toml` parses in a pytest.
+- [x] `27-test-cases.md` is written.
+- [x] SPEC §3.4, §3.5 and §7 match the ADR.
+- [x] `ctest --preset linux-gcc -L fast` and `python -m tools.validate --changed` are green.
