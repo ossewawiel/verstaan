@@ -2,15 +2,15 @@
 issue: 27
 title: "Decide the generated table shape and write tiers.toml"
 milestone: M4
-status: in-progress
+status: done
 depends_on: []
 agent: rule-author
 agents: [rule-author]
 model: opus
 effort: high
 checkpoint: 4
-commit: null
-worktree: .worktrees/m4-27-table-shape-tiers
+commit: f52adf8
+worktree: null
 github_issue: 343
 ---
 ## What
