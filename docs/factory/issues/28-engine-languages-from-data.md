@@ -2,15 +2,15 @@
 issue: 28
 title: "The engine takes its languages from data, and the xxa/xxb rows run"
 milestone: M4
-status: in-progress
+status: done
 depends_on: []
 agent: rule-author
 agents: [rule-author, test-writer, implementer]
 model: opus
 effort: high
 checkpoint: 4
-commit: null
-worktree: .worktrees/m4-28-engine-languages-from-data
+commit: 39bbda4
+worktree: null
 github_issue: 344
 ---
 ## What
