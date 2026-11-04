@@ -7,6 +7,7 @@ add_executable(verstaan_tests
   unit/dictionary_lookup_test.cpp
   unit/engine_status_test.cpp
   unit/engine_test.cpp
+  unit/golden_loader_test.cpp
   unit/generation_test.cpp
   unit/read_graph_test.cpp
   unit/rule_interpreter_test.cpp
@@ -23,6 +24,8 @@ verstaan_set_warnings(verstaan_tests)
 target_compile_definitions(verstaan_tests PRIVATE
   VERSTAAN_REPO_ROOT="${CMAKE_SOURCE_DIR}"
 )
+# golden_loader_test.cpp includes golden/row_loader.hpp (issue 202).
+target_include_directories(verstaan_tests PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/golden)
 
 gtest_discover_tests(verstaan_tests
   PROPERTIES LABELS fast

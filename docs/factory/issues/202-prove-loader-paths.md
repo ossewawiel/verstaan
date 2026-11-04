@@ -2,7 +2,7 @@
 issue: 202
 title: "Prove the golden loader's deferred and pending paths, and count the xxa/xxb rows as skipped"
 milestone: Side
-status: open
+status: in-progress
 depends_on: [26]
 agent: implementer
 agents: [implementer]
@@ -10,7 +10,7 @@ model: sonnet
 effort: low
 checkpoint: null
 commit: null
-worktree: null
+worktree: .worktrees/side-202-prove-loader-paths
 github_issue: 326
 ---
 ## What
