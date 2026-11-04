@@ -46,13 +46,15 @@ owner has ruled otherwise on a form. A shape the engine refuses leaves an `unsup
 
 ## Owner rulings
 
-Any ruling on a form is recorded here, with its date. None yet.
+2026-11-04, the owner: the targets are `stede`, `messe`, `aanvalle` and `aandele`. A shape the engine
+still refuses is a loss under quest 208's ruling: it leaves an `unsupported` trace entry, keeps the
+base form and reports `partial`. Any other form still comes to the owner, and is recorded here.
 
 ## Acceptance criteria
 
 - `the cities`, `knives`, `attacks` and `shares` give `die stede`, `messe`, `aanvalle` and
   `aandele`, or the owner has ruled otherwise on a form. `the cities` no longer gives `die stad`.
-- A shape `is_unsupported_affix` still refuses leaves an `unsupported` trace entry, in a test.
+- A shape `is_unsupported_affix` still refuses leaves an `unsupported` trace entry and reports `partial`, in a test.
 - The ADR names every a-rule shape, supported or refused, including M1 and per-entry FLX, and is
   accepted.
 - `ctest --preset linux-gcc -L fast` passes.

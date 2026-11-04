@@ -58,11 +58,15 @@ a smaller input or a lower cap, or carries a label other than `fast`. The hand-o
 
 ## Owner rulings
 
-The ruling is recorded here, with its date. Not yet ruled.
+2026-11-04, the owner: **a loss means partial.** Any word or meaning the engine loses reports
+`partial`, and the word shows marked: `a book without a car` gives `'n boek 'n motor ⟦without⟧`. Input
+with nothing to translate, such as `.`, `the` or `and`, is `no_parse`. A hit rule cap leaves its trace
+entry and reports `partial`. A closed-class word a rule folds into an attribute is not lost: `a book`
+stays `'n boek`, ok. This closes ADR 0019's open `ok` against `no_parse`.
 
 ## Acceptance criteria
 
-- The owner has ruled on how a dropped word and a hit cap report.
+- The owner ruled on how a dropped word and a hit cap report on 2026-11-04.
 - The ADR is accepted.
 - Each F1 input in the table above, and the seven named words, reports what the ruling says, in a
   test.
@@ -78,7 +82,7 @@ Bounding the cost of long inputs: quest 212. Plural inflection: quest 209.
 
 ## Done when
 
-- [ ] The owner has ruled.
+- [x] The owner has ruled (2026-11-04).
 - [ ] The ADR is accepted.
 - [ ] Each F1 and F5 input reports what the ruling says, in a test.
 - [ ] `ctest --preset linux-gcc -L fast` and `python -m tools.validate --changed` are green.

@@ -2,7 +2,7 @@
 
 Last completed:  #202 — Prove the golden loader's deferred and pending paths, and count the xxa/xxb
                  rows as skipped (Side), commit 42530b5
-Next up:         #188 — M3 close-out: retro, verifier, tag m3, write the M4 quests (M3)
+Next up:         #27 — Decide the generated table shape and write tiers.toml (M4)
 Branch / PR:     main, https://github.com/ossewawiel/verstaan.git, 0 files dirty, no gate stamp for
-                 907104a
-Resume with:     /factory-run 188
+                 047f4e3
+Resume with:     /factory-run 27

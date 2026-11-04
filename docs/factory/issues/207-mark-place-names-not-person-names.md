@@ -25,8 +25,7 @@ makes `John`, `Mary`, `Geneva` and `Paris` one thing, and the owner has ruled th
 
 Owner, 2026-11-04: A09 is `'n boek oor ⟦Geneva⟧`, partial, because "it was a mistake to pass it".
 A15 carries `⟦Paris⟧`. A13 stays `John en Mary`, ok. The rule-author finds what separates a person
-from a place, for example a person-name list in the store, and **brings the mechanism to the owner
-before any test exists**. The same quest fixes the scenes in finding F2 of issue 188's verifier
+from a place. The owner ruled the mechanism on 2026-11-04, below. The same quest fixes the scenes in finding F2 of issue 188's verifier
 report, with one ADR (F10.1: who is a name, the noun-only test, the hard-coded `"I"`, the ASCII
 capital test; F10.2: the bare `TEMP` tag on every name literal at `engine.cpp:127`).
 
@@ -70,12 +69,30 @@ change here.
 
 ## Owner rulings
 
-The ruling on the mechanism is recorded here, with its date, before any test exists. Not yet
-ruled.
+2026-11-04, the owner, before any test exists: **a place is a record.** A capitalised word with an
+English record uses that record. When Afrikaans has no record for that UW, the word shows marked, the
+ordinary path for a word the target lacks. A capitalised word with no record is a name, and shows
+bare.
+
+- `Geneva` gains an English record, here, with the corpus's UW `500004419`. It shows `⟦Geneva⟧`,
+  partial. `Paris` already has a record, `112469372`, so it shows `⟦Paris⟧`.
+- `John`, `Mary`, `Brisbane` and `Émile` have no record and show bare. The rule needs no person list.
+- The accepted cost: an old-world place with no record, such as `Lyon`, shows bare and `ok` until it
+  gets a record. Quest 217 adds the corpus's places.
+
+Evidence. Today `Paris` alone gives `⟦Paris⟧`, because line `engine.cpp:84` keeps the entry. `a book
+about Paris` gives bare `Paris`, because `engine.cpp:79-82` makes any later capital a literal first.
+The fix makes that later capital consult the dictionary.
+
+Still for the rule-author and the ADR: a sentence-initial capital on an ordinary word. The store holds
+`A` as a noun, so the rule above alone leaves `A book` wrong. The lower-case word must win there, so
+`A book` gives `'n boek` and `Car` gives `motor`. The ADR states the order of the two lookups. The
+corpus does not give the split by itself: it gives `Shakespeare` a UW, `500009156`, and most people
+quoted literals. So the store decides, not the corpus's shape.
 
 ## Acceptance criteria
 
-- The owner has ruled on the mechanism, before any test exists.
+- The owner ruled on the mechanism on 2026-11-04, before any test exists.
 - The ADR is accepted and covers F10.1 and F10.2.
 - Golden row A09 passes with no `deferred` key. A13 still passes.
 - Every input in the table above gives the output the ADR names, in a test.
@@ -89,12 +106,12 @@ ruled.
 
 ## Not in scope
 
-The place-name records themselves (`Parys`, `Genève`). They have no quest yet. Once a record
-exists, the name translates.
+The Afrikaans place records and the other English place records: quest 217. Once an Afrikaans record
+exists, the name translates. This quest adds only `Geneva`'s English record.
 
 ## Done when
 
-- [ ] The owner has ruled on the mechanism.
+- [x] The owner has ruled on the mechanism (2026-11-04).
 - [ ] The ADR is accepted.
 - [ ] A09 passes without `deferred` in both `basic.yaml` copies, and A13 still passes.
 - [ ] The ADR gives A15's name node, and states the Brisbane output.
