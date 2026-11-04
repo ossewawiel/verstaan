@@ -693,6 +693,12 @@ tiles:
   x: 160
   y: 1664
   size: 32
+- id: '218'
+  region: m4
+  title: Each built tier gets its own CLI, and verstaan_cli refuses --tier
+  x: 224
+  y: 1664
+  size: 32
 - id: '207'
   region: m3
   title: A place name with no record is marked and a person's name is not
