@@ -14,5 +14,16 @@ TEST_P(golden_row, Row) { run_row(GetParam()); }
 INSTANTIATE_TEST_SUITE_P(Table, golden_row, testing::ValuesIn(load_golden_rows()),
                          [](const testing::TestParamInfo<Row>& info) { return info.param.id; });
 
+// Rows in a direction the engine has no Lang for: counted as skipped, not dropped (issue 202).
+class skipped_row : public testing::TestWithParam<Row> {};
+
+TEST_P(skipped_row, Row) {
+  GTEST_SKIP() << "no Lang for direction " << GetParam().direction
+               << "; issue 188 decides whether these rows ever run";
+}
+
+INSTANTIATE_TEST_SUITE_P(Table, skipped_row, testing::ValuesIn(load_skipped_rows()),
+                         [](const testing::TestParamInfo<Row>& info) { return info.param.id; });
+
 }  // namespace
 }  // namespace verstaan::golden

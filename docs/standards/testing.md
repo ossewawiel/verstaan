@@ -25,7 +25,9 @@ runs each row through `Engine::translate` and reports pass or fail per row id, w
 on failure. A table row needs no hand-written test. A row with `review: pending` runs and is
 reported as pending. A row with `deferred: <issue>` names the issue that makes it pass: the runner
 runs it, prints DEFERRED with the trace, and does not fail on a mismatch. A deferred row that
-matches fails, so the owning issue removes the key when it lands.
+matches fails, so the owning issue removes the key when it lands. Rows in a direction the engine
+has no `Lang` for, such as the `xxa` ⇄ `xxb` pair, are registered as skipped cases with the reason
+in the ctest output.
 
 `--changed` validates every store a changed file sits in, whole, not the changed file alone: it
 maps each file the branch touched to its `data/languages/<iso3>/` store, then runs the full store

@@ -8,13 +8,15 @@
 //     `<file stem>_L<line>`. An optional `# direction: eng-afr` comment sets the direction
 //     (default eng-afr). Status is `partial` when expected holds a ⟦ mark, else `ok`.
 // Only directions the engine's Lang enum can express run (eng-afr). Rows of other directions,
-// such as the invented xxa/xxb pair, are listed on stderr at load time and not registered.
+// such as the invented xxa/xxb pair, are registered as skipped cases (issue 202; issue 188 decides
+// whether they ever run).
 
 #pragma once
 
 #include <gtest/gtest.h>
 
 #include <algorithm>
+#include <cctype>
 #include <cstddef>
 #include <filesystem>
 #include <fstream>
@@ -127,21 +129,36 @@ inline std::vector<std::filesystem::path> files_with(const std::filesystem::path
   return out;
 }
 
-// Keep only the rows the engine can run; name the rest on stderr.
+inline bool runs_in_engine(const Row& r) { return r.direction == "eng-afr" && !r.id.empty(); }
+
+// Keep only the rows the engine can run.
 inline std::vector<Row> runnable(std::vector<Row> rows) {
   std::vector<Row> out;
   for (auto& r : rows) {
-    if (r.direction == "eng-afr" && !r.id.empty()) {
-      out.push_back(std::move(r));
-    } else {
-      std::cerr << "[loader] not run: " << r.file << " " << r.id << " direction " << r.direction
-                << " (no Lang for it)\n";
-    }
+    if (runs_in_engine(r)) out.push_back(std::move(r));
   }
   return out;
 }
 
-inline std::vector<Row> load_golden_rows() {
+// The rows the engine has no Lang for. Each id is prefixed with its language pair, lower-cased
+// after the prefix, so it collides with no eng id and `ctest -R A09` still selects one row.
+inline std::vector<Row> skipped(std::vector<Row> rows) {
+  std::vector<Row> out;
+  for (auto& r : rows) {
+    if (runs_in_engine(r) || r.id.empty()) continue;
+    std::string pair = r.direction;
+    for (char& c : pair) {
+      if (!std::isalnum(static_cast<unsigned char>(c))) c = '_';
+    }
+    std::string id = r.id;
+    for (char& c : id) c = static_cast<char>(std::tolower(static_cast<unsigned char>(c)));
+    r.id = pair + "_" + id;
+    out.push_back(std::move(r));
+  }
+  return out;
+}
+
+inline std::vector<Row> read_golden_rows() {
   namespace fs = std::filesystem;
   const fs::path root = VERSTAAN_REPO_ROOT;
   std::vector<Row> rows;
@@ -149,8 +166,12 @@ inline std::vector<Row> load_golden_rows() {
     if (p.parent_path().filename() == "tests") load_yaml(p, rows);
   }
   for (const auto& p : files_with(root / "tests/golden", ".txt")) load_text(p, rows);
-  return runnable(std::move(rows));
+  return rows;
 }
+
+inline std::vector<Row> load_golden_rows() { return runnable(read_golden_rows()); }
+
+inline std::vector<Row> load_skipped_rows() { return skipped(read_golden_rows()); }
 
 inline std::vector<Row> load_held_out_rows() {
   std::vector<Row> rows;
