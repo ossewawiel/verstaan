@@ -4,7 +4,15 @@
 - headword: sona
   id: 4
   uw: "child(icl>person)"
-  features: {LEX: N, POS: NOU, NUM: SNG, PAR: P1}
+  features: {LEX: N, POS: NOU, NUM: SNG, PAR: M1}
+  lang: xxa
+  frequency: 0
+  priority: 1
+  source: {origin: invented, issue: 4}
+- headword: sonaki
+  id: 15
+  uw: "child(icl>person)"
+  features: {BF: sona, LEX: N, POS: NOU, NUM: PLR, PAR: M1}
   lang: xxa
   frequency: 0
   priority: 1

@@ -4,15 +4,15 @@
 - headword: manga
   id: 6
   uw: "want(icl>desire)"
-  features: {LEX: V, POS: VER, TNS: PRS, PAR: P0}
+  features: {LEX: V, POS: VER, TNS: PRS, PAR: M0}
   lang: xxb
   frequency: 0
   priority: 1
   source: {origin: invented, issue: 4}
 - headword: mo
   id: 9
-  uw: null
-  features: {LEX: D, POS: PCL, ATT: "@pl", PAR: P0}
+  uw: ""
+  features: {LEX: D, POS: PCL, att: "@pl", PAR: M0}
   lang: xxb
   frequency: 0
   priority: 1

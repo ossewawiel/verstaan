@@ -10,9 +10,9 @@ word_order: SOV
 marks_with_a_function_word: ["@pl", "@past"]
 marks_with_a_suffix: ["@def"]
 counts:
-  dictionary_entries: 10
-  analysis_rules: 3
-  generation_rules: 3
+  dictionary_entries: 12
+  analysis_rules: 4
+  generation_rules: 12
   inflection_rules: 1
   corpus_sentences: 5
   test_rows: 8

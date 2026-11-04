@@ -4,7 +4,15 @@
 - headword: mila
   id: 2
   uw: "cat(icl>animal)"
-  features: {LEX: N, POS: NOU, NUM: SNG, PAR: P1}
+  features: {LEX: N, POS: NOU, NUM: SNG, PAR: M1}
+  lang: xxa
+  frequency: 0
+  priority: 1
+  source: {origin: invented, issue: 4}
+- headword: milaki
+  id: 13
+  uw: "cat(icl>animal)"
+  features: {BF: mila, LEX: N, POS: NOU, NUM: PLR, PAR: M1}
   lang: xxa
   frequency: 0
   priority: 1

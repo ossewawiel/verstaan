@@ -3,12 +3,14 @@
 
 #include <algorithm>
 #include <cstddef>
+#include <optional>
 #include <string>
 #include <string_view>
 #include <utility>
 #include <vector>
 
 #include "verstaan/dictionary.hpp"
+#include "verstaan/lang.hpp"
 #include "verstaan/rule_interpreter.hpp"
 #include "verstaan/rule_set.hpp"
 #include "verstaan/tokeniser.hpp"
@@ -157,11 +159,14 @@ Result Engine::translate(std::string_view text, Options options) const {
   }
 
   // SPEC.md §3.4's fourth Status value is reserved for a Lang/Register/Context combination no
-  // store covers yet. Only eng-to-afr, neutral register, no context is wired by this issue -- the
-  // one direction RuleSet::load and issue 22's stores name. `result.status` still holds its
-  // just-constructed default, the same value this fourth Status member names, so returning it
-  // unmodified reports the gap correctly.
-  if (options.from != Lang::eng || options.to != Lang::afr || options.reg != Register::neutral ||
+  // store covers. The loaded RuleSet names its pair (ADR 0029); anything else, and any register
+  // or context before M5, is not implemented. `result.status` still holds its just-constructed
+  // default, the same value this fourth Status member names, so returning it unmodified reports
+  // the gap correctly.
+  const std::optional<Lang> loaded_from = rules_.from_lang();
+  const std::optional<Lang> loaded_to = rules_.to_lang();
+  if (!loaded_from.has_value() || !loaded_to.has_value() || options.from != *loaded_from ||
+      options.to != *loaded_to || options.reg != Register::neutral ||
       options.ctx != Context::none) {
     return result;
   }

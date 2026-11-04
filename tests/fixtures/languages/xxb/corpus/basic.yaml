@@ -37,6 +37,5 @@
   sentence: kinda glimu vidra
   unl: |
     agt(see(icl>perceive), child(icl>person))
-    obj(see(icl>perceive), "glimu")
-  note: glimu is in no dictionary. The object slot is the middle one, so its role is still fixed.
+  note: glimu is in no dictionary, so it is no graph node and the clause holds no obj (ADR 0019). The translation appends its mark at the end (ADR 0025).
   source: {origin: invented, issue: 4}

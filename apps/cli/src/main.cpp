@@ -3,12 +3,15 @@
 //   verstaan --from eng --to afr [--register formal] [--context medical] [--trace] [--tier basic]
 //   "text"
 // Exit 0 on Status::ok, 2 on Status::partial, 3 on Status::no_parse, 1 otherwise (a bad argument,
-// or Status::not_implemented). --tier is parsed and not yet wired: the generated-tables back end
-// (Engine::generated) is M4 (ADR 0007), so this issue always runs the runtime-tables back end,
-// Engine::load(RuleSet::load(...)), against the checkout's own `data/languages/<iso3>` stores.
+// or Status::not_implemented). A --from or --to value must be an iso3 code that has a store with a
+// meta.yaml under data/languages/ (ADR 0029). --tier is parsed and not yet wired: the
+// generated-tables back end (Engine::generated) is M4 (ADR 0007), so this issue always runs the
+// runtime-tables back end, Engine::load(RuleSet::load(...)), against the checkout's own
+// `data/languages/<iso3>` stores.
 
 #include <cstddef>
 #include <cstdio>
+#include <filesystem>
 #include <optional>
 #include <string>
 #include <string_view>
@@ -16,6 +19,7 @@
 
 #include "trace_line.hpp"
 #include "verstaan/engine.hpp"
+#include "verstaan/lang.hpp"
 #include "verstaan/rule_set.hpp"
 
 #ifndef VERSTAAN_REPO_ROOT
@@ -35,28 +39,26 @@ using verstaan::Status;
 
 constexpr const char* kVersion = "verstaan 0.0.0-m3";
 
-std::string store_root(Lang lang) {
+// The store for `lang` under the checkout's `data/languages/`, or no value when that folder holds
+// no `meta.yaml`. The invented fixture pair sits under `tests/fixtures/` and never ships, so no
+// flag reaches it (ADR 0029).
+std::optional<std::string> store_root(Lang lang) {
   std::string path(VERSTAAN_REPO_ROOT);
   path += "/data/languages/";
-  switch (lang) {
-    case Lang::eng:
-      path += "eng";
-      break;
-    case Lang::afr:
-      path += "afr";
-      break;
-    case Lang::nld:
-      path += "nld";
-      break;
+  path += verstaan::iso3_of(lang);
+  if (!std::filesystem::is_regular_file(path + "/meta.yaml")) {
+    return std::nullopt;
   }
   return path;
 }
 
+// A flag value is a language when it is an ISO 639-3 code and a store holds it.
 std::optional<Lang> parse_lang(std::string_view value) {
-  if (value == "eng") return Lang::eng;
-  if (value == "afr") return Lang::afr;
-  if (value == "nld") return Lang::nld;
-  return std::nullopt;
+  const std::optional<Lang> lang = verstaan::lang_from_iso3(value);
+  if (!lang.has_value() || !store_root(*lang).has_value()) {
+    return std::nullopt;
+  }
+  return lang;
 }
 
 std::optional<Register> parse_register(std::string_view value) {
@@ -147,7 +149,28 @@ int main(int argc, char** argv) {
     }
   }
 
-  const RuleSet rules = RuleSet::load(store_root(options.from), store_root(options.to));
+  // Owner ruling 2026-11-04: the CLI allows eng to afr only. The engine names no language, so
+  // this is the one line to widen when a store joins at M6.
+  if (options.from != Lang::eng || options.to != Lang::afr) {
+    std::fprintf(stderr, "verstaan: only eng to afr is supported, not %s to %s\n",
+                 verstaan::iso3_of(options.from).c_str(), verstaan::iso3_of(options.to).c_str());
+    return 1;
+  }
+
+  // The flags passed parse_lang, but the defaults did not, so a missing store is still possible.
+  const std::optional<std::string> from_root = store_root(options.from);
+  const std::optional<std::string> to_root = store_root(options.to);
+  if (!from_root.has_value() || !to_root.has_value()) {
+    std::fprintf(stderr, "verstaan: no store for %s\n",
+                 verstaan::iso3_of(from_root.has_value() ? options.to : options.from).c_str());
+    return 1;
+  }
+  const RuleSet rules = RuleSet::load(*from_root, *to_root);
+  if (!rules.from_lang().has_value() || !rules.to_lang().has_value()) {
+    std::fprintf(stderr, "verstaan: store %s holds no readable iso3 in meta.yaml\n",
+                 (rules.from_lang().has_value() ? *to_root : *from_root).c_str());
+    return 1;
+  }
   const Engine engine = Engine::load(rules);
   const Result result = engine.translate(text, options);
 

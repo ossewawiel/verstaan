@@ -4,7 +4,15 @@
 - headword: bero
   id: 3
   uw: "book(icl>publication)"
-  features: {LEX: N, POS: NOU, NUM: SNG, PAR: P1}
+  features: {LEX: N, POS: NOU, NUM: SNG, PAR: M1}
+  lang: xxa
+  frequency: 0
+  priority: 1
+  source: {origin: invented, issue: 4}
+- headword: beroki
+  id: 11
+  uw: "book(icl>publication)"
+  features: {BF: bero, LEX: N, POS: NOU, NUM: PLR, PAR: M1}
   lang: xxa
   frequency: 0
   priority: 1

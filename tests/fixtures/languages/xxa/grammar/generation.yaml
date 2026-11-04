@@ -1,31 +1,81 @@
 # Licence: CC BY-SA 4.0. Source: invented fixture for engine tests, not the UNL Archive.
 # SPEC.md §4 header adapted: these records are original, so no data/archive/manifest.jsonl
 # line exists to point at.
-# Notation. The lhs matches the UNL graph, the rhs writes tokens left to right.
-#   rel(n,m)            a relation binding slot n and slot m
-#   attr(n,$a)          the node in slot n carries attribute $a
-#   [n]                 write the word for the node in slot n
-#   [FEAT:VAL, ...]     write the dictionary word carrying these features
-# Rules apply in file order: clause order first, then modifiers, then function words.
-# grammar/inflection.yaml runs last and turns each base form into its word form.
-- id: xxa-gen-01
+# Notation. The engine's rule syntax (docs/unl-reference/formats/transformation-grammar.md).
+#   rel(%x;%y)         a relation in the graph, matched by name
+#   (%x,N,@pl)         a node with these tags and attributes
+#   (%y)(%x)           the tokens, written left to right
+#   NS(%x,-@pl;%y,...) a noun phrase node: drops @pl from the head, adds a function word
+#   !FLX               runs the word's paradigm from grammar/inflection.yaml
+# Rules apply in file order, the first match wins. The id is bare: the engine adds
+# `<iso3>-gen-` in the trace.
+- id: "02"
   kind: generation
-  lhs: "agt(2,1); obj(2,3)"
-  rhs: "[1] [2] [3]"
-  conditions: {}
-  comment: "Writes the agent, then the verb, then the object."
+  lhs: "(%x,N,@def)"
+  rhs: "(NS(%x,-@def;%y,[ta],+LEX=D),+LEX=N)"
+  conditions: []
+  comment: "Hangs the article on a definite noun."
   source: original
-- id: xxa-gen-02
+- id: "04"
   kind: generation
-  lhs: "attr(2,$a)"
-  rhs: "[LEX:D, ATT:$a] [2]"
-  conditions: {LEX: D}
-  comment: "Writes the function word that carries an attribute in front of the word that holds it."
+  lhs: "(%x,N,@pl)"
+  rhs: "(%x,-@pl,-NUM,+NUM=PLR)"
+  conditions: []
+  comment: "Sets a plural noun for its suffix."
   source: original
-- id: xxa-gen-03
+- id: "05"
   kind: generation
-  lhs: "mod(2,1)"
-  rhs: "[1] [2]"
-  conditions: {}
-  comment: "Writes a modifier in front of the noun it modifies."
+  lhs: "(%x,V,@past)"
+  rhs: "(%x,-@past,-TNS,+TNS=PST)"
+  conditions: []
+  comment: "Sets a past verb for its suffix."
+  source: original
+- id: "06"
+  kind: generation
+  lhs: "NS(%x;%y)"
+  rhs: "(%y)(%x)"
+  conditions: []
+  comment: "Writes the article in front of its noun."
+  source: original
+- id: "03"
+  kind: generation
+  lhs: "mod(%x;%y)"
+  rhs: "(%y)(%x)"
+  conditions: []
+  comment: "Writes an adjective in front of its noun."
+  source: original
+- id: "01"
+  kind: generation
+  lhs: "agt(%x;%y)"
+  rhs: "(%y)(%x)"
+  conditions: []
+  comment: "Writes the agent in front of the verb."
+  source: original
+- id: "07"
+  kind: generation
+  lhs: "obj(%x;%y)"
+  rhs: "(%x)(%y)"
+  conditions: []
+  comment: "Writes the object after the verb."
+  source: original
+- id: "08"
+  kind: generation
+  lhs: "(%x,^inflected,FLX)"
+  rhs: "(%x,!FLX,+inflected)"
+  conditions: []
+  comment: "Runs a word's paradigm once."
+  source: original
+- id: "09"
+  kind: generation
+  lhs: "((%x)(%y)(%z))"
+  rhs: "(%x)(%y)(%z)"
+  conditions: []
+  comment: "Flattens a three-word span into the list."
+  source: original
+- id: "10"
+  kind: generation
+  lhs: "((%x)(%y))"
+  rhs: "(%x)(%y)"
+  conditions: []
+  comment: "Flattens a two-word span into the list."
   source: original

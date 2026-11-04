@@ -21,7 +21,7 @@
 #include <utility>
 #include <vector>
 
-#include "verstaan/engine.hpp"     // Lang
+#include "verstaan/lang.hpp"       // Lang
 #include "verstaan/tokeniser.hpp"  // Token
 
 namespace verstaan {
@@ -36,7 +36,9 @@ struct DictionaryEntry {
   std::int64_t id = 0;
   std::string uw;
   std::vector<Feature> features;
-  Lang lang = Lang::eng;
+  // Zero holds no code, on purpose: an unset entry claims no language (ADR 0029, decision 3).
+  // NOLINTNEXTLINE(bugprone-invalid-enum-default-initialization)
+  Lang lang{};
   int frequency = 0;
   int priority = 0;
 };

@@ -9,6 +9,20 @@ here, so the author of the languages is the authority on what they say, and ther
 ask. No expected value in this file came from running the engine — the engine returns
 `Status::not_implemented` and will keep doing so until the `implementer` closes this issue's chain.
 
+## Owner rulings, 2026-11-04 (ADR 0029)
+
+The owner ruled on these after issue 28's rule-author report, so this file changes in these places.
+
+| Ruling | Text | Changes here |
+|---|---|---|
+| R2 | Issue 28 rewrites the fixture store in the engine's rule syntax. | The rule coverage table, and the rule ids of every row. |
+| R3 | A09 expects `kinda vidra ⟦glimu⟧`, `partial`. The value follows ADR 0025. | Row A09, its note, the graph of A09 and A10, the status count. |
+| R4 | A12 expects `hundo`, `ok`. A13 expects `kano`, `ok`. The behaviour matches eng row A01. | Rows A12 and A13, their notes, their graph, the status count. |
+
+The owner saw an engine run's text for these three rows before ruling. The authority for each value is the ruling. No other row's words changed.
+
+The rule-id column of every row now holds the full set that fires, copied from part 7 of `28-test-cases.md`. Three old ids, `xxa-inf-01`, `xxa-inf-02` and `xxb-inf-01`, became `xxa-inf-M1`, `xxa-inf-M2` and `xxb-inf-M1`. No input, expected value or status changed in this pass.
+
 ## The pair in one paragraph
 
 `xxa` and `xxb` describe the same ten concepts and differ on three axes at once. `xxa` puts the verb
@@ -25,26 +39,26 @@ untranslated. The `status` column is the `Status` value the `Result` must carry.
 
 | id | input | expected | status | direction | register | review | rule ids | note |
 |---|---|---|---|---|---|---|---|---|
-| A01 | `kano zuma sona` | `hundo kinda vidra` | ok | xxa->xxb | neutral | n/a | xxa-ana-01, xxb-gen-01 | Plain clause, no marks. Also the must-not-fire row for xxa-ana-02, xxa-ana-03, xxa-inf-01, xxa-inf-02, xxb-gen-02, xxb-gen-03. |
-| A02 | `hundo kinda vidra` | `kano zuma sona` | ok | xxb->xxa | neutral | n/a | xxb-ana-01, xxa-gen-01 | The same clause back. Must-not-fire row for xxb-ana-02, xxb-ana-03, xxb-inf-01, xxa-gen-02, xxa-gen-03. |
-| A03 | `ta kano zuma sona` | `hundon kinda vidra` | ok | xxa->xxb | neutral | n/a | xxa-ana-01, xxa-ana-02, xxb-gen-01, xxb-inf-01 | The definite article. A separate word in xxa becomes a suffix in xxb. |
-| A04 | `hundon kinda vidra` | `ta kano zuma sona` | ok | xxb->xxa | neutral | n/a | xxb-ana-01, xxb-inf-01, xxa-gen-01, xxa-gen-02 | The same definite, the other way: a suffix becomes a separate word. |
-| A05 | `kanoki zuma sona` | `mo hundo kinda vidra` | ok | xxa->xxb | neutral | n/a | xxa-ana-01, xxa-inf-01, xxb-gen-01, xxb-gen-02 | The plural. A suffix in xxa becomes the particle `mo` in xxb. |
-| A06 | `mo hundo kinda vidra` | `kanoki zuma sona` | ok | xxb->xxa | neutral | n/a | xxb-ana-01, xxb-ana-02, xxa-gen-01, xxa-inf-01 | The same plural, the other way. |
-| A07 | `sona rintadu nolu bero` | `kinda libru pikko da lektu` | ok | xxa->xxb | neutral | n/a | xxa-ana-01, xxa-ana-03, xxa-inf-02, xxb-gen-01, xxb-gen-02, xxb-gen-03 | Past tense and a modifier at once. The `-du` suffix becomes the particle `da`, and the adjective crosses its noun. |
-| A08 | `kinda libru pikko da lektu` | `sona rintadu nolu bero` | ok | xxb->xxa | neutral | n/a | xxb-ana-01, xxb-ana-02, xxb-ana-03, xxa-gen-01, xxa-gen-03, xxa-inf-02 | The same sentence back. |
-| A09 | `sona zuma glimu` | `kinda ⟦glimu⟧ vidra` | partial | xxa->xxb | neutral | n/a | xxa-ana-01, xxb-gen-01 | `glimu` is in no dictionary. Word order still fixes its slot, so the clause parses and only the one word is marked. |
-| A10 | `kinda glimu vidra` | `sona zuma ⟦glimu⟧` | partial | xxb->xxa | neutral | n/a | xxb-ana-01, xxa-gen-01 | The same unknown word from the other side. The object slot is the middle one in xxb and the last one in xxa, so the mark moves. |
-| A11 | `sona zuma veri` | `kinda ⟦veri⟧ vidra` | partial | xxa->xxb | neutral | n/a | xxa-ana-01, xxb-gen-01 | `veri` analyses to `house(icl>building)`, which xxb has no word for. Analysis succeeds and generation is the side that fails, and the mark still holds the xxa surface form. |
-| A12 | `kano` | *(empty string)* | no_parse | xxa->xxb | neutral | n/a | — | One noun, no verb. No word-order rule matches, so nothing is built and `text` stays empty. Must-not-fire row for every xxa and xxb rule. |
-| A13 | `hundo` | *(empty string)* | no_parse | xxb->xxa | neutral | n/a | — | The same on the xxb side. |
-| A14 | `milaki zuma ta kano` | `mo katsu hundon vidra` | ok | xxa->xxb | neutral | n/a | xxa-ana-01, xxa-ana-02, xxa-inf-01, xxb-gen-01, xxb-gen-02, xxb-inf-01 | A plural subject and a definite object in one clause. Each language marks one of them with a suffix and the other with a word, and they disagree about which. |
-| A15 | `mo katsu hundon vidra` | `milaki zuma ta kano` | ok | xxb->xxa | neutral | n/a | xxb-ana-01, xxb-ana-02, xxb-inf-01, xxa-gen-01, xxa-gen-02, xxa-inf-01 | A14 back. |
-| A16 | `ta sonaki pelo beroki` | `mo kindan mo libru manga` | ok | xxa->xxb | neutral | n/a | xxa-ana-01, xxa-ana-02, xxa-inf-01, xxb-gen-01, xxb-gen-02, xxb-inf-01 | One node carries `@def` and `@pl` together. xxa writes the article and glues the plural on; xxb glues the definite on and writes the particle. |
-| A17 | `mo kindan mo libru manga` | `ta sonaki pelo beroki` | ok | xxb->xxa | neutral | n/a | xxb-ana-01, xxb-ana-02, xxb-inf-01, xxa-gen-01, xxa-gen-02, xxa-inf-01 | A16 back. |
+| A01 | `kano zuma sona` | `hundo kinda vidra` | ok | xxa->xxb | neutral | n/a | xxa-ana-01, xxb-gen-01, xxb-gen-08, xxb-gen-09, xxb-gen-11 | Plain clause, no marks. Also the must-not-fire row for xxa-ana-02, xxa-ana-03, xxa-inf-01, xxa-inf-02, xxb-gen-02, xxb-gen-03. |
+| A02 | `hundo kinda vidra` | `kano zuma sona` | ok | xxb->xxa | neutral | n/a | xxb-ana-01, xxa-gen-01, xxa-gen-07, xxa-gen-08, xxa-gen-09 | The same clause back. Must-not-fire row for xxb-ana-02, xxb-ana-03, xxb-inf-01, xxa-gen-02, xxa-gen-03. |
+| A03 | `ta kano zuma sona` | `hundon kinda vidra` | ok | xxa->xxb | neutral | n/a | xxa-ana-01, xxa-ana-02, xxb-gen-01, xxb-gen-02, xxb-gen-08, xxb-gen-09, xxb-gen-11, xxb-inf-M1 | The definite article. A separate word in xxa becomes a suffix in xxb. |
+| A04 | `hundon kinda vidra` | `ta kano zuma sona` | ok | xxb->xxa | neutral | n/a | xxb-ana-01, xxb-ana-04, xxa-gen-01, xxa-gen-02, xxa-gen-06, xxa-gen-07, xxa-gen-08, xxa-gen-09, xxa-gen-10 | The same definite, the other way: a suffix becomes a separate word. |
+| A05 | `kanoki zuma sona` | `mo hundo kinda vidra` | ok | xxa->xxb | neutral | n/a | xxa-ana-01, xxa-ana-04, xxb-gen-01, xxb-gen-04, xxb-gen-06, xxb-gen-08, xxb-gen-09, xxb-gen-11, xxb-gen-12 | The plural. A suffix in xxa becomes the particle `mo` in xxb. |
+| A06 | `mo hundo kinda vidra` | `kanoki zuma sona` | ok | xxb->xxa | neutral | n/a | xxb-ana-01, xxb-ana-02, xxa-gen-01, xxa-gen-04, xxa-gen-07, xxa-gen-08, xxa-gen-09, xxa-inf-M1 | The same plural, the other way. |
+| A07 | `sona rintadu nolu bero` | `kinda libru pikko da lektu` | ok | xxa->xxb | neutral | n/a | xxa-ana-01, xxa-ana-03, xxa-ana-05, xxb-gen-01, xxb-gen-03, xxb-gen-05, xxb-gen-07, xxb-gen-08, xxb-gen-09, xxb-gen-10, xxb-gen-12 | Past tense and a modifier at once. The `-du` suffix becomes the particle `da`, and the adjective crosses its noun. |
+| A08 | `kinda libru pikko da lektu` | `sona rintadu nolu bero` | ok | xxb->xxa | neutral | n/a | xxb-ana-01, xxb-ana-02, xxb-ana-03, xxa-gen-01, xxa-gen-03, xxa-gen-05, xxa-gen-07, xxa-gen-08, xxa-gen-09, xxa-gen-10, xxa-inf-M2 | The same sentence back. |
+| A09 | `sona zuma glimu` | `kinda vidra ⟦glimu⟧` | partial | xxa->xxb | neutral | n/a | xxa-ana-01, xxb-gen-01, xxb-gen-09, xxb-gen-12 | Owner ruling 2026-11-04 (ADR 0029). `glimu` is in no dictionary, so it is no graph node (ADR 0019). Its mark is appended at the end (ADR 0025). |
+| A10 | `kinda glimu vidra` | `sona zuma ⟦glimu⟧` | partial | xxb->xxa | neutral | n/a | xxb-ana-01, xxa-gen-01, xxa-gen-08, xxa-gen-10 | The same unknown word from the other side. ADR 0025 appends the mark at the end, as in A09, so the mark does not move (owner ruling, 2026-11-04). |
+| A11 | `sona zuma veri` | `kinda ⟦veri⟧ vidra` | partial | xxa->xxb | neutral | n/a | xxa-ana-01, xxb-gen-01, xxb-gen-08, xxb-gen-09, xxb-gen-11 | `veri` analyses to `house(icl>building)`, which xxb has no word for. Analysis succeeds and generation is the side that fails, and the mark still holds the xxa surface form. |
+| A12 | `kano` | `hundo` | ok | xxa->xxb | neutral | n/a | xxb-gen-09 | Owner ruling 2026-11-04 (ADR 0029). One noun, no verb. It translates, as eng row A01 does. No analysis rule fires, so this is a must-not-fire row for every xxa analysis rule and every xxb generation rule but xxb-gen-09. |
+| A13 | `hundo` | `kano` | ok | xxb->xxa | neutral | n/a | xxa-gen-08 | Owner ruling 2026-11-04 (ADR 0029). The same on the xxb side: every xxb analysis rule and every xxa generation rule but xxa-gen-08 must not fire. |
+| A14 | `milaki zuma ta kano` | `mo katsu hundon vidra` | ok | xxa->xxb | neutral | n/a | xxa-ana-01, xxa-ana-02, xxa-ana-04, xxb-gen-01, xxb-gen-02, xxb-gen-04, xxb-gen-06, xxb-gen-08, xxb-gen-09, xxb-gen-11, xxb-gen-12, xxb-inf-M1 | A plural subject and a definite object in one clause. Each language marks one of them with a suffix and the other with a word, and they disagree about which. |
+| A15 | `mo katsu hundon vidra` | `milaki zuma ta kano` | ok | xxb->xxa | neutral | n/a | xxb-ana-01, xxb-ana-02, xxb-ana-04, xxa-gen-01, xxa-gen-02, xxa-gen-04, xxa-gen-06, xxa-gen-07, xxa-gen-08, xxa-gen-09, xxa-gen-10, xxa-inf-M1 | A14 back. |
+| A16 | `ta sonaki pelo beroki` | `mo kindan mo libru manga` | ok | xxa->xxb | neutral | n/a | xxa-ana-01, xxa-ana-02, xxa-ana-04, xxb-gen-01, xxb-gen-02, xxb-gen-04, xxb-gen-06, xxb-gen-08, xxb-gen-09, xxb-gen-11, xxb-gen-12, xxb-inf-M1 | One node carries `@def` and `@pl` together. xxa writes the article and glues the plural on; xxb glues the definite on and writes the particle. |
+| A17 | `mo kindan mo libru manga` | `ta sonaki pelo beroki` | ok | xxb->xxa | neutral | n/a | xxb-ana-01, xxb-ana-02, xxb-ana-04, xxa-gen-01, xxa-gen-02, xxa-gen-04, xxa-gen-06, xxa-gen-07, xxa-gen-08, xxa-gen-09, xxa-gen-10, xxa-inf-M1 | A16 back. |
 
-17 rows. Ten `ok`, three `partial`, two `no_parse` — and A11 and A09 fail on different sides of the
-pipeline, so a test that confuses them shows up as one row and not two.
+17 rows. Fourteen `ok`, three `partial`, no `no_parse` (owner ruling 2026-11-04, ADR 0029) — and A11 and
+A09 fail on different sides of the pipeline, so a test that confuses them shows up as one row and not two.
 
 ## The UNL graph behind each input
 
@@ -58,9 +72,9 @@ share one graph; that is the point of the interlingua.
 | A03, A04 | `agt(see(icl>perceive), dog(icl>animal).@def)` / `obj(see(icl>perceive), child(icl>person))` |
 | A05, A06 | `agt(see(icl>perceive), dog(icl>animal).@pl)` / `obj(see(icl>perceive), child(icl>person))` |
 | A07, A08 | `agt(read(icl>interpret).@past, child(icl>person))` / `obj(read(icl>interpret).@past, book(icl>publication))` / `mod(book(icl>publication), small(icl>size))` |
-| A09, A10 | `agt(see(icl>perceive), child(icl>person))` / `obj(see(icl>perceive), "glimu")` |
+| A09, A10 | `agt(see(icl>perceive), child(icl>person))`. Owner ruling 2026-11-04: `glimu` is no graph node, so there is no `obj` (ADR 0019). |
 | A11 | `agt(see(icl>perceive), child(icl>person))` / `obj(see(icl>perceive), house(icl>building))` |
-| A12, A13 | empty graph |
+| A12, A13 | One node, `dog(icl>animal)`, and no relation. Owner ruling 2026-11-04. |
 | A14, A15 | `agt(see(icl>perceive), cat(icl>animal).@pl)` / `obj(see(icl>perceive), dog(icl>animal).@def)` |
 | A16, A17 | `agt(want(icl>desire), child(icl>person).@def.@pl)` / `obj(want(icl>desire), book(icl>publication).@pl)` |
 
@@ -69,23 +83,47 @@ share one graph; that is the point of the interlingua.
 Every drafted rule has a row that fires it and a row that must not. `docs/standards/data.md` makes
 an uncovered rule a warning at M2 and an error from M3; the fixture starts covered.
 
+Owner ruling 2026-11-04 (ADR 0029): this table now lists the rules of the rewritten store, whose text
+is in `28-test-cases.md`. A12 and A13 stay must-not-fire rows for the clause rules. xxa-gen-08 and
+xxb-gen-09 fire on any word with a paradigm, so their must-not-fire rows are `glimu` alone, L75 and
+L76 of that file, which are unit tests and not rows of block A.
+
 | rule | fires in | must not fire in |
 |---|---|---|
 | xxa-ana-01 | A01 | A12 |
 | xxa-ana-02 | A03 | A01 |
 | xxa-ana-03 | A07 | A01 |
+| xxa-ana-04 | A05 | A01 |
+| xxa-ana-05 | A07 | A01 |
 | xxa-gen-01 | A02 | A13 |
 | xxa-gen-02 | A04 | A02 |
 | xxa-gen-03 | A08 | A02 |
-| xxa-inf-01 | A05 | A01 |
-| xxa-inf-02 | A07 | A01 |
+| xxa-gen-04 | A06 | A02 |
+| xxa-gen-05 | A08 | A02 |
+| xxa-gen-06 | A04 | A02 |
+| xxa-gen-07 | A02 | A10 |
+| xxa-gen-08 | A02 | L76 of `28-test-cases.md` |
+| xxa-gen-09 | A02 | A10 |
+| xxa-gen-10 | A04 | A02 |
+| xxa-inf-M1 | A06 | A02 |
+| xxa-inf-M2 | A08 | A02 |
 | xxb-ana-01 | A02 | A13 |
-| xxb-ana-02 | A06, A08 | A02 |
+| xxb-ana-02 | A06 | A02 |
 | xxb-ana-03 | A08 | A02 |
+| xxb-ana-04 | A04 | A02 |
 | xxb-gen-01 | A01 | A12 |
-| xxb-gen-02 | A05, A07 | A01 |
+| xxb-gen-02 | A03 | A01 |
 | xxb-gen-03 | A07 | A01 |
-| xxb-inf-01 | A04 | A02 |
+| xxb-gen-04 | A05 | A01 |
+| xxb-gen-05 | A07 | A01 |
+| xxb-gen-06 | A05 | A01 |
+| xxb-gen-07 | A07 | A01 |
+| xxb-gen-08 | A01 | A09 |
+| xxb-gen-09 | A01 | L75 of `28-test-cases.md` |
+| xxb-gen-10 | A07 | A01 |
+| xxb-gen-11 | A01 | A07 |
+| xxb-gen-12 | A05 | A01 |
+| xxb-inf-M1 | A03 | A01 |
 
 ## What the corpus covers
 

@@ -11,18 +11,18 @@
 #include <algorithm>
 #include <atomic>
 #include <cctype>
+#include <chrono>
 #include <cstdio>
 #include <cstdlib>
 #include <filesystem>
 #include <fstream>
+#include <optional>
+#include <random>
 #include <set>
 #include <sstream>
 #include <string>
 #include <string_view>
 #include <vector>
-
-#include <sys/wait.h>
-#include <unistd.h>
 
 #include "verstaan/dictionary.hpp"
 #include "verstaan/engine.hpp"
@@ -60,9 +60,16 @@ class TempDir {
  public:
   TempDir() {
     static std::atomic<int> counter{0};
-    path_ = fs::temp_directory_path() /
-            ("verstaan_pair_" + std::to_string(::getpid()) + "_" + std::to_string(counter++));
-    fs::create_directories(path_);
+    // Unique across processes without a process id: a random 64-bit value plus a clock tick, and
+    // a counter for two folders made in one tick. create_directory fails on a clash, so a
+    // collision retries instead of sharing a folder.
+    std::random_device entropy;
+    do {
+      const auto tick = std::chrono::steady_clock::now().time_since_epoch().count();
+      path_ =
+          fs::temp_directory_path() / ("verstaan_pair_" + std::to_string(tick) + "_" +
+                                       std::to_string(entropy()) + "_" + std::to_string(counter++));
+    } while (!fs::create_directory(path_));
   }
   TempDir(const TempDir&) = delete;
   TempDir& operator=(const TempDir&) = delete;
@@ -77,15 +84,18 @@ class TempDir {
 };
 
 const Engine& XxaToXxb() {
-  static const Engine engine = Engine::load(RuleSet::load(Fixture("xxa").string(), Fixture("xxb").string()));
+  static const Engine engine =
+      Engine::load(RuleSet::load(Fixture("xxa").string(), Fixture("xxb").string()));
   return engine;
 }
 const Engine& XxbToXxa() {
-  static const Engine engine = Engine::load(RuleSet::load(Fixture("xxb").string(), Fixture("xxa").string()));
+  static const Engine engine =
+      Engine::load(RuleSet::load(Fixture("xxb").string(), Fixture("xxa").string()));
   return engine;
 }
 const Engine& EngToAfr() {
-  static const Engine engine = Engine::load(RuleSet::load(Real("eng").string(), Real("afr").string()));
+  static const Engine engine =
+      Engine::load(RuleSet::load(Real("eng").string(), Real("afr").string()));
   return engine;
 }
 
@@ -139,7 +149,8 @@ TEST(language_pair, L37_from_rules_names_no_language) {
 }
 
 TEST(language_pair, L38_the_pair_the_engine_did_not_load_is_not_implemented) {
-  ExpectNotImplemented(XxaToXxb().translate("kano zuma sona", Options{.from = Lang::eng, .to = Lang::afr}));
+  ExpectNotImplemented(
+      XxaToXxb().translate("kano zuma sona", Options{.from = Lang::eng, .to = Lang::afr}));
 }
 
 TEST(language_pair, L39_the_reverse_pair_needs_its_own_ruleset) {
@@ -155,12 +166,13 @@ TEST(language_pair, L41_eng_afr_engine_refuses_afr_eng) {
 }
 
 TEST(language_pair, L42_register_stays_m5s_on_a_fixture_pair) {
-  ExpectNotImplemented(XxaToXxb().translate("kano zuma sona", Pair("xxa", "xxb", Register::formal)));
+  ExpectNotImplemented(
+      XxaToXxb().translate("kano zuma sona", Pair("xxa", "xxb", Register::formal)));
 }
 
 TEST(language_pair, L43_context_stays_m5s_on_a_fixture_pair) {
-  ExpectNotImplemented(
-      XxaToXxb().translate("kano zuma sona", Pair("xxa", "xxb", Register::neutral, Context::medical)));
+  ExpectNotImplemented(XxaToXxb().translate(
+      "kano zuma sona", Pair("xxa", "xxb", Register::neutral, Context::medical)));
 }
 
 TEST(language_pair, L44_a_code_no_store_holds_is_not_implemented) {
@@ -267,11 +279,25 @@ CliRun RunCli(const std::string& args) {
   const TempDir tmp;
   const fs::path out = tmp.path() / "out.txt";
   const fs::path err = tmp.path() / "err.txt";
-  const std::string command = std::string("\"") + VERSTAAN_CLI_PATH + "\" " + args + " >\"" +
-                              out.string() + "\" 2>\"" + err.string() + "\"";
+  std::string command = std::string("\"") + VERSTAAN_CLI_PATH + "\" " + args + " >\"" +
+                        out.string() + "\" 2>\"" + err.string() + "\"";
+#ifdef _WIN32
+  // cmd.exe strips the outer quotes of a command that starts with one, and std::system returns
+  // the exit code itself.
+  command = "\"" + command + "\"";
   const int raw = std::system(command.c_str());
+  const int code = raw;
+#else
+  // std::system returns the wait status: the exit code sits in bits 8 to 15 when the child exited
+  // normally (low 7 bits zero). A signal leaves a non-zero low byte, which reads as -1.
+  const int raw = std::system(command.c_str());
+  constexpr int kStatusShift = 8;
+  constexpr int kSignalMask = 0x7F;
+  constexpr int kCodeMask = 0xFF;
+  const int code = (raw & kSignalMask) == 0 ? (raw >> kStatusShift) & kCodeMask : -1;
+#endif
   CliRun run;
-  run.exit_code = WIFEXITED(raw) ? WEXITSTATUS(raw) : -1;
+  run.exit_code = code;
   run.out = Slurp(out);
   run.err = Slurp(err);
   return run;
@@ -287,7 +313,8 @@ void ExpectBadFlag(const std::string& args, const std::string& flag) {
   const CliRun run = RunCli(args);
   EXPECT_EQ(run.exit_code, 1) << args;
   EXPECT_EQ(run.out, "") << args;
-  EXPECT_NE(run.err.find("verstaan: bad " + flag), std::string::npos) << args << " stderr: " << run.err;
+  EXPECT_NE(run.err.find("verstaan: bad " + flag), std::string::npos)
+      << args << " stderr: " << run.err;
 }
 
 TEST(language_pair, L55_cli_refuses_a_from_code_with_no_store) {
@@ -306,6 +333,59 @@ TEST(language_pair, L59_cli_names_nld_as_a_bad_flag_until_a_store_exists) {
   ExpectBadFlag("--from nld --to afr \"book\"", "--from");
 }
 
+void ExpectOnlyEngToAfr(const std::string& from, const std::string& to) {
+  const CliRun run = RunCli("--from " + from + " --to " + to + " \"book\"");
+  EXPECT_EQ(run.exit_code, 1);
+  EXPECT_EQ(run.out, "");
+  EXPECT_NE(run.err.find("verstaan: only eng to afr is supported, not " + from + " to " + to),
+            std::string::npos)
+      << run.err;
+}
+
+TEST(language_pair, L79_cli_refuses_afr_to_eng) { ExpectOnlyEngToAfr("afr", "eng"); }
+TEST(language_pair, L80_cli_refuses_eng_to_eng) { ExpectOnlyEngToAfr("eng", "eng"); }
+TEST(language_pair, L81_cli_refuses_afr_to_afr) { ExpectOnlyEngToAfr("afr", "afr"); }
+
+// --- Part 9: how meta.yaml is read (F09) ---
+
+// A store folder that holds only a `meta.yaml` with this text.
+std::optional<Lang> LangOfMeta(const std::string& meta_text) {
+  const TempDir tmp;
+  {
+    std::ofstream out(tmp.path() / "meta.yaml", std::ios::binary);
+    out << meta_text;
+  }
+  return RuleSet::load(tmp.path().string(), tmp.path().string()).from_lang();
+}
+
+void ExpectMetaIs(const std::string& meta_text, std::string_view iso3) {
+  const auto lang = LangOfMeta(meta_text);
+  ASSERT_TRUE(lang.has_value()) << meta_text;
+  EXPECT_EQ(*lang, Code(iso3)) << meta_text;
+}
+
+TEST(language_pair, L82_a_trailing_comment_is_not_part_of_the_code) {
+  ExpectMetaIs("iso1: null\niso3: xxa  # the code\nname: Xxa\n", "xxa");
+}
+TEST(language_pair, L83_single_quotes_are_not_part_of_the_code) {
+  ExpectMetaIs("iso3: 'xxa'\n", "xxa");
+}
+TEST(language_pair, L84_a_leading_bom_is_skipped) {
+  ExpectMetaIs("\xEF\xBB\xBFiso3: xxa\n", "xxa");
+}
+TEST(language_pair, L85_a_key_without_a_space_is_not_a_mapping) {
+  EXPECT_FALSE(LangOfMeta("iso3:xxa\n").has_value());
+}
+TEST(language_pair, L86_an_indented_iso3_in_a_block_scalar_does_not_win) {
+  ExpectMetaIs("notes: |\n  iso3: yyy\niso3: xxa\n", "xxa");
+}
+TEST(language_pair, L87_an_indented_iso3_alone_names_no_language) {
+  EXPECT_FALSE(LangOfMeta("notes: |\n  iso3: yyy\n").has_value());
+}
+TEST(language_pair, L87b_double_quotes_and_crlf_are_not_part_of_the_code) {
+  ExpectMetaIs("iso3: \"xxa\"\r\nname: Xxa\r\n", "xxa");
+}
+
 // --- Part 7: the trace and the words of A01 to A17 ---
 
 struct PairRow {
@@ -322,46 +402,121 @@ void PrintTo(const PairRow& row, std::ostream* os) { *os << row.id; }
 
 const std::vector<PairRow>& PairRows() {
   static const std::vector<PairRow> rows = {
-      {"A01", "kano zuma sona", "xxa", "xxb", "hundo kinda vidra", Status::ok,
+      {"A01",
+       "kano zuma sona",
+       "xxa",
+       "xxb",
+       "hundo kinda vidra",
+       Status::ok,
        {"xxa-ana-01", "xxb-gen-01", "xxb-gen-08", "xxb-gen-09", "xxb-gen-11"}},
-      {"A02", "hundo kinda vidra", "xxb", "xxa", "kano zuma sona", Status::ok,
+      {"A02",
+       "hundo kinda vidra",
+       "xxb",
+       "xxa",
+       "kano zuma sona",
+       Status::ok,
        {"xxb-ana-01", "xxa-gen-01", "xxa-gen-07", "xxa-gen-08", "xxa-gen-09"}},
-      {"A03", "ta kano zuma sona", "xxa", "xxb", "hundon kinda vidra", Status::ok,
+      {"A03",
+       "ta kano zuma sona",
+       "xxa",
+       "xxb",
+       "hundon kinda vidra",
+       Status::ok,
        {"xxa-ana-01", "xxa-ana-02", "xxb-gen-01", "xxb-gen-02", "xxb-gen-08", "xxb-gen-09",
         "xxb-gen-11", "xxb-inf-M1"}},
-      {"A04", "hundon kinda vidra", "xxb", "xxa", "ta kano zuma sona", Status::ok,
+      {"A04",
+       "hundon kinda vidra",
+       "xxb",
+       "xxa",
+       "ta kano zuma sona",
+       Status::ok,
        {"xxb-ana-01", "xxb-ana-04", "xxa-gen-01", "xxa-gen-02", "xxa-gen-06", "xxa-gen-07",
         "xxa-gen-08", "xxa-gen-09", "xxa-gen-10"}},
-      {"A05", "kanoki zuma sona", "xxa", "xxb", "mo hundo kinda vidra", Status::ok,
+      {"A05",
+       "kanoki zuma sona",
+       "xxa",
+       "xxb",
+       "mo hundo kinda vidra",
+       Status::ok,
        {"xxa-ana-01", "xxa-ana-04", "xxb-gen-01", "xxb-gen-04", "xxb-gen-06", "xxb-gen-08",
         "xxb-gen-09", "xxb-gen-11", "xxb-gen-12"}},
-      {"A06", "mo hundo kinda vidra", "xxb", "xxa", "kanoki zuma sona", Status::ok,
+      {"A06",
+       "mo hundo kinda vidra",
+       "xxb",
+       "xxa",
+       "kanoki zuma sona",
+       Status::ok,
        {"xxb-ana-01", "xxb-ana-02", "xxa-gen-01", "xxa-gen-04", "xxa-gen-07", "xxa-gen-08",
         "xxa-gen-09", "xxa-inf-M1"}},
-      {"A07", "sona rintadu nolu bero", "xxa", "xxb", "kinda libru pikko da lektu", Status::ok,
+      {"A07",
+       "sona rintadu nolu bero",
+       "xxa",
+       "xxb",
+       "kinda libru pikko da lektu",
+       Status::ok,
        {"xxa-ana-01", "xxa-ana-03", "xxa-ana-05", "xxb-gen-01", "xxb-gen-03", "xxb-gen-05",
         "xxb-gen-07", "xxb-gen-08", "xxb-gen-09", "xxb-gen-10", "xxb-gen-12"}},
-      {"A08", "kinda libru pikko da lektu", "xxb", "xxa", "sona rintadu nolu bero", Status::ok,
+      {"A08",
+       "kinda libru pikko da lektu",
+       "xxb",
+       "xxa",
+       "sona rintadu nolu bero",
+       Status::ok,
        {"xxb-ana-01", "xxb-ana-02", "xxb-ana-03", "xxa-gen-01", "xxa-gen-03", "xxa-gen-05",
         "xxa-gen-07", "xxa-gen-08", "xxa-gen-09", "xxa-gen-10", "xxa-inf-M2"}},
-      {"A09", "sona zuma glimu", "xxa", "xxb", "kinda vidra \xE2\x9F\xA6glimu\xE2\x9F\xA7", Status::partial,
+      {"A09",
+       "sona zuma glimu",
+       "xxa",
+       "xxb",
+       "kinda vidra \xE2\x9F\xA6glimu\xE2\x9F\xA7",
+       Status::partial,
        {"xxa-ana-01", "xxb-gen-01", "xxb-gen-09", "xxb-gen-12"}},
-      {"A10", "kinda glimu vidra", "xxb", "xxa", "sona zuma \xE2\x9F\xA6glimu\xE2\x9F\xA7", Status::partial,
+      {"A10",
+       "kinda glimu vidra",
+       "xxb",
+       "xxa",
+       "sona zuma \xE2\x9F\xA6glimu\xE2\x9F\xA7",
+       Status::partial,
        {"xxb-ana-01", "xxa-gen-01", "xxa-gen-08", "xxa-gen-10"}},
-      {"A11", "sona zuma veri", "xxa", "xxb", "kinda \xE2\x9F\xA6veri\xE2\x9F\xA7 vidra", Status::partial,
+      {"A11",
+       "sona zuma veri",
+       "xxa",
+       "xxb",
+       "kinda \xE2\x9F\xA6veri\xE2\x9F\xA7 vidra",
+       Status::partial,
        {"xxa-ana-01", "xxb-gen-01", "xxb-gen-08", "xxb-gen-09", "xxb-gen-11"}},
       {"A12", "kano", "xxa", "xxb", "hundo", Status::ok, {"xxb-gen-09"}},
       {"A13", "hundo", "xxb", "xxa", "kano", Status::ok, {"xxa-gen-08"}},
-      {"A14", "milaki zuma ta kano", "xxa", "xxb", "mo katsu hundon vidra", Status::ok,
+      {"A14",
+       "milaki zuma ta kano",
+       "xxa",
+       "xxb",
+       "mo katsu hundon vidra",
+       Status::ok,
        {"xxa-ana-01", "xxa-ana-02", "xxa-ana-04", "xxb-gen-01", "xxb-gen-02", "xxb-gen-04",
         "xxb-gen-06", "xxb-gen-08", "xxb-gen-09", "xxb-gen-11", "xxb-gen-12", "xxb-inf-M1"}},
-      {"A15", "mo katsu hundon vidra", "xxb", "xxa", "milaki zuma ta kano", Status::ok,
+      {"A15",
+       "mo katsu hundon vidra",
+       "xxb",
+       "xxa",
+       "milaki zuma ta kano",
+       Status::ok,
        {"xxb-ana-01", "xxb-ana-02", "xxb-ana-04", "xxa-gen-01", "xxa-gen-02", "xxa-gen-04",
         "xxa-gen-06", "xxa-gen-07", "xxa-gen-08", "xxa-gen-09", "xxa-gen-10", "xxa-inf-M1"}},
-      {"A16", "ta sonaki pelo beroki", "xxa", "xxb", "mo kindan mo libru manga", Status::ok,
+      {"A16",
+       "ta sonaki pelo beroki",
+       "xxa",
+       "xxb",
+       "mo kindan mo libru manga",
+       Status::ok,
        {"xxa-ana-01", "xxa-ana-02", "xxa-ana-04", "xxb-gen-01", "xxb-gen-02", "xxb-gen-04",
         "xxb-gen-06", "xxb-gen-08", "xxb-gen-09", "xxb-gen-11", "xxb-gen-12", "xxb-inf-M1"}},
-      {"A17", "mo kindan mo libru manga", "xxb", "xxa", "ta sonaki pelo beroki", Status::ok,
+      {"A17",
+       "mo kindan mo libru manga",
+       "xxb",
+       "xxa",
+       "ta sonaki pelo beroki",
+       Status::ok,
        {"xxb-ana-01", "xxb-ana-02", "xxb-ana-04", "xxa-gen-01", "xxa-gen-02", "xxa-gen-04",
         "xxa-gen-06", "xxa-gen-07", "xxa-gen-08", "xxa-gen-09", "xxa-gen-10", "xxa-inf-M1"}},
   };
