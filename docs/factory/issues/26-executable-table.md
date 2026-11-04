@@ -2,7 +2,7 @@
 issue: 26
 title: "The test table is the test: a golden loader runs every row, and a held-out slice runs only at the gate"
 milestone: M3
-status: open
+status: in-progress
 depends_on: [12, 115, 24, 183, 185]
 agent: test-writer
 agents: [test-writer, implementer]
@@ -10,7 +10,7 @@ model: sonnet
 effort: medium
 checkpoint: null
 commit: null
-worktree: null
+worktree: .worktrees/m3-26-executable-table
 github_issue: 73
 ---
 ## What

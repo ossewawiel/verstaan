@@ -36,7 +36,9 @@ Step 2, build every preset that exists in `CMakePresets.json`:
 `cmake --preset <p> && cmake --build --preset <p>` for each. The `arm-basic` preset is required
 from M4; before that it may be absent, and you say so.
 
-Step 3, tests. `ctest --preset <p> --output-on-failure` for each built preset. Then
+Step 3, tests. `ctest --preset <p> --output-on-failure` for each built preset. That run carries
+every label, `golden` included. Then `ctest --preset <p> -L held-out --output-on-failure` for each
+built preset: the held-out slice runs here and in CI only, never in the Stop hook. Then
 `python -m pytest tools/`. Then `node tools/console/test/run.mjs` (the file console's parsers,
 renderer and generator; zero dependencies). Then, in `apps/console/` (the console app, ADR 0010,
 the one part of the repository allowed dependencies of its own): `npm ci`, then `npm run build`

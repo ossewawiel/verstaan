@@ -42,7 +42,7 @@ Run this from the root tree, on `main`. It never works there past step 6.
 | `agent:` in the issue | Sequence |
 |---|---|
 | `implementer` | implementer → done |
-| `rule-author` | rule-author writes the test table into `NN-test-cases.md` → test-writer lands failing tests → implementer makes them pass |
+| `rule-author` | rule-author writes the test table into `NN-test-cases.md` → implementer. The golden runner runs the table rows. The test-writer joins only for an issue that needs a test the table cannot express. |
 | `docs-writer` | docs-writer → done. May run in parallel with any of the above. |
 | `test-writer` | test-writer → implementer |
 

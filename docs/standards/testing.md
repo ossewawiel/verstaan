@@ -13,11 +13,19 @@ exactly this for the whole ladder.
 | Kind | Where | Label | Runs in |
 |---|---|---|---|
 | Engine unit | `tests/unit/` | `fast` | Stop hook, `/gate` |
-| Golden sentences | `tests/golden/<tier>/` | `golden` | `/gate`; the fast subset in the Stop hook |
+| Golden sentences | `tests/golden/<tier>/` and every fixture `tests/*.yaml` | `golden` | `/gate`; the fast subset in the Stop hook |
+| Held-out | the held-out slice: rows in the fixture shape that no issue file names and no agent brief loads | `held-out` | `/gate` and CI only, never the Stop hook |
 | Equivalence, runtime vs generated | `tests/equivalence/` | `equivalence` | `/gate` |
 | Tier budget | `tests/tier/` | `tier` | `/gate`, M4 onward |
 | Tooling | `tools/*/tests/` | pytest | Stop hook for changed tools, `/gate` all |
 | Data validation | `tools/validate` | — | Stop hook for changed files, `/gate` for what the branch changed against `origin/main` |
+
+The golden runner is the test for table rows. It reads every fixture YAML and golden text file,
+runs each row through `Engine::translate` and reports pass or fail per row id, with the rule trace
+on failure. A table row needs no hand-written test. A row with `review: pending` runs and is
+reported as pending. A row with `deferred: <issue>` names the issue that makes it pass: the runner
+runs it, prints DEFERRED with the trace, and does not fail on a mismatch. A deferred row that
+matches fails, so the owning issue removes the key when it lands.
 
 `--changed` validates every store a changed file sits in, whole, not the changed file alone: it
 maps each file the branch touched to its `data/languages/<iso3>/` store, then runs the full store

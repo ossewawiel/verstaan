@@ -18,7 +18,8 @@ color: blue
 - **Before writing the first test**, run `grep -rn 'not_implemented' engine/src` (or the tool's
   package). If nothing is stubbed for this issue, hand back: there is nothing for a test to fail
   against.
-- One test per table row. The row's id is in the test name.
+- A table row needs no hand-written test: the golden runner reads the YAML twin and runs it. Write
+  a test only for behaviour the table cannot express.
 - Golden files: `# source:` line, then `input ⇒ expected`. The expected text comes from the table,
   never from running the engine.
 - **Leave the suite red.** Do not implement. Do not mark tests skipped. Do not write a ledger.
