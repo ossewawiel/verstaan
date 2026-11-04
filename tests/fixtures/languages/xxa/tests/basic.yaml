@@ -39,7 +39,7 @@
   source: {origin: invented, issue: 4}
 - id: A09
   input: "sona zuma glimu"
-  expected: "kinda ⟦glimu⟧ vidra"
+  expected: "kinda vidra ⟦glimu⟧"
   direction: xxa->xxb
   status: partial
   tier: basic
@@ -55,9 +55,9 @@
   source: {origin: invented, issue: 4}
 - id: A12
   input: "kano"
-  expected: ""
+  expected: "hundo"
   direction: xxa->xxb
-  status: no_parse
+  status: ok
   tier: basic
   register: neutral
   source: {origin: invented, issue: 4}

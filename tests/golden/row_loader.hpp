@@ -21,8 +21,10 @@
 #include <filesystem>
 #include <fstream>
 #include <iostream>
+#include <optional>
 #include <sstream>
 #include <string>
+#include <string_view>
 #include <vector>
 
 #include "verstaan/engine.hpp"
@@ -45,6 +47,32 @@ struct Row {
   std::string deferred;
   std::string file;
 };
+
+// Issue 28 (ADR 0029). Test-writer stubs: the implementer replaces each body. The rows that name
+// them are L01 to L17 and L60 to L72 of docs/factory/issues/28-test-cases.md.
+struct Direction {
+  Lang from;
+  Lang to;
+};
+
+// "xxa->xxb", "xxa-xxb": two iso3 codes joined by "->" or "-". No value for anything else.
+// Stub: no value for every input.
+inline std::optional<Direction> parse_direction(std::string_view /*direction*/) {
+  return std::nullopt;
+}
+
+// `<repo>/tests/fixtures/languages/<iso3>` when it holds a `meta.yaml`, else
+// `<repo>/data/languages/<iso3>` when it does, else no value. Stub: no value for every code.
+inline std::optional<std::filesystem::path> store_root_for(std::string_view /*iso3*/) {
+  return std::nullopt;
+}
+
+// The CTest case name of a row: the bare id for `eng-afr`, else the direction with each
+// non-alphanumeric byte as `_`, `_`, then the id in lower case. Stub: the bare id.
+inline std::string golden_case_id(const Row& row) { return row.id; }
+
+// Case ids held more than once, each listed once. Stub: none.
+inline std::vector<std::string> duplicate_ids(const std::vector<Row>& /*rows*/) { return {}; }
 
 inline void PrintTo(const Row& row, std::ostream* os) { *os << row.id; }
 

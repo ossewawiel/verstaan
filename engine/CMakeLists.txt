@@ -3,6 +3,7 @@ add_library(verstaan_core STATIC
   src/dictionary_lookup.cpp
   src/engine.cpp
   src/generation.cpp
+  src/lang.cpp
   src/rule_interpreter.cpp
   src/tokeniser.cpp
   src/tree_pass.cpp

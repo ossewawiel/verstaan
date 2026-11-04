@@ -685,12 +685,16 @@ def test_row_check_fails_when_that_one_row_is_changed(tree: Path):
 
 
 def test_row_check_fails_when_a_status_is_changed(tree: Path):
-    path = tree / "xxb" / "tests" / "basic.yaml"
+    # A09 is `partial` since the owner's ruling of 2026-11-04. Swap it for `ok`: the swap must
+    # change the file, or the check below proves nothing.
+    path = tree / "xxa" / "tests" / "basic.yaml"
     text = path.read_text(encoding="utf-8")
-    head = text[: text.index("- id: A13")]
-    tail = text[text.index("- id: A13") :]
-    path.write_text(head + tail.replace("status: no_parse", "status: ok", 1), encoding="utf-8")
-    assert_reports(check_row(tree, "A13"), "A13: status is 'ok', block A says 'no_parse'")
+    head = text[: text.index("- id: A09")]
+    tail = text[text.index("- id: A09") :]
+    swapped = head + tail.replace("status: partial", "status: ok", 1)
+    assert swapped != text
+    path.write_text(swapped, encoding="utf-8")
+    assert_reports(check_row(tree, "A09"), "A09: status is 'ok', block A says 'partial'")
 
 
 def test_table_check_fails_when_a_row_is_missing(tree: Path):

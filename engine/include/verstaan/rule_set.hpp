@@ -15,10 +15,13 @@
 // is `[]`, docs/unl-reference/formats/disambiguation.md "Where eng has no export") leaves that
 // rule list empty, not broken -- exactly `Dictionary::load`'s contract for a missing shard.
 
+#include <optional>
 #include <string>
 #include <string_view>
 #include <utility>
 #include <vector>
+
+#include "verstaan/lang.hpp"
 
 namespace verstaan {
 
@@ -89,6 +92,11 @@ class RuleSet {
   [[nodiscard]] std::string_view from_store_root() const { return from_store_root_; }
   [[nodiscard]] std::string_view to_store_root() const { return to_store_root_; }
 
+  // The languages this RuleSet translates between, from the `iso3` key of each store's `meta.yaml`
+  // (ADR 0029). No value for a `from_rules()` RuleSet or a store with no readable key.
+  [[nodiscard]] std::optional<Lang> from_lang() const { return from_lang_; }
+  [[nodiscard]] std::optional<Lang> to_lang() const { return to_lang_; }
+
  private:
   RuleSet(std::vector<GrammarRule> disambiguation, std::vector<GrammarRule> analysis,
           std::vector<GrammarRule> from_inflection, std::vector<GrammarRule> subcategorisation,
@@ -112,6 +120,8 @@ class RuleSet {
   std::vector<GrammarRule> to_disambiguation_;
   std::string from_store_root_;
   std::string to_store_root_;
+  std::optional<Lang> from_lang_;
+  std::optional<Lang> to_lang_;
 };
 
 }  // namespace verstaan

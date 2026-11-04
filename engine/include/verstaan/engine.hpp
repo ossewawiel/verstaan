@@ -15,16 +15,15 @@
 #include <utility>
 #include <vector>
 
+#include "verstaan/lang.hpp"
 #include "verstaan/rule_set.hpp"
 
 namespace verstaan {
 
-// Every public enum fixes its base type at std::uint8_t. These travel inside Options and Result,
-// and a tier build packs them into generated tables, so the width is part of the shape, not an
-// accident of the compiler's default (docs/standards/cpp.md: performance-* warnings are errors).
-
-// Source/target language, by ISO 639-3 code. SPEC.md §1: eng and afr at M3, nld seeded at M6.
-enum class Lang : std::uint8_t { eng, afr, nld };
+// Every public enum fixes its base type at std::uint8_t, except Lang (verstaan/lang.hpp), which
+// is an open enum over std::uint32_t (ADR 0029). These travel inside Options and Result, and a
+// tier build packs them into generated tables, so the width is part of the shape, not an accident
+// of the compiler's default (docs/standards/cpp.md: performance-* warnings are errors).
 
 // Word-choice tag on dictionary entries (docs/glossary.md: Register).
 enum class Register : std::uint8_t { neutral, formal, informal, technical };
