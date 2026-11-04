@@ -1,0 +1,35 @@
+# Licence: CC BY-SA 4.0.
+# source: expected values written by the owner on 2026-11-04. Not from the engine, not from the
+# archive corpus. Each row composes two marks the visible rows test one at a time.
+- id: H01
+  input: "the beautiful books"
+  expected: "die mooi boeke"
+  direction: eng-afr
+  status: ok
+  tier: basic
+  register: neutral
+  review: confirmed
+- id: H02
+  input: "all the books in a box"
+  expected: "al die boeke in 'n boks"
+  direction: eng-afr
+  status: ok
+  tier: basic
+  register: neutral
+  review: confirmed
+- id: H03
+  input: "a very beautiful book"
+  expected: "'n baie mooi boek"
+  direction: eng-afr
+  status: ok
+  tier: basic
+  register: neutral
+  review: confirmed
+- id: H04
+  input: "some books about Geneva"
+  expected: "'n paar boeke oor Geneva"
+  direction: eng-afr
+  status: ok
+  tier: basic
+  register: neutral
+  review: confirmed
