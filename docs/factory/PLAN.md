@@ -210,11 +210,11 @@ Issues are `docs/factory/issues/NN-kebab-title.md`. The numbers below are the pl
 | M1 Mirror | `m1-NN-<slug>` | Every language exported, manifest complete, UNL reference corpus readable by agents, inventory report | 07–12 |
 | M2 Store | `m2-NN-<slug>` | Canonical data model; importer for dictionaries, grammars, tagset, corpora; validator | 13–18 |
 | M3 Engine slice | `m3-NN-<slug>` | Tokeniser, dictionary lookup, rule interpreter on runtime tables, English → UNL → Afrikaans for a fixed sentence set, golden tests | 19–26 |
-| M4 Compiler and tiers | `m4-NN-<slug>` | Generated tables per tier, equivalence tests, basic tier cross-built and run on a Pi Zero, Argos benchmark beside it | 27–32 |
+| M4 Compiler and tiers | `m4-NN-<slug>` | Generated tables per tier, equivalence tests, basic tier cross-built for ARM | 27–32, 203, 204 |
 | M5 Applications | `m5-NN-<slug>` | CLI translator, register and context selection, first desktop shell | 33–38 |
 | M6 Growth | `m6-NN-<slug>` | Rule-author workflow for Afrikaans grammar growth, Dutch seeded from German and English references, CLA check, project site | 39–44 |
 | M7 Console CIC | `m7-NN-<slug>` | Bridge that lands, staged flight deck, ship-systems room, codex and debrief, hand-drawn atlas with fog of war, console as Agent SDK harness (ADR 0014–0016) | 172–178 |
-| Post-M6 | — | Neural fallback trigger, service tier, dashboards, bob harvest into a C++ project type | later |
+| Post-M6 | — | Neural fallback trigger, service tier, dashboards, bob harvest into a C++ project type, Pi Zero run with the Argos benchmark (issue 205, ADR 0027) | later |
 
 Each row's branch column names the pattern its issues use, `m<K>-NN-<slug>` — one branch per
 issue, not one shared branch for the milestone (issue 165).
@@ -253,11 +253,6 @@ the §7 row and the glossary terms.
   turns up later. Nothing in this plan depends on it.
 - Decide whether to plant bob (`/bob:build-me`, setup-only mode) over this factory once the C++
   gates work, and harvest the result back as bob's first C++ project type.
-- Say when to run side quest 92, which gives each quest its own git worktree so two sessions never
-  share a tree. It needs no remote and should run before 91.
-- Say when to run side quest 91, which creates the GitHub remote, mirrors the issue files to
-  milestones and labels, and adds Actions. Until then, gates are local and the "PR" in the
-  workflow is a merge into `main` after `/gate`. Decide then whether the repository is public.
 
 ## 10. How context survives between sessions
 

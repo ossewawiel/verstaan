@@ -201,6 +201,6 @@ github_issue: null      # written only by tools/factory/mirror_github.py (issue 
 
 | Tier | Languages | Dictionary | Target | RAM budget |
 |---|---|---|---|---|
-| basic | 2 chosen at build | top-N by frequency, N from `tiers.toml` | Pi Zero 2 W, ARMv8 | 64 MB total, measured |
+| basic | 2 chosen at build | top-N by frequency, N from `tiers.toml` | Pi Zero 2 W, ARMv8 | 64 MB total, measured on x86-64 until quest 205 runs it on a Pi (ADR 0027) |
 | phone | any set | full | Android/iOS via CLI first | 256 MB |
 | connected | all | full + corpora | x86-64 service | unbounded |

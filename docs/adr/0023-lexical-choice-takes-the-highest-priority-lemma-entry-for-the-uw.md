@@ -55,4 +55,5 @@ The priorities in the store, copied from `af_gen_u_c_ucl.zip`, disagree with thr
   dictionary record has no `deprecated` field, and ADR 0020 covers grammar rules only.
 - A14, `a car, a book and a mug`, also yields `motor` under this rule. Its row still reads `kar`;
   the owner has not ruled on A14, which is out of issue 181's scope.
+  The owner ruled `motor` for A14 on 2026-11-04.
 - The plural follows the entry: `motor` takes paradigm M2, `motors`.

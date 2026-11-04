@@ -3,6 +3,7 @@
 # on any disagreement). Each row repeats tests/fixtures/languages/eng/tests/basic.yaml and adds
 # `rules`: qualified rule ids, `<iso3>-<kind>-<id>`, a reading of the rule text and not a recording
 # of a run. `afr-gen-4` is a rule of the afr store. tools/validate fails on an id that names no rule.
+# A09, A14 and A15 differ from the corpus by owner ruling of 2026-11-04, recorded in 24-test-cases.md.
 # `deferred: N` (optional) is copied from the fixture: the issue that will make the row pass.
 - id: A01
   input: "book"
@@ -86,12 +87,13 @@
   source: {origin: ugoa1, line: 121, issue: 24}
 - id: A09
   input: "a book about Geneva"
-  expected: "'n boek oor Geneva"
+  expected: "'n boek oor ⟦Geneva⟧"
   direction: eng-afr
-  status: ok
+  status: partial
   tier: basic
   register: neutral
   review: confirmed
+  deferred: 207
   rules: [eng-ana-12, eng-ana-15, afr-gen-4, afr-gen-36]
   source: {origin: ugoa1, line: 128, issue: 24}
 - id: A10
@@ -136,7 +138,7 @@
   source: {origin: ugoa1, line: 219, issue: 24}
 - id: A14
   input: "a car, a book and a mug"
-  expected: "'n kar, 'n boek en 'n beker"
+  expected: "'n motor, 'n boek en 'n beker"
   direction: eng-afr
   status: ok
   tier: basic
@@ -147,12 +149,12 @@
   source: {origin: ugoa1, line: 230, issue: 24}
 - id: A15
   input: "the beautiful book about the city of Paris without pictures and photos on the table"
-  expected: "die mooi boek op die tafel oor ⟦Paris⟧ die stad sonder prente en foto's"
+  expected: "die mooi boek op die tafel oor ⟦Paris⟧ die stad sonder beelde en foto's"
   direction: eng-afr
   status: partial
   tier: basic
   register: neutral
   review: confirmed
-  deferred: 201
+  deferred: 215
   rules: [eng-ana-12, eng-ana-15, eng-ana-18, eng-ana-50, afr-gen-4, afr-gen-8, afr-gen-33, afr-gen-35, afr-gen-227, afr-gen-235, afr-gen-236, afr-inf-M3, afr-inf-M16]
   source: {origin: ugoa1, line: 248, issue: 24}
