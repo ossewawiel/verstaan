@@ -2,7 +2,7 @@
 
 Last completed:  #202 — Prove the golden loader's deferred and pending paths, and count the xxa/xxb
                  rows as skipped (Side), commit 42530b5
-Next up:         #28 — The engine takes its languages from data, and the xxa/xxb rows run (M4)
+Next up:         none, no open quest has every dependency done
 Branch / PR:     main, https://github.com/ossewawiel/verstaan.git, 0 files dirty, no gate stamp for
-                 7059bfb
-Resume with:     /factory-run 28
+                 703c603
+Resume with:     none
