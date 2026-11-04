@@ -47,9 +47,9 @@
   source: {origin: invented, issue: 4}
 - id: A13
   input: "hundo"
-  expected: ""
+  expected: "kano"
   direction: xxb->xxa
-  status: no_parse
+  status: ok
   tier: basic
   register: neutral
   source: {origin: invented, issue: 4}

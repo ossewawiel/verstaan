@@ -4,7 +4,15 @@
 - headword: hundo
   id: 1
   uw: "dog(icl>animal)"
-  features: {LEX: N, POS: NOU, NUM: SNG, PAR: P1}
+  features: {LEX: N, POS: NOU, NUM: SNG, PAR: M1}
+  lang: xxb
+  frequency: 0
+  priority: 1
+  source: {origin: invented, issue: 4}
+- headword: hundon
+  id: 11
+  uw: "dog(icl>animal)"
+  features: {BF: hundo, LEX: N, POS: NOU, NUM: SNG, DEF: Y, PAR: M1}
   lang: xxb
   frequency: 0
   priority: 1

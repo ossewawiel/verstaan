@@ -28,6 +28,7 @@
 
 #include "inflection_syntax.hpp"
 #include "tree_syntax.hpp"
+#include "verstaan/lang.hpp"
 #include "verstaan/rule_interpreter.hpp"
 
 namespace verstaan {
@@ -1131,7 +1132,7 @@ bool same_reading(const TreeNode& node, const Candidate& candidate) {
 GenerationResult RuleInterpreter::generate(const Graph& graph, const Dictionary& target,
                                            const std::vector<std::string>& source_surfaces,
                                            Lang target_language, Trace& trace) const {
-  const std::string code(language_code(target_language));
+  const std::string code = iso3_of(target_language);
   const GenContext ctx{
       .rules = rules_,
       .interpreter = *this,

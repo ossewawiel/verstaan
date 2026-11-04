@@ -4,7 +4,15 @@
 - headword: kano
   id: 1
   uw: "dog(icl>animal)"
-  features: {LEX: N, POS: NOU, NUM: SNG, PAR: P1}
+  features: {LEX: N, POS: NOU, NUM: SNG, PAR: M1}
+  lang: xxa
+  frequency: 0
+  priority: 1
+  source: {origin: invented, issue: 4}
+- headword: kanoki
+  id: 12
+  uw: "dog(icl>animal)"
+  features: {BF: kano, LEX: N, POS: NOU, NUM: PLR, PAR: M1}
   lang: xxa
   frequency: 0
   priority: 1

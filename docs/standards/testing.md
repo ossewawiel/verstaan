@@ -25,9 +25,11 @@ runs each row through `Engine::translate` and reports pass or fail per row id, w
 on failure. A table row needs no hand-written test. A row with `review: pending` runs and is
 reported as pending. A row with `deferred: <issue>` names the issue that makes it pass: the runner
 runs it, prints DEFERRED with the trace, and does not fail on a mismatch. A deferred row that
-matches fails, so the owning issue removes the key when it lands. Rows in a direction the engine
-has no `Lang` for, such as the `xxa` ⇄ `xxb` pair, are registered as skipped cases with the reason
-in the ctest output.
+matches fails, so the owning issue removes the key when it lands. Every row runs by its
+`direction`, `eng-afr` or `xxa->xxb`: the runner finds each language's store (the fixture folder
+first, then `data/languages/`) and loads the pair. A direction that does not parse, or a code with
+no store, fails the row; the runner skips no row for its language. A row outside `eng-afr` takes its
+direction as a prefix on the case name (`xxa__xxb_a09`), so ids stay unique across languages (ADR 0029).
 
 `--changed` validates every store a changed file sits in, whole, not the changed file alone: it
 maps each file the branch touched to its `data/languages/<iso3>/` store, then runs the full store

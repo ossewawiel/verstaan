@@ -1,34 +1,42 @@
 # Licence: CC BY-SA 4.0. Source: invented fixture for engine tests, not the UNL Archive.
 # SPEC.md §4 header adapted: these records are original, so no data/archive/manifest.jsonl
 # line exists to point at.
-# Notation. The lhs matches a token sequence, read left to right.
-#   [FEAT:VAL, ...]:n   one token carrying these features, bound to slot n
-#   [*]:n               any one token, bound to slot n
-#   $a                  a variable bound to a feature value when the token matches
-# The rhs builds the UNL graph.
-#   rel(n,m)            a relation from the node in slot n to the node in slot m
-#   attr(n,$a)          put attribute $a on the node in slot n
-#   drop(n)             the token in slot n leaves no node behind
-# Rules apply in file order. grammar/inflection.yaml runs first, read in reverse, so every
-# token reaching these rules is a base form with its attributes already attached.
-- id: xxb-ana-01
+# Notation. The engine's rule syntax (docs/unl-reference/formats/transformation-grammar.md).
+#   (N,%s)(V,%v)       a window of tokens; a tag tests a feature key, value or attribute
+#   ^TAG               the tag must be absent
+#   %x                 binds the token's position to the name x for the right side
+#   {N|V}              a disjunction: any one alternative matches
+#   +att=@def          put the attribute @def on the node
+#   rel(%a;%b)         a relation from node a to node b
+# Rules apply in file order. No inflection rule runs before them: the engine has no reverse
+# inflection. A word form such as `hundon` is its own dictionary entry, with `BF` and `DEF: Y`,
+# so the tokens reaching these rules already carry the feature that marks the form.
+# The id of an analysis rule is its qualified name, because the engine writes it to the trace as is.
+- id: "xxb-ana-04"
   kind: analysis
-  lhs: "[LEX:N]:1 [LEX:N]:2 [LEX:V]:3"
-  rhs: "agt(3,1); obj(3,2)"
-  conditions: {}
-  comment: "Takes the first of two nouns before the verb as the agent and the second as the object."
+  lhs: "(N,DEF,^@def)"
+  rhs: "(+att=@def)"
+  conditions: []
+  comment: "Marks a definite noun form with @def."
   source: original
-- id: xxb-ana-02
+- id: "xxb-ana-02"
   kind: analysis
-  lhs: "[LEX:D, ATT:$a]:1 [*]:2"
-  rhs: "attr(2,$a); drop(1)"
-  conditions: {LEX: D}
-  comment: "Moves the attribute off a particle onto the word that follows it, then drops the particle."
+  lhs: "(D,att,%d)({N|V},%n)"
+  rhs: "(%n,+att=%d)"
+  conditions: []
+  comment: "Moves a particle's attribute onto the word after it and drops the particle."
   source: original
-- id: xxb-ana-03
+- id: "xxb-ana-03"
   kind: analysis
-  lhs: "[LEX:N]:1 [LEX:J]:2"
-  rhs: "mod(1,2)"
-  conditions: {}
-  comment: "Hangs an adjective on the noun in front of it as a modifier."
+  lhs: "(N,%n)(J,%j)"
+  rhs: "(%n,mod(%n;%j))"
+  conditions: []
+  comment: "Hangs an adjective on the noun before it."
+  source: original
+- id: "xxb-ana-01"
+  kind: analysis
+  lhs: "(N,%s)({N|^LEX},%o)(V,%v)"
+  rhs: "(%v,agt(%v;%s),obj(%v;%o))"
+  conditions: []
+  comment: "Takes the first word before the verb as agent and the second as object."
   source: original

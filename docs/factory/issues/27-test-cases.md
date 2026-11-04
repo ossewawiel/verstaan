@@ -150,9 +150,9 @@ No grammar rule is drafted here. No store file changes.
 | T106 | `Slumbrous` on `phone` | `⟦Slumbrous⟧`, `partial` | eng-afr | neutral | pending | 31 | S8 | Label `data`. The retry finds `slumbrous`, so the record marks it. The two tiers differ, as T105 states. |
 | T57 | `any book` on `basic` and on the runtime back end | `text`, `unl`, `trace`, `status` equal | eng-afr | neutral | pending | 30 | S1 | An entry-level cut gives `boek`, status `ok`, and loses `any`. This row goes red if whole headwords are ever broken. |
 | T58 | `kano zuma sona` | `hundo kinda vidra`, `ok` | xxa->xxb | neutral | n/a | 30 | — | A01 of `04-test-cases.md`, on the fixture build. |
-| T59 | `sona zuma glimu` | `kinda ⟦glimu⟧ vidra`, `partial` | xxa->xxb | neutral | n/a | 30 | — | A09 of that table. A word in no dictionary. |
+| T59 | `sona zuma glimu` | `kinda vidra ⟦glimu⟧`, `partial` | xxa->xxb | neutral | n/a | 30 | — | A09 of that table, owner ruling 2026-11-04 (ADR 0029). A word in no dictionary, its mark appended by ADR 0025. |
 | T60 | `sona zuma veri` | `kinda ⟦veri⟧ vidra`, `partial` | xxa->xxb | neutral | n/a | 30 | — | A11 of that table. Analysis succeeds, and generation has no word. |
-| T61 | `kano` | Empty text, `no_parse` | xxa->xxb | neutral | n/a | 30 | — | A12 of that table. |
+| T61 | `kano` | `hundo`, `ok` | xxa->xxb | neutral | n/a | 30 | — | A12 of that table, owner ruling 2026-11-04 (ADR 0029). One noun translates, as eng A01 does. |
 | T62 | A binary linked to `verstaan_data_fixture`, asked for `Tier::basic` | The fixture's tables serve the call | xxa->xxb | neutral | n/a | 30 | — | `Tier` gains no test-only member. |
 | T63 | A binary linked to `verstaan_data_basic`, asked for `Tier::phone` | A load failure, in the form quest 210's ADR gives. `translate` never runs | eng-afr | neutral | n/a | 30 | — | Never serve another tier's tables under its name. Not `not_implemented`, which gate step 0 refuses in `engine/src`. |
 | T115 | `verstaan_cli`, which never calls `Engine::generated` | Links with `verstaan_core` alone. `nm -u` lists no `generated_tables` | build | neutral | n/a | 30 | — | A runtime-only binary links nothing extra (ADR 0028, decision 1). Red proof: call `Engine::generated` from it, and the link fails. |

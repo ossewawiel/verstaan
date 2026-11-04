@@ -20,10 +20,14 @@
   comment: "Times a verb. A dictionary entry is the present; the past is a word form."
   source: {origin: invented, issue: 4}
 - feature: PAR
-  values: [P0, P1]
-  comment: "Picks the inflection paradigm. P1 takes the suffixes in grammar/inflection.yaml; P0 has no word forms."
+  values: [M0, M1, M2]
+  comment: "Picks the inflection paradigm by its id in grammar/inflection.yaml. M1 and M2 take the suffixes there; M0 has no word forms."
   source: {origin: invented, issue: 4}
-- feature: ATT
+- feature: att
   values: ["@def", "@pl", "@past"]
-  comment: "Names the UNL attribute a function word carries, or the one an inflection rule answers to."
+  comment: "Names the UNL attribute a function word carries. The tree pass moves it onto the node the word modifies."
+  source: {origin: invented, issue: 4}
+- feature: BF
+  values: [bero, kano, mila, sona, rinta]
+  comment: "Names the base form of a word form, so the dictionary can hold the form as its own entry."
   source: {origin: invented, issue: 4}

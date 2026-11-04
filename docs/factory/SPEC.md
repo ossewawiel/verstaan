@@ -5,7 +5,8 @@ Terse on purpose. Section numbers match `PLAN.md`. Read this before writing code
 ## 1. Scope
 
 - Deterministic rule-based translation. Source text → UNL graph → target text.
-- Languages at M3: eng, afr. Mirrored at M1: all archive languages. Seeded at M6: nld.
+- Languages at M3: eng, afr. Mirrored at M1: all archive languages. Seeded at M6: nld. The engine
+  names no language in a branch: a store's `meta.yaml` says which language it is (ADR 0029).
 - No neural code in `engine/`. Ever. A fallback, if it comes, lives in `apps/service/`.
 
 ## 2. Terms
@@ -96,8 +97,11 @@ the end of a run.
   views. Load parses each rule's text once. `translate` opens no file, parses no rule text, builds no index
   and fills no cache. `translate` still allocates its working state (forest, trace, `Result`) and
   frees it on return; §7's RAM budget bounds the peak. `Result` keeps its shape.
-- Public API (`engine/include/verstaan/engine.hpp`):
+- Public API (`engine/include/verstaan/engine.hpp`, and `lang.hpp` for `Lang`):
   ```cpp
+  enum class Lang : std::uint32_t { eng = 0x656E67, afr = 0x616672, nld = 0x6E6C64 };  // open: packs the iso3 bytes
+  std::optional<Lang> lang_from_iso3(std::string_view);  // three lower-case letters, else no value
+  std::string iso3_of(Lang);                             // the code, or "" for a value with none
   struct Options { Lang from; Lang to; Register reg = Register::neutral; Context ctx = Context::none; };
   struct Result { std::string text; Graph unl; Trace trace; Status status; };
   class Engine {
@@ -107,6 +111,11 @@ the end of a run.
     [[nodiscard]] Result translate(std::string_view, Options) const;
   };
   ```
+- `Lang` is an open enum (ADR 0029). The value packs the three ASCII bytes of the code, so `xxa`
+  is a `Lang` with no member. The members name the shipped languages; no branch in `engine/src`
+  reads them. `RuleSet::load` reads the `iso3` key of each root's `meta.yaml`, and `from_lang()`
+  and `to_lang()` return it (no value for `from_rules()`). `translate` returns `not_implemented`
+  unless `from` and `to` equal that pair, with `reg` neutral and `ctx` none.
 - `Status` ∈ `ok | partial | no_parse | not_implemented`. `partial` means some words fell through
   untranslated and are marked in `text` with `⟦word⟧`. `not_implemented` is the M0 stub value
   every real `Engine` method retires; never guess. Never confuse this four-member enum with
@@ -161,7 +170,11 @@ the end of a run.
 ### 3.6 Applications (`apps/`)
 
 - `apps/cli`: `verstaan --from eng --to afr [--register formal] [--context medical] [--trace] [--tier basic] "text"`.
-  Exit 0 on `ok`, 2 on `partial`, 3 on `no_parse`.
+  Exit 0 on `ok`, 2 on `partial`, 3 on `no_parse`. A `--from` or `--to` value that is not an
+  iso3 code, or names a language with no `meta.yaml` under `data/languages/`, exits 1 with
+  `verstaan: bad --from` (or `--to`) on stderr and nothing on stdout (ADR 0029). Owner ruling
+  2026-11-04: the CLI allows eng to afr only, so any other pair exits 1 with
+  `verstaan: only eng to afr is supported, not <from> to <to>` on stderr.
 
 ### 3.7 Atlas (`docs/factory/map.yaml`)
 

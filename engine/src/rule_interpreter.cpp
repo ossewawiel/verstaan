@@ -21,6 +21,7 @@
 #include <vector>
 
 #include "inflection_syntax.hpp"
+#include "verstaan/lang.hpp"
 #include "verstaan/rule_set.hpp"
 
 namespace verstaan {
@@ -162,6 +163,50 @@ std::vector<GrammarRule> read_grammar_file(const std::string& path) {
   return rules;
 }
 
+// The value of a top-level `iso3` mapping line, as YAML reads it: a space (or tab) after the colon,
+// an optional quote pair, and no trailing comment. Empty when the line is not that mapping.
+std::string iso3_value(std::string_view rest) {
+  if (rest.empty() || (rest.front() != ' ' && rest.front() != '\t')) {
+    return {};
+  }
+  rest = trim(strip_cr(rest));
+  if (rest.empty()) {
+    return {};
+  }
+  if (rest.front() == '"' || rest.front() == '\'') {
+    const std::size_t close = rest.find(rest.front(), 1);
+    return close == std::string_view::npos ? std::string{} : std::string(rest.substr(1, close - 1));
+  }
+  const std::size_t comment = rest.find(" #");
+  return std::string(trim(rest.substr(0, comment)));
+}
+
+// The language a store names in the top-level `iso3` key of its `meta.yaml` (ADR 0029). No value
+// when the file or the key is missing, or the value is not a code. An indented `iso3:` belongs to
+// a nested mapping or a block scalar, so only a line at column 0 counts. The folder name plays no
+// part.
+std::optional<Lang> read_store_lang(std::string_view store_root) {
+  std::string path(store_root);
+  path += "/meta.yaml";
+  const auto content = read_file(path);
+  if (!content) {
+    return std::nullopt;
+  }
+  static constexpr std::string_view kBom = "\xEF\xBB\xBF";
+  static constexpr std::string_view kIso3Prefix = "iso3:";
+  std::string_view remaining = *content;
+  if (remaining.starts_with(kBom)) {
+    remaining.remove_prefix(kBom.size());
+  }
+  while (!remaining.empty()) {
+    const std::string_view line = next_line(remaining);
+    if (line.starts_with(kIso3Prefix)) {
+      return lang_from_iso3(iso3_value(line.substr(kIso3Prefix.size())));
+    }
+  }
+  return std::nullopt;
+}
+
 // `store_root` and `file_name` are never interchangeable in practice -- every call site passes a
 // `data/languages/<iso3>` path and a grammar-file literal ("analysis.yaml", ...) -- but they share
 // a type, so clang-tidy cannot see that; NOLINT rather than a single-use wrapper type for two
@@ -186,6 +231,8 @@ RuleSet RuleSet::load(std::string_view from_store_root, std::string_view to_stor
                 std::string(from_store_root),
                 std::string(to_store_root)};
   rules.to_disambiguation_ = read_grammar_file(grammar_path(to_store_root, "disambiguation.yaml"));
+  rules.from_lang_ = read_store_lang(from_store_root);
+  rules.to_lang_ = read_store_lang(to_store_root);
   return rules;
 }
 
@@ -806,7 +853,7 @@ void RuleInterpreter::disambiguate(std::vector<Position>& positions, Trace& trac
 
 void RuleInterpreter::disambiguate_target(std::vector<Position>& positions, Lang target_language,
                                           Trace& trace) const {
-  const std::string prefix = std::string(detail::language_code(target_language)) + "-dis-";
+  const std::string prefix = iso3_of(target_language) + "-dis-";
   for (const GrammarRule& rule : rules_.to_disambiguation()) {
     apply_disambiguation_rule(rule, positions, trace, prefix);
   }

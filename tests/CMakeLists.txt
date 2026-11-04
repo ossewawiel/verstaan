@@ -9,6 +9,8 @@ add_executable(verstaan_tests
   unit/engine_test.cpp
   unit/golden_loader_test.cpp
   unit/generation_test.cpp
+  unit/lang_test.cpp
+  unit/language_pair_test.cpp
   unit/read_graph_test.cpp
   unit/rule_interpreter_test.cpp
   unit/tokeniser_test.cpp
@@ -24,6 +26,9 @@ verstaan_set_warnings(verstaan_tests)
 target_compile_definitions(verstaan_tests PRIVATE
   VERSTAAN_REPO_ROOT="${CMAKE_SOURCE_DIR}"
 )
+# language_pair_test.cpp runs the CLI binary (issue 28, rows L54 to L59).
+add_dependencies(verstaan_tests verstaan_cli)
+target_compile_definitions(verstaan_tests PRIVATE VERSTAAN_CLI_PATH="$<TARGET_FILE:verstaan_cli>")
 # golden_loader_test.cpp includes golden/row_loader.hpp (issue 202).
 target_include_directories(verstaan_tests PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/golden)
 

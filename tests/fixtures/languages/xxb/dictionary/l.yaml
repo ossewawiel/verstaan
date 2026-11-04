@@ -4,7 +4,7 @@
 - headword: lektu
   id: 7
   uw: "read(icl>interpret)"
-  features: {LEX: V, POS: VER, TNS: PRS, PAR: P0}
+  features: {LEX: V, POS: VER, TNS: PRS, PAR: M0}
   lang: xxb
   frequency: 0
   priority: 1
@@ -12,7 +12,7 @@
 - headword: libru
   id: 3
   uw: "book(icl>publication)"
-  features: {LEX: N, POS: NOU, NUM: SNG, PAR: P1}
+  features: {LEX: N, POS: NOU, NUM: SNG, PAR: M1}
   lang: xxb
   frequency: 0
   priority: 1

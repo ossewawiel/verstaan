@@ -76,8 +76,30 @@ META_COUNT_KEYS = (
     "test_rows",
 )
 
-# `[LEX:N, PAR:P1]:1` and `[LEX:D, ATT:$a]` inside a rule's lhs or rhs.
-FEATURE_IN_PATTERN = re.compile(r"\b([A-Z]{2,5}):([^,\]\s]+)")
+# `KEY=VALUE` inside a rule's lhs or rhs, in the engine's rule syntax: `+NUM=PLR`, `LEX=Q`,
+# `+att=%d`. A bare tag such as `N` or `PLR` is not a pair, and `PLR:=0>"ki";` is not either.
+FEATURE_IN_PATTERN = re.compile(r"\b([A-Za-z]{2,5})=([^,;)\s]+)")
+
+# SPEC.md §3.3: the kind of a rule, as it appears in a qualified id, `<iso3>-<kind>-<id>`.
+KIND_ABBREVIATION = {
+    "analysis.yaml": "ana",
+    "disambiguation.yaml": "dis",
+    "generation.yaml": "gen",
+    "inflection.yaml": "inf",
+    "subcategorisation.yaml": "sub",
+}
+
+
+# An id in the qualified form `<iso3>-<kind>-<id>`.
+QUALIFIED_ID = re.compile(r"^[a-z]{3}-[a-z]{3}-")
+
+
+def qualified_id(lang: str, file_name: str, rule_id: object) -> str:
+    """The id SPEC.md §3.3 names a rule by. An id that already carries `<iso3>-` is returned as is."""
+    text = str(rule_id)
+    if text.startswith(f"{lang}-"):
+        return text
+    return f"{lang}-{KIND_ABBREVIATION.get(file_name, '?')}-{text}"
 
 
 # --------------------------------------------------------------------------------------------
@@ -201,7 +223,7 @@ def check_grammar_rules(root: Path) -> list[str]:
                 if not isinstance(rule, dict):
                     errors.append(f"{rel}: rule is not a mapping")
                     continue
-                rule_id = rule.get("id", "?")
+                rule_id = qualified_id(lang, name, rule.get("id", "?"))
                 missing = RULE_KEYS - set(rule)
                 extra = set(rule) - RULE_KEYS
                 if missing:
@@ -217,8 +239,19 @@ def check_grammar_rules(root: Path) -> list[str]:
                     errors.append(f"{rel}: {rule_id}: empty comment")
                 if rule.get("source") != "original":
                     errors.append(f"{rel}: {rule_id}: source is not original")
-                if not str(rule.get("id") or "").startswith(f"{lang}-"):
-                    errors.append(f"{rel}: {rule_id}: id is not prefixed with {lang}-")
+                # The engine writes an analysis id to the trace as it stands, and adds
+                # `<iso3>-gen-`, `<iso3>-inf-` and `<iso3>-dis-` to the others itself, so an
+                # analysis id is qualified with its own language and any other id is bare. The
+                # split is stated in docs/factory/issues/28-test-cases.md (drafted store) and ADR 0029.
+                raw_id = str(rule.get("id") or "")
+                if name == "analysis.yaml" and not raw_id.startswith(f"{lang}-ana-"):
+                    errors.append(f"{rel}: {rule_id}: id is not prefixed with {lang}-ana-")
+                if name != "analysis.yaml" and QUALIFIED_ID.match(raw_id):
+                    errors.append(
+                        f"{rel}: {rule_id}: id is already qualified, the engine adds the prefix"
+                    )
+                if rule.get("conditions"):
+                    errors.append(f"{rel}: {rule_id}: conditions is not empty; the engine skips it")
     return errors
 
 
@@ -246,12 +279,49 @@ def _feature_uses(root: Path, lang: str):
         for rule in _records(path):
             if not isinstance(rule, dict):
                 continue
-            where = f"{where_file}: {rule.get('id', '?')}"
-            for feature, value in (rule.get("conditions") or {}).items():
-                yield where, str(feature), str(value)
+            where = f"{where_file}: {qualified_id(lang, name, rule.get('id', '?'))}"
             for side in ("lhs", "rhs"):
                 for feature, value in FEATURE_IN_PATTERN.findall(str(rule.get(side) or "")):
                     yield where, feature, value
+
+
+# Names the engine reads that no tagset declares: the sentinel of a clause end, the mark that a
+# word has run its paradigm, and the instruction that runs it.
+ENGINE_TAGS = frozenset({"STAIL", "inflected", "FLX"})
+
+# One term of a rule's lhs or rhs: an optional operator, then a name. `agt(` and `NS(` are relation
+# and node labels, `[ta]` is a literal word, `%x` is a variable.
+_TERM = re.compile(r"([\^+\-!?]*)(@?[A-Za-z][A-Za-z0-9]*)(\()?")
+_INFLECTION_TAGS = re.compile(r"(?:^|;)([^:;=]+):=")
+
+
+def _bare_tags(kind: str, text: str) -> list[str]:
+    """The tags a rule side writes bare: `N`, `PLR`, `^@pl`, `-NUM`, `FLX`. Pairs are checked apart."""
+    if kind == "inflection":
+        return [t for group in _INFLECTION_TAGS.findall(text) for t in group.split("&")]
+    text = re.sub(r"\[[^\]]*\]", "", text)  # literal words
+    text = re.sub(r"%[A-Za-z]+", "%", text)  # variables
+    text = FEATURE_IN_PATTERN.sub("", text)  # KEY=VALUE pairs
+    return [m.group(2) for m in _TERM.finditer(text) if not m.group(3)]
+
+
+def _tag_uses(root: Path, lang: str):
+    """Yield `(where, tag)` for every bare tag this language's rules write."""
+    for name in GRAMMAR_FILES:
+        path = root / lang / "grammar" / name
+        if not path.is_file():
+            continue
+        where_file = _rel(root, path)
+        for rule in _records(path):
+            if not isinstance(rule, dict):
+                continue
+            where = f"{where_file}: {qualified_id(lang, name, rule.get('id', '?'))}"
+            kind = name.removesuffix(".yaml")
+            for side in ("lhs", "rhs"):
+                if kind == "inflection" and side == "lhs":
+                    continue
+                for tag in _bare_tags(kind, str(rule.get(side) or "")):
+                    yield where, tag
 
 
 def check_features_resolve(root: Path) -> list[str]:
@@ -265,8 +335,12 @@ def check_features_resolve(root: Path) -> list[str]:
         for where, feature, value in _feature_uses(root, lang):
             if feature not in tagset:
                 errors.append(f"{where}: feature {feature} is not in {lang}/tagset.yaml")
-            elif not value.startswith(("$", "*")) and value not in tagset[feature]:
+            elif not value.startswith(("$", "*", "%")) and value not in tagset[feature]:
                 errors.append(f"{where}: {feature} value {value!r} is not in {lang}/tagset.yaml")
+        known = set(tagset) | {v for values in tagset.values() for v in values} | ENGINE_TAGS
+        for where, tag in _tag_uses(root, lang):
+            if tag not in known:
+                errors.append(f"{where}: tag {tag!r} is not in {lang}/tagset.yaml")
     return errors
 
 
@@ -535,7 +609,7 @@ def test_dictionary_fails_when_an_entry_loses_its_source(tree: Path):
 def test_dictionary_fails_when_an_entry_gains_an_unknown_key(tree: Path):
     path = tree / "xxb" / "dictionary" / "h.yaml"
     path.write_text(path.read_text(encoding="utf-8") + "  gloss: dog\n", encoding="utf-8")
-    assert_reports(check_dictionary_entries(tree), "hundo: unknown keys ['gloss']")
+    assert_reports(check_dictionary_entries(tree), "hundon: unknown keys ['gloss']")
 
 
 def test_dictionary_fails_when_an_entry_sits_in_the_wrong_shard(tree: Path):
@@ -552,8 +626,8 @@ def test_grammar_fails_when_a_rule_loses_its_comment(tree: Path):
     text = path.read_text(encoding="utf-8")
     path.write_text(
         text.replace(
-            '  comment: "Takes the noun before the verb as the agent and the noun after it'
-            ' as the object."\n',
+            '  comment: "Takes the noun before the verb as agent and the word after it'
+            ' as object."\n',
             '  comment: ""\n',
             1,
         ),
@@ -568,7 +642,7 @@ def test_grammar_fails_when_a_rule_loses_source_original(tree: Path):
     path.write_text(
         text.replace("  source: original\n", "  source: guessed\n", 1), encoding="utf-8"
     )
-    assert_reports(check_grammar_rules(tree), "xxb-gen-01: source is not original")
+    assert_reports(check_grammar_rules(tree), "xxb-gen-04: source is not original")
 
 
 def test_grammar_fails_on_a_kind_outside_spec_3_2(tree: Path):
@@ -587,6 +661,26 @@ def test_grammar_fails_when_a_kind_does_not_match_its_file(tree: Path):
     assert_reports(check_grammar_rules(tree), "kind 'analysis' does not match the file")
 
 
+def test_grammar_fails_when_an_analysis_id_is_not_qualified(tree: Path):
+    # The engine writes an analysis id to the trace as it stands.
+    path = tree / "xxa" / "grammar" / "analysis.yaml"
+    text = path.read_text(encoding="utf-8")
+    mutated = text.replace('- id: "xxa-ana-04"', '- id: "04"', 1)
+    assert mutated != text
+    path.write_text(mutated, encoding="utf-8")
+    assert_reports(check_grammar_rules(tree), "xxa-ana-04: id is not prefixed with xxa-ana-")
+
+
+def test_grammar_fails_when_a_generation_id_is_already_qualified(tree: Path):
+    # The engine adds `xxb-gen-` itself, so a qualified id would trace as `xxb-gen-xxb-gen-04`.
+    path = tree / "xxb" / "grammar" / "generation.yaml"
+    text = path.read_text(encoding="utf-8")
+    mutated = text.replace('- id: "04"', '- id: "xxb-gen-04"', 1)
+    assert mutated != text
+    path.write_text(mutated, encoding="utf-8")
+    assert_reports(check_grammar_rules(tree), "xxb-gen-04: id is already qualified")
+
+
 def test_features_fail_on_a_value_outside_the_tagset(tree: Path):
     path = tree / "xxa" / "dictionary" / "m.yaml"
     text = path.read_text(encoding="utf-8")
@@ -601,21 +695,88 @@ def test_features_fail_on_a_name_outside_the_tagset(tree: Path):
     assert_reports(check_features_resolve(tree), "feature GEN is not in xxb/tagset.yaml")
 
 
-def test_features_fail_on_a_rule_condition_outside_the_tagset(tree: Path):
+def test_grammar_fails_when_a_rule_has_conditions(tree: Path):
+    # The engine skips `conditions`, so a value there checks nothing. Every fixture rule holds [].
     path = tree / "xxa" / "grammar" / "inflection.yaml"
     text = path.read_text(encoding="utf-8")
-    path.write_text(text.replace("NUM: PLR", "NUM: DUAL", 1), encoding="utf-8")
-    assert_reports(check_features_resolve(tree), "xxa-inf-01: NUM value 'DUAL'")
+    mutated = text.replace("conditions: []", "conditions: {NUM: PLR}", 1)
+    assert mutated != text
+    path.write_text(mutated, encoding="utf-8")
+    assert_reports(check_grammar_rules(tree), "xxa-inf-M1: conditions is not empty")
+
+
+def test_features_fail_on_a_rule_rhs_outside_the_tagset(tree: Path):
+    path = tree / "xxa" / "grammar" / "generation.yaml"
+    text = path.read_text(encoding="utf-8")
+    mutated = text.replace("+NUM=PLR", "+NUM=DUAL", 1)
+    assert mutated != text
+    path.write_text(mutated, encoding="utf-8")
+    assert_reports(check_features_resolve(tree), "xxa-gen-04: NUM value 'DUAL'")
 
 
 def test_features_fail_on_a_rule_lhs_outside_the_tagset(tree: Path):
     path = tree / "xxb" / "grammar" / "analysis.yaml"
     text = path.read_text(encoding="utf-8")
+    mutated = text.replace('lhs: "(D,att,%d)({N|V},%n)"', 'lhs: "(D,att,%d)({N|Q},%n)"', 1)
+    assert mutated != text
+    path.write_text(mutated, encoding="utf-8")
+    assert_reports(check_features_resolve(tree), "xxb-ana-02: tag 'Q' is not in xxb/tagset.yaml")
+
+
+def _mutate(tree: Path, lang: str, name: str, old: str, new: str) -> None:
+    path = tree / lang / "grammar" / name
+    text = path.read_text(encoding="utf-8")
+    mutated = text.replace(old, new, 1)
+    assert mutated != text, f"{old!r} is not in {lang}/grammar/{name}"
+    path.write_text(mutated, encoding="utf-8")
+
+
+def test_tags_fail_on_a_misspelt_value_in_an_analysis_lhs(tree: Path):
+    _mutate(tree, "xxa", "analysis.yaml", '"(N,PLR,^@pl)"', '"(N,PLZ,^@pl)"')
+    assert_reports(check_features_resolve(tree), "xxa-ana-04: tag 'PLZ' is not in xxa/tagset.yaml")
+
+
+def test_tags_fail_on_a_value_no_feature_holds(tree: Path):
+    _mutate(
+        tree, "xxb", "analysis.yaml", '"(N,%s)({N|^LEX},%o)(V,%v)"', '"(Q,%s)({N|^LEX},%o)(V,%v)"'
+    )
+    assert_reports(check_features_resolve(tree), "xxb-ana-01: tag 'Q' is not in xxb/tagset.yaml")
+
+
+def test_tags_fail_on_a_misspelt_feature_name(tree: Path):
+    _mutate(tree, "xxa", "analysis.yaml", '"(D,att,%d)(N,%n)"', '"(D,attt,%d)(N,%n)"')
+    assert_reports(check_features_resolve(tree), "xxa-ana-02: tag 'attt' is not in xxa/tagset.yaml")
+
+
+def test_tags_fail_on_a_misspelt_value_in_an_inflection_rhs(tree: Path):
+    _mutate(tree, "xxa", "inflection.yaml", 'rhs: "PLR:=0>', 'rhs: "PLZ:=0>')
+    assert_reports(check_features_resolve(tree), "xxa-inf-M1: tag 'PLZ' is not in xxa/tagset.yaml")
+
+
+def test_tags_fail_on_a_misspelt_removal_in_a_generation_rhs(tree: Path):
+    _mutate(tree, "xxa", "generation.yaml", "-NUM,+NUM=PLR", "-NUMX,+NUM=PLR")
+    assert_reports(check_features_resolve(tree), "xxa-gen-04: tag 'NUMX' is not in xxa/tagset.yaml")
+
+
+@pytest.mark.parametrize("name", GRAMMAR_FILES)
+def test_grammar_fails_on_another_languages_prefix_in_every_grammar_file(tree: Path, name: str):
+    # One record with an id carrying xxb's prefix, in an xxa file. The record is otherwise sound.
+    kind = name.removesuffix(".yaml")
+    abbreviation = KIND_ABBREVIATION[name]
+    path = tree / "xxa" / "grammar" / name
     path.write_text(
-        text.replace('lhs: "[LEX:N]:1 [LEX:N]:2 [LEX:V]:3"', 'lhs: "[LEX:Q]:1"', 1),
+        LICENCE_PREFIX
+        + "x\n"
+        + f'- id: "xxb-{abbreviation}-04"\n'
+        + f"  kind: {kind}\n"
+        + '  lhs: ""\n'
+        + '  rhs: ""\n'
+        + "  conditions: []\n"
+        + '  comment: "A rule."\n'
+        + "  source: original\n",
         encoding="utf-8",
     )
-    assert_reports(check_features_resolve(tree), "xxb-ana-01: LEX value 'Q'")
+    assert_reports(check_grammar_rules(tree), f"xxb-{abbreviation}-04: id")
 
 
 def test_corpus_fails_when_a_sentence_is_dropped(tree: Path):
@@ -638,25 +799,25 @@ def test_meta_counts_fail_when_disk_and_meta_disagree(tree: Path):
     path = tree / "xxa" / "meta.yaml"
     text = path.read_text(encoding="utf-8")
     path.write_text(
-        text.replace("  dictionary_entries: 10", "  dictionary_entries: 11", 1), encoding="utf-8"
+        text.replace("  dictionary_entries: 15", "  dictionary_entries: 16", 1), encoding="utf-8"
     )
-    assert_reports(check_meta_counts(tree), "counts.dictionary_entries says 11, disk holds 10")
+    assert_reports(check_meta_counts(tree), "counts.dictionary_entries says 16, disk holds 15")
 
 
 def test_meta_counts_fail_when_a_rule_is_added_without_touching_meta(tree: Path):
     path = tree / "xxb" / "grammar" / "generation.yaml"
     path.write_text(
         path.read_text(encoding="utf-8")
-        + "- id: xxb-gen-04\n"
+        + '- id: "13"\n'
         + "  kind: generation\n"
-        + '  lhs: "mod(1,2)"\n'
-        + '  rhs: "[2] [1]"\n'
-        + "  conditions: {}\n"
+        + '  lhs: "cnt(%x;%y)"\n'
+        + '  rhs: "(%y)(%x)"\n'
+        + "  conditions: []\n"
         + '  comment: "Writes a modifier in front of the noun it modifies."\n'
         + "  source: original\n",
         encoding="utf-8",
     )
-    assert_reports(check_meta_counts(tree), "counts.generation_rules says 3, disk holds 4")
+    assert_reports(check_meta_counts(tree), "counts.generation_rules says 12, disk holds 13")
 
 
 def test_table_check_fails_when_a_row_disagrees_with_block_a(tree: Path):
@@ -685,12 +846,16 @@ def test_row_check_fails_when_that_one_row_is_changed(tree: Path):
 
 
 def test_row_check_fails_when_a_status_is_changed(tree: Path):
-    path = tree / "xxb" / "tests" / "basic.yaml"
+    # A09 is `partial` since the owner's ruling of 2026-11-04. Swap it for `ok`: the swap must
+    # change the file, or the check below proves nothing.
+    path = tree / "xxa" / "tests" / "basic.yaml"
     text = path.read_text(encoding="utf-8")
-    head = text[: text.index("- id: A13")]
-    tail = text[text.index("- id: A13") :]
-    path.write_text(head + tail.replace("status: no_parse", "status: ok", 1), encoding="utf-8")
-    assert_reports(check_row(tree, "A13"), "A13: status is 'ok', block A says 'no_parse'")
+    head = text[: text.index("- id: A09")]
+    tail = text[text.index("- id: A09") :]
+    swapped = head + tail.replace("status: partial", "status: ok", 1)
+    assert swapped != text
+    path.write_text(swapped, encoding="utf-8")
+    assert_reports(check_row(tree, "A09"), "A09: status is 'ok', block A says 'partial'")
 
 
 def test_table_check_fails_when_a_row_is_missing(tree: Path):

@@ -1,16 +1,18 @@
 # Licence: CC BY-SA 4.0. Source: invented fixture for engine tests, not the UNL Archive.
 # SPEC.md §4 header adapted: these records are original, so no data/archive/manifest.jsonl
 # line exists to point at.
-# One paradigm, PAR:P1. Notation.
-#   [FEAT:VAL, ...]:1   the base form and the features it must carry
-#   [1]                 the base form itself, with the suffix written after it
-# Generation reads a rule left to right. Analysis reads it right to left: it strips the suffix
-# and hands the attribute in `conditions` to the node. No base form in this fixture ends in a
-# suffix this file writes, so the reverse reading has exactly one result.
-- id: xxb-inf-01
+# One record per paradigm. The id is the PAR value of the words that take it; the engine adds
+# `<iso3>-inf-` in the trace.
+#   PLR:=0>"ki";       for this feature value, replace 0 trailing letters with ki
+# Only generation runs a paradigm: `!FLX` in a generation rule applies it, left to right.
+# The engine has no reverse inflection. Analysis finds a word form such as `hundon` as its own
+# dictionary entry, which carries `BF` (the base form) and `DEF: Y`, and an analysis rule turns
+# that feature into an attribute. Do not delete the form entries as redundant: without them
+# the word is unknown.
+- id: "M1"
   kind: inflection
-  lhs: "[LEX:N, PAR:P1]:1"
-  rhs: "[1]n"
-  conditions: {LEX: N, PAR: P1, ATT: "@def"}
-  comment: "Adds n to a noun the graph marks definite."
+  lhs: ""
+  rhs: "DEF:=0>\"n\";"
+  conditions: []
+  comment: "Adds n to a definite noun."
   source: original

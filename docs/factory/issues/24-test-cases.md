@@ -30,7 +30,7 @@ to put there. The `status` column is the `Status` value the `Result` must carry.
 
 `direction` reads `eng-afr` per this issue's acceptance criteria. The xxa/xxb fixture of issue 04
 writes the same field as `xxa->xxb`. Issue 26's loader has to accept both spellings, or one of the
-two files changes.
+two files changes. Issue 28 settled it: the runner accepts both (ADR 0029).
 
 ## How to read the rule ids
 
