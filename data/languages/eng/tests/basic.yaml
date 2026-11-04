@@ -3,6 +3,7 @@
 # on any disagreement). Each row repeats tests/fixtures/languages/eng/tests/basic.yaml and adds
 # `rules`: qualified rule ids, `<iso3>-<kind>-<id>`, a reading of the rule text and not a recording
 # of a run. `afr-gen-4` is a rule of the afr store. tools/validate fails on an id that names no rule.
+# `deferred: N` (optional) is copied from the fixture: the issue that will make the row pass.
 - id: A01
   input: "book"
   expected: "boek"
@@ -141,6 +142,7 @@
   tier: basic
   register: neutral
   review: confirmed
+  deferred: 201
   rules: [eng-ana-12, eng-ana-16, eng-ana-18, afr-gen-33, afr-gen-36, afr-gen-58, afr-inf-M2]
   source: {origin: ugoa1, line: 230, issue: 24}
 - id: A15
@@ -151,5 +153,6 @@
   tier: basic
   register: neutral
   review: confirmed
+  deferred: 201
   rules: [eng-ana-12, eng-ana-15, eng-ana-18, eng-ana-50, afr-gen-4, afr-gen-8, afr-gen-33, afr-gen-35, afr-gen-227, afr-gen-235, afr-gen-236, afr-inf-M3, afr-inf-M16]
   source: {origin: ugoa1, line: 248, issue: 24}

@@ -8,7 +8,6 @@ add_executable(verstaan_tests
   unit/engine_status_test.cpp
   unit/engine_test.cpp
   unit/generation_test.cpp
-  unit/pipeline_fixed_set_test.cpp
   unit/read_graph_test.cpp
   unit/rule_interpreter_test.cpp
   unit/tokeniser_test.cpp
@@ -29,9 +28,24 @@ gtest_discover_tests(verstaan_tests
   PROPERTIES LABELS fast
 )
 
-# Placeholders for the `golden`, `equivalence` and `tier` CTest labels (docs/standards/testing.md).
-# Real content lands with the compiler, the corpus and the tier budgets; these keep the labels
-# usable now. Not in scope for issue 02: any translation behaviour.
+# Golden loader (issue 26): one CTest case per row of every fixture YAML and golden text file.
+# The checkout root is needed at compile time for the fixture files and the real eng/afr stores.
+add_executable(golden_tests golden/loader_test.cpp)
+target_link_libraries(golden_tests PRIVATE verstaan_core GTest::gtest GTest::gtest_main)
+target_compile_features(golden_tests PRIVATE cxx_std_20)
+target_compile_definitions(golden_tests PRIVATE VERSTAAN_REPO_ROOT="${CMAKE_SOURCE_DIR}")
+verstaan_set_warnings(golden_tests)
+gtest_discover_tests(golden_tests PROPERTIES LABELS golden)
+
+# Held-out rows: same shape, own label. Run at the gate and in CI only.
+add_executable(held_out_tests held-out/held_out_test.cpp)
+target_link_libraries(held_out_tests PRIVATE verstaan_core GTest::gtest GTest::gtest_main)
+target_compile_features(held_out_tests PRIVATE cxx_std_20)
+target_compile_definitions(held_out_tests PRIVATE VERSTAAN_REPO_ROOT="${CMAKE_SOURCE_DIR}")
+verstaan_set_warnings(held_out_tests)
+gtest_discover_tests(held_out_tests PROPERTIES LABELS held-out)
+
+# Placeholders for the `equivalence` and `tier` CTest labels (docs/standards/testing.md).
 function(verstaan_add_placeholder_test name label)
   add_executable(${name} ${label}/placeholder_test.cpp)
   target_compile_features(${name} PRIVATE cxx_std_20)
@@ -40,6 +54,5 @@ function(verstaan_add_placeholder_test name label)
   set_tests_properties(${name} PROPERTIES LABELS ${label})
 endfunction()
 
-verstaan_add_placeholder_test(golden_placeholder_test golden)
 verstaan_add_placeholder_test(equivalence_placeholder_test equivalence)
 verstaan_add_placeholder_test(tier_placeholder_test tier)

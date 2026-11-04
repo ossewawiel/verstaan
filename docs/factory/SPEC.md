@@ -76,7 +76,7 @@ grammar/subcategorisation.yaml
 grammar/disambiguation.yaml
 tagset.yaml                feature names and allowed values
 corpus/<name>.yaml         sentence, unl, source
-tests/<name>.yaml          input, expected, direction, tier, register
+tests/<name>.yaml          input, expected, direction, tier, register, deferred (optional)
 meta.yaml                  iso1, iso3, name, licence, counts, last_import
 ```
 

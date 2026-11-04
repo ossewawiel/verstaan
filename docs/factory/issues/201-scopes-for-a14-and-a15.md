@@ -63,3 +63,4 @@ ADR 0026: the owner.
 - [ ] Issue 182's end-to-end A15 test is no longer skipped, and it passes.
 - [ ] Each attribute, relation and scope's rule id appears in `Result::trace`.
 - [ ] `ctest -L fast` and `python -m tools.validate --changed` are green.
+- [ ] The `deferred: 201` key is removed from A14 and A15 in both `tests/fixtures/languages/eng/tests/basic.yaml` and `data/languages/eng/tests/basic.yaml`.
