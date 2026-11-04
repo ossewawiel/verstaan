@@ -30,9 +30,11 @@ paste the failure in the hand-off.
 ## Acceptance criteria
 
 - The placeholder is gone.
-- All 248 eng sentences and the xxa/xxb rows are diffed under the label `equivalence`, on the tier
-  quest 27's ADR names.
-- The diff covers `text`, `unl` and `trace`, and SPEC §3.4 says so.
+- All 248 eng sentences are diffed against `phone`, and the xxa/xxb rows against the fixture build, under
+  the label `equivalence`. The `phone` case carries the label `data` too, and it builds through
+  `python -m tools.compiler --tier phone` (ADR 0028).
+- The diff covers `text`, `unl`, `trace` and `status`, and SPEC §3.4 says so.
+- The rows of `27-test-cases.md` with quest 31 are turned into tests.
 - The red proof is pasted in the hand-off.
 - The hand-off states the suite time.
 - `ctest --preset linux-gcc -L fast` passes.
@@ -45,6 +47,7 @@ Fixing a sentence both back ends translate wrongly. File it as its own quest.
 ## Done when
 
 - [ ] `placeholder_test.cpp` is gone.
+- [ ] `grep -n status tests/equivalence/*.cpp` finds the fourth field in the diff.
 - [ ] All 248 eng sentences and the xxa/xxb rows are diffed under label `equivalence`.
 - [ ] The red proof is shown.
 - [ ] The suite time is stated.

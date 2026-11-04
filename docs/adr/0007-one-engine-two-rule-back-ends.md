@@ -23,3 +23,4 @@ failure.
   faster and smaller, never to extend it.
 - Checkpoint 3 in `PLAN.md` §6.3 is the first time generated tables replace runtime tables in a
   build, because that is where a silent divergence would start.
+- ADR 0028 narrows "generated code and tables" to tables, and adds `status` to the diff.

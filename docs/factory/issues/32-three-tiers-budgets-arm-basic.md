@@ -29,7 +29,12 @@ is 4 because the presets are a build contract.
 
 ## Acceptance criteria
 
-- Three tiers configure and build, each as quest 27's ADR says.
+- Three tiers configure and build, each as quest 27's ADR says: `basic` from its committed files, `phone`
+  and `connected` through `python -m tools.compiler --tier <name>` and `VERSTAAN_TIERS`.
+- `phone`'s budget test carries the label `data`. `connected` has no budget to fail, so this quest records its
+  figure and fails on nothing. It holds no corpus table (owner's ruling, ADR 0028).
+- No row of `27-test-cases.md` names this quest, because quest 29 owns the tier route. This quest runs rows
+  T91 to T94 on all three tiers and names the result in its hand-off.
 - `tests/tier/` under label `tier` replaces the placeholder and fails over budget.
 - Red proof: a budget set below the measured figure fails the test. Paste the failure.
 - `arm-basic` cross-builds, and `file` on the binary prints `ARM aarch64`.

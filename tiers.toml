@@ -1,0 +1,56 @@
+# SPDX-License-Identifier: MPL-2.0
+# What each tier holds (SPEC.md §3.5, §7; ADR 0006, ADR 0028). tools/compiler reads this file.
+#
+# `n` counts ranked headwords per language, never entries. Pinned headwords take no ranked place.
+# The rank, the pins and the failure when `n` falls below a language's unpinned partner headwords
+# are in SPEC.md §3.5.
+# `ram_budget_mb` is an integer or the word "unbounded". M4 measures it on x86-64 only (ADR 0027).
+# `committed` says whether engine/generated/<name>/ goes in git. An uncommitted tier builds with
+# `python -m tools.compiler --tier <name>`, then CMake.
+
+[tiers.basic]
+languages = ["eng", "afr"]
+dictionary = "top_n"
+n = 30000
+target = "Pi Zero 2 W, ARMv8"
+ram_budget_mb = 64
+committed = true
+
+[tiers.phone]
+languages = ["eng", "afr"]
+dictionary = "full"
+target = "Android/iOS via CLI first"
+ram_budget_mb = 256
+committed = false
+
+# "all" means every store under data/languages/. At M4 those are eng and afr, so its tables equal
+# phone's. It holds no corpus table: corpora arrive when something reads them (SPEC.md §7).
+[tiers.connected]
+languages = "all"
+dictionary = "full"
+target = "x86-64 service"
+ram_budget_mb = "unbounded"
+committed = false
+
+# Not a tier. The xxa/xxb pair, compiled on every branch. Its library takes basic's shape.
+[fixture]
+languages = ["xxa", "xxb"]
+store_root = "tests/fixtures/languages"
+dictionary = "full"
+committed = true
+
+# A branch that changes a path under one of these prefixes compiles the real stores. Every other
+# branch compiles only [fixture]. The list holds both store readers. Quest 210 moves
+# read_grammar_file out of rule_interpreter.cpp and replaces that line. Quest 30 adds the table
+# reader it writes.
+[real_stores]
+compile_when_changed = [
+  "data/languages/",
+  "engine/generated/basic/",
+  "engine/src/dictionary_lookup.cpp",
+  "engine/src/rule_interpreter.cpp",
+  "tests/equivalence/",
+  "tests/golden/basic/",
+  "tiers.toml",
+  "tools/compiler/",
+]

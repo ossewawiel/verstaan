@@ -42,6 +42,7 @@ public API, so one ADR records it. The checkpoint is 4 because `engine/include/`
 - Row ids stay unique across languages, shown by a test.
 - `docs/standards/testing.md`'s sentence about skipped rows is updated.
 - SPEC §3.4 matches the new `Lang`.
+- `Lang` maps from an iso3 code, because generated tables key each language by iso3 (ADR 0028).
 - `ctest --preset linux-gcc -L fast` passes.
 - `python -m tools.validate --changed` exits 0.
 

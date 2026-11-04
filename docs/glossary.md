@@ -57,6 +57,10 @@ term here instead, with the file that defines it.
 | Link order | The tree pass's match order for a link term: by the scope's place in visit order, then graph order. | ADR 0017 |
 | Tier | A compile-time build profile: `basic`, `phone`, `connected`. | ADR 0006 |
 | Fixture pair | `xxa` and `xxb`, two invented languages used only for engine tests. | `docs/standards/testing.md` |
+| Fixture build | The fixture pair compiled into `engine/generated/fixture/`. It is no tier, and every branch compiles it. | ADR 0028 |
+| Partner headword | A headword with at least one entry whose non-empty UW is also a UW in the other language of a tier's pair. | ADR 0028 |
+| Capitalised headword | A headword whose first character is Unicode `Lu` and which holds no space. The `basic` tier always keeps it. | ADR 0028 |
+| Fixed-set row | A row with `tier: basic` under `data/languages/<iso3>/tests/`. Its words stay in the `basic` tier whatever their rank. | ADR 0028 |
 | Reference set | The well-resourced archive languages used as models when drafting rules: eng first, then deu, fra, spa. | `.claude/agents/rule-author.md` |
 
 ## Factory and game

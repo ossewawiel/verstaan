@@ -3,7 +3,7 @@ issue: 210
 title: "Engine::load reads the store once and reports a failure"
 milestone: Side
 status: open
-depends_on: [28, 213]
+depends_on: [27, 28, 213]
 agent: rule-author
 agents: [rule-author, test-writer, implementer]
 model: opus
@@ -63,6 +63,12 @@ of damage. Only the `meta.yaml` counts can catch it.
   `meta.yaml` counts, in a test.
 - `engine/CLAUDE.md:7` and the code agree on where I/O lives.
 - SPEC §3.4 and §3.6 match the load failure and its exit code.
+- `read_grammar_file` moves out of `engine/src/rule_interpreter.cpp`, so interpreter changes leave the
+  real-compile list (ADR 0028, owner's ruling). In the same commit, `tiers.toml`'s
+  `compile_when_changed` drops `engine/src/rule_interpreter.cpp` and names the new file, the pytest
+  and row T114 of `27-test-cases.md` follow, and any other store reading this quest moves stays on the list.
+- The load failure has a form a generated back end can return for a tier its binary did not link (row
+  T63 of `27-test-cases.md`).
 - The hand-off states the suite time before and after, and whether the 60 s target is passed.
 - `ctest --preset linux-gcc -L fast` passes.
 - `python -m tools.validate --changed` exits 0.
@@ -76,6 +82,7 @@ The validator's refusal of unreadable stores: quest 211. The cost bound: quest 2
 - [ ] A missing or corrupt grammar file is a load failure, in a test per variant.
 - [ ] The CLI reports a load failure with its own exit code.
 - [ ] `translate` opens no file.
+- [ ] `grep -n read_grammar_file engine/src/rule_interpreter.cpp` finds nothing, and `grep -n rule_interpreter tiers.toml` finds nothing.
 - [ ] `engine/CLAUDE.md:7` and the code agree on where I/O lives; SPEC §3.4 and §3.6 match.
 - [ ] The ADR is accepted, and the suite time is stated before and after.
 - [ ] `ctest --preset linux-gcc -L fast` and `python -m tools.validate --changed` are green.

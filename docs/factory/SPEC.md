@@ -90,8 +90,12 @@ the end of a run.
 
 ### 3.4 Engine (`engine/`)
 
-- C++20, `-Wall -Wextra -Werror`, no exceptions across the public API, no RTTI needed, no
-  dynamic allocation after `Engine::load()` in the `basic` tier.
+- C++20, `-Wall -Wextra -Werror`, no exceptions across the public API, no RTTI needed.
+- `basic` tier, no allocation to read a table after `Engine::generated(Tier::basic)` returns (ADR
+  0028). Dictionary arrays are `static const`, with constant initialisation. A dictionary read returns
+  views. Load parses each rule's text once. `translate` opens no file, parses no rule text, builds no index
+  and fills no cache. `translate` still allocates its working state (forest, trace, `Result`) and
+  frees it on return; §7's RAM budget bounds the peak. `Result` keeps its shape.
 - Public API (`engine/include/verstaan/engine.hpp`):
   ```cpp
   struct Options { Lang from; Lang to; Register reg = Register::neutral; Context ctx = Context::none; };
@@ -110,16 +114,49 @@ the end of a run.
 - `Trace` lists every rule fired in order. The CLI `--trace` flag prints it. This is the audit trail.
   `TraceEntry::event` is `fired` for a firing; the tree pass also writes `capped` and
   `unsupported` entries (ADR 0017).
-- Two rule back ends, one semantics (ADR 0007). `tests/equivalence/` runs every corpus sentence
-  through both and diffs `text` and `unl`.
+- Two rule back ends, one semantics (ADR 0007). Both run the same `RuleInterpreter`; generated
+  tables hold rule text, not rule code (ADR 0028). `tests/equivalence/` diffs `text`, `unl`, `trace`
+  and `status` between the runtime back end and generated tables: the 248 eng corpus sentences on
+  `phone`, the xxa/xxb rows on the fixture build. It never diffs `basic`, which holds fewer words.
+  Golden rows test `basic` (quest 30).
 
 ### 3.5 Compiler (`tools/compiler`)
 
-- Input: store + `tiers.toml` (which languages, which dictionary shards, size caps per tier).
-- Output: `engine/generated/<tier>/{tables.cpp, tables.hpp, rules.cpp}` and
-  `tests/golden/<tier>/*.txt`. Header of every generated file: source hash, tier, date,
+- Input: store + `tiers.toml` (languages, dictionary, `n`, budget, `committed` per tier; the
+  `[fixture]` build; the paths that compile the real stores).
+- Output: `engine/generated/<tier>/`: `tables_<iso3>_{pool,features,rows,index}.cpp` per language,
+  `rules.cpp`, `tables.cpp`, `tables.hpp`. `engine/generated/fixture/` has the same form, from the
+  xxa/xxb pair. `tests/golden/<tier>/*.txt` only for a committed tier. Header of every generated file:
+  source hash, tier, date,
   `// GENERATED — do not edit. Licence: CC BY-SA 4.0 (data). See data/LICENSE.`
-- Builds as static library `verstaan_data_<tier>`. `engine/` links it. ADR 0003.
+- `rules.cpp`: one array per language and grammar file. One row per rule, `{id, kind, lhs, rhs,
+  comment}`, byte for byte, in file order. The array names the list, not `kind` or `id`. No rule code
+  (ADR 0028).
+- Per language: rows `{headword, uw, features, id, frequency, priority}` in store order, shard `a` to
+  `z` then file order, with entries that differ only in `source` all kept. Strings sit in one pool of
+  `uint64_t` words; rows hold byte offsets. One index by headword, one by UW, each keeping store order.
+  An empty UW is not in the UW index. No `source`.
+- `top_n` selection, per language (ADR 0028). Pins are always kept and take no ranked place: every
+  headword with a closed-class record, every headword a fixed-set row needs, every capitalised
+  headword. Capitalised: first character is Unicode `Lu`, and no space (owner, 2026-11-04). Rank the
+  rest: partner headwords first, then highest `frequency` of the headword's entries, then lowest UTF-8
+  bytes. Keep the first `n`. A partner headword has an entry with a non-empty UW that is also a UW in
+  the pair's other language. A kept headword keeps every entry. Fail, writing nothing, when `n` is
+  below a language's count of partner headwords that no pin holds.
+- `engine/include/verstaan/generated_tables.hpp` holds the row structs and declares
+  `generated_tables()`. `tables.cpp` implements it. `Engine::generated` sits in its own source file,
+  so a binary that never calls it links no data library.
+- Builds as static library `verstaan_data_<tier>`. `engine/` links it. One binary links one. The
+  fixture library answers `Tier::basic`. Any other unlinked tier is a load failure. ADR 0003, ADR 0028.
+- Table files compile one at a time: `JOB_POOL_COMPILE`, a pool of depth 1.
+- `python -m tools.compiler --all-tiers` writes the fixture build and every tier with
+  `committed = true`. `--tier <name>` writes one tier. `--changed --base <ref>` writes the fixture
+  build, and also every tier when the branch changes a path in `[real_stores].compile_when_changed`.
+  A `<ref>` that does not resolve fails. The list holds both runtime store readers and the table reader.
+- Git holds `engine/generated/fixture/`, `engine/generated/basic/` and `tests/golden/basic/`. `phone`
+  and `connected` are ignored. CMake's configure fails, naming the `--tier` command, when
+  `VERSTAAN_TIERS` names a tier whose files are absent. If MSVC cannot build `basic`, its leg sets
+  `VERSTAAN_TIERS=fixture` (owner, 2026-11-04).
 
 ### 3.6 Applications (`apps/`)
 
@@ -161,13 +198,17 @@ the end of a run.
 |---|---|---|
 | Auto-fix | `clang-format -i`, `ruff format` | never block |
 | Fast | `cmake --build build --target verstaan_core && ctest --test-dir build -L fast` and `python -m tools.validate --changed` | pass before the session may stop |
-| Full | `/gate`: fast + `ctest` all + `clang-tidy` + equivalence + all tiers configure and build + `python -m tools.validate --changed --base origin/main` + pytest | pass before a PR; writes the stamp |
+| Full | `/gate`: fast + `ctest` all + `clang-tidy` + equivalence + committed tiers configure and build + `python -m tools.compiler --changed --base origin/main`, then `git status --porcelain engine/generated/ tests/golden/` is empty + `python -m tools.validate --changed --base origin/main` + pytest | pass before a PR; writes the stamp |
 
 `--changed` finds the files a branch touched, then validates every store one of those files sits
 in, whole — touching one file in a store validates every file beside it, not the touched file
 alone. `--all`, the full sweep of every store, is not a gate step. It is run by hand for
 deliberate data work; the archive is CC BY-SA data, not generated code, and is not a merge
 blocker for a branch that never touches it (issue 168).
+
+A branch that changes a path in `tiers.toml`'s `[real_stores].compile_when_changed` also compiles the
+real stores, builds `phone` and `connected`, and runs the 248-sentence equivalence diff. In CI that is
+the `data` job, a pass when skipped. It fails if the `phone` case is not registered (ADR 0028).
 
 Never pipe a gate into `head`, `tail` or `grep` and then read the exit code.
 Prove a gate fails before trusting it (`docs/standards/testing.md`).
@@ -199,8 +240,8 @@ github_issue: null      # written only by tools/factory/mirror_github.py (issue 
 
 ## 7. Tiers
 
-| Tier | Languages | Dictionary | Target | RAM budget |
-|---|---|---|---|---|
-| basic | 2 chosen at build | top-N by frequency, N from `tiers.toml` | Pi Zero 2 W, ARMv8 | 64 MB total, measured on x86-64 until quest 205 runs it on a Pi (ADR 0027) |
-| phone | any set | full | Android/iOS via CLI first | 256 MB |
-| connected | all | full + corpora | x86-64 service | unbounded |
+| Tier | Languages | Dictionary | Target | In git | RAM budget |
+|---|---|---|---|---|---|
+| basic | 2 chosen at build | top-N headwords, partners first, N from `tiers.toml`; pins and every capitalised headword added (§3.5, ADR 0028) | Pi Zero 2 W, ARMv8 | yes | 64 MB total, measured on x86-64 until quest 205 runs it on a Pi (ADR 0027) |
+| phone | any set | full | Android/iOS via CLI first | no, `--tier phone` | 256 MB |
+| connected | all | full; corpora arrive when something reads them | x86-64 service | no, `--tier connected` | unbounded |

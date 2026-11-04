@@ -29,6 +29,12 @@ edit under `engine/generated/` fails step 6, and a changed table fails step 5.
 ## Acceptance criteria
 
 - `gate.yml` has no step 6 skip, and runs `ctest -L equivalence` and `ctest -L tier` as real lines.
+- Step 6 in `gate.yml` runs `python -m tools.compiler --changed --base <pull request base SHA>`, then fails
+  when `git status --porcelain engine/generated/ tests/golden/` prints anything.
+- The `data` job runs on the paths in `tiers.toml`'s `compile_when_changed`. It compiles the real stores,
+  builds `phone` and `connected`, runs the label `data`, and passes when skipped.
+- The rows of `27-test-cases.md` with quest 203 are turned into tests, and it fails if the `phone` case
+  is not registered (row T79). Paste the failure.
 - `gate.md` and `gate_full.sh` carry no skip for steps 5 or 6.
 - The gate names `linux-clang` for step 5 on Linux in its own text.
 - Red proof for step 6: a hand edit under `engine/generated/` fails. Paste the failure.
@@ -47,6 +53,7 @@ The include-boundary lint and coverage floor: quest 206. Running on a Pi: quest 
 - [ ] `grep -n "does not exist yet (M4)" .github/workflows/gate.yml` finds nothing.
 - [ ] `gate.yml` contains `-L equivalence` and `-L tier` lines that run.
 - [ ] Each red proof is pasted.
+- [ ] `grep -n 'status --porcelain engine/generated/' .github/workflows/gate.yml` finds the step 6 check.
 - [ ] CI has an ARM leg for `arm-basic`.
 - [ ] The docs-branch and data-branch runs are named in the hand-off, each from a real run.
 - [ ] `ctest --preset linux-gcc -L fast` and `python -m tools.validate --changed` are green.

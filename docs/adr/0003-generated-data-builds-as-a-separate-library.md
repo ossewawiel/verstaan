@@ -24,3 +24,4 @@ copies generated content into engine source. Generated files are never edited by
 - A shipped binary carries two licences, and a `NOTICE` file in each app names both.
 - `.gitignore` does not exclude `engine/generated/`; committed generated output is how a tier
   build is reproducible without Python. The compiler's full gate check regenerates and diffs.
+  ADR 0028 narrows this to the fixture build and `basic`.
