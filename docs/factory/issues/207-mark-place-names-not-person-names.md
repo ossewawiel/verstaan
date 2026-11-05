@@ -2,15 +2,15 @@
 issue: 207
 title: "A place name with no record is marked and a person's name is not"
 milestone: Side
-status: in-progress
+status: done
 depends_on: []
 agent: rule-author
 agents: [rule-author, test-writer, implementer]
 model: opus
 effort: high
 checkpoint: 4
-commit: null
-worktree: .worktrees/side-207-mark-place-names-not-person-names
+commit: 375e740
+worktree: null
 github_issue: 333
 ---
 ## What
