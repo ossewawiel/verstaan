@@ -2,14 +2,14 @@
 issue: 207
 title: "A place name with no record is marked and a person's name is not"
 milestone: Side
-status: open
+status: done
 depends_on: []
 agent: rule-author
 agents: [rule-author, test-writer, implementer]
 model: opus
 effort: high
 checkpoint: 4
-commit: null
+commit: 375e740
 worktree: null
 github_issue: 333
 ---
@@ -114,8 +114,8 @@ exists, the name translates. This quest adds only `Geneva`'s English record.
 ## Done when
 
 - [x] The owner has ruled on the mechanism (2026-11-04).
-- [ ] The ADR is accepted.
-- [ ] A09 passes without `deferred` in both `basic.yaml` copies, and A13 still passes.
-- [ ] The ADR gives A15's name node, and states the Brisbane output.
-- [ ] Every F2 input gives the output the ADR names.
-- [ ] `ctest --preset linux-gcc -L fast` and `python -m tools.validate --changed` are green.
+- [x] The ADR is accepted.
+- [x] A09 passes without `deferred` in both `basic.yaml` copies, and A13 still passes.
+- [x] The ADR gives A15's name node, and states the Brisbane output.
+- [x] Every F2 input gives the output the ADR names.
+- [x] `ctest --preset linux-gcc -L fast` and `python -m tools.validate --changed` are green.

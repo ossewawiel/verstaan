@@ -94,11 +94,16 @@ TEST(engine_status, A13NamesEnterTheGraphAsQuotedLiterals) {
   EXPECT_TRUE(has_uw(result, "\"Mary\""));
 }
 
-TEST(engine_status, A09GenevaIsALiteralAndTheRowIsOk) {
+// C12 (docs/factory/issues/207-test-cases.md), owner ruling 2026-11-04: a place is a record. `Geneva`
+// has an English record, UW 500004419, and Afrikaans has none, so the word shows marked.
+TEST(engine_status, C12_a09_geneva_is_a_record_with_no_afr_entry_so_it_is_marked_and_partial) {
   const Result result = EngToAfrEngine().translate("a book about Geneva",
                                                    Options{.from = Lang::eng, .to = Lang::afr});
-  EXPECT_TRUE(has_uw(result, "\"Geneva\""));
-  EXPECT_EQ(result.status, Status::ok);
+  EXPECT_FALSE(has_uw(result, "\"Geneva\""));
+  ASSERT_EQ(result.unl.nodes.size(), 2U);
+  EXPECT_EQ(result.unl.nodes[1].uw, "500004419");
+  EXPECT_EQ(result.text, "'n boek oor ⟦Geneva⟧");
+  EXPECT_EQ(result.status, Status::partial);
 }
 
 TEST(engine_status, SentenceInitialTheStillResolvesThroughTheDictionary) {
@@ -353,17 +358,17 @@ TEST(engine_status, R03_a08_carries_no_plc_and_rules_five_and_154_stay_silent) {
 
 TEST(engine_status, R04_a09_a_book_about_geneva_has_the_cnt_relation) {
   const Result result = TranslateEng("a book about Geneva");
-  EXPECT_EQ(result.status, Status::ok);
+  EXPECT_EQ(result.status, Status::partial);
   ASSERT_EQ(result.unl.nodes.size(), 2U);
   EXPECT_EQ(result.unl.nodes[0].uw, "102870092");
   EXPECT_EQ(result.unl.nodes[0].attributes, std::vector<std::string>{"@indef"});
-  EXPECT_EQ(result.unl.nodes[1].uw, "\"Geneva\"");
+  EXPECT_EQ(result.unl.nodes[1].uw, "500004419");
   ASSERT_EQ(result.unl.relations.size(), 1U);
   EXPECT_EQ(result.unl.relations[0].label, "cnt");
   EXPECT_EQ(result.unl.relations[0].from, 0U);
   EXPECT_EQ(result.unl.relations[0].to, 1U);
-  EXPECT_TRUE(TraceStartsWith(result.trace, {"4"}));
-  EXPECT_EQ(CountFired(result.trace, "182"), 1U);
+  EXPECT_GE(CountFired(result.trace, "11"), 1U);  // 207: eng-dis-11 replaces eng-dis-4 here
+  EXPECT_EQ(CountRule(result.trace, "182"), 0U);
   EXPECT_EQ(CountFired(result.trace, "134"), 1U);
 }
 
@@ -513,20 +518,20 @@ TEST(engine_status, N15_determiner_disambiguation_stays_silent_on_a02_a03_a07) {
   }
 }
 
-TEST(engine_status, N16_a09_a_book_about_geneva_writes_oor_and_the_name_unmarked) {
-  // Owner ruling D1, 2026-11-03: A09 end to end is `'n boek oor Geneva`, status ok.
+TEST(engine_status, N16_a09_a_book_about_geneva_writes_oor_and_marks_the_place) {
+  // Owner ruling 2026-11-04 (issue 207, C12): A09 end to end is `'n boek oor ⟦Geneva⟧`, partial.
   const Result result = TranslateEng("a book about Geneva");
-  EXPECT_EQ(result.status, Status::ok);
-  EXPECT_EQ(result.text, "'n boek oor Geneva");
-  EXPECT_EQ(result.text.find("⟦"), std::string::npos);
+  EXPECT_EQ(result.status, Status::partial);
+  EXPECT_EQ(result.text, "'n boek oor ⟦Geneva⟧");
+  EXPECT_NE(result.text.find("⟦"), std::string::npos);
   EXPECT_TRUE(Fired(result, "afr-gen-36"));
 }
 
 // P04 (docs/factory/issues/182-test-cases.md), owner ruling D1: A09 end to end.
-TEST(engine_status, P04_a09_a_book_about_geneva_gives_oor_and_status_ok) {
+TEST(engine_status, P04_a09_a_book_about_geneva_gives_oor_and_status_partial) {
   const Result result = TranslateEng("a book about Geneva");
-  EXPECT_EQ(result.text, "'n boek oor Geneva");
-  EXPECT_EQ(result.status, Status::ok);
+  EXPECT_EQ(result.text, "'n boek oor ⟦Geneva⟧");
+  EXPECT_EQ(result.status, Status::partial);
   ExpectFired(result, {"afr-gen-4", "afr-gen-36"});
 }
 
@@ -730,15 +735,16 @@ TEST(engine_status, K08_a12_a_very_beautiful_car_is_n_baie_mooi_motor) {
   ExpectFired(result, {"afr-gen-8", "afr-gen-36", "afr-gen-42", "afr-gen-201"});
 }
 
+// K09 is C45 and C51 (207): `Geneva` is a record, so rule 182 stays silent.
 TEST(engine_status, K09_book_geneva_makes_the_noun_the_head_of_mod) {
   const Result result = TranslateEng("book Geneva");
   ASSERT_EQ(result.unl.nodes.size(), 2U);
   EXPECT_EQ(result.unl.nodes[0].uw, "102870092");
   EXPECT_TRUE(result.unl.nodes[0].attributes.empty());
-  EXPECT_EQ(result.unl.nodes[1].uw, "\"Geneva\"");
+  EXPECT_EQ(result.unl.nodes[1].uw, "500004419");
   EXPECT_TRUE(result.unl.nodes[1].attributes.empty());
   ExpectRelations(result, {{"mod", 0, 1}});
-  EXPECT_EQ(CountRule(result.trace, "182"), 1U);
+  EXPECT_EQ(CountRule(result.trace, "182"), 0U);
   EXPECT_EQ(CountRule(result.trace, "183"), 1U);
   EXPECT_EQ(CountRule(result.trace, "172"), 1U);
   EXPECT_EQ(CountRule(result.trace, "10"), 0U);

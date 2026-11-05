@@ -27,7 +27,7 @@
   lhs: "([about],^POS=PRE)(^LEX,^[.],^[,],^[!],^[?],^[;],^[:])"
   rhs: "0"
   conditions: []
-  comment: "Strikes every reading of about but the preposition when a word the dictionary does not hold follows, as in A09 about Geneva; a punctuation mark does not count"
+  comment: "Strikes every reading of about but the preposition when a word the dictionary does not hold follows, as in about Brisbane; a punctuation mark does not count"
   source: {archive_path: original, line: "issue 195; adapted from exports/ger/49.dgrammar.txt line 14 and wiki/English_Disambiguation_Grammar.wikitext line 21"}
 - id: "5"
   kind: disambiguation
@@ -71,3 +71,10 @@
   conditions: []
   comment: "Strikes every noun reading with no cardinality after a determiner, as in A07 a box and A10 the summer; the determiner keeps its readings"
   source: {archive_path: original, line: "issue 199; no archive D-rule reads CAR; wiki/Tagset.wikitext line 77 defines CAR=CTB, countable"}
+- id: "11"
+  kind: disambiguation
+  lhs: "([about],^POS=PRE)(N,CAP,#PREFERRED)"
+  rhs: "0"
+  conditions: []
+  comment: "Strikes every reading of about but the preposition when a later capital whose every reading is a noun follows, as in A09 about Geneva; the capital keeps its readings"
+  source: {archive_path: original, line: "issue 207; adapted from exports/ger/49.dgrammar.txt line 14 and wiki/D-rule.wikitext line 155, in the shape of eng-dis-3 and eng-dis-7; CAP is the engine's bare tag, ADR 0030"}

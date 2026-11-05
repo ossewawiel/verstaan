@@ -765,6 +765,24 @@ tiles:
   x: 4544
   y: 736
   size: 32
+- id: '220'
+  region: m3
+  title: A preposition keeps its word before punctuation and at the start of a sentence
+  x: 4608
+  y: 736
+  size: 32
+- id: '221'
+  region: m3
+  title: A full stop after an abbreviation does not start a sentence
+  x: 4672
+  y: 736
+  size: 32
+- id: '222'
+  region: m3
+  title: A capital with a non-noun reading keeps its preposition, and a capital verb or tag keeps its sentence
+  x: 4736
+  y: 736
+  size: 32
 - id: '90'
   region: m7
   title: 'The console: a local CIC page rendered from the issue files'

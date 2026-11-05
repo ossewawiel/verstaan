@@ -9,6 +9,8 @@
 #include <utility>
 #include <vector>
 
+#include "unicode_lu.hpp"
+#include "unicode_utf8.hpp"
 #include "verstaan/dictionary.hpp"
 #include "verstaan/lang.hpp"
 #include "verstaan/rule_interpreter.hpp"
@@ -43,10 +45,6 @@ std::string mark_untranslated(std::string_view surface) {
   return marked;
 }
 
-bool is_capitalised(std::string_view surface) {
-  return !surface.empty() && surface.front() >= 'A' && surface.front() <= 'Z';
-}
-
 // A token starts a sentence when it is the first token or follows a sentence-final mark.
 bool starts_sentence(const std::vector<Token>& tokens, std::size_t i) {
   if (i == 0) {
@@ -62,41 +60,79 @@ bool is_noun(const DictionaryEntry& entry) {
   });
 }
 
-// Issue 196: a capitalised token is a name and enters the graph as a quoted literal, `"John"`.
-// A non-initial capital is a literal whatever the dictionary holds, so `John` never takes the
-// common noun `john`. A sentence-initial capital first tries its exact form, then its lower-case
-// form (`The` -> `the`), and is a literal when neither resolves or the lower-case form is only
-// ever a noun (`John` -> `john`). The pronoun `I` is the
-// one capitalised closed-class word, so it stays a dictionary lookup.
-// Rewrites `lookups[i].entries` for the lower-case retry and returns the literal flags.
-std::vector<bool> apply_name_literals(const std::vector<Token>& tokens,
-                                      const Dictionary& dictionary,
-                                      std::vector<LookupEntry>& lookups) {
-  std::vector<bool> literal(tokens.size(), false);
+bool has_noun_lex(const DictionaryEntry& entry) {
+  return std::ranges::any_of(entry.features, [](const Feature& feature) {
+    return feature.first == "LEX" && feature.second == "N";
+  });
+}
+
+int best_priority(const std::vector<DictionaryEntry>& entries) {
+  int best = 0;
+  for (const DictionaryEntry& entry : entries) {
+    best = std::max(best, entry.priority);
+  }
+  return best;
+}
+
+// ADR 0030, step 1: a form that is noun-only with `priority` 0 on every entry counts as no word.
+bool counts_as_no_word(const std::vector<DictionaryEntry>& entries) {
+  return std::ranges::all_of(
+      entries, [](const DictionaryEntry& entry) { return is_noun(entry) && entry.priority == 0; });
+}
+
+// What the name pass decided: which tokens are name literals, and the surface each candidate
+// carries (the lower-case form when that form won, the token otherwise).
+struct NameDecision {
+  std::vector<bool> literal;
+  std::vector<std::string> surface;
+  std::vector<bool> later_capital;  // capitalised, not sentence-initial
+};
+
+// ADR 0030 (issues 196, 207). A token is capitalised when its first character is Unicode `Lu`.
+// A later capital reads its exact form only: a record, else a name. A sentence-initial capital
+// reads the lower-case form first, and the exact form wins only on a strictly higher priority.
+// Rewrites `lookups[i].entries` and returns the literal flags and candidate surfaces.
+NameDecision apply_name_literals(const std::vector<Token>& tokens, const Dictionary& dictionary,
+                                 std::vector<LookupEntry>& lookups) {
+  NameDecision decision;
+  decision.literal.assign(tokens.size(), false);
+  decision.later_capital.assign(tokens.size(), false);
+  for (const Token& token : tokens) {
+    decision.surface.emplace_back(token.surface);
+  }
   for (std::size_t i = 0; i < tokens.size(); ++i) {
     const std::string_view surface = tokens[i].surface;
-    if (!is_capitalised(surface) || surface == "I") {
+    const Utf8CodePoint lead = decode_leading_code_point(surface);
+    if (lead.length == 0 || !is_upper_case(lead.code)) {
       continue;
     }
     if (!starts_sentence(tokens, i)) {
-      literal[i] = true;
-      lookups[i].entries.clear();
+      decision.later_capital[i] = true;
+      decision.literal[i] = !lookups[i].resolved();
       continue;
     }
-    if (lookups[i].resolved()) {
-      continue;
+    std::vector<DictionaryEntry> lower_entries;
+    std::string lower;
+    const char32_t lower_code = simple_lower_case(lead.code);
+    if (lower_code != 0) {
+      append_utf8(lower, lower_code);
+      lower.append(surface.substr(lead.length));
+      lower_entries = dictionary.lookup(lower);
+      if (counts_as_no_word(lower_entries)) {
+        lower_entries.clear();
+      }
     }
-    std::string lower(surface);
-    lower.front() = static_cast<char>(lower.front() - 'A' + 'a');
-    std::vector<DictionaryEntry> retry = dictionary.lookup(lower);
-    // A lower-case reading that is only ever a noun (`john`) is a name here, not a word.
-    if (std::ranges::any_of(retry, [](const DictionaryEntry& entry) { return !is_noun(entry); })) {
-      lookups[i].entries = std::move(retry);
-    } else {
-      literal[i] = true;
+    const bool has_exact = lookups[i].resolved();
+    const bool has_lower = !lower_entries.empty();
+    if (!has_exact && !has_lower) {
+      decision.literal[i] = true;
+    } else if (has_lower &&
+               (!has_exact || best_priority(lookups[i].entries) <= best_priority(lower_entries))) {
+      lookups[i].entries = std::move(lower_entries);
+      decision.surface[i] = std::move(lower);
     }
   }
-  return literal;
+  return decision;
 }
 
 // One `Position` per token: every dictionary entry as a candidate (issue 20's homograph carry-
@@ -104,17 +140,25 @@ std::vector<bool> apply_name_literals(const std::vector<Token>& tokens,
 // on `surface` alone can still see it and so `disambiguate()` is never handed an empty position.
 std::vector<Position> build_positions(const std::vector<Token>& tokens,
                                       const std::vector<LookupEntry>& lookups,
-                                      const std::vector<bool>& literal) {
+                                      const std::vector<bool>& literal,
+                                      const std::vector<std::string>& surfaces,
+                                      const std::vector<bool>& later_capital) {
   std::vector<Position> positions;
   positions.reserve(tokens.size());
   for (std::size_t i = 0; i < tokens.size(); ++i) {
     Position position;
     if (lookups[i].resolved()) {
+      // Bare tag: lets eng-dis-11's (CAP) test find a later capital that only reads as a noun
+      // (ADR 0030). A reading that is no noun, as in `English` or `I`, keeps the tag off.
+      const bool all_nouns = std::ranges::all_of(lookups[i].entries, has_noun_lex);
       for (const DictionaryEntry& entry : lookups[i].entries) {
         std::vector<Feature> features = entry.features;
         features.emplace_back(std::string(kUwFeatureKey), entry.uw);
+        if (later_capital[i] && all_nouns) {
+          features.emplace_back("CAP", "");
+        }
         position.candidates.push_back(Candidate{
-            .surface = std::string(tokens[i].surface),
+            .surface = surfaces[i],
             .features = std::move(features),
             .attributes = {},
         });
@@ -135,6 +179,32 @@ std::vector<Position> build_positions(const std::vector<Token>& tokens,
     positions.push_back(std::move(position));
   }
   return positions;
+}
+
+bool has_uw(const TreeNode& node) {
+  const auto uw = std::ranges::find_if(
+      node.features, [](const Feature& feature) { return feature.first == kUwFeatureKey; });
+  return uw != node.features.end() && !uw->second.empty();
+}
+
+// nodes[1..n] are the n tokens in order (make_forest); every node a rule creates sits after them.
+bool is_token_node(std::size_t index, std::size_t token_count) {
+  return index >= 1 && index <= token_count;
+}
+
+// One source surface per graph node, in `read_graph`'s order (ADR 0025). A token node shows the
+// word as typed, even when the lower-case form won the candidate (ADR 0030).
+std::vector<std::string> graph_surfaces(const Forest& forest, const std::vector<Token>& tokens) {
+  std::vector<std::string> surfaces;
+  for (std::size_t k = 0; k < forest.nodes.size(); ++k) {
+    const TreeNode& node = forest.nodes[k];
+    if (node.deleted || !has_uw(node)) {
+      continue;
+    }
+    surfaces.push_back(is_token_node(k, tokens.size()) ? std::string(tokens[k - 1].surface)
+                                                       : node.surface);
+  }
+  return surfaces;
 }
 
 }  // namespace
@@ -180,9 +250,11 @@ Result Engine::translate(std::string_view text, Options options) const {
 
   const Dictionary from_dictionary = Dictionary::load(rules_.from_store_root(), options.from);
   std::vector<LookupEntry> lookups = from_dictionary.lookup_tokens(tokens);
-  const std::vector<bool> literal = apply_name_literals(tokens, from_dictionary, lookups);
+  const NameDecision names = apply_name_literals(tokens, from_dictionary, lookups);
+  const std::vector<bool>& literal = names.literal;
 
-  std::vector<Position> positions = build_positions(tokens, lookups, literal);
+  std::vector<Position> positions =
+      build_positions(tokens, lookups, literal, names.surface, names.later_capital);
 
   const RuleInterpreter interpreter(rules_);
   interpreter.disambiguate(positions, result.trace);
@@ -204,15 +276,7 @@ Result Engine::translate(std::string_view text, Options options) const {
     return result;
   }
 
-  // One source surface per graph node, in `read_graph`'s order (ADR 0025).
-  std::vector<std::string> surfaces;
-  for (const TreeNode& node : tree.forest.nodes) {
-    const auto uw = std::ranges::find_if(
-        node.features, [](const Feature& feature) { return feature.first == kUwFeatureKey; });
-    if (!node.deleted && uw != node.features.end() && !uw->second.empty()) {
-      surfaces.push_back(node.surface);
-    }
-  }
+  const std::vector<std::string> surfaces = graph_surfaces(tree.forest, tokens);
   const Dictionary to_dictionary = Dictionary::load(rules_.to_store_root(), options.to);
   GenerationResult generated =
       interpreter.generate(result.unl, to_dictionary, surfaces, options.to, result.trace);

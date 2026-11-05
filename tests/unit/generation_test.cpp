@@ -448,8 +448,10 @@ TEST(generation, N52_lexical_choice_takes_mooi_on_a_priority_tie) {
   ExpectText(Generate(MakeGraph({{"300217728", {}}}), {"beautiful"}), "mooi");
 }
 
+// C49 (issue 207, D3): afr-gen-36 widens to a node with no LEX, so the article stays.
 TEST(generation, N53_a_node_with_no_entry_is_marked_once) {
-  ExpectText(Generate(MakeGraph({{"100135148", {"@indef"}}}), {"box"}), "⟦box⟧", Status::partial);
+  ExpectText(Generate(MakeGraph({{"100135148", {"@indef"}}}), {"box"}), "'n ⟦box⟧",
+             Status::partial);
 }
 
 TEST(generation, N54_an_empty_graph_gives_empty_ok_text) {

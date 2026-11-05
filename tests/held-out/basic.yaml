@@ -27,9 +27,9 @@
   review: confirmed
 - id: H04
   input: "some books about Geneva"
-  expected: "'n paar boeke oor Geneva"
+  expected: "'n paar boeke oor ⟦Geneva⟧"
   direction: eng-afr
-  status: ok
+  status: partial
   tier: basic
   register: neutral
   review: confirmed

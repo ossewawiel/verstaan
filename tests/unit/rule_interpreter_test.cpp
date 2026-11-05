@@ -83,11 +83,12 @@ bool HasFeature(const Candidate& node, std::string_view key, std::string_view va
 
 TEST(rule_interpreter, RuleSetLoadsAllFiveGrammarKindsFromTheRealStores) {
   const RuleSet& rules = EngToAfrRuleSet();
-  // Issue 199 test K55 (199-test-cases.md, replacing 198 R17): eng's disambiguation.yaml holds ten
-  // project-written records, ids 1 to 10, in file order, each kind `disambiguation`, each rhs `0`.
-  ASSERT_EQ(rules.disambiguation().size(), 10u);
-  const char* const kExpectedIds[] = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"};
-  for (std::size_t i = 0; i < 10; ++i) {
+  // Issue 199 test K55 (199-test-cases.md, replacing 198 R17), widened by issue 207: eng's
+  // disambiguation.yaml holds eleven project-written records, ids 1 to 11, in file order, each kind
+  // `disambiguation`, each rhs `0`.
+  ASSERT_EQ(rules.disambiguation().size(), 11u);
+  const char* const kExpectedIds[] = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11"};
+  for (std::size_t i = 0; i < 11; ++i) {
     EXPECT_EQ(rules.disambiguation()[i].id, kExpectedIds[i]);
     EXPECT_EQ(rules.disambiguation()[i].kind, "disambiguation");
     EXPECT_EQ(rules.disambiguation()[i].rhs, "0");
@@ -341,8 +342,23 @@ std::vector<Position> BuildEngPositions(const std::string& text) {
   for (std::size_t i = 0; i < tokens.size(); ++i) {
     Position position;
     if (lookups[i].resolved()) {
+      // Issue 207 (ADR 0030): a later capital whose every reading is LEX=N carries a bare CAP tag,
+      // as the engine adds it. A capital here is an ASCII capital or a Latin-1 one (U+00C0 to U+00DE).
+      const unsigned char first = static_cast<unsigned char>(tokens[i].surface.front());
+      const bool capital = (first >= 'A' && first <= 'Z') ||
+                           (first == 0xC3 && tokens[i].surface.size() > 1 &&
+                            static_cast<unsigned char>(tokens[i].surface[1]) >= 0x80 &&
+                            static_cast<unsigned char>(tokens[i].surface[1]) <= 0x9E);
+      const bool all_nouns = std::ranges::all_of(lookups[i].entries, [](const DictionaryEntry& e) {
+        return std::ranges::any_of(e.features,
+                                   [](const Feature& f) { return f.first == "LEX" && f.second == "N"; });
+      });
+      const bool cap = i > 0 && capital && all_nouns;
       for (const DictionaryEntry& entry : lookups[i].entries) {
         std::vector<Feature> features = entry.features;
+        if (cap) {
+          features.emplace_back("CAP", "");
+        }
         features.emplace_back("$uw", entry.uw);
         position.candidates.push_back(Candidate{
             .surface = std::string(tokens[i].surface), .features = features, .attributes = {}});
@@ -503,14 +519,62 @@ TEST(rule_interpreter, D02RuleOneLeavesTheArticleAfterInWithAllFourReadings) {
   ExpectCountable(run, 1);
 }
 
+// C44 (207): D03 moves to Brisbane, a name with no record.
 TEST(rule_interpreter, D03RuleFourKeepsThePrepositionOfAboutBeforeAnUnknownWord) {
-  const DisambiguationRun run = RunEng("a book about Geneva");
+  const DisambiguationRun run = RunEng("a book about Brisbane");
   ASSERT_EQ(run.after.size(), 4u);
   ExpectOnlyPreposition(run, 2);
   ASSERT_EQ(run.after[3].candidates.size(), 1u);
-  EXPECT_EQ(run.after[3].candidates[0].surface, "Geneva");
+  EXPECT_EQ(run.after[3].candidates[0].surface, "Brisbane");
   EXPECT_TRUE(run.after[3].candidates[0].features.empty());
   EXPECT_EQ(FiredIds(run.trace), Ids({"4", "10"}));  // 199: rule 10 strikes `book`'s uncountable readings
+}
+
+// C43 (207): `Geneva` has a record, so rule 11 fires and rule 4 does not.
+TEST(rule_interpreter, C43RuleElevenKeepsThePrepositionOfAboutBeforeARecordedPlace) {
+  const DisambiguationRun run = RunEng("a book about Geneva");
+  ASSERT_EQ(run.after.size(), 4u);
+  ExpectOnlyPreposition(run, 2);
+  EXPECT_EQ(FiredIds(run.trace), Ids({"10", "11"}));
+}
+
+// C15, C25, C28 (207): rule 11 fires when a later capital with a record follows `about`.
+TEST(rule_interpreter, C15C25C28RuleElevenFiresAfterAboutBeforeAWordWithARecord) {
+  for (const char* text :
+       {"a book about Paris", "a book about Einstein", "a book about \xC3\x81ine"}) {
+    const DisambiguationRun run = RunEng(text);
+    ASSERT_EQ(run.after.size(), 4u) << text;
+    ExpectOnlyPreposition(run, 2);
+    EXPECT_EQ(FiredIds(run.trace), Ids({"10", "11"})) << text;
+  }
+}
+
+// C16, C18, C23, C24, C27 (207): a capital with no record is no word the dictionary holds, so rule
+// 4 fires and rule 11 does not.
+TEST(rule_interpreter, C16C18C23C24C27RuleFourFiresAfterAboutBeforeANameWithNoRecord) {
+  for (const char* text :
+       {"a book about Brisbane", "a book about John", "a book about Lyon",
+        "a book about Shakespeare", "a book about \xC3\x89mile"}) {
+    const DisambiguationRun run = RunEng(text);
+    ASSERT_EQ(run.after.size(), 4u) << text;
+    ExpectOnlyPreposition(run, 2);
+    EXPECT_EQ(FiredIds(run.trace), Ids({"4", "10"})) << text;
+  }
+}
+
+// C41 (207): a determiner follows `about`, so rule 3 fires and rule 11 does not.
+TEST(rule_interpreter, C41RuleElevenStaysSilentWhenADeterminerFollowsAbout) {
+  const DisambiguationRun run = RunEng("a book about the car");
+  const std::vector<std::string> ids = FiredIds(run.trace);
+  EXPECT_EQ(std::ranges::count(ids, "11"), 0);
+  EXPECT_EQ(std::ranges::count(ids, "3"), 1);
+}
+
+// C42 (207): nothing follows `about`, so rule 11 is silent.
+TEST(rule_interpreter, C42RuleElevenIsSilentWhenNothingFollowsAbout) {
+  const DisambiguationRun run = RunEng("a book about");
+  const std::vector<std::string> ids = FiredIds(run.trace);
+  EXPECT_EQ(std::ranges::count(ids, "11"), 0);
 }
 
 TEST(rule_interpreter, D04RulesTwoAndThreeKeepThePrepositionsInA15) {
@@ -888,8 +952,8 @@ TEST(rule_interpreter, N56_rule_set_load_reads_the_target_disambiguation_grammar
   if (rules.to_disambiguation().size() >= 5) {
     EXPECT_EQ(rules.to_disambiguation()[4].lhs, "(D,^AFT)(BLK)({V|P|AAV})");
   }
-  // Issue 199 (199-test-cases.md, K55): eng now holds ten disambiguation records.
-  EXPECT_EQ(rules.disambiguation().size(), 10u);
+  // Issue 207 (207-test-cases.md): eng now holds eleven disambiguation records.
+  EXPECT_EQ(rules.disambiguation().size(), 11u);
 }
 
 TEST(rule_interpreter, N57_from_rules_keeps_all_seven_lists) {

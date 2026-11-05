@@ -3583,6 +3583,14 @@
   frequency: 1
   priority: 0
   source: {archive_path: exports/eng/en_ana_u_c_ucl/en_ana_u_c_ucl_2.txt, line: 18940}
+- headword: Geneva
+  id: 900002
+  uw: "500004419"
+  features: {LEMMA: Geneva, BF: Geneva, LEX: N, POS: PPN, LST: WRD, NUM: SNGT, PAR: M0, FRA: Y0, ABN: CCT, ANI: NANM, SEM: PLC}
+  lang: eng
+  frequency: 1
+  priority: 0
+  source: {archive_path: original, line: "issue 207, owner ruling 2026-11-04; UW from exports/corpus/ugoa1/export_corpus.php__project_ugoa1_lang_en_unl_ucl line 128; features adapted from the Paris record, p.yaml line 4690, with POS=PPN and SEM=PLC"}
 - headword: Geneva gown
   id: 331668
   uw: "103434830"
@@ -7831,6 +7839,14 @@
   frequency: 1
   priority: 0
   source: {archive_path: exports/eng/en_ana_u_c_ucl/en_ana_u_c_ucl_2.txt, line: 24532}
+- headword: God
+  id: 900003
+  uw: "\"God\""
+  features: {LEMMA: God, BF: God, LEX: N, POS: PPN, LST: WRD, NUM: SNGT, PAR: M0, FRA: Y0, ABN: CCT, ALY: ALI, ANI: ANM, SEM: HUM}
+  lang: eng
+  frequency: 1
+  priority: 9
+  source: {archive_path: original, line: "issue 207, owner ruling 2026-11-05, option 2: a record whose UW is a quoted name, the first in the store; priority 9 beats god at 8, so the exact form wins; no archive line, adapted from the Geneva record in this shard"}
 - headword: God knows how
   id: 272104
   uw: "400190211"

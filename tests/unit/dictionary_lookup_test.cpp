@@ -131,13 +131,32 @@ TEST(dictionary_lookup, TokeniserPipelineFeedsLookupDirectly) {
 
 // --- A token with no matching entry is marked unresolved, not an exception. ---
 
-TEST(dictionary_lookup, RealFixedSetWordWithNoDictionaryEntryIsUnresolved) {
-  // A09's designated partial (docs/factory/issues/24-test-cases.md): "Geneva" is in no
-  // data/languages/eng/dictionary/<a-z>.yaml shard. g.yaml holds "Geneva gown", "Genevan" and
-  // "Genevans", never a bare "Geneva" (grep -n "Geneva" data/languages/eng/dictionary/g.yaml,
-  // 2026-09-19).
+// C52 (docs/factory/issues/207-test-cases.md): `Geneva` is a record, UW 500004419 (owner ruling
+// 2026-11-04), a proper noun with the place feature.
+TEST(dictionary_lookup, C52GenevaIsOneRecordWithTheCorpusUw) {
   const std::vector<DictionaryEntry> entries = EnglishDictionary().lookup("Geneva");
-  EXPECT_TRUE(entries.empty());
+  ASSERT_EQ(entries.size(), 1u);
+  EXPECT_EQ(entries[0].uw, "500004419");
+  const auto has = [&](std::string_view key, std::string_view value) {
+    return std::ranges::any_of(entries[0].features, [&](const Feature& f) {
+      return f.first == key && f.second == value;
+    });
+  };
+  EXPECT_TRUE(has("POS", "PPN"));
+  EXPECT_TRUE(has("SEM", "PLC"));
+}
+
+// C53: a name with no record has no entry. This is A09's old designated partial, moved to Brisbane.
+TEST(dictionary_lookup, C53BrisbaneHasNoDictionaryEntry) {
+  EXPECT_TRUE(EnglishDictionary().lookup("Brisbane").empty());
+}
+
+// C95 (207): the record's UW is a quoted name, kept with its quotes, at priority 9.
+TEST(dictionary_lookup, C95GodIsOneRecordWithAQuotedUwAndPriorityNine) {
+  const std::vector<DictionaryEntry> entries = EnglishDictionary().lookup("God");
+  ASSERT_EQ(entries.size(), 1u);
+  EXPECT_EQ(entries[0].uw, "\"God\"");
+  EXPECT_EQ(entries[0].priority, 9);
 }
 
 TEST(dictionary_lookup, SyntheticTypoIsUnresolvedNotAnException) {
