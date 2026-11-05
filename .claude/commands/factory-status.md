@@ -4,11 +4,14 @@ description: Regenerate docs/factory/STATE.md from the issue files and report ex
 
 1. Run `python -m tools.factory.status` in the tree this command runs in. One call replaces the old
    steps 1 to 4: the script reads that tree's `docs/factory/issues/*.md` frontmatter and its git
-   state, and prints the four STATE.md fields: `Last completed:` (highest-numbered `status: done`
-   issue, with its `commit`), `Next up:` (lowest-numbered open main-line issue whose `depends_on`
-   are all done), `Branch / PR:` and `Resume with: /factory-run NN`. It writes nothing. Do not read
-   issue frontmatter by hand and do not pick the quest by hand; the script is the calculation
-   (`tools/factory/status.py`, same rules as `tools/console/src/parse.mjs`).
+   state, and prints the four STATE.md fields: `Last completed:` (the done issue whose `commit` has
+   the latest commit date, with its `commit`; the highest-numbered done issue when no commit
+   reads), `Next up:` (the lowest open main-line issue, or when it is blocked, its lowest open
+   blocker with every `depends_on` done), `Branch / PR:` and `Resume with: /factory-run NN`. It
+   writes nothing. Do not read issue frontmatter by hand and do not pick the quest by hand; the
+   script is the calculation (`tools/factory/status.py`). Its `Next up:` rule is the same as
+   `nextIssue` in `tools/console/src/parse.mjs`. Its `Last completed:` rule is not: the console
+   takes the highest number.
 2. Never rewrite `docs/factory/STATE.md` here, root tree or not. Read the file as it stands and
    print it as is. Only the merge path writes it, in its own commit
    `chore: refresh STATE.md after merging #NN into main`, made in the root tree right after

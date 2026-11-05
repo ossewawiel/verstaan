@@ -4,6 +4,7 @@ import {
   parseFrontmatter,
   parseIssues,
   buildModel,
+  nextIssue,
   parseWorktreePorcelain,
   parseLessons,
   inProgressQuests,
@@ -467,5 +468,28 @@ describe('debriefGroups (issue 176)', () => {
 
   it('an empty ledger groups to nothing', () => {
     expect(debriefGroups('')).toEqual([]);
+  });
+});
+
+describe('nextIssue (issue 216)', () => {
+  const snap = (statuses: Record<number, Issue['status']>, over: Record<number, number[]> = {}): Issue[] =>
+    ([
+      [27, 'M4', []], [28, 'M4', []], [29, 'M4', [27, 28, 207, 211]], [201, 'Side', [207]],
+      [207, 'Side', []], [210, 'Side', [27, 28, 213]], [211, 'Side', []], [213, 'Side', []],
+    ] as [number, string, number[]][]).map(([n, milestone, dependsOn]) => ({
+      n, milestone, dependsOn: over[n] ?? dependsOn, status: statuses[n] ?? 'open',
+    }) as Issue);
+
+  it('names a ready main quest itself', () => {
+    expect(nextIssue(snap({}))?.n).toBe(27);
+  });
+  it('names the lowest ready blocker of a blocked main quest', () => {
+    expect(nextIssue(snap({ 27: 'done', 28: 'done' }))?.n).toBe(207);
+  });
+  it('walks through blockers of blockers', () => {
+    expect(nextIssue(snap({ 27: 'done', 28: 'done', 211: 'done' }, { 29: [201] }))?.n).toBe(207);
+  });
+  it('skips an in-progress blocker', () => {
+    expect(nextIssue(snap({ 27: 'done', 28: 'done', 207: 'in-progress' }))?.n).toBe(211);
   });
 });

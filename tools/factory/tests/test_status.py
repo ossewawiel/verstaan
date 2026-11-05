@@ -4,6 +4,11 @@
 The script and tools/console/src/parse.mjs must name the same last-completed and next-up issues on
 the fixture repo under tools/console/test/fixtures/. The expected numbers below were read by hand
 from those fixture files; they are not produced by either implementation.
+
+The two agree on last-completed only here, because the script has no readable commit on the
+fixture repo and falls back to the highest number. On a real repo they can differ: the script takes
+the latest commit date (issue 216), while `lastCompleted` in parse.mjs and in
+apps/console/server/src/model/parse.ts still takes the highest number. Next-up agrees everywhere.
 """
 
 from __future__ import annotations

@@ -3,7 +3,7 @@
 
 `/factory-status` used to ask a model to read every issue frontmatter and pick the last completed
 and next-up issues by hand. This script does that calculation in code instead. It follows the same
-rules as `lastCompleted` and `nextIssue` in tools/console/src/parse.mjs, and
+rules as `nextIssue` in tools/console/src/parse.mjs (and its copy under apps/console/), and
 tools/factory/tests/test_status.py proves the two agree on the fixture repo.
 
 Usage:
@@ -97,17 +97,59 @@ def _status(value: object) -> str:
     return "open"
 
 
-def last_completed(issues: list[Issue]) -> Issue | None:
+def commit_epoch(root: Path, commit: str | None) -> int | None:
+    """Committer time of `commit` in `root` as epoch seconds, or None when it is missing or unreadable."""
+    if not commit:
+        return None
+    out = _git(root, "log", "-1", "--format=%ct", f"{commit}^{{commit}}")
+    try:
+        return int(out.strip()) if out else None
+    except ValueError:
+        return None
+
+
+def last_completed(issues: list[Issue], root: Path | None = None) -> Issue | None:
+    """The done issue whose `commit:` has the latest commit date.
+
+    A done issue whose commit is missing or unreadable is left out of the ranking. When no done
+    issue has a readable commit, or `root` is not given, the highest number wins."""
     done = [i for i in issues if i.status == "done"]
-    return done[-1] if done else None
+    if not done:
+        return None
+    if root is not None:
+        dated = [(t, i) for i in done if (t := commit_epoch(root, i.commit)) is not None]
+        if dated:
+            return max(dated, key=lambda p: (p[0], p[1].n))[1]
+    return done[-1]
 
 
 def next_issue(issues: list[Issue]) -> Issue | None:
-    """Lowest open main-line issue whose every dependency is done. Mirrors parse.mjs `nextIssue`."""
+    """The issue to run next.
+
+    Take the lowest open main-line issue. If every dependency is done, that is the answer. If not,
+    walk its open blockers, and their blockers, and name the lowest one with every dependency done.
+    If that quest has no such blocker, try the next main-line issue.
+    Mirrors parse.mjs `nextIssue` and apps/console/server/src/model/parse.ts `nextIssue`."""
+    by_n = {i.n: i for i in issues}
     done = {i.n for i in issues if i.status == "done"}
     for i in issues:
-        if i.status == "open" and i.milestone not in SIDE and all(d in done for d in i.depends_on):
-            return i
+        if i.status != "open" or i.milestone in SIDE:
+            continue
+        ready: list[int] = []
+        seen: set[int] = set()
+        stack = [i.n]
+        while stack:
+            n = stack.pop()
+            if n in seen:
+                continue
+            seen.add(n)
+            node = by_n[n]
+            if all(d in done for d in node.depends_on):
+                ready.append(n)
+                continue
+            stack.extend(d for d in node.depends_on if d in by_n and by_n[d].status == "open")
+        if ready:
+            return by_n[min(ready)]
     return None
 
 
@@ -195,7 +237,7 @@ def render_fields(fields: list[tuple[str, str]]) -> str:
 
 
 def build_fields(issues: list[Issue], root: Path) -> list[tuple[str, str]]:
-    last = last_completed(issues)
+    last = last_completed(issues, root)
     nxt = next_issue(issues)
     if last is None:
         last_text = "none"
