@@ -2,15 +2,15 @@
 issue: 216
 title: "Next up names the lowest open blocker, and Last completed names the latest close"
 milestone: Side
-status: in-progress
+status: done
 depends_on: []
 agent: implementer
 agents: [implementer]
 model: sonnet
 effort: medium
 checkpoint: null
-commit: null
-worktree: .worktrees/side-216-next-up-names-the-lowest-open-blocker
+commit: 5e3ac31
+worktree: null
 github_issue: 342
 ---
 ## What
@@ -44,9 +44,11 @@ Changing how a quest's status is stored. The console's layout.
 
 ## Done when
 
-- [ ] A pytest proves a main quest blocked by a side quest gives the blocker.
-- [ ] A console test proves the same.
-- [ ] The real issue files name 27 today, and a side quest once 27 and 28 are done in the fixture.
-- [ ] A pytest proves Last completed and its fallback.
-- [ ] Every copy of the rule changes together (`grep` above).
-- [ ] `ctest --preset linux-gcc -L fast` and `python -m tools.validate --changed` are green.
+- [x] A pytest proves a main quest blocked by a side quest gives the blocker.
+- [x] A console test proves the same.
+- [x] The real issue files name 27 today, and a side quest once 27 and 28 are done in the fixture.
+      27 and 28 merged before this quest ran. The real walk named 207 on 2026-11-05 (29 -> 207). The
+      fixture holds the 27 case and the side-quest case.
+- [x] A pytest proves Last completed and its fallback.
+- [x] Every copy of the rule changes together (`grep` above).
+- [x] `ctest --preset linux-gcc -L fast` and `python -m tools.validate --changed` are green.
