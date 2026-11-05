@@ -260,18 +260,18 @@
   source: {archive_path: exports/afr/47.tgrammar.txt, line: 40}
 - id: "35"
   kind: generation
-  lhs: "(%x,N,@def)"
+  lhs: "(%x,{N|^LEX},@def)"
   rhs: "(NS(%x,-@def;%y,[die],+LEX=D,+POS=ART),+LEX=N)"
   conditions: []
-  comment: "book.@def > NS(boek,die)"
-  source: {archive_path: exports/afr/47.tgrammar.txt, line: 41}
+  comment: "book.@def > NS(boek,die), also for a name or a UW with no afr entry: Car.@def > NS(Car,die)"
+  source: {archive_path: original, line: "issue 207; adapted from exports/afr/47.tgrammar.txt line 41 (rule 35): the word may also carry no LEX, in the shape of afr-gen-4"}
 - id: "36"
   kind: generation
-  lhs: "(%x,N,@indef)"
+  lhs: "(%x,{N|^LEX},@indef)"
   rhs: "(NS(%x,-@indef;%y,['n],+LEX=D,+POS=ART),+LEX=N)"
   conditions: []
-  comment: "book.@indef > NS(boek,'n)"
-  source: {archive_path: exports/afr/47.tgrammar.txt, line: 42}
+  comment: "book.@indef > NS(boek,'n), also for a name or a UW with no afr entry: Car.@indef > NS(Car,'n)"
+  source: {archive_path: original, line: "issue 207; adapted from exports/afr/47.tgrammar.txt line 42 (rule 36): the word may also carry no LEX, in the shape of afr-gen-4"}
 - id: "37"
   kind: generation
   lhs: "(%x,N,@all)"

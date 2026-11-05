@@ -22,6 +22,7 @@ Applies to `data/` and to anything that writes it.
 - One record per list item. No flow-style mappings longer than one line.
 - Feature names and values come from `tagset.yaml`. A new feature is added to the tagset first,
   with a comment saying which archive page defines it.
+  - Exception: a bare tag the engine sets on a candidate, which no store record holds, stays out of the tagset. CAP is the one case. See ADR 0030.
 - UWs are strings exactly as the archive writes them, including `(icl>...)` restrictions.
 - Language codes: ISO 639-3 for folder names (`afr`, `eng`, `nld`), ISO 639-1 kept in `meta.yaml`.
 
@@ -34,6 +35,11 @@ Applies to `data/` and to anything that writes it.
   corrected one. The archive line stays traceable.
   - Exception: a grammar rule has no `deprecated` field. Edit it in place and set
     `archive_path: original`. See ADR 0020.
+  - Exception: an owner's ruling may change a dictionary record's value, such as its `priority`.
+    Edit the record in place. Set `archive_path: original` and write the ruling, its date and the
+    old archive line in `line`. A re-import overwrites the edit and restores the archive value.
+    A re-import must re-apply each `original` record, as ADR 0020 says of grammar rules. The
+    `original` source is the list to apply.
 
 ## Credentials and privacy
 

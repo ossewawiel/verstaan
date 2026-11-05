@@ -42,6 +42,11 @@ which UW the Afrikaans record carries so the two meet, and whether the corpus's 
 `Atlantic Ocean` is two tokens, so the rule-author says whether a two-word name works today. Rome's UW
 is read from one sentence that holds three places, so the rule-author confirms it.
 
+`New York` is the same two-token question, and the owner gave it to this quest on 2026-11-05. `New` has
+an English record, an adjective, so quest 207's rule translates it. Until this quest lands, `a book
+about New York` prints `'n boek nuut ⟦about⟧ ⟦York⟧`. The owner's 2026-10-29 ruling says `New York` keeps
+its own name.
+
 After this quest, `a book about Geneva` gives `'n boek oor Genève`, status `ok`. A15 reads `Parys`
 where it read `⟦Paris⟧`. The owner reviews every form on one page before it lands.
 
@@ -52,6 +57,7 @@ where it read `⟦Paris⟧`. The owner reviews every form on one page before it 
 - `$V "a book about Geneva"` prints `'n boek oor Genève` and exits 0.
 - `$V "a book about Brisbane"` still prints a bare `Brisbane`. `$V "John and Mary"` still prints
   `John en Mary`.
+- `$V "a book about New York"` prints `'n boek oor New York` and exits 0.
 - Row A09 expects `'n boek oor Genève`, status `ok`. Row A15 expects `Parys`, in both `basic.yaml`
   copies and in `24-test-cases.md`.
 - Each store's `meta.yaml` counts match its dictionary.
@@ -61,7 +67,7 @@ where it read `⟦Paris⟧`. The owner reviews every form on one page before it 
 ## Not in scope
 
 The wider list of old-world cities, countries and regions from the Dutch archive: a later quest, if the
-owner wants it. New-world places, which keep their own name. People. The rule that decides what a name
+owner wants it. Other new-world places, which keep their own name. People. The rule that decides what a name
 is: quest 207. Inflected forms of a place name.
 
 ## Done when
@@ -71,5 +77,6 @@ is: quest 207. Inflected forms of a place name.
 - [ ] `$V "a book about Geneva"` gives `'n boek oor Genève`, exit 0, in a golden row.
 - [ ] A15 expects `Parys` in both `basic.yaml` copies and in `24-test-cases.md`.
 - [ ] `a book about Brisbane` and `John and Mary` stay bare, in a test.
+- [ ] `a book about New York` gives `'n boek oor New York`, in a test.
 - [ ] `meta.yaml` counts match each dictionary.
 - [ ] `ctest --preset linux-gcc -L fast` is green.

@@ -64,11 +64,11 @@
   source: {archive_path: grammars/eng_unl_tgrammar.txt, line: 34}
 - id: "183"
   kind: analysis
-  lhs: "(N,^TEMP,%x)(NB,TEMP,%y)({XP,^D,^J|PUT|STAIL|CTAIL},%right)"
+  lhs: "(N,^TEMP,^POS=PPN,%x)(NB,{TEMP|POS=PPN},%y)({XP,^D,^J|PUT|STAIL|CTAIL},%right)"
   rhs: "(NB(%x,+proj;%y,+adjt),+XB=NB,+LEX=N,%new)(%right)"
   conditions: []
   comment: "A name after a common noun modifies the noun: book Geneva > NB(book, Geneva)"
-  source: {archive_path: original, line: "issue 199; adapted from grammars/eng_unl_tgrammar.txt line 46 (rule 10) with head and adjunct swapped for a name literal"}
+  source: {archive_path: original, line: "issue 199, widened in issue 207 to a record with POS=PPN; adapted from grammars/eng_unl_tgrammar.txt line 46 (rule 10) with head and adjunct swapped for a name"}
 - id: "10"
   kind: analysis
   lhs: "(N,%x)(NB,%y)({XP,^D,^J|PUT|STAIL|CTAIL},%right)"

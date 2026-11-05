@@ -92,7 +92,6 @@
   tier: basic
   register: neutral
   review: confirmed
-  deferred: 207
   source: {origin: ugoa1, line: 128, issue: 24}
 - id: A10
   input: "some days before the summer"

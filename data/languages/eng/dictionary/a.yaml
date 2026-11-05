@@ -36541,16 +36541,16 @@
   features: {LEMMA: August, BF: August, LEX: N, POS: NOU, LST: WRD, NUM: SNG, PAR: M2, FRA: Y0, ABN: ABT, ALY: ALI, ANI: NANM, CAR: NCTB, SEM: TIM, SFR: K0}
   lang: eng
   frequency: 20
-  priority: 0
-  source: {archive_path: exports/eng/en_gen_u_c_ucl/en_gen_u_c_ucl_1.txt, line: 42936}
+  priority: 1
+  source: {archive_path: original, line: "issue 207, owner ruling 2026-11-05: priority 0 raised to 1 so the exact form wins at the start of a sentence; adapted from exports/eng/en_gen_u_c_ucl/en_gen_u_c_ucl_1.txt line 42936"}
 - headword: August
   id: 528782
   uw: "115212455"
   features: {LEMMA: August, BF: August, LEX: N, POS: NOU, MOR: STE, LST: WRD, NUM: SNG, PAR: M2, FRA: Y0, ABN: ABT, ALY: ALI, ANI: NANM, CAR: NCTB, SEM: TIM, SFR: K0}
   lang: eng
   frequency: 20
-  priority: 0
-  source: {archive_path: exports/eng/en_ana_u_c_ucl/en_ana_u_c_ucl_1.txt, line: 48247}
+  priority: 1
+  source: {archive_path: original, line: "issue 207, owner ruling 2026-11-05: priority 0 raised to 1 so the exact form wins at the start of a sentence; adapted from exports/eng/en_ana_u_c_ucl/en_ana_u_c_ucl_1.txt line 48247"}
 - headword: August 1
   id: 430826
   uw: "115190228"
