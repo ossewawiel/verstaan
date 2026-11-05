@@ -211,10 +211,26 @@ export function buildCodex(issue: Issue, content: string, adrPaths: string[], gl
 
 const SIDE = new Set(['Side', 'Post-M6']);
 
-/** The same rule /factory-status uses: lowest open issue whose dependencies are all done. */
+/** The same rule /factory-status uses: the lowest open main quest, or when it is blocked, its lowest open blocker (walked through blockers of blockers) with every dependency done. */
 export function nextIssue(issues: Issue[]): Issue | null {
+  const byN = new Map<number, Issue>(issues.map((i) => [i.n, i]));
   const done = new Set(issues.filter((i) => i.status === 'done').map((i) => i.n));
-  return issues.find((i) => i.status === 'open' && !SIDE.has(i.milestone) && i.dependsOn.every((d) => done.has(d))) ?? null;
+  for (const i of issues) {
+    if (i.status !== 'open' || SIDE.has(i.milestone)) continue;
+    const ready: number[] = [];
+    const seen = new Set<number>();
+    const stack: number[] = [i.n];
+    while (stack.length) {
+      const n = stack.pop()!;
+      if (seen.has(n)) continue;
+      seen.add(n);
+      const node = byN.get(n)!;
+      if (node.dependsOn.every((d) => done.has(d))) { ready.push(n); continue; }
+      for (const d of node.dependsOn) if (byN.get(d)?.status === 'open') stack.push(d);
+    }
+    if (ready.length) return byN.get(Math.min(...ready))!;
+  }
+  return null;
 }
 
 export function lastCompleted(issues: Issue[]): Issue | null {

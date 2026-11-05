@@ -2,7 +2,7 @@
 issue: 216
 title: "Next up names the lowest open blocker, and Last completed names the latest close"
 milestone: Side
-status: open
+status: in-progress
 depends_on: []
 agent: implementer
 agents: [implementer]
@@ -10,7 +10,7 @@ model: sonnet
 effort: medium
 checkpoint: null
 commit: null
-worktree: null
+worktree: .worktrees/side-216-next-up-names-the-lowest-open-blocker
 github_issue: 342
 ---
 ## What

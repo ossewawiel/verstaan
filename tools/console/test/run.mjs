@@ -279,5 +279,17 @@ check('chainDecision does not chain when the root generator file is absent', cha
 check('runChain does not chain when VERSTAAN_CONSOLE_NO_CHAIN is set (no spawnSync call)',
   (() => { let called = false; runChain(worktree, rootCommonDir, true, { spawnSyncFn: () => { called = true; return { status: 0 }; }, env: {}, log: () => {}, logError: () => {} }); return called; })(), false);
 
+
+// issue 216: a blocked main quest names its lowest ready blocker. Snapshot of issues 27-29 and blockers.
+const snap = (statuses, over = {}) => [
+  [27, 'M4', []], [28, 'M4', []], [29, 'M4', [27, 28, 207, 211]], [201, 'Side', [207]],
+  [207, 'Side', []], [210, 'Side', [27, 28, 213]], [211, 'Side', []], [213, 'Side', []],
+].map(([n, milestone, dependsOn]) => ({ n, milestone, dependsOn: over[n] ?? dependsOn, status: statuses[n] ?? 'open' }));
+check('216 ready main quest names itself', nextIssue(snap({}))?.n, 27);
+check('216 blocked main quest names lowest ready side blocker', nextIssue(snap({ 27: 'done', 28: 'done' }))?.n, 207);
+check('216 walk goes through blockers of blockers', nextIssue(snap({ 27: 'done', 28: 'done', 211: 'done' }, { 29: [201] }))?.n, 207);
+check('216 in-progress blocker is not named', nextIssue(snap({ 27: 'done', 28: 'done', 207: 'in-progress' }))?.n, 211);
+check('216 no ready blocker gives null', nextIssue(snap({ 27: 'done', 28: 'done', 207: 'in-progress', 211: 'in-progress' })), null);
+
 if (failed) { console.log(`${failed} failed`); process.exit(1); }
 console.log('all green');
