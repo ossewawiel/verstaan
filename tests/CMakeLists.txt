@@ -3,6 +3,7 @@ include(GoogleTest)
 
 # Engine unit tests. Label `fast` (docs/standards/testing.md).
 add_executable(verstaan_tests
+  unit/capital_names_test.cpp
   unit/cli_trace_line_test.cpp
   unit/dictionary_lookup_test.cpp
   unit/engine_status_test.cpp
@@ -30,7 +31,7 @@ target_compile_definitions(verstaan_tests PRIVATE
 add_dependencies(verstaan_tests verstaan_cli)
 target_compile_definitions(verstaan_tests PRIVATE VERSTAAN_CLI_PATH="$<TARGET_FILE:verstaan_cli>")
 # golden_loader_test.cpp includes golden/row_loader.hpp (issue 202).
-target_include_directories(verstaan_tests PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/golden)
+target_include_directories(verstaan_tests PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/golden ${CMAKE_SOURCE_DIR}/engine/src)
 
 gtest_discover_tests(verstaan_tests
   PROPERTIES LABELS fast

@@ -42,12 +42,12 @@ Outcome run_captured(const Row& row) {
   return o;
 }
 
-// Owner-written pair from the eng fixture (row A09): not derived from a run of the engine.
+// Pair from issue 207's table (C16): not derived from a run of the engine.
 Row matching_row() {
   Row row;
   row.id = "mem_match";
-  row.input = "a book about Geneva";
-  row.expected = "'n boek oor Geneva";
+  row.input = "a book about Brisbane";
+  row.expected = "'n boek oor Brisbane";
   row.status = "ok";
   row.file = "memory";
   return row;

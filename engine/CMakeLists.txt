@@ -6,6 +6,7 @@ add_library(verstaan_core STATIC
   src/lang.cpp
   src/rule_interpreter.cpp
   src/tokeniser.cpp
+  src/unicode_utf8.cpp
   src/tree_pass.cpp
   src/tree_syntax.cpp
 )
